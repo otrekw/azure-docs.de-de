@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532390"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076571"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Informationen zur Geschäftskontinuität in Azure Database for MariaDB
 
@@ -48,11 +48,12 @@ Die andere Option ist die Verwendung des Geowiederherstellungsfeatures von Azure
 > [!IMPORTANT]
 > Die Geowiederherstellung ist nur möglich, wenn Sie den Server mit einem georedundanten Sicherungsspeicher bereitgestellt haben.
 
+## <a name="cross-region-read-replicas"></a>Regionsübergreifende Lesereplikate
+
+Mithilfe regionsübergreifender Lesereplikate können Sie Ihre BCDR-Planung (Business Continuity & Disaster Recovery) verbessern. Lesereplikate werden mithilfe der binären Protokollreplikation von MariaDB asynchron aktualisiert. Weitere Informationen zu Lesereplikaten, zu verfügbaren Regionen und zum Failover finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu automatisierten Sicherungen finden Sie unter [Sicherungen in Azure Database for MariaDB](concepts-backup.md).
-- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über das Azure-Portal finden Sie unter  [Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal](howto-restore-server-portal.md).
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- Weitere Informationen zu [automatisierten Sicherungen in Azure Database for MariaDB](concepts-backup.md).
+- Erfahren Sie, wie Sie eine Wiederherstellung mithilfe des [Azure-Portals](howto-restore-server-portal.md) oder der [Azure CLI](howto-restore-server-cli.md) ausführen.
+- Weitere Informationen zu [Lesereplikaten in Azure Database for MariaDB](concepts-read-replicas.md).

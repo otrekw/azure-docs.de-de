@@ -5,16 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 75efdd8ed855fe78651fce5828aacb2384052ae5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: cc4a2e8c3de05a9df136e74a1e0d32956891a175
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270535"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118493"
 ---
-# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI
+# <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Konfigurieren von Protokollen für langsame Abfragen in Azure Database for Maria DB und Zugreifen auf diese Protokolle über die Azure-Befehlszeilenschnittstelle (Azure CLI)
+
 Sie können die Protokolle für langsame Abfragen von Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -25,7 +26,7 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung
 Sie können den Server mit folgenden Schritten für den Zugriff auf das Protokoll für langsame MySQL-Abfragen konfigurieren:
 1. Aktivieren Sie die Protokollierung für langsame Abfragen, indem Sie den Parameter **slow\_query\_log** auf „ON“ festlegen.
-2. Wählen Sie mit **log\_output** aus, wohin die Protokolle ausgegeben werden sollen. Wenn Protokolle sowohl in den lokalen Speicher als auch in die Azure Monitor-Diagnoseprotokolle gesendet werden sollen, wählen Sie **Datei** aus. Wenn Protokolle nur in Azure Monitor-Protokolle gesendet werden sollen, wählen Sie **Keine** aus.
+2. Wählen Sie mit **log\_output** aus, wohin die Protokolle ausgegeben werden sollen. Wenn Protokolle sowohl in den lokalen Speicher als auch in die Azure Monitor-Diagnoseprotokolle übertragen werden sollen, wählen Sie **Datei** aus. Wenn Protokolle nur in Azure Monitor-Protokolle übertragen werden sollen, wählen Sie **Keine** aus.
 3. Passen Sie andere Parameter an, z.B. **long\_query\_time** und **log\_slow\_admin\_statements**.
 
 Unter [Konfigurieren von Serverparametern](howto-configure-server-parameters-cli.md) erfahren Sie, wie Sie den Wert dieser Parameter über die Azure-Befehlszeilenschnittstelle festlegen.

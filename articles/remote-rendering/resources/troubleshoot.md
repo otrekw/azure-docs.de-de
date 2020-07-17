@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563263"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -146,6 +146,16 @@ Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framez
 
 ![Unity-Framedebugger](./media/troubleshoot-unity-pipeline.png)
 
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Schachbrettmuster wird nach dem Laden des Modells gerendert
+
+Wenn das gerenderte Bild wie folgt aussieht: ![Schachbrett](../reference/media/checkerboard.png), dann trifft der Renderer auf die [Polygongrenzwerte für die VM-Standardgröße](../reference/vm-sizes.md). Zum Minimieren der Auswirkungen kann entweder zur Größe **Premium-VM** gewechselt oder die Anzahl der sichtbaren Polygone reduziert werden.
+
+## <a name="the-rendered-image-in-unity-is-upside-down"></a>Das gerenderte Bild in Unity steht auf dem Kopf
+
+Beachten Sie unbedingt das [Unity Tutorial: Anzeigen von Remotemodellen](../tutorials/unity/view-remote-models/view-remote-models.md) genau. Ein umgedrehtes Bild zeigt an, dass Unity erforderlich ist, um ein Renderziel außerhalb des Bildschirms zu erstellen. Dieses Verhalten wird derzeit nicht unterstützt und hat einen großen Einfluss auf die Leistung der HoloLens 2.
+
+Gründe für dieses Problem könnten MSAA, HDR oder die Aktivierung der Nachbearbeitung sein. Stellen Sie sicher, dass das Profil mit niedriger Qualität ausgewählt und in Unity als Standard festgelegt ist. Wechseln Sie dazu zu *Bearbeiten > Projekteinstellungen... > Qualität*.
+
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Unity-Code, der die Remote Rendering-API verwendet, wird nicht kompiliert.
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>Verwenden von „Debuggen“ beim Kompilieren für den Unity-Editor
@@ -162,6 +172,10 @@ Bei dem Versuch, Unity-Beispiele ( Schnellstart, ShowCaseApp, ...) für HoloLens
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Bei Arm64-Builds für Unity-Projekte treten Fehler auf, da die Datei „AudioPluginMsHRTF.dll“ fehlt.
+
+Die `AudioPluginMsHRTF.dll` für Arm64 wurde dem *Windows Mixed Reality*-Paket *(com.unity.xr.windowsmr.metro)* in Version 3.0.1 hinzugefügt. Stellen Sie sicher, dass Sie Version 3.0.1 oder höher über den Unity Package Manager installiert haben. Navigieren Sie in der Menüleiste von Unity zu *Fenster > Paket-Manager*, und suchen Sie nach dem *Windows Mixed Reality*-Paket.
+
 ## <a name="unstable-holograms"></a>Instabile Hologramme
 
 Wenn bei Kopfbewegungen auch gerenderte Objekte bewegt werden, liegen möglicherweise Probleme mit der *Late Stage Reprojection* (LSR) vor. Hinweise zur Vorgehensweise in einer solchen Situation finden Sie im Abschnitt zur [Late Stage Reprojection](../overview/features/late-stage-reprojection.md).
@@ -171,6 +185,56 @@ Ein weiterer Grund für instabile Hologramme (wabernde, verzerrte, zitternde ode
 Ein anderer Wert, der untersucht werden kann, ist `ARRServiceStats.LatencyPoseToReceiveAvg`. Er sollte konstant weniger als 100 ms betragen. Wenn höhere Werte angezeigt werden, bedeutet dies, dass Sie mit einem zu weit entfernten Rechenzentrum verbunden sind.
 
 Eine Liste der möglichen Entschärfungen finden Sie in den [Richtlinien für die Netzwerkkonnektivität](../reference/network-requirements.md#guidelines-for-network-connectivity).
+
+## <a name="z-fighting"></a>Z-Fighting
+
+Obwohl ARR eine [Z-Fighting-Minimierungsfunktion](../overview/features/z-fighting-mitigation.md) bietet, kann Z-Fighting in der Szene immer noch auftreten. Dieser Leitfaden zielt auf die Behebung dieser verbleibenden Probleme ab.
+
+### <a name="recommended-steps"></a>Empfohlene Schritte
+
+Verwenden Sie den folgenden Workflow zur Minimierung von Z-Fighting:
+
+1. Testen Sie die Szene mit den Standardeinstellungen von ARR (Z-Fighting-Minimierung ist aktiviert).
+
+1. Deaktivieren Sie die Z-Fighting-Minimierung über dessen [API](../overview/features/z-fighting-mitigation.md). 
+
+1. Wechseln Sie die nahe und entfernte Ebene der Kamera in einen näheren Bereich.
+
+1. Beheben Sie Fehler in der Szene über den nächsten Abschnitt.
+
+### <a name="investigating-remaining-z-fighting"></a>Untersuchung des verbleibenden Z-Fightings
+
+Wenn die oben genannten Schritte ausgeschöpft sind und das verbleibende Z-Fighting nicht akzeptabel ist, muss die zugrunde liegende Ursache des Z-Fightings untersucht werden. Wie auf der Seite zur [Z-Fighting-Minimierungsfunktion](../overview/features/z-fighting-mitigation.md) dargelegt, gibt es zwei Hauptgründe für Z-Fighting: Tiefengenauigkeitsverlust am äußersten Ende des Tiefenbereichs und Oberflächen, die sich schneiden, obwohl sie koplanar sind. Der Tiefengenauigkeitsverlust ist eine mathematische Eventualität und kann nur durch Befolgen von Schritt 3 oben minimiert werden. Koplanare Oberflächen weisen auf einen Fehler des Quellmedienobjekts hin und sind in den Quelldaten besser behoben.
+
+ARR verfügt über ein Feature zur Bestimmung, ob Z-Fighting für Oberflächen möglich ist: [Schachbrettmusterhervorhebung](../overview/features/z-fighting-mitigation.md) Sie können auch visuell ermitteln, wodurch das Z-Fighting verursacht wird. Die folgende erste Animation zeigt ein Beispiel für den Tiefengenauigkeitsverlust in der Entfernung, und die zweite Animation zeigt ein Beispiel für nahezu koplanare Oberflächen:
+
+![depth-precision-z-fighting](./media/depth-precision-z-fighting.gif)  ![coplanar-z-fighting](./media/coplanar-z-fighting.gif)
+
+Vergleichen Sie diese Beispiele mit Ihrem Z-Fighting, um die Ursache zu ermitteln, oder folgen Sie optional diesem Schritt-für-Schritt-Workflow:
+
+1. Positionieren Sie die Kamera über den Z-Fighting-Oberflächen, um direkt auf die Oberfläche zu blicken.
+1. Bewegen Sie die Kamera langsam nach hinten (weg von den Oberflächen).
+1. Wenn das Z-Fighting die ganze Zeit sichtbar ist, sind die Oberflächen perfekt koplanar. 
+1. Wenn das Z-Fighting die meiste Zeit sichtbar ist, sind die Oberflächen nahezu koplanar.
+1. Wenn das Z-Fighting nur von weitem sichtbar ist, liegt die Ursache in mangelnder Tiefengenauigkeit.
+
+Koplanare Oberflächen können eine Reihe verschiedener Ursachen haben:
+
+* Ein Objekt wurde von der exportierenden Anwendung aufgrund eines Fehlers oder unterschiedlicher Workflowansätze dupliziert.
+
+    Prüfen Sie diese Probleme mit der jeweiligen Anwendung und der Anwendungsunterstützung.
+
+* Oberflächen werden dupliziert und gespiegelt, sodass sie in Renderern, die Frontface oder Backface Culling verwenden, doppelseitig erscheinen.
+
+    Der Import über die [Modellkonvertierung](../how-tos/conversion/model-conversion.md) bestimmt die prinzipielle Seitigkeit des Modells. Doppelseitigkeit wird als Standard angenommen. Die Oberfläche wird als dünne Wand mit physisch korrekter Beleuchtung von beiden Seiten gerendert. Die Einseitigkeit kann durch Flags im Quellmedienobjekt impliziert oder während der [Modellkonvertierung](../how-tos/conversion/model-conversion.md) explizit erzwungen werden. Zusätzlich, aber optional, kann der [einseitige Modus](../overview/features/single-sided-rendering.md) auf „normal“ festgelegt werden.
+
+* Objekte überschneiden sich in den Quellmedienobjekten.
+
+     Objekte, die so transformiert wurden, dass sich einige ihrer Oberflächen überlappen, erzeugen ebenfalls Z-Fighting. Auch das Transformieren von Teilen der Szenenstruktur in der importierten Szene in ARR kann dieses Problem verursachen.
+
+* Oberflächen werden gezielt zum Anfassen erstellt, z. B. Bilder oder Text auf Wänden.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

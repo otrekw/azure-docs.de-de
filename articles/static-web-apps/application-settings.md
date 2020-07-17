@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373663"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurieren von Anwendungseinstellungen für Azure Static Web Apps (Vorschau)
 
@@ -107,7 +107,9 @@ Das Azure-Portal verfügt über eine Oberfläche zum Erstellen, Aktualisieren un
 
 1. Geben Sie einen **Namen** und **Wert** ein.
 
-1. Klicken Sie auf **OK**
+1. Klicken Sie auf **OK**.
+
+1. Klicken Sie auf **Speichern**.
 
 ### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
@@ -156,7 +158,7 @@ Beim Azure CLI-Befehl werden einige spezifische Werte Ihres Kontos benötigt, um
 
 Sie können Anwendungseinstellungen mit der Azure CLI anzeigen.
 
-1. Führen Sie in einem Terminal oder an der Befehlszeile den unten angegebenen Befehl aus. Ersetzen Sie die Platzhalter `<YOUR_SUBSCRIPTION_ID>`, `<YOUR_RESOURCE_GROUP_NAME>` und `<YOUR_STATIC_SITE_NAME>` durch Ihre Werte.
+- Führen Sie in einem Terminal oder an der Befehlszeile den unten angegebenen Befehl aus. Ersetzen Sie die Platzhalter `<YOUR_SUBSCRIPTION_ID>`, `<YOUR_RESOURCE_GROUP_NAME>` und `<YOUR_STATIC_SITE_NAME>` durch Ihre Werte.
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976064"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Bewährte Anwendungsentwicklermethoden zum Verwalten von Ressourcen in Azure Kubernetes Service (AKS)
 
@@ -76,9 +76,7 @@ Weitere Informationen zu Ressourcenverwaltung und Zuweisungen finden Sie unter [
 
 **Best Practice-Anleitung**: Entwicklungsteams sollten einen AKS-Cluster mithilfe von Dev Spaces bereitstellen und debuggen. Dieses Entwicklungsmodell stellt sicher, dass rollenbasierte Zugriffssteuerungen, Netzwerk- oder Speicheranforderungen implementiert werden, bevor die App in der Produktionsumgebung bereitgestellt wird.
 
-Mit Azure Dev Spaces entwickeln, debuggen und testen Sie Anwendungen direkt mit einem AKS-Cluster. Entwickler in einem Team arbeiten zusammen, um während des gesamten Lebenszyklus der Anwendung zu erstellen und zu testen. Sie können weiterhin vorhandene Tools wie Visual Studio oder Visual Studio Code verwenden. Eine Erweiterung ist für Dev Spaces installiert, die eine Option zum Ausführen und Debuggen der Anwendung in einem AKS-Cluster bietet:
-
-![Debuggen von Anwendungen in einem AKS-Cluster mit Dev Spaces](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+Mit Azure Dev Spaces entwickeln, debuggen und testen Sie Anwendungen direkt mit einem AKS-Cluster. Entwickler in einem Team arbeiten zusammen, um während des gesamten Lebenszyklus der Anwendung zu erstellen und zu testen. Sie können weiterhin vorhandene Tools wie Visual Studio oder Visual Studio Code verwenden. Eine Erweiterung ist für Dev Spaces installiert, die eine Option zum Ausführen und Debuggen der Anwendung in einem AKS-Cluster bietet.
 
 Dieser integrierte Entwicklungs- und Testprozess mit Dev Spaces verringert den Bedarf an lokalen Testumgebungen wie [minikube][minikube]. Stattdessen entwickeln und testen Sie anhand eines AKS-Clusters. Dieser Cluster kann gesichert und isoliert werden, wie im vorherigen Abschnitt zur Verwendung von Namespaces zum logischen Isolieren eines Clusters angemerkt. Wenn Ihre Apps für die Bereitstellung zur Produktion bereit sind, können Sie zuverlässig bereitstellen, da Ihre Entwicklung bereits mit einem echten AKS-Cluster ausgeführt wurde.
 
@@ -119,7 +117,7 @@ Um einige dieser Best Practices zu implementieren, lesen Sie folgende Artikel:
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

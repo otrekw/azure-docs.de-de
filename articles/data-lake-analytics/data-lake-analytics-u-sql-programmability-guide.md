@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fb54c821c50ff8e1364a125cc5db181aedf0437
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73162581"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110588"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
 
@@ -28,7 +28,7 @@ Laden Sie [Azure Data Lake Tools für Visual Studio](https://www.microsoft.com/d
 
 Sehen Sie sich das folgende U-SQL-Skript an:
 
-```
+```usql
 @a  = 
   SELECT * FROM 
     (VALUES
@@ -50,7 +50,7 @@ Dieses Skript definiert zwei Rowsets: `@a` und `@results`. Rowset `@results` wir
 
 Bei einem U-SQL-Ausdruck handelt es sich um eine Kombination aus einem C#-Ausdruck und logischen U-SQL-Operatoren wie `AND`, `OR` und `NOT`. U-SQL-Ausdrücke können mit SELECT, EXTRACT, WHERE, HAVING, GROUP BY und DECLARE verwendet werden. Das folgende Skript analysiert beispielsweise eine Zeichenfolge als DateTime-Wert:
 
-```
+```usql
 @results =
   SELECT
     customer,
@@ -61,7 +61,7 @@ Bei einem U-SQL-Ausdruck handelt es sich um eine Kombination aus einem C#-Ausdru
 
 Der folgende Codeausschnitt analysiert eine Zeichenfolge als DateTime-Wert in einer DECLARE-Anweisung:
 
-```
+```usql
 DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
@@ -69,7 +69,7 @@ DECLARE @d = DateTime.Parse("2016/01/01");
 
 Im folgenden Beispiel sehen Sie, wie Sie mithilfe von C#-Ausdrücken eine DateTime-Datenkonvertierung durchführen. In diesem speziellen Szenario werden DateTime-Zeichenfolgendaten in das Standard-DateTime-Format mit der Zeitnotation „00:00:00“ für Mitternacht konvertiert.
 
-```
+```usql
 DECLARE @dt = "2016-07-06 10:23:15";
 
 @rs1 =
@@ -89,7 +89,7 @@ Das aktuelle Datum können wir mithilfe des folgenden C#-Ausdrucks abrufen: `Dat
 
 Das folgende Beispiel zeigt, wie Sie diesen Ausdruck in einem Skript verwenden:
 
-```
+```usql
 @rs1 =
   SELECT
     MAX(guid) AS start_id,
@@ -112,14 +112,14 @@ Verwenden Sie die `CREATE ASSEMBLY`-Anweisung, um eine .NET-Assembly in einer U-
 
 Der folgende Code zeigt, wie Sie eine Assembly registrieren:
 
-```
+```usql
 CREATE ASSEMBLY MyDB.[MyAssembly]
    FROM "/myassembly.dll";
 ```
 
 Der folgende Code zeigt, wie Sie auf eine Assembly verweisen:
 
-```
+```usql
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
@@ -140,7 +140,7 @@ Benutzerdefinierte Funktionen (User Defined Functions, UDFs) von U-SQL sind Prog
 
 Es empfiehlt sich, benutzerdefinierte U-SQL-Funktionen als **öffentlich** und **statisch** zu initialisieren.
 
-```
+```usql
 public static string MyFunction(string param1)
 {
     return "my result";
@@ -153,7 +153,7 @@ In diesem Szenario müssen wir den Geschäftszeitraum bestimmen – einschließl
 
 Zur Berechnung des Geschäftszeitraums verwenden wir die folgende C#-Funktion:
 
-```
+```usql
 public static string GetFiscalPeriod(DateTime dt)
 {
     int FiscalMonth=0;
@@ -194,7 +194,7 @@ Dies ist eine reguläre C#-Funktion, die wir in unserem U-SQL-Projekt verwenden.
 
 Der CodeBehind-Abschnitt sieht in diesem Szenario wie folgt aus:
 
-```
+```usql
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -243,14 +243,12 @@ namespace USQL_Programmability
 ```
 
 Jetzt rufen wir diese Funktion aus dem U-SQL-Basisskript heraus auf. Zu diesem Zweck müssen wir für die Funktion einen vollqualifizierten Namen angeben und dabei auch den Namespace einbeziehen. In diesem Fall ist das „NameSpace.Class.Function(parameter)“.
-
-```
+```usql
 USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
 Hier sehen Sie das tatsächliche U-SQL-Basisskript:
-
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
@@ -282,7 +280,7 @@ OUTPUT @rs1
 
 Im Anschluss finden Sie die Ausgabedatei der Skriptausführung:
 
-```
+```output
 0d8b9630-d5ca-11e5-8329-251efa3a2941,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User1",""
 
 20843640-d771-11e5-b87b-8b7265c75a44,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User2",""
@@ -295,7 +293,7 @@ Dieses Beispiel zeigt eine einfache Verwendung einer Inline-UDF in U-SQL.
 ### <a name="keep-state-between-udf-invocations"></a>Beibehalten des Zustands zwischen UDF-Aufrufen
 U-SQL-C#-Programmierbarkeitsobjekte können komplexer sein und Interaktivität über die globalen CodeBehind-Variablen nutzen. Sehen wir uns einmal das folgende Geschäftsszenario an:
 
-In großen Organisationen können Benutzer zwischen Varianten interner Anwendungen wechseln. Beispiele wären etwa Microsoft Dynamics CRM und PowerBI. Kunden möchten unter Umständen mithilfe einer Telemetrieanalyse ermitteln, wie Benutzer zwischen verschiedenen Anwendungen wechseln, welche Nutzungstrends zu beobachten sind und Ähnliches. Das Unternehmen möchte so die Anwendungsnutzung optimieren. Außerdem möchte das Unternehmen unter Umständen verschiedene Anwendungen oder bestimmte Anmelderoutinen miteinander kombinieren.
+In großen Organisationen können Benutzer zwischen Varianten interner Anwendungen wechseln. Beispiele wären etwa Microsoft Dynamics CRM und Power BI. Kunden möchten unter Umständen mithilfe einer Telemetrieanalyse ermitteln, wie Benutzer zwischen verschiedenen Anwendungen wechseln, welche Nutzungstrends zu beobachten sind und Ähnliches. Das Unternehmen möchte so die Anwendungsnutzung optimieren. Außerdem möchte das Unternehmen unter Umständen verschiedene Anwendungen oder bestimmte Anmelderoutinen miteinander kombinieren.
 
 Hierzu müssen wir Sitzungs-IDs und die Verzögerung für die letzte Sitzung bestimmen.
 
@@ -307,7 +305,7 @@ Diese globale Variable wird bei der Skriptausführung auf das gesamte Rowset ang
 
 Hier ist der CodeBehind-Abschnitt unseres U-SQL-Programms:
 
-```
+```csharp
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -347,7 +345,7 @@ Dieses Beispiel zeigt die globale Variable `static public string globalSession;`
 
 Das U-SQL-Basisskript sieht wie folgt aus:
 
-```
+```usql
 DECLARE @in string = @"\UserSession\test1.tsv";
 DECLARE @out1 string = @"\UserSession\Out1.csv";
 DECLARE @out2 string = @"\UserSession\Out2.csv";
@@ -399,7 +397,7 @@ Die Funktion `USQLApplication21.UserSession.getStampUserSession(UserSessionTimes
 
 Die Ausgabedatei sieht wie folgt aus:
 
-```
+```output
 "2016-02-19T07:32:36.8420000-08:00","User1",,True,"72a0660e-22df-428e-b672-e0977007177f"
 "2016-02-17T11:52:43.6350000-08:00","User2",,True,"4a0cd19a-6e67-4d95-a119-4eda590226ba"
 "2016-02-17T11:59:08.8320000-08:00","User2","2016-02-17T11:52:43.6350000-08:00",False,"4a0cd19a-6e67-4d95-a119-4eda590226ba"
@@ -436,7 +434,7 @@ Beliebige UDTs können von U-SQL nicht implizit serialisiert oder deserialisiert
 
 Angenommen, wir versuchen, den UDT in EXTRACTOR oder OUTPUTTER (außerhalb des vorherigen SELECT-Ausdrucks) zu verwenden, wie hier zu sehen:
 
-```
+```usql
 @rs1 =
     SELECT 
         MyNameSpace.Myfunction_Returning_UDT(filed1) AS myfield
@@ -449,7 +447,7 @@ OUTPUT @rs1
 
 In diesem Fall erhalten wir folgende Fehlermeldung:
 
-```
+```output
 Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
 MyNameSpace.Myfunction_Returning_UDT.
 
@@ -468,7 +466,7 @@ Für die Zusammenarbeit von UDT und Outputter müssen wir den UDT entweder mit d
 
 UDTs können derzeit nicht in der GROUP BY-Klausel verwendet werden. Wenn der UDT in der GROUP BY-Klausel verwendet wird, wird der folgende Fehler ausgelöst:
 
-```
+```output
 Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
 for column myfield
 
@@ -487,7 +485,7 @@ Folgendermaßen definieren wir einen UDT:
 
 * Fügen Sie die folgenden Namespaces hinzu:
 
-```
+```csharp
 using Microsoft.Analytics.Interfaces
 using System.IO;
 ```
@@ -506,7 +504,7 @@ Der Konstruktor der Klasse:
 
 * Typformatierer: Erforderlicher Parameter zum Definieren eines UDT-Formatierers. Insbesondere muss hier der Typ der `IFormatter`-Schnittstelle übergeben werden.
 
-```
+```csharp
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
 public class MyType
 { … }
@@ -514,7 +512,7 @@ public class MyType
 
 * Für einen typischen UDT muss außerdem die IFormatter-Schnittstelle definiert werden, wie im folgenden Beispiel zu sehen:
 
-```
+```csharp
 public class MyTypeFormatter : IFormatter<MyType>
 {
     public void Serialize(MyType instance, IColumnWriter writer, ISerializationContext context)
@@ -525,9 +523,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-Die `IFormatter`-Schnittstelle serialisiert und deserialisiert ein Objektdiagramm mit dem Stammtyp \<typeparamref name="T">.
+Die `IFormatter`-Schnittstelle serialisiert und deserialisiert einen Objektgraph mit dem Stammtyp von \<typeparamref name="T">.
 
-\<Typeparam Name = "T"&gt; – der Stammtyp für Serialisierung und Deserialisierung des Objektgraphs.
+\<typeparam name="T">Der Stammtyp für Serialisierung und Deserialisierung des Objektgraphs.
 
 * **Deserialize:** Deserialisiert die Daten im angegebenen Datenstrom und stellt das Objektdiagramm wieder her.
 
@@ -547,7 +545,7 @@ Weiter oben in dieser Anleitung haben wir uns mit einem Beispiel zur Identifizie
 
 Im Anschluss sehen Sie ein Beispiel für einen CodeBehind-Abschnitt mit UDT und IFormatter-Schnittstelle:
 
-```
+```csharp
 [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
 public struct FiscalPeriod
 {
@@ -652,7 +650,7 @@ Wie bereits erwähnt, kann der UDT in SELECT-Ausdrücken verwendet werden. In OU
 
 Jetzt betrachten wird die Verwendung des UDT. In einem CodeBehind-Abschnitt haben wir unsere GetFiscalPeriod-Funktion wie folgt geändert:
 
-```
+```csharp
 public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 {
     int FiscalMonth = 0;
@@ -691,7 +689,7 @@ Wie Sie sehen, wird der Wert unseres FiscalPeriod-Typs zurückgegeben.
 
 Hier finden Sie ein Beispiel zur weiteren Verwendung im U-SQL-Basisskript. Dieses Beispiel zeigt verschiedene Möglichkeiten des UDT-Aufrufs im U-SQL-Skript.
 
-```
+```usql
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.tsv";
 
@@ -737,7 +735,7 @@ OUTPUT @rs2
 
 Im Anschluss folgt ein Beispiel für einen vollständigen CodeBehind-Abschnitt:
 
-```
+```csharp
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -919,7 +917,7 @@ Das SqlUserDefinedType-Attribut ist für die UDAGG-Definition **optional**.
 
 Mithilfe der Basisklasse können Sie drei abstrakte Parameter übergeben: zwei als Eingabe und einen als Ergebnis. Die Datentypen sind variabel und sollten während der Klassenvererbung definiert werden.
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, string, string>
 {
     string guid_agg;
@@ -941,7 +939,7 @@ public class GuidAggregate : IAggregate<string, string, string>
 
 Verwenden Sie die Klassendefinition wie folgt, um korrekte Ein- und Ausgabedatentypen zu deklarieren:
 
-```
+```csharp
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
@@ -951,13 +949,13 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 
 Beispiel:
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, int, int>
 ```
 
 oder
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, string, string>
 ```
 
@@ -966,13 +964,13 @@ Wenn Sie ein UDAGG verwenden möchten, definieren Sie es zuerst im CodeBehind, o
 
 Verwenden Sie dann die folgende Syntax:
 
-```
+```csharp
 AGG<UDAGG_functionname>(param1,param2)
 ```
 
 Hier sehen Sie ein UDAGG-Beispiel:
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, string, string>
 {
     string guid_agg;
@@ -1000,7 +998,7 @@ public class GuidAggregate : IAggregate<string, string, string>
 
 U-SQL-Basisskript:
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
 
@@ -1081,7 +1079,7 @@ Es empfiehlt sich unter Umständen, einen benutzerdefinierten Extraktor zu entwi
 
 Um einen benutzerdefinierten Extraktor (User-Defined Extractor, UDE) zu definieren, müssen wir eine `IExtractor`-Schnittstelle erstellen. Alle Eingabeparameter des Extraktors (wie etwa Spalten-/Zeilentrennzeichen und die Codierung) müssen im Konstruktor der Klasse definiert werden. Die `IExtractor`-Schnittstelle muss auch eine Definition für die `IEnumerable<IRow>`-Überschreibung enthalten:
 
-```
+```csharp
 [SqlUserDefinedExtractor]
 public class SampleExtractor : IExtractor
 {
@@ -1108,7 +1106,7 @@ Der Zugriff auf die Eingabedaten erfolgt über `System.IO.Stream` und `System.IO
 
 Für die Eingabespaltenenumeration teilen wir zunächst den Eingabedatenstrom mit Zeilentrennzeichen auf.
 
-```
+```csharp
 foreach (Stream current in input.Split(my_row_delimiter))
 {
 …
@@ -1117,7 +1115,7 @@ foreach (Stream current in input.Split(my_row_delimiter))
 
 Dann teilen wir die Eingabezeile weiter in Spaltenteile auf.
 
-```
+```csharp
 foreach (Stream current in input.Split(my_row_delimiter))
 {
 …
@@ -1131,7 +1129,7 @@ Zum Festlegen der Ausgabedaten verwenden wir die `output.Set`-Methode.
 
 Wichtig: Der benutzerdefinierte Extraktor gibt nur Spalten und Werte aus, die mit der Ausgabe definiert wurden. Wir legen den Methodenaufruf fest.
 
-```
+```csharp
 output.Set<string>(count, part);
 ```
 
@@ -1139,7 +1137,7 @@ Die tatsächliche Extraktorausgabe wird durch Aufrufen von `yield return output.
 
 Hier sehen Sie das Extraktorbeispiel:
 
-```
+```csharp
 [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
 public class FullDescriptionExtractor : IExtractor
 {
@@ -1200,7 +1198,7 @@ In diesem Szenario generiert der Extraktor die GUID für die Spalte „guid“ n
 
 Im Anschluss sehen Sie ein U-SQL-Basisskript mit einem benutzerdefinierten Extraktor:
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
@@ -1233,7 +1231,7 @@ Um einen benutzerdefinierten Outputter zu definieren, müssen wir die `IOutputte
 
 Im Anschluss sehen Sie die `IOutputter`-Basisklassenimplementierung:
 
-```
+```csharp
 public abstract class IOutputter : IUserDefinedOperator
 {
     protected IOutputter();
@@ -1245,7 +1243,7 @@ public abstract class IOutputter : IUserDefinedOperator
 
 Alle Eingabeparameter des Outputters (wie etwa Spalten-/Zeilentrennzeichen und die Codierung) müssen im Konstruktor der Klasse definiert werden. Die `IOutputter`-Schnittstelle muss auch eine Definition für die `void Output`-Überschreibung enthalten. Das `[SqlUserDefinedOutputter(AtomicFileProcessing = true)`-Attribut kann optional für die Verarbeitung atomischer Dateien festgelegt werden. Ausführlichere Informationen finden Sie im weiteren Verlauf.
 
-```
+```csharp
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
 public class MyOutputter : IOutputter
 {
@@ -1286,13 +1284,13 @@ Der Zugriff auf die Ausgabedaten erfolgt über die `IRow`-Schnittstelle. Ausgabe
 
 Die einzelnen Werte werden durch den Aufruf der Get-Methode der IRow-Schnittstelle aufgezählt:
 
-```
+```csharp
 row.Get<string>("column_name")
 ```
 
 Einzelne Spaltennamen können durch Aufrufen von `row.Schema` ermittelt werden:
 
-```
+```csharp
 ISchema schema = row.Schema;
 var col = schema[i];
 string val = row.Get<string>(col.Name)
@@ -1304,7 +1302,7 @@ Die Ausgabedaten werden mithilfe von `System.IO.StreamWriter` in eine Datei gesc
 
 Wichtig: Der Datenpuffer muss nach jeder Zeileniteration in die Datei geleert werden. Darüber hinaus muss das `StreamWriter`-Objekt mit aktiviertem Disposable-Attribut (Standardeinstellung) und mit dem Schlüsselwort **using** verwendet werden:
 
-```
+```csharp
 using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
 {
 …
@@ -1316,7 +1314,7 @@ Rufen Sie andernfalls nach jeder Iteration explizit die Flush()-Methode auf. Die
 ### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Festlegen von Kopf- und Fußzeilen für benutzerdefinierte Outputter
 Verwenden Sie zum Festlegen einer Kopfzeile einen einzelnen Durchlauf der Iterationsausführung.
 
-```
+```csharp
 public override void Output(IRow row, IUnstructuredWriter output)
 {
  …
@@ -1341,7 +1339,7 @@ Verwenden Sie für die Fußzeile den Verweis auf die Instanz des `System.IO.Stre
 
 Das folgende Beispiel zeigt einen benutzerdefinierten Outputter:
 
-```
+```csharp
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
 public class HTMLOutputter : IOutputter
 {
@@ -1448,7 +1446,7 @@ public static class Factory
 
 U-SQL-Basisskript:
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.html";
 
@@ -1490,7 +1488,7 @@ Um die Erstellung einer Instanz des Objekts im Basisskript zu vermeiden, können
 
 In diesem Fall sieht der ursprüngliche Aufruf wie folgt aus:
 
-```
+```usql
 OUTPUT @rs0 
 TO @output_file 
 USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
@@ -1503,7 +1501,7 @@ Um einen UDP zu definieren, müssen wir eine `IProcessor`-Schnittstelle mit dem 
 
 Diese Schnittstelle muss die Definition für die Überschreibung des `IRow`-Schnittstellenrowsets enthalten, wie im folgenden Beispiel zu sehen:
 
-```
+```csharp
 [SqlUserDefinedProcessor]
 public class MyProcessor: IProcessor
 {
@@ -1522,7 +1520,7 @@ Die wichtigsten Programmierbarkeitsobjekte sind **input** und **output**. Das Ei
 
 Zur Eingabespaltenenumeration verwenden wir die `input.Get`-Methode.
 
-```
+```csharp
 string column_name = input.Get<string>("column_name");
 ```
 
@@ -1532,7 +1530,7 @@ Verwenden Sie für die Ausgabe die `output.Set`-Methode.
 
 Wichtig: Der benutzerdefinierte Producer gibt nur Spalten und Werte aus, die mit dem `output.Set`-Methodenaufruf definiert wurden.
 
-```
+```csharp
 output.Set<string>("mycolumn", mycolumn);
 ```
 
@@ -1540,7 +1538,7 @@ Die tatsächliche Prozessorausgabe wird durch Aufrufen von `return output.AsRead
 
 Im Anschluss finden Sie ein Prozessorbeispiel:
 
-```
+```csharp
 [SqlUserDefinedProcessor]
 public class FullDescriptionProcessor : IProcessor
 {
@@ -1564,7 +1562,7 @@ Wie im vorherigen Beispiel zu sehen, können Sie C#-Methoden im Rahmen eines `ou
 
 Bei dem folgenden Beispiel handelt es sich um ein U-SQL-Basisskript mit einem benutzerdefinierten Prozessor:
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
@@ -1594,7 +1592,7 @@ Der benutzerdefinierte Applier wird im Rahmen des U-SQL SELECT-Ausdrucks aufgeru
 
 Ein typischer Aufruf des benutzerdefinierten Appliers sieht wie folgt aus:
 
-```
+```usql
 SELECT …
 FROM …
 CROSS APPLYis used to pass parameters
@@ -1605,7 +1603,7 @@ Weitere Informationen zur Verwendung von Appliers in einem SELECT-Ausdruck finde
 
 Die Basisklassendefinition eines benutzerdefinierten Appliers sieht wie folgt aus:
 
-```
+```csharp
 public abstract class IApplier : IUserDefinedOperator
 {
 protected IApplier();
@@ -1616,7 +1614,7 @@ public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
 
 Um einen benutzerdefinierten Applier zu definieren, müssen wir die `IApplier`-Schnittstelle mit dem [`SqlUserDefinedApplier`]-Attribut (für die Definition eines benutzerdefinierten Appliers optional) erstellen.
 
-```
+```csharp
 [SqlUserDefinedApplier]
 public class ParserApplier : IApplier
 {
@@ -1642,7 +1640,7 @@ public class ParserApplier : IApplier
 
 Die wichtigsten Programmierbarkeitsobjekte sind:
 
-```
+```csharp
 public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
@@ -1650,7 +1648,7 @@ Eingaberowsets werden als `IRow`-Eingabe übergeben. Die Ausgabezeilen werden al
 
 Einzelne Spaltennamen können durch Aufrufen der `IRow`-Schemamethode ermittelt werden.
 
-```
+```csharp
 ISchema schema = row.Schema;
 var col = schema[i];
 string val = row.Get<string>(col.Name)
@@ -1658,19 +1656,19 @@ string val = row.Get<string>(col.Name)
 
 Um die tatsächlichen Datenwerte aus dem eingehenden `IRow`-Element abzurufen, verwenden wir die Get()-Methode der `IRow`-Schnittstelle.
 
-```
+```csharp
 mycolumn = row.Get<int>("mycolumn")
 ```
 
 Alternativ können wir auch den Schemaspaltennamen verwenden:
 
-```
+```csharp
 row.Get<int>(row.Schema[0].Name)
 ```
 
 Die Ausgabewerte müssen mit der `IUpdatableRow`-Ausgabe festgelegt werden:
 
-```
+```csharp
 output.Set<int>("mycolumn", mycolumn)
 ```
 
@@ -1680,13 +1678,13 @@ Die tatsächliche Ausgabe wird durch Aufrufen von `yield return output.AsReadOnl
 
 Die Parameter des benutzerdefinierten Appliers können an den Konstruktor übergeben werden. Der Applier kann eine variable Anzahl von Spalten zurückgeben, die während des Applieraufrufs im U-SQL-Basisskript definiert werden müssen.
 
-```
+```csharp
 new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
 Hier sehen Sie das Beispiel für den benutzerdefinierten Applier:
 
-```
+```csharp
 [SqlUserDefinedApplier]
 public class ParserApplier : IApplier
 {
@@ -1744,7 +1742,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 
 Im Anschluss finden Sie das U-SQL-Basisskript für diesen benutzerdefinierten Applier:
 
-```
+```usql
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
 DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
 
@@ -1773,7 +1771,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 In diesem Szenario fungiert der benutzerdefinierte Applier als Parser mit Werttrennung durch Trennzeichen für die Eigenschaften der Autoflotte. Die Zeilen der Eingabedatei sehen wie folgt aus:
 
-```
+```text
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
 303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
@@ -1781,13 +1779,15 @@ In diesem Szenario fungiert der benutzerdefinierte Applier als Parser mit Werttr
 
 Es handelt sich um eine typische TSV-Datei mit Tabstopptrennzeichen und einer Eigenschaftenspalte, die Fahrzeugeigenschaften wie Marke und Modell enthält. Diese Eigenschaften müssen für die Tabellenspalten analysiert werden. Der bereitgestellte Applier ermöglicht auch die Generierung einer dynamischen Anzahl von Eigenschaften im Ergebnisrowset auf der Grundlage des übergebenen Parameters. Sie können entweder alle Eigenschaften generieren oder nur einen bestimmten Satz von Eigenschaften.
 
-    …USQL_Programmability.ParserApplier ("all")
-    …USQL_Programmability.ParserApplier ("make")
-    …USQL_Programmability.ParserApplier ("make&model")
+```text
+...USQL_Programmability.ParserApplier ("all")
+...USQL_Programmability.ParserApplier ("make")
+...USQL_Programmability.ParserApplier ("make&model")
+```
 
 Der benutzerdefinierte Applier kann als neue Instanz des Applierobjekts aufgerufen werden:
 
-```
+```usql
 CROSS APPLY new MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
@@ -1804,7 +1804,7 @@ Ein Combiner wird mit dem COMBINE-Ausdruck aufgerufen, der die erforderlichen In
 
 Um einen Combiner in einem U-SQL-Basisskript aufzurufen, verwenden Sie die folgende Syntax:
 
-```
+```usql
 Combine_Expression :=
     'COMBINE' Combine_Input
     'WITH' Combine_Input
@@ -1821,7 +1821,7 @@ Um einen benutzerdefinierten Combiner zu definieren, müssen wir die `ICombiner`
 
 `ICombiner`-Basisklassendefinition:
 
-```
+```csharp
 public abstract class ICombiner : IUserDefinedOperator
 {
 protected ICombiner();
@@ -1834,7 +1834,7 @@ public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
 
 Die benutzerdefinierte Implementierung einer `ICombiner`-Schnittstelle muss die Definition für eine Combine-Überschreibung für `IEnumerable<IRow>` enthalten.
 
-```
+```csharp
 [SqlUserDefinedCombiner]
 public class MyCombiner : ICombiner
 {
@@ -1877,17 +1877,17 @@ Eingaberowsets werden als **left**- und **right**-`IRowset`-Schnittstellentyp ü
 
 Für die Zwischenspeicherung können wir einen List\<T\>-Typ der Arbeitsspeicherstruktur als Ergebnis einer LINQ-Abfragenausführung (genauer gesagt: List<`IRow`>) erstellen. Der anonyme Datentyp kann während der Aufzählung ebenfalls verwendet werden.
 
-Unter [Introduction to LINQ Queries (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) (Einführung in LINQ-Abfragen (C#)) finden Sie weitere Informationen zu LINQ-Abfragen. Unter [IEnumerable\<T\> Interface](/dotnet/api/system.collections.generic.ienumerable-1) (IEnumerable<T>-Schnittstelle) finden Sie weitere Informationen zur IEnumerable\<T\>-Schnittstelle.
+Unter [Introduction to LINQ Queries (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) (Einführung in LINQ-Abfragen (C#)) finden Sie weitere Informationen zu LINQ-Abfragen. Unter [IEnumerable\<T\>-Schnittstelle](/dotnet/api/system.collections.generic.ienumerable-1) finden Sie weitere Informationen zur IEnumerable\<T\>-Schnittstelle.
 
 Um die tatsächlichen Datenwerte aus dem eingehenden `IRowset`-Element abzurufen, verwenden wir die Get()-Methode der `IRow`-Schnittstelle.
 
-```
+```csharp
 mycolumn = row.Get<int>("mycolumn")
 ```
 
 Einzelne Spaltennamen können durch Aufrufen der `IRow`-Schemamethode ermittelt werden.
 
-```
+```csharp
 ISchema schema = row.Schema;
 var col = schema[i];
 string val = row.Get<string>(col.Name)
@@ -1895,13 +1895,13 @@ string val = row.Get<string>(col.Name)
 
 Alternativ können wir auch den Schemaspaltennamen verwenden:
 
-```
+```csharp
 c# row.Get<int>(row.Schema[0].Name)
 ```
 
 Die allgemeine Enumeration mit LINQ sieht wie folgt aus:
 
-```
+```csharp
 var myRowset =
             (from row in left.Rows
                           select new
@@ -1914,7 +1914,7 @@ Nach dem Aufzählen beider Rowsets durchlaufen wir alle Zeilen mithilfe einer Sc
 
 Die Ausgabewerte müssen mit der `IUpdatableRow`-Ausgabe festgelegt werden.
 
-```
+```csharp
 output.Set<int>("mycolumn", mycolumn)
 ```
 
@@ -1922,7 +1922,7 @@ Die tatsächliche Ausgabe wird durch Aufrufen von `yield return output.AsReadOnl
 
 Im Anschluss finden Sie ein Beispiel für den Combiner:
 
-```
+```csharp
 [SqlUserDefinedCombiner]
 public class CombineSales : ICombiner
 {
@@ -2073,14 +2073,14 @@ OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
 
 Ein benutzerdefinierter Combiner kann als neue Instanz des Applierobjekts aufgerufen werden:
 
-```
+```csharp
 USING new MyNameSpace.MyCombiner();
 ```
 
 
 Eine weitere Möglichkeit ist das Aufrufen einer Wrapper-Factorymethode:
 
-```
+```csharp
 USING MyNameSpace.MyCombiner();
 ```
 
@@ -2094,7 +2094,7 @@ Zum Definieren einer UDR-Klasse müssen wir eine `IReducer`-Schnittstelle mit op
 
 Diese Klassenschnittstelle muss eine Definition für die Überschreibung des `IEnumerable`-Schnittstellenrowsets enthalten.
 
-```
+```csharp
 [SqlUserDefinedReducer]
 public class EmptyUserReducer : IReducer
 {
@@ -2117,7 +2117,7 @@ Die wichtigsten Programmierbarkeitsobjekte sind **input** und **output**. Das Ei
 
 Zum Aufzählen der Eingabezeilen verwenden wir die `Row.Get`-Methode.
 
-```
+```csharp
 foreach (IRow row in input.Rows)
 {
     row.Get<string>("mycolumn");
@@ -2130,7 +2130,7 @@ Verwenden Sie für die Ausgabe die `output.Set`-Methode.
 
 Wichtig: Benutzerdefinierte Reducer geben nur Werte aus, die mit dem `output.Set`-Methodenaufruf definiert wurden.
 
-```
+```csharp
 output.Set<string>("mycolumn", guid);
 ```
 
@@ -2138,7 +2138,7 @@ Die tatsächliche Reducerausgabe wird durch Aufrufen von `yield return output.As
 
 Im Anschluss finden Sie ein Beispiel für den Reducer:
 
-```
+```csharp
 [SqlUserDefinedReducer]
 public class EmptyUserReducer : IReducer
 {
@@ -2176,7 +2176,7 @@ In diesem Szenario überspringt der Reducer Zeilen mit leerem Benutzernamen. Er 
 
 Im Anschluss sehen Sie ein U-SQL-Basisskript mit einem benutzerdefinierten Reducer:
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file_reducer.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 

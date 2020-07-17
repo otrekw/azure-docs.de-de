@@ -9,20 +9,20 @@ editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: aa8500e0e301de5f015d074646bf4da82e4de0a1
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076656"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von (klassischen) Azure Machine Learning Studio-Webdiensten, die Module zum Importieren und Exportieren von Daten verwenden
 
 Bei der Erstellung eines Vorhersageexperiments fügen Sie in der Regel eine Webdiensteingabe und -ausgabe hinzu. Wenn Sie das Experiment bereitstellen, können Nutzer Daten über die Webdiensteingabe bzw. -ausgabe senden und empfangen. Für einige Anwendungen sind die Daten eines Nutzers möglicherweise über einen Datenfeed verfügbar oder befinden sich bereits in einer externen Datenquelle, z.B. Azure Blob Storage. In diesen Fällen müssen sie nicht mithilfe von Webdiensteingabe und -ausgabe gelesen und geschrieben werden. Sie können stattdessen mit dem Stapelausführungsdienst (Batch Execution Service, BES) mit einem Import Data-Modul aus der Datenquelle gelesen werden, und die Bewertungsergebnisse können mit einem Export Data-Modul an einen anderen Datenspeicherort geschrieben werden.
 
-Import Data-Modul und Export Data-Modul können aus verschiedenen Datenspeicherorten wie Web-URL über HTTP, Hive-Abfrage, einer Azure SQL-Datenbank, Azure Table Storage und Azure Blob Storage, einem bereitgestellten Datenfeed oder einer SQL Server-Datenbank lesen und darin schreiben.
+Import Data-Modul und Export Data-Modul können aus verschiedenen Datenspeicherorten wie Web-URL über HTTP, Hive-Abfrage, einer Datenbank in Azure SQL-Datenbank, Azure Table Storage und Azure Blob Storage, einem bereitgestellten Datenfeed oder einer SQL Server-Datenbank lesen und darin schreiben.
 
 Dieses Thema verwendet das Beispiel „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ und setzt dabei voraus, dass das Dataset bereits in eine Azure SQL-Tabelle mit der Bezeichnung „censusdata“ geladen wurde.
 
@@ -41,8 +41,8 @@ So lesen Sie die Daten aus der Azure SQL-Tabelle:
 6. Geben Sie in den Feldern **Database server name**, **Database name**, **User name** und **Password** die entsprechenden Informationen für Ihre Datenbank ein.
 7. Geben Sie im Abfragefeld „Database“ die folgende Abfrage ein.
 
+    ```tsql
      select [age],
-
         [workclass],
         [fnlwgt],
         [education],
@@ -58,6 +58,7 @@ So lesen Sie die Daten aus der Azure SQL-Tabelle:
         [native-country],
         [income]
      from dbo.censusdata;
+    ```
 8. Klicken Sie am unteren Rand des Experimentbereichs auf **Run**.
 
 ## <a name="create-the-predictive-experiment"></a>Erstellen des Vorhersageexperiments
@@ -105,13 +106,15 @@ So stellen Sie einen klassischen Webdienst bereit und erstellen eine Anwendung, 
 8. Aktualisieren Sie den Wert der Variablen *apiKey* mit dem zuvor gespeicherten API-Schlüssel.
 9. Suchen Sie die Anforderungsdeklaration, und aktualisieren Sie die Werte der Webdienstparameter, die den Modulen *Import Data* und *Export Data* übergeben werden. In diesem Fall verwenden Sie die ursprüngliche Abfrage, definieren aber einen neuen Tabellennamen.
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. Führen Sie die Anwendung aus.
 
 Nach Abschluss der Ausführung wird der Datenbank eine neue Tabelle mit den Bewertungsergebnissen hinzugefügt.
@@ -133,15 +136,17 @@ So stellen Sie einen neuen Webdienst bereit und erstellen eine Anwendung, die ih
 8. Aktualisieren Sie den Wert der Variablen *apiKey* mit dem **Primary Key** im Abschnitt **Basic consumption info**.
 9. Suchen Sie die Deklaration *scoreRequest*, und aktualisieren Sie die Werte der Webdienstparameter, die den Modulen *Import Data* und *Export Data* übergeben werden. In diesem Fall verwenden Sie die ursprüngliche Abfrage, definieren aber einen neuen Tabellennamen.
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. Führen Sie die Anwendung aus.
 

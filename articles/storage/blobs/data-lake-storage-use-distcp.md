@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465353"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109500"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Kopieren von Daten zwischen Azure Storage-Blobs und Azure Data Lake Storage Gen2 mit DistCp
 
@@ -37,25 +37,33 @@ Ein HDInsight-Cluster bietet das Hilfsprogramm DistCp, das zum Kopieren von Date
 
 2. Überprüfen Sie, ob Sie auf Ihr vorhandenes Konto des Typs „Universell V2“ (ohne aktivierten hierarchischen Namespace) zugreifen können.
 
-        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```bash
+    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```
 
    Die Ausgabe sollte eine Liste der Inhalte im Container zeigen.
 
 3. Überprüfen Sie zudem, ob Sie vom Cluster aus auf das Speicherkonto mit aktiviertem hierarchischen Namespace zugreifen können. Führen Sie den folgenden Befehl aus:
 
-        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```bash
+    hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```
 
     Die Ausgabe sollte eine Liste der Dateien bzw. Ordner im Data Lake Storage-Konto bereitstellen.
 
 4. Verwenden Sie DistCp zum Kopieren von Daten aus WASB in ein Data Lake Storage-Konto.
 
-        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```bash
+    hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```
 
     Der Befehl kopiert den Inhalt des Ordners **/example/data/gutenberg/** im Blob-Speicher in den Ordner **/myfolder** im Data Lake Storage-Konto.
 
 5. Verwenden Sie DistCp ebenso zum Kopieren von Daten aus einem Data Lake Storage-Konto in Blob Storage (WASB).
 
-        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```bash
+    hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```
 
     Der Befehl kopiert den Inhalt des Ordners **/myfolder** im Data Lake Store-Konto in den Ordner **/example/data/gutenberg/** in WASB.
 
@@ -65,7 +73,9 @@ Da die kleinste Granularitätseinheit von DistCp eine einzelne Datei ist, ist di
 
 **Beispiel**
 
-    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```bash
+hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Wie bestimme ich die Anzahl der zu verwendenden Zuordnungen?
 
@@ -75,7 +85,7 @@ Hier sind einige hilfreiche Informationen zur Vorgehensweise angegeben.
 
 * **Schritt 2: Berechnen der Anzahl von Zuordnungen**: Der Wert von **m** entspricht dem Quotienten des YARN-Gesamtarbeitsspeichers dividiert durch die YARN-Containergröße. Die YARN-Containergröße finden Sie ebenfalls im Ambari-Portal. Navigieren Sie zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an. Die YARN-Containergröße wird in diesem Fenster angezeigt. Die Formel zur Berechnung der Anzahl von Zuordnungen (**m**) sieht wie folgt aus:
 
-        m = (number of nodes * YARN memory for each node) / YARN container size
+    m = (Knotenanzahl * YARN-Arbeitsspeicher für jeden Knoten) / YARN-Containergröße
 
 **Beispiel**
 
@@ -83,11 +93,11 @@ Angenommen, Sie verfügen über einen Cluster mit vier D14v2s-Knoten und möchte
 
 * **Gesamter YARN-Arbeitsspeicher**: Im Ambari-Portal ermitteln Sie, dass der YARN-Arbeitsspeicher für einen D14-Knoten 96 GB beträgt. Für einen Cluster mit vier Knoten beträgt der YARN-Gesamtarbeitsspeicher demnach: 
 
-        YARN memory = 4 * 96GB = 384GB
+    YARN-Arbeitsspeicher = 4 * 96 GB = 384 GB
 
 * **Anzahl von Zuordnungen**: Im Ambari-Portal ermitteln Sie, dass die YARN-Containergröße für einen D14-Clusterknoten 3,072 MB beträgt. Die Anzahl von Zuordnungen beträgt somit:
 
-        m = (4 nodes * 96GB) / 3072MB = 128 mappers
+    m = (4 Knoten * 96 GB) / 3072 MB = 128 Zuordnungen
 
 Wenn andere Anwendungen Arbeitsspeicher verwenden, können Sie festlegen, dass für DistCp nur ein Teil des YARN-Arbeitsspeichers Ihres Clusters verwendet werden soll.
 

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3d9e4e54d2b1186278afc72c72cdd6bcf33dd41b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235458"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114056"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -27,7 +27,7 @@ Dieser Artikel hilft Ihnen bei der Behebung von Problemen bei der Bereitstellung
 
 Wenn Sie den Fehler „Die angegebene Manifestdatei ist ungültig: Ungültiger OVF-Manifesteintrag“ erhalten, gehen Sie wie folgt vor:
 
-1. Überprüfen Sie, ob die OVA-Datei für die Azure Migrate-Appliance ordnungsgemäß heruntergeladen wird, indem Sie deren Hashwert überprüfen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware) Wenn der Hashwert nicht übereinstimmt, laden Sie die OVA-Datei erneut herunter, und wiederholen Sie die Bereitstellung.
+1. Überprüfen Sie, ob die OVA-Datei für die Azure Migrate-Appliance ordnungsgemäß heruntergeladen wird, indem Sie deren Hashwert überprüfen. [Weitere Informationen](./tutorial-prepare-vmware.md) Wenn der Hashwert nicht übereinstimmt, laden Sie die OVA-Datei erneut herunter, und wiederholen Sie die Bereitstellung.
 2. Wenn immer noch Fehler bei der Bereitstellung auftreten und Sie den VMware vSphere-Client zum Bereitstellen der OVF-Datei verwenden, versuchen Sie, die Bereitstellung über den vSphere-Webclient vorzunehmen. Wenn die Bereitstellung weiterhin fehlschlägt, versuchen Sie es mit einem anderen Webbrowser.
 3. Wenn Sie den vSphere-Webclient verwenden und die Bereitstellung auf vCenter Server 6.5 oder 6.7 ausführen möchten, versuchen Sie, die OVA-Datei direkt auf dem ESXi-Host bereitzustellen:
    - Stellen Sie mit dem Webclient (https://<*Host-IP-Adresse*>/ui) eine direkte Verbindung mit dem ESXi-Host her (anstelle von vCenter Server).
@@ -40,7 +40,7 @@ Dies kann der Fall sein, wenn sich der Appliancecomputer hinter einem Proxy befi
 
 - Stellen Sie sicher, dass Sie die Anmeldeinformationen für die Autorisierung angeben, wenn der Proxy diese benötigt.
 - Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Verbindungen verwenden, fügen Sie die [folgenden URLs](migrate-appliance.md#url-access) einer Zulassungsliste hinzu.
-- Wenn Sie für die Internetverbindung einen abfangenden Proxy verwenden, importieren Sie das Proxyzertifikat [mit diesen Schritten](https://docs.microsoft.com/azure/migrate/concepts-collector) in die Appliance-VM.
+- Wenn Sie für die Internetverbindung einen abfangenden Proxy verwenden, importieren Sie das Proxyzertifikat [mit diesen Schritten](./migrate-appliance.md) in die Appliance-VM.
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Anmeldung bei Azure über die Appliance-Web-App ist nicht möglich
 
@@ -64,7 +64,7 @@ Ein Fehler bei der Datums- und Zeitsynchronisierung (Fehler 802) weist darauf hi
 
 Wenn dieser Verbindungsfehler angezeigt wird, können Sie möglicherweise keine Verbindung mit vCenter Server „*Servername*.com:9443“ herstellen. Die Fehlerdetails weisen darauf hin, dass unter `https://\*servername*.com:9443/sdk` kein Endpunkt lauscht, der die Nachricht akzeptieren kann.
 
-- Überprüfen Sie, ob Sie die neueste Version der Appliance ausführen. Ist dies nicht der Fall, führen Sie ein Upgrade der Appliance auf die [neueste Version](https://docs.microsoft.com/azure/migrate/concepts-collector) durch.
+- Überprüfen Sie, ob Sie die neueste Version der Appliance ausführen. Ist dies nicht der Fall, führen Sie ein Upgrade der Appliance auf die [neueste Version](./migrate-appliance.md) durch.
 - Wenn das Problem bei der neuesten Version weiterhin auftritt, ist die Appliance möglicherweise nicht in der Lage, den angegebenen vCenter Server-Namen aufzulösen, oder der angegebene Port ist eventuell falsch. Wenn der Port nicht angegeben ist, versucht Collector standardmäßig, eine Verbindung mit Port 443 herzustellen.
 
     1. Versuchen Sie, „*Servername*.com“ von der Appliance aus per Ping zu erreichen.
@@ -77,10 +77,10 @@ Wenn dieser Verbindungsfehler angezeigt wird, können Sie möglicherweise keine 
 
 - Der Fehler 60052 „Möglicherweise wurde die Appliance nicht erfolgreich beim Azure Migrate-Projekt registriert“ tritt auf, wenn das zum Registrieren der Appliance verwendete Azure-Konto nicht über ausreichende Berechtigungen verfügt.
     - Stellen Sie sicher, dass das für die Registrierung der Appliance verwendete Azure-Benutzerkonto mindestens über „Mitwirkender“-Berechtigungen für das Abonnement verfügt.
-    - Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware).
+    - Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](./migrate-appliance.md#appliance---vmware).
 - Der Fehler 60039 „Möglicherweise wurde die Appliance nicht erfolgreich beim Azure Migrate-Projekt registriert" kann auftreten, wenn die Registrierung fehlschlägt, da das zum Registrieren der Appliance verwendete Azure Migrate Projekt nicht gefunden werden kann.
     - Überprüfen Sie im Azure-Portal, ob das Projekt in der Ressourcengruppe vorhanden ist.
-    - Sollte das Projekt nicht vorhanden sein, erstellen Sie in Ihrer Ressourcengruppe ein neues Azure Migrate-Projekt, und registrieren Sie die Appliance erneut. Informationen zum Erstellen eines neuen Projekts finden Sie [hier](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool).
+    - Sollte das Projekt nicht vorhanden sein, erstellen Sie in Ihrer Ressourcengruppe ein neues Azure Migrate-Projekt, und registrieren Sie die Appliance erneut. Informationen zum Erstellen eines neuen Projekts finden Sie [hier](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool).
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>Fehler 60030/60031: Ein Key Vault-Verwaltungsvorgang war nicht erfolgreich
 
@@ -88,7 +88,7 @@ Wenn der Fehler 60030 oder 60031 „Ein Azure Key Vault-Verwaltungsvorgang war n
 - Stellen Sie sicher, dass das für die Registrierung der Appliance verwendete Azure-Benutzerkonto mindestens über „Mitwirkender“-Berechtigungen für das Abonnement verfügt.
 - Vergewissern Sie sich, dass das Konto Zugriff auf den in der Fehlermeldung angegebenen Key Vault hat, und wiederholen Sie dann den Vorgang.
 - Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.
-- Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware).
+- Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](./migrate-appliance.md#appliance---vmware).
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Fehler 60028: Die Ermittlung konnte nicht initiiert werden
 
@@ -103,7 +103,7 @@ Fehler 60025: „Fehler bei einem Azure AD-Vorgang. Der Fehler trat beim Erstell
 - Stellen Sie sicher, dass zum Initiieren der Ermittlung dasselbe Benutzerkonto verwendet wird wie zum Registrieren der Appliance.
 - Weisen Sie dem Benutzerkonto, bei dem der Ermittlungsvorgang fehlgeschlagen ist, Zugriffsberechtigungen für die Azure Active Directory-Anwendung zu.
 - Löschen Sie die Ressourcengruppe, die zuvor für das Azure Migrate-Projekt erstellt wurde. Erstellen Sie eine andere Ressourcengruppe, um neu zu beginnen.
-- Weitere Informationen zu den Azure Active Directory-Anwendungsberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware).
+- Weitere Informationen zu den Azure Active Directory-Anwendungsberechtigungen finden Sie [hier](./migrate-appliance.md#appliance---vmware).
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>Fehler 50004: Verbindung mit Host oder Cluster nicht möglich
@@ -144,6 +144,10 @@ Wenn ermittelte virtuelle Computer nicht im Portal angezeigt werden oder die VM-
 
 Wenn Sie virtuelle Computer löschen und sie weiterhin im Portal angezeigt werden, warten Sie 30 Minuten. Wenn sie weiterhin angezeigt werden, aktualisieren Sie sie wie oben beschrieben.
 
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Ich sehe keine Leistungsdaten für einige Netzwerkadapter auf meinen physischen Servern.
+
+Dies kann vorkommen, wenn die Hyper-V-Virtualisierung auf dem physischen Server aktiviert ist. Aufgrund einer Produktlücke wird der Netzwerkdurchsatz auf den erkannten virtuellen Netzwerkadaptern aufgezeichnet.
+
 ## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Error: Die hochgeladene Datei weist nicht das erwartete Format auf
 In einigen Tools sind regionale Einstellungen festgelegt, durch die die CSV-Datei mit Semikolon als Trennzeichen erstellt wird. Ändern Sie die Einstellungen so, dass das Trennzeichen ein Komma ist.
 
@@ -168,39 +172,54 @@ Azure Migrate unterstützt die Erkennung von Anwendungen, Rollen und Features mi
 Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst. 
 
 **Fehler** | **Ursache** | **Aktion**
---- | --- | --- | ---
-10000: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
-10001: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Interner Fehler – in der Appliance fehlen einige Dateien. | Wenden Sie sich an den Microsoft Support.
-10002: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-10003 „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-10004: „Installierte Anwendungen für <Windows-/Linux->Computer können nicht ermittelt werden.“ |  In der Appliance wurden keine Anmeldeinformationen für den Zugriff auf <Windows-/Linux->Computer angegeben.| Fügen Sie der Appliance entsprechende Anmeldeinformationen mit Zugriff auf die <Windows-/Linux->Computer hinzu.
-10005: „Der Zugriff auf den lokalen Server ist nicht möglich.“ | Die Anmeldeinformationen für den Zugriff könnten falsch sein. | Aktualisieren Sie die Anmeldeinformationen für die Appliance, um sicherzustellen, dass Sie mit ihnen auf den betreffenden Computer zugreifen können. 
-10006: „Der Zugriff auf den lokalen Server ist nicht möglich.“ | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist.|  Verwenden Sie nur die App-Ermittlung für Windows/Linux.
-10007: „Die abgerufenen Metadaten können nicht verarbeitet werden.“ | Dieser interne Fehler trat beim Deserialisieren von JSON auf. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
-9000/9001/9002: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt. | Installieren Sie die VMware-Tools auf dem betreffenden Computer, oder installieren Sie diese Tools erneut. Überprüfen Sie dann, ob sie funktionieren.
-9003: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
-9004: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Dies kann vorkommen, wenn die VM ausgeschaltet ist. | Stellen Sie für die Ermittlung sicher, dass die VM eingeschaltet ist.
-9005: „Die auf der VM installierten Anwendungen können nicht ermittelt werden“. | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
-9006/9007: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Der Discovery Agent auf der Appliance funktioniert möglicherweise nicht ordnungsgemäß. | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-9008: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Das könnte ein interner Fehler sein.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-9009: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden.“ | Dies kann auftreten, wenn die Einstellungen der Windows-Benutzerkontensteuerung (UAC) auf dem Server restriktiv sind und die Ermittlung installierter Anwendungen verhindern. | Suchen Sie auf dem Server nach den Einstellungen für die Benutzerkontensteuerung, und konfigurieren Sie die UAC-Einstellung auf dem Server so, dass eine der beiden niedrigeren Stufen eingestellt ist.
-9010: „Die VM ist ausgeschaltet.“ | Die VM wurde ausgeschaltet.  | Stellen Sie sicher, dass die VM eingeschaltet ist.
-9011: „Die vom Gast herunterzuladende Datei wurde auf der Gast-VM nicht gefunden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
-9012: „Die Ergebnisdatei umfasst keine Inhalte.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
-9013: „Für jede Anmeldung bei der VMware-VM wird ein neues temporäres Profil erstellt.“ | Für jede Anmeldung bei der VM wird ein neues temporäres Profil erstellt. | Stellen Sie sicher, dass der Benutzername in den Anmeldeinformationen für die Gast-VM das UPN-Format hat.
-9014: „Die Metadaten können nicht aus dem Gast-VM-Dateisystem abgerufen werden.“ | Beim Herstellen einer Verbindung mit dem ESXi-Host ist ein Problem aufgetreten. | Stellen Sie sicher, dass die Appliance eine Verbindung mit Port 443 auf dem ESXi-Host herstellen kann, auf dem die VM ausgeführt wird.
-9015: „Aufgrund unzureichender Berechtigungen für vCenter konnte keine Verbindung mit VMware-VMs hergestellt werden.“ | Die Rolle „Gastvorgänge“ ist für das vCenter-Benutzerkonto nicht aktiviert. | Stellen Sie sicher, dass die Rolle „Gastvorgänge“ für das vCenter-Benutzerkonto aktiviert ist.
-9016: „Es kann keine Verbindung mit VMware-VMs hergestellt werden, da der Gastvorgänge-Agent über keine Daten verfügt.“ | Die VMware-Tools sind nicht ordnungsgemäß installiert oder nicht auf dem neuesten Stand. | Stellen Sie sicher, dass die VMware-Tools ordnungsgemäß installiert und auf dem neuesten Stand sind.
-9017: „Die Datei mit den ermittelten Metadaten wurde auf der VM nicht gefunden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
-9018: „PowerShell ist auf den Gast-VMs nicht installiert.“ | PowerShell ist auf der Gast-VM nicht verfügbar. | Installieren Sie PowerShell auf der Gast-VM.
-9019: „Ermittlung aufgrund von Fehlern beim Gast-VM-Vorgang nicht möglich.“ | Es ist ein Fehler beim VMware-Gastvorgang auf der VM aufgetreten. | Stellen Sie sicher, dass die VM-Anmeldeinformationen gültig sind und der Benutzername in den Anmeldeinformationen für die Gast-VM das UPN-Format hat.
-9020: „Die Berechtigung zum Erstellen von Dateien wurde verweigert.“ | Durch die Rolle, die dem Benutzer zugeordnet ist, oder die Gruppenrichtlinie ist der Benutzer auf das Erstellen der Datei im Ordner beschränkt. | Überprüfen Sie, ob der bereitgestellte Gastbenutzer über die Berechtigung zum Erstellen für die Datei im Ordner verfügt. Den Namen des Ordners finden Sie unter **Benachrichtigungen** in der Serverbewertung.
-9021: „Die Berechtigung zum Erstellen von Dateien wurde im temporären Pfad des Ordnersystems verweigert.“ | Die Version des VMware-Tools auf der VM wird nicht unterstützt. | Führen Sie ein Upgrade des VMware-Tools auf eine höhere Version als 10.2.0 durch.
-9022: „Der Zugriff zum Abrufen des WMI-Objekts wird verweigert.“ | Durch die Rolle, die dem Benutzer zugeordnet ist, oder die Gruppenrichtlinie ist der Benutzer auf den Zugriff auf das WMI-Objekt beschränkt. | Kontaktieren Sie den Microsoft-Support.
-9023: „Der Wert der Umgebungsvariablen SystemRoot ist leer.“ | Unbekannt | Kontaktieren Sie den Microsoft-Support.
-9024: „Der Wert der Umgebungsvariablen TEMP ist leer.“ | Unbekannt | Kontaktieren Sie den Microsoft-Support.
-9025: „PowerShell ist auf den Gast-VMs beschädigt.“ | Unbekannt | Installieren Sie PowerShell auf der Gast-VM neu, und überprüfen Sie, ob PowerShell auf der Gast-VM ausgeführt werden kann.
-8084: „Anwendungen können aufgrund eines VMware-Fehlers nicht ermittelt werden:  <Exception from VMware>“ | Die Azure Migrate-Appliance verwendet VMware-APIs zum Ermitteln von Anwendungen. Das Problem kann aufgrund einer Ausnahme auftreten, die von vCenter Server beim Versuch der Ermittlung von Anwendungen ausgelöst wurde. Die Fehlermeldung von VMware wird in der Fehlermeldung im Portal angezeigt. | Suchen Sie nach der Nachricht in der [VMware-Dokumentation](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), und folgen Sie den Schritten zur Behebung. Wenn Sie das Problem nicht beheben können, wenden Sie sich an den Microsoft-Support.
+--- | --- | ---
+9000: Der Status der VMware-Tools kann nicht ermittelt werden.     |   Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt.    |   Stellen Sie sicher, dass die VMware-Tools auf der VM installiert sind und ausgeführt werden.
+9001: Die VMware-Tools sind nicht installiert.     |   Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt.    |   Stellen Sie sicher, dass die VMware-Tools auf der VM installiert sind und ausgeführt werden.
+9002: Die VMware-Tools werden nicht ausgeführt.   |   Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt.    |   Stellen Sie sicher, dass die VMware-Tools auf der VM installiert sind und ausgeführt werden.
+9003: Der Betriebssystemtyp wird für die Ermittlung von virtuellen Gastcomputern nicht unterstützt.    |   Das auf dem Server ausgeführte Betriebssystem ist weder Windows noch Linux.    |   Als Betriebssystemtypen werden nur Windows und Linux unterstützt. Wenn der Server tatsächlich Windows oder Linux verwendet, überprüfen Sie den in vCenter Server angegebenen Betriebssystemtyp.
+9004: Die VM wird nicht ausgeführt.     |   Die VM wurde ausgeschaltet.  |   Stellen Sie sicher, dass die VM eingeschaltet ist.
+9005: Der Betriebssystemtyp wird für die Ermittlung von virtuellen Gastcomputern nicht unterstützt.    |   Der Betriebssystemtyp wird für die Ermittlung von virtuellen Gastcomputern nicht unterstützt.     |   Als Betriebssystemtypen werden nur Windows und Linux unterstützt.
+9006: Die URL zum Herunterladen der Metadatendatei vom Gast ist leer.     |   Dies kann vorkommen, wenn der Ermittlungs-Agent nicht erwartungsgemäß funktioniert.    |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.
+9007: Der Prozess zur Ausführung der Ermittlungsaufgabe auf der Gast-VM wurde nicht gefunden.   |   Dies kann vorkommen, wenn der Ermittlungs-Agent nicht ordnungsgemäß funktioniert.   |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.
+9008: Der Prozessstatus der Gast-VM kann nicht abgerufen werden.   |   Das Problem kann aufgrund eines internen Fehlers auftreten.   |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.
+9009: Die Ausführung der Ermittlungsaufgabe auf dem Server wurde durch die Windows-Benutzerkontensteuerung (UAC) verhindert.  |   Die Einstellungen für die Windows-Benutzerkontensteuerung (UAC) auf dem Server sind sehr restriktiv und verhindern die Ermittlung installierter Anwendungen.  |   Konfigurieren Sie die Einstellungen für die Benutzerkontensteuerung auf dem Server mit einer der beiden niedrigeren Ebenen.
+9010: Die VM wurde ausgeschaltet.     |   Die VM wurde ausgeschaltet.  |   Stellen Sie sicher, dass die VM eingeschaltet ist.
+9011: Die Datei mit ermittelten Metadaten wurde im Gast-VM-Dateisystem nicht gefunden.    |   Das Problem kann aufgrund eines internen Fehlers auftreten.   |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.
+9012: Die ermittelte Metadatendatei ist leer.     |   Das Problem kann aufgrund eines internen Fehlers auftreten.   |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.
+9013: Für jede Anmeldung wird ein neues temporäres Profil erstellt.    |   Für jede Anmeldung bei der VMware-VM wird ein neues temporäres Profil erstellt.    |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+9014: Die Metadaten können nicht aus dem Gast-VM-Dateisystem abgerufen werden.     |   Keine Verbindung mit dem ESXi-Host.    |   Stellen Sie sicher, dass die Appliance eine Verbindung mit Port 443 auf dem ESXi-Host herstellen kann, auf dem die VM ausgeführt wird.
+9015: Die Rolle „Gastvorgänge“ ist für das vCenter-Benutzerkonto nicht aktiviert.   |   Die Rolle „Gastvorgänge“ ist für das vCenter-Benutzerkonto nicht aktiviert.   |   Stellen Sie sicher, dass die Rolle „Gastvorgänge“ für das vCenter-Benutzerkonto aktiviert ist.
+9016: Es kann keine Ermittlung durchgeführt werden, weil der Agent für Gastvorgänge veraltet ist.   |   Die VMware-Tools sind nicht ordnungsgemäß installiert oder nicht auf dem neuesten Stand.    |   Stellen Sie sicher, dass die VMware-Tools ordnungsgemäß installiert und auf dem neuesten Stand sind.
+9017: Die Datei mit den ermittelten Metadaten wurde auf der VM nicht gefunden.  |   Das Problem kann aufgrund eines internen Fehlers auftreten.   |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+9018: PowerShell ist auf den Gast-VMs nicht installiert.  |   PowerShell ist auf der Gast-VM nicht verfügbar.    |   Installieren Sie PowerShell auf der Gast-VM.
+9019: Ermittlung aufgrund von Fehlern beim Gast-VM-Vorgang nicht möglich.     |   Es ist ein Fehler beim VMware-Gastvorgang auf der VM aufgetreten.    |   Stellen Sie sicher, dass die VM-Anmeldeinformationen gültig sind und der Benutzername in den Anmeldeinformationen für die Gast-VM das UPN-Format hat.
+9020: Die Berechtigung zum Erstellen von Dateien wurde verweigert.    |   Die dem Benutzer oder der Gruppenrichtlinie zugeordnete Rolle hindert den Benutzer daran, die Datei im Ordner zu erstellen.    |   Überprüfen Sie, ob der angegebene Gastbenutzer über die Berechtigung „Erstellen“ für die Datei im Ordner verfügt. Den Namen des Ordners finden Sie unter **Benachrichtigungen** in der Serverbewertung.
+9021: Es kann keine Datei im temporären Systempfad erstellt werden.     |   Das VMware-Tool meldet den temporären Pfad des Systems anstelle des temporären Pfads des Benutzers.    |   Aktualisieren Sie Ihre VMware-Tools auf eine höhere Version als 10287 (NGC/VI-Clientformat).
+9022: Der Zugriff auf das WMI-Objekt wird verweigert.    |   Die dem Benutzer zugeordnete Rolle oder die Gruppenrichtlinie schränkt den Zugriff des Benutzers auf das WMI-Objekt ein.  |   Kontaktieren Sie den Microsoft-Support.
+9023: PowerShell kann nicht ausgeführt werden, weil der Wert der SystemRoot-Umgebungsvariablen leer ist.    |   Der Wert der SystemRoot-Umgebungsvariablen für die Gast-VM ist leer.     |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+9024: Es kann keine Ermittlung durchgeführt werden, weil der Wert der TEMP-Umgebungsvariablen leer ist.    |   Der Wert der TEMP-Umgebungsvariablen für die Gast-VM ist leer.   |   Kontaktieren Sie den Microsoft-Support.
+9025: PowerShell ist auf den Gast-VMs beschädigt.  |   PowerShell ist auf der Gast-VM beschädigt.    |   Installieren Sie PowerShell auf der Gast-VM neu, und überprüfen Sie, ob PowerShell auf der Gast-VM ausgeführt werden kann.
+9026: Auf der VM können keine Gastvorgänge ausgeführt werden.  |   Der VM-Zustand lässt nicht zu, dass Gastvorgänge auf der VM ausgeführt werden.   |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+9027: Der Agent für Gastvorgänge wird nicht in der VM ausgeführt.   |   Fehler beim Kontaktieren des Agents für Gastvorgänge, der in der VM ausgeführt wird.    |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+9028: Die Datei kann aufgrund von unzureichendem Speicherplatz in der VM nicht erstellt werden.     |   Nicht genügend Speicherplatz auf dem Datenträger.   |   Stellen Sie sicher, dass genügend Speicherplatz im Datenträgerspeicher der VM zur Verfügung steht.
+9029: Kein Zugriff auf PowerShell mit den angegebenen Anmeldeinformationen für die Gast-VM.   |   Der Benutzer kann nicht auf PowerShell zugreifen.     |   Stellen Sie sicher, dass der in der Appliance hinzugefügte Benutzer auf PowerShell in der Gast-VM zugreifen kann.
+9030: Die ermittelten Metadaten konnten nicht abgerufen werden, weil der ESXi-Host getrennt ist.     |   Der ESXi-Host befindet sich in einem nicht verbundenen Zustand.   |   Stellen Sie sicher, dass der ESXi-Host, der die VM ausführt, verbunden ist.
+9031: Die ermittelten Metadaten konnten nicht abgerufen werden, weil der ESXi-Host nicht antwortet.   |   Der Remotehost befindet sich in einem ungültigen Zustand.    |   Stellen Sie sicher, dass der ESXi-Host, der die VM ausführt, ausgeführt wird und verbunden ist.
+9032: Aufgrund eines internen Fehlers kann keine Ermittlung durchgeführt werden.   |   Das Problem kann aufgrund eines internen Fehlers auftreten.   |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+9033: Es kann keine Ermittlung durchgeführt werden, weil der VM-Benutzername ungültige Zeichen enthält.     |   Im Benutzernamen wurden ungültige Zeichen gefunden.   |   Geben Sie die VM-Anmeldeinformationen erneut an, und stellen Sie hierbei sicher, dass keine ungültigen Zeichen vorhanden sind.
+9034: Der angegebene Benutzername weist nicht das UPN-Format auf.    |   Der Benutzername weist nicht das UPN-Format auf.  |   Stellen Sie sicher, dass der Benutzername im UPN-Format (User Pincipal Name) vorliegt.
+9035: Es kann keine Ermittlung durchgeführt werden, weil der PowerShell-Sprachmodus nicht auf „FullLanguage“ festgelegt ist.  |   Der Sprachmodus für PowerShell in der Gast-VM ist nicht auf „FullLanguage“ festgelegt.   |   Stellen Sie sicher, dass der PowerShell-Sprachmodus auf „FullLanguage“ festgelegt ist.
+10000: Der Betriebssystemtyp wird nicht unterstützt.   |   Das auf dem Server ausgeführte Betriebssystem ist weder Windows noch Linux.    |   Als Betriebssystemtypen werden nur Windows und Linux unterstützt.
+10001: Das Skript für die Serverermittlung wurde nicht in der Appliance gefunden.    |   Die Ermittlung funktioniert nicht wie erwartet.   |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+10002: Die Ermittlungsaufgabe wurde nicht rechtzeitig abgeschlossen.     |   Der Ermittlungs-Agent funktioniert nicht wie erwartet.     |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.
+10003: Der Prozess zur Ausführung der Ermittlungsaufgabe wurde mit einem Fehler beendet.    |   Der Prozess zur Ausführung der Ermittlungsaufgabe wurde mit einem Fehler beendet.  |   Das Problem sollte sich innerhalb von 24 Stunden automatisch lösen. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+10004: Für den Gastbetriebssystemtyp wurden keine Anmeldeinformationen angegeben.  |   In der Azure Migrate-Appliance wurden keine Anmeldeinformationen für den Zugriff auf Computer mit diesem Betriebssystemtyp angegeben.    |   Fügen Sie in der Appliance Anmeldeinformationen für Computer hinzu.
+10005: Die angegebenen Anmeldeinformationen sind nicht zulässig.   |   Die in der Appliance für den Serverzugriff angegebenen Anmeldeinformationen sind falsch.  |   Aktualisieren Sie die in der Appliance angegebenen Anmeldeinformationen, und stellen Sie sicher, dass der Zugriff auf den Server mit den Anmeldeinformationen möglich ist.
+10006: Der Gastbetriebssystemtyp wird vom Anmeldeinformationsspeicher nicht unterstützt.  |   Das auf dem Server ausgeführte Betriebssystem ist weder Windows noch Linux.    |   Als Betriebssystemtypen werden nur Windows und Linux unterstützt.
+10007: Die ermittelten Metadaten können nicht verarbeitet werden.    |   Fehler beim Versuch, die JSON zu deserialisieren.    |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+10008: Es kann keine Datei auf dem Server erstellt werden.    |  Das Problem kann aufgrund eines internen Fehlers auftreten.    |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+10009: Die ermittelten Metadaten können nicht in eine Datei auf dem Server geschrieben werden.  |   Das Problem kann aufgrund eines internen Fehlers auftreten.   |   Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+
 
 
 

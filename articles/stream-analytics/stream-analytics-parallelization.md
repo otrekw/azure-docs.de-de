@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f8a6e0b9f5cc63f79dcd57765f30c527382d51ca
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193354"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85296320"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -290,7 +290,7 @@ Die [Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/
 
 Die [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)-Ausgabe von Stream Analytics wurde so aktualisiert, dass unterhalb des [Kompatibilitätsgrad 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) native Integration verwendet wird. Kompatibilitätsgrad 1.2 ermöglicht einen wesentlich höheren Durchsatz und verringert den RU-Verbrauch im Vergleich zu 1.1, bei dem es sich um den Standardkompatibilitätsgrad für neue Aufträge handelt. Die Lösung verwendet unter „/deviceId“ partitionierte CosmosDB-Container, und der Rest der Lösung ist identisch konfiguriert.
 
-Alle [Azure-Beispiele zum bedarfsorientierten Streaming](https://github.com/Azure-Samples/streaming-at-scale) verwenden einen Event Hub, der von Last simulierenden Testclients Eingaben erhält. Jedes Eingabeereignis ist ein 1-KB-JSON-Dokument, das problemlos konfigurierte Datenerfassungsraten in Durchsatzraten (1 MB/s, 5 MB/s und 10 MB/s) umsetzt. Ereignisse simulieren ein IoT-Gerät, das die folgenden JSON-Daten (in einer Kurzform) sendet für bis zu 1-K-Geräte:
+Alle [Azure-Beispiele zum bedarfsorientierten Streaming](https://github.com/Azure-Samples/streaming-at-scale) verwenden einen Event Hub als Eingabe, der von Last simulierenden Testclients Eingaben erhält. Jedes Eingabeereignis ist ein 1-KB-JSON-Dokument, das problemlos konfigurierte Datenerfassungsraten in Durchsatzraten (1 MB/s, 5 MB/s und 10 MB/s) umsetzt. Ereignisse simulieren ein IoT-Gerät, das die folgenden JSON-Daten (in einer Kurzform) sendet für bis zu 1-K-Geräte:
 
 ```
 {

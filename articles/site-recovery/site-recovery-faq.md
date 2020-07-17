@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193558"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133673"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -22,11 +22,16 @@ Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen. 
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-does-site-recovery-do"></a>Welche Funktion hat Site Recovery?
+
 Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem die Replikation von virtuellen Azure-Computern zwischen Regionen, von lokalen virtuellen Computern und physischen Servern in Azure und von lokalen Computer in ein sekundäres Rechenzentrum orchestriert und automatisiert werden. [Weitere Informationen](site-recovery-overview.md)
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Kann ich einen virtuellen Computer mit Docker-Datenträger schützen?
 
 Nein, dieses Szenario wird nicht unterstützt.
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Wie stellt Site Recovery die Datenintegrität sicher?
+
+Mit verschiedenen Maßnahmen stellt Site Recovery die Datenintegrität sicher. Zwischen allen Diensten wird mithilfe des HTTPS-Protokolls eine sichere Verbindung hergestellt. Dadurch wird sichergestellt, dass Malware oder externe Entitäten die Daten nicht manipulieren können. Eine weitere Maßnahme ist die Verwendung von Prüfsummen. Bei der Datenübertragung zwischen Quelle und Ziel werden Prüfsummen zwischen den Daten berechnet. So wird eine konsistente Datenübertragung sichergestellt.
 
 ## <a name="service-providers"></a>Dienstanbieter
 
@@ -51,7 +56,7 @@ Nein. Die Daten werden in einem Azure-Speicherkonto Ihres Abonnements repliziert
 Ja.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Welche Plattformen werden derzeit unterstützt?
-Wir unterstützen Bereitstellungen auf der Grundlage von Azure Pack, Cloud Platform System und System Center (2012 und höher). [Erfahren Sie mehr](https://technet.microsoft.com/library/dn850370.aspx) zur Integration von Azure Pack und Site Recovery.
+Wir unterstützen Bereitstellungen auf der Grundlage von Azure Pack, Cloud Platform System und System Center (2012 und höher). [Erfahren Sie mehr](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) zur Integration von Azure Pack und Site Recovery.
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Werden einzelne Bereitstellungen von Azure Pack und VMM-Servern unterstützt?
 Ja, Sie können virtuelle Hyper-V-Computer in Azure oder zwischen Dienstanbieterstandorten replizieren.  Beachten Sie, dass für die Replikation zwischen Dienstanbieterstandorten die Azure-Runbookintegration nicht verfügbar ist.
@@ -100,7 +105,7 @@ Site Recovery ist nach ISO 27001:2013, 27018, HIPAA und DPA zertifiziert und dur
 Ja. Durch die Erstellung eines Site Recovery-Tresors in einer Region wird sichergestellt, dass alle Metadaten, die wir zum Ermöglichen und Orchestrieren von Replikation und Failover benötigen, innerhalb der geografischen Grenzen dieser Region bleiben.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
-Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) unterstützt.
+Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](../storage/common/storage-service-encryption.md) unterstützt.
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Verwendet Azure-zu-Azure-Site Recovery für die gesamte Kommunikation zwischen den verschiedenen Microservices von Azure TLS 1.2?
 Ja, das TLS 1.2-Protokoll wird standardmäßig für das Azure-zu-Azure-Site Recovery-Szenario erzwungen. 
@@ -128,7 +133,7 @@ Ja. Wenn Sie Site Recovery zum Orchestrieren von Replikation und Failover in Zwe
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Wird die Notfallwiederherstellung für virtuelle Azure-Computer unterstützt?
 
-Ja, Site Recovery unterstützt die Notfallwiederherstellung für virtuelle Azure-Computer zwischen Azure-Regionen. [Lesen Sie häufig gestellte Fragen](azure-to-azure-common-questions.md) zur Notfallwiederherstellung von virtuellen Azure-Computern.
+Ja, Site Recovery unterstützt die Notfallwiederherstellung für virtuelle Azure-Computer zwischen Azure-Regionen. [Lesen Sie häufig gestellte Fragen](azure-to-azure-common-questions.md) zur Notfallwiederherstellung von virtuellen Azure-Computern. Wenn Sie zwischen zwei Azure-Regionen auf demselben Kontinent replizieren möchten, verwenden Sie das Angebot für die Notfallwiederherstellung von Azure zu Azure. Sie müssen weder einen Konfigurationsserver/Prozessserver noch ExpressRoute-Verbindungen einrichten.
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>Wird die Notfallwiederherstellung für virtuelle VMware-Computer unterstützt?
 
@@ -193,7 +198,7 @@ Dynamische Datenträger werden beim Replizieren virtueller Hyper-V-Computer und 
 Ja. In folgenden Artikeln erfahren Sie mehr über die Drosselung der Bandbreite:
 
 * [Kapazitätsplanung für die Replikation von VMware-VMs und physischen Servern](site-recovery-plan-capacity-vmware.md)
-* [Kapazitätsplanung für die Replikation von Hyper-V-VMs in Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [Kapazitätsplanung für die Replikation von Hyper-V-VMs in Azure](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kann ich die Replikation mit App-Konsistenz auf Linux-Servern aktivieren? 
 Ja. Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinierte Anwendungsskripts für App-Konsistenz. Das benutzerdefinierte Skript mit den „Pre“- und „Post“-Optionen wird vom Mobilitäts-Agent von Azure Site Recovery während des Vorgangs für die App-Konsistenz verwendet. Dies kann mithilfe folgender Schritte ermöglicht werden.
@@ -227,6 +232,9 @@ Ja. Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinier
 
 5. Fügen Sie die Eingabe-/Ausgabebefehle zum Einfrieren und Reaktivieren in „--pre“- und „--post“-Schritten für Anwendungen hinzu, die App-Konsistenz erfordern. Sie können wahlweise ein weiteres Skript hinzufügen, das diese Befehle angibt, und von „customscript.sh“ aus mit „--pre“- und „--post“-Option aufrufen.
 
+>[!Note]
+>Zur Unterstützung von benutzerdefinierten Skripts sollte die Version des Site Recovery-Agents 9.24 oder höher sein.
+
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Wie greife ich nach einem Failover in Azure auf die virtuellen Azure-Computer zu?
 
@@ -246,7 +254,7 @@ Zum Automatisieren können Sie den lokalen Orchestrator oder Operations Manager 
 
 * [Weitere Informationen](site-recovery-create-recovery-plans.md) .
 * [Weitere Informationen](site-recovery-failover.md) .
-* [Weitere Informationen](site-recovery-failback-azure-to-vmware.md) .
+* [Weitere Informationen](./vmware-azure-failback.md) .
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Angenommen, mein lokaler Host reagiert nicht mehr oder ist abgestürzt. Kann ein Failback auf einen anderen Host ausgeführt werden?
 Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ein Failback auf einen anderen Host als Azure ausführen.
@@ -271,4 +279,3 @@ Ja. Sie können Site Recovery-Workflows mithilfe der REST-API, PowerShell oder A
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die [Site Recovery-Übersicht](site-recovery-overview.md)
-

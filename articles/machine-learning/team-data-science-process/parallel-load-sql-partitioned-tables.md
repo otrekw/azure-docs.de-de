@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c4838dd5a6f4e8b08d3619588ee3ae746349ef
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891683"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042134"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Erstellen und Optimieren von Tabellen für den schnellen parallelen Import von Daten in eine SQL Server-Instanz auf einer Azure-VM
 
-In diesem Artikel wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben. Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-Datenbank und bei den nachfolgenden Abfragen kann mithilfe von *partitionierten Tabellen und Sichten* verbessert werden. 
+In diesem Artikel wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben. Für das Laden/Übertragen von Big Data in eine SQL-Datenbank können das Importieren von Daten in die SQL-Datenbank sowie die nachfolgenden Abfragen mithilfe von *partitionierten Tabellen und Sichten* verbessert werden. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Erstellen einer neuen Datenbank und eines Satzes von Dateigruppen
 * [Erstellen einer neuen Datenbank](https://technet.microsoft.com/library/ms176061.aspx), falls noch nicht vorhanden.
@@ -35,13 +35,14 @@ In diesem Artikel wird das Erstellen partitionierter Tabellen für das schnelle 
 
 Mit dem folgenden Beispiel wird eine neue Datenbank mit drei Dateigruppen erstellt, die sich von den primären und Protokollgruppen unterscheiden und jeweils eine physische Datei enthalten. Die Datenbankdateien werden im Standarddatenordner von SQL Server erstellt, der in der SQL Server-Instanz konfiguriert wurde. Weitere Informationen zu den Standarddateispeicherorten finden Sie unter [Dateispeicherorte für Standard- und benannte Instanzen von SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
 
-    DECLARE @data_path nvarchar(256);
-    SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
+```sql
+   DECLARE @data_path nvarchar(256);
+   SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
       FROM master.sys.master_files
       WHERE database_id = 1 AND file_id = 1);
 
-    EXECUTE ('
-        CREATE DATABASE <database_name>
+   EXECUTE ('
+      CREATE DATABASE <database_name>
          ON  PRIMARY 
         ( NAME = ''Primary'', FILENAME = ''' + @data_path + '<primary_file_name>.mdf'', SIZE = 4096KB , FILEGROWTH = 1024KB ), 
          FILEGROUP [filegroup_1] 
@@ -53,6 +54,7 @@ Mit dem folgenden Beispiel wird eine neue Datenbank mit drei Dateigruppen erstel
          LOG ON 
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
+```
 
 ## <a name="create-a-partitioned-table"></a>Erstellen einer partitionierten Tabelle
 Um die partitionierten Tabellen gemäß dem Datenschema zu erstellen, das den im vorherigen Schritt erstellten Datenbankdateigruppen zugeordnet ist, müssen Sie zunächst eine Partitionsfunktion und ein Partitionsschema erstellen. Wenn die Daten per Massenimport in die partitionierten Tabellen importiert werden, werden die Datensätze gemäß einem Partitionsschema wie unten beschrieben auf Dateigruppen verteilt.
@@ -60,36 +62,44 @@ Um die partitionierten Tabellen gemäß dem Datenschema zu erstellen, das den im
 ### <a name="1-create-a-partition-function"></a>1. Erstellen einer Partitionsfunktion
 [Erstellen Sie eine Partitionsfunktion](https://msdn.microsoft.com/library/ms187802.aspx), die den Datenbereich/die Grenzen für die einzelnen Partitionstabellen definiert. Im folgenden Beispiel werden die Partitionen nach „month(some\_datetime\_field)“ im Jahr 2013 begrenzt:
   
-        CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
-        AS RANGE RIGHT FOR VALUES (
-            '20130201', '20130301', '20130401',
-            '20130501', '20130601', '20130701', '20130801',
-            '20130901', '20131001', '20131101', '20131201' )
+```sql
+   CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
+      AS RANGE RIGHT FOR VALUES (
+         '20130201', '20130301', '20130401',
+         '20130501', '20130601', '20130701', '20130801',
+         '20130901', '20131001', '20131101', '20131201' )
+```
 
 ### <a name="2-create-a-partition-scheme"></a>2. Erstellen eines Partitionsschemas
 [Erstellen Sie ein Partitionschema](https://msdn.microsoft.com/library/ms179854.aspx). Dieses Schema ordnet jeden Partitionsbereich in der Partitionsfunktion einer physischen Dateigruppe zu. Beispiel:
   
-        CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
+```sql
+      CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
         <filegroup_1>, <filegroup_2>, <filegroup_3>, <filegroup_4>,
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
+```
+ 
+Um die gültigen Bereiche in den einzelnen Partitionen nach Funktion/Schema zu überprüfen, führen Sie die folgende Abfrage durch:
   
-  Um die gültigen Bereiche in den einzelnen Partitionen nach Funktion/Schema zu überprüfen, führen Sie die folgende Abfrage durch:
-  
-        SELECT psch.name as PartitionScheme,
+```sql
+   SELECT psch.name as PartitionScheme,
             prng.value AS PartitionValue,
             prng.boundary_id AS BoundaryID
-        FROM sys.partition_functions AS pfun
-        INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
-        INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
-        WHERE pfun.name = <DatetimeFieldPFN>
+   FROM sys.partition_functions AS pfun
+   INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
+   INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
+   WHERE pfun.name = <DatetimeFieldPFN>
+```
 
 ### <a name="3-create-a-partition-table"></a>3. Erstellen einer Partitionstabelle
 [Erstellen Sie die partitionierten Tabellen](https://msdn.microsoft.com/library/ms174979.aspx) gemäß dem Datenschema, und geben Sie das Partitionsschema und das Einschränkungsfeld zur Partitionierung der Tabelle an. Beispiel:
   
-        CREATE TABLE <table_name> ( [include schema definition here] )
+```sql
+   CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
+```
 
 Weitere Informationen finden Sie unter [Erstellen partitionierter Tabellen und Indizes](https://msdn.microsoft.com/library/ms188730.aspx).
 
@@ -98,11 +108,14 @@ Weitere Informationen finden Sie unter [Erstellen partitionierter Tabellen und I
 * Sie können BCP, BULK INSERT oder andere Methoden wie den [SQL-Datenbankmigrations-Assistenten](https://sqlazuremw.codeplex.com/)verwenden. Im Beispiel wird BPC verwendet.
 * [Ändern Sie für die Datenbank](https://msdn.microsoft.com/library/bb522682.aspx) das Transaktionsprotokollierungsschema in BULK_LOGGED, um den Aufwand für die Protokollierung zu minimieren. Beispiel:
   
-        ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
+   ```sql
+      ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
+   ```
 * Starten Sie zum Beschleunigen des Ladevorgangs der Daten die Massenimportvorgänge parallel. Tipps zur schnelleren Verarbeitung von Massenimporten großer Datenmengen in SQL Server-Datenbanken finden Sie unter [Laden von 1 TB in weniger als 1 Stunde](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour).
 
 Das folgende PowerShell-Skript ist ein Beispiel für das parallele Laden von Daten mit BPC.
 
+```powershell
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
     # The example assumes the partitioned data files are named as <base_file_name>_<partition_number>.csv
@@ -163,19 +176,21 @@ Das folgende PowerShell-Skript ist ein Beispiel für das parallele Laden von Dat
     date
     While (Get-Job -State "Running") { Start-Sleep 10 }
     date
-
+```
 
 ## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Erstellen von Indizes zum Optimieren der Leistung beim Zusammenführen und Abfragen
 * Wenn Sie Daten für die Modellierung aus mehreren Tabellen extrahieren, erstellen Sie die Indizes für die Verknüpfungsschlüssel zur Verbesserung der Leistung beim Zusammenführen.
 * [Erstellen Sie Indizes](https://technet.microsoft.com/library/ms188783.aspx) (gruppiert oder nicht gruppiert), deren Ziel dieselbe Dateigruppe für jede Partition ist. Beispiel:
   
-        CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
+```sql
+   CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  oder
+--  or,
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  
+ ```
+ 
   > [!NOTE]
   > Sie können auch die Indizes vor dem Massenimport von Daten erstellen. Die Indexerstellung vor dem Massenimport verlangsamt das Laden der Daten.
   > 

@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389773"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -168,9 +168,9 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
 - **Plattformeinstellungen**: Ermöglicht das Konfigurieren von Einstellungen für die Hostingplattform, einschließlich:
     - **Bitanzahl**: 32-Bit oder 64-Bit.
     - **WebSocket-Protokoll**: Z.B. für [ASP.NET SignalR] oder [socket.io](https://socket.io/).
-    - **Always On**: Lassen Sie die App auch dann geladen, wenn kein Datenverkehr stattfindet. Dies ist für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, erforderlich.
+    - **Always On**: Hält die App auch dann geladen, wenn kein Datenverkehr stattfindet. Dies ist für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, erforderlich.
       > [!NOTE]
-      > Mit der Always On-Funktion können Sie den Endpunkt nicht steuern. Er sendet immer eine Anforderung an den Anwendungsstamm.
+      > Mit der Always On-Funktion sendet der Front-End-Lastenausgleich eine Anforderung an den Anwendungsstamm. Dieser Anwendungsendpunkt des App Service kann nicht konfiguriert werden.
     - **Verwalteter Pipelinemodus**: Der IIS-[Pipelinemodus]. Legen Sie ihn auf **Klassisch** fest, wenn Sie eine ältere App haben, die eine ältere Version von IIS erfordert.
     - **HTTP-Version**: Legen Sie die Einstellung auf **2.0** fest, um die Unterstützung für das [HTTPS/2](https://wikipedia.org/wiki/HTTP/2)-Protokoll zu aktivieren.
     > [!NOTE]

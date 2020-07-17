@@ -2,25 +2,31 @@
 title: Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung
 description: In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 6/09/2020
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109993"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
-In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
+In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-- [Erfahren Sie mehr über](concepts-dependency-visualization.md#agent-based-analysis) die agentbasierte Abhängigkeitsanalyse.
-- Überprüfen Sie die Voraussetzungen und Supportanforderungen zum Einrichten der agentbasierten Abhängigkeitsvisualisierung für [VMware-VMS](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [physische Server](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements) und [Hyper-V-VMS](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
-- Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Serverbewertungstool von Azure Migrate [hinzugefügt](how-to-assess.md) haben.
-- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md) oder [physische Server](how-to-set-up-appliance-physical.md) einrichten können. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung.
+- Überprüfen Sie die Unterstützungs- und Bereitstellungsanforderungen für die Agent-basierte Abhängigkeitsanalyse für:
+    - [Virtuelle VMware-Computer](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [Physische Server](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
+    - [Virtuelle Hyper-V-Computer](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
+- Stellen Sie sicher, dass Sie:
+    - Sie verfügen über ein Azure Migrate-Projekt. Wenn dies nicht der Fall ist, [erstellen](how-to-add-tool-first-time.md) Sie jetzt ein entsprechendes Projekt.
+    - Sie haben überprüft, ob Sie das Azure Migrate-Serverbewertungstool zum Projekt [hinzugefügt](how-to-assess.md) haben.
+    - Sie haben eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet, um lokale Computer zu ermitteln. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung. Richten Sie eine Appliance für Folgendes ein:
+        - Virtuelle [VMware](how-to-set-up-appliance-vmware.md)-Computer
+        - Virtuelle [Hyper-V](how-to-set-up-appliance-hyper-v.md)-Computer
+        - [Physische Server](how-to-set-up-appliance-physical.md)
 - Sie müssen einem Azure Migrate-Projekt einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/manage-access.md) zuordnen, um die Abhängigkeitsvisualisierung nutzen zu können:
     - Sie können einen Arbeitsbereich erst nach Einrichten der Azure Migrate-Appliance anhängen, und wenn Sie Computer im Projekt Azure Migrate ermittelt haben.
     - Stellen Sie sicher, dass Sie über einen Arbeitsbereich in dem Abonnement mit dem Azure Migrate-Projekt verfügen.
@@ -51,7 +57,7 @@ In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse i
 Installieren Sie die Agents auf jedem Computer, den Sie analysieren möchten.
 
 > [!NOTE]
-> Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, müssen Sie den MMA-Agent nicht installieren. Die Dienstzuordnung ist in den Operations Manager integriert. [Befolgen Sie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) die Anleitung zur Integration.
+> Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, müssen Sie den MMA-Agent nicht installieren. Die Dienstzuordnung ist in den Operations Manager integriert. [Befolgen Sie](../azure-monitor/insights/service-map-scom.md#prerequisites) die Anleitung zur Integration.
 
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
 2. Klicken Sie für jeden Computer, den Sie mit der Abhängigkeitsvisualisierung analysieren möchten, in der Spalte **Abhängigkeiten** auf **Agent-Installation erforderlich**.
@@ -78,7 +84,7 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie Configuration Manager oder [Intigua](https://www.intigua.com/intigua-for-azure-migration) installieren.
 - [Weitere Informationen](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
 - Der MMA-Agent kann auch mit diesem [Skript](https://go.microsoft.com/fwlink/?linkid=2104394) installiert werden.
-- [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) über die durch den MMA unterstützten Windows-Betriebssysteme.
+- [Erfahren Sie mehr](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) über die durch den MMA unterstützten Windows-Betriebssysteme.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Installieren von MMA auf einem Linux-Computer
 
@@ -89,7 +95,7 @@ So installieren Sie MMA auf einem Linux-Computer
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme. 
+[Erfahren Sie mehr](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme. 
 
 ## <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 
@@ -98,8 +104,8 @@ So installieren Sie MMA auf einem Linux-Computer
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
-- [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems) über die vom Abhängigkeits-Agent unterstützten Betriebssysteme.
+- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
+- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) über die vom Abhängigkeits-Agent unterstützten Betriebssysteme.
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>Erstellen von Gruppen mit Abhängigkeitsvisualisierung
@@ -156,8 +162,8 @@ Führen Sie eine Abfrage nach Abhängigkeitsdaten wie folgt durch:
 Hier finden Sie einige Beispielabfragen, mit denen Sie Abhängigkeitsdaten extrahieren können.
 
 - Sie können die Abfragen ändern, um Ihre bevorzugten Datenpunkte zu extrahieren.
-- [Überprüfen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) Sie eine vollständige Liste der Datensätze der Abhängigkeiten.
-- [Überprüfen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches) Sie zusätzliche Beispielabfragen.
+- [Überprüfen](../azure-monitor/insights/service-map.md#log-analytics-records) Sie eine vollständige Liste der Datensätze der Abhängigkeiten.
+- [Überprüfen](../azure-monitor/insights/service-map.md#sample-log-searches) Sie zusätzliche Beispielabfragen.
 
 #### <a name="sample-review-inbound-connections"></a>Beispiel: Überprüfen eingehender Verbindungen
 
@@ -165,7 +171,7 @@ Hier finden Sie einige Beispielabfragen, mit denen Sie Abhängigkeitsdaten extra
 
 - Die Datensätze in der Tabelle für Verbindungsmetriken (VMConnection) stellen keine einzelnen physischen Netzwerkverbindungen dar.
 - Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert.
-- [Erfahren Sie mehr darüber](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections), wie Daten von physischen Netzwerkverbindungen in VMConnection aggregiert werden.
+- [Erfahren Sie mehr darüber](../azure-monitor/insights/service-map.md#connections), wie Daten von physischen Netzwerkverbindungen in VMConnection aggregiert werden.
 
 ```
 // the machines of interest

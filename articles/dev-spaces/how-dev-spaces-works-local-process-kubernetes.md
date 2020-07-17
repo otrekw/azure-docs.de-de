@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse zum Verwenden des lokalen Prozesses mit Kubernetes zum Herstellen einer Verbindung zwischen Ihrem Entwicklungscomputer und Ihrem Kubernetes-Cluster
 keywords: Lokaler Prozess mit Kubernetes, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 443783eb7f5359318cf8efbec8b6466a80fa1e85
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974397"
 ---
 # <a name="how-local-process-with-kubernetes-works"></a>Funktionsweise des lokalen Prozesses mit Kubernetes
 
@@ -42,6 +42,15 @@ Nachdem Sie eine Verbindung mit Ihrem Cluster hergestellt haben, können Sie Cod
 ## <a name="diagnostics-and-logging"></a>Diagnose und Protokollierung
 
 Wenn Sie den lokalen Prozess mit Kubernetes zum Herstellen einer Verbindung mit Ihrem Cluster verwenden, werden Diagnoseprotokolle von Ihrem Cluster im [temporären Verzeichnis][azds-tmp-dir] Ihres Entwicklungscomputers protokolliert. Mit Visual Studio Code können Sie auch den Befehl *Diagnoseinformationen anzeigen* verwenden, um die aktuellen Umgebungsvariablen und DNS-Einträge von Ihrem Cluster auszugeben.
+
+## <a name="limitations"></a>Einschränkungen
+
+„Lokaler Prozess mit Kubernetes“ unterliegt folgenden Einschränkungen:
+
+* „Lokaler Prozess mit Kubernetes“ leitet Datenverkehr für einen einzelnen Dienst an Ihren Entwicklungscomputer um. Sie können „Lokaler Prozess mit Kubernetes“ nicht verwenden, um mehrere Dienste gleichzeitig umzuleiten.
+* Ein Dienst muss von einem einzelnen Pod unterstützt werden, um eine Verbindung mit diesem Dienst herzustellen. Sie können keine Verbindung mit einem Dienst mit mehreren Pods herstellen, z. B. einem Dienst mit Replikaten.
+* In einem Pod darf nur ein einzelner Container ausgeführt werden, damit „Lokaler Prozess mit Kubernetes“ erfolgreich eine Verbindung herstellen kann. „Lokaler Prozess mit Kubernetes“ kann keine Verbindung mit Diensten mit Pods herstellen, die über zusätzliche Container verfügen, wie z. B. Sidecar-Container, die von Dienstgittermodellen eingefügt werden.
+* „Lokaler Prozess mit Kubernetes“ benötigt erhöhte Rechte, damit er auf Ihrem Entwicklungscomputer ausgeführt werden kann, um Ihre Hostdatei zu bearbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

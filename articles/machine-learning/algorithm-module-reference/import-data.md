@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611814"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
@@ -43,6 +43,10 @@ Bevor Sie Cloudspeicher verwenden können, müssen Sie zunächst einen Datenspei
 Nachdem Sie die gewünschten Daten definiert und eine Verbindung mit der Quelle hergestellt haben, leitet **[Import Data](./import-data.md)** den Datentyp jeder Spalte basierend auf den darin enthaltenen Werten ab und lädt die Daten in Ihre Designer-Pipeline. **Import Data** gibt ein Dataset aus, das mit beliebigen Designer-Pipelines verwendet werden kann.
 
 Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neue Daten hinzufügen, indem Sie [Import Data](./import-data.md) erneut ausführen.
+
+> [!WARNING]
+> Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie Ihre Datenspeicher so konfigurieren, dass sie die Features des Designers zur Datenvisualisierung verwenden. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in virtuellen Netzwerken finden Sie unter [Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken](../how-to-enable-virtual-network.md#machine-learning-studio).
+
 
 ## <a name="how-to-configure-import-data"></a>Konfigurieren von „Import Data“ (Daten importieren)
 

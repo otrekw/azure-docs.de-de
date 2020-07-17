@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Azure ATP-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure ATP-Daten mit Azure Sentinel verknüpfen.
+description: Erfahren Sie, wie Sie Protokolle von Azure Advanced Threat Protection (ATP) mit einem einzigen Klick nach Azure Sentinel streamen können.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f58c38ccfa234752a80c05c300d245c6c9e97cf0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559172"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verknüpfen von Daten aus Azure Advanced Threat Protection (ATP)
 

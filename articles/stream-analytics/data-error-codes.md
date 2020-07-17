@@ -3,17 +3,17 @@ title: Datenfehlercodes – Azure Stream Analytics
 description: Beheben Sie Probleme in Azure Stream Analytics mit Datenfehlercodes.
 ms.author: mamccrea
 author: mamccrea
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: f7383a56a11ac9b567c80e73cc84944174c30ac8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 56d7527eebb91bd09895f6cd0238721574df1015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594089"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037323"
 ---
-# <a name="azure-stream-analytics-configuration-error-codes"></a>Konfigurationsfehlercodes in Azure Stream Analytics
+# <a name="azure-stream-analytics-data-error-codes"></a>Datenfehlercodes von Azure Stream Analytics
 
 Unerwartetes Verhalten Ihres Azure Stream Analytics-Auftrags können Sie mithilfe von Aktivitätsprotokollen und Ressourcenprotokollen debuggen. In diesem Artikel ist die Beschreibung für jeden Datenfehlercode aufgeführt. Datenfehler treten auf, wenn ungültige Daten im Stream vorhanden sind, z. B. ein unerwartetes Datensatzschema.
 

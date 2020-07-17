@@ -3,17 +3,17 @@ title: Anforderungen für Zeichnungspakete in Azure Maps Creator
 description: Hier erfahren Sie, welche Anforderungen für Zeichnungspakete erfüllt sein müssen, um Ihre Plandateien für Einrichtungen mithilfe des Azure Maps-Konvertierungsdiensts in Kartendaten konvertieren zu können.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 5/18/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791570"
 ---
 # <a name="drawing-package-requirements"></a>Anforderungen für Zeichnungspakete
 
@@ -31,10 +31,10 @@ Im Anschluss finden Sie ein Glossar mit den in diesem Dokument verwendeten Begri
 
 | Begriff  | Definition |
 |:-------|:------------|
-| Schicht | Eine AutoCAD-DWG-Schicht.|
+| Ebene | Eine AutoCAD-DWG-Schicht.|
 | Ebene | Ein Gebäudebereich in einer bestimmten Höhe. Hierbei kann es sich beispielsweise um ein Stockwerk handeln. |
 | Querverweis  |Eine Datei im DWG-Dateiformat (*.dwg) von AutoCAD, die als externe Referenz an die Hauptzeichnung angefügt wurde.  |
-| Feature | Ein Objekt, das eine Geometrie mit zusätzlichen Metadateninformationen kombiniert. |
+| Funktion | Ein Objekt, das eine Geometrie mit zusätzlichen Metadateninformationen kombiniert. |
 | Featureklassen | Eine allgemeine Blaupause für Features. So ist beispielsweise eine Einheit eine Featureklasse, während es sich bei einem Büro um ein Feature handelt. |
 
 ## <a name="drawing-package-structure"></a>Struktur eines Zeichnungspakets
@@ -56,9 +56,9 @@ Für jede Ebene der Einrichtung ist jeweils eine einzelne DWG-Datei erforderlich
 
 Vom [Azure Maps-Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/conversion) können folgende Featureklassen aus einer DWG-Datei extrahiert werden:
 
-* „Levels“ (Ebenen)
-* „Units“ (Einheiten)
-* „Zones“ (Zonen)
+* Levels
+* Units
+* Zones
 * „Openings“ (Öffnungen)
 * „Walls“ (Wände)
 * „Vertical Penetrations“ (Vertikale Durchdringungen)
@@ -77,15 +77,15 @@ Bei allen Schichtentitäten muss es sich um einen der folgenden Typen handeln: L
 
 In der folgenden Tabelle werden die unterstützten Entitätstypen und die unterstützten Features für die einzelnen Schichten beschrieben. Sollte eine Schicht nicht unterstützte Entitätstypen enthalten, werden diese Entitäten vom [Azure Maps-Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/conversion) ignoriert.  
 
-| Schicht | Entitätstypen | Features |
+| Ebene | Entitätstypen | Features |
 | :----- | :-------------------| :-------
 | [Exterior](#exterior-layer) | Polygon, Polylinie (geschlossen), Kreis | Levels
-| [Unit](#unit-layer) |  Polygon, Polylinie (geschlossen), Kreis | Vertical Penetrations, Units
-| [Wall](#wall-layer)  | Polygon, Polylinie (geschlossen), Kreis | Nicht zutreffend. Weitere Informationen finden Sie unter [Wall-Schicht](#wall-layer).
+| [Einheit](#unit-layer) |  Polygon, Polylinie (geschlossen), Kreis | Vertical Penetrations, Units
+| [Wall](#wall-layer)  | Polygon, Polylinie (geschlossen), Kreis | Nicht zutreffend Weitere Informationen finden Sie unter [Wall-Schicht](#wall-layer).
 | [Door](#door-layer) | Polygon, Polylinie, Linie, Kreisbogen, Kreis | Openings
 | [Zone](#zone-layer) | Polygon, Polylinie (geschlossen), Kreis | Zone
-| [UnitLabel](#unitlabel-layer) | Text (einzeilig) | Nicht zutreffend. Von dieser Schicht können nur Eigenschaften zu den Einheitenfeatures der Unit-Schicht hinzugefügt werden. Weitere Informationen finden Sie unter [UnitLabel-Schicht](#unitlabel-layer).
-| [ZoneLabel](#zonelabel-layer) | Text (einzeilig) | Nicht zutreffend. Von dieser Schicht können nur Eigenschaften zu den Zonenfeatures der Zone-Schicht hinzugefügt werden. Weitere Informationen finden Sie unter [ZoneLabel-Schicht](#zonelabel-layer).
+| [UnitLabel](#unitlabel-layer) | Text (einzeilig) | Nicht zutreffend Von dieser Schicht können nur Eigenschaften zu den Einheitenfeatures der Unit-Schicht hinzugefügt werden. Weitere Informationen finden Sie unter [UnitLabel-Schicht](#unitlabel-layer).
+| [ZoneLabel](#zonelabel-layer) | Text (einzeilig) | Nicht zutreffend Von dieser Schicht können nur Eigenschaften zu den Zonenfeatures der Zone-Schicht hinzugefügt werden. Weitere Informationen finden Sie unter [ZoneLabel-Schicht](#zonelabel-layer).
 
 In den nächsten Abschnitten werden die Anforderungen für die einzelnen Schichten erläutert.
 
@@ -169,12 +169,13 @@ Ein Beispiel für die ZoneLabel-Schicht ist die ZONELABELS-Schicht im [Beispielz
 
 Der ZIP-Ordner muss eine Manifestdatei auf der Stammebene des Verzeichnisses enthalten, und die Datei muss **manifest.json** heißen. In dieser Datei werden die DWG-Dateien beschrieben, damit deren Inhalt vom [Azure Maps-Konvertierungsdienst](https://docs.microsoft.com/rest/api/maps/conversion) analysiert werden kann. Bei der Erfassung werden nur die im Manifest angegebenen Dateien berücksichtigt. Dateien, die sich zwar im ZIP-Ordner befinden, aber nicht ordnungsgemäß im Manifest aufgeführt sind, werden ignoriert.
 
-Die Dateipfade im Objekt **buildingLevels** der Manifestdatei müssen relativ zum Stamm des ZIP-Ordners angegeben sein. Der DWG-Dateiname muss exakt dem Namen der Einrichtungsebene entsprechen. Eine DWG-Datei für die Ebene „Keller“ muss also beispielsweise „Keller.dwg“ heißen. Eine DWG-Datei für Ebene 2 muss mit „Ebene_2.dgw“ benannt sein. Sollte der Name Ihrer Ebene ein Leerzeichen enthalten, ersetzen Sie dieses durch einen Unterstrich. 
+Die Dateipfade im Objekt **buildingLevels** der Manifestdatei müssen relativ zum Stamm des ZIP-Ordners angegeben sein. Der DWG-Dateiname muss exakt dem Namen der Einrichtungsebene entsprechen. Eine DWG-Datei für die Ebene „Keller“ muss also beispielsweise „Keller.dwg“ heißen. Eine DWG-Datei für Ebene 2 muss mit „Ebene_2.dgw“ benannt sein. Sollte der Name Ihrer Ebene ein Leerzeichen enthalten, ersetzen Sie dieses durch einen Unterstrich.
 
 Im Zusammenhang mit der Verwendung der Manifestobjekte müssen zwar gewisse Anforderungen erfüllt werden, es sind aber nicht alle Objekte erforderlich. Die folgende Tabelle enthält die erforderlichen und optionalen Objekte für die Version 1.1 des [Azure Maps-Konvertierungsdiensts](https://docs.microsoft.com/rest/api/maps/conversion):
 
-| Objekt | Erforderlich | Beschreibung |
+| Object | Erforderlich | BESCHREIBUNG |
 | :----- | :------- | :------- |
+| version | true |Manifestschemaversion Aktuell wird nur Version 1.1 unterstützt.|
 | directoryInfo | true | Gibt die geografischen Informationen und die Kontaktinformationen für die Einrichtung an. Kann auch zur Angabe der geografischen Informationen und der Kontaktinformationen eines Nutzers verwendet werden. |
 | buildingLevels | true | Gibt die Ebenen der Gebäude und die Dateien an, die den Plan der Ebenen enthalten. |
 | georeference | true | Enthält numerische geografische Informationen für die Einrichtungszeichnung. |
@@ -186,16 +187,16 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 ### <a name="directoryinfo"></a>directoryInfo
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
-| name      | String, Integer | true   |  Name des Gebäudes. |
-| streetAddress|    String, Integer |    false    | Adresse des Gebäudes. |
-|unit     | String, Integer    |  false    |  Einheit im Gebäude. |
-| Örtlichkeit |    String, Integer |    false |    Name einer Gegend, eines Stadtteils oder einer Region. Beispiele wären etwa „Schwaben“ oder „Ludwigsvorstadt“. Die örtliche Lage ist nicht Teil der Anschrift. |
+| name      | Zeichenfolge | true   |  Name des Gebäudes. |
+| streetAddress|    Zeichenfolge |    false    | Adresse des Gebäudes. |
+|unit     | Zeichenfolge    |  false    |  Einheit im Gebäude. |
+| Örtlichkeit |    Zeichenfolge |    false |    Name einer Gegend, eines Stadtteils oder einer Region. Beispiele wären etwa „Schwaben“ oder „Ludwigsvorstadt“. Die örtliche Lage ist nicht Teil der Anschrift. |
 | adminDivisions |    JSON-Array mit Zeichenfolgen |    false     | Ein Array mit Adressangaben wie Land, Bundesland, Stadt oder Land, Präfektur, Stadt, Ort. Verwenden Sie Landescodes gemäß ISO 3166 und Gebietscodes gemäß ISO 3166-2. |
-| postalCode |    String, Integer    | false    | Die Postleitzahl. |
+| postalCode |    Zeichenfolge    | false    | Die Postleitzahl. |
 | hoursOfOperation |    Zeichenfolge |     false | Entspricht dem [Öffnungszeitenformat von OSM](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification). |
-| phone    | String, Integer |    false |    Telefonnummer für das Gebäude. Muss die Landesvorwahl enthalten. |
+| phone    | Zeichenfolge |    false |    Telefonnummer für das Gebäude. Muss die Landesvorwahl enthalten. |
 | Website    | Zeichenfolge |    false    | Website für das Gebäude. Muss mit „http“ oder „https“ beginnen. |
 | nonPublic |    bool    | false | Flag, um anzugeben, ob das Gebäude öffentlich zugänglich ist. |
 | anchorLatitude | NUMERIC |    false | Breitengrad eines Einrichtungsankers (Ortsmarke). |
@@ -207,17 +208,17 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
-|levelName    |String, Integer    |true |    Beschreibender Ebenenname. Beispiele: 1. Stock, Eingangsbereich, blaue Parkebene, Keller usw.|
+|levelName    |Zeichenfolge    |true |    Beschreibender Ebenenname. Beispiel: 1. Stock, Eingangsbereich, blaue Parkebene, Keller usw.|
 |ordinal | integer |    true | „ordinal“ dient zum Angeben der vertikalen Reihenfolge von Ebenen. Jede Einrichtung muss über eine Ebene mit der Ordnungszahl 0 verfügen. |
-|heightAboveFacilityAnchor | NUMERIC |    false |    Die Ebenenhöhe über dem Erdgeschoss, angegeben in Metern. |
+|heightAboveFacilityAnchor | NUMERIC | false |    Die Ebenenhöhe über dem Anker in Metern. |
 | verticalExtent | NUMERIC | false | Die Höhe vom Boden bis zur Decke (Stärke) der Ebene, angegeben in Metern. |
-|filename |    String, Integer |    true |    Dateisystempfad der CAD-Zeichnung für eine Gebäudeebene. Muss relativ zum Stamm der ZIP-Datei des Gebäudes angegeben werden. |
+|filename |    Zeichenfolge |    true |    Dateisystempfad der CAD-Zeichnung für eine Gebäudeebene. Muss relativ zum Stamm der ZIP-Datei des Gebäudes angegeben werden. |
 
 ### <a name="georeference"></a>georeference
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |lat    | NUMERIC |    true |    Dezimaldarstellung des Breitengrads am Ursprung der Anlagenzeichnung. Die Ursprungskoordinaten müssen als WGS 84-Web-Mercator-Koordinaten (`EPSG:3857`) vorliegen.|
 |lon    |NUMERIC|    true|    Dezimaldarstellung des Längengrads am Ursprung der Anlagenzeichnung. Die Ursprungskoordinaten müssen als WGS 84-Web-Mercator-Koordinaten (`EPSG:3857`) vorliegen. |
@@ -225,46 +226,47 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
-|exterior    |Array mit Zeichenfolgen/Integer-Werten|    true|    Namen von Schichten zum Definieren des äußeren Gebäudeprofils.|
-|unit|    Array mit Zeichenfolgen/Integer-Werten|    true|    Namen von Schichten zum Definieren von Einheiten.|
-|wall|    Array mit Zeichenfolgen/Integer-Werten    |false|    Namen von Schichten zum Definieren von Wänden.|
-|door    |Array mit Zeichenfolgen/Integer-Werten|    false   | Namen von Schichten zum Definieren von Türen.|
-|unitLabel    |Array mit Zeichenfolgen/Integer-Werten|    false    |Namen von Schichten zum Definieren von Einheitennamen.|
-|zone | Array mit Zeichenfolgen/Integer-Werten    | false    | Namen von Schichten zum Definieren von Zonen.|
-|zoneLabel | Array mit Zeichenfolgen/Integer-Werten |     false |    Namen von Schichten zum Definieren von Zonennamen.|
+|exterior    |Array von Zeichenfolgen|    true|    Namen von Schichten zum Definieren des äußeren Gebäudeprofils.|
+|unit|    Array von Zeichenfolgen|    true|    Namen von Schichten zum Definieren von Einheiten.|
+|wall|    Array von Zeichenfolgen    |false|    Namen von Schichten zum Definieren von Wänden.|
+|door    |Array von Zeichenfolgen|    false   | Namen von Schichten zum Definieren von Türen.|
+|unitLabel    |Array von Zeichenfolgen|    false    |Namen von Schichten zum Definieren von Einheitennamen.|
+|Zone | Array von Zeichenfolgen    | false    | Namen von Schichten zum Definieren von Zonen.|
+|zoneLabel | Array von Zeichenfolgen |     false |    Namen von Schichten zum Definieren von Zonennamen.|
 
 ### <a name="unitproperties"></a>unitProperties
 
 Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
-|unitName    |String, Integer    |true    |Name der Einheit, die diesem Datensatz vom Typ `unitProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schichten vom Typ `unitLabel` eine Bezeichnung vom Typ `unitName` enthalten. |
-|categoryName|    String, Integer|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
+|unitName    |Zeichenfolge    |true    |Name der Einheit, die diesem Datensatz vom Typ `unitProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schichten vom Typ `unitLabel` eine Bezeichnung vom Typ `unitName` enthalten. |
+|categoryName|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
 |navigableBy| Array von Zeichenfolgen |    false    |Gibt an, für welche Arten der Fortbewegung die Einheit geeignet ist (beispielsweise für Fußgänger). Diese Eigenschaft wird bei der Wegfindung genutzt.  Zulässige Werte: `pedestrian`, `wheelchair`, `machine`, `bicycle`, `automobile`, `hiredAuto`, `bus`, `railcar`, `emergency`, `ferry`, `boat` und `disallowed`.|
 |routeThroughBehavior|    Zeichenfolge|    false    |Das Durchleitungsverhalten für die Einheit. Zulässige Werte: `disallowed`, `allowed` und `preferred`. Der Standardwert ist `allowed`.|
 |occupants    |Array mit Objekten vom Typ „directoryInfo“ |false    |Nutzerliste für die Einheit. |
-|nameAlt|    String, Integer|    false|    Alternativer Name der Einheit. |
-|nameSubtitle|    String, Integer    |false|    Untertitel der Einheit. |
-|addressRoomNumber|    String, Integer|    false|    Raum-/Einheiten-/Wohnungs-/Suitennummer der Einheit.|
-|verticalPenetrationCategory|    String, Integer|    false| Wenn diese Eigenschaft definiert ist, ist das resultierende Feature keine Einheit, sondern eine vertikale Durchdringung (Vertical Penetration, VRT). VRTs können verwendet werden, um zu anderen VRT-Features auf den darüber oder darunter befindlichen Ebenen zu gelangen. „verticalPenetration“ ist ein [Kategoriename](https://aka.ms/pa-indoor-spacecategories). Wenn diese Eigenschaft definiert ist, wird die Eigenschaft „categoryName“ durch „verticalPenetrationCategory“ überschrieben. |
+|nameAlt|    Zeichenfolge|    false|    Alternativer Name der Einheit. |
+|nameSubtitle|    Zeichenfolge    |false|    Untertitel der Einheit. |
+|addressRoomNumber|    Zeichenfolge|    false|    Raum-/Einheiten-/Wohnungs-/Suitennummer der Einheit.|
+|verticalPenetrationCategory|    Zeichenfolge|    false| Wenn diese Eigenschaft definiert ist, ist das resultierende Feature keine Einheit, sondern eine vertikale Durchdringung (Vertical Penetration, VRT). VRTs können verwendet werden, um zu anderen VRT-Features auf den darüber oder darunter befindlichen Ebenen zu gelangen. „verticalPenetration“ ist ein [Kategoriename](https://aka.ms/pa-indoor-spacecategories). Wenn diese Eigenschaft definiert ist, wird die Eigenschaft „categoryName“ durch „verticalPenetrationCategory“ überschrieben. |
 |verticalPenetrationDirection|    Zeichenfolge|    false    |Ist `verticalPenetrationCategory` definiert, kann optional die gültige Bewegungsrichtung definiert werden. Zulässige Werte: `lowToHigh`, `highToLow`, `both` und `closed`. Der Standardwert ist `both`.|
 | nonPublic | bool | false | Gibt an, ob die Einheit öffentlich zugänglich ist. |
 | isRoutable | bool | false | Ist diese Eigenschaft auf `false` festgelegt, kann nicht zu dieser Einheit oder nicht durch diese Einheit navigiert werden. Der Standardwert ist `true`. |
-| isOpenArea | bool | false | Ermöglicht den Zugang/die Zufahrt zur Einheit, ohne dass eine Öffnung mit der Einheit verknüpft sein muss. Dieser Wert ist standardmäßig auf `true` festgelegt, es sei denn, die Einheit verfügt über eine Öffnung. |
+| isOpenArea | bool | false | Ermöglicht dem Navigations-Agent den Zugang/die Zufahrt zur Einheit, ohne dass eine Öffnung mit der Einheit verknüpft sein muss. Standardmäßig ist dieser Wert für Einheiten ohne Öffnungen auf `true` festgelegt, für Einheiten mit Öffnungen auf `false`.  Wenn Sie `isOpenArea` für eine Einheit ohne Öffnungen manuell auf `false` festlegen, führt dies zu einer Warnung. Dies liegt daran, dass die resultierende Einheit von einem Navigations-Agent nicht erreicht werden kann.|
 
 ### <a name="the-zoneproperties-object"></a>Das Objekt „zoneProperties“
 
 Das Objekt `zoneProperties` enthält ein JSON-Array mit Zoneneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
-|zoneName        |String, Integer    |true    |Name der Zone, der dem Datensatz `zoneProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schicht `zoneLabel` der Zone eine Bezeichnung vom Typ `zoneName` enthält.  |
-|categoryName|    String, Integer|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
-|zoneNameAlt|    String, Integer|    false    |Alternativer Name der Zone.  |
-|zoneNameSubtitle|    String, Integer |    false    |Untertitel der Zone. |
+|zoneName        |Zeichenfolge    |true    |Name der Zone, der dem Datensatz `zoneProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schicht `zoneLabel` der Zone eine Bezeichnung vom Typ `zoneName` enthält.  |
+|categoryName|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
+|zoneNameAlt|    Zeichenfolge|    false    |Alternativer Name der Zone.  |
+|zoneNameSubtitle|    Zeichenfolge |    false    |Untertitel der Zone. |
+|zoneSetId|    Zeichenfolge |    false    | Legen Sie „ID“ fest, um eine Beziehung zwischen mehreren Zonen herzustellen, damit diese als Gruppe abgefragt oder ausgewählt werden können. Beispielsweise Zonen, die mehrere Ebenen umfassen. |
 
 ### <a name="sample-drawing-package-manifest"></a>Exemplarisches Zeichnungspaketmanifest
 

@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/07/2020
 ms.author: tamram
-ms.reviewer: cbrooks
-ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ozgun
+ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127532"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118414"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurieren von Advanced Threat Protection für Azure Storage
 
@@ -23,28 +23,19 @@ Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligen
 
 Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst. Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
-Der Dienst erfasst Ressourcenprotokolle von an Blob Storage gesendete Lese-, Schreib- und Löschanforderungen, um Bedrohungen zu erkennen. Wenn Sie die Warnungen von Advanced Threat Protection untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter **Konfigurieren der Protokollierung** in [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md#configure-logging).
+Der Dienst erfasst Ressourcenprotokolle von an Blob Storage und Azure Files (Vorschauversion) gesendete Lese-, Schreib- und Löschanforderungen, um Bedrohungen zu erkennen. Wenn Sie die Warnungen von Advanced Threat Protection untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter **Konfigurieren der Protokollierung** in [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md#configure-logging).
 
 ## <a name="availability"></a>Verfügbarkeit
 
-Advanced Threat Protection für Azure Storage ist derzeit nur für [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) verfügbar. Zu den Kontotypen, die Advanced Threat Protection unterstützen, gehören Konten vom Typ „Allgemein v2“ sowie Blockblob- und Blob Storage-Konten. Advanced Threat Protection ist in allen öffentlichen Clouds und Clouds der US-Regierungsbehörden verfügbar, nicht aber in anderen Sovereign Cloud- oder Azure Government-Cloudregionen.
+Advanced Threat Protection für Azure Storage ist derzeit für Blob Storage, Azure Files (Vorschau) und Azure Data Lake Storage Gen2 (Vorschau) verfügbar. Zu den Kontotypen, die Advanced Threat Protection unterstützen, gehören Konten vom Typ „Allgemein v2“ sowie Blockblob- und Blob Storage-Konten. Advanced Threat Protection ist in allen öffentlichen Clouds und Clouds der US-Regierungsbehörden verfügbar, nicht aber in anderen Sovereign Cloud- oder Azure Government-Cloudregionen.
+
+Konten mit für Data Lake Storage aktivierten hierarchischen Namespaces unterstützen Transaktionen, die sowohl die Azure Blob Storage-APIs als auch die Data Lake Storage-APIs verwenden. Azure-Dateifreigaben unterstützen Transaktionen über SMB.
 
 Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
-
 
 ## <a name="set-up-advanced-threat-protection"></a>Einrichten von Advanced Threat Protection
 
 Sie können Advanced Threat Protection auf verschiedene Arten konfigurieren, die in den folgenden Abschnitten beschrieben werden.
-
-### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-1. Starten Sie das [Azure-Portal](https://portal.azure.com/).
-1. Navigieren Sie zu Ihrem Azure Storage-Konto. Wählen Sie unter **Einstellungen** die Option **Erweiterte Sicherheit** aus.
-1. Wählen Sie den Link **Einstellungen** auf der Seite für die Konfiguration der erweiterten Sicherheit aus.
-1. Legen Sie für **Erweiterte Sicherheit** den Wert **EIN** fest.
-1. Klicken Sie auf **Speichern**, um die neue oder aktualisierte Richtlinie zu speichern.
-
-    ![Aktivieren von Azure Storage Advanced Threat Protection](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
@@ -61,6 +52,16 @@ Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Advanced T
 
     ![Aktivieren von ATP in Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Klicken Sie auf **Speichern**.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Starten Sie das [Azure-Portal](https://portal.azure.com/).
+1. Navigieren Sie zu Ihrem Azure Storage-Konto. Wählen Sie unter **Einstellungen** die Option **Erweiterte Sicherheit** aus.
+1. Wählen Sie den Link **Einstellungen** auf der Seite für die Konfiguration der erweiterten Sicherheit aus.
+1. Legen Sie für **Erweiterte Sicherheit** den Wert **EIN** fest.
+1. Klicken Sie auf **Speichern**, um die neue oder aktualisierte Richtlinie zu speichern.
+
+    ![Aktivieren von Azure Storage Advanced Threat Protection](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="template"></a>[Vorlage](#tab/template)
 

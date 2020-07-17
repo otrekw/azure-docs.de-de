@@ -4,15 +4,15 @@ description: In diesem Artikel wird das Konfigurieren der Komponenten von Azure 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254666"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -307,7 +307,7 @@ Beachten Sie, dass der Standardname des Affinitätscookies *ApplicationGatewayAf
 
 ### <a name="connection-draining"></a>Verbindungsausgleich
 
-Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen, deren Registrierung aufgehoben wird, bestehende Verbindungen aufrechterhalten, die Verarbeitung laufender Anforderungen für einen konfigurierbaren Zeitraum fortsetzen und keine neuen Anforderungen oder Verbindungen empfangen. Die einzige Ausnahme hierbei sind Anforderungen zur Aufhebung der Registrierung von Instanzen aufgrund der durch das Gateway verwalteten Sitzungsaffinität. Diese Anforderungen werden weiterhin an die Instanzen weitergeleitet, deren Registrierung aufgehoben wird. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit aus dem Back-End-Pool entfernt werden.
+Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung auf alle Elemente eines Back-End-Pools anwenden, indem Sie den Verbindungsausgleich für die HTTP-Einstellung aktivieren. Dadurch wird sichergestellt, dass alle Instanzen, deren Registrierung aufgehoben wird, bestehende Verbindungen aufrechterhalten, die Verarbeitung laufender Anforderungen für einen konfigurierbaren Zeitraum fortsetzen und keine neuen Anforderungen oder Verbindungen empfangen. Die einzige Ausnahme hierbei sind Anforderungen zur Aufhebung der Registrierung von Instanzen aufgrund der durch das Gateway verwalteten Sitzungsaffinität. Diese Anforderungen werden weiterhin an die Instanzen weitergeleitet, deren Registrierung aufgehoben wird. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit aus dem Back-End-Pool entfernt werden.
 
 ### <a name="protocol"></a>Protocol
 

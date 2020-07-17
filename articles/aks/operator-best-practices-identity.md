@@ -4,13 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Lernen Sie die Best Practices für Clusteroperator zum Verwalten der Authentifizierung und Autorisierung für Cluster in Azure Kubernetes Service (AKS) kennen.
 services: container-service
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 07/07/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: c7e8cd28380a86a671c74af03fa479abce5cfe25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020046"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107137"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)
 
@@ -21,8 +23,9 @@ Dieser Artikel zu Best Practices konzentriert sich darauf, wie ein Clusteroperat
 > [!div class="checklist"]
 >
 > * Authentifizieren von Benutzern von AKS-Clustern mit Azure Active Directory
-> * Steuern des Zugriffs auf Ressourcen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
-> * Verwenden einer verwalteten Identität zur Authentifizierung bei anderen Diensten
+> * Steuern des Zugriffs auf Ressourcen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes
+> * Verwenden Sie Azure RBAC, um den Zugriff auf die AKS-Ressource differenziert und auf die Kubernetes-API im großen Stil sowie auf kubeconfig zu steuern.
+> * Verwenden einer verwalteten Identität zur Authentifizierung von Pods bei anderen Diensten
 
 ## <a name="use-azure-active-directory"></a>Verwenden von Azure Active Directory
 
@@ -43,11 +46,11 @@ Mit Clustern mit Azure AD-Integration in AKS erstellen Sie *Rollen* oder *Cluste
 
 Wie Sie einen AKS-Cluster erstellen, der Azure AD verwendet, erfahren Sie unter [Integrieren von Azure Active Directory in Azure Kubernetes Service][aks-aad].
 
-## <a name="use-role-based-access-controls-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
+## <a name="use-kubernetes-role-based-access-controls-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes
 
 **Best Practice-Anleitung**: Verwenden Sie Kubernetes-RBAC zum Definieren der Berechtigungen von Benutzern oder Gruppen für Ressourcen im Cluster. Erstellen von Rollen und Bindungen, die die Mindestberechtigungen zuweisen. Führen Sie die Integration in Azure AD durch, sodass jede Änderung von Benutzerstatus oder Gruppenmitgliedschaft automatisch aktualisiert wird, und der Zugriff auf Clusterressourcen aktuell ist.
 
-In Kubernetes können Sie eine präzise Kontrolle des Zugriffs auf Ressourcen im Cluster bereitstellen. Berechtigungen können auf Clusterebene oder für bestimmte Namespaces definiert werden. Sie können definieren, welche Ressourcen mit welchen Berechtigungen verwaltet werden können. Diese Rollen werden dann auf Benutzer oder Gruppen mit einer Bindung angewandt. Weitere Informationen zu *Rollen*, *Clusterrollen* und *Bindungen* finden Sie unter [Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)][aks-concepts-identity].
+In Kubernetes können Sie eine differenzierte Steuerung des Zugriffs auf Ressourcen im Cluster bereitstellen. Berechtigungen können auf Clusterebene oder für bestimmte Namespaces definiert werden. Sie können definieren, welche Ressourcen mit welchen Berechtigungen verwaltet werden können. Diese Rollen werden dann auf Benutzer oder Gruppen mit einer Bindung angewandt. Weitere Informationen zu *Rollen*, *Clusterrollen* und *Bindungen* finden Sie unter [Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
 Sie können beispielsweise eine Rolle erstellen, die vollen Zugriff auf Ressourcen im Namespace mit dem Namen *finance-app* gewährt, wie im folgenden Beispiel-YAML-Manifest gezeigt:
 
@@ -84,6 +87,16 @@ roleRef:
 Wenn *developer1\@contoso.com* für den AKS-Cluster authentifiziert wird, verfügt er über vollständige Berechtigungen für Ressourcen im *finance-app*-Namespace. So trennen Sie logisch den Zugriff auf Ressourcen und steuern ihn. Kubernetes-RBAC sollte in Verbindung mit Azure AD-Integration verwendet werden, wie im vorherigen Abschnitt erläutert.
 
 Informationen zur Verwendung von Azure AD-Gruppen zum Steuern des Zugriffs auf Kubernetes-Ressourcen mithilfe der rollenbasierten Zugriffssteuerung finden Sie unter [Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung und mit Azure Active Directory-Identitäten in Azure Kubernetes Service][azure-ad-rbac].
+
+## <a name="use-azure-rbac"></a>Verwenden von Azure RBAC 
+**Leitfaden für bewährte Methoden**: Verwenden Sie Azure RBAC, um die minimal erforderlichen Berechtigungen zu definieren, die Benutzer oder Gruppen für AKS-Ressourcen in einem oder mehreren Abonnements haben.
+
+Für den vollständigen Betrieb eines AKS-Clusters sind zwei Zugriffsebenen erforderlich: 
+1. Zugriff auf die AKS-Ressource in Ihrem Azure-Abonnement. Mit dieser Zugriffsebene können Sie z. B. die Skalierung oder das Upgrade Ihres Clusters mithilfe der AKS-APIs steuern und kubeconfig pullen.
+Informationen zum Steuern des Zugriffs auf die AKS-Ressource und kubeconfig finden Sie unter [Beschränken des Zugriffs auf die Clusterkonfigurationsdatei](control-kubeconfig-access.md).
+
+2. Zugriff auf die Kubernetes-API. Diese Zugriffsebene wird entweder durch [Kubernetes RBAC](#use-kubernetes-role-based-access-controls-rbac) (herkömmlich) oder durch die Integration von Azure RBAC in AKS für die Kubernetes-Autorisierung gesteuert.
+Informationen zur differenzierten Vergabe von Berechtigungen für die Kubernetes-API mit Azure RBAC finden Sie unter [Verwenden von Azure RBAC für Kubernetes-Autorisierung](manage-azure-rbac.md).
 
 ## <a name="use-pod-identities"></a>Verwenden von Podidentitäten
 

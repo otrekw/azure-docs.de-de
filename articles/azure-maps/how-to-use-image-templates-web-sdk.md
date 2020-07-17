@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804808"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207089"
 ---
 # <a name="how-to-use-image-templates"></a>Verwenden von Imagevorlagen
 
@@ -104,6 +104,17 @@ Das folgende Beispiel verwendet die `marker-arrow`-Vorlage mit einer roten Prim�
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-Marker mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+
+> [!TIP]
+> Bildvorlagen können auch außerhalb der Karte verwendet werden. Die getImageTemplate-Funktion gibt eine SVG-Zeichenfolge mit Platzhaltern zurück: `{color}`, `{secondaryColor}``{scale}`, `{text}`. Ersetzen Sie diese Platzhalterwerte, um eine gültige SVG-Zeichenfolge zu erstellen. Sie können dann entweder die SVG-Zeichenfolge direkt zum HTML-DOM hinzufügen oder sie in einen Daten-URI konvertieren und in ein Bildtag einfügen. Beispiel:
+> ```JavaScript
+> //Retrieve an SVG template and replace the placeholder values.
+> var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
+>
+> //Convert to data URI for use in image tags.
+> var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
+> ```
+
 ## <a name="create-custom-reusable-templates"></a>Erstellen benutzerdefinierter wiederverwendbarer Vorlagen
 
 Wenn Ihre Anwendung das gleiche Symbol mit unterschiedlichen Symbolen verwendet, oder wenn Sie ein Modul erstellen, das zusätzliche Bildvorlagen hinzufügt, können Sie diese Symbole ganz einfach aus dem Azure Maps Web SDK hinzufügen und abrufen. Verwenden Sie die folgenden statischen Funktionen für den `atlas`-Namespace.
@@ -175,6 +186,25 @@ Die Tabelle listet alle derzeit im Azure Maps Web SDK verfügbaren Bildvorlagen 
 |||||
 | Zickzack | Zickzack-vertikal | Punkte |  |
 | ![Symbol „Zickzack“](./media/image-templates/zig-zag.png) | ![Symbol „Zickzack-vertikal“](./media/image-templates/zig-zag-vertical.png) | ![Symbol „Punkte“](./media/image-templates/dots.png) | |
+
+**Vorab geladene Bildsymbole**
+
+Die Karte lädt eine Reihe von Symbolen mithilfe der Vorlagen `marker`, `pin` und `pin-round` in das Kartenbild-Sprite. Diese Symbolnamen und ihre Farbwerte sind in der folgenden Tabelle aufgeführt.
+
+| Symbolname | color | secondaryColor |
+|-----------|-------|----------------|
+| `marker-black` | `#231f20` | `#ffffff` |
+| `marker-blue` | `#1a73aa` | `#ffffff` |
+| `marker-darkblue` | `#003963` | `#ffffff` |
+| `marker-red` | `#ef4c4c` | `#ffffff` |
+| `marker-yellow` | `#f2c851` | `#ffffff` |
+| `pin-blue` | `#2072b8` | `#ffffff` |
+| `pin-darkblue` | `#003963` | `#ffffff` |
+| `pin-red` | `#ef4c4c` | `#ffffff` |
+| `pin-round-blue` | `#2072b8` | `#ffffff` |
+| `pin-round-darkblue` | `#003963` | `#ffffff` |
+| `pin-round-red` | `#ef4c4c` | `#ffffff` |
+
 
 ## <a name="try-it-now-tool"></a>Tool „Jetzt testen“
 

@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: a5aed10927a808d0002f765d493709e0e49483ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632300"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104808"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Konfigurieren von Serverparametern in Azure Database for MariaDB mit der Azure CLI
 Sie können Konfigurationsparameter für einen Azure Database for MariaDB-Server mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Engine-Konfigurationen verfügbar und kann geändert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -54,6 +54,14 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 ```
 
 Dieser Code setzt die Konfiguration **slow\_query\_log** auf den Standardwert **OFF** zurück. 
+
+## <a name="setting-parameters-not-listed"></a>Nicht aufgeführte Einstellungsparameter
+Wenn der Serverparameter, den Sie aktualisieren möchten, nicht im Azure-Portal aufgeführt ist, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client festgelegt, der sich mit dem Server verbindet. 
+
+Aktualisieren Sie den Serverkonfigurationsparameter **init\_connect** des Servers **mydemoserver.mariadb.database.azure.com** in der Ressourcengruppe **myresourcegroup**, um Werte wie den Zeichensatz festzulegen.
+```azurecli-interactive
+az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
 
 ## <a name="working-with-the-time-zone-parameter"></a>Arbeiten mit dem Zeitzonenparameter
 

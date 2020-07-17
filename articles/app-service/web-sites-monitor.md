@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482682"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -58,7 +58,7 @@ Sie können Kontingente erhöhen oder aus Ihrer App entfernen, indem Sie ein Upg
 ## <a name="understand-metrics"></a>Grundlegendes zu Metriken
 
 > [!NOTE]
-> **Dateisystemnutzung** ist eine neue Metrik, die global eingeführt wird. Es werden keine Daten erwartet, es sei denn, Sie wurden für die private Vorschau in die Whitelist aufgenommen.
+> **Dateisystemnutzung** ist eine neue Metrik, die global eingeführt wird. Es werden keine Daten erwartet, es sei denn, Ihnen wurde Zugriff auf die private Vorschau gewährt.
 > 
 
 > [!IMPORTANT]

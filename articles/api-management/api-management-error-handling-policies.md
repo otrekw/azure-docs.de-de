@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 2c021a6d10c95b58ac444de8ea895ca01371a2b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75902457"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674260"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fehlerbehandlung bei API Management-Richtlinien
 
@@ -71,6 +71,10 @@ Die folgenden Richtlinien können im Richtlinienabschnitt `on-error` verwendet w
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
+-   [limit-concurrency](api-management-advanced-policies.md#LimitConcurrency)
+-   [mock-response](api-management-advanced-policies.md#mock-response)
+-   [retry](api-management-advanced-policies.md#Retry)
+-   [trace](api-management-advanced-policies.md#Trace)
 
 ## <a name="lasterror"></a>lastError
 
@@ -78,13 +82,13 @@ Wenn ein Fehler auftritt und das Steuerelement zum Richtlinienabschnitt `on-erro
 
 | Name       | type   | BESCHREIBUNG                                                                                               | Erforderlich |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | string | Benennt das Element, in dem der Fehler aufgetreten ist. Kann entweder der Schrittname einer Richtlinie oder einer integrierten Pipeline sein.      | Ja      |
-| `Reason`   | string | Computerfreundlicher Fehlercode, der bei der Fehlerbehandlung verwendet werden kann.                                       | Nein       |
-| `Message`  | string | Für Menschen lesbare Fehlerbeschreibung.                                                                         | Ja      |
-| `Scope`    | string | Name des Bereichs, in dem der Fehler aufgetreten ist. Kann einer der Werte „global“, „product“, „api“ oder „operation“ sein. | Nein       |
-| `Section`  | string | Name des Abschnitts, in dem der Fehler aufgetreten ist. Mögliche Werte: „inbound“, „backend“, „outbound“ oder „on-error“.      | Nein       |
-| `Path`     | string | Gibt geschachtelte Richtlinien an, z.B. „choose[3]/when[2]“.                                                 | Nein       |
-| `PolicyId` | string | Sofern vom Kunden festgelegt, der Wert des Attributs `id` in der Richtlinie, in der der Fehler aufgetreten ist.             | Nein       |
+| `Source`   | Zeichenfolge | Benennt das Element, in dem der Fehler aufgetreten ist. Kann entweder der Schrittname einer Richtlinie oder einer integrierten Pipeline sein.      | Ja      |
+| `Reason`   | Zeichenfolge | Computerfreundlicher Fehlercode, der bei der Fehlerbehandlung verwendet werden kann.                                       | Nein       |
+| `Message`  | Zeichenfolge | Für Menschen lesbare Fehlerbeschreibung.                                                                         | Ja      |
+| `Scope`    | Zeichenfolge | Name des Bereichs, in dem der Fehler aufgetreten ist. Kann einer der Werte „global“, „product“, „api“ oder „operation“ sein. | Nein       |
+| `Section`  | Zeichenfolge | Name des Abschnitts, in dem der Fehler aufgetreten ist. Mögliche Werte: „inbound“, „backend“, „outbound“ oder „on-error“.      | Nein       |
+| `Path`     | Zeichenfolge | Gibt geschachtelte Richtlinien an, z.B. „choose[3]/when[2]“.                                                 | Nein       |
+| `PolicyId` | Zeichenfolge | Sofern vom Kunden festgelegt, der Wert des Attributs `id` in der Richtlinie, in der der Fehler aufgetreten ist.             | Nein       |
 
 > [!TIP]
 > Über „context.Response.StatusCode“ können Sie auf den Statuscode zugreifen.

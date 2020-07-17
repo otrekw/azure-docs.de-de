@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Onlinemigration von SQL Server zu einer verwalteten SQL-Instanz'
+title: 'Tutorial: Onlinemigration von SQL Server zu SQL Managed Instance'
 titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von SQL Server zu einer Instanz von Azure SQL Managed Instance durchführen.
 services: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 817e1d740ce34704acb4b20a7c3f71807bfa66bc
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187954"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084221"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS
 
@@ -78,11 +78,11 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Bei der Ausführung mehrerer benannter SQL Server-Instanzen mit dynamischen Ports empfiehlt es sich, den SQL-Browser-Dienst zu aktivieren und den Zugriff auf den UDP-Port 1434 durch Ihre Firewalls zuzulassen, sodass Azure Database Migration Service eine Verbindung mit einer benannten Instanz auf Ihrem Quellserver herstellen kann.
 * Wenn Sie eine Firewallappliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, damit Azure Database Migration Service auf die Quelldatenbanken für die Migration sowie auf Dateien über SMB-Port 445 zugreifen kann.
 * Eine Anleitung zum Erstellen einer verwalteten SQL-Instanz finden Sie im Artikel [Erstellen einer verwalteten SQL-Instanz im Azure-Portal](https://aka.ms/sqldbmi).
-* Stellen Sie sicher, dass die zum Herstellen einer Verbindung zwischen der SQL Server-Quellinstanz und der verwalteten Zielinstanz verwendeten Anmeldungen Mitglieder der Serverrolle „sysadmin“ sind.
+* Stellen Sie sicher, dass die zum Herstellen einer Verbindung zwischen der SQL Server-Quellinstanz und der SQL Managed Instance-Zielinstanz verwendeten Anmeldungen Mitglieder der sysadmin-Serverrolle sind.
 * Stellen Sie eine SMB-Netzwerkfreigabe bereit, die alle vollständigen Datenbanksicherungsdateien Ihrer Datenbank sowie nachfolgende Sicherungsdateien des Transaktionsprotokolls enthält, die Azure Database Migration Service für die Datenbankmigration verwenden kann.
 * Stellen Sie sicher, dass das Dienstkonto, unter dem die SQL Server-Quellinstanz ausgeführt wird, über Schreibberechtigungen für die Netzwerkfreigabe verfügt, die Sie erstellt haben, und dass das Computerkonto für den Quellserver über Lese-/Schreibzugriff auf dieselbe Freigabe verfügt.
 * Notieren Sie sich einen Windows-Benutzer (mit Kennwort), der Vollzugriff auf die von Ihnen zuvor erstellte Netzwerkfreigabe hat. Azure Database Migration Service verwendet die Benutzeranmeldeinformationen, um die Sicherungsdateien für Wiederherstellungsvorgänge in den Azure Storage-Container hochzuladen.
-* Erstellen Sie eine Azure Active Directory-Anwendungs-ID, die den Anwendungs-ID-Schlüssel generiert, den Azure Database Migration Service für die Verbindungsherstellung mit der verwalteten Azure-Datenbank-Zielinstanz und mit dem Azure Storage-Container verwenden kann. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+* Erstellen Sie eine Azure Active Directory-Anwendungs-ID, die den Anwendungs-ID-Schlüssel generiert, den Azure Database Migration Service für die Verbindungsherstellung mit dem Ziel Azure Database Managed Instance und Azure Storage-Container verwenden kann. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
   > [!NOTE]
   > Azure Database Migration Service erfordert die Berechtigung „Mitwirkender“ für das Abonnement für die angegebene Anwendungs-ID. Alternativ können Sie auch benutzerdefinierte Rollen erstellen, die die speziellen Berechtigungen gewähren, die Azure Database Migration Service erfordert. Eine Schrittanleitung zur Verwendung benutzerdefinierter Rollen finden Sie im Artikel [Benutzerdefinierte Rollen für die Onlinemigration von SQL Server zu SQL Managed Instance](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance).
@@ -266,6 +266,6 @@ Nachdem die vollständige Datenbanksicherung für die Zielinstanz von SQL Manage
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, in dem gezeigt wird, wie Sie eine Datenbank mit dem T-SQL-Befehl RESTORE zu einer verwalteten Instanz migrieren können, finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md).
-* Informationen zur verwalteten Instanz finden Sie unter [Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
-* Informationen zum Verbinden von Apps mit einer verwalteten Instanz finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../azure-sql/managed-instance/connect-application-instance.md).
+* Ein Tutorial, in dem gezeigt wird, wie Sie eine Datenbank mit dem T-SQL-Befehl RESTORE zu SQL Managed Instance migrieren können, finden Sie unter [Wiederherstellen einer Sicherung in SQL Managed Instance mit dem restore-Befehl](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md).
+* Informationen zu SQL Managed Instance finden Sie unter [Was ist SQL Managed Instance?](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
+* Informationen zum Verbinden von Apps mit SQL Managed Instance finden Sie unter [Verbinden von Anwendungen](../azure-sql/managed-instance/connect-application-instance.md).

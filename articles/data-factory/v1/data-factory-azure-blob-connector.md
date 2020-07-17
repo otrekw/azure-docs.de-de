@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7f91285b393734bce83785dde62fd573e94ac0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254513"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -31,7 +31,7 @@ ms.locfileid: "79236594"
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Blob Storage zu kopieren. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
 ## <a name="overview"></a>Übersicht
-Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Senken (Ziele) für die Kopieraktivität unterstützt werden. Beispielsweise können Sie Daten **aus** einer SQL Server-Datenbank oder einer Azure SQL-Datenbank **in** den Azure Blob Storage verschieben. Außerdem können Sie Daten **aus** Azure Blob Storage **in** eine Azure SQL Data Warehouse- oder Azure Cosmos DB-Sammlung kopieren.
+Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Senken (Ziele) für die Kopieraktivität unterstützt werden. Beispielsweise können Sie Daten **aus** einer SQL Server-Datenbank oder einer Datenbank in Azure SQL-Datenbank **in** den Azure Blob Storage verschieben. Außerdem können Sie Daten **aus** Azure Blob Storage **in** eine Azure SQL Data Warehouse- oder Azure Cosmos DB-Sammlung kopieren.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -59,8 +59,8 @@ Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **V
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
 1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten.
-2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und die Azure SQL-Datenbank mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties).
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben der SQL-Tabelle in der Azure SQL-Datenbank, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
+2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure Storage-Konto und Azure SQL-Datenbank mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties).
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben der SQL-Tabelle in Azure SQL-Datenbank, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
 3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „BlobSource“ als Quelle und „SqlSink“ als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure SQL-Datenbank zu Azure Blob Storage durchführen, verwenden Sie entsprechend SqlSource und BlobSink in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.
 
 Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus Azure Blob Storage finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-blob-storage  ).
@@ -548,7 +548,7 @@ Daten werden stündlich aus einem neuen Blob übernommen (frequency: hour, inter
 ```
 **Azure SQL-Ausgabedataset:**
 
-Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in einer Azure SQL-Datenbank. Erstellen Sie die Tabelle in der Azure SQL-Datenbank mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
+Das Beispiel kopiert Daten in eine Tabelle namens „MyTable“ in Azure SQL-Datenbank. Erstellen Sie die Tabelle in der SQL-Datenbank mit der gleichen Anzahl von Spalten, die Sie in der Blob-CSV-Datei erwarten. Neue Zeilen werden der Tabelle stündlich hinzugefügt.
 
 ```json
 {

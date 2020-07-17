@@ -1,21 +1,21 @@
 ---
-title: Erstellen einer Bewertung mit Azure Migrate-Serverbewertung | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Bewertung mit dem Tool Azure Migrate-Serverbewertung ausführen.
+title: Erstellen einer Azure VM-Bewertung mit Azure Migrate-Serverbewertung | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie eine Azure VM-Bewertung mit dem Tool Azure Migrate-Serverbewertung ausführen.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: cffde2a677650387dffd19733e082ff7002ccb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68228977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549833"
 ---
-# <a name="create-an-assessment"></a>Erstellen einer Bewertung
+# <a name="create-an-azure-vm-assessment"></a>Erstellen einer Azure-VM-Bewertung
 
-In diesem Artikel wird beschrieben, wie Sie eine Bewertung für lokale VMware-VMs oder Hyper-V-VMs mit Azure Migrate erstellen: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
+In diesem Artikel wird beschrieben, wie Sie eine Azure VM-Bewertung für lokale VMware-VMs oder Hyper-V-VMs mit Azure Migrate erstellen: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
 
 [Azure Migrate](migrate-services-overview.md) hilft Ihnen bei der Migration zu Azure. Azure Migrate bietet einen zentralisierten Hub zum Nachverfolgen der Ermittlung, Bewertung und Migration lokaler Infrastruktur, Anwendungen und Daten zu Azure. Der Hub stellt Azure-Tools für die Bewertung und Migration sowie Drittanbietertools von unabhängigen Softwareanbietern (ISVs) bereit. 
 
@@ -26,8 +26,8 @@ In diesem Artikel wird beschrieben, wie Sie eine Bewertung für lokale VMware-VM
 - Zum Erstellen einer Bewertung müssen Sie eine Azure Migrate-Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. [Weitere Informationen](migrate-appliance.md)
 
 
-## <a name="assessment-overview"></a>Bewertungsübersicht
-Es gibt zwei Arten von Bewertungen, die Sie mit der Azure Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
+## <a name="azure-vm-assessment-overview"></a>Übersicht über Azure VM-Bewertungen
+Es gibt zwei Arten von Größenanpassungskriterien, die Sie zur Erstellung einer Azure VM-Bewertung mit Azure Migrate verwenden können: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
 
 **Bewertung** | **Details** | **Daten**
 --- | --- | ---
@@ -45,31 +45,35 @@ Führen Sie eine Bewertung wie folgt aus:
 
     ![Bewerten](./media/how-to-create-assessment/assess.png)
 
-2. Geben Sie unter **Server bewerten** einen Namen für die Bewertung an.
-3. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
+3. Wählen Sie unter **Server bewerten** die Option „Azure-VM“ als Bewertungstyp und dann die Ermittlungsquelle aus, und geben Sie den Bewertungsnamen an.
+
+    ![Grundlagen der Bewertung](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
+4. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
 
     ![Bewertungseigenschaften](./media/how-to-create-assessment//view-all.png)
 
-3. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens eine zu bewertende VM.
-4. Wählen Sie unter **Computer zur Gruppe hinzufügen** die VMs aus, die der Gruppe hinzugefügt werden sollen.
-5. Klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung auszuführen.
+5. Klicken Sie auf **Weiter**, um zu **Computer für die Bewertung auswählen** zu gelangen. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens eine zu bewertende VM.
+6. Wählen Sie unter **Computer zur Gruppe hinzufügen** die VMs aus, die der Gruppe hinzugefügt werden sollen.
+7. Klicken Sie auf **Weiter**, um unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails zu überprüfen.
+8. Klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung auszuführen.
 
     ![Erstellen einer Bewertung](./media/how-to-create-assessment//assessment-create.png)
 
-6. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
-7. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
+9. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
+10. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
 
 
 
-## <a name="review-an-assessment"></a>Überprüfen einer Bewertung
+## <a name="review-an-azure-vm-assessment"></a>Überprüfen einer Azure-VM-Bewertung
 
-Eine Bewertung beschreibt Folgendes:
+Bei einer Azure-VM-Bewertung wird Folgendes beschrieben:
 
 - **Azure-Bereitschaft**: Gibt an, ob VMs für die Migration zu Azure geeignet sind.
 - **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Compute- und Speicherkosten für die Ausführung der VMs in Azure.
 - **Geschätzte monatliche Speicherkosten**: Die geschätzten Kosten für den Datenträgerspeicher nach der Migration.
 
-### <a name="view-an-assessment"></a>Anzeigen einer Bewertung
+### <a name="view-an-azure-vm-assessment"></a>Anzeigen einer Azure VM-Bewertung
 
 1. Klicken Sie unter **Migrationsziele** >  **Server** auf **Bewertungen** (unter **Azure Migrate: Serverbewertung** aus.
 2. Klicken Sie unter **Bewertungen** auf eine Bewertung, um sie zu öffnen.
@@ -85,7 +89,7 @@ Eine Bewertung beschreibt Folgendes:
     - **Nicht bereit für Azure**: Zeigt Probleme und eine vorgeschlagene Abhilfe an.
     - **Bereitschaft unbekannt**: Wird verwendet, wenn Azure Migrate die Bereitschaft aufgrund von Problemen mit der Datenverfügbarkeit nicht bewerten kann.
 
-2. Klicken Sie auf einen **Azure-Bereitschaftsstatus**. Sie können Details zur VM-Bereitschaft sowie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
+3. Klicken Sie auf einen **Azure-Bereitschaftsstatus**. Sie können Details zur VM-Bereitschaft sowie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
 
 
 

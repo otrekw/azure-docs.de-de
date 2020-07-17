@@ -4,18 +4,18 @@ description: 'Hier erfahren Sie, wie Sie folgenden Application Gateway-Serverfeh
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808157"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>Starten Sie</a></span><span class="has-padding-small">Schnelles Lösen des Problems durch Verwenden unseres virtuellen Agents zum Ausführen <b>automatisierter Diagnose.</b></span><span class="has-padding-small"><a href="https://privacy.microsoft.com/privacystatement" target='_blank'><div align="right"><sub>Datenschutzerklärung</sub></div></a></span></p>
+
 Erfahren Sie mehr zur Problembehandlung bei Fehlern aufgrund eines ungültigen Gateways (502) in Application Gateway.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -111,7 +111,7 @@ Folgende Zusatzeigenschaften werden hinzugefügt:
 | Name |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
 | Protocol |Das zum Senden der Überprüfung verwendete Protokoll. Für die Überprüfung wird das in den HTTP-Einstellungen des Back-Ends festgelegte Protokoll verwendet. |
 | Host |Hostname zum Senden der Überprüfung Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Entspricht nicht dem VM-Hostnamen. |
-| `Path` |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. Der Test wird an \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\> gesendet |
+| `Path` |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. Der Test wird an \<protocol\>://\<host\>:\<port\>\<path\> gesendet. |
 | Intervall |Überprüfungsintervall in Sekunden Dies ist das Zeitintervall zwischen zwei aufeinanderfolgenden Überprüfungen. |
 | Zeitüberschreitung |Zeitüberschreitung der Überprüfung in Sekunden. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. |
 | Fehlerhafter Schwellenwert |Anzahl der Wiederholungsversuche der Überprüfung Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
@@ -122,7 +122,7 @@ Vergewissern Sie sich anhand der Tabelle weiter oben, dass die benutzerdefiniert
 
 * Stellen Sie anhand der [Anleitung](application-gateway-create-probe-ps.md)sicher, dass die Überprüfung ordnungsgemäß angegeben ist.
 * Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, muss der Hostname standardmäßig als `127.0.0.1` angegeben werden, sofern in der benutzerdefinierten Überprüfung nichts anderes konfiguriert ist.
-* Vergewissern Sie sich, dass ein Aufruf von „http://\<Host\>:\<Port\>\<Pfad\>“ den HTTP-Ergebniscode 200 zurückgibt.
+* Vergewissern Sie sich, dass ein Aufruf von „http://\<host\>:\<port\>\<path\>“ den HTTP-Ergebniscode 200 zurückgibt.
 * Stellen Sie sicher, dass „Intervall“, „Zeitüberschreitung“ und „Fehlerhafter Schwellenwert“ innerhalb des zulässigen Bereichs liegen.
 * Stellen Sie bei Verwendung einer HTTPS-Überprüfung sicher, dass der Back-End-Server kein SNI erfordert, indem Sie ein Fallback-Zertifikat auf dem Back-End-Server selbst erstellen.
 

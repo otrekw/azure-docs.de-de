@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660757"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -120,9 +120,9 @@ In der folgenden Tabelle sind Microsoft-Tools und deren aktuelle Eignung für Az
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Unterstützt. Azure-Dateifreigaben können als Netzwerklaufwerke eingebunden werden. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure-Dateisynchronisierung | Nativ in Azure-Dateifreigaben integriert. | Vollständige Genauigkeit* |
 |![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| Speichermigrationsdienst | Indirekt unterstützt. Azure-Dateifreigaben können als Netzwerklaufwerke auf SMS-Zielservern eingebunden werden. | Vollständige Genauigkeit* |
+|![Ja, empfohlen](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, Version 10.4 oder höher| Unterstützt. | Vollständige Genauigkeit* |
 |![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Unterstützt. | Kopiert keine Metadaten. [Data Box kann mit der Azure-Dateisynchronisierung verwendet werden](storage-sync-offline-data-transfer.md). |
-|![Nicht empfohlen](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Unterstützt. | Kopiert keine Metadaten. |
-|![Nicht empfohlen](media/storage-files-migration-overview/circle-red-x.png)| Azure Storage-Explorer | Unterstützt. | Kopiert keine Metadaten. |
+|![Nicht vollständig empfohlen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage-Explorer, Version 1.14 | Unterstützt. | Kopiert keine Zugriffssteuerungslisten (ACLs). Unterstützt Zeitstempel.  |
 |![Nicht empfohlen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Unterstützt. | Kopiert keine Metadaten. |
 |||||
 

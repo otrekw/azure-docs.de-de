@@ -5,17 +5,18 @@ description: Dieser Artikel zeigt Ihnen, wie Sie Azure Machine Learning verwende
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 344112e19adbfaa1b06eebab309f31ed4e070c7d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78398333"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076996"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -161,6 +162,9 @@ Bei diesem Beispiel wird die Datei als `myenv.yml` gespeichert.
 
 ## <a name="define-the-deployment-configuration"></a>Definieren der Bereitstellungskonfiguration
 
+> [!IMPORTANT]
+> AKS erlaubt es nicht, dass Pods GPUs gemeinsam nutzen. Sie können nur so viele Replikate eines GPU-fähigen Webdiensts verwenden, wie es GPUs im Cluster gibt.
+
 Die Bereitstellungskonfiguration definiert die Azure Kubernetes Service-Umgebung, die zum Ausführen des Webdiensts verwendet wird:
 
 ```python
@@ -212,9 +216,6 @@ aks_service = Model.deploy(ws,
 aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
-
-> [!NOTE]
-> Wenn beim Objekt `InferenceConfig` der Wert `enable_gpu=True` festgelegt wurde, muss der Parameter `deployment_target` auf einen Cluster verweisen, der eine GPU bereitstellt. Andernfalls funktioniert die Bereitstellung nicht.
 
 Weitere Informationen finden Sie in der Referenzdokumentation zu [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 

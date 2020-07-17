@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/27/2019
-ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 06/12/2020
+ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475461"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087264"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,6 +48,10 @@ Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in d
 ## <a name="deploy-to-aci"></a>Bereitstellen für ACI
 
 Um ein Modell für Azure Container Instances bereitzustellen, erstellen Sie eine __Bereitstellungskonfiguration__, in der die benötigten Computeressourcen beschrieben werden. Dies sind beispielsweise die Anzahl von Kernen und die Arbeitsspeichergröße. Außerdem benötigen Sie eine __Rückschlusskonfiguration__, in der die zum Hosten des Modells und des Webdiensts erforderliche Umgebung beschrieben wird. Weitere Informationen zum Erstellen der Rückschlusskonfiguration finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
+
+> [!NOTE]
+> * ACI eignet sich nur für kleine Modelle mit einer Größe von <1 GB. 
+> * Wir empfehlen die Verwendung von AKS auf einem einzelnen Knoten für den Dev-Test von größeren Modellen.
 
 ### <a name="using-the-sdk"></a>Verwenden des SDK
 

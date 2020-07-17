@@ -10,13 +10,13 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655759"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Erstellen einer freigegebenen selbstgehosteten Integration Runtime in Azure Data Factory
 
@@ -28,21 +28,19 @@ In diesem Leitfaden erfahren Sie, wie Sie eine freigegebene selbstgehostete Inte
 
 Sie können die unten angegebenen Schritte ausführen, um über die Azure Data Factory-Benutzeroberfläche eine freigegebene selbstgehostete IR zu erstellen.
 
-1. Erteilen Sie in der selbstgehosteten IR, die freigegeben werden soll, Berechtigungen für die Data Factory, in der Sie die verknüpfte IR erstellen möchten.
+1. Wählen Sie in der freizugebenden selbstgehosteten Integration Runtime die Option **Anderen Data Factory die Berechtigung erteilen**, und wählen Sie auf der Seite „Integration Runtime-Setup“ die Data Factory aus, in der Sie die verknüpfte Integration Runtime erstellen möchten.
       
-    ![Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![Auswahl zum Zuweisen von Berechtigungen](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. Notieren Sie sich die Ressourcen-ID der selbstgehosteten IR, die freigegeben werden soll.
-      
-   ![Speicherort der Ressourcen-ID](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. Notieren und kopieren Sie die obige „Ressourcen-ID“ der freizugebenden selbstgehosteten IR.
+         
 3. Erstellen Sie in der Data Factory, für die Berechtigungen erteilt wurden, eine neue selbstgehostete IR (verknüpft), und geben Sie die Ressourcen-ID ein.
       
-   ![Schaltfläche zum Erstellen einer verknüpften selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![Felder für Name und Ressourcen-ID](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Schaltfläche zum Erstellen einer selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![Schaltfläche zum Erstellen einer verknüpften selbstgehosteten Integration Runtime](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![Felder für Name und Ressourcen-ID](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Erstellen einer freigegebenen selbstgehosteten IR mithilfe von Azure PowerShell
 

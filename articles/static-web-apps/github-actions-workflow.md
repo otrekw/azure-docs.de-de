@@ -2,17 +2,17 @@
 title: GitHub Actions-Workflows für Azure Static Web Apps
 description: Es wird beschrieben, wie Sie GitHub-Repositorys zum Einrichten von Continuous Deployment für Azure Static Web Apps verwenden.
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.author: cshoe
+ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340934"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub Actions-Workflows für Azure Static Web Apps (Vorschau)
 
@@ -50,7 +50,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -105,7 +107,7 @@ In der Workflowdatei für Static Web Apps sind zwei verfügbare Aufträge enthal
 | Name  | BESCHREIBUNG |
 |---------|---------|
 |`build_and_deploy_job` | Wird ausgeführt, wenn Sie Commits pushen oder einen Pull Request für den Branch öffnen, der in der Eigenschaft `on` aufgelistet ist. |
-|`close_pull_request_job` | Wird NUR ausgeführt, wenn Sie einen Pull Request schließen. |
+|`close_pull_request_job` | Wird NUR ausgeführt, wenn Sie einen Pull Request schließen, der die aus den Pull Requests erstellte Stagingumgebung entfernt. |
 
 ## <a name="steps"></a>Schritte
 
@@ -148,7 +150,7 @@ Sie können präzise steuern, welche Befehle während einer Bereitstellung ausge
 
 Für die Bereitstellung wird vor einem benutzerdefinierten Befehl immer `npm install` aufgerufen.
 
-| Befehl            | BESCHREIBUNG |
+| Get-Help            | BESCHREIBUNG |
 |---------------------|-------------|
 | `app_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Anwendung für statischen Inhalt ausgeführt werden soll.<br><br>Geben Sie beispielsweise `ng build --prod` ein, um einen Produktionsbuild für eine Angular-Anwendung zu konfigurieren. Wenn Sie das Feld leer lassen, versucht der Workflow, den Befehl `npm run build` oder `npm run build:Azure` auszuführen.  |
 | `api_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Azure Functions-API-Anwendung ausgeführt werden soll. |

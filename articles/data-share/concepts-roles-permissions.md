@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020896"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110996"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen und Anforderungen für Azure Data Share 
 
@@ -30,9 +30,8 @@ Zum Freigeben oder Empfangen von Daten aus einem Azure-Datenspeicher benötigt d
 
 Im Folgenden finden Sie eine Zusammenfassung der Rollen, die der verwalteten Identität der Data Share-Ressource zugewiesen werden:
 
-| |  |  |
-|---|---|---|
 |**Datenspeichertyp**|**Quelldatenspeicher des Datenanbieters**|**Zieldatenspeicher des Datenconsumers**|
+|---|---|---|
 |Azure Blob Storage| Leser von Speicherblobdaten | Mitwirkender an Storage-Blobdaten
 |Azure Data Lake Gen1 | Besitzer | Nicht unterstützt
 |Azure Data Lake Gen2 | Leser von Speicherblobdaten | Mitwirkender an Storage-Blobdaten
@@ -40,11 +39,10 @@ Im Folgenden finden Sie eine Zusammenfassung der Rollen, die der verwalteten Ide
 |Azure Data Explorer-Cluster | Mitwirkender | Mitwirkender
 |
 
-Bei SQL-basierter Freigabe muss ein SQL-Benutzer über einen externen Anbieter in der SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Nachstehend finden Sie eine Zusammenfassung der für den SQL-Benutzer erforderlichen Berechtigung.
+Bei SQL-basierter Freigabe muss ein SQL-Benutzer über einen externen Anbieter in Azure SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Nachstehend finden Sie eine Zusammenfassung der für den SQL-Benutzer erforderlichen Berechtigung.
 
-| |  |  |
-|---|---|---|
 |**SQL-Datenbanktyp**|**SQL-Benutzerberechtigung des Datenanbieters**|**SQL-Benutzerberechtigung des Datenconsumers**|
+|---|---|---|
 |Azure SQL-Datenbank | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |Azure Synapse Analytics (ehemals SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
@@ -66,7 +64,7 @@ Wenn Sie eine Rollenzuweisung für die verwaltete Identität der Data Share-Ress
 1. Geben Sie unter *Auswählen* den Namen Ihrer Azure Data Share-Ressource ein.
 1. Klicken Sie auf *Speichern*.
 
-Zusätzlich zu den vorstehenden Schritten muss bei SQL-basierten Quellen ein SQL-Benutzer über einen externen Anbieter in der SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Diesem Benutzer muss die Berechtigung *db_datareader* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Freigeben von Daten](share-your-data.md). 
+Zusätzlich zu den vorstehenden Schritten muss bei SQL-basierten Quellen ein SQL-Benutzer über einen externen Anbieter in SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Diesem Benutzer muss die Berechtigung *db_datareader* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Freigeben von Daten](share-your-data.md). 
 
 ### <a name="data-consumer"></a>Datenconsumer
 Zum Empfangen von Daten muss der verwalteten Identität der Data Share-Ressource des Consumers Zugriff auf den Azure-Zieldatenspeicher gewährt werden. Bei einem Speicherkonto beispielsweise wird der verwalteten Identität der Data Share-Ressource die Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen. 
@@ -84,7 +82,7 @@ Wenn Sie eine Rollenzuweisung für die verwaltete Identität der Data Share-Ress
 1. Geben Sie unter *Auswählen* den Namen Ihrer Azure Data Share-Ressource ein.
 1. Klicken Sie auf *Speichern*.
 
-Zusätzlich zu den vorstehenden Schritten muss beim SQL-basierten Ziel ein SQL-Benutzer über einen externen Anbieter in der SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Diesem Benutzer muss die Berechtigung *db_datareader, db_datawriter, db_ddladmin* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md). 
+Zusätzlich zu den vorstehenden Schritten muss bei einem SQL-basierten Ziel ein SQL-Benutzer über einen externen Anbieter in SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Diesem Benutzer muss die Berechtigung *db_datareader, db_datawriter, db_ddladmin* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md). 
 
 Wenn Sie Daten mithilfe von Rest-APIs freigeben, müssen Sie diese Rollenzuweisungen manuell erstellen. 
 
@@ -103,4 +101,3 @@ Wenn Sie eine Azure Data Share-Einladung zum ersten Mal in Ihrem Azure-Mandanten
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Rollen in Azure: [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md)
-

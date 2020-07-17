@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674277"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Übersicht über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -118,16 +118,15 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 | * / 1433                     | Ausgehend           | TCP                | VIRTUAL_NETWORK/SQL                 | **Zugriff auf Azure SQL-Endpunkte**                           | Extern & Intern  |
 | * / 5671, 5672, 443          | Ausgehend           | TCP                | VIRTUAL_NETWORK/EventHub            | Abhängigkeit für [Richtlinie zum Anmelden bei Event Hub](api-management-howto-log-event-hubs.md) und Überwachungs-Agent | Extern & Intern  |
 | */445                      | Ausgehend           | TCP                | VIRTUAL_NETWORK/Storage             | Abhängigkeit von Azure-Dateifreigabe für [GIT](api-management-configuration-repository-git.md)                      | Extern & Intern  |
-| * / 1886                     | Ausgehend           | TCP                | VIRTUAL_NETWORK / AzureCloud            | Zum Veröffentlichen des Integritätsstatus in Resource Health erforderlich          | Extern & Intern  |
-| * / 443                     | Ausgehend           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Veröffentlichen von [Diagnoseprotokollen und Metriken](api-management-howto-use-azure-monitor.md)                       | Extern & Intern  |
-| * / 25                       | Ausgehend           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinden mit SMTP-Relay zum Senden von E-Mails                    | Extern & Intern  |
-| * / 587                      | Ausgehend           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinden mit SMTP-Relay zum Senden von E-Mails                    | Extern & Intern  |
-| * / 25028                    | Ausgehend           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinden mit SMTP-Relay zum Senden von E-Mails                    | Extern & Intern  |
-| * / 6381 - 6383              | Ein- und ausgehend | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Zugreifen auf den Redis-Dienst für [Ratenbegrenzung](api-management-access-restriction-policies.md#LimitCallRateByKey)srichtlinien zwischen Computern         | Extern & Intern  |
+| * / 443                     | Ausgehend           | TCP                | VIRTUAL_NETWORK / AzureCloud            | Erweiterung für Integrität und Überwachung         | Extern & Intern  |
+| * / 1886, 443                     | Ausgehend           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Veröffentlichen von [Diagnoseprotokollen und Metriken](api-management-howto-use-azure-monitor.md) und [Ressourcenintegrität](../service-health/resource-health-overview.md)                     | Extern & Intern  |
+| * / 25, 587, 25028                       | Ausgehend           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinden mit SMTP-Relay zum Senden von E-Mails                    | Extern & Intern  |
+| * / 6381 - 6383              | Ein- und ausgehend | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Zugreifen auf den Redis-Dienst für [Cache](api-management-caching-policies.md)richtlinien zwischen Computern         | Extern & Intern  |
+| * / 4290              | Ein- und ausgehend | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Synchronisieren von Zählern für [Ratenbegrenzung](api-management-access-restriction-policies.md#LimitCallRateByKey)srichtlinien zwischen Computern         | Extern & Intern  |
 | * / *                        | Eingehend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Lastenausgleich von Azure-Infrastruktur                          | Extern & Intern  |
 
 >[!IMPORTANT]
-> Die Ports, deren *Zweck* **fett** formatiert ist, sind zur erfolgreichen Bereitstellung des API Management-Diensts erforderlich. Die Blockierung der anderen Ports beeinträchtigt jedoch die Möglichkeit, den ausgeführten Dienst zu verwenden und zu überwachen.
+> Die Ports, deren *Zweck* **fett** formatiert ist, sind zur erfolgreichen Bereitstellung des API Management-Diensts erforderlich. Die Blockierung der anderen Ports **beeinträchtigt** jedoch die Möglichkeit, den **ausgeführten Dienst zu verwenden und zu überwachen sowie die verbindliche SLA bereitzustellen**.
 
 + **TLS-Funktionalität**: Zum Aktivieren der Erstellung und Prüfung von TLS/SSL-Vertrauensketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung zu ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Diese Abhängigkeit ist nicht erforderlich, wenn Zertifikate, die Sie in API Management hochladen, die vollständige Kette zum Stamm der Zertifizierungsstelle enthalten.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945612"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 
@@ -52,9 +52,9 @@ Sie können Ihren Logik-App-Workflow mit dem Trigger „Serie“ oder „Gleiten
 
 Im Folgenden finden Sie die Unterschiede zwischen den beiden Triggern:
 
-* **Serie**: Führt Ihren Workflow in regelmäßigen Intervallen aus, basierend auf dem von Ihnen angegebenen Zeitplan. Wenn Wiederholungen nicht ausgeführt werden, verarbeitet der Serientrigger diese fehlenden Wiederholungen nicht, sondern startet die Wiederholungen beim nächsten geplanten Intervall neu. Sie können Startdatum und -uhrzeit sowie die Zeitzone festlegen. Wenn Sie „Tag“ auswählen, können Sie die genaue Tageszeit in Stunden und Minuten angeben, z.B. jeden Tag um 14:30 Uhr. Wenn Sie „Woche“ auswählen, können Sie auch bestimmte Wochentage angeben, z.B. Mittwoch und Samstag. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger](../connectors/connectors-native-recurrence.md).
+* **Serie**: Führt Ihren Workflow in regelmäßigen Intervallen aus, basierend auf dem von Ihnen angegebenen Zeitplan. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise wegen Unterbrechungen oder deaktivierten Workflows, verarbeitet der Serientrigger diese fehlenden Wiederholungen nicht, sondern startet die Wiederholungen beim nächsten geplanten Intervall neu. Sie können Startdatum und -uhrzeit sowie die Zeitzone festlegen. Wenn Sie „Tag“ auswählen, können Sie die genaue Tageszeit in Stunden und Minuten angeben, z.B. jeden Tag um 14:30 Uhr. Wenn Sie „Woche“ auswählen, können Sie auch bestimmte Wochentage angeben, z.B. Mittwoch und Samstag. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger](../connectors/connectors-native-recurrence.md).
 
-* **Gleitendes Fenster**: Führt Ihren Workflow in regelmäßigen Intervallen aus, wobei Daten in kontinuierlichen Blöcken verarbeitet werden. Wenn Wiederholungen nicht ausgeführt werden, kehrt der Trigger „Gleitendes Fenster“ zurück und verarbeitet die fehlenden Wiederholungen. Sie können ein Startdatum und eine Startuhrzeit, eine Zeitzone und einen Zeitraum angeben, um den jede Wiederholung in Ihrem Workflow verzögert werden soll. Diese Trigger unterstützt keine erweiterten Zeitpläne, z. B. genaue Uhrzeiten in Stunden und Minuten oder bestimmte Tage der Woche. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“](../connectors/connectors-native-sliding-window.md).
+* **Gleitendes Fenster**: Führt Ihren Workflow in regelmäßigen Intervallen aus, wobei Daten in kontinuierlichen Blöcken verarbeitet werden. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise wegen Unterbrechungen oder deaktivierten Workflows, kehrt der Trigger „Gleitendes Fenster“ zurück und verarbeitet die fehlenden Wiederholungen. Sie können ein Startdatum und eine Startuhrzeit, eine Zeitzone und einen Zeitraum angeben, um den jede Wiederholung in Ihrem Workflow verzögert werden soll. Diese Trigger unterstützt keine erweiterten Zeitpläne, z. B. genaue Uhrzeiten in Stunden und Minuten oder bestimmte Tage der Woche. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
