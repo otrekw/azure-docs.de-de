@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054388"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243680"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -22,7 +22,7 @@ Es gibt auch einen [Leitfaden zur Problembehandlung](https://github.com/feiskyer
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Während der Erstellung oder Aktualisierung erhalte ich die Fehlermeldung, dass das Kontingent überschritten wurde. Wie sollte ich vorgehen? 
 
- [Fordern Sie weitere Kerne an](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+ [Fordern Sie weitere Kerne an](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Was ist die maximale Einstellung für die Anzahl von Pods pro Knoten für AKS?
 
@@ -34,7 +34,7 @@ Die maximale Anzahl von Pods pro Knoten ist standardmäßig auf 110 festgelegt, 
 Dieser Fehler gibt an, dass ein für einen Cluster verwendetes Subnetz im CIDR-Bereich keine weiteren verfügbaren IP-Adressen für eine erfolgreiche Ressourcenzuweisung umfasst. Bei Kubenet-Clustern ist ein ausreichender IP-Adressraum für jeden Knoten im Cluster erforderlich. Bei Azure CNI-Clustern ist ein ausreichender IP-Adressraum für jeden Knoten und Pod im Cluster erforderlich.
 Weitere Informationen zum Design von Azure CNI für die Zuweisung von IP-Adressen zu Pods finden Sie [hier](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Diese Fehler werden auch in der [AKS-Diagnose](https://docs.microsoft.com/azure/aks/concepts-diagnostics) ausgegeben, in der Probleme proaktiv angegeben werden, z. B. eine unzureichende Subnetzgröße.
+Diese Fehler werden auch in der [AKS-Diagnose](./concepts-diagnostics.md) ausgegeben, in der Probleme proaktiv angegeben werden, z. B. eine unzureichende Subnetzgröße.
 
 In den folgenden drei (3) Fällen tritt ein Fehler aufgrund unzureichender Subnetzgröße auf:
 

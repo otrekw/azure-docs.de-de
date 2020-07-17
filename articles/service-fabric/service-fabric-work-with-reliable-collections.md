@@ -3,12 +3,12 @@ title: Arbeiten mit Reliable Collections
 description: Informieren Sie sich über die bewährten Methoden für die Arbeit mit zuverlässigen Sammlungen in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374694"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255794"
 ---
 # <a name="working-with-reliable-collections"></a>Arbeiten mit Reliable Collections
 Service Fabric bietet .NET-Entwicklern über Reliable Collections ein zustandsbehaftetes Programmiermodell. Service Fabric umfasst z. B. Reliable Dictionary- und Reliable Queue-Klassen. Wenn Sie diese Klassen verwenden, wird Ihr Zustand partitioniert (für Skalierbarkeit), repliziert (für Verfügbarkeit) und innerhalb einer Partition durchgeführt (für ACID-Semantik). Sehen wir uns nun die typische Nutzung eines Objekts für ein zuverlässiges Wörterbuch an.
@@ -219,10 +219,10 @@ Zudem wird der Dienstcode auf jeder Upgradedomäne einzeln aktualisiert. Währen
 Alternativ können Sie einen Vorgang ausführen, der als 2-Phasen-Upgrade bezeichnet wird. Mit einem 2-Phasen-Upgrade aktualisieren Sie den Dienst von V1 auf V2: V2 enthält den Code, der mit der neuen Schemaänderung umzugehen weiß, aber dieser Code wird nicht ausgeführt. Wenn der V2-Code V1-Daten liest, verwendet und schreibt er V1-Daten. Wenn das Upgrade auf allen Upgradedomänen abgeschlossen ist, können Sie den laufenden V2-Instanzen signalisieren, dass das Upgrade abgeschlossen ist. (Eine Möglichkeit, dies zu signalisieren, besteht darin, ein Konfigurationsupgrade durchzuführen. Daher wird dieser Vorgang als 2-Phasen-Upgrade bezeichnet.) Jetzt können die V2-Instanzen V1-Daten lesen, in V2-Daten konvertieren, diese verwenden und als V2-Daten schreiben. Wenn andere Instanzen V2-Daten lesen, müssen sie diese nicht konvertieren. Sie verwenden sie einfach und schreiben V2-Daten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Erstellen von aufwärtskompatiblen Datenverträgen finden Sie unter [Aufwärtskompatible Datenverträge](https://msdn.microsoft.com/library/ms731083.aspx).
+Informationen zum Erstellen von aufwärtskompatiblen Datenverträgen finden Sie unter [Aufwärtskompatible Datenverträge](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts).
 
-Bewährte Methoden zur Versionsverwaltung von Datenverträgen finden Sie unter [Datenvertragsversionsverwaltung](https://msdn.microsoft.com/library/ms731138.aspx).
+Bewährte Methoden zur Versionsverwaltung von Datenverträgen finden Sie unter [Datenvertragsversionsverwaltung](/dotnet/framework/wcf/feature-details/data-contract-versioning).
 
-Informationen zum Implementieren von versionstoleranten Datenverträgen finden Sie unter [Versionstolerante Serialisierungsrückrufe](https://msdn.microsoft.com/library/ms733734.aspx).
+Informationen zum Implementieren von versionstoleranten Datenverträgen finden Sie unter [Versionstolerante Serialisierungsrückrufe](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks).
 
-Weitere Informationen zum Erstellen einer Datenstruktur für die Interaktion zwischen mehreren Versionen finden Sie unter [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).
+Weitere Informationen zum Erstellen einer Datenstruktur für die Interaktion zwischen mehreren Versionen finden Sie unter [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1).

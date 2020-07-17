@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106984"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243850"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -75,7 +75,7 @@ Microsoft bietet keinen technischen Support für Folgendes:
   > Microsoft kann den bestmöglichen Support für Open-Source-Projekte von Drittanbietern wie Helm und Kured bereitstellen. Wenn das Open-Source-Tool eines Drittanbieters mit den vom Kubernetes Azure-Cloudanbieter stammenden oder anderen AKS-spezifischen Fehlern integriert wird, unterstützt Microsoft Beispiele und Anwendungen aus der Microsoft-Dokumentation.
 * Closed-Source-Software von Drittanbietern. Diese Software kann z. B. Tools für Sicherheitsscans und Netzwerkgeräte oder -software umfassen.
 * Probleme mit Multi-Cloud- oder Multi-Vendor-Erweiterungen. Microsoft unterstützt z. B. keine Probleme bei der Ausführung einer vereinten Multipublic-Cloudanbieterlösung.
-* Andere als die in der [AKS-Dokumentation](https://docs.microsoft.com/azure/aks/) aufgeführten Netzwerkanpassungen.
+* Andere als die in der [AKS-Dokumentation](./index.yml) aufgeführten Netzwerkanpassungen.
   > [!NOTE]
   > Microsoft unterstützt Probleme und Fehler im Zusammenhang mit Netzwerksicherheitsgruppen (NSGs). Der Microsoft-Support kann z. B. Fragen zu einem NSG-Fehler beim Aktualisieren oder zum unerwarteten Verhalten einer NSG oder eines Lastenausgleichs beantworten.
 

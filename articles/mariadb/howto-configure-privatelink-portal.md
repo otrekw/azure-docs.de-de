@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: db2fa377cc10759fc57c3e4a27bd7815a5724bd7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114736"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206451"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über das Portal
 
@@ -209,7 +209,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>Privates Zugreifen auf den MariaDB-Server über den virtuellen Computer
 
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
+1. Öffnen Sie auf dem Remotedesktop von *myVM* PowerShell.
 
 2. Geben Sie `nslookup mydemomserver.privatelink.mariadb.database.azure.com` ein. 
 

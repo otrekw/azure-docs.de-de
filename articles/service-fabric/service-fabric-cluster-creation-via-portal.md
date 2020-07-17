@@ -3,12 +3,12 @@ title: Erstellen eines Service Fabric-Clusters über das Azure-Portal
 description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611151"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259307"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -121,7 +121,7 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 ### <a name="3-security"></a>3. Sicherheit
 ![Screenshot der Sicherheitskonfigurationen im Azure-Portal.][BasicSecurityConfigs]
 
-Um Ihnen das Einrichten eines sicheren Testclusters zu erleichtern, stellen wir die Option **Basic** bereit. Wenn Sie bereits über ein Zertifikat verfügen und dieses in Ihren [Schlüsseltresor](/azure/key-vault/) hochgeladen (und den Schlüsseltresor für die Bereitstellung aktiviert) haben, verwenden Sie die Option **Benutzerdefiniert**.
+Um Ihnen das Einrichten eines sicheren Testclusters zu erleichtern, stellen wir die Option **Basic** bereit. Wenn Sie bereits über ein Zertifikat verfügen und dieses in Ihren [Schlüsseltresor](../key-vault/index.yml) hochgeladen (und den Schlüsseltresor für die Bereitstellung aktiviert) haben, verwenden Sie die Option **Benutzerdefiniert**.
 
 #### <a name="basic-option"></a>Optionen „Basic“
 Folgen Sie den Anweisungen der Bildschirme zum Hinzufügen oder Wiederverwenden eines vorhandenen Schlüsseltresors sowie zum Hinzufügen eines Zertifikats. Das Hinzufügen des Zertifikats ist ein synchroner Vorgang, sodass Sie auf die Erstellung des Zertifikats warten müssen.
@@ -202,7 +202,7 @@ Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Ska
 Sie verfügen jetzt über einen sicheren Cluster, der Zertifikate zur Verwaltungsauthentifizierung verwendet. Als Nächstes [stellen Sie eine Verbindung mit dem Cluster her](service-fabric-connect-to-secure-cluster.md) und erfahren, wie Sie [Anwendungsgeheimnisse verwalten](service-fabric-application-secret-management.md).  Informieren Sie sich auch über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
