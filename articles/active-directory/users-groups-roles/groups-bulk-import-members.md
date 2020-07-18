@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b83b0687db72c78a0c7788933acf07f5cb9e0ed
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 755e59a029b0a12e51db53c6c7d3bb00358af635
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742011"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Massenhinzufügen von Gruppenmitgliedern in Azure Active Directory
 
@@ -44,6 +44,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 - Die erforderlichen Spalten werden zuerst aufgelistet.
 - Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
 - Es wird empfohlen, möglichst häufig die neueste Version der CSV-Vorlage herunterzuladen.
+- Fügen Sie mindestens die UPNs oder Objekt-IDs von zwei Benutzern hinzu, um die Datei erfolgreich hochzuladen.
 
 ## <a name="to-bulk-import-group-members"></a>So führen Sie den Massenimport von Gruppenmitgliedern aus
 

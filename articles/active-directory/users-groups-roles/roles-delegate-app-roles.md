@@ -1,5 +1,5 @@
 ---
-title: Delegieren von Verwaltungsberechtigungen für Anwendungsadministratoren – Azure AD | Microsoft-Dokumentation
+title: Delegieren von Administratorberechtigungen für die Anwendungsverwaltung – Azure AD | Microsoft-Dokumentation
 description: Erteilen von Berechtigungen für die Anwendungszugriffsverwaltung in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2527e4e630e7bf9cce0c68261bfa1c1797fbf795
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227642"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84731816"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 

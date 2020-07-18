@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84733397"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Überprüfen von Sicherheitsüberwachungsereignissen in Azure AD Domain Services mithilfe von Azure Monitor-Arbeitsmappen
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Überprüfen von Sicherheitsüberwachungsereignissen in Azure Active Directory Domain Services mithilfe von Azure Monitor-Arbeitsmappen
 
 Sie können Sicherheitsüberwachungsereignisse aktivieren, um den Status Ihrer verwalteten Azure Active Directory Domain Services-Domäne (Azure AD DS-Domäne) zu erfassen. Diese Sicherheitsüberwachungsereignisse können dann mithilfe von Azure Monitor-Arbeitsmappen überprüft werden, die Text, Analyseabfragen und Parameter in umfangreichen interaktiven Berichten kombinieren. Azure AD DS enthält Arbeitsmappenvorlagen für Sicherheitsübersicht und Kontoaktivität, mit denen Sie Überwachungsereignisse untersuchen und Ihre Umgebung verwalten können.
 
@@ -31,7 +31,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] aus.
+    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance] aus.
 * Sicherheitsüberwachungsereignisse, die für Ihre verwaltete Azure Active Directory Domain Services-Domäne aktiviert sind und Daten in einen Log Analytics-Arbeitsbereich streamen.
     * Falls dies erforderlich ist, [aktivieren Sie Sicherheitsüberwachungen für Azure AD Domain Services][enable-security-audits].
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d2cd98a9af75b5f3a6ca084dbfd4c144e06643d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84733788"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Behandeln von Secure LDAP-Konnektivitätsproblemen bei einer verwalteten Azure AD Domain Services-Domäne
 
@@ -26,18 +26,18 @@ Dieser Artikel hilft Ihnen beim Beheben von Problemen mit dem Zugriff über Secu
 
 ## <a name="common-connection-issues"></a>Allgemeine Verbindungsprobleme
 
-Wenn Sie Probleme beim Herstellen einer Verbindung mit einer verwalteten Azure AD DS-Domäne über Secure LDAP haben, prüfen Sie die folgenden Schritte zur Problembehandlung. Versuchen Sie nach jedem Problembehandlungsschritt, erneut eine Verbindung mit der verwalteten Azure AD DS-Domäne herzustellen:
+Wenn Sie Probleme beim Herstellen einer Verbindung mit einer verwalteten Azure AD DS-Domäne über Secure LDAP haben, prüfen Sie die folgenden Schritte zur Problembehandlung. Versuchen Sie nach jedem Problembehandlungsschritt, erneut eine Verbindung mit der verwalteten Domäne herzustellen:
 
 * Die Ausstellerkette des Zertifikats für sicheres LDAP muss auf dem Client als vertrauenswürdig eingestuft werden. Sie könnten die Stammzertifizierungsstelle dem vertrauenswürdigen Stammzertifikatspeicher auf dem Client hinzufügen, um die Vertrauensstellung einzurichten.
     * Stellen Sie sicher, dass Sie [das Zertifikat exportieren und auf den Clientcomputern anwenden][client-cert].
 * Prüfen Sie, ob das Secure LDAP-Zertifikat für die verwaltete Domäne den DNS-Namen im Attribut *Antragsteller* oder *Alternative Antragstellernamen* enthält.
     * Überprüfen Sie die [Zertifikatanforderungen für Secure LDAP][certs-prereqs], und erstellen Sie bei Bedarf ein Ersatzzertifikat.
 * Prüfen Sie, ob der LDAP-Client (z.B. *ldp.exe*) über einen DNS-Namen und nicht über die IP-Adresse eine Verbindung mit dem Secure LDAP-Endpunkt herstellt.
-    * Das auf die verwaltete Azure AD DS-Domäne angewendete Zertifikat enthält keine IP-Adressen des Dienstes, sondern nur die DNS-Namen.
-* Überprüfen Sie den DNS-Namen, mit dem der LDAP-Client eine Verbindung herstellt. Er muss in die öffentliche IP-Adresse für Secure LDAP in der verwalteten Azure AD DS-Domäne aufgelöst werden.
+    * Das auf die verwaltete Domäne angewendete Zertifikat enthält keine IP-Adressen des Diensts, sondern nur die DNS-Namen.
+* Überprüfen Sie den DNS-Namen, mit dem der LDAP-Client eine Verbindung herstellt. Er muss in die öffentliche IP-Adresse für sicheres LDAP in der verwalteten Domäne aufgelöst werden.
     * Wenn der DNS-Name in die interne IP-Adresse aufgelöst wird, aktualisieren Sie den DNS-Eintrag, damit er in die externe IP-Adresse aufgelöst wird.
 * Für die externe Konnektivität muss die Netzwerksicherheitsgruppe eine Regel enthalten, die den Datenverkehr zum TCP-Port 636 vom Internet zulässt.
-    * Wenn Sie von Ressourcen, die direkt mit dem virtuellen Netzwerk, aber nicht mit externen Verbindungen verbunden sind, über Secure LDAP eine Verbindung mit der verwalteten Azure AD DS-Domäne herstellen können, stellen Sie sicher, dass Sie [eine Netzwerksicherheitsgruppen-Regel erstellen, die Secure LDAP-Datenverkehr zulässt][ldaps-nsg].
+    * Wenn Sie von Ressourcen, die direkt mit dem virtuellen Netzwerk, aber nicht mit externen Verbindungen verbunden sind, über Secure LDAP eine Verbindung mit der verwalteten Domäne herstellen können, stellen Sie sicher, dass Sie [eine Netzwerksicherheitsgruppen-Regel erstellen, die Secure LDAP-Datenverkehr zulässt][ldaps-nsg].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

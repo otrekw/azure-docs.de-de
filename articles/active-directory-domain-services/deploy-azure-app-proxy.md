@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c1dc5216f758c2dda263e2f61b043dbde5f76604
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 285f5aabe32013a629eebb150e55ba343150f589
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734842"
 ---
-# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer über Azure AD Domain Services verwalteten Domäne
+# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer verwalteten Azure Active Directory Domain Services-Domäne
 
 Mit Azure AD Domain Services (Azure AD DS) können Sie lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure migrieren. Mithilfe des Azure Active Directory-Anwendungsproxy können Sie dann Remotebenutzer unterstützen, indem Sie diese internen Anwendungen, die Teil einer über Azure AD DS verwalteten Domäne sind, sicher veröffentlichen, sodass über das Internet darauf zugegriffen werden kann.
 
 Wenn Sie noch nicht mit dem Azure AD-Anwendungsproxy vertraut sind und mehr darüber erfahren möchten, lesen Sie den Artikel [Remotezugriff auf lokale Anwendungen über den Azure Active Directory-Anwendungsproxy](../active-directory/manage-apps/application-proxy.md).
 
-Dieser Artikel zeigt, wie Sie einen Azure AD-Anwendungsproxyconnector erstellen und konfigurieren, um sicheren Zugriff auf Anwendungen in einer über Azure AD DS verwalteten Domäne bereitzustellen.
+In diesem Artikel wird beschrieben, wie Sie einen Azure AD-Anwendungsproxyconnector erstellen und konfigurieren, um sicheren Zugriff auf Anwendungen in einer verwalteten Domäne zu ermöglichen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -36,18 +36,18 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
     * Für die Verwendung des Azure AD-Anwendungsproxys ist eine **Azure AD Premium-Lizenz** erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
+    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 
 ## <a name="create-a-domain-joined-windows-vm"></a>Erstellen einer in die Domäne eingebundenen Windows-VM
 
-Um den Datenverkehr an in Ihrer Umgebung ausgeführte Anwendungen weiterzuleiten, installieren Sie die Connectorkomponente des Azure AD-Anwendungsproxys. Dieser Azure AD-Anwendungsproxyconnector muss auf der Windows-VM installiert werden, die in die über Azure AD DS verwaltete Domäne eingebunden ist. Bei einigen Anwendungen können Sie mehrere Server bereitstellen, auf denen der Connector installiert ist. Diese Bereitstellungsoption bietet Ihnen eine größere Verfügbarkeit und hilft bei der Verarbeitung größerer Authentifizierungslasten.
+Um den Datenverkehr an in Ihrer Umgebung ausgeführte Anwendungen weiterzuleiten, installieren Sie die Connectorkomponente des Azure AD-Anwendungsproxys. Dieser Azure AD-Anwendungsproxyconnector muss auf virtuellen Windows Server-Computern (Virtual Machines, VMs) installiert werden, die in die verwaltete Domäne eingebunden sind. Bei einigen Anwendungen können Sie mehrere Server bereitstellen, auf denen der Connector installiert ist. Diese Bereitstellungsoption bietet Ihnen eine größere Verfügbarkeit und hilft bei der Verarbeitung größerer Authentifizierungslasten.
 
 Die VM, auf der der Azure AD-Anwendungsproxyconnector ausgeführt wird, muss sich im gleichen oder in einem per Peering verbundenen virtuellen Netzwerk befinden, in dem Azure AD DS aktiviert ist. Die VMs, auf denen die von Ihnen über den Anwendungsproxy veröffentlichten Anwendungen dann gehostet werden, müssen ebenfalls im gleichen virtuellen Azure-Netzwerk bereitgestellt sein.
 
 Um eine VM für den Azure AD-Anwendungsproxyconnector zu erstellen, führen Sie die folgenden Schritte aus:
 
-1. [Erstellen Sie eine benutzerdefinierte Organisationseinheit](create-ou.md). Sie können Berechtigungen zum Verwalten dieser benutzerdefinierten Organisationseinheit (OE) an Benutzer innerhalb der verwalteten Azure AD DS-Domäne delegieren. Die VMs für den Azure AD-Anwendungsproxy, auf denen Ihre Anwendungen ausgeführt werden, müssen zur benutzerdefinierten OE gehören, nicht zur Standard-OE *AAD DC Computers*.
-1. [Binden Sie die VMs in die über Azure AD DS verwaltete Domäne ein][create-join-windows-vm], und zwar sowohl diejenige, auf der der Azure AD-Anwendungsproxyconnector ausgeführt wird, als auch diejenige, auf der Ihre Anwendungen ausgeführt werden. Erstellen Sie diese Computerkonten in der benutzerdefinierten Organisationseinheit (OE) aus dem vorherigen Schritt.
+1. [Erstellen Sie eine benutzerdefinierte Organisationseinheit](create-ou.md). Sie können Berechtigungen zum Verwalten dieser benutzerdefinierten Organisationseinheit an Benutzer innerhalb der verwalteten Domäne delegieren. Die VMs für den Azure AD-Anwendungsproxy, auf denen Ihre Anwendungen ausgeführt werden, müssen zur benutzerdefinierten OE gehören, nicht zur Standard-OE *AAD DC Computers*.
+1. [Binden Sie die virtuellen Computer][create-join-windows-vm] (den Computer, auf dem der Azure AD-Anwendungsproxyconnector ausgeführt wird, und die Computer, auf denen Ihre Anwendungen ausgeführt werden), in die verwaltete Domäne ein. Erstellen Sie diese Computerkonten in der benutzerdefinierten Organisationseinheit (OE) aus dem vorherigen Schritt.
 
 ## <a name="download-the-azure-ad-application-proxy-connector"></a>Herunterladen des Azure AD-Anwendungsproxyconnectors
 
@@ -82,11 +82,11 @@ Nachdem Sie über eine VM verfügen, die als Azure AD-Anwendungsproxyconnector v
     ![Der neue Azure AD-Anwendungsproxyconnector mit dem Status „Aktiv“ im Azure-Portal](./media/app-proxy/connected-app-proxy.png)
 
 > [!NOTE]
-> Um Hochverfügbarkeit für Anwendungen bereitzustellen, die sich über den Azure AD-Anwendungsproxy authentifizieren, können Sie Connectors auf mehreren VMs installieren. Wiederholen Sie die im vorherigen Abschnitt aufgeführten Schritte, um den Connector auf weiteren Servern zu installieren, die in die über Azure AD DS verwaltete Domäne eingebunden sind.
+> Um Hochverfügbarkeit für Anwendungen bereitzustellen, die sich über den Azure AD-Anwendungsproxy authentifizieren, können Sie Connectors auf mehreren VMs installieren. Wiederholen Sie die im vorherigen Abschnitt aufgeführten Schritte, um den Connector auf weiteren Servern zu installieren, die in die verwaltete Domäne eingebunden sind.
 
 ## <a name="enable-resource-based-kerberos-constrained-delegation"></a>Aktivieren der ressourcenbasierten eingeschränkten Kerberos-Delegierung
 
-Wenn Sie das einmalige Anmelden bei Ihren Anwendungen über die integrierte Windows-Authentifizierung (IWA) verwenden möchten, erteilen Sie den Azure AD-Anwendungsproxyconnectors die Berechtigung, die Identität von Benutzern anzunehmen und in deren Namen Token zu senden und zu empfangen. Zum Erteilen dieser Berechtigungen konfigurieren Sie die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) für den Connector, sodass dieser auf Ressourcen in der über verwalteten Azure AD DS Domäne zugreifen kann. Da Sie in einer über Azure AD DS verwalteten Domäne nicht über Domänenadministratorberechtigungen verfügen, kann die herkömmliche KCD in einer verwalteten Domäne nicht konfiguriert werden. Verwenden Sie stattdessen eine ressourcenbasierte KCD.
+Wenn Sie das einmalige Anmelden bei Ihren Anwendungen über die integrierte Windows-Authentifizierung (IWA) verwenden möchten, erteilen Sie den Azure AD-Anwendungsproxyconnectors die Berechtigung, die Identität von Benutzern anzunehmen und in deren Namen Token zu senden und zu empfangen. Zum Erteilen dieser Berechtigungen konfigurieren Sie die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) für den Connector so, dass er auf Ressourcen in der verwalteten Domäne zugreifen kann. Da Sie in einer verwalteten Domäne nicht über Domänenadministratorberechtigungen verfügen, kann die herkömmliche KCD auf Kontoebene für eine verwaltete Domäne nicht konfiguriert werden. Verwenden Sie stattdessen eine ressourcenbasierte KCD.
 
 Weitere Informationen finden Sie unter [Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in Azure Active Directory Domain Services](deploy-kcd.md).
 

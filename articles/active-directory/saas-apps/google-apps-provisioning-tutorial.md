@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: aff2eca677bbacf16cf6de638547dd52b6985e02
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5ecf8ca6e6790b218216aed9a6ff82c8a7ac9dd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85250144"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -125,7 +125,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für G Suite in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**. Benutzer müssen sich unter „portal.azure.com“ anmelden und können nicht „aad.portal.azure.com“ verwenden.
 
     ![Blatt „Unternehmensanwendungen“](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a684a669c491e35b5c6b62dd318b4fe61edeb52b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734791"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurieren von Azure Active Directory Domain Services für die Unterstützung der Benutzerprofilsynchronisierung für SharePoint Server
 
@@ -33,7 +33,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] aus.
+    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance] aus.
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] aus.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
@@ -42,7 +42,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 ## <a name="service-accounts-overview"></a>Übersicht über Dienstkonten
 
-In einer durch Azure AD DS verwalteten Domäne ist eine Sicherheitsgruppe mit dem Namen **AAD DC-Dienstkonten** als Teil der Organisationseinheit *Benutzer* vorhanden. An Mitglieder dieser Sicherheitsgruppe werden die folgenden Berechtigungen delegiert:
+In einer verwalteten Domäne ist eine Sicherheitsgruppe mit dem Namen **AAD DC-Dienstkonten** als Teil der Organisationseinheit *Benutzer* vorhanden. An Mitglieder dieser Sicherheitsgruppe werden die folgenden Berechtigungen delegiert:
 
 - Berechtigung **Verzeichnisänderungen replizieren** für den Stamm-DSE
 - Berechtigung **Verzeichnisänderungen replizieren** im Namenskontext der *Konfiguration* (`cn=configuration`-Container)
@@ -58,11 +58,11 @@ Das Dienstkonto für SharePoint Server benötigt geeignete Berechtigungen zum Re
 Führen Sie auf der VM für die Azure AD DS-Verwaltung die folgenden Schritte aus:
 
 > [!NOTE]
-> Zum Bearbeiten der Gruppenmitgliedschaft in einer durch Azure AD DS verwalteten Domäne müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administratoren* ist.
+> Zum Bearbeiten der Gruppenmitgliedschaft in einer verwalteten Domäne müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administratoren* ist.
 
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Es wird eine Liste der verfügbaren Verwaltungstools angezeigt, die im Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] installiert wurden.
 1. Zum Verwalten der Gruppenmitgliedschaft wählen Sie **Active Directory-Verwaltungscenter** aus der Liste der Verwaltungstools aus.
-1. Wählen Sie im linken Bereich Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus. Eine Liste der vorhandenen Organisationseinheiten und Ressourcen wird angezeigt.
+1. Wählen Sie im linken Bereich Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus. Eine Liste der vorhandenen Organisationseinheiten und Ressourcen wird angezeigt.
 1. Wählen Sie die Organisationseinheit **Benutzer** und dann die Sicherheitsgruppe *AAD DC-Dienstkonten* aus.
 1. Wählen Sie **Mitglieder** und dann **Hinzufügen...** aus.
 1. Geben Sie den Namen des SharePoint-Dienstkontos ein, und klicken Sie dann auf **OK**. Im folgenden Beispiel hat das SharePoint-Dienstkonto den Namen *spadmin*:

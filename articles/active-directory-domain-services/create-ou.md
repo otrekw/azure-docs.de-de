@@ -9,29 +9,29 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61f951c0dd6561fc8d5a5de6b80e3759fd42eb78
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655556"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040281"
 ---
-# <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
+# <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer verwalteten Azure Active Directory Domain Services-Domäne
 
-Mit Organisationseinheiten (OEs) in Active Directory Domain Services (AD DS) können Sie Objekte wie Benutzerkonten, Dienstkonten oder Computerkonten logisch gruppieren. Sie können dann Administratoren bestimmten Organisationseinheiten zuordnen und Gruppenrichtlinien anwenden, um gezielte Konfigurationseinstellungen zu erzwingen.
+Mit Organisationseinheiten in einer von Active Directory Domain Services (AD DS) verwalteten Domäne können Sie Objekte wie Benutzerkonten, Dienstkonten oder Computerkonten logisch gruppieren. Sie können dann Administratoren bestimmten Organisationseinheiten zuordnen und Gruppenrichtlinien anwenden, um gezielte Konfigurationseinstellungen zu erzwingen.
 
 Von Azure AD DS verwaltete Domänen umfassen die folgenden beiden integrierten Organisationseinheiten:
 
 * *AADDC-Computer:* enthält Computerobjekte für alle Computer, die in die verwaltete Domäne eingebunden sind.
 * *AADDC-Benutzer:* enthält Benutzer und Gruppen, die über den Azure AD-Mandanten synchronisiert wurden.
 
-Wenn Sie Workloads erstellen und ausführen, die Azure AD DS verwenden, müssen Sie möglicherweise Dienstkonten für Anwendungen erstellen, damit diese sich selbst authentifizieren können. Um diese Dienstkonten zu organisieren, erstellen Sie häufig eine benutzerdefinierte Organisationseinheit in der von Azure AD DS verwalteten Domäne und erstellen dann Dienstkonten innerhalb dieser Organisationseinheit.
+Wenn Sie Workloads erstellen und ausführen, die Azure AD DS verwenden, müssen Sie möglicherweise Dienstkonten für Anwendungen erstellen, damit diese sich selbst authentifizieren können. Um diese Dienstkonten zu organisieren, erstellen Sie häufig eine benutzerdefinierte Organisationseinheit in der verwalteten Domäne und erstellen dann Dienstkonten innerhalb dieser Organisationseinheit.
 
-In einer Hybridumgebung werden in einer lokalen AD DS-Umgebung erstellte Organisationseinheiten nicht mit Azure AD DS synchronisiert. Verwaltete Azure AD DS-Domänen weisen eine flache OE-Struktur auf. Alle Benutzerkonten und -gruppen werden ungeachtet der Synchronisierung aus verschiedenen lokalen Domänen oder Gesamtstrukturen im Container *AADDC Users* gespeichert, auch wenn Sie eine hierarchische OE-Struktur konfiguriert haben.
+In einer Hybridumgebung werden in einer lokalen AD DS-Umgebung erstellte Organisationseinheiten nicht mit der verwalteten Domäne synchronisiert. Verwaltete Domänen weisen eine flache OE-Struktur auf. Alle Benutzerkonten und -gruppen werden ungeachtet der Synchronisierung aus verschiedenen lokalen Domänen oder Gesamtstrukturen im Container *AADDC Users* gespeichert, auch wenn Sie eine hierarchische OE-Struktur konfiguriert haben.
 
-In diesem Artikel wird gezeigt, wie Sie in der von Azure AD DS verwalteten Domäne eine Organisationseinheit erstellen.
+In diesem Artikel wird gezeigt, wie Sie in der verwalteten Domäne eine Organisationseinheit erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -42,36 +42,36 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] aus.
+    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance] aus.
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] aus.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
 ## <a name="custom-ou-considerations-and-limitations"></a>Überlegungen und Einschränkungen zu benutzerdefinierten Organisationseinheiten
 
-Wenn Sie benutzerdefinierte Organisationseinheiten in einer von Azure AD DS verwalteten Domäne erstellen, erhalten Sie zusätzliche Flexibilität für die Benutzerverwaltung und die Anwendung von Gruppenrichtlinien. Im Vergleich zu einer lokalen AD DS-Umgebung gibt es einige Einschränkungen und Überlegungen bei der Erstellung und Verwaltung einer benutzerdefinierten Organisationseinheitsstruktur in Azure AD DS:
+Wenn Sie benutzerdefinierte Organisationseinheiten in einer verwalteten Domäne erstellen, erhalten Sie zusätzliche Flexibilität bei der Benutzerverwaltung und der Anwendung von Gruppenrichtlinien. Im Vergleich zu einer lokalen AD DS-Umgebung gibt es einige Einschränkungen und Aspekte, die beim Erstellen und Verwalten einer benutzerdefinierten OE-Struktur in einer verwalteten Domäne zu berücksichtigen sind:
 
 * Um benutzerdefinierte Organisationseinheiten erstellen zu können, müssen Benutzer Mitglied der Gruppe *AAD DC Administrators* sein.
 * Ein Benutzer, der eine benutzerdefinierte Organisationseinheit erstellt, erhält Administratorrechte (Vollzugriff) über diese Organisationseinheit und ist der Ressourcenbesitzer.
     * Standardmäßig hat die Gruppe *AAD DC Administrators* auch Vollzugriff auf die benutzerdefinierte Organisationseinheit.
 * Es wird eine Standardorganisationseinheit für *AADDC-Benutzer* erstellt, die alle synchronisierten Benutzerkonten Ihres Azure AD-Mandanten enthält.
-    * Sie können keine Benutzer oder Gruppen der Organisationseinheit *AADDC-Benutzer* in benutzerdefinierte Organisationseinheiten verschieben, die Sie erstellen. Nur Benutzerkonten oder Ressourcen, die in der von Azure AD DS verwalteten Domäne erstellt wurden, können in benutzerdefinierte Organisationseinheiten verschoben werden.
+    * Sie können keine Benutzer oder Gruppen der Organisationseinheit *AADDC-Benutzer* in benutzerdefinierte Organisationseinheiten verschieben, die Sie erstellen. Es können nur in der verwalteten Domäne erstellte Benutzerkonten oder Ressourcen in benutzerdefinierte Organisationseinheiten verschoben werden.
 * Benutzerkonten, Gruppen, Dienstkonten und Computerobjekte, die Sie in benutzerdefinierten Organisationseinheiten erstellen, stehen in Ihrem Azure AD-Mandanten nicht zur Verfügung.
-    * Diese Objekte werden nicht über die Microsoft Graph-API oder auf der Azure AD-Benutzeroberfläche angezeigt. Sie sind nur in Ihrer von Azure AD DS verwalteten Domäne verfügbar.
+    * Diese Objekte werden nicht über die Microsoft Graph-API oder auf der Azure AD-Benutzeroberfläche angezeigt. Sie sind nur in Ihrer verwalteten Domäne verfügbar.
 
 ## <a name="create-a-custom-ou"></a>Erstellen einer benutzerdefinierten Organisationseinheit
 
-Um eine benutzerdefinierte Organisationseinheit zu erstellen, verwenden Sie die Active Directory-Verwaltungstools auf einer in die Domäne eingebundenen VM. Mit dem Active Directory-Verwaltungscenter können Sie Ressourcen in einer verwalteten Azure AD DS-Domäne anzeigen, bearbeiten und erstellen, einschließlich Organisationseinheiten.
+Um eine benutzerdefinierte Organisationseinheit zu erstellen, verwenden Sie die Active Directory-Verwaltungstools auf einer in die Domäne eingebundenen VM. Im Active Directory-Verwaltungscenter können Sie Ressourcen in einer verwalteten Domäne (einschließlich Organisationseinheiten) anzeigen, bearbeiten und erstellen.
 
 > [!NOTE]
-> Zum Erstellen einer benutzerdefinierten Organisationseinheit in einer verwalteten Azure AD DS-Domäne müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administrators* ist.
+> Um eine benutzerdefinierte Organisationseinheit in einer verwalteten Domäne erstellen zu können, müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administratoren* ist.
 
 1. Melden Sie sich bei Ihrer Verwaltungs-VM an. Weitere Informationen zu den Schritten zum Herstellen einer Verbindung mithilfe des Azure-Portals finden Sie unter [Herstellen einer Verbindung mit einer Windows Server-VM][connect-windows-server-vm].
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Es wird eine Liste der verfügbaren Verwaltungstools angezeigt, die im Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] installiert wurden.
 1. Wählen Sie zum Erstellen und Verwalten von Organisationseinheiten **Active Directory-Verwaltungscenter** aus der Liste der Verwaltungstools aus.
-1. Wählen Sie im linken Bereich Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus. Eine Liste der vorhandenen Organisationseinheiten und Ressourcen wird angezeigt:
+1. Wählen Sie im linken Bereich Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus. Eine Liste der vorhandenen Organisationseinheiten und Ressourcen wird angezeigt:
 
-    ![Wählen Sie Ihre von Azure AD DS verwaltete Domäne im Active Directory-Verwaltungscenter aus.](./media/create-ou/create-ou-adac-overview.png)
+    ![Auswählen Ihrer verwalteten Domäne im Active Directory-Verwaltungscenter](./media/create-ou/create-ou-adac-overview.png)
 
 1. Der Bereich **Aufgaben** wird auf der rechten Seite des Active Directory-Verwaltungscenters angezeigt. Wählen Sie unter der Domäne (z. B. *aaddscontoso.com*) die Option **Neu > Organisationseinheit** aus.
 

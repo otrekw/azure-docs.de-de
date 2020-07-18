@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388934"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie
 
@@ -32,6 +32,9 @@ Mit Azure AD B2C können Sie einer User Journey Ihre eigene Geschäftslogik hinz
 - **Ausführen von benutzerdefinierter Geschäftslogik**. Sie können Pushbenachrichtigungen senden, Unternehmensdatenbanken aktualisieren, einen Benutzermigrationsprozess ausführen, Berechtigungen verwalten, Datenbanken überwachen und andere Workflows ausführen.
 
 ![Diagramm eines Anspruchsaustauschs über den RESTful-Dienst](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> Wenn der RESTful-Dienst nur langsam reagiert oder gar keine Antwort an Azure AD B2C sendet, beträgt der Timeoutwert 30 Sekunden, und die Anzahl der Wiederholungsversuche ist auf „2“ festgelegt (d. h. es gibt insgesamt 3 Versuche). Die Einstellungen für das Timeout und die Anzahl der Wiederholungsversuche können derzeit nicht konfiguriert werden.
 
 ## <a name="calling-a-restful-service"></a>Aufrufen eines RESTful-Diensts
 
@@ -142,7 +145,7 @@ Ihre REST-API kann auf jeder beliebigen Plattform aufsetzen und in einer beliebi
 ## <a name="localize-the-rest-api"></a>Lokalisieren der REST-API
 In einem technischen RESTful-Profil empfiehlt es sich, die Sprache bzw. das Gebietsschema der aktuellen Sitzung zu senden und bei Bedarf eine lokalisierte Fehlermeldung auszugeben. Mit dem [Anspruchskonfliktlöser](claim-resolver-overview.md) können Sie einen kontextbezogenen Anspruch (z. B. die Benutzersprache) senden. Das folgende Beispiel zeigt ein technisches RESTful-Profil mit diesem Szenario.
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -162,7 +165,7 @@ In einem technischen RESTful-Profil empfiehlt es sich, die Sprache bzw. das Gebi
 
 ## <a name="handling-error-messages"></a>Verarbeiten von Fehlermeldungen
 
-Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z. B. „Der Benutzer wurde nicht im CRM-System gefunden“). Wenn ein Fehler auftritt, sollte die REST-API die HTTP-Fehlermeldung 409 (Antwortstatuscode „Konflikt“) zurückgeben. Weitere Informationen finden Sie unter [Technisches RESTful-Profil](restful-technical-profile.md#returning-error-message).
+Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z. B. „Der Benutzer wurde nicht im CRM-System gefunden“). Wenn ein Fehler auftritt, sollte die REST-API die HTTP-Fehlermeldung 409 (Antwortstatuscode „Konflikt“) zurückgeben. Weitere Informationen finden Sie unter [Technisches RESTful-Profil](restful-technical-profile.md#returning-validation-error-message).
 
 Dies kann nur durch Aufrufen eines technischen REST-API-Profils aus einem technischen Validierungsprofil erreicht werden. Dadurch kann der Benutzer die Daten auf der Seite korrigieren und die Validierung bei der Seitenübermittlung erneut ausführen.
 

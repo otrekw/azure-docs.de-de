@@ -8,19 +8,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582700"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611287"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -120,7 +120,7 @@ Beim Aktualisieren der Lizenzzuweisung für einen Benutzer wird die Berechnung d
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in Überwachungsprotokollen
 
 **Problem:** Für den Benutzer enthalten die Überwachungsprotokolle eine LicenseAssignmentAttributeConcurrencyException für die Lizenzzuweisung.
-Wenn die gruppenbasierte Lizenzierung versucht, gleichzeitige Lizenzzuweisungen derselben Lizenz zu einem Benutzer zu verarbeiten, wird diese Ausnahme für den Benutzer aufgezeichnet. Dies ist normalerweise der Fall, wenn ein Benutzer Mitglied mehrerer Gruppen ist, denen dieselbe Lizenz zugewiesen ist. Azure AD wiederholt den Verarbeitungsversuch der Benutzerlizenz und löst das Problem. Es ist keine Aktion durch den Kunden erforderlich, um dieses Problem zu beheben.
+Wenn die gruppenbasierte Lizenzierung versucht, gleichzeitige Lizenzzuweisungen derselben Lizenz zu einem Benutzer zu verarbeiten, wird diese Ausnahme für den Benutzer aufgezeichnet. Dies ist normalerweise der Fall, wenn ein Benutzer Mitglied mehrerer Gruppen ist, denen dieselbe Lizenz zugewiesen ist. Azure AD versucht erneut, die Benutzerlizenz zu verarbeiten und das Problem zu beheben. Es ist keine Aktion durch den Kunden erforderlich, um dieses Problem zu beheben.
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Mehrere Produktlizenzen für eine Gruppe
 

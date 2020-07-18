@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 534d75a5b9009f0febee2746179ab7357a4985e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77060422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732870"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SAP Cloud Platform Identity Authentication für die automatische Benutzerbereitstellung
 
@@ -58,7 +58,10 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![SAP Cloud Platform Identity Authentication-Verwaltungskonsole](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Erstellen Sie einen Administratorbenutzer, und wählen Sie den Benutzer aus.  
+2.  Klicken Sie im linken Bereich auf die Schaltfläche **+Hinzufügen**, um der Liste einen neuen Administrator hinzuzufügen. Wählen Sie **System hinzufügen** aus, und geben Sie den Namen des Systems ein.   
+
+> [!NOTE]
+> Der Administratorbenutzer in SAP Cloud Platform Identity Authentication muss vom Typ **System** sein. Die Erstellung eines Standardadministrators kann bei der Bereitstellung zu Fehlern vom Typ *Nicht autorisiert* führen.   
 
 3.  Aktivieren Sie unter „Autorisierungen konfigurieren“ die Umschaltfläche für **Benutzer verwalten** und **Gruppen verwalten**.
 

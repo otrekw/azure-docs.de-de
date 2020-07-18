@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e3e524df2e98229698a86a721b7312a4d054ff70
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654867"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040043"
 ---
-# <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
+# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien für verwaltete Active Directory Domain Services-Domänen
 
 Um die Benutzersicherheit in Azure Active Directory Domain Services (Azure AD DS) zu verwalten, können Sie differenzierte Kennwortrichtlinien definieren, die die Einstellungen für die Kontosperre oder die minimale Kennwortlänge und -komplexität steuern. Eine differenzierte Standardkennwortrichtlinie wird erstellt und auf alle Benutzer in einer verwalteten Azure AD DS-Domäne angewendet. Um eine differenzierte Steuerung zu gewährleisten und bestimmte Geschäfts- oder Complianceanforderungen zu erfüllen, können zusätzliche Richtlinien erstellt und auf bestimmte Gruppen von Benutzern angewendet werden.
 
 In diesem Artikel wird das Erstellen und Konfigurieren einer differenzierten Kennwortrichtlinie in Azure AD DS mithilfe des Active Directory-Verwaltungscenters erläutert.
 
 > [!NOTE]
-> Kennwortrichtlinien sind nur für verwaltete Azure AD DS-Domänen verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Bei älteren verwalteten Domänen, die auf klassische Weise erstellt wurden, sollten Sie eine [Migration vom klassischen virtuellen Netzwerkmodell zu Resource Manager][migrate-from-classic] ausführen.
+> Kennwortrichtlinien sind nur für verwaltete Domänen verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Bei älteren verwalteten Domänen, die auf klassische Weise erstellt wurden, sollten Sie eine [Migration vom klassischen virtuellen Netzwerkmodell zu Resource Manager][migrate-from-classic] ausführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -36,28 +36,28 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
   * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-  * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] aus.
-  * Die Azure AD DS-Instanz muss mit dem Azure Resource Manager-Bereitstellungsmodell erstellt worden sein. Bei Bedarf sollten Sie eine [Migration vom klassischen virtuellen Netzwerkmodell zu Resource Manager][migrate-from-classic] ausführen.
-* Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
+  * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance] aus.
+  * Die verwaltete Domäne muss mit dem Azure Resource Manager-Bereitstellungsmodell erstellt worden sein. Bei Bedarf sollten Sie eine [Migration vom klassischen virtuellen Netzwerkmodell zu Resource Manager][migrate-from-classic] ausführen.
+* Eine Windows Server-Verwaltungs-VM, die in die verwaltete Domäne eingebunden ist.
   * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] aus.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
 ## <a name="default-password-policy-settings"></a>Standardeinstellungen von Kennwortrichtlinien
 
-Mit differenzierten Kennwortrichtlinien (FGPP) können Sie bestimmte Einschränkungen für Kennwort- und Kontosperrungsrichtlinien auf verschiedene Benutzer in einer Domäne anwenden. Zum Sichern privilegierter Konten können Sie beispielsweise strengere Einstellungen für Kontosperren anwenden als für reguläre Konten, die nicht privilegiert sind. Sie können mehrere FGPPs innerhalb einer verwalteten Azure AD DS-Domäne erstellen und die Reihenfolge der Priorität festlegen, um sie auf Benutzer anzuwenden.
+Mit differenzierten Kennwortrichtlinien (FGPP) können Sie bestimmte Einschränkungen für Kennwort- und Kontosperrungsrichtlinien auf verschiedene Benutzer in einer Domäne anwenden. Zum Sichern privilegierter Konten können Sie beispielsweise strengere Einstellungen für Kontosperren anwenden als für reguläre Konten, die nicht privilegiert sind. Sie können mehrere FGPPs innerhalb einer verwalteten Domäne erstellen und die Reihenfolge der Priorität festlegen, in der sie auf die Benutzer angewendet werden sollen.
 
 Weitere Informationen zu Kennwortrichtlinien und zum Verwenden des Active Directory-Verwaltungscenters finden Sie in den folgenden Artikeln:
 
 * [Informationen über differenzierte Kennwortrichtlinien](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
 * [Konfigurieren differenzierter Kennwortrichtlinien mit dem Active Directory-Verwaltungscenter](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
-Richtlinien werden über die Gruppenzuordnung in einer verwalteten Azure AD DS-Domäne verteilt. Von Ihnen vorgenommene Änderungen werden bei der nächsten Benutzeranmeldung angewendet. Wenn Sie die Richtlinie ändern, wird ein bereits gesperrtes Benutzerkonto nicht entsperrt.
+Richtlinien werden über die Gruppenzuordnung in einer verwalteten Domäne verteilt. Von Ihnen vorgenommene Änderungen werden bei der nächsten Benutzeranmeldung angewendet. Wenn Sie die Richtlinie ändern, wird ein bereits gesperrtes Benutzerkonto nicht entsperrt.
 
 Kennwortrichtlinien verhalten sich je nachdem, wie das Benutzerkonto erstellt wurde, auf das sie angewendet werden, etwas anders. Es gibt zwei Möglichkeiten, wie ein Benutzerkonto in Azure AD DS erstellt werden kann:
 
 * Das Benutzerkonto kann aus Azure AD synchronisiert werden. Dazu gehören reine Cloudbenutzerkonten, die direkt in Azure erstellt wurden, sowie hybride Benutzerkonten, die aus einer lokalen AD DS-Umgebung mit Azure AD Connect synchronisiert werden.
     * Der Großteil der Benutzerkonten in Azure AD DS wird durch den Synchronisierungsprozess aus Azure AD erstellt.
-* Das Benutzerkonto kann manuell in einer verwalteten Azure AD DS-Domäne erstellt werden und ist dann in Azure AD nicht vorhanden.
+* Das Benutzerkonto kann in einer verwalteten Domäne manuell erstellt werden und ist dann in Azure AD nicht vorhanden.
 
 Für alle Benutzer (unabhängig davon, wie sie erstellt werden) gelten die folgenden Kontosperrrichtlinien, die von der Standardkennwortrichtlinie in Azure AD DS angewendet werden:
 
@@ -72,7 +72,7 @@ Kontosperrungen erfolgen nur innerhalb der verwalteten Domäne. Benutzerkonten w
 
 Wenn Sie eine Azure AD-Kennwortrichtlinie verwenden, die ein maximales Kennwortalter von mehr als 90 Tagen angibt, wird dieses Kennwortalter auf die Standardrichtlinie in Azure AD DS angewendet. Sie können eine benutzerdefinierte Kennwortrichtlinie konfigurieren, um ein anderes maximales Kennwortalter in Azure AD DS zu definieren. Seien Sie vorsichtig, wenn Sie ein kürzeres maximales Kennwortalter in einer Azure AD DS-Kennwortrichtlinie konfiguriert haben als in Azure AD oder einer lokalen AD DS-Umgebung. In diesem Szenario kann das Kennwort eines Benutzers in Azure AD DS ablaufen, bevor er in Azure AD oder einer lokalen AD DS-Umgebung aufgefordert wird, das Kennwort zu ändern.
 
-Für Benutzerkonten, die in einer verwalteten Azure AD DS-Domäne manuell erstellt wurden, werden die folgenden zusätzlichen Kennworteinstellungen aus der Standardrichtlinie ebenfalls angewendet. Diese Einstellungen gelten nicht für Benutzerkonten, die aus Azure AD synchronisiert werden, da ein Benutzer sein Kennwort in Azure AD DS nicht direkt aktualisieren kann.
+Auf in einer verwalteten Domäne manuell erstellte Benutzerkonten werden auch die folgenden zusätzlichen Kennworteinstellungen aus der Standardrichtlinie angewendet. Diese Einstellungen gelten nicht für Benutzerkonten, die aus Azure AD synchronisiert werden, da ein Benutzer sein Kennwort in Azure AD DS nicht direkt aktualisieren kann.
 
 * **Minimale Kennwortlänge (Zeichen):** 7
 * **Kennwörter müssen den Anforderungen an die Komplexität entsprechen**
@@ -83,19 +83,19 @@ Sie können die Einstellungen für Kontosperrung oder Kennwort nicht in der Stan
 
 Wenn Sie Anwendungen in Azure erstellen und ausführen, sollten Sie eine benutzerdefinierte Kennwortrichtlinie konfigurieren. Beispielsweise können Sie eine Richtlinie erstellen, um unterschiedliche Einstellungen für eine Kontosperrungsrichtlinie festzulegen.
 
-Benutzerdefinierte Kennwortrichtlinien werden auf Gruppen in einer verwalteten Azure AD DS-Domäne angewendet. Diese Konfiguration überschreibt effektiv die Standardrichtlinie.
+Benutzerdefinierte Kennwortrichtlinien werden auf Gruppen in einer verwalteten Domäne angewendet. Diese Konfiguration überschreibt effektiv die Standardrichtlinie.
 
-Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Active Directory-Verwaltungstools auf einer in die Domäne eingebundenen VM. Mit dem Active Directory-Verwaltungscenter können Sie Ressourcen in einer verwalteten Azure AD DS-Domäne anzeigen, bearbeiten und erstellen, einschließlich Organisationseinheiten.
+Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Active Directory-Verwaltungstools auf einer in die Domäne eingebundenen VM. Im Active Directory-Verwaltungscenter können Sie Ressourcen in einer verwalteten Domäne (einschließlich Organisationseinheiten) anzeigen, bearbeiten und erstellen.
 
 > [!NOTE]
-> Zum Erstellen einer benutzerdefinierten Kennwortrichtlinie in einer verwalteten Azure AD DS-Domäne müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administratoren* ist.
+> Um eine benutzerdefinierte Kennwortrichtlinie in einer verwalteten Domäne erstellen zu können, müssen Sie bei einem Benutzerkonto angemeldet sein, das Mitglied der Gruppe *AAD DC-Administratoren* ist.
 
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Es wird eine Liste der verfügbaren Verwaltungstools angezeigt, die im Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] installiert wurden.
 1. Wählen Sie zum Erstellen und Verwalten von Organisationseinheiten **Active Directory-Verwaltungscenter** aus der Liste der Verwaltungstools aus.
-1. Wählen Sie im linken Bereich Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus.
+1. Wählen Sie im linken Bereich Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Öffnen Sie den Container **System** und dann den Container **Kennworteinstellungen**.
 
-    Eine integrierte Kennwortrichtlinie für die verwaltete Azure AD DS-Domäne wird angezeigt. Sie können diese integrierte Richtlinie nicht ändern. Erstellen Sie stattdessen eine benutzerdefinierte Kennwortrichtlinie, um die Standardrichtlinie außer Kraft zu setzen.
+    Es wird eine integrierte Kennwortrichtlinie für die verwaltete Domäne angezeigt. Sie können diese integrierte Richtlinie nicht ändern. Erstellen Sie stattdessen eine benutzerdefinierte Kennwortrichtlinie, um die Standardrichtlinie außer Kraft zu setzen.
 
     ![Erstellen einer benutzerdefinierten Kennwortrichtlinie im Active Directory-Verwaltungscenter](./media/password-policy/create-password-policy-adac.png)
 
@@ -107,7 +107,7 @@ Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Ac
 
 1. Bearbeiten Sie andere Einstellungen für Kennwortrichtlinien wie gewünscht. Beachten Sie die folgenden wichtigen Punkte:
 
-    * Einstellungen wie Kennwortkomplexität, Alter oder Ablaufzeit gelten nur für Benutzer, die manuell in einer verwalteten Azure AD DS-Domäne erstellt werden.
+    * Einstellungen wie Kennwortkomplexität, Alter oder Ablaufzeit gelten nur für Benutzer, die in einer verwalteten Domäne manuell erstellt werden.
     * Kontosperreinstellungen gelten für alle Benutzer, werden jedoch nur in der verwalteten Domäne und nicht in Azure AD wirksam.
 
     ![Erstellen einer benutzerdefinierten differenzierten Kennwortrichtlinie](./media/password-policy/custom-fgpp.png)
