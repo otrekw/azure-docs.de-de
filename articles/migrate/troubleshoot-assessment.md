@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 205b52201edb849abab02809b58ff9dc77a32a29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121672"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -36,10 +36,10 @@ Erfordert ein Microsoft Visual Studio-Abonnement. | Auf dem Computer wird ein Wi
 Kein virtueller Computer für erforderliche Speicherleistung gefunden. | Die erforderliche Speicherleistung (Eingabe/Ausgabe-Vorgänge pro Sekunde (IOPS) und Durchsatz) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie vor der Migration die Speicheranforderungen für den Computer.
 Kein virtueller Computer für erforderliche Netzwerkleistung gefunden. | Die erforderliche Netzwerkleistung (ein-/ausgehend) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie die Netzwerkanforderungen für den Computer.
 Kein virtueller Computer am angegebenen Speicherort gefunden. | Geben Sie vor der Migration einen anderen Zielort an.
-Mindestens ein Datenträger ist ungeeignet. | Mindestens ein an den virtuellen Computer angeschlossener Datenträger erfüllt die Azure-Anforderungen nicht.<br/><br/> Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Datenträgergrenzwerte für verwaltete Premium-Datenträger (32 TB).<br/><br/> Stellen Sie für jeden an den virtuellen Computer angeschlossenen Datenträger sicher, dass die Größe des Datenträgers kleiner als 64 TB (von SSD Ultra-Datenträgern unterstützt) ist.<br/><br/> Wenn dies nicht der Fall ist, reduzieren Sie die Datenträgergröße vor der Migration zu Azure, oder verwenden Sie in Azure mehrere Datenträger, und [kombinieren Sie sie in Stripesets](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping), um höhere Speichergrenzwerte zu erzielen. Stellen Sie sicher, dass die von jedem Datenträger benötigte Leistung (IOPS und Durchsatz) von [verwalteten Azure-Datenträgern virtueller Computer](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) unterstützt wird.
+Mindestens ein Datenträger ist ungeeignet. | Mindestens ein an den virtuellen Computer angeschlossener Datenträger erfüllt die Azure-Anforderungen nicht.<br/><br/> Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Datenträgergrenzwerte für verwaltete Premium-Datenträger (32 TB).<br/><br/> Stellen Sie für jeden an den virtuellen Computer angeschlossenen Datenträger sicher, dass die Größe des Datenträgers kleiner als 64 TB (von SSD Ultra-Datenträgern unterstützt) ist.<br/><br/> Wenn dies nicht der Fall ist, reduzieren Sie die Datenträgergröße vor der Migration zu Azure, oder verwenden Sie in Azure mehrere Datenträger, und [kombinieren Sie sie in Stripesets](../virtual-machines/windows/premium-storage-performance.md#disk-striping), um höhere Speichergrenzwerte zu erzielen. Stellen Sie sicher, dass die von jedem Datenträger benötigte Leistung (IOPS und Durchsatz) von [verwalteten Azure-Datenträgern virtueller Computer](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) unterstützt wird.
 Mindestens ein Netzwerkadapter ist ungeeignet. | Entfernen Sie nicht verwendete Netzwerkadapter vor der Migration vom Computer.
 Anzahl der Datenträger überschreitet den Grenzwert | Entfernen Sie nicht verwendete Datenträger vor der Migration vom Computer.
-Datenträgergröße überschreitet den Grenzwert | Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Grenzwerte für Premium-Datenträger (32 TB).<br/><br/> Azure unterstützt jedoch Datenträger mit einer Größe von bis zu 64 TB (von SSD Ultra-Datenträgern unterstützt). Reduzieren Sie die Datenträgergröße vor der Migration auf weniger als 64 TB, oder verwenden Sie mehrere Datenträger in Azure, und [kombinieren Sie sie in Stripesets](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping), um höhere Speichergrenzwerte zu erzielen.
+Datenträgergröße überschreitet den Grenzwert | Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Grenzwerte für Premium-Datenträger (32 TB).<br/><br/> Azure unterstützt jedoch Datenträger mit einer Größe von bis zu 64 TB (von SSD Ultra-Datenträgern unterstützt). Reduzieren Sie die Datenträgergröße vor der Migration auf weniger als 64 TB, oder verwenden Sie mehrere Datenträger in Azure, und [kombinieren Sie sie in Stripesets](../virtual-machines/windows/premium-storage-performance.md#disk-striping), um höhere Speichergrenzwerte zu erzielen.
 Datenträger am angegebenen Speicherort nicht verfügbar | Stellen Sie vor der Migration sicher, dass sich der Datenträger am Zielspeicherort befindet.
 Datenträger für die angegebene Redundanz nicht verfügbar | Der Datenträger muss den in den Bewertungseinstellungen definierten Redundanzspeichertyp verwenden (standardmäßig LRS).
 Datenträgereignung konnte aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
@@ -47,18 +47,27 @@ Kein virtueller Computer gefunden, der die Kern- und Arbeitsspeicheranforderunge
 Eignung des virtuellen Computers konnte aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Eignung konnte für mindestens einen Datenträger aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Eignung konnte für mindestens einen Netzwerkadapter aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
+Es wurde keine VM-Größe für die Angebot/Währung/reservierte Instanz gefunden. | Der Computer ist als „Nicht geeignet“ gekennzeichnet, weil die VM-Größe für die ausgewählte Kombination aus RI, Angebot und Währung nicht gefunden wurde. Bearbeiten Sie die Bewertungseigenschaften, um die gültigen Kombinationen auszuwählen und die Bewertung neu zu berechnen. 
+Internetprotokoll mit bedingter Bereitschaft | Nur verfügbar für Bewertungen vom Typ „VMware-Lösung in Azure (AVS)“. Der Faktor der IPv6-Internetadressierung wird von AVS nicht unterstützt. Wenden Sie sich an das AVS-Team, um eine Anleitung zur Abhilfe zu erhalten, falls Ihr Computer mit IPv6 erkannt wird.
 
-## <a name="linux-vms-are-conditionally-ready"></a>Virtuelle Linux-Computer sind „bedingt bereit“
+## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Vorgeschlagenes Migrationstool in der importbasierten AVS-Bewertung als unbekannt markiert
 
-Bei der Serverbewertung werden virtuelle Linux-Computer aufgrund einer bekannten Lücke in der Serverbewertung als „bedingt bereit“ gekennzeichnet.
+Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool in einer AVS-Bewertung unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). [Weitere Informationen](../azure-vmware/hybrid-cloud-extension-installation.md).
+
+## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux-VMs sind in einer Azure-VM-Bewertung „bedingt bereit“
+
+Bei VMware- und Hyper-V-VMs werden virtuelle Linux-Computer aufgrund einer bekannten Lücke in der Serverbewertung als „bedingt bereit“ gekennzeichnet. 
 
 - Die Lücke verhindert die Erkennung der Nebenversion des Linux-Betriebssystems, das auf den lokalen virtuellen Computern installiert ist.
-- Beispielsweise erkennt die Serverbewertung bei RHEL 6.10 derzeit nur RHEL 6 als Betriebssystemversion.
+- Beispielsweise erkennt die Serverbewertung bei RHEL 6.10 derzeit nur RHEL 6 als Betriebssystemversion. Dies liegt daran, dass die vCenter Server-Instanz und der Hyper-V-Host die Kernel-Version für Linux-VM-Betriebssysteme nicht bereitstellen.
 -  Da Azure nur bestimmte Versionen von Linux unterstützt, werden die virtuellen Linux-Computer in der Serverbewertung derzeit als „bedingt bereit“ markiert.
 - Sie können ermitteln, ob das Linux-Betriebssystem des lokalen virtuellen Computers für Azure geeignet ist. Informationen hierzu finden Sie unter [Linux-Unterstützung von Azure](https://aka.ms/migrate/selfhost/azureendorseddistros).
 -  Nachdem Sie die unterstützte Distribution überprüft haben, können Sie diese Warnung ignorieren.
 
-## <a name="azure-skus-bigger-than-on-premises"></a>Azure-SKUs größer als lokal
+Diese Lücke kann behoben werden, indem Sie [Anwendungsermittlung-](./how-to-discover-applications.md) auf den VMware-VMs aktivieren. Bei der Serverbewertung wird das von der VM erkannte Betriebssystem mit den bereitgestellten Gastanmeldeinformationen verwendet. Mit diesen Betriebssystemdaten werden die richtigen Betriebssysteminformationen im Fall von virtuellen Windows- und Linux-Computern identifiziert.
+
+
+## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure-SKUs größer als lokal in einer Azure-VM-Bewertung
 
 Je nach Art der Bewertung empfiehlt die Azure Migrate-Serverbewertung möglicherweise Azure-VM-SKUs mit mehr Kernen und Arbeitsspeicher als bei der aktuellen lokalen Zuordnung:
 
@@ -76,7 +85,7 @@ Wir haben einen lokalen virtuellen Computer mit vier Kernen und 8 GB Arbeitsspei
 - Bei der leistungsbasierten Bewertung würde auf Basis der effektiven CPU- und Speicherauslastung (50 % von 4 Kernen * 1,3 = 2,6 Kerne und 50 % von 8 GB Arbeitsspeicher * 1,3 = 5,3 GB Arbeitsspeicher) die günstigste VM-SKU mit vier Kernen (nächste unterstützte Kernanzahl) und 8 GB Arbeitsspeichergröße (nächste unterstützte Arbeitsspeichergröße) empfohlen.
 - Weitere Informationen zur Dimensionierung bei Bewertungen finden Sie [hier](concepts-assessment-calculation.md#types-of-assessments).
 
-## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure-Datenträger-SKUs größer als lokal
+## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure-Datenträger-SKUs größer als lokal in einer Azure-VM-Bewertung
 
 Die Azure Migrate-Serverbewertung empfiehlt möglicherweise je nach Art der Bewertung einen größeren Datenträger.
 - Die Datenträgerdimensionierung in der Serverbewertung hängt von zwei Bewertungseigenschaften ab: dem Dimensionierungskriterium und dem Speichertyp.
@@ -92,16 +101,39 @@ Die Serverbewertung gibt die Meldung „PercentageOfCoresUtilizedMissing“ oder
 - Dies kann vorkommen, wenn die virtuellen Computer während der Bewertung ausgeschaltet sind. Die Appliance kann keine Leistungsdaten für eine VM erfassen, wenn sie ausgeschaltet ist.
 - Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten, überprüfen Sie, ob auf diesen virtuellen Computern dynamischer Arbeitsspeicher aktiviert ist. Aufgrund eines bekannten Problems, das nur bei virtuellen Hyper-V-Computern auftritt, kann die Azure Migrate-Appliance keine Arbeitsspeichernutzungsdaten für virtuelle Computer sammeln, für die kein dynamischer Arbeitsspeicher aktiviert ist.
 - Wenn einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die zugewiesenen Kerne und den Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
-- Wenn alle Leistungsindikatoren fehlen, stellen Sie sicher, dass die Portzugriffsanforderungen für die Bewertung erfüllt sind. Erfahren Sie mehr über die Portzugriffsanforderungen für [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access)-, [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access)- und [physische](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) Serverbewertung.
+- Wenn alle Leistungsindikatoren fehlen, stellen Sie sicher, dass die Portzugriffsanforderungen für die Bewertung erfüllt sind. Erfahren Sie mehr über die Portzugriffsanforderungen für [VMware](./migrate-support-matrix-vmware.md#port-access-requirements)-, [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access)- und [physische](./migrate-support-matrix-physical.md#port-access) Serverbewertung.
 
-## <a name="is-the-operating-system-license-included"></a>Ist die Betriebssystemlizenz inbegriffen?
+## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Ist die Betriebssystemlizenz in einer Azure-VM-Bewertung inbegriffen?
 
 Die Azure Migrate-Serverbewertung berücksichtigt zurzeit die Kosten einer Betriebssystemlizenz nur für Windows-Computer. Die Lizenzkosten für Linux-Computer werden derzeit nicht berücksichtigt.
 
-## <a name="how-does-performance-based-sizing-work"></a>Wie funktioniert die leistungsbezogene Größenanpassung?
+## <a name="how-does-performance-based-sizing-work-in-an-azure-vm-assessment"></a>Wie funktioniert die leistungsbasierte Größenanpassung in einer Azure-VM-Bewertung?
 
 Die Serverbewertung sammelt fortlaufend Leistungsdaten von lokalen Computern und nutzt diese Daten, um die VM-SKU und die Datenträger-SKU in Azure zu empfehlen. [Erfahren Sie](concepts-assessment-calculation.md#calculate-sizing-performance-based), wie leistungsbasierten Daten gesammelt werden.
 
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Warum zeigt meine Bewertung eine Warnung an, dass sie mit einer ungültigen Kombination von reservierten Instanzen, VM-Betriebszeit und Rabatt (%) erstellt wurde?
+Wenn Sie „Reservierte Instanzen“ auswählen, sind die „Rabatt (%)“- und „VM-Betriebszeit“-Eigenschaften nicht anwendbar. Da Ihre Bewertung mit einer ungültigen Kombination dieser Eigenschaften erstellt wurde, sind die Schaltflächen „Bearbeiten“ und „Neu berechnen“ deaktiviert. Erstellen Sie eine neue Bewertung. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2131554)
+
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Ich sehe keine Leistungsdaten für einige Netzwerkadapter auf meinen physischen Servern.
+
+Dies kann vorkommen, wenn die Hyper-V-Virtualisierung auf dem physischen Server aktiviert ist. Auf diesen Servern werden aufgrund einer Produktlücke von Azure Migrate derzeit sowohl der physische als auch der virtuelle Netzwerkadapter ermittelt. Der Netzwerkdurchsatz wird nur auf den erkannten virtuellen Netzwerkadaptern aufgezeichnet.
+
+## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>Die empfohlene Azure-VM-SKU für meinen physischen Server ist überdimensioniert
+
+Dies kann vorkommen, wenn die Hyper-V-Virtualisierung auf dem physischen Server aktiviert ist. Auf diesen Servern werden von Azure Migrate derzeit sowohl der physische als auch der virtuelle Netzwerkadapter ermittelt. Daher ist die Anzahl der ermittelten Netzwerkadapter höher als die tatsächliche Anzahl. Wählt die Serverbewertung eine Azure-VM aus, die die erforderliche Anzahl von Netzwerkadaptern unterstützen kann, führt dies möglicherweise zu einer überdimensionierten VM. [Weitere Informationen](./concepts-assessment-calculation.md#calculating-sizing) über den Einfluss der Anzahl der Netzwerkadapter auf die Dimensionierung. Dies ist eine Produktlücke, die in Zukunft behoben wird.
+
+## <a name="readiness-category-not-ready-for-my-physical-server"></a>Bereitschaftskategorie „Nicht bereit“ für meinen physischen Server
+
+Die Bereitschaftskategorie wird im Falle eines physischen Servers mit aktivierter Hyper-V-Virtualisierung möglicherweise fälschlicherweise als „Nicht bereit“ gekennzeichnet. Auf diesen Servern werden aufgrund einer Produktlücke von Azure Migrate derzeit sowohl der physische als auch der virtuelle Adapter ermittelt. Daher ist die Anzahl der ermittelten Netzwerkadapter höher als die tatsächliche Anzahl. Sowohl bei lokalen als auch leistungsbezogenen Bewertungen wählt die Serverbewertung eine Azure-VM aus, die die erforderliche Anzahl von Netzwerkadaptern unterstützen kann. Wenn festgestellt wird, dass die Anzahl der Netzwerkadapter höher als die maximale Anzahl von NICs ist, die von Azure VMs unterstützt werden (32), wird der Rechner als „Nicht bereit“ gekennzeichnet.  [Weitere Informationen](./concepts-assessment-calculation.md#calculating-sizing) über den Einfluss der Anzahl der NICs auf die Dimensionierung.
+
+
+## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Anzahl der ermittelten NICs höher als die tatsächliche Anzahl der physischen Server
+
+Dies kann vorkommen, wenn die Hyper-V-Virtualisierung auf dem physischen Server aktiviert ist. Auf diesen Servern werden von Azure Migrate derzeit sowohl der physische als auch der virtuelle Adapter ermittelt. Daher ist die Anzahl der ermittelten NICs höher als die tatsächliche Anzahl.
+
+
+## <a name="low-confidence-rating-on-physical-server-assessments"></a>Niedrige Zuverlässigkeitsstufe bei physischen Serverbewertungen
+Die Bewertung wird basierend auf der Verfügbarkeit von Datenpunkten, die zum Berechnen der Bewertung erforderlich sind, zugewiesen. Bei physischen Servern, bei denen die Hyper-V-Virtualisierung aktiviert ist, gibt es eine bekannte Produktlücke, aufgrund derer Bewertungen physischer Server fälschlicherweise eine niedrige Zuverlässigkeitsstufe zugeordnet werden kann. Auf diesen Servern werden von Azure Migrate derzeit sowohl der physische als auch der virtuelle Adapter ermittelt. Der Netzwerkdurchsatz wird auf den erkannten virtuellen Netzwerkadaptern aufgezeichnet, aber nicht auf die physischen Netzwerkadapter. Aufgrund fehlender Datenpunkte auf den physischen Netzwerkadaptern kann die Zuverlässigkeitsstufe beeinträchtigt werden, was zu einer niedrigen Bewertung führt. Dies ist eine Produktlücke, die in Zukunft behoben wird.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Abhängigkeitsvisualisierung in Azure Government
 
@@ -122,20 +154,19 @@ Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-- **MMS-Agent**: Überprüfen Sie die unterstützten [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)- und [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)-Betriebssysteme.
+- **MMS-Agent**: Überprüfen Sie die unterstützten [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)- und [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)-Betriebssysteme.
 - **Dependency-Agent**: die unterstützten [Windows- und Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)-Betriebssysteme.
 
 ## <a name="visualize-dependencies-for--hour"></a>Visualisieren von Abhängigkeiten für > Stunde
 
-Mit Azure Migrate können Sie zwar um bis zu einen Monat zu einem bestimmten Datum zurückgehen. Die Abhängigkeiten können Sie jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren.
+Mit der Abhängigkeitsanalyse ohne Agent können Sie Abhängigkeiten für eine Dauer von bis zu 30 Tagen visualisieren oder in eine Karte exportieren.
 
-So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für den gestrigen Tag, jedoch nur für einen Zeitraum von einer Stunde, anzeigen.
-
-Sie können jedoch zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) über einen längeren Zeitraum Azure Monitor-Protokolle verwenden.
+Obwohl Sie bei der Abhängigkeitsanalyse ohne Agent mit Azure Migrate um bis zu einen Monat zu einem bestimmten Datum zurückgehen können, können Sie die Abhängigkeiten jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren. So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für den gestrigen Tag, jedoch nur für einen Zeitraum von einer Stunde, anzeigen. Sie können jedoch zum [Abfragen der Abhängigkeitsdaten](./how-to-create-group-machine-dependencies.md) über einen längeren Zeitraum Azure Monitor-Protokolle verwenden.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>Visualisieren von Abhängigkeiten für > 10 Computer
 
-Bei der Azure Migrate-Serverbewertung können Sie [Abhängigkeiten für Gruppen](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) mit bis zu 10 virtuellen Computern visualisieren. Bei größeren Gruppen empfiehlt es sich für die visuelle Darstellung von Abhängigkeiten, die virtuellen Computer in kleinere Gruppen aufzuteilen.
+Bei der Azure Migrate-Serverbewertung mit der Abhängigkeitsanalyse ohne Agent können Sie [Abhängigkeiten für Gruppen](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) mit bis zu 10 virtuellen Computern visualisieren. Bei größeren Gruppen empfiehlt es sich für die visuelle Darstellung von Abhängigkeiten, die virtuellen Computer in kleinere Gruppen aufzuteilen.
+
 
 ## <a name="machines-show-install-agent"></a>Computer zeigen „Agent installieren“ an
 
@@ -146,6 +177,9 @@ Nach dem Migrieren von Computern mit aktivierter Abhängigkeitsvisualisierung zu
 - Je nachdem, ob Sie die lokale IP-Adresse beibehalten haben oder nicht, haben Computer möglicherweise auch eine andere IP-Adresse.
 - Wenn sich sowohl Mac- als auch IP-Adressen von den lokalen Adressen unterscheiden, verknüpft Azure Migrate die lokalen Computer nicht mit Service Map-Abhängigkeitsdaten. In diesem Fall wird die Option zum Installieren des Agents anstatt die Option zum Anzeigen von Abhängigkeiten angezeigt.
 - Nach einer Testmigration zu Azure bleiben die lokalen Computer erwartungsgemäß eingeschaltet. Entsprechende Computer, die in Azure hochgefahren wurden, erhalten andere MAC-Adressen und u. U. auch andere IP-Adressen. Sofern Sie ausgehenden Datenverkehr von Azure Monitor-Protokollen von diesen Computern nicht sperren, ordnet Azure Migrate den lokalen Computern keine Service Map-Abhängigkeitsdaten zu und zeigt daher die Option zum Installieren von Agents statt der Option zum Anzeigen von Abhängigkeiten an.
+
+## <a name="dependencies-export-csv-shows-unknown-process"></a>Abhängigkeitenexport-CSV zeigt „Unbekannter Prozess“ an
+Bei der Abhängigkeitsanalyse ohne Agent werden die Prozessnamen auf Grundlage der besten Leistung aufgezeichnet. In bestimmten Szenarien ist es nicht möglich, die Prozessnamen an beiden Enden der Abhängigkeit zu ermitteln, obwohl der Quell- und Zielservername sowie der Zielport aufgezeichnet werden. In solchen Fällen wird der Prozess als „Unbekannter Prozess“ gekennzeichnet.
 
 
 ## <a name="capture-network-traffic"></a>Erfassen des Netzwerkdatenverkehrs
@@ -165,6 +199,15 @@ Sammeln Sie Protokolle zum Netzwerkdatenverkehr wie folgt:
    - Klicken Sie in Chrome mit der rechten Maustaste auf eine beliebige Stelle im Konsolenprotokoll. Wählen Sie **Speichern unter** aus, um das Protokoll zu exportieren und zu komprimieren.
    - Klicken Sie in Microsoft Edge oder Internet Explorer mit der rechten Maustaste auf die Fehler, und wählen Sie **Alle kopieren** aus.
 7. Schließen Sie die Entwicklertools.
+
+
+## <a name="where-is-the-operating-system-data-in-my-assessment-discovered-from"></a>Woher werden die Betriebssystemdaten in meiner Bewertung ermittelt?
+
+- Bei VMware-VMs handelt es sich standardmäßig um die von vCenter bereitgestellten Betriebssystemdaten. 
+   - Bei VMware-Linux-VMs werden die Betriebssystemdetails von der Gast-VM abgerufen, wenn die Anwendungsermittlung aktiviert ist. Um zu überprüfen, welche Betriebssystemdetails in der Bewertung enthalten sind, navigieren Sie zur Ansicht „Ermittelte Server“, und fahren Sie mit der Maus über den Wert in der Spalte „Betriebssystem“. In dem Text, der angezeigt wird, können Sie sehen, ob die Betriebssystemdaten von der vCenter Server-Instanz oder der Gast-VM unter Verwendung der VM-Anmeldeinformationen gesammelt werden. 
+   - Bei virtuellen Windows-Computern werden die Betriebssystemdetails immer von der vCenter Server-Instanz abgerufen.
+- Bei Hyper-V-VMS werden die Betriebssystemdaten vom Hyper-V-Host erfasst.
+- Für physische Server werden sie vom Server abgerufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

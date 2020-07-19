@@ -2,13 +2,13 @@
 title: Vorbereiten von Azure Migrate für die Arbeit mit einem ISV-Tool/Movere
 description: In diesem Artikel wird beschrieben, wie Sie Azure Migrate für die Arbeit mit einem ISV-Tool oder Movere vorbereiten, sowie die ersten Schritte bei der Verwendung des Tools.
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9513e783d4f9d7be83f1434d4dd9011844af8993
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682649"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103924"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Vorbereiten der Verwendung eines ISV-Tools oder von Movere
 
@@ -36,8 +36,20 @@ In Ihrem Azure-Abonnement muss Ihr Konto über **Microsoft.Authorization/*/Write
 1. Öffnen Sie im Azure-Portal **Abonnements**.
 2. Wählen Sie das relevante Abonnement aus. Wenn es nicht angezeigt wird, wählen Sie den Filter **globale Abonnements** aus. 
 3. Wählen Sie **My permissions** (Meine Berechtigungen). Wählen Sie anschließend **Klicken Sie hier, um die vollständigen Zugangsdaten für dieses Abonnement anzuzeigen** aus.
-4. Überprüfen Sie in **Rollenzuweisungen** > **Ansicht** die Berechtigungen. Wenn Ihr Konto keine Berechtigungen besitzt, bitten Sie den Abonnementadministrator, Sie der Rolle [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) hinzuzufügen.
- 
+4. Überprüfen Sie in **Rollenzuweisungen** > **Ansicht** die Berechtigungen. Wenn Ihr Konto keine Berechtigungen besitzt, bitten Sie den Abonnementadministrator, Sie der Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](../role-based-access-control/built-in-roles.md#owner) hinzuzufügen.
+
+## <a name="allow-access-to-urls"></a>Zulassen des Zugriffs auf URLs
+
+Erlauben Sie für ISV-Tools und den Azure-Datenbank-Migrations-Assistenten den Zugriff auf die in der Tabelle zusammengefassten öffentlichen Cloud-URLs. Wenn Sie einen URL-basierten Proxy für die Internetverbindung verwenden, stellen Sie sicher, dass der Proxy alle CNAME-Einträge auflöst, die beim Abrufen der URLs empfangen werden. 
+
+**URL** | **Details**
+--- | ---
+*.portal.azure.com  | Navigieren Sie zum Azure-Portal. 
+*.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | Melden Sie sich bei Ihrem Azure-Abonnement an. 
+*.microsoftonline.com<br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate. 
+management.azure.com | Aufrufen von Azure Resource Manager für das Azure Migrate-Projekt.
+*.servicebus.windows.net | Kommunikation zwischen der Appliance und EventHub zum Senden der Nachrichten.
+
 
 ## <a name="start-using-the-tool"></a>Beginnen mit der Verwendung des Tools
 

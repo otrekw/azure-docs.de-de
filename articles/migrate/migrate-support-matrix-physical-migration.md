@@ -3,20 +3,19 @@ title: Unterstützung der Migration physischer Server in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Migration physischer Server in Azure Migrate.
 ms.topic: conceptual
 ms.custom: fasttrack-edit
-ms.date: 01/07/2020
-ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 06/14/2020
+ms.openlocfilehash: fe23989845d3c0b229a194c9a2a58f879b757811
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770338"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
 Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Migration physischer Server mit [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) (Azure Migrate: Servermigration). Informationen zur Bewertung physischer Server für die Migration zu Azure finden Sie in der [Unterstützungsmatrix für die Bewertung physischer Server](migrate-support-matrix-physical.md).
 
-
-## <a name="overview"></a>Übersicht
+## <a name="migrating-machines-as-physical"></a>Migrieren von Computern als physische Computer
 
 Lokale Computer können mithilfe der Agent-basierten Replikation als physische Server migriert werden. Mit diesem Tool können Sie viele verschiedene Computer zu Azure migrieren:
 

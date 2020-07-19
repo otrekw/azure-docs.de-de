@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68301714"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549902"
 ---
 # <a name="create-a-group-for-assessment"></a>Erstellen einer Gruppe für die Bewertung
 
@@ -43,11 +43,11 @@ Gehen Sie wie folgt vor, wenn Sie eine Gruppe unabhängig von der Erstellung ein
 
 2. Klicken Sie auf das Symbol **Gruppe**.
 3. Geben Sie unter **Gruppe erstellen** einen Gruppennamen an, und wählen Sie unter **Appliancename** die Azure Migrate-Appliance aus, die Sie für die Computerermittlung verwenden.
-1. Wählen Sie in der Liste mit den Computern die Computer aus, die Sie der Gruppe hinzufügen möchten, und wählen Sie **Erstellen**.
+4. Wählen Sie in der Liste mit den Computern die Computer aus, die Sie der Gruppe hinzufügen möchten, und wählen Sie **Erstellen**.
 
     ![Erstellen einer Gruppe](./media/how-to-create-a-group/create-group.png)
 
-Sie können diese Gruppe jetzt beim [Erstellen einer Bewertung](how-to-create-assessment.md) verwenden.
+Sie können diese Gruppe jetzt verwenden, wenn Sie [eine Azure VM-Bewertung](how-to-create-assessment.md) oder [eine Bewertung der VMware-Lösung in Azure (AVS)](how-to-create-azure-vmware-solution-assessment.md) erstellen. Beachten Sie, dass Sie eine AVS-Bewertung für Gruppen erstellen können, die nur VMware-VMs enthalten. 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>Optimieren einer Gruppe mit Abhängigkeitszuordnung
 
