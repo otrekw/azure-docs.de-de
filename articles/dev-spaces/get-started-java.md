@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Java-Anwendung in Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c71471d1a89188a065bafef2c5b6372aeff35851
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 5616e92d64854d145c30aa3fd32bf61d65ca4221
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80240535"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224314"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und Java mit Azure Dev Spaces
 
@@ -171,7 +171,7 @@ Es gibt jedoch eine noch *schnellere Methode* für die Codeentwicklung. Sie wird
 
 In diesem Abschnitt verwenden Sie VS Code zum direkten Debuggen des in Azure ausgeführten Containers. Außerdem erfahren Sie, wie Sie die Schleife zum Bearbeiten/Ausführen/Testen beschleunigen.
 
-![](media/common/edit-refresh-see.png)
+![Abbildung mit den Optionen „Code bearbeiten“, Container aktualisieren“ und „Anzeigen des Updatezyklus“.](media/common/edit-refresh-see.png)
 
 > [!Note]
 > **Sollten Sie einmal nicht weiterkommen**, lesen Sie den Abschnitt [Problembehandlung](troubleshooting.md), oder hinterlassen Sie einen Kommentar auf dieser Seite.
@@ -183,13 +183,13 @@ Sie müssen zunächst Ihr Codeprojekt konfigurieren, damit VS Code mit dem Entwi
 
 Dadurch wird die Debugkonfiguration für Azure Dev Spaces unter dem `.vscode`-Ordner hinzugefügt. Dieser Befehl darf nicht mit dem Befehl `azds prep` verwechselt werden, der zum Konfigurieren des Projekts für die Bereitstellung dient.
 
-![](media/common/command-palette.png)
+![Screenshot mit der Azure Dev Spaces-Option in der VS Code-Befehlspalette](media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>Auswählen der AZDS-Debugkonfiguration
 1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Codeauf das Symbol „Debuggen“.
 1. Wählen Sie als aktive Debugkonfiguration **Launch Java Program (AZDS)** (Java-Programm starten (AZDS)) aus.
 
-![](media/get-started-java/debug-configuration.png)
+![Screenshot der VS Code-Debugfunktion mit der Option „Java-Programm starten“ in rot.](media/get-started-java/debug-configuration.png)
 
 > [!Note]
 > Falls in der Befehlspalette keine Azure Dev Spaces-Befehle angezeigt werden, überprüfen Sie, ob die VS Code-Erweiterung für Azure Dev Spaces installiert wurde. Achten Sie darauf, dass es sich bei dem in Visual Studio Code geöffneten Arbeitsbereich um den Ordner handelt, der `azds.yaml` enthält.
@@ -202,7 +202,7 @@ Wie beim Befehl `up` wird der Code mit dem Entwicklungsbereich synchronisiert, u
 > [!Tip]
 > Die Visual Studio Code-Statusleiste ändert sich in orange, was bedeutet, dass der Debugger angefügt ist. Sie zeigt auch eine klickbare URL an, die Sie verwenden können, um Ihre Anwendung zu öffnen.
 
-![](media/common/vscode-status-bar-url.png)
+![Screenshot der VS Code-Statusleiste, nachdem Sie orangefarben geworden ist.](media/common/vscode-status-bar-url.png)
 
 Legen Sie einen Breakpoint in einer serverseitigen Codedatei fest, beispielsweise in der `greeting()`-Funktion in der Quelldatei `src/main/java/com/ms/sample/webfrontend/Application.java`. Durch die Aktualisierung der Browserseite wird der Breakpoint erreicht.
 
@@ -220,7 +220,7 @@ public String greeting()
 
 Speichern Sie die Datei, und klicken Sie im Bereich **Debugaktionen** auf die Schaltfläche **Neu starten**.
 
-![](media/common/debug-action-refresh.png)
+![Screenshot des Bereichs „VS Code-Debugaktionen" mit der Neustartoption in rot.](media/common/debug-action-refresh.png)
 
 Das Neuerstellen und erneute Bereitstellen eines neuen Containerimages bei jeder vorgenommenen Codeänderung kann geraume Zeit in Anspruch nehmen. Daher kompiliert Azure Dev Spaces Code im vorhandenen Container inkrementell, um den Bearbeitungs-/Debugging-Kreislauf zu beschleunigen.
 

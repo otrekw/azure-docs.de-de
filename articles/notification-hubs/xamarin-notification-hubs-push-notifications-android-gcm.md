@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f1d12081591b180acca8ee35ecc5a5bf202211e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308131"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223940"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Xamarin.Android-Apps mit Notification Hubs
 
@@ -60,7 +60,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 2. Geben Sie den **Serverschlüssel** ein, den Sie in der Google Firebase-Konsole notiert haben.
 3. Wählen Sie auf der Symbolleiste **Speichern** aus.
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Screenshot von Notification Hub im Azure-Portal mit hervorgehobener und rot markierter Option „Google GCM/FCM“.](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Der Notification Hub ist für die Arbeit mit FCM konfiguriert, und Sie besitzen die Verbindungszeichenfolgen, um die App für den Empfang von Benachrichtigungen zu registrieren und Pushbenachrichtigungen zu versenden.
 

@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0abe443521b928dd087e23b5491635b02cd832e8
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592025"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223430"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Tutorial: Senden standortbasierter Pushbenachrichtigungen mit Notification Hubs und Bing Spatial Data
 
@@ -49,10 +49,10 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 1. Melden Sie sich beim [Bing Maps Dev Center](https://www.bingmapsportal.com/) an.
 2. Klicken Sie in der oberen Navigationsleiste auf **Datenquellen**, und wählen Sie **Datenquellen verwalten** aus.
 
-    ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
+    ![Screenshot von Bing Maps Dev Center mit der Seite „Datenquellen verwalten“ mit der rot dargestellten Option „Daten als Datenquelle hochladen“.](./media/notification-hubs-geofence/bing-maps-manage-data.png)
 3. Wenn Sie noch nicht über eine Datenquelle verfügen, wird ein Link angezeigt, über den Sie eine Datenquelle erstellen können. Wählen Sie **Daten als Datenquelle hochladen** aus. Sie können auch das Menü **Datenquellen** > **Daten hochladen** verwenden.
 
-    ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
+    ![Screenshot des Dialogfelds „Datenquelle hochladen“](./media/notification-hubs-geofence/bing-maps-create-data.png)
 4. Erstellen Sie auf Ihrer Festplatte eine Datei namens `NotificationHubsGeofence.pipe` mit folgendem Inhalt: In diesem Tutorial verwenden Sie eine pipebasierte Beispieldatei, die einen Teil des Hafengebiets von San Francisco eingrenzt:
 
     ```text
@@ -63,7 +63,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
     Die Pipedatei stellt diese Entität dar:
 
-    ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
+    ![Screenshot eines Teils des Hafengebiets von San Francisco mit einem roten Polygon, das einen Bereich der Piers umschließt.](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Führen Sie auf der Seite **Datenquelle hochladen** die folgenden Aktionen aus:
    1. Wählen Sie **Pipe** als **Datenformat** aus.
    2. Navigieren Sie zu der Datei `NotificationHubGeofence.pipe`, die Sie im vorherigen Schritt erstellt haben, und wählen Sie sie aus.
@@ -74,18 +74,18 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 6. Nachdem Sie die Datendatei hochgeladen haben, müssen Sie sicherstellen, dass Sie die Datenquelle veröffentlichen. Wählen Sie wie zuvor **Datenquellen** -> **Datenquellen verwalten** aus.
 7. Wählen Sie in der Liste Ihre Datenquelle aus, und klicken Sie in der Spalte **Aktionen** auf **Veröffentlichen**.
 
-    ![](./media/notification-hubs-geofence/publish-button.png)
+    ![Screenshot von Bing Maps Dev Center mit der Seite „Datenquellen verwalten“ mit ausgewählter Registerkarte „Geocodierte Daten“ und rot dargestellter Option „Veröffentlichen“.](./media/notification-hubs-geofence/publish-button.png)
 8. Wechseln Sie zur Registerkarte **Veröffentlichte Datenquellen**, und vergewissern Sie sich, dass Ihre Datenquelle in der Liste angezeigt wird.
 
-    ![](./media/notification-hubs-geofence/bing-maps-published-data.png)
+    ![Screenshot von Bing Maps Dev Center mit der Seite „Datenquellen verwalten“ mit ausgewählter Registerkarte „Veröffentlichte Datenquellen“.](./media/notification-hubs-geofence/bing-maps-published-data.png)
 9. Wählen Sie **Bearbeiten** aus. Sie sehen auf einen Blick, welche Standorte Sie in die Daten eingeschlossen haben.
 
-    ![](./media/notification-hubs-geofence/bing-maps-data-details.png)
+    ![Screenshot der Seite „Entitätsdaten bearbeiten“ mit einer Karte der westlichen USA und einem magentafarbenen Punkt über dem Hafenbereich von San Francisco.](./media/notification-hubs-geofence/bing-maps-data-details.png)
 
     An diesem Punkt werden die Grenzen für den von Ihnen erstellten Geofence nicht angezeigt. Sie benötigen lediglich die Bestätigung, dass sich der angegebene Standort in der richtigen Umgebung befindet.
 10. Sie verfügen nun über alle Anforderungen für die Datenquelle. Wählen Sie zum Abrufen der Details zur Anforderungs-URL für den API-Aufruf im Bing Maps Dev Center die Option **Datenquellen** und dann **Datenquelleninformationen**.
 
-    ![](./media/notification-hubs-geofence/bing-maps-data-info.png)
+    ![Screenshot von Bing Maps Dev Center mit der Seite „Datenquelleninformationen“.](./media/notification-hubs-geofence/bing-maps-data-info.png)
 
     Die **Abfrage-URL** ist der Endpunkt, für den Sie Abfragen ausführen können, um zu überprüfen, ob sich das Gerät derzeit innerhalb der Grenzen eines Standorts befindet. Zur Überprüfung führen Sie einfach einen GET-Aufruf mit den folgenden angefügten Parametern für die Abfrage-URL aus:
 
@@ -95,17 +95,17 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
     Bing Maps führt automatisch die notwendigen Berechnungen durch, um zu ermitteln, ob sich das Gerät innerhalb des Geofence befindet. Nachdem Sie die Anforderung über einen Browser (oder cURL) ausgeführt haben, erhalten Sie eine JSON-Standardantwort:
 
-    ![](./media/notification-hubs-geofence/bing-maps-json.png)
+    ![Screenshot der JSON-Standardantwort.](./media/notification-hubs-geofence/bing-maps-json.png)
 
     Diese Antwort erfolgt nur, wenn sich der Punkt tatsächlich innerhalb der festgelegten Grenzen befindet. Andernfalls erhalten Sie einen leeren **results**-Bucket:
 
-    ![](./media/notification-hubs-geofence/bing-maps-nores.png)
+    ![Screenshot einer JSON-Antwort mit einem leeren Ergebnisbucket.](./media/notification-hubs-geofence/bing-maps-nores.png)
 
 ## <a name="set-up-the-uwp-application"></a>Einrichten der UWP-Anwendung
 
 1. Starten Sie in Visual Studio ein neues Projekt vom Typ **Leere App (Universelle Windows-App)** .
 
-    ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
+    ![Screenshot des Dialogfelds „Neues Projekt“ von Visual Studio mit hervorgehobener Option „Leere App (Universelles Windows) Visual C#“.](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
 
     Nachdem die Projekterstellung abgeschlossen ist, sollten Sie über das Grundgerüst der App verfügen. Nun führen wir die Einrichtung für die Geofencing-Infrastruktur durch. Da Sie für diese Lösung Bing-Dienste verwenden, ist ein öffentlicher REST-API-Endpunkt vorhanden, mit dem Sie spezielle Standortrahmen abfragen können:
 
@@ -121,13 +121,13 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
      Da die Datenquelle jetzt bereitsteht, können Sie mit der Arbeit an der UWP-Anwendung beginnen.
 2. Aktivieren Sie Standortdienste für Ihre Anwendung. Öffnen Sie im **Projektmappen-Explorer** die Datei `Package.appxmanifest`.
 
-    ![](./media/notification-hubs-geofence/vs-package-manifest.png)
+    ![Screenshot des Projektmappen-Explorers mit hervorgehobener Datei „Package.appxmanifest“.](./media/notification-hubs-geofence/vs-package-manifest.png)
 3. Wechseln Sie auf der Registerkarte mit den Paketeigenschaften, die geöffnet wird, zu **Funktionen**, und wählen Sie **Standort** aus.
 
-    ![](./media/notification-hubs-geofence/vs-package-location.png)
+    ![Screenshot des Dialogfelds „Paketeigenschaften“ mit der Registerkarte „Funktionen“ mit hervorgehobener Option „Standort“.](./media/notification-hubs-geofence/vs-package-location.png)
 4. Erstellen Sie in Ihrer Projektmappe einen neuen Ordner mit dem Namen `Core` und fügen diesem eine neue Datei namens `LocationHelper.cs` hinzu:
 
-    ![](./media/notification-hubs-geofence/vs-location-helper.png)
+    ![Screenshot des Projektmappen-Explorers mit hervorgehobenem neuen Ordner „Core“](./media/notification-hubs-geofence/vs-location-helper.png)
 
     In der `LocationHelper`-Klasse ist Code vorhanden, um den Benutzerstandort über die System-API abzurufen:
 
@@ -191,10 +191,10 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
     ```
 6. Führen Sie die Anwendung aus, und gewähren Sie ihr Zugriff auf Ihren Standort.
 
-    ![](./media/notification-hubs-geofence/notification-hubs-location-access.png)
+    ![Screenshot des Dialogfelds für den Zugriff auf Ihren Standort durch Notification Hubs Geo Fence.](./media/notification-hubs-geofence/notification-hubs-location-access.png)
 7. Nach dem Starten der Anwendung sollten die Koordinaten im Fenster **Ausgabe** angezeigt werden:
 
-    ![](./media/notification-hubs-geofence/notification-hubs-location-output.png)
+    ![Screenshot des Ausgabefensters, in dem die Koordinaten angezeigt werden.](./media/notification-hubs-geofence/notification-hubs-location-output.png)
 
     Jetzt wissen Sie, dass die Standorterfassung funktioniert. Wenn Sie möchten, können Sie den Testereignishandler „Loaded“ nun entfernen, da er nicht mehr benötigt wird.
 8. Der nächste Schritt ist das Erfassen der Standortänderungen. Fügen Sie in der `LocationHelper`-Klasse den Ereignishandler für `PositionChanged` hinzu:
@@ -221,7 +221,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 2. Öffnen Sie nach Abschluss des Downloads den Ordner `NotifyUsers`, und öffnen Sie dann die Datei `NotifyUsers.sln` in Visual Studio.
 3. Geben Sie das Projekt `AppBackend` mit der Option **Als Startprojekt festlegen** als Startprojekt an, und starten Sie es.
 
-    ![](./media/notification-hubs-geofence/vs-startup-project.png)
+    ![Screenshot des Kontextmenüs der Projektmappe mit hervorgehobener Option „Als Startprojekt festlegen“.](./media/notification-hubs-geofence/vs-startup-project.png)
 
     Das Projekt ist bereits zum Senden von Pushbenachrichtigungen an Zielgeräte konfiguriert, sodass Sie nur noch zwei Dinge tun müssen: die richtige Verbindungszeichenfolge für den Notification Hub angeben und eine Grenzidentifizierung hinzufügen, damit die Benachrichtigung nur dann gesendet wird, wenn sich der Benutzer innerhalb des Geofence befindet.
 
@@ -351,18 +351,18 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
     > Legen Sie die `POST_URL` auf den Speicherort Ihrer bereitgestellten Webanwendung fest. Für den Zweck dieses Tutorials ist die lokale Ausführung in Ordnung. Falls Sie aber eine öffentliche Version bereitstellen möchten, müssen Sie diese über einen externen Anbieter hosten.
 2. Registrieren Sie die UWP-App für Pushbenachrichtigungen. Wählen Sie in Visual Studio **Projekt** > **Store** > **App mit Store verknüpfen**.
 
-    ![](./media/notification-hubs-geofence/vs-associate-with-store.png)
+    ![Screenshot des Kontextmenüs der Projektmappe mit hervorgehobenen Optionen „Store“ und „App mit Store verknüpfen“.](./media/notification-hubs-geofence/vs-associate-with-store.png)
 3. Stellen Sie nach dem Anmelden an Ihrem Entwicklerkonto sicher, dass Sie eine vorhandene App auswählen oder eine neue App erstellen und ihr das Paket zuordnen.
 4. Wechseln Sie zum Dev Center, und öffnen Sie die erstellte App. Wählen Sie **Dienste** > **Pushbenachrichtigungen** > **Live Services-Website**.
 
-    ![](./media/notification-hubs-geofence/ms-live-services.png)
+    ![Screenshot von Windows Dev Center mit der Seite „Pushbenachrichtigungen“ mit hervorgehobener „Live Services-Website“.](./media/notification-hubs-geofence/ms-live-services.png)
 5. Notieren Sie sich von der Website den **geheimen Schlüssel der Anwendung** und die **Paket-SID**. Sie benötigen beide Angaben im Azure-Portal. Öffnen Sie Ihren Notification Hub, wählen Sie **Einstellungen** > **Notification Services** > **Windows (WNS)** aus, und geben Sie die Informationen in die erforderlichen Felder ein.
 
-    ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
+    ![Screenshot der Seite „Einstellungen“ mit hervorgehobenen Optionen „Notification Services“ und „Windows (WNS)“ sowie Werten für „Paket-SID“ und „Sicherheitsschlüssel“.](./media/notification-hubs-geofence/notification-hubs-wns.png)
 6. Wählen Sie **Speichern** aus.
 7. Öffnen Sie im **Projektmappen-Explorer** die Option **Verweise**, und wählen Sie **NuGet-Pakete verwalten**. Fügen Sie einen Verweis auf die **verwaltete Microsoft Azure Service Bus-Bibliothek** hinzu. Suchen Sie einfach nach `WindowsAzure.Messaging.Managed`, und fügen Sie das Element zum Projekt hinzu.
 
-    ![](./media/notification-hubs-geofence/vs-nuget.png)
+    ![Screenshot des Dialogfelds „NuGet-Pakete verwalten“ mit hervorgehobenem Paket „WindowsAzure.Messaging.Managed“.](./media/notification-hubs-geofence/vs-nuget.png)
 8. Erstellen Sie den Ereignishandler `MainPage_Loaded` zu Testzwecken noch einmal und fügen diesen Codeausschnitt hinzu:
 
     ```csharp
@@ -387,7 +387,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 10. Da Sie nicht die echten Koordinaten übergeben (die sich derzeit ggf. nicht innerhalb der Grenzen befinden) und vordefinierte Testwerte verwenden, wird beim Aktualisieren eine Benachrichtigung angezeigt:
 
-    ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
+    ![Screenshot eines Windows-Desktops, der die Meldung „TEST“ anzeigt.](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

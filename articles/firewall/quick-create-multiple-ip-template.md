@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen – Resource Manager-Vorlage'
-description: Erfahren Sie, wie Sie basierend auf einer Resource Manager-Vorlage eine Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen erstellen.
+description: Erfahren Sie, wie Sie basierend auf einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen erstellen.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,30 +8,32 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e89188e7ebc979c403b86ee26c876e8c40aa208
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680541"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260556"
 ---
-# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen – Resource Manager-Vorlage
+# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen – ARM-Vorlage
 
-In dieser Schnellstartanleitung verwenden Sie eine Resource Manager-Vorlage, um eine Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen bereitzustellen. Die bereitgestellte Firewall verfügt über Regeln einer NAT-Regelsammlung, die RDP-Verbindungen mit zwei virtuellen Windows Server 2019-Computern ermöglichen.
+In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um eine Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen bereitzustellen. Die bereitgestellte Firewall verfügt über Regeln einer NAT-Regelsammlung, die RDP-Verbindungen mit zwei virtuellen Windows Server 2019-Computern ermöglichen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Weitere Informationen zu Azure Firewall mit mehreren öffentlichen IP-Adressen finden Sie unter [Bereitstellen einer Azure Firewall mit mehreren öffentlichen IP-Adressen mithilfe von Azure PowerShell](deploy-multi-public-ip-powershell.md).
 
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall"></a>Erstellen einer Azure Firewall-Instanz
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Mit dieser Vorlage werden eine Azure Firewall-Instanz mit zwei öffentlichen IP-Adressen und die erforderlichen unterstützenden Ressourcen für die Azure Firewall-Instanz erstellt.
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/fw-docs-qs).
 
@@ -48,9 +50,9 @@ In der Vorlage sind mehrere Azure-Ressourcen definiert:
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Stellen Sie die Resource Manager-Vorlage in Azure bereit:
+Stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Durch die Vorlage werden eine Azure Firewall-Instanz, die Netzwerkinfrastruktur und zwei virtuelle Computer erstellt.
 

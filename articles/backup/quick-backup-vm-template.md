@@ -5,28 +5,28 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d6fb73801f0f460daf2ed70f8dc88187e41ea887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458844"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248933"
 ---
-# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Sichern einer Azure-VM mit einer Resource Manager-Vorlage
+# <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Schnellstart: Sichern eines virtuellen Computers in Azure mit einer ARM-Vorlage
 
-Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird gezeigt, wie Sie eine Azure-VM mit einer Resource Manager-Vorlage und Azure PowerShell sichern. In dieser Schnellstartanleitung geht es um die Bereitstellung einer Resource Manager-Vorlage zum Erstellen eines Recovery Services-Tresors. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Resource Manager-Dokumentation](/azure/azure-resource-manager/) und der [Vorlagenreferenz](/azure/templates/microsoft.recoveryservices/allversions).
+Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird gezeigt, wie Sie eine Azure-VM mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) und Azure PowerShell sichern. In dieser Schnellstartanleitung geht es um die Bereitstellung einer ARM-Vorlage zum Erstellen eines Recovery Services-Tresors. Weitere Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](/azure/azure-resource-manager/) und der [Vorlagenreferenz](/azure/templates/microsoft.recoveryservices/allversions).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Alternativ können Sie einen virtuellen Computer mithilfe von [Azure PowerShell](./quick-backup-vm-powershell.md), der [Azure CLI](quick-backup-vm-cli.md) oder des [Azure-Portals](quick-backup-vm-portal.md) sichern.
+Ein [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md) ist ein logischer Container, in dem Sicherungsdaten für geschützte Ressourcen wie Azure-VMs gespeichert werden. Beim Ausführen eines Sicherungsauftrags wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen. Alternativ können Sie einen virtuellen Computer mithilfe von [Azure PowerShell](./quick-backup-vm-powershell.md), der [Azure CLI](quick-backup-vm-cli.md) oder des [Azure-Portals](quick-backup-vm-portal.md) sichern.
 
-## <a name="create-a-vm-and-recovery-services-vault"></a>Erstellen einer VM und eines Recovery Services-Tresors
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-Ein [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md) ist ein logischer Container, in dem Sicherungsdaten für geschützte Ressourcen wie Azure-VMs gespeichert werden. Beim Ausführen eines Sicherungsauftrags wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen.
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-create-vm-and-configure-backup%2Fazuredeploy.json)
 
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Mit dieser Vorlage können Sie eine einfache Windows-VM und einen Recovery Services-Tresor bereitstellen, der zum Schutz mit der DefaultPolicy konfiguriert ist.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Mit dieser Vorlage können Sie eine einfache Windows-VM und einen Recovery Services-Tresor bereitstellen, der zum Schutz mit der DefaultPolicy konfiguriert ist.
 
 :::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json" range="1-247" highlight="221-245":::
 
@@ -39,9 +39,9 @@ In der Vorlage sind die folgenden Ressourcen definiert:
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.RecoveryServices/vaults**](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults)
-- [**Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems**](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults/backupfabrics/protectioncontainers/protecteditems)
+- [**Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems**](/azure/templates/microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems)
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 Wählen Sie zum Bereitstellen der Vorlage **Jetzt testen** aus, um die Azure Cloud Shell zu öffnen, und fügen Sie anschließend das folgende PowerShell-Skript in das Shellfenster ein. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie **Einfügen** aus.
 
@@ -59,7 +59,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-In diesem Schnellstart wird Azure PowerShell verwendet, um die Resource Manager-Vorlage bereitzustellen. Auch das [Azure-Portal](../azure-resource-manager/templates/deploy-portal.md), die [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md) und die [REST-API](../azure-resource-manager/templates/deploy-rest.md) können zum Bereitstellen von Vorlagen verwendet werden.
+In diesem Schnellstart wird Azure PowerShell verwendet, um die ARM-Vorlage bereitzustellen. Auch das [Azure-Portal](../azure-resource-manager/templates/deploy-portal.md), die [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md) und die [REST-API](../azure-resource-manager/templates/deploy-rest.md) können zum Bereitstellen von Vorlagen verwendet werden.
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
@@ -71,7 +71,7 @@ Die Vorlage erstellt einen virtuellen Computer und aktiviert dort die Sicherung.
 
 Informationen zum Überwachen des Sicherungsauftrags finden Sie unter [Überwachen des Sicherungsauftrags](./quick-backup-vm-powershell.md#monitor-the-backup-job).
 
-## <a name="clean-up-the-deployment"></a>Bereinigen der Bereitstellung
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn der virtuelle Computer nicht mehr gesichert werden muss, können Sie ihn bereinigen.
 
@@ -93,4 +93,4 @@ In dieser Schnellstartanleitung haben Sie einen Recovery Services-Tresor erstell
 
 - [Erfahren Sie, wie](tutorial-backup-vm-at-scale.md) Sie im Azure-Portal VMs sichern.
 - [Erfahren Sie, wie](tutorial-restore-disk.md) Sie einen virtuellen Computer schnell wiederherstellen.
-- Informieren Sie sich über das [Erstellen von Resource Manager-Vorlagen](../azure-resource-manager/templates/template-tutorial-create-first-template.md).
+- Informationen zum [Erstellen](../azure-resource-manager/templates/template-tutorial-create-first-template.md) von ARM-Vorlagen.

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: ba90bb89d731c343dfcb3778433d444f2d9a617a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 447f999f48edb9696c74ec5decb1109eefb964d7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025861"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206971"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -37,7 +37,7 @@ Wählen Sie anschließend die Organisation aus, in der die Erweiterung installie
 
 ## <a name="create-a-build-definition"></a>Erstellen einer Builddefinition
 
-Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrem Azure DevOps-Konto an, und suchen Sie Ihr Projekt auf dem Projektdashboard. Sie können Ihrem Projekt eine [Buildpipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) hinzufügen oder eine bereits vorhandenen Buildpipeline ändern. Wenn Sie bereits über eine Buildpipeline verfügen, können Sie mit [Hinzufügen des Emulator-Buildtasks zur Builddefinition](#addEmulatorBuildTaskToBuildDefinition) fortfahren.
+Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrer Azure DevOps-Organisation an, und suchen Sie Ihr Projekt im Projektdashboard. Sie können Ihrem Projekt eine [Buildpipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) hinzufügen oder eine bereits vorhandenen Buildpipeline ändern. Wenn Sie bereits über eine Buildpipeline verfügen, können Sie mit [Hinzufügen des Emulator-Buildtasks zur Builddefinition](#addEmulatorBuildTaskToBuildDefinition) fortfahren.
 
 1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds**. Klicken Sie auf **+Neu.** \> **Neue Buildpipeline**
 
@@ -68,6 +68,24 @@ Start-CosmosDbEmulator
    :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Hinzufügen des Emulator-Buildtasks zur Builddefinition":::
 
 In diesem Tutorial fügen Sie den Task am Anfang hinzu, um sicherzustellen, dass der Emulator vor der Testausführung verfügbar ist.
+
+### <a name="add-the-task-using-yaml"></a>Hinzufügen des Tasks mithilfe von YAML
+
+Dieser Schritt ist optional und nur erforderlich, wenn Sie die CI/CD-Pipeline mit einem YAML-Task einrichten. In solchen Fällen können Sie den YAML-Task definieren, wie im folgenden Code gezeigt:
+
+```yml
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator'
+
+- script: yarn test
+  displayName: 'Run API tests (Cosmos DB)'
+  env:
+    HOST: $(CosmosDbEmulator.Endpoint)
+    # Hardcoded key for emulator, not a secret
+    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    # The emulator uses a self-signed cert, disable TLS auth errors
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+```
 
 ## <a name="configure-tests-to-use-the-emulator"></a>Konfigurieren von Tests zur Verwendung des Emulators
 
@@ -155,24 +173,6 @@ Nach dem Start des Builds sehen Sie, dass der Cosmos DB-Emulatortask damit begon
 Nach Abschluss des Builds sehen Sie, dass Ihre Tests, die für den Cosmos DB-Emulator aus dem Buildtask ausgeführt wurden, erfolgreich waren.
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Speichern und Ausführen des Builds":::
-
-## <a name="set-up-using-yaml"></a>Einrichten mithilfe von YAML
-
-Wenn Sie die CI/CD-Pipeline mithilfe einer YAML-Aufgabe einrichten, können Sie die YAML-Aufgabe wie im folgenden Code gezeigt definieren:
-
-```yml
-- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
-  displayName: 'Run Azure Cosmos DB Emulator'
-
-- script: yarn test
-  displayName: 'Run API tests (Cosmos DB)'
-  env:
-    HOST: $(CosmosDbEmulator.Endpoint)
-    # Hardcoded key for emulator, not a secret
-    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
-    # The emulator uses a self-signed cert, disable TLS auth errors
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

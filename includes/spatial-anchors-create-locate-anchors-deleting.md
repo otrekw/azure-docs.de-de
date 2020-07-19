@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ec78ffd1fbc1f77a7b1e1467df1c2303e7d5daf1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67177808"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156614"
 ---
 ## <a name="delete-anchors"></a>Löschen von Ankern
 
-Um einen räumlichen Cloudanker zu löschen, verwenden Sie die `DeleteAnchor()`-Methode. Das Löschen von Ankern, die nicht mehr verwendet werden, ist eine bewährte Methode, die Sie frühzeitig in Ihren Entwicklungsprozess und Ihre Praktiken einbeziehen sollten. Auf diese Weise werden die Ressourcen bereinigt. Auch wenn Sie Azure Spatial Anchors kostenlos nutzen können, kann sich die Preisgestaltung in Zukunft ändern. Ausführliche Informationen zu den Preisen, die während der Vorschauphase gelten, finden Sie auf unserer [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/spatial-anchors/).
+Um einen räumlichen Cloudanker zu löschen, verwenden Sie die `DeleteAnchor()`-Methode. Das Löschen von Ankern, die nicht mehr verwendet werden, ist eine bewährte Methode, die Sie frühzeitig in Ihren Entwicklungsprozess und Ihre Praktiken einbeziehen sollten, damit Ihre Azure-Ressourcen bereinigt werden. 

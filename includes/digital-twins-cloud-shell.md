@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85805532"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277960"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -22,7 +22,11 @@ Nach dem Öffnen eines Cloud Shell-Fensters müssen Sie sich zunächst anmelden 
 az login
 az account set --subscription <your-Azure-subscription-ID>
 ```
-
+> [!TIP]
+> Sie können Ihr Abonnement auch mithilfe Ihres Abonnementnamens festlegen. Verwenden Sie diesen Befehl: 
+> ```azurecli
+> az account set --subscription "your-Azure-subscription-name"
+> 
 Wenn Sie dieses Abonnement zum ersten Mal mit Azure Digital Twins nutzen, führen Sie diesen Befehl aus, um sich im Namespace von Azure Digital Twins zu registrieren. (Falls Sie sich nicht sicher sind, ist es in Ordnung, ihn erneut auszuführen, auch wenn Sie ihn irgendwann zuvor schon einmal ausgeführt haben.)
 
 ```azurecli

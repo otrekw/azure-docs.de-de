@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie lokale Computer für die Migration mit
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: e6840b75d58bf19f742f94caad74e10aebe24666
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044157"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223617"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -122,7 +122,7 @@ Für andere Versionen müssen die Computer gemäß der Zusammenfassung in der Ta
 --- | --- | ---
 **Installieren von Linux Integration Services für Hyper-V** | Erstellen Sie das Linux-Initialisierungsimage neu, damit es die erforderlichen Hyper-V-Treiber enthält. Durch die Neuerstellung des Initialisierungsimages wird sichergestellt, dass der virtuelle Computer in Azure gestartet wird. | In den meisten neuen Versionen von Linux-Distributionen ist dies standardmäßig enthalten.<br/><br/> Andernfalls muss die Installation für alle oben nicht angegebenen Versionen manuell durchgeführt werden.
 **Aktivieren der Protokollierung der seriellen Azure-Konsole** | Die Aktivierung der Konsolenprotokollierung vereinfacht die Problembehandlung. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer.<br/><br/> Befolgen Sie zur Aktivierung [diese Anleitung](../virtual-machines/troubleshooting/serial-console-linux.md).
-**Aktualisieren der Gerätezuordnungsdatei** | Aktualisieren Sie die Gerätezuordnungsdatei mit den Zuordnungen von Gerätenamen und Volumes so, dass persistente Gerätebezeichner verwendet werden. | Führen Sie die Installation für alle oben nicht angegebenen Versionen manuell durch.
+**Aktualisieren der Gerätezuordnungsdatei** | Aktualisieren Sie die Gerätezuordnungsdatei mit den Zuordnungen von Gerätenamen und Volumes so, dass persistente Gerätebezeichner verwendet werden. | Führen Sie die Installation für alle oben nicht angegebenen Versionen manuell durch. (Gilt nur für ein agent-basiertes VMware-Szenario)
 **Aktualisieren von fstab-Einträgen** |  Aktualisieren Sie die Einträge so, dass persistente Volumebezeichner verwendet werden.    | Führen Sie die Aktualisierung für alle oben nicht angegebenen Versionen manuell durch.
 **Entfernen der udev-Regel** | Entfernen Sie alle udev-Regeln, mit denen Schnittstellennamen basierend auf der MAC-Adresse usw. reserviert werden. | Führen Sie die Entfernung für alle oben nicht angegebenen Versionen manuell durch.
 **Aktualisieren von Netzwerkschnittstellen** | Aktualisieren Sie die Netzwerkschnittstellen so, dass IP-Adressen basierend auf DHCP.nst empfangen werden. | Führen Sie die Aktualisierung für alle oben nicht angegebenen Versionen manuell durch.

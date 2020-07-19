@@ -8,30 +8,32 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563691"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242014"
 ---
-# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Schnellstart: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager mithilfe einer Resource Manager-Vorlage
+# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Schnellstart: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager – ARM-Vorlage
 
-In dieser Schnellstartanleitung verwenden Sie eine Resource Manager-Vorlage, um Ihren virtuellen Hub mithilfe von Azure Firewall Manager zu schützen. Die bereitgestellte Firewall verfügt über eine Anwendungsregel, die Verbindungen mit `www.microsoft.com` zulässt. Zum Testen der Firewall werden zwei virtuelle Computer unter Windows Server 2019 bereitgestellt. Ein Jumpserver wird zum Herstellen einer Verbindung mit dem Workloadserver verwendet. Auf dem Workloadserver können Sie nur eine Verbindung mit `www.microsoft.com` herstellen.
+In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um Ihren virtuellen Hub mithilfe von Azure Firewall Manager zu schützen. Die bereitgestellte Firewall verfügt über eine Anwendungsregel, die Verbindungen mit `www.microsoft.com` zulässt. Zum Testen der Firewall werden zwei virtuelle Computer unter Windows Server 2019 bereitgestellt. Ein Jumpserver wird zum Herstellen einer Verbindung mit dem Workloadserver verwendet. Auf dem Workloadserver können Sie nur eine Verbindung mit `www.microsoft.com` herstellen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Unter [Was ist Azure Firewall Manager?](overview.md) finden Sie weitere Informationen zu Azure Firewall Manager.
 
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-secured-virtual-hub"></a>Erstellen eines geschützten virtuellen Hubs
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Mithilfe dieser Vorlage erstellen Sie einen geschützten virtuellen Hub mit Azure Firewall Manager sowie die erforderlichen Ressourcen zur Unterstützung des Szenarios.
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
 
@@ -51,9 +53,9 @@ In der Vorlage sind mehrere Azure-Ressourcen definiert:
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Stellen Sie die Resource Manager-Vorlage in Azure bereit:
+Stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Mit der Vorlage werden eine Azure Firewall-Instanz, ein virtuelles WAN und ein virtueller Hub, die Netzwerkinfrastruktur sowie zwei virtuelle Computer erstellt.
 
@@ -86,7 +88,7 @@ Testen Sie nun die Firewallregeln, um sicherzustellen, dass sie wie erwartet fun
 
 Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 
-* Sie können zum einzigen zulässigen FQDN navigieren, aber nicht zu anderen.
+- Sie können zum einzigen zulässigen FQDN navigieren, aber nicht zu anderen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

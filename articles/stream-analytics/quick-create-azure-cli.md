@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/01/2020
-ms.openlocfilehash: 8406c556ecaa0cea968fc1976d709b4f3c51c78b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852490"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231266"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mit der Azure CLI
 
@@ -49,7 +49,7 @@ In dieser Schnellstartanleitung verwenden Sie die Azure CLI zum Definieren eines
     az extension add --name stream-analytics
     ```
 
-   Installieren Sie die [Erweiterung für Azure IoT](/cli/azure/ext/azure-iot/azure-iot), indem Sie den folgenden Befehl ausführen:
+   Installieren Sie die [Erweiterung für Azure IoT](/cli/azure/ext/azure-iot), indem Sie den folgenden Befehl ausführen:
 
     ```azurecli
     az extension add --name azure-iot

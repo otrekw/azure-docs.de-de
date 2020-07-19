@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6ce2e5a71d48942642ee01d8d2cc75a232abf259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f06387ea317029f5648ab0884cea80262e8640a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159948"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245006"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric mithilfe von Application Insights
 
@@ -268,4 +268,4 @@ Da Sie nun die Einrichtung der Überwachung und Diagnose für Ihre ASP.NET-Anwen
 
 * [Erkunden Sie die Überwachung und Diagnose in Service Fabric.](service-fabric-diagnostics-overview.md)
 * [Service Fabric event analysis with Application Insights (Service Fabric-Ereignisanalyse mit Application Insights)](service-fabric-diagnostics-event-analysis-appinsights.md)
-* Weitere Informationen zu Application Insights finden Sie unter [Application Insights Documentation (Dokumentation zu Application Insights)](https://docs.microsoft.com/azure/application-insights/)
+* Weitere Informationen zu Application Insights finden Sie unter [Application Insights Documentation (Dokumentation zu Application Insights)](/azure/application-insights/)

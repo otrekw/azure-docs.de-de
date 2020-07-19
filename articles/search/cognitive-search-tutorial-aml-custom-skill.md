@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513809"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245329"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Tutorial: Erstellen und Bereitstellen eines benutzerdefinierten Skills mit Azure Machine Learning 
 
@@ -29,6 +29,9 @@ Es werden zwei Datasets bereitgestellt. Wenn Sie das Modell selbst trainieren m�
 > * Trainieren und Bereitstellen eines Modells in einem Azure Kubernetes-Cluster
 > * Verknüpfen einer KI-Anreicherungspipeline mit dem bereitgestellten Modell
 > * Erfassen der Ausgabe aus dem bereitgestellten Modell als benutzerdefinierter Skill
+
+> [!IMPORTANT] 
+> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit wird das .NET SDK nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

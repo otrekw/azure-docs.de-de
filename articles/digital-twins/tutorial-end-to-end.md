@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391926"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206558"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Erstellen einer End-to-End-Lösung
 
@@ -205,8 +205,9 @@ Die Seite *Ereignisabonnement erstellen* wird angezeigt.
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure-Portal: Ereignisabonnement erstellen":::
 
-Füllen Sie die Felder wie folgt aus:
+Füllen Sie die Felder wie folgt aus (standardmäßig ausgefüllte Felder werden nicht angegeben):
 * *DETAILS ZUM EREIGNISABONNEMENT* > **Name**: Geben Sie Ihrem Ereignisabonnement einen Namen.
+* *DETAILS ZUM THEMA* > **Name des Systemthemas**: Geben Sie einen Namen für das Systemthema an. 
 * *EREIGNISTYPEN* > **Nach Ereignistypen filtern**: Wählen Sie im Menü die Option*Gerätetelemetrie* aus.
 * *ENDPUNKTDETAILS* > **Endpunkttyp**: Wählen Sie im Menü die Option *Azure-Funktion* aus.
 * *ENDPUNKTDETAILS* > **Endpunkt**: Klicken Sie auf den Link *Endpunkt auswählen*. Das Fenster *Azure-Funktion auswählen* wird geöffnet: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Ereignisabonnement im Azure-Portal: Azure-Funktion auswählen" border="false":::
@@ -361,11 +362,9 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Event Grid-
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure-Portal: Event Grid-Ereignisabonnement":::
 
-Die Schritte zum Erstellen dieses Ereignisabonnements ähneln den Schritten beim Abonnieren der ersten Azure-Funktion für IoT Hub weiter oben in diesem Tutorial. Der Unterschied besteht darin, dass Sie bei diesem Vorgang nicht *Gerätetelemetrie* als den Ereignistyp angeben müssen, auf den gelauscht wird, und dass Sie für die Verbindungsherstellung eine andere Azure-Funktion verwenden.
+Die Schritte zum Erstellen dieses Ereignisabonnements ähneln den Schritten beim Abonnieren der ersten Azure-Funktion für IoT Hub weiter oben in diesem Tutorial. Dieses Mal müssen Sie nicht *Gerätetelemetrie* als Ereignistyp angeben, auf den gelauscht wird, und Sie verwenden für die Verbindungsherstellung eine andere Azure-Funktion.
 
-Hier sind die Schritte zum Abonnieren erneut aufgeführt:
-
-Fügen Sie auf der Seite *Ereignisabonnement erstellen* die Felder wie folgt aus:
+Fügen Sie auf der Seite *Ereignisabonnement erstellen* die Felder wie folgt aus (standardmäßig ausgefüllte Felder werden nicht angegeben):
 * *DETAILS ZUM EREIGNISABONNEMENT* > **Name**: Geben Sie Ihrem Ereignisabonnement einen Namen.
 * *ENDPUNKTDETAILS* > **Endpunkttyp**: Wählen Sie im Menü die Option *Azure-Funktion* aus.
 * *ENDPUNKTDETAILS* > **Endpunkt**: Klicken Sie auf den Link *Endpunkt auswählen*. Das Fenster *Azure-Funktion auswählen* wird geöffnet:

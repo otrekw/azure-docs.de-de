@@ -6,14 +6,14 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77920075"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142466"
 ---
-# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
+# <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
 
 Mit Azure Spring Cloud-Warnungen können Sie Ressourcen auf der Grundlage von Bedingungen (etwa dem verfügbaren Speicher, der Anforderungsrate oder der Datennutzung) überwachen Eine Warnung sendet eine Benachrichtigung, wenn Raten oder Bedingungen die definierten Spezifikationen erfüllen.
 
@@ -22,12 +22,9 @@ Zum Einrichten einer Warnungspipeline müssen zwei Schritte ausgeführt werden:
 2. Richten Sie Warnungsregeln ein. Die Regeln binden Metrikmuster basierend auf Zielressource, Metrik, Bedingung, Zeitaggregation usw. an die Aktionsgruppen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zusätzlich zu den erforderlichen Azure Spring-Komponenten werden für dieses Tutorial die folgenden Ressourcen benötigt:
 
-* Eine bereitgestellte Azure Spring Cloud-Instanz.  Befolgen Sie unseren [Schnellstart](spring-cloud-quickstart-launch-app-cli.md), um zu beginnen.
+Zusätzlich zu den Azure Spring-Anforderungen verwenden die Verfahren in diesem Tutorial eine bereitgestellte Azure Spring Cloud-Instanz.  Nutzen Sie einen [Schnellstart](spring-cloud-quickstart-launch-app-cli.md), um erste Schritte auszuführen.
 
-* Eine zu überwachende Azure-Ressource. In diesem Beispiel wird eine Spring Cloud-Instanz überwacht.
- 
 Die folgenden Prozeduren initialisieren sowohl **Aktionsgruppe** als auch **Warnung** ausgehend von der Option **Warnungen** im linken Navigationsbereich einer Spring Cloud-Instanz. (Die Prozedur kann auch über die Seite **Monitor – Übersicht** im Azure-Portal gestartet werden.) 
 
 Navigieren Sie von einer Ressourcengruppe zu Ihrer Spring Cloud-Instanz. Wählen Sie im linken Bereich **Warnungen** und dann **Aktionen verwalten** aus.
@@ -109,7 +106,11 @@ Eine Regel kann auch über die Seite **Metriken** erstellt werden:
    ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Metriken für Azure Spring Cloud](spring-cloud-concept-metrics.md#user-metrics-options)
-* [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* [SMS-Warnungsverhalten in Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
-* [Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+
+In diesem Tutorial haben Sie erfahren, wie Sie Warnungen und Aktionsgruppen für Ihre Azure Spring Cloud-Anwendung einrichten können. Hier erfahren Sie mehr über Aktionsgruppen:
+
+> [!div class="nextstepaction"]
+> [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+
+> [!div class="nextstepaction"]
+> [SMS-Warnungsverhalten in Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

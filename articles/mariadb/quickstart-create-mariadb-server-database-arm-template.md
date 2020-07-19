@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fd560658a20a5b58d582332a88bf031d0e56ac91
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323598"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134105"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Schnellstart: Erstellen eines Azure Database for MariaDB-Servers mithilfe einer ARM-Vorlage
 
-Azure Database for MariaDB ist ein verwalteter Dienst, mit dem Sie hochverfügbare MariaDB-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In diesem Schnellstart verwenden Sie eine ARM-Vorlage zum Erstellen eines Azure Database for MariaDB-Servers im Azure-Portal, in PowerShell oder in der Azure-Befehlszeilenschnittstelle.
+Azure Database for MariaDB ist ein verwalteter Dienst, mit dem Sie hochverfügbare MariaDB-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In diesem Schnellstart verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen eines Azure Database for MariaDB-Servers im Azure-Portal, in PowerShell oder in der Azure CLI.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,11 +42,9 @@ Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Kon
 
 ---
 
-## <a name="create-an-azure-database-for-mariadb-server"></a>Erstellen eines Azure Database for MariaDB-Servers
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Gruppe von Compute- und Speicherressourcen. Weitere Informationen finden Sie unter [Azure Database for MariaDB – Tarife](concepts-pricing-tiers.md). Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt.
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/).
 
@@ -58,7 +60,7 @@ Die Vorlage definiert fünf Azure-Ressourcen:
 
 Weitere Vorlagenbeispiele für Azure Database for MariaDB finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -207,7 +209,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter folgendem Link:
+Ein Tutorial mit Schritt-für-Schritt-Anleitungen zum Erstellen einer ARM-Vorlage finden Sie unter folgendem Link:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

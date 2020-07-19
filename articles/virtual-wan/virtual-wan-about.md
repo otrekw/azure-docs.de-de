@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143914"
 ---
 # <a name="about-azure-virtual-wan"></a>Informationen zu Azure Virtual WAN
 
@@ -58,7 +58,7 @@ Sie erstellen die folgenden Ressourcen, um ein virtuelles End-to-End-WAN zu konf
 
 * **Virtuelle Netzwerkverbindung für Hub:** Die Ressource für die virtuelle Netzwerkverbindung für den Hub wird verwendet, um den Hub nahtlos mit Ihrem virtuellen Netzwerk zu verbinden.
 
-* **(Vorschau) Hub-zu-Hub-Verbindung**: In einem virtuellen WAN sind alle Hubs miteinander verbunden. Dies bedeutet, dass mit einem lokalen Hub verbundene Niederlassungen, Benutzer oder VNETs mit einer anderen Niederlassung oder anderen VNETs mithilfe der vollständig vernetzten Architektur der verbundenen Hubs kommunizieren können. Sie können auch über das vernetzte Hub-zu-Hub-Framework VNETs innerhalb eines Hubs, der durch den virtuellen Hub führt, sowie VNETs zwischen Hubs verbinden.
+* **Hub-zu-Hub-Verbindung:** In einem virtuellen WAN sind alle Hubs miteinander verbunden. Dies bedeutet, dass mit einem lokalen Hub verbundene Niederlassungen, Benutzer oder VNETs mit einer anderen Niederlassung oder anderen VNETs mithilfe der vollständig vernetzten Architektur der verbundenen Hubs kommunizieren können. Sie können auch über das vernetzte Hub-zu-Hub-Framework VNETs innerhalb eines Hubs, der durch den virtuellen Hub führt, sowie VNETs zwischen Hubs verbinden.
 
 * **Hubroutingtabelle:**  Sie können eine virtuelle Hubroute erstellen und die Route der Routingtabelle des virtuellen Hubs zuweisen. Sie können der Routingtabelle des virtuellen Hubs mehrere Routen zuweisen.
 

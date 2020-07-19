@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 16191dfd33d5211fbd082bc1f7e458a238bb2138
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75531121"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224229"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Android-Apps mit Azure Notification Hubs
 
@@ -151,7 +151,7 @@ Aktualisieren Sie als Nächstes die Android-Anwendung, die Sie in [Tutorial: Sen
 
     Das grafische Layout von `main_activity.xml` sollte nun wie folgt aussehen:
 
-    ![][A1]
+    ![Screenshot eines Emulators, der zeigt, wie das grafische Layout des XML-Codes für die Hauptaktivität aussieht.][A1]
 3. Erstellen Sie in dem Paket, in dem sich auch die Klasse `MainActivity` befindet, eine neue Klasse mit dem Namen `RegisterClient`. Verwenden Sie den folgenden Code für die neue Klassendatei.
 
     ```java
@@ -487,7 +487,7 @@ Aktualisieren Sie als Nächstes die Android-Anwendung, die Sie in [Tutorial: Sen
 2. Geben Sie in der Android-App einen Benutzernamen und ein Kennwort ein. Beide müssen den gleichen Zeichenfolgenwert aufweisen und dürfen keine Leerzeichen oder Sonderzeichen enthalten.
 3. Tippen Sie in der Android-App auf **Anmelden**. Warten Sie, bis die Popupmeldung **Angemeldet und registriert**angezeigt wird. Dadurch wird die Schaltfläche **Send Notification (Benachrichtigung senden)** aktiviert.
 
-    ![][A2]
+    ![Screenshot eines Emulators, der zeigt, wie die App zur Benachrichtigung von Benutzern durch Notification Hubs nach der Anmeldung aussieht.][A2]
 4. Klicken Sie auf die Umschaltflächen, um alle Plattformen zu aktivieren, auf denen Sie die App ausgeführt und einen Benutzer registriert haben.
 5. Geben Sie den Namen des Benutzers ein, der die Benachrichtigungsmeldung erhält. Dieser Benutzer muss für Benachrichtigungen auf dem Zielgerät registriert werden.
 6. Geben Sie eine Nachricht für den Benutzer ein, die als Pushbenachrichtigungsmeldung empfangen wird.

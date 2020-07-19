@@ -3,14 +3,15 @@ title: Veröffentlichen einer verwalteten Dienstkatalog-App
 description: Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, die für Mitglieder Ihrer Organisation vorgesehen ist.
 author: tfitzmac
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609356"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249035"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Schnellstart: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
 
@@ -20,15 +21,15 @@ Um eine verwaltete Anwendung im Dienstkatalog zu veröffentlichen, gehen Sie fol
 
 * Erstellen Sie eine Vorlage, die definiert, welche Ressourcen mit der verwalteten Anwendung bereitgestellt werden.
 * Definieren Sie die Elemente der Benutzeroberfläche für das Portal, wenn Sie die verwaltete Anwendung bereitstellen.
-* Erstellen Sie ein ZIP-Paket, das die erforderlichen Vorlagendateien enthält.
+* Erstellen Sie ein _ZIP_-Paket, das die erforderlichen Vorlagendateien enthält.
 * Entscheiden Sie, welche Benutzer, Gruppen oder Anwendungen Zugriff auf die Ressourcengruppe im Benutzerabonnement benötigen.
-* Erstellen Sie die verwaltete Anwendungsdefinition, die auf das ZIP-Paket verweist und Zugriff auf die Identität anfordert.
+* Erstellen Sie die verwaltete Anwendungsdefinition, die auf das _ZIP_-Paket verweist und Zugriff auf die Identität anfordert.
 
 ## <a name="create-the-arm-template"></a>Erstellen der ARM-Vorlage
 
-Jede Definition einer verwalteten Anwendung enthält eine Datei namens **mainTemplate.json**. Darin definieren Sie die bereitzustellenden Azure-Ressourcen. Die Vorlage unterscheidet sich nicht von regulären ARM-Vorlagen (Azure Resource Manager).
+Jede Definition einer verwalteten Anwendung enthält eine Datei namens _mainTemplate.json_. Darin definieren Sie die bereitzustellenden Azure-Ressourcen. Die Vorlage unterscheidet sich nicht von anderen regulären ARM-Vorlagen.
 
-Erstellen Sie eine Datei mit dem Namen **mainTemplate.json**. Beim Namen wird die Groß- und Kleinschreibung berücksichtigt.
+Erstellen Sie eine Datei mit dem Namen _mainTemplate.json_. Beim Namen wird die Groß- und Kleinschreibung berücksichtigt.
 
 Fügen Sie Ihrer Datei den folgenden JSON-Code hinzu. Er definiert die Parameter für das Erstellen eines Speicherkontos und legt die Eigenschaften des Speicherkontos fest.
 
@@ -73,13 +74,13 @@ Fügen Sie Ihrer Datei den folgenden JSON-Code hinzu. Er definiert die Parameter
 }
 ```
 
-Speichern Sie die Datei „mainTemplate.json“.
+Speichern Sie die Datei _mainTemplate.json_.
 
 ## <a name="define-your-create-experience"></a>Definieren Ihrer Benutzeroberfläche zur Erstellung
 
-Als Herausgeber definieren Sie die Portalbenutzeroberfläche zum Erstellen der verwalteten Anwendung. Die **createUiDefinition.json**-Datei generiert die Portalbenutzeroberfläche. Sie definieren mithilfe von [Steuerelementen](create-uidefinition-elements.md) (etwa Dropdownmenüs, Textfeldern und Kennwortfeldern), wie Benutzer Werte für die einzelnen Parameter eingeben.
+Als Herausgeber definieren Sie die Portalbenutzeroberfläche zum Erstellen der verwalteten Anwendung. Die _createUiDefinition.json_-Datei generiert die Portalbenutzeroberfläche. Sie definieren mithilfe von [Steuerelementen](create-uidefinition-elements.md) (etwa Dropdownmenüs, Textfeldern und Kennwortfeldern), wie Benutzer Werte für die einzelnen Parameter eingeben.
 
-Erstellen Sie eine Datei mit dem Namen **createUiDefinition.json**. (Bei diesem Namen muss die Groß-/Kleinschreibung beachtet werden.)
+Erstellen Sie eine Datei mit dem Namen _createUiDefinition.json_. (Bei diesem Namen muss die Groß-/Kleinschreibung beachtet werden.)
 
 Fügen Sie der Datei den folgenden JSON-Startercode hinzu, und speichern Sie sie:
 
@@ -136,7 +137,7 @@ Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im A
 
 ## <a name="package-the-files"></a>Erstellen eines Pakets aus den Dateien
 
-Fügen Sie die beiden Dateien einer ZIP-Datei mit dem Namen „app.zip“ hinzu. Die zwei Dateien müssen sich auf der Stammebene der ZIP-Datei befinden. Wenn Sie sie in einem Ordner speichern, erhalten Sie beim Erstellen der Definition der verwalteten Anwendung eine Fehlermeldung mit dem Hinweis, dass die erforderlichen Dateien nicht vorhanden sind.
+Fügen Sie die beiden Dateien einer _ZIP_-Datei mit dem Namen _app.zip_ hinzu. Die zwei Dateien müssen sich auf der Stammebene der _ZIP_-Datei befinden. Wenn Sie sie in einem Ordner speichern, erhalten Sie beim Erstellen der Definition der verwalteten Anwendung eine Fehlermeldung mit dem Hinweis, dass die erforderlichen Dateien nicht vorhanden sind.
 
 Laden Sie das Paket an einen zugänglichen Speicherort hoch, wo es verwendet werden kann. Sie müssen einen eindeutigen Namen für das Speicherkonto angeben.
 
@@ -291,7 +292,7 @@ Im vorigen Beispiel werden u.a. folgende Parameter verwendet:
 * **Ressourcengruppe**: Der Name der Ressourcengruppe, in der die Definition für die verwaltete Anwendung erstellt wird.
 * **Sperrebene**: Der Typ der Sperre, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist „ReadOnly“ die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
 * **authorizations**: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Diese ist im Format `<principalId>:<roleDefinitionId>` angegeben. Wenn mehr als ein Wert erforderlich ist, können Sie diese in der Form `<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>` angeben. Die Werte werden hierbei durch ein Komma voneinander getrennt.
-* **Paketdatei-URI**: Der Speicherort eines ZIP-Pakets, das die erforderlichen Dateien enthält.
+* **Paketdatei-URI**: Der Speicherort eines _ZIP_-Pakets, das die erforderlichen Dateien enthält.
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Bereitstellen eines eigenen Speichers (Bring Your Own Storage) für die Definition der verwalteten Anwendung
 
@@ -317,7 +318,7 @@ Bevor die Definition der verwalteten Anwendung in Ihrem Speicherkonto bereitgest
 1. Suchen Sie unter **Auswählen** nach der Rolle **Applianceressourcenanbieter**, und wählen Sie sie aus.
 1. Speichern Sie die Rollenzuweisung.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Bereitstellen der Definition der verwalteten Anwendung mit einer ARM-Vorlage 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Bereitstellen der Definition der verwalteten Anwendung mit einer ARM-Vorlage
 
 Stellen Sie mithilfe der folgenden ARM-Vorlage Ihre gepackte verwaltete Anwendung als neue Definition der verwalteten Anwendung im Dienstkatalog bereit, dessen Definitionsdateien in Ihrem eigenen Speicherkonto gespeichert und verwaltet werden:
    
@@ -391,9 +392,9 @@ Stellen Sie mithilfe der folgenden ARM-Vorlage Ihre gepackte verwaltete Anwendun
 }
 ```
 
-Wir haben den applicationDefintion-Eigenschaften eine neue Eigenschaft namens **storageAccountId** hinzugefügt und die ID des Speicherkontos, in dem die Definition gespeichert werden soll, als Wert dafür angegeben:
+Wir haben den `applicationDefinitions`-Eigenschaften eine neue Eigenschaft namens `storageAccountId` hinzugefügt und die ID des Speicherkontos, in dem die Definition gespeichert werden soll, als Wert dafür angegeben:
 
-Sie können überprüfen, ob die Anwendungsdefinitionsdateien in Ihrem bereitgestellten Speicherkonto in einem Container mit dem Namen **applicationdefinitions** gespeichert sind.
+Sie können überprüfen, ob die Anwendungsdefinitionsdateien in Ihrem bereitgestellten Speicherkonto in einem Container mit dem Namen `applicationDefinitions` gespeichert sind.
 
 > [!NOTE]
 > Um für mehr Sicherheit zu sorgen, können Sie eine Definition für verwaltete Anwendungen erstellen und in einem [Azure-Speicherkontoblob mit aktivierter Verschlüsselung](../../storage/common/storage-service-encryption.md) speichern. Der Definitionsinhalt wird mithilfe der Verschlüsselungsoptionen des Speicherkontos verschlüsselt. Nur Benutzer mit Berechtigungen für die Datei können die Definition im Dienstkatalog anzeigen.

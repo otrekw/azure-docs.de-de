@@ -1,16 +1,16 @@
 ---
 title: Anzeigen eines per Remotezugriff gerenderten Modells
 description: Das „Hallo Welt“-Tutorial zu Azure Remote Rendering zeigt, wie ein per Remotezugriff von Azure gerendertes Modell angezeigt werden kann.
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: f0b9bf1c7e085efd86f70f8246214d366265036a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566481"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231902"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Tutorial: Anzeigen eines per Remotezugriff gerenderten Modells
 
@@ -101,7 +101,7 @@ Die folgenden Schritte stellen sicher, dass das Projekt die neueste Version des 
 
 1. Legen Sie **Clear flags** (Kennzeichnungen löschen) auf *Solid Color* (Volltonfarbe) fest.
 
-1. Legen Sie **Background** (Hintergrund) auf *Black* (Schwarz) (#000000) mit Full (255) Alpha (A) fest.
+1. Legen Sie **Background** (Hintergrund) auf *Black* (Schwarz) (#000000) mit vollständig transparent (0) Alpha (A) fest.
 
     ![Farbenrad](./media/color-wheel-black.png)
 

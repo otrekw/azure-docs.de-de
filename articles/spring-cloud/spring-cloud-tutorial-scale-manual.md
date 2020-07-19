@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Skalieren einer Anwendung in Azure Spring Cloud | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal eine Anwendung mit Azure Spring Cloud skalieren.
+description: Erfahren Sie, wie Sie im Azure-Portal eine Anwendung mit Azure Spring Cloud skalieren.
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca889e48510ec20b4823c6ec5e4e0149d5aaaa62
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792063"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141879"
 ---
-# <a name="scale-an-application-in-azure-spring-cloud"></a>Skalieren einer Anwendung in Azure Spring Cloud
+# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Tutorial: Skalieren einer Anwendung in Azure Spring Cloud
 
 In diesem Tutorial wird veranschaulicht, wie Sie mithilfe des Azure Spring Cloud-Dashboards im Azure-Portal eine beliebige Microserviceanwendung skalieren.
 
@@ -23,7 +23,7 @@ Anschließend wissen Sie, wie jede Anwendung in Ihrem Dienst schnell manuell ge�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Um die folgenden Verfahren ausführen zu können, benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 * Eine bereitgestellte Azure Spring Cloud-Dienstinstanz.  Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart-launch-app-cli.md).
@@ -64,7 +64,7 @@ Wenn Sie sich im Tarif „Basic“ befinden und durch eins oder mehrere dieser [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie Azure Spring Cloud-Anwendungen manuell skalieren. Informationen zur Überwachung der Anwendung finden Sie im nächsten Tutorial.
+In diesem Tutorial haben Sie erfahren, wie Sie eine Azure Spring Cloud-Anwendung manuell skalieren. Informationen zur Überwachung einer Anwendung durch Einrichten von Warnungen finden Sie im nächsten Tutorial.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](spring-cloud-tutorial-distributed-tracing.md)
+> [Informationen zum Einrichten von Warnungen](spring-cloud-tutorial-alerts-action-groups.md)

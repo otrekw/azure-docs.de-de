@@ -3,12 +3,12 @@ title: 'Tutorial: Wiederherstellen einer SAP HANA-Datenbank unter Azure per CLI'
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, über die Azure CLI aus einem Recovery Services-Tresor von Azure Backup wiederherstellen.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6dbe0c4382b648506d853feb281c70a8e8401595
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 14e5023bf79e3e20f96c00fdc73f19c8cd095b73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75470405"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170580"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Wiederherstellen von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -109,7 +109,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 Die Antwort auf die obige Abfrage ist ein Objekt für die Wiederherstellungskonfiguration, das in etwa wie folgt aussieht:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
 Führen Sie nun zum Wiederherstellen der Datenbank das Cmdlet [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die obige JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
@@ -150,7 +150,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 Die Antwort auf die obige Abfrage ist ein Objekt für die Wiederherstellungskonfiguration, das wie folgt aussieht:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
 Führen Sie nun zum Wiederherstellen der Datenbank das Cmdlet [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die obige JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
@@ -171,6 +171,177 @@ Name                                  Resource
 ```
 
 In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
+
+## <a name="restore-as-files"></a>Wiederherstellen als Dateien
+
+Um die Sicherungsdaten als Dateien anstatt einer Datenbank wiederherzustellen, verwenden wir **RestoreAsFiles** als Wiederherstellungsmodus. Wählen Sie dann den Wiederherstellungspunkt aus. Dies kann entweder ein früherer Zeitpunkt oder einer der zurückliegenden Wiederherstellungspunkte sein. Nachdem die Dateien in einem angegebenen Pfad gesichert wurden, können Sie diese Dateien auf jeden SAP HANA-Computer verschieben, auf dem sie als Datenbank wiederhergestellt werden sollen. Da Sie diese Dateien auf einen beliebigen Computer verschieben können, können Sie nun die Daten über Abonnements und Regionen hinweg wiederherstellen.
+
+In diesem Tutorial wählen wir den vorherigen Zeitpunkt `28-11-2019-09:53:00` für die Wiederherstellung und den Speicherort für Sicherungsdateikopien als `/home/saphana/restoreasfiles` auf demselben SAP HANA-Server aus. Sie können diesen Wiederherstellungspunkt in einem der folgenden Formate angeben: **tt-mm-jjjj** oder **tt-mm-jjjj-hh:mm:ss**. Verwenden Sie das Cmdlet [az backup recoverypoint show-log-chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain), um einen gültigen Zeitpunkt für die Wiederherstellung auszuwählen. Hiermit werden die Intervalle mit den ununterbrochenen Protokollkettensicherungen aufgelistet.
+
+Mit dem oben aufgeführten Wiederherstellungspunktnamen und unter Nutzung des Wiederherstellungsmodus erstellen wir nun das Objekt für die Wiederherstellungskonfiguration. Hierfür verwenden wir das Cmdlet [az backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show). Die übrigen Parameter dieses Cmdlets haben die folgende Bedeutung:
+
+* **--target-container-name**: Dies ist der Name eines SAP HANA-Servers, der erfolgreich für einen Recovery Services-Tresor registriert wurde und in derselben Region wie die wiederherzustellende Datenbank angeordnet ist. In diesem Tutorial stellen wir die Datenbank als Datenen auf demselben SAP HANA-Server mit dem Namen *hxehost* wieder her, den wir geschützt haben.
+* **--rp-name**: Für eine Point-in-Time-Wiederherstellung lautet der Wiederherstellungspunktname **DefaultRangeRecoveryPoint**.
+
+```azurecli-interactive
+az backup recoveryconfig show --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --item-name saphanadatabase;hxe;hxe \
+    --restore-mode RestoreAsFiles \
+    --log-point-in-time 28-11-2019-09:53:00 \
+    --rp-name DefaultRangeRecoveryPoint \
+    --target-container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --filepath /home/saphana/restoreasfiles \
+    --output json
+```
+
+Die Antwort auf die Abfrage oben ist ein Objekt für die Wiederherstellungskonfiguration, das wie folgt aussieht:
+
+```output
+{
+  "alternate_directory_paths": null,
+  "container_id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;SAPHANA;hanamachine",
+  "container_uri": "VMAppContainer;compute;saphana;hanamachine",
+  "database_name": null,
+  "filepath": "/home/",
+  "item_type": "SAPHana",
+  "item_uri": "SAPHanaDatabase;hxe;hxe",
+  "log_point_in_time": "04-07-2020-09:53:00",
+  "recovery_mode": "FileRecovery",
+  "recovery_point_id": "DefaultRangeRecoveryPoint",
+  "restore_mode": "AlternateLocation",
+  "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/hanamachine"
+}
+```
+
+Führen Sie nun zum Wiederherstellen der Datenbank als Dateien das Cmdlet [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die oben aufgeführte JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
+
+```azurecli-interactive
+az backup restore restore-azurewl --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --restore-config recoveryconfig.json \
+    --output json
+```
+
+Die Ausgabe sieht dann wie folgt aus:
+
+```output
+{
+  "eTag": null,
+  "id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/SAPHANARESOURCEGROUP/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupJobs/608e737e-c001-47ca-8c37-57d909c8a704",
+  "location": null,
+  "name": "608e737e-c001-47ca-8c37-57d909c8a704",
+  "properties": {
+    "actionsInfo": [
+      "Cancellable"
+    ],
+    "activityId": "7ddd3c3a-c0eb-11ea-a5f8-54ee75ec272a",
+    "backupManagementType": "AzureWorkload",
+    "duration": "0:00:01.781847",
+    "endTime": null,
+    "entityFriendlyName": "HXE [hxehost]",
+    "errorDetails": null,
+    "extendedInfo": {
+      "dynamicErrorMessage": null,
+      "propertyBag": {
+        "Job Type": "Restore as files"
+      },
+      "tasksList": [
+        {
+          "status": "InProgress",
+          "taskId": "Transfer data from vault"
+        }
+      ]
+    },
+    "jobType": "AzureWorkloadJob",
+    "operation": "Restore",
+    "startTime": "2020-07-08T07:20:29.336434+00:00",
+    "status": "InProgress",
+    "workloadType": "SAPHanaDatabase"
+  },
+  "resourceGroup": "saphanaResourceGroup",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupJobs"
+}
+```
+
+In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
+
+Die folgenden Dateien werden im Zielcontainer gesichert:
+
+* Datenbanksicherungsdateien
+* Katalogdateien
+* JSON-Metadatendateien (für jede betroffene Sicherungsdatei)
+
+Normalerweise kann über einen Netzwerkfreigabepfad oder den Pfad einer eingebundenen Azure-Dateifreigabe, wenn dieser als Zielpfad angegeben ist, über andere Computer im selben Netzwerk oder mit derselben eingebundenen Azure-Dateifreigabe einfacher auf diese Dateien zugegriffen werden.
+
+>[!NOTE]
+>Um die Datenbank-Sicherungsdateien auf einer Azure-Dateifreigabe wiederherzustellen, die auf der registrierten Ziel-VM bereitgestellt ist, stellen Sie sicher, dass das root-Konto über Lese-/Schreibberechtigungen für die Azure-Dateifreigabe verfügt.
+
+Basierend auf dem ausgewählten Typ von Wiederherstellungspunkt (**Point-in-Time** oder **Vollständig und differenziell**) sehen Sie einen oder mehrere im Zielpfad erstellte Ordner. Einer der Ordner mit dem Namen `Data_<date and time of restore>` enthält die vollständigen und differenziellen Sicherungen, während der andere Ordner mit dem Namen `Log` die Protokollsicherungen enthält.
+
+Verschieben Sie diese wiederhergestellten Dateien auf den SAP HANA-Server, auf dem Sie sie als-Datenbank wiederherstellen möchten. Führen Sie dann die folgenden Schritte zum Wiederherstellen der Datenbank aus:
+
+1. Legen Sie Berechtigungen für den Ordner/das Verzeichnis fest, indem die Sicherungsdateien gespeichert sind. Führen Sie dazu folgenden Befehl aus:
+
+    ```bash
+    chown -R <SID>adm:sapsys <directory>
+    ```
+
+1. Führen Sie den nächsten Satz als `<SID>adm` aus.
+
+    ```bash
+    su - <sid>adm
+    ```
+
+1. Generieren Sie die Katalogdatei für die Wiederherstellung. Extrahieren Sie die **BackupId** aus der JSON-Metadatendatei für die vollständige Sicherung, die später im Wiederherstellungsvorgang verwendet wird. Stellen Sie sicher, dass sich die vollständigen Sicherungen und die Protokollsicherungen in unterschiedlichen Ordnern befinden, und löschen Sie die Katalogdateien und die JSON-Metadatendateien in diesen Ordnern.
+
+    ```bash
+    hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
+    ```
+
+    Im obigen Befehl gilt Folgendes:
+
+    * `<DataFileDir>` ist der Ordner mit den vollständigen Sicherungen.
+    * `<LogFilesDir>` ist der Ordner mit den Protokollsicherungen.
+    * `<PathToPlaceCatalogFile>` ist der Ordner, in dem die generierte Katalogdatei platziert werden muss.
+
+1. Führen Sie die Wiederherstellung mit der neu generierten Katalogdatei über HANA Studio aus, oder führen Sie die HDBSQL-Wiederherstellungsabfrage mit diesem neu generierten Katalog aus. HDBSQL-Abfragen sind unten aufgelistet:
+
+    * Wiederherstellen eines bestimmten Zeitpunkts:
+
+        Wenn Sie eine neue wiederhergestellte Datenbank erstellen, führen Sie den HDBSQL-Befehl aus, um eine neue Datenbank `<DatabaseName>` zu erstellen, und beenden Sie die Datenbank anschließend für die Wiederherstellung. Wenn Sie jedoch nur eine vorhandene Datenbank wiederherstellen, führen Sie den HDBSQL-Befehl aus, um die Datenbank zu beenden.
+
+        Führen Sie dann den folgenden Befehl aus, um die Datenbank wiederherzustellen:
+
+        ```hdbsql
+        RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
+        ```
+
+        * `<DatabaseName>` ist der Name der neuen oder vorhandenen Datenbank, die Sie wiederherstellen möchten.
+        * `<Timestamp>` ist der genaue Zeitstempel der Point-in-Time-Wiederherstellung.
+        * `<DatabaseName@HostName>` ist der Name der Datenbank, deren Sicherung für die Wiederherstellung verwendet wird, und der Name des **Hosts**/SAP HANA-Servers, auf dem sich diese Datenbank befindet. Die Option `USING SOURCE <DatabaseName@HostName>` gibt an, dass sich die Datensicherung (die für die Wiederherstellung verwendet wird) auf eine Datenbank mit einer anderen SID oder einem anderen Namen als der Ziel-SAP HANA-Computer bezieht. Daher muss sie nicht für Wiederherstellungen angegeben werden, die auf dem HANA-Server ausgeführt werden, auf dem die Sicherung aufgezeichnet wurde.
+        * `<PathToGeneratedCatalogInStep3>` ist der Pfad zur Katalogdatei, die in **Schritt 3** generiert wurde.
+        * `<DataFileDir>` ist der Ordner mit den vollständigen Sicherungen.
+        * `<LogFilesDir>` ist der Ordner mit den Protokollsicherungen.
+        * `<BackupIdFromJsonFile>` ist die **BackupId**, die in **Schritt 3** extrahiert wurde.
+
+    * Wiederherstellen einer bestimmten vollständigen oder differenziellen Sicherung:
+
+        Wenn Sie eine neue wiederhergestellte Datenbank erstellen, führen Sie den HDBSQL-Befehl aus, um eine neue Datenbank `<DatabaseName>` zu erstellen, und beenden Sie die Datenbank anschließend für die Wiederherstellung. Wenn Sie jedoch nur eine vorhandene Datenbank wiederherstellen, führen Sie den HDBSQL-Befehl aus, um die Datenbank zu beenden:
+
+        ```hdbsql
+        RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
+        ```
+
+        * `<DatabaseName>` ist der Name der neuen oder vorhandenen Datenbank, die Sie wiederherstellen möchten.
+        * `<Timestamp>` ist der genaue Zeitstempel der Point-in-Time-Wiederherstellung.
+        * `<DatabaseName@HostName>` ist der Name der Datenbank, deren Sicherung für die Wiederherstellung verwendet wird, und der Name des **Hosts**/SAP HANA-Servers, auf dem sich diese Datenbank befindet. Die Option `USING SOURCE <DatabaseName@HostName>` gibt an, dass sich die Datensicherung (die für die Wiederherstellung verwendet wird) auf eine Datenbank mit einer anderen SID oder einem anderen Namen als der Ziel-SAP HANA-Computer bezieht. Daher muss sie nicht für Wiederherstellungen angegeben werden, die auf dem HANA-Server ausgeführt werden, auf dem die Sicherung aufgezeichnet wurde.
+        * `<PathToGeneratedCatalogInStep3>` ist der Pfad zur Katalogdatei, die in **Schritt 3** generiert wurde.
+        * `<DataFileDir>` ist der Ordner mit den vollständigen Sicherungen.
+        * `<LogFilesDir>` ist der Ordner mit den Protokollsicherungen.
+        * `<BackupIdFromJsonFile>` ist die **BackupId**, die in **Schritt 3** extrahiert wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

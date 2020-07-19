@@ -1,33 +1,31 @@
 ---
 title: Schnellstartanleitung zum Erstellen eines Azure Recovery Services-Tresors mithilfe einer Azure Resource Manager-Vorlage
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage einen Azure Recovery Services-Tresor erstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen Azure Recovery Services-Tresor erstellen.
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217284"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248824"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Schnellstart: Erstellen eines Recovery Services-Tresors mithilfe einer Resource Manager-Vorlage
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Schnellstart: Erstellen eines Recovery Services-Tresors mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage einen Recovery Services-Tresor einrichten. Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre BCDR-Strategie (Business Continuity & Disaster Recovery), damit der Onlinezustand Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet die Notfallwiederherstellung von lokalen Computern und virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
+In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen Recovery Services-Tresor einrichten. Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre BCDR-Strategie (Business Continuity & Disaster Recovery), damit der Onlinezustand Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet die Notfallwiederherstellung von lokalen Computern und virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Falls Sie kein aktives Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Keine.
+Falls Sie kein aktives Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
 
@@ -42,7 +40,7 @@ Die Vorlage enthält optionale Parameter für die Sicherungskonfiguration des Tr
 
 Weitere Azure Recovery Services-Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 Zum Bereitstellen der Vorlage sind das **Abonnement**, die **Ressourcengruppe** und der **Tresorname** erforderlich.
 

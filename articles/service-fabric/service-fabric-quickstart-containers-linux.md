@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75372685"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258552"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Linux-Containern in Service Fabric
 
@@ -108,7 +108,7 @@ Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importi
     ./install.sh
     ```
 
-3. Navigieren Sie in einem Webbrowser zum Service Fabric Explorer-Endpunkt für Ihren Cluster. Der Endpunkt hat das folgende Format: **https://\<URL Ihres Azure Service Fabric-Clusters>:19080/Explorer**. Beispiel: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Navigieren Sie in einem Webbrowser zum Service Fabric Explorer-Endpunkt für Ihren Cluster. Der Endpunkt weist das folgende Format auf: **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**, beispielsweise `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
 4. Erweitern Sie den Knoten **Anwendungen**, um zu prüfen, ob nun ein Eintrag für den Voting-Anwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
 
@@ -179,9 +179,9 @@ az group delete --name $ResourceGroupName
 ```
 
 Nach Abschluss der Clusterverwendung können Sie das Zertifikat aus Ihrem Zertifikatspeicher entfernen. Beispiel:
-- Unter Windows: Verwenden Sie das [MMC-Snap-In „Zertifikate“](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Beim Hinzufügen des Snap-Ins muss **Mein Benutzerkonto** ausgewählt sein. Navigieren Sie zu `Certificates - Current User\Personal\Certificates`, und entfernen Sie das Zertifikat.
-- Auf einem Mac: Verwenden Sie die Keychain-App.
-- Unter Ubuntu: Führen Sie die Schritte aus, die Sie zum Anzeigen von Zertifikaten verwendet haben, und entfernen Sie das Zertifikat.
+- Unter Windows: Verwenden Sie das [MMC-Snap-In „Zertifikate“](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Beim Hinzufügen des Snap-Ins muss **Mein Benutzerkonto** ausgewählt sein. Navigieren Sie zu `Certificates - Current User\Personal\Certificates`, und entfernen Sie das Zertifikat.
+- Auf einem Macintosh: Verwenden Sie die Keychain-App.
+- Auf Ubuntu: Führen Sie die Schritte aus, die Sie zum Anzeigen von Zertifikaten verwendet haben, und entfernen Sie das Zertifikat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

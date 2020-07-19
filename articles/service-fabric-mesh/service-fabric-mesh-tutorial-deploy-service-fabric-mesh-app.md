@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351862"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261327"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung
 
@@ -61,11 +61,11 @@ Nun wird ein Dialogfeld **Service Fabric-Anwendung veröffentlichen** angezeigt.
 
 Wählen Sie Ihr Azure-Konto und -Abonnement aus. Wählen Sie einen **Standort**aus. In diesem Artikel wird **USA, Osten** verwendet.
 
-Wählen Sie unter **Ressourcengruppe** die Option **\<Neue Ressourcengruppe erstellen...>** aus. Ein Dialogfeld wird angezeigt, in dem Sie eine neue Ressourcengruppe erstellen. In diesem Artikel wird der Standort **USA, Osten** verwendet, und der Name der Gruppe lautet **sfmeshTutorial1RG** (wenn in Ihrem Unternehmen mehrere Personen das gleiche Abonnement verwenden, wählen Sie einen eindeutigen Gruppennamen aus).  Klicken Sie auf **Erstellen**, um die Ressourcengruppe zu erstellen, und kehren Sie dann zum Dialogfeld „Veröffentlichen“ zurück.
+Wählen Sie unter **Ressourcengruppe** die Option **\<Create New Resource Group...>** aus. Ein Dialogfeld wird angezeigt, in dem Sie eine neue Ressourcengruppe erstellen. In diesem Artikel wird der Standort **USA, Osten** verwendet, und der Name der Gruppe lautet **sfmeshTutorial1RG** (wenn in Ihrem Unternehmen mehrere Personen das gleiche Abonnement verwenden, wählen Sie einen eindeutigen Gruppennamen aus).  Klicken Sie auf **Erstellen**, um die Ressourcengruppe zu erstellen, und kehren Sie dann zum Dialogfeld „Veröffentlichen“ zurück.
 
 ![Dialogfeld für neue Ressourcengruppe von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-Im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Neue Containerregistrierung erstellen...>** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen **Namen der Containerregistrierung**. Geben Sie einen **Standort** an (in diesem Tutorial wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um die private Azure-Containerregistrierung zu erstellen und zum Veröffentlichungsdialogfeld zurückzukehren.
+Im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Create New Container Registry...>** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen **Namen der Containerregistrierung**. Geben Sie einen **Standort** an (in diesem Tutorial wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um die private Azure-Containerregistrierung zu erstellen und zum Veröffentlichungsdialogfeld zurückzukehren.
 
 ![Dialogfeld für neue Containerregistrierung von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
@@ -139,4 +139,4 @@ Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]
 > [Aktualisieren einer Service Fabric Mesh-App](service-fabric-mesh-tutorial-upgrade.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

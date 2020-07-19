@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780305"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276112"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Welche Regionen sind verfügbar?
 
@@ -48,6 +48,10 @@ Derzeit wird nur das Kopieren/Einfügen von Text unterstützt. Funktionen wie da
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Welche Browser werden unterstützt?
 
 Verwenden Sie unter Windows den Microsoft Edge-Browser oder Google Chrome. Verwenden Sie unter macOS Google Chrome. Microsoft Edge Chromium wird auch für Windows und Mac unterstützt.
+
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Wo speichert Azure Bastion Kundendaten?
+
+Azure Bastion speichert Kundendaten in der Region, in der sie bereitgestellt werden, und verschiebt sie nicht aus dieser Region.
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>Sind für den Zugriff auf einen virtuellen Computer Rollen erforderlich?
 

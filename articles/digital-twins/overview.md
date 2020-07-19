@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737120"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257989"
 ---
 # <a name="what-is-azure-digital-twins"></a>Was ist Azure Digital Twins?
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure Digital Twins** ist eine IoT-Plattform, mit der Sie umfassende digitale Modelle für eine vollständige Umgebung erstellen können. Bei einer solchen Umgebung kann es sich um Gebäude, Fabriken, Höfe, Energieversorgungsnetze, Eisenbahnstrecken, Stadien und mehr handeln. Sogar ganze Städte lassen sich modellieren. Diese digitalen Modelle liefern wichtige Einblicke, um Produkte zu verbessern, Vorgänge zu optimieren, Kosten zu senken und die Benutzerfreundlichkeit zu revolutionieren.
 
@@ -46,6 +43,12 @@ DTDL wird auch in anderen Azure IoT-Diensten für Datenmodelle verwendet. Dazu z
 ### <a name="live-execution-environment"></a>Liveausführungsumgebung
 
 Bei den digitalen Modellen in Azure Digital Twins handelt es sich um aktuelle Livedarstellungen der realen Welt. Mithilfe der Beziehungen in Ihren benutzerdefinierten DTDL-Modellen verbinden Sie die Zwillinge in einem **Livediagramm**, mit dem Ihre Umgebung dargestellt wird.
+
+Sie können eine Visualisierung Ihres Azure Digital Twins-Diagramms mithilfe einer Beispielanwendung anzeigen, [**Azure Digital Twins-Explorer**](https://github.com/Azure-Samples/digital-twins-explorer).
+
+Hier sehen Sie, wie die Beispiel Visualisierung aussieht:
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Screenshot der Beispielanwendung für den Azure Digital Twins-Explorer mit einem Diagramm von Knoten, die digitale Zwillinge darstellen" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Azure Digital Twins bietet ein umfangreiches **Ereignissystem**, um sicherzustellen, dass dieses Diagramm mit Datenverarbeitung und Geschäftslogik stets auf dem aktuellen Stand ist. Für eine flexible, individuell angepasste Datenverarbeitung können Sie zudem externe Computeressourcen wie [Azure Functions](../azure-functions/functions-overview.md) verbinden.
 

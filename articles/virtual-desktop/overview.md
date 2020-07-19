@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/07/2020
+ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125803"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248610"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
@@ -87,47 +87,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 >[!NOTE]
 >Sollten Sie ein Azure-Abonnement benötigen, können Sie sich [für eine einmonatige kostenlose Testversion registrieren](https://azure.microsoft.com/free/). Bei Verwendung der kostenlosen Testversion von Azure müssen Sie Azure AD Domain Services verwenden, um Ihre Windows Server Active Directory-Instanz mit Azure Active Directory zu synchronisieren.
 
-Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über Zugriff auf die folgenden URLs verfügen:
-
-|Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|Dienstdatenverkehr|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
-|*.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
-|*.servicebus.windows.net|443|Agent-Datenverkehr|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Agent-Datenverkehr|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
-|kms.core.windows.net|1688|Aktivierung von Windows|Internet|
-|wvdportalstorageblob.blob.core.windows.net|443|Unterstützung des Azure-Portals|AzureCloud|
-
->[!IMPORTANT]
->Windows Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
->
->Wir empfehlen Ihnen, FQDN- oder Diensttags anstelle von URLs zu verwenden, um Dienstprobleme zu verhindern. Die aufgeführten URLs und Tags beziehen sich nur auf Windows Virtual Desktop-Websites und -Ressourcen. Sie enthalten keine URLs für andere Dienste, z. B. Azure Active Directory.
-
-In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuellen Azure-Computer Zugriff haben können:
-
-|Adresse|Ausgehender TCP-Port|Zweck|Diensttag|
-|---|---|---|---|
-|*.microsoftonline.com|443|Authentifizierung bei Microsoft Online Services|Keine|
-|*.events.data.microsoft.com|443|Telemetriedienst|Keine|
-|www.msftconnecttest.com|443|Ermittelt, ob das Betriebssystem mit dem Internet verbunden ist.|Keine|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows-Update|Keine|
-|login.windows.net|443|Anmelden bei Microsoft Online Services, Microsoft 365|Keine|
-|*.sfx.ms|443|Updates für die OneDrive-Clientsoftware|Keine|
-|*.digicert.com|443|Überprüfung der Zertifikatsperre|Keine|
-
-
->[!NOTE]
->Windows Virtual Desktop verfügt derzeit über keine Liste mit IP-Adressbereichen, die Sie in die Whitelist aufnehmen können, um Netzwerkdatenverkehr zuzulassen. Momentan wird nur das Hinzufügen spezifischer URLs zur Whitelist unterstützt.
->
->Eine Liste der URLs für Office, einschließlich der erforderlichen URLs für Azure Active Directory, finden Sie unter [URLs und IP-Adressbereiche für Office 365](/office365/enterprise/urls-and-ip-address-ranges).
->
->Sie müssen das Platzhalterzeichen (*) für URLs für Dienstdatenverkehr verwenden. Wenn Sie kein Platzhalterzeichen (*) für Agent-Datenverkehr verwenden möchten, ermitteln Sie wie folgt die URLs ohne Platzhalter:
->
->1. Registrieren Sie Ihre virtuellen Computer für den Windows Virtual Desktop-Hostpool.
->2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie zu **Windows-Protokolle** > **Anwendung** > **WVD-Agent**, und suchen Sie nach der Ereignis-ID 3702.
->3. Nehmen Sie die URLs, die Sie unter der Ereignis-ID 3702 finden, in eine Whitelist auf. Die URLs unter der Ereignis-ID 3702 sind regionsspezifisch. Sie müssen den Whitelistprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
+Eine Liste der URLs, die Sie freigeben sollten, damit Ihre Windows Virtual Desktop-Bereitstellung wie vorgesehen funktioniert, finden Sie in unserer [Liste sicherer URLs](safe-url-list.md).
 
 Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Benutzer bereitstellen, sowie die Verwaltungslösung. Letztere wird von Microsoft in Azure gehostet. Desktops und Apps können auf virtuellen Computern (VMs) in einer beliebigen Azure-Region bereitgestellt werden. Die Verwaltungslösung und Daten für diese virtuellen Computer befinden sich dagegen in den Vereinigten Staaten. Dies kann zu Datenübertragungen in die USA führen.
 
@@ -141,7 +101,7 @@ Ihr Netzwerk muss folgende Anforderungen erfüllen, um eine optimale Leistung zu
 
 Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
 
-* [Windows Desktop](connect-windows-7-and-10.md)
+* [Windows Desktop](connect-windows-7-10.md)
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
@@ -153,20 +113,7 @@ Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
 > [!IMPORTANT]
 > Windows Virtual Desktop verfügt derzeit nicht über Unterstützung für den Remotedesktopclient aus dem Windows Store. Die Unterstützung für diesen Client wird in einer zukünftigen Version enthalten sein.
 
-Für die Remotedesktopclients muss Zugriff auf die folgenden URLs bestehen:
-
-|Adresse|Ausgehender TCP-Port|Zweck|Client(s)|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|Dienstdatenverkehr|All|
-|*.servicebus.windows.net|443|Problembehandlung für Daten|All|
-|go.microsoft.com|443|Microsoft FWLinks|All|
-|aka.ms|443|Microsoft-URL-Verkürzung|All|
-|docs.microsoft.com|443|Dokumentation|All|
-|privacy.microsoft.com|443|Datenschutzbestimmungen|All|
-|query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows Desktop|
-
->[!IMPORTANT]
->Das Öffnen dieser URLs ist für einen zuverlässigen Clientbetrieb von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs gelten lediglich für die Clientstandorte und -ressourcen und beinhalten keine URLs für andere Dienste wie Azure Active Directory.
+Weitere Informationen zu URLs, die Sie für die Verwendung der Remoteclients entsperren müssen, finden Sie in der [Liste sicherer URLs](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Unterstützte Betriebssystemimages virtueller Computer
 

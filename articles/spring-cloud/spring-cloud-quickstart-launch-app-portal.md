@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: e4ea76a888ba51b3560139e9efc3df512c4fbadf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 118e1e49393a797a065f1e9968a83a6d4464868e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120941"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171039"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal
 
@@ -43,14 +43,6 @@ So führen Sie diesen Schnellstart durch:
 3. [Installation von Maven 3.0 oder höher](https://maven.apache.org/download.cgi)
 4. [Installation der Azure CLI, Version 2.0.67 oder höher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Registrierung für ein Azure-Abonnement](https://azure.microsoft.com/free/)
-
-## <a name="install-the-azure-cli-extension"></a>Installieren der Erweiterung für die Azure-Befehlszeilenschnittstelle
-
-Führen Sie den folgenden Befehl aus, um die Azure Spring Cloud-Erweiterung für die Azure CLI zu installieren:
-
-```azurecli
-az extension add --name spring-cloud
-```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Bereitstellen einer Dienstinstanz im Azure-Portal
 
@@ -112,7 +104,7 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
 
 ## <a name="build-and-deploy-microservice-applications"></a>Erstellen und Bereitstellen von Microserviceanwendungen
 
-1. Öffnen Sie [Azure Cloud Shell](https://shell.azure.com), und klonen Sie das Beispiel-App-Repository auf Ihren lokalen Computer.  Hier wird vor dem Klonen der App zunächst ein temporäres Verzeichnis mit dem Namen `source-code` erstellt.
+1. Öffnen Sie eine [Azure Cloud Shell](https://shell.azure.com) oder Ihre lokale Shell mit installierter Azure CLI. Hier wird vor dem Klonen der Beispiel-App zunächst ein temporäres Verzeichnis mit dem Namen `source-code` erstellt.
 
     ```console
     mkdir source-code
@@ -127,18 +119,20 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
     mvn clean package -DskipTests
     ```
 
-3. Weisen Sie Ihrer Ressourcengruppe und Ihrem Dienst Namen zu. Ersetzen Sie die unten angegebenen Platzhalter durch den Ressourcengruppennamen und den Dienstnamen, die Sie weiter oben in diesem Tutorial bereitgestellt haben.
+3. Führen Sie den folgenden Befehl aus, um die Azure Spring Cloud-Erweiterung für die Azure CLI zu installieren:
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+4. Weisen Sie Ihrer Ressourcengruppe und Ihrem Dienst Namen zu. Ersetzen Sie die unten angegebenen Platzhalter durch den Ressourcengruppennamen und den Dienstnamen, die Sie weiter oben in diesem Tutorial bereitgestellt haben.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. Erstellen Sie die Anwendung `gateway`, und stellen Sie die JAR-Datei bereit:  Die folgenden Schritte erfordern die Spring Cloud-Erweiterung. Wenn Sie die Installation nicht mit den Voraussetzungen ausgeführt haben, führen Sie den folgenden Befehl aus:
-
-    ```azurecli
-    az extension add --name spring-cloud
-    ```
+5. Erstellen Sie die Anwendung `gateway`, und stellen Sie die JAR-Datei bereit:
 
     Erstellen Sie die App mit der Spring Cloud-Erweiterung:
 
@@ -147,7 +141,7 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-5. Erstellen Sie nach dem gleichen Muster die Anwendungen `account-service` und `auth-service`, und stellen Sie ihre JAR-Dateien bereit:
+6. Erstellen Sie nach dem gleichen Muster die Anwendungen `account-service` und `auth-service`, und stellen Sie ihre JAR-Dateien bereit:
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -156,7 +150,7 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-6. Es dauert einige Minuten, bis die Bereitstellung der Anwendungen abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps**, um zu überprüfen, ob die Anwendungen bereitgestellt wurden. Für die drei Anwendungen sollte jeweils eine Zeile angezeigt werden.
+7. Es dauert einige Minuten, bis die Bereitstellung der Anwendungen abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps**, um zu überprüfen, ob die Anwendungen bereitgestellt wurden. Für die drei Anwendungen sollte jeweils eine Zeile angezeigt werden.
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)

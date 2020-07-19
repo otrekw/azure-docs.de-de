@@ -4,19 +4,19 @@ description: include file
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317745"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221634"
 ---
-Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
+Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
-- Verwaltete globale Replikation von Images.
+- Globale Replikation von Images
 - Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung.
 - Hochverfügbare Images mit ZRS-Konten (zonenredundanter Speicher) in Regionen, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.
 - Storage Premium-Support (Premium_LRS).
@@ -33,7 +33,7 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 | Resource | BESCHREIBUNG|
 |----------|------------|
-| **Imagequelle** | Dies ist eine Ressource, die zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Eine Imagequelle kann eine vorhandene Azure-VM, die entweder [generalisiert oder spezialisiert](#generalized-and-specialized-images) ist, ein verwaltetes Image, eine Momentaufnahme oder eine Imageversion in einem anderen Imagekatalog sein. |
+| **Imagequelle** | Dies ist eine Ressource, die zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Eine Imagequelle kann eine vorhandene Azure-VM, die entweder [generalisiert oder spezialisiert](#generalized-and-specialized-images) ist, ein verwaltetes Image, eine Momentaufnahme, eine VHD oder eine Imageversion in einem anderen Imagekatalog sein. |
 | **Imagekatalog** | Wie der Azure Marketplace ist ein **Imagekatalog** ein Repository zum Verwalten und Teilen von Images, aber Sie kontrollieren, wer Zugriff hat. |
 | **Imagedefinition** | Imagedefinitionen werden in einem Katalog erstellt und enthalten Informationen zum Image und zu den Anforderungen für seine interne Verwendung. Dies schließt ein, ob das Image Windows oder Linux ist, Anmerkungen zu dieser Version und Anforderungen an den minimalen und maximalen Arbeitsspeicher. Es ist eine Definition eines Imagetyps. |
 | **Imageversion** | Eine **Imageversion** ist, was Sie verwenden, um einen virtuellen Computer zu erstellen, wenn Sie einen Katalog verwenden. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wie bei einem verwalteten Image wird, wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. Imageversionen können mehrmals verwendet werden. |
@@ -68,6 +68,7 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 * Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
 * Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
 * Hyper-V-Generation: Sie können angeben, ob das Image aus einer Hyper-V-VHD der Generation 1 oder der Generation 2 erstellt wurde.
+* Erwerbsplaninformationen für Marketplace-Images: `-PurchasePlanPublisher `, `-PurchasePlanName` und `-PurchasePlanProduct`. Weitere Informationen zu den Erwerbsplaninformationen finden Sie unter [Suchen nach Images in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) und [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](../articles/virtual-machines/marketplace-images.md).
 
 ## <a name="generalized-and-specialized-images"></a>Generalisierte und spezialisierte Images
 
@@ -82,24 +83,7 @@ Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informa
 
 ## <a name="regional-support"></a>Regionsunterstützung
 
-Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://azure.microsoft.com/global-infrastructure/australia/contact/
-
-
-| Quellregionen        |                   |                    |                    |
-| --------------------- | ----------------- | ------------------ | ------------------ |
-| Australien, Mitte     | China, Osten        | Indien (Süden)        | Europa, Westen        |
-| Australien, Mitte 2   | China, Osten 2      | Asien, Südosten     | UK, Süden           |
-| Australien (Osten)        | China, Norden       | Japan, Osten         | UK, Westen            |
-| Australien, Südosten   | China, Norden 2     | Japan, Westen         | US DoD, Mitte     |
-| Brasilien Süd          | Asien, Osten         | Korea, Mitte      | US DoD, Osten        |
-| Kanada, Mitte        | East US           | Korea, Süden        | US Gov Arizona     |
-| Kanada, Osten           | USA (Ost) 2         | USA Nord Mitte   | US Gov Texas       |
-| Indien, Mitte         | USA, Osten 2 (EUAP)    | Nordeuropa       | US Government, Virginia    |
-| USA (Mitte)            | Frankreich, Mitte    | USA Süd Mitte   | Indien, Westen         |
-| USA, Mitte (EUAP)       | Frankreich, Süden      | USA, Westen-Mitte    | USA (Westen)            |
-|                       |                   |                    | USA, Westen 2          |
-
-
+Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Einschränkungen 
 
@@ -246,13 +230,7 @@ Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben k�
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kann ich eine Imageversion von einem speziellen Datenträger erstellen?
 
-Ja, die Unterstützung von spezialisierten Datenträgern als Images ist als Vorschauversion verfügbar. Sie können eine VM aus einem spezialisierten Image erstellen, indem Sie das Portal, PowerShell oder die API verwenden. 
-
-
-Verwenden von [PowerShell, um ein Image einer spezialisierten VM zu erstellen](../articles/virtual-machines/image-version-vm-powershell.md).
-
-Verwenden des Portals zum Erstellen eines [Windows](../articles/virtual-machines/linux/shared-images-portal.md)- oder [Linux]-Images (../articles/virtual-machines/linux/shared-images-portal.md). 
-
+Ja, Sie können eine VM aus einem spezialisierten Image erstellen, indem Sie die [CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md), [PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md) oder die API verwenden. 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kann ich die Katalogressource mit geteilten Images nach der Erstellung in ein anderes Abonnement verschieben?
 

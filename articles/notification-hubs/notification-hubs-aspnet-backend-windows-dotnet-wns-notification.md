@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71212059"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220149"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
@@ -331,11 +331,11 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
 2. Geben Sie einen **Benutzernamen** und ein **Kennwort** ein, wie im folgenden Bildschirm dargestellt. Sie sollten einen anderen Benutzernamen und ein anders Kennwort als in Windows Phone eingeben.
 3. Klicken Sie auf **Login and register** , und überprüfen Sie, ob ein Dialogfeld anzeigt, dass Sie sich angemeldet haben. Durch diesen Code wird auch die Schaltfläche **Send Push** aktiviert.
 
-    ![][14]
+    ![Screenshot der Notification Hubs-Anwendung mit ausgefülltem Benutzernamen und Kennwort.][14]
 5. Geben Sie dann im Feld **Recipient Username Tag** den registrierten Benutzernamen ein. Geben Sie eine Benachrichtigungsmeldung ein, und klicken Sie auf **Send Push**.
 6. Nur die Geräte, die mit dem entsprechenden Benutzernamentag registriert wurden, erhalten eine Benachrichtigungsmeldung.
 
-    ![][15]
+    ![Screenshot der Notification Hubs-Anwendung, die die Meldung anzeigt, die gepusht wurde.][15]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
