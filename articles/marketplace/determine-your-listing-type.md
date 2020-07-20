@@ -1,18 +1,18 @@
 ---
 title: Bestimmen Ihrer Veröffentlichungsoption im kommerziellen Microsoft-Marketplace
 description: In diesem Artikel werden die Eignungskriterien und Bedingungen für die Veröffentlichung von Angeboten in Microsoft AppSource und im Azure Marketplace beschrieben.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 7c8a8bcef548ae752b6ddeb7663dd82b3f245349
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+author: keferna
+ms.author: keferna
+ms.date: 06/22/2020
+ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957884"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103652"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 
@@ -56,11 +56,11 @@ Bevor Sie eine Veröffentlichungsoption auswählen, müssen Sie die erforderlich
 Bei **Azure Marketplace**-Anwendungen handelt es sich um technische „Baustein“-Lösungen, die unter bzw. für Azure erstellt werden und für IT-Experten oder Entwickler ausgelegt sind. Azure Marketplace-Beratungsdienste sind professionelle Dienstangebote, die Kunden beim Einstieg in die Nutzung von Azure oder deren Optimierung unterstützen.
 
 >[!Note]
->Cross-Listing (nur für SaaS-Apps): Wenn ein Listen- oder Testversionsangebot sowohl die Kriterien für die technische als auch für die Geschäftskunden-Zielgruppe erfüllt, wird Ihr Angebot in beiden Storefronts aufgeführt. Im Folgenden finden Sie weitere Informationen zu den Veröffentlichungsoptionen.
+>„Doppeltes Listing“ (nur für SaaS-Apps): Wenn Ihr SaaS-Angebot sowohl für eine technische Zielgruppe (Azure Marketplace) als auch für geschäftliche Benutzer (AppSource) konzipiert ist, können Sie eine Kategorie und/oder eine Unterkategorie auswählen, die für beide Storefronts angewendet werden kann. Beachten Sie, dass ein solches „doppeltes Listing“ Ihres Angebots auf einem Nutzenversprechen basieren muss, das für beide Zielgruppen gilt. Klicken Sie [hier](./gtm-offer-listing-best-practices.md#categories), um die Kategorien für jede Storefront anzuzeigen.
 
 ## <a name="choose-a-publishing-option"></a>Auswählen einer Veröffentlichungsoption
 
-Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Vorteile des kommerziellen Marketplace](gtm-your-marketplace-benefits.md). Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
+Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
 
 | **Veröffentlichungsoption**    | **Beschreibung**  |
 | :------------------- | :-------------------|

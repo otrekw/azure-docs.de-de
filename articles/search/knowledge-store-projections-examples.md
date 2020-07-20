@@ -2,35 +2,32 @@
 title: Definieren von Projektionen in einem Wissensspeicher
 titleSuffix: Azure Cognitive Search
 description: Beispiele für gängige Muster für das Projizieren von angereicherten Dokumenten in den Wissensspeicher für die Verwendung mit Power BI oder Azure Machine Learning.
-manager: eladz
+manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78943681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565997"
 ---
-# <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Wissensspeicherprojektionen: Strukturieren und Exportieren von Anreicherungen
+# <a name="how-to-shape-and-export-enrichments"></a>Strukturieren und Exportieren von Anreicherungen
 
-> [!IMPORTANT] 
-> „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
+Projektionen sind der physische Ausdruck angereicherter Dokumente in einem Wissensspeicher. Für eine effektive Verwendung angereicherter Dokumente ist eine Struktur erforderlich. In diesem Artikel untersuchen Sie sowohl die Struktur als auch die Beziehungen und erfahren, wie Sie Projektionseigenschaften erstellen, und wie Sie Daten über die erstellten Projektionstypen hinweg verknüpfen. 
 
-Projektionen sind der physische Ausdruck angereicherter Dokumente in einem Wissensspeicher. Für eine effektive Verwendung Ihrer angereicherten Dokumente ist eine Struktur erforderlich. In diesem Artikel untersuchen Sie sowohl die Struktur als auch die Beziehungen und erfahren, wie Sie Projektionseigenschaften erstellen und wie Sie Daten über die von Ihnen erstellten Projektionstypen hinweg verknüpfen. 
+Zum Erstellen einer Projektion werden die Daten entweder mit einer [Shaper-Qualifikation](cognitive-search-skill-shaper.md) strukturiert, um ein benutzerdefiniertes Objekt zu erstellen, oder mit der Inline-Strukturierungssyntax innerhalb einer Projektionsdefinition. 
 
-Zum Erstellen einer Projektion müssen Sie die Daten mit einer [Shaper-Qualifikation](cognitive-search-skill-shaper.md) strukturieren, um ein benutzerdefiniertes Objekt zu erstellen, oder die Inline-Strukturierungssyntax innerhalb einer Projektionsdefinition verwenden. 
-
-Eine Datenform enthält alle Daten, die Sie projizieren möchten, als Hierarchie von Knoten. In diesem Artikel werden verschiedene Techniken zum Strukturieren von Daten erläutert, sodass sie in physische Strukturen projiziert werden können, die für die Berichterstellung, Analyse oder Downstreamverarbeitung geeignet sind. 
+Eine Datenform enthält alle zu projizierenden Daten als Hierarchie von Knoten. In diesem Artikel werden verschiedene Techniken zum Strukturieren von Daten erläutert, sodass sie in physische, für Berichterstellung, Analyse oder Downstreamverarbeitung geeignete Strukturen projiziert werden können. 
 
 Sie finden die in diesem Artikel vorgestellten Beispiele in diesem [REST-API-Beispiel](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/projections/Projections%20Docs.postman_collection.json), das Sie herunterladen und in einem HTTP-Client ausführen können.
 
-## <a name="introduction-to-the-examples"></a>Einführung in die Beispiele
+## <a name="introduction-to-projection-examples"></a>Einführung in Projektionsbeispiele
 
-Wenn Sie mit [Projektionen](knowledge-store-projection-overview.md) vertraut sind, wissen Sie, dass es drei Typen gibt:
+Es gibt drei Typen von [Projektionen](knowledge-store-projection-overview.md):
 
 + Tabellen
 + Objekte
@@ -38,7 +35,7 @@ Wenn Sie mit [Projektionen](knowledge-store-projection-overview.md) vertraut sin
 
 Tabellenprojektionen werden in Azure Table Storage gespeichert. Objekt- und Dateiprojektionen werden in Blob Storage geschrieben, während Objektprojektionen als JSON-Dateien gespeichert werden und Inhalte aus dem Ursprungsdokument sowie Ausgaben oder Anreicherungen von Qualifikationen enthalten können. Die Anreicherungspipeline kann auch Binärdateien wie Bilder extrahieren. Diese Binärdateien werden als Dateiprojektionen projiziert. Wenn ein binäres Objekt als Objektprojektion projiziert wird, werden nur die zugeordneten Metadaten als JSON-Blob gespeichert. 
 
-Um die Überschneidungen zwischen Datenformen und Projektionen zu verstehen, verwenden wir das folgende Skillset als Grundlage für die Untersuchung verschiedener Konfigurationen. Dieses Skillset verarbeitet unformatierte Bilder und Textinhalte. Projektionen werden aus dem Inhalt des Dokuments und den Ausgaben der Qualifikationen für die Szenarien definiert, die unterstützt werden sollen.
+Um die Überschneidungen zwischen Datenformen und Projektionen zu verstehen, verwenden wir das folgende Skillset als Grundlage für die Untersuchung verschiedener Konfigurationen. Dieses Skillset verarbeitet unformatierte Bilder und Textinhalte. Projektionen werden aus dem Inhalt des Dokuments und den Ausgaben der Qualifikationen für die gewünschten Szenarien definiert.
 
 > [!IMPORTANT] 
 > Beim Experimentieren mit Projektionen empfiehlt es sich, die [Eigenschaft für den Indexercache festzulegen](search-howto-incremental-index.md), um die Kosten unter Kontrolle zu halten. Das Bearbeiten von Projektionen führt dazu, dass das gesamte Dokument erneut angereichert wird, wenn der Indexercache nicht festgelegt ist. Wenn der Cache festgelegt ist und nur die Projektionen aktualisiert wurden, führen Skillsetausführungen für zuvor angereicherte Dokumente nicht zu neuen Cognitive Services-Gebühren.
@@ -206,14 +203,14 @@ Bei Verwendung dieses Skillsets mit dem NULL-`knowledgeStore` als Grundlage fül
 
 Die Projektion in Tabellen in Azure Storage eignet sich für die Berichterstellung und Analyse mithilfe von Tools wie Power BI. Power BI kann aus Tabellen lesen und Beziehungen basierend auf den Schlüsseln ermitteln, die während der Projektion generiert werden. Wenn Sie versuchen, ein Dashboard zu erstellen, wird diese Aufgabe durch zusammenhängende Daten vereinfacht. 
 
-Angenommen, Sie versuchen, ein Dashboard zu erstellen, in dem Sie die Schlüsselausdrücke visualisieren können, die aus Dokumenten als Wortwolke extrahiert werden. Um die richtige Datenstruktur zu erstellen, können Sie dem Skillset eine Shaper-Qualifikation hinzufügen, um eine benutzerdefinierte Form zu erstellen, die dokumentspezifische Details und Schlüsselausdrücke enthält. Die benutzerdefinierte Form wird im Stammknoten von `document` als `pbiShape` bezeichnet.
+Wir erstellen ein Dashboard, um die Schlüsselausdrücke zu visualisieren, die aus Dokumenten als Wortwolke extrahiert werden. Um die richtige Datenstruktur zu erstellen, fügen wird dem Skillset eine Shaper-Qualifikation hinzu, um eine benutzerdefinierte Form zu erstellen, die dokumentspezifische Details und Schlüsselausdrücke enthält. Die benutzerdefinierte Form wird im Stammknoten von `document` als `pbiShape` bezeichnet.
 
 > [!NOTE] 
 > Tabellenprojektionen sind Azure Storage-Tabellen, die durch die durch Azure Storage vorgegebenen Speicherlimits gesteuert werden. Weitere Informationen finden Sie unter [Grenzwerte von Table Storage](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Sie sollten auch wissen, dass die Entitätsgröße 1 MB nicht überschreiten und eine einzelne Eigenschaft nicht größer als 64 KB sein darf. Aufgrund dieser Einschränkungen stellen Tabellen eine gute Lösung für die Speicherung einer großen Anzahl kleiner Entitäten dar.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Verwenden einer Shaper-Qualifikation zum Erstellen einer benutzerdefinierten Form
 
-Erstellen Sie eine benutzerdefinierte Form, die Sie in Table Storage projizieren können. Ohne eine benutzerdefinierte Form kann eine Projektion nur auf einen einzelnen Knoten verweisen (eine Projektion pro Ausgabe). Durch das Erstellen einer benutzerdefinierten Form können Sie verschiedene Elemente in einer neuen logischen Einheit aggregieren, die als eine einzelne Tabelle projiziert oder in Segmenten auf eine Sammlung von Tabellen verteilt werden kann. 
+Erstellen Sie eine benutzerdefinierte Form, die Sie in Table Storage projizieren können. Ohne eine benutzerdefinierte Form kann eine Projektion nur auf einen einzelnen Knoten verweisen (eine Projektion pro Ausgabe). Durch das Erstellen einer benutzerdefinierten Form werden verschiedene Elemente in einer neuen logischen Einheit aggregiert, die als eine einzelne Tabelle projiziert oder in Segmenten auf eine Sammlung von Tabellen verteilt werden kann. 
 
 In diesem Beispiel kombiniert die benutzerdefinierte Form Metadaten und identifizierte Entitäten und Schlüsselbegriffe. Das Objekt heißt `pbiShape` und ist `/document` untergeordnet. 
 
@@ -363,13 +360,13 @@ Power BI benötigt diese generierten Schlüssel, um Beziehungen innerhalb der T
 
 ## <a name="projecting-to-objects"></a>Projizieren in Objekte
 
-Objektprojektionen unterliegen nicht denselben Einschränkungen wie Tabellenprojektionen und eignen sich besser für das Projizieren großer Dokumente. In diesem Beispiel projizieren Sie das gesamte Dokument in eine Objektprojektion. Objektprojektionen sind auf eine einzelne Projektion in einem Container beschränkt und können nicht aufgeteilt werden.
+Objektprojektionen unterliegen nicht denselben Einschränkungen wie Tabellenprojektionen und eignen sich besser für das Projizieren großer Dokumente. In diesem Beispiel wird das gesamte Dokument als Objektprojektion gesendet. Objektprojektionen sind auf eine einzelne Projektion in einem Container beschränkt und können nicht aufgeteilt werden.
 
 Zum Definieren einer Objektprojektion verwenden Sie das ```objects```-Array in den Projektionen. Sie können mithilfe der Shaper-Qualifikation eine neue Form generieren oder die Inline-Strukturierung der Objektprojektion verwenden. Während das Tabellenbeispiel den Ansatz der Erstellung einer Form und der anschließenden Aufteilung zeigt, veranschaulicht dieses Beispiel die Verwendung der Inline-Strukturierung. 
 
 Die Inline-Strukturierung ist die Möglichkeit, eine neue Form in der Definition der Eingaben für eine Projektion zu erstellen. Bei der Inline-Strukturierung wird ein anonymes Objekt erstellt, das mit dem Ergebnis einer Shaper-Ausführung identisch ist (in diesem Fall `pbiShape`). Die Inline-Strukturierung ist nützlich, wenn Sie eine Form definieren, die nicht wiederverwendet werden soll.
 
-Die Projektionseigenschaft ist ein Array. In diesem Beispiel fügen Sie dem Array eine neue Projektionsinstanz hinzu, in der die knowledgeStore-Definition Inline-Projektionen enthält. Wenn Sie Inline-Projektionen verwenden, können Sie die Shaper-Qualifikation auslassen.
+Die Projektionseigenschaft ist ein Array. In diesem Beispiel wird dem Array eine neue Projektionsinstanz hinzugefügt, in der die knowledgeStore-Definition Inline-Projektionen enthält. Wenn Sie Inline-Projektionen verwenden, können Sie die Shaper-Qualifikation auslassen.
 
 ```json
 "knowledgeStore" : {
@@ -450,7 +447,7 @@ Zum Generieren einer Dateiprojektion verwenden Sie das `files`-Array im Projekti
 
 Ein komplexeres Szenario erfordert möglicherweise das Projizieren der Inhalte auf verschiedene Projektionstypen. Wenn Sie z. B. einige Daten wie Schlüsselausdrücke und Entitäten in Tabellen projizieren möchten, speichern Sie die OCR-Ergebnisse von Text und Layouttext als Objekte, und projizieren Sie dann die Bilder als Dateien. 
 
-In diesem Beispiel umfassen Updates des Skillsets die folgenden Änderungen:
+In diesem Beispiel wird das Skillset mit folgenden Änderungen aktualisiert:
 
 1. Erstellen einer Tabelle mit einer Zeile für jedes Dokument
 1. Erstellen einer Tabelle, die mit der Dokumenttabelle verknüpft ist, wobei jeder Schlüsselausdruck als Zeile in dieser Tabelle bezeichnet wird
@@ -463,7 +460,7 @@ Diese Änderungen spiegeln sich in der knowledgeStore-Definition weiter unten wi
 
 ### <a name="shape-data-for-cross-projection"></a>Strukturieren von Daten für eine Kreuzprojektion
 
-Um die Formen zu erhalten, die Sie für diese Projektionen benötigen, fügen Sie zunächst eine neue Shaper-Qualifikation hinzu, die ein strukturiertes Objekt namens `crossProjection` erstellt. 
+Um die für diese Projektionen benötigten Formen zu erhalten, fügen Sie zunächst eine neue Shaper-Qualifikation hinzu, die ein strukturiertes Objekt namens `crossProjection` erstellt. 
 
 ```json
 {
@@ -534,7 +531,7 @@ Um die Formen zu erhalten, die Sie für diese Projektionen benötigen, fügen Si
 
 ### <a name="define-table-object-and-file-projections"></a>Definieren von Tabellen-, Objekt- und Dateiprojektionen
 
-Sie können aus dem konsolidierten crossProjection-Objekt das Objekt in mehrere Tabellen aufteilen, die OCR-Ausgabe als Blobs erfassen und das Bild dann als Dateien (auch in Blob Storage) speichern.
+Teilen Sie das Objekt aus dem konsolidierten crossProjection-Objekt in mehrere Tabellen auf, erfassen Sie die OCR-Ausgabe als Blobs und speichern Sie das Bild dann als Dateien (auch in Blobspeicher).
 
 ```json
 "knowledgeStore" : {
@@ -595,7 +592,7 @@ Objektprojektionen erfordern einen Containernamen für jede Projektion. Objektpr
 
 ### <a name="relationships-among-table-object-and-file-projections"></a>Beziehungen zwischen Tabellen-, Objekt- und Dateiprojektionen
 
-In diesem Beispiel wird ein weiteres Feature von Projektionen veranschaulicht. Dabei werden mehrere Projektionstypen innerhalb desselben Projektionsobjekts definiert. Es gibt eine Beziehung innerhalb der verschiedenen Typen und zwischen ihnen (Tabellen, Objekte, Dateien), die Ihnen ermöglicht, mit einer Tabellenzeile für ein Dokument zu beginnen und den gesamten OCR-Text für die Bilder in diesem Dokument in der Objektprojektion zu suchen. 
+In diesem Beispiel wird ein weiteres Feature von Projektionen veranschaulicht. Durch die Definition mehrerer Projektionstypen innerhalb desselben Projektionsobjekts wird eine Beziehung innerhalb der Typen (Tabellen, Objekte, Dateien) und die verschiedenen Typen übergreifend ausgedrückt. So können Sie mit einer Tabellenzeile für ein Dokument beginnen und den gesamten OCR-Text für die Bilder in diesem Dokument in der Objektprojektion suchen. 
 
 Wenn Sie nicht möchten, dass die Daten in Beziehung gesetzt werden, definieren Sie die Projektionen in verschiedenen Projektionsobjekten. Der folgende Codeausschnitt führt z. B. dazu, dass die Tabellen verknüpft werden, jedoch ohne Beziehungen zwischen den Tabellen- und den Objektprojektionen (OCR-Text) herzustellen. 
 

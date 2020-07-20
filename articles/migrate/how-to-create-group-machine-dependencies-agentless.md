@@ -2,45 +2,44 @@
 title: Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung
 description: Hier erfahren Sie, wie Sie die Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung einrichten.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 6/08/2020
+ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84771375"
 ---
-# <a name="set-up-agentless-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung ohne Agent 
+# <a name="analyze-machine-dependencies-agentless"></a>Analysieren von Computerabhängigkeiten (ohne Agent)
 
-In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
+In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern im Hinblick auf die Bewertung und Migration zu Azure besser identifizieren und verstehen.
 
 
 > [!IMPORTANT]
-> Die Abhängigkeitsvisualisierung ohne Agent ist derzeit als Vorschauversion nur für VMware-VMs verfügbar, die mithilfe des Azure Migrate-Serverbewertungstools ermittelt wurden.
+> Die Abhängigkeitsvisualisierung ohne Agent ist derzeit als Vorschauversion für VMware-VMs verfügbar, die mithilfe des Azure Migrate-Serverbewertungstools ermittelt wurden.
 > Die Funktionen sind möglicherweise eingeschränkt oder unvollständig.
 > Diese Vorschau wird durch den Kundensupport abgedeckt und kann für Produktionsworkloads verwendet werden.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
+- In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server zu einer Gruppe hinzufügen oder daraus entfernen.
+- Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist derzeit nicht verfügbar.
+- Die Abhängigkeitsdaten können nicht im Tabellenformat heruntergeladen werden.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-- [Erfahren Sie mehr über](concepts-dependency-visualization.md#agentless-analysis) die Abhängigkeitsanalyse ohne Agent.
-- [Überprüfen](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) Sie die Voraussetzungen und Supportanforderungen zum Einrichten der Abhängigkeitsanalyse ohne Agent für VMware-VMs.
-- Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Serverbewertungstool von Azure Migrate [hinzugefügt](how-to-assess.md) haben.
-- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für virtuelle [VMware](how-to-set-up-appliance-vmware.md)-Computer einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung.
+- [Lesen](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) Sie die Informationen zu unterstützten Betriebssystemen und erforderlichen Berechtigungen.
+- Stellen Sie Folgendes sicher:
+    - Sie verfügen über ein Azure Migrate-Projekt. Wenn dies nicht der Fall ist, [erstellen](how-to-add-tool-first-time.md) Sie jetzt ein entsprechendes Projekt.
+    - Vergewissern Sie sich, dass Sie das Azure Migrate-Serverbewertungstool zum Projekt [hinzugefügt](how-to-assess.md) haben.
+    - Richten Sie eine [Azure Migrate-Appliance](migrate-appliance.md) ein, um lokale Computer zu ermitteln. [Richten Sie eine Appliance für VMware-VMs ein](how-to-set-up-appliance-vmware.md). Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung.
+- Überprüfen Sie, ob auf jeder VM, die Sie analysieren möchten, VMware Tools (höhere Version als 10.2) installiert ist.
 
-
-## <a name="current-limitations"></a>Aktuelle Einschränkungen
-
-- In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server hinzufügen oder aus einer Gruppe entfernen.
-- Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist derzeit nicht verfügbar.
-- Die Abhängigkeitsdaten können derzeit nicht im Tabellenformat heruntergeladen werden.
 
 ## <a name="create-a-user-account-for-discovery"></a>Erstellen eines Benutzerkontos für die Ermittlung
 
-Richten Sie ein Benutzerkonto ein, damit die Serverbewertung zur Ermittlung auf den virtuellen Computer zugreifen kann. [Informieren Sie sich](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) über die Kontoanforderungen.
+Richten Sie ein Benutzerkonto ein, damit die Serverbewertung zur Ermittlung von Abhängigkeiten auf den virtuellen Computer zugreifen kann. [Informieren](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) Sie sich über die Kontoanforderungen für Windows- und Linux-VMs.
 
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Hinzufügen des Benutzerkontos zur Appliance
@@ -63,9 +62,9 @@ Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung aktivie
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
 2. Klicken Sie auf das Symbol **Abhängigkeitsanalyse**.
 3. Klicken Sie auf **Server hinzufügen**.
-3. Wählen Sie auf der Seite **Server hinzufügen** die Appliance aus, die die relevanten Computer ermittelt.
-4. Wählen Sie in der Liste der Computer die Computer aus.
-5. Klicken Sie auf **Server hinzufügen**.
+4. Wählen Sie auf der Seite **Server hinzufügen** die Appliance aus, die die relevanten Computer ermittelt.
+5. Wählen Sie in der Liste der Computer die Computer aus.
+6. Klicken Sie auf **Server hinzufügen**.
 
     ![Starten der Abhängigkeitsermittlung](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -91,6 +90,38 @@ Ungefähr sechs Stunden nach dem Start der Abhängigkeitsermittlung können Sie 
 
 > [!NOTE]
 > Prozessinformationen für eine Abhängigkeit sind nicht immer verfügbar. Wenn keine Informationen verfügbar sind, wird die Abhängigkeit mit „Unbekannter Prozess“ als Prozess dargestellt.
+
+## <a name="export-dependency-data"></a>Exportieren der Abhängigkeitsdaten
+
+1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
+2. Klicken Sie auf das Symbol **Abhängigkeitsanalyse**.
+3. Klicken Sie auf **Anwendungsabhängigkeiten exportieren**.
+4. Wählen Sie auf der Seite **Anwendungsabhängigkeiten exportieren** die Appliance aus, die die relevanten Computer ermittelt.
+5. Wählen Sie die Start- und Endzeit aus. Beachten Sie, dass Sie nur Daten für die letzten 30 Tage herunterladen können.
+6. Klicken Sie auf **Abhängigkeit exportieren**.
+
+Die Abhängigkeitsdaten werden im CSV-Format exportiert und heruntergeladen. Die heruntergeladene Datei enthält die Abhängigkeitsdaten für alle Computer, auf denen die Abhängigkeitsanalyse aktiviert war. 
+
+![Exportieren von Abhängigkeiten](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+
+### <a name="dependency-information"></a>Abhängigkeitsinformationen
+
+Jede Zeile in der exportierten CSV-Datei entspricht einer Abhängigkeit, die im angegebenen Zeitfenster beobachtet wurde. 
+
+In der folgenden Tabelle sind die Felder der exportierten CSV-Datei zusammengefasst. Beachten Sie, dass die Felder für den Servernamen, die Anwendung und den Prozess nur für Server aufgefüllt werden, auf denen die Abhängigkeitsanalyse ohne Agent aktiviert ist.
+
+**Feldname** | **Details**
+--- | --- 
+Zeitfenster | Das Zeitfenster, in dem die Abhängigkeit beobachtet wurde. <br/> Abhängigkeitsdaten werden derzeit in Zeitfenstern von 6 Stunden erfasst.
+Name des Quellservers | Der Name des Quellcomputers. 
+Quellanwendung | Der Name der Anwendung auf dem Quellcomputer. 
+Quellprozess | Der Name des Prozesses auf dem Quellcomputer. 
+Name des Zielservers | Der Name des Zielcomputers.
+Ziel-IP | Die IP-Adresse des Zielcomputers.
+Zielanwendung | Der Name der Anwendung auf dem Zielcomputer.
+Zielprozess | Der Name des Prozesses auf dem Zielcomputer. 
+Zielport | Die Portnummer auf dem Zielcomputer.
+
 
 ## <a name="stop-dependency-discovery"></a>Beenden der Abhängigkeitsermittlung
 

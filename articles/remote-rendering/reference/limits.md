@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6a1a51ee09422607ae1392704add4d49d3367d57
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808541"
 ---
 # <a name="limitations"></a>Einschränkungen
 
@@ -26,9 +26,10 @@ Eine Reihe von Features besitzen Einschränkungen hinsichtlich Größe, Anzahl o
 * Zulässige Gesamtanzahl zulässiger Objekte eines einzelnen Typs (Entität, CutPlaneComponent usw.): 16.777.215.
 * Zulässige Gesamtanzahl aktiver Schnittebenen: 8.
 
-## <a name="materials"></a>Materialien
+## <a name="geometry"></a>Geometrie
 
 * Zulässige Gesamtanzahl von Materialien in einer Ressource: 65.535.
+* Maximale Dimension einer einzelnen Textur: 16.384 x 16.384. Größere Quelltexturen werden durch den Konvertierungsprozess herunterskaliert.
 
 ## <a name="overall-number-of-polygons"></a>Gesamtanzahl von Polygonen
 
@@ -39,12 +40,14 @@ Die zulässige Anzahl von Polygonen für alle geladenen Modelle ist von der Grö
 |Standard| 20 Mio. |
 |premium| Keine Begrenzung |
 
+Ausführlichere Informationen zu dieser Einschränkung finden Sie im Kapitel [VM-Größe](../reference/vm-sizes.md).
 
 ## <a name="platform-limitations"></a>Plattformeinschränkungen
 
 **Windows 10 Desktop**
 
 * UWP/x86 ist die einzige unterstützte UWP-Plattform. UWP/x64 wird nicht unterstützt.
+* Win32/x64 ist die einzige unterstützte Win32-Plattform. Win32/x86 wird nicht unterstützt.
 
 **Hololens 2**
 

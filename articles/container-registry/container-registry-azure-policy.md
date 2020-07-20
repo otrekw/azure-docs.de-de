@@ -2,24 +2,21 @@
 title: Konformität mithilfe von Azure Policy
 description: Zuweisen integrierter Richtlinien in Azure Policy, um die Konformität Ihrer Azure-Containerregistrierungen zu überwachen
 ms.topic: article
-ms.date: 02/26/2020
-ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 6101db865749f98f50e04f1fec3b8009089b7908
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791893"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy
 
 [Azure Policy](../governance/policy/overview.md) ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen erzwungen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben.
 
-In diesem Artikel werden integrierte Richtlinien (Vorschauversion) für Azure Container Registry vorgestellt. Verwenden Sie diese Richtlinien, um die Konformität neuer und vorhandener Registrierungen zu überwachen.
+In diesem Artikel werden integrierte Richtlinien für Azure Container Registry vorgestellt. Verwenden Sie diese Richtlinien, um die Konformität neuer und vorhandener Registrierungen zu überwachen.
 
 Die Verwendung von Azure Policy ist gebührenfrei.
-
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 ## <a name="built-in-policy-definitions"></a>Integrierte Richtliniendefinitionen
 
@@ -27,7 +24,7 @@ Für Azure Container Registry gelten die folgenden integrierten Richtliniendefin
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
-Weitere Informationen finden Sie in der integrierten Netzwerkrichtliniendefinition: [[Vorschauversion] Container Registry sollte einen VNET-Dienstendpunkt verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
+Weitere Informationen finden Sie auch in der integrierten Netzwerkrichtlinien-Definition: [Container Registry sollte einen VNET-Dienstendpunkt verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
 ## <a name="assign-policies"></a>Zuweisen von Richtlinien
 
@@ -48,7 +45,10 @@ Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. 
 
 1. Wählen Sie **Alle Dienste** aus, und suchen Sie nach **Richtlinie**.
 1. Wählen Sie **Compliance** aus.
-1. Verwenden Sie die Filter, um die Konformitätszustände einzuschränken oder nach Richtlinien zu suchen: ![Richtlinienkonformität im Portal](./media/container-registry-azure-policy/azure-policy-compliance.png).
+1. Verwenden Sie die Filter, um die Konformitätszustände einzuschränken oder nach Richtlinien zu suchen.
+
+    ![Richtlinienkonformität im Portal](./media/container-registry-azure-policy/azure-policy-compliance.png)
+    
 1. Wählen Sie eine Richtlinie aus, um die Zusammenfassung der Konformitätsdetails und -ereignisse zu überprüfen. Wählen Sie gegebenenfalls eine bestimmte Registrierung aus, deren Konformität überprüft werden soll.
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Richtlinienkonformität in der Azure CLI
@@ -64,8 +64,8 @@ Beispielausgabe:
 ```
 Name                                                                                   ID
 -------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
-[Preview]: Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
-[Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
+Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
+Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
 Führen Sie dann [az policy state list](/cli/azure/policy/state#az-policy-state-list) aus, um den Konformitätszustand für alle Ressourcen einer bestimmten Richtlinien-ID im JSON-Format zurückzugeben:
@@ -87,12 +87,8 @@ az policy state list \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Definitionen](../governance/policy/concepts/definition-structure.md) und [Auswirkungen](../governance/policy/concepts/effects.md) in Azure Policy
+* Weitere Informationen zu [Definitionen](../governance/policy/concepts/definition-structure.md) und [Auswirkungen](../governance/policy/concepts/effects.md) in Verbindung mit Azure Policy.
 
-* Erstellen einer [benutzerdefinierten Richtliniendefinition](../governance/policy/tutorials/create-custom-policy-definition.md)
+* Erstellen Sie eine [benutzerdefinierte Richtliniendefinition](../governance/policy/tutorials/create-custom-policy-definition.md).
 
-* Weitere Informationen zu [Governancefunktionen](../governance/index.yml) in Azure
-
-
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+* Weitere Informationen zu [Governancefunktionen](../governance/index.yml) in Azure.

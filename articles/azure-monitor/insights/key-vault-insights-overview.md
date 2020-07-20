@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 542861afe49d03a179a9740d5a58b9d27e0d7f20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945459"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)
 Azure Monitor für Key Vault (Vorschauversion) ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
@@ -122,7 +122,7 @@ Benutzer können in der oberen Tabelle auch Sichten auf der Grundlage spezifisch
 >[!NOTE]
 > Zum Anzeigen dieser Arbeitsmappe müssen die Diagnoseeinstellungen aktiviert sein. Weitere Informationen zum Aktivieren von Diagnoseeinstellungen finden Sie unter [Azure Key Vault-Protokollierung](https://docs.microsoft.com/azure/key-vault/general/logging).
 
-## <a name="pin-and-export"></a>Anheften und Exportieren
+## <a name="pin-and-export"></a>Anheften und exportieren
 
 Sie können einen beliebigen Metrikabschnitt an ein Azure-Dashboard anheften, indem Sie rechts oben im Abschnitt das Stecknadelsymbol auswählen.
 
@@ -158,6 +158,8 @@ Sie können den Bereich der Übersichts- oder Fehlerarbeitsmappe für mehrere Ab
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
+Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
+
 Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Monitor für Key Vault (Vorschauversion) auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Beheben von Leistungsproblemen oder Fehlern
@@ -167,12 +169,6 @@ Informationen zur Behandlung schlüsseltresorbezogener Probleme, die Sie mit Azu
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Warum werden nur 200 Schlüsseltresore angezeigt?
 
 Die Anzahl auswähl- und anzeigbarer Schlüsseltresore ist auf 200 begrenzt. Es können also maximal 200 Schlüsseltresore ausgewählt werden. Dieser Grenzwert ist unabhängig von der Anzahl ausgewählter Abonnements.
-
-### <a name="what-will-happen-when-a-pinned-item-is-clicked"></a>Was passiert, wenn auf ein angeheftetes Element geklickt wird?
-
-Wenn auf dem Dashboard auf ein angeheftetes Element geklickt wird, wird eine der folgenden Aktionen ausgeführt:
-* Wenn die Erkenntnisse gespeichert wurden, wird die Erkenntnisinstanz geöffnet, auf deren Grundlage die Anheftung gespeichert wurde.
-* Wenn die Erkenntnisse nicht gespeichert wurden, wird eine neue standardmäßige Erkenntnisinstanz geöffnet.
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Warum werden in der Abonnementauswahl nicht alle meine Abonnements angezeigt?
 

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 75bbce0f1e9787e55880ccac80dacb5457e1f2c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322661"
 ---
-# <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Gegenmaßnahmen 
+# <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Risikominderung 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Stellen Sie sicher, dass geeignete ACLs konfiguriert sind, um nicht autorisierten Zugriff auf Daten auf dem Gerät zu beschränken.](#acl-restricted-access)</li><li>[Stellen Sie sicher, dass sensible benutzerspezifische Anwendungsinhalte im Benutzerprofilverzeichnis gespeichert werden.](#sensitive-directory)</li><li>[Stellen Sie sicher, dass die bereitgestellten Anwendungen mit geringstmöglichen Berechtigungen ausgeführt werden.](#deployed-privileges)</li></ul> |
@@ -146,7 +146,7 @@ Nun kann ein potenzieller Angreifer den Anwendungsbetrieb nicht mehr manipuliere
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Berechtigungshierarchie (Datenbankmodul)](https://msdn.microsoft.com/library/ms191465), [Sicherungsfähige Elemente](https://msdn.microsoft.com/library/ms190401) |
+| **Referenzen**              | [Berechtigungshierarchie (Datenbank-Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [Sicherungsfähige Elemente](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Schritte** | Beim Herstellen einer Verbindung mit der Datenbank müssen Konten mit möglichst geringen Berechtigungen verwendet werden. Die Anwendungsanmeldung muss in der Datenbank eingeschränkt sein und darf nur bestimmte gespeicherte Prozeduren ausführen. Die Anmeldung der Anwendung darf nicht über direkten Tabellenzugriff verfügen. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>Implementieren Sie Sicherheit auf Zeilenebene (Row Level Security, RLS), um zu verhindern, dass Mandanten auf Daten anderer Mandanten zugreifen.
@@ -160,7 +160,7 @@ Nun kann ein potenzieller Angreifer den Anwendungsbetrieb nicht mehr manipuliere
 | **Referenzen**              | [Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **Schritte** | <p>Bei der Sicherheit auf Zeilenebene können Kunden den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext).</p><p>Eine zeilenbasierte Sicherheit vereinfacht den Entwurf und die Sicherheitscodierung in Ihrer Anwendung. Mit RLS können Sie den Zugriff auf Datenzeilen einschränken. So können Sie beispielsweise sicherstellen, dass Mitarbeiter nur auf Datenzeilen zugreifen können, die für ihre Abteilung relevant sind, oder den Datenzugriff von Kunden auf Daten beschränken, die für das Unternehmen des jeweiligen Kunden relevant sind.</p><p>Die Datenbeschränkungszugriffslogik befindet sich auf der Datenbankebene, statt fern der Daten auf einer anderen Anwendungsebene. Das Datenbanksystem wendet die Zugriffsbeschränkungen bei jedem Zugriffsversuch auf Daten aus einer beliebigen Ebene an. Dadurch wird das Sicherheitssystem kompakter, zuverlässiger und robuster.</p><p>|
 
-RLS ist als vorgefertigtes Datenbankfeature nur für SQL Server ab Version 2016 und für Azure SQL-Datenbank verfügbar. Wenn das vorgefertigte RLS-Feature nicht implementiert wird, muss der Datenzugriff mithilfe von Sichten und Prozeduren beschränkt werden.
+Beachten Sie, dass RLS als vorgefertigtes Datenbankfeature nur für SQL Server-Versionen ab 2016, Azure SQL-Datenbank und verwaltete SQL-Instanzen verfügbar ist. Wenn das vorgefertigte RLS-Feature nicht implementiert wird, muss der Datenzugriff mithilfe von Sichten und Prozeduren beschränkt werden.
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>Die Rolle „SysAdmin“ darf nur gültige, erforderliche Benutzer enthalten.
 
@@ -170,7 +170,7 @@ RLS ist als vorgefertigtes Datenbankfeature nur für SQL Server ab Version 2016 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Berechtigungshierarchie (Datenbankmodul)](https://msdn.microsoft.com/library/ms191465), [Sicherungsfähige Elemente](https://msdn.microsoft.com/library/ms190401) |
+| **Referenzen**              | [Berechtigungshierarchie (Datenbank-Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [Sicherungsfähige Elemente](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Schritte** | Die feste Serverrolle „SysAdmin“ darf nur sehr wenige Mitglieder und niemals Konten enthalten, die von Anwendungen verwendet werden.  Überprüfen Sie die Benutzerliste der Rolle, und entfernen Sie alle nicht benötigten Konten.|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>Verwenden Sie beim Herstellen einer Verbindung mit dem Cloudgateway Token mit geringstmöglichen Berechtigungen.

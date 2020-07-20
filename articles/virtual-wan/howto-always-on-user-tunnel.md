@@ -5,15 +5,15 @@ description: In diesem Artikel wird beschrieben, wie Sie einen Always On-VPN-Ben
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 03/13/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: dd5b215b143fbaf487325744a158bb8b05707951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f67053a5a199c8c64efb05d2b6a65ad6707650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79504042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564047"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Konfigurieren eines Always On-VPN-Benutzertunnels für Virtual WAN
 
@@ -24,7 +24,7 @@ ms.locfileid: "79504042"
 Sie müssen eine Point-to-Site-Konfiguration erstellen und die Zuweisung des virtuelle Hubs bearbeiten. Anweisungen finden Sie in den folgenden Abschnitten:
 
 * [Erstellen einer P2S-Konfiguration](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [Bearbeiten der Hubzuweisung](virtual-wan-point-to-site-portal.md#edit)
+* [Erstellen eines Hubs mit P2S-Gateway](virtual-wan-point-to-site-portal.md#hub)
 
 ## <a name="configure-a-user-tunnel"></a>Konfigurieren eines Benutzertunnels
 

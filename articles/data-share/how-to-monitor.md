@@ -4,14 +4,14 @@ description: In diesem Artikel erfahren Sie, wie Sie den Status der Einladung, F
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ee3f0d37c8e35972a1fc2b8c5d04504d2e065f3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490503"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120193"
 ---
 # <a name="monitor-azure-data-share"></a>Überwachen von Azure Data Share  
 
@@ -40,13 +40,17 @@ Zeigen Sie den Status Ihrer Freigabeabonnements an, indem Sie zu „Gesendete Fr
 
 ## <a name="snapshot-history"></a>Momentaufnahmeverlauf 
 
-Auf der Registerkarte „Verlauf“ können Sie die Momentaufnahmen anzeigen, die in den Mandanten Ihres Datenconsumers kopiert wurden. Sie können die Häufigkeit und Dauer der einzelnen Momentaufnahmeintervalle überwachen. 
+Auf der Registerkarte **Verlauf** einer Freigabe können Sie anzeigen, wann Daten vom Datenanbieter in den Datenspeicher des Datenconsumers kopiert werden. Sie können die Häufigkeit, Dauer und den Status jeder Momentaufnahme überwachen. 
 
 ![Momentaufnahmeverlauf](./media/sent-shares.png "Momentaufnahmeverlauf") 
 
-Sie können weitere Details zu jeder Momentaufnahmeausführung anzeigen, indem Sie auf das Startdatum der Ausführung klicken. 
+Sie können weitere Details zu jeder Momentaufnahmeausführung anzeigen, indem Sie auf das Startdatum der Ausführung klicken. Klicken Sie dann auf den Status für jedes Dataset, um die Menge der übertragenen Daten, die Anzahl der kopierten Dateien/Datensätze, die Dauer der Momentaufnahme, die Anzahl der verwendeten virtuellen Kerne (vCores) und ggf. eine Fehlermeldung anzuzeigen. 
 
-Der Momentaufnahmeverlauf wird standardmäßig bis zu 30 Tage angezeigt. Wenn Sie den Verlauf über 30 Tage hinaus sehen möchten, navigieren Sie zu „Überwachung -> Diagnoseeinstellungen“ und wählen **Diagnoseeinstellung hinzufügen** aus. Sie müssen ein Speicherkonto auswählen, in dem die Protokolle gespeichert werden sollen. 
+Der Momentaufnahmeverlauf wird bis zu 30 Tage angezeigt. Wenn Sie den Verlauf von mehr als 30 Tagen speichern und anzeigen müssen, können Sie die Diagnoseeinstellungen nutzen.
+
+## <a name="diagnostic-setting"></a>Diagnoseeinstellung
+
+Sie können Diagnoseeinstellungen konfigurieren, um Protokolldaten oder Ereignisse zu speichern. Navigieren Sie zu „Überwachung -> Diagnoseeinstellungen“, und wählen Sie **Diagnoseeinstellung hinzufügen** aus. Wählen Sie die Protokolldaten oder Ereignisse aus, an denen Sie interessiert sind, und wo Sie sie speichern bzw. wohin Sie sie senden möchten. 
 
 ![Momentaufnahmeverlauf](./media/diagnostic-settings.png "Diagnoseeinstellungen") 
 

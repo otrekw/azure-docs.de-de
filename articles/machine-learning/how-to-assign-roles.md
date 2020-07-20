@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung auf
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/06/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609247"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Ein Azure Machine Learning-Arbeitsbereich ist eine Azure-Ressource. Wie jede and
 
 | Role | Zugriffsebene |
 | --- | --- |
-| **Leser** | Schreibgeschützte Aktionen im Arbeitsbereich. Leser können Objekte in einem Arbeitsbereich auflisten und anzeigen, können aber keine neuen erstellen und die vorhandenen nicht anpassen. |
+| **Leser** | Schreibgeschützte Aktionen im Arbeitsbereich. Leser können Objekte in einem Arbeitsbereich auflisten und anzeigen (einschließlich der Anmeldeinformationen von [Datenspeichern](how-to-access-data.md)), können aber keine neuen erstellen und die vorhandenen nicht anpassen. |
 | **Mitwirkender** | Anzeigen, Erstellen, Bearbeiten und Löschen (wo zutreffend) von Objekten in einem Arbeitsbereich. Mitwirkende können z.B. ein Experiment erstellen, einen Computecluster erstellen oder anfügen, eine Ausführung durchführen oder einen Webdienst bereitstellen. |
 | **Besitzer** | Vollzugriff auf den Arbeitsbereich, u.a. Anzeigen, Erstellen, Bearbeiten und Löschen (wo zutreffend) von Objekten in einem Arbeitsbereich. Zudem können Besitzer Rollenzuweisungen anpassen. |
 
@@ -59,6 +59,14 @@ Das Feld `user` ist die E-Mail-Adresse eines vorhandenen Benutzers in der Azure 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
+> [!NOTE]
+> Der Befehl „az ml workspace share“ funktioniert nicht für Verbundkonten von Azure Active Directory B2B. Verwenden Sie das Azure UI-Portal anstelle des Befehls.
+
+
+## <a name="azure-machine-learning-operations"></a>Azure Machine Learning-Vorgänge
+
+Integrierte Azure Machine Learning-Aktionen für viele Vorgänge und Aufgaben. Eine umfassende Liste finden Sie unter [Vorgänge für Azure-Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
 ## <a name="create-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 
 Wenn die integrierten Rolle nicht ausreichend sind, können Sie benutzerdefinierte Rollen erstellen. Benutzerdefinierte Rollen können über Berechtigung zum Lesen, Schreiben, Löschen und für Computeressourcen in diesem Arbeitsbereich verfügen. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen.
@@ -87,7 +95,8 @@ Erstellen Sie zunächst eine JSON-Datei mit einer Rollendefinition, die die Bere
 }
 ```
 
-Sie können das Feld `AssignableScopes` anpassen, um den Geltungsbereich für diese benutzerdefinierte Rolle auf Abonnementebene, Ressourcengruppenebene oder eine bestimmte Arbeitsbereichsebene festzulegen.
+> [!TIP]
+> Sie können das Feld `AssignableScopes` anpassen, um den Geltungsbereich für diese benutzerdefinierte Rolle auf Abonnementebene, Ressourcengruppenebene oder eine bestimmte Arbeitsbereichsebene festzulegen.
 
 Mit dieser benutzerdefinierten Rolle kann ein Benutzer alle Aktionen außer die folgenden in einem Arbeitsbereich durchführen:
 
@@ -110,9 +119,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](/azure/role-based-access-control/custom-roles).
 
-Weitere Informationen zu den Vorgängen (Aktionen), die mit benutzerdefinierten Rollen durchgeführt werden können, finden Sie unter [Vorgänge für Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
-
-
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 
@@ -126,7 +132,7 @@ Die folgende Tabelle ist eine Zusammenfassung der Azure Machine Learning-Aktivit
 | Erstellen eines neuen Computeclusters | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `workspaces/computes/write` |
 | Erstellen einer neuen Notebook-VM | Nicht erforderlich | „Besitzer“ oder „Mitwirkender“ | Nicht möglich |
 | Erstellen einer neuen Computeinstanz | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `workspaces/computes/write` |
-| Aktivität auf Datenebene, z. B. Übermitteln einer Ausführung, Zugreifen auf Daten, Bereitstellen von Modellen oder Veröffentlichen einer Pipeline | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `workspaces/*/write` <br/> Beachten Sie, dass Sie auch einen im Arbeitsbereich registrierten Datenspeicher benötigen, damit MSI auf Daten in Ihrem Speicherkonto zugreifen kann. |
+| Aktivität auf Datenebene, z. B. Übermitteln einer Ausführung, Zugreifen auf Daten, Bereitstellen von Modellen oder Veröffentlichen einer Pipeline | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `workspaces/*/write` <br/> Sie benötigen auch einen im Arbeitsbereich registrierten Datenspeicher, damit MSI auf Daten in Ihrem Speicherkonto zugreifen kann. |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. Wie liste ich alle benutzerdefinierten Rollen in meinem Abonnement auf?
@@ -139,7 +145,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. Wie suche ich die Rollendefinition für eine Rolle in meinem Abonnement?
 
-Führen Sie in der Azure-Befehlszeilenschnittstelle den folgenden Befehl aus. Beachten Sie, dass `<role-name>` das Format aufweisen sollte, das vom obigen Befehl zurückgegeben wird.
+Führen Sie in der Azure-Befehlszeilenschnittstelle den folgenden Befehl aus. `<role-name>` sollte dasselbe Format aufweisen, das vom obigen Befehl zurückgegeben wird.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -153,7 +159,7 @@ Führen Sie in der Azure-Befehlszeilenschnittstelle den folgenden Befehl aus.
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-Beachten Sie, dass Sie über Berechtigungen für den gesamten Bereich der neuen Rollendefinition verfügen müssen. Wenn diese neue Rolle beispielsweise als Bereich drei Abonnements umfasst, müssen Sie über Berechtigungen für alle drei Abonnements verfügen. 
+Sie müssen über Berechtigungen für den gesamten Bereich der neuen Rollendefinition verfügen. Wenn diese neue Rolle beispielsweise als Bereich drei Abonnements umfasst, müssen Sie über Berechtigungen für alle drei Abonnements verfügen. 
 
 > [!NOTE]
 > Es kann bei einem Rollenupdate zwischen 15 Minuten und einer Stunde dauern, alle Rollenzuweisungen in diesem Bereich anzuwenden.

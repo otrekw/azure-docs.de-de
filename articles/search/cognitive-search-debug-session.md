@@ -1,5 +1,5 @@
 ---
-title: Debuggen eines KI-Anreicherungsskillsets (Vorschau)
+title: Konzepte von Debugsitzungen (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Die über das Azure-Portal aufgerufenen Debugsitzungen bieten eine IDE-ähnliche Umgebung, in der Sie Fehler identifizieren und beheben sowie Änderungen überprüfen und mithilfe von Push an Skillsets in der KI-Anreicherungspipeline übertragen können. Die Debugsitzungen befinden sich in der Vorschauphase.
 manager: nitinme
@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 04b221d772abf923d7aabfe767a6424b72ed8fb2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560376"
 ---
-# <a name="debug-sessions"></a>Debugsitzungen
+# <a name="debug-sessions-in-azure-cognitive-search"></a>Debugsitzungen in Azure Cognitive Search
 
 Bei den Debugsitzungen handelt es sich um einen visuellen Editor, der mit einem vorhandenen Skillset im Azure-Portal arbeitet. In einer Debugsitzung können Sie Fehler identifizieren und beheben sowie Änderungen überprüfen und mithilfe von Push an Produktionsskillsets in der KI-Anreicherungspipeline übertragen.
 
 > [!Important]
-> Die Unterstützung von Debugsitzungen für Azure Cognitive Search ist [auf Anforderung](https://aka.ms/DebugSessions) als Vorschauversion mit eingeschränktem Zugriff verfügbar. Previewfunktionen werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bei Debugsitzungen handelt es sich um eine Previewfunktion, die ohne Vereinbarung zum Servicelevel bereitgestellt wird und nicht für Produktionsworkloads vorgesehen ist. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Sobald Sie Zugriff auf die Vorschau erhalten haben, können Sie über das Azure-Portal auf Debugsitzungen für den Dienst zugreifen und diese verwenden.
 
 ## <a name="using-debug-sessions"></a>Verwenden von Debugsitzungen
 
@@ -86,6 +85,10 @@ Im Bereich **Enriched Data Structure** (Angereicherte Datenstruktur) werden Anre
 ## <a name="errorswarnings"></a>Fehler/Warnungen
 
 In diesem Fenster werden alle Fehler und Warnungen angezeigt, die das Skillset auslöst, wenn es für das Dokument in der Debugsitzung ausgeführt wird.
+
+## <a name="limitations"></a>Einschränkungen
+
+Debugsitzungen funktionieren mit allen allgemein verfügbaren Datenquellen und den meisten Vorschaudatenquellen. Die MongoDB API (Vorschau) und die Cassandra API (Vorschau) von Cosmos DB werden aktuell nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

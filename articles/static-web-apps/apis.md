@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791621"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>API-Unterstützung in Azure Static Web Apps (Vorschauversion) mit Azure Functions
 
@@ -33,6 +33,7 @@ Von Azure Static Web Apps wird eine API über Azure Functions bereitgestellt. Di
 
 - Das API-Routenpräfix muss _api_ sein.
 - Die API-Funktions-App muss in JavaScript vorhanden sein.
+- Routenregeln für API-Funktionen unterstützen nur [Umleitungen](routes.md#redirects) und das [Sichern von Routen mit Rollen](routes.md#securing-routes-with-roles).
 - Trigger und Bindungen sind auf [HTTP](../azure-functions/functions-bindings-http-webhook.md) beschränkt.
   - Alle anderen [Trigger und Bindungen von Azure Functions](../azure-functions/functions-triggers-bindings.md#supported-bindings) sind eingeschränkt (mit Ausnahme von Ausgabebindungen).
 - Protokolle sind nur verfügbar, wenn Sie Ihrer Functions-App [Application Insights](../azure-functions/functions-monitoring.md) hinzufügen.

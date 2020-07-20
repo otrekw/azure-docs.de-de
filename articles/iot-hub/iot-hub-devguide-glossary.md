@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133149"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565894"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 
@@ -38,7 +38,7 @@ Ihr Lösungs-Back-End kann [automatische Gerätekonfigurationen](iot-hub-auto-de
 
 Die [klassische Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese Version der Befehlszeilenschnittstelle sollte nur für klassische Bereitstellungen verwendet werden.
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure.
 
@@ -222,7 +222,7 @@ Mit [IoT Hub-Metriken](iot-hub-metrics.md) erhalten Sie Daten zum Zustand von Io
 
 ## <a name="iot-hub-query-language"></a>IoT Hub-Abfragesprache
 
-Die [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) ist eine SQL-ähnliche Sprache, mit der Sie Ihre [](#job) und Gerätezwillinge abfragen können.
+Die [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) ist eine SQL-ähnliche Sprache, mit der Sie Ihre [Aufträge](#job) und Gerätezwillinge abfragen können.
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub-Ressourcen-REST-API
 
@@ -343,7 +343,7 @@ Sie können einen Tokendienst verwenden, um einen Authentifizierungsmechanismus 
 
 ## <a name="twin-queries"></a>Zwillingsabfragen
 
-Für [Geräte- und Modulzwillingsabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können die gleiche IoT Hub-Abfragesprache verwenden, um Informationen zu [](#job) abzurufen, die in IoT Hub ausgeführt werden.
+Für [Geräte- und Modulzwillingsabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können die gleiche IoT Hub-Abfragesprache verwenden, um Informationen zu einem [Auftrag](#job) abzurufen, der in IoT Hub ausgeführt wird.
 
 ## <a name="twin-synchronization"></a>Zwillingssynchronisierung
 

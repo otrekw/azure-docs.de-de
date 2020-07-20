@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964225"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322028"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
@@ -64,7 +64,7 @@ Für SQL-basierte Freigabe sind zusätzliche Berechtigungen erforderlich. Ausfü
 
 „Der Benutzer ‚x‘ ist in der SQL-Datenbank nicht vorhanden.“
 
-Wenn Ihnen diese Fehlermeldung beim Hinzufügen eines Datasets aus einer SQL-basierten Quelle angezeigt wird, liegt dies möglicherweise daran, dass Sie keinen Benutzer für die verwaltete Identität von Azure Data Share auf Ihrer SQL Server-Instanz erstellt haben.  Führen Sie zum Beheben dieses Problems das folgende Skript aus:
+Wenn Ihnen diese Fehlermeldung beim Hinzufügen eines Datasets aus einer SQL-basierten Quelle angezeigt wird, liegt dies möglicherweise daran, dass Sie keinen Benutzer für die verwaltete Identität von Azure Data Share in SQL-Datenbank erstellt haben.  Führen Sie zum Beheben dieses Problems das folgende Skript aus:
 
 ```sql
     create user "<share_acct_name>" from external provider; 

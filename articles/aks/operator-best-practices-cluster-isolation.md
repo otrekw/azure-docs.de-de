@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für die Isolierung in Azure Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668342"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077763"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ Kubernetes bietet Features, mit denen Sie Teams und Workloads im selben Cluster 
   * Erweiterte Planerfeatures sind Makel und Toleranzen, Selektoren auf Knoten sowie Affinität zwischen Knoten und Pod bzw. Antiaffinität. Weitere Informationen zu diesen Features finden Sie unter [Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-advanced-scheduler].
 * **Netzwerk** umfasst die Verwendung von Netzwerkrichtlinien, um den ein- und ausgehenden Fluss des Datenverkehrs des Pods zu steuern.
 * **Authentifizierung und Autorisierung** umfasst die Nutzung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure Active Directory-Integration (AD), Podidentitäten und Geheimnisse in Azure Key Vault. Weitere Informationen zu diesen Features finden Sie unter [Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)][aks-best-practices-identity].
-* **Container** umfasst Podsicherheitsrichtlinien, Podsicherheitskontexte, Scannen von Images und Runtimes für Sicherheitsrisiken. Hierunter fällt auch App Armor oder Seccomp (Secure Computing, sicheres Computing) zum Einschränken des Zugriffs auf den Container auf den zugrunde liegenden Knoten.
+* **Container** enthalten das Azure Policy-Add-On für AKS, um die Podsicherheit, die Verwendung von Podsicherheitskontexten und die Überprüfung von Images und Runtimes auf Sicherheitsrisiken zu erzwingen. Hierunter fällt auch App Armor oder Seccomp (Secure Computing, sicheres Computing) zum Einschränken des Zugriffs auf den Container auf den zugrunde liegenden Knoten.
 
 ## <a name="logically-isolate-clusters"></a>Logisches Isolieren von Clustern
 

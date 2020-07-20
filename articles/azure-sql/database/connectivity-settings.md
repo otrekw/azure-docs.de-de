@@ -1,6 +1,6 @@
 ---
 title: Konnektivitätseinstellungen für Azure SQL-Datenbank und Data Warehouse
-description: In diesem Dokument wird die TLS-Versionsauswahl und der Proxy im Vergleich zur Umleitungseinstellung für Azure SQL-Datenbank und Azure Synapse Analytics
+description: In diesem Dokument werden die TLS-Versionsauswahl (Transport Layer Security) und der Proxy erläutert im Vergleich mit der Umleitungseinstellung für Azure SQL-Datenbank und Azure Synapse Analytics
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 3397fcb14f27e6bc0cc64b048dedde7198d5a06b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 07/06/2020
+ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266082"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045370"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Konnektivitätseinstellungen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,9 +33,17 @@ Die Konnektivitätseinstellungen können über den Bildschirm **Firewalls und vi
 
 ## <a name="deny-public-network-access"></a>Verweigern des Zugriffs auf öffentliches Netzwerk
 
-Wenn im Azure-Portal die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Ja** festgelegt ist, sind nur Verbindungen über private Endpunkte zulässig. Wenn diese Einstellung auf **Nein** festgelegt ist, können Clients mithilfe des privaten oder öffentlichen Endpunkts eine Verbindung herstellen.
+Wenn die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Ja** festgelegt ist, sind nur Verbindungen über private Endpunkte zulässig. Wenn diese Einstellung auf **Nein** (Standard) festgelegt ist, können Clients über öffentliche Endpunkte (IP-basierte Firewallregeln, VNET-basierte Firewallregeln) oder private Endpunkte (über Private Link) eine Verbindung herstellen, wie in der [Übersicht über den Netzwerkzugriff](network-access-controls-overview.md) beschrieben. 
 
-Kunden können über öffentliche Endpunkte (IP-basierte Firewallregeln, VNET-basierte Firewallregeln) oder private Endpunkte (über Private Link) auf SQL-Datenbank zugreifen, wie in der [Übersicht über den Netzwerkzugriff](network-access-controls-overview.md) beschrieben. 
+ ![Screenshot der Konnektivität mit Verweigern des Zugriffs auf das öffentliche Netzwerk][2]
+
+Bei allen Versuchen, die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Ja** zu setzen, ohne dass auf dem logischen Server private Endpunkte vorhanden sind, wird etwa folgende Fehlermeldung angezeigt:  
+
+```output
+Error 42102
+Unable to set Deny Public Network Access to Yes since there is no private endpoint enabled to access the server. 
+Please set up private endpoints and retry the operation. 
+```
 
 Wenn die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Ja** festgelegt ist, sind nur Verbindungen über private Endpunkte zulässig, und alle Verbindungen über öffentliche Endpunkte werden mit einer Fehlermeldung wie der folgenden verweigert:  
 
@@ -44,6 +52,14 @@ Error 47073
 An instance-specific error occurred while establishing a connection to SQL Server. 
 The public network interface on this server is not accessible. 
 To connect to this server, use the Private Endpoint from inside your virtual network.
+```
+
+Wenn die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Ja** gesetzt wird, werden alle Versuche, Firewallregeln hinzuzufügen oder zu aktualisieren, mit einer Fehlermeldung ähnlich der Folgenden abgelehnt:
+
+```output
+Error 42101
+Unable to create or modify firewall rules when public network interface for the server is disabled. 
+To manage server or database level firewall rules, please enable the public network interface.
 ```
 
 ## <a name="change-public-network-access-via-powershell"></a>Ändern des Zugriffs auf öffentliche Netzwerke über PowerShell
@@ -86,9 +102,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Die Einstellung der Mindestversion für [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) ermöglicht Kunden die Steuerung der TLS-Version, die von ihrer Azure SQL-Datenbank-Instanz verwendet wird.
 
-Derzeit unterstützen wir TLS 1.0, 1.1 und 1.2. Durch Festlegen einer TLS-Mindestversion wird sichergestellt, dass nachfolgende neuere TLS-Versionen unterstützt werden. Die Auswahl der TLS-Version 1.1 beispielsweise bedeutet, dass nur Verbindungen mit TLS 1.1 und 1.2 akzeptiert werden. Verbindungen mit TLS 1.0 werden abgelehnt. Wenn Sie überprüft haben, ob Ihre Anwendung die TLS-Version 1.2 unterstützt, empfiehlt es sich, die Mindestversion auf 1.2 festzulegen, da diese Version Fehlerbehebungen für Sicherheitsrisiken enthält, die in früheren Versionen gefunden wurden. Gleichzeitig ist 1.2 die höchste TLS-Version, die derzeit in Azure SQL-Datenbank unterstützt wird.
+Derzeit unterstützen wir TLS 1.0, 1.1 und 1.2. Durch Festlegen einer TLS-Mindestversion wird sichergestellt, dass nachfolgende neuere TLS-Versionen unterstützt werden. Beispiel: Die Auswahl einer höheren TLS-Version als 1.1. bedeutet, dass nur Verbindungen mit TLS 1.1 und 1.2 akzeptiert werden. Verbindungen mit TLS 1.0 werden abgelehnt. Wenn Sie überprüft haben, ob Ihre Anwendungen die TLS-Version 1.2 unterstützen, sollten Sie „Mindestens erforderliche TLS-Version“ auf 1.2 festzulegen, da diese Version Fehlerbehebungen für Sicherheitsrisiken enthält, die in früheren Versionen gefunden wurden. Gleichzeitig ist 1.2 die höchste TLS-Version, die derzeit in Azure SQL-Datenbank unterstützt wird.
 
-Kunden mit Anwendungen, die ältere TLS-Versionen erfordern, wird empfohlen, die TLS-Mindestversion gemäß den Anforderungen der Anwendungen festzulegen. Kunden, die Anwendungen mit unverschlüsselten Verbindungen verwenden, wird empfohlen, keine TLS-Mindestversion festzulegen. 
+> [!IMPORTANT]
+> Standardmäßig sind für „Mindestens erforderliche TLS-Version“ alle Versionen zugelassen. Wenn Sie jedoch eine Version von TLS erzwingen, können Sie nicht mehr zum Standardwert zurück.
+
+Kunden mit Anwendungen, die ältere TLS-Versionen erfordern, wird empfohlen, die TLS-Mindestversion gemäß den Anforderungen der Anwendungen festzulegen. Kunden, die Anwendungen mit unverschlüsselten Verbindungen verwenden, wird empfohlen, keine TLS-Mindestversion festzulegen.
 
 Weitere Informationen finden Sie unter [Überlegungen zu TLS für Verbindungen mit einer SQL-Datenbank](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
@@ -205,3 +224,4 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png
+[2]: media/single-database-create-quickstart/manage-connectivity-flowchart.png

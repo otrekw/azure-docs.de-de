@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Cisco-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Cisco-Daten mit Azure Sentinel verknüpfen.
+description: Erfahren Sie, wie Sie Ihre Cisco ASA-Appliance mit Azure Sentinel verbinden, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und die Untersuchung von Daten zu verbessern.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566045"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>Verbinden von Cisco ASA mit Azure Sentinel
 

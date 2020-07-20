@@ -7,23 +7,23 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603909"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
 
->[!Note]
+>[!NOTE]
 >Für das Hinzufügen eines benutzerdefinierten Brandings müssen Sie eine der Editionen Azure Active Directory Premium 1, Premium 2 oder Basic verwenden oder eine Office 365-Lizenz besitzen. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Anpassen Ihrer Azure AD-Anmeldeseite
@@ -43,7 +43,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
 3. Geben Sie auf der Seite **Unternehmensbranding konfigurieren** einige oder alle der folgenden Informationen an.
 
-    >[!Important]
+    >[!IMPORTANT]
     >Alle benutzerdefinierten Bilder, die Sie auf dieser Seite hinzufügen, unterliegen Einschränkungen hinsichtlich der Bildgröße (in Pixel) und potenziell der Dateigröße (KB). Aufgrund dieser Einschränkungen müssen Sie höchstwahrscheinlich einen Foto-Editor verwenden, um die richtigen Bildgrößen zu erstellen.
 
     - **Allgemeine Einstellungen**
@@ -62,7 +62,17 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
         - **Hinweis auf den Benutzernamen.** Geben Sie den Hinweistext ein, der Benutzern angezeigt wird, wenn sie ihren Benutzernamen vergessen haben. Dieser Text muss im Unicode-Format sein, darf keine Links oder Code enthalten und darf maximal 64 Zeichen lang sein. Wenn sich Gäste bei Ihrer App anmelden, wird empfohlen, diesen Hinweis nicht hinzuzufügen.
 
-        - **Text der Anmeldeseite.** Geben Sie den Text ein, der am unteren Rand der Anmeldeseite angezeigt wird. Sie können diesen Text verwenden, um zusätzliche Informationen, wie z.B. die Telefonnummer Ihres Helpdesks oder einen rechtlichen Hinweis, zu kommunizieren. Dieser Text muss im Unicode-Format sein und darf maximal 256 Zeichen lang sein.
+        - **Text und Formatierung der Anmeldeseite.** Geben Sie den Text ein, der am unteren Rand der Anmeldeseite angezeigt wird. Sie können diesen Text verwenden, um zusätzliche Informationen, wie z.B. die Telefonnummer Ihres Helpdesks oder einen rechtlichen Hinweis, zu kommunizieren. Dieser Text muss im Unicode-Format sein und darf 1024 Zeichen nicht überschreiten.
+
+           Sie können den für die Anmeldeseite eingegebenen Text anpassen. Um einen neuen Absatz zu beginnen, verwenden Sie zweimal die EINGABETASTE. Sie können den Text auch so ändern, dass fette und kursive Formatierungen, ein Unterstrich oder ein klickbarer Link enthalten sind. Verwenden Sie die folgende Syntax, um eine Textformatierung hinzuzufügen: 
+
+          > Hyperlink: ```[text](link)``` 
+          
+          > Fett: ``` **text** ``` oder ``` __text__ ``` 
+          
+          > Kursiv: ``` *text* ``` oder ``` _text_ ``` 
+          
+          > Unterstrich: ``` ++text++ ``` 
 
     - **Erweiterte Einstellungen**
             
@@ -77,8 +87,10 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
         - **Quadratisches Logobild, dunkles Design.** Identisch mit dem oben genannten Bild für quadratisches Logo. Dieses Logobild ersetzt das Bild für quadratisches Logo, wenn ein dunkler Hintergrund verwendet wird, z. B. bei Windows 10 Azure AD Join-Bildschirmen auf der Windows-Willkommensseite.  Wenn Ihr Logo auf weißen, dunkelblauen und schwarzen Hintergründen gut aussieht, müssen Sie dieses Bild nicht hinzufügen. 
         
         - **Option zum angemeldet bleiben anzeigen.** Sie können Ihren Benutzern gestatten, bei Azure AD bis zur expliziten Abmeldung angemeldet zu bleiben. Wenn Sie **Nein** auswählen, wird diese Option ausgeblendet, und Benutzer müssen sich jedes Mal anmelden, wenn der Browser geschlossen und erneut geöffnet wird.
+
+            Weitere Informationen zum Konfigurieren der Option „Angemeldet bleiben“ und zur Problembehandlung finden Sie unter [Konfigurieren der Eingabeaufforderung „Angemeldet bleiben?“ für Azure AD-Konten](keep-me-signed-in.md).
         
-            >[!Note]
+            >[!NOTE]
             >Einige Features von SharePoint Online und Office 2010 setzen voraus, dass Benutzer wählen können, angemeldet zu bleiben. Wenn Sie diese Option auf **Nein** festlegen, werden Benutzern unter Umständen zusätzliche und unerwartete Anmeldeaufforderungen angezeigt.
    
 
@@ -86,7 +98,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
     Wenn dieser Prozess Ihre erste benutzerdefinierte Brandingkonfiguration erstellt, wird sie der Standard für Ihren Mandanten. Wenn Sie zusätzliche Konfigurationen haben, können Sie Ihre Standardkonfiguration auswählen.
     
-    >[!Important]
+    >[!IMPORTANT]
     >Um Ihrem Mandanten weitere Unternehmensbrandingkonfigurationen hinzuzufügen, müssen Sie **Neue Sprache** auf der Seite **Contoso – Unternehmensbranding** auswählen. Hierdurch wird die Seite **Unternehmensbranding konfigurieren** geöffnet, auf der Sie dieselben Schritte wie oben ausführen können.
 
 ## <a name="update-your-custom-branding"></a>Aktualisieren Ihres benutzerdefinierten Brandings
@@ -134,5 +146,3 @@ Fügen Sie Ihr benutzerdefiniertes Branding zu Seiten hinzu, indem Sie das Ende 
 
 **Original-URL:** https://aka.ms/SSPR<br>
 **Benutzerdefinierte URL:** `https://passwordreset.microsoftonline.com/?whr=contoso.com`
-
- 

@@ -3,19 +3,19 @@ title: Planen von wiederkehrenden Aufgaben und Workflows
 description: Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit dem Serientrigger in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 47bb4e4cc4902168631fa67f186d0b3259c94328
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 18a58815ccd7bd229b6c1a27c92e903f22c8fd55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322569"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger in Azure Logic Apps
 
-Um Aufgaben, Prozesse oder Aufträge nach einem bestimmten Zeitplan regelmäßig auszuführen, können Sie Ihren Logik-App-Workflow mit dem integrierten Trigger **Serie – Zeitplan starten**. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn Wiederholungen aus irgendeinem Grund nicht ausgeführt werden, setzt dieser Trigger die Wiederholungen beim nächsten geplanten Intervall fort. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Um Aufgaben, Prozesse oder Aufträge nach einem bestimmten Zeitplan regelmäßig auszuführen, können Sie Ihren Logik-App-Workflow mit dem integrierten Trigger **Serie – Zeitplan starten**. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise aufgrund von Unterbrechungen oder deaktivierten Workflows, verarbeitet dieser Trigger die fehlenden Wiederholungen nicht, startet die Verarbeitung von Wiederholungen aber im nächsten geplanten Intervall neu. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Im Folgenden finden Sie einige Muster, die dieser Trigger neben erweiterten Serien und komplexen Zeitplänen unterstützt:
 

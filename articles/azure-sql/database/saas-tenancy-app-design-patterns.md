@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: efb25a16b5a3ae7de831436d255358aca19b828f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85250709"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Jede Mandantendatenbank wird als Einzeldatenbank bereitgestellt.  Dieses Modell 
 
 #### <a name="vendor-management"></a>Herstellerseitige Verwaltung
 
-Der Hersteller kann auf alle Datenbanken in sämtlichen eigenständigen App-Instanzen zugreifen, auch wenn die App-Instanzen in unterschiedlichen Mandantenabonnements installiert sind.  Der Zugriff erfolgt über SQL-Verbindungen.  Mit einem solchen instanzübergreifenden Zugriff kann der Hersteller die Schemaverwaltung und die datenbankübergreifende Abfrage für Berichterstellungs- oder Analysezwecke zentralisieren.  Falls diese Art der zentralen Verwaltung erforderlich ist, muss ein Katalog für die Zuordnung zwischen Mandanten-IDs und Datenbank-URIs bereitgestellt werden.  Für die Bereitstellung eines Katalogs wird eine Shardingbibliothek, die von Azure SQL-Datenbank bereitgestellt wird, zusammen mit einer SQL-Datenbank verwendet.  Die Shardingbibliothek wird offiziell als [Clientbibliothek für elastische Datenbanken][docu-elastic-db-client-library-536r] bezeichnet.
+Der Hersteller kann auf alle Datenbanken in sämtlichen eigenständigen App-Instanzen zugreifen, auch wenn die App-Instanzen in unterschiedlichen Mandantenabonnements installiert sind.  Der Zugriff erfolgt über SQL-Verbindungen.  Mit einem solchen instanzübergreifenden Zugriff kann der Hersteller die Schemaverwaltung und die datenbankübergreifende Abfrage für Berichterstellungs- oder Analysezwecke zentralisieren.  Falls diese Art der zentralen Verwaltung erforderlich ist, muss ein Katalog für die Zuordnung zwischen Mandanten-IDs und Datenbank-URIs bereitgestellt werden.  Azure SQL-Datenbank stellt eine gemeinsam verwendete Shardingbibliothek für die Bereitstellung eines Katalogs bereit.  Die Shardingbibliothek wird offiziell als [Clientbibliothek für elastische Datenbanken][docu-elastic-db-client-library-536r] bezeichnet.
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D: Mehrinstanzenfähige App mit einer Datenbank pro Mandant
 

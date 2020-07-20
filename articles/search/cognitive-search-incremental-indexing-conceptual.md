@@ -1,5 +1,5 @@
 ---
-title: Inkrementelle Anreicherung (Vorschau)
+title: Konzepte zur inkrementellen Anreicherung (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Sie können Zwischeninhalte und inkrementelle Änderungen aus der KI-Anreicherungspipeline in Azure Storage zwischenspeichern, um Investitionen in vorhandene verarbeitete Dokumente zu erhalten. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
 manager: nitinme
@@ -7,20 +7,32 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/18/2020
+ms.openlocfilehash: d4b36f00bad8c06c2f62794fa03a85120af79965
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557381"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Einführung in inkrementelle Anreicherung und das Zwischenspeichern in Azure Cognitive Search
+# <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inkrementelle Anreicherung und Zwischenspeicherung in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature steht in den [REST API-Versionen 2019-05-06-Preview und 2020-06-30-Preview](search-api-preview.md) zur Verfügung. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
-Durch die inkrementelle Anreicherung werden Zwischenspeicherung und Statusbehaftung zu einer Anreicherungspipeline hinzugefügt, sodass Ihre Investition in vorhandene Ausgaben erhalten bleibt, während nur die Dokumente geändert werden, die von bestimmten Änderungen betroffen sind. Dies sorgt nicht nur dafür, dass ihre monetären Investitionen in die Verarbeitung (insbesondere OCR und Bildverarbeitung) gesichert werden, sondern schafft auch ein effizienteres System. Wenn Strukturen und Inhalt zwischengespeichert werden, kann ein Indexer nun ermitteln, welche Qualifikationen sich geändert haben, und nur die geänderten Qualifikationen und alle abhängigen Downstreamqualifikationen ausführen. 
+*Inkrementelle Anreicherung* ist ein Features, das sich auf [Skillsets](cognitive-search-working-with-skillsets.md) richtet. Es nutzt Azure Storage, um die von einer Anreicherungspipeline ausgegebene Prozessausgabe für die Wiederverwendung in künftigen Indexerläufen zu speichern. Nach Möglichkeit verwendet der Indexer jede zwischengespeicherte Ausgabe, die noch gültig ist. 
+
+Die inkrementelle Anreicherung sorgt nicht nur dafür, dass ihre monetären Investitionen in die Verarbeitung (insbesondere OCR und Bildverarbeitung) geschützt werden, sondern schafft auch ein effizienteres System. Wenn Strukturen und Inhalt zwischengespeichert werden, kann ein Indexer nun ermitteln, welche Qualifikationen sich geändert haben, und nur die geänderten Qualifikationen und alle abhängigen Downstreamqualifikationen ausführen. 
+
+Ein Workflow, der inkrementelle Anreicherung verwendet, besteht aus den folgenden Schritten:
+
+1. [Erstellen oder Bestimmen eines Azure-Speicherkontos](../storage/common/storage-account-create.md) zum Aufnehmen des Zwischenspeichers.
+1. [Aktivieren von inkrementeller Anreicherung](search-howto-incremental-index.md) im Indexer.
+1. [Erstellen eines Indexers](https://docs.microsoft.com/rest/api/searchservice/create-indexer) – sowie eines [Skillsets](https://docs.microsoft.com/rest/api/searchservice/create-skillset) – zum Aufrufen der Pipeline. Während der Verarbeitung werden für jedes Dokument Phasen der Anreicherung für jedes Dokument zur zukünftigen Verwendung in Blob-Speicher gespeichert.
+1. Testen Sie Ihren Code, und verwenden Sie nach ggf. erforderlichen Änderungen [Skillset aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-skillset), um eine Definition zu ändern.
+1. [Führen Sie den Indexer aus](https://docs.microsoft.com/rest/api/searchservice/run-indexer), um die Pipeline aufzurufen, wobei zwischengespeicherte Ausgaben für eine schnellere und kostengünstigere Verarbeitung abgerufen werden.
+
+Weitere Informationen zu Schritten und Überlegungen beim Arbeiten mit einem vorhandenen Indexer finden Sie unter [Einrichten der inkrementellen Anreicherung](search-howto-incremental-index.md).
 
 ## <a name="indexer-cache"></a>Indexercache
 
@@ -82,7 +94,7 @@ Indem Sie diesen Parameter festlegen, wird sichergestellt, dass nur Aktualisieru
 Das folgende Beispiel zeigt eine Update Skillset-Anforderung mit dem Parameter:
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2019-05-06-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>Umgehen von Datenquellen-Validierungsüberprüfungen
@@ -90,14 +102,14 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 Die meisten Änderungen an einer Datenquellendefinition führen dazu, dass der Cache ungültig wird. In Szenarien, bei denen eine Änderung den Cache nicht ungültig machen sollte (wie z. B. das Ändern einer Verbindungszeichenfolge oder das Rotieren des Schlüssels im Speicherkonto) fügen Sie jedoch den Parameter`ignoreResetRequirement` an die Datenquellenaktualisierung an. Wird dieser Parameter auf `true` festgelegt, kann der Commit durchlaufen werden, ohne eine Bedingung „Zurücksetzen“ auszulösen, die dazu führen würde, dass alle Objekte von Grund auf neu erstellt und gefüllt werden.
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
+PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>Erzwingen der Skillsetauswertung
 
 Der Zweck des Caches ist es, unnötige Verarbeitung zu vermeiden, aber angenommen, Sie nehmen eine Änderung an einer Qualifikation vor, die der Indexer nicht erkennt (etwa eine Änderung an Elementen in externem Code, wie z. B. einer benutzerdefinierten Qualifikation).
 
-In diesem Fall können Sie [Reset Skills](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) verwenden, um die erneute Verarbeitung einer bestimmten Qualifikation zu erzwingen, einschließlich aller Downstreamqualifikationen, die von der Ausgabe dieser Qualifikation abhängig sind. Diese API akzeptiert eine POST-Anforderung mit einer Liste von Qualifikationen, die ungültig gemacht und zur erneuten Verarbeitung markiert werden sollten. Führen Sie nach „Reset Skills“ den Indexer aus, um die Pipeline aufzurufen.
+In diesem Fall können Sie [Reset Skills](https://docs.microsoft.com/rest/api/searchservice/reset-skills) verwenden, um die erneute Verarbeitung einer bestimmten Qualifikation zu erzwingen, einschließlich aller Downstreamqualifikationen, die von der Ausgabe dieser Qualifikation abhängig sind. Diese API akzeptiert eine POST-Anforderung mit einer Liste von Qualifikationen, die ungültig gemacht und zur erneuten Verarbeitung markiert werden sollten. Führen Sie nach „Reset Skills“ den Indexer aus, um die Pipeline aufzurufen.
 
 ## <a name="change-detection"></a>Änderungserkennung
 
@@ -138,15 +150,15 @@ Bei der inkrementellen Verarbeitung wird Ihre Skillsetdefinition ausgewertet, un
 
 ## <a name="api-reference"></a>API-Referenz
 
-Die REST-API-Version `2019-05-06-Preview` bietet eine inkrementelle Anreicherung durch zusätzliche Eigenschaften für Indexer, Skillsets und Datenquellen. Ergänzende Informationen zur Referenzdokumentation mit Einzelheiten zum Aufrufen der APIs finden Sie unter [Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung](search-howto-incremental-index.md).
+Die REST-API-Version `2020-06-30-Preview` bietet eine inkrementelle Anreicherung durch zusätzliche Eigenschaften für Indexer. Skillsets und Datenquellen können die allgemein verfügbare Version verwenden. Ergänzende Informationen zur Referenzdokumentation mit Einzelheiten zum Aufrufen der APIs finden Sie unter [Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung](search-howto-incremental-index.md).
 
-+ [Create Indexer (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [Create Indexer (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-+ [Update Indexer (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [Update Indexer (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-+ [Update Skillset (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (Neuer URI-Parameter in der Anforderung)
++ [Update Skillset (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (Neuer URI-Parameter in der Anforderung)
 
-+ [Reset Skills (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
++ [Reset Skills (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
 
 + Datenbankindexer (Azure SQL, Cosmos DB). Einige Indexer rufen Daten über Abfragen ab. Für Abfragen, die Daten abrufen, unterstützt [Update Data Source](https://docs.microsoft.com/rest/api/searchservice/update-data-source) einen neuen Parameter in einer Anforderung: **ignoreResetRequirement**, der auf `true` festgelegt werden sollte, wenn Ihre Aktualisierungsaktion den Cache nicht ungültig machen soll. 
 

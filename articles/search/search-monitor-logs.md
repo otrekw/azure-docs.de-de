@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 192591dedb0b5519fdcecde8c8683be87237c828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: c940d0dd4c92aca92291bfe1dbd6c15f1091f0b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611610"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search
 
-Diagnose- oder Betriebsprotokolle bieten Einblicke in die detaillierten Vorgänge von Azure Cognitive Search und sind für die Überwachung von Dienst- und Workloadprozessen nützlich. Intern werden Protokolle für einen kurzen Zeitraum im Back-End gespeichert, der für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie jedoch eine Selbststeuerung der Betriebsdaten wünschen, sollten Sie eine Diagnoseeinstellung konfigurieren, um anzugeben, wo die Protokollinformationen gesammelt werden.
+Diagnose- oder Betriebsprotokolle bieten Einblicke in die detaillierten Vorgänge von Azure Cognitive Search und sind für die Überwachung von Dienst- und Workloadprozessen nützlich. Intern werden für einen kurzen Zeitraum bestimmte Systeminformationen im Back-End gespeichert, der für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie jedoch eine Selbststeuerung der Betriebsdaten wünschen, sollten Sie eine Diagnoseeinstellung konfigurieren, um anzugeben, wo die Protokollinformationen gesammelt werden.
 
-Das Einrichten von Protokollen ist hilfreich für die Diagnose und die Beibehaltung des Verwendungsverlaufs. Nachdem Sie die Protokollierung aktiviert haben, können Sie Abfragen ausführen oder Berichte für die strukturierte Analyse erstellen.
+Die Diagnoseprotokollierung wird durch Integration in [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) aktiviert. 
 
-In der folgenden Tabelle werden Optionen zum Erfassen und Beibehalten von Daten aufgelistet.
+Beim Einrichten der Diagnoseprotokollierung werden Sie zur Angabe eines Speichermechanismus aufgefordert. In der folgenden Tabelle werden Optionen zum Erfassen und Beibehalten von Daten aufgelistet.
 
 | Resource | Syntaxelemente |
 |----------|----------|
@@ -29,15 +29,15 @@ In der folgenden Tabelle werden Optionen zum Erfassen und Beibehalten von Daten 
 | [Archivieren mit Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Ereignisse und Metriken werden in einem Blobcontainer archiviert und in JSON-Dateien gespeichert. Protokolle können sehr präzise sein (nach Stunde/Minute), was für die Untersuchung eines bestimmten Vorfalls nützlich ist, aber nicht für eine Untersuchung mit offenem Ende. Mit einem JSON-Editor können Sie eine unformatierte Protokolldatei oder Power BI anzeigen, um Protokolldaten zu aggregieren und zu visualisieren.|
 | [Streamen an Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Ereignisse und Metriken werden an einen Azure Event Hubs-Dienst gestreamt. Wählen Sie diese Lösung als alternativen Datensammlungsdienst für sehr große Ereignisprotokolle aus. |
 
-Azure Monitor-Protokolle und Blob Storage sind als kostenlose Dienste verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).)
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie Log Analytics oder Azure Storage verwenden, können Sie im Voraus Ressourcen erstellen.
+Erstellen Sie Ressourcen vorab, damit Sie beim Konfigurieren der Diagnoseprotokollierung mindestens eine auswählen können.
 
-+ [Erstellen eines Log Analytics-Arbeitsbereichs](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
++ [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md)
 
-+ [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md)
+
++ [Erstellen eines Event Hubs](../event-hubs/event-hubs-create.md)
 
 ## <a name="enable-data-collection"></a>Aktivieren der Datensammlung
 
@@ -91,20 +91,59 @@ Zwei Tabellen enthalten Protokolle und Metriken für Azure Cognitive Search: **A
 
    ![AzureDiagnostics-Tabelle](./media/search-monitor-usage/azurediagnostics-table.png "AzureDiagnostics-Tabelle")
 
+## <a name="kusto-query-examples"></a>Kusto-Abfragebeispiele
+
+Wenn Sie die Diagnoseprotokollierung aktiviert haben, können Sie **AzureDiagnostics** abfragen, um eine Liste der für Ihren Dienst ausgeführten Vorgänge einschließlich der Ausführungszeit zu erhalten. Sie können Aktivitäten auch korrelieren, um Änderungen an der Leistung zu untersuchen.
+
+#### <a name="example-list-operations"></a>Beispiel: Auflisten von Vorgängen 
+
+So geben Sie eine Liste der Vorgänge und die Anzahl dieser Vorgänge zurück
+
+```
+AzureDiagnostics
+| summarize count() by OperationName
+```
+
+#### <a name="example-correlate-operations"></a>Beispiel: Korrelieren von Vorgängen
+
+So korrelieren Sie die Abfrageanforderung mit Indizierungsvorgängen und rendern die Datenpunkte in einem Zeitdiagramm, um die Vorgänge abzugleichen
+
+```
+AzureDiagnostics
+| summarize OperationName, Count=count()
+| where OperationName in ('Query.Search', 'Indexing.Index')
+| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| render timechart
+```
+
+## <a name="logged-operations"></a>Protokollierte Vorgänge
+
+Von Azure Monitor werden auch Ereignisse im Zusammenhang mit Indizierung und Abfragen protokolliert. In der Tabelle **AzureDiagnostics** in Log Analytics werden operative Daten im Zusammenhang mit Abfragen und Indizierung gesammelt.
+
+| Vorgangsname | BESCHREIBUNG |
+|---------------|-------------|
+| ServiceStats | Bei diesem Vorgang handelt es sich um einen Routineaufruf zum [Abrufen von Dienststatistiken](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), der entweder direkt oder implizit erfolgt, um eine Übersicht im Portal aufzufüllen, wenn diese geladen oder aktualisiert wird. |
+| Query.Search |  Abfrageanforderungen für einen Index. Weitere Informationen zu protokollierten Abfragen finden Sie unter [Überwachen von Abfragen](search-monitor-queries.md).|
+| Indexing.Index  | Dieser Vorgang dient dem [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). |
+| indexes.Prototype | Dies ist ein Index, der vom Datenimport-Assistenten erstellt wird. |
+| Indexers.Create | Erstellt explizit oder implizit einen Indexer mithilfe des Datenimport-Assistenten. |
+| Indexers.Get | Gibt jeweils den Namen eines Indexers zurück, wenn der Indexer ausgeführt wird. |
+| Indexers.Status | Gibt jeweils den Status eines Indexers zurück, wenn der Indexer ausgeführt wird. |
+| DataSources.Get | Gibt den Namen der Datenquelle zurück, wenn ein Indexer ausgeführt wird.|
+| Indexes.Get | Gibt den Namen eines Indexes zurück, wenn ein Indexer ausgeführt wird. |
+
 ## <a name="log-schema"></a>Protokollschema
 
-Datenstrukturen, die Azure Cognitive Search-Protokolldaten enthalten, entsprechen dem folgenden Schema. 
-
-Blobspeicher: Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
+Wenn Sie benutzerdefinierte Berichte erstellen, entsprechen die Datenstrukturen, die Azure Cognitive Search-Protokolldaten enthalten, dem folgenden Schema. Blobspeicher: Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
 
 Die folgende Tabelle ist eine Teilliste häufiger Felder für die Ressourcenprotokollierung.
 
 | Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | timeGenerated |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | operationName |Zeichenfolge |„Query.Search“ |Name des Vorgangs |
-| operationVersion |Zeichenfolge |"2019-05-06" |Die verwendete API-Version |
+| operationVersion |Zeichenfolge |"2020-06-30" |Die verwendete API-Version |
 | category |Zeichenfolge |„OperationLogs“ |Konstante |
 | resultType |Zeichenfolge |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
 | resultSignature |INT |200 |HTTP-Ergebniscode |
@@ -120,7 +159,7 @@ Die folgenden Eigenschaften gelten speziell für Azure Cognitive Search.
 | Description_s |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
 | Documents_d |INT |42 |Anzahl von verarbeiteten Dokumenten |
 | IndexName_s |Zeichenfolge |„test-index“ |Name des Indexes, der dem Vorgang zugeordnet ist |
-| Query_s |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
+| Query_s |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2020-06-30" |Die Abfrageparameter |
 
 ## <a name="metrics-schema"></a>Metrikenschema
 
@@ -128,7 +167,7 @@ Metriken werden für Abfrageanforderungen erfasst und in Intervallen von einer M
 
 | Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
 | average |INT |64 |Der Durchschnittswert der unformatierten Stichproben im Metrikzeitintervall, Einheiten in Sekunden oder Prozentsatz, abhängig von der Metrik. |

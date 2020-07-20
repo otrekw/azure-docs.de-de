@@ -8,14 +8,14 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565925"
 ---
-# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Funktionsweise der Volltextsuche in der kognitiven Azure-Suche
+# <a name="full-text-search-in-azure-cognitive-search"></a>Volltextsuche in Azure Cognitive Search
 
 Dieser Artikel ist für Entwickler bestimmt, die eingehendere Informationen zur Funktionsweise der Lucene-Volltextsuche in der kognitiven Azure-Suche benötigen. Für Textabfragen werden die erwarteten Ergebnisse in der kognitiven Azure-Suche in den meisten Szenarien problemlos bereitgestellt, aber es kann auch vorkommen, dass Sie ein unerwartetes Ergebnis erhalten. In diesen Situationen können Kenntnisse der vier Phasen der Lucene-Abfragenausführung (Abfrageanalyse, lexikalische Analyse, Dokumentabgleich, Bewertung) hilfreich beim Identifizieren von bestimmten Änderungen von Abfrageparametern oder der Indexkonfiguration sein, auf denen das gewünschte Ergebnis basiert. 
 
@@ -52,7 +52,7 @@ Eine Suchanfrage ist eine vollständige Spezifikation dessen, was in einem Resul
 Das folgende Beispiel ist eine Suchanforderung, die Sie per [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) an die kognitive Azure-Suche senden können.  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",
@@ -94,7 +94,7 @@ Der Abfrageparser strukturiert die Unterabfragen als *Abfragestruktur* (interne 
 
  ![Boolesche Abfrage: Suchmodus „any“][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Unterstützte Parser: Lucene, einfach und vollständig („simple“ und „full“) 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Unterstützte Parser: Lucene-Optionen „simple“ und „full“ 
 
  Bei der kognitiven Azure-Suche werden zwei unterschiedliche Abfragesprachen verfügbar gemacht: `simple` (Standard) und `full`. Indem Sie den Parameter `queryType` für Ihre Suchanfrage festlegen, weisen Sie den Abfrageparser an, welche Abfragesprache zur Verwendung ausgewählt werden soll. Er verfügt somit über die Funktionen zum Interpretieren der Operatoren und der Syntax. Die [einfache Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) ist intuitiv und robust und häufig gut geeignet, um die Benutzereingabe unverändert ohne clientseitige Verarbeitung zu interpretieren. Sie unterstützt Abfrageoperatoren, die Sie aus anderen Websuchmodulen kennen. Bei der [vollständigen Lucene-Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), die Sie durch das Festlegen von `queryType=full` erhalten, wird die einfache Abfragesprache erweitert. Es wird Unterstützung für weitere Operatoren und Abfragetypen hinzugefügt, z.B. Platzhalter, Fuzzy Matching, reguläre Ausdrücke und feldbezogene Abfragen. Ein regulärer Ausdruck, der mit einfacher Abfragesyntax gesendet wird, wird beispielsweise als Abfragezeichenfolge und nicht als Ausdruck interpretiert. Für die Beispielabfrage in diesem Artikel wird die vollständige Lucene-Abfragesprache verwendet.
 
@@ -239,7 +239,7 @@ Für das Verständnis des Abrufs ist es hilfreich, einige Grundlagen zur Indizie
 Zum Erstellen der Ausdrücke in einem invertierten Index führt das Suchmodul eine lexikalische Analyse für den Inhalt von Dokumenten durch. Dies ähnelt der Vorgehensweise während der Abfrageverarbeitung:
 
 1. *Texteingaben* werden je nach Konfiguration des Analysemoduls an eine Analyse übergeben, in Kleinbuchstaben konvertiert, von Satzzeichen befreit usw. 
-2. *Token* sind die Ausgabe der Textanalyse.
+2. *Token* sind die Ausgabe der lexikalischen Analyse.
 3. *Ausdrücke* werden dem Index hinzugefügt.
 
 Es ist zwar nicht unbedingt erforderlich, aber häufig werden die gleichen Analysen für Such- und Indiziervorgänge verwendet, sodass Abfrageausdrücke eher wie Ausdrücke im Index aussehen.

@@ -4,15 +4,15 @@ description: Beschreibt, wie Sie Probleme mit der Back-End-Integrität in Azure 
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
-ms.topic: article
-ms.date: 08/30/2019
+ms.topic: troubleshooting
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808194"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -81,7 +81,7 @@ Nachdem Sie den Back-End-Serverstatus „Fehlerhaft“ für alle Server in einem
 Die in der Spalte **Details** angezeigte Meldung bietet ausführlichere Einblicke in das Problem. Basierend auf diesen Informationen können Sie mit der Problembehandlung beginnen.
 
 > [!NOTE]
-> Die Standardtestanforderung wird im Format \<Protokoll\>://127.0.0.1: \<Port\>/ gesendet. Beispielsweise http://127.0.0.1:80 für einen HTTP-Test an Port 80. Nur HTTP-Statuscodes von 200 bis 399 gelten als fehlerfrei. Das Protokoll und der Zielport werden von den HTTP-Einstellungen geerbt. Wenn Application Gateway auf ein anderes Protokoll, einen anderen Hostnamen oder einen anderen Pfad testen und einen anderen Statuscode als fehlerfrei erkennen soll, konfigurieren Sie einen benutzerdefinierten Test, und ordnen Sie ihn den HTTP-Einstellungen zu.
+> Die Standardtestanforderung wird in diesem Format gesendet: \<protocol\>://127.0.0.1:\<port\>/. Beispielsweise http://127.0.0.1:80 für einen HTTP-Test an Port 80. Nur HTTP-Statuscodes von 200 bis 399 gelten als fehlerfrei. Das Protokoll und der Zielport werden von den HTTP-Einstellungen geerbt. Wenn Application Gateway auf ein anderes Protokoll, einen anderen Hostnamen oder einen anderen Pfad testen und einen anderen Statuscode als fehlerfrei erkennen soll, konfigurieren Sie einen benutzerdefinierten Test, und ordnen Sie ihn den HTTP-Einstellungen zu.
 
 <a name="error-messages"></a>Fehlermeldungen
 ------------------------
@@ -170,7 +170,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **Nachricht:** Status code of the backend\'s HTTP response did not match the probe setting. (Der Statuscode der HTTP-Antwort des Back-Ends stimmte nicht mit der Testeinstellung überein.) Expected:{HTTPStatusCode0} Received:{HTTPStatusCode1}. (Erwartet: {HTTPStatusCode0}, Empfangen: {HTTPStatusCode1}.)
 
-**Ursache:** Nachdem die TCP-Verbindung hergestellt und ein TLS-Handshake ausgeführt wurde (wenn TLS aktiviert ist), sendet Application Gateway den Test als HTTP GET-Anforderung an den Back-End-Server. Wie zuvor beschrieben, wird als Standardtest \<Protokoll\>://127.0.0.1:\<port\>/ verwendet, und die Antwortstatuscodes im Bereich 200 bis 399 werden als fehlerfrei angesehen. Wenn der Server einen anderen Statuscode zurückgibt, wird er mit dieser Meldung als fehlerhaft gekennzeichnet.
+**Ursache:** Nachdem die TCP-Verbindung hergestellt und ein TLS-Handshake ausgeführt wurde (wenn TLS aktiviert ist), sendet Application Gateway den Test als HTTP GET-Anforderung an den Back-End-Server. Wie zuvor beschrieben, wird für den Standardtest \<protocol\>://127.0.0.1:\<port\>/ verwendet, und die Antwortstatuscodes im Bereich 200 bis 399 werden als fehlerfrei angesehen. Wenn der Server einen anderen Statuscode zurückgibt, wird er mit dieser Meldung als fehlerhaft gekennzeichnet.
 
 **Lösung:** Abhängig vom Antwortcode des Back-End-Servers können Sie die folgenden Schritte ausführen. Einige der allgemeinen Statuscodes sind hier aufgeführt:
 
@@ -209,7 +209,7 @@ Weitere Informationen zum [Testabgleich von Application Gateway](https://docs.mi
 
 #### <a name="backend-server-certificate-invalid-ca"></a>Ungültige Zertifizierungsstelle für das Zertifikat des Back-End-Servers
 
-**Nachricht:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (Das vom Back-End verwendete Serverzertifikat ist nicht von einer bekannten Zertifizierungsstelle (CA) signiert.) Whitelist the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (Fügen Sie das Back-End für Application Gateway der Whitelist hinzu, indem Sie das Stammzertifikat des Serverzertifikats hochladen, das vom Back-End verwendet wird.)
+**Nachricht:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (Das vom Back-End verwendete Serverzertifikat ist nicht von einer bekannten Zertifizierungsstelle (CA) signiert.) Allow the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (Lassen Sie das Back-End für Application Gateway zu, indem Sie das Stammzertifikat des Serverzertifikats hochladen, das vom Back-End verwendet wird.)
 
 **Ursache:** End-to-End-SSL mit Application Gateway v2 erfordert, dass das Zertifikat des Back-End-Servers überprüft wird, damit der Server als fehlerfrei angesehen wird.
 Damit ein TLS/SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss dieses Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt werden, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wenn das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt wurde (z. B. bei Verwendung eines selbstsignierten Zertifikats), sollten Benutzer das Zertifikat des Ausstellers in Application Gateway hochladen.

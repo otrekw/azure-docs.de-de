@@ -3,15 +3,15 @@ title: Verschieben des internen Azure Load Balancers in eine andere Azure-Region
 description: Verwenden einer Azure Resource Manager-Vorlage, um den internen Azure Load Balancer mit Azure PowerShell aus einer Azure-Region in eine andere zu verschieben
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63083c4bd058c63e21a40f2d245312a3f010b696
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808358"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Verschieben des internen Azure Load Balancers in eine andere Region mit PowerShell
 
@@ -60,7 +60,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<resource-group-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -105,9 +105,9 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
     Get-AzLocation | format-table
     
     ```
-8.  Sie können wahlweise auch andere Parameter in der Datei **\<resource-group-name>.json** ändern. Diese sind abhängig von Ihren Anforderungen optional:
+8.  Sie können auch andere Parameter in der **\<resource-group-name>.json**-Datei ändern, die abhängig von Ihren Anforderungen optional sind:
 
-    * **Adressraum**: Der Adressraum des VNETs kann vor dem Speichern geändert werden, indem der Abschnitt **resources** > **addessSpace** und die Eigenschaft **addressPrefixes** in der Datei **\<resource-group-name>.json** geändert werden:
+    * **Adressraum**: Der Adressraum des virtuellen Netzwerks kann vor dem Speichern geändert werden, indem Sie den Abschnitt **resources** > **addressSpace** und die Eigenschaft **addressPrefixes** in der Datei **\<resource-group-name>.json** ändern:
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
 
         ```
 
-    * **Subnetz**: Der Subnetzname und der Subnetzadressraum können geändert oder hinzugefügt werden, indem Sie den Abschnitt **subnets** der Datei **\<resource-group-name>.json** ändern. Der Name des Subnetzes kann geändert werden, indem Sie die Eigenschaft **name** ändern. Der Subnetzadressraum kann geändert werden, indem Sie die Eigenschaft **addressPrefix** in der Datei **\<resource-group-name>.json** ändern:
+    * **Subnetz**: Der Subnetzname und der Subnetzadressraum können geändert oder ergänzt werden, indem Sie den Abschnitt **subnets** der Datei **\<resource-group-name>.json** ändern. Der Name des Subnetzes kann geändert werden, indem Sie die Eigenschaft **name** ändern. Der Subnetzadressraum kann geändert werden, indem Sie die Eigenschaft **addressPrefix** in der Datei **\<resource-group-name>.json** ändern:
 
         ```json
                 "subnets": [
@@ -241,7 +241,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<resource-group-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -291,7 +291,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
              }
     ```
 
-8. Zum Bearbeiten der Zielregion, in die die Konfiguration des internen Load Balancers verschoben wird, ändern Sie die Eigenschaft **location** unter **resources** in der Datei **\<resource-group-name>.json**:
+8. Um die Zielregion zu bearbeiten, in die die Konfiguration des internen Lastenausgleichsmoduls verschoben wird, ändern Sie in der Datei **\<resource-group-name>.json** unter **resources** die Eigenschaft **location**:
 
     ```json
         "resources": [
@@ -315,7 +315,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
     ```
 12. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
     
-    * **SKU**: Sie können die SKU des internen Load Balancers in der Konfiguration aus „standard“ in „basic“ oder aus „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **\<resource-group-name>.json** ändern:
+    * **SKU**: Sie können die SKU des internen Lastenausgleichsmoduls in der Konfiguration von „Standard“ in „Basic“ ändern (oder umgekehrt), indem Sie in der Datei **\<resource-group-name>.json** die Eigenschaft **sku** > **name** ändern:
 
         ```json
         "resources": [
@@ -331,7 +331,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
         ```
       Weitere Informationen zu den Unterschieden zwischen Load Balancern der SKU „basic“ und „standard“ finden Sie unter [Übersicht über Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
-    * **Lastausgleichsregeln**: Sie können Lastausgleichsregeln in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge zum Abschnitt **loadBalancingRules** in der Datei **\<resource-group-name>.json** hinzufügen oder sie aus ihm entfernen:
+    * **Lastenausgleichsregeln**: Sie können Lastenausgleichsregeln zur Konfiguration hinzufügen oder daraus entfernen, indem Sie in der Datei **\<resource-group-name>.json** im Abschnitt **loadBalancingRules** Einträge hinzufügen oder entfernen:
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
         ```
        Weitere Informationen zu Lastenausgleichsregeln finden Sie unter [Was ist Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Tests**: Sie können einen Test für den Load Balancer in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge zum Abschnitt **Probes** der Datei **\<resource-group-name>.json** hinzufügen oder sie aus ihm entfernen:
+    * **Tests**: Sie können einen Test des Lastenausgleichsmoduls zur Konfiguration hinzufügen oder daraus entfernen, indem Sie in der Datei **\<resource-group-name>.json** im Abschnitt **Tests** Einträge hinzufügen oder entfernen:
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
         ```
        Weitere Informationen zu Azure Load Balancer-Integritätstests finden Sie unter [Load Balancer-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-    * **NAT-Regeln für eingehenden Datenverkehr**: Sie können NAT-Regeln für eingehenden Datenverkehr für den Load Balancer hinzufügen oder entfernen, indem Sie Einträge zum Abschnitt **inboundNatRules** der Datei **\<resource-group-name>.json** hinzufügen oder sie aus ihm entfernen:
+    * **NAT-Regeln für eingehenden Datenverkehr**: Sie können NAT-Regeln für eingehenden Datenverkehr des Lastenausgleichsmoduls hinzufügen oder entfernen, indem Sie in der Datei **\<resource-group-name>.json** im Abschnitt **inboundNatRules** Einträge hinzufügen oder entfernen:
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ Die folgenden Schritte zeigen, wie Sie den internen Load Balancer für die Versc
                     }
                 ]
         ```
-        Um das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abzuschließen, muss die Regel als Eigenschaft **type** am Ende der Datei **\<resource-group-name>.json** vorhanden sein oder aus ihr entfernt werden:
+        Um das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abzuschließen, müssen Sie die Regel als Eigenschaft vom Typ **type** am Ende der Datei **\<resource-group-name>.json** hinzufügen oder daraus entfernen:
 
         ```json
         {

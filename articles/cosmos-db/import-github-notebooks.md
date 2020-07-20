@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie eine Verbindung mit GitHub herstellen un
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ce65d316b8236b83435388d2c1883cb9b89b03a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262887"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Importieren von Notebooks aus einem GitHub-Repository in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Sie können eine Verbindung mit Ihren eigenen GitHub-Repositorys oder mit andere
 
 1. Daraufhin wird eine Registerkarte geöffnet, auf der Sie auswählen können, ob Sie nur eine Verbindung mit **öffentlichen Repositorys** oder eine Verbindung mit **öffentlichen und privaten Repositorys** herstellen möchten.  Wählen Sie die erforderliche Option und anschließend **Authorize access** (Zugriff autorisieren) aus. Die Autorisierung ist erforderlich, um Azure Cosmos DB den Zugriff auf die Repositorys in Ihrem GitHub-Konto zu ermöglichen.
 
-   ![Autorisieren des Zugriffs auf Ihre GitHub-Repositorys durch Azure Cosmos DB](./media/import-github-notebooks/authorize-access-github.png)
+   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Autorisieren des Zugriffs auf Ihre GitHub-Repositorys durch Azure Cosmos DB":::
 
 1. Sie werden zur Webseite „github.com“ umgeleitet, wo Sie die Autorisierung bestätigen können. Wählen Sie die Schaltfläche **Authorize AzureCosmosDBNotebooks** („AzureCosmosDBNotebooks“ autorisieren) aus, und geben Sie das Kennwort Ihres GitHub-Kontos ein.
 
@@ -37,7 +37,7 @@ Sie können eine Verbindung mit Ihren eigenen GitHub-Repositorys oder mit andere
 
 1. Nachdem Sie das erforderliche Repository ausgewählt haben, wird der Repositoryeintrag aus dem Abschnitt **Unpinned repos** (Nicht angeheftete Repositorys) in den Abschnitt **Pinned repos** (Angeheftete Repositorys) verschoben. Bei Bedarf können Sie auch einen bestimmten Branch dieses Repositorys auswählen, aus dem die Notebooks importiert werden sollen.
 
-   ![Auswählen eines Repositorys und eines Branchs](./media/import-github-notebooks/choose-repo-branch.png)
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Auswählen eines Repositorys und eines Branchs":::
 
 1. Wählen Sie **OK** aus, um den Importvorgang abzuschließen. Alle Notebooks, die im ausgewählten Branch Ihres Repositorys verfügbar sind, werden in Ihr Azure Cosmos-Konto importiert.
 
@@ -53,7 +53,7 @@ Wählen Sie nach der Bearbeitung eines vorhandenen Notebooks **Speichern** aus. 
 
 Im regulären GitHub-Flow werden die Änderungen nach dem Committen in der Regel in ein Remoterepository gepusht. In diesem Fall dient die Option „Committen“ jedoch dazu, Ihre Aktualisierungen in GitHub bereitzustellen, zu committen und zu pushen.
 
-![Bearbeiten von Notebooks und Committen von Änderungen in GitHub](./media/import-github-notebooks/commit-changes-github.png)
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Bearbeiten von Notebooks und Committen von Änderungen in GitHub":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481832"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB
 
@@ -34,6 +34,14 @@ Transaktionen (in gespeicherten Prozeduren oder Triggern) sind nur für Elemente
 Weitere Informationen darüber, wie Azure Cosmos DB Partitionen verwaltet, finden Sie [hier](partition-data.md). (Es ist nicht notwendig, die internen Details zu verstehen, um Ihre Anwendungen zu erstellen oder auszuführen, sie werden aber hier für neugierige Leser beschrieben.)
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Auswählen eines Partitionsschlüssels
+
+Ein Partitionsschlüssel besteht aus zwei Komponenten: dem **Partitionsschlüsselpfad** und dem **Partitionsschlüsselwert**. Betrachten Sie z. B. dieses Element: { "userId" : "Andrew", "worksFor": "Microsoft" }. Wenn Sie "userId" als Partitionsschlüssel auswählen, sind die folgenden beiden Elemente die beiden Partitionsschlüsselkomponenten:
+
+* Der Partitionsschlüsselpfad (Beispiel: "/userId"). Der Partitionsschlüsselpfad akzeptiert alphanumerische Zeichen und Unterstriche (_). Mithilfe der Standardpfadnotation (/) können Sie auch geschachtelte Objekte verwenden.
+
+* Der Partitionsschlüsselwert (Beispiel: "Andrew"). Der Partitionsschlüsselwert kann vom Typ „string“ oder „numeric“ sein.
+
+Informationen zu den Beschränkungen im Hinblick auf Durchsatz, Speicher und Länge des Partitionsschlüssels finden Sie im Artikel [Kontingente im Azure Cosmos DB-Dienst](concepts-limits.md).
 
 Die Auswahl Ihres Partitionsschlüssels ist eine einfache, aber wichtige Entwurfsentscheidung in Azure Cosmos DB. Nachdem Sie Ihren Partitionsschlüssel ausgewählt haben, ist es nicht möglich, ihn direkt zu ändern. Wenn Sie Ihren Partitionsschlüssel ändern müssen, sollten Sie Ihre Daten mit dem neuen gewünschten Partitionsschlüssel in einen neuen Container verschieben.
 

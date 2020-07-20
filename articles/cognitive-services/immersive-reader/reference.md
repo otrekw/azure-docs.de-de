@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 6dfcd8d56232f893f881f310b33f3f849e2364a7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907379"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85475950"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>SDK für plastischen Reader: Referenzhandbuch
+# <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenz zum JavaScript-SDK für den Plastischen Reader (v1.1)
 
 Das Plastischer Reader-SDK enthält eine JavaScript-Bibliothek, die es Ihnen ermöglicht, den Plastischen Reader in Ihre Anwendung zu integrieren.
 
@@ -33,7 +33,7 @@ Das SDK macht folgende Funktionen verfügbar:
 
 ## <a name="launchasync"></a>launchAsync
 
-Startet den Plastischen Reader in einem `iframe` in Ihrer Webanwendung.
+Startet den Plastischen Reader in einem `iframe` in Ihrer Webanwendung. Beachten Sie, dass die Inhaltsgröße auf 50 MB beschränkt ist.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -109,6 +109,70 @@ Ein einzelner Datenblock, der in den Inhalt des Plastischen Readers übertragen 
 }
 ```
 
+#### <a name="supported-mime-types"></a>Unterstützte MIME-Typen
+
+| MIME-Typ | BESCHREIBUNG |
+| --------- | ----------- |
+| text/plain | Nur-Text. |
+| text/html | HTML-Inhalt. [Weitere Informationen](#html-support)|
+| application/mathml+xml | Mathematische Markupsprache (MathML). [Weitere Informationen](./how-to/display-math.md)
+| application/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument im DOCX-Format von Microsoft Word.
+
+### <a name="options"></a>Tastatur
+
+Enthält Eigenschaften, die bestimmte Verhaltensweisen des Plastischen Readers konfigurieren.
+
+```typescript
+{
+    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
+    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
+    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000).
+    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
+    onExit?: () => any;        // Executes when the Immersive Reader exits.
+    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
+    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
+    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
+    disableFirstRun?: boolean; // Disable the first run experience.
+    readAloudOptions?: ReadAloudOptions; // Options to configure Read Aloud.
+    translationOptions?: TranslationOptions; // Options to configure translation.
+    displayOptions?: DisplayOptions; // Options to configure text size, font, etc.
+    preferences?: string; // String returned from onPreferencesChanged representing the user's preferences in the Immersive Reader.
+    onPreferencesChanged?: (value: string) => any; // Executes when the user's preferences have changed.
+}
+```
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
+```typescript
+type ReadAloudOptions = {
+    voice?: string;      // Voice, either 'male' or 'female'. Note that not all languages support both genders.
+    speed?: number;      // Playback speed, must be between 0.5 and 2.5, inclusive.
+    autoplay?: boolean;  // Automatically start Read Aloud when the Immersive Reader loads.
+};
+```
+
+> [!NOTE]
+> Aufgrund von Browsereinschränkungen wird die automatische Wiedergabe in Safari nicht unterstützt.
+
+```typescript
+type TranslationOptions = {
+    language: string;                         // Set the translation language, e.g. fr-FR, es-MX, zh-Hans-CN. Required to automatically enable word or document translation.
+    autoEnableDocumentTranslation?: boolean;  // Automatically translate the entire document.
+    autoEnableWordTranslation?: boolean;      // Automatically enable word translation.
+};
+```
+
+```typescript
+type DisplayOptions = {
+    textSize?: number;          // Valid values are 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96.
+    increaseSpacing?: boolean;  // Set whether increased spacing is enabled.
+    fontFamily?: string;        // Valid values are 'Calibri', 'ComicSans', and 'Sitka'.
+};
+```
+
 ### <a name="launchresponse"></a>LaunchResponse
 
 Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`. Beachten Sie, dass ein Verweis auf den `iframe`, der den Plastischen Reader enthält, über `container.firstChild` aufgerufen werden kann.
@@ -119,62 +183,7 @@ Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`. Beachten 
     sessionId: string;            // Globally unique identifier for this session, used for debugging
 }
 ```
-
-### <a name="cookiepolicy-enum"></a>CookiePolicy-Enumeration
-
-Eine Enumeration, mit der die Richtlinie für die Verwendung von Cookies durch den plastischen Reader festgelegt wird. Informationen dazu finden Sie bei den [Optionen](#options).
-
-```typescript
-enum CookiePolicy { Disable, Enable }
-```
-
-#### <a name="supported-mime-types"></a>Unterstützte MIME-Typen
-
-| MIME-Typ | BESCHREIBUNG |
-| --------- | ----------- |
-| text/plain | Nur-Text. |
-| text/html | HTML-Inhalt. [Weitere Informationen](#html-support)|
-| application/mathml+xml | Mathematische Markupsprache (MathML). [Weitere Informationen](./how-to/display-math.md)
-| application/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument im DOCX-Format von Microsoft Word.
-
-### <a name="html-support"></a>HTML-Unterstützung
-
-| HTML | Unterstützter Inhalt |
-| --------- | ----------- |
-| Schriftschnitte | Bold, Italic, Underline, Code, Strikethrough, Superscript, Subscript |
-| Unsortierte Listen | Disc, Circle, Square |
-| Sortierte Listen | Decimal, Upper-Alpha, Lower-Alpha, Upper-Roman, Lower-Roman |
-
-Nicht unterstützte Tags werden vergleichbar gerendert. Bilder und Tabellen werden derzeit nicht unterstützt.
-
-### <a name="options"></a>Tastatur
-
-Enthält Eigenschaften, die bestimmte Verhaltensweisen des Plastischen Readers konfigurieren.
-
-```typescript
-{
-    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
-    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
-    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000)
-    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
-    onExit?: () => any;        // Executes when the Immersive Reader exits
-    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
-    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
-    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
-    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
-}
-```
-
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
-
-Optionen für das Rendering der Schaltflächen des Plastischen Readers.
-
-```typescript
-{
-    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
-}
-```
-
+ 
 ### <a name="error"></a>Fehler
 
 Enthält Informationen zum Fehler.
@@ -195,6 +204,16 @@ Enthält Informationen zum Fehler.
 | TokenExpired | Das angegebene Token ist abgelaufen. |
 | Gedrosselt | Das Limit für die Aufrufrate wurde überschritten. |
 
+### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+
+Optionen für das Rendering der Schaltflächen des Plastischen Readers.
+
+```typescript
+{
+    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
+}
+```
+
 ## <a name="launching-the-immersive-reader"></a>Starten des Plastischen Readers
 
 Das SDK stellt einen Standardstil für die Schaltfläche zum Starten des Plastischen Readers bereit. Verwenden Sie das Klassenattribut `immersive-reader-button` zum Aktivieren dieses Stils. Weitere Informationen finden Sie [in diesem Artikel](./how-to-customize-launch-button.md) .
@@ -212,6 +231,16 @@ Verwenden Sie die folgenden Attribute, um das Aussehen und Verhalten der Schaltf
 | `data-button-style` | Legt den Stil der Schaltfläche fest. Kann `icon`, `text` oder `iconAndText` sein. Der Standardwert lautet `icon`. |
 | `data-locale` | Legt das Gebietsschema fest. Zum Beispiel: `en-US` oder `fr-FR`. Der Standardwert ist „Englisch“ `en`. |
 | `data-icon-px-size` | Legt die Größe des Symbols in Pixel fest. Der Standardwert ist „20px“. |
+
+## <a name="html-support"></a>HTML-Unterstützung
+
+| HTML | Unterstützter Inhalt |
+| --------- | ----------- |
+| Schriftschnitte | Bold, Italic, Underline, Code, Strikethrough, Superscript, Subscript |
+| Unsortierte Listen | Disc, Circle, Square |
+| Sortierte Listen | Decimal, Upper-Alpha, Lower-Alpha, Upper-Roman, Lower-Roman |
+
+Nicht unterstützte Tags werden vergleichbar gerendert. Bilder und Tabellen werden derzeit nicht unterstützt.
 
 ## <a name="browser-support"></a>Browserunterstützung
 

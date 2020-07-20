@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808611"
 ---
 # <a name="convert-models"></a>Konvertieren von Modellen
 
@@ -38,6 +38,11 @@ Es gibt geringfügige Unterschiede zwischen den Formaten im Hinblick auf die Kon
     - oder durch Angeben einer *Shared Access Signature (SAS)* .
 
 Alle Modelldaten (Ein- und Ausgabe) werden im vom Benutzer bereitgestellten Azure-Blobspeicher gespeichert. Azure Remote Rendering bietet Ihnen die volle Kontrolle über die Verwaltung Ihrer Objekte.
+
+## <a name="pricing"></a>Preise
+
+Informationen zu den Preisen für die Konvertierung finden Sie auf der Seite [Remote Rendering – Preise](https://azure.microsoft.com/pricing/details/remote-rendering).
+
 
 ## <a name="conversion-parameters"></a>Konvertierungsparameter
 

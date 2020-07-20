@@ -1,0 +1,84 @@
+---
+title: Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
+description: Erfahren Sie, wie Sie Azure Sentinel auf delegierten Kundenressourcen effektiv verwalten.
+ms.date: 06/17/2020
+ms.topic: how-to
+ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105267"
+---
+# <a name="manage-azure-sentinel-workspaces-at-scale"></a>Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
+
+Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../overview.md) integriert. Azure Lighthouse ermöglicht Dienstanbietern das gleichzeitige Ausführen von Vorgängen für mehrere Azure Active Directory-Mandanten (Azure AD) im großen Maßstab, wodurch Verwaltungsaufgaben effizienter werden.
+
+Azure Sentinel bietet Sicherheits- und Bedrohungsanalysen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit. Mit Azure Lighthouse können Sie mehrere Azure Sentinel-Arbeitsbereiche mandantenübergreifend im großen Maßstab verwalten. Dies ermöglicht Szenarien wie das Ausführen von Abfragen über mehrere Arbeitsbereiche hinweg oder das Erstellen von Arbeitsmappen, um Daten aus Ihren verbundenen Datenquellen zu visualisieren und zu überwachen und so Erkenntnisse zu gewinnen. IP-Informationen, wie etwa Abfragen und Playbooks, verbleiben in Ihrem verwaltenden Mandanten, können aber verwendet werden, um Sicherheitsverwaltung in den Mandanten des Kunden durchzuführen.
+
+Dieses Thema bietet eine Übersicht zur Verwendung von [Azure Sentinel](../../sentinel/overview.md) in skalierbarer Weise, um mandantenübergreifende Transparenz und verwaltete Sicherheitsdienste zu erreichen.
+
+## <a name="architectural-considerations"></a>Architekturaspekte
+
+Für einen Anbieter von verwalteten Sicherheitsdiensten (Managed Security Service Provider, MSSP), der mithilfe von Azure Sentinel ein Security-as-a-Service-Angebot entwickeln möchte, ist möglicherweise die Konzentration in einem einzelnen Security Operations Center (SOC) erforderlich, um mehrere Azure Sentinel-Arbeitsbereiche, die in einzelnen Mandanten von Kunden bereitgestellt sind, zentral zu überwachen, verwalten und konfigurieren. Analog dazu kann es auch für Unternehmen mit mehreren Azure AD-Mandanten sinnvoll sein, mehrere Azure Sentinel-Arbeitsbereiche, die über ihre Mandanten verteilt bereitgestellt sind, zentral zu verwalten.
+
+Das zentrale Bereitstellungsmodell bietet folgende Vorzüge:
+
+- Der Besitz der Daten verbleibt bei den einzelnen verwalteten Mandanten.
+- Anforderung zur Speicherung von Daten innerhalb geografischer Grenzen wird unterstützt.
+- Die Isolation der Daten ist sichergestellt, da Daten für mehrere Kunden nicht im gleichen Arbeitsbereich gespeichert werden. 
+- Datenexfiltration aus den verwalteten Mandanten wird verhindert, was die Sicherstellung von Datencompliance erleichtert.
+- Mit den verbundenen Kosten werden die einzelnen verwalteten Mandanten belastet, nicht der verwaltende Mandant.
+- Daten aus allen Datenquellen und Datenconnectors, die in Azure Sentinel integriert sind (wie etwa Azure AD-Aktivitätsprotokolle, Office 365-Protokolle oder Benachrichtigungen von Microsoft Threat Protection), verbleiben in den einzelnen Kundenmandanten.
+- Die Netzwerklatenz wird verringert.
+- Neue Niederlassungen oder Kunden lassen sich einfach hinzufügen oder entfernen.
+
+## <a name="granular-role-based-access-control-rbac"></a>Detaillierte rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+
+Für jedes von MSSP verwaltete Kundenabonnement muss ein [Onboarding in Azure Lighthouse](onboard-customer.md) durchgeführt werden. Dies ermöglicht es den dafür bestimmten Benutzern im Verwaltungsmandanten, auf Verwaltungsvorgänge in Azure Sentinel-Arbeitsbereichen zuzugreifen, die in Kundenmandanten bereitgestellt wurden.
+
+Beim Erstellen Ihrer Autorisierungen können Sie die in Azure Sentinel integrierten Rollen an Benutzer, Gruppen oder Dienstprinzipale in Ihrem Verwaltungsmandanten zuweisen:
+
+- [Azure Sentinel-Leser](../../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Azure Sentinel-Antwortender](../../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Azure Sentinel-Mitwirkender](../../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
+
+Es kann außerdem sinnvoll sein, zusätzliche integrierte Rollen zuzuweisen, um zusätzliche Funktionen auszuführen. Informationen zu spezifischen Rollen, die zusammen mit Azure Sentinel verwendet werden können, finden Sie unter [Berechtigungen in Azure Sentinel](../../sentinel/roles.md).
+
+Nach dem Onboarding Ihrer Kunden können sich dafür bestimmte Benutzer bei Ihrem Verwaltungsmandanten anmelden und mithilfe der zugewiesenen Rollen [direkt auf den Azure Sentinel-Arbeitsbereich des Kunden zugreifen](../../sentinel/multiple-tenants-service-providers.md).
+
+## <a name="view-and-manage-incidents-across-workspaces"></a>Anzeigen und Verwalten von Vorfällen über die Grenzen von Arbeitsbereichen hinweg
+
+Wenn Sie Azure Sentinel-Ressourcen für mehrere Kunden verwalten, können Sie Vorfälle in mehreren Arbeitsbereichen, die sich über mehrere Mandanten verteilen, zugleich anzeigen. Weitere Informationen finden Sie unter [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](../../sentinel/multiple-workspace-view.md) und [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](../../sentinel/extend-sentinel-across-workspaces-tenants.md).
+
+> [!NOTE]
+> Achten Sie darauf, dass den Benutzern in Ihrem Verwaltungsmandanten Lese- und Schreibberechtigungen für alle verwalteten Arbeitsbereiche zugewiesen wurden. Wenn ein Benutzer für einige Arbeitsbereiche nur Leseberechtigungen besitzt, werden möglicherweise Warnmeldungen angezeigt, wenn er Vorfälle in diesen Arbeitsbereichen auswählt, und der Benutzer ist dann nicht in der Lage, diese Vorfälle oder andere, die zusammen mit ihnen ausgewählt wurden, zu bearbeiten (auch wenn der Benutzer für die anderen Vorfälle über Berechtigungen verfügt).
+
+## <a name="configure-playbooks-for-mitigation"></a>Konfigurieren von Playbooks zur Entschärfung
+
+[Playbooks](../../sentinel/tutorial-respond-threats-playbook.md) können zur automatischen Entschärfung verwendet werden, wenn ein Alarm ausgelöst wird. Diese Playbooks können manuell ausgeführt werden, oder aber automatisch, wenn bestimmte Warnungen ausgelöst werden. Die Playbooks können wahlweise im Verwaltungsmandanten oder im Kundenmandanten bereitgestellt werden, wobei sich die Konfiguration der Antwortprozeduren danach richtet, Benutzer welches Mandanten in Reaktion auf eine Sicherheitsbedrohung aktiv werden müssen.
+
+## <a name="create-cross-tenant-workbooks"></a>Erstellen von mandantenübergreifenden Arbeitsmappen
+
+Mithilfe von [Azure Monitor-Arbeitsmappen in Azure Sentinel](../../sentinel/overview.md#workbooks) können Sie Daten aus Ihren verbundenen Datenquellen visualisieren und überwachen, um Erkenntnisse zu gewinnen. Sie können die integrierten Arbeitsmappenvorlagen in Azure Sentinel verwenden oder eigene, benutzerdefinierte Arbeitsmappen für Ihre Szenarien erstellen.
+
+Sie können Arbeitsmappen in Ihrem Verwaltungsmandanten bereitstellen und in großem Maßstab Dashboards erstellen, um Daten übergreifend über Kundenmandanten zu überwachen und abzufragen. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Überwachung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). Beachten Sie, dass einige Funktionen [nicht über mehrere Arbeitsbereiche hinweg unterstützt](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces) werden.
+
+Darüber hinaus können Sie Arbeitsmappen direkt in einem einzelnen von Ihnen verwalteten Mandanten bereitstellen, um für diesen Kunden spezifische Szenarien zu behandeln.
+
+## <a name="run-queries-across-azure-sentinel-workspaces"></a>Ausführen von Abfragen in mehreren Azure Sentinel-Arbeitsbereichen
+
+Log Analytics-Abfragen zur Bedrohungserkennung können zentral im Verwaltungsmandanten erstellt und gespeichert werden. Diese Abfragen können dann mit dem Vereinigungsoperator und dem Arbeitsbereichsausdruck () übergreifend in allen Azure Sentinel-Arbeitsbereichen Ihrer Kunden ausgeführt werden. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Abfragen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+
+## <a name="use-automation-for-cross-workspace-management"></a>Verwenden von Automation für die arbeitsbereichsübergreifende Verwaltung
+
+Sie können Automation verwenden, um mehrere Azure Sentinel-Arbeitsbereiche zu verwalten und [Hunting-Abfragen](../../sentinel/hunting.md), Playbooks und Arbeitsmappen zu konfigurieren. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Verwaltung mithilfe von Automatisierung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
+
+Beachten Sie, dass einige Funktionen [aktuell nicht in mehreren Arbeitsbereichen unterstützt](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces) werden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Weitere Informationen zu [Azure Sentinel](../../sentinel/overview.md).
+- Sehen Sie sich die Seite [Azure Sentinel – Preise](https://azure.microsoft.com/pricing/details/azure-sentinel/) an.
+- Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md).
+

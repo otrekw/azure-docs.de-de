@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse in Unternehmensszenarien
 description: Die Funktionen von Azure Lighthouse können zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
-ms.date: 09/25/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f9a7aa81772a1edda5fd1915918b547a3066455
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749211"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114141"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in Unternehmensszenarien
 
@@ -18,7 +18,7 @@ Das häufigste Szenario für [Azure Lighthouse](../overview.md) ist ein Dienstan
 
 Für die meisten Organisationen ist die Verwaltung mit nur einem Azure AD-Mandanten einfacher. Wenn sich alle Ressourcen unter einem Mandanten befinden, können die Verwaltungsaufgaben nach den jeweiligen Benutzern, Benutzergruppen oder Dienstprinzipalen des Mandanten zentralisiert werden. Wir empfehlen Ihnen, nach Möglichkeit nur einen Mandanten für Ihre Organisation zu verwenden.
 
-Es kann aber auch Situationen geben, in denen eine Organisation mehrere Azure AD-Mandanten verwalten muss. In einigen Fällen ist dies unter Umständen nur vorübergehend erforderlich, wenn beispielsweise Übernahmen erfolgt sind und es einige Zeit dauert, eine langfristige Konsolidierungsstrategie für Mandanten zu definieren. Es kann auch sein, dass eine Organisation fortlaufend mehrere Mandanten verwalten muss (aufgrund von unabhängigen Tochtergesellschaften, geografischen oder rechtlichen Anforderungen usw.). Falls eine Architektur mit mehreren Mandanten benötigt wird, kann die von Azure delegierte Ressourcenverwaltung genutzt werden, um die Verwaltungsvorgänge zu zentralisieren und zu optimieren. Für Abonnements mehrerer Mandanten kann das Onboarding für die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) durchgeführt werden, damit die festgelegten Benutzer eines verwalteten Mandanten [mandantenübergreifende Verwaltungsfunktionen](cross-tenant-management-experience.md) zentral und skalierbar ausführen können.
+Es kann aber auch Situationen geben, in denen eine Organisation mehrere Azure AD-Mandanten verwalten muss. In einigen Fällen ist dies unter Umständen nur vorübergehend erforderlich, wenn beispielsweise Übernahmen erfolgt sind und es einige Zeit dauert, eine langfristige Konsolidierungsstrategie für Mandanten zu definieren. Es kann auch sein, dass eine Organisation fortlaufend mehrere Mandanten verwalten muss (aufgrund von unabhängigen Tochtergesellschaften, geografischen oder rechtlichen Anforderungen usw.). Falls eine Architektur mit mehreren Mandanten benötigt wird, kann Azure Lighthouse verwendet werden, um Verwaltungsvorgänge zu zentralisieren und zu optimieren. Für Abonnements mehrerer Mandanten kann das Onboarding für die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) durchgeführt werden, damit die festgelegten Benutzer eines verwalteten Mandanten [mandantenübergreifende Verwaltungsfunktionen](cross-tenant-management-experience.md) zentral und skalierbar ausführen können.
 
 ## <a name="tenant-management-architecture"></a>Architektur für die Mandantenverwaltung
 
@@ -32,17 +32,17 @@ Ihre Organisation möchte auf allen Mandanten die gleichen Richtliniendefinition
 
 ## <a name="security-and-access-considerations"></a>Sicherheits- und Zugriffsaspekte
 
-In den meisten Unternehmensszenarien ist es ratsam, ein vollständiges Abonnement für die delegierte Azure-Ressourcenverwaltung zu delegieren. Es ist aber auch möglich, in einem Abonnement nur bestimmte Ressourcengruppen zu delegieren.
+In den meisten Unternehmensszenarien ist es ratsam, ein vollständiges Abonnement für Azure Lighthouse zu delegieren. Es ist aber auch möglich, in einem Abonnement nur bestimmte Ressourcengruppen zu delegieren.
 
 Achten Sie aber jeweils darauf, dass Sie sich [beim Festlegen, welche Benutzer Zugriff auf die Ressourcen haben, an das Prinzip der geringsten Rechte halten](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). So stellen Sie sicher, dass die Benutzer nur über die Berechtigungen verfügen, die sie zum Durchführen der erforderlichen Aufgaben benötigen, und das Risiko unbeabsichtigter Fehler wird reduziert.
 
-Bei Azure Lighthouse und der delegierten Azure-Ressourcenverwaltung werden nur Verknüpfungen zwischen einem verwaltenden Mandanten und den verwalteten Mandanten bereitgestellt, anstatt Daten oder Ressourcen physisch zu verschieben. Außerdem ist der Zugriff immer nur in einer Richtung möglich, und zwar vom verwaltenden Mandanten zu den verwalteten Mandanten.  Für Benutzer und Gruppen auf dem verwaltenden Mandanten sollte weiterhin die mehrstufige Authentifizierung genutzt werden, wenn Verwaltungsvorgänge auf verwalteten Mandantenressourcen durchgeführt werden.
+Bei Azure Lighthouse werden nur Verknüpfungen zwischen einem verwaltenden Mandanten und den verwalteten Mandanten bereitgestellt, anstatt Daten oder Ressourcen physisch zu verschieben. Außerdem ist der Zugriff immer nur in einer Richtung möglich, und zwar vom verwaltenden Mandanten zu den verwalteten Mandanten.  Für Benutzer und Gruppen auf dem verwaltenden Mandanten sollte weiterhin die mehrstufige Authentifizierung genutzt werden, wenn Verwaltungsvorgänge auf verwalteten Mandantenressourcen durchgeführt werden.
 
 Unternehmen mit Leitlinien für interne oder externe Governance und Compliance können [Azure-Aktivitätsprotokolle](../../azure-monitor/platform/platform-logs-overview.md) verwenden, um die jeweiligen Transparenzanforderungen zu erfüllen. Wenn für Unternehmensmandanten Beziehungen zwischen verwaltenden und verwalteten Mandanten eingerichtet wurden, können die Benutzer auf den Mandanten Aktionen überwachen und Einblicke in die Aktionen erlangen, die von Benutzern auf dem anderen Mandanten durchgeführt werden, indem sie die protokollierte Aktivität anzeigen.
 
 ## <a name="onboarding-process-considerations"></a>Aspekte des Onboardingprozesses
 
-Für Abonnements (bzw. Ressourcengruppen unter einem Abonnement) kann das Onboarding für die delegierte Ressourcenverwaltung durchgeführt werden. Hierzu werden entweder Azure Resource Manager-Vorlagen bereitgestellt oder auf dem Azure Marketplace veröffentlichte Angebote für verwaltete Dienste genutzt (privat oder öffentlich).
+Für Abonnements (bzw. Ressourcengruppen unter einem Abonnement) kann das Onboarding für Azure Lighthouse durchgeführt werden. Hierzu werden entweder Azure Resource Manager-Vorlagen bereitgestellt oder auf dem Azure Marketplace veröffentlichte Angebote für verwaltete Dienste genutzt (privat oder öffentlich).
 
 Da Unternehmensbenutzer normalerweise Direktzugriff auf die Mandanten des Unternehmens erhalten können und für ein Verwaltungsangebot keine Marketing- und Förderungsmaßnahmen erforderlich sind, ist es im Allgemeinen schneller und einfacher, die Bereitstellung direkt mit Azure Resource Manager-Vorlagen durchzuführen. Wir verweisen in der [Anleitung für das Onboarding](../how-to/onboard-customer.md) zwar auf Dienstanbieter und Kunden, aber Unternehmen können die gleichen Prozesse verwenden.
 

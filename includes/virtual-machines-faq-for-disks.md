@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242203"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -451,7 +451,7 @@ Die SKUs für Datenträger mit 8TiB, 16TiB und 32TiB werden in allen Regionen un
 
 **Wird die Aktivierung der Hostzwischenspeicherung auf allen Datenträgergrößen unterstützt?**
 
-Die Hostzwischenspeicherung mit Schreibschutz und Lese-/Schreibzugriff wird für Datenträgergrößen unter 4TiB unterstützt. Für Datenträgergrößen von mehr als 4 TiB wird nur die Zwischenspeicherungsoption „Keine“ unterstützt. Es wird empfohlen, die Zwischenspeicherung für kleinere Datenträgergrößen zu nutzen, bei denen durch das Zwischenspeichern von Daten auf der VM eine Leistungssteigerung zu erwarten ist.
+Die Hostzwischenspeicherung (schreibgeschützter und Lese-/Schreibzugriff) wird für Datenträgergrößen unter 4 TiB unterstützt. Das bedeutet, dass alle Datenträger, die mit einer Größe von maximal 4095 GiB bereitgestellt wurden, von der Hostzwischenspeicherung profitieren können. Die Hostzwischenspeicherung wird für Datenträger größer oder gleich 4096 GiB nicht unterstützt. Ein Beispiel: Ein P50-Premium-Datenträger, der mit 4095 GiB bereitgestellt wurde, kann die Hostzwischenspeicherung nutzen, ein mit 4096 GiB bereitgestellter P50-Datenträger dagegen nicht. Es wird empfohlen, die Zwischenspeicherung für kleinere Datenträgergrößen zu nutzen, bei denen durch das Zwischenspeichern von Daten auf der VM eine Leistungssteigerung zu erwarten ist.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 

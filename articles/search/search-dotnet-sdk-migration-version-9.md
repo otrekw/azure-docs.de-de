@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562356"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade auf Version 9 des Azure Search .NET SDK
 
-Wenn Sie die Version 7.0-preview oder eine frühere Version des [Azure Search .NET SDK](https://aka.ms/search-sdk) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 9.
+Wenn Sie die Version 7.0-preview oder eine frühere Version des [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 9.
 
 > [!NOTE]
 > Wenn Sie die Version 8.0-preview verwenden möchten, um Funktionen zu testen, die noch nicht allgemein verfügbar sind, können Sie ebenfalls die Anweisungen in diesem Artikel nutzen, um von früheren Versionen auf 8.0-preview zu aktualisieren.
@@ -35,7 +35,7 @@ Version 9 des Azure Search .NET SDK enthält viele Änderungen zu früheren Ver
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>Neuerungen in Version 9
-Version 9 des Azure Search .NET SDK ist für die neueste allgemein verfügbare Version der Azure Search-REST-API (2019-05-06) konzipiert. Dadurch können neue Features von Azure Search in einer .NET-Anwendung verwendet werden. Hierzu zählen etwa folgende:
+Version 9 des Azure Search .NET SDK zielt mit den folgenden Features auf Version 2019-05-06 der Azure Search REST API ab:
 
 * [KI-Anreicherung](cognitive-search-concept-intro.md) ist die Möglichkeit, Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen zu extrahieren, um den Inhalt anzureichern und in einem Azure Search-Index besser durchsuchbar zu machen.
 * Die Unterstützung für [komplexe Typen](search-howto-complex-data-types.md) ermöglicht Ihnen, nahezu jede geschachtelte JSON-Struktur in einem Azure Search-Index zu modellieren.

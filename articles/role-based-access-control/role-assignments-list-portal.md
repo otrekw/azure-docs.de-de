@@ -2,24 +2,20 @@
 title: Auflisten von Azure-Rollenzuweisungen mithilfe des Azure-Portals – Azure RBAC
 description: Erfahren Sie, wie Sie mithilfe des Azure-Portals und Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) ermitteln können, auf welche Ressourcen Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten Zugriff haben.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 03/18/2020
+ms.date: 06/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361842"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Auflisten von Azure-Rollenzuweisungen über das Azure-Portal
 
@@ -30,7 +26,7 @@ ms.locfileid: "82996644"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Auflisten von Rollenzuweisungen für einen Benutzer oder eine Gruppe
 
-Die einfachste Möglichkeit, die einem Benutzer oder einer Gruppe in einem Abonnement zugewiesenen Rollen anzuzeigen, ist die Verwendung des Bereichs **Azure-Ressourcen**.
+Die einfachste Möglichkeit, die einem Benutzer oder einer Gruppe in einem Abonnement zugewiesenen Rollen anzuzeigen, ist die Verwendung des Bereichs **Azure-Rollenzuweisungen**.
 
 1. Klicken Sie im Menü des Azure-Portals auf **Alle Dienste**.
 
@@ -38,11 +34,11 @@ Die einfachste Möglichkeit, die einem Benutzer oder einer Gruppe in einem Abonn
 
 1. Klicken Sie auf den Benutzer oder die Gruppe, für den bzw. die Sie Rollenzuweisungen auflisten möchten.
 
-1. Klicken Sie auf **Azure-Ressourcen**.
+1. Klicken Sie auf **Azure-Rollenzuweisungen**.
 
     Es wird eine Liste der Rollen angezeigt, die dem ausgewählten Benutzer bzw. der ausgewählten Gruppe in verschiedenen Bereichen (etwa Verwaltungsgruppe, Abonnement, Ressourcengruppe oder Ressource) zugewiesen sind. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
 
-    ![Rollenzuweisungen für einen Benutzer](./media/role-assignments-list-portal/azure-resources-user.png)    
+    ![Rollenzuweisungen für einen Benutzer](./media/role-assignments-list-portal/azure-role-assignments-user.png)    
 
 1. Um das Abonnement zu ändern, klicken Sie auf die Liste **Abonnements**.
 
@@ -102,31 +98,37 @@ Um den Zugriff für einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine
 
     In diesem Bereich werden die Rollen angezeigt, die dem ausgewählten Sicherheitsprinzipal für den Bereich zugewiesen sind. Wenn Ablehnungszuweisungen für diesen Bereich oder an diesen Bereich vererbte Ablehnungszuweisungen vorhanden sind, werden diese angezeigt.
 
-## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Auflisten von Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität
+## <a name="list-role-assignments-for-a-managed-identity"></a>Auflisten von Rollenzuweisungen für eine verwaltete Identität
+
+Sie können Rollenzuweisungen für vom System zugewiesene und vom Benutzer zugewiesene verwaltete Identitäten in einem bestimmten Bereich mithilfe des zuvor beschriebenen Blatts für die **Zugriffssteuerung (IAM)** auflisten. In diesem Abschnitt wird beschrieben, wie Rollenzuweisungen nur für die verwaltete Identität aufgelistet werden.
+
+### <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
 
 1. Öffnen Sie im Azure-Portal eine systemseitig zugewiesene verwaltete Identität.
 
 1. Klicken Sie im linken Menü auf **Identität**.
 
-    ![Systemseitig zugewiesene verwaltete Identität](./media/role-assignments-list-portal/identity-system-assigned.png)
+    ![Systemseitig zugewiesene verwaltete Identität](./media/shared/identity-system-assigned.png)
 
-1. Klicken Sie unter **Rollenzuweisungen** auf **Die dieser verwalteten Identität zugewiesenen Azure RBAC-Rollen anzeigen**.
+1. Klicken Sie unter **Berechtigungen** auf **Azure-Rollenzuweisungen**.
 
     Es wird eine Liste der Rollen angezeigt, die der ausgewählten systemseitig zugewiesenen verwalteten Identität in verschiedenen Bereichen (etwa Verwaltungsgruppe, Abonnement, Ressourcengruppe oder Ressource) zugewiesen sind. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
 
-    ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+    ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/shared/role-assignments-system-assigned.png)
 
-## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Auflisten der Rollenzuweisungen für eine benutzerseitig zugewiesene verwaltete Identität
+1. Um das Abonnement zu ändern, klicken Sie auf die Liste **Abonnement**.
+
+### <a name="user-assigned-managed-identity"></a>Benutzerseitig zugewiesene verwaltete Identität
 
 1. Öffnen Sie im Azure-Portal eine benutzerseitig zugewiesene verwaltete Identität.
 
-1. Klicken Sie auf **Azure-Ressourcen**.
+1. Klicken Sie auf **Azure-Rollenzuweisungen**.
 
     Es wird eine Liste der Rollen angezeigt, die der ausgewählten benutzerseitig zugewiesenen verwalteten Identität in verschiedenen Bereichen (etwa Verwaltungsgruppe, Abonnement, Ressourcengruppe oder Ressource) zugewiesen sind. Diese Liste enthält alle Rollenzuweisungen, für die Sie über Leseberechtigungen verfügen.
 
-    ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+    ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/shared/role-assignments-user-assigned.png)
 
-1. Um das Abonnement zu ändern, klicken Sie auf die Liste **Abonnements**.
+1. Um das Abonnement zu ändern, klicken Sie auf die Liste **Abonnement**.
 
 ## <a name="list-number-of-role-assignments"></a>Auflisten der Anzahl von Rollenzuweisungen
 
@@ -137,6 +139,51 @@ Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Dieser
 Wenn Sie sich der maximalen Anzahl nähern und versuchen, weitere Rollenzuweisungen hinzuzufügen, wird im Bereich **Rollenzuweisung hinzufügen** eine Warnung angezeigt. Möglichkeiten, wie Sie die Anzahl der Rollenzuweisungen reduzieren können, finden Sie unter [Problembehandlung von Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
 
 ![Zugriffssteuerung: Warnung „Rollenzuweisung hinzufügen“](./media/role-assignments-list-portal/add-role-assignment-warning.png)
+
+## <a name="download-role-assignments-preview"></a>Rollenzuweisungen herunterladen (Vorschau)
+
+Sie können Rollenzuweisungen in einem Bereich im CSV-oder JSON-Format herunterladen. Dies kann hilfreich sein, wenn Sie die Liste in einer Kalkulationstabelle überprüfen oder bei der Migration eines Abonnements eine Inventur durchführen müssen.
+
+> [!IMPORTANT]
+> „Rollenzuweisungen herunterladen“ befindet sich zurzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Beachten Sie beim Herunterladen von Rollenzuweisungen unbedingt die folgenden Kriterien:
+
+- Wenn Sie nicht über die Berechtigungen zum Lesen des Verzeichnisses verfügen, z. B. die Rolle „Verzeichnisleseberechtigte“, sind die Spalten DisplayName, SignInName und ObjectType leer.
+- Rollenzuweisungen, deren Sicherheitsprinzipal gelöscht wurde, sind nicht eingeschlossen.
+- Klassischen Administratoren gewährter Zugriff ist nicht eingeschlossen.
+
+Führen Sie die folgenden Schritte aus, um Rollenzuweisungen in einem Bereich herunterzuladen.
+
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie dann den Bereich aus, in dem Sie Rollenzuweisungen herunterladen möchten. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+
+1. Klicken Sie auf die gewünschte Ressource.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+
+1. Klicken Sie auf **Rollenzuweisungen herunterladen (Vorschau)** , um den Bereich „Rollenzuweisungen herunterladen“ zu öffnen.
+
+    ![Zugriffssteuerung: Rollenzuweisungen herunterladen](./media/role-assignments-list-portal/download-role-assignments.png)
+
+1. Verwenden Sie die Kontrollkästchen, um die Rollenzuweisungen auszuwählen, die Sie in die heruntergeladene Datei einschließen möchten.
+
+    - **Geerbt**: Geerbte Rollenzuweisungen für den aktuellen Bereich einschließen.
+    - **Im aktuellen Bereich**: Rollenzuweisungen für den aktuellen Bereich einschließen.
+    - **Untergeordnet**: Rollenzuweisungen auf Ebenen unterhalb des aktuellen Bereichs einschließen. Dieses Kontrollkästchen ist für den Verwaltungsgruppenbereich deaktiviert.
+
+1. Wählen Sie das Dateiformat, durch Trennzeichen getrennte Werte (CSV) oder JavaScript Object Notation (JSON).
+
+1. Geben Sie den Dateinamen an.
+
+1. Klicken Sie auf **Starten**, um den Download zu starten.
+
+    Im folgenden finden Sie Beispiele für die Ausgabe in den einzelnen Dateiformaten.
+
+    ![Herunterladen von Rollenzuweisungen im CSV-Format](./media/role-assignments-list-portal/download-role-assignments-csv.png)
+
+    ![Herunterladen von Rollenzuweisungen im CSV-Format](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

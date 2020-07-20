@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389971"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualisieren mit Azure Automation
 
 Mithilfe von Azure Automation und PowerShell-Runbooks können Sie automatisierte Datenaktualisierungsvorgänge für Ihre Azure Analysis-Tabellenmodelle ausführen.  
 
-Im Beispiel in diesem Artikel werden die [PowerShell-SqlServer-Module](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps) verwendet.
-
-Ein PowerShell-Beispielrunbook, das die Aktualisierung eines Modells veranschaulicht, wird weiter unten in diesem Artikel bereitgestellt.  
+Das Beispiel in diesem Artikel verwendet das [SqlServer-PowerShell-Modul](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Ein PowerShell-Beispielrunbook, das die Aktualisierung eines Modells veranschaulicht, wird weiter unten in diesem Artikel bereitgestellt.  
 
 ## <a name="authentication"></a>Authentifizierung
 
-Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) authentifiziert werden.  Im Beispiel in diesem Artikel wird ein Dienstprinzipalname (Service Principal Name, SPN) für die Authentifizierung bei Azure Analysis Services verwendet.
-
-Weitere Informationen zum Erstellen eines Dienstprinzipals finden Sie unter [Erstellen eines Dienstprinzipals im Azure-Portal](../active-directory/develop/howto-create-service-principal-portal.md).
+Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) authentifiziert werden.  Das Beispiel in diesem Artikel verwendet einen Dienstprinzipalnamen (Service Principal Name, SPN) für die Authentifizierung bei Azure Analysis Services. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals im Azure-Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!IMPORTANT]
-> Das folgende Beispiel setzt voraus, dass die Azure Analysis Services-Firewall deaktiviert ist. Wenn die Firewall aktiviert ist, muss die öffentliche IP-Adresse des Anforderungsinitiators in der Whitelist der Firewall enthalten sein.
+> Das folgende Beispiel setzt voraus, dass die Azure Analysis Services-Firewall deaktiviert ist. Wenn eine Firewall aktiviert ist, muss die öffentliche IP-Adresse des Anforderungsinitiators in einer Firewallregel enthalten sein.
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Installieren von SqlServer-Modulen aus dem PowerShell-Katalog
 

@@ -2,31 +2,31 @@
 title: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
 description: Erfahren Sie, wie Sie das Standardverhalten beim Aufheben der Bereitstellung von Benutzern außerhalb des gültigen Bereichs außer Kraft setzen.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84789904"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs
 
 Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsmodul vorläufig gelöscht oder deaktiviert. In bestimmten Szenarien (z. B. bei der eingehenden Benutzerbereitstellung von Workday in AD) ist dieses Verhalten jedoch möglicherweise nicht das erwartete Verhalten, sodass Sie dieses Standardverhalten außer Kraft setzen möchten.  
 
-In diesem Leitfaden wird beschrieben, wie Sie die Microsoft Graph-API und den Microsoft Graph-Tester verwenden, um das Flag ***SkipOutOfScopeDeletions*** festzulegen, das die Verarbeitung von Konten steuert, die sich außerhalb des gültigen Bereichs befinden. 
+In diesem Artikel wird beschrieben, wie Sie die Microsoft Graph-API und den Microsoft Graph-Tester verwenden, um das Flag ***SkipOutOfScopeDeletions*** festzulegen, das die Verarbeitung von Konten steuert, die sich außerhalb des gültigen Bereichs befinden. 
 * Wenn ***SkipOutOfScopeDeletions*** auf „0“ (false) festgelegt ist, werden Konten, die sich außerhalb des gültigen Bereichs befinden, im Ziel deaktiviert.
 * Wenn ***SkipOutOfScopeDeletions*** auf „1“ (true) festgelegt ist, werden Konten, die sich außerhalb des gültigen Bereichs befinden, nicht im Ziel deaktiviert. Dieses Flag wird auf der Ebene der *Bereitstellungs-App* festgelegt und kann mithilfe der Graph-API konfiguriert werden. 
 
-Da diese Konfiguration häufig bei der App für die *Benutzerbereitstellung von Workday in Active Directory* verwendet wird, enthalten die folgenden Schritte Screenshots der Workday-Anwendung. Diese Schritte können jedoch auch mit **allen anderen Apps** wie etwa ServiceNow, Salesforce, Dropbox usw. verwendet werden.
+Da diese Konfiguration häufig bei der App für die *Benutzerbereitstellung von Workday in Active Directory* verwendet wird, enthalten die folgenden Schritte Screenshots der Workday-Anwendung. Die Konfiguration kann jedoch auch mit *allen anderen Apps* wie etwa ServiceNow, Salesforce und Dropbox verwendet werden.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Schritt 1: Abrufen der Dienstprinzipal-ID der Bereitstellungs-App (Objekt-ID)
 

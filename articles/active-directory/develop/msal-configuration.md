@@ -7,18 +7,18 @@ author: shoatman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479418"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android-Konfigurationsdatei für die Microsoft-Authentifizierungsbibliothek
 
@@ -150,7 +150,7 @@ Die folgenden globalen Einstellungen gelten für die Protokollierung:
 | Eigenschaft | Datentyp  | Erforderlich | Notizen |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | boolean | Nein | Gibt an, ob persönliche Daten ausgegeben werden sollen. |
-| `log_level`   | boolean | Nein | Gibt an, welche Protokollmeldungen ausgegeben werden sollen. |
+| `log_level`   | Zeichenfolge | Nein | Gibt an, welche Protokollmeldungen ausgegeben werden sollen. Die unterstützten Protokollierungsebenen sind beispielsweise `ERROR`, `WARNING`, `INFO` und `VERBOSE`. |
 | `logcat_enabled` | boolean | Nein | Gibt an, ob die Ausgabe an die Protokollkategorie zusätzlich zur Protokollierungsschnittstelle ausgegeben werden soll. |
 
 ### <a name="account_mode"></a>account_mode

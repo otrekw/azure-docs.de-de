@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 05/21/2020
-ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/06/2020
+ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798112"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114379"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -35,13 +35,15 @@ Beim Entwerfen einer Mapping Data Flow-Funktion können Sie Komponententests fü
 
 ![Datenflussüberwachung](media/data-flow/mon003.png "Datenflussüberwachung 3")
 
- Bei Debugausführungen der Pipeline muss ungefähr eine Minute Einrichtungszeit für den Cluster in die Berechnung der Gesamtleistung für einen „warmen“ Cluster eingerechnet werden. Wenn Sie die standardmäßige Azure Integration Runtime initialisieren, kann die Einrichtungszeit etwa 5 Minuten betragen.
+ Bei Debugausführungen der Pipeline muss ungefähr eine Minute Einrichtungszeit für den Cluster in die Berechnung der Gesamtleistung für einen „warmen“ Cluster eingerechnet werden. Wenn Sie die standardmäßige Azure Integration Runtime initialisieren, kann die Einrichtungszeit etwa 4 Minuten betragen.
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Vergrößern der Computegröße in Azure Integration Runtime
 
 Durch eine Integration Runtime mit mehr Kernen wird die Anzahl der Knoten in den Spark-Computeumgebungen erhöht und eine höhere Verarbeitungsleistung für das Lesen, Schreiben und Transformieren Ihrer Daten geboten. ADF-Datenflüsse nutzen Spark für die Compute-Engine. Die Spark-Umgebung funktioniert sehr gut für speicheroptimierte Ressourcen.
-* Versuchen Sie es mit einem **computeoptimierten** Cluster, wenn die Verarbeitungsrate höher als die Eingaberate sein soll.
-* Versuchen Sie es mit einem **arbeitsspeicheroptimierten** Cluster, wenn Sie mehr Daten im Arbeitsspeicher zwischenspeichern möchten. Bei der arbeitsspeicheroptimierten Variante fallen zwar höhere Kosten pro Kern an als bei der computeoptimierten Variante, dafür ist jedoch wahrscheinlich die Transformationsgeschwindigkeit höher. Wenn beim Ausführen der Datenflüsse Fehler aufgrund von nicht genügend Arbeitsspeicher auftreten, wechseln Sie zu einer arbeitsspeicheroptimierten Azure IR-Konfiguration.
+
+Wir empfehlen die Verwendung von **Speicheroptimiert** für die meisten Workloads in der Produktion. Sie können mehr Daten im Arbeitsspeicher speichern und Fehler aufgrund nicht genügenden Arbeitsspeichers minimieren. Bei der arbeitsspeicheroptimierten Variante fallen zwar höhere Kosten pro Kern an als bei der computeoptimierten Variante, dafür ist jedoch wahrscheinlich die Transformationsgeschwindigkeit und die Anzahl erfolgreicher Pipelines höher. Wenn beim Ausführen der Datenflüsse Fehler aufgrund von nicht genügend Arbeitsspeicher auftreten, wechseln Sie zu einer arbeitsspeicheroptimierten Azure IR-Konfiguration.
+
+**Für Compute optimiert** kann für Debuggen und Datenvorschau einer begrenzten Anzahl von Datenzeilen ausreichen. „Für Compute optimiert“ wird für die Workloads in der Produktion wahrscheinlich nicht so gut funktionieren.
 
 ![Neue Integration Runtime](media/data-flow/ir-new.png "Neue Integration Runtime")
 
@@ -53,7 +55,7 @@ Standardmäßig wird beim Aktivieren des Debugmodus die standardmäßige Azure I
 
 ### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Verkürzen der Computestartzeit für Cluster mit TTL
 
-In der Azure IR gibt es unter den Datenflusseigenschaften eine Eigenschaft, mit der Sie einen Pool aus Clustercomputeressourcen für Ihre Factory einrichten können. Mit diesem Pool können Sie Datenflussaktivitäten sequenziell zur Ausführung übermitteln. Wenn der Pool eingerichtet ist, benötigt der bedarfsgesteuerte Spark-Cluster 1-2 Minuten für jeden nachfolgenden Auftrag. Die anfängliche Einrichtung des Ressourcenpools dauert etwa 6 Minuten. Geben Sie in der TTL-Einstellung (Time-To-Live) an, wie lange der Ressourcenpool beibehalten werden soll.
+In der Azure IR gibt es unter den Datenflusseigenschaften eine Eigenschaft, mit der Sie einen Pool aus Clustercomputeressourcen für Ihre Factory einrichten können. Mit diesem Pool können Sie Datenflussaktivitäten sequenziell zur Ausführung übermitteln. Wenn der Pool eingerichtet ist, benötigt der bedarfsgesteuerte Spark-Cluster 1-2 Minuten für jeden nachfolgenden Auftrag. Die anfängliche Einrichtung des Ressourcenpools dauert etwa 4 Minuten. Geben Sie in der TTL-Einstellung (Time-To-Live) an, wie lange der Ressourcenpool beibehalten werden soll.
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimierung für Azure SQL-Datenbank und Azure SQL Data Warehouse – Synapse
 
@@ -110,7 +112,7 @@ Um zeilenweise Einfügungen in Data Warehouse zu vermeiden, aktivieren Sie unter
 
 ## <a name="optimizing-for-files"></a>Optimieren für Dateien
 
-Bei jeder Transformation können Sie das Partitionierungsschema, das von Data Factory verwendet werden soll, auf der Registerkarte „Optimieren“ festlegen. Es empfiehlt sich, zunächst dateibasierte Senken zu testen und dabei die Standardpartitionierung und -optimierungen beizubehalten.
+Bei jeder Transformation können Sie das Partitionierungsschema, das von Data Factory verwendet werden soll, auf der Registerkarte „Optimieren“ festlegen. Es empfiehlt sich, zunächst dateibasierte Senken zu testen und dabei die Standardpartitionierung und -optimierungen beizubehalten. Das Belassen der Partitionierung auf „aktuelle Partitionierung“ in der Senke für ein Dateiziel ermöglicht es Spark, eine geeignete Standardpartitionierung für Ihre Workloads festzulegen. Die Standardpartitionierung verwendet 128 MB pro Partition.
 
 * Bei kleineren Dateien kann manchmal das Auswählen von weniger Partitionen besser und schneller sein, als Spark anzuweisen, die kleinen Dateien zu partitionieren.
 * Wenn Sie nicht über genügend Informationen zu Ihren Quelldaten verfügen, wählen Sie die *Roundrobin*-Partitionierung aus, und legen Sie die Anzahl der Partitionen fest.
@@ -143,7 +145,7 @@ Durch die Verwendung von Platzhaltern enthält die Pipeline nur eine Datenflussa
 
 Die Pipeline „ForEach“ im parallelen Modus erzeugt mehrere Cluster, indem sie Auftragscluster für jede ausgeführte Datenflussaktivität erzeugt. Dies kann zu einer Drosselung des Azure-Diensts mit einer hohen Anzahl gleichzeitiger Ausführungen führen. Durch das Ausführen des Datenflusses in einer ForEach-Schleife, wobei die sequenzielle Ausführung in der Pipeline festgelegt ist, werden jedoch Drosselung und Ressourcenauslastung vermieden. Dies erzwingt die sequenzielle Ausführung der einzelnen Dateien für einen Datenfluss durch die Data Factory.
 
-Es wird empfohlen, bei sequenzieller Verwendung von ForEach mit einem Datenfluss die TTL-Einstellung in der Azure Integration Runtime verwenden. Der Grund dafür ist, dass jede Datei eine Clusterstartzeit von 5 Minuten im Iterator erfordert.
+Es wird empfohlen, bei sequenzieller Verwendung von ForEach mit einem Datenfluss die TTL-Einstellung in der Azure Integration Runtime verwenden. Der Grund dafür ist, dass jede Datei eine Clusterstartzeit von 4 Minuten im Iterator erfordert.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimieren für Cosmos DB
 
@@ -153,13 +155,13 @@ Die Festlegungen für Durchsatz- und Batcheigenschaften für Cosmos DB-Senken g
 * Durchsatz: Legen Sie hier einen höheren Durchsatz fest, damit Dokumente schneller in Cosmos DB geschrieben werden können. Beachten Sie die höheren RU-Kosten bei einer höheren Durchsatzeinstellung.
 *   Schreibdurchsatz: Verwenden Sie einen Wert, der kleiner als die Gesamtanzahl der RUs pro Minute ist. Wenn Ihr Datenfluss eine hohe Anzahl von Spark-Partitionen enthält, können Sie durch das Festlegen eines Durchsatzbudgets eine bessere Balance zwischen diesen Partitionen erzielen.
 
-## <a name="join-performance"></a>Verknüpfungsleistung
+## <a name="join-and-lookup-performance"></a>Leistung bei Verknüpfung und Suchvorgängen
 
 Das Verwalten der Leistung von Verknüpfungen in Ihrem Datenfluss ist ein sehr gängiger Vorgang, den Sie während des Lebenszyklus Ihrer Datentransformationen ausführen. In ADF müssen Daten in Datenflüssen nicht vor Verknüpfungen sortiert werden, da diese Vorgänge in Spark als Hashjoins ausgeführt werden. Sie können jedoch von der verbesserten Leistung mit der Join-Optimierung „Broadcast“ (Übertragen) profitieren, die für die Transformationen „Joins“, „Exists“ und „Lookup“ gilt.
 
 Hierdurch werden dynamische Zufallswiedergaben vermieden, indem die Inhalte von beiden Seiten Ihrer Verknüpfungsbeziehung per Push in den Spark-Knoten übertragen werden. Dies funktioniert gut bei kleineren Tabellen, die für Verweissuchvorgänge verwendet werden. Größere Tabellen, die möglicherweise nicht in den Arbeitsspeicher des Knotens passen, sind für die Broadcastoptimierung wenig geeignet.
 
-Die empfohlene Konfiguration für Datenflüsse mit vielen Join-Vorgängen ist die Beibehaltung der Optimierung auf „Auto“ (für „Broadcast“) und die Verwendung einer arbeitsspeicheroptimierten Azure Integration Runtime-Konfiguration. Wenn bei den Datenflussausführungen Speicherfehler oder Übertragungstimeouts auftreten, können Sie die Broadcastoptimierung deaktivieren. Dies führt jedoch zu Datenflüssen mit geringerer Leistung. Optional können Sie den Datenfluss anweisen, nur die linke oder rechte Seite des Joins bzw. beide Seiten weiterzugeben.
+Die empfohlene Konfiguration für Datenflüsse mit vielen Join-Vorgängen ist die Beibehaltung der Optimierung auf „Auto“ (für „Broadcast“) und die Verwendung einer ***arbeitsspeicheroptimierten*** Azure Integration Runtime-Konfiguration. Wenn bei den Datenflussausführungen Speicherfehler oder Übertragungstimeouts auftreten, können Sie die Broadcastoptimierung deaktivieren. Dies führt jedoch zu Datenflüssen mit geringerer Leistung. Optional können Sie den Datenfluss anweisen, nur die linke oder rechte Seite des Joins bzw. beide Seiten weiterzugeben.
 
 ![Broadcasteinstellungen](media/data-flow/newbroad.png "Broadcasteinstellungen")
 

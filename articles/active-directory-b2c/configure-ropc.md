@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389597"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -50,9 +50,9 @@ Der Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern (Resource Own
 ## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
 Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu generieren, und überprüfen Sie die Antwort, um Ihren Benutzerflow zu debuggen. Erstellen Sie einen Aufruf wie den folgenden, wobei Sie die Informationen aus der folgenden Tabelle als Hauptteil der POST-Anforderung verwenden:
-- Ersetzen Sie *\<tenant-name>.onmicrosoft.com>* durch den Namen Ihres B2C-Mandanten.
-- Ersetzen Sie *\<B2C_1A_ROPC_Auth>* durch den vollständigen Namen der Richtlinie für Ihren Ressourcenbesitzer für Kennwortanmeldeinformationen.
-- Ersetzen Sie *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* durch die Anwendungs-ID aus der Registrierung.
+- Ersetzen Sie *\<tenant-name>.onmicrosoft.com* durch den Namen Ihres B2C-Mandanten.
+- Ersetzen Sie *\<B2C_1A_ROPC_Auth>* durch den vollständigen Namen Ihrer Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
+- Ersetzen Sie *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* durch die Anwendungs-ID Ihrer Registrierung.
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 

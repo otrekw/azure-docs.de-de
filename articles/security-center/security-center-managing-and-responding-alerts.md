@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769772"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 
@@ -58,21 +58,26 @@ Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von
 
 1. Klicken Sie nach dem Überprüfen der Informationen auf eine Ressource, die angegriffen wurde.
 
+    Im linken Bereich der Seite mit der Sicherheitswarnung werden allgemeine Informationen zur Sicherheitswarnung angezeigt: Titel, Schweregrad, Status, Zeitpunkt der Aktivität, Beschreibung der verdächtigen Aktivität und die betroffene Ressource. Neben der betroffenen Ressource finden Sie die Azure-Tags für die Ressource. Verwenden Sie diese Tags, um den Organisationskontext der Ressource abzuleiten, wenn Sie die Warnung untersuchen.
+
+    Auf der rechten Seite befindet sich die Registerkarte **Warnungsdetails**, die detaillierte Informationen zur Warnung anzeigt, die Ihnen beim Untersuchen des Problems helfen: IP-Adressen, Dateien, Prozesse und vieles mehr.
+     
     ![Vorschläge für Maßnahmen bei Sicherheitswarnungen](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    Der Abschnitt **Allgemeine Informationen** bietet Erkenntnisse dazu, was die Sicherheitswarnung ausgelöst hat. Er enthält Informationen wie die Zielressource, die Quell-IP-Adresse (sofern zutreffend), ob die Warnung noch aktiv ist sowie Empfehlungen zur Behebung.  
+    Im rechten Bereich finden Sie auch die Registerkarte **Aktion ausführen**. Über diese Registerkarte können Sie weitere Aktionen in Bezug auf die Sicherheitswarnung ausführen. Folgende Aktionen sind möglich:
+    - *Auswirkungen der Bedrohung minimieren*: Stellt manuelle Schritte zur Behebung dieser Sicherheitswarnung bereit.
+    - *Künftige Angriffe verhindern*: Gibt Sicherheitsempfehlungen, um die Angriffsfläche zu verringern, den Sicherheitsstatus zu erhöhen und so künftige Angriffe zu verhindern.
+    - *Automatische Reaktion auslösen*: Bietet die Möglichkeit, eine Logik-App als Reaktion auf diese Sicherheitswarnung auszulösen.
+    - *Ähnliche Warnungen unterdrücken*: Bietet die Möglichkeit, zukünftige Warnungen mit ähnlichen Merkmalen zu unterdrücken, wenn die Warnung für Ihre Organisation nicht relevant ist.
 
-    > [!NOTE]
-    >In einigen Fällen ist die IP-Quelladresse nicht verfügbar, da einige Windows-Sicherheitsereignisprotokolle die IP-Adresse nicht enthalten.
+    ![Registerkarte „Aktion ausführen“](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. Die von Security Center vorgeschlagene Wartungsschritte variieren je nach Sicherheitswarnung. Befolgen Sie sie für jede Warnung. 
 
-    In einigen Fällen müssen Sie möglicherweise andere Azure-Steuerelemente oder -Dienste verwenden, um die empfohlene Maßnahme für eine Sicherheitswarnung umzusetzen. 
+
 
 ## <a name="see-also"></a>Weitere Informationen
 
-In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Security Center konfigurieren können. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+In diesem Dokument haben Sie erfahren, wie Sie Sicherheitswarnungen anzeigen. Verwandte Informationen finden Sie auf den folgenden Seiten:
 
-- [Im Microsoft Learn-Modul wird erläutert, wie Sie die Warnungsfunktionen von Azure Security Center zum Überwachen und Reagieren auf Bedrohungen verwenden.](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
-* [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
-* [Behandeln von Sicherheitsincidents](security-center-incident.md)
+- [Konfigurieren von Warnungsunterdrückungsregeln](alerts-suppression-rules.md)
+- [Automatisieren von Reaktionen auf Warnungen und Empfehlungen mit der Workflowautomatisierung](workflow-automation.md)

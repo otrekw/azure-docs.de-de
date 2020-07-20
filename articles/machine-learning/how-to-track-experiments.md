@@ -9,15 +9,15 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9613b74b727d27bd47a05fadc1398bf898f667a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675201"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Überwachen von Azure ML-Experimentausführungen und -metriken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,6 +127,8 @@ Verwenden Sie das Modul zum __Ausführen des Python-Skripts__, um Ihren Designer
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -207,9 +209,11 @@ Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells a
 
 Wenn ein Experiment abgeschlossen ist, können Sie zu der aufgezeichneten Ausführungsaufzeichnung des Experiments navigieren. Sie können aus [Azure Machine Learning-Studio](https://ml.azure.com) auf den Verlauf zugreifen.
 
-Navigieren Sie zur Registerkarte „Experimente“, und wählen Sie Ihr Experiment aus. Sie gelangen zum Dashboard „Experimentausführung“, auf dem Sie nachverfolgte Metriken und Diagramme sehen können, die für jede Ausführung protokolliert wurden. In diesem Fall protokollierten wir MSE und die Alphawerte.
+Navigieren Sie zur Registerkarte „Experimente“, und wählen Sie Ihr Experiment aus. Sie gelangen zum Dashboard „Experimentausführung“, auf dem Sie nachverfolgte Metriken und Diagramme sehen können, die für jede Ausführung protokolliert wurden. 
 
-  ![Ausführungsdetails im Azure Machine Learning-Studio](./media/how-to-track-experiments/experiment-dashboard.png)
+Sie können die Tabelle der Ausführungsliste bearbeiten, um entweder den letzten, minimalen oder maximalen protokollierten Wert für Ihre Ausführungen anzuzeigen. Sie können in der Ausführungsliste mehrere Ausführungen auswählen oder die Auswahl aufheben, und die ausgewählten Ausführungen werden die Diagramme mit Ihren Daten füllen. Sie können auch neue Diagramme hinzufügen oder Diagramme bearbeiten, um die protokollierten Metriken (Minimum, Maximum, letzte oder alle Werte) über mehrere Ausführungen hinweg zu vergleichen. Sie können Ihre Daten effektiver untersuchen, indem Sie Ihre Diagramme maximieren.
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Ausführungsdetails in Azure Machine Learning Studio":::
 
 Sie können einen Drilldown für eine bestimmte Ausführung ausführen, um deren Ausgaben oder Protokolle anzuzeigen, oder Sie können die Momentaufnahme des von Ihnen übermittelten Experiments herunterladen, damit Sie den Experimentordner mit anderen teilen können.
 

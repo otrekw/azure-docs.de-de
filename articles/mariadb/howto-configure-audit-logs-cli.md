@@ -4,21 +4,18 @@ description: In diesem Artikel wird beschrieben, wie Sie über die Azure CLI die
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: e9716f0fa8e0ae44d614bbb28ed6846105e683d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: d0f5f71ed636cc67e742198436b48a09d291e798
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384127"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120057"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Konfigurieren von und Zugreifen auf Überwachungsprotokolle über die Azure CLI
+# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Konfigurieren von Überwachungsprotokollen für Azure Database for Maria DB und Zugreifen darauf in der Azure CLI
 
 Sie können die [Überwachungsprotokolle in Azure Database for MariaDB](concepts-audit-logs.md) über die Azure CLI konfigurieren.
-
-> [!IMPORTANT]
-> Diese Überwachungsprotokollfunktion ist derzeit in der Vorschauphase.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,9 +30,12 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 
 ## <a name="configure-audit-logging"></a>Konfigurieren der Überwachungsprotokollierung
 
+>[!IMPORTANT]
+> Es wird empfohlen, nur die Ereignistypen und Benutzer zu protokollieren, die für Ihre Überwachungszwecke erforderlich sind, um sicherzustellen, dass die Leistung Ihres Servers nicht stark beeinträchtigt wird.
+
 Aktivieren und konfigurieren Sie die Überwachungsprotokollierung mit den folgenden Schritten: 
 
-1. Aktivieren Sie Überwachungsprotokolle, indem Sie den Parameter **audit_logs_enabled** auf „ON“ festlegen. 
+1. Aktivieren Sie Überwachungsprotokolle, indem Sie den Parameter **audit_logs_enabled** auf ON festlegen. 
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```

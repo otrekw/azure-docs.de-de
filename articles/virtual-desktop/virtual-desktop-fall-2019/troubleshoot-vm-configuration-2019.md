@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362508"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -118,7 +118,8 @@ Wenn der Windows Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs insta
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Error: Der Status im Cmdlet Get-RdsSessionHost wird als „Nicht verfügbar“ angegeben.
 
-![Das Cmdlet Get-RdsSessionHost zeigt den Status als „Nicht verfügbar“ an.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Das Cmdlet Get-RdsSessionHost zeigt den Status als „Nicht verfügbar“ an.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Ursache:** Der Agent kann sich nicht selbst auf eine neue Version aktualisieren.
 
@@ -191,7 +192,8 @@ Wenn Sie Probleme mit dem parallelen Stapel von Windows Virtual Desktop haben, g
 
 Die Ausgabe von **qwinsta** listet **rdp-sxs** in der Ausgabe auf, wenn der parallele Stapel installiert und aktiviert ist.
 
-![Paralleler Stapel installiert oder aktiviert, qwinsta-Ausgabe mit rdp-sxs.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Paralleler Stapel installiert oder aktiviert, qwinsta-Ausgabe mit rdp-sxs.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen Sie, dass ihre Werte übereinstimmen. Wenn Registrierungsschlüssel fehlen oder Werte nicht übereinstimmen, befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell-2019.md) zum erneuten Installieren des parallelen Stapels.
 
@@ -205,7 +207,8 @@ Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen 
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Error: O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE-Fehlercode.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE-Fehlercode.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Ursache:** Der parallele Stapel ist nicht auf der Sitzungshost-VM installiert.
 
@@ -247,19 +250,21 @@ Befolgen Sie diese Anweisungen, um die Fehlerbehebung aus demselben Subnetz und 
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname ist der Computername des virtuellen Computers mit dem fehlerhaften parallelen Stapel.
 
 7. Stimmen Sie dem PsExec-Lizenzvertrag zu, indem Sie auf „Agree“ (Ich stimme zu) klicken.
 
-    ![Screenshot: Softwarelizenzvereinbarung.](../media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Softwarelizenzvereinbarung.](../media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Dieses Dialogfeld wird nur bei der ersten Ausführung von PsExec angezeigt.
 
 8. Nachdem die Eingabeaufforderungssitzung auf der VM mit dem fehlerhaften parallelen Stapel geöffnet wurde, führen Sie qwinsta aus und bestätigen, dass ein Eintrag namens rdp-sxs verfügbar ist. Wenn dies nicht der Fall ist, ist auf der VM kein paralleler Stapel vorhanden, sodass das Problem nicht durch den parallelen Stapel verursacht wird.
 
-    ![Administratoreingabeaufforderung](../media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Administratoreingabeaufforderung](../media/AdministratorCommandPrompt.png)
 
 9. Führen Sie den folgenden Befehl aus, der die auf der VM installierten Microsoft-Komponenten mit dem fehlerhaften parallelen Stapel auflistet.
 
@@ -327,7 +332,8 @@ Gehen Sie wie folgt vor, um zu ermitteln, mit welcher Version von Windows 10 Ent
 3. Wählen Sie **PC-Infos** aus.
 4. Überprüfen Sie die Nummer neben „Version“. Die Nummer muss entweder „1809“ oder „1903“ lauten, wie in der folgenden Abbildung dargestellt.
 
-    ![Screenshot des Fensters für Windows-Spezifikationen Die Versionsnummer ist blau hervorgehoben.](../media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Fensters für Windows-Spezifikationen. Die Versionsnummer ist blau hervorgehoben.](../media/windows-specifications.png)
 
 Nun, da Sie die Versionsnummer wissen, wechseln Sie zu dem entsprechenden Abschnitt.
 

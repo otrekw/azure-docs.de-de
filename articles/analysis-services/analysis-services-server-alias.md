@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Aliase für Azure Analysis Services-Servernam
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 435649c5431ff14461245fee88cebe4a2c571663
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361437"
 ---
 # <a name="alias-server-names"></a>Aliasservernamen
 
@@ -37,7 +37,7 @@ Bei der Verbindungsherstellung über einen Client wird der Aliasservername im Pr
 
 Für die Erstellung eines Aliasendpunkts können Sie eine beliebige Methode verwenden, die einen gültigen Azure Analysis Services-Servernamen zurückgibt. Beispiele wären etwa ein Verweis auf eine Datei in Azure Blob Storage mit dem tatsächlichen Servernamen oder die Erstellung und Veröffentlichung einer ASP.NET Web Forms-Anwendung.
 
-In diesem Beispiel wird eine ASP.NET Web Forms-Anwendung in Visual Studio erstellt. Der Masterseitenverweis und das Benutzersteuerelement werden von der Seite „default.aspx“ entfernt. „Default.aspx“ enthält einfach nur die folgende Page-Direktive:
+In diesem Beispiel wird eine ASP.NET Web Forms-Anwendung in Visual Studio erstellt. Der Seitenverweis und das Benutzersteuerelement werden von der Seite „Default.aspx“ entfernt. „Default.aspx“ enthält einfach nur die folgende Page-Direktive:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
@@ -54,5 +54,5 @@ protected void Page_Load(object sender, EventArgs e)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Clientbibliotheken](analysis-services-data-providers.md)   
+[Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)

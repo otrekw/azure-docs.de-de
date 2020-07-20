@@ -3,29 +3,54 @@ title: Authentifizierung
 description: Informationen zur Funktionsweise der Authentifizierung
 author: florianborn71
 ms.author: flborn
-ms.date: 02/12/2019
+ms.date: 06/15/2020
 ms.topic: how-to
-ms.custom: has-adal-ref
-ms.openlocfilehash: 34874e01b526a4d88ff4402edb0c3771c75a3726
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565847"
 ---
 # <a name="configure-authentication"></a>Konfigurieren der Authentifizierung
 
-Azure Remote Rendering verwendet denselben Authentifizierungsmechanismus wie [Azure Spatial Anchors (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp). Clients müssen *AccountKey*, *AuthenticationToken* oder *AccessToken* festlegen, damit die REST-APIs erfolgreich aufgerufen werden können. *AccountKey* kann im Azure-Portal auf der Registerkarte „Schlüssel“ des Remote Rendering-Kontos abgerufen werden. *AuthenticationToken* ist ein Azure AD-Token, das mithilfe der [ADAL-Bibliothek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) abgerufen werden kann. *AccessToken* ist ein MR-Token, das vom Sicherheitstokendienst (STS) von Azure Mixed Reality abgerufen werden kann.
+Azure Remote Rendering verwendet denselben Authentifizierungsmechanismus wie [Azure Spatial Anchors (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp). Clients müssen *eins* der folgenden Elemente festlegen, um die REST-APIs erfolgreich aufzurufen:
+
+* **AccountKey** kann auf der Registerkarte „Schlüssel“ für das Remote Rendering-Konto im Azure-Portal abgerufen werden. Kontoschlüssel werden nur für Entwicklung/Prototypen empfohlen.
+    ![Account ID](./media/azure-account-primary-key.png)
+
+* **AuthenticationToken** ist ein Azure AD-Token, das mithilfe der [MSAL-Bibliothek](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) abgerufen werden kann. Es sind mehrere verschiedene Abläufe zum Akzeptieren von Benutzeranmeldeinformationen und zum Verwenden dieser Anmeldeinformationen zum Abrufen eines Zugriffstokens verfügbar.
+
+* **MRAccessToken** ist ein MR-Token, das beim Sicherheitstokendienst (Security Token Service, STS) von Azure Mixed Reality abgerufen werden kann. Wird beim `https://sts.mixedreality.azure.com`-Endpunkt mithilfe eines ähnlichen wie dem unten dargestellten REST-Aufruf abgerufen:
+
+    ```rest
+    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
+    Host: sts.mixedreality.azure.com
+    Connection: Keep-Alive
+
+    HTTP/1.1 200 OK
+    Date: Tue, 24 Mar 2020 09:09:00 GMT
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 1153
+    Accept: application/json
+    MS-CV: 05JLqWeKFkWpbdY944yl7A.0
+    {"AccessToken":"eyJhbGciOiJSUzI1<truncated>uLkO2FvA"}
+    ```
+
+    Dabei weist der Autorisierungsheader das folgende Format auf : `Bearer <Azure_AD_token>` oder `Bearer <accoundId>:<accountKey>`. Aus Sicherheitsgründen ist das erste Format vorzuziehen. Das durch diesen REST-Aufruf zurückgegebene Token ist das MR-Zugriffstoken.
 
 ## <a name="authentication-for-deployed-applications"></a>Authentifizierung für bereitgestellte Anwendungen
 
- Die Verwendung von Kontoschlüsseln wird für ein schnelles Onboarding empfohlen, allerdings nur in den Phasen der Entwicklung und der Prototyperstellung. Es wird dringend angeraten, die Anwendung nicht mit einem eingebetteten Kontoschlüssel an die Produktion zu übergeben. Verwenden Sie stattdessen die benutzer- oder dienstbasierten Azure AD-Authentifizierungsverfahren.
+Kontoschlüssel werden nur während der Entwicklung für die schnelle Prototyperstellung empfohlen. Es wird empfohlen, Anwendungen, die einen eingebetteten Kontoschlüssel enthalten, nicht an die Produktion auszuliefern. Stattdessen wird empfohlen, eine benutzerbasierte oder dienstbasierte Azure AD-Authentifizierung zu verwenden.
 
  Die Azure AD-Authentifizierung wird im Abschnitt [Azure AD-Benutzerauthentifizierung](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) im Artikel zum Dienst [Azure Spatial Anchors (ASA)](https://docs.microsoft.com/azure/spatial-anchors/) beschrieben.
 
+ Weitere Informationen finden Sie im [Tutorial: Schützen von Azure-Remote Rendering und Modellspeicher: Azure Active Directory-Authentifizierung](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
+
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Damit Sie die Zugriffsebene für Anwendungen, Dienste oder Azure AD-Benutzer Ihres Diensts besser steuern können, wurden folgende Rollen für Sie erstellt, die Sie nach Bedarf Ihren Azure Remote Rendering-Konten zuweisen können:
+Zum Steuern der Zugriffsebene, die Ihrem Dienst erteilt wird, verwenden Sie beim Erteilen von rollenbasiertem Zugriff die folgenden Rollen:
 
 * **Remote Rendering-Administrator**: Bietet dem Benutzer Konvertierungs-, Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.
 * **Remote Rendering-Client**: Bietet dem Benutzer Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering.

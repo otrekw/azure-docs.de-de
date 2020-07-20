@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399869"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610760"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -37,7 +37,7 @@ Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) 
 
 ### <a name="voice-assistants"></a>Sprachassistenten
 
-Sprachassistenten, die das Speech SDK verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Sprachassistentendienst ermöglicht die schnelle, zuverlässige Interaktion zwischen einem Gerät und einem Assistenten. Die Implementierung verarbeitet Aufgaben über den Direct Line Speech-Kanal des Bot Framework oder den integrierten Dienst Benutzerdefinierte Befehle (Vorschauversion). Darüber hinaus können Sprachassistenten über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, wodurch ein einzigartiges Stimmerlebnis erzielt wird.
+[Sprachassistenten](voice-assistants.md), die das Speech SDK verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Sprachassistentendienst ermöglicht die schnelle, zuverlässige Interaktion zwischen einem Gerät und einem Assistenten. Die Implementierung verarbeitet Aufgaben über den Direct Line Speech-Kanal des Bot Framework oder den integrierten Dienst Benutzerdefinierte Befehle (Vorschauversion). Darüber hinaus können Sprachassistenten benutzerdefinierte Stimmen verwenden, die über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, um eine unverwechselbare Sprachausgabe zu erzielen.
 
 #### <a name="keyword-spotting"></a>Schlüsselworterkennung
 

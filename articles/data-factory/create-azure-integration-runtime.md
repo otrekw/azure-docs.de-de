@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659698"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Erstellen und Konfigurieren von Azure Integration Runtime
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,13 +48,13 @@ Sie können eine vorhandenen Azure IR mithilfe des Set-AzDataFactoryV2Integratio
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Erstellen einer Azure IR über die Azure Data Factory-Benutzeroberfläche
 Führen Sie die unten angegebenen Schritte aus, um eine Azure IR über die Azure Data Factory-Benutzeroberfläche zu erstellen.
 
-1. Wählen Sie in der Azure Data Factory-Benutzeroberfläche auf der Seite **Erste Schritte** im linken Bereich die Registerkarte **Erstellen** aus.
+1. Wählen Sie in der Azure Data Factory-Benutzeroberfläche auf der Seite **Erste Schritte** im Bereich ganz links die Registerkarte [Verwalten](https://docs.microsoft.com/azure/data-factory/author-management-hub) aus.
 
-   ![Schaltfläche „Erstellen“ auf der Startseite](media/doc-common-process/get-started-page-author-button.png)
+   ![Schaltfläche „Verwalten“ auf der Startseite](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Wählen Sie unten im linken Bereich die Option **Verbindungen** und dann im Fenster **Verbindungen** die Option **Integration Runtimes** aus. Klicken Sie auf **+ Neu**.
+1. Wählen Sie im linken Bereich **Integration Runtime** und dann **+Neu** aus.
 
-   ![Erstellen einer Integration Runtime](media/create-azure-integration-runtime/new-integration-runtime.png)
+   ![Erstellen einer Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Wählen Sie auf der Seite **Integration Runtime-Setup** die Option **Azure, Selbstgehostet** und dann **Weiter** aus. 
 

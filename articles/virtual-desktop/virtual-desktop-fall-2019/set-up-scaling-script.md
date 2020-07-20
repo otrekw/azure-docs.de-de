@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie mit Azure Automation eine automatische Skalie
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362542"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalieren von Sitzungshosts mit Azure Automation
 
@@ -33,7 +33,7 @@ Problemberichte für das Skalierungstool werden derzeit auf GitHub anstatt auf d
 Das Skalierungstool bietet eine kostengünstige Automatisierungsoption für Kunden, die ihre Kosten für die Sitzungshost-VMs optimieren möchten.
 
 Sie können das Skalierungstool für Folgendes verwenden:
- 
+
 - Planen des Startens und Beendens von VMs basierend auf Spitzenzeiten und ruhigeren Geschäftszeiten
 - Aufskalieren von VMs basierend auf der Anzahl von Sitzungen pro CPU-Kern
 - Abskalieren von VMs außerhalb von Spitzenzeiten unter Beibehaltung einer Mindestanzahl von Sitzungshost-VMs
@@ -67,7 +67,7 @@ Bevor Sie mit der Einrichtung des Skalierungstools beginnen, sollten Sie Folgend
 - Sitzungshostpool-VMs, die konfiguriert und für den Windows Virtual Desktop-Dienst registriert sind
 - Einen Benutzer mit dem Zugriff [Mitwirkender](../../role-based-access-control/role-assignments-portal.md) für das Azure-Abonnement
 
-Der Computer, den Sie zum Bereitstellen des Tools verwenden, muss Folgendes aufweisen: 
+Der Computer, den Sie zum Bereitstellen des Tools verwenden, muss Folgendes aufweisen:
 
 - Windows PowerShell 5.1 oder höher
 - Das Microsoft PowerShell-Modul „Az“
@@ -106,7 +106,8 @@ Zunächst benötigen Sie ein Azure Automation-Konto zum Ausführen des PowerShel
 
 6. Nachdem Sie Ihr Azure Automation-Konto eingerichtet haben, melden Sie sich bei Ihrem Azure-Abonnement an, und überprüfen Sie, ob Ihr Azure Automation-Konto und das zugehörige Runbook in der angegebenen Ressourcengruppe angezeigt werden, wie in der folgenden Abbildung dargestellt:
 
-![Darstellung der Azure-Übersicht mit dem neu erstellten Automation-Konto und den Runbooks.](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Darstellung der Azure-Übersicht mit dem neu erstellten Automation-Konto und den Runbooks.](../media/automation-account.png)
 
   Wählen Sie den Namen Ihres Runbooks aus, um zu überprüfen, ob sich Ihr Webhook dort befindet, wo er sein sollte. Navigieren Sie als nächstes zum Abschnitt „Ressourcen“ des Runbooks, und wählen Sie **Webhooks**aus.
 
@@ -180,21 +181,21 @@ Abschließend müssen Sie die Azure-Logik-App erstellen und einen Ausführungsze
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +205,12 @@ Abschließend müssen Sie die Azure-Logik-App erstellen und einen Ausführungsze
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 
@@ -236,11 +237,13 @@ Abschließend müssen Sie die Azure-Logik-App erstellen und einen Ausführungsze
 
      Nachdem Sie das Skript ausgeführt haben, sollte die Logik-App in einer Ressourcengruppe angezeigt werden, wie in der folgenden Abbildung dargestellt.
 
-     ![Darstellung der Übersicht für eine Beispiel-Logik-App in Azure](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![Darstellung der Übersicht für eine Beispiel-Logik-App in Azure.](../media/logic-app.png)
 
 Wenn Sie Änderungen am Ausführungszeitplan vornehmen möchten, um z. B. das Wiederholungsintervall oder die Zeitzone zu ändern, navigieren Sie zum Zeitplan für die Autoskalierung, und wählen Sie **Bearbeiten** aus, um zum Logik-App-Designer zu wechseln.
 
-![Darstellung des Logik-App-Designers Die Menüs „Wiederholung“ und „Webhook“, mit denen Benutzer die Wiederholungszeiten und die Webhook-Datei bearbeiten können, sind geöffnet.](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![Darstellung des Logik-App-Designers. Die Menüs „Wiederholung“ und „Webhook“, mit denen Benutzer die Wiederholungszeiten und die Webhook-Datei bearbeiten können, sind geöffnet.](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>Verwalten Ihres Skalierungstools
 
@@ -252,7 +255,8 @@ Sie können im Azure-Portal einen zusammengefassten Status aller Runbookaufträg
 
 Rechts in Ihrem ausgewählten Automation-Konto sehen Sie unter „Auftragsstatistik“ die Zusammenfassung aller Runbookaufträge. Wenn Sie auf der linken Seite des Fensters die Seite **Aufträge** öffnen, werden die aktuellen Auftragsstatus, Startzeiten und Beendigungszeiten angezeigt.
 
-![Screenshot der Auftragsstatusseite](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot der Auftragsstatusseite.](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>Anzeigen von Protokollen und der Ausgabe des Skalierungstools
 
@@ -260,5 +264,6 @@ Sie können die Protokolle der Vorgänge für das horizontale Hoch- und Herunter
 
 Navigieren Sie in der Ressourcengruppe, in der das Azure Automation-Konto gehostet wird, zum Runbook (der Standardname ist „WVDAutoScaleRunbook“), und wählen Sie **Übersicht** aus. Wählen Sie auf der Seite „Übersicht“ unter „Kürzlich ausgeführte Aufträge“ einen Auftrag aus, um die zugehörige Ausgabe des Skalierungstools anzuzeigen, wie in der folgenden Abbildung dargestellt.
 
-![Darstellung des Ausgabefensters für das Skalierungstool](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![Darstellung des Ausgabefensters für das Skalierungstool.](../media/tool-output.png)
 

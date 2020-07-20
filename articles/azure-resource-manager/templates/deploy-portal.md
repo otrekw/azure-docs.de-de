@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen mit dem Azure-Portal
 description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen in einer Ressourcengruppe in Ihrem Abonnement.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255261"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal
 
@@ -86,7 +86,7 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 1. Zum Erstellen einer Vorlage werden verschiedene Optionen angezeigt:
 
     - **Eigene Vorlage im Editor erstellen**: Erstellen Sie eine Vorlage mit dem Vorlageneditor des Portals.  Der Editor kann ein Vorlagenschema für eine Ressource hinzufügen.
-    - **Gängige Vorlagen**: Es gibt vier gängige Vorlagen für das Erstellen von virtuellen Linux-Computern, virtuellen Windows-Computern, Webanwendungen und Azure SQL-Datenbanken.
+    - **Gängige Vorlagen**: Es gibt vier gängige Vorlagen für das Erstellen von virtuellen Linux-Computern, virtuellen Windows-Computern, Webanwendungen und Azure SQL-Datenbank-Instanzen.
     - **GitHub-Schnellstartvorlage laden**: Verwenden Sie eine vorhandene [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/).
 
    ![Anzeigen der Optionen](./media/deploy-portal/see-options.png)

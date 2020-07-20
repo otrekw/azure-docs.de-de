@@ -2,14 +2,14 @@
 title: Verwalten von Mitgliedern des Azure Blockchain Service-Konsortiums – PowerShell
 description: Hier erfahren Sie, wie Sie die Mitglieder des Azure Blockchain Service-Konsortiums mithilfe von Azure PowerShell verwalten.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: zeyadr
-ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211339"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Verwalten der Konsortiumsmitglieder in Azure Blockchain mithilfe von PowerShell
 
@@ -55,7 +55,7 @@ $MemberAccount = Import-Web3Account -ManagedAccountAddress '<Member account addr
 $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>' -Web3Client $Connection
 ```
 
-Ersetzen Sie *\<Member account password\>* (Kennwort des Mitgliedskontos) durch das Kennwort des Mitgliedskontos, das Sie beim Erstellen des Mitglieds verwendet haben.
+Ersetzen Sie *\<Member account password\>* durch das Kennwort des Mitgliedskontos, das Sie beim Erstellen des Mitglieds verwendet haben.
 
 Die weiteren Werte finden Sie im Azure-Portal:
 
@@ -64,14 +64,14 @@ Die weiteren Werte finden Sie im Azure-Portal:
 
     ![Mitgliedsübersicht](./media/manage-consortium-powershell/member-overview.png)
 
-    Ersetzen Sie *\<Member account\>* (Mitgliedskonto) und *\<RootContract address\>* (Stammvertragsadresse) durch die Werte aus dem Portal.
+    Ersetzen Sie *\<Member account\>* und *\<RootContract address\>* durch die zuvor vom Portal zurückgegebenen Werte.
 
 1. Wählen Sie für die Endpunktadresse **Transaction nodes** (Transaktionsknoten) und dann den **standardmäßigen Transaktionsknoten** aus. Der Standardknoten weist denselben Namen auf wie das Blockchainmitglied.
 1. Wählen Sie **Connection strings** (Verbindungszeichenfolgen).
 
     ![Verbindungszeichenfolgen](./media/manage-consortium-powershell/connection-strings.png)
 
-    Ersetzen Sie *\<Endpoint address\>* (Endpunktadresse) durch den Wert unter **HTTPS (Access key 1)** (HTTPS (Zugriffsschlüssel 1)) oder **HTTPS (Access key 2)** (HTTPS (Zugriffsschlüssel 2)).
+    Ersetzen Sie *\<Endpoint address\>* durch den Wert unter **HTTPS (Access key 1)** (HTTPS (Zugriffsschlüssel 1)) oder **HTTPS (Access key 2)** (HTTPS (Zugriffsschlüssel 2)).
 
 ## <a name="manage-the-network-and-smart-contracts"></a>Verwalten von Netzwerk und Smart Contracts
 

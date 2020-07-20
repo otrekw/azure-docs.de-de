@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610726"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -117,7 +117,7 @@ Standardmäßig indiziert Azure Cosmos DB automatisch jede Eigenschaft von jedem
 
 Sie können die Gesamtanzahl der bereitgestellten Anforderungseinheiten (RUs), die Anzahl der ratenbegrenzten Anforderungen sowie die Anzahl der verbrauchten Anforderungseinheiten im Azure-Portal überwachen. Die folgende Abbildung zeigt eine Nutzungsmetrik als Beispiel:
 
-![Überwachen von Anforderungseinheiten im Azure-Portal](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="Überwachen von Anforderungseinheiten im Azure-Portal":::
 
 Sie können auch Warnungen festlegen, um zu überprüfen, ob die Menge der ratenbegrenzten Anforderungen einen bestimmten Schwellenwert überschreitet. Ausführlichere Informationen finden Sie unter [Überwachen von Azure Cosmos DB](use-metrics.md). Diese Warnungen können eine E-Mail an die Kontoadministratoren senden oder einen benutzerdefinierten HTTP-Webhook oder eine Azure-Funktion anrufen, um automatisch den bereitgestellten Durchsatz zu erhöhen. 
 
@@ -155,7 +155,7 @@ Die folgenden Schritte sollen Ihnen dabei helfen, Ihre Lösungen beim Einsatz vo
 
 1. Wenn Sie den bereitgestellten Durchsatz für Container und Datenbanken erheblich überdimensioniert haben, sollten Sie das Verhältnis der bereitgestellten zu den verbrauchten Anforderungseinheiten überprüfen und die Workloads optimieren.  
 
-2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](../synapse-analytics/sql-data-warehouse/backup-and-restore.md). 
+2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](optimize-cost-queries.md). 
 
 3. Als weitere Möglichkeit zum Abrufen von Vorgängen und deren Kosten in Anforderungseinheiten können Sie Azure Monitor-Protokolle aktivieren, eine Analyse, die Vorgänge/Dauer und die Anforderungsgebühr detailliert aufschlüsselt. Azure Cosmos DB gibt die Anforderungsgebühren für jeden Vorgang an. Daher kann jede Vorgangsgebühr separat von der Antwort gespeichert und anschließend für eine Analyse verwendet werden. 
 

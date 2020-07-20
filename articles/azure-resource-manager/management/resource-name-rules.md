@@ -3,16 +3,18 @@ title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554335"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
 Dieser Artikel bietet einen Überblick über die Benennungsregeln und -einschränkungen für Azure-Ressourcen. Empfehlungen zum Benennen von Ressourcen finden Sie unter [Empfohlene Namens- und Kennzeichnungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+
+In diesem Artikel werden Ressourcen nach dem Ressourcenanbieter-Namespace aufgelistet. Eine Übersicht über die Zuordnung von Ressourcenanbietern und Azure-Diensten finden Sie unter [Ressourcenanbieter für Azure-Dienste](azure-services-resource-providers.md).
 
 Bei Ressourcennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden, es sei denn, dies ist in der Spalte für gültige Zeichen ausdrücklich angegeben.
 
@@ -34,7 +36,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | Dienst | Global | 1-50 | Alphanumerische Zeichen.<br><br>Beginnen Sie mit einem Buchstaben. |
+> | Dienst | Global | 1-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben, und enden Sie mit einem alphanumerischen Zeichen. |
 > | service/apis | Dienst | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
 > | service/apis/issues | api | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
 > | service/apis/issues/attachments | Problem | 1–256 | Verwendung nicht möglich:<br> `*#&+:<>?` |
@@ -172,8 +174,8 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | galleries/images/versions | image | 32-bit integer | Zahlen und Punkte. |
 > | images | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
 > | snapshots | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
-> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Verwendung nicht möglich:<br> `\/""[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
-> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Verwendung nicht möglich:<br> `\/""[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Verwendung nicht möglich:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Verwendung nicht möglich:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
 
 > [!NOTE]
 > Virtuelle Azure-Computer weisen zwei getrennte Namen auf: einen Ressourcennamen und einen Hostnamen. Wenn Sie im Portal einen virtuellen Computer erstellen, wird für beide Namen der gleiche Wert verwendet. Die Einschränkungen in der obigen Tabelle gelten für den Hostnamen. Der eigentliche Ressourcenname kann bis zu 64 Zeichen lang sein.
@@ -522,7 +524,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | Namespaces | Global | 6-50 | Alphanumerische Zeichen und Bindestriche<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
+> | Namespaces | Global | 6-50 | Alphanumerische Zeichen und Bindestriche<br><br>Beginnen Sie mit einem Buchstaben. Enden Sie mit einem alphanumerischen Zeichen. |
 > | namespaces/AuthorizationRules | Namespace | 1–256 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
 > | namespaces/notificationHubs | Namespace | 1–260 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
 > | namespaces/notificationHubs/AuthorizationRules | Benachrichtigungshub | 1–256 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |

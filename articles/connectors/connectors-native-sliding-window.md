@@ -3,19 +3,19 @@ title: Planen von Aufgaben zum Verarbeiten von zusammenhängenden Daten
 description: Erstellen und Ausführen von wiederkehrenden Aufgaben, die unter Verwendung gleitender Fenster in Azure Logic Apps zusammenhängende Daten verarbeiten
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322104"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Planen und Ausführen von Aufgaben für zusammenhängende Daten unter Verwendung des Triggers „Gleitendes Fenster“ in Azure Logic Apps
 
-Um regelmäßig Aufgaben, Prozesse oder Aufträge auszuführen, die Daten in zusammenhängenden Blöcken verarbeiten müssen, können Sie Ihren Logik-App-Workflow mit dem Trigger **Gleitendes Fenster** starten. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn Wiederholungen aus irgendeinem Grund nicht ausgeführt werden, verarbeitet dieser Trigger diese fehlenden Wiederholungen. Verwenden Sie den Trigger „Gleitendes Fenster“ beispielsweise beim Synchronisieren von Daten zwischen Ihrer Datenbank und dem Sicherungsspeicher, damit die Daten lückenlos synchronisiert werden. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Um regelmäßig Aufgaben, Prozesse oder Aufträge auszuführen, die Daten in zusammenhängenden Blöcken verarbeiten müssen, können Sie Ihren Logik-App-Workflow mit dem Trigger **Gleitendes Fenster** starten. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise aufgrund von Unterbrechungen oder deaktivierten Workflows, verarbeitet dieser Trigger die fehlenden Wiederholungen. Verwenden Sie den Trigger „Gleitendes Fenster“ beispielsweise beim Synchronisieren von Daten zwischen Ihrer Datenbank und dem Sicherungsspeicher, damit die Daten lückenlos synchronisiert werden. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Im Folgenden finden Sie einige der Muster, die von diesem Trigger unterstützt werden:
 

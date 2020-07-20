@@ -1,8 +1,8 @@
 ---
 title: Migrieren des TDE-Zertifikats – Verwaltete Instanz
-description: Migrieren des Zertifikats zum Schutz des Datenbankverschlüsselungsschlüssels einer Datenbank mit Transparent Data Encryption zu einer verwalteten Azure SQL-Instanz
+description: Migrieren des Zertifikats zum Schutz des Datenbankverschlüsselungsschlüssels einer Datenbank mit Transparent Data Encryption zu einer Azure SQL Managed Instance
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,28 +11,28 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: eb8c794f4817c11d30112fbdf7d754081cc29859
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c9a9b42d6f6d8c89847b03f5eda858c75d198c58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711390"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Instanz
+# <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Beim Migrieren einer durch [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) geschützten Datenbank zu einer verwalteten Azure SQL-Instanz mithilfe der nativen Wiederherstellungsoption muss vor der Wiederherstellung der Datenbank das entsprechende Zertifikat aus der SQL-Server-Instanz migriert werden. Dieser Artikel stellt Ihnen schrittweise den Vorgang der manuellen Migration des Zertifikats zu einer verwalteten Azure SQL-Instanz vor:
+Beim Migrieren einer durch [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) geschützten Datenbank zu einer Azure SQL Managed Instance mithilfe der nativen Wiederherstellungsoption muss vor der Wiederherstellung der Datenbank das entsprechende Zertifikat aus der SQL-Server-Instanz migriert werden. Dieser Artikel stellt Ihnen schrittweise den Vorgang der manuellen Migration des Zertifikats zu einer verwalteten Azure SQL-Instanz vor:
 
 > [!div class="checklist"]
 >
 > * Exportieren des Zertifikats in eine PFX-Datei (Personal Information Exchange)
-> * Extrahieren des Zertifikats aus der Datei in eine Base64-Zeichenfolge
+> * Extrahieren des Zertifikats aus einer Datei in eine Base64-Zeichenfolge
 > * Hochladen der Zeichenfolge mit einem PowerShell-Cmdlet
 
 Eine alternative Option, einen vollständig verwalteten Dienst für die nahtlose Migration der durch TDE geschützten Datenbank und des entsprechenden Zertifikats zu verwenden, finden Sie unter [Migrieren Ihrer lokalen Datenbank zu einer verwalteten Azure SQL-Instanz mit Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Das migrierte Zertifikat wird nur für die Wiederherstellung der durch TDE geschützten Datenbank verwendet. Kurz nach Abschluss der Wiederherstellung wird das migrierte Zertifikat durch eine andere Schutzvorrichtung ersetzt – entweder ein vom Dienst verwaltetes Zertifikat oder einen asymmetrischen Schlüssel aus dem Schlüsseltresor – je nach dem Typ der transparenten Datenverschlüsselung, die Sie für die Instanz festlegen.
+> Ein migriertes Zertifikat wird nur für die Wiederherstellung der durch TDE geschützten Datenbank verwendet. Kurz nach Abschluss der Wiederherstellung wird das migrierte Zertifikat durch eine andere Schutzvorrichtung ersetzt – entweder ein vom Dienst verwaltetes Zertifikat oder einen asymmetrischen Schlüssel aus dem Schlüsseltresor – je nach dem Typ der TDE, die Sie für die Instanz festlegen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,7 @@ Stellen Sie sicher, dass Sie über Folgendes verfügen:
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Das Azure Resource Manager-Modul von PowerShell wird von der verwalteten Azure SQL-Instanz weiterhin unterstützt, alle zukünftigen Entwicklungen erfolgen jedoch für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das Azure Resource Manager-Modul von PowerShell wird von der verwalteten Azure SQL-Instanz weiterhin unterstützt, alle zukünftigen Entwicklungen erfolgen jedoch für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRM-Modulen sind im Wesentlichen identisch.
 
 Führen Sie die folgenden Befehle in PowerShell zum Installieren/Aktualisieren des Moduls aus:
 
@@ -66,15 +66,15 @@ Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installiere
 
 * * *
 
-## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>Exportieren des TDE-Zertifikats in eine PFX-Datei (Personal Information Exchange)
+## <a name="export-the-tde-certificate-to-a-pfx-file"></a>Exportieren des TDE-Zertifikats in eine PFX-Datei
 
-Das Zertifikat kann direkt aus dem SQL-Quellserver oder aus dem Zertifikatspeicher exportiert werden, wenn es dort gespeichert ist
+Das Zertifikat kann direkt aus der SQL Server-Quellinstanz oder aus dem Zertifikatspeicher exportiert werden, wenn es dort gespeichert ist.
 
-### <a name="export-certificate-from-the-source-sql-server"></a>Exportieren des Zertifikats aus dem SQL-Quellserver
+### <a name="export-the-certificate-from-the-source-sql-server-instance"></a>Exportieren des Zertifikats aus der SQL Server-Quellinstanz
 
 Führen Sie die folgenden Schritte aus, um das Zertifikat mit SQL Server Management Studio zu exportieren und in das PFX-Format zu konvertieren. Die generischen Namen *TDE_Cert* und *full_path* werden für die Zertifikat- und Dateinamen und Pfade in diesen Schritten verwendet. Sie sollten durch die tatsächlichen Namen ersetzt werden.
 
-1. Öffnen Sie in SSMS ein neues Abfragefenster, und stellen Sie eine Verbindung mit dem SQL-Quellserver her.
+1. Öffnen Sie in SSMS ein neues Abfragefenster, und stellen Sie eine Verbindung mit der SQL Server-Quellinstanz her.
 
 1. Verwenden Sie das folgende Skript, um durch TDE geschützte Datenbanken aufzulisten und den Namen des Zertifikats abzurufen, das die Verschlüsselung der zu migrierenden Datenbank schützt:
 
@@ -107,13 +107,13 @@ Führen Sie die folgenden Schritte aus, um das Zertifikat mit SQL Server Managem
 
    ![Sichern des TDE-Zertifikats](./media/tde-certificate-migrate/backup-onprem-certificate.png)
 
-1. Verwenden Sie die PowerShell-Konsole, um Zertifikatinformationen mit dem Pvk2Pfx-Tool aus zwei neu erstellten Dateien in eine PFX-Datei (Personal Information Exchange) zu kopieren:
+1. Kopieren Sie mit der PowerShell-Konsole Zertifikatinformationen mit dem Pvk2Pfx-Tool aus zwei neu erstellten Dateien in eine PFX-Datei:
 
    ```cmd
    .\pvk2pfx -pvk c:/full_path/TDE_Cert.pvk  -pi "<SomeStrongPassword>" -spc c:/full_path/TDE_Cert.cer -pfx c:/full_path/TDE_Cert.pfx
    ```
 
-### <a name="export-certificate-from-certificate-store"></a>Exportieren des Zertifikats aus dem Zertifikatspeicher
+### <a name="export-the-certificate-from-a-certificate-store"></a>Exportieren des Zertifikats aus einem Zertifikatspeicher
 
 Wenn das Zertifikat im Zertifikatspeicher des lokalen Computers mit SQL Server gespeichert wird, kann es mithilfe der folgenden Schritte exportiert werden:
 
@@ -125,11 +125,11 @@ Wenn das Zertifikat im Zertifikatspeicher des lokalen Computers mit SQL Server g
 
 2. Erweitern Sie im Zertifikate-MMC-Snap-In den Pfad „Personal > Certificates“, um eine Liste der Zertifikate anzuzeigen.
 
-3. Klicken Sie mit der rechten Maustaste auf das Zertifikat, und klicken Sie dann auf „Exportieren“.
+3. Klicken Sie mit der rechten Maustaste auf das Zertifikat, und klicken Sie dann auf **Exportieren**.
 
-4. Führen Sie den Assistenten zum Exportieren von Zertifikaten und privaten Schlüsseln in das PFX-Format (Personal Information Exchange) aus.
+4. Folgen Sie den Anweisungen des Assistenten, um das Zertifikat und den privaten Schlüssel in ein PFX-Format zu exportieren.
 
-## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Hochladen des Zertifikats in eine verwaltete Azure SQL-Instanz mit dem Azure PowerShell-Cmdlet
+## <a name="upload-the-certificate-to-azure-sql-managed-instance-using-an-azure-powershell-cmdlet"></a>Hochladen des Zertifikats in eine Azure SQL Managed Instance mit dem Azure PowerShell-Cmdlet
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -160,7 +160,7 @@ Wenn das Zertifikat im Zertifikatspeicher des lokalen Computers mit SQL Server g
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Sie müssen zunächst [eine Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) mit ihrer *PFX*-Datei einrichten.
+Sie müssen zunächst mit ihrer *PFX*-Datei [einen Azure-Schlüsseltresor](/azure/key-vault/key-vault-manage-with-cli2) einrichten.
 
 1. Beginnen Sie mit den Vorbereitungsschritten in PowerShell:
 
@@ -188,6 +188,6 @@ Das Zertifikat ist nun für die angegebene verwaltete Instanz verfügbar, und di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie das Zertifikat, das den Verschlüsselungsschlüssel der Datenbank mit Transparent Data Encryption schützt, aus dem lokalen oder IaaS-SQL-Server zu einer verwalteten Azure SQL-Instanz migriert wird.
+In diesem Artikel haben Sie erfahren, wie das Zertifikat, das den Verschlüsselungsschlüssel der Datenbank mit Transparent Data Encryption schützt, aus dem lokalen oder IaaS-SQL-Server zu einer Azure SQL Managed Instance migriert wird.
 
-Lesen Sie [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Instanz](restore-sample-database-quickstart.md), um zu erfahren, wie Sie eine Datenbanksicherung in einer verwalteten Azure SQL-Instanz wiederherstellen können.
+Lesen Sie [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Instanz](restore-sample-database-quickstart.md), um zu erfahren, wie Sie eine Datenbanksicherung in einer Azure SQL Managed Instance wiederherstellen können.

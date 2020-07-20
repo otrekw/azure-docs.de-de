@@ -3,8 +3,8 @@ title: Ermitteln der IP-Adresse des Verwaltungsendpunkts
 titleSuffix: Azure SQL Managed Instance
 description: Erfahren Sie, wie Sie die öffentliche IP-Adresse eines Verwaltungsendpunkts für Azure SQL Managed Instance abrufen und den integrierten Firewallschutz überprüfen.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 88965c25702917f17a226cfa51de662703136aae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 40a44fe46cf38c633380c4c353960cc4e11f2f3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708721"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>Ermitteln der IP-Adresse des Verwaltungsendpunkts: Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,7 +26,7 @@ Der virtuelle Cluster von Azure SQL Managed Instance enthält einen Verwaltungse
 
 Führen Sie einen [DNS-Lookup](/windows-server/administration/windows-commands/nslookup) auf Ihrem SQL Managed Instance-FQDN `mi-name.zone_id.database.windows.net` aus, um die Verwaltungs-IP-Adresse zu bestimmen. Dadurch wird ein DNS-Eintrag zurückgegeben, der `trx.region-a.worker.vnet.database.windows.net` ähnelt. Anschließend können Sie einen DNS-Lookup für diesen vollqualifizierten Domänennamen ohne „.vnet“ durchführen. Dadurch wird die Verwaltungs-IP-Adresse zurückgegeben. 
 
-Der folgende PowerShell-Befehl kann all das für Sie tun, wenn Sie \<MI FQDN\>durch den DNS-Eintrag Ihrer SQL Managed Instance (`mi-name.zone_id.database.windows.net`) ersetzen:
+Der folgende PowerShell-Code kann all das für Sie tun, wenn Sie \<MI FQDN\> durch den DNS-Eintrag Ihrer SQL Managed Instance ersetzen: `mi-name.zone_id.database.windows.net`:
   
 ``` powershell
   $MIFQDN = "<MI FQDN>"

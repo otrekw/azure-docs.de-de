@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie Daten in Azure Machine Learning-Designer tran
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
-ms.date: 05/04/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ea0ba58c3eb38a54be5ff777519ca12d6a2cf9ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644302"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517524"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Transformieren von Daten in Azure Machine Learning-Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um das Beispieldataset zu importieren.
 
 1. Wählen Sie rechts neben der Canvas im Bereich mit den Details die Option **Ausgaben** aus.
 
-1. Wählen Sie das ![Symbol „Visualisieren“ aus](media/how-to-designer-transform-data/visualize-icon.png).
+1. Wählen Sie das ![Symbol „Visualisieren“ aus](media/how-to-designer-transform-data/visualize-icon.png)erforderlich.
 
 1. Verwenden Sie das Fenster „Datenvorschau“, um das Dataset zu untersuchen. Beachten Sie besonders die Werte in der Spalte „native-country“.
 
@@ -78,7 +78,7 @@ In diesem Abschnitt verwenden Sie das Modul [Split Data](algorithm-module-refere
 
 Ihre Pipeline sollte wie folgt aussehen:
 
-![Screenshot: Konfigurieren der Pipeline und des Moduls „Split Data“ (Daten aufteilen)](media/how-to-designer-transform-data/split-data.png).
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="Screenshot: Konfigurieren der Pipeline und des Moduls „Split Data“ (Daten aufteilen)":::
 
 
 ## <a name="save-the-datasets"></a>Speichern der Datasets
@@ -93,7 +93,7 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
 
     Ihre Pipeline sollte in etwa wie folgt aussehen:
 
-    ![Screenshot: Verbinden der Module zum Exportieren von Daten](media/how-to-designer-transform-data/export-data-pipeline.png).
+    ![Screenshot: Verbinden der Module zum Exportieren von Daten](media/how-to-designer-transform-data/export-data-pipeline.png)erforderlich.
 
 1. Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *links* des Moduls zum Aufteilen von Dateien (**Split Data**) verbunden ist.
 
@@ -132,7 +132,7 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
 
     Die Pipeline und die Einstellungen sollten wie folgt aussehen:
     
-    ![Screenshot: Konfigurieren der Module zum Exportieren von Daten](media/how-to-designer-transform-data/us-income-export-data.png).
+    ![Screenshot: Konfigurieren der Module zum Exportieren von Daten](media/how-to-designer-transform-data/us-income-export-data.png)erforderlich.
 
 ### <a name="submit-the-run"></a>Übermitteln der Ausführung
 

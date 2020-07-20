@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: e7276dcfca6ba033942d62f347ac3a799524cac4
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: c8cdb75c821f45fe7fcf0f455145beb2b9be2a55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734859"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Bereitstellen und Verwalten von Azure Active Directory Domain Services für Azure Cloud Solution Providers
 
@@ -78,11 +78,11 @@ Dieses Bereitstellungsmodell eignet sich möglicherweise für Szenarien, in dene
 
 Die folgenden wichtigen Überlegungen gelten für die Verwaltung einer verwalteten Domäne in einem Azure CSP-Abonnement:
 
-* **CSP-Administrator-Agents können eine verwaltete Domäne mit ihren Anmeldeinformationen bereitstellen:** Azure AD DS unterstützt Azure CSP-Abonnements. Benutzer, die zur Gruppe „Administrator-Agents“ eines CSP-Partners gehören, können eine neue in Azure AD DS verwaltete Domäne bereitstellen.
+* **CSP-Administrator-Agents können eine verwaltete Domäne mit ihren Anmeldeinformationen bereitstellen:** Azure AD DS unterstützt Azure CSP-Abonnements. Benutzer, die zur Gruppe der Administrator-Agents eines CSP-Partners gehören, können eine neue verwaltete Domäne bereitstellen.
 
 * **CSPs können Skripte für die Erstellung von neuen verwalteten Domänen für ihre Kunden mithilfe von PowerShell bereitstellen:** Ausführliche Informationen finden Sie unter [Aktivieren von Azure AD DS mithilfe von PowerShell](powershell-create-instance.md).
 
-* **CSP-Administrator-Agents können in der verwalteten Domäne keine laufenden Verwaltungsaufgaben mit ihren Anmeldeinformationen ausführen:** CSP-Administratorbenutzer können innerhalb der verwalteten Domäne keine routinemäßigen Verwaltungsaufgaben mit ihren Anmeldeinformationen ausführen. Diese Benutzer sind für den Azure AD-Mandanten des Kunden externe Benutzer, deren Anmeldeinformationen im Azure AD-Mandanten des Kunden nicht verfügbar sind. Azure AD DS hat keinen Zugriff auf die Kerberos- und NTLM-Kennworthashes für diese Benutzer, sodass Benutzer nicht in verwalteten Azure AD DS-Domänen authentifiziert werden können.
+* **CSP-Administrator-Agents können in der verwalteten Domäne keine laufenden Verwaltungsaufgaben mit ihren Anmeldeinformationen ausführen:** CSP-Administratorbenutzer können innerhalb der verwalteten Domäne keine routinemäßigen Verwaltungsaufgaben mit ihren Anmeldeinformationen ausführen. Diese Benutzer sind für den Azure AD-Mandanten des Kunden externe Benutzer, deren Anmeldeinformationen im Azure AD-Mandanten des Kunden nicht verfügbar sind. Azure AD DS hat keinen Zugriff auf die Kerberos- und NTLM-Kennworthashes für diese Benutzer, sodass diese in verwalteten Domänen nicht authentifiziert werden können.
 
   > [!WARNING]
   > Sie müssen ein Benutzerkonto im Verzeichnis des Kunden erstellen, um laufende Verwaltungsaufgaben für die verwaltete Domäne auszuführen.

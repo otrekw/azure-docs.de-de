@@ -1,5 +1,5 @@
 ---
-title: Konvertieren eines Word-Dokuments in das PDF-Format
+title: '„Convert Word to Vector“ (Konvertieren von Wörtern in Vektoren): Modulreferenz'
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mit den drei mitgelieferten Word2Vec-Modellen ein Vokabular und die entsprechenden Worteinbettungen aus einem Textkorpus extrahieren können.
 services: machine-learning
@@ -9,36 +9,43 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: e0e796b75690bcacc6be8ef29b8b490c7faa40af
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753887"
 ---
-# <a name="convert-word-to-vector"></a>Konvertieren eines Word-Dokuments in das PDF-Format
+# <a name="convert-word-to-vector-module"></a>Modul „Convert Word to Vector“
 
-In diesem Artikel wird beschrieben, wie Sie das Modul **Konvertieren eines Word-Dokuments in das PDF-Format** im Azure Machine Learning-Designer (Vorschauversion) verwenden, um verschiedene Word2Vec-Modelle (mit Word2Vec, FastText, Glove vortrainiertes Modell) auf den Textkorpus anzuwenden, den Sie als Eingabe angegeben haben, und ein Vokabular mit Worteinbettungen zu generieren.
+In diesem Artikel wird die Verwendung des Moduls „Convert Word to Vector“ im Azure Machine Learning-Designer (Vorschauversion) für folgende Aufgaben beschrieben:
+
+- Anwenden verschiedener Word2Vec-Modelle (Word2Vec, FastText, vortrainiertes GloVe-Modell) auf den Textkorpus, den Sie als Eingabe angegeben haben.
+- Generieren eines Vokabulars mit Worteinbettungen.
 
 Dieses Modul verwendet die Gensim-Bibliothek. Weitere Informationen zu Gensim finden Sie auf dessen [offizieller Website](https://radimrehurek.com/gensim/apiref.html), die Tutorials und eine Erläuterung der Algorithmen enthält.
 
-### <a name="more-about-convert-word-to-vector"></a>Weitere Informationen zum Konvertieren von Wörtern in Vektoren
+### <a name="more-about-converting-words-to-vectors"></a>Weitere Informationen zum Konvertieren von Wörtern in Vektoren
 
-Im Allgemeinen ist die Konvertierung von Wörtern in Vektoren oder die Wortvektorisierung ein natürlicher Sprachverarbeitungsprozess, bei dem Sprachmodelle oder -verfahren verwendet werden, um Wörter im Vektorraum abzubilden, d. h. jedes Wort durch einen Vektor reeller Zahlen darzustellen, und bei dem Wörter mit ähnlichen Bedeutungen ähnliche Darstellungen aufweisen können.
+Im Allgemeinen handelt es sich beim Konvertieren von Wörtern in Vektoren oder Wortvektorisierung um einen NLP-Prozess (Natural Language Processing, Verarbeitung natürlicher Sprache). Der Prozess verwendet Sprachmodelle oder Techniken, um Wörtern Vektorraum zuzuordnen, d. h. jedes Wort durch einen Vektor aus reellen Zahlen darzustellen. Mittlerweile können Wörter mit ähnlichen Bedeutungen ähnliche Darstellungen aufweisen.
 
-Worteinbettungen können als anfängliche Eingabe für NLP-Downstreamaufgaben wie Textklassifizierung, Standpunktanalyse usw. verwendet werden.
+Worteinbettungen können als anfängliche Eingabe für nachgelagerte NLP-Aufgaben wie Textklassifizierung, Standpunktanalyse usw. verwendet werden.
 
-Unter den verschiedenen Technologien zur Worteinbettung haben wir in diesem Modul drei weit verbreitete Methoden implementiert, darunter zwei Onlinetrainingsmodelle, Word2Vec und FastText, und ein vortrainiertes Modell, glove-wiki-gigaword-100. Onlinetrainingsmodelle werden anhand Ihrer Eingabedaten trainiert, während vortrainierte Modelle offline an einem größeren Textkorpus (z. B. Wikipedia, Google News) trainiert werden, der in der Regel etwa 100 Milliarden Wörter enthält, sodass die Worteinbettung während der Wortvektorisierung konstant bleibt. Vortrainierte Wortmodelle bieten Vorteile, z. B. kürzere Trainingszeit, bessere codierte Wortvektoren und eine verbesserte Gesamtleistung.
+Es gibt verschiedene Worteinbettungstechnologien. In diesem Modul haben wir drei häufig verwendete Methoden implementiert. Zwei, Word2Vec und FastText, sind Onlinetrainingsmodelle. Bei dem anderen handelt es sich um ein vortrainiertes Modell, glove-wiki-gigaword-100. 
 
-+ Word2Vec ist eine der beliebtesten Techniken zum Erlernen von Worteinbettungen mit flachen neuronalen Netzen. Die Theorie wird in diesem Dokument behandelt, das als PDF-Download zur Verfügung steht: [Efficient Estimation of Word Representations in Vector Space, Mikolov, Tomas, et al](https://arxiv.org/pdf/1301.3781.pdf). Die Implementierung in diesem Modul basiert auf der [gensim-Bibliothek für Word2Vec](https://radimrehurek.com/gensim/models/word2vec.html).
+Onlinetrainingsmodelle werden mit Ihren Eingabedaten trainiert. Vortrainierte Modelle werden offline mit einem größeren Textkorpus trainiert (z. B. Wikipedia, Google News), der in der Regel ungefähr 100 Milliarden Wörter enthält. Die Worteinbettung bleibt dann während der Wortvektorisierung konstant. Vortrainierte Wortmodelle bieten Vorteile, z. B. kürzere Trainingszeit, bessere codierte Wortvektoren und eine verbesserte Gesamtleistung.
 
-+ Die FastText-Theorie wird in diesem Dokument erläutert, das als PDF-Download zur Verfügung steht: [Enriching Word Vectors with Subword Information, Bojanowski, Piotr, et al](https://arxiv.org/pdf/1607.04606.pdf). Die Implementierung in diesem Modul basiert auf der [gensim-Bibliothek für FastText](https://radimrehurek.com/gensim/models/fasttext.html).
+Hier sind einige Informationen zu den Methoden:
 
-+ Mit Glove vortrainiertes Modell: glove-wiki-gigaword-100 ist eine Sammlung von vortrainierten Vektoren, die auf dem Wikipedia-Textkorpus basiert, der 5,6 Milliarden Token und 400K kasusfreies Vokabular enthält, PDF-Datei ist verfügbar: [GloVe: Globale Vektoren für die Wortdarstellung](https://nlp.stanford.edu/pubs/glove.pdf).
++ Word2Vec ist eine der beliebtesten Techniken zum Erlernen von Worteinbettungen mithilfe eines flachen neuronalen Netzwerks. Die Theorie wird in diesem Dokument erläutert, das als PDF-Download zur Verfügung steht: [„Efficient Estimation of Word Representations in Vector Space“ von Mikolov, Tomas et al](https://arxiv.org/pdf/1301.3781.pdf). Die Implementierung in diesem Modul basiert auf der [Gensim-Bibliothek für Word2Vec](https://radimrehurek.com/gensim/models/word2vec.html).
+
++ Die FastText-Theorie wird in diesem Dokument erläutert, das als PDF-Download zur Verfügung steht: [„Enriching Word Vectors with Subword Information“ von Bojanowski, Piotr et al](https://arxiv.org/pdf/1607.04606.pdf). Die Implementierung in diesem Modul basiert auf der [Gensim-Bibliothek für FastText](https://radimrehurek.com/gensim/models/fasttext.html).
+
++ Bei dem vortrainierten GloVe-Modell handelt es sich um glove-wiki-gigaword-100. Dies ist eine Sammlung vortrainierter Vektoren, die auf einem Wikipedia-Textkorpus basiert, der 5,6 Milliarden Token und 400.000 Vokabularwörter enthält, bei denen Groß-/Kleinschreibung nicht berücksichtigt wird. Ein PDF-Download ist verfügbar: [GloVe: Globale Vektoren für die Wortdarstellung](https://nlp.stanford.edu/pubs/glove.pdf).
 
 ## <a name="how-to-configure-convert-word-to-vector"></a>Konfigurieren der Konvertierung von Wörtern in Vektoren
 
-Dieses Modul erfordert ein Dataset mit einer Textspalte, besser ist vorverarbeiteter Text.
+Dieses Modul erfordert ein Dataset mit einer Textspalte. Vorverarbeiteter Text ist besser.
 
 1. Fügen Sie das Modul zum **Konvertieren von Wörtern in Vektoren** Ihrer Pipeline hinzu.
 
@@ -46,35 +53,35 @@ Dieses Modul erfordert ein Dataset mit einer Textspalte, besser ist vorverarbeit
 
 3. Wählen Sie für **Zielspalte** nur eine Spalte aus, die zu verarbeitenden Text enthält.
 
-    Da dieses Modul im Allgemeinen ein Vokabular aus Text erstellt, unterscheidet sich der Inhalt der verschiedenen Spalten, was zu unterschiedlichen Vokabularinhalten führt, daher akzeptiert das Modul nur eine Zielspalte.
+    Da dieses Modul ein Vokabular aus Text erstellt, unterscheidet sich der Inhalt der verschiedenen Spalten, was zu unterschiedlichen Vokabularinhalten führt. Aus diesem Grund akzeptiert das Modul nur eine Zielspalte.
 
-4. Wählen Sie für die **Word2Vec-Strategie** zwischen `GloVe pretrained English Model`, `Gensim Word2Vec` und `Gensim FastText`.
+4. Treffen Sie Ihre Wahl für **Word2Vec strategy** (Word2Vec-Strategie) aus **GloVe pretrained English Model** (vortrainiertes englisches GloVe-Modell), **Gensim Word2Vec** und **Gensim FastText**.
 
-5. Wenn die **Wort2Vec-Strategie** entweder `Gensim Word2Vec` oder `Gensim FastText` entspricht:
+5. Wenn **Word2Vec strategy** **Gensim Word2Vec** oder **Gensim FastText** ist:
 
-    + **Word2Vec-Trainingsalgorithmus**. Wählen Sie zwischen `Skip_gram` und `CBOW`. Der Unterschied wird in dem ursprünglichen [Dokument](https://arxiv.org/pdf/1301.3781.pdf) eingeführt.
+    + Treffen Sie Ihre Wahl für **Word2Vec Training Algorithm** (Word2Vec-Trainingsalgorithmus) aus **Skip_gram** und **CBOW**. Der Unterschied wird im ursprünglichen [Dokument (PDF)](https://arxiv.org/pdf/1301.3781.pdf) eingeführt.
 
-        Die Standardmethode ist `Skip_gram`.
+        Die Standardmethode ist **Skip_gram**.
 
-    + **Länge der Worteinbettung**. Geben Sie die Dimensionalität der Wortvektoren an. Entspricht dem Parameter `size` in gensim.
+    + Geben Sie für **Length of word embedding** (Länge der Worteinbettung) die Dimensionalität der Wortvektoren an. Diese Einstellung entspricht dem Parameter `size` in Gensim.
 
-        Der Standardwert für die Einbettungsgröße ist 100.
+        Die standardmäßige Einbettungsgröße ist 100.
 
-    + **Größe des Kontextfensters**. Geben Sie den maximalen Abstand zwischen dem vorhergesagten Wort und dem aktuellen Wort an. Entspricht dem Parameter `window` in gensim.
+    + Geben Sie für **Context window size** (Kontextfenstergröße) den maximalen Abstand zwischen dem vorhergesagten Wort und dem aktuellen Wort an. Diese Einstellung entspricht dem Parameter `window` in Gensim.
 
-        Die Standardfenstergröße ist 5.
+        Die Standardfenstergröße beträgt 5.
 
-    + **Anzahl der Epochen**. Geben Sie die Anzahl der über den Korpus verlaufenden Epochen (Iterationen) an. Entspricht dem Parameter `iter` in gensim.
+    + Geben Sie für **Number of epochs** (Anzahl der Epochen) die Anzahl der über den Korpus verlaufenden Epochen (Iterationen) an. Diese Einstellung entspricht dem Parameter `iter` in Gensim.
 
         Die Standardanzahl der Epochen ist 5.
 
-6. Geben Sie für die **maximale Vokabulargröße** die maximale Anzahl der Wörter im generierten Vokabular an.
+6. Geben Sie für die **Maximum vocabulary size** (Maximale Vokabulargröße) die maximale Anzahl der Wörter im generierten Vokabular an.
 
-    Wenn es weitere eindeutige Wörter als nur dieses gibt, dann löschen Sie die unregelmäßigen Wörter.
+    Wenn es weitere eindeutige Wörter als nur dieses gibt, löschen Sie die unregelmäßigen Wörter.
 
-    Die standardmäßige Vokabulargröße ist 10000.
+    Die standardmäßige Vokabulargröße ist 10.000.
 
-7. Geben Sie für die **Mindestwortzahl** eine Mindestwortzahl an, wodurch das Modul alle Wörter ignoriert, deren Häufigkeit niedriger als dieser Wert ist.
+7. Geben Sie für **Minimum word count** (Minimale Wortanzahl) eine minimale Wortanzahl an. Das Modul ignoriert alle Wörter, deren Häufigkeit unter diesem Wert liegt.
 
     Der Standardwert ist 5.
 
@@ -84,17 +91,15 @@ Dieses Modul erfordert ein Dataset mit einer Textspalte, besser ist vorverarbeit
 
 Das Modul hat eine Ausgabe:
 
-+ **Vokabular mit Einbettungen**: Enthält das generierte Vokabular. Zusammen mit der Einbettung jedes Worts nimmt eine Dimension eine Spalte ein.
++ **Vokabular mit Einbettungen**: Enthält das generierte Vokabular zusammen mit der Einbettung jedes Worts. Eine Dimension belegt eine Spalte.
 
-### <a name="result-examples"></a>Beispiele für Ergebnisse
+Im folgenden Beispiel wird veranschaulicht, wie das Modul „Convert Word to Vector“ funktioniert. Dieses Modul wird mit den Standardeinstellungen auf das vorverarbeitete Wikipedia SP 500-Dataset angewendet, das in Azure Machine Learning bereitgestellt wird (Vorschau).
 
-Um zu veranschaulichen, wie das Modul zum **Konvertieren von Wörtern in Vektoren** funktioniert, wendet das folgende Beispiel dieses Modul mit den Standardeinstellungen auf das vorverarbeitete Wikipedia SP 500-Dataset an, das in Azure Machine Learning bereitgestellt wird (Vorschau).
-
-#### <a name="source-dataset"></a>Quelldataset
+### <a name="source-dataset"></a>Quelldataset
 
 Das Dataset enthält eine Kategoriespalte sowie den vollständigen Text, der von Wikipedia abgerufen wird. In dieser Tabelle werden nur einige repräsentative Beispiele angezeigt.
 
-|text|
+|Text|
 |----------|
 |nasdaq 100 component s p 500 component foundation founder location city apple campus 1 infinite loop street infinite loop cupertino california cupertino california location country united states...|
 |br nasdaq 100 nasdaq 100 component br s p 500 s p 500 component industry computer software foundation br founder charles geschke br john warnock location adobe systems...|
@@ -102,9 +107,9 @@ Das Dataset enthält eine Kategoriespalte sowie den vollständigen Text, der von
 |s p 500 s p 500 component industry conglomerate company conglomerate foundation founder location city fairfield connecticut fairfield connecticut location country usa area...|
 |br s p 500 s p 500 component foundation 1903 founder william s harley br arthur davidson harley davidson founder arthur davidson br walter davidson br william a davidson location...|
 
-#### <a name="output-vocabulary-with-embeddings"></a>Ausgabevokabular mit Einbettungen
+### <a name="output-vocabulary-with-embeddings"></a>Ausgabevokabular mit Einbettungen
 
-Die folgende Tabelle enthält die Ausgabe dieses Moduls, das das Wikipedia SP 500-Dataset als Eingabe übernimmt. Die äußerste linke Spalte gibt das Vokabular an, dessen Einbettungsvektor wird durch die Werte der übrigen Spalten in derselben Zeile dargestellt.
+Die folgende Tabelle enthält die Ausgabe dieses Moduls, das das Wikipedia SP 500-Dataset als Eingabe übernimmt. In der Spalte ganz links wird das Vokabular angegeben. Dessen Einbettungsvektor wird durch die Werte der übrigen Spalten in derselben Zeile dargestellt.
 
 |Vokabular|Embedding dim 0|Embedding dim 1|Embedding dim 2|Embedding dim 3|Embedding dim 4|Embedding dim 5|...|Embedding dim 99|
 |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
@@ -121,23 +126,23 @@ campus|-0,281835|0,29312|0,106966|-0,031385|0,100777|0,061452|...|0,05978
 infinite|-0,263074|0,245753|0,07058|-0,164666|0,162857|-0,027345|...|-0,0525
 loop|-0,391421|0,52366|0,141503|-0,105423|0,084503|-0,018424|...|-0,0521
 
-In diesem Beispiel haben wir die Voreinstellung `Gensim Word2Vec` als **Word2Vec-Strategie** verwendet. Der **Trainingsalgorithmus** ist `Skip-gram`, die **Länge der Worteinbettung** ist 100 und somit haben 100 Einbettungsspalten.
+In diesem Beispiel haben wir den Standard **Gensim Word2Vec** für **Word2Vec strategy** verwendet, und **Training Algorithm** ist **Skip-gram**. **Length of word Embedding** ist 100, daher haben wir 100 Einbettungsspalten.
 
 ## <a name="technical-notes"></a>Technische Hinweise
 
 Dieser Abschnitt enthält Tipps und Antworten auf häufig gestellte Fragen.
 
-+ Unterschied zwischen Onlinetraining und vortrainiertem Modell
++ Unterschied zwischen Onlinetraining und vortrainiertem Modell:
 
-    In diesem Modul zum **Konvertieren von Wörtern in Vektoren** wurden drei verschiedene Strategien, zwei Onlinetrainingsmodelle und ein vortrainiertes Modell bereitgestellt. Das Onlinetrainingsmodell verwendet Ihr Eingabedataset als Trainingsdaten, generiert während des Trainings Vokabular und Wortvektoren, während das vortrainierte Modell bereits durch viel größere Textkorpusse wie Wikipedia- oder Twitter-Text trainiert wird, sodass das vortrainierte Modell eigentlich eine Sammlung von (Wort, Einbettung)-Paaren ist.  
+    In diesem Modul „Convert Word to Vector“ wurden drei verschiedene Strategien bereitgestellt: zwei Onlinetrainingsmodelle und ein vortrainiertes Modell. Bei den Onlinetrainingsmodellen wird Ihr Eingabedataset als Trainingsdaten verwendet, und während des Trainings werden Vokabular und Wortvektoren generiert. Das vortrainierte Modell wird bereits von einem viel größeren Textkorpus trainiert, z. B. Wikipedia oder Twitter-Text. Das vortrainierte Modell ist tatsächlich eine Sammlung von Wort-/Einbettungspaaren.  
 
-    Wenn das mit Glove vortrainierte Modell als Wortvektorisierungsstrategie gewählt wird, fasst es ein Vokabular aus dem Eingabedataset zusammen und erzeugt einen Einbettungsvektor für jedes Wort aus dem vortrainierten Modell. Ohne Onlinetraining könnte die Verwendung des vortrainierten Modells entsprechende Trainingszeit einsparen und eine bessere Leistung aufweisen, insbesondere wenn die Größe des Eingabedatasets relativ klein ist.
+    Wenn das vortrainierte GloVe-Modell als Strategie für die Wortvektorisierung ausgewählt wird, wird ein Vokabular aus dem Eingabedataset zusammengefasst und für jedes Wort aus dem vortrainierten Modell ein Einbettungsvektor generiert. Ohne Onlinetraining kann die Verwendung eines vortrainierten Modells Trainingszeit sparen. Dies bietet eine bessere Leistung, insbesondere wenn das Eingabedataset relativ klein ist.
 
-+ Größe der Einbettung
++ Größe der Einbettung:
 
-    Im Allgemeinen wird die Länge der Worteinbettung auf einige Hundert (z. B. 100, 200, 300) festgelegt, um eine angemessene Leistung zu erzielen, da eine kleine Einbettungsgröße einen geringen Vektorraum bedeutet, was zu Konflikten bei der Worteinbettung führen kann.  
+    Im Allgemeinen ist die Länge der Worteinbettung auf ein paar hundert (z. B. 100, 200, 300) festgelegt, um eine gute Leistung zu erzielen. Der Grund hierfür ist, dass aus einer kleinen Einbettungsgröße ein kleiner Vektorraum resultiert, was beim Einbetten von Wörtern zu Kollisionen führen kann.  
 
-    Bei vortrainierten Modellen ist die Länge der Worteinbettungen festgelegt, bei dieser Implementierung beträgt die Einbettungsgröße von „glove-wiki-gigaword-100“ 100.
+    Bei vortrainierten Modellen ist die Länge der Worteinbettungen fest. In dieser Implementierung beträgt die Einbettungsgröße von glove-wiki-gigaword-100 100.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

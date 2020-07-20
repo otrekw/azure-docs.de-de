@@ -4,16 +4,16 @@ description: So stellen Sie das Diagnose-UX-Tool für Windows Virtual Desktop be
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362338"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -195,7 +195,8 @@ So legen Sie den Umleitungs-URI fest
 6. Wählen Sie im Dropdownmenü unter „Typ“ **Web** aus.
 7. Geben Sie die URL von der Übersichtseite der App ein, und fügen Sie an deren Ende **/security/signin-callback** hinzu. Beispiel: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
-   ![Die Seite „Umleitungs-URI“](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Die Seite „Umleitungs-URI“](../media/redirect-uri-page.png)
 
 8. Wechseln Sie nun zu Ihren Azure-Ressourcen, wählen Sie die Azure App Services-Ressource mit dem Namen aus, den Sie in der Vorlage angegeben haben, und navigieren Sie zu der damit verknüpften URL. (Wenn der in der Vorlage verwendete Name beispielsweise `contosoapp45` war, dann lautet Ihre zugeordnete URL <https://contosoapp45.azurewebsites.net>.)
 9. Melden Sie sich mit dem entsprechenden Azure Active Directory-Benutzerkonto an.
@@ -226,7 +227,7 @@ Aktivitäten werden nach Zeitstempel sortiert, beginnend mit der aktuellsten Akt
 
 Verbindungsaktivitäten können mehr als einen Fehler aufweisen. Sie können den Aktivitätstyp erweitern, um alle anderen Fehler anzuzeigen, auf die der Benutzer gestoßen ist. Wählen Sie den Namen des Fehlercodes aus, um ein Dialogfeld zu öffnen, in dem weitere Informationen dazu angezeigt werden.
 
-### <a name="investigate-the-session-host"></a>Untersuchen des Sitzungshosts 
+### <a name="investigate-the-session-host"></a>Untersuchen des Sitzungshosts
 
 Suchen Sie in den Suchergebnissen den Sitzungshost, über den Sie Informationen abrufen möchten, und wählen Sie ihn aus.
 

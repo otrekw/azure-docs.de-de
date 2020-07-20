@@ -3,12 +3,12 @@ title: Entwicklerressourcen – Language Understanding
 description: SDKs, REST-APIs und CLI unterstützen Sie beim Entwickeln von LUIS-Anwendungen (Language Understanding) in Ihrer Programmiersprache. Verwalten Sie Ihre Azure-Ressourcen und LUIS-Vorhersagen.
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 27212f30c90abb20e7ded2eee01365c7b023f851
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758060"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610784"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST- und CLI-Entwicklerressourcen für LUIS (Language Understanding)
 
@@ -72,6 +72,10 @@ In der folgende Tabelle werden die Parameter erläutert, die in der vorherigen T
 |`q` oder `query`|Äußerungstext, der von der Clientanwendung gesendet wird, wie z.B. ein Chatbot|
 |`version`|Versionsname aus 10 Zeichen|
 |`slot`| `production` oder `staging`|
+
+### <a name="rest-query-string-parameters"></a>REST-Abfragezeichenfolgenparameter
+
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ## <a name="app-schema"></a>App-Schema
 

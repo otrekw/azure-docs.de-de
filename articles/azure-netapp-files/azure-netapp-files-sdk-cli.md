@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 93d51681a703258477baa81cc8737fefd4955e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731677"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045466"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDKs und CLI-Tools
 
@@ -44,17 +44,12 @@ In der folgenden Tabelle sind die unterstützten CLI-Tools und die zugehörigen 
 
 |    Tool    |    Befehlsreferenz    |
 |------------------|--------------------------------------------|
-|    Azure-Befehlszeilenschnittstelle  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
+|    Azure CLI  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
 |    PowerShell   |    [Azure PowerShell für Azure NetApp Files](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
 
 ## <a name="code-samples"></a>Codebeispiele
 
-In der folgenden Tabelle sind die Codebeispiele für Ihre Referenz aufgeführt.   
-
-|    Sprache/Tool    |    Codebeispiele: Dokumentation    |
-|------------------|--------------------------------------------|
-|    .NET   |    [Azure NetApp Files SDK-Beispiel für .NET Core](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
-|    Python    |    [Azure NetApp Files SDK-Beispiel für Python](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+Informationen finden Sie unter [Codebeispiele für Azure NetApp Files](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files).
 
 ## <a name="next-steps"></a>Nächste Schritte   
  [Herunterladen von Azure SDKs](https://azure.microsoft.com/downloads/)

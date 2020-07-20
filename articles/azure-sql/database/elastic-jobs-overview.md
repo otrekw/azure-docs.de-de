@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 995d70419edb374c3761fe2f989ce3a757cc7a47
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85251165"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Falls Sie noch keine Aufträge für die elastische Datenbank verwendet haben, fi
 
 ## <a name="create-and-configure-the-agent"></a>Erstellen und Konfigurieren des Agents
 
-1. Erstellen Sie eine leere SQL-Datenbank (S0 oder höher), oder geben Sie eine entsprechende Datenbank an. Diese Datenbank wird bei der Erstellung des Agents für elastische Aufträge als *Auftragsdatenbank* verwendet.
+1. Erstellen Sie eine leere Datenbank (S0 oder höher), oder geben Sie eine entsprechende Datenbank an. Diese Datenbank wird bei der Erstellung des Agents für elastische Aufträge als *Auftragsdatenbank* verwendet.
 2. Erstellen Sie einen Agent für elastische Aufträge (entweder über das [Portal](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) oder mithilfe von [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)).
 
    ![Erstellen des Agents für elastische Aufträge](./media/elastic-jobs-overview/create-elastic-job-agent.png)

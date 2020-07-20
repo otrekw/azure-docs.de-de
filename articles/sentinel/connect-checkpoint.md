@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Check Point-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Check Point-Daten mit Azure Sentinel verknüpfen.
+description: Konfigurieren Sie Ihre Check Point-Appliance so, dass sie Syslog-Nachrichten im CEF-Format über den Syslog-Agent an Ihren Azure Sentinel-Arbeitsbereich weiterleitet.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 70836ec557eff1be035d92e8e7db30a882e05fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566064"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>Verbinden von Check Point mit Azure Sentinel
 

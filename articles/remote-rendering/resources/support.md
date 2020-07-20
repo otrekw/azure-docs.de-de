@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8c471687579dfe30b913197c6f080a450f5f3449
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82107602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782516"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Supportoptionen für Azure Remote Rendering
 
@@ -52,6 +52,11 @@ Am Ende jedes Dokumentationsartikels können Sie ein GitHub-Issue öffnen, um Fe
 ## <a name="provide-product-feedback"></a>Abgeben von Produktfeedback
 
 Als Feedback können Sie eine Idee oder Anregung für den Azure Remote Rendering-Dienst einreichen, oder Sie können über Ideen, die andere übermittelt haben, abstimmen. Besuchen Sie dazu das [Feedbackforum für Azure Remote Rendering](https://feedback.azure.com/forums/928696-azure-remote-rendering).
+
+
+## <a name="microsoft-qa"></a>Microsoft Q&A (Fragen und Antworten)
+
+Bei [Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html), der bevorzugten Azure-Plattform für Communitysupport, erhalten Sie von Microsoft-Technikern, Azure MVPs (Most Valuable Professionals) oder unserer fachkundigen Community schnell und zuverlässig Antworten auf technische Produktfragen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

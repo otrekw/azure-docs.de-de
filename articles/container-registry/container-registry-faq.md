@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390362"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -220,7 +220,7 @@ ACR unterstützt [benutzerdefinierte Rollen](container-registry-roles.md), die u
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  Oder weisen Sie die Rolle einem Dienstprinzipal zu, der anhand seiner Anwendungs-ID identifiziert wird:
+  Alternativ dazu können Sie die Rolle einem Dienstprinzipal zuweisen, der anhand seiner Anwendungs-ID identifiziert wird:
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -269,6 +269,7 @@ Das Einrichten einer Azure Container Registry für den anonymen (öffentlichen) 
 - [Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Warum kann das Azure-Portal keine Repositorys oder Tags abrufen?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Warum schlägt meine Pull- oder Pushanforderung mit einem unzulässigen Vorgang fehl?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [Repositoryformat ist ungültig oder wird nicht unterstützt](#repository-format-is-invalid-or-unsupported)
 - [Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Überprüfen der Integrität mit `az acr check-health`
@@ -438,6 +439,13 @@ Hier finden Sie einige Szenarios, bei denen Vorgänge möglicherweise nicht zul�
 * Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) oder im Azure-Portal ein Upgrade auf einen unterstützten [Tarif](https://aka.ms/acr/skus) durch.
 * Das Image oder Repository ist möglicherweise gesperrt, sodass es nicht gelöscht oder aktualisiert werden kann. Sie können den Befehl [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) verwenden, um aktuelle Attribute anzuzeigen.
 * Einige Vorgänge sind nicht zulässig, wenn das Image in Quarantäne gestellt wird. Weitere Informationen zur Quarantäne finden Sie [hier](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+* Möglicherweise hat Ihre Registrierung das [Speicherlimit](container-registry-skus.md#service-tier-features-and-limits) erreicht.
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>Repositoryformat ist ungültig oder wird nicht unterstützt
+
+Wenn Sie beim Angeben eines Repositorynamens in Repositoryvorgängen einen Fehler wie „nicht unterstütztes Repositoryformat“, „ungültiges Format“ oder „die angeforderten Daten sind nicht vorhanden“ sehen, überprüfen Sie die richtige Schreibweise einschließlich Groß- und Kleinschreibung des Namens. Gültige Repositorynamen dürfen nur alphanumerische Kleinbuchstaben, Punkte, Bindestriche, Unterstriche und Schrägstriche enthalten. 
+
+Vollständige Repositorybenennungsregeln finden Sie in der Spezifikation der [Open Container Initiative-Distribution](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?
 

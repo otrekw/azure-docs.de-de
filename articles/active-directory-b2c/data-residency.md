@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/26/2019
+ms.topic: reference
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 46d8fb33c59fc5f0b6d844831e5ee1c937654afb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: bb9c6dbf9984ec81fbd4b93a61552211928d0f0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388713"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Regionale Verfügbarkeit und Datenresidenz
 
@@ -41,7 +41,7 @@ Benutzerdaten von Azure AD B2C werden entweder in den USA, in Europa oder in der
 
 Die Datenresidenz wird durch das Land oder die Region bestimmt, das bzw. die Sie beim [Erstellen eines Azure AD B2C-Mandanten](tutorial-create-tenant.md) auswählen:
 
-![Screenshot eines Vorschaumandanten](./media/data-residency/data-residency-b2c-tenant.png)
+![Screenshot des Formulars „Mandanten erstellen“, Auswahl von Land oder Region.](./media/data-residency/data-residency-b2c-tenant.png)
 
 Für die folgenden Länder/Regionen werden die Daten in den **USA** gespeichert:
 
@@ -69,4 +69,4 @@ Es gibt **keinen Migrationspfad** von einem B2C-Vorschaumandanten zu einem B2C-P
 
 Beim Löschen eines B2C-Vorschaumandanten und dem Erstellen eines B2C-Produktionsmandanten mit demselben Domänennamen können bekannte Probleme auftreten. *Sie müssen einen B2C-Produktionsmandanten mit einem anderen Domänennamen erstellen*.
 
-![Screenshot eines Vorschaumandanten](./media/data-residency/preview-b2c-tenant.png)
+![Screenshot eines Mandantentyps als Vorschaumandant.](./media/data-residency/preview-b2c-tenant.png)

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85481730"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -55,7 +55,14 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 * Eine Netzwerkkonfigurationsdatei (NETCFG-Datei, nur für klassische VNets). Weitere Informationen finden Sie im Artikel [Konfigurieren eines Virtual Network mit einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welche Adressbereiche kann ich in meinen VNets verwenden?
-Alle in [RFC 1918](https://tools.ietf.org/html/rfc1918) definierten IP-Adressbereiche. Beispiel: 10.0.0.0/16. Sie können die folgenden Adressbereiche nicht hinzufügen:
+Es wird empfohlen, die in [RFC 1918](https://tools.ietf.org/html/rfc1918) aufgelisteten Adressbereiche zu verwenden, die von der IETF für private, nicht routingfähige Adressräume reserviert wurden:
+* 10.0.0.0 – 10.255.255.255 (Präfix: 10/8)
+* 172.16.0.0 – 172.31.255.255 (Präfix: 172.16/12)
+* 192.168.0.0 – 192.168.255.255 (Präfix: 192.168/16)
+
+Andere Adressräume funktionieren möglicherweise, können aber unerwünschte Nebeneffekte haben.
+
+Die folgenden Adressbereiche können nicht hinzugefügt werden:
 * 224.0.0.0/4 (Multicast)
 * 255.255.255.255/32 (Übertragung)
 * 127.0.0.0/8 (Loopback)

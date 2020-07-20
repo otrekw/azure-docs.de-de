@@ -4,20 +4,23 @@ description: Hier erfahren Sie, wie Sie einen Automatisierungsdienstprinzipal de
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697535"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077557"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle 
 
- Um unbeaufsichtigte PowerShell-Tasks zu automatisieren, muss ein Dienstprinzipal auf dem verwalteten Analysis Services-Server über die Rechte eines **Serveradministrators** verfügen. In diesem Artikel wird beschrieben, wie Sie auf einem Azure AS-Server einen Dienstprinzipal zur Serveradministratorrolle hinzufügen. Sie können dies mithilfe von SQL Server Management Studio oder einer Resource Manager-Vorlage durchführen.
+ Um unbeaufsichtigte PowerShell-Tasks zu automatisieren, muss ein Dienstprinzipal auf dem verwalteten Analysis Services-Server über die Rechte eines **Serveradministrators** verfügen. In diesem Artikel wird beschrieben, wie Sie auf einem Azure AS-Server einen Dienstprinzipal zur Serveradministratorrolle hinzufügen. Sie können dies mithilfe von SQL Server Management Studio oder einer Resource Manager-Vorlage durchführen. 
+
+> [!NOTE]
+> Dienstprinzipale müssen direkt zur Serveradministratorrolle hinzugefügt werden. Das Hinzufügen eines Dienstprinzipals zu einer Sicherheitsgruppe und das anschließende Hinzufügen dieser Sicherheitsgruppe zur Serveradministratorrolle wird nicht unterstützt. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Bevor Sie diese Aufgabe ausführen, muss ein Dienstprinzipal in Azure Active Directory registriert sein.

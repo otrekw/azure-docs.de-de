@@ -7,18 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678357"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Benutzerdefinierte Daten und cloud-init auf virtuellen Azure-Computern
 
-## <a name="what-is-custom-data"></a>Was sind benutzerdefinierte Daten?
-
-Kunden fragen häufig, wie sie zum Zeitpunkt der Bereitstellung ein Skript oder andere Metadaten in einen virtuellen Microsoft Azure-Computer einfügen können.  In anderen Clouds wird dieses Konzept häufig als Benutzerdaten bezeichnet.  In Microsoft Azure verfügen wir über ein ähnliches Feature, das als benutzerdefinierte Daten bezeichnet wird. 
+Möglicherweise müssen Sie zum Zeitpunkt der Bereitstellung ein Skript oder andere Metadaten in einen virtuellen Microsoft Azure-Computer einfügen.  In anderen Clouds wird dieses Konzept häufig als Benutzerdaten bezeichnet.  In Microsoft Azure verfügen wir über ein ähnliches Feature, das als benutzerdefinierte Daten bezeichnet wird. 
 
 Benutzerdefinierte Daten werden nur beim ersten Start bzw. beim ersten Setup für die VM verfügbar gemacht. Dies wird als Bereitstellung bezeichnet. Die Bereitstellung ist der Vorgang, bei dem VM-Erstellungsparameter (z. B. Hostname, Benutzername, Kennwort, Zertifikate, benutzerdefinierte Daten, Schlüssel usw.) für den virtuellen Computer verfügbar gemacht werden. Dabei werden sie von einem Bereitstellungs-Agent verarbeitet, z. B. dem [Linux-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) und [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init). 
 

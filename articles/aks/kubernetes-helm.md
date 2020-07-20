@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie das Helm-Paketerstellungstool verwenden, um C
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 06/24/2020
 ms.author: zarhoads
-ms.openlocfilehash: e46bed5fc9fd83a907f8c9e716317a54548c58cc
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 6ee99eee02e874208106d39c6442f54f59f95dad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361607"
 ---
 # <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Installieren vorhandener Anwendungen mit Helm in Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ Außerdem muss die Helm CLI installiert sein, d. h. der Client, der auf Ihrem En
 
 ## <a name="verify-your-version-of-helm"></a>Überprüfen Ihrer Version von Helm
 
-Verwenden Sie den Befehl `helm version`, um die Version von Helm zu überprüfen, die Sie installiert haben:
+Überprüfen Sie mit dem Befehl `helm version`, ob Helm 3 installiert ist:
 
 ```console
 helm version
@@ -43,8 +43,6 @@ $ helm version
 
 version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6e2a28b6", GitTreeState:"clean", GoVersion:"go1.13.4"}
 ```
-
-Befolgen Sie für Helm v3 die Schritte im [Abschnitt zu Helm v3](#install-an-application-with-helm-v3). Befolgen Sie für Helm v2 die Schritte im [Abschnitt zu Helm v2](#install-an-application-with-helm-v2).
 
 ## <a name="install-an-application-with-helm-v3"></a>Installieren einer Anwendung mit Helm v3
 
@@ -65,7 +63,6 @@ helm search repo stable
 ```
 
 Die folgende verkürzte Beispielausgabe veranschaulicht einige der verfügbaren Helm-Diagramme:
-
 
 ```console
 $ helm search repo stable
@@ -114,7 +111,13 @@ stable/datadog                          1.38.3          6.14.0                  
 ...
 ```
 
-Verwenden Sie zum Aktualisieren der Liste der Diagramme den Befehl [helm repo update][helm-repo-update]. Das folgende Beispiel stellt das erfolgreiche Update eines Repositorys dar:
+Verwenden Sie zum Aktualisieren der Liste der Diagramme den Befehl [helm repo update][helm-repo-update].
+
+```console
+helm repo update
+```
+
+Das folgende Beispiel stellt das erfolgreiche Update eines Repositorys dar:
 
 ```console
 $ helm repo update
@@ -154,7 +157,13 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-Verwenden Sie den Befehl `kubectl get services`, um den *EXTERNAL-IP*-Wert Ihres Dienstanbieters abzurufen. Der folgende Befehl zeigt z.B. den *EXTERNAL-IP*-Wert für den Dienst *my-nginx-ingress-controller* an:
+Verwenden Sie den Befehl `kubectl get services`, um den *EXTERNAL-IP*-Wert Ihres Dienstanbieters abzurufen.
+
+```console
+kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
+```
+
+Der folgende Befehl zeigt z.B. den *EXTERNAL-IP*-Wert für den Dienst *my-nginx-ingress-controller* an:
 
 ```console
 $ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
@@ -196,185 +205,6 @@ $ helm uninstall my-nginx-ingress
 release "my-nginx-ingress" uninstalled
 ```
 
-## <a name="install-an-application-with-helm-v2"></a>Installieren einer Anwendung mit Helm v2
-
-### <a name="create-a-service-account"></a>Erstellen eines Dienstkontos
-
-Vor der Bereitstellung von Helm in einem RBAC-fähigen AKS-Cluster benötigen Sie ein Dienstkonto und eine Rollenbindung für den Tiller-Dienst. Weitere Informationen zum Sichern von Helm/Tiller in einem RBAC-fähigen Cluster finden Sie unter [Tiller, Namespaces, and RBAC (Tiller, Namespaces und RBAC)][tiller-rbac]. Überspringen Sie diesen Schritt, wenn Ihr AKS-Cluster nicht RBAC-fähig ist.
-
-Erstellen Sie eine Datei namens `helm-rbac.yaml`, und fügen Sie den folgenden YAML-Code ein:
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: tiller
-  namespace: kube-system
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: tiller
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: tiller
-    namespace: kube-system
-```
-
-Erstellen Sie das Dienstkonto und die Rollenbindung mithilfe des Befehls `kubectl apply`:
-
-```console
-kubectl apply -f helm-rbac.yaml
-```
-
-### <a name="secure-tiller-and-helm"></a>Schützen von Tiller und Helm
-
-Der Helm-Client und der Tiller-Dienst verwenden TLS/SSL, um sich gegenseitig zu authentifizieren und miteinander zu kommunizieren. Diese Authentifizierungsmethode unterstützt den Schutz von Kubernetes-Clustern und legt fest, welche Dienste bereitgestellt werden können. Sie können eigene signierte Zertifikate generieren, um die Sicherheit zu erhöhen. Jeder Helm-Benutzer würde ein eigenes Clientzertifikat erhalten, und Tiller würde im Kubernetes-Cluster initialisiert werden, auf den die Zertifikate angewendet wurden. Weitere Informationen finden Sie unter [Verwenden von TLS/SSL zwischen Helm und Tiller][helm2-ssl].
-
-Mit einem RBAC-fähigen Kubernetes-Cluster können Sie steuern, über welche Zugriffsebene Tiller für den Cluster verfügt. Sie können den Kubernetes-Namespace definieren, in dem Tiller bereitgestellt wurde, und einschränken, in welchen Namespaces Tiller Ressourcen bereitstellen kann. Durch diesen Ansatz können Sie Tiller-Instanzen in verschiedenen Namespaces erstellen, die Bereitstellung einschränken und die Benutzer des Helm-Clients auf bestimmte Namespaces beschränken. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung mit Helm][helm2-rbac].
-
-### <a name="configure-helm"></a>Konfigurieren von Helm
-
-Verwenden Sie den Befehl [helm init][helm2-init], um Tiller in einem AKS-Cluster bereitzustellen. Wenn Ihr Cluster nicht RBAC-fähig ist, entfernen Sie das Argument `--service-account` und den Wert. In den folgenden Beispielen wird auch [history-max][helm2-history-max] auf 200 festgelegt.
-
-Wenn Sie TLS/SSL für Tiller und Helm konfiguriert haben, überspringen Sie diesen grundlegenden Initialisierungsschritt, und stellen Sie stattdessen wie im nächsten Beispiel dargestellt den erforderlichen Parameter `--tiller-tls-` bereit.
-
-```console
-helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
-```
-
-Wenn Sie TLS/SSL zwischen Helm und Tiller konfiguriert haben, stellen Sie wie im folgenden Beispiel dargestellt die `--tiller-tls-*`-Parameter und die Namen Ihrer eigenen Zertifikate bereit:
-
-```console
-helm init \
-    --tiller-tls \
-    --tiller-tls-cert tiller.cert.pem \
-    --tiller-tls-key tiller.key.pem \
-    --tiller-tls-verify \
-    --tls-ca-cert ca.cert.pem \
-    --history-max 200 \
-    --service-account tiller \
-    --node-selectors "beta.kubernetes.io/os=linux"
-```
-
-### <a name="find-helm-charts"></a>Suchen von Helm-Diagrammen
-
-Helm-Diagramme dienen zum Bereitstellen von Anwendungen in einem Kubernetes-Cluster. Verwenden Sie zum Suchen nach zuvor erstellten Helm-Charts den Befehl [helm search][helm2-search]:
-
-```console
-helm search
-```
-
-Die folgende verkürzte Beispielausgabe veranschaulicht einige der verfügbaren Helm-Diagramme:
-
-```
-$ helm search
-
-NAME                           CHART VERSION    APP VERSION  DESCRIPTION
-stable/aerospike               0.1.7            v3.14.1.2    A Helm chart for Aerospike in Kubernetes
-stable/anchore-engine          0.1.7            0.1.10       Anchore container analysis and policy evaluatio...
-stable/apm-server              0.1.0            6.2.4        The server receives data from the Elastic APM a...
-stable/ark                     1.0.1            0.8.2        A Helm chart for ark
-stable/artifactory             7.2.1            6.0.0        Universal Repository Manager supporting all maj...
-stable/artifactory-ha          0.2.1            6.0.0        Universal Repository Manager supporting all maj...
-stable/auditbeat               0.1.0            6.2.4        A lightweight shipper to audit the activities o...
-stable/aws-cluster-autoscaler  0.3.3                         Scales worker nodes within autoscaling groups.
-stable/bitcoind                0.1.3            0.15.1       Bitcoin is an innovative payment network and a ...
-stable/buildkite               0.2.3            3            Agent for Buildkite
-stable/burrow                  0.4.4            0.17.1       Burrow is a permissionable smart contract machine
-stable/centrifugo              2.0.1            1.7.3        Centrifugo is a real-time messaging server.
-stable/cerebro                 0.1.0            0.7.3        A Helm chart for Cerebro - a web admin tool tha...
-stable/cert-manager            v0.3.3           v0.3.1       A Helm chart for cert-manager
-stable/chaoskube               0.7.0            0.8.0        Chaoskube periodically kills random pods in you...
-stable/chartmuseum             1.5.0            0.7.0        Helm Chart Repository with support for Amazon S...
-stable/chronograf              0.4.5            1.3          Open-source web application written in Go and R...
-stable/cluster-autoscaler      0.6.4            1.2.2        Scales worker nodes within autoscaling groups.
-stable/cockroachdb             1.1.1            2.0.0        CockroachDB is a scalable, survivable, strongly...
-stable/concourse               1.10.1           3.14.1       Concourse is a simple and scalable CI system.
-stable/consul                  3.2.0            1.0.0        Highly available and distributed service discov...
-stable/coredns                 0.9.0            1.0.6        CoreDNS is a DNS server that chains plugins and...
-stable/coscale                 0.2.1            3.9.1        CoScale Agent
-stable/dask                    1.0.4            0.17.4       Distributed computation in Python with task sch...
-stable/dask-distributed        2.0.2                         DEPRECATED: Distributed computation in Python
-stable/datadog                 0.18.0           6.3.0        DataDog Agent
-...
-```
-
-Verwenden Sie zum Aktualisieren der Liste der Diagramme den Befehl [helm repo update][helm2-repo-update]. Das folgende Beispiel stellt das erfolgreiche Update eines Repositorys dar:
-
-```console
-$ helm repo update
-
-Hold tight while we grab the latest from your chart repositories...
-...Skip local chart repository
-...Successfully got an update from the "stable" chart repository
-Update Complete.
-```
-
-### <a name="run-helm-charts"></a>Ausführen von Helm-Diagrammen
-
-Verwenden Sie zum Installieren von Charts mit Helm den Befehl [helm install][helm2-install-command], und geben Sie den Namen des zu installierenden Charts an. Um die Installation eines Helm-Diagramms in Aktion zu sehen, installieren wir eine grundlegende nginx-Bereitstellung mithilfe eines Helm-Diagramms. Wenn Sie TLS/SSL konfiguriert haben, fügen Sie den `--tls`-Parameter hinzu, um Ihr Helm-Clientzertifikat zu verwenden.
-
-```console
-helm install stable/nginx-ingress \
-    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
-```
-
-Die folgende verkürzte Beispielausgabe zeigt den Bereitstellungsstatus der Kubernetes-Ressource an, die vom Helm-Diagramm erstellt wurde:
-
-```
-$ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
-
-NAME:   flailing-alpaca
-LAST DEPLOYED: Thu May 23 12:55:21 2019
-NAMESPACE: default
-STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/ConfigMap
-NAME                                      DATA  AGE
-flailing-alpaca-nginx-ingress-controller  1     0s
-
-==> v1/Pod(related)
-NAME                                                            READY  STATUS             RESTARTS  AGE
-flailing-alpaca-nginx-ingress-controller-56666dfd9f-bq4cl       0/1    ContainerCreating  0         0s
-flailing-alpaca-nginx-ingress-default-backend-66bc89dc44-m87bp  0/1    ContainerCreating  0         0s
-
-==> v1/Service
-NAME                                           TYPE          CLUSTER-IP  EXTERNAL-IP  PORT(S)                     AGE
-flailing-alpaca-nginx-ingress-controller       LoadBalancer  10.0.109.7  <pending>    80:31219/TCP,443:32421/TCP  0s
-flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none>       80/TCP                      0s
-...
-```
-
-Es dauert maximal zwei Minuten, bis *EXTERNAL-IP* für den nginx-ingress-controller-Dienst aufgefüllt ist und Sie mit einem Webbrowser auf den Dienst zugreifen können.
-
-### <a name="list-helm-releases"></a>Auflisten von Helm-Versionen
-
-Verwenden Sie zum Anzeigen einer Liste der im Cluster installierten Releases den Befehl [helm list][helm2-list]. In folgendem Beispiel wird das nginx-ingress-Release veranschaulicht, das im vorherigen Schritt bereitgestellt wurde. Wenn Sie TLS/SSL konfiguriert haben, fügen Sie den `--tls`-Parameter hinzu, um Ihr Helm-Clientzertifikat zu verwenden.
-
-```console
-$ helm list
-
-NAME                REVISION    UPDATED                     STATUS      CHART                 APP VERSION   NAMESPACE
-flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingress-1.6.13    0.24.1      default
-```
-
-### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie ein Helm-Diagramm bereitstellen, werden eine Reihe von Kubernetes-Ressourcen erstellt. Zu diesen Ressourcen gehören Pods, Bereitstellungen und Dienste. Um diese Ressourcen zu bereinigen, verwenden Sie den Befehl `helm delete`. Geben Sie dabei den Namen Ihrer Version an, die Sie mit dem vorherigen Befehl `helm list` ermittelt haben. Im folgenden Beispiel wird die Version namens *flailing-alpaca* gelöscht:
-
-```console
-$ helm delete flailing-alpaca
-
-release "flailing-alpaca" deleted
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Verwalten von Kubernetes-Anwendungsbereitstellungen mit Helm finden Sie in der Helm-Dokumentation.
@@ -391,20 +221,8 @@ Weitere Informationen zum Verwalten von Kubernetes-Anwendungsbereitstellungen mi
 [helm-repo-add]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
 [helm-search]: https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 [helm-repo-update]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
-[helm2-init]: https://v2.helm.sh/docs/helm/#helm-init
-[helm2-install-command]: https://v2.helm.sh/docs/helm/#helm-install
-[helm2-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
-[helm2-list]: https://v2.helm.sh/docs/helm/#helm-list
-[helm2-history-max]: https://v2.helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
-[helm2-rbac]: https://v2.helm.sh/docs/using_helm/#role-based-access-control
-[helm2-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
-[helm2-search]: https://v2.helm.sh/docs/helm/#helm-search
-[tiller-rbac]: https://v2.helm.sh/docs/using_helm/#tiller-namespaces-and-rbac
-[helm2-ssl]: https://v2.helm.sh/docs/using_helm/#using-ssl-between-helm-and-tiller
             
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: /cli/azure/install-azure-cli
-[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors
 [taints]: operator-best-practices-advanced-scheduler.md

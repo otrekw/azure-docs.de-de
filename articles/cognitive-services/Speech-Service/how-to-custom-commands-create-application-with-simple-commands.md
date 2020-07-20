@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307203"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362406"
 ---
 # <a name="create-application-with-simple-commands"></a>Erstellen einer Anwendung mit einfachen Befehlen
 
@@ -27,6 +27,10 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 ## <a name="create-empty-application"></a>Erstellen einer leeren Anwendung
 Erstellen Sie eine leere Anwendung für benutzerdefinierte Befehle. Weitere Informationen finden Sie in der [Schnellstartanleitung](quickstart-custom-commands-application.md). Anstatt ein Projekt zu importieren, erstellen Sie diesmal ein leeres Projekt.
 
+1. Geben Sie im Feld **Name** den Projektnamen als `Smart-Room-Lite` (oder etwas ähnliches) ein.
+1. Wählen Sie in der Liste **Sprache** die Option **Englisch (USA)** aus.
+1. Wählen Sie eine LUIS-Ressource Ihrer Wahl aus, oder erstellen Sie eine.
+
    > [!div class="mx-imgBorder"]
    > ![Erstellen eines Projekts](media/custom-commands/create-new-project.png)
 
@@ -36,7 +40,7 @@ Sie können die ausgewählte Erstellungsressource im Fenster **Neues Projekt** a
 
 ## <a name="add-turnon-command"></a>Hinzufügen des Befehls „TurnOn“
 
-In der Anwendung **smart room-lite** für benutzerdefinierte Befehle, fügen Sie einen einfachen Befehl hinzu, der eine Äußerung verarbeitet, `turn on the tv`, und antworten mit der Nachricht `Ok, turning the tv on`.
+Fügen Sie in der Anwendung **Smart-Room-Lite** für benutzerdefinierte Befehle, die Sie soeben erstellt haben, einen einfachen Befehl hinzu, der eine Äußerung `turn on the tv` verarbeitet und mit der Nachricht `Ok, turning the tv on` antwortet.
 
 1. Erstellen Sie einen neuen Befehl, indem Sie oben im linken Bereich **Neuer Befehl** auswählen. Das Fenster **Neuer Befehl** wird geöffnet.
 1. Geben Sie den Wert für das Feld **Name** als **TurnOn** ein.
@@ -74,7 +78,7 @@ Im Moment verfügen wir nicht über Parameter, sodass wir zum Abschnitt mit **Ve
 
 Als nächstes muss der Befehl über eine Vervollständigungsregel verfügen. Diese Regel teilt dem Benutzer mit, dass ein Vervollständigungsvorgang durchgeführt wird. Weitere Informationen zu Regeln und Vervollständigungsregeln finden Sie unter [Referenzen](./custom-commands-references.md).
 
-1. Wählen Sie die Standardvervollständigungsregel **Erledigt** aus, und bearbeiten Sie sie wie folgt: 
+1. Wählen Sie die Standardvervollständigungsregel **Erledigt** aus, und bearbeiten Sie sie wie folgt:
 
     
     | Einstellung    | Vorgeschlagener Wert                          | Beschreibung                                        |
@@ -84,13 +88,7 @@ Als nächstes muss der Befehl über eine Vervollständigungsregel verfügen. Die
     | **Aktionen**    | Sprachantwort senden > Einfacher Editor > Erste Variation > `Ok, turning the tv on` | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
     
 
-1. Alternativ können Sie die vorhandene Standardvervollständigungsregel löschen und eine neue erstellen, indem Sie oben im mittleren Bereich die Option **Hinzufügen** auswählen.
-1. Geben Sie einen Wert im Abschnitt **Name** an.
-1. Hinzufügen einer Aktion.
-   1. Erstellen Sie eine Aktion, indem Sie im Abschnitt **Aktionen** **Neue Aktion hinzufügen** auswählen.
-   1. Wählen Sie im Fenster **Neue Aktion** in der Liste **Typ** die Option **Sprachantwort senden** aus.
-   1. Wählen Sie unter **Antwort** die Option **Einfacher Editor** aus.
-   1. Geben Sie im Feld **Erste Variation** den Wert für die Antwort als `Ok, turning the tv on` ein.
+
 
    > [!div class="mx-imgBorder"]
    > ![Erstellen einer Sprachantwort](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ Als nächstes muss der Befehl über eine Vervollständigungsregel verfügen. Die
 1. Wählen Sie **Speichern** aus, um die Aktion zu speichern.
 1. Wählen Sie wieder im Abschnitt **Vervollständigungsregeln** **Speichern** aus, um alle Änderungen zu speichern. 
 
+
+ > [!NOTE]
+    > Es ist nicht erforderlich, die Standard-Vervollständigungsregel für den Befehl zu verwenden. Bei Bedarf können Sie die vorhandene Standard-Vervollständigungsregel löschen und eine eigene Regel hinzufügen.
 
 ### <a name="try-it-out"></a>Ausprobieren
 

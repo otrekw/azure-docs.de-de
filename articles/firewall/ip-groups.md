@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565544"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>IP-Adressgruppen (Vorschau) in Azure Firewall
-
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="ip-groups-in-azure-firewall"></a>IP-Adressgruppen in Azure Firewall
 
 IP-Adressgruppen ermöglichen Ihnen das Gruppieren und Verwalten von IP-Adressen für Azure Firewall-Regeln auf folgende Weise:
 
@@ -40,7 +37,7 @@ Die folgenden Beispiele für das IPv4-Adressformat sind für die Verwendung in I
 
 ## <a name="create-an-ip-group"></a>Erstellen einer IP-Adressgruppe
 
-Eine IP-Adressgruppe kann über das Azure-Portal, die Azure CLI oder die Rest-API erstellt werden. Weitere Informationen finden Sie unter [Erstellen einer IP-Adressgruppe (Vorschau)](create-ip-group.md).
+Eine IP-Adressgruppe kann über das Azure-Portal, die Azure CLI oder die Rest-API erstellt werden. Weitere Informationen finden Sie unter [Erstellen einer IP-Adressgruppe](create-ip-group.md).
 
 ## <a name="browse-ip-groups"></a>Durchsuchen von IP-Adressgruppen
 1. Geben Sie in der Suchleiste des Azure-Portals **IP-Adressgruppen** ein, und wählen Sie sie aus. Sie können die Liste der IP-Adressgruppen anzeigen oder **Hinzufügen** auswählen, um eine neue IP-Adressgruppe zu erstellen.
@@ -64,9 +61,6 @@ Sie können in der IP-Adressgruppe alle IP-Adressen sowie die ihr zugeordneten R
 ## <a name="use-an-ip-group"></a>Verwenden einer IP-Adressgruppe
 
 Sie können jetzt beim Erstellen von Azure Firewall-DNAT-, -Anwendungs- oder -Netzwerkregeln **IP-Adressgruppe** als **Quelltyp** oder **Zieltyp** für die IP-Adresse(n) auswählen.
-
-> [!NOTE]
-> IP-Adressgruppen werden in der Firewallrichtlinie nicht unterstützt. Sie werden derzeit nur bei herkömmlichen Firewallregeln unterstützt.
 
 ![IP-Adressgruppen in Firewall](media/ip-groups/fw-ipgroup.png)
 

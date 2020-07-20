@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751502"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -54,12 +54,19 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 1. Identifizieren Sie den Namen Ihrer ServiceNow-Instanz. Sie finden den Instanznamen in der URL, die Sie für den Zugriff auf ServiceNow verwenden. Im folgenden Beispiel lautet der Instanzname „dev35214“.
 
-![ServiceNow-Instanz](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow-Instanz](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. Rufen Sie Anmeldeinformationen für einen Administrator in ServiceNow ab. Navigieren Sie zu dem Benutzerprofil in ServiceNow, und stellen Sie sicher, dass der Benutzer Administratorrechte hat. 
 
-![ServiceNow-Administratorrolle](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![ServiceNow-Administratorrolle](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. Stellen Sie sicher, dass die folgenden Einstellungen in ServiceNow **deaktiviert** sind:
+
+   1. Wählen Sie **System Security** > **High security settings** > **Require basic authentication for incoming SCHEMA requests** („Systemsicherheit“ -> „Einstellungen für hohe Sicherheit“ -> „Einfache Authentifizierung für eingehende SCHEMA-Anforderungen erforderlich“).
+   2. Wählen Sie **System Properties** > **Web Services** > **Require basic authorization for incoming SOAP requests** („Systemeigenschaften“ -> „Webdienste“ -> „Einfache Authentifizierung für eingehende SOAP-Anforderungen erforderlich“).
+     
+   > [!IMPORTANT]
+   > Wenn diese Einstellungen *aktiviert* sind, kann die Bereitstellungs-Engine nicht mit ServiceNow kommunizieren.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von ServiceNow aus dem Azure AD-Anwendungskatalog
 
@@ -142,6 +149,14 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * **EntryJoiningPropertyValueIsMissing:** Überprüfen Sie Ihre [Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), um das übereinstimmende Attribut zu identifizieren. Dieser Wert muss bei dem bereitzustellenden Benutzer bzw. der Gruppe vorhanden sein. 
 * Überprüfen Sie die [ServiceNow SOAP-API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html), um alle Anforderungen oder Beschränkungen (z.B. Format für die Angabe des Ländercodes für einen Benutzer) zu verstehen.
 * Bereitstellungsanforderungen werden standardmäßig an https://{Ihren-Instanznamen}.service-now.com/{Tabellenname} gesendet. Wenn Sie eine benutzerdefinierte Mandanten-URL benötigen, können Sie die gesamte URL im Feld „Instanzname“ angeben.
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   Dieser Fehler weist auf ein Problem bei der Kommunikation mit der ServiceNow-Instanz hin. Vergewissern Sie sich, dass die folgenden Einstellungen in ServiceNow *deaktiviert* sind:
+   
+   1. Wählen Sie **System Security** > **High security settings** > **Require basic authentication for incoming SCHEMA requests** („Systemsicherheit“ -> „Einstellungen für hohe Sicherheit“ -> „Einfache Authentifizierung für eingehende SCHEMA-Anforderungen erforderlich“).
+   2. Wählen Sie **System Properties** > **Web Services** > **Require basic authorization for incoming SOAP requests** („Systemeigenschaften“ -> „Webdienste“ -> „Einfache Authentifizierung für eingehende SOAP-Anforderungen erforderlich“).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -1,5 +1,5 @@
 ---
-title: Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights
+title: Überwachen und Sammeln von Pipelineprotokolldateien
 titleSuffix: Azure Machine Learning
 description: Fügen Sie Ihren Trainings- und Batchbewertungspipelines Protokollierung hinzu, und zeigen Sie die protokollierten Ergebnisse in Application Insights an.
 services: machine-learning
@@ -7,18 +7,17 @@ author: sanpil
 ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: faf83ad35e6aed191d07d7a297a547ec0d9921b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555751"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055714"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights
+# <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Sammeln von Machine Learning-Pipelineprotokolldateien in Application Insights für Warnungen und Debuggen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Die [OpenCensus](https://opencensus.io/quickstart/python/)-Python-Bibliothek kann zum Weiterleiten von Protokollen an Application Insights in Ihren Skripts verwendet werden. Durch das Aggregieren der Protokolle von Pipelineausführungen an einem zentralen Ort können Sie Abfragen erstellen und Probleme diagnostizieren. Mithilfe von Application Insights können Sie Protokolle im Lauf der Zeit nachverfolgen und Pipelineprotokolle zwischen den Ausführungen vergleichen.

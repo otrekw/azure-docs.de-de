@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392232"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -146,7 +146,7 @@ Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung der Azu
 
 Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden verwalteten Schlüsseln zu ermöglichen, führen Sie die folgenden Aktionen durch:
 
-* Registrieren Sie die Anbieter von Azure Machine Learning- und Azure Cosmos DB-Ressourcen in Ihrem Abonnement, falls dies noch nicht geschehen ist.
+* Registrieren Sie die Anbieter von Microsoft.MachineLearning- und Microsoft.DocumentDB-Ressourcen in Ihrem Abonnement, falls dies noch nicht geschehen ist.
 
 * Autorisieren Sie die Machine Learning-App (in der Identitäts- und Zugriffsverwaltung) mit den Berechtigungen für Mitwirkende in Ihrem Abonnement.
 
@@ -176,6 +176,11 @@ Weitere Informationen zu von Kunden verwalteten Schlüsseln mit Cosmos DB finden
 Alle Containerimages in Ihrer Registrierung (Azure Container Registry) werden im Ruhezustand verschlüsselt. Azure verschlüsselt ein Image automatisch vor dessen Speicherung, und entschlüsselt es, wenn Azure Machine Learning das Image herunterlädt (pullt).
 
 Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung Ihrer Azure Container Registry zu verwenden, müssen Sie Ihre eigene ACR erstellen und diese während der Bereitstellung des Arbeitsbereichs anfügen oder die Standardinstanz verschlüsseln, die zum Zeitpunkt der Arbeitsbereichsbereitstellung erstellt wird.
+
+> [!IMPORTANT]
+> Azure Machine Learning erfordert, dass das Administratorkonto in Ihrer Azure Container Registry aktiviert ist. Diese Einstellung ist standardmäßig deaktiviert, wenn Sie eine Containerregistrierung erstellen. Informationen zum Aktivieren des Administratorkontos finden Sie unter [Administratorkonto](/azure/container-registry/container-registry-authentication#admin-account).
+>
+> Nachdem eine Azure Container Registry für einen Arbeitsbereich erstellt wurde, dürfen Sie diese nicht mehr löschen. Dadurch wird Ihr Azure Machine Learning-Arbeitsbereich beschädigt.
 
 Ein Beispiel für die Erstellung eines Arbeitsbereichs unter Verwendung einer bestehenden Azure Container Registry finden Sie in den folgenden Artikeln:
 

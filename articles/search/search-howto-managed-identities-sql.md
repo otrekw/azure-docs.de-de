@@ -1,7 +1,7 @@
 ---
-title: Einrichten einer Verbindung mit einer Azure SQL-Datenbank mithilfe einer verwalteten Identität (Vorschau)
+title: Einrichten einer Verbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Erfahren Sie, wie Sie eine Indexerverbindung mit einer Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten (Vorschau).
+description: Erfahren Sie, wie Sie eine Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten (Vorschau)
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559935"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>Einrichten einer Indexerverbindung mit einer Azure SQL-Datenbank mithilfe einer verwalteten Identität (Vorschau)
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Einrichten einer Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität (Vorschau)
 
 > [!IMPORTANT] 
 > Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer geschlossenen öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
 > Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/mi-preview-request) aus, wenn Sie Zugriff auf die Vorschauversion anfordern möchten.
 
-Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit einer Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten, anstatt Anmeldeinformationen in der Verbindungszeichenfolge des Datenquellenobjekts anzugeben.
+Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten, anstatt Anmeldeinformationen in der Verbindungszeichenfolge des Datenquellenobjekts anzugeben.
 
 Bevor Sie mehr über diese Funktion erfahren, sollten Sie wissen, was ein Indexer ist, und wie Sie einen Indexer für Ihre Datenquelle einrichten. Weitere Informationen finden Sie unter den folgenden Links:
+
 * [Indexer (Übersicht)](search-indexer-overview.md)
 * [Azure SQL-Indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert ist, wird in 
 Nach dem Auswählen von **Speichern** wird eine Objekt-ID angezeigt, die dem Suchdienst zugewiesen wurde.
 
 ![Objekt-ID](./media/search-managed-identities/system-assigned-identity-object-id.png "ObjectID")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2\. Bereitstellen eines Azure Active Directory-Administrators für SQL Server
 
 Beim Herstellen einer Verbindung mit der Datenbank im nächsten Schritt müssen Sie eine Verbindung mit einem Azure Active Directory-Konto (Azure AD-Konto) herstellen, das über Administratorzugriff für die Datenbank verfügt, damit dem Suchdienst die Berechtigung zum Zugriff auf die Datenbank erteilt wird.
@@ -102,7 +103,7 @@ Bei der Indizierung aus einer SQL-Datenbank muss die Datenquelle über die folge
 * **name** ist der eindeutige Name der Datenquelle im Suchdienst.
 * **type** ist `azuresql`.
 * **credentials**
-    * Beim Verwenden einer verwalteten Identität zur Authentifizierung unterscheidet sich das Format für **credentials** von dem bei der Authentifizierung ohne verwaltete Identität. Hier geben Sie den Namen für „Initial Catalog“ oder „Initial Database“ und eine „ResourceId“ an, der kein Kontoschlüssel und kein Kennwort zugewiesen ist. Die „ResourceId“ muss die Abonnement-ID der Azure SQL-Datenbank, die Ressourcengruppe der SQL-Datenbank und den Namen der SQL-Datenbank enthalten. 
+    * Beim Verwenden einer verwalteten Identität zur Authentifizierung unterscheidet sich das Format für **credentials** von dem bei der Authentifizierung ohne verwaltete Identität. Hier geben Sie den Namen für „Initial Catalog“ oder „Initial Database“ und eine „ResourceId“ an, der kein Kontoschlüssel und kein Kennwort zugewiesen ist. Die „ResourceId“ muss die Abonnement-ID von Azure SQL-Datenbank, die Ressourcengruppe der SQL-Datenbank und den Namen der SQL-Datenbank enthalten. 
     * Format der Verbindungszeichenfolge für verwaltete Identitäten:
         * *Initial Catalog|Database=**Datenbankname**;ResourceId=/subscriptions/**Ihre Abonnement-ID**/resourceGroups/**Name Ihrer Ressourcengruppe**/providers/Microsoft.Sql/servers/**Name Ihres SQL-Servers**/;Connection Timeout=**Dauer des Verbindungstimeouts**;*
 * **container** gibt den Namen der Tabelle oder Ansicht an, die indiziert werden soll.
@@ -110,7 +111,7 @@ Bei der Indizierung aus einer SQL-Datenbank muss die Datenquelle über die folge
 Beispiel für die Erstellung eines Azure SQL-Datenquellenobjekts über die [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -131,7 +132,7 @@ Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstruk
 So erstellen Sie einen Index mit einem durchsuchbaren `booktitle`-Feld   
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -155,7 +156,7 @@ Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen.
 Beispiel für die Indexerdefinition eines Azure SQL-Indexers:
 
 ```
-POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 

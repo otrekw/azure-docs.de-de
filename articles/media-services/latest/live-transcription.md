@@ -12,33 +12,69 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 06/12/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84765011"
 ---
 # <a name="live-transcription-preview"></a>Livetranskription (Preview)
 
 Azure Media Service übermittelt Video, Audio und Text in unterschiedlichen Protokollen. Wenn Sie Ihren Livestream mittels MPEG-DASH oder HLS/CMAF veröffentlichen, stellt unser Dienst neben den Video- und Audiospuren auch den transkribierten Text im IMSC1.1-kompatiblen TTML-Format bereit. Die Übermittlung ist in MPEG-4 Part 30-Fragmente (ISO/IEC 14496-30) gepackt. Bei Verwendung der Zustellung über HLS/TS wird Text als VTT-Blöcke übermittelt.
 
-In diesem Artikel wird beschrieben, wie Sie Livetranskription aktivieren, wenn Sie ein Liveereignis mit Azure Media Services v3 streamen. Bevor Sie fortfahren, stellen Sie sicher, dass Sie mit der Verwendung von Media Services v3-REST-APIs vertraut sind (weitere Informationen finden Sie in [diesem Tutorial](stream-files-tutorial-with-rest.md)). Sie sollten außerdem mit dem Konzept des [Livestreamings](live-streaming-overview.md) vertraut sein. Es wird empfohlen, das Tutorial [Livestreaming mit Media Services](stream-live-tutorial-with-api.md) durchzuarbeiten.
+Bei aktivierter Livetranskription werden zusätzliche Gebühren fällig. Überprüfen Sie die Preisinformationen im Abschnitt „Livevideo“ auf der Seite [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
 
-> [!NOTE]
-> Derzeit ist die Livetranskription nur als Vorschaufunktion in der Region „USA, Westen 2“ verfügbar. Sie unterstützt die Transkription von gesprochener englischer Sprache in Text. Die API-Referenz zu diesem Feature finden Sie nachstehend. Da es sich in der Vorschauphase befindet, sind die Details nicht in der REST-Dokumentation verfügbar.
+In diesem Artikel wird beschrieben, wie Sie Livetranskription aktivieren, wenn Sie ein Liveereignis mit Azure Media Services streamen. Bevor Sie fortfahren, stellen Sie sicher, dass Sie mit der Verwendung von Media Services v3-REST-APIs vertraut sind (weitere Informationen finden Sie in [diesem Tutorial](stream-files-tutorial-with-rest.md)). Sie sollten außerdem mit dem Konzept des [Livestreamings](live-streaming-overview.md) vertraut sein. Es wird empfohlen, das Tutorial [Livestreaming mit Media Services](stream-live-tutorial-with-api.md) durchzuarbeiten.
 
-## <a name="creating-the-live-event"></a>Erstellen des Liveereignisses
+## <a name="live-transcription-preview-regions-and-languages"></a>Regionen und Sprachen der Livetranskriptions-Vorschauversion
 
-Zum Erstellen des Liveereignisses senden Sie den PUT-Vorgang an die Version 2019-05-01-preview, z. B.:
+Livetranskription ist in den folgenden Regionen verfügbar:
+
+- Asien, Südosten
+- Europa, Westen
+- Nordeuropa
+- East US
+- USA (Mitte)
+- USA Süd Mitte
+- USA, Westen 2
+- Brasilien Süd
+
+Dies ist die Liste der verfügbaren Sprachen, die transkribiert werden können. Verwenden Sie dazu den Sprachcode in der API.
+
+| Sprache | Sprachcode |
+| -------- | ------------- |
+| Katalanisch  | ca-ES |
+| Dänisch (Dänemark) | da-DK |
+| Deutsch (Deutschland) | de-DE |
+| Englisch (Australien) | en-AU |
+| Englisch (Kanada) | en-CA |
+| Walisisch (Großbritannien) | en-GB |
+| Englisch (Indien) | en-IN |
+| Englisch (Neuseeland) | en-NZ |
+| Englisch (USA) | de-DE |
+| Spanisch (Spanien) | es-ES |
+| Spanisch (Mexiko) | es-MX |
+| Finnisch (Finnland) | fi-FI |
+| Französisch (Kanada) | fr-CA |
+| Französisch (Frankreich) | fr-FR |
+| Italienisch (Italien) | it-IT |
+| Niederländisch (Niederlande) | nl-NL |
+| Portugiesisch (Brasilien) | pt-BR |
+| Portugiesisch (Portugal) | pt-PT |
+| Schwedisch (Schweden) | sv-SE |
+
+## <a name="create-the-live-event-with-live-transcription"></a>Erstellen des Liveereignisses mit Livetranskription
+
+Zum Erstellen eines Liveereignisses mit aktivierter Transkription senden Sie den PUT-Vorgang mit der API-Version 2019-05-01-preview, beispielsweise:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-Der Vorgang weist den folgenden Funktionskörper auf (wobei ein Pass-Through-Liveereignis mit RTMP als Erfassungsprotokoll erstellt wird). Beachten Sie das Hinzufügen einer transcriptions-Eigenschaft. Der einzige zulässige Wert für die Sprache ist „en-US“.
+Der Vorgang weist den folgenden Funktionskörper auf (wobei ein Pass-Through-Liveereignis mit RTMP als Erfassungsprotokoll erstellt wird). Beachten Sie das Hinzufügen einer transcriptions-Eigenschaft.
 
 ```
 {
@@ -88,14 +124,14 @@ Der Vorgang weist den folgenden Funktionskörper auf (wobei ein Pass-Through-Liv
 }
 ```
 
-Fragen Sie den Status des Liveereignisses ab, bis es in den Zustand „Wird ausgeführt“ wechselt, was darauf hinweist, dass Sie jetzt einen RTMP-Beitragsfeed senden können. Sie können jetzt dieselben Schritte wie in diesem Tutorial ausführen, z. B. das Überprüfen des Vorschaufeeds und das Erstellen von Liveausgaben.
+## <a name="start-or-stop-transcription-after-the-live-event-has-started"></a>Starten oder Beenden der Transkription nach dem Start des Liveereignisses
 
-## <a name="start-transcription-after-live-event-has-started"></a>Starten der Transkription nach dem Start des Liveereignisses
+Sie können die Livetranskription starten und beenden, während sich das Liveereignis im Ausführungsstatus befindet. Weitere Informationen zum Starten und Beenden von Liveereignissen finden Sie im Abschnitt zu den Vorgängen mit langer Ausführungsdauer unter [Entwickeln mit Media Services v3-APIs](media-services-apis-overview.md#long-running-operations).
 
-Die Livetranskription kann gestartet werden, nachdem ein Liveereignis begonnen hat. Um Livetranskriptionen zu aktivieren, patchen Sie das Liveereignis, um die transcriptions-Eigenschaft einzuschließen. Um Livetranskriptionen zu deaktivieren, wird die transcriptions-Eigenschaft aus dem Objekt des Liveereignisses entfernt.
+Um Livetranskriptionen zu aktivieren oder die Transkriptionssprache zu aktualisieren, patchen Sie das Livereignis so, dass es eine Eigenschaft „transcriptions“ enthält. Um Livetranskriptionen zu deaktivieren, entfernen Sie die „transcriptions“-Eigenschaft aus dem Objekt des Liveereignisses.  
 
 > [!NOTE]
-> Das mehrmalige Aktivieren oder Deaktivieren der Transkription während des Liveereignisses wird nicht unterstützt.
+> Das **mehrmalige** Aktivieren oder Deaktivieren der Transkription während des Liveereignisses wird nicht unterstützt.
 
 Dies ist der Beispielaufruf zum Aktivieren von Livetranskriptionen.
 
@@ -160,10 +196,8 @@ Lesen Sie den Artikel [Dynamische Paketerstellung – Übersicht](dynamic-packag
 
 In der Vorschauphase liegen die folgenden bekannten Probleme bei der Livetranskription vor:
 
-* Die Funktion ist nur in der Region „USA, Westen 2“ verfügbar.
-* Apps müssen die Vorschau-APIs verwenden, die in der [Media Services v3 OpenAPI-Spezifikation](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) beschrieben sind.
-* Die einzige unterstützte Sprache ist Englisch (en-us).
-* Zum Inhaltsschutz wird nur die AES-Umschlagverschlüsselung unterstützt.
+- Apps müssen die Vorschau-APIs verwenden, die in der [Media Services v3 OpenAPI-Spezifikation](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) beschrieben sind.
+- Der DRM-Schutz (Digital Rights Management, Verwaltung digitaler Rechte) gilt nicht für die Textspur, es lediglich die AES-Umschlagverschlüsselung möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

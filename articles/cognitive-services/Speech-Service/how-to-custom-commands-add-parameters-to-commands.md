@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1d74bf089f3e5bc1fd04232b58ce95c649a170e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307195"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362372"
 ---
 # <a name="add-parameters-to-commands"></a>Hinzufügen von Parametern zu Befehlen
 
@@ -60,9 +60,10 @@ Bearbeiten Sie den vorhandenen **TurnOn**-Befehl, um mehrere Geräte ein- und au
        | Konfiguration      | Vordefinierte Eingabewerte aus einem internen Katalog akzeptieren | Für Zeichenfolgen, schränkt die Eingaben auf eine Reihe möglicher Werte ein |
        | Vordefinierte Eingabewerte     | `on`, `off`           | Menge möglicher Werte und ihrer Aliase         |
        
-        > [!div class="mx-imgBorder"]
+        
+   1. Wenn Sie vordefinierte Eingabewerte hinzufügen möchten, wählen Sie **Vordefinierte Eingabe hinzufügen** aus, und geben Sie in Fenster **Neues Element** den **Namen** ein, wie in der Tabelle oben angegeben. In diesem Fall verwenden wir keine Aliase, Sie können ihn also leer lassen. 
+    > [!div class="mx-imgBorder"]
         > ![Erstellen von Parametern](media/custom-commands/create-on-off-parameter.png)
-
    1. Wählen Sie **Speichern** aus, um alle Konfigurationen des Parameters zu speichern.
  
  ### <a name="add-subjectdevice-parameter"></a>Hinzufügen des Parameters „SubjectDevice“ 

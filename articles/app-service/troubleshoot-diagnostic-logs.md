@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261340"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -193,6 +193,8 @@ In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibu
 | AppServiceAuditLogs | Ja | Ja | Anmeldeaktivität per FTP und Kudu |
 | AppServiceFileAuditLogs | Ja | TBD | Dateiänderungen per FTP und Kudu |
 | AppServiceAppLogs | Wird noch angekündigt | Java SE & Tomcat | Anwendungsprotokolle |
+| AppServiceIPSecAuditLogs  | Ja | Ja | Anforderungen von IP-Regeln |
+| AppServicePlatformLogs  | Wird noch angekündigt | Ja | Containerprotokolle |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Nächste Schritte
 * [Abfrageprotokolle mit Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

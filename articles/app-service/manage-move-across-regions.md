@@ -4,18 +4,18 @@ description: Erfahren Sie, wie Sie App Service-Ressourcen von einer Region in ei
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945476"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Verschieben von App Service-Apps in eine andere Region
 
 In diesem Artikel wird beschrieben, wie Sie App Service-Ressourcen in eine andere Azure-Region verschieben. Sie können Ihre Ressourcen aus verschiedenen Gründen in eine andere Region verschieben. Beispielsweise, um eine neue Azure-Region zu nutzen, um Features oder Dienste bereitzustellen, die nur in bestimmten Regionen verfügbar sind, um interne Richtlinien- und Governanceanforderungen zu erfüllen oder als Reaktion auf die Anforderungen, die bei der Kapazitätsplanung bestimmt wurden.
 
-App Service-Ressourcen sind regionsspezifisch und können nicht in andere Regionen verschoben werden. Stattdessen müssen Sie eine Kopie Ihrer vorhandenen App Service-Ressourcen in der Zielregion erstellen und Ihren Inhalt in die neue App verschieben. Wenn für Ihre Quell-App eine benutzerdefinierte Domäne verwendet wird, können Sie sie [in die neue App in der Zielregion](manage-custom-dns-migrate-domain.md) verschieben, sobald Sie den Vorgang abgeschlossen haben.
+App Service-Ressourcen sind regionsspezifisch und können nicht in andere Regionen verschoben werden. Stattdessen müssen Sie eine Kopie Ihrer vorhandenen App Service-Ressourcen in der Zielregion erstellen und Ihren Inhalt dann in die neue App verschieben. Wenn für Ihre Quell-App eine benutzerdefinierte Domäne verwendet wird, können Sie sie [in die neue App in der Zielregion](manage-custom-dns-migrate-domain.md) verschieben, sobald Sie den Vorgang abgeschlossen haben.
 
 Um das Kopieren Ihrer App zu vereinfachen, können Sie [eine einzelne App Service-App in einem App Service-Plan in einer anderen Region klonen](app-service-web-app-cloning.md). Für diesen Vorgang gelten jedoch [Einschränkungen](app-service-web-app-cloning.md#current-restrictions) (insbesondere die fehlende Unterstützung für Linux-Apps).
 

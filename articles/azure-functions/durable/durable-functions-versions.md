@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807842"
 ---
 # <a name="durable-functions-versions-overview"></a>Übersicht über die Durable Functions-Versionen
 
@@ -82,3 +82,7 @@ In dem Fall, wo eine abstrakte Basisklasse virtuelle Methoden enthielt, wurden d
 #### <a name="functionjson-changes-javascript-and-c-script"></a>function.json-Änderungen (JavaScript und C#-Skript)
 
 In Durable Functions 1.x verwendet die Clientorchestrierungsbindung einen `type` von `orchestrationClient`. Version 2.x verwendet stattdessen `durableClient`.
+
+#### <a name="raise-event-changes"></a>Auslösen von Ereignisänderungen
+
+In Durable Functions 1.x führten der Aufruf der API zur [Ereignisauslösung](durable-functions-external-events.md#send-events) und das Angeben einer nicht vorhandenen Instanz zu einem Fehler ohne Fehlermeldung. Ab 2.x führt das Auslösen eines Ereignisses für eine nicht vorhandene Orchestrierung zu einer Ausnahme.

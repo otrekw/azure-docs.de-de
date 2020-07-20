@@ -1,19 +1,19 @@
 ---
 title: Sicherheitsfilter zum Einschränken von Ergebnissen
 titleSuffix: Azure Cognitive Search
-description: Zugriffssteuerung für Inhalte der kognitiven Azure-Suche mithilfe von Sicherheitsfiltern und Benutzeridentitäten.
+description: Hier finden Sie Informationen zu Sicherheitsberechtigungen auf Dokumentebene für Azure Cognitive Search-Suchergebnisse sowie zur Verwendung von Sicherheitsfiltern und Benutzeridentitäten.
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/04/2020
+ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72794280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553129"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in der kognitiven Azure-Suche
 
@@ -60,7 +60,7 @@ Angenommen, es gibt einen Index von gesicherten Dateien, und auf jede Datei kann
 Geben Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Indexes aus. Der Hauptteil der HTTP-Anforderung ist ein JSON-Objekt, das die Dokumente enthält, die hinzugefügt werden sollen:
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -118,7 +118,7 @@ Beachten Sie, dass dieses Beispiel veranschaulicht, wie Sie Dokumente mithilfe e
 Geben Sie die HTTP POST-Anforderung aus:
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
 ```

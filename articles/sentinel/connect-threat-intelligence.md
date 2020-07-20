@@ -5,19 +5,20 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: security-center
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769872"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern
 
@@ -70,7 +71,7 @@ Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines de
 
 2. [Konfigurieren Sie API-Berechtigungen](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) für die registrierte Anwendung: Fügen Sie Ihrer registrierten Anwendung die Microsoft Graph-Anwendungsberechtigung **ThreatIndicators.ReadWrite.OwnedBy** hinzu.
 
-3. Bitten Sie Ihren Azure Active Directory-Mandantenadministrator, der registrierten Anwendung die Administratoreinwilligung für Ihre Organisation zu erteilen. Gehen Sie im Azure-Portal so vor: **Azure Active Directory** > **App-Registrierungen** >  **\<_App-Name_>**  > **API-Berechtigungen anzeigen** > **Administratoreinwilligung erteilen für \<_Mandantenname_>** .
+3. Bitten Sie Ihren Azure Active Directory-Mandantenadministrator, der registrierten Anwendung die Administratoreinwilligung für Ihre Organisation zu erteilen. Gehen Sie im Azure-Portal so vor: **Azure Active Directory** > **App-Registrierungen** >  **\<_app name_>**  > **API-Berechtigungen anzeigen** > **Administratoreinwilligung erteilen für \<_tenant name_>** .
 
 4. Konfigurieren Sie das TIP-Produkt oder die TIP-App, das bzw. die die direkte Integration mit der tiIndicators-API der Microsoft Graph-Sicherheit verwendet, um Indikatoren an Azure Sentinel zu senden, indem Sie Folgendes angeben:
     

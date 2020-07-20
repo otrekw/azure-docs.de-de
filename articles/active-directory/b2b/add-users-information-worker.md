@@ -4,7 +4,7 @@ description: B2B-Zusammenarbeit ermöglicht es Information-Workern und App-Besit
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387387"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.
 
@@ -28,7 +28,7 @@ Nachdem ein Gastbenutzer dem Verzeichnis in Azure AD hinzugefügt wurde, kann ei
  - Konfigurieren der App für Self-Service und Zuweisen der Gruppe zur App
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie die Self-Service-Verwaltung für katalog- und SAML-basierte Apps einrichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben. Sie können auch [die Self-Service-Verwaltung für Office 365-Gruppen einrichten](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), damit Ihre Benutzer den Zugriff auf ihre eigenen Office 365-Gruppen verwalten können. Weitere Möglichkeiten für Benutzer zum Freigeben von Office-Dateien und -Apps für Gastbenutzer finden Sie unter [Gastzugriff in Office 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) und [Freigeben von SharePoint-Dateien oder -Ordnern](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> In diesem Artikel wird beschrieben, wie Sie die Self-Service-Verwaltung für katalog- und SAML-basierte Apps einrichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben. Sie können auch [die Self-Service-Verwaltung für Microsoft 365-Gruppen einrichten](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), damit Ihre Benutzer den Zugriff auf ihre eigenen Microsoft 365-Gruppen verwalten können. Weitere Möglichkeiten, über die Benutzer Office-Dateien und -Apps für Gastbenutzer freigeben können, finden Sie unter [Gastzugriff in Microsoft 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) und [Freigeben von SharePoint-Dateien oder -Ordnern](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Einladen eines Gastbenutzers zur App über den Zugriffsbereich
 

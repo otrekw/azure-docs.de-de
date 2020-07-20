@@ -4,18 +4,18 @@ description: In diesem Artikel wird beschrieben, wie ein FSLogix-Profil-Containe
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362440"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Erstellen eines FSLogix-Profilcontainers mit Azure Files
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und Azure AD DS
 
 In diesem Artikel wird gezeigt, wie ein FSLogix-Profilcontainer mit Azure Files und Azure Active Directory Domain Services (AD DS) erstellt wird.
 
@@ -41,7 +41,7 @@ So fügen Sie einen Administrator hinzu
 
 ## <a name="set-up-an-azure-storage-account"></a>Einrichten eines Azure Storage-Kontos
 
-Aktivieren Sie nun die Azure AD DS-Authentifizierung über Server Message Block (SMB). 
+Aktivieren Sie nun die Azure AD DS-Authentifizierung über Server Message Block (SMB).
 
 So aktivieren Sie die Authentifizierung
 
@@ -93,7 +93,8 @@ So rufen Sie den Zugriffsschlüssel für das Speicherkonto ab
 
     Dadurch wird eine RDP-Datei heruntergeladen, mit der Sie sich bei der VM mit ihren eigenen Anmeldeinformationen anmelden können.
 
-    ![Ein Screenshot der Registerkarte „RDP“ im Fenster „Verbindung mit virtuellem Computer herstellen“.](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![Ein Screenshot der Registerkarte „RDP“ im Fenster „Verbindung mit virtuellem Computer herstellen“.](media/rdp-tab.png)
 
 6. Nachdem Sie sich bei der VM angemeldet haben, führen Sie eine Eingabeaufforderung als Administrator aus.
 
@@ -108,8 +109,8 @@ So rufen Sie den Zugriffsschlüssel für das Speicherkonto ab
     - Ersetzen Sie `<share-name>` durch den Namen der Freigabe, die Sie zuvor erstellt haben.
     - Ersetzen Sie `<storage-account-key>` durch den Speicherkontoschlüssel aus Azure.
 
-    Beispiel:  
-  
+    Beispiel:
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
@@ -124,7 +125,7 @@ So rufen Sie den Zugriffsschlüssel für das Speicherkonto ab
     - Ersetzen Sie `<user-email>` durch den UPN des Benutzers, der dieses Profil für den Zugriff auf die Sitzungshost-VMs verwendet.
 
     Beispiel:
-     
+
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
      ```
@@ -156,11 +157,13 @@ So konfigurieren Sie einen FSLogix-Profilcontainer
 
 9.  Klicken Sie mit der rechten Maustaste auf **Profiles**. Wählen Sie **Neu** und dann **DWORD-Wert (32-Bit)** aus. Nennen Sie den Wert **Aktiviert**, und legen Sie den Wert für **Daten** auf **1** fest.
 
-    ![Screenshot des Schlüssels „Profiles“. Die REG_DWORD-Datei ist hervorgehoben und ihr Wert „Daten“ auf 1 festgelegt.](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Schlüssels „Profiles“. Die REG_DWORD-Datei ist hervorgehoben und ihr Wert „Daten“ auf 1 festgelegt.](media/dword-value.png)
 
 10. Klicken Sie mit der rechten Maustaste auf **Profiles**. Wählen Sie **Neu** und dann **Wert der mehrteiligen Zeichenfolge** aus. Nennen Sie den Wert **VHDLocations**, und legen Sie den URI für die Azure Files-Freigabe `\\fsprofile.file.core.windows.net\share` als Wert für „Daten“ fest.
 
-    ![Ein Screenshot des Schlüssels „Profiles“ mit der Datei „VHDLocations“. Ihr Wert „Daten“ enthält den URI für die Azure Files-Freigabe.](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![Ein Screenshot des Schlüssels „Profiles“ mit der Datei „VHDLocations“. Ihr Wert „Daten“ enthält den URI für die Azure Files-Freigabe.](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>Zuweisen von Benutzern zu einem Sitzungshost
 
@@ -203,13 +206,13 @@ So weisen Sie Benutzer zu
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 

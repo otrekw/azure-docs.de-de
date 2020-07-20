@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über Fehlercodes, die möglicherweise bei der Ve
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 5a34dc2b9468c6c5af4af0e0addfd8b9ebb7e792
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676572"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Fehlermeldungen für Spot-VMs und Skalierungsgruppen
 
@@ -21,7 +21,7 @@ Im Folgenden finden Sie einige mögliche Fehlercodes, die Sie bei der Verwendung
 
 | Schlüssel | `Message` | BESCHREIBUNG |
 |-----|---------|-------------|
-| SkuNotAvailable | Der angeforderte Tarif für die Ressource \<Ressource\> ist im Speicherort \<Speicherort\> für das Abonnement \<Abonnement-ID\> derzeit nicht verfügbar. Versuchen Sie es mit einem anderen Tarif, oder führen Sie die Bereitstellung an einem anderen Standort durch. | An diesem Standort ist nicht genügend Azure Spot-Kapazität vorhanden, um Ihre VM- oder Skalierungsgruppeninstanz zu erstellen. |
+| SkuNotAvailable | Der angeforderte Tarif für die Ressource „\<resource\>“ ist im Speicherort „\<location\>“ für das Abonnement „\<subscriptionID\>“ derzeit nicht verfügbar. Versuchen Sie es mit einem anderen Tarif, oder führen Sie die Bereitstellung an einem anderen Standort durch. | An diesem Standort ist nicht genügend Azure Spot-Kapazität vorhanden, um Ihre VM- oder Skalierungsgruppeninstanz zu erstellen. |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  Die Entfernungsrichtlinie kann nur für Azure Spot-VMs festgelegt werden. | Diese VM ist keine Spot-VM, sodass Sie die Entfernungsrichtlinie nicht festlegen können. |
 | AzureSpotVMNotSupportedInAvailabilitySet  |  Eine Azure Spot-VM wird in der Verfügbarkeitsgruppe nicht unterstützt. | Sie müssen entweder eine Spot-VM oder eine VM in einer Verfügbarkeitsgruppe verwenden, Sie können nicht beide auswählen. |
 | AzureSpotFeatureNotEnabledForSubscription  |  Das Abonnement ist nicht mit dem Azure Spot-Feature aktiviert. | Verwenden Sie ein Abonnement, das Spot-VMs unterstützt. |

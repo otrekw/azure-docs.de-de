@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge (Vorschau)
-description: Informationen zum Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge (Vorschau)
+description: Erfahren Sie, wie Sie eine Verbindung mit Azure SQL Edge herstellen und Abfragen durchführen (Vorschau).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,25 +9,25 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e7034c3f664eeba802341510b109ba9cc57845a8
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252643"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge (Vorschau)
 
-Nach der Bereitstellung des Azure SQL Edge-Containers können Sie folgendermaßen eine Verbindung mit der SQL-Datenbank-Engine herstellen.
+In Azure SQL Edge können Sie nach der Bereitstellung eines Containers von einem der folgenden Standorte eine Verbindung mit der Datenbank-Engine herstellen:
 
 - Innerhalb des Containers.
-- Aus einem anderen Docker-Container, der auf demselben Host ausgeführt wird.
+- Von einem anderen Docker-Container, der auf demselben Host ausgeführt wird
 - Über den Hostcomputer.
-- Von einem beliebigen anderen Clientcomputer im Netzwerk.
+- Von einem beliebigen anderen Clientcomputer im Netzwerk
 
 ## <a name="tools-to-connect-to-azure-sql-edge"></a>Tools zum Herstellen einer Verbindung mit Azure SQL Edge
 
-Verbindungen mit einer Azure SQL Edge-Instanz können mithilfe eines der unten genannten gängigen Tools hergestellt werden.
+Sie können eine Verbindung mit einer Azure SQL Edge-Instanz von einem dieser gängigen Tools aus herstellen:
 
 * [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd-Clienttools sind bereits im Azure SQL Edge-Containerimage enthalten. Wenn Sie mithilfe einer interaktiven Bash-Shell mit einem ausgeführten Container verbunden sind, können Sie die Tools lokal ausführen.
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
@@ -36,8 +36,8 @@ Verbindungen mit einer Azure SQL Edge-Instanz können mithilfe eines der unten g
 
 Um von einem Netzwerkcomputer aus eine Verbindung mit einer Azure SQL Edge-Datenbank-Engine herzustellen, benötigen Sie Folgendes:
 
-- *IP-Adresse oder Netzwerkname des Hostcomputers*: Dies ist der Hostcomputer, auf dem der Azure SQL Edge-Container ausgeführt wird.
-- *Hostportzuordnung des Azure SQL Edge-Containers*: Dies ist die Portzuordnung für den Post des Docker-Containers zu einem Port auf dem Host. Innerhalb des Containers wird SQL Edge immer Port 1433 zugeordnet. Dies kann im Rahmen der Azure SQL Edge-Bereitstellung geändert werden. Um die Portnummer zu ändern, aktualisieren Sie die Option „Optionen für Containererstellung“ für das SQL Edge-Modul in Azure IoT Edge. Im unten angegebenen Beispiel wird Port 1433 für den Container Port 1600 auf dem Host zugeordnet.
+- **IP-Adresse oder Netzwerkname des Hostcomputers**: Dies ist der Hostcomputer, auf dem der Azure SQL Edge-Container ausgeführt wird.
+- **Hostportzuordnung für den Azure SQL Edge-Container**: Dies ist die Zuordnung des Docker-Containerports zu einem Port auf dem Host. Innerhalb des Containers wird Azure SQL Edge immer Port 1433 zugeordnet. Sie können dies auf Wunsch ändern. Um die Portnummer zu ändern, aktualisieren Sie die **Optionen für Containererstellung** für das Azure SQL Edge-Modul in Azure IoT Edge. Im folgenden Beispiel wird Port 1433 des Containers dem Port 1600 des Hosts zugeordnet.
 
     ```JSON
     {
@@ -51,34 +51,34 @@ Um von einem Netzwerkcomputer aus eine Verbindung mit einer Azure SQL Edge-Daten
     }
     ```
 
-- *SA-Kennwort für die SQL Edge-Instanz*: Dies ist der Wert, der bei der SQL Edge-Bereitstellung für die Umgebungsvariable **SA_PASSWORD** angegeben wurde.
+- **Systemadministratorkennwort für die Azure SQL Edge-Instanz**: Dieser Wert wurde während der Bereitstellung von Azure SQL Edge für die `SA_PASSWORD`-Umgebungsvariable angegeben.
 
-## <a name="connecting-to-the-database-engine-from-within-the-container"></a>Herstellen einer Verbindung mit der Datenbank-Engine aus dem Container
+## <a name="connect-to-the-database-engine-from-within-the-container"></a>Herstellen einer Verbindung mit der Datenbank-Engine aus dem Container
 
-Die [SQL Server-Befehlszeilentools](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) sind im Azure SQL Edge-Containerimage enthalten. Wenn Sie das Anfügen an den Container mit einer interaktiven Befehlszeile durchführen, können Sie die Tools lokal ausführen.
+Die [SQL Server-Befehlszeilentools](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) sind im Azure SQL Edge-Containerimage enthalten. Wenn Sie den Container über eine interaktive Befehlszeile anfügen, können Sie die Tools lokal ausführen.
 
 1. Verwenden Sie den Befehl `docker exec -it`, um in Ihrem laufenden Container eine interaktive Bash-Shell zu starten. Im folgenden Beispiel entspricht `e69e056c702d` der Container-ID.
 
     ```bash
-    docker exec -it <Azure SQL Edge container id or name> /bin/bash
+    docker exec -it <Azure SQL Edge container ID or name> /bin/bash
     ```
 
     > [!TIP]
     > Sie müssen nicht immer die gesamte Container-ID angeben. Sie müssen nur ausreichend Zeichen angeben, um diese eindeutig zu identifizieren. In diesem Beispiel reicht es aus, `e6` oder `e69` anstelle der vollständigen ID zu verwenden.
 
-2. Stellen Sie eine lokale Verbindung mit „sqlcmd“ her. „Sqlcmd“ verwendet nicht automatisch den richtigen Pfad. Sie müssen daher selbst den vollständigen Pfand angeben.
+2. Stellen Sie eine lokale Verbindung aus dem Container heraus mit „sqlcmd“ her. Da „sqlcmd“ nicht standardmäßig im Pfad enthalten ist, müssen Sie selbst den vollständigen Pfand angeben.
 
     ```bash
     /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '<YourPassword>'
     ```
 
-3. Wenn Sie mit sqlcmd fertig sind, geben Sie `exit` ein.
+3. Wenn Sie mit „sqlcmd“ fertig sind, geben Sie `exit` ein.
 
 4. Wenn Sie mit der interaktiven Eingabeaufforderung fertig sind, geben Sie `exit` ein. Der Container wird auch nach dem Beenden der interaktiven Bash-Shell weiter ausgeführt.
 
-## <a name="connect-to-sql-edge-from-another-container-on-the-same-host"></a>Herstellen einer Verbindung mit SQL Edge aus einem anderen Container auf demselben Host
+## <a name="connect-to-azure-sql-edge-from-another-container-on-the-same-host"></a>Herstellen einer Verbindung mit Azure SQL Edge aus einem anderen Container auf demselben Host
 
-Da zwei sich Container, die auf demselben Host ausgeführt werden, im selben Docker-Netzwerk befinden, kann auf sie problemlos über den Containernamen und die Portadresse des Diensts zugegriffen werden. Wenn Sie z. B. eine Verbindung mit der SQL Edge-Instanz aus einem anderen Python-Modul (Container) auf demselben Host herstellen, können Sie eine Verbindungszeichenfolge ähnlich der folgenden verwenden. Im folgenden Beispiel wird davon ausgegangen, dass SQL Edge für das Lauschen am Standardport konfiguriert ist.
+Da zwei Container, die auf demselben Host ausgeführt werden, sich im selben Docker-Netzwerk befinden, können Sie problemlos über den Containernamen und die Portadresse des Diensts auf sie zugreifen. Wenn Sie z. B. eine Verbindung mit der Azure SQL Edge-Instanz aus einem anderen Python-Modul (Container) auf demselben Host herstellen, können Sie eine Verbindungszeichenfolge ähnlich der folgenden verwenden. (Im folgenden Beispiel wird davon ausgegangen, dass Azure SQL Edge für das Lauschen am Standardport konfiguriert ist.)
 
 ```python
 
@@ -92,9 +92,9 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ```
 
-## <a name="connect-to-sql-edge-from-another-network-machine"></a>Herstellen einer Verbindung mit SQL Edge von einem anderen Netzwerkcomputer
+## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Herstellen einer Verbindung mit Azure SQL Edge von einem anderen Netzwerkcomputer
 
-Wenn Sie von einem anderen Computer im Netzwerk aus eine Verbindung mit der SQL Edge-Instanz herstellen möchten, müssen Sie die IP-Adresse des Docker-Hosts und den Hostport verwenden, dem der SQL Edge-Container zugeordnet ist. Wenn die IP-Adresse des Docker-Hosts beispielsweise „xxx.xxx.xxx.xxx“ lautet und der SQL Edge-Container Hostport *1600* zugeordnet ist, wäre die Server Adresse für die SQL Edge-Instanz **xxx.xxx.xxx.xxx,1600**. Das aktualisierte Python-Skript würde wie folgt aussehen:
+Möglicherweise möchten Sie von einem anderen Computer im Netzwerk aus eine Verbindung mit der Azure SQL Edge-Instanz herstellen. Verwenden Sie hierzu die IP-Adresse des Docker-Hosts und den Hostport, dem der Azure SQL Edge-Container zugeordnet ist. Wenn die IP-Adresse des Docker-Hosts beispielsweise *xxx.xxx.xxx.xxx* lautet und der Azure SQL Edge-Container Hostport *1600* zugeordnet ist, wäre die Serveradresse für die Azure SQL Edge-Instanz *xxx.xxx.xxx.xxx,1600*. Das aktualisierte Python-Skript lautet:
 
 ```python
 
@@ -108,13 +108,13 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ```
 
-Weitere Informationen zum Herstellen einer Verbindung mit einer Instanz von SQL Edge mithilfe von SQL Server Management Studio auf einem Windows-Computer finden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms).
+Informationen zum Herstellen einer Verbindung mit einer Azure SQL Edge-Instanz mithilfe von SQL Server Management Studio auf einem Windows-Computer finden Sie unter [SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms).
 
-Informationen zum Herstellen einer Verbindung mit einer Instanz von SQL Edge mithilfe von Visual Studio Code auf einem Windows-, Mac- oder Linux-Computer finden Sie unter [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode).
+Informationen zum Herstellen einer Verbindung mit einer Azure SQL Edge-Instanz mithilfe von Visual Studio Code auf einem Windows-, Mac- oder Linux-Computer finden Sie unter [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode).
 
-Informationen zum Herstellen einer Verbindung mit einer Instanz von SQL Edge mithilfe von Azure Data Studio auf einem Windows-, Mac- oder Linux-Computer finden Sie unter [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server).
+Informationen zum Herstellen einer Verbindung mit einer Azure SQL Edge-Instanz mithilfe von Azure Data Studio auf einem Windows-, Mac- oder Linux-Computer finden Sie unter [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 [Herstellen einer Verbindung und Ausführen von Abfragen](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 
