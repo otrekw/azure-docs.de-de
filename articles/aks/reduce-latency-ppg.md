@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: 095746b9cf3cada9cebf7d169078eff9eb64a52d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444266"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244071"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Verringern der Wartezeit mithilfe von Näherungsplatzierungsgruppen (Vorschauversion)
 
@@ -74,7 +74,7 @@ Die erste Ressource, die Sie mit einer Näherungsplatzierungsgruppe bereitstelle
 
 Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *centralus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt. 
 
-Beschleunigter Netzwerkbetrieb trägt erheblich zur Verbesserung der Netzwerkleistung virtueller Computer bei. Es empfiehlt sich daher, Näherungsplatzierungsgruppen zusammen mit beschleunigtem Netzwerkbetrieb zu verwenden. Beschleunigter Netzwerkbetrieb wird von AKS standardmäßig in [unterstützten VM-Instanzen](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints) verwendet. Hierzu zählen die meisten virtuellen Azure-Computer mit mindestens zwei vCPUs.
+Beschleunigter Netzwerkbetrieb trägt erheblich zur Verbesserung der Netzwerkleistung virtueller Computer bei. Es empfiehlt sich daher, Näherungsplatzierungsgruppen zusammen mit beschleunigtem Netzwerkbetrieb zu verwenden. Beschleunigter Netzwerkbetrieb wird von AKS standardmäßig in [unterstützten VM-Instanzen](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints) verwendet. Hierzu zählen die meisten virtuellen Azure-Computer mit mindestens zwei vCPUs.
 
 Erstellen Sie einen neuen AKS-Cluster mit einer Näherungsplatzierungsgruppe:
 
@@ -164,4 +164,3 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-

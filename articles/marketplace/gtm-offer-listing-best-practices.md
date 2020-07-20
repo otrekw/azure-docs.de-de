@@ -1,18 +1,18 @@
 ---
 title: Best Practices für Angebotslistung – kommerzieller Microsoft-Marketplace
 description: Erfahren Sie mehr über Best Practices für die Go-to-Market-Listung Ihrer Microsoft AppSource- und Azure Marketplace-Angebote.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+author: keferna
+ms.author: keferna
+ms.date: 07/06/2020
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740772"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118391"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -22,47 +22,173 @@ Dieser Artikel enthält Vorschläge für die Erstellung ansprechender Angebote f
 
 | Storefronteinstellungen | Bewährte Methode |
 |:--- |:--- |  
-| Angebotsname | Geben Sie einen aussagekräftigen Titel an:<br> <ul> <li> Der Name Ihrer App muss den Mehrwert für Ihre Kunden vermitteln. </li> <li> Schließen Sie Suchbegriffe in den Titel Ihrer App ein, um eine höhere Bewertung bei den Suchmaschinenergebnissen zu erhalten. </li> </ul> Halten Sie ein festes Titelformat für Dienstangebote ein:<br>[Angebotsname]: [Dauer] [Angebotstyp] (z. B. *Contoso: 2-Wochen-Implementierung*) <br><br> Befolgen Sie Markenvorgaben:<br>Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die [Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx). |
-| Beschreibung des Angebots | Geben Sie eine klare Angebotsbeschreibung an:<br> <ul> <li> Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. </li> <li> Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können. </li> <li> Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. </li> <li> Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.</li> <li> In Listungen von Beratungsdiensten muss darüber hinaus deutlich der von Ihnen bereitgestellte professionelle Service angeben werden. </li></ul> Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen:<ul><li>Beschreibung des Produkts.</li><li>Benutzertyp, der von dem Produkt profitiert.</li><li>Ansprüche oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt.</li></ul> |
+| Angebotsname | Geben Sie für Apps einen eindeutigen Titel einschließlich Suchbegriffen an, die Kunden das Auffinden Ihres Angebot erleichtern. <br> <br> Verwenden Sie für Beratungsdienste folgendes Format: [Angebotsname: [Dauer] [Angebotstyp] (z. B. Contoso: zweiwöchige Implementierung) <br> <br> Beachten Sie die Markenrichtlinien: Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die [Microsoft-Markenrichtlinien](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) sowie die entsprechenden produktspezifischen Richtlinien. |
+| Beschreibung des Angebots | Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots.  Beachten Sie, dass diese Sätze in den Ergebnissen von Suchmaschinen verwendet werden können. Die Kernbestandteile Ihres Nutzenversprechens sollten Folgendes umfassen: <ul> <li>Beschreibung des Produkts oder der Lösung </li> <li> Benutzerpersona, die vom Produkt oder der Lösung profitiert </li> <li> Ansprüche oder Probleme der Kunden, die das Produkt oder die Lösung erfüllt bzw. behebt. </li> </ul> <br> Verwenden Sie möglichst branchenübliche Begriffe oder nutzenorientierte Formulierungen.  Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen.  Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. <br> <br> Nennen Sie in Listungen für Beratungsdienste klar und deutlich die von Ihnen angebotene professionelle Dienstleistung. |
 
 Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien wechseln Sie zu [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
 
 ## <a name="storefront-listing-details"></a>Storefront-Listungsdetails
 
-| Storefronteinstellungen | Bewährte Methode |
-|:--- |:--- |  
-| Branchen: Microsoft AppSource apps and consulting services only (Branchen: Nur Microsoft AppSource-Apps und -Beratungsdienste) | Wählen Sie Branchen aus, wenn Ihr Angebot branchenspezifische Anforderungen erfüllt: <ul><li> Führen Sie diese branchenspezifischen Funktionen in Ihrer Angebotsbeschreibung auf.</li> </ul> **Hinweis**: Die maximale Anzahl von Optionen richtet sich nach dem Angebotstyp und ist in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/) angegeben. |
-| Kategorien | Wählen Sie Kategorien aus, zu denen Ihr Angebot am besten passt:<br> <ul> <li> Wählen Sie diese Kategorien sorgfältig aus, da die Kunden sie für die Suche nach relevanten Apps nutzen. </li> <li> Stellen Sie sicher, dass Sie in der Angebotsbeschreibung angeben, wie Ihr Angebot kategoriespezifische Anforderungen berücksichtigt. </li> </ul> **Hinweis**: Die maximale Anzahl von Optionen richtet sich nach dem Angebotstyp und ist in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/) angegeben. |
-| Produkte, mit denen Ihre App zusammenarbeitet (maximal 3): Nur AppSource-Apps | Listen Sie weitere Produkte und Technologien auf, die von Ihrer Lösung genutzt oder erweitert werden. Beispiele: Azure IoT Hub oder Azure Machine Learning. |
-| Suchbegriffe (maximal 3) | Anhand von Suchbegriffen können Geschäftsbenutzer Ihr Angebot finden bei der Suche <ul>  <li>in Microsoft AppSource</li> <li>im Azure Marketplace</li><li>mit Suchmaschinen</li> </ul> Damit Ihre Listung in diesen Suchvorgängen angezeigt wird, müssen Sie folgendermaßen vorgehen: <ul> <li> Identifizieren Sie die obersten drei Suchbegriffe für Ihr Angebot. </li> <li> Integrieren Sie die Suchbegriffe in Ihre Angebotszusammenfassung und die Beschreibung. </li> <li> Listen Sie hier die Suchbegriffe auf. </li> </ul> |
+Für verschiedene Angebotstypen gelten Kategorien und Branchen für verschiedene Storefronts.
 
-### <a name="category"></a>Category
+| Storefront | Kategorien <br>nach Storefront | Kategorien <br>nach Storefront | Branchen <br> für AppSource |
+| :------------------- |:----------------:|:------:|:-------------:|
+| **Angebotstyp**   |  **Azure Marketplace**  | **AppSource**  |
+| Azure-App | X | |
+| Container | X | |
+| Beratungsdienste | | | X |
+| Dynamics 365 Customer Engagement und Power Platform | | X | X |
+| Dynamics 365 Finance und Supply Chain Management | | X | X | 
+| Dynamics 365 Business Central | | X | X |
+| IoT Edge-Module | X | |
+| Power BI | | X | X |
+| SaaS | X | X | X |
+| Virtueller Azure-Computer |  X |    |
 
-Microsoft AppSource und der Azure Marketplace sind Storefronts für unterschiedliche und besondere Kundenanforderungen. Wählen Sie die richtige Storefront und die richtigen Kategorien für jedes Angebot aus, die den Rollen Ihrer Kunden entsprechen. 
+### <a name="categories"></a>Kategorien
 
-Sie können bis zu zwei Kategorien und zwei Unterkategorien für ein Angebot auswählen. Die unten aufgeführten Kategorien und Unterkategorien sind in beiden Storefronts verfügbar.  Stellen Sie sicher, dass Ihre Kategorieauswahl der gewünschten Zielgruppe, der Angebotsbeschreibung und dem Wertversprechen Ihres Angebots entspricht.
+Microsoft AppSource und der Azure Marketplace sind zwei verschiedene Storefronts für individuelle Kundenanforderungen. Azure Marketplace richtet sich an IT-Experten und Entwickler, die Lösungen in Azure entwickeln.  Microsoft AppSource richtet sich an Geschäftsanwender, die geschäfts- und/oder branchenspezifische SaaS-Anwendungen, Dynamics 365-Add-Ins, Microsoft 365-Add-Ins und Power Platform-Apps benötigen.
 
-| **Branche**    | **Unterbranche**  | 
-| :------------------- | :-------------------|
-| *Automobilbau     | *Automobilbau |
-| Landwirtschaft     | *Sonstige – nicht segmentiert |
-| Distribution    | *Großhandel <br> *Päckchen- und Paketversand |
-| Fortbildung     | *Hochschulbildung <br> *Grund- und Sekundarschulbildung/K-12 <br> *Bibliotheken und Museen |
-| Finanzdienstleistungen     | *Bankwesen und Kapitalmärkte <br> *Versicherungswesen |
-| Behörden    | *Verteidigung und Geheimdienste (bisher als „Nationale und öffentliche Sicherheit“ bezeichnet) <br> *Öffentliche Sicherheit und Justiz <br> *Zivilregierung |
-| Gesundheitswesen   | *Zahler im Gesundheitswesen <br> *Gesundheitsversorger <br> *Pharmazeutika |
-| Fertigung und Ressourcen (bisher als „Fertigungsindustrie“ bezeichnet)   | *Chemie und Agrochemie <br> *Diskrete Fertigung <br> *Energieversorgung |
-| Einzelhandel und Konsumgüter (bisher als „Einzelhandel“ bezeichnet)  | *Konsumgüter <br> *Einzelhändler |
-| *Medien und Kommunikation (bisher als „Medien und Unterhaltung“ bezeichnet)  | *Medien und Unterhaltung <br> *Telekommunikation |
-| Dienstleistungsunternehmen  | *Legal <br> *Professionelle Partnerdienstleistungen |
-| *Architektur und Baugewerbe (bisher als „Architektur und Ingenieurwesen“ bezeichnet)  | *Sonstige – nicht segmentiert |
-| *Hotel- und Gaststättengewerbe, Tourismus  | *Hotels und Freizeit <br> *Reise und Verkehr <br> *Restaurants und Gastronomie |
-| *Andere Industriezweige im öffentlichen Sektor  | *Forstwirtschaft und Fischerei <br> *Gemeinnützige Organisationen |
-| *Immobilien  | *Sonstige – nicht segmentiert |
+Kategorien und Unterkategorien werden den einzelnen Storefronts basierend auf der Zielgruppe zugeordnet. Ihr Angebot wird in Microsoft AppSource oder im Azure Marketplace veröffentlicht und zwar je nach Angebotstyp, Transaktionsfähigkeit des Angebots und ausgewählter Kategorie/Unterkategorie. 
+
+Wählen Sie Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot und Ihrer Zielgruppe passen. Sie können Folgendes auswählen:
+
+* Bis zu zwei (2) Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional)
+* Bis zu zwei (2) Unterkategorien für jede primäre und/oder sekundäre Kategorie Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin auffindbar, allerdings nur unter der ausgewählten Kategorie.
+
+| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) (IT-Experten und Entwickler)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) (Geschäftsbenutzer)|
+| :------------------- |:----------------|
+|**Analyse** | **Analyse** |
+| &nbsp;&nbsp;Datenerkenntnisse | &nbsp;&nbsp;Erweiterte Analyse  |
+| &nbsp;&nbsp;Datenanalyse |  &nbsp;&nbsp;Visualisierung und Berichterstellung |
+| &nbsp;&nbsp;Big Data | **KI und Machine Learning**  |
+| &nbsp;&nbsp;Predictive Analytics | &nbsp;&nbsp;KI für Unternehmen |
+| &nbsp;&nbsp;Echtzeit-/Streaminganalyse | &nbsp;&nbsp;Bot-Apps |
+| **KI und Machine Learning** | **Kollaboration** |
+| &nbsp;&nbsp;Botdienst | &nbsp;&nbsp;Kontakte und Personen |
+| &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Besprechungsmanagement |
+| &nbsp;&nbsp;ML-Dienst | &nbsp;&nbsp;Websitedesign und -verwaltung |
+| &nbsp;&nbsp;Automatisiertes ML | &nbsp;&nbsp;Aufgaben- und Projektmanagement |
+| &nbsp;&nbsp;Geschäftsprozessautomatisierung/robotergesteuerte Prozessautomatisierung | &nbsp;&nbsp;Sprach- und Videokonferenzen |
+| &nbsp;&nbsp;Datenbeschriftung | **Compliance und rechtliche Angelegenheiten** |
+| &nbsp;&nbsp;Datenaufbereitung | &nbsp;&nbsp;Steuern und Prüfungen |
+| &nbsp;&nbsp;Knowledge Mining | &nbsp;&nbsp;Rechtswesen |
+| &nbsp;&nbsp;ML-Vorgänge | &nbsp;&nbsp;Daten, Governance und Datenschutz |
+| **Blockchain**  | &nbsp;&nbsp;Integrität und Sicherheit |
+| &nbsp;&nbsp;App-Beschleuniger | **Kundendienst**  |
+| &nbsp;&nbsp;Ledger mit einem Knoten | &nbsp;&nbsp;Kontaktcenter |
+| &nbsp;&nbsp;Ledger mit mehreren Knoten | &nbsp;&nbsp;Persönlicher Dienst |
+| &nbsp;&nbsp;Tools | &nbsp;&nbsp;Backoffice und Personaldienste |
+| **Compute**  | &nbsp;&nbsp;Wissens- und Fallmanagement |
+| &nbsp;&nbsp;Anwendungsinfrastruktur | &nbsp;&nbsp;Soziale Medien und Omnichannel-Kundenbindung |
+| &nbsp;&nbsp;Betriebssysteme | **Finanzen** |
+| &nbsp;&nbsp;Cache | &nbsp;&nbsp;Rechnungsstellung |
+| **Container**  | &nbsp;&nbsp;Asset-Management |
+| &nbsp;&nbsp;Erste Schritte mit Containern | &nbsp;&nbsp;Analyse, Konsolidierung und Berichterstellung |
+| &nbsp;&nbsp;Container-Apps | &nbsp;&nbsp;Kredite und Inkasso |
+| &nbsp;&nbsp;Containerimages | &nbsp;&nbsp;Compliance- und Risikomanagement |
+| **Datenbanken**  | **Geolocation** |
+| &nbsp;&nbsp;NoSQL-Datenbanken | &nbsp;&nbsp;Karten |
+| &nbsp;&nbsp;Relationale Datenbanken | &nbsp;&nbsp;Nachrichten und Wetter |
+| &nbsp;&nbsp;Ledger-/Blockchain-Datenbanken | **Personalverwaltung** |
+| &nbsp;&nbsp;Data Lakes | &nbsp;&nbsp;Talentakquise |
+| &nbsp;&nbsp;Data Warehouse | &nbsp;&nbsp;Talentmanagement |
+| **Entwicklertools**  | &nbsp;&nbsp;Personalverwaltung |
+| &nbsp;&nbsp;Tools | &nbsp;&nbsp;Personalplanung und Analyse |
+| &nbsp;&nbsp;Skripts | **IT- und Verwaltungstools** |
+| &nbsp;&nbsp;Entwicklerdienst | &nbsp;&nbsp;Verwaltungslösungen |
+| **DevOps**  | &nbsp;&nbsp;Geschäftsanwendungen |
+| **Integration**  | **Internet der Dinge (IoT)** |
+| &nbsp;&nbsp;Messaging | &nbsp;&nbsp;Asset-Management und Betriebsführung |
+| **IT- und Verwaltungstools**  | &nbsp;&nbsp;Verbundene Produkte |
+| &nbsp;&nbsp;Verwaltungslösungen | &nbsp;&nbsp;Intelligente Lieferkette |
+| &nbsp;&nbsp;Geschäftsanwendungen | &nbsp;&nbsp;Predictive Maintenance |
+| **Identität**  | &nbsp;&nbsp;Remoteüberwachung |
+| &nbsp;&nbsp;Zugriffsverwaltung | &nbsp;&nbsp;Sicherheit |
+| **Internet der Dinge (IoT)**  | &nbsp;&nbsp;Intelligente Infrastruktur und Ressourcen |
+| &nbsp;&nbsp;IoT-Konnektivität | &nbsp;&nbsp;Fahrzeuge und Mobilität |
+| &nbsp;&nbsp;IoT-Basisdienste | **Marketing** |
+| &nbsp;&nbsp;IoT Edge-Module | &nbsp;&nbsp;Werbung |
+| &nbsp;&nbsp;IoT-Lösungen | &nbsp;&nbsp;Analysen |
+| &nbsp;&nbsp;Datenanalyse und Visualisierung | &nbsp;&nbsp;Kampagnenmanagement und -automatisierung |
+| **Medien**  | &nbsp;&nbsp;E-Mail-Marketing |
+| &nbsp;&nbsp;Mediendienste | &nbsp;&nbsp;Veranstaltungs- und Ressourcenmanagement |
+| &nbsp;&nbsp;Inhaltsschutz | &nbsp;&nbsp;Forschung und Analyse |
+| &nbsp;&nbsp;Live- und On-Demand-Streaming | &nbsp;&nbsp;Soziale Medien |
+| **Überwachung und Diagnose**  | **Betrieb und Lieferkette** |
+| **Migration**  | &nbsp;&nbsp;Asset- und Produktionsmanagement |
+| &nbsp;&nbsp;Datenmigration | &nbsp;&nbsp;Bedarfsvorhersage |
+| **Mixed Reality**  | &nbsp;&nbsp;Informationsverwaltung und Konnektivität |
+| **Netzwerk**  | &nbsp;&nbsp;Planung, Einkauf und Berichterstellung |
+| &nbsp;&nbsp;Appliance-Manager | &nbsp;&nbsp;Qualitäts- und Servicemanagement |
+| &nbsp;&nbsp;Konnektivität | &nbsp;&nbsp;Vertriebs- und Auftragsmanagement |
+| &nbsp;&nbsp;Firewalls | &nbsp;&nbsp;Transport- und Lagerverwaltung |
+| &nbsp;&nbsp;Lastenausgleichsmodule | **Produktivität** |
+| **Security**  | &nbsp;&nbsp;Inhaltserstellung und -verwaltung |
+| &nbsp;&nbsp;Identitäts- und Zugriffsverwaltung | &nbsp;&nbsp;Dokumentverwaltung |
+| &nbsp;&nbsp;Bedrohungsschutz | &nbsp;&nbsp;E-Mail-Verwaltung |
+| &nbsp;&nbsp;Informationsschutz | &nbsp;&nbsp;Sprachen und Übersetzungen |
+| **Storage**  | &nbsp;&nbsp;Suche und Referenzierung |
+| &nbsp;&nbsp;Sicherung und Wiederherstellung | &nbsp;&nbsp;Gamification |
+| &nbsp;&nbsp;Unternehmenshybridspeicher | **Vertrieb** |
+| &nbsp;&nbsp;Dateifreigabe | &nbsp;&nbsp;Teleshopping |
+| &nbsp;&nbsp;Lebenszyklusverwaltung von Daten | &nbsp;&nbsp;CPQ (Configure, Price, Quote) |
+| **Web**  | &nbsp;&nbsp;Vertragsverwaltung |
+| &nbsp;&nbsp;Blogs und CMSs | &nbsp;&nbsp;CRM |
+| &nbsp;&nbsp;Web-Apps für Einsteiger | &nbsp;&nbsp;E-Commerce |
+| &nbsp;&nbsp;E-Commerce | &nbsp;&nbsp;Anreicherung von Geschäftsdaten  |
+| &nbsp;&nbsp;Web-App-Frameworks | &nbsp;&nbsp;Vertriebsoptimierung  |
+| &nbsp;&nbsp;Web-Apps |  |
+
+**WICHTIG: SaaS-Angebote und Microsoft 365-Add-Ins**
+
+Im [Leitfaden nach Angebotstyp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit u. U. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welcher Storefront Ihr Angebot veröffentlicht wird:
+
+| SaaS-Angebot    | SaaS-Angebot   | SaaS-Angebot  | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot    | Storefront | Storefront |
+|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
+| Getaktete Abrechnung | Microsoft 365-Add-Ins | Kontakt mit mir aufnehmen | Transaktion (mindestens 1 Plan) | Nur privater Plan | Nur öffentlicher Plan | Öffentliche und private Pläne | AppSource | Azure Marketplace |
+|  | X |  |  |  |  |  | X |  |
+| X |  |  | X | X |  |  |  | X |
+| X |  |  | X |  | X |  |  | X |
+| X |  |  | X |  |  | X |  | X<sup>2</sup> |
+|  |  |  | X | X |  |  |  | X |
+|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
+|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1,2</sup> |
+|  |  | X |  |  |  |  | x<sup>1</sup> | X<sup>1</sup> | 
+
+1. Abhängig von der Auswahl der Kategorie/Unterkategorie und Branche
+2. Angebote mit privaten Plänen werden im Azure-Portal veröffentlicht.
+
 
 ### <a name="industries"></a>Branchen
 
-Die Branchenauswahl gilt nur für Angebote, die in AppSource veröffentlicht werden, und für Beratungsdienste, die in Azure Marketplace veröffentlicht werden. Wählen Sie Branchen und/oder Sektoren aus, wenn Ihr Angebot branchenspezifische Anforderungen erfüllt, und erwähnen Sie branchenspezifische Funktionen in ihrer Angebotsbeschreibung. Sie können bis zu zwei (2) Branchen und zwei (2) Sektoren pro ausgewählter Branche auswählen.
+Die Branchenauswahl gilt nur für Angebote, die in AppSource veröffentlicht werden, und für Beratungsdienste, die in Azure Marketplace veröffentlicht werden.  Wählen Sie Branchen und/oder Sektoren aus, wenn Ihr Angebot branchenspezifische Anforderungen erfüllt, und erwähnen Sie branchenspezifische Funktionen in ihrer Angebotsbeschreibung. Sie können bis zu zwei (2) Branchen und zwei (2) Sektoren pro ausgewählter Branche auswählen.
+
+>[!Note]
+>Für Angebote von Beratungsdiensten im Azure Marketplace sind keine Sektoren verfügbar.
+
+| **Branchen** |  **Sektoren** |
+| :------------------- | :----------------|
+| **Landwirtschaft** | |
+| **Architektur und Bauwesen** | |
+| **Automobile** | |
+| **Distribution** | Großhandel <br> Päckchen- und Paketversand |  
+| **Education** | Hochschulbildung <br> Grund- und Sekundarschulbildung/K-12 <br> Bibliotheken und Museen |
+| **Finanzdienstleistungen** | Bankwesen und Kapitalmärkte <br> Versicherung | 
+| **Behörden** |  Verteidigung und Nachrichtendienste <br> Zivilbehörde <br> Öffentliche Sicherheit und Justiz |
+| **Gesundheitswesen** | Kostenträger für Gesundheitssystem <br> Gesundheitsdienstleister <br> Arzneimittel | 
+| **Hotel- und Gaststättengewerbe, Tourismus** | Transport und Verkehr <br> Hotels und Freizeit <br> Restaurants und Gastronomie | 
+| **Fertigung und Ressourcen** | Chemie und Agrochemie <br> Diskrete Fertigung <br> Energieversorgung | 
+| **Medien und Kommunikation** | Medien und Unterhaltung <br> Telekommunikation | 
+| **Andere Branchen des öffentlichen Sektors** | Forstwirtschaft und Fischerei <br> Gemeinnützig | 
+| **Dienstleistungsunternehmen** | Professionelle Partnerdienstleistungen <br> Rechtliche Hinweise | 
+| **Immobilien** | |
+
+Branche nur für Microsoft AppSource:
+
+| **Branche** |  **Sektoren** |
+| :------------------- | :----------------|
+| **Einzelhandel und Konsumgüter** | Einzelhändler <br> Konsumgüter |
 
 ### <a name="applicable-products"></a>Geeignete Produkte
 

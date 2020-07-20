@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554251"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202300"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Übersicht über den Datenimport – kognitive Azure-Suche
 
@@ -67,7 +67,9 @@ Sowohl bei POST- als auch bei GET-Vorgängen müssen in der Anforderungs-URL der
 
 Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+```http
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+```
 
 Das Format für POST ist das Gleiche, allerdings mit `api-version` in den Parametern für die Abfragezeichenfolge.
 

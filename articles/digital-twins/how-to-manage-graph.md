@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392249"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258094"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
@@ -21,6 +21,8 @@ Das Herzstück von Azure Digital Twins ist der [Zwillingsgraph](concepts-twins-g
 Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance.md) verfügen und eine [Authentifizierung](how-to-authenticate-client.md) für Ihre Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](how-to-use-apis-sdks.md) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
 
 Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Graphen als Ganzes. Für die Arbeit mit einzelnen digitalen Zwillingen finden Sie weitere Informationen in der [Anleitung: Verwalten digitaler Zwillinge](how-to-manage-twin.md).
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Erstellen von Beziehungen
 
