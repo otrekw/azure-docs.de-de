@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319066"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
@@ -222,9 +222,9 @@ Möglicherweise tritt nach dem Einrichten einer Pipeline im Portal der folgende 
 Dies kann aus verschiedenen Gründen geschehen, und die Fehlerbehebung variiert entsprechend.
 
 #### <a name="resolution"></a>Lösung
-Erlauben Sie ausgehende TCP-Verbindungen über Port TCP/1433 auf der Clientseite des Datenverwaltungsgateways, bevor Sie eine Verbindung mit einer SQL-Datenbank herstellen.
+Lassen Sie ausgehende TCP-Verbindungen über den Port „TCP/1433“ auf der Clientseite des Datenverwaltungsgateways zu, bevor Sie eine Verbindung mit einer SQL-Datenbank herstellen.
 
-Wenn die Zieldatenbank eine Azure SQL-Datenbank ist, überprüfen Sie auch die SQL Server-Firewalleinstellungen für Azure.
+Wenn sich die Zieldatenbank in Azure SQL-Datenbank befindet, überprüfen Sie auch die SQL Server-Firewalleinstellungen für Azure.
 
 Im folgenden Abschnitt finden Sie Anweisungen zum Testen der Verbindung mit dem lokalen Datenspeicher.
 

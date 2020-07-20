@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 03/09/2020
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358292"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -44,7 +44,7 @@ Nein. Die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Az
 Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Unterstützt die Passthrough-Authentifizierung eine alternative Anmelde-ID (Alternate ID) anstelle von „UserPrincipalName“ als Benutzernamen?
-Die Anmeldung mit einem Nicht-UPN-Wert, z. B. einer alternativen E-Mail-Adresse, wird zurzeit in der privaten Vorschauversion für die Pass-Through-Authentifizierung (PTA) und die Kennworthashsynchronisierung (Password Hash Sync, PHS) getestet.
+Ja. Die Anmeldung mit einem UPN-fremden Wert (etwa mit einer alternativen E-Mail-Adresse) wird sowohl für die Passthrough-Authentifizierung (PTA) als auch für die Kennworthashsynchronisierung (Password Hash Sync, PHS) unterstützt. Weitere Informationen zur alternativen Anmelde-ID finden Sie [hier](../authentication/howto-authentication-use-email-signin.md).
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 

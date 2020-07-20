@@ -1,6 +1,6 @@
 ---
-title: Verwenden von verwalteten Identitäten auf einem virtuellen Azure-Computer für die Anmeldung – Azure AD
-description: Ausführliche Anweisungen und Beispiele für die Verwendung von verwalteten Identitäten eines virtuellen Azure-Computers für die Anmeldung und den Zugriff auf Ressourcen eines Skriptclients
+title: Verwenden von verwalteten Identitäten auf einem virtuellen Azure-Computer für die Anmeldung – Azure AD
+description: Schrittweise Anleitungen und Beispiele für die Skriptclient-Anmeldung und den Ressourcenzugriff mit verwalteten Identitäten auf einem virtuellen Azure-Computer für Azure-Ressourcen (Dienstprinzipal).
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1380562cfc073d906ea4cfc0d6d849e9ca2a70d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74547383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608414"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer für die Anmeldung 
 
@@ -41,14 +41,14 @@ Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwen
 
 ## <a name="overview"></a>Übersicht
 
-Verwaltete Identitäten für Azure-Ressourcen bieten ein [Dienstprinzipalobjekt](../develop/developer-glossary.md#service-principal-object), das [bei der Aktivierung von verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-the-managed-identities-for-azure-resources-work) auf dem virtuellen Computer erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
+Verwaltete Identitäten für Azure-Ressourcen stellen ein [Dienstprinzipalobjekt](../develop/developer-glossary.md#service-principal-object) bereit, das [bei der Aktivierung von verwalteten Identitäten für Azure-Ressourcen](overview.md) auf dem virtuellen Computer erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
 
    - Registrierung und Zustimmung als vertrauliche und Webclientanwendung in Azure AD
    - Anmeldung unter dem zugehörigen Dienstprinzipal mit den Anmeldeinformationen der Anwendung (wahrscheinlich im Skript eingebettet)
 
 Mithilfe verwalteter Identitäten für Azure-Ressourcen muss Ihr Skriptclient beides nicht mehr ausführen, da er sich unter dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen anmelden kann. 
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 Mit diesem Skript wird Folgendes veranschaulicht:
 

@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298496"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -242,11 +242,16 @@ Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden. Ein leeres A
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Gibt die Timeoutdauer für alle Funktionen an. Die Angabe erfolgt im TimeSpan-Zeichenfolgenformat. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt.  
+Gibt die Timeoutdauer für alle Funktionen an. Die Angabe erfolgt im TimeSpan-Zeichenfolgenformat. 
 
-Im Premium-Tarif liegt der gültige Bereich zwischen 1 Sekunde und 60 Minuten, wobei der Standardwert bei 30 Minuten liegt.
+| Plantyp | Standard (Min.) | Maximum (Min.) |
+| -- | -- | -- |
+| Nutzung | 5 | 10 |
+| Premium<sup>1</sup> | 30 | -1 (unbegrenzt)<sup>2</sup> |
+| Dediziert (App Service) | 30 | -1 (unbegrenzt)<sup>2</sup> |
 
-Bei einem dedizierten App Service-Plan gibt es keine allgemeine Beschränkung, und der Standardwert beträgt 30 Minuten. Der Wert `-1` gibt eine unbegrenzte Ausführung an, es wird jedoch empfohlen, eine festgelegte Obergrenze beizubehalten.
+<sup>1</sup> Die Premium-Planausführung wird nur für 60 Minuten garantiert, ist aber eigentlich unbegrenzt.   
+<sup>2</sup> Der Wert `-1` gibt eine unbegrenzte Ausführung an, es wird jedoch empfohlen, eine feste Obergrenze zu verwenden.
 
 ```json
 {

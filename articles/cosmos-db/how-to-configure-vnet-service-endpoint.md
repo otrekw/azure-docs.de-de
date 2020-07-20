@@ -3,15 +3,15 @@ title: Konfigurieren des auf einem virtuellen Netzwerk basierenden Zugriffs für
 description: Dieses Dokument beschreibt die Schritte, die zum Einrichten eines VNET-Dienstendpunkts für Azure Cosmos DB erforderlich sind.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 03/26/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: a061676714c35b4e8868ce3df9c71be05297ba99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261663"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs über virtuelle Netzwerke (VNET)
 
@@ -42,11 +42,11 @@ Die folgenden Abschnitte beschreiben, wie Sie den VNET-Dienstendpunkt für ein A
 
 1. Wählen Sie das **Abonnement** aus, aus dem ein virtuelles Azure-Netzwerk hinzugefügt werden soll. Wählen Sie für **Virtuelle Netzwerke** und **Subnetze** die virtuellen Azure-Netzwerke und Subnetze aus, denen Sie Zugriff auf Ihr Azure Cosmos DB-Konto gewähren möchten. Klicken Sie als Nächstes auf **Aktivieren**, um die ausgewählten Netzwerke mit Dienstendpunkten für „Microsoft.AzureCosmosDB“ zu aktivieren. Wenn der Vorgang abgeschlossen ist, klicken Sie auf **Hinzufügen**.
 
-   ![Auswählen des Virtual Network und des Subnetzes](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Auswählen des virtuellen Netzwerks und des Subnetzes":::
 
 1. Nachdem das Azure Cosmos DB-Konto für den Zugriff aus einem virtuellen Netzwerk aktiviert wurde, lässt es nur den Datenverkehr aus diesem ausgewählten Subnetz zu. Das von Ihnen hinzugefügte virtuelle Netzwerk und das Subnetz sollten wie im folgenden Screenshot angezeigt werden:
 
-   ![Erfolgreich konfiguriertes virtuelles Netzwerk und Subnetz](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Erfolgreich konfiguriertes virtuelles Netzwerk und Subnetz":::
 
 > [!NOTE]
 > Um VNET-Dienstendpunkte zu aktivieren, benötigen Sie die folgenden Abonnementberechtigungen:
@@ -66,7 +66,7 @@ Im Folgenden finden Sie die Schritte zum Registrieren eines Abonnements bei eine
 
 1. Geben Sie die Informationen ein, die zum Erstellen des neuen virtuellen Netzwerks erforderlich sind, und klicken Sie dann auf **Erstellen**. Das Subnetz wird mit einem für „Microsoft.AzureCosmosDB“ aktivierten Dienstendpunkt erstellt.
 
-   ![Auswählen des virtuellen Netzwerks und Subnetzes für ein neues virtuelle Netzwerk](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Auswählen des virtuellen Netzwerks und Subnetzes für ein neues virtuelle Netzwerk":::
 
 Wenn Ihr Azure Cosmos DB-Konto von anderen Azure-Diensten wie z. B. Azure Cognitive Search verwendet wird oder Stream Analytics oder Power BI darauf zugreifen, gewähren Sie Zugriff, indem Sie das Kontrollkästchen **Accept connections from within global Azure datacenters** (Zugriff aus globalen Azure-Rechenzentren zulassen) aktivieren.
 
@@ -80,7 +80,7 @@ Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreif
 
 1. Um eine Regel für ein virtuelles Netzwerk oder ein Subnetz zu entfernen, klicken Sie neben dem virtuellen Netzwerk oder dem Subnetz auf **...** , und wählen Sie **Entfernen** aus.
 
-   ![Entfernen eines Virtual Network](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Entfernen eines virtuellen Netzwerks":::
 
 1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
@@ -257,6 +257,10 @@ az network vnet subnet update \
    --vnet-name $vnetName \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
+
+## <a name="port-range-when-using-direct-mode"></a>Portbereich bei Verwendung des direkten Modus
+
+Wenn Sie Dienstendpunkte mit einem Azure Cosmos-Konto über eine Verbindung im direkten Modus verwenden, muss der TCP-Portbereich von 10.000 bis 20.000 geöffnet sein.
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Migrieren einer IP-Firewallregel zur Zugriffssteuerungsliste eines virtuellen Netzwerks
 

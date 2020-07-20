@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: iainfou
-ms.openlocfilehash: 29d7772ef688134e8fc9009ec32cffacc3f23ca7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 837ca3afaf014c41fded09fa8342eed1c13e5dcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734927"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>Vorteile der Migration vom klassischen Bereitstellungsmodell in Azure Active Directory Domain Services zum Resource Manager-Bereitstellungsmodell
 
-In Azure Active Directory Domain Services (AD DS) können Sie eine vorhandene verwaltete Domäne, die das klassische Bereitstellungsmodell verwendet, zum Resource Manager-Bereitstellungsmodell migrieren. Von Azure AD DS verwaltete Domänen, die das Resource Manager-Bereitstellungsmodell verwenden, bieten zusätzliche Features wie eine differenzierte Kennwortrichtlinie, Überwachungsprotokolle und einen Kontosperrschutz.
+In Azure Active Directory Domain Services (Azure AD DS) können Sie eine vorhandene verwaltete Domäne, die das klassische Bereitstellungsmodell verwendet, zum Resource Manager-Bereitstellungsmodell migrieren. Von Azure AD DS verwaltete Domänen, die das Resource Manager-Bereitstellungsmodell verwenden, bieten zusätzliche Features wie eine differenzierte Kennwortrichtlinie, Überwachungsprotokolle und einen Kontosperrschutz.
 
 In diesem Artikel werden die Vorteile der Migration beschrieben. Lesen Sie zum Einstieg [Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager][howto-migrate].
 
@@ -30,7 +30,7 @@ In diesem Artikel werden die Vorteile der Migration beschrieben. Lesen Sie zum E
 
 ## <a name="migration-benefits"></a>Vorteile der Migration
 
-Beim Migrationsvorgang wird eine vorhandene Azure AD DS-Instanz, die das klassische Bereitstellungsmodell verwendet, auf die Verwendung des Resource Manager-Bereitstellungsmodells umgestellt. Mit der Migration einer verwalteten Azure AD DS-Domäne vom klassischen zum Resource Manager-Bereitstellungsmodell vermeiden Sie die Notwendigkeit, Computer erneut in die verwaltete Domäne einzubinden oder die Azure AD DS-Instanz zu löschen und ganz neu zu erstellen. Nach Abschluss des Migrationsvorgangs bleiben virtuelle Computer in die verwaltete Azure AD DS-Domäne eingebunden.
+Bei der Migration wird eine vorhandene verwaltete Domäne, die das klassische Bereitstellungsmodell verwendet, auf die Verwendung des Resource Manager-Bereitstellungsmodells umgestellt. Mit der Migration einer verwalteten Domäne vom klassischen Modell zum Resource Manager-Bereitstellungsmodell vermeiden Sie die Notwendigkeit, Computer erneut in die verwaltete Domäne einzubinden oder die verwaltete Domäne zu löschen und ganz neu zu erstellen. Nach Abschluss des Migrationsvorgangs bleiben virtuelle Computer in die verwaltete Domäne eingebunden.
 
 Nach der Migration stellt Azure AD DS viele Features bereit, die nur für Domänen verfügbar sind, die das Resource Manager-Bereitstellungsmodell verwenden. Zu den Features zählen:
 
@@ -46,7 +46,7 @@ Nach der Migration stellt Azure AD DS viele Features bereit, die nur für Domä
 * Zugriff des Supports auf weitere Telemetriedaten und effektivere Problembehebung
 * Verschlüsselung ruhender Daten mit [Azure Managed Disks][managed-disks] für die Daten auf den verwalteten Domänencontrollern
 
-Mit verwalteten Azure AD DS-Domänen, die ein Resource Manager-Bereitstellungsmodell verwenden, bleiben Sie in Bezug auf brandneue Features stets auf dem Laufenden. Für verwaltete Azure AD DS-Domänen mit dem klassischen Bereitstellungsmodell sind keine neuen Features verfügbar.
+Durch verwaltete Domänen, die ein Resource Manager-Bereitstellungsmodell verwenden, bleiben Sie mit den neuesten Features stets auf dem Laufenden. Für verwaltete Domänen mit dem klassischen Bereitstellungsmodell sind keine neuen Features verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

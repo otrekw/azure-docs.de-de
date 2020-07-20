@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783230"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
@@ -57,7 +57,7 @@ Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure
 
 2. Jeff überprüft seine **Sicherheitsbewertung**, um einen Gesamteindruck davon zu bekommen, wie sicher die Abonnements sind, und er sieht, dass seine Bewertung 548 ist.
 
-3. Jeff muss entscheiden, welche Empfehlungen er zuerst umsetzt. Also klickt Jeff auf „Sicherheitsbewertung“ und beginnt, die Empfehlungen abzuarbeiten, basierend darauf, um wie viel sie seine [Sicherheitsbewertung](security-center-secure-score.md) verbessern.
+3. Jeff muss entscheiden, welche Empfehlungen er zuerst umsetzt. Also klickt Jeff auf „Sicherheitsbewertung“ und beginnt, die Empfehlungen abzuarbeiten, basierend darauf, um wie viel sie seine [Sicherheitsbewertung](secure-score-security-controls.md) verbessern.
 
 4. Da Jeff über viele verbundene virtuelle Computer und Server verfügt, entscheidet er, dass er sich auf **Compute und Apps** konzentriert.
 

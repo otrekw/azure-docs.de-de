@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358241"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -106,7 +106,7 @@ Die Authentifizierungs-Agents führen die folgenden Schritte aus, um sich bei Az
     - Die Zertifizierungsstelle wird nur von der Passthrough-Authentifizierung verwendet. Die Zertifizierungsstelle wird verwendet, um CSRs während der Registrierung eines Authentifizierungs-Agents zu signieren.
     -  Keiner der anderen Azure AD-Dienste verwendet diese Zertifizierungsstelle.
     - Der Antragsteller des Zertifikats (Distinguished Name, DN) ist auf Ihre Mandanten-ID festgelegt. Dieser DN ist eine GUID, mit der Ihr Mandant eindeutig identifiziert wird. Dieser DN beschränkt die Verwendung des Zertifikats auf Ihren Mandanten.
-6. Azure AD speichert den öffentlichen Schlüssel des Authentifizierungs-Agents in einer Azure SQL-Datenbank, auf die nur Azure AD Zugriff hat.
+6. Azure AD speichert den öffentlichen Schlüssel des Authentifizierungs-Agents in einer Datenbank in Azure SQL-Datenbank, auf die nur Azure AD Zugriff hat.
 7. Das Zertifikat (in Schritt 5 ausgestellt) wird auf dem lokalen Server im Windows-Zertifikatspeicher gespeichert (Speicherort: [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE)). Es wird sowohl vom Authentifizierungs-Agent als auch von den Updater-Anwendungen verwendet.
 
 ### <a name="authentication-agent-initialization"></a>Initialisierung des Authentifizierungs-Agents
@@ -139,7 +139,7 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 4. Der Benutzer gibt auf der **Benutzeranmeldeseite** seinen Benutzernamen ein und wählt anschließend die Schaltfläche **Weiter** aus.
 5. Der Benutzer gibt auf der **Benutzeranmeldeseite** sein Kennwort ein und wählt anschließend die Schaltfläche **Anmelden** aus.
 6. Der Benutzername und das Kennwort werden in einer HTTPS POST-Anforderung an den Azure AD STS gesendet.
-7. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts.
+7. Der Azure AD  STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts.
     - Der Dienst erstellt „N“ verschlüsselte Kennwortwerte für „N“ Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind.
 8. Der Azure AD STS reiht die Anforderung zur Kennwortvalidierung, die aus den Benutzername- und den verschlüsselten Kennwortwerten besteht, in die Service Bus-Warteschlange ein, die zu Ihrem Mandanten gehört.
 9. Da die initialisierten Authentifizierungs-Agents eine dauerhafte Verbindung mit der Service Bus-Warteschlange haben, ruft einer der verfügbaren Authentifizierungs-Agents die Anforderung zur Kennwortvalidierung ab.
@@ -178,7 +178,7 @@ So erneuern Sie die Vertrauensstellung eines Authentifizierungs-Agents mit Azure
 6. Falls das vorhandene Zertifikat abgelaufen ist, löscht Azure AD den Authentifizierungs-Agent aus der Liste mit den registrierten Authentifizierungs-Agents Ihres Mandanten. Anschließend muss ein globaler Administrator einen neuen Authentifizierungs-Agent manuell installieren und registrieren.
     - Verwenden Sie die Stamm-CA (Stammzertifizierungsstelle) von Azure AD, um das Zertifikat zu signieren.
     - Legen Sie den Antragsteller des Zertifikats (Distinguished Name oder DN) auf Ihre Mandanten-ID fest. Diese ist eine GUID, mit der Ihr Mandant eindeutig identifiziert wird. Der DN bewirkt, dass das Zertifikat nur für Ihren Mandanten gilt.
-6. Azure AD speichert den neuen öffentlichen Schlüssel des Authentifizierungs-Agents in einer Azure SQL-Datenbank, auf die nur Azure AD selbst Zugriff hat. Außerdem macht Azure AD den alten öffentlichen Schlüssel, der dem Authentifizierungs-Agent zugeordnet ist, ungültig.
+6. Azure AD speichert den neuen öffentlichen Schlüssel des Authentifizierungs-Agents in einer Datenbank in Azure SQL-Datenbank, auf die nur Azure AD Zugriff hat. Außerdem macht Azure AD den alten öffentlichen Schlüssel, der dem Authentifizierungs-Agent zugeordnet ist, ungültig.
 7. Anschließend wird das neue Zertifikat (in Schritt 5 ausgestellt) auf dem Server im Windows-Zertifikatspeicher gespeichert (Speicherort: [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER)).
     - Da das Verfahren zur Erneuerung der Vertrauensstellung nicht interaktiv durchgeführt wird (ohne Vorhandensein des globalen Administrators), hat der Authentifizierungs-Agent keinen Zugriff mehr, um das vorhandene Zertifikat im Speicherort CERT_SYSTEM_STORE_LOCAL_MACHINE zu aktualisieren. 
     

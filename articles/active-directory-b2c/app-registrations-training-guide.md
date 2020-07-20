@@ -6,20 +6,20 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e60e8452b5cd3750a7b3478c860de95d8992528d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c89ed98d8100df270f09f1d2d1b621e71e326fe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386299"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Neue Benutzeroberfläche für App-Registrierungen in Azure Active Directory B2C
 
-Die neue Benutzeroberfläche für **[App-Registrierungen](https://aka.ms/b2cappregistrations)** in Azure Active Directory B2C (Azure AD B2C) ist jetzt allgemein verfügbar. Wenn Sie bisher die Benutzeroberfläche des Anwendungsportals zum Registrieren von **Anwendungen** bei Azure AD B2C (im Folgenden als „Legacyoberfläche“ bezeichnet) verwendet haben, erleichtert Ihnen diese Anleitung den Einstieg in die Nutzung der neuen Benutzeroberfläche.
+Die neue Benutzeroberfläche für **[App-Registrierungen](https://aka.ms/b2cappregistrations)** in Azure Active Directory B2C (Azure AD B2C) ist jetzt allgemein verfügbar. Wenn Sie bisher die Benutzeroberfläche des Anwendungsportals zum Registrieren von **Anwendungen** bei Azure AD B2C (im Folgenden als „Legacyoberfläche“ bezeichnet) verwendet haben, erleichtert Ihnen diese Anleitung den Einstieg in die Nutzung der neuen Benutzeroberfläche.
 
 ## <a name="overview"></a>Übersicht
 Bisher mussten Sie Ihre kundenseitigen Azure AD B2C-Anwendungen mithilfe der Legacyoberfläche getrennt von Ihren restlichen Apps verwalten. Dies bedeutete die Nutzung unterschiedlicher Oberflächen zur App-Erstellung an unterschiedlichen Stellen in Azure.
@@ -58,7 +58,7 @@ In der neuen Benutzeroberfläche können Sie aus den folgenden Optionen einen un
 
 Weitere Informationen zu den unterschiedlichen Kontotypen finden Sie in der Benutzeroberfläche für die Erstellung unter **Hilfe bei der Auswahl**. 
 
-In der Legacyoberfläche wurden alle Apps als kundenseitige Anwendungen erstellt. Für diese Apps wird der Kontotyp auf die Option **Konten in einem beliebigen Organisationsverzeichnis oder eines beliebigen Identitätsanbieters. (zur Authentifizierung von Benutzern bei Azure AD B2C)** festgelegt. 
+In der Legacyoberfläche wurden alle Apps als kundenseitige Anwendungen erstellt. Für diese Apps wird der Kontotyp auf die Option **Konten in einem beliebigen Organisationsverzeichnis oder eines beliebigen Identitätsanbieters. (zur Authentifizierung von Benutzern bei Azure AD B2C)** festgelegt.
 > [!NOTE]
 > Diese Option ist erforderlich, um Azure AD B2C-Benutzerflows für die Authentifizierung von Benutzern bei dieser Anwendung ausführen zu können. Informationen zur Registrierung einer Anwendung für die Verwendung mit Benutzerflows finden Sie [hier](tutorial-register-applications.md).
 
@@ -72,29 +72,29 @@ Möglicherweise werden nicht alle Microsoft Graph-Berechtigungen angezeigt, da v
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Administratoreinwilligung und die Bereiche „offline_access“ und „openid“  
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
-Der Bereich **openid** ist für die Anmeldung von Benutzern bei einer App durch Azure AD B2C erforderlich. Der Bereich **offline_access** wird für das Ausstellen von Aktualisierungstoken für einen Benutzer benötigt. Diese Bereiche wurden neu hinzugefügt und verfügen standardmäßig über Administratoreinwilligung. Wenn Sie sichergestellt haben, dass die Option **Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen** aktiviert ist, können Sie nun während des Erstellungsprozesses problemlos Berechtigungen für diese Bereiche hinzufügen. Alternativ dazu können Sie Microsoft Graph-Berechtigungen mit Administratoreinwilligung auch in den Einstellungen **API-Berechtigungen** für eine vorhandene App hinzufügen.
+Der Bereich **openid** ist für die Anmeldung von Benutzern bei einer App durch Azure AD B2C erforderlich. Der Bereich **offline_access** wird für das Ausstellen von Aktualisierungstoken für einen Benutzer benötigt. Diese Bereiche wurden neu hinzugefügt und verfügen standardmäßig über Administratoreinwilligung. Nun können Sie während des Erstellungsprozesses problemlos Berechtigungen für diese Bereiche hinzufügen, indem Sie sicherstellen, dass die Option **Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen** aktiviert ist. Alternativ dazu können Sie Microsoft Graph-Berechtigungen mit Administratoreinwilligung auch in den Einstellungen **API-Berechtigungen** für eine vorhandene App hinzufügen.
 
 Informationen zu Berechtigungen und Einwilligungen finden Sie [hier](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Plattformen/Authentifizierung Antwort-URLs/Umleitungs-URIs
 In der Legacyoberfläche konnten Sie unter **Eigenschaften** die verschiedenen Plattformtypen als Antwort-URLs für Web-Apps/-APIs und Umleitungs-URIs für native Clients verwalten. „Native Clients“, auch „öffentliche Clients“ genannt, beinhalten Apps für iOS, macOS, Android und andere Typen von Mobil- und Desktopanwendungen. 
 
-In der neuen Benutzeroberfläche werden sowohl Antwort-URLs als auch Umleitungs-URIs „Umleitungs-URIs“ genannt. Sie befinden sich im Abschnitt **Authentifizierung** einer App. Bei App-Registrierungen gibt es keine Unterscheidung zwischen „Web-Apps/-APIs“ und „nativen Anwendungen“. Sie können die gleiche App-Registrierung für all diese Plattformtypen verwenden, indem Sie die entsprechenden Umleitungs-URIs registrieren. 
+In der neuen Benutzeroberfläche werden sowohl Antwort-URLs als auch Umleitungs-URIs „Umleitungs-URIs“ genannt. Sie befinden sich im Abschnitt **Authentifizierung** einer App. App-Registrierungen sind nicht auf eine Web-App oder eine native Anwendung beschränkt. Sie können die gleiche App-Registrierung für all diese Plattformtypen verwenden, indem Sie die entsprechenden Umleitungs-URIs registrieren. 
 
 Umleitungs-URIs müssen einem App-Typ zugeordnet werden: entweder „Web“ oder „Öffentlich“ (Mobilgerät und Desktop). Weitere Informationen zu Umleitungs-URIs finden Sie [hier](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application).
 
-Ob eine Anwendung als öffentlicher Client behandelt werden soll, wird möglichst zur Laufzeit aus dem Plattformtyp des Umleitungs-URIs abgeleitet. Legen Sie für Flows ohne Umleitungs-URI, wie z. B. ROPC-Flows, die Einstellung **Anwendung als öffentlichen Client behandeln** auf *Ja* fest.
+<!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
 Die Plattformen für **iOS/macOS** und **Android** sind vom Typ „Öffentlicher Client“. Sie stellen eine einfache Möglichkeit zur Konfiguration von iOS/macOS- oder Android-Apps mit den entsprechenden Umleitungs-URIs für die Nutzung mit MSAL dar. Weitere Informationen zu den Optionen bei der Anwendungskonfiguration finden Sie [hier](../active-directory/develop/msal-client-applications.md).
 
 
 ## <a name="application-certificates--secrets"></a>Anwendungszertifikate und -geheimnisse
 
-In der neuen Benutzerfläche werden Zertifikate und Geheimnisse nicht mehr über das Blatt **Schlüssel**, sondern über **Zertifikate und Geheimnisse** verwaltet. Anwendungen werden mit Anmeldeinformationen beim Authentifizierungsdienst identifiziert, wenn sie Token (über ein HTTPS-Schema) an einem über das Web aufrufbaren Speicherort erhalten. Es wird empfohlen, für die Authentifizierung bei Azure AD in Szenarios mit Clientanmeldeinformationen anstelle eines Clientgeheimnisses ein Zertifikat zu verwenden. Für die Authentifizierung bei Azure AD B2C können keine Zertifikate verwendet werden.
+In der neuen Benutzerfläche werden Zertifikate und Geheimnisse nicht mehr über das Blatt **Schlüssel**, sondern über **Zertifikate und Geheimnisse** verwaltet. Anwendungen können über Zertifikate und Geheimnisse vom Authentifizierungsdienst identifiziert werden, wenn sie Token (über ein HTTPS-Schema) an einem über das Web aufrufbaren Speicherort erhalten. Es wird empfohlen, für die Authentifizierung bei Azure AD in Szenarios mit Clientanmeldeinformationen anstelle eines Clientgeheimnisses ein Zertifikat zu verwenden. Für die Authentifizierung bei Azure AD B2C können keine Zertifikate verwendet werden.
 
 
-## <a name="features-not-available-in-azure-ad-b2c-tenants"></a>Nicht für Azure AD B2C-Mandanten verfügbare Funktionen
-Die folgenden Azure AD-Funktionen zur App-Registrierung sind für Azure AD B2C-Mandanten nicht verfügbar:
+## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Nicht für Azure AD B2C-Mandanten geltende Features
+Die folgenden Azure AD-Features für die App-Registrierung gelten nicht für Azure AD B2C-Mandanten oder sind für diese Mandanten nicht verfügbar:
 - **Rollen und Administratoren**: Für diese Funktion ist eine Azure AD Premium-Lizenz P1 oder P2 erforderlich, die für Azure AD B2C derzeit nicht verfügbar ist.
 - **Branding**: Die Anpassung der Benutzeroberfläche wird über die Benutzeroberfläche **Unternehmensbranding** oder als Teil eines Benutzerflows konfiguriert. Informationen zum Anpassen der Benutzeroberfläche in Azure Active Directory B2C finden Sie [hier](customize-ui-overview.md).
 - **Überprüfung der Herausgeberdomäne**: Ihre App ist in der Domäne *.onmicrosoft.com* registriert, die keine überprüfte Domäne darstellt. Außerdem wird die Herausgeberdomäne hauptsächlich zum Erteilen von Benutzereinwilligungen verwendet, die für die Benutzerauthentifizierung bei Azure AD B2C-Apps nicht gelten. Weitere Informationen zur Herausgeberdomäne finden Sie [hier](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
@@ -112,9 +112,9 @@ Für die neue Umgebung gelten die folgenden Einschränkungen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu den ersten Schritten mit der neuen Benutzeroberfläche für App-Registrierungen finden Sie unter:
-* [Registrieren einer Webanwendung](tutorial-register-applications.md)
-* [Registrieren einer Web-API](add-web-api-application.md)
-* [Registrieren einer nativen Clientanwendung](add-native-application.md)
+* [Tutorial: Registrieren einer Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md)
+* [Hinzufügen einer Web-API-Anwendung zu Ihrem Azure Active Directory B2C-Mandanten](add-web-api-application.md)
+* [Hinzufügen einer nativen Clientanwendung zu Ihrem Active Directory B2C-Mandanten](add-native-application.md)
 * [Registrieren einer Microsoft Graph-Anwendung zur Verwaltung von Azure AD B2C-Ressourcen](microsoft-graph-get-started.md)
 * [Verwenden von Azure AD B2C als SAML-Dienstanbieter](identity-provider-adfs2016-custom.md)
-* [Anwendungstypen](application-types.md)
+* [In Active Directory B2C verwendbare Anwendungstypen](application-types.md)

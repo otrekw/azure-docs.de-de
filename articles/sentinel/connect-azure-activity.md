@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Azure-Aktivitätsdaten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Aktivitätsdaten mit Azure Sentinel verknüpfen.
+description: Hier erfahren Sie, wie Sie Azure-Aktivitätsprotokolle mit nur einem Klick an Azure Sentinel streamen. Im Aktivitätsprotokoll werden Ereignisse auf Abonnementebene für die gesamte Azure-Umgebung erfasst und angezeigt.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564495"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll
 

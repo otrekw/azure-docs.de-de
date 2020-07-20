@@ -6,18 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2627cd540efe644315e303337b7dce95a6e2d126
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84906886"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
-
-Überwachungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation.
-
-Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen. Zusätzlich zu den [von Microsoft bereitgestellten Lösungen](solutions-creating.md) können Partner und Kunden Verwaltungslösungen erstellen und in ihrer eigenen Umgebung verwenden oder über die Community für Kunden verfügbar machen.
+Überwachungslösungen nutzen Dienste in Azure, um eine zusätzliche Analyse des Betriebs einer bestimmten Anwendung oder eines bestimmten Diensts zu ermöglichen. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation. Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen.
 
 ## <a name="use-monitoring-solutions"></a>Verwenden von Überwachungslösungen
 

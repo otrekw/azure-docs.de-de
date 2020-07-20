@@ -4,12 +4,12 @@ description: Überwachen Sie Webanwendungen auf Verfügbarkeit, Leistung und Aus
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: 302d96544a719f0e818d942bff1011c6a4368ef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807314"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086244"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights für .NET-Konsolenanwendungen
 
@@ -18,7 +18,7 @@ Mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) kö
 Sie benötigen ein Abonnement für [Microsoft Azure](https://azure.com). Melden Sie sich mit einem Microsoft-Konto an, das Sie möglicherweise für Windows, Xbox Live oder andere Microsoft-Clouddienste verwenden. Falls Ihr Team über ein Unternehmensabonnement für Azure verfügt, können Sie den Besitzer bitten, Sie über Ihr Microsoft-Konto hinzuzufügen.
 
 > [!NOTE]
-> Es gibt ein neues Application Insights-SDK mit dem Namen [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService), über das Application Insights für beliebige Konsolenanwendungen aktiviert werden kann. Es wird empfohlen, dieses Paket und die zugehörigen Anleitungen [hier](../../azure-monitor/app/worker-service.md) zu verwenden. Dieses Paket hat [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) zum Ziel und kann daher in .NET Core 2.0 oder höher und .NET Framework 4.7.2 oder höher verwendet werden.
+> Es wird *dringend empfohlen*, das [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)-Paket und die zugehörigen Anweisungen [hier](../../azure-monitor/app/worker-service.md) für alle Konsolenanwendungen zu verwenden. Dieses Paket hat [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) zum Ziel und kann daher in .NET Core 2.1 oder höher und .NET Framework 4.7.2 oder höher verwendet werden.
 
 ## <a name="getting-started"></a>Erste Schritte
 

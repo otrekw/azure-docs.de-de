@@ -7,22 +7,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603960"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 
-Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format *\<domänenname.onmicrosoft.com“* . Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können jedoch die Namen Ihrer Organisation hinzufügen. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise *alain\@contoso.com*).
+Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen *\<domainname>.onmicrosoft.com*. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können jedoch die Namen Ihrer Organisation hinzufügen. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise *alain\@contoso.com*).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

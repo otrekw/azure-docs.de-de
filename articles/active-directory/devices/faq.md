@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497522"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689043"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -176,6 +176,8 @@ Gelöschte oder deaktivierte Benutzer, die sich zuvor nicht angemeldet haben, k�
 
 **A:** Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Geräten unterstützt. Also tritt bei der Authentifizierung mit Azure AD nach den UPN-Änderungen ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Zu diesem Zeitpunkt müssen sich die Benutzer über die Kachel „Anderer Benutzer“ mit ihrem neuen UPN bei Windows anmelden, um dieses Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. 
 
+UPN-Änderungen werden mit dem Windows 10-Update 2004 unterstützt. Bei Benutzern, die Geräte mit diesem Update verwenden, kann der UPN problemlos geändert werden.
+
 ---
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>F: Meine Benutzer können über in Azure AD eingebundene Geräte keine Drucker suchen. Wie kann ich das Drucken über diese Geräte aktivieren?
@@ -266,6 +268,8 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 ### <a name="q-why-do-my-users-have-issues-on-windows-10-hybrid-azure-ad-joined-devices-after-changing-their-upn"></a>F: Warum haben meine Benutzer nach dem Ändern des UPN Probleme mit in Azure AD eingebundenen Windows 10-Hybridgeräten?
 
 **A:** Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Hybridgeräten unterstützt. Benutzer können sich zwar am Gerät anmelden und auf ihre lokalen Anwendungen zugreifen, bei der Authentifizierung mit Azure AD tritt nach einer UPN-Änderung aber ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Derzeit müssen Sie das Gerät von Azure AD trennen (führen Sie „dsregcmd /leave“ mit erhöhten Rechten aus) und sich wieder anmelden (geschieht automatisch), um das Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. 
+
+UPN-Änderungen werden mit dem Windows 10-Update 2004 unterstützt. Bei Benutzern, die Geräte mit diesem Update verwenden, kann der UPN problemlos geändert werden.
 
 ---
 

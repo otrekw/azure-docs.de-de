@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 40ea26a2394b7ca093f1bba2456ebf5ef116cd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695809"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249817"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 In diesem Artikel wird die Syntax für Richtlinienausdrücke in C# 7 erläutert. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
@@ -27,7 +27,7 @@ Weitere Informationen finden Sie unter:
 
 - Erfahren Sie, wie Kontextinformationen für Ihren Back-End-Dienst bereitgestellt werden. Verwenden Sie die Richtlinien [Abfragezeichenfolgenparameter festlegen](api-management-transformation-policies.md#SetQueryStringParameter) und [HTTP-Header festlegen](api-management-transformation-policies.md#SetHTTPheader), um diese Informationen bereitzustellen.
 - Erfahren Sie, wie die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwendet wird, um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren.
-- Erfahren Sie, wie eine [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ablaufverfolgung verwendet wird, um die Auswertung von Richtlinien und die Ergebnisse dieser Auswertungen anzuzeigen.
+- Erfahren Sie, wie eine [API-Inspektor](./api-management-howto-api-inspector.md)-Ablaufverfolgung verwendet wird, um die Auswertung von Richtlinien und die Ergebnisse dieser Auswertungen anzuzeigen.
 - Erfahren Sie, wie Ausdrücke mit den Richtlinien [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) und [In Cache speichern](api-management-caching-policies.md#StoreToCache) verwendet werden, um das Zwischenspeichern von Antworten für API Management zu konfigurieren. Legen Sie eine Dauer fest, die dem Zwischenspeichern von Antworten des Back-End-Diensts entspricht, wie in der `Cache-Control`-Anweisung des Back-End-Diensts angegeben.
 - Erfahren Sie, wie Inhalte gefiltert werden. Entfernen Sie Datenelemente mit den Richtlinien [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Text festlegen](api-management-transformation-policies.md#SetBody) aus der vom Back-End empfangenen Antwort.
 - Informationen zum Herunterladen der Richtlinienanweisungen finden Sie im GitHub-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).
@@ -252,5 +252,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](policy-samples.md)

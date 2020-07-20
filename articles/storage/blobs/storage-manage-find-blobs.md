@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355657"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Verwalten und Ermitteln von Daten in Azure Blob Storage mit Blob Index (Vorschau)
 
@@ -63,7 +63,7 @@ Sie können mehrere Tags auf Ihr Blob anwenden, um eine ausführlichere Beschrei
 > "Priority" = '01' 
 >
 
-Um die vorhandenen Indextagattribute zu ändern, müssen Sie die vorhandenen Tagattribute zunächst abrufen. Anschließend ersetzen Sie sie mit dem SetBlobTags-Vorgang. Um alle Indextags von einem Blob zu entfernen, rufen Sie den SetBlobTags-Vorgang ohne Tagattribute auf. Da Blobindextags eine Unterressource der Blobdateninhalte sind, ändert SetBlobTags weder die zugrunde liegenden Inhalte, noch die Uhrzeit der letzten Änderung eines Blobs.
+Um die vorhandenen Indextagattribute zu ändern, müssen Sie die vorhandenen Tagattribute zunächst abrufen. Anschließend ersetzen Sie sie mit dem SetBlobTags-Vorgang. Um alle Indextags von einem Blob zu entfernen, rufen Sie den SetBlobTags-Vorgang ohne Tagattribute auf. Da Blobindextags eine Unterressource der Blobdateninhalte sind, ändert „SetBlobTags“ weder die zugrunde liegenden Inhalte, noch den Zeitpunkt der letzten Änderung oder das ETag (Entitätstag) des Blobs. Indextags können für alle aktuellen Basisblobs sowie für ältere Versionen erstellt und geändert werden. Tags für Momentaufnahmen oder vorläufig gelöschte Blobs können dagegen nicht geändert werden. 
 
 Die unten aufgeführten Einschränkungen gelten für Blobindextags:
 - Jedes Blob kann über bis zu zehn Blobindextags verfügen
@@ -208,7 +208,7 @@ Benutzern, die eine [AAD-Identität](../common/storage-auth-aad.md) verwenden, k
 
 |   Blobvorgänge   |  RBAC-Aktion   |
 |---------------------|----------------|
-| Suchen nach Blobs anhand von Tags  | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter |
+| Suchen nach Blobs anhand von Tags  | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 | Festlegen von Blobtags         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write | 
 | Abrufen von Blobtags         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read |
 

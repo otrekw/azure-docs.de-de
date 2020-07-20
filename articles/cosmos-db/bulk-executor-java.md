@@ -5,22 +5,22 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985642"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260592"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
 Dieses Tutorial bietet Anleitungen zum Verwenden der Bulk Executor-Java-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Azure Cosmos DB-Dokumenten. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial erstellen Sie eine Java-Anwendung, die zufällige Dokumente generiert. Diese werden per Massenvorgang in einen Azure Cosmos-Container importiert. Nach dem Importieren aktualisieren Sie per Massenvorgang einige Eigenschaften eines Dokuments. 
 
-Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB-SQL-API- und Gremlin-API-Konten unterstützt. In diesem Artikel wird beschrieben, wie Sie die BulkExecutor-Java-Bibliothek mit SQL-API-Konten verwenden. Weitere Informationen zum Verwenden der BulkExecutor-.NET-Bibliothek mit der Gremlin-API finden Sie unter [Ausführen von Massenvorgängen in der Azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md).
+Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB-SQL-API- und Gremlin-API-Konten unterstützt. In diesem Artikel wird beschrieben, wie Sie die BulkExecutor-Java-Bibliothek mit SQL-API-Konten verwenden. Weitere Informationen zum Verwenden der BulkExecutor-.NET-Bibliothek mit der Gremlin-API finden Sie unter [Ausführen von Massenvorgängen in der Azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md). Die beschriebene BulkExecutor-Bibliothek ist nur für [Azure Cosmos DB Java sync SDK v2](sql-api-sdk-java.md) verfügbar und wird aktuell als Lösung für die Unterstützung von Java-Massenvorgängen empfohlen. Für die Versionen 3.x und 4.x sowie für andere höhere SDK-Versionen ist sie nicht verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -118,8 +118,8 @@ Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupda
    |int getNumberOfDocumentsImported()  |   Die Gesamtanzahl von Dokumenten, die von allen an den Massenimport-API-Aufruf gesendeten Dokumenten erfolgreich importiert wurden.      |
    |double getTotalRequestUnitsConsumed()   |  Die Gesamtanzahl von Anforderungseinheiten, die vom Massenimport-API-Aufruf verbraucht wurden.       |
    |Duration getTotalTimeTaken()   |    Die Gesamtzeit, die der Massenimport-API-Aufruf benötigt, um die Ausführung abzuschließen.     |
-   |List\<Ausnahme> getErrors() |  Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenimport-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.       |
-   |List\<Objekt> getBadInputDocuments()  |    Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).     |
+   |List\<Exception> getErrors() |  Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenimport-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.       |
+   |List\<Object> getBadInputDocuments()  |    Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).     |
 
 5. Wenn die Massenimportanwendung fertig ist, erstellen Sie das Befehlszeilenprogramm aus der Quelle, indem Sie den Befehl „mvn clean package“ ausführen. Dieser Befehl generiert eine JAR-Datei im Zielordner:  
 
@@ -182,7 +182,7 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
    |int getNumberOfDocumentsUpdated()  |   Die Gesamtanzahl von Dokumenten, die von allen an den Massenaktualisierungs-API-Aufruf gesendeten Dokumenten erfolgreich aktualisiert wurden.      |
    |double getTotalRequestUnitsConsumed() |  Die Gesamtanzahl von Anforderungseinheiten, die vom Massenaktualisierungs-API-Aufruf verbraucht wurden.       |
    |Duration getTotalTimeTaken()  |   Die Gesamtzeit, die der Massenaktualisierungs-API-Aufruf benötigt, um die Ausführung abzuschließen.      |
-   |List\<Ausnahme> getErrors()   |       Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenaktualisierungs-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.      |
+   |List\<Exception> getErrors()   |       Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenaktualisierungs-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.      |
 
 3. Wenn die Massenaktualisierungsanwendung fertig ist, erstellen Sie das Befehlszeilenprogramm aus der Quelle, indem Sie den Befehl „mvn clean package“ ausführen. Dieser Befehl generiert eine JAR-Datei im Zielordner:  
 

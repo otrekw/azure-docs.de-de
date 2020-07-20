@@ -1,0 +1,172 @@
+---
+title: Analysieren und Validieren von Modellen
+titleSuffix: Azure Digital Twins
+description: Erfahren Sie, wie Sie die Parserbibliothek zum Analysieren von DTDL-Modellen verwenden können.
+author: cschormann
+ms.author: cschorm
+ms.date: 4/10/2020
+ms.topic: how-to
+ms.service: digital-twins
+ms.openlocfilehash: b6d6e16b079f1423fd1ea812e384546ae5d84067
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392198"
+---
+# <a name="dtdl-client-side-parser-library"></a>Clientseitige DTDL-Parserbibliothek
+
+[Modelle](concepts-models.md) in Azure Digital Twins werden mithilfe der auf JSON-LD basierenden Sprache DTDL (Digital Twins Definition Language) definiert. Für Fälle, in denen es nützlich ist, Ihre Modelle zu analysieren, steht auf NuGet.org eine DTDL-Analysebibliothek als clientseitige Bibliothek zur Verfügung: [Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
+
+Diese Bibliothek ermöglicht den Zugriff des Modells auf die DTDL-Definitionen und fungiert im Wesentlichen als Äquivalent der C#-Reflexion für DTDL. Diese Bibliothek kann unabhängig von jedem [Azure Digital Twins SDK](how-to-use-apis-sdks.md) verwendet werden, insbesondere für die DTDL-Validierung in einem grafischen- oder Texteditor. Sie ist nützlich, um sicherzustellen, dass Ihre Modelldefinitionsdateien gültig sind, ehe Sie versuchen, sie in den Dienst hochzuladen.
+
+Um die Parserbibliothek verwenden zu können, müssen Sie ihr eine Gruppe von DTDL-Dokumenten zur Verfügung stellen. Normalerweise würden Sie diese Musterdokumente aus dem Dienst abrufen, aber Sie könnten sie auch lokal verfügbar haben, wenn Ihr Client in erster Linie für das Hochladen in den Dienst zuständig ist. 
+
+Dies ist der allgemeine Workflow für die Verwendung des Parsers:
+1. Rufen Sie einige oder alle DTDL-Dokumente aus dem Dienst ab.
+2. Übergeben Sie die zurückgegebenen, speicherinternen DTDL-Dokumente an den Parser.
+3. Der Parser überprüft die an ihn weitergegebene Dokumentgruppe und gibt detaillierte Fehlerinformationen zurück. Dies ist in Editorszenarien nützlich.
+4. Verwenden Sie die Parser-APIs, um die Analyse der in der Dokumentengruppe enthaltenen Modelle fortzusetzen. 
+
+Der Parser bietet die folgenden Funktionen:
+* Abrufen aller implementierten Modellschnittstellen (Inhalt des Abschnitts `extends` der Schnittstelle)
+* Abrufen sämtlicher im Modell deklarierter Eigenschaften, Telemetrie, Befehle, Komponenten und Beziehungen Dieser Befehl dient auch zum Abrufen aller Metadaten, die in diesen Definitionen enthalten sind, und berücksichtigt die Vererbung (`extends`-Abschnitte).
+* Abrufen aller komplexer Modelldefinitionen
+* Bestimmen, ob ein Modell aus einem anderen Modell zugewiesen werden kann
+
+> [!NOTE]
+> [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Geräte (PnP) arbeiten mit einer geringfügig anderen Syntaxvariante, um ihre Funktionalität zu beschreiben. Diese Syntaxvariante ist eine semantisch kompatible Teilmenge der Sprache DTDL, die in Azure Digital Twins verwendet wird. Wenn Sie die Parserbibliothek nutzen, müssen Sie nicht wissen, welche Syntaxvariante zur Erstellung der DTDL für Ihren Digital Twin verwendet wurde. Der Parser gibt für die PnP- und Azure Digital Twins-Syntax standardmäßig stets dasselbe Modell zurück.
+
+## <a name="use-the-dtdl-validator-sample"></a>Verwenden des Beispiels des DTDL-Validierungssteuerelements
+
+Es steht Beispielcode für die Überprüfung von Modelldokumenten zur Verfügung, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek und ist sprachunabhängig. Sie finden es hier: [DTDL-Validierungssteuerelement (Beispiel)](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+
+Das Beispiel des Validierungssteuerelements kann als Befehlszeilenhilfsprogramm zum Überprüfen einer Verzeichnisstruktur mit DTDL-Dateien verwendet werden. Außerdem stellt es einen interaktiven Modus bereit. Der Quellcode zeigt Beispiele für die Verwendung der Parserbibliothek.
+
+Im Ordner des Beispiels für das DTDL-Validierungssteuerelement finden Sie in der Datei *readme.md* Anweisungen, wie das Beispiel in eine eigenständige ausführbare Datei gepackt werden kann.
+
+Nachdem Sie ein eigenständiges Paket erstellt und die ausführbare Datei zu Ihrem Pfad hinzugefügt haben, können Sie das Validierungssteuerelement mit diesem Befehl in einer Konsole auf Ihrem Computer ausführen:
+
+```cmd/sh
+DTDLValidator
+```
+
+Bei den Standardoptionen sucht das Beispiel im aktuellen Verzeichnis und allen Unterverzeichnissen nach `*.json`-Dateien. Sie können auch die folgende Option hinzufügen, um das Beispiel im angegebenen Verzeichnis und allen Unterverzeichnissen nach Dateien mit der Erweiterung *.dtdl* suchen zu lassen:
+
+```cmd/sh
+DTDLValidator -d C:\Work\DTDL -e dtdl 
+```
+
+Sie können die Option `-i` für das Beispiel hinzufügen, um in den interaktiven Modus zu wechseln:
+
+```cmd/sh
+DTDLValidator -i
+```
+
+Weitere Informationen zu diesem Beispiel finden Sie im Quellcode, oder führen Sie `DTDLValidator --help` aus.
+
+## <a name="use-the-parser-library-in-code"></a>Verwenden der Parserbibliothek im Code
+
+Sie können die Parserbibliothek auch direkt verwenden, z. B. für die Überprüfung von Modellen in Ihrer eigenen Anwendung oder für die Generierung dynamischer, modellgesteuerter Benutzeroberflächen, Dashboards und Berichte.
+
+Zur Unterstützung des nachstehenden Parsercodebeispiels betrachten Sie mehrere Modelle, die in einer Azure Digital Twins-Instanz definiert sind:
+
+> [!TIP] 
+> Das Modell `dtmi:com:contoso:coffeeMaker` verwendet die Syntax des *Funktionsmodells*, was impliziert, dass es im Dienst installiert wurde, indem ein PnP-Gerät angeschlossen wurde, das dieses Modell verfügbar macht.
+
+```json
+{
+  "@id": " dtmi:com:contoso:coffeeMaker",
+  "@type": "CapabilityModel",
+  "implements": [
+        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
+  ]    
+}
+{
+  "@id": " dtmi:com:contoso:coffeeMakerInterface",
+  "@type": "Interface",
+  "contents": [
+      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
+  ]
+}
+{
+  "@id": " dtmi:com:contoso:coffeeBar",
+  "@type": "Interface",
+  "contents": [
+        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
+        { "@type": "property", "name": "capacity", "schema": "integer" }
+  ]    
+}
+```
+
+Der folgende Code zeigt ein Beispiel für die Verwendung der Parserbibliothek, um diese Definitionen in C# wiederzugeben:
+
+```csharp
+async void ParseDemo(DigitalTwinsClient client)
+{
+    try
+    {
+        AsyncPageable<ModelData> mdata = client.GetModelsAsync(null, true);
+        List<string> models = new List<string>();
+        await foreach (ModelData md in mdata)
+            models.Add(md.Model);
+        ModelParser parser = new ModelParser();
+        IReadOnlyDictionary<Dtmi, DTEntityInfo> dtdlOM = await parser.ParseAsync(models);
+
+        List<DTInterfaceInfo> interfaces = new List<DTInterfaceInfo>();
+        IEnumerable<DTInterfaceInfo> ifenum = 
+            from entity in dtdlOM.Values
+            where entity.EntityKind == DTEntityKind.Interface
+            select entity as DTInterfaceInfo;
+        interfaces.AddRange(ifenum);
+        foreach (DTInterfaceInfo dtif in interfaces)
+        {
+            PrintInterfaceContent(dtif, dtdlOM);
+        }
+
+    } catch (RequestFailedException rex)
+    {
+
+    }
+}
+
+void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEntityInfo> dtdlOM, int indent=0)
+{
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < indent; i++) sb.Append("  ");
+    Console.WriteLine($"{sb}Interface: {dtif.Id} | {dtif.DisplayName}");
+    SortedDictionary<string, DTContentInfo> contents = dtif.Contents;
+    foreach (DTContentInfo item in contents.Values)
+    {
+        switch (item.EntityKind)
+        {
+            case DTEntityKind.Property:
+                DTPropertyInfo pi = item as DTPropertyInfo;
+                Console.WriteLine($"{sb}--Property: {pi.Name} with schema {pi.Schema}");
+                break;
+            case DTEntityKind.Relationship:
+                DTRelationshipInfo ri = item as DTRelationshipInfo;
+                Console.WriteLine($"{sb}--Relationship: {ri.Name} with target {ri.Target}");
+                break;
+            case DTEntityKind.Telemetry:
+                DTTelemetryInfo ti = item as DTTelemetryInfo;
+                Console.WriteLine($"{sb}--Telemetry: {ti.Name} with schema {ti.Schema}");
+                break;
+            case DTEntityKind.Component:
+                DTComponentInfo ci = item as DTComponentInfo;
+                Console.WriteLine($"{sb}--Component: {ci.Id} | {ci.Name}");
+                dtdlOM.TryGetValue(ci.Id, out DTEntityInfo value);
+                DTInterfaceInfo component = value as DTInterfaceInfo;
+                PrintInterfaceContent(component, dtdlOM, indent + 1);
+                break;
+            default:
+                break;
+        }
+    }
+}
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Wenn Sie mit dem Schreiben Ihrer Modelle fertig sind, erfahren Sie, wie Sie sie mit den DigitalTwinsModels-APIs hochladen (und andere Verwaltungsvorgänge durchführen):
+* [Gewusst wie: Verwalten benutzerdefinierter Modelle](how-to-manage-model.md)

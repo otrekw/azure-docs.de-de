@@ -1,15 +1,15 @@
 ---
-title: Sicherheit für Containerinstanzen
+title: Sicherheitsüberlegungen für Containerinstanzen
 description: Empfehlungen zum Schutz von Images und Secrets für Azure Container Instances und allgemeine Sicherheitsüberlegungen für jede Containerplattform
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457993"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907022"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Sicherheitsüberlegungen für Azure Container Instances
 
@@ -18,6 +18,9 @@ Dieser Artikel stellt Sicherheitsüberlegungen für die Verwendung von Azure Con
 > [!div class="checklist"]
 > * **Sicherheitsempfehlungen** für die Verwaltung von Images und Geheimnissen für Azure Container Instances
 > * **Überlegungen zum Containerökosystem** während des gesamten Lebenszyklus des Containers für alle Containerplattformen
+
+Umfassende Empfehlungen zur Verbesserung des Sicherheitsstatus Ihrer Bereitstellung finden Sie unter [Azure-Sicherheitsbaseline für Container Instances](security-baseline.md).
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Sicherheitsempfehlungen für Azure Container Instances
 
@@ -140,6 +143,8 @@ Führen Sie ein genaues Überwachungsprotokoll für den administrativen Zugriff 
 * Ressourcenprotokolle für [Azure Container Instances](container-instances-log-analytics.md) und [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+* Umfassende Empfehlungen zur Verbesserung des Sicherheitsstatus Ihrer Bereitstellung finden Sie unter [Azure-Sicherheitsbaseline für Container Instances](security-baseline.md).
 
 * Erfahren Sie mehr über die Verwendung von [Azure Security Center](../security-center/container-security.md) für die Echtzeiterkennung von Bedrohungen in Ihren Containerumgebungen.
 

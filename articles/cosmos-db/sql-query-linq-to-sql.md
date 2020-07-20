@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f8753518e1d54ddba4fc15a5a030308d0c112a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75441256"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042491"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ zu SQL-Übersetzung
 
-Der Azure Cosmos DB-Abfrageanbieter führt eine bestmögliche Zuordnung von LINQ-Abfragen in SQL-Abfragen in Cosmos DB durch. Bei der folgenden Beschreibung wird davon ausgegangen, dass Sie mit den Grundsätzen von LINQ vertraut sind.
+Der Azure Cosmos DB-Abfrageanbieter führt eine bestmögliche Zuordnung von LINQ-Abfragen in SQL-Abfragen in Cosmos DB durch. Wenn Sie die SQL-Abfrage abrufen möchten, die in LINQ übersetzt wird, verwenden Sie die `ToString()`-Methode für das generierte `IQueryable`-Objekt. Bei der folgenden Beschreibung wird davon ausgegangen, dass Sie mit den Grundsätzen von LINQ vertraut sind.
 
 Das Typsystem der Abfrageanbieter unterstützt nur die primitiven JSON-Typen: numerisch, boolesch, Zeichenfolge und Null.
 

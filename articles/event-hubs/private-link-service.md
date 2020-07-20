@@ -1,18 +1,14 @@
 ---
 title: Integrieren von Azure Event Hubs in den Azure Private Link-Dienst
 description: Erfahren Sie, wie Sie Azure Event Hubs in den Azure Private Link-Dienst integrieren.
-services: event-hubs
-author: spelluru
-ms.author: spelluru
-ms.date: 03/12/2020
-ms.service: event-hubs
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312829"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Integrieren von Event Hubs in Azure Private Link
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
@@ -22,7 +18,7 @@ Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher 
 Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md).
 
 > [!IMPORTANT]
-> Diese Funktion wird nur für den **Dedicated**-Tarif unterstützt. Weitere Informationen zum Dedicated-Tarif finden Sie unter [Übersicht über Event Hubs Dedicated](event-hubs-dedicated-overview.md). 
+> Diese Funktion wird sowohl für den Tarif **Standard** als auch für den Tarif **Dedicated** unterstützt. 
 
 >[!WARNING]
 > Durch das Aktivieren von privaten Endpunkten kann verhindert werden, dass andere Azure-Dienste mit Event Hubs interagieren.
@@ -62,7 +58,7 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
 2. Geben Sie auf der Suchleiste den Suchbegriff **Event Hubs** ein.
 3. Wählen Sie in der Liste den **Namespace** aus, dem Sie einen privaten Endpunkt hinzufügen möchten.
 4. Wählen Sie die Registerkarte **Netzwerk** unter **Einstellungen** aus.
-5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus. Wenn Sie keinen Dedicated-Tarif von Event Hubs verwenden, wird folgende Meldung angezeigt: **Private Endpunktverbindungen auf Event Hubs werden nur von Namespaces unterstützt, die unter einem dedizierten Cluster erstellt werden**.
+5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus. 
 6. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 
     ![Image](./media/private-link-service/private-link-service-3.png)

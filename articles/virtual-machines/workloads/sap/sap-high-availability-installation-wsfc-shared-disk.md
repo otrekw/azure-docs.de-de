@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688890"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz in Azure
 
@@ -185,7 +185,7 @@ Das Installieren von SAP mit einer ASCS/SCS-Instanz mit hoher Verfügbarkeit umf
 1. Erstellen Sie im Windows-DNS-Manager einen DNS-Eintrag für den virtuellen Hostnamen der ASCS/SCS-Instanz.
 
    > [!IMPORTANT]
-   > Die IP-Adresse, die Sie dem virtuellen Hostnamen der ASCS/SCS-Instanz zuweisen, muss mit der IP-Adresse identisch sein, die Sie dem Azure Load Balancer zugeordnet haben (\<SID\>-lb-ascs).  
+   > Die IP-Adresse, die Sie dem virtuellen Hostnamen der ASCS/SCS-Instanz zuweisen, muss der IP-Adresse entsprechen, die Sie der Azure Load Balancer-Instanz zugeordnet haben (\<SID\>-lb-ascs).  
    >
    >
 
@@ -267,7 +267,7 @@ So fügen Sie einen Testport hinzu
 
    Die Portnummer ist in Azure Resource Manager-Vorlagen für SAP definiert. Sie können die Portnummer in PowerShell zuweisen.
 
-   Führen Sie das folgende PowerShell-Skript aus, um die PowerShell-Variablen für Ihre Umgebung zu aktualisieren und einen neuen ProbePort-Wert für die Clusterressource SAP \<SID\> IP festzulegen:
+   Führen Sie das folgende PowerShell-Skript aus, um die PowerShell-Variablen für Ihre Umgebung zu aktualisieren und einen neuen ProbePort-Wert für die IP-Clusterressource „SAP \<SID\>“ festzulegen:
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>
@@ -325,7 +325,7 @@ So fügen Sie einen Testport hinzu
    }
    ```
 
-   Überprüfen Sie, nachdem Sie die Clusterrolle SAP \<SID\> online geschaltet haben, ob **ProbePort** auf den neuen Wert festgelegt wurde.
+   Vergewissern Sie sich, dass **ProbePort** auf den neuen Wert festgelegt wurde, nachdem Sie die Clusterrolle „SAP \<SID\>“ online geschaltet haben.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -370,11 +370,11 @@ _**Abbildung 5:** Ändern des Starttyps der SAP ERS-Instanz in „Automatisch (V
 
 ## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> Installieren des primären SAP-Anwendungsservers
 
-Installieren Sie die PAS-Instanz (primärer Anwendungsserver) \<SID\>-di-0 auf dem virtuellen Computer, den Sie als Host für den PAS vorgesehen haben. Es gibt keine Abhängigkeiten in Azure. Es gibt keine DataKeeper-spezifischen Einstellungen.
+Installieren Sie die PAS-Instanz (primärer Anwendungsserver) „\<SID\>-di-0“ auf dem virtuellen Computer, den Sie als Host für den PAS vorgesehen haben. Es gibt keine Abhängigkeiten in Azure. Es gibt keine DataKeeper-spezifischen Einstellungen.
 
 ## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> Installieren des zusätzlichen SAP-Anwendungsservers
 
-Installieren Sie einen zusätzlichen SAP-Anwendungsserver (Additional Application Server, AAS) auf allen virtuellen Computern, die Sie als Hosts von SAP-Anwendungsserverinstanzen festgelegt haben. Beispielsweise auf \<SID\>-di-1 bis \<SID\>-di-&lt;n&gt;.
+Installieren Sie einen zusätzlichen SAP-Anwendungsserver (Additional Application Server, AAS) auf allen virtuellen Computern, die Sie als Hosts von SAP-Anwendungsserverinstanzen festgelegt haben. Beispielsweise unter „\<SID\>-di-1“ auf „\<SID\>-di-&lt;n&gt;“.
 
 > [!NOTE]
 > Die Installation eines SAP NetWeaver-Systems mit hoher Verfügbarkeit ist hiermit abgeschlossen. Als Nächstes stehen die Failovertests an.
@@ -390,7 +390,7 @@ Die Clustergruppe „SAP PR1“ wird auf dem Clusterknoten A ausgeführt, z.B. a
 
 ![Abbildung 6: Failovercluster-Manager: Die SAP-Clustergruppe \<SID\> wird auf Clusterknoten A ausgeführt.][sap-ha-guide-figure-5000]
 
-_**Abbildung 6:** Failovercluster-Manager: Die SAP-Clustergruppe \<SID\> wird auf Clusterknoten A ausgeführt._
+_**Abbildung 6:** Failovercluster-Manager: Die Clustergruppe „SAP \<SID\>“ wird auf dem Clusterknoten A ausgeführt._
 
 Im SIOS DataKeeper-Tool für die Verwaltung und Konfiguration können Sie erkennen, dass die Daten auf dem freigegebenen Datenträger synchron vom Quellvolume S auf Clusterknoten A auf das Zielvolume S auf Clusterknoten B repliziert werden, also z.B. von „pr1-ascs-0 [10.0.0.40]“ nach „pr1-Asconas-1 [10.0.0.41]“.
 
@@ -400,7 +400,7 @@ _**Abbildung 7:** Replizieren des lokalen Volumes von Clusterknoten A auf Cluste
 
 ### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> Failover von Knoten A auf Knoten B
 
-1. Wählen Sie eine dieser Optionen, um ein Failover der SAP-Clustergruppe \<SID\> von Clusterknoten A auf Clusterknoten B auszulösen:
+1. Verwenden Sie eine der folgenden Optionen, um ein Failover der Clustergruppe „SAP \<SID\>“ vom Clusterknoten A auf den Clusterknoten B zu initiieren:
    - Failovercluster-Manager  
    - Failovercluster-PowerShell
 
@@ -411,15 +411,15 @@ _**Abbildung 7:** Replizieren des lokalen Volumes von Clusterknoten A auf Cluste
    Move-ClusterGroup -Name $SAPClusterGroup
 
    ```
-2. Starten Sie Clusterknoten A unter dem Windows-Gastbetriebssystem neu. Dadurch wird ein automatisches Failover der SAP-Clustergruppe \<SID\> von Knoten A auf Knoten B ausgelöst.  
-3. Starten Sie Clusterknoten A im Azure-Portal neu. Dadurch wird ein automatisches Failover der SAP-Clustergruppe \<SID\> von Knoten A auf Knoten B ausgelöst.  
-4. Starten Sie Clusterknoten A mit Azure PowerShell neu. Dadurch wird ein automatisches Failover der SAP-Clustergruppe \<SID\> von Knoten A auf Knoten B ausgelöst.
+2. Starten Sie Clusterknoten A unter dem Windows-Gastbetriebssystem neu. Dadurch wird ein automatisches Failover der Clustergruppe „SAP \<SID\>“ vom Knoten A auf den Knoten B initiiert.  
+3. Starten Sie Clusterknoten A im Azure-Portal neu. Dadurch wird ein automatisches Failover der Clustergruppe „SAP \<SID\>“ vom Knoten A auf den Knoten B initiiert.  
+4. Starten Sie Clusterknoten A mit Azure PowerShell neu. Dadurch wird ein automatisches Failover der Clustergruppe „SAP \<SID\>“ vom Knoten A auf den Knoten B initiiert.
 
-   Nach dem Failover wird die SAP-Clustergruppe \<SID\> auf dem Clusterknoten B ausgeführt, z.B. auf „pr1-ascs-1“.
+   Nach dem Failover wird die Clustergruppe „SAP \<SID\>“ auf dem Clusterknoten B ausgeführt (also beispielsweise auf „pr1-ascs-1“).
 
    ![Abbildung 8: Failovercluster-Manager: Die SAP-Clustergruppe \<SID\> wird auf Clusterknoten B ausgeführt.][sap-ha-guide-figure-5002]
 
-   _**Abbildung 8**: Failovercluster-Manager: Die SAP-Clustergruppe \<SID\> wird auf Clusterknoten B ausgeführt_.
+   _**Abbildung 8**: Im Failovercluster-Manager wird die Clustergruppe „SAP \<SID\>“ auf dem Clusterknoten B ausgeführt._
 
    Der freigegebene Datenträger wird jetzt auf Clusterknoten B bereitgestellt. SIOS DataKeeper repliziert Daten vom Quellvolume S auf Clusterknoten B auf das Zielvolume S auf Clusterknoten A, also z.B. von „pr1-ascs-1 [10.0.0.41]“ nach „pr1-ascs-0 [10.0.0.40]“.
 

@@ -3,16 +3,16 @@ title: Herstellen der Verbindung mit Azure Cosmos DB mit Compass
 description: Erfahren Sie, wie Sie über MongoDB Compass Daten in Azure Cosmos DB speichern und verwalten.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
-ms.date: 03/20/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: c683ec0c4b3a536b0627a7c1c8abf28ee4f83663
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 2f461ebbd84a66470eba012660db3aefebc8c5e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757033"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260779"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-API für MongoDB mithilfe von MongoDB Compass
 
@@ -28,7 +28,7 @@ Um mithilfe von MongoDB Compass eine Verbindung mit einem Cosmos DB-Konto herzus
 * Abrufen der Informationen zur Cosmos DB-[Verbindungszeichenfolge](connect-mongodb-account.md)
 
 > [!NOTE]
-> Derzeit wird die API von Azure Cosmos DB für MongoDB Server Version 3.2 mit MongoDB Compass unterstützt.
+> Derzeit wird die Azure Cosmos DB-API für die MongoDB Server-Version 3.2 mit der neuesten Version von MongoDB Compass unterstützt. MongoDB Compass wird noch nicht mit der Serverversion 3.6 unterstützt. 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-API für MongoDB
 
@@ -36,21 +36,21 @@ Um Ihr Cosmos DB-Konto mit Compass zu verbinden, können Sie die folgenden Schri
 
 1. Rufen Sie die Verbindungsinformationen für Ihr Cosmos-Konto ab, das mit der API für MongoDB von Azure Cosmos DB konfiguriert wurde. Verwenden Sie dazu die [hier](connect-mongodb-account.md) beschriebenen Anweisungen.
 
-    ![Screenshot des Blatts „Verbindungszeichenfolge“](./media/mongodb-compass/mongodb-compass-connection.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-connection.png" alt-text="Screenshot: Blatt „Verbindungszeichenfolge“":::
 
 2. Klicken Sie auf die Schaltfläche **In Zwischenablage kopieren** neben Ihrer **Primären/Sekundär en Verbindungszeichenfolge** in Cosmos DB. Wenn Sie auf diese Schaltfläche klicken, wird Ihre gesamte Verbindungszeichenfolge in die Zwischenablage kopiert.
 
-    ![Screenshot der auf die Schaltfläche zum Kopieren in die Zwischenablage](./media/mongodb-compass/mongodb-connection-copy.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="Screenshot: Schaltfläche zum Kopieren in die Zwischenablage":::
 
 3. Öffnen Sie Compass auf Ihrem Desktop/Computer, und klicken Sie auf **Verbinden** und dann auf **Verbinden mit...** .
 
 4. Compass erkennt automatisch eine Verbindungszeichenfolge in der Zwischenablage und fragt, ob Sie diese für die Verbindung verwenden möchten. Klicken Sie auf **Ja** wie im folgenden Screenshot gezeigt:
 
-    ![Screenshot der Compass-Aufforderung zum Herstellen einer Verbindung](./media/mongodb-compass/mongodb-compass-detect.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="Screenshot: Compass-Aufforderung zum Herstellen einer Verbindung":::
 
 5. Wenn Sie im obigen Schritt auf **Ja** klicken, werden Ihre Angaben aus der Verbindungszeichenfolge automatisch ausgefüllt. Entfernen Sie den Wert, der automatisch im Feld **Replikatgruppenname** eingetragen wird, um sicherzustellen, dass er leer bleibt.
 
-    ![Screenshot der Compass-Aufforderung zum Herstellen einer Verbindung](./media/mongodb-compass/mongodb-compass-replica.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="Screenshot: Compass-Aufforderung zum Herstellen einer Verbindung":::
 
 6. Klicken Sie unten auf der Seite auf **Verbinden**. Ihr Cosmos DB-Konto und Ihre Datenbanken sollten nun in MongoDB Compass angezeigt werden.
 

@@ -2,14 +2,14 @@
 title: Konzepte – Netzwerke in Azure Kubernetes Service (AKS)
 description: Lernen Sie Netzwerke in Azure Kubernetes Service (AKS) kennen, einschließlich kubenet- und Azure CNI-Netzwerke, Eingangscontroller, Lastenausgleichsmodule und statische IP-Adressen.
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84789496"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -129,6 +129,8 @@ Wenn Sie einen Dienst des Typs "LoadBalancer" erstellen, wird eine zugrunde lieg
 
 In AKS können Sie mit NGINX (oder ähnlich) eine Dateneingangsressource erstellen oder die AKS-Funktion für das HTTP-Anwendungsrouting verwenden. Wenn Sie das HTTP-Anwendungsrouting für einen AKS-Cluster aktivieren, erstellt die Azure-Plattform den Eingangscontroller und einen *externen DNS-Controller*. Wenn in Kubernetes neue Eingangsressourcen erstellt werden, werden in einer clusterspezifischen DNS-Zone die erforderlichen DNS-A-Einträge erstellt. Weitere Informationen finden Sie unter [Bereitstellen von HTTP-Anwendungsrouting][aks-http-routing].
 
+Mit dem ACIG-Add-On (Application Gateway Ingress Controller, Application Gateway-Eingangscontroller) können AKS-Kunden den nativen L7-Lastenausgleich von Application Gateway nutzen, um Cloudsoftware im Internet verfügbar zu machen. AGIC überwacht den Kubernetes-Cluster, auf dem er gehostet wird, und aktualisiert fortlaufend eine Application Gateway-Instanz, sodass ausgewählte Dienste im Internet bereitgestellt werden. Weitere Informationen zum ACIG-Add-On für AKS finden Sie unter [Was ist der Application Gateway-Eingangscontroller?][agic-overview].
+
 Ein weiteres allgemeines Feature des Dateneingangs ist die SSL/TLS-Terminierung. Bei großen Webanwendungen, auf die über HTTPS zugegriffen wird, kann die TLS-Terminierung durch die Eingangsressource erfolgen und braucht nicht innerhalb der Anwendung verarbeitet zu werden. Um die automatische Generierung und Konfiguration der TLS-Zertifizierung bereitzustellen, können Sie die Eingangsressource für die Verwendung von Anbietern wie Let's Encrypt konfigurieren. Weitere Informationen zum Konfigurieren eines NGINX-Eingangscontrollers mit Let's Encrypt finden Sie unter [Eingang und TLS][aks-ingress-tls].
 
 Sie können den Eingangscontroller auch so konfigurieren, dass die Quell-IP des Clients bei Anforderungen an Container im AKS-Cluster beibehalten wird. Wenn die Anforderung eines Clients über den Eingangscontroller an einen Container im AKS-Cluster weitergeleitet wird, ist die ursprüngliche Quell-IP dieser Anforderung für den Zielcontainer nicht verfügbar. Wenn Sie die *Beibehaltung der Clientquell-IP* aktivieren, ist die Quell-IP für den Client im Anforderungsheader unter *X-Forwarded-For* verfügbar. Wenn Sie die Beibehaltung der Clientquell-IP auf dem Eingangscontroller verwenden, können Sie kein TLS-Pass-Through verwenden. Die Beibehaltung der Clientquell-ID und TLS-Pass-Through-können mit anderen Diensten verwendet werden, z. B. dem *LoadBalancer*-Typ.
@@ -180,6 +182,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md

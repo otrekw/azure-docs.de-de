@@ -10,40 +10,75 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/14/2020
+ms.date: 6/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737460"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
-## <a name="may-2020-guest-os"></a>Gastbetriebssystem für Mai 2020
->[!NOTE]
->Das Gastbetriebssystem für April wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für April enthalten. Änderungen an der Liste sind vorbehalten.
+## <a name="june-2020-guest-os"></a>Gastbetriebssystem für Juni 2020
+">[!NOTE]
+>Das Gastbetriebssystem für Juni wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für April enthalten. Änderungen an der Liste sind vorbehalten.
+
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2.98,  3.85, 4.78  |  12. Mai 2020  |
-|  Rel 20-05   |  [4556813]  |  Letztes kumulatives Update   |  5.43  |  12. Mai 2020  |
-|  Rel 20-05   |  [4551853]  |  Letztes kumulatives Update   |  6.19  |  12. Mai 2020  |
-|  Rel 20-05   |  [4552940]  |  Monatlicher Rollup   |  2.98  |  12. Mai 2020  |
-|  Rel 20-05   |  [4556836]  |  Monatlicher Rollup   |  2.98  |  12. Mai 2020  |
-|  Rel 20-05   |  [4555449]  |  Wartungsstapelaktualisierung   |  2.98  |  12. Mai 2020  |
-|  Rel 20-05   |  [4552920]  |  Monatlicher Rollup   |  2.98  |  12. Mai 2020  |
-|  Rel 20-05   |  [4552979]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
-|  Rel 20-05   |  [4556840]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
-|  Rel 20-05   |  [4552947]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
-|  Rel 20-05   |  [4552982]  |  Monatlicher Rollup   |  3.85  |  12. Mai 2020  |
-|  Rel 20-05   |  [4552946]  |  Monatlicher Rollup   |  4.78  |  12. Mai 2020  |
-|  Rel 20-05   |  [4556846]  |  Monatlicher Rollup   |  4.78  |  12. Mai 2020  |
-|  Rel 20-05   |  [4550994]  |  Wartungsstapelaktualisierung   |  5.43  |  14. April 2020  |
-|  Rel 20-05   |  [4552924]  |  Monatlicher Rollup   |  6.19  |  12. Mai 2020  |
-|  Rel 20-05   |  [4549947]  |  Wartungsstapelaktualisierung   |  6.19  |  14. April 2020  |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2.99, 3.86, 4.79  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561616]  |  Letztes kumulatives Update  |  5.44  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561608]  |  Letztes kumulatives Update  |  6.20  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562030]  |  Wartungsstapelaktualisierung  |  2,99  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561643]  |  Monatlicher Rollup  |  2,99  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562252]  |  Wartungsstapelaktualisierung  |  3,86  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561612]  |  Monatlicher Rollup  |  3,86  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561600]  |  Blinken  |  3.86, 4.79, 5.44, 6.20  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562253]  |  Wartungsstapelaktualisierung  |  4,79  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561666]  |  Monatlicher Rollup  |  4,79  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562561]  |  Wartungsstapelaktualisierung  |  5.44  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562562]  |  Wartungsstapelaktualisierung  |  6.20  |  9\. Juni 2020  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+
+
+## <a name="may-2020-guest-os"></a>Gastbetriebssystem für Mai 2020
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2.98], [3.85], [4.78]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556813]  |  Letztes kumulatives Update   |  [5.43]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4551853]  |  Letztes kumulatives Update   |  [6.19]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552940]  |  Monatlicher Rollup   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556836]  |  Monatlicher Rollup   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4555449]  |  Wartungsstapelaktualisierung   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552920]  |  Monatlicher Rollup   |  [2.98]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552979]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556840]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552947]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552982]  |  Monatlicher Rollup   |  [3.85]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4552946]  |  Monatlicher Rollup   |  [4.78]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4556846]  |  Monatlicher Rollup   |  [4.78]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4550994]  |  Wartungsstapelaktualisierung   |  [5.43]  |  14. April 2020  |
+|  Rel 20-05  |  [4552924]  |  Monatlicher Rollup   |  [6.19]  |  12. Mai 2020  |
+|  Rel 20-05  |  [4549947]  |  Wartungsstapelaktualisierung   |  [6.19]  |  14. April 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -62,6 +97,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
+[2.98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="april-2020-guest-os"></a>Gastbetriebssystem April 2020

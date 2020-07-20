@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603354"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386333"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
@@ -66,12 +66,13 @@ Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Aus
 | [Self-Service-Kennwortzurücksetzung](../authentication/howto-sspr-deployment.md)| Mit der Self-Service-Kennwortzurücksetzung können Ihre Benutzer jederzeit ihr Kennwort zurücksetzen, ohne dass ein Administrator eingreifen muss. |
 | [Kennwortlos](../authentication/howto-authentication-passwordless-deployment.md) | Implementieren Sie kennwortlose Authentifizierung mit der Microsoft Authenticator-App oder mit FIDO2-Sicherheitsschlüsseln in Ihrer Organisation. |
 
-## <a name="deploy-application-management"></a>Bereitstellen der Anwendungsverwaltung
+## <a name="deploy-application-and-device-management"></a>Bereitstellen der Anwendungs- und Geräteverwaltung
 
 | Funktion | BESCHREIBUNG|
 | -| - |
 | [Einmaliges Anmelden](../manage-apps/plan-sso-deployment.md)| Einmaliges Anmelden ermöglicht Ihren Benutzern mit nur einer Anmeldung den Zugriff auf sämtliche Apps und Ressourcen, die sie für ihre Geschäftsaktivitäten benötigen. Nachdem sie sich angemeldet haben, können sie von Microsoft Office zu Salesforce, zu Box und zu internen Anwendungen wechseln, ohne ihre Anmeldeinformationen ein zweites Mal eingeben zu müssen. |
 | [Zugriffsbereich](../manage-apps/access-panel-deployment-plan.md)| Stellen Sie für Ihre Benutzer einen einfachen zentralen Ort zur Verfügung, über den diese alle Anwendungen ermitteln und darauf zugreifen können. Steigern Sie ihre Produktivität mit Self-Service-Funktionen wie dem Anfordern des Zugriffs auf Apps und Gruppen oder dem Verwalten des Zugriffs auf Ressourcen im Namen von anderen Personen. |
+| [Geräte](../devices/plan-device-deployment.md) | In diesem Artikel erfahren Sie, wie Sie die Methoden zur Integration Ihres Geräts in Azure AD auswerten, den Implementierungsplan auswählen und wichtige Links zu den unterstützten Geräteverwaltungstools bereitstellen. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Bereitstellen von Hybridszenarien

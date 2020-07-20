@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907464"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden
 
@@ -222,7 +222,10 @@ Damit Pacemaker mit der Azure-Verwaltungs-API kommunizieren kann, führen Sie di
 
 ## <a name="other-solutions"></a>Andere Lösungen
 
-Wenn ausgehender Datenverkehr über eine Drittanbieter-Firewall weitergeleitet wird, achten Sie darauf, dass die Firewallkonfiguration ausgehende Verbindungen mit der Azure-Verwaltungs-API zulässt: `https://management.azure.com` und `https://login.microsoftonline.com`.  
+Wenn ausgehender Datenverkehr über eine Drittanbieterfirewall geleitet wird, gilt Folgendes:
+
+- Stellen Sie bei Verwendung des Azure-Fence-Agents sicher, dass die Firewallkonfiguration ausgehende Verbindungen mit der Azure-Verwaltungs-API zulässt: `https://management.azure.com` und `https://login.microsoftonline.com`.   
+- Wenn Sie zum Anwenden von Updates und Patches die Updateinfrastruktur für die öffentliche Azure-Cloud von SUSE verwenden, lesen Sie [Grundlegendes zur Updateinfrastruktur für die öffentliche Azure-Cloud](https://suse.com/c/azure-public-cloud-update-infrastructure-101/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

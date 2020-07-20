@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 05/20/2020
+ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791417"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -17,29 +17,33 @@ Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese A
 Derzeit werden in einer Richtliniendefinition diese Auswirkungen unterstützt:
 
 - [Append](#append)
-- [Überwachung](#audit)
+- [Audit](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled)
-- [EnforceOPAConstraint](#enforceopaconstraint) (Vorschau)
-- [EnforceRegoPolicy](#enforceregopolicy) (Vorschau)
 - [Modify](#modify)
+
+Die Unterstützung folgender Auswirkungen wird _eingestellt_:
+
+- [EnforceOPAConstraint](#enforceopaconstraint)
+- [EnforceRegoPolicy](#enforceregopolicy)
+
+> [!IMPORTANT]
+> Verwenden Sie anstelle der Auswirkung **EnforceOPAConstraint** oder **EnforceRegoPolicy** die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`. Die integrierten Richtliniendefinitionen wurden aktualisiert. Wenn vorhandene Richtlinienzuweisungen dieser integrierten Richtliniendefinitionen geändert werden, muss der Parameter _effect_ in einen Wert aus der aktualisierten Liste _allowedValues_ geändert werden.
 
 ## <a name="order-of-evaluation"></a>Reihenfolge der Auswertung
 
-Anforderungen zum Erstellen oder Aktualisieren einer Ressource über Azure Resource Manager werden von Azure Policy zuerst ausgewertet. Azure Policy erstellt eine Liste aller Zuweisungen, die auf die Ressource zutreffen, und wertet dann die Ressource anhand jeder Definition aus. Azure Policy verarbeitet einige der Auswirkungen, bevor die Anforderung an den geeigneten Ressourcenanbieter übergeben wird. Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht.
+Anforderungen zum Erstellen oder Aktualisieren einer Ressource werden von Azure Policy zuerst ausgewertet. Azure Policy erstellt eine Liste aller Zuweisungen, die auf die Ressource zutreffen, und wertet dann die Ressource anhand jeder Definition aus. Bei Verwendung eines [Resource Manager-Modus](./definition-structure.md#resource-manager-modes) werden von Azure Policy einige der Auswirkungen verarbeitet, bevor die Anforderung an den entsprechenden Ressourcenanbieter übergeben wird. Durch diese Reihenfolge wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht. Bei Verwendung eines [Ressourcenanbietermodus](./definition-structure.md#resource-provider-modes) verwaltet der Ressourcenanbieter die Auswertung und das Ergebnis und gibt die Ergebnisse an Azure Policy zurück.
 
 - Zuerst wird **Deaktiviert** überprüft, um zu ermitteln, ob die Richtlinienregel ausgewertet werden soll.
-- **Append** und **Modify** werden dann ausgewertet. Die Anforderung kann durch beide geändert werden, deshalb kann eine durchgeführte Änderung die Auslösung der Auswirkungen „Audit“ oder „Deny“ verhindern.
+- **Append** und **Modify** werden dann ausgewertet. Die Anforderung kann durch beide geändert werden, deshalb kann eine durchgeführte Änderung die Auslösung der Auswirkungen „Audit“ oder „Deny“ verhindern. Diese Auswirkungen sind nur in einem Resource Manager-Modus verfügbar.
 - Anschließend wird **deny** ausgewertet. Durch die Auswertung von „deny“ vor „audit“ wird eine zweimalige Protokollierung einer unerwünschten Ressource verhindert.
-- Anschließend wird **audit** ausgewertet, bevor die Anforderung an den Ressourcenanbieter weitergeleitet wird.
+- **audit** wird zuletzt ausgewertet.
 
-Nachdem der Ressourcenanbieter einen Erfolgscode zurückgegeben hat, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine zusätzliche Konformitätsprotokollierung oder -aktion erforderlich ist.
+Nachdem vom Ressourcenanbieter ein Erfolgscode für eine Anforderung im Resource Manager-Modus zurückgegeben wurde, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine zusätzliche Konformitätsprotokollierung oder -aktion erforderlich ist.
 
-Für die Auswirkungen **EnforceOPAConstraint** und **EnforceRegoPolicy** gibt es derzeit keine Reihenfolge der Auswertung.
-
-## <a name="append"></a>Anfügen
+## <a name="append"></a>Append
 
 „append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Ein häufiges Beispiel ist die Angabe der zulässigen IP-Adressen für eine Speicherressource.
 
@@ -73,7 +77,7 @@ Beispiel 1: Einzelnes **field/value**-Paar, das einen Nicht- **\[\*\]** -[Alias]
 }
 ```
 
-Beispiel 2: Einzelnes **field/value**-Paar, das einen **\[\*\]** -[Alias](definition-structure.md#aliases) mit einem Arraywert (**value**) verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Durch die Verwendung des **\[\*\]** -Alias fügt der Effekt den **value** an ein Array an, das möglicherweise bereits vorhanden ist. Wenn das Array noch nicht vorhanden ist, wird es erstellt.
+Beispiel 2: Einzelnes **field/value**-Paar, das einen **\[\*\]** -[Alias](definition-structure.md#aliases) mit einem Arraywert (**value**) verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Durch die Verwendung des **\[\*\]** -Alias fügt der Effekt den **value** an ein Array an, das möglicherweise bereits vorhanden ist. Ist das Array noch nicht vorhanden, wird es erstellt.
 
 ```json
 "then": {
@@ -88,24 +92,30 @@ Beispiel 2: Einzelnes **field/value**-Paar, das einen **\[\*\]** -[Alias](defini
 }
 ```
 
-
-
-
 ## <a name="audit"></a>Audit
 
 Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivitätsprotokoll zu erstellen, wenn eine nicht konforme Ressource ausgewertet wird. Die Anforderung wird jedoch nicht beendet.
 
 ### <a name="audit-evaluation"></a>Auswertung von „audit“
 
-„audit“ ist die letzte Auswirkung, die von Azure Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Azure Policy sendet dann die Ressource an den Ressourcenanbieter. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Azure Policy fügt dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
+„audit“ ist die letzte Auswirkung, die von Azure Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Bei einem Resource Manager-Modus wird die Ressource von Azure Policy an den Ressourcenanbieter gesendet. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Azure Policy fügt dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
 
 ### <a name="audit-properties"></a>Eigenschaften von „audit“
 
-Die Auswirkung „audit“ umfasst keine zusätzlichen Eigenschaften zur Verwendung in der **then**-Bedingung der Richtliniendefinition.
+Bei Verwendung eines Resource Manager-Modus verfügt die Auswirkung „audit“ über keine zusätzlichen Eigenschaften für die Verwendung in der Bedingung **then** der Richtliniendefinition.
+
+Bei Verwendung des Ressourcenanbietermodus `Microsoft.Kubernetes.Data` verfügt die Auswirkung „audit“ über folgende zusätzliche Untereigenschaften von **details**:
+
+- **constraintTemplate** (erforderlich)
+  - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
+- **constraint** (erforderlich)
+  - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. In „Beispiel 2“ weiter unten lauten diese Werte `{{ .Values.excludedNamespaces }}` und `{{ .Values.allowedContainerImagesRegex }}`.
+- **values** (optional)
+  - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
 
 ### <a name="audit-example"></a>Beispiel für „audit“
 
-Beispiel: Verwendung der Auswirkung „audit“
+Beispiel 1: Verwenden der Auswirkung „audit“ für Resource Manager-Modi:
 
 ```json
 "then": {
@@ -113,9 +123,25 @@ Beispiel: Verwendung der Auswirkung „audit“
 }
 ```
 
+Beispiel 2: Verwenden der Auswirkung „audit“ für den Ressourcenanbietermodus `Microsoft.Kubernetes.Data`. Durch die zusätzlichen Informationen in **details** werden die Einschränkungsvorlage und die CRD definiert, die in Kubernetes verwendet werden, um die zulässigen Containerimages einzuschränken.
+
+```json
+"then": {
+    "effect": "audit",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
+}
+```
+
 ## <a name="auditifnotexists"></a>Auswirkung „AuditIfNotExists“
 
-Die Auswirkung „AuditIfNotExists“ ermöglicht das Überwachen von Ressourcen, welche die **if**-Bedingung erfüllen, für die aber keine Komponenten in **details** der **then** -Bedingung angegeben sind.
+Die Auswirkung „AuditIfNotExists“ ermöglicht die Überwachung von Ressourcen, die zwar mit der Ressource, die die Bedingung **if** erfüllt, _zusammenhängen_, für die aber keine Eigenschaften in den Details (**details**) der Bedingung **then** angegeben sind.
 
 ### <a name="auditifnotexists-evaluation"></a>Auswertung von „AuditIfNotExists“
 
@@ -125,7 +151,7 @@ Die Auswirkung „AuditIfNotExists“ ermöglicht das Überwachen von Ressourcen
 
 Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die folgenden Untereigenschaften zur Definition der entsprechenden Ressourcen für den Abgleich.
 
-- **Type** [erforderlich]
+- **Type** (erforderlich)
   - Gibt den Typ der entsprechenden abzugleichenden Ressource an.
   - Wenn es sich bei **details.type** um einen Ressourcentyp unterhalb der Bedingungsressource **if** handelt, fragt die Richtlinie Ressourcen dieses **Typs** innerhalb des Bereichs der ausgewerteten Ressource ab. Andernfalls erfolgen Abfragen der Richtlinie innerhalb der gleichen Ressourcengruppe wie die ausgewertete Ressource.
 - **Name** (optional)
@@ -185,17 +211,26 @@ Mit „deny“ werden Ressourcenanforderungen abgelehnt, welche die über eine R
 
 ### <a name="deny-evaluation"></a>Auswertung von „deny“
 
-Beim Erstellen oder Aktualisieren einer übereinstimmenden Ressource verhindert „deny“, dass die Anforderung an den Ressourcenanbieter gesendet wird. Für die Anforderung wird `403 (Forbidden)` zurückgegeben. Im Portal kann „Verboten“ als Status für die Bereitstellung angezeigt werden, die durch die Richtlinienzuweisung verhindert wurde.
+Beim Erstellen oder Aktualisieren einer entsprechenden Ressource in einem Resource Manager-Modus wird die Anforderung durch „deny“ verhindert, bevor sie an den Ressourcenanbieter gesendet wird. Für die Anforderung wird `403 (Forbidden)` zurückgegeben. Im Portal kann „Verboten“ als Status für die Bereitstellung angezeigt werden, die durch die Richtlinienzuweisung verhindert wurde. Bei Verwendung eines Ressourcenanbietermodus wird die Auswertung der Ressource vom Ressourcenanbieter verwaltet.
 
 Während der Auswertung vorhandener Ressourcen werden Ressourcen, die einer „deny“-Richtliniendefinition entsprechen, als nicht konform markiert.
 
 ### <a name="deny-properties"></a>Eigenschaften von „deny“
 
-Die Auswirkung „deny“ umfasst keine zusätzlichen Eigenschaften zur Verwendung in der **then**-Bedingung der Richtliniendefinition.
+Bei Verwendung eines Resource Manager-Modus verfügt die Auswirkung „deny“ über keine zusätzlichen Eigenschaften für die Verwendung in der Bedingung **then** der Richtliniendefinition.
+
+Bei Verwendung des Ressourcenanbietermodus `Microsoft.Kubernetes.Data` verfügt die Auswirkung „deny“ über folgende zusätzliche Untereigenschaften von **details**:
+
+- **constraintTemplate** (erforderlich)
+  - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
+- **constraint** (erforderlich)
+  - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. In „Beispiel 2“ weiter unten lauten diese Werte `{{ .Values.excludedNamespaces }}` und `{{ .Values.allowedContainerImagesRegex }}`.
+- **values** (optional)
+  - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
 
 ### <a name="deny-example"></a>Beispiel für „deny“
 
-Beispiel: Verwendung der Auswirkung „deny“
+Beispiel 1: Verwenden der Auswirkung „deny“ für Resource Manager-Modi:
 
 ```json
 "then": {
@@ -203,6 +238,21 @@ Beispiel: Verwendung der Auswirkung „deny“
 }
 ```
 
+Beispiel 2: Verwenden der Auswirkung „deny“ für den Ressourcenanbietermodus `Microsoft.Kubernetes.Data`. Durch die zusätzlichen Informationen in **details** werden die Einschränkungsvorlage und die CRD definiert, die in Kubernetes verwendet werden, um die zulässigen Containerimages einzuschränken.
+
+```json
+"then": {
+    "effect": "deny",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
+}
+```
 
 ## <a name="deployifnotexists"></a>Auswirkung „DeployIfNotExists“
 
@@ -222,7 +272,7 @@ Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirk
 
 Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle Untereigenschaften, die die entsprechenden Ressourcen für den Abgleich und die auszuführende Vorlagenbereitstellung definieren.
 
-- **Type** [erforderlich]
+- **Type** (erforderlich)
   - Gibt den Typ der entsprechenden abzugleichenden Ressource an.
   - Zunächst wird versucht, eine Ressource unterhalb der **if**-Bedingungsressource abzurufen, anschließend wird eine Abfrage innerhalb derselben Ressourcengruppe wie der **if**-Bedingungsressource durchgeführt.
 - **Name** (optional)
@@ -246,14 +296,14 @@ Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle 
   - Wenn eine übereinstimmende Ressource als TRUE ausgewertet wird, ist die Auswirkung erfüllt und löst keine Bereitstellung aus.
   - [field()] kann verwendet werden, um auf Äquivalenz mit Werten in der **if**-Bedingung zu überprüfen.
   - Beispielsweise könnte so überprüft werden, ob die übergeordnete Ressource (in der **if**-Bedingung) sich am selben Ressourcenstandort befindet wie die übereinstimmende Ressource.
-- **roleDefinitionIds** [erforderlich]
+- **roleDefinitionIds** (erforderlich)
   - Diese Eigenschaft muss ein Array von Zeichenfolgen enthalten, das mit der Rollen-ID der rollenbasierten Zugriffssteuerung übereinstimmt, auf die das Abonnement zugreifen kann. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (optional)
   - Zulässige Werte sind _Subscription_ und _ResourceGroup_.
   - Legt den Typ der auszulösenden Bereitstellung fest. Mit _Subscription_ wird eine [Bereitstellung auf Abonnementebene](../../../azure-resource-manager/templates/deploy-to-subscription.md) und mit _ResourceGroup_ eine Bereitstellung in einer Ressourcengruppe angegeben.
   - Bei der Bereitstellung auf Abonnementebene muss in _Deployment_ eine _location_-Eigenschaft angegeben werden.
   - Die Standardeinstellung ist _ResourceGroup_.
-- **Deployment** [erforderlich]
+- **Deployment** (erforderlich)
   - Diese Eigenschaft muss die vollständige Vorlagenbereitstellung enthalten, so wie sie an die PUT-API `Microsoft.Resources/deployments` übergeben würde. Weitere Informationen finden Sie im Artikel zur [REST-API für die Bereitstellung](/rest/api/resources/deployments).
 
   > [!NOTE]
@@ -319,13 +369,12 @@ Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswir
 Eine Alternative zur Auswirkung „Deaktiviert“ stellt **enforcementMode** dar (wird in der Richtlinienzuweisung festgelegt).
 Wenn für **enforcementMode**  der Wert _Disabled_ festgelegt ist, werden Ressourcen dennoch ausgewertet. Eine Protokollierung, z.B. Aktivitätsprotokolle, und die Richtlinienauswirkung treten nicht auf. Weitere Informationen finden Sie unter [Richtlinienzuweisung – Erzwingungsmodus](./assignment-structure.md#enforcement-mode).
 
-
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
 Diese Auswirkung wird bei einer Richtliniendefinition mit dem _Modus_`Microsoft.Kubernetes.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v3-Zugangskontrollregeln, die mit [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für Kubernetes-Cluster in Azure.
 
 > [!NOTE]
-> [Azure Policy für Kubernetes](./policy-for-kubernetes.md) ist als Vorschauversion verfügbar und unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen.
+> [Azure Policy für Kubernetes](./policy-for-kubernetes.md) ist als Vorschauversion verfügbar und unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der Kategorie **Kubernetes**. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit der Auswirkung **EnforceOPAConstraint** und die zugehörige Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
 
 ### <a name="enforceopaconstraint-evaluation"></a>Auswertung von EnforceOPAConstraint
 
@@ -336,11 +385,11 @@ Alle 15 Minuten erfolgt ein vollständiger Scan des Clusters, dessen Ergebnisse
 
 Die Eigenschaft **details** der Auswirkung EnforceOPAConstraint hat die Untereigenschaften, die die Gatekeeper v3-Zugangskontrollregel beschreiben.
 
-- **constraintTemplate** [erforderlich]
+- **constraintTemplate** (erforderlich)
   - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
-- **constraint** [erforderlich]
+- **constraint** (erforderlich)
   - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. Im folgenden Beispiel sind diese Werte `{{ .Values.cpuLimit }}` und `{{ .Values.memoryLimit }}`.
-- **values** [optional]
+- **values** (optional)
   - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint-Beispiel
@@ -381,7 +430,7 @@ Beispiel: Gatekeeper v3-Zugangskontrollregel, um Ressourcenlimits für CPU- und 
 Diese Auswirkung wird bei einer Richtliniendefinition mit dem _Modus_`Microsoft.ContainerService.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v2-Zugangskontrollregeln, die mit [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
-> [Azure Policy für Kubernetes](./policy-for-kubernetes.md) ist als Vorschauversion verfügbar und unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der **Kubernetes**-Kategorie. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit **EnforceRegoPolicy**-Auswirkung und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen den aktualisierten [EnforceOPAConstraint](#enforceopaconstraint)-Effekt.
+> [Azure Policy für Kubernetes](./policy-for-kubernetes.md) ist als Vorschauversion verfügbar und unterstützt nur Linux-Knotenpools und integrierte Richtliniendefinitionen. Integrierte Richtliniendefinitionen befinden sich in der **Kubernetes**-Kategorie. Die Richtliniendefinitionen der eingeschränkten Vorschauversion mit **EnforceRegoPolicy**-Auswirkung und der zugehörigen Kategorie **Kubernetes Service** sind _veraltet_. Verwenden Sie stattdessen die Auswirkungen _audit_ und _deny_ mit dem Ressourcenanbietermodus `Microsoft.Kubernetes.Data`.
 
 ### <a name="enforceregopolicy-evaluation"></a>Auswertung von EnforceRegoPolicy
 
@@ -392,11 +441,11 @@ Alle 15 Minuten erfolgt ein vollständiger Scan des Clusters, dessen Ergebnisse
 
 Die Eigenschaft **details** der Auswirkung EnforceRegoPolicy hat die Untereigenschaften, die die Gatekeeper v2-Zugangskontrollregel beschreiben.
 
-- **policyId** [erforderlich]
+- **policyId** (erforderlich)
   - Ein eindeutiger Name, der als Parameter an die Rego-Zugangskontrollregel übergeben wird.
-- **policy** [erforderlich]
+- **policy** (erforderlich)
   - Gibt den URI der Rego-Zugangskontrollregel an.
-- **policyParameters** [optional]
+- **policyParameters** (optional)
   - Definiert Parameter und Werte, die an die Rego-Richtlinie übergeben werden.
 
 ### <a name="enforceregopolicy-example"></a>Beispiel für EnforceRegoPolicy
@@ -445,15 +494,21 @@ Wenn eine Richtliniendefinition mit Auswirkung „Modify“ im Rahmen eines Ausw
 
 Die **details**-Eigenschaft der Modify-Auswirkung enthält alle Untereigenschaften, die die für die Bereinigung erforderlichen Berechtigungen definieren, und die **Vorgänge**, mit denen Tagwerte hinzugefügt, aktualisiert oder entfernt werden.
 
-- **roleDefinitionIds** [erforderlich]
+- **roleDefinitionIds** (erforderlich)
   - Diese Eigenschaft muss ein Array von Zeichenfolgen enthalten, das mit der Rollen-ID der rollenbasierten Zugriffssteuerung übereinstimmt, auf die das Abonnement zugreifen kann. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
   - Die definierte Rolle muss alle Vorgänge einbeziehen, die der Rolle [Mitwirkender](../../../role-based-access-control/built-in-roles.md#contributor) erteilt wurden.
-- **operations** [erforderlich]
+- **conflictEffect** (optional)
+  - Bestimmt, welche Richtliniendefinition verwendet wird, wenn die gleiche Eigenschaft durch mehrere Richtliniendefinitionen geändert wird.
+    - Bei neuen oder aktualisierten Ressourcen hat die Richtliniendefinition mit _deny_ Vorrang. Von Richtliniendefinitionen mit _audit_ werden alle Vorgänge (**operations**) übersprungen. Sind mehrere Richtliniendefinitionen mit _deny_ vorhanden, wird die Anforderung als Konflikt abgelehnt. Enthalten alle Richtliniendefinitionen _audit_, wird keiner der Vorgänge (**operations**) der in Konflikt stehenden Richtliniendefinitionen verarbeitet.
+    - Falls bei vorhandenen Ressourcen mehrere Richtliniendefinition _deny_ enthalten, lautet der Konformitätsstatus _Konflikt_. Ist _deny_ in maximal einer Richtliniendefinition enthalten, wird von den einzelnen Zuweisungen jeweils der Konformitätsstatus _Nicht konform_ zurückgegeben.
+  - Verfügbare Werte: _audit_, _deny_, _disabled_
+  - Standardwert: _deny_
+- **operations** (erforderlich)
   - Ein Array aller Tagvorgänge, die auf übereinstimmenden Ressourcen ausgeführt werden sollen.
   - Eigenschaften:
-    - **operation** [erforderlich]
+    - **operation** (erforderlich)
       - Definiert, welche Maßnahme bei einer übereinstimmenden Ressource ergriffen werden sollen. Optionen sind: _addOrReplace_, _Add_, _Remove_. _Add_ verhält sich ähnlich wie die [Append](#append)-Auswirkung.
-    - **field** [erforderlich]
+    - **field** (erforderlich)
       - Das Tag, das hinzugefügt, ersetzt oder entfernt werden soll. Tagnamen müssen derselben Namenskonvention für andere [Felder](./definition-structure.md#fields) entsprechen.
     - **value** (optional)
       - Der Wert, auf den das Tag festgelegt werden soll.
@@ -528,6 +583,7 @@ Beispiel 2: Entfernen Sie das `env`-Tag, und fügen Sie das `environment`-Tag hi
         "roleDefinitionIds": [
             "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
         ],
+        "conflictEffect": "deny",
         "operations": [
             {
                 "operation": "Remove",
@@ -542,8 +598,6 @@ Beispiel 2: Entfernen Sie das `env`-Tag, und fügen Sie das `environment`-Tag hi
     }
 }
 ```
-
-
 
 ## <a name="layering-policy-definitions"></a>Schichten von Richtliniendefinitionen
 

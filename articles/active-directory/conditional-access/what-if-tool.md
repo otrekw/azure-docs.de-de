@@ -4,19 +4,19 @@ description: Erfahren Sie, welche Auswirkungen die Richtlinien für bedingten Zu
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77620686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253136"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Beheben von Problemen mit dem What If-Tool beim bedingten Zugriff
 
@@ -40,7 +40,7 @@ Sie müssen im **Was-wäre-wenn-Tool für den bedingten Zugriff** zunächst die 
      
 Im nächsten Schritt können Sie eine Simulation initiieren, die Ihre Einstellungen auswertet. Bei der Auswertung werden nur die aktivierten Richtlinien berücksichtigt.
 
-Wenn die Auswertung abgeschlossen ist, generiert das Tool einen Bericht über die betroffenen Richtlinien.
+Wenn die Auswertung abgeschlossen ist, generiert das Tool einen Bericht über die betroffenen Richtlinien. Weitere Informationen zu einer Richtlinie für bedingten Zugriff finden Sie auch in der [Arbeitsmappe für Erkenntnisse und Berichterstellung zum bedingten Zugriff](howto-conditional-access-insights-reporting.md), die zusätzliche Details zu Richtlinien im reinen Berichtsmodus und den derzeit aktivierten Richtlinien bereitstellt.
 
 ## <a name="running-the-tool"></a>Ausführen des Tools
 
@@ -104,6 +104,5 @@ In der Liste der Richtlinien, die nicht für den Benutzer gelten, finden Sie auc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
-- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, helfen Ihnen die Informationen unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md) weiter. 
-- Wenn Sie klassische Richtlinien migrieren möchten, lesen Sie unter [Migrieren klassischer Richtlinien in das Azure-Portal](policy-migration.md) nach.  
+- Weitere Informationen zur Richtlinie für bedingten Zugriff finden Sie unter [Erkenntnisse und Berichterstellung zum bedingten Zugriff](howto-conditional-access-insights-reporting.md), wenn Sie Richtlinien im reinen Berichtsmodus verwenden.
+- Wenn Sie bereit sind, Richtlinien für bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie den Artikel [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md). 

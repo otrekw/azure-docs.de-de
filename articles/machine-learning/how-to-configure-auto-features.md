@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817133"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205689"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurisierung mit automatisiertem maschinellem Lernen
 
@@ -104,7 +104,7 @@ In der folgenden Tabelle werden der derzeit unterstützte Datenintegritätsschut
 Schutzmaßnahme|Status|Bedingung&nbsp;für&nbsp;Auslösung
 ---|---|---
 **Ergänzen fehlender Featurewerte durch Imputation** |Erfolgreich <br><br><br> Vorgehensweise| Es wurden keine fehlenden Featurewerte in Ihren Trainingsdaten festgestellt. Erfahren Sie mehr über die [Imputation fehlender Werte](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options). <br><br> Fehlende Featurewerte wurden in Ihren Trainingsdaten festgestellt und imputiert.
-**Behandeln von Features mit hoher Kardinalität** |Erfolgreich <br><br><br> Vorgehensweise| Ihre Eingaben wurden analysiert, und es wurden keine Features mit hoher Kardinalität gefunden. Erfahren Sie mehr über das [Erkennen von Features mit hoher Kardinalität.](#automatic-featurization) <br><br> Features mit hoher Kardinalität wurden in Ihren Eingaben erkannt und behandelt.
+**Behandeln von Features mit hoher Kardinalität** |Erfolgreich <br><br><br> Vorgehensweise| Ihre Eingaben wurden analysiert, und es wurden keine Features mit hoher Kardinalität gefunden. <br><br> Features mit hoher Kardinalität wurden in Ihren Eingaben erkannt und behandelt.
 **Verarbeitung der Überprüfungsaufteilung** |Vorgehensweise| Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *mehr als 20.000 Zeilen*. <br> Jede Iteration des trainierten Modells wurde durch Kreuzvalidierung überprüft. Erfahren Sie mehr über [Überprüfungsdaten](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *weniger als 20.000 Zeilen*. <br> Die Eingabedaten wurden zur Überprüfung des Modells in ein Trainingsdataset und ein Validierungsdataset aufgeteilt.
 **Ausgewogenheitserkennung für Klassen** |Erfolgreich <br><br><br><br><br> Benachrichtigt | Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).
 **Erkennung von Arbeitsspeicherproblemen** |Erfolgreich <br><br><br><br> Vorgehensweise |<br> Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und es wurden keine potenziellen Probleme aufgrund von unzureichendem Speicherplatz erkannt. Erfahren Sie mehr über [Vorhersagekonfigurationen](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) von Zeitreihen. <br><br><br>Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und für Ihr Experiment steht unter Umständen nicht genügend Speicherplatz zur Verfügung. Die Konfigurationen für Verzögerung oder rollierende Zeitfenster wurden deaktiviert.

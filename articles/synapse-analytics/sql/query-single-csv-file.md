@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f264a62428f919fe23797171926ddf63c585c42b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214450"
 ---
 # <a name="query-csv-files"></a>Abfragen von CSV-Dateien
 
@@ -179,6 +179,37 @@ WHERE
 
 > [!NOTE]
 > Diese Abfrage würde nicht erfolgreich ausgeführt werden, wenn ESCAPECHAR nicht angegeben wird, da das Komma in „Slov,enia“ als Feldtrennzeichen und nicht als Teil des Länder-/Regionsnamens behandelt würde. „Slov,enia“ würde als zwei Spalten behandelt. Daher hätte die bestimmte Zeile eine Spalte mehr als die anderen Zeilen und eine Spalte mehr als Sie in der WITH-Klausel definiert haben.
+
+### <a name="escaping-quoting-characters"></a>Versehen von Anführungszeichen mit Escapezeichen
+
+Die folgende Abfrage zeigt, wie eine Datei mit einer Kopfzeile, mit einem Neue-Zeile-Zeichen im Unix-Stil, mit kommagetrennten Spalten und mit einem mit Escapezeichen versehenen doppelten Anführungszeichen innerhalb von Werten gelesen werden kann. Beachten Sie den abweichenden Speicherort der Datei im Vergleich zu den anderen Beispielen.
+
+Dateivorschau:
+
+![Die folgende Abfrage zeigt, wie eine Datei mit einer Kopfzeile, mit einem Neue-Zeile-Zeichen im Unix-Stil, mit kommagetrennten Spalten und mit einem mit Escapezeichen versehenen doppelten Anführungszeichen innerhalb von Werten gelesen werden kann.](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+
+```sql
+SELECT *
+FROM OPENROWSET(
+        BULK 'csv/population-unix-hdr-escape-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIELDTERMINATOR =',',
+        ROWTERMINATOR = '0x0a',
+        FIRSTROW = 2
+    )
+    WITH (
+        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+        [year] smallint,
+        [population] bigint
+    ) AS [r]
+WHERE
+    country_name = 'Slovenia';
+```
+
+> [!NOTE]
+> Das Anführungszeichen muss mit einem weiteren Anführungszeichen als Escapezeichen versehen werden. Anführungszeichen können nur in Spaltenwerten enthalten sein, wenn der Wert mit Anführungszeichen gekapselt ist.
 
 ## <a name="tab-delimited-files"></a>Dateien mit Tabstopps als Trennzeichen
 

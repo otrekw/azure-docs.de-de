@@ -3,24 +3,24 @@ title: Häufig gestellte Fragen zum Azure AD-Anwendungsproxy | Microsoft-Dokumen
 description: Hier finden Sie Antworten auf häufig gestellte Fragen (Frequently Asked Questions, FAQ) zur Verwendung des Azure AD-Anwendungsproxys zum Veröffentlichen interner, lokaler Anwendungen für Remotebenutzer.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583084"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386282"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -71,6 +71,13 @@ Es sind Leistungsindikatoren der Leistungsüberwachung verfügbar, die zusammen 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Muss sich der Azure AD-Anwendungsproxyconnector in demselben Subnetz befinden wie die Ressource?
 
 Der Connector muss sich nicht in demselben Subnetz befinden. Er benötigt jedoch eine Namensauflösung (DNS, Hostdatei) für die Ressource und die erforderliche Netzwerkkonnektivität (Routing an die Ressource, für die Ressource geöffnete Ports usw.). Empfehlungen finden Sie unter [Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys](application-proxy-network-topology.md).
+
+### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>Auf welchen Windows Server-Versionen kann ich einen Connector installieren?
+Für diesen Anwendungsproxy ist Windows Server 2012 R2 oder höher erforderlich. Derzeit gibt es eine Einschränkung bei HTTP2 für Windows Server 2019. Damit der Connector unter Windows Server 2019 erfolgreich verwendet werden kann, müssen Sie den folgenden Registrierungsschlüssel hinzufügen und den Server neu starten:
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
+
 
 ## <a name="application-configuration"></a>Anwendungskonfiguration
 

@@ -4,14 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 926434d7110877e234888682cb6c946afe3ae685
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298598"
 ---
 Mit Functions können Sie Schlüssel verwenden, wodurch der Zugriff auf Ihre HTTP-Funktionsendpunkte während der Entwicklung erschwert wird. Sofern die HTTP-Zugriffsebene für eine über HTTP ausgelöste Funktion nicht auf `anonymous` festgelegt ist, müssen Anforderungen einen API-Zugriffsschlüssel in der Anforderung enthalten. 
+
+Schlüssel bieten zwar einen Standardsicherheitsmechanismus, für den Schutz eines HTTP-Endpunkts in der Produktion sollten jedoch gegebenenfalls zusätzliche Optionen in Erwägung gezogen werden. So ist es beispielsweise in der Regel nicht empfehlenswert, den gemeinsamen geheimen Schlüssel in öffentlichen Apps zu verteilen. Wenn Ihre Funktion über einen öffentlichen Client aufgerufen wird, empfiehlt es sich gegebenenfalls, einen anderen Sicherheitsmechanismus zu implementieren. Weitere Informationen hierzu finden Sie unter [Schützen eines HTTP-Endpunkts in einer Produktionsumgebung](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
+
+Wenn Sie Ihre Funktionsschlüsselwerte erneuern, müssen die aktualisierten Schlüsselwerte manuell an alle Clients verteilt werden, von denen Ihre Funktion aufgerufen wird.  
 
 #### <a name="authorization-scopes-function-level"></a>Autorisierungsbereiche (Funktionsebene)
 

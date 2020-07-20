@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: d0f12274f3cbc0cd2726097e0507079cb858d59f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/11/2020
+ms.openlocfilehash: a4faab9ac6d5e1c39c1120e09dae792b95892d60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564399"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -23,61 +23,64 @@ Dieser Artikel enthält Informationen zu den **neuesten** Versionsupdates für A
 
 Azure HDInsight ist unter Enterprisekunden einer der beliebtesten Dienste für Open-Source-Analysen in Azure.
 
-## <a name="release-date-01092020"></a>Veröffentlichungsdatum: 09.01.2020
+## <a name="release-date-06112020"></a>Veröffentlichungsdatum: 11.06.2020
 
-Diese Version gilt für HDInsight 3.6 und 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Wenn die unten aufgeführten Änderungen nicht angezeigt werden, warten Sie, bis das Release in einigen Tagen in Ihrer Region verfügbar ist.
-
-> [!IMPORTANT]  
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie im Artikel zur [HDInsight-Versionsverwaltung](hdinsight-component-versioning.md).
+Diese Version gilt für HDInsight 3.6 und 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen bei Ihnen erst ein paar Tage später verfügbar werden.
 
 ## <a name="new-features"></a>Neue Funktionen
-### <a name="tls-12-enforcement"></a>Erzwingen von TLS 1.2
-Transport Layer Security (TLS) und Secure Sockets Layer (SSL) sind kryptografische Protokolle, die Kommunikationssicherheit über ein Computernetzwerk bereitstellen. Erfahren Sie mehr über [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight verwendet auf öffentlichen HTTPS-Endpunkten TLS 1.2, TLS 1.1 wird jedoch aus Gründen der Abwärtskompatibilität weiterhin unterstützt. 
-
-Mit diesem Release können Kunden nur TLS 1.2 für alle Verbindungen über den öffentlichen Clusterendpunkt auswählen. Zur Unterstützung dieser Möglichkeit wird die neue **minSupportedTlsVersion**-Eigenschaft eingeführt, die bei der Clustererstellung angegeben werden kann. Wenn die-Eigenschaft nicht festgelegt ist, unterstützt der Cluster weiterhin TLS 1.0, 1.1 und 1.2. Dies entspricht dem derzeitigen Verhalten. Kunden können den Wert für diese Eigenschaft auf „1.2“ festlegen, damit der Cluster nur TLS 1.2 und höher unterstützt. Weitere Informationen finden Sie unter [Transport Layer Security](./transport-layer-security.md).
-
-### <a name="bring-your-own-key-for-disk-encryption"></a>Bring Your Own Key für Datenträgerverschlüsselung
-Alle verwalteten Datenträger in HDInsight werden mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) von Azure geschützt. Die Daten auf diesen Datenträgern werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Ab diesem Release können Sie Bring Your Own Key (BYOK) für die Datenträgerverschlüsselung auswählen und mithilfe von Azure Key Vault verwalten. Die BYOK-Verschlüsselung ist eine Konfiguration in einem Schritt bei der Clustererstellung ohne zusätzliche Kosten. Registrieren Sie beim Erstellen Ihres Clusters lediglich HDInsight als verwaltete Identität bei Azure Key Vault, und fügen Sie den Verschlüsselungsschlüssel hinzu. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
-
-## <a name="deprecation"></a>Eingestellte Unterstützung
-Keine eingestellte Unterstützung für diese Version. Informationen zur Vorbereitung auf anstehende Einstellungen finden Sie unter [Bevorstehende Änderungen](#upcoming-changes).
-
-## <a name="behavior-changes"></a>Verhaltensänderungen
-Keine Verhaltensänderungen für diese Version. Informationen zur Vorbereitung auf anstehende Änderungen finden Sie unter [Bevorstehende Änderungen](#upcoming-changes).
-
-## <a name="upcoming-changes"></a>Bevorstehende Änderungen
-Die folgenden Änderungen werden in kommenden Versionen durchgeführt. 
-
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Einstellung der Unterstützung von Spark 2.1 und 2.2 für Spark-Cluster in HDInsight 3.6
-Ab dem 1. Juli 2020 können Kunden in HDInsight 3.6 keine neuen Spark-Cluster mit Spark 2.1 und 2.2 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Es empfiehlt sich, in HDInsight 3.6 bis zum 30. Juni 2020 auf Spark 2.3 umzustellen, um potenzielle System-/Supportunterbrechungen zu vermeiden. Weitere Informationen finden Sie unter [Migrieren von Workloads von Apache Spark 2.1 oder 2.2 zu 2.3 oder 2.4](./spark/migrate-versions.md).
-
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Einstellung von Spark 2.3 für Spark-Cluster in HDInsight 4.0
-Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Spark-Cluster mit Spark 2.3 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Es empfiehlt sich, in HDInsight 4.0 bis zum 30. Juni 2020 auf Spark 2.4 umzustellen, um potenzielle System-/Supportunterbrechungen zu vermeiden. Weitere Informationen finden Sie unter [Migrieren von Workloads von Apache Spark 2.1 oder 2.2 zu 2.3 oder 2.4](./spark/migrate-versions.md).
-
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Einstellung von Kafka 1.1 für Kafka-Cluster in HDInsight 4.0
-Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Kafka-Cluster mit Kafka 1.1 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Ziehen Sie in Erwägung, bis 30. Juni 2020 in HDInsight 4.0 zu Kafka 2.1 zu wechseln, um eine potenzielle Unterbrechung von System/Support zu vermeiden. Weitere Informationen finden Sie unter [Migrieren von Apache Kafka-Workloads zu Azure HDInsight 4.0](./kafka/migrate-versions.md).
-
-### <a name="hbase-20-to-216"></a>HBase 2.0 auf 2.1.6
-Im bevorstehenden Release von HDInsight 4.0 erfolgt ein Upgrade der HBase-Version von Version 2.0 auf 2.1.6.
-
-### <a name="spark-240-to-244"></a>Spark 2.4.0 auf 2.4.4
-Im bevorstehenden Release von HDInsight 4.0 erfolgt ein Upgrade der Spark-Version von Version 2.4.0 auf 2.4.4.
-
-### <a name="kafka-210-to-211"></a>Kafka 2.1.0 auf 2.1.1
-Im bevorstehenden Release von HDInsight 4.0 erfolgt ein Upgrade der Kafka-Version von Version 2.1.0 auf 2.1.1.
-
-### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Virtueller Computer mit mindestens vier Kernen erforderlich für den Hauptknoten 
-Zum Sicherstellen der Hochverfügbarkeit und Zuverlässigkeit von HDInsight-Clustern ist ein virtueller Computer mit mindestens vier Kernen für den Hauptknoten erforderlich. Ab dem 6. April 2020 können Kunden nur noch VMs mit mindestens vier Kernen als Hauptknoten für die neuen HDInsight-Cluster auswählen. Vorhandene Cluster funktionieren weiterhin erwartungsgemäß. 
-
-### <a name="esp-spark-cluster-node-size-change"></a>Änderung der Knotengröße für ESP Spark-Cluster 
-Im anstehenden Release wird die minimal zulässige Knotengröße für ESP Spark-Cluster in Standard_D13_V2 geändert. VMs der A-Serie können aufgrund der relativ geringen CPU- und Speicherkapazität zu ESP-Clusterproblemen führen. Die Unterstützung von VMs der A-Serie zum Erstellen von neuen ESP-Clustern wird eingestellt.
-
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Wechsel zu Azure-VM-Skalierungsgruppen
-HDInsight verwendet jetzt virtuelle Azure-Computer für die Bereitstellung des Clusters. Im anstehenden Release verwendet HDInsight stattdessen Azure-VM-Skalierungsgruppen. Informieren Sie sich ausführlicher über Azure-VM-Skalierungsgruppen.
+Von HDInsight werden jetzt virtuelle Azure-Computer für die Clusterbereitstellung verwendet. Ab diesem Release werden von neu erstellten HDInsight-Clustern Azure-VM-Skalierungsgruppen verwendet. Die Änderung wird schrittweise eingeführt. Dabei ist nicht mit einem Breaking Change zu rechnen. Weitere Informationen zu [Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+ 
+### <a name="reboot-vms-in-hdinsight-cluster"></a>Neustarten von virtuellen Computern im HDInsight-Cluster
+In dieser Version wird das Neustarten von virtuellen Computern in einem HDInsight-Cluster unterstützt, um nicht reagierende Knoten neu starten zu können. Momentan ist dies nur per API möglich, an der PowerShell- und CLI-Unterstützung wird jedoch bereits gearbeitet. Weitere Informationen zur API finden Sie in [dieser Dokumentation](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json).
+ 
+## <a name="deprecation"></a>Eingestellte Unterstützung
+### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Einstellung der Unterstützung von Spark 2.1 und 2.2 für Spark-Cluster in HDInsight 3.6
+Ab dem 1. Juli 2020 können Kunden in HDInsight 3.6 keine neuen Spark-Cluster mit Spark 2.1 und 2.2 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Ziehen Sie in Erwägung, bis 30. Juni 2020 in HDInsight 3.6 zu Spark 2.3 zu wechseln, um eine potenzielle Unterbrechung von System/Support zu vermeiden.
+ 
+### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Einstellung der Unterstützung von Spark 2.3 für Spark-Cluster in HDInsight 4.0
+Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Spark-Cluster mit Spark 2.3 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Ziehen Sie in Erwägung, bis 30. Juni 2020 in HDInsight 4.0 zu Spark 2.4 zu wechseln, um eine potenzielle Unterbrechung von System/Support zu vermeiden.
+ 
+### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Einstellung von Kafka 1.1 für Kafka-Cluster in HDInsight 4.0
+Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Kafka-Cluster mit Kafka 1.1 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Es empfiehlt sich, in HDInsight 4.0 bis zum 30. Juni 2020 auf Kafka 2.1 umzustellen, um potenzielle System-/Supportunterbrechungen zu vermeiden.
+ 
+## <a name="behavior-changes"></a>Verhaltensänderungen
+### <a name="esp-spark-cluster-head-node-size-change"></a>Änderung der Hauptknotengröße für Spark-Cluster mit Enterprise-Sicherheitspaket (ESP) 
+Die kleinstmögliche Hauptknotengröße für Spark-Cluster mit Enterprise-Sicherheitspaket wird in „Standard_D13_V2“ geändert. Virtuelle Computer mit einer geringen Anzahl von Kernen und wenig Arbeitsspeicher können aufgrund der relativ geringen CPU- und Speicherkapazität als Hauptknoten zu ESP-Clusterproblemen führen. Verwenden Sie als Hauptknoten für Spark-Cluster mit Enterprise-Sicherheitspaket ab dem Release SKUs, die über „Standard_D13_V2“ und „Standard_E16_V3“ liegen.
+ 
+### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Virtueller Computer mit mindestens vier Kernen erforderlich für den Hauptknoten 
+Um die Hochverfügbarkeit und Zuverlässigkeit von HDInsight-Clustern zu gewährleisten, wird für den Hauptknoten ein virtueller Computer mit mindestens vier Kernen benötigt. Ab dem 6. April 2020 können Kunden nur noch VMs mit mindestens vier Kernen als Hauptknoten für die neuen HDInsight-Cluster auswählen. Vorhandene Cluster funktionieren weiterhin erwartungsgemäß. 
+ 
+### <a name="cluster-worker-node-provisioning-change"></a>Änderung bei der Bereitstellung von Workerknoten für Cluster
+Wenn 80 Prozent der Workerknoten bereit sind, ist der Cluster **betriebsbereit**. Kunden können nun alle Vorgänge auf der Datenebene nutzen und beispielsweise Skripts und Aufträge ausführen. Vorgänge auf der Steuerungsebene (etwa das Hoch-/Herunterskalieren) stehen dagegen nicht zur Verfügung. Nur Löschvorgänge werden unterstützt.
+ 
+Im Anschluss an die Phase **Betriebsbereit** wartet der Cluster noch 60 Minuten auf die restlichen 20 Prozent der Workerknoten. Nach diesen 60 Minuten wechselt der Cluster in die **Ausführungsphase**, auch wenn noch nicht alle Workerknoten verfügbar sind. Sobald sich ein Cluster in der **Ausführungsphase** befindet, können er ganz normal verwendet werden. Sowohl Vorgänge auf der Steuerungsebene (etwa das Hoch-/Herunterskalieren) als auch Vorgänge auf der Datenebene (beispielsweise das Ausführen von Skripts und Aufträgen) werden akzeptiert. Sollten einige der angeforderten Workerknoten nicht verfügbar sein, wird der Cluster als teilweise erfolgreich gekennzeichnet. Ihnen werden die Knoten in Rechnung gestellt, die erfolgreich bereitgestellt wurden. 
+ 
+### <a name="create-new-service-principal-through-hdinsight"></a>Erstellen eines neuen Dienstprinzipals über HDInsight
+Bislang konnten Kunden mit der Clustererstellung einen neuen Dienstprinzipal für den Zugriff auf das verbundene ADLS Gen 1-Konto im Azure-Portal erstellen. Ab dem 15. Juni 2020 können Kunden im Rahmen des HDInsight-Erstellungsworkflows keinen neuen Dienstprinzipal mehr erstellen, und es wird nur noch ein bereits vorhandener Dienstprinzipal unterstützt. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
+### <a name="time-out-for-script-actions-with-cluster-creation"></a>Timeout für Skriptaktionen mit Clustererstellung
+HDInsight unterstützt das Ausführen von Skriptaktionen mit Clustererstellung. Ab diesem Release müssen alle Skriptaktionen mit Clustererstellung innerhalb von **60 Minuten** abgeschlossen werden. Andernfalls tritt ein Timeout auf. An aktive Cluster übermittelte Skriptaktionen sind davon nicht betroffen. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process).
+ 
+## <a name="upcoming-changes"></a>Bevorstehende Änderungen
+Es stehen keine Breaking Changes an, um die Sie sich kümmern müssen.
+ 
 ## <a name="bug-fixes"></a>Behebung von Programmfehlern
 HDInsight sorgt weiterhin für Verbesserungen bei der Clusterzuverlässigkeit und -leistung. 
-
+ 
 ## <a name="component-version-change"></a>Änderung der Komponentenversion
-Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie hier.
+### <a name="hbase-20-to-216"></a>HBase 2.0 auf 2.1.6
+Die HBase-Version wird von 2.0 auf 2.1.6 aktualisiert.
+ 
+### <a name="spark-240-to-244"></a>Spark 2.4.0 auf 2.4.4
+Die Spark-Version wird von 2.4.0 auf 2.4.4 aktualisiert.
+ 
+### <a name="kafka-210-to-211"></a>Kafka 2.1.0 auf 2.1.1
+Die Kafka-Version wird von 2.1.0 auf 2.1.1 aktualisiert.
+ 
+Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions).
 
+## <a name="known-issues"></a>Bekannte Probleme
+
+### <a name="hive-warehouse-connector-issue"></a>Problem mit Hive Warehouse Connector
+In diesem Release gibt es ein Problem mit Hive Warehouse Connector. Eine entsprechende Korrektur wird in das nächste Release aufgenommen. Cluster, die vor diesem Release erstellt wurden, werden dadurch nicht beeinträchtigt. Vermeiden Sie nach Möglichkeit eine Löschung und Neuerstellung des Clusters. Sollten Sie weitere Unterstützung benötigen, erstellen Sie ein Supportticket.

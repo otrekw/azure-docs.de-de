@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390226"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -63,15 +63,15 @@ So erstellen Sie ein SSH-RSA-Schlüsselpaar mit PuTTYgen:
 
 2. Klicken Sie auf **Generate (Generieren)** . PuTTYgen generiert standardmäßig einen 2048-Bit-SSH-2-RSA-Schlüssel.
 
-4. Bewegen Sie die Maus über den leeren Bereich, um Zufälligkeit für den Schlüssel zu erzeugen.
+3. Bewegen Sie die Maus über den leeren Bereich, um Zufälligkeit für den Schlüssel zu erzeugen.
 
-5. Nach dem Generieren des öffentlichen Schlüssels können Sie optional eine Passphrase eingeben und bestätigen. Wenn Sie sich mit Ihrem privaten SSH-Schlüssel bei dem virtuellen Computer authentifizieren, werden Sie zur Eingabe der Passphrase aufgefordert. Ohne Passphrase kann sich jeder, der über Ihren privaten Schlüssel verfügt, bei den virtuellen Computern oder Diensten anmelden, die diesen Schlüssel verwenden. Daher empfiehlt es sich, eine Passphrase zu erstellen. Wenn Sie die Passphrase vergessen, besteht jedoch keine Möglichkeit, diese wiederherzustellen.
+4. Nach dem Generieren des öffentlichen Schlüssels können Sie optional eine Passphrase eingeben und bestätigen. Wenn Sie sich mit Ihrem privaten SSH-Schlüssel bei dem virtuellen Computer authentifizieren, werden Sie zur Eingabe der Passphrase aufgefordert. Ohne Passphrase kann sich jeder, der über Ihren privaten Schlüssel verfügt, bei den virtuellen Computern oder Diensten anmelden, die diesen Schlüssel verwenden. Daher empfiehlt es sich, eine Passphrase zu erstellen. Wenn Sie die Passphrase vergessen, besteht jedoch keine Möglichkeit, diese wiederherzustellen.
 
-6. Der öffentliche Schlüssel wird am oberen Rand des Fensters angezeigt. Sie können diesen gesamten öffentlichen Schlüssel kopieren und dann beim Erstellen eines virtuellen Linux-Computers in das Azure-Portal oder eine Azure Resource Manager-Vorlage einfügen. Sie können auch auf **Öffentlichen Schlüssel speichern** klicken, um eine Kopie auf Ihrem Computer zu speichern:
+5. Der öffentliche Schlüssel wird am oberen Rand des Fensters angezeigt. Sie können den gesamten öffentlichen Schlüssel kopieren und dann beim Erstellen eines virtuellen Linux-Computers in das Azure-Portal oder in eine Azure Resource Manager-Vorlage einfügen. Sie können auch auf **Öffentlichen Schlüssel speichern** klicken, um eine Kopie auf Ihrem Computer zu speichern. Beachten Sie beim Speichern in eine Datei, dass der öffentliche Schlüssel von PuTTY in ein anderes Format ([RFC4716](https://tools.ietf.org/html/rfc4716)) konvertiert wird. Das RFC4716-Format ist möglicherweise nicht mit allen APIs kompatibel. Für die Verwendung im Azure-Portal empfiehlt es sich daher, den öffentlichen Schlüssel zu kopieren, der im PuTTY-Fenster angezeigt wird.
 
     ![Speichern der Datei mit dem öffentlichen PuTTY-Schlüssel](./media/ssh-from-windows/save-public-key.png)
 
-7. Optional können Sie auch auf **Privaten Schlüssel speichern** klicken, um den privaten Schlüssel im privaten PuTTY-Schlüsselformat (PPK-Datei) zu speichern. Sie benötigen die PPK-Datei später, wenn Sie PuTTY verwenden möchten, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen.
+6. Optional können Sie auch auf **Privaten Schlüssel speichern** klicken, um den privaten Schlüssel im privaten PuTTY-Schlüsselformat (PPK-Datei) zu speichern. Sie benötigen die PPK-Datei später, wenn Sie PuTTY verwenden möchten, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen.
 
     ![Speichern der PuTTY-Datei mit dem privaten Schlüssel](./media/ssh-from-windows/save-ppk-file.png)
 

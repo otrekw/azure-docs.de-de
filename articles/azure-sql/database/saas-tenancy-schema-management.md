@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a9378d0f499814706762349a0eac2c5a26ca939a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255550"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Verwalten von Schemas in einer SaaS-Anwendung mit dem Muster für eine Datenbank pro Mandant in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,12 +49,10 @@ Das Muster für eine Datenbank pro Mandant isoliert Mandantendaten effektiv, erh
 ![Bildschirm](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
-## <a name="elastic-jobs-limited-preview"></a>Eingeschränkte Vorschau – Elastische Aufträge
+## <a name="elastic-jobs-public-preview"></a>Public Preview für „Elastische Aufträge“
 
-Es gibt eine neue Version von „Elastische Aufträge“, die nun ein integriertes Feature von Azure SQL-Datenbank darstellt. Diese neue Version von Elastische Aufträge liegt derzeit als eingeschränkte Vorschauversion vor. Die eingeschränkte Vorschauversion unterstützt derzeit die Verwendung von PowerShell zum Erstellen von Auftrags-Agents sowie von T-SQL zum Erstellen und Verwalten von Aufträgen.
-
-> [!NOTE]
-> In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Aufträge für die elastische Datenbank). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID per E-Mail an SaaSFeedback@microsoft.com mit dem Betreff „Vorschau von Elastische Aufträge“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Die Vorschauversion ist eingeschränkt, wenden Sie sich daher an SaaSFeedback@microsoft.com, wenn Sie Fragen haben oder Support benötigen.
+Es gibt eine neue Version von „Elastische Aufträge“, die nun ein integriertes Feature von Azure SQL-Datenbank darstellt. Die neue Version von „Elastische Aufträge“ ist aktuell als Public Preview verfügbar. Diese Public Preview unterstützt aktuell die Erstellung eines Auftrags-Agents mithilfe von PowerShell sowie die Erstellung und Verwaltung von Aufträgen mithilfe von T-SQL.
+Weitere Informationen finden Sie im Artikel [Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview).
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
@@ -67,7 +65,7 @@ Für dieses Tutorial müssen Sie mit PowerShell den Auftrags-Agent und die unter
 1. Öffnen Sie „…\\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1*“ in der **PowerShell ISE**.
 1. Drücken Sie **F5** , um das Skript auszuführen.
 
-Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.ps1* auf, um die SQL-Datenbank *osagent* auf dem Katalogserver zu erstellen. Anschließend erstellt es den Auftrags-Agent mit der Datenbank als Parameter.
+Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.ps1* auf, um die Datenbank *osagent* auf dem Katalogserver zu erstellen. Anschließend erstellt es den Auftrags-Agent mit der Datenbank als Parameter.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Erstellen eines Auftrags, um neue Verweisdaten für alle Mandanten bereitzustellen
 

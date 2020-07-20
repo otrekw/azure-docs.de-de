@@ -3,15 +3,15 @@ title: Überwachen von Azure Cosmos DB-Vorgängen auf Steuerungsebene
 description: Hier erfahren Sie, wie Sie Vorgänge wie das Hinzufügen einer Region, Aktualisieren des Durchsatzes, Durchführen von Failovern für Regionen und das Hinzufügen eines VNETs auf Steuerungsebene in Azure Cosmos DB überwachen.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: how-to
+ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414175"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Überwachen von Azure Cosmos DB-Vorgängen auf Steuerungsebene
 
@@ -29,7 +29,7 @@ Im Folgenden finden Sie einige Beispielszenarien, in denen das Überwachen von V
 
 Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deaktivieren Sie den schlüsselbasierten Metadatenschreibzugriff für Ihr Konto. Wenn der schlüsselbasierte Metadatenschreibzugriff deaktiviert ist, können Clients, die über Kontoschlüssel eine Verbindung mit dem Azure Cosmos-Konto herstellen, nicht auf das Konto zugreifen. Sie können den Schreibzugriff deaktivieren, indem Sie Eigenschaft `disableKeyBasedMetadataWriteAccess` auf „true“ festlegen. Nachdem Sie diese Eigenschaft festgelegt haben, können Änderungen an allen Ressourcen von Benutzern vorgenommen werden, die über die richtige RBAC-Rolle (rollenbasierte Zugriffssteuerung) und Anmeldeinformationen verfügen. Weitere Informationen zum Festlegen dieser Eigenschaft finden Sie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk). 
 
-Wenn `disableKeyBasedMetadataWriteAccess` aktiviert wurde und die SDK-basierten Clients Erstell- oder Aktualisierungsvorgänge ausführen, wird der Fehler *Vorgang „POST“ für die Ressource „ContainerNameorDatabaseName“ ist über den Azure Cosmos DB-Endpunkt nicht zulässig* zurückgegeben. Sie müssen den Zugriff auf solche Vorgänge für Ihr Konto aktivieren oder die Erstell-/Aktualisierungsvorgänge über Azure Resource Manager, Azure CLI oder Azure PowerShell ausführen. Um die Umstellung rückgängig zu machen, legen Sie disableKeyBasedMetadataWriteAccess mit Azure CLI auf **false** fest, wie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) beschrieben. Stellen Sie sicher, dass Sie den Wert von `disableKeyBasedMetadataWriteAccess` in „false“ anstelle von „true“ ändern.
+Wenn `disableKeyBasedMetadataWriteAccess` aktiviert wurde und die SDK-basierten Clients Erstell- oder Aktualisierungsvorgänge ausführen, wird der Fehler *Vorgang „POST“ für die Ressource „ContainerNameorDatabaseName“ ist über den Azure Cosmos DB-Endpunkt nicht zulässig* zurückgegeben. Sie müssen den Zugriff auf solche Vorgänge für Ihr Konto aktivieren oder die Erstellungs-/Aktualisierungsvorgänge über Azure Resource Manager, Azure CLI oder Azure PowerShell ausführen. Um die Umstellung rückgängig zu machen, legen Sie disableKeyBasedMetadataWriteAccess mit Azure CLI auf **false** fest, wie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) beschrieben. Stellen Sie sicher, dass Sie den Wert von `disableKeyBasedMetadataWriteAccess` in „false“ anstelle von „true“ ändern.
 
 Beachten Sie die folgenden Punkte, wenn Sie den Metadatenschreibzugriff deaktivieren:
 
@@ -51,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um die Protokollierung für Vorgänge au
 
 Sie können die Protokolle auch in einem Speicherkonto oder Stream in einem Event Hub speichern. In diesem Artikel wird gezeigt, wie Sie Protokolle an Log Analytics senden und diese Abfragen. Nach der Aktivierung dauert es einige Minuten, bis die Diagnoseprotokolle erstellt werden. Alle ab diesem Zeitpunkt durchgeführten Vorgänge auf Steuerungsebene können nachverfolgt werden. Der folgende Screenshot veranschaulicht die Aktivierung von Protokollen auf Steuerungsebene:
 
-![Aktivieren der Anforderungsprotokollierung auf Steuerungsebene](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/enable-control-plane-requests-logs.png" alt-text="Aktivieren der Anforderungsprotokollierung auf Steuerungsebene":::
 
 ## <a name="view-the-control-plane-operations"></a>Anzeigen von Vorgängen auf Steuerungsebene
 
@@ -69,17 +69,17 @@ Nachdem Sie die Protokollierung aktiviert haben, führen Sie die folgenden Schri
 
 Die folgenden Screenshots zeigen Protokolle beim Ändern der Konsistenzebene für ein Azure Cosmos-Konto:
 
-![Protokolle auf Steuerungsebene beim Hinzufügen eines VNET](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Protokolle auf Steuerungsebene beim Hinzufügen eines VNET":::
 
-Die folgenden Screenshots zeigen Protokolle für den Fall, dass der Durchsatz einer Cassandra-Tabelle aktualisiert wird:
+In den folgenden Screenshots werden Protokolle erfasst, wenn der Keyspace oder eine Tabelle eines Cassandra-Kontos erstellt wird und der Durchsatz aktualisiert wird. Die Protokolle auf Steuerungsebene für Erstellungs- und Aktualisierungsvorgänge in der Datenbank und dem Container werden separat protokolliert, wie es im folgenden Screenshot zu sehen ist:
 
-![Protokolle auf Steuerungsebene beim Aktualisieren des Durchsatzes](./media/audit-control-plane-logs/throughput-update-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Protokolle auf Steuerungsebene beim Aktualisieren des Durchsatzes":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifizieren der einem bestimmten Vorgang zugeordneten Identität
 
 Wenn Sie weitere debuggen möchten, können Sie einen bestimmten Vorgang im **Aktivitätsprotokoll** ermitteln, indem Sie die Aktivitäts-ID oder den Zeitstempel des Vorgangs verwenden. Der Zeitstempel wird für einige Resource Manager-Clients verwendet, bei denen die Aktivitäts-ID nicht explizit übermittelt wurde. Das Aktivitätsprotokoll enthält Details zur Identität, mit der der Vorgang initiiert wurde. Der folgende Screenshot veranschaulicht, wie Sie die Aktivitäts-ID verwenden und die damit verbundenen Vorgänge im Aktivitätsprotokoll ermitteln:
 
-![Verwenden der Aktivitäts-ID und Suchen der Vorgänge](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Verwenden der Aktivitäts-ID und Suchen der Vorgänge":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vorgänge der Steuerungsebene für Azure Cosmos-Konten
 
@@ -101,30 +101,39 @@ Die folgenden Vorgänge der Steuerungsebene sind auf Kontoebene verfügbar. Die 
 
 Die folgenden Vorgänge der Steuerungsebene sind auf Datenbank- und Containerebene verfügbar. Diese Vorgänge sind als Metriken in Azure Monitor verfügbar:
 
+* SQL-Datenbank erstellt
 * SQL-Datenbank aktualisiert
-* SQL-Container aktualisiert
 * Durchsatz der SQL-Datenbank aktualisiert
-* Durchsatz des SQL-Containers aktualisiert
 * SQL-Datenbank gelöscht
+* SQL-Container erstellt
+* SQL-Container aktualisiert
+* Durchsatz des SQL-Containers aktualisiert
 * SQL-Container gelöscht
+* Cassandra-Keyspace erstellt
 * Cassandra-Keyspace aktualisiert
-* Cassandra-Tabelle aktualisiert
 * Durchsatz eines Cassandra-Keyspace aktualisiert
-* Durchsatz der Cassandra-Tabelle aktualisiert
 * Cassandra-Keyspace gelöscht
+* Cassandra-Tabelle erstellt
+* Cassandra-Tabelle aktualisiert
+* Durchsatz der Cassandra-Tabelle aktualisiert
 * Cassandra-Tabelle gelöscht
+* Gremlin-Datenbank erstellt
 * Gremlin-Datenbank aktualisiert
-* Gremlin-Diagramm aktualisiert
 * Durchsatz der Gremlin-Datenbank aktualisiert
-* Durchsatz des Gremlin-Diagramms aktualisiert
 * Gremlin-Datenbank gelöscht
+* Gremlin-Diagramm erstellt
+* Gremlin-Diagramm aktualisiert
+* Durchsatz des Gremlin-Diagramms aktualisiert
 * Gremlin-Diagramm gelöscht
+* Mongo-Datenbank erstellt
 * Mongo-Datenbank aktualisiert
-* Mongo-Sammlung aktualisiert
 * Durchsatz der Mongo-Datenbank aktualisiert
-* Durchsatz der Mongo-Sammlung aktualisiert
 * Mongo-Datenbank gelöscht
+* Mongo-Sammlung erstellt
+* Mongo-Sammlung aktualisiert
+* Durchsatz der Mongo-Sammlung aktualisiert
 * Mongo-Sammlung gelöscht
+* AzureTable-Tabelle erstellt
 * AzureTable-Tabelle aktualisiert
 * Durchsatz der AzureTable-Tabelle aktualisiert
 * AzureTable-Tabelle gelöscht
@@ -144,14 +153,15 @@ Die folgenden Vorgangsbezeichnungen werden in Diagnoseprotokollen für die versc
 
 Bei API-spezifischen Vorgängen hat die Vorgangsbezeichnung folgendes Format:
 
-* APITyp + APITypRessourcentyp + Vorgangstyp + Anfang/Ende
-* APITyp + APITypRessourcentyp + Durchsatz + Vorgangstyp + Anfang/Ende
+* ApiKind + ApiKindResourceType + OperationType
+* ApiKind + ApiKindResourceType + „Throughput“ + operationType
 
 **Beispiel** 
 
-* CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
-* CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
-* SqlContainersUpdateStart, SqlContainersUpdateComplete
+* CassandraKeyspacesCreate
+* CassandraKeyspacesUpdate
+* CassandraKeyspacesThroughputUpdate
+* SqlContainersUpdate
 
 Die *ResourceDetails*-Eigenschaft enthält den gesamten Ressourcentext als Anforderungsnutzlast und alle Eigenschaften, für die eine Aktualisierung angefordert wurde.
 
@@ -161,14 +171,28 @@ Im Folgenden finden Sie einige Beispiele für den Abruf von Diagnoseprotokollen 
 
 ```kusto
 AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdateStart"
+| where Category startswith "ControlPlane"
+| where OperationName contains "Update"
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
 AzureDiagnostics 
 | where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+| where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

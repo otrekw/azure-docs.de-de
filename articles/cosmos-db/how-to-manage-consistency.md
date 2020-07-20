@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Konsistenzebenen in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie Konsistenzebenen in Azure Cosmos DB mithilfe des Azure-Portals, .NET SDK, Java SDK und verschiedener anderer SDKs konfigurieren und verwalten.
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/24/2020
-ms.author: mjbrown
-ms.openlocfilehash: 28266471fb1e440a45e412ee889e0706cfc2ce49
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.topic: how-to
+ms.date: 06/10/2020
+ms.author: anfeldma
+ms.openlocfilehash: e6f63807eeea32a7cce7e028dab5e16114bf9643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261561"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Die [Standardkonsistenzebene](consistency-levels.md) ist die Konsistenzebene, di
 
 Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure-Portal an. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie den Bereich **Standardkonsistenz**. Wählen Sie die Konsistenzebene aus, die Sie als neue Standardeinstellung verwenden möchten, und wählen Sie anschließend **Speichern**. Das Azure-Portal bietet auch eine Visualisierung verschiedener Konsistenzebenen mit Musiknoten. 
 
-![Konsistenzmenü im Azure-Portal](./media/how-to-manage-consistency/consistency-settings.png)
+:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Konsistenzmenü im Azure-Portal":::
 
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli)
 
@@ -92,9 +92,27 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-sdk"></a><a id="override-default-consistency-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-# <a name="java-async-sdk"></a>[Asynchrones Java SDK](#tab/javaasync)
+# <a name="async"></a>[Async](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) Sync-API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Java V2 SDKs
+
+# <a name="async"></a>[Async](#tab/api-async)
+
+Async Java V2 SDK (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Override consistency at the client level
@@ -108,7 +126,9 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-# <a name="java-sync-sdk"></a>[Synchrones Java SDK](#tab/javasync)
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+Sync Java V2 SDK (Maven com.microsoft.azure::azure-documentdb)
 
 ```java
 // Override consistency at the client level
@@ -173,9 +193,27 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-sdk"></a><a id="utilize-session-tokens-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-# <a name="java-async-sdk"></a>[Asynchrones Java SDK](#tab/javaasync)
+# <a name="async"></a>[Async](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) Sync-API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySessionSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java V2 SDKs
+
+# <a name="async"></a>[Async](#tab/api-async)
+
+Async Java V2 SDK (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Get session token from response
@@ -197,7 +235,9 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-# <a name="java-sync-sdk"></a>[Synchrones Java SDK](#tab/javasync)
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+Sync Java V2 SDK (Maven com.microsoft.azure::azure-documentdb)
 
 ```java
 // Get session token from response
@@ -240,7 +280,7 @@ item = client.ReadItem(doc_link, options)
 
 Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Veraltung im Hinblick auf Versionsverlauf und Zeit anbieten. Die [**PBS-Metrik (Probabilistically Bounded Staleness)** ](https://pbs.cs.berkeley.edu/) versucht, die Wahrscheinlichkeit der Veraltung zu bestimmen und zeigt sie als Metrik an. Navigieren Sie zum Anzeigen der PBS-Metrik im Azure-Portal zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Metriken**, und wählen Sie die Registerkarte **Konsistenz**. Sehen Sie sich den Graphen mit dem Namen **Wahrscheinlichkeit stark konsistenter Lesevorgänge basierend auf Ihrer Workload (siehe PBS)** an.
 
-![PBS-Graph im Azure-Portal](./media/how-to-manage-consistency/pbs-metric.png)
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="PBS-Graph im Azure-Portal":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

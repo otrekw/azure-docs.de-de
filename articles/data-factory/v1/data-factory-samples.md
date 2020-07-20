@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019910"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318908"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory Editor – Beispiele
 > [!NOTE]
@@ -48,7 +48,7 @@ Auf GitHub finden Sie die folgenden Azure Resource Manager-Vorlagen für Data Fa
 
 | Vorlage | BESCHREIBUNG |
 | --- | --- |
-| [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus der angegebenen Azure Blob Storage-Instanz in die Azure SQL-Datenbank kopiert. |
+| [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus der angegebenen Azure Blob Storage-Instanz in Azure SQL-Datenbank kopiert. |
 | [Kopieren von Daten aus Salesforce in Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus dem angegebenen Salesforce-Konto in die Azure Blob Storage-Instanz kopiert. |
 | [Transformieren von Daten durch Ausführen eines Hive-Skripts in einem Azure HDInsight-Cluster](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten durch Ausführen des Hive-Beispielskripts in einem Azure HDInsight Hadoop-Cluster transformiert. |
 
@@ -104,7 +104,7 @@ Folgendes muss auf Ihrem Computer installiert sein:
    4. Wählen Sie die **Ressourcengruppe** für die Data Factory aus.
    5. Wählen Sie **USA, Westen**, **USA, Osten** oder **Europa, Norden** als **Region** aus.
    6. Klicken Sie auf **Weiter**.
-6. Geben Sie auf der Seite **Datenspeicher konfigurieren** eine vorhandene **Azure SQL-Datenbank** und ein **Azure Storage-Konto** an, oder erstellen Sie eine Datenbank und einen Speicher, und klicken Sie dann auf „Weiter“.
+6. Geben Sie auf der Seite **Datenspeicher konfigurieren** eine vorhandene **Datenbank in Azure SQL-Datenbank** und ein **Azure Storage-Konto** an, oder erstellen Sie eine Datenbank/einen Speicher, und klicken Sie dann auf „Weiter“.
 7. Übernehmen Sie auf der Seite **Compute konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**.
 8. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen, und klicken Sie auf **Weiter**.
 9. Warten Sie auf der Seite **Bereitstellungsstatus**, bis die Bereitstellung abgeschlossen ist, und klicken Sie auf **Fertig stellen**.

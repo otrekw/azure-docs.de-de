@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735335"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244921"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -117,7 +117,7 @@ Der Service Fabric-Reverseproxy versucht erneut, eine Dienstadresse aufzulösen 
 
 Allerdings können Replikate oder Dienstinstanzen einen Hostprozess und auch einen Port freigeben, wenn ein http.sys-basierter Webserver als Host fungiert, wie z.B.:
 
-* [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System.Net.HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
 * [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
@@ -155,7 +155,7 @@ Service Fabric-Dienste, die innerhalb von Docker Compose-Containern ausgeführt 
 * [Diagnostizieren von Reverseproxyereignissen](service-fabric-reverse-proxy-diagnostics.md)
 * Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
-* [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)
+* [Web-API, die OWIN in Reliable Services verwendet](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png

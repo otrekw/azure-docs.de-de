@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/23/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: d594d5a9dd263817023d2b5987c03aa50828191c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191857"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261187"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 
@@ -30,23 +30,25 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |**USA**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
 |**Asien-Pazifik**||
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
+|ChinaEast2<sup>2</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**Europa**||
 |UKSouth|UKSouth|
 |Europa, Westen|Europa, Westen|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
+|USGovArizona<sup>2</sup>|USGovArizona|
 
 <sup>1</sup> Die EastUS-Zuordnung für die Zuordnung von Log Analytics-Arbeitsbereichen zu Automation-Konten ist zwar keine exakte Zuordnung zwischen Regionen, sie ist aber korrekt.
 
-<sup>2</sup> Aufgrund von Kapazitätseinschränkungen ist die Region nicht verfügbar, wenn neue Ressourcen erstellt werden. Dies umfasst auch Automation-Konten und Log Analytics-Arbeitsbereiche. Allerdings sollten bereits in der Region vorhandene verknüpfte Ressourcen weiterhin funktionieren.
+<sup>2</sup> In dieser Region wird nur die Updateverwaltung unterstützt. Andere Features wie Änderungsnachverfolgung und Bestand sind derzeit nicht verfügbar.
 
 ## <a name="unlink-a-workspace"></a>Aufheben der Verknüpfung eines Arbeitsbereichs
 

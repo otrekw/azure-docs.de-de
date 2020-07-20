@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60456122"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356150"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -51,6 +51,33 @@ Wenn der Benutzer sich nicht mit der Passthrough-Authentifizierung anmelden kann
 |AADSTS80004|The username passed to the agent was not valid (Der an den Agent übergebene Benutzername war ungültig.)|Stellen Sie sicher, dass der Benutzer den richtigen Benutzernamen für die Anmeldung verwendet.
 |AADSTS80005|Bei der Überprüfung ist eine unvorhersehbare WebException aufgetreten.|A transient error. (Vorübergehender Fehler.) Wiederholen Sie die Anforderung. Sollte der Fehler weiterhin auftreten, wenden Sie sich an den Microsoft-Support.
 |AADSTS80007|Bei der Kommunikation mit Active Directory ist ein Fehler aufgetreten.|Suchen Sie in den Agent-Protokollen nach weiteren Informationen, und überprüfen Sie, ob Active Directory erwartungsgemäß funktioniert.
+
+### <a name="users-get-invalid-usernamepassword-error"></a>Benutzer erhalten Fehler aufgrund eines ungültigen Benutzernamens/Kennworts. 
+
+Dieser Fall kann eintreten, wenn sich der lokale Benutzerprinzipalname (User Principal Name, UPN) des Benutzers vom Cloud-UPN des Benutzers unterscheidet.
+
+Überprüfen Sie zunächst, ob der Agent für die Passthrough-Authentifizierung ordnungsgemäß funktioniert:
+
+
+1. Erstellen Sie ein Testkonto.  
+2. Importieren Sie das PowerShell-Modul auf dem Agent-Computer:
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. Führen Sie den PowerShell-Befehl „Invoke“ aus: 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie den für die Anmeldung verwendeten Benutzernamen und das entsprechende Kennwort ein (https://login.microsoftonline.com).
+
+Sollte der gleiche Benutzernamen-/Kennwortfehler auftreten, funktioniert der Agent für die Passthrough-Authentifizierung ordnungsgemäß, und das Problem ist möglicherweise auf einen nicht routingfähigen lokalen UPN zurückzuführen. Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+
+
+
+
+
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory-Admin Center (Premium-Lizenz erforderlich)
 

@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie mithilfe der Gremlin-API von Azure Cosmo
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261816"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
 
@@ -73,11 +73,11 @@ Ein häufig begangener Fehler besteht darin, Eigenschaften einer einzelnen Entit
 
 * **Scheitelpunktbasierte Eigenschaften:** Bei diesem Ansatz werden die Eigenschaften der Entität mithilfe von drei separaten Scheitelpunkten und zwei Kanten beschrieben. Dadurch verringert sich zwar möglicherweise die Redundanz, dafür erhöht sich die Komplexität. Eine höhere Modellkomplexität kann längere Wartezeiten, eine höhere Abfragekomplexität sowie höhere Computekosten zur Folge haben. Darüber hinaus erschwert dieses Modell unter Umständen auch die Partitionierung.
 
-![Entitätsmodell mit Scheitelpunkten für Eigenschaften](./media/graph-modeling/graph-modeling-1.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Entitätsmodell mit Scheitelpunkten für Eigenschaften" border="false":::
 
 * **In Scheitelpunkte eingebettete Eigenschaften:** Bei diesem Ansatz wird die Liste mit Schlüssel-Wert-Paaren verwendet, um alle Eigenschaften der Entität innerhalb eines Scheitelpunkts darzustellen. Dadurch verringert sich die Modellkomplexität, was wiederum zu einfacheren Abfragen und kosteneffizienteren Traversierungen führt.
 
-![Entitätsmodell mit Scheitelpunkten für Eigenschaften](./media/graph-modeling/graph-modeling-2.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Entitätsmodell mit Scheitelpunkten für Eigenschaften" border="false":::
 
 > [!NOTE]
 > In den obigen Beispielen werden anhand eines vereinfachten Graphmodells lediglich die beiden Aufteilungsarten für Entitätseigenschaften miteinander verglichen.
@@ -105,7 +105,7 @@ Die Verwendung aussagekräftiger Beziehungsbezeichnungen kann zur Verbesserung d
 * Verwenden Sie spezifische Begriffe für Beziehungsbezeichnungen.
 * Ordnen Sie die Bezeichnung des Quellscheitelpunkts der Bezeichnung des Zielscheitelpunkts mit dem Beziehungsnamen zu.
 
-![Beispiele für Beziehungsbezeichnungen](./media/graph-modeling/graph-modeling-3.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Beispiele für Beziehungsbezeichnungen" border="false":::
 
 Je spezifischer die Bezeichnung, die bei der Traversierung zum Filtern der Kanten verwendet wird, desto besser. Diese Entscheidung kann sich auch erheblich auf die Abfragekosten auswirken. Die Abfragekosten können jederzeit [mithilfe des Schritts „Ausführungsprofil“](graph-execution-profile.md) ausgewertet werden.
 

@@ -4,15 +4,15 @@ description: Dieser Artikel beschreibt, wie der Änderungsfeed von einem Einzelh
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513491"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263006"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
@@ -28,7 +28,7 @@ Schauen Sie sich zu Beginn das folgende Video über die Lösung an:
 ## <a name="solution-components"></a>Lösungskomponenten
 Im folgenden Diagramm finden Sie eine Darstellung des Datenflusses und der in die Lösung integrierten Komponenten:
 
-![Projektdarstellung](./media/changefeed-ecommerce-solution/project-visual.png)
+:::image type="content" source="./media/changefeed-ecommerce-solution/project-visual.png" alt-text="Projektdarstellung" border="false":::
  
 1. **Datengenerierung:** Der Datensimulator wird verwendet, um Einzelhandelsdaten zu generieren, die Ereignisse wie das Betrachten eines Artikels, das Hinzufügen eines Artikels zum Warenkorb und den Kauf eines Artikels darstellen. Mit dem Datensimulator können Sie große Beispieldatensätze erstellen. Die generierten Beispieldaten enthalten Dokumente im folgenden Format:
    
@@ -169,7 +169,7 @@ Um zu sehen, wie der Änderungsfeed neue Aktionen auf einer E-Commerce-Website v
 
 3. Fügen Sie die Namen für **Sammlung** und **Datenbank** ein. (Diese sollten **changefeedlabcollection** und **changefeedlabdatabase** lauten, sofern Sie sie nicht anders benennen möchten.)
 
-   ![Aktualisieren von Verbindungszeichenfolgen](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Aktualisieren von Verbindungszeichenfolgen":::
  
 4. Speichern Sie die Änderungen auf alle bearbeiteten Dateien.  
 
@@ -179,7 +179,7 @@ Um zu sehen, wie der Änderungsfeed neue Aktionen auf einer E-Commerce-Website v
 
 7. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), dann zum Cosmos DB-Konto innerhalb Ihrer Ressourcengruppe und anschließend zum **Daten-Explorer**. Dort werden die randomisierten Daten angezeigt, die in Ihre **changefeedlabcollection** importiert wurden.
  
-   ![Im Portal generierte Daten](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Im Portal generierte Daten":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Einrichten eines Stream Analytics-Auftrags
 
@@ -189,7 +189,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
 
 2. Wählen Sie **Eingaben**, wie unten dargestellt.  
 
-   ![Erstellen einer Eingabe](./media/changefeed-ecommerce-solution/create-input.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Erstellen einer Eingabe":::
 
 3. Wählen Sie **+ Datenstromeingabe hinzufügen**. Wählen Sie dann im Dropdownmenü die Option **Event Hub** aus.  
 
@@ -221,7 +221,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
 
 8. Rufen Sie anschließend wieder **streamjob1** auf, und wählen Sie **Abfrage bearbeiten** aus.
 
-   ![Abfrage bearbeiten](./media/changefeed-ecommerce-solution/edit-query.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Abfrage bearbeiten":::
  
 9. Fügen Sie die folgende Abfrage im Abfragefenster ein. Die Abfrage **AVERAGE PRICE** berechnet den Durchschnittspreis aller Artikel, die von Benutzern angesehen, zu den Einkaufswagen der Benutzer hinzugefügt und von Benutzern gekauft werden. Anhand dieser Metriken können E-Commerce-Unternehmen entscheiden, zu welchen Preisen sie Artikel verkaufen und in welchen Bestand sie investieren wollen. Wenn beispielsweise der Durchschnittspreis der angesehenen Artikel viel höher ist als der Durchschnittspreis der gekauften Artikel, kann ein Unternehmen beschließen, weniger teure Artikel zu seinem Bestand hinzuzufügen.
 
@@ -314,7 +314,7 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
 
    So sieht ein Beispieldashboard mit diesen Diagrammen aus:
 
-   ![Visualisierungen](./media/changefeed-ecommerce-solution/visualizations.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Visualisierungen":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Optional: Visualisieren mit einer E-Commerce-Website
 
@@ -328,13 +328,13 @@ Sie werden nun sehen, wie Sie Ihr neues Datenanalyse-Tool nutzen können, um sic
 
 2. Wählen Sie die Sammlung **topItems** aus, und legen Sie unter **Skalierung und Einstellungen** die **Gültigkeitsdauer** auf **30 Sekunden** fest, sodass „topItems“ alle 30 Sekunden aktualisiert wird.
 
-   ![Gültigkeitsdauer](./media/changefeed-ecommerce-solution/time-to-live.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Gültigkeitsdauer":::
 
 3. Um in die Sammlung **topItems** die am häufigsten gekauften Artikel einzutragen, navigieren Sie zurück zu **streamjob1** und fügen Sie eine neue **Ausgabe** hinzu. Wählen Sie **Cosmos DB**.
 
 4. Füllen Sie die erforderlichen Felder aus, wie unten dargestellt.
 
-   ![Cosmos-Ausgabe](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos-Ausgabe":::
  
 5. Wenn Sie die optionale TOP 5-Abfrage im vorherigen Teil der Übungseinheit hinzugefügt haben, fahren Sie mit Teil 5a fort. Wenn nicht, fahren Sie mit Teil 5b fort.
 

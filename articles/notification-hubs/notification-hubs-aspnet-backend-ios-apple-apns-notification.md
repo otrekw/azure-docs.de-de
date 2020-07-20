@@ -4,9 +4,7 @@ description: Erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbena
 documentationcenter: ios
 author: sethm
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 48135ea614bbab4ca6649a83895ae5f632918c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71d55471de6fc8681f19a56cd67bb9ba7390e026
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72387471"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248801"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
@@ -42,14 +40,14 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)beschrieben erstellt und konfiguriert haben. Dieses Lernprogramm ist außerdem die Voraussetzung für das Lernprogramm [Sichere Pushbenachrichtigungen (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
+In diesem Tutorial wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) beschrieben erstellt und konfiguriert haben. Dieses Lernprogramm ist außerdem die Voraussetzung für das Lernprogramm [Sichere Pushbenachrichtigungen (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
 Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile Apps: Erste Schritte mit Push](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>Ändern der iOS-App
 
-1. Öffnen Sie die Einzelseitenansicht-App, die Sie im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) erstellt haben.
+1. Öffnen Sie die Einzelseitenansicht-App, die Sie in [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) erstellt haben.
 
    > [!NOTE]
    > In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, müssen Sie allen Klassennamen Ihren Organisationsnamen voranstellen.
@@ -66,7 +64,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
    * **APNS:** Bezeichnung und Switch, um das Senden der Benachrichtigung an den Apple Platform Notification Service zu aktivieren.
    * **Recipient Username:** ein UITextField mit dem Platzhaltertext *Recipient username tag*, direkt unter der GCM-Bezeichnung und durch den linken und rechten Rand und die Anordnung unter der GCM-Bezeichnung beschränkt.
 
-     Im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) wurden einige Komponenten hinzugefügt.
+     In [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) wurden einige Komponenten hinzugefügt.
 
 3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu `ViewController.h`, und fügen Sie diese neuen Outlets hinzu.
 
@@ -343,9 +341,9 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     }
     ```
 
-    Beachten Sie, dass die Festlegung des Gerätetokens die Schaltfläche „Log in“ (Anmelden) aktiviert. Dies liegt daran, dass sich der Ansichtscontroller bei der Anmeldeaktion für Pushbenachrichtigungen beim App-Back-End registriert. Daher soll erst auf die Anmeldeaktion zugegriffen werden können, wenn das Gerätetoken ordnungsgemäß eingerichtet wurde. Sie können die Anmeldung von der Pushregistrierung entkoppeln, solange die Anmeldung vor der Registrierung erfolgt.
+    Beachten Sie, dass durch Festlegen des Gerätetokens die Schaltfläche **Log in** (Anmelden) aktiviert wird. Dies liegt daran, dass sich der Ansichtscontroller bei der Anmeldeaktion für Pushbenachrichtigungen beim App-Back-End registriert. Daher soll erst auf die Anmeldeaktion (**Log in**) zugegriffen werden können, wenn das Gerätetoken ordnungsgemäß eingerichtet wurde. Sie können die Anmeldung von der Pushregistrierung entkoppeln, solange die Anmeldung vor der Registrierung erfolgt.
 
-11. Verwenden Sie in "ViewController.m" die folgenden Codeausschnitte zum Implementieren der Aktionsmethode für die Schaltfläche **Log In** und einer Methode zum Senden der Benachrichtigungsmeldung mithilfe des ASP.NET-Back-Ends.
+11. Verwenden Sie in „ViewController.m“ die folgenden Codeausschnitte, um die Aktionsmethode für die Schaltfläche **Log in** (Anmelden) und eine Methode zum Senden der Benachrichtigungsmeldung mithilfe des ASP.NET-Back-Ends zu implementieren.
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -481,7 +479,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 ## <a name="test-the-application"></a>Testen der Anwendung
 
 1. Unter XCode führen Sie die App auf einem physischen iOS-Gerät aus (im Simulator funktionieren Pushbenachrichtigungen nicht).
-2. Geben Sie in der Benutzeroberfläche der iOS-App denselben Wert für den Benutzernamen und das Kennwort ein. Tippen Sie dann auf **Log In**.
+2. Geben Sie in der Benutzeroberfläche der iOS-App denselben Wert für den Benutzernamen und das Kennwort ein. Klicken Sie dann auf **Log in** (Anmelden).
 
     ![iOS-Testanwendung][2]
 

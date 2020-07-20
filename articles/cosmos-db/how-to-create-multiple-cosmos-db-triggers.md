@@ -3,21 +3,21 @@ title: Erstellen mehrerer unabhängiger Azure Functions-Trigger für Cosmos DB
 description: Hier erfahren Sie, wie Sie mehrere unabhängige Azure Functions-Trigger für Cosmos DB zum Erstellen ereignisgesteuerter Architekturen konfigurieren.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261595"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Erstellen mehrerer Azure Functions-Trigger für Cosmos DB
 
 Dieser Artikel beschreibt, wie Sie mehrere Azure Functions-Trigger für Cosmos DB konfigurieren können, die parallel verwendet werden können und unabhängig voneinander auf Änderungen reagieren.
 
-![Serverlose ereignisbasierte Funktionen, die mit dem Azure Functions-Trigger für Cosmos DB arbeiten und gemeinsam einen Leasecontainer nutzen](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="Serverlose ereignisbasierte Funktionen, die mit dem Azure Functions-Trigger für Cosmos DB arbeiten und gemeinsam einen Leasecontainer nutzen" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>Anforderungen an die ereignisbasierte Architektur
 

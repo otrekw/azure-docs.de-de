@@ -5,13 +5,13 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/04/2020
+ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791145"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit automatisch skaliertem Durchsatz
 
@@ -29,7 +29,7 @@ Azure Cosmos-Datenbanken und -Container, die mit per Autoskalierung bereitgestel
 
 * **Skalierbar:** Mit Datenbanken und Containern wird der bereitgestellte Durchsatz nach Bedarf automatisch skaliert. Dabei werden weder Clientverbindungen oder Anwendungen unterbrochen noch SLAs für Azure Cosmos DB beeinträchtigt.
 
-* **Kosteneffizient:** Mit Autoskalierung können Sie den Durchsatz und die Kosten optimieren, indem Sie den Durchsatz situationsabhängig herunterskalieren. Sie zahlen nur für die Ressourcen, die von Ihren Workloads pro Stunde benötigt werden.
+* **Kosteneffizient:** Mit Autoskalierung können Sie den Durchsatz und die Kosten optimieren, indem Sie den Durchsatz situationsabhängig herunterskalieren. Sie zahlen nur für die Ressourcen, die von Ihren Workloads pro Stunde benötigt werden. Wenn Sie für alle Stunden in einem Monat eine maximale Anzahl von RUs/Sek. (Tmax) für die Autoskalierung festlegen und die gesamte Menge von Tmax für maximal 66 % (oder weniger) der Stunden nutzen, können Sie mit der Autoskalierung sparen. Weitere Informationen finden Sie im Artikel [Auswählen zwischen standardmäßig (manuell) bereitgestelltem und automatisch skaliertem Durchsatz](how-to-choose-offer.md).
 
 * **Hochverfügbarkeit:** Datenbanken und Container mit Autoskalierung verwenden dasselbe global verteilte, fehlertolerante, hochverfügbare Azure Cosmos DB-Back-End, um die Dauerhaftigkeit und ständige Hochverfügbarkeit von Daten sicherzustellen.
 
@@ -57,8 +57,9 @@ Jede Stunde wird Ihnen der höchste Durchsatz `T` in Rechnung gestellt, auf den 
 
 Der Einstiegspunkt für den maximalen Durchsatz `Tmax` bei Autoskalierung beträgt 4.000 RU/s, sodass eine Skalierung zwischen 400 und 4.000 RU/s erfolgt. Sie können `Tmax` in Schritten von 1.000 RU/s festlegen und den Wert jederzeit ändern.  
 
-## <a name="enable-autoscale-on-existing-resources"></a>Aktivieren der Autoskalierung für vorhandene Ressourcen ##
-Verwenden Sie das [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), um Autoskalierung für vorhandene Datenbanken oder Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work).
+## <a name="enable-autoscale-on-existing-resources"></a>Aktivieren der Autoskalierung für vorhandene Ressourcen
+
+Verwenden Sie das [Azure-Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), um Autoskalierung für vorhandene Datenbanken oder Container zu aktivieren. Sie können jederzeit zwischen per Autoskalierung bereitgestelltem Durchsatz und Standarddurchsatz (manuell) wechseln. Weitere Informationen finden Sie in dieser [Dokumentation](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work). Derzeit kann für alle APIs nur das Azure-Portal verwendet werden, um die Autoskalierung für bereits vorhandene Ressourcen zu aktivieren.
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Durchsatz- und Speicherlimits für die Autoskalierung
 

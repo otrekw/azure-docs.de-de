@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945408"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Informationen zu Azure Monitor für Azure Cache for Redis (Vorschau)
 
@@ -18,7 +18,7 @@ Azure Monitor für Azure Cache for Redis (Vorschau) bietet für alle Ihre Azure 
 
 - Gesamtleistung
 - Fehler
-- Kapazität
+- Capacity
 - Betriebsintegrität
 
 Dieser Artikel verdeutlicht die Vorteile dieser neuen Überwachungsoberfläche. Außerdem wird gezeigt, wie Sie die Oberfläche entsprechend den besonderen Anforderungen Ihrer Organisation ändern und anpassen können.
@@ -58,7 +58,7 @@ In der **Übersicht** werden in der Tabelle interaktive Azure Cache for Redis-Me
 
 - **Abonnements**: Es werden nur Abonnements aufgelistet, die über eine Azure Cache for Redis-Ressource verfügen.  
 
-- **Azure Cache for Redis**: Sie können alle oder eine Teilmenge von Azure Cache for Redis-Ressourcen oder eine einzelne solche Ressource auswählen.
+- **Azure Cache for Redis:** Sie können alle oder eine Teilmenge von Azure Cache for Redis-Ressourcen oder eine einzelne solche Ressource auswählen.
 
 - **Zeitbereich**: Standardmäßig werden in der Tabelle die Informationen der letzten vier Stunden basierend auf der entsprechenden Auswahl angezeigt.
 
@@ -79,7 +79,7 @@ Wenn Sie den blau hervorgehobenen Azure Cache for Redis-Ressourcennamen auswähl
 - **Cachefehler**
 - **Fehler (max.)**
 
-### <a name="operations"></a>Vorgänge
+### <a name="operations"></a>Operationen (Operations)
 
 Wenn Sie oben auf der Seite **Vorgänge** auswählen, wird die Tabelle **Vorgänge** der Arbeitsmappenvorlage geöffnet. Darin sind folgende Spalten enthalten:
 
@@ -91,7 +91,7 @@ Wenn Sie oben auf der Seite **Vorgänge** auswählen, wird die Tabelle **Vorgän
 
 ![Screenshot der Vorgangsanzeige](./media/redis-cache-insights-overview/operations.png)
 
-### <a name="usage"></a>Nutzung
+### <a name="usage"></a>Verwendung
 
 Wenn Sie oben auf der Seite **Nutzung** auswählen, wird die Tabelle **Nutzung** der Arbeitsmappenvorlage geöffnet. Darin sind folgende Spalten enthalten:
 
@@ -179,6 +179,10 @@ Arbeitsmappen werden innerhalb einer Ressourcengruppe entweder im Abschnitt **Me
 Nachdem Sie eine benutzerdefinierte Arbeitsmappe gespeichert haben, wechseln Sie zum Arbeitsmappenkatalog, um sie zu öffnen.
 
 ![Befehlsleiste mit hervorgehobener Option „Katalog“](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

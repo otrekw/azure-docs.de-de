@@ -4,16 +4,16 @@ description: Dieser Artikel enthält eine Übersicht über die Indizierungsfunkt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 04/03/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: fd602f88acf26e821e57e0a844f543aac08dad0d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260694"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 
@@ -21,7 +21,7 @@ Die Azure Cosmos DB-API für MongoDB nutzt die Kernfunktionen für automatische
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>Indizierung für MongoDB-Serverversion 3.6
 
-Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 indiziert automatisch das Feld `_id`, das nicht gelöscht werden kann. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel.
+Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 indiziert automatisch das Feld `_id`, das nicht gelöscht werden kann. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. In der Azure Cosmos DB-API für MongoDB sind horizontale Partitionierung und Indizierung separate Konzepte. Sie müssen Ihren Shardschlüssel nicht indizieren. Wie bei jeder anderen Eigenschaft in Ihrem Dokument gilt jedoch: Wenn diese Eigenschaft ein allgemeiner Filter in Ihren Abfragen ist, empfiehlt es sich, den Shardschlüssel zu indizieren.
 
 Um zusätzliche Felder zu indizieren, verwenden Sie die MongoDB-Indexverwaltungsbefehle. Wie bei MongoDB indiziert die Azure Cosmos DB-API für MongoDB automatisch auch nur das Feld `_id`. Diese Standardindizierungsrichtlinie unterscheidet sich von der Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
 
@@ -72,6 +72,98 @@ Hier sehen Sie ein Beispiel für das Erstellen eines räumlichen Indexes für da
 ### <a name="text-indexes"></a>Textindizes
 
 Derzeit unterstützt die Azure Cosmos DB-API für MongoDB Textindizes noch nicht. Bei Textsuchabfragen für Zeichenfolgen sollten Sie die [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb)-Integration mit Azure Cosmos DB verwenden.
+
+## <a name="wildcard-indexes"></a>Platzhalterindizes
+
+Sie können Platzhalterindizes verwenden, um Abfragen für unbekannte Felder zu unterstützen. Angenommen, Sie verfügen über eine Sammlung mit Daten über Familien.
+
+Hier sehen Sie einen Auszug eines Beispieldokuments in dieser Sammlung:
+
+```json
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "grade": "5"
+     }
+  ]
+```
+
+Hier sehen Sie ein weiteres Beispiel, diesmal mit etwas anderen Eigenschaften in `children`:
+
+```json
+  "children": [
+      {
+        "familyName": "Merriam",
+        "givenName": "Jesse",
+        "pets": [
+            { "givenName": "Goofy" },
+            { "givenName": "Shadow" }
+      },
+      {
+        "familyName": "Merriam",
+        "givenName": "John",
+      }
+  ]
+```
+
+In dieser Sammlung können Dokumente viele verschiedene Eigenschaften haben. Wenn Sie alle Daten im Array `children` indizieren möchten, haben Sie zwei Möglichkeiten: Sie können separate Indizes für jede einzelne Eigenschaft erstellen oder einen einzelnen Platzhalterindex für das gesamte Array `children`.
+
+### <a name="create-a-wildcard-index"></a>Erstellen eines Platzhalterindex
+
+Mit dem folgenden Befehl wird ein Platzhalterindex für alle Eigenschaften in `children`erstellt:
+
+`db.coll.createIndex({"children.$**" : 1})`
+
+**Anders als in MongoDB können von Platzhalterindizes mehrere Felder in Abfrageprädikaten unterstützt werden.** Für die Abfrageleistung ist es unerheblich, ob Sie einen einzelnen Platzhalterindex verwenden oder einen separaten Index für jede Eigenschaft erstellen.
+
+Folgende Indextypen lassen sich mit Platzhaltersyntax erstellen:
+
+- Einzelfeld
+- Geodaten
+
+### <a name="indexing-all-properties"></a>Indizieren aller Eigenschaften
+
+So erstellen Sie einen Platzhalterindex für alle Felder:
+
+`db.coll.createIndex( { "$**" : 1 } )`
+
+Zu Beginn der Entwicklung kann es hilfreich sein, einen Platzhalterindex für alle Felder zu erstellen. Wenn nach und nach mehr Eigenschaften in einem Dokument indiziert werden, erhöht sich die RU-Gebühr (Request Unit, Anforderungseinheit) für das Schreiben und Aktualisieren des Dokuments. Bei schreibintensiven Workloads empfiehlt es sich daher, Pfade einzeln zu indizieren, anstatt Platzhalterindizes zu verwenden.
+
+### <a name="limitations"></a>Einschränkungen
+
+Folgende Indextypen oder Eigenschaften werden von Platzhalterindizes nicht unterstützt:
+
+- Verbund
+- TTL
+- Eindeutig
+
+**Anders als in MongoDB** können Platzhalterindizes in der Azure Cosmos DB-API für MongoDB **nicht** für Folgendes verwendet werden:
+
+- Erstellen eines Platzhalterindex, der mehrere spezifische Felder einschließt
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection " :
+        {
+           "children.givenName" : 1,
+           "children.grade" : 1
+        }
+    }
+)`
+
+- Erstellen eines Platzhalterindex, der mehrere spezifische Felder ausschließt
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection" :
+        {
+           "children.givenName" : 0,
+           "children.grade" : 0
+        }
+    }
+)`
+
+Alternativ können Sie mehrere Platzhalterindizes erstellen.
 
 ## <a name="index-properties"></a>Indexeigenschaften
 
@@ -253,7 +345,12 @@ Nachdem Sie die Standardindizes gelöscht haben, können Sie zusätzliche Indize
 
 Zusammengesetzte Indizes enthalten Verweise auf mehrere Felder eines Dokuments. Wenn Sie einen zusammengesetzten Index erstellen möchten, führen Sie ein Upgrade auf Version 3.6 durch, indem Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) erstellen.
 
+### <a name="wildcard-indexes-version-32"></a>Platzhalterindizes (Version 3.2)
+
+Wenn Sie einen Platzhalterindex erstellen möchten, erstellen Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um ein Upgrade auf die Version 3.6 durchzuführen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Indizierung in Azure Cosmos DB](../cosmos-db/index-policy.md)
 * [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB](../cosmos-db/time-to-live.md)
+* Informationen zur Beziehung zwischen Partitionierung und Indizierung finden Sie im Artikel [Abfragen eines Azure Cosmos-Containers](how-to-query-container.md).

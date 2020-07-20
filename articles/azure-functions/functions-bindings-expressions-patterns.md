@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3e342d42e6baf2bc4caaed07dc196203d8a032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261068"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions-Muster für Bindungsausdrücke
 
@@ -37,7 +37,8 @@ Bindungsausdrücke für App-Einstellungen werden anders dargestellt als andere B
 
 Beim lokalen Ausführen einer Funktion werden die App-Einstellungen aus der Datei *local.settings.json* verwendet.
 
-Die Eigenschaft `connection` von Triggern und Bindungen ist ein Sonderfall, denn für sie werden Werte automatisch als App-Einstellungen ohne Prozentzeichen aufgelöst. 
+> [!NOTE]
+> Die Eigenschaft `connection` von Triggern und Bindungen ist ein Sonderfall, denn für sie werden Werte automatisch als App-Einstellungen ohne Prozentzeichen aufgelöst. 
 
 Im folgenden Beispiel ist ein Azure Queue Storage-Trigger gezeigt, in dem die App-Einstellung `%input-queue-name%` verwendet wird, um die Warteschlange anzugeben, für die die Auslösung erfolgen werden soll.
 

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/17/2020
-ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/15/2020
+ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873838"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085496"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -31,8 +31,8 @@ Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte A
 | [Azure Monitor für Netzwerke (Vorschauversion)](insights/network-insights-overview.md) | Bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird. |
 [Azure Monitor für Ressourcengruppen (Vorschauversion)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
 | [Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
-| [Azure Monitor für VMs](insights/container-insights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
-| [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](insights/key-vaults-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt. |
+| [Azure Monitor für VMs](insights/vminsights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
+| [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](insights/key-vaults-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. |
 | [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](insights/redis-cache-insights-overview.md) |  Bietet eine einheitliche, interaktive Ansicht der Leistung, Fehler, Kapazität und Betriebsintegrität insgesamt. |
 
 
@@ -137,8 +137,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Notification Hubs | Ja | Nein | Nein |  |
 |Open Datasets | Nein | Nein | Nein |  |
 |Richtlinie | Nein | Nein | Nein |  |
-|Power BI | Ja | Ja | Nein |  |
-|Power BI Embedded | Nein | Nein | Nein |  |
+|Power BI Embedded | Ja | Ja | Nein |  |
 |Private Link | Nein | Nein | Nein |  |
 |Project Spool Communication Platform | Nein | Nein | Nein |  |
 |Red Hat OpenShift | Nein | Nein | Nein |  |
@@ -185,7 +184,7 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Erstellen einer Diagnoseeinstellung zum Senden von Protokollen an Azure Monitor. Informationen finden Sie unter [Senden von Daten an den Speicher, an Event Hubs oder Log Analytics in Intune (Vorschauversion)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
 | Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
 | [Office 365](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Azure Sentinel verfügbar. |
-| [Azure SQL-Analyse](insights/azure-sql.md) | Bedarfsorientiertes und abonnementübergreifendes Überwachen der Leistung von Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwalteten Instanzen. |
+| [Azure SQL-Analyse](insights/azure-sql.md) | Bedarfsorientiertes und abonnementübergreifendes Überwachen der Leistung von Azure SQL-Datenbanken und verwalteten SQL-Instanzen. |
 | [Surface Hub](insights/surface-hubs.md) | Nachverfolgen der Integrität und Nutzung von Surface Hub-Geräten. |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | Erfassen der Daten von Operations Manager-Agents durch Herstellen einer Verbindung zwischen der jeweiligen Verwaltungsgruppe und Azure Monitor. Informationen finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](platform/om-agents.md).<br> Bewerten des Risikos und der Integrität Ihrer System Center Operations Manager-Verwaltungsgruppe mithilfe der Lösung zur [Operations Manager-Bewertung](insights/scom-assessment.md). |
 | [Microsoft Teams-Räume](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Integrierte End-to-End-Verwaltung von Geräten für Microsoft Teams-Räume. |
@@ -201,7 +200,7 @@ Für die Überwachung verschiedener Anwendungen und Dienste stehen andere Lösun
 |:---|:---|
 | [Active Directory-Integritätsprüfung](insights/ad-assessment.md) | Bewerten des Risikos und der Integrität Ihrer Active Directory-Umgebungen. |
 | [Active Directory-Replikationsstatusmonitor](insights/ad-replication-status.md) | Regelmäßige Überwachung Ihrer Active Directory-Umgebung auf Replikationsfehler. |
-| [Aktivitätsprotokollanalyse](platform/activity-log-view.md#azure-portal) | Anzeigen von Aktivitätsprotokolleinträgen |
+| [Aktivitätsprotokollanalyse](platform/activity-log.md#activity-log-analytics-monitoring-solution) | Anzeigen von Aktivitätsprotokolleinträgen |
 | [DNS-Analyse (Vorschauversion)](insights/dns-analytics.md) | Erfasst, analysiert und korreliert Windows-DNS-Analyseprotokolle und -Überwachungsprotokolle sowie andere zugehörige Daten von Ihren DNS-Servern. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Sammeln, Anzeigen und Analysieren von Integritäts- und Leistungsmetriken des Cloud Foundry-Systems über mehrere Bereitstellungen hinweg. |
 | [Container](insights/containers.md) | Anzeigen und Verwalten von Docker- und Windows-Containerhosts. |

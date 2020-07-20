@@ -1,35 +1,35 @@
 ---
 title: Benutzermigrationsansätze
 titleSuffix: Azure AD B2C
-description: Hier erfahren Sie, wie Sie Benutzerkonten mittels Massenimport oder nahtloser Migration von einem anderen Identitätsanbieter zu Azure AD B2C migrieren.
+description: Hier erfahren Sie, wie Sie Benutzerkonten mittels Prämigration oder nahtloser Migration von einem anderen Identitätsanbieter zu Azure AD B2C migrieren.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383970"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
-Bei der Migration von einem anderen Identitätsanbieter zu Azure Active Directory B2C (Azure AD B2C) müssen unter Umständen auch bereits vorhandene Benutzerkonten migriert werden. Hier werden zwei Migrationsmethoden behandelt: *Massenimport* und *nahtlose Migration*. Bei beiden Methoden muss eine Anwendung oder ein Skript geschrieben werden, um Benutzerkonten unter Verwendung der [Microsoft Graph-API](manage-user-accounts-graph-api.md) in Azure AD B2C zu erstellen.
+Bei der Migration von einem anderen Identitätsanbieter zu Azure Active Directory B2C (Azure AD B2C) müssen unter Umständen auch bereits vorhandene Benutzerkonten migriert werden. Hier werden zwei Migrationsmethoden behandelt: *Prämigration* und *nahtlose Migration*. Bei beiden Methoden muss eine Anwendung oder ein Skript geschrieben werden, um Benutzerkonten unter Verwendung der [Microsoft Graph-API](manage-user-accounts-graph-api.md) in Azure AD B2C zu erstellen.
 
-## <a name="bulk-import"></a>Massenimport
+## <a name="pre-migration"></a>Prämigration
 
-Beim Massenimport werden von Ihrer Migrationsanwendung für jedes Benutzerkonto die folgenden Schritte ausgeführt:
+Bei der Prämigration werden von Ihrer Migrationsanwendung für jedes Benutzerkonto folgende Schritte ausgeführt:
 
 1. Lesen des Benutzerkontos und der aktuellen Anmeldeinformationen (Benutzername und Kennwort) des alten Identitätsanbieters
 1. Erstellen eines entsprechenden Kontos mit den aktuellen Anmeldeinformationen in Ihrem Azure AD B2C-Verzeichnis
 
-Der Massenimport kann in folgenden Situationen verwendet werden:
+Die Prämigration kann in folgenden Situationen verwendet werden:
 
 - Sie haben Zugriff auf die Klartextanmeldeinformationen (Benutzername und Kennwort) eines Benutzers.
 - Die Anmeldeinformationen sind verschlüsselt, können aber von Ihnen entschlüsselt werden.
@@ -43,18 +43,18 @@ Verwenden Sie die nahtlose Migration, wenn im alten Identitätsanbieter nicht au
 - Das Kennwort ist in einem unidirektionalen verschlüsselten Format gespeichert (etwa mit einer Hashfunktion).
 - Das Kennwort wurde vom alten Identitätsanbieter so gespeichert, dass Sie keinen Zugriff darauf haben. Dies kann beispielsweise der Fall sein, wenn der Identitätsanbieter Anmeldeinformationen per Webdienstaufruf überprüft.
 
-Bei der nahtlose Migration ist zwar ebenfalls eine Massenmigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](custom-policy-get-started.md) verwendet, um eine (von Ihnen erstellte) [REST-API](custom-policy-rest-api-intro.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
+Bei der nahtlose Migration ist zwar ebenfalls eine Prämigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](custom-policy-get-started.md) verwendet, um eine (von Ihnen erstellte) [REST-API](custom-policy-rest-api-intro.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
 
-Die nahtlose Migration umfasst somit zwei Phasen: *Massenimport* und *Festlegen der Anmeldeinformationen*.
+Die nahtlose Migration umfasst somit zwei Phasen: *Prämigration* und *Festlegen der Anmeldeinformationen*.
 
-### <a name="phase-1-bulk-import"></a>Phase 1: Massenimport
+### <a name="phase-1-pre-migration"></a>Phase 1: Prämigration
 
 1. Ihre Migrationsanwendung liest die Benutzerkonten des alten Identitätsanbieters.
 1. Die Migrationsanwendung erstellt entsprechende Benutzerkonten in Ihrem Azure AD B2C-Verzeichnis, *legt aber keine Kennwörter fest*.
 
 ### <a name="phase-2-set-credentials"></a>Phase 2: Festlegen von Anmeldeinformationen
 
-Nach Abschluss der Massenmigration der Konten werden durch Ihre benutzerdefinierte Richtlinie und durch Ihre REST-API die folgenden Schritte ausgeführt, wenn sich ein Benutzer anmeldet:
+Nach Abschluss der Prämigration der Konten werden durch Ihre benutzerdefinierte Richtlinie und durch Ihre REST-API die folgenden Schritte ausgeführt, wenn sich ein Benutzer anmeldet:
 
 1. Lesen des entsprechenden Azure AD B2C-Benutzerkontos für die eingegebene E-Mail-Adresse
 1. Auswerten eines booleschen Erweiterungsattributs, um zu überprüfen, ob das Konto für die Migration gekennzeichnet ist

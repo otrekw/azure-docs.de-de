@@ -3,15 +3,16 @@ title: Definieren von eindeutigen Schlüsseln für einen Azure Cosmos-Container
 description: Hier erfahren Sie, wie Sie eindeutige Schlüssel für einen Azure Cosmos-Container mithilfe des Azure-Portals, mit PowerShell, .NET, Java und verschiedenen anderen SDKs definieren.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261544"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definieren von eindeutigen Schlüsseln für einen Azure Cosmos-Container
 
@@ -33,7 +34,7 @@ In diesem Artikel sind die verschiedenen Methoden zum Definieren von [eindeutige
 
 1. Fügen Sie bei Bedarf weitere eindeutige Einträge hinzu, indem Sie auf **+ Eindeutigen Schlüssel hinzufügen** klicken.
 
-    ![Screenshot von Einschränkungseinträgen für eindeutige Schlüssel im Azure-Portal](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Screenshot von Einschränkungseinträgen für eindeutige Schlüssel im Azure-Portal":::
 
 ## <a name="use-powershell"></a>Verwenden von PowerShell
 

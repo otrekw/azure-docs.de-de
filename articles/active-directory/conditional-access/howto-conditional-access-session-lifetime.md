@@ -1,22 +1,22 @@
 ---
 title: Konfigurieren der Verwaltung von Authentifizierungssitzungen – Azure Active Directory
-description: Anpassen der Konfiguration von Azure AD-Authentifizierungssitzungen einschließlich der Häufigkeit von Benutzeranmeldungen und Persistenz von Browsersitzungen
+description: Anpassen der Konfiguration von Azure AD-Authentifizierungssitzungen einschließlich der Häufigkeit von Benutzeranmeldungen und Persistenz von Browsersitzungen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 05/26/2020
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc75b300704ef7f8218134c9d384b0718fca1e97
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552113"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -35,7 +35,7 @@ Bevor wir auf die Details zur Konfiguration der Richtlinie eingehen, betrachten 
 
 Die Anmeldehäufigkeit bezeichnet den Zeitraum, bevor ein Benutzer beim Zugriff auf eine Ressource aufgefordert wird, sich erneut anzumelden.
 
-Die Standardkonfiguration von Azure Active Directory (Azure AD) sieht für die Anmeldehäufigkeit von Benutzern ein Gleitfenster von 90 Tagen vor. Benutzer häufig zur Eingabe von Anmeldeinformationen aufzufordern, kann einerseits sinnvoll sein, andererseits aber auch das Gegenteil bewirken: Benutzer, die es gewohnt sind, ihre Anmeldeinformationen ohne Überlegung einzugeben, können diese auch versehentlich bei einer schädlichen Anmeldeaufforderung eingeben.
+Die Standardkonfiguration von Azure Active Directory (Azure AD) sieht für die Anmeldehäufigkeit von Benutzern ein rollierendes Zeitfenster von 90 Tagen vor. Benutzer häufig zur Eingabe von Anmeldeinformationen aufzufordern, kann einerseits sinnvoll sein, andererseits aber auch das Gegenteil bewirken: Benutzer, die es gewohnt sind, ihre Anmeldeinformationen ohne Überlegung einzugeben, können diese auch versehentlich bei einer schädlichen Anmeldeaufforderung eingeben.
 
 Es klingt vielleicht beunruhigend, keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch gesperrt. Einige Beispiele beinhalten u. a. eine Kennwortänderung, ein nicht kompatibles Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell sperren](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Die Standardkonfiguration von Azure AD basiert auf dem Grundprinzip „Benutzer nicht zur Angabe ihrer Anmeldeinformationen auffordern, solange der Sicherheitsstatus ihrer Sitzung unverändert ist“.
 
@@ -51,13 +51,17 @@ Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardko
 - Dynamics CRM Online
 - Azure-Portal
 
+Die Einstellung für die Anmeldehäufigkeit funktioniert auch mit SAML-Anwendungen, solange diese nicht die eigenen Cookies verwerfen und in regelmäßigen Abständen an Azure AD zur Authentifizierung umgeleitet werden.
+
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Anmeldehäufigkeit und mehrstufige Authentifizierung
 
-Die Anmeldehäufigkeit wurde bisher nur für die einstufige Authentifizierung auf Geräten angewendet, die in Azure AD oder Azure AD Hybrid eingebunden und bei Azure AD registriert waren. Für unsere Kunden gab es keine einfache Möglichkeit, die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf diesen Geräten zu erzwingen. Aufgrund des Kundenfeedbacks wird die Anmeldehäufigkeit jetzt auch auf die mehrstufige Authentifizierung angewendet.
+Die Anmeldehäufigkeit wurde bisher nur für die einstufige Authentifizierung auf Geräten angewendet, die in Azure AD oder Azure AD Hybrid eingebunden und bei Azure AD registriert waren. Für unsere Kunden gab es keine einfache Möglichkeit, die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf diesen Geräten zu erzwingen. Aufgrund des Kundenfeedbacks wird die Anmeldehäufigkeit jetzt auch auf die mehrstufige Authentifizierung angewendet.
+
+[![Anmeldehäufigkeit und MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Anmeldehäufigkeit von Benutzern und Geräteidentitäten
 
-Wenn Sie über in Azure AD eingebundene, in Hybrid-Azure AD eingebundene oder bei Azure AD registrierte Geräte verfügen, erfüllt dieses Ereignis auch die Richtlinie für die Anmeldehäufigkeit, wenn ein Benutzer sein Gerät entsperrt oder sich interaktiv anmeldet. In den folgenden zwei Beispielen ist die Anmeldehäufigkeit von Benutzern auf 1 Stunde festgelegt:
+Wenn Sie über in Azure AD oder Azure AD Hybrid eingebundene oder bei Azure AD registrierte Geräte verfügen, erfüllt auch das Entsperren von Geräten oder interaktive Anmeldungen von Besuchern die Richtlinie für die Anmeldehäufigkeit. In den folgenden beiden Beispielen ist die Anmeldehäufigkeit von Benutzern auf 1 Stunde festgelegt:
 
 Beispiel 1:
 
@@ -101,7 +105,7 @@ Der bedingte Zugriff ist eine Azure AD Premium-Funktion und erfordert eine Premi
 
 ![Richtlinie für bedingten Zugriff, die für die Anmeldehäufigkeit konfiguriert ist](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-Auf Windows-Geräten, die in Azure AD registriert sind, gilt die Anmeldung beim Gerät als Erfüllung einer Aufforderung. Beispiel: Wenn Sie die Anmeldehäufigkeit für Office-Apps auf 24 Stunden festgelegt haben, erfüllen Benutzer von Windows-Geräten, die in Azure AD registriert sind, die Richtlinie für die Anmeldehäufigkeit bereits, indem sie sich beim Gerät anmelden. Sie erhalten keine erneute Aufforderung, wenn sie eine Office-App öffnen.
+Auf Windows-Geräten, die in Azure AD registriert sind, gilt die Anmeldung beim Gerät als Erfüllung einer Aufforderung. Beispiel: Wenn Sie die Anmeldehäufigkeit für Office-Apps auf 24 Stunden festgelegt haben, erfüllen Benutzer von Windows-Geräten, die in Azure AD registriert sind, die Richtlinie für die Anmeldehäufigkeit bereits, indem sie sich beim Gerät anmelden. Sie erhalten keine erneute Aufforderung, wenn sie Office-Apps öffnen.
 
 Wenn Sie unterschiedliche Anmeldehäufigkeiten für unterschiedliche Web-Apps konfiguriert haben, die in derselben Browsersitzung ausgeführt werden, wird die strengste Richtlinie auf beide Apps angewendet, da alle Apps, die in derselben Browsersitzung ausgeführt werden, dasselbe Sitzungstoken nutzen.
 

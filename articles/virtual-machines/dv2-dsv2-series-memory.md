@@ -1,26 +1,26 @@
 ---
 title: 'Virtuelle Computer der arbeitsspeicheroptimierten Dv2- und DSv2-Serie: Azure Virtual Machines'
 description: Hier finden Sie die Spezifikationen für virtuelle Computer der Dv2-Serie und der Dsv2-Serie.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77914040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694707"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Arbeitsspeicheroptimierte Dv2- und Dsv2-Serie
 
-Die Serien Dv2 und Dsv2, Nachfolger der ursprünglichen D-Serie, weisen eine leistungsfähigere CPU auf. Größen der DSv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) ausgeführt. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+Die Serien Dv2 und Dsv2, Nachfolger der ursprünglichen D-Serie, weisen eine leistungsfähigere CPU auf. Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) ausgeführt. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
 ## <a name="dv2-series-11-15"></a>Dv2-Serie 11-15
 
-Größen der Dv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) ausgeführt.
+Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) ausgeführt.
 
 ACU: 210–250
 
@@ -41,7 +41,7 @@ Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
 ## <a name="dsv2-series-11-15"></a>DSv2-Serie 11-15
 
-Größen der DSv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) ausgeführt.
+Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) ausgeführt.
 
 ACU: 210–250 <sup>1</sup>
 

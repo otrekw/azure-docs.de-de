@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 989a033a843b861c34dc9dbdbced50399f8e5cd7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 1db7937cb574ce62986f25e0bfa688dc54b5c606
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81449883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700598"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Kompatibilität von Azure Cosmos DB Gremlin
-Die Azure Cosmos DB Graph-Engine folgt genau den Durchlaufschritten der Spezifikation von [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), aber es gibt Unterschiede.
+Die Azure Cosmos DB Graph-Engine hält sich eng an die [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)-Spezifikation für die Durchlaufschritte, es gibt jedoch Azure Cosmos DB-spezifische Unterschiede bei der Implementierung. Eine Liste mit unterstützten Gremlin-Schritten finden Sie im Artikel [Unterstützung für Gremlin-Diagramme in Azure Cosmos DB](gremlin-support.md).
 
 ## <a name="behavior-differences"></a>Unterschiede im Verhalten
 
@@ -27,7 +27,7 @@ Die Azure Cosmos DB Graph-Engine folgt genau den Durchlaufschritten der Spezifik
 
 * ***`property(set, 'xyz', 1)`***: Das Festlegen der Kardinalität wird noch nicht unterstützt. Verwenden Sie stattdessen `property(list, 'xyz', 1)`. Weitere Informationen finden Sie unter [Vertex-Eigenschaften mit TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-* ***`atch()`*** ermöglicht das Abfragen von Graphen mithilfe von deklarativem Musterabgleich. Diese Funktion ist nicht verfügbar.
+* Der ***Schritt `match()`*** ist derzeit nicht verfügbar. Dieser Schritt bietet deklarative Abfragefunktionen.
 
 * ***Objekte als Eigenschaften*** werden für Vertices und Edges nicht unterstützt. Eigenschaften können nur primitive Typen oder Arrays sein.
 
@@ -40,6 +40,36 @@ Die Azure Cosmos DB Graph-Engine folgt genau den Durchlaufschritten der Spezifik
 * **Lambdaausdrücke und -funktionen** werden derzeit nicht unterstützt. Dies umfasst die Funktionen `.map{<expression>}`, `.by{<expression>}` und `.filter{<expression>}`. Weitere Informationen und wie Sie sie mithilfe der Gremlin-Schritte neu schreiben können, finden Sie unter [A Note on Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas) (Hinweis zu Lambdas).
 
 * ***Transaktionen*** werden aufgrund der verteilten Natur des Systems nicht unterstützt.  Konfigurieren Sie ein geeignetes Konsistenzmodell für das Gremlin-Konto, um „Ihre eigenen Schreibvorgänge zu lesen“, und verwenden Sie optimistische Nebenläufigkeit, um Schreibvorgänge aufzulösen, zu einen Konflikt verursachen.
+
+## <a name="known-limitations"></a>Bekannte Einschränkungen
+
+* **Indexverwendung für Gremlin-Abfragen mit Schritten vom Typ `.V()` während des Durchlaufs:** Aktuell wird nur beim ersten `.V()`-Aufruf eines Durchlaufs der Index genutzt, um alle angefügten Filter oder Prädikate aufzulösen. Bei späteren Aufrufen wird der Index nicht herangezogen, wodurch sich die Wartezeit und die Kosten der Abfrage erhöhen können.
+    
+    Bei Verwendung der Standardindizierung werden von einer typischen Gremlin-Leseabfrage, die mit dem Schritt `.V()` beginnt, Parameter wie `.has()` oder `.where()` in den angefügten Filterschritten verwendet, um die Kosten und die Leistung der Abfrage zu optimieren. Beispiel:
+
+    ```java
+    g.V().has('category', 'A')
+    ```
+
+    Enthält die Gremlin-Abfrage allerdings mehrere Schritte vom Typ `.V()`, ist die Auflösung der Daten für die Abfrage möglicherweise nicht optimal. Ein Beispiel hierfür wäre etwa die folgende Abfrage:
+
+    ```java
+    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+    ```
+
+    Diese Abfrage gibt auf der Grundlage der Eigenschaft `category` zwei Gruppen von Vertices zurück. In diesem Fall wird nur beim ersten Aufruf (`g.V().has('category', 'A')`) der Index genutzt, um die Vertices auf der Grundlage der Werte ihrer Eigenschaften aufzulösen.
+
+    Zur Umgehung dieses Problems können bei dieser Abfrage untergeordnete Durchlaufschritte wie `.map()` und `union()` verwendet werden. Beispiel:
+
+    ```java
+    // Query workaround using .map()
+    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+    // Query workaround using .union()
+    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+    ```
+
+    Die Leistung der Abfragen kann mithilfe des [Gremlin-Schritts `executionProfile()`](graph-execution-profile.md) überprüft werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Besuchen Sie die Seite [Cosmos DB User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db), um Feedback zu übermitteln und dem Team dabei zu helfen, sich auf die für Sie wichtigen Features zu konzentrieren.

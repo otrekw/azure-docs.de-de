@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 169dd7f71b86c77717226872fecb493a6eb5bf0d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610063"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -46,16 +46,16 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 
    Dies ist eine bekannte Einschränkung von pip, da keine funktionsfähige Abhängigkeitskonfliktauflösung vorhanden ist, wenn Sie die Installation in einer einzigen Zeile ausführen. Es wird nur die erste eindeutige Abhängigkeit untersucht. 
 
-   Im folgenden Code wird sowohl `azure-ml-datadrift` als auch `azureml-train-automl` über eine einzeilige pip-Installation installiert. 
+   Im folgenden Code wird sowohl `azureml-datadrift` als auch `azureml-train-automl` über eine einzeilige pip-Installation installiert. 
      ```
-       pip install azure-ml-datadrift, azureml-train-automl
+       pip install azureml-datadrift, azureml-train-automl
      ```
-   Für dieses Beispiel wird angenommen, dass `azure-ml-datadrift` eine Version > 1.0 und `azureml-train-automl` eine Version < 1.2 benötigt. Wenn die neueste Version von `azure-ml-datadrift` 1.3 ist, werden beide Pakete trotz der Paketanforderung von `azureml-train-automl` nach einer älteren Version auf 1.3 aktualisiert. 
+   Für dieses Beispiel wird angenommen, dass `azureml-datadrift` eine Version > 1.0 und `azureml-train-automl` eine Version < 1.2 benötigt. Wenn die neueste Version von `azureml-datadrift` 1.3 ist, werden beide Pakete trotz der Paketanforderung von `azureml-train-automl` nach einer älteren Version auf 1.3 aktualisiert. 
 
    Um sicherzustellen, dass die richtigen Versionen für Ihre Pakete installiert werden, führen Sie die Installation in mehreren Zeilen durch, wie im folgenden Code. Die Reihenfolge ist hier kein Problem, da pip im Rahmen des nächsten Zeilenaufrufs explizit eine Herabstufung ausführt. Daher werden die richtigen Versionsabhängigkeiten angewandt.
     
      ```
-        pip install azure-ml-datadrift
+        pip install azureml-datadrift
         pip install azureml-train-automl 
      ```
      
@@ -181,6 +181,20 @@ Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübe
 |Beim Überprüfen von Bildern werden neu bezeichnete Bilder nicht angezeigt.     |   Wählen Sie die Schaltfläche **Erste** aus, um alle bezeichneten Bilder zu laden. Mit der Schaltfläche **Erste** gelangen Sie zurück an den Anfang der Liste, aber es werden alle bezeichneten Daten geladen.      |
 |Wird während der Erstellung von Bezeichnungen für die Objekterkennung ESC gedrückt, wird in der linken oberen Ecke eine Bezeichnung mit der Größe null erstellt. In diesem Fall ist die Übermittlung von Bezeichnungen nicht erfolgreich.     |   Löschen Sie die Bezeichnung, indem Sie auf das daneben angezeigte Kreuzsymbol klicken.  |
 
+### <a name="data-drift-monitors"></a>Datendriftüberwachung
+
+* Wenn die SDK-Funktion `backfill()` nicht die erwartete Ausgabe generiert, kann dies auf ein Authentifizierungsproblem zurückzuführen sein.  Verwenden Sie beim Erstellen des Computeziels, das an diese Funktion übergeben wird, nicht `Run.get_context().experiment.workspace.compute_targets`.  Verwenden Sie stattdessen [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py), wie hier zu sehen, um das Computeziel zu erstellen, das Sie an die Funktion `backfill()` übergeben: 
+
+  ```python
+   auth = ServicePrincipalAuthentication(
+          tenant_id=tenant_id,
+          service_principal_id=app_id,
+          service_principal_password=client_secret
+          )
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   compute = ws.compute_targets.get("xxx")
+   ```
+
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 
 Bekannte Probleme:
@@ -220,8 +234,14 @@ Bekannte Probleme:
 
 ## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
 
-* **TensorFlow**: Das automatisierte maschinelle Lernen unterstützt derzeit nicht TensorFlow Version 1.13. Die Installation dieser Version führt dazu, dass Paketabhängigkeiten nicht mehr funktionieren. Wir arbeiten daran, dieses Problem in einer zukünftigen Version zu beheben.
-
+* **TensorFlow**: Ab der SDK-Version 1.5.0 werden vom automatisierten maschinellen Lernen standardmäßig keine TensorFlow-Modelle installiert. Wenn Sie TensorFlow installieren und bei Ihren automatisierten ML-Experimenten verwenden möchten, installieren Sie „tensorflow==1.12.0“ über „CondaDependecies“. 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
 * **Diagramm mit Experimenten**: Seit dem 12. April werden Diagramme für die binäre Klassifizierung (Genauigkeit und Trefferquote, ROC, Gewinnkurve usw.), die in automatisierten ML-Experimentiterationen angezeigt werden, auf der Benutzeroberfläche nicht richtig gerendert. In Diagrammen werden derzeit invertierte Ergebnisse angezeigt, was dazu führt, dass Modelle mit besserer Leistung mit schlechteren Ergebnissen angezeigt werden. Derzeit wird an einer Lösung gearbeitet.
 
 * **Databricks – Abbrechen einer automatisierten Ausführung des maschinellen Lernens**: Wenn Sie Funktionen für automatisiertes maschinelles Lernen in Azure Databricks verwenden um eine Ausführung abzubrechen und eine neue Experimentausführung zu starten, starten Sie Ihren Azure Databricks-Cluster neu.

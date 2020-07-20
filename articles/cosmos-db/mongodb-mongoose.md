@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie über das Mongoose-Framework Daten in Azure C
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585397"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023668"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Verbinden einer Node.js Mongoose-Anwendung mit Azure Cosmos DB
 
@@ -194,7 +194,7 @@ In diesem Abschnitt wird erläutert, wie sich dies mit der API für MongoDB von 
 
 1. Nachdem Sie zum Azure-Portal navigiert sind, werden nun zwei Sammlungen angezeigt, die in Cosmos DB erstellt wurden.
 
-    ![Node.js-Tutorial – Momentaufnahme des Azure-Portals, in dem ein Azure Cosmos DB-Konto angezeigt wird, wobei mehrere Sammlungsnamen hervorgehoben sind – Node-Datenbank][multiple-coll]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js-Tutorial – Screenshot des Azure-Portals, in dem ein Azure Cosmos DB-Konto angezeigt wird, wobei mehrere Sammlungsnamen hervorgehoben sind – Node-Datenbank":::
 
 1. Lesen Sie schließlich die Daten aus Cosmos DB. Da das Mongoose-Standardausführungsmodell verwendet wird, sind die Lesevorgänge mit beliebigen anderen Lesevorgängen mit Mongoose identisch.
 
@@ -299,7 +299,7 @@ Sie erstellen ein Basisobjektmodell, definieren einen Differenzierungsschlüssel
 
 1. Wenn Sie nun zum Azure-Portal zurückkehren, sehen Sie, dass es nur eine Sammlung namens ```alldata``` gibt, die sowohl die „Family“- als auch die „VacationDestinations“-Daten enthält.
 
-    ![Node.js-Tutorial – Momentaufnahme des Azure-Portals, in dem ein Azure Cosmos DB-Konto angezeigt wird, wobei der Sammlungsname hervorgehoben ist – Node-Datenbank][alldata]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js-Tutorial – Screenshot des Azure-Portals, in dem ein Azure Cosmos DB-Konto angezeigt wird, wobei der Sammlungsname hervorgehoben ist – Node-Datenbank":::
 
 1. Beachten Sie auch, dass jedes Objekt ein weiteres Attribut namens ```__type``` hat, das es Ihnen erleichtert, zwischen den beiden Objektmodellen zu unterscheiden.
 
@@ -323,6 +323,4 @@ Wie Sie sehen, ist ein Arbeiten mit Mongoose-Diskriminatoren einfach. Wenn Sie e
 - Erfahren Sie, wie Sie [Robo 3T](mongodb-robomongo.md) mit der API für MongoDB von Azure Cosmos DB verwenden.
 - Untersuchen Sie MongoDB-[Beispiele](mongodb-samples.md) mit der API für MongoDB von Azure Cosmos DB.
 
-[alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
 [dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 609ad2539753a838f02c4a79be56444ca0fb07f9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373861"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -27,7 +27,7 @@ Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active 
 Für die Verwendung der Azure AD Connect-Cloudbereitstellung benötigen Sie Folgendes:
     
 - Ein Hybrididentität-Administratorkonto für Ihren Azure AD-Mandanten, das kein Gastbenutzer ist.
-- einen lokalen Server für den Bereitstellungs-Agent mit Windows 2012 R2 oder höher
+- einen lokalen Server für den Bereitstellungs-Agent mit Windows 2012 R2 oder höher  Bei diesem Server sollte es sich um einen Server der Ebene 0 im [Active Directory-Verwaltungsebenenmodell](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) handeln.
 - lokale Firewallkonfigurationen
 
 >[!NOTE]

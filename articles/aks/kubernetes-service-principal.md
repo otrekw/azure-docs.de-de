@@ -3,13 +3,13 @@ title: Dienstprinzipale für Azure Kubernetes Service (AKS)
 description: Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipals für einen Cluster im Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 06/16/2020
+ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298547"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -87,7 +87,10 @@ Um Berechtigungen zu delegieren, erstellen Sie mit dem Befehl [az role assignmen
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-Bei dem `--scope` für eine Ressource muss es sich um eine vollständige Ressourcen-ID handeln, z. B. */subscriptions/\<guid\>/resourceGroups/myResourceGroup* oder */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*.
+Bei dem Bereich (`--scope`) für eine Ressource muss es sich um eine vollständige Ressourcen-ID handeln (beispielsweise */subscriptions/\<guid\>/resourceGroups/myResourceGroup* oder */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*).
+
+> [!NOTE]
+> Wenn Sie die Rollenzuweisung „Mitwirkender“ aus der Knotenressourcengruppe entfernt haben, können die folgenden Vorgänge möglicherweise nicht erfolgreich ausgeführt werden.  
 
 In den folgenden Abschnitten werden allgemeine Delegierungen, die Sie möglicherweise vornehmen müssen, ausführlicher erläutert.
 
@@ -106,6 +109,9 @@ Möglicherweise verwenden Sie erweiterte Netzwerke, in denen sich das virtuelle 
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
+  - Fügen Sie bei Verwendung [benutzerdefinierter Routingtabellen in Kubenet-Clustern](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) die folgenden Zusatzberechtigungen hinzu:
+    - *Microsoft.Network/routeTables/write*
+    - *Microsoft.Network/routeTables/read*
 - Alternativ können Sie die integrierte Rolle [Netzwerkmitwirkender][rbac-network-contributor] für das Subnetz im virtuellen Netzwerk zuweisen.
 
 ### <a name="storage"></a>Storage

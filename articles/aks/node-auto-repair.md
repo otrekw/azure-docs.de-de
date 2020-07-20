@@ -3,27 +3,27 @@ title: Automatisches Reparieren von AKS-Knoten (Azure Kubernetes Service)
 description: Erfahren Sie mehr über die Funktion zur automatischen Reparatur von Knoten und darüber, wie AKS fehlerhafte Workerknoten korrigiert.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 9bf9df69a0a6bfa4d9f4029278d2a146811980c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/02/2020
+ms.openlocfilehash: 91384461567634faabaaa1dd588d6e7ec6ece60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284839"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735624"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatisches Reparieren von AKS-Knoten (Azure Kubernetes Service)
 
-AKS überprüft den Integritätszustand von Workerknoten kontinuierlich und führt eine automatische Reparatur der Knoten durch, wenn sie fehlerhaft sind. In dieser Dokumentation wird beschrieben, wie Azure Kubernetes Service (AKS) Workerknoten überwacht und fehlerhafte Workerknoten repariert.  Mit dieser Dokumentation sollen AKS-Bediener über das Verhalten der Knotenreparaturfunktionen informiert werden. Es ist auch wichtig zu beachten, dass die Azure-Plattform [die Wartung auf den virtuellen Computern durchführt][vm-updates], auf denen diese Probleme auftreten. AKS und Azure arbeiten zusammen, um Dienstunterbrechungen bei Ihren Clustern zu minimieren.
+AKS überprüft den Integritätszustand von Workerknoten kontinuierlich und führt eine automatische Reparatur der Knoten durch, wenn sie fehlerhaft sind. Dieses Dokument richtet sich an Operatoren und enthält Informationen zum Verhalten der automatischen Knotenreparatur. Neben AKS-Reparaturen werden von der Azure-VM-Plattform auch [Wartungsmaßnahmen für virtuelle Computer][vm-updates] durchgeführt, auf denen Probleme auftreten. AKS und virtuelle Azure-Computer arbeiten zusammen, um Dienstunterbrechungen für Cluster zu minimieren.
 
 > [!Important]
-> Die Funktion zur automatischen Knotenreparatur wird derzeit für Windows Server-Knotenpools nicht unterstützt.
+> Für Windows Server-Knotenpools wird die Funktion zur automatischen Knotenreparatur derzeit nicht unterstützt.
 
 ## <a name="how-aks-checks-for-unhealthy-nodes"></a>Überprüfung auf fehlerhafte Knoten durch AKS
 
 > [!Note]
 > AKS führt Reparaturaktionen für Knoten mit dem Benutzerkonto **aks-remediator** durch.
 
-Dabei nutzt AKS Regeln, um zu ermitteln, ob ein Knoten einen fehlerhaften Zustand aufweist und repariert werden muss. Anhand der folgenden Regeln bestimmt AKS, ob eine automatische Reparatur erforderlich ist.
+Dabei ermittelt AKS mithilfe von Regeln, ob ein Knoten fehlerhaft ist und repariert werden muss. Anhand der folgenden Regeln bestimmt AKS, ob eine automatische Reparatur erforderlich ist.
 
 * Der Knoten meldet bei aufeinanderfolgenden Überprüfungen innerhalb eines Zeitraums von 10 Minuten den Status **NotReady**.
 * Der Knoten meldet innerhalb von 10 Minuten keinen Status.
@@ -37,16 +37,11 @@ kubectl get nodes
 ## <a name="how-automatic-repair-works"></a>Funktionsweise der automatischen Reparatur
 
 > [!Note]
-> AKS führt Reparaturaktionen für Knoten mit dem Benutzerkonto **aks-remediator** durch.
+> AKS initiiert Reparaturvorgänge mit dem Benutzerkonto **aks-remediator**.
 
-Dieses Verhalten gilt für **Virtual Machine Scale Sets**.  Die automatische Reparatur umfasst mehrere Schritte zum Reparieren eines fehlerhaften Knotens.  Wenn ein Knoten als fehlerhaft eingestuft wird, unternimmt AKS mehrere Schritte zur Wartung.  Die Schritte werden in dieser Reihenfolge ausgeführt:
-
-1. Wenn die Containerruntime 10 Minuten lang nicht mehr reagiert, werden die fehlerhaften Runtimedienste auf dem Knoten neu gestartet.
-2. Wenn der Knoten nicht innerhalb von 10 Minuten bereit ist, wird der Knoten neu gestartet.
-3. Wenn der Knoten nicht innerhalb von 30 Minuten bereit ist, wird ein neues Image des Knotens erstellt.
-
-> [!Note]
-> Wenn mehrere Knoten fehlerhaft sind, werden sie einzeln repariert.
+Die automatische Reparatur wird standardmäßig für Cluster mit dem VM-Gruppentyp **VM-Skalierungsgruppen** unterstützt. Wird ein Knoten auf der Grundlage der obigen Regeln als fehlerhaft eingestuft, wird er von AKS neu gestartet, nachdem er sich zehn Minuten lang in einem fehlerhaften Zustand befunden hat. Bei Knoten, die nach dem ersten Reparaturvorgang weiterhin fehlerhaft sind, werden von AKS-Technikern weitere Reparaturmöglichkeiten untersucht.
+  
+Sollten bei einer Integritätsüberprüfung mehrere Knoten fehlerhaft sein, werden die Knoten jeweils einzeln repariert, bevor mit der nächsten Reparatur begonnen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

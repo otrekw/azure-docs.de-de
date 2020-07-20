@@ -5,16 +5,16 @@ description: Es wird beschrieben, wie Sie Support und Training erhalten und Feed
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209433"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213175"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Support und Schulungen für Azure Machine Learning Studio (klassisch)
 
@@ -38,7 +38,7 @@ Nutzen Sie die folgenden Supportressourcen:
 
 + **Technischer Support für Azure-Kunden**: [Erstellen und verwalten Sie Supportanfragen](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) im Azure-Portal.
 
-+ **Benutzerforum**: Hier können Sie Fragen stellen, Fragen beantworten und sich über das [Supportforum zu Azure Machine Learning Studio (klassisch) auf der MSDN-Website](https://aka.ms/aml-forum-studio) mit anderen Benutzern austauschen.
++ **Benutzerforum**: Hier können Sie Fragen stellen, Fragen beantworten und sich mit anderen Benutzern im [Supportforum zu Azure Machine Learning Studio (Classic)](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) austauschen.
 
 + **Stack Overflow**: Besuchen Sie die Azure Machine Learning-Community bei [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning), die über das Tag „Azure-Machine-Learning“ verfügt.
 

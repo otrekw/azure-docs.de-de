@@ -5,17 +5,18 @@ description: Überwachen Sie Webdienste, die mit Azure Machine Learning bereitge
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 03/12/2020
-ms.openlocfilehash: 464ec1fcf0986dc04bd92bbe9e31b5675e5822d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/09/2020
+ms.custom: tracking-python
+ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743506"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,10 +44,12 @@ Sie können nicht nur die Ausgabedaten und Antworten eines Endpunkts erfassen, s
 
 ## <a name="web-service-metadata-and-response-data"></a>Meta- und -Antwortdaten eines Webdiensts
 
->[!Important]
-> Azure Application Insights protokolliert nur Nutzlasten von bis zu 64 KB. Wenn dieser Grenzwert erreicht wird, werden nur die neuesten Ausgaben des Modells protokolliert. 
+> [!IMPORTANT]
+> Azure Application Insights protokolliert nur Nutzlasten von bis zu 64 KB. Bei Erreichen dieses Grenzwerts treten unter Umständen Fehler auf (etwa aufgrund von unzureichendem Arbeitsspeicher), oder es werden ggf. keine Informationen protokolliert.
 
-Die Meta- und Antwortdaten für den Dienst – entsprechend der Webdienst-Metadaten und den Vorhersagen des Modells – werden in den Azure Application Insights-Ablaufverfolgungen unter der Meldung `"model_data_collection"` protokolliert. Sie können Azure Application Insights für den Zugriff auf diese Daten direkt abfragen oder zur längeren Aufbewahrung oder weiteren Verarbeitung einen [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) in ein Speicherkonto einrichten. Modelldaten können dann im Azure Machine Learning-Dienst zum Einrichten von Bezeichnungen, erneuten Trainings, Erklärungen, Datenanalysen oder zu anderen Zwecken verwendet werden. 
+Fügen Sie der Datei „score.py“ Anweisungen vom Typ `print` hinzu, um Informationen für eine an den Webdienst gerichtete Anforderung zu protokollieren. Jede Anweisung vom Typ `print` hat einen Eintrag in der Ablaufverfolgungstabelle in Application Insights unter der Meldung `STDOUT` zur Folge. Der Inhalt der Anweisung `print` befindet sich unter `customDimensions` und anschließend unter `Contents` in der Ablaufverfolgungstabelle. Wenn Sie eine JSON-Zeichenfolge ausgeben, wird in der Ablaufverfolgungsausgabe unter `Contents`eine hierarchische Datenstruktur generiert.
+
+Sie können Azure Application Insights für den Zugriff auf diese Daten direkt abfragen oder zur längeren Aufbewahrung oder weiteren Verarbeitung einen [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) in ein Speicherkonto einrichten. Modelldaten können dann im Azure Machine Learning-Dienst zum Einrichten von Bezeichnungen, erneuten Trainings, Erklärungen, Datenanalysen oder zu anderen Zwecken verwendet werden. 
 
 <a name="python"></a>
 
@@ -70,10 +73,51 @@ Die Meta- und Antwortdaten für den Dienst – entsprechend der Webdienst-Metada
 
 Wenn Sie benutzerdefinierte Ablaufverfolgungen protokollieren möchten, führen Sie den im Dokument [Bereitstellung: wie und wo?](how-to-deploy-and-where.md) beschriebenen Standardbereitstellungsprozess für AKS oder ACI aus. Führen Sie dann die folgenden Schritte aus:
 
-1. Aktualisieren Sie die Bewertungsdatei durch Hinzufügen von Druckanweisungen.
+1. Wenn Sie Daten während des Rückschließens an Application Insights senden möchten, aktualisieren Sie die Bewertungsdatei durch Hinzufügen von print-Anweisungen. Wenn Sie komplexere Informationen wie etwa die Anforderungsdaten und die Antwort protokollieren möchten, verwenden Sie eine JSON-Struktur. Von der folgenden Beispieldatei „score.py“ werden die Initialisierungszeit des Modells, die Ein- und Ausgabe während des Rückschließens sowie die Zeit protokolliert, zu der Fehler auftreten:
+
+    > [!IMPORTANT]
+    > Azure Application Insights protokolliert nur Nutzlasten von bis zu 64 KB. Bei Erreichen dieses Grenzwerts treten unter Umständen Fehler auf (etwa aufgrund von unzureichendem Arbeitsspeicher), oder es werden ggf. keine Informationen protokolliert. Sind die Daten, die Sie protokollieren möchten, größer als 64 KB, speichern Sie sie stattdessen in Blob Storage, wie unter [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md) beschrieben.
     
     ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
+    import pickle
+    import json
+    import numpy 
+    from sklearn.externals import joblib
+    from sklearn.linear_model import Ridge
+    from azureml.core.model import Model
+    import time
+
+    def init():
+        global model
+        #Print statement for appinsights custom traces:
+        print ("model initialized" + time.strftime("%H:%M:%S"))
+        
+        # note here "sklearn_regression_model.pkl" is the name of the model registered under the workspace
+        # this call should return the path to the model.pkl file on the local disk.
+        model_path = Model.get_model_path(model_name = 'sklearn_regression_model.pkl')
+        
+        # deserialize the model file back into a sklearn model
+        model = joblib.load(model_path)
+    
+
+    # note you can pass in multiple rows for scoring
+    def run(raw_data):
+        try:
+            data = json.loads(raw_data)['data']
+            data = numpy.array(data)
+            result = model.predict(data)
+            # Log the input and output data to appinsights:
+            info = {
+                "input": raw_data,
+                "output": result.tolist()
+                }
+            print(json.dumps(info))
+            # you can return any datatype as long as it is JSON-serializable
+            return result.tolist()
+        except Exception as e:
+            error = str(e)
+            print (error + time.strftime("%H:%M:%S"))
+            return error
     ```
 
 2. Aktualisieren Sie die Dienstkonfiguration.
@@ -117,19 +161,19 @@ So zeigen Sie sie an:
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Wählen Sie die Registerkarte **Übersicht** aus, um einen Standardsatz von Metriken für Ihren Dienst anzuzeigen.
+1. Wählen Sie auf der Registerkarte **Übersicht** oder im Abschnitt __Überwachung__ in der Liste auf der linken Seite die Option __Protokolle__ aus.
 
-   [![Übersicht](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+    [![Registerkarte „Übersicht“ im Abschnitt „Überwachung“](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. Um Meta- und Antwortdaten für Ihre Webdienstanforderungen zu untersuchen, wählen Sie die Tabelle **Anforderungen** im Abschnitt **Protokolle (Analyse)** und anschließend **Ausführen** aus, um die Anforderungen anzuzeigen.
+1. Wenn Sie protokollierte Informationen aus der Datei „score.py“ anzeigen möchten, sehen Sie sich die Tabelle __traces__ an. Mit der folgenden Abfrage wird nach Protokollen gesucht, bei denen der Wert __input__ protokolliert wurde:
 
-   [![Modelldaten](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+    ```kusto
+    traces
+    | where customDimensions contains "input"
+    | limit 10
+    ```
 
-
-3. Um Ihre benutzerdefinierten Ablaufverfolgungen anzuzeigen, wählen Sie **Analyse** aus.
-4. Wählen Sie im Abschnitt „Schema“ den Eintrag **Ablaufverfolgungen** aus. Wählen Sie dann **Ausführen** aus, um die Abfrage auszuführen. Die Daten sollten in einem Tabellenformat angezeigt werden und den benutzerdefinierten Aufrufen in Ihrer Bewertungsdatei zugeordnet sein.
-
-   [![Benutzerdefinierte Ablaufverfolgungen](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![Ablaufverfolgungsdaten](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 Weitere Informationen zu Azure Application Insights finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
@@ -138,7 +182,7 @@ Weitere Informationen zu Azure Application Insights finden Sie unter [Was ist Ap
 >[!Important]
 > Azure Application Insights unterstützt nur Exporte in einen Blobspeicher. Weitere Beschränkungen für diese Exportfunktion finden Sie unter [Exportieren von Telemetriedaten aus App Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
 
-Sie können den [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) von Azure Application Insights verwenden, um Nachrichten an ein unterstütztes Speicherkonto zu senden, für das eine längere Aufbewahrungsdauer festgelegt werden kann. Die Meldungen vom Typ `"model_data_collection"` werden im JSON-Format gespeichert und können ganz einfach zum Extrahieren von Modelldaten analysiert werden. 
+Sie können den [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) von Azure Application Insights verwenden, um Nachrichten an ein unterstütztes Speicherkonto zu senden, für das eine längere Aufbewahrungsdauer festgelegt werden kann. Die Daten werden im JSON-Format gespeichert und können ganz einfach zum Extrahieren von Modelldaten analysiert werden. 
 
 Die Daten können bei Bedarf mit Azure Data Factory, Azure ML-Pipelines oder anderen Datenverarbeitungstools transformiert werden. Nach der Transformation der Daten können Sie sie im Azure Machine Learning-Arbeitsbereich als Dataset registrieren. Informationen dazu finden Sie unter [Erstellen und Registrieren von Datasets](how-to-create-register-datasets.md).
 

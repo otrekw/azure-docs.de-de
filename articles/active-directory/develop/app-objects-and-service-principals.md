@@ -9,57 +9,51 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/13/2019
+ms.date: 06/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: a636ff15da09bcf1891618d65270376f26fd3239
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 453efd7735c6843ccdaf8dfd86b18d0b2ef8b06d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604623"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 
-In einigen Fällen kann der Begriff „Anwendung“ im Kontext von Azure Active Directory (Azure AD) falsch verstanden werden. Dieser Artikel veranschaulicht die konzeptuellen und konkreten Aspekte der Azure AD-Anwendungsintegration und erläutert die Registrierung und Zustimmung zu einer [mehrinstanzenfähigen Anwendung](developer-glossary.md#multi-tenant-application).
-
-## <a name="overview"></a>Übersicht
-
-Eine Anwendung, die in Azure AD integriert ist, hat Auswirkungen über die Software hinaus. „Anwendung“ wird häufig als konzeptioneller Begriff verwendet und bezieht sich nicht nur auf die Anwendungssoftware, sondern auch auf die Azure AD-Registrierung und die Rolle bei „Konversationen“ zur Authentifizierung/Autorisierung zur Laufzeit.
-
-Der Definition nach kann eine Anwendung in den folgenden Rollen ausgeführt werden:
-
-- [Clientrolle](developer-glossary.md#client-application) (Nutzung einer Ressource)
-- [Ressourcenserverrolle](developer-glossary.md#resource-server) (APIs werden für Clients verfügbar gemacht.)
-- Clientrolle und Ressourcenserverrolle
-
-Das Konversationsprotokoll ist durch einen [Ablauf zur Erteilung einer OAuth 2.0-Autorisierung](developer-glossary.md#authorization-grant) definiert und ermöglicht dem Client bzw. der Ressource das Zugreifen auf bzw. das Schützen von Daten einer Ressource.
-
-In den folgenden Abschnitten sehen Sie, wie das Azure AD-Anwendungsmodell eine Anwendung beim Entwurf und zur Laufzeit darstellt.
+In diesem Artikel werden die Anwendungsregistrierung, Anwendungsobjekte und Dienstprinzipale in Azure Active Directory mit ihren Eigenschaften, Verwendungsmöglichkeiten und den wechselseitigen Beziehungen beschrieben. Außerdem wird ein Beispielszenario mit mehreren Mandanten vorgestellt, um die Beziehung zwischen dem Anwendungsobjekt einer Anwendung und den entsprechenden Dienstprinzipalobjekten zu veranschaulichen.
 
 ## <a name="application-registration"></a>Anwendungsregistrierung
+Um die Identitäts- und Zugriffsverwaltungsfunktionen an Azure AD zu delegieren, muss eine Anwendung bei einem Azure AD-[Mandanten](developer-glossary.md#tenant) registriert werden. Wenn Sie Ihre Anwendung bei Azure AD registrieren, erstellen Sie eine Identitätskonfiguration für Ihre Anwendung, die die Integration in Azure AD ermöglicht. Wenn Sie eine App im [Azure-Portal][AZURE-Portal] registrieren, wählen Sie aus, ob es sich um einen Mandanten (Zugriff nur in Ihrem Mandanten möglich) oder um mehrere Mandanten (Zugriff in anderen Mandanten möglich) handelt. Optional können Sie auch einen Umleitungs-URI festlegen (an den das Zugriffstoken gesendet wird).
 
-Wenn Sie eine Azure AD-Anwendung im [Azure-Portal][AZURE-Portal] registrieren, werden in Ihrem Azure AD-Mandanten zwei Objekte erstellt:
+Wenn Sie die App-Registrierung abgeschlossen haben, verfügen Sie über eine global eindeutige Instanz der App (das Anwendungsobjekt), die sich in Ihrem Basismandanten oder -verzeichnis befindet.  Außerdem verfügen Sie über eine global eindeutige ID für Ihre App (App- oder Client-ID).  Im Portal können Sie dann Geheimnisse oder Zertifikate und Geltungsbereiche hinzufügen, damit Ihre App funktioniert. Sie können auch das Branding Ihrer App im Anmeldedialogfeld anpassen und vieles mehr.
 
-- ein Anwendungsobjekt und
-- ein Dienstprinzipalobjekt
+Wenn Sie eine Anwendung im Portal registrieren, werden automatisch ein Anwendungsobjekt sowie ein Dienstprinzipalobjekt in Ihrem Basismandanten erstellt.  Wenn Sie eine Anwendung mit den Microsoft Graph-APIs registrieren/erstellen, wird das Dienstprinzipalobjekt in einem separaten Schritt erstellt.
 
-### <a name="application-object"></a>Anwendungsobjekt
+## <a name="application-object"></a>Anwendungsobjekt
+Eine Azure AD-Anwendung wird durch ein einziges, eindeutiges Anwendungsobjekt definiert, das sich im Azure AD-Mandanten befindet, bei dem die Anwendung registriert wurde (der sogenannte „Basis“-Mandant der Anwendung).  Ein Anwendungsobjekt wird als Vorlage bzw. Blaupause zum Erstellen eines oder mehrerer Dienstprinzipalobjekte verwendet.  Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird. Vergleichbar einer Klasse in der objektorientierten Programmierung hat das Anwendungsobjekt einige statische Eigenschaften, die auf alle erstellten Dienstprinzipale (oder Anwendungsinstanzen) angewendet werden. 
 
-Eine Azure AD-Anwendung ist durch ein eindeutiges Anwendungsobjekt definiert. Es befindet sich im Azure AD-Mandanten, in dem die Anwendung registriert ist und der als „Heimmandant“ der Anwendung bezeichnet wird. Die [Application-Entität][MS-Graph-App-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Anwendungsobjekts.
+Das Anwendungsobjekt beschreibt drei Aspekte einer Anwendung: das Ausstellen von Token durch den Dienst für den Zugriff auf die Anwendung, die Ressourcen, auf die die Anwendung möglicherweise zugreifen muss, und die Aktionen, die die Anwendung ausführen kann. 
 
-### <a name="service-principal-object"></a>Dienstprinzipalobjekt
+Das Blatt **App-Registrierungen** im [Azure-Portal][AZURE-Portal] wird zum Auflisten und Verwalten der Anwendungsobjekte in Ihrem Basismandanten verwendet.
 
-Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschützt werden, muss die Entität, die Zugriff benötigt, durch einen Sicherheitsprinzipal dargestellt werden. Dies gilt für Benutzer (Benutzerprinzipal) und Anwendungen (Dienstprinzipal).
+Die [Application-Entität][MS-Graph-App-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Anwendungsobjekts.
 
-Der Sicherheitsprinzipal definiert die Zugriffsrichtlinie und Berechtigungen für den Benutzer/die Anwendung im Azure AD-Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
+## <a name="service-principal-object"></a>Dienstprinzipalobjekt
+Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschützt werden, muss die Entität, die Zugriff benötigt, durch einen Sicherheitsprinzipal dargestellt werden. Dies gilt für Benutzer (Benutzerprinzipal) und Anwendungen (Dienstprinzipal). Der Sicherheitsprinzipal definiert die Zugriffsrichtlinie und Berechtigungen für den Benutzer/die Anwendung im Azure AD-Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
 
-Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](developer-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Die [ServicePrincipal-Entität][MS-Graph-Sp-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Dienstprinzipalobjekts.
+Ein Dienstprinzipal ist die lokale Darstellung (bzw. Anwendungsinstanz) eines globalen Anwendungsobjekts in einem einzelnen Mandanten oder Verzeichnis. Ein Dienstprinzipal ist eine konkrete Instanz, die aus dem Anwendungsobjekt erstellt wird und bestimmte Eigenschaften von diesem Anwendungsobjekt erbt.  Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird, und verweist auf das global eindeutige Anwendungsobjekt.  Das Dienstprinzipalobjekt definiert, was die App tatsächlich im jeweiligen Mandanten ausführen kann, wer auf die App zugreifen kann und auf welche Ressourcen die App zugreifen kann. 
 
-### <a name="application-and-service-principal-relationship"></a>Beziehung zwischen Anwendung und Dienstprinzipal
+Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](developer-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Sie können auch mit [Azure PowerShell](howto-authenticate-service-principal-powershell.md), der Azure-Befehlszeilenschnittstelle, [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), im [Azure-Portal][AZURE-Portal] und mit anderen Tools ein Dienstprinzipalobjekt in einem Mandanten erstellen.  Wenn Sie das Portal verwenden, wird beim Registrieren einer Anwendung automatisch ein Dienstprinzipal erstellt.
 
-Stellen Sie sich das Anwendungsobjekt als *globale* Darstellung Ihrer Anwendung zur Verwendung über alle Mandanten hinweg und den Dienstprinzipal als *lokale* Darstellung zur Verwendung in einem bestimmten Mandanten vor.
+Auf dem Blatt **Unternehmensanwendungen** im Portal werden die Dienstprinzipale in einem Mandanten aufgelistet und verwaltet. Sie können die Berechtigungen eines Dienstprinzipals, die vom Benutzer genehmigten Berechtigungen, die Benutzer, die diese Genehmigung erteilt haben, und die Anmeldeinformationen anzeigen.
+
+Die [ServicePrincipal-Entität][MS-Graph-Sp-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Dienstprinzipalobjekts.
+
+## <a name="relationship-between-application-objects-and-service-principals"></a>Beziehung zwischen Anwendungsobjekten und Dienstprinzipalen
+
+Das Anwendungsobjekt ist die *globale* Darstellung Ihrer Anwendung für die Verwendung bei allen Mandanten. Der Dienstprinzipal ist die *lokale* Darstellung für die Verwendung in einem bestimmten Mandanten.
 
 Das Anwendungsobjekt fungiert als Vorlage, aus der allgemeine und Standardeigenschaften zur Verwendung im entsprechenden Dienstprinzipal *abgeleitet* werden. Für ein Anwendungsobjekt bestehen daher eine 1:1-Beziehung mit der Softwareanwendung und eine 1:viele-Beziehung mit den entsprechenden Dienstprinzipalobjekten.
 

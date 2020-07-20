@@ -5,16 +5,16 @@ description: Behandeln von Modulausnahmen in Azure Machine Learning Designer anh
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: reference
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213753"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
 
@@ -1515,7 +1515,7 @@ Interne Bibliotheksausnahme.
 
 Dieser Fehler wird bereitgestellt, um ansonsten unbehandelte interne Enginefehler zu erfassen. Daher kann die Ursache für diesen Fehler je nach Modul, das den Fehler generiert hat, unterschiedlich sein.  
 
-Um weitere Hilfe zu erhalten, wird empfohlen, die ausführliche Meldung, die dem Fehler zugeordnet ist, zusammen mit einer Beschreibung des Szenarios (einschließlich der als Eingaben verwendeten Daten) an das Azure Machine Learning-Forum zu senden. Dieses Feedback hilft uns, Fehler zu priorisieren und die wichtigsten Probleme für die weitere Arbeit zu identifizieren.  
+Um weitere Hilfe zu erhalten, wird empfohlen, die ausführliche Meldung, die dem Fehler zugeordnet ist, zusammen mit einer Beschreibung des Szenarios (einschließlich der als Eingaben verwendeten Daten) an das [Azure Machine Learning-Forum](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) zu senden. Dieses Feedback hilft uns, Fehler zu priorisieren und die wichtigsten Probleme für die weitere Arbeit zu identifizieren.  
 
 |Ausnahmemeldungen|
 |------------------------|

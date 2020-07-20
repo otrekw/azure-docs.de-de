@@ -1,6 +1,6 @@
 ---
 title: Zuweisen des Zugriffs auf eine Ressource für eine verwaltete Identität mithilfe der Azure-Befehlszeilenschnittstelle – Azure AD
-description: Dieser Artikel enthält Schritt-für-Schritt-Anleitungen für das Zuweisen einer verwalteten Identität für eine Ressource und für das Zuweisen des Zugriffs auf eine andere Ressource mithilfe der Azure CLI.
+description: Dieser Artikel enthält schrittweise Anleitungen für das Zuweisen einer verwalteten Identität für eine Ressource und für das Zuweisen des Zugriffs auf eine andere Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI).
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b241ac223fd1eb9df2b0a914726d8f37df5f4d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454bc929e3a82aa889c99b9eb74eaee7e95c579f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74547374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608346"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Zuweisen des Zugriffs auf eine Ressource für eine verwaltete Identität mithilfe der Azure CLI
 
@@ -30,11 +30,11 @@ Nachdem Sie eine Azure-Ressource mit einer verwalteten Identität konfiguriert h
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-the-managed-identities-for-azure-resources-work)** bewusst.
+- Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#managed-identity-types)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 - Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
     - Verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) aus dem Azure-Portal (siehe nächster Abschnitt).
-    - Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Ausprobieren“ in der oberen rechten Ecke jedes Codeblocks verwenden.
+    - Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Testen“ in der oberen rechten Ecke jedes Codeblocks verwenden.
     - [Installieren Sie die aktuelle Version der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]

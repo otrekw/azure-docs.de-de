@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: bf96cea2f64c52714ed6c63b0e973d0d26999856
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864384"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610216"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
-Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt VMs der Generationen 1 und 2, die das VHD-Dateiformat und einen Datenträger mit fester Größe aufweisen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 2 TB.
+Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt VMs der Generationen 1 und 2, die das VHD-Dateiformat und einen Datenträger mit fester Größe aufweisen. Die maximal zulässige Größe für die Betriebssystem-VHD eines virtuellen Computers der Generation 1 beträgt 2 TB.
 
-Bei einer VM der Generation 1 können Sie das VHDX-Dateisystem in VHD konvertieren. Sie können auch einen dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Sollte ich eine VM der Generation 1 oder 2 in Hyper-V erstellen?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) und [Support für VMs der Generation 2 in Azure](generation-2.md).
+Sie können eine VHDX-Datei in das VHD-Format und einen dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren, die Generation eines virtuellen Computers kann jedoch nicht geändert werden. Weitere Informationen finden Sie unter [Sollte ich eine VM der Generation 1 oder 2 in Hyper-V erstellen?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) und [Support für VMs der Generation 2 in Azure](generation-2.md).
 
 Weitere Informationen zur Supportrichtlinie für Azure-VMs finden Sie unter [Microsoft-Server-Software-Support für virtuelle Maschinen von Microsoft Azure](https://support.microsoft.com/help/2721672/).
 
@@ -28,6 +28,73 @@ Weitere Informationen zur Supportrichtlinie für Azure-VMs finden Sie unter [Mic
 >
 > - Die 64-Bit-Version von Windows Server 2008 R2 und höhere Versionen des Windows Server-Betriebssystems. Informationen zum Ausführen einer 32-Bit-Version des Betriebssystems in Azure finden Sie unter [Unterstützung für 32-Bit-Betriebssysteme in Azure-VMs](https://support.microsoft.com/help/4021388/).
 > - Wird die Workload mithilfe eines Notfallwiederherstellungstools wie Azure Site Recovery oder Azure Migrate migriert, muss dieser Prozess trotzdem für das Gastbetriebssystem vor der Migration ausgeführt werden.
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Konvertieren des virtuellen Datenträgers in eine VHD mit fester Größe
+
+Verwenden Sie eine der Methoden in diesem Abschnitt, um Ihren virtuellen Datenträger in das für Azure erforderliche Format zu konvertieren und die Größe entsprechend anzupassen:
+
+1. Sichern Sie den virtuellen Computer, bevor Sie die Konvertierung oder Größenänderung durchführen.
+
+1. Vergewissern Sie sich, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
+
+1. Konvertieren Sie den virtuellen Datenträger in einen Datenträger mit fester Größe.
+
+1. Ändern Sie die Größe des virtuellen Datenträgers gemäß den Azure-Anforderungen:
+
+   1. Datenträger in Azure benötigen eine virtuelle Größe, die auf 1 MiB ausgerichtet ist. Wenn die Größe Ihrer VHD ein Bruchteil von 1 MiB ist, muss die Größe des Datenträgers in ein Vielfaches von 1 MiB geändert werden. Bei Datenträgern mit einem MiB-Bruchteil treten Fehler auf, wenn Images auf der Grundlage der hochgeladenen VHD erstellt werden. Verwenden Sie zur Überprüfung dieser Bedingung das PowerShell-Cmdlet [Get-VHD](/powershell/module/hyper-v/get-vhd), und sehen Sie sich den Wert für „Size“ an. Der Wert muss in Azure ein Vielfaches von 1 MiB sein. Sehen Sie sich außerdem den Wert für „FileSize“ an. Dieser Wert muss der Summe aus dem Wert für „Size“ und 512 Bytes für die VHD-Fußzeile entsprechen.
+   
+   1. Die maximal zulässige Größe für die Betriebssystem-VHD eines virtuellen Computers der Generation 1 beträgt 2.048 GiB (2 TiB). 
+   1. Die maximale Größe eines Datenträgers beträgt 32.767 GiB (32 TiB).
+
+> [!NOTE]
+> - Wenn Sie nach der Konvertierung in einen Datenträger mit fester Größe und der ggf. durchgeführten Größenänderung einen Windows-Betriebssystemdatenträger vorbereiten, erstellen Sie einen virtuellen Computer, von dem der Datenträger verwendet wird. Starten Sie den virtuellen Computer, melden Sie sich an, und fahren Sie mit den Abschnitten in diesem Artikel fort, um die Vorbereitung für den Upload abzuschließen.  
+> - Wenn Sie einen regulären Datenträger vorbereiten, können Sie direkt mit dem Hochladen Ihres Datenträgers fortfahren.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Verwenden von Hyper-V-Manager zum Konvertieren des Datenträgers
+
+1. Öffnen Sie den Hyper-V-Manager, und wählen Sie auf der linken Seite Ihren lokalen Computer aus. Wählen Sie im Menü über der Computerliste **Aktion** > **Datenträger bearbeiten** aus.
+1. Wählen Sie auf der Seite **Virtuelle Festplatte suchen** Ihren virtuellen Datenträger aus.
+1. Wählen Sie auf der Seite **Aktion auswählen** die Optionen **Konvertieren** > **Weiter** aus.
+1. Zum Konvertieren aus VHDX wählen Sie **VHD** > **Weiter** aus.
+1. Zum Konvertieren aus einem dynamisch erweiterbaren Datenträger wählen Sie **Feste Größe** > **Weiter** aus.
+1. Navigieren Sie zu einem Pfad zum Speichern der neuen VHD-Datei, und wählen Sie ihn aus.
+1. Wählen Sie **Fertig stellen** aus.
+
+### <a name="use-powershell-to-convert-the-disk"></a>Verwenden von PowerShell zum Konvertieren des Datenträgers
+
+Sie können einen virtuellen Datenträger mithilfe des PowerShell-Cmdlets [Convert-VHD](/powershell/module/hyper-v/convert-vhd) konvertieren. Informationen zum Installieren dieses Cmdlets finden Sie bei Bedarf [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Im folgenden Beispiel wird der Datenträger aus VHDX in VHD konvertiert. Der Datenträger wird außerdem aus einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertiert.
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+Ersetzen Sie in diesem Beispiel den Wert für **Path** durch den Pfad zu der virtuellen Festplatte, die Sie konvertieren möchten. Ersetzen Sie den Wert für **DestinationPath** durch den neuen Pfad und Namen für den konvertierten Datenträger.
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertieren des VMware-VMDK-Datenträgerformats
+
+Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) verfügen, konvertieren Sie es mit dem [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) in das VHD-Format. Weitere Informationen finden Sie unter [How to Convert a VMWare VMDK to Hyper-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd) (Konvertieren von VMware-VMDK in Hyper-V-VHD).
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Verwenden des Hyper-V-Managers zum Ändern der Datenträgergröße
+
+1. Öffnen Sie den Hyper-V-Manager, und wählen Sie auf der linken Seite Ihren lokalen Computer aus. Wählen Sie im Menü über der Computerliste **Aktion** > **Datenträger bearbeiten** aus.
+1. Wählen Sie auf der Seite **Virtuelle Festplatte suchen** Ihren virtuellen Datenträger aus.
+1. Wählen Sie auf der Seite **Aktion auswählen** die Optionen **Erweitern** > **Weiter** aus.
+1. Geben Sie auf der Seite **Virtuelle Festplatte suchen** die neue Größe in GiB ein, und wählen Sie anschließend **Weiter** aus.
+1. Wählen Sie **Fertig stellen** aus.
+
+### <a name="use-powershell-to-resize-the-disk"></a>Verwenden von PowerShell zum Ändern der Datenträgergröße
+
+Die Größe eines virtuellen Datenträgers kann mithilfe des PowerShell-Cmdlets [Resize-VHD](/powershell/module/hyper-v/resize-vhd) geändert werden. Informationen zum Installieren dieses Cmdlets finden Sie bei Bedarf [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Im folgenden Beispiel wird die Größe des Datenträgers von 100,5 MiB in 101 MiB geändert, um die Azure-Ausrichtungsanforderung zu erfüllen.
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+Ersetzen Sie in diesem Beispiel den Wert für **Path** durch den Pfad der virtuellen Festplatte, deren Größe Sie ändern möchten. Ersetzen Sie den Wert für **SizeBytes** durch die neue Größe für den Datenträger (in Bytes).
 
 ## <a name="system-file-checker"></a>System File Checker
 
@@ -54,49 +121,6 @@ Windows Resource Protection did not find any integrity violations.
 ```
 
 Nachdem die SFC-Prüfung abgeschlossen wurde, versuchen Sie, Windows-Updates zu installieren und den Computer neu zu starten.
-
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Konvertieren des virtuellen Datenträgers in eine VHD mit fester Größe
-
-Verwenden Sie eine der Methoden in diesem Abschnitt, um den virtuellen Datenträger in das für Azure erforderliche Format zu konvertieren:
-
-1. Sichern Sie den virtuellen Computer, bevor Sie den Prozess zum Konvertieren virtueller Datenträger ausführen.
-
-1. Vergewissern Sie sich, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
-
-1. VHD-Größe:
-
-   1. Alle VHDs in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist. Stellen Sie beim Konvertieren von einem RAW-Datenträger in eine VHD sicher, dass die Größe des RAW-Datenträgers vor der Konvertierung ein Vielfaches von 1 MB beträgt.
-      Wenn keine vollen Megabytes verwendet werden, treten beim Erstellen von Images auf der Grundlage der hochgeladenen VHD Fehler auf.
-
-   1. Die maximal zulässige Größe für die Betriebssystem-VHD beträgt 2 TB.
-
-Nachdem Sie den Datenträger konvertiert haben, erstellen Sie einen virtuellen Computer, der den Datenträger verwendet. Starten Sie den virtuellen Computer, und melden Sie sich auf diesem an, um die Vorbereitung für den Upload abzuschließen.
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Verwenden von Hyper-V-Manager zum Konvertieren des Datenträgers
-
-1. Öffnen Sie den Hyper-V-Manager, und wählen Sie auf der linken Seite Ihren lokalen Computer aus. Wählen Sie im Menü über der Computerliste **Aktion** > **Datenträger bearbeiten** aus.
-1. Wählen Sie auf der Seite **Virtuelle Festplatte suchen** Ihren virtuellen Datenträger aus.
-1. Wählen Sie auf der Seite **Aktion auswählen** die Optionen **Konvertieren** > **Weiter** aus.
-1. Zum Konvertieren aus VHDX wählen Sie **VHD** > **Weiter** aus.
-1. Zum Konvertieren aus einem dynamisch erweiterbaren Datenträger wählen Sie **Feste Größe** > **Weiter** aus.
-1. Navigieren Sie zu einem Pfad zum Speichern der neuen VHD-Datei, und wählen Sie ihn aus.
-1. Wählen Sie **Fertig stellen** aus.
-
-### <a name="use-powershell-to-convert-the-disk"></a>Verwenden von PowerShell zum Konvertieren des Datenträgers
-
-Sie können einen virtuellen Datenträger mithilfe des PowerShell-Cmdlets [Convert-VHD](/powershell/module/hyper-v/convert-vhd) konvertieren.
-
-Im folgenden Beispiel wird der Datenträger aus VHDX in VHD konvertiert. Der Datenträger wird außerdem aus einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertiert.
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-Ersetzen Sie in diesem Beispiel den Wert für **Path** durch den Pfad zu der virtuellen Festplatte, die Sie konvertieren möchten. Ersetzen Sie den Wert für **DestinationPath** durch den neuen Pfad und Namen für den konvertierten Datenträger.
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertieren des VMware-VMDK-Datenträgerformats
-
-Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) verfügen, konvertieren Sie es mit dem [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) in das VHD-Format. Weitere Informationen finden Sie unter [How to Convert a VMWare VMDK to Hyper-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd) (Konvertieren von VMware-VMDK in Hyper-V-VHD).
 
 ## <a name="set-windows-configurations-for-azure"></a>Festlegen der Windows-Konfigurationen für Azure
 
@@ -453,6 +477,9 @@ Wenn Sie nur eine VM aus einem Datenträger erstellen möchten, ist die Verwendu
 Wenn Sie ein generalisiertes Image erstellen möchten, müssen Sie Sysprep ausführen. Weitere Informationen finden Sie unter [How to Use Sysprep: An introduction.](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)) (Verwenden von Sysprep: Einführung.)
 
 Nicht jede Rolle oder Anwendung, die auf einem Windows-basierten Computer installiert ist, unterstützt generalisierte Images. Stellen Sie vor dem Durchführen dieses Verfahrens sicher, dass Sysprep die Rolle des Computers unterstützt. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen).
+
+Sysprep erfordert insbesondere, dass die Laufwerke vor der Ausführung vollständig entschlüsselt werden. Wenn Sie auf Ihrem virtuellen Computer die Verschlüsselung aktiviert haben, deaktivieren Sie sie, bevor Sie Sysprep ausführen.
+
 
 ### <a name="generalize-a-vhd"></a>Generalisieren einer VHD
 

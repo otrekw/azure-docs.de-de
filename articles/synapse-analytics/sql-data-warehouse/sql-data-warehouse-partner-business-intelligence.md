@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e529e398b90050bf654c702ec34686bdc173c9e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85299329"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Business Intelligence Partner für Azure Synapse Analytics
 
@@ -38,12 +38,12 @@ Wenn Sie Ihre gesamte Data Warehouse-Lösung mit einem Synapse SQL-Pool in Azure
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense ist eine vollständige Business Intelligence-Software mit Tools, die ein Unternehmen für die Analyse und Visualisierung von Daten benötigt: eine leistungsstarke Analysedatenbank, die Möglichkeit, mehrere Datenquellen zusammenzuführen, einfache Datenextraktion (ETL) und webbasierte Datenvisualisierung. Analysieren und visualisieren Sie große DataSets noch heute mit SiSense BI und Analytics. |[Produktseite](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Mit den Self-Service-Analysefunktionen von Tableau können alle Benutzer ihre Daten – angefangen von Flatfiles bis hin zu Datenbanken – einsehen und analysieren. Tableau verfügt über einen nativen, optimierten Connector für Synapse SQL-Pools, der Livedaten- und In-Memory-Analysen unterstützt. |[Produktseite](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Decision Suite)**<br>Targit Decision Suite ist eine BI- und Analyseplattform, die Echtzeit-Dashboards, Self-Service-Analysen, benutzerfreundliche Berichte, beeindruckende mobile Funktionen und eine einfache Datenermittlungstechnologie in einer einzigen einheitlichen Lösung bietet. Targit liefert Unternehmen Impulse zum Handeln. |[Produktseite](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |
-| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>Verwenden Sie die Suchfunktion, um präzise Erkenntnisse zu Milliarden von Datenzeilen zu gewinnen, oder ermitteln Sie per KI Antworten auf Fragen, die Sie bisher nicht zu stellen gewagt haben. Dank ThoughtSpot können Unternehmen innerhalb weniger Sekunden Erkenntnisse erzielen, die in ihren Unternehmensdaten versteckt sind. Analysieren Sie Ihre Daten per Suchfunktion, und nutzen Sie die Funktion für automatisierte Einblicke, wenn Sie diese benötigen.|[Produktseite](https://www.thoughtspot.com)<br>|
+| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>Verwenden Sie die Suchfunktion, um präzise Erkenntnisse zu Milliarden von Datenzeilen zu gewinnen, oder ermitteln Sie per KI Antworten auf Fragen, die Sie bisher nicht zu stellen gewagt haben. Dank ThoughtSpot können Unternehmen innerhalb weniger Sekunden Erkenntnisse erzielen, die sich in den Unternehmensdaten verstecken. Analysieren Sie Ihre Daten per Suchfunktion, und nutzen Sie die Funktion für automatisierte Einblicke, wenn Sie diese jeweils benötigen.|[Produktseite](https://www.thoughtspot.com)<br>|
 | ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin ist laut der von BARC durchgeführten Umfrage „The BI Survey“ ein erstklassiger Anbieter von cloudbasierter BI-Software für Ad-hoc-Berichte und -Dashboards. Stellen Sie eine Verbindung mit dem Synapse SQL-Pool her. Sie können dann ansprechende Berichte und Dashboards mithilfe preisgekrönter Business Intelligence- und Location Intelligence-Funktionen erstellen und freigeben. |[Produktseite](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu unseren anderen Partnern finden Sie unter [Partner für die Datenintegration](sql-data-warehouse-partner-data-integration.md) und [Partner für die Datenverwaltung](sql-data-warehouse-partner-data-management.md).
+Weitere Informationen zu einigen anderen Partnern finden Sie unter [Partner für die Azure Synapse Analytics-Datenintegration](sql-data-warehouse-partner-data-integration.md), [Partner für die Azure Synapse Analytics-Datenverwaltung](sql-data-warehouse-partner-data-management.md) und [Partner für maschinelles Lernen und KI für Azure Synapse Analytics](sql-data-warehouse-partner-machine-learning-ai.md).
 
  

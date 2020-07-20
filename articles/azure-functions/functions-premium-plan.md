@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298513"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -61,7 +61,9 @@ Weitere Informationen finden Sie unter [Integrieren einer Funktions-App in ein A
 
 ### <a name="rapid-elastic-scale"></a>Schnelle elastische Skalierung
 
-Weitere Compute-Instanzen werden automatisch für Ihre App hinzugefügt. Dazu wird die gleiche Logik für schnelle Skalierung verwendet wie für den Verbrauchsplan.  Weitere Informationen zur Funktionsweise von Skalierung finden Sie unter [Skalierung und Hosting von Azure Functions](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Weitere Compute-Instanzen werden automatisch für Ihre App hinzugefügt. Dazu wird die gleiche Logik für schnelle Skalierung verwendet wie für den Verbrauchsplan. Apps im gleichen App Service-Plan werden unabhängig voneinander auf der Grundlage der Anforderungen der jeweiligen App skaliert. Von Funktions-Apps im gleichen App Service-Plan werden VM-Ressourcen jedoch nach Möglichkeit gemeinsam genutzt, um Kosten zu sparen. Die Anzahl von Apps, die einem virtuellen Computer zugeordnet sind, hängt vom Speicherbedarf der einzelnen Apps sowie von der Größe des virtuellen Computers ab.
+
+Weitere Informationen zur Funktionsweise von Skalierung finden Sie unter [Skalierung und Hosting von Azure Functions](./functions-scale.md#how-the-consumption-and-premium-plans-work).
 
 ### <a name="longer-run-duration"></a>Längere Ausführungsdauer
 

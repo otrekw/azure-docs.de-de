@@ -7,21 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554251"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Übersicht über den Datenimport – kognitive Azure-Suche
 
 Bei der kognitiven Azure-Suche werden Abfragen für Inhalte ausgeführt, die in einen [Suchindex](search-what-is-an-index.md) geladen und dort gespeichert wurden. In diesem Artikel werden die zwei grundlegenden Ansätze zum Auffüllen eines Index untersucht: Sie können die Daten programmgesteuert in den Index *pushen*, oder Sie können für einen [Indexer der kognitiven Azure-Suche](search-indexer-overview.md) auf eine unterstützte Datenquelle verweisen, um die Daten zu *pullen*.
 
-Bei beiden Methoden ist das Ziel das *Laden von Daten* aus einer externen Datenquelle in einen Index der kognitiven Azure-Suche. Die kognitive Azure-Suche ermöglicht Ihnen das Erstellen eines leeren Index, dieser kann aber erst abgefragt werden, wenn Sie Daten in ihn pushen oder pullen.
+Bei beiden Methoden besteht das Ziel darin, Daten aus einer externen Datenquelle in einen Azure Cognitive Search-Index zu laden. Die kognitive Azure-Suche ermöglicht Ihnen das Erstellen eines leeren Index, dieser kann aber erst abgefragt werden, wenn Sie Daten in ihn pushen oder pullen.
+
+> [!NOTE]
+> Wenn die Lösung [KI-Anreicherung](cognitive-search-concept-intro.md) erfordert, muss zum Laden eines Index das Pullmodell (Indexer) verwendet werden. Eine externe Verarbeitung wird nur über an einen Indexer angefügte Skillsets unterstützt.
 
 ## <a name="pushing-data-to-an-index"></a>Übertragen von Daten per Pushvorgang in einen Index
+
 Das Pushmodell, das zum programmgesteuerten Senden der Daten an die kognitive Azure-Suche verwendet wird, ist der flexibelste Ansatz. Erstens gelten keine Einschränkungen für den Datenquellentyp. Alle Datasets, die aus JSON-Dokumenten bestehen, können in einen Index der kognitiven Azure-Suche gepusht werden, sofern jedes Dokument im Dataset über Felder verfügt, die den im Indexschema definierten Feldern zugeordnet sind. Zweitens gelten keine Einschränkungen für die Ausführungshäufigkeit. Sie können Änderungen beliebig oft per Pushvorgang in einen Index übertragen. Bei Anwendungen mit sehr niedrigen Latenzanforderungen (wenn z.B. Suchvorgänge mit dynamischen Inventardatenbanken synchronisiert werden müssen) ist das Push-Modell Ihre einzige Option.
 
 Dieser Ansatz ist flexibler als ein Pull-Modell, da Sie Dokumente einzeln oder in Batches hochladen können (bis zu 1000 pro Batch oder 16 MB, je nachdem, welches Limit zuerst erreicht wird). Das Pushmodell ermöglicht Ihnen auch das Hochladen von Dokumenten in die kognitive Azure-Suche, unabhängig davon, wo sich die Daten befinden.
@@ -55,27 +59,26 @@ Beim .NET SDK packen Sie Ihre Daten in einem `IndexBatch`-Objekt. Ein `IndexBatc
 | `mergeOrUpload` |Diese Aktion verhält sich wie `merge`, wenn im Index bereits ein Dokument mit dem entsprechenden Schlüssel vorhanden ist. Wenn das Dokument nicht vorhanden ist, verhält es sich wie `upload` mit einem neuen Dokument. |Schlüssel und alle anderen zu definierenden Felder |- |
 | `delete` |Hiermit wird das angegebene Dokument aus dem Index gelöscht. |Nur Schlüssel |Mit Ausnahme des Schlüsselfelds werden alle angegebenen Felder ignoriert. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `merge` , und setzen Sie das Feld ausdrücklich auf Null. |
 
-## <a name="decide-which-indexing-action-to-use"></a>Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
-So importieren Sie Daten mit dem .NET SDK (upload, merge, delete und mergeOrUpload). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
-
-
 ### <a name="formulate-your-query"></a>Formulieren der Abfrage
+
 Es gibt zwei Möglichkeiten, um [den Index mithilfe der REST-API zu durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Eine Möglichkeit besteht darin, eine HTTP POST-Anforderung auszugeben, wobei die Abfrageparameter in ein JSON-Objekt im Anforderungstext definiert werden. Die andere Möglichkeit besteht darin, eine HTTP GET-Anforderung auszugeben, wobei die Abfrageparameter in der Anforderungs-URL definiert werden. Die Beschränkungen in Bezug auf die Größe der Abfrageparameter sind bei POST [geringer](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) als bei GET. Aus diesem Grund empfehlen wir die Verwendung von POST, sofern GET nicht aufgrund bestimmter Umstände praktischer wäre.
 
-Sowohl für POST als auch für GET müssen Sie in der Anforderungs-URL Ihren *Dienstnamen*, den *Indexnamen* sowie die entsprechende *API-Version* (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2019-05-06`) bereitstellen. Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
+Sowohl bei POST- als auch bei GET-Vorgängen müssen in der Anforderungs-URL der *Dienstname*, der *Indexname* und eine *API-Version* angegeben werden. 
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
 
-Das Format für POST ist das Gleiche, allerdings mit der API-Version in den Parametern für die Abfragezeichenfolge.
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
 
+Das Format für POST ist das Gleiche, allerdings mit `api-version` in den Parametern für die Abfragezeichenfolge.
 
 ## <a name="pulling-data-into-an-index"></a>Übertragen von Daten per Pullvorgang in einen Index
+
 Beim Pull-Modell wird eine unterstützte Datenquelle durchsucht, und die Daten werden für Sie automatisch in Ihren Index hochgeladen. In der kognitiven Azure-Suche wird diese Funktion mit *Indexern* implementiert, die derzeit für folgende Plattformen verfügbar sind:
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Tabellenspeicherung](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
-+ [Azure SQL-Datenbank und SQL Server auf Azure-VMs](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL-Datenbank, SQL Managed Instance und SQL Server auf virtuellen Azure-Computern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Mit Indexern wird für einen Index eine Verbindung mit einer Datenquelle (normalerweise eine Tabelle, Sicht oder ähnliche Struktur) hergestellt, und Quellfelder werden gleichwertigen Feldern im Index zugeordnet. Während der Ausführung wird das Rowset automatisch in JSON transformiert und in den angegebenen Index geladen. Alle Indexer unterstützen die Verwendung von Zeitplänen, sodass Sie angeben können, wie häufig die Daten aktualisiert werden sollen. Die meisten Indexer verfügen über eine Änderungsnachverfolgung, wenn dies von der Datenquelle unterstützt wird. Da Änderungen und Löschvorgänge in vorhandenen Dokumenten nachverfolgt und neue Dokumente erkannt werden, ist es mithilfe von Indexern nicht mehr erforderlich, die Daten in Ihrem Index aktiv zu verwalten. 
 

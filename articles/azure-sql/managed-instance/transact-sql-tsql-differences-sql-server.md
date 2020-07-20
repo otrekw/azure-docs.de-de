@@ -2,21 +2,21 @@
 title: Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 description: In diesem Artikel werden die T-SQL-Unterschiede (Transact-SQL) zwischen Azure SQL Managed Instance und SQL Server beschrieben.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 03/11/2020
+ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 190d0bd242a685487480d4da613f354277663d9c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298446"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -432,7 +432,7 @@ Weitere Informationen zum Konfigurieren von Transaktionsreplikation finden Sie i
   - `FROM URL` (Azure Blob Storage) ist die einzige unterstützte Option.
   - `FROM DISK`/`TAPE`/Sicherungsmedium wird nicht unterstützt.
   - Sicherungssätze werden nicht unterstützt.
-- `WITH`-Optionen wie `DIFFERENTIAL` oder `STATS` werden nicht unterstützt.
+- `WITH`-Optionen werden nicht unterstützt. Wiederherstellungsversuche mit `WITH` wie `DIFFERENTIAL`, `STATS`, `REPLACE` usw. sind nicht erfolgreich.
 - `ASYNC RESTORE`: Die Wiederherstellung wird auch bei einer Unterbrechung der Clientverbindung fortgesetzt. Wenn die Verbindung ausfällt, können Sie sich in der Ansicht `sys.dm_operation_status` über den Status eines Wiederherstellungsvorgangs sowie über CREATE- und DROP-Vorgänge für die Datenbank informieren. Siehe [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Die folgenden Datenbankoptionen werden festgelegt oder überschrieben und können später nicht geändert werden: 
@@ -506,6 +506,9 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 - VNet kann mithilfe des Ressourcenmodells bereitgestellt werden – das klassische Modell wird für VNets nicht unterstützt.
 - Nachdem eine Instanz von SQL Managed Instance erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
 - Einige Dienste, wie App Service-Umgebungen, Logik-Apps und SQL Managed Instance (die für Georeplikation, Transaktionsreplikation oder über Verbindungsserver verwendet werden), können nicht auf SQL Managed Instance in anderen Regionen zugreifen, wenn ihre VNETs mithilfe von [globalem Peering](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) verbunden sind. Sie können sich mit diesen Ressourcen über ExpressRoute oder VNET-zu-VNET über VNet-Gateways verbinden.
+
+### <a name="failover-groups"></a>Failovergruppen
+Systemdatenbanken werden nicht auf die sekundäre Instanz in einer Failovergruppe repliziert. Daher sind Szenarien, die von Objekten aus den Systemdatenbanken abhängen, auf der sekundären Instanz nicht möglich, es sei denn, die Objekte werden manuell auf der sekundären Instanz erstellt.
 
 ### <a name="failover-groups"></a>Failovergruppen
 Systemdatenbanken werden nicht auf die sekundäre Instanz in einer Failovergruppe repliziert. Daher sind Szenarien, die von Objekten aus den Systemdatenbanken abhängen, auf der sekundären Instanz nicht möglich, es sei denn, die Objekte werden manuell auf der sekundären Instanz erstellt.

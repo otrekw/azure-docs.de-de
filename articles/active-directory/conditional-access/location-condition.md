@@ -4,21 +4,20 @@ description: Erfahren Sie, wie Sie die auf dem Netzwerkstandort eines Benutzers 
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 05/28/2020
+ms.topic: conceptual
+ms.date: 06/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253221"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Verwenden der Standortbedingung in einer Richtlinie für bedingten Zugriff 
 
@@ -34,9 +33,9 @@ Organisationen können diesen Netzwerkstandort für gängige Aufgaben wie die fo
 Der Netzwerkstandort wird über die öffentliche IP-Adresse bestimmt, die ein Client in Azure Active Directory angibt. Richtlinien für bedingten Zugriff werden standardmäßig auf alle IPv4- und IPv6-Adressen angewendet. 
 
 > [!TIP]
-> IPv6-Bereiche werden nur in der Schnittstelle **[Benannter Standort (Vorschau)](#preview-features)** unterstützt. 
+> IPv6-Adressbereiche werden nur in der Schnittstelle **[Benannter Standort (Vorschau)](#preview-features)** unterstützt. 
 
-## <a name="named-locations"></a>Benannte Standorte
+## <a name="named-locations"></a>Benannte Orte
 
 Standorte werden im Azure-Portal unter **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Standorte** angegeben. Diese benannten Netzwerkstandorte können Standorte wie z. B. die Netzwerkbereiche des Hauptsitzes einer Organisation, VPN-Netzwerkbereiche oder Bereiche umfassen, die Sie blockieren möchten. 
 
@@ -44,13 +43,13 @@ Standorte werden im Azure-Portal unter **Azure Active Directory** > **Sicherheit
 
 Um einen Standort zu konfigurieren, müssen Sie mindestens einen **Namen** und den IP-Adressbereich angeben. 
 
-Die Anzahl von benannten Standorten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Sie können Standorte basierend auf den folgenden Einschränkungen konfigurieren:
+Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Sie können Standorte basierend auf den folgenden Einschränkungen konfigurieren:
 
 - Einen benannten Standort mit bis zu 1.200 IPv4-Bereichen.
 - Maximal 90 benannte Standorte, denen jeweils ein IP-Bereich zugewiesen ist.
 
 > [!TIP]
-> IPv6-Bereiche werden nur in der Schnittstelle **[Benannter Standort (Vorschau)](#preview-features)** unterstützt. 
+> IPv6-Adressbereiche werden nur in der Schnittstelle **[Benannter Standort (Vorschau)](#preview-features)** unterstützt. 
 
 ### <a name="trusted-locations"></a>Vertrauenswürdige Standorte
 
@@ -65,7 +64,7 @@ Diese Option kann in Richtlinien für bedingten Zugriff einfließen, wenn Sie z.
 Einige Organisationen können sich dafür entscheiden, IP-Grenzen für ganze Länder oder Regionen als benannte Standorte für Richtlinien für bedingten Zugriff zu definieren. Sie können mithilfe dieser Standorte unnötigen Datenverkehr blockieren, wenn sie wissen, dass gültige Benutzer niemals aus einem Standort wie etwa Nordkorea stammen. Diese Zuordnungen von IP-Adressen zu einem Land werden in regelmäßigen Abständen aktualisiert. 
 
 > [!NOTE]
-> Länder umfassen keine IPv6-Adressbereiche, nur bekannte IPv4-Adressbereiche.
+> Länder enthalten keine IPv6-Adressbereiche, sondern nur bekannte IPv4-Adressbereiche, und können nicht als vertrauenswürdig markiert werden.
 
 ![Erstellen eines neuen Standorts basierend auf Land oder Region im Azure-Portal](./media/location-condition/new-named-location-country-region.png)
 
@@ -92,7 +91,7 @@ Für mobile und Desktopanwendungen mit langer Sitzungslebensdauer wird der bedin
 
 Wenn bei beiden Schritten ein Fehler auftritt, wird ein Benutzer nicht mehr als vertrauenswürdige IP angesehen.
 
-## <a name="preview-features"></a>Vorschaufunktionen
+## <a name="preview-features"></a>Previewfunktionen
 
 Zusätzlich zum allgemein verfügbaren Feature für benannte Standorte gibt es das Feature „Benannte Standorte (Vorschau)“. Sie können auf „Benannte Standorte (Vorschau)“ zugreifen, indem Sie oben auf dem Blatt des aktuellen benannten Standorts auf das Banner klicken.
 
@@ -102,7 +101,7 @@ Zusätzlich zum allgemein verfügbaren Feature für benannte Standorte gibt es d
 
 - Konfigurieren von bis zu 195 benannten Standorten
 - Konfigurieren von bis zu 2.000 IP-Adressbereichen pro benanntem Standort
-- Konfigurieren von IPv6-Adressen
+- Konfigurieren von IPv6-Adressen zusätzlich zu IPv4-Adressen
 
 Darüber hinaus wurden einige zusätzliche Überprüfungen eingefügt, um fehlerhafte Konfigurationen zu vermeiden.
 
@@ -115,7 +114,7 @@ Mit der Vorschau stehen bei der Erstellung nun zwei Optionen zur Verfügung:
 - **IP-Adressbereiche (Standort)**
 
 > [!NOTE]
-> Länder umfassen keine IPv6-Adressbereiche, nur bekannte IPv4-Adressbereiche.
+> Länder enthalten keine IPv6-Adressbereiche, sondern nur bekannte IPv4-Adressbereiche, und können nicht als vertrauenswürdig markiert werden.
 
 ![Schnittstelle „Benannte Standorte (Vorschau)“](./media/location-condition/named-location-preview.png)
 
@@ -123,24 +122,48 @@ Mit der Vorschau stehen bei der Erstellung nun zwei Optionen zur Verfügung:
 
 Beim Konfigurieren der Standortbedingung können Sie zwischen diesen Optionen wählen:
 
-- Beliebiger Standort
-- Alle vertrauenswürdigen Standorte
-- Ausgewählte Standorte
+- Jeden beliebigen Speicherort
+- Alle vertrauenswürdigen Speicherorte
+- Ausgewählte Speicherorte
 
-### <a name="any-location"></a>Beliebiger Standort
+### <a name="any-location"></a>Jeden beliebigen Speicherort
 
 Standardmäßig bewirkt das Aktivieren von **Alle Standorte**, dass eine Richtlinie auf alle IP-Adressen angewendet wird, was jede beliebige Adresse im Internet bedeutet. Diese Einstellung ist nicht auf IP-Adressen beschränkt, die von Ihnen als benannter Standort konfiguriert wurden. Wenn Sie **Alle Standorte** aktivieren, können Sie bestimmte Standorte trotzdem noch von einer Richtlinie ausschließen. Beispielsweise können Sie eine Richtlinie auf alle Standorte mit Ausnahme vertrauenswürdiger Standorte anwenden, um den Geltungsbereich auf alle Standorte mit Ausnahme des Unternehmensnetzwerks festzulegen.
 
-### <a name="all-trusted-locations"></a>Alle vertrauenswürdigen Standorte
+### <a name="all-trusted-locations"></a>Alle vertrauenswürdigen Speicherorte
 
 Diese Option gilt für:
 
 - Alle Standorte, die als vertrauenswürdiger Standort gekennzeichnet wurden
 - **Für MFA vertrauenswürdige IPs** (sofern konfiguriert)
 
-### <a name="selected-locations"></a>Ausgewählte Standorte
+### <a name="selected-locations"></a>Ausgewählte Speicherorte
 
-Mit dieser Option können Sie einen oder mehrere benannte Standorte auswählen. Damit eine Richtlinie mit dieser Einstellung gilt, muss ein Benutzer von einem der ausgewählten Standorte aus eine Verbindung herstellen. Wenn Sie auf **Auswählen** klicken, wird das Steuerelement für die Auswahl von benannten Netzwerken geöffnet und zeigt die Liste der benannten Netzwerke an. In dieser Liste ist außerdem zu sehen, ob der Netzwerkstandort als vertrauenswürdig gekennzeichnet wurde. Der benannte Standort, der als **Für MFA vertrauenswürdige IPs** bezeichnet ist, wird zum Einschließen der IP-Einstellungen verwendet, die auf der Einstellungsseite des mehrstufigen Authentifizierungsdiensts konfiguriert werden können.
+Mit dieser Option können Sie einen oder mehrere benannte Speicherorte auswählen. Damit eine Richtlinie mit dieser Einstellung gilt, muss ein Benutzer von einem der ausgewählten Standorte aus eine Verbindung herstellen. Wenn Sie auf **Auswählen** klicken, wird das Steuerelement für die Auswahl von benannten Netzwerken geöffnet und zeigt die Liste der benannten Netzwerke an. In dieser Liste ist außerdem zu sehen, ob der Netzwerkstandort als vertrauenswürdig gekennzeichnet wurde. Der benannte Standort, der als **Für MFA vertrauenswürdige IPs** bezeichnet ist, wird zum Einschließen der IP-Einstellungen verwendet, die auf der Einstellungsseite des mehrstufigen Authentifizierungsdiensts konfiguriert werden können.
+
+## <a name="ipv6-traffic"></a>IPv6-Datenverkehr
+
+Richtlinien für bedingten Zugriff werden standardmäßig auf den gesamten IPv6-Datenverkehr angewendet. Mit der Option [Benannter Standort (Vorschau)](#preview-features) können Sie bestimmte IPv6-Adressbereiche aus einer Richtlinie für bedingten Zugriff ausschließen. Diese Option ist hilfreich, wenn die Richtlinie für bestimmte IPv6-Adressbereiche nicht erzwungen werden soll. Beispiel: Sie möchten eine Richtlinie für Anwendungsfälle in Ihrem Unternehmensnetzwerk nicht erzwingen, und Ihr Unternehmensnetzwerk wird in öffentlichen IPv6-Adressbereichen gehostet.  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Wann tritt bei meinem Mandanten IPv6-Datenverkehr auf?
+
+Azure Active Directory (Azure AD) unterstützt derzeit keine direkten Netzwerkverbindungen mit IPv6. Es gibt jedoch einige Fälle, in denen der Authentifizierungsdatenverkehr über einen anderen Proxydienst geleitet wird. In diesen Fällen wird die IPv6-Adresse bei der Richtlinienauswertung verwendet.
+
+Der größte Teil des IPv6-Datenverkehrs, der über einen Proxy an Azure AD geleitet wird, stammt von Microsoft Exchange Online. Exchange bevorzugt IPv6-Verbindungen, wenn sie verfügbar sind. **Wenn Sie also eine Richtlinie für bedingten Zugriff für Exchange haben, die für bestimmte IPv4-Adressbereiche konfiguriert wurde, sollten Sie sicherstellen, dass Sie auch die IPv6-Adressbereiche Ihrer Organisation hinzugefügt haben.** Wenn Sie IPv6-Adressbereiche nicht einschließen, führt das in den folgenden beiden Fällen zu unerwartetem Verhalten:
+
+- Wenn für die Verbindung mit Exchange Online ein E-Mail-Client mit Legacyauthentifizierung verwendet wird, empfängt Azure AD möglicherweise eine IPv6-Adresse. Die anfängliche Authentifizierungsanforderung gelangt zu Exchange und wird dann über einen Proxy an Azure AD geleitet.
+- Wenn Sie Outlook Web Access (OWA) im Browser verwenden, wird in regelmäßigen Abständen überprüft, ob alle Richtlinien für bedingten Zugriff weiterhin erfüllt werden. Diese Überprüfung wird zum Erfassen von Fällen verwendet, in denen ein Benutzer möglicherweise von einer zulässigen IP-Adresse an einen neuen Standort gewechselt ist (z. B. ein Cafe, das in der Straße ein paar Häuser weitergezogen ist). Wenn Sie in diesem Fall eine IPv6-Adresse verwenden, die sich nicht in einem konfigurierten Bereich befindet, wird die Sitzung möglicherweise unterbrochen, und der Benutzer wird zur erneuten Authentifizierung zurück zu Azure AD geleitet. 
+
+Dies sind die häufigsten Gründe, bei denen Sie an Ihren benannten Standorten möglicherweise IPv6-Adressbereiche konfigurieren müssen. Wenn Sie Azure-VNets verwenden, geht außerdem Datenverkehr von einer IPv6-Adresse ein. Wenn der VNet-Datenverkehr durch eine Richtlinie für bedingten Zugriff blockiert wird, überprüfen Sie Ihr Azure AD-Anmeldeprotokoll. Nachdem Sie den Datenverkehr identifiziert haben, können Sie die verwendete IPv6-Adresse von Ihrer Richtlinie ausschließen. 
+
+> [!NOTE]
+> Wenn Sie für eine einzelne Adresse einen IP-CIDR-Bereich angeben möchten, wenden Sie die /32-Bitmaske an. Wenn z. B. die IPv6-Adresse 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a lautet und Sie diese einzelne Adresse als Adressbereich ausschließen möchten, würden Sie 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/32 verwenden.
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Identifizieren von IPv6-Datenverkehr in den Azure AD-Anmeldeaktivitätsberichten
+
+Sie können den IPv6-Datenverkehr in Ihrem Mandanten ermitteln, indem Sie die [Azure AD-Anmeldeaktivitätsberichte](../reports-monitoring/concept-sign-ins.md) aufrufen. Nachdem Sie den Aktivitätsbericht geöffnet haben, fügen Sie die Spalte „IP-Adresse“ hinzu. Diese Spalte gibt Ihnen die Möglichkeit, den IPv6-Datenverkehr zu ermitteln.
+
+Sie können auch nach der Client-IP-Adresse suchen, indem Sie auf eine Zeile im Bericht klicken und dann in den Details der Anmeldeaktivität zur Registerkarte „Standort“ wechseln. 
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 

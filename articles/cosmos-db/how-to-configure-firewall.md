@@ -3,15 +3,15 @@ title: Konfigurieren einer IP-Firewall für Ihr Azure Cosmos DB-Konto
 description: Hier erfahren Sie, wie IP-Zugriffssteuerungsrichtlinien für die Firewallunterstützung in Azure Cosmos-Datenbankkonten konfiguriert werden.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1f1ac9e7c5d44fd5cf6e7d692a71f5cf34b48df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78162943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261680"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Sie können die in Ihrem Azure Cosmos DB-Konto gespeicherten Daten mithilfe von 
 
 Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite für das Azure Cosmos DB-Konto, und wählen Sie im Navigationsmenü **Firewall und virtuelle Netzwerke** aus. Ändern Sie den Wert **Zugriff zulassen über** in **Ausgewählte Netzwerke**, und klicken Sie dann auf **Speichern**.
 
-![Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal](./media/how-to-configure-firewall/azure-portal-firewall.png)
+:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal":::
 
 Wenn die IP-Zugriffssteuerung aktiviert ist, können Sie im Azure-Portal IP-Adressen, IP-Adressbereiche und Schalter angeben. Schalter ermöglichen den Zugriff auf andere Azure-Dienste und das Azure-Portal. Details zu diesen Schaltern finden Sie in den folgenden Abschnitten.
 
@@ -45,13 +45,13 @@ Wenn Sie eine IP-Zugriffssteuerungsrichtlinie programmgesteuert aktivieren, müs
 
 Sie können Anforderungen für den Zugriff auf das Azure-Portal ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Zugriff über das Azure-Portal zulassen** auswählen:
 
-![Screenshot: Aktivieren des Zugriffs auf das Azure-Portal](./media/how-to-configure-firewall/enable-azure-portal.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Screenshot: Aktivieren des Zugriffs auf das Azure-Portal":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Zulassen von Anforderungen von globalen Azure-Rechenzentren oder anderen Quellen in Azure
 
 Wenn Sie in Diensten, die keine statische IP bereitstellen, z.B. Azure Stream Analytics oder Azure Functions, auf das Azure Cosmos DB-Konto zugreifen, können Sie dennoch den Zugriff über die IP-Firewall einschränken. Sie können den Zugriff über andere Quellen innerhalb von Azure ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Verbindungen aus Azure-Rechenzentren akzeptieren** auswählen:
 
-![Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal](./media/how-to-configure-firewall/enable-azure-services.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal":::
 
 Wenn Sie diese Option aktivieren, wird die IP-Adresse `0.0.0.0` zur Liste der zulässigen IP-Adressen hinzugefügt. Die IP-Adresse `0.0.0.0` beschränkt Anforderungen für das Azure Cosmos DB-Konto auf den IP-Adressbereich des Azure-Rechenzentrums. Mit dieser Einstellung ist der Zugriff auf das Azure Cosmos DB-Konto über andere IP-Adressbereiche nicht zulässig.
 
@@ -66,7 +66,7 @@ Das Portal erkennt die Client-IP-Adresse automatisch. Es kann sich um die Client
 
 Um Ihre aktuelle IP-Adresse zur IP-Liste hinzuzufügen, aktivieren Sie die Option **Meine aktuelle IP-Adresse hinzufügen**. Klicken Sie dann auf **Speichern**.
 
-![Screenshot: Konfigurieren der Firewalleinstellungen für die aktuelle IP-Adresse](./media/how-to-configure-firewall/enable-current-ip.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Screenshot: Konfigurieren der Firewalleinstellungen für die aktuelle IP-Adresse":::
 
 ### <a name="requests-from-cloud-services"></a>Anforderungen über Clouddienste
 
@@ -74,7 +74,7 @@ In Azure ist es üblich, dass Clouddienste Dienstlogik der mittleren Ebene mithi
 
 Sie können die IP-Adressen für Ihre Clouddienste im Azure-Portal abrufen (siehe dazu den folgenden Screenshot).
 
-![Screenshot mit der öffentlichen IP-Adresse für einen Clouddienst im Azure-Portal](./media/how-to-configure-firewall/public-ip-addresses.png)
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Screenshot: Öffentliche IP-Adresse für einen Clouddienst im Azure-Portal":::
 
 Wenn Sie Ihren Clouddienst aufskalieren, indem Sie Rolleninstanzen hinzufügen, haben diese neuen Instanzen automatisch Zugriff auf das Azure Cosmos DB-Konto, da sie zum gleichen Clouddienst gehören.
 
@@ -84,7 +84,7 @@ Sie können auch [virtuelle Computer](https://azure.microsoft.com/services/virtu
 
 Sie können die IP-Adressen für virtuelle Computer wie im folgenden Screenshot gezeigt im Azure-Portal abrufen:
 
-![Screenshot mit einer öffentlichen IP-Adresse für einen virtuellen Computer im Azure-Portal](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Screenshot: Öffentliche IP-Adresse für einen virtuellen Computer im Azure-Portal":::
 
 Wenn Sie der Gruppe VM-Instanzen hinzufügen, erhalten diese automatisch Zugriff auf das Azure Cosmos DB-Konto.
 

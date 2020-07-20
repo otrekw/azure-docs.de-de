@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945340"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 
@@ -55,7 +55,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Für die Abfrage der Azure Monitor-API sollte die Clientanwendung für die Authentifizierung den vorher erstellten Dienstprinzipal verwenden. Das folgende beispielhafte PowerShell-Skript zeigt einen Ansatz, wie die [Active Directory Authentication Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) verwendet werden kann, um das JWT-Authentifizierungstoken zu erhalten. Das JWT-Token wird als Teil eines HTTP-Autorisierungsparameters bei Anforderungen an die Azure Monitor-REST-API weitergegeben.
+Für die Abfrage der Azure Monitor-API sollte die Clientanwendung für die Authentifizierung den vorher erstellten Dienstprinzipal verwenden. Das folgende PowerShell-Beispielskript zeigt einen Ansatz, wie die [Active Directory Authentication Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) verwendet werden kann, um das JWT-Authentifizierungstoken zu erhalten. Das JWT-Token wird als Teil eines HTTP-Autorisierungsparameters bei Anforderungen an die Azure Monitor-REST-API weitergegeben.
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -652,7 +652,7 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Führen Sie, wie im folgenden Beispiel dargestellt, den Befehl `az storage account show` aus, um die Ressourcen-ID für ein Azure Storage-Konto mithilfe von Azure CLI abzurufen:
 
@@ -705,16 +705,30 @@ Die Ergebnisse sollten in etwa wie das folgende Beispiel aussehen:
 
 ## <a name="retrieve-activity-log-data"></a>Abrufen von Aktivitätsprotokolldaten
 
-Außer Metrikdefinitionen und den entsprechenden Werten können auch zusätzliche interessante Informationen über Ihre Azure-Ressourcen mithilfe der Azure Monitor-REST-API abgerufen werden. So können beispielsweise [Aktivitätsprotokolldaten](https://msdn.microsoft.com/library/azure/dn931934.aspx) abgefragt werden. Das folgende Muster zeigt die Verwendung der Azure Monitor-REST-API, um Aktivitätsprotokolldaten innerhalb eines bestimmten Zeitraums für Ihr Azure-Abonnement abzufragen:
+Außer Metrikdefinitionen und den entsprechenden Werten können auch zusätzliche interessante Informationen über Ihre Azure-Ressourcen mithilfe der Azure Monitor-REST-API abgerufen werden. So können beispielsweise [Aktivitätsprotokolldaten](https://msdn.microsoft.com/library/azure/dn931934.aspx) abgefragt werden. In den folgenden Beispielanforderungen wird die Azure Monitor-REST-API zum Abfragen des Aktivitätsprotokolls verwendet.
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+Abrufen von Aktivitätsprotokollen mit Filter:
+
+``` HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+Abrufen von Aktivitätsprotokollen mit Filter und Auswahlfunktion:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Abrufen von Aktivitätsprotokollen mit Auswahlfunktion:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Abrufen von Aktivitätsprotokollen ohne Filter oder Auswahlfunktion:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

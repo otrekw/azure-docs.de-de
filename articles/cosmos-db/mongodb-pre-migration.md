@@ -4,15 +4,15 @@ description: In diesem Artikel erhalten Sie einen Überblick über die Vorausset
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
-ms.date: 01/09/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263057"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Vorbereitende Schritte für Datenmigrationen von MongoDB zur Azure Cosmos DB-API für MongoDB
 
@@ -79,7 +79,10 @@ Die Partitionierung (auch als Sharding bezeichnet) ist ein wichtiger Aspekt, den
 Auf ähnliche Weise fügt die Partitionierungsfunktion automatisch Kapazität hinzu und gleicht die Daten entsprechend neu aus. Ausführliche Informationen und Empfehlungen zum Auswählen des richtigen Partitionsschlüssels für Ihre Daten finden Sie unter [Auswählen eines Partitionsschlüssels](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Indizieren Ihrer Daten
-Standardmäßig wendet Azure Cosmos DB die automatische Indizierung auf alle eingefügten Daten an. Die von Azure Cosmos DB bereitgestellten Indizierungsfunktionen umfassen das Hinzufügen von zusammengesetzten Indizes, eindeutigen Indizes und Time-to-Live-Indizes (TTL-Indizes). Die Indexverwaltungsschnittstelle wird dem Befehl `createIndex()` zugeordnet. Weitere Informationen finden Sie unter [Indizieren mit der API für MongoDB von Azure Cosmos DB](mongodb-indexing.md).
+
+Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 indiziert automatisch nur das Feld `_id`. Dieses Feld kann nicht gelöscht werden. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. Um zusätzliche Felder zu indizieren, verwenden Sie die MongoDB-Indexverwaltungsbefehle. Diese Standardindizierungsrichtlinie unterscheidet sich von der Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
+
+Die von Azure Cosmos DB bereitgestellten Indizierungsfunktionen umfassen das Hinzufügen von zusammengesetzten Indizes, eindeutigen Indizes und Time-to-Live-Indizes (TTL-Indizes). Die Indexverwaltungsschnittstelle wird dem Befehl `createIndex()` zugeordnet. Weitere Informationen finden Sie im Artikel [Indizieren in der API für MongoDB von Azure Cosmos DB](mongodb-indexing.md).
 
 MongoDB-Sammlungen mit eindeutigen Indizes werden von [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automatisch migriert. Die eindeutigen Indizes müssen jedoch vor der Migration erstellt werden. Wenn sich in den Sammlungen bereits Daten befinden, wird die Erstellung eindeutiger Indizes von Azure Cosmos DB nicht unterstützt. Weitere Informationen finden Sie unter [Eindeutige Schlüssel in Azure Cosmos DB](unique-keys.md).
 

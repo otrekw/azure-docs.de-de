@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75500023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261782"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Visualisieren der in der Gremlin-API von Azure Cosmos DB gespeicherten Diagrammdaten mit Datenvisualisierungslösungen
 
@@ -20,17 +20,17 @@ Sie können die in der Gremlin-API von Azure Cosmos DB gespeicherten Daten mit v
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
-![Linkurious-Logo](./media/graph-visualization/linkurious-logo.jpg)
+:::image type="content" source="./media/graph-visualization/linkurious-logo.jpg" alt-text="Linkurious-Logo" border="false":::
 
 [Linkurious Enterprise](https://linkurio.us/product/) nutzt Grafiktechnologie und Datenvisualisierung, um komplexe Datensätze in interaktive visuelle Netzwerke zu verwandeln. Die Plattform stellt eine Verbindung mit Ihren Datenquellen her und ermöglicht es Ermittlern, nahtlos durch Milliarden von Entitäten und Beziehungen zu navigieren. So lassen sich verdächtige Beziehungen erkennen, ohne mit Abfragen oder Tabellen herumjonglieren zu müssen.
 
 Die interaktive Benutzeroberfläche von Linkurious Enterprise bietet eine einfache Möglichkeit, komplexe Daten zu untersuchen. Sie können nach bestimmten Entitäten suchen, Verbindungen erweitern, um versteckte Beziehungen aufzudecken, und Layouts Ihrer Wahl anwenden, um komplexe Netzwerke zu entwirren. Linkurious Enterprise ist jetzt mit der Gremlin-API von Azure Cosmos DB kompatibel. Die Plattform eignet sich für umfassende Szenarien zur Visualisierung von Diagrammen und unterstützt Lese- und Schreibfunktionen auf der Benutzeroberfläche. Sie können eine [Demo von Linkurious mit Azure Cosmos DB](https://linkurio.us/contact/) anfordern.
 
-![Linkurious-Demo](./media/graph-visualization/linkurious-demo.gif)
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious-Demo" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-![Cambridge Intelligence-Logo](./media/graph-visualization/ci-logo.png)
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence-Logo" border="false":::
 
 Die Diagrammvisualisierungs-Toolkits von [Cambridge Intelligence](https://cambridge-intelligence.com/products/) unterstützen nun Azure Cosmos DB. Die folgenden zwei Visualisierungstoolkits werden von Azure Cosmos DB unterstützt:
 
@@ -38,11 +38,11 @@ Die Diagrammvisualisierungs-Toolkits von [Cambridge Intelligence](https://cambri
 
 - [Re-Graph für React-Entwickler](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge Intelligence-Demo](./media/graph-visualization/ci-demo-2.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Cambridge Intelligence-Demo" border="false":::
 
 Mit diesen Toolkits können Sie leistungsstarke Anwendungen zur Visualisierung und Analyse von Diagrammen für Ihren Anwendungsfall entwickeln. Sie nutzen leistungsstarkes WebGL-Rendering (Web Graphics Library) und sorgfältig erstellten Code, um den Benutzern eine schnelle und aufschlussreiche Visualisierung zu bieten. Diese Tools sind mit jedem Browser, Gerät, Server und jeder Datenbank kompatibel und werden mit Schritt-für-Schritt-Anleitungen, vollständig dokumentierten APIs und interaktiven Demos geliefert.
 
-![Cambridge Intelligence-Demo](./media/graph-visualization/ci-demo-1.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Cambridge Intelligence-Demo" border="false":::
 
 
 ## <a name="next-steps"></a>Nächste Schritte

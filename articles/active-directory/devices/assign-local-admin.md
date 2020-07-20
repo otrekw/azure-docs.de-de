@@ -4,29 +4,29 @@ description: Hier erfahren Sie, wie Sie Azure-Rollen zur lokalen Administratorgr
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386367"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
 Um ein Windows-Gerät verwalten zu können, müssen Sie Mitglied der lokalen Administratorgruppe sein. Im Rahmen der Einbindung in Azure Active Directory (Azure AD) wird die Mitgliedschaft dieser Gruppe auf einem Gerät von Azure AD aktualisiert. Sie können die Mitgliedschaftsaktualisierung Ihren geschäftlichen Anforderungen entsprechend anpassen. Eine Mitgliedschaftsaktualisierung ist beispielsweise hilfreich, wenn Sie Helpdeskmitarbeitern die Ausführung von Aufgaben ermöglichen möchten, für die Administratorrechte erforderlich sind.
 
-In diesem Artikel wird erläutert, wie die Aktualisierung der Mitgliedschaft funktioniert und wie Sie sie während der Einbindung in Azure AD anpassen können. Der Inhalt dieses Artikels gilt nicht für eine **hybride** Azure AD-Einbindung.
+In diesem Artikel erfahren Sie, wie die Mitgliedschaftsaktualisierung für lokale Administratoren funktioniert und wie Sie sie im Rahmen einer Azure AD-Einbindung anpassen können. Der Inhalt dieses Artikels gilt nicht für Geräte vom Typ **hybrid, in Azure AD eingebunden**.
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-Wenn Sie mithilfe einer Azure AD-Einbindung eine Verbindung zwischen einem Windows-Gerät und Azure AD herstellen, fügt Azure AD die folgenden Sicherheitsprinzipale zur lokalen Administratorgruppe auf dem Gerät hinzu:
+Wenn Sie mithilfe einer Azure AD-Einbindung eine Verbindung zwischen einem Windows-Gerät und Azure AD herstellen, fügt Azure AD der lokalen Administratorgruppe auf dem Gerät die folgenden Sicherheitsprinzipale hinzu:
 
 - Globale Azure AD-Administratorrolle
 - Azure AD-Geräteadministratorrolle 
@@ -59,10 +59,13 @@ Konfigurieren Sie die Einstellung **Weitere lokale Administratoren für in Azure
 >[!NOTE]
 > Für diese Option ist ein Azure AD Premium-Mandant erforderlich. 
 
-Geräteadministratoren werden allen in Azure AD eingebundenen Geräten zugewiesen. Sie können Geräteadministratoren nicht auf eine bestimmte Gerätegruppe beschränken. Die Aktualisierung der Geräteadministratorrolle wirkt sich nicht unbedingt unmittelbar auf die betroffenen Benutzer aus. Auf Geräten, auf denen bereits ein Benutzer angemeldet ist, wird die Berechtigungsaktualisierung durchgeführt, wenn die *beiden* folgenden Voraussetzungen erfüllt sind:
+Geräteadministratoren werden allen in Azure AD eingebundenen Geräten zugewiesen. Sie können Geräteadministratoren nicht auf eine bestimmte Gerätegruppe beschränken. Die Aktualisierung der Geräteadministratorrolle wirkt sich nicht unbedingt unmittelbar auf die betroffenen Benutzer aus. Auf Geräten, auf denen bereits ein Benutzer angemeldet ist, wird die Rechteerweiterung durchgeführt, wenn die *beiden* folgenden Voraussetzungen erfüllt sind:
 
-- Azure AD hatte vier Stunden Zeit, ein neues primäres Aktualisierungstoken mit den entsprechenden Berechtigungen auszustellen. 
+- Azure AD hatte bis zu vier Stunden Zeit, ein neues primäres Aktualisierungstoken mit den entsprechenden Berechtigungen auszustellen. 
 - Die Benutzer melden sich ab und wieder an (kein Sperren/Entsperren), um ihr Profil zu aktualisieren.
+
+>[!NOTE]
+> Die obigen Aktionen gelten nicht für Benutzer, die sich bislang noch nicht bei dem entsprechenden Gerät angemeldet haben. In diesem Fall werden die Administratorrechte sofort nach der erstmaligen Anmeldung bei dem Gerät angewendet. 
 
 ## <a name="manage-regular-users"></a>Verwalten der regulären Benutzer
 
@@ -88,7 +91,7 @@ Sie können der Geräteadministratorrolle nur einzelne Benutzer, aber keine Grup
 
 Geräteadministratoren werden allen in Azure AD eingebundenen Geräten zugewiesen. Sie können sie nicht auf eine bestimmte Gruppe von Geräten begrenzen.
 
-Wenn Sie Benutzer aus der Geräteadministratorrolle entfernen, verfügen sie weiterhin über die Berechtigung eines lokalen Administrators auf einem Gerät, solange sie bei ihm angemeldet sind. Die Berechtigung wird bei der nächsten Anmeldung oder nach vier Stunden bei Ausgabe eines neuen primären Aktualisierungstokens aufgehoben.
+Wenn Sie Benutzer aus der Geräteadministratorrolle entfernen, verfügen sie weiterhin über die Berechtigung eines lokalen Administrators auf einem Gerät, solange sie bei ihm angemeldet sind. Die Berechtigung wird bei der nächsten Anmeldung im Zuge der Ausgabe eines neuen primären Aktualisierungstokens entzogen. Dies kann ähnlich wie bei der Rechteerweiterung bis zu vier Stunden dauern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

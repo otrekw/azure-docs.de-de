@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74382195"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024076"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Sicherheitsübersicht
 
@@ -56,7 +56,7 @@ Auf der Kachel „Nicht geschützte riskante Anmeldungen“ wird die Anzahl der 
 
 ### <a name="legacy-authentication"></a>Legacyauthentifizierung
 
-Auf der Kachel „Legacyauthentifizierung“ wird die Anzahl der Legacyauthentifizierungen in Ihrer Organisation in der letzten Woche angezeigt. Ältere Authentifizierungsprotokolle unterstützen keine modernen Sicherheitsmethoden wie z.B. eine mehrstufige Authentifizierung. Um Legacyauthentifizierungen zu verhindern, können Sie eine Richtlinie für bedingten Zugriff anwenden. Durch Klicken auf die Kachel „Legacyauthentifizierung“ gelangen Sie zu „Identity Secure Score“.
+Auf der Kachel „Legacyauthentifizierung“ wird die Anzahl der risikobehafteten Legacyauthentifizierungen in Ihrer Organisation in der letzten Woche angezeigt. Ältere Authentifizierungsprotokolle unterstützen keine modernen Sicherheitsmethoden wie z.B. eine mehrstufige Authentifizierung. Um Legacyauthentifizierungen zu verhindern, können Sie eine Richtlinie für bedingten Zugriff anwenden. Durch Klicken auf die Kachel „Legacyauthentifizierung“ gelangen Sie zu „Identity Secure Score“.
 
 ### <a name="identity-secure-score"></a>Identity Secure Score
 

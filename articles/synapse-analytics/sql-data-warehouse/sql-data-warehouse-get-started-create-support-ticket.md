@@ -4,18 +4,18 @@ description: Informationen zum Erstellen einer Supportanfrage im Azure-Portal f�
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/10/2020
 author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212274"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Anfordern von Kontingenterhöhungen und Erhalten von Unterstützung für Azure Synapse Analytics
 
@@ -53,59 +53,89 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal eine neue Supportanfr
 
    ![Auswählen eines Kontingenttyps](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. Wählen Sie im Fenster **Details** die Option **Details angeben** aus, um zusätzliche Informationen einzugeben.
+1. Wählen Sie im Fenster **Details** die Option **Details eingeben** aus, um zusätzliche Informationen einzugeben.
 
    ![Der Link „Details angeben“](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>Kontingentanforderungstypen
 
-Wenn Sie auf **Details angeben** klicken, wird das Fenster **Kontingentdetails** angezeigt, in dem Sie zusätzliche Informationen hinzufügen können. In den folgenden Abschnitten werden die verschiedenen Kontingentanforderungen beschrieben, die für Azure Synapse Analytics zur Verfügung stehen.
+Wenn Sie **Details eingeben** auswählen, wird das Fenster **Kontingentdetails** angezeigt, in dem Sie zusätzliche Informationen hinzufügen können. In den folgenden Abschnitten werden die verschiedenen Kontingentanforderungen beschrieben, die für Azure Synapse Analytics zur Verfügung stehen.
 
-### <a name="data-warehouse-units-dwus-per-server"></a>Data Warehouse-Einheiten (DWUs) pro Server
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>Synapse SQL-Pool: Data Warehouse-Einheiten (DWUs) pro Server
 
 Führen Sie die folgenden Schritte aus, um eine Erhöhung der DWUs pro Server anzufordern.
 
-1. Wählen Sie den Kontingenttyp **Data Warehouse-Einheiten (DWUs) pro Server** aus.
+1. Wählen Sie den Kontingenttyp **Synapse SQL pool DWUs per server** (Synapse SQL-Pool: DWUs pro Server) aus.
 
-1. Wählen Sie in der Liste **Ressourcen** die Zielressource aus.
+1. Wählen Sie in der Dropdownliste **Ressource** die Ressource für die Kontingenterhöhung aus.
 
-1. Geben Sie im Feld **Kontingent anfordern** den neuen DTU-Grenzwert ein, den Sie anfordern möchten.
+1. Geben Sie im Abschnitt **Kontingent anfordern** das neue Kontingent ein.
+
+1. Wählen Sie **Speichern und fortfahren** aus.
 
    ![DWU-Kontingentdetails](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
+
 ### <a name="servers-per-subscription"></a>Server pro Abonnement
 
-Führen Sie die folgenden Schritte aus, um eine Erhöhung der Anzahl der Server pro Abonnement anzufordern.
+Wenn Sie eine Erhöhung der Serveranzahl pro Abonnement anfordern möchten, gehen Sie wie folgt vor:
 
-1. Wählen Sie den Kontingenttyp **Server pro Abonnement** aus.
+1. Wählen Sie den Kontingenttyp **SQL Servers per subscription** (SQL Server-Instanzen pro Abonnement) aus.
 
 1. Wählen Sie in der Liste **Standort** die zu verwendende Azure-Region aus. Das Kontingent gilt pro Abonnement in jeder Region.
 
-1. Geben Sie im Feld **Neues Kontingent** Ihre Anforderung für die maximale Anzahl von Servern in dieser Region ein.
+1. Geben Sie im Feld **Kontingent anfordern** Ihre Anforderung für die maximale Anzahl von Servern in dieser Region ein.
 
    ![Serverkontingentdetails](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
+
+
+1. Wählen Sie **Speichern und fortfahren** aus.
+
+Einige Angebotstypen sind nicht in allen Regionen verfügbar. Es wird möglicherweise der folgende Fehler angezeigt:
+
+![Regionszugriffsfehler](./media/sql-data-warehouse-get-started-create-support-ticket/region-access-error.png)
+
 ### <a name="enable-subscription-access-to-a-region"></a>Aktivieren des Abonnementzugriffs auf eine Region
 
-Einige Angebotstypen sind nicht in allen Regionen verfügbar. Unter Umständen wird beispielsweise folgender Fehler angezeigt:
+Gehen Sie wie folgt vor, um den Regionszugriff für ein Abonnement zu aktivieren:  
 
-`This location is not available for subscription`
+1. Wählen Sie den Kontingenttyp **Synapse SQL pool (data warehouse) region access** (Synapse SQL-Pool: Regionszugriff (Data Warehouse)) aus.
 
-Wenn Ihr Abonnement Zugriff auf eine bestimmte Region benötigt, verwenden Sie die Option **Andere Kontingentanforderung**, um den Zugriff anzufordern. Geben Sie in Ihrer Anforderung die Details zu dem Angebot und der SKU an, die Sie für die Region aktivieren möchten. Informationen zu den Angebots- und SKU-Optionen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+1. Wählen Sie in der Dropdownliste **Standort** einen Standort aus, um die Region auszuwählen.
+
+1. Geben Sie im Abschnitt **DWU required** (DWU-Bedarf) Ihren DWU-Leistungsbedarf an.
+
+1. Geben Sie unter **Description of business requirements** (Beschreibung der Geschäftsanforderungen) eine entsprechende Beschreibung ein. 
+
+1. Wählen Sie **Speichern und fortfahren** aus.
+
+![Regionszugriff](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-region.png)
+
+
+### <a name="for-other-quota-requests"></a>Sonstige Kontingentanforderungen
+
+Wählen Sie für andere Arten von Kontingentanforderungen im Dropdownmenü für den Kontingenttyp die Option **Andere Kontingentanforderung** aus:
 
 ![Weitere Kontingentdetails](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>Senden der Anforderung
 
-Der letzte Schritt besteht darin, die verbleibenden Details der Supportanfrage für die SQL-Datenbank einzugeben. Wählen Sie anschließend **Next: Bewerten + erstellen>>** aus, und klicken Sie nach dem Überprüfen der Anforderungsdetails auf **Erstellen**, um die Anforderung zu übermitteln.
+Der letzte Schritt besteht darin, die verbleibenden Details der Supportanfrage für die SQL-Datenbank einzugeben. Wählen Sie anschließend **Weiter: Überprüfen + erstellen >>** aus.
+
+![„Überprüfen + erstellen“: Details](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+
+Wählen Sie nach dem Überprüfen der Anforderungsdetails **Erstellen** aus, um die Anforderung zu übermitteln.
+
+![Erstellen eines Tickets](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>Überwachen eines Supporttickets
 
-Nachdem Sie die Supportanfrage übermittelt haben, nimmt das Azure-Supportteam Kontakt mit Ihnen auf. Klicken Sie zum Überprüfen des Anfragestatus und der Details auf dem Dashboard auf **Alle Supportanfragen**.
+Nachdem Sie die Supportanfrage übermittelt haben, nimmt das Azure-Supportteam Kontakt mit Ihnen auf. Wählen Sie zum Überprüfen des Anfragestatus und der Details auf dem Dashboard die Option **Alle Supportanfragen** aus.
 
 ![Status überprüfen](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>Weitere Ressourcen
 
-Sie können sich außerdem an der Azure Synapse Analytics-Community unter [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) oder über die [Q&A-Seite von Microsoft für Azure SQL Data Warehouse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) beteiligen.
+Sie können auch Kontakt mit der Azure Synapse Analytics-Community aufnehmen – entweder über [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) oder über die [Q&A-Seite von Microsoft für Azure Synapse Analytics](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
 

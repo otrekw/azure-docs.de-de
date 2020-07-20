@@ -3,21 +3,21 @@ title: Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cos
 description: Informationen zum Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos DB-Konto mit Azure Key Vault
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267085"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027771"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 
 Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit von Microsoft verwalteten Schlüsseln (**vom Dienst verwaltete Schlüssel**) verschlüsselt. Sie können optional eine zweite Verschlüsselungsschicht mit von Ihnen verwalteten Schlüsseln (**vom Kunden verwaltete Schlüssel**) hinzufügen.
 
-![Verschlüsselungsschicht um Kundendaten](./media/how-to-setup-cmk/cmk-intro.png)
+:::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
 Sie müssen vom Kunden verwaltete Schlüssel in [Azure Key Vault](../key-vault/general/overview.md) speichern und einen Schlüssel für jedes Azure Cosmos-Konto bereitstellen, für das vom Kunden verwalteten Schlüssel aktiviert sind. Dieser Schlüssel wird zum Verschlüsseln aller in diesem Konto gespeicherten Daten verwendet.
 
@@ -28,11 +28,11 @@ Sie müssen vom Kunden verwaltete Schlüssel in [Azure Key Vault](../key-vault/g
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, navigieren Sie zu Ihrem Azure-Abonnement, und wählen Sie auf der Registerkarte **Einstellungen** die Option **Ressourcenanbieter** aus:
 
-   ![Eintrag „Ressourcenanbieter“ im linken Menü](./media/how-to-setup-cmk/portal-rp.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="Eintrag „Ressourcenanbieter“ im linken Menü":::
 
 1. Suchen Sie nach dem Ressourcenanbieter **Microsoft.DocumentDB**. Überprüfen Sie, ob der Ressourcenanbieter bereits als registriert gekennzeichnet ist. Wenn dies nicht der Fall ist, wählen Sie den Ressourcenanbieter aus, und wählen Sie dann **Registrieren** aus:
 
-   ![Registrieren des Ressourcenanbieters „Microsoft.DocumentDB“](./media/how-to-setup-cmk/portal-rp-register.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="Registrieren des Ressourcenanbieters „Microsoft.DocumentDB“":::
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Konfigurieren Ihrer Azure Key Vault-Instanz
 
@@ -40,7 +40,7 @@ Wenn Sie kundenseitig verwaltete Schlüssel mit Azure Cosmos DB verwenden, müss
 
 Wenn Sie eine neue Azure Key Vault-Instanz erstellen, aktivieren Sie diese Eigenschaften während der Erstellung:
 
-![Aktivieren des vorläufigen Löschens und des Löschschutzes für eine neue Azure Key Vault-Instanz](./media/how-to-setup-cmk/portal-akv-prop.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="Aktivieren des vorläufigen Löschens und des Löschschutzes für eine neue Azure Key Vault-Instanz":::
 
 Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfen, ob diese Eigenschaften aktiviert sind, indem Sie sich im Azure-Portal den Abschnitt **Eigenschaften** ansehen. Ist eine dieser Eigenschaften nicht aktiviert, finden Sie in den Abschnitten „Aktivieren des vorläufigen Löschens“ und „Aktivieren des Bereinigungsschutzes“ in einem der folgenden Artikel weitere Informationen:
 
@@ -51,17 +51,17 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
 
 1. Navigieren Sie im Azure-Portal zu der Azure Key Vault-Instanz, die Sie zum Hosten Ihrer Verschlüsselungsschlüssel verwenden möchten. Wählen Sie im linken Menü die Option **Zugriffsrichtlinien** aus.
 
-   ![„Zugriffsrichtlinien“ im linken Menü](./media/how-to-setup-cmk/portal-akv-ap.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="Zugriffsrichtlinien im linken Menü":::
 
 1. Wählen Sie **+ Zugriffsrichtlinie hinzufügen** aus.
 
 1. Wählen Sie im Dropdownmenü **Schlüsselberechtigungen** die Berechtigungen **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen** aus:
 
-   ![Auswählen der richtigen Berechtigungen](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="Auswählen der richtigen Berechtigungen":::
 
 1. Wählen Sie unter **Prinzipal auswählen** die Option **Nichts ausgewählt** aus. Suchen Sie dann nach dem **Azure Cosmos DB**-Prinzipal, und wählen Sie ihn aus (um ihn leichter zu finden, können Sie auch nach der Prinzipal-ID suchen: `a232010e-820c-4083-83bb-3ace5fc29d0b` für alle Azure-Regionen, mit Ausnahme der Azure Government-Regionen, bei denen die Prinzipal-ID `57506a73-e302-42a9-b869-6f12d9ec29e9` lautet). Wählen Sie schließlich im unteren Bereich **Auswählen** aus. Wenn der Prinzipal **Azure Cosmos DB** nicht in der Liste aufgeführt ist, müssen Sie möglicherweise den Ressourcenanbieter **Microsoft.DocumentDB** erneut registrieren (wie im Abschnitt [Registrieren des Ressourcenanbieters](#register-resource-provider) in diesem Artikel beschrieben).
 
-   ![Auswählen des Azure Cosmos DB-Prinzipals](./media/how-to-setup-cmk/portal-akv-add-ap.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Auswählen des Azure Cosmos DB-Prinzipals":::
 
 1. Wählen Sie **Hinzufügen** aus, um die neue Zugriffsrichtlinie hinzuzufügen.
 
@@ -69,17 +69,17 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
 
 1. Navigieren Sie im Azure-Portal zu der Azure Key Vault-Instanz, die Sie zum Hosten Ihrer Verschlüsselungsschlüssel verwenden möchten. Wählen Sie dann im linken Menü die Option **Schlüssel** aus:
 
-   ![Eintrag „Schlüssel“ im linken Menü](./media/how-to-setup-cmk/portal-akv-keys.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Eintrag „Schlüssel“ im linken Menü":::
 
 1. Wählen Sie **Generieren/Importieren** aus, geben Sie einen Namen für den neuen Schlüssel an, und wählen Sie eine RSA-Schlüsselgröße aus. Es wird eine Größe von mindestens 3072 empfohlen, da diese Größe die höchste Sicherheit bietet. Wählen Sie anschließend **Erstellen** aus:
 
-   ![Erstellen eines neuen Schlüssels](./media/how-to-setup-cmk/portal-akv-gen.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="Erstellen eines neuen Schlüssels":::
 
 1. Wählen Sie nach der Schlüsselerstellung den neu erstellten Schlüssel und dann seine aktuelle Version aus.
 
 1. Kopieren Sie den **Schlüsselbezeichner** des Schlüssels mit Ausnahme des Teils nach dem letzten Schrägstrich:
 
-   ![Kopieren des Schlüsselbezeichners des Schlüssels](./media/how-to-setup-cmk/portal-akv-keyid.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="Kopieren des Schlüsselbezeichners des Schlüssels":::
 
 ## <a name="create-a-new-azure-cosmos-account"></a>Erstellen eines neuen Azure Cosmos-Kontos
 
@@ -87,7 +87,7 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
 
 Wählen Sie beim Erstellen eines neuen Azure Cosmos DB-Kontos im Azure-Portal im Schritt **Verschlüsselung** die Option **Vom Kunden verwalteter Schlüssel** aus. Fügen Sie in das Feld **Schlüssel-URI** den URI/Schlüsselbezeichner des Azure Key Vault-Schlüssels ein, den Sie im vorherigen Schritt kopiert haben:
 
-![Festlegen der CMK-Parameter im Azure-Portal](./media/how-to-setup-cmk/portal-cosmos-enc.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="Festlegen der CMK-Parameter im Azure-Portal":::
 
 ### <a name="using-azure-powershell"></a><a id="using-powershell"></a> Verwenden von Azure PowerShell
 
@@ -220,6 +220,31 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="key-rotation"></a>Schlüsselrotation
+
+Die Rotation des kundenseitig verwalteten Schlüssels, der von Ihrem Azure Cosmos-Konto verwendet wird, kann auf zwei Arten erfolgen.
+
+- Erstellen Sie eine neue Version des Schlüssels, der derzeit von Azure Key Vault verwendet wird:
+
+  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Erstellen einer neuen Schlüsselversion":::
+
+- Tauschen Sie den derzeit verwendeten Schlüssel gegen einen völlig anderen aus, indem Sie die Eigenschaft `keyVaultKeyUri` Ihres Kontos aktualisieren. Hier sehen Sie die Vorgehensweise in PowerShell:
+
+    ```powershell
+    $resourceGroupName = "myResourceGroup"
+    $accountName = "mycosmosaccount"
+    $newKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-new-key>"
+    
+    $account = Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
+        -ResourceType "Microsoft.DocumentDb/databaseAccounts"
+    
+    $account.Properties.keyVaultKeyUri = $newKeyUri
+    
+    $account | Set-AzResource -Force
+    ```
+
+Der vorherige Schlüssel oder die vorherige Schlüsselversion kann nach 24 Stunden oder dann deaktiviert werden, wenn in den [Azure Key Vault-Überwachungsprotokollen](../key-vault/general/logging.md) keine Aktivitäten mehr von Azure Cosmos DB für diesen Schlüssel oder diese Schlüsselversion angezeigt werden.
+    
 ## <a name="error-handling"></a>Fehlerbehandlung
 
 Wenn bei der Verwendung von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) in Azure Cosmos DB Fehler auftreten, gibt Azure Cosmos DB die Fehlerdetails zusammen mit einem HTTP-Unterstatuscode in der Antwort zurück. Mit diesem Unterstatuscode können Sie die Grundursache des Problems debuggen. Eine Liste der unterstützten HTTP-Unterstatuscodes finden Sie im Artikel [HTTP-Statuscodes für Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
@@ -268,23 +293,15 @@ Sie können die Details Ihres Azure Cosmos-Kontos programmgesteuert abrufen und
 
 Azure Cosmos DB erstellt [regelmäßige und automatische Sicherungen](./online-backup-and-restore.md) der in Ihrem Konto gespeicherten Daten. Bei diesem Vorgang werden die verschlüsselten Daten gesichert. Um die wiederhergestellte Sicherung verwenden zu können, ist der zum Zeitpunkt der Sicherung verwendete Verschlüsselungsschlüssel erforderlich. Das bedeutet, dass keine Sperrung erfolgt ist und die zum Zeitpunkt der Sicherung verwendete Version des Schlüssels weiterhin aktiviert ist.
 
-### <a name="how-do-i-rotate-an-encryption-key"></a>Wie rotiere ich einen Verschlüsselungsschlüssel?
-
-Die Schlüsselrotation erfolgt durch die Erstellung einer neuen Version des Schlüssels in Azure Key Vault:
-
-![Erstellen einer neuen Schlüsselversion](./media/how-to-setup-cmk/portal-akv-rot.png)
-
-Die vorherige Version kann nach 24 Stunden oder dann deaktiviert werden, wenn in den [Azure Key Vault-Überwachungsprotokollen](../key-vault/general/logging.md) keine Aktivitäten mehr von Azure Cosmos DB in dieser Version angezeigt werden.
-
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Wie sperre/widerrufe ich einen Verschlüsselungsschlüssel?
 
 Die Schlüsselsperrung erfolgt durch Deaktivieren der aktuellen Version des Schlüssels:
 
-![Deaktivieren der Version eines Schlüssels](./media/how-to-setup-cmk/portal-akv-rev2.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="Deaktivieren der Version eines Schlüssels":::
 
 Alternativ können Sie zum Sperren aller Schlüssel in einer Azure Key Vault-Instanz die dem Azure Cosmos DB-Prinzipal erteilte Zugriffsrichtlinie löschen:
 
-![Löschen der Zugriffsrichtlinie für den Azure Cosmos DB-Prinzipal](./media/how-to-setup-cmk/portal-akv-rev.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="Löschen der Zugriffsrichtlinie für den Azure Cosmos DB-Prinzipal":::
 
 ### <a name="what-operations-are-available-after-a-customer-managed-key-is-revoked"></a>Welche Vorgänge sind nach dem Sperren/Widerrufen eines vom Kunden verwalteten Schlüssels verfügbar?
 

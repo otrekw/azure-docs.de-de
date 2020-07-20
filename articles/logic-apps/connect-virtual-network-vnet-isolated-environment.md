@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/18/2020
+ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298853"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
-Für Szenarios, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen, erstellen Sie eine [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Eine Integrationsdienstumgebung ist eine isolierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die vom „globalen“ mehrinstanzfähigen Logic Apps-Dienst getrennt bleiben. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Eine ISE stellt Ihnen außerdem Ihre eigenen statischen IP-Adressen bereit. Diese IP-Adressen sind gesondert von den statischen IP-Adressen, die von den Logik-Apps im öffentlichen, mehrinstanzenfähigen Dienst gemeinsam verwendet werden.
+Für Szenarios, in denen Ihre Logik-Apps und Integrationskonten Zugriff auf ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) benötigen, erstellen Sie eine [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Eine Integrationsdienstumgebung ist eine dedizierte Umgebung, die dedizierten Speicher und andere Ressourcen verwendet, die vom „globalen“ mehrinstanzenfähigen Logic Apps-Dienst getrennt bleiben. Diese Trennung trägt auch dazu bei, jegliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Eine ISE stellt Ihnen außerdem Ihre eigenen statischen IP-Adressen bereit. Diese IP-Adressen sind gesondert von den statischen IP-Adressen, die von den Logik-Apps im öffentlichen, mehrinstanzenfähigen Dienst gemeinsam verwendet werden.
 
 Bei der Erstellung einer ISE wird diese ISE von Azure in Ihr virtuelles Azure-Netzwerk *injiziert*, sodass dann der Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereitgestellt wird. Wählen Sie Ihre Integrationsdienstumgebung beim Erstellen einer Logik-App oder eines Integrationskontos als Speicherort aus. Ihre Logik-App bzw. Ihr Integrationskonto kann dann direkt auf Ressourcen wie virtuelle Computer (VMs), Server, Systeme und Dienste in Ihrem virtuellen Netzwerk zugreifen.
 
@@ -44,30 +44,38 @@ Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Reso
   > [!IMPORTANT]
   > Für Logik-Apps, integrierte Trigger, integrierte Aktionen und Connectors, die in Ihrer ISE ausgeführt werden, gilt ein anderer als der nutzungsbasierte Tarif. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](../logic-apps/logic-apps-pricing.md).
 
-* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Wenn Sie kein virtuelles Netzwerk besitzen, erfahren Sie, wie Sie [ein virtuelles Azure-Netzwerk erstellen](../virtual-network/quick-create-portal.md).
+* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Ihr virtuelles Netzwerk muss über vier *leere* Subnetze verfügen, die nicht an einen anderen Dienst delegiert sind, um Ressourcen in Ihrer ISE zu erstellen und bereitzustellen. Jedes Subnetz unterstützt eine andere Logic Apps-Komponente, die in Ihrer ISE verwendet wird. Die Subnetze können vorab oder bei der ISE-Erstellung erstellt werden. Erfahren Sie mehr über die [Voraussetzungen für Subnetze](#create-subnet).
 
-  * Ihr virtuelles Netzwerk muss vier *leere* Subnetze aufweisen, um Ressourcen in Ihrer ISE erstellen und bereitstellen zu können. Jedes Subnetz unterstützt eine andere Logic Apps-Komponente, die in Ihrer ISE verwendet wird. Sie können diese Subnetze im Voraus erstellen oder warten, bis Sie Ihre ISE erstellt haben, in der Sie Subnetze parallel erstellen können. Erfahren Sie mehr über die [Voraussetzungen für Subnetze](#create-subnet).
-
-  * Subnetznamen müssen entweder mit einem alphabetischen Zeichen oder einem Unterstrich beginnen und können keins der folgenden Zeichen verwenden: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
-  
-  * Wenn Sie die ISE über eine Azure Resource Manager-Vorlage bereitstellen möchten, stellen Sie zunächst sicher, dass Sie ein leeres Subnetz an „Microsoft.Logic/integrationServiceEnvironment“ delegieren. Sie müssen diese Delegierung nicht durchführen, wenn die Bereitstellung über das Azure-Portal erfolgt.
+  > [!IMPORTANT]
+  >
+  > Die folgenden IP-Adressräume können von Azure Logic Apps nicht aufgelöst werden und dürfen daher nicht für das virtuelle Netzwerk oder für die Subnetze verwendet werden:<p>
+  > 
+  > * 0.0.0.0/8
+  > * 100.64.0.0/10
+  > * 127.0.0.0/8
+  > * 168.63.129.16/32
+  > * 169.254.169.254/32
+  > 
+  > Subnetznamen müssen entweder mit einem alphabetischen Zeichen oder einem Unterstrich beginnen und können keins der folgenden Zeichen verwenden: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. Wenn Sie Ihre ISE über eine Azure Resource Manager-Vorlage bereitstellen möchten, delegieren Sie zunächst ein leeres Subnetz an `Microsoft.Logic/integrationServiceEnvironment`. Sie müssen diese Delegierung nicht durchführen, wenn die Bereitstellung über das Azure-Portal erfolgt.
 
   * Stellen Sie sicher, dass Ihr virtuelles Netzwerk [den Zugriff für Ihre ISE ermöglicht](#enable-access), damit Ihre ISE ordnungsgemäß funktioniert und zugänglich ist.
 
-  * [ExpressRoute](../expressroute/expressroute-introduction.md) erleichtert Ihnen die Erweiterung Ihrer lokalen Netzwerke in die Microsoft Cloud und das Herstellen der Verbindung mit der Microsoft Cloud über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird. Expressroute ist insbesondere ein virtuelles privates Netzwerk, das Datenverkehr über ein privates Netzwerk statt über das öffentliche Internet weiterleitet. Logik-Apps können eine Verbindung mit lokalen Ressourcen herstellen, die sich im gleichen virtuellen Netzwerk befinden, wenn eine Verbindung über ExpressRoute oder ein virtuelles privates Netzwerk hergestellt wird. 
-  
-    Wenn Sie ExpressRoute verwenden, müssen Sie [eine Routingtabelle erstellen](../virtual-network/manage-route-table.md), die die folgende Route enthält, und diese Tabelle mit jedem von Ihrer ISE verwendeten Subnetz verknüpfen:
+  * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) und [Tunnelerzwingung](../firewall/forced-tunneling.md) verwenden oder verwenden möchten, müssen Sie [eine Routingtabelle erstellen](../virtual-network/manage-route-table.md). Diese muss die folgende spezifische Route enthalten und mit jedem Subnetz verknüpft werden, das von Ihrer ISE verwendet wird:
 
     **Name**: <*Routenname*><br>
     **Adresspräfix**: 0.0.0.0/0<br>
     **Nächster Hop:** Internet
+    
+    Diese spezielle Routingtabelle ist erforderlich, damit Logic Apps-Komponenten mit anderen abhängigen Azure-Diensten wie Azure Storage und Azure SQL-Datenbank kommunizieren können. Weitere Informationen zu dieser Route finden Sie unter [Adresspräfix 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route). Falls Sie keine Tunnelerzwingung mit ExpressRoute verwenden, ist diese spezielle Routingtabelle nicht erforderlich.
+    
+    ExpressRoute ermöglicht die Erweiterung Ihrer lokalen Netzwerke in die Microsoft-Cloud sowie die Verbindungsherstellung mit Microsoft Cloud Services über eine private, durch den Konnektivitätsanbieter bereitgestellte Verbindung. Bei ExpressRoute handelt es sich um ein virtuelles privates Netzwerk, das Datenverkehr nicht über das öffentliche Internet, sondern über ein privates Netzwerk weiterleitet. Von Ihren Logik-Apps kann eine Verbindung mit lokalen Ressourcen im gleichen virtuellen Netzwerk hergestellt werden, wenn sie eine Verbindung über ExpressRoute oder über ein virtuelles privates Netzwerk herstellen.
+   
+  * Achten Sie bei Verwendung eines [virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined) darauf, nicht die TLS/SSL-Terminierung zu aktivieren oder den ausgehenden TLS/SSL-Datenverkehr zu ändern. Achten Sie außerdem darauf, die Überprüfung für Datenverkehr aus dem Subnetz Ihrer ISE nicht zu aktivieren. Weitere Informationen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](../virtual-network/virtual-networks-udr-overview.md).
 
-    Diese Routingtabelle benötigen Logic Apps-Komponenten, um mit anderen abhängigen Azure-Diensten wie Azure Storage und Azure SQL-Datenbank zu kommunizieren.
+  * Wenn Sie benutzerdefinierte DNS-Server für Ihr virtuelles Azure-Netzwerk verwenden möchten, [richten Sie diese Server gemäß dieser Schritte ein](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md), bevor Sie Ihre ISE in Ihrem virtuellen Netzwerk bereitstellen. Weitere Informationen zum Verwalten von DNS-Servereinstellungen finden Sie unter [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
-* Wenn Sie benutzerdefinierte DNS-Server für Ihr virtuelles Azure-Netzwerk verwenden möchten, [richten Sie diese Server gemäß dieser Schritte ein](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md), bevor Sie Ihre ISE in Ihrem virtuellen Netzwerk bereitstellen. Weitere Informationen zum Verwalten von DNS-Servereinstellungen finden Sie unter [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#change-dns-servers).
-
-  > [!NOTE]
-  > Wenn Sie Ihren DNS-Server oder die DNS-Servereinstellungen ändern, müssen Sie die ISE neu starten, damit die ISE diese Änderungen übernehmen kann. Weitere Informationen finden Sie unter [Neustarten der ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE).
+    > [!NOTE]
+    > Wenn Sie Ihren DNS-Server oder die DNS-Servereinstellungen ändern, müssen Sie die ISE neu starten, damit die Änderungen übernommen werden. Weitere Informationen finden Sie unter [Neustarten der ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE).
 
 <a name="enable-access"></a>
 
@@ -90,7 +98,7 @@ Um sicherzustellen, dass Ihre ISE zugänglich ist und dass die Logik-Apps in die
 
 <a name="network-ports-for-ise"></a>
 
-### <a name="network-ports-used-by-your-ise"></a>Von Ihrer ISE verwendete Netzwerkports
+### <a name="network-ports-used-by-your-ise"></a>Von ihrer ISE verwendete Netzwerkports
 
 In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich sind, und der Zweck für diese Ports. Um die Komplexität beim Festlegen von Sicherheitsregeln zu reduzieren, werden in der Tabelle [Diensttags](../virtual-network/service-tags-overview.md) verwendet, die Gruppen von IP-Adresspräfixen für einen bestimmten Azure-Dienst darstellen. Wo vermerkt, verweisen die *interne ISE* und die *externe ISE* auf den [Zugriffsendpunkt, der bei der ISE-Erstellung ausgewählt wird](connect-virtual-network-vnet-isolated-environment.md#create-environment). Weitere Informationen finden Sie unter [Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access).
 
@@ -127,6 +135,12 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
 | Abhängigkeit von Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent | **VirtualNetwork** | * | **EventHub** | 5672 ||
 | Zugriff auf Azure Cache for Redis-Instanzen zwischen Rolleninstanzen | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383, siehe außerdem **Hinweise**| Damit die ISE mit Azure Cache for Redis funktioniert, müssen Sie die [Ports für ausgehenden und eingehenden Datenverkehr öffnen, die in den häufig gestellten Fragen zu Azure Cache for Redis beschrieben werden](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 |||||||
+
+Darüber hinaus müssen Ausgangsregeln für die [App Service-Umgebung (App Service Environment, ASE)](../app-service/environment/intro.md) hinzugefügt werden:
+
+* Bei Verwendung von Azure Firewall muss Ihre Firewall mit dem [FQDN-Tag](../firewall/fqdn-tags.md#current-fqdn-tags) (Fully Qualified Domain Name, vollqualifizierter Domänenname) der App Service-Umgebung (App Service Environment, ASE) eingerichtet werden, um ausgehenden Zugriff auf den Datenverkehr der ASE-Plattform zuzulassen.
+
+* Bei Verwendung einer Azure Firewall-fremden Firewallappliance muss Ihre Firewall mit *allen* unter [Abhängigkeiten](../app-service/environment/firewall-integration.md#dependencies) aufgeführten Regeln eingerichtet werden, die für die App Service-Umgebung erforderlich sind.
 
 <a name="create-environment"></a>
 
@@ -167,7 +181,7 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
 
    * Das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) und einen Class B-Adressraum
 
-   * Im Adressbereich wird `/27` verwenden, da jedes Subnetz 32 Adressen benötigt. `10.0.0.0/27` hat z. B. 32 Adressen, da 2<sup>(32 – 27)</sup> 2<sup>5</sup> oder 32 ist. Zusätzliche Adressen haben keine weiteren Vorteile.  Weitere Informationen zum Berechnen der Adressen finden Sie unter [Übersicht für IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+   * Im Adressbereich wird `/27` verwenden, da jedes Subnetz 32 Adressen benötigt. `10.0.0.0/27` hat z. B. 32 Adressen, da 2<sup>(32 – 27)</sup> 2<sup>5</sup> oder 32 ist. Zusätzliche Adressen haben keine weiteren Vorteile. Weitere Informationen zum Berechnen der Adressen finden Sie unter [Übersicht für IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
    * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) verwenden, müssen Sie [eine Routentabelle](../virtual-network/manage-route-table.md) erstellen, die die folgende Route enthält, und diese Tabelle mit jedem von Ihrer ISE verwendeten Subnetz verknüpfen:
 
@@ -214,7 +228,7 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
    Beachten Sie andernfalls die Anweisungen auf dem Azure-Portal zur Problembehandlung bei der Bereitstellung.
 
    > [!NOTE]
-   > Wenn die Bereitstellung fehlschlägt oder Sie Ihre ISE löschen, kann es bis zu einer Stunde dauern, bis Azure Ihre Subnetze freigibt. Daher müssen Sie möglicherweise warten, bevor Sie diese Subnetze in einer anderen ISE wiederverwenden können.
+   > Wenn die Bereitstellung nicht erfolgreich war oder Sie Ihre ISE löschen, kann es bis zu einer Stunde (in seltenen Fällen auch länger) dauern, bis Ihre Subnetze freigegeben werden. Daher müssen Sie möglicherweise eine Weile warten, bevor Sie diese Subnetze in einer anderen ISE wiederverwenden können.
    >
    > Wenn Sie Ihr virtuelles Netzwerk löschen, dauert es in der Regel bis zu zwei Stunden, bis Azure Ihre Subnetze freigibt, dieser Vorgang kann aber auch länger dauern. 
    > Stellen Sie beim Löschen virtueller Netzwerke sicher, dass keine Ressourcen mehr verbunden sind. 

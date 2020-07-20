@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208719"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023583"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Neben den beiden Hauptschlüsseln für das Cosmos DB-Konto stehen noch zwei schr
 
 Primäre, sekundäre und schreibgeschützte Hauptschlüssel sowie Hauptschlüssel mit Lese-/Schreibzugriff können über das Azure-Portal abgerufen und neu generiert werden. Eine entsprechende Anleitung finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln](manage-with-cli.md#regenerate-account-key).
 
-![Zugriffssteuerung (IAM) im Azure-Portal: Veranschaulichung der NoSQL-Datenbanksicherheit](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Zugriffssteuerung (IAM) im Azure-Portal: Veranschaulichung der NoSQL-Datenbanksicherheit":::
 
 ### <a name="key-rotation"></a>Schlüsselrotation<a id="key-rotation"></a>
 
@@ -53,7 +53,7 @@ Der Hauptschlüssel kann ganz einfach gewechselt werden.
 4. Überprüfen Sie, ob der neue Primärschlüssel mit allen Ressourcen funktioniert. Der Schlüsselrotationsvorgang kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von weniger als einer Minute bis hin zu mehreren Stunden.
 5. Ersetzen Sie den sekundären Schlüssel durch den neuen Primärschlüssel.
 
-![Wechsel des Hauptschlüssels im Azure-Portal: Veranschaulichung der NoSQL-Datenbanksicherheit](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Rotation des Hauptschlüssels im Azure-Portal: Veranschaulichung der NoSQL-Datenbanksicherheit" border="false":::
 
 ### <a name="code-sample-to-use-a-master-key"></a>Codebeispiel für die Verwendung eines Hauptschlüssels
 
@@ -97,9 +97,9 @@ Hier sehen Sie ein typisches Design, bei dem Ressourcentoken angefordert, generi
 7. Die Phoneapp kann weiterhin den Ressourcentoken für direkten Zugriff auf Cosmos DB-Ressourcen mit den Berechtigungen verwenden, die durch das Ressourcentoken für einen bestimmten Zeitraum definiert sind.
 8. Wenn das Ressourcentoken abläuft, tritt bei anschließenden Anforderungen die Ausnahme 401 (nicht autorisierter Zugriff) auf.  An dieser Stelle richtet die Phoneapp die Identität erneut ein und fordert ein neues Ressourcentoken an.
 
-    ![Workflow der Azure Cosmos DB-Ressourcentoken](./media/secure-access-to-data/resourcekeyworkflow.png)
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Workflow der Azure Cosmos DB-Ressourcentoken" border="false":::
 
-Die Generierung und Verwaltung von Ressourcentoken wird von den nativen Cosmos DB-Clientbibliotheken übernommen. Bei Verwendung von REST müssen Sie allerdings die Anforderungs-/Authentifizierungsheader erstellen. Weitere Informationen zum Erstellen von Authentifizierungsheadern für REST finden Sie unter [Zugriffssteuerung in der SQL-API von Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) oder im Quellcode für unser [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) oder [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
+Die Generierung und Verwaltung von Ressourcentoken wird von den nativen Cosmos DB-Clientbibliotheken übernommen. Bei Verwendung von REST müssen Sie allerdings die Anforderungs-/Authentifizierungsheader erstellen. Weitere Informationen zum Erstellen von Authentifizierungsheadern für REST finden Sie unter [Zugriffssteuerung in der SQL-API von Azure Cosmos DB](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) oder im Quellcode für unser [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) oder [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
 
 Ein Beispiel für einen Dienst der mittleren Ebene, der zum Generieren oder Vermitteln von Ressourcentoken dient, finden Sie unter der [ResourceTokenBroker-App](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
@@ -176,5 +176,5 @@ Mithilfe von Azure Cosmos DB können Sie alle personenbezogenen Daten, die sich 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur Cosmos-Datenbanksicherheit finden Sie unter [Sicherheit bei Azure Cosmos DB – Übersicht](database-security.md).
-- Informationen zum Erstellen von Azure Cosmos DB-Autorisierungstoken finden Sie unter [Access Control on Azure Cosmos DB Resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) (Zugriffssteuerung für Azure Cosmos DB-Ressourcen).
+- Informationen zum Erstellen von Azure Cosmos DB-Autorisierungstoken finden Sie unter [Access Control on Azure Cosmos DB Resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) (Zugriffssteuerung für Azure Cosmos DB-Ressourcen).
 - Beispiele für Benutzerverwaltung mit Benutzern und Berechtigungen finden Sie unter [.NET SDK v3: Beispiele für die Benutzerverwaltung](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

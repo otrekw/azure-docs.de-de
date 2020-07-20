@@ -1,15 +1,14 @@
 ---
 title: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup sichern können.
-ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: faf5ffd65f9b3133c504413201d58aee988af71a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817545"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -34,9 +33,10 @@ In diesem Artikel lernen Sie Folgendes:
 Bevor Sie eine SQL Server-Datenbank sichern können, müssen folgende Kriterien erfüllt sein:
 
 1. Bestimmen oder erstellen Sie einen [Recovery Services-Tresor](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in derselben Region und demselben Abonnement wie die VM, die die SQL Server-Instanz hostet.
-2. Stellen Sie sicher, dass der virtuelle Computer über [Netzwerkkonnektivität](backup-sql-server-database-azure-vms.md#establish-network-connectivity) verfügt.
-3. Vergewissern Sie sich, dass die SQL Server-Datenbanken die [Benennungsrichtlinien für Datenbanken für Azure Backup](#database-naming-guidelines-for-azure-backup) befolgen.
-4. Stellen Sie sicher, dass keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie die Datenbank sichern.
+1. Stellen Sie sicher, dass der virtuelle Computer über [Netzwerkkonnektivität](backup-sql-server-database-azure-vms.md#establish-network-connectivity) verfügt.
+1. Vergewissern Sie sich, dass die SQL Server-Datenbanken die [Benennungsrichtlinien für Datenbanken für Azure Backup](#database-naming-guidelines-for-azure-backup) befolgen.
+1. Der Name des virtuellen SQL Server-Computers und der Ressourcengruppenname dürfen bei virtuellen ARM-Computer (Azure Resource Manager) zusammen maximal 84 Zeichen lang sein (bzw. 77 Zeichen bei klassischen virtuellen Computern). Diese Einschränkung ist darauf zurückzuführen, dass einige Zeichen vom Dienst reserviert werden.
+1. Stellen Sie sicher, dass keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie die Datenbank sichern.
 
 > [!NOTE]
 > Sie können Azure Backup für eine Azure-VM und auch für eine auf der VM ausgeführte SQL Server-Datenbank ohne Konflikte aktivieren.
@@ -264,7 +264,7 @@ So erstellen Sie eine Sicherungsrichtlinie
 
 Sie können den automatischen Schutz aktivieren, um automatisch alle vorhandenen und künftigen Datenbanken in einer eigenständigen SQL Server-Instanz oder Always On-Verfügbarkeitsgruppe zu sichern.
 
-* Die Anzahl der Datenbanken, die Sie für den automatischen Schutz in einer Aktion auswählen können, ist nicht begrenzt.
+* Für den automatischen Schutz können gleichzeitig beliebig viele Datenbanken ausgewählt werden. Die Ermittlung wird in der Regel alle acht Stunden ausgeführt. Neue Datenbanken können aber auch sofort erkannt und geschützt werden, indem Sie **Datenbanken neu ermitteln** auswählen, um manuell eine Ermittlung durchzuführen.
 * Es ist nicht möglich, beim Aktivieren des automatischen Schutzes Datenbanken selektiv zu schützen oder vom Schutz in einer Instanz auszuschließen.
 * Falls Ihre Instanz bereits einige geschützte Datenbanken enthält, sind sie unter den jeweiligen Richtlinien auch dann weiterhin geschützt, wenn Sie den automatischen Schutz deaktivieren. Für alle nicht geschützten Datenbanken, die später hinzugefügt werden, gilt aber nur eine einzelne Richtlinie, die Sie zum Zeitpunkt der Aktivierung des automatischen Schutzes unter **Sicherung konfigurieren** definieren. Sie können die Richtlinie, die einer automatisch geschützten Datenbank zugeordnet ist, später aber ändern.  
 

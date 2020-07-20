@@ -3,15 +3,15 @@ title: Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und Azure Functions ereignisgesteuerte, serverlose Computing-Apps erstellen.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263259"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 
@@ -33,7 +33,7 @@ Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverl
 
 In der folgenden Abbildung wird jede einzelne dieser drei Integrationen veranschaulicht: 
 
-![Integration von Azure Cosmos DB und Azure Functions](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Integration von Azure Cosmos DB und Azure Functions" border="false":::
 
 Der Azure Functions-Trigger, die Eingabebindung und die Ausgabebindung für Azure Cosmos DB können in den folgenden Kombinationen verwendet werden:
 
@@ -61,7 +61,7 @@ In IoT-Implementierungen können Sie eine Funktion aufrufen, wenn die Motorkontr
 
 Die folgende Abbildung zeigt den Code, der für diesen Trigger in das Azure-Portal geschrieben wird.
 
-![Erstellen eines Azure Functions-Triggers für Cosmos DB im Azure-Portal](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Erstellen einer durch Azure Cosmos DB ausgelösten Funktion":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finanzieller Anwendungsfall – Trigger mit Timer und Eingabebindung
 
@@ -75,13 +75,13 @@ Bei finanziellen Implementierungen können Sie beispielsweise eine Funktion aufr
 
 In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario gezeigt.
 
-![Datei „Index.js“ für einen Trigger mit Timer für ein finanzielles Szenario](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Datei „index.js“ für einen Trigger mit Timer für ein Finanzszenario":::
 
-![Datei „Run.csx“ für einen Trigger mit Timer für ein finanzielles Szenario](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Datei „run.csx“ für einen Trigger mit Timer für ein Finanzszenario":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gaming-Anwendungsfall: Azure Functions-Trigger und -Ausgabebindung für Cosmos DB 
 
-Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB-SQL-Datenbank] schreiben, aus der sie leicht abgerufen werden können.
+Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB- oder SQL-Datenbank]() schreiben, aus der sie leicht abgerufen werden können.
 
 **Implementierung:** Verwenden eines Azure Functions-Triggers und der Ausgabebindung für Cosmos DB
 

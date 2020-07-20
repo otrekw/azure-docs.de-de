@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209350"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259889"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
@@ -78,7 +78,7 @@ So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
 
 Nachdem Sie Ihren vorhandenen Hostpool erweitert haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um die Einstellungen im Rahmen einer Benutzersitzung zu testen. Sie können jeden der folgenden Clients verwenden, um eine Verbindung mit einer Sitzung herzustellen:
 
-- [Herstellen einer Verbindung mit dem Windows-Desktopclient](./connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](./connect-windows-7-10.md)
 - [Herstellen einer Verbindung mit dem Webclient](./connect-web.md)
 - [Herstellen einer Verbindung mit dem Android-Client](./connect-android.md)
 - [Herstellen einer Verbindung mit dem macOS-Client](./connect-macos.md)

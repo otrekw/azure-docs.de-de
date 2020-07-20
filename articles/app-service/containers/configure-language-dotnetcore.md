@@ -3,13 +3,13 @@ title: Konfigurieren von Linux ASP.NET Core-Apps
 description: Hier erfahren Sie, wie Sie einen vordefinierten ASP.NET Core-Container für Ihre App konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/13/2019
-ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/02/2020
+ms.openlocfilehash: e009f5b1fc656f700b3f0e76dda6e545aed535d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905764"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurieren einer Linux-ASP.NET Core-App für Azure App Service
 
@@ -81,8 +81,8 @@ namespace SomeNamespace
     
         public SomeMethod()
         {
-            // retrieve App Service app setting
-            var myAppSetting = _configuration["MySetting"];
+            // retrieve nested App Service app setting
+            var myHierarchicalConfig = _configuration["My:Hierarchical:Config:Data"];
             // retrieve App Service connection string
             var myConnString = _configuration.GetConnectionString("MyDbConnection");
         }
@@ -91,6 +91,13 @@ namespace SomeNamespace
 ```
 
 Wenn Sie beispielsweise eine App-Einstellung mit demselben Namen in App Service und in *appsettings.json* konfigurieren, hat der App Service-Wert Vorrang vor dem Wert für *appsettings.json*. Mit dem lokalen Wert für *appsettings.json* können Sie die App lokal debuggen, aber mit dem Wert für App Service können Sie die App im Produkt mit Produktionseinstellungen ausführen. Verbindungszeichenfolgen funktionieren auf dieselbe Weise. Auf diese Weise können Sie Ihre Anwendungsgeheimnisse außerhalb Ihres Coderepositorys aufbewahren und auf die entsprechenden Werte zugreifen, ohne Ihren Code zu ändern.
+
+> [!NOTE]
+> Beachten Sie, dass auf die [hierarchischen Konfigurationsdaten](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) in *appsettings.json* unter Verwendung des Trennzeichens `:` zugegriffen wird, das in .NET Core Standard ist. Wenn Sie eine bestimmte hierarchische Konfigurationseinstellung in App Service außer Kraft setzen möchten, legen Sie den Namen der App-Einstellung mit dem gleichen getrennten Format im Schlüssel fest. Im Anschluss finden Sie ein in der [Cloud Shell](https://shell.azure.com)-Instanz ausführbares Beispiel:
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
+```
 
 ## <a name="get-detailed-exceptions-page"></a>Abrufen einer detaillierten Ausnahmenseite
 
@@ -154,7 +161,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>Mithilfe von App-Einstellungen
 
-Fügen Sie in der <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> Ihrer App Service-App eine App-Einstellung hinzu, indem Sie den folgenden CLI-Befehl ausführen. Ersetzen Sie *\<Anwendungsname>* , *\<Ressourcengruppenname>* und *\<Projektname>* durch die entsprechenden Werte.
+Fügen Sie in der <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> Ihrer App Service-App eine App-Einstellung hinzu, indem Sie den folgenden CLI-Befehl ausführen. Ersetzen Sie *\<app-name>* , *\<resource-group-name>* und *\<project-name>* durch die entsprechenden Werte.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -162,7 +169,26 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+ASP.NET Core bietet einen [integrierten Protokollierungsanbieter für App Service](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service). Fügen Sie den Anbieter in *Program.cs* Ihres Projekts mithilfe der Erweiterungsmethode `ConfigureLogging` zu Ihrer Anwendung hinzu, wie im folgenden Beispiel zu sehen:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.AddAzureWebAppDiagnostics();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+Anschließend können Sie Protokolle mit dem [.NET Core-Standardmuster](https://docs.microsoft.com/aspnet/core/fundamentals/logging) konfigurieren und generieren.
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+Weitere Informationen zum Behandeln von Problemen mit ASP.NET Core-Apps in App Service finden Sie unter [Behandeln von Problemen mit ASP.NET Core in Azure App Service und IIS](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis).
 
 ## <a name="open-ssh-session-in-browser"></a>Öffnen einer SSH-Sitzung im Browser
 

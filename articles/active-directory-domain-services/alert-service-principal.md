@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f72e98213977a09b97cab9966ec69194cd8439e8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734995"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Warnungen für Dienstprinzipale in Azure Active Directory Domain Services
 
-[Dienstprinzipale](../active-directory/develop/app-objects-and-service-principals.md) sind Anwendungen, welche die Azure-Plattform zum Verwalten, Aktualisieren und Pflegen einer verwalteten Azure AD DS-Domäne verwendet. Wenn ein Dienstprinzipal gelöscht wird, wirkt sich dies auf die Funktionalität in der verwalteten Azure AD DS-Domäne aus.
+[Dienstprinzipale](../active-directory/develop/app-objects-and-service-principals.md) sind Anwendungen, die die Azure-Plattform zum Verwalten, Aktualisieren und Pflegen einer verwalteten Azure AD DS-Domäne (Azure Active Directory Domain Services) verwendet. Wenn ein Dienstprinzipal gelöscht wird, wirkt sich dies auf die Funktionalität in der verwalteten Domäne aus.
 
 Dieser Artikel hilft Ihnen bei der Problembehandlung und dem Auflösen von Warnungen im Zusammenhang mit der Konfiguration des Dienstprinzipals.
 
@@ -30,7 +30,7 @@ Dieser Artikel hilft Ihnen bei der Problembehandlung und dem Auflösen von Warnu
 
 *Ein für den ordnungsgemäßen Betrieb von Azure AD Domain Services erforderlicher Dienstprinzipal wurde aus Ihrem Azure AD-Verzeichnis gelöscht. Diese Konfiguration wirkt sich darauf aus, wie Microsoft Ihre verwaltete Domäne überwachen, verwalten, patchen und synchronisieren kann.*
 
-Wenn ein erforderlicher Dienstprinzipal gelöscht wird, kann die Azure-Plattform keine automatischen Verwaltungsaufgaben mehr ausführen. Die verwaltete Azure AD DS-Domäne kann möglicherweise Updates nicht ordnungsgemäß anwenden oder Sicherungen durchführen.
+Wenn ein erforderlicher Dienstprinzipal gelöscht wird, kann die Azure-Plattform keine automatischen Verwaltungsaufgaben mehr ausführen. Die verwaltete Domäne kann möglicherweise Updates nicht ordnungsgemäß anwenden oder Sicherungen durchführen.
 
 ### <a name="check-for-missing-service-principals"></a>Überprüfen fehlender Dienstprinzipale
 
@@ -64,18 +64,18 @@ Wenn die Anwendungs-ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* in Ihrem Azure AD-
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-Die Integrität der verwalteten Azure AD DS-Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
+Die Integrität der verwalteten Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>Erneutes Registrieren des Namespace „Microsoft.AAD“
 
 Wenn die Anwendungs-ID *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022* oder *d87dcbc6-a371-462e-88e3-28ad15ec4e64* in Ihrem Azure AD-Verzeichnis fehlt, führen Sie die folgenden Schritte aus, um den Ressourcenanbieter *Microsoft.AAD* erneut zu registrieren:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Abonnements**, und wählen Sie ihn aus.
-1. Wählen Sie das Abonnement aus, das Ihrer verwalteten Azure AD DS-Domäne zugeordnet ist.
+1. Wählen Sie das Abonnement aus, das Ihrer verwalteten Domäne zugeordnet ist.
 1. Wählen Sie im linken Navigationsbereich den Eintrag **Ressourcenanbieter** aus.
 1. Suchen Sie nach *Microsoft.AAD*, und wählen Sie dann **Erneut registrieren** aus.
 
-Die Integrität der verwalteten Azure AD DS-Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
+Die Integrität der verwalteten Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Warnung AADDS105: Kennwortsynchronisierungsanwendung ist veraltet
 
@@ -105,7 +105,7 @@ Zum erneuten Erstellen der Azure AD-Anwendung, die für die Synchronisierung von
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
-Nachdem Sie beide Anwendungen gelöscht haben, erstellt die Azure-Plattform diese automatisch neu und versucht, die Kennwortsynchronisierung fortzusetzen. Die Integrität der verwalteten Azure AD DS-Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
+Nachdem Sie beide Anwendungen gelöscht haben, erstellt die Azure-Plattform diese automatisch neu und versucht, die Kennwortsynchronisierung fortzusetzen. Die Integrität der verwalteten Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

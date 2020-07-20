@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a345b5a8a4d6a99b1b3928d61b22dfba0ba2735b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 050da712df6dad872fc03bd6ca79bbdf2a3e1753
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563207"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -32,15 +32,20 @@ Das Festlegen von bereitgestelltem Durchsatz für einen Container ist die am hä
 
 Der für einen Container vorgesehene Durchsatz wird gleichmäßig auf die physischen Partitionen verteilt, und unter der Annahme eines guten Partitionsschlüssels, der die logischen Partitionen gleichmäßig auf die physischen Partitionen verteilt, wird der Durchsatz auch gleichmäßig auf alle logischen Partitionen des Containers verteilt. Sie können den Durchsatz für logische Partitionen nicht selektiv angeben. Da mindestens eine logische Partition eines Containers auf einer physischen Partition gehostet wird, gehören die physischen Partitionen ausschließlich zu dem Container und unterstützen den Durchsatz für den Container. 
 
-Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der dieser logischen Partition zugewiesen wurde, werden Ihre Vorgänge begrenzt. Bei einer Ratenbegrenzung können Sie entweder den bereitgestellten Durchsatz für den gesamten Container erhöhen oder die Vorgänge wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partition-data.md).
+Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der zugrunde liegenden physischen Partition zugewiesen wurde, werden Ihre Vorgänge möglicherweise ratenbegrenzt. Eine sogenannte _heiße Partition_ tritt auf, wenn eine logische Partition unverhältnismäßig mehr Anforderungen als andere Partitionsschlüsselwerte aufweist.
+
+Bei einer Ratenbegrenzung können Sie entweder den bereitgestellten Durchsatz für den gesamten Container erhöhen oder die Vorgänge wiederholen. Sie sollten auch sicherstellen, dass Sie einen Partitionsschlüssel auswählen, mit dem das Speicher- und Anforderungsvolumen gleichmäßig verteilt wird. Weitere Informationen zum Partitionieren finden Sie unter [Partitionierung und horizontale Skalierung in Azure Cosmos DB](partition-data.md).
 
 Es wird empfohlen, den Durchsatz auf Containerebene zu konfigurieren, wenn Sie eine garantierte Leistung für den Container benötigen.
 
 Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen eines Containers hostet:
 
-![Physische Partition](./media/set-throughput/resource-partition.png)
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Physische Partition" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Festlegen des Durchsatzes für eine Datenbank
+
+> [!NOTE]
+> In Konten, in denen [kundenseitig verwaltete Schlüssel](how-to-setup-cmk.md) aktiviert sind, ist derzeit keine Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank möglich.
 
 Wenn Sie Durchsatz für eine Cosmos-Datenbank bereitstellen, wird der Durchsatz von allen Containern in der Datenbank gemeinsam genutzt (auch als gemeinsam genutzte Datenbankcontainer bezeichnet). Ausnahme: Sie haben einen bereitgestellten Durchsatz für bestimmte Container in der Datenbank angegeben. Die gemeinsame Nutzung des auf Datenbankebene bereitgestellten Durchsatzes durch die Container entspricht dem Hosten einer Datenbank in einem Computercluster. Da alle Container in einer Datenbank die auf einem Computer verfügbaren Ressourcen gemeinsam nutzen, erhalten Sie natürlich keine vorhersagbare Leistung für einen bestimmten Container. Informationen zum Konfigurieren des bereitgestellten Durchsatzes für eine Datenbank finden Sie unter [Bereitstellen von Durchsatz für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md). Informationen zum Konfigurieren des automatisch skalierten Durchsatzes für eine Datenbank finden Sie unter [Bereitstellen von automatisch skaliertem Durchsatz](how-to-provision-autoscale-throughput.md).
 
@@ -62,7 +67,7 @@ Alle in einer Datenbank erstellten Container mit bereitgestelltem Durchsatz müs
 
 Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der jeweiligen logischen Partition zugewiesen wurde, werden Ihre Vorgänge begrenzt. Bei einer Ratenbegrenzung können Sie entweder den Durchsatz für die gesamte Datenbank erhöhen oder die Vorgänge wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partition-data.md).
 
-Container in einer Datenbank mit gemeinsam genutztem Durchsatz teilen den Durchsatz (RU/s), der dieser Datenbank zugeordnet ist. Können Sie bis zu vier Container mit mindestens 400 RU/s in der Datenbank haben. Bei einem standardmäßigen (manuell) bereitgestellten Durchsatz erfordert jeder zu den ersten vier Containern neu hinzugefügte Container mindestens 100 zusätzliche RU/s. Wenn Sie z. B. eine Datenbank mit gemeinsam genutztem Durchsatz mit acht Containern haben, beträgt die Mindestanforderungen für die RU/s in der Datenbank 800 RU/s. Mit dem automatisch skalierten bereitgestellten Durchsatz können Sie in einer Datenbank über bis zu 25 Container mit maximal 4.000 RU/s (Skalierung von 400-4.000 RU/s) verfügen.
+Container in einer Datenbank mit gemeinsam genutztem Durchsatz teilen den Durchsatz (RU/s), der dieser Datenbank zugeordnet ist. Können Sie bis zu vier Container mit mindestens 400 RU/s in der Datenbank haben. Bei einem standardmäßigen (manuell) bereitgestellten Durchsatz erfordert jeder zu den ersten vier Containern neu hinzugefügte Container mindestens 100 zusätzliche RU/s. Wenn Sie z. B. eine Datenbank mit gemeinsam genutztem Durchsatz mit acht Containern haben, beträgt die Mindestanforderungen für die RU/s in der Datenbank 800 RU/s. Mit dem automatisch skalierten bereitgestellten Durchsatz können Sie in einer Datenbank über bis zu 25 Container mit maximal 4000 RU/s (Skalierung von 400 bis 4.000 RU/s) verfügen.
 
 > [!NOTE]
 > Im Februar 2020 haben wir eine Änderung eingeführt, die Ihnen maximal 25 Container in einer gemeinsam genutzten Durchsatzdatenbank ermöglicht, was containerübergreifend eine bessere gemeinsame Nutzung des Durchsatzes ermöglicht. Nach den ersten 25 Containern können Sie der Datenbank nur dann weitere Container hinzufügen, wenn diese [mit dediziertem Durchsatz](#set-throughput-on-a-database-and-a-container) bereitgestellt werden, der vom gemeinsam genutzten Durchsatz der Datenbank getrennt ist.<br>
@@ -70,7 +75,7 @@ Wenn Ihr Azure Cosmos DB-Konto bereits eine gemeinsam genutzte Durchsatzdatenban
 
 Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer Datenbank beinhalten, wird empfohlen, die leere Datenbank zu löschen und vor der Erstellung der Sammlung eine neue Datenbank anzulegen. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
 
-![Physische Partition](./media/set-throughput/resource-partition2.png)
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Physische Partition" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Festlegen des Durchsatzes für eine Datenbank und einen Container
 
@@ -79,7 +84,7 @@ Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf
 * Sie können eine Azure Cosmos-Datenbank namens *Z* mit standardmäßig (manuell) bereitgestelltem Durchsatz von *K* RUs erstellen. 
 * Als Nächstes erstellen Sie die fünf Container *A*, *B*, *C*, *D* und *E* innerhalb der Datenbank. Achten Sie beim Erstellen von Container B darauf, die **Option zum Bereitstellen von dediziertem Durchsatz für diesen Container**zu aktivieren, und konfigurieren Sie explizit *P* RUs des bereitgestellten Durchsatzes für diesen Container. Beachten Sie, dass Sie freigegebenen und dedizierten Durchsatz nur beim Erstellen der Datenbank und des Containers konfigurieren können. 
 
-   ![Festlegen des Durchsatzes auf Containerebene](./media/set-throughput/coll-level-throughput.png)
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Festlegen des Durchsatzes auf Containerebene":::
 
 * Der Durchsatz von *K* RUs ist für die vier Container *A*, *C*, *D*, und *E* freigegeben. Die genaue für *A*, *C*, *D* oder *E* verfügbare Durchsatzmenge variiert. Es gibt keine SLAs für die einzelnen Containerdurchsätze.
 * Für den Container *B* wird jederzeit ein Durchsatz von *P* RUs sichergestellt. Er wird durch SLAs abgedeckt.
@@ -89,11 +94,16 @@ Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>Aktualisieren des Durchsatzes für eine Datenbank oder einen Container
 
-Nachdem Sie einen Azure Cosmos-Container oder eine Datenbank erstellt haben, können Sie den bereitgestellten Durchsatz aktualisieren. Es gibt keine Beschränkung für den bereitgestellten Maximaldurchsatz, den Sie in der Datenbank oder dem Container konfigurieren können. Der [bereitgestellte Mindestdurchsatz](concepts-limits.md#storage-and-throughput) hängt von den folgenden Faktoren ab: 
+Nachdem Sie einen Azure Cosmos-Container oder eine Datenbank erstellt haben, können Sie den bereitgestellten Durchsatz aktualisieren. Es gibt keine Beschränkung für den bereitgestellten Maximaldurchsatz, den Sie in der Datenbank oder dem Container konfigurieren können. 
 
-* Die im Container gespeicherte aktuelle Datengröße
-* Maximaler Durchsatz, der jemals im Container bereitgestellt wird
-* Aktuelle Anzahl von Azure Cosmos-Containern, die in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt werden 
+Um den [bereitgestellten Mindestdurchsatz](concepts-limits.md#storage-and-throughput) einer Datenbank oder eines Containers zu schätzen, ermitteln Sie folgenden Maximalwert:
+
+* 400 RU/s 
+* Aktueller Speicher in GB * 10 RU/s
+* Höchstwert bereitgestellter RU/s für die Datenbank oder den Container / 100
+* Containeranzahl * 100 RU/s (nur Datenbank mit gemeinsam genutztem Durchsatz)
+
+Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren. Sie können [Azure Monitor-Metriken](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) verwenden, um den Verlauf des bereitgestellten Durchsatzes (RU/s) und des Speichers für eine Ressource anzuzeigen.
 
 Sie können den Mindestdurchsatz eines Containers oder einer Datenbank programmgesteuert mithilfe der SDKs abrufen oder den Wert im Azure-Portal anzeigen. Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz. Bei Verwendung des Java SDK ermöglicht Ihnen die [RequestOptions.setOfferThroughput](sql-api-java-sdk-samples.md)-Methode das Skalieren des Werts für den bereitgestellten Durchsatz. 
 

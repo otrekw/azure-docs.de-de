@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 001706d63b22899016cc2c45e384597db3d6747f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71336818"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358827"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect mit vorhandenem Mandanten
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen vorhandenen Mandanten verfügen
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
 
 ## <a name="the-basics"></a>Grundlagen
@@ -34,7 +34,7 @@ Sie können einige Benutzer lokal und andere in der Cloud verwalten. Ein häufig
 Wenn Sie damit begonnen haben, Benutzer in Azure AD zu verwalten, die sich auch im lokalen Azure Directory befinden, und später Connect verwenden möchten, sind einige weitere Aspekte zu berücksichtigen.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronisieren mit vorhandenen Benutzern in Azure AD
-Wenn Sie Azure AD Connect installieren und mit der Synchronisierung beginnen, überprüft der Azure AD-Synchronisierungsdienst jedes neue Objekt (in Azure AD) und versucht, ein entsprechendes vorhandenes Objekt zu finden. Für diesen Prozess werden drei Attribute verwendet: **userPrincipalName**, **proxyAddresses** und **sourceAnchor**/**immutableID**. Eine Übereinstimmung bei **userPrincipalName** und **proxyAddresses** wird als **Soft Match** bezeichnet. Eine Übereinstimmung bei **sourceAnchor** wird als **Hard Match** bezeichnet. Für das Attribut **proxyAddresses** wird zur Auswertung nur der Wert mit **SMTP:** verwendet – dies ist die primäre E-Mail-Adresse.
+Wenn Sie Azure AD Connect installieren und mit der Synchronisierung beginnen, überprüft der Azure AD-Synchronisierungsdienst jedes neue Objekt (in Azure AD) und versucht, ein entsprechendes vorhandenes Objekt zu finden. Für diesen Prozess werden drei Attribute verwendet: **userPrincipalName**, **proxyAddresses** und **sourceAnchor**/**immutableID**. Eine Übereinstimmung bei **userPrincipalName** und **proxyAddresses** wird als **Soft Match** bezeichnet. Eine Übereinstimmung bei **sourceAnchor** wird als **Hard Match** bezeichnet. Für das Attribut **proxyAddresses** wird zur Auswertung nur der Wert mit **SMTP:** verwendet – dies ist die primäre E-Mail-Adresse.
 
 Die Übereinstimmung wird nur für neue, aus Connect eingehende Objekte ausgewertet. Wenn Sie ein vorhandenes Objekt so ändern, dass es einem dieser Attribute entspricht, wird stattdessen ein Fehler angezeigt.
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cc316636c3f708d4b3ef81a22f57dab9b140d2fa
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318891"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -114,7 +114,7 @@ Der Abschnitt „typeProperties“ ist für jede Aktivität unterschiedlich. Tra
 Die **Kopieraktivität** enthält im Abschnitt „typeProperties“ zwei Unterabschnitte: **source** und **sink**. Der Abschnitt [DATENSPEICHER](#data-stores) in diesem Artikel enthält JSON-Beispiele, in denen veranschaulicht wird, wie Sie einen Datenspeicher als Quelle bzw. Senke verwenden.
 
 ### <a name="sample-copy-pipeline"></a>Beispiel einer Kopierpipeline
-In der folgenden Beispielpipeline gibt es im Abschnitt **Copy** in the **Aktivitäten** . In diesem Beispiel kopieren Sie mit der [Kopieraktivität](data-factory-data-movement-activities.md) Daten aus Azure Blob Storage in eine Azure SQL-Datenbank.
+In der folgenden Beispielpipeline gibt es im Abschnitt **Copy** in the **Aktivitäten** . In diesem Beispiel werden von der [Kopieraktivität](data-factory-data-movement-activities.md) Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert.
 
 ```json
 {
@@ -337,7 +337,7 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 | Richtlinienname | BESCHREIBUNG | Angewendet auf | Erforderlich | Standard |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Überprüft, ob die Daten in einem **Azure-Blob** die minimalen Größenanforderungen (in MB) erfüllen. |Azure Blob |Nein |Nicht verfügbar |
-| minimumRows |Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure Table</li></ul> |Nein |Nicht verfügbar |
+| minimumRows |Überprüft, ob die Daten in **Azure SQL-Datenbank** oder in einer **Azure-Tabelle** die Mindestanzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure Table</li></ul> |Nein |Nicht verfügbar |
 
 **Beispiel:**
 
@@ -4843,7 +4843,7 @@ Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure
 | linkedServiceName |Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. <p>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters, der Azure Data Lake Store als Speicher verwendet, ist derzeit nicht möglich. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in einer Azure Data Lake Store-Instanz speichern möchten, kopieren Sie die Daten mittels einer Kopieraktivität aus der Azure Blob Storage-Instanz in die Azure Data Lake Store-Instanz.</p>  | Ja |
 | additionalLinkedServiceNames |Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. |Nein |
 | osType |Typ des Betriebssystems. Zulässige Werte sind: Windows (Standard) und Linux |Nein |
-| hcatalogLinkedServiceName |Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mit der Azure SQL-Datenbank als Metastore erstellt. |Nein |
+| hcatalogLinkedServiceName |Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mit Azure SQL-Datenbank als Metastore erstellt. |Nein |
 
 ### <a name="json-example"></a>JSON-Beispiel
 Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsight verknüpften Dienst. Der Data Factory-Dienst erstellt bei der Verarbeitung eines Datenslices automatisch einen **Linux-basierten** HDInsight-Cluster.
@@ -5547,7 +5547,7 @@ Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt,
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank oder dem Azure SQL Data Warehouse an, die bzw. das vom verknüpften Dienst dargestellt wird, den die Ausgabetabelle verwendet. |Ja |
+| storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz an, die durch den verknüpften Dienst dargestellt wird, der von der Ausgabetabelle verwendet wird. |Ja |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
 
 Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben.

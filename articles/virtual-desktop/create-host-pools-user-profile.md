@@ -4,22 +4,22 @@ description: Es wird beschrieben, wie Sie einen FSLogix-Profilcontainer für ein
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211832"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Erstellen eines Profilcontainers für einen Hostpool mit einer Dateifreigabe
 
 Der Windows Virtual Desktop-Dienst stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. Wir raten davon ab, die Lösung „Benutzerprofil-Datenträger“ (User Profile Disk, UPD) zu nutzen. Sie wird in den zukünftigen Versionen von Windows Virtual Desktop als veraltet eingestuft.
 
-In diesem Artikel ist beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet. Weitere FSLogix-Dokumentation finden Sie auf der [FSLogix-Website](https://docs.fslogix.com/).
+In diesem Artikel ist beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet. Es wird dringend empfohlen, anstelle von Dateifreigaben Azure Files zu verwenden. Weitere FSLogix-Dokumentation finden Sie auf der [FSLogix-Website](https://docs.fslogix.com/).
 
 >[!NOTE]
 >Wenn Sie nach Vergleichsmaterial zu den verschiedenen Speicheroptionen des FSLogix-Profilcontainers in Azure suchen, lesen Sie [Speicheroptionen für FSLogix-Profilcontainer](store-fslogix-profile.md).
@@ -68,7 +68,7 @@ Führen Sie auf allen Computern, die für den Hostpool registriert sind, Folgend
 
 | Name                | type               | Daten/Wert                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
+| Aktiviert             | DWORD              | 1                                 |
 | VHDLocations        | Mehrteiliger Zeichenfolgenwert | „Netzwerkpfad für Dateifreigabe“     |
 
 >[!IMPORTANT]

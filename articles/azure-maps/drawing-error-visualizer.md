@@ -3,17 +3,17 @@ title: Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler
 description: In diesem Artikel erfahren Sie, wie Sie von der Creator-Konvertierungs-API zurückgegebene Warnungen und Fehler visualisieren.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791117"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler
 
@@ -78,15 +78,15 @@ Entzippen Sie den Ordner _VisualizationTool.zip_. Er enthält folgende Elemente:
 
 Nachdem Sie das Schnellansichtstool für Zeichnungsfehler gestartet haben, wird die Uploadseite angezeigt. Die Uploadseite enthält ein Drag & Drop-Feld. Das Drag & Drop-Feld kann auch als Schaltfläche zum Starten eines Datei-Explorer-Dialogfelds verwendet werden.
 
-![Schnellansicht-App für Zeichnungsfehler: Startseite](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Schnellansicht-App für Zeichnungsfehler: Startseite":::
 
 Die Datei _ConversionWarningsAndErrors.json_ wurde am Stamm des heruntergeladenen Verzeichnisses platziert. Zum Laden der Datei _ConversionWarningsAndErrors.json_ können Sie sie entweder per Drag & Drop auf das Feld ziehen oder auf das Feld klicken, im Datei-Explorer-Dialogfeld zu der Datei navigieren und sie anschließend hochladen.
 
-![Schnellansicht-App für Zeichnungsfehler: Drag & Drop-Bereich zum Laden von Daten](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Schnellansicht-App für Zeichnungsfehler: Drag & Drop-Bereich zum Laden von Daten":::
 
-Nachdem die Datei _ConversionWarningsAndErrors.json_ geladen wurde, wird eine Liste Ihrer Zeichnungspaketfehler und -warnungen angezeigt. Für alle Fehler bzw. Warnungen sind jeweils die Schicht, die Ebene und eine ausführliche Meldung angegeben. Nun können Sie zu den einzelnen Fehlern navigieren, um weitere Informationen zur Fehlerbehebung zu erhalten.  
+Nachdem die Datei _ConversionWarningsAndErrors.json_ geladen wurde, wird eine Liste Ihrer Zeichnungspaketfehler und -warnungen angezeigt. Für alle Fehler bzw. Warnungen sind jeweils die Schicht, die Ebene und eine ausführliche Meldung angegeben. Ausführliche Informationen zu einem Fehler oder einer Warnung erhalten Sie durch Klicken auf den Link **Details**. Daraufhin wird unter der Liste ein entsprechender Abschnitt angezeigt. Nun können Sie zu den einzelnen Fehlern navigieren, um weitere Informationen zur Fehlerbehebung zu erhalten.
 
-![Schnellansicht-App für Zeichnungsfehler: Fehler und Warnungen](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Schnellansicht-App für Zeichnungsfehler: Fehler und Warnungen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

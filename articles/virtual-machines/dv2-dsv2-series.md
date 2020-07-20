@@ -1,26 +1,26 @@
 ---
 title: 'Serien Dv2 und Dsv2: Azure Virtual Machines'
 description: Spezifikationen für die VMs der Serien Dv2 und Dsv2
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 71d00da5cc0021aacbe849a541ff386cc6414ff2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694636"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2- und DSv2-Serie
 
-Die Serien Dv2 und Dsv2, Nachfolger der ursprünglichen D-Serie, sind mit schnellen CPUs und einer optimalen CPU-zu-Arbeitsspeicher-Konfiguration ausgestattet und eignen sich daher für die meisten Produktionsworkloads. Die Dv2-Serie ist ca. 35 % schneller als die D-Serie. Die Dv2-Serie wird auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+Die Serien Dv2 und Dsv2, Nachfolger der ursprünglichen D-Serie, sind mit schnellen CPUs und einer optimalen CPU-zu-Arbeitsspeicher-Konfiguration ausgestattet und eignen sich daher für die meisten Produktionsworkloads. Die Dv2-Serie ist ca. 35 % schneller als die D-Serie. Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
 ## <a name="dv2-series"></a>Dv2-Serie
 
-Die Größen der Dv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt.
+Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt.
 
 ACU: 210–250
 
@@ -42,7 +42,7 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 ## <a name="dsv2-series"></a>DSv2-Serie
 
-Die Größen der DSv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt und verwenden Storage Premium.
+Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) mit Intel Turbo Boost Technology 2.0 ausgeführt und verwendet Storage Premium.
 
 ACU: 210–250
 

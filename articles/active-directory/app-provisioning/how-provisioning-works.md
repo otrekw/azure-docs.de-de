@@ -2,21 +2,21 @@
 title: Grundlegendes zur Funktionsweise der Azure AD-Bereitstellung | Microsoft-Dokumentation
 description: Grundlegendes zur Funktionsweise der Azure AD-Bereitstellung
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781649"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -172,7 +172,7 @@ Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in Azure 
 
 Der Azure AD-Bereitstellungsdienst sorgt für die Synchronisierung von Quell- und Zielsystem, indem die Bereitstellung von Konten aufgehoben wird, wenn Benutzer keinen Zugriff mehr haben sollen. 
 
-Ein Benutzer wird vom Azure AD-Bereitstellungsdienst aus einer Anwendung vorläufig gelöscht, wenn die Anwendung vorläufiges Löschen unterstützt (Aktualisierungsanforderung mit „active = false“) und eines der folgenden Ereignisse auftritt:
+Ein Benutzer wird vom Azure AD-Bereitstellungsdienst aus einer Anwendung vorläufig gelöscht, wenn die Anwendung vorläufiges Löschen unterstützt (Aktualisierungsanforderung mit „active = false“) und eines der folgenden Ereignisse auftritt:
 
 * Das Benutzerkonto wird in Azure AD gelöscht.
 *   Die Zuweisung des Benutzers für die Anwendung wird aufgehoben.

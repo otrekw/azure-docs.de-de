@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198389"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737001"
 ---
-# <a name="orchestration-mode-preview"></a>Orchestrierungsmodus (Vorschau)
+# <a name="orchestration-modes-preview"></a>Orchestrierungsmodi (Vorschau)
+
+> [!CAUTION]
+> Vielen Dank an alle, die an dieser Public Preview teilgenommen haben. Von unserer Community haben wir hilfreiches Feedback erhalten. Diese Vorschauversion ist nun für neue Teilnehmer **geschlossen**, damit wir das Feedback integrieren können. Wenn neue Informationen vorliegen, wird dieser Bereich entsprechend aktualisiert.
 
 VM-Skalierungsgruppen bieten eine logische Gruppierung von plattformverwalteten virtuellen Computern. Mit Skalierungsgruppen erstellen Sie ein Konfigurationsmodell für virtuelle Computer, fügen automatisch zusätzliche Instanzen basierend auf der CPU- oder Speicherauslastung hinzu oder entfernen sie und führen automatisch ein Upgrade auf die neueste Betriebssystemversion durch. Traditionell ermöglichen Skalierungsgruppen die Erstellung virtueller Computer mit einem VM-Konfigurationsmodell, das zum Zeitpunkt der Erstellung der Skalierungsgruppen bereitgestellt wird, und die Skalierungsgruppen können nur virtuelle Computer verwalten, die implizit basierend auf dem Konfigurationsmodell erstellt werden.
 

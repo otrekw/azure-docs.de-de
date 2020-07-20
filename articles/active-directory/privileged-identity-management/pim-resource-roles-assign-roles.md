@@ -7,20 +7,20 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231802"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023779"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Zuweisen von Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -47,33 +47,31 @@ Führen Sie folgende Schritte aus, um einen Benutzer für eine Azure AD-Ressourc
 
 1. Wählen Sie **Azure-Ressourcen** aus.
 
-1. Verwenden Sie den **Ressourcenfilter** zum Filtern der Liste verwalteter Ressourcen.
+1. Verwenden Sie den Ressourcenfilter, um nach den gewünschten verwalteten Ressourcen zu suchen.
 
     ![Liste der zu verwaltenden Azure-Ressourcen](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
+1. Wählen Sie die zu verwaltende Ressource aus, um die Übersichtsseite der Ressource zu öffnen.
 
-1. Wählen Sie unter „Verwalten“ den Eintrag **Rollen** aus, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
+1. Wählen Sie unter **Verwalten** den Eintrag **Rollen** aus, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
 
     ![Azure-Ressourcenrollen](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Wählen Sie **Mitglied hinzufügen** aus, um den Bereich „Neue Zuweisung“ zu öffnen.
+1. Wählen Sie **Zuweisungen hinzufügen** aus, um den Bereich **Zuweisungen hinzufügen** zu öffnen.
 
-1. Wählen Sie **Rolle auswählen** aus, um den Bereich „Rolle auswählen“ zu öffnen.
+1. Wählen Sie **Rolle auswählen** aus, um die Seite **Rolle auswählen** zu öffnen.
 
     ![Bereich „Neue Zuweisung“](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
 1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen**.
 
-    Der Bereich „Mitglied oder Gruppe auswählen“ wird geöffnet.
+    Der Bereich **Mitglied oder Gruppe auswählen** wird geöffnet.
 
 1. Wählen Sie zuerst ein Mitglied oder eine Gruppe, dem bzw. der die Rolle zugewiesen werden soll, und dann **Auswählen** aus.
 
     ![Bereich „Mitglied oder Gruppe auswählen“](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-    Der Bereich „Mitgliedschaftseinstellungen“ wird geöffnet.
-
-1. Wählen Sie in der Liste **Zuweisungstyp** entweder **Berechtigt** oder **Aktiv** aus.
+1. Wählen Sie auf der Registerkarte **Einstellungen** in der Liste **Zuweisungstyp** entweder **Berechtigt** oder **Aktiv** aus.
 
     ![Bereich „Mitgliedschaftseinstellungen“](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,19 +81,11 @@ Führen Sie folgende Schritte aus, um einen Benutzer für eine Azure AD-Ressourc
 
     - Für **aktive** Zuweisungen ist es nicht erforderlich, dass das Mitglied eine Aktion durchführt, um die Rolle nutzen zu können. Für Mitglieder, die als „Aktiv“ zugewiesen sind, sind die Berechtigungen immer der Rolle zugewiesen.
 
-1. Wenn die Zuweisung dauerhaft sein soll (dauerhaft berechtigt oder dauerhaft zugewiesen), aktivieren Sie das Kontrollkästchen **Dauerhaft**.
+1. Wenn Sie eine bestimmte Zuweisungsdauer angeben möchten, ändern Sie das Start- und Enddatum sowie die Zeitfelder.
 
-    Je nach Rolleneinstellungen wird das Kontrollkästchen möglicherweise nicht angezeigt oder ist nicht änderbar.
+1. Klicken Sie abschließend auf **Zuweisen**.
 
-1. Wenn Sie einen bestimmten Zuweisungszeitraum angeben möchten, deaktivieren Sie dieses Kontrollkästchen, und ändern Sie nach Bedarf die Felder für den Start- und/oder den Endzeitpunkt (Datum und Uhrzeit).
-
-    ![Mitgliedschaftseinstellungen: Datum und Uhrzeit](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Wählen Sie abschließend **Fertig** aus.
-
-    ![Neue Zuweisung: Hinzufügen](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. Wählen Sie **Hinzufügen** aus, um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status wird angezeigt.
+1. Nachdem die neue Rollenzuweisung erstellt wurde, wird eine Statusbenachrichtigung angezeigt.
 
     ![Neue Zuweisung: Benachrichtigung](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,9 +97,9 @@ Befolgen Sie diese Anweisungen zum Aktualisieren oder Entfernen einer vorhandene
 
 1. Wählen Sie **Azure-Ressourcen** aus.
 
-1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
+1. Wählen Sie die zu verwaltende Ressource aus, um die Übersichtsseite zu öffnen.
 
-1. Wählen Sie unter „Verwalten“ den Eintrag **Rollen** aus, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
+1. Wählen Sie unter **Verwalten** den Eintrag **Rollen** aus, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
 
     ![Azure-Ressourcenrollen: Rolle auswählen](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 

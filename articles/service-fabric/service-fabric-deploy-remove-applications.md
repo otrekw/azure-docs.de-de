@@ -4,11 +4,11 @@ description: Erfahren Sie mehr über das Entfernen und Bereitstellen von Anwendu
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699837"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Bereitstellen und Entfernen von Anwendungen mit PowerShell
 
@@ -64,7 +64,7 @@ Wenn Sie das Anwendungspaket lokal überprüfen möchten, verwenden Sie das Cmdl
 
 Mit dem Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) wird das Anwendungspaket in den Clusterimagespeicher hochgeladen.
 
-Angenommen, Sie erstellen und verpacken eine Anwendung namens *MyApplication* in Visual Studio 2015. Der Name des Anwendungstyps ist in der Datei „ApplicationManifest.xml“ standardmäßig als „MyApplicationType“ aufgeführt.  Das Anwendungspaket mit den erforderlichen Anwendungs- und Dienstmanifesten sowie Code-/Konfigurations-/Datenpaketen befindet sich in *C:\Benutzer\<Benutzername\>\Eigene Dokumente\Visual Studio 2015\Projekte\MeineAnwendung\MeineAnwendung\pkg\Debuggen*. 
+Angenommen, Sie erstellen und verpacken eine Anwendung namens *MyApplication* in Visual Studio 2015. Der Name des Anwendungstyps ist in der Datei „ApplicationManifest.xml“ standardmäßig als „MyApplicationType“ aufgeführt.  Das Anwendungspaket mit den erforderlichen Anwendungs- und Dienstmanifesten sowie Code-/Konfigurations-/Datenpaketen befindet sich unter *C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug*. 
 
 Mit dem folgenden Befehl werden die Inhalte des Anwendungspakets aufgelistet:
 

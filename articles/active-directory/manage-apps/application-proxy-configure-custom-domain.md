@@ -3,25 +3,25 @@ title: Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy | Microsoft-Dokum
 description: Es wird beschrieben, wie Sie benutzerdefinierte Domänen im Azure AD-Anwendungsproxy konfigurieren und verwalten.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
-ms.reviewer: harshja
+ms.author: kenwith
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764909"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -138,7 +138,7 @@ Es wird nicht empfohlen, eine private Stammzertifizierungsstelle zu verwenden, d
 
 Die gesamte Zertifikatverwaltung erfolgt über einzelne Anwendungsseiten. Navigieren Sie zur Seite **Anwendungsproxy** der Anwendung, um auf das Feld **Zertifikat** zuzugreifen.
 
-Sie können dasselbe Zertifikat für mehrere Anwendungen verwenden. Wenn ein hochgeladenes Zertifikat für eine andere Anwendung funktioniert, wird es automatisch angewendet. Sie werden beim Hinzufügen oder Konfigurieren nicht dazu aufgefordert, es erneut hochzuladen. 
+Sobald ein Zertifikat für eine Anwendung hochgeladen wurde, wird es auch automatisch auf **neu** konfigurierte Apps angewendet, die das gleiche Zertifikat verwenden. Sie müssen das Zertifikat für vorhandene Apps in Ihrem Mandanten erneut hochladen.
 
 Bei Ablauf eines Zertifikats erhalten Sie eine Warnung mit der Aufforderung, ein anderes Zertifikat hochzuladen. Wenn das Zertifikat widerrufen wird, wird für Ihre Benutzer beim Zugreifen auf die App ggf. eine Sicherheitswarnung angezeigt. Navigieren Sie zum Aktualisieren des Zertifikats für eine App zur Seite **Anwendungsproxy** der App, wählen Sie die Option **Zertifikat** aus, und laden Sie ein neues Zertifikat hoch. Wenn das alte Zertifikat nicht von anderen Apps verwendet wird, wird es automatisch gelöscht. 
 

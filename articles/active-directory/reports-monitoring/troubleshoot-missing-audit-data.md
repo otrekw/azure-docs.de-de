@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74014291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608108"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problembehandlung: Fehlende Daten in Azure Active Directory-Aktivitätsprotokollen 
 
@@ -38,10 +38,10 @@ Ich habe einige Aktionen im Azure-Portal ausgeführt und erwartet, die Überwach
 
 Aktionen werden nicht sofort in den Aktivitätsprotokollen angezeigt. In der folgenden Tabelle sind unsere Latenzzahlen für Aktivitätsprotokolle aufgezählt. 
 
-| Bericht | &nbsp; | Wartezeit (P95) | Wartezeit (P99) |
-|--------|--------|---------------|---------------|
-| Verzeichnisüberwachung | &nbsp; | 2 Min. | 5 Min. |
-| Anmeldeaktivität | &nbsp; | 2 Min. | 5 Min. | 
+| Bericht | Wartezeit (P95) | Wartezeit (P99) |
+|--------|---------------|---------------|
+| Verzeichnisüberwachung | 2 Min. | 5 Min. |
+| Anmeldeaktivität | 2 Min. | 5 Min. |
 
 ### <a name="resolution"></a>Lösung
 
@@ -59,10 +59,10 @@ Ich habe mich kürzlich beim Azure-Portal angemeldet und erwartet, die Anmeldepr
 
 Aktionen werden nicht sofort in den Aktivitätsprotokollen angezeigt. In der folgenden Tabelle sind unsere Latenzzahlen für Aktivitätsprotokolle aufgezählt. 
 
-| Bericht | &nbsp; | Wartezeit (P95) | Wartezeit (P99) |
-|--------|--------|---------------|---------------|
-| Verzeichnisüberwachung | &nbsp; | 2 Min. | 5 Min. |
-| Anmeldeaktivität | &nbsp; | 2 Min. | 5 Min. | 
+| Bericht | Wartezeit (P95) | Wartezeit (P99) |
+|--------|---------------|---------------|
+| Verzeichnisüberwachung | 2 Min. | 5 Min. |
+| Anmeldeaktivität 2 Min. | 5 Min. |
 
 ### <a name="resolution"></a>Lösung
 
@@ -80,10 +80,10 @@ Ich kann nur die Anmelde- und Überwachungsdaten der letzten 30 Tage aus dem Azu
 
 Je nach Lizenz gelten für die Speicherung von Aktivitätsberichten durch Azure Active Directory-Aktionen die folgenden Dauern:
 
-| Bericht           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Verzeichnisprüfbericht  | &nbsp; |   7 Tage     | 30 Tage             | 30 Tage             |
-| Benutzeranmeldeaktivität | &nbsp; | Nicht verfügbar. Auf dem jeweiligen Benutzerprofilblatt können Sie auf Ihre eigenen Anmeldungen der letzten 7 Tage zugreifen. | 30 Tage | 30 Tage             |
+| Bericht           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---                 |
+| Verzeichnisprüfbericht  |  7 Tage       | 30 Tage             | 30 Tage             |
+| Benutzeranmeldeaktivität | Nicht verfügbar. Auf dem jeweiligen Benutzerprofilblatt können Sie auf Ihre eigenen Anmeldungen der letzten 7 Tage zugreifen. | 30 Tage | 30 Tage             |
 
 Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md).  
 

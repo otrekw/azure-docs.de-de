@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358561"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -89,14 +89,13 @@ Wenn sich ein Benutzer im Bereich der Kennworthashsynchronisierung befindet, wir
 
 Sie können sich mit einem synchronisierten Kennwort, das in der lokalen Umgebung abgelaufen ist, weiterhin bei Ihren Clouddiensten anmelden. Ihr Cloudkennwort wird aktualisiert, wenn Sie das Kennwort in der lokalen Umgebung das nächste Mal ändern.
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>Öffentliche Vorschau des *EnforceCloudPasswordPolicyForPasswordSyncedUsers*-Features
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 Wenn synchronisierte Benutzer vorhanden sind, die nur mit integrierten Azure AD-Diensten interagieren und auch eine Kennwortablaufrichtlinie einhalten müssen, können Sie die Einhaltung Ihrer Azure AD-Kennwortablaufrichtlinie erzwingen, indem Sie das *EnforceCloudPasswordPolicyForPasswordSyncedUsers*-Feature aktivieren.
 
 Wenn*EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standardeinstellung), legt Azure AD Connect das „PasswordPolicies“-Attribut von synchronisierten Benutzern auf „DisablePasswordExpiration“ fest. Dies erfolgt jedes Mal, wenn das Kennwort eines Benutzers synchronisiert wird, und weist Azure AD an, die Cloudkennwort-Ablaufrichtlinie für diesen Benutzer zu ignorieren. Sie können den Wert des Attributs mithilfe des Azure AD PowerShell-Moduls mit dem folgenden Befehl überprüfen:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 Führen Sie den folgenden Befehl mit dem MSOnline PowerShell-Modul aus, um das EnforceCloudPasswordPolicyForPasswordSyncedUsers-Feature wie nachstehend gezeigt zu aktivieren. Geben Sie „Yes“ für den Parameter „Enable“ ein, wie unten dargestellt:
 
@@ -123,10 +122,9 @@ Nachteil: Wenn synchronisierte Konten vorhanden sind, die in Azure AD nicht abla
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase.
 > Der PowerShell-Befehl „Set-MsolPasswordPolicy“ funktioniert nicht in Verbunddomänen. 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Öffentliche Vorschau der Synchronisierung von temporären Kennwörtern und Erzwingung der Änderung des Kennworts bei der nächsten Anmeldung
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Synchronisieren von temporären Kennwörtern und Erzwingen der Kennwortänderung bei der nächsten Anmeldung
 
 Normalerweise wird ein Benutzer gezwungen, sein Kennwort bei der ersten Anmeldung zu ändern, insbesondere nachdem das Administratorkennwort zurückgesetzt wurde.  Dies wird häufig als Festlegen eines „temporären“ Kennworts bezeichnet und durch Aktivieren des Flags „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ für ein Benutzerobjekt in Active Directory (AD) vollzogen.
   
@@ -141,9 +139,6 @@ Wenn Sie in Azure AD temporäre Kennwörter für synchronisierte Benutzer unter
 
 > [!CAUTION]
 > Sie sollten dieses Feature nur verwenden, wenn SSPR und Kennwortrückschreiben für den Mandanten aktiviert sind.  Auf diese Weise wird ein Benutzer, der sein Kennwort über SSPR ändert, mit Active Directory synchronisiert.
-
-> [!NOTE]
-> Dieses Feature befindet sich derzeit in der Public Preview-Phase.
 
 #### <a name="account-expiration"></a>Kontoablauf
 

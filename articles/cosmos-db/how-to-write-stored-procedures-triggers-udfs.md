@@ -3,15 +3,15 @@ title: Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten 
 description: Erfahren Sie, wie Sie gespeicherte Prozeduren, Triggern und benutzerdefinierte Funktionen in Azure Cosmos DB definieren.
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262870"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 
@@ -52,21 +52,42 @@ Wenn Sie ein Element mithilfe einer gespeicherten Prozedur erstellen, wird diese
 
 Die gespeicherte Prozedur enthält auch einen Parameter zum Festlegen der Beschreibung. Hierbei handelt es sich um einen booleschen Wert. Wenn der Parameter auf TRUE festgelegt wird und die Beschreibung fehlt, löst die gespeicherte Prozedur eine Ausnahme aus. Andernfalls wird der Rest der gespeicherten Prozedur weiter ausgeführt.
 
-Die folgende exemplarische gespeicherte Prozedur akzeptiert ein neues Azure Cosmos-Element als Eingabe, fügt es in den Azure Cosmos-Container ein und gibt die ID für das neu erstellte Element zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
+Die folgende exemplarische gespeicherte Prozedur akzeptiert ein Array neuer Azure Cosmos-Elemente als Eingabe, fügt sie in den Azure Cosmos-Container ein und gibt die Anzahl der eingefügten Elemente zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 

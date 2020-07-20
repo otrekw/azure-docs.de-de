@@ -3,15 +3,15 @@ title: Ermitteln der Gebühr für eine Anforderungseinheit (Request Unit, RU) in
 description: Hier erfahren Sie, wie Sie die Gebühr für eine Anforderungseinheit (Request Unit, RU) für einen beliebigen Vorgang ermitteln, der für einen Azure Cosmos-Container ausgeführt wurde.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: e5420b9b765fffcf7b4ccd6775d05795b1b13871
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: bf109d3f15c9865a8e9ad1d27a1e8d320d172761
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261833"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Ermitteln der Gebühr für eine Anforderungseinheit in Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Aktuell können Sie die Anforderungsgebühr im Azure-Portal nur für eine SQL-Ab
 
 1. Wählen Sie **Query Stats** (Abfragestatistik) aus, um die tatsächliche Anforderungsgebühr für die ausgeführte Anforderung anzuzeigen.
 
-![Screenshot: Anforderungsgebühr für eine SQL-Abfrage im Azure-Portal](./media/find-request-unit-charge/portal-sql-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Screenshot: Anforderungsgebühr für eine SQL-Abfrage im Azure-Portal":::
 
 ### <a name="use-the-net-sdk"></a>Verwenden des .NET SDK
 
@@ -187,7 +187,7 @@ Aktuell können Sie die Anforderungsgebühr im Azure-Portal nur für eine Abfrag
 
 1. Wählen Sie **Query Stats** (Abfragestatistik) aus, um die tatsächliche Anforderungsgebühr für die ausgeführte Anforderung anzuzeigen.
 
-![Screenshot: Anforderungsgebühr für eine MongoDB-Abfrage im Azure-Portal](./media/find-request-unit-charge/portal-mongodb-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Screenshot: Anforderungsgebühr für eine MongoDB-Abfrage im Azure-Portal":::
 
 ### <a name="use-the-mongodb-net-driver"></a>Verwenden des .NET-Treibers von MongoDB
 

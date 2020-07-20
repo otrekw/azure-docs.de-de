@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212621"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -58,7 +58,7 @@ Erteilen Sie als Nächstes Ihrer Anwendung Berechtigungen zum Aufrufen von Azure
 
     ![Screenshot mit Berechtigungen für den Speicher](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-Im Bereich **API-Berechtigungen** wird jetzt angezeigt, dass Ihre registrierte Azure AD-Anwendung Zugriff auf Microsoft Graph und Azure Storage hat. Berechtigungen für Microsoft Graph werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
+Im Bereich **API-Berechtigungen** wird jetzt angezeigt, dass Ihre registrierte Azure AD-Anwendung Zugriff auf die Microsoft Graph- und auf die Azure Storage-API hat. Berechtigungen für Microsoft Graph werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
 
 ![Screenshot mit Berechtigungen der registrierten App](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
@@ -213,7 +213,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
     properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
                                                  scopes.Union(additionalBuildInScopes).ToList());
@@ -284,8 +284,8 @@ CloudBlockBlob blob = new CloudBlockBlob(
 Sie müssen für Ihre App-Registrierung möglicherweise den Ablauf zur impliziten Genehmigung konfigurieren, um das Beispiel auszuführen. Folgen Sie diesen Schritten:
 
 1. Navigieren Sie im Azure-Portal zu Ihrer App-Registrierung.
-1. Wählen Sie im Abschnitt „Manage“ (Verwalten) die Einstellung **Authentication** (Authentifizierung) aus.
-1. Aktivieren Sie wie in der folgenden Abbildung dargestellt die Kontrollkästchen unter **Erweiterte Einstellungen** im Bereich **Implicit grant** (Implizite Genehmigung), um Zugriffstoken und ID-Token zu aktivieren:
+1. Wählen Sie im Abschnitt **Manage** (Verwalten) die Einstellung **Authentication** (Authentifizierung) aus.
+1. Aktivieren Sie im Abschnitt **Implicit grant** (Implizite Genehmigung) das Kontrollkästchen zum Aktivieren von ID-Token, wie in der folgenden Abbildung gezeigt:
 
     ![Screenshot: Aktivieren der Einstellungen für den Flow zur impliziten Genehmigung](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
@@ -294,13 +294,13 @@ Sie müssen für Ihre App-Registrierung möglicherweise den Ablauf zur implizite
 Wenn Sie das Beispiel ausführen, müssen Sie möglicherweise den in Ihrer App-Registrierung angegebenen Umleitungs-URI aktualisieren, um den zur Laufzeit zugewiesenen *localhost*-Port zu verwenden. Gehen Sie wie folgt vor, um den Umleitungs-URI so zu aktualisieren, dass dieser den zugewiesenen Port verwendet:
 
 1. Navigieren Sie im Azure-Portal zu Ihrer App-Registrierung.
-1. Wählen Sie im Abschnitt „Manage“ (Verwalten) die Einstellung **Authentication** (Authentifizierung) aus.
+1. Wählen Sie im Abschnitt **Manage** (Verwalten) die Einstellung **Authentication** (Authentifizierung) aus.
 1. Bearbeiten Sie den Port unter **Umleitungs-URIs** wie in der folgenden Abbildung dargestellt, damit dieser mit dem von der Beispielanwendung verwendeten übereinstimmt:
 
     ![Screenshot: Umleitungs-URIs für die App-Registrierung](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Microsoft Identity Platform finden Sie unter [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/).
-- Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Speicherdaten mit RBAC](storage-auth-aad-rbac.md).
-- Informationen zur Verwendung verwalteter Identitäten für Azure-Ressourcen mit Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md).
+- [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/)
+- [Verwalten von Rechten für den Zugriff auf Speicherdaten mithilfe der RBAC](storage-auth-aad-rbac.md)
+- [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md)

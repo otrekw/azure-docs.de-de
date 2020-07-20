@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295306"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024382"
 ---
 # <a name="common-conditional-access-policies"></a>Allgemeine Richtlinien für bedingten Zugriff
 
-[Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) erfüllen die verschiedensten Zwecke, aber viele Organisationen benötigen mehr Flexibilität, als sie bieten. Viele Organisationen benötigen z. B. die Möglichkeit, bestimmte Konten wie ihr Notfallzugriffskonto von den Richtlinien für bedingten Zugriff auszuschließen, die eine mehrstufige Authentifizierung erfordern. Für diese Unternehmen können die in diesem Artikel genannten allgemeinen Richtlinien hilfreich sein.
+[Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) erfüllen die verschiedensten Zwecke, aber viele Organisationen benötigen mehr Flexibilität, als sie bieten. Viele Unternehmen benötigen z. B. die Möglichkeit, bestimmte Konten wie ihr Notfallzugriffskonto von den Richtlinien für bedingten Zugriff auszuschließen, die eine mehrstufige Authentifizierung erfordern. Für diese Unternehmen können die in diesem Artikel genannten allgemeinen Richtlinien hilfreich sein.
 
 ![Richtlinien für bedingten Zugriff im Azure-Portal](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 
@@ -42,7 +42,8 @@ Weitere Informationen zu Notfallzugriffskonten und warum sie wichtig sind, finde
 
 ## <a name="additional-policies"></a>Weitere Richtlinien
 
-* [Risikobasierter bedingter Zugriff (erfordert Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
+* [Bedingter Zugriff auf Basis des Anmelderisikos (erfordert Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
+* [Bedingter Zugriff auf Basis des Benutzerrisikos (erfordert Azure AD Premium P2)](howto-conditional-access-policy-risk-user.md)
 * [Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung](howto-conditional-access-policy-registration.md)
 * [Blockieren des Zugriffs nach Standort](howto-conditional-access-policy-location.md)
 * [Erzwingen eines kompatiblen Geräts](howto-conditional-access-policy-compliant-device.md)

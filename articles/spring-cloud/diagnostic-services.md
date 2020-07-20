@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790584"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -174,3 +174,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>Weitere Informationen zum Abfragen von Anwendungsprotokollen
 
 Azure Monitor bietet umfassende Unterstützung für das Abfragen von Anwendungsprotokollen mithilfe von Log Analytics. Weitere Informationen zu diesem Dienst finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md). Weitere Informationen zum Erstellen von Abfragen zur Analyse Ihrer Anwendungsprotokolle finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Wie können mehrzeilige Java-Stapelüberwachungen in eine einzelne Zeile konvertiert werden?
+
+Es gibt eine Möglichkeit, Ihre mehrzeiligen Stapelüberwachungen in eine einzelne Zeile zu konvertieren. Sie können die Java-Protokollausgabe ändern, um Stapelüberwachungsnachrichten neu zu formatieren, sodass Zeilenvorschubzeichen durch ein Token ersetzt werden. Bei Verwendung der Java-Logback-Bibliothek können Sie Stapelüberwachungsnachrichten durch Hinzufügen von `%replace(%ex){'[\r\n]+', '\\n'}%nopex` neu formatieren:
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+In Log Analytics können Sie das Token dann wieder durch Zeilenvorschubzeichen ersetzen, wie hier zu sehen:
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+Die gleiche Strategie kann ggf. auch für andere Java-Protokollbibliotheken verwendet werden.

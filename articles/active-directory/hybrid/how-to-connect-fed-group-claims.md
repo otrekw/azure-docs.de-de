@@ -8,16 +8,16 @@ manager: daveba
 ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359958"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory
 
@@ -222,6 +222,6 @@ Ausgeben von Gruppennamen, die im Format „netbiosDomain\samAccountName“ als 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
-
-[Konfigurieren von Rollenansprüchen](../../active-directory/develop/active-directory-enterprise-app-role-management.md)
+- [Hinzufügen der Autorisierung mit Gruppen und Gruppenansprüchen zu einer ASP.NET Core-Web-App (Codebeispiel)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
+- [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
+- [Konfigurieren von Rollenansprüchen](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

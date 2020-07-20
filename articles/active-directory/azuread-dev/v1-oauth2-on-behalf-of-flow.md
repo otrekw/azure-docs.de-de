@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642073"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551682"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 
@@ -79,7 +79,7 @@ Registrieren Sie den Diensts auf der mittleren Ebene und die Clientanwendung in 
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Konfigurieren Sie die Berechtigungen für Ihre Anwendung. Wählen Sie unter **API-Berechtigungen** die Option **Berechtigung hinzufügen** und dann **Meine APIs** aus.
 1. Geben Sie den Namen des Diensts der mittleren Ebene in das Textfeld ein.
-1. Wählen Sie **Berechtigungen auswählen** und dann **Auf den \<Dienstnamen> zugreifen** aus.
+1. Wählen Sie **Berechtigungen auswählen** und dann **Zugreifen\<service name>** aus.
 
 ### <a name="configure-known-client-applications"></a>Konfigurieren der bekannten Clientanwendungen
 
@@ -105,7 +105,7 @@ Die Clientanwendung wird durch ein gemeinsames Geheimnis oder durch ein Zertifik
 
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JSON Web Token (JWT) verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken. |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
@@ -249,7 +249,7 @@ Einige OAuth-basierte Webdienste benötigen Zugriff auf andere Webdienst-APIs, d
 
 Eine Dienst-zu-Dienst-Anforderung für eine SAML-Assertion weist die folgenden Parameter auf:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit einem JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken.|
@@ -283,9 +283,9 @@ Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - resource: `https://api.contoso.com`
-- access_token: \<SAML-Assertion\>
+- access_token: \<SAML assertion\>
 - issued_token_type: urn:ietf:params:oauth:token-type:saml2
-- refresh_token: \<Aktualisierungstoken\>
+- refresh_token: \<Refresh token\>
 
 ## <a name="client-limitations"></a>Clienteinschränkungen
 
