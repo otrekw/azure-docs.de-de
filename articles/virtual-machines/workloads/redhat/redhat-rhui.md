@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85250348"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat-Updateinfrastruktur für virtuelle On-Demand-Red Hat Enterprise Linux-VMs in Azure
  Mit der [Red Hat-Updateinfrastruktur](https://access.redhat.com/products/red-hat-update-infrastructure) können Cloudanbieter (z. B. Azure) in Red Hat gehostete Repositoryinhalte spiegeln, benutzerdefinierte Repositorys mit Azure-spezifischem Inhalt erstellen und diese für Endbenutzer-VMs zur Verfügung stellen.
@@ -83,7 +83,7 @@ Für Kunden, die ihre RHEL-VMs nach der Bereitstellung der VM auf eine bestimmte
 >[!NOTE]
 > EUS wird für RHEL Extras nicht unterstützt. Wenn Sie also ein Paket installieren, das in der Regel über den RHEL Extras-Kanal verfügbar ist, können Sie dies nicht installieren, solange Sie EUS nutzen. Informationen zum Produktlebenszyklus von Red Hat Extras finden Sie [hier](https://access.redhat.com/support/policy/updates/extras/).
 
-Zum Zeitpunkt der Erstellung dieses Artikels war die EUS-Unterstützung für RHEL <= 7.4 bereits eingestellt. Ausführlichere Informationen finden Sie in der [Red Hat-Dokumentation](https://access.redhat.com/support/policy/updates/errata/) im Abschnitt „Red Hat Enterprise Linux Longer Support Add-Ons“.
+Zum Zeitpunkt der Erstellung dieses Artikels war die EUS-Unterstützung für RHEL <= 7.4 bereits eingestellt. Ausführlichere Informationen finden Sie in der [Red Hat-Dokumentation](https://access.redhat.com/support/policy/updates/errata/#Long_Support) im Abschnitt „Red Hat Enterprise Linux Extended Maintenance“.
 * EUS-Unterstützung für RHEL 7.4 endet am 31. August 2019.
 * EUS-Unterstützung für RHEL 7.5 endet am 30. April 2020.
 * EUS-Unterstützung für RHEL 7.6 endet am 31. Oktober 2020.
@@ -164,6 +164,11 @@ Wenn Sie den Zugriff von virtuellen RHEL-PAYG-Computern per Netzwerkkonfiguratio
 51.5.243.77
 51.4.228.145
 ```
+>[!NOTE]
+>Für die neuen Azure US Government-Images wird ab Januar 2020 die öffentliche IP-Adresse verwendet, die oben unter „Azure Global“ aufgeführt sind.
+
+>[!NOTE]
+>Beachten Sie auch, dass Azure Deutschland zu Gunsten öffentlicher Deutschland-Regionen veraltet ist. Die Empfehlung für Azure Deutschland-Kunden besteht darin, die [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers) aufgeführten Schritte auszuführen, um auf die öffentliche RHUI zu verweisen.
 
 ## <a name="azure-rhui-infrastructure"></a>Azure-RHUI-Infrastruktur
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 566347414ffe707b1d68a61b00ba21d19ff2b1eb
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: c96fa4c453911c4ca4b8cf6d8f74647b4532109f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711543"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Ändern des von einem virtuellen Azure-Computer verwendeten Betriebssystem-Datenträgers mithilfe von PowerShell
 
@@ -23,6 +23,7 @@ Wenn Sie über einen virtuellen Computer verfügen, aber den Datenträger für e
 Der virtuelle Computer muss sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden, und dann kann die Ressourcen-ID des verwalteten Datenträgers durch die Ressourcen-ID eines anderen verwalteten Datenträgers ersetzt werden.
 
 Stellen Sie sicher, dass VM-Größe und Speichertyp mit dem Datenträger kompatibel sind, den Sie anfügen möchten. Wenn der Datenträger, den Sie verwenden möchten, sich z.B. im Storage Premium befindet, dann muss der virtuelle Computer für Storage Premium geeignet sein (z.B. eine Größe der DS-Serie). Beide Datenträger müssen ebenfalls dieselbe Größe haben.
+Und achten Sie darauf, dass Sie nicht eine verschlüsselte VM mit einem verschlüsselten Betriebssystemdatenträger mischen. Dies wird nicht unterstützt. Wenn Azure Disk Encryption nicht für die VM verwendet wird, darf auf dem Betriebssystem-Datenträger, der als Austauschdatenträger fungiert, nicht Azure Disk Encryption verwendet werden.
 
 Abrufen einer Liste von Datenträgern in einer Ressourcengruppe mit [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
 

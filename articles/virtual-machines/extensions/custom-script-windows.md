@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478483"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -66,6 +66,7 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch wei
 * Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *cURL*).
 * Achten Sie auf nicht standardmäßige Verzeichnispfade, von denen Ihre Skripts oder Befehle gegebenenfalls abhängen, und verwenden Sie eine entsprechende Logik, um diese Situation zu behandeln.
 * Die benutzerdefinierte Skripterweiterung wird unter dem Konto „LocalSystem“ ausgeführt.
+* Wenn Sie die Eigenschaften *storageAccountName* und *storageAccountKey* verwenden möchten, müssen diese Eigenschaften in *protectedSettings* angeordnet sein.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 

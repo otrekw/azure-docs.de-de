@@ -234,7 +234,7 @@ Um den Code im Visual Studio Code-Debugger auszuführen, konfigurieren Sie die
 So richten Sie die Debugger-Erweiterung in Visual Studio Code ein:
 
 1. Wählen Sie **Ausführen > Konfiguration hinzufügen** aus.
-2. Wählen Sie **Edge**, **Chrome** oder **Firefox** aus, je nachdem, welche Erweiterung Sie zuvor im Abschnitt [Voraussetzungen](#prerequisites) installiert haben.
+2. Wählen Sie **Microsoft Edge**, **Chrome** oder **Firefox** aus, je nachdem, welche Erweiterung Sie zuvor im Abschnitt [Voraussetzungen](#prerequisites) installiert haben.
 
 Durch das Hinzufügen einer neuen Konfiguration wird eine Datei *launch.json* erstellt und im Editor geöffnet. Ändern Sie die Datei *launch.json* wie hier gezeigt, sodass der `url`-Wert `http://localhost:1234/index.html` enthält:
 

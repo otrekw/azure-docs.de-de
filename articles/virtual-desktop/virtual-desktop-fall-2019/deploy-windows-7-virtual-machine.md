@@ -4,16 +4,16 @@ description: Konfigurieren und Bereitstellen eines virtuellen Windows 7-Computer
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0cb5b2ee8b8391dc4fcb78cc1d3bd212c44f1803
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eafe2050f834fdd9aecba492c7121be9c1e121e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206001"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop
 
@@ -32,9 +32,9 @@ Nachdem Sie die Voraussetzungen erfüllt haben, können Sie Ihre Windows 7-VM f�
 
 So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ein:
 
-1. Melden Sie sich am Azure-Portal an, und suchen Sie entweder nach dem Windows 7 Enterprise-Image, oder laden Sie ein eigenes benutzerdefiniertes Windows 7 Enterprise-Image (x64) hoch.  
+1. Melden Sie sich am Azure-Portal an, und suchen Sie entweder nach dem Windows 7 Enterprise-Image, oder laden Sie ein eigenes benutzerdefiniertes Windows 7 Enterprise-Image (x64) hoch.
 2. Stellen Sie mindestens einen virtuellen Computer mit Windows 7 Enterprise als Hostbetriebssystem bereit. Stellen Sie sicher, dass die virtuellen Computer das Remotedesktopprotokoll (RDP) zulassen (TCP-Port/Port 3389).
-3. Stellen Sie mithilfe von RDP eine Verbindung mit dem Windows 7 Enterprise-Host her, und authentifizieren Sie sich mit den Anmeldeinformationen, die Sie beim Konfigurieren der Bereitstellung definiert haben. 
+3. Stellen Sie mithilfe von RDP eine Verbindung mit dem Windows 7 Enterprise-Host her, und authentifizieren Sie sich mit den Anmeldeinformationen, die Sie beim Konfigurieren der Bereitstellung definiert haben.
 4. Fügen Sie das Konto, das Sie beim Herstellen einer Verbindung mit dem Host über RDP verwendet haben, der Gruppe „Remotedesktopbenutzer“ hinzu. Wenn Sie nicht so vorgehen, können Sie möglicherweise keine Verbindung mit dem virtuellen Computer herstellen, nachdem Sie ihn Ihrer Active Directory-Domäne hinzugefügt haben.
 5. Navigieren Sie auf Ihrem virtuellen Computer zu Windows Update.
 6. Installieren Sie alle Windows-Updates in der Kategorie „Wichtig“.
@@ -43,17 +43,18 @@ So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ei
 9. Aktivieren Sie die Richtlinie für das Remotedesktopprotokoll 8.0.
 10. Fügen Sie diesen virtuellen Computer Ihrer Active Directory-Domäne hinzu.
 11. Starten Sie den virtuellen Computer neu, indem Sie den folgenden Befehl ausführen:
-    
+
      ```cmd
      shutdown /r /t 0
      ```
-    
+
 12. Führen Sie die [hier](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) aufgeführten Schritte aus, um ein Registrierungstoken abzurufen.
 13. [Herunterladen des Windows Virtual Desktop-Agents für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Herunterladen des Windows Virtual Desktop-Agent-Managers für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Öffnen Sie das Installationsprogramm für den Windows Virtual Desktop-Agent, und befolgen Sie die Anweisungen. Wenn Sie dazu aufgefordert werden, geben Sie den in Schritt 12 erstellten Registrierungsschlüssel ein.
-16. Öffnen Sie das Installationsprogramm für Windows Virtual Desktop, und befolgen Sie die Anweisungen.
+16. Öffnen Sie den Windows Virtual Desktop-Agent-Manager, und befolgen Sie die Anweisungen.
 17. Blockieren Sie optional den Port TCP/3389, um den direkten Zugriff auf die VM über das Remotedesktopprotokoll zu entfernen.
+18. Vergewissern Sie sich ggf., dass .NET Framework mindestens in der Version 4.7.2 vorliegt. Dies ist insbesondere wichtig, wenn Sie ein benutzerdefiniertes Image erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

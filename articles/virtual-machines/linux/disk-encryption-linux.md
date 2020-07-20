@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1ec7328363cf835c733a4d0c266732c6748c829
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601383"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
@@ -388,23 +388,7 @@ Im Gegensatz zur PowerShell-Syntax erfordert die Befehlszeilenschnittstelle vom 
 
 
 ## <a name="disable-encryption-for-linux-vms"></a>Deaktivieren der Verschlüsselung für virtuelle Linux-Computer
-Sie können die Verschlüsselung mit Azure PowerShell, der Azure CLI oder einer Resource Manager-Vorlage deaktivieren. 
-
->[!IMPORTANT]
->Das Deaktivieren der Verschlüsselung mit Azure Disk Encryption auf Linux-VMs wird nur für Datenvolumes unterstützt. Dies wird nicht auf Daten- oder Betriebssystemvolumes unterstützt, wenn das Betriebssystemvolume verschlüsselt wurde.  
-
-- **Deaktivieren der Datenträgerverschlüsselung mit Azure PowerShell:** Verwenden Sie das Cmdlet [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption), um die Verschlüsselung zu deaktivieren. 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType DATA]
-     ```
-
-- **Deaktivieren der Verschlüsselung mit der Azure CLI:** Verwenden Sie den Befehl [az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable), um die Verschlüsselung zu deaktivieren. 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
-     ```
-- **Deaktivieren der Verschlüsselung mit einer Resource Manager-Vorlage:** Verwenden Sie zum Deaktivieren der Verschlüsselung die Vorlage zum [Deaktivieren der Verschlüsselung auf einem ausgeführten virtuellen Linux-Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad).
-     1. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
-     2. Wählen Sie das Abonnement, die Ressourcengruppe, den Standort, die VM, die rechtlichen Bedingungen und die Vereinbarung aus.
+[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
 
 ## <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
 
@@ -412,7 +396,7 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 
 - Verschlüsseln von virtuellen Computern der Ebene „Standard“ und von virtuellen Computern, die mithilfe der klassischen Erstellungsmethode für virtuelle Computer erstellt wurden
 - Deaktivieren der Verschlüsselung für ein Betriebssystemlaufwerk oder Datenlaufwerk auf einem virtuellen Linux-Computer, wenn das Betriebssystemlaufwerk verschlüsselt ist
-- Verschlüsselung von Betriebssystemlaufwerken auf virtuellen Linux-Computern in Skalierungsgruppen
+- Verschlüsseln des Betriebssystemlaufwerks für Linux-VM-Skalierungsgruppen
 - Verschlüsseln benutzerdefinierter Images auf virtuellen Linux-Computern
 - Integration mit einem lokalen Schlüsselverwaltungssystem
 - Azure Files (freigegebenes Dateisystem)
@@ -420,12 +404,15 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Dynamische Volumes
 - Kurzlebige Betriebssystemdatenträger
 - Verschlüsselung freigegebener/verteilter Dateisysteme, einschließlich der folgenden, aber nicht auf diese begrenzt: DFS, GFS, DRDB und CephFS.
-- Verschieben eines verschlüsselten virtuellen Computers in ein anderes Abonnement.
+- Verschieben eines verschlüsselten virtuellen Computers in ein anderes Abonnement oder in eine andere Region
+- Erstellen eines Images oder einer Momentaufnahme einer verschlüsselten VM und dessen oder deren Verwendung zum Bereitstellen weiterer VMs
 - Kernel-Absturzabbild (kdump).
 - Oracle-ACFS (ASM-Clusterdateisystem).
 - Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
 - VMs der Lsv2-Serie (siehe: [LSv2-Serie](../lsv2-series.md)).
 - Eine VM mit „geschachtelten Bereitstellungspunkten“, also mehrere Bereitstellungspunkte in einem einzelnen Pfad (z. B. „/1stmountpoint/data/2stmountpoint“).
+- Eine VM mit einem Datenlaufwerk, das über einem Betriebssystemordner eingebunden ist
+- VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
 
 ## <a name="next-steps"></a>Nächste Schritte
 

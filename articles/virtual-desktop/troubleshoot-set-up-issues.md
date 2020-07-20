@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361166"
 ---
 # <a name="host-pool-creation"></a>Hostpoolerstellung
 
@@ -37,7 +37,8 @@ Wenn Sie das Windows 10 Enterprise-Image für mehrere Sitzungen verwenden möch
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>Error: „Kostenloses Konto erstellen“ wird beim Zugreifen auf den Dienst angezeigt
 
-![Bild: die Meldung „Kostenloses Konto erstellen“ im Azure-Portal](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> ![Bild: die Meldung „Kostenloses Konto erstellen“ im Azure-Portal](media/create-new-account.png)
 
 **Ursache:** Für das Konto, mit dem Sie sich bei Azure angemeldet haben, sind nicht genügend aktive Abonnements verfügbar, oder das verwendete Konto besitzt keine Berechtigungen zum Anzeigen der Abonnements. 
 
@@ -60,9 +61,10 @@ Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfo
 3. Sobald der Fehler identifiziert ist, nutzen Sie die Informationen zur Fehlermeldung und zu den Ressourcen im Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md), um den Fehler zu beheben.
 4. Löschen Sie alle Ressourcen, die während der vorherigen Bereitstellung erstellt wurden, und versuchen Sie erneut, die Vorlage bereitzustellen.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Error: Fehler bei der Bereitstellung….\<Hostname >/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Error: Fehler bei der Bereitstellung … \<hostname>/joindomain
 
-![Screenshot: Fehler bei der Bereitstellung](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung](media/failure-joindomain.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -103,7 +105,8 @@ Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Error: VMExtensionProvisioningError
 
-![Screenshot: Fehler bei der Bereitstellung – fehlerhafter Status der Terminalbereitstellung](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung – fehlerhafter Status der Terminalbereitstellung](media/failure-vmextensionprovisioning.png)
 
 **Ursache 1:** Vorübergehender Fehler in der Windows Virtual Desktop-Umgebung.
 
@@ -113,7 +116,8 @@ Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Error: Der angegebene Administratorbenutzername ist unzulässig
 
-![Screenshot: Fehler bei der Bereitstellung – angegebener Administrator ist unzulässig](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung – angegebener Administrator ist unzulässig](media/failure-username.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -130,7 +134,8 @@ Beispiel für unformatierten Fehler:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Error: Die VM hat beim Verarbeiten einer Erweiterung einen Fehler gemeldet
 
-![Screenshot: Fehler bei der Bereitstellung – abgeschlossener Ressourcenvorgang mit Statusmeldung für Terminalbereitstellung](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung – abgeschlossener Ressourcenvorgang mit Statusmeldung für Terminalbereitstellung](media/failure-processing.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -149,7 +154,8 @@ Beispiel für unformatierten Fehler:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Error: DeploymentFailed – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen
 
-![Screenshot: Bereitstellungsfehler – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen.](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Bereitstellungsfehler – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen.](media/failure-dsc.png)
 
 Beispiel für unformatierten Fehler:
 

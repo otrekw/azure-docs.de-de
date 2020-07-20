@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139996"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791179"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Warnungsüberprüfung (EICAR-Testdatei) in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -39,7 +39,7 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 
 1. Kopieren Sie eine ausführbare Datei (beispielsweise **calc.exe**) auf den Desktop des Computers oder in ein beliebiges anderes Verzeichnis, und benennen Sie sie in **ASC_AlertTest_662jfi039N.exe** um.
 1. Öffnen Sie die Eingabeaufforderung, und führen Sie die Datei mit einem Argument (beliebiger Pseudoname) aus. Beispiel: ```ASC_AlertTest_662jfi039N.exe -foo```
-1. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Eine Warnung ähnlich wie im [Beispiel](#alert-validate) unten sollte angezeigt werden:
+1. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Eine Warnung sollte angezeigt werden.
 
 > [!NOTE]
 > Vergewissern Sie sich bei der Prüfung dieser Testwarnung für Windows, dass **Arguments Auditing Enabled** (Argumentüberprüfung aktiviert) auf **TRUE** festgelegt ist. Sollte die Option auf **FALSE** festgelegt sein, müssen Sie die Überprüfung von Befehlszeilenargumenten aktivieren. Verwenden Sie den folgenden Befehl, um die Einstellung zu aktivieren:
@@ -57,11 +57,7 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Eine Warnung ähnlich wie im [Beispiel](#alert-validate) unten sollte angezeigt werden:
-
-### <a name="alert-example"></a>Beispiel für eine Warnung <a name="alert-validate"></a>
-
-![Beispiel für eine Warnungsüberprüfung](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+1. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Eine Warnung sollte angezeigt werden.
 
 
 ## <a name="validate-alerts-on-kubernetes"></a>Überprüfen von Warnungen unter Kubernetes <a name="validate-kubernetes"></a>

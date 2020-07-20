@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 95b9c76a2ff962cb2fa4bacbb1b1e9a953b7014f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fb43a0d39beacf02a6949228eaa32a719164987
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552234"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (Vorschauversion) in der kognitiven Azure-Suche
 
 > [!IMPORTANT] 
-> Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2020-06-30-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 `moreLikeThis=[key]` ist ein Abfrageparameter in der [API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents), über den Dokumente gesucht werden, die dem mit dem Dokumentschlüssel angegebenen Dokument ähneln. Beim Ausführen einer Suchanforderung mit `moreLikeThis` wird eine Abfrage mit Suchbegriffen generiert, die aus dem angegebenen Dokument extrahiert werden und das Dokument am besten beschreiben. Anhand der generierten Abfrage wird dann die Suchanforderung erstellt. Standardmäßig werden die Inhalte aller durchsuchbaren Felder berücksichtigt, mit Ausnahme aller eingeschränkten Felder, die Sie mit dem Parameter `searchFields` angegeben haben. Der Parameter `moreLikeThis` kann nicht mit dem Suchparameter `search=[string]` verwendet werden.
 
@@ -36,14 +36,14 @@ In allen folgenden Beispielen wird das Beispiel „hotels“ aus [Schnellstart: 
 Mit der folgenden Abfrage werden Dokumente gesucht, deren Beschreibungsfelder dem Feld des Quelldokuments entsprechend der Angabe durch den Parameter `moreLikeThis` am ähnlichsten sind:
 
 ```
-GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2020-06-30-Preview
 ```
 
 In diesem Beispiel sucht die Anforderung nach Hotels, die mit `HotelId` 29 vergleichbar sind.
 Sie können `MoreLikeThis` auch mithilfe von HTTP POST (anstelle von HTTP GET) aufrufen:
 
 ```
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
     {
       "moreLikeThis": "29",
       "searchFields": "Description"
@@ -55,7 +55,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
 `MoreLikeThis` kann mit anderen allgemeinen Abfrageparametern wie `$filter` kombiniert werden. Beispielsweise kann die Abfrage auf Hotels mit der Kategorie „Budget“ und einer Bewertung von mindestens 3,5 beschränkt werden:
 
 ```
-GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2020-06-30-Preview
 ```
 
 ### <a name="select-fields-and-limit-results"></a>Auswählen von Feldern und Einschränken der Ergebnisse
@@ -63,7 +63,7 @@ GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$
 Mit dem Selektor `$top` kann die Anzahl von Ergebnissen eingeschränkt werden, die in einer Abfrage vom Typ `MoreLikeThis` zurückgegeben werden sollen. Außerdem können Felder mit `$select` ausgewählt werden. Hier werden die drei passendsten Hotels zusammen mit ihrer ID, ihrem Namen und ihrer Bewertung ausgewählt: 
 
 ```
-GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2020-06-30-Preview
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

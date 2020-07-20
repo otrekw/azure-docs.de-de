@@ -1,22 +1,22 @@
 ---
 title: Grundlegendes zu Azure IoT Hub-Modulzwillingen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten mithilfe von Modulzwillingen'
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
-ms.author: menchi
-ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610148"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
-In diesem Artikel wird vorausgesetzt, dass Sie bereits den Artikel [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](iot-hub-devguide-device-twins.md) gelesen haben. In IoT Hub können unter jeder Geräteidentität bis zu 20 Modulidentitäten erstellt werden. Jede Modulidentität generiert implizit einen Modulzwilling. Modulzwillinge weisen Ähnlichkeiten mit Gerätezwillingen auf und stellen JSON-Dokumente dar, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. Azure IoT Hub pflegt einen Modulzwilling für jedes Modul, das Sie mit IoT Hub verbinden. 
+In diesem Artikel wird vorausgesetzt, dass Sie bereits den Artikel [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](iot-hub-devguide-device-twins.md) gelesen haben. In IoT Hub können unter jeder Geräteidentität bis zu 50 Modulidentitäten erstellt werden. Jede Modulidentität generiert implizit einen Modulzwilling. Modulzwillinge weisen Ähnlichkeiten mit Gerätezwillingen auf und stellen JSON-Dokumente dar, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. Azure IoT Hub pflegt einen Modulzwilling für jedes Modul, das Sie mit IoT Hub verbinden. 
 
 Auf der Geräteseite können Sie mithilfe der IoT Hub-Geräte-SDKs Module erstellen, die jeweils eine unabhängige Verbindung mit IoT Hub herstellen. Durch diese Funktionalität können Sie separate Namespaces für unterschiedliche Komponenten auf Ihrem Gerät verwenden. Ein Beispiel: Angenommen, Sie verfügen über einen Verkaufsautomaten mit drei verschiedene Sensoren. Jeder Sensor wird von einer anderen Abteilung in Ihrem Unternehmen gesteuert. Sie können für jeden Sensor jeweils ein eigenes Modul erstellen. Dadurch kann jede Abteilung nur Aufträge oder direkte Methoden an den Sensor senden, den sie steuert, was zur Vermeidung von Konflikten und Benutzerfehlern beiträgt.
 
@@ -236,35 +236,45 @@ Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendu
 
 Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mit den folgenden Einschränkungen:
 
-* **Schlüssel**: Alle Schlüssel in JSON-Objekten sind UTF-8 UNICODE-Zeichenfolgen mit 64 Bytes, bei denen die Groß- und Kleinschreibung berücksichtigt werden muss. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.` und `$` gehören nicht zu den zulässigen Zeichen.
+* **Schlüssel**: Alle Schlüssel in JSON-Objekten sind UTF-8-codiert, die Groß-/Kleinschreibung muss beachtet werden, und ihre Länge beträgt bis zu 1 KB. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.`, `$` und „SP“ gehören nicht zu den zulässigen Zeichen.
 
 * **Werte**: Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig.
 
     * Ganze Zahlen können den Minimalwert „-4503599627370496“ und den Maximalwert „4503599627370495“ haben.
 
-    * Zeichenfolgenwerte sind UTF-8-codiert und können eine maximale Länge von 512 Bytes haben.
+    * Zeichenfolgenwerte sind UTF-8-codiert und können eine maximale Länge von 4 Bytes haben.
 
-* **Tiefe**: Alle JSON-Objekte in Tags, gewünschten und gemeldeten Eigenschaften können eine maximale Tiefe von 5 haben. Das folgende Objekt ist z.B. gültig:
+* **Tiefe**: Die maximale Tiefe von JSON-Objekten in Tags, gewünschten Eigenschaften und gemeldeten Eigenschaften ist „10“. Das folgende Objekt beispielsweise ist gültig:
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>Größe des Modulzwillings
 

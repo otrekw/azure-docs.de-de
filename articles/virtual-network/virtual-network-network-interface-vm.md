@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85480132"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hinzufügen von Netzwerkschnittstellen zu virtuellen Computern oder Entfernen von Netzwerkschnittstellen aus diesen
 
@@ -32,15 +32,15 @@ Weitere Informationen zum Hinzufügen, Ändern oder Entfernen von IP-Adressen f�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Falls Sie noch nicht über ein Azure-Konto verfügen, richten Sie ein Azure-Konto mit einem aktiven Abonnement ein. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Führen Sie eine der folgenden Aufgaben aus, bevor Sie mit dem Rest dieses Artikels starten:
+Falls Sie noch nicht über ein Azure-Konto verfügen, richten Sie ein Azure-Konto mit einem aktiven Abonnement ein. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Führen Sie eine dieser Aufgaben aus, bevor Sie mit dem Rest dieses Artikels starten:
 
 - **Portalbenutzer**: Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
 
-- **PowerShell-Benutzer**: Führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder in PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Suchen Sie auf der Browserregisterkarte „Azure Cloud Shell“ die Dropdownliste **Umgebung auswählen**, und wählen Sie dann **PowerShell** aus, sofern diese Option nicht bereits ausgewählt ist.
+- **PowerShell-Benutzer:** Führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder in PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wechseln Sie auf der Browserregisterkarte „Azure Cloud Shell“ zur Dropdownliste **Umgebung auswählen**, und wählen Sie dann **PowerShell** aus, falls nicht bereits ausgewählt.
 
-    Wenn Sie PowerShell lokal ausführen, verwenden Sie die Azure PowerShell-Modulversion 1.0.0 oder höher. Führen Sie `Get-Module -ListAvailable Az.Network` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Führen Sie zum Starten `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+    Wenn Sie PowerShell lokal ausführen, müssen Sie mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az.Network` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Führen Sie zum Starten `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
-- **Benutzer der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI)** : Führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die CLI auf Ihrem Computer aus. Verwenden Sie bei lokaler Ausführung von Azure CLI die Version 2.0.26 oder höher. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Führen Sie zum Starten `az login` aus, um eine Verbindung mit Azure herzustellen.
+- **Azure CLI-Benutzer**: Führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die CLI auf Ihrem Computer aus. Verwenden Sie bei lokaler Ausführung von Azure CLI die Version 2.0.26 oder höher. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Führen Sie zum Starten `az login` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Hinzufügen vorhandener Netzwerkschnittstellen zu einer neuen VM
 
@@ -151,7 +151,7 @@ Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Arti
 
 - Beim Löschen eines virtuellen Computers werden die an ihn angefügten Netzwerkschnittstellen nicht gelöscht. Wenn Sie einen virtuellen Computer löschen, werden die Netzwerkschnittstellen von dem virtuellen Computer getrennt. Sie können diese Netzwerkschnittstellen zu anderen VMs hinzufügen oder löschen.
 
-- Wie bei IPv6 können Sie eine Netzwerkschnittstelle, für die beschleunigter Netzwerkbetrieb aktiviert ist, nicht an einen virtuellen Computer anfügen, nachdem Sie diesen erstellt haben. Um beschleunigten Netzwerkbetrieb nutzen zu können, müssen Sie außerdem auch Schritte innerhalb des VM-Betriebssystems ausführen. Weitere Informationen zum beschleunigten Netzwerkbetrieb und weiteren Einschränkungen bei dessen Verwendung finden Sie in den entsprechenden Abschnitten für virtuelle [Windows](create-vm-accelerated-networking-powershell.md)- oder [Linux](create-vm-accelerated-networking-cli.md)-Computer.
+- Soll die optimale dokumentierte Leistung erzielt werden, ist beschleunigter Netzwerkbetrieb erforderlich. In einigen Fällen müssen Sie beschleunigten Netzwerkbetrieb für virtuelle [Windows](create-vm-accelerated-networking-powershell.md)- oder [Linux](create-vm-accelerated-networking-cli.md)-Computer explizit aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

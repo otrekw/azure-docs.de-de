@@ -3,16 +3,16 @@ title: Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
 description: Ausführen von Massenvorgängen in Azure Cosmos DB über Massenimport- und Massenaktualisierungs-APIs, die von der BulkExecutor-Bibliothek zur Verfügung gestellt werden.
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260609"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  
@@ -42,7 +42,7 @@ Die BulkExecutor-Bibliothek hilft Ihnen, diesen massiven Durchsatz und Speicherp
 
 Wenn ein Massenvorgang zum Importieren oder Aktualisieren von Dokumenten mit einem Batch von Entitäten ausgelöst wird, werden die Dokumente anfänglich entsprechend dem Schlüsselbereich der zugehörigen Azure Cosmos DB-Partition in Buckets gemischt. In jedem Bucket, der einem Partitionsschlüsselbereich entspricht, werden die Dokumente in Minibatches aufgeteilt, und jedes Minibatch ist eine Nutzlast, für die auf Serverseite ein Commit ausgeführt wird. Die BulkExecutor-Bibliothek verfügt über integrierte Optimierungen für die gleichzeitige Ausführung dieser Minibatches sowohl innerhalb der Partitionsschlüsselbereiche als auch übergreifend über diese Bereiche. Die folgende Abbildung zeigt, wie BulkExecutor Daten in Batches für verschiedene Partitionsschlüssel aufteilt:  
 
-![BulkExecutor-Architektur](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="Bulk Executor-Architektur" :::
 
 Die BulkExecutor-Bibliothek stellt sicher, dass der Durchsatz, der einer Sammlung zugeordnet ist, optimal genutzt wird. Sie verwendet für jeden Azure Cosmos DB-Partitionsschlüsselbereich einen  [AIMD-Steuerungsmechanismus für Überlastungen](https://tools.ietf.org/html/rfc5681), um Ratenbegrenzungen und Zeitüberschreitungen effizient zu verarbeiten. 
 

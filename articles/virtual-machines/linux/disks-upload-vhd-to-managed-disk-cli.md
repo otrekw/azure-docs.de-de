@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie per Azure-Befehlszeilenschnittstelle und
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945629"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure-Befehlszeilenschnittstelle
 
@@ -47,6 +47,9 @@ Bevor Sie eine leere HDD Standard zum Hochladen erstellen können, benötigen Si
 Erstellen Sie für das Hochladen eine leere HDD Standard, indem Sie in einem [Datenträgererstellungs](/cli/azure/disk#az-disk-create)-Cmdlet sowohl den **--for-upload**- als auch den **--upload-size-bytes**-Parameter angeben:
 
 Ersetzen Sie `<yourdiskname>`, `<yourresourcegroupname>`, `<yourregion>` durch Werte Ihrer Wahl. Der Parameter `--upload-size-bytes` enthält einen Beispielwert von `34359738880`, ersetzen Sie ihn durch einen für Sie geeigneten Wert.
+
+> [!TIP]
+> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie „--hyper-v-generation <yourGeneration>„ zu `az disk create` hinzu.
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -100,6 +103,9 @@ Das folgende Skript führt dies für Sie aus. Der Vorgang ähnelt mit einigen Un
 > Sie müssen ein Offset von 512 hinzufügen, wenn Sie die Datenträgergröße eines verwalteten Datenträgers aus Azure in Byte bereitstellen. Dies liegt daran, dass Azure die Fußzeile beim Zurückgeben der Datenträgergröße auslässt. Der Kopiervorgang schlägt fehl, wenn Sie nicht so vorgehen. Das folgende Skript fügt dieses Offset bereits für Sie ein.
 
 Ersetzen Sie `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` und `<yourTargetLocationHere>` (ein Beispiel für einen Standortwert ist „uswest2“) durch Ihre Werte, und führen Sie dann das folgende Skript aus, um einen verwalteten Datenträger zu kopieren.
+
+> [!TIP]
+> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie „--hyper-v-generation <yourGeneration>„ zu `az disk create` hinzu.
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

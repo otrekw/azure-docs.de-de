@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie Language Packs für Windows 10-VMs (meh
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80634131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361301"
 ---
 # <a name="install-language-packs"></a>Installieren von Sprachpaketen
 
@@ -36,7 +36,8 @@ So installieren Sie Language Packs:
 4. Wählen Sie unter **Land oder Region**im Dropdownmenü das gewünschte Land oder die gewünschte Region aus.
     In diesem Beispiel wählen wir **Frankreich**aus, wie im folgenden Screenshot zu sehen:
 
-    ![Screenshot der Seite „Region“. Die derzeit ausgewählte Region ist Frankreich.](media/region-page-france.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Seite „Region“. Die derzeit ausgewählte Region ist Frankreich.](media/region-page-france.png)
 
 5. Wählen Sie anschließend **Sprache**und dann **Sprache hinzufügen**aus. Wählen Sie die zu installierende Sprache in der Liste aus, und wählen Sie **Weiter** aus.
 6. Das Fenster **Sprachfeatures installieren** wird geöffnet. Aktivieren Sie das Kontrollkästchen **Language Pack installieren und als Windows-Anzeigesprache festlegen**.
@@ -45,15 +46,19 @@ So installieren Sie Language Packs:
 
     Dies wird im Folgenden kurz veranschaulicht. In den folgenden Abbildungen wird gezeigt, wie Sie die Sprachpakete Französisch und Niederländisch installieren und dann Französisch als Anzeigesprache festlegen.
 
-    ![Screenshot der Seite „Sprache“ zu Beginn des Vorgangs. Die ausgewählte Windows-Anzeigesprache ist Englisch.](media/language-page-default.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Seite „Sprache“ zu Beginn des Vorgangs. Die ausgewählte Windows-Anzeigesprache ist Englisch.](media/language-page-default.png)
 
-    ![Screenshot des Fensters für die Sprachauswahl. Der Benutzer hat „French“ (Französisch) in die Suchleiste eingegeben, um die Language Packs für Französisch zu suchen.](media/select-language-french.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Fensters für die Sprachauswahl. Der Benutzer hat „French“ (Französisch) in die Suchleiste eingegeben, um die Language Packs für Französisch zu suchen.](media/select-language-french.png)
 
-    ![Screenshot der Seite „Sprachfeatures installieren“. Französisch ist als bevorzugte Sprache ausgewählt. Die Optionen „Anzeigesprache festlegen“, „Sprachpaket installieren“, „Spracherkennung“ und „Handschrift“ sind ausgewählt.](media/install-language-features.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Seite „Sprachfeatures installieren“. Französisch ist als bevorzugte Sprache ausgewählt. Die Optionen „Anzeigesprache festlegen“, „Sprachpaket installieren“, „Spracherkennung“ und „Handschrift“ sind ausgewählt.](media/install-language-features.png)
 
     Nachdem Sie die Language Packs installiert haben, sollten die Namen der Language Packs in der Liste der Sprachen angezeigt werden.
 
-    ![Screenshot der Seite „Sprache“ mit den installierten neuen Language Packs. Die Sprachpakete Französisch und Niederländisch werden unter „Bevorzugte Sprachen“ aufgeführt.](media/language-page-complete.png)
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Seite „Sprache“ mit den installierten neuen Language Packs. Die Sprachpakete Französisch und Niederländisch werden unter „Bevorzugte Sprachen“ aufgeführt.](media/language-page-complete.png)
 
 9. Ein Fenster wird geöffnet, in dem Sie aufgefordert werden, sich von ihrer Sitzung abzumelden. Gehen Sie wie folgt vor: Melden Sie sich ab, und melden Sie sich erneut an. Ihre Anzeigesprache sollte nun der ausgewählten Sprache entsprechen.
 
@@ -89,13 +94,13 @@ So führen Sie Sysprep für Ihren Computer aus:
 
 1. Öffnen Sie PowerShell als Administrator.
 2. Führen Sie das folgende Cmdlet aus, um zum richtigen Verzeichnis zu wechseln:
-   
+
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
 3. Führen Sie anschließend das folgende Cmdlet aus:
-    
+
     ```powershell
     .\sysprep.exe
     ```
@@ -113,7 +118,8 @@ Wenn während des Sysprep-Prozesses ein Fehler auftritt, gehen Sie wie folgt vor
 
    In der Fehlerdatei werden Sie angewiesen, ein bestimmtes Language Pack zu deinstallieren, wie in der folgenden Abbildung veranschaulicht. Kopieren Sie den Namen des Language Packs für den nächsten Schritt.
 
-   ![Screenshot der Datei „setuperr“. Der Text mit dem Namen des Language Packs ist dunkelblau hervorgehoben.](media/setuperr-package-name.png)
+   > [!div class="mx-imgBorder"]
+   > ![Screenshot der Datei „setuperr“. Der Text mit dem Namen des Language Packs ist dunkelblau hervorgehoben.](media/setuperr-package-name.png)
 
 2. Öffnen Sie ein neues PowerShell-Fenster, und führen Sie das folgende Cmdlet mit dem in Schritt 2 kopierten Language Pack-Namen aus, um das Language Pack zu entfernen:
 
@@ -137,7 +143,8 @@ So nehmen Sie ein Image auf:
 
 3. Geben Sie im Feld **Name** einen Namen für das Image ein, und weisen Sie es mithilfe des Dropdownmenüs **Ressourcengruppe** der Ressourcengruppe zu, wie in der folgenden Abbildung dargestellt.
 
-   ![Screenshot des Fensters „Image erstellen“. Der Benutzer hat diesem Testimage den Namen „vmwvd-image-fr“ zugewiesen, und es wurde der Ressourcengruppe „testwvdimagerg“ zugewiesen.](media/create-image.png)
+   > [!div class="mx-imgBorder"]
+   > ![Screenshot des Fensters „Image erstellen“. Der Benutzer hat diesem Testimage den Namen „vmwvd-image-fr“ zugewiesen, und es wurde der Ressourcengruppe „testwvdimagerg“ zugewiesen.](media/create-image.png)
 
 4. Klicken Sie auf **Erstellen**.
 

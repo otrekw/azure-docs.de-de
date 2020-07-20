@@ -1,18 +1,19 @@
 ---
 title: Scheduled Events für Linux-VMs in Azure
 description: Planen Sie Ereignisse mit dem Azure-Metadatendienst für Ihre virtuellen Linux-Computer.
-author: mimckitt
-ms.service: virtual-machines-windows
-ms.topic: article
+author: EricRadzikowskiMSFT
+ms.service: virtual-machines-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: mimckitt
-ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.author: ericrad
+ms.reviewer: mimckitt
+ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299518"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262105"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Instance Metadata Service: Scheduled Events für Linux-VMs
 
@@ -53,7 +54,12 @@ Geplante Ereignisse werden übermittelt an:
 - Eigenständige virtuelle Computer
 - Alle VMs in einem Clouddienst
 - Alle VMs in einer Verfügbarkeitsgruppe
+- Alle VMs in einer Verfügbarkeitszone 
 - Alle VMs in einer Gruppe für die Skalierungsgruppenplatzierung 
+
+> [!NOTE]
+> Für VMs in einer Verfügbarkeitszone gilt, dass geplante Ereignisse an einzelne VMs in der Zone gesendet werden.
+> Haben Sie z. B. 100 VMs in einer Verfügbarkeitsgruppe, und wird eine dieser VMs aktualisiert, wird das geplante Ereignis an alle 100 gesendet. Haben Sie dagegen 100 einzelne VMs in einer Zone, wird das Ereignis nur an die VM gesendet, die betroffen ist.
 
 Überprüfen Sie deshalb anhand des Felds `Resources` in einem Ereignis, welche VMs betroffen sein werden.
 
@@ -132,7 +138,7 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
 | Ressourcen| Liste der Ressourcen, auf die sich dieses Ereignis auswirkt. Die Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | EventStatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ein ähnlicher Status wird nie angegeben. Das Ergebnis wird nicht länger zurückgegeben, wenn es abgeschlossen wurde.
 | NotBefore| Zeitpunkt, nach dem dieses Ereignis gestartet werden kann. <br><br> Beispiel: <br><ul><li> Mo., 19. September 2016 18:29:47 GMT  |
-| Beschreibung | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
+| BESCHREIBUNG | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
 | EventSource | Initiator des Ereignisses. <br><br> Beispiel: <br><ul><li> `Platform`: Dieses Ereignis wurde durch die Plattform initiiert. <li>`User`: Dieses Ereignis wurde durch den Benutzer initiiert. |
 
 ### <a name="event-scheduling"></a>Ereigniszeitplanung

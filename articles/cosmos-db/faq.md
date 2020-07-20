@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213090"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -152,7 +152,7 @@ Ja, die SQL-API unterstützt dokumentübergreifende Transaktionen, die in Form v
 
 Ein Container ist eine Gruppe von Dokumenten mit der zugehörigen JavaScript-Anwendungslogik. Ein Container ist eine fakturierbare Entität, deren [Kosten](performance-levels.md) vom Durchsatz und belegten Speicher bestimmt werden. Container können eine oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.
 
-* Bei der SQL-API ist ein Container einem Container zugeordnet.
+* Für die SQL-API wird die Ressource als Container bezeichnet.
 * Bei der Cosmos DB-API für MongoDB-Konten ist ein Container einer Sammlung zugeordnet.
 * Bei Cassandra- und Tabellen-API-Konten ist ein Container einer Tabelle zugeordnet.
 * Bei Gremlin-API-Konten ist ein Container einem Diagramm (Graphen) zugeordnet.

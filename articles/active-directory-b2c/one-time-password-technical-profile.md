@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385721"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -30,13 +30,13 @@ Das technische Einmalkennwortprofil kann bei der Codeüberprüfung auch eine Feh
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly, die von Azure AD B2C verwendet wird, enthalten:
 
-```XML
+```xml
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
 Das folgende Beispiel zeigt ein technisches Einmalkennwortprofil:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Validate user input verification code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -84,7 +84,7 @@ Die folgenden Einstellungen können verwendet werden, um den Codegenerierungsmod
 
 Das folgende Beispiel `TechnicalProfile` wird zum Erstellen eines Codes verwendet:
 
-```XML
+```xml
 <TechnicalProfile Id="GenerateCode">
   <DisplayName>Generate Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -151,7 +151,7 @@ Die folgenden Metadaten können verwendet werden, um die Fehlermeldungen zu konf
 
 Das folgende Beispiel `TechnicalProfile` wird zum Überprüfen eines Codes verwendet:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Verify Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -169,5 +169,5 @@ Das folgende Beispiel `TechnicalProfile` wird zum Überprüfen eines Codes verwe
 
 Im folgenden Artikel finden Sie ein Beispiel für die Verwendung eines technischen Profils mit Einmalkennwort und benutzerdefinierter E-Mail-Überprüfung:
 
-- [Benutzerdefinierte E-Mail-Überprüfung in Azure Active Directory B2C](custom-email.md)
+- Benutzerdefinierte E-Mail-Überprüfung in Azure Active Directory B2C ([Mailjet](custom-email-mailjet.md), [SendGrid](custom-email-sendgrid.md))
 

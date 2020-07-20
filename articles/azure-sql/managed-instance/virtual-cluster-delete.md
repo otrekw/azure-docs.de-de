@@ -1,8 +1,9 @@
 ---
-title: Löschen eines Subnetzes nach dem Löschen einer Instanz von Azure SQL Managed Instance
-description: Hier erfahren Sie, wie Sie nach dem Löschen einer Instanz von Azure SQL Managed Instance auch ein virtuelles Azure-Netzwerk löschen.
+title: Löschen eines Subnetzes nach dem Löschen einer verwalteten Instanz von SQL Managed Instance
+description: Hier erfahren Sie, wie Sie nach dem Löschen einer verwalteten Instanz von Azure SQL Managed Instance auch ein virtuelles Azure-Netzwerk löschen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -10,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 73150ee893ca23ed7996b001bd02acaabbf89dce
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 87e73ed25ac33777c19c561223f0361d589282b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116687"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696999"
 ---
-# <a name="delete-a-subnet-after-deleting-an-azure-sql-managed-instance"></a>Löschen eines Subnetzes nach dem Löschen einer Instanz von Azure SQL Managed Instance
+# <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>Löschen eines Subnetzes nach dem Löschen einer verwalteten Instanz von SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Dieser Artikel enthält Richtlinien zum manuellen Löschen eines Subnetzes nach dem Löschen der letzten darin enthaltenen Instanz von Azure SQL Managed Instance.
+Dieser Artikel enthält Richtlinien zum manuellen Löschen eines Subnetzes nach dem Löschen der letzten darin enthaltenen verwalteten Instanz von Azure SQL Managed Instance.
 
 Verwaltete Instanzen werden in [virtuellen Clustern](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) bereitgestellt. Jeder virtuelle Cluster ist einem Subnetz zugeordnet. Der virtuelle Cluster bleibt nach dem Löschen der letzten Instanz noch 12 Stunden erhalten, damit Sie im gleichen Subnetz schneller verwaltete Instanzen erstellen können. Das Beibehalten eines leeren virtuellen Clusters ist kostenlos. Während dieses Zeitraums kann der mit dem Subnetz verbundene virtuelle Cluster nicht gelöscht werden.
 
@@ -28,9 +29,9 @@ Wenn Sie keine 12 Stunden warten, sondern den virtuellen Cluster sowie das Subn
 
 > [!IMPORTANT]
 > - Damit der Löschvorgang erfolgreich ist, sollte der virtuelle Cluster keine verwalteten Instanzen enthalten. 
-> - Das Löschen eines virtuellen Clusters ist ein zeitintensiver Vorgang mit einer Dauer von etwa eineinhalb Stunden (aktuelle Angaben zur Löschdauer für virtuelle Cluster finden Sie unter [Azure SQL Managed Instance-Verwaltungsvorgänge](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations).) Während dieser Zeit ist der virtuelle Cluster im Portal weiterhin sichtbar, bis der Vorgang abgeschlossen wurde.
+> - Das Löschen eines virtuellen Clusters ist ein zeitintensiver Vorgang mit einer Dauer von etwa 1,5 Stunden. (Aktuelle Angaben zur Löschdauer für virtuelle Cluster finden Sie unter [Verwaltungsvorgänge für verwaltete Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations).) Während dieser Zeit ist der virtuelle Cluster im Portal weiterhin sichtbar, bis der Vorgang abgeschlossen wurde.
 
-## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Löschen virtueller Cluster im Azure-Portal
+## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>Löschen eines virtuellen Clusters aus dem Azure-Portal
 
 Suchen Sie nach den Ressourcen eines virtuellen Clusters, um diesen über das Azure-Portal zu löschen.
 
@@ -43,16 +44,16 @@ Nachdem Sie den virtuellen Cluster gefunden haben, den Sie löschen möchten, w�
 In den Azure-Portalbenachrichtigungen wird eine Bestätigung dafür angezeigt, dass die Anforderung zum Löschen des virtuellen Clusters erfolgreich übermittelt wurde. Der eigentliche Löschvorgang dauert etwa 1,5 Stunden. Während dieser Zeit ist der virtuelle Cluster im Portal weiterhin sichtbar. Nach Abschluss des Vorgangs ist der virtuelle Cluster nicht mehr sichtbar, und das zugehörige Subnetz wird zur erneuten Verwendung freigegeben.
 
 > [!TIP]
-> Wenn in Ihrem virtuellen Cluster keine verwalteten Instanzen angezeigt werden und Sie den virtuellen Cluster nicht löschen können, vergewissern Sie sich, dass kein Instanzenbereitstellungsvorgang mehr läuft. Dies umfasst gestartete und abgebrochene Bereitstellungen, die noch nicht abgeschlossen sind. Der Grund: Diese Vorgänge verwenden weiterhin den virtuellen Cluster, was dazu führt, dass er nicht gelöscht werden kann. Auf der Registerkarte „Deployments“ (Bereitstellungen) der Ressourcengruppe, in der die Instanz bereitgestellt wurde, werden Bereitstellungen angezeigt, die noch nicht abgeschlossen sind. Warten Sie in diesem Fall, bis die Bereitstellung abgeschlossen ist, und löschen Sie dann die verwaltete Instanz und anschließend den virtuellen Cluster.
+> Wenn in Ihrem virtuellen Cluster keine verwalteten Instanzen angezeigt werden und Sie den virtuellen Cluster nicht löschen können, vergewissern Sie sich, dass kein Instanzenbereitstellungsvorgang mehr läuft. Dies umfasst gestartete und abgebrochene Bereitstellungen, die noch nicht abgeschlossen sind. Der Grund: Diese Vorgänge verwenden weiterhin den virtuellen Cluster, was dazu führt, dass er nicht gelöscht werden kann. Auf der Registerkarte **Bereitstellungen** der Ressourcengruppe, in der die Instanz bereitgestellt wurde, werden Bereitstellungen angezeigt, die noch nicht abgeschlossen sind. Warten Sie in diesem Fall, bis die Bereitstellung abgeschlossen ist, und löschen Sie dann die verwaltete Instanz und anschließend den virtuellen Cluster.
 
-## <a name="delete-virtual-cluster-by-using-the-api"></a>Löschen eines virtuellen Clusters mithilfe der API
+## <a name="delete-a-virtual-cluster-by-using-the-api"></a>Löschen eines virtuellen Clusters mithilfe der API
 
 Verwenden Sie die in der [Methode zum Löschen virtueller Cluster](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete) angegebenen URI-Parameter, um einen virtuellen Cluster mithilfe der API zu löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht finden Sie unter [Was ist eine verwaltete Instanz?](sql-managed-instance-paas-overview.md).
-- Machen Sie sich mit der [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](connectivity-architecture-overview.md) vertraut.
-- Unter [Ändern eines vorhandenen virtuellen Netzwerks für die verwaltete Instanz](vnet-existing-add-subnet.md) erfahren Sie, wie Sie Änderungen vornehmen können.
-- Ein Tutorial zum Erstellen eines virtuellen Netzwerks, dem Erstellen einer Instanz von Managed Instance und dem Wiederherstellen einer Datenbank aus einer Datenbanksicherung finden Sie unter [Erstellen einer Instanz von Azure SQL Managed Instance](instance-create-quickstart.md).
-- Lesen Sie bei Problemen im Zusammenhang mit dem DNS den Artikel [Konfigurieren eines benutzerdefinierten DNS](custom-dns-configure.md).
+- Eine Übersicht finden Sie unter [Was ist Azure SQL Managed Instance?](sql-managed-instance-paas-overview.md).
+- Machen Sie sich mit der [Verbindungsarchitektur in SQL Managed Instance](connectivity-architecture-overview.md) vertraut.
+- Unter [Ändern eines vorhandenen virtuellen Netzwerks für SQL Managed Instance](vnet-existing-add-subnet.md) erfahren Sie, wie Sie Änderungen vornehmen können.
+- Ein Tutorial zum Erstellen eines virtuellen Netzwerks und einer verwalteten Instanz sowie zum Wiederherstellen einer Datenbank aus einer Datenbanksicherung finden Sie unter [Erstellen einer verwalteten Instanz](instance-create-quickstart.md).
+- Informationen zu Problemen im Zusammenhang mit dem DNS finden Sie unter [Konfigurieren eines benutzerdefinierten DNS](custom-dns-configure.md).

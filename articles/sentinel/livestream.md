@@ -9,25 +9,20 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2019
+ms.date: 06/14/2020
 ms.author: yelevin
-ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77582125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783162"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Verwenden des Hunting-Livestreams in Azure Sentinel zum Erkennen von Bedrohungen
-
-> [!IMPORTANT]
-> Der Hunting-Livestream in Azure Sentinel ist derzeit als Public Preview verfügbar, und der Rollout auf die Mandanten erfolgt in mehreren Stufen.
-> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 Verwenden Sie den Hunting-Livestream, um interaktive Sitzungen zu erstellen, mit denen Sie neu erstellte Abfragen beim Eintreten von Ereignissen testen, Benachrichtigungen von den Sitzungen bei einer Übereinstimmung erhalten und bei Bedarf Untersuchungen starten können. Sie können schnell mithilfe einer beliebigen Log Analytics-Abfrage eine Livestreamsitzung erstellen.
 
@@ -50,32 +45,32 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage erstell
 
 1. Navigieren Sie im Azure-Portal zu **Sentinel** > **Bedrohungsverwaltung** > **Hunting**.
 
-2. So erstellen Sie eine Livestreamsitzung aus einer Hunting-Abfrage
+1. So erstellen Sie eine Livestreamsitzung aus einer Hunting-Abfrage
     
     1. Ermitteln Sie auf der Registerkarte **Abfragen** die zu verwendende Hunting-Abfrage.
-    2. Klicken Sie mit der rechten Maustaste auf die Abfrage, und wählen Sie **Add to livestream** (Zu Livestream hinzufügen) aus. Beispiel:
+    1. Klicken Sie mit der rechten Maustaste auf die Abfrage, und wählen Sie **Add to livestream** (Zu Livestream hinzufügen) aus. Beispiel:
     
     > [!div class="mx-imgBorder"]
     > ![Erstellen einer Livestreamsitzung aus der Hunting-Abfrage von Azure Sentinel](./media/livestream/livestream-from-query.png)
 
-3. So erstellen Sie eine Livestreamsitzung von Grund auf neu 
+1. So erstellen Sie eine Livestreamsitzung von Grund auf neu 
     
     1. Wählen Sie die Registerkarte **Livestream** aus.
-    2. Wählen Sie **Go to livestream** (Zu Livestream wechseln) aus.
+    1. Klicken Sie auf **+ Neuer Livestream**.
     
-4. Im Bereich **Livestream**:
+1. Im Bereich **Livestream**:
     
     - Wenn Sie den Livestream aus einer Abfrage gestartet haben, überprüfen Sie die Abfrage, und nehmen Sie die gewünschten Änderungen vor.
     - Wenn Sie den Livestream von Grund auf neu gestartet haben, erstellen Sie Ihre Abfrage. 
 
-5. Wählen Sie in der Befehlsleiste **Wiedergeben** aus.
+1. Wählen Sie in der Befehlsleiste **Wiedergeben** aus.
     
     Die Statusleiste unter der Befehlsleiste gibt an, ob die Livestreamsitzung ausgeführt wird oder angehalten ist. Im folgenden Beispiel wird die Sitzung ausgeführt:
     
     > [!div class="mx-imgBorder"]
     > ![Erstellen einer Livestreamsitzung aus Azure Sentinel Hunting](./media/livestream/livestream-session.png)
 
-6. Wählen Sie in der Befehlsleiste **Speichern** aus.
+1. Wählen Sie in der Befehlsleiste **Speichern** aus.
     
     Wenn Sie nicht **Anhalten** auswählen, wird die Sitzung fortgesetzt, bis Sie sich vom Azure-Portal abgemeldet haben.
 
@@ -83,7 +78,7 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage erstell
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Sentinel** > **Bedrohungsverwaltung** > **Hunting** > **Livestream**.
 
-2. Wählen Sie die Livestreamsitzung aus, die Sie anzeigen oder bearbeiten möchten. Beispiel:
+1. Wählen Sie die Livestreamsitzung aus, die Sie anzeigen oder bearbeiten möchten. Beispiel:
     
     > [!div class="mx-imgBorder"]
     > ![Erstellen einer Livestreamsitzung aus einer Azure Sentinel Hunting-Abfrage](./media/livestream/livestream-tab.png)

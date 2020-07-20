@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: e27a920aea18affd78f840d3063b8082f716745b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6706d9c1c683cdf46fe42822cad67a49a69843a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389818"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
@@ -59,7 +59,7 @@ Für Bereitstellungen von virtuellen Knoten werden die folgenden Regionen unters
 * USA, Westen 2 (westus2)
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
-Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Features. Die folgenden Szenarios werden für virtuelle Knoten noch nicht unterstützt:
+Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Features. Neben den [Kontingenten und Limits für Azure Container Instances](../container-instances/container-instances-quotas.md) werden die folgenden Szenarien für virtuelle Knoten noch nicht unterstützt:
 
 * Verwenden des Dienstprinzipals zur Übertragung von ACR-Images mithilfe von Pull. Eine [Problemumgehung](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) ist mithilfe von [Kubernetes-Geheimnissen](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) möglich.
 * [Einschränkungen für virtuelle Netzwerke](../container-instances/container-instances-vnet.md), darunter für VNET-Peering, für Kubernetes-Netzwerkrichtlinien und für ausgehenden Internetdatenverkehr im Zusammenhang mit Netzwerksicherheitsgruppen.
@@ -67,7 +67,7 @@ Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Featur
 * [Hostaliase](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/).
 * [Argumente](../container-instances/container-instances-exec.md#restrictions) für „exec“ in ACI.
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) stellen keine Pods auf dem virtuellen Knoten bereit.
-* Virtuelle Knoten unterstützen die Planung von Linux-Pods. Sie können den Open-Source-ACI-Anbieter [Virtual Kubelet](https://github.com/virtual-kubelet/azure-aci) manuell installieren, um Windows Server-Container für ACI zu planen. 
+* Virtuelle Knoten unterstützen die Planung von Linux-Pods. Sie können den Open-Source-ACI-Anbieter [Virtual Kubelet](https://github.com/virtual-kubelet/azure-aci) manuell installieren, um Windows Server-Container für ACI zu planen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

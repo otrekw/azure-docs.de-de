@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386214"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
@@ -25,8 +25,8 @@ Verwenden Sie Azure Monitor, um Azure AD B2C-Protokolle (Azure Active Directory 
 Sie können Protokollereignisse an folgende Komponenten weiterleiten:
 
 * Ein Azure-[Speicherkonto](../storage/blobs/storage-blobs-introduction.md).
-* Einen Azure [Event Hub](../event-hubs/event-hubs-about.md) (mit Integration in Ihre Splunk- und Sumo Logic-Instanzen).
 * Einen Azure [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs-collect-workspace.md) (zum Analysieren von Daten, Erstellen von Dashboards und Warnen bei bestimmten Ereignissen).
+* Einen Azure [Event Hub](../event-hubs/event-hubs-about.md) (mit Integration in Ihre Splunk- und Sumo Logic-Instanzen).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -89,7 +89,7 @@ Laden Sie die Azure Resource Manager-Vorlage und die Parameterdateien herunter:
 
 Aktualisieren Sie anschließend die Parameterdatei mit den Werten, die Sie zuvor notiert haben. Der folgende JSON-Codeausschnitt enthält ein Beispiel für eine Parameterdatei der Azure Resource Manager-Vorlage. Verwenden Sie für `authorizations.value.roleDefinitionId` den Wert der [integrierten Rolle](../role-based-access-control/built-in-roles.md) für die *Rolle „Mitwirkender“* : `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
-```JSON
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",

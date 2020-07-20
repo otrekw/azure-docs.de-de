@@ -3,15 +3,15 @@ title: Schätzen der Kosten mit dem Azure Cosmos DB Capacity Planner
 description: Mit dem Azure Cosmos DB Capacity Planner können Sie den erforderlichen Durchsatz (RU/s) und die Kosten für Ihre Workload schätzen. In diesem Artikel wird beschrieben, wie Sie die neue Capacity Planner-Version verwenden, um den erforderlichen Durchsatz und die Kosten zu schätzen.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: f10ace47f774e31b586f7736f5fb8e5dfea0c948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68707455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261850"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Schätzen des Durchsatzes (RU/s) mit dem Azure Cosmos DB Capacity Planner
 
@@ -41,7 +41,7 @@ Navigieren Sie zum [Capacity Planner](https://cosmos.azure.com/capacitycalculato
 
 Wählen Sie **Berechnen**, nachdem Sie die erforderlichen Angaben eingefügt haben. Auf der Registerkarte **Kostenschätzung** werden die Gesamtkosten für den Speicher und den bereitgestellten Durchsatz angezeigt. Sie können die Anzeige über den Link **Details anzeigen** auf dieser Registerkarte erweitern, um eine Aufstellung des Durchsatzes zu erhalten, der für Lese- und Schreibanforderungen jeweils benötigt wird. Wählen Sie bei jeder Änderung des Werts eines Felds die Option **Berechnen**, um die geschätzten Kosten neu zu berechnen. 
 
-![Capacity Planner: Modus „Basic“](./media/estimate-ru-with-capacity-planner/basic-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Capacity Planner: Modus „Basic“":::
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-advanced-mode"></a>Schätzen des bereitgestellten Durchsatzes und der Kosten im Modus „Advanced“
 
@@ -62,7 +62,7 @@ Nach dem Anmelden werden zusätzliche Felder angezeigt, die im Modus „Basic“
 
 Sie können auch die Schaltfläche **Save Estimate** (Schätzung speichern) verwenden, um eine CSV-Datei mit der aktuellen Schätzung herunterzuladen. 
 
-![Capacity Planner: Modus „Advanced“](./media/estimate-ru-with-capacity-planner/advanced-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Capacity Planner: Modus „Advanced“":::
 
 Die im Azure Cosmos DB Capacity Planner angezeigten Preise sind Schätzungen, die auf den öffentlichen Preisen für Durchsatz und Speicher basieren. Alle Preise sind in US-Dollar angegeben. Auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) sind alle Preise nach Region aufgeführt.  
 

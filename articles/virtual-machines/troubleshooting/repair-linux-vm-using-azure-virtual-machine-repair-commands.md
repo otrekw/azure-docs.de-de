@@ -14,19 +14,24 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 9029082a275905bbdb9efe0cefa05337c9969a2f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a7357ef3b0151096746e37bddd235f0db53baed7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85444810"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Linux-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
 
 Wenn für Ihren virtuellen Linux-Computer (Linux-VM) in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie das Problem möglicherweise selbst auf dem Datenträger beheben. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel ist beschrieben, wie Sie mit Reparaturbefehlen für virtuelle Azure-Computer den Datenträger mit einem anderen virtuellen Linux-Computer verbinden, um Fehler zu beheben, und dann Ihren ursprünglichen virtuellen Computer wiederherstellen.
 
 > [!IMPORTANT]
-> Die Skripts in diesem Artikel gelten nur für VMs, für die [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwendet wird.
+> * Die Skripts in diesem Artikel gelten nur für VMs, für die [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwendet wird.
+> * Damit das Skript ausgeführt werden kann, ist eine ausgehende Verbindung von der VM (Port 443) erforderlich.
+> * Es kann immer nur jeweils ein Skript ausgeführt werden.
+> * Ein Skript, das ausgeführt wird, kann nicht abgebrochen werden.
+> * Ein Skript kann bis zu maximal 90 Minuten ausgeführt werden. Danach tritt ein Timeout für das Skript auf.
+> * Für VMs, für die Azure Disk Encryption verwendet wird, werden nur verwaltete Datenträger unterstützt, die mit Single-Pass-Verschlüsselung (mit oder ohne KEK) verschlüsselt sind.
 
 ## <a name="repair-process-overview"></a>Übersicht über den Reparaturprozess
 
@@ -53,6 +58,8 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
    Wählen Sie **Kopieren** aus, um die Codeblöcke zu kopieren. Fügen Sie den Code anschließend in Cloud Shell ein, und wählen Sie **Eingabe**, um den Code auszuführen.
 
    Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie ``az --version`` aus, um die Version zu ermitteln. Informationen zum Installieren oder Aktualisieren Ihrer Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   
+   Wenn Sie sich bei Cloud Shell mit einem Konto anmelden müssen, das nicht das Konto ist, mit dem Sie zurzeit beim Azure-Portal angemeldet sind, können Sie ``az login`` ([az login-Referenz](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)) verwenden.  Um zwischen den Abonnements zu wechseln, die Ihrem Konto zugeordnet sind, können Sie ``az account set --subscription`` ([az account set-Referenz](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)) verwenden.
 
 2. Wenn Sie die `az vm repair`-Befehle zum ersten Mal verwenden, fügen Sie die CLI-Erweiterung „vm-repair“ hinzu.
 
@@ -66,7 +73,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
    az extension update -n vm-repair
    ```
 
-3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM. Die Ressourcengruppe und der VM-Name, die in allen Schritten verwendet werden, gelten für die nicht funktionale VM.
+3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, eine Reparatur-VM in einer neuen Ressourcengruppe erstellt und die Kopie des Datenträgers zugeordnet.  Für die Reparatur-VM sind die gleiche Größe und Region festgelegt wie für die angegebene fehlerhafte VM. Die Ressourcengruppe und der VM-Name, die in allen Schritten verwendet werden, gelten für die nicht funktionale VM. Wird für Ihre VM Azure Disk Encryption verwendet, versucht der Befehl, den verschlüsselten Datenträger zu entsperren, sodass er verfügbar ist, wenn er der Reparatur-VM zugeordnet wird.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose

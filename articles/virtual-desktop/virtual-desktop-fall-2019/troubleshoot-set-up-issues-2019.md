@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235891"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026694"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -30,7 +30,8 @@ In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.
 
 Um das Windows 10 Enterprise-Image für mehrere Sitzungen zu verwenden, wechseln Sie zu Azure Marketplace, und wählen Sie **Erste Schritte** > **Microsoft Windows 10** und [Windows 10 Enterprise for Virtual Desktops, Version 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) aus.
 
-![Screenshot: Auswählen von Windows 10 Enterprise for Virtual Desktops, Version 1809.](../media/AzureMarketPlace.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Auswählen von Windows 10 Enterprise for Virtual Desktops, Version 1809.](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Erstellen eines Windows Virtual Desktop-Mandanten
 
@@ -54,7 +55,8 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Error: User is not authorized to query the management service (Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen)
 
-![Screenshot: PowerShell-Fenster, das anzeigt, dass ein Benutzer nicht dazu berechtigt ist, den Verwaltungsdienst abzufragen](../media/UserNotAuthorizedNewTenant.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: PowerShell-Fenster, das anzeigt, dass ein Benutzer nicht dazu berechtigt ist, den Verwaltungsdienst abzufragen](../media/UserNotAuthorizedNewTenant.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -75,7 +77,8 @@ Beispiel für unformatierten Fehler:
 
 **Behebung:** Befolgen Sie die Anweisungen unter [Zuweisen der Anwendungsrolle „TenantCreator“ für einen Benutzer in Ihrem Azure Active Directory-Mandanten](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role). Nachdem Sie die entsprechenden Schritte ausgeführt haben, ist der TenantCreator-Rolle ein Benutzer zugewiesen.
 
-![Screenshot: Zugewiesene Rolle „TenantCreator“](../media/TenantCreatorRoleAssigned.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Zugewiesene Rolle „TenantCreator“](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Erstellen von Windows Virtual Desktop-Sitzungshost-VMs
 
@@ -87,7 +90,8 @@ Die Vorlage „Windows Virtual Desktop – Provision a host pool“ (Windows Vir
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Error: Beim Verwenden eines Links von GitHub wird die Meldung „Create a free account“ (Kostenloses Konto erstellen) angezeigt.
 
-![Screenshot: Kostenloses Konto erstellen](../media/be615904ace9832754f0669de28abd94.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Kostenloses Konto erstellen](../media/be615904ace9832754f0669de28abd94.png)
 
 **Ursache 1:** Im verwendeten Konto sind nicht genügend aktive Abonnements verfügbar, um sich bei Azure anzumelden, oder das verwendete Konto besitzt keine Berechtigungen zum Anzeigen der Abonnements.
 
@@ -110,7 +114,8 @@ Die Vorlage „Windows Virtual Desktop – Provision a host pool“ (Windows Vir
 
 ### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Error: Sie erhalten die Fehlermeldung, dass die Vorlagenbereitstellung nicht gültig ist.
 
-![Screenshot mit der Fehlermeldung, dass die Vorlagenbereitstellung nicht gültig ist](../media/troubleshooting-marketplace-validation-error-generic.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot mit der Fehlermeldung, dass die Vorlagenbereitstellung nicht gültig ist](../media/troubleshooting-marketplace-validation-error-generic.png)
 
 Bevor Sie eine bestimmte Aktion ausführen, müssen Sie das Aktivitätsprotokoll überprüfen, um den detaillierten Fehler für die fehlgeschlagene Bereitstellungsüberprüfung anzuzeigen.
 
@@ -119,10 +124,14 @@ So zeigen Sie den Fehler im Aktivitätsprotokoll an:
 1. Beenden Sie das aktuelle Azure Marketplace-Bereitstellungsangebot.
 2. Suchen Sie in der oberen Suchleiste nach **Aktivitätsprotokoll** und wählen Sie es aus.
 3. Suchen Sie eine Aktivität mit dem Namen **Bereitstellung überprüfen** mit dem Status **Fehler** und wählen Sie die Aktivität aus.
-   ![Screenshot der einzelnen **Bereitstellung überprüfen**-Aktivität mit dem Status **Fehler**](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Screenshot der einzelnen **Bereitstellung überprüfen**-Aktivität mit dem Status **Fehler**](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. Wählen Sie "JSON" aus und scrollen Sie zum unteren Rand des Bildschirms, bis das Feld "statusMessage" angezeigt wird.
-   ![Screenshot der fehlgeschlagenen Aktivität mit einem roten Feld um die statusMessage-Eigenschaft des JSON-Texts](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Screenshot der fehlgeschlagenen Aktivität mit einem roten Feld um die statusMessage-Eigenschaft des JSON-Texts](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
 Wenn die Vorgangsvorlage das Kontingentlimit überschreitet, können Sie eine der folgenden Aktionen ausführen, um dies zu beheben:
 
@@ -140,7 +149,8 @@ Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfo
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Error: Fehler bei der Bereitstellung … \<hostname>/joindomain
 
-![Screenshot: Fehler bei der Bereitstellung](../media/e72df4d5c05d390620e07f0d7328d50f.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -181,7 +191,8 @@ Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Error: VMExtensionProvisioningError
 
-![Screenshot: Fehler bei der Bereitstellung – fehlerhafter Status der Terminalbereitstellung](../media/7aaf15615309c18a984673be73ac969a.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung – fehlerhafter Status der Terminalbereitstellung](../media/7aaf15615309c18a984673be73ac969a.png)
 
 **Ursache 1:** Vorübergehender Fehler in der Windows Virtual Desktop-Umgebung.
 
@@ -191,7 +202,8 @@ Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Error: Der angegebene Administratorbenutzername ist unzulässig
 
-![Screenshot: Fehler bei der Bereitstellung – angegebener Administrator ist unzulässig](../media/f2b3d3700e9517463ef88fa41875bac9.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung – angegebener Administrator ist unzulässig](../media/f2b3d3700e9517463ef88fa41875bac9.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -210,7 +222,8 @@ Beispiel für unformatierten Fehler:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Error: Die VM hat beim Verarbeiten einer Erweiterung einen Fehler gemeldet
 
-![Screenshot: Fehler bei der Bereitstellung – abgeschlossener Ressourcenvorgang mit Statusmeldung für Terminalbereitstellung](../media/49c4a1836a55d91cd65125cf227f411f.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Fehler bei der Bereitstellung – abgeschlossener Ressourcenvorgang mit Statusmeldung für Terminalbereitstellung](../media/49c4a1836a55d91cd65125cf227f411f.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -236,7 +249,8 @@ Beispiel für unformatierten Fehler:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Error: DeploymentFailed – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen
 
-![Screenshot: Bereitstellungsfehler – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen.](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Bereitstellungsfehler – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen.](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -365,7 +379,8 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Error: Benutzer erfordert Azure Multi-Factor Authentication (MFA)
 
-![Screenshot: Bereitstellungsfehler aufgrund fehlender Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Bereitstellungsfehler aufgrund fehlender Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
 
 Beispiel für unformatierten Fehler:
 
@@ -390,6 +405,12 @@ Wenn Sie die GitHub-Azure Resource Manager-Vorlage ausführen, geben Sie Werte f
 - Kennwort des Mandantenadministrators: Das von Ihnen für den Dienstprinzipal generierte geheime Kennwort
 - IsServicePrincipal: **true**
 - AadTenantId: Die Azure AD-Mandanten-ID des von Ihnen erstellten Dienstprinzipals
+
+### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Fehler: vmSubnet nicht verfügbar, wenn virtuelle Netzwerke konfiguriert werden
+
+**Ursache:** In der WVD-Marketplace-Vorlage werden in der Benutzeroberfläche nur Subnetze angezeigt, in denen mindestens so viele IP-Adressen verfügbar sind wie die Gesamtzahl der VMs, die in der Vorlage angegeben sind. Die tatsächliche Anzahl der im Subnetz verfügbaren IP-Adressen muss nur mit der Anzahl der neuen VMs identisch sein, die bereitgestellt werden. Dies kann jedoch von der aktuellen Benutzeroberfläche nicht berechnet werden.
+
+**Behebung:** Sie können ein Subnetz angeben, in dem mindestens so viele IP-Adressen verfügbar sind wie die Anzahl der VMs, die hinzugefügt werden. Dazu gehen Sie so vor, dass Sie nicht die Marketplace-Benutzeroberfläche verwenden, sondern den Subnetznamen im Parameter **existingSubnetName** angeben, wenn Sie [eine vorhandene Bereitstellung erneut bereitstellen](expand-existing-host-pool-2019.md#redeploy-from-azure) oder [über die zugrunde liegende ARM-Vorlage aus GitHub bereitstellen](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

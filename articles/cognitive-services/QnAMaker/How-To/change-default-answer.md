@@ -2,33 +2,33 @@
 title: 'Abrufen der Standardantwort: QnA Maker'
 description: Die Standardantwort wird zurückgegeben, wenn keine Entsprechung für die Frage vorliegt. Sie können die Standardantwort bei Bedarf anpassen.
 ms.topic: how-to
-ms.date: 04/22/2020
-ms.openlocfilehash: db5a79ec612a73066ac37365a1815841fafb3862
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/02/2020
+ms.openlocfilehash: 005442938167c1bf7927603c44d6f870795cbeee
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097097"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979968"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>Ändern der Standardantwort für eine QnA Maker-Ressource
 
-Die Standardantwort wird zurückgegeben, wenn keine Entsprechung für die Frage vorliegt. Sie können die Standardantwort bei Bedarf anpassen.
+Die Standardantwort für eine Wissensdatenbank sollte zurückgegeben werden, wenn keine Antwort gefunden wird. Wenn Sie eine Clientanwendung verwenden, z. B. den [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs#calling-qna-maker-from-your-bot), verfügt diese möglicherweise über eine separate Standardantwort, in der die Information enthalten ist, dass keine Antwort den Bewertungsschwellenwert erreicht hat.
 
-## <a name="change-default-answer-in-the-azure-portal"></a>Ändern der Standardantwort im Azure-Portal
+## <a name="set-default-answer-when-you-create-knowledge-base"></a>Festlegen einer Standardantwort beim Erstellen einer Wissensdatenbank
 
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und navigieren Sie zu der Ressourcengruppe, die den von Ihnen erstellten QnA Maker-Dienst darstellt.
+Wenn Sie eine neue Wissensdatenbank erstellen, gehört der Standardantworttext zu den Einstellungen. Wenn Sie diesen nicht während der Erstellung festlegen, können Sie ihn später wie folgt ändern.
 
-2. Klicken Sie zum Öffnen auf den **App Service**.
+## <a name="change-default-answer-in-qna-maker-portal"></a>Ändern der Standardantwort im QnA Maker-Portal
 
-    ![Zugreifen auf den App-Dienst für QnA Maker im Azure-Portal](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+Die Standardantwort der Wissensdatenbank wird zurückgegeben, wenn keine Antwort vom QnA Maker-Dienst zurückgegeben wird.
 
-3. Klicken Sie auf **Anwendungseinstellungen**, und ändern Sie den Inhalt des Felds **DefaultAnswer** in die gewünschte Standardantwort. Klicken Sie auf **Speichern**.
+1. Melden Sie sich beim [QnA Maker](https://www.qnamaker.ai/)-Portal an, und wählen Sie die Wissensdatenbank aus der Liste aus.
+1. Klicken Sie in der Navigationsleiste auf **Einstellungen**.
+1. Ändern Sie den Wert **Default answer text** (Standardantworttext) im Abschnitt **Manage knowledge base** (Wissensdatenbank verwalten).
 
-    ![Auswählen der Anwendungseinstellungen und Bearbeiten der Standardantwort für QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+    :::image type="content" source="../media/qnamaker-concepts-confidencescore/change-default-answer.png" alt-text="Screenshot: QnA Maker-Portal, Einstellungsseite, Textfeld für die Standardantwort hervorgehoben":::
 
-4. Starten Sie Ihren App-Dienst neu.
-
-    ![Starten Sie QnA Maker App Service nach dem Ändern der Standardantwort neu.](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+1. Klicken Sie auf **Speichern und Trainieren**, um die Änderungen zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,18 +11,18 @@ Customer intent: I want only specific Azure Storage account to be allowed access
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78271180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708211"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Verwalten der Datenexfiltration in Azure Storage-Konten mit VNET-Dienstendpunkt-Richtlinien mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -263,7 +263,7 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-Speichern Sie den Ressourcen-URI für das zulässige Speicherkonto in einer Variable. Ersetzen Sie vor dem Ausführen des folgenden Befehls *\<your-subscription-id>* durch Ihre tatsächliche Abonnement-ID.
+Speichern Sie den Ressourcen-URI für das zulässige Speicherkonto in einer Variable. Bevor Sie den folgenden Befehl ausführen, ersetzen Sie *\<your-subscription-id>* durch Ihre tatsächliche Abonnement-ID.
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
@@ -313,7 +313,7 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem er erstel
 
 ### <a name="confirm-access-to-storage-account"></a>Bestätigen des Zugriffs auf das Speicherkonto
 
-Stellen Sie mit SSH eine Verbindung mit dem virtuellen Computer *MyVmPrivate* her. Ersetzen Sie *\<publicIpAddress* durch die öffentliche IP-Adresse Ihres virtuellen Computers *myVmPrivate*.
+Stellen Sie mit SSH eine Verbindung mit dem virtuellen Computer *MyVmPrivate* her. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse Ihres virtuellen Computers *MyVmPrivate*.
 
 ```bash 
 ssh <publicIpAddress>

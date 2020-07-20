@@ -3,16 +3,16 @@ title: Wiederherstellen von Azure Cosmos DB-Daten aus einer Sicherung
 description: In diesem Artikel wird beschrieben, wie Sie Azure Cosmos DB-Daten aus einer Sicherung wiederherstellen, wie Sie zum Wiederherstellen von Daten den Azure-Support kontaktieren und welche Schritte Sie ausführen, nachdem die Daten wiederhergestellt wurden.
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70240765"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261731"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Wiederherstellen von Daten aus einer Sicherung in Azure Cosmos DB 
 
@@ -43,7 +43,7 @@ Falls eine Datenbeschädigung aufgetreten ist oder Dokumente in einem Container 
 
 Der folgende Screenshot veranschaulicht das Erstellen einer Supportanfrage für einen Container (Sammlung/Graph/Tabelle) zum Wiederherstellen von Daten mithilfe des Azure-Portals. Geben Sie zusätzliche Details wie z.B. den Datentyp, den Zweck der Wiederherstellung und den Zeitpunkt der Datenlöschung an, damit wir die Anforderung priorisieren können.
 
-![Erstellen einer Supportanforderung mithilfe des Azure-Portals](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="Erstellen einer Supportanforderung mithilfe des Azure-Portals":::
 
 ## <a name="post-restore-actions"></a>Aktionen nach der Wiederherstellung
 

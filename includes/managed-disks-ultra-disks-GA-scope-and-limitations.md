@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/11/2020
+ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85448696"
 ---
 Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
 
@@ -38,7 +38,7 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 |Europa, Westen     |Drei Zonen          |
 |UK, Süden     |Drei Zonen          |
 |Japan, Osten     |Zwei Zonen         |
-
+|Frankreich, Mitte    |Zwei Zonen        |
 
 
 - Werden nur auf den folgenden VM-Serien unterstützt:
@@ -53,6 +53,7 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 - Können nur als leere Datenträger erstellt werden.  
 - Unterstützt derzeit keine Momentaufnahmen von Datenträgern, VM-Images, Verfügbarkeitsgruppen, Azure Dedicated Hosts oder Azure Disk Encryption.
 - Unterstützt derzeit keine Integration in Azure Backup oder Azure Site Recovery.
+- Unterstützt nur Lese- und Schreibvorgänge, die nicht zwischengespeichert sind.
 - Die IOPS-Obergrenze liegt bei allgemein verfügbaren virtuellen Computern derzeit bei 80.000.
 
 Azure Ultra-Datenträger bieten standardmäßig bis zu 16 TiB pro Region pro Abonnement, aber Disk Ultra-Datenträger unterstützen auf Anfrage auch höhere Kapazitäten. Wenden Sie sich an den Azure-Support, um eine Erhöhung der Kapazität anzufordern.

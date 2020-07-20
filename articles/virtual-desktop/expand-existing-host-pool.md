@@ -4,23 +4,23 @@ description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostp
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929212"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85209350"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
 >[!IMPORTANT]
 >Dieser Artikel gilt für das Update vom Frühjahr 2020 mit Windows Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md).
 >
-> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
+> Das Windows Virtual Desktop-Update vom Frühjahr 2020 befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Wenn Sie die Nutzung in Ihrem Hostpool erhöhen, müssen Sie den vorhandenen Pool möglicherweise um neue Sitzungshosts erweitern, um die neue Last zu verarbeiten.
@@ -50,19 +50,19 @@ So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
 
 3. Wählen Sie im Menü auf der linken Seite des Bildschirms **Hostpools**aus, und wählen Sie dann den Namen des Hostpools aus, dem Sie virtuelle Computer hinzufügen möchten.
 
-4. Wählen Sie im Menü auf der linken Seite des Bildschirms die Option **Virtuelle Computer** aus.
+4. Wählen Sie im Menü auf der linken Seite des Bildschirms die Option **Sitzungshosts** aus.
 
 5. Wählen Sie **+Hinzufügen** aus, um mit dem Erstellen des Hostpools zu beginnen.
 
 6. Ignorieren Sie die Registerkarte mit den Grundeinstellungen, und wählen Sie stattdessen die Registerkarte **VM-Details** aus. Hier können Sie die Details des virtuellen Computers (VM) anzeigen und bearbeiten, den Sie dem Hostpool hinzufügen möchten.
 
 7. Wählen Sie die Ressourcengruppe aus, unter der Sie die VMs erstellen möchten, und wählen Sie dann die Region aus. Sie können die aktuelle Region auswählen, die Sie verwenden, oder eine neue Region.
-   
+
 8. Geben Sie die Anzahl der Sitzungshosts, die Sie zu Ihrem Hostpool hinzufügen möchten, in **Anzahl von VMs** ein. Wenn Sie z. B. Ihren Hostpool um fünf Hosts erweitern möchten, geben Sie **5** ein.
-   
+
     >[!NOTE]
     >Sie können die Größe oder das Image der VMs nicht bearbeiten, da es wichtig ist, sicherzustellen, dass alle VMs im Hostpool die gleiche Größe besitzen.
-    
+
 9. Wählen Sie als **Informationen zum virtuellen Netzwerk** das virtuelle Netzwerk und das Subnetz aus, mit dem die virtuellen Computer verknüpft werden sollen. Sie können dasselbe virtuelle Netzwerk auswählen, das zurzeit bereits von Ihren vorhandenen Computern verwendet wird, oder ein anderes virtuelles Netzwerk auswählen, das besser für die Region geeignet ist, die Sie in Schritt 7 ausgewählt haben.
 
 10. Geben Sie als **Administratorkonto** den Active Directory-Domänenbenutzernamen und das Kennwort ein, der bzw. das dem ausgewählten virtuellen Netzwerk zugeordnet ist. Diese Anmeldeinformationen werden verwendet, um die virtuellen Computer mit dem virtuellen Netzwerk zu verknüpfen.
@@ -70,9 +70,9 @@ So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
       >[!NOTE]
       >Stellen Sie sicher, dass Ihre Administratornamen den hier angegebenen Informationen entsprechen. Vergewissern Sie sich außerdem, dass keine mehrstufige Authentifizierung (MFA) für das Konto aktiviert ist.
 
-11. Wählen Sie die Registerkarte **Tag** aus, wenn Sie über Tags verfügen, mit denen Sie die virtuellen Computer gruppieren möchten. Überspringen Sie diese Registerkarte andernfalls. 
+11. Wählen Sie die Registerkarte **Tag** aus, wenn Sie über Tags verfügen, mit denen Sie die virtuellen Computer gruppieren möchten. Überspringen Sie diese Registerkarte andernfalls.
 
-12. Wählen Sie die Registerkarte **Überprüfen und erstellen** aus. Überprüfen Sie Ihre Auswahl, und wählen Sie **Erstellen** aus, wenn alles in Ordnung ist. 
+12. Wählen Sie die Registerkarte **Überprüfen und erstellen** aus. Überprüfen Sie Ihre Auswahl, und wählen Sie **Erstellen** aus, wenn alles in Ordnung ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

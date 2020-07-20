@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248303"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Azure Data Factory .NET SDK
 > [!NOTE]
@@ -445,7 +445,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
     }
     ```
 
-15. Erweitern Sie im Projektmappen-Explorer das Projekt **DataFactoryAPITestApp**, klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für das `System.Configuration` -Assembly, und klicken Sie auf **OK**.
+15. Erweitern Sie das Projekt im Projektmappen-Explorer: Wählen Sie **DataFactoryAPITestApp**, klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für das `System.Configuration` -Assembly, und klicken Sie auf **OK**.
 15. Erstellen Sie die Konsolenanwendung. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
 16. Vergewissern Sie sich, dass sich mindestens eine Datei im adftutorial-Container in Azure Blob Storage befindet. Ist dies nicht der Fall, erstellen Sie die Datei "Emp.txt" mit folgendem Inhalt im Editor, und laden Sie sie anschließend in den "adftutorial"-Container hoch.
 
@@ -456,7 +456,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
 17. Führen Sie das Beispiel aus, indem Sie im Menü auf **Debuggen** -> **Debuggen starten** klicken. Wenn angezeigt wird, dass die **Ausführungsdetails für einen Datenslice abgerufen werden**, warten Sie einige Minuten, und drücken Sie dann die **EINGABETASTE**.
 18. Vergewissern Sie sich mithilfe des Azure-Portals, dass die Data Factory **APITutorialFactory** mit folgenden Artefakten erstellt wird:
     * Verknüpfter Dienst: **AzureStorageLinkedService**
-    * Dataset: **DatasetBlobSource** und **DatasetBlobDestination**
+    * Dataset: **DatasetBlobSource** und **DatasetBlobDestination**.
     * Pipeline: **PipelineBlobSample**
 19. Vergewissern Sie sich, dass im Ordner **apifactoryoutput** im Container **adftutorial** eine Ausgabedatei erstellt wird.
 
@@ -500,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sehen Sie sich das folgende Beispiel für die Erstellung einer Pipeline mithilfe des .NET-SDK an, das Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert: 
+Sehen Sie sich das folgende Beispiel für die Erstellung einer Pipeline mithilfe des .NET-SDK an, das Daten aus einem Azure-Blobspeicher in Azure SQL-Datenbank kopiert: 
 
 - [Erstellen einer Pipeline zum Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-activity-tutorial-using-dotnet-api.md)

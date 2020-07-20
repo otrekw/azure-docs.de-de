@@ -7,44 +7,47 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 06/23/2020
+ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260983"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Platzhalter, reguläre Ausdrücke, Muster)
 
-Eine *Suche nach Teilausdrücken*  ist eine Abfrage, die aus einem Begriffsfragment besteht, d. h. anstelle eines ganzen Begriffs nur den Beginn, das Mittelteil oder Ende des Begriffs enthält (manchmal auch als Präfix-, Infix- oder Suffixabfrage bezeichnet). Ein *Muster* kann eine Kombination von Fragmenten sein, wobei oft Sonderzeichen wie Bindestriche oder Schrägstriche Teil der Abfragezeichenfolge sind. Häufige Anwendungsfälle sind das Abfragen von Teilen einer Telefonnummer, einer URL, von Personen, Produktcodes oder zusammengesetzten Wörtern.
+Eine *Suche nach Teilausdrücken*  ist eine Abfrage, die aus einem Begriffsfragment besteht, d. h. anstelle eines ganzen Begriffs nur den Beginn, das Mittelteil oder Ende des Begriffs enthält (manchmal auch als Präfix-, Infix- oder Suffixabfrage bezeichnet). Eine Suche nach Teilausdrücken kann eine Kombination von Fragmenten sein, wobei oft Sonderzeichen wie Bindestriche oder Schrägstriche Teil der Abfragezeichenfolge sind. Häufige Anwendungsfälle sind Teile von Telefonnummern, URLs, Codes oder mit Bindestrichen zusammengesetzten Wörtern.
 
-Die Suche nach Teilausdrücken und Mustern kann problematisch sein, wenn der Index keine Begriffe im erwarteten Format enthält. Während der [Phase der lexikalischen Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) der Indizierung werden (bei Verwendung des Standardanalysetools) Sonderzeichen verworfen, zusammengesetzte Zeichenfolgen aufgeteilt und Leerzeichen gelöscht. Dies alles kann bewirken, dass bei Musterabfragen Fehler auftreten, wenn keine Übereinstimmung gefunden wird. Beispielsweise wird die Telefonnummer `+1 (425) 703-6214` (tokenisiert als `"1"`, `"425"`, `"703"`, `"6214"`) in der Abfrage `"3-62"` nicht angezeigt, da dieser Inhalt nicht im Index vorhanden ist. 
+Suchen nach Teilausdrücken und Abfragezeichenfolgen, die Sonderzeichen enthalten, können problematisch sein, wenn der Index keine Token im erwarteten Format enthält. Während der [Phase der lexikalischen Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) der Indizierung werden (bei Verwendung des Standardanalysetools) Sonderzeichen verworfen, zusammengesetzte Wörter aufgeteilt und Leerzeichen gelöscht. Dies alles kann bewirken, dass bei Abfragen Fehler auftreten, wenn keine Übereinstimmung gefunden wird. Beispielsweise wird die Telefonnummer `+1 (425) 703-6214` (tokenisiert als `"1"`, `"425"`, `"703"`, `"6214"`) in der Abfrage `"3-62"` nicht angezeigt, da dieser Inhalt nicht im Index vorhanden ist. 
 
-Die Lösung besteht darin, ein Analysetool aufzurufen, das eine vollständige Zeichenfolge beibehält, ggf. einschließlich Leerzeichen und Sonderzeichen, damit Teilausdrücke und Muster gefunden werden können. Grundlage für die Lösung ist das Erstellen eines zusätzlichen Felds für eine intakte Zeichenfolge und die Verwendung eines Analysetools, das den Inhalt beibehält.
+Die Lösung besteht darin, während der Indizierung ein Analysetool aufzurufen, das eine vollständige Zeichenfolge beibehält, ggf. einschließlich Leerzeichen und Sonderzeichen, damit Sie die Leer- und Sonderzeichen in Ihre Abfragezeichenfolge einbeziehen können. Ebenso ermöglicht die Verwendung einer vollständigen Zeichenfolge, die nicht in kleinere Teile tokenisiert wurde, den Musterabgleich für „Beginnt mit“- oder „Endet mit“-Abfragen, wobei das von Ihnen bereitgestellte Muster anhand eines Begriffs ausgewertet werden kann, der nicht durch lexikalische Analysen transformiert wird. Das Erstellen eines zusätzlichen Felds für eine intakte Zeichenfolge und die Verwendung eines Analysetools, das den Inhalt beibehält, ist die Lösung für den Musterabgleich und den Abgleich von Abfragezeichenfolgen, die Sonderzeichen enthalten.
 
 > [!TIP]
-> Sie sind mit Postman und REST-APIs vertraut? [Laden Sie die Sammlung von Abfragebeispielen herunter](https://github.com/Azure-Samples/azure-search-postman-samples/), um die in diesem Artikel beschriebenen Teilausdrücke und Sonderzeichen abzufragen.
+> Wenn Sie mit Postman und REST-APIs vertraut sind, [laden Sie die Sammlung von Abfragebeispielen herunter](https://github.com/Azure-Samples/azure-search-postman-samples/), um die in diesem Artikel beschriebenen Teilausdrücke und Sonderzeichen abzufragen.
 
-## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Was ist die Suche nach Teilausdrücken in Azure Search?
+## <a name="what-is-partial-term-search-in-azure-cognitive-search"></a>Was ist die Suche nach Teilausdrücken in Azure Cognitive Search?
 
-Die Suche nach Teilausdrücken und die Suche nach Mustern sind in Azure Cognitive Search in folgenden Formen verfügbar:
+Azure Cognitive Search sucht im Index nach vollständigen tokenisierten Begriffen und findet keine Entsprechung für einen Teilausdruck, sofern Sie keine Platzhalteroperatoren (`*` und `?`) einbeziehen oder die Abfrage als regulären Ausdruck formatieren. Teilausdrücke werden mithilfe der folgenden Methoden angegeben:
 
-+ [Präfixsuche](query-simple-syntax.md#prefix-search), z. B. `search=cap*` mit den Übereinstimmungen „Cape Canaveral“ oder „Cappuccino“. Sie können die einfache Abfragesyntax oder die vollständige Lucene-Abfragesyntax für die Präfixsuche verwenden.
++ [Abfragen mit regulären Ausdrücken](query-lucene-syntax.md#bkmk_regex) können beliebige reguläre Ausdrücke sein, die unter Apache Lucene gültig sind. 
 
-+ [Platzhaltersuche](query-lucene-syntax.md#bkmk_wildcard) oder [reguläre Ausdrücke](query-lucene-syntax.md#bkmk_regex), für die Suche nach einem Muster oder nach Teilen einer eingebetteten Zeichenfolge. Platzhalter und reguläre Ausdrücke erfordern die vollständige Lucene-Syntax. Suffix- und Indexabfragen werden als regulärer Ausdruck formuliert.
++ [Platzhalteroperatoren mit Präfixübereinstimmung](query-simple-syntax.md#prefix-search) beziehen sich auf ein allgemein bekanntes Muster, das den Anfang eines Begriffs gefolgt von den Suffixoperatoren `*` oder `?` enthält, wie z. B. `search=cap*` für „Cap'n Jack's Waterfront Inn“ oder „Gacc Capital“. Die Präfixübereinstimmung wird sowohl in der einfachen als auch vollständigen Lucene-Abfragesyntax unterstützt.
 
-  Hier sind einige Beispiele für die Suche nach Teilausdrücken. Für eine Suffixabfrage mit dem Ausdruck „alphanumeric“ verwenden Sie eine Platzhaltersuche (`search=/.*numeric.*/`), um eine Übereinstimmung zu finden. Für einen Teilausdruck, der innere Zeichen (z. B. ein URL-Fragment) enthält, müssen Sie möglicherweise Escapezeichen hinzufügen. In JSON ist das Escapezeichen für einen Schrägstrich (`/`) ein umgekehrter Schrägstrich (`\`). Somit ist `search=/.*microsoft.com\/azure\/.*/` die Syntax für das URL-Fragment „microsoft.com/azure/“.
++ [Platzhalter mit Infix- und Suffixübereinstimmung](query-lucene-syntax.md#bkmk_wildcard) platzieren die Operatoren `*` und `?` innerhalb oder am Anfang eines Ausdrucks und erfordern eine Syntax regulärer Ausdrücke (wobei der Ausdruck in Schrägstriche eingeschlossen ist). Beispielsweise gibt die Abfragezeichenfolge (`search=/.*numeric*./`) Ergebnisse zu Suffix- und Infixübereinstimmungen mit „alphanumeric“ und „alphanumerical“ zurück.
 
-Wie bereits erwähnt, muss der Index Zeichenfolgen in einem Format enthalten, das für den Musterabgleich geeignet ist, und diese Voraussetzung wird vom Standardanalysetool nicht erfüllt. Wenn Sie die Schritte in diesem Artikel ausführen, können Sie sicherstellen, dass die für diese Szenarien erforderlichen Inhalte vorhanden sind.
+Bei der Suche nach Teilausdrücken oder Mustern und einigen anderen Abfrageformen wie der Fuzzysuche werden Analysetools zum Abfragezeitpunkt nicht verwendet. Für diese Abfrageformen, die der Parser dadurch erkennt, dass Operatoren und Trennzeichen vorhanden sind, wird die Abfragezeichenfolge ohne eine lexikalische Analyse an die Engine übergeben. Für diese Abfrageformen wird das im Feld angegebene Analysetool ignoriert.
+
+> [!NOTE]
+> Bei einer partiellen Abfragezeichenfolge, die Zeichen wie z. B. Schrägstriche in einem URL-Fragment enthält, müssen Sie möglicherweise Escapezeichen hinzufügen. In JSON ist das Escapezeichen für einen Schrägstrich (`/`) ein umgekehrter Schrägstrich (`\`). Somit ist `search=/.*microsoft.com\/azure\/.*/` die Syntax für das URL-Fragment „microsoft.com/azure/“.
 
 ## <a name="solving-partialpattern-search-problems"></a>Lösen von Problemen bei der Suche nach Teilausdrücken/Mustern
 
-Wenn Sie nach Fragmenten, Mustern oder Sonderzeichen suchen müssen, können Sie das Standardanalysetool mit einem benutzerdefinierten Analysetool überschreiben, das einfachere Tokenisierungsregeln befolgt und die gesamte Zeichenfolge beibehält. Der grundsätzliche Ansatz ist wie folgt:
+Wenn Sie nach Fragmenten, Mustern oder Sonderzeichen suchen müssen, können Sie das Standardanalysetool mit einem benutzerdefinierten Analysetool überschreiben, das einfachere Tokenisierungsregeln befolgt und die gesamte Zeichenfolge im Index beibehält. Der grundsätzliche Ansatz ist wie folgt:
 
-+ Definieren Sie ein Feld für eine intakte Version der Zeichenfolge (unter der Voraussetzung, dass Sie analysierten und nicht analysierten Text möchten).
-+ Auswählen eines vordefinierten Analysetools oder Definieren eines benutzerdefinierten Analysetools für die Ausgabe einer nicht analysierten intakten Zeichenfolge
-+ Zuweisen des benutzerdefinierten Analysetools zum Feld
++ Definieren Sie ein Feld zum Speichern einer intakten Version der Zeichenfolge (unter der Voraussetzung, dass Sie analysierten und nicht analysierten Text zum Abfragezeitpunkt benötigen).
++ Evaluieren Sie verschiedene Analysetools, die Token mit dem richtigen Grad an Granularität ausgeben, und wählen Sie eines aus.
++ Zuweisen des Analysetools zum Feld
 + Erstellen und Testen des Index
 
 > [!TIP]
@@ -52,7 +55,7 @@ Wenn Sie nach Fragmenten, Mustern oder Sonderzeichen suchen müssen, können Sie
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Doppelte Felder für unterschiedliche Szenarien
 
-Analysetools werden pro Feld zugewiesen. Das bedeutet, dass Sie für die Optimierung entsprechend unterschiedlichen Szenarien Felder im Index erstellen können. Sie können beispielsweise „featureCode“ und „featureCodeRegex“ definieren, um für ein Szenario eine reguläre Volltextsuche und für ein anderes Szenario einen erweiterten Musterabgleich zu unterstützen.
+Analysetools bestimmen, wie Begriffe in einem Index tokenisiert werden. Da Analysetools pro Feld zugewiesen werden, können Sie Felder in Ihrem Index erstellen, die für verschiedene Szenarien optimiert werden können. Sie können beispielsweise „featureCode“ und „featureCodeRegex“ definieren, um für ein Szenario eine reguläre Volltextsuche und für ein anderes Szenario einen erweiterten Musterabgleich zu unterstützen. Die den einzelnen Feldern zugewiesenen Analysetools bestimmen, wie die Inhalte der einzelnen Felder im Index tokenisiert werden.  
 
 ```json
 {
@@ -84,9 +87,9 @@ Für die Generierung von Token mit vollständigen Ausdrücken werden häufig die
 
 Wenn Sie ein Web-API-Testtool wie Postman nutzen, können Sie den [REST-Aufruf für die Textanalyse](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) hinzufügen, um die tokenisierte Ausgabe zu untersuchen.
 
-Sie müssen über einen vorhandenen Index verfügen, den Sie verwenden. Bei Verwendung eines vorhandenen Index und eines Felds mit Bindestrichen oder Teilen von Ausdrücken können Sie für bestimmte Ausdrücke verschiedene Analysetools einsetzen, um zu ermitteln, welche Token ausgegeben werden.  
+Sie müssen über einen ausgefüllten Index verfügen, den Sie verwenden. Bei Verwendung eines vorhandenen Index und eines Felds mit Bindestrichen oder Teilen von Ausdrücken können Sie für bestimmte Ausdrücke verschiedene Analysetools einsetzen, um zu ermitteln, welche Token ausgegeben werden.  
 
-1. Verwenden Sie das Standardanalysetool, um herauszufinden, wie Ausdrücke standardmäßig tokenisiert werden.
+1. Verwenden Sie zunächst das Standardanalysetool, um herauszufinden, wie Ausdrücke standardmäßig tokenisiert werden.
 
    ```json
    {
@@ -95,7 +98,7 @@ Sie müssen über einen vorhandenen Index verfügen, den Sie verwenden. Bei Verw
    }
     ```
 
-1. Werten Sie die Antwort aus, um zu ermitteln, wie der Text im Index tokenisiert wird. Beachten Sie, dass jeder Ausdruck nur Kleinbuchstaben enthält und unterteilt wird.
+1. Werten Sie die Antwort aus, um zu ermitteln, wie der Text im Index tokenisiert wird. Beachten Sie, dass jeder Ausdruck nur Kleinbuchstaben enthält und unterteilt wird. Nur die Abfragen, die mit diesen Token übereinstimmen, geben dieses Dokument in den Ergebnissen zurück. Eine Abfrage, die „10-NOR“ umfasst, erzeugt einen Fehler.
 
     ```json
     {
@@ -130,7 +133,7 @@ Sie müssen über einen vorhandenen Index verfügen, den Sie verwenden. Bei Verw
     }
     ```
 
-1. Die Antwort enthält nun ein einzelnes Token in Großbuchstaben, bei dem die Bindestriche der Zeichenfolge beibehalten wurden. Falls Sie nach einem Muster oder dem Teil eines Ausdrucks suchen müssen, verfügt die Abfrage-Engine jetzt über die Grundlage für die Ermittlung einer Übereinstimmung.
+1. Die Antwort enthält nun ein einzelnes Token in Großbuchstaben, bei dem die Bindestriche der Zeichenfolge beibehalten wurden. Falls Sie nach einem Muster oder Teilausdruck wie „10-NOR“ suchen müssen, verfügt die Abfrage-Engine jetzt über die Grundlage für die Ermittlung einer Übereinstimmung.
 
 
     ```json
@@ -147,7 +150,7 @@ Sie müssen über einen vorhandenen Index verfügen, den Sie verwenden. Bei Verw
     }
     ```
 > [!Important]
-> Hierbei ist zu beachten, dass Abfrageparser beim Erstellen der Abfragestruktur die Ausdrücke eines Suchbegriffs häufig in Kleinbuchstaben umwandeln. Bei Verwendung eines Analysetools, bei dem Texteingaben nicht in Kleinbuchstaben umgewandelt werden, kann dies der Grund dafür sein, warum Sie nicht die erwarteten Ergebnisse erhalten. Die Lösung besteht darin, einen Kleinbuchstaben-Tokenfilter hinzuzufügen, wie im Abschnitt „Verwenden von benutzerdefinierten Analysetools“ weiter unten beschrieben.
+> Hierbei ist zu beachten, dass Abfrageparser beim Erstellen der Abfragestruktur die Ausdrücke eines Suchbegriffs häufig in Kleinbuchstaben umwandeln. Bei Verwendung eines Analysetools, bei dem Texteingaben während der Indizierung nicht in Kleinbuchstaben umgewandelt werden, kann dies der Grund dafür sein, warum Sie nicht die erwarteten Ergebnisse erhalten. Die Lösung besteht darin, einen Kleinbuchstaben-Tokenfilter hinzuzufügen, wie im Abschnitt „Verwenden von benutzerdefinierten Analysetools“ weiter unten beschrieben.
 
 ## <a name="configure-an-analyzer"></a>Konfigurieren eines Analysetools
  
@@ -233,13 +236,13 @@ In den vorherigen Abschnitten wurde die Logik erläutert. In diesem Abschnitt we
 
   Verwenden Sie für Infix- und Suffixabfragen wie z. B. „num“ oder „numerisch“, um eine Entsprechung für „alphanumerisch“ zu finden, die vollständige Lucene-Syntax und einen regulären Ausdruck: `search=/.*num.*/&queryType=full`
 
-## <a name="tips-and-best-practices"></a>Tipps und Best Practices
-
-### <a name="tune-query-performance"></a>Optimieren der Abfrageleistung
+## <a name="tune-query-performance"></a>Optimieren der Abfrageleistung
 
 Wenn Sie die empfohlene Konfiguration mit dem Tokenizer „keyword_v2“ und dem Kleinbuchstaben-Tokenfilter implementieren, kommt es ggf. zu einer Verringerung der Abfrageleistung, weil zusätzlich zu den vorhandenen Token in Ihrem Index die Tokenfilterverarbeitung durchgeführt werden muss. 
 
-Im folgenden Beispiel wird ein [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)-Element hinzugefügt, um den Präfixabgleich zu beschleunigen. Zusätzliche Token werden für Kombinationen mit 2 bis 25 Zeichen generiert: (nicht nur MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/SQ, MSFT/SQL). Diese zusätzliche Tokenisierung führt natürlich zu einem größeren Index.
+Im folgenden Beispiel wird ein [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)-Element hinzugefügt, um den Präfixabgleich zu beschleunigen. Zusätzliche Token werden für Kombinationen mit 2 bis 25 Zeichen generiert: (nicht nur MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/SQ, MSFT/SQL). 
+
+Diese zusätzliche Tokenisierung führt natürlich zu einem größeren Index. Wenn Sie über ausreichend Kapazität für den größeren Index verfügen, ist dieser Ansatz mit der schnelleren Reaktionszeit möglicherweise eine bessere Lösung.
 
 ```json
 {
@@ -276,20 +279,6 @@ Im folgenden Beispiel wird ein [EdgeNGramTokenFilter](https://lucene.apache.org/
   "side": "front"
   }
 ]
-```
-
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Verwenden von verschiedenen Analysetools für die Indizierung und Abfrageverarbeitung
-
-Analysetools werden beim Indizieren und während der Abfrageausführung aufgerufen. Es ist üblich, für beide Vorgänge dasselbe Analysetool zu nutzen, aber Sie können für jede Workload benutzerdefinierte Analysetools konfigurieren. Außerkraftsetzungen von Analysetools werden in der [Indexdefinition](https://docs.microsoft.com/rest/api/searchservice/create-index) in einem `analyzers`-Abschnitt angegeben, und dann wird in bestimmten Feldern darauf verwiesen. 
-
-Falls die benutzerdefinierte Analyse nur während der Indizierung erforderlich ist, können Sie das benutzerdefinierte Analysetool nur auf die Indizierung anwenden und für Abfragen weiterhin das Lucene-Standardanalysetool (oder ein anderes) nutzen.
-
-Zum Angeben einer rollenspezifischen Analyse können Sie jeweils Eigenschaften im Feld festlegen, indem Sie `indexAnalyzer` und `searchAnalyzer` anstelle der `analyzer`-Standardeigenschaft angeben.
-
-```json
-"name": "featureCode",
-"indexAnalyzer":"my_customanalyzer",
-"searchAnalyzer":"standard",
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

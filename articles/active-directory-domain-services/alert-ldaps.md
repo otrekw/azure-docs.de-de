@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71258048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735029"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Warnungen bei Secure LDAP in Azure Active Directory Domain Services
 
@@ -32,7 +32,7 @@ Dieser Artikel hilft Ihnen dabei, häufige Warnungen bei einem Zugriff über Sec
 
 ### <a name="resolution"></a>Lösung
 
-Wenn Sie Secure LDAP aktivieren, empfiehlt es sich, zusätzliche Regeln zu erstellen, die den eingehenden LDAPS-Zugriff auf bestimmte IP-Adressen einschränken. Diese Regeln schützen die verwaltete Azure AD DS-Domäne vor Brute-Force-Angriffen. Führen Sie die folgenden Schritte aus, um die Netzwerksicherheitsgruppe zu aktualisieren und den Zugriff auf TCP-Port 636 für Secure LDAP zu beschränken:
+Wenn Sie Secure LDAP aktivieren, empfiehlt es sich, zusätzliche Regeln zu erstellen, die den eingehenden LDAPS-Zugriff auf bestimmte IP-Adressen einschränken. Diese Regeln schützen die verwaltete Domäne vor Brute-Force-Angriffen. Führen Sie die folgenden Schritte aus, um die Netzwerksicherheitsgruppe zu aktualisieren und den Zugriff auf TCP-Port 636 für Secure LDAP zu beschränken:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Netzwerksicherheitsgruppen**, und wählen Sie ihn aus.
 1. Wählen Sie die Netzwerksicherheitsgruppe aus, die Ihrer verwalteten Domäne zugeordnet ist, z.B. *AADDS-contoso.com-NSG*, und wählen Sie dann **Eingangssicherheitsregeln** aus.
@@ -43,7 +43,7 @@ Wenn Sie Secure LDAP aktivieren, empfiehlt es sich, zusätzliche Regeln zu erste
 1. Geben Sie die Priorität für die Regel an, und geben Sie dann einen Namen ein, z.B. *RestrictLDAPS*.
 1. Wählen Sie abschließend **Hinzufügen** aus, um die Regel zu erstellen.
 
-Die Integrität der verwalteten Azure AD DS-Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
+Die Integrität der verwalteten Domäne wird innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
 
 > [!TIP]
 > TCP-Port 636 ist nicht die einzige Regel, die erforderlich ist, damit Azure AD DS reibungslos ausgeführt wird. Weitere Informationen finden Sie unter [Azure AD DS-Netzwerksicherheitsgruppen und erforderliche Ports](network-considerations.md#network-security-groups-and-required-ports).

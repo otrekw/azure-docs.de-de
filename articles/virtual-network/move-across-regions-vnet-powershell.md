@@ -3,15 +3,15 @@ title: Verschieben eines virtuellen Azure-Netzwerks in eine andere Azure-Region 
 description: Verschieben Sie ein virtuelles Azure-Netzwerk aus einer Azure-Region in eine andere, indem Sie eine Resource Manager-Vorlage und Azure PowerShell verwenden.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711458"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Verschieben eines virtuellen Azure-Netzwerks in eine andere Region mit Azure PowerShell
 
@@ -60,7 +60,7 @@ Gehen Sie folgendermaßen vor, um das virtuelle Netzwerk zu exportieren und das 
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. Die heruntergeladene Datei weist den gleichen Namen wie die Ressourcengruppe auf, aus der die Ressource exportiert wurde. Suchen Sie die Datei *\<ressourcengruppenname>.json*, die Sie mit dem Befehl exportiert haben, und öffnen Sie sie dann im Editor:
+1. Die heruntergeladene Datei weist den gleichen Namen wie die Ressourcengruppe auf, aus der die Ressource exportiert wurde. Suchen Sie die Datei *\<resource-group-name>.json*, die Sie mit dem Befehl exportiert haben, und öffnen Sie sie dann im Editor:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,7 +105,7 @@ Gehen Sie folgendermaßen vor, um das virtuelle Netzwerk zu exportieren und das 
     Get-AzLocation | format-table
     ```
 
-1. (Optional) Sie können abhängig von Ihren Anforderungen auch andere Parameter in der Datei *\<ressourcengruppenname>.json* ändern:
+1. (Optional) Sie können abhängig von Ihren Anforderungen auch andere Parameter in der Datei *\<resource-group-name>.json* ändern:
 
     * **Adressraum**: Bevor Sie die Datei speichern, können Sie den Adressraum des virtuellen Netzwerks ändern, indem Sie den Abschnitt **resources** > **addressSpace** und die Eigenschaft **addressPrefixes** ändern:
 
@@ -201,7 +201,7 @@ Gehen Sie folgendermaßen vor, um das virtuelle Netzwerk zu exportieren und das 
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Stellen Sie die bearbeitete Datei *\<ressourcengruppenname>.json* in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) erstellt haben:
+1. Stellen Sie die bearbeitete Datei *\<resource-group-name>.json* in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) erstellt haben:
 
     ```azurepowershell-interactive
 
