@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551734"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202543"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -43,7 +43,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Absolvieren Sie ggf. das [vorherige Tutorial zum Aktivieren der Self-Service-Kennwortzurücksetzung von Azure AD](tutorial-enable-sspr.md).
 * Eine vorhandene lokale AD DS-Umgebung, die mit einer aktuellen Version von Azure AD Connect konfiguriert ist
     * Konfigurieren Sie ggf. Azure AD Connect unter Verwendung der [Express-Einstellungen](../hybrid/how-to-connect-install-express.md) oder der [benutzerdefinierten Einstellungen](../hybrid/how-to-connect-install-custom.md).
-    * Damit Sie Kennwortrückschreiben verwenden können, müssen Ihre Domänencontroller unter Windows Server 2008 R2 oder höher ausgeführt werden.
+    * Damit Sie Kennwortrückschreiben verwenden können, müssen Ihre Domänencontroller unter Windows Server 2012 oder höher ausgeführt werden.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Konfigurieren der Kontoberechtigungen für Azure AD Connect
 

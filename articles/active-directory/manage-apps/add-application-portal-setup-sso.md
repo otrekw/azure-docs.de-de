@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)'
-description: In dieser Schnellstartanleitung wird die Einrichtung des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory) Schritt für Schritt beschrieben.
+title: 'Schnellstart: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einmaliges Anmelden (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) einrichten.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,49 +11,54 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f90edf525a8deb35376d6637090e7b424b2fd658
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b19427070d982918584c13c25518cffe55497000
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038989"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223328"
 ---
-# <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)
+# <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)
 
-Beginnen Sie mit vereinfachten Benutzeranmeldungen, indem Sie SSO für eine Anwendung einrichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben. Nachdem Sie SSO eingerichtet haben, können sich Ihre Benutzer mit ihren Azure AD-Anmeldeinformationen bei einer Anwendung anmelden. SSO ist in der kostenlosen Edition von Azure AD enthalten.
+Beginnen Sie mit vereinfachten Benutzeranmeldungen, indem Sie einmaliges Anmelden (Single Sign-On, SSO) für eine Anwendung einrichten, die Sie Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) hinzugefügt haben. Nachdem Sie SSO eingerichtet haben, können sich Ihre Benutzer mit ihren Azure AD-Anmeldeinformationen bei einer Anwendung anmelden. SSO ist in der kostenlosen Edition von Azure AD enthalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um SSO für eine Anwendung einzurichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben:
+Sie benötigen Folgendes, um SSO für eine Anwendung einzurichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
-- Eine Anwendung, die einmaliges Anmelden unterstützt und bereits vorkonfiguriert und dem Azure AD-Katalog hinzugefügt wurde. In den meisten Apps kann Azure AD für einmaliges Anmelden verwendet werden. Die Apps im Azure AD-Katalog wurden vorkonfiguriert. Falls Ihre App nicht aufgelistet ist oder es sich um eine benutzerdefinierte App handelt, können Sie sie trotzdem mit Azure AD verwenden. Sehen Sie sich die Tutorials und die restliche Dokumentation im Inhaltsverzeichnis an. In dieser Schnellstartanleitung liegt der Schwerpunkt auf Apps, die von den App-Entwicklern für SSO vorkonfiguriert und dem Azure AD-Katalog hinzugefügt wurden.
-- (Optional: Durcharbeitung von [Anzeigen Ihrer Apps](view-applications-portal.md).)
-- (Optional: Durcharbeitung von [Hinzufügen einer App](add-application-portal.md).)
-- (Optional: Durcharbeitung von [Konfigurieren einer App](add-application-portal-configure.md).)
+- Eine Anwendung, die SSO unterstützt und bereits vorkonfiguriert und dem Azure AD-Katalog hinzugefügt wurde. Bei den meisten Apps kann Azure AD für SSO verwendet werden. Die Apps im Azure AD-Katalog sind vorkonfiguriert. Falls Ihre App nicht aufgelistet oder eine benutzerdefinierte App ist, können Sie sie trotzdem mit Azure AD verwenden. Sehen Sie sich die Tutorials und die restliche Dokumentation im Inhaltsverzeichnis an. In dieser Schnellstartanleitung liegt der Schwerpunkt auf Apps, die von den App-Entwicklern für SSO vorkonfiguriert und dem Azure AD-Katalog hinzugefügt wurden.
+- Optional: Gehen Sie den Schnellstart [Anzeigen Ihrer Apps](view-applications-portal.md) durch.
+- Optional: Gehen Sie den Schnellstart [Hinzufügen einer App](add-application-portal.md) durch.
+- Optional: Gehen Sie den Schnellstart [Konfigurieren einer App](add-application-portal-configure.md) durch.
 
 
 >[!IMPORTANT]
->Wir empfehlen Ihnen, zum Testen der Schritte in dieser Schnellstartanleitung keine Produktionsumgebung zu verwenden.
+>Verwenden Sie zum Testen der in dieser Schnellstartanleitung aufgeführten Schritte keine Produktionsumgebung.
 
 
 ## <a name="enable-single-sign-on-for-an-app"></a>Aktivieren des einmaligen Anmeldens für eine App
 
-Nachdem Sie das Hinzufügen einer Anwendung zu Ihrem Azure AD-Mandanten abgeschlossen haben, wird sofort die entsprechende Übersichtsseite angezeigt. Falls Sie eine bereits hinzugefügte Anwendung konfigurieren, hilft Ihnen die erste Schnellstartanleitung weiter. Darin wird das Anzeigen der Anwendungen beschrieben, die Sie Ihrem Mandanten hinzugefügt haben. 
+Nachdem Sie Ihrem Azure AD-Mandanten eine Anwendung hinzugefügt haben, wird die Übersichtsseite angezeigt. Wenn Sie eine Anwendung konfigurieren, die bereits hinzugefügt wurde, lesen Sie die erste Schnellstartanleitung. Darin wird beschrieben, wie Sie die Ihrem Mandanten hinzugefügten Anwendungen anzeigen können. 
 
 Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
 
-1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** und dann die Anwendung aus, für die Sie einmaliges Anmelden einrichten möchten.
-2. Wählen Sie im Abschnitt „Verwalten“ die Option **Einmaliges Anmelden** aus, um den Eigenschaftenbereich für die Bearbeitung zu öffnen.
-    :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="Seite zum Konfigurieren des einmaligen Anmeldens in Azure AD":::
-3. Wählen Sie „SAML“ aus, um die Seite für die SSO-Konfiguration zu öffnen. In diesem Beispiel ist GitHub die Anwendung, für die wir SSO konfigurieren. Nachdem Sie GitHub eingerichtet haben, können sich Ihre Benutzer mit ihren Anmeldeinformationen von unserem Azure AD-Mandanten bei GitHub anmelden.
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Seite zum Konfigurieren des einmaligen Anmeldens auf GitHub":::
-4. Der Prozess zum Konfigurieren einer Anwendung für die Verwendung von Azure AD für SAML-basiertes SSO variiert je nach Anwendung. Es ist ein Link zur Anleitung für GitHub vorhanden. Anleitungen für andere Apps finden Sie unter https://docs.microsoft.com/azure/active-directory/saas-apps/.
-5. Befolgen Sie die Anleitung zum Einrichten von SSO für die Anwendung. Viele Anwendungen verfügen über spezifische Abonnementanforderungen für die SSO-Funktionen. Beispielsweise ist für GitHub ein Enterprise-Abonnement erforderlich.
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Option für einmaliges Anmelden im Enterprise-Abonnement auf der GitHub-Preisseite":::
+1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der Anwendung, für die Sie einmaliges Anmelden einrichten möchten, und wählen Sie diese aus.
+1. Wählen Sie im Abschnitt **Verwalten** die Option **Einmaliges Anmelden** aus, um den Bereich **Einmaliges Anmelden** zur Bearbeitung zu öffnen.
+
+    :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="Screenshot der Seite zum Konfigurieren des einmaligen Anmeldens im Azure AD-Portal":::
+
+1. Wählen Sie **SAML** aus, um die Seite für die SSO-Konfiguration zu öffnen. In diesem Beispiel ist GitHub die Anwendung, für die wir SSO konfigurieren. Nachdem Sie GitHub eingerichtet haben, können sich Ihre Benutzer mit ihren Anmeldeinformationen von Ihrem Azure AD-Mandanten bei GitHub anmelden.
+
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Screenshot der Seite zum Konfigurieren des einmaligen Anmeldens für GitHub":::
+
+1. Der Prozess zum Konfigurieren einer Anwendung für die Verwendung von Azure AD für SAML-basiertes SSO variiert je nach Anwendung. Es ist ein Link zur Anleitung für GitHub vorhanden. Anleitungen für andere Apps finden Sie unter [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/).
+1. Befolgen Sie die Anleitung zum Einrichten von SSO für die Anwendung. Viele Anwendungen verfügen über spezifische Abonnementanforderungen für die SSO-Funktionen. Beispielsweise ist für GitHub ein Enterprise-Abonnement erforderlich.
+
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Screenshot der GitHub-Preisseite mit der Option für einmaliges Anmelden im Enterprise-Abonnement":::
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-step"></a>Nächster Schritt
 
 - [Löschen einer App](delete-application-portal.md)

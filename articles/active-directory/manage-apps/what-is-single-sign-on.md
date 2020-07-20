@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144601"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223889"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?
 
@@ -90,6 +90,9 @@ Wählen Sie das kennwortbasierte einmalige Anmelden in folgenden Fällen:
 - Eine Anwendung unterstützt das SAML-SSO-Protokoll nicht.
 - Eine Anwendung authentifiziert sich mit Benutzername und Kennwort anstelle von Zugriffstoken und Headern.
 
+>[!NOTE]
+>Sie können keine Richtlinien für bedingten Zugriff oder mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf das kennwortbasierte einmalige Anmelden anwenden.
+
 Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung unterstützt, die über eine HTML-basierte Anmeldeseite verfügt. Der Benutzer kann jeden der folgenden Browser verwenden:
 
 - Internet Explorer 11 unter Windows 7 oder höher
@@ -136,6 +139,9 @@ Wenn der Endbenutzer die Anmeldeinformationen verwaltet, gilt Folgendes:
 Das verknüpfte Anmelden sorgt während der Migration von Anwendungen über einen längeren Zeitraum für eine einheitliche Benutzererfahrung. Wenn Sie Anwendungen in Azure Active Directory migrieren, können Sie mithilfe des verknüpften Anmeldens schnell Links für alle Anwendungen veröffentlichen, die Sie migrieren möchten.  Benutzer können alle Links im [MyApps-Portal](../user-help/active-directory-saas-access-panel-introduction.md) und im [Office 365-Anwendungsstarter](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) finden. Benutzer erkennen nicht, dass sie auf eine verknüpfte Anwendung bzw. eine migrierte Anwendung zugreifen.  
 
 Nachdem ein Benutzer sich mit einer verknüpften Anwendung authentifiziert hat, muss ein Kontodatensatz erstellt werden, bevor der Endbenutzer Zugriff durch das einmalige Anmelden erhält. Die Bereitstellung dieses Kontodatensatzes kann automatisch oder manuell durch einen Administrator erfolgen.
+
+>[!NOTE]
+>Sie können keine Richtlinien für bedingten Zugriff oder mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) auf eine verknüpfte Anwendung anwenden. Der Grund dafür ist, dass eine verknüpfte Anwendung keine Funktionen für einmaliges Anmelden über Azure AD bereitstellt. Wenn Sie eine verknüpfte Anwendung konfigurieren, fügen Sie einfach einen Link hinzu, der im App-Startfeld oder im Portal „Meine Apps“ angezeigt wird. 
 
 ## <a name="disabled-sso"></a>Deaktiviertes einmaliges Anmelden
 

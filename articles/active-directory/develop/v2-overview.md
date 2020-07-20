@@ -1,6 +1,6 @@
 ---
-title: 'Übersicht über Microsoft Identity Platform (v2.0): Azure'
-description: 'Informationen zu Microsoft Identity Platform (v2.0): Endpunkt und Plattform'
+title: Übersicht über Microsoft Identity Platform – Azure
+description: Erfahren Sie mehr über die Komponenten der Microsoft Identity Platform und darüber, wie Sie mithilfe dieser Komponenten Unterstützung für die Identitäts- und Zugriffsverwaltung (Identity and Access Management, IAM) in Ihre Anwendungen integrieren.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,75 +8,78 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2e5bbbd311d71f2925e86ae756b36de7194aa9fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: identityplatformtop40
+ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80886244"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231674"
 ---
-# <a name="microsoft-identity-platform-v20-overview"></a>Übersicht über Microsoft Identity Platform (v2.0)
+# <a name="microsoft-identity-platform-overview"></a>Übersicht über Microsoft Identity Platform
 
-Microsoft Identity Platform ist eine Weiterentwicklung der Azure AD-Entwicklerplattform (Azure Active Directory). Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, sowie das Abrufen von Token zum Aufrufen von Microsoft-APIs, etwa Microsoft Graph oder von Entwicklern erstellte APIs. Microsoft Identity Platform umfasst folgende Komponenten:
+Die Microsoft Identity Platform unterstützt Sie beim Erstellen von Anwendungen, bei denen sich Ihre Benutzer und Kunden mit ihren Microsoft-Identitäten oder Social Media-Konten anmelden können. Außerdem können Sie autorisierten Zugriff auf Ihre eigenen APIs oder Microsoft-APIs wie Microsoft Graph gewähren.
 
-- **Standardkonformer OAuth 2.0- und OpenID Connect-Authentifizierungsdienst**, der Entwicklern die Authentifizierung einer beliebigen Microsoft-Identität ermöglicht, einschließlich:
-  - Geschäfts-, Schul- oder Unikonten (über Azure AD bereitgestellt)
-  - Persönliche Microsoft-Konten (z. B. Skype, Xbox und Outlook.com)
-  - Social Media-Konten oder lokale Konten (über Azure AD B2C)
+Die Microsoft Identity Platform besteht aus mehreren Komponenten:
+
+- **Standardkonformer OAuth 2.0- und OpenID Connect-Authentifizierungsdienst**, der Entwicklern die Authentifizierung mehrerer Identitätstypen ermöglicht, einschließlich:
+  - Über Azure AD bereitgestellte Geschäfts-, Schul- oder Unikonten
+  - Persönliche Microsoft-Konten wie z. B. Skype, Xbox und Outlook.com
+  - Social Media- oder lokale Konten bei Verwendung von Azure AD B2C
 - **Open-Source-Bibliotheken**: Microsoft Authentication Libraries (MSAL) und Unterstützung für andere standardkonforme Bibliotheken
-- **Verwaltungsportal für Anwendungen**: Eine Registrierungs- und Konfigurationsumgebung, die zusammen mit allen Ihren anderen Azure-Verwaltungsfunktionen in das Azure-Portal integriert ist
-- **Anwendungskonfigurations-API und PowerShell**: Ermöglicht die programmgesteuerte Konfiguration Ihrer Anwendungen per Microsoft Graph-API und PowerShell, um Ihre DevOps-Aufgaben zu automatisieren.
-- **Entwicklerinhalte**: Konzept- und Referenzdokumentation, Schnellstartbeispiele, Codebeispiele, Tutorials und Schrittanleitungen
+- **Verwaltungsportal für Anwendungen**: Eine Registrierungs- und Konfigurationsumgebung im Azure-Portal, die zusammen mit den anderen Azure-Verwaltungsfunktionen genutzt werden kann.
+- **Anwendungskonfigurations-API und PowerShell**: Programmgesteuerte Konfiguration Ihrer Anwendungen über die Microsoft Graph-API und PowerShell, um Ihre DevOps-Aufgaben automatisieren zu können.
+- **Entwicklerinhalte**: Technische Dokumentation einschließlich Schnellstarts, Tutorials, Schrittanleitungen und Codebeispielen.
 
-Für Entwickler bietet Microsoft Identity Platform eine nahtlose Integration in Innovationen im Identitäts- und Sicherheitsbereich wie kennwortlose Authentifizierung, Step-up-Authentifizierung und bedingten Zugriff.  Sie müssen diese Funktionalität nicht selbst implementieren: In Microsoft Identity Platform integrierte Anwendungen nutzen solche Innovationen nativ.
+Für Entwickler bietet die Microsoft Identity Platform die Integration moderner Innovationen in den Identitäts- und Sicherheitsbereich. Beispiele dafür sind kennwortlose Authentifizierung, Step-up-Authentifizierung und bedingter Zugriff. Sie müssen diese Funktionalität nicht selbst implementieren: In Microsoft Identity Platform integrierte Anwendungen nutzen solche Innovationen nativ.
 
-Mit Microsoft Identity Platform müssen Sie Code nur einmal schreiben, um alle Benutzer zu erreichen. Sie können eine App einmalig erstellen und sie plattformübergreifend nutzen lassen, oder eine App erstellen, die sowohl als Client als auch als Ressourcenanwendung (API) fungiert.
+Dank der Microsoft Identity Platform müssen Sie Code nur einmal schreiben, um alle Benutzer zu erreichen. Sie können eine App einmalig erstellen und sie plattformübergreifend nutzen lassen, oder eine App erstellen, die sowohl als Client als auch als Ressourcenanwendung (API) fungiert.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Die Verwendung von Identitäten muss nicht kompliziert sein. 
+Wählen Sie das gewünschte [Anwendungsszenario](authentication-flows-app-scenarios.md) aus. Jeder Szenariopfad beginnt mit einer Übersicht und enthält Links zu einem Schnellstart, um Ihnen den Einstieg zu erleichtern:
 
-Im [Video zu Microsoft Identity Platform](identity-videos.md) erfahren Sie mehr über die Grundlagen. 
+- [Single-Page-Webanwendung (Single-Page-App, SPA)](scenario-spa-overview.md)
+- [Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md)
+- [Web-App, die Web-APIs aufruft](scenario-web-app-call-api-overview.md)
+- [Geschützte Web-API](scenario-protected-web-api-overview.md)
+- [Web-API, die Web-APIs aufruft](scenario-web-api-call-api-overview.md)
+- [Desktop-App](scenario-desktop-overview.md)
+- [Daemon-App](scenario-daemon-overview.md)
+- [Mobile App](scenario-mobile-overview.md)
 
-Wählen Sie ein auf Sie zutreffendes [Szenario](authentication-flows-app-scenarios.md) aus. In jedem Szenariopfad stehen ein Schnellstart sowie eine Übersichtsseite zur Verfügung, sodass Sie in wenigen Minuten einsatzbereit sind:
+Wenn Sie mit der Microsoft Identity Platform arbeiten, um Authentifizierungs- und Autorisierungsfunktionen in Ihre Apps zu integrieren, können Sie die folgende Abbildung als Referenz verwenden. Darin sind die gängigsten App-Szenarien und deren Identitätskomponenten dargestellt. Wählen Sie das Bild aus, um es in voller Größe anzuzeigen.
 
-- [Erstellen einer Einzelseiten-App](scenario-spa-overview.md)
-- [Erstellen einer Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md)
-- [Erstellen einer Web-App, die Web-APIs aufruft](scenario-web-app-call-api-overview.md)
-- [Erstellen einer geschützten Web-API](scenario-protected-web-api-overview.md)
-- [Erstellen einer Web-API, die Web-APIs aufruft](scenario-web-api-call-api-overview.md)
-- [Erstellen einer Desktop-App](scenario-desktop-overview.md)
-- [Erstellen einer Daemon-App](scenario-daemon-overview.md)
-- [Erstellen einer mobilen App](scenario-mobile-overview.md)
+[![Metro-Karte mit mehreren Anwendungsszenarien in Microsoft Identity Platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-Das folgende Diagramm zeigt gängige Authentifizierungs-App-Szenarien. Verwenden Sie es bei der Integration von Microsoft Identity Platform in Ihre App als Referenz.
+## <a name="learn-authentication-concepts"></a>Informationen zu Authentifizierungskonzepten
 
-[![Anwendungsszenarien in Microsoft Identity Platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+In den folgenden empfohlenen Artikeln erfahren Sie, wie die Kernauthentifizierungs- und Azure AD-Konzepte Anwendung auf die Microsoft Identity Platform finden:
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Wenn Sie mehr über die wichtigsten Authentifizierungskonzepte erfahren möchten, empfehlen wir Ihnen, mit diesen Themen zu beginnen:
-
-- [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md)
 - [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md)
 - [Anwendungs- und Dienstprinzipale](app-objects-and-service-principals.md)
 - [Zielgruppen](v2-supported-account-types.md)
 - [Berechtigungen und Einwilligung](v2-permissions-and-consent.md)
-- [ID-Token](id-tokens.md) und [Zugriffstoken](access-tokens.md)
+- [ID-Token](id-tokens.md)
+- [Zugriffstoken](access-tokens.md)
+- [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md)
 
-Erstellen Sie eine Anwendung mit umfassenden Daten, die [Microsoft Graph](https://docs.microsoft.com/graph/overview) aufruft.
+## <a name="more-identity-and-access-management-options"></a>Weitere Identitäts- und Zugriffsverwaltungsoptionen
 
-Wenn Sie zum Starten Ihrer App in einer **Produktionsumgebung** bereit sind, beachten Sie diese bewährten Methoden:
+[Azure AD B2C](../../active-directory-b2c/overview.md): Erstellen Sie kundenorientierte Anwendungen, bei denen sich Ihre Benutzer mit ihren Konten sozialer Netzwerke wie Facebook oder Google oder mit einer E-Mail-Adresse und einem Kennwort anmelden können.
 
-- [Aktivieren Sie die Protokollierung](msal-logging.md) in Ihrer Anwendung.
-- Aktivieren Sie die Telemetrie in Ihrer Anwendung.
-- Aktivieren Sie [Proxys und das Anpassen von HTTP-Clients](msal-net-provide-httpclient.md).
-- Testen Sie Ihre Integration anhand der [Checkliste für die Integration von Microsoft Identity Platform](identity-platform-integration-checklist.md).
+[Azure AD B2B](../b2b/what-is-b2b.md): Laden Sie externe Benutzer als „Gastbenutzer“ in Ihren Azure AD-Mandanten ein, und weisen Sie ihnen Berechtigungen für die Autorisierung zu, während sie für die Authentifizierung ihre vorhandenen Anmeldeinformationen verwenden können.
 
-## <a name="learn-more"></a>Weitere Informationen
+> [!TIP]
+> Suchen Sie nach der Dokumentation zu *Azure Active Directory-Entwicklerplattform (v1.0)* ? Weitere Informationen finden Sie unter [Azure Active Directory für Entwickler (v1.0) – Übersicht](../azuread-dev/v1-overview.md).
 
-Wenn Sie die Erstellung einer kundenorientierten Anwendung planen, die Social Media-Identitäten und lokale Identitäten anmeldet, lesen Sie die [Azure AD B2C-Übersicht](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+## <a name="next-steps"></a>Nächste Schritte
+
+Wenn Sie über ein Azure-Konto verfügen, haben Sie bereits Zugriff auf einen Azure Active Directory-Mandanten. Die meisten Microsoft Identity Platform-Entwickler benötigen jedoch einen eigenen Azure AD-Mandanten, einen Entwicklungsmandanten, den sie beim Entwickeln von Anwendungen verwenden können.
+
+Erfahren Sie, wie Sie Ihren eigenen Mandanten zur Verwendung beim Erstellen von Anwendungen erstellen:
+
+[Schnellstart: Einrichten eines Azure AD-Mandanten](quickstart-create-new-tenant.md)

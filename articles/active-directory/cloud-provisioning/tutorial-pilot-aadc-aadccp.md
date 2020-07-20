@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360757"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146817"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -165,18 +165,18 @@ Gehen Sie wie folgt vor, um die Bereitstellung zu konfigurieren:
  2. Klicken Sie auf **Azure Active Directory**.
  3. Klicken Sie auf **Azure AD Connect**.
  4. Wählen Sie **Bereitstellung verwalten (Vorschau)** 
- ![](media/how-to-configure/manage1.png) aus.</br>
+ ![Screenshot mit dem Link „Bereitstellung verwalten (Vorschau)“ aus.](media/how-to-configure/manage1.png)</br>
  5.  Klicken Sie auf **Neue Konfiguration**
- ![](media/tutorial-single-forest/configure1.png).</br>
+ ![Screenshot des Bildschirms „Azure AD-Bereitstellung (Vorschau)“ mit hervorgehobenem Link „Neue Konfiguration“.](media/tutorial-single-forest/configure1.png)</br>
  6.  Geben Sie im Konfigurationsbildschirm eine **E-Mail-Adresse für Benachrichtigungen** ein, verschieben Sie den Selektor auf **Aktivieren**, und klicken Sie auf **Speichern**.
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![Screenshot des Bildschirms „Konfigurieren“ mit ausgefüllter Benachrichtigungs-E-Mail und ausgewählter Option „Aktivieren“](media/tutorial-single-forest/configure2.png)</br>
  7. Wählen Sie unter **Konfigurieren** die Option **Alle Benutzer** aus, um den Bereich der Konfigurationsregel zu ändern.
- ![](media/how-to-configure/scope2.png)</br>
+ ![Screenshot des Bildschirms „Konfigurieren“, in dem neben „Bereichsbenutzer“ die Option „Alle Benutzer“ hervorgehoben ist](media/how-to-configure/scope2.png)</br>
  8. Ändern Sie auf der rechten Seite den Bereich, sodass er die gerade erstellte Organisationseinheit „OU=CPUsers,DC=contoso,DC=com“ enthält.
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![Screenshot des Bildschirms „Bereichsbenutzer“, in dem der in die von Ihnen erstellte OE geänderte Bereich hervorgehoben ist](media/tutorial-existing-forest/scope2.png)</br>
  9.  Klicken Sie auf **Fertig** und dann auf **Speichern**.
  10. Der Bereich sollte nun auf eine Organisationseinheit festgelegt sein. 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ ![Screenshot des Bildschirms „Konfigurieren“, in dem neben „Bereichsbenutzer“ die Option „1 Organisationseinheit“ hervorgehoben ist](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Überprüfen, ob Benutzer durch die Cloudbereitstellung bereitgestellt werden

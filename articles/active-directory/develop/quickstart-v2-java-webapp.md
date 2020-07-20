@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: e13d5f3421f3c0d4f3e14da29581ca585e7f9438
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536113"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145851"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App
 
@@ -56,7 +56,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 >    - Wählen Sie **Registrieren**.
 > 1. Suchen Sie auf der Seite **Übersicht** die Werte **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** der Anwendung. Kopieren Sie diese Werte für später.
 > 1. Wählen Sie im Menü die Option **Authentifizierung** aus, und fügen Sie anschließend folgende Informationen hinzu:
->    - Fügen Sie die Plattformkonfiguration **Web** hinzu.  Fügen Sie `https://localhost:8080/msal4jsample/secure/aad` und `https://localhost:8080/msal4jsample/graph/me` als **Umleitungs-URIs** hinzu.
+>    - Fügen Sie die Plattformkonfiguration **Web** hinzu.  Fügen Sie `https://localhost:8443/msal4jsample/secure/aad` und `https://localhost:8443/msal4jsample/graph/me` als **Umleitungs-URIs** hinzu.
 >    - Wählen Sie **Speichern** aus.
 > 1. Wählen Sie im Menü **Certificates & secrets** (Zertifikate und Geheimnisse) aus, und klicken Sie im Abschnitt **Geheime Clientschlüssel** auf **Neuer geheimer Clientschlüssel**:
 >
@@ -70,7 +70,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 >
 > Damit das Codebeispiel in dieser Schnellstartanleitung funktioniert, sind folgende Schritte erforderlich:
 >
-> 1. Fügen Sie Antwort-URLs als `https://localhost:8080/msal4jsample/secure/aad` und `https://localhost:8080/msal4jsample/graph/me` hinzu.
+> 1. Fügen Sie Antwort-URLs als `https://localhost:8443/msal4jsample/secure/aad` und `https://localhost:8443/msal4jsample/graph/me` hinzu.
 > 1. Erstellen Sie einen geheimen Clientschlüssel.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Make these changes for me]() (Diese Änderungen für mich vornehmen)
@@ -115,8 +115,8 @@ Für dieses Beispiel benötigen Sie Folgendes:
 >    aad.clientId=Enter_the_Application_Id_here
 >    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 >    aad.secretKey=Enter_the_Client_Secret_Here
->    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
->    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.redirectUriSignin=https://localhost:8443/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
 > Hierbei gilt:
@@ -149,11 +149,11 @@ Sie können das Projekt entweder direkt über Ihre IDE ausführen, indem Sie den
 
 ##### <a name="running-from-ide"></a>Ausführen per IDE
 
-Wenn Sie die Webanwendung über eine IDE ausführen möchten, klicken Sie auf „Ausführen“, und navigieren Sie zur Startseite des Projekts. In diesem Beispiel lautet die Standard-URL der Startseite https://localhost:8080.
+Wenn Sie die Webanwendung über eine IDE ausführen möchten, klicken Sie auf „Ausführen“, und navigieren Sie zur Startseite des Projekts. In diesem Beispiel lautet die Standard-URL der Startseite https://localhost:8443.
 
 1. Wählen Sie auf der ersten Seite die Schaltfläche **Anmelden** aus, um den Benutzer zu Azure Active Directory umzuleiten und zur Eingabe der Anmeldeinformationen aufzufordern.
 
-1. Nach Abschluss der Benutzerauthentifizierung wird der Benutzer zu *https://localhost:8080/msal4jsample/secure/aad* umgeleitet. Der Benutzer ist nun angemeldet, und auf der Seite werden Informationen zum angemeldeten Konto angezeigt. Auf der Beispielbenutzeroberfläche stehen folgende Schaltflächen zur Verfügung:
+1. Nach Abschluss der Benutzerauthentifizierung wird der Benutzer zu *https://localhost:8443/msal4jsample/secure/aad* umgeleitet. Der Benutzer ist nun angemeldet, und auf der Seite werden Informationen zum angemeldeten Konto angezeigt. Auf der Beispielbenutzeroberfläche stehen folgende Schaltflächen zur Verfügung:
     - *Sign Out* (Abmelden): Meldet den aktuellen Benutzer von der Anwendung ab und leitet ihn zur Startseite um.
     - *Show User Info* (Benutzerinformationen anzeigen): Ruft ein Token für Microsoft Graph ab und ruft Microsoft Graph mit einer Anforderung auf, die das Token enthält, woraufhin grundlegende Informationen zum angemeldeten Benutzer zurückgegeben werden.
 
@@ -163,15 +163,6 @@ Wenn Sie das Webbeispiel in Tomcat bereitstellen möchten, müssen Sie einige Ä
 
 1. Öffnen Sie „ms-identity-java-webapp/pom.xml“.
     - Fügen Sie `<packaging>war</packaging>` unter `<name>msal-web-sample</name>` hinzu.
-    - Fügen Sie diese Abhängigkeit hinzu:
-
-         ```xml
-         <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-          <scope>provided</scope>
-         </dependency>
-         ```
 
 2. Öffnen Sie „ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication“.
 
@@ -199,13 +190,26 @@ Wenn Sie das Webbeispiel in Tomcat bereitstellen möchten, müssen Sie einige Ä
     }
    ```
 
-3. Öffnen Sie eine Eingabeaufforderung, navigieren Sie zum Stammverzeichnis des Projekts, und führen Sie `mvn package` aus.
+3.   Der HTTP-Standardport von Tomcat ist 8080. Es wird jedoch eine HTTPS-Verbindung über Port 8443 benötigt. Gehen Sie wie folgt vor, um dies zu konfigurieren:
+        - Öffnen Sie „tomcat/conf/server.xml“.
+        - Suchen Sie nach dem Tag `<connector>`, und ersetzen Sie den vorhandenen Connector durch Folgendes:
+        ```
+        <Connector
+                   protocol="org.apache.coyote.http11.Http11NioProtocol"
+                   port="8443" maxThreads="200"
+                   scheme="https" secure="true" SSLEnabled="true"
+                   keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
+                   clientAuth="false" sslProtocol="TLS"/>
+        ``` 
+       
+4. Öffnen Sie eine Eingabeaufforderung, wechseln Sie zum Stammordner dieses Beispiels (in dem sich die Datei „pom.xml“ befindet), und führen Sie `mvn package` aus, um das Projekt zu erstellen.
     - Dadurch wird eine Datei namens `msal-web-sample-0.1.0.war` im Verzeichnis „/targets“ generiert.
-    - Benennen Sie die Datei in `ROOT.war` um.
+    - Benennen Sie die Datei in `msal4jsample.war` um.
     - Stellen Sie diese WAR-Datei mithilfe von Tomcat oder einer beliebigen anderen J2EE-Containerlösung bereit.
-        - Zur Bereitstellung im Tomcat-Container kopieren Sie die WAR-Datei in den Ordner „webapps“ unter Ihrer Tomcat-Installation und starten dann den Tomcat-Server.
+        - Um die Bereitstellung vorzunehmen, kopieren Sie die Datei „msal4jsample.war“ in das Verzeichnis `/webapps/` Ihrer Tomcat-Installation, und starten Sie dann den Tomcat-Server.
 
-Diese WAR-Datei wird automatisch unter https://localhost:8080/ gehostet.
+5. Navigieren Sie nach der Bereitstellung in Ihrem Browser zu https://localhost:8443/msal4jsample.
+
 
 > [!IMPORTANT]
 > Für die Anwendung in dieser Schnellstartanleitung wird ein Clientgeheimnis verwendet, um sich selbst als vertraulicher Client zu identifizieren. Da der geheime Clientschlüssel Ihren Projektdateien als Nur-Text hinzugefügt wird, empfiehlt es sich aus Sicherheitsgründen, ein Zertifikat anstelle eines Clientgeheimnisses zu verwenden, bevor die Anwendung in der Produktion genutzt wird. Weitere Informationen zur Verwendung eines Zertifikats finden Sie unter [Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).

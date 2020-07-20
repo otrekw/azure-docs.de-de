@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026830"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232388"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Akamai
 
@@ -61,13 +61,13 @@ Akamai EAA wird als einzelne Anwendung in der Azure AD-Instanz konfiguriert. D
 
 **Vorteile:**
 
-• Der IDP muss lediglich einmal konfiguriert werden.
+* Der IDP muss nur einmal konfiguriert werden.
 
 **Nachteile:**
 
-• Benutzer haben letztendlich zwei Anwendungsportale.
+* Benutzer verfügen über zwei Anwendungsportale.
 
-• Abdeckung aller Anwendungen durch eine einzelne allgemeine Richtlinie für bedingten Zugriff.
+* Abdeckung aller Anwendungen durch eine einzelne allgemeine Richtlinie für bedingten Zugriff.
 
 ![Integrationsszenario 1](./media/header-akamai-tutorial/scenario1.png)
 
@@ -77,13 +77,14 @@ Die Akamai EAA-Anwendung wird individuell im Azure AD-Portal eingerichtet. Der
 
 **Vorteile:**
 
-• Sie können individuelle Richtlinien für bedingten Zugriff definieren.
+* Sie können individuelle Richtlinien für bedingten Zugriff definieren.
 
-• Alle Apps werden im O365-Waffel-Menü und im Bereich „myApps.microsoft.com“ dargestellt.
+* Alle Apps werden im Office 365-Waffelmenü und im Bereich „myApps.microsoft.com“ dargestellt.
+
 
 **Nachteile:**
 
-• Es müssen mehrere IDPs konfiguriert werden.
+* Sie müssen mehrere IDPs konfigurieren.
 
 ![Integrationsszenario 2](./media/header-akamai-tutorial/scenario2.png)
 
@@ -450,7 +451,7 @@ Klicken Sie auf „Save and go to Deployment“ (Speichern und zur Bereitstellun
 
 ### <a name="kerberos-authentication"></a>Kerberos-Authentifizierung
 
-Im folgenden Beispiel wird ein interner Webserver ([http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/)) veröffentlicht und einmaliges Anmelden mit KCD aktiviert:
+Im folgenden Beispiel wird ein interner Webserver (<code>http://frp-app1.superdemo.live</code>) veröffentlicht und einmaliges Anmelden mit KCD aktiviert.
 
 #### <a name="general-tab"></a>Registerkarte Allgemein
 

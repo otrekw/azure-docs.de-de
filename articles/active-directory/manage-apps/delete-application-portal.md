@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d12538fce5ccc3905ea1170fc1a8324309004f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955997"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223906"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)
 
-In dieser Schnellstartanleitung wird das Azure-Portal verwendet, um eine Anwendung zu löschen, die Ihrem Azure AD-Mandanten hinzugefügt wurde.
+In dieser Schnellstartanleitung wird das Azure-Portal verwendet, um eine Anwendung zu löschen, die Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) hinzugefügt wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,21 +28,21 @@ Zum Löschen einer Anwendung von Ihrem Azure AD-Mandanten benötigen Sie Folgend
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
-- (Optional: Durcharbeitung von [Anzeigen Ihrer Apps](view-applications-portal.md).)
-- (Optional: Durcharbeitung von [Hinzufügen einer App](add-application-portal.md).)
-- (Optional: Durcharbeitung von [Konfigurieren einer App](add-application-portal-configure.md).)
-- (Optional: Durcharbeitung von [Einrichten des einmaligen Anmeldens](add-application-portal-setup-sso.md).)
+- Optional: Gehen Sie den Schnellstart [Anzeigen Ihrer Apps](view-applications-portal.md) durch.
+- Optional: Gehen Sie den Schnellstart [Hinzufügen einer App](add-application-portal.md) durch.
+- Optional: Gehen Sie den Schnellstart [Konfigurieren einer App](add-application-portal-configure.md) durch.
+- Optional: Gehen Sie den Schnellstart [Einrichten des einmaligen Anmeldens](add-application-portal-setup-sso.md) durch.
 
 >[!IMPORTANT]
->Wir empfehlen Ihnen, zum Testen der Schritte in dieser Schnellstartanleitung keine Produktionsumgebung zu verwenden.
+>Verwenden Sie zum Testen der in dieser Schnellstartanleitung aufgeführten Schritte keine Produktionsumgebung.
 
 ## <a name="delete-an-application-from-your-azure-ad-tenant"></a>Löschen einer Anwendung von Ihrem Azure AD-Mandanten
 
 Löschen Sie eine Anwendung wie folgt von Ihrem Azure AD-Mandanten:
 
-1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** und dann die Anwendung aus, die Sie löschen möchten. In diesem Fall löschen wir die Anwendung „GitHub_test“, die wir in der vorherigen Schnellstartanleitung hinzugefügt haben.
-2. Wählen Sie im Abschnitt „Verwalten“ des Navigationsbereichs die Option **Eigenschaften** aus.
-3. Wählen Sie „Löschen“ und dann „Ja“ aus, um zu bestätigen, dass Sie die App von Ihrem Azure AD-Mandanten löschen möchten.
+1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu löschenden Anwendung, und wählen Sie diese aus. In diesem Fall möchten wir die Anwendung **GitHub_test** löschen, die wir im vorherigen Schnellstart hinzugefügt haben.
+1. Wählen Sie im linken Bereich im Abschnitt **Verwalten** die Option **Eigenschaften** aus.
+1. Wählen Sie **Löschen** aus, und wählen Sie dann **Ja** aus, um zu bestätigen, dass die App aus Ihrem Azure AD-Mandanten gelöscht werden soll.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
