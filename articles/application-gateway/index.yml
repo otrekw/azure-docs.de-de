@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 03/24/2020
-  ms.openlocfilehash: aaa1774b7680f87e9c3dab13dbe53a627f3890bf
-  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+  ms.openlocfilehash: 63000da3b1d3e69c2a0c0a1d10267e18da199ffa
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80245734"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86524759"
 landingContent:
 - title: Informationen zu Application Gateway
   linkLists:
@@ -71,6 +71,18 @@ landingContent:
     links:
     - text: Erstellen eines Eingangscontrollers für AKS
       url: ingress-controller-install-new.md
+- title: Erneutes Generieren von HTTP-Headern und einer URL mithilfe von Application Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Erneutes Generieren von HTTP-Headern und einer URL mithilfe von Application Gateway
+      url: rewrite-http-headers-url.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erneutes Generieren von HTTP-Headern über das Azure-Portal
+      url: rewrite-http-headers-portal.md
+    - text: Erneutes Generieren einer URL und Abfragezeichenfolge über das Azure-Portal
+      url: rewrite-url-portal.md
 - title: Problembehandlung bei Application Gateway
   linkLists:
   - linkListType: overview

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 774b114a47958b173f891ed13d423f9b051ee37c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610539"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247776"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die wesentlichen Entscheidungspunkte für die einzelnen
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>Anzahl und Eigenschaften der Clusterknotentypen
 
-Ein *Knotentyp* definiert die Größe, Anzahl und Eigenschaften der Knoten (virtuelle Computer) im Cluster. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird einer [VM-Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) zugeordnet.
+Ein *Knotentyp* definiert die Größe, Anzahl und Eigenschaften der Knoten (virtuelle Computer) im Cluster. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird einer [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) zugeordnet.
 
 Da jeder Knotentyp eine separate Skalierungsgruppe ist, ist es möglich, diesen einzeln zentral hoch- oder herunterzuskalieren. Bei jedem Typ können unterschiedliche Ports geöffnet sein, und die Typen weisen verschiedene Kapazitätsmetriken auf. Weitere Informationen zur Beziehung zwischen Knotentypen und VM-Skalierungsgruppen finden Sie im Artikel zu [Service Fabric-Clusterknotentypen](service-fabric-cluster-nodetypes.md).
 
@@ -34,7 +34,7 @@ Für jeden Cluster muss ein **primärer Knotentyp** festgelegt werden, der kriti
 
 **Nicht primäre Knotentypen** können verwendet werden, um Anwendungsrollen (wie *Front-End-* oder *Back-End-Dienste*) zu definieren und die Dienste in einem Cluster physisch zu isolieren. Service Fabric-Cluster können null oder mehr nicht primäre Knotentypen aufweisen.
 
-Der primäre Knotentyp wird mit dem Attribut `isPrimary` unter der Knotentypdefinition in der Azure Resource Manager-Vorlage konfiguriert. Die vollständige Liste der Knotentypeigenschaften finden Sie unter [NodeTypeDescription-Objekt](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object). Öffnen Sie eine *AzureDeploy.json*-Datei aus den [Service Fabric-Clusterbeispielen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/), und suchen Sie mit *Auf Seite suchen* nach dem `nodetTypes`-Objekt, um die Verwendung zu testen.
+Der primäre Knotentyp wird mit dem Attribut `isPrimary` unter der Knotentypdefinition in der Azure Resource Manager-Vorlage konfiguriert. Die vollständige Liste der Knotentypeigenschaften finden Sie unter [NodeTypeDescription-Objekt](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object). Öffnen Sie eine *AzureDeploy.json*-Datei aus den [Service Fabric-Clusterbeispielen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/), und suchen Sie mit *Auf Seite suchen* nach dem `nodetTypes`-Objekt, um die Verwendung zu testen.
 
 ### <a name="node-type-planning-considerations"></a>Aspekte der Knotentypplanung
 
@@ -79,7 +79,7 @@ In der folgenden Tabelle werden die Dauerhaftigkeitsgrade für Service Fabric so
 > Beim Dauerhaftigkeitsgrad „Bronze“ sind keine automatischen Betriebssystemupgrades verfügbar. Während die [Anwendung zur Patchorchestrierung](service-fabric-patch-orchestration-application.md) (nur für nicht in Azure gehostete Cluster) für den Dauerhaftigkeitsgrad Silber oder höher *nicht empfohlen* wird, stellt diese die einzige Möglichkeit dar, Windows-Updates unter Einbeziehung von Service Fabric-Upgradedomänen zu automatisieren.
 
 > [!IMPORTANT]
-> Unabhängig vom Dauerhaftigkeitsgrad wird der Cluster durch die Ausführung einer [Belegungsfreigabe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) in einer VM-Skalierungsgruppe zerstört.
+> Unabhängig vom Dauerhaftigkeitsgrad wird der Cluster durch die Ausführung einer [Belegungsfreigabe](/rest/api/compute/virtualmachinescalesets/deallocate) in einer VM-Skalierungsgruppe zerstört.
 
 ### <a name="bronze"></a>Bronze
 

@@ -3,12 +3,12 @@ title: Hochskalieren eines Azure Service Fabric-Knotentyps
 description: In diesem Artikel erfahren Sie, wie ein Service Fabric-Cluster durch Hinzufügen einer VM-Skalierungsgruppe skaliert wird.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42e33fa87b6cf7966368481ef6d3920511919e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610692"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260467"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Hochskalieren des primären Knotentyps eines Service Fabric-Clusters
 Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-Clusters durch Erhöhen der Ressourcen des virtuellen Computers hochskalieren können. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -49,7 +49,7 @@ Melden Sie sich anschließend bei Ihrem Azure-Konto an.
 Login-AzAccount -SubscriptionId "<your subscription ID>"
 ```
 
-Dieses Tutorial führt Sie schrittweise durch das Szenario der Erstellung eines selbstsignierten Zertifikats. Wenn Sie ein vorhandenes Zertifikat aus Azure Key Vault verwenden möchten, überspringen Sie den folgenden Schritt und führen stattdessen die Schritte unter [Verwenden eines vorhandenen Zertifikats zum Bereitstellen des Clusters](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster) aus.
+Dieses Tutorial führt Sie schrittweise durch das Szenario der Erstellung eines selbstsignierten Zertifikats. Wenn Sie ein vorhandenes Zertifikat aus Azure Key Vault verwenden möchten, überspringen Sie den folgenden Schritt und führen stattdessen die Schritte unter [Verwenden eines vorhandenen Zertifikats zum Bereitstellen des Clusters](./upgrade-managed-disks.md#use-an-existing-certificate-to-deploy-the-cluster) aus.
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Generieren eines selbstsignierten Zertifikats und Bereitstellen des Clusters
 
@@ -251,4 +251,3 @@ Der primäre Knotentyp des Clusters wurde jetzt aktualisiert. Stellen Sie sicher
 * [Skalieren eines Service Fabric-Clusters](service-fabric-tutorial-scale-cluster.md) (horizontal hoch oder herunter)
 * [Programmgesteuertes Skalieren eines Service Fabric-Clusters](service-fabric-cluster-programmatic-scaling.md) (per Azure Fluent-Compute-SDK)
 * [Horizontales Herunter- oder Hochskalieren eines eigenständigen Clusters](service-fabric-cluster-windows-server-add-remove-nodes.md)
-
