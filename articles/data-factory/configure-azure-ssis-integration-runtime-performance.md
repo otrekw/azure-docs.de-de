@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 36662a0089fef34a539788cfac667b5086a10c78
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255533"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurieren von Azure-SSIS Integration Runtime für hohe Leistung
 
@@ -150,7 +150,7 @@ Richtlinien für das Festlegen des passenden Werts für die Eigenschaft **AzureS
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** ist der Tarif für die SSIS-Katalogdatenbank (SSIS Catalog Database, SSISDB) in einer Azure SQL-Datenbank. Diese Einstellung beeinflusst die maximale Anzahl von Workern in der IR-Instanz, die Geschwindigkeit beim Hinzufügen einer Paketausführung zur Warteschlange und die Geschwindigkeit beim Laden des Ausführungsprotokolls.
+**SSISDBPricingTier** ist der Tarif für die SSIS-Katalogdatenbank (SSIS Catalog Database, SSISDB) in Azure SQL-Datenbank. Diese Einstellung beeinflusst die maximale Anzahl von Workern in der IR-Instanz, die Geschwindigkeit beim Hinzufügen einer Paketausführung zur Warteschlange und die Geschwindigkeit beim Laden des Ausführungsprotokolls.
 
 -   Wenn die Geschwindigkeit beim Hinzufügen einer Paketausführung zur Warteschlange und beim Laden des Ausführungsprotokolls für Sie nicht relevant ist, können Sie den niedrigsten Datenbanktarif verwenden. Azure SQL-Datenbank mit Basic-Tarif unterstützt acht Worker in einer Integration Runtime-Instanz.
 

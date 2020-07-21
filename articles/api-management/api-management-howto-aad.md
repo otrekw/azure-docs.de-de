@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 4a2038b44cf55f2a322b6bda202b8c33372f3716
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808294"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -88,7 +88,7 @@ Wenn Sie in APIM eine externe Azure AD-Gruppe hinzufügen möchten, müssen Sie 
 
 1. Wechseln Sie zurück zu Ihrer App-Registrierung, die im vorherigen Abschnitt erstellt wurde.
 2. Wählen Sie **API-Berechtigungen** aus, und klicken Sie dann auf **+Berechtigung hinzufügen**. 
-3. Wählen Sie im Bereich **API-Berechtigungen anfordern**  die Registerkarte **Microsoft-APIs** und dann die Kachel **Microsoft Graph** aus. Wählen Sie **Anwendungsberechtigungen** aus, suchen Sie nach **Verzeichnis**, und wählen Sie dann die Berechtigung **Directory.Read.All** aus. 
+3. Wählen Sie im Bereich **API-Berechtigungen anfordern**  die Registerkarte **Microsoft-APIs** aus, scrollen Sie nach unten, und wählen Sie dann die Kachel **Azure Active Directory Graph** aus. Wählen Sie **Anwendungsberechtigungen** aus, suchen Sie nach **Verzeichnis**, und wählen Sie dann die Berechtigung **Directory.Read.All** aus. 
 4. Klicken Sie unten im Bereich auf **Berechtigungen hinzufügen** und dann auf **Administratorzustimmung für {Name des Mandanten} erteilen**, damit Sie allen Benutzern in diesem Verzeichnis Zugriff gewähren. 
 
 Jetzt können Sie externe Azure AD-Gruppen über die Registerkarte **Gruppen** Ihrer API Management-Instanz hinzufügen.
@@ -103,7 +103,7 @@ Nachdem Sie eine externe Azure AD-Gruppe hinzugefügt haben, können Sie ihre Ei
  
 Benutzer aus der konfigurierten Azure AD-Instanz können sich jetzt beim Entwicklerportal anmelden. Sie können beliebige Gruppen anzeigen und abonnieren, die für sie sichtbar sind.
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> Entwicklerportal – Hinzufügen der Azure AD-Kontoauthentifizierung
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a> Entwicklerportal – Hinzufügen der Azure AD-Kontoauthentifizierung
 
 Im Entwicklerportal ist die Anmeldung bei AAD über das Widget **Schaltfläche „Anmelden“: OAuth** möglich. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
 

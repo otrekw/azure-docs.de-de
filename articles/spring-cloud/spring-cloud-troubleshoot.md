@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791655"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Behandlung von allgemeinen Problemen mit Azure Spring Cloud
 
@@ -198,7 +198,9 @@ Suchen Sie den untergeordneten Knoten mit dem Namen `systemEnvironment`.  Dieser
 
 Navigieren Sie zu **App-Verwaltung**, um sicherzustellen, dass für die Anwendung die Status _Wird ausgeführt_ und _UP_ (AKTIV) festgelegt ist.
 
-Wenn Sie Metriken von _JVM_, aber keine Metriken von _Tomcat_ sehen können, sollten Sie überprüfen, ob die Abhängigkeit `spring-boot-actuator` in Ihrem Anwendungspaket aktiviert und der Startvorgang erfolgreich ist.
+Überprüfen Sie, ob _JMX_ in Ihrem Anwendungspaket aktiviert ist. Diese Funktion kann mit der-Konfigurationseigenschaft `spring.jmx.enabled=true` aktiviert werden.  
+
+Überprüfen Sie, ob die Abhängigkeit `spring-boot-actuator` in Ihrem Anwendungspaket aktiviert ist und der Startvorgang erfolgreich ausgeführt werden kann.
 
 ```xml
 <dependency>

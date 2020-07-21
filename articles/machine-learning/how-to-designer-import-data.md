@@ -1,23 +1,23 @@
 ---
 title: Daten importieren
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning-Designer importieren.
+description: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in den Azure Machine Learning-Designer importieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644566"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610947"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Importieren Ihrer Daten in Azure Machine Learning-Designer (Preview)
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Importieren von Daten in den Azure Machine Learning-Designer (Vorschauversion)
 
 In diesem Artikel erfahren Sie, wie Sie Ihre eigenen Daten in den Designer importieren, um benutzerdefinierte Lösungen zu erstellen. Es gibt zwei Möglichkeiten, wie Sie Daten in den Designer importieren können: 
 
@@ -89,6 +89,10 @@ Der Designer verwendet einen internen Datentyp, um Daten zwischen Modulen zu üb
 ## <a name="data-constraints"></a>Dateneinschränkungen
 
 Die Module im Designer sind durch die Größe des Computeziels begrenzt. Für größere Datasets sollten Sie eine größere Azure Machine Learning-Computeressource verwenden. Weitere Informationen zum Machine Learning-Computing finden Sie unter [Was sind Computeziele in Azure Machine Learning?](concept-compute-target.md#azure-machine-learning-compute-managed).
+
+## <a name="access-data-in-a-virtual-network"></a>Zugreifen auf Daten in einem virtuellen Netzwerk
+
+Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie zusätzliche Konfigurationsschritte ausführen, um die Daten im Designer visuell darzustellen. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in virtuellen Netzwerken finden Sie unter [Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken](how-to-enable-virtual-network.md#machine-learning-studio).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

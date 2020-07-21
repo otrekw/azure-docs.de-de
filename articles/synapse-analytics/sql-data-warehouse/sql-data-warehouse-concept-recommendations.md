@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 04/30/2020
+ms.subservice: sql-dw
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 17b8ce04cb5029d1bea11344617bf65718ca579c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653030"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482852"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL-Empfehlungen
 
@@ -70,3 +70,7 @@ Wenn Sie über ein großes Workingset verfügen, kann es zu einem niedrigen Proz
 ## <a name="tempdb-contention"></a>TempDB-Konflikt
 
 Die Abfrageleistung kann sich bei hohen tempdb-Konflikten verschlechtern.  Tempdb-Konflikte können über benutzerdefinierte temporäre Tabellen auftreten, oder wenn eine große Menge von Datenverschiebungen vorkommen. In diesem Szenario können Sie für höhere tempdb-Zuordnungen skalieren und [Ressourcenklassen sowie die Workloadverwaltung konfigurieren](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management), um mehr Arbeitsspeicher für Ihre Abfragen bereitzustellen. 
+
+## <a name="data-loading-misconfiguration"></a>Fehlkonfiguration beim Laden von Daten
+
+Sie sollten Daten immer aus einem Speicherkonto in derselben Region wie der SQL-Pool laden, um die Latenz zu minimieren. Verwenden Sie die [COPY-Anweisung für hohen Durchsatz bei der Datenerfassung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest), und teilen Sie Ihre Stagingdateien in Ihrem Speicherkonto auf, um den Durchsatz zu maximieren. Wenn Sie die COPY-Anweisung nicht verwenden können, können Sie für einen besseren Durchsatz die SqlBulkCopy-API oder bcp mit einer hohen Batchgröße verwenden. Weitere Anleitungen zum Laden von Daten finden Sie in der folgenden [Dokumentation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data). 

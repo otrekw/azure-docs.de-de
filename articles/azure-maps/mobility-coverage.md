@@ -1,28 +1,27 @@
 ---
-title: Mobilitätsabdeckung (Verkehr) | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie mehr über die Mobilitätsabdeckung in Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
-ms.date: 06/05/2019
+title: Mobilitätsabdeckung (Transit)
+description: In diesem Artikel erfahren Sie mehr über die Abdeckung des öffentlichen Nahverkehrs im Microsoft Azure Maps-Mobilitätsdienst.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: db53e09957b5907e9b742c264b6a41f51041df1c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 2959a930ef2b3683cbd822eaee61a037fa0e9e29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673641"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Mobilitätsabdeckung in Azure Maps
 
-Azure Maps bietet einen [Mobilitätsdienst](https://aka.ms/AzureMapsMobilityService). Mit dem Mobilitätsdienst wird die Entwicklungszeit bei Anwendungen verbessert, die über Features für den öffentlichen Nahverkehr oder für Bike-Sharing und Scooter-Sharing verfügen. Funktionen für den öffentlichen Nahverkehr umfassen die Suche nach Bahnhöfen in der Nähe sowie nach bestimmten Haltestellen und Linien öffentlicher Verkehrsmittel. Außerdem können Fahrplaninformationen und Ankunftszeiten öffentlicher Verkehrsmittel in Echtzeit abgerufen sowie Haltestellen und Streckenführung angezeigt werden. Der Mobility Service gibt Echtzeit- und statische Verfügbarkeitsinformationen für Carsharing-Fahrzeuge, Leihfahrräder, Leih-Scooter usw. zurück. Darüber hinaus bietet der Mobilitätsdienst Routenplanungsfunktionen mit Optionen für eine multimodale Routenplanung. Bei der multimodalen Routenplanung werden Radfahren, Ride-Hailing und öffentliche Verkehrsmittel in einer Fahrt berücksichtigt. Benutzer können auf detaillierte und multimodale Schritt-für-Schritt-Routen und Statusmeldungen zum Betrieb zugreifen.
+Der [Mobilitätsdienst](https://aka.ms/AzureMapsMobilityService) für Azure Maps verbessert die Entwicklungszeit für Anwendungen mit Features für den öffentlichen Nahverkehr, z. B. Verkehrsroutenplanung und Suche nach nahe gelegenen Haltestellen des öffentlichen Nahverkehrs. Benutzer können ausführliche Informationen zu Haltestellen, Linien und Fahrplänen abrufen. Der Mobilitätsdienst ermöglicht Benutzern außerdem das Abrufen von Geometrien für Haltestellen und Fahrpläne, Warnungen für Haltestellen, Linien und Betriebsbereiche sowie Ankunfts- und Betriebsbenachrichtigungen in Echtzeit für den öffentlichen Nahverkehr. Darüber hinaus bietet der Mobilitätsdienst Routenplanungsfunktionen mit Optionen für eine multimodale Routenplanung. Bei der multimodalen Routenplanung werden Optionen für Fußgänger und Fahrradfahrer sowie öffentliche Verkehrsmittel für eine Strecke berücksichtigt. Benutzer können auf detaillierte und multimodale ausführliche Routen zugreifen. 
 
-Azure Maps verfügt nicht für alle Städte und Länder bzw. Regionen über den gleichen Umfang an Informationen und die gleiche Genauigkeit. Die Möglichkeit, Daten zum öffentlichen Nahverkehr abzurufen, hängt von der Stadt ab. Außerdem umfassen die Daten möglicherweise nicht alle öffentlichen Nahverkehrsoptionen und relevanten Stellen.
+Azure Maps bietet nicht für alle Städte und Länder/Regionen den gleichen Umfang an Informationen und die gleiche Genauigkeit. Die Möglichkeit, Daten zum öffentlichen Nahverkehr abzurufen, ist vom Stadtbereich abhängig. Außerdem umfassen die Kartendaten möglicherweise nicht alle Optionen des öffentlichen Nahverkehrs und Betreiber in diesem Stadtbereich.
 
 In der folgenden Tabelle finden Sie Informationen zum Mobility Service von Azure Maps.
-
 
 | Symbol | Bedeutung |
 |--------|---------|

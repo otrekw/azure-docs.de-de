@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678765"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Das Herunterfahren einer Azure-Windows-VM bleibt bei „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ hängen.
 
@@ -43,25 +43,25 @@ Windows verwendet den Herunterfahren-Prozess, um Systemwartungsvorgänge auszuf�
 
 Verwenden Sie die [serielle Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows), um die folgenden Schritte auszuführen:
 
-1. Öffnen Sie eine administrative PowerShell-Eingabeaufforderung und ermitteln Sie den Dienst, der beim Beenden hängengeblieben ist.
+1. Öffnen Sie eine administrative PowerShell-Eingabeaufforderung, und ermitteln Sie den Dienst, der beim Beenden nicht mehr reagiert.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. Ermitteln Sie an einer administrativen Eingabeaufforderung die PID des hängengebliebenen Diensts.
+2. Ermitteln Sie an einer administrativen Eingabeaufforderung die PID des nicht mehr reagierenden Diensts.
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Fordern Sie ein Speicherabbild des hängengebliebenen Prozesses an<STOPPING SERVICE>.
+3. Fordern Sie ein Speicherabbild des nicht mehr reagierenden Prozesses an. <STOPPING SERVICE>
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. Beenden Sie nun den hängengebliebenen Prozess, um den Herunterfahren-Prozess zu entsperren.
+4. Beenden Sie nun den nicht mehr reagierenden Prozess, um den Vorgang zum Herunterfahren zu entsperren.
 
    ``
    taskkill /PID <PID> /t /f

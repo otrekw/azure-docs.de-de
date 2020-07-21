@@ -2,14 +2,14 @@
 title: 'Azure Blockchain Service: Konfigurieren des Azure Active Directory-Zugriffs'
 description: Konfigurieren des Azure Blockchain Service mit Azure Active Directory-Zugriff
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208772"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Konfigurieren des Azure Active Directory-Zugriffs für Azure Blockchain Service
 
@@ -63,7 +63,7 @@ Folgen Sie dann den Anweisungen im Abschnitt „Schnellstart“ in der **readme*
 
 ### <a name="connect-using-an-azure-ad-user-account"></a>Herstellen einer Verbindung mit einem Azure AD-Konto
 
-1. Führen Sie den folgenden Befehl aus, um die Authentifizierung mit einem Azure AD-Benutzerkonto durchzuführen. Ersetzen Sie \<myAADDirectory\> durch die Azure AD-Domäne. Beispiel: `yourdomain.onmicrosoft.com`.
+1. Führen Sie den folgenden Befehl aus, um die Authentifizierung mit einem Azure AD-Benutzerkonto durchzuführen. Ersetzen Sie \<myAADDirectory\> durch eine Azure AD-Domäne. Beispiel: `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
@@ -99,7 +99,7 @@ Weitere Informationen zum Registrieren einer Anwendungs in Azure AD finden Sie u
 
 Für ein mobiles Gerät oder einen textbasierten Browser, bei dem die Popupanzeige der Azure AD-Authentifizierung nicht möglich ist, generiert Azure AD einen Einmalpasscode. Sie können den Passcode kopieren und mit der Azure AD-Authentifizierung in einer anderen Umgebung fortfahren.
 
-Um den Passcode zu generieren, ersetzen Sie **aadauthcode** durch **aaddevice**. Ersetzen Sie \<myAADDirectory\> durch die Azure AD-Domäne. Beispiel: `yourdomain.onmicrosoft.com`.
+Um den Passcode zu generieren, ersetzen Sie **aadauthcode** durch **aaddevice**. Ersetzen Sie \<myAADDirectory\> durch eine Azure AD-Domäne. Beispiel: `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>

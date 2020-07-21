@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 81df4364324b03bb624e051fd71b25f0d6cdb049
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d113d20e87d58bad007a35fce47d597a67849a6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172145"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445201"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung
 Verwaltete Identitäten stellen für Azure-Ressourcen wie Ihre Azure Spring Cloud-Anwendung eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
@@ -53,11 +53,11 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Abrufen von Tokens für Azure-Ressourcen
-Eine App kann mithilfe ihrer verwalteten Identität Token für den Zugriff auf andere durch Azure AD geschützte Ressourcen wie z. B. Azure Key Vault abrufen. Diese Tokens stellen die Anwendung dar, die auf die Ressource zugreift, keinen bestimmten Benutzer der Anwendung.
+Eine App kann mithilfe ihrer verwalteten Identität Token für den Zugriff auf andere durch Azure Active Directory geschützte Ressourcen wie z. B. Azure Key Vault abrufen. Diese Tokens stellen die Anwendung dar, die auf die Ressource zugreift, keinen bestimmten Benutzer der Anwendung.
 
 Sie müssen die [Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal). Wenn Sie beispielsweise ein Token für den Zugriff auf Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Azure Active Directory-Token unterstützen, finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication).
 
-Azure Spring Cloud und die Azure-VM nutzen den Endpunkt für die Tokenbeschaffung gemeinsam. Im Artikel [Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) finden Sie verschiedene Code- und Skriptbeispiele und Anleitungen zu wichtigen Themen, z. B. zum Umgang mit Tokenablauf und HTTP-Fehlern.
+Azure Spring Cloud und die Azure-VM nutzen den Endpunkt für die Tokenbeschaffung gemeinsam. Es wird empfohlen, Token mithilfe des das Java SDK oder von Spring Boot Startern abzurufen.  Im Artikel [Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) finden Sie verschiedene Code- und Skriptbeispiele und Anleitungen zu wichtigen Themen, z. B. zum Umgang mit Tokenablauf und HTTP-Fehlern.
 
 Empfohlen: Verwenden Sie das Java SDK oder Spring Boot Starter, um Tokens abzurufen.  Beispiele finden Sie unter [Nächste Schritte](#next-steps).
 
@@ -82,3 +82,5 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden verwalteter Identitäten mit dem Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [Zugreifen auf Azure Key Vault mit verwalteten Identitäten in Spring Boot Starter](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
+* [Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+

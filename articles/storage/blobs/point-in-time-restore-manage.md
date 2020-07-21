@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445439"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Aktivieren und Verwalten der Point-in-Time-Wiederherstellung für Blockblobs (Vorschau)
 
@@ -30,35 +30,23 @@ Weitere Informationen sowie Informationen zum Registrieren für die Vorschau fin
 
 ## <a name="install-the-preview-module"></a>Installieren des Vorschaumoduls
 
-Um Azure Point-in-Time-Wiederherstellung mit PowerShell zu konfigurieren, müssen Sie zunächst Version [1.14.1-preview](https://www.powershellgallery.com/packages/Az.Storage/1.14.1-preview) des PowerShell-Moduls Az.Storage installieren. Führen Sie zum Installieren des Vorschaumoduls folgende Schritte aus:
+Um Azure Point-in-Time-Wiederherstellung mit PowerShell zu konfigurieren, installieren Sie zunächst Version 1.14.1-preview oder eine spätere Version des Moduls Az.Storage. Die Verwendung der aktuellen Vorschauversion wird empfohlen, die Point-in-Time-Wiederherstellung wird jedoch ab Version 1.14.1-preview unterstützt. Entfernen Sie alle anderen Versionen des Moduls Az.Storage.
 
-1. Deinstallieren Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
+Mit dem folgenden Befehl wird das Modul Az.Storage [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) installiert:
 
-1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
+```powershell
+Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
+```
 
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-
-1. Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster, und öffnen Sie es dann erneut.
-
-1. Installieren Sie die neueste Version von Azure PowerShell:
-
-    ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
-    ```
-
-1. Installieren Sie das Az.Storage-Vorschaumodul:
-
-    ```powershell
-    Install-Module Az.Storage -Repository PSGallery -RequiredVersion 1.14.1-preview -AllowPrerelease -AllowClobber -Force
-    ```
-
+Der obige Befehl erfordert die Installation von Version 2.2.4.1 oder höher von PowerShellGet. So ermitteln Sie, welche Version Sie zurzeit geladen haben
+```powershell
+Get-Module PowerShellGet
+```
 Weitere Informationen zum Installieren von Azure PowerShell finden Sie unter [Installieren von Azure PowerShell mit PowerShellGet](/powershell/azure/install-az-ps).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Aktivieren und Konfigurieren von Point-in-Time-Wiederherstellung
 
-Bevor Sie Point-in-Time-Wiederherstellung aktivieren und konfigurieren, müssen Sie die erforderlichen Komponenten aktivieren: vorläufiges Löschen, Änderungsfeed und Blobversionsverwaltung. Weitere Informationen zum Aktivieren dieser Funktionen finden Sie in den folgenden Artikeln:
+Bevor Sie die Point-in-Time-Wiederherstellung aktivieren und konfigurieren, aktivieren Sie die Voraussetzungen für das Speicherkonto: vorläufiges Löschen, Änderungsfeed und Blobversionsverwaltung. Weitere Informationen zum Aktivieren dieser Funktionen finden Sie in den folgenden Artikeln:
 
 - [Aktivieren von „Vorläufiges Löschen“ für Blobs](soft-delete-enable.md)
 - [Aktivieren und Deaktivieren des Änderungsfeeds](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
@@ -99,7 +87,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Ausführen eines Wiederherstellungsvorgangs
 
-Um einen Wiederherstellungsvorgang zu initiieren, müssen Sie den Befehl Restore-AzStorageBlobRange aufrufen und dabei den Wiederherstellungspunkt als **DateTime**-Wert (in UTC) angeben. Sie können lexikografische Bereiche von Blobs zum Wiederherstellen angeben oder keinen Bereich angeben, um alle Blobs in allen Containern im Speicherkonto wiederherzustellen. Pro Wiederherstellungsvorgang werden bis zu 10 lexikografische Bereiche unterstützt. Der Wiederherstellungsvorgang kann mehrere Minuten dauern.
+Um einen Wiederherstellungsvorgang zu initiieren, rufen Sie den Befehl **Restore-AzStorageBlobRange** auf, und geben Sie dabei den Wiederherstellungspunkt als **DateTime**-Wert in UTC an. Sie können lexikografische Bereiche von Blobs zum Wiederherstellen angeben oder keinen Bereich angeben, um alle Blobs in allen Containern im Speicherkonto wiederherzustellen. Pro Wiederherstellungsvorgang werden bis zu 10 lexikografische Bereiche unterstützt. Seitenblobs und Anfügeblobs sind in der Wiederherstellung nicht enthalten. Der Wiederherstellungsvorgang kann mehrere Minuten dauern.
 
 Beachten Sie die folgenden Regeln, wenn Sie einen Bereich von Blobs für die Wiederherstellung angeben:
 
@@ -115,7 +103,7 @@ Beachten Sie die folgenden Regeln, wenn Sie einen Bereich von Blobs für die Wie
 
 ### <a name="restore-all-containers-in-the-account"></a>Wiederherstellen aller Container im Konto
 
-Wenn Sie alle Container und Blobs im Speicherkonto wiederherstellen möchten, müssen Sie den Befehl Restore-AzStorageBlobRange aufrufen und den `-BlobRestoreRange`-Parameter auslassen. Im folgenden Beispiel wird der Zustand von Containern im Speicherkonto 12 Stunden vor dem aktuellen Zeitpunkt wiederhergestellt:
+Wenn Sie alle Container und Blobs im Speicherkonto wiederherstellen möchten, rufen Sie den Befehl **Restore-AzStorageBlobRange** auf, wobei Sie den Parameter `-BlobRestoreRange` auslassen. Im folgenden Beispiel wird der Zustand von Containern im Speicherkonto 12 Stunden vor dem aktuellen Zeitpunkt wiederhergestellt:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -126,7 +114,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-a-single-range-of-block-blobs"></a>Wiederherstellen eines einzelnen Bereichs von Blockblobs
 
-Um einen Bereich von Blobs wiederherzustellen, müssen Sie den Befehl Restore-AzStorageBlobRange aufrufen und einen lexikografischen Bereich von Container- und Blobnamen für den `-BlobRestoreRange`-Parameter angeben. Der Anfang des Bereichs ist inklusiv, das Ende des Bereichs ist exklusiv.
+Um einen Bereich von Blobs wiederherzustellen, rufen Sie den Befehl **Restore-AzStorageBlobRange** auf, und geben Sie einen lexikografischen Bereich von Container- und Blobnamen für den Parameter `-BlobRestoreRange` an. Der Anfang des Bereichs ist inklusiv, das Ende des Bereichs ist exklusiv.
 
 Wenn Sie z. B. die Blobs in einem einzelnen Container mit dem Namen *sample-container* wiederherstellen möchten, können Sie einen Bereich angeben, der mit *sample-container* beginnt und mit *sample-container1* endet. Es ist nicht erforderlich, dass die in den Anfangs- und Endbereichen genannten Container vorhanden sind. Da das Ende des Bereichs exklusiv ist, wird nur der Container mit dem Namen *sample-container* wiederhergestellt, auch wenn das Speicherkonto einen Container mit dem Namen *sample-container1* enthält:
 
@@ -140,7 +128,7 @@ Um eine Teilmenge der Blobs in einem Container für die Wiederherstellung anzuge
 $range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d -EndRange sample-container/g
 ```
 
-Geben Sie als nächstes den Bereich für den Befehl Restore-AzStorageBlobRange an. Geben Sie den Wiederherstellungspunkt an, indem Sie einen **DateTime**-Wert (in UTC) für den `-TimeToRestore`-Parameter angeben. Im folgenden Beispiel werden Blobs im angegebenen Bereich in dem Zustand wiederhergestellt, den sie 3 Tage vor dem aktuellen Zeitpunkt aufgewiesen haben:
+Geben Sie als Nächstes den Bereich für den Befehl **Restore-AzStorageBlobRange** an. Geben Sie den Wiederherstellungspunkt an, indem Sie einen **DateTime**-Wert (in UTC) für den `-TimeToRestore`-Parameter angeben. Im folgenden Beispiel werden Blobs im angegebenen Bereich in dem Zustand wiederhergestellt, den sie 3 Tage vor dem aktuellen Zeitpunkt aufgewiesen haben:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -155,7 +143,9 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 Wenn Sie mehrere Bereiche von Blockblobs wiederherstellen möchten, geben Sie ein Array von Bereichen für den `-BlobRestoreRange`-Parameter an. Pro Wiederherstellungsvorgang werden bis zu 10 Bereiche unterstützt. Im folgenden Beispiel wird durch die Angabe zweier Bereiche der gesamte Inhalt von *container1* und *container4* wiederhergestellt:
 
 ```powershell
+# Specify a range that includes the complete contents of container1.
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2
+# Specify a range that includes the complete contents of container4.
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 -EndRange container5
 
 Restore-AzStorageBlobRange -ResourceGroupName $rgName `
@@ -163,6 +153,31 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddMinutes(-30) `
     -BlobRestoreRange @($range1, $range2)
 ```
+
+### <a name="restore-block-blobs-asynchronously"></a>Asynchrones Wiederherstellen von Blockblobs
+
+Fügen Sie zum asynchronen Ausführen eines Wiederherstellungsvorgangs dem Aufruf von **Restore-AzStorageBlobRange** den Parameter `-AsJob` hinzu, und speichern Sie das Ergebnis des Aufrufs in einer Variable. Der Befehl **Restore-AzStorageBlobRange** gibt ein Objekt vom Typ **AzureLongRunningJob** zurück. Sie können die **Status**-Eigenschaft dieses Objekts überprüfen, um zu ermitteln, ob der Wiederherstellungsvorgang abgeschlossen wurde. Der Wert der **State**-Eigenschaft kann **Wird ausgeführt** oder **Abgeschlossen** lauten.
+
+Im folgenden Beispiel wird gezeigt, wie Sie einen Wiederherstellungsvorgang asynchron aufrufen:
+
+```powershell
+$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddMinutes(-5) `
+    -AsJob
+
+# Check the state of the job.
+$job.State
+```
+
+Wenn Sie nach dem Ausführen auf den Abschluss des Wiederherstellungsvorgangs warten möchten, rufen Sie den Befehl [Wait-Job](/powershell/module/microsoft.powershell.core/wait-job) auf, wie im folgenden Beispiel gezeigt:
+
+```powershell
+$job | Wait-Job
+```
+
+## <a name="known-issues"></a>Bekannte Probleme
+- Wenn in einer Teilmenge der Wiederherstellungen Anfügeblobs vorhanden sind, tritt bei der Wiederherstellung ein Fehler auf. Führen Sie vorläufig keine Wiederherstellungen aus, wenn Anfügeblobs im Konto vorhanden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

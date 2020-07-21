@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462792"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103397"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>Geschlossene Public Preview des Containers für die Textanalyse im Gesundheitsbereich
+
+Der Container für die Textanalyse im Gesundheitsbereich befindet sich nun in der geschlossenen Public Preview. Mit ihm können Sie aus unstrukturiertem Text in englischer Sprache in klinischen Dokumenten Informationen wie die folgenden extrahieren: Patientenaufnahmeformulare, ärztliche Notizen, Forschungspapiere und Entlassungsübersichten. Derzeit wird Ihnen die Verwendung von Containern für die Textanalyse im Gesundheitsbereich nicht in Rechnung gestellt. 
+
+Der Container bietet folgende Features:
+
+* Erkennung benannter Entitäten
+* Beziehungsextrahierung
+* Entitätsverknüpfung
+* Negation
+
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zum Container für die Textanalyse im Gesundheitsbereich](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>Mai 2020
 
@@ -61,9 +78,6 @@ Die Namen der folgenden Eigenschaften in der JSON-Antwort wurden geändert (sowe
 ### <a name="text-analytics-api-v31-public-preview"></a>Textanalyse-API v3.1: Public Preview
    * Neues Feature für die Standpunktanalyse: [Opinion Mining](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * Neuer [Filter für den persönlichen Bereich (`PII`)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) für geschützte Informationen zur Gesundheit (`PHI`).
-   * Neue Kategorien für den persönlichen Bereich (`PII`):
-      * Internationale Klassifikation der Krankheiten (ICD-9-CM)
-      * Internationale Klassifikation der Krankheiten (ICD-10-CM)
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zur Textanalyse-API v3.1 (Vorschau)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)

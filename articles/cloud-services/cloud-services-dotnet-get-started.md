@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255227"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
@@ -104,9 +104,9 @@ Im folgenden Abschnitt werden Sie die Lösung so konfigurieren, dass diese Azure
 Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 
 * Erstellen eines Azure-Clouddiensts
-* Erstellen einer Azure SQL-Datenbank
+* Erstellen Sie eine Datenbank in Azure SQL-Datenbank.
 * Erstellen Sie ein Azure-Speicherkonto.
-* Konfigurieren der Lösung zur Verwendung Ihrer Azure SQL-Datenbank bei der Ausführung in Azure
+* Konfigurieren der Lösung zur Verwendung Ihrer Datenbank bei der Ausführung in Azure
 * Konfigurieren der Lösung zur Verwendung Ihres Azure-Speicherkontos bei der Ausführung in Azure
 * Bereitstellen des Projekts in Ihrem Azure-Clouddienst
 
@@ -130,7 +130,7 @@ Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 
     ![Neuer Clouddienst](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Erstellen einer Azure SQL-Datenbank
+### <a name="create-a-database-in-azure-sql-database"></a>Erstellen einer Datenbank in Azure SQL-Datenbank
 Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasierte Datenbank.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **„Ressource erstellen“ > „Datenbanken“ > „SQL-Datenbank“** .
@@ -182,8 +182,9 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
     In der Abbildung wird ein Speicherkonto mit der URL `csvccontosoads.core.windows.net`erstellt.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurieren der Lösung zur Verwendung Ihrer Azure SQL-Datenbank bei der Ausführung in Azure
-Webprojekt und Workerrollenprojekt haben je eine eigene Verbindungszeichenfolge für die Datenbank. Beide müssen auf die Azure SQL-Datenbank zeigen, wenn die Anwendung in Azure ausgeführt wird.
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>Konfigurieren der Lösung zur Verwendung Ihrer Datenbank in Azure SQL-Datenbank bei der Ausführung in Azure
+
+Webprojekt und Workerrollenprojekt weisen jeweils eigene Datenbank-Verbindungszeichenfolgen auf. Beide müssen auf die Datenbank in Azure SQL-Datenbank zeigen, wenn die App in Azure ausgeführt wird.
 
 Sie werden eine [Web.config-Transformation](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) für die Webrolle und eine Clouddienst-Umgebungseinstellung für die Workerrolle verwenden.
 

@@ -1,7 +1,7 @@
 ---
 title: Taskanpassungsleitfaden für die Microsoft Azure-Sicherheitscodeanalyse
 description: In diesem Artikel werden die YAML-Konfigurationsoptionen zum Anpassen aller Aufgaben in der Erweiterung „Microsoft-Sicherheitscodeanalyse“ beschrieben.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 11/29/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb18f93be62feb5f9fff02fc020f04899ec40a38
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367256"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML-Konfigurationsoptionen zum Anpassen der Buildtasks
 
@@ -78,36 +78,13 @@ In diesem Artikel sind alle YAML-Konfigurationsoptionen aufgeführt, die in den 
 | fileScanReadBufferSize | Zeichenfolge | immer | False |  |  | Puffergröße beim Lesen von Inhalt in Byte. (Der Standardwert ist 524.288.)<br/>Fügt ``-Co FileScanReadBufferSize=<Value>`` der Befehlszeile hinzu.
 | maxFileScanReadBytes | Zeichenfolge | immer | False |  |  | Maximale Anzahl von Bytes, die während der Inhaltsanalyse aus der jeweiligen Datei gelesen werden. (Der Standardwert ist 104.857.600.)<br/>Fügt ``-Co MaxFileScanReadBytes=<Value>`` der Befehlszeile hinzu.
 
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft Security Risk Detection (MSRD)-Task
-
-| **InputType**      | **Typ**     | **Geltungsbereich**            | **Erforderlich** | **Standardwert**             | **Optionen (für Auswahllisten)**                                   | **Beschreibung**                                                                                                                                                                                                                                                                           |
-|------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ServiceEndpointName | connectedService:Generic | immer | True |  |  | Der Name des vorkonfigurierten Dienstendpunkts (generischer Typ) in Ihrem VSTS-Projekt, auf dem die URL der MSRD-Instanz (für die Sie das Onboarding durchgeführt haben) und das REST-API-Zugriffstoken (das über die Seite mit Ihren Kontoeinstellungen generiert wurde und vollständigen Zugriff auf Ihr Konto ermöglicht) gespeichert werden.
-| AccountId | Zeichenfolge | immer | True |  |  | Die GUID, mit der das Konto identifiziert wird. Sie kann über die Konto-URL abgerufen werden.
-| BinariesURL | Zeichenfolge | immer | True |  |  | Eine durch Semikolons getrennte Liste mit den URLs, die vom Fuzzingcomputer zum Herunterladen der Binärdateien verwendet werden. Stellen Sie sicher, dass die URLs öffentlich verfügbar sind.
-| SeedsURL | Zeichenfolge | immer | False |  |  | Eine durch Semikolons getrennte Liste mit den URLs, die vom Fuzzingcomputer zum Herunterladen der Seeds verwendet werden. Stellen Sie sicher, dass die URLs öffentlich verfügbar sind.
-| OSPlatformType | pickList | immer | True | Windows | Linux, Windows | Der Typ der Betriebssystemplattform der Computer, auf denen der Fuzzingauftrag ausgeführt werden soll.
-| WindowsEdition | Zeichenfolge | OSPlatformType = Windows | True | Server 2008 R2 |  | Die Betriebssystemedition der Computer, auf denen der Fuzzingauftrag ausgeführt werden soll.
-| LinuxEdition | Zeichenfolge | OSPlatformType = Linux | True | Redhat |  | Die Betriebssystemedition der Computer, auf denen der Fuzzingauftrag ausgeführt werden soll.
-| PreSubmissionCommand | Zeichenfolge | immer | False |  |  | Das Skript, das auf einem Testcomputer ausgeführt werden muss, um das Testzielprogramm und seine Abhängigkeiten zu installieren, bevor Sie den Fuzzingauftrag senden.
-| SeedDirectory | Zeichenfolge | immer | True |  |  | Der Pfad zum Verzeichnis auf dem Fuzzingcomputer, das die Seeds enthält. Weitere Informationen finden Sie unter [Seeddateiverzeichnis](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/03-choose-seed-files#seed-file-directory).
-| SeedExtension | Zeichenfolge | immer | True |  |  | Die Dateierweiterung der Seeds.
-| TestDriverExecutable | Zeichenfolge | immer | True |  |  | Der Pfad zur ausführbaren Zieldatei auf dem Fuzzingcomputer. Weitere Informationen finden Sie unter [Vollständiger Pfad zur ausführbaren Datei des Einstiegspunkts](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/02-choose-exe#full-path-to-the-epe).
-| TestDriverExeType | pickList | immer | True | x86 | amd64, x86 | Die Architektur der ausführbaren Zieldatei.
-| TestDriverParameters | Zeichenfolge | immer | True | "%testfile%" |  | Befehlszeilenargumente, die an die ausführbare Zieltestdatei übermittelt werden. Beachten Sie, dass das Symbol **"%testfile%"** (einschließlich der doppelten Anführungszeichen) automatisch durch den vollständigen Pfad zur Zieldatei ersetzt wird, die der Testtreiber analysieren soll. Dies ist erforderlich. Ausführliche Informationen finden Sie unter [Befehlszeilenargumente](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/02-choose-exe#command-line-arguments).
-| ClosesItself | boolean | immer | True | true |  | Aktivieren Sie die Option, wenn die Testversion nach Abschluss des Vorgangs automatisch beendet wird (Beispiel: Testversion analysiert die Eingabedateien und wird dann sofort beendet). Deaktivieren Sie sie, wenn die Testversion explizit geschlossen werden muss (Beispiel: Testversion ist eine GUI-Anwendung, deren Hauptfenster nach dem Analysieren der Eingabe geöffnet bleibt). Ausführliche Informationen finden Sie unter [Automatische Beendigung](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/05-scope-exe-lifetime#self-termination).
-| MaxDurationInSeconds | Zeichenfolge | immer | True | 5 |  | Maximale Dauer der Testversion in Sekunden. Stellen Sie eine Schätzung der längsten sinnvollerweise erwarteten Zeit zur Verfügung, die das Zielprogramm benötigt, um eine Eingabedatei zu analysieren. Je genauer diese Schätzung ist, desto effizienter ist die Fuzzingausführung. Ausführliche Informationen finden Sie unter [Maximale erwartete Ausführungsdauer](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/05-scope-exe-lifetime#maximum-expected-execution-duration).
-| CanRunRepeat | boolean | immer | True | true |  | Aktivieren Sie diese Option, wenn der Testtreiber wiederholt ohne Abhängigkeit von einem persistent gespeicherten bzw. freigegebenen globalen Zustand ausgeführt werden kann. Ausführliche Informationen finden Sie unter [Völlig neue Ausführungen?](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/04-describe-exe-characteristics#runs-from-scratch).
-| CanTestDriverBeRenamed | boolean | immer | True | false |  | Aktivieren Sie diese Option, wenn die ausführbare Datei des Testtreibers umbenannt werden kann und trotzdem weiterhin ordnungsgemäß funktioniert. Ausführliche Informationen finden Sie unter [Umbenennung und Parallelisierung möglich?](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/04-describe-exe-characteristics#can-be-renamed-and-parallelized).
-| SingleOsProcess | boolean | immer | True | false |  | Aktivieren Sie diese Option, wenn die Testversion unter einem einzelnen Betriebssystemprozess ausgeführt wird. Deaktivieren Sie sie, wenn die Testversion weitere Prozesse erzeugt. Ausführliche Informationen finden Sie unter [Einzelner Prozess?](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/04-describe-exe-characteristics#single-process).
-
 ## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers-Task
 
 | **InputType**      | **Typ**     | **Geltungsbereich**            | **Erforderlich** | **Standardwert**             | **Optionen (für Auswahllisten)**                                   | **Beschreibung**                                                                                                                                                                                                                                                                                                                   |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | userProvideBuildInfo | pickList | immer | True | auto | auto, msBuildInfo | Optionen für einen Benutzer zum Angeben der MSBuild-Version, MSBuild-Architektur und Buildbefehlszeile für die Roslyn-Analyse. Bei Auswahl von **Auto** werden mit diesem Task die Buildinformationen aus den vorherigen Tasks **MSBuild**, **VSBuild** bzw. **.NET Core** (für Build) derselben Pipeline abgerufen.
 | msBuildVersion | pickList | userProvideBuildInfo == msBuildInfo | True | 16,0 | 15.0, 16.0 | MSBuild-Version
-| msBuildArchitecture | pickList | userProvideBuildInfo == msBuildInfo | True | x86 | DotNetCore, x64, x86 | MSBuild-Architektur Hinweis: Wenn in der Buildbefehlszeile **dotnet.exe build** aufgerufen wird, sollten Sie die Option **Via .NET Core** (Per .NET Core) auswählen.
+| msBuildArchitecture | pickList | userProvideBuildInfo == msBuildInfo | True | x86 | DotNetCore, x64, x86 | MSBuild-Architektur Hinweis: Wenn in der Buildbefehlszeile **dotnet.exe build** aufgerufen wird, sollten Sie die Option **Via .NET Core** (Über .NET Core) auswählen.
 | msBuildCommandline | Zeichenfolge | userProvideBuildInfo == msBuildInfo | True |  |  | Die vollständige Buildbefehlszeile zum Kompilieren Ihrer Projektmappe oder Projekte.<br/><br/>Hinweise: Die Befehlszeile sollte mit einem vollständigen Pfad zu **MSBuild.exe** oder **dotnet.exe** beginnen.<br/>Der Befehl wird mit „$(Build.SourcesDirectory)“ als Arbeitsverzeichnis ausgeführt.
 | rulesetName | pickList | immer | False | Empfohlen | Custom, None, Recommended, Required | Ein benannter Regelsatz, der verwendet werden soll.<br/><br/>Bei Auswahl von `Ruleset Configured In Your Visual Studio Project File(s)` wird der Regelsatz verwendet, der in Ihren VS-Projektdateien vorkonfiguriert ist. Bei Auswahl von `Custom` kann eine Option mit einem benutzerdefinierten Regelsatzpfad festgelegt werden.
 | rulesetVersion | pickList | rulesetName == Required OR rulesetName == Recommended | False | Neueste Version | 8.0, 8.1, 8.2, Latest, LatestPreRelease | Die Version des ausgewählten SDL-Regelsatzes.
@@ -148,7 +125,6 @@ In diesem Artikel sind alle YAML-Konfigurationsoptionen aufgeführt, die in den 
 | AntiMalware | boolean | AllTools = false | True | true |  | Dient zum Veröffentlichen von Ergebnissen, die von Antischadsoftware-Buildtasks (AntiMalware) generiert werden.
 | BinSkim | boolean | AllTools = false | True | true |  | Dient zum Veröffentlichen von Ergebnissen, die von BinSkim-Buildtasks generiert werden.
 | CredScan | boolean | AllTools = false | True | true |  | Dient zum Veröffentlichen von Ergebnissen, die von Credential Scanner-Buildtasks generiert werden.
-| MSRD | boolean | AllTools = false | True | true |  | Dient zum Veröffentlichen von Auftragsinformationen und Auftrags-URLs für MSRD-Aufträge, die vom MSRD-Buildtask gestartet werden. MSRD-Aufträge sind zeitintensiv, und es werden jeweils separate Berichte bereitgestellt.
 | RoslynAnalyzers | boolean | AllTools = false | True | false |  | Dient zum Veröffentlichen von Ergebnissen, die von Roslyn Analyzers-Buildtasks generiert werden.
 | TSLint | boolean | AllTools = false | True | true |  | Dient zum Veröffentlichen von Ergebnissen, die von TSLint-Buildtasks generiert werden. Beachten Sie, dass für Berichte nur TSLint-Protokolle im JSON-Format unterstützt werden. Falls Sie ein anderes Format ausgewählt haben, sollten Sie Ihren TSLint-Buildtask entsprechend aktualisieren.
 | ToolLogsNotFoundAction | picklist | immer | True | Standard | Error, None, Standard, Warning | Die Aktion, die ausgeführt werden soll, wenn Protokolle für ein ausgewähltes Tool (bzw. ein beliebiges Tool bei Aktivierung von „All Tools“) nicht gefunden werden. Dies impliziert, dass das Tool nicht ausgeführt wurde.<br/><br/>**Optionen:**<br/>**None:** Die Nachricht wird in den ausführlichen Ausgabestream geschrieben, auf den nur zugegriffen werden kann, indem die VSTS-Variable **system.debug** auf **true** festgelegt wird.<br/>**Standard:** (Standard) Es wird eine Standardausgabenachricht mit dem Hinweis geschrieben, dass für das Tool keine Protokolle gefunden wurden.<br/>**Warnung:** Es wird eine Warnmeldung vom Typ „Gelb“ mit dem Hinweis geschrieben, dass für das Tool keine Protokolle geschrieben wurden. Diese Warnung wird auf der Seite mit der Buildzusammenfassung angezeigt.<br/>**Fehler:** Es wird eine Fehlermeldung vom Typ „Rot“ geschrieben, und es wird eine Ausnahme ausgelöst, die zu einem Buildfehler führt. Stellen Sie mit dieser Option sicher, welche einzelnen Tools ausgeführt werden.
@@ -164,7 +140,6 @@ In diesem Artikel sind alle YAML-Konfigurationsoptionen aufgeführt, die in den 
 | BinSkim | boolean | AllTools = false | True | false |  | Dient zum Melden von Ergebnissen, die von BinSkim-Buildtasks generiert werden.
 | BinSkimBreakOn | pickList | AllTools = true OR BinSkim = true | True | Fehler | Error, WarningAbove | Die Ebene der zu meldenden Ergebnisse.
 | CredScan | boolean | AllTools = false | True | false |  | Dient zum Melden von Ergebnissen, die von Credential Scanner-Buildtasks generiert werden.
-| MSRD | boolean | AllTools = false | True | false |  | Dient zum Melden von Auftragsinformationen und Auftrags-URLs für MSRD-Aufträge, die vom MSRD-Buildtask gestartet werden. MSRD-Aufträge sind zeitintensiv, und es werden jeweils separate Berichte bereitgestellt.
 | RoslynAnalyzers | boolean | AllTools = false | True | false |  | Dient zum Melden von Ergebnissen, die von Roslyn Analyzers-Buildtasks generiert werden.
 | RoslynAnalyzersBreakOn | pickList | AllTools = true OR RoslynAnalyzers = true | True | Fehler | Error, WarningAbove | Die Ebene der zu meldenden Ergebnisse.
 | TSLint | boolean | AllTools = false | True | false |  | Dient zum Melden von Ergebnissen, die von TSLint-Buildtasks generiert werden. Beachten Sie, dass für Berichte nur TSLint-Protokolle im JSON-Format unterstützt werden. Falls Sie ein anderes Format ausgewählt haben, sollten Sie Ihren TSLint-Buildtask entsprechend aktualisieren.

@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833505"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263244"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -82,9 +82,9 @@ Hier finden Sie einige Beispiele, die zeigen, was sich mit benutzerdefinierten R
   1. Weisen Sie die integrierte Rolle **Mitwirkender** auf Data Factory-Ebene zu.
   2. Erstellen Sie eine benutzerdefinierte Rolle mit der Berechtigung **Microsoft.Resources/deployments/** . Sie können einem Benutzer diese benutzerdefinierte Rolle auf Ressourcengruppenebene zuweisen.
 
-- Sie können es einem Benutzer ermöglichen, Verbindungen nur in einem verknüpften Dienst zu testen.
+- Sie können es einem Benutzer ermöglichen, Verbindungen in einem verknüpften Dienst zu testen oder die Vorschau der Daten in einem Dataset anzuzeigen.
 
-    Erstellen Sie eine benutzerdefinierte Rolle mit Berechtigungen für die folgenden Aktionen: **Microsoft.DataFactory/factories/getFeatureValue/read** und **Microsoft.DataFactory/factories/getDataPlaneAccess/read**. Weisen Sie diese benutzerdefinierte Rolle der Data Factory-Ressource für den Benutzer zu.
+    Erstellen Sie eine benutzerdefinierte Rolle mit Berechtigungen für die folgenden Aktionen: **Microsoft.DataFactory/factories/getFeatureValue/read** und **Microsoft.DataFactory/factories/getDataPlaneAccess/action**. Weisen Sie diese benutzerdefinierte Rolle der Data Factory-Ressource für den Benutzer zu.
 
 - Sie können es einem Benutzer ermöglichen, eine Data Factory über PowerShell oder das SDK zu aktualisieren, nicht aber über das Azure-Portal.
 

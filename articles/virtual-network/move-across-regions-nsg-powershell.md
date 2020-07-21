@@ -3,15 +3,15 @@ title: Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Az
 description: Verwenden einer Azure Resource Manager-Vorlage, um eine Azure-Netzwerksicherheitsgruppe über Azure PowerShell aus einer Azure-Region in eine andere zu verschieben.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75641467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688448"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Region mit Azure PowerShell
 
@@ -61,7 +61,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<resource-group-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Netzwerksicherheitsgruppe 
     Get-AzLocation | format-table
     
     ```
-8. Sie können wahlweise auch andere Parameter in der Datei **\<resource-group-name>.json** ändern. Diese sind abhängig von Ihren Anforderungen optional:
+8. Sie können wahlweise auch andere Parameter in **\<resource-group-name>.json** ändern, die abhängig von Ihren Anforderungen optional sind:
 
-    * **Sicherheitsregeln**: Sie können festlegen, welche Regeln in der Ziel-NSG bereitgestellt werden, indem Sie dem Abschnitt **securityRules** in der Datei **\<resource-group-name>.json** Regeln hinzufügen oder Regeln aus diesem Abschnitt entfernen:
+    * **Sicherheitsregeln:** Sie können festlegen, welche Regeln in der Ziel-NSG bereitgestellt werden, indem Sie dem Abschnitt **securityRules** in der Datei **\<resource-group-name>.json** Regeln hinzufügen oder Regeln aus diesem Abschnitt entfernen:
 
         ```json
            "resources": [

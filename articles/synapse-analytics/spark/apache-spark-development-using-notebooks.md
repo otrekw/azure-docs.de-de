@@ -1,24 +1,25 @@
 ---
-title: Erstellen, Entwickeln und Verwalten von Azure Synapse Studio (Vorschau)-Notebooks
+title: Synapse Studio-Notebooks
 description: In diesem Artikel erfahren Sie, wie Sie Azure Synapse Studio (Vorschau)-Notebooks erstellen und entwickeln, um Datenvorbereitung und -visualisierung durchzuführen.
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: tracking-python
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702099"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045687"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Erstellen, Entwickeln und Verwalten von Azure Synapse Studio (Vorschau)-Notebooks
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks (Vorschauversion) in Azure Synapse Analytics
 
-Ein Azure Synapse Studio (Vorschau)-Notebook ist eine Webschnittstelle, mit der Sie Dateien erstellen können, die Livecode, Visualisierungen und Text enthalten. Notebooks sind ein guter Ausgangspunkt, um Ideen zu überprüfen und schnelle Experimente zu verwenden, um Erkenntnisse aus Ihren Daten zu gewinnen. Notebooks werden auch häufig bei der Datenvorbereitung, Datenvisualisierung, Machine Learning und andere Big Data-Szenarien verwendet.
+Ein Synapse Studio-Notebook (Vorschauversion) ist eine Weboberfläche, mit der Sie Dateien erstellen können, die Livecode, Visualisierungen und beschreibenden Text enthalten. Notebooks sind ein guter Ausgangspunkt, um Ideen zu überprüfen und schnelle Experimente zu verwenden, um Erkenntnisse aus Ihren Daten zu gewinnen. Notebooks werden auch häufig bei der Datenvorbereitung, Datenvisualisierung, Machine Learning und andere Big Data-Szenarien verwendet.
 
 Mit einem Azure Synapse Studio-Notebook können Sie:
 
@@ -109,7 +110,7 @@ Sie können nicht direkt auf Daten oder Variablen in verschiedenen Sprachen eine
 
 ### <a name="ide-style-intellisense"></a>IDE-artiges IntelliSense
 
-Azure Synapse Studio-Notebooks sind in den Monaco-Editor integriert, um den Zellen-Editor mit IDE-artigem IntelliSense auszustatten. Syntaxhervorhebung, Fehlermarkierungen und automatische Codevervollständigungen helfen Ihnen, Code zu schreiben und Probleme schneller zu erkennen.
+Azure Synapse Studio-Notebooks sind in den Monaco-Editor integriert, um den Zellen-Editor mit IDE-artigem IntelliSense auszustatten. Syntaxhervorhebung, Fehlermarkierungen und automatische Codevervollständigungen helfen Ihnen dabei, Code zu schreiben und Probleme schneller zu erkennen.
 
 Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwicklung für verschiedene Sprachen. In der folgenden Tabelle können Sie sehen, was unterstützt wird.
 
@@ -343,7 +344,7 @@ Verfügbare Zellen-Magics: [%%time](https://ipython.readthedocs.io/en/stable/int
 
    ![Befehlsmodus](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. Der Bearbeitungsmodus wird durch einen Textcursor angezeigt, der Sie zur Eingabe im Editor-Bereich auffordert. Wenn sich eine Zelle im Bearbeitungsmodus befindet, können Sie Eingaben in die Zelle vornehmen. Sie wechseln in den Bearbeitungsmodus, indem Sie `Enter` drücken oder mit der Maus auf den Editor-Bereich einer Zelle klicken.
+2. Der Bearbeitungsmodus wird durch einen Textcursor angezeigt, der Sie zur Eingabe im Editor-Bereich auffordert. Wenn sich eine Zelle im Bearbeitungsmodus befindet, können Sie etwas in die Zelle eingeben. Sie wechseln in den Bearbeitungsmodus, indem Sie `Enter` drücken oder mit der Maus auf den Editor-Bereich einer Zelle klicken.
    
    ![Bearbeitungsmodus](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

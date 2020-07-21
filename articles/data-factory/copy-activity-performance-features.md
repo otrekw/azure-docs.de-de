@@ -1,6 +1,6 @@
 ---
 title: Features für die Leistungsoptimierung bei Kopieraktivitäten
-description: Hier erfahren Sie mehr über die wichtigsten Features, mit denen Sie die Leistung bei Kopieraktivitäten in Azure Data Factory optimieren können.
+description: Erfahren Sie mehr über die wichtigsten Funktionen, mit denen Sie die Leistung bei Kopieraktivitäten in Azure Data Factory optimieren können.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/09/2020
-ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 06/15/2020
+ms.openlocfilehash: dfd439affe488805b4645211477c6d32bbbe7489
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770933"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Features für die Leistungsoptimierung bei Kopieraktivitäten
 
@@ -82,7 +82,7 @@ Sie können eine parallele Kopie (Eigenschaft `parallelCopies`) für die Kopiera
 
 Die parallele Kopie ist orthogonal zu [Datenintegrationseinheiten](#data-integration-units) oder [Knoten der selbstgehosteten IR](#self-hosted-integration-runtime-scalability). Sie wird für alle DIUs oder Knoten der selbstgehosteten IR gezählt.
 
-Bei jeder Ausführung einer Kopieraktivität wendet Azure Data Factory standardmäßig die optimale Einstellung für parallele Kopien basierend auf Ihrem Quell-/Senkenpaar und Datenmuster dynamisch an. 
+Bei jeder Ausführung einer Kopieraktivität wendet Azure Data Factory standardmäßig die optimale Einstellung für parallele Kopien basierend auf Ihrem Quell-Senke-Paar und Datenmuster dynamisch an. 
 
 > [!TIP]
 > Das Standardverhalten von parallelen Kopien bietet Ihnen normalerweise den besten Durchsatz, der von ADF automatisch festgelegt wird. Grundlage dafür ist das Quell-/Senkenpaar, das Datenmuster sowie die Anzahl der DIUs oder die CPU/der Arbeitsspeicher/die Anzahl der Knoten der selbstgehosteten IR. Weitere Informationen zur Optimierung des parallelen Kopierens finden Sie unter [Problembehandlung bei der Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md).
@@ -126,9 +126,9 @@ Berücksichtigen Sie bei der Angabe eines Werts für die Eigenschaft `parallelCo
 
 Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie ggf. Blob Storage als Stagingzwischenspeicher verwenden. Staging ist besonders in folgenden Fällen hilfreich:
 
-- **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in SQL Data Warehouse erfassen.** SQL Data Warehouse nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in SQL Data Warehouse zu laden. Die Quelldaten müssen sich in Blob Storage oder in Azure Data Lake Store befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage- oder Azure Data Lake Store-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Staging-Blob-Zwischenspeicher aktivieren. In diesem Fall führt Azure Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase auf effiziente Art und Weise in SQL Data Warehouse geladen. Weitere Informationen finden Sie unter [Use PolyBase to load data into Azure SQL Data Warehouse (Verwenden von PolyBase zum Laden von Daten in Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in Azure Synapse Analytics (ehemals SQL Data Warehouse) erfassen.** Azure Synapse Analytics nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in Azure Synapse Analytics zu laden. Die Quelldaten müssen sich in Blob Storage oder in Azure Data Lake Store befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage- oder Azure Data Lake Store-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Staging-Blob-Zwischenspeicher aktivieren. In diesem Fall führt Azure Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase auf effiziente Weise in Azure Synapse Analytics geladen. Weitere Informationen finden Sie unter [Use PolyBase to load data into Azure SQL Data Warehouse (Verwenden von PolyBase zum Laden von Daten in Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 - **Hybriddatenverschiebungen (also das Kopieren aus einem lokalen Datenspeicher in einen Clouddatenspeicher) können bei einer langsamen Netzwerkverbindung eine Weile dauern.** Zur Verbesserung der Leistung können Sie gestaffeltes Kopieren verwenden, um die Daten lokal zu komprimieren und dadurch die Verschiebung in den Stagingdatenspeicher in der Cloud zu beschleunigen. Anschließend können Sie die Daten im Stagingspeicher wieder dekomprimieren, bevor Sie sie in den Zieldatenspeicher laden.
-- **Aufgrund der IT-Richtlinien des Unternehmens sollten Sie mit Ausnahme der Ports 80 und 443 keine weiteren Ports in der Firewall öffnen.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Senke muss die ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In diesem Szenario kann das gestaffelte Kopieren die selbstgehostete Integration Runtime nutzen, um zunächst Daten per HTTP oder HTTPS über den Port 443 an eine Blob Storage-Staginginstanz kopieren. Anschließend können die Daten aus dem Blob Storage-Stagingspeicher in SQL-Datenbank oder in SQL Data Warehouse geladen werden. Dadurch muss der Port 1433 nicht geöffnet werden.
+- **Aufgrund der IT-Richtlinien des Unternehmens sollten Sie mit Ausnahme der Ports 80 und 443 keine weiteren Ports in der Firewall öffnen.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Senke muss die ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In diesem Szenario kann das gestaffelte Kopieren die selbstgehostete Integration Runtime nutzen, um zunächst Daten per HTTP oder HTTPS über den Port 443 an eine Blob Storage-Staginginstanz kopieren. Anschließend können die Daten aus dem Blob Storage-Stagingspeicher in SQL-Datenbank oder in Azure Synapse Analytics geladen werden. Dadurch muss der Port 1433 nicht geöffnet werden.
 
 ### <a name="how-staged-copy-works"></a>Funktionsweise des gestaffelten Kopierens
 
@@ -147,7 +147,7 @@ Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, u
 | Eigenschaft | BESCHREIBUNG | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
 | enableStaging |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
-| linkedServiceName |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
+| linkedServiceName |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in Azure Synapse Analytics zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
 | path |Geben Sie den gewünschten Blob Storage-Pfad für die bereitgestellten Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Geben Sie nur dann einen Pfad an, wenn Sie Storage mit einer Shared Access Signature verwenden oder sich die temporären Daten an einem bestimmten Speicherort befinden müssen. |– |Nein |
 | enableCompression |Gibt an, ob die Daten komprimiert werden sollen, bevor sie an das Ziel kopiert werden. Durch diese Einstellung wird die Menge der übertragenen Daten reduziert. |False |Nein |
 

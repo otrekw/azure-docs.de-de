@@ -11,20 +11,20 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: 0e9b8f7bc4129c07145130f198b738839b0c7b55
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553485"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse über das Azure-Portal
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse Analytics über das Azure-Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Artikel erfahren Sie, wie Sie im Azure-Portal Warnungen für Datenbanken in Azure SQL-Datenbank und Azure Synapse (früher Azure SQL Data Warehouse) einrichten. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird. Dieser Artikel nennt auch bewährte Methoden für das Festlegen von Warnungszeiträumen.
+In diesem Artikel erfahren Sie, wie Sie im Azure-Portal Warnungen für Datenbanken in Azure SQL-Datenbank und Azure Synapse Analytics (früher Azure SQL Data Warehouse) einrichten. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird.
 
 > [!NOTE]
 > Spezifische Anweisungen für Azure SQL Managed Instance finden Sie unter [Erstellen von Warnungen für Azure SQL Managed Instance](../managed-instance/alerts-create.md).
@@ -42,7 +42,7 @@ Sie können konfigurieren, dass bei einer Warnung Folgendes erfolgt, wenn sie au
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen zugehöriger Informationen:
 
-* [Azure portal](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure-Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Befehlszeilenschnittstelle (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -60,7 +60,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 4. Klicken Sie im Abschnitt **Bedingung** auf **Hinzufügen**.
   ![Bedingung definieren](./media/alerts-insights-configure-portal/create-rule.png)
 5. Wählen Sie auf der Seite **Signallogik konfigurieren** ein Signal aus.
-  ![Signal auswählen](./media/alerts-insights-configure-portal/select-signal.png).
+  ![Signal auswählen](./media/alerts-insights-configure-portal/select-signal.png)
 6. Nach Auswahl eines Signals, z. B. **CPU-Prozentsatz**, wird die Seite **Signallogik konfigurieren** angezeigt.
   ![Signallogik konfigurieren](./media/alerts-insights-configure-portal/configure-signal-logic.png)
 7. Konfigurieren Sie auf dieser Seite den Schwellentyp, Operator, Aggregationstyp, Schwellenwert, die Aggregationsgranularität und die Häufigkeit der Auswertung. Klicken Sie anschließend auf **Fertig**.

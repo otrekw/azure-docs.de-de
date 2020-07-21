@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Hinzufügen einer Datenbank zu einer Failovergruppe'
-description: In diesem Artikel erhalten Sie Informationen dazu, wie Sie eine Azure SQL-Datenbank-Instanz mit dem Azure-Portal, mit Azure PowerShell oder der Azure CLI zu einer Failovergruppe hinzufügen.
+description: Fügen Sie eine Azure SQL-Datenbank-Instanz über das Azure-Portal, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle einer Autofailovergruppe hinzu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,27 +11,27 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 78904feac106fbd1b612dfd494a2e8a280b40b25
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84040311"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255312"
 ---
-# <a name="tutorial-add-an-azure-sql-database-to-an-auto-failover-group"></a>Tutorial: Hinzufügen einer Azure SQL-Datenbank-Instanz zu einer Autofailover-Gruppe
+# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Tutorial: Hinzufügen einer Azure SQL-Datenbank-Instanz zu einer Autofailovergruppe
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Eine [Failovergruppe](auto-failover-group-overview.md) ist eine deklarative Abstraktionsschicht, die es Ihnen ermöglicht, mehrere georeplizierte Datenbanken zu gruppieren. Hier erfahren Sie, wie Sie eine Failovergruppe für eine Azure SQL-Datenbank-Instanz konfigurieren und das Failover über das Azure-Portal, über Azure PowerShell oder die Azure CLI testen können.  In diesem Tutorial lernen Sie Folgendes:
+Eine [Failovergruppe](auto-failover-group-overview.md) ist eine deklarative Abstraktionsschicht, die es Ihnen ermöglicht, mehrere georeplizierte Datenbanken zu gruppieren. Erfahren Sie, wie Sie eine Failovergruppe für eine Azure SQL-Datenbank-Instanz konfigurieren und das Failover über das Azure-Portal, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle testen.  In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 >
 > - Erstellen einer Datenbank in Azure SQL-Datenbank
-> - Erstellen einer Failovergruppe für eine Datenbank zwischen zwei Servern.
+> - Erstellen einer Failovergruppe für eine Datenbank zwischen zwei Servern
 > - Testen des Failovers.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten:
 
@@ -44,12 +44,12 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 - Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Für dieses Tutorial wird Folgendes vorausgesetzt:
 
 - Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
-- Die neueste Version von [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Die aktuelle Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ---
 
@@ -61,11 +61,11 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 
 In diesem Schritt erstellen Sie eine [Failovergruppe](auto-failover-group-overview.md) zwischen einem vorhandenen Server und einem neuen Server in einer anderen Region. Fügen Sie dann der Failovergruppe die Beispieldatenbank hinzu.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie Ihre Failovergruppe, und fügen Sie Ihre Datenbank mithilfe des Azure-Portals hinzu.
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen.
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann im Suchfeld „Azure SQL“ ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen.
 1. Wählen Sie die Datenbank aus, die in Abschnitt 1 erstellt wurde, z. B. `mySampleDatabase`.
 1. Failovergruppen können auf Serverebene konfiguriert werden. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
@@ -172,9 +172,9 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Dieses Cmdlet ruft mindestens eine Datenbank in Azure SQL-Datenbank ab. |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Dieses Cmdlet fügt einer Failovergruppe in Azure SQL-Datenbank mindestens eine Datenbank hinzu. |
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
-Erstellen Sie Ihre Failovergruppe, und fügen Sie Ihre Datenbank mithilfe der Azure CLI hinzu.
+Erstellen Sie Ihre Failovergruppe, und fügen Sie Ihre Datenbank mithilfe der Azure-Befehlszeilenschnittstelle hinzu.
 
    > [!NOTE]
    > Die Einstellungen für Serveranmeldung und Firewall müssen jedoch mit denen Ihres primären Servers übereinstimmen.
@@ -207,11 +207,11 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 
 In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem sekundären Server und anschließend ein Failback mit dem Azure-Portal aus.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Testen Sie ein Failover über das Azure-Portal.
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen.
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann im Suchfeld „Azure SQL“ ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen.
 1. Wählen Sie die Datenbank aus, die im Abschnitt 2 erstellt wurde, z. B. `mySampleDatbase`.
 1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
@@ -222,10 +222,10 @@ Testen Sie ein Failover über das Azure-Portal.
    ![Auswählen der Failovergruppe aus dem Portal](./media/failover-group-add-single-database-tutorial/select-failover-group.png)
 
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist.
-1. Klicken Sie im Aufgabenbereich auf **Failover**, um ein Failover für die Failovergruppe mit der Beispieldatenbank durchzuführen.
+1. Wählen Sie im Aufgabenbereich **Failover** aus, um ein Failover für die Failovergruppe mit der Beispieldatenbank durchzuführen.
 1. Wählen Sie in der Meldung, dass die TDS-Sitzungen getrennt werden, **Ja** aus.
 
-   ![Failover für die Failovergruppe mit Ihrer SQL-Datenbank](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![Failover für die Failovergruppe, die Ihre Datenbank enthält](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
 1. Überprüfen Sie, welcher Server jetzt der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben.
 1. Wählen Sie erneut **Failover** aus, um die Server auf ihre ursprünglichen Rollen zurückzusetzen.
@@ -291,7 +291,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft Azure SQL-Datenbank-Failovergruppen ab oder listet diese auf. |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Führt ein Failover für eine Azure SQL-Datenbank-Failovergruppe aus. |
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
 Testen Sie ein Failover mithilfe der Azure CLI.
 
@@ -331,7 +331,7 @@ In diesem Teil des Tutorials werden die folgenden Azure CLI-Cmdlets verwendet:
 
 Bereinigen Sie die Ressourcen, indem Sie die Ressourcengruppe löschen.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Löschen Sie die Ressourcengruppe über das Azure-Portal.
 
@@ -359,9 +359,9 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. |
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
-Löschen Sie die Ressourcengruppe mithilfe der Azure CLI.
+Löschen Sie die Ressourcengruppe mithilfe der Azure-Befehlszeilenschnittstelle.
 
    ```azurecli-interactive
    echo "Cleaning up resources by removing the resource group..."
@@ -419,7 +419,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Legt die primäre Failovergruppe fest, indem für alle Datenbanken auf dem aktuellen primären Server ein Failover ausgeführt wird. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Es sind keine Skripts für das Azure-Portal verfügbar.
 
@@ -429,7 +429,7 @@ Weitere Azure SQL-Datenbank-Skripts finden Sie hier: [Azure PowerShell](powershe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Azure SQL-Datenbank-Instanz zu einer Failovergruppe hinzugefügt und das Failover getestet. Sie haben Folgendes gelernt:
+In diesem Tutorial haben Sie einer Failovergruppe eine Datenbank in Azure SQL-Datenbank hinzugefügt und das Failover getestet. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 >

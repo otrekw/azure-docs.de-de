@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: dfd75ad2c6ae246bfe6ee8b983744b3db07a841f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b585a903267386358552154228705c1921df619
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255329"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Einfache Abfragesyntax in der kognitiven Azure-Suche
 
@@ -62,6 +62,14 @@ Stellen Sie sicher, dass alle unsicheren und reservierten Zeichen in einer URL c
 
 Unsichere Zeichen sind ``" ` < > # % { } | \ ^ ~ [ ]``. Reservierte Zeichen sind `; / ? : @ = + &`.
 
+### <a name="querying-for-special-characters"></a>Abfragen von Sonderzeichen
+
+Unter bestimmten Umständen möchten Sie möglicherweise nach einem Sonderzeichen suchen, z. B. dem Emoji ❤ oder dem €-Zeichen. Stellen Sie in diesem Fall sicher, dass das verwendete Analysetool diese Zeichen nicht herausfiltert.  Das Standardanalysetool ignoriert viele der Sonderzeichen, sodass diese nicht zu Token in Ihrem Index werden.
+
+Der erste Schritt besteht demnach darin, ein Analysetool zu verwenden, das diese Elementtoken berücksichtigt. Beispielsweise berücksichtigt das Leerzeichen-Analysetool alle durch Leerzeichen getrennten Zeichensequenzen als Token, sodass die Zeichenfolge „❤“ als Token angesehen wird. Ein Analysetool wie das Microsoft-Analysetool für englische Sprache („en.microsoft“) würde außerdem die Zeichenfolge „€“ als Token berücksichtigen. Sie können [ein Analysetool testen](https://docs.microsoft.com/rest/api/searchservice/test-analyzer), um herauszufinden, welche Token für eine bestimmte Abfrage generiert werden.
+
+Wenn Sie Unicode-Zeichen verwenden, stellen Sie sicher, dass die Symbole in der Abfrage-URL ordnungsgemäß mit Escapezeichen versehen werden (z. B. muss für „❤“ die Escapefolge `%E2%9D%A4+` verwendet werden). Postman übernimmt diese Übersetzung automatisch.
+
 ###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> Abfragegrößenlimits
 
  Die Größe der Abfragen, die Sie an Azure Cognitive Search senden können, ist begrenzt. Insbesondere können Sie maximal 1.024 Klauseln (durch AND, OR usw. getrennte Ausdrücke) verwenden. Für die Größe der einzelnen Begriffe in einer Abfrage gilt zudem ein Grenzwert von ungefähr 32 KB. Wenn Ihre Anwendung programmgesteuert Suchabfragen generiert, sollten Sie durch den Anwendungsentwurf sicherstellen, dass sie keine Abfragen unbegrenzter Größe erzeugt.  
@@ -94,17 +102,17 @@ Berücksichtigen Sie bei der Entscheidung über eine **searchMode**-Einstellung 
 
 <a name="prefix-search"></a>
 
-## <a name="prefix-search"></a>Präfixsuche
+## <a name="wildcard-prefix-matching--"></a>Platzhalter-Präfixübereinstimmung (*, ?)
 
-Der Suffixoperator ist ein Sternchen `*`. Beispielsweise findet `lingui*` „linguistisch“ oder „linguini“, wobei die Groß-/Kleinschreibung ignoriert wird. 
+Fügen Sie für „starts with“-Abfragen einen Suffixoperator als Platzhalter für den Rest eines Begriffs hinzu. Verwenden Sie ein Sternchen `*` für mehrere Zeichen oder `?` für einzelne Zeichen. Beispielsweise stimmt `lingui*` mit „linguistisch“ und „Linguine“ überein, wobei die Groß-/Kleinschreibung ignoriert wird. 
 
-Ähnlich wie Filter sucht eine Präfixabfrage nach einer genauen Übereinstimmung. Daher wird die Relevanz nicht bewertet (alle Ergebnisse erhalten die Suchbewertung 1,0). Präfixabfragen können insbesondere dann langsam verlaufen, wenn der Index groß ist und das Präfix aus einer kleinen Anzahl von Zeichen besteht. 
+Ähnlich wie Filter sucht eine Präfixabfrage nach einer genauen Übereinstimmung. Daher wird die Relevanz nicht bewertet (alle Ergebnisse erhalten die Suchbewertung 1,0). Achten Sie darauf, dass Präfixabfragen insbesondere dann langsam sein können, wenn der Index groß ist und das Präfix aus einer kleinen Anzahl von Zeichen besteht. Eine alternative Methode, z. B. die Edge-N-Gramm-Tokenisierung, kann möglicherweise schneller ausgeführt werden.
 
-Wenn Sie eine Suffixabfrage für den letzten Teil einer Zeichenfolge ausführen möchten, verwenden Sie eine [Platzhaltersuche](query-lucene-syntax.md#bkmk_wildcard) und die vollständige Lucene-Syntax.
+Verwenden Sie für andere Platzhalter-Abfragevarianten wie Suffix- oder Infixübereinstimmung mit dem Ende oder der Mitte eines Begriffs die [vollständige Lucene-Syntax für die Platzhaltersuche](query-lucene-syntax.md#bkmk_wildcard).
 
 ## <a name="phrase-search-"></a>Ausdruckssuche `"`
 
-Eine Begriffsuche ist eine Abfrage für einen oder mehrere Begriffe, bei denen jeder der Begriffe als Übereinstimmung betrachtet wird. Eine Ausdruckssuche ist ein exakter Ausdruck in Anführungszeichen (`" "`). Zum Beispiel: `Roach Motel` (ohne Anführungszeichen) würde nach Dokumenten suchen, die `Roach` und/oder `Motel` enthalten, und zwar überall in beliebiger Reihenfolge, `"Roach Motel"` (mit Anführungszeichen) stimmt nur mit Dokumenten überein, die den gesamten Ausdruck zusammen und in dieser Reihenfolge enthalten (die Textanalyse gilt weiterhin).
+Eine Begriffsuche ist eine Abfrage für einen oder mehrere Begriffe, bei denen jeder der Begriffe als Übereinstimmung betrachtet wird. Eine Ausdruckssuche ist ein exakter Ausdruck in Anführungszeichen (`" "`). Beispiel: `Roach Motel` (ohne Anführungszeichen) sucht nach Dokumenten, die `Roach` oder `Motel` enthalten, und zwar überall in beliebiger Reihenfolge; `"Roach Motel"` (mit Anführungszeichen) stimmt nur mit Dokumenten überein, die den gesamten Ausdruck zusammen und in dieser Reihenfolge enthalten (die lexikalische Analyse gilt weiterhin).
 
 ## <a name="see-also"></a>Weitere Informationen  
 

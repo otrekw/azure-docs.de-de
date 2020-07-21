@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753264"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Speichern und Verwalten von Werten mittels Variablen in Azure Logic Apps
 
@@ -22,7 +22,7 @@ Variablen können für Datentypen wie „integer“, „float“, „boolean“,
 * Abrufen des Werts einer Variablen oder Verweisen auf den Wert
 * Erhöhen oder Verringern der Variable um einen konstanten Wert (*increment* und *decrement*)
 * Zuweisen eines anderen Werts zu der Variablen
-* Einfügen oder *Anfügen* des Variablenwerts als Letztes in einer Zeichenfolge oder einem Array
+* Einfügen oder *Anfügen* des Variablenwerts als letztes Element in einer Zeichenfolge oder einem Array
 
 Vorhandene Variabeln sind nur innerhalb der Logic App-Instanz, die sie erstellt, global. Außerdem bleiben sie über alle Schleifeniterationen innerhalb einer Logic App-Instanz bestehen. Wenn Sie auf eine Variable verweisen, verwenden Sie den Namen der Variablen als Token und nicht den Namen der Aktion, was die übliche Vorgehensweise wäre, um auf die Ausgaben einer Aktion zu verweisen.
 

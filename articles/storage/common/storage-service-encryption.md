@@ -4,17 +4,17 @@ description: Azure Storage schützt Ihre Daten, indem der Dienst diese automatis
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 04/10/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 8b4236e40e8dfbe6ce67bca007be0b6737a6e0c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945578"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
@@ -51,6 +51,8 @@ In der folgenden Tabelle werden die Schlüsselverwaltungsoptionen für Azure Sto
 
 <sup>1</sup> Informationen zum Erstellen eines Kontos, das die Verwendung von kundenseitig verwalteten Schlüsseln mit Queue Storage unterstützt, finden Sie unter [Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Warteschlangen](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) unterstützt.<br />
 <sup>2</sup> Informationen zum Erstellen eines Kontos, das die Verwendung von kundenseitig verwalteten Schlüsseln mit Table Storage unterstützt, finden Sie unter [Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) unterstützt.
+
+Weitere Informationen zur Verschlüsselung und Schlüsselverwaltung für verwaltete Azure-Datenträger finden Sie unter [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../../virtual-machines/windows/disk-encryption.md) für Windows-VMs bzw. [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../../virtual-machines/linux/disk-encryption.md) für Linux-VMs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

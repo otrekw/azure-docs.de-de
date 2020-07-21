@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734468"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Sichern des Remotezugriffs auf virtuelle Computer in Azure Active Directory Domain Services
 
@@ -41,7 +41,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance].
+    * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance], sofern erforderlich.
 * Ein in Ihrem virtuellen Azure Active Directory Domain Services-Netzwerk erstelltes *Workloads*-Subnetz.
     * Bei Bedarf [konfigurieren Sie virtuelle Netzwerke für eine verwaltete Azure Active Directory Domain Services-Domäne][configure-azureadds-vnet].
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
@@ -55,16 +55,16 @@ Eine empfohlene RDS-Bereitstellung enthält die folgenden zwei VMs:
 * *RDGVM01*: Hier werden der RD-Verbindungsbrokerserver, der RD-Webzugriffsserver und der RD-Gatewayserver ausgeführt.
 * *RDSHVM01*: Führt den RD-Sitzungshostserver aus.
 
-Stellen Sie sicher, dass VMs in einem *Workloads*-Subnetz Ihres virtuellen Azure AD DS-Netzwerks bereitgestellt werden, und verknüpfen Sie die VMs mit der verwalteten Azure AD DS-Domäne. Weitere Informationen erhalten Sie unter der Beschreibung zum [Erstellen und Einbinden einer Windows Server-VM in eine verwaltete Azure AD DS-Domäne][tutorial-create-join-vm].
+Stellen Sie sicher, dass VMs in einem *Workloads*-Subnetz Ihres virtuellen Azure AD DS-Netzwerks bereitgestellt werden, und verknüpfen Sie die VMs mit der verwalteten Domäne. Weitere Informationen erhalten Sie in der Beschreibung zum [Erstellen und Einbinden einer Windows Server-VM in eine verwaltete Domäne][tutorial-create-join-vm].
 
-Die Bereitstellung der RD-Umgebung umfasst eine Reihe von Schritten. Das vorhandene RD-Bereitstellungshandbuch kann ohne spezifische Änderungen für eine verwaltete Azure AD DS-Domäne verwendet werden:
+Die Bereitstellung der RD-Umgebung umfasst eine Reihe von Schritten. Das vorhandene RD-Bereitstellungshandbuch kann ohne besondere Änderungen für eine verwaltete Domäne verwendet werden:
 
 1. Melden Sie bei für die RD-Umgebung erstellten VMs mit einem Konto an, das zur Gruppe *Azure AD DC-Administratoren* gehört, z. B. mit *contosoadmin*.
 1. Verwenden Sie zum Erstellen und Konfigurieren von RDS das vorhandene [Bereitstellungshandbuch für die Remotedesktopumgebung][deploy-remote-desktop]. Verteilen Sie die RD-Serverkomponenten entsprechend den jeweiligen Anforderungen auf die Azure-VMs.
     * Spezifisch für Azure AD DS: Wenn Sie die RD-Lizenzierung konfigurieren, legen Sie anstelle des im Bereitstellungshandbuch angegebenen Modus **Pro Benutzer** den Modus **Pro Gerät** fest.
 1. Wenn Sie den Zugriff mithilfe eines Webbrowsers ermöglichen möchten, [richten Sie den Remotedesktop-Webclient für Ihre Benutzer ein][rd-web-client].
 
-Wenn RD in der verwalteten Azure AD DS-Domäne bereitgestellt ist, können Sie den Dienst genau wie eine lokale AD DS-Domäne verwalten und nutzen.
+Wenn RD in der verwalteten Domäne bereitgestellt ist, können Sie den Dienst genau wie eine lokale AD DS-Domäne verwalten und nutzen.
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>Bereitstellen und Konfigurieren von NPS und der Azure MFA NPS-Erweiterung
 
@@ -76,7 +76,7 @@ Benutzer müssen [für die Verwendung von Azure Multi-Factor Authentication regi
 
 Erstellen Sie zum Integrieren von Azure Multi-Factor Authentication in Ihre Azure AD DS-Remotedesktopumgebung einen NPS-Server, und installieren Sie die Erweiterung:
 
-1. Erstellen Sie eine zusätzliche Windows Server 2016- oder 2019-VM, z. B. *NPSVM01*, die mit einem *Workloads*-Subnetz im virtuellen Azure AD DS-Netzwerk verbunden ist. Binden Sie die VM in die verwaltete Azure AD DS-Domäne ein.
+1. Erstellen Sie eine zusätzliche Windows Server 2016- oder 2019-VM, z. B. *NPSVM01*, die mit einem *Workloads*-Subnetz im virtuellen Azure AD DS-Netzwerk verbunden ist. Binden Sie die VM in die verwaltete Domäne ein.
 1. Melden Sie sich bei der NPS-VM mit einem Konto an, das zur Gruppe der *Azure AD DC-Administratoren* gehört, z. B. *contosoadmin*.
 1. Wählen Sie unter **Server-Manager** die Option **Rollen und Features hinzufügen** aus, und installieren Sie anschließend die Rolle *Netzwerkrichtlinien- und Zugriffsdienste*.
 1. Sehen Sie den vorhandenen Artikel mit Anleitungen zum [Installieren und Konfigurieren der Azure MFA NPS-Erweiterung][nps-extension] ein.
@@ -87,9 +87,9 @@ Wenn Sie den NPS-Server und die NPS-Erweiterung für Azure Multi-Factor Authenti
 
 Eine Anleitung zum Integrieren der NPS-Erweiterung für Azure Multi-Factor Authentication finden Sie im vorhandenen Artikel zum [Integrieren Ihrer Remotedesktopgateway-Infrastruktur mithilfe der NPS-Erweiterung (Netzwerkrichtlinienserver) und Azure AD][azure-mfa-nps-integration] ein.
 
-Die folgenden zusätzlichen Konfigurationsoptionen sind für die Integration in eine verwaltete Azure AD DS-Domäne erforderlich:
+Die folgenden zusätzlichen Konfigurationsoptionen sind für die Integration in eine verwaltete Domäne erforderlich:
 
-1. [Registrieren Sie den NPS-Server nicht in Active Directory][register-nps-ad]. Dieser Schritt schlägt in einer verwalteten Azure AD DS-Domäne fehl.
+1. [Registrieren Sie den NPS-Server nicht in Active Directory][register-nps-ad]. Bei diesem Schritt tritt in einer verwalteten Domäne ein Fehler auf.
 1. Aktivieren Sie in [Schritt 4 zum Konfigurieren der Netzwerkrichtlinie][create-nps-policy] auch das Kontrollkästchen **Benutzerkonto-Einwähleigenschaften ignorieren**.
 1. Wenn Sie Windows Server 2019 für den NPS-Server und die NPS-Erweiterung für Azure Multi-Factor Authentication verwenden, führen Sie den folgenden Befehl aus, um den sicheren Kanal zu aktualisieren, damit der NPS-Server ordnungsgemäß kommunizieren kann:
 

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678584"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilerstellung für Live-Azure App Service-Apps mit Application Insights
 
@@ -25,9 +25,9 @@ Befolgen Sie die unten angegebene Anleitung, um Profiler für eine App zu aktivi
 
 Application Insights Profiler ist als Teil der App Services-Runtime bereits vorinstalliert. In den folgenden Schritten wird erläutert, wie Sie das Tool für Ihren App Service aktivieren. Führen Sie diese Schritte aus, auch wenn Sie das App Insights SDK zum Zeitpunkt der Erstellung in Ihrer Anwendung eingefügt haben.
 
-1. Aktivieren Sie die Einstellung „Always On“ für Ihren App Service. Sie können die Einstellung auf der Konfigurationsseite Ihrer App Service-Instanz unter „Allgemeine Einstellungen“ aktualisieren.
-1. Wechseln Sie zum Bereich **App Services** im Azure-Portal.
-1. Navigieren Sie zum Bereich **Einstellungen > Application Insights**.
+1. Navigieren Sie zur Azure-Systemsteuerung für Ihre App Service-Instanz.
+1. Aktivieren Sie die Einstellung „Always On“ für Ihren App Service. Sie finden diese Einstellung unter **Einstellungen**, Seite **Konfiguration** (siehe Screenshot im nächsten Schritt). Klicken Sie dann auf die Registerkarte **Allgemeine Einstellungen**.
+1. Navigieren Sie zur Seite **Einstellungen > Application Insights**.
 
    ![Aktivieren von App Insights im App Services-Portal](./media/profiler/AppInsights-AppServices.png)
 

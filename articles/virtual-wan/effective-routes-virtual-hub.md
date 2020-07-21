@@ -4,69 +4,65 @@ description: Anzeigen der effektiven Routen für einen virtuellen Hub in Azure V
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73511211"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037765"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>Anzeigen der effektiven Routen für einen virtuellen Hub
+# <a name="view-virtual-hub-effective-routes"></a>Anzeigen effektiver Routen eines virtuellen Hubs
 
-Sie können alle Routen Ihres Virtual WAN-Hubs im Azure-Portal anzeigen. Navigieren Sie zum Anzeigen der Routen zum virtuellen Hub und wählen Sie dann **Routing > Effektive Routen anzeigen** aus.
+Sie können alle Routen Ihres Virtual WAN-Hubs im Azure-Portal anzeigen. In diesem Artikel erfahren Sie die Schritte zum Anzeigen effektiver Routen. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
-## <a name="understanding-routes"></a><a name="understand"></a>Grundlegendes zu Routen
+> [!NOTE]
+> Im Azure-Portal werden einige dieser Features möglicherweise noch verteilt und sind bis zur Woche um den 3. August nicht verfügbar. 
+>
 
-Anhand des folgenden Beispiels können Sie besser verstehen, wie das Virtual WAN-Routing erfolgt.
+## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Auswählen von Verbindungen oder Routingtabellen
 
-In diesem Beispiel gibt es ein virtuelles WAN mit drei Hubs. Der erste Hub befindet sich in der Region „USA, Osten“, der zweite Hub befindet sich in der Region „Europa, Westen“ und der dritte Hub in der Region „USA, Westen“. In einem Virtual WAN sind alle Hubs miteinander verbunden. In diesem Beispiel wird davon ausgegangen, dass die Hubs „USA, Osten“ und „Europa, Westen“ über Verbindungen zu lokalen Zweigstellen (Spokes) und virtuellen Azure-Netzwerken (Spokes) verfügen.
+1. Navigieren Sie zu Ihrem virtuellen Hub, und wählen Sie **Routing**aus. Wählen Sie auf der Seite „Routing“ die Option **Effektive Routen** aus.
+1. In der Dropdownliste können Sie **Verbindungstyp** oder eine **Routingtabelle** auswählen. Wenn die Option für Routingtabellen nicht angezeigt wird, ist in diesem virtuellen Hub keine benutzerdefinierte oder Standardroutingtabelle eingerichtet.
+1. In der Dropdownliste für **Verbindungen/Routingtabellen** können Sie zwischen den folgenden Elementen auswählen:
 
-Ein Azure VNet-Spoke (10.4.0.0/16) mit einer Network Virtual Appliance (10.4.0.6) ist weiterhin mit einem VNet (10.5.0.0/16) gekoppelt. Weitere Informationen zur Hub-Routingtabelle finden Sie in den [zusätzlichen Informationen](#abouthubroute) weiter unten in diesem Artikel.
+   * VNet-Verbindung
+   * VPN-Standortverbindung
+   * ExpressRoute-Verbindung
+   * Point-to-Site-Verbindung
+   * Routingtabelle
 
-In diesem Beispiel wird auch davon ausgegangen, dass die Zweigstelle 1 in Westeuropa mit dem Hub „USA, Osten“ und dem Hub „Europa, Westen“ verbunden ist. Eine ExpressRoute-Verbindung in „USA, Osten“ verbindet Zweigstelle 2 mit dem Hub „USA, Osten“.
+   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="Routing":::
 
-![Diagramm](./media/effective-routes-virtual-hub/diagram.png)
+## <a name="view-output"></a><a name="output"></a>Anzeigen der Ausgabe
 
-## <a name="view-effective-routes"></a><a name="view"></a>Anzeigen effektiver Routen
+In der Seitenausgabe sind die folgenden Felder aufgeführt:
 
-Wenn Sie im Portal die Option „Effektive Routen anzeigen“ auswählen, wird die in der [Hub-Routingtabelle](#routetable) angezeigte Ausgabe für den Hub „USA, Osten“ erstellt.
+* **Präfix:** Adresspräfix, das für die aktuelle Entität bekannt ist.
+* **Typ des nächsten Hops:** Kann Virtual Network-Verbindung, VPN_S2S_Gateway, ExpressRouteGateway, Remotehub oder Azure Firewall sein.
+* **Nächster Hop:** Dies ist die IP-Adresse oder einfach ein Link, der den aktuellen Hub impliziert.
+* **Ursprung:** Die Ressourcen-ID der Routingquelle.
+* **AS-Pfad:** Für das BGP-Attribut „AS-Pfad“ (Autonomes System) werden alle AS-Nummern aufgeführt, die durchlaufen werden müssen, um den Standort zu erreichen, an dem das Präfix für den Pfad angekündigt wird.
 
-Genauer gesagt: die erste Zeile bedeutet, dass der Hub „USA, Osten“ die Route „10.20.1.0/24“ (Zweigstelle 1) durch die *Nächster Hop*-VPN-Verbindung ("Nächster Hop" VPN Gateway Instance0 IP 10.1.0.6, Instance1 IP 10.1.0.7) erlernt hat. *Routenursprung* verweist auf die Ressourcen-ID. *AS-Pfad* gibt den AS-Pfad für Zweigstelle 1 an.
+### <a name="example"></a><a name="example"></a>Beispiel
 
-### <a name="hub-route-table"></a><a name="routetable"></a>Hub-Routingtabelle
+Die Werte in der folgenden Beispieltabelle implizieren, dass die Verbindung mit dem virtuellen Hub oder der Routingtabelle die Route für 10.2.0.0/24 (ein Branchpräfix) gelernt hat. Die Route wurde gelernt, da **Typ des nächsten Hops** ein VPN_S2S_Gateway und **Nächster Hop** eine VPN-Gatewayressourcen-ID ist. **Routenursprung** verweist auf die Ressourcen-ID des Ursprungs-VPN-Gateways bzw. der -routingtabelle oder der -verbindung. **AS-Pfad** gibt den AS-Pfad für den Branch an.
 
 Verwenden Sie die Scrollleiste am unteren Rand der Tabelle, um den „AS-Pfad“ anzuzeigen.
 
 | **Präfix** |  **Typ des nächsten Hops** | **Nächster Hop** |  **Routenursprung** |**AS-Pfad** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
-|10.4.0.0/16|VNet-Verbindung| On-link |  |  |
-|10.5.0.0/16| IP-Adresse| 10.4.0.6|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|0.0.0.0/0| IP-Adresse| `<Azure Firewall IP>` |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|10.22.1.0/16| Remote Hub|10.8.0.6, 10.8.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Remote Hub|  On-link |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_1| |
+| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
->[!NOTE]
-> Wenn die Hubs „USA, Osten“ und „Europa, Westen“ in der Beispieltopologie nicht miteinander kommunizieren, gibt es die gelernte Route (10.9.0.0/16) nicht. Hubs kündigen nur Netzwerke an, die direkt mit Ihnen verbunden sind.
->
+**Überlegungen:**
 
-## <a name="additional-information"></a><a name="additional"></a>Weitere Informationen
+* Wenn in der Ausgabe zum **Abrufen effektiver Routen** 0.0.0.0/0 angegeben ist, bedeutet dies, dass die Route in einer der Routingtabellen vorhanden ist. Wenn diese Route jedoch für das Internet eingerichtet wurde, ist für die Verbindung das zusätzliche Flag **"enableInternetSecurity": true** erforderlich. Die effektive Route wird nicht auf der VM-NIC angezeigt, wenn das Flag „enableInternetSecurity“ der Verbindung FALSE ist.
 
-### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Informationen zur Hub-Routingtabelle
-
-Sie können eine virtuelle Hubroute erstellen und die Route der Routingtabelle des virtuellen Hubs zuweisen. Sie können der Routingtabelle des virtuellen Hubs mehrere Routen zuweisen. Auf diese Weise können Sie eine Route für das Ziel-VNet über eine IP-Adresse festlegen (normalerweise die Network Virtual Appliance (NVA) in einem Spoke-VNet). Weitere Informationen zu NVAs finden Sie unter [Weiterleiten von Datenverkehr von einem virtuellen Hub an eine NVA](virtual-wan-route-table-portal.md).
-
-### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Informationen zur Standardroute (0.0.0.0/0)
-
-Ein virtueller Hub kann eine erlernte Standardroute an eine VNet-, Site-to-Site-VPN- und ExpressRoute-Verbindung weitergeben, wenn das Flag für die Verbindung auf „Aktiviert“ festgelegt ist. Dieses Flag ist sichtbar, wenn Sie eine VNet-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. „EnableInternetSecurity“ ist für VNet-, ExpressRoute- und VPN-Hubverbindungen standardmäßig immer „false“.
-
-Der Ursprung der Standardroute liegt nicht im Virtual WAN-Hub. Die Standardroute wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist.
+* Das Feld **Standardroute weitergeben** wird im Azure Virtual WAN-Portal angezeigt, wenn Sie eine Verbindung mit einem virtuellen Netzwerk, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeiten. Dieses Feld gibt das **enableInternetSecurity**-Flag an, das für ExpressRoute- und VPN-Verbindungen immer standardmäßig FALSE ist, für Verbindungen mit virtuellen Netzwerken jedoch TRUE.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
+* Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
+* Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).

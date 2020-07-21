@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 06/23/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f4c3330b23b8b724cdbf5d7e09eec8a8dd5b8cfa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3bf9dc0e69707eaed8c2a844f6ed3169e65a5342
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564076"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 
@@ -46,13 +46,13 @@ Im folgenden Beispiel wird mithilfe der Lucene-Abfragesyntax (dies wird im Param
 Der Parameter `searchMode=all` ist in diesem Beispiel wichtig. Bei Abfragen mit Operatoren sollten Sie generell `searchMode=all` festlegen, um sicherzustellen, dass *alle* Kriterien abgeglichen werden.
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
 ```
 
  Alternativ können Sie POST verwenden:  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
@@ -166,21 +166,23 @@ Im folgenden Beispiel werden die Unterschiede veranschaulicht. Angenommen, Sie h
  Verwenden Sie zum Verstärken eines Begriffs das Caretzeichen „^“ mit einem Verstärkungsfaktor (einer Zahl) am Ende des Begriffs, nach dem Sie suchen. Sie können auch Ausdrücke verstärken. Je höher der Verstärkungsfaktor, desto relevanter wird der Begriff im Verhältnis zu anderen Suchbegriffen. Der Standardverstärkungsfaktor ist 1. Der Verstärkungsfaktor muss positiv sein, kann aber kleiner als 1 sein (z. B. 0.20).  
 
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> Suche mit regulären Ausdrücken  
- Bei einer Suche mit regulärem Ausdruck werden Übereinstimmungen basierend auf dem Inhalt zwischen Schrägstrichen „/“ gefunden, wie in der [RegExp-Klasse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)dokumentiert.  
+ Bei einer Suche mit regulären Ausdrücken werden Übereinstimmungen basierend auf unter Apache Lucene gültigen Mustern gefunden, wie in der [RegExp-Klasse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html) dokumentiert. In Azure Cognitive Search wird ein regulärer Ausdruck in Schrägstriche `/` eingeschlossen.
 
  Geben Sie beispielsweise `/[mh]otel/` an, um nach Dokumenten zu suchen, die das Wort „motel“ oder „hotel“ enthalten. Suchen mit regulären Ausdrücken werden mit einzelnen Wörtern abgeglichen.
 
 Für einige Tools und Sprachen müssen zusätzlich Escapezeichen verwendet werden. Bei JSON werden Zeichenfolgen, die einen Schrägstrich enthalten, mit einem Escapezeichen in Form eines umgekehrten Schrägstrichs versehen: „microsoft.com/azure/“ wird zu `search=/.*microsoft.com\/azure\/.*/`, wobei `search=/.* <string-placeholder>.*/` dem regulären Ausdruck und `microsoft.com\/azure\/` der Zeichenfolge mit einem Escapezeichen in Form eines Schrägstrichs entspricht.
 
-##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> Platzhaltersuche  
+##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> Platzhaltersuche
 
-Sie können die allgemein bekannte Syntax für die Platzhaltersuche nach mehreren (*) oder einzelnen (?) Zeichen verwenden. Beachten Sie, dass der Lucene-Abfrageparser die Verwendung dieser Symbole bei einem einzelnen Begriff, nicht bei einem Ausdruck, unterstützt.
+Sie können die allgemein bekannte Syntax für die Platzhaltersuche nach mehreren (`*`) oder einzelnen (`?`) Zeichen verwenden. Beispielsweise gibt der Abfrageausdruck `search=alpha*` „alphanumerisch“ und „alphabetisch“ zurück. Beachten Sie, dass der Lucene-Abfrageparser die Verwendung dieser Symbole bei einem einzelnen Begriff, nicht bei einem Ausdruck, unterstützt.
 
-Bei der Präfixsuche wird ebenfalls das Sternchen (`*`) verwendet. Beispielsweise gibt der Abfrageausdruck `search=note*` „notebook“ oder „notepad“ zurück. Für die Präfixsuche ist keine vollständige Lucene-Syntax erforderlich. Dieses Szenario wird von der einfachen Syntax unterstützt.
+Die vollständige Lucene-Syntax unterstützt Präfix-, Infix- und Suffixvergleiche. Wenn Sie jedoch nur eine Präfixübereinstimmung benötigen, können Sie die einfache Syntax verwenden. (Die Präfixübereinstimmung wird in beiden Fällen unterstützt.)
 
-Die Suffixsuche, bei der der Zeichenfolge `*` oder `?` vorangestellt ist, erfordert die vollständige Lucene-Syntax und einen regulären Ausdruck. (Sie können kein Sternchen [*] oder Fragezeichen [?] als erstes Zeichen in einer Suche verwenden.) Beim Begriff „alphanumeric“ wird die Übereinstimmung vom Abfrageausdruck (`search=/.*numeric.*/`) gefunden.
+Für die Suffixübereinstimmung, bei denen der Zeichenfolge `*` oder `?` vorangestellt ist (z. B. in `search=/.*numeric./`), oder die Infixübereinstimmung, sind die vollständige Lucene-Syntax sowie das Schrägstrich-Trennzeichen `/` für reguläre Ausdrücke erforderlich. Sie können die Symbole * oder ? nicht ohne `/` als erstes Zeichen eines Begriffs oder innerhalb eines Begriffs verwenden. 
 
 > [!NOTE]  
+> Grundsätzlich ist der Musterabgleich langsam, sodass Sie möglicherweise alternative Methoden untersuchen sollten, z. B. Edge-N-Gramm-Tokenisierung, mit der Token für Zeichenfolgen in einem Begriff erstellt werden. Der Index wird damit größer, Abfragen werden jedoch möglicherweise schneller ausgeführt, je nach der Form des Musters und der Länge der Zeichenfolgen, die Sie indizieren.
+>
 > Während der Abfrageanalyse werden Abfragen, die als Präfix-, Suffix-, Platzhaltersuche oder reguläre Ausdrücke formuliert werden, unverändert an die Abfragestruktur übergeben, wobei die [lexikalische Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) umgangen wird. Es werden nur Übereinstimmungen gefunden, wenn der Index die Zeichenfolgen in dem in der Abfrage angegebenen Format enthält. In den meisten Fällen benötigen Sie während der Indizierung ein alternatives Analysetool, das die Integrität der Zeichenfolgen beibehält, damit der Abgleich von Teilausdrücken und -mustern funktioniert. Weitere Informationen finden Sie im Thema zur [Suche nach Teilausdrücken in Azure Cognitive Search-Abfragen](search-query-partial-matching.md).
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> Bewerten von Platzhalterabfragen und Abfragen mit regulären Ausdrücken

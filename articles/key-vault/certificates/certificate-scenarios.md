@@ -3,19 +3,18 @@ title: Erste Schritte mit Key Vault-Zertifikaten
 description: Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84765096"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -97,13 +96,19 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
 -   Darüber hinaus kann der Benutzer die Richtlinie bearbeiten, die zum Zeitpunkt des Imports funktionsfähig ist, aber an den Stellen Standardwerte enthält, an denen beim Import keine Informationen angegeben waren. Ex. Keine Informationen zum Aussteller  
 
 ### <a name="formats-of-import-we-support"></a>Unterstützte Importformate
+Azure Key Vault unterstützt PEM- und PFX-Zertifikatsdateien für den Import von Zertifikaten.
 Die folgenden Importtypen werden für das PEM-Dateiformat unterstützt. Ein einzelnes PEM-codiertes Zertifikat mit einem PKCS#8-codiertem, nicht verschlüsselten Schlüssel, das Folgendes aufweist:
 
 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
 -----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
 
-Bei der Zusammenführung von Zertifikaten werden zwei PEM-basierte Formate unterstützt. Sie können entweder ein einzelnes PKCS#8-codiertes Zertifikat oder eine base64-codierte P7B-Datei zusammenführen. -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+Wenn Sie das Zertifikat importieren, müssen Sie sicherstellen, dass der Schlüssel in der Datei selbst enthalten ist. Wenn der private Schlüssel separat in einem anderen Format vorliegt, müssen Sie den Schlüssel mit dem Zertifikat kombinieren. Einige Zertifizierungsstellen bieten Zertifikate in verschiedenen Formaten an. Stellen Sie daher vor dem Importieren des Zertifikats sicher, dass es in einem der Formate PEM oder PFX vorliegt. 
+
+### <a name="formats-of-merge-csr-we-support"></a>Unterstützte Formate von Merge CSR
+AKV unterstützt zwei PEM-basierte Formate. Sie können ein einzelnes PKCS#8-codiertes Zertifikat oder eine Base64-codierte P7B-Datei (von der Zertifizierungsstelle signierte Zertifikatkette) zusammenführen. 
+
+-----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
 EC-Schlüssel werden derzeit nicht im PEM-Format unterstützt.
 
@@ -123,4 +128,3 @@ EC-Schlüssel werden derzeit nicht im PEM-Format unterstützt.
   (4): Ihre gewählte Zertifizierungsstelle antwortet mit einem X.509-Zertifikat.  
 
   (5): Ihre Anwendung schließt die Erstellung des neuen Zertifikats durch das Zusammenführen mit dem X.509-Zertifikat Ihrer Zertifizierungsstelle ab.
-

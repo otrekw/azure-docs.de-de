@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/10/2020
+ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299773"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770951"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -57,7 +57,7 @@ In den Details zur Ausführung und Dauer unten in der Ansicht zur Überwachung d
 | --------------- | ------------------------------------------------------------ |
 | Warteschlange           | Die bis zum tatsächlichen Start der Kopieraktivität in der Integration Runtime verstrichene Zeit. |
 | Kopiervorbereitungsskript | Die Zeit, die zwischen dem Starten der Kopieraktivität in der IR und dem Abschließen der Kopieraktivität für die Ausführung des Kopiervorbereitungsskripts im Senkendatenspeicher verstrichen ist. Wird angewendet, wenn Sie das Kopiervorbereitungsskript für Datenbanksenken konfigurieren, z. B. beim Schreiben von Daten in Azure SQL-Datenbank zur Bereinigung vor dem Kopieren neuer Daten. |
-| Übertragen        | Die verstrichene Zeit zwischen dem Ende des vorherigen Schritts und dem Übertragen aller Daten aus der Quelle in die Senke durch die IR. Die Teilschritte unter „Übertragen“ werden parallel ausgeführt.<br><br>- **Zeit bis zum ersten Byte:** Die Zeit vom Ende des vorherigen Schritts bis zu dem Zeitpunkt, zu dem das erste Byte aus dem Quelldatenspeicher von der IR empfangen wird. Wird auf nicht dateibasierte Quellen angewendet.<br>- **Quellenauflistung:** Die Dauer, die für das Auflisten von Quelldateien oder Datenpartitionen benötigt wird. Letzteres gilt, wenn Sie Partitionsoptionen für Datenbankquellen konfigurieren, z. B. beim Kopieren von Daten aus Datenbanken wie Oracle, SAP HANA, Teradata, Netezza usw.<br/>-**Lesen von der Quelle:** Die Dauer für das Abrufen von Daten aus dem Quelldatenspeicher.<br/>- **Schreiben in die Senke:** Die Dauer für das Schreiben von Daten in den Senkendatenspeicher. |
+| Übertragen        | Die verstrichene Zeit zwischen dem Ende des vorherigen Schritts und dem Übertragen aller Daten aus der Quelle in die Senke durch die IR. <br/>Beachten Sie, dass die Teilschritte unter „Übertragen“ parallel ausgeführt werden und dass einige Vorgänge derzeit nicht angezeigt werden, z. B. Analysieren und Generieren des Dateiformats.<br><br/>- **Zeit bis zum ersten Byte:** Die Zeit vom Ende des vorherigen Schritts bis zu dem Zeitpunkt, zu dem das erste Byte aus dem Quelldatenspeicher von der IR empfangen wird. Wird auf nicht dateibasierte Quellen angewendet.<br>- **Quellenauflistung:** Die Dauer, die für das Auflisten von Quelldateien oder Datenpartitionen benötigt wird. Letzteres gilt, wenn Sie Partitionsoptionen für Datenbankquellen konfigurieren, z. B. beim Kopieren von Daten aus Datenbanken wie Oracle, SAP HANA, Teradata, Netezza usw.<br/>-**Lesen von der Quelle:** Die Dauer für das Abrufen von Daten aus dem Quelldatenspeicher.<br/>- **Schreiben in die Senke:** Die Dauer für das Schreiben von Daten in den Senkendatenspeicher. Beachten Sie, dass einige Connectors diese Metrik aktuell nicht enthalten, z. B. Azure Cognitive Search, Azure Data Explorer, Azure Table Storage, Oracle, SQL Server, Common Data Service, Dynamics 365, Dynamics CRM, Salesforce und Salesforce Service Cloud. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Problembehandlung für die Kopieraktivität bei Azure IR
 
@@ -70,7 +70,6 @@ Gehen Sie wie folgt vor, falls die Leistung der Kopieraktivität nicht Ihre Erwa
 - **Lange Dauer für „Übertragen: Zeit bis zum ersten Byte“** : Dies bedeutet, dass es lange dauert, bis von Ihrer Quellabfrage Daten zurückgegeben werden. Überprüfen und optimieren Sie die Abfrage oder den Server. Wenden Sie sich an Ihr Datenspeicherteam, falls Sie weitere Hilfe benötigen.
 
 - **Lange Dauer für „Übertragen: Quellenauflistung“** : Dies bedeutet, dass das Auflisten von Quelldateien oder der Datenpartitionen der Quelldatenbank nur langsam erfolgt.
-
   - Beachten Sie beim Kopieren von Daten von einer dateibasierten Quelle Folgendes, wenn Sie einen **Platzhalterfilter** für einen Ordnerpfad oder Dateinamen (`wildcardFolderPath` oder `wildcardFileName`) oder **Filter für das letzte Änderungsdatum der Datei** (`modifiedDatetimeStart` oder `modifiedDatetimeEnd`) verwenden: Diese Filterung führt dazu, dass von der Kopieraktivität alle Dateien des angegebenen Ordners auf der Clientseite aufgelistet werden und anschließend der Filter angewendet wird. Eine solche Auflistung von Dateien kann zu einem Engpass werden. Dies gilt besonders, wenn nur eine geringe Menge von Dateien die Filterregel erfüllt.
 
     - Überprüfen Sie, ob Sie [Dateien basierend auf einem Dateipfad oder -namen mit datetime-Partition kopieren](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) können. Diese Vorgehensweise ist nicht mit einer höheren Belastung bei der Auflistung aufseiten der Quelle verbunden.

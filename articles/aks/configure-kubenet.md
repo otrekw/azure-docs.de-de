@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309667"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055493"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ Azure CLI-Version 2.0.65 oder höher muss installiert und konfiguriert sein. Fü
 
 In vielen Umgebungen gibt es definierte virtuelle Netzwerke und Subnetze mit zugeordneten IP-Adressbereichen. Diese Ressourcen des virtuellen Netzwerks werden verwendet, um mehrere Dienste und Anwendungen zu unterstützen. Um Netzwerkkonnektivität zu gewährleisten, können AKS-Cluster *kubenet* (grundlegender Netzwerkbetrieb) oder Azure CNI (*erweiterter Netzwerkbetrieb*) verwenden.
 
-Mit *kubenet* erhalten nur die Knoten eine IP-Adresse im Subnetz des virtuellen Netzwerks. Pods können nicht direkt miteinander kommunizieren. Stattdessen werden benutzerdefiniertes Routing (User Defined Routing, UDR) und IP-Weiterleitung für die Konnektivität zwischen Pods über Knoten verwendet. Sie können auch Pods hinter einem Dienst bereitstellen, der eine zugewiesene IP-Adresse empfängt und einen Lastenausgleich des Datenverkehrs für die Anwendung durchführt. Das folgende Diagramm zeigt, wie die AKS-Knoten eine IP-Adresse im Subnetz des virtuellen Netzwerks empfangen, aber nicht die Pods:
+Mit *kubenet* erhalten nur die Knoten eine IP-Adresse im Subnetz des virtuellen Netzwerks. Pods können nicht direkt miteinander kommunizieren. Stattdessen werden benutzerdefiniertes Routing (User Defined Routing, UDR) und IP-Weiterleitung für die Konnektivität zwischen Pods über Knoten verwendet. Standardmäßig werden UDRs und die IP-Weiterleitungskonfiguration vom AKS-Dienst erstellt und verwaltet, Sie haben jedoch die Möglichkeit, eine [eigene Routingtabelle für benutzerdefinierte Routenverwaltung zu verwenden][byo-subnet-route-table]. Sie können auch Pods hinter einem Dienst bereitstellen, der eine zugewiesene IP-Adresse empfängt und einen Lastenausgleich des Datenverkehrs für die Anwendung durchführt. Das folgende Diagramm zeigt, wie die AKS-Knoten eine IP-Adresse im Subnetz des virtuellen Netzwerks empfangen, aber nicht die Pods:
 
 ![Kubenet-Netzwerkmodell mit einem AKS-Cluster](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ Verwenden Sie *Azure CNI* unter folgenden Bedingungen:
 
 - Sie haben genügend verfügbaren IP-Adressraum.
 - Podkommunikation findet überwiegend mit außerhalb des Clusters befindlichen Ressourcen statt.
-- Sie möchten die UDRs nicht verwalten.
+- Sie möchten keine benutzerdefinierten Routen für Podverbindungen verwalten.
 - Erweiterte AKS-Features wie virtuelle Knoten oder Azure-Netzwerkrichtlinien sind erforderlich.  Verwenden Sie [Calico-Netzwerkrichtlinien][calico-network-policies].
 
 Weitere Informationen zur Entscheidung, welches Netzwerkmodell Sie verwenden, finden Sie unter [Vergleich der Netzwerkmodelle und ihres Supportumfang][network-comparisons].
@@ -139,10 +139,10 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Weisen Sie nun dem Dienstprinzipal für den AKS-Cluster mithilfe des Befehls [az role assignment create][az-role-assignment-create]*Mitwirkender*-Berechtigungen für das virtuelle Netzwerk zu. Geben Sie Ihre eigene *\<appId>* wie in der Ausgabe des vorherigen Befehls an, um den Dienstprinzipal zu erstellen:
+Weisen Sie nun dem Dienstprinzipal für den AKS-Cluster mithilfe des Befehls [az role assignment create][az-role-assignment-create] Berechtigungen vom Typ *Netzwerkmitwirkender* für das virtuelle Netzwerk zu. Geben Sie Ihre eigene *\<appId>* wie in der Ausgabe des vorherigen Befehls an, um den Dienstprinzipal zu erstellen:
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Erstellen eines AKS-Clusters im virtuellen Netzwerk
@@ -201,16 +201,37 @@ Wenn Sie einen AKS-Cluster erstellen, werden eine Netzwerksicherheitsgruppe und 
 
 Mit kubenet muss eine Routingtabelle in Ihren Clustersubnetzen vorhanden sein. AKS unterstützt das Einbinden Ihres eigenen vorhandenen Subnetzes und Ihrer Routingtabelle.
 
-Wenn Ihr benutzerdefiniertes Subnetz keine Routingtabelle enthält, erstellt AKS eine für Sie und fügt Regeln hinzu. Wenn Ihr benutzerdefiniertes Subnetz beim Erstellen des Clusters eine Routingtabelle enthält, bestätigt AKS die vorhandene Routingtabelle während der Clustervorgänge und aktualisiert Regeln für Cloudanbietervorgänge entsprechend.
+Falls Ihr benutzerdefiniertes Subnetz keine Routingtabelle enthält, erstellt AKS automatisch eine Routingtabelle und fügt ihr während des gesamten Clusterlebenszyklus Regeln hinzu. Wenn Ihr benutzerdefiniertes Subnetz bei der Clustererstellung bereits eine Routingtabelle enthält, wird diese bei Clustervorgänge von AKS berücksichtigt, und es werden entsprechende Regeln für Cloudanbietervorgänge hinzugefügt/aktualisiert.
+
+> [!WARNING]
+> Benutzerdefinierte Regeln können der benutzerdefinierten Routingtabelle hinzugefügt und aktualisiert werden. Vom Kubernetes-Cloudanbieter hinzugefügte Regeln dürfen dagegen nicht aktualisiert oder entfernt werden. Regeln wie „0.0.0.0/0“ müssen in jeder Routingtabelle enthalten und dem Ziel Ihres Internetgateways (beispielsweise einer virtuellen Netzwerkappliance oder einem anderen Ausgangsgateway) zugeordnet sein. Achten Sie beim Aktualisieren von Regeln unbedingt darauf, dass nur Ihre benutzerdefinierten Regeln geändert werden.
+
+Weitere Informationen zur Einrichtung einer benutzerdefinierten Routingtabelle finden Sie [hier][custom-route-table].
+
+Für die erfolgreiche Weiterleitung von Anforderungen in einem Kubenet-Netzwerk sind organisierte Routingtabellenregeln erforderlich. Routingtabellen müssen daher für jeden Cluster, der auf sie angewiesen ist, sorgfältig verwaltet werden. Eine Routingtabelle kann nicht von mehreren Clustern genutzt werden, da sich die Pod-CIDRs verschiedener Cluster möglicherweise überschneiden, was zu unerwartetem und fehlerhaftem Routing führen kann. Wenn Sie mehrere Cluster im gleichen virtuellen Netzwerk konfigurieren oder jedem Cluster ein eigenes virtuelles Netzwerk zuweisen, berücksichtigen Sie die folgenden Einschränkungen.
 
 Einschränkungen:
 
 * Vor der Erstellung des Clusters müssen Berechtigungen zugewiesen werden. Stellen Sie sicher, dass Sie einen Dienstprinzipal mit Schreibberechtigungen für das benutzerdefinierte Subnetz und die benutzerdefinierte Routingtabelle verwenden.
 * Verwaltete Identitäten werden derzeit nicht mit benutzerdefinierten Routentabellen in kubenet unterstützt.
-* Vor dem Erstellen des AKS-Clusters muss dem Subnetz eine benutzerdefinierte Routingtabelle zugeordnet werden. Diese Routingtabelle kann nicht aktualisiert werden, und alle Routingregeln müssen der ursprünglichen Routingtabelle hinzugefügt oder daraus entfernt werden, bevor Sie den AKS-Cluster erstellen.
-* Alle Subnetze in einem virtuellen AKS-Netzwerk müssen mit der gleichen Routingtabelle verknüpft sein.
-* Jeder AKS-Cluster muss eine eindeutige Routingtabelle verwenden. Eine Routingtabelle mit mehreren Clustern kann nicht wiederverwendet werden.
+* Vor dem Erstellen des AKS-Clusters muss dem Subnetz eine benutzerdefinierte Routingtabelle zugeordnet werden.
+* Die zugeordnete Routingtabellenressource kann nach der Clustererstellung nicht mehr aktualisiert werden. Benutzerdefinierte Regeln in der Routingtabelle können jedoch geändert werden.
+* Von jedem AKS-Cluster muss eine einzelne, eindeutige Routingtabelle für alle Subnetze verwendet werden, die dem Cluster zugeordnet sind. Eine Routingtabelle kann nicht von mehreren Clustern genutzt werden, da dies zu Überschneidungen bei Pod-CIDRs sowie zu Konflikten bei Routingregeln führen kann.
 
+Nachdem Sie eine benutzerdefinierte Routingtabelle erstellt und dem Subnetz in Ihrem virtuellen Netzwerk zugeordnet haben, können Sie einen neuen AKS-Cluster erstellen, von dem Ihre Routingtabelle genutzt wird.
+Sie müssen die Subnetz-ID für den Ort verwenden, an dem Sie Ihren AKS-Cluster bereitstellen möchten. Dieses Subnetz muss ebenfalls Ihrer benutzerdefinierten Routingtabelle zugeordnet werden.
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -232,9 +253,11 @@ Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks b
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md

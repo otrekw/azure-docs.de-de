@@ -3,15 +3,15 @@ title: Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein Azure Cosmos-Konto über eine private IP-Adresse in einem virtuellen Netzwerk einrichten.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/27/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.author: thweiss
-ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116661"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261629"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 
@@ -31,7 +31,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen privaten
 
 1. Wählen Sie in der Liste der Einstellungen die Option **Private Endpunktverbindungen** und dann **Privater Endpunkt** aus:
 
-   ![Auswahl zum Erstellen eines privaten Endpunkts über das Azure-Portal](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Auswahl zum Erstellen eines privaten Endpunkts über das Azure-Portal":::
 
 1. Geben Sie im Bereich **Privaten Endpunkt erstellen – Grundlagen** folgende Informationen ein, oder wählen Sie sie aus:
 
@@ -94,7 +94,7 @@ Nach der Bereitstellung des privaten Endpunkts können Sie die IP-Adressen abfra
 1. Suchen Sie nach dem privaten Endpunkt, den Sie zuvor erstellt haben. In diesem Fall ist das **cdbPrivateEndpoint3**.
 1. Wählen Sie die Registerkarte **Übersicht** aus, um die DNS-Einstellungen und IP-Adressen anzuzeigen.
 
-![Private IP-Adressen im Azure-Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Private IP-Adressen im Azure-Portal":::
 
 Für jeden privaten Endpunkt werden mehrere IP-Adressen erstellt:
 
@@ -407,7 +407,7 @@ Für diese Konten müssen Sie einen privaten Endpunkt für jeden API-Typ erstell
 
 Nach der erfolgreichen Bereitstellung der Vorlage wird eine Ausgabe ähnlich der folgenden Abbildung angezeigt. Der Wert für `provisioningState` lautet `Succeeded`, wenn die privaten Endpunkte ordnungsgemäß eingerichtet sind.
 
-![Bereitstellungsausgabe für die Resource Manager-Vorlage](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Bereitstellungsausgabe für die Resource Manager-Vorlage":::
 
 Nach der Bereitstellung der Vorlage werden die privaten IP-Adressen innerhalb des Subnetzes reserviert. Die Firewallregel für das Azure Cosmos-Konto ist so konfiguriert, dass nur Verbindungen über den privaten Endpunkt angenommen werden.
 
@@ -628,6 +628,10 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 Wie im vorherigen Abschnitt beschrieben wurde und sofern keine bestimmten Firewallregeln festgelegt wurden, kann durch das Hinzufügen eines privaten Endpunkts nur über private Endpunkte auf Ihr Azure Cosmos-Konto zugegriffen werden. Dies bedeutet, dass das Azure Cosmos-Konto über öffentlichen Datenverkehr erreicht werden könnte, nachdem es erstellt wurde und bevor ein privater Endpunkt hinzugefügt wird. Wenn Sie sicherstellen möchten, dass der Zugriff auf öffentliche Netzwerke sogar vor der Erstellung von privaten Endpunkten deaktiviert wird, können Sie das Flag `publicNetworkAccess` während der Kontoerstellung auf `Disabled` festlegen. Ein Beispiel für die Verwendung dieses Flags finden Sie in [dieser Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/).
 
+## <a name="port-range-when-using-direct-mode"></a>Portbereich bei Verwendung des direkten Modus
+
+Wenn Sie Private Link mit einem Azure Cosmos-Konto über eine Verbindung im direkten Modus verwenden, müssen Sie sicherstellen, dass der gesamte TCP-Portbereich (0 bis 65535) geöffnet ist.
+
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualisieren eines privaten Endpunkts beim Hinzufügen oder Entfernen einer Region
 
 Beim Hinzufügen oder Entfernen von Regionen in einem Azure Cosmos-Konto müssen Sie die DNS-Einträge für dieses Konto hinzufügen oder entfernen. Nachdem Regionen hinzugefügt oder entfernt wurden, können Sie die private DNS-Zone des Subnetzes aktualisieren, damit diese den hinzugefügten oder entfernten DNS-Einträgen und den zugehörigen privaten IP-Adressen entspricht.
@@ -642,7 +646,9 @@ Beim Entfernen einer Region können die gleichen Schritte verwendet werden. Nach
 
 Bei Verwendung von Private Link mit einem Azure Cosmos-Konto gelten die folgenden Einschränkungen:
 
-* Wenn Sie Private Link mit einem Azure Cosmos-Konto im direkten Verbindungsmodus verwenden, können Sie lediglich das TCP-Protokoll verwenden. Das HTTP-Protokoll wird derzeit nicht unterstützt.
+* Es können nicht mehr als 200 private Endpunkte in einem einzelnen Azure Cosmos-Konto vorhanden sein.
+
+* Wenn Sie Private Link mit einem Azure Cosmos-Konto über eine Verbindung im direkten Modus verwenden, können Sie lediglich das TCP-Protokoll verwenden. Das HTTP-Protokoll wird derzeit nicht unterstützt.
 
 * Wenn Sie die Azure Cosmos DB-API für MongoDB-Konten verwenden, wird ein privater Endpunkt nur für Konten unter Serverversion 3.6 unterstützt (d. h. Konten mit Endpunkt im Format `*.mongo.cosmos.azure.com`). Private Link wird nicht für Konten unter Serverversion 3.2 unterstützt (d. h. Konten mit Endpunkt im Format `*.documents.azure.com`). Zur Verwendung von Private Link sollten Sie alte Konten zur neuen Version migrieren.
 

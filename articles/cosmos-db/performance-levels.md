@@ -6,18 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556055"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
 
 > [!IMPORTANT] 
 > Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue Azure Cosmos DB-Konten nicht mehr verfügbar.
->
 
 Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3 und erläutert, wie die Sammlungen, die diese Leistungsebenen verwenden, zu Sammlungen mit nur einer Partition migriert werden können. Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
@@ -43,7 +42,7 @@ Die Leistungsebenen S1, S2 und S3 bieten nicht die gleiche Flexibilität wie das
 
 Die folgende Tabelle enthält einen Vergleich der Durchsatz- und Speicheroptionen von Sammlungen mit nur einer Partition, partitionierten Sammlungen und den Leistungsebenen S1, S2 und S3. Hier ist ein Beispiel für die Region „USA, Osten 2“ angegeben:
 
-|   |Partitionierte Sammlung|Sammlung mit nur einer Partition|S1|S2|S3|
+| Namen des Kontingents  |Partitionierte Sammlung|Sammlung mit nur einer Partition|S1|S2|S3|
 |---|---|---|---|---|---|
 |Maximaler Durchsatz|Unbegrenzt|10.000 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
 |Minimaler Durchsatz|2.500 RU/s|400 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
@@ -76,7 +75,7 @@ In jedem dieser Fälle können Sie nach der Migration der Sammlung die Durchsatz
 
 Angenommen, Sie verfügen über zehn S1-Sammlungen mit jeweils 1 GB Speicher in der Region „USA, Osten“ und migrieren diese zehn S1-Sammlungen zu zehn Sammlungen mit nur einer Partition und 400 RU/s (Minimum). Ihre Rechnung sieht dann wie folgt aus, wenn Sie die zehn Sammlungen mit nur einer Partition einen ganzen Monat lang beibehalten:
 
-![Vergleich der S1-Preise für zehn Sammlungen mit dem Preis für zehn Sammlungen mit nur einer Partition](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="Vergleich der S1-Preise für zehn Sammlungen mit dem Preis für zehn Sammlungen mit nur einer Partition" border="false":::
 
 <a name="more-storage-needed"></a>
 

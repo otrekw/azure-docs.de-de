@@ -1,26 +1,26 @@
 ---
-title: 'Ev3-Serie und Esv3-Serie: Azure Virtual Machines'
+title: Ev3-Serie und Esv3-Serie
 description: Hier finden Sie die Spezifikationen für virtuelle Computer der Ev3-Serie und der Esv3-Serie.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fcb714e68548b95ed6d32bb16fb08c43ff0e5fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164371"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707632"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3- und Esv3-Serie
 
-Die Serien Ev3 und Esv3 unterstützen den Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder den Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) in einer Hyperthreadkonfiguration und somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads und besseren Einklang von Ev3 mit den universellen VMs der meisten anderen Clouds.  Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen. Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
+Die Serien Ev3 und Esv3 werden auf dem Intel® Xeon® Platinum-Prozessor 8272CL (Cascade Lake), dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) in einer Hyperthreadkonfiguration ausgeführt und bieten ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads und besseren Einklang von Ev3 mit den universellen VMs der meisten anderen Clouds.  Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen. Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
 
 ## <a name="ev3-series"></a>Ev3-Serie
 
-Instanzen der Ev3-Serie basieren auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) und Intel Turbo Boost Technology 2.0. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
+Instanzen der Ev3-Serie werden auf dem Intel® Xeon® Platinum-Prozessor 8272CL (Cascade Lake), dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) ausgeführt und verfügen über Intel Turbo Boost Technology 2.0. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
 
 Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden Sie die ESv3-Größen, um Datenträger mit Premium-Speicher zu nutzen. Die Preis- und Abrechnungskennzahlen für die ESv3-Größen entsprechen denen der Ev3-Serie.
 
@@ -54,7 +54,7 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 ## <a name="esv3-series"></a>Esv3-Serie
 
-Instanzen der Esv3-Serie basieren auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) sowie Intel Turbo Boost Technology 2.0 und nutzen Storage Premium. Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
+Instanzen der Esv3-Serie werden auf dem Intel® Xeon® Platinum-Prozessor 8272CL (Cascade Lake), dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) ausgeführt, verfügen über Intel Turbo Boost Technology 2.0 und nutzen Storage Premium. Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
 
 Virtuelle Computer der Esv3-Serie verfügen über Hyperthreading-Technologie von Intel®.
 
