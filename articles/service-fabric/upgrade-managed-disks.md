@@ -3,12 +3,12 @@ title: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datentr�
 description: Im diesem Artikel wird erläutert, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwaltete Azure-Datenträger verwendet.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611627"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255896"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger
 
@@ -16,7 +16,7 @@ ms.locfileid: "85611627"
 
 Die allgemeine Vorgehensweise beim Upgraden eines Service Fabric-Clusterknotens für die Verwendung verwalteter Datenträger lautet wie folgt:
 
-1. Stellen Sie eine mit diesem Knotentyp identische VM-Skalierungsgruppe bereit. Diese darf sich nur dadurch vom Knotentyp unterscheiden, dass das [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters)-Objekt im Abschnitt `osDisk` der Bereitstellungsvorlage hinzugefügt wurde. Die neue Skalierungsgruppe sollte an denselben Lastenausgleich/dieselbe IP-Adresse wie das Original gebunden werden, damit es bei Ihren Kunden während der Migration zu keinem Dienstausfall kommt.
+1. Stellen Sie eine mit diesem Knotentyp identische VM-Skalierungsgruppe bereit. Diese darf sich nur dadurch vom Knotentyp unterscheiden, dass das [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters)-Objekt im Abschnitt `osDisk` der Bereitstellungsvorlage hinzugefügt wurde. Die neue Skalierungsgruppe sollte an denselben Lastenausgleich/dieselbe IP-Adresse wie das Original gebunden werden, damit es bei Ihren Kunden während der Migration zu keinem Dienstausfall kommt.
 
 2. Sobald die ursprüngliche und die upgegradete Skalierungsgruppe parallel ausgeführt werden, müssen Sie die ursprünglichen Knoteninstanzen nacheinander deaktivieren, damit die Systemdienste (oder die Replikate der zustandsbehafteten Dienste) zur neuen Skalierungsgruppe migriert werden.
 
@@ -25,7 +25,7 @@ Die allgemeine Vorgehensweise beim Upgraden eines Service Fabric-Clusterknotens 
 In diesem Artikel wird beschrieben, mit welchen Schritten Sie den primären Knotentyp eines Beispielclusters upgraden, sodass dieser verwaltete Datenträger verwendet, und dabei jegliche Clusterdowntime vermeiden (siehe Hinweis unten). Der anfängliche Zustand des Beispieltestclusters besteht aus einem Knotentyp der [Dauerhaftigkeitsstufe „Silber“](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), der eine einzelne Skalierungsgruppe mit fünf Knoten enthält.
 
 > [!CAUTION]
-> Bei diesem Verfahren treten nur dann Ausfälle auf, wenn im Cluster-DNS Abhängigkeiten bestehen (z. B. beim Zugriff auf [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). Zu den [bewährten Architekturmethoden für Front-End-Dienste](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) zählt das Implementieren eines [Lastenausgleichs](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview), der Ihren Knotentypen vorgeschaltet ist und den Knotenaustausch ohne Dienstausfälle ermöglicht.
+> Bei diesem Verfahren treten nur dann Ausfälle auf, wenn im Cluster-DNS Abhängigkeiten bestehen (z. B. beim Zugriff auf [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). Zu den [bewährten Architekturmethoden für Front-End-Dienste](/azure/architecture/microservices/design/gateway) zählt das Implementieren eines [Lastenausgleichs](/azure/architecture/guide/technology-choices/load-balancing-overview), der Ihren Knotentypen vorgeschaltet ist und den Knotenaustausch ohne Dienstausfälle ermöglicht.
 
 Unter folgendem Link finden Sie die [Vorlagen und Cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) für Azure Resource Manager, mit denen Sie das Upgradeszenario abschließen. Die Vorlagenänderungen werden weiter unten im Abschnitt [Bereitstellen einer upgegradeten Skalierungsgruppe für den primären Knotentyp](#deploy-an-upgraded-scale-set-for-the-primary-node-type) erläutert.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557984"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243714"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -60,7 +60,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |password|Gibt das Kennwort für die Standardanmeldeinformationen an.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
@@ -111,7 +111,7 @@ In diesem Beispiel wird das Clientzertifikat in der Richtlinie festgelegt und ni
 |password|Das Kennwort für das Clientzertifikat|Dieses Attribut wird verwendet, wenn das in `body` angegebene Zertifikat kennwortgeschützt ist.|–|
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
   
@@ -188,7 +188,7 @@ Sowohl eine systemseitig zugewiesene Identität als auch eine der benutzerseitig
 |ignore-error|Boolesch. Bei Festlegung auf `true` wird die Richtlinienpipeline auch dann weiter ausgeführt, wenn kein Zugriffstoken abgerufen wird.|Nein|false|  
   
 ### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
   
@@ -199,5 +199,5 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ Unter [Richtlinien für die API-Verwaltung](./api-management-policies.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
 + [API Management-Richtlinienbeispiele](policy-samples.md)

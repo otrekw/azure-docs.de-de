@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verwendung von verwalteten Identitäten
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710302"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257640"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Verwenden verwalteter Identitäten für Azure mit Service Fabric
 
@@ -24,7 +24,7 @@ Eine gängige Herausforderung beim Entwickeln von Cloudanwendungen ist die siche
 
 Verwaltete Identitäten für Azure basieren auf verschiedenen wichtigen Konzepten:
 
-- **Client-ID:** ein eindeutiger, in Azure AD generierter Bezeichner, der während der ersten Bereitstellung an eine Anwendung und einen Dienstprinzipal gebunden wird (siehe auch [Anwendungs-ID](/azure/active-directory/develop/developer-glossary#application-id-client-id))
+- **Client-ID:** ein eindeutiger, in Azure AD generierter Bezeichner, der während der ersten Bereitstellung an eine Anwendung und einen Dienstprinzipal gebunden wird (siehe auch [Anwendungs-ID](../active-directory/develop/developer-glossary.md#application-id-client-id))
 
 - **Prinzipal-ID:** die Objekt-ID des Dienstprinzipalobjekts für die verwaltete Identität, mit der der rollenbasierte Zugriff auf eine Azure-Ressource gewährt wird
 

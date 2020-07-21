@@ -5,20 +5,20 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944320"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257601"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-Sicherheit 
 
-Weitere Informationen zu den [bewährten Methoden in Bezug auf die Azure-Sicherheit](https://docs.microsoft.com/azure/security/) finden Sie unter [Bewährte Methoden für die Azure Service Fabric-Sicherheit](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices).
+Weitere Informationen zu den [bewährten Methoden in Bezug auf die Azure-Sicherheit](../security/index.yml) finden Sie unter [Bewährte Methoden für die Azure Service Fabric-Sicherheit](../security/fundamentals/service-fabric-best-practices.md).
 
 ## <a name="key-vault"></a>Key Vault
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) ist der empfohlene Dienst für die Verwaltung von Geheimnissen für Azure Service Fabric-Anwendungen und -Cluster.
+[Azure Key Vault](../key-vault/index.yml) ist der empfohlene Dienst für die Verwaltung von Geheimnissen für Azure Service Fabric-Anwendungen und -Cluster.
 > [!NOTE]
 > Wenn Zertifikate/Geheimnisse aus einem Schlüsseltresor (Key Vault) in einer VM-Skalierungsgruppe als zugehöriges Geheimnis bereitgestellt werden, müssen sich der Key Vault und die VM-Skalierungsgruppe in derselben Region befinden.
 
@@ -29,11 +29,11 @@ Ein Azure Key Vault-Zertifikat kann entweder erstellt oder in einen Key Vault im
 - Erstellen Sie ein selbstsigniertes Zertifikat, um ein öffentlich-privates Schlüsselpaar zu erstellen und einem Zertifikat zuzuordnen. Das Zertifikat wird mit einem eigenen Schlüssel signiert. 
 - Erstellen Sie manuell ein neues Zertifikat, um ein öffentlich-privates Schlüsselpaar zu erstellen und die Anforderung einer X.509-Zertifikatsignatur zu generieren. Die Signaturanforderung kann von Ihrer Registrierungs- oder Zertifizierungsstelle signiert werden. Das signierte x509-Zertifikat lässt sich dann mit dem ausstehenden Schlüsselpaar zusammenführen, um das KV-Zertifikat in Key Vault zu vervollständigen. Obwohl diese Methode mehr Schritte erfordert, bietet sie Ihnen mehr Sicherheit, da der private Schlüssel in Key Vault erstellt und darauf beschränkt wird. Dies wird im folgenden Diagramm erläutert. 
 
-Weitere Informationen finden Sie unter [Methoden für die Zertifikaterstellung](https://docs.microsoft.com/azure/key-vault/create-certificate).
+Weitere Informationen finden Sie unter [Methoden für die Zertifikaterstellung](../key-vault/certificates/create-certificate.md).
 
 ## <a name="deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets"></a>Bereitstellen von Key Vault-Zertifikaten für VM-Skalierungsgruppen von Service Fabric-Clustern
 
-Verwenden Sie zum Bereitstellen von Zertifikaten aus einem in derselben Region angeordneten Schlüsseltresor in einer VM-Skalierungsgruppe die VM-Skalierungsgruppe [osProfile](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile). Hier sind die Eigenschaften von Resource Manager-Vorlagen aufgeführt:
+Verwenden Sie zum Bereitstellen von Zertifikaten aus einem in derselben Region angeordneten Schlüsseltresor in einer VM-Skalierungsgruppe die VM-Skalierungsgruppe [osProfile](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile). Hier sind die Eigenschaften von Resource Manager-Vorlagen aufgeführt:
 
 ```json
 "secrets": [
@@ -56,7 +56,7 @@ Verwenden Sie zum Bereitstellen von Zertifikaten aus einem in derselben Region a
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Anwenden einer Zugriffssteuerungsliste (Access Control List, ACL) auf Ihr Zertifikat für Ihren Service Fabric-Cluster
 
-Der Microsoft.Azure.ServiceFabric-Herausgeber für [VM-Skalierungsgruppenerweiterungen](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest) wird verwendet, um Ihre Knotensicherheit zu konfigurieren.
+Der Microsoft.Azure.ServiceFabric-Herausgeber für [VM-Skalierungsgruppenerweiterungen](/cli/azure/vmss/extension?view=azure-cli-latest) wird verwendet, um Ihre Knotensicherheit zu konfigurieren.
 Verwenden Sie die folgenden Resource Manager-Vorlageneigenschaften, um eine ACL auf die Zertifikate für Ihre Service Fabric-Clusterprozesse anzuwenden:
 
 ```json
@@ -70,7 +70,7 @@ Verwenden Sie die folgenden Resource Manager-Vorlageneigenschaften, um eine ACL 
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Schützen eines Service Fabric-Clusterzertifikats anhand eines allgemeinen Namens
 
-Verwenden Sie die Resource Manager-Vorlageneigenschaft [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames) wie folgt, um Ihren Service Fabric-Cluster anhand des Zertifikats `Common Name` zu schützen:
+Verwenden Sie die Resource Manager-Vorlageneigenschaft [certificateCommonNames](/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames) wie folgt, um Ihren Service Fabric-Cluster anhand des Zertifikats `Common Name` zu schützen:
 
 ```json
 "certificateCommonNames": {
@@ -89,7 +89,7 @@ Verwenden Sie die Resource Manager-Vorlageneigenschaft [certificateCommonNames](
 
 Azure-Domänen, z. B. *\<YOUR SUBDOMAIN\>.cloudapp.azure.com oder \<YOUR SUBDOMAIN\>.trafficmanager.net befinden sich im Besitz von Microsoft. Zertifizierungsstellen stellen für nicht berechtigte Benutzer keine Zertifikate für Domänen aus. Die meisten Benutzer müssen eine Domäne von einer Registrierungsstelle erwerben oder ein autorisierter Domänenadministrator für eine Zertifizierungsstelle sein, um für Sie ein Zertifikat mit diesem allgemeinen Namen ausstellen zu können.
 
-Weitere Informationen dazu, wie Sie den DNS-Dienst zum Auflösen Ihrer Domäne in eine Microsoft-IP-Adresse konfigurieren, finden Sie in der Anleitung zur Konfiguration von [Azure DNS zum Hosten Ihrer Domäne](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
+Weitere Informationen dazu, wie Sie den DNS-Dienst zum Auflösen Ihrer Domäne in eine Microsoft-IP-Adresse konfigurieren, finden Sie in der Anleitung zur Konfiguration von [Azure DNS zum Hosten Ihrer Domäne](../dns/dns-delegate-domain-azure-dns.md).
 
 > [!NOTE]
 > Nachdem Sie Ihre Domänennamenserver an Ihre Azure DNS-Zonennamenserver delegiert haben, können Sie Ihrer DNS-Zone die beiden folgenden Einträge hinzufügen:
@@ -106,7 +106,7 @@ Aktualisieren Sie die folgenden Resource Manager-Vorlageneigenschaften für den 
 
 Allgemeine Werte, die in Service Fabric-Paketen verschlüsselt werden, umfassen ACR-Anmeldeinformationen (Azure Container Registry), Umgebungsvariablen, Einstellungen und Speicherkontoschlüssel für Azure-Volume-Plug-Ins.
 
-Gehen Sie wie folgt vor, [um ein Verschlüsselungszertifikat einzurichten und Geheimnisse in Windows-Clustern zu verschlüsseln](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-windows):
+Gehen Sie wie folgt vor, [um ein Verschlüsselungszertifikat einzurichten und Geheimnisse in Windows-Clustern zu verschlüsseln](./service-fabric-application-secret-management-windows.md):
 
 Generieren Sie ein selbstsigniertes Zertifikat zum Verschlüsseln Ihres Geheimnisses:
 
@@ -122,7 +122,7 @@ Verschlüsseln Sie Ihr Geheimnis mit dem folgenden PowerShell-Befehl, und aktual
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Gehen Sie wie folgt vor, [um ein Verschlüsselungszertifikat einzurichten und Geheimnisse in Linux-Clustern zu verschlüsseln](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-linux):
+Gehen Sie wie folgt vor, [um ein Verschlüsselungszertifikat einzurichten und Geheimnisse in Linux-Clustern zu verschlüsseln](./service-fabric-application-secret-management-linux.md):
 
 Generieren Sie ein selbstsigniertes Zertifikat zum Verschlüsseln Ihrer Geheimnisse:
 
@@ -141,7 +141,7 @@ user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 
-Nachdem Sie Ihre geschützten Werte verschlüsselt haben, können Sie [verschlüsselte Geheimnisse in der Service Fabric-Anwendung angeben](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application) und [verschlüsselte Geheimnisse aus dem Dienstcode entschlüsseln](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
+Nachdem Sie Ihre geschützten Werte verschlüsselt haben, können Sie [verschlüsselte Geheimnisse in der Service Fabric-Anwendung angeben](./service-fabric-application-secret-management.md#specify-encrypted-secrets-in-an-application) und [verschlüsselte Geheimnisse aus dem Dienstcode entschlüsseln](./service-fabric-application-secret-management.md#decrypt-encrypted-secrets-from-service-code).
 
 ## <a name="include-certificate-in-service-fabric-applications"></a>Einbinden eines Zertifikats in Service Fabric-Anwendungen
 
@@ -158,8 +158,8 @@ Um Ihrer Anwendung Zugriff auf Geheimnisse zu gewähren, binden Sie das Zertifik
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Authentifizieren von Service Fabric-Anwendungen für Azure-Ressourcen per verwalteter Dienstidentität (Managed Service Identity, MSI)
 
 Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
-Azure Service Fabric-Cluster werden in VM-Skalierungsgruppen gehostet, die die [verwaltete Dienstidentität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources) unterstützen.
-Eine Liste mit Diensten, für die MSI für die Authentifizierung genutzt werden kann, finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
+Azure Service Fabric-Cluster werden in VM-Skalierungsgruppen gehostet, die die [verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) unterstützen.
+Eine Liste mit Diensten, für die MSI für die Authentifizierung genutzt werden kann, finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 
 Deklarieren Sie die folgende `"Microsoft.Compute/virtualMachinesScaleSets"`-Eigenschaft, um die vom System zugewiesene verwaltete Identität bei der Erstellung einer VM-Skalierungsgruppe oder in einer vorhandenen VM-Skalierungsgruppe zu aktivieren:
@@ -169,9 +169,9 @@ Deklarieren Sie die folgende `"Microsoft.Compute/virtualMachinesScaleSets"`-Eige
     "type": "SystemAssigned"
 }
 ```
-Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity).
+Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss.md#system-assigned-managed-identity).
 
-Gehen Sie wie folgt vor, wenn Sie eine [vom Benutzer zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity) erstellt haben: Deklarieren Sie die folgende Ressource in Ihrer Vorlage, um sie Ihrer VM-Skalierungsgruppe zuzuweisen. Ersetzen Sie `\<USERASSIGNEDIDENTITYNAME\>` durch den Namen der vom Benutzer zugewiesenen verwalteten Identität, die Sie erstellt haben:
+Gehen Sie wie folgt vor, wenn Sie eine [vom Benutzer zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity) erstellt haben: Deklarieren Sie die folgende Ressource in Ihrer Vorlage, um sie Ihrer VM-Skalierungsgruppe zuzuweisen. Ersetzen Sie `\<USERASSIGNEDIDENTITYNAME\>` durch den Namen der vom Benutzer zugewiesenen verwalteten Identität, die Sie erstellt haben:
 
 ```json
 "identity": {
@@ -191,7 +191,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-Rufen Sie in Ihrem Service Fabric-Anwendungscode [ein Zugriffstoken](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) für Azure Resource Manager ab, indem Sie beispielsweise einen REST-Aufruf wie den folgenden durchführen:
+Rufen Sie in Ihrem Service Fabric-Anwendungscode [ein Zugriffstoken](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http) für Azure Resource Manager ab, indem Sie beispielsweise einen REST-Aufruf wie den folgenden durchführen:
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -205,10 +205,10 @@ Im folgenden Beispiel ist dargestellt, wie Sie dies für die Cosmos DB-Ressource
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows-Sicherheitsbaselines
-[Es empfiehlt sich, eine branchenübliche Konfiguration zu implementieren, die allgemein bekannt ist und ausführlich getestet wurde (beispielsweise Microsoft-Sicherheitsbaselines), anstatt eine eigene Baseline zu erstellen.](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) Zur Bereitstellung für Ihre VM-Skalierungsgruppen können Sie beispielsweise den Azure-DSC-Erweiterungshandler (Desired State Configuration) verwenden, um die virtuellen Computer zu konfigurieren, sobald sie online geschaltet werden, damit auf ihnen die Produktionssoftware ausgeführt wird.
+[Es empfiehlt sich, eine branchenübliche Konfiguration zu implementieren, die allgemein bekannt ist und ausführlich getestet wurde (beispielsweise Microsoft-Sicherheitsbaselines), anstatt eine eigene Baseline zu erstellen.](/windows/security/threat-protection/windows-security-baselines) Zur Bereitstellung für Ihre VM-Skalierungsgruppen können Sie beispielsweise den Azure-DSC-Erweiterungshandler (Desired State Configuration) verwenden, um die virtuellen Computer zu konfigurieren, sobald sie online geschaltet werden, damit auf ihnen die Produktionssoftware ausgeführt wird.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst zum Schutz Ihrer Azure Virtual Network-Ressourcen. Hierbei handelt es sich um eine vollständig zustandsbehaftete Firewall-as-a-Service mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit.](https://docs.microsoft.com/azure/firewall/overview) Dadurch lässt sich ausgehender HTTP/S-Datenverkehr auf eine Liste vollständig qualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs) einschließlich Platzhaltern beschränken. Diese Funktion erfordert keine TLS-/SSL-Terminierung. Es wird empfohlen, [FQDN-Tags von Azure Firewall](https://docs.microsoft.com/azure/firewall/fqdn-tags) für Windows-Updates zu nutzen und Netzwerkdatenverkehr für Microsoft Windows Update-Endpunkte zu aktivieren, damit dieser Ihre Firewall passieren kann. Der Artikel [Bereitstellen von Azure Firewall mit einer Vorlage](https://docs.microsoft.com/azure/firewall/deploy-template) enthält ein Beispiel für die Definition einer Microsoft.Network/azureFirewalls-Ressourcenvorlage. Firewallregeln für Service Fabric-Anwendungen erlauben häufig Folgendes für das virtuelle Netzwerk Ihrer Cluster:
+[Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst zum Schutz Ihrer Azure Virtual Network-Ressourcen. Hierbei handelt es sich um eine vollständig zustandsbehaftete Firewall-as-a-Service mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit.](../firewall/overview.md) Dadurch lässt sich ausgehender HTTP/S-Datenverkehr auf eine Liste vollständig qualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs) einschließlich Platzhaltern beschränken. Diese Funktion erfordert keine TLS-/SSL-Terminierung. Es wird empfohlen, [FQDN-Tags von Azure Firewall](../firewall/fqdn-tags.md) für Windows-Updates zu nutzen und Netzwerkdatenverkehr für Microsoft Windows Update-Endpunkte zu aktivieren, damit dieser Ihre Firewall passieren kann. Der Artikel [Bereitstellen von Azure Firewall mit einer Vorlage](../firewall/deploy-template.md) enthält ein Beispiel für die Definition einer Microsoft.Network/azureFirewalls-Ressourcenvorlage. Firewallregeln für Service Fabric-Anwendungen erlauben häufig Folgendes für das virtuelle Netzwerk Ihrer Cluster:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -226,7 +226,7 @@ Kunden sollten ihre von Azure gehosteten Workloads und lokalen Anwendungen, die 
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Standardmäßig ist Windows Defender Antivirus unter Windows Server 2016 installiert. Weitere Informationen finden Sie unter [Windows Defender Antivirus auf Windows Server2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Die Benutzeroberfläche wird bei einigen SKUs standardmäßig installiert, aber dies ist keine erforderliche Komponente. Gehen Sie wie folgt vor, um durch Windows Defender verursachte Leistungsbeeinträchtigungen und Erhöhungen des Ressourcenverbrauchs zu verringern (und falls Ihre Sicherheitsrichtlinien es zulassen, Prozesse und Pfade für Open-Source-Software auszuschließen): Deklarieren Sie die folgenden Resource Manager-Vorlageneigenschaften für die VM-Skalierungsgruppenerweiterung, um Ihren Service Fabric-Cluster von Scanvorgängen auszuschließen:
+Standardmäßig ist Windows Defender Antivirus unter Windows Server 2016 installiert. Weitere Informationen finden Sie unter [Windows Defender Antivirus auf Windows Server2016](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016). Die Benutzeroberfläche wird bei einigen SKUs standardmäßig installiert, aber dies ist keine erforderliche Komponente. Gehen Sie wie folgt vor, um durch Windows Defender verursachte Leistungsbeeinträchtigungen und Erhöhungen des Ressourcenverbrauchs zu verringern (und falls Ihre Sicherheitsrichtlinien es zulassen, Prozesse und Pfade für Open-Source-Software auszuschließen): Deklarieren Sie die folgenden Resource Manager-Vorlageneigenschaften für die VM-Skalierungsgruppenerweiterung, um Ihren Service Fabric-Cluster von Scanvorgängen auszuschließen:
 
 
 ```json
