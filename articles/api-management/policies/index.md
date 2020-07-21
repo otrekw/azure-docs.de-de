@@ -13,20 +13,19 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5b8c82aa420b62e3b6e68ee53352eb9f77988f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242966"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506688"
 ---
 # <a name="api-management-policy-samples"></a>API Management-Richtlinienbeispiele
 
 [Richtlinien](../api-management-howto-policies.md) sind eine leistungsfähige Funktion des Systems, mit der Herausgeber das Verhalten der API über eine Konfiguration ändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Die folgende Tabelle enthält Links zu Beispielen und liefert eine kurze Beschreibung für jedes Beispiel.
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Eingehende Richtlinien**                                                                                                                                                 |                                                                                                                                                                                                                             |
+| Eingehende Richtlinien | BESCHREIBUNG |
+| ---------------- | ----------- |
 | [Hinzufügen eines Forwarded-Headers, um der Back-End-API das Erstellen geeigneter URLs zu ermöglichen](./set-header-to-enable-backend-to-construct-urls.md) | Veranschaulicht, wie Sie einen Forwarded-Header in die eingehende Anforderung einfügen, damit die Back-End-API die richtigen URLs erstellen kann.                                                                                                        |
 | [Hinzufügen eines Headers mit eine Korrelations-ID](./add-correlation-id.md)                                                             | Veranschaulicht, wie Sie der eingehenden Anforderung einen Header mit einer Korrelations-ID hinzufügen.                                                                                                                                        |
 | [Hinzufügen von Funktionen zu einem Back-End-Dienst und Zwischenspeichern der Antwort](./cache-response.md)                                             | Veranschaulicht das Hinzufügen von Funktionen zu einem Back-End-Dienst. Beispielsweise können Sie in einer API zur Wettervorhersage anstelle von Längen- und Breitengrad einen Ortsnamen akzeptieren.                                                                    |
@@ -40,7 +39,7 @@ ms.locfileid: "86242966"
 | [Weiterleiten der Anforderung basierend auf der Größe des Textkörpers](./route-requests-based-on-size.md)                                            | Veranschaulicht, wie Sie Anforderungen basierend auf der Größe des Textkörpers weiterleiten.                                                                                                                                                       |
 | [Senden von Anforderungskontextinformationen an den Back-End-Dienst](./send-request-context-info-to-backend-service.md)                    | Veranschaulicht, wie Kontextinformationen zum Zweck der Protokollierung oder Verarbeitung an den Back-End-Dienst gesendet werden.                                                                                                                                |
 | [Festlegen der Aufbewahrungsdauer von Antworten im Cache](./set-cache-duration.md)                                                                          | Veranschaulicht, wie Sie die Aufbewahrungsdauer von Antworten im Cache mit dem maxAge-Wert in dem vom Back-End gesendeten Cache-Control-Header festlegen.                                                                                                             |
-| **Ausgehende Richtlinien**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **Ausgehende Richtlinien** | **Beschreibung** |
 | [Filtern des Antwortinhalts](./filter-response-content.md)                                                                         | Veranschaulicht, wie Sie Datenelemente aus der Antwortnutzlast basierend auf dem der Anforderung zugeordneten Produkt filtern.                                                                                                        |
-| **Richtlinien bei Fehler**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **Richtlinien bei Fehler** | **Beschreibung** |
 | [Fehler in Stackify protokollieren](./log-errors-to-stackify.md)                                                                           | Veranschaulicht, wie Sie eine Richtlinie für die Protokollierung von Fehlern hinzufügen, um diese Fehler für die Protokollierung an Stackify zu senden.                                                                                                                                            |

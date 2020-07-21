@@ -179,6 +179,8 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
+        - name: Verwenden von Azure Ultra Disks (Vorschau)
+          href: use-ultra-disks.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
         - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
@@ -191,8 +193,6 @@
           href: internal-lb.md
         - name: Verwenden einer Load Balancer Standard-Instanz
           href: load-balancer-standard.md
-        - name: Verwenden einer benutzerdefinierten Route für ausgehenden Datenverkehr
-          href: egress-outboundtype.md
         - name: Verwenden einer statischen IP-Adresse
           href: static-ip.md
         - name: Eingehende Daten
@@ -214,8 +214,14 @@
                   href: ingress-tls.md
                 - name: Verwenden einer statischen öffentlichen IP-Adresse
                   href: ingress-static-ip.md
-        - name: Ausgehender Datenverkehr
-          href: egress.md
+        - name: Ausgehende Daten
+          items:
+            - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs
+              href: limit-egress-traffic.md
+            - name: Verwenden einer benutzerdefinierten Route für ausgehenden Datenverkehr
+              href: egress-outboundtype.md
+            - name: Verwenden eines Lastenausgleichs im Basic-Tarif und einer statischen IP-Adresse
+              href: egress.md
         - name: Anpassen von CoreDNS
           href: coredns-custom.md
     - name: Sicherheit und Authentifizierung
@@ -238,15 +244,13 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Aktualisieren von Clusteranmeldeinformationen
           href: update-credentials.md
-        - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs
-          href: limit-egress-traffic.md
         - name: Aktivieren der Azure Active Directory-Integration
           items:
-            - name: Von AKS verwaltete AAD-Instanz (Vorschau)
+            - name: Von AKS verwaltete AAD-Instanz
               href: managed-aad.md
-            - name: Verwenden der Azure-CLI
+            - name: AAD-Integration (Legacy)
               href: azure-ad-integration-cli.md
-        - name: Verwenden von Azure RBAC für die Kubernetes-Autorisierung (Vorschau)
+        - name: Verwenden von Azure RBAC für Kubernetes-Autorisierung (Vorschau)
           href: manage-azure-rbac.md
         - name: Verwenden der rollenbasierten Zugriffssteuerung von Kubernetes mit Azure AD-Integration
           href: azure-ad-rbac.md
@@ -291,8 +295,6 @@
       items:
         - name: Verwenden des lokalen Prozesses mit Kubernetes und Visual Studio Code (Vorschau)
           href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
-        - name: Verwenden des lokalen Prozesses mit Kubernetes und Visual Studio (Vorschau)
-          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Installieren vorhandener Anwendungen mit Helm
           href: kubernetes-helm.md
         - name: Verwenden von OpenFaaS
@@ -383,10 +385,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: Supportrichtlinien
       href: support-policies.md
-    - name: Roadmap
+    - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Abgeben von Produktfeedback
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: AKS-Roadmap
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: Videos
