@@ -3,12 +3,12 @@ title: 'Azure-Ressourcen: QnA Maker'
 description: In QnA Maker werden verschiedene Azure-Quellen verwendet, von denen jede einen anderen Zweck erfüllt. Wenn Sie wissen, wie sie einzeln verwendet werden, können Sie den richtigen Tarif planen und auswählen oder bestimmen, wann ein Tarifwechsel sinnvoll ist. Das Verständnis dafür, wie sie kombiniert verwendet werden, ermöglicht es Ihnen, auftretende Probleme zu finden und zu beheben.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7d6598510ae75a76e0a4fcaff59297b4c724ba78
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236089"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171073"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-Ressourcen für QnA Maker
 
@@ -44,11 +44,11 @@ Es gibt in der Regel drei Parameter, die Sie berücksichtigen müssen:
 
 Die folgende Tabelle gibt Ihnen einige allgemeine Richtlinien.
 
-|                        | QnA Maker Management | App Service | Azure Cognitive Search | Einschränkungen                      |
-| ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Experimentieren        | Kostenlose SKU             | Free-Tarif   | Free-Tarif    | Veröffentlichen von bis zu 2 KB bei einer Größe von 50 MB  |
-| Entwicklungs-/Testumgebung   | Standard-SKU         | Shared      | Basic        | Veröffentlichen von bis zu 14 KB bei einer Größe von 2 GB    |
-| Produktionsumgebung | Standard-SKU         | Basic       | Standard     | Veröffentlichen von bis zu 49 KB bei einer Größe von 25 GB |
+|                            | QnA Maker Management | App Service | Azure Cognitive Search | Einschränkungen                      |
+| -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
+| **Experimentieren**        | Kostenlose SKU             | Free-Tarif   | Free-Tarif    | Veröffentlichen von bis zu 2 KB bei einer Größe von 50 MB  |
+| **Entwicklungs-/Testumgebung**   | Standard-SKU         | Shared      | Basic        | Veröffentlichen von bis zu 14 KB bei einer Größe von 2 GB    |
+| **Produktionsumgebung** | Standard-SKU         | Basic       | Standard     | Veröffentlichen von bis zu 49 KB bei einer Größe von 25 GB |
 
 ## <a name="recommended-settings"></a>Empfohlene Einstellungen
 

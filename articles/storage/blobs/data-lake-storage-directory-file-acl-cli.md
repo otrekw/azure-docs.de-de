@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 8fdcad18ccec2748761cf35f2cd0b8efe9749958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159f3c63a647ff565e838b01dbaaadf947fb8ada
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466135"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142625"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden der Azure CLI zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
 In diesem Artikel erfahren Sie, wie Sie die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) zum Erstellen und Verwalten von Verzeichnissen, Dateien und Berechtigungen in Speicherkonten verwenden, die über einen hierarchischen Namespace verfügen. 
 
-[Zuordnung von Gen1 zu Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [Feedback geben](https://github.com/Azure/azure-cli-extensions/issues)
+[Beispiele](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md) | [Feedback](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -65,39 +65,39 @@ In diesem Artikel erfahren Sie, wie Sie die [Azure-Befehlszeilenschnittstelle (C
 > [!NOTE]
 > Das in diesem Artikel dargestellte Beispiel zeigt die Azure Active Directory (AD)-Autorisierung. Weitere Informationen zu Autorisierungsmethoden finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI](../common/authorize-data-operations-cli.md).
 
-## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Dateisystem fungiert als Container für Ihre Dateien. Mit dem Befehl `az storage fs create` können Sie einen erstellen. 
+Ein Container fungiert als Dateisystem für Ihre Dateien. Mit dem Befehl `az storage fs create` können Sie einen erstellen. 
 
-In diesem Beispiel wird das Dateisystem `my-file-system` erstellt.
+In diesem Beispiel wird ein Container namens `my-file-system` erstellt.
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="show-file-system-properties"></a>Anzeigen von Dateisystemeigenschaften
+## <a name="show-container-properties"></a>Anzeigen der Containereigenschaften
 
-Sie können die Eigenschaften eines Dateisystems mit dem Befehl `az storage fs show` auf der Konsole ausgeben.
+Sie können die Eigenschaften eines Containers mithilfe des Befehls `az storage fs show` in der Konsole ausgeben.
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="list-file-system-contents"></a>Auflisten von Dateisysteminhalten
+## <a name="list-container-contents"></a>Auflisten von Containerinhalten
 
 Listen Sie den Inhalt eines Verzeichnisses mit dem Befehl `az storage fs file list` auf.
 
-In diesem Beispiel wird der eines Dateisystems namens `my-file-system` aufgelistet.
+In diesem Beispiel wird der Inhalt des Containers `my-file-system` aufgelistet.
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="delete-a-file-system"></a>Löschen eines Dateisystems
+## <a name="delete-a-container"></a>Löschen eines Containers
 
-Ein Dateisystem löschen Sie mit dem Befehl `az storage fs delete`.
+Mit dem Befehl `az storage fs delete` können Sie einen Container löschen.
 
-In diesem Beispiel wird das Dateisystem `my-file-system` gelöscht. 
+In diesem Beispiel wird der Container `my-file-system` gelöscht. 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -107,7 +107,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 Erstellen Sie eine Verzeichnisreferenz mit dem Befehl `az storage fs directory create`. 
 
-In diesem Beispiel wird ein Verzeichnis namens `my-directory` zu einem Dateisystem namens `my-file-system` hinzugefügt, das sich in einem Konto namens `mystorageaccount` befindet.
+In diesem Beispiel wird dem Container `my-file-system`, der sich in einem Konto namens `mystorageaccount` befindet, ein Verzeichnis namens `my-directory` hinzugefügt.
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -125,13 +125,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 Mit dem Befehl `az storage fs directory move` können Sie ein Verzeichnis umbenennen oder verschieben.
 
-In diesem Beispiel wird ein Verzeichnis mit dem Namen `my-directory` im selben Dateisystem in `my-new-directory` umbenannt.
+In diesem Beispiel wird ein Verzeichnis innerhalb des gleichen Containers von `my-directory` in `my-new-directory` umbenannt.
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-In diesem Beispiel wird ein Verzeichnis in das Dateisystem `my-second-file-system` verschoben.
+In diesem Beispiel wird ein Verzeichnis in den Container `my-second-file-system` verschoben.
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -149,9 +149,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>Überprüfen, ob ein Verzeichnis vorhanden ist
 
-Ermitteln Sie mit dem Befehl `az storage fs directory exists`, ob ein bestimmtes Verzeichnis im Dateisystem vorhanden ist.
+Ermitteln Sie mit dem Befehl `az storage fs directory exists`, ob ein bestimmtes Verzeichnis im Container vorhanden ist.
 
-Dieses Beispiel zeigt, ob ein Verzeichnis mit dem Namen `my-directory` im Dateisystem `my-file-system` vorhanden ist. 
+Dieses Beispiel zeigt, ob im Container `my-file-system` ein Verzeichnis mit dem Namen `my-directory` vorhanden ist. 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -171,7 +171,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 Listen Sie den Inhalt eines Verzeichnisses mit dem Befehl `az storage fs file list` auf.
 
-In diesem Beispiel wird der Inhalt eines Verzeichnisses namens `my-directory` aufgelistet, das sich im Dateisystem `my-file-system` eines Speicherkonto mit dem Namen `mystorageaccount` befindet. 
+In diesem Beispiel wird der Inhalt eines Verzeichnisses namens `my-directory` aufgelistet, das sich im Container `my-file-system` eines Speicherkontos mit dem Namen `mystorageaccount` befindet. 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -310,7 +310,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Zuordnung von Gen1 zu Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [Beispiele](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [Geben Sie uns Feedback](https://github.com/Azure/azure-cli-extensions/issues)
 * [Bekannte Probleme](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

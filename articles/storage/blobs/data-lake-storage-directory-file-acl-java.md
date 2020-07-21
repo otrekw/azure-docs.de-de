@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 15bdcbfc8e02ff06e09cb1e2a3d0621cb50e4da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1118e584a235f90cc21c8d914f56ebcba7ea74f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466101"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170206"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Java zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -105,11 +105,11 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 > Weitere Beispiele finden Sie in der Dokumentation zur [Azure-Identitätsclientbibliothek für Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity).
 
 
-## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Dateisystem fungiert als Container für Ihre Dateien. Sie können eines erstellen, indem Sie die Methode **DataLakeServiceClient.createFileSystem** aufrufen.
+Ein Container fungiert als Dateisystem für Ihre Dateien. Sie können eines erstellen, indem Sie die Methode **DataLakeServiceClient.createFileSystem** aufrufen.
 
-In diesem Beispiel wird das Dateisystem `my-file-system` erstellt. 
+In diesem Beispiel wird ein Container namens `my-file-system` erstellt. 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -123,7 +123,7 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 Erstellen Sie eine Verzeichnisreferenz, indem Sie die Methode **DataLakeFileSystemClient.createDirectory** aufrufen.
 
-Im folgenden Beispiel wird ein Verzeichnis namens `my-directory` zu einem Dateisystem hinzugefügt und anschließend wird ein Unterverzeichnis namens `my-subdirectory` hinzugefügt. 
+In diesem Beispiel wird einem Container ein Verzeichnis namens `my-directory` und anschließend ein Unterverzeichnis namens `my-subdirectory` hinzugefügt. 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -231,6 +231,8 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 }
 
 ```
+
+Sie können auch die ACL des Stammverzeichnisses eines Containers abrufen und festlegen. Übergeben Sie zum Abrufen des Stammverzeichnisses eine leere Zeichenfolge (`""`) an die Methode **DataLakeFileSystemClient.getDirectoryClient**.
 
 ## <a name="upload-a-file-to-a-directory"></a>Hochladen einer Datei in ein Verzeichnis
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/27/2019
-ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/08/2020
+ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505579"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147032"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -53,6 +53,7 @@ Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
 + In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + In jeder R-Umgebung mit dem [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html)
 + Über die Befehlszeile mit der [CLI-Erweiterung](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) für Azure Machine Learning
++ [Azure Machine Learning-VS Code-Erweiterung](how-to-manage-resources-vscode.md#workspaces)
 
 ## <a name="machine-learning-with-a-workspace"></a>Maschinelles Lernen mit einem Arbeitsbereich
 
@@ -70,13 +71,13 @@ Für Aufgaben für maschinelles Lernen werden Artefakte aus Ihrem Arbeitsbereich
 
 Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 
-| Arbeitsbereichsverwaltungsaufgabe   | Portal              | Studio | Python SDK / R SDK       | Befehlszeilenschnittstelle (CLI)        |
-|---------------------------|---------|---------|------------|------------|
-| Erstellen eines Arbeitsbereichs        | **&check;**     | | **&check;** | **&check;** |
-| Verwalten des Arbeitsbereichszugriffs    | **&check;**   || |  **&check;**    |
-| Upgrade auf Enterprise Edition    | **&check;** | **&check;**  | |     |
-| Erstellen und Verwalten von Computeressourcen    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
-| Erstellen einer Notebook-VM |   | **&check;** | |     |
+| Arbeitsbereichsverwaltungsaufgabe   | Portal              | Studio | Python SDK / R SDK       | Befehlszeilenschnittstelle (CLI)        | VS-Code
+|---------------------------|---------|---------|------------|------------|------------|
+| Erstellen eines Arbeitsbereichs        | **&check;**     | | **&check;** | **&check;** | **&check;** |
+| Verwalten des Arbeitsbereichszugriffs    | **&check;**   || |  **&check;**    ||
+| Upgrade auf Enterprise Edition    | **&check;** | **&check;**  | |     ||
+| Erstellen und Verwalten von Computeressourcen    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
+| Erstellen einer Notebook-VM |   | **&check;** | |     ||
 
 > [!WARNING]
 > Das Verschieben des Azure Machine Learning-Arbeitsbereichs in ein anderes Abonnement oder das Verschieben des besitzenden Abonnements in einen neuen Mandanten wird nicht unterstützt. Andernfalls können Fehler auftreten.
@@ -90,7 +91,7 @@ Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs:
 * Im [Azure-Portal](how-to-manage-workspace.md) steht eine Point-and-Click-Benutzeroberfläche zur Verfügung, über die Sie die einzelnen Schritte ausführen können.
 * Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace), um ohne weitere Vorbereitung einen Arbeitsbereich auf der Grundlage von Python-Skripts oder Jupiter Notebooks zu erstellen.
 * Nutzen Sie eine [Azure Resource Manager-Vorlage](how-to-create-workspace-template.md) oder die [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), wenn Sie die Erstellung automatisieren oder mit Unternehmenssicherheitsstandards anpassen müssen.
-* Verwenden Sie die [VS Code-Erweiterung](tutorial-setup-vscode-extension.md), wenn Sie mit Visual Studio Code arbeiten.
+* Verwenden Sie die [VS Code-Erweiterung](how-to-manage-resources-vscode.md#create-a-workspace), wenn Sie mit Visual Studio Code arbeiten.
 
 > [!NOTE]
 > Für den Namen des Arbeitsbereichs wird die Groß-/Kleinschreibung nicht beachtet.

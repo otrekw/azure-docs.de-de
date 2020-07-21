@@ -9,27 +9,26 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587679"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146961"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
 Jede Anforderung an Azure Cognitive Service muss einen Authentifizierungsheader enthalten. Dieser Header übergibt einen Abonnementschlüssel oder ein Zugriffstoken, mit dem Ihr Abonnement für einen Dienst oder eine Gruppe von Diensten überprüft wird. In diesem Artikel lernen Sie die drei Möglichkeiten zum Authentifizieren von Anforderungen und die jeweiligen Voraussetzungen kennen.
 
-* [Authentifizieren mit einem Schlüssel für ein Abonnement für einen einzelnen Dienst](#authenticate-with-a-single-service-subscription-key)
-* [Authentifizieren mit einem Schlüssel für ein Abonnement für mehrere Dienste](#authenticate-with-a-multi-service-subscription-key)
-* [Authentifizieren mit einem Token](#authenticate-with-an-authentication-token)
-* [Authentifizieren mit Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
+* Authentifizieren mit einem Abonnementschlüssel für einen [einzelnen Dienst](#authenticate-with-a-single-service-subscription-key) oder für [mehrere Dienste](#authenticate-with-a-multi-service-subscription-key)
+* Authentifizieren mit einem [Token](#authenticate-with-an-authentication-token)
+* Authentifizieren mit [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie eine Anforderung übermitteln können, benötigen Sie ein Azure-Konto und ein Azure Cognitive Services-Abonnement. Wenn Sie bereits über ein Konto verfügen, können Sie mit dem nächsten Abschnitt fortfahren. Wenn Sie noch kein Konto haben, sind Sie mit der folgenden Anleitung in wenigen Minuten startbereit: [Erstellen eines Cognitive Services-Kontos für Azure](cognitive-services-apis-create-account.md).
 
-Sie können Ihren Abonnementschlüssel über das [Azure-Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abrufen, nachdem Sie Ihr Konto erstellt oder eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/my-apis) aktiviert haben.
+Sie können Ihren Abonnementschlüssel über das [Azure-Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abrufen, nachdem Sie [Ihr Konto erstellt haben](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="authentication-headers"></a>Authentifizierungsheader
 

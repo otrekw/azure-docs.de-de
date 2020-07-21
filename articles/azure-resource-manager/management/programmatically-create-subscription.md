@@ -3,15 +3,15 @@ title: Programmgesteuertes Erstellen von Azure-Abonnements
 description: Es wird beschrieben, wie Sie programmgesteuert zusätzliche Azure-Abonnements erstellen.
 author: amberbhargava
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 06/26/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 33f1d154f438b917b79cd299e81c9078e2f2e81d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460397"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170631"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmgesteuertes Erstellen von Azure-Abonnements (Vorschau)
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Ja      | String | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `owners`      | Nein       | String | Die Objekt-ID eines Benutzers, den Sie als RBAC Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird.  |
 
-In der Antwort wird ein `subscriptionOperation`-Objekt für die Überwachung zurückgegeben. Nach Abschluss der Erstellung des Abonnements gibt das `subscriptionOperation`-Objekt ein `subscriptionLink`-Objekt zurück, das die Abonnement-ID enthält.
+In der Antwort wird ein URL vom Typ `Location` für die Überwachung zurückgegeben. Nach Abschluss der Abonnementerstellung wird bei einem GET-Vorgang für die URL vom Typ `Location` ein Objekt vom Typ `subscriptionLink` zurückgegeben, das die Abonnement-ID enthält. Ausführlichere Informationen finden Sie in der [Dokumentation zur Abonnement-API](https://docs.microsoft.com/rest/api/subscription/).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -205,7 +205,7 @@ Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie 
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Einschränkungen der Azure Enterprise-Abonnementerstellungs-API
 
 - Nur Azure Enterprise-Abonnements können mithilfe dieser API erstellt werden.
-- Es sind maximal 500 Abonnements pro Registrierungskonto möglich. Im Anschluss können weitere Abonnements für das Konto nur über das Azure-Portal erstellt werden. Wenn Sie über die API weitere Abonnements erstellen möchten, erstellen Sie ein weiteres Registrierungskonto.
+- Pro Registrierungskonto sind maximal 2.000 Abonnements zulässig. Im Anschluss können weitere Abonnements für das Konto nur über das Azure-Portal erstellt werden. Wenn Sie über die API weitere Abonnements erstellen möchten, erstellen Sie ein weiteres Registrierungskonto.
 - Benutzer, die keine Kontobesitzer sind, aber per RBAC einem Registrierungskonto hinzugefügt wurden, können über das Azure-Portal keine Abonnements erstellen.
 - Sie können den Mandanten nicht auswählen, in dem das Abonnement erstellt werden soll. Das Abonnement wird immer im Basismandanten des Kontobesitzers erstellt. Wenn Sie das Abonnement in einen anderen Mandanten verschieben möchten, finden Sie weitere Informationen unter [Ändern des Abonnementmandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -355,7 +355,7 @@ In der Antwort wird ein `subscriptionCreationResult`-Objekt für die Überwachun
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen im Cloudlösungsanbieter-Konto Ihrer Organisation über die Rolle „Globaler Administrator“ oder „Administrator-Agent“ verfügen, um ein Abonnement für Ihr Abrechnungskonto erstellen zu können. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](https://docs.microsoft.com/partner-center/permissions-overview).
+Sie müssen im Cloudlösungsanbieter-Konto Ihrer Organisation über die Rolle „Globaler Administrator“ oder „Administrator-Agent“ verfügen, um ein Abonnement für Ihr Abrechnungskonto erstellen zu können. Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
 
 Im Beispiel unten werden REST-APIs verwendet. PowerShell und die Azure CLI werden derzeit nicht unterstützt.
 

@@ -3,12 +3,12 @@ title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Doku
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 17efb89e36429f9658759a0ed90d4e7b785fe4b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340894"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166636"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -66,7 +66,7 @@ Für den Integritätszustand wird der allgemeine Clusterstatus als *schlechteste
 
 Die folgende Tabelle enthält eine Aufschlüsselung der Berechnung, mit der die Integritätszustände für einen überwachten Cluster in der Multi-Cluster-Ansicht gesteuert werden.
 
-| |Status |Verfügbarkeit |
+| Überwachter Cluster |Status |Verfügbarkeit |
 |-------|-------|-----------------|
 |**Benutzerpod**| | |
 | |Healthy |100 % |

@@ -7,16 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536623"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143845"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrieren von Web Application Firewall-Richtlinien unter Verwendung von Azure PowerShell
 
-Dieses Skript vereinfacht den Übergang von einer WAF-Konfiguration oder einer benutzerdefinierten WAF-Richtlinie nur mit Regeln zu einer vollständigen WAF-Richtlinie. Im Portal wird möglicherweise eine Warnung angezeigt, die Sie auffordert, *zur WAF-Richtlinie zu migrieren*, oder vielleicht möchten Sie die neuen WAF-Features der öffentlichen Vorschau verwenden, wie z.B. benutzerdefinierte Geomatch-Regeln, WAF-Richtlinien für einzelne Websites und URIs oder den Regelsatz für die Risikominderung für Bots. Um eines dieser Features verwenden zu können, muss Ihrem Anwendungsgateway eine vollständige WAF-Richtlinie zugeordnet sein. 
+Dieses Skript vereinfacht den Übergang von einer WAF-Konfiguration oder einer benutzerdefinierten WAF-Richtlinie nur mit Regeln zu einer vollständigen WAF-Richtlinie. Im Portal wird möglicherweise eine Warnung angezeigt, die Sie auffordert, *zur WAF-Richtlinie zu migrieren*. Vielleicht möchten Sie aber auch die neuen WAF-Features verwenden – etwa benutzerdefinierte Geomatch-Regeln (Vorschauversion), WAF-Richtlinie für einzelne Websites und URIs (Vorschauversion) oder den Regelsatz für die Risikominderung für Bots (Vorschauversion). Um eines dieser Features verwenden zu können, muss Ihrem Anwendungsgateway eine vollständige WAF-Richtlinie zugeordnet sein. 
 
 Weitere Informationen zum Erstellen einer neuen WAF-Richtlinie finden Sie unter [Erstellen von Web Application Firewall-Richtlinien für Application Gateway](create-waf-policy-ag.md). Weitere Informationen zur Migration finden Sie unter [Migrieren zu WAF-Richtlinien](create-waf-policy-ag.md#migrate-to-waf-policy).
 

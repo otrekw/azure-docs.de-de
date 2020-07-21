@@ -5,18 +5,16 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991727"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171328"
 ---
-# <a name="module-twin-json-schema"></a>JSON-Schema des Modulzwillings
+# <a name="module-twin-json-schema-azure-event-grid"></a>JSON-Schema des Modulzwillings (Azure Event Grid)
 
 Event Grid in IoT Edge ist mit dem IoT Edge-Ökosystem integriert und unterstützt das Erstellen von Themen und Abonnements über den Modulzwilling. Zudem wird der aktuelle Status aller Themen und Ereignisabonnements an die gemeldeten Eigenschaften im Modulzwilling übermittelt.
 

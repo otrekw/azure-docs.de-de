@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ab6ee597cfdc5d169bd33b77a061880b19e134b6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302292"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165633"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Behandeln von Protokollwarnungen in Azure Monitor  
 
@@ -183,9 +183,10 @@ In jeder Protokollwarnungsregel, die in Azure Monitor bei dessen Konfiguration e
 - Es gab keinen Datenfluss zur Analyseplattform. Die [Abfrageausführung liefert einen Fehler](https://dev.loganalytics.io/documentation/Using-the-API/Errors), da keine Daten für die bereitgestellte Abfrage vorhanden sind.
 - Änderungen an der [Abfragesprache](https://docs.microsoft.com/azure/kusto/query/) umfassen ein überarbeitetes Format für Befehle und Funktionen. Daher ist die zuvor in einer Warnungsregel angegebene Abfrage nicht mehr gültig.
 
-[Azure Advisor](../../advisor/advisor-overview.md) warnt Sie vor diesem Verhalten. Eine Empfehlung wird für die spezifische Protokollwarnungsregel in Azure Advisor hinzugefügt, und zwar unter der Kategorie „Hochverfügbarkeit“ mit mittlerer Auswirkung und einer Beschreibung wie „Protokollwarnungsregel zum Sicherstellen der Überwachung reparieren“. Wenn eine Warnungsabfrage in der Protokollwarnungsregel nicht korrigiert wird, nachdem Azure Advisor sieben Tage lang eine Empfehlung bereitgestellt hat, deaktiviert Azure Monitor die Protokollwarnung und stellt sicher, dass Ihnen keine unnötige Rechnung gestellt wird, wenn die Regel über einen längeren Zeitraum (z. B. eine Woche) nicht kontinuierlich ausgeführt werden kann.
+[Azure Advisor](../../advisor/advisor-overview.md) warnt Sie vor diesem Verhalten. Eine Empfehlung wird für die spezifische Protokollwarnungsregel in Azure Advisor hinzugefügt, und zwar unter der Kategorie „Hochverfügbarkeit“ mit mittlerer Auswirkung und einer Beschreibung wie „Protokollwarnungsregel zum Sicherstellen der Überwachung reparieren“.
 
-Sie können den genauen Zeitpunkt ermitteln, zu dem Azure Monitor die Protokollwarnungsregel deaktiviert hat, indem Sie im [Azure-Aktivitätsprotokoll](../../azure-resource-manager/management/view-activity-logs.md) nach einem Ereignis suchen.
+> [!NOTE]
+> Wenn eine Warnungsabfrage in der Protokollwarnungsregel nicht korrigiert wird, nachdem Azure Advisor sieben Tage lang eine Empfehlung bereitgestellt hat, deaktiviert Azure Monitor die Protokollwarnung und stellt sicher, dass keine unnötige Abrechnung erfolgt, wenn die Regel über einen längeren Zeitraum (sieben Tage) nicht kontinuierlich ausgeführt werden kann. Sie können den genauen Zeitpunkt ermitteln, zu dem Azure Monitor die Protokollwarnungsregel deaktiviert hat, indem Sie im [Azure-Aktivitätsprotokoll](../../azure-resource-manager/management/view-activity-logs.md) nach einem Ereignis suchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

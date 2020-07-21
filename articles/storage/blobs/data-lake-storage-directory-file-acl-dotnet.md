@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: fc2013a3875c74a1371196cacb0096356cf3ffdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1836be2a5feb6dad747d0da9b42cbd31ddc28a63
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466118"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142603"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von .NET zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -91,11 +91,11 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 > [!NOTE]
 > Weitere Beispiele finden Sie in der Dokumentation zur [Azure-Identitätsclientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
 
-## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Dateisystem fungiert als Container für Ihre Dateien. Sie können ein solches System erstellen, indem Sie die Methode [DataLakeServiceClient.createFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) aufrufen.
+Ein Container fungiert als Dateisystem für Ihre Dateien. Sie können ein solches System erstellen, indem Sie die Methode [DataLakeServiceClient.createFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) aufrufen.
 
-In diesem Beispiel wird das Dateisystem `my-file-system` erstellt. 
+In diesem Beispiel wird ein Container namens `my-file-system` erstellt. 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +109,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 Erstellen Sie eine Verzeichnisreferenz, indem Sie die Methode [DataLakeFileSystemClient.CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) aufrufen.
 
-Im folgenden Beispiel wird ein Verzeichnis namens `my-directory` zu einem Dateisystem hinzugefügt und anschließend wird ein Unterverzeichnis namens `my-subdirectory` hinzugefügt. 
+In diesem Beispiel wird einem Container ein Verzeichnis namens `my-directory` und anschließend ein Unterverzeichnis namens `my-subdirectory` hinzugefügt. 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -200,6 +200,8 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 }
 
 ```
+
+Sie können auch die ACL des Stammverzeichnisses eines Containers abrufen und festlegen. Übergeben Sie zum Abrufen des Stammverzeichnisses eine leere Zeichenfolge (`""`) an die Methode [DataLakeFileSystemClient.GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient).
 
 ## <a name="upload-a-file-to-a-directory"></a>Hochladen einer Datei in ein Verzeichnis
 

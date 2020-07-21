@@ -4,15 +4,15 @@ description: Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp 
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/06/2020
+ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3d7ab9d4e7a7c560fa05bdc06c7d1c357a2c2767
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ffdfeacad2fcfa7f77f3bcb55e8b1edaea865202
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196628"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145158"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -2013,9 +2013,9 @@ Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleit
 |cache_used_percent|Cacheverwendung in Prozent|Percent|Maximum|Cacheverwendung in Prozent. Gilt nur für Data Warehouses.|Keine|
 |sqlserver_process_core_percent<sup>1</sup> |SQL Server-Prozess: Kern (in Prozent)|Percent|Maximum|CPU-Auslastungsprozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem.|Keine|
 |sqlserver_process_memory_percent<sup>1</sup> |SQL Server-Prozess: Arbeitsspeicher (in Prozent)|Percent|Maximum|Arbeitsspeicherauslastungs-Prozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem.|Keine|
-|tempdb_data_size<sup>2</sup> |Größe der tempdb-Datendatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Datendatei in Kilobytes.|Keine|
-|tempdb_log_size<sup>2</sup> |Größe der tempdb-Protokolldatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Protokolldatei in Kilobytes.|Keine|
-|tempdb_log_used_percent<sup>2</sup> |Nutzung des tempdb-Protokolls in Prozent|Percent|Maximum|Die Nutzung des tempdb-Protokolls in Prozent.|Keine|
+|tempdb_data_size<sup>1</sup> |Größe der tempdb-Datendatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Datendatei in Kilobytes.|Keine|
+|tempdb_log_size<sup>1</sup> |Größe der tempdb-Protokolldatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Protokolldatei in Kilobytes.|Keine|
+|tempdb_log_used_percent<sup>1</sup> |Nutzung des tempdb-Protokolls in Prozent|Percent|Maximum|Die Nutzung des tempdb-Protokolls in Prozent.|Keine|
 |local_tempdb_usage_percent|Lokaler tempdb-Prozentsatz|Percent|Average|Lokaler tempdb-Prozentsatz. Gilt nur für Data Warehouses.|Keine|
 |app_cpu_billed|Abgerechnete App-CPU|Anzahl|Gesamt|Abgerechnete App-CPU. Gilt für serverlose Datenbanken.|Keine|
 |app_cpu_percent|App-CPU-Prozentsatz|Percent|Average|App-CPU-Prozentsatz. Gilt für serverlose Datenbanken.|Keine|
@@ -2040,9 +2040,7 @@ Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleit
 |snapshot_backup_size_bytes|Speichergröße für Momentaufnahmesicherungen|Byte|Maximum|Speichergröße für kumulative Momentaufnahmesicherungen. Gilt für Hyperscale-Datenbanken.|Keine|
 |base_blob_size_bytes|Basisspeichergröße für Blobs|Byte|Maximum|Basisspeichergröße für Blobs. Gilt für Hyperscale-Datenbanken.|Keine|
 
-<sup>1</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). 
-
-<sup>2</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). Diese Metrik ist derzeit nicht für Hyperscale-Datenbanken oder Data Warehouses verfügbar.
+<sup>1</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens zwei virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei Verwendung des DTU-basierten Kaufmodells). 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -2074,27 +2072,14 @@ Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleit
 |database_cpu_used|Verwendete CPU|Anzahl|Average|Verwendete CPU|DatabaseResourceId|
 |sqlserver_process_core_percent<sup>1</sup>|SQL Server-Prozess: Kern (in Prozent)|Percent|Maximum|CPU-Auslastungsprozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem. Bezieht sich auf Pools für elastische Datenbanken. |Keine|
 |sqlserver_process_memory_percent<sup>1</sup>|SQL Server-Prozess: Arbeitsspeicher (in Prozent)|Percent|Maximum|Arbeitsspeicherauslastungs-Prozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem. Bezieht sich auf Pools für elastische Datenbanken. |Keine|
-|tempdb_data_size<sup>2</sup>|Größe der tempdb-Datendatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Datendatei in Kilobytes.|Keine|
-|tempdb_log_size<sup>2</sup>|Größe der tempdb-Protokolldatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Protokolldatei in Kilobytes. |Keine|
-|tempdb_log_used_percent<sup>2</sup>|Nutzung des tempdb-Protokolls in Prozent|Percent|Maximum|Die Nutzung des tempdb-Protokolls in Prozent.|Keine|
+|tempdb_data_size<sup>1</sup>|Größe der tempdb-Datendatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Datendatei in Kilobytes.|Keine|
+|tempdb_log_size<sup>1</sup>|Größe der tempdb-Protokolldatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Protokolldatei in Kilobytes. |Keine|
+|tempdb_log_used_percent<sup>1</sup>|Nutzung des tempdb-Protokolls in Prozent|Percent|Maximum|Die Nutzung des tempdb-Protokolls in Prozent.|Keine|
 |allocated_data_storage|Zugeordneter Datenspeicherplatz|Byte|Average|Zugeordneter Datenspeicherplatz|Keine|
 |database_allocated_data_storage|Zugeordneter Datenspeicherplatz|Byte|Average|Zugeordneter Datenspeicherplatz|DatabaseResourceId|
 |allocated_data_storage_percent|Zugeordneter Datenspeicherplatz in Prozent|Percent|Maximum|Zugeordneter Datenspeicherplatz in Prozent|Keine|
 
-<sup>1</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). 
-
-<sup>2</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). Diese Metrik ist derzeit für Hyperscale-Datenbanken nicht verfügbar.
-
-
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
-
-|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
-|---|---|---|---|---|---|
-|dtu_consumption_percent|DTU-Prozentsatz|Percent|Average|DTU-Prozentsatz|ElasticPoolResourceId|
-|database_dtu_consumption_percent|DTU-Prozentsatz|Percent|Average|DTU-Prozentsatz|DatabaseResourceId,ElasticPoolResourceId|
-|storage_used|Genutzter Datenspeicherplatz|Byte|Average|Genutzter Datenspeicherplatz|ElasticPoolResourceId|
-|database_storage_used|Genutzter Datenspeicherplatz|Byte|Average|Genutzter Datenspeicherplatz|DatabaseResourceId,ElasticPoolResourceId|
-|dtu_used|DTU-Verbrauch|Anzahl|Average|DTU-Verbrauch|DatabaseResourceId|
+<sup>1</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens zwei virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei Verwendung des DTU-basierten Kaufmodells). 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659883"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144858"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -192,6 +192,9 @@ VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt we
 * **Unterstützen VMs der Generation 2 den beschleunigten Netzwerkbetrieb?**  
     Ja. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb](../../virtual-network/create-vm-accelerated-networking-cli.md).
 
+* **Wird von virtuellen Computern der zweiten Generation der sichere Start oder vTPM in Azure unterstützt?**
+    Sicherer Start und vTPM werden weder von virtuellen Computern der ersten Generation noch von virtuellen Computern der zweiten Generation unterstützt. 
+    
 * **Wird VHDX für Generation 2 unterstützt?**  
     Nein, VMs der Generation 2 unterstützen nur VHD.
 

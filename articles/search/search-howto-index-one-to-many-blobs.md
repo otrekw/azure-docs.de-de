@@ -1,7 +1,7 @@
 ---
 title: Indizieren von Blobs mit mehreren Dokumenten
 titleSuffix: Azure Cognitive Search
-description: Durchforsten Sie Azure-Blobs nach Textinhalten mithilfe des Blobindexers von Azure Congitive Search, wobei jedes Blob ein oder mehrere Suchindexdokumente ergeben kann.
+description: Durchforsten Sie Azure-Blobs nach Textinhalten mithilfe des Blobindexers von Azure Cognitive Search, wobei jedes Blob ein einzelnes Suchindexdokument oder mehrere Suchindexdokumente ergeben kann.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f93ae8a017c889f6c465b3ccbbb66382577e871
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112269"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146792"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indizieren von Blobs zum Generieren mehrerer Suchdokumente
 Standardmäßig behandelt ein Blobindexer die Inhalte eines Blobs als ein Suchdokument. Einige **parsingMode**-Werte unterstützen Szenarios, in denen sich aus einem einzigen Blob mehrere Suchdokumente ergeben können. Es gibt folgende unterschiedliche Typen von **parsingMode**, die es einem Indexer ermöglichen, mehr als ein Suchdokument aus einem Blob zu extrahieren:
@@ -42,21 +42,27 @@ Und Ihr Blobcontainer enthält Blobs mit folgender Struktur:
 
 _Blob1.json_
 
+```json
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
+```
 
 _Blob2.json_
 
+```json
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
+```
 
 Wenn Sie einen Indexer erstellen und **parsingMode** auf `jsonLines` festlegen, ohne explizite Feldzuordnungen für das Schlüsselfeld anzugeben, wird die folgende Zuordnung implizit angewendet
-    
+
+```http
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
         "targetFieldName": "id",
         "mappingFunction": { "name" : "base64Encode" }
     }
+```
 
 Mit diesem Setup enthält der Index der kognitiven Azure-Suche folgende Informationen (Base64-codierte ID aus Gründen der Übersichtlichkeit gekürzt).
 
@@ -73,22 +79,28 @@ Angenommen, Ihr Blobcontainer enthält bei derselben Indexdefinition wie im vorh
 
 _Blob1.json_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
+```
 
 _Blob2.json_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
+```
 
 Wenn Sie einen Indexer mit **parsingMode** `delimitedText` erstellen, kommt es Ihnen möglicherweise natürlich vor, wie folgt eine Feldzuordnungsfunktion für die Schlüsselfelder einzurichten:
 
+```http
     {
         "sourceFieldName" : "recordid",
         "targetFieldName": "id"
     }
+```
 
 Aus dieser Zuordnung ergeben sich jedoch _nicht_ 4 Dokumente, die im Index angezeigt werden, da das Feld `recordid` nicht _blobübergreifend_ eindeutig ist. Deshalb wird empfohlen, dass Sie die implizite Feldzuordnung verwenden, die von der Eigenschaft `AzureSearch_DocumentKey` auf das Schlüsselindexfeld für 1:n-Analysemodi angewendet wird.
 

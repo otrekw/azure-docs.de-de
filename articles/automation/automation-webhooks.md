@@ -3,29 +3,31 @@ title: Starten eines Azure Automation-Runbooks über einen Webhook
 description: In diesem Artikel erfahren Sie, wie Sie mit einem Webhook ein Runbook in Azure Automation über einen HTTP-Aufruf starten.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/16/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830496"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185635"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
-Mit einem Webhook kann ein externer Dienst ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten. Externe Dienste umfassen Azure DevOps Services, GitHub, Azure Monitor-Protokolle und benutzerdefinierte Anwendungen. Ein solcher Dienst kann einen Webhook verwenden, um ein Runbook zu starten, ohne die vollständige Azure Automation-API zu implementieren. Unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md) können Sie Webhooks mit anderen Methoden zum Starten eines Runbooks vergleichen.
+Mit einem Webhook kann ein externer Dienst ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten. Externe Dienste umfassen Azure DevOps Services, GitHub, Azure Monitor-Protokolle und benutzerdefinierte Anwendungen. Ein solcher Dienst kann einen Webhook verwenden, um ein Runbook zu starten, ohne die vollständige Azure Automation-API zu implementieren. Unter [Starten eines Runbooks in Azure Automation](./start-runbooks.md) können Sie Webhooks mit anderen Methoden zum Starten eines Runbooks vergleichen.
 
 > [!NOTE]
 > Die Verwendung eines Webhooks zum Starten eines Python-Runbooks wird nicht unterstützt.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
+Informationen zu den Clientanforderungen für TLS 1.2 mit Webhooks finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+
 ## <a name="webhook-properties"></a>Eigenschaften von Webhooks
 
 Die folgende Tabelle beschreibt die Eigenschaften, die Sie für einen Webhook konfigurieren müssen.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Name |Name des Webhooks. Sie können einen beliebigen Namen vergeben, da er nicht für den Client verfügbar gemacht wird. Sie benötigen den Namen nur zur Identifizierung des Runbooks in Azure Automation. Es empfiehlt sich, den Webhook entsprechend dem Client zu benennen, der ihn verwenden wird. |
 | URL |URL des Webhooks. Dies ist die eindeutige Adresse, die ein Client mit einer HTTP POST-Anforderung aufruft, um das mit dem Webhook verknüpfte Runbook zu starten. Sie wird beim Erstellen des Webhooks automatisch generiert. Sie können keine benutzerdefinierte URL angeben. <br> <br> Die URL enthält ein Sicherheitstoken, das es einem Drittanbietersystem ermöglicht, das Runbook ohne weitere Authentifizierung aufzurufen. Behandeln Sie die URL daher wie ein Kennwort. Aus Sicherheitsgründen können Sie die URL im Azure-Portal nur zu dem Zeitpunkt anzeigen, zu dem der Webhook erstellt wird. Sie sollten die URL zur späteren Verwendung an einem sicheren Ort speichern. |
@@ -42,7 +44,7 @@ Um Daten vom Client zu empfangen, unterstützt das Runbook einen einzelnen Param
 
 Der `WebhookData`-Parameter hat folgende Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | `WebhookName` | Name des Webhooks |
 | `RequestHeader` | Die Hashtabelle mit den Headern der eingehenden POST-Anforderung |
@@ -81,9 +83,13 @@ Nun übergeben wir das folgende JSON-Objekt in der Benutzeroberfläche für den 
 
 Die Sicherheit eines Webhooks beruht auf dem Schutz seiner URL, die ein Sicherheitstoken enthält, mit dem der Webhook aufgerufen werden kann. Azure Automation führt keinerlei Authentifizierung der Anforderung durch, sofern diese über die richtige URL erfolgt. Aus diesem Grund sollten Ihre Client keine Webhooks für Runbooks verwenden, die sehr vertrauliche Vorgänge ausführen, ohne eine alternative Möglichkeit zur Überprüfung der Anforderung zu verwenden.
 
-Sie können Logik in ein Runbook einschließen, um zu bestimmen, ob es von einem Webhook aufgerufen wird. Lassen Sie das Runbook die Eigenschaft `WebhookName` des Parameters `WebhookData` überprüfen. Das Runbook kann eine weitere Überprüfung durchführen, indem es in den Eigenschaften `RequestHeader`oder `RequestBody` nach bestimmten Informationen sucht.
+Sehen Sie sich die folgenden Strategien an:
 
-Eine andere Strategie besteht darin, dass das Runbook eine externe Bedingung überprüft, wenn es eine Webhookanforderung empfängt. Betrachten Sie z. B. ein Runbook, das von GitHub aufgerufen wird, sobald ein neuer Commit für ein GitHub-Repository vorhanden ist. Das Runbook kann eine Verbindung mit GitHub herstellen, um zu überprüfen, ob ein neuer Commit durchgeführt wurde, bevor es mit der Ausführung fortfährt.
+* Sie können Logik in ein Runbook einschließen, um zu bestimmen, ob es von einem Webhook aufgerufen wird. Lassen Sie das Runbook die Eigenschaft `WebhookName` des Parameters `WebhookData` überprüfen. Das Runbook kann eine weitere Überprüfung durchführen, indem es in den Eigenschaften `RequestHeader`oder `RequestBody` nach bestimmten Informationen sucht.
+
+* Lassen Sie das Runbook eine externe Bedingung überprüfen, wenn es eine Webhookanforderung empfängt. Betrachten Sie z. B. ein Runbook, das von GitHub aufgerufen wird, sobald ein neuer Commit für ein GitHub-Repository vorhanden ist. Das Runbook kann eine Verbindung mit GitHub herstellen, um zu überprüfen, ob ein neuer Commit durchgeführt wurde, bevor es mit der Ausführung fortfährt.
+
+* Azure Automation unterstützt Diensttags für virtuelle Azure-Netzwerke (genauer gesagt: [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)). Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen für [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#security-rules) oder [Azure Firewall](../firewall/service-tags.md) zu definieren und Webhooks innerhalb Ihres virtuellen Netzwerks auszulösen. Diensttags können anstelle von spezifischen IP-Adressen verwendet werden, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen **GuestAndHybridManagement** im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den Automation-Dienst zulassen oder verweigern. Dieses Diensttag weist keine Unterstützung für das Zulassen einer präziseren Steuerung durch das Einschränken von IP-Adressbereichen auf eine bestimmte Region auf.
 
 ## <a name="create-a-webhook"></a>Erstellen eines Webhooks
 
@@ -101,7 +107,8 @@ Gehen Sie wie folgt vor, um einen neuen Webhook zu erstellen, der mit einem Runb
    ![Webhook-URL](media/automation-webhooks/copy-webhook-url.png)
 
 1. Klicken Sie auf **Parameter** , um Werte für die Runbookparameter bereitzustellen. Wenn das Runbook über obligatorische Parameter verfügt, können Sie einen Webhook nur dann erstellen, wenn Sie Werte bereitstellen.
-1. Klicken Sie auf **Erstellen** , um das Projekt zu erstellen.
+
+2. Klicken Sie auf **Erstellen** , um das Projekt zu erstellen.
 
 ## <a name="use-a-webhook"></a>Verwenden eines Webhooks
 
@@ -113,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Der Client empfängt einen der folgenden Rückgabecodes als Antwort auf die `POST`-Anforderung.
 
-| Code | Text | BESCHREIBUNG |
+| Code | Text | Beschreibung |
 |:--- |:--- |:--- |
 | 202 |Zulässig |Die Anforderung wurde akzeptiert, und das Runbook wurde erfolgreich in die Warteschlange gestellt. |
 | 400 |Ungültige Anforderung |Die Anforderung wurde aus einem der folgenden Gründe nicht akzeptiert: <ul> <li>Der Webhook ist abgelaufen.</li> <li>Der Webhook ist deaktiviert.</li> <li>Das Token in der URL ist ungültig.</li>  </ul> |
@@ -126,7 +133,7 @@ Wenn die Anforderung erfolgreich ist, enthält die Antwort des Webhooks wie im F
 {"JobIds":["<JobId>"]}
 ```
 
-Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wurde, noch den Abschlussstatus aus einem Webhook abrufen. Diese Informationen können mithilfe der Auftrags-ID unter Verwendung einer anderen Methode ermittelt werden, z. B. mit [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) oder der [Azure Automation-API](/rest/api/automation/job).
+Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wurde, noch den Abschlussstatus aus einem Webhook abrufen. Diese Informationen können mithilfe der Auftrags-ID unter Verwendung einer anderen Methode ermittelt werden, z. B. mit [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) oder der [Azure Automation-API](/rest/api/automation/job).
 
 ## <a name="renew-a-webhook"></a>Verlängern eines Webhooks
 
@@ -144,7 +151,7 @@ Sie können einen Webhook verlängern, der seine Ablaufzeit noch nicht erreicht 
 Das folgende Beispiel-Runbook akzeptiert Webhook-Daten und startet die im Anforderungstext angegebenen virtuellen Computer. Wenn Sie dieses Runbook testen möchten, klicken Sie in Ihrem Automation-Konto unter **Runbooks** auf **Runbook erstellen**. Sollten Sie nicht wissen, wie man ein Runbook erstellt, finden Sie unter [Erstellen eines Azure Automation-Runbooks](automation-quickstart-create-runbook.md) weitere Informationen.
 
 > [!NOTE]
-> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
+> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
 
 ```powershell
 param

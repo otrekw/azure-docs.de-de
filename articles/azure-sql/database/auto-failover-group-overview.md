@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 2/10/2020
-ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/09/2020
+ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982978"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171872"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -239,7 +239,7 @@ Da jede Instanz in einem eigenen VNET isoliert ist, muss der bidirektionale Date
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Erstellen einer Failovergruppe zwischen verwalteten Instanzen in verschiedenen Abonnements
 
-Sie können eine Failovergruppe zwischen SQL Managed Instances in zwei verschiedenen Abonnements erstellen. Wenn Sie die PowerShell-API verwenden, können Sie dazu den Parameter `PartnerSubscriptionId` für die sekundäre SQL Managed Instance angeben. Wenn Sie die REST-API verwenden, kann jede im Parameter `properties.managedInstancePairs` enthaltene Instanz-ID eine eigene Abonnement-ID haben.
+Sie können eine Failovergruppe zwischen SQL Managed Instances in zwei verschiedenen Abonnements erstellen, solange Abonnements dem gleichen [Azure Active Directory-Mandanten](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) zugeordnet sind. Wenn Sie die PowerShell-API verwenden, können Sie dazu den Parameter `PartnerSubscriptionId` für die sekundäre SQL Managed Instance angeben. Wenn Sie die REST-API verwenden, kann jede im Parameter `properties.managedInstancePairs` enthaltene Instanz-ID eine eigene Abonnement-ID haben.
   
 > [!IMPORTANT]
 > Das Erstellen von Failovergruppen in verschiedenen Abonnements wird im Azure-Portal nicht unterstützt. Für vorhandene Failovergruppen, die verschiedene Abonnements und/oder Ressourcengruppen umfassen, kann das Failover zudem nicht von der primären SQL Managed Instance aus manuell über das Portal initiiert werden. Initiieren Sie das Failover stattdessen über die sekundäre Geoinstanz.

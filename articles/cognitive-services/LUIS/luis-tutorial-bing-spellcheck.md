@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144279"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Korrigieren falsch geschriebener Wörter mit der Bing-Rechtschreibprüfung
 
@@ -24,17 +24,9 @@ Sie können die [Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Erstellen des ersten Schlüssels für die Bing-Rechtschreibprüfungs-API V7
-
-Ihr [erster Schlüssel für die Bing-Rechtschreibprüfungs-API v7](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) ist kostenlos.
-
-![Erstellen eines kostenlosen Schlüssels](./media/luis-tutorial-bing-spellcheck/free-key.png)
-
-<a name="create-subscription-key"></a>
-
 ## <a name="create-endpoint-key"></a>Erstellen eines Endpunktschlüssels
-Wenn Ihr kostenloser Schlüssel abgelaufen ist, erstellen Sie einen Endpunktschlüssel.
+
+Gehen Sie wie folgt vor, um eine Bing-Rechtschreibprüfungsressource über das Azure-Portal zu erstellen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 

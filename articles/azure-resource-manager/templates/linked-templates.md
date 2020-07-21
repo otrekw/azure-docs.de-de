@@ -3,12 +3,12 @@ title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056683"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170648"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -160,7 +160,7 @@ Die folgende Vorlage veranschaulicht, wie Vorlagenausdrücke entsprechend dem Be
 
 Der Wert von `exampleVar` ändert sich abhängig vom Wert der Eigenschaft `scope` in `expressionEvaluationOptions`. In der folgenden Tabelle werden die Ergebnisse für beide Bereiche angezeigt.
 
-| `expressionEvaluationOptions` `scope` | Output |
+| Bereich `expressionEvaluationOptions` | Output |
 | ----- | ------ |
 | Innerer Join | aus der geschachtelten Vorlage |
 | äußerer (oder Standard) | aus der übergeordneten Vorlage |

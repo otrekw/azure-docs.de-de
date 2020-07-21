@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für a
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a2f0394b172361e9053b1490a46357a5d3f2f47d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803381"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145498"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
 
@@ -23,6 +23,9 @@ In diesem Artikel wird Ihnen gezeigt, wie Sie eine statische öffentliche IP-Adr
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+
+> [!IMPORTANT]
+> In diesem Artikel wird der Lastenausgleich der SKU *Basic* mit einem einzelnen Knotenpool verwendet. Diese Konfiguration ist für mehrere Knotenpools nicht verfügbar, da der Lastenausgleich der SKU *Basic* mit mehreren Knotenpools nicht unterstützt wird. Unter [Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)][slb] finden Sie ausführlichere Informationen zur Verwendung des Lastenausgleichs der SKU *Standard*.
 
 ## <a name="egress-traffic-overview"></a>Übersicht über ausgehenden Datenverkehr
 
@@ -134,3 +137,4 @@ Um der Verwaltung mehrerer öffentlicher IP-Adressen in Azure Load Balancer zu e
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

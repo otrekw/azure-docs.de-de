@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360298"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144712"
 ---
 # <a name="adsync-service-account"></a>ADSync-Dienstkonto
 Azure AD Connect installiert einen lokalen Dienst, der die Synchronisierung zwischen Active Directory und Azure Active Directory orchestriert.  Der Synchronisierungsdienst Microsoft Azure AD Sync (ADSync) wird auf einem Server in Ihrer lokalen Umgebung ausgeführt.  Die Anmeldeinformationen für den Dienst sind in den Express-Installationen standardmäßig festgelegt, können aber an die Sicherheitsanforderungen Ihrer Organisation angepasst werden.  Diese Anmeldeinformationen werden nicht verwendet, um eine Verbindung mit Ihren lokalen Gesamtstrukturen oder Azure Active Directory herzustellen.
@@ -46,9 +46,9 @@ Microsoft empfiehlt, den ADSync-Dienst entweder im Rahmen eines virtuellen Diens
 - Verwaltetes Dienstkonto: Verwenden Sie ein eigenständiges oder gruppenbasiertes verwaltetes Dienstkonto, das von Ihrem Administrator bereitgestellt wird.
 - Domänenkonto: Verwenden Sie ein Domänendienstkonto, das von Ihrem Administrator bereitgestellt wird.
 
-![](media/concept-adsync-service-account/adsync1.png)
+![Screenshot: Azure AD Connect-Seite „Express-Einstellungen“ mit den Schaltflächen „Anpassen“ und „Express-Einstellungen verwenden“](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![Screenshot: Azure AD Connect-Seite „Erforderliche Komponenten installieren“ mit ausgewählter Option zur Verwendung eines vorhandenen verwalteten Dienstkontos](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>Untersuchen von Änderungen am ADSync-Dienstkonto
 Das Ändern der Anmeldeinformationen nach der Installation führt dazu, dass der Dienst nicht gestartet werden kann, den Zugriff auf die Synchronisierungsdatenbank verliert und sich nicht bei Ihren verbundenen Verzeichnissen (Azure und AD DS) authentifiziert.  Dem neuen ADSync-Dienstkonto den Datenbankzugriff zu gewähren, reicht nicht aus, um dieses Problem zu beheben. Es erfolgt keine Synchronisierung, bis die ursprünglichen Anmeldeinformationen wiederhergestellt sind.

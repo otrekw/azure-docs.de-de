@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235347"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169907"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -33,6 +33,42 @@ Die Verbindungszeichenfolge für Application Insights. Verwenden Sie `APPLICATIO
 |Schlüssel|Beispielwert|
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey=[key];IngestionEndpoint=[url];LiveEndpoint=[url];ProfilerEndpoint=[url];SnapshotEndpoint=[url];|
+
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in der gleichen Functions-App zu senden. Die Verknüpfung wird anstelle einer neuen HTTP-Anforderung verwendet. Diese Einstellung ermöglicht das Deaktivieren dieses Verknüpfungsverhaltens.
+
+|Schlüssel|Wert|Beschreibung|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden nicht direkt an die Funktion gesendet. Stattdessen werden die Anforderungen wieder an das HTTP-Front-End für die Funktions-App zurückgeleitet.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden direkt an die Funktion weitergeleitet. Dies ist der Standardwert. |
+
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden. 
+
+|Schlüssel|Wert|Beschreibung|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Routenparameter mit codierten Schrägstrichen werden decodiert. |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Alle Routenparameter werden unverändert weitergegeben (Standardverhalten). |
+
+Sehen Sie sich beispielsweise die Datei „proxies.json“ für eine Funktions-App in der Domäne `myfunction.com` an.
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+
+Wenn `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` auf `true` festgelegt ist, wird die URL `example.com/api%2ftest` in `example.com/api/test` aufgelöst. Standardmäßig bleibt die URL unverändert (`example.com/test%2fapi`). Weitere Informationen finden Sie unter [Verwenden von Azure-Funktionsproxys](functions-proxies.md).
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
@@ -151,7 +187,31 @@ Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies en
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
-## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
+
+Durch den Wert für diese Einstellung wird eine benutzerdefinierte Paketindex-URL für Python-Apps angegeben. Verwenden Sie diese Einstellung, wenn Sie einen Remotebuild mit benutzerdefinierten Abhängigkeiten ausführen müssen, die sich in einem zusätzlichen Paketindex befinden.   
+
+|Schlüssel|Beispielwert|
+|---|------------|
+|PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
+
+Weitere Informationen finden Sie in der Python-Entwicklerreferenz unter [Benutzerdefinierte Abhängigkeiten](functions-reference-python.md#remote-build-with-extra-index-url).
+
+## <a name="scale_controller_logging_enable"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLE
+
+_Diese Einstellung befindet sich derzeit in der Vorschauphase._  
+
+Diese Einstellung dient zum Steuern der Protokollierung über den Azure Functions-Skalierungscontroller. Weitere Informationen finden Sie unter [Skalierungscontrollerprotokolle (Vorschau)](functions-monitoring.md#scale-controller-logs-preview).
+
+|Schlüssel|Beispielwert|
+|-|-|
+|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights:Verbose|
+
+Der Wert für diesen Schlüssel wird im Format `<DESTINATION>:<VERBOSITY>` bereitgestellt, das wie folgt definiert ist:
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
 Nur für Verbrauchs- und Premium-Tarife. Die Verbindungszeichenfolge für das Speicherkonto, in dem der Code der Funktionen-App und die Konfiguration gespeichert werden. Weitere Informationen finden Sie unter [Erstellen einer Funktionen-App](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -197,47 +257,16 @@ Ermöglicht es Ihrer Funktions-App, über eine bereitgestellte Paketdatei ausgef
 
 Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellungspaketdatei aufgelöst werden kann, oder `1`. Bei einer Festlegung auf `1` muss sich das Paket im Ordner `d:\home\data\SitePackages` befinden. Wenn Sie die Zip-Bereitstellung mit dieser Einstellung verwenden, wird das Paket automatisch an diesen Speicherort hochgeladen. In der Vorschau wurde diese Einstellung als `WEBSITE_RUN_FROM_ZIP` bezeichnet. Weitere Informationen finden Sie unter [Ausführen von Azure Functions über eine Paketdatei](run-functions-from-deployment-package.md).
 
-## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="website_time_zone"></a>WEBSITE\_TIME\_ZONE
 
-Standardmäßig nutzen Functions-Proxys eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in derselben Funktionen-App zu senden, anstatt eine neue HTTP-Anforderung zu erstellen. Mit dieser Einstellung können Sie dieses Verhalten deaktivieren.
+Ermöglicht das Festlegen der Zeitzone für Ihre Funktions-App. 
 
-|Schlüssel|Wert|BESCHREIBUNG|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden nicht mehr direkt an die Funktion gesendet. Stattdessen werden sie an das HTTP-Front-End für die Funktions-App zurückgeleitet.|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Dies ist der Standardwert. Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden direkt an diese Funktion geleitet.|
+|Schlüssel|OS|Beispielwert|
+|---|--|------------|
+|WEBSITE\_TIME\_ZONE|Windows|Eastern Normalzeit|
+|WEBSITE\_TIME\_ZONE|Linux|America/New_York|
 
-
-## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
-
-Diese Einstellung steuert, ob %2F in Routenparametern als Schrägstrich decodiert wird, wenn dieser Code in der Back-End-URL eingefügt wird. 
-
-|Schlüssel|Wert|BESCHREIBUNG|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Bei Routenparameter mit codierten Schrägstrichen werden diese decodiert. `example.com/api%2ftest` wird zu `example.com/api/test`.|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Dies ist das Standardverhalten. Alle Routenparameter werden unverändert übergeben.|
-
-### <a name="example"></a>Beispiel
-
-Hier sehen Sie ein Beispiel für „proxies.json“ in einer Funktionen-App unter der URL myfunction.com.
-
-```JSON
-{
-    "$schema": "http://json.schemastore.org/proxies",
-    "proxies": {
-        "root": {
-            "matchCondition": {
-                "route": "/{*all}"
-            },
-            "backendUri": "example.com/{all}"
-        }
-    }
-}
-```
-|URL-Decodierung|Eingabe|Output|
-|-|-|-|
-|true|myfunction.com/test%2fapi|example.com/test/api
-|false|myfunction.com/test%2fapi|example.com/test%2fapi|
-
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

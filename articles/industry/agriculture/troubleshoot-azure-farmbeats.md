@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656821"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187709"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -314,3 +314,39 @@ Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten
 1. Wechseln Sie zur Ressourcengruppe für Ihren FarmBeats-Datenhub.
 2. Wählen Sie den **App-Dienst** aus.  
 3. Wechseln Sie zur Seite [App Service-Preise](https://azure.microsoft.com/pricing/details/app-service/windows/) (Hochskalieren), und wählen Sie einen geeigneten Tarif aus.
+
+## <a name="weather-data-job-failures"></a>Fehler bei Wetterdatenauftrag
+
+**Fehler:** Sie führen Aufträge aus, um Wetterdaten zu erhalten, aber bei einem Auftrag tritt ein Fehler auf.
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>Sammeln von Protokollen zur Behandlung von Fehlern bei Wetterdatenaufträgen
+
+1. Navigieren Sie im Azure-Portal zur Ressourcengruppe FarmBeats.
+2. Klicken Sie auf den Data Factory-Dienst, der Teil der Ressourcengruppe ist. Der Dienst enthält ein Tag „sku: Datahub“.
+
+> [!NOTE]
+> Um die Tags der Dienste in der Ressourcengruppe anzuzeigen, klicken Sie auf „Spalten bearbeiten“, und fügen Sie der Ressourcengruppenansicht „Tags“ hinzu.
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats-Projekt":::
+
+3. Klicken Sie auf der Seite „Übersicht“ der Data Factory auf **Erstellen und überwachen**. Im Browser wird eine neue Registerkarte geöffnet. Klicken Sie auf **Überwachen**.
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats-Projekt":::
+
+4. Es wird eine Liste der Pipelineausführungen angezeigt, die Teil der Ausführung des Wetterauftrags sind. Klicken Sie auf den Auftrag, für den Sie Protokolle sammeln möchten.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats-Projekt":::
+
+5. Auf der Übersichtsseite der Pipeline wird die Liste der Aktivitätsausführungen angezeigt. Notieren Sie sich die Ausführungs-IDs der Aktivitäten, für die Sie Protokolle sammeln möchten.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats-Projekt":::
+
+6. Wechseln Sie zurück zu ihrer FarmBeats-Ressourcengruppe im Azure-Portal, und klicken Sie auf das Speicherkonto mit dem Namen **datahublogs-XXXX**.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats-Projekt":::
+
+7. Klicken Sie auf **Container** -> **adfjobs**. Geben Sie im Suchfeld die Ausführungs-ID des Auftrags ein, die Sie oben in Schritt 5 notiert haben.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats-Projekt":::
+
+8. Das Suchergebnis enthält den Ordner mit den Protokollen, die sich auf den Auftrag beziehen. Laden Sie die Protokolle herunter, und senden Sie sie zur Unterstützung beim Debuggen des Problems an farmbeatssupport@microsoft.com.

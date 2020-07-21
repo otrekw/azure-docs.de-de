@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8928e7293f184e8eb366df6a29e50cbea6a7c93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078192"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170495"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -54,7 +54,7 @@ Eine Demonstration, wie Sie eine verbundene Organisation hinzufügen können, fi
 
 Führen Sie die Anweisungen in diesem Abschnitt aus, um ein externes Azure AD-Verzeichnis oder eine externe Domäne als verbundene Organisation hinzuzufügen.
 
-**Erforderliche Rolle:** *Globaler Administrator*, *Benutzeradministrator* oder *Gasteinladender*
+**Erforderliche Rolle:** *Globaler Administrator* oder *Benutzeradministrator*
 
 1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** und dann **Identity Governance** aus.
 

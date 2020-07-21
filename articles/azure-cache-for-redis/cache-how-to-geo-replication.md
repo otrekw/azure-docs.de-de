@@ -6,16 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74129419"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184972"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Vorgehensweise zum Einrichten der Georeplikation für Azure Cache for Redis
 
-Georeplikation bietet einen Mechanismus zum Verknüpfen von zwei Azure Cache for Redis-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache und der andere als sekundärer verknüpfter Cache ausgewählt. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Über diese Funktion kann ein Cache über verschiedene Azure-Regionen hinweg repliziert werden. Dieser Artikel enthält eine Anleitung zum Konfigurieren der Georeplikation für Ihre Azure Cache for Redis-Instanzen im Premium-Tarif.
+Georeplikation bietet einen Mechanismus zum Verknüpfen von zwei Azure Cache for Redis-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache und der andere als sekundärer verknüpfter Cache ausgewählt. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Die Datenübertragung zwischen primärer und sekundärer Cache-Instanz wird durch TLS geschützt. Mithilfe der Georeplikation kann ein Cache eingerichtet werden, der sich über zwei Azure-Regionen erstreckt. Dieser Artikel enthält eine Anleitung zum Konfigurieren der Georeplikation für Ihre Azure Cache for Redis-Instanzen im Premium-Tarif.
+
+> [!NOTE]
+> Die Georeplikation ist als Lösung für die Notfallwiederherstellung konzipiert. Standardmäßig wird bei Schreib- und Lesevorgängen Ihrer Anwendung die primäre Region verwendet. Die Anwendung kann optional so konfiguriert werden, dass sie aus der sekundären Region liest. Die Georeplikation bietet kein automatisches Failover. Der Grund sind Bedenken hinsichtlich zusätzlicher Netzwerkwartezeit zwischen Regionen, wenn der Rest Ihrer Anwendung in der primären Region verbleibt. Zur Verwaltung und Initiierung des Failovers muss die Verknüpfung mit dem sekundären Cache aufgehoben werden. Dadurch wird er zur neuen primären Instanz hochgestuft.
 
 ## <a name="geo-replication-prerequisites"></a>Voraussetzungen für die Georeplikation
 

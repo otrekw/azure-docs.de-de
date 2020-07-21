@@ -1,15 +1,15 @@
 ---
 title: Auswählen von VM-Größen für Pools
 description: Wählen aus den verfügbaren VM-Größen für Computeknoten in Azure Batch-Pools
-ms.topic: how-to
-ms.date: 09/12/2019
+ms.topic: conceptual
+ms.date: 06/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2e0d403f405d58c0d7488ac6d0c306be2f2d79ea
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779151"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143522"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -35,9 +35,13 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | SL | Keine |
 | Dv2, DSv2 | Alle Größen |
 | Dv3, Dsv3 | Alle Größen |
-| Dav4, Dasv4 | Keine: Noch nicht verfügbar |
+| Dav4<sup>1</sup> | Keine: Noch nicht verfügbar |
+| Dasv4<sup>1</sup> | Alle Größen, mit Ausnahme von „Standard_D48as_v4“, „Standard_D64as_v4“ und „Standard_D96as_v4“ |
+| Ddv4, Ddsv4 |  Keine: Noch nicht verfügbar |
 | Ev3, Esv3 | Alle Größen, mit Ausnahme von E64is_v3 und E64i_v3 |
-| Eav4, Easv4 | Keine: Noch nicht verfügbar |
+| Eav4<sup>1</sup> | Alle Größen, mit Ausnahme von „Standard_E48a_v4“, „Standard_E64a_v4“ und „Standard_E96a_v4“ |
+| Easv4<sup>1</sup> | Alle Größen, mit Ausnahme von „Standard_E48as_v4“, „Standard_E64as_v4“ und „Standard_E96as_v4“ |
+| Edv4, Edsv4 |  Keine: Noch nicht verfügbar |
 | F, Fs | Alle Größen |
 | Fsv2 | Alle Größen |
 | G, Gs | Alle Größen |
@@ -46,8 +50,8 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | HBv2<sup>1</sup> | Alle Größen |
 | HC<sup>1</sup> | Alle Größen |
 | Ls | Alle Größen |
-| Lsv2 | Keine: Noch nicht verfügbar |
-| M<sup>1</sup> | Alle Größen, mit Ausnahme von M64, M64m, M128, M128m |
+| Lsv2<sup>1</sup> | Alle Größen |
+| M<sup>1</sup> | Alle Größen |
 | Mv2 | Keine: Noch nicht verfügbar |
 | NC | Alle Größen |
 | NCv2<sup>1</sup> | Alle Größen |
@@ -72,7 +76,7 @@ Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für
 
 ## <a name="size-considerations"></a>Überlegungen zu Größen
 
-* **Anwendungsanforderungen**: Berücksichtigen Sie die Merkmale und Anforderungen der Anwendungen, die auf den Knoten ausgeführt werden sollen. Die Beantwortung der Fragen, ob es sich beispielsweise um eine Multithreadanwendung handelt und wie viel Arbeitsspeicher sie beansprucht, kann Ihnen dabei behilflich sein, die am besten geeignete und kostengünstigste Knotengröße zu bestimmen. Ziehen Sie für [MPI-Workloads](batch-mpi.md) mit mehreren Instanzen oder CUDA-Anwendungen spezielle [HPC](../virtual-machines/linux/sizes-hpc.md)- bzw. [GPU-fähige ](../virtual-machines/linux/sizes-gpu.md) VM-Größen in Betracht. (Informationen dazu finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).)
+* **Anwendungsanforderungen**: Berücksichtigen Sie die Merkmale und Anforderungen der Anwendungen, die auf den Knoten ausgeführt werden sollen. Die Beantwortung der Fragen, ob es sich beispielsweise um eine Multithreadanwendung handelt und wie viel Arbeitsspeicher sie beansprucht, kann Ihnen dabei behilflich sein, die am besten geeignete und kostengünstigste Knotengröße zu bestimmen. Ziehen Sie für [MPI-Workloads](batch-mpi.md) mit mehreren Instanzen oder CUDA-Anwendungen spezielle [HPC](../virtual-machines/sizes-hpc.md)- bzw. [GPU-fähige ](../virtual-machines/sizes-gpu.md) VM-Größen in Betracht. (Informationen dazu finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).)
 
 * **Aufgaben pro Knoten**: Die Knotengröße wird normalerweise unter der Annahme ausgewählt, dass jeweils nur eine Aufgabe auf einem Knoten ausgeführt wird. Es kann jedoch von Vorteil sein, mehrere Aufgaben (und somit mehrere Anwendungsinstanzen) während der Auftragsausführung auf Computeknoten [parallel zu nutzen](batch-parallel-node-tasks.md). In diesem Fall wird häufig eine Knotengröße mit mehreren Kernen gewählt, um den höheren Bedarf an parallelen Aufgabenausführungen decken zu können.
 

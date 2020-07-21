@@ -1,15 +1,15 @@
 ---
 title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor.
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
-ms.date: 03/17/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248820"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187522"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -135,9 +135,13 @@ Diese Funktion wird derzeit für Plattformmetriken (keine benutzerdefinierten Me
 
 Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnregel auf drei Arten angeben. Beispielsweise können Sie bei virtuellen Computern den Bereich wie folgt angeben:  
 
-- Als Liste mit virtuellen Computern einer Azure-Region unter einem Abonnement
+- Liste mit virtuellen Computern (in einer einzelnen Azure-Region) unter einem Abonnement
 - Alle virtuellen Computer (in einer Azure-Region) in einer oder mehreren Ressourcengruppen eines Abonnements
-- Alle virtuellen Computer (in einer Azure-Region) unter einem Abonnement
+- Alle virtuellen Computer (in einer einzelnen Azure-Region) unter einem Abonnement
+
+> [!NOTE]
+>
+> Der Bereich einer Metrikwarnungsregel für mehrere Ressourcen muss mindestens eine Ressource des ausgewählten Ressourcentyps enthalten.
 
 Das Erstellen von Metrikwarnungsregeln, mit denen mehrere Ressourcen überwacht werden, ähnelt dem [Erstellen einer Metrikwarnung](alerts-metric.md), mit der eine einzelne Ressource überwacht wird. Der einzige Unterschied ist, dass Sie alle Ressourcen auswählen, die überwacht werden sollen. Sie können diese Regeln auch mit [Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources) erstellen. Sie erhalten für jede überwachte Ressource gesonderte Benachrichtigungen.
 

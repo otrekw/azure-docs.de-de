@@ -4,35 +4,33 @@ description: Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konf
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779491"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142688"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 
-> [!NOTE] 
-> Die in diesem Artikel beschriebenen Benutzerkonten unterscheiden sich aus Sicherheitsgründen von den Benutzerkonten für RDP (Remote Desktop Protocol) oder SSH (Secure Shell). 
+> [!NOTE]
+> Die in diesem Artikel beschriebenen Benutzerkonten unterscheiden sich aus Sicherheitsgründen von den Benutzerkonten für RDP (Remote Desktop Protocol) oder SSH (Secure Shell).
 >
-> Um eine Verbindung mit einem Knoten herzustellen, auf dem die Linux-VM-Konfiguration über SSH ausgeführt wird, lesen Sie den Artikel [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Um eine Verbindung mit Knoten herzustellen, auf denen Windows über RDP ausgeführt wird, lesen Sie den Artikel [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Um eine Verbindung mit einem Knoten herzustellen, auf dem die Linux-VM-Konfiguration über SSH ausgeführt wird, lesen Sie den Artikel [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/linux/use-remote-desktop.md). Um eine Verbindung mit Knoten herzustellen, auf denen Windows über RDP ausgeführt wird, lesen Sie den Artikel [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md).<br /><br />
 > Um eine Verbindung mit einem Knoten herzustellen, auf dem die Clouddienstkonfiguration über RDP ausgeführt wird, lesen Sie den Artikel [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
-Eine Aufgabe wird in Azure Batch immer unter einem Benutzerkonto ausgeführt. Standardmäßig werden Aufgaben unter Standardbenutzerkonten ohne Administratorberechtigungen ausgeführt. Diese standardmäßigen Benutzerkontoeinstellungen sind in der Regel ausreichend. Für bestimmte Szenarien ist es jedoch hilfreich, in der Lage zu sein, das Benutzerkonto zu konfigurieren, unter dem eine Aufgabe ausgeführt werden soll. Dieser Artikel beschreibt die Typen von Benutzerkonten, und wie Sie sie für Ihr Szenario konfigurieren können.
+Eine Aufgabe wird in Azure Batch immer unter einem Benutzerkonto ausgeführt. Standardmäßig werden Aufgaben unter Standardbenutzerkonten ohne Administratorberechtigungen ausgeführt. In bestimmten Szenarien möchten Sie jedoch möglicherweise das Benutzerkonto konfigurieren, unter dem eine Aufgabe ausgeführt werden soll. In diesem Artikel werden die Arten von Benutzerkonten beschrieben, und Sie erfahren, wie Sie sie für Ihr Szenario konfigurieren können.
 
 ## <a name="types-of-user-accounts"></a>Typen von Benutzerkonten
 
 Azure Batch bietet zwei Typen von Benutzerkonten zum Ausführen von Aufgaben an:
 
-- **Automatische Benutzerkonten.** Automatische Benutzerkonten sind integrierte Benutzerkonten, die vom Batch-Dienst automatisch erstellt werden. Standardmäßig werden Aufgaben unter einem automatischen Benutzerkonto ausgeführt. Sie können die automatische Benutzerspezifikation für eine Aufgabe konfigurieren, um anzugeben, unter welchem automatischen Benutzerkonto eine Aufgabe ausgeführt werden soll. Mit der automatischen Benutzerspezifikation können Sie Rechteerweiterungsebene und Bereich des automatischen Benutzerkontos angeben, das die Aufgabe ausführt. 
+- **Automatische Benutzerkonten.** Automatische Benutzerkonten sind integrierte Benutzerkonten, die vom Batch-Dienst automatisch erstellt werden. Standardmäßig werden Aufgaben unter einem automatischen Benutzerkonto ausgeführt. Sie können die automatische Benutzerspezifikation für eine Aufgabe konfigurieren, um anzugeben, unter welchem automatischen Benutzerkonto eine Aufgabe ausgeführt werden soll. Mit der automatischen Benutzerspezifikation können Sie Rechteerweiterungsebene und Bereich des automatischen Benutzerkontos angeben, das die Aufgabe ausführt.
 
 - **Ein benanntes Benutzerkonto.** Sie können eine oder mehrere benannte Benutzerkonten für einen Pool angeben, wenn Sie den Pool erstellen. Jedes Benutzerkonto wird auf jedem Knoten des Pools erstellt. Geben Sie neben dem Kontonamen das Kennwort des Benutzerkontos, die Rechteerweiterungsebene und, für Linux-Pools, den privaten SSH-Schlüssel ein. Wenn Sie eine Aufgabe hinzufügen, können Sie das benannte Benutzerkonto angeben, unter dem diese Aufgabe ausgeführt werden soll.
 
-> [!IMPORTANT] 
-> Mit der Batch-Dienstversion 2017-01-01.4.0 wird eine entscheidende Änderung eingeführt, die erfordert, dass Sie den Code zum Aufrufen dieser Version aktualisieren. Wenn Sie Code von einer älteren Batch-Version migrieren, beachten Sie, dass die **runElevated**-Eigenschaft in den REST-API- oder Batch-Clientbibliotheken nicht mehr unterstützt wird. Verwenden Sie die neue **userIdentity**-Eigenschaft einer Aufgabe, um die Rechteerweiterungsebene anzugeben. Im Abschnitt [Aktualisieren Ihres Codes auf die aktuelle Batch-Clientbibliothek](#update-your-code-to-the-latest-batch-client-library) finden Sie kurze Richtlinien für die Aktualisierung des Batch-Codes, wenn Sie eine der Clientbibliotheken verwenden.
->
->
+> [!IMPORTANT]
+> Mit der Batch-Dienstversion 2017-01-01.4.0 wird eine entscheidende Änderung eingeführt, die erfordert, dass Sie den Code zum Aufrufen dieser Version aktualisieren. Wenn Sie Code von einer älteren Batch-Version migrieren, beachten Sie, dass die **runElevated**-Eigenschaft in den REST-API- oder Batch-Clientbibliotheken nicht mehr unterstützt wird. Verwenden Sie die neue **userIdentity**-Eigenschaft einer Aufgabe, um die Rechteerweiterungsebene anzugeben. Unter [Aktualisieren Ihres Codes auf die aktuelle Batch-Clientbibliothek](#update-your-code-to-the-latest-batch-client-library) finden Sie kurze Richtlinien für die Aktualisierung des Batch-Codes, wenn Sie eine der Clientbibliotheken verwenden.
 
 ## <a name="user-account-access-to-files-and-directories"></a>Benutzerkontenzugriff auf Dateien und Verzeichnisse
 
@@ -42,18 +40,18 @@ Wenn eine Aufgabe unter dem gleichen Konto ausgeführt wird, das für die Ausfü
 
 Weitere Informationen zum Zugreifen auf Dateien und Verzeichnisse über eine Aufgabe finden Sie unter [Dateien und Verzeichnisse](files-and-directories.md).
 
-## <a name="elevated-access-for-tasks"></a>Erhöhte Zugriffsrechte für Aufgaben 
+## <a name="elevated-access-for-tasks"></a>Erhöhte Zugriffsrechte für Aufgaben
 
 Die Rechteerweiterungsebene des Benutzerkontos lässt erkennen, ob eine Aufgabe mit erhöhten Zugriffsrechten ausgeführt wird. Sowohl ein automatisches Benutzerkonto als auch ein benanntes Benutzerkonto kann mit erhöhten Zugriffsrechten ausgeführt werden. Die zwei Optionen für die Rechteerweiterungsebene sind:
 
 - **NonAdmin:** Die Aufgabe wird unter dem Standardbenutzer ohne erhöhte Zugriffsrechte ausgeführt. Die standardmäßige Rechteerweiterungsebene für ein Batch-Benutzerkonto ist immer **NonAdmin**.
-- **Admin:** Die Aufgabe wird unter einem Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt. 
+- **Admin:** Die Aufgabe wird unter einem Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt.
 
 ## <a name="auto-user-accounts"></a>Automatische Benutzerkonten
 
 Standardmäßig werden Aufgaben in Batch unter einem automatischen Benutzerkonto als Standardbenutzer ohne erhöhte Zugriffsrechte und mit Aufgabenbereich ausgeführt. Wenn die automatische Benutzerspezifikation für den Aufgabenbereich konfiguriert ist, erstellt der Batch-Dienst ausschließlich für diese Aufgabe ein automatisches Benutzerkonto.
 
-Die Alternative zum Aufgabenbereich ist der Poolbereich. Wenn die automatische Benutzerspezifikation für eine Aufgabe für den Poolbereich konfiguriert ist, wird die Aufgabe unter einem automatischen Benutzerkonto ausgeführt, das für jede Aufgabe im Pool verfügbar ist. Weitere Informationen zum Poolbereich finden Sie im Abschnitt „Ausführen einer Aufgabe als automatischer Benutzer mit Poolbereich“.   
+Die Alternative zum Aufgabenbereich ist der Poolbereich. Wenn die automatische Benutzerspezifikation für eine Aufgabe für den Poolbereich konfiguriert ist, wird die Aufgabe unter einem automatischen Benutzerkonto ausgeführt, das für jede Aufgabe im Pool verfügbar ist. Weitere Informationen zum Poolbereich finden Sie unter [Ausführen einer Aufgabe als automatischer Benutzer mit Poolbereich](#run-a-task-as-an-auto-user-with-pool-scope).
 
 Der Standardbereich ist auf Windows- und Linux-Knoten unterschiedlich:
 
@@ -67,19 +65,15 @@ Es gibt vier mögliche Konfigurationen für die automatische Benutzerspezifikati
 - Zugriff ohne Administratorrechte mit Poolbereich
 - Administratorzugriff mit Poolbereich
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Aufgaben, die unter dem Aufgabenbereich ausgeführt werden, haben de facto keinen Zugriff auf andere Aufgaben auf einem Knoten. Allerdings könnte ein böswilliger Benutzer mit Zugriff auf das Konto diese Einschränkung durch Übermitteln einer Aufgabe umgehen, die mit Administratorrechten ausgeführt wird und auf andere Aufgabenverzeichnisse zugreift. Ein böswilliger Benutzer könnte auch RDP oder SSH verwenden, um eine Verbindung mit einem Knoten herzustellen. Sie müssen Ihre Batch-Kontoschlüssel vor Zugriff schützen, um solch ein Szenario zu verhindern. Wenn Sie den Verdacht haben, dass Ihr Konto manipuliert wurde, generieren Sie Ihre Schlüssel unbedingt neu.
->
->
 
 ### <a name="run-a-task-as-an-auto-user-with-elevated-access"></a>Ausführen einer Aufgabe als automatischer Benutzer mit erhöhten Zugriffsrechten
 
 Sie können die automatische Benutzerspezifikation für die Administratorrechte konfigurieren, wenn Sie eine Aufgabe mit erhöhten Zugriffsrechten ausführen müssen. Beispielsweise kann eine Startaufgabe erhöhte Zugriffsrechte zum Installieren von Software auf dem Knoten benötigen.
 
-> [!NOTE] 
-> Im Allgemeinen sollten erhöhte Zugriffsrechte nur bei Bedarf verwendet werden. Es hat sich als Methode bewährt, die Mindestberechtigungen zu erteilen, mit denen das gewünschte Ergebnis erzielt werden kann. Wenn eine Startaufgabe z.B. Software für den aktuellen Benutzer anstatt für alle Benutzer installiert, können Sie vermeiden, erhöhte Zugriffsrechte für Aufgaben zu gewähren. Sie können die automatische Benutzerspezifikation für den Poolbereich und den Zugriff ohne Administratorrechte für alle Aufgaben konfigurieren, die unter dem gleichen Konto ausgeführt werden müssen, inklusive der Startaufgabe. 
->
->
+> [!NOTE]
+> Verwenden Sie erhöhte Zugriffsrechte nur bei Bedarf. Es hat sich als Methode bewährt, die Mindestberechtigungen zu erteilen, mit denen das gewünschte Ergebnis erzielt werden kann. Wenn eine Startaufgabe z.B. Software für den aktuellen Benutzer anstatt für alle Benutzer installiert, können Sie vermeiden, erhöhte Zugriffsrechte für Aufgaben zu gewähren. Sie können die automatische Benutzerspezifikation für den Poolbereich und den Zugriff ohne Administratorrechte für alle Aufgaben konfigurieren, die unter dem gleichen Konto ausgeführt werden müssen, inklusive der Startaufgabe.
 
 Die folgenden Codeausschnitte veranschaulichen das Konfigurieren der automatischen Benutzerspezifikation. In den Beispielen ist die Rechteerweiterungsebene auf `Admin` und der Bereich auf `Task` festgelegt. Der Aufgabenbereich ist die Standardeinstellung, wird hier jedoch zu Beispielzwecken einbezogen.
 
@@ -115,20 +109,18 @@ batch_client.task.add(job_id=jobid, task=task)
 
 ### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>Ausführen einer Aufgabe als automatischer Benutzer mit Poolbereich
 
-Wenn ein Knoten bereitgestellt wird, werden zwei poolweite automatische Benutzerkonten auf jedem Knoten im Pool erstellt, eines mit erhöhten Zugriffsrechten und das andere ohne. Bei Festlegung des Bereichs des automatischen Benutzers für eine bestimmte Aufgabe auf den Poolbereich wird die Aufgabe unter einem dieser beiden poolweiten automatischen Benutzerkonten ausgeführt. 
+Wenn ein Knoten bereitgestellt wird, werden zwei poolweite automatische Benutzerkonten auf jedem Knoten im Pool erstellt, eines mit erhöhten Zugriffsrechten und das andere ohne. Bei Festlegung des Bereichs des automatischen Benutzers für eine bestimmte Aufgabe auf den Poolbereich wird die Aufgabe unter einem dieser beiden poolweiten automatischen Benutzerkonten ausgeführt.
 
-Wenn Sie den Poolbereich für den automatischen Benutzer angeben, werden alle mit Administratorzugriff auszuführenden Aufgaben unter dem gleichen poolweiten automatischen Benutzerkonto ausgeführt. Auf ähnliche Weise werden ohne Administratorberechtigungen auszuführende Aufgaben auch unter einem einzelnen poolweiten automatischen Benutzerkonto ausgeführt. 
+Wenn Sie den Poolbereich für den automatischen Benutzer angeben, werden alle mit Administratorzugriff auszuführenden Aufgaben unter dem gleichen poolweiten automatischen Benutzerkonto ausgeführt. Auf ähnliche Weise werden ohne Administratorberechtigungen auszuführende Aufgaben auch unter einem einzelnen poolweiten automatischen Benutzerkonto ausgeführt.
 
 > [!NOTE] 
-> Die zwei poolweiten automatischen Benutzerkonten sind separate Konten. Aufgaben, die unter dem poolweiten Administratorkonto ausgeführt werden, können keine Daten mit Aufgaben gemeinsam nutzen, die unter dem Standardkonto ausgeführt werden (und umgekehrt). 
->
->
+> Die zwei poolweiten automatischen Benutzerkonten sind separate Konten. Aufgaben, die unter dem poolweiten Administratorkonto ausgeführt werden, können keine Daten mit Aufgaben gemeinsam nutzen, die unter dem Standardkonto ausgeführt werden (und umgekehrt).
 
 Der Vorteil der Ausführung unter dem gleichen automatischen Benutzerkonto ist, dass Aufgaben, die auf dem gleichen Knoten ausgeführt werden, Daten gemeinsam nutzen können.
 
 Die Freigabe geheimer Schlüssel zwischen Aufgaben ist ein Szenario, in dem das Ausführen von Aufgaben unter einem der beiden poolweiten automatischen Benutzerkonten nützlich ist. Nehmen Sie beispielsweise an, dass eine Startaufgabe auf dem Knoten einen geheimen Schlüssel bereitstellen muss, den andere Aufgaben verwenden können. Sie könnten die Windows-Datenschutz-API (Windows Data Protection API, DPAPI) verwenden, aber sie erfordert Administratorrechte. Stattdessen können Sie den geheimen Schlüssel auf Benutzerebene schützen. Aufgaben, die unter dem gleichen Benutzerkonto ausgeführt werden, können ohne erhöhte Zugriffsrechte auf den geheimen Schlüssel zugreifen.
 
-Ein weiteres Szenario, in dem Sie möglicherweise Aufgaben unter einem automatischen Benutzerkonto mit Poolbereich ausführen sollten, ist eine Message Passing Interface-Dateifreigabe (MPI). Eine MPI-Dateifreigabe ist nützlich, wenn die Knoten in der MPI-Aufgabe mit den gleichen Dateidaten arbeiten müssen. Der Hauptknoten erstellt eine Dateifreigabe, auf die die untergeordneten Knoten zugreifen können, wenn sie unter dem gleichen automatischen Benutzerkonto ausgeführt werden. 
+Ein weiteres Szenario, in dem Sie möglicherweise Aufgaben unter einem automatischen Benutzerkonto mit Poolbereich ausführen sollten, ist eine Message Passing Interface-Dateifreigabe (MPI). Eine MPI-Dateifreigabe ist nützlich, wenn die Knoten in der MPI-Aufgabe mit den gleichen Dateidaten arbeiten müssen. Der Hauptknoten erstellt eine Dateifreigabe, auf die die untergeordneten Knoten zugreifen können, wenn sie unter dem gleichen automatischen Benutzerkonto ausgeführt werden.
 
 Der folgende Codeausschnitt legt den Bereich des automatischen Benutzers für eine Aufgabe in „Batch .NET“ auf den Poolbereich fest. Die Rechteerweiterungsebene wird weggelassen, damit die Aufgabe unter dem standardmäßigen, poolweiten automatischen Benutzerkonto ausgeführt wird.
 
@@ -163,7 +155,7 @@ pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: 3,
     virtualMachineSize: "standard_d1_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));   
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
 // Add named user accounts.
 pool.UserAccounts = new List<UserAccount>
@@ -209,10 +201,9 @@ Console.WriteLine("Creating pool [{0}]...", poolId);
 // Create the unbound pool.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicatedComputeNodes: 3,                                             
-    virtualMachineSize: "Standard_A1",                                      
-    virtualMachineConfiguration: virtualMachineConfiguration);                  
-
+    targetDedicatedComputeNodes: 3,
+    virtualMachineSize: "Standard_A1",
+    virtualMachineConfiguration: virtualMachineConfiguration);
 // Add named user accounts.
 pool.UserAccounts = new List<UserAccount>
 {
@@ -239,7 +230,6 @@ pool.UserAccounts = new List<UserAccount>
 // Commit the pool.
 await pool.CommitAsync();
 ```
-
 
 #### <a name="batch-java-example"></a>Beispiel für Batch Java
 
@@ -319,8 +309,7 @@ Mit der Batch-Dienstversion 2017-01-01.4.0 wird eine entscheidende Änderung ein
 | `run_elevated=False`                      | `user_identity=user`, wo <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
 | `run_elevated` nicht angegeben | Keine Aktualisierung erforderlich                                                                                                                                  |
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
-* Erfahren Sie mehr über [Dateien und Verzeichnisse](files-and-directories.md) in Azure Batch.
+- Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
+- Erfahren Sie mehr über [Dateien und Verzeichnisse](files-and-directories.md) in Azure Batch.

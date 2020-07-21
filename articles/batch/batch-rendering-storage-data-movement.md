@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965262"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147310"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Optionen für die Speicherung und Datenverschiebung zum Rendern von Medienobjekt- und Ausgabedateien
 
@@ -87,7 +87,7 @@ Da es sich bei den Dateien einfach um Blobs in Azure Storage handelt, können st
 
 [Azure Files](../storage/files/storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das SMB-Protokoll zugegriffen werden kann.  Azure Files basiert auf Azure-Blobspeicher, ist [kostengünstig](https://azure.microsoft.com/pricing/details/storage/files/) und kann für die Datenreplikation in einer anderen Region konfiguriert werden, um globale Redundanz zu erzielen.  Die [Skalierbarkeitsziele](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) sollten überprüft werden, um zu ermitteln, ob die Verwendung von Azure Files sinnvoll ist. Dies richtet sich nach der prognostizierten Poolgröße und der Anzahl von Medienobjektdateien.
 
-Es ist ein [Blogbeitrag](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) und eine [Dokumentation](../storage/files/storage-how-to-use-files-windows.md) vorhanden, in der die Bereitstellung einer Azure Files-Freigabe beschrieben wird.
+Die Einbindung einer Azure Files-Freigabe wird in [dieser Dokumentation](../storage/files/storage-how-to-use-files-windows.md) beschrieben.
 
 ### <a name="mounting-an-azure-files-share"></a>Bereitstellen einer Azure Files-Freigabe
 

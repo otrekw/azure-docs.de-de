@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
-ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d14e030898db364d6621933d0032fa9ce0cab676
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122190"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185023"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover und Patching für Azure Cache for Redis
 
@@ -23,32 +23,32 @@ Wir beginnen mit einer Übersicht über das Failover für Azure Cache for Redis.
 
 ### <a name="a-quick-summary-of-cache-architecture"></a>Kurze Zusammenfassung der Cachearchitektur
 
-Ein Cache wird von mehreren virtuellen Computern mit separaten privaten IP-Adressen erstellt. Jeder virtuelle Computer, der auch als Knoten bezeichnet wird, ist mit einem freigegebenen Load Balancer mit einer einzelnen virtuellen IP-Adresse verbunden. Jeder Knoten führt den Redis-Serverprozess aus und ist über den Hostnamen und die Redis-Ports zugänglich. Jeder Knoten gilt entweder als Master- oder als Replikatknoten. Wenn eine Clientanwendung eine Verbindung mit einem Cache herstellt, durchläuft der zugehörige Datenverkehr diesen Load Balancer und wird automatisch an den Masterknoten weitergeleitet.
+Ein Cache wird von mehreren virtuellen Computern mit separaten privaten IP-Adressen erstellt. Jeder virtuelle Computer, der auch als Knoten bezeichnet wird, ist mit einem freigegebenen Load Balancer mit einer einzelnen virtuellen IP-Adresse verbunden. Jeder Knoten führt den Redis-Serverprozess aus und ist über den Hostnamen und die Redis-Ports zugänglich. Jeder Knoten gilt entweder als primärer oder Replikatknoten. Wenn eine Clientanwendung eine Verbindung mit einem Cache herstellt, durchläuft der zugehörige Datenverkehr diesen Load Balancer und wird automatisch an den primären Knoten weitergeleitet.
 
-In einem Basic-Cache ist der einzelne Knoten immer auch der Masterknoten. Ein Standard- oder Premium-Cache umfasst zwei Knoten: ein ausgewählter Masterknoten und ein Replikatknoten. Da Standard- und Premium-Caches mehrere Knoten umfassen, ist ein Knoten möglicherweise nicht verfügbar, während auf dem anderen weiterhin Anforderungen verarbeitet werden. Gruppierte Caches bestehen aus vielen Shards, die jeweils unterschiedliche Master- und Replikatknoten umfassen. Ein Shard kann ausgefallen sein, während die anderen verfügbar bleiben.
+In einem Basic-Cache ist der einzelne Knoten immer auch der primäre. Ein Standard- oder Premium-Cache umfasst zwei Knoten: einen ausgewählten primären Knoten und einen Replikatknoten. Da Standard- und Premium-Caches mehrere Knoten umfassen, ist ein Knoten möglicherweise nicht verfügbar, während auf dem anderen weiterhin Anforderungen verarbeitet werden. Gruppierte Caches bestehen aus vielen Shards, die jeweils unterschiedliche primäre und Replikatknoten umfassen. Ein Shard kann ausgefallen sein, während die anderen verfügbar bleiben.
 
 > [!NOTE]
 > Ein Basic-Cache verfügt nicht über mehrere Knoten und für seine Verfügbarkeit gibt es keine Vereinbarung zum Service Level (SLA). Basic-Caches werden nur zu Entwicklungs- und Testzwecken empfohlen. Verwenden Sie einen Standard- oder Premium-Cache für eine Bereitstellung mit mehreren Knoten, um die Verfügbarkeit zu erhöhen.
 
 ### <a name="explanation-of-a-failover"></a>Erläuterung eines Failovers
 
-Ein Failover erfolgt, wenn sich ein Replikatknoten als Masterknoten höher stuft und vorhandene Verbindungen des alten Masterknotens geschlossen werden. Nachdem der Masterknoten wieder verfügbar ist, wird die Änderung der Rollen erkannt, und er stuft sich als Replikatknoten tiefer. Anschließend wird eine Verbindung mit dem neuen Masterknoten hergestellt, und die Daten werden synchronisiert. Ein Failover kann geplant oder ungeplant sein.
+Ein Failover erfolgt, wenn sich ein Replikatknoten zum primären Knoten heraufstuft und der alte primäre Knoten vorhandene Verbindungen schließt. Nachdem der primäre Knoten wieder verfügbar ist, erkennt er den Rollenwechsel und stuft sich selbst zum Replikatknoten herab. Anschließend stellt er eine Verbindung mit dem neuen primären Knoten her und synchronisiert Daten. Ein Failover kann geplant oder ungeplant sein.
 
 Ein *geplantes Failover* erfolgt bei Systemupdates, z. B. beim Patchen von Redis oder bei Betriebssystemupgrades, und bei Verwaltungsvorgängen, z. B. Skalierung und Neustart. Da die Knoten eine Vorabbenachrichtigung zum Update erhalten, können die Rollen getauscht werden, und der Load Balancer kann schnell entsprechend der Änderung aktualisiert werden. Ein geplantes Failover wird normalerweise in weniger als einer Sekunde abgeschlossen.
 
-Ein *ungeplantes Failover* kann aufgrund eines Hardwarefehlers, eines Netzwerkfehlers oder anderer unerwarteter Ausfälle des Masterknotens erfolgen. Der Replikatknoten stuft sich als Masterknoten höher, der Prozess dauert jedoch länger. Ein Replikatknoten muss zunächst erkennen, dass der zugehörige Masterknoten nicht verfügbar ist, bevor der Failoverprozess initiiert werden kann. Der Replikatknoten muss außerdem überprüfen, ob dieser ungeplante Ausfall nicht vorübergehend oder lokal ist, um ein unnötiges Failover zu vermeiden. Diese Verzögerung bei der Erkennung bedeutet, dass ein ungeplantes Failover normalerweise innerhalb von 10 bis 15 Sekunden abgeschlossen ist.
+Ein *ungeplantes Failover* kann aufgrund eines Hardwarefehlers, eines Netzwerkfehlers oder anderer unerwarteter Ausfälle des primären Knotens erfolgen. Der Replikatknoten stuft sich selbst zum primären Knoten herauf, der Prozess dauert jedoch länger. Ein Replikatknoten muss zunächst erkennen, dass der zugehörige primäre Knoten nicht verfügbar ist, bevor der Failoverprozess initiiert werden kann. Der Replikatknoten muss außerdem überprüfen, ob dieser ungeplante Ausfall nicht vorübergehend oder lokal ist, um ein unnötiges Failover zu vermeiden. Diese Verzögerung bei der Erkennung bedeutet, dass ein ungeplantes Failover normalerweise innerhalb von 10 bis 15 Sekunden abgeschlossen ist.
 
 ## <a name="how-does-patching-occur"></a>Wie erfolgt das Patchen?
 
 Der Azure Cache for Redis-Dienst aktualisiert den Cache regelmäßig mit den neuesten Plattformfunktionen und Korrekturen. Zum Patchen eines Caches führt der Dienst die folgenden Schritte aus:
 
 1. Der Verwaltungsdienst wählt einen zu patchenden Knoten aus.
-1. Wenn der ausgewählte Knoten ein Masterknoten ist, stuft sich der zugehörige Replikatknoten höher. Diese Höherstufung gilt als geplantes Failover.
+1. Wenn der ausgewählte Knoten ein primärer Knoten ist, stuft sich der zugehörige Replikatknoten kooperativ selbst herauf. Diese Höherstufung gilt als geplantes Failover.
 1. Der ausgewählte Knoten wird neu gestartet, um die neuen Änderungen zu übernehmen, und ist als Replikatknoten wieder verfügbar.
-1. Der Replikatknoten stellt eine Verbindung mit dem Masterknoten her und synchronisiert die Daten.
+1. Der Replikatknoten stellt eine Verbindung mit dem primären Knoten her und synchronisiert Daten.
 1. Wenn die Datensynchronisierung abgeschlossen ist, wird der Patchprozess für die verbleibenden Knoten wiederholt.
 
-Da das Patchen ein geplantes Failover ist, stuft sich der Replikatknoten schnell als Masterknoten höher und beginnt mit der Verarbeitung von Anforderungen und neuen Verbindungen. Basic-Caches verfügen über keinen Replikatknoten und sind bis zum Abschluss des Updates nicht verfügbar. Jeder Shard eines gruppierten Caches wird separat gepatcht und schließt keine Verbindungen mit einem anderen Shard.
+Da das Patchen ein geplantes Failover ist, stuft sich der Replikatknoten schnell zum primären Knoten herauf und beginnt mit der Verarbeitung von Anforderungen und neuen Verbindungen. Basic-Caches verfügen über keinen Replikatknoten und sind bis zum Abschluss des Updates nicht verfügbar. Jeder Shard eines gruppierten Caches wird separat gepatcht und schließt keine Verbindungen mit einem anderen Shard.
 
 > [!IMPORTANT]
 > Knoten werden einzeln gepatcht, um Datenverluste zu vermeiden. Bei Basic-Caches kommt es zu Datenverlust. Bei gruppierten Caches werden die Shards jeweils einzeln gepatcht.

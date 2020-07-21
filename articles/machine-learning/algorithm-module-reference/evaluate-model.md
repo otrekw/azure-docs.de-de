@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/24/2020
-ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/08/2020
+ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847411"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171113"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -35,10 +35,10 @@ Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells mes
 
 ## <a name="how-to-use-evaluate-model"></a>Verwenden von Evaluate Model
 1. Verbinden Sie die **Bewertetes Dataset**-Ausgabe des [Bewertungsmodells](./score-model.md) oder die Ergebnisdataset-Ausgabe von [Zuweisen von Daten zu Clustern](./assign-data-to-clusters.md) mit dem linken Eingangsport von **Evaluate Model** (Bewerten eines Modells). 
-  > [!NOTE] 
-  > Wenn Sie Module wie „Select Columns in Dataset“ (Spalten im Dataset auswählen) verwenden, um einen Teil des Eingabedatasets auszuwählen, stellen Sie sicher, dass die Spalte „Actual label“ (im Training verwendet), die Spalte „Scored Probabilities“ und die Spalte „Scored Labels“ vorhanden sind, um Metriken wie AUC, Genauigkeit für binäre Klassifizierung/Anomalieerkennung zu berechnen.
-  > Die Spalten „Actual label“ und „Scored Labels“ sind vorhanden, um Metriken für die mehrklassige Klassifizierung/Regression zu berechnen.
-  > Die Spalte „Assignments“ und die Spalten „DistancesToClusterCenter no.X“ (X ist der Schwerpunktindex, der von 0 bis zur Anzahl der Schwerpunkte minus 1 reicht) sind vorhanden, um Metriken für das Clustering zu berechnen.
+    > [!NOTE] 
+    > Wenn Sie Module wie „Select Columns in Dataset“ (Spalten im Dataset auswählen) verwenden, um einen Teil des Eingabedatasets auszuwählen, stellen Sie sicher, dass die Spalte „Actual label“ (im Training verwendet), die Spalte „Scored Probabilities“ und die Spalte „Scored Labels“ vorhanden sind, um Metriken wie AUC, Genauigkeit für binäre Klassifizierung/Anomalieerkennung zu berechnen.
+    > Die Spalten „Actual label“ und „Scored Labels“ sind vorhanden, um Metriken für die mehrklassige Klassifizierung/Regression zu berechnen.
+    > Die Spalte „Assignments“ und die Spalten „DistancesToClusterCenter no.X“ (X ist der Schwerpunktindex, der von 0 bis zur Anzahl der Schwerpunkte minus 1 reicht) sind vorhanden, um Metriken für das Clustering zu berechnen.
 
 2. [Optional] Verbinden Sie die **Bewertetes Dataset**-Ausgabe des [Bewertungsmodells](./score-model.md) oder die Ergebnisdataset-Ausgabe von „Zuweisen von Daten zu Clustern“ für das zweite Modell mit dem **rechten** Eingangsport von **Evaluate Model** (Bewerten eines Modells). Sie können die Ergebnisse zweier verschiedener Modelle auf der Grundlage derselben Daten einfach vergleichen. Die beiden Eingabealgorithmen sollten denselben Algorithmustyp aufweisen. Sie können auch Ergebnisse zweier verschiedener Ausführungen über dieselben Daten mit unterschiedlichen Parametern vergleichen.
 
@@ -49,7 +49,12 @@ Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells mes
 
 ## <a name="results"></a>Ergebnisse
 
-Nachdem Sie **Evaluate Model** (Bewerten eines Modells) ausgeführt haben, wählen Sie das Modul, um den **Evaluate Model**-Navigationsbereich auf der rechten Seite zu öffnen.  Wählen Sie dann die Registerkarte **Ausgaben und Protokolle** aus. Auf der Registerkarte weist der Abschnitt **Datenausgaben** verschiedene Symbole auf.   Das Symbol **Visualisieren** besitzt ein Balkendiagrammsymbol und stellt eine erste Möglichkeit dar, um die Ergebnisse anzuzeigen.
+Nachdem Sie **Evaluate Model** (Bewerten eines Modells) ausgeführt haben, wählen Sie das Modul, um den **Evaluate Model**-Navigationsbereich auf der rechten Seite zu öffnen.  Wählen Sie dann die Registerkarte **Ausgaben und Protokolle** aus. Auf der Registerkarte weist der Abschnitt **Datenausgaben** verschiedene Symbole auf. Das Symbol **Visualisieren** besitzt ein Balkendiagrammsymbol und stellt eine erste Möglichkeit dar, um die Ergebnisse anzuzeigen.
+
+Bei einer binären Klassifizierung können Sie nach dem Klicken auf das Symbol **Visualisieren** die binäre Konfusionsmatrix visualisieren.
+Bei einer Multiklassifizierung befindet sich die Plotdatei der Konfusionsmatrix auf der Registerkarte **Ausgaben und Protokolle**:
+> [!div class="mx-imgBorder"]
+> ![Vorschau für hochgeladenes Image](media/module/multi-class-confusion-matrix.png)
 
 Wenn Sie Datasets mit beiden Eingaben von **Evaluate Model** verbinden, enthalten die Ergebnisse Metriken für beide Datasets bzw. beide Modelle.
 Das Modell oder die Daten, die an den linken Port angefügt wurden, werden zuerst im Bericht dargestellt, gefolgt von den Metriken für das Dataset oder das Modell, das an den rechten Port angefügt wurde.  
@@ -70,7 +75,8 @@ Dieser Abschnitt beschreibt die Metriken, die für die bestimmten Arten von Mode
 
 ### <a name="metrics-for-classification-models"></a>Metriken für Klassifizierungsmodelle
 
-Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen erfasst.
+
+Bei der Auswertung binärer Klassifizierungsmodellen werden folgende Metriken gemeldet:
   
 -   **Accuracy** (Treffergenauigkeit) misst die Güte eines Klassifizierungsmodells als das Verhältnis der wahren Ergebnisse zur Gesamtheit der Fälle.  
   
@@ -78,13 +84,10 @@ Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen er
   
 -   **Recall** (Trefferquote) ist der Anteil aller richtigen Ergebnisse, die vom Modell zurückgegeben werden.  
   
--   **F-Score** (F-Maß) wird als gewichteter Durchschnitt von Genauigkeit und Trefferquote von 0 bis 1 berechnet, wobei 1 der ideale Wert für F-Maß ist.  
+-   **F1 score** (F1-Score) wird als gewichteter Durchschnitt von Genauigkeit und Trefferquote zwischen „0“ und „1“ berechnet, wobei „1“ der ideale Wert für den F1-Score ist.  
   
 -   **AUC** (Fläche unter der Kurve) misst den Bereich unter der Kurve, der mit wahren positiven Werten auf der y-Achse und falschen positiven Werten auf der x-Achse gezeichnet wurde. Diese Metrik ist nützlich, da sie einen einzelnen Wert liefert, mit dem Sie Modelle verschiedener Typen vergleichen können.  
-  
-- **Average log loss** (logarithmische Durchschnittsdämpfung) ist ein Einzelwert, der verwendet wird, um die Strafterme für falsche Ergebnisse auszudrücken. Er wird als Differenz zwischen zwei Wahrscheinlichkeitsverteilungen berechnet – der tatsächlichen und der im Modell.  
-  
-- **Training log loss** (logarithmische Trainingsdämpfung) ist ein einzelner Wert, der den Vorteil des Klassifizierers gegenüber einer Zufallsvorhersage wiedergibt. Die Trainingsdämpfung misst die Unsicherheit Ihres Modells, indem die ausgegebenen Wahrscheinlichkeiten mit den bekannten Werten (Ground Truth) in den Bezeichnungen verglichen werden. Die Trainingsdämpfung sollte für das Modell als Ganzes minimiert werden.
+
 
 ### <a name="metrics-for-regression-models"></a>Metriken für Regressionsmodelle
  
@@ -122,7 +125,7 @@ Die folgenden Metriken werden für die Auswertung von Clusteringmodellen herange
   
      Wenn die Anzahl der den Clustern zugeordneten Datenpunkte geringer ist als die Gesamtanzahl der verfügbaren Datenpunkte, bedeutet dies, dass die Datenpunkte keinem Cluster zugeordnet werden konnten.  
   
--   Die Scores in der Spalte **Maximal Distance to Cluster Center** (Maximaler Abstand zum Clusterzentrum) stellen die Summen der Abstände zwischen jedem Punkt und dem Schwerpunkt des Clusters des betreffenden Punkts dar.  
+-   Die Werte in der Spalte **Maximal Distance to Cluster Center** (Maximaler Abstand zum Clusterzentrum) stellen die maximalen Abstände zwischen jedem Punkt und dem Schwerpunkt des Clusters des betreffenden Punkts dar.  
   
      Wenn dieser Wert hoch ist, kann dies bedeuten, dass der Cluster weit verstreut ist. Überprüfen Sie diese Statistik zusammen mit **Average Distance to Cluster Center** (Durchschnittlicher Abstand zum Clusterzentrum), um die Streuung des Clusters zu ermitteln.   
 

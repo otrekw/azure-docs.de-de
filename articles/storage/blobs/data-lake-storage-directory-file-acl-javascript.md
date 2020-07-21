@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c774d3f56eaf666a31ff73f433a3b4a5a363ce2f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466067"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142485"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von JavaScript zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -90,11 +90,11 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 > [!NOTE]
 > Weitere Beispiele finden Sie in der Dokumentation zur [Azure-Identitätsclientbibliothek für JS](https://www.npmjs.com/package/@azure/identity).
 
-## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Dateisystem fungiert als Container für Ihre Dateien. Sie können ein Dateisystem erstellen, indem Sie eine **FileSystemClient**-Instanz abrufen und dann die Methode **FileSystemClient.Create** aufrufen.
+Ein Container fungiert als Dateisystem für Ihre Dateien. Sie können ein Dateisystem erstellen, indem Sie eine **FileSystemClient**-Instanz abrufen und dann die Methode **FileSystemClient.Create** aufrufen.
 
-In diesem Beispiel wird das Dateisystem `my-file-system` erstellt. 
+In diesem Beispiel wird ein Container namens `my-file-system` erstellt. 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -112,7 +112,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 Erstellen Sie einen Verzeichnisverweis, indem Sie eine **DirectoryClient**-Instanz abrufen und dann die Methode **DirectoryClient.create** aufrufen.
 
-In diesem Beispiel wird einem Dateisystem das Verzeichnis `my-directory` hinzugefügt. 
+In diesem Beispiel wird einem Container das Verzeichnis `my-directory` hinzugefügt. 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {

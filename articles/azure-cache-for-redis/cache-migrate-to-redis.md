@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74122688"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184785"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrieren von Managed Cache Service zu Azure Cache for Redis
 Zum Migrieren von Anwendungen, die Azure Managed Cache Service verwenden, zu Azure Cache for Redis, sind je nach den von Ihrer Cachinganwendung verwendeten Features nur minimale Änderungen an der Anwendung erforderlich. Sie APIs sind zwar nicht identisch, aber doch sehr ähnlich. Der vorhandene Code für die Verwendung von Managed Cache Service kann nach minimalen Änderungen für den Zugriff auf einen Cache wiederverwendet werden. In diesem Artikel wird beschrieben, wie Sie die erforderlichen Änderungen an der Konfiguration und der Anwendung vornehmen, um Managed Cache Service-Anwendungen zur Verwendung von Azure Cache for Redis zu migrieren. Zudem erfahren Sie, wie Sie mit einigen der Features von Azure Cache for Redis die Funktionen eines Managed Cache Service-Caches implementieren.
@@ -40,7 +40,7 @@ Azure Managed Cache Service und Azure Cache for Redis sind zwar ähnlich, bei de
 | Managed Cache Service-Feature | Managed Cache Service-Unterstützung | Azure Cache for Redis-Unterstützung |
 | --- | --- | --- |
 | Benannte Caches |Es ist ein Standardcache konfiguriert. Bei den Cacheangeboten „Standard“ und „Premium“ können bei Bedarf bis zu neun zusätzliche benannte Caches konfiguriert werden. |Für Azure Cache for Redis können standardmäßig 16 Datenbanken konfiguriert werden, mit denen sich eine Funktionalität ähnlich der benannter Caches implementieren lässt. Weitere Informationen finden Sie unter [Was sind Redis-Datenbanken?](cache-faq.md#what-are-redis-databases) und [Standardmäßige Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration). |
-| Hochverfügbarkeit |Bietet bei den Cacheangeboten „Standard“ und „Premium“ Hochverfügbarkeit für Elemente im Cache. Wenn Elemente aufgrund eines Fehlers verloren gehen, sind weiterhin Sicherungskopien der Elemente im Cache verfügbar. Schreibvorgänge im sekundären Cache werden synchron ausgeführt. |Hochverfügbarkeit ist bei den Cacheangeboten „Standard“ und „Premium“ erhältlich, die eine Primär-/Replikat-Konfiguration mit zwei Knoten aufweisen. (Jeder Shard in einem Premium-Cache verfügt über ein Paar aus Primär-/Replikatknoten.) Schreibvorgänge im Replikat erfolgen asynchron. Weitere Informationen finden Sie unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/). |
+| Hochverfügbarkeit |Bietet bei den Cacheangeboten „Standard“ und „Premium“ Hochverfügbarkeit für Elemente im Cache. Wenn Elemente aufgrund eines Fehlers verloren gehen, sind weiterhin Sicherungskopien der Elemente im Cache verfügbar. Schreibvorgänge im Replikatcache werden synchron ausgeführt. |Hochverfügbarkeit ist bei den Cacheangeboten „Standard“ und „Premium“ erhältlich, die eine Primär-/Replikat-Konfiguration mit zwei Knoten aufweisen. (Jeder Shard in einem Premium-Cache verfügt über ein Paar aus Primär-/Replikatknoten.) Schreibvorgänge im Replikat erfolgen asynchron. Weitere Informationen finden Sie unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/). |
 | Benachrichtigungen |Ermöglicht Clients den Empfang von asynchronen Benachrichtigungen, wenn verschiedene Cachevorgänge für einen benannten Cache auftreten. |Clientanwendungen können Redis-Pub/Sub- oder [Keyspace-Benachrichtigungen](cache-configure.md#keyspace-notifications-advanced-settings) verwenden, um eine ähnliche Benachrichtigungsfunktionalität zu erzielen. |
 | Lokaler Cache |Speichert eine Kopie der zwischengespeicherten Objekte lokal auf dem Client, um einen extrem schnellen Zugriff zu ermöglichen. |Clientanwendungen müssen diese Funktionalität mit einem Wörterbuch oder einer ähnlichen Datenstruktur implementieren. |
 | Entfernungsrichtlinie |Keine oder LRU. Die Standardrichtlinie ist LRU. |Azure Cache for Redis unterstützt die folgenden Entfernungsrichtlinien: „volatile-lru“, „allkeys-lru“, „volatile-random“, „allkeys-random“, „volatile-ttl“ und „noeviction“. Die Standardrichtlinie ist „volatile-lru“. Weitere Informationen finden Sie unter [Standardmäßige Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration). |

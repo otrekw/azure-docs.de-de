@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: tracking-python
-ms.openlocfilehash: f5ff33d021f27f2c5dfb86ca87f2579602f0d1cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07708de1326e0aba6485b2cf1fb0610d9710cdf7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559148"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142481"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Python zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -94,11 +94,11 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 > [!NOTE]
 > Weitere Beispiele finden Sie in der Dokumentation zur [Azure-Identitätsclientbibliothek für Python](https://pypi.org/project/azure-identity/).
 
-## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Dateisystem fungiert als Container für Ihre Dateien. Sie können eines erstellen, indem Sie die Methode **FileSystemDataLakeServiceClient.create_file_system** aufrufen.
+Ein Container fungiert als Dateisystem für Ihre Dateien. Sie können eines erstellen, indem Sie die Methode **FileSystemDataLakeServiceClient.create_file_system** aufrufen.
 
-In diesem Beispiel wird das Dateisystem `my-file-system` erstellt.
+In diesem Beispiel wird ein Container namens `my-file-system` erstellt.
 
 ```python
 def create_file_system():
@@ -116,7 +116,7 @@ def create_file_system():
 
 Erstellen Sie eine Verzeichnisreferenz, indem Sie die Methode **FileSystemClient.create_directory** aufrufen.
 
-In diesem Beispiel wird einem Dateisystem das Verzeichnis `my-directory` hinzugefügt. 
+In diesem Beispiel wird einem Container das Verzeichnis `my-directory` hinzugefügt. 
 
 ```python
 def create_directory():

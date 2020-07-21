@@ -7,19 +7,19 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/06/2018
+ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9880915061c0639aebe30bdb33258d7c79e155d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836888"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186383"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
-Azure Automation State Configuration ist ein Azure-Dienst für die Konfigurationsverwaltung, mit dem Sie PowerShell DSC-[Konfigurationen](/powershell/scripting/dsc/configurations/configurations) (Desired State Configuration) schreiben, verwalten und kompilieren können – für Knoten in der Cloud oder in einem lokalen Rechenzentrum. Darüber hinaus ermöglicht der Dienst in der Cloud einen Import von [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources) und die Zuweisung von Konfigurationen zu Zielknoten. Sie können im Azure-Portal auf Azure Automation State Configuration zugreifen, indem Sie unter **Konfigurationsverwaltung** die Option **State Configuration (DSC)** auswählen. 
+Azure Automation State Configuration ist ein Azure-Dienst für die Konfigurationsverwaltung, mit dem Sie PowerShell DSC-[Konfigurationen](/powershell/scripting/dsc/configurations/configurations) (Desired State Configuration) schreiben, verwalten und kompilieren können – für Knoten in der Cloud oder in einem lokalen Rechenzentrum. Darüber hinaus ermöglicht der Dienst in der Cloud einen Import von [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources) und die Zuweisung von Konfigurationen zu Zielknoten. Sie können im Azure-Portal auf Azure Automation State Configuration zugreifen, indem Sie unter **Konfigurationsverwaltung** die Option **State Configuration (DSC)** auswählen.
 
 Mit Azure Automation State Configuration können zahlreiche Computer verwaltet werden:
 
@@ -53,7 +53,7 @@ Azure Automation State Configuration führt dieselbe Verwaltungsschicht in [Powe
 
 Mit Azure Automation State Configuration verwaltete Knoten senden detaillierte Statusberichtsdaten an den integrierten Pullserver. Sie können Azure Automation State Configuration so konfigurieren, dass diese Daten an Ihren Log Analytics-Arbeitsbereich gesendet werden. Weitere Informationen finden Sie unter [Weiterleiten von Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Voraussetzungen für die Verwendung von Azure Automation State Configuration
+## <a name="prerequisites"></a>Voraussetzungen
 
 Berücksichtigen Sie die in diesem Abschnitt beschriebenen Anforderungen, wenn Sie Azure Automation State Configuration verwenden.
 
@@ -77,7 +77,7 @@ Für Linux-Knoten unterstützt die DSC Linux-Erweiterung alle unter [Unterstütz
 
 ### <a name="dsc-requirements"></a>DSC-Anforderungen
 
-Für alle Windows-Knoten, die in Azure ausgeführt werden, wird beim Aktivieren der Computer [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) installiert. Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, wird [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) aktiviert.
+Für alle Windows-Knoten, die in Azure ausgeführt werden, wird beim Aktivieren der Computer [WMF 5.1](/powershell/scripting/wmf/setup/install-configure) installiert. Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, wird [WinRM](/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) aktiviert.
 
 Für alle Linux-Knoten, die in Azure ausgeführt werden, wird beim Aktivieren der Computer [PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) installiert.
 
@@ -88,9 +88,11 @@ Wenn sich Ihre Knoten in einem privaten Netzwerk befinden, sind die folgenden Po
 * Port: Für ausgehenden Zugriff auf das Internet ist nur TCP 443 erforderlich
 * Globale URL: * **.azure-automation.net**
 * Globale URL von „US Gov Virginia“: * **.azure-automation.us**
-* Agentdienst: **https://\<workspaceId\>.agentsvc.azure-automation.net**
+* Agent-Dienst: **https://\<workspaceId\>.agentsvc.azure-automation.net**
 
-Wenn Sie DSC-Ressourcen verwenden, die zwischen Knoten kommunizieren (z. B. [WaitFor*-Ressourcen](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)), müssen Sie auch Datenverkehr zwischen Knoten zulassen. Informationen zu diesen Netzwerkanforderungen finden Sie in der Dokumentation für die einzelnen DSC-Ressourcen.
+Wenn Sie DSC-Ressourcen verwenden, die zwischen Knoten kommunizieren (z. B. [WaitFor*-Ressourcen](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)), müssen Sie auch Datenverkehr zwischen Knoten zulassen. Informationen zu diesen Netzwerkanforderungen finden Sie in der Dokumentation für die einzelnen DSC-Ressourcen.
+
+Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="proxy-support"></a>Proxyunterstützung
 
@@ -101,36 +103,9 @@ Proxyunterstützung für den DSC-Agent ist in Windows, Version 1809 und höher, 
 
 Bei Linux-Knoten unterstützt der DSC-Agent den Proxy und bestimmt die URL anhand der Variablen `http_proxy`. Weitere Informationen zur Unterstützung von Proxys finden Sie unter [Generieren von DSC-Metakonfigurationen](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
-#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation State Configuration-Netzwerkbereiche und -Namespace
+#### <a name="dns-records-per-region"></a>DNS-Einträge pro Region
 
-Es wird empfohlen, beim Definieren von Ausnahmen die unten aufgeführten Adressen zu verwenden. Für IP-Adressen können Sie die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht.
-
-Wenn eines Ihrer Automation-Konten für eine bestimmte Region definiert ist, können Sie die Kommunikation mit diesem regionalen Rechenzentrum einschränken. Die folgende Tabelle enthält den DNS-Eintrag für jede Region:
-
-| **Region** | **DNS-Eintrag** |
-| --- | --- |
-| USA, Westen-Mitte | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| USA Süd Mitte |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| East US    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| USA (Ost) 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Kanada, Mitte |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Europa, Westen |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| Nordeuropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Südostasien |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Indien, Mitte |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japan, Osten |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Australien, Südosten |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| UK, Süden | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Government, Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-
-Wenn Sie eine Liste mit IP-Adressen der Regionen anstelle ihrer Namen benötigen, können Sie die XML-Datei mit den [IP-Adressen der Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653) aus dem Microsoft Download Center herunterladen.
-
-> [!NOTE]
-> Die XML-Datei mit den IP-Adressen der Azure-Rechenzentren enthält die IP-Adressbereiche, die in den Microsoft Azure-Rechenzentren verwendet werden. Die Datei enthält die Bereiche für Compute, SQL und Storage.
->
->Eine aktualisierte Datei wird wöchentlich veröffentlicht. Die Datei enthält die derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Sie sollten die neue XML-Datei jede Woche herunterladen. Führen Sie anschließend eine Aktualisierung für Ihren Standort durch, um in Azure ausgeführte Dienste ordnungsgemäß zu identifizieren. 
-
-Benutzer von Azure ExpressRoute sollten beachten, dass diese Datei zum Aktualisieren der BGP-Ankündigung (Border Gateway Protocol) von Azure-Bereichen jeweils in der ersten Woche des Monats verwendet wird.
+Es wird empfohlen, beim Definieren von Ausnahmen die Adressen aus der Tabelle [DNS-Einträge pro Region](how-to/automation-region-dns-records.md) zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -139,5 +114,4 @@ Benutzer von Azure ExpressRoute sollten beachten, dass diese Datei zum Aktualisi
 - Wie Sie DSC-Konfigurationen kompilieren und sie anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](automation-dsc-compile.md).
 - Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

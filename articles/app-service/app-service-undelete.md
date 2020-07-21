@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167790"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146234"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Wiederherstellen einer gelöschten App Service-App mithilfe von PowerShell
 
@@ -18,6 +18,10 @@ Wenn Sie Ihre App versehentlich in Azure App Service gelöscht haben, können Si
 
 > [!NOTE]
 > Gelöschte Apps werden 30 Tage nach dem ersten Löschvorgang aus dem System gelöscht. Nachdem eine App gelöscht wurde, kann sie nicht wiederhergestellt werden.
+>
+
+> [!NOTE]
+> Die Wiederherstellungsfunktion wird für den Verbrauchsplan nicht unterstützt.
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>Erneutes Registrieren eines App Service-Ressourcenanbieters

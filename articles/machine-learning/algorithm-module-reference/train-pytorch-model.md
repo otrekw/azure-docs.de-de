@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450004"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170257"
 ---
 # <a name="train-pytorch-model"></a>Trainieren eines PyTorch-Modells
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Modul **Train Pytorch Model*
 2. Fügen Sie der Pipeline das Modul **Train Pytorch Model** hinzu. Sie finden dieses Modul unter der Kategorie **Modelltraining**. Erweitern Sie **Trainieren**, und ziehen Sie dann das Modul **Train Pytorch Model** in Ihre Pipeline.
 
    > [!NOTE]
-   > Das Modul **Train Pytorch Model** kann nur unter **GPU**-Compute ausgeführt werden, andernfalls tritt in der Pipeline ein Fehler auf. Sie können im rechten Bereich des Moduls Compute für ein bestimmtes Modul auswählen, indem Sie **Anderes Computeziel verwenden** festlegen.
+   > Das Modul **Train Pytorch Model** sollte besser unter **GPU**-Compute für große Datasets ausgeführt werden, andernfalls tritt in der Pipeline ein Fehler auf. Sie können im rechten Bereich des Moduls Compute für ein bestimmtes Modul auswählen, indem Sie **Anderes Computeziel verwenden** festlegen.
 
 3.  Fügen Sie in der linken Eingabe ein untrainiertes Modell an. Fügen Sie das Trainingsdataset und das Validierungsdataset in der mittleren und der rechten Eingabe von **Train Pytorch Model**an.
 
@@ -53,7 +53,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Modul **Train Pytorch Model*
 
 ## <a name="results"></a>Ergebnisse
 
-Nach Abschluss der Pipelineausführung verbinden Sie zum Bewerten mithilfe des Modells [Pytorch-Modell trainieren](train-pytorch-model.md) mit [Bewerten eines Bildmodells](score-image-model.md), um Werte für neue Eingabebeispiele vorherzusagen.
+Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie nach Abschluss der Pipelineausführung [Train Pytorch Model](train-pytorch-model.md) (Trainieren eines Pytorch-Modells) mit [Score Image Model](score-image-model.md) (Bewerten eines Bildmodells), um Werte für neue Eingabebeispiele vorherzusagen.
 
 ## <a name="technical-notes"></a>Technische Hinweise
 ###  <a name="expected-inputs"></a>Erwartete Eingaben  

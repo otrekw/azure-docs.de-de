@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 22f66a7be27f42bfd0305ad1eaf297ca8c8029fa
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996753"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187012"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktionsabdeckung für Computer
 
@@ -41,7 +41,6 @@ Die folgenden Tabellen enthalten einen Überblick über die Azure Security Cente
 |[Adaptive Anwendungssteuerungen](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netzwerkübersicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
 |[Adaptives Erhöhen des Netzwerkschutzes](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|Adaptive Netzwerksteuerungen|✔|✔|-|Standard|
 |[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Empfehlungen und Bedrohungsschutz für in Docker gehostete IaaS-Container|-|-|-|Standard|
 |Fehlende Bewertung von BS-Patches|✔|✔|✔|Kostenlos|
@@ -106,7 +105,7 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
  **\*** Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist. Sie spiegeln sich nicht im Azure Security Center-Portal wider.
 
 > [!NOTE]
-> Für die Erkennung von System Center Endpoint Protection (SCEP) auf einem virtuellen Computer mit Windows Server 2008 R2 muss SCEP nach PowerShell 3.0 (oder einer höheren Version) installiert werden.
+> Für die Erkennung von System Center Endpoint Protection (SCEP) auf einem virtuellen Computer mit Windows Server 2008 R2 muss SCEP nach PowerShell (ab Version 3.0) installiert werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

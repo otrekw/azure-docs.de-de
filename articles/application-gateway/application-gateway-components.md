@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254326"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186757"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -144,7 +144,7 @@ Sie können verschiedene Back-End-Pools für verschiedene Arten von Anforderunge
 
 In der Standardeinstellung überwacht ein Anwendungsgateway die Integrität aller Ressourcen in seinem Back-End-Pool und entfernt automatisch alle fehlerhaften Ressourcen. Es überwacht die fehlerhaften Instanzen weiterhin und fügt sie dem fehlerfreien Back-End-Pool hinzu, sobald sie verfügbar sind und auf Integritätsüberprüfungen reagieren.
 
-Zusätzlich zur Nutzung der standardmäßigen Überwachung der Integritätsüberprüfung können Sie die Integritätsüberprüfung auch an die Anforderungen Ihrer Anwendung anpassen. Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle über die Überwachung des Systemzustands. Bei Verwendung von benutzerdefinierten Überprüfungen können Sie das Überprüfungsintervall, die URL und den zu überprüfenden Pfad konfigurieren und festlegen, wie viele fehlerhafte Antworten akzeptiert werden, bevor die Back-End-Pool-Instanz als fehlerhaft gekennzeichnet wird. Wir empfehlen, benutzerdefinierte Überprüfungen zu konfigurieren, um die Integrität jedes Back-End-Pools zu überwachen.
+Zusätzlich zur Nutzung der standardmäßigen Überwachung der Integritätsüberprüfung können Sie die Integritätsüberprüfung auch an die Anforderungen Ihrer Anwendung anpassen. Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle über die Überwachung des Systemzustands. Bei Verwendung benutzerdefinierter Tests können Sie einen benutzerdefinierten Hostnamen, einen URL-Pfad und ein Testintervall konfigurieren und festlegen, wie viele fehlerhafte Antworten akzeptiert werden, bevor die Back-End-Pool-Instanz als fehlerhaft gekennzeichnet wird. Außerdem können Sie unter anderem benutzerdefinierte Statuscodes und den Abgleich des HTTP-Antworttexts konfigurieren. Wir empfehlen, benutzerdefinierte Überprüfungen zu konfigurieren, um die Integrität jedes Back-End-Pools zu überwachen.
 
 Weitere Informationen finden Sie unter [Überwachen der Integrität Ihres Anwendungsgateways](../application-gateway/application-gateway-probe-overview.md).
 

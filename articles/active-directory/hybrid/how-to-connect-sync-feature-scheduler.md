@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230114"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147004"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-Synchronisierung: Scheduler
 In diesem Thema wird der integrierte Scheduler in Azure AD Connect-Synchronisierung (Synchronisierungsmodul) beschrieben.
@@ -39,6 +39,14 @@ Der Scheduler ist für zwei Tasks zuständig:
 * **Wartungstasks**. Erneuern von Schlüsseln und Zertifikaten für das Zurücksetzen von Kennwörtern und für den Geräteregistrierungsdienst (Device Registration Service, DRS). Löschen alter Einträge im Vorgangsprotokoll.
 
 Der Scheduler selbst wird immer ausgeführt, kann jedoch so konfiguriert werden, dass er nur einen oder keinen dieser Tasks ausführt. Wenn Sie beispielsweise einen eigenen Prozess für den Synchronisierungszyklus verwenden, können Sie diesen Task im Scheduler deaktivieren, den Wartungstask aber weiterhin ausführen.
+
+>[!IMPORTANT]
+>Standardmäßig wird alle 30 Minuten ein Synchronisierungszyklus ausgeführt. Wenn Sie den Synchronisierungszyklus geändert haben, müssen Sie sicherstellen, dass mindestens alle sieben Tage ein Synchronisierungszyklus ausgeführt wird. 
+>
+>* Eine Deltasynchronisierung muss spätestens sieben Tagen nach der letzten Deltasynchronisierung erfolgen.
+>* Eine Deltasynchronisierung nach einer vollständigen Synchronisierung muss spätestens sieben Tage nach Abschluss der letzten vollständigen Synchronisierung durchgeführt werden.
+>
+>Andernfalls kann es zu Synchronisierungsproblemen kommen, die eine vollständige Synchronisierung erfordern. Das gilt auch für Server im Stagingmodus.
 
 ## <a name="scheduler-configuration"></a>Schedulerkonfiguration
 Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerShell, und führen Sie `Get-ADSyncScheduler`aus. Die Ausgabe ähnelt der folgenden Abbildung:

@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672205"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170019"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurieren des PremiumV2-Tarifs für Azure App Service
 
@@ -43,7 +43,7 @@ Wählen Sie beim Konfigurieren des App Service-Plans im <a href="https://portal.
 
 Wählen Sie **Produktion** aus und dann **P1V2**, **P2V2** oder **P3V2**, und klicken Sie dann auf **Übernehmen**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Screenshot: Empfohlene Tarife für Ihre App](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > Wenn Sie die Optionen **P1V2**, **P2V2** und **P3V2** nicht sehen oder die Optionen ausgegraut sind, ist **PremiumV2** wahrscheinlich in der vorliegenden App Service-Bereitstellung, die App Service-Plan enthält, nicht verfügbar. Weitere Details finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported).
@@ -58,15 +58,15 @@ Je nach Hostingumgebung können für das zentrale Hochskalieren zusätzliche Sch
 
 Wählen Sie im linken Navigationsbereich **Hochskalieren (App Service-Plan)** aus.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![Screenshot: Hochskalieren Ihres App Service-Plans](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 Wählen Sie **Produktion** aus und dann **P1V2**, **P2V2** oder **P3V2**, und klicken Sie dann auf **Übernehmen**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Screenshot: Empfohlene Tarife für Ihre App](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 Wenn der Vorgang erfolgreich abgeschlossen wurde, wird auf der Übersichtsseite Ihrer App anzeigt, dass sich diese im Tarif **PremiumV2** befindet.
 
-![](media/app-service-configure-premium-tier/finished.png)
+![Screenshot: Tarif „PremiumV2“ auf der Übersichtsseite Ihrer App](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Wenn Sie eine Fehlermeldung erhalten:
 
@@ -81,7 +81,7 @@ Wenn Ihre App in einer App Service-Bereitstellung ausgeführt wird, in der **Pre
 - Erstellen Sie eine **neue** Ressourcengruppe, und erstellen Sie dann eine **neue** App und einen neuen App Service-Plan in der **neuen** Ressourcengruppe. Wählen Sie während der Erstellung die gewünschte Azure-Region aus.  Sie **müssen** bei der Erstellung des neuen App Service-Plans den **PremiumV2**-Plan wählen.  Dadurch stellen Sie sicher, dass die Kombination aus Ressourcengruppe, App Service-Plan und Azure-Region dazu führt, dass der App Service-Plan in einer App Service-Bereitstellung erstellt wird, die **PremiumV2** unterstützt.  Stellen Sie Ihren Anwendungscode dann in der neu erstellten App und im App Service-Plan erneut bereit. Bei Bedarf können Sie den App Service-Plan von **PremiumV2** wieder herunterskalieren, um Kosten zu sparen, und später mit **PremiumV2** wieder hochskalieren.
 - Wenn Ihre App bereits in einem vorhandenen **Premium**-Tarif ausgeführt wird, können Sie Ihre App mit allen App-Einstellungen, Verbindungszeichenfolgen und der Bereitstellungskonfiguration in einen neuen App Service-Plan klonen, der **PremiumV2** verwendet.
 
-    ![](media/app-service-configure-premium-tier/clone-app.png)
+    ![Screenshot: Klonen Ihrer App](media/app-service-configure-premium-tier/clone-app.png)
 
     Auf der Seite **App klonen** können Sie einen neuen App Service-Plan mit **PremiumV2** in der gewünschten Region erstellen. Außerdem können Sie die App-Einstellungen und die Konfiguration festlegen, die geklont werden sollen.
 
@@ -89,7 +89,7 @@ Wenn Ihre App in einer App Service-Bereitstellung ausgeführt wird, in der **Pre
 
 Mit **Azure CLI** oder [Azure PowerShell](/cli/azure/install-azure-cli) können Sie die Erstellung von Apps im [PremiumV2](/powershell/azure/overview)-Tarif mithilfe von Skripts automatisieren.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Durch den folgenden Befehl wird ein App Service-Plan in _P1V2_ erstellt. Den Befehl können Sie in der Cloud Shell ausführen. Für `--sku` sind die Optionen P1V2, _P2V2_ und _P3V2_ verfügbar.
 

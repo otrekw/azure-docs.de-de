@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255149"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169969"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Wiederherstellen einer App in Azure auf der Grundlage einer Momentaufnahme
 In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/overview.md) auf der Grundlage einer Momentaufnahme wiederherstellen. Mithilfe der Momentaufnahmen Ihrer App können Sie die App in einem vorherigen Zustand wiederherstellen. Die Sicherung von Momentaufnahmen muss nicht aktiviert werden, da die Plattform automatisch eine Momentaufnahme aller Apps speichert, um die Wiederherstellung von Daten zu ermöglichen.
@@ -37,15 +37,15 @@ Momentaufnahmebasierte Wiederherstellungen für Apps stehen ab dem Tarif **Premi
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf der Seite **Einstellungen** Ihrer App auf **Sicherungen**, um die Seite **Sicherungen** anzuzeigen. Klicken Sie anschließend im Abschnitt **Momentaufnahme (Vorschau)** auf **Wiederherstellen**.
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![Screenshot: Wiederherstellen einer App auf der Grundlage einer Momentaufnahmesicherung](./media/app-service-web-restore-snapshots/1.png)
 
 2. Wählen Sie auf der Seite **Wiederherstellen** die Momentaufnahme aus, die Sie wiederherstellen möchten.
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![Screenshot: Auswählen der Momentaufnahme für die Wiederherstellung ](./media/app-service-web-restore-snapshots/2.png)
    
 3. Geben Sie unter **Wiederherstellungsziel** das Ziel für die App-Wiederherstellung an.
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![Screenshot: Angeben des Wiederherstellungsziels](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
    > Bei Verwendung von **Überschreiben** werden alle im aktuellen Dateisystem Ihrer App vorhandenen Daten gelöscht und überschrieben. Vergewissern Sie sich vor dem Klicken auf **OK**, dass Sie diesen Schritt wirklich ausführen möchten.
@@ -61,6 +61,6 @@ Momentaufnahmebasierte Wiederherstellungen für Apps stehen ab dem Tarif **Premi
 
 4. Sie können auswählen, dass Ihre Websitekonfiguration wiederhergestellt werden soll.
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![Screenshot: Wiederherstellen der Websitekonfiguration](./media/app-service-web-restore-snapshots/4.png)
 
 5. Klicken Sie auf **OK**.

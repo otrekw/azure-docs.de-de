@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 841b5092775353bbe3340dbbd55610026f998a15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76846473"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171668"
 ---
 # <a name="event-grid-configuration"></a>Event Grid-Konfiguration
 
@@ -80,7 +78,7 @@ Weitere Informationen zu dieser Funktion im Allgemeinen finden Sie unter [Überm
 | `broker__defaultMaxBatchSizeInBytes` | Maximale Größe der Übermittlungsanforderung, wenn nur `MaxEventsPerBatch` angegeben ist. Der Standardwert ist `1_058_576`.
 | `broker__defaultMaxEventsPerBatch` | Maximale Anzahl der einem Batch hinzuzufügenden Ereignisse, wenn nur `MaxBatchSizeInBytes` angegeben ist. Der Standardwert ist `10`.
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 Weitere Informationen zur Verwendung von Metriken mit Event Grid in IoT Edge finden Sie unter [Überwachen von Themen und Abonnements](monitor-topics-subscriptions.md).
 

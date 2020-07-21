@@ -1,25 +1,14 @@
 ---
 title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Microsoft Docs
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
-services: service-bus-messaging,event-hubs
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086152"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186910"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -275,8 +264,8 @@ Jede Verbindung muss einen eigenen Steuerlink initiieren, um Transaktionen start
 
 Um mit Transaktionsaufgaben zu beginnen, benötigt der Controller eine `txn-id` vom Koordinator. Dies geschieht durch Senden einer `declare`-Typmeldung. Wenn die Deklaration erfolgreich ist, antwortet der Koordinator mit dem Dispositionsergebnis, das die zugewiesene `txn-id` enthält.
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>target=Coordinator()<br/>) |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()** )}| ------> |  |
@@ -288,8 +277,8 @@ Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-
 
 > Hinweis: „fail=true“ bezieht sich auf das Rollback einer Transaktion und „fail=false“ auf das Commit.
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
 | | erforderlich. erforderlich. erforderlich. <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> erforderlich. erforderlich. erforderlich. |
@@ -300,8 +289,8 @@ Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-
 
 Alle Transaktionsaufgaben erfolgen mit dem Transaktionsübermittlungsstatus `transactional-state`, der die „txn-id“ enthält. Beim Senden von Nachrichten ist der Transaktionsstatus im Übertragungsrahmen der Nachricht enthalten. 
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
 | transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ Nutzlast }| ------> |  |
@@ -311,8 +300,8 @@ Alle Transaktionsaufgaben erfolgen mit dem Transaktionsübermittlungsstatus `tra
 
 Die Nachrichtenlöschung umfasst Vorgänge wie `Complete` / `Abandon` / `DeadLetter` / `Defer`. Um diese Vorgänge innerhalb einer Transaktion durchzuführen, übergeben Sie den `transactional-state` mit der Löschung.
 
-| Client (Controller) | | Servicebus (Coordinator) |
-| --- | --- | --- |
+| Client (Controller) | Direction | Servicebus (Coordinator) |
+| :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ Nutzlast }|  
@@ -410,8 +399,8 @@ Mit dieser Funktionalität erstellen Sie einen Sender und richten den Link zur `
 
 > Hinweis: Die Authentifizierung muss sowohl für die *via-entity* als auch *destination-entity* vor dem Einrichten dieses Links erfolgen.
 
-| Client | | Service Bus |
-| --- | --- | --- |
+| Client | Direction | Service Bus |
+| :--- | :---: | :--- |
 | attach(<br/>name={Name der Verknüpfung},<br/>role=sender,<br/>source={Clientverknüpfungs-ID},<br/>target= **{via-entity}** ,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={Name der Verknüpfung},<br/>role=receiver,<br/>source={Clientverknüpfungs-ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Backup verwenden können, um mithilfe d
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5761f56106989084f12b80620ffc417b781965d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183890"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187828"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 
@@ -45,7 +45,7 @@ Diese Azure Backup-Features oder -Workloads unterstützen die Verwendung der Off
 ## <a name="prerequisites"></a>Voraussetzungen
 
   > [!NOTE]
-  > Die folgenden Voraussetzungen und der folgende Workflow gelten nur für Offlinesicherungen von Dateien und Ordnern mit dem [neuesten Azure Recovery Services-Agent](https://aka.ms/azurebackup_agent). Informationen zum Durchführen von Offlinesicherungen für Workloads mit System Center DPM oder Azure Backup Server finden Sie unter [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export-.md).
+  > Die folgenden Voraussetzungen und der folgende Workflow gelten nur für Offlinesicherungen von Dateien und Ordnern mit dem [neuesten Azure Recovery Services-Agent](https://aka.ms/azurebackup_agent). Informationen zum Durchführen von Offlinesicherungen für Workloads mit System Center DPM oder Azure Backup Server finden Sie unter [Offlinesicherungsworkflow für DPM und Azure Backup Server](backup-azure-backup-server-import-export.md).
 
 Führen Sie vor dem Starten des Workflows zur Offlinesicherung die folgenden Schritte aus:
 
@@ -90,7 +90,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
     * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, geben Sie den vollständigen Netzwerkpfad des Stagingspeicherorts an.
     * **Azure Resource Manager-Speicherkonto**: Der Name des Resource Manager-Speicherkontos (Universell v1 oder Universell v2) in allen Azure-Abonnements.
-    * **Azure Storage-Container**: Der Name des Zielspeicherblobs im Azure-Speicherkonto, in das die Sicherungsdaten vor dem Kopieren in den Recovery Services-Tresor importiert werden.
+    * **Azure Storage-Container**: Der Name des Blob Storage-Zielcontainers im Azure-Speicherkonto, in das die Sicherungsdaten vor dem Kopieren in den Recovery Services-Tresor importiert werden.
     * **Azure-Abonnement-ID**: Die ID für das Azure-Abonnement, in dem das Azure-Speicherkonto erstellt wird.
     * **Name des Azure Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import/Export-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
   
@@ -136,7 +136,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
     | Parameter | BESCHREIBUNG |
     | --- | --- |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Mit dieser obligatorischen Eingabe wird der Pfad zum Stagingspeicherort angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |
-    | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Mit dieser optionalen Eingabe wird der Pfad zur Datei mit den Azure-Veröffentlichungseinstellungen angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |
+    | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Mit dieser optionalen Eingabe wird der Pfad zur Datei mit den Azure-Veröffentlichungseinstellungen bereitgestellt.  |
 
     Beim Ausführen des Befehls fordert das Hilfsprogramm die Auswahl des Azure-Importauftrags an, der den vorzubereitenden Datenträgern entspricht. Falls dem angegebenen Stagingspeicherort nur ein einzelner Importauftrag zugeordnet ist, wird eine Seite wie diese angezeigt.
 

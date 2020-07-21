@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68882765"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147408"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Hinzufügen von Analysen in den Bing-Suche-APIs
 
 Die Bing-Statistik stellt Analysen für die Bing-Suche-APIs bereit. Diese Analysen enthalten das Aufrufvolumen, die häufigsten Abfragezeichenfolgen, die geografische Verteilung und vieles mehr. Sie können die Bing-Statistik im [Azure-Portal](https://ms.portal.azure.com) aktivieren. Navigieren Sie dazu zu Ihrer Azure-Ressource, und klicken Sie auf **Enable Bing Statistics** (Bing-Statistik aktivieren).
 
 > [!IMPORTANT]
-> * Für kostenlose Testabonnements oder Ressourcen im kostenlosen Tarif `F0` ist die Bing-Statistik nicht verfügbar.
+> * Für Ressourcen im kostenlosen Tarif `F0` ist die Bing-Statistik nicht verfügbar.
 > * Sie können die Daten, die über das Dashboard der Bing-Statistik verfügbar sind, nicht verwenden, um Anwendungen zu erstellen, die an Dritte verteilt werden sollen.
 > * Durch das Aktivieren der Bing-Statistik wird Ihre Abonnementrate leicht erhöht. Weitere Informationen finden Sie unter [Preise](https://aka.ms/bingstatisticspricing).
 
@@ -53,7 +53,7 @@ Standardmäßig werden in den Diagrammen und Graphen alle Metriken und Daten ang
 - **Zeitrahmen:** Der Berichtszeitraum. Sie können Folgendes angeben:
   - **All**: Enthält Daten aus bis zu 13 Monaten.  
   - **Letzte 24 Stunden**: Enthält Analysen der letzten 24 Stunden.  
-  - **Letzte Woche**: Enthält Analysen der letzten sieben Tage.  
+  - **Letzte Woche**: Enthält Analysen der letzten sieben Tage.  
   - **Letzter Monat**: Enthält Analysen der letzten 30 Tage.  
   - **Benutzerdefinierter Datumsbereich**: Enthält Analysen des angegebenen Datenbereichs (falls verfügbar).  
 

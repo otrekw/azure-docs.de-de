@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 6/2/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299298"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187573"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -1521,7 +1521,9 @@ In diesem Abschnitt werden Azure Resource Manager-Vorlagen für drei Szenarien b
 
 > [!NOTE]
 >
-> In einer Metrikwarnungsregel, mit der mehrere Ressourcen überwacht werden, ist nur eine Bedingung zulässig.
+> In einer Metrikwarnungsregel für die Überwachung mehrerer Ressourcen gelten folgende Einschränkungen:
+> - Der Bereich der Warnungsregel muss mindestens eine Ressource des ausgewählten Ressourcentyps enthalten.
+> - Die Warnungsregel darf nur eine einzelne Bedingung enthalten.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Warnungen mit statischem Schwellenwert für alle virtuellen Computer in einer oder mehreren Ressourcengruppen
 

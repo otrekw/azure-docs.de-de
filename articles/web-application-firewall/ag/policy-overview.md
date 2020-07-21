@@ -7,19 +7,19 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060270"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143828"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Übersicht über die Azure Web Application Firewall (WAF)-Richtlinien
 
 Web Application Firewall-Richtlinien enthalten alle WAF-Einstellungen und -Konfigurationen. Dies umfasst Ausschlüsse, benutzerdefinierte Regeln, verwaltete Regeln usw. Diese Richtlinien werden dann einer Anwendungsgateway- (global), einer Listener- (pro Website) oder einer pfadbasierten Regel (pro URI) zugeordnet, damit Sie wirksam werden.
 
 > [!NOTE]
-> Azure Web Application Firewall (WAF)-Richtlinien pro Website und pro URI sind als Public Preview-Version verfügbar.
+> URI-spezifische Azure WAF-Richtlinien (Web Application Firewall) sind als Public Preview verfügbar.
 > 
 > Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

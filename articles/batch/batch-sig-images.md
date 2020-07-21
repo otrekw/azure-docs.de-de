@@ -4,12 +4,12 @@ description: Benutzerdefinierte Imagepools sind eine effiziente Möglichkeit zum
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851709"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147279"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
 
@@ -30,7 +30,7 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 - **Anwendungen vorab installieren**: Das Vorinstallieren von Anwendungen auf dem Betriebssystemdatenträger ist effizienter und weniger fehleranfällig als die Installation von Anwendungen nach der Bereitstellung der Computeknoten mit einem Starttask.
 - **Große Datenmengen einmalig kopieren**: Sie können statische Daten zu einem Teil des verwalteten freigegebenen Image machen, indem Sie die Daten auf die Datenträger eines verwalteten Image kopieren. Dieser Vorgang muss nur einmal ausgeführt werden und stellt Daten für jeden Knoten des Pools zur Verfügung.
 - **Pools auf größere Größen skalieren**: Mit Shared Image Gallery können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Imagereplikaten erstellen.
-- **Bessere Leistung als bei einfacher Verwendung eines verwalteten Images als benutzerdefiniertes Image.** Bei Verwendung eines Shared Image-Pools benutzerdefinierter Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 %, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 %.
+- **Bessere Leistung als bei einfacher Verwendung eines verwalteten Images als benutzerdefiniertes Image.** Bei Verwendung eines Shared Image-Pools benutzerdefinierter Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 Prozent, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 Prozent.
 - **Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung**: Die Imagegruppierungsdefinition enthält Informationen darüber, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Das Gruppieren von Images ermöglicht eine einfachere Imageverwaltung. Weitere Informationen finden Sie unter [Imagedefinitionen](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -83,7 +83,7 @@ Verwenden Sie zum Erstellen eines verwalteten Images auf der Grundlage einer Mom
 
 ### <a name="create-a-shared-image-gallery"></a>Erstellen einer Shared Image Gallery-Instanz
 
-Nachdem Sie Ihr verwaltetes Image erfolgreich erstellt haben, müssen Sie eine Shared Image Gallery-Instanz erstellen, um Ihr benutzerdefiniertes Image verfügbar zu machen. Weitere Informationen zum Vorbereiten einer Shared Image Gallery-Instanz für Ihre Images finden Sie unter [Erstellen einer Shared Image Gallery-Instanz mit der Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/shared-images.md) und [Erstellen einer Shared Image Gallery-Instanz über das Azure-Portal](../virtual-machines/linux/shared-images-portal.md).
+Nachdem Sie Ihr verwaltetes Image erfolgreich erstellt haben, müssen Sie eine Shared Image Gallery-Instanz erstellen, um Ihr benutzerdefiniertes Image verfügbar zu machen. Weitere Informationen zum Vorbereiten einer Shared Image Gallery-Instanz für Ihre Images finden Sie unter [Erstellen einer Shared Image Gallery-Instanz mit der Azure-Befehlszeilenschnittstelle](../virtual-machines/shared-images-cli.md) und [Erstellen einer Shared Image Gallery-Instanz über das Azure-Portal](../virtual-machines/linux/shared-images-portal.md).
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Erstellen eines Pools aus einem freigegebenen Image mithilfe der Azure-Befehlszeilenschnittstelle
 

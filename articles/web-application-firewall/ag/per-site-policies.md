@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682481"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143942"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Konfigurieren von websitespezifischen WAF-Richtlinien mithilfe von Azure PowerShell
 
@@ -29,7 +29,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Einrichten des Netzwerks
 > * Erstellen einer WAF-Richtlinie
 > * Erstellen eines Anwendungsgateways mit aktivierter WAF
-> * Anwenden der WAF-Richtlinie: global, websitespezifisch und URI-spezifisch
+> * Anwenden der WAF-Richtlinie: global, websitespezifisch und URI-spezifisch (Vorschauversion)
 > * Erstellen einer Skalierungsgruppe für virtuelle Computer
 > * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 > * Testen des Anwendungsgateways
@@ -250,7 +250,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>Anwenden einer URI-spezifischen Richtlinie
+### <a name="apply-a-per-uri-policy-preview"></a>Anwenden einer URI-spezifischen Richtlinie (Vorschauversion)
 
 Um eine URI-spezifische Richtlinie anzuwenden, erstellen Sie einfach eine neue Richtlinie und wenden sie auf die Pfadregelkonfiguration an. 
 

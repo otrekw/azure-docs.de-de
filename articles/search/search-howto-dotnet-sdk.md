@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146915"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Verwenden der kognitiven Azure-Suche in einer .NET-Anwendung
 
-In diesem Artikel wird ausführlich beschrieben, wie Sie das [.NET SDK für die kognitive Azure-Suche](https://aka.ms/search-sdk) schnell in Betrieb nehmen können. Mit dem .NET SDK können Sie in Ihrer Anwendung die vielfältigen Suchfunktionen der kognitiven Azure-Suche implementieren.
+In diesem Artikel wird ausführlich beschrieben, wie Sie das [.NET SDK für die kognitive Azure-Suche](https://docs.microsoft.com/dotnet/api/overview/azure/search) schnell in Betrieb nehmen können. Mit dem .NET SDK können Sie in Ihrer Anwendung die vielfältigen Suchfunktionen der kognitiven Azure-Suche implementieren.
 
 ## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Inhalt des SDK für die kognitive Azure-Suche
 Das SDK besteht aus wenigen Clientbibliotheken, mit denen Sie sowohl Ihre Indizes, Datenquellen, Indexer und Synonymzuordnungen verwalten als auch Dokumente hochladen und verwalten sowie Abfragen ausführen können, ohne die Details von HTTP und JSON berücksichtigen zu müssen. Alle diese Clientbibliotheken werden als NuGet-Pakete verteilt.
@@ -38,7 +38,7 @@ Die unterschiedlichen Clientbibliothek definieren Klassen wie `Index`, `Field` u
 
 Wenn Sie Feedback für ein zukünftiges Update des SDK geben möchten, besuchen Sie unsere [Feedbackseite](https://feedback.azure.com/forums/263029-azure-search/), oder erstellen Sie ein Issue auf [GitHub](https://github.com/azure/azure-sdk-for-net/issues), und geben Sie „Azure Cognitive Search“ im Titel an.
 
-Das .NET SDK unterstützt Version `2019-05-06` der [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/). Diese Version enthält Unterstützung für [komplexe Typen](search-howto-complex-data-types.md), [KI-Anreicherung](cognitive-search-concept-intro.md), [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) und den [JsonLines-Analysemodus](search-howto-index-json-blobs.md) beim Indizieren von Azure-Blobs. 
+Das .NET SDK verwendet die Version `2019-05-06` der [REST-API für Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/) als Ziel. Diese Version enthält Unterstützung für [komplexe Typen](search-howto-complex-data-types.md), [KI-Anreicherung](cognitive-search-concept-intro.md), [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) und den [JsonLines-Analysemodus](search-howto-index-json-blobs.md) beim Indizieren von Azure-Blobs. 
 
 Dieses SDK unterstützt keine [Verwaltungsvorgänge](https://docs.microsoft.com/rest/api/searchmanagement/) wie etwa das Erstellen und Skalieren von Suchdiensten und das Verwalten von API-Schlüsseln. Wenn Sie Ihre Ressourcen für die Suche in einer .NET-Anwendung verwalten möchten, können Sie das [.NET Management SDK für die kognitive Azure-Suche](https://aka.ms/search-mgmt-sdk) verwenden.
 
@@ -171,46 +171,49 @@ Diesmal verwenden wir einen Abfrageschlüssel, da wir keinen Schreibzugriff auf 
 
 Wenn Sie diese Anwendung mit einem gültigen Dienstnamen und API-Schlüsseln ausführen, sollte die Ausgabe wie in diesem Beispiel aussehen: (Einige Konsolenausgaben wurden zur Veranschaulichung durch „....“ ersetzt.)
 
-    Deleting index...
+```output
 
-    Creating index...
+Deleting index...
 
-    Uploading documents...
+Creating index...
 
-    Waiting for documents to be indexed...
+Uploading documents...
 
-    Search the entire index for the term 'motel' and return only the HotelName field:
+Waiting for documents to be indexed...
 
-    Name: Secret Point Motel
+Search the entire index for the term 'motel' and return only the HotelName field:
 
-    Name: Twin Dome Motel
+Name: Secret Point Motel
 
-
-    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
-
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
-
-    HotelId: 2
-    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+Name: Twin Dome Motel
 
 
-    Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
 
-    Name: Triple Landscape Hotel
-    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
 
-    Name: Twin Dome Motel
-    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+HotelId: 2
+Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
 
 
-    Search the hotel names for the term 'hotel':
+Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
 
-    HotelId: 3
-    Name: Triple Landscape Hotel
-    ...
+Name: Triple Landscape Hotel
+Last renovated on: 9/20/2015 12:00:00 AM +00:00
 
-    Complete.  Press any key to end application... 
+Name: Twin Dome Motel
+Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+Search the hotel names for the term 'hotel':
+
+HotelId: 3
+Name: Triple Landscape Hotel
+...
+
+Complete.  Press any key to end application... 
+```
 
 Der vollständige Quellcode der Anwendung wird am Ende dieses Artikels bereitgestellt.
 
@@ -566,7 +569,9 @@ Beim Entwerfen eigener Modellklassen für die Zuordnung zu einem Index der kogni
 
 Dies ist nicht nur von hypothetischer Bedeutung: Stellen Sie sich ein Szenario vor, bei dem Sie ein neues Feld einem vorhandenen Index vom Typ `Edm.Int32` hinzufügen. Nach dem Aktualisieren der Indexdefinition enthalten alle Dokumente einen NULL-Wert für das neue Feld (da in der kognitiven Azure-Suche alle Typen NULL-Werte zulassen). Wenn Sie für dieses Feld anschließend eine Modellklasse mit einer `int`-Eigenschaft verwenden, die keine NULL-Werte zulässt, erhalten Sie beim Abrufen von Dokumenten folgendes `JsonSerializationException`-Element:
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 Aus diesem Grund empfehlen wir als bewährte Methode, in Ihren Modellklassen Typen zu verwenden, die NULL-Werte zulassen.
 
@@ -680,9 +685,11 @@ WriteDocuments(results);
 
 In diesem Fall durchsuchen wir den gesamten Index nach dem Wort „motel“ in einem beliebigen Suchfeld und möchten nur die Hotelnamen abrufen, wie durch Parameter `Select` angegeben. Dies sind die Ergebnisse:
 
-    Name: Secret Point Motel
+```output
+Name: Secret Point Motel
 
-    Name: Twin Dome Motel
+Name: Twin Dome Motel
+```
 
 Die nächste Abfrage ist ein wenig interessanter.  Wir möchten wir Hotels mit einem Übernachtungspreis von weniger als 100 € suchen, und nur die Hotel-ID und Beschreibung sollen zurückgegeben werden:
 
@@ -703,11 +710,13 @@ Diese Abfrage verwendet einen OData `$filter`-Ausdruck, `Rooms/any(r: r/BaseRate
 
 Hier sehen Sie die Ergebnisse der Abfrage:
 
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+```output
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
 
-    HotelId: 2
-    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+HotelId: 2
+Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+```
 
 Anschließend möchten wir die zwei besten, in jüngster Zeit renovierten Hotels suchen und deren Hotelnamen und das Datum der letzten Renovierung anzeigen. Hier folgt der Code: 
 
@@ -729,8 +738,10 @@ In diesem Fall verwenden wir erneut OData-Syntax, um den Parameter `OrderBy` auf
 
 Dies sind die Ergebnisse:
 
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```output
+Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
+Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```
 
 Zum Schluss möchten wir alle Hotelnamen suchen, für die das Wort „Hotel“ zutrifft:
 
@@ -746,9 +757,11 @@ WriteDocuments(results);
 
 Dies sind die Ergebnisse mit allen Feldern, da wir die Eigenschaft `Select` nicht festgelegt haben:
 
+```output
     HotelId: 3
     Name: Triple Landscape Hotel
     ...
+```
 
 Mit diesem Schritt ist das Lernprogramm abgeschlossen. Gerne können Sie sich aber noch weiter mit dem Programm vertraut machen. ** Im Abschnitt „Nächste Schritte“ finden Sie eine Zusammenstellung weiterer Ressourcen zur Einarbeitung in die kognitive Azure-Suche.
 

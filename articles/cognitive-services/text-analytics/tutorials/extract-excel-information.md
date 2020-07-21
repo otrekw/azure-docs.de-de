@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78201066"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145711"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrahieren von Informationen aus Excel mithilfe von Textanalyse und Power Automate 
 
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Microsoft Azure-Konto. [Starten Sie eine kostenlose Testversion](https://azure.microsoft.com/free/), oder [melden Sie sich an](https://portal.azure.com/).
+- Ein Microsoft Azure-Konto. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/), oder [melden Sie sich an](https://portal.azure.com/).
 - Eine Textanalyseressource. Wenn Sie noch nicht über eine verfügen, können Sie [im Azure-Portal eine erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) und den Free-Tarif verwenden, um dieses Tutorial abzuschließen.
 - [Schlüssel und Endpunkt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), die bei der Registrierung für Sie generiert wurden
 - Ein Arbeitsblatt mit Mieterproblemen. Beispieldaten werden auf GitHub bereitgestellt.
@@ -46,7 +46,7 @@ Laden Sie die Excel-Beispieldatei von [GitHub](https://github.com/Azure-Samples/
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/example-data.png" alt-text="Beispiele aus der Excel-Datei.":::
 
-Die Probleme werden im Rohtext angezeigt. Sie verwenden die Erkennung benannter Entitäten der Textanalyse-API, um den Namen und die Telefonnummer der Person zu extrahieren. Anschließend sucht der Flow nach dem Wort „plumbing“ (sanitärbezogen) in der Beschreibung, um die Probleme zu kategorisieren. 
+Die Probleme werden im Rohtext angezeigt. Sie verwenden die Erkennung benannter Entitäten der Textanalyse-API, um den Namen und die Telefonnummer der Person zu extrahieren. Anschließend sucht der Flow in der Beschreibung nach dem Wort „plumbing“ (sanitärbezogen), um die Probleme zu kategorisieren. 
 
 ## <a name="create-a-new-power-automate-workflow"></a>Erstellen eines neuen Power Automate-Workflows
 
@@ -58,7 +58,7 @@ Wechseln Sie zur Website von [Power Automate](https://preview.flow.microsoft.com
 
 Initialisieren Sie auf der Seite **Geplanten Flow erstellen** den Flow mit den folgenden Feldern:
 
-|Feld |value  |
+|Feld |Wert  |
 |---------|---------|
 |**Flowname**     | **Geplante Überprüfung** oder ein anderer Name.         |
 |**Wird gestartet**     |  Geben Sie das aktuelle Datum und die Uhrzeit ein.       |
@@ -76,7 +76,7 @@ Erstellen Sie Variablen, die die der Excel-Datei hinzugefügten Informationen da
 
 Fügen Sie den erstellten Variablen die folgenden Informationen hinzu. Sie stellen die Spalten der Excel-Datei dar. Wenn Variablen reduziert sind, können Sie darauf klicken, um sie zu erweitern.
 
-| Action |Name   | type | value |
+| Aktion |Name   | type | Wert |
 |---------|---------|---|---|
 | Initialisieren einer Variablen | var_person | String | Person |
 | Variable initialisieren 2 | var_phone | String | Phone_Number |
@@ -110,7 +110,7 @@ Klicken Sie auf **Ausgabe von vorherigen Schritten auswählen**. Wählen Sie im 
 
 ## <a name="send-a-request-to-the-text-analytics-api"></a>Senden einer Anforderung an die Textanalyse-API
 
-Wenn Sie dies noch nicht getan haben, müssen Sie im Azure-Portal eine [Textanalyseressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) erstellen.
+Erstellen Sie im Azure-Portal eine [Textanalyseressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics), sofern noch nicht geschehen.
 
 ### <a name="create-a-text-analytics-connection"></a>Erstellen einer Textanalyseverbindung
 
@@ -121,7 +121,7 @@ Geben Sie in Ihrem Flow die folgenden Informationen ein, um eine neue Textanalys
 > [!NOTE]
 > Wenn Sie bereits eine Textanalyseverbindung erstellt haben und die Verbindungsdetails ändern möchten, klicken Sie in der rechten oberen Ecke auf die Auslassungspunkte und dann auf **+ Neue Verbindung hinzufügen**.
 
-| Feld           | value                                                                                                             |
+| Feld           | Wert                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
 | Verbindungsname | Ein Name für die Verbindung mit Ihrer Textanalyseressource. Beispiel: `TAforPowerAutomate`. |
 | Kontoschlüssel     | Der Schlüssel für Ihre Textanalyseressource.                                                                                   |
@@ -137,7 +137,7 @@ Nachdem die Verbindung erstellt wurde, suchen Sie nach **Textanalyse**, und wäh
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow":::
 
-Klicken Sie in das Feld **Text**, und wählen Sie im angezeigten Fenster mit dynamischem Inhalt **Beschreibung** aus. Geben Sie als Sprache `en` ein. (Klicken Sie auf „Erweiterte Optionen anzeigen“, falls „Sprache“ nicht angezeigt wird.)
+Klicken Sie in das Feld **Text**, und wählen Sie im angezeigten Fenster mit dynamischem Inhalt **Beschreibung** aus. Geben Sie als Sprache `en` ein. (Sollte „Sprache“ nicht angezeigt werden, klicken Sie auf „Erweiterte Optionen anzeigen“.)
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow":::
@@ -201,7 +201,7 @@ Minimieren Sie **Auf alle anwenden 3**, indem Sie auf den Namen klicken. Erstel
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow":::
 
 
-Anschließend prüft der Flow, ob die Problembeschreibung aus der Zeile im Excel-Arbeitsblatt das Wort „plumbing“ (sanitärbezogen) enthält. Wenn dies der Fall ist, wird in der Spalte „IssueType“ der Eintrag „plumbing“ (sanitärbezogen) hinzugefügt. Trifft dies nicht zu, wird „other“ (andere) eingegeben.
+Anschließend prüft der Flow, ob die Problembeschreibung aus der Zeile im Excel-Arbeitsblatt das Wort „plumbing“ (sanitärbezogen) enthält. Ist dies der Fall, wird in der Spalte „IssueType“ der Eintrag „plumbing“ (sanitärbezogen) hinzugefügt. Andernfalls wird „other“ (Sonstiges) eingetragen.
 
 Fügen Sie innerhalb der Aktion **Auf alle anwenden 4** ein Steuerelement **Bedingung** hinzu. Es erhält den Namen **Bedingung 3**. Suchen Sie im ersten Textfeld mithilfe des Fensters mit dynamischem Inhalt in der Excel-Datei nach **Description** (Beschreibung). Vergewissern Sie sich, dass das mittlere Feld **enthält** lautet. Suchen Sie dann im rechten Textfeld nach `var_plumbing`, und wählen Sie diese Option aus. 
 

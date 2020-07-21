@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158281"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147272"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Analysieren von Gerätedaten mithilfe von Analytics
 
@@ -86,10 +86,12 @@ Nachdem Sie Ihre Daten abgefragt haben, können Sie mit deren Visualisierung im 
 
   ![Vergrößern der Daten](media/howto-create-analytics/zoom.png)
 
-Unter den Auslassungspunkten gibt es weitere Diagrammsteuerelemente zum Interagieren mit den Daten.
+Unter den Auslassungspunkten finden Sie weitere Diagrammsteuerelemente für die Interaktion mit den Daten:
 
 - **Raster anzeigen:** Ihre Ergebnisse stehen in einem Tabellenformat zur Verfügung, damit Sie den genauen Wert für jeden Datenpunkt anzeigen können.
 
-- **Marker setzen:** Das Steuerelement „Marker setzen“ bietet eine Möglichkeit zum Verankern von bestimmten Datenpunkten im Diagramm. Das ist hilfreich, wenn Sie versuchen, Daten für mehrere Zeilen über verschiedene Zeiträume hinweg zu vergleichen.
+- **Als CSV herunterladen:** Ihre Ergebnisse können als CSV-Datei (Comma-Separated Values, durch Trennzeichen getrennte Werte) exportiert werden. Die CSV-Datei enthält Daten für jedes Gerät. Die Ergebnisse werden auf der Grundlage des angegebenen Intervalls und Zeitrahmens exportiert. 
+
+- **Marker setzen:** Das Steuerelement „Marker setzen“ ermöglicht das Verankern bestimmter Datenpunkte im Diagramm. Das ist hilfreich, wenn Sie versuchen, Daten für mehrere Zeilen über verschiedene Zeiträume hinweg zu vergleichen.
 
   ![Rasteransicht für Ihre Analyse](media/howto-create-analytics/additionalchartcontrols.png)

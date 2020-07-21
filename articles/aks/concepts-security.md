@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d154ca6b67f3f587234deb34cef171ffc5924530
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145528"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -19,11 +19,16 @@ Damit Ihre Kundendaten während der Ausführung von Anwendungsworkloads in Azure
 
 In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anwendungen in AKS schützen können:
 
-- [Sicherheit der Masterkomponenten](#master-security)
-- [Knotensicherheit](#node-security)
-- [Clusterupgrades](#cluster-upgrades)
-- [Netzwerksicherheit](#network-security)
-- [Kubernetes-Geheimnisse](#kubernetes-secrets)
+- [Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [Sicherheit der Masterkomponenten](#master-security)
+  - [Knotensicherheit](#node-security)
+    - [Computeisolation](#compute-isolation)
+  - [Clusterupgrades](#cluster-upgrades)
+    - [Absperren und Ausgleichen](#cordon-and-drain)
+  - [Netzwerksicherheit](#network-security)
+    - [Azure-Netzwerksicherheitsgruppen](#azure-network-security-groups)
+  - [Kubernetes-Geheimnisse](#kubernetes-secrets)
+  - [Nächste Schritte](#next-steps)
 
 ## <a name="master-security"></a>Sicherheit der Masterkomponenten
 
@@ -45,7 +50,14 @@ Knoten werden in einem Subnetz des privaten virtuellen Netzwerks ohne öffentlic
 
 Die Knoten verwenden Azure Managed Disks, um Speicher bereitzustellen. Bei den meisten VM-Knotengrößen handelt es sich um Premium-Datenträger, die von Hochleistungs-SSDs unterstützt werden. Die auf verwalteten Datenträgern gespeicherten Daten werden im Ruhezustand auf der Azure-Plattform automatisch verschlüsselt. Zur Verbesserung der Redundanz werden diese Datenträger außerdem sicher im Azure-Rechenzentrum repliziert.
 
-Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind derzeit nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. Zusätzliche Sicherheitsfunktionen wie *Pod Security Policies* oder differenziertere rollenbasierte Zugriffssteuerung (RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden. Weitere Informationen zu Möglichkeiten zur Isolierung von Workloads finden Sie unter [Bewährte Methoden für die Isolierung der Cluster in AKS][cluster-isolation],
+Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind derzeit nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. Zusätzliche Sicherheitsfunktionen wie *Pod Security Policies* oder differenziertere rollenbasierte Zugriffssteuerung (RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden. Weitere Informationen zu Möglichkeiten zur Isolierung von Workloads finden Sie unter [Bewährte Methoden für die Isolierung der Cluster in AKS][cluster-isolation].
+
+### <a name="compute-isolation"></a>Computeisolation
+
+ Bestimmte Workloads erfordern möglicherweise aufgrund von Konformitäts- oder gesetzlichen Anforderungen einen hohen Grad an Isolation von anderen Kundenworkloads. Für diese Workloads bietet Azure [isolierte virtuelle Computer](..\virtual-machines\linux\isolation.md), die als Agentknoten in einem AKS-Cluster verwendet werden können. Diese isolierten VMs sind für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt. 
+
+ Wenn Sie diese isolierten virtuellen Computer mit einem AKS-Cluster verwenden möchten, wählen Sie eine der [hier](..\virtual-machines\linux\isolation.md) aufgeführten Größen für isolierte virtuelle Computer als **Knotengröße** beim Erstellen eines AKS-Clusters oder Hinzufügen eines Knotenpools aus.
+
 
 ## <a name="cluster-upgrades"></a>Clusterupgrades
 

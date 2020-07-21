@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db7a1489b877544cd36627f3962b6b4e1b8c462
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433259"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146437"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,9 @@ Bei Beginn von Trainingsausführungen auf einem [Computeziel](how-to-set-up-trai
 
 Bevor Sie ein Experiment auf einem Computeziel oder Ihrem lokalen Computer initiieren können, müssen Sie sicherstellen, dass die erforderlichen Dateien, z.B. Abhängigkeitsdateien und Datendateien, die Ihr Code zum Ausführen benötigt, für das Computeziel verfügbar sind.
 
-Azure Machine Learning führt Trainingsskripts durch Kopieren des gesamten Skriptordners in den Computezielkontext aus und erstellt anschließend eine Momentaufnahme. Das Speicherlimit für Momentaufnahmen des Experiments liegt bei 300 MB und/oder 2000 Dateien.
+Zum Ausführen von Trainingsskripts wird von Azure Machine Learning das gesamte Quellverzeichnis kopiert. Sind vertrauliche Daten vorhanden, die nicht hochgeladen werden sollen, verwenden Sie die [IGNORE-Datei](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots), oder platzieren Sie sie nicht im Quellverzeichnis. Greifen Sie stattdessen mit einem [Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py) auf Ihre Daten zu.
+
+Das Speicherlimit für Momentaufnahmen des Experiments liegt bei 300 MB und/oder 2000 Dateien.
 
 Aus diesem Grund empfehlen wir Folgendes:
 

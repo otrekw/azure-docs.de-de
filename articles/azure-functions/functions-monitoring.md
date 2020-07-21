@@ -4,12 +4,13 @@ description: Erfahren Sie, wie Sie Azure Application Insights mit Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757754"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170410"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -245,7 +246,7 @@ Wie im vorherigen Abschnitt erwähnt, werden von der Laufzeit Daten zu den Funkt
 
 ## <a name="configure-sampling"></a>Konfigurieren des Samplings
 
-Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azure-monitor/app/sampling.md) als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten für erfolgte Vorgänge produziert werden. Wenn die Rate der eingehenden ausgeführten Vorgänge einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden ausgeführten Vorgänge nach dem Zufallsprinzip zu ignorieren. Die Standardeinstellung für die maximale Anzahl ausgeführter Vorgänge pro Sekunde ist 20 (5 in Version 1.x). Sie können das Sampling in der Datei [host.json] konfigurieren.  Hier sehen Sie ein Beispiel:
+Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azure-monitor/app/sampling.md) als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten für erfolgte Vorgänge produziert werden. Wenn die Rate der eingehenden ausgeführten Vorgänge einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden ausgeführten Vorgänge nach dem Zufallsprinzip zu ignorieren. Die Standardeinstellung für die maximale Anzahl ausgeführter Vorgänge pro Sekunde ist 20 (5 in Version 1.x). Sie können das Sampling in der Datei [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) konfigurieren.  Hier sehen Sie ein Beispiel:
 
 ### <a name="version-2x-and-later"></a>Version 2.x und höher
 
@@ -255,12 +256,15 @@ Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azu
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+In der Version 2.x können bestimmte Arten von Telemetriedaten aus der Stichprobenentnahme ausgeschlossen werden. Im obigen Beispiel werden Daten vom Typ `Request` aus der Stichprobenentnahme ausgeschlossen. Dadurch wird sichergestellt, dass *alle* Funktionsausführungen (Anforderungen) protokolliert werden, während für andere Arten von Telemetriedaten weiterhin die Stichprobenentnahme verwendet wird.
 
 ### <a name="version-1x"></a>Version 1.x 
 
@@ -313,7 +317,7 @@ Hier ist eine JSON-Beispieldarstellung von `customDimensions`-Daten angegeben:
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -533,7 +537,7 @@ Legen Sie nicht `telemetryClient.Context.Operation.Id` fest. Diese globale Einst
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in JavaScript-Funktionen
 
-Im Folgenden finden Sie Beispielcodeausschnitte, die benutzerdefinierte Telemetriedaten mit dem [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) senden:
+Im Anschluss finden Sie Beispielcodeausschnitte, die benutzerdefinierte Telemetriedaten mit dem [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) senden:
 
 ### <a name="version-2x-and-later"></a>Version 2.x und höher
 
@@ -622,7 +626,7 @@ In früheren Versionen von Azure Functions wurde die integrierte Überwachung ve
 
 ## <a name="streaming-logs"></a>Streamingprotokolle
 
-Während der Entwicklung einer Anwendung möchten Sie häufig in Echtzeit sehen, was bei der Ausführung in Azure in die Protokolle geschrieben wird.
+Bei der Anwendungsentwicklung ist es häufig wünschenswert, nahezu in Echtzeit zu sehen, was bei der Ausführung in Azure in die Protokolle geschrieben wird.
 
 Es gibt zwei Möglichkeiten, einen Datenstrom von Protokolldateien anzuzeigen, die bei den Ausführungen Ihrer Funktion generiert werden.
 
@@ -682,6 +686,42 @@ Add-AzAccount
 Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
+```
+
+## <a name="scale-controller-logs-preview"></a>Skalierungscontrollerprotokolle (Vorschau)
+
+Dieses Feature befindet sich in der Vorschauphase. 
+
+Der [Azure Functions-Skalierungscontroller](./functions-scale.md#runtime-scaling) dient zum Überwachen von Instanzen des Azure Functions-Hosts, auf dem Ihre App ausgeführt wird. Dieser Controller entscheidet basierend auf der aktuellen Leistung über das Hinzufügen oder Entfernen von Instanzen. Der Skalierungscontroller kann Protokolle an Application Insights oder an den Blobspeicher ausgeben, damit sie die Entscheidungen, die der Skalierungscontroller für Ihre Funktions-App trifft, besser nachvollziehen können.
+
+Wenn Sie dieses Feature aktivieren möchten, fügen Sie eine neue Anwendungseinstellung namens `SCALE_CONTROLLER_LOGGING_ENABLED` hinzu. Der Wert dieser Einstellung muss das Format `<DESTINATION>:<VERBOSITY>` haben und auf Folgendem basieren:
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+Mit dem folgenden Azure CLI-Befehl wird beispielsweise die ausführliche Protokollierung des Skalierungscontrollers in Application Insights aktiviert:
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
+
+Ersetzen Sie in diesem Beispiel `<FUNCTION_APP_NAME>` und `<RESOURCE_GROUP_NAME>` durch den Namen Ihrer Funktions-App bzw. durch den Namen der Ressourcengruppe. 
+
+Durch den folgenden Azure CLI-Befehl wird die Protokollierung deaktiviert, indem die Ausführlichkeit auf `None` festgelegt wird:
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+Sie können die Protokollierung auch deaktivieren, indem Sie die Einstellung `SCALE_CONTROLLER_LOGGING_ENABLED` mithilfe des folgenden Azure CLI-Befehls entfernen:
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
 ## <a name="disable-built-in-logging"></a>Deaktivieren der integrierten Protokollierung

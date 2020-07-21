@@ -9,18 +9,18 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236862"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146901"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indizieren von Cosmos DB-Daten mithilfe eines Indexers in der kognitiven Azure-Suche 
 
 > [!IMPORTANT] 
 > Die SQL-API ist allgemein verfügbar.
-> Die Unterstützung von MongoDB-API, Gremlin-API und Cassandra-API befindet sich aktuell in der Public Preview-Phase. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen anfordern möchten. Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
+> Die Unterstützung von MongoDB-API, Gremlin-API und Cassandra-API befindet sich aktuell in der Public Preview-Phase. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen anfordern möchten. Previewfunktionen werden von der [REST-API-Version 2020-06-30-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
 > [!WARNING]
 > Nur Cosmos DB-Sammlungen, deren [Indizierungsrichtlinie](https://docs.microsoft.com/azure/cosmos-db/index-policy) auf [Konsistent](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) festgelegt ist, werden von Azure Cognitive Search unterstützt. Das Indizieren von Sammlungen mit der Indizierungsrichtlinie „Verzögert“ wird nicht empfohlen, da es zu fehlenden Daten führen kann. Sammlungen mit deaktivierter Indizierung werden nicht unterstützt.
@@ -33,9 +33,9 @@ Mit dem Cosmos DB-Indexer in Azure Cognitive Search können Sie [Azure Cosmos�
 
 + Für die allgemein verfügbare [SQL-API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) können Sie das [Portal](#cosmos-indexer-portal), die [REST-API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) oder das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) verwenden, um die Datenquelle und den Indexer zu erstellen.
 
-+ Für die [MongoDB-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) können Sie entweder das [Portal](#cosmos-indexer-portal) oder die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) verwenden, um die Datenquelle und den Indexer zu erstellen.
++ Für die [MongoDB-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) können Sie entweder das [Portal](#cosmos-indexer-portal) oder die [REST-API-Version 2020-06-30-Preview](search-api-preview.md) verwenden, um die Datenquelle und den Indexer zu erstellen.
 
-+ Für die [Cassandra-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) und die [Gremlin-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) können Sie nur die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) verwenden, um die Datenquelle und den Indexer zu erstellen.
++ Für die [Cassandra-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) und die [Gremlin-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) können Sie nur die [REST-API-Version 2020-06-30-Preview](search-api-preview.md) verwenden, um die Datenquelle und den Indexer zu erstellen.
 
 
 > [!Note]
@@ -123,7 +123,7 @@ Wenn die Indizierung abgeschlossen ist, können Sie den [Such-Explorer](search-e
 Sie können die REST-API für die Indizierung von Azure Cosmos DB-Daten in einem dreiteiligen Workflow verwenden, der für alle Indexer in der kognitiven Azure-Suche gleich ist: Erstellen einer Datenquelle, eines Index und eines Indexers. Die Datenextraktion aus Cosmos DB erfolgt, wenn Sie die Anforderung für die Indexererstellung übermitteln. Nachdem diese Anforderung abgeschlossen ist, verfügen Sie über einen Index, der abgefragt werden kann. 
 
 > [!NOTE]
-> Wenn Sie Daten per Cosmos DB-Gremlin-API oder Cosmos DB-Cassandra-API indizieren möchten, müssen Sie zunächst [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) ausfüllen, um Zugriff auf die geschlossene Vorschau anzufordern. Nachdem Ihre Anforderung bearbeitet wurde, erhalten Sie Anweisungen für die Erstellung der Datenquelle unter Verwendung der [REST-API-Version 2019-05-06-Preview](search-api-preview.md).
+> Wenn Sie Daten per Cosmos DB-Gremlin-API oder Cosmos DB-Cassandra-API indizieren möchten, müssen Sie zunächst [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) ausfüllen, um Zugriff auf die geschlossene Vorschau anzufordern. Nachdem Ihre Anforderung bearbeitet wurde, erhalten Sie Anweisungen für die Erstellung der Datenquelle unter Verwendung der [REST-API-Version 2020-06-30-Preview](search-api-preview.md).
 
 Wie bereits weiter oben in diesem Artikel erwähnt, sind [Azure Cosmos DB-Indizierung](https://docs.microsoft.com/azure/cosmos-db/index-overview) und [Azure Cognitive Search-Indizierung](search-what-is-an-index.md) zwei unterschiedliche Vorgänge. Bei der Cosmos DB-Indizierung werden standardmäßig alle Dokumente automatisch indiziert (außer bei Verwendung der Cassandra-API). Wenn Sie die automatische Indizierung deaktivieren, kann auf die Dokumente nur über ihre Self-Links oder über Abfragen mit der entsprechenden Dokument-ID zugegriffen werden. Bei der Azure Cognitive Search-Indizierung muss die automatische Cosmos DB-Indizierung für die Sammlung aktiviert sein, die von Azure Cognitive Search indiziert wird. Wenn Sie sich für die Vorschauversion des Indexers der Cosmos DB-Cassandra-API registrieren, erhalten Sie eine Einrichtungsanleitung für die Cosmos DB-Indizierung.
 
@@ -154,7 +154,9 @@ Eine **Datenquelle** gibt die zu indizierenden Daten, Anmeldeinformationen und R
 
 Formulieren Sie zum Erstellen einer Datenquelle eine POST-Anforderung:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -170,6 +172,7 @@ Formulieren Sie zum Erstellen einer Datenquelle eine POST-Anforderung:
             "highWaterMarkColumnName": "_ts"
         }
     }
+```
 
 Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Felder enthalten sollte:
 
@@ -190,6 +193,7 @@ Sie können eine SQL-Abfrage angeben, um geschachtelte Eigenschaften oder Arrays
 
 Beispieldokument:
 
+```http
     {
         "userId": 10001,
         "contact": {
@@ -199,31 +203,38 @@ Beispieldokument:
         "company": "microsoft",
         "tags": ["azure", "cosmosdb", "search"]
     }
+```
 
 Abfrage zur Filterung:
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```sql
+SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Vereinfachen der Abfrage:
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-    
-    
+```sql
+SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
+
 Abfrage zur Projektion:
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Abfrage zum Vereinfachen eines Arrays:
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 ### <a name="3---create-a-target-search-index"></a>3 - Erstellen eines Zielsuchindex 
 
 [Erstellen Sie einen Zielindex der kognitiven Azure-Suche ](/rest/api/searchservice/create-index), wenn Sie bislang noch über keinen verfügen. Anhand des folgenden Beispiels wird ein Index mit einer ID und einem Beschreibungsfeld erstellt:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -243,6 +254,7 @@ Abfrage zum Vereinfachen eines Arrays:
          "suggestions": true
        }]
      }
+```
 
 Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Quelldokumente oder mit der Ausgabe Ihrer benutzerdefinierten Abfrageprojektion kompatibel ist.
 
@@ -267,7 +279,8 @@ Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Que
 
 Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -277,6 +290,7 @@ Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall ist auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
 
@@ -299,10 +313,12 @@ Das allgemein verfügbare .NET SDK ist vollständig gleichwertig mit der allgeme
 
 Die Richtlinie zum Erkennen von Datenänderungen dient einer effizienten Identifizierung geänderter Datenelemente. Derzeit wird nur die [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy)-Richtlinie unterstützt, die die `_ts`-Eigenschaft (Zeitstempel) verwendet, die von Azure Cosmos DB bereitgestellt wird und wie folgt angegeben wird:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
+```
 
 Wenn Sie diese Richtlinie verwenden, wird dringend empfohlen sicherzustellen, dass der Indexer eine hohe Leistung erzielt. 
 
@@ -318,11 +334,13 @@ Stellen Sie zum Aktivieren des inkrementellen Status bei Verwendung einer benutz
 
 In bestimmten Fällen kann in der kognitiven Azure-Suche unter Umständen nicht erkannt werden, dass die Abfrage nach `_ts` sortiert ist. (Dies kann sogar vorkommen, wenn die Abfrage eine `ORDER BY [collection alias]._ts`-Klausel enthält.) Mithilfe der Konfigurationseigenschaft `assumeOrderByHighWaterMarkColumn` können Sie in der kognitiven Azure-Suche angeben, dass die Ergebnisse sortiert sind. Erstellen oder aktualisieren Sie Ihren Indexer wie folgt, um diesen Hinweis anzugeben: 
 
+```http
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
     } 
+```
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -330,17 +348,20 @@ In bestimmten Fällen kann in der kognitiven Azure-Suche unter Umständen nicht 
 
 Wenn Zeilen aus der Quelltabelle gelöscht werden, möchten Sie diese Zeilen in der Regel auch aus dem Suchindex löschen. Die Richtlinie zum Erkennen von Datenlöschungen dient einer effizienten Identifizierung gelöschter Datenelemente. Zurzeit ist `Soft Delete` die einzige unterstützte Richtlinie (die Löschung wird durch ein bestimmtes Kennzeichen markiert). Diese wird folgendermaßen festgelegt:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
         "softDeleteColumnName" : "the property that specifies whether a document was deleted",
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
+```
 
 Wenn Sie eine benutzerdefinierte Abfrage verwenden, stellen Sie sicher, dass die Eigenschaft, auf die `softDeleteColumnName` verweist, von der Abfrage projiziert wird.
 
 Im folgenden Beispiel wird eine Datenquelle mit einer Richtlinie zum vorläufigen Löschen erstellt:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -361,6 +382,7 @@ Im folgenden Beispiel wird eine Datenquelle mit einer Richtlinie zum vorläufige
             "softDeleteMarkerValue": "true"
         }
     }
+```
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Nächste Schritte
 

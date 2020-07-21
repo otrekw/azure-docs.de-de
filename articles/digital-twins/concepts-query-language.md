@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985240"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187114"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Abfragesprache für Azure Digital Twins
 
@@ -30,10 +30,10 @@ Diese Vorgänge sind in der Azure Digital Twins-Abfragespeichersprache verfügba
 * Sie können Zwillinge anhand von Beziehungseigenschaften abrufen.
 * Sie können Zwillinge über mehrere Beziehungstypen (`JOIN`-Abfragen) abrufen. Es gelten Einschränkungen hinsichtlich der zulässigen Anzahl von `JOIN`s (eine Ebene für die öffentliche Vorschauversion).
 * Verwenden Sie die benutzerdefinierte Funktion `IS_OF_MODEL(twinCollection, twinTypeName)`, die das Filtern anhand des [Modells](concepts-models.md) des Zwillings ermöglicht. Die Vererbung wird unterstützt.
-* Sie können eine beliebige Kombination (Operatoren `AND`, `OR`, `NOT`) der obigen Vorgänge ausführen.
 * Verwenden Sie Skalarfunktionen: `IS_BOOL`, `IS_DEFINED`, `IS_NULL`, `IS_NUMBER`, `IS_OBJECT`, `IS_PRIMITIVE`, `IS_STRING`, `STARTS_WITH`, `ENDS_WITH`.
-* Verwenden Sie Vergleichsoperatoren für Abfragen: `AND`/`OR`/`NOT`, `IN`/`NOT IN`, `STARTSWITH`/`ENDSWITH`, `=`, `!=`, `<`, `>`, `<=`, `>=`.
-* Verwenden Sie die Fortsetzung: Das Abfrageobjekt wird mit einer Seitengröße (bis zu 100) instanziiert. Sie können die digitalen Zwillinge jeweils mit einer Seite abrufen, indem Sie wiederholte Aufrufe der `nextAsTwin`-Methode ausführen.
+* Verwenden Sie Vergleichsoperatoren für Abfragen: `IN`/`NIN`, `=`, `!=`, `<`, `>`, `<=`, `>=`.
+* Sie können eine beliebige Kombination (Operatoren `AND`, `OR`, `NOT`) der obigen Vorgänge ausführen.
+* Verwenden Sie die Fortsetzung: Das Abfrageobjekt wird mit einer Seitengröße (bis zu 100) instanziiert. Sie können die digitalen Zwillinge einer Seite gleichzeitig abrufen, indem Sie das Fortsetzungstoken in nachfolgenden Aufrufen der API bereitstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

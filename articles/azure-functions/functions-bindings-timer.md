@@ -6,19 +6,21 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: ''
-ms.openlocfilehash: 566d6ccf43024692e19bcd6639fe5cfbbba0660d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056412"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165657"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
 Dieser Artikel erläutert das Arbeiten mit Triggern mit Timer in Azure Functions. Mit einem Trigger mit Timer können Sie eine Funktion nach einem Zeitplan ausführen. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+Informationen zum manuellen Ausführen einer per Timer ausgelösten Funktion finden Sie unter [Manuelles Ausführen einer Funktion ohne HTTP-Trigger](./functions-manually-run-non-http.md).
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
@@ -285,24 +287,7 @@ Die folgenden Beispiele zeigen NCRONTAB-Ausdrücke, die Sie für den Trigger mit
 
 Die Zahlen in einem CRON-Ausdruck beziehen sich auf ein Datum und eine Uhrzeit, nicht auf einen Zeitraum. Beispielsweise bezieht sich eine 5 im Feld `hour` auf 5:00 Uhr, nicht auf alle 5 Stunden.
 
-Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://technet.microsoft.com/library/cc749073) (Microsoft-Zeitzonenindex) fest.
-
-  > [!NOTE]
-  > `WEBSITE_TIME_ZONE` wird im Linux-Verbrauchsplan zurzeit nicht unterstützt.
-
-Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr (EST) auslösen möchten, verwenden Sie den folgenden NCRONTAB-Ausdruck, der die UTC-Zeitzone berücksichtigt:
-
-```
-"0 0 15 * * *"
-``` 
-
-Sie können auch eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE` erstellen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann wird der folgende NCRONTAB-Ausdruck verwendet: 
-
-```
-"0 0 10 * * *"
-``` 
-
-Wenn Sie `WEBSITE_TIME_ZONE` verwenden, wird die Uhrzeit an Abweichungen in der jeweiligen Zeitzone angepasst, z.B. an die Sommerzeit. 
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="timespan"></a>TimeSpan
 

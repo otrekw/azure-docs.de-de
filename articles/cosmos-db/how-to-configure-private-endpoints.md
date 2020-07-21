@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261629"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259113"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 
@@ -655,8 +655,6 @@ Bei Verwendung von Private Link mit einem Azure Cosmos-Konto gelten die folgende
 * Wenn Sie eine Azure Cosmos DB-API für ein MongoDB-Konto verwenden, das Private Link beinhaltet, funktionieren einige Tools oder Bibliotheken unter Umständen nicht, da sie automatisch den Parameter `appName` aus der Verbindungszeichenfolge entfernen. Dieser Parameter ist erforderlich, um über einen privaten Endpunkt eine Verbindung mit dem Konto herzustellen. Einige Tools wie Visual Studio Code entfernen diesen Parameter nicht aus der Verbindungszeichenfolge und sind daher kompatibel.
 
 * Einem Netzwerkadministrator muss mindestens die Berechtigung `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` im Azure Cosmos-Kontobereich erteilt werden, damit er automatisch genehmigte private Endpunkte erstellen kann.
-
-* Der direkte Modus wird in China-basierten Azure-Regionen zurzeit nicht unterstützt.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Einschränkungen bei der Integration für eine private DNS-Zone
 

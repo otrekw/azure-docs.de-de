@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/30/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019a03103122d35f6d4bf1b817ddc80f91f4c568
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220889"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170444"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -39,7 +39,218 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert. Wenn S
 
 ---
 
+## <a name="june-2020"></a>Juni 2020 
+
+### <a name="user-risk-condition-in-conditional-access-policy"></a>Die Bedingung „Benutzerrisiko“ in der Richtlinie für bedingten Zugriff
+
+**Typ:** Plan für Änderung  
+**Dienstkategorie:** Bedingter Zugriff  
+**Produktfunktion:** Identitätssicherheit und -schutz
+ 
+
+Die Unterstützung des Benutzerrisikos in der Azure AD-Richtlinie für bedingten Zugriff ermöglicht es Ihnen, mehrere benutzerrisikobasierte Richtlinien zu erstellen. Für verschiedene Benutzer und Apps sind unter Umständen unterschiedliche Mindestbenutzerrisikostufen erforderlich. Basierend auf dem Benutzerrisiko können Sie Richtlinien erstellen, um den Zugriff zu blockieren oder eine mehrstufige Authentifizierung, eine sichere Kennwortänderung oder eine Umleitung zu Microsoft Cloud App Security zum Erzwingen von Sitzungsrichtlinien zu erfordern, wie z. B. eine zusätzliche Überwachung.
+
+Die Benutzerrisikobedingung erfordert Azure AD Premium P2, da sie Azure Identity Protection verwendet, wobei es sich um ein P2-Angebot handelt. Weitere Informationen zum bedingten Zugriff finden Sie unter [Dokumentation zum bedingten Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/).
+
+---
+
+### <a name="saml-sso-now-supports-apps-that-require-spnamequalifier-to-be-set-when-requested"></a>SAML SSO unterstützt jetzt Apps, bei denen „SPNameQualifier“ nach Aufforderung festgelegt werden muss.
+
+**Typ:** Korrigiert  
+**Dienstkategorie:** Unternehmens-Apps  
+**Produktfunktion:** SSO
+ 
+Einige SAML-Anwendungen erfordern, dass „SPNameQualifier“ bei Anforderung im Assertionbetreff zurückgegeben wird. Nun antwortet Azure AD ordnungsgemäß, wenn ein „SPNameQualifier“ in der Anforderungs-NameID-Richtlinie angefordert wird. Dies funktioniert auch für die SP-initiierte Anmeldung, und die IDP-initiierte Anmeldung folgt.  Weitere Informationen zum SAML-Protokoll in Azure Active Directory finden Sie unter [SAML-Protokoll für einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol).
+
+---
+
+### <a name="azure-ad-b2b-collaboration-supports-inviting-msa-and-google-users-in-azure-government-tenants"></a>Azure AD B2B Collaboration unterstützt das Einladen von MSA- und Google-Benutzern in Azure Government-Mandanten.
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** B2B  
+**Produktfunktion:** B2B/B2C
+ 
+
+Azure Government-Mandanten, die die B2B-Zusammenarbeitsfunktionen verwenden, können Benutzer jetzt mit einem Microsoft- oder Google-Konto einladen. Um festzustellen, ob Ihr Mandant diese Funktionen nutzen kann, befolgen Sie die Anweisungen unter [Wie kann ich erkennen, ob die B2B-Zusammenarbeit in meinem Mandanten der Azure-Cloud für US-Behörden verfügbar ist?](https://docs.microsoft.com/azure/active-directory/b2b/current-limitations#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant).
+
+ 
+---
+ 
+### <a name="user-object-in-ms-graph-v1-now-includes-externaluserstate-and-externaluserstatechangeddatetime-properties"></a>Das Benutzerobjekt in MS Graph v1 enthält nun die Eigenschaften „externalUserState“ und „externalUserStateChangedDateTime“.
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** B2B  
+**Produktfunktion:** B2B/B2C
+ 
+
+Die Eigenschaften „externalUserState“ und „externalUserStateChangedDateTime“ können zum Auffinden von eingeladenen B2B-Gäste verwendet werden, die ihre Einladungen noch nicht akzeptiert haben, sowie zur Automatisierung wie etwa zum Löschen von Benutzern, die ihre Einladungen nach einigen Tagen nicht akzeptiert haben. Diese Eigenschaften sind jetzt in MS Graph v1 verfügbar. Anleitungen zur Verwendung dieser Eigenschaften finden Sie unter [Benutzerressourcentyp](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0).
+ 
+---
+
+### <a name="manage-authentication-sessions-in-azure-ad-conditional-access-is-now-generally-available"></a>Verwalten von Authentifizierungssitzungen im bedingten Azure AD-Zugriff ist jetzt allgemein verfügbar
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Bedingter Zugriff  
+**Produktfunktion:** Identitätssicherheit und -schutz
+ 
+Die Verwaltungsfunktionen für Authentifizierungssitzungen erlauben es Ihnen, zu konfigurieren, wie oft Ihre Benutzer Anmeldeinformationen bereitstellen müssen und ob sie Anmeldeinformationen nach dem Schließen und erneuten Öffnen des Browsers angeben müssen, um mehr Sicherheit und Flexibilität in Ihrer Umgebung zu erreichen.
+ 
+Zusätzlich wurde die Verwaltung von Authentifizierungssitzungen bisher nur für die einstufige Authentifizierung auf Geräten angewendet, die in Azure AD oder Azure AD Hybrid eingebunden und bei Azure AD registriert waren. Jetzt gilt die Verwaltung von Authentifizierungssitzungen auch für MFA. Weitere Informationen finden Sie unter [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---june-2020"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – Juni 2020
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Unternehmens-Apps  
+**Produktfunktion:** Integration von Drittanbieterprodukten
+ 
+Im Juni 2020 haben wir die folgenden 29 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
+
+[Shopify Plus](https://docs.microsoft.com/azure/active-directory/saas-apps/shopify-plus-tutorial), [Ekarda](https://docs.microsoft.com/azure/active-directory/saas-apps/ekarda-tutorial), [MailGates](https://docs.microsoft.com/azure/active-directory/saas-apps/mailgates-tutorial), [BullseyeTDP](https://docs.microsoft.com/azure/active-directory/saas-apps/bullseyetdp-tutorial), [Raketa](https://docs.microsoft.com/azure/active-directory/saas-apps/raketa-tutorial), [Segment](https://docs.microsoft.com/azure/active-directory/saas-apps/segment-tutorial), [Ai Auditor](https://www.mindbridge.ai/products/ai-auditor/), [Pobuca Connect](https://app.pobu.ca/), [Proto.io](https://docs.microsoft.com/azure/active-directory/saas-apps/proto.io-tutorial), [Gatekeeper](https://www.gatekeeperhq.com/), [Hub Planner](https://docs.microsoft.com/azure/active-directory/saas-apps/hub-planner-tutorial), [Ansira-Partner Go-to-Market Toolbox](https://ansira.com/technology/channel-engagement), [IBM Digital Business Automation on Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/ibm-digital-business-automation-on-cloud-tutorial), [Kisi Physical Security](https://docs.microsoft.com/azure/active-directory/saas-apps/kisi-physical-security-tutorial), [ViewpointOne](https://team.viewpoint.com/), [IntelligenceBank](https://docs.microsoft.com/azure/active-directory/saas-apps/intelligencebank-tutorial), [pymetrics](https://docs.microsoft.com/azure/active-directory/saas-apps/pymetrics-tutorial), [Zero](https://www.teamzero.com/), [InStation](https://instation.invillia.com/), [edX for Business SAML 2.0 Integration](https://docs.microsoft.com/azure/active-directory/saas-apps/edx-for-business-saml-integration-tutorial), [MOOC Office 365](https://mooc.office365-training.com/en/), [SmartKargo](https://docs.microsoft.com/azure/active-directory/saas-apps/smartkargo-tutorial), [PKIsigning-Plattform](https://platform.pkisigning.nl/), [SiteIntel](https://docs.microsoft.com/azure/active-directory/saas-apps/siteintel-tutorial), [Field iD](https://docs.microsoft.com/azure/active-directory/saas-apps/field-id-tutorial), [Curricula SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/curricula-saml-tutorial), [Perforce Helix Core - Helix Authentication Service](https://docs.microsoft.com/azure/active-directory/saas-apps/perforce-helix-core-tutorial), [MyCompliance Cloud](https://cloud.metacompliance.com/), [Smallstep SSH](https://smallstep.com/sso-ssh/)  
+
+Die Dokumentation zu allen Anwendungen finden Sie auch hier: https://aka.ms/AppsTutorial. Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie hier: https://aka.ms/AzureADAppRequest.
+
+---
+
+### <a name="api-connectors-for-external-identities-self-service-sign-up-are-now-in-public-preview"></a>API-Connectors für die Self-Service-Registrierung für externe Identitäten befinden sich jetzt in der öffentlichen Vorschau.
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** B2B  
+**Produktfunktion:** B2B/B2C
+ 
+API-Connectors für externe Identitäten ermöglichen es Ihnen, Web-APIs zu nutzen, um die Self-Service-Registrierung für externe Cloudsysteme zu integrieren. Dies bedeutet, dass Sie jetzt Web-APIs als spezifische Schritte in einem Registrierungsablauf aufrufen können, um cloudbasierte benutzerdefinierte Workflows auszulösen. Beispielsweise können Sie mit API-Connectors folgende Aktionen ausführen:
+
+- Integrieren in einen benutzerdefinierten Genehmigungsworkflow
+- Durchführen eines Identitätsnachweises
+- Überprüfen von Benutzereingabedaten
+- Überschreiben von Benutzerattributen
+- Ausführen von benutzerdefinierter Geschäftslogik
+
+Weitere Informationen zu allen Möglichkeiten von API-Connectors finden Sie unter [Verwenden von API-Connectors zum Anpassen und Erweitern der Self-Service-Registrierung](https://docs.microsoft.com/azure/active-directory/b2b/api-connectors-overview) oder [Anpassen der Self-Service-Registrierung für externe Identitäten mit Web-API-Integrationen](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-external-identities-self-service-sign-up-with-web-api/ba-p/1257364#.XvNz2fImuQg.linkedin).
+ 
+---
+
+### <a name="provision-on-demand-and-get-users-into-your-apps-in-seconds"></a>Bedarfsgesteuertes Bereitstellen und Bereitstellen von Benutzern in Ihren Apps in Sekundenschnelle
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** App-Bereitstellung  
+**Produktfunktion:** Identity Lifecycle Management
+ 
+Der Azure AD-Bereitstellungsdienst wird zurzeit zyklisch betrieben. Der Dienst wird alle 40 Minuten ausgeführt. Mit der [bedarfsorientierten Bereitstellung](https://aka.ms/provisionondemand) können Sie einen Benutzer auswählen und in wenigen Sekunden bereitstellen. Mit dieser Funktion können Sie Probleme bei der Bereitstellung schnell beheben, ohne dass ein Neustart erforderlich ist, um einen erneuten Start des Bereitstellungsprozesses zu erzwingen. 
+ 
+---
+
+### <a name="new-permission-for-using-azure-ad-entitlement-management-in-graph"></a>Neue Berechtigung zum Verwenden der Azure AD-Berechtigungsverwaltung in Graph
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Andere  
+**Produktfunktion:** Berechtigungsverwaltung
+ 
+Die neue delegierte Berechtigung „EntitlementManagement.Read.All“ ist jetzt für die Verwendung mit der Berechtigungsverwaltungs-API in Microsoft Graph Beta verfügbar. Weitere Informationen zu den verfügbaren APIs finden Sie unter [Arbeiten mit der Azure AD-Berechtigungsverwaltungs-API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta).
+
+---
+
+### <a name="identity-protection-apis-available-in-v10"></a>In v1.0 verfügbare Identity Protection-APIs
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Schutz der Identität (Identity Protection)  
+**Produktfunktion:** Identitätssicherheit und -schutz
+ 
+Die Microsoft Graph-APIs „riskyUsers“ und „riskDetections“ sind jetzt allgemein verfügbar. Nachdem sie nun am v 1.0-Endpunkt verfügbar sind, laden wir Sie ein, sie in der Produktion zu verwenden. Weitere Informationen finden Sie unter [Microsoft Graph-Dokumente](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0).
+ 
+---
+
+### <a name="sensitivity-labels-to-apply-policies-to-microsoft-365-groups-is-now-generally-available"></a>Vertraulichkeitsbezeichnungen zum Anwenden von Richtlinien auf Microsoft 365-Gruppen sind jetzt allgemein verfügbar
+
+**Typ:** Neues Feature  
+**Dienstkategorie:** Gruppenverwaltung  
+**Produktfunktion:** Zusammenarbeit
+ 
+
+Sie können jetzt Vertraulichkeitsbezeichnungen erstellen und mithilfe der Bezeichnungseinstellungen Richtlinien auf Microsoft 365-Gruppen anwenden, einschließlich Richtlinien für den Datenschutz (öffentlich oder privat) und den externen Benutzerzugriff. Sie können eine Bezeichnung mit der Datenschutzrichtlinie erstellen, die privat ist, und eine Richtlinie für den externen Benutzerzugriff, damit das Hinzufügen von Gastbenutzern nicht zulässig ist. Wenn ein Benutzer diese Bezeichnung auf eine Gruppe anwendet, ist die Gruppe privat, und es dürfen keine Gastbenutzer zur Gruppe hinzugefügt werden. 
+
+Vertraulichkeitsbezeichnungen sind wichtig, um Ihre unternehmenskritischen Daten zu schützen und Gruppen im großen Stil compliant und sicher zu verwalten. Informationen zum Verwenden von Vertraulichkeitsbezeichnungen finden Sie unter [Zuweisen von Vertraulichkeitsbezeichnungen zu Office 365-Gruppen in Azure Active Directory (Vorschau)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels).
+ 
+---
+
+### <a name="updates-to-support-for-microsoft-identity-manager-for-azure-ad-premium-customers"></a>Aktualisierungen für die Unterstützung von Microsoft Identity Manager für Azure AD Premium-Kunden
+
+**Typ:** Geändertes Feature  
+**Dienstkategorie:** Microsoft Identity Manager  
+**Produktfunktion:** Identity Lifecycle Management
+ 
+Der Azure-Support ist jetzt für Azure AD-Integrationskomponenten von Microsoft Identity Manager 2016 verfügbar, und zwar bis zum Ende des erweiterten Supports für Microsoft Identity Manager 2016. Weitere Informationen finden Sie unter [Supportupdate für Azure AD Premium-Kunden, die Microsoft Identity Manager verwenden](https://docs.microsoft.com/microsoft-identity-manager/support-update-for-azure-active-directory-premium-customers).
+
+---
+
+### <a name="the-use-of-group-membership-conditions-in-sso-claims-configuration-is-increased"></a>Die Verwendung von Bedingungen für Gruppenmitgliedschaften bei der Konfiguration von SSO-Ansprüchen wurde erweitert
+
+**Typ:** Geändertes Feature  
+**Dienstkategorie:** Unternehmens-Apps  
+**Produktfunktion:** SSO
+ 
+Bisher war die Anzahl der Gruppen, die Sie verwenden können, wenn Sie Ansprüche basierend auf der Gruppenmitgliedschaft in einer einzelnen Anwendungskonfiguration bedingt ändern, auf 10 beschränkt. Die Verwendung von Bedingungen für Gruppenmitgliedschaften bei der Konfiguration von SSO-Ansprüchen ist auf maximal 50 Gruppen gestiegen. Weitere Informationen zum Konfigurieren von Ansprüchen finden Sie unter [Konfiguration von SSO-Ansprüchen für Unternehmensanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#emitting-claims-based-on-conditions). 
+
+---
+
+### <a name="enabling-basic-formatting-on-the-sign-in-page-text-component-in-company-branding"></a>Aktivieren der grundlegenden Formatierung im Text der Anmeldeseite im Unternehmensbranding
+
+**Typ:** Geändertes Feature  
+**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Produktfunktion:** Benutzerauthentifizierung
+ 
+Die Unternehmensbrandingfunktion für die Azure AD-/Microsoft 365-Anmeldung wurde aktualisiert, damit der Kunde Hyperlinks und einfache Formatierungen hinzufügen kann, einschließlich fett, unterstrichen und kursiv. Anweisungen zur Verwendung dieser Funktion erhalten Sie unter [Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation](https://docs.microsoft.com/azure/active-directory/fundamentals/customize-branding).
+
+---
+
+### <a name="provisioning-performance-improvements"></a>Leistungsverbesserungen bei der Bereitstellung
+
+**Typ:** Geändertes Feature  
+**Dienstkategorie:** App-Bereitstellung  
+**Produktfunktion:** Identity Lifecycle Management
+ 
+Der Bereitstellungsdienst wurde aktualisiert, um die Zeit bis zum Abschluss eines [inkrementellen Zyklus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#incremental-cycles) zu verkürzen. Das bedeutet, dass Benutzer und Gruppen in ihren Anwendungen schneller bereitgestellt werden als zuvor. Alle neuen Bereitstellungsaufträge, die nach dem 10.06.2020 erstellt werden, profitieren automatisch von den Leistungsverbesserungen. Alle Anwendungen, die für die Bereitstellung vor dem 10.06.2020 konfiguriert wurden, müssen nach dem 10.06.2020 einmal neu gestartet werden, um die Leistungsverbesserungen zu nutzen. 
+
+---
+
+### <a name="announcing-the-deprecation-of-adal-and-ms-graph-parity"></a>Ankündigung der Veraltung der Parität von ADAL und MS Graph
+
+**Typ:** Als veraltet markiert  
+**Dienstkategorie:** –  
+**Produktfunktion:** Lebenszyklusverwaltung für Geräte
+
+Nachdem die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) nun verfügbar ist, werden die Sicherheitspatches für die Azure Active Directory-Authentifizierungsbibliothek (Azure Active Directory Authentication Library, ADAL) ab dem 30.06.2022 eingestellt. Weitere Informationen zur Migration zu MSAL finden Sie unter [Migrieren von Anwendungen zu Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-migration).
+
+Außerdem haben wir die Arbeit abgeschlossen, um alle Azure AD Graph-Funktionen über MS Graph verfügbar zu machen. Daher erhalten Azure AD Graph-APIs bis zum 30.06.2022 nur Fehlerbehebungen und Sicherheitskorrekturen. Weitere Informationen finden Sie unter [Aktualisieren Ihrer Anwendungen für die Verwendung von Microsoft Authentication Library und der Microsoft Graph-API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
+ 
+---
+ 
 ## <a name="may-2020"></a>Mai 2020
+
+### <a name="retirement-of-properties-in-signins-riskyusers-and-riskdetections-apis"></a>Außerbetriebnahme von Eigenschaften in signIns-, riskyUsers- und riskDetections-APIs
+
+**Typ:** Plan für Änderung  
+**Dienstkategorie:** Schutz der Identität (Identity Protection)  
+**Produktfunktion:** Identitätssicherheit und -schutz
+
+Derzeit werden Aufzählungstypen verwendet, um die Eigenschaft „riskType“ in der riskDetections-API und in „riskyUserHistoryItem“ (Vorschauversion) darzustellen. Aufzählungstypen werden auch für die riskEventTypes-Eigenschaft in der signIns-API verwendet. In Zukunft werden diese Eigenschaften als Zeichenfolgen dargestellt. 
+
+Kunden müssen bis zum 09.09.2020 auf die riskEventType-Eigenschaft in der riskDetections-API (Betaversion) und der riskyUserHistoryItem-API wechseln und auf die riskEventTypes_v2-Eigenschaft in der signIns-API (Betaversion) 2020 umstellen. Zu diesem Zeitpunkt werden die aktuellen Eigenschaften „riskType“ und „riskEventTypes“ zurückgezogen. Weitere Informationen finden Sie unter [Änderungen an Risikoereigniseigenschaften und Identitätsschutz-APIs auf Microsoft Graph](https://developer.microsoft.com/graph/blogs/changes-to-risk-event-properties-and-identity-protection-apis-on-microsoft-graph/).
+
+--- 
+
+### <a name="deprecation-of-riskeventtypes-property-in-signins-v10-api-on-microsoft-graph"></a>Veraltung der riskEventTypes-Eigenschaft in der signIns v 1.0-API auf Microsoft Graph
+
+**Typ:** Plan für Änderung  
+**Dienstkategorie:** Berichterstellung  
+**Produktfunktion:** Identitätssicherheit und -schutz
+
+Aufzählungstypen wechseln zu Zeichenfolgentypen, wenn sie im September 2020 Risikoereigniseigenschaften in Microsoft Graph darstellen. Diese Änderung wirkt sich nicht nur auf die Vorschau-APIs aus, sondern auch auf die signIns-API in der Produktion.
+
+Wir haben eine neue riskEventsTypes_v2 (string)-Eigenschaft für die signIns v1.0-API eingeführt. Wir werden die aktuelle riskEventTypes (enum)-Eigenschaft am 11.06.2022 in Übereinstimmung mit der Veraltungsrichtlinie für Microsoft Graph zurückziehen. Kunden müssen bis zum 11.06.2022 zur riskEventTypes_v2-Eigenschaft der v 1.0-signins-API wechseln. Weitere Informationen finden Sie unter [Veraltung der riskEventTypes-Eigenschaft in der signIns v 1.0-API auf Microsoft Graph](https://developer.microsoft.com/graph/blogs/deprecation-of-riskeventtypes-property-in-signins-v1-0-api-on-microsoft-graph//).
+
+--- 
 
 ### <a name="upcoming-changes-to-mfa-email-notifications"></a>Bevorstehende Änderungen an MFA-E-Mail-Benachrichtigungen
 
@@ -48,10 +259,9 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert. Wenn S
 **Produktfunktion:** Identitätssicherheit und -schutz
  
 
-Wir nehmen die folgenden Änderungen an den MFA-E-Mail-Benachrichtigungen für Cloud-MFA und MFA-Server vor:
+Wir nehmen die folgenden Änderungen an den MFA-E-Mail-Benachrichtigungen für MFA vor:
 
-E-Mail-Benachrichtigungen werden von folgender Adresse gesendet: azure-noreply@microsoft.com.
-Wir aktualisieren den Inhalt von E-Mails mit Betrugswarnungen, um die erforderlichen Schritte zum Entsperren von Verwendungen besser anzugeben.
+E-Mail-Benachrichtigungen werden von den folgenden Adressen gesendet: azure-noreply@microsoft.com und msonlineservicesteam@microsoftonline.com. Wir aktualisieren den Inhalt von E-Mails mit Betrugswarnungen, um die erforderlichen Schritte zum Entsperren von Verwendungen besser anzugeben.
 
 ---
 
@@ -72,7 +282,7 @@ Derzeit können Benutzer, die sich in Azure AD-Verbunddomänen befinden, aber n
 **Dienstkategorie:** Sovereign Clouds  
 **Produktfunktion:** Benutzerauthentifizierung
  
-Ab Juni gibt das OIDC-Ermittlungsdokument [Microsoft Identity Platform und das OpenID Connect-Protokoll](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) auf dem [Azure Government-Cloud](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)-Endpunkt (login.microsoftonline.us) den richtigen [Nationale Cloudbereitstellungen](https://docs.microsoft.com/graph/deployments)-Endpunkt (https://graph.microsoft.us oder https://dod-graph.microsoft.us0) auf Basis des bereitgestellten Mandanten zurück.  Derzeit wird der falsche Graph-Endpunkt (graph.microsoft.com) „msgraph_host“-Feld angezeigt.  
+Ab Juni gibt das OIDC-Ermittlungsdokument [Microsoft Identity Platform und das OpenID Connect-Protokoll](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) auf dem [Azure Government-Cloud](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)-Endpunkt (login.microsoftonline.us) den richtigen [Nationale Cloudbereitstellungen](https://docs.microsoft.com/graph/deployments)-Endpunkt (https://graph.microsoft.us oder https://dod-graph.microsoft.us) auf Basis des bereitgestellten Mandanten zurück.  Derzeit wird der falsche Graph-Endpunkt (graph.microsoft.com) „msgraph_host“-Feld angezeigt.  
 
 Diese Fehlerbehebung wird schrittweise über ungefähr 2 Monate hinweg eingeführt.  
 
@@ -98,7 +308,6 @@ Diese Änderung wird schrittweise eingeführt, wobei die Erzwingung für alle Ap
 **Dienstkategorie:** Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
-
 Wenn ein Benutzer auf die Abmeldung klickt (z. B. im MyApps-Portal), sendet Azure AD eine SAML-Nachricht für einmaliges Abmelden an jede App, die in der Benutzersitzung aktiv ist und für die eine Abmelde-URL konfiguriert ist. Diese Nachrichten enthalten eine NameID in einem persistenten Format.
 
 Wenn das ursprüngliche SAML-Anmeldetoken ein anderes Format für die NameID verwendete (z. B. email/UPN), konnte die SAML-App die NameID in der Abmeldenachricht nicht mit einer vorhandenen Sitzung korrelieren (da sich die in beiden Nachrichten verwendeten NameIDs unterschieden), was dazu führte, dass die Abmeldenachricht von der SAML-App verworfen wurde und der Benutzer angemeldet bleiben musste. Diese Korrektur bewirkt, dass die Abmeldenachricht mit der für die Anwendung konfigurierten NameID konsistent ist.
@@ -111,7 +320,6 @@ Wenn das ursprüngliche SAML-Anmeldetoken ein anderes Format für die NameID ver
 **Dienstkategorie:** Azure AD-Cloudbereitstellung  
 **Produktfunktion:** Identity Lifecycle Management
  
-
 IT-Administratoren können jetzt die neue „Hybridadministrator“-Rolle als am wenigsten privilegierte Rolle zum Einrichten der Azure ADConnect-Cloudbereitstellung verwenden. Mit dieser neuen Rolle ist es nicht mehr erforderlich, die Rolle „Globaler Administrator“ zum Einrichten und Konfigurieren der Cloudbereitstellung zu verwenden. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-by-task#connect)
  
 ---
@@ -990,42 +1198,3 @@ Identity Protection wurde um zwei neue, mit der Anmeldung verknüpfte Erkennungs
  
 Ab dem 8. Februar 2020 fügt der Dienst ein leeres Fragment an die Anforderung an, wenn eine Anforderung an login.microsoftonline.com gesendet wird, um einen Benutzer anzumelden.  Dadurch wird eine Klasse von Umleitungsangriffen verhindert, indem sichergestellt wird, dass der Browser jedes vorhandene Fragment in der Anforderung bereinigt. Keine Anwendung sollte eine Abhängigkeit von diesem Verhalten aufweisen. Weitere Informationen finden Sie unter [Breaking Changes](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) in der Dokumentation zu Microsoft Identity Platform.
 
----
-
-## <a name="december-2019"></a>Dezember 2019
-
-### <a name="integrate-sap-successfactors-provisioning-into-azure-ad-and-on-premises-ad-public-preview"></a>Integrieren der SAP SuccessFactors-Bereitstellung in Azure AD und lokale AD-Instanzen (Public Preview)
-
-**Typ:** Neues Feature  
-**Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Identity Lifecycle Management
-
-Nun können Sie SAP SuccessFactors als autorisierende Identitätsquelle in Azure AD integrieren. Diese Integration unterstützt Sie bei der Automatisierung des gesamten Identitätslebenszyklus, einschließlich der Verwendung HR-basierter Ereignissen wie Neueinstellungen oder Kündigungen, um die Bereitstellung von Azure AD-Konten zu steuern.
-
-Weitere Informationen zur Einrichtung der eingehenden SAP SuccessFactors-Bereitstellung in Azure AD finden Sie im Tutorial [Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors zu Active Directory](https://aka.ms/SAPSuccessFactorsInboundTutorial).
-
----
-
-### <a name="support-for-customized-emails-in-azure-ad-b2c-public-preview"></a>Unterstützung für angepasste E-Mails in Azure AD B2C (Public Preview)
-
-**Typ:** Neues Feature  
-**Dienstkategorie:** B2C – Verwaltung von Endbenutzeridentitäten  
-**Produktfunktion:** B2B/B2C
-
-Mit Azure AD B2C können Sie nun angepasste E-Mails erstellen, wenn Ihre Benutzer sich für Ihre Apps registrieren. Mithilfe von Anzeigesteuerelementen (Vorschauversion) und einem E-Mail-Drittanbieter wie [SendGrid](https://sendgrid.com/), [SparkPost](https://sparkpost.com/) oder einer benutzerdefinierten REST-API können Sie eigene Vorlagen, **Absenderadressen** und Betrefftexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für einmalige Kennwörter unterstützt.
-
-Weitere Informationen finden Sie unter [Benutzerdefinierte E-Mail-Überprüfung in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-email).
-
----
-
-### <a name="replacement-of-baseline-policies-with-security-defaults"></a>Ersetzung von Baselinerichtlinien durch Sicherheitsstandards
-
-**Typ:** Geändertes Feature  
-**Dienstkategorie:** Andere  
-**Produktfunktion:** Identitätssicherheit und -schutz
-
-Als Teil eines standardmäßig sicheren Authentifizierungsmodells werden die vorhandenen Baselineschutzrichtlinien aus allen Mandanten entfernt. Diese Entfernung soll bis Ende Februar abgeschlossen sein. Sicherheitsstandards sind der Ersatz für diese Baselineschutzrichtlinien. Wenn Sie Baselineschutzrichtlinien verwenden, müssen Sie die Umstellung auf die neue Richtlinie mit Sicherheitsstandards oder den bedingten Zugriff planen. Wenn Sie diese Richtlinien nicht verwendet haben, müssen Sie keine Maßnahmen ergreifen.
-
-Weitere Informationen zu den neuen Sicherheitsstandards finden Sie unter [Was sind Sicherheitsstandards?](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults). Weitere Informationen über Richtlinien für den bedingten Zugriff finden Sie unter [Allgemeine Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common).
-
----

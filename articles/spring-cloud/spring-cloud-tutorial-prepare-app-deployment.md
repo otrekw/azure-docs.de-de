@@ -1,17 +1,17 @@
 ---
 title: 'Anleitung: Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud'
-description: In diesem Thema bereiten Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud vor.
+description: Erfahren Sie, wie Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1840979fc1380f1e0d14f3a0a74eef5fa6df6538
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141862"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud
 
@@ -253,7 +253,7 @@ Schließen Sie die folgenden Abhängigkeiten vom Typ `spring-cloud-starter-sleut
 </dependency>
 ```
 
- Darüber hinaus müssen Sie eine Azure Application Insights-Instanz für die Verwendung mit der Azure Spring Cloud-Dienstinstanz aktivieren. Eine Anleitung für die Verwendung von Application Insights mit Azure Spring Cloud finden Sie im [Tutorial zur verteilten Ablaufverfolgung](spring-cloud-tutorial-distributed-tracing.md).
+ Darüber hinaus müssen Sie eine Azure Application Insights-Instanz für die Verwendung mit der Azure Spring Cloud-Dienstinstanz aktivieren. Informationen zur Verwendung von Application Insights mit Azure Spring Cloud finden Sie in der [Dokumentation zur verteilten Ablaufverfolgung](spring-cloud-tutorial-distributed-tracing.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Analysieren von Anwendungsprotokollen und -metriken](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
@@ -264,9 +264,6 @@ Schließen Sie die folgenden Abhängigkeiten vom Typ `spring-cloud-starter-sleut
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Thema haben Sie erfahren, wie Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud konfigurieren. Informationen zum Einrichten einer Konfigurationsserverinstanz finden Sie im folgenden Artikel:
-
-> [!div class="nextstepaction"]
-> [Tutorial: Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst](spring-cloud-tutorial-config-server.md)
+In diesem Thema haben Sie erfahren, wie Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud konfigurieren. Informationen zum Einrichten einer Konfigurationsserverinstanz finden Sie unter [Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst](spring-cloud-tutorial-config-server.md).
 
 Weitere Beispiele finden Sie auf GitHub: [Azure Spring Cloud-Beispiele](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

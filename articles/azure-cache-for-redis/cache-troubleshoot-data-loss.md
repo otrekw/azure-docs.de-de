@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699220"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184530"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problembehandlung bei Datenverlust in Azure Cache for Redis
 
@@ -23,11 +23,11 @@ In diesem Artikel wird erläutert, wie Sie tatsächliche oder erkannte Datenverl
 
 ## <a name="partial-loss-of-keys"></a>Partieller Verlust von Schlüsseln
 
-Azure Cache for Redis löscht Schlüssel nicht nach dem Zufallsprinzip, nachdem sie im Arbeitsspeicher gespeichert wurden. Es löscht Schlüssel jedoch als Reaktion auf Ablauf- oder Entfernungsrichtlinien sowie auf explizite Befehle zum Löschen von Schlüsseln. Auch sind Schlüssel, die in den Masterknoten in einer Azure Cache for Redis-Instanz (Tarif „Standard“ oder „Premium“) geschrieben wurden, möglicherweise nicht sofort auf einem Replikat verfügbar. Daten werden asynchron und auf nicht blockierende Weise vom Master auf das Replikat repliziert.
+Azure Cache for Redis löscht Schlüssel nicht nach dem Zufallsprinzip, nachdem sie im Arbeitsspeicher gespeichert wurden. Es löscht Schlüssel jedoch als Reaktion auf Ablauf- oder Entfernungsrichtlinien sowie auf explizite Befehle zum Löschen von Schlüsseln. Auch sind Schlüssel, die in den primären Knoten in einer Azure Cache for Redis-Instanz (Tarif „Standard“ oder „Premium“) geschrieben wurden, möglicherweise nicht sofort auf einem Replikat verfügbar. Daten werden asynchron und auf nicht blockierende Weise vom primären Knoten auf dem Replikat repliziert.
 
 Wenn Sie feststellen, dass Schlüssel aus dem Cache verschwunden sind, sollten Sie auf folgende mögliche Ursachen prüfen:
 
-| Ursache | BESCHREIBUNG |
+| Ursache | Beschreibung |
 |---|---|
 | [Ablauf von Schlüsseln](#key-expiration) | Schlüssel werden entfernt, weil für sie Timeouts festgelegt wurden. |
 | [Entfernen von Schlüsseln](#key-eviction) | Schlüssel werden bei hoher Arbeitsspeicherauslastung entfernt. |
@@ -80,13 +80,13 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchrone Replikation
 
-Jede Azure Cache for Redis-Instanz ist sowohl im Tarif „Standard“ als auch im Tarif „Premium“ mit einem Masterknoten und mindestens einem Replikat konfiguriert. Daten werden in einem Hintergrundprozess asynchron aus dem Masterknoten in ein Replikat kopiert. Auf der Website [redis.io](https://redis.io/topics/replication) wird beschrieben, wie die Redis-Datenreplikation im Allgemeinen funktioniert. In Szenarien, in denen Clients häufig in Redis schreiben, kann ein partieller Datenverlust auftreten, weil nicht garantiert werden kann, dass diese Replikation sofort ausgeführt wird. Wenn beispielsweise der Masterknoten heruntergefahren wird, *nachdem* ein Client einen Schlüssel in den Knoten geschrieben hat, aber *bevor* der Hintergrundprozess die Möglichkeit hatte, diesen Schlüssel an das Replikat zu senden, geht der Schlüssel verloren, wenn das Replikat als neuer Masterknoten verwendet wird.
+Jede Azure Cache for Redis-Instanz ist sowohl im Tarif „Standard“ als auch im Tarif „Premium“ mit einem primären Knoten und mindestens einem Replikat konfiguriert. Daten werden in einem Hintergrundprozess asynchron vom primären Knoten in ein Replikat kopiert. Auf der Website [redis.io](https://redis.io/topics/replication) wird beschrieben, wie die Redis-Datenreplikation im Allgemeinen funktioniert. In Szenarien, in denen Clients häufig in Redis schreiben, kann ein partieller Datenverlust auftreten, weil nicht garantiert werden kann, dass diese Replikation sofort ausgeführt wird. Wenn beispielsweise der primäre Knoten heruntergefahren wird, *nachdem* ein Client einen Schlüssel in den Knoten geschrieben hat, aber *bevor* der Hintergrundprozess die Möglichkeit hatte, diesen Schlüssel an das Replikat zu senden, geht der Schlüssel verloren, wenn das Replikat als neuer primärer Knoten verwendet wird.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Größerer oder kompletter Verlust von Schlüsseln
 
 Sind die meisten oder alle Schlüssel aus dem Cache verschwunden, sollten Sie auf folgende mögliche Ursachen prüfen:
 
-| Ursache | BESCHREIBUNG |
+| Ursache | Beschreibung |
 |---|---|
 | [Leeren von Schlüsseln](#key-flushing) | Schlüssel wurden manuell gelöscht. |
 | [Falsche Datenbankauswahl](#incorrect-database-selection) | Azure Cache for Redis ist so festgelegt, dass eine Nicht-Standarddatenbank verwendet wird. |
@@ -112,7 +112,7 @@ Azure Cache for Redis verwendet standardmäßig die Datenbank **db0**. Wenn Sie 
 
 Redis ist ein In-Memory-Datenspeicher. Daten verbleiben auf dem physischen oder virtuellen Computer, auf dem der Redis-Cache gehostet wird. Eine Azure Cache for Redis-Instanz im Tarif „Basic“ wird nur auf einem einzelnen virtuellen Computer (VM) ausgeführt. Wenn dieser virtuelle Computer ausfällt, gehen alle Daten verloren, die Sie im Cache gespeichert haben. 
 
-Caches der Tarife „Standard“ und „Premium“ bieten eine wesentlich höhere Resilienz vor Datenverlusten, da zwei virtuelle Computer in einer replizierten Konfiguration verwendet werden. Wenn der Masterknoten für einen solchen Cache ausfällt, übernimmt der Replikatknoten automatisch die Bereitstellung der Daten. Diese virtuellen Computer befinden sich in getrennten Domänen für Ausfälle und Updates, um das Risiko zu minimieren, dass beide gleichzeitig nicht verfügbar sind. Kommt es zu einem größeren Ausfall des Rechenzentrums, können die virtuellen Computer dennoch gemeinsam ausfallen. In diesen seltenen Fällen gehen Ihre Daten verloren.
+Caches der Tarife „Standard“ und „Premium“ bieten eine wesentlich höhere Resilienz vor Datenverlusten, da zwei virtuelle Computer in einer replizierten Konfiguration verwendet werden. Wenn der primäre Knoten für einen solchen Cache ausfällt, übernimmt der Replikatknoten automatisch die Bereitstellung der Daten. Diese virtuellen Computer befinden sich in getrennten Domänen für Ausfälle und Updates, um das Risiko zu minimieren, dass beide gleichzeitig nicht verfügbar sind. Kommt es zu einem größeren Ausfall des Rechenzentrums, können die virtuellen Computer dennoch gemeinsam ausfallen. In diesen seltenen Fällen gehen Ihre Daten verloren.
 
 Um dies zu verhindern, können Sie [Redis-Datenpersistenz](https://redis.io/topics/persistence) und [Georeplikation](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) verwenden, um den Schutz Ihrer Daten vor derartigen Infrastrukturausfällen zu erhöhen.
 

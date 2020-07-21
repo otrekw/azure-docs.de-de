@@ -3,51 +3,170 @@ title: 'Verwenden von Erstellungs- und Laufzeitschlüsseln: LUIS'
 description: Wenn Sie Language Understanding (LUIS) zum ersten Mal verwenden, müssen Sie keinen Erstellungsschlüssel erstellen. Wenn Sie die App veröffentlichen möchten und dann Ihren Laufzeitendpunkt verwenden, müssen Sie den Laufzeitschlüssel erstellen und ihn der App zuweisen.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 04/06/2020
-ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 07/07/2020
+ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344457"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144627"
 ---
 # <a name="create-luis-resources"></a>Erstellen von LUIS-Ressourcen
 
-Erstellungs- und Laufzeitressourcen stellen Authentifizierung für Ihre LUIS-App und ihren Vorhersageendpunkt bereit.
+Erstellungs- und Abfragevorhersagelaufzeit-Ressourcen ermöglichen die Authentifizierung bei Ihrer LUIS-App und bei Ihrem Vorhersageendpunkt.
 
-<a name="create-luis-service"></a>
-<a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
+<a name="azure-resources-for-luis"></a>
+<a name="programmatic-key" ></a>
+<a name="endpoint-key"></a>
+<a name="authoring-key"></a>
 
-Wenn Sie sich beim LUIS-Portal anmelden, können Sie wählen, wie Sie Ihre Arbeit fortsetzen möchten:
+## <a name="luis-resources"></a>LUIS-Ressourcen
 
-* mit einem kostenlosen [Testschlüssel](#trial-key): Es werden Erstellung und einige Vorhersageendpunktabfragen bereitgestellt.
-* eine Azure-Ressource für die [LUIS-Erstellung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
+LUIS lässt drei Arten von Azure-Ressourcen sowie eine Azure-fremde Ressource zu:
+
+|Schlüssel|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
+|--|--|--|--|
+|Erstellungsschlüssel|Sie greifen auf die Daten der Anwendung durch Erstellen, Trainieren, Veröffentlichen und Testen zu, und verwalten diese Daten auch so. Erstellen Sie einen LUIS-Erstellungsschlüssel, wenn Sie LUIS-Apps programmgesteuert erstellen möchten.<br><br>Der Zweck des `LUIS.Authoring`-Schlüssels besteht darin, Ihnen Folgendes zu ermöglichen:<br>* programmgesteuerte Verwaltung von Language Understanding-Apps und -Modellen, einschließlich Training und Veröffentlichung<br> * Steuern der Berechtigungen für die Erstellungsressource, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen.|`LUIS.Authoring`|`Cognitive Services`|
+|Abfragevorhersageschlüssel| Anforderungen von Abfragen eines Vorhersageendpunkts. Erstellen Sie einen LUIS-Vorhersageschlüssel, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Startressource zur Verfügung gestellt werden. |`LUIS`|`Cognitive Services`|
+|[Cognitive Service-Ressourcenschlüssel für mehrere Dienste](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Anforderungen von Abfragevorhersageendpunkten, die mit LUIS und anderen unterstützten Cognitive Services geteilt werden.|`CognitiveServices`|`Cognitive Services`|
+|Starter|Kostenlose Erstellung (ohne rollenbasierte Zugriffssteuerung) über das LUIS-Portal oder über APIs (einschließlich SDKs), 1.000 kostenlose Anforderungen pro Monat an Vorhersageendpunkte über per Browser, API oder SDKs|-|Keine Azure-Ressource|
+
+Nach Abschluss der Azure-Ressourcenerstellung können Sie der App im LUIS-Portal den [Schlüssel zuweisen](#assign-a-resource-to-an-app).
+
+Es ist wichtig, LUIS-Apps in den [Regionen](luis-reference-regions.md#publishing-regions) zu erstellen, in denen sie veröffentlicht und abgefragt werden sollen.
+
+## <a name="resource-ownership"></a>Ressourcenbesitz
+
+Eine Azure-Ressource (beispielsweise eine LUIS-Ressource) gehört zu dem Abonnement, das die Ressource enthält.
+
+Der Besitz einer Ressource kann wie folgt übertragen werden:
+* Übertragen des [Besitzes](../../cost-management-billing/manage/billing-subscription-transfer.md) Ihres Abonnements
+* Exportieren Sie die LUIS-App als Datei, und importieren Sie sie anschließend in einem anderen Abonnement. Die Exportfunktion finden Sie im LUIS-Portal auf der Seite **Meine Apps**.
+
+
+## <a name="resource-limits"></a>Ressourceneinschränkungen
+
+### <a name="authoring-key-creation-limits"></a>Grenzwerte für die Erstellung von Erstellungsschlüsseln
+
+Sie können bis zu 10 Erstellungsschlüssel pro Region und Abonnement erstellen.
+
+Lesen Sie unter [Schlüsselgrenzwerte](luis-limits.md#key-limits) und [Azure-Regionen](luis-reference-regions.md) nach.
+
+Veröffentlichungsregionen unterscheiden sich von Erstellungsregionen. Stellen Sie sicher, dass Sie eine App in der Erstellungsregion erstellen, die der Veröffentlichungsregion entspricht, in der sich Ihre Clientanwendung befinden soll.
+
+### <a name="key-usage-limit-errors"></a>Fehler im Zusammenhang mit dem Schlüsselnutzungslimit
+
+Nutzungslimits sind tarifabhängig.
+
+Wenn Sie Ihr TPS-Kontingent (Transaktionen pro Sekunde) überschreiten, erhalten Sie den HTTP-Fehler 429. Wenn Sie Ihr TPM-Kontingent (Transaktionen pro Monat) überschreiten, erhalten Sie den HTTP-Fehler 403.
+
+
+### <a name="reset-authoring-key"></a>Zurücksetzen des Authoringschlüssels
+
+Apps, die [zur Erstellungsressource migriert](luis-migration-authoring.md) wurden: Wurde Ihr Erstellungsschlüssel kompromittiert, setzen Sie den Schlüssel für diese Erstellungsressource im Azure-Portal auf der Seite **Schlüssel** zurück.
+
+Apps, die noch nicht migriert wurden: Der Schlüssel wird für Ihre Apps im LUIS-Portal zurückgesetzt. Wenn Sie Ihre Apps mit den Erstellungs-APIs schreiben, müssen Sie den Wert von „Ocp-Apim-Subscription-Key“ in den neuen Schlüssel ändern.
+
+### <a name="regenerate-azure-key"></a>Erneutes Generieren von Azure-Schlüsseln
+
+Generieren Sie die Azure-Schlüssel im Azure-Portal auf der Seite **Schlüssel** erneut.
+
+
+<a name="securing-the-endpoint"></a>
+
+## <a name="app-ownership-access-and-security"></a>App-Besitz, -Zugriff und -Sicherheit
+
+Eine App ist durch ihre Azure-Ressourcen definiert, die durch das Abonnement des Besitzers bestimmt sind.
+
+Sie können Ihre LUIS-App verschieben. Verwenden Sie die folgenden Dokumentationsressourcen im Azure-Portal oder in der Azure-Befehlszeilenschnittstelle:
+
+* [Move app to another LUIS authoring Azure resource](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
+* [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [Anleitung zum Verschieben von App Service-Ressourcen](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
+
+
+### <a name="contributions-from-other-authors"></a>Beiträge von anderen Autoren
+
+Apps, die [zur Erstellungsressource migriert](luis-migration-authoring.md) wurden: _Mitwirkende_ werden im Azure-Portal für die Erstellungsressource über die Seite **Zugriffssteuerung (IAM)** verwaltet. Erfahren Sie, [wie Sie einen Benutzer hinzufügen](luis-how-to-collaborate.md), indem Sie die E-Mail-Adresse des Projektmitarbeiters und die Rolle _Mitwirkender_ verwenden.
+
+Apps, die noch nicht migriert wurden: Alle _Projektmitarbeiter_ werden im LUIS-Portal über die Seite **Verwalten > Projektmitarbeiter** verwaltet.
+
+### <a name="query-prediction-access-for-private-and-public-apps"></a>Abfragevorhersagezugriff für private und öffentliche Apps
+
+Bei einer **privaten** App ist der Zugriff auf die Abfragevorhersagelaufzeit für Besitzer und Mitwirkende möglich. Für eine **öffentliche** App ist der Laufzeitzugriff für jede Person möglich, die über eine eigene Azure [Cognitive Services](../cognitive-services-apis-create-account.md)- oder [LUIS](#create-resources-in-the-azure-portal)-Laufzeitressource und die ID der öffentlichen App verfügt.
+
+Zurzeit gibt es keinen Katalog mit öffentlichen Apps.
+
+### <a name="authoring-permissions-and-access"></a>Erstellungsberechtigungen und Zugriff
+Der Zugriff auf die App aus dem [LUIS](luis-reference-regions.md#luis-website)-Portal oder über die [Erstellungs-APIs](https://go.microsoft.com/fwlink/?linkid=2092087) wird von der Azure-Erstellungsressource gesteuert.
+
+Der Besitzer und alle Mitwirkenden haben Zugriff für die Erstellung der App.
+
+|Der Zugriff für die Erstellung umfasst|Notizen|
+|--|--|
+|Hinzufügen oder Entfernen von Endpunktschlüsseln||
+|Exportieren von Versionen||
+|Exportieren von Endpunktprotokollen||
+|Importieren von Versionen||
+|Öffentlichmachen von Apps|Wenn eine App öffentlich ist, kann jede Person mit einem Erstellungs- oder Endpunktschlüssel die App abfragen.|
+|Ändern von Modellen|
+|Veröffentlichen|
+|Überprüfen von Endpunktäußerungen für das [aktive Lernen](luis-how-to-review-endpoint-utterances.md)|
+|Trainieren|
+
+<a name="prediction-endpoint-runtime-key"></a>
+
+### <a name="prediction-endpoint-runtime-access"></a>Laufzeitzugriff auf Vorhersageendpunkt
+
+Der Zugriff zum Abfragen des Vorhersageendpunkts wird von einer Einstellung auf der Seite **Anwendungsinformationen** im Abschnitt **Verwalten** gesteuert.
+
+|[Privater Endpunkt](#runtime-security-for-private-apps)|[Öffentlicher Endpunkt](#runtime-security-for-public-apps)|
+|:--|:--|
+|Für Besitzer und Mitwirkende verfügbar|Für Besitzer, Mitwirkende und alle Personen verfügbar, denen die App-ID bekannt ist|
+
+Sie können steuern, wer Ihren LUIS-Laufzeitschlüssel sieht, indem Sie ihn in einer Server-zu-Server-Umgebung aufrufen. Wenn Sie LUIS über einen Bot verwenden, ist die Verbindung zwischen dem Bot und LUIS bereits sicher. Wenn Sie den LUIS-Endpunkt direkt aufrufen, sollten Sie eine serverseitige API (z.B. als Azure-[Funktion](https://azure.microsoft.com/services/functions/)) mit kontrolliertem Zugang (z.B. [AAD](https://azure.microsoft.com/services/active-directory/)) erstellen. Wenn die serverseitige API aufgerufen und authentifiziert und die Autorisierung überprüft wurde, übergeben Sie den Aufruf an LUIS. Durch diese Strategie werden zwar Man-in-the-Middle-Angriffe nicht verhindert, sie verbirgt jedoch Ihre Schlüssel- und Endpunkt-URL vor Ihren Benutzern. Außerdem ermöglicht sie das Nachverfolgen des Zugriffs und das Hinzufügen einer Protokollierung von Endpunktantworten (beispielsweise [Application Insights](https://azure.microsoft.com/services/application-insights/)).
+
+### <a name="runtime-security-for-private-apps"></a>Laufzeitsicherheit für private Apps
+
+Die Laufzeitumgebung einer privaten App ist nur für Folgendes verfügbar:
+
+|Schlüssel und Benutzer|Erklärung|
+|--|--|
+|Erstellungsschlüssel des Besitzers| Bis zu 1.000 Endpunkttreffer|
+|Erstellungsschlüssel für Projektmitarbeiter/Mitwirkende| Bis zu 1.000 Endpunkttreffer|
+|Jeder Schlüssel, der LUIS von einem Ersteller oder Projektmitarbeiter/Mitwirkenden zugewiesen wurde|Basierend auf dem Tarif für die Schlüsselverwendung|
+
+### <a name="runtime-security-for-public-apps"></a>Laufzeitsicherheit für öffentliche Apps
+
+Wenn eine App als öffentlich konfiguriert ist, können _alle_ gültigen LUIS-Erstellungsschlüssel oder LUIS-Endpunktschlüssel Ihre App abfragen, solange der Schlüssel nicht das gesamte Endpunktkontingent verbraucht hat.
+
+Ein Benutzer, der nicht Besitzer oder Mitwirkender ist, hat nur dann Zugriff auf die Laufzeitumgebung einer öffentlichen App, wenn er die App-ID hat. LUIS verfügt nicht über einen öffentlichen _Markt_ oder eine andere Möglichkeit der Suche nach einer öffentlichen App.
+
+Eine öffentliche App wird in allen Regionen veröffentlicht, so dass ein Benutzer mit einem regionsbasierten LUIS-Ressourcenschlüssel auf die App in jeder Region zugreifen kann, die dem Ressourcenschlüssel zugeordnet ist.
+
+
+### <a name="securing-the-query-prediction-endpoint"></a>Schützen des Abfragevorhersage-Endpunkts
+
+Sie können steuern, wer Ihren LUIS-Laufzeitschlüssel für den Vorhersageendpunkt sehen kann, indem Sie ihn in einer Server-zu-Server-Umgebung aufrufen. Wenn Sie LUIS über einen Bot verwenden, ist die Verbindung zwischen dem Bot und LUIS bereits sicher. Wenn Sie den LUIS-Endpunkt direkt aufrufen, sollten Sie eine serverseitige API (z.B. als Azure-[Funktion](https://azure.microsoft.com/services/functions/)) mit kontrolliertem Zugang (z.B. [AAD](https://azure.microsoft.com/services/active-directory/)) erstellen. Wenn die serverseitige API aufgerufen und die Authentifizierung und Autorisierung überprüft wurden, übergeben Sie den Aufruf an LUIS. Durch diese Strategie werden zwar Man-in-the-Middle-Angriffe nicht verhindert, sie verbirgt jedoch Ihren Endpunkt vor Ihren Benutzern. Außerdem ermöglicht sie das Nachverfolgen des Zugriffs und das Hinzufügen einer Protokollierung von Endpunktantworten (beispielsweise [Application Insights](https://azure.microsoft.com/services/application-insights/)).
 
 <a name="starter-key"></a>
 
 ## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Anmelden beim LUIS-Portal und Beginnen mit der Erstellung
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und stimmen Sie den Nutzungsbedingungen zu.
-1. Beginnen Sie das Schreiben Ihrer LUIS-APP, indem Sie den Typ des LUIS-Erstellungsschlüssels auswählen, den Sie verwenden möchten: kostenloser Testschlüssel oder neuer Azure-LUIS-Erstellungsschlüssel.
+1. Wählen Sie für Ihre LUIS-App zunächst Ihren Azure-LUIS-Erstellungsschlüssel aus.
 
-    ![Typ der Language Understanding-Erstellungsressource auswählen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+   ![Typ der Language Understanding-Erstellungsressource auswählen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
 1. Wenn Sie die Ressourcenauswahl getroffen haben, [erstellen Sie eine neue App](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
-## <a name="trial-key"></a>Testschlüssel
 
-Der Testschlüssel (Startschlüssel) wird für Sie bereitgestellt. Er wird als Ihr Authentifizierungsschlüssel verwendet, um die Vorhersageendpunkt-Laufzeitumgebung abzufragen (bis zu 1000 Abfragen pro Monat).
-
-Der Schlüssel wird im LUIS-Portal sowohl auf der Seite **Benutzereinstellungen** als auch auf den **Verwalten -> Azure-Ressourcen**-Seiten angezeigt.
-
-Wenn Sie Ihren Vorhersageendpunkt veröffentlichen möchten, [erstellen](#create-luis-resources) Sie Erstellungs- und Vorhersagelaufzeitschlüssel, und [weisen](#assign-a-resource-to-an-app) Sie diese zu, um die Funktionalität des Startschlüssels zu ersetzen.
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
-[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
-
-## <a name="create-resources-in-azure-cli"></a>Erstellen von Ressourcen in der Azure CLI
+### <a name="create-resources-in-azure-cli"></a>Erstellen von Ressourcen in der Azure CLI
 
 Verwenden Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), um die einzelnen Ressourcen individuell zu erstellen.
 
@@ -79,7 +198,9 @@ Ressource `kind`:
     > [!Note]
     > Diese Schlüssel werden vom LUIS-Portal **nicht** verwendet, solange sie nicht im LUIS-Portal auf den **Verwalten -> Azure-Ressourcen** verwendet werden.
 
-## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Zuweisen einer Erstellungsressource im LUIS-Portal für alle Apps
+<a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
+
+### <a name="assign-resource-in-the-luis-portal"></a>Zuweisen von Ressourcen im LUIS-Portal
 
 Sie können eine Erstellungsressource für eine einzelne App oder für alle Apps in LUIS zuweisen. In der folgenden Vorgehensweise werden alle Apps einer einzelnen Erstellungsressource zugewiesen.
 
@@ -89,7 +210,7 @@ Sie können eine Erstellungsressource für eine einzelne App oder für alle Apps
 
 ## <a name="assign-a-resource-to-an-app"></a>Zuweisen einer Ressource zu einer App
 
-Mit der folgenden Vorgehensweise können Sie einer App eine einzelne Erstellungs- oder Vorhersageendpunktressource zuweisen.
+Gehen Sie wie folgt vor, um einer App eine Ressource zuzuweisen:
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie dann in der Liste **Meine Apps** eine App aus.
 1. Navigieren Sie zur Seite **Verwalten -> Azure-Ressourcen**.
@@ -99,7 +220,7 @@ Mit der folgenden Vorgehensweise können Sie einer App eine einzelne Erstellungs
 1. Wählen Sie die Registerkarte „Vorhersageressourcen“ oder „Erstellungsressource“ aus, und wählen Sie dann die Schaltfläche **Vorhersageressource hinzufügen** oder **Erstellungsressource hinzufügen** aus.
 1. Wählen Sie die Felder im Formular aus, um die richtige Ressource zu finden, und wählen Sie dann **Speichern** aus.
 
-### <a name="assign-runtime-resource-without-using-luis-portal"></a>Zuweisen einer Laufzeitressource ohne Verwendung des LUIS-Portals
+### <a name="assign-query-prediction-runtime-resource-without-using-luis-portal"></a>Zuweisen einer Abfragevorhersagelaufzeit-Ressource ohne Verwendung des LUIS-Portals
 
 Möglicherweise soll zu Automatisierungszwecken, etwa wegen einer CI/CD-Pipeline, die Zuweisung einer LUIS-Laufzeitressource zu einer LUIS-App automatisiert werden. Die folgenden Schritte müssen dazu ausgeführt werden:
 
@@ -107,7 +228,7 @@ Möglicherweise soll zu Automatisierungszwecken, etwa wegen einer CI/CD-Pipeline
 
     ![Anfordern und Empfangen eines Azure Resource Manager-Tokens](./media/luis-manage-keys/get-arm-token.png)
 
-1. Verwenden Sie das Token zum Anfordern der LUIS-Laufzeitressourcen aus verschiedenen Abonnements über die [API zum Abrufen von LUIS-Azure-Konten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), auf die Ihr Benutzerkonto Zugriff hat.
+1. Verwenden Sie das Token zum abonnementübergreifenden Anfordern der LUIS-Laufzeitressourcen über die [API zum Abrufen von LUIS-Azure-Konten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), auf die Ihr Benutzerkonto Zugriff hat.
 
     Diese POST-API erfordert folgende Einstellungen:
 
@@ -140,15 +261,6 @@ Möglicherweise soll zu Automatisierungszwecken, etwa wegen einer CI/CD-Pipeline
 
 Wenn Sie die Zuweisung einer Ressource aufheben, wird diese nicht aus Azure gelöscht. Lediglich die Verknüpfung mit LUIS wird aufgehoben.
 
-## <a name="reset-authoring-key"></a>Zurücksetzen des Authoringschlüssels
-
-**Für Apps, die zur [Erstellungsressource migriert](luis-migration-authoring.md) wurden**: Wurde Ihr Erstellungsschlüssel kompromittiert, setzen Sie den Schlüssel für diese Erstellungsressource im Azure-Portal auf der Seite **Schlüssel** zurück.
-
-**Für Apps, die noch nicht migriert wurden**: Der Schlüssel wird für Ihre Apps im LUIS-Portal zurückgesetzt. Wenn Sie Ihre Apps mit den Erstellungs-APIs schreiben, müssen Sie den Wert von „Ocp-Apim-Subscription-Key“ in den neuen Schlüssel ändern.
-
-## <a name="regenerate-azure-key"></a>Erneutes Generieren von Azure-Schlüsseln
-
-Generieren Sie die Azure-Schlüssel im Azure-Portal auf der Seite **Schlüssel** erneut.
 
 ## <a name="delete-account"></a>Konto löschen
 
@@ -192,6 +304,4 @@ Fügen Sie eine Metrikwarnung für die Metrik der **Summe der Aufrufe** für ein
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, [wie Sie Versionen verwenden](luis-how-to-manage-versions.md), um den Lebenszyklus ihrer App zu steuern.
-* Informieren Sie sich über die Konzepte, einschließlich der [Erstellungsressource](luis-concept-keys.md#authoring-key) und der [Mitwirkenden](luis-concept-keys.md#contributions-from-other-authors) für diese Ressource.
-* Erfahren Sie, wie Sie Erstellungs- und Laufzeitressourcen [erstellen](luis-how-to-azure-subscription.md).
 * Migrieren Sie zu der neuen [Erstellungsressource](luis-migration-authoring.md).

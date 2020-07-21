@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie externe Ereignisse in der Erweiterung 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262961"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165548"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Behandeln von externen Ereignissen in Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ Orchestratorfunktionen können warten und auf externe Ereignisse lauschen. Das F
 
 ## <a name="wait-for-events"></a>Warten auf Ereignisse
 
-Mit den Methoden `WaitForExternalEvent` (.NET) und `waitForExternalEvent` (JavaScript) der [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) kann eine Orchestratorfunktion asynchron auf ein externes Ereignis warten und lauschen. Die lauschende Orchestratorfunktion deklariert den *Namen* des Ereignisses und die *Form der Daten*, die sie zu empfangen erwartet.
+Mit den Methoden [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET) und `waitForExternalEvent` (JavaScript) der [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) kann eine Orchestratorfunktion asynchron auf ein externes Ereignis warten und lauschen. Die lauschende Orchestratorfunktion deklariert den *Namen* des Ereignisses und die *Form der Daten*, die sie zu empfangen erwartet.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -173,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>Senden von Ereignisse
 
-Die `RaiseEventAsync`-Methode (.NET) oder `raiseEvent`-Methode (JavaScript) der [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) sendet die Ereignisse, auf die `WaitForExternalEvent` (.NET) oder `waitForExternalEvent` (JavaScript) wartet.  Die `RaiseEventAsync`-Methode übernimmt *eventName* und *eventData* als Parameter. Die Ereignisdaten müssen JSON-serialisierbar sein.
+Mit der Methode [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.NET) oder `raiseEventAsync` (JavaScript) kann ein externes Ereignis an eine Orchestrierung gesendet werden. Diese Methoden werden durch die Bindung [Orchestrierungsclient](durable-functions-bindings.md#orchestration-client) verfügbar gemacht. Sie können auch die integrierte [HTTP-API zum Auslösen eines Ereignisses](durable-functions-http-api.md#raise-event) verwenden, um ein externes Ereignis an eine Orchestrierung zu senden.
+
+Ein ausgelöstes Ereignis enthält eine *Instanz-ID*, einen Ereignisnamen (*eventName*) und Ereignisdaten (*eventData*) als Parameter. Diese Ereignisse werden von Orchestratorfunktionen mithilfe der API `WaitForExternalEvent` (.NET) oder `waitForExternalEvent` (JavaScript) behandelt. Der Ereignisname (*eventName*) muss sowohl auf der Sende- als auch auf der Empfangsseite übereinstimmen, damit das Ereignis verarbeitet wird. Die Ereignisdaten müssen außerdem JSON-serialisierbar sein.
+
+Intern wird durch die Mechanismen von „raise event“ eine Nachricht in die Warteschlange eingereiht, die von der wartenden Orchestratorfunktion aufgegriffen wird. Falls die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht einer In-Memory-Warteschlange hinzugefügt. Wenn die Orchestrierungsinstanz später auf den *Ereignisnamen* lauscht, überprüft sie die Warteschlange auf Ereignisnachrichten.
+
+> [!NOTE]
+> Ist keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden, wird die Ereignisnachricht verworfen.
 
 Im Folgenden finden Sie eine durch eine Warteschlange ausgelöste Beispielfunktion, die ein „Genehmigungs“-Ereignis an eine Orchestratorfunktionsinstanz sendet. Die Orchestrierungsinstanz-ID stammt aus dem Text der Warteschlangennachricht.
 
@@ -209,6 +216,19 @@ Intern fügt `RaiseEventAsync` (.NET) oder `raiseEvent` (JavaScript) eine Nachri
 
 > [!NOTE]
 > Ist keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden, wird die Ereignisnachricht verworfen.
+
+### <a name="http"></a>HTTP
+
+Im Anschluss finden Sie ein Beispiel für eine HTTP-Anforderung, durch die ein Genehmigungsereignis für eine Orchestrierungsinstanz ausgelöst wird. 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+In diesem Fall ist die Instanz-ID als *MyInstanceId* hartcodiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

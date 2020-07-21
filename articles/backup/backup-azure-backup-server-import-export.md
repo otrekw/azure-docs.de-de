@@ -3,12 +3,12 @@ title: Offlinesicherung für DPM und Azure Backup Server
 description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für DPM und Azure Backup Server erläutert.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921255"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187794"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (MABS)
 
@@ -124,7 +124,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
     | Parameter | BESCHREIBUNG |
     | --- | --- |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Mit dieser obligatorischen Eingabe wird der Pfad zum Stagingspeicherort angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |
-    | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Mit dieser optionalen Eingabe wird der Pfad zur Datei mit den Azure-Veröffentlichungseinstellungen angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |
+    | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Mit dieser optionalen Eingabe wird der Pfad zur Datei mit den Azure-Veröffentlichungseinstellungen bereitgestellt. |
 
     Beim Ausführen des Befehls fordert das Hilfsprogramm die Auswahl des Azure-Importauftrags an, der den vorzubereitenden Datenträgern entspricht. Falls dem angegebenen Stagingspeicherort nur ein einzelner Importauftrag zugeordnet ist, wird ein Bildschirm wie in der folgenden Abbildung angezeigt.
 

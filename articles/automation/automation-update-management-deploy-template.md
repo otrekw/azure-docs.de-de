@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 06/10/2020
+ms.openlocfilehash: ad9029b44ffb0c98bad58bbf012eb19d084d5446
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830990"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185754"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Aktivieren der Updateverwaltung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -23,12 +23,9 @@ Sie können eine [Azure Resource Manager-Vorlage](../azure-resource-manager/temp
 * Verknüpfen des Automation-Kontos mit dem Log Analytics-Arbeitsbereich, falls nicht bereits erfolgt.
 * Aktivieren der Updateverwaltung.
 
-Die Vorlage automatisiert nicht das Aktivieren von einem oder mehreren virtuellen Computern innerhalb oder außerhalb von Azure.
+Die Vorlage automatisiert nicht die Aktivierung der Updateverwaltung auf virtuellen Azure-Computern oder virtuellen Azure-fremden Computern.
 
-Wenn Sie in Ihrem Abonnement bereits einen Log Analytics-Arbeitsbereich und ein Automation-Konto in einer unterstützten Region bereitgestellt haben, sind diese nicht verknüpft. Im Arbeitsbereich ist die Updateverwaltung nicht bereits aktiviert. Wenn Sie diese Vorlage verwenden, werden der Link erstellt und die Updateverwaltung für Ihre VMs bereitgestellt. 
-
->[!NOTE]
->Der Benutzer **nxautomation** wird bei Runbooks, die ausschließlich bei Linux-Ausführungen signiert wurden, als Teil der Updateverwaltung aktiviert.
+Wenn Sie in Ihrem Abonnement bereits einen Log Analytics-Arbeitsbereich und ein Automation-Konto in einer unterstützten Region bereitgestellt haben, sind diese nicht verknüpft. Bei Verwendung dieser Vorlage werden der Link erstellt und die Updateverwaltung bereitgestellt.
 
 ## <a name="api-versions"></a>API-Versionen
 
@@ -36,22 +33,23 @@ Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in dies
 
 | Resource | Ressourcentyp | API-Version |
 |:---|:---|:---|
-| Arbeitsbereich | workspaces | 2017-03-15-preview |
-| Automation-Konto | automation | 2015-10-31 | 
+| Arbeitsbereich | workspaces | 2020-03-01-preview |
+| Automation-Konto | automation | 2018-06-30 | 
 | Lösung | solutions | 2015-11-01-preview |
 
 ## <a name="before-using-the-template"></a>Vor dem Verwenden der Vorlage
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel das Az-Modul für Azure PowerShell verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Sollte ein Upgrade erforderlich sein, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) ausführen, um eine Verbindung mit Azure herzustellen. Bei der Azure PowerShell verwendet die Bereitstellung [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel das Az-Modul für Azure PowerShell verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Sollte ein Upgrade erforderlich sein, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) ausführen, um eine Verbindung mit Azure herzustellen. Bei der Azure PowerShell verwendet die Bereitstellung [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.1.0 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei der Azure CLI verwendet diese Bereitstellung [az group deployment create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
+Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.1.0 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Bei der Azure CLI verwendet diese Bereitstellung [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
 Die JSON-Vorlage ist so konfiguriert, dass Sie Folgendes von Ihnen anfordert:
 
-* Den Namen des Arbeitsbereichs.
-* Die Region, in der Sie den Arbeitsbereich erstellen möchten
-* Den Namen des Automation-Kontos.
-* Die Region, in der Sie das Konto erstellen möchten
+* Den Namen des Arbeitsbereichs
+* Die Region, in der der Arbeitsbereich erstellt werden soll
+* Die Aktivierung von Ressourcen- oder Arbeitsbereichsberechtigungen
+* Den Namen des Automation-Kontos
+* Die Region, in der das Konto erstellt werden soll
 
 Die JSON-Vorlage gibt einen Standardwerte für die anderen Parameter an, die wahrscheinlich als Standardkonfiguration in Ihrer Umgebung verwendet werden. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie die Vorlage in einem Azure Storage-Konto speichern. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -59,7 +57,6 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
 
 * SKU: Als Standardwert wird der neue, im Preismodell von April 2018 veröffentlichte Tarif pro GB verwendet.
 * Datenaufbewahrung: Als Standardwert werden dreißig Tage verwendet.
-* Kapazitätsreservierung: Standardwerte bis zu 100 GB
 
 >[!WARNING]
 >Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar.
@@ -114,18 +111,17 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
                 "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
             }
         },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
-            }
-        },
         "location": {
             "type": "string",
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -150,13 +146,11 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -168,7 +162,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
             "resources": [
                 {
                     "apiVersion": "2015-11-01-preview",
-                    "location": "[resourceGroup().location]",
+                    "location": "[parameters('location')]",
                     "name": "[variables('Updates').name]",
                     "type": "Microsoft.OperationsManagement/solutions",
                     "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
@@ -189,7 +183,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
         },
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [],
@@ -201,10 +195,10 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
             },
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -242,8 +236,7 @@ Wenn Sie mit Azure Automation und Azure Monitor noch nicht vertraut sind, sollte
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Wie Sie die Updateverwaltung für VMs verwenden, erfahren Sie unter [Verwalten von Updates und Patches für Ihre Azure-VMs](automation-tutorial-update-management.md).
+
 * Wenn Sie den Log Analytics-Arbeitsbereich nicht mehr benötigen, lesen Sie die Informationen unter [Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto für die Updateverwaltung](automation-unlink-workspace-update-management.md).
+
 * Informationen zum Löschen von VMs aus der Updateverwaltung finden Sie unter [Entfernen virtueller Computer aus der Updateverwaltung](automation-remove-vms-from-update-management.md).
-* Informationen zum Behandeln von Fehlern bei der Updateverwaltung finden Sie unter [Behandeln von Problemen mit der Updateverwaltung](troubleshoot/update-management.md).
-* Informationen zum Behandeln von Problemen mit dem Windows Update-Agent finden Sie unter [Beheben von Problemen mit dem Windows Update-Agent](troubleshoot/update-agent-issues.md).
-* Informationen zum Behandeln von Problemen mit dem Linux Update-Agent finden Sie unter [Beheben von Problemen mit dem Linux-Update-Agent](troubleshoot/update-agent-issues-linux.md).

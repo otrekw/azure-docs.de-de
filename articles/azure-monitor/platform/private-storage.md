@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610065"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184496"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Kundeneigene Speicherkonten für die Protokollerfassung in Azure Monitor
 
@@ -40,7 +40,7 @@ Das Speicherkonto muss die folgenden Anforderungen erfüllen:
 
 - Ressourcen in Ihrem virtuellen Netzwerk, die Protokolle in den Speicher schreiben, müssen darauf zugreifen können.
 - Es muss sich in derselben Region befinden wie der Arbeitsbereich, mit dem es verknüpft ist.
-- Durch Auswahl von *Vertrauenswürdigen MS-Diensten den Zugriff auf dieses Speicherkonto erlauben* muss Log Analytics explizit erlaubt werden, Protokolle aus dem Speicherkonto zu lesen.
+- Azure Monitor-Zugriff zulassen: Wenn Sie das Speicherkonto für den Zugriff auf ausgewählte Netzwerke einschränken möchten, stellen Sie sicher, dass Sie diese Ausnahme zulassen: *Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben*.
 
 ## <a name="process-to-configure-customer-owned-storage"></a>Prozess zum Konfigurieren eines kundeneigenen Speichers
 Wenn Sie Ihr eigenes Speicherkonto für die Erfassung verwenden möchten, verläuft der grundlegende Prozess folgendermaßen:
@@ -51,7 +51,12 @@ Wenn Sie Ihr eigenes Speicherkonto für die Erfassung verwenden möchten, verlä
 
 Links können ausschließlich über die REST-API erstellt und entfernt werden. In den folgenden Abschnitten finden Sie Details zu den einzelnen API-Anforderungen für jeden Prozess.
 
-## <a name="api-request-values"></a>Werte für API-Anforderungen
+## <a name="command-line-and-rest-api"></a>Befehlszeile und REST-API
+
+### <a name="command-line"></a>Befehlszeile
+Um verknüpfte Speicherkonten zu erstellen und zu verwalten, verwenden Sie den Befehl [az monitor log-analytics workspace linked-storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Mit diesem Befehl können Sie Speicherkonten mit einem Arbeitsbereich verknüpfen und die Verknüpfung aufheben und die verknüpften Speicherkonten auflisten.
+
+### <a name="request-and-cli-values"></a>Anforderungs- und CLI-Werte
 
 #### <a name="datasourcetype"></a>dataSourceType 
 
@@ -73,37 +78,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
-
-## <a name="get-current-links"></a>Abrufen aktueller Verknüpfungen
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Abrufen verknüpfter Speicherkonten für einen bestimmten Datenquellentyp
-
-#### <a name="api-request"></a>API-Anforderung
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Antwort 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-### <a name="get-all-linked-storage-accounts"></a>Abrufen sämtlicher verknüpfter Speicherkonten
+### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Abrufen verknüpfter Speicherkonten für alle Datenquellentypen
 
 #### <a name="api-request"></a>API-Anforderung
 
@@ -145,6 +120,34 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
         }
     ]
+}
+```
+
+
+### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Abrufen verknüpfter Speicherkonten für einen bestimmten Datenquellentyp
+
+#### <a name="api-request"></a>API-Anforderung
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
+```
+
+#### <a name="response"></a>Antwort 
+
+```json
+{
+    "properties":
+    {
+        "dataSourceType": "CustomLogs",
+        "storageAccountIds  ": 
+        [  
+            "<storage_account_resource_id_1>",
+            "<storage_account_resource_id_2>"
+        ],
+    },
+    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
+    "name": "CustomLogs",
+    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
 }
 ```
 

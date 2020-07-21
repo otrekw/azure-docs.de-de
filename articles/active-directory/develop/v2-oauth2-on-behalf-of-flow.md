@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/8/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553538"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165871"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -47,7 +47,7 @@ Die folgenden Schritte entsprechen dem OBO-Fluss und werden anhand des folgenden
 > [!NOTE]
 > In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die Downstream-API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die nachgelagerte API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden. Um zu erfahren, wie Sie dies für Ihre App einrichten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application).
 
-## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
+## <a name="middle-tier-access-token-request"></a>Zugriffstokenanforderung auf der mittleren Ebene
 
 Verwenden Sie zum Anfordern eines Zugriffstokens einen HTTP POST-Aufruf an das mandantenspezifischen Token der Microsoft Identity Platform unter Verwendung der folgenden Parameter:
 
@@ -61,12 +61,12 @@ Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gem
 
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter | type | BESCHREIBUNG |
+| Parameter | type | Beschreibung |
 | --- | --- | --- |
 | `grant_type` | Erforderlich | Typ der Tokenanforderung. Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `client_secret` | Erforderlich | Der geheime Clientschlüssel, den Sie im Azure-Portal auf der Seite „App-Registrierungen“ für Ihre App generiert haben. |
-| `assertion` | Erforderlich | Der Wert des bei der Anforderung verwendeten Tokens.  Dieses Token muss eine Zielgruppe der App haben, die diese OBO-Anforderung erstellt (durch das Feld `client-id` gekennzeichnete App). |
+| `assertion` | Erforderlich | Das Zugriffstoken, das an die API der mittleren Ebene gesendet wurde.  Dieses Token muss über einen Zielgruppenanspruch (`aud`) der App verfügen, von der diese OBO-Anforderung stammt (durch das Feld `client-id` gekennzeichnete App). Anwendungen können kein Token für eine andere App einlösen. (Wenn also beispielsweise ein Client ein für MS Graph vorgesehenes Token an eine API sendet, kann die API dieses nicht mit OBO einlösen.  Stattdessen muss das Token abgelehnt werden.)  |
 | `scope` | Erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md). |
 | `requested_token_use` | Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im OBO-Fluss muss der Wert muss auf `on_behalf_of` festgelegt werden. |
 
@@ -93,13 +93,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter | type | BESCHREIBUNG |
+| Parameter | type | Beschreibung |
 | --- | --- | --- |
 | `grant_type` | Erforderlich | Typ der Tokenanforderung Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
 | `client_id` | Erforderlich |  Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `client_assertion_type` | Erforderlich | Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
 | `client_assertion` | Erforderlich | Eine Assertion (ein JSON-Webtoken), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). |
-| `assertion` | Erforderlich | Der Wert des bei der Anforderung verwendeten Tokens. |
+| `assertion` | Erforderlich |  Das Zugriffstoken, das an die API der mittleren Ebene gesendet wurde.  Dieses Token muss über einen Zielgruppenanspruch (`aud`) der App verfügen, von der diese OBO-Anforderung stammt (durch das Feld `client-id` gekennzeichnete App). Anwendungen können kein Token für eine andere App einlösen. (Wenn also beispielsweise ein Client ein für MS Graph vorgesehenes Token an eine API sendet, kann die API dieses nicht mit OBO einlösen.  Stattdessen muss das Token abgelehnt werden.)  |
 | `requested_token_use` | Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im OBO-Fluss muss der Wert muss auf `on_behalf_of` festgelegt werden. |
 | `scope` | Erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md).|
 
@@ -125,11 +125,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Dienst-zu-Dienst-Zugriffstokenantwort
+## <a name="middle-tier-access-token-response"></a>Zugriffstokenantwort auf der mittleren Ebene
 
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern.
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | `token_type` | Gibt den Wert des Tokentyps an. Die Microsoft Identity Platform unterstützt nur den Typ `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | Der durch das Token gewährte Zugriffsbereich. |

@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006185"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186927"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -58,7 +58,7 @@ Die Speicherauthentifizierung verwendet SAS-Token, die als Geheimnisse in Schlü
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** : Ressource, die zum Aufrufen einer ExportPipeline- oder ImportPipeline-Ressource verwendet wird.  
   * Sie führen die ExportPipeline manuell aus, indem Sie eine PipelineRun-Ressource erstellen und die zu exportierenden Artefakte angeben.  
   * Wenn ein Importtrigger aktiviert ist, wird die ImportPipeline automatisch ausgeführt. Sie kann auch manuell mit einem PipelineRun-Vorgang ausgeführt werden. 
-  * Derzeit können maximal **10 Artefakte** mit jedem PipelineRun-Vorgang übertragen werden.
+  * Derzeit können pro PipelineRun-Vorgang maximal **50 Artefakte** übertragen werden.
 
 ### <a name="things-to-know"></a>Wichtige Hinweise
 * ExportPipeline und ImportPipeline befinden sich in der Regel in unterschiedlichen Active Directory-Mandanten, die mit den Quell- und Zielclouds verknüpft sind. Dieses Szenario erfordert separate verwaltete Identitäten und Schlüsseltresore für die Export- und Importressourcen. Zu Testzwecken können diese Ressourcen in derselben Cloud platziert werden und Identitäten gemeinsam nutzen.
@@ -337,7 +337,7 @@ az deployment group delete \
 * **AzCopy-Probleme**
   * Weitere Informationen finden Sie unter [Beheben von Problemen mit AzCopy](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
 * **Artefaktübertragungsprobleme**
-  * Nicht alle Artefakte (oder gar keine) werden übertragen. Überprüfen Sie die Schreibweise von Artefakten in der Exportausführung sowie den Namen des Blobs in Export- und Importausführungen. Vergewissern Sie sich, dass Sie maximal 10 Artefakte übertragen.
+  * Nicht alle Artefakte (oder gar keine) werden übertragen. Überprüfen Sie die Schreibweise von Artefakten in der Exportausführung sowie den Namen des Blobs in Export- und Importausführungen. Vergewissern Sie sich, dass Sie maximal 50 Artefakte übertragen.
   * Die Pipelineausführung wurde möglicherweise nicht abgeschlossen. Die Export- oder Importausführung kann einige Zeit in Anspruch nehmen. 
   * Stellen Sie bei anderen Pipelineproblemen dem Azure Container Registry-Team die [Korrelations-ID](../azure-resource-manager/templates/deployment-history.md) der Bereitstellung der Export- oder Importausführung zur Verfügung.
 

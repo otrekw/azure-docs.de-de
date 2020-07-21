@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655943"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156644"
 ---
 ## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
 
@@ -194,7 +194,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
 1. Geben Sie im Feld **Nach wie viel Tagen an alternative genehmigende Personen weiterleiten?** die Anzahl von Tagen ein, die Sie den genehmigenden Personen zum Genehmigen oder Ablehnen einer Anforderung einräumen. Wenn nach Ablauf der Anforderungsdauer keine der genehmigenden Personen die Anforderung genehmigt oder abgelehnt hat, läuft die Anforderung ab (Timeout), und der Benutzer muss eine weitere Anforderung für das Zugangspaket senden. 
 
-    Anforderungen können erst einen Tag nach Erreichen der Hälfte der Anforderungsdauer an alternative genehmigende Personen weitergeleitet werden. In diesem Beispiel beträgt die Dauer der Anforderung 14 Tage. Die Hälfte der Anforderungsdauer wird also an Tag 7 erreicht. Die Anforderung kann deshalb erst an Tag 8 weitergeleitet werden. Darüber hinaus können Anforderungen nicht am letzten Tag der Antragsdauer weitergeleitet werden. Im Beispiel kann die Anforderung also spätestens an Tag 13 weitergeleitet werden.
+    Anforderungen können erst einen Tag nach Erreichen der Hälfte der Anforderungsdauer an alternative genehmigende Personen weitergeleitet werden, und für die Entscheidung der Hauptgenehmiger muss ein Timeout von mindestens vier Tagen verwendet werden. Bei einem Anforderungstimeout von bis zu drei Tagen reicht die Zeit nicht aus, um die Anforderung an alternative genehmigende Personen weiterzuleiten. In diesem Beispiel beträgt die Dauer der Anforderung 14 Tage. Die Hälfte der Anforderungsdauer wird also an Tag 7 erreicht. Die Anforderung kann deshalb erst an Tag 8 weitergeleitet werden. Darüber hinaus können Anforderungen nicht am letzten Tag der Antragsdauer weitergeleitet werden. Im Beispiel kann die Anforderung also spätestens an Tag 13 weitergeleitet werden.
 
 ## <a name="enable-requests"></a>Ermöglichen von Anforderungen
 

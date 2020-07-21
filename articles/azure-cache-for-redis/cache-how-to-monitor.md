@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 86cbeddba699e89ce1127dbac72dac81dcc41449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8dd228add317b5c4cd19f1d0daefa90ce3c937b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76547488"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184870"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 
@@ -103,7 +103,7 @@ Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesa
 | Cache-Schreibvorgänge |Die Menge an Daten in Megabyte pro Sekunde (MB/s), die während des angegebenen Berichtsintervalls in den Cache geschrieben wurden. Dieser Wert wird von den Netzwerkschnittstellenkarten für die virtuelle Maschine abgeleitet, die den Cache hostet, und ist nicht Redis-spezifisch. Dieser Wert entspricht der Netzwerkbandbreite der vom Client an den Cache gesendeten Daten. |
 | Verbundene Clients |Die Anzahl von Clientverbindungen mit dem Cache während des angegebenen Berichtsintervalls. Diese Zahl ist `connected_clients` aus dem Redis-Befehl INFO zugeordnet. Sobald der [Grenzwert für Verbindungen](cache-configure.md#default-redis-server-configuration) erreicht ist, treten bei weiteren Verbindungsversuchen mit dem Cache Fehler auf. Auch wenn keine Clientanwendungen aktiv sind, können aufgrund interner Prozesse und Verbindungen dennoch einige Instanzen verbundener Clients vorhanden sein. |
 | CPU |Die CPU-Auslastung des Azure Cache for Redis-Servers in Prozent während des angegebenen Berichtsintervalls. Dieser Wert ist dem Betriebssystem-Leistungsindikator `\Processor(_Total)\% Processor Time` zugeordnet, |
-| Errors | Bestimmte Fehler und Leistungsprobleme, mit denen der Cache während eines angegebenen Berichtsintervalls konfrontiert werden könnte. Diese Metrik hat acht Dimensionen, die verschiedene Fehlertypen darstellen, könnte jedoch zukünftig mit weiteren ergänzt werden. Derzeit werden folgende Fehlertypen dargestellt: <br/><ul><li>**Failover**: Beim Failover eines Caches (untergeordnetes Element wird zum Master heraufgestuft)</li><li>**Dataloss**: Wenn Datenverlust auf dem Cache auftritt</li><li>**UnresponsiveClients**: Wenn die Clients nicht schnell genug Daten vom Server lesen</li><li>**AOF**: Wenn ein Problem im Zusammenhang mit der AOF-Persistenz auftritt</li><li>**RDB**: Wenn ein Problem im Zusammenhang mit der RDB-Persistenz auftritt</li><li>**Import**: Wenn ein Problem im Zusammenhang mit „Import RDB“ auftritt</li><li>**Export**: Wenn ein Problem im Zusammenhang mit „Export RDB“ auftritt</li></ul> |
+| Errors | Bestimmte Fehler und Leistungsprobleme, mit denen der Cache während eines angegebenen Berichtsintervalls konfrontiert werden könnte. Diese Metrik hat acht Dimensionen, die verschiedene Fehlertypen darstellen, könnte jedoch zukünftig mit weiteren ergänzt werden. Derzeit werden folgende Fehlertypen dargestellt: <br/><ul><li>**Failover**: Wenn ein Failover für einen Cache erfolgt (untergeordneter Cache wird zum primären Cache heraufgestuft)</li><li>**Dataloss**: Wenn Datenverlust auf dem Cache auftritt</li><li>**UnresponsiveClients**: Wenn die Clients nicht schnell genug Daten vom Server lesen</li><li>**AOF**: Wenn ein Problem im Zusammenhang mit der AOF-Persistenz auftritt</li><li>**RDB**: Wenn ein Problem im Zusammenhang mit der RDB-Persistenz auftritt</li><li>**Import**: Wenn ein Problem im Zusammenhang mit „Import RDB“ auftritt</li><li>**Export**: Wenn ein Problem im Zusammenhang mit „Export RDB“ auftritt</li></ul> |
 | Entfernte Schlüssel |Die Anzahl von Elementen, die aufgrund des `maxmemory` -Grenzwerts während des angegebenen Berichtsintervalls aus dem Cache entfernt wurden. Diese Zahl ist `evicted_keys` aus dem Redis-Befehl INFO zugeordnet. |
 | Abgelaufene Schlüssel |Die Anzahl von Elementen, die während des angegebenen Berichtsintervalls im Cache abgelaufen sind. Dieser Wert ist `expired_keys` aus dem Redis-Befehl „INFO“ zugeordnet.|
 | get-Vorgänge |Die Anzahl von get-Vorgängen im Cache während des angegebenen Berichtsintervalls. Dieser Wert ist die Summe der folgenden Werte aus dem Redis-INFO-Befehl "all": `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit` und `cmdstat_getrange` und entspricht der Summe aller Cachetreffer und Cachefehler während des angegebenen Berichtsintervalls. |
