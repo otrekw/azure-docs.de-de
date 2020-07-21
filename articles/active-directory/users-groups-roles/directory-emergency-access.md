@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338283"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -156,5 +156,5 @@ Diese Schritte sollten in regelmäßigen Abständen und für wichtige Änderunge
 - [Hinzufügen von Benutzern in Azure AD](../fundamentals/add-users-azure-active-directory.md) und [Zuweisen der Rolle „Globaler Administrator“ zum neuen Benutzer](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [Registrieren für Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md), sofern nicht bereits geschehen
 - [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](../authentication/howto-mfa-userstates.md)
-- [Konfigurieren zusätzlicher Schutzmechanismen für globale Administratoren in Office 365](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts) bei Verwendung von Office 365
+- [Konfigurieren zusätzlicher Schutzmechanismen für globale Administratoren in Microsoft 365](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts) bei Verwendung von Microsoft 365
 - [Starten einer Zugriffsüberprüfung für globale Administratoren](../privileged-identity-management/pim-how-to-start-security-review.md) und [Umstellen der vorhandenen globalen Administratoren auf spezifischere Administratorrollen](directory-assign-admin-roles.md)

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249702"
 ---
 # <a name="monitor-copy-activity"></a>Überwachen der Kopieraktivität
 
@@ -58,8 +58,8 @@ Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Ab
 | filesWritten | Die Anzahl von Dateien, die in die dateibasierte Senke geschrieben/committet wurden. | Int64-Wert (ohne Einheit) |
 | sourcePeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Quelldatenspeicher während der Ausführung der Kopieraktivität. | Int64-Wert (ohne Einheit) |
 | sinkPeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Senkendatenspeicher während der Ausführung der Kopieraktivität. | Int64-Wert (ohne Einheit) |
-| rowsRead | Die Anzahl der Zeilen, die aus der Quelle gelesen wurden (für Binärkopien nicht verfügbar). | Int64-Wert (ohne Einheit) |
-| rowsCopied | Die Anzahl der Zeilen, die in die Senke kopiert wurden (für Binärkopien nicht verfügbar). | Int64-Wert (ohne Einheit) |
+| rowsRead | Anzahl der aus der Quelle gelesenen Datensätze. Diese Metrik wird nicht angewendet, wenn Dateien im aktuellen Zustand kopiert werden, ohne sie zu parsen, z. B. wenn die Quellen- und Senkendatasets den Binärformattyp aufweisen oder einen anderen Formattyp mit identischen Einstellungen. | Int64-Wert (ohne Einheit) |
+| rowsCopied | Anzahl der in die Senke kopierten Datensätze. Diese Metrik wird nicht angewendet, wenn Dateien im aktuellen Zustand kopiert werden, ohne sie zu parsen, z. B. wenn die Quellen- und Senkendatasets den Binärformattyp aufweisen oder einen anderen Formattyp mit identischen Einstellungen.  | Int64-Wert (ohne Einheit) |
 | rowsSkipped | Die Anzahl der übersprungenen, nicht kompatiblen Zeilen. Nicht kompatible Zeilen können übersprungen werden, indem Sie `enableSkipIncompatibleRow` auf „true“ festlegen. | Int64-Wert (ohne Einheit) |
 | copyDuration | Die Dauer des Kopiervorgangs. | Int32-Wert in Sekunden |
 | throughput | Die Datenübertragungsrate. | Gleitkommazahl in KB/s |

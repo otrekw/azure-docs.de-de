@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829986"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039023"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problembehandlung für Synapse SQL in Azure Synapse Analytics
 
@@ -28,7 +28,7 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung in Synaps
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Fehler bei der Anmeldung für den Benutzer 'NT-AUTORITÄT\ANONYME ANMELDUNG'. (Microsoft SQL Server, Fehler: 18456) | Dieser Fehler tritt auf, wenn ein Azure AD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Benutzer in der Masterdatenbank verfügt.  Zum Beheben dieses Problems geben Sie entweder den SQL-Pool an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md) . |
 | Der Serverprinzipal „MeinBenutzername“ kann unter dem aktuellen Sicherheitskontext nicht auf die Datenbank „Master“ zugreifen. Die Standarddatenbank des Benutzers kann nicht geöffnet werden. Fehler bei der Anmeldung. Fehler bei der Anmeldung für den Benutzer 'MeinBenutzername'. (Microsoft SQL Server, Fehler: 916) | Dieser Fehler tritt auf, wenn ein Azure AD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Benutzer in der Masterdatenbank verfügt.  Zum Beheben dieses Problems geben Sie entweder den SQL-Pool an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md) . |
-| CTAIP-Fehler                                                  | Dieser Fehler kann auftreten, wenn eine Anmeldung zwar für die SQL Server-Masterdatenbank erstellt wurde, aber nicht in der SQL-Datenbank.  Lesen Sie den [Übersichtsartikel zur Sicherheit](sql-data-warehouse-overview-manage-security.md) , wenn dieser Fehler auftritt.  In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung und einen Benutzer für die Masterdatenbank erstellen und anschließend einen Benutzer in der SQL-Datenbank. |
+| CTAIP-Fehler                                                  | Dieser Fehler kann auftreten, wenn eine Anmeldung zwar für die SQL-Datenbank-Masterdatenbank erstellt wurde, aber nicht in der spezifischen SQL-Datenbank.  Lesen Sie den [Übersichtsartikel zur Sicherheit](sql-data-warehouse-overview-manage-security.md) , wenn dieser Fehler auftritt.  In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung und einen Benutzer für die Masterdatenbank erstellen und anschließend einen Benutzer in der SQL-Datenbank. |
 | Von der Firewall blockiert                                          | SQL-Pools werden durch Firewalls geschützt, um sicherzustellen, dass nur bekannte IP-Adressen auf eine Datenbank zugreifen können. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können.  Um Ihre Firewall für den Zugriff zu konfigurieren, führen Sie die in den [Bereitstellungsanweisungen](create-data-warehouse-portal.md) beschriebenen Schritte zum [Konfigurieren des Serverfirewallzugriffs für Ihre Client-IP](create-data-warehouse-portal.md) aus. |
 | Verbindung mit Tool oder Treiber kann nicht hergestellt werden                           | Synapse SQL-Pool empfiehlt die Verwendung von [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT für Visual Studio](sql-data-warehouse-install-visual-studio.md) oder [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) zum Abfragen von Daten. Weitere Informationen zu Treibern und zum Herstellen einer Verbindung mit Azure Synapse finden Sie in den Artikeln [Treiber für Azure Synapse](sql-data-warehouse-connection-strings.md) und [Herstellen einer Verbindung mit Azure Synapse](sql-data-warehouse-connect-overview.md). |
 

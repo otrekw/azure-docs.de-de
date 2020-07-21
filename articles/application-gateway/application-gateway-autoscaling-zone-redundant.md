@@ -4,16 +4,16 @@ description: In diesem Artikel werden die Standard_v2- und WAF_v2-SKU der Azure-
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 03/24/2020
+ms.topic: conceptual
+ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: ab2165cb6b48e58a7adca7093f7ff82d10495066
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254343"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -32,7 +32,7 @@ Die neue v2-SKU enthält die folgenden Verbesserungen:
 - **Leistungsverbesserungen**: Die v2-SKU bietet eine bis zu fünfmal bessere TLS-Auslagerungsleistung verglichen mit der Standard-/WAF-SKU.
 - **Schnellere Bereitstellung und Aktualisierung**: Die v2-SKU ermöglicht verglichen mit der Standard/WAF-SKU eine schnellere Bereitstellung und Aktualisierung. Dies umfasst auch Änderungen an der WAF-Konfiguration.
 
-![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+![Diagramm der Zone mit automatischer Skalierung.](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322319"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Überwachung von Metriken und Protokollen in Azure Front Door
 
@@ -88,6 +88,7 @@ Front Door stellt derzeit Diagnoseprotokolle bereit (stündlicher Batch). Diagno
 | RequestUri | URI der empfangenen Anforderung |
 | ResponseBytes | Die vom Back-End-Server als Antwort gesendeten Bytes.  |
 | RoutingRuleName | Der Name der Routingregel, der die Anforderung entspricht. |
+| RulesEngineMatchNames | Die Namen der Regeln, mit denen die Anforderung übereinstimmte. |
 | SecurityProtocol | Die TLS-/SSL-Protokollversion, die von der Anforderung verwendet wird, oder NULL, wenn keine Verschlüsselung verwendet wird. |
 | SentToOriginShield | Boolesches Feld, das angibt, ob in der ersten Umgebung ein Cachefehler aufgetreten ist und die Anforderung an den regionalen Cache gesendet wurde. Ignorieren Sie dieses Feld, wenn die Routingregel eine Umleitung ist oder wenn das Zwischenspeichern nicht aktiviert ist. |
 | TimeTaken | Die Dauer der Aktion in Millisekunden. |

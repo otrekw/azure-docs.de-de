@@ -5,22 +5,22 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 6/24/2020
+ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362124"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Überwachungsprotokolle in Azure Database for MySQL
 
 In Azure Database for MySQL ist das Überwachungsprotokoll für Benutzer verfügbar. Das Überwachungsprotokoll dient zum Nachverfolgen von Aktivitäten auf Datenbankebene und häufig zu Konformitätszwecken.
 
-> [!IMPORTANT]
-> Diese Überwachungsprotokollfunktion ist derzeit in der Vorschauphase.
-
 ## <a name="configure-audit-logging"></a>Konfigurieren der Überwachungsprotokollierung
+
+>[!IMPORTANT]
+> Es wird empfohlen, nur die Ereignistypen und Benutzer zu protokollieren, die für Ihre Überwachungszwecke erforderlich sind, um sicherzustellen, dass die Leistung Ihres Servers nicht stark beeinträchtigt wird.
 
 Das Überwachungsprotokoll ist standardmäßig deaktiviert. Um sie zu aktivieren, legen Sie `audit_log_enabled` auf ON fest.
 
@@ -28,12 +28,10 @@ Weitere Parameter, die Sie anpassen können:
 
 - `audit_log_events`: steuert die zu protokollierenden Ereignisse. In der nachstehenden Tabelle finden Sie spezifische Überwachungsereignisse.
 - `audit_log_include_users`: MySQL-Benutzer, die zur Protokollierung einbezogen werden sollen. Der Standardwert für diesen Parameter ist leer, wodurch alle Benutzer zur Protokollierung einbezogen werden. Dies hat eine höhere Priorität als `audit_log_exclude_users`. Die maximale Länge des Parameters ist 512 Zeichen.
-> [!Note]
-> `audit_log_include_users` hat eine höhere Priorität als `audit_log_exclude_users`. Wenn z. B. `audit_log_include_users` = `demouser` und `audit_log_exclude_users` = `demouser` einbezogen werden, wird der Benutzer in die Überwachungsprotokolle eingeschlossen, da `audit_log_include_users` eine höhere Priorität hat.
 - `audit_log_exclude_users`: MySQL-Benutzer, die aus der Protokollierung ausgeschlossen werden sollen. Die maximale Länge des Parameters ist 512 Zeichen.
 
-> [!Note]
-> Bei `sql_text` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
+> [!NOTE]
+> `audit_log_include_users` hat eine höhere Priorität als `audit_log_exclude_users`. Wenn z. B. `audit_log_include_users` = `demouser` und `audit_log_exclude_users` = `demouser` einbezogen werden, wird der Benutzer in die Überwachungsprotokolle eingeschlossen, da `audit_log_include_users` eine höhere Priorität hat.
 
 | **Event** | **Beschreibung** |
 |---|---|
@@ -85,6 +83,9 @@ In den folgenden Abschnitten wird beschrieben, was von MySQL-Überwachungsprotok
 
 Das unten angegebene Schema gilt für die Ereignistypen GENERAL, DML_SELECT, DML_NONSELECT, DML, DDL, DCL und ADMIN.
 
+> [!NOTE]
+> Bei `sql_text` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
+
 | **Eigenschaft** | **Beschreibung** |
 |---|---|
 | `TenantId` | Ihre Mandanten-ID |
@@ -114,7 +115,7 @@ Das unten angegebene Schema gilt für die Ereignistypen GENERAL, DML_SELECT, DML
 ### <a name="table-access"></a>Tabellenzugriff
 
 > [!NOTE]
-> Tabellenzugriffsprotokolle werden nur für MySQL 5.7 ausgegeben.
+> Tabellenzugriffsprotokolle werden nur für MySQL 5.7 ausgegeben.<br>Bei `sql_text` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
 
 | **Eigenschaft** | **Beschreibung** |
 |---|---|

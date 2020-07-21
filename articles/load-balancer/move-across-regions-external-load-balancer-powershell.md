@@ -3,15 +3,15 @@ title: Verschieben des externen Azure Load Balancers in eine andere Azure-Region
 description: Verwenden einer Azure Resource Manager-Vorlage, um den externen Azure Load Balancer mit Azure PowerShell aus einer Azure-Region in eine andere zu verschieben.
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be1971c9184d0b2b406b669ae9d1ea61598b201f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809426"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Verschieben des externen Azure Load Balancers in eine andere Region mit Azure PowerShell
 
@@ -60,7 +60,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<resource-group-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -116,7 +116,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
     ```
 8. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
 
-    * **SKU**: Sie können die SKU (Tarif) der öffentlichen IP-Adresse in der Konfiguration aus „standard“ in „basic“ oder aus „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **\<resource-group-name>.json** ändern:
+    * **SKU**: Sie können die SKU der öffentlichen IP-Adresse in der Konfiguration von „standard“ in „basic“ oder von „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **\<resource-group-name>.json** ändern:
 
          ```json
             "resources": [
@@ -209,7 +209,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceExtLBID -IncludeParameterDefaultValue
    ```
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<resource-group-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -232,7 +232,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
 
     ```
 
-6.  Wenn Sie den Wert der zuvor verschobenen öffentlichen IP-Zieladresse bearbeiten möchten, müssen Sie zunächst die Ressourcen-ID abrufen und kopieren und sie dann in die Datei **\<resource-group-name>.json** einfügen.  Um die ID abzurufen, verwenden Sie [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+6.  Wenn Sie den Wert der zuvor verschobenen öffentlichen IP-Adresse des Ziels bearbeiten möchten, müssen Sie zunächst die Ressourcen-ID abrufen, kopieren und anschließend in die Datei **\<resource-group-name>.json** einfügen.  Um die ID abzurufen, verwenden Sie [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
 
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -244,7 +244,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupLB-Move/providers/Microsoft.Network/publicIPAddresses/myPubIP-in-move
     ```
 
-7.  Fügen Sie in der Datei **\<resource-group-name>.json** die **Ressourcen-ID** aus der Variablen anstelle des **defaultValue** im zweiten Parameter als externe ID der öffentlichen IP-Adresse ein, und stellen Sie dabei sicher, dass Sie den Pfad in Anführungszeichen einschließen:
+7.  Fügen Sie in der Datei **\<resource-group-name>.json** die **Ressourcen-ID** aus der Variablen anstelle des Werts **defaultValue** im zweiten Parameter als externe ID der öffentlichen IP-Adresse ein. Stellen Sie dabei sicher, dass Sie den Pfad in Anführungszeichen einschließen:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -261,7 +261,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
 
     ```
 
-8.  Wenn Sie für den Load Balancer NAT-Ausgangsregeln konfiguriert haben, ist in dieser Datei ein dritter Eintrag für die externe ID der ausgehenden öffentlichen IP-Adresse vorhanden.  Wiederholen Sie die oben genannten Schritte in der **Zielregion**, um die ID für die ausgehende öffentliche IP-Adresse zu ermitteln, und fügen Sie diesen Eintrag in die Datei **\<resource-group-name>.json** ein:
+8.  Wenn Sie für den Load Balancer NAT-Ausgangsregeln konfiguriert haben, ist in dieser Datei ein dritter Eintrag für die externe ID der ausgehenden öffentlichen IP-Adresse vorhanden.  Wiederholen Sie die oben genannten Schritte in der **Zielregion**, um die ID der ausgehenden öffentlichen IP-Adresse zu ermitteln. Fügen Sie diesen Eintrag in die Datei **\<resource-group-name>.json** ein:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -282,7 +282,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
         },
     ```
 
-10. Zum Bearbeiten der Zielregion, in die die Konfiguration des externen Load Balancers verschoben wird, ändern Sie die Eigenschaft **location** unter **resources** in der Datei **\<resource-group-name>.json**:
+10. Ändern Sie zum Bearbeiten der Zielregion, in die die Konfiguration des externen Load Balancers verschoben wird, in der Datei **\<resource-group-name>.json** unter **resources** die Eigenschaft **location**:
 
     ```json
         "resources": [
@@ -306,7 +306,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
     ```
 12. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
     
-    * **SKU**: Sie können die SKU des externen Load Balancers in der Konfiguration aus „standard“ in „basic“ oder aus „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **\<resource-group-name>.json** ändern:
+    * **SKU**: Sie können die SKU des externen Load Balancers in der Konfiguration von „Standard“ in „Basic“ ändern (oder umgekehrt), indem Sie in der Datei **\<resource-group-name>.json** die Eigenschaft **sku** > **name** ändern:
 
         ```json
         "resources": [
@@ -322,7 +322,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
         ```
       Weitere Informationen zu den Unterschieden zwischen Load Balancern der SKU „basic“ und „standard“ finden Sie unter [Übersicht über Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
-    * **Lastausgleichsregeln**: Sie können Lastausgleichsregeln in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge zum Abschnitt **loadBalancingRules** in der Datei **\<resource-group-name>.json** hinzufügen oder sie aus ihm entfernen:
+    * **Lastenausgleichsregeln**: Sie können Lastenausgleichsregeln in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge im Abschnitt **loadBalancingRules** in der Datei **\<resource-group-name>.json** hinzufügen oder entfernen:
 
         ```json
         "loadBalancingRules": [
@@ -354,7 +354,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
         ```
        Weitere Informationen zu Lastenausgleichsregeln finden Sie unter [Was ist Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Tests**: Sie können einen Test für den Load Balancer in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge zum Abschnitt **Probes** der Datei **\<resource-group-name>.json** hinzufügen oder sie aus ihm entfernen:
+    * **Tests**: Sie können einen Test des Load Balancers in der Konfiguration hinzufügen oder entfernen, indem Sie Einträge im Abschnitt **Tests** in der Datei **\<resource-group-name>.json** hinzufügen oder entfernen:
 
         ```json
         "probes": [
@@ -374,7 +374,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
         ```
        Weitere Informationen zu Azure Load Balancer-Integritätstests finden Sie unter [Load Balancer-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-    * **NAT-Regeln für eingehenden Datenverkehr**: Sie können NAT-Regeln für eingehenden Datenverkehr für den Load Balancer hinzufügen oder entfernen, indem Sie Einträge zum Abschnitt **inboundNatRules** der Datei **\<resource-group-name>.json** hinzufügen oder sie aus ihm entfernen:
+    * **NAT-Regeln für eingehenden Datenverkehr**: Sie können NAT-Regeln für eingehenden Datenverkehr des Load Balancers hinzufügen oder entfernen, indem Sie Einträge im Abschnitt **inboundNatRules** in der Datei **\<resource-group-name>.json** hinzufügen oder entfernen:
 
         ```json
         "inboundNatRules": [
@@ -396,7 +396,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
                     }
                 ]
         ```
-        Um das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abzuschließen, muss die Regel als Eigenschaft **type** am Ende der Datei **\<resource-group-name>.json** vorhanden sein oder aus ihr entfernt werden:
+        Damit das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abgeschlossen ist, muss die Regel als Eigenschaft vom Typ **type** am Ende der Datei **\<resource-group-name>.json** vorhanden sein oder daraus entfernt werden:
 
         ```json
         {
@@ -422,7 +422,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
         ```
         Weitere Informationen zu NAT-Regeln für eingehenden Datenverkehr finden Sie unter [Was ist Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Regeln für ausgehenden Datenverkehr**: Sie können Regeln für ausgehenden Datenverkehr in der Konfiguration hinzufügen oder aus ihr entfernen, indem Sie die Eigenschaft **outboundRules** in der Datei **\<resource-group-name>.json** bearbeiten:
+    * **Regeln für ausgehenden Datenverkehr**: Sie können Regeln für ausgehenden Datenverkehr in der Konfiguration hinzufügen oder entfernen, indem Sie die Eigenschaft **outboundRules** in der Datei **\<resource-group-name>.json** bearbeiten:
 
         ```json
         "outboundRules": [

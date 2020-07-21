@@ -3,12 +3,12 @@ title: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datentr�
 description: Im diesem Artikel wird erläutert, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwaltete Azure-Datenträger verwendet.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991210"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611627"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger
 
@@ -22,7 +22,7 @@ Die allgemeine Vorgehensweise beim Upgraden eines Service Fabric-Clusterknotens 
 
 3. Überprüfen Sie, ob der Cluster und die neuen Knoten fehlerfrei sind, und entfernen Sie dann die ursprüngliche Skalierungsgruppe und den Knotenzustand für die gelöschten Knoten.
 
-In diesem Artikel wird beschrieben, mit welchen Schritten Sie den primären Knotentyp eines Beispielclusters upgraden, sodass dieser verwaltete Datenträger verwendet, und dabei jegliche Clusterdowntime vermeiden (siehe Hinweis unten). Der anfängliche Zustand des Beispieltestclusters besteht aus einem Knotentyp der [Dauerhaftigkeitsstufe „Silber“](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster), der eine einzelne Skalierungsgruppe mit fünf Knoten enthält.
+In diesem Artikel wird beschrieben, mit welchen Schritten Sie den primären Knotentyp eines Beispielclusters upgraden, sodass dieser verwaltete Datenträger verwendet, und dabei jegliche Clusterdowntime vermeiden (siehe Hinweis unten). Der anfängliche Zustand des Beispieltestclusters besteht aus einem Knotentyp der [Dauerhaftigkeitsstufe „Silber“](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), der eine einzelne Skalierungsgruppe mit fünf Knoten enthält.
 
 > [!CAUTION]
 > Bei diesem Verfahren treten nur dann Ausfälle auf, wenn im Cluster-DNS Abhängigkeiten bestehen (z. B. beim Zugriff auf [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). Zu den [bewährten Architekturmethoden für Front-End-Dienste](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) zählt das Implementieren eines [Lastenausgleichs](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview), der Ihren Knotentypen vorgeschaltet ist und den Knotenaustausch ohne Dienstausfälle ermöglicht.

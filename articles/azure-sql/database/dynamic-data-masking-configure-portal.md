@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: ef7dc69b69f17f9b9759f767edb2bcaab32792d5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 12a187b29737ba9388d9b33ac8bcfedf1339c059
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038531"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253782"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Erste Schritte mit der dynamischen Datenmaskierung für SQL-Datenbank im Azure-Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ In diesem Artikel wird erläutert, wie die [dynamische Datenmaskierung](dynamic-
 
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
 2. Navigieren Sie zur Seite mit den Einstellungen der Datenbank mit den sensiblen Daten, die Sie maskieren möchten.
-3. Klicken Sie im Abschnitt **Sicherheit** Ihrer SQL-Datenbank-Instanz auf das Blatt **Dynamische Datenmaskierung**.
+3. Klicken Sie im Abschnitt **Sicherheit** Ihrer Datenbank auf das Blatt **Dynamische Datenmaskierung**.
 
    ![Navigationsbereich](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
 

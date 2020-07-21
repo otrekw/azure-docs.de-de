@@ -16,6 +16,8 @@
     - name: 'Bereitstellen einer Containerinstanz: ARM-Vorlage'
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
+    - name: 'Bereitstellen einer Containerinstanz: Docker CLI'
+      href: container-instances-quickstart-docker-cli.md
 - name: Tutorials
   items:
     - name: Erstellen und Bereitstellen von Containerimages
@@ -94,8 +96,10 @@
           href: container-instances-gpu.md
         - name: Aktivieren eines SSL-Endpunkts in Sidecar
           href: container-instances-container-group-ssl.md
-        - name: Verfügbarmachen der statischen IP-Adresse
+        - name: "Verfügbarmachen einer statischen IP-Adresse mit App\_Gateway"
           href: container-instances-application-gateway.md
+        - name: "Verwenden von Azure\_Firewall für eingehenden und ausgehenden Datenverkehr"
+          href: container-instances-egress-ip-address.md
     - name: Einbinden von Datenvolumes
       items:
         - name: Azure-Dateifreigabe

@@ -3,15 +3,15 @@ title: Konfigurieren und Verwalten der Gültigkeitsdauer in Azure Cosmos DB
 description: Informationen zum Konfigurieren und Verwalten der Gültigkeitsdauer für einen Container und ein Element in Azure Cosmos DB
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263621"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurieren der Gültigkeitsdauer in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Gehen Sie wie folgt vor, um die Gültigkeitsdauer für einen Container ohne Abla
    * Wählen Sie **Ein (Standard)** aus, oder wählen Sie **Ein** aus, und legen Sie einen Wert für die Gültigkeitsdauer fest.
    * Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
-   ![Konfigurieren der Gültigkeitsdauer über das Azure-Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Konfigurieren der Gültigkeitsdauer über das Azure-Portal":::
 
 * Wenn „DefaultTimeToLive“ auf „0“ festgelegt ist, ist die Gültigkeitsdauer deaktiviert.
 * Wenn „DefaultTimeToLive“ auf „-1“ festgelegt ist, ist die Gültigkeitsdauer aktiviert (ohne Standardwert).

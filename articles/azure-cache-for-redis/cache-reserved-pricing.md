@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77530207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974839"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Cache for Redis-Computeressourcen mit reservierter Kapazität
 
@@ -30,9 +30,9 @@ Einzelheiten zur Berechnung der Reservierung von Kapazitäten für Unternehmensk
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>Bestimmen der passenden Cachegröße vor dem Kauf
 
-Die Größe der Reservierung sollte auf der Gesamtmenge der Computeressourcen basieren, die von dem bereits vorhandenen oder in Kürze bereitzustellenden Cache innerhalb einer bestimmten Region genutzt werden und die gleiche Dienstebene verwenden.
+Die Größe der Reservierung sollte auf der Gesamtgröße des Arbeitsspeichers basieren, die von dem bereits vorhandenen oder in Kürze bereitzustellenden Cache innerhalb einer bestimmten Region genutzt werden und die gleiche Dienstebene verwenden.
 
-Nehmen wir beispielsweise an, Sie führen einen universellen Gen5-Cache mit 32 virtuellen Kernen sowie zwei arbeitsspeicheroptimierte Gen5-Caches mit 16  virtuellen Kernen aus. Außerdem möchten Sie innerhalb des nächsten Monats einen weiteren universellen Gen5-Datenbankserver mit 32 virtuellen Kernen sowie einen arbeitsspeicheroptimierten Gen5-Datenbankserver mit 16 virtuellen Kernen bereitstellen. Sie wissen außerdem, dass Sie diese Ressourcen mindestens 1 Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine 1-Jahres-Reservierung für eine universelle Gen5-Einzeldatenbank mit 64 virtuellen Kernen (2 × 32) sowie eine 1-Jahres-Reservierung für eine arbeitsspeicheroptimierte Gen5-Einzeldatenbank mit 48 virtuellen Kernen (2 × 16 + 16).
+Angenommen, Sie führen zwei Caches aus: einen mit 13 GB und den anderen mit 26 GB. Beide werden für mindestens ein Jahr benötigt. Gehen Sie außerdem davon aus, dass Sie die vorhandenen Caches mit 13 GB für einen Monat auf 26 GB hochskalieren möchten, um einer saisonalen Nachfrage nachkommen zu können. Danach möchten Sie zur Ausgangssituation zurück skalieren. In diesem Fall können Sie entweder einen P1-Cache und einen P2-Cache oder drei P1-Caches mit einjähriger Reservierung erwerben, um möglichst hohe Einsparungen zu haben. Unabhängig davon, wie der Betrag Ihren Caches zugeordnet wird, erhalten Sie einen Rabatt auf den gesamten Cachespeicher, den Sie reservieren.
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Kaufen von reservierter Azure Cache for Redis-Kapazität

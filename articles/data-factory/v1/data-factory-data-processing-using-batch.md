@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c6fb590cbb57e8798bf65d0aa30585ae3db3691d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321404"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -793,7 +793,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer einzigen Aktivität, nä
 
    * Die Pipeline enthält nur eine Aktivität, die den Typ **DotNetActivity** hat.
    * **AssemblyName** wird auf den Namen der DLL festgelegt: **MyDotnetActivity.dll**.
-   * **EntryPoint** wird auf **MyDotNetActivityNS.MyDotNetActivity** festgelegt. Das entspricht im Grunde \<namespace\>.\<classname\> in Ihrem Code.
+   * **EntryPoint** wird auf **MyDotNetActivityNS.MyDotNetActivity** festgelegt. Es ist im Grunde \<namespace\>.\<classname\> in Ihrem Code.
    * **PackageLinkedService** ist auf **StorageLinkedService** festgelegt, was auf den Blob Storage verweist, der die ZIP-Datei mit der benutzerdefinierten Aktivität enthält. Wenn Sie andere Speicherkonten für die Ein- und Ausgabedateien und die ZIP-Datei mit der benutzerdefinierten Aktivität verwenden, müssen Sie einen weiteren mit Azure Storage verknüpften Dienst erstellen. Dieser Artikel setzt voraus, dass Sie das gleiche Speicherkonto verwenden.
    * **PackageFile** wird auf **customactivitycontainer/MyCustomActivity.zip** festgelegt. Das entspricht dem Format \<containerforthezip\>/\<nameofthezip.zip\>.
    * Die benutzerdefinierte Aktivität verwendet **InputDataset** als Eingabe und **OutputDataset** als Ausgabe.

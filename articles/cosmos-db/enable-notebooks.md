@@ -3,15 +3,15 @@ title: Aktivieren von Notebooks im Azure Cosmos DB-Konto (Vorschau)
 description: Die integrierten Notebooks von Azure Cosmos DB ermöglichen es Ihnen, Ihre Daten innerhalb des Portals zu analysieren und zu visualisieren. In diesem Artikel wird beschrieben, wie Sie dieses Feature für Cosmos-Konten aktivieren.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: dcec310db43baa513b2d574d03f3f35dee3f773b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76768017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261901"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Aktivieren von Notebooks für Azure Cosmos DB-Konten (Vorschau)
 
@@ -21,30 +21,35 @@ ms.locfileid: "76768017"
 Integrierte Jupyter Notebooks in Azure Cosmos DB ermöglichen es Ihnen, Ihre Daten über das Azure-Portal zu analysieren und zu visualisieren. In diesem Artikel wird beschrieben, wie Sie dieses Feature für Ihr Azure Cosmos DB-Konto aktivieren.
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Aktivieren von Notebooks in einem neuen Cosmos-Konto
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie **Ressourcen erstellen** > **Datenbanken** > **Azure Cosmos DB** aus.
 1. Wählen Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die Option **Notebooks** aus. 
  
-    ![Auswählen der Option „Notebooks“ auf dem Blatt „Azure Cosmos DB-Konto erstellen“](media/enable-notebooks/create-new-account-with-notebooks.png)
+    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Auswählen der Option „Notebooks“ auf dem Blatt „Azure Cosmos DB-Konto erstellen“":::
+
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie können die Optionen **Netzwerk** und **Tags** überspringen. 
 1. Überprüfen Sie die Kontoeinstellungen, und wählen Sie anschließend **Erstellen** aus. Die Erstellung des Kontos dauert einige Minuten. Warten Sie, bis auf der Portalseite **Ihre Bereitstellung wurde abgeschlossen.** angezeigt wird. 
 
-    ![Der Bereich „Benachrichtigungen“ im Azure-Portal](media/enable-notebooks/create-new-account-with-notebooks-complete.png)
-1. Wählen Sie **Zu Ressource wechseln** aus, um zur Seite des Azure Cosmos DB-Kontos zu wechseln. 
+   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Der Bereich „Benachrichtigungen“ im Azure-Portal":::
 
-    ![Seite des Azure Cosmos DB-Kontos](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)
+1. Wählen Sie **Zu Ressource wechseln** aus, um zur Seite des Azure Cosmos DB-Kontos zu wechseln.
+
+   :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Seite des Azure Cosmos DB-Kontos":::
 
 1. Navigieren Sie zum Bereich **Daten-Explorer**. Der Notebooks-Arbeitsbereich sollte jetzt angezeigt werden.
 
-    ![Neuer Notebooks-Arbeitsbereich von Azure Cosmos DB](media/enable-notebooks/new-notebooks-workspace.png)
+    :::image type="content" source="media/enable-notebooks/new-notebooks-workspace.png" alt-text="Neuer Notebooks-Arbeitsbereich von Azure Cosmos DB":::
 
 ## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Aktivieren von Notebooks in einem vorhandenen Cosmos-Konto
+
 Sie können auch Notebooks für vorhandene Konten aktivieren. Dieser Schritt muss nur einmal pro Konto durchgeführt werden.
 
 1. Navigieren Sie in Ihrem Cosmos-Konto zum Bereich **Daten-Explorer**.
 1. Wählen Sie **Notebooks aktivieren** aus.
 
-    ![Erstellen eines neuen Notebooks-Arbeitsbereichs im Daten-Explorer](media/enable-notebooks/enable-notebooks-workspace.png)
+    :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Erstellen eines neuen Notebooks-Arbeitsbereichs im Daten-Explorer":::
+
 1. Daraufhin werden Sie aufgefordert, einen neuen Notebooks-Arbeitsbereich zu erstellen. Wählen Sie **Setup abschließen** aus.
 1. Ihr Konto ist jetzt für die Verwendung von Notebooks aktiviert!
 
@@ -54,18 +59,18 @@ Um zu überprüfen, ob Sie Notebooks verwenden können, wählen Sie eines der No
 
 In diesem Beispiel wird **GettingStarted.ipynb**. verwendet. 
 
-![Anzeigen des Notebooks „GettingStarted.ipynb“](media/enable-notebooks/select-getting-started-notebook.png)
+:::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Anzeigen des Notebooks „GettingStarted.ipynb“":::
 
 So führen Sie das Notebook aus:
 1. Wählen Sie die erste Codezelle mit Python-Code aus. 
 1. Klicken Sie auf **Ausführen**, um die Zelle auszuführen. Sie können zum Ausführen der Zelle auch **UMSCHALT+EINGABE** verwenden.
 1. Aktualisieren Sie den Ressourcenbereich, um die Datenbank und den Container anzuzeigen, die erstellt wurden.
 
-    ![Ausführen des Notebooks mit ersten Schritten](media/enable-notebooks/run-first-notebook-cell.png)
+    :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="Ausführen des Notebooks mit ersten Schritten":::
 
 Sie können auch **Neues Notebook** auswählen, um ein neues Notebook zu erstellen, oder eine vorhandene Notebook-Datei (IPYNB) hochladen, indem Sie im Menü **Meine Notebooks** die Option **Datei hochladen** auswählen. 
 
-![Erstellen oder Hochladen eines neuen Notebooks](media/enable-notebooks/create-or-upload-new-notebook.png)
+:::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Erstellen oder Hochladen eines neuen Notebooks":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

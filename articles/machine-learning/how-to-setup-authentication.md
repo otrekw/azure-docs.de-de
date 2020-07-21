@@ -3,35 +3,32 @@ title: Einrichten der Authentifizierung
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie die Authentifizierung für verschiedene Ressourcen und Workflows in Azure Machine Learning einrichten und konfigurieren. Es gibt mehrere Möglichkeiten, die Authentifizierung innerhalb des Dienstes zu konfigurieren und zu nutzen – angefangen bei der einfachen Authentisierung auf Basis der Benutzeroberfläche für Entwicklungs- oder Testzwecke bis hin zur vollständigen Dienstprinzipalauthentifizierung des Azure Active Directory-Dienstes.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: larryfr
+ms.author: larryfr
+ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 12/17/2019
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611839"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974686"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Authentifizierung für verschiedene Ressourcen und Workflows in Azure Machine Learning einrichten und konfigurieren. Es gibt mehrere Möglichkeiten, die Authentifizierung für den Dienst zu konfigurieren und zu nutzen – angefangen bei der einfachen Authentisierung auf Basis der Benutzeroberfläche für Entwicklungs- oder Testzwecke bis hin zur vollständigen Dienstprinzipalauthentifizierung des Azure Active Directory-Dienstes. Dieser Artikel erklärt zudem die Unterschiede in der Funktionsweise der Webdienstauthentifizierung sowie die Authentifizierung bei der Azure Machine Learning-REST-API.
+Erfahren Sie, wie Sie sich bei Ihrem Azure Machine Learning-Arbeitsbereich und bei Modellen authentifizieren, die als Webdienste bereitgestellt werden.
 
-Diese Anleitung zeigt, wie Sie die folgenden Aufgaben ausführen:
+Im Allgemeinen gibt es zwei Arten von Authentifizierung, die Sie für Azure Machine Learning verwenden können:
 
-* Verwenden der interaktiven Benutzeroberflächenauthentifizierung für Tests/Entwicklung
-* Einrichten der Dienstprinzipalauthentifizierung
-* Authentifizieren bei Ihrem Arbeitsbereich
-* Abrufen des OAuth 2.0-Tokens vom Typ Bearer für die Azure Machine Learning-Rest-API
-* Grundlegendes zur Webdienstauthentifizierung
+* __Interaktiv:__ Sie verwenden Ihr Konto in Azure Active Directory, um sich entweder direkt zu authentifizieren oder ein Token zu erhalten, das für die Authentifizierung verwendet wird. Die interaktive Authentifizierung wird beim Experimentieren und bei der iterativen Entwicklung verwendet. Außerdem wird sie verwendet, wenn der Zugriff auf Ressourcen (z. B. einen Webdienst) auf Benutzerbasis gesteuert werden soll.
+* __Dienstprinzipal__: Sie erstellen ein Dienstprinzipalkonto in Azure Active Directory und verwenden es, um sich zu authentifizieren oder ein Token zu erhalten. Ein Dienstprinzipal wird verwendet, wenn ein automatisierter Prozess sich beim Dienst authentifizieren soll, ohne dass eine Benutzerinteraktion erforderlich ist. Ein Beispiel hierfür wäre ein Continuous-Integration- und Bereitstellungsskript, das ein Modell bei jeder Änderung des Trainingscodes trainiert und testet. Sie können einen Dienstprinzipal auch verwenden, um ein Token für die Authentifizierung bei einem Webdienst abzurufen, wenn Sie nicht möchten, dass sich der Endbenutzer des Diensts authentifizieren muss, oder wenn die Endbenutzerauthentifizierung nicht direkt in Azure Active Directory ausgeführt wird.
 
-Eine allgemeine Übersicht zu Sicherheit und Authentifizierung in Azure Machine Learning finden Sie in diesem [Konzeptartikel](concept-enterprise-security.md).
+Unabhängig vom verwendeten Authentifizierungstyp wird die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, um die zulässige Zugriffsebene für die Ressourcen zu beschränken. Ein Konto, das zum Abrufen des Zugriffstokens für ein bereitgestelltes Modell verwendet wird, benötigt z. B. nur Lesezugriff auf den Arbeitsbereich. Weitere Informationen zur RBAC finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,103 +37,124 @@ Eine allgemeine Übersicht zu Sicherheit und Authentifizierung in Azure Machine 
 
 ## <a name="interactive-authentication"></a>Interaktive Authentifizierung
 
-Die meisten Beispiele in der Dokumentation zu diesem Dienst verwenden die interaktive Authentifizierung in Jupyter-Notebooks als einfache Methode zum Testen und zur Demonstration. Dies ist eine vereinfachte Möglichkeit, das zu testen, was Sie entwickeln. Es gibt zwei Funktionsaufrufe, die Sie automatisch zur Eingabe eines auf der Benutzeroberfläche basierenden Authentifizierungsflusses auffordern.
+In den meisten Beispielen in der Dokumentation und Verwendungsbeispielen wird interaktive Authentifizierung verwendet. Bei Verwendung des SDK gibt es z. B. zwei Funktionsaufrufe, bei denen Sie automatisch über einen auf einer Benutzeroberfläche basierenden Authentifizierungsflow eine Aufforderung erhalten:
 
-Wenn Sie die Funktion `from_config()` aufrufen, wird die Aufforderung ausgegeben.
+* Wenn Sie die Funktion `from_config()` aufrufen, wird die Aufforderung ausgegeben.
 
-```python
-from azureml.core import Workspace
-ws = Workspace.from_config()
-```
+    ```python
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    ```
 
-Die Funktion `from_config()` sucht nach einer JSON-Datei, die ihre Informationen zur Arbeitsbereichsverbindung enthält. Sie können die Verbindungsdetails auch explizit mit dem `Workspace`-Konstruktor angeben. Dieser fordert auch zur interaktiven Authentifizierung auf. Beide Aufrufe sind gleichwertig.
+    Die Funktion `from_config()` sucht nach einer JSON-Datei, die ihre Informationen zur Arbeitsbereichsverbindung enthält.
 
-```python
-ws = Workspace(subscription_id="your-sub-id",
-               resource_group="your-resource-group-id",
-               workspace_name="your-workspace-name"
-              )
-```
+* Bei Verwendung des Konstruktors `Workspace` für das Angeben von Abonnement-, Ressourcengruppen- und Arbeitsbereichsinformationen wird ebenfalls zur interaktiven Authentifizierung aufgefordert.
 
-Wenn Sie Zugriff auf mehrere Mandanten haben, müssen Sie möglicherweise die-Klasse importieren und explizit definieren, auf welchen Mandanten Sie abzielen. Wenn Sie den Konstruktor für `InteractiveLoginAuthentication` aufrufen, werden Sie außerdem aufgefordert, sich ähnlich wie bei den oben aufgeführten Aufrufen anzumelden.
+    ```python
+    ws = Workspace(subscription_id="your-sub-id",
+                  resource_group="your-resource-group-id",
+                  workspace_name="your-workspace-name"
+                  )
+    ```
 
-```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-```
+> [!TIP]
+> Wenn Sie Zugriff auf mehrere Mandanten haben, müssen Sie möglicherweise die-Klasse importieren und explizit definieren, auf welchen Mandanten Sie abzielen. Wenn Sie den Konstruktor für `InteractiveLoginAuthentication` aufrufen, werden Sie außerdem aufgefordert, sich ähnlich wie bei den oben aufgeführten Aufrufen anzumelden.
+>
+> ```python
+> from azureml.core.authentication import InteractiveLoginAuthentication
+> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+> ```
 
-Die interaktive Authentifizierung ist zwar nützlich zum Testen und Lernen, hilft Ihnen aber nicht beim Aufbau automatisierter oder monitorloser Workflows. Für automatisierte Prozesse, die das SDK verwenden, ist die Einrichtung der Dienstprinzipalauthentifizierung der beste Ansatz.
+## <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 
-## <a name="set-up-service-principal-authentication"></a>Einrichten der Dienstprinzipalauthentifizierung
+Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zunächst den Dienstprinzipal erstellen und ihm Zugriff auf Ihren Arbeitsbereich gewähren. Wie bereits erwähnt, wird die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure verwendet, um den Zugriff zu steuern. Sie müssen daher auch entscheiden, welcher Zugriff dem Dienstprinzipal erteilt werden soll.
 
-Dieser Prozess ist erforderlich, um eine von einer spezifischen Benutzeranmeldung entkoppelte Authentifizierung zu ermöglichen. Damit können Sie sich in automatisierten Workflows beim Azure Machine Learning-Python SDK authentifizieren. Die Dienstprinzipalauthentifizierung ermöglicht Ihnen außerdem die [Authentifizierung bei der Rest-API](#azure-machine-learning-rest-api-auth).
+> [!IMPORTANT]
+> Wenn Sie einen Dienstprinzipal verwenden, erteilen Sie ihm den __Mindestzugriff, der für den Task erforderlich ist,__ für den er verwendet wird. Beispielsweise wird einem Dienstprinzipal kein Besitzer- oder Mitwirkendenzugriff erteilt, wenn er lediglich für das Lesen des Zugriffstokens für eine Webbereitstellung verwendet wird.
+>
+> Der Grund für das Erteilen der geringstmöglichen Zugriffsberechtigungen ist, dass ein Dienstprinzipal ein Kennwort für die Authentifizierung verwendet und dieses möglicherweise als Teil eines Automatisierungsskripts gespeichert wird. Wenn das Kennwort offengelegt wird, wird durch die Beschränkung auf den für einen bestimmten Task erforderlichen Mindestzugriff die mögliche böswillige Verwendung des Dienstprinzipals auf ein Minimum beschränkt.
 
-Um die Dienstprinzipalauthentifizierung einzurichten, erstellen Sie zunächst eine App-Registrierung im Azure Active Directory und gewähren dann Ihrer App rollenbasierten Zugriff auf Ihren ML-Arbeitsbereich. Die einfachste Möglichkeit dafür ist die [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) im Azure-Portal. Nachdem Sie sich beim Portal angemeldet haben, klicken Sie auf das Symbol `>_` oben rechts auf der Seite neben Ihrem Namen, um die Shell zu öffnen.
-
-Wenn Sie die Cloud Shell noch nie in Ihrem Azure-Account verwendet haben, müssen Sie eine Speicherkontoressource zum Speichern aller geschriebenen Dateien erstellen. In der Regel fallen für dieses Speicherkonto nur geringe monatliche Kosten an. Installieren Sie außerdem über den folgenden Befehl die Machine Learning-Erweiterung, wenn Sie sie zuvor noch nicht verwendet haben.
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
+Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugriff auf Ihren Arbeitsbereich ist die Verwendung der [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Führen Sie die folgenden Schritte aus, um einen Dienstprinzipal zu erstellen und ihm Zugriff auf Ihren Arbeitsbereich zu gewähren:
 
 > [!NOTE]
-> Sie müssen ein Administrator für das Abonnement sein, um die folgenden Schritte ausführen zu können.
+> Sie müssen ein Administrator für das Abonnement sein, um alle Schritte ausführen zu können.
 
-Führen Sie anschließend den folgenden Befehl aus, um den Dienstprinzipal zu erstellen. Benennen Sie es in diesem Fall mit **ml-auth**.
+1. Authentifizieren Sie sich bei Ihrem Azure-Abonnement:
 
-```azurecli-interactive
-az ad sp create-for-rbac --sdk-auth --name ml-auth
-```
+    ```azurecli-interactive
+    az login
+    ```
 
-Die Ausgabe ist eine JSON-Datei wie etwa die folgende. Notieren Sie sich die Werte in den Feldern `clientId`, `clientSecret`und `tenantId`, da Sie diese für andere Schritte in diesem Artikel benötigen.
+    Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Anmeldeseite. Andernfalls müssen Sie einen Browser öffnen und die Anweisungen in der Befehlszeile befolgen. Die Anweisungen umfassen das Navigieren zu [https://aka.ms/devicelogin](https://aka.ms/devicelogin) und Eingeben eines Autorisierungscodes.
 
-```json
-{
-    "clientId": "your-client-id",
-    "clientSecret": "your-client-secret",
-    "subscriptionId": "your-sub-id",
-    "tenantId": "your-tenant-id",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net"
-}
-```
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-Führen Sie als Nächstes den folgenden Befehl aus, um die Details zum gerade erstellten Dienstprinzipal abzurufen. Verwenden Sie dazu den Wert `clientId` von oben als Eingabe für den Parameter `--id`.
+    Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
-```azurecli-interactive
-az ad sp show --id your-client-id
-```
+1. Installieren Sie die Azure Machine Learning-Erweiterung:
 
-Nachfolgend finden Sie ein vereinfachtes der JSON-Ausgabe des Befehls. Notieren Sie sich den Wert in Feld `objectId`, da Sie diesen für den nächsten Schritt benötigen.
+    ```azurecli-interactive
+    az extension add -n azure-cli-ml
+    ```
 
-```json
-{
-    "accountEnabled": "True",
-    "addIns": [],
-    "appDisplayName": "ml-auth",
-    ...
-    ...
-    ...
-    "objectId": "your-sp-object-id",
-    "objectType": "ServicePrincipal"
-}
-```
+1. Erstellen Sie den Dienstprinzipal. Im folgenden Beispiel wird ein Dienstprinzipal mit dem Namen **ml-auth** erstellt:
 
-Verwenden Sie jetzt den folgenden Befehl, um den Zugriff auf den Dienstprinzipal Ihrem Machine Learning-Arbeitsbereich zuzuweisen. Sie benötigen den Namen Ihres Arbeitsbereichs und den Namen der Ressourcengruppe für die Parameter `-w` und `-g`. Verwenden Sie für den Parameter `--user` den Wert `objectId` aus dem vorherigen Schritt. Mit dem Parameter `--role` können Sie die Zugriffsrolle für den Dienstprinzipal festlegen. Im Allgemeinen verwenden Sie entweder **Besitzer** oder **Mitwirkender**. Beide haben Schreibzugriff auf vorhandene Ressourcen wie Computecluster und Datenspeicher, aber nur der **Besitzer** kann diese Ressourcen bereitstellen.
+    ```azurecli-interactive
+    az ad sp create-for-rbac --sdk-auth --name ml-auth
+    ```
 
-```azurecli-interactive
-az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
-```
+    Die Ausgabe ist eine JSON-Datei wie etwa die folgende. Notieren Sie sich die Werte in den Feldern `clientId`, `clientSecret`und `tenantId`, da Sie diese für andere Schritte in diesem Artikel benötigen.
 
-Dieser Befehl erzeugt zwar keine Ausgabe, aber Sie haben jetzt die Dienstprinzipalauthentifizierung für Ihren Arbeitsbereich eingerichtet.
+    ```json
+    {
+        "clientId": "your-client-id",
+        "clientSecret": "your-client-secret",
+        "subscriptionId": "your-sub-id",
+        "tenantId": "your-tenant-id",
+        "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+        "resourceManagerEndpointUrl": "https://management.azure.com",
+        "activeDirectoryGraphResourceId": "https://graph.windows.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
+        "galleryEndpointUrl": "https://gallery.azure.com/",
+        "managementEndpointUrl": "https://management.core.windows.net"
+    }
+    ```
 
-## <a name="authenticate-to-your-workspace"></a>Authentifizieren bei Ihrem Arbeitsbereich
+1. Rufen Sie mithilfe des Werts für `clientId`, der im vorherigen Schritt zurückgegeben wurde, die Details für den Dienstprinzipal ab:
 
-Nachdem Sie die Dienstprinzipalauthentifizierung aktiviert haben, können Sie sich bei Ihrem Arbeitsbereich im SDK authentifizieren, ohne sich physisch als Benutzer anzumelden. Verwenden Sie den Konstruktor der `ServicePrincipalAuthentication`-Klasse, und verwenden Sie als Parameter die Werte, die Sie in den vorherigen Schritten erhalten haben. Der Parameter `tenant_id` wird `tenantId` oben zugeordnet, `service_principal_id` wird `clientId` zugeordnet und `service_principal_password` `clientSecret`.
+    ```azurecli-interactive
+    az ad sp show --id your-client-id
+    ```
+
+    Der folgende JSON-Code ist ein vereinfachtes Beispiel für die Ausgabe des Befehls. Notieren Sie sich den Wert in Feld `objectId`, da Sie diesen für den nächsten Schritt benötigen.
+
+    ```json
+    {
+        "accountEnabled": "True",
+        "addIns": [],
+        "appDisplayName": "ml-auth",
+        ...
+        ...
+        ...
+        "objectId": "your-sp-object-id",
+        "objectType": "ServicePrincipal"
+    }
+    ```
+
+1. Erlauben Sie dem Dienstprinzipal, auf Ihren Azure Machine Learning-Arbeitsbereich zuzugreifen. Sie benötigen den Namen Ihres Arbeitsbereichs und den Namen der Ressourcengruppe für die Parameter `-w` und `-g`. Verwenden Sie für den Parameter `--user` den Wert `objectId` aus dem vorherigen Schritt. Über den Parameter `--role` können Sie die Zugriffsrolle für den Dienstprinzipal festlegen. Im folgenden Beispiel wird dem Dienstprinzipal die Rolle **Besitzer** zugewiesen. 
+
+    > [!IMPORTANT]
+    > Der Besitzerzugriff ermöglicht es dem Dienstprinzipal, so gut wie jeden Vorgang in Ihrem Arbeitsbereich durchzuführen. Er wird in diesem Dokument verwendet, um zu veranschaulichen, wie Zugriff gewährt wird. In einer Produktionsumgebung empfiehlt Microsoft, dem Dienstprinzipal nur den für die von Ihnen vorgesehene Rolle erforderlichen Mindestzugriff zu erteilen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+
+    ```azurecli-interactive
+    az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
+    ```
+
+    Dieser Aufruf erzeugt bei Erfolg keine Ausgabe.
+
+### <a name="use-a-service-principal-from-the-sdk"></a>Verwenden eines Dienstprinzipals im SDK
+
+Verwenden Sie zum Authentifizieren bei Ihrem Arbeitsbereich mit dem Dienstprinzipal über das SDK den Klassenkonstruktor `ServicePrincipalAuthentication`. Geben Sie dabei die Werte an, die Sie beim Erstellen des Dienstanbieters als Parameter erhalten haben. Der Parameter `tenant_id` wird `tenantId` oben zugeordnet, `service_principal_id` wird `clientId` zugeordnet und `service_principal_password` `clientSecret`.
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -146,7 +164,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
                                     service_principal_password="your-client-secret") # clientSecret
 ```
 
-Die Variable `sp` enthält jetzt ein Authentifizierungsobjekt, das Sie direkt im SDK verwenden können. Im Allgemeinen empfiehlt es sich, die oben verwendeten IDs/Geheimnisse in Umgebungsvariablen zu speichern, wie im folgenden Code gezeigt.
+Die Variable `sp` enthält jetzt ein Authentifizierungsobjekt, das Sie direkt im SDK verwenden können. Im Allgemeinen empfiehlt es sich, die oben verwendeten IDs/Geheimnisse in Umgebungsvariablen zu speichern, wie im folgenden Code gezeigt. Das Speichern in Umgebungsvariablen verhindert, dass die Informationen versehentlich in ein GitHub-Repository eingecheckt werden.
 
 ```python
 import os
@@ -156,7 +174,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_password=os.environ['AML_PRINCIPAL_PASS'])
 ```
 
-Bei automatisierten Workflows, die in Python ausgeführt werden und das SDK primär verwenden, können Sie dieses Objekt in den meisten Fällen unverändert für die Authentifizierung verwenden. Der folgende Code dient zur Authentifizierung bei Ihrem Arbeitsbereich mit dem soeben erstellten Authentifizierungsobjekt.
+Bei automatisierten Workflows, die in Python ausgeführt werden und das SDK primär verwenden, können Sie dieses Objekt in den meisten Fällen unverändert für die Authentifizierung verwenden. Der folgende Code dient zur Authentifizierung bei Ihrem Arbeitsbereich mit dem von Ihnen erstellten Authentifizierungsobjekt.
 
 ```python
 from azureml.core import Workspace
@@ -167,14 +185,18 @@ ws = Workspace.get(name="ml-example",
 ws.get_details()
 ```
 
-## <a name="azure-machine-learning-rest-api-auth"></a>Authentifizierung bei der Azure Machine Learning-REST-API
+### <a name="use-a-service-principal-from-the-azure-cli"></a>Verwenden eines Dienstprinzipals in der Azure CLI
 
-Der in den vorherigen Schritten erstellte Dienstprinzipal kann auch zum Authentifizieren bei der Azure Machine Learning-[Rest-API](https://docs.microsoft.com/rest/api/azureml/) verwendet werden. Sie verwenden den [Fluss zum Gewähren von Clientanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) von Azure Active Directory, der dienstübergreifende Aufrufe für die monitorlose Authentifizierung in automatisierten Workflows ermöglicht. Die Beispiele sind mit der [ADAL-Bibliothek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) sowohl in Python als auch in Node.js implementiert. Sie können aber auch jede Open-Source-Bibliothek verwenden, die OpenID Connect 1.0 unterstützt.
+Sie können einen Dienstprinzipal für Azure CLI-Befehle verwenden. Weitere Informationen finden Sie unter [Anmelden mithilfe eines Dienstprinzipals](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal).
+
+### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Verwenden eines Dienstprinzipals mit der REST-API (Vorschau)
+
+Der Dienstprinzipal kann auch zum Authentifizieren bei der Azure Machine Learning-[REST-API](https://docs.microsoft.com/rest/api/azureml/) (Vorschau) verwendet werden. Sie verwenden den [Fluss zum Gewähren von Clientanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) von Azure Active Directory, der dienstübergreifende Aufrufe für die monitorlose Authentifizierung in automatisierten Workflows ermöglicht. Die Beispiele sind mit der [ADAL-Bibliothek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) sowohl in Python als auch in Node.js implementiert. Sie können aber auch jede Open-Source-Bibliothek verwenden, die OpenID Connect 1.0 unterstützt.
 
 > [!NOTE]
 > MSAL.js ist eine neuere Bibliothek als ADAL. Allerdings können Sie mit MSAL.js keine dienstübergreifende Authentifizierung mit Clientanmeldeinformationen durchführen, da es sich in erster Linie um eine clientseitige Bibliothek handelt, die für die an einen bestimmten Benutzer gebundene interaktive Authentifizierung/Authentifizierung über die Benutzeroberfläche gedacht ist. Wir empfehlen für die Erstellung automatisierter Workflows mit der REST-API die Verwendung von ADAL wie unten gezeigt.
 
-### <a name="nodejs"></a>Node.js
+#### <a name="nodejs"></a>Node.js
 
 Verwenden Sie die folgenden Schritte, um ein Authentifizierungstoken mithilfe von Node.js zu generieren. Führen Sie in Ihrer Umgebung `npm install adal-node` aus. Verwenden Sie dann `tenantId`, `clientId` und `clientSecret` aus dem Dienstprinzipal, den Sie in den obigen Schritten erstellt haben, als Werte für die übereinstimmenden Variablen im folgenden Skript.
 
@@ -204,7 +226,7 @@ context.acquireTokenWithClientCredentials(
 );
 ```
 
-Die Variable `tokenResponse` ist ein Objekt, das das Token und zugehörige Metadaten enthält, wie die Ablaufzeit. Token sind 1 Stunde gültig und können durch erneutes Ausführen desselben Anrufs aktualisiert werden, um ein neues Token zu erhalten. Nachfolgend finden Sie eine Beispielantwort.
+Die Variable `tokenResponse` ist ein Objekt, das das Token und zugehörige Metadaten enthält, wie die Ablaufzeit. Token sind 1 Stunde gültig und können durch erneutes Ausführen desselben Anrufs aktualisiert werden, um ein neues Token zu erhalten. Der folgende Ausschnitt zeigt eine Beispielantwort.
 
 ```javascript
 {
@@ -221,7 +243,7 @@ Die Variable `tokenResponse` ist ein Objekt, das das Token und zugehörige Metad
 
 Verwenden Sie die Eigenschaft `accessToken`, um das Authentifizierungstoken abzurufen. In der [Rest-API-Dokumentation](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) finden Sie Beispiele dazu, wie Sie das Token zum Ausführen von API-Aufrufen verwenden.
 
-### <a name="python"></a>Python
+#### <a name="python"></a>Python
 
 Verwenden Sie die folgenden Schritte, um ein Authentifizierungstoken mithilfe von Python zu generieren. Führen Sie in Ihrer Umgebung `pip install adal` aus. Verwenden Sie dann `tenantId`, `clientId` und `clientSecret` aus dem Dienstprinzipal, den Sie in den obigen Schritten erstellt haben, als Werte für die entsprechenden Variablen im folgenden Skript.
 
@@ -239,7 +261,7 @@ token_response = auth_context.acquire_token_with_client_credentials("https://man
 print(token_response)
 ```
 
-Die Variable `token_response` ist ein Wörterbuch, das das Token und zugehörige Metadaten enthält, wie die Ablaufzeit. Token sind 1 Stunde gültig und können durch erneutes Ausführen desselben Anrufs aktualisiert werden, um ein neues Token zu erhalten. Nachfolgend finden Sie eine Beispielantwort.
+Die Variable `token_response` ist ein Wörterbuch, das das Token und zugehörige Metadaten enthält, wie die Ablaufzeit. Token sind 1 Stunde gültig und können durch erneutes Ausführen desselben Anrufs aktualisiert werden, um ein neues Token zu erhalten. Der folgende Ausschnitt zeigt eine Beispielantwort.
 
 ```python
 {
@@ -258,9 +280,17 @@ Verwenden Sie `token_response["accessToken"]`, um das Authentifizierungstoken ab
 
 ## <a name="web-service-authentication"></a>Webdienstauthentifizierung
 
-Webdienste in Azure Machine Learning verwenden ein anderes Authentifizierungsmuster als das oben beschriebene. Der einfachste Weg, die Authentifizierung bei den bereitgestellten Webdiensten durchzuführen, ist die Verwendung von **schlüsselbasierter Authentifizierung**, die statische Authentifizierungsschlüssel vom Typ Bearer generiert, die nicht aktualisiert werden müssen. Wenn Sie sich nur bei einem bereitgestellten Webdienst authentifizieren müssen, müssen Sie nicht die oben beschriebene Dienstprinzipalauthentifizierung einrichten.
+Die von Azure Machine Learning erstellten Modellbereitstellungen bieten zwei Authentifizierungsmethoden:
 
-Für in Azure Kubernetes Service bereitgestellte Webdienste ist die schlüsselbasierte Autorisierung standardmäßig *aktiviert*. Für in Azure Container Instances bereitgestellte Dienste ist die schlüsselbasierte Authentifizierung standardmäßig *deaktiviert*, aber Sie können sie aktivieren, indem Sie bei der Erstellung des ACI-Webdiensts `auth_enabled=True`festlegen. Nachfolgend finden Sie ein Beispiel für die Erstellung einer ACI-Bereitstellungskonfiguration mit aktivierter schlüsselbasierter Authentifizierung.
+* **Schlüsselbasiert:** Für die Authentifizierung beim Webdienst wird ein statischer Schlüssel verwendet.
+* **Tokenbasiert:** Ein temporäres Token muss aus dem Arbeitsbereich abgerufen und für die Authentifizierung beim Webdienst verwendet werden. Dieses Token läuft nach einer bestimmten Zeit ab und muss aktualisiert werden, um weiter mit dem Webdienst zu arbeiten.
+
+    > [!NOTE]
+    > Die tokenbasierte Authentifizierung ist nur bei der Bereitstellung in Azure Kubernetes Service verfügbar.
+
+### <a name="key-based-web-service-authentication"></a>Schlüsselbasierte Webdienstauthentifizierung
+
+Für in Azure Kubernetes Service (AKS) bereitgestellte Webdienste ist die schlüsselbasierte Authentifizierung standardmäßig *aktiviert*. Für in Azure Container Instances (ACI) bereitgestellte Dienste ist die schlüsselbasierte Authentifizierung standardmäßig *deaktiviert*, aber Sie können sie aktivieren, indem Sie bei der Erstellung des ACI-Webdiensts `auth_enabled=True` festlegen. Der folgende Code zeigt ein Beispiel für die Erstellung einer ACI-Bereitstellungskonfiguration mit aktivierter schlüsselbasierter Authentifizierung.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -294,7 +324,7 @@ aci_service.regen_key("Primary")
 aci_service.regen_key("Secondary")
 ```
 
-Webdienste unterstützen auch die tokenbasierte Authentifizierung, aber nur für Azure Kubernetes Service-Bereitstellungen. Weitere Informationen zum Authentifizieren finden Sie in der [Anleitung](how-to-consume-web-service.md) zum Verwenden von Webdiensten.
+Weitere Informationen zur Authentifizierung bei einem bereitgestellten Modell finden Sie unter [Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells](how-to-consume-web-service.md).
 
 ### <a name="token-based-web-service-authentication"></a>Tokenbasierte Webdienstauthentifizierung
 
@@ -302,13 +332,40 @@ Wenn Sie die Tokenauthentifizierung für einen Webdienst aktivieren, müssen die
 
 * Die Tokenauthentifizierung ist **standardmäßig deaktiviert**, wenn die Bereitstellung in Azure Kubernetes Service erfolgt.
 * Die Tokenauthentifizierung wird **nicht unterstützt**, wenn die Bereitstellung in Azure Container Instances erfolgt.
+* Die Tokenauthentifizierung **und die schlüsselbasierte Authentifizierung können nicht gleichzeitig verwendet werden**.
 
-Wenn Sie die Tokenauthentifizierung steuern möchten, verwenden Sie beim Erstellen oder Aktualisieren einer Bereitstellung den Parameter `token_auth_enabled`.
+Wenn Sie die Tokenauthentifizierung steuern möchten, verwenden Sie beim Erstellen oder Aktualisieren einer Bereitstellung den Parameter `token_auth_enabled`:
+
+```python
+from azureml.core.webservice import AksWebservice
+from azureml.core.model import Model, InferenceConfig
+
+# Create the config
+aks_config = AksWebservice.deploy_configuration()
+
+#  Enable token auth and disable (key) auth on the webservice
+aks_config = AksWebservice.deploy_configuration(token_auth_enabled=True, auth_enabled=False)
+
+aks_service_name ='aks-service-1'
+
+# deploy the model
+aks_service = Model.deploy(workspace=ws,
+                           name=aks_service_name,
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aks_config,
+                           deployment_target=aks_target)
+
+aks_service.wait_for_deployment(show_output = True)
+```
 
 Bei aktivierter Tokenauthentifizierung können Sie mithilfe der Methode `get_token` ein JSON Web Token (JWT) und dessen Ablaufzeit abrufen:
 
+> [!TIP]
+> Wenn Sie zum Abrufen des Tokens einen Dienstprinzipal verwenden, der nur über den für das Abrufen eines Tokens erforderlichen Mindestzugriff verfügen soll, weisen Sie ihm für den Arbeitsbereich die Rolle **Leser** zu.
+
 ```python
-token, refresh_by = service.get_token()
+token, refresh_by = aks_service.get_token()
 print(token)
 ```
 
@@ -323,5 +380,6 @@ print(token)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Verwenden von Geheimnissen in Trainingsausführungen](how-to-use-secrets-in-runs.md)
 * [Trainieren und Bereitstellen eines Bildklassifizierungsmodells](tutorial-train-models-with-aml.md)
 * [Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells](how-to-consume-web-service.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c0a6302383240f65d900369128337a41a13ecfa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805066"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von DocuSign für die automatische Benutzerbereitstellung
 
@@ -77,6 +77,9 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
     a. Geben Sie im Textfeld **Administratorbenutzername** den Namen eines DocuSign-Kontos ein, dem das Profil **Systemadministrator** in „DocuSign.com“ zugewiesen ist.
    
     b. Geben Sie im Textfeld **Administratorkennwort** das Kennwort für dieses Konto ein.
+
+> [!NOTE]
+> Wenn sowohl SSO als auch die Benutzerbereitstellung eingerichtet ist, müssen die für die Bereitstellung verwendeten Autorisierungsanmeldeinformationen so konfiguriert werden, dass sie sowohl mit SSO als auch mit Benutzername bzw. Kennwort funktionieren.
 
 1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer DocuSign-App herstellen kann.
 

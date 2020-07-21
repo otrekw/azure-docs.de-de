@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verwendung von verwalteten Identitäten
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710302"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Verwenden verwalteter Identitäten für Azure mit Service Fabric
 
@@ -35,7 +35,7 @@ Es gibt zwei Arten von verwalteten Identitäten:
 - Eine **vom System zugewiesene verwaltete Identität** wird direkt für eine Azure-Dienstinstanz aktiviert.  Der Lebenszyklus einer vom System zugewiesenen Identität ist für die Azure-Dienstinstanz eindeutig, für die sie aktiviert wurde.
 - Eine **vom Benutzer zugewiesene verwaltete Identität** wird als eigenständige Azure-Ressource erstellt. Die Identität kann mindestens einer Azure-Dienstinstanz zugewiesen werden und wird separat von den Lebenszyklen dieser Instanzen verwaltet.
 
-Weitere Informationen zu den Unterschieden zwischen den Typen verwalteter Identitäten finden Sie unter [Wie funktionieren verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)
+Weitere Informationen zu den Unterschieden zwischen den Typen verwalteter Identitäten finden Sie unter [Wie funktionieren verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Unterstützte Szenarien für Service Fabric-Anwendungen
 

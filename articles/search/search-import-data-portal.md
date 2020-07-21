@@ -1,19 +1,19 @@
 ---
 title: Importieren von Daten in einen Suchindex über das Azure-Portal
 titleSuffix: Azure Cognitive Search
-description: In diesem Artikel erfahren Sie, wie Sie den Datenimport-Assistenten im Azure-Portal verwenden, um Azure-Daten aus Azure Cosmos DB, Blob Storage, Table Storage, SQL-Datenbank und SQL Server auf Azure-VMs zu durchforsten.
+description: In diesem Artikel erfahren Sie, wie Sie den Datenimport-Assistenten im Azure-Portal verwenden, um Azure-Daten aus Azure Cosmos DB, Blob Storage, Table Storage, SQL-Datenbank, SQL Managed Instance und SQL Server auf Azure-VMs zu durchforsten.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321380"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Datenimport-Assistent für die kognitive Azure-Suche
 
@@ -65,7 +65,7 @@ Diese einzelne Tabelle oder Sicht muss vor dem Ausführen des Assistenten erstel
 | ---------- | ----------- |
 | **Vorhandene Datenquelle** |Wenn Sie in Ihrem Suchdienst bereits Indexer definiert haben, verfügen Sie möglicherweise über eine vorhandene Datenquellendefinition, die Sie wiederverwenden können. In der kognitiven Azure-Suche werden Datenquellenobjekte nur von Indexern verwendet. Sie können Datenquellenobjekte programmgesteuert oder über den **Datenimport**-Assistenten erstellen und bei Bedarf wiederverwenden.|
 | **Beispiele**| Die kognitive Azure-Suche umfasst zwei integrierte Beispieldatenquellen, die in Tutorials und Schnellstarts verwendet werden: eine SQL-Immobiliendatenbank und eine auf Cosmos DB gehostete Hoteldatenbank. Eine exemplarische Vorgehensweise, die auf dem Hotels-Beispiel basiert, finden Sie im Schnellstart [Erstellen eines Indexes im Azure-Portal](search-get-started-portal.md). |
-| [**Azure SQL-Datenbank**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Dienstname, Anmeldeinformationen für einen Datenbankbenutzer mit Leseberechtigung und ein Datenbankname können entweder auf der Seite oder über eine ADO.NET-Verbindungszeichenfolge angegeben werden. Wenn Sie Eigenschaften anzeigen oder anpassen möchten, verwenden Sie die Verbindungszeichenfolgen-Option. <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt.|
+| [**Azure SQL-Datenbank oder SQL Managed Instance**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Dienstname, Anmeldeinformationen für einen Datenbankbenutzer mit Leseberechtigung und ein Datenbankname können entweder auf der Seite oder über eine ADO.NET-Verbindungszeichenfolge angegeben werden. Wenn Sie Eigenschaften anzeigen oder anpassen möchten, verwenden Sie die Verbindungszeichenfolgen-Option. <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt.|
 | **SQL Server auf virtuellen Azure-Computern** |Geben Sie einen vollqualifizierten Dienstnamen, eine Benutzer-ID, ein Kennwort und eine Datenbank als Verbindungszeichenfolge an. Um diese Datenquelle verwenden zu können, müssen Sie zuvor ein Zertifikat im lokalen Speicher installieren haben, das die Verbindung verschlüsselt. Eine Anleitung finden Sie unter [SQL-VM-Verbindung mit der kognitiven Azure-Suche](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Zu den erforderlichen Angaben gehören das Konto, die Datenbank und die Sammlung. Alle Dokumente in der Sammlung werden in den Index aufgenommen. Sie können eine Abfrage zum Vereinfachen oder Filtern des Rowsets definieren oder die Abfrage leer lassen. Eine Abfrage ist in diesem Assistenten nicht erforderlich.|
 | [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Container. Optional: Wenn zu Gruppierungszwecken für Blobnamen eine virtuelle Benennungskonvention verwendet wird, können Sie den virtuellen Verzeichnisteil des Namens als Ordner unter dem Container angeben. Weitere Informationen finden Sie unter [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md). |
@@ -93,7 +93,7 @@ Der Datenimport-Assistent wird über die Befehlsleiste auf der Seite „Übersic
 
    ![Befehl „Daten importieren“ im Portal](./media/search-import-data-portal/import-data-cmd2.png "Starten des Datenimport-Assistenten")
 
-Sie können den **Datenimport** auch über andere Azure-Dienste wie etwa Azure Cosmos DB, Azure SQL-Datenbank und Azure Blob Storage starten. Suchen Sie auf der Übersichtsseite des Diensts im linken Navigationsbereich nach **Add Azure Cognitive Search** (Kognitive Azure-Suche hinzufügen).
+Sie können den **Datenimport-Assistenten** auch über andere Azure-Dienste wie etwa Azure Cosmos DB, Azure SQL-Datenbank, SQL Managed Instance und Azure Blob Storage starten. Suchen Sie auf der Übersichtsseite des Diensts im linken Navigationsbereich nach **Add Azure Cognitive Search** (Kognitive Azure-Suche hinzufügen).
 
 <a name="index-definition"></a>
 

@@ -4,21 +4,21 @@ description: Hier werden die Schritte erläutert, die Sie zum Implementieren von
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555021"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung von Azure AD Join
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
 Mit Azure AD Join können Sie Geräte direkt in Azure AD einbinden, ohne dem lokalen Active Directory beitreten zu müssen, während Ihre Benutzer produktiv und sicher bleiben. Azure AD Join eignet sich für skalierbare und bereichsbezogene Bereitstellungen in Unternehmen.   
 
@@ -32,15 +32,14 @@ Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteverwaltung 
 
 Um die Implementierung Ihrer Azure AD-Einbindung zu planen, sollten Sie sich mit folgenden Themen vertraut machen:
 
-|   |   |
-|---|---|
-|![Prüfen][1]|Überprüfen Ihrer Szenarien|
-|![Prüfen][1]|Überprüfen Ihrer Identitätsinfrastruktur|
-|![Prüfen][1]|Bewerten Ihrer Geräteverwaltung|
-|![Prüfen][1]|Verstehen der zu berücksichtigenden Aspekte für Anwendungen und Ressourcen|
-|![Prüfen][1]|Grundlegendes zu Ihren Bereitstellungsoptionen|
-|![Prüfen][1]|Konfigurieren von Enterprise State Roaming|
-|![Prüfen][1]|Konfigurieren des bedingten Zugriffs|
+> [!div class="checklist"]
+> - Überprüfen Ihrer Szenarien
+> - Überprüfen Ihrer Identitätsinfrastruktur
+> - Bewerten Ihrer Geräteverwaltung
+> - Verstehen der zu berücksichtigenden Aspekte für Anwendungen und Ressourcen
+> - Grundlegendes zu Ihren Bereitstellungsoptionen
+> - Konfigurieren von Enterprise State Roaming
+> - Konfigurieren des bedingten Zugriffs
 
 ## <a name="review-your-scenarios"></a>Überprüfen Ihrer Szenarien 
 
@@ -104,9 +103,9 @@ Azure AD Join:
 
 - Gilt nur für Windows 10-Geräte. 
 - Gilt nicht für vorherige Versionen von Windows oder andere Betriebssysteme. Wenn Sie über Windows 7- oder Windows 8.1-Geräte verfügen, müssen Sie ein Upgrade auf Windows 10 durchführen, um Azure AD Join bereitstellen zu können.
-- Wird auf Geräten mit TPM im FIPS-Modus nicht unterstützt.
+- Wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten.
  
-**Empfehlung:** Verwenden Sie immer die neueste Version von Windows 10, um die aktualisierten Features nutzen zu können.
+**Empfehlung:** Verwenden Sie immer das neueste Release von Windows 10, um die aktualisierten Features nutzen zu können.
 
 ### <a name="management-platform"></a>Verwaltungsplattform
 
@@ -157,13 +156,13 @@ Wenn Ihre Apps benutzerdefiniert sind und/oder lokal gehostet werden, müssen Si
 
 Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem Anmelden mit AD FS](/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
-**Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z. B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
+**Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z.B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
 
 ### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Lokale Anwendungen, die ältere Protokolle verwenden
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
-**Empfehlung:** Stellen Sie den [Azure AD-Anwendungsproxy](/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
+**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
 
@@ -185,6 +184,8 @@ In Azure AD eingebundene Geräte unterstützen keine lokalen Anwendungen, die Co
 
 Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](/windows/client-management/connect-to-remote-aadj-pc).
 
+Ab dem Windows 10-Update 2004 können Benutzer auch Remotedesktopfunktionen auf einem in Azure AD registrierten Windows 10-Gerät für ein in Azure AD verknüpftes Gerät verwenden. 
+
 ## <a name="understand-your-provisioning-options"></a>Grundlegendes zu Ihren Bereitstellungsoptionen
 
 Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
@@ -195,7 +196,7 @@ Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
  
 Hier finden Sie einen Vergleich dieser drei Methoden: 
  
-|   | Self-Service-Einrichtung | Windows Autopilot | Massenregistrierung |
+| Element | Self-Service-Einrichtung | Windows Autopilot | Massenregistrierung |
 | --- | --- | --- | --- |
 | Benutzerinteraktion zum Einrichten erforderlich | Ja | Ja | Nein |
 | IT-Maßnahmen erforderlich | Nein | Ja | Ja |
@@ -259,8 +260,8 @@ Wählen Sie basierend auf dem Benutzerbereich Ihrer Bereitstellung entweder **Ei
 
 Basierend auf Ihrem Benutzerbereich ergibt sich eine der folgenden Situationen: 
 
-- **Der Benutzer ist im MDM-Bereich**: Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
-- **Der Benutzer ist nicht im MDM-Bereich**: Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
+- **Der Benutzer befindet sich im MDM-Bereich**: Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
+- **Der Benutzer befindet sich nicht im MDM-Bereich**: Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
 
 ### <a name="mdm-urls"></a>MDM-URLs
 

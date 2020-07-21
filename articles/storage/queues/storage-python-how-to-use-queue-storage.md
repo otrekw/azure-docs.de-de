@@ -6,21 +6,24 @@ ms.author: mhopkins
 ms.date: 09/17/2019
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.custom: seo-javascript-october2019
-ms.openlocfilehash: ca0831fd7554058d21e315b67d6965579af1d38b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.custom: seo-javascript-october2019, tracking-python
+ms.openlocfilehash: 46d144a95708ac834478871ca27763f0ebd3b201
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805242"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Verwenden von Azure Queue Storage v2.1 mit Python
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 In diesem Artikel werden häufige Szenarien für die Verwendung des Azure Queue Storage-Diensts veranschaulicht. Zu den Szenarien gehören das Einfügen, Einsehen, Abrufen und Löschen von Warteschlangennachrichten sowie das Erstellen und Löschen von Warteschlangen.
+
+> [!IMPORTANT]
+> Dieser Artikel bezieht sich auf eine ältere Version der Azure Storage-Clientbibliothek für Python. Informationen zu den ersten Schritten mit der neuesten Version finden Sie unter [Schnellstart: Azure Queue Storage-Clientbibliothek für Python](storage-quickstart-queues-python.md)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 

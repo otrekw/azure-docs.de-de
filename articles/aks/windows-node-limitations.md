@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Informationen zu den bekannten Einschränkungen beim Ausführen von Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339872"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 
@@ -58,6 +58,19 @@ Windows Server-Knoten in AKS müssen *aktualisiert* werden, um die neuesten Patc
 > Das aktualisierte Windows Server-Image wird nur verwendet, wenn vor der Aktualisierung des Knotenpools ein Clusterupgrade (ein Upgrade der Steuerungsebene) durchgeführt wird.
 >
 
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Warum wird mir ein Fehler angezeigt, wenn ich versuche, einen neuen Windows-Agentpool zu erstellen?
+
+Wenn Sie Ihren Cluster vor Februar 2020 erstellt und noch kein Clusterupgrade durchgeführt haben, verwendet der Cluster immer noch ein altes Windows-Image. Möglicherweise wurde Ihnen dann bereits eine Fehlermeldung angezeigt, die in etwa wie folgt lautet:
+
+"The following list of images referenced from the deployment template are not found: Herausgeber: MicrosoftWindowsServer, Offer: WindowsServer, Sku: 2019-datacenter-core-smalldisk-2004, Version: latest. Please refer to https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage for instructions on finding available images." (Die folgende Liste von Images, auf die von der Bereitstellungsvorlage verwiesen wird, wurden nicht gefunden: Herausgeber: MicrosoftWindowsServer, Angebot: WindowsServer, SKU: 2019-datacenter-core-smalldisk-2004, Version: neuste. Unter https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage finden Sie Informationen dazu, wie Sie verfügbare Images finden.)
+
+So beheben Sie dieses Problem:
+
+1. Führen Sie ein Upgrade für die [Clustersteuerungsebene][upgrade-cluster-cp] durch. Dadurch werden das Imageangebot und der Herausgeber aktualisiert.
+1. Erstellen Sie neue Windows-Agentpools.
+1. Verschieben Sie Windows-Pods aus vorhandenen Windows-Agentpools in neue Windows-Agentpools.
+1. Löschen Sie alte Windows-Agentpools.
+
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Wie rotiere ich den Dienstprinzipal für meinen Windows-Knotenpool?
 
 Windows-Knotenpools unterstützen die Rotation von Dienstprinzipalen nicht. Um den Dienstprinzipal zu aktualisieren, erstellen Sie einen neuen Windows-Knotenpool, und migrieren Sie Ihre Pods vom älteren Pool zum neuen. Löschen Sie nach Abschluss des Vorgangs den älteren Knotenpool.
@@ -72,7 +85,7 @@ Der Name darf maximal sechs (6) Zeichen umfassen. Dies ist eine aktuelle AKS-Bes
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Werden alle Features für Windows-Knoten unterstützt?
 
-Netzwerkrichtlinien und kubenet werden für Windows-Knoten derzeit nicht unterstützt. 
+Netzwerkrichtlinien und kubenet werden für Windows-Knoten derzeit nicht unterstützt.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kann ich Eingangscontroller auf Windows-Knoten ausführen?
 
@@ -88,7 +101,7 @@ Die Unterstützung für gruppenverwaltete Dienstkonten (Group Managed Service Ac
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kann ich Azure Monitor für Container mit Windows-Knoten und -Containern verwenden?
 
-Ja, das können Sie, aber Azure Monitor erfasst keine Protokolle (stdout) von Windows-Containern. Sie können weiterhin an den Livestream von stdout-Protokollen aus einem Windows-Container anfügen.
+Ja, das ist möglich. Allerdings befindet sich die Azure Monitor-Funktion zum Erfassen von Protokollen (stdout, stderr) und Metriken aus Windows-Containern in der Public Preview. Sie können ebenso an den Livestream von stdout-Protokollen aus einem Windows-Container anfügen.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wie sieht es aus, wenn ich ein Feature benötige, das nicht unterstützt wird?
 
@@ -112,7 +125,10 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
+[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide

@@ -1,5 +1,5 @@
 ---
-title: Migration von SQL Server-Datenbanken zu einer einzeln oder gepoolten Azure SQL-Datenbank
+title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 description: Erfahren Sie, wie eine SQL Server-Datenbank zu Azure SQL-Datenbank nigriert wird.
 keywords: Datenbankmigration,SQL Server-Datenbankmigration,Datenbankmigrationstools,Migrieren einer Datenbank,Migrieren einer SQL-Datenbank
 services: sql-database
@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: f1e89b46f25fd4213b09680b441d3ecfd7a1e13b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84029861"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081940"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Dieser Artikel enthält Informationen zu den Hauptmethoden, mit denen eine SQL Server-Datenbank (ab SQL Server 2005) zu einer einzelnen oder gepoolten Azure SQL-Datenbank migriert wird. Informationen zum Migrieren zu einer verwalteten Azure SQL-Instanz finden Sie unter [Migrieren einer SQL Server-Instanz zu einer verwalteten Azure SQL-Instanz](../managed-instance/migrate-to-instance-from-sql-server.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
+Dieser Artikel enthält Informationen zu den Hauptmethoden, mit denen eine SQL Server-Datenbank (ab SQL Server 2005) zu Azure SQL-Datenbank migriert wird. Informationen zum Migrieren zu Azure SQL Managed Instance finden Sie unter [Migration einer SQL Server-Instanz zu Azure SQL Managed Instance](../managed-instance/migrate-to-instance-from-sql-server.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrieren zu einer Einzel- oder Pooldatenbank
 
-Es gibt zwei Hauptmethoden für das Migrieren einer SQL Server-Datenbank (ab SQL Server 2005) zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank. Die erste Methode ist einfacher, aber auch mit einer gewissen (möglicherweise sogar erheblichen) Ausfallzeit während der Migration verbunden. Die zweite Methode ist komplexer, verringert aber deutlich die Ausfallzeit während der Migration.
+Es gibt zwei Hauptmethoden für das Migrieren einer SQL Server-Datenbank (ab SQL Server 2005) zu Azure SQL-Datenbank. Die erste Methode ist einfacher, aber auch mit einer gewissen (möglicherweise sogar erheblichen) Ausfallzeit während der Migration verbunden. Die zweite Methode ist komplexer, verringert aber deutlich die Ausfallzeit während der Migration.
 
 In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) sichergestellt werden, dass die Quelldatenbank mit Azure SQL-Datenbank kompatibel ist. Azure SQL-Datenbank nähert sich der [Featureübereinstimmung](features-comparison.md) mit SQL Server (abgesehen von Problemen mit Vorgängen auf Serverebene und datenbankübergreifenden Vorgängen). Datenbanken und Anwendungen, die auf [teilweise oder nicht unterstützten Funktionen](transact-sql-tsql-differences-sql-server.md) basieren, müssen zur Behebung dieser Kompatibilitätsprobleme vor der Migration der SQL Server-Datenbank etwas [umstrukturiert](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues) werden.
 
@@ -37,7 +37,7 @@ In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.micr
 
  Verwenden Sie diese Methode zum Migrieren zu einer Einzel -oder Pooldatenbank, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten. Ein Tutorial finden Sie unter [Migrieren einer SQL Server-Datenbank](../../dms/tutorial-sql-server-to-azure-sql.md).
 
-Die folgende Liste enthält den allgemeinen Workflow für die SQL Server-Migration einer Einzel- oder Pooldatenbank mit dieser Methode. Informationen zur Migration zu einer verwalteten Instanz finden Sie unter [Migration zu einer verwalteten Instanz](../managed-instance/migrate-to-instance-from-sql-server.md).
+Die folgende Liste enthält den allgemeinen Workflow für die SQL Server-Migration einer Einzel- oder Pooldatenbank mit dieser Methode. Informationen zur Migration zu SQL Managed Instance finden Sie unter [Migration zu SQL Managed Instance](../managed-instance/migrate-to-instance-from-sql-server.md).
 
   ![Diagramm der VSSSDT-Migration](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 
@@ -45,10 +45,10 @@ Die folgende Liste enthält den allgemeinen Workflow für die SQL Server-Migrati
 2. Bereiten Sie alle erforderlichen Korrekturen in Form von Transact-SQL-Skripts vor.
 3. Erstellen Sie eine im Hinblick auf Transaktionen konsistente Kopie der zu migrierenden Quelldatenbank, oder verhindern Sie neue Transaktionen in der Quelldatenbank, während die Migration erfolgt. Zu den Methoden für letztere Option gehören das Deaktivieren der Clientkonnektivität oder das Erstellen einer [Datenbankmomentaufnahme](https://msdn.microsoft.com/library/ms175876.aspx). Nach der Migration können Sie möglicherweise mithilfe der Transaktionsreplikation die migrierten Datenbanken mit Änderungen aktualisieren, die nach dem Umstellungspunkt für die Migration erfolgen. Siehe [Verwenden der Transaktionsmigration](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
 4. Stellen Sie die Transact-SQL-Skripts bereit, um die Korrekturen auf die Datenbankkopie anzuwenden.
-5. [Migrieren](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) Sie die Datenbankkopie mithilfe von Data Migration Assistant zu einer neuen Azure SQL-Datenbank.
+5. [Migrieren](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) Sie die Datenbankkopie mithilfe von Data Migration Assistant zu einer Azure SQL-Datenbank-Instanz.
 
 > [!NOTE]
-> Anstelle von DMA können Sie auch eine BACPAC-Datei verwenden. Siehe [Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank](database-import.md).
+> Anstelle von DMA können Sie auch eine BACPAC-Datei verwenden. Siehe [Importieren einer BACPAC-Datei in eine neue Datenbank in Azure SQL-Datenbank](database-import.md).
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>Optimieren der Datenübertragungsleistung während der Migration
 
@@ -56,10 +56,10 @@ Die folgende Liste enthält Empfehlungen, mit denen Sie während des Importproze
 
 - Wählen Sie im Rahmen Ihres verfügbaren Budgets die höchste Dienstebene und Computegröße, um die Übertragungsleistung zu maximieren. Nach Abschluss der Migration können Sie zentral herunterskalieren, um Geld zu sparen.
 - Minimieren Sie die Entfernung zwischen Ihrer BACPAC-Datei und dem Zielrechenzentrum.
-- Deaktivieren Sie die automatische Statistik während der Migration.
+- Deaktivieren der automatischen Statistik während der Migration
 - Partitionierte Tabellen und Indizes
 - Verwerfen Sie indizierte Sichten, und erstellen Sie nach Abschluss des Vorgangs neu.
-- Verschieben Sie selten abgefragte Verlaufsdaten in eine andere Datenbank, und migrieren Sie die Verlaufsdaten in eine separate Azure SQL-Datenbank. Die Verlaufsdaten können dann mithilfe [elastischer Abfragen](elastic-query-overview.md) abgefragt werden.
+- Verschieben Sie selten abgefragte Verlaufsdaten in eine andere Datenbank, und migrieren Sie die Verlaufsdaten in eine separate Azure SQL-Datenbank-Instanz. Die Verlaufsdaten können dann mithilfe [elastischer Abfragen](elastic-query-overview.md) abgefragt werden.
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Optimieren der Leistung nach Abschluss der Migration
 
@@ -67,11 +67,11 @@ Die folgende Liste enthält Empfehlungen, mit denen Sie während des Importproze
 
 ## <a name="method-2-use-transactional-replication"></a>Methode 2: Verwenden der Transaktionsreplikation
 
-Wenn Sie es sich nicht leisten können, Ihre SQL Server-Datenbank während der Migration aus der Produktion herauszunehmen, können Sie die SQL Server-Transaktionsreplikation als Migrationslösung verwenden. Die Verwendung dieser Methode setzt voraus, dass die Quelldatenbank die [Anforderungen für die Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx) erfüllt und mit Azure SQL-Datenbank kompatibel ist. Weitere Informationen zur SQL-Replikation mit Always On finden Sie unter [Konfigurieren der Replikation für AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
+Wenn Sie es sich nicht leisten können, Ihre SQL Server-Datenbank während der Migration aus der Produktion herauszunehmen, können Sie die SQL Server-Transaktionsreplikation als Migrationslösung verwenden. Die Verwendung dieser Methode setzt voraus, dass die Quelldatenbank die [Anforderungen für die Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx) erfüllt und mit Azure SQL-Datenbank kompatibel ist. Weitere Informationen zur SQL-Replikation mit Always On finden Sie unter [Konfigurieren der Replikation für AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 
-Zur Verwendung dieser Lösung können Sie Ihre Azure SQL-Datenbank-Instanz als Abonnent der SQL Server-Instanz konfigurieren, die Sie migrieren möchten. Der Verteiler der Transaktionsreplikation synchronisiert die Daten aus der zu synchronisierenden Datenbank (der Veröffentlicher), während weiterhin neue Transaktionen ausgeführt werden.
+Zur Verwendung dieser Lösung können Sie Ihre Azure SQL-Datenbank-Instanz als Abonnent der SQL Server-Instanz konfigurieren, die Sie migrieren möchten. Der Verteiler der Transaktionsreplikation synchronisiert die Daten aus der zu synchronisierenden Datenbank (der Veröffentlicher), während weiterhin neue Transaktionen ausgeführt werden.
 
-Bei der Transaktionsreplikation werden alle Änderungen an Daten oder Schema in Ihrer Azure SQL-Datenbank angezeigt. Wenn die Synchronisierung abgeschlossen ist, und Sie zur Migration bereit sind, ändern Sie die Verbindungszeichenfolgen Ihrer Anwendungen so, dass sie auf Ihre Azure SQL-Datenbank verweisen. Sobald die Transaktionsreplikation alle verbleibenden Änderungen Ihrer Quelldatenbank abgearbeitet hat und alle Anwendungen auf Azure DB verweisen, können Sie die Transaktionsreplikation deinstallieren. Ihre Azure SQL-Datenbank ist jetzt Ihr Produktionssystem.
+Bei der Transaktionsreplikation werden alle Änderungen an Daten oder Schema in Ihrer Azure SQL-Datenbank-Instanz angezeigt. Wenn die Synchronisierung abgeschlossen ist, und Sie zur Migration bereit sind, ändern Sie die Verbindungszeichenfolge Ihrer Anwendungen so, dass sie auf Ihre Datenbank verweist. Sobald die Transaktionsreplikation alle verbleibenden Änderungen Ihrer Quelldatenbank abgearbeitet hat und alle Anwendungen auf Azure DB verweisen, können Sie die Transaktionsreplikation deinstallieren. Ihre Azure SQL-Datenbank-Instanz ist jetzt Ihr Produktionssystem.
 
  ![SeedCloudTR-Diagramm](./media/migrate-to-database-from-sql-server/SeedCloudTR.png)
 
@@ -117,7 +117,7 @@ Es können verschiedenste Kompatibilitätsprobleme auftreten. Dies hängt von de
 Zusätzlich zur Suche im Internet und zur Verwendung dieser Ressourcen sollten Sie die [Microsoft F&A-Seite für Azure SQL-Datenbank](https://docs.microsoft.com/answers/topics/azure-sql-database.html) oder [StackOverflow](https://stackoverflow.com/) verwenden.
 
 > [!IMPORTANT]
-> Eine verwaltete Azure SQL-Instanz ermöglicht die Migration einer vorhandenen SQL Server-Instanz und deren Datenbanken mit minimalen oder keinen Kompatibilitätsproblemen. Weitere Informationen finden Sie unter [Was ist eine verwaltete Azure SQL-Instanz?](../managed-instance/sql-managed-instance-paas-overview.md).
+> Eine verwaltete Azure SQL-Instanz ermöglicht die Migration einer vorhandenen SQL Server-Instanz und deren Datenbanken mit minimalen oder keinen Kompatibilitätsproblemen. Siehe [Was ist eine verwaltete Instanz?](../managed-instance/sql-managed-instance-paas-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -126,3 +126,4 @@ Zusätzlich zur Suche im Internet und zur Verwendung dieser Ressourcen sollten S
 - Einen Blogbeitrag des SQL Server-Kundenberatungsteams zur Migration mithilfe von BACPAC-Dateien finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
 - Informationen zur Verwendung von UTC-Zeit nach der Migration finden Sie unter [Modifying the default time zone for your local time zone](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/) (Ändern der Standardzeitzone für Ihre lokale Zeitzone).
 - Informationen zum Ändern der Standardsprache einer Datenbank nach der Migration finden Sie unter [How to change the default language of Azure SQL Database](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/) (Ändern der Standardsprache von Azure SQL-Datenbank).
+ 

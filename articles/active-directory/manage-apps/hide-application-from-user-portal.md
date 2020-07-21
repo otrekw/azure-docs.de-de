@@ -1,25 +1,25 @@
 ---
-title: Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure AD
-description: Ausblenden einer Anwendung auf der Benutzeroberfläche in Zugriffsbereichen von Azure Active Directory oder Startfeldern von Office 365
+title: Ausblenden einer Unternehmensanwendung auf der Benutzeroberfläche in Azure AD
+description: Ausblenden einer Enterpise-Anwendung auf der Benutzeroberfläche in Zugriffsbereichen von Azure Active Directory oder Startfeldern von Office 365
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5718adf4fd76e2fbd0ff793dd2fa33ee08f7c0fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295049"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367698"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Ausblenden von Anwendungen für Endbenutzer in Azure Active Directory
+# <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Ausblenden von Unternehmensanwendung für Endbenutzer in Azure Active Directory
 
 Enthält eine Anleitung, wie Sie Anwendungen für das Panel „MyApps“ oder das Office 365-Startprogramm von Endbenutzern ausblenden. Wenn eine Anwendung ausgeblendet ist, verfügen Benutzer trotzdem über Berechtigungen für die Anwendung. 
 
@@ -34,13 +34,16 @@ Die Rechte eines globalen Administrators sind erforderlich, um alle Office 365-A
 Führen Sie die folgenden Schritte aus, um eine Anwendung für das Panel „MyApps“ und das Startprogramm der Office 365-Anwendung auszublenden.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator für Ihr Verzeichnis an.
-2.  Wählen Sie **Azure Active Directory**.
+2.  Wählen Sie **Azure Active Directory** aus.
 3.  Wählen Sie **Unternehmensanwendungen**. Das Blatt **Unternehmensanwendungen – Alle Anwendungen** wird geöffnet.
 4.  Wählen Sie unter **Anwendungstyp** die Option **Unternehmensanwendungen** aus, falls sie noch nicht ausgewählt ist.
 5.  Suchen Sie nach der Anwendung, die Sie ausblenden möchten, und klicken Sie darauf.  Die Übersicht der Anwendung wird geöffnet.
 6.  Klicken Sie auf **Eigenschaften**. 
 7.  Klicken Sie für die Frage **Für Benutzer sichtbar?** auf **Nein**.
 8.  Klicken Sie auf **Speichern**.
+
+> [!NOTE]
+> Diese Anweisungen gelten nur für Unternehmensanwendungen.
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Ausblenden einer Anwendung mit Azure AD PowerShell
 
@@ -61,11 +64,12 @@ Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 Mit den folgenden Schritten können Sie alle Office 365-Anwendungen im Panel „MyApps“ ausblenden. Die Anwendungen sind im Office 365-Portal weiterhin sichtbar.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator für Ihr Verzeichnis an.
-2.  Wählen Sie **Azure Active Directory**.
-3.  Wählen Sie **Benutzereinstellungen** aus.
-4.  Klicken Sie unter **Unternehmensanwendungen** auf **Start und Anzeige von Anwendungen durch Endbenutzer verwalten**.
-5.  Klicken Sie für **Benutzer können Office 365-Apps nur im Office 365-Portal anzeigen** auf **Ja**.
-6.  Klicken Sie auf **Speichern**.
+2.  Wählen Sie **Azure Active Directory** aus.
+3.  Wählen Sie **Benutzer** aus.
+4.  Wählen Sie **Benutzereinstellungen** aus.
+5.  Klicken Sie unter **Unternehmensanwendungen** auf **Start und Anzeige von Anwendungen durch Endbenutzer verwalten**.
+6.  Klicken Sie für **Benutzer können Office 365-Apps nur im Office 365-Portal anzeigen** auf **Ja**.
+7.  Klicken Sie auf **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Alle meine Gruppen anzeigen](../fundamentals/active-directory-groups-view-azure-portal.md)

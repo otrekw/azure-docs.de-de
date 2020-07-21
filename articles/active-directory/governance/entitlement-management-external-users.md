@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af0f68ca9520c1715463212da80aaabed48f8269
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338214"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung
 
@@ -103,13 +103,13 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 
 - Stellen Sie sicher, dass die Einstellungen auf Websiteebene den Gastzugriff ermöglichen (es müssen dieselben Optionen ausgewählt sein, wie zuvor aufgeführt). Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe für eine Website](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
 
-### <a name="review-your-office-365-group-sharing-settings"></a>Überprüfen der Freigabeeinstellungen der Office 365-Gruppe
+### <a name="review-your-microsoft-365-group-sharing-settings"></a>Überprüfen der Freigabeeinstellungen der Microsoft 365-Gruppe
 
-- Wenn Sie Office 365-Gruppen in Ihre Zugriffspakete für externe Benutzer aufnehmen möchten, stellen Sie sicher, dass **Benutzer dürfen neue Gastbenutzer zur Organisation hinzufügen** auf **Ein** gesetzt ist, damit Gastbenutzer zugreifen können. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs auf Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Wenn Sie Microsoft 365-Gruppen in Ihre Zugriffspakete für externe Benutzer aufnehmen möchten, stellen Sie sicher, dass **Benutzer dürfen neue Gastbenutzer zur Organisation hinzufügen** auf **Ein** festgelegt ist, damit Gastbenutzer zugreifen können. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs auf Microsoft 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
-- Wenn Sie möchten, dass externe Benutzer auf die SharePoint Online-Website und die der Office 365-Gruppe zugeordneten Ressourcen zugreifen können, müssen Sie sicherstellen, dass die externe SharePoint Online-Freigabe aktiviert ist. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Wenn Sie möchten, dass externe Benutzer auf die SharePoint Online-Website und die der Microsoft 365-Gruppe zugeordneten Ressourcen zugreifen können, müssen Sie sicherstellen, dass die externe SharePoint Online-Freigabe aktiviert ist. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Informationen zum Einrichten einer Gastrichtlinie für Office 365-Gruppen auf Verzeichnisebene in PowerShell finden Sie in [Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- Informationen zum Einrichten einer Gastrichtlinie für Microsoft 365-Gruppen auf Verzeichnisebene in PowerShell finden Sie in [Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>Überprüfen der Freigabeeinstellungen für Microsoft Teams
 

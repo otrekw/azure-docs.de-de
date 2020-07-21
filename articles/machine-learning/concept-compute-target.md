@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/30/2020
-ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/26/2020
+ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483277"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -52,21 +52,23 @@ Sie können Azure Machine Learning-Compute-Instanzen (Vorschau) oder -Computeclu
 * Azure Machine Learning Studio
 * Azure-Portal
 * Python SDK-Klassen [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) und [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Vorschau)
 * Resource Manager-Vorlage
-
-Sie können auch Computecluster mit der [Erweiterung für maschinelles Lernen für die Azure CLI](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training) erstellen.
+* Machine-Learning-[Erweiterung für die Azure CLI](reference-azure-machine-learning-cli.md#resource-management)  
 
 Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
 
-### <a name="compute-clusters"></a>Computecluster
 
-Sie können Azure Machine Learning-Computecluster für zum Trainieren und für Batchrückschlüsse (Vorschau) verwenden.  Diese Computeressource bietet Folgendes:
+|Funktion  |Computecluster  |Compute-Instanz  |
+|---------|---------|---------|
+|Cluster mit einem oder mehreren Knoten     |    **&check;**       |         |
+|Automatische Skalierung bei jedem Übermitteln einer Ausführung     |     **&check;**      |         |
+|Automatische Clusterverwaltung und Auftragsplanung     |   **&check;**        |     **&check;**      |
+|Unterstützt CPU- und GPU-Ressourcen     |  **&check;**         |    **&check;**       |
 
-* Cluster mit einem oder mehreren Knoten
-* Automatische Skalierung bei jedem Übermitteln einer Ausführung 
-* Automatische Clusterverwaltung und Auftragsplanung 
-* Unterstützt CPU- und GPU-Ressourcen
+
+> [!NOTE]
+> Wenn sich ein Computecluster im Leerlauf befindet, wird er automatisch auf 0 Knoten skaliert. Es entstehen also keine Kosten, wenn der Cluster nicht verwendet wird.  Eine Compute*instanz* ist jedoch immer verfügbar und wird nicht automatisch skaliert.  Sie sollten [Computeinstanzen anhalten](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance), wenn Sie sie nicht verwenden, um unnötige Kosten zu vermeiden.
 
 ### <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
 

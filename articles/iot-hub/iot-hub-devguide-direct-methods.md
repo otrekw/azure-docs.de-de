@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 873f871625b812937d1e6ac360f7e0565121a4eb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583687"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045993"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
 
@@ -33,7 +33,7 @@ Falls Sie weitere Informationen dazu benötigen, was die Verwendung von gewünsc
 
 ## <a name="method-lifecycle"></a>Methodenlebenszyklus
 
-Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnungsgemäße Instanziierung null oder mehr Eingaben in der Methodennutzlast erfordern. Sie rufen eine direkte Methode über einen dienstseitigen URI (`{iot hub}/twins/{device id}/methods/`) auf. Ein Gerät empfängt direkte Methoden über ein gerätespezifisches MQTT-Thema (`$iothub/methods/POST/{method name}/`) oder über AMQP-Links (die Anwendungseigenschaften `IoThub-methodname` und `IoThub-status`). 
+Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnungsgemäße Instanziierung null oder mehr Eingaben in der Methodennutzlast erfordern. Sie rufen eine direkte Methode über einen dienstseitigen URI (`{iot hub}/twins/{device id}/methods/`) auf. Ein Gerät empfängt direkte Methoden über ein gerätespezifisches MQTT-Thema (`$iothub/methods/POST/{method name}/`) oder über AMQP-Links (die Anwendungseigenschaften `IoThub-methodname` und `IoThub-status`).
 
 > [!NOTE]
 > Wenn Sie eine direkte Methode auf einem Gerät aufrufen, können Eigenschaftennamen und -werte nur druckbare alphanumerische US-ASCII-Zeichen mit Ausnahme der folgenden enthalten: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnu
 
 Direkte Methoden sind synchron und werden nach dem Zeitlimit (Standardwert: 30 Sekunden, einstellbar zwischen 5 und 300 Sekunden). Direkte Methoden sind hilfreich bei interaktiven Szenarios, in denen ein Gerät genau dann agieren soll, wenn es online ist und Befehle empfängt. Beispiel: Einschalten von Beleuchtung über ein Telefon. In diesen Szenarios soll der Erfolg oder Misserfolg unmittelbar erkennbar sein, damit der Clouddienst so schnell wie möglich auf das Ergebnis reagieren kann. Das Gerät kann einen Nachrichtentext als Ergebnis der Methode zurückgeben, dies ist für die Methode aber nicht erforderlich. Es gibt keine Garantie für die Sortierung oder eine Parallelitätssemantik für Methodenaufrufe.
 
-Direkte Methoden erfolgen von der Cloudseite nur über HTTPS und von der Geräteseite über MQTT oder AMQP.
+Direkte Methoden erfolgen von der Cloudseite nur über HTTPS und von der Geräteseite über MQTT, AMQP, MQTT über WebSockets oder AMQP über WebSockets.
 
 Die Nutzlast für Methodenanforderungen und -antworten ist ein JSON-Dokument mit bis zu 128 KB.
 
@@ -80,12 +80,11 @@ Der als `responseTimeoutInSeconds` in der Anforderung angegebene Wert ist die Ze
 
 Der als `connectTimeoutInSeconds` in der Anforderung angegebene Wert ist die Zeitspanne nach dem Aufrufen einer direkten Methode, die der IoT Hub-Dienst darauf warten muss, dass ein getrenntes Gerät online geschaltet wird. Der Standardwert ist 0 (Null). Das bedeutet, dass Geräte beim Aufrufen einer direkten Methode bereits online sein müssen. Der Höchstwert für `connectTimeoutInSeconds` beträgt 300 Sekunden.
 
-
 #### <a name="example"></a>Beispiel
 
 In diesem Beispiel können Sie eine Anforderung zum Aufrufen einer direkten Methode auf einem IoT-Gerät, das bei einem Azure IoT Hub registriert wurde, sicher initiieren.
 
-Verwenden Sie zuerst die [Microsoft Azure IoT-Erweiterung für Azure CLI](https://github.com/Azure/azure-iot-cli-extension), um eine SharedAccessSignature zu erstellen. 
+Verwenden Sie zuerst die [Microsoft Azure IoT-Erweiterung für Azure CLI](https://github.com/Azure/azure-iot-cli-extension), um eine SharedAccessSignature zu erstellen.
 
 ```bash
 az iot hub generate-sas-token -n <iothubName> -du <duration>
@@ -114,7 +113,7 @@ Führen Sie den geänderten Befehl aus, um die angegebene direkte Methode aufzur
 > Im vorstehenden Beispiel wird das Aufrufen einer direkten Methode auf einem Gerät veranschaulicht.  Wenn Sie in einem IoT Edge-Modul eine direkte Methode aufrufen möchten, müssen Sie die URL-Anforderung wie unten gezeigt ändern:
 
 ```bash
-https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
 ```
 ### <a name="response"></a>Antwort
 

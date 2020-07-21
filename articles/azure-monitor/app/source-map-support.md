@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie mithilfe von Application Insights Quellz
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: d5f01bb3034ab060227230071a21284177840e83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249736"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Unterstützung für Quellzuordnungen für JavaScript-Anwendungen
 
@@ -31,7 +31,9 @@ Wenn Sie bereits über ein vorhandenes Speicherkonto oder einen Blobcontainer ve
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>Übertragen der Quellzuordnungen per Push an Ihren Blobcontainer
 
-Sie sollten die Continuous Deployment-Pipeline in Ihr Speicherkonto integrieren, indem Sie das Konto so konfigurieren, dass die Quellzuordnungen automatisch in den konfigurierten Blobcontainer hochgeladen werden. Sie sollten die Quellzuordnungen nicht in einen Unterordner im Blobcontainer hochladen. Derzeit wird die Quellzuordnung nur aus dem Stammordner abgerufen.
+Sie sollten die Continuous Deployment-Pipeline in Ihr Speicherkonto integrieren, indem Sie das Konto so konfigurieren, dass die Quellzuordnungen automatisch in den konfigurierten Blobcontainer hochgeladen werden.
+
+Quellzuordnungsdateien können in Ihren Blob Storage-Container mit derselben Ordnerstruktur hochgeladen werden, mit der sie kompiliert und bereitgestellt wurden. Ein gängiger Anwendungsfall ist es, einen Bereitstellungsordner seine Version voranzustellen, z. B. `1.2.3/static/js/main.js`. Beim Deminimieren über einen Azure Blob-Container namens `sourcemaps` wird versucht, eine Quellzuordnungsdatei abzurufen, die sich unter `sourcemaps/1.2.3/static/js/main.js.map` befindet.
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Hochladen von Quellzuordnungen über Azure Pipelines (empfohlen)
 

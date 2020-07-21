@@ -7,36 +7,66 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: d2b25fb93a1e35ffa82cf49c60d181b841b1692d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/12/2020
+ms.openlocfilehash: 3399ace71d3a28ea903991e0439f1c9ddcc939d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565394"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentationressourcen für die KI-Anreicherung in Azure Cognitive Search
 
-Die KI-Anreicherung ist eine Funktion im Azure Cognitive Search-Index, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und sie in durchsuchbare Volltextinhalte in Azure Cognitive Search umwandelt.
+Die KI-Anreicherung ist ein Add-On für die Indexer-basierte Indizierung, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und in durchsuchbare Volltextinhalte in Azure Cognitive Search umwandelt. 
 
-Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
+Bei integrierter Verarbeitung werden die vorab trainierten KI-Modelle in Cognitive Services intern aufgerufen, um die Analysen auszuführen. Sie können mithilfe von Azure Machine Learning, Azure Functions oder anderen Ansätzen auch benutzerdefinierte Modelle integrieren.
 
-## <a name="getting-started"></a>Erste Schritte
-+ [Einführung in die KI in Azure Cognitive Search](cognitive-search-concept-intro.md)
+Im Folgenden finden Sie eine konsolidierte Liste der Dokumentation für die KI-Anreicherung.
+
+## <a name="concepts"></a>Konzepte
+
++ [KI-Anreicherungen](cognitive-search-concept-intro.md)
++ [Skillsets](cognitive-search-working-with-skillsets.md)
++ [Debugsitzungen](cognitive-search-debug-session.md)
++ [Wissensspeicher](knowledge-store-concept-intro.md)
++ [Projektionen](knowledge-store-projection-overview.md)
++ [Inkrementelle Anreicherung (Wiederverwendung eines zwischengespeicherten angereicherten Dokuments)](cognitive-search-incremental-indexing-conceptual.md)
+
+## <a name="hands-on-walkthroughs"></a>Praktische Anleitungen
+
 + [Schnellstart: Erstellen eines kognitiven Skillsets im Azure-Portal](cognitive-search-quickstart-blob.md)
 + [Tutorial: Angereicherte Indizierung mit künstlicher Intelligenz (KI)](cognitive-search-tutorial-blob.md)
-+ [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
++ [Tutorial: Diagnostizieren, Reparieren und Committen von Änderungen an Ihrem Skillset](cognitive-search-tutorial-debug-sessions.md)
+
+## <a name="knowledge-stores"></a>Wissensspeicher
+
++ [Schnellstart: Erstellen eines Azure Cognitive Search-Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md)
++ [Erstellen eines Wissensspeichers mithilfe von REST und Postman](knowledge-store-create-rest.md)
++ [Anzeigen eines Wissensspeichers mit Storage-Explorer](knowledge-store-view-storage-explorer.md)
++ [Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI](knowledge-store-connect-power-bi.md)
++ [Wissensspeicherprojektionen: Strukturieren und Exportieren von Anreicherungen](knowledge-store-projections-examples.md)
+
+## <a name="custom-skills-advanced"></a>Benutzerdefinierte Qualifikationen (erweitert)
+
++ [Definieren einer benutzerdefinierten Skillsschnittstelle](cognitive-search-custom-skill-interface.md)
++ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md)
++ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit Python](cognitive-search-custom-skill-python.md)
++ [Beispiel: Erstellen eines benutzerdefinierten Skills der Formularerkennung](cognitive-search-custom-skill-form.md) 
++ [Beispiel: Erstellen und Bereitstellen eines benutzerdefinierten Skills mit Azure Machine Learning](cognitive-search-tutorial-aml-custom-skill.md) 
 
 ## <a name="how-to-guidance"></a>Leitfäden zur Vorgehensweise
-+ [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Verweisen auf Anmerkungen in einem Skillset](cognitive-search-concept-annotations-syntax.md)
-+ [Zuordnen von Feldern zu einem Index](cognitive-search-output-field-mapping.md)
-+ [Verarbeiten und Extrahieren von Informationen aus Bildern](cognitive-search-concept-image-scenarios.md)
-+ [Neuerstellen eines Azure Cognitive Search-Indexes](search-howto-reindex.md)
-+ [Definieren einer benutzerdefinierten Skillsschnittstelle](cognitive-search-custom-skill-interface.md)
-+ [Tipps zur Problembehandlung](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Verweis
++ [Anfügen einer Cognitive Services-Ressource an ein Skillset in der kognitiven Azure-Suche](cognitive-search-attach-cognitive-services.md)
++ [Definieren einer Fähigkeitengruppe](cognitive-search-defining-skillset.md)
++ [Verweisen auf Anmerkungen in einem Skillset der kognitiven Azure-Suche](cognitive-search-concept-annotations-syntax.md)
++ [Zuordnen von mit KI angereicherten Feldern zu einem durchsuchbaren Index](cognitive-search-output-field-mapping.md)
++ [Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarios](cognitive-search-concept-image-scenarios.md)
++ [Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung](search-howto-incremental-index.md)
++ [Neuerstellen eines Azure Cognitive Search-Indexes](search-howto-reindex.md)
++ [KI-Anreicherung in Azure Cognitive Search](cognitive-search-concept-troubleshooting.md)
++ [Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search](cognitive-search-common-errors-warnings.md)
+
+## <a name="skills-reference"></a>Referenz zu Skills
 
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
@@ -54,14 +84,17 @@ Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Benutzerdefinierte Qualifikationen
+  + [Microsoft.Skills.Custom.AmlSkill](cognitive-search-aml-skill.md)
   + [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md)
 
 + [Veraltete Skills](cognitive-search-skill-deprecated.md)
   + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
 
+## <a name="apis"></a>APIs
+
 + [REST-API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Erstellen eines Skillsets (API-Version 30.06.2020)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Erstellen eines Indexers (API-Version 30.06.2020)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Weitere Informationen
 

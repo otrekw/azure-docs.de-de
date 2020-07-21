@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie ein persistentes Volume mit Azure-Datenträge
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751354"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,11 @@ Jeder AKS-Cluster schließt zwei vorab erstellte Speicherklassen ein, die beide 
 * Die Speicherklasse *managed-premium* stellt einen Azure Premium-Datenträger bereit.
     * Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Wenn die AKS-Knoten in dem Cluster Storage Premium verwenden, wählen Sie die *managed-premium*-Klasse aus.
     
-Diese Standardspeicherklassen erlauben nicht, die Größe des Volumes nach der Erstellung zu aktualisieren. Um dies zu ermöglichen, fügen Sie einer der Standardspeicherklassen die Zeile *allowVolumeExpansion: true* hinzu, oder erstellen Sie Ihre eigene benutzerdefinierte Speicherklasse. Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. Weitere Informationen zu Speicherklassen und der Erstellung eigener Speicherklassen finden Sie unter [Speicheroptionen für Anwendungen in AKS][storage-class-concepts].
+Wenn Sie eine der Standardspeicherklassen verwenden, können Sie die Volumegröße nicht mehr aktualisieren, nachdem die Speicherklasse erstellt wurde. Wenn Sie die Volumegröße auch nach der Erstellung einer Speicherklasse noch ändern können möchten, fügen Sie einer der Standardspeicherklassen die Zeile `allowVolumeExpansion: true` hinzu, oder Sie erstellen Ihre eigene, benutzerdefinierte Speicherklasse. Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. 
+
+Wenn Sie beispielsweise einen Datenträger mit einer Größe von 4 TiB verwenden möchten, müssen Sie eine Speicherklasse erstellen, die `cachingmode: None` definiert, da [Datenträgerzwischenspeicherungen für Datenträger ab 4 TiB nicht unterstützt werden](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
+
+Weitere Informationen zu Speicherklassen und der Erstellung eigener Speicherklassen finden Sie unter [Speicheroptionen für Anwendungen in AKS][storage-class-concepts].
 
 Mit dem Befehl [kubectl get sc][kubectl-get] können Sie die vorab erstellten Speicherklassen anzeigen. Im folgenden Beispiel werden die in einem AKS-Cluster verfügbaren vorab erstellten Speicherklassen gezeigt:
 

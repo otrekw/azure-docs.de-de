@@ -5,16 +5,16 @@ description: Erfahren Sie, wie Sie die Azure CLI verwenden, um einen neuen Azure
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392708"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 Der Azure Machine Learning-Arbeitsbereich basiert auf den folgenden Azure-Diensten oder -Entitäten:
 
 > [!IMPORTANT]
-> Wenn Sie keinen vorhandenen Azure-Dienst angeben, wird während der Erstellung des Arbeitsbereichs automatisch ein Dienst erstellt. Sie müssen immer eine Ressourcengruppe angeben.
+> Wenn Sie keinen vorhandenen Azure-Dienst angeben, wird während der Erstellung des Arbeitsbereichs automatisch ein Dienst erstellt. Sie müssen immer eine Ressourcengruppe angeben. Wenn Sie Ihr eigenes Speicherkonto anfügen, sorgen Sie dafür, dass dafür sowohl Azure-Blob- als auch Azure File Storage-Funktionen aktiviert sind und dass der hierarchische Namespace (ADLS Gen 2) deaktiviert ist. Sie können Ihr eigenes Speicherkonto auch jederzeit später als Datenspeicher hinzufügen, nachdem der Arbeitsbereich erstellt wurde.
 
 | Dienst | Parameter zum Angeben einer vorhandenen Instanz |
 | ---- | ---- |
@@ -317,7 +317,7 @@ Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace share]
 
 ## <a name="sync-keys-for-dependent-resources"></a>Synchronisieren von Schlüsseln für abhängige Ressourcen
 
-Wenn Sie Zugriffsschlüssel für eine der Ressourcen ändern, die von Ihrem Arbeitsbereich verwendet werden, verwenden Sie den folgenden Befehl, um die neuen Schlüssel mit dem Arbeitsbereich zu synchronisieren:
+Wenn Sie Zugriffsschlüssel für eine der Ressourcen ändern, die von Ihrem Arbeitsbereich verwendet werden, verwenden Sie den folgenden Befehl, um die neuen Schlüssel mit dem Arbeitsbereich zu synchronisieren. Wenn Sie erzwingen möchten, dass der Arbeitsbereich die neuen Schlüssel sofort synchronisiert, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

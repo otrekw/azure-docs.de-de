@@ -5,18 +5,18 @@ description: Es wird beschrieben, wie ein Webdienst-Endpunkt aufgerufen werden k
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 06/17/2020
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: ced9453982615485e25b56be9b7a36dc8f6ce988
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383390"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974669"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,8 +128,16 @@ token, refresh_by = service.get_token()
 print(token)
 ```
 
+Wenn Sie über die [Azure CLI und die Machine-Learning-Erweiterung](reference-azure-machine-learning-cli.md) verfügen, können Sie den folgenden Befehl zum Abrufen eines Tokens verwenden:
+
+```azurecli
+az ml service get-access-token -n <service-name>
+```
+
 > [!IMPORTANT]
-> Nach Ablauf der für `refresh_by` festgelegten Zeit müssen Sie ein neues Token anfordern. 
+> Aktuell besteht der einzige Weg, das Token abzurufen, darin, das Azure Machine Learning-SDK oder die Azure CLI-Machine-Learning-Erweiterung zu verwenden.
+
+Nach Ablauf der für `refresh_by` festgelegten Zeit müssen Sie ein neues Token anfordern. 
 
 ## <a name="request-data"></a>Anforderungsdaten
 

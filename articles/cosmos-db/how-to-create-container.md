@@ -3,15 +3,15 @@ title: Erstellen eines Containers in Azure Cosmos DB
 description: Erfahren Sie, wie Sie einen Container in Azure Cosmos DB mit dem Azure-Portal, mit .NET, Java, Python, Node.js und anderen SDKs erstellen.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 809ebe848e38a7c99c96ef44f130da917fb35942
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390889"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Erstellen eines Azure Cosmos-Containers
 
@@ -36,7 +36,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
    * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-    ![Screenshot des Bereichs „Daten-Explorer“ mit hervorgehobener Option „Neuer Container“](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Screenshot des Bereichs „Daten-Explorer“ mit hervorgehobener Option „Neuer Container“":::
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
@@ -52,7 +52,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
    * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-    ![Screenshot der Azure Cosmos DB-API für MongoDB, Dialogfeld „Container hinzufügen“](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Screenshot der Azure Cosmos DB-API für MongoDB, Dialogfeld „Container hinzufügen“":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
 
@@ -68,7 +68,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
    * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-    ![Screenshot der Cassandra-API, Dialogfeld „Tabelle hinzufügen“](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Screenshot der Cassandra-API, Dialogfeld „Tabelle hinzufügen“":::
 
 > [!NOTE]
 > Bei der Cassandra-API wird der Primärschlüssel als Partitionsschlüssel verwendet.
@@ -88,7 +88,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
    * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-    ![Screenshot der Gremlin-API, Dialogfeld „Diagramm hinzufügen“](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Screenshot der Gremlin-API, Dialogfeld „Diagramm hinzufügen“":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tabellen-API
 
@@ -102,7 +102,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
    * Geben Sie den bereitzustellenden Durchsatz an (etwa 1.000 RUs).
    * Klicken Sie auf **OK**.
 
-    ![Screenshot der Tabellen-API, Dialogfeld „Tabelle hinzufügen“](./media/how-to-create-container/partitioned-collection-create-table.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Screenshot der Tabellen-API, Dialogfeld „Tabelle hinzufügen“":::
 
 > [!Note]
 > Bei der Tabellen-API wird der Partitionsschlüssel jedes Mal angegeben, wenn Sie eine neue Zeile hinzufügen.
@@ -132,6 +132,8 @@ Eine Liste aller Azure CLI-Beispiele für alle Azure Cosmos DB-APIs finden Sie
 * [Erstellen einer Tabellen-API-Tabelle mit PowerShell](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Erstellen eines Containers mithilfe des .NET SDK
+
+Wenn eine Timeoutausnahme zurückgegeben wird, wenn eine Sammlung erstellt wird, führen Sie einen Lesevorgang aus, um zu überprüfen, ob die Sammlung erfolgreich erstellt wurde. Der Lesevorgang gibt eine Ausnahme zurück, bis der Vorgang zum Erstellen der Sammlung erfolgreich war. Eine Liste der von dem Erstellvorgang unterstützten Statuscodes finden Sie im Artikel [HTTP-Statuscodes für Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL-API und Gremlin-API
 

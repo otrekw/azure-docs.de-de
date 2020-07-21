@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie SQL-FQDNs in Azure Firewall-An
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 05/18/2020
+ms.topic: how-to
+ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e921ea707e4a0df968d162726fe53064491cb032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610505"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurieren von Azure Firewall-Anwendungsregeln mit SQL-FQDNs
 
@@ -24,7 +24,7 @@ Mit SQL-FQDNs können Sie Datenverkehr wie folgt filtern:
 - Von Ihrer lokalen Umgebung an verwaltete Azure SQL-Instanzen oder an SQL-IaaS in Ihren VNETs
 - Von Spoke-zu-Spoke an verwaltete Azure SQL-Instanzen oder an SQL-IaaS in Ihren VNETs
 
-Die SQL-FQDN-Filterung wird nur im [Proxymodus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) unterstützt (Port 1433). Wenn Sie SQL im standardmäßigen Umleitungsmodus verwenden, können Sie zur Filterung des Zugriffs das SQL-Diensttag im Rahmen von [Netzwerkregeln](overview.md#network-traffic-filtering-rules) verwenden.
+Die SQL-FQDN-Filterung wird nur im [Proxymodus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) unterstützt (Port 1433). Wenn Sie SQL im standardmäßigen Umleitungsmodus verwenden, können Sie zur Filterung des Zugriffs das SQL-Diensttag im Rahmen von [Netzwerkregeln](features.md#network-traffic-filtering-rules) verwenden.
 Wenn Sie nicht standardmäßige Ports für SQL-IaaS-Datenverkehr verwenden, können Sie diese Ports in den Firewallanwendungsregeln konfigurieren.
 
 ## <a name="configure-using-azure-cli"></a>Konfigurieren über die Azure-Befehlszeilenschnittstelle

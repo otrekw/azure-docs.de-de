@@ -1,20 +1,14 @@
 ---
 title: Erstellen von Azure Service Bus-Warteschlangen und -Themen | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Service Bus-Warteschlangen und -Themen mit mehreren Nachrichtenbrokern partitioniert werden.
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2020
-ms.author: aschhab
-ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 6ea0bee255f489355056f91d82195382153786bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339640"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
@@ -30,6 +24,8 @@ Es ist nicht möglich, die Partitionierungsoption für eine vorhandene Warteschl
 Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Partitionen. Jede Partition wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein partitioniertes Thema gesendet wird, weist Service Bus die Nachricht einem der Partitionen zu. Service Bus nimmt die Auswahl willkürlich oder mithilfe eines Partitionsschlüssels vor, den der Absender angeben kann.
 
 Wenn ein Client eine Nachricht von einer partitionierten Warteschlange oder von einem Abonnement eines partitionierten Themas empfangen möchte, fragt Service Bus alle Partitionen auf Nachrichten ab. Anschließend wird die erste Nachricht zurückgegeben, die von einem der Nachrichtenspeicher an den Empfänger gesendet wird. Service Bus speichert die anderen Nachrichten zwischen und gibt sie zurück, wenn zusätzliche Empfangsanforderungen eingehen. Ein empfangender Client ist sich der Partitionierung nicht bewusst. Das Verhalten einer partitionierten Warteschlange oder eines Themas (z.B. „read“, „complete“, „defer“, „deadletter“, „prefetching“) dem Client gegenüber ist mit dem Verhalten einer normalen Entität identisch.
+
+Der Peekvorgang auf einer nicht partitionierten Entität gibt immer die älteste Nachricht zurück. Dies ist jedoch auf einer partitionierten Entität nicht der Fall. Stattdessen wird hier die älteste Nachricht in einer der Partitionen zurückgegeben, deren Nachrichtenbroker zuerst reagiert hat. Es gibt keine Garantie, dass es sich bei der zurückgegebenen Nachricht um die älteste auf allen Partitionen handelt. 
 
 Es fallen keine zusätzlichen Kosten an, wenn eine Nachricht an eine partitionierte Warteschlange oder ein Thema gesendet oder von dort empfangen wird.
 

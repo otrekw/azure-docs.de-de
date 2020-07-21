@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710438"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -261,7 +261,7 @@ In der folgenden Tabelle wird die Zuordnung von Azure IoT Central-Gerätefeature
 | Eigenschaft (schreibbar) | Gewünschte und gemeldete Eigenschaften von Gerätezwillingen |
 | Get-Help | Direkte Methoden |
 
-Wenn Sie mehr über die Verwendung der Geräte-SDKs erfahren möchten, sehen Sie sich den Beispielcode unter [Verbinden eines DevKit-Geräts mit Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md) an.
+Wenn Sie mehr über die Verwendung der Geräte-SDKs erfahren möchten, sehen Sie sich den Beispielcode unter [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md) an.
 
 ### <a name="protocols"></a>Protokolle
 

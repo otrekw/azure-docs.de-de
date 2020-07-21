@@ -3,8 +3,8 @@ title: Planen der Bereitstellung eines Azure Active Directory-Anwendungsproxys
 description: Enthält eine umfassende Anleitung zur Planung der Bereitstellung eines Anwendungsproxys in Ihrer Organisation.
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: kenwith
+ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367783"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -254,7 +253,7 @@ Lesen Sie [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-i
 
 ###  <a name="working-with-other-types-of-applications"></a>Arbeiten mit anderen Arten von Anwendungen
 
-Der Azure AD-Anwendungsproxy kann auch Anwendungen unterstützen, die für die Nutzung der Microsoft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) entwickelt wurden. Hierbei werden native Client-Apps unterstützt, indem von Azure AD ausgestellte Token genutzt werden, die in den Headerinformationen von Clientanforderungen empfangen wurden, um die Vorauthentifizierung im Namen von Benutzern durchzuführen.
+Der Azure AD-Anwendungsproxy kann auch Anwendungen unterstützen, die für die Nutzung der [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) entwickelt wurden. Hierbei werden native Client-Apps unterstützt, indem von Azure AD ausgestellte Token genutzt werden, die in den Headerinformationen von Clientanforderungen empfangen wurden, um die Vorauthentifizierung im Namen von Benutzern durchzuführen.
 
 Lesen Sie [Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) und [Arbeiten mit Ansprüche unterstützenden Apps im Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps), um sich über die verfügbaren Konfigurationen des Anwendungsproxys zu informieren.
 
@@ -318,7 +317,7 @@ In den folgenden Artikeln werden allgemeine Szenarien behandelt, die Sie auch zu
 * [Problem beim Anzeigen der App-Seite](application-proxy-page-appearance-broken-problem.md)
 * [Laden der Anwendung dauert zu lange.](application-proxy-page-load-speed-problem.md)
 * [Links auf der Anwendungsseite funktionieren nicht.](application-proxy-page-links-broken-problem.md)
-* [Für die App zu öffnende Ports](application-proxy-connectivity-ports-how-to.md)
+* [Für die App zu öffnende Ports](application-proxy-add-on-premises-application.md)
 * [Kein funktionierender Connector in einer Connectorguppe für meine App](application-proxy-connectivity-no-working-connector.md)
 * [Konfigurieren im Verwaltungsportal](application-proxy-config-how-to.md)
 * [Konfigurieren des einmaligen Anmeldens für meine App](application-proxy-config-sso-how-to.md)

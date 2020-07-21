@@ -3,17 +3,17 @@ title: Entwerfen von Azure Cosmos DB-Tabellen für die Skalierung und Leistung
 description: Handbuch für den Azure-Tabellenspeicherentwurf Skalierbare und leistungsfähige Tabellen in Azure Cosmos DB und Azure-Tabellenspeicher
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: conceptual
-ms.date: 05/21/2019
+ms.topic: how-to
+ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b5e2dc56ad84504f0bf5ced09d865d7cb4e467fa
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651919"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027801"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure-Tabellenspeicher – Entwurfshandbuch: Skalierbare und leistungsfähige Tabellen
 
@@ -312,7 +312,7 @@ Erstellen von Domänenmodellen ist ein wichtiger Schritt bei der Entwicklung kom
 
 Nehmen Sie das Beispiel eines großen multinationalen Konzerns mit zehntausenden von Abteilungen und Mitarbeiterentitäten. Jede Abteilung verfügt über viele Mitarbeiter und jeder Mitarbeiter ist einer bestimmten Abteilung zugeordnet. Ein Ansatz besteht darin, separate Abteilungs- und Mitarbeiterentitäten wie die folgenden zu speichern:  
 
-![Grafische Darstellung einer Abteilungsentität und einer Mitarbeiterentität][1]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE01.png" alt-text="Grafische Darstellung einer Abteilungsentität und einer Mitarbeiterentität":::
 
 Dieses Beispiel zeigt eine implizite 1:n-Beziehung zwischen den Typen, die auf dem `PartitionKey`-Wert basieren. Jede Abteilung kann viele Mitarbeiter beinhalten.  
 
@@ -320,7 +320,7 @@ Dieses Beispiel zeigt auch die Abteilungsentität und die zugehörigen Mitarbeit
 
 Ein alternativer Ansatz ist, die Daten zu denormalisieren und nur Mitarbeiterentitäten mit denormalisierten Abteilungsdaten zu speichern, wie im folgenden Beispiel gezeigt. In diesem speziellen Szenario ist der Denormalisierungsansatz möglicherweise nicht der beste Ansatz, falls eine Anforderung besteht, die Details eines Abteilungsmanagers ändern zu müssen. Um dies durchführen zu können, müssen Sie jeden Mitarbeiter in der Abteilung aktualisieren.  
 
-![Grafische Darstellung der Mitarbeiterentität][2]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="Grafische Darstellung der Mitarbeiterentität":::
 
 Weitere Informationen finden Sie unter [Denormalisierungsmuster](#denormalization-pattern) weiter unten in diesem Handbuch.  
 
@@ -397,18 +397,18 @@ Wenn Sie z. B. kleine Tabellen mit Daten verwenden, die nicht oft geändert wer
 ### <a name="inheritance-relationships"></a>Vererbungsbeziehungen
 Wenn die Clientanwendung einen Satz Klassen verwendet, die Teil einer Vererbungsbeziehung zur Darstellung von Geschäftsentitäten sind, können Sie problemlos die Entitäten im Tabellenspeicher beibehalten. Beispiel: Sie haben möglicherweise den folgenden Satz Klassen in Ihrer Clientanwendung definiert, wobei `Person` eine abstrakte Klasse ist.
 
-![Diagramm der Vererbungsbeziehungen][3]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="Diagramm der Vererbungsbeziehungen":::
 
 Sie können Instanzen der beiden konkreten Klassen im Tabellenspeicher beibehalten, indem Sie eine einzelne `Person` Tabelle verwenden. Verwenden Sie Entitäten, die wie folgt aussehen:  
 
-![Grafische Darstellung der Kundenentität und der Mitarbeiterentität][4]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="Grafische Darstellung der Kundenentität und der Mitarbeiterentität":::
 
 Weitere Informationen zum Arbeiten mit mehreren Entitätstypen in derselben Tabelle im Clientcode finden Sie später in diesem Leitfaden unter [Arbeiten mit heterogenen Entitätstypen](#work-with-heterogeneous-entity-types). Hier finden Sie Beispiele darüber, wie der Entitätstyp im Clientcode erkannt wird.  
 
 ## <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 In den vorherigen Abschnitten haben Sie erfahren, wie Sie Ihren Tabellenentwurf für Abrufe von Entitätsdaten mithilfe von Abfragen und das Einfügen, Aktualisieren und Löschen von Entitätsdaten optimieren können. Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicher geeignet sind. Darüber hinaus sehen Sie, wie Sie einige der zuvor in diesem Leitfaden angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
 
-![Diagramm des Entwurfsmusters für die Tabelle][5]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="Diagramm des Entwurfsmusters für die Tabelle":::
 
 In der Musterkarte werden einige Beziehungen zwischen Muster (Blau) und Antimuster (Orange) hervorgehoben, die in diesem Leitfaden dokumentiert sind. Es gibt selbstverständlich viele weitere Muster, die in Betracht gezogen werden können. Beispielsweise ist eines der Hauptszenarien für den Tabellenspeicher die Verwendung des [Materialized View Pattern](https://msdn.microsoft.com/library/azure/dn589782.aspx) (Muster für materialisierte Sichten) aus dem [Command Query Responsibility Segregation](https://msdn.microsoft.com/library/azure/jj554200.aspx)-Muster.  
 
@@ -418,14 +418,14 @@ Speichern Sie mehrere Kopien der einzelnen Entitäten durch Verwendung unterschi
 #### <a name="context-and-problem"></a>Kontext und Problem
 Der Tabellenspeicher indiziert Entitäten automatisch, indem er die `PartitionKey`- und `RowKey`-Werte verwendet. Dadurch wird eine Clientanwendung in die Lage versetzt, eine Entität effizient unter Verwendung dieser Werte abzurufen. Beispiel: Durch Verwendung der folgenden Tabellenstruktur kann eine Clientanwendung eine Punktabfrage verwenden, um eine einzelne Mitarbeiterentität mit dem Abteilungsnamen und der Mitarbeiter-ID abzurufen (Werte `PartitionKey` und `RowKey`). Ein Client kann auch Entitäten abrufen, die nach Mitarbeiter-ID in jeder Abteilung sortiert sind.
 
-![Grafische Darstellung der Mitarbeiterentität][6]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="Grafische Darstellung der Mitarbeiterentität":::
 
 Wenn Sie auch eine Mitarbeiterentität finden möchten, die auf dem Wert einer anderen Eigenschaft basiert, wie z. B. die E-Mail-Adresse, müssen Sie einen weniger effizienten Partitionsscan verwenden, um eine Übereinstimmung zu finden. Der Grund ist, dass der Tabellenspeicher keine sekundären Indizes bietet. Darüber hinaus steht keine Option zum Anfordern einer Liste der Mitarbeiter zur Verfügung, die in einer anderen Reihenfolge als in der `RowKey`-Reihenfolge sortiert ist.  
 
 #### <a name="solution"></a>Lösung
 Um das Fehlen von sekundären Indizes zu umgehen, können Sie mehrere Kopien der einzelnen Entitäten speichern, wobei jede Kopie einen unterschiedlichen `RowKey`-Wert verwendet. Wenn Sie eine Entität mit den nachfolgenden Strukturen speichern, können Sie Mitarbeiterentitäten auf Grundlage der E-Mail-Adresse oder Mitarbeiter-ID effizient abrufen. Die Präfixwerte für `RowKey`, `empid_` und `email_` ermöglichen es Ihnen, einen einzelnen Mitarbeiter oder einen Bereich von Mitarbeitern abzufragen, indem Sie einen Bereich von E-Mail-Adressen oder Mitarbeiter-IDs verwenden.  
 
-![Grafische Darstellung einer Mitarbeiterentität mit unterschiedlichen RowKey-Werten][7]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="Grafische Darstellung einer Mitarbeiterentität mit unterschiedlichen RowKey-Werten":::
 
 Die beiden folgenden Filterkriterien (eine Suche nach Mitarbeiter-ID und eine Suche nach E-Mail-Adresse) definieren jeweils eine Punktabfrage:  
 
@@ -449,7 +449,7 @@ Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implem
 * Das Auffüllen der numerischen Werte in `RowKey` (etwa bei der Mitarbeiter-ID „000223“) ermöglicht die korrekte Sortierung und Filterung anhand einer Ober- und Untergrenze.  
 * Sie müssen nicht unbedingt alle Eigenschaften der Entität duplizieren. Beispiel: Wenn die Abfragen, mit denen die Entitäten anhand der E-Mail-Adresse in `RowKey` gesucht werden, nie das Alter des Mitarbeiters benötigen, können diese Entitäten die folgende Struktur aufweisen:
 
-  ![Grafische Darstellung der Mitarbeiterentität][8]
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="Grafische Darstellung der Mitarbeiterentität":::
 
 * In der Regel empfiehlt es sich, doppelte Daten zu speichern und sicherzustellen, dass Sie alle benötigten Daten mit einer einzigen Abfrage abrufen können, anstatt eine Abfrage zum Finden einer Entität und eine weitere zum Suchen nach den benötigten Daten durchzuführen.  
 
@@ -476,7 +476,7 @@ Speichern Sie mehrere Kopien der einzelnen Entitäten durch Verwendung unterschi
 #### <a name="context-and-problem"></a>Kontext und Problem
 Der Tabellenspeicher indiziert Entitäten automatisch, indem er die `PartitionKey`- und `RowKey`-Werte verwendet. Dadurch wird eine Clientanwendung in die Lage versetzt, eine Entität effizient unter Verwendung dieser Werte abzurufen. Beispiel: Durch Verwendung der folgenden Tabellenstruktur kann eine Clientanwendung eine Punktabfrage verwenden, um eine einzelne Mitarbeiterentität mit dem Abteilungsnamen und der Mitarbeiter-ID abzurufen (Werte `PartitionKey` und `RowKey`). Ein Client kann auch Entitäten abrufen, die nach Mitarbeiter-ID in jeder Abteilung sortiert sind.  
 
-![Grafische Darstellung der Mitarbeiterentität][9]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Grafische Darstellung der Mitarbeiterentität":::[9]
 
 Wenn Sie auch eine Mitarbeiterentität finden möchten, die auf dem Wert einer anderen Eigenschaft basiert, wie z. B. die E-Mail-Adresse, müssen Sie einen weniger effizienten Partition-Scan verwenden, um eine Übereinstimmung zu finden. Der Grund ist, dass der Tabellenspeicher keine sekundären Indizes bietet. Darüber hinaus steht keine Option zum Anfordern einer Liste der Mitarbeiter zur Verfügung, die in einer anderen Reihenfolge als in der `RowKey`-Reihenfolge sortiert ist.  
 
@@ -485,7 +485,7 @@ Sie erwarten eine große Anzahl von Transaktionen für diese Entitäten und möc
 #### <a name="solution"></a>Lösung
 Um das Fehlen von sekundären Indizes zu umgehen, können Sie mehrere Kopien der einzelnen Entitäten speichern, wobei jede Kopie unterschiedliche `PartitionKey`- und `RowKey`-Werte verwendet. Wenn Sie eine Entität mit den nachfolgenden Strukturen speichern, können Sie Mitarbeiterentitäten auf Grundlage der E-Mail-Adresse oder Mitarbeiter-ID effizient abrufen. Mithilfe der Präfixwerte für `PartitionKey`, `empid_` und `email_` können Sie den gewünschten Index für eine Abfrage identifizieren.  
 
-![Grafische Darstellung einer Mitarbeiterentität mit primärem Index und einer Mitarbeiterentität mit sekundärem Index][10]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="Grafische Darstellung einer Mitarbeiterentität mit primärem Index und einer Mitarbeiterentität mit sekundärem Index":::
 
 Die beiden folgenden Filterkriterien (eine Suche nach Mitarbeiter-ID und eine Suche nach E-Mail-Adresse) definieren jeweils eine Punktabfrage:  
 
@@ -508,7 +508,8 @@ Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implem
 * Das Auffüllen der numerischen Werte in `RowKey` (etwa bei der Mitarbeiter-ID „000223“) ermöglicht die korrekte Sortierung und Filterung anhand einer Ober- und Untergrenze.  
 * Sie müssen nicht unbedingt alle Eigenschaften der Entität duplizieren. Beispiel: Wenn die Abfragen, mit denen die Entitäten anhand der E-Mail-Adresse in `RowKey` gesucht werden, nie das Alter des Mitarbeiters benötigen, können diese Entitäten die folgende Struktur aufweisen:
   
-  ![Grafische Darstellung einer Mitarbeiterentität mit sekundärem Index][11]
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="Grafische Darstellung einer Mitarbeiterentität mit sekundärem Index":::
+
 * Es ist in der Regel besser, doppelte Daten zu speichern und sicherzustellen, dass Sie alle benötigten Daten mit einer einzigen Abfrage abrufen können, anstatt eine Abfrage zum Finden einer Entität unter Verwendung des sekundären Indexes und eine weitere Abfrage zum Suchen nach den benötigten Daten im primären Index durchzuführen.  
 
 #### <a name="when-to-use-this-pattern"></a>Verwendung dieses Musters
@@ -547,7 +548,7 @@ Zur Veranschaulichung dieses Ansatzes gehen Sie davon aus, dass Sie eine Anforde
 
 Für diese beiden Vorgänge kann allerdings keine EGT verwendet werden. Um das Risiko zu vermeiden, das aufgrund eines Fehlers eine Entität in beiden oder in keiner Tabelle angezeigt wird, muss der Archivierungsvorgang letztendlich Eventual Consistency aufweisen. Das folgende Sequenzdiagramm beschreibt die Schritte bei diesem Vorgang.  
 
-![Lösungsdiagramm für letztendliche Konsistenz][12]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="Lösungsdiagramm für letztliche Konsistenz":::
 
 Ein Client startet den Archivierungsvorgang, indem er eine Meldung auf einer Azure-Warteschlange ablegt (in diesem Beispiel wird Mitarbeiter #456 archiviert). Eine Workerrolle fragt die Warteschlange auf neue Meldungen ab. Wird eine gefunden, liest sie die Meldung und hinterlässt eine verborgene Kopie in der Warteschlange. Die Workerrolle ruft als Nächstes eine Kopie der Entität aus der Tabelle **Aktuell** ab, fügt eine Kopie in die Tabelle **Archiv** ein und löscht dann die ursprüngliche Entität aus der Tabelle **Aktuell**. Falls keine Fehler in den vorangegangenen Schritten aufgetreten sind, löscht die Workerrolle schlussendlich die verborgene Nachricht aus der Warteschlange.  
 
@@ -587,7 +588,7 @@ Verwalten von Index-Entitäten, um effiziente Suchvorgänge zu ermöglichen, die
 #### <a name="context-and-problem"></a>Kontext und Problem
 Der Tabellenspeicher indiziert Entitäten automatisch, indem er die `PartitionKey`- und `RowKey`-Werte verwendet. Dadurch kann eine Clientanwendung, eine Entität effizient mithilfe einer Punktabfrage abrufen. Beispiel: Durch Verwendung der folgenden Tabellenstruktur kann eine Clientanwendung eine einzelne Mitarbeiterentität mit dem Abteilungsnamen und der Mitarbeiter-ID effizient abrufen (`PartitionKey` und `RowKey`).  
 
-![Grafische Darstellung der Mitarbeiterentität][13]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="Grafische Darstellung der Mitarbeiterentität":::
 
 Wenn Sie auch in der Lage sein möchten, eine Liste der Mitarbeiterentitäten abzurufen, die auf dem Wert einer anderen nicht eindeutigen Eigenschaft basiert, z. B. Nachname, müssen Sie einen weniger effizienten Partitionsscan verwenden. Dieser Scan findet Übereinstimmungen, anstatt einen Index zum direkten Nachschlagen zu verwenden. Der Grund ist, dass der Tabellenspeicher keine sekundären Indizes bietet.  
 
@@ -606,7 +607,7 @@ Option 2: Erstellen von Indexentitäten in der gleichen Partition
 
 Verwenden Sie Index-Entitäten, die folgende Daten speichern:  
 
-![Grafische Darstellung einer Mitarbeiterentität mit einer Zeichenfolge, die eine Liste der Mitarbeiter-IDs mit demselben Nachnamen enthält][14]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="Grafische Darstellung einer Mitarbeiterentität mit einer Zeichenfolge, die eine Liste der Mitarbeiter-IDs mit demselben Nachnamen enthält":::
 
 Die Eigenschaft `EmployeeIDs` enthält eine Liste der Mitarbeiter-IDs für Mitarbeiter, deren Nachname in `RowKey` gespeichert ist.  
 
@@ -628,9 +629,9 @@ Option 3: Erstellen von Indexentitäten in einer separaten Partition oder Tabell
 
 Verwenden Sie für diese Option Index-Entitäten, die folgende Daten speichern:  
 
-![Grafische Darstellung einer Mitarbeiterentität mit einer Zeichenfolge, die eine Liste der Mitarbeiter-IDs mit demselben Nachnamen enthält][15]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="Grafische Darstellung einer Mitarbeiterentität mit einer Zeichenfolge, die eine Liste der Mitarbeiter-IDs mit demselben Nachnamen enthält":::
 
-Die Eigenschaft `EmployeeIDs` enthält eine Liste der Mitarbeiter-IDs für Mitarbeiter, deren Nachname in `RowKey` gespeichert ist.  
+Die Eigenschaft `EmployeeIDs` enthält eine Liste der Mitarbeiter-IDs für Mitarbeiter, deren Nachname in `RowKey` und `PartitionKey` gespeichert ist.  
 
 Sie können keine EGTs zur Aufrechterhaltung der Konsistenz verwenden, da sich die Index-Entitäten in einer anderen Partition wie die Mitarbeiterentitäten befinden. Stellen Sie sicher, dass die Index-Entitäten Eventual Consistency mit den Mitarbeiterentitäten aufweisen.  
 
@@ -660,12 +661,12 @@ Kombinieren Sie zugehörige Daten zusammen in eine einzelne Entität, mit der Si
 #### <a name="context-and-problem"></a>Kontext und Problem
 In einer relationalen Datenbank normalisieren Sie normalerweise Daten, um Duplizierungen zu entfernen, die auftreten, wenn Abfragen Daten aus mehreren Tabellen abrufen. Wenn Sie Ihre Daten in Azure-Tabellen normalisieren, müssen Sie mehrere Roundtrips vom Client zum Server durchlaufen, um Ihre zugeordneten Daten abzurufen. Bei der folgenden Tabellenstruktur benötigen Sie z. B. zwei Roundtrips, um die Details für eine Abteilung abzurufen. Ein Roundtrip ruft die Abteilungsentität ab, die die ID des Managers enthält, und der zweite Roundtrip ruft die Details des Managers in einer Mitarbeiterentität ab.  
 
-![Grafische Darstellung der Abteilungsentität und Mitarbeiterentität][16]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Grafische Darstellung der Abteilungsentität und Mitarbeiterentität":::
 
 #### <a name="solution"></a>Lösung
 Anstatt die Daten in zwei separaten Entitäten zu speichern, denormalisieren Sie die Daten und bewahren eine Kopie der Details des Managers in der Abteilungsentität auf. Beispiel:  
 
-![Grafische Darstellung der denormalisierten und kombinierten Abteilungsentität][17]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Grafische Darstellung der denormalisierten und kombinierten Abteilungsentität":::
 
 Sie können von Abteilungsentitäten, die mit diesen Eigenschaften gespeichert sind, jetzt alle benötigten Details zu einer Abteilung abrufen, indem Sie eine Punktabfrage verwenden.  
 
@@ -693,18 +694,18 @@ In einer relationalen Datenbank ist es natürlich, Verknüpfungen in Abfragen zu
 
 Angenommen, Sie speichern Mitarbeiterentitäten im Tabellenspeicher mithilfe der folgenden Struktur:  
 
-![Grafische Darstellung der Mitarbeiterentität][18]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="Grafische Darstellung der Mitarbeiterentität":::
 
 Sie müssen auch Vergangenheitsdaten speichern, die im Zusammenhang mit Überprüfungen und Leistung für jedes Jahr, in dem der Mitarbeiter für Ihre Organisation gearbeitet hat, stehen und Sie müssen auf diese Informationen nach Jahr zugreifen können. Eine Möglichkeit ist, eine weitere Tabelle zu erstellen, in der Entitäten mit der folgenden Struktur gespeichert werden:  
 
-![Grafische Darstellung der Entität für Mitarbeiterüberprüfung][19]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="Grafische Darstellung der Entität für Mitarbeiterüberprüfung":::
 
 Bei diesem Ansatz könnten Sie entscheiden, dass Sie einige Informationen (z. B. Vorname und Nachname) in die neue Entität duplizieren, um zu ermöglichen, dass Sie Ihre Daten mit einer einzelnen Anforderung abrufen. Sie können jedoch keine starke Konsistenz beibehalten, da Sie keine EGT verwenden können, die beide Entitäten nicht trennbar aktualisiert.  
 
 #### <a name="solution"></a>Lösung
 Speichern Sie einen neuen Entitätstyp in der ursprünglichen Tabelle unter Verwendung von Entitäten mit der folgenden Struktur ab:  
 
-![Grafische Darstellung einer Mitarbeiterentität mit zusammengesetztem Schlüssel][20]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="Grafische Darstellung einer Mitarbeiterentität mit zusammengesetztem Schlüssel":::
 
 Beachten Sie, dass der `RowKey` jetzt ein zusammengesetzter Schlüssel ist, der sich aus der Mitarbeiter-ID und dem Jahr der Überprüfungsdaten zusammensetzt. Auf diese Weise können Sie mit einer einzelnen Anforderung für eine einzige Entität die Leistungsdaten des Mitarbeiters abrufen und überprüfen.  
 
@@ -776,7 +777,7 @@ Viele Anwendungen löschen alte Daten, die für eine Clientanwendung nicht mehr 
 
 Ein möglicher Entwurf ist die Verwendung von Datum und Uhrzeit der Anmeldeanforderung in `RowKey`:  
 
-![Grafische Darstellung der Entität für Anmeldeversuch][21]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="Grafische Darstellung der Entität für Anmeldeversuch":::
 
 Dieser Ansatz vermeidet Partition-Hotspots, da die Anwendung Anmeldeentitäten für jeden Benutzer in eine separate Partition einfügen und löschen kann. Dieser Ansatz kann jedoch kosten- und zeitintensiv sein, wenn eine große Anzahl von Entitäten vorliegt. Zuerst müssen Sie eine Tabellenüberprüfung durchführen, um alle zu löschenden Entitäten zu identifizieren, und dann müssen Sie jede veraltete Entität löschen. Sie können die Anzahl der Roundtrips zum Server reduzieren, die zum Löschen der alten Entitäten notwendig sind, indem Sie mehrere Löschanforderungen in EGTs stapeln.  
 
@@ -806,14 +807,14 @@ Speichern Sie vollständige Datenreihen in einer einzelnen Entität, um die Anza
 #### <a name="context-and-problem"></a>Kontext und Problem
 Ein häufiges Szenario für eine Anwendung ist, eine Datenreihe zu speichern, die in der Regel auf einmal abgerufen werden muss. Beispiel: Ihre Anwendung erfasst, wie viele Chatnachrichten jeder Mitarbeiter pro Stunde sendet. Diese Informationen verwenden Sie dann, um zu zeichnen, wie viele Meldungen jeder Benutzer in den vergangenen 24 Stunden gesendet hat. Ein Entwurf könnte sein, für jeden Mitarbeiter 24 Entitäten zu speichern:  
 
-![Grafische Darstellung der Entität für Nachrichtenstatistik][22]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="Grafische Darstellung der Entität für Nachrichtenstatistik":::
 
 Bei diesem Entwurf können Sie problemlos die Entität finden und aktualisieren, um sie für jeden Mitarbeiter immer dann zu aktualisieren, wenn die Anwendung den Meldungszählerwert aktualisieren muss. Allerdings müssen Sie zum Abrufen der Informationen, mit der ein Diagramm der Aktivität für die vergangenen 24 Stunden zu zeichnen ist, 24 Entitäten abrufen.  
 
 #### <a name="solution"></a>Lösung
 Verwenden Sie den folgenden Entwurf mit einer separaten Eigenschaft,um den Meldungszähler für jede Stunde zu speichern:  
 
-![Grafische Darstellung der Entität für Nachrichtenstatistik mit separaten Eigenschaften][23]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="Grafische Darstellung der Entität für Nachrichtenstatistik mit separaten Eigenschaften":::
 
 Bei diesem Entwurf können Sie mit einem Zusammenführungsvorgang den Meldungszähler für einen Mitarbeiter für eine bestimmte Stunde aktualisieren. Nun können Sie alle Informationen, die Sie zum Zeichnen des Diagramms benötigen, mit einer Anforderung für eine einzelne Entität abrufen.  
 
@@ -842,7 +843,7 @@ Eine einzelne Entität kann nicht mehr als 252 Eigenschaften (mit Ausnahme der o
 #### <a name="solution"></a>Lösung
 Durch die Verwendung von Tabellenspeicher können Sie mehrere Entitäten speichern, um ein einzelnes großes Geschäftsobjekt mit mehr als 252 Eigenschaften darzustellen. Beispiel: Wenn Sie die Anzahl der Chatnachrichten, die von jedem Mitarbeiter in den letzten 365 Tagen gesendet wurde, speichern möchten, können Sie den folgenden Entwurf verwenden, der zwei Entitäten mit unterschiedlichen Schemas verwendet:  
 
-![Grafische Darstellung der Entität für Nachrichtenstatistik mit Rowkey 01 und Entität für Nachrichtenstatus mit Rowkey 02][24]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="Grafische Darstellung der Entität für Nachrichtenstatistik mit Rowkey 01 und Entität für Nachrichtenstatus mit Rowkey 02":::
 
 Falls Sie eine Änderung vornehmen müssen, die eine Aktualisierung beider Entitäten erfordert, um sie synchron zu halten, können Sie ein EGT verwenden. Ansonsten können Sie einen einzelnen Zusammenführungsvorgang verwenden, um den Meldungszähler für einen bestimmten Tag zu aktualisieren. Sie müssen beide Entitäten abrufen, um alle Daten für einen einzelnen Mitarbeiter abzurufen. Sie können dies mithilfe zweier effizienter Anforderungen erreichen, die sowohl einen `PartitionKey`- als auch einen `RowKey`-Wert verwenden.  
 
@@ -869,7 +870,7 @@ Eine einzelne Entität kann nicht mehr als 1 MB Daten insgesamt speichern. Wenn
 #### <a name="solution"></a>Lösung
 Wenn Ihre Entität 1 MB Größe überschreitet, da eine oder mehrere Eigenschaften eine große Datenmenge enthalten, können Sie die Daten im Blobspeicher und anschließend die Adresse des Blobs in einer Eigenschaft der Entität speichern. Beispiel: Sie können das Foto des Mitarbeiters im Blobspeicher und eine Verknüpfung zu dem Foto in der `Photo`-Eigenschaft der Mitarbeiterentität speichern:  
 
-![Grafische Darstellung der Mitarbeiterentität mit einer Zeichenfolge für das Foto, das auf den Blobspeicher verweist][25]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="Grafische Darstellung der Mitarbeiterentität mit einer Zeichenfolge für das Foto, das auf den Blobspeicher verweist":::
 
 #### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -894,12 +895,12 @@ Wenn Sie eine große Anzahl von Einfügungen vornehmen möchten, erhöhen Sie di
 #### <a name="context-and-problem"></a>Kontext und Problem
 Voranstellen oder Anfügen von Entitäten an Ihre gespeicherten Entitäten führen in der Regel dazu, dass in der Anwendung neue Entitäten auf die erste oder letzte Partition aus einer Folge von Partitionen hinzugefügt werden. In diesem Fall finden alle Einfügungen zu einem bestimmten Zeitpunkt in derselben Partition statt, wodurch ein Hotspot entsteht. Dadurch wird verhindert, dass der Tabellenspeicher Einfügungen zum Lastenausgleich über mehrere Knoten hinweg ausgleicht und Ihre Anwendung möglicherweise die Skalierbarkeitsziele für die Partition erreicht. Betrachten Sie z. B. den Fall einer Anwendung, die den Netzwerk- und Ressourcenzugriff von Mitarbeitern protokolliert. Eine Entitätsstruktur wie die folgende kann dazu führen, dass die Partition der aktuellen Stunde zu einem Hotspot wird, wenn das Transaktionsvolumen das Skalierbarkeitsziel für eine einzelne Partition erreicht:  
 
-![Grafische Darstellung der Mitarbeiterentität][26]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="Grafische Darstellung der Mitarbeiterentität":::
 
 #### <a name="solution"></a>Lösung
 Die folgende alternative Entitätsstruktur vermeidet einen Hotspot auf einer bestimmten Partition, wenn die Anwendung Ereignisse protokolliert:  
 
-![Grafische Darstellung einer Mitarbeiterentität mit aus Jahr, Monat, Tag, Stunde und Ereignis-ID zusammengesetztem RowKey][27]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="Grafische Darstellung einer Mitarbeiterentität mit aus Jahr, Monat, Tag, Stunde und Ereignis-ID zusammengesetztem RowKey":::
 
 Beachten Sie, dass in diesem Beispiel sowohl der `PartitionKey`- als auch der `RowKey`-Wert ein Verbundschlüssel ist. Der `PartitionKey` verwendet sowohl die Abteilung als auch die Mitarbeiter-ID, um die Protokollierung auf mehrere Partitionen zu verteilen.  
 
@@ -925,13 +926,13 @@ Normalerweise sollten Sie für die Speicherung von Protokolldaten Blobspeicher a
 #### <a name="context-and-problem"></a>Kontext und Problem
 Ein üblicher Anwendungsfall für Protokolldaten ist das Abrufen einer Auswahl von Protokolleinträgen für einen bestimmten Datums-/Zeitbereich. Nehmen Sie z. B. an, Sie möchten alle Fehler und kritischen Meldungen finden, die Ihre Anwendung zwischen 15:04 und 15:06 Uhr an einem bestimmten Datum protokolliert hat. Sie möchten nicht das Datum und die Uhrzeit der Protokollmeldung verwenden, um die Partition zu bestimmen, auf der Sie die Protokollentitäten speichern. Das führt zu einer Hot-Partition, da zu jedem beliebigen Zeitpunkt alle Protokollentitäten denselben `PartitionKey`-Wert aufweisen (siehe [Antimuster voranstellen/anfügen](#prepend-append-anti-pattern)). Beispiel: Das folgende Entitätsschema für eine Protokollmeldung resultiert in einer Hot-Partition, da die Anwendung alle Protokollmeldungen in die Partition für das aktuelle Datum und Stunde schreibt:  
 
-![Grafische Darstellung einer Entität für Protokollmeldung][28]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="Grafische Darstellung einer Entität für Protokollmeldung":::
 
 In diesem Beispiel enthält der `RowKey` das Datum und die Uhrzeit der Protokollmeldung, um sicherzustellen, dass die Protokollmeldungen in der Reihenfolge von Datum und Uhrzeit sortiert werden. Der `RowKey` enthält auch eine Meldungs-ID, falls mehrere Protokollmeldungen dasselbe Datum und dieselbe Uhrzeit aufweisen.  
 
 Ein anderer Ansatz ist die Verwendung von `PartitionKey`, der sicherstellt, dass die Anwendung Meldungen über einen Bereich von Partitionen schreibt. Beispiel: Wenn die Quelle der Protokollmeldung einen Weg bietet, Meldungen über viele Partitionen zu verteilen, können Sie das folgende Entitätsschema verwenden:  
 
-![Grafische Darstellung einer Entität für Protokollmeldung][29]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="Grafische Darstellung einer Entität für Protokollmeldung":::
 
 Das Problem mit diesem Schema ist jedoch, dass Sie zum Abrufen der gesamten Protokollmeldungen für eine bestimmte Zeitspanne jede Partition in der Tabelle durchsuchen müssen.
 
@@ -1528,35 +1529,4 @@ In diesem Asynchron-Beispiel sehen Sie die folgenden Änderungen zur synchronen 
 * Anstatt die Methode `Execute` zum Aktualisieren der Entität aufzurufen, ruft die Methode jetzt die Methode `ExecuteAsync` auf. Die Methode verwendet den Modifizierer `await`, um Ergebnisse asynchron abzurufen.  
 
 Die Clientanwendung kann mehrere asynchrone Methoden wie diese aufrufen und jeder Methodenaufruf wird in einem separaten Thread ausgeführt.  
-
-
-[1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
-[2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png
-[3]: ./media/storage-table-design-guide/storage-table-design-IMAGE03.png
-[4]: ./media/storage-table-design-guide/storage-table-design-IMAGE04.png
-[5]: ./media/storage-table-design-guide/storage-table-design-IMAGE05.png
-[6]: ./media/storage-table-design-guide/storage-table-design-IMAGE06.png
-[7]: ./media/storage-table-design-guide/storage-table-design-IMAGE07.png
-[8]: ./media/storage-table-design-guide/storage-table-design-IMAGE08.png
-[9]: ./media/storage-table-design-guide/storage-table-design-IMAGE09.png
-[10]: ./media/storage-table-design-guide/storage-table-design-IMAGE10.png
-[11]: ./media/storage-table-design-guide/storage-table-design-IMAGE11.png
-[12]: ./media/storage-table-design-guide/storage-table-design-IMAGE12.png
-[13]: ./media/storage-table-design-guide/storage-table-design-IMAGE13.png
-[14]: ./media/storage-table-design-guide/storage-table-design-IMAGE14.png
-[15]: ./media/storage-table-design-guide/storage-table-design-IMAGE15.png
-[16]: ./media/storage-table-design-guide/storage-table-design-IMAGE16.png
-[17]: ./media/storage-table-design-guide/storage-table-design-IMAGE17.png
-[18]: ./media/storage-table-design-guide/storage-table-design-IMAGE18.png
-[19]: ./media/storage-table-design-guide/storage-table-design-IMAGE19.png
-[20]: ./media/storage-table-design-guide/storage-table-design-IMAGE20.png
-[21]: ./media/storage-table-design-guide/storage-table-design-IMAGE21.png
-[22]: ./media/storage-table-design-guide/storage-table-design-IMAGE22.png
-[23]: ./media/storage-table-design-guide/storage-table-design-IMAGE23.png
-[24]: ./media/storage-table-design-guide/storage-table-design-IMAGE24.png
-[25]: ./media/storage-table-design-guide/storage-table-design-IMAGE25.png
-[26]: ./media/storage-table-design-guide/storage-table-design-IMAGE26.png
-[27]: ./media/storage-table-design-guide/storage-table-design-IMAGE27.png
-[28]: ./media/storage-table-design-guide/storage-table-design-IMAGE28.png
-[29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
 

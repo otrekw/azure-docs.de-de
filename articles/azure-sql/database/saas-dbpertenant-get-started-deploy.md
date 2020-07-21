@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d94f7219c5a29de9a707aa9ae4ed25ac4b2bf03e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254309"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In diesem Tutorial stellen Sie Wingtip Tickets als SaaS-Anwendung mit dem Muster Datenbank pro Mandant bereit und machen sich damit vertraut (Wingtip). Die App verwendet ein Muster mit einer Datenbank pro Mandant, um die Daten mehrerer Mandanten zu speichern. Die App ist dafür ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Unterstützung von SaaS-Szenarien vereinfacht wird.
 
-Fünf Minuten nach dem Auswählen von **Bereitstellung in Azure** verfügen Sie über eine mehrinstanzenfähige SaaS-Anwendung. Die App umfasst eine SQL­Datenbank, die in der Cloud ausgeführt wird. Die App wird mit drei Beispielmandanten bereitgestellt, die jeweils über eine eigene Datenbank verfügen. Alle Datenbanken werden in einem Pool für elastische SQL-Datenbanken bereitgestellt. Die App wird unter Ihrem Azure-Abonnement bereitgestellt. Sie haben Vollzugriff auf die einzelnen App-Komponenten, um sich damit vertraut zu machen und zu arbeiten. Der C#-Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt] verfügbar.
+Fünf Minuten nach dem Auswählen von **Bereitstellung in Azure** verfügen Sie über eine mehrinstanzenfähige SaaS-Anwendung. Die App umfasst eine ­Datenbank, die in der Azure SQL-Datenbank ausgeführt wird. Die App wird mit drei Beispielmandanten bereitgestellt, die jeweils über eine eigene Datenbank verfügen. Alle Datenbanken werden in einem Pool für elastische SQL-Datenbanken bereitgestellt. Die App wird unter Ihrem Azure-Abonnement bereitgestellt. Sie haben Vollzugriff auf die einzelnen App-Komponenten, um sich damit vertraut zu machen und zu arbeiten. Der C#-Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt] verfügbar.
 
 In diesem Tutorial lernen Sie Folgendes kennen:
 
@@ -107,7 +108,7 @@ Auf diese Werte wird in fast jedem Skript verwiesen.
 
 In der App werden Veranstaltungsorte vorgestellt. Beispiele hierfür sind Konzerthallen, Jazz-Clubs und Sportclubs. In Wingtip Tickets werden Veranstaltungsorte als Mandanten registriert. Als Mandant kann ein Veranstaltungsort auf einfache Weise eine Liste mit Veranstaltungen bereitstellen und Tickets an die Kunden verkaufen. Jeder Veranstaltungsort erhält eine personalisierte Website, über die Veranstaltungen aufgeführt und Tickets verkauft werden können.
 
-Innerhalb der App wird für jeden Mandanten eine SQL-Datenbank in einem Pool für elastische SQL-Datenbanken bereitgestellt.
+Innerhalb der App wird für jeden Mandanten eine Datenbank in einem Pool für elastische Datenbanken bereitgestellt.
 
 Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandanten in Ihrer Bereitstellung aufgeführt.
 

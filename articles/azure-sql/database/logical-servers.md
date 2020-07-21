@@ -1,7 +1,7 @@
 ---
-title: Was ist ein Server in Azure SQL-Datenbank und Azure Synapse?
+title: Was ist ein Server in Azure SQL-Datenbank und Azure Synapse Analytics?
 titleSuffix: ''
-description: Hier erfahren Sie mehr über logische SQL-Server, die von Azure SQL-Datenbank und Azure Synapse verwendet werden, und wie Sie diese verwalten.
+description: Hier erfahren Sie mehr über logische SQL-Server, die von Azure SQL-Datenbank und Azure Synapse Analytics verwendet werden. Außerdem lernen Sie, wie Sie diese verwalten.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 6df3cd82413f9a1c352be4349006accd52c24490
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367569"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Was ist ein logischer SQL-Server in Azure SQL-Datenbank und Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-In Azure SQL-Datenbank und Azure Synapse ist ein Server ein logisches Konstrukt, das als zentraler Verwaltungspunkt für eine Sammlung von Datenbanken fungiert. Auf der Serverebene können Sie [Anmeldungen](logins-create-manage.md), [Firewallregeln](firewall-configure.md), [Überwachungsregeln](../../azure-sql/database/auditing-overview.md), [Bedrohungserkennungsrichtlinien](threat-detection-configure.md) und [Autofailover-Gruppen](auto-failover-group-overview.md) verwalten. Ein Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Bevor Sie eine Datenbank in Azure SQL-Datenbank oder eine Data Warehouse-Datenbank in Azure Synapse erstellen können, muss der Server vorhanden sein. Alle Datenbanken, die von einem einzelnen Server verwaltet werden, müssen in derselben Region wie der Server erstellt werden.
+In Azure SQL-Datenbank und Azure Synapse Analytics ist ein Server ein logisches Konstrukt, das als zentraler Verwaltungspunkt für eine Sammlung von Datenbanken fungiert. Auf der Serverebene können Sie [Anmeldungen](logins-create-manage.md), [Firewallregeln](firewall-configure.md), [Überwachungsregeln](../../azure-sql/database/auditing-overview.md), [Bedrohungserkennungsrichtlinien](threat-detection-configure.md) und [Autofailover-Gruppen](auto-failover-group-overview.md) verwalten. Ein Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Bevor Sie eine Datenbank in Azure SQL-Datenbank oder eine Data Warehouse-Datenbank in Azure Synapse Analytics erstellen können, muss der Server vorhanden sein. Alle Datenbanken, die von einem einzelnen Server verwaltet werden, müssen in derselben Region wie der Server erstellt werden.
 
 Dieser Server unterscheidet sich von einer SQL Server-Instanz, mit der Sie möglicherweise in der lokalen Umgebung vertraut sind. Es gibt keine Garantien für den Standort der Datenbanken oder Data Warehouse-Datenbanken im Zusammenhang mit dem Server, der diese verwaltet. Darüber hinaus stellen weder Azure SQL-Datenbank noch Azure Synapse Zugriff oder Features auf Instanzebene zur Verfügung. Im Gegensatz dazu werden die Instanzdatenbanken in einer verwalteten Instanz alle an einem gemeinsamen physischen Standort eingerichtet. Dies erfolgt auf dieselbe Weise wie bei SQL Server in lokalen Umgebungen oder bei virtuellen Computern.
 
-Beim Erstellen eines Servers geben Sie ein Serveranmeldekonto und ein dazugehöriges Kennwort an, das über Administratorrechte für die Masterdatenbank auf dem Server und für alle Datenbanken verfügt, die auf diesem Server erstellt werden. Bei diesem anfänglichen Konto handelt es sich um ein SQL-Anmeldekonto. Azure SQL-Datenbank und Synapse Analytics unterstützt die SQL-Authentifizierung und die Azure Active Directory-Authentifizierung. Weitere Informationen zu Anmeldungen und Authentifizierungen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](logins-create-manage.md). Windows-Authentifizierung wird nicht unterstützt.
+Beim Erstellen eines Servers geben Sie ein Serveranmeldekonto und ein dazugehöriges Kennwort an, das über Administratorrechte für die Masterdatenbank auf dem Server und für alle Datenbanken verfügt, die auf diesem Server erstellt werden. Bei diesem anfänglichen Konto handelt es sich um ein SQL-Anmeldekonto. Azure SQL-Datenbank und Synapse Analytics unterstützen die SQL-Authentifizierung und die Azure Active Directory-Authentifizierung. Weitere Informationen zu Anmeldungen und Authentifizierungen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](logins-create-manage.md). Windows-Authentifizierung wird nicht unterstützt.
 
 Ein Server in SQL-Datenbank und Azure Synapse:
 
@@ -53,9 +53,9 @@ Sie können die Ressourcengruppe für einen Server im Voraus oder beim Erstellen
 
 ### <a name="create-a-blank-server"></a>Erstellen eines leeren Servers
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einem leeren SQL-Server-Formular (logischer Server), um einen Server (ohne eine Datenbank, einen Pool für elastische Datenbanken oder eine Data Warehouse-Datenbank) zu erstellen.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einem leeren SQL-Server-Formular (logischer SQL-Server), um einen Server (ohne eine Datenbank, einen Pool für elastische Datenbanken oder eine Data Warehouse-Datenbank) zu erstellen.
 
-### <a name="create-a-blank-or-sample-sql-database-in-azure-sql-database"></a>Erstellen einer leeren Datenbank oder Beispieldatenbank in Azure SQL-Datenbank
+### <a name="create-a-blank-or-sample-database-in-azure-sql-database"></a>Erstellen einer leeren Datenbank oder Beispieldatenbank in Azure SQL-Datenbank
 
 Zum Erstellen einer SQL-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com) navigieren Sie zu einem leeren SQL-Datenbank-Formular, und stellen Sie die erforderlichen Informationen bereit. Sie können die Ressourcengruppe und den Server im Voraus oder beim Erstellen der Datenbank selbst erstellen. Sie können eine leere Datenbank oder eine Beispieldatenbank basierend auf Adventure Works LT erstellen.
 
@@ -105,7 +105,7 @@ Verwenden Sie zum Erstellen und Verwalten von Servern, Datenbanken und Firewalls
 | New-AzSqlServerVirtualNetworkRule | Erstellt eine [*VNET-Regel*](vnet-service-endpoint-rule-overview.md), die auf einem Subnetz basiert, das einen VNET-Dienstendpunkt darstellt. |
 
 > [!TIP]
-> Einen Schnellstart zu PowerShell finden Sie unter [Erstellen einer Azure SQL-Einzeldatenbank mithilfe von PowerShell](single-database-create-quickstart.md). PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure SQL-Einzeldatenbank und Konfigurieren einer Firewallregel](scripts/create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer Azure SQL-Einzeldatenbank mithilfe von PowerShell](scripts/monitor-and-scale-database-powershell.md).
+> Eine Schnellstartanleitung zu PowerShell finden Sie unter [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](single-database-create-quickstart.md). PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer einzelnen Datenbank und zum Konfigurieren einer Firewallregel auf Serverebene](scripts/create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer Einzeldatenbank in Azure SQL­-Datenbank mit PowerShell](scripts/monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>Verwalten von Servern, Datenbanken und Firewalls mithilfe der Azure CLI
@@ -135,7 +135,7 @@ Verwenden Sie zum Erstellen und Verwalten von Servern, Datenbanken und Firewalls
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Löscht eine Firewallregel|
 
 > [!TIP]
-> Einen Schnellstart zur Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen einer Azure SQL-Einzeldatenbank mithilfe der Azure-Befehlszeilenschnittstelle](az-cli-script-samples-content-guide.md). Beispielskripts für die Azure-Befehlszeilenschnittstelle finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Einzeldatenbank und Konfigurieren einer Firewallregel](scripts/create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer Azure SQL-Datenbank-Einzeldatenbank](scripts/monitor-and-scale-database-cli.md).
+> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Azure CLI-Beispiele für Azure SQL-Datenbank und verwaltete SQL-Instanzen](az-cli-script-samples-content-guide.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle zum Erstellen einer einzelnen Datenbank und Konfigurieren einer Firewallregel](scripts/create-and-configure-database-cli.md) und [Verwenden der Azure CLI zum Überwachen und Skalieren einer einzelnen Datenbank in Azure SQL-Datenbank](scripts/monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-servers-databases-and-firewalls-using-transact-sql"></a>Verwalten von Servern, Datenbanken und Firewalls mithilfe von Transact-SQL
@@ -150,11 +150,11 @@ Verwenden Sie zum Erstellen der Server, Datenbanken und Firewalls mithilfe von T
 |[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Mit diesem Befehl wird eine neue Datenbank in Azure SQL-Datenbank erstellt. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 |[CREATE DATABASE (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Mit diesem Befehl wird eine neue Data Warehouse-Datenbank in Azure Synapse erstellt. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 | [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Mit diesem Befehl kann eine Datenbank oder ein Pool für elastische Datenbanken geändert werden. |
-|[ALTER DATABASE (Azure SQL Data Warehouse)](/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)|Mit diesem Befehl kann eine Data Warehouse-Datenbank in Azure Synapse geändert werden.|
+|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Mit diesem Befehl kann eine Data Warehouse-Datenbank in Azure Synapse geändert werden.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Löscht eine Datenbank.|
 |[sys.database_service_objectives (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Dieser Befehl gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken für eine Datenbank zurück, sofern diese vorhanden sind. Wenn eine Anmeldung bei der Masterdatenbank für einen Server besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure Synapse müssen Sie mit der Masterdatenbank verbunden sein, um eine Anmeldung erstellen zu können.|
 |[sys.dm_db_resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Mit diesem Befehl werden die CPU-, E/A- und Arbeitsspeichernutzung für eine Datenbank in Azure SQL-Datenbank zurückgegeben. Jede Zeile wird für 15 Sekunden beibehalten, auch wenn keine Aktivität in der Datenbank vorhanden ist.|
-|[sys.resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Gibt die CPU-Nutzung und Speicherdaten für eine Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.|
+|[sys.resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Dieser Befehl gibt die CPU-Nutzung und Speicherdaten für eine Datenbank in Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.|
 |[sys.database_connection_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Mit diesem Befehl können Sie Statistiken für Datenbankverbindungsereignisse für Azure SQL-Datenbank abrufen, die Ihnen eine Übersicht über erfolgreiche und nicht erfolgreiche Datenbankverbindungen bieten. |
 |[sys.event_log (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Mit diesem Befehl werden erfolgreiche und nicht erfolgreiche Datenbankverbindungen sowie Deadlocks von Azure SQL-Datenbank zurückgegeben. Anhand dieser Informationen können Sie Ihre Datenbankaktivität nachverfolgen und Fehler beheben.|
 |[sp_set_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Erstellt oder aktualisiert die Firewalleinstellungen auf Serverebene für den Server. Diese gespeicherte Prozedur ist nur in der master-Datenbank für den Prinzipalanmeldenamen auf Serverebene verfügbar. Eine Firewallregel auf Serverebene kann erst mithilfe von Transact-SQL erstellt werden, nachdem die erste Firewallregel auf Serverebene von einem Benutzer mit Azure-Berechtigungen erstellt wurde.|

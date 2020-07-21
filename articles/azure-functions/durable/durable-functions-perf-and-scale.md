@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84762121"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -52,6 +52,13 @@ Die maximale Abrufverzögerung kann über die Eigenschaft `maxQueuePollingInterv
 
 > [!NOTE]
 > Bei der Ausführung in Verbrauchs- und Premium-Tarifen von Azure Functions ruft der [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-and-premium-plans-work) alle Steuerelement- und Arbeitselement-Warteschlangen einmal alle 10 Sekunden ab. Dieser zusätzliche Abruf ist erforderlich, um zu ermitteln, wann die Instanzen der Funktions-Apps aktiviert und Skalierungsentscheidungen getroffen werden sollen. Zum Zeitpunkt der Erstellung dieses Artikels ist dieses Intervall von 10 Sekunden konstant und kann nicht konfiguriert werden.
+
+### <a name="orchestration-start-delays"></a>Verzögerungen beim Starten der Orchestrierung
+Orchestrierungsinstanzen werden gestartet, indem eine `ExecutionStarted`-Nachricht zu einer der Steuerungswarteschlangen des Taskhubs hinzugefügt wird. Unter bestimmten Umständen sind möglicherweise Verzögerungen von mehreren Sekunden zwischen der geplanten Ausführung einer Orchestrierung und der tatsächlichen Ausführung zu beobachten. Während dieses Zeitraums verbleibt die Orchestrierungsinstanz im Zustand `Pending`. Für diese Verzögerungen gibt es zwei mögliche Gründe:
+
+1. **Steuerungswarteschlangen im Rückstand:** Wenn die Steuerungswarteschlange für diese Instanz eine große Anzahl von Nachrichten enthält, kann es eine Weile dauern, bis die `ExecutionStarted`-Nachricht von der Runtime empfangen und verarbeitet wird. Nachrichtenrückstände können entstehen, wenn Orchestrierungen viele Ereignisse gleichzeitig verarbeiten. Ereignisse, die zur Steuerungswarteschlange hinzugefügt werden, umfassen Startereignisse für Orchestrierungen, den Abschluss von Aktivitäten, permanente Timer, die Beendigung und externe Ereignisse. Wenn diese Verzögerungen unter normalen Umständen auftreten, sollten Sie das Erstellen eines neuen Taskhubs mit einer größeren Anzahl von Partitionen in Erwägung ziehen. Das Konfigurieren von mehr Partitionen bewirkt, dass die Runtime weitere Steuerungswarteschlangen für die Lastverteilung erstellt.
+
+2. **Verzögerungen durch Backoffabruf:** Eine weitere häufige Ursache für Verzögerungen bei Orchestrierungen ist das [zuvor beschriebene Backoffabrufverhalten für Steuerungswarteschlangen](#queue-polling). Diese Verzögerung wird jedoch nur erwartet, wenn eine App auf zwei oder mehr Instanzen aufskaliert wird. Wenn nur eine App-Instanz vorhanden ist oder die App-Instanz, die die Orchestrierung startet, die Instanz ist, die auch die Zielsteuerungswarteschlange abruft, entstehen bei Warteschlangenabrufen keine Verzögerungen. Sie können Verzögerungen durch Backoffabruf reduzieren, indem Sie die Einstellungen für **host.json** wie zuvor beschrieben aktualisieren.
 
 ## <a name="storage-account-selection"></a>Auswahl des Speicherkontos
 

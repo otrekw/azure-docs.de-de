@@ -3,15 +3,15 @@ title: Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB 
 description: Es wird beschrieben, wie Sie Synapse Link für Azure Cosmos-Konten aktivieren, einen Container mit aktiviertem Analysespeicher erstellen, für die Azure Cosmos-Datenbank eine Verbindung mit dem Synapse-Arbeitsbereich herstellen und Abfragen durchführen.
 author: SriChintala
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: 24f6f77f1371157ca1b57cfd85ac196cace822fc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262037"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB (Vorschau)
 
@@ -40,11 +40,11 @@ Führen Sie die folgenden Schritte aus, um mit Synapse Link für Azure Cosmos DB
 
 1. Wählen Sie in der Liste mit den Features die Option **Synapse Link** aus.
 
-   ![Suchen nach der Previewfunktion „Synapse Link“](./media/configure-synapse-link/find-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Suchen nach der Previewfunktion „Synapse Link“":::
 
 1. Als Nächstes werden Sie aufgefordert, Synapse Link für Ihr Konto zu aktivieren. Wählen Sie „Aktivieren“ aus.
 
-   ![Aktivieren des Features „Synapse Link“](./media/configure-synapse-link/enable-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Aktivieren des Features „Synapse Link“":::
 
 1. Ihr Konto ist jetzt für die Verwendung von Synapse Link aktiviert. Im nächsten Abschnitt wird beschrieben, wie Sie für Analysespeicher aktivierte Container erstellen, um mit dem automatischen Replizieren Ihrer operativen Daten aus dem Transaktionsspeicher im Analysespeicher zu beginnen.
 
@@ -67,7 +67,7 @@ Beim Erstellen des Containers können Sie den Analysespeicher in einem Azure Cos
 
 1. Wählen Sie **Neuer Container** aus, und geben Sie einen Namen für Ihre Datenbank, den Container, den Partitionsschlüssel und die Durchsatzdetails ein. Aktivieren Sie die Option **Analysespeicher**. Nach dem Aktivieren des Analysespeichers wird ein Container erstellt, für den die Eigenschaft `AnalyicalTTL` auf den Standardwert „-1“ (unbegrenzte Aufbewahrung) festgelegt ist. In diesem Analysespeicher wird der gesamte Versionsverlauf der Datensätze aufbewahrt.
 
-   ![Aktivieren des Analysespeichers für Azure Cosmos-Container](./media/configure-synapse-link/create-container-analytical-store.png)
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Aktivieren des Analysespeichers für Azure Cosmos-Container":::
 
 1. Falls Sie Synapse Link für dieses Konto bisher noch nicht aktiviert haben, werden Sie dazu aufgefordert. Der Grund ist, dass die Erstellung eines für Analysespeicher aktivierten Containers zwingend erforderlich ist. Wählen Sie **Enable Synapse Link** (Synapse Link aktivieren) aus, wenn Sie dazu aufgefordert werden.
 
@@ -195,7 +195,7 @@ Befolgen Sie die Anleitung im Artikel [Abfragen des Azure Cosmos DB-Analysespeic
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Erste Schritte mit Azure Synpase Link – Beispiele
 
-Beispiele für die ersten Schritte mit Synapse Link finden Sie auf [GitHub](https://aka.ms/cosmosdb-synapselink-samples). Diese zeigen End-to-End-Lösungen für IoT- und Einzelhandelsszenarien.
+Beispiele für die ersten Schritte mit Azure Synapse Link finden Sie auf [GitHub](https://aka.ms/cosmosdb-synapselink-samples). Diese zeigen End-to-End-Lösungen für IoT- und Einzelhandelsszenarien.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48c5f94de7aa663f618401e13fdc19777d42095
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612749"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039652"
 ---
-# <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Troubleshooting für Probleme bei der Anmeldung bei einer mit Azure AD Domain Services verwalteten Domäne
+# <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Beheben von Kontoanmeldeproblemen bei einer verwalteten Azure Active Directory Domain Services-Domäne
 
-Die häufigsten Gründe, warum ein Benutzerkonto, sich nicht bei einer in Azure AD DS verwalteten Domäne anmelden kann, sind die folgenden Szenarien:
+Die häufigsten Gründe, warum ein Benutzerkonto sich nicht bei einer in Azure Active Directory Domain Services (Azure AD DS) verwalteten Domäne anmelden kann, sind die folgenden Szenarios:
 
 * [Das Konto ist noch nicht mit Azure AD DS synchronisiert.](#account-isnt-synchronized-into-azure-ad-ds-yet)
 * [Azure AD DS verfügt nicht über die zur Anmeldung des Kontos nötigen Kennworthashes.](#azure-ad-ds-doesnt-have-the-password-hashes)
@@ -30,11 +30,11 @@ Die häufigsten Gründe, warum ein Benutzerkonto, sich nicht bei einer in Azure 
 
 ## <a name="account-isnt-synchronized-into-azure-ad-ds-yet"></a>Das Konto ist noch nicht mit Azure AD DS synchronisiert
 
-Je nach Größe Ihres Verzeichnisses kann es einige Zeit dauern, bis die Benutzerkonten und Anmeldeinformationshashes in Azure AD DS verfügbar sind. Bei großen Verzeichnissen kann diese anfängliche unidirektionale Synchronisierung von Azure AD einige Stunden und bis zu einem oder zwei Tagen dauern. Achten Sie darauf, dass Sie lange genug warten, bevor Sie erneut versuchen, die Authentifizierung durchzuführen.
+Je nach Größe Ihres Verzeichnisses kann es einige Zeit dauern, bis die Benutzerkonten und Anmeldeinformationshashes in einer verwalteten Domäne verfügbar sind. Bei großen Verzeichnissen kann diese anfängliche unidirektionale Synchronisierung von Azure AD einige Stunden und bis zu einem oder zwei Tagen dauern. Achten Sie darauf, dass Sie lange genug warten, bevor Sie erneut versuchen, die Authentifizierung durchzuführen.
 
 Bei Hybridumgebungen, die Azure AD Connect verwenden, um lokale Verzeichnisdaten nach Azure AD zu synchronisieren, sollten Sie sichergehen, dass Sie die neuste Version von Azure AD Connect ausführen und dass [Azure AD Connect so konfiguriert ist, dass nach der Aktivierung von Azure AD DS eine vollständige Synchronisierung durchgeführt wird][azure-ad-connect-phs]. Wenn Sie Azure AD DS deaktivieren und dann erneut aktivieren, müssen Sie die folgenden Schritte ausführen.
 
-Wenn weiterhin Probleme mit Konten auftreten, die nicht durch Azure AD Connect synchronisiert werden, starten Sie den Azure AD Sync Service neu. Öffnen Sie auf dem Computer, auf dem Azure AD Connect installiert ist, ein Eingabeaufforderungsfenster und führen Sie folgende Befehle aus:
+Wenn weiterhin Probleme mit Konten auftreten, die nicht durch Azure AD Connect synchronisiert werden, starten Sie den Azure AD Sync Service neu. Öffnen Sie auf dem Computer, auf dem Azure AD Connect installiert ist, ein Eingabeaufforderungsfenster, und führen Sie folgende Befehle aus:
 
 ```console
 net stop 'Microsoft Azure AD Sync'
@@ -47,13 +47,13 @@ Azure AD generiert oder speichert erst dann Kennworthashes in dem für die NTLM
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hybridumgebungen mit lokaler Synchronisierung
 
-Für Hybridumgebungen, in denen Azure AD Connect für die Synchronisierung von einer lokalen AD DS-Umgebung verwendet wird, können Sie die erforderlichen NTLM- oder Kerberos-Kennworthashes lokal in Azure AD generieren und synchronisieren. Nachdem Sie Ihre mit Azure AD DC verwaltete Domäne erstellt haben, [aktivieren sie die Kennworthashsynchronisierung zu Azure Active Directory Domain Services][azure-ad-connect-phs]. Ohne diesen Schritt zur Kennworthashsynchronisierung können Sie sich nicht mit Azure AD DS bei einem Konto anmelden. Wenn Sie Azure AD DS deaktivieren und dann erneut aktivieren, müssen Sie die Schritte erneut ausführen.
+Für Hybridumgebungen, in denen Azure AD Connect für die Synchronisierung von einer lokalen AD DS-Umgebung verwendet wird, können Sie die erforderlichen NTLM- oder Kerberos-Kennworthashes lokal in Azure AD generieren und synchronisieren. Nachdem Sie Ihre verwaltete Domäne erstellt haben, [aktivieren Sie die Kennworthashsynchronisierung zu Azure Active Directory Domain Services][azure-ad-connect-phs]. Ohne diesen Schritt zur Kennworthashsynchronisierung können Sie sich nicht mithilfe der verwalteten Domäne bei einem Konto anmelden. Wenn Sie Azure AD DS deaktivieren und dann erneut aktivieren, müssen Sie die Schritte erneut ausführen.
 
 Weitere Informationen finden Sie im Artikel [Kennworthashsynchronisierung für Azure AD DS][phs-process].
 
 ### <a name="cloud-only-environments-with-no-on-premises-synchronization"></a>Cloud-Umgebungen ohne lokale Synchronisierung
 
-Mit Azure AD DS verwaltete Domänen ohne lokale Synchronisierung, nur mit Konten in Azure AD, müssen auch die erforderlichen NTLM- oder Kerberos-Kennworthashes generieren. Wenn ein Nur-Cloud-Konto sich nicht anmelden kann, wurde nach der Aktivierung von Azure AD DS eine erfolgreiche Kennwortänderung durchgeführt?
+Verwaltete Domänen ohne lokale Synchronisierung, nur Konten in Azure AD, müssen auch die erforderlichen NTLM- oder Kerberos-Kennworthashes generieren. Wenn ein Nur-Cloud-Konto sich nicht anmelden kann, wurde nach der Aktivierung von Azure AD DS eine erfolgreiche Kennwortänderung durchgeführt?
 
 * **Nein, das Kennwort wurde nicht geändert.**
     * [Ändern Sie das Kennwort für das Konto][enable-user-accounts], um die erforderlichen Kennworthashes zu generieren, und warten Sie 15 Minuten, bevor Sie versuchen, sich erneut anzumelden.
@@ -64,7 +64,7 @@ Mit Azure AD DS verwaltete Domänen ohne lokale Synchronisierung, nur mit Konten
 
 ## <a name="the-account-is-locked-out"></a>Das Konto ist gesperrt
 
-Benutzerkonten werden in Azure AD DS gesperrt, wenn ein festgelegter Schwellenwert für fehlgeschlagene Anmeldeversuche erreicht wurde. Das Verhalten bei Kontosperrungen ist so konzipiert, dass Sie vor wiederholt versuchten Brute-Force-Anmeldungen geschützt werden, die auf einen automatisierten digitalen Angriff hinweisen können.
+Benutzerkonten werden in einer Domäne gesperrt, wenn ein festgelegter Schwellenwert für fehlgeschlagene Anmeldeversuche erreicht wurde. Das Verhalten bei Kontosperrungen ist so konzipiert, dass Sie vor wiederholt versuchten Brute-Force-Anmeldungen geschützt werden, die auf einen automatisierten digitalen Angriff hinweisen können.
 
 Wenn in 2 Minuten 5 Versuche mit ungültigen Kennwörtern vorliegen, wird das Konto standardmäßig für 30 Minuten gesperrt.
 
@@ -72,7 +72,7 @@ Weitere Informationen zum Beheben von Problemen bezüglich Kontosperrungen finde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sollten beim Einbinden Ihrer VM in die von Azure AD DS verwaltete Domäne weiterhin Probleme auftreten, [suchen Sie Hilfe, und öffnen Sie ein Supportticket für Azure Active Directory][azure-ad-support].
+Sollten beim Einbinden Ihrer VM in die verwaltete Domäne weiterhin Probleme auftreten, [öffnen Sie ein Supportticket für Azure Active Directory][azure-ad-support], um Hilfe zu erhalten.
 
 <!-- INTERNAL LINKS -->
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md

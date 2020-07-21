@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 70f124a498ff4aa45b5d90f6221fe3d0121e804a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557984"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -77,14 +77,23 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="examples"></a>Beispiele
 
-In diesem Beispiel wird das Clientzertifikat durch seinen Fingerabdruck identifiziert.
+In diesem Beispiel wird das Clientzertifikat durch seinen Fingerabdruck identifiziert:
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identifiziert.
+
+In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identifiziert:
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+In diesem Beispiel wird das Clientzertifikat in der Richtlinie festgelegt und nicht aus dem integrierten Zertifikatspeicher abgerufen:
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>Elemente  
   
@@ -96,8 +105,10 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
   
 |Name|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Der Fingerabdruck für das Clientzertifikat.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
-|certificate-id|Der Zertifikatressourcenname.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
+|thumbprint|Der Fingerabdruck für das Clientzertifikat.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|
+|certificate-id|Der Zertifikatressourcenname.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|
+|body|Clientzertifikat als Bytearray|Nein|–|
+|password|Das Kennwort für das Clientzertifikat|Dieses Attribut wird verwendet, wenn das in `body` angegebene Zertifikat kennwortgeschützt ist.|–|
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -107,12 +118,14 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 -   **Richtlinienbereiche:** alle Bereiche  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> Authentifizierung mit verwalteter Identität  
- Verwenden Sie die `authentication-managed-identity`-Richtlinie, um sich mit der verwalteten Identität des API Management-Diensts bei einem Back-End-Dienst zu authentifizieren. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Bearer` im Header `Authorization` fest.
+ Verwenden Sie die Richtlinie `authentication-managed-identity` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung einer verwalteten Identität. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Bearer` im Header `Authorization` fest.
+
+Sowohl eine systemseitig zugewiesene Identität als auch eine der benutzerseitig zugewiesenen Identitäten können verwendet werden, um Token anzufordern. Wenn `client-id` nicht bereitgestellt wird, wird die systemseitig zugewiesene Identität angenommen. Wenn die `client-id`-Variable bereitgestellt wird, wird das Token für die entsprechende benutzerseitig zugewiesene Identität aus Azure Active Directory angefordert.
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>Beispiel  
@@ -127,7 +140,7 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 <authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
 ```
 ```xml  
-<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Busr-->
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Bus-->
 ```
 ```xml  
 <authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
@@ -169,7 +182,8 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
   
 |Name|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|resource|Eine Zeichenfolge. Die App-ID der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|  
+|resource|Eine Zeichenfolge. Die App-ID der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|
+|client-id|Eine Zeichenfolge. Die App-ID der benutzerseitig zugewiesenen Identität in Azure Active Directory.|Nein|Systemseitig zugewiesene Identität|
 |output-token-variable-name|Eine Zeichenfolge. Name der Kontextvariablen, die den Tokenwert als Objekttyp erhält `string`. |Nein|–|  
 |ignore-error|Boolesch. Bei Festlegung auf `true` wird die Richtlinienpipeline auch dann weiter ausgeführt, wenn kein Zugriffstoken abgerufen wird.|Nein|false|  
   

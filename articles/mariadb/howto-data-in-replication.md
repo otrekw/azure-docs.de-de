@@ -4,20 +4,20 @@ description: In diesem Artikel wird beschrieben, wie die Datenreplikation in Azu
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 3/30/2020
-ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: 623c072cb8cb2c7fb1b9b6ec7d3ea661302d5e6a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422471"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104672"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurieren der Datenreplikation in Azure Database for MariaDB
 
-In diesem Artikel erfahren Sie, wie Sie die Datenreplikation in Azure Database for MariaDB einrichten, indem Sie Master- und Replikatserver konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MariaDB-Servern und -Datenbanken verfügen.
+In diesem Artikel erfahren Sie, wie Sie die [Datenreplikation](concepts-data-in-replication.md) in Azure Database for MariaDB einrichten, indem Sie Master- und Replikatserver konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MariaDB-Servern und -Datenbanken verfügen.
 
-Um ein Replikat im Azure Database for MariaDB-Dienst zu erstellen, synchronisiert die Datenreplikation Daten von einem lokalen MariaDB-Masterserver, virtuellen Computern (VMs) oder Cloud-Datenbankdiensten.
+Die [Datenreplikation](concepts-data-in-replication.md) synchronisiert Daten von einem lokalen MariaDB-Masterserver, virtuellen Computern (VMs) oder Cloud-Datenbankdiensten, um ein Replikat im Azure Database for MariaDB-Dienst zu erstellen. Die Datenreplikation basiert auf der nativen MariaDB-Replikation, die wiederum auf der Position der binären Protokolldatei (binlog) basiert. Weitere Informationen zur binlog-Replikation finden Sie [Übersicht über die binlog Replikation](https://mariadb.com/kb/en/library/replication-overview/).
 
 Überprüfen Sie die [Einschränkungen und Anforderungen](concepts-data-in-replication.md#limitations-and-considerations) der Datenreplikation, bevor Sie die Schritte in diesem Artikel ausführen.
 
@@ -41,6 +41,12 @@ Um ein Replikat im Azure Database for MariaDB-Dienst zu erstellen, synchronisier
 3. Fügen Sie den Firewallregeln des Replikats die IP-Adresse des Masterservers hinzu. 
 
    Aktualisieren Sie Firewallregeln über das [Azure-Portal](howto-manage-firewall-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](howto-manage-firewall-cli.md).
+
+> [!NOTE]
+> Unvoreingenommene Kommunikation
+>
+> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ (Sklave) verwendet. Laut [Microsoft-Styleguide für unvoreingenommene Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen verwendet, da das Wort derzeit noch in der Software vorkommt. Sobald die Software so aktualisiert wurde, dass das Wort nicht mehr auftaucht, wird dieser Artikel entsprechend aktualisiert.
+>
 
 ## <a name="configure-the-master-server"></a>Konfigurieren des Masterservers
 

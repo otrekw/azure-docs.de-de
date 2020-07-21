@@ -3,25 +3,25 @@ title: Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 description: Erfahren Sie, wie Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy verwendet werden.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367732"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -43,7 +43,7 @@ Sie können eine Platzhalteranwendung (*) erstellen, wenn Sie über eine Gruppe 
 
 Sie können Anwendungen mit Platzhaltern veröffentlichen, wenn sowohl interne als auch externe URLs im folgenden Format vorliegen:
 
-> http(s)://*.\<Domäne\>
+> http(s)://*.\<domain\>
 
 Beispiel: `http(s)://*.adventure-works.com`.
 
@@ -62,7 +62,7 @@ Während [benutzerdefinierte Domänen](application-proxy-configure-custom-domain
 1. Erstellen Sie eine überprüfte Domäne in Azure.
 1. Laden Sie ein TLS/SSL-Zertifikat im PFX-Format in Ihren Anwendungsproxy hoch.
 
-Erwägen Sie die Verwendung eines Platzhalterzertifikats für die Anwendung, die Sie erstellen möchten. Alternativ können Sie auch ein Zertifikat verwenden, in dem nur bestimmte Anwendungen aufgelistet werden. In diesem Fall kann über die Platzhalteranwendung nur auf die im Zertifikat aufgeführten Anwendungen zugegriffen werden.
+Erwägen Sie die Verwendung eines Platzhalterzertifikats für die Anwendung, die Sie erstellen möchten. 
 
 Aus Sicherheitsgründen ist dies eine zwingende Anforderung, und es werden keine Platzhalter für Anwendungen unterstützt, die keine benutzerdefinierte Domäne für die externe URL verwenden.
 

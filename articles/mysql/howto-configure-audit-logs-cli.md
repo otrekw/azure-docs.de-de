@@ -4,21 +4,18 @@ description: In diesem Artikel wird beschrieben, wie Sie die Überwachungsprotok
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: d532e1990586d80d675a8ccb247c0c9f7908bb6f
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: 1a26f3c1b57fd750cbb59f32ddc8bd0ea85293ca
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384119"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112747"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Konfigurieren von und Zugreifen auf Überwachungsprotokolle über die Azure CLI
 
 Sie können die [Überwachungsprotokolle in Azure Database for MySQL](concepts-audit-logs.md) über die Azure CLI konfigurieren.
-
-> [!IMPORTANT]
-> Diese Überwachungsprotokollfunktion ist derzeit in der Vorschauphase.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,6 +29,9 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 > Diese Anleitung setzt die Verwendung von Azure CLI-Version 2.0 oder höher voraus. Geben Sie zum Bestätigen der Version an der Eingabeaufforderung von Azure CLI `az --version` ein. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="configure-audit-logging"></a>Konfigurieren der Überwachungsprotokollierung
+
+>[!IMPORTANT]
+> Es wird empfohlen, nur die Ereignistypen und Benutzer zu protokollieren, die für Ihre Überwachungszwecke erforderlich sind, um sicherzustellen, dass die Leistung Ihres Servers nicht stark beeinträchtigt wird.
 
 Aktivieren und konfigurieren Sie die Überwachungsprotokollierung mit den folgenden Schritten:
 

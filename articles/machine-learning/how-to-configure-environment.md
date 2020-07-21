@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: ab9a02efedb0e002ac13294429c06e39ea18019c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84816718"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Die Azure Machine Learning-[Compute-Instanz (Vorschauversion)](concept-compute-i
 
 Für eine Compute-Instanz muss nichts installiert oder konfiguriert werden.  In Ihrem Azure Machine Learning-Arbeitsbereich können Sie jederzeit eine Notebook-VM erstellen. Geben Sie einfach einen Namen und einen Azure-VM-Typ an. Sie die Einrichtung unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
 
-Weitere Informationen zu [Compute-Instanzen](concept-compute-instance.md).
+Weitere Informationen zu Compute-Instanzen, einschließlich der Installation von Paketen, finden Sie unter [Compute-Instanzen](concept-compute-instance.md).
 
 Um zu verhindern, dass weitere Compute-Gebühren anfallen, [stoppen Sie die Compute-Instanz](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 

@@ -3,12 +3,12 @@ title: Bezeichnen einer Entität in einer Beispieläußerung
 description: Hier erfahren Sie, wie Sie eine Machine-Learning-Entität mit untergeordneten Entitäten in einer Beispieläußerung auf einer Absichtsdetailseite des LUIS-Portals bezeichnen.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722642"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610488"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Bezeichnen einer Machine-Learning-Entität in einer Beispieläußerung
 

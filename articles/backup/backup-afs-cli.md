@@ -3,12 +3,12 @@ title: Sichern von Azure-Dateifreigaben mit Azure CLI
 description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee83d4df5a857f0ae5b554514ecda0c257a829ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391093"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Sichern von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle
 
@@ -42,7 +42,7 @@ Führen Sie die nachstehenden Schritte aus, um einen Recovery Services-Tresors z
     eastus      AzureFiles
     ```
 
-2. Verwenden Sie das Cmdlet [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create), um den Tresor zu erstellen. Geben Sie denselben Speicherort für den Tresor an, der für die Ressourcengruppe verwendet wurde.
+1. Verwenden Sie das Cmdlet [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create), um den Tresor zu erstellen. Geben Sie denselben Speicherort für den Tresor an, der für die Ressourcengruppe verwendet wurde.
 
     Im folgenden Beispiel wird ein Recovery Services-Tresor mit dem Namen *azurefilesvault* in der Region "USA, Osten" erstellt.
 
@@ -54,28 +54,6 @@ Führen Sie die nachstehenden Schritte aus, um einen Recovery Services-Tresors z
     Location    Name                ResourceGroup
     ----------  ----------------    ---------------
     eastus      azurefilesvault     azurefiles
-    ```
-
-3. Geben Sie den für den Tresorspeicher zu verwendenden Redundanztyp an. Sie können [lokal redundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) oder [georedundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) verwenden.
-
-    Das folgende Beispiel legt die Speicherredundanzoption für *azurefilesvault* unter Verwendung des Cmdlets [az backup vault backup-properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) auf **Georedundant** fest.
-
-    ```azurecli-interactive
-    az backup vault backup-properties set --name azurefilesvault --resource-group azurefiles --backup-storage-redundancy Georedundant
-    ```
-
-    Um zu überprüfen, ob der Tresor erfolgreich erstellt wurde, rufen Sie mit dem Cmdlet [az backup vault show](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-show) Details zum Tresor ab. Im folgenden Beispiel werden die Details zu dem mit den obigen Schritten erstellten Element *azurefilesvault* angezeigt.
-
-    ```azurecli-interactive
-    az backup vault show --name azurefilesvault --resource-group azurefiles --output table
-    ```
-
-    Die Ausgabe entspricht etwa folgender Antwort:
-
-    ```output
-    Location     Name               ResourceGroup
-    ----------   ---------------    ---------------
-    eastus       azurefilesvault    azurefiles
     ```
 
 ## <a name="enable-backup-for-azure-file-shares"></a>Aktivieren der Sicherung für Azure-Dateifreigaben
@@ -108,7 +86,7 @@ Sie müssen die folgenden Parameter angeben, um eine bedarfsgesteuerte Sicherung
 * **--item-name** ist der Name der Dateifreigabe, für die Sie eine bedarfsgesteuerte Sicherung auslösen möchten. Um den **Namen** oder den **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
 * **--retain-until** gibt das Datum an, bis wann Sie der Wiederherstellungspunkt aufbewahrt werden soll. Der Wert muss im UTC-Zeitformat (TT-MM-JJJJ) festgelegt werden.
 
-Im folgenden Beispiel wird eine bedarfsgesteuerte Sicherung für die Dateifreigabe *azuresfiles* im Speicherkonto *afsaccount* mit Aufbewahrung bis *20-01-2020* ausgelöst.
+Im folgenden Beispiel wird eine bedarfsgesteuerte Sicherung für die Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* mit Aufbewahrung bis *20-01-2020* ausgelöst.
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table

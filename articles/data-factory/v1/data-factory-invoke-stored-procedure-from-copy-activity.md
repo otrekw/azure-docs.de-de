@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320980"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Aufrufen von gespeicherten Prozeduren aus der Kopieraktivität in Azure Data Factory
 > [!NOTE]
@@ -29,7 +29,7 @@ Beim Kopieren von Daten nach [SQL Server](data-factory-sqlserver-connector.md) o
 Das folgende Beispiel zeigt den Aufruf einer gespeicherten Prozedur in einer SQL Server-Datenbank aus einer Data Factory-Pipeline (Kopieraktivität):  
 
 ## <a name="output-dataset-json"></a>JSON des Ausgabedatasets
-Legen Sie im Ausgabedataset-JSON den **type** auf **SqlServerTable** fest. Legen Sie ihn für die Verwendung mit einer Azure SQL-Datenbank auf **AzureSqlTable** fest. Der Wert der Eigenschaft **tableName** muss mit dem Namen des ersten Parameters der gespeicherten Prozedur übereinstimmen.  
+Legen Sie im Ausgabedataset-JSON den **type** auf **SqlServerTable** fest. Legen Sie „type“ auf **AzureSqlTable** fest, um eine Azure SQL-Datenbank zu verwenden. Der Wert der Eigenschaft **tableName** muss mit dem Namen des ersten Parameters der gespeicherten Prozedur übereinstimmen.  
 
 ```json
 {

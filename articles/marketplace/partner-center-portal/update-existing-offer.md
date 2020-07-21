@@ -1,18 +1,18 @@
 ---
 title: Aktualisieren eines bestehenden Commercial Marketplace-Angebots
 description: Erfahren Sie, wie Sie ein bestehendes Angebot im kommerziellen Marketplace aktualisieren, also beispielsweise ein Angebot bearbeiten, einen Entwurf löschen, eine Veröffentlichungsanfrage stornieren, den Verkauf eines Angebots oder Plans einstellen und private Zielgruppen synchronisieren.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62170df567f552699304710902a1f83b84728af2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120703"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualisieren eines bestehenden Commercial Marketplace-Angebots
 
@@ -37,20 +37,29 @@ Wenn Sie Ihr aktualisiertes Angebot veröffentlichen möchten, klicken Sie auf e
 > [!IMPORTANT]
 > Sie müssen die Vorschau Ihres Angebots überprüfen, sobald diese verfügbar ist, und **Live schalten** auswählen, um Ihr aktualisiertes Angebot für Ihre Zielgruppe (öffentlich oder privat) zu veröffentlichen.
 
+## <a name="add-a-plan-to-an-existing-offer"></a>Hinzufügen eines Plans zu einem bestehenden Angebot
+
+So fügen Sie einen neuen Plan zu einem bestehenden Angebot hinzu, das Sie bereits veröffentlicht haben:
+
+1. Öffnen Sie die Seite **Angebotsübersicht** für Ihr bestehendes Angebot, navigieren Sie zur Seite **Planübersicht**, und klicken Sie dann auf **Neuen Plan erstellen**.
+1. Erstellen Sie mithilfe des **Preismodells für bestehende Pläne** einen neuen Plan, der den [Richtlinien](./create-new-saas-offer.md#plan-overview) entspricht.
+1. Nachdem Sie den Plannamen geändert haben, klicken Sie auf **Entwurf speichern**. 
+1. Klicken Sie auf **Veröffentlichen**, sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Dann wird die Seite **[Überprüfen und veröffentlichen](#review-and-publish-an-updated-offer)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualisieren eines Plans in einem bestehenden Angebot
 
 So ändern Sie einen Plan innerhalb eines bestehenden Angebots, das Sie bereits veröffentlicht haben
 
-- Wenn die Seite **Offer overview** (Angebotübersicht) für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan, den Sie ändern möchten. Wenn in der Liste **Plan overview** (Planübersicht) nicht auf den Plan zugegriffen werden kann, wählen Sie **See all plans** (Alle Pläne anzeigen) aus.
-- Sie können für den Plan **Name**, **Pricing model** (Preismodell) oder **Availability** (Verfügbarkeit) auswählen. *Pläne stehen derzeit nur auf Englisch (USA) zur Verfügung*.
-- Klicken Sie auf **Save** (Speichern), nachdem Sie alle erforderlichen Änderungen am Plannamen, an der Beschreibung, den Preisen oder der Zielgruppenverfügbarkeit vorgenommen haben. 
-- Klicken Sie auf **Publish** (Veröffentlichen), sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Die Seite **[Review and publish](#review-and-publish-an-updated-offer)** (Überprüfen und veröffentlichen) wird mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
+1. Wenn die Seite **Angebotsübersicht** für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan aus, den Sie ändern möchten. Wenn über die Liste **Planübersicht** nicht auf den Plan zugegriffen werden kann, klicken Sie auf **Alle Pläne anzeigen**.
+1. Sie können für den Plan **Name**, **Pricing model** (Preismodell) oder **Availability** (Verfügbarkeit) auswählen. *Pläne stehen derzeit nur auf Englisch (USA) zur Verfügung.*
+1. Klicken Sie auf **Speichern**, nachdem Sie alle erforderlichen Änderungen am Plannamen, an der Beschreibung oder der Zielgruppenverfügbarkeit vorgenommen haben. 
+1. Klicken Sie auf **Veröffentlichen**, sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Dann wird die Seite **[Überprüfen und veröffentlichen](#review-and-publish-an-updated-offer)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Vergleichen von Änderungen an Marketplace-Angeboten
 
-Mithilfe von **Vergleichen** können Sie die Änderungen, die Sie an einem [veröffentlichten](#compare-changes-to-published-offer) Angebot oder einem Angebot in der [Vorschau](#compare-changes-to-a-preview-offer) vorgenommen haben, überprüfen, bevor Sie diese live schalten.
+Mithilfe von **Vergleichen** können Sie die Änderungen überprüfen, die Sie an einem [veröffentlichten](#compare-changes-to-published-offer) Angebot oder einem Angebot in der [Vorschau](#compare-changes-to-a-preview-offer) vorgenommen haben, bevor Sie diese live schalten.
 
->[!NOTE]
+> [!NOTE]
 > Ein veröffentlichtes Angebot ist ein Angebot, das erfolgreich in der Vorschau oder im Livezustand veröffentlicht wurde.
 
 Allgemeine Informationen zur Überprüfung finden Sie nachfolgend:
@@ -122,9 +131,9 @@ Nachdem Sie bestätigt haben, dass Sie den Planentwurf löschen möchten, ist de
 
 So stornieren Sie ein Angebot mit dem Status **Publish in progress** (Veröffentlichung in Bearbeitung)
 
-- Wählen Sie den Angebotsnamen aus, um die Seite **Offer overview** (Angebotsübersicht) zu öffnen.
-- Klicken Sie rechts oben auf der Seite auf **Cancel publish** (Veröffentlichen stornieren).
-- Bestätigen Sie, dass Sie die Veröffentlichung des Angebots stornieren möchten.
+1. Wählen Sie den Angebotsnamen aus, um die Seite **Offer overview** (Angebotsübersicht) zu öffnen.
+1. Klicken Sie rechts oben auf der Seite auf **Cancel publish** (Veröffentlichen abbrechen).
+1. Bestätigen Sie, dass Sie die Veröffentlichung des Angebots stornieren möchten.
 
 Wenn Sie das Angebot zu einem späteren Zeitpunkt veröffentlichen möchten, müssen Sie den Veröffentlichungsprozess neu starten.
 

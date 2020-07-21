@@ -3,17 +3,19 @@ title: Installieren von Hybrid Cloud Extension (HCX)
 description: Einrichten der VMware-HCX-Lösung (Hybrid Cloud Extension) für die private AVS-Cloud (Azure VMware Solution)
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367545"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Installieren von HCX für eine Azure-VMware-Lösung
 
-In diesem Artikel werden die Vorgehensweisen zum Einrichten der VMware-HCX-Lösung (Hybrid Cloud Extension) für Ihre private AVS-Cloud (Azure VMware Solution) beschrieben. HCX Advanced (Standardinstallation) unterstützt bis zu drei externe Standorte. Dabei muss für jeden externen Standort ein HCX Enterprise-Manager oder -Connector installiert und aktiviert sein.
-HCX ermöglicht die Migration Ihrer VMware-Workloads in die Cloud und zu anderen verbundenen Standorten mithilfe verschiedener integrierter, von HCX unterstützter Migrationstypen. Wenn mehr als drei Standorte erforderlich sind, können die Kunden das HCX Enterprise-Add-on über den Support aktivieren. Für HCX Enterprise fallen über die allgemeine Verfügbarkeit (GA) hinaus zusätzliche Gebühren für Kunden an, die Version bietet jedoch [zusätzliche Funktionen](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+In diesem Artikel werden die Vorgehensweisen zum Einrichten der VMware-HCX-Lösung (Hybrid Cloud Extension) für Ihre private AVS-Cloud (Azure VMware Solution) beschrieben. HCX ermöglicht die Migration Ihrer VMware-Workloads zur Cloud und zu anderen verbundenen Standorten mithilfe verschiedener integrierter, von HCX unterstützter Migrationstypen.
+
+Die Standardinstallation HCX Advanced unterstützt bis zu drei externe Standorte. Wenn mehr als drei Standorte erforderlich sind, können die Kunden das HCX Enterprise-Add-on über den Support aktivieren. Für die HCX Enterprise-Installation fallen über die allgemeine Verfügbarkeit (GA) hinaus zusätzliche Gebühren für Kunden an, die Version bietet jedoch [zusätzliche Funktionen](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+
 
 Lesen Sie zuerst die Informationen unter [Voraussetzungen (Vorbereitung)](#before-you-begin), [Erforderliche Softwareversionen](#software-version-requirements) und [Voraussetzungen](#prerequisites). 
 
@@ -25,7 +27,7 @@ Danach werden die folgenden Aufgaben beschrieben:
 > * Konfigurieren des Netzwerkuplinks und des Dienstnetzes
 > * Ausführen des Setups durch Überprüfen des Appliance-Status
 
-Nach Abschluss des Setups werden die empfohlenen nächsten Schritte beschrieben.
+Nach Abschluss des Setups können Sie die empfohlenen nächsten Schritte am Ende dieses Artikels durchführen.  
 
 ## <a name="before-you-begin"></a>Voraussetzungen
     
@@ -36,17 +38,17 @@ Nach Abschluss des Setups werden die empfohlenen nächsten Schritte beschrieben.
 * Optional: Lesen Sie weitere VMware-Ressourcen wie die VMware vSphere-[Blogreihe](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) zu HCX. 
 * Fordern Sie die Aktivierung von AVS HCX Enterprise über die AVS-Supportkanäle an.
 
-Die Größenanpassung von Workloads für Compute-und Speicherressourcen ist ein wichtiger Planungsschritt beim Vorbereiten der Verwendung einer HCX-Lösung für private AVS-Clouds. Diese Größenanpassung sollte bei der ersten Planung der Umgebung für die private Cloud vorgenommen werden. 
+Die Größenanpassung von Workloads für Compute-und Speicherressourcen ist ein wichtiger Planungsschritt beim Vorbereiten der Verwendung einer HCX-Lösung für private AVS-Clouds. Nehmen Sie diese Größenanpassung bei der ersten Planung der Umgebung für die private Cloud vor.   
 
 ## <a name="software-version-requirements"></a>Erforderliche Softwareversionen
 Auf Infrastrukturkomponenten muss die erforderliche Mindestversion ausgeführt werden. 
                                                          
-| Komponententyp                                                          | Anforderungen für die Quellumgebung                                                                   | Anforderungen für die Zielumgebung                                                                      |
+| Komponententyp    | Anforderungen für die Quellumgebung    | Anforderungen für die Zielumgebung   |
 | --- | --- | --- |
-| vCenter Server                                                          | 5,1<br/><br/>Wenn Sie 5.5 U1 oder früher verwenden, verwenden Sie die eigenständige HCX-Benutzeroberfläche für HCX-Vorgänge.         | 6.0 U2 und höher                                                                                          |
-| ESXi                                                                    | 5.0                                                                                               | ESXi 6.0 und höher                                                                                        |
-| NSX                                                                     | Für die HCX-Netzwerkerweiterung logischer Switches an der Quelle: NSXv 6.2+ oder NSX-T 2.4+              | NSXv 6.2+ oder NSX-T 2.4+<br/><br/>Für HCX-Näherungsrouting: NSXv 6.4+ (Näherungsrouting wird für NSX-T nicht unterstützt) |
-| vCloud Director                                                         | Nicht erforderlich, keine Interoperabilität mit vCloud Director am Quellstandort | Wenn die Zielumgebung in vCloud Director integriert ist, wird mindestens 9.1.0.2. benötigt.              |
+| vCenter Server   | 5,1<br/><br/>Wenn Sie 5.5 U1 oder früher verwenden, verwenden Sie die eigenständige HCX-Benutzeroberfläche für HCX-Vorgänge.  | 6.0 U2 und höher   |
+| ESXi   | 5.0    | ESXi 6.0 und höher   |
+| NSX    | Für die HCX-Netzwerkerweiterung logischer Switches an der Quelle: NSXv 6.2+ oder NSX-T 2.4+   | NSXv 6.2+ oder NSX-T 2.4+<br/><br/>Für HCX-Näherungsrouting: NSXv 6.4+ (Näherungsrouting wird für NSX-T nicht unterstützt) |
+| vCloud Director   | Nicht erforderlich, keine Interoperabilität mit vCloud Director am Quellstandort | Bei der Integration der Zielumgebung in vCloud Director ist mindestens 9.1.0.2 erforderlich.  |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,7 +60,7 @@ Auf Infrastrukturkomponenten muss die erforderliche Mindestversion ausgeführt w
 
 * Lokale HCX-IX-und NE-Appliances sollten die vCenter- und ESXi-Infrastruktur erreichen können.
 
-* Zum Bereitstellen der WAN-Interconnect-Appliance, zusätzlich zum/22 CIDR-Netzwerk-Adressblock, der für die SDDC-Bereitstellung im Azure-Portal verwendet wird, ist für HCX ein /29-Block erforderlich. Sie sollten dies bei der Netzwerkplanung berücksichtigen.
+* Zum Bereitstellen der WAN-Interconnect-Appliance, zusätzlich zum/22 CIDR-Netzwerk-Adressblock, der für die SDDC-Bereitstellung im Azure-Portal verwendet wird, ist für HCX ein /29-Block erforderlich. Berücksichtigen Sie diese Anforderung bei Ihrer Netzwerkplanung.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>Lokales Bereitstellen der OVA-Datei für VMware-HCX
 
@@ -66,11 +68,11 @@ Auf Infrastrukturkomponenten muss die erforderliche Mindestversion ausgeführt w
 
     ![„HCX“ in AVS vCenter auswählen](./media/hybrid-cloud-extension-installation/avs-vsphere-client.png)
 
-1. Wählen Sie zum Herunterladen der HCX-OVA-Datei für VMware **Administration** (Verwaltung) > **System Updates** (Systemupdates) aus.
+1. Wählen Sie unter **Administration** (Verwaltung) die Option **System Updates** (Systemupdates) und dann **Request download link** (Downloadlink anfordern), um die HCX-OVA-Datei für VMware herunterzuladen.
 
     ![Systemupdates abrufen](./media/hybrid-cloud-extension-installation/administration-updates.png)
 
-1. Wählen Sie eine OVF-Vorlage aus, die für das lokale vCenter bereitgestellt werden soll.  
+1. Navigieren Sie als Nächstes zum lokalen vCenter, und wählen Sie eine OVF-Vorlage aus, die Sie in Ihrem lokalen vCenter bereitstellen.  
 
     ![OVF-Vorlage auswählen](./media/hybrid-cloud-extension-installation/select-template.png)
 
@@ -90,7 +92,10 @@ Auf Infrastrukturkomponenten muss die erforderliche Mindestversion ausgeführt w
 
 Führen Sie nach der Installation die folgenden Schritte aus:
 
-1. Öffnen Sie den HCX Manager unter `https://HCXManagerIP:9443`, und melden Sie sich mit Ihrem Benutzernamen und Ihrem Kennwort an. 
+1. Melden Sie sich beim lokalen HCX Manager unter `https://HCXManagerIP:9443` mit Ihrem Benutzernamen und Ihrem Kennwort an. 
+
+   > [!IMPORTANT]
+   > Geben Sie die Portnummer `9443` mit der IP-Adresse des HCX Managers an.
 
 1. Geben Sie unter **Licensing** (Lizenzierung) **den erweiterten HCX-Schlüssel** ein.  
 
@@ -99,7 +104,7 @@ Führen Sie nach der Installation die folgenden Schritte aus:
     > [!NOTE]
     > Für den HCX Manager muss ein offener Internetzugriff oder ein Proxy konfiguriert sein.
 
-1. Konfigurieren Sie vCenter.
+1. Bearbeiten Sie im **vCenter** ggf. die vCenter-Informationen.
 
     ![vCenter konfigurieren](./media/hybrid-cloud-extension-installation/configure-vcenter.png)
 
@@ -109,25 +114,25 @@ Führen Sie nach der Installation die folgenden Schritte aus:
 
 ## <a name="configure-hcx"></a>Konfigurieren von HCX 
 
-1. Melden Sie sich beim lokalen vCenter an, und wählen Sie dann **Home** > **HCX**aus.
+1. Melden Sie sich beim lokalen vCenter an, und wählen Sie unter **Home** die Option **HCX** aus.
 
     ![HCX in vCenter](./media/hybrid-cloud-extension-installation/hcx-vcenter.png)
 
-1. Wählen Sie **Infrastructure** (Infrastruktur) > **Site Pairing** (Standortverbindung) > **Add a site pairing** (Standortverbindung hinzufügen) aus.
+1. Wählen Sie unter **Infrastruktur** die Option **Standortverbindung** > **Standortverbindung hinzufügen** aus.
 
     ![Standortverbindung hinzufügen](./media/hybrid-cloud-extension-installation/site-pairing.png)
 
-1. Geben Sie die Werte für die **Remote-HCX-URL**, Benutzernamen und Kennwort ein. Wählen Sie dann **Verbinden** aus.
+1. Geben Sie die Remote-HCX-URL oder IP-Adresse und den Benutzernamen sowie das Kennwort für den „AVS CloudAdmin“ ein, und wählen Sie **Verbinden** aus.
 
    Das System zeigt den verbundenen Standort an.
    
     ![Standortverbindung](./media/hybrid-cloud-extension-installation/site-connection.png)
 
-1. Wählen Sie **Interconnect** > **Multi-Site Service Mesh** (Dienstnetz mit mehreren Standorten) > **Network Profiles** (Netzwerkprofile) > **Create Network Profile** (Netzwerkprofil erstellen) aus.
+1. Wählen Sie unter **Infrastruktur** die Option **Interconnect** > **Multi-Site Service Mesh (Dienstnetz mit mehreren Standorten)**  > **Network Profiles (Netzwerkprofile)**  > **Create Network Profile (Netzwerkprofil erstellen)** aus.
 
     ![Netzwerkprofil erstellen](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. Geben Sie die IP-Adressbereiche für HCX IX und NE ein (für IX-und NE-Appliances sind mindestens zwei IP-Adressen erforderlich).
+1. Geben Sie für das neue Netzwerkprofil die IP-Adressbereiche für HCX IX und NE ein (für IX-und NE-Appliances sind mindestens zwei IP-Adressen erforderlich).
     
    ![IP-Adressbereiche eingeben](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   
@@ -140,7 +145,7 @@ Führen Sie nach der Installation die folgenden Schritte aus:
 
     ![Compute-Profil erstellen](./media/hybrid-cloud-extension-installation/create-compute-profile.png)
 
-1. Wählen Sie Dienste aus, die aktiviert werden sollen, z. B. für Migration, Netzwerkerweiterung oder Notfallwiederherstellung. Wählen Sie **Weiter**.
+1. Wählen Sie die Dienste aus, die aktiviert werden sollen, z. B. für Migration, Netzwerkerweiterung oder Notfallwiederherstellung, und wählen Sie **Weiter** aus.
 
     ![Auswählen von Diensten](./media/hybrid-cloud-extension-installation/select-services.png)
 
@@ -175,25 +180,25 @@ Führen Sie nach der Installation die folgenden Schritte aus:
 
 1. Wählen Sie **vMotion Network Profile** (vMotion-Netzwerkprofil) und dann **Continue** (Weiter) aus.
       
-    Wählen Sie das Netzwerkprofil aus, über das die vMotion-Schnittstelle der ESXi-Hosts erreicht werden kann. Wenn Sie ein solches Netzwerkprofil nicht bereits definiert haben, können Sie es hier erstellen. Wenn Sie kein vMotion-Netzwerk verwenden, wählen Sie **Management Network Profile** (Netzwerkprofil für die Verwaltung) aus.  
+   Wählen Sie das Netzwerkprofil aus, über das die vMotion-Schnittstelle der ESXi-Hosts erreicht werden kann. Wenn Sie ein solches Netzwerkprofil nicht bereits definiert haben, können Sie es hier erstellen. Wenn Sie kein vMotion-Netzwerk verwenden, wählen Sie **Management Network Profile** (Netzwerkprofil für die Verwaltung) aus.  
     
-    ![vMotion-Netzwerkprofil auswählen](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
+   ![vMotion-Netzwerkprofil auswählen](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
 
-1. Wählen Sie **vSphere Replication Network Profile** (Netzwerkprofil für vSphere-Replikation) und dann **Continue** (Weiter) aus.
+1. Wählen Sie unter **Netzwerkprofil für die vSphere-Replikation auswählen** ein Netzwerkprofil für die vSphere-Replikationsschnittstelle der ESXi-Hosts und dann **Weiter** aus.
       
-    Wählen Sie ein Netzwerkprofil aus, über das die vSphere-Replikationsschnittstelle der ESXi-Hosts erreicht werden kann. In den meisten Fällen ist dieses Profil mit dem Netzwerkprofil für die Verwaltung identisch.  
+   In den meisten Fällen ist dieses Profil mit dem Netzwerkprofil für die Verwaltung identisch.  
     
-    ![Netzwerkprofil für die vSphere-Replikation auswählen](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
+   ![Netzwerkprofil für die vSphere-Replikation auswählen](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. Wählen Sie **Distributed Switches for Network Extensions** (Verteilte Switches für Network Extensions) und dann **Continue** (Weiter) aus.  
+1. Wählen Sie unter **Select Distributed Switches for Network Extensions (Verteilte Switches für Network Extensions)** den DVS aus, der Netzwerke enthält, die integriert und verbunden werden.  Wählen Sie **Weiter**.  
       
-    Wählen Sie die verteilten virtuellen Switches mit den Netzwerken aus, mit denen die VMs, die migriert werden, verbunden sind.
-
     ![Verteilte virtuelle Switches auswählen](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 
-1. Überprüfen Sie die Verbindungsregeln, und wählen Sie **Continue** (Weiter) aus. Wählen Sie **Finish** (Fertig stellen) aus, um das Compute-Profil zu erstellen.  
+1. Überprüfen Sie die Verbindungsregeln, und wählen Sie **Continue** (Weiter) aus.  
 
     ![Compute-Profil erstellen](./media/hybrid-cloud-extension-installation/complete-compute-profile.png)
+
+1.  Wählen Sie **Finish** (Fertig stellen) aus, um das Compute-Profil zu erstellen.
 
 ## <a name="configure-network-uplink"></a>Konfigurieren des Netzwerkuplinks
 
@@ -217,45 +222,45 @@ Konfigurieren Sie nun das Dienstnetz zwischen dem lokalen Standort und AVS SDDC.
 
 1. Melden Sie sich bei AVS SDDC vCenter an, und wählen Sie **HCX**aus.
 
-1. Wählen Sie **Infrastructure** (Infrastruktur) > **Interconnect** > **Dienstnetz** > **Create Service Mesh** (Dienstnetz erstellen) aus.  Konfigurieren Sie die Netzwerk-und Compute-Profile, die Sie in den vorherigen Schritten erstellt haben.    
+2. Wählen Sie unter **Infrastructure** (Infrastruktur) die Option **Interconnect** > **Service Mesh (Dienstnetz)**  > **Create Service Mesh (Dienstnetz erstellen)** aus, um die in den vorherigen Schritten erstellten Netzwerk- und Computeprofile zu konfigurieren.    
       
     ![Konfigurieren des Dienstnetzes](./media/hybrid-cloud-extension-installation/configure-service-mesh.png)
 
-1. Wählen Sie **Create Service Mesh** (Dienstnetz erstellen) und dann **Continue** (Weiter) aus.  
-      
-    Wählen Sie verbundene Standorte aus, zwischen denen Hybrid-Mobilität aktiviert werden soll.  
+3. Wählen Sie verbundene Standorte aus, um die Hybridfunktion zu aktivieren, und wählen Sie dann **Continue** (Weiter) aus.   
     
     ![Verbundene Standorte auswählen](./media/hybrid-cloud-extension-installation/select-paired-sites.png)
 
-1. Wählen Sie **Compute profile** (Compute-Profil) und dann **Continue** (Weiter) aus.
+4. Wählen Sie das Quellcomputeprofil und das Remotecomputeprofil aus, um Hybriddienste zu aktivieren, und wählen Sie dann **Continue** (Weiter) aus.
       
-    Wählen Sie jeweils ein Compute-Profil am Quell- und am Remote-Standort aus, um Hybriddienste zu aktivieren. Durch die Auswahl werden die Ressourcen definiert, durch die VMs HCX-Dienste nutzen können.  
+    Mit der Auswahl werden die Ressourcen definiert, in denen VMs HCX-Dienste nutzen können.  
       
     ![Hybriddienste aktivieren](./media/hybrid-cloud-extension-installation/enable-hybridity.png)
 
-1. Wählen Sie die Dienste, die für HCX aktiviert werden sollen, und dann **Continue** (Weiter) aus.  
+5. Wählen Sie die zu aktivierenden Dienste und dann **Continue** (Weiter) aus.  
       
     ![HCX-Dienste auswählen](./media/hybrid-cloud-extension-installation/hcx-services.png)
 
-1. Wählen Sie unter **Advanced Configuration - Override Uplink Network profiles** (Erweiterte Konfiguration – Uplink-Netzwerkprofile überschreiben)die Option **Continue** (Weiter) aus.  
+6. Wählen Sie unter **Advanced Configuration - Override Uplink Network profiles** (Erweiterte Konfiguration – Uplink-Netzwerkprofile überschreiben)die Option **Continue** (Weiter) aus.  
       
     Uplink-Netzwerkprofile werden verwendet, um eine Verbindung mit dem Netzwerk herzustellen, über das die Interconnect-Appliances des Remote-Standorts erreicht werden können.  
       
     ![Uplink-Profile überschreiben](./media/hybrid-cloud-extension-installation/override-uplink-profiles.png)
 
-1. Wählen Sie unter **Advanced Configuration – Network Extension Appliance Scale Out** (Erweiterte Konfiguration – Aufskalierung für Network Extension-Appliance) **Configure the Network Extension Appliance Scale Out** (Aufskalierung für Network Extension-Appliance konfigurieren) aus. 
+7. Wählen Sie **Configure the Network Extension Appliance Scale Out** (Aufskalierung für Network Extension-Appliance konfigurieren) aus. 
       
     ![Aufskalierung für Network Extension-Appliance](./media/hybrid-cloud-extension-installation/network-extension-scale-out.png)
 
-1. Geben Sie die Anzahl der Appliances entsprechend der Anzahl der DVS-Switches an.  
+8. Geben Sie die Anzahl der Appliances entsprechend der Anzahl der DVS-Switches an.  
       
     ![Appliance-Anzahl konfigurieren](./media/hybrid-cloud-extension-installation/appliance-scale.png)
 
-1. Wählen Sie unter **Advanced Configuration - Traffic Engineering** (Erweiterte Konfiguration – Verwaltung des Datenverkehrs) **Continue** (Weiter) aus.  
+9. Wählen Sie **Continue** (Weiter) aus, um den Schritt zu überspringen.  
       
     ![Verwaltung des Datenverkehrs konfigurieren](./media/hybrid-cloud-extension-installation/traffic-engineering.png)
 
-1. Überprüfen Sie die Topologievorschau, und wählen Sie **Continue** (Weiter) aus. Geben Sie dann einen benutzerfreundlichen Namen für dieses Dienstnetz ein, und wählen Sie **Finish** (Fertig stellen) aus, um den Vorgang abzuschließen.  
+10. Überprüfen Sie die Topologievorschau, und wählen Sie **Continue** (Weiter) aus. 
+
+11. Geben Sie einen benutzerfreundlichen Namen für dieses Dienstnetz ein, und wählen Sie **Finish** (Fertig stellen) aus, um den Vorgang abzuschließen.  
       
     ![Dienstnetz fertig stellen](./media/hybrid-cloud-extension-installation/complete-service-mesh.png)
 

@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4880fa5bdccdc6416962e2f7e6da395f3db7be44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263594"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale Endpunkte für Azure Cosmos DB-Graphkonto
 Die Azure Cosmos DB-Graphdatenbank ist [global verteilt](distribute-data-globally.md), sodass Anwendungen mehrere Leseendpunkte verwenden können. Für Anwendungen, die Schreibzugriff an mehreren Speicherorten benötigen muss die [Multimaster](how-to-multi-master.md)-Funktion aktiviert sein.
@@ -43,7 +43,7 @@ Der CNAME des globalen Datenbankkontos verweist immer auf eine gültige Schreibr
 
 Die Liste der Regionen für das Azure Cosmos DB-Graphkonto lässt sich am einfachsten über das Übersichtsblatt im Azure Portal abrufen. Dies funktioniert für Anwendungen, die Regionen nicht häufig ändern, oder eine Möglichkeit zum Aktualisieren der Liste über die Anwendungskonfiguration haben.
 
-![Abrufen von Regionen des Cosmos DB-Graphkontos aus dem Portal](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+:::image type="content" source="./media/how-to-use-regional-gremlin/get-end-point-portal.png " alt-text="Abrufen von Regionen des Cosmos DB-Graphkontos aus dem Portal":::
 
 Im folgenden Beispiel werden allgemeine Prinzipien für den Zugriff auf den regionalen Gremlin-Endpunkt veranschaulicht. Die Anwendung sollte die Anzahl der Regionen, an die der Datenverkehr gesendet werden soll, sowie die Anzahl der entsprechenden Gremlin-Clients berücksichtigen.
 

@@ -3,12 +3,12 @@ title: Ausführen einer Notfallwiederherstellung virtueller Computer
 description: In diesem Artikel wird gezeigt, wie Sie eine Notfallwiederherstellung virtueller Computer mithilfe von AVS durchführen.
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148156"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749948"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Ausführen einer Notfallwiederherstellung virtueller Computer mithilfe von Azure VMware Solution
 
@@ -56,7 +56,7 @@ Wählen Sie bei Bedarf die Standardreplikationsoptionen aus:
 
 - **Enable Quiescence (Ruhezustand aktivieren):** Hält den virtuellen Computer an, um sicherzustellen, dass eine konsistente Kopie mit dem Remotestandort synchronisiert wird.
 
-- **Destination Storage (Zielspeicher):** Wählen Sie den Remotedatenspeicher für die geschützte(n) VM(s) aus. In einer privaten AVS-Cloud sollte diese Auswahl der VSAN-Datenspeicher sein.
+- **Destination Storage (Zielspeicher):** Wählen Sie den Remotedatenspeicher für die geschützte(n) VM(s) aus. In einer privaten AVS-Cloud sollte diese Auswahl der vSAN-Datenspeicher sein.
 
 - **Compute Container:** Der vSphere-Remotecluster oder -Ressourcenpool.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68297781"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120278"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
 
@@ -136,7 +136,7 @@ Diese Tabelle zeigt die Luftlinie zwischen zwei Orten. In Netzwerken ist der Abs
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-Sie können 200 für die Ausbreitungsgeschwindigkeit (speed of propagation) verwenden. Dies ist die Entfernung in Metern, die Licht in 1 Millisekunde zurücklegt.
+Sie können 200 für die Ausbreitungsgeschwindigkeit (speed of propagation) verwenden. Dies ist die Entfernung in Kilometern, die Licht in 1 Millisekunde zurücklegt.
 
 Nehmen Sie die Strecke New York nach San Francisco als Beispiel. Die Luftlinie beträgt 4.148 km. Nach Einsetzen dieses Werts in die Gleichung, ergibt sich Folgendes:
 

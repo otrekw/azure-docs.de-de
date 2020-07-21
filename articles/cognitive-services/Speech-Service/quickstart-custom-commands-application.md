@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307152"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362141"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung erstellen und testen Sie eine einfache Anwendung
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellen einer Azure Speech-Ressource<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellen einer Azure Speech-Ressource in einer Region, die benutzerdefinierte Befehle unterstützt<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * Laden Sie die JSON-Beispieldatei für [Smart Room Lite](https://aka.ms/speech/cc-quickstart) herunter.
 > * Laden Sie die neueste Version des [Windows-Sprachassistent-Clients](https://aka.ms/speech/va-samples-wvac) herunter.
 
@@ -82,7 +82,8 @@ Sie sollten jetzt eine Übersicht über Ihre neue Anwendung für benutzerdefinie
     - Turn on the tv (Schalte den Fernseher ein)
     - Set the temperature to 80 degrees (Stelle die Temperatur auf 27 Grad ein)
     - Turn it off (Schalte es aus)
-    - Set an alarm (Alarm festlegen)
+    - The tv (Der Fernseher)
+    - Set an alarm for 5 PM (Alarm für 17 Uhr festlegen)
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>Integrieren von Anwendungen für benutzerdefinierte Befehle in einen Assistenten
 Bevor Sie außerhalb von Speech Studio auf diese Anwendung zugreifen können, müssen Sie die Anwendung veröffentlichen. Zum Veröffentlichen einer Anwendung müssen Sie die LUIS-Vorhersageressource konfigurieren.  
@@ -110,7 +111,7 @@ Alternativ können Sie diese Werte auch erhalten, indem Sie den Abschnitt **Eins
 
 Im Rahmen dieses Artikels werden wir den Windows-Sprachassistent-Client verwenden, den Sie als Teil der Voraussetzungen heruntergeladen haben. Entzippen Sie den Ordner.
 1. Starten Sie **VoiceAssistantClient.exe**.
-1. Erstellen Sie ein neues Veröffentlichungsprofil, und geben Sie einen Wert für **Verbindungsprofil** ein. Geben Sie im Abschnitt **Allgemeine Einstellungen** die Werte **Abonnementschlüssel**, **Abonnementschlüsselregion** und **App-ID für benutzerdefinierte Befehle** ein.
+1. Erstellen Sie ein neues Veröffentlichungsprofil, und geben Sie einen Wert für **Verbindungsprofil** ein. Geben Sie im Bereich **Allgemeine Einstellungen** die Werte **Abonnementschlüssel** (dieser Wert ist identisch mit dem Wert für den **Speech-Ressourcenschlüssel**, den Sie beim Veröffentlichen der Anwendung gespeichert haben), **Abonnementschlüsselregion** und **App-ID für benutzerdefinierte Befehle** ein.
     > [!div class="mx-imgBorder"]
     > ![WVAC: Profil erstellen](media/custom-commands/create-profile.png)
 1. Wählen Sie **Profil speichern und anwenden** aus.

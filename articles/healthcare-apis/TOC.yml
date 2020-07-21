@@ -19,6 +19,8 @@
       href: fhir-oss-powershell-quickstart.md
     - name: 'Bereitstellen des FHIR-Servers für Azure: CLI'
       href: fhir-oss-cli-quickstart.md
+    - name: 'Bereitstellen eines IoT-Connectors: Portal'
+      href: iot-fhir-portal-quickstart.md
 - name: Tutorials
   expanded: false
   items:
@@ -37,6 +39,11 @@
       href: access-fhir-postman-tutorial.md
     - name: Verwenden von SMART auf dem FHIR-Proxy
       href: use-smart-on-fhir-proxy.md
+    - name: Erfassen von Daten von IoT-Geräten
+      expanded: false
+      items:
+        - name: Empfangen von Gerätedaten über Azure IoT Hub
+          href: device-data-through-iot-hub.md
 - name: Beispiele
   items:
     - name: Integrierte Azure Policy-Aktionen
@@ -79,6 +86,8 @@
       href: enable-diagnostic-logging.md
     - name: 'Abrufen eines Tokens für die Azure-API für FHIR: CLI'
       href: get-healthcare-apis-access-token-cli.md
+    - name: Beheben von Fehlern im IoT-Connector
+      href: iot-troubleshoot-guide.md
 - name: Konzepte
   expanded: false
   items:
@@ -88,6 +97,13 @@
       href: azure-ad-hcapi-token-validation.md
     - name: Hinzufügen von Daten zu Überwachungsprotokollen mithilfe benutzerdefinierter HTTP-Header
       href: use-custom-headers.md
+    - name: Funktionsweise des IoT-Connectors
+      expanded: false
+      items:
+        - name: Datenfluss des IoT-Connectors
+          href: iot-data-flow.md
+        - name: Zuordnungsvorlagen für den IoT-Connector
+          href: iot-mapping-templates.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen

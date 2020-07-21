@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021686"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039295"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 
@@ -69,7 +69,7 @@ Fügen Sie mit den folgenden Schritten die Azure SQL-Datenbank-Instanz als Verwe
 
 ### <a name="create-a-sql-database-table"></a>Erstellen einer SQL-Datenbanktabelle
 
-Verwenden Sie SQL Server Management Studio, um eine Tabelle zum Speichern Ihrer Verweisdaten zu erstellen. Nähere Informationen finden Sie unter [Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS](../azure-sql/database/design-first-database-tutorial.md).
+Verwenden Sie SQL Server Management Studio, um eine Tabelle zum Speichern Ihrer Verweisdaten zu erstellen. Weitere Informationen finden Sie unter [Tutorial: Entwerfen einer relationalen Datenbank in Azure SQL-Datenbank unter Verwendung von SSMS](../azure-sql/database/design-first-database-tutorial.md).
 
 Die im folgenden Beispiel verwendete Beispieltabelle wurde aus der folgenden Anweisung erstellt:
 
@@ -183,12 +183,12 @@ Es gibt keine zusätzlichen [Kosten pro Streamingeinheit](https://azure.microsof
 
 **Wie erfahre ich, ob die Verweisdaten-Momentaufnahme von der SQL-Datenbank-Instanz abgefragt und im Azure Stream Analytics-Auftrag verwendet wird?**
 
-Es gibt zwei nach dem logischen Namen gefilterte Metriken (unter „Metrics Azure Portal“), die Sie zur Überwachung der Integrität der SQL-Datenbank-Referenzdateneingabe verwenden können.
+Es gibt zwei nach dem logischen Namen gefilterte Metriken (unter Metriken im Azure-Portal), die Sie zur Überwachung der Integrität der SQL-Datenbank-Referenzdateneingabe verwenden können.
 
    * InputEvents: Diese Metrik misst die Anzahl der Datensätze, die aus dem SQL-Datenbank-Verweisdataset geladen werden.
    * InputEventBytes: Diese Metrik misst die Größe der in den Arbeitsspeicher des Stream Analytics-Auftrags geladenen Verweisdaten-Momentaufnahme. 
 
-Mithilfe der Kombination dieser beiden Metriken kann ermittelt werden, ob der Auftrag die SQL-Datenbank abfragt, um das Verweisdataset abzurufen und dann in den Arbeitsspeicher zu laden.
+Mithilfe der Kombination dieser beiden Metriken kann ermittelt werden, ob der Auftrag die SQL-Datenbank-Instanz abfragt, um das Verweisdataset abzurufen und dann in den Arbeitsspeicher zu laden.
 
 **Benötige ich eine besondere Art der Azure SQL-Datenbank-Instanz?**
 

@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie die Zugriffsschlüssel für das von Ihrem Arb
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/19/2020
+ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483311"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "80296951"
 Erfahren Sie, wie Sie die Zugriffsschlüssel für Azure Storage-Konten ändern, die von Azure Machine Learning verwendet werden. Azure Machine Learning kann Speicherkonten verwenden, um Daten oder trainierte Modelle zu speichern.
 
 Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für ein Azure Storage-Konto ändern. Wenn Sie den Zugriffsschlüssel neu generieren, muss Azure Machine Learning aktualisiert werden, um den neuen Schlüssel zu verwenden. Azure Machine Learning kann das Speicherkonto sowohl für die Modellspeicherung als auch als Datenspeicher verwenden.
+
+> [!IMPORTANT]
+> Anmeldeinformationen, die mit Datenspeichern registriert werden, werden im Azure Key Vault gespeichert, der dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) für Ihren Key Vault aktiviert haben, sollten Sie diesen Artikel zum Aktualisieren von Anmeldeinformationen befolgen. Das Aufheben der Registrierung des Datenspeichers und die erneute Registrierung unter demselben Namen schlägt fehl.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -85,7 +88,7 @@ Um Azure Machine Learning so zu aktualisieren, dass der neue Schlüssel verwende
 
 1. Generieren Sie den Schlüssel neu. Informationen zur Neugenerierung eines Zugriffsschlüssels finden Sie im Artikel [Verwaltung von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md). Speichern Sie den neuen Schlüssel.
 
-1. Um den Arbeitsbereich so zu aktualisieren, dass der neue Schlüssel verwendet wird, gehen Sie wie folgt vor:
+1. Im Azure Machine Learning-Arbeitsbereich wird der neue Schlüssel automatisch synchronisiert und nach einer Stunde verwendet. Wenn Sie erzwingen möchten, dass der Arbeitsbereich sofort mit dem neuen Schlüssel synchronisiert wird, führen Sie die folgenden Schritte aus:
 
     1. Um sich bei dem Azure-Abonnement anzumelden, das Ihren Arbeitsbereich enthält, verwenden Sie den folgenden Azure CLI-Befehl:
 
@@ -105,27 +108,35 @@ Um Azure Machine Learning so zu aktualisieren, dass der neue Schlüssel verwende
 
         Dieser Befehl synchronisiert automatisch die neuen Schlüssel für das vom Arbeitsbereich verwendete Azure-Speicherkonto.
 
-1. Um Datenspeicher, die das Speicherkonto verwenden, neu zu registrieren, verwenden Sie die Werte aus dem Abschnitt [Was muss aktualisiert werden](#whattoupdate) und den Schlüssel aus Schritt 1 mit dem folgenden Code:
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. Sie können Datenspeicher erneut registrieren, die das Speicherkonto über das SDK oder [Azure Machine Learning Studio](https://ml.azure.com) verwenden.
+    1. Verwenden Sie die Werte aus dem Abschnitt [Was aktualisiert werden muss](#whattoupdate) und den Schlüssel aus Schritt 1 mit dem folgenden Code, **um Datenspeicher über das Python SDK erneut zu registrieren**. 
+    
+        Da `overwrite=True` angegeben ist, überschreibt dieser Code die bestehende Registrierung und aktualisiert sie, um den neuen Schlüssel zu verwenden.
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    Da `overwrite=True` angegeben ist, überschreibt dieser Code die bestehende Registrierung und aktualisiert sie, um den neuen Schlüssel zu verwenden.
+    1. Klicken Sie im linken Bereich von Studio auf **Datenspeicher**, **um Datenspeicher über Studio erneut zu registrieren**. 
+        1. Wählen Sie den Datenspeicher aus, den Sie aktualisieren möchten.
+        1. Klicken Sie oben links auf die Schaltfläche **Update credentials** (Anmeldeinformationen aktualisieren). 
+        1. Verwenden Sie den neuen Zugriffsschlüssel aus Schritt 1, um das Formular auszufüllen, und klicken Sie auf **Speichern**.
+        
+            Wenn Sie Anmeldeinformationen für Ihren **Standarddatenspeicher** aktualisieren, führen Sie diesen Schritt aus, und wiederholen Sie Schritt 2b, um den neuen Schlüssel mit dem Standarddatenspeicher des Arbeitsbereichs neu zu synchronisieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

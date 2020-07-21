@@ -1,35 +1,39 @@
 ---
-title: Auswerten der Modellleistung
+title: Auswertung und Cross-Validate Models
 titleSuffix: ML Studio (classic) - Azure
-description: Erfahren Sie, wie Sie die Modellleistung in Azure Machine Learning Studio (klassisch) auswerten und welche Metriken die für diese Aufgabe verfügbar sind.
+description: Hier erhalten Sie weitere Informationen zu den Metriken, die Sie verwenden können, um die Modellleistung in Azure Machine Learning Studio (Classic) zu überwachen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945102"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Auswerten der Modellleistung in Azure Machine Learning Studio (klassisch)
+# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Auswerten der Modellleistung in Azure Machine Learning Studio (Classic)
 
-Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio (klassisch) ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt: 
+Hier erhalten Sie weitere Informationen zu den Metriken, die Sie verwenden können, um die Modellleistung in Azure Machine Learning Studio (Classic) zu überwachen.  Die Auswertung der Leistung eines Modells ist eine der wesentlichen Phasen im Datenanalyseprozess. Sie gibt an, wie erfolgreich die Bewertung (die Vorhersagen) eines Datasets eines trainierten Modells war. In Azure Machine Learning Studio (klassisch) wird die Auswertung von Modellen durch zwei der wichtigsten Machine Learning-Module unterstützt: 
++ [Auswertungsmodell][evaluate-model] 
++ [Cross-Validate Model][cross-validate-model]
 
+Mit diesen Modulen können Sie die Leistung Ihres Modells im Hinblick auf verschiedene Kennzahlen anzeigen, die beim maschinellen Lernen und in der Statistik häufig verwendet werden.
+
+Beim Auswerten von Modellen sollte außerdem Folgendes berücksichtigt werden:
++ [Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (klassisch)](algorithm-parameters-optimize.md)
++ [Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)](interpret-model-results.md)
+
+Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt: 
 * Regression
 * Binäre Klassifizierung 
 * Multiklassenklassifizierung
 
-
-
-Die Auswertung der Leistung eines Modells ist eine der wesentlichen Phasen im Datenanalyseprozess. Sie gibt an, wie erfolgreich die Bewertung (die Vorhersagen) eines Datasets eines trainierten Modells war. 
-
-In Azure Machine Learning Studio (klassisch) wird die Auswertung von Modellen durch zwei der wichtigsten Machine Learning-Module unterstützt: [Evaluate Model][evaluate-model] und [Cross-Validate Model][cross-validate-model]. Mit diesen Modulen können Sie die Leistung Ihres Modells im Hinblick auf verschiedene Kennzahlen anzeigen, die beim maschinellen Lernen und in der Statistik häufig verwendet werden.
 
 ## <a name="evaluation-vs-cross-validation"></a>Auswertung und Kreuzvalidierung im Vergleich
 Die Auswertung und die Kreuzvalidierung sind Standardmethoden zum Messen der Leistung von Modellen. Bei beiden Methoden werden Auswertungskennzahlen generiert, die mit denen anderer Modelle geprüft oder verglichen werden können.

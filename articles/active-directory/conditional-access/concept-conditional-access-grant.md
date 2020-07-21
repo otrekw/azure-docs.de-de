@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583196"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024449"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -28,7 +28,7 @@ Innerhalb einer Richtlinie für bedingten Zugriff kann ein Administrator Zugriff
 
 Beim Blockieren des Zugriffs werden alle Zuweisungen berücksichtigt, und der Zugriff wird basierend auf der Konfiguration der Richtlinie für bedingten Zugriff verhindert.
 
-Das Blockieren des Zugriffs ist ein leistungsstarkes Steuerelement, das nur mit entsprechenden Kenntnissen eingesetzt werden sollte. Administratoren sollten den [Modus „Nur Bericht“](concept-conditional-access-report-only.md) verwenden, um die Option vor dem Aktivieren zu testen.
+Das Blockieren des Zugriffs ist ein leistungsstarkes Steuerelement, das nur mit entsprechenden Kenntnissen eingesetzt werden sollte. Richtlinien mit Blockanweisungen können unbeabsichtigte Nebeneffekte haben. Ordnungsgemäße Tests und Validierung sind vor dem Aktivieren im großen Stil unerlässlich. Administratoren sollten bei Änderungen Tools wie den Modus [Nur Bericht](concept-conditional-access-report-only.md) und das [Was-wäre-wenn-Tool](what-if-tool.md) für den bedingten Zugriff verwenden.
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
@@ -39,6 +39,7 @@ Administratoren können auswählen, ob beim Gewähren des Zugriffs ein oder mehr
 - [Gerät mit Hybrid-Azure AD-Einbindung erforderlich](../devices/concept-azure-ad-join-hybrid.md)
 - [Genehmigte Client-App erforderlich](app-based-conditional-access.md)
 - [App-Schutzrichtlinie erforderlich](app-protection-based-conditional-access.md)
+- [Kennwortänderung erforderlich](#require-password-change)
 
 Wenn sich Administratoren dafür entscheiden, diese Optionen zu kombinieren, können sie die folgenden Methoden auswählen:
 
@@ -62,6 +63,8 @@ Geräte müssen in Azure AD registriert werden, damit Sie als kompatibel gekenn
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Gerät mit Hybrid-Azure AD-Einbindung erforderlich
 
 Organisationen können die Geräteidentität als Teil ihrer Richtlinie für bedingten Zugriff verwenden. Mit diesem Kontrollkästchen können Organisationen festlegen, dass Geräte in Hybrid-Azure AD eingebunden sein müssen. Im Artikel [Was ist eine Geräteidentität?](../devices/overview.md) finden Sie weitere Informationen zu Geräteidentitäten.
+
+Bei Verwendung des [OAuth-Gerätecodeflows](../develop/v2-oauth2-device-code.md) werden das Gewährungssteuerelement „Verwaltetes Gerät erforderlich“ oder eine Gerätestatusbedingung nicht unterstützt. Dies liegt daran, dass das Gerät, das die Authentifizierung ausführt, seinen Gerätestatus nicht für das Gerät bereitstellen kann, das einen Code bereitstellt. Zudem ist der Gerätestatus im Token für das Gerät, das die Authentifizierung ausführt, gesperrt. Verwenden Sie stattdessen das Gewährungssteuerelement „Mehrstufige Authentifizierung erforderlich“.
 
 ### <a name="require-approved-client-app"></a>Genehmigte Client-App erforderlich
 
@@ -132,6 +135,21 @@ Diese Einstellung gilt für die folgenden Client-Apps:
     - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Bei iOS ist Microsoft Authenticator die Broker-App, und bei Android ist es die Intune-Unternehmensportal-App.
 
 Konfigurationsbeispiele finden Sie im Artikel [Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](app-protection-based-conditional-access.md).
+
+### <a name="require-password-change"></a>Kennwortänderung anfordern 
+
+Wenn Benutzerrisiken erkannt werden, können Administratoren mithilfe der Benutzerrisiko-Richtlinienbedingungen festlegen, dass der Benutzer sein Kennwort mithilfe der Self-Service-Kennwortzurücksetzung von Azure AD sicher ändern kann. Wenn Benutzerrisiken erkannt werden, können die Benutzer die Self-Service-Kennwortzurücksetzung zur Eigenwartung durchführen und das Benutzerrisikoereignis schließen, um unnötigen Aufwand für Administratoren zu vermeiden. 
+
+Wenn Benutzer aufgefordert werden, ihr Kennwort zu ändern, müssen sie zunächst die mehrstufige Authentifizierung durchführen. Sie müssen sicherstellen, dass alle Ihre Benutzer sich für die mehrstufige Authentifizierung registriert haben, damit sie vorbereitet sind, wenn ein Risiko für ihr Konto erkannt werden sollte.  
+
+> [!WARNING]
+> Benutzer müssen sich vor Auslösen der Anmelderisikorichtlinie bereits für die Self-Service-Kennwortzurücksetzung registriert haben. 
+
+Es gibt einige Einschränkungen, wenn Sie eine Richtlinie mithilfe der Kennwortänderungssteuerung konfigurieren.  
+
+1. Diese Richtlinie muss „allen Cloud-Apps“ zugewiesen sein. Dadurch wird verhindert, dass ein Angreifer eine andere App verwendet, um das Kennwort des Benutzers zu ändern und so das Kontorisiko zurücksetzt, indem er sich einfach bei einer anderen App anmeldet. 
+1. „Kennwortänderung erforderlich“ kann nicht mit anderen Steuerungen verwendet werden, zum Beispiel der Anforderung, ein kompatibles Gerät zu verwenden.  
+1. Die Kennwortänderungssteuerung kann nur mit der Benutzer- und Gruppenzuweisungsbedingung, mit der Cloud-App-Zuweisung (die auf „Alle“ festgelegt sein muss) und den Benutzerrisikobedingungen verwendet werden. 
 
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 

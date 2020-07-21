@@ -1,22 +1,20 @@
 ---
-title: Migrieren von Azure Firewall-Konfigurationen mithilfe von PowerShell zu einer Azure Firewall-Richtlinie (Vorschau)
-description: Erfahren Sie, wie Sie Azure Firewall-Konfigurationen zu einer Azure Firewall-Richtlinie migrieren (Vorschau).
+title: Migrieren von Azure Firewall-Konfigurationen mithilfe von PowerShell zu einer Azure Firewall-Richtlinie
+description: Erfahren Sie, wie Sie Azure Firewall-Konfigurationen zu einer Azure Firewall-Richtlinie migrieren.
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601325"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Migrieren von Azure Firewall-Konfigurationen mithilfe von PowerShell zu einer Azure Firewall-Richtlinie (Vorschau)
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>Migrieren von Azure Firewall-Konfigurationen mithilfe von PowerShell zu einer Azure Firewall-Richtlinie
 
 Sie können ein Azure PowerShell-Skript verwenden, um vorhandene Azure Firewall-Konfigurationen zu einer Azure Firewall-Richtlinienressource zu migrieren. Anschließend können Sie die Richtlinie mithilfe von Azure Firewall Manager bereitstellen.
 
@@ -161,4 +159,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Bereitstellung mit Azure Firewall Manager: [Übersicht über die Bereitstellung mit Azure Firewall Manager (Vorschau)](deployment-overview.md)
+Weitere Informationen zur Bereitstellung mit Azure Firewall Manager: [Übersicht über die Bereitstellung mit Azure Firewall Manager](deployment-overview.md)

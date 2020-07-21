@@ -8,17 +8,85 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607872"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112985"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="text-to-speech-2020-july-release"></a>Sprachsynthese: Release Juli 2020
+
+### <a name="new-features"></a>Neue Funktionen
+
+* **Neuronale Sprachsynthese: 15 neue neuronale Stimmen:** Die neu hinzugefügten Stimmen im Portfolio der neuronalen Sprachsynthese sind die folgenden: Salma für `ar-EG` Arabisch (Ägypten), Zariyah für `ar-SA` Arabisch (Saudi-Arabien), Alba für `ca-ES` Katalanisch (Spanien), Christel für `da-DK` Dänisch (Dänemark), Neerja für `es-IN` Englisch (Indien), Noora für `fi-FI` Finnisch (Finnland), Swara für `hi-IN` Hindi (Indien), Colette für `nl-NL` Niederländisch (Niederlande), Zofia für `pl-PL` Polnisch (Polen), Fernanda für `pt-PT` Portugiesisch (Portugal), Dariya für `ru-RU` Russisch (Russland), Hillevi für `sv-SE` Schwedisch (Schweden), Achara für `th-TH` Thai (Thailand), HiuGaai für `zh-HK` Chinesisch (Kantonesisch, traditionell) und HsiaoYu für `zh-TW` Chinesisch (Taiwanesisches Mandarin). [Hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) finden Sie alle unterstützten Sprachen.  
+
+* **Custom Voice: Optimierung der Stimmentests mit dem Trainingsablauf zur Vereinfachung für den Benutzer:** Mit dem neuen Testingfeature wird jede Stimme automatisch durch eine vordefinierte Gruppe von Tests getestet, die für jede Sprache so optimiert wurde, dass sie allgemeine Szenarios sowie Sprachassistentszenarios abdeckt. Diese Testgruppen wurden sorgfältig ausgewählt und getestet, sodass sie typische Anwendungsfälle und Phoneme der Sprache enthalten. Benutzer können beim Trainieren eines Modells zudem noch immer auch ihre eigenen Testskripts hochladen.
+
+* **Audio Content Creation: Es werden einige neue Features eingeführt, die leistungsstärkere Sprachoptimierungs- und Audioverwaltungsfunktionen bereitstellen:**
+
+    * `Pitch`, `rate` und `volume` werden erweitert, sodass die Optimierung durch einen vordefinierten Wert, z. B. „Langsam, „Mittel“ und „Schnell“, unterstützt wird. Benutzer können nun ganz einfach einen Wert für die „Konstante“ für Ihre Audiobearbeitung auswählen.
+
+    ![Audiooptimierung](media/release-notes/audio-tuning.png)
+
+    * Benutzer können nun die `Audio history`-Einträge für ihre Arbeitsdatei prüfen. Mit diesem Feature können Benutzer einfach alle im Zusammenhang mit einer Arbeitsdatei generierten Audiodaten nachverfolgen. Sie können die Verlaufsversion prüfen und die Qualität vergleichen, während sie optimieren. 
+
+    ![Audioverlauf](media/release-notes/audio-history.png)
+
+    * Das `Clear`-Feature ist jetzt flexibler. Benutzer können einen bestimmten Optimierungsparameter löschen, wobei andere Parameter für den ausgewählten Inhalt verfügbar bleiben.  
+
+    * Auf der [Startseite](https://speech.microsoft.com/audiocontentcreation) wurde ein Videotutorial hinzugefügt, um Benutzern mit den ersten Schritten mit der Stimmenoptimierung und der Audioverwaltung der Sprachsynthese zu helfen. 
+
+### <a name="general-tts-voice-quality-improvements"></a>Allgemeine Verbesserungen bei der Stimmenqualität der Sprachsynthese
+
+* Der Vocoder der Sprachsynthese wurde verbessert und weist nun eine höhere Genauigkeit und eine geringere Wartezeit auf.
+
+    * Elsa (`it-IT`) wurde auf einen neuen Vocoder aktualisiert, wodurch sich die Stimmenqualität, dargestellt durch den CMOS (Comparative Mean Opinion Score), um +0,464 verbessert hat, die Synthese 40 % schneller erfolgt und sich die Wartezeit beim ersten Byte um 30 % verringert hat. 
+    * Xiaoxiao (`zh-CN`) wurde auf den neuen Vocoder aktualisiert, der eine Verbesserung des CMOS von +0148 für die allgemeine Domäne, +0,348 für den Nachrichtensprecherstil und +0,195 für den lyrischen Stil bewirkt. 
+
+* Die Sprachmodelle für `de-DE` und `ja-JP` wurden aktualisiert, sodass die Ausgabe der Sprachsynthese natürlicher erscheint.
+    
+    * Katja (`de-DE`) wurde mit der neuesten Rhythmusmodellierungsmethode aktualisiert und weist eine Verbesserung des MOS (Mean Opinion Score) von +0,13 auf. 
+    * Nanami (`ja-JP`) wurde mit einem neuen Rhythmusmodell für den Tonhöhenakzent aktualisiert und weist eine Verbesserung des MOS (Mean Opinion Score) von +0,19 auf.  
+
+* Die Genauigkeit der Aussprache auf Wortebene wurde in 5 Sprachen verbessert.
+
+    | Sprache | Reduzierung der Aussprachefehler |
+    |---|---|
+    | `en-GB` | 51 % |
+    | `ko-KR` | 17 % |
+    | `pt-BR` | 39% |
+    | `pt-PT` | 77 % |
+    | `id-ID` | 46 % |
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+
+* Lesen von Währungen
+    * Das Problem mit dem Lesen von Währungen bei `es-ES` und `es-MX` wurde behoben.
+     
+    | Sprache | Eingabe | Vorgelesenes nach Verbesserung |
+    |---|---|---|
+    | `es-MX` | 1,58 USD | un peso cincuenta y ocho centavos |
+    | `es-ES` | 1,58 USD | un dólar cincuenta y ocho centavos |
+
+    * Negative Währungen (z. B. „–325 €“) werden für folgende Sprachen unterstützt: `en-US`, `en-GB`, `fr-FR`, `it-IT`, `en-AU`, `en-CA`.
+
+* Das Lesen von Adressen in `pt-PT` wurde verbessert.
+* Die Ausspracheprobleme der Wörter „for“ und „four“ bei Natasha (`en-AU`) und Libby (`en-UK`) wurden behoben.  
+* Fehler im Tool „Audio Content Creation“ wurden behoben:
+    * Die zusätzliche unerwartete Pause nach dem zweiten Absatz wurde behoben.  
+    * Das Feature „No break“ (keine Unterbrechung) wurde nach einem Regressionsfehler wieder hinzugefügt. 
+    * Das zufällige Aktualisierungsproblem von Speech Studio wurden behoben.  
+
+### <a name="samplessdk"></a>Beispiele/SDK
+
+* JavaScript: Das Wiedergabeproblem in Firefox und Safari unter macOS und iOS wurde behoben. 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1: Release von Juni 2020
 **Speech-Befehlszeilenschnittstelle (auch als SPX bezeichnet)**
 -   Hinzugefügte Suchfeatures für die Hilfe in der Befehlszeilenschnittstelle:
@@ -33,7 +101,7 @@ ms.locfileid: "84607872"
 
 **Fehlerbehebungen**
 -   **C\#, C++:** Die Mikrofonaufzeichnung funktionierte in 1.12 bei der Sprechererkennung nicht. Dies wurde behoben.
--   **JavaScript:** Die Sprachsynthese in Firefox und Safari unter macOS und iOS wurde korrigiert.
+-   **JavaScript:** Fehler der Sprachsynthese in Firefox und Safari unter macOS und iOS wurden behoben.
 -   Es wurde ein Fehler behoben, bei dem es durch eine Zugriffsverletzung der Windows-Anwendungsüberprüfung bei der Unterhaltungstranskription von 8-Kanal-Datenströmen zu einem Absturz kam.
 -   Es wurde ein Fehler behoben, bei dem es durch eine Zugriffsverletzung der Windows-Anwendungsüberprüfung bei der Konversationsübersetzung von mehreren Geräten zu einem Absturz kam.
 
@@ -215,7 +283,7 @@ Bleiben Sie gesund!
 - Unterstützung von `Compressed`-Eingaben für ALaw, Mulaw, FLAC unter Android, iOS und Linux hinzugefügt
 - `SendMessageAsync` in der Klasse `Connection` zum Senden einer Nachricht an einen Dienst hinzugefügt
 - `SetMessageProperty` in der Klasse `Connection` zum Festlegen der Eigenschaft einer Nachricht hinzugefügt
-- TTS hat Bindungen für Java (JRE und Android), Python, Swift und Objective-C hinzugefügt
+- Die Sprachsynthese hat Bindungen für Java (JRE und Android), Python, Swift und Objective-C hinzugefügt.
 - TTS hat die Unterstützung der Wiedergabe für macOS, iOS und Android hinzugefügt
 - Es wurden Informationen zur „Wortgrenze“ für TTS hinzugefügt
 

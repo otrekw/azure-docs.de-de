@@ -3,12 +3,12 @@ title: Richtlinien für zuverlässige Sammlungen
 description: Richtlinien und Empfehlungen für die Verwendung von zuverlässigen Sammlungen (Reliable Collections) in Service Fabric in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f196df4b58f1acb01a497b5fa08e9af99a4707d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81398537"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483124"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
 Dieser Abschnitt enthält Richtlinien für die Verwendung von Reliable State Manager und Reliable Collections. Er soll Benutzern helfen, häufige Fehlerquellen zu vermeiden.
@@ -39,7 +39,8 @@ Hier folgen einige Punkte, die es zu beachten gilt:
 * Lesevorgänge auf dem sekundären Replikat dürfen Versionen lesen, die nicht im Quorum committet wurden.
   Dies bedeutet, dass Datenversionen, die von einem einzelnen sekundären Replikat gelesen werden, falsch weiterverarbeitet werden können.
   Da Lesevorgänge von primären Replikaten immer stabil sind, können hier nie fehlerhafte Versionen auftreten.
-* Die Vorgehensweise in Bezug auf die Sicherheit bzw. den Datenschutz der Daten, die von Ihrer Anwendung in einer zuverlässigen Sammlung aufbewahrt werden, ist Ihre Entscheidung und unterliegt den Schutzmechanismen Ihrer Speicherverwaltung. Beispielsweise kann die Verschlüsselung von Betriebssystem-Datenträgern genutzt werden, um Ihre ruhenden Daten zu schützen.  
+* Die Vorgehensweise in Bezug auf die Sicherheit bzw. den Datenschutz der Daten, die von Ihrer Anwendung in einer zuverlässigen Sammlung aufbewahrt werden, ist Ihre Entscheidung und unterliegt den Schutzmechanismen Ihrer Speicherverwaltung. Beispielsweise kann die Verschlüsselung von Betriebssystem-Datenträgern genutzt werden, um Ihre ruhenden Daten zu schützen.
+* Die `ReliableDictionary`-Enumeration verwendet eine sortierte Datenstruktur, deren Reihenfolge von einem Schlüssel bestimmt wird. Damit die Enumeration effizient ist, werden Commits einer temporären Hashtabelle hinzugefügt und später nach dem Prüfpunkt in die sortierte Datenhauptstruktur verschoben. Hinzufügungen/Aktualisierungen/Löschungen haben bei Überprüfungen im Idealfall eine Laufzeit von O(1) und im schlechtesten Fall eine Laufzeit von O(log n), wenn der Schlüssel vorliegt. Abrufvorgänge können O(1) oder O(log n) sein, je nachdem, ob Sie aus einem vor Kurzem durchgeführten Commitvorgang oder aus einem älteren Commitvorgang lesen.
 
 ## <a name="volatile-reliable-collections"></a>Flüchtige zuverlässige Sammlungen
 Beachten Sie Folgendes, wenn Sie sich für die Verwendung von flüchtigen zuverlässigen Sammlungen entscheiden:

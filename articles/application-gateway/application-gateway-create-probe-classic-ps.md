@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie mithilfe von PowerShell einen benutzerdefinie
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807287"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
@@ -136,7 +136,7 @@ Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Appl
 > [!IMPORTANT]
 > Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
 
-Es wird ein neues Konfigurationselement vom Typ \<Test\> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
+Es wird ein neues Konfigurationselement vom Typ \<Probe\> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
 
 Die Konfigurationsparameter sind:
 
@@ -149,7 +149,7 @@ Die Konfigurationsparameter sind:
 | **Timeout** | Definiert das Timeout des Tests für eine HTTP-Antwortprüfung.|
 | **UnhealthyThreshold** | Die Anzahl von HTTP-Antworten mit Fehlern, ab der die Back-End-Instanz als *fehlerhaft* gekennzeichnet wird.|
 
-Auf den Namen der Überprüfung wird in der \<BackendHttpSettings\>-Konfiguration verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für die benutzerdefinierte Überprüfung verwenden soll.
+Auf den Namen des Tests wird in der Konfiguration \<BackendHttpSettings\> verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für den benutzerdefinierten Test verwenden soll.
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Hinzufügen eines benutzerdefinierten Tests zu einem vorhandenen Anwendungsgateway
 

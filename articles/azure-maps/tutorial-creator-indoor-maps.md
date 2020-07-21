@@ -3,17 +3,17 @@ title: Verwenden von Creator zum Erstellen von Gebäudeplänen
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Maps Creator Gebäudepläne erstellen.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745938"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027871"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Verwenden von Creator zum Erstellen von Gebäudeplänen
 
@@ -39,6 +39,9 @@ Zum Erstellen von Gebäudeplänen ist Folgendes erforderlich:
 
 In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung verwenden.
 
+>[!IMPORTANT]
+> Die API-URLs in diesem Dokument müssen möglicherweise entsprechend dem Speicherort der Creator-Ressource angepasst werden. Weitere Details finden Sie unter [Zugreifen auf Creator-Dienste](how-to-manage-creator.md#access-to-creator-services).
+
 ## <a name="upload-a-drawing-package"></a>Hochladen eines Zeichnungspakets
 
 Verwenden Sie die [Datenupload-API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview), um das Zeichnungspaket in Azure Maps-Ressourcen hochzuladen.
@@ -61,25 +64,30 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
 
 5. Klicken Sie auf die blaue Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
 
-6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine GET-HTTP-Anforderung für die Status-URL (`status URL`). An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden.
+6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationsId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-7. Nach erfolgreichem Abschluss der HTTP-Anforderung **GET** können Sie im nächsten Schritt mithilfe der URL vom Typ `resourceLocation` Metadaten aus dieser Ressource abzurufen.
+7. Wenn die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, wird ein `resourceLocation` zurückgegeben. Der `resourceLocation` enthält die eindeutige `udid` für den hochgeladenen Inhalt. Optional können Sie im nächsten Schritt mithilfe der `resourceLocation`-URL Metadaten aus dieser Ressource abzurufen.
 
     ```json
     {
-        "operationId": "{operationId}",
         "status": "Succeeded",
-        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{upload-udid}?api-version=1.0"
+        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
     }
     ```
 
-8. Erstellen Sie zum Abrufen von Inhaltsmetadaten eine HTTP-Anforderung vom Typ **GET** für die URL vom Typ `resourceLocation`, die Sie in Schritt 7 kopiert haben. Der Antworttext enthält eine eindeutige Daten-ID (`udid`) für den hochgeladenen Inhalt, den Speicherort, an dem später auf den Inhalt zugegriffen bzw. von dem der Inhalt später heruntergeladen werden kann, sowie einige andere Metadaten zum Inhalt wie Erstellungs-/Aktualisierungsdatum, Größe und Ähnliches. Im Anschluss sehen Sie ein Beispiel für eine vollständige Antwort:
+8. Erstellen Sie zum Abrufen von Inhaltsmetadaten eine **GET**-HTTP-Anforderung für die `resourceLocation`-URL, die Sie in Schritt 7 kopiert haben. Stellen Sie sicher, dass Sie für die Authentifizierung den primären Abonnementschlüssel an die URL anfügen. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
-     ```json
+    ```http
+   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    ```
+
+9. Wenn die **GET**-HTTP-Anforderung erfolgreich ausgeführt wird, enthält der Antworttext die in Schritt 7 im `resourceLocation` angegebene `udid`, den Speicherort für den Zugriff bzw. das Herunterladen des Inhalts sowie einige weitere Metadaten zum Inhalt wie beispielsweise das Erstellungs- und Aktualisierungsdatum, die Größe und Ähnliches. Im Anschluss sehen Sie ein Beispiel für eine vollständige Antwort:
+
+    ```json
     {
         "udid": "{udid}",
         "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
@@ -99,8 +107,10 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um Ihr hochgeladenes Zeichnungspaket in Kartendaten zu konvertieren. Verwenden Sie die eindeutige Daten-ID (`udid`) für das hochgeladene Paket.
 
     ```http
-    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={upload-udid}&inputType=DWG
+    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+    >[!IMPORTANT]
+    > Die API-URLs in diesem Dokument müssen möglicherweise entsprechend dem Speicherort der Creator-Ressource angepasst werden. Weitere Details finden Sie unter [Zugreifen auf Creator-Dienste](how-to-manage-creator.md#access-to-creator-services).
 
 3. Klicken Sie auf die Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort, und suchen Sie nach dem Schlüssel **Location** (Speicherort). Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`) für die Konvertierungsanforderung.
 
@@ -160,7 +170,7 @@ Das Dataset ist eine Sammlung von Kartenfeatures wie Gebäuden, Ebenen und Räum
 4. Erstellen Sie eine Anforderung vom Typ **GET** für die Status-URL (`statusURL`), um die Dataset-ID (`datasetId`) zu erhalten. Fügen Sie zur Authentifizierung Ihren primären Abonnementschlüssel für Azure Maps an. Die Anforderung sollte wie die folgende URL aussehen:
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 5. Nach erfolgreichem Abschluss der HTTP-Anforderung vom Typ **GET** enthält der Antwortheader die Dataset-ID (`datasetId`) für das erstellte Dataset. Kopieren Sie die Dataset-ID (`datasetId`). Die Dataset-ID (`datasetId`) wird zum Erstellen eines Kachelsets benötigt.
@@ -189,7 +199,7 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
 3. Erstellen Sie eine Anforderung vom Typ **GET** für die Status-URL (`statusURL`) für das Kachelset. Fügen Sie zur Authentifizierung Ihren primären Abonnementschlüssel für Azure Maps an. Die Anforderung sollte wie die folgende URL aussehen:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. Nach erfolgreichem Abschluss der HTTP-Anforderung vom Typ **GET** enthält der Antwortheader die Dataset-ID (`tilesetId`) für das erstellte Kachelset. Kopieren Sie die Kachelset-ID (`tilesetId`).

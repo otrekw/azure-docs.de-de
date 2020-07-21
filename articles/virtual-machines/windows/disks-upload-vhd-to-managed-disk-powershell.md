@@ -3,17 +3,17 @@ title: Hochladen einer VHD in Azure oder regionsübergreifendes Kopieren eines D
 description: Hier erfahren Sie, wie Sie per Azure PowerShell und direktem Upload eine VHD in einen verwalteten Azure-Datenträger hochladen und den verwalteten Datenträger regionsübergreifend kopieren.
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182513"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944626"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure PowerShell
 
@@ -47,6 +47,9 @@ Bevor Sie eine leere HDD Standard zum Hochladen erstellen können, benötigen Si
 Erstellen Sie nun für das Hochladen (Upload) einen leeren HDD Standard-Datenträger. Führen Sie dazu in Ihrer lokalen Shell das [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0)-Cmdlet aus, für das Sie die **Upload**-Einstellung im **-CreateOption**-Parameter und den **-UploadSizeInBytes**-Parameter angeben. Rufen Sie dann [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) auf, um den Datenträger zu erstellen.
 
 Ersetzen Sie `<yourdiskname>`, `<yourresourcegroupname>` und `<yourregion>`, und führen Sie dann die folgenden Befehle aus:
+
+> [!TIP]
+> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie „-HyperVGeneration '<yourGeneration>'“ zu `New-AzDiskConfig` hinzu.
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -98,6 +101,9 @@ Das folgende Skript führt dies für Sie aus. Der Vorgang ähnelt mit einigen Un
 > Sie müssen ein Offset von 512 hinzufügen, wenn Sie die Datenträgergröße eines verwalteten Datenträgers aus Azure in Byte bereitstellen. Dies liegt daran, dass Azure die Fußzeile beim Zurückgeben der Datenträgergröße auslässt. Der Kopiervorgang schlägt fehl, wenn Sie nicht so vorgehen. Das folgende Skript fügt dieses Offset bereits für Sie ein.
 
 Ersetzen Sie `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` und `<yourTargetLocationHere>` (ein Beispiel für einen Standortwert ist „uswest2“) durch Ihre Werte, und führen Sie dann das folgende Skript aus, um einen verwalteten Datenträger zu kopieren.
+
+> [!TIP]
+> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie „-HyperVGeneration '<yourGeneration>'“ zu `New-AzDiskConfig` hinzu.
 
 ```powershell
 

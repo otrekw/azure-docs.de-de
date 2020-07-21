@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Diagnoseeinstellungen zum Sammeln von Plattformmetriken und -protokollen in Azure
+title: Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 description: Senden Sie Metriken und Protokolle der Azure Monitor-Plattform mithilfe von Diagnoseeinstellungen an Azure Monitor-Protokolle, Azure Storage oder Azure Event Hubs.
 author: bwren
 ms.author: bwren
@@ -7,21 +7,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 46dd7949dde1890035053a7a985f2f1d921e141e
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266660"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944371"
 ---
-# <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Erstellen einer Diagnoseeinstellung zum Sammeln von Ressourcenprotokollen und -metriken in Azure
-
-[Plattformprotokolle](platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert.
-
-Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
+[Plattformprotokolle](platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
 
 > [!IMPORTANT]
-> Bevor Sie eine Diagnoseeinstellung zum Erfassen des Aktivitätsprotokolls erstellen, sollten Sie zunächst vorhandene Legacykonfigurationen deaktivieren. Ausführliche Informationen dazu finden Sie unter [Erfassen des Azure-Aktivitätsprotokolls mit Legacyeinstellungen](diagnostic-settings-legacy.md).
+> Bevor Sie eine Diagnoseeinstellung für das Aktivitätsprotokoll erstellen, sollten Sie zunächst vorhandene Legacykonfigurationen deaktivieren. Weitere Informationen hierzu finden Sie unter [Legacy-Erfassungsmethoden](activity-log.md#legacy-collection-methods).
 
 Jede Azure-Ressource erfordert eine eigene Diagnoseeinstellung, die folgende Kriterien definiert:
 
@@ -31,7 +28,7 @@ Jede Azure-Ressource erfordert eine eigene Diagnoseeinstellung, die folgende Kri
 Mit einer einzelnen Diagnoseeinstellung kann maximal eines der Ziele definiert werden. Wenn Sie Daten an mehrere Ziele eines bestimmten Typs senden möchten (z.B. zwei verschiedene Log Analytics-Arbeitsbereiche), dann erstellen Sie mehrere Einstellungen. Jede Ressource kann bis zu fünf Diagnoseeinstellungen aufweisen.
 
 > [!NOTE]
-> [Plattformmetriken](metrics-supported.md) werden automatisch in den [Azure Monitor-Metriken](data-platform-metrics.md) erfasst. Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste in Azure Monitor-Protokollen erfasst werden, um dann mit anderen Überwachungsdaten anhand von [Protokollabfragen](../log-query/log-query-overview.md) mit bestimmten Einschränkungen analysiert zu werden. 
+> [Plattformmetriken](metrics-supported.md) werden automatisch an die [Azure Monitor-Metriken](data-platform-metrics.md) gesendet. Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste an Azure Monitor-Protokolle gesendet werden, damit diese mit anderen Überwachungsdaten anhand von [Protokollabfragen](../log-query/log-query-overview.md) mit bestimmten Einschränkungen analysiert werden. 
 >  
 >  
 > Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert. *Beispiel*: Die Metrik „IOReadBytes“ in einer Blockchain kann für jeden Knoten einzeln untersucht und dargestellt werden. Wenn sie jedoch über Diagnoseeinstellungen exportiert wird, stellt die exportierte Metrik alle gelesenen Bytes für alle Knoten dar. Darüber hinaus können aufgrund von internen Einschränkungen nicht alle Metriken in Azure Monitor-Protokolle oder in Log Analytics exportiert werden. Weitere Informationen finden Sie in der [Liste mit den exportierbaren Metriken](metrics-supported-export-diagnostic-settings.md). 
@@ -39,17 +36,43 @@ Mit einer einzelnen Diagnoseeinstellung kann maximal eines der Ziele definiert w
 >  
 > Um diese Einschränkungen für bestimmte Metriken zu umgehen, empfiehlt es sich, diese mithilfe der [REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics/list) manuell zu extrahieren und mithilfe der [Azure Monitor-Datensammler-API](data-collector-api.md) in Azure Monitor-Protokolle zu importieren.  
 
+
 ## <a name="destinations"></a>Destinations
 
 Plattformprotokolle und -metriken können an die Ziele in der folgenden Tabelle gesendet werden. Folgen Sie den einzelnen Links in der folgenden Tabelle, um ausführliche Informationen zum Senden von Daten an das jeweilige Ziel zu erhalten.
 
 | Destination | BESCHREIBUNG |
 |:---|:---|
-| [Log Analytics-Arbeitsbereich](resource-logs-collect-workspace.md) | Das Sammeln von Protokollen und Metriken in einem Log Analytics-Arbeitsbereich gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, zu analysieren und andere Azure Monitor-Features wie Warnungen und Visualisierungen zu nutzen. |
-| [Event Hubs](resource-logs-stream-event-hubs.md) | Das Senden von Protokollen und Metriken an Event Hubs ermöglicht Ihnen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. |
-| [Azure-Speicherkonto](resource-logs-collect-storage.md) | Das Archivieren von Protokollen und Metriken in einem Azure Storage-Konto ist für die Überwachung, statische Analyse oder Sicherung nützlich. Im Vergleich zu Azure Monitor-Protokollen und einem Log Analytics Arbeitsbereich ist Azure Storage kostengünstiger, und die Protokolle können unbegrenzt aufbewahrt werden. |
+| [Log Analytics-Arbeitsbereich](#log-analytics-workspace) | Das Senden von Protokollen und Metriken in einen Log Analytics-Arbeitsbereich gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, zu analysieren und andere Azure Monitor-Funktionen wie Warnungen und Visualisierungen zu nutzen. |
+| [Event Hubs](#event-hub) | Das Senden von Protokollen und Metriken an Event Hubs ermöglicht Ihnen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. |
+| [Azure-Speicherkonto](#azure-storage) | Das Archivieren von Protokollen und Metriken in einem Azure Storage-Konto ist für die Überwachung, statische Analyse oder Sicherung nützlich. Im Vergleich zu Azure Monitor-Protokollen und einem Log Analytics Arbeitsbereich ist Azure Storage kostengünstiger, und die Protokolle können unbegrenzt aufbewahrt werden. |
 
-## <a name="create-diagnostic-settings-in-azure-portal"></a>Erstellen von Diagnoseeinstellungen im Azure-Portal
+
+## <a name="prerequisites"></a>Voraussetzungen
+Alle Ziele von Diagnoseeinstellungen müssen mit den erforderlichen Berechtigungen erstellt werden. In den folgenden Abschnitten finden Sie die Voraussetzungen für die einzelnen Ziele.
+
+### <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
+[Erstellen Sie einen neuen Arbeitsbereich](../learn/quick-create-workspace.md), falls Sie noch keinen besitzen. Der Arbeitsbereich muss sich nicht in demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt.
+
+### <a name="event-hub"></a>Event Hub
+[Erstellen Sie einen Event Hub](../../event-hubs/event-hubs-create.md), falls Sie noch keinen besitzen. Der Event Hubs-Namespace muss sich nicht in demselben Abonnement wie das Abonnement befinden, das Protokolle ausgibt – sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt und beide Abonnements sich in demselben AAD-Mandanten befinden.
+
+Die SAS-Richtlinie für den Namespace definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden Berechtigungen für das Verwalten, Senden und Lauschen benötigt. Sie können SAS-Richtlinien im Azure-Portal auf der Registerkarte „Konfigurieren“ für Ihren Event Hubs-Namespace erstellen oder ändern. Wenn Sie der Diagnoseeinstellung das Streamingfeature hinzufügen möchten, müssen Sie in der Event Hubs-Autorisierungsregel über die ListKey-Berechtigung verfügen. 
+
+
+### <a name="azure-storage"></a>Azure-Speicher
+[Erstellen Sie ein Azure-Speicherkonto](../../storage/common/storage-account-create.md), falls Sie noch keines besitzen. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt.
+
+Um den Zugriff auf die Daten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie das Aktivitätsprotokoll und Ressourcenprotokollen zusammen archivieren, können Sie aber dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
+
+Legen Sie die unveränderliche Richtlinie für das Speicherkonto wie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../../storage/blobs/storage-blob-immutability-policies-manage.md) beschrieben fest, um die Daten an einen unveränderlichen Speicher zu senden. Sie müssen alle Schritte in diesem Artikel ausführen, einschließlich der Aktivierung von Schreibvorgängen in geschützten Anfügeblobs.
+
+> [!NOTE]
+> Azure Data Lake Storage Gen2-Konten werden derzeit nicht als Ziel für Diagnoseeinstellungen unterstützt, auch wenn sie möglicherweise als gültige Option im Azure-Portal aufgeführt werden.
+
+
+
+## <a name="create-in-azure-portal"></a>Im Azure-Portal erstellen
 
 Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monitor-Menü oder über das Menü für die Ressource konfigurieren.
 
@@ -116,7 +139,7 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
 
 Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Protokolle werden an die angegebenen Ziele gestreamt, sobald neue Ereignisdaten generiert werden. Zwischen der Ausgabe eines Ereignisses und dessen [Anzeige in einem Log Analytics-Arbeitsbereich](data-ingestion-time.md) können bis zu 15 Minuten vergehen.
 
-## <a name="create-diagnostic-settings-using-powershell"></a>Erstellen von Diagnoseeinstellungen mithilfe von PowerShell
+## <a name="create-using-powershell"></a>Erstellen mithilfe von PowerShell
 
 Verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting), um eine Diagnoseeinstellung mit [Azure PowerShell](powershell-quickstart-samples.md) zu erstellen. Beschreibungen der zugehörigen Parameter finden Sie in der Dokumentation zu diesem Cmdlet.
 
@@ -129,7 +152,7 @@ Es folgt ein Beispiel für ein PowerShell-Cmdlet zum Erstellen einer Diagnoseein
 Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-## <a name="create-diagnostic-settings-using-azure-cli"></a>Erstellen von Diagnoseeinstellungen mithilfe der Azure CLI
+## <a name="create-using-azure-cli"></a>Erstellen mithilfe der Azure CLI
 
 Verwenden Sie den Befehl [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create), um eine Diagnoseeinstellung mit der [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) zu erstellen. Beschreibungen der zugehörigen Parameter finden Sie in der Dokumentation zu diesem Befehl.
 
@@ -149,13 +172,15 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-## <a name="configure-diagnostic-settings-using-rest-api"></a>Konfigurieren von Diagnoseeinstellungen mithilfe der REST-API
+## <a name="create-using-resource-manager-template"></a>Erstellen mithilfe einer Resource Manager-Vorlage
+Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilfe einer Resource Manager-Vorlage finden Sie unter [Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen in Azure Monitor](../samples/resource-manager-diagnostic-settings.md).
 
+## <a name="create-using-rest-api"></a>Erstellen mithilfe der REST-API
 Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilfe der [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/) finden Sie unter [Diagnoseeinstellungen](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
-## <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Konfigurieren von Diagnoseeinstellungen mithilfe einer Resource Manager-Vorlage
+## <a name="create-using-azure-policy"></a>Erstellen mithilfe von Azure Policy
+Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Weitere Informationen finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](deploy-scale.md).
 
-Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mit einer Resource Manager-Vorlage finden Sie unter [Erstellen von Diagnoseeinstellungen in Azure Monitor mithilfe einer Resource Manager-Vorlage](diagnostic-settings-template.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

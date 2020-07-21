@@ -11,17 +11,17 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 8ff958b7bab7be3124452c1206baf64d0f8ccb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82142506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710999"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -169,7 +169,7 @@ Die Anzahl öffentlicher und privater IP-Adressen, die Sie einer Netzwerkschnitt
 Standardmäßig werden dynamische private IPv4- und (optionale) IPv6-Adressen zugewiesen.
 
 - **Nur öffentlich**: Azure weist die Adresse aus einem für jede Azure-Region eindeutigen Bereich zu. Informationen dazu, welche Bereiche den jeweiligen Regionen zugewiesen sind, finden Sie unter [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653). Die Adresse kann sich ändern, wenn ein virtueller Computer angehalten (freigegeben) und dann erneut gestartet wird. Sie können eine öffentliche IPv6-Adresse mit keiner der beiden Zuweisungsmethoden einer IP-Konfiguration zuweisen.
-- **Nur privat**: Azure reserviert die ersten vier Adressen in jedem Subnetzadressbereich und weist die Adressen nicht zu. Azure weist die nächste verfügbare Adresse einer Ressource aus dem Subnetzadressbereich zu. Wenn der Adressbereich des Subnetzes beispielsweise 10.0.0.0/16 lautet und die Adressen 10.0.0.0.4 bis 10.0.0.14 bereits zugewiesen sind (.0 bis .3 sind reserviert), weist Azure der Ressource die Adresse 10.0.0.15 zu. „Dynamisch“ ist das Standardverfahren für die Zuteilung. Nach der Zuweisung werden dynamische IP-Adressen nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird oder einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird oder wenn die Zuordnungsmethode in „Statisch“ geändert und eine andere IP-Adresse angegeben wird. Standardmäßig wird in Azure die zuvor dynamisch zugewiesene Adresse als statische Adresse zugewiesen, wenn Sie die Zuteilungsmethode von „Dynamisch“ in „Statisch“ ändern. 
+- **Nur privat**: Azure reserviert die ersten vier Adressen in jedem Subnetzadressbereich und weist die Adressen nicht zu. Azure weist die nächste verfügbare Adresse einer Ressource aus dem Subnetzadressbereich zu. Wenn der Adressbereich des Subnetzes beispielsweise 10.0.0.0/16 lautet und die Adressen 10.0.0.4.10 bis 0.0.14.14 bereits zugewiesen sind (.0 bis .3 sind reserviert), weist Azure der Ressource die Adresse 10.0.0.15 zu. „Dynamisch“ ist das Standardverfahren für die Zuteilung. Nach der Zuweisung werden dynamische IP-Adressen nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird oder einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird oder wenn die Zuordnungsmethode in „Statisch“ geändert und eine andere IP-Adresse angegeben wird. Standardmäßig wird in Azure die zuvor dynamisch zugewiesene Adresse als statische Adresse zugewiesen, wenn Sie die Zuteilungsmethode von „Dynamisch“ in „Statisch“ ändern. 
 
 ### <a name="static"></a>statischen
 

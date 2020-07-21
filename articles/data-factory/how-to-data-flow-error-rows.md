@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254411"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Beheben von SQL-Kürzungsfehlern in Zeilen in Data Factory-Zuordnungsdatenflüssen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Als gängiges Szenario in Data Factory bei der Verwendung von Zuordnungsdatenflüssen werden die transformierten Daten in eine Azure SQL-Datenbank geschrieben. In diesem Szenario muss eine mögliche Spaltenkürzung als häufige Fehlerbedingung verhindert werden. Führen Sie die nachfolgenden Schritte aus, um die Protokollierung von Spalten zu ermöglichen, die nicht in eine Zielzeichenfolgenspalte passen, sodass der Datenfluss in diesen Szenarien fortgesetzt werden kann.
+Als gängiges Szenario in Data Factory bei der Verwendung von Zuordnungsdatenflüssen werden die transformierten Daten in eine Datenbank in Azure SQL-Datenbank geschrieben. In diesem Szenario muss eine mögliche Spaltenkürzung als häufige Fehlerbedingung verhindert werden. Führen Sie die nachfolgenden Schritte aus, um die Protokollierung von Spalten zu ermöglichen, die nicht in eine Zielzeichenfolgenspalte passen, sodass der Datenfluss in diesen Szenarien fortgesetzt werden kann.
 
 ## <a name="scenario"></a>Szenario
 
-1. Verwendet wird eine Azure SQL-Datenbank-Zieltabelle, die eine ```nvarchar(5)```-Spalte mit dem Namen „name“ aufweist.
+1. Verwendet wird eine Datenbank-Zieltabelle, die eine ```nvarchar(5)```-Spalte mit dem Namen „name“ aufweist.
 
 2. Innerhalb des Datenflusses sollen Filmtitel aus der Senke zur Zielspalte „name“ zugeordnet werden.
 

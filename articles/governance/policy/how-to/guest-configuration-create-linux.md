@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Linux
 description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Linux erstellen.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654867"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026711"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -31,7 +31,7 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
-Mit dem Modul „Gastkonfiguration“ wird die Erstellung von benutzerdefinierten Inhalten automatisiert. Dazu gehört Folgendes:
+Mit dem Modul „Gastkonfiguration“ wird die Erstellung von benutzerdefinierten Inhalten automatisiert, z. B.:
 
 - Erstellen eines Inhaltsartefakts für die Gastkonfiguration (ZIP-Datei)
 - Durchführen eines automatisierten Tests des Artefakts
@@ -81,7 +81,7 @@ Auch in Linux-Umgebungen verwendet die Gastkonfiguration die Konfiguration des g
 
 #### <a name="configuration-requirements"></a>Konfigurationsanforderungen
 
-Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Resource Manager-Vorlage müssen identisch sein.
+Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Azure Resource Manager-Vorlage (ARM-Vorlage) müssen identisch sein.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Benutzerdefinierte Konfiguration für Gastkonfigurationen unter Linux
 
@@ -283,7 +283,7 @@ Mit `New-GuestConfigurationPolicy` werden die folgenden Dateien erstellt:
 In der Ausgabe des Cmdlets wird ein Objekt zurückgegeben, das den Anzeigenamen der Initiative und den Pfad der Richtliniendateien enthält.
 
 > [!Note]
-> Das neueste Gastkonfigurationsmodul enthält neue Parameter:
+> Das aktuelle Gastkonfigurationsmodul enthält neue Parameter:
 > - Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
 >   - Weitere Informationen finden Sie im Abschnitt [Filtern von Richtlinien der Gastkonfiguration mit Tags](#filtering-guest-configuration-policies-using-tags).
 > - Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
@@ -347,7 +347,7 @@ describe file(attr_path) do
 end
 ```
 
-Die Cmdlets `New-GuestConfigurationPolicy` und `Test-GuestConfigurationPolicyPackage` enthalten einen Parameter mit dem Namen **Parameters**. Für diesen Parameter wird eine Hashtabelle verwendet, die alle Details zu den einzelnen Parametern enthält, und es werden automatisch alle erforderlichen Abschnitte der Dateien erstellt, die für die Erstellung der einzelnen Azure Policy-Definitionen verwendet werden.
+Die Cmdlets `New-GuestConfigurationPolicy` und `Test-GuestConfigurationPolicyPackage` enthalten einen Parameter mit dem Namen **Parameter**. Für diesen Parameter wird eine Hashtabelle verwendet, die alle Details zu den einzelnen Parametern enthält, und es werden automatisch alle erforderlichen Abschnitte der Dateien erstellt, die für die Erstellung der einzelnen Azure Policy-Definitionen verwendet werden.
 
 Im folgenden Beispiel wird eine Richtliniendefinition zum Überwachen eines Dateipfads erstellt, wobei der Benutzer den Pfad zum Zeitpunkt der Richtlinienzuweisung angibt.
 
@@ -371,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 

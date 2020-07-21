@@ -10,21 +10,22 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: c2556cb1dcf59cdb8ae5014b7dd95fa2c431dc93
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254037"
 ---
-# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Übersicht über die Anwendungsentwicklung: SQL-Datenbank und SQL Managed Instance 
+# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Übersicht über die Anwendungsentwicklung: SQL-Datenbank und SQL Managed Instance
+
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 In diesem Artikel werden die grundlegenden Aspekte beschrieben, die ein Entwickler beim Schreiben von Code zum Herstellen einer Verbindung mit Ihrer Datenbank in Azure berücksichtigen sollte. Dieser Artikel gilt für Azure SQL-Datenbank und Azure SQL Managed Instance.
 
 ## <a name="language-and-platform"></a>Sprache und Plattform
 
-Sie können verschiedene [Programmiersprachen und Plattformen](connect-query-content-reference-guide.md) zum Herstellen einer Verbindung mit und Abfragen von Azure SQL-Datenbank verwenden. Sie können mithilfe von [Beispielanwendungen](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) eine Verbindung mit Azure SQL-Datenbank herstellen.
+Sie können verschiedene [Programmiersprachen und Plattformen](connect-query-content-reference-guide.md) zum Herstellen einer Verbindung mit und Abfragen von Azure SQL-Datenbank verwenden. Sie können mithilfe von [Beispielanwendungen](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) eine Verbindung mit der Datenbank herstellen.
 
 Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheetah), [Sql-Cli](https://www.npmjs.com/package/sql-cli) und [VS Code](https://code.visualstudio.com/) nutzen. Darüber hinaus funktioniert Azure SQL-Datenbank mit Microsoft-Tools wie [Visual Studio](https://www.visualstudio.com/downloads/) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Sie können auch das Azure-Portal, PowerShell und REST-APIs nutzen, um noch produktiver zu arbeiten.
 
@@ -44,7 +45,7 @@ Vermeiden Sie lang andauernde Transaktionen, weil jeder Infrastruktur- oder Verb
 
 ## <a name="resiliency"></a>Resilienz
 
-Azure SQL-Datenbank ist ein Clouddienst, in dem ggf. vorübergehende Fehler in der zugrunde liegenden Infrastruktur oder bei der Kommunikation zwischen Cloudentitäten auftreten können. Obwohl Azure SQL-Datenbank bei transitiven infrastrukturausfällen resilient ist, können solche Fehler die Konnektivität beeinträchtigen. Tritt beim Herstellen der Verbindung mit SQL-Datenbank ein vorübergehender Fehler auf, sollte Ihr Code [den Aufruf wiederholen](troubleshoot-common-connectivity-issues.md). Die Wiederholungslogik sollte Backofflogik verwenden, damit die SQL-Datenbank nicht unnötig überlastet wird, wenn mehrere Clients den Wiederholungsvorgang gleichzeitig durchführen. Die Wiederholungslogik hängt von den [Fehlermeldungen für Clientprogramme von SQL-Datenbank](troubleshoot-common-errors-issues.md) ab.
+Azure SQL-Datenbank ist ein Clouddienst, in dem ggf. vorübergehende Fehler in der zugrunde liegenden Infrastruktur oder bei der Kommunikation zwischen Cloudentitäten auftreten können. Obwohl Azure SQL-Datenbank bei transitiven infrastrukturausfällen resilient ist, können solche Fehler die Konnektivität beeinträchtigen. Tritt beim Herstellen der Verbindung mit SQL-Datenbank ein vorübergehender Fehler auf, sollte Ihr Code [den Aufruf wiederholen](troubleshoot-common-connectivity-issues.md). Die Wiederholungslogik sollte Backofflogik verwenden, damit die der Dienst nicht unnötig überlastet wird, wenn mehrere Clients den Wiederholungsvorgang gleichzeitig durchführen. Die Wiederholungslogik hängt von den [Fehlermeldungen für Clientprogramme von SQL-Datenbank](troubleshoot-common-errors-issues.md) ab.
 
 Weitere Informationen zur Vorbereitung auf geplante Wartungsereignisse in Azure SQL-Datenbank finden Sie unter [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank](planned-maintenance.md).
 
@@ -53,7 +54,7 @@ Weitere Informationen zur Vorbereitung auf geplante Wartungsereignisse in Azure 
 - Vergewissern Sie sich, dass auf dem Computer, der das Clientprogramm hostet, die Firewall ausgehende TCP-Kommunikation über Port 1433 zulässt.  Weitere Informationen: [Konfigurieren einer Firewall für Azure SQL-Datenbank](firewall-configure.md).
 - Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank herstellt, wobei der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie bestimmte Portbereiche auf dem virtuellen Computer öffnen. Weitere Informationen: [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](adonet-v12-develop-direct-route-ports.md).
 - Bei Clientverbindungen mit Azure SQL-Datenbank wird der Proxy manchmal umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig. Weitere Informationen finden Sie unter [Verbindungsarchitektur der Azure SQL-Datenbank](connectivity-architecture.md) und [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](adonet-v12-develop-direct-route-ports.md).
-- Informationen zur Netzwerkkonfiguration für SQL Managed Instance finden Sie unter [Netzwerkkonfiguration für Instanzen von SQL Managed Instance](../managed-instance/how-to-content-reference-guide.md#network-configuration).
+- Informationen zur Netzwerkkonfiguration für eine Instanz von SQL Managed Instance finden Sie unter [Netzwerkkonfiguration für Instanzen von SQL Managed Instance](../managed-instance/how-to-content-reference-guide.md#network-configuration).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

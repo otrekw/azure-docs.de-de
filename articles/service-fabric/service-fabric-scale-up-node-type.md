@@ -3,22 +3,19 @@ title: Hochskalieren eines Azure Service Fabric-Knotentyps
 description: In diesem Artikel erfahren Sie, wie ein Service Fabric-Cluster durch Hinzufügen einer VM-Skalierungsgruppe skaliert wird.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610692"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Hochskalieren des primären Knotentyps eines Service Fabric-Clusters
 Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-Clusters durch Erhöhen der Ressourcen des virtuellen Computers hochskalieren können. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
 
 > [!WARNING]
-> Die VM-SKU des primären Knotentyps darf nicht geändert werden, wenn die Clusterintegrität beeinträchtigt ist. Im Falle einer Beeinträchtigung der Clusterintegrität wird der Cluster nur noch weiter destabilisiert, wenn Sie versuchen, die VM-SKU zu ändern.
+> Versuchen Sie nicht, eine Hochskalierungsprozedur für primäre Knoten auszuführen, wenn der Cluster einen fehlerhaften Status aufweist. Dies würde die Stabilität des Clusters nur weiter gefährden.
 >
-> Wir empfehlen Ihnen, die VM-SKU einer Skalierungsgruppe bzw. eines Knotentyps nur dann zu ändern, wenn sie mit der [Dauerhaftigkeitsstufe „Silber“ oder höher](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) ausgeführt wird. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten. Dies betrifft Ihren primären Knotentyp, der zustandsbehaftete Service Fabric-Systemdienste ausführt, oder einen Knotentyp, der Ihre zustandsbehafteten Anwendungsworkloads ausführt.
->
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -159,6 +156,8 @@ Get-ServiceFabricClusterHealth
 ## <a name="migrate-nodes-to-the-new-scale-set"></a>Migrieren von Knoten zur neuen Skalierungsgruppe
 
 Sie werden nun mit der Deaktivierung der Knoten der ursprünglichen Skalierungsgruppe beginnen. Infolge dessen werden die Knoten der Systemdienste und die Startknoten zu den VMs der neuen Skalierungsgruppe migriert, da diese ebenfalls als primärer Knotentyp gekennzeichnet ist.
+
+Für das Hochskalieren nicht primärer Knotentypen würden Sie in diesem Schritt die Dienstplatzierungseinschränkungen so ändern, dass die neue VM-Skalierungsgruppe bzw. der neue Knotentyp enthalten ist, und dann die Instanzenanzahl der alten VM-Skalierungsgruppe auf null reduzieren (nacheinander für alle Knoten, um sicherzustellen, dass das Entfernen der Knoten die Zuverlässigkeit des Clusters nicht beeinträchtigt).
 
 ```powershell
 # Disable the nodes in the original scale set.

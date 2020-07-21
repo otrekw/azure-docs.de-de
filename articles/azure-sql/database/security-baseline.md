@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 50d408da248bfcea7088af52cd551579da0ad14e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039921"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045942"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure-Sicherheitsbaseline für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -353,7 +353,7 @@ https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemem
 
 Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -449,7 +449,7 @@ Konfigurieren benannter Standorte in Azure: https://docs.microsoft.com/azure/act
 
 Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 Erstellen und Konfigurieren einer AAD-Instanz:
 
@@ -477,7 +477,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor:
 
@@ -639,7 +639,7 @@ https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Azure SQL-Datenbanken und anderen kritischen bzw. verwandten Ressourcen vorgenommen werden.
+**Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Azure SQL-Datenbank und anderen kritischen bzw. verwandten Ressourcen vorgenommen werden.
 
 Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse:
 
@@ -657,7 +657,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Leitfaden**: Aktivieren Sie Advanced Data Security für Azure SQL-Datenbank, und halten Sie sich an die Azure Security Center-Empfehlungen zur Durchführung von Sicherheitsrisikobewertungen auf Ihren Servern.
 
-Durchführen von Sicherheitsrisikobewertungen auf Ihren Instanzen von Azure SQL-Datenbank:
+Durchführen von Sicherheitsrisikobewertungen für Azure SQL-Datenbank-Instanzen:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
@@ -1069,7 +1069,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Durchführen vollständiger Systemsicherungen und Sichern aller von Kunden verwalteten Schlüssel
 
-**Leitfaden**: Azure SQL-Datenbank erstellt automatisch die Datenbanksicherungen, für die eine Speicherdauer von mindestens 7 und maximal 35 Tagen gilt. Es wird georedundanter Azure-Speicher mit Lesezugriff (RA-GRS) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungskopien werden automatisch erstellt. Aktivieren Sie bei Bedarf langfristige georedundante Sicherungen für Ihre Azure SQL-Datenbanken.
+**Leitfaden**: Azure SQL-Datenbank erstellt automatisch die Datenbanksicherungen, für die eine Speicherdauer von mindestens 7 und maximal 35 Tagen gilt. Es wird georedundanter Azure-Speicher mit Lesezugriff (RA-GRS) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungskopien werden automatisch erstellt. Aktivieren Sie bei Bedarf langfristige georedundante Sicherungen für Ihre Azure SQL-Datenbank-Instanzen.
 
 Stellen Sie beim Verwenden der vom Kunden verwalteten Schlüssel für Transparent Data Encryption sicher, dass Ihre Schlüssel gesichert werden.
 

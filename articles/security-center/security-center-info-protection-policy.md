@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711084"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
@@ -75,7 +75,11 @@ Um die Information Protection-Richtlinie für Ihren Azure-Mandanten anpassen zu 
 7. Klicken Sie auf dem Hauptblatt **Bezeichnungen** auf **Speichern**, um alle Änderungen zu übernehmen.
  
 Nachdem Ihre Information Protection-Richtlinie vollständig definiert und gespeichert wurde, wird sie auf die Datenklassifizierung in allen Azure SQL-Datenbank-Instanzen in Ihrem Mandanten angewendet.
- 
+
+## <a name="manage-sql-information-protection-using-azure-powershell"></a>Verwalten von SQL Information Protection mit Azure PowerShell
+
+- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): Ruft die effektive SQL Information Protection-Richtlinie für den Mandanten ab.
+- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): Legt die effektive SQL Information Protection-Richtlinie für den Mandanten fest.
  
 ## <a name="next-steps"></a>Nächste Schritte
  
@@ -83,5 +87,5 @@ In diesem Artikel haben Sie erfahren, wie eine SQL Information Protection-Richtl
 
 Weitere Informationen zu Sicherheitsrichtlinien und zur Datensicherheit im Azure Security Center finden Sie in den folgenden Artikeln:
  
-- [Festlegen von Sicherheitsrichtlinien im Azure Security Center:](tutorial-security-policy.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-- [Azure Security Center-Datensicherheit](security-center-data-security.md): Hier erfahren Sie, wie Daten vom Security Center verwaltet und geschützt werden.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md): Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Azure Security Center-Datensicherheit](security-center-data-security.md): Erfahren Sie, wie Security Center Daten verwaltet und schützt.

@@ -1,7 +1,7 @@
 ---
 title: Verwalten nach der Migration
 titleSuffix: Azure SQL Database
-description: Erfahren Sie, wie Sie Ihre Einzel- und Pooldatenbank nach der Migration zu Azure SQL-Datenbank verwalten.
+description: Hier erfahren Sie, wie Sie Ihre Einzel- und Pooldatenbanken nach der Migration zu Azure SQL-Datenbank verwalten.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,17 +12,17 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193923"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249277"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Neuer DBA in der Cloud – Verwalten von Azure SQL-Datenbank nach der Migration
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank mit Einzel- und Pooldatenbanken. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
+Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von Azure SQL-Datenbank mit Einzel- und Pooldatenbanken. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
 
 - die Migration ihrer Anwendung(en) zu Azure SQL-Datenbank evaluieren – Modernisierung der Anwendung(en)
 - ihre Anwendung(en) gerade migrieren – Szenario für laufende Migration
@@ -90,7 +90,7 @@ Weitere Informationen zur Notfallwiederherstellung finden Sie unter: [Notfallwie
 
 Sicherheit und Datenschutz haben in SQL-Datenbank einen hohen Stellenwert. Die Sicherheit in SQL-Datenbank kann auf Datenbankebene und auf Plattformebene angewendet werden und lässt sich am besten anhand der verschiedenen Ebenen erklären. Sie haben auf jeder Ebene die Möglichkeit, Ihre Anwendung zu kontrollieren und optimal zu schützen. Die Ebenen lauten:
 
-- Identität und Authentifizierung ([SQL-Authentifizierung und AAD-Authentifizierung [Azure Active Directory]](logins-create-manage.md))
+- Identität und Authentifizierung ([SQL-Authentifizierung und Azure AD-Authentifizierung [Azure Active Directory]](logins-create-manage.md))
 - Überwachung von Aktivitäten ([Überwachung](../../azure-sql/database/auditing-overview.md) und [Bedrohungserkennung](threat-detection-configure.md))
 - Schutz von Daten ([Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) und [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine))
 - Kontrollierter Zugriff auf sensible und vertrauliche Daten ([Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) und [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking))
@@ -104,13 +104,13 @@ SQL-Datenbank bietet zwei Authentifizierungsmethoden:
 - [Azure Active Directory-Authentifizierung](authentication-aad-overview.md)
 - [SQL-Authentifizierung](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](authentication-mfa-ssms-overview.md) und lässt sich mit [wenigen Klicks](../../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten Server authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
+Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (Azure AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. Azure AD unterstützt [Azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) und lässt sich mit [wenigen Klicks](../../active-directory/hybrid/how-to-connect-install-express.md) mit Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten Server authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
 
 |**Wenn Sie...**|**SQL-Datenbank/SQL Data Warehouse**|
 |---|---|
-|Azure Active Directory (AD) lieber nicht in Azure verwenden möchten,|verwenden Sie [SQL-Authentifizierung](security-overview.md).|
+|Azure Active Directory (Azure AD) lieber nicht in Azure verwenden möchten,|verwenden Sie [SQL-Authentifizierung](security-overview.md).|
 |AD auf einem lokalen SQL-Server verwendet haben,|[Verbinden Sie AD mit Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md), und verwenden Sie die Azure AD-Authentifizierung. So können Sie auf die Funktion „Einmaliges Anmelden“ zurückgreifen.|
-|eine mehrstufige Authentifizierung (MFA) erzwingen müssen,|muss über [Microsoft Conditional Access (bedingter Zugang zu Microsoft)](conditional-access-configure.md) MFA als Strategie festgelegt sein, und Sie müssen [Azure AD Universal authentication with MFA support (Universelle Authentifizierung von Azure AD mit MFA-Unterstützung)](authentication-mfa-ssms-overview.md) verwenden.|
+|eine mehrstufige Authentifizierung erzwingen müssen,|muss über den [bedingten Zugriff von Microsoft](conditional-access-configure.md) MFA als Richtlinie festgelegt sein, und Sie müssen die [universelle Authentifizierung mit MFA-Unterstützung in Azure AD](authentication-mfa-ssms-overview.md) verwenden.|
 |über Gastkonten aus Microsoft-Konten (live.com, outlook.com) oder anderen Domänen (gmail.com) verfügen,|verwenden Sie [die universelle Authentifizierung von Azure AD](authentication-mfa-ssms-overview.md) in SQL-Datenbank/Data Warehouse, die die [Zusammenarbeit zwischen Azure AD und B2B unterstützt](../../active-directory/b2b/what-is-b2b.md).|
 |mit Ihren Azure AD-Anmeldeinformationen aus einer Verbunddomäne bei Windows angemeldet sind,|verwenden Sie [Azure AD integrated authentication (die integrierte Azure AD-Authentifizierung)](authentication-aad-configure.md).|
 |mit Ihren Anmeldeinformationen aus einer Domäne, die nicht mit Azure verbunden ist, bei Windows angemeldet sind,|verwenden Sie [Azure AD integrated authentication (die integrierte Azure AD-Authentifizierung)](authentication-aad-configure.md).|
@@ -133,7 +133,7 @@ Firewallregeln können auf Server- oder auf Datenbankebene erstellt werden. IP-F
 
 #### <a name="service-endpoints"></a>Dienstendpunkte
 
-Ihre SQL-Datenbank ist so konfiguriert, dass die Option „Azure-Diensten Zugriff auf Server erlauben“ aktiviert ist. Das bedeutet, dass alle virtuellen Computer in Azure versuchen können, eine Verbindung mit Ihrer Datenbank herzustellen. Die Verbindungsversuche müssen jedoch noch authentifiziert werden. Wenn Sie verhindern möchten, dass über jede Azure-IP-Adresse auf Ihre Datenbank zugegriffen werden kann, deaktivieren Sie die Option „Azure-Diensten Zugriff auf Server erlauben“. Außerdem können Sie [VNET-Dienstendpunkte](vnet-service-endpoint-rule-overview.md) konfigurieren.
+Ihre Datenbank ist standardmäßig so konfiguriert, dass die Option „Azure-Diensten Zugriff auf den Server erlauben“ aktiviert ist. Das bedeutet, dass alle virtuellen Computer in Azure versuchen können, eine Verbindung mit Ihrer Datenbank herzustellen. Die Verbindungsversuche müssen jedoch noch authentifiziert werden. Wenn Sie verhindern möchten, dass über jede Azure-IP-Adresse auf Ihre Datenbank zugegriffen werden kann, deaktivieren Sie die Option „Azure-Diensten Zugriff auf Server erlauben“. Außerdem können Sie [VNET-Dienstendpunkte](vnet-service-endpoint-rule-overview.md) konfigurieren.
 
 Mit Dienstendpunkten können Sie wichtige Azure-Ressourcen ausschließlich für Ihr eigenes privates virtuelles Netzwerk in Azure verfügbar machen. Auf diese Weise verhindern Sie praktisch den öffentlichen Zugriff auf Ihre Ressourcen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und Azure erfolgt weiterhin über das Azure-Backbonenetzwerk. Ohne Dienstendpunkte würden Pakete mit erzwungenem Tunneling geroutet werden. Ihr virtuelles Netzwerk erzwingt, dass der an Ihre Organisation gerichtete Internetdatenverkehr und der Datenverkehr der Azure-Dienste über dieselbe Route transportiert werden. Mit Dienstendpunkten können Sie das Routing verbessern, da die Pakete direkt von Ihrem virtuellen Netzwerk zum Dienst im Azure-Backbonenetzwerk transportiert werden.
 
@@ -211,13 +211,13 @@ Das folgende Diagramm stellt eine Übersicht über die wichtigsten Schlüsselspe
 
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Wie wird der Datenverkehr zwischen der Organisation und SQL-Datenbank optimiert und geschützt?
 
-Der Netzwerkdatenverkehr zwischen Ihrer Organisation und SQL-Datenbank würde normalerweise über das öffentliche Netzwerk geroutet werden. Um diesen Pfad jedoch zu optimieren und sicherer zu gestalten, sollten Sie ExpressRoute in Betracht ziehen. Mit ExpressRoute lässt sich Ihr Unternehmensnetzwerk über eine private Verbindung praktisch auf die Azure-Plattform ausweiten. Auf diese Weise werden keine Daten über das öffentliche Internet übertragen. Zusätzlich erhöhen sich die Sicherheit und Zuverlässigkeit, und das Routing wird optimiert. So erzielen Sie geringere Netzwerklatenzen und höhere Geschwindigkeiten, als das öffentliche Internet normalerweise bietet. Wenn Sie beabsichtigen, einen erheblichen Datenblock zwischen Ihrer Organisation und Azure zu übertragen, bietet ExpressRoute u. U. Kostenvorteile. Für Verbindungen zwischen Ihrer Organisation und Azure stehen drei Konnektivitätsmodelle zur Auswahl:
+Der Netzwerkdatenverkehr zwischen Ihrer Organisation und SQL-Datenbank würde normalerweise über das öffentliche Netzwerk geroutet werden. Wenn Sie diesen Pfad jedoch optimieren und sicherer gestalten möchten, sollten Sie Azure ExpressRoute in Betracht ziehen. Mit ExpressRoute lässt sich Ihr Unternehmensnetzwerk über eine private Verbindung praktisch auf die gesamte Azure-Plattform ausweiten. Auf diese Weise werden keine Daten über das öffentliche Internet übertragen. Zusätzlich erhöhen sich die Sicherheit und Zuverlässigkeit, und das Routing wird optimiert. So erzielen Sie geringere Netzwerklatenzen und höhere Geschwindigkeiten, als das öffentliche Internet normalerweise bietet. Wenn Sie beabsichtigen, einen erheblichen Datenblock zwischen Ihrer Organisation und Azure zu übertragen, bietet ExpressRoute möglicherweise Kostenvorteile. Für Verbindungen zwischen Ihrer Organisation und Azure stehen drei Konnektivitätsmodelle zur Auswahl:
 
 - [Cloud Exchange und Colocation](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [n:n-Konnektivität](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Punkt-zu-Punkt-Konnektivität](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Mit ExpressRoute können Sie Ihre kostenpflichtige Bandbreite ohne zusätzliche Gebühren bis auf das Zweifache steigern. Außerdem ist es möglich, die Verbindung regionsübergreifend mithilfe von Express Route zu konfigurieren. Eine Liste von ER-Konnektivitätsanbietern finden Sie unter: [ExpressRoute-Partner und -Peeringstandorte](../../expressroute/expressroute-locations.md). In den folgenden Artikeln wird ExpressRoute ausführlicher beschrieben:
+Mit ExpressRoute können Sie Ihre kostenpflichtige Bandbreite ohne zusätzliche Gebühren bis auf das Doppelte steigern. Außerdem ist es möglich, die Verbindung regionsübergreifend mithilfe von ExpressRoute zu konfigurieren. Eine Liste von ExpressRoute-Konnektivitätsanbietern finden Sie unter: [ExpressRoute-Partner und Peeringstandorte](../../expressroute/expressroute-locations.md). In den folgenden Artikeln wird ExpressRoute ausführlicher beschrieben:
 
 - [Einführung in Express Route](../../expressroute/expressroute-introduction.md)
 - [Voraussetzungen](../../expressroute/expressroute-prerequisites.md)
@@ -237,7 +237,7 @@ Nachdem Sie Ihre Datenbank zu SQL-Datenbank migriert haben, möchten Sie Ihre Da
 
 ### <a name="performance-monitoring-and-optimization"></a>Leistungsüberwachung und -optimierung
 
-Query Performance Insight liefert maßgeschneiderte Empfehlungen zur Datenbankworkload, damit Anwendungen immer optimal ausgeführt werden. Sie können die Funktion auch so konfigurieren, dass die Empfehlungen automatisch angewendet werden und Sie sich keine Gedanken um Wartungsaufgaben machen müssen. Mit dem Indexratgeber können Sie automatisch Indexempfehlungen implementieren, die auf der Arbeitsauslastung basieren – dies wird als automatischen Optimierung bezeichnet. Die Empfehlungen ändern sich parallel zur Arbeitsauslastung Ihrer Anwendung, sodass Sie immer relevante Vorschläge erhalten. Sie können diese Empfehlungen auch manuell überprüfen und nach Ihrem Ermessen anwenden.  
+Query Performance Insight liefert maßgeschneiderte Empfehlungen zur Datenbankworkload, damit Anwendungen immer optimal ausgeführt werden. Sie können die Funktion auch so konfigurieren, dass die Empfehlungen automatisch angewendet werden und Sie sich keine Gedanken um Wartungsaufgaben machen müssen. Mit dem SQL Database Advisor können Sie automatisch Indexempfehlungen basierend auf Ihrer Workload implementieren. Dieser Vorgang wird als automatische Optimierung bezeichnet. Die Empfehlungen ändern sich parallel zur Arbeitsauslastung Ihrer Anwendung, sodass Sie immer relevante Vorschläge erhalten. Sie können diese Empfehlungen auch manuell überprüfen und nach Ihrem Ermessen anwenden.  
 
 ### <a name="security-optimization"></a>Sicherheitsoptimierung
 
@@ -281,11 +281,11 @@ Sie können die dynamische Verwaltungssicht [sys.dm_db_resource_stats](/sql/rela
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL-Analyse (Vorschau) in Azure Monitor-Protokollen
 
-Mit [Azure Monitor-Protokollen](../../azure-monitor/insights/azure-sql.md) können Sie wichtige Leistungsmetriken von Azure SQL-Datenbank erfassen und visualisieren. Dabei werden bis zu 150.000 SQL-Datenbanken und 5.000 Pools für elastische SQL-Datenbanken pro Arbeitsbereich unterstützt. Sie können darüber Benachrichtigungen überwachen und erhalten. Sie können Metriken für SQL-Datenbank und Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und nutzen, um auf allen Ebenen eines Anwendungsstapels Probleme zu ermitteln.
+Mit [Azure Monitor-Protokollen](../../azure-monitor/insights/azure-sql.md) können Sie wichtige Leistungsmetriken von Azure SQL-Datenbank erfassen und visualisieren. Dabei werden bis zu 150.000 Datenbanken und 5.000 Pools für elastische SQL-Datenbanken pro Arbeitsbereich unterstützt. Sie können darüber Benachrichtigungen überwachen und erhalten. Sie können Metriken für SQL-Datenbank und Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und nutzen, um auf allen Ebenen eines Anwendungsstapels Probleme zu ermitteln.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Es fallen Probleme mit der Leistung auf: Wie unterscheiden sich die Methoden zur Problembehandlung bei SQL-Datenbank von den Methoden bei SQL Server?
 
-Viele Problembehandlungen zur Diagnose von Problemen bei der Abfrage- und Datenbankleistung bleiben unverändert. Schließlich wird die Cloud vom derselben SQL-Datenbank-Engine unterstützt. Die Plattform – Azure SQL-Datenbank – verfügt jedoch über integrierte „Intelligenz“. So lassen sich Leistungsprobleme noch einfacher diagnostizieren und beheben. Außerdem können einige Korrekturmaßnahmen für Sie ausgeführt und in einigen Fällen automatisch proaktiv behoben werden.
+Viele Problembehandlungen zur Diagnose von Problemen bei der Abfrage- und Datenbankleistung bleiben unverändert. Schließlich wird die Cloud von derselben Datenbank-Engine unterstützt. Die Plattform – Azure SQL-Datenbank – verfügt jedoch über integrierte „Intelligenz“. So lassen sich Leistungsprobleme noch einfacher diagnostizieren und beheben. Außerdem können einige Korrekturmaßnahmen für Sie ausgeführt und in einigen Fällen automatisch proaktiv behoben werden.
 
 Die Behandlung von Leistungsproblemen kann von der kombinierten Verwendung intelligenter Funktionen wie [Query Performance Insight (QPI)](query-performance-insight-use.md) und [Database Advisor](database-advisor-implement-performance-recommendations.md) deutlich profitieren. Daher unterscheidet sich der Ansatz in der Hinsicht, dass Sie die grundlegenden Details, die Sie bei der Behandlung des vorliegenden Problems unterstützen könnten, nicht mehr manuell erarbeiten müssen. Diese Arbeit leistet die Plattform für Sie. Ein Beispiel hierfür ist QPI. Mit QPI können Sie Problemen bis auf die Abfrageebene nachgehen und mithilfe historischer Trends herausfinden, wann die Abfrageleistung nachgelassen hat. Database Advisor gibt Empfehlungen, die zur allgemeinen Verbesserung der Gesamtleistung beitragen können, beispielsweise, wenn Indizes fehlen oder gelöscht wurden bzw. bei parametrisierten Abfragen usw.
 

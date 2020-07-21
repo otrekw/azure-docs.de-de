@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d5a10e3fe2803c7b9a10abe9bf959a694030cc8c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: bf2dbf501b5cd3b6cd0ab6b0e9bbbc2208c98a58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478449"
 ---
 # <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Parquet-Typen mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -99,6 +99,39 @@ FROM
         DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
+```
+
+Sie können auch explizit auf die Spalten verweisen, die in der `WITH`-Klausel zurückgegeben werden sollen:
+
+```sql
+SELECT DocId,
+    MapOfPersons,
+    JSON_QUERY(MapOfPersons, '$."John Doe"') AS [John]
+FROM
+    OPENROWSET(
+        BULK 'parquet/nested/mapExample.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) 
+    WITH (DocId bigint, MapOfPersons VARCHAR(max)) AS [r];
+```
+
+Die Struktur `MakOfPersons` wird als `VARCHAR`-Spalte zurückgegeben und als JSON-Zeichenfolge formatiert.
+
+## <a name="projecting-values-from-repeated-columns"></a>Projizieren von Werten aus wiederholten Spalten
+
+Wenn Sie in manchen Spalten über ein Array aus Skalarwerten (z. B. `[1,2,3]`) verfügen, können Sie sie einfach erweitern und mithilfe des folgenden Skripts mit der Hauptzeile verknüpfen:
+
+```sql
+SELECT
+    SimpleArray, Element
+FROM
+    OPENROWSET(
+        BULK 'parquet/nested/justSimpleArray.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) AS arrays
+    CROSS APPLY OPENJSON (SimpleArray) WITH (Element int '$') as array_values
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

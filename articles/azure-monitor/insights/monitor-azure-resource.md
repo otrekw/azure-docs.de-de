@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361954"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -90,7 +90,7 @@ Befolgen Sie die Vorgehensweise unter [Erstellen einer Diagnoseeinstellung zum E
  Sie können über das Ressourcenmenü im Azure-Portal auf die Überwachungsdaten für die meisten Azure-Ressourcen zugreifen. Dadurch erhalten Sie Zugriff auf die Daten einer einzelnen Ressource mithilfe der Standardtools von Azure Monitor. Einige Azure-Dienste bieten unterschiedliche Optionen, daher sollten Sie die Dokumentation des jeweiligen Diensts lesen, um weitere Informationen zu erhalten. Verwenden Sie das Menü **Azure Monitor**, um Daten aus allen überwachten Ressourcen zu analysieren. 
 
 ### <a name="overview"></a>Übersicht
-Viele Dienste stellen auf der Seite **Übersicht** Überwachungsdaten bereit, die einen kurzen Einblick in ihren Betrieb erlauben. Die Informationen basieren in der Regel auf einer Teilmenge der Plattformmetriken, die in Azure Monitor-Metriken gespeichert werden. Zusätzliche Überwachungsoptionen sind normalerweise im Abschnitt **Überwachung** der einzelnen Dienste verfügbar. Menü.
+Viele Dienste stellen auf der Seite **Übersicht** Überwachungsdaten bereit, die einen kurzen Einblick in ihren Betrieb erlauben. Die Informationen basieren in der Regel auf einer Teilmenge der Plattformmetriken, die in Azure Monitor-Metriken gespeichert werden. Zusätzliche Überwachungsoptionen sind normalerweise im Abschnitt **Überwachung** im Menü der einzelnen Dienste verfügbar.
 
 ![Seite „Übersicht“](media/monitor-azure-resource/overview-page.png)
 

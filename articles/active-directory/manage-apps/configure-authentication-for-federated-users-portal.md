@@ -3,24 +3,24 @@ title: Konfigurieren der automatischen Anmeldebeschleunigung mit der Startbereic
 description: Erfahren Sie, wie Sie eine Richtlinie für die Startbereichsermittlung für die Azure Active Directory-Authentifizierung für Verbundbenutzer konfigurieren, einschließlich automatischer Beschleunigung und Domänenhinweisen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763583"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -81,8 +81,8 @@ Weitere Informationen zur automatischen Beschleunigung unter Verwendung der Dom�
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Richtlinie zur Startbereichsermittlung für die automatische Beschleunigung
 Einige Anwendungen bieten keine Möglichkeit, die von ihnen ausgegebene Authentifizierungsanforderung zu konfigurieren. In diesen Fällen ist es nicht möglich, Domänenhinweise zur Steuerung der automatischen Beschleunigung zu verwenden. Die automatische Beschleunigung kann über Richtlinien konfiguriert werden, um das gleiche Verhalten zu erreichen.  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>Aktivieren der direkten Authentifizierung für ältere Anwendungen
-Als bewährte Methode verwenden Anwendungen AAD-Bibliotheken und interaktive Anmeldung zur Authentifizierung von Benutzern. Die Bibliotheken kümmern sich um die Verbundbenutzerflows.  Manche ältere Anwendungen können das Verbundsystem nicht interpretieren. Sie führen keine Startbereichsermittlung durch und interagieren nicht mit dem richtigen Verbundendpunkt, um einen Benutzer zu authentifizieren. Falls gewünscht, können Sie mithilfe einer Richtlinie zur Startbereichsermittlung bestimmten älteren Anwendungen das Übermitteln von Anmeldeinformationen (Benutzername und Kennwort) ermöglichen, um eine direkte Authentifizierung bei Azure Active Directory durchzuführen. Die Kennworthashsynchronisierung muss aktiviert sein. 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Aktivieren der direkten ROPC-Authentifizierung von Verbundbenutzern für Legacyanwendungen
+Als bewährte Methode verwenden Anwendungen AAD-Bibliotheken und interaktive Anmeldung zur Authentifizierung von Benutzern. Die Bibliotheken kümmern sich um die Verbundbenutzerflows.  Manchmal übermitteln Legacyanwendungen Benutzername und Kennwort direkt an Azure AD, insbesondere diejenigen, die ROPC-Zuweisungen verwenden. Sie wurden nicht so geschrieben, dass sie den Verbund verstehen. Sie führen keine Startbereichsermittlung durch und interagieren nicht mit dem richtigen Verbundendpunkt, um einen Benutzer zu authentifizieren. Falls gewünscht, können Sie mithilfe einer Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD) bestimmten älteren Anwendungen das Übermitteln von Anmeldeinformationen (Benutzername und Kennwort) mithilfe der ROPC-Zuweisung ermöglichen, um eine direkte Authentifizierung bei Azure Active Directory durchzuführen. Die Kennworthashsynchronisierung muss aktiviert sein. 
 
 > [!IMPORTANT]
 > Aktivieren Sie die direkte Authentifizierung nur dann, wenn die Kennworthashsynchronisierung aktiviert ist und Sie sicher sind, dass diese Anwendung problemlos authentifiziert werden kann, ohne dass Richtlinien von Ihrem lokalen Identitätsanbieter implementiert werden. Wenn Sie die Kennworthashsynchronisierung oder die Verzeichnissynchronisierung mit AD Connect aus irgendeinem Grund deaktivieren, müssen Sie diese Richtlinie entfernen, um die Möglichkeit der direkten Authentifizierung mit einem veralteten Kennworthash zu verhindern.
@@ -110,7 +110,7 @@ Das folgende Beispiel zeigt eine Definition für eine Richtlinie zur Startbereic
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```

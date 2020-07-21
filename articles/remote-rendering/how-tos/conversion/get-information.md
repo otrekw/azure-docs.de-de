@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805006"
 ---
 # <a name="get-information-about-a-converted-model"></a>Abrufen von Informationen zu einem konvertierten Modell
 
@@ -100,7 +100,7 @@ In diesem Abschnitt werden Informationen zum Quelldateiformat aufgezeichnet.
 In diesem Abschnitt finden Sie Informationen zur Quellszene. Häufig gibt es Abweichungen zwischen den Werten in diesem Abschnitt und den entsprechenden Werten in dem Tool, das das Quellmodell erstellt hat. Diese Unterschiede werden erwartet, da das Modell während der Export- und Konvertierungsschritte geändert wird.
 
 * `numMeshes`: Die Anzahl der Gittermodellteile, wobei jedes Teil auf ein einzelnes Material verweisen kann.
-* `numFaces`: Die Gesamtanzahl der _Dreiecke_ im gesamten Modell. Beachten Sie, dass das Gittermodell während der Konvertierung in Dreiecke zerlegt wird.
+* `numFaces`: Die Gesamtanzahl der _Dreiecke_ im gesamten Modell. Beachten Sie, dass das Gittermodell während der Konvertierung in Dreiecke zerlegt wird. Diese Anzahl trägt zum Polygongrenzwert in der [VM-Standardgröße zum Rendern](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons) bei.
 * `numVertices`: Die Gesamtanzahl der Eckpunkte im gesamten Modell.
 * `numMaterial`: Die Gesamtanzahl der Materialien im gesamten Modell.
 * `numFacesSmallestMesh`: Die Anzahl der Dreiecke im kleinsten Gittermodell des Modells.

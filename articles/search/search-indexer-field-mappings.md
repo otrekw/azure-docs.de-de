@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005798"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975332"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Feldzuordnungen und Transformationen mithilfe von Indexern der kognitiven Azure-Suche
 
@@ -39,6 +39,9 @@ Eine Feldzuordnung besteht aus drei Teilen:
 3. Einer optionalen `mappingFunction`, die die Daten mit einer von mehreren vordefinierten Funktionen transformieren kann. Dies kann sowohl für Eingabe- als auch für Ausgabefeldzuordnungen angewendet werden. Die vollständige Liste der Funktionen finden Sie [unten](#mappingFunctions).
 
 Feldzuordnungen werden dem Array `fieldMappings` der Indexerdefinition hinzugefügt.
+
+> [!NOTE]
+> Wenn keine Feldzuordnungen hinzugefügt werden, nehmen Indexer an, dass die Datenquellenfelder den Indexfeldern mit demselben Namen zugeordnet werden sollen. Das Hinzufügen einer Feldzuordnung entfernt diese Standardfeldzuordnungen für das Quell- und Zielfeld. Manche Indexer, z. B. der [Blobspeicherindexer](search-howto-indexing-azure-blob-storage.md), fügen Standardfeldzuordnungen für das Indexschlüsselfeld hinzu.
 
 ## <a name="map-fields-using-the-rest-api"></a>Zuordnen von Feldern mithilfe der REST-API
 
@@ -136,6 +139,27 @@ Wenn Sie den codierten Schlüssel während der Suche abrufen, können Sie die Fu
     }
   }]
  ```
+
+#### <a name="example---preserve-original-values"></a>Beispiel: Beibehalten von Ursprungswerten
+
+Der [Blobspeicherindexer](search-howto-indexing-azure-blob-storage.md) fügt dem Indexschlüsselfeld automatisch eine Feldzuordnung aus `metadata_storage_path` hinzu, den URI des Blobs, wenn keine Feldzuordnung angegeben ist. Dieser Wert ist Base64-codiert. Er kann also sicher als Dokumentschlüssel für Azure Cognitive Search verwendet werden. Im folgenden Beispiel sehen Sie, wie Sie gleichzeitig eine Base64-codierte Version mit *sicherer URL* von `metadata_storage_path` einem `index_key`-Feld zuordnen und den Ursprungswert in einem `metadata_storage_path`-Feld beibehalten:
+
+```JSON
+
+"fieldMappings": [
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "metadata_storage_path"
+  },
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "index_key",
+    "mappingFunction": {
+       "name": "base64Encode"
+    }
+  }
+]
+```
 
 Wenn Sie keine parameters-Eigenschaft für Ihre Zuordnungsfunktion angeben, wird standardmäßig der Wert `{"useHttpServerUtilityUrlTokenEncode" : true}` verwendet.
 
