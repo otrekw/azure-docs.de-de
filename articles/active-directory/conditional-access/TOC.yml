@@ -47,8 +47,6 @@
       href: controls.md
     - name: Migration klassischer Richtlinien
       href: policy-migration.md
-    - name: Baselineschutzrichtlinien
-      href: concept-baseline-protection.md
 - name: Anleitungen
   expanded: true
   items:
