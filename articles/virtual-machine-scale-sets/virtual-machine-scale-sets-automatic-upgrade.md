@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 04/14/2020
+ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: c06ad5ab2688bd62fdf898950a8f64cd655a9fcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601342"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -46,7 +46,7 @@ Der Upgradeprozess funktioniert wie folgt:
 Der Upgradeorchestrator für das Skalierungsgruppen-Betriebssystem überprüft die allgemeine Skalierungsgruppenintegrität, bevor die einzelnen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere gleichzeitige geplante oder nicht geplante Wartungsaktivitäten statt, die die Integrität Ihrer Skalierungsgruppeninstanzen beeinträchtigen könnten. Wenn in solchen Fällen mehr als 20% der Instanzen der Skalierungsgruppe fehlerhaft werden, endet das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches.
 
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
-Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Die Unterstützung für benutzerdefinierte Images ist über [Shared Image Gallery](shared-image-galleries.md) als [Vorschau](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview) für benutzerdefinierte Images verfügbar.
+Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Benutzerdefinierte Images [werden unterstützt](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images), wenn die Skalierungsgruppe benutzerdefinierte Images über [Shared Image Gallery](shared-image-galleries.md) nutzt.
 
 Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelmäßig hinzugefügt):
 
@@ -77,90 +77,25 @@ Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelm�
 ### <a name="service-fabric-requirements"></a>Service Fabric-Anforderungen
 
 Stellen Sie bei Verwendung von Service Fabric sicher, dass die folgenden Bedingungen erfüllt sind:
--   Die [Dauerhaftigkeitsstufe](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) von Service Fabric lautet „Silber“ oder „Gold“ (nicht „Bronze“).
+-   Die [Dauerhaftigkeitsstufe](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) von Service Fabric lautet „Silber“ oder „Gold“ (nicht „Bronze“).
 -   Die Service Fabric-Erweiterung in der Skalierungsgruppenmodell-Definition muss über TypeHandlerVersion 1.1 oder höher verfügen.
 -   Die Dauerhaftigkeitsstufe sollte im Service Fabric-Cluster und für die Service Fabric-Erweiterung in der Skalierungsgruppenmodell-Definition gleich sein.
+- Ein zusätzlicher Integritätstest oder die Verwendung einer Anwendungsintegritätserweiterung ist nicht erforderlich.
 
 Stellen Sie sicher, dass die Dauerhaftigkeitseinstellungen im Service Fabric-Cluster und für die Service Fabric-Erweiterung nicht in Konflikt stehen, weil dies zu Upgradefehlern führt. Dauerhaftigkeitsstufen können mit den Richtlinien geändert werden, die auf [dieser Seite](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels) beschrieben sind.
 
 
-## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>Automatisches Upgrade von Betriebssystemimages für benutzerdefinierte Images (Vorschau)
+## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatisches Upgrade von Betriebssystemimages für benutzerdefinierte Images
 
-> [!IMPORTANT]
-> Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images befindet sich derzeit in der öffentlichen Vorschauphase. Es ist ein Opt-in-Verfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images ist als Vorschau für benutzerdefinierte Images verfügbar, die über [Shared Image Gallery](shared-image-galleries.md) bereitgestellt wurden. Andere benutzerdefinierte Images werden für automatische Upgrades von Betriebssystemimages nicht unterstützt.
-
-Zum Aktivieren der Vorschaufunktion ist ein einmaliges Opt-in des Features *AutomaticOSUpgradeWithGalleryImage* pro Abonnement erforderlich, wie unten beschrieben.
-
-### <a name="rest-api"></a>REST-API
-Im folgenden Beispiel wird beschrieben, wie Sie die Vorschauversion für Ihr Abonnement aktivieren:
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Verwenden Sie [az feature register](/cli/azure/feature#az-feature-register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images wird für benutzerdefinierte Images unterstützt, die über [Shared Image Gallery](shared-image-galleries.md) bereitgestellt wurden. Andere benutzerdefinierte Images werden für automatische Upgrades von Betriebssystemimages nicht unterstützt.
 
 ### <a name="additional-requirements-for-custom-images"></a>Weitere Anforderungen für benutzerdefinierte Images
-- Der oben beschriebene Opt-in-Prozess muss nur einmal pro Abonnement durchgeführt werden. Nach Abschluss des Opt-in-Prozesses können automatische Betriebssystemupgrades für jede Skalierungsgruppe im jeweiligen Abonnement aktiviert werden.
-- Shared Image Gallery kann sich in einem beliebigen Abonnement befinden, ein separates Opt-in ist nicht erforderlich. Das Feature-Opt-in ist nur für das Skalierungsgruppenabonnement erforderlich.
-- Der Konfigurationsprozess für das automatische Upgrade von Betriebssystemimages ist für alle Skalierungsgruppen identisch (siehe Beschreibung im [Konfigurationsabschnitt](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) dieser Seite).
+- Der Einrichtungs- und Konfigurationsprozess für das automatische Upgrade von Betriebssystemimages ist für alle Skalierungsgruppen identisch (siehe Beschreibung im [Konfigurationsabschnitt](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) dieser Seite).
 - Skalierungsgruppeninstanzen, die für automatische Upgrades von Betriebssystemimages konfiguriert sind, werden auf die neueste Version des Shared Image Gallery-Images aktualisiert, wenn eine neue Version des Images veröffentlicht und in die Region der betreffenden Skalierungsgruppe [repliziert](shared-image-galleries.md#replication) wird. Wenn das neue Image nicht in der Region repliziert wird, in der die Skalierung bereitgestellt wird, erfolgt kein Upgrade der Skalierungsgruppeninstanzen auf die neueste Version. Die regionale Imagereplikation ermöglicht es Ihnen, das Rollout des neuen Images für Ihre Skalierungsgruppen zu steuern.
 - Die neue Imageversion sollte nicht aus der aktuellen Version für das betreffende Katalogimage ausgeschlossen werden. Für Imageversionen, die aus der aktuellen Version des Katalogimages ausgeschlossen werden, erfolgt durch das automatische Upgrade von Betriebssystemimages kein Rollout in der Skalierungsgruppe.
 
 > [!NOTE]
->Es kann bis zu drei Stunden dauern, bis eine Skalierungsgruppe den ersten Rollout für das Imageupgrade auslöst, nachdem sie für automatische Betriebssystemupgrades konfiguriert wurde. Dies ist eine einmalige Verzögerung pro Skalierungsgruppe. Nachfolgende Imagerollouts werden für die Skalierungsgruppe innerhalb von 30 Minuten ausgelöst.
+>Es kann bis zu drei Stunden dauern, bis eine Skalierungsgruppe den ersten Rollout für das Imageupgrade auslöst, nachdem sie erstmalig für automatische Betriebssystemupgrades konfiguriert wurde. Dies ist eine einmalige Verzögerung pro Skalierungsgruppe. Nachfolgende Imagerollouts werden für die Skalierungsgruppe innerhalb von 30–60 Minuten ausgelöst.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Konfigurieren des automatischen Upgrades von Betriebssystemimages
@@ -193,11 +128,14 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Verwenden Sie [az vmss update](/cli/azure/vmss#az-vmss-update), um automatische Betriebssystem-Imageupgrades für Ihre Skalierungsgruppe zu konfigurieren. Verwenden Sie Azure CLI 2.0.47 oder höher. Im folgenden Beispiel werden automatische Upgrades für die Skalierungsgruppe *myScaleSet* in der Ressourcengruppe *myResourceGroup* konfiguriert:
+Verwenden Sie `[az vmss update](/cli/azure/vmss#az-vmss-update)`, um automatische Betriebssystem-Imageupgrades für Ihre Skalierungsgruppe zu konfigurieren. Verwenden Sie Azure CLI 2.0.47 oder höher. Im folgenden Beispiel werden automatische Upgrades für die Skalierungsgruppe *myScaleSet* in der Ressourcengruppe *myResourceGroup* konfiguriert:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
+
+> [!NOTE]
+>Nach dem Konfigurieren automatischer Betriebssystem-Imageupgrades für Ihre Skalierungsgruppe müssen Sie die Skalierungsgruppen-VMs auch auf das aktuelle Skalierungsgruppenmodell aktualisieren, wenn Ihre Skalierungsgruppe die [Upgraderichtlinie](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) „Manuell“ verwendet.
 
 ## <a name="using-application-health-probes"></a>Verwenden von Anwendungsintegritätstests
 

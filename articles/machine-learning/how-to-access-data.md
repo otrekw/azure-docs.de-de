@@ -5,25 +5,27 @@ description: Hier erfahren Sie, wie Sie mithilfe von Datenspeichern während des
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 03/24/2020
-ms.custom: seodec18
-ms.openlocfilehash: 904738d73aaa0580773a085c70cd74f4240fc4b7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 07/08/2020
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146722"
 ---
 # <a name="connect-to-azure-storage-services"></a>Herstellen einer Verbindung mit Azure-Speicherdiensten
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie über Azure Machine Learning-Datenspeicher eine Verbindung mit Azure-Speicherdiensten herstellen. In Datenspeichern werden Verbindungsinformationen wie Ihre Abonnement-ID und die Tokenautorisierung in Ihrer mit dem Arbeitsbereich verknüpften [Key Vault](https://azure.microsoft.com/services/key-vault/)-Instanz gespeichert, damit Sie sicher auf Ihren Speicher zuzugreifen können, ohne diese Informationen in Ihren Skripts hartcodieren zu müssen. Informationen dazu, welche Rolle Datenspeicher im Workflow für den Datenzugriff in Azure Machine Learning spielen, finden Sie im Artikel [Datenzugriff in Azure Machine Learning](concept-data.md#data-workflow).
+In diesem Artikel erfahren Sie, wie Sie **über Azure Machine Learning-Datenspeicher eine Verbindung mit Azure-Speicherdiensten herstellen**. In Datenspeichern werden Verbindungsinformationen wie Ihre Abonnement-ID und die Tokenautorisierung in Ihrer mit dem Arbeitsbereich verknüpften [Key Vault](https://azure.microsoft.com/services/key-vault/)-Instanz gespeichert, damit Sie sicher auf Ihren Speicher zuzugreifen können, ohne diese Informationen in Ihren Skripts hartcodieren zu müssen. 
 
-Aus diesen [Azure-Speicherlösungen](#matrix) können Sie Datenspeicher erstellen. Für nicht unterstützte Speicherlösungen und um bei Experimenten mit maschinellem Lernen Kosten für ausgehende Daten zu sparen, empfiehlt es sich, Ihre Daten in unterstützte Azure-Speicherlösungen zu [verschieben](#move). 
+**Für nicht unterstützte Speicherlösungen** sowie zur Einsparung von Kosten für ausgehende Daten bei ML-Experimenten sollten Sie [Ihre Daten in eine unterstützte Azure-Speicherlösung verschieben](#move).  Aus diesen [Azure-Speicherlösungen](#matrix) können Sie Datenspeicher erstellen. 
+
+Informationen dazu, welche Rolle Datenspeicher im Workflow für den Datenzugriff in Azure Machine Learning spielen, finden Sie im Artikel [Datenzugriff in Azure Machine Learning](concept-data.md#data-workflow).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,16 +52,16 @@ Sie benötigen Folgendes:
 
 Datenspeicher unterstützen derzeit das Speichern von Verbindungsinformationen in den Speicherdiensten, die in der folgenden Matrix aufgeführt sind.
 
-| Speichertyp&nbsp; | Authentifizierungstyp&nbsp; | [Azure&nbsp;Machine&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;Learning&nbsp;-REST-API](https://docs.microsoft.com/rest/api/azureml/)
----|---|---|---|---|---
-[Azure&nbsp;Blob&nbsp;Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Kontoschlüssel <br> SAS-Token | ✓ | ✓ | ✓ |✓
-[Azure-Dateifreigabe&nbsp;&nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Kontoschlüssel <br> SAS-Token | ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Dienstprinzipal| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Dienstprinzipal| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)&nbsp;| SQL-Authentifizierung <br>Dienstprinzipal| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL-Authentifizierung| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Database&nbsp;for&nbsp;MySQL](https://docs.microsoft.com/azure/mysql/overview) | SQL-Authentifizierung|  | ✓* | ✓* |✓*
-[Databricks-Dateisystem](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)&nbsp;&nbsp;| Keine Authentifizierung | | ✓** | ✓ ** |✓** 
+| Speichertyp&nbsp; | Authentifizierungstyp&nbsp; | [Azure&nbsp;Machine&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;Learning&nbsp;-REST-API](https://docs.microsoft.com/rest/api/azureml/) | VS-Code
+---|---|---|---|---|---|---
+[Azure&nbsp;Blob&nbsp;Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Kontoschlüssel <br> SAS-Token | ✓ | ✓ | ✓ |✓ |✓
+[Azure-Dateifreigabe&nbsp;&nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Kontoschlüssel <br> SAS-Token | ✓ | ✓ | ✓ |✓|✓
+[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Dienstprinzipal| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Dienstprinzipal| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)&nbsp;| SQL-Authentifizierung <br>Dienstprinzipal| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL-Authentifizierung| ✓ | ✓ | ✓ |✓|
+[Azure&nbsp;Database&nbsp;for&nbsp;MySQL](https://docs.microsoft.com/azure/mysql/overview) | SQL-Authentifizierung|  | ✓* | ✓* |✓*|
+[Databricks-Dateisystem](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)&nbsp;&nbsp;| Keine Authentifizierung | | ✓** | ✓ ** |✓** |
 
 * MySQL wird nur für die Pipeline [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) unterstützt. <br>
 ** Databricks wird nur für die Pipeline [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) unterstützt.
@@ -70,7 +72,7 @@ Es wird empfohlen, einen Datenspeicher für einen [Azure-Blobcontainer](https://
 
 [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) baut auf Azure Blob Storage auf und ist für Big Data-Analysen in Unternehmen ausgelegt. Ein wesentlicher Bestandteil von Data Lake Storage Gen2 ist das Hinzufügen eines [hierarchischen Namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) zum Blobspeicher. Der hierarchische Namespace organisiert Objekte/Dateien in einer Hierarchie von Verzeichnissen für den effizienten Datenzugriff.
 
-Wenn Sie einen Arbeitsbereich erstellen, werden ein Azure-Blobcontainer und eine Azure-Dateifreigabe automatisch im Arbeitsbereich registriert. Sie erhalten die Namen `workspaceblobstore` und `workspacefilestore`. `workspaceblobstore` dient zum Speichern von Arbeitsbereichsartefakten und Ihren Protokollen zu Experimenten mit maschinellem Lernen. `workspacefilestore` dient zum Speichern von Notebooks und R-Skripts, die über [Computeinstanzen](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files) autorisiert werden. Der `workspaceblobstore`-Container wird als Standarddatenspeicher festgelegt.
+Wenn Sie einen Arbeitsbereich erstellen, werden ein Azure-Blobcontainer und eine Azure-Dateifreigabe automatisch im Arbeitsbereich registriert. Sie erhalten die Namen `workspaceblobstore` und `workspacefilestore`. `workspaceblobstore` dient zum Speichern von Arbeitsbereichsartefakten und Ihren Protokollen zu Experimenten mit maschinellem Lernen. `workspacefilestore` dient zum Speichern von Notebooks und R-Skripts, die über [Computeinstanzen](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files) autorisiert werden. Der Container `workspaceblobstore` wird als Standarddatenspeicher festgelegt und kann nicht aus dem Arbeitsbereich gelöscht werden.
 
 > [!IMPORTANT]
 > Azure Machine Learning-Designer (Vorschau) erstellt automatisch einen Datenspeicher namens **azureml_globaldatasets**, wenn Sie ein Beispiel auf der Designerstartseite öffnen. Dieser Datenspeicher enthält nur Beispieldatasets. Verwenden Sie diesen Datenspeicher **nicht** für den Zugriff auf vertrauliche Daten.
@@ -91,17 +93,22 @@ Nach dem Erstellen des Datenspeichers wird diese Überprüfung nur noch für Met
 
 Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format `register_azure_*` auf.
 > [!IMPORTANT]
-> Wenn sich Ihr Speicherkonto in einem virtuellen Netzwerk befindet, wird nur die Erstellung von Datenspeichern **über das SDK** unterstützt.
+> Wenn Sie einen Datenspeicher für Speicherkonten in einem virtuellen Netzwerk erstellen möchten, lesen Sie den Abschnitt „Zugreifen auf Daten in einem virtuellen Netzwerk“.
 
 Die Informationen, die Sie zum Auffüllen der `register_azure_*()`-Methode benötigen, finden Sie im [Azure-Portal](https://portal.azure.com).
+
+* Der Datenspeichername darf nur Kleinbuchstaben, Ziffern und Unterstriche enthalten. 
 
 * Wenn Sie beabsichtigen, einen Kontoschlüssel oder ein SAS-Token für die Authentifizierung zu verwenden, wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. 
   * Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. 
       1. Wechseln Sie für Kontoschlüssel zu **Kontoschlüssel** im Bereich **Einstellungen**. 
       1. Für SAS-Token wechseln Sie zu **Shared Access Signatures** im Bereich **Einstellungen**.
 
-* Wenn Sie beabsichtigen, einen Dienstprinzipal für die Authentifizierung zu verwenden, wechseln Sie zu Ihren **App-Registrierungen**, und wählen Sie die zu verwendende App aus. 
-    * Auf der zugehörigen Seite **Übersicht** werden erforderliche Informationen wie Mandanten-ID und Client-ID angezeigt.
+* Wenn Sie einen Dienstprinzipal für die Authentifizierung verwenden möchten, navigieren Sie zu Ihren **App-Registrierungen**, und wählen Sie die gewünschte App aus. 
+    * Auf der entsprechenden Übersichtsseite werden erforderliche Informationen wie Mandanten-ID und Client-ID angezeigt.
+
+> [!IMPORTANT]
+> Aus Sicherheitsgründen müssen möglicherweise Ihre Zugriffsschlüssel für ein Azure Storage-Konto geändert werden (Kontoschlüssel oder SAS-Token). Synchronisieren Sie in diesem Fall unbedingt die neuen Anmeldeinformationen mit Ihrem Arbeitsbereich und den damit verbundenen Datenspeichern. Eine Anleitung zum Synchronisieren Ihrer aktualisierten Anmeldeinformationen finden Sie [hier](how-to-change-storage-access-key.md). 
 
 In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer, eine Azure-Dateifreigabe und Azure Data Lake Storage Generation 2 als Datenspeicher registrieren können. Bei den in diesen Beispielen verwendeten Parametern handelt es sich um die **erforderlichen Parameter** zum Erstellen und Registrieren eines Datenspeichers. 
 
@@ -109,7 +116,7 @@ In der [Referenzdokumentation für die zugehörigen `register_azure_*`-Methoden]
 
 #### <a name="blob-container"></a>BLOB-Container
 
-Um einen Azure-Blobcontainer als Datenspeicher zu registrieren, verwenden Sie [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-).
+Um einen Azure-Blobcontainer als Datenspeicher zu registrieren, verwenden Sie [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-).
 
 Der folgende Code erstellt den Datenspeicher `blob_datastore_name` und registriert ihn im Arbeitsbereich `ws`. Dieser Datenspeicher greift auf den `my-container-name`-Blobcontainer im `my-account-name`-Speicherkonto zu und verwendet dazu den angegebenen Zugriffsschlüssel des Kontos.
 
@@ -125,7 +132,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
-Wenn Ihr Blobcontainer sich in einem virtuellen Netzwerk befindet, fügen Sie den Parameter `skip_validation=True` zu Ihrer Methode [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) hinzu. 
+Wenn Ihr Blobcontainer sich in einem virtuellen Netzwerk befindet, fügen Sie den Parameter `skip_validation=True` zu Ihrer Methode [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) hinzu. 
 
 #### <a name="file-share"></a>Dateifreigabe
 
@@ -150,8 +157,6 @@ Wenn Ihre Dateifreigabe sich in einem virtuellen Netzwerk befindet, fügen Sie d
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage Generation 2
 
 Für einen Datenspeicher von Azure Data Lake Storage Generation 2 (ADLS Gen 2) verwenden Sie [register_azure_data_lake_gen2()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-), um einen Datenspeicher für Anmeldeinformationen zu registrieren, der mit einem Azure DataLake Gen 2-Speicher mit [Dienstprinzipalberechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) verbunden ist. Damit Sie Ihren Dienstprinzipal nutzen können, müssen Sie [Ihre Anwendung registrieren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) und dem Dienstprinzipal die Zugriffsberechtigung *Leser von Speicherblobdaten* zuweisen. Erfahren Sie mehr über die [für ADLS Gen 2 eingerichtete Zugriffssteuerung](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
-
-Damit Sie Ihren Dienstprinzipal nutzen können, müssen Sie [Ihre Anwendung registrieren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) und dem Dienstprinzipal Zugriff auf die richtigen Daten gewähren. Erfahren Sie mehr über die [für ADLS Gen 2 eingerichtete Zugriffssteuerung](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Der folgende Code erstellt den Datenspeicher `adlsgen2_datastore_name` und registriert ihn im Arbeitsbereich `ws`. Dieser Datenspeicher greift auf das Dateisystem `test` im `account_name`-Speicherkonto zu und verwendet dazu die bereitgestellten Anmeldeinformationen des Dienstprinzipals.
 
@@ -180,7 +185,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Erstellen Sie einen neuen Datenspeicher in wenigen Schritten in Azure Machine Learning-Studio:
 
 > [!IMPORTANT]
-> Wenn sich Ihr Speicherkonto in einem virtuellen Netzwerk befindet, wird nur die Erstellung von Datenspeichern [über das SDK](#python-sdk) unterstützt. 
+> Wenn sich Ihr Datenspeicherkonto in einem virtuellen Netzwerk befindet, sind zusätzliche Konfigurationsschritte erforderlich, um sicherzustellen, dass von Studio auf Ihre Daten zugegriffen werden kann. Stellen Sie wie unter [Machine Learning Studio] (how-to-enable-virtual-network.md#machine-learning-studio) beschrieben sicher, dass die erforderlichen Konfigurationsschritte ausgeführt wurden. 
 
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
 1. Wählen Sie im linken Bereich unter **Verwalten** die Option **Datenspeicher** aus.
@@ -193,10 +198,16 @@ Die Informationen, die Sie zum Auffüllen des Formulars benötigen, finden Sie i
 
 * Wechseln Sie für Dienstprinzipalelemente wie Mandanten-ID und Kunden-ID zu Ihren **App-Registrierungen**, und wählen Sie die zu verwendenden Apps aus. Die entsprechende **Übersichtsseite** enthält diese Punkte. 
 
-Das folgende Beispiel veranschaulicht das Aussehen des Formulars, wenn Sie einen Azure-Blobdatenspeicher erstellen: 
+> [!IMPORTANT]
+> Aus Sicherheitsgründen müssen möglicherweise Ihre Zugriffsschlüssel für ein Azure Storage-Konto geändert werden (Kontoschlüssel oder SAS-Token). Synchronisieren Sie in diesem Fall unbedingt die neuen Anmeldeinformationen mit Ihrem Arbeitsbereich und den damit verbundenen Datenspeichern. Eine Anleitung zum Synchronisieren Ihrer aktualisierten Anmeldeinformationen finden Sie [hier](how-to-change-storage-access-key.md). 
+
+Das folgende Beispiel zeigt, wie das Formular aussieht, wenn Sie einen **Azure-Blobdatenspeicher** erstellen: 
     
 ![Formular für einen neuen Datenspeicher](media/how-to-access-data/new-datastore-form.png)
 
+### <a name="vs-code"></a>VS-Code
+
+Sie können Datenspeicher mithilfe der Azure Machine Learning-VS Code-Erweiterung erstellen und verwalten. Weitere Informationen finden Sie unter [Datastores](how-to-manage-resources-vscode.md#datastores).
 
 <a name="get"></a>
 
@@ -227,6 +238,7 @@ Mithilfe des folgenden Codes können Sie den Standarddatenspeicher ändern. Dies
 ```Python
  ws.set_default_datastore(new_default_datastore)
 ```
+
 <a name="up-and-down"></a>
 ## <a name="upload-and-download-data"></a>Hochladen und Herunterladen von Daten
 
@@ -290,6 +302,11 @@ Azure Machine Learning bietet mehrere Möglichkeiten, Ihre Modelle zur Bewertung
 | [Azure IoT Edge-Modul](how-to-deploy-and-where.md) | &nbsp; | Stellen Sie Modelle auf IoT Edge-Geräten bereit. |
 
 Für Situationen, in denen das SDK keinen Zugriff auf Datenspeicher bietet, können Sie möglicherweise benutzerdefinierten Code mit dem entsprechenden Azure-SDK erstellen, um auf die Daten zuzugreifen. Das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) ist beispielsweise eine Clientbibliothek, mit der Sie auf in Blobs oder Dateien gespeicherte Daten zugreifen können.
+
+
+## <a name="access-data-in-a-virtual-network"></a>Zugreifen auf Daten in einem virtuellen Netzwerk
+
+Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk befindet, sind zusätzliche Konfigurationsschritte erforderlich, damit von Ihrem Arbeitsbereich und Ihrem Datenspeicher auf Ihre Daten zugegriffen werden kann. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in virtuellen Netzwerken finden Sie unter [Verwenden von Datenspeichern und Datasets](how-to-enable-virtual-network.md#use-datastores-and-datasets).
 
 <a name="move"></a>
 
