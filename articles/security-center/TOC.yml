@@ -1,6 +1,7 @@
 - name: Security Center-Dokumentation
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Informationen zu Security Center
       href: security-center-intro.md
@@ -18,8 +19,11 @@
       href: recommendations-reference.md
     - name: Sicherheitswarnungen und Kill Chain für Absichten
       href: alerts-reference.md
+    - name: Berechtigungen
+      href: security-center-permissions.md
+    - name: Preise
+      href: security-center-pricing.md
 - name: Schnellstarts
-  expanded: true
   items:
     - name: Azure-Abonnements
       href: security-center-get-started.md
@@ -29,6 +33,12 @@
       href: quick-onboard-linux-computer.md
     - name: Virtuelle Azure Stack-Computer
       href: quick-onboard-azure-stack.md
+    - name: Automatisieren des Onboardings mithilfe von PowerShell
+      href: security-center-powershell-onboarding.md
+    - name: Konfigurieren Ihrer Datensammlung
+      href: security-center-enable-data-collection.md
+    - name: Einrichten von E-Mail-Benachrichtigungen
+      href: security-center-provide-security-contact-details.md
 - name: Tutorials
   items:
     - name: Leitfaden zu Planung und Betrieb
@@ -39,21 +49,36 @@
       href: tutorial-security-incident.md
     - name: Verbessern der Einhaltung gesetzlicher Vorschriften
       href: security-center-compliance-dashboard.md
-- name: Beispiele
-  items:
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Konzepte
   items:
-    - name: Sicherheitsbewertung
-      href: secure-score-security-controls.md
-    - name: Berechtigungen
-      href: security-center-permissions.md
+    - name: 'Sicherheitsbewertung, Empfehlungen und Richtlinien'
+      items:
+        - name: Sicherheitsbewertung
+          href: secure-score-security-controls.md
+        - name: Übersicht über Sicherheitsempfehlungen
+          href: security-center-recommendations.md
+        - name: Übersicht über Sicherheitsrichtlinien
+          href: tutorial-security-policy.md
+        - name: Integrierte Sicherheitsrichtlinien
+          href: security-center-policy-definitions.md
+        - name: Verwenden von Empfehlungen zur Verbesserung der Sicherheit
+          href: security-center-using-recommendations.md
+    - name: Bedrohungsschutz und Sicherheitswarnungen
+      items:
+        - name: Übersicht über Bedrohungsschutz in Security Center
+          href: threat-protection.md
+        - name: Übersicht zu Sicherheitswarnungen
+          href: security-center-alerts-overview.md
+        - name: Referenzliste der Warnungen
+          href: alerts-reference.md
+        - name: Warnungsschemas
+          href: alerts-schemas.md
+        - name: Übersicht über Sicherheitsincidents
+          href: security-center-alerts-cloud-smart.md
     - name: Datensicherheit
       href: security-center-data-security.md
-    - name: Verwenden von Empfehlungen zur Verbesserung der Sicherheit
-      href: security-center-using-recommendations.md
+    - name: Just-in-Time-VM-Zugriff
+      href: just-in-time-explained.md
     - name: Mandantenübergreifende Verwaltung
       href: security-center-cross-tenant-management.md
     - name: Containersicherheit
@@ -64,32 +89,18 @@
           href: azure-container-registry-integration.md
         - name: Integration mit Azure Kubernetes Service
           href: azure-kubernetes-service-integration.md
-    - name: Bedrohungsschutz und Sicherheitswarnungen
-      items:
-        - name: Bedrohungsschutz in Azure Security Center
-          href: threat-protection.md
-        - name: Übersicht zu Sicherheitswarnungen
-          href: security-center-alerts-overview.md
-        - name: Referenzliste der Warnungen
-          href: alerts-reference.md
-        - name: Warnungsschemas
-          href: alerts-schemas.md
-        - name: Verwalten von Sicherheitswarnungen
-          href: security-center-managing-and-responding-alerts.md
-        - name: Unterdrückungsregeln für Sicherheitswarnungen
-          href: alerts-suppression-rules.md
-        - name: Verwalten von Sicherheitsvorfällen
-          href: security-center-incident.md
-        - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)
-          href: security-center-alerts-cloud-smart.md
-        - name: Berichte zu Bedrohungen
-          href: security-center-threat-report.md
-        - name: Warnungsüberprüfung (EICAR-Testdatei)
-          href: security-center-alert-validation.md
 - name: Anleitungen
   items:
     - name: Ausführen eines Upgrades auf erweiterte Sicherheit
       href: security-center-onboarding.md
+    - name: Konfigurieren von Sicherheitsrichtlinien und Konformitätsstandards
+      items:
+        - name: Erstellen benutzerdefinierter Sicherheitsrichtlinien
+          href: custom-security-policies.md
+        - name: Verwalten von Richtlinien mithilfe der REST-API für Azure Policy
+          href: configure-security-policy-azure-policy.md
+        - name: Auswählen von Standards für Ihr Compliancedashboard
+          href: update-regulatory-compliance-packages.md
     - name: Überprüfen Ihrer virtuellen Computer auf Sicherheitsrisiken
       items:
         - name: "Überprüfung auf Sicherheitsrisiken\_– Übersicht"
@@ -98,54 +109,28 @@
           href: built-in-vulnerability-assessment.md
         - name: Verwenden externer Überprüfungen
           href: partner-vulnerability-assessment.md
-    - name: Überwachen Ihrer Container
-      href: monitor-container-security.md
-    - name: Schützen Ihrer Server mit Microsoft Defender ATP
-      href: security-center-wdatp.md
-    - name: Verwenden von Advanced Data Security für SQL-Computer
-      href: security-center-iaas-advanced-data.md
-    - name: Schützen von Anwendungen mithilfe von App Service
-      href: security-center-app-services.md
-    - name: Verwenden von Sicherheitsrichtlinien
+    - name: Konfigurieren des Bedrohungsschutzes und Behandeln von Warnungen
       items:
-        - name: Übersicht über Sicherheitsrichtlinien
-          href: tutorial-security-policy.md
-        - name: Verwenden integrierter Sicherheitsrichtlinien
-          href: security-center-policy-definitions.md
-        - name: Erstellen benutzerdefinierter Sicherheitsrichtlinien
-          href: custom-security-policies.md
-        - name: Verwalten von Richtlinien mithilfe der REST-API für Azure Policy
-          href: configure-security-policy-azure-policy.md
-    - name: Auswählen von Standards für Ihr Compliancedashboard
-      href: update-regulatory-compliance-packages.md
-    - name: Anpassen der Information Protection-Richtlinie
-      href: security-center-info-protection-policy.md
-    - name: Verwalten von Sicherheitslösungen
-      href: security-center-partner-integration.md
-    - name: Automatisieren des Onboardings mithilfe von PowerShell
-      href: security-center-powershell-onboarding.md
-    - name: Integrieren mit Windows Admin Center
-      href: windows-admin-center-integration.md
-    - name: Vergleichen der Baselines mithilfe der Dateiintegritätsüberwachung
-      href: security-center-file-integrity-monitoring-baselines.md
-    - name: Automatisieren von Reaktionen auf Warnungen und Empfehlungen
-      href: workflow-automation.md
-    - name: Exportieren von Warnungen und Empfehlungen
-      href: continuous-export.md
-    - name: Konfigurieren Ihrer Datensammlung
-      href: security-center-enable-data-collection.md
-    - name: Einrichten von Advanced Threat Protection für Azure Key Vault
-      href: advanced-threat-protection-key-vault.md
-    - name: Einrichten von E-Mail-Benachrichtigungen
-      href: security-center-provide-security-contact-details.md
-    - name: Preise
-      href: security-center-pricing.md
-    - name: Erreichen von mandantenweiter Transparenz
-      href: security-center-management-groups.md
-    - name: Implementieren von Sicherheitsempfehlungen
+        - name: Verwalten von Sicherheitswarnungen
+          href: security-center-managing-and-responding-alerts.md
+        - name: Erstellen und Verwalten von Unterdrückungsregeln für Warnungen
+          href: alerts-suppression-rules.md
+        - name: Einrichten von Advanced Threat Protection für Azure Key Vault
+          href: advanced-threat-protection-key-vault.md
+        - name: Verwalten von Sicherheitsvorfällen
+          href: security-center-incident.md
+        - name: Erstellen von Threat Intelligence-Berichten
+          href: security-center-threat-report.md
+        - name: Überprüfen der Warnungskonfiguration (EICAR-Testdatei)
+          href: security-center-alert-validation.md
+        - name: Verwenden von Advanced Data Security für SQL auf virtuellen Azure-Computern
+          href: security-center-iaas-advanced-data.md
+        - name: Automatisieren von Reaktionen auf Warnungen
+          href: workflow-automation.md
+        - name: Exportieren von Warnungen
+          href: continuous-export.md
+    - name: Verwenden von Sicherheitsempfehlungen zur Verbesserung der Sicherheit
       items:
-        - name: Was sind Sicherheitsempfehlungen?
-          href: security-center-recommendations.md
         - name: Umsetzen von Empfehlungen
           href: security-center-remediate-recommendations.md
         - name: Stärken des Sicherheitsstatus
@@ -160,8 +145,20 @@
           href: security-center-sql-service-recommendations.md
         - name: Schützen von Identität und Zugriff
           href: security-center-identity-access.md
-        - name: Benutzerdaten für Untersuchung verwalten
-          href: security-center-investigation-user-data.md
+        - name: Automatisieren von Reaktionen auf Empfehlungen
+          href: workflow-automation.md
+        - name: Exportieren von Empfehlungen
+          href: continuous-export.md
+    - name: Integrieren in andere Tools und Dienste
+      items:
+        - name: Integrieren mit Windows Admin Center
+          href: windows-admin-center-integration.md
+        - name: Schützen Ihrer Azure App Service-Web-Apps und -APIs
+          href: security-center-app-services.md
+        - name: Integrieren in Microsoft Defender ATP
+          href: security-center-wdatp.md
+        - name: Integrieren von Sicherheitslösungen und Datenquellen
+          href: security-center-partner-integration.md
     - name: Anwenden von Schutzmaßnahmen für die Cloud
       items:
         - name: Verwalten des Just-in-Time-Zugriffs
@@ -170,8 +167,18 @@
           href: security-center-adaptive-application.md
         - name: Überwachung der Dateiintegrität
           href: security-center-file-integrity-monitoring.md
+        - name: Vergleichen der Baselines mithilfe der Dateiintegritätsüberwachung
+          href: security-center-file-integrity-monitoring-baselines.md
         - name: Adaptives Erhöhen des Netzwerkschutzes
           href: security-center-adaptive-network-hardening.md
+    - name: Überwachen Ihrer Container
+      href: monitor-container-security.md
+    - name: Anpassen der Information Protection-Richtlinie
+      href: security-center-info-protection-policy.md
+    - name: Benutzerdaten für Untersuchung verwalten
+      href: security-center-investigation-user-data.md
+    - name: Erreichen von mandantenweiter Transparenz
+      href: security-center-management-groups.md
 - name: Verweis
   items:
     - name: REST-APIs
