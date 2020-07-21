@@ -143,6 +143,8 @@
           href: cluster-security-certificates.md
         - name: Zertifikatverwaltung in Service Fabric
           href: cluster-security-certificate-management.md
+        - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
+          href: security-baseline.md
     - name: Begriff
       href: service-fabric-technical-overview.md
     - name: Erstellen von Anwendungen

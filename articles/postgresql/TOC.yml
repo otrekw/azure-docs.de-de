@@ -114,7 +114,7 @@
               href: concepts-data-encryption-postgresql.md
             - name: Doppelte Infrastrukturverschlüsselung
               href: concepts-infrastructure-double-encryption.md
-            - name: Sicherheitsbaseline
+            - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
               href: security-baseline.md
         - name: Geschäftskontinuität
           items:
@@ -183,6 +183,8 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: Konfigurieren von SSL
               href: concepts-hyperscale-ssl-connection-security.md
+            - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
+              href: postgresql-hyperscale-security-baseline.md
         - name: Geschäftskontinuität
           items:
             - name: Sichern und Wiederherstellen
