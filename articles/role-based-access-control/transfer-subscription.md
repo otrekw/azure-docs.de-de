@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: f169cf45702d4a5051f9f6908b77c645c7a0018f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042389"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230841"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)
 
@@ -189,7 +189,7 @@ Verwaltete Identitäten werden nicht aktualisiert, wenn ein Abonnement in ein an
 
 1. Überprüfen Sie die [Liste der Azure-Dienste, die verwaltete Identitäten unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), um zu erfahren, wo Sie möglicherweise verwaltete Identitäten verwenden können.
 
-1. Verwenden Sie [az ad sp list](/azure/ad/sp#az-ad-sp-list), um systemseitig zugewiesene und benutzerseitig zugewiesene verwaltete Identitäten aufzulisten.
+1. Verwenden Sie [az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list), um systemseitig zugewiesene und benutzerseitig zugewiesene verwaltete Identitäten aufzulisten.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
