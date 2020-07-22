@@ -6,24 +6,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: e5b1250170830af24ddc1f2e3b78965ebcea051e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540314"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Herstellen einer Verbindung zwischen Ihrer Java-Funktion und Azure Storage
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Funktion, die Sie im [vorherigen Schnellstartartikel](functions-create-first-java-maven.md) erstellt haben, mit einer Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus einer HTTP-Anforderung in eine Nachricht in der Warteschlange.
+In diesem Artikel erfahren Sie, wie Sie die Funktion, die Sie im [vorherigen Schnellstartartikel](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) erstellt haben, mit einer Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus einer HTTP-Anforderung in eine Nachricht in der Warteschlange.
 
 Die meisten Bindungen erfordern eine gespeicherte Verbindungszeichenfolge, die Functions verwendet, um auf den gebundenen Dienst zuzugreifen. Um diese Verbindung zu vereinfachen, verwenden Sie das Storage-Konto, das Sie mit Ihrer Funktions-App erstellt haben. Die Verbindung mit diesem Konto ist bereits in einer App-Einstellung namens `AzureWebJobsStorage` gespeichert.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die Schritte in [Teil 1 der Java-Schnellstartanleitung](functions-create-first-java-maven.md) aus, bevor Sie mit diesem Artikel beginnen.
+Führen Sie die Schritte in [Teil 1 der Java-Schnellstartanleitung](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) aus, bevor Sie mit diesem Artikel beginnen.
 
 ## <a name="download-the-function-app-settings"></a>Herunterladen der Funktions-App-Einstellungen
 

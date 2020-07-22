@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc
-ms.openlocfilehash: 8021ca553a1434c891bee911e85d351c61938594
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fa190c670c5bdcae8bcb31d2b8d5d9bd011acae9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74171946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538580"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
-Mit dem [Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)-Modul können Sie Azure-Ressourcen über die Befehlszeile oder in Skripts erstellen und verwalten.
+Mit dem [Azure PowerShell Az](/powershell/azure/new-azureps-module-az)-Modul können Sie Azure-Ressourcen über die Befehlszeile oder in Skripts erstellen und verwalten.
 
 Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird beschrieben, wie Sie mit dem Az-Modul einen virtuellen Azure-Computer sichern. Alternativ können Sie einen virtuellen Computer mithilfe der [Azure-Befehlszeilenschnittstelle](quick-backup-vm-cli.md) oder im [Azure-Portal](quick-backup-vm-portal.md) sichern.
 
@@ -46,7 +46,7 @@ Beachten Sie beim Erstellen des Tresors die folgenden Punkte:
 
 - Geben Sie für die Ressourcengruppe und den Speicherort die Ressourcengruppe und den Speicherort des zu sichernden virtuellen Computers an.
 - Wenn Sie dieses [Beispielskript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) zum Erstellen des virtuellen Computers (Virtual Machine, VM) verwendet haben, heißt die Ressourcengruppe **myResourceGroup**, der VM **myVM**, und die Ressourcen befinden sich in der Region **WestEurope**.
-- Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy-grs.md). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
+- Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
 
 Erstellen Sie jetzt einen Tresor:
 
@@ -66,7 +66,7 @@ Erstellen Sie jetzt einen Tresor:
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
-3. Ändern Sie die Speicherredundanzkonfiguration (LRS/GRS) des Tresors wie folgt mit [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty):
+3. Ändern Sie die Speicherredundanzkonfiguration (LRS/GRS) des Tresors wie folgt mit [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty):
 
     ```powershell
     Get-AzRecoveryServicesVault `

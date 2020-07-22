@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390277"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540280"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
 
@@ -197,7 +197,7 @@ Im nächsten Schritt dieses Tutorials wird eine Azure-Funktion mit HTTP-Trigger 
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
     * [Befehlszeile](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-java-maven.md)
+    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
 
 1. Wählen Sie beim Veröffentlichen Ihres Azure Functions-Projekts die Funktions-App-Ressource aus, die Sie weiter oben in diesem Tutorial erstellt haben.
 1. Vergewissern Sie sich, dass die Funktion bereitgestellt wurde.
