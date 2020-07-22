@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: fd44c07ea44e7487a22b0de67737dcc135c813b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263192"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038037"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -96,7 +96,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **PowerQueryOnline** | Power Query Online | Beide | Nein | Nein |
 | **ServiceBus** | Azure Service Bus-Datenverkehr, der die Dienstebene „Premium“ verwendet. | Ausgehend | Ja | Ja |
 | **ServiceFabric** | Azure Service Fabric.<br/><br/>*Hinweis:* Dieses Tag stellt den Service Fabric-Dienstendpunkt für die Steuerungsebene pro Region dar. Dadurch können Kunden Verwaltungsvorgänge für ihre Service Fabric-Cluster aus ihrem VNET vornehmen (Beispiel für Endpunkt https:// westus.servicefabric.azure.com) | Beide | Nein | Nein |
-| **SQL** | Azure SQL-Datenbank, Azure Database for MySQL, Azure Database for PostgreSQL und Azure SQL Data Warehouse.<br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. Dieses Tag gilt nicht für die verwaltete SQL-Instanz. | Ausgehend | Ja | Ja |
+| **SQL** | Azure SQL-Datenbank, Azure Database for MySQL, Azure Database for PostgreSQL und Azure SQL Data Warehouse.<br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. Dieses Tag gilt nicht für SQL Managed Instance. | Ausgehend | Ja | Ja |
 | **SqlManagement** | Verwaltungsdatenverkehr für dedizierte SQL-Bereitstellungen. | Beide | Nein | Ja |
 | **Storage** | „Azure Storage“. <br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. | Ausgehend | Ja | Ja |
 | **StorageSyncService** | Speichersynchronisierungsdienst | Beide | Nein | Nein |
@@ -139,6 +139,8 @@ Sie können JSON-Dateien mit der aktuellen Liste der Diensttags zusammen mit Det
 - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=57064)   
+
+Die IP-Adressbereiche in diesen Dateien liegen in CIDR-Notation vor. 
 
 > [!NOTE]
 >Ein Teil dieser Informationen wurde in XML-Dateien für [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=41653), [Azure China](https://www.microsoft.com/download/details.aspx?id=42064) und [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=54770) veröffentlicht. Diese XML-Downloads werden zum 30. Juni 2020 eingestellt und stehen nach diesem Datum nicht mehr zur Verfügung. Sie sollten stattdessen wie in den vorherigen Abschnitten beschrieben die Ermittlungs-API oder JSON-Dateidownloads verwenden.

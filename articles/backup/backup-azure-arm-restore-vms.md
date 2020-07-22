@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 00b0f7313ba77037d90dcdb8ed04e5f61e335c55
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597772"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023328"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -161,6 +161,9 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 
 ![Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/rest-config.png)
 
+>[!NOTE]
+>Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere virtuelle Computer in dieser Ressourcengruppe verwendet werden.
+
 ![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 - Informationen zum Wiederherstellen und Erstellen eines virtuellen Computers finden Sie unter [Erstellen eines virtuellen Computers](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm).
@@ -183,14 +186,16 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 **Szenario** | **Leitfaden**
 --- | ---
 **Wiederherstellen von VM mit dem Vorteil der Hybridnutzung** | Wenn eine Windows-VM die [Lizenzierung für die Vorteile der Hybridnutzeung (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, stellen Sie die Datenträger wieder her, und erstellen Sie eine neue VM mit der bereitgestellten Vorlage (wobei **Lizenztyp** auf **Windows_Server** festgelegt ist) oder PowerShell.  Diese Einstellung kann auch nach dem Erstellen des virtuellen Computers angewendet werden.
-**Wiederherstellen einer VM während einer Azure-Datencenter-Notfallwiederherstellung** | Wenn der Tresor GRS verwendet und das primäre Rechenzentrum für die VM ausfällt, unterstützt Azure Backup die Wiederherstellung von gesicherten VMs im gekoppelten Rechenzentrum. Sie wählen ein Speicherkonto im gekoppelten Rechenzentrum aus, und stellen es wie gewohnt wieder her. Azure Backup verwendet den Computedienst der gekoppelten Region, um die wiederhergestellte VM zu erstellen. Erfahren Sie mehr über die [Resilienz von Rechenzentren](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md).
+**Wiederherstellen einer VM während einer Azure-Datencenter-Notfallwiederherstellung** | Wenn der Tresor GRS verwendet und das primäre Rechenzentrum für die VM ausfällt, unterstützt Azure Backup die Wiederherstellung von gesicherten VMs im gekoppelten Rechenzentrum. Sie wählen ein Speicherkonto im gekoppelten Rechenzentrum aus, und stellen es wie gewohnt wieder her. Azure Backup verwendet den Computedienst der gekoppelten Region, um die wiederhergestellte VM zu erstellen. Erfahren Sie mehr über die [Resilienz von Rechenzentren](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md).<br><br> Wenn der Tresor den Replikationstyp GRS verwendet, können Sie das neue Feature [Regionsübergreifende Wiederherstellung](#cross-region-restore) auswählen. Dadurch wird bei einem vollständigen oder teilweisen Ausfall (und auch ohne jegliches Ausfallszenario) die Wiederherstellung in einer zweiten Region ermöglicht.
 **Wiederherstellen einer einzelnen Domänencontroller-VM in einer einzelnen Domäne** | Stellen Sie die VM wie jede andere VM wieder her. Beachten Sie dabei Folgendes:<br/><br/> Aus Active Directory-Sicht entspricht die Azure-VM beliebigen anderen VMs.<br/><br/> Der Verzeichnisdienste-Wiederherstellungsmodus (Directory Services Restore Mode, DSRM) ist ebenfalls verfügbar, sodass alle Active Directory-Wiederherstellungsszenarien realisierbar sind. [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) zu den Überlegungen zum Sichern und Wiederherstellen virtualisierter Domänencontroller.
 **Wiederherstellen mehrerer Domänencontroller-VMs in einer einzelnen Domäne** | Wenn andere Domänencontroller in derselben Domäne über das Netzwerk erreicht werden können, kann der Domänencontroller wie ein beliebiger virtueller Computer wiederhergestellt werden. Wenn es sich um den letzten verbleibenden Domänencontroller in der Domäne handelt oder eine Wiederherstellung in einem isolierten Netzwerk erfolgt, muss ein Vorgang zur [Wiederherstellung der Gesamtstruktur](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery) ausgeführt werden.
 **Wiederherstellen mehrerer Domänen in einer Gesamtstruktur** | Wir empfehlen eine [Wiederherstellung der Gesamtstruktur](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Bare-Metal-Wiederherstellung** | Der Hauptunterschied zwischen Azure-VMs und lokalen Hypervisoren ist, dass keine VM-Konsole in Azure verfügbar ist. Eine Konsole ist für bestimmte Szenarien erforderlich, z.B. zur Wiederherstellung mithilfe einer Sicherung vom Typ „Bare-Metal-Recovery“ (BMR). Die VM-Wiederherstellung aus dem Tresor ist jedoch ein vollständiger Ersatz für BMR.
 **Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen** | Spezielle Netzwerkkonfigurationen beinhalten VMs mit internem oder externem Lastausgleich, mit mehreren NICS oder mehreren reservierten IP-Adressen. Diese VMs können Sie mit der [Option zum Wiederherstellen von Datenträgern](#restore-disks) wiederherstellen. Diese Option kopiert die VHDs in das angegebene Speicherkonto, und Sie können dann gemäß Ihrer Konfiguration eine VM mit einem [internen](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) oder [externen](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) Lastenausgleich, [mehreren NICS](../virtual-machines/windows/multiple-nics.md) oder [mehreren reservierten IP-Adressen](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md) erstellen.
 **Netzwerksicherheitsgruppe (NSG) für Netzwerkadapter oder Subnetz** | Die Azure-VM-Sicherung unterstützt die Sicherung und Wiederherstellung von NSG-Informationen auf Vnet-, Subnetz- und NIC-Ebene.
-**Zonenkonfigurierte angeheftete VMs** | Wenn Sie einen an eine Zone angehefteten virtuellen Azure-Computer (mit Azure Backup) sichern, können Sie ihn in derselben Zone wiederherstellen, in der er angeheftet wurde. [Weitere Informationen](https://docs.microsoft.com/azure/availability-zones/az-overview)
+**Zonenkonfigurierte angeheftete VMs** | Wenn Sie einen an eine Zone angehefteten virtuellen Azure-Computer (mit Azure Backup) sichern, können Sie ihn in derselben Zone wiederherstellen, der er angeheftet war. [Weitere Informationen](https://docs.microsoft.com/azure/availability-zones/az-overview)
+**Wiederherstellen eines virtuellen Computers in einer beliebigen Verfügbarkeitsgruppe** | Beim Wiederherstellen eines virtuellen Computers über das Portal gibt es keine Möglichkeit, eine Verfügbarkeitsgruppe auszuwählen. Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Falls Sie aber die Option „Datenträger wiederherstellen“ verwenden, können Sie [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mithilfe der bereitgestellten Vorlage oder von PowerShell erstellen.
+**Wiederherstellen spezieller VMs wie SQL-VMs** | Wenn Sie eine SQL-VM mithilfe der Azure-VM-Sicherung gesichert und dann die Option zum Wiederherstellen der VM verwendet oder eine VM nach dem Wiederherstellen von Datenträgern erstellt haben, muss die neu erstellte VM beim SQL-Anbieter registriert werden. Die Vorgehensweise ist [hier](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-register?tabs=azure-cli%2Cbash) beschrieben. Dadurch wird die wiederhergestellte VM in eine SQL-VM konvertiert.
 
 ## <a name="track-the-restore-operation"></a>Nachverfolgen des Wiederherstellungsvorgangs
 

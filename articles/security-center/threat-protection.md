@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267153"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037187"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bedrohungsschutz in Azure Security Center
 
@@ -106,36 +106,18 @@ Weitere Informationen zu App Service-Plänen finden Sie unter [App Service-Plän
 
 
 
-## <a name="threat-protection-for-azure-containers"></a>Bedrohungsschutz für Azure-Container <a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Bedrohungsschutz für Container <a name="azure-containers"></a>
 
-> [!NOTE]
-> Dieser Dienst ist derzeit nicht in Azure Government- und Sovereign Cloud-Regionen verfügbar.
+### <a name="availability"></a>Verfügbarkeit
 
-Security Center bietet einen Echtzeit-Bedrohungsschutz für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
+- Status des Release: **Allgemeine Verfügbarkeit**
+- Erforderliche Rollen: **Sicherheitsadministrator** kann Warnungen verwerfen. Der **Sicherheitsleseberechtigte** kann Ergebnisse anzeigen.
+- Clouds:<br>
+    ✔ Kommerzielle Clouds<br>
+    ✘ US Gov<br>
+    ✘ China Gov, andere Gov
 
-Security Center bietet Bedrohungsschutz auf unterschiedlichen Ebenen: 
-
-* **Hostebene**: der Security Center-Agent (verfügbar im Tarif „Standard“, weitere Informationen unter [Preise](security-center-pricing.md)) überwacht Linux auf verdächtige Aktivitäten. Der Agent löst Warnungen für verdächtige Aktivitäten aus, die aus dem Knoten oder einem darauf ausgeführten Container stammen. Beispiele für derartige Aktivitäten sind Webshell-Erkennung und Verbindungen mit bekannten verdächtigen IP-Adressen.
-
-    Um einen tieferen Einblick in die Sicherheit Ihrer Containerumgebung zu erhalten, überwacht der Agent containerspezifische Analysen. Er löst Warnungen für Ereignisse aus, z.B. die Erstellung privilegierter Container, den verdächtigen Zugriff auf API-Server und Secure Shell (SSH)-Server, die in einem Docker-Container ausgeführt werden.
-
-    >[!IMPORTANT]
-    > Wenn Sie die Agents nicht auf Ihren Hosts installieren, profitieren Sie nicht von allen Vorteilen und Sicherheitswarnungen des Bedrohungsschutzes. Sie erhalten weiterhin Warnungen im Zusammenhang mit der Netzwerkanalyse und der Kommunikation mit schädlichen Servern.
-
-    Eine Liste der Warnungen auf Hostebene finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-containerhost).
-
-
-* Auf **AKS-Cluster Ebene** basiert der Bedrohungsschutz auf der Analyse von Kubernetes-Überwachungsprotokollen. Um diese Überwachung **ohne Agents** zu aktivieren, fügen Sie die Kubernetes-Option über die Seite **Preise und Einstellungen** (siehe [Preise](security-center-pricing.md)) zu Ihrem Abonnement hinzu. Zum Generieren von Warnungen auf dieser Ebene überwacht Security Center Ihre von AKS verwalteten Dienste mithilfe der von AKS abgerufenen Protokolle. Beispiele für Ereignisse auf dieser Ebene sind verfügbar gemachte Kubernetes-Dashboards und die Erstellung von Rollen mit hohen Berechtigungen und von sensiblen Einbindungen.
-
-    >[!NOTE]
-    > Security Center generiert Sicherheitswarnungen für Azure Kubernetes Service-Aktionen und -Bereitstellungen, die nach der Aktivierung der Kubernetes-Option in den Abonnementeinstellungen erfolgen. 
-
-    Eine Liste der Warnungen auf AKS-Clusterebene finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-akscluster).
-
-Außerdem wird die Bedrohungslandschaft von unserem globalen Team von Sicherheitsforschern ständig überwacht. Sie fügen containerspezifische Warnungen und Sicherheitsrisiken hinzu, sobald sie erkannt werden.
-
-> [!TIP]
-> Sie können Containerwarnungen simulieren, indem Sie die Anweisungen in [diesem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270) befolgen.
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
@@ -150,7 +132,7 @@ Advanced Threat Protection für Azure SQL-Datenbank erkennt Anomalien bei Aktivi
 
 Es werden Warnungen angezeigt, wenn verdächtige Datenbankaktivitäten, potenzielle Sicherheitsrisiken oder Angriffe durch Einschleusung von SQL-Befehlen sowie ungewöhnliche Datenbankzugriffs- und -abfragemuster vorliegen.
 
-Advanced Threat Protection für Azure SQL-Datenbank und SQL ist Teil des einheitlichen Pakets [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) für erweiterte SQL-Sicherheitsfunktionen, das Azure SQL-Datenbanken, verwaltete Azure SQL-Datenbank-Instanzen, Azure SQL Data Warehouse-Datenbanken und SQL Server-Instanzen in Azure Virtual Machines abdeckt.
+Advanced Threat Protection für Azure SQL-Datenbank und SQL ist Teil des einheitlichen Pakets [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) für erweiterte SQL-Sicherheitsfunktionen, das Azure SQL-Datenbank, Azure SQL Managed Instance, Azure SQL Data Warehouse-Datenbanken und SQL Server-Instanzen in Azure Virtual Machines abdeckt.
 
 Weitere Informationen finden Sie unter
 
@@ -162,15 +144,44 @@ Weitere Informationen finden Sie unter
 
 ## <a name="threat-protection-for-azure-storage"></a>Bedrohungsschutz für Azure Storage <a name="azure-storage"></a>
 
-Advanced Threat Protection für Azure Storage erkennt ungewöhnliche und möglicherweise schädliche Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Dank dieser Schutzebene können Sie auch ohne fundierte Sicherheitskenntnisse etwas gegen Bedrohungen unternehmen und Ihre Systeme für die Sicherheitsüberwachung verwalten. 
+### <a name="availability"></a>Verfügbarkeit
 
-Sicherheitswarnungen werden ausgelöst, wenn verdächtige Aktivitäten in Ihrem Speicherkonto auftreten oder anomales Verhalten erkannt wird. Verdächtige Aktivitäten können das Hochladen eines Blobs umfassen, das möglicherweise Schadsoftware enthält. Warnungen vor anormalem Verhalten enthalten Änderungen des Zugriffsmusters für ein Speicherkonto.
+- Status des Release:
+    - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (allgemeine Verfügbarkeit)
+    - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Vorschau)
+    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Vorschau)
+- Clouds:<br>
+    ✔ Kommerzielle Clouds<br>
+    ✔ US Gov<br>
+    ✘ China Gov, andere Gov
 
-Diese Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie Empfehlungen zur Untersuchung und Eindämmung von Bedrohungen.
+### <a name="whats-protected"></a>Was wird geschützt?
 
-Threat Protection für Azure Storage ist derzeit nur für [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) verfügbar. 
+Der Bedrohungsschutz für Azure Storage erkennt potenziell schädliche Aktivitäten in Ihren Azure Storage-Konten. Ihre Daten können geschützt werden, und zwar unabhängig davon, ob Sie als Blobcontainer, Dateifreigaben oder Data Lakes gespeichert werden.
 
-Dieser Dienst ist in allen öffentlichen Clouds der US-Regierungsbehörden verfügbar, aber keinen anderen unabhängigen oder Azure Government-Cloudregionen. 
+Dank dieser Schutzebene können Sie auch *ohne* fundierte Sicherheitskenntnisse etwas gegen Bedrohungen unternehmen und Ihre Systeme für die Sicherheitsüberwachung verwalten.
+
+Ihre Speicherkonten sind geschützt. 
+
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Welche Art von Warnungen bietet Bedrohungsschutz für Azure Storage?
+
+Sicherheitswarnungen werden ausgelöst, wenn Folgendes vorliegt:
+
+- **Verdächtige Aktivitäten**: Auf das Speicherkonto wurde z. B. erfolgreich über eine IP-Adresse zugegriffen, bei der es sich um einen bekannten aktiven Exitknoten von Tor handelt.
+- **Anormales Verhalten**: Beispielsweise Änderungen des Zugriffsmusters für ein Speicherkonto.
+- **Upload potenzieller Malware**: Hashzuverlässigkeitsanalyse zeigt an, dass eine hochgeladene Datei Schadsoftware enthält.
+
+Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie Empfehlungen zur Untersuchung und Eindämmung von Bedrohungen.
+
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>Was ist Hashzuverlässigkeitsanalyse für Schadsoftware?
+
+Um zu ermitteln, ob eine hochgeladene Datei verdächtig ist, verwendet der Bedrohungsschutz für Azure Storage von [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) unterstützte Hashzuverlässigkeitsanalyse. Die Tools zum Schutz vor Bedrohungen überprüfen die hochgeladenen Dateien nicht, sondern überprüfen die Speicherprotokolle und vergleichen die Hashes von neu hochgeladenen Dateien mit denjenigen bekannter Viren, Trojaner, Spyware und Ransomware. 
+
+Wenn der Verdacht besteht, dass eine Datei Schadsoftware enthält, zeigt Security Center eine Warnung an und kann optional den Speicherbesitzer per E-Mail um Genehmigung bitten, die verdächtige Datei zu löschen. Um diese automatische Entfernung von Dateien festzulegen, die laut Hashzuverlässigkeitsanalyse Schadsoftware enthalten, stellen Sie [Workflowautomatisierung bereit, die bei Warnungen ausgelöst wird, die die Angabe „Upload potenzieller Schadsoftware in ein Speicherkonto“ enthalten](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005).
+
+
+
+### <a name="next-steps"></a>Nächste Schritte 
 
 Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -178,9 +189,13 @@ Weitere Informationen finden Sie unter
 
 * [Aktivieren von Advanced Threat Protection für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Liste der Bedrohungsschutzwarnungen für Azure Storage](alerts-reference.md#alerts-azurestorage)
+* [Microsoft Threat Intelligence-Funktionen](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> Sie können Azure Storage-Warnungen simulieren, indem Sie die Anweisungen in [diesem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131) befolgen.
+> Sie können Speicherwarnungen simulieren, indem Sie die Anweisungen in [diesem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131) befolgen.
+
+
+
 
 
 
@@ -228,14 +243,17 @@ Eine Liste der Warnungen von Azure Resource Manager (Vorschau) finden Sie in der
 >[!NOTE]
 > Einige der oben aufgeführten Analysen basieren auf Microsoft Cloud App Security. Um von diesen Analysen zu profitieren, müssen Sie eine Cloud App Security-Lizenz aktivieren. Wenn Sie über eine Cloud App Security-Lizenz verfügen, sind diese Warnungen standardmäßig aktiviert. So deaktivieren Sie die Warnungen:
 >
-> 1. Wählen Sie auf dem Blatt **Security Center** die Option **Sicherheitsrichtlinie** aus. Wählen Sie für das Abonnement, das Sie ändern möchten, **Einstellungen bearbeiten** aus.
-> 2. Wählen Sie **Bedrohungserkennung** aus.
-> 3. Deaktivieren Sie unter **Integrationen aktivieren** das Kontrollkästchen **Microsoft Cloud App Security Zugriff auf meine Daten erteilen**, und wählen Sie anschließend **Speichern** aus.
+> 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
+> 1. Wählen Sie das Abonnement aus, das Sie ändern möchten.
+> 1. Wählen Sie **Bedrohungserkennung** aus.
+> 1. Deaktivieren Sie **Microsoft Cloud App Security Zugriff auf meine Daten erteilen**, und wählen Sie anschließend **Speichern** aus.
 
 >[!NOTE]
 >Security Center speichert sicherheitsbezogene Kundendaten im gleichen geografischen Raum, in dem sich auch die Ressource befindet. Falls Security Center von Microsoft noch nicht im geografischen Raum der Ressource bereitgestellt wurde, werden die Daten in den USA gespeichert. Wenn Cloud App Security aktiviert ist, werden diese Informationen gemäß den Regeln für geografische Standorte von Cloud App Security gespeichert. Weitere Informationen finden Sie unter [Data storage for non-regional services](https://azuredatacentermap.azurewebsites.net/) (Datenspeicherung für nicht regionale Dienste).
 
+1. Legen Sie den Arbeitsbereich fest, für den Sie den Agent installieren. Stellen Sie sicher, dass sich der Arbeitsbereich im gleichen Abonnement befindet, das Sie in Security Center verwenden, und dass Sie über Lese-/Schreibberechtigungen für den Arbeitsbereich verfügen.
 
+1. Legen Sie den Standardtarif fest, und klicken Sie auf **Speichern**.
 
 
 

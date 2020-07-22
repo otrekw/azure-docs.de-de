@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 95795f287a369edec84b68ac920874808966ff1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097080"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121621"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Tarife in Azure Database for PostgreSQL – Einzelserver
 
 Sie können eine Azure Database for PostgreSQL-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der PostgreSQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
-|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| Ressource/Ebene | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren Azure Database for PostgreSQL-Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und PostgreSQL-Serverprotokolle verwendet. Außerdem wird durch die Gesamtmenge an bereitgestelltem Speicher die E/A-Kapazität Ihres Servers definiert.
 
-|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| Speicherattribute | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Speichertyp | Storage Basic | Allgemeiner Speicher | Allgemeiner Speicher |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 16 TB | 5 GB bis 16 TB |
@@ -51,12 +51,12 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 | IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
 
 > [!NOTE]
-> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“.
+> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“, „USA, Westen 2“ und „USA, Westen-Mitte“.
 >
 > Alle anderen Regionen unterstützen bis zu 4 TB Speicherplatz und 6000 IOPS.
 >
 
-Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. 
+Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern.
 
 >[!NOTE]
 > Der Speicher kann nur zentral hochskaliert und nicht herunterskaliert werden.
@@ -93,7 +93,7 @@ Der Dienst erstellt automatisch Sicherungen Ihres Servers. Sie können als Aufbe
 
 Nachdem Sie Ihren Server erstellt haben, können Sie die virtuellen Kerne, die Hardwaregeneration, den Tarif (mit Ausnahme eines Wechsels zu oder von Basic), die Speichermenge und den Aufbewahrungszeitraum für Sicherungen einzeln ändern. Der Sicherungsspeichertyp kann nach der Servererstellung nicht mehr geändert werden. Die Anzahl virtueller Kerne kann zentral hoch- oder herunterskaliert werden. Die Aufbewahrungsdauer für Sicherungen kann von 7 bis zu 35 Tagen zentral hoch- oder herunterskaliert werden. Die Speichergröße kann nur erhöht werden. Die Skalierung der Ressourcen kann entweder über das Portal oder per Azure CLI durchgeführt werden. Ein Beispiel für die Skalierung über die Azure CLI finden Sie unter [Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI](scripts/sample-scale-server-up-or-down.md).
 
-> [!NOTE] 
+> [!NOTE]
 > Die Speichergröße kann nur erhöht werden. Nach der Erhöhung können Sie nicht mehr zu einer kleineren Speichergröße zurückkehren.
 
 Beim Ändern der Anzahl von virtuellen Kernen, der Hardwaregeneration oder des Tarifs wird eine Kopie des ursprünglichen Servers mit der neuen Computezuteilung erstellt. Sobald der neue Server betriebsbereit ist und ausgeführt wird, werden die Verbindungen auf den neuen Server verschoben. Während des Moments, in dem das System den Wechsel zum neuen Server durchführt, können keine neuen Verbindungen hergestellt werden, und für alle Transaktionen ohne Commit erfolgt ein Rollback. Die Länge dieses Zeitfensters variiert, aber normalerweise dauert der Vorgang nicht länger als eine Minute.
@@ -107,5 +107,5 @@ Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich, wie Sie [im Portal eine PostgreSQL-Serverinstanz erstellen](tutorial-design-database-using-azure-portal.md).
-- Weitere Informationen zu [Dienstgrenzwerten](concepts-limits.md). 
+- Weitere Informationen zu [Dienstgrenzwerten](concepts-limits.md).
 - Weitere Informationen zum [Aufskalieren mit Lesereplikaten](howto-read-replicas-portal.md).

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476436"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040332"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services
 
@@ -26,6 +26,10 @@ Um auf diese Vertrauensstellung zu überprüfen, berechnet das Windows-Sicherhei
 Die von AD DS bereitgestellten Zugriffssteuerungsmechanismen und das verteilte Windows-Sicherheitsmodell stellen eine Umgebung für das Arbeiten mit Domänen- und Gesamtstruktur-Vertrauensstellungen bereit. Damit diese Vertrauensstellungen ordnungsgemäß funktionieren, muss jede Ressource oder jeder Computer einen direkten Vertrauenspfad zu einem Domänencontroller in der Domäne haben, in der sie oder er sich befindet.
 
 Der Vertrauenspfad wird vom Netzwerkanmeldungsdienst (Anmeldedienst) implementiert. Dies geschieht mit einer authentifizierten RPC-Verbindung (Remote Procedure Call, Remoteprozeduraufruf) mit der Zertifizierungsstelle der vertrauenswürdigen Domäne. Ein geschützter Kanal erstreckt sich auch bis zu anderen AD DS-Domänen über Vertrauensstellungen zwischen Domänen. Dieser geschützte Kanal wird verwendet, um Sicherheitsinformationen abzurufen und zu überprüfen, einschließlich Sicherheits-IDs (SIDs) für Benutzer und Gruppen.
+
+Einen Überblick darüber, wie Vertrauensstellungen auf Azure AD DS angewendet werden, finden Sie unter [Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)][create-forest-trust].
+
+Um mit der Verwendung von Vertrauensstellungen in Azure AD DS zu beginnen, [erstellen Sie eine verwaltete Domäne, die Gesamtstruktur-Vertrauensstellungen verwendet][tutorial-create-advanced].
 
 ## <a name="trust-relationship-flows"></a>Vertrauensstellungsweiterleitungen
 
@@ -70,7 +74,7 @@ Eine Gesamtstruktur-Vertrauensstellung kann nur zwischen der Stammdomäne einer 
 
 Die folgende Abbildung zeigt zwei getrennte Gesamtstruktur-Vertrauensstellungen zwischen drei AD DS-Gesamtstrukturen in einer einzigen Organisation.
 
-![Abbildung der Gesamtstruktur Vertrauensstellungen innerhalb einer einzigen Organisation](./media/concepts-forest-trust/forest-trusts.png)
+![Abbildung der Gesamtstruktur Vertrauensstellungen innerhalb einer einzigen Organisation](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 Diese Beispielkonfiguration ermöglicht die folgenden Zugriffe:
 
@@ -162,7 +166,7 @@ Wenn eine Arbeitsstation in einer Gesamtstruktur versucht, auf Daten auf einem R
 
 Die folgende Abbildung und die folgenden Schritte enthalten eine ausführliche Beschreibung des Kerberos-Authentifizierungsprozesses, der verwendet wird, wenn Computer unter Windows versuchen, auf Ressourcen auf einem Computer zuzugreifen, der sich in einer anderen Gesamtstruktur befindet.
 
-![Abbildung des Kerberos-Prozesses über eine Gesamtstruktur-Vertrauensstellung](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![Abbildung des Kerberos-Prozesses über eine Gesamtstruktur-Vertrauensstellung](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
 1. *User1* meldet sich bei *Workstation1* mit den Anmeldeinformationen aus der Domäne *europe.tailspintoys.com* an. Der Benutzer versucht dann, auf eine freigegebene Ressource auf *FileServer1* zuzugreifen, der sich in der Gesamtstruktur *usa.wingtiptoys.com* befindet.
 
@@ -228,7 +232,7 @@ Eine Kennwortänderung ist erst abgeschlossen, wenn die Authentifizierung mit de
 
 Wenn die Authentifizierung mit dem neuen Kennwort fehlschlägt, weil das Kennwort ungültig ist, versucht der vertrauende Domänencontroller, sich mit dem alten Kennwort zu authentifizieren. Kann er sich mit dem alten Kennwort erfolgreich authentifizieren, setzt er den Kennwortänderungsprozess innerhalb von 15 Minuten fort.
 
-Aktualisierungen des Vertrauensstellungskennworts müssen innerhalb von 30 Tagen an die Domänencontroller auf beiden Seiten der Vertrauensstellung repliziert werden. Wird das Vertrauensstellungskennwort nach 30 Tagen geändert, und hat ein Domänencontroller dann nur das N-2-Kennwort, kann er die Vertrauensstellung von der vertrauenden Seite nicht verwenden und kann keinen sicheren Kanal auf der vertrauenswürdigen Seite erstellen.
+Aktualisierungen des Vertrauensstellungskennworts müssen innerhalb von 30 Tagen an die Domänencontroller auf beiden Seiten der Vertrauensstellung repliziert werden. Wird das Vertrauensstellungskennwort nach 30 Tagen geändert und hat ein Domänencontroller nur das N-2-Kennwort, kann er die Vertrauensstellung von der vertrauenden Seite nicht verwenden und kann keinen sicheren Kanal auf der vertrauenswürdigen Seite erstellen.
 
 ## <a name="network-ports-used-by-trusts"></a>Von Vertrauensstellungen verwendete Netzwerkports
 
@@ -276,7 +280,7 @@ Administratoren können *Active Directory-Domänen und -Vertrauensstellungen*, *
 
 Weitere Informationen zu Ressourcengesamtstrukturen finden Sie unter [Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services][concepts-trust].
 
-Informationen zu den ersten Schritten beim Erstellen einer verwalteten Azure AD DS-Domäne mit einer Ressourcengesamtstruktur finden Sie unter [Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz mit erweiterten Konfigurationsoptionen][tutorial-create-advanced]. Danach können Sie die Schritte für [Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)][create-forest-trust] ausführen.
+Informationen zu den ersten Schritten beim Erstellen einer verwalteten Domäne mit einer Ressourcengesamtstruktur finden Sie unter [Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][tutorial-create-advanced]. Danach können Sie die Schritte für [Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)][create-forest-trust] ausführen.
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

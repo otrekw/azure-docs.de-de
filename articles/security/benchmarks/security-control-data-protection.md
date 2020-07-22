@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 035894c80e619851264aae91daa2d7852d156964
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408539"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045534"
 ---
 # <a name="security-control-data-protection"></a>Sicherheitskontrolle: Datenschutz
 
@@ -34,7 +34,7 @@ Verwenden Sie Tags für die Nachverfolgung von Azure-Ressourcen, die vertraulich
 |--|--|--|
 | 4,2 | 13.2, 2.10 | Kunde |
 
-Implementieren Sie eine Isolation mit separaten Abonnements und Verwaltungsgruppen für einzelne Sicherheitsdomänen, z. B. Umgebungstyp und Datenvertraulichkeitsstufe. Sie können die Zugriffsebene auf diejenigen Ihrer Azure-Ressourcen beschränken, die von Ihren Anwendungen und Unternehmensumgebungen gefordert werden. Sie können den Zugriff auf Azure-Ressourcen über rollenbasierte Azure Active Directory-Zugriffssteuerung steuern. 
+Implementieren Sie eine Isolation mit separaten Abonnements und Verwaltungsgruppen für einzelne Sicherheitsdomänen, z. B. Umgebungstyp und Datenvertraulichkeitsstufe. Sie können die Zugriffsebene auf diejenigen Ihrer Azure-Ressourcen beschränken, die von Ihren Anwendungen und Unternehmensumgebungen gefordert werden. Sie können den Zugriff auf Azure-Ressourcen über die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC) steuern. 
 
 - [Erstellen zusätzlicher Azure-Abonnements](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -76,7 +76,7 @@ Wenn für Ihren spezifischen Dienst in Azure keine Funktion verfügbar ist, verw
 
 Verwenden Sie Azure Information Protection, um vertrauliche Informationen in Office 365-Dokumenten zu bestimmen.
 
-Verwenden Sie Azure SQL Information Protection, um die Klassifizierung und Bezeichnung von Informationen zu unterstützen, die in Azure SQL-Datenbanken gespeichert sind.
+Verwenden Sie Azure SQL Information Protection, um die Klassifizierung und Bezeichnung von Informationen zu unterstützen, die in Azure SQL-Datenbank gespeichert sind.
 
 - [Implementieren von Azure SQL Data Discovery](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 

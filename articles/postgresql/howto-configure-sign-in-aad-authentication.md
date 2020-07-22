@@ -4,16 +4,16 @@ description: Informieren Sie sich, wie Sie Azure Active Directory (AAD) für die
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e813459ddf516b170e7f429646dad38452188335
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236318"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102377"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL
+# <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL
 
 Dieser Artikel führt Sie durch die Schritte zum Konfigurieren des Zugriffs auf Azure Active Directory mit Azure Database for PostgreSQL sowie zum Herstellen einer Verbindung mit einem Azure AD-Token.
 
@@ -115,8 +115,12 @@ Wenn der `psql`-Befehlszeilenclient verwendet wird, muss das Zugriffstoken über
 
 Windows-Beispiel:
 
-```shell
+```cmd
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
+```
+
+```PowerShell
+$env:PGPASSWORD='<copy/pasted TOKEN value from step 2>'
 ```
 
 Beispiel für Linux/macOS:
@@ -130,6 +134,15 @@ Nun können Sie eine Verbindung mit Azure Database for PostgreSQL wie gewohnt in
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+
+Wichtige Aspekte beim Herstellen einer Verbindung:
+
+* `user@tenant.onmicrosoft.com` ist der Name des Azure AD-Benutzers bzw. der Azure AD-Gruppe, mit dem oder der Sie die Verbindung herstellen möchten
+* Fügen Sie dem Namen des Azure AD-Benutzers oder der Azure AD-Gruppe immer den Servernamen an (z. B. `@mydb`)
+* Stellen Sie sicher, dass Sie die korrekte Schreibweise des Azure AD-Benutzers oder der Azure AD-Gruppe verwenden
+* Bei Azure AD-Benutzernamen und -Gruppennamen wird die Groß-/Kleinschreibung beachtet
+* Wenn Sie sich als Gruppe verbinden, verwenden Sie nur den Gruppennamen (z. B. `GroupName@mydb`)
+* Verwenden Sie `\` als Escapezeichen vor Leerzeichen, falls der Name Leerzeichen umfasst
 
 Sie sind jetzt bei Ihrem PostgreSQL-Server über Azure AD-Authentifizierung authentifiziert.
 

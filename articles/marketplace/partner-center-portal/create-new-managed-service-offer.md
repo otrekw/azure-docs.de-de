@@ -1,23 +1,22 @@
 ---
 title: Erstellen eines Angebots für verwaltete Dienste im kommerziellen Microsoft-Marketplace
 description: Erstellen eines neuen Angebots für verwaltete Dienste, um das Angebot über das Portal des kommerziellen Marketplace im Partner Center in Azure Marketplace aufzulisten
-author: JnHs
-ms.author: jenhayes
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+author: JnHs
+ms.author: jenhayes
+ms.date: 07/07/2020
+ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847718"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121791"
 ---
 # <a name="create-a-managed-service-offer"></a>Erstellen eines Angebots für einen verwalteten Dienst
 
-Angebote für verwaltete Dienste unterstützen [Azure Lighthouse](../../lighthouse/overview.md)-Szenarien. Wenn ein Kunde ein Angebot für verwaltete Dienste annimmt, kann er Ressourcen für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) integrieren. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account), sofern dies noch nicht geschehen ist. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
+Angebote für verwaltete Dienste unterstützen [Azure Lighthouse](../../lighthouse/overview.md)-Szenarien. Wenn ein Kunde ein Angebot für verwaltete Dienste annimmt, kann er Ressourcen für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) integrieren. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern dies noch nicht geschehen ist. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 Sie müssen über eine [Silver oder Gold Cloud Platform-Kompetenzebene](https://partner.microsoft.com/membership/cloud-platform-competency) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen.
 
@@ -80,9 +79,20 @@ Auf dieser Seite können Sie Marketplace-Informationen (z. B. Angebotsname, Bes
 > [!NOTE]
 > Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots und Nutzungsbedingungen) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“ Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
 
+Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure-Portal angezeigt werden:
+
+:::image type="content" source="media/example-managed-services.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure-Portal angezeigt wird.":::
+
+#### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
+
+1. Titel
+2. BESCHREIBUNG
+3. Nützliche Links
+4. Screenshots
+
 ### <a name="name"></a>Name
 
-Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. Dieses Feld ist bereits mit dem Text aufgefüllt, den Sie beim Erstellen des Angebots als **Angebotsalias** eingegeben haben. Sie können diesen Wert jedoch ändern. Dieser Name kann markenrechtlich geschützt sein (und Sie können Marken- oder Copyrightsymbole einschließen). Der Name darf nicht mehr als 50 Zeichen umfassen und keine Emojis enthalten.
+Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. Dieses Feld ist bereits mit dem Text gefüllt, den Sie beim Erstellen des Angebots als **Angebotsalias** eingegeben haben. Sie können diesen Wert jedoch ändern. Dieser Name kann markenrechtlich geschützt sein (und Sie können Marken- oder Copyrightsymbole einschließen). Der Name darf nicht mehr als 50 Zeichen umfassen und keine Emojis enthalten.
 
 ### <a name="search-results-summary"></a>Zusammenfassung der Suchergebnisse
 
@@ -127,9 +137,9 @@ In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeige
 
 Stellen Sie ein Logo für Ihr Angebot in vier Bildauflösungen bereit:
 
-- **Klein** (40 × 40)
+- **Klein** (48 x 48)
 - **Mittel** (90 x 90)
-- **Groß** (115 × 115)
+- **Groß** (216 x 216)
 - **Breit** (255 x 115)
 
 Befolgen Sie die folgenden Richtlinien für Ihre Logos:
@@ -151,7 +161,7 @@ Optional können Sie bis zu fünf Videos hinzufügen, die Ihr Angebot veranschau
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 
-- [Bewährte Methoden für Angebotslistung](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md)
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -220,7 +230,7 @@ Geben Sie für jede **Autorisierung** die folgenden Informationen an. Sie könne
 
 - **Azure AD-Objekt-ID**: Der Azure AD-Bezeichner eines Benutzers, einer Benutzergruppe oder Anwendung, denen bestimmte Berechtigungen (wie in der Rollendefinition festgelegt) für die Ressourcen Ihrer Kunden gewährt werden.
 - **Azure AD-Objektanzeigename**: Ein Anzeigename, der dem Kunden helfen soll, den Zweck dieser Autorisierung zu verstehen. Dem Kunde wird dieser Name beim Delegieren von Ressourcen angezeigt.
-- **Rollendefinition:** Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Azure AD-Objekt-ID** für Ressourcen Ihrer Kunden verfügt. Beschreibungen dieser Rollen finden Sie unter [Integrierte Rollen](../../role-based-access-control/built-in-roles.md) und [Rollenunterstützung für die delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management).
+- **Rollendefinition:** Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Azure AD-Objekt-ID** für Ressourcen Ihrer Kunden verfügt. Beschreibungen dieser Rollen finden Sie unter [Integrierte Rollen](../../role-based-access-control/built-in-roles.md) und [Rollenunterstützung für Azure Lighthouse](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
   > [!NOTE]
   > Wenn Azure geeignete neue integrierte Rollen hinzugefügt werden, sind diese hier verfügbar. Es kann jedoch zu Verzögerungen kommen, bevor sie angezeigt werden.
 - **Zuweisbare Rollen**: Diese Option wird nur angezeigt, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Objekt-ID von Azure AD** kann diese Rollen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](../../lighthouse/how-to/deploy-policy-remediation.md). Beachten Sie, dass für diesen Benutzer keine anderen Berechtigungen gelten, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.

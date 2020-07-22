@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835953"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045126"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -84,11 +84,14 @@ Eine Übersicht über DSC-Konzepte und die Terminologie finden Sie in der [Über
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Unterschiede zwischen Gastkonfigurationsmodulen und Windows PowerShell DSC-Modulen
 
-Wenn die Gastkonfiguration einen Computer überwacht:
+Wenn die Gastkonfiguration einen Computer überwacht, weicht die Abfolge der Ereignisse von der Abfolge in Windows PowerShell DSC ab.
 
 1. Der Agent führt zuerst `Test-TargetResource` aus, um zu ermitteln, ob die Konfiguration den richtigen Status aufweist.
 1. Der von der Funktion zurückgegebene boolesche Wert bestimmt, ob der Zustand von Azure Resource Manager für die Gastzuweisung konform/nicht konform sein soll.
 1. Der Anbieter führt `Get-TargetResource` aus, um den aktuellen Zustand der einzelnen Einstellungen zurückzugeben. Dadurch sind Details dazu verfügbar, warum ein Computer nicht konform ist, bzw. eine Bestätigung, dass der aktuelle Zustand konform ist.
+
+Parameter in Azure Policy, die Werte an Gastkonfigurationszuweisungen übergeben, müssen den Typ _Zeichenfolge_ aufweisen.
+Arrays können nicht über Parameter übergeben werden. Dies gilt selbst dann, wenn die DSC-Ressource Arrays unterstützt.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource-Anforderungen
 
@@ -138,7 +141,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>Konfigurationsanforderungen
 
-Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Resource Manager-Vorlage müssen identisch sein.
+Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Azure Resource Manager-Vorlage (ARM-Vorlage) müssen identisch sein.
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Gerüstbau für ein Gastkonfigurationsprojekt
 
@@ -163,7 +166,7 @@ Das Paketformat muss eine ZIP-Datei sein.
 ### <a name="storing-guest-configuration-artifacts"></a>Speichern von Gastkonfigurationsartefakten
 
 Das ZIP-Paket muss an einem Speicherort gespeichert werden, auf den von den verwalteten virtuellen Computern zugegriffen werden kann.
-Beispiele hierfür sind GitHub-Repositorys, ein Azure-Repository oder Azure Storage. Falls Sie das Paket nicht öffentlich zugänglich machen möchten, können Sie ein [SAS-Token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in die URL einfügen.
+Beispiele hierfür sind GitHub-Repositorys, ein Azure-Repository oder Azure Storage. Falls Sie das Paket nicht öffentlich zugänglich machen möchten, können Sie ein [SAS-Token](../../../storage/common/storage-sas-overview.md) in die URL einfügen.
 Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) für Computer in einem privaten Netzwerk implementieren. Diese Konfiguration gilt aber nur für den Zugriff auf das Paket und nicht für die Kommunikation mit dem Dienst.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Schrittanleitung: Erstellen einer benutzerdefinierten Überwachungsrichtlinie für Gastkonfigurationen für Windows
@@ -408,7 +411,7 @@ Unten ist ein Beispielcodeausschnitt einer Richtliniendefinition angegeben, mit 
 
 Die Gastkonfiguration unterstützt das Außerkraftsetzen von Eigenschaften einer Konfiguration während der Laufzeit. Dieses Feature bewirkt, dass die Werte in der MOF-Datei im Paket nicht als statisch angesehen werden müssen. Die Überschreibungswerte werden über Azure Policy bereitgestellt und wirken sich nicht darauf aus, wie die Konfigurationen erstellt oder kompiliert werden.
 
-Die Cmdlets `New-GuestConfigurationPolicy` und `Test-GuestConfigurationPolicyPackage` enthalten einen Parameter mit dem Namen **Parameters**. Für diesen Parameter wird eine Hashtabellendefinition verwendet, die alle Details zu den einzelnen Parametern enthält, und es werden die erforderlichen Abschnitte der einzelnen Dateien erstellt, die für die Azure Policy-Definition verwendet werden.
+Die Cmdlets `New-GuestConfigurationPolicy` und `Test-GuestConfigurationPolicyPackage` enthalten einen Parameter mit dem Namen **Parameter**. Für diesen Parameter wird eine Hashtabellendefinition verwendet, die alle Details zu den einzelnen Parametern enthält, und es werden die erforderlichen Abschnitte der einzelnen Dateien erstellt, die für die Azure Policy-Definition verwendet werden.
 
 Im folgenden Beispiel wird eine Richtliniendefinition zum Überwachen eines Diensts erstellt, bei der der Benutzer bei der Zuweisung der Richtlinie eine Auswahl aus einer Liste trifft.
 
@@ -431,15 +434,15 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Erweitern der Gastkonfiguration mit Drittanbietertools
 
 > [!Note]
-> Dieses Feature befindet sich in der Vorschauphase. Hierfür ist Version 1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
-> In Version 1.20.1 ist dieses Feature nur für Richtliniendefinitionen verfügbar, mit denen Windows-Computer überwacht werden.
+> Dieses Feature befindet sich in der Vorschauphase. Hierfür ist Version 1.20.3 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
+> In Version 1.20.3 ist dieses Feature nur für Richtliniendefinitionen verfügbar, mit denen Windows-Computer überwacht werden
 
 Die Artefaktpakete für die Gastkonfiguration können um Drittanbietertools erweitert werden.
 Für die Erweiterung der Gastkonfiguration müssen zwei Komponenten entwickelt werden.
@@ -465,7 +468,14 @@ Gegenüber der Schritt-für-Schritt-Anleitung für DSC-Inhaltsartefakte muss nur
 Installieren Sie die benötigten Module in Ihrer Entwicklungsumgebung:
 
 ```azurepowershell-interactive
-Install-Module GuestConfiguration, gcInSpec
+# Update PowerShellGet if needed to allow installing PreRelease versions of modules
+Install-Module PowerShellGet -Force
+
+# Install GuestConfiguration module prerelease version
+Install-Module GuestConfiguration -allowprerelease
+
+# Install commmunity supported gcInSpec module
+Install-Module gcInSpec
 ```
 
 Erstellen Sie zuerst die YAML-Datei, die von InSpec verwendet wird. Die Datei enthält grundlegende Informationen zur Umgebung. Nachfolgend sehen Sie ein Beispiel:
@@ -482,7 +492,7 @@ supports:
   - os-family: windows
 ```
 
-Speichern Sie diese Datei in einem Ordner mit dem Namen `wmi_service` in Ihrem Projektverzeichnis.
+Speichern Sie diese Datei `wmi_service.yml` in einem Ordner mit dem Namen `wmi_service` in Ihrem Projektverzeichnis.
 
 Erstellen Sie dann die Ruby-Datei mit der InSpec-Sprachabstraktion, die zum Überwachen des Computers verwendet wird.
 
@@ -501,7 +511,7 @@ end
 
 ```
 
-Speichern Sie diese Datei in einem neuen Ordner mit dem Namen `controls` im Verzeichnis `wmi_service`.
+Speichern Sie diese Datei `wmi_service.rb` in einem neuen Ordner mit dem Namen `controls` im Verzeichnis `wmi_service`.
 
 Zum Schluss erstellen Sie eine Konfiguration, importieren das Ressourcenmodul **GuestConfiguration** und verwenden die Ressource `gcInSpec`, um den Namen des InSpec-Profils festzulegen.
 
@@ -509,7 +519,7 @@ Zum Schluss erstellen Sie eine Konfiguration, importieren das Ressourcenmodul **
 # Define the configuration and import GuestConfiguration
 Configuration wmi_service
 {
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.0.0'}
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
     node 'wmi_service'
     {
         gcInSpec wmi_service
@@ -552,7 +562,8 @@ Führen Sie den folgenden Befehl aus, um ein Paket mit der im vorherigen Schritt
 New-GuestConfigurationPackage `
   -Name 'wmi_service' `
   -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'
+  -FilesToInclude './wmi_service'  `
+  -Path './package' 
 ```
 
 ## <a name="policy-lifecycle"></a>Lebenszyklus von Richtlinien

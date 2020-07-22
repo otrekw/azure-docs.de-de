@@ -1,20 +1,20 @@
 ---
-title: Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts
+title: Herstellen einer privaten Verbindung mit einer Azure-Web-App mithilfe eines privaten Endpunkts
 description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 15b3f2e48b78036c02ef86446f2ab920f22f7c76
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295438"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054575"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)
 
@@ -31,7 +31,7 @@ Die Verwendung privater Endpunkte für Ihre Web-App bietet Ihnen folgende Mögli
 - Sicheres Verbinden mit der Web-App aus lokalen Netzwerken, die eine Verbindung mit dem virtuellen Netzwerk über VPN oder ExpressRoute mit privatem Peering herstellen.
 - Vermeiden Sie die Exfiltration von Daten aus Ihrem VNet. 
 
-Wenn Sie nur eine sichere Verbindung zwischen Ihrem virtuellen Netzwerk und Ihrer Web-App benötigen, ist ein Dienstendpunkt die einfachste Lösung. Wenn Sie auch von einem lokalen Standort aus über ein Azure-Gateway auf die Web-App zugreifen können müssen, ist ein privater Endpunkt mit einem VNet mit regionalem Peering oder mit globalem Peering die Lösung.  
+Wenn Sie nur eine sichere Verbindung zwischen Ihrem virtuellen Netzwerk und Ihrer Web-App benötigen, ist ein Dienstendpunkt die einfachste Lösung. Wenn Sie auch aus einem lokalen Netz über ein Azure-Gateway auf die Web-App zugreifen können müssen, ist ein privater Endpunkt mit einem VNet mit regionalem Peering oder mit globalem Peering die Lösung.  
 
 Weitere Informationen finden Sie unter [Dienstendpunkte][serviceendpoint].
 
@@ -57,7 +57,7 @@ Unter dem Aspekt der Sicherheit:
 - Wenn Sie einen privaten Endpunkt für Ihre Web-App aktivieren, wird die Konfiguration der [Zugriffsbeschränkungen][accessrestrictions] der Web-App nicht ausgewertet.
 - Sie können das Risiko der Datenexfiltration aus dem VNet beseitigen, indem Sie alle NSG-Regeln entfernen, in denen das Zieltag das Internet oder Azure-Dienste sind. Wenn Sie einen privaten Endpunkt für eine Web-App bereitstellen, können Sie diese spezifische Web-App nur über den privaten Endpunkt erreichen. Wenn Sie über eine andere Web-App verfügen, müssen Sie einen weiteren dedizierten privaten Endpunkt für diese andere Web-App bereitstellen.
 
-In den Web-HTTP-Protokollen Ihrer Web-App finden Sie die Clientquell-IP. Diese wird mithilfe des TCP-Proxyprotokolls implementiert, das die Client-IP-Eigenschaft an die Web-App weiterleitet. Weitere Informationen finden Sie unter [Abrufen von Verbindungsinformationen mithilfe von TCP-Proxy v2][tcpproxy].
+In den Web-HTTP-Protokollen Ihrer Web-App finden Sie die Clientquell-IP. Dieses Feature wird mithilfe des TCP-Proxyprotokolls implementiert, das die Client-IP-Eigenschaft an die Web-App weiterleitet. Weitere Informationen finden Sie unter [Abrufen von Verbindungsinformationen mithilfe von TCP-Proxy v2][tcpproxy].
 
 
   > [!div class="mx-imgBorder"]
@@ -65,12 +65,50 @@ In den Web-HTTP-Protokollen Ihrer Web-App finden Sie die Clientquell-IP. Diese w
 
 ## <a name="dns"></a>DNS
 
-Da sich diese Funktion in der Vorschauphase befindet, ändern wir den DNS-Eintrag während dieser Zeit nicht. Sie müssen den DNS-Eintrag selbst auf Ihrem privaten DNS-Server oder in Ihrer privaten Azure DNS-Zone verwalten.
+Wenn Sie einen privaten Endpunkt für die Web-App verwenden, muss die angeforderte URL dem Namen Ihrer Web-App entsprechen. Der Standardname lautet mywebappname.azurewebsites.net.
+
+Standardmäßig ist der öffentliche Name Ihrer Web-App ohne einen privaten Endpunkt ein kanonischer Name für den Cluster.
+Der Name wird beispielsweise wie folgt aufgelöst:
+
+|Name |type |Wert |
+|-----|-----|------|
+|mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|Ein|40.122.110.154| 
+
+
+Wenn Sie einen privaten Endpunkt bereitstellen, wird der DNS-Eintrag so aktualisiert, dass er auf den kanonischen Namen mywebapp.privatelink.azurewebsites.net verweist.
+Der Name wird beispielsweise wie folgt aufgelöst:
+
+|Name |type |Wert |Anmerkung |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|Ein|40.122.110.154|<– Diese öffentliche IP-Adresse ist nicht der private Endpunkt, führt zu einem Fehler 403|
+
+Sie müssen einen privaten DNS-Server oder eine private Azure DNS-Zone einrichten. Für Tests können Sie den Hosteintrag des Testcomputers ändern.
+Die DNS-Zone, die Sie erstellen müssen, ist: **privatelink.azurewebsites.net**. Registrieren Sie den Eintrag für Ihre Web-App mit einem A-Eintrag und der IP des privaten Endpunkts.
+Der Name wird beispielsweise wie folgt aufgelöst:
+
+|Name |type |Wert |Anmerkung |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|Ein|10.10.10.8|<– Sie verwalten diesen Eintrag in Ihrem DNS-System, sodass er auf die IP-Adresse Ihres privaten Endpunkts verweist|
+
+Nachdem Sie diese DNS-Konfiguration vorgenommen haben, können Sie Ihre Web-App privat unter dem Standardnamen mywebappname.azurewebsites.net erreichen.
+
+
 Wenn Sie einen benutzerdefinierten DNS-Namen verwenden müssen, müssen Sie den benutzerdefinierten Namen in Ihrer Web-App hinzufügen. Während der Vorschauphase muss der benutzerdefinierte Name wie jeder andere benutzerdefinierte Name mithilfe der öffentlichen DNS-Auflösung überprüft werden. Weitere Informationen finden Sie unter [Benutzerdefinierte DNS-Validierung][dnsvalidation].
 
-Wenn Sie die Kudu-Konsole oder die Kudu-REST-API (z. B. bereitgestellt zusammen mit selbstgehosteten DevOps-Agents) verwenden müssen, müssen Sie zwei Einträge in Ihrer privaten Azure DNS-Zone oder auf Ihrem benutzerdefinierten DNS-Server erstellen. 
-- PrivateEndpointIP yourwebappname.azurewebsites.net 
-- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+Für die Kudu-Konsole oder die Kudu-REST-API (z. B. zusammen mit selbstgehosteten DevOps-Agents bereitgestellt) müssen Sie zwei Einträge in Ihrer privaten Azure DNS-Zone oder auf Ihrem benutzerdefinierten DNS-Server erstellen. 
+
+| Name | type | Wert |
+|-----|-----|-----|
+| mywebapp.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
+| mywebapp.scm.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
+
+
 
 ## <a name="pricing"></a>Preise
 
@@ -86,8 +124,9 @@ Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App über das Portal finden Sie unter [Herstellen einer privaten Verbindung mit einer Web-App][howtoguide].
-
+- Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App über das Portal finden Sie unter [Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts (Vorschau)][howtoguide1].
+- Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App über die Azure CLI finden Sie unter [Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe der Azure-Befehlszeilenschnittstelle][howtoguide2].
+- Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App mithilfe von PowerShell finden Sie unter [Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe von PowerShell][howtoguide3].
 
 
 
@@ -101,4 +140,6 @@ Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App über d
 [dnsvalidation]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain
 [pllimitations]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
+[howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint

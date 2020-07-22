@@ -4,19 +4,19 @@ description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschrä
 ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
-ms.date: 04/21/2020
-ms.openlocfilehash: fb4a21946b848ad05abac9b06999c7982812a361
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/04/2020
+ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021210"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080974"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden.
 
-Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/). Dort können Sie Ihre Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/) schätzen. Sie können auch zur Seite mit Preisen für einen bestimmten Dienst wie z.B. [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) wechseln. Tipps zum Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](../../billing/billing-getting-started.md).
+Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/). Dort können Sie Ihre Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/) schätzen. Sie können auch zur Seite mit Preisen für einen bestimmten Dienst wie z.B. [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) wechseln. Tipps zum Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](../../cost-management-billing/manage/getting-started.md).
 
 ## <a name="managing-limits"></a>Verwalten von Grenzwerten
 
@@ -29,7 +29,7 @@ Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersi
 >
 > Wenn Sie einen Grenzwert oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine [gebührenfreie Onlinekundensupport-Anforderung öffnen](../templates/error-resource-quota.md).
 
-Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) sind Grenzwert- oder Kontingenterhöhungen nicht möglich. Wenn Sie über ein [Abonnement mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade your Azure Free Trial subscription to a Pay-As-You-Go subscription](../../billing/billing-upgrade-azure-subscription.md) (Upgrade Ihres Abonnements mit kostenloser Azure-Testversion auf nutzungsbasierte Bezahlung) und [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq).
+Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) sind Grenzwert- oder Kontingenterhöhungen nicht möglich. Wenn Sie über ein [Abonnement mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade your Azure Free Trial subscription to a Pay-As-You-Go subscription](../../cost-management-billing/manage/upgrade-azure-subscription.md) (Upgrade Ihres Abonnements mit kostenloser Azure-Testversion auf nutzungsbasierte Bezahlung) und [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq).
 
 Einige Grenzwerte werden auf Regionsebene verwaltet.
 
@@ -127,6 +127,8 @@ Informationen zu Grenzwerten für Azure Database for PostgreSQL finden Sie unter
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
+Weitere Informationen finden Sie unter [Vergleich von Hostingplänen für Functions](../../azure-functions/functions-scale.md#hosting-plans-comparison).
+
 ## <a name="azure-kubernetes-service-limits"></a>Grenzwerte für Azure Kubernetes Service
 
 [!INCLUDE [container-service-limits](../../../includes/container-service-limits.md)]
@@ -217,6 +219,13 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
 
+## <a name="digital-twins-limits"></a>Grenzwerte für Digital Twins
+
+> [!NOTE]
+> In einigen Bereichen dieses Diensts lassen sich Grenzwerte anpassen. Diese sind in der nachfolgenden Tabelle in der Spalte *Anpassbar?* entsprechend gekennzeichnet. Wenn der Grenzwert angepasst werden kann, lautet der Wert der Spalte *Anpassbar?* *Ja*.
+
+[!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
+
 ## <a name="event-grid-limits"></a>Grenzwerte für Event Grid
 
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
@@ -250,7 +259,7 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (Vorgängerversion)
 
-Spezifische Grenzwerte für Media Services v2 (Legacy) finden Sie unter [Media Services v2 (Legacy)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations).
+Spezifische Grenzwerte für Media Services v2 (Legacy) finden Sie unter [Media Services v2 (Legacy)](../../media-services/previous/media-services-quotas-and-limitations.md).
 
 ## <a name="mobile-services-limits"></a>Mobile Services-Grenzwerte
 
@@ -323,11 +332,11 @@ Die folgende Tabelle gilt für v1, v2, Standard und WAF SKUs, sofern nichts ande
 
 ## <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
 
-Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Database resource limits for single databases](../../azure-sql/database/resource-limits-vcore-single-databases.md) (Ressourcengrenzwerte für SQL-Datenbank für Singletons), [SQL Database resource limits for elastic pools and pooled databases](../../azure-sql/database/resource-limits-vcore-elastic-pools.md) (Ressourcengrenzwerte für SQL-Datenbank für Pools für elastische Datenbanken und Pooldatenbanken) und [SQL Database resource limits for managed instances](../../azure-sql/managed-instance/resource-limits.md) (Ressourcengrenzwerte für SQL-Datenbank für verwaltete Instanzen).
+Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell](../../azure-sql/database/resource-limits-vcore-single-databases.md), [Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden](../../azure-sql/database/resource-limits-vcore-elastic-pools.md) und [Übersicht über Ressourcenlimits für Azure SQL Managed Instance](../../azure-sql/managed-instance/resource-limits.md).
 
-## <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
+## <a name="azure-synapse-analytics-limits"></a>Grenzwerte für Azure Synapse Analytics
 
-Informationen zu Grenzwerten für SQL Data Warehouse finden Sie unter [SQL Data Warehouse resource limits](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md) (Ressourcengrenzwerte für SQL Data Warehouse).
+Informationen zu den Grenzwerten für Azure Synapse Analytics finden Sie unter [Azure Synapse-Ressourcenlimits](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
 ## <a name="storage-limits"></a>Speichergrenzwerte
 

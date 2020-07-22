@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142468"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119207"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure 
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linux-Computer in Azure erstellen, bei dem standardmäßig zur Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Mit dem Azure-Portal erstellte VMs, Resource Manager-Vorlagen für Azure CLI oder andere Tools können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, die die Authentifizierung mit dem SSH-Schlüssel für SSH-Verbindungen einrichtet. 
 
 Dieser Artikel enthält ausführliche Hintergrundinformationen und Schritte zum Erstellen und Verwalten einer SSH-RSA-Datei mit öffentlichem/privatem Schlüsselpaar für SSH-Clientverbindungen. Schnellbefehle finden Sie unter [Erstellen eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
 
-Weitere Möglichkeiten zum Generieren und Verwenden von SSH-Schlüsseln auf einem Windows-Computer finden Sie unter [Gewusst wie: Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md).
+Informationen zum Generieren von SSH-Schlüsseln und deren Verwendung zum Herstellen einer Verbindung mit einem **Windows**-Computer finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md).
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -41,7 +41,7 @@ SSH-Schlüssel werden standardmäßig im Verzeichnis `~/.ssh` gespeichert.  Wenn
 
 ### <a name="basic-example"></a>Einfaches Beispiel
 
-Der folgende `ssh-keygen`-Befehl generiert Dateien für öffentliche und private 2048-Bit-SSH-RSA-Schlüssel standardmäßig im `~/.ssh`-Verzeichnis. Wenn am aktuellen Speicherort bereits ein SSH-Schlüsselpaar vorhanden ist, werden diese Dateien überschrieben.
+Der folgende `ssh-keygen`-Befehl generiert Dateien für öffentliche und private 4096-Bit-SSH-RSA-Schlüssel standardmäßig im Verzeichnis `~/.ssh`. Wenn am aktuellen Speicherort bereits ein SSH-Schlüsselpaar vorhanden ist, werden diese Dateien überschrieben.
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096

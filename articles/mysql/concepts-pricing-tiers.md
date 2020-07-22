@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: f633c33d0d90715a940129d62cee6472d33d2106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100956"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119887"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
 Sie können eine Azure Database for MySQL-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der MySQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
-|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| attribute   | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren Azure Database for MySQL-Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und MySQL-Serverprotokolle verwendet. Außerdem wird durch die Gesamtmenge an bereitgestelltem Speicher die E/A-Kapazität Ihres Servers definiert.
 
-|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+| Speicherattribut   | Basic | Allgemeiner Zweck | Arbeitsspeicheroptimiert |
 |:---|:----------|:--------------------|:---------------------|
 | Speichertyp | Storage Basic | Allgemeiner Speicher | Allgemeiner Speicher |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 16 TB | 5 GB bis 16 TB |
@@ -51,7 +51,7 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 | IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
 
 > [!NOTE]
-> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“.
+> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“, „USA, Westen 2“ und „USA, Westen-Mitte“.
 >
 > Alle anderen Regionen unterstützen bis zu 4 TB Speicherplatz und bis zu 6.000 IOPS.
 >
