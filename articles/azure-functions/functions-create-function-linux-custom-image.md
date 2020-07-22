@@ -5,18 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560916"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506382"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
 In diesem Tutorial erstellen Sie Code und stellen ihn anschließend in Azure Functions als benutzerdefinierten Docker-Container mit einem Linux-Basisimage bereit. Normalerweise verwenden Sie ein benutzerdefiniertes Image, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder über eine bestimmte Abhängigkeit oder Konfiguration verfügen, die über das integrierte Image nicht bereitgestellt wird.
 
-Sie können auch einen Azure App Service-Standardcontainer verwenden. Dies ist unter [Schnellstart: Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Befehlszeilentools](functions-create-first-azure-function-azure-cli-linux.md) beschrieben. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
+Sie können auch einen Azure App Service-Standardcontainer verwenden. Dies ist unter [Schnellstart: Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Befehlszeilentools](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) beschrieben. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -409,9 +409,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
     FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
     ```
     ::: zone-end
-
-    Die Unterschiede zwischen den Basisimages sind unter [Tutorial: Erstellen eines benutzerdefinierten Images und Ausführen in App Service über eine private Registrierung](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections) beschrieben.
-
+    
 1. Erstellen Sie das Image neu, indem Sie den Befehl `docker build` verwenden und `<docker_id>` durch Ihre Docker-ID ersetzen:
 
     ```

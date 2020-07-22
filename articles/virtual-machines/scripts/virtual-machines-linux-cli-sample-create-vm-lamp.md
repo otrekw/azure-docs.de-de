@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
-ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 471690c5c0f5ebb4cea111b85cab1fe0524a36cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74039114"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509721"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Bereitstellen des LAMP-Stapels in einer VM-Skalierungsgruppe mit Lastenausgleich
 
@@ -50,17 +50,17 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Erstellt eine VM-Skalierungsgruppe. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Fügt einen Endpunkt mit Lastenausgleich hinzu. |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension) | Erstellt die Erweiterung, mit der das benutzerdefinierte Skript für die Bereitstellung auf einem virtuellen Computer ausgeführt wird. |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss) | Führt das benutzerdefinierte Skript auf den VM-Instanzen aus, die bereitgestellt wurden, bevor die Erweiterung auf die Skalierungsgruppe angewendet wurde. |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss) | Skaliert die Skalierungsgruppe durch Hinzufügen weiterer VM-Instanzen hoch. Das benutzerdefinierte Skript wird auf diesen Instanzen ausgeführt, wenn sie bereitgestellt werden. |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | Ruft die IP-Adressen der Computer ab, die in diesem Beispiel erstellt wurden. |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | Ruft die vom Load Balancer verwendeten Front-End- und Back-End-Ports ab. |
+| [az group create](/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az vmss create](/cli/azure/vmss) | Erstellt eine VM-Skalierungsgruppe. |
+| [az network lb rule create](/cli/azure/network/lb/rule) | Fügt einen Endpunkt mit Lastenausgleich hinzu. |
+| [az vmss extension set](/cli/azure/vmss/extension) | Erstellt die Erweiterung, mit der das benutzerdefinierte Skript für die Bereitstellung auf einem virtuellen Computer ausgeführt wird. |
+| [az vmss update-instances](/cli/azure/vmss) | Führt das benutzerdefinierte Skript auf den VM-Instanzen aus, die bereitgestellt wurden, bevor die Erweiterung auf die Skalierungsgruppe angewendet wurde. |
+| [az vmss scale](/cli/azure/vmss) | Skaliert die Skalierungsgruppe durch Hinzufügen weiterer VM-Instanzen hoch. Das benutzerdefinierte Skript wird auf diesen Instanzen ausgeführt, wenn sie bereitgestellt werden. |
+| [az network public-ip list](/cli/azure/network/public-ip) | Ruft die IP-Adressen der Computer ab, die in diesem Beispiel erstellt wurden. |
+| [az network lb show](/cli/azure/network/lb) | Ruft die vom Load Balancer verwendeten Front-End- und Back-End-Ports ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche VM-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Linux-VMs in Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

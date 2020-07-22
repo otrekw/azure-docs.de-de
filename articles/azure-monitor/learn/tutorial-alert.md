@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77656261"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505872"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Überwachen der Anwendungsintegrität und Senden entsprechender Warnungen mit Azure Application Insights
 
@@ -28,7 +28,7 @@ Folgendes wird vermittelt:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-Erstellen Sie eine [Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
+Erstellen Sie eine [Application Insights-Ressource](./dotnetcore-quick-start.md#enable-application-insights).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -56,7 +56,7 @@ Verfügbarkeitstests in Application Insights ermöglichen Ihnen das automatische
 
     ![Warnung bearbeiten](media/tutorial-alert/edit-alert-001.png)
 
-6. Legen Sie „Fehlgeschlagene Standorte“ auf einen Wert größer oder gleich 3 fest. Erstellen Sie eine [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups), um zu konfigurieren, wer benachrichtigt wird, wenn Ihr Warnungsschwellenwert überschritten wird.
+6. Legen Sie „Fehlgeschlagene Standorte“ auf einen Wert größer oder gleich 3 fest. Erstellen Sie eine [Aktionsgruppe](../platform/action-groups.md), um zu konfigurieren, wer benachrichtigt wird, wenn Ihr Warnungsschwellenwert überschritten wird.
 
     ![Benutzeroberfläche zum Speichern der Warnung](media/tutorial-alert/save-alert-001.png)
 

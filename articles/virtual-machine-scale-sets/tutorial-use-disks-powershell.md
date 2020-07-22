@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495025"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -44,12 +44,12 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
 | type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
 |----|----|----|
-| [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md) | A-, B- und D-Serie | 1600 |
-| [Computeoptimiert](../virtual-machines/windows/sizes-compute.md) | F-Serie | 576 |
-| [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- und M-Serie | 6\.144 |
-| [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md) | L-Serie | 5\.630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 1440 |
-| [Hohe Leistung](../virtual-machines/windows/sizes-hpc.md) | A- und H-Serie | 2000 |
+| [Allgemeiner Zweck](../virtual-machines/sizes-general.md) | A-, B- und D-Serie | 1600 |
+| [Computeoptimiert](../virtual-machines/sizes-compute.md) | F-Serie | 576 |
+| [Arbeitsspeicheroptimiert](../virtual-machines/sizes-memory.md) | D-, E-, G- und M-Serie | 6\.144 |
+| [Speicheroptimiert](../virtual-machines/sizes-storage.md) | L-Serie | 5\.630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N-Serie | 1440 |
+| [Hohe Leistung](../virtual-machines/sizes-hpc.md) | A- und H-Serie | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
@@ -58,12 +58,12 @@ Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen inst
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
 | type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
 |----|----|----|
-| [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md) | A-, B- und D-Serie | 64 |
-| [Computeoptimiert](../virtual-machines/windows/sizes-compute.md) | F-Serie | 64 |
-| [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- und M-Serie | 64 |
-| [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md) | L-Serie | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 64 |
-| [Hohe Leistung](../virtual-machines/windows/sizes-hpc.md) | A- und H-Serie | 64 |
+| [Allgemeiner Zweck](../virtual-machines/sizes-general.md) | A-, B- und D-Serie | 64 |
+| [Computeoptimiert](../virtual-machines/sizes-compute.md) | F-Serie | 64 |
+| [Arbeitsspeicheroptimiert](../virtual-machines/sizes-memory.md) | D-, E-, G- und M-Serie | 64 |
+| [Speicheroptimiert](../virtual-machines/sizes-storage.md) | L-Serie | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N-Serie | 64 |
+| [Hohe Leistung](../virtual-machines/sizes-hpc.md) | A- und H-Serie | 64 |
 
 
 ## <a name="vm-disk-types"></a>VM-Datenträgertypen
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>Vorbereiten der Datenträger
 Bei den Datenträgern, die erstellt und an die VM-Instanzen Ihrer Skalierungsgruppe angefügt werden, handelt es sich um unformatierte Datenträger. Bevor Sie diese für Ihre Daten und Anwendungen nutzen können, müssen die Datenträger vorbereitet werden. Zum Vorbereiten der Datenträger erstellen Sie eine Partition und ein Dateisystem und stellen diese bereit.
 
-Sie können die benutzerdefinierte Skripterweiterung von Azure verwenden, um den Prozess für mehrere VM-Instanzen einer Skalierungsgruppe zu automatisieren. Mit dieser Erweiterung können Skripts lokal auf jeder VM-Instanz ausgeführt werden, z.B. um angefügte Datenträger vorzubereiten. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/windows/extensions-customscript.md).
+Sie können die benutzerdefinierte Skripterweiterung von Azure verwenden, um den Prozess für mehrere VM-Instanzen einer Skalierungsgruppe zu automatisieren. Mit dieser Erweiterung können Skripts lokal auf jeder VM-Instanz ausgeführt werden, z.B. um angefügte Datenträger vorzubereiten. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/extensions/custom-script-windows.md).
 
 
 Im folgenden Beispiel wird mit [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) ein Skript aus einem GitHub-Beispielrepository auf jeder VM-Instanz ausgeführt, um alle angefügten unformatierten Datenträger vorzubereiten:

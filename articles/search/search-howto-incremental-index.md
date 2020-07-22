@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146885"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230705"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung in Azure Cognitive Search
 
@@ -174,7 +174,7 @@ In der folgenden Tabelle wird zusammengefasst, wie sich verschiedene APIs auf de
 | [Create Indexer (2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Erstellt bei der ersten Verwendung einen Indexer und führt ihn aus. Sofern in der Indexerdefinition angegeben, wird auch ein Zwischenspeicher erstellt. |
 | [Run Indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Führt bei Bedarf eine Anreicherungspipeline aus. Diese API liest aus dem Zwischenspeicher, sofern vorhanden, oder erstellt einen Zwischenspeicher, wenn Sie das Zwischenspeichern zu einer aktualisierten Indexerdefinition hinzugefügt haben. Wenn Sie einen Indexer ausführen, für den das Zwischenspeichern aktiviert ist, lässt der Indexer Schritte aus, wenn zwischengespeicherte Ausgaben verwendet werden können. Sie können die allgemein verfügbare API-Version oder die Vorschauversion dieser API verwenden.|
 | [Reset Indexer](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Bereinigt den Indexer von inkrementellen Indizierungsinformationen. Die nächste Indexerausführung (entweder bedarfsgesteuert oder geplant) ist eine vollständige Neuverarbeitung von Grund auf, einschließlich der erneuten Ausführung aller Qualifikationen und der Neuerstellung des Zwischenspeichers. Dies entspricht funktionell dem Löschen und Neuerstellen des Indexers. Sie können die allgemein verfügbare API-Version oder die Vorschauversion dieser API verwenden.|
-| [Reset Skills](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | Gibt an, welche Qualifikationen bei der nächsten Indexerausführung erneut ausgeführt werden sollen, auch wenn keine Qualifikationen geändert wurden. Der Zwischenspeicher wird entsprechend aktualisiert. Ausgaben, wie z. B. ein Wissensspeicher oder ein Suchindex, werden mit wiederverwendbaren Daten aus dem Zwischenspeicher und neuen Inhalten gemäß der aktualisierten Qualifikation aktualisiert. |
+| [Reset Skills](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | Gibt an, welche Qualifikationen bei der nächsten Indexerausführung erneut ausgeführt werden sollen, auch wenn keine Qualifikationen geändert wurden. Der Zwischenspeicher wird entsprechend aktualisiert. Ausgaben, wie z. B. ein Wissensspeicher oder ein Suchindex, werden mit wiederverwendbaren Daten aus dem Zwischenspeicher und neuen Inhalten gemäß der aktualisierten Qualifikation aktualisiert. |
 
 Weitere Informationen zum Steuern, was mit dem Zwischenspeicher passiert, finden Sie unter [Cacheverwaltung](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ed36dc669c8b89ba4a2b7831c6eb6f8742e73730
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf01e4baf96e4403dae443fa6c98f74c571641a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508316"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Windows-Computers in Azure
 
@@ -37,13 +37,13 @@ Sie können Cloud Shell auch auf einer separaten Browserregisterkarte öffnen, i
 
 Zum Konfigurieren von Azure-Überwachung und Updateverwaltung in diesem Tutorial benötigen Sie einen virtuellen Windows-Computer in Azure.
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) zuerst den Benutzernamen und das Kennwort des VM-Administrators fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) zuerst den Benutzernamen und das Kennwort des VM-Administrators fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Erstellen Sie als Nächstes mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen `myVM` in der Region `East US` erstellt. Falls diese Elemente nicht bereits vorhanden sind, werden die Ressourcengruppe `myResourceGroupMonitor` und die zugehörigen Netzwerkressourcen erstellt:
+Erstellen Sie als Nächstes mit [New-AzVM](/powershell/module/az.compute/new-azvm) den virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen `myVM` in der Region `East US` erstellt. Falls diese Elemente nicht bereits vorhanden sind, werden die Ressourcengruppe `myResourceGroupMonitor` und die zugehörigen Netzwerkressourcen erstellt:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -76,7 +76,7 @@ Aktivieren Sie die Updateverwaltung für Ihre VM wie folgt:
 
 Eine Überprüfung wird durchgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist. Bei der Überprüfung wird sichergestellt, dass ein Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto vorhanden sind und sich die Lösung im Arbeitsbereich befindet.
 
-Sie nutzen einen [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeitsbereich, um Daten zu sammeln, die von Features und Diensten wie der Updateverwaltung generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
+Sie nutzen einen [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich, um Daten zu sammeln, die von Features und Diensten wie der Updateverwaltung generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 
 Zum Durchführen von zusätzlichen Aktionen für VMs, für die Updates erforderlich sind, können Sie Azure Automation verwenden, um Runbooks für VMs auszuführen. Zu diesen Aktionen gehört auch das Herunterladen oder Anwenden von Updates.
 
@@ -86,8 +86,8 @@ Wählen Sie im Fenster **Updateverwaltung aktivieren** den Log Analytics-Arbeits
 
 Falls beim Onboarding erkannt wird, dass die folgenden erforderlichen Komponenten fehlen, werden sie automatisch hinzugefügt:
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeitsbereich
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich
+* [Automation](../../automation/index.yml)
 * Ein [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md), der auf dem virtuellen Computer aktiviert ist
 
 Nachdem die Lösung aktiviert wurde, wird das Fenster **Updateverwaltung** geöffnet. Konfigurieren Sie den Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und wählen Sie anschließend die Option **Aktivieren** aus. Wenn diese Optionen abgeblendet angezeigt werden, ist eine andere Automatisierungslösung für die VM aktiviert, sodass deren Arbeitsbereich und das zugehörige Automation-Konto verwendet werden müssen.
@@ -108,7 +108,7 @@ Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releaseze
 
 Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie am oberen Rand des Fensters **Updateverwaltung** auf **Updatebereitstellung planen**. Geben Sie im Fenster **Neue Updatebereitstellung** die folgenden Informationen an:
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 | --- | --- |
 | **Name** |Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein. |
 |**Betriebssystem**| Wählen Sie **Linux** oder **Windows** aus.|

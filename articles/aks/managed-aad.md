@@ -7,12 +7,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/08/2020
 ms.author: thomasge
-ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b30c5b0e81f4748d5e94c05d016be83163c1e78e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166500"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251126"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>Von AKS verwaltete Azure Active Directory-Integration (Vorschauversion)
 
@@ -71,13 +71,13 @@ Verwenden Sie für andere Betriebssysteme [diese Anweisungen](https://kubernetes
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -131,7 +131,7 @@ Der Cluster wird in wenigen Minuten erstellt.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Zugreifen auf einen Azure AD-fähigen Cluster
 
-Sie benötigen die integrierte Rolle [Azure Kubernetes Service-Clusterbenutzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role), um die unten angegebenen Schritte auszuführen.
+Sie benötigen die integrierte Rolle [Azure Kubernetes Service-Clusterbenutzer](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role), um die unten angegebenen Schritte auszuführen.
 
 Rufen Sie die Benutzeranmeldeinformationen für den Zugriff auf den Cluster ab:
  
@@ -150,7 +150,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-Konfigurieren Sie die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/aks/azure-ad-rbac), um zusätzliche Sicherheitsgruppen für Ihre Cluster zu konfigurieren.
+Konfigurieren Sie die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](./azure-ad-rbac.md), um zusätzliche Sicherheitsgruppen für Ihre Cluster zu konfigurieren.
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Behandeln von Zugriffsproblemen mit Azure AD
 
@@ -159,7 +159,7 @@ Konfigurieren Sie die [rollenbasierte Zugriffssteuerung (Role-Based Access Contr
 
 Falls Sie dauerhaft blockiert werden, weil Sie nicht über Zugriff auf eine gültige Azure AD-Gruppe mit Zugriff auf Ihren Cluster verfügen, können Sie trotzdem die Administratoranmeldeinformationen abrufen, um direkt auf den Cluster zuzugreifen.
 
-Zum Ausführen dieser Schritte benötigen Sie Zugriff auf die integrierte [Administratorrolle für Azure Kubernetes Service-Cluster](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role).
+Zum Ausführen dieser Schritte benötigen Sie Zugriff auf die integrierte [Administratorrolle für Azure Kubernetes Service-Cluster](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role).
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
@@ -180,7 +180,7 @@ Es gibt einige nicht interaktive Szenarien, z. B. Continuous Integration-Pipeli
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-rbac-integration]: manage-azure-rbac.md
@@ -195,4 +195,3 @@ Es gibt einige nicht interaktive Szenarien, z. B. Continuous Integration-Pipeli
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
-

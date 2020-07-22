@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78269195"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505838"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource
 
@@ -86,7 +86,7 @@ Die Daten werden mithilfe einer in Kusto Query Language (KQL) geschriebenen Prot
    
     ![Protokolle](media/tutorial-resource-logs/logs.png)
 
-4. Der im Beispiel gezeigte Dienst schreibt Ressourcenprotokolle in die Tabelle **AzureDiagnostics**, andere Dienste schreiben ihre Ergebnisse möglicherweise in andere Tabellen. Ausführliche Informationen zu den Tabellen, die von den einzelnen Azure-Diensten verwendet werden, finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/diagnostic-logs-schema.md).
+4. Der im Beispiel gezeigte Dienst schreibt Ressourcenprotokolle in die Tabelle **AzureDiagnostics**, andere Dienste schreiben ihre Ergebnisse möglicherweise in andere Tabellen. Ausführliche Informationen zu den Tabellen, die von den einzelnen Azure-Diensten verwendet werden, finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/resource-logs-schema.md).
 
     > [!NOTE]
     > Mehrere Dienste schreiben Ressourcenprotokolle in die Tabelle „AzureDiagnostics“. Wenn Sie Log Analytics über das Azure Monitor-Menü starten, müssen Sie eine `where`-Anweisung mit der Spalte `ResourceProvider` hinzufügen, um den gewünschten Dienst anzugeben. Wenn Sie Log Analytics über das Menü einer Ressource starten, ist der Bereich auf Datensätze aus dieser Ressource festgelegt, und diese Spalte ist nicht erforderlich. Beispielabfragen finden Sie in der Dokumentation des Diensts.

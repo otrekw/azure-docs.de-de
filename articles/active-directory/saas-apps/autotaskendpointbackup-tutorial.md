@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c9bad99d0ce39fb5f179043278ca4785d726744
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d080fd3cac7a0550452908e9e0265bb2ffcb462
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157780"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Tutorial: Azure Active Directory-Integration in Autotask Endpoint Backup
 
@@ -111,7 +111,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Autotask
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam für den Autotask Endpoint Backup-Client](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam für den Autotask Endpoint Backup-Client](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -129,7 +129,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Autotask
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Autotask Endpoint Backup
 
-Um das einmalige Anmelden aufseiten von **Autotask Endpoint Backup** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Autotask Endpoint Backup](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Um das einmalige Anmelden aufseiten von **Autotask Endpoint Backup** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Autotask Endpoint Backup](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -184,7 +184,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Autotask Endpoint Bac
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Erstellen eines Autotask Endpoint Backup-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Autotask Endpoint Backup eine Benutzerin namens Britta Simon. Das  [Autotask Endpoint Backup-Supportteam](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) kann Sie dabei unterstützen, Benutzer auf der Autotask Endpoint Backup-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Autotask Endpoint Backup eine Benutzerin namens Britta Simon. Das  [Autotask Endpoint Backup-Supportteam](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) kann Sie dabei unterstützen, Benutzer auf der Autotask Endpoint Backup-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

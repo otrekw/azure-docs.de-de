@@ -3,12 +3,12 @@ title: 'Tutorial: Zugreifen auf Ihre private Cloud'
 description: Hier erfahren Sie, wie Sie auf eine private AVS-Cloud (Azure VMware Solution, Azure-VMware-Lösung) zugreifen.
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32dc5c173789996d2559eda1153b1509e10e5984
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873601"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497963"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Tutorial: Hier erfahren Sie, wie Sie auf eine private AVS-Cloud (Azure VMware Solution, Azure-VMware-Lösung) zugreifen.
 
@@ -43,7 +43,7 @@ Geben Sie die erforderlichen Informationen in die Felder ein, und wählen Sie an
 | **Benutzername** | Geben Sie den Benutzernamen für die Anmeldung bei dem virtuellen Computer ein. |
 | **Kennwort** | Geben Sie das Kennwort für die Anmeldung bei dem virtuellen Computer ein. |
 | **Kennwort bestätigen** | Geben Sie das Kennwort für die Anmeldung bei dem virtuellen Computer ein. |
-| **Öffentliche Eingangsports** | Wählen Sie **Keine**. Wenn Sie „Keine“ auswählen, können Sie [JIT-Zugriff](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-) verwenden, um den Zugriff auf den virtuellen Computer nur dann zu steuern, wenn Sie darauf zugreifen möchten.  |
+| **Öffentliche Eingangsports** | Wählen Sie **Keine**. Wenn Sie „Keine“ auswählen, können Sie [JIT-Zugriff](../security-center/security-center-just-in-time.md#jit-configure) verwenden, um den Zugriff auf den virtuellen Computer nur dann zu steuern, wenn Sie darauf zugreifen möchten.  |
 
 Klicken Sie nach Angabe der erforderlichen Informationen auf **Überprüfen + erstellen**. Wählen Sie nach erfolgreicher Überprüfung die Option **Erstellen** aus, um den VM-Erstellungsprozess zu starten.
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: tracking-python
-ms.openlocfilehash: 399a5bf40cff673f96aea46997bc639865619571
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bbb784a1245ecc8d6f3d3aee45b729984568fc6c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560776"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506092"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Tutorial: Bereitstellen eines vortrainierten Bildklassifizierungsmodells für Azure Functions mit PyTorch
 
@@ -115,7 +115,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     func new --name classify --template "HTTP trigger"
     ```
 
-    Mit diesem Befehl wird ein Ordner erstellt, der mit dem Namen der Funktion *classify* übereinstimmt. In diesem Ordner befinden sich zwei Dateien: *\_\_init\_\_.py* enthält den Funktionscode, und *function.json* enthält eine Beschreibung des Triggers der Funktion sowie der zugehörigen Eingabe- und Ausgabebindungen. Ausführliche Informationen zum Inhalt dieser Dateien finden Sie in der Python-Schnellstartanleitung unter [(Optional) Untersuchen des Dateiinhalts](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents).
+    Mit diesem Befehl wird ein Ordner erstellt, der mit dem Namen der Funktion *classify* übereinstimmt. In diesem Ordner befinden sich zwei Dateien: *\_\_init\_\_.py* enthält den Funktionscode, und *function.json* enthält eine Beschreibung des Triggers der Funktion sowie der zugehörigen Eingabe- und Ausgabebindungen. Ausführliche Informationen zum Inhalt dieser Dateien finden Sie in der Python-Schnellstartanleitung unter [(Optional) Untersuchen des Dateiinhalts](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents).
 
 
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
