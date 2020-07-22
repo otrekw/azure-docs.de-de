@@ -8,16 +8,22 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0716ca8f0457ca801098c97dd7a5e68751822d4d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848101"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142967"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
 Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In diesem NVA-Szenario besteht das Ziel darin, den Datenverkehr durch ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) für Branch-zu-VNet und VNet-zu-Branch zu leiten. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
+
+> [!NOTE]
+> Einige der Routingfunktionen befinden sich ggf. noch in der Einführungsphase. Wenn das Rollout in Ihrer Region noch nicht erfolgt ist, führen Sie in der Zwischenzeit die Schritte in diesen Versionen der Artikel aus:
+>* [Artikel zum Azure-Portal](virtual-wan-route-table-nva-portal.md)
+>* [Artikel zu PowerShell](virtual-wan-route-table-nva.md)
+>
 
 ## <a name="scenario-architecture"></a><a name="architecture"></a>Szenarioarchitektur
 

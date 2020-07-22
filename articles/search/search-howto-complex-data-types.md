@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6e66dc05ac2b6e54a1be94576b8686390949145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236878"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171838"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
@@ -27,7 +27,7 @@ In der kognitiven Azure-Suche werden komplexe Typen und Sammlungen nativ unterst
 Zum Einstieg empfiehlt sich das [Dataset „Hotels“](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), das Sie im Assistenten **Daten importieren** im Azure-Portal laden können. Im Assistenten werden komplexe Typen in der Quelle erkannt, und es wird basierend auf den erkannten Strukturen ein Indexschema vorgeschlagen.
 
 > [!Note]
-> Die Unterstützung für komplexe Typen ist in `api-version=2019-05-06` allgemein verfügbar. 
+> Die Unterstützung für komplexe Typen ist seit `api-version=2019-05-06` allgemein verfügbar. 
 >
 > Wenn Ihre Suchlösung auf früheren Problemumgehungen von vereinfachten Datasets in einer Sammlung aufbaut, sollten Sie den Index so ändern, dass er komplexe Typen enthält, wie sie in der neuesten API-Version unterstützt werden. Weitere Informationen zum Aktualisieren von API-Versionen finden Sie unter [Aktualisieren auf die neueste Version der REST-API](search-api-migration.md) oder [Aktualisieren auf die neueste Version des .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
@@ -111,7 +111,7 @@ Freiform-Suchausdrücke funktionieren bei komplexen Typen wie erwartet. Wenn ein
 
 Abfragen werden bei mehreren Begriffen und Operatoren differenzierter, und bei einigen Begriffen sind Feldnamen angegeben, wie das mit der [Lucene-Syntax](query-lucene-syntax.md) möglich ist. Mit der folgenden Abfrage wird beispielsweise versucht, zwei Begriffe, „Portland“ und „OR“, mit zwei Unterfeldern des Felds „Address“ zu vergleichen:
 
-    search=Address/City:Portland AND Address/State:OR
+> `search=Address/City:Portland AND Address/State:OR`
 
 Abfragen wie diese sind im Unterschied zu Filtern *nicht korreliert* für die Volltextsuche. In Filtern werden Abfragen für untergeordnete Felder einer komplexen Sammlung mithilfe der Bereichsvariablen in [`any` oder `all`](search-query-odata-collection-operators.md) korreliert. Die obige Lucene-Abfrage gibt Dokumente zurück, die „Portland, Maine“ und „Portland, Oregon“ enthalten, sowie andere Städte in Oregon. Dies trifft zu, da jede Klausel für alle Werte des jeweiligen Felds im gesamten Dokument gilt – es gibt also kein Konzept für ein „aktuell untergeordnetes Dokument“. Weitere Informationen hierzu finden Sie unter [Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-understand-collection-filters.md).
 
@@ -119,7 +119,7 @@ Abfragen wie diese sind im Unterschied zu Filtern *nicht korreliert* für die Vo
 
 Über den Parameter `$select` wird ausgewählt, welche Felder in den Suchergebnissen zurückgegeben werden. Um diesen Parameter zum Auswählen bestimmter Unterfelder eines komplexen Felds zu verwenden, fügen Sie das übergeordnete Feld und das Unterfeld getrennt durch einen Schrägstrich (`/`) ein.
 
-    $select=HotelName, Address/City, Rooms/BaseRate
+> `$select=HotelName, Address/City, Rooms/BaseRate`
 
 Felder müssen im Index als „Abrufbar“ markiert sein, wenn sie in den Suchergebnissen enthalten sein sollen. Nur die als „Abrufbar“ markierten Felder können in einer `$select`-Anweisung verwendet werden.
 
@@ -143,11 +143,11 @@ Sortiervorgänge sind möglich, wenn Felder in einem Dokument einwertig sind. Da
 
 Sie können auf die untergeordneten Felder eines komplexen Felds in einem Filterausdruck verweisen. Verwenden Sie einfach die gleiche [OData-Pfadsyntax](query-odata-filter-orderby-syntax.md) wie für die Facettierung, Sortierung und Auswahl von Feldern. Der folgende Filter gibt z. B. alle Hotels in Kanada zurück:
 
-    $filter=Address/Country eq 'Canada'
+> `$filter=Address/Country eq 'Canada'`
 
 Um nach einem Feld in einer komplexen Sammlung zu filtern, können Sie einen **Lambdaausdruck** mit den [Operatoren `any` und `all`](search-query-odata-collection-operators.md) verwenden. In diesem Fall ist die **Bereichsvariable** des Lambdaausdrucks ein Objekt mit untergeordneten Feldern. Sie können auf diese untergeordneten Felder mit der OData-Standardpfadsyntax verweisen. Der folgende Filter gibt beispielsweise alle Hotels zurück, die mindestens ein Luxuszimmer und ausschließlich Nichtraucherzimmer haben:
 
-    $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
+> `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
 Wie schon bei einfachen Feldern der obersten Ebene können auch einfache untergeordnete Felder von komplexen Feldern nur in Filtern verwendet werden, wenn Ihr **filterable**-Attribut in der Indexdefinition auf `true` festgelegt wurde. Weitere Informationen finden Sie in der [Referenz zur API zur Indexerstellung](/rest/api/searchservice/create-index).
 

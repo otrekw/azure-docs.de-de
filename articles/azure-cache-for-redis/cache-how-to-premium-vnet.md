@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: dae829336c5328bec4b620217c34c69fa5931b3a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856852"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184768"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -60,10 +60,11 @@ Nachdem der Cache erstellt wurde, können Sie die Konfiguration für das virtuel
 Um bei Verwenden eines VNET eine Verbindung mit Ihrer Azure Cache for Redis-Instanz herzustellen, geben Sie in der Verbindungszeichenfolge den Hostnamen Ihres Caches an (siehe das folgende Beispiel):
 
 ```csharp
-private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-{
-    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-});
+private static Lazy<ConnectionMultiplexer>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
+    {
+        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+    });
 
 public static ConnectionMultiplexer Connection
 {
@@ -98,7 +99,7 @@ Beim Hosten von Azure Cache for Redis in einem VNET werden die in den folgenden 
 
 #### <a name="outbound-port-requirements"></a>Anforderungen für ausgehende Ports
 
-Es liegen Anforderungen für neun ausgehende Ports vor. Ausgehende Anforderungen in diesen Bereichen sind entweder ausgehend zu anderen Diensten, die erforderlich sind, damit der Cache funktioniert, oder intern an das Redis-Subnetz für die Kommunikation zwischen Knoten. Bei der Georeplikation sind zusätzliche Anforderungen an ausgehenden Datenverkehr für die Kommunikation zwischen Subnetzen des primären und sekundären Caches vorhanden.
+Es liegen Anforderungen für neun ausgehende Ports vor. Ausgehende Anforderungen in diesen Bereichen sind entweder ausgehend zu anderen Diensten, die erforderlich sind, damit der Cache funktioniert, oder intern an das Redis-Subnetz für die Kommunikation zwischen Knoten. Bei der Georeplikation sind zusätzliche Anforderungen an ausgehenden Datenverkehr für die Kommunikation zwischen Subnetzen des primären Caches und des Replikatcaches vorhanden.
 
 | Port(s) | Direction | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
 | --- | --- | --- | --- | --- | --- |

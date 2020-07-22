@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 95e156c17b723c679772293401c730cbdff2220b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828643"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169883"
 ---
 # <a name="create-modular-runbooks"></a>Erstellen von modularen Runbooks
 
@@ -20,12 +20,12 @@ Es gibt zwei Möglichkeiten, ein untergeordnetes Runbook aufzurufen. Dabei gibt 
 
 |  | Inline | Cmdlet |
 |:--- |:--- |:--- |
-| Auftrag |Untergeordnete Runbooks werden im selben Auftrag ausgeführt wie das übergeordnete Runbook. |Für das untergeordnete Runbook wird ein separater Auftrag erstellt. |
-| Ausführung |Das übergeordnete Runbook wird erst nach Abschluss des untergeordneten Runbooks fortgesetzt. |Das übergeordnete Runbook wird sofort fortgesetzt, nachdem das untergeordnete Runbook gestartet wurde, *oder* das übergeordnete Runbook wartet, bis der untergeordnete Auftrag abgeschlossen ist. |
-| Output |Ausgaben des untergeordneten Runbooks werden direkt an das übergeordnete Runbook zurückgegeben. |Das übergeordnete Runbook muss die Ausgabe aus dem untergeordneten Runbookauftrag abrufen, *oder* das übergeordnete Runbook kann die Ausgabe direkt aus dem untergeordneten Runbook abrufen. |
-| Parameter |Werte für die Parameter des untergeordneten Runbooks werden separat angegeben, und es können beliebige Datentypen verwendet werden. |Werte für die Parameter des untergeordneten Runbooks müssen in einer einzigen Hashtabelle kombiniert werden. In dieser Hashtabelle können nur einfache, Array- und Objektdatentypen, die JSON-Serialisierung nutzen, gespeichert werden. |
-| Automation-Konto |Das übergeordnete Runbook kann nur im gleichen Automation-Konto enthaltene untergeordnete Runbooks verwenden. |Übergeordnete Runbooks können untergeordnete Runbooks aus allen Automation-Konten des gleichen Azure-Abonnements und sogar eines anderen Abonnements verwenden, mit dem eine Verbindung besteht. |
-| Veröffentlichung |Das untergeordnete Runbook muss vor der Veröffentlichung des übergeordneten Runbooks veröffentlicht werden. |Das untergeordnete Runbook wird zu einem beliebigen Zeitpunkt vor dem Start des übergeordneten Runbooks veröffentlicht. |
+| **Job** |Untergeordnete Runbooks werden im selben Auftrag ausgeführt wie das übergeordnete Runbook. |Für das untergeordnete Runbook wird ein separater Auftrag erstellt. |
+| **Ausführung** |Das übergeordnete Runbook wird erst nach Abschluss des untergeordneten Runbooks fortgesetzt. |Das übergeordnete Runbook wird sofort fortgesetzt, nachdem das untergeordnete Runbook gestartet wurde, *oder* das übergeordnete Runbook wartet, bis der untergeordnete Auftrag abgeschlossen ist. |
+| **Ausgabe** |Ausgaben des untergeordneten Runbooks werden direkt an das übergeordnete Runbook zurückgegeben. |Das übergeordnete Runbook muss die Ausgabe aus dem untergeordneten Runbookauftrag abrufen, *oder* das übergeordnete Runbook kann die Ausgabe direkt aus dem untergeordneten Runbook abrufen. |
+| **Parameter** |Werte für die Parameter des untergeordneten Runbooks werden separat angegeben, und es können beliebige Datentypen verwendet werden. |Werte für die Parameter des untergeordneten Runbooks müssen in einer einzigen Hashtabelle kombiniert werden. In dieser Hashtabelle können nur einfache, Array- und Objektdatentypen, die JSON-Serialisierung nutzen, gespeichert werden. |
+| **Automation-Konto** |Das übergeordnete Runbook kann nur im gleichen Automation-Konto enthaltene untergeordnete Runbooks verwenden. |Übergeordnete Runbooks können untergeordnete Runbooks aus allen Automation-Konten des gleichen Azure-Abonnements und sogar eines anderen Abonnements verwenden, mit dem eine Verbindung besteht. |
+| **Veröffentlichung** |Das untergeordnete Runbook muss vor der Veröffentlichung des übergeordneten Runbooks veröffentlicht werden. |Das untergeordnete Runbook wird zu einem beliebigen Zeitpunkt vor dem Start des übergeordneten Runbooks veröffentlicht. |
 
 ## <a name="invoke-a-child-runbook-using-inline-execution"></a>Aufrufen eines untergeordneten Runbooks mittels Inlineausführung
 

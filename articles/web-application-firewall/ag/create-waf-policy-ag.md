@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014535"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146611"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Erstellen von Web Application Firewall-Richtlinien für Application Gateway
 
@@ -23,7 +23,7 @@ Sie können beliebig viele Richtlinien erstellen. Nachdem Sie eine Richtlinie er
 Wenn auf Ihre Application Gateway-Instanz eine Richtlinie angewandt wird und Sie dann eine andere Richtlinie auf einen Listener in dieser Application Gateway-Instanz anwenden, gilt die Richtlinie des Listeners – aber nur für die Listener, denen sie zugewiesen ist. Die Application Gateway-Richtlinie gilt weiterhin für alle anderen Listener, denen keine spezielle Richtlinie zugewiesen ist. 
 
    > [!NOTE]
-   > WAF-Richtlinien für einzelne Websites und einzelne URIs sind als Public Preview verfügbar. Das bedeutet, dass diese Funktion den zusätzlichen Nutzungsbedingungen von Microsoft unterliegt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > WAF-Richtlinien für einzelne URIs sind als Public Preview verfügbar. Das bedeutet, dass diese Funktion den zusätzlichen Nutzungsbedingungen von Microsoft unterliegt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
    > [!NOTE]
    > Sobald eine Firewallrichtlinie einer WAF zugeordnet wurde, muss dieser WAF immer eine Richtlinie zugeordnet sein. Sie können diese Richtlinie überschreiben, aber das vollständige Aufheben der Zuordnung einer Richtlinie zu einer WAF wird nicht unterstützt. 
 

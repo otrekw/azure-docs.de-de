@@ -5,18 +5,18 @@ description: Erfahren Sie, wie und wo Sie Ihre Azure Machine Learning-Modelle be
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/28/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: f9558431d65a9c0f4fecf34141d9148afa514d86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 07/08/2020
+ms.custom: seoapril2019, tracking-python
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208566"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146549"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Der folgende Code veranschaulicht, wie Sie mithilfe von Informationen, die in de
 
 + **Verwendung von Visual Studio Code**
 
-   Wenn Sie Visual Studio Code verwenden, wählen Sie den Arbeitsbereich über eine grafische Benutzeroberfläche aus. Weitere Informationen finden Sie unter [Bereitstellen und Verwalten von Modellen](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) in der Dokumentation zur Visual Studio Code-Erweiterung.
+   Wenn Sie Visual Studio Code verwenden, wählen Sie den Arbeitsbereich über eine grafische Benutzeroberfläche aus. Weitere Informationen finden Sie unter [Bereitstellen und Verwalten von Modellen](how-to-manage-resources-vscode.md#endpoints) in der Dokumentation zur Visual Studio Code-Erweiterung.
 
 ## <a name="register-your-model"></a><a id="registermodel"></a> Registrieren Ihres Modells
 
@@ -255,9 +255,34 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 ```
 
 **Beispiel für mehrere Modelle**
+
+In diesem Szenario werden zwei Modelle unter dem Arbeitsbereich registriert:
+
+* `my_first_model`: Enthält eine Datei (`my_first_model.pkl`), und es gibt nur eine Version (`1`).
+* `my_second_model`: Enthält eine Datei (`my_second_model.pkl`), und es gibt die zwei Versionen `1` und `2`.
+
+Wenn der Dienst bereitgestellt wurde, werden beide Modelle im Bereitstellungsvorgang verfügbar gemacht:
+
+```python
+first_model = Model(ws, name="my_first_model", version=1)
+second_model = Model(ws, name="my_second_model", version=2)
+service = Model.deploy(ws, "myservice", [first_model, second_model], inference_config, deployment_config)
+```
+
+In dem Docker-Image, das den Dienst hostet, enthält die `AZUREML_MODEL_DIR`-Umgebungsvariable das Verzeichnis, in dem sich die Modelle befinden.
+In diesem Verzeichnis befindet sich jedes Modell im Verzeichnispfad von `MODEL_NAME/VERSION`. Dabei ist `MODEL_NAME` der Name des registrierten Modells, und `VERSION` ist die Version des Modells. Die Dateien, aus denen das registrierte Modell besteht, werden in diesen Verzeichnissen gespeichert.
+
+In diesem Beispiel lauten die Pfade `$AZUREML_MODEL_DIR/my_first_model/1/my_first_model.pkl` und `$AZUREML_MODEL_DIR/my_second_model/2/my_second_model.pkl`.
+
+
 ```python
 # Example when the model is a file, and the deployment contains multiple models
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
+first_model_name = 'my_first_model'
+first_model_version = '1'
+first_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), first_model_name, first_model_version, 'my_first_model.pkl')
+second_model_name = 'my_second_model'
+second_model_version = '2'
+second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_name, second_model_version, 'my_second_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -322,6 +347,8 @@ def run(data):
         return error
 ```
 
+##### <a name="power-bi-compatible-endpoint"></a>Power BI-kompatibler Endpunkt 
+
 Im folgenden Beispiel wird veranschaulicht, wie Eingabedaten als `<key: value>`-Wörterbuch definiert werden, indem ein Datenrahmen (DataFrame) verwendet wird. Diese Methode wird dazu unterstützt, den bereitgestellten Webdienst aus Power BI zu nutzen. ([Erfahren Sie mehr darüber, wie der Webdienst aus Power BI genutzt werden kann](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
 
 ```python
@@ -358,8 +385,9 @@ input_sample = pd.DataFrame(data=[{
 # This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
-
-@input_schema('data', PandasParameterType(input_sample))
+# To indicate that we support a variable length of data input,
+# set enforce_shape=False
+@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
@@ -516,6 +544,10 @@ Zum Bereitstellen der Modelle wird die Bereitstellungskonfiguration für die Rü
 Sie können die folgenden Computeziele bzw. Computeressourcen verwenden, um Ihre Webdienstbereitstellung zu hosten:
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+> [!NOTE]
+> * ACI eignet sich nur für kleine Modelle mit einer Größe von <1 GB. 
+> * Wir empfehlen die Verwendung von AKS auf einem einzelnen Knoten für den Dev-Test von größeren Modellen.
 
 ### <a name="define-your-deployment-configuration"></a>Definieren Ihrer Bereitstellungskonfiguration
 
@@ -928,10 +960,15 @@ print(output)
 HINWEIS:  Diese Abhängigkeiten sind im vordefinieren Scikit-learn-Container für Rückschlüsse enthalten:
 
 ```yaml
+    - dill
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
     - numpy
+    - joblib
+    - pandas
+    - scipy
+    - sklearn_pandas
 ```
 
 ## <a name="package-models"></a>Paketmodelle
@@ -1129,7 +1166,7 @@ import requests
 # Load image data
 data = open('example.jpg', 'rb').read()
 # Post raw data to scoring URI
-res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
 ```
 
 <a id="cors"></a>

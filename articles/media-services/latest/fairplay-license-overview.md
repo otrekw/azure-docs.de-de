@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995868"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183034"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Anforderungen und Konfiguration der Apple FairPlay-Lizenz 
 
@@ -35,7 +35,7 @@ Die folgenden Angaben sind erforderlich, wenn Sie Ihre HLS-Inhalte mit **Apple F
 * Apple setzt voraus, dass der Inhaltsbesitzer über das [Bereitstellungspaket](https://developer.apple.com/contact/fps/)verfügt. Geben Sie an, dass Sie bereits KSM (Key Security Module) mit Media Services implementiert haben, und dass Sie das endgültige FPS-Paket anfordern. Das endgültige FPS-Paket enthält Anweisungen zum Generieren des Zertifikats und zum Abrufen des geheimen Anwendungsschlüssels (ASK). Sie verwenden ASK, um FairPlay zu konfigurieren.
 * Folgendes muss seitens der Media Services-Schlüssel-/Lizenzbereitstellung festgelegt werden:
 
-    * **App Cert (AC)** : PFX-Datei mit dem privaten Schlüssel. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort. Die PFX-Datei muss im Base64-Format vorliegen.
+    * **App Cert (AC)** : Dies ist eine PFX-Datei, die den privaten Schlüssel enthält. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort. Die PFX-Datei muss im Base64-Format vorliegen.
 
         Die folgenden Schritte beschreiben, wie eine PFX-Zertifikatdatei für FairPlay generiert wird:
 
@@ -49,18 +49,21 @@ Die folgenden Angaben sind erforderlich, wenn Sie Ihre HLS-Inhalte mit **Apple F
 
             „C:\OpenSSL-Win32\bin\openssl.exe“ pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
             
-    * **App Cert-Kennwort**: Das Kennwort des Kunden zum Erstellen der PFX-Datei.
-    * **ASK**: Dieser Schlüssel wird erstellt, wenn Sie das Zertifikat über das Apple Developer-Portal generieren. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
+    * **App Cert-Kennwort**: Das Kennwort zum Erstellen der PFX-Datei.
+    * **ASK**: Dieser Schlüssel wird bei der Generierung der Zertifizierung über das Apple Developer-Portal empfangen. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
     
 * Folgendes muss seitens des FPS-Clients festgelegt werden:
 
-  * **App Cert (AC)** : CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlast verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
+  * **App Cert (AC)** : CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlasten verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
 
 * Um einen über FairPlay verschlüsselten Stream wiederzugeben, rufen Sie zuerst den echten ASK ab, und generieren Sie dann ein echtes Zertifikat. Dieser Prozess erstellt alle drei Teile:
 
   * DER-Datei
   * PFX-Datei
   * Kennwort für die PFX-Datei
+  
+> [!NOTE]
+> Azure Media Services überprüft das Ablaufdatum des Zertifikats während der Paketerstellung und der Schlüsselübermittlung nicht. Nach Ablauf des Zertifikats ist es weiterhin funktionsfähig.
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay und Player-Apps
 

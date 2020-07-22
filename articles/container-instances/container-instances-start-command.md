@@ -3,12 +3,12 @@ title: Außerkraftsetzen des Einstiegspunkts in einer Containerinstanz
 description: Legen Sie eine Befehlszeile zum außer Kraft setzen des Einstiegspunkts in einem Containerimage fest, in dem Sie eine Azure-Containerinstanz bereitstellen.
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693055"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169628"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Legen Sie die Befehlszeile in einer Containerinstanz so fest, dass sie die standardmäßige Befehlszeilenoperation außer Kraft setzt.
 
@@ -52,10 +52,10 @@ Die Befehlszeilensyntax variiert je nach Azure-API oder dem Tool, die bzw. das z
 
 ### <a name="examples"></a>Beispiele
 
-|    |  Azure-Befehlszeilenschnittstelle   | Portal | Vorlage | 
+|    |  Azure CLI   | Portal | Vorlage | 
 | ---- | ---- | --- | --- |
-| Einzelner Befehl | `--command-line "python myscript.py arg1 arg2"` | **Außerkraftsetzung von Befehl**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Mehrere Befehle | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Außerkraftsetzung von Befehl**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **Einzelner Befehl** | `--command-line "python myscript.py arg1 arg2"` | **Außerkraftsetzung von Befehl**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **Mehrere Befehle** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Außerkraftsetzung von Befehl**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI-Beispiel
 

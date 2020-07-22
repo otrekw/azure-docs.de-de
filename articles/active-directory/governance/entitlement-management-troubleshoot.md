@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207243"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145766"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -45,7 +45,7 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 * Wenn bereits Benutzer einer Ressource zugewiesen wurden, die Sie mit einem Zugriffspaket verwalten möchten, stellen Sie sicher, dass die Benutzer dem Zugriffspaket mit einer entsprechenden Richtlinie zugewiesen sind. Möglicherweise möchten Sie beispielsweise eine Gruppe in ein Zugriffspaket einschließen, das bereits Benutzer in der Gruppe enthält. Wenn diese Benutzer in der Gruppe weiterhin Zugriff benötigen, müssen sie über eine entsprechende Richtlinie für die Zugriffspakete verfügen, damit sie ihren Zugriff auf die Gruppe nicht verlieren. Sie können das Zugriffspaket zuweisen, indem Sie entweder die Benutzer bitten, das Zugriffspaket mit der entsprechenden Ressource anzufordern, oder die Benutzer direkt dem Zugriffspaket zuweisen. Weitere Informationen finden Sie unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket](entitlement-management-access-package-request-policy.md).
 
-* Wenn Sie ein Teammitglied entfernen, wird es auch aus der Office 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Wenn Sie ein Teammitglied entfernen, wird es auch aus der Microsoft 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 * Stellen Sie sicher, dass Ihr Verzeichnis nicht für Multi-Geo-Funktionen konfiguriert ist. Die Berechtigungsverwaltung unterstützt aktuell keine Multi-Geo-Standorte für SharePoint Online. SharePoint Online-Standorte müssen sich am standardmäßigen geografischen Standort befinden, um mit der Berechtigungsverwaltung gesteuert werden zu können. Weitere Informationen finden Sie unter [Multi-Geo-Funktionen in OneDrive und SharePoint Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
@@ -95,7 +95,9 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 Wenn nach dem Auslösen einer Anforderung zum erneuten Verarbeiten eines Zugriffspakets ein Fehler auftritt, müssen Sie warten, bis die Anforderung vom System erneut verarbeitet wurde. Das System versucht über mehrere Stunden mehrmals, eine erneute Verarbeitung durchzuführen, daher können Sie während dieser Zeit keine erneute Verarbeitung erzwingen. 
 
-Die erneute Verarbeitung ist nur für Anforderungen mit dem Status **Übermittlungsfehler** oder **Teilweise übermittelt** und einem Abschlussdatum möglich, das weniger eine Woche zurückliegt.
+Die erneute Verarbeitung ist nur für Anforderungen mit dem Status **Übermittlungsfehler** oder **Teilweise übermittelt** und einem Abschlussdatum möglich, das weniger eine Woche zurückliegt. Andernfalls ist die Schaltfläche **Erneut verarbeiten** deaktiviert.
+
+![Ausgegraute Schaltfläche „Erneut verarbeiten“](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - Wenn der Fehler während dieses Versuchsintervalls korrigiert wird, ändert sich der Anforderungsstatus in **Wird übermittelt**. Die Anforderung wird ohne zusätzliche Aktionen vom Benutzer erneut verarbeitet.
 
@@ -117,7 +119,7 @@ Die erneute Verarbeitung ist nur für Anforderungen mit dem Status **Übermittlu
 
 ### <a name="cancel-a-pending-request"></a>Abbrechen einer ausstehenden Anforderung
 
-Es können nur ausstehende Anforderungen abgebrochen werden, die noch nicht übermittelt wurden oder bei deren Übermittlung ein Fehler aufgetreten ist.
+Es können nur ausstehende Anforderungen abgebrochen werden, die noch nicht übermittelt wurden oder bei deren Übermittlung ein Fehler aufgetreten ist. Andernfalls ist die Schaltfläche **Abbrechen** ausgegraut.
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 

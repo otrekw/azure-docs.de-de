@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 3c6a5e011a536cc9c34565d4f72a9bee6c6a5254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 278e7a89385eba975f4409237727c925da66c08b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945167"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169832"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Häufig gestellte Fragen zu virtuellen Linux-Computern
 Dieser Artikel enthält einige häufig gestellte Fragen zu virtuellen Linux-Computern, die in Azure mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Die Windows-Version dieses Themas finden Sie unter [Häufig gestellte Fragen zu virtuellen Windows-Computern](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -73,7 +73,8 @@ Die folgenden Benutzernamen sind nicht zulässig:
 Je nach verwendetem Tool gelten unterschiedliche Anforderungen an die Kennwortlänge:
  - Portal: zwischen 12 und 72 Zeichen
  - PowerShell: zwischen 8 und 123 Zeichen
- - Befehlszeilenschnittstelle: zwischen 12 und 123 Zeichen
+ - CLI: zwischen 12 und 123 Zeichen
+ - Azure Resource Manager-Vorlagen (ARM): zwischen 12 und 72 Zeichen; Steuerzeichen sind nicht zulässig.
  
 
 Kennwörter müssen außerdem 3 der folgenden 4 Komplexitätsanforderungen erfüllen:

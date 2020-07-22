@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105759"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169798"
 ---
 # <a name="azure-signalr-service-internals"></a>Ausführliche Informationen zu Azure SignalR Service
 
@@ -85,6 +85,8 @@ Wenn ein Client mit dem SignalR Service verbunden ist, sucht die Dienstlaufzeit 
 An diesem Punkt empfängt der Anwendungsserver ein Ereignis mit Informationen von dem neuen Client. Eine logische Verbindung mit dem Client wird im Anwendungsserver erstellt. Der Datenkanal wird vom Client zum Anwendungsserver über SignalR Service eingerichtet.
 
 Der SignalR Service überträgt Daten vom Client an den gekoppelten Anwendungsserver. Und Daten werden vom Anwendungsserver an die zugeordneten Clients gesendet.
+
+Der SignalR Service speichert und sichert keine Kundendaten. Alle empfangenen Kundendaten werden in Echtzeit an Zielserver oder Clients übermittelt.
 
 Wie Sie sehen können, ist der Azure SignalR Service im Wesentlichen eine logische Transportschicht zwischen Anwendungsserver und Clients. Alle permanente Verbindungen werden auf SignalR Service ausgelagert.
 Der Anwendungsserver muss nur die Geschäftslogik in der Hub-Klasse verarbeiten, ohne sich dabei um Clientverbindungen kümmern zu müssen.

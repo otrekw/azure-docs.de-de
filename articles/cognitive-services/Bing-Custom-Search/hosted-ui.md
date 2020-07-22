@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ec407b7f6baf56f0a2fe724089826d8f9303b85
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68854085"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186842"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurieren der gehosteten Benutzeroberfläche
 
@@ -35,12 +35,10 @@ Gehen Sie folgendermaßen vor, um eine gehostete Benutzeroberfläche für Ihre W
   
 4. Wählen Sie ein Layout aus.
 
-    |  |  |
-    |---------|---------|
-    |Suchleiste und Ergebnisse (Standard)    | Zeigt ein Suchfeld mit Suchergebnissen darunter an.         |
-    |Nur Ergebnisse     | Zeigt nur Suchergebnisse ohne Suchfeld an. Bei Verwendung dieses Layouts müssen Sie die Suchabfrage (`&q=<query string>`) angeben. Fügen Sie den Abfrageparameter der Anforderungs-URL im JavaScript-Codeausschnitt oder im HTML-Endpunktlink hinzu.        |
-    |Einblendung im Vordergrund     | Stellt ein Suchfeld bereit und zeigt die Suchergebnisse in einer eingeblendeten Überlagerung an.        |
-    
+    - Suchleiste und Ergebnisse (Standard): Zeigt ein Suchfeld mit Suchergebnissen darunter an.
+    - Nur Ergebnisse: Zeigt nur Suchergebnisse ohne Suchfeld an. Bei Verwendung dieses Layouts müssen Sie die Suchabfrage (`&q=<query string>`) angeben. Fügen Sie den Abfrageparameter der Anforderungs-URL im JavaScript-Codeausschnitt oder im HTML-Endpunktlink hinzu.
+    - Einblendung im Vordergrund: Stellt ein Suchfeld bereit und zeigt die Suchergebnisse in einer eingeblendeten Überlagerung an.
+
 5. Wählen Sie ein Farbdesign aus. Sie können die Farben durch Klicken auf **Design anpassen** Ihrer Anwendung entsprechend anpassen. Zum Ändern einer Farbe geben Sie entweder den RGB-Hexadezimalwert der Farbe (z.B. `#366eb8`) ein, oder klicken Sie auf die Farbvorschau.
 
    Auf der rechten Seite des Portals können Sie eine Vorschau auf Ihre Änderungen anzeigen. Durch Klicken auf **Auf Standard zurücksetzen** werden wieder die Standardfarben für das ausgewählte Design verwendet.
@@ -96,55 +94,38 @@ Sie können das Verhalten der gehosteten Benutzeroberfläche konfigurieren, inde
 
 ### <a name="web-search-configurations"></a>Konfigurationen für die Websuche
 
-|  |  |
-|---------|---------|
-|Webergebnisse aktiviert    | Legt fest, ob die Websuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Web“ angezeigt).        |
-|Vorschlagssuche aktivieren     | Legt fest, ob die Vorschlagssuche aktiviert ist (die Zusatzkosten finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)).        |
-|Webergebnisse pro Seite    | Anzahl der gleichzeitig angezeigten Websuchergebnisse (max. 50 Ergebnisse pro Seite).        |
-|Bildtitel   | Bestimmt, ob Bilder mit Suchergebnissen angezeigt werden.|
-
+- Webergebnisse aktiviert: Legt fest, ob die Websuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Web“ angezeigt).
+- Vorschlagssuche aktivieren: Legt fest, ob die Vorschlagssuche aktiviert ist (die Zusatzkosten finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)).
+- Webergebnisse pro Seite: Anzahl der gleichzeitig angezeigten Websuchergebnisse (max. 50 Ergebnisse pro Seite).
+- Bildtitel: Bestimmt, ob Bilder mit Suchergebnissen angezeigt werden.
 
 Die folgenden Konfigurationen werden angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken:
 
-
-|  | |
-|---------|---------|
-|Wörter hervorheben     | Legt fest, ob Suchbegriffe in den Ergebnissen fett formatiert werden.         |
-|Linkziel    |  Legt fest, ob die Webseite auf einer neuen Browserregisterkarte („blank“) oder auf derselben Registerkarte („self“) geöffnet wird, wenn der Benutzer auf ein Suchergebnis klickt.        |
+- Wörter hervorheben: Legt fest, ob Suchbegriffe in den Ergebnissen fett formatiert werden.
+- Linkziel: Legt fest, ob die Webseite auf einer neuen Browserregisterkarte („blank“) oder auf derselben Registerkarte („self“) geöffnet wird, wenn der Benutzer auf ein Suchergebnis klickt.
 
 ### <a name="image-search-configurations"></a>Konfigurationen für die Bildersuche
 
-| | |
-|---------|---------|
-|Bildergebnisse aktiviert     | Legt fest, ob die Bildersuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Bilder“ angezeigt).            |
-|Bildergebnisse pro Seite     | Anzahl der gleichzeitig angezeigten Bildersuchergebnisse (max. 150 Ergebnisse pro Seite).          |
+- Bildergebnisse aktiviert: Legt fest, ob die Bildersuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Bilder“ angezeigt).
+- Bildergebnisse pro Seite: Anzahl der gleichzeitig angezeigten Bildersuchergebnisse (max. 150 Ergebnisse pro Seite).
 
 Die folgende Konfiguration wird angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken.  
   
-| | |
-|---------|---------|
-| Filter aktivieren     | Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Bilder filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nur nach animierten GIF-Dateien filtern.|
+- Filter aktivieren: Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Bilder filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nur nach animierten GIF-Dateien filtern.
 
 ### <a name="video-search-configurations"></a>Konfigurationen für die Videosuche
 
-|  | |
-|---------|---------|
-|Videoergebnisse aktiviert     | Legt fest, ob die Videosuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Videos“ angezeigt).           |
-|Videoergebnisse pro Seite   | Anzahl der gleichzeitig angezeigten Videoersuchergebnisse (max. 150 Ergebnisse pro Seite).        |
+- Videoergebnisse aktiviert: Legt fest, ob die Videosuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Videos“ angezeigt).
+- Videoergebnisse pro Seite: Anzahl der gleichzeitig angezeigten Videoersuchergebnisse (max. 150 Ergebnisse pro Seite).
 
 Die folgende Konfiguration wird angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken.  
   
-|  | |
-|---------|---------|
-|Filter aktivieren    | Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Videos filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nach Videos mit einer bestimmten Auflösung oder nach Videos, die in den letzten 24 Stunden gefunden wurden, filtern.          |
+- Filter aktivieren: Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Videos filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nach Videos mit einer bestimmten Auflösung oder nach Videos, die in den letzten 24 Stunden gefunden wurden, filtern.
 
 ### <a name="miscellaneous-configurations"></a>Sonstige Konfigurationen
 
-
-| |  |
-|---------|---------|
-|Seitentitel   | Text, der im Titelbereich der Seite mit den Suchergebnissen (nicht beim Layout mit eingeblendeten Überlagerungen) angezeigt wird.        |
-|Symbolleistendesign    | Legt die Hintergrundfarbe des Titelbereichs der Seite mit den Suchergebnissen fest. |
+- Seitentitel: Text, der im Titelbereich der Seite mit den Suchergebnissen (nicht beim Layout mit eingeblendeten Überlagerungen) angezeigt wird.
+- Symbolleistendesign: Legt die Hintergrundfarbe des Titelbereichs der Seite mit den Suchergebnissen fest.
 
 Die folgenden Konfigurationen werden angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken.  
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488748"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141951"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrieren von Azure Stream Analytics mit Azure Machine Learning (Vorschau)
 
@@ -28,7 +28,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie ein Machine Learning-Modell al
 
 3. Stellen Sie sicher, dass Ihr Webdienst serialisierte JSON-Daten akzeptiert und zurückgibt.
 
-4. Stellen Sie Ihr Modell für umfangreiche Produktionsbereitstellungen in [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) bereit. Wenn der Webdienst die Menge der von Ihrem Auftrag ausgehenden Anforderungen nicht verarbeiten kann, beeinträchtigt dies die Leistung Ihres Stream Analytics-Auftrags, was sich wiederum auf die Latenz auswirkt. In Azure Container Instances bereitgestellte Modelle werden nur bei Verwendung des Azure-Portals unterstützt.
+4. Stellen Sie Ihr Modell für umfangreiche Produktionsbereitstellungen in [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) bereit. Wenn der Webdienst die Menge der von Ihrem Auftrag ausgehenden Anforderungen nicht verarbeiten kann, beeinträchtigt dies die Leistung Ihres Stream Analytics-Auftrags, was sich wiederum auf die Latenz auswirkt. In Azure Container Instances bereitgestellte Modelle werden nur bei Verwendung des Azure-Portals unterstützt. Modelle, die mit [Azure Machine Learning-Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) erstellt wurden, werden in Stream Analytics noch nicht unterstützt.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Hinzufügen eines Machine Learning-Modells zu Ihrem Auftrag
 

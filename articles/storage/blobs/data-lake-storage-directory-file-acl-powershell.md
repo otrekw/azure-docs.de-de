@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142540"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -81,11 +81,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Dateisystem fungiert als Container für Ihre Dateien. Mit dem Cmdlet `New-AzStorageContainer` können Sie einen erstellen. 
+Ein Container fungiert als Dateisystem für Ihre Dateien. Mit dem Cmdlet `New-AzStorageContainer` können Sie einen erstellen. 
 
-In diesem Beispiel wird das Dateisystem `my-file-system` erstellt.
+In diesem Beispiel wird ein Container mit dem Namen `my-file-system` erstellt.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 Erstellen Sie mit dem Cmdlet `New-AzDataLakeGen2Item` eine Verzeichnisreferenz. 
 
-In diesem Beispiel wird einem Dateisystem das Verzeichnis `my-directory` hinzugefügt.
+In diesem Beispiel wird einem Container das Verzeichnis `my-directory` hinzugefügt.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-Um den Inhalt eines Dateisystems aufzulisten, lassen Sie den Parameter `-Path` im Befehl weg.
+Um den Inhalt eines Containers aufzulisten, lassen Sie den Parameter `-Path` im Befehl weg.
 
 ## <a name="upload-a-file-to-a-directory"></a>Hochladen einer Datei in ein Verzeichnis
 
@@ -270,7 +270,7 @@ Sie können Zugriffsberechtigungen für Verzeichnisse und Dateien abrufen, festl
 
 Verwenden Sie das Cmdlet `Get-AzDataLakeGen2Item`, um die Zugriffssteuerungsliste eines Verzeichnisses oder einer Datei abzurufen.
 
-In diesem Beispiel wird die Zugriffssteuerungsliste des Stammverzeichnisses eines **Dateisystems** abgerufen und dann in der Konsole ausgegeben.
+In diesem Beispiel wird die Zugriffssteuerungsliste des Stammverzeichnisses eines **Containers** abgerufen und dann an der Konsole ausgegeben.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ In diesem Beispiel verfügt der zuständige Benutzer über Berechtigungen zum Le
 
 Verwenden Sie das Cmdlet `set-AzDataLakeGen2ItemAclObject`, um eine Zugriffssteuerungsliste für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer zu erstellen. Verwenden Sie dann das Cmdlet `Update-AzDataLakeGen2Item`, um die Zugriffssteuerungsliste zu committen.
 
-In diesem Beispiel wird die Zugriffssteuerungsliste für das Stammverzeichnis auf ein **Dateisystem** für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und dann in der Konsole ausgegeben.
+In diesem Beispiel wird die Zugriffssteuerungsliste für das Stammverzeichnis eines **Containers** für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und dann an der Konsole ausgegeben.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -349,9 +349,9 @@ Die folgende Abbildung zeigt die Ausgabe nach dem Festlegen der Zugriffssteuerun
 In diesem Beispiel verfügen der zuständige Benutzer und die zuständige Gruppe nur über Berechtigungen zum Lesen und Schreiben. Alle anderen Benutzer verfügen über Berechtigungen zum Schreiben und Ausführen. Weitere Informationen zu Zugriffssteuerungslisten finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
 
-### <a name="set-acls-on-all-items-in-a-file-system"></a>Festlegen von Zugriffssteuerungslisten für alle Elemente in einem Dateisystem
+### <a name="set-acls-on-all-items-in-a-container"></a>Festlegen von Zugriffssteuerungslisten für alle Elemente in einem Container
 
-Sie können das Cmdlet `Get-AzDataLakeGen2Item` und den Parameter `-Recurse` zusammen mit dem Cmdlet `Update-AzDataLakeGen2Item` verwenden, um die Zugriffssteuerungsliste für Verzeichnisse und Dateien in einem Dateisystem rekursiv festzulegen. 
+Sie können das Cmdlet `Get-AzDataLakeGen2Item` und den Parameter `-Recurse` zusammen mit dem Cmdlet `Update-AzDataLakeGen2Item` verwenden, um die Zugriffssteuerungsliste für Verzeichnisse und Dateien in einem Container rekursiv festzulegen. 
 
 ```powershell
 $filesystemName = "my-file-system"

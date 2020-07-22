@@ -5,20 +5,23 @@ services: automation
 ms.subservice: update-management
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/11/2019
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 164db5d126ab9a22bce527b6197a463943b0fede
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013196"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183187"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Integrieren der Updateverwaltung mit Windows Endpoint Configuration Manager
 
 Kunden, die in Microsoft Endpoint Configuration Manager investiert haben, um PCs, Server und Mobilgeräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang dieser Lösung bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.
 
 Sie können Berichte für verwaltete Windows-Server erstellen und die Server aktualisieren, indem Sie Softwareupdatebereitstellungen in Windows Endpoint Configuration Manager erstellen und vorab bereitstellen. Außerdem können Sie den detaillierten Status abgeschlossener Updatebereitstellungen mithilfe der [Updateverwaltung](automation-update-management.md) abrufen. Wenn Sie Windows Endpoint Configuration Manager zum Aktualisieren von Complianceberichten, aber nicht zum Verwalten von Updatebereitstellungen für Ihre Windows-Server verwenden, können Sie für die Berichterstellung weiterhin Configuration Manager nutzen, während Sicherheitsupdates mit der Azure Automation-Updateverwaltung verwaltet werden.
+
+>[!NOTE]
+>Obwohl die Updateverwaltung die Updatebewertung und das Patchen von Windows Server 2008 R2 unterstützt, werden von Endpoint Configuration Manager verwaltete Clients mit diesem Betriebssystem nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,13 +30,13 @@ Sie können Berichte für verwaltete Windows-Server erstellen und die Server akt
 * Dieses Feature ist im aktuellen Branch von Windows Endpoint Configuration Manager ab Version 1606 aktiviert. Informationen zum Integrieren der zentralen Windows Endpoint Configuration Manager-Verwaltungswebsite oder einer eigenständigen primären Website mit Azure Monitor-Protokollen und zum Importieren von Sammlungen finden Sie unter [Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor-Protokollen](../azure-monitor/platform/collect-sccm.md).  
 * Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen, wenn sie keine Sicherheitsupdates von Windows Endpoint Configuration Manager erhalten.
 
-Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Windows Endpoint Configuration Manager-Umgebung verwalten, richtet sich primär nach der Verbindung zwischen Azure-Rechenzentren und Ihrer Infrastruktur. Diese Verbindung wirkt sich auf alle Designänderungen aus, die Sie an Ihrer Windows Endpoint Configuration Manager-Infrastruktur vornehmen müssen, und auf die Kosten, die aufgrund dieser Änderungen anfallen. Informationen zu den Planungsüberlegungen, die Sie berücksichtigen müssen, finden Sie unter [Configuration Manager in Azure – häufig gestellte Fragen](https://docs.microsoft.com/configmgr/core/understand/configuration-manager-on-azure#networking).
+Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Windows Endpoint Configuration Manager-Umgebung verwalten, richtet sich primär nach der Verbindung zwischen Azure-Rechenzentren und Ihrer Infrastruktur. Diese Verbindung wirkt sich auf alle Designänderungen aus, die Sie an Ihrer Windows Endpoint Configuration Manager-Infrastruktur vornehmen müssen, und auf die Kosten, die aufgrund dieser Änderungen anfallen. Informationen zu den Planungsüberlegungen, die Sie berücksichtigen müssen, finden Sie unter [Configuration Manager in Azure – häufig gestellte Fragen](/configmgr/core/understand/configuration-manager-on-azure#networking).
 
 ## <a name="manage-software-updates-from-windows-endpoint-configuration-manager"></a>Verwalten von Softwareupdates mit Windows Endpoint Configuration Manager
 
 Führen Sie folgende Schritte aus, wenn Sie Updatebereitstellungen weiterhin über Windows Endpoint Configuration Manager verwalten möchten. Azure Automation stellt eine Verbindung mit Windows Endpoint Configuration Manager her, um Updates auf Clientcomputer anzuwenden, die mit Ihrem Log Analytics-Arbeitsbereich verbunden sind. Die Updateinhalte sind im Cache der Clientcomputer verfügbar, so als würde die Bereitstellung von Windows Endpoint Configuration Manager verwaltet.
 
-1. Erstellen Sie mithilfe des unter [Bereitstellen von Softwareupdates](https://docs.microsoft.com/configmgr/sum/deploy-use/deploy-software-updates) beschriebenen Prozesses eine Softwareupdatebereitstellung von der Top-Level-Website in Ihrer Windows Endpoint Configuration Manager-Hierarchie. Die einzige Einstellung, die anders konfiguriert werden muss als bei einer Standardbereitstellung, ist die Option **Softwareupdates nicht installieren**, um das Downloadverhalten des Bereitstellungspakets zu steuern. Dieses Verhalten wird von der Updateverwaltung durch Erstellen einer geplanten Updatebereitstellung im nächsten Schritt gesteuert.
+1. Erstellen Sie mithilfe des unter [Bereitstellen von Softwareupdates](/configmgr/sum/deploy-use/deploy-software-updates) beschriebenen Prozesses eine Softwareupdatebereitstellung von der Top-Level-Website in Ihrer Windows Endpoint Configuration Manager-Hierarchie. Die einzige Einstellung, die anders konfiguriert werden muss als bei einer Standardbereitstellung, ist die Option **Softwareupdates nicht installieren**, um das Downloadverhalten des Bereitstellungspakets zu steuern. Dieses Verhalten wird von der Updateverwaltung durch Erstellen einer geplanten Updatebereitstellung im nächsten Schritt gesteuert.
 
 1. Wählen Sie in Azure Automation die Option **Updateverwaltung** aus. Erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Windows Endpoint Configuration Manager-Sammlung auszuwählen. Berücksichtigen Sie dabei die folgenden wichtigen Punkte: a. Wenn in der ausgewählten Windows Endpoint Configuration Manager-Gerätesammlung ein Wartungsfenster definiert ist, verwenden die Elemente der Sammlung dieses Fenster anstelle der Einstellung **Dauer**, die in der geplanten Bereitstellung definiert ist.
     b. Elemente der Zielsammlung müssen über eine Verbindung mit dem Internet verfügen (entweder direkt, über einen Proxyserver oder über das Log Analytics-Gateway).
@@ -42,7 +45,7 @@ Nach Abschluss der Updatebereitstellung über Azure Automation installieren die 
 
 ## <a name="manage-software-updates-from-azure-automation"></a>Verwalten von Softwareupdates über Azure Automation
 
-Um Updates für Windows Server-VMs zu verwalten, die Windows Endpoint Configuration Manager-Clients sind, müssen Sie die Clientrichtlinie so konfigurieren, dass die Funktion der Softwareupdateverwaltung für alle von der Updateverwaltung verwalteten Clients deaktiviert wird. Standardmäßig gelten Clienteinstellungen für alle Geräte in der Hierarchie. Weitere Informationen zu dieser Richtlinieneinstellung und ihrer Konfiguration finden Sie unter [Konfigurieren von Clienteinstellungen in Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/configure-client-settings).
+Um Updates für Windows Server-VMs zu verwalten, die Windows Endpoint Configuration Manager-Clients sind, müssen Sie die Clientrichtlinie so konfigurieren, dass die Funktion der Softwareupdateverwaltung für alle von der Updateverwaltung verwalteten Clients deaktiviert wird. Standardmäßig gelten Clienteinstellungen für alle Geräte in der Hierarchie. Weitere Informationen zu dieser Richtlinieneinstellung und ihrer Konfiguration finden Sie unter [Konfigurieren von Clienteinstellungen in Configuration Manager](/configmgr/core/clients/deploy/configure-client-settings).
 
 Nachdem Sie diese Konfigurationsänderung vorgenommen haben, erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Windows Endpoint Configuration Manager-Sammlung auszuwählen.
 

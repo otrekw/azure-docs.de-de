@@ -3,12 +3,12 @@ title: Azure Machine Learning als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Machine Learning-Arbeitsbereichsereignisse bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102496"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181521"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid-Quelle
 
@@ -26,7 +26,7 @@ Azure Machine Learning gibt die folgenden Ereignistypen aus:
 | Microsoft.MachineLearningServices.ModelDeployed | Wird ausgelöst, wenn Modelle erfolgreich auf einem Endpunkt bereitgestellt wurden. |
 | Microsoft.MachineLearningServices.RunCompleted | Wird ausgelöst, wenn eine Ausführung erfolgreich abgeschlossen wurde. |
 | Microsoft.MachineLearningServices.DatasetDriftDetected | Wird ausgelöst, wenn ein Datasetdriftmonitor eine Abweichung erkennt. |
-| Microsoft.MachineLearningServices.RunStatusChanged | Wird ausgelöst, wenn sich der Ausführungsstatus in „Fehler“ ändert. |
+| Microsoft.MachineLearningServices.RunStatusChanged | Wird ausgelöst, wenn sich ein Ausführungsstatus ändert. |
 
 ### <a name="the-contents-of-an-event-response"></a>Der Inhalt einer Ereignisantwort
 

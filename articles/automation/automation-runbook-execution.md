@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 6db4ceed0121f072104312ac24abb13fb241737b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832349"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186043"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -56,12 +56,12 @@ In der folgenden Tabelle sind einige Runbook-Ausführungsaufgaben mit der jeweil
 |Module mit spezifischen Anforderungen verwenden| Hybrid Runbook Worker|Beispiele:</br> WinSCP: Abhängigkeit von „winscp.exe“ </br> IIS-Verwaltung: Abhängigkeit zum Aktivieren oder Verwalten von IIS|
 |Modul mit einem Installationsprogramm installieren|Hybrid Runbook Worker|Module für Sandbox müssen Kopieren unterstützen.|
 |Verwenden von Runbooks oder Modulen, die eine andere .NET Framework-Version als 4.7.2 erfordern|Hybrid Runbook Worker|Azure-Sandboxes unterstützen .NET Framework 4.7.2. Upgrades auf eine andere Version werden nicht unterstützt.|
-|Skripts ausführen, für die eine Rechteerweiterung erforderlich ist|Hybrid Runbook Worker|Sandboxes lassen keine Rechteerweiterung zu. Mit einem Hybrid Runbook Worker können Sie die Benutzerkontensteuerung deaktivieren und [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) verwenden, wenn Sie den Befehl ausführen, für den eine Rechteerweiterung erforderlich ist.|
+|Skripts ausführen, für die eine Rechteerweiterung erforderlich ist|Hybrid Runbook Worker|Sandboxes lassen keine Rechteerweiterung zu. Mit einem Hybrid Runbook Worker können Sie die Benutzerkontensteuerung deaktivieren und [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) verwenden, wenn Sie den Befehl ausführen, für den eine Rechteerweiterung erforderlich ist.|
 |Ausführen von Skripts, die Zugriff auf die Windows-Verwaltungsinstrumentation (WMI) benötigen|Hybrid Runbook Worker|Aufträge, die in Sandboxes in der Cloud ausgeführt werden, haben keinen Zugriff auf WMI-Anbieter. |
 
 ## <a name="resources"></a>Ressourcen
 
-Ihre Runbooks müssen Logik für die Verarbeitung von [Ressourcen](https://docs.microsoft.com/rest/api/resources/resources) enthalten, z. B. VMs, Netzwerk und Ressourcen im Netzwerk. Ressourcen sind an ein Azure-Abonnement gebunden, und für Runbooks werden für den Zugriff auf Ressourcen die entsprechenden Anmeldeinformationen benötigt. Ein Beispiel für die Verarbeitung von Ressourcen in einem Runbook finden Sie unter [Behandeln von Ressourcen](manage-runbooks.md#handle-resources). 
+Ihre Runbooks müssen Logik für die Verarbeitung von [Ressourcen](/rest/api/resources/resources) enthalten, z. B. VMs, Netzwerk und Ressourcen im Netzwerk. Ressourcen sind an ein Azure-Abonnement gebunden, und für Runbooks werden für den Zugriff auf Ressourcen die entsprechenden Anmeldeinformationen benötigt. Ein Beispiel für die Verarbeitung von Ressourcen in einem Runbook finden Sie unter [Behandeln von Ressourcen](manage-runbooks.md#handle-resources). 
 
 ## <a name="security"></a>Sicherheit
 
@@ -71,7 +71,7 @@ Von ASC werden Benutzer, die auf einer VM alle Skripts (signiert oder unsigniert
 
 ## <a name="subscriptions"></a>Abonnements
 
-Bei einem Azure-[Abonnement](https://docs.microsoft.com/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings) handelt es sich um eine Vereinbarung mit Microsoft über die kostenpflichtige Nutzung von mindestens einem cloudbasierten Dienst. Bei Azure Automation ist jedes Abonnement mit einem Azure Automation-Konto verknüpft, und Sie können unter dem Konto [mehrere Abonnements erstellen](manage-runbooks.md#work-with-multiple-subscriptions).
+Bei einem Azure-[Abonnement](/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings) handelt es sich um eine Vereinbarung mit Microsoft über die kostenpflichtige Nutzung von mindestens einem cloudbasierten Dienst. Bei Azure Automation ist jedes Abonnement mit einem Azure Automation-Konto verknüpft, und Sie können unter dem Konto [mehrere Abonnements erstellen](manage-runbooks.md#work-with-multiple-subscriptions).
 
 ## <a name="credentials"></a>Anmeldeinformationen
 
@@ -79,18 +79,18 @@ Für ein Runbook werden für den Zugriff auf Ressourcen die entsprechenden [Anme
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-In Azure Automation wird [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) genutzt, um die Computervorgänge zu überwachen. Für die Vorgänge werden ein Log Analytics-Arbeitsbereich und [Log Analytics-Agents](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) benötigt.
+In Azure Automation wird [Azure Monitor](../azure-monitor/overview.md) verwendet, um die Computervorgänge zu überwachen. Für die Vorgänge werden ein Log Analytics-Arbeitsbereich und [Log Analytics-Agents](../azure-monitor/platform/log-analytics-agent.md) benötigt.
 
 ### <a name="log-analytics-agent-for-windows"></a>Log Analytics-Agent für Windows
 
-Der [Log Analytics-Agent für Windows](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows) kann mit Azure Monitor genutzt werden, um Windows-VMs und physische Computer zu verwalten. Die Computer können entweder in Azure oder in einer anderen Umgebung, z. B. einem lokalen Rechenzentrum, ausgeführt werden. Sie müssen den Agent so konfigurieren, dass er Informationen an mindestens einen Log Analytics-Arbeitsbereich meldet. 
+Der [Log Analytics-Agent für Windows](../azure-monitor/platform/agent-windows.md) kann mit Azure Monitor genutzt werden, um Windows-VMs und physische Computer zu verwalten. Die Computer können entweder in Azure oder in einer anderen Umgebung, z. B. einem lokalen Rechenzentrum, ausgeführt werden. Sie müssen den Agent so konfigurieren, dass er Informationen an mindestens einen Log Analytics-Arbeitsbereich meldet. 
 
 >[!NOTE]
 >Der Log Analytics-Agent für Windows wurde früher als Microsoft Monitoring Agent (MMA) bezeichnet.
 
 ### <a name="log-analytics-agent-for-linux"></a>Log Analytics-Agent für Linux
 
-Der [Log Analytics-Agent für Linux](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux) ähnelt in der Funktionsweise dem Agent für Windows, aber es werden Linux-Computer mit Azure Monitor verbunden. Der Agent wird mit dem Benutzerkonto **nxautomation** installiert, das die Ausführung von Befehlen ermöglicht (mit Rootberechtigungen), z. B. in einem Hybrid Runbook Worker. **nxautomation** ist ein Systemkonto, für das kein Kennwort benötigt wird. 
+Der [Log Analytics-Agent für Linux](../azure-monitor/platform/agent-linux.md) ähnelt in der Funktionsweise dem Agent für Windows, aber es werden Linux-Computer mit Azure Monitor verbunden. Der Agent wird mit dem Benutzerkonto **nxautomation** installiert, das die Ausführung von Befehlen ermöglicht (mit Rootberechtigungen), z. B. in einem Hybrid Runbook Worker. **nxautomation** ist ein Systemkonto, für das kein Kennwort benötigt wird. 
 
 Das Konto **nxautomation** mit den entsprechenden sudo-Berechtigungen muss bei der [Installation eines Linux-Hybrid Runbook Workers](automation-linux-hrw-install.md) vorhanden sein. Wenn Sie versuchen, den Worker zu installieren, und das Konto nicht vorhanden ist oder nicht über die entsprechenden Berechtigungen verfügt, tritt bei der Installation ein Fehler auf.
 
@@ -120,7 +120,7 @@ Für Ihre Runbooks können selbstsignierte Zertifikate verwendet werden, die nic
 
 Azure Automation unterstützt eine Umgebung zum Ausführen von Aufträgen desselben Automation-Kontos. Für ein einzelnes Runbook können viele Aufträge gleichzeitig ausgeführt werden. Je mehr Aufträge Sie zur gleichen Zeit ausführen, desto häufiger können diese an dieselbe Sandbox weitergeleitet werden. 
 
-Im selben Sandboxprozess ausgeführte Aufträge können sich gegenseitig beeinflussen. Ein Beispiel ist das Ausführen des Cmdlets [Disconnect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0). Bei Ausführen dieses Cmdlets wird jeder Runbookauftrag im gemeinsam genutzten Sandboxprozess getrennt. Ein Beispiel für die Vorgehensweise bei diesem Szenario finden Sie unter [Gleichzeitige Aufträge verhindern](manage-runbooks.md#prevent-concurrent-jobs).
+Im selben Sandboxprozess ausgeführte Aufträge können sich gegenseitig beeinflussen. Ein Beispiel ist das Ausführen des Cmdlets [Disconnect-AzAccount](/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0). Bei Ausführen dieses Cmdlets wird jeder Runbookauftrag im gemeinsam genutzten Sandboxprozess getrennt. Ein Beispiel für die Vorgehensweise bei diesem Szenario finden Sie unter [Gleichzeitige Aufträge verhindern](manage-runbooks.md#prevent-concurrent-jobs).
 
 >[!NOTE]
 >PowerShell-Aufträge, die in einem Runbook gestartet werden, das in einer Azure-Sandbox ausgeführt wird, können möglicherweise nicht im vollständigen [PowerShell-Sprachmodus](/powershell/module/microsoft.powershell.core/about/about_language_modes) ausgeführt werden. 
@@ -156,7 +156,7 @@ In diesem Abschnitt werden einige Möglichkeiten zur Behandlung von Ausnahmen od
 
 Die Variable [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) gibt an, wie PowerShell auf einen Fehler ohne Abbruch reagiert. Fehler mit Abbruch führen immer zu einer Beendigung und sind nicht von `ErrorActionPreference` betroffen.
 
-Bei Verwendung von `ErrorActionPreference` für das Runbook verhindert ein Fehler, der normalerweise nicht zu einem Abbruch führt (z. B. `PathNotFound` im Cmdlet [Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7)), dass die Ausführung des Runbooks abgeschlossen wird. Im folgenden Beispiel wird die Verwendung von `ErrorActionPreference` veranschaulicht. Der abschließende Befehl [Write-Output](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) wird nie ausgeführt, da das Skript beendet wird.
+Bei Verwendung von `ErrorActionPreference` für das Runbook verhindert ein Fehler, der normalerweise nicht zu einem Abbruch führt (z. B. `PathNotFound` im Cmdlet [Get-ChildItem](/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7)), dass die Ausführung des Runbooks abgeschlossen wird. Im folgenden Beispiel wird die Verwendung von `ErrorActionPreference` veranschaulicht. Der abschließende Befehl [Write-Output](/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) wird nie ausgeführt, da das Skript beendet wird.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -222,14 +222,13 @@ Für Azure wird das Konzept der gleichmäßigen Verteilung (Fair Share) verwende
 
 Für zeitintensive Azure Automation-Aufgaben sollten Sie einen Hybrid Runbook Worker verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks. Die anderen [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) für Aufträge gelten sowohl für Azure-Sandboxes als auch für Hybrid Runbook Workers. Wenngleich Hybrid Runbook Worker nicht der dreistündigen Begrenzung für die gleichmäßige Verteilung unterliegen, sollten Sie Runbooks entwickeln, die auf den Workern laufen, die einen Neustart nach unerwarteten lokalen Infrastrukturproblemen unterstützen.
 
-Eine weitere Möglichkeit ist das Optimieren eines Runbooks durch Verwendung untergeordneter Runbooks. Beispielsweise kann Ihr Runbook die gleiche Funktion auf mehreren Ressourcen durchlaufen, z. B. bei einem Datenbankvorgang in mehreren Datenbanken. Sie können diese Funktion in ein [untergeordnetes Runbook](automation-child-runbooks.md) verschieben und veranlassen, dass Ihr Runbook es mit [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) aufruft. Untergeordnete Runbooks werden in separaten Prozessen parallel ausgeführt.
+Eine weitere Möglichkeit ist das Optimieren eines Runbooks durch Verwendung untergeordneter Runbooks. Beispielsweise kann Ihr Runbook die gleiche Funktion auf mehreren Ressourcen durchlaufen, z. B. bei einem Datenbankvorgang in mehreren Datenbanken. Sie können diese Funktion in ein [untergeordnetes Runbook](automation-child-runbooks.md) verschieben und veranlassen, dass Ihr Runbook es mit [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) aufruft. Untergeordnete Runbooks werden in separaten Prozessen parallel ausgeführt.
 
-Das Verwenden untergeordneter Runbooks führt dazu, dass die Gesamtdauer der Verarbeitung für das übergeordnete Runbook verringert wird. Ihr Runbook kann mit dem Cmdlet [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) den Auftragsstatus für ein untergeordnetes Runbook überprüfen, wenn nach Abschluss des untergeordneten Runbooks noch Vorgänge erfolgen müssen.
+Das Verwenden untergeordneter Runbooks führt dazu, dass die Gesamtdauer der Verarbeitung für das übergeordnete Runbook verringert wird. Ihr Runbook kann mit dem Cmdlet [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) den Auftragsstatus für ein untergeordnetes Runbook überprüfen, wenn nach Abschluss des untergeordneten Runbooks noch Vorgänge erfolgen müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu den ersten Schritten mit einem PowerShell-Runbook finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md).
 * Informationen zur Arbeit mit Runbooks finden Sie unter [Verwalten eines Runbooks in Azure Automation](manage-runbooks.md).
-* Details zu PowerShell finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
-* * Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* Details zu PowerShell finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
+* * Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

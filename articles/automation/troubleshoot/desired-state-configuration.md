@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681379"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187216"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Problembehandlung bei Azure Automation State Configuration
 
@@ -26,7 +26,7 @@ Wenn Sie einen Kompilierungs- oder Bereitstellungsfehler für die Konfiguration 
 
 ### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. Sicherstellen, dass Ihre Konfiguration auf dem lokalen Computer erfolgreich kompiliert wird
 
-Azure Automation State Configuration basiert auf PowerShell Desired State Configuration (DSC). Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
+Azure Automation State Configuration basiert auf PowerShell Desired State Configuration (DSC). Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](/powershell/scripting/overview).
 
 Durch das Kompilieren einer DSC auf Ihrem lokalen Computer können Sie unter anderem die folgenden allgemeinen Fehler ermitteln und beheben:
 
@@ -42,7 +42,7 @@ Das [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics)-Modul kann 
 
 Sie können das `xDscDiagnostics`-Modul mithilfe der Anleitungen unter [Installation der stabilen Modulversion](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module) auf Ihrem lokalen Computer installieren.
 
-Um das `xDscDiagnostics`-Modul auf Ihrem Azure-Computer zu installieren, verwenden Sie [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0). Sie können auch die Option **Befehl ausführen** im Azure-Portal verwenden, indem Sie die Schritte unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](../../virtual-machines/windows/run-command.md) verwenden.
+Um das `xDscDiagnostics`-Modul auf Ihrem Azure-Computer zu installieren, verwenden Sie [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0). Sie können auch die Option **Befehl ausführen** im Azure-Portal verwenden, indem Sie die Schritte unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](../../virtual-machines/windows/run-command.md) verwenden.
 
 Informationen zur Verwendung von **xDscDiagnostics** finden Sie unter [Verwenden von „xDscDiagnostics“ zum Analysieren von DSC-Protokollen](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Siehe auch [xDscDiagnostics-Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
@@ -66,13 +66,13 @@ Der Fehler ist ein vorübergehendes Problem, dessen Behebung geplant ist.
 
 ### <a name="resolution"></a>Lösung
 
-Verwenden Sie das Azure-Cmdlet [Remove-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 ), um die Konfiguration zu löschen.
+Verwenden Sie das Cmdlet [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0), um die Konfiguration zu löschen.
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Szenario: Fehler beim Registrieren des DSC-Agents
 
 ### <a name="issue"></a>Problem
 
-Bei [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) oder einem anderes DSC-Cmdlet wird folgender Fehler zurückgegeben:
+Bei [Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) oder einem anderes DSC-Cmdlet wird folgender Fehler zurückgegeben:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -177,7 +177,7 @@ Dieser Fehler tritt normalerweise auf, wenn der Knoten einem Konfigurationsnamen
 * Einem Knoten können Sie über das Azure-Portal oder mit einem PowerShell-Cmdlet eine Knotenkonfiguration zuweisen.
 
   * Wechseln Sie im Azure-Portal zu **Startseite** > **Automation-Konten** > [Ihr Automation-Konto] > **State Configuration (DSC)** . Wählen Sie dann einen Knoten aus, und wählen Sie **Knotenkonfiguration zuweisen** aus.
-  * Verwenden Sie das Cmdlet [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0).
+  * Verwenden Sie das Cmdlet [Set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0).
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Szenario: Bei der Kompilierung einer Konfiguration wurden keine Knotenkonfigurationen (MOF-Dateien) erstellt
 
@@ -216,7 +216,7 @@ Sie haben ein Upgrade Ihrer WMF-Version (Windows Management Framework) durchgef�
 
 ### <a name="resolution"></a>Lösung
 
-Befolgen Sie die Anweisungen unter [Bekannte Probleme und Einschränkungen in DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc).
+Befolgen Sie die Anweisungen unter [Bekannte Probleme und Einschränkungen in DSC](/powershell/scripting/wmf/known-issues/known-issues-dsc).
 
 ## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>Szenario: In einer DSC-Konfiguration können keine Anmeldeinformationen verwendet werden
 
@@ -259,7 +259,7 @@ Dieser Fehler tritt in der Regel auf, wenn dem Knoten ein Knotenkonfigurationsna
 
 ### <a name="issue"></a>Problem
 
-Wenn Sie einen Knoten mithilfe von [Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) oder [Register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) registrieren, erhalten Sie folgenden Fehler:
+Wenn Sie einen Knoten mithilfe von [Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) oder [Register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0) registrieren, erhalten Sie folgenden Fehler:
 
 ```error
 One or more errors occurred.
@@ -338,7 +338,7 @@ Bei DSC-Konfigurationen, deren Kompilierung lange Zeit in Anspruch nimmt, kann d
 
 ### <a name="resolution"></a>Lösung
 
-Sie können die Analyse Ihrer DSC-Konfigurationen beschleunigen, indem Sie den `ModuleName`-Parameter explizit für alle [Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1)-Aufrufe einschließen.
+Sie können die Analyse Ihrer DSC-Konfigurationen beschleunigen, indem Sie den `ModuleName`-Parameter explizit für alle [Import-DSCResource](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1)-Aufrufe einschließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e1191c01ce3f62f34c351cefd29a5e40aa68bfd3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658402"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147105"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Verhindern von Überanpassung und unausgeglichenen Daten durch automatisiertes maschinelles Lernen
 
@@ -71,15 +71,13 @@ Automatisiertes ML implementiert auch explizite **Einschränkungen der Modellkom
 **Kreuzvalidierung** ist der Prozess, bei dem viele Teilmengen Ihrer vollständigen Trainingsdaten erstellt werden und ein Modell mit jeder Teilmenge trainiert wird. Die Idee ist, dass ein Modell „glücklich“ werden und eine große Genauigkeit mit einer Teilmenge erzielen könnte, aber durch Verwenden vieler Teilmengen wird das Modell diese hohe Genauigkeit nicht jedes Mal erzielen. Wenn Sie eine Kreuzvalidierung vornehmen, stellen Sie ein Validierungsdataset mit zurückgehaltenen Daten bereit, und geben Sie Ihre Kreuzvalidierungsfalten (Anzahl der Teilmengen) an. Automatisiertes ML trainiert daraufhin Ihr Modell und optimiert Hyperparameter, um den Fehler für Ihren Validierungssatz zu minimieren. Eine Kreuzvalidierungsfalte könnte überangepasst sein, aber dadurch, dass viele von ihnen verwendet werden, wird die Wahrscheinlichkeit verringert, dass das endgültige Modell überangepasst ist. Der Nachteil ist, dass Kreuzvalidierung längere Trainingszeiten und somit höhere Kosten verursacht, denn anstatt ein Modell einmal zu trainieren, trainieren Sie es einmal mit jeder der *n* Kreuzvalidierungsteilmengen. 
 
 > [!NOTE]
-> Kreuzvalidierung ist nicht standardmäßig aktiviert. Sie muss in den Einstellungen für automatisiertes ML konfiguriert werden. Nachdem Kreuzvalidierung konfiguriert und ein Validierungsdataset bereitgestellt wurde, wird der Prozess jedoch für Sie automatisiert. Finden Sie unter 
+> Kreuzvalidierung ist nicht standardmäßig aktiviert. Sie muss in den Einstellungen für automatisiertes ML konfiguriert werden. Nachdem Kreuzvalidierung konfiguriert und ein Validierungsdataset bereitgestellt wurde, wird der Prozess jedoch für Sie automatisiert. [Weitere Informationen zur Konfiguration der Kreuzvalidierung in AutoML](how-to-configure-cross-validation-data-splits.md)
 
 <a name="imbalance"></a>
 
 ## <a name="identify-models-with-imbalanced-data"></a>Identifizieren von Modellen mit unausgeglichenen Daten
 
 Unausgeglichene Daten finden sich häufig in Daten für Klassifizierungsszenarien des maschinellen Lernens und beziehen sich auf Daten, die ein überproportionales Verhältnis von Beobachtungen in den einzelnen Klassen enthalten. Diese Unausgeglichenheit kann zu einem falsch wahrgenommenen positiven Effekt der Genauigkeit eines Modells führen, da die Eingabedaten eine Abweichung zu einer Klasse aufweisen, was dazu führt, dass das trainierte Modell diese Abweichung imitiert. 
-
-Da Klassifizierungsalgorithmen häufig nach Genauigkeit bewertet werden, ist die Überprüfung der Genauigkeitsbewertung eines Modells eine geeignete Möglichkeit, um festzustellen, ob es von unausgeglichenen Daten beeinflusst wurde. Hat es für bestimmte Klassen über eine wirklich hohe oder über eine wirklich niedrige Genauigkeit verfügt?
 
 Darüber hinaus generieren Durchläufe des automatisierten maschinellen Lernens automatisch die folgenden Diagramme, die Ihnen helfen können, die Richtigkeit der Klassifizierungen Ihres Modells zu verstehen und Modelle zu identifizieren, die möglicherweise von nicht ausgeglichenen Daten beeinflusst werden.
 
@@ -91,17 +89,19 @@ Diagramm| BESCHREIBUNG
 
 ## <a name="handle-imbalanced-data"></a>Behandeln von unausgeglichenen Daten 
 
-Als Teil seines Ziels, den Workflow des maschinellen Lernens zu vereinfachen, verfügt das automatisierte maschinelle Lernen über integrierte Funktionen, die bei der Verarbeitung unausgeglichener Daten helfen. Beispiel: 
+Als Teil seines Ziels, den Workflow des maschinellen Lernens zu vereinfachen, verfügt das **automatisierte maschinelle Lernen über integrierte Funktionen**, die bei der Verarbeitung unausgeglichener Daten helfen. Beispiel: 
 
-- Eine **Gewichtungsspalte**: Das automatisierte maschinelle Lernen unterstützt eine gewichtete Spalte als Eingabe, wodurch Zeilen in den Daten eine höhere oder niedrigere Gewichtung erhalten. Auf diese Weise wird eine Klasse mehr oder weniger „wichtig“.
+- Eine **Gewichtungsspalte**: Das automatisierte maschinelle Lernen unterstützt eine gewichtete Spalte als Eingabe, wodurch Zeilen in den Daten eine höhere oder niedrigere Gewichtung erhalten. Auf diese Weise kann eine Klasse mehr oder weniger „wichtig“ festgelegt werden.
 
-- Die vom automatisierten maschinellen Lernen verwendeten Algorithmen können eine Unausgeglichenheit von bis zu 20:1 verarbeiten. Das bedeutet, dass die häufigste Klasse 20 mal mehr Zeilen in den Daten aufweisen kann als die am wenigsten häufige Klasse.
+- Die vom automatisierten maschinellen Lernen verwendeten Algorithmen erkennen eine Unausgeglichenheit, wenn die Anzahl der Stichproben in der Minderheitsklasse nicht mehr als 20 % der Anzahl der Stichproben in der Mehrheitsklasse beträgt, wobei als Minderheitsklasse die Klasse mit den wenigsten Stichproben und als Mehrheitsklasse die Klasse mit den meisten Stichproben bezeichnet wird. In der Folge führt AutoML ein Experiment mit Teilprobendaten aus, um zu überprüfen, ob sich das Problem mit Klassengewichtungen lösen und die Leistung so verbessern lässt. Wenn bei diesem Experiment eine bessere Leistung erzielt wurde, wird die Problemlösung übernommen.
 
-Die folgenden Verfahren sind zusätzliche Optionen zum Behandeln von unausgeglichenen Daten außerhalb des automatisierten maschinellen Lernens. 
+- Verwenden Sie eine Leistungsmetrik, die besser mit unausgeglichenen Daten umgeht. Beispielsweise ist AUC_weighted eine primäre Metrik, die den Beitrag jeder Klasse basierend auf der relativen Anzahl von Stichproben berechnet, die diese Klasse darstellen. Daher ist der Wert gegenüber einem Ungleichgewicht robuster.
+
+Die folgenden Verfahren sind zusätzliche Optionen zum Behandeln von unausgeglichenen Daten **außerhalb des automatisierten maschinellen Lernens**. 
 
 - Erneutes Sampling zum Ausgleichen der Unausgeglichenheit von Klassen, entweder durch Upsampling der kleineren Klassen oder durch Downsampling der größeren Klassen. Diese Methoden erfordern Fachwissen, um sie zu verarbeiten und zu analysieren.
 
-- Verwenden Sie eine Leistungsmetrik, die besser mit unausgeglichenen Daten umgeht. So ist z. B. der F1-Score ein gewichteter Mittelwert aus Genauigkeit und Trefferquote. Die Genauigkeit misst die Präzision eines Klassifizierers. Eine niedrige Genauigkeit zeigt eine hohe Anzahl von falsch positiven Werten an. Die Trefferquote misst hingegen die Vollständigkeit eines Klassifizierers. Eine niedrige Trefferquote zeigt eine hohe Anzahl von falsch negativen Werten an. 
+- Überprüfen Sie Leistungsmetriken für unausgeglichene Daten. So ist z. B. der F1-Score ein gewichteter Mittelwert aus Genauigkeit und Trefferquote. Die Genauigkeit misst die Präzision eines Klassifizierers. Eine niedrige Genauigkeit zeigt eine hohe Anzahl von falsch positiven Werten an. Die Trefferquote misst hingegen die Vollständigkeit eines Klassifizierers. Eine niedrige Trefferquote zeigt eine hohe Anzahl von falsch negativen Werten an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

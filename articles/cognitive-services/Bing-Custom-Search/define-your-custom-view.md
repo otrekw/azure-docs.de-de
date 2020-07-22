@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710166"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183204"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
@@ -92,8 +92,8 @@ Sie können Ihre Suchinstanz im Vorschaubereich auf der rechten Seite testen, um
 
 Über das Portal können Sie die Suchrangfolge des Inhalts bestimmter Domänen, Unterseiten und Webseiten anpassen. Nachdem Sie im Vorschaubereich eine Suchabfrage gesendet haben, enthält jedes Suchergebnis eine Liste mit Anpassungen, die Sie jeweils vornehmen können:  
 
-|            |                                                                                                                                                                      |
-|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Anpassung | BESCHREIBUNG |
+|------------|-------------|
 | Block      | Verschiebt die Domäne, Unterseite oder Webseite in die Liste „Blockiert“. Bing schließt den Inhalt des ausgewählten Orts dann von der Anzeige in den Suchergebnissen aus.                    |
 | Verstärken      | Zeigt Inhalte der Domäne oder Unterseite weiter oben in den Suchergebnissen an.                                                                                        |
 | Tiefer stufen     | Stuft Inhalte aus der Domäne oder Unterseite tiefer und zeigt sie weiter unten in den Suchergebnissen an. Sie wählen aus, ob Inhalt aus der Domäne oder Unterseite, zu der die Webseite gehört, tiefer gestuft werden soll. |

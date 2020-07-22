@@ -4,14 +4,14 @@ description: In diesem Artikel erfahren Sie, wie Sie die Bestandserfassung von v
 services: automation
 ms.subservice: change-inventory-management
 keywords: Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830615"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185720"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Verwalten der Bestandserfassung von virtuellen Computern
 
@@ -61,7 +61,7 @@ Die folgenden Abschnitte enthalten Informationen zu den einzelnen Eigenschaften,
 
 ### <a name="windows-registry"></a>Windows-Registrierung
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -70,7 +70,7 @@ Die folgenden Abschnitte enthalten Informationen zu den einzelnen Eigenschaften,
 
 ### <a name="windows-files"></a>Windows-Dateien
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | TRUE, wenn die Einstellung angewendet wird, andernfalls FALSE.        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei.        |
@@ -79,7 +79,7 @@ Die folgenden Abschnitte enthalten Informationen zu den einzelnen Eigenschaften,
 
 ### <a name="linux-files"></a>Linux-Dateien
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | TRUE, wenn die Einstellung angewendet wird, andernfalls FALSE.        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei.        |
@@ -87,7 +87,7 @@ Die folgenden Abschnitte enthalten Informationen zu den einzelnen Eigenschaften,
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. **/etc/*.conf**.       |
 |Pfadtyp     | Der Typ des Elements, das nachverfolgt werden soll. Werte sind „Datei“ und „Verzeichnis“.        |
 |Rekursion     | TRUE, wenn ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird, andernfalls FALSE.        |
-|Sudo verwenden     | TRUE, wenn sudo bei der Suche nach dem Element verwendet wird, andernfalls FALSE.         |
+|sudo verwenden     | TRUE, wenn sudo bei der Suche nach dem Element verwendet wird, andernfalls FALSE.         |
 |Links     | Wert, der angibt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden. Mögliche Werte: <br> Ignorieren: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>Folgen: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>Verwalten: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
 
 ## <a name="manage-machine-groups"></a>Verwalten von Computergruppen
@@ -100,7 +100,7 @@ Wählen Sie zum Anzeigen Ihrer Computergruppen auf der Seite „Inventar“ die 
 
 ![Anzeigen der Computergruppen auf der Seite „Inventar“](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-Wenn Sie in der Liste eine Computergruppe auswählen, wird die Seite „Computergruppen“ geöffnet. Diese Seite enthält Informationen zur Computergruppe. Hierzu gehört auch die Log Analytics-Abfrage, die zum Definieren der Gruppe verwendet wird. Unten auf der Seite befindet sich eine Liste mit den Computern (ggf. auf mehreren Seiten), die Teil der Gruppe sind.
+Wenn Sie in der Liste eine Computergruppe auswählen, wird die Seite „Computergruppen“ geöffnet. Diese Seite enthält Informationen zur Computergruppe. Hierzu gehört auch die Azure Monitor-Protokollabfrage, die zum Definieren der Gruppe verwendet wird. Unten auf der Seite befindet sich eine Liste mit den Computern (ggf. auf mehreren Seiten), die Teil der Gruppe sind.
 
 ![Anzeigen der Seite „Computergruppe“](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,18 +115,21 @@ Klicken Sie auf **+ Computergruppe erstellen**, um eine neue Computergruppe zu e
 So entfernen Sie Ihren virtuellen Computer aus der Verwaltung durch „Änderungsnachverfolgung und Bestand“:
 
 1. Wählen Sie im linken Bereich des Azure-Portals die Option **Log Analytics** und anschließend den Arbeitsbereich aus, den Sie beim Aktivieren von „Änderungsnachverfolgung und Bestand“ für Ihren virtuellen Computer verwendet haben.
-2. Öffnen Sie auf der Seite „Log Analytics“ das Menü **Ressourcen**.
+2. Öffnen Sie auf der Seite **Log Analytics** das Menü **Ressourcen**.
 3. Wählen Sie unter **Arbeitsbereichsdatenquellen** die Option **Virtuelle Computer** aus.
 4. Wählen Sie in der Liste den virtuellen Computer aus, dessen Verbindung Sie trennen möchten. Der Computer ist in der Spalte **OMS-Verbindung** neben **Dieser Arbeitsbereich** mit einem grünen Häkchen gekennzeichnet.
 
    >[!NOTE]
    >OMS (Operations Management Suite) wird jetzt als „Azure Monitor-Protokolle“ bezeichnet.
-   
+
 5. Klicken Sie oben auf der nächsten Seite auf **Trennen**.
 6. Klicken Sie im Bestätigungsfenster auf **Ja**, um den Computer von der Verwaltung zu trennen.
+
+>[!NOTE]
+>Computer werden weiterhin angezeigt, nachdem Sie die Registrierung aufgehoben haben, da wir alle in den letzten 24 Stunden inventarisierten Computer melden. Nachdem Sie den Computer getrennt haben, müssen Sie 24 Stunden warten, bis er nicht mehr aufgelistet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ausführliche Informationen zur Verwendung des Features finden Sie unter [Verwalten der Änderungsnachverfolgung und des Bestands](change-tracking-file-contents.md).
-* Weitere Informationen zur Nachverfolgung von Softwareänderungen finden Sie unter [Übersicht über Änderungsnachverfolgung und Bestand](../log-analytics/log-analytics-change-tracking.md).
+* Weitere Informationen zur Nachverfolgung von Softwareänderungen finden Sie unter [Übersicht über Änderungsnachverfolgung und Bestand](./change-tracking.md).
 * Informationen zur Behandlung allgemeiner Probleme mit dem Feature finden Sie unter [Behandeln von Problemen mit Änderungsnachverfolgung und Bestand](troubleshoot/change-tracking.md).

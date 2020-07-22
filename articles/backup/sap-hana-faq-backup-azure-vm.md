@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuelle
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248803"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170325"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -18,11 +18,11 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern 
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>Wie viele vollständige Sicherungen werden pro Tag unterstützt?
 
-Wir unterstützen nur eine vollständige Sicherung pro Tag. Es ist nicht möglich, eine differenzielle Sicherung und eine vollständige Sicherung am selben Tag auszulösen.
+Wir unterstützen nur eine vollständige Sicherung pro Tag. Es ist nicht möglich, am selben Tag eine differenzielle Sicherung und eine vollständige Sicherung auszulösen.
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Erstellen erfolgreiche Sicherungsaufträge Warnungen?
 
-Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen werden nur für Sicherungsaufträge gesendet, bei denen ein Fehler aufgetreten ist. Ausführliche Informationen zum Verhalten von Portalwarnungen finden Sie [hier](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Wenn Sie jedoch daran interessiert sind, Benachrichtigungen auch für erfolgreiche Aufträge zu erhalten, können Sie [Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor) verwenden.
+Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen werden nur für Sicherungsaufträge gesendet, bei denen ein Fehler aufgetreten ist. Ausführliche Informationen zum Verhalten von Portalwarnungen finden Sie [hier](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Falls Sie aber daran interessiert sind, Benachrichtigungen auch für erfolgreiche Aufträge zu erhalten, können Sie [Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor) verwenden.
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Werden geplante Sicherungsaufträge im Menü „Sicherungsaufträge“ angezeigt?
 
@@ -30,7 +30,7 @@ Im Menü „Sicherungsaufträge“ werden nur Ad-hoc-Sicherungsaufträge angezei
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>Werden zukünftige Datenbanken für die Durchführung von Sicherungen automatisch hinzugefügt?
 
-Nein, dies wird derzeit nicht unterstützt.
+Nein. Dies wird derzeit nicht unterstützt.
 
 ### <a name="if-i-delete-a-database-from-an-instance-what-will-happen-to-the-backups"></a>Was passiert mit den Sicherungen, wenn ich eine Datenbank aus einer Instanz lösche?
 
@@ -45,7 +45,7 @@ Eine umbenannte Datenbank wird wie eine neue Datenbank behandelt. Diese Situatio
 
 Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und den [Aufgaben des Vorregistrierungsskripts](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
-### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Welche Berechtigungen sollten für Azure festgelegt werden, damit SAP HANA-Datenbanken gesichert werden können?
+### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>Welche Berechtigungen sollten festgelegt werden, damit SAP HANA-Datenbanken von Azure gesichert werden können?
 
 Wenn Sie das Skript vor der Registrierung ausführen, werden die erforderlichen Berechtigungen festgelegt, damit Azure SAP HANA-Datenbanken sichern kann. Weitere Informationen zu den Aufgaben des Vorregistrierungsskripts finden Sie [hier](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
@@ -55,23 +55,57 @@ Weitere Informationen finden Sie in [diesem Abschnitt](https://docs.microsoft.co
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Kann die HANA-Sicherung in Azure für eine virtuelle IP-Adresse (Lastenausgleich) und nicht einen virtuellen Computer eingerichtet werden?
 
-Zurzeit besteht keine Möglichkeit, die Lösung für eine virtuelle IP-Adresse allein einzurichten. Es wird ein virtueller Computer zum Ausführen der Lösung benötigt.
-
-### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Ich verfüge über eine SAP HANA-Systemreplikation (HSR). Wie kann ich die Sicherung für dieses Setup konfigurieren?
-
-Die primären und sekundären Knoten der HSR werden als zwei einzelne, nicht in Verbindung stehende VMs behandelt. Sie müssen die Sicherung auf dem primären Knoten konfigurieren, und wenn das Failover durchgeführt wird, müssen Sie die Sicherung auf dem sekundären Knoten konfigurieren (der nun zum primären Knoten wird). Es erfolgt kein automatisches „Failover“ der Sicherung auf den anderen Knoten.
+Derzeit besteht keine Möglichkeit, die Lösung nur für eine virtuelle IP-Adresse einzurichten. Es wird ein virtueller Computer zum Ausführen der Lösung benötigt.
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Wie kann ich eine bedarfsgesteuerte Sicherung in das lokale Dateisystem anstatt in den Azure-Tresor verschieben?
 
-1. Warten Sie, bis die aktuell ausgeführte Sicherung für die gewünschte Datenbank abgeschlossen ist (überprüfen Sie in Studio, ob der Vorgang abgeschlossen ist)
+1. Warten Sie, bis die aktuell ausgeführte Sicherung für die gewünschte Datenbank abgeschlossen ist (überprüfen Sie in Studio, ob der Vorgang abgeschlossen ist).
 1. Deaktivieren Sie Protokollsicherungen, und legen Sie die Katalogsicherung mithilfe der folgenden Schritte auf **Dateisystem** für die gewünschte Datenbank fest:
 1. Doppelklicken Sie auf **SYSTEMDB** -> **Konfiguration** -> **Datenbank auswählen** -> **Filter (Protokoll)** .
     1. Legen Sie „enable_auto_log_backup“ auf **No** fest.
-    1. Legen Sie „log_backup_using_backint“ auf **False** fest.
-1. Erstellen Sie eine bedarfsgesteuerte Sicherung für die gewünschte Datenbank, und warten Sie, bis Sicherung und Katalogsicherung abgeschlossen sind.
+    1. Legen Sie „catalog_backup_using_backint“ auf **False** fest.
+1. Erstellen Sie eine bedarfsgesteuerte Sicherung (vollständig/differenziell/inkrementell) für die gewünschte Datenbank, und warten Sie, bis die Vorgänge für die Sicherung und die Katalogsicherung abgeschlossen sind.
+1. Legen Sie „enable_auto_log_backup“ auf **Yes** fest, wenn auch die Protokollsicherungen in das Dateisystem verschoben werden sollen.
 1. Kehren Sie zu den vorherigen Einstellungen zurück, damit Sicherungen in den Azure-Tresor übertragen werden können:
     1. Legen Sie „enable_auto_log_backup“ auf **Yes** fest.
-    1. Legen Sie „log_backup_using_backint“ auf **True** fest.
+    1. Legen Sie „catalog_backup_using_backint“ auf **True** fest.
+
+>[!NOTE]
+>Beim Verschieben von Sicherungen in das lokale Dateisystem und Zurückwechseln zum Azure-Tresor kann es zu einer Unterbrechung der Protokollkette im Tresor kommen. Hierdurch wird eine vollständige Sicherung ausgelöst, nach deren erfolgreichem Abschluss mit dem Sichern der Protokolle begonnen wird.
+
+### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>Wie kann ich die SAP HANA-Sicherung mit meiner Einrichtung der HANA-Replikation nutzen?
+
+Derzeit ist Azure Backup nicht in der Lage, eine HSR-Einrichtung zu verstehen. Dies bedeutet, dass der primäre und sekundäre Knoten der HSR als zwei einzelne VMs behandelt werden, die nicht in Verbindung stehen. Zuerst müssen Sie die Sicherung auf dem primären Knoten konfigurieren. Wenn ein Failover ausgeführt wird, muss die Sicherung auf dem sekundären Knoten konfiguriert werden (der nun zum primären Knoten wird). Es erfolgt kein automatisches Failover der Sicherung auf den anderen Knoten.
+
+Zum Sichern von Daten vom aktiven (primären) Knoten zu einem beliebigen Zeitpunkt können Sie einen **Wechsel des Schutzes** auf den sekundären Knoten durchführen, der nach dem Failover zum primären Knoten geworden ist.
+
+Führen Sie diese Schritte aus, um diesen **Wechsel des Schutzes** durchzuführen:
+
+- [Beenden des Schutzes](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) (mit Beibehaltung der Daten) auf dem primären Knoten
+- Ausführen des [Vorregistrierungsskripts](https://aka.ms/scriptforpermsonhana) auf dem sekundären Knoten
+- [Ermitteln der Datenbanken](tutorial-backup-sap-hana-db.md#discover-the-databases) auf dem sekundären Knoten und [Konfigurieren der entsprechenden Sicherungen](tutorial-backup-sap-hana-db.md#configure-backup)
+
+Diese Schritte müssen nach jedem Failover manuell ausgeführt werden. Sie können diese Schritte nicht nur im Azure-Portal ausführen, sondern auch per Befehlszeile/HTTP REST. Für die Automatisierung dieser Schritte können Sie ein Azure-Runbook verwenden.
+
+Hier ist ein ausführliches Beispiel für den **Wechsel des Schutzes** angegeben:
+
+In diesem Beispiel verfügen Sie über zwei Knoten: Knoten 1 (primär) und Knoten 2 (sekundär) in der HSR-Einrichtung.  Sicherungen werden auf Knoten 1 konfiguriert. Wie bereits erwähnt, sollten Sie noch nicht versuchen, Sicherungen auf Knoten 2 zu konfigurieren.
+
+Wenn das erste Failover ausgeführt wird, wird Knoten 2 zum primären Knoten. Dies ergibt folgende Szenarien:
+
+1. Beenden Sie den Schutz auf Knoten 1 (vorheriger primärer Knoten) mit der Option zur Beibehaltung der Daten.
+1. Führen Sie das Vorregistrierungsskript auf Knoten 2 (nun der primäre Knoten) aus.
+1. Ermitteln Sie die Datenbanken auf Knoten 2, weisen Sie eine Sicherungsrichtlinie zu, und konfigurieren Sie die Sicherungen.
+
+Anschließend wird auf Knoten 2 eine erste vollständige Sicherung ausgelöst, und nach deren Abschluss beginnen die Protokollsicherungen.
+
+Beim nächsten Failover wird Knoten 1 wieder zum primären Knoten und Knoten 2 zum sekundären Knoten. Wiederholen Sie nun den Vorgang:
+
+1. Beenden Sie den Schutz von Knoten 2 mit der Option zur Beibehaltung der Daten.
+1. Führen Sie das Vorregistrierungsskript auf Knoten 1 (der wieder zum primären Knoten geworden ist) aus.
+1. [Setzen Sie dann die Sicherungen auf Knoten 1 fort](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database), indem Sie die erforderliche Richtlinie nutzen (da die Sicherungsvorgänge zuvor für Knoten 1 beendet wurden).
+
+Anschließend wird auf Knoten 1 erneut eine vollständige Sicherung ausgelöst, und nach deren Abschluss beginnen die Protokollsicherungen.
 
 ## <a name="restore"></a>Restore
 
@@ -87,9 +121,9 @@ Stellen Sie sicher, dass die Option **Überschreiben erzwingen** beim Wiederhers
 
 Lesen Sie den SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu ermitteln, welche Wiederherstellungstypen derzeit unterstützt werden.
 
-### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Kann ich eine Sicherung einer laufenden Datenbank auf SLES verwenden, um sie in einem RHEL Hana-System wiederherzustellen, oder umgekehrt?
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>Kann ich eine Sicherung einer laufenden Datenbank auf SLES verwenden, um sie in einem RHEL HANA-System wiederherzustellen (oder umgekehrt)?
 
-Ja, Sie können Streamingsicherungen, die auf einer auf SLES laufenden HANA-Datenbank ausgelöst wurden, verwenden, um sie auf einem RHEL HANA-System wiederherzustellen und umgekehrt. Das heißt, dass die betriebssystemübergreifende Wiederherstellung mithilfe von Streamingsicherungen möglich ist. Sie müssen jedoch sicherstellen, dass sowohl HANA-System, auf dem Sie die Wiederherstellung durchführen möchten, als auch das HANA-System, das für die Wiederherstellung verwendet wird, für die Wiederherstellung gemäß SAP kompatibel sind. Lesen Sie SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu erfahren, welche Wiederherstellungstypen kompatibel sind.
+Ja. Sie können Streamingsicherungen, die auf einer auf SLES laufenden HANA-Datenbank ausgelöst wurden, verwenden, um sie auf einem RHEL HANA-System wiederherzustellen (und umgekehrt). Das heißt, dass die betriebssystemübergreifende Wiederherstellung mithilfe von Streamingsicherungen möglich ist. Sie müssen aber sicherstellen, dass sowohl das HANA-System, auf dem Sie die Wiederherstellung durchführen möchten, als auch das HANA-System, das für die Wiederherstellung verwendet wird, gemäß SAP für die Wiederherstellung kompatibel sind. Lesen Sie SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu erfahren, welche Wiederherstellungstypen kompatibel sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

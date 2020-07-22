@@ -3,12 +3,13 @@ title: Python-Entwicklerreferenz für Azure Functions
 description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 49577f5ac274b4e34fa07415e5495329ff650aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676194"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170376"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -262,7 +263,7 @@ Weitere Informationen über Protokollierung finden Sie unter [Überwachen von Az
 
 ## <a name="http-trigger-and-bindings"></a>HTTP-Trigger und -Bindungen
 
-Der HTTP-Trigger ist in der Datei „function.jon“ definiert. Der `name` der Bindung muss mit dem benannten Parameter in der Funktion identisch sein.
+Der HTTP-Trigger ist in der Datei „function.json“ definiert. Der `name` der Bindung muss mit dem benannten Parameter in der Funktion identisch sein.
 In den vorherigen Beispielen wird der Bindungsname `req` verwendet. Dieser Parameter ist ein [HttpRequest]-Objekt, und es wird ein [HttpResponse]-Objekt zurückgegeben.
 
 Aus dem [HttpRequest]-Objekt können Sie Anforderungsheader, Abfrageparameter, Routenparameter und den Nachrichtentext extrahieren.
@@ -427,17 +428,15 @@ Wenn Sie zur Veröffentlichung bereit sind, stellen Sie sicher, dass alle Ihre �
 
 Projektdateien und -ordner, die von der Veröffentlichung ausgeschlossen sind, einschließlich des Ordners der virtuellen Umgebung, werden in der .funcignore-Datei aufgelistet.
 
-Zum Veröffentlichen Ihres Python-Projekts in Azure werden drei Buildaktionen unterstützt:
+Für die Veröffentlichung Ihres Python-Projekts in Azure werden drei Buildaktionen unterstützt: Remotebuild, lokaler Build und Builds mit benutzerdefinierten Abhängigkeiten.
 
-+ Remotebuild: Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ remote abgerufen. [Remotebuild](functions-deployment-technologies.md#remote-build) ist die empfohlene Buildmethode. Remote ist auch die standardmäßige Buildoption von Azure-Tools.
-+ Lokaler Build: Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ lokal abgerufen.
-+ Benutzerdefinierte Abhängigkeiten: In Ihrem Projekt werden Pakete verwendet, die für unsere Tools nicht öffentlich verfügbar sind. (Erfordert Docker.)
-
-[Verwenden Sie Azure-Pipelines](functions-how-to-azure-devops.md), um Ihre Abhängigkeiten zu erstellen und mithilfe eines Continuous Delivery-Systems zu veröffentlichen.
+Sie können auch Azure Pipelines verwenden, um Ihre Abhängigkeiten zu erstellen und mit Continuous Delivery (CD) Veröffentlichungen durchzuführen. Weitere Informationen finden Sie unter [Continuous Delivery mit Azure DevOps](functions-how-to-azure-devops.md).
 
 ### <a name="remote-build"></a>Remotebuild
 
-Standardmäßig fordert Azure Functions Core Tools einen Remotebuild an, wenn Sie den folgenden [func azure functionapp publish](functions-run-local.md#publish)-Befehl zum Veröffentlichen Ihres Python-Projekts in Azure verwenden.
+Bei Verwendung des Remotebuilds stimmen die auf dem Server wiederhergestellten Abhängigkeiten und die nativen Abhängigkeiten mit der Produktionsumgebung überein. Dies führt zu einem kleineren Bereitstellungspaket, das hochgeladen werden muss. Verwenden Sie den Remotebuild, wenn Sie Python-Apps unter Windows entwickeln. Wenn Ihr Projekt über benutzerdefinierte Abhängigkeiten verfügt, können Sie den [Remotebuild mit einer zusätzlichen Index-URL verwenden](#remote-build-with-extra-index-url). 
+ 
+Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ remote abgerufen. [Remotebuild](functions-deployment-technologies.md#remote-build) ist die empfohlene Buildmethode. Standardmäßig fordert Azure Functions Core Tools einen Remotebuild an, wenn Sie den folgenden [func azure functionapp publish](functions-run-local.md#publish)-Befehl zum Veröffentlichen Ihres Python-Projekts in Azure verwenden.
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -449,7 +448,7 @@ Die [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first
 
 ### <a name="local-build"></a>Lokaler Build
 
-Sie können das Ausführen eines Remotebuilds verhindern, indem Sie mit dem folgenden [func azure functionapp publish](functions-run-local.md#publish)-Befehl mit einem lokalen Build veröffentlichen.
+Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ lokal abgerufen. Sie können das Ausführen eines Remotebuilds verhindern, indem Sie mit dem folgenden [func azure functionapp publish](functions-run-local.md#publish)-Befehl mit einem lokalen Build veröffentlichen.
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -457,9 +456,21 @@ func azure functionapp publish <APP_NAME> --build local
 
 Denken Sie daran, `<APP_NAME>` durch den Namen Ihrer Funktions-App in Azure zu ersetzen.
 
-Mit der `--build local`-Option werden Projektabhängigkeiten aus der Datei „requirements.txt“ gelesen, und die betreffenden abhängigen Pakete werden lokal heruntergeladen und installiert. Projektdateien und Abhängigkeiten werden von Ihrem lokalen Computer in Azure bereitgestellt. Dadurch wird ein größeres Bereitstellungspaket in Azure hochgeladen. Wenn, gleich aus welchen Gründen, Abhängigkeiten in der Datei „requirements.txt “ nicht von Core Tools abgerufen werden können, müssen Sie die benutzerdefinierte Option für Abhängigkeiten für die Veröffentlichung verwenden.
+Mit der `--build local`-Option werden Projektabhängigkeiten aus der Datei „requirements.txt“ gelesen, und die betreffenden abhängigen Pakete werden lokal heruntergeladen und installiert. Projektdateien und Abhängigkeiten werden von Ihrem lokalen Computer in Azure bereitgestellt. Dadurch wird ein größeres Bereitstellungspaket in Azure hochgeladen. Wenn, gleich aus welchen Gründen, Abhängigkeiten in der Datei „requirements.txt “ nicht von Core Tools abgerufen werden können, müssen Sie die benutzerdefinierte Option für Abhängigkeiten für die Veröffentlichung verwenden. 
+
+Es ist nicht zu empfehlen, bei der lokalen Entwicklungsarbeit unter Windows lokale Builds zu nutzen.
 
 ### <a name="custom-dependencies"></a>Benutzerdefinierte Abhängigkeiten
+
+Wenn Ihr Projekt über Abhängigkeiten verfügt, die nicht im [Index für Python-Pakete](https://pypi.org/) enthalten sind, haben Sie zwei Möglichkeiten für die Erstellung des Projekts. Die Buildmethode hängt davon ab, wie Sie das Projekt erstellen.
+
+#### <a name="remote-build-with-extra-index-url"></a>Remotebuild mit zusätzlicher Index-URL
+
+Verwenden Sie einen Remotebuild, wenn Ihre Pakete über einen zugänglichen benutzerdefinierten Paketindex verfügbar sind. Stellen Sie vor der Veröffentlichung sicher, dass Sie eine [App-Einstellung erstellen](functions-how-to-use-azure-function-app-settings.md#settings), die den Namen `PIP_EXTRA_INDEX_URL` hat. Der Wert für diese Einstellung ist die URL Ihres benutzerdefinierten Paketindexes. Mit der Verwendung dieser Einstellung wird der Remotebuild angewiesen, `pip install` mit der Option `--extra-index-url` auszuführen. Weitere Informationen finden Sie in der [Dokumentation zur Python-PIP-Installation](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format). 
+
+Sie können auch die grundlegenden Anmeldeinformationen für die Authentifizierung mit Ihren zusätzlichen Paketindex-URLs verwenden. Weitere Informationen finden Sie im Abschnitt zu den [grundlegenden Anmeldeinformationen für die Authentifizierung](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) in der Python-Dokumentation.
+
+#### <a name="install-local-packages"></a>Installieren von lokalen Paketen
 
 Wenn in Ihrem Projekt Pakete verwendet werden, die für unsere Tools nicht öffentlich verfügbar sind, können Sie sie für die App verfügbar machen, indem Sie sie im Verzeichnis „\_\_app\_\_/.python_packages“ ablegen. Führen Sie vor dem Veröffentlichen den folgenden Befehl aus, um die Abhängigkeiten lokal zu installieren:
 
@@ -467,7 +478,7 @@ Wenn in Ihrem Projekt Pakete verwendet werden, die für unsere Tools nicht öffe
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-Wenn Sie benutzerdefinierte Abhängigkeiten verwenden, müssen Sie die `--no-build`-Veröffentlichungsoption verwenden, da Sie die Abhängigkeiten bereits installiert haben.
+Wenn Sie benutzerdefinierte Abhängigkeiten verwenden, müssen Sie die `--no-build`-Veröffentlichungsoption nutzen, da Sie die Abhängigkeiten bereits im Projektordner installiert haben.
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
@@ -629,6 +640,45 @@ from os import listdir
 
 Es wird empfohlen, dass Sie Ihre Tests in einem Ordner außerhalb des Projektordners speichern. Dadurch wird die Bereitstellung von Testcode mit der App verhindert.
 
+## <a name="preinstalled-libraries"></a>Vorinstallierte Bibliotheken
+
+Es gibt einige Bibliotheken, die über die Python-Functions-Runtime verfügen.
+
+### <a name="python-standard-library"></a>Python-Standardbibliothek
+
+Die Python-Standardbibliothek enthält eine Liste mit integrierten Python-Modulen, die in jeder Python-Distribution enthalten sind. Die meisten dieser Bibliotheken dienen Ihnen als Hilfe beim Zugreifen auf die Systemfunktionalität, z. B. Datei-E/A. Auf Windows-Systemen werden diese Bibliotheken mit Python installiert. Auf den UNIX-basierten Systemen werden sie über Paketsammlungen bereitgestellt.
+
+Die vollständigen Details zur Liste mit diesen Bibliotheken finden Sie unter den folgenden Links:
+
+* [Python 3.6-Standardbibliothek](https://docs.python.org/3.6/library/)
+* [Python 3.7-Standardbibliothek](https://docs.python.org/3.7/library/)
+* [Python 3.8-Standardbibliothek](https://docs.python.org/3.8/library/)
+
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions: Python-Workerabhängigkeiten
+
+Für den Functions-Python-Worker wird ein bestimmter Satz mit Bibliotheken benötigt. Sie können diese Bibliotheken auch in Ihren Funktionen verwenden, aber sie sind nicht Teil des Python-Standards. Sofern Ihre Funktionen auf einer dieser Bibliotheken basieren, sind sie für Ihren Code ggf. nicht verfügbar, wenn die Ausführung außerhalb von Azure Functions erfolgt. Eine detaillierte Liste mit den Abhängigkeiten finden Sie im Abschnitt **install\_requires** in der Datei [setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282).
+
+### <a name="azure-functions-python-library"></a>Azure Functions-Python-Bibliothek
+
+Jedes Update eines Python-Workers enthält eine neue Version der [Azure Functions-Python-Bibliothek (azure.functions)](https://github.com/Azure/azure-functions-python-library). Dieser Ansatz vereinfacht es, Ihre Python-Funktions-Apps fortlaufend zu aktualisieren, weil jedes Update abwärtskompatibel ist. Eine Liste mit den Releases dieser Bibliothek finden Sie unter [azure-functions PyPi](https://pypi.org/project/azure-functions/#history).
+
+Die Version der Runtimebibliothek ist in Azure festgelegt und kann mit „requirements.txt“ nicht überschrieben werden. Der Eintrag `azure-functions` in der Datei „requirements.txt“ dient nur zum Linten und für das Kundenbewusstsein. 
+
+Verwenden Sie den folgenden Code, um die tatsächliche Version der Functions-Python-Bibliothek in Ihrer Runtime nachzuverfolgen:
+
+```python
+getattr(azure.functions, '__version__', '< 1.2.1')
+```
+
+### <a name="runtime-system-libraries"></a>Runtimesystembibliotheken
+
+Eine Liste mit den vorinstallierten Systembibliotheken in Docker-Images von Python-Workern finden Sie unter den folgenden Links:
+
+|  Functions-Runtime  | Debian-Version | Python-Versionen |
+|------------|------------|------------|
+| Version 2.x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| Version 3.x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+
 ## <a name="cross-origin-resource-sharing"></a>Cross-Origin Resource Sharing
 
 [!INCLUDE [functions-cors](../../includes/functions-cors.md)]
@@ -637,7 +687,7 @@ CORS wird für Python-Funktions-Apps vollständig unterstützt.
 
 ## <a name="known-issues-and-faq"></a>Bekannte Probleme und FAQ
 
-Dank ihres wertvollen Feedbacks sind wir in der Lage, eine Liste mit Anleitungen zur Problembehandlung für häufige Probleme zu pflegen:
+Hier ist eine Liste mit Leitfäden zur Problembehandlung für häufige Probleme angegeben:
 
 * [ModuleNotFoundError und ImportError](recover-module-not-found.md)
 

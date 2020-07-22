@@ -6,31 +6,32 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/16/2020
+ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983600"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147254"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird das Modul „Execute Python Script“ (Python-Skript ausführen) in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
-Verwenden Sie dieses Modul zum Ausführen von Python-Code. Weitere Informationen zur Architektur und den Entwurfsprinzipien von Python finden Sie [im folgenden Artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
+Verwenden Sie dieses Modul zum Ausführen von Python-Code. Weitere Informationen zur Architektur und zu den Entwurfsprinzipien von Python finden Sie im Artikel zum [Ausführen von Python-Code in Azure Machine Learning-Designer](../how-to-designer-python.md).
 
-Mit Python können Sie Aufgaben ausführen, die aktuell von vorhandenen Modulen nicht unterstützt werden, beispielsweise:
+Mit Python können Sie Aufgaben durchführen, die von vorhandenen Modulen nicht unterstützt werden, z. B.:
 
 + Visualisieren von Daten mit `matplotlib`
 + Verwenden von Python-Bibliotheken zum Auflisten von Datasets und Modellen in Ihrem Arbeitsbereich
 + Lesen, Laden und Bearbeiten von Daten aus Quellen, die vom Modul [Daten importieren](./import-data.md) nicht unterstützt werden
-+ Ausführen eigenen Deep Learning-Codes 
++ Ausführen von eigenem Deep Learning-Code 
 
 
-Azure Machine Learning verwendet die Anaconda-Distribution von Python, die viele gängige Hilfsprogramme für die Datenverarbeitung enthält. Wir führen Updates der Anaconda-Version automatisch aus. Die aktuelle Version ist:
+Azure Machine Learning verwendet die Anaconda-Distribution von Python, die viele gängige Hilfsprogramme für die Datenverarbeitung enthält. Wir nutzen hier die Funktion für die automatische Aktualisierung der Anaconda-Version. Die aktuelle Version lautet:
  -  Anaconda 4.5+-Distribution für Python 3.6 
 
 Dies sind die vorinstallierten Pakete:
@@ -144,26 +145,37 @@ Dies sind die vorinstallierten Pakete:
 -    werkzeug==0.16.1
 -    wheel==0.34.2
 
- Um weitere Pakete zu installieren, die nicht in der Liste der vorinstallierten Pakete enthalten sind, beispielsweise *scikit-misc*, fügen Sie Ihrem Skript den folgenden Code hinzu: 
+ Um Pakete zu installieren, die nicht in der Liste mit den vorinstallierten Paketen enthalten sind (z. B. *scikit-misc*), fügen Sie Ihrem Skript den folgenden Code hinzu: 
 
  ```python
 import os
 os.system(f"pip install scikit-misc")
 ```
+
+Verwenden Sie den folgenden Code zum Installieren von Paketen, um die Leistung zu verbessern, insbesondere in Bezug auf Rückschlüsse:
+```python
+import importlib.util
+package_name = 'scikit-misc'
+spec = importlib.util.find_spec(package_name)
+if spec is None:
+    import os
+    os.system(f"pip install scikit-misc")
+```
+
 > [!NOTE]
-> Wenn Ihre Pipeline mehrere Execute Python Script-Module enthält und diese dieselben Pakete benötigen, die nicht in der Liste der vorinstallierten Pakete aufgeführt sind, müssen Sie die Pakete in jedem Modul einzeln installieren. 
+> Wenn Ihre Pipeline über mehrere Module vom Typ „Execute Python Script“ (Python-Skript ausführen) verfügt, für die Pakete benötigt werden, die nicht in der Liste mit den vorinstallierten Elementen enthalten sind, müssen Sie die Pakete in den einzelnen Modulen installieren.
 
 ## <a name="upload-files"></a>Hochladen von Dateien
-Die Option **Execute Python Script** (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
+„Execute Python Script“ (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
 
-Das folgende Beispiel zeigt, wie eine Imagedatei im Modul **Execute Python Script** (Python-Skript ausführen) hochgeladen wird:
+Das folgende Beispiel zeigt, wie eine Bilddatei im Modul „Execute Python Script“ (Python-Skript ausführen) hochgeladen wird:
 
 ```Python
 
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# imports up here can be used to
+# Imports up here can be used to
 import pandas as pd
 
 # The entry point function must have two input arguments:
@@ -185,70 +197,70 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     run.upload_file(f"graphics/{img_file}", img_file)
 
     # Return value must be of a sequence of pandas.DataFrame
-    # E.g.
+    # For example:
     #   -  Single return value: return dataframe1,
     #   -  Two return values: return dataframe1, dataframe2
     return dataframe1,
 }
 ```
 
-Nachdem die Pipelineausführung abgeschlossen ist, können Sie eine Vorschau des Images im rechten Bereich des Moduls anzeigen.
+Nachdem die Pipelineausführung abgeschlossen ist, können Sie eine Vorschau des Bilds im rechten Bereich des Moduls anzeigen.
 
 > [!div class="mx-imgBorder"]
-> ![Uploaded-image](media/module/upload-image-in-python-script.png)
+> ![Vorschau für hochgeladenes Bild](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Konfigurieren von „Execute Python Script“ (Python-Skript ausführen)
 
-Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Ausgangspunkt verwenden können. Um das Modul **Python-Skript ausführen** zu konfigurieren, geben Sie einen Satz von Eingaben und auszuführenden Python-Code im Textfeld **Pytho-Skript** ein.
+Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python-Beispielcode, den Sie als Ausgangspunkt verwenden können. Geben Sie im Textfeld **Python-Skript** eine Reihe von Eingaben und den auszuführenden Python-Code ein, um das Modul „Execute Python Script“ (Python-Skript ausführen) zu konfigurieren.
 
 1. Fügen Sie Ihrer Pipeline das Modul **Python-Skript ausführen** hinzu.
 
 2. Fügen Sie in **Dataset1** alle Datasets aus dem Designer hinzu, die Sie als Eingabe verwenden möchten. Verweisen Sie auf dieses Dataset in Ihrem Python-Skript als **DataFrame1**.
 
-    Die Verwendung eines Datasets ist optional, wenn Sie Daten mithilfe von Python generieren oder Python-Code zum direkten Importieren der Daten in das Modul verwenden möchten.
+    Die Verwendung eines Datasets ist optional. Verwenden Sie ein Dataset, wenn Sie Daten mit Python generieren oder Python-Code zum direkten Importieren der Daten in das Modul verwenden möchten.
 
-    Dieses Modul unterstützt das Hinzufügen eines zweiten Datensets in **Dataset2**. Verweisen Sie auf das zweite Dataset in ihrem Python-Skript als „DataFrame2“.
+    Dieses Modul unterstützt das Hinzufügen eines zweiten Datasets in **Dataset2**. Verweisen Sie auf das zweite Dataset in Ihrem Python-Skript als **DataFrame2**.
 
-    In Azure Machine Learning gespeicherte Datasets werden automatisch in **Pandas** data.frames konvertiert, wenn sie mit diesem Modul geladen werden.
+    In Azure Machine Learning gespeicherte Datasets werden automatisch in Pandas-Datenrahmen konvertiert, wenn sie mit diesem Modul geladen werden.
 
     ![Eingabezuordnung zum Ausführen von Python-Code](media/module/python-module.png)
 
-4. Um neue Python-Pakete oder Code einzuschließen, fügen Sie die ZIP-Datei, die diese benutzerdefinierten Ressourcen enthält, in **Script bundle** (Skriptbundle) hinzu. Die Eingabe in **Script bundle** muss eine ZIP-Datei sein, die als Dateityp „Dataset“ in Ihren Arbeitsbereich hochgeladen wurde. Sie können das Dataset auf der Ressourcenseite **Datasets** hochladen, und Sie können das Datasetmodul mithilfe von Drag & Drop aus der Liste **My Datasets** (Meine Datasets) in der linken Modulstruktur auf der Designer-Erstellungsseite verschieben. 
+4. Um neue Python-Pakete oder Code einzuschließen, fügen Sie die ZIP-Datei, die diese benutzerdefinierten Ressourcen enthält, in **Script bundle** (Skriptbundle) hinzu. Die Eingabe in **Script bundle** muss eine ZIP-Datei sein, die als Dateityp „Dataset“ in Ihren Arbeitsbereich hochgeladen wurde. Das Dataset können Sie auf der Ressourcenseite **Datasets** hochladen. Sie können das Datasetmodul auf der Erstellungsseite des Designers in der Modulstruktur auf der linken Seite aus der Liste **Meine Datasets** ziehen. 
 
     Während der Ausführung der Pipeline kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten, Sie müssen dem Pfad aber ein Verzeichnis mit dem Namen **src** voranstellen.
 
 5. Geben oder fügen Sie in das Textfeld **Python script** (Python-Skript) ein gültiges Python-Skript ein.
 
     > [!NOTE]
-    > Gehen Sie beim Schreiben Ihres Skripts sehr sorgfältig vor, und stellen Sie sicher, dass keine Syntaxfehler vorliegen, also z. B. keine nicht deklarierten Objekte oder nicht importierten Module verwendet werden. Widmen Sie außerdem der Liste der vorinstallierten Module besondere Aufmerksamkeit. Um Module zu importieren, die nicht aufgelistet sind, installieren Sie die entsprechenden Pakete in Ihrem Skript, z. B.
+    >  Gehen Sie beim Schreiben Ihres Skripts mit Bedacht vor. Stellen Sie sicher, dass keine Syntaxfehler vorhanden sind, z. B. Verwendung von nicht deklarierten Variablen oder nicht importierten Modulen oder Funktionen. Schenken Sie der Liste mit den vorinstallierten Modulen besondere Aufmerksamkeit. Um Module zu importieren, die nicht aufgelistet sind, installieren Sie die entsprechenden Pakete in Ihrem Skript, z. B.:
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    Das Textfeld **Python script** (Python-Skript) ist mit einigen Anweisungen in Kommentaren und Beispielcode für den Datenzugriff und die Datenausgabe voraufgefüllt. Sie müssen diesen Code bearbeiten oder ersetzen. Achten Sie darauf, die Python-Konventionen zu Einzug und Schreibweise zu beachten.
+    Das Textfeld **Python script** (Python-Skript) enthält bereits einige Anweisungen in Kommentaren und Beispielcode für den Datenzugriff und die Datenausgabe. Sie müssen diesen Code bearbeiten oder ersetzen. Halten Sie sich an die Python-Konventionen, die in Bezug auf Einzüge und die Groß-/Kleinschreibung gelten:
 
     + Das Skript muss eine Funktion mit dem Namen `azureml_main` als Einstiegspunkt für dieses Modul enthalten.
-    + Die Einstiegspunktfunktion muss über zwei Eingabeargumente verfügen: `Param<dataframe1>` und `Param<dataframe2>`, auch wenn diese Argumente nicht in Ihrem Skript verwendet werden.
-    + ZIP-Dateien, die mit dem dritten Eingabeport verbunden sind, werden entzippt und im Verzeichnis `.\Script Bundle` gespeichert, das dem Python-`sys.path` ebenfalls hinzugefügt wird. 
+    + Die Einstiegspunktfunktion muss über die beiden Eingabeargumente `Param<dataframe1>` und `Param<dataframe2>` verfügen. Dies gilt auch, wenn diese Argumente nicht in Ihrem Skript verwendet werden.
+    + ZIP-Dateien, die mit dem dritten Eingabeport verbunden sind, werden entzippt und im Verzeichnis `.\Script Bundle` gespeichert, das auch dem `sys.path` von Python hinzugefügt wird. 
 
-    Wenn Ihre ZIP-Datei `mymodule.py` enthält, importieren Sie sie daher mit `import mymodule`.
+    Wenn Ihre ZIP-Datei die Datei `mymodule.py` enthält, müssen Sie sie mit `import mymodule` importieren.
 
-    + Es können zwei Datasets den Designer zurückgegeben werden, bei denen es sich um eine Sequenz vom Typ `pandas.DataFrame` handeln muss. Sie können weitere Ausgaben in Ihrem Python-Code erstellen und sie direkt in den Azure-Speicher schreiben.
+    Es können zwei Datasets den Designer zurückgegeben werden, bei denen es sich um eine Sequenz vom Typ `pandas.DataFrame` handeln muss. Sie können weitere Ausgaben in Ihrem Python-Code erstellen und sie direkt in den Azure-Speicher schreiben.
 
-6. Übermitteln Sie die Pipeline, oder wählen Sie das Modul aus, und klicken Sie auf **Auswahl ausführen**, um nur das Python-Skript auszuführen.
+6. Übermitteln Sie die Pipeline, oder wählen Sie das Modul und dann **Auswahl ausführen** aus, um nur das Python-Skript auszuführen.
 
     Alle Daten und der gesamte Code werden in einen virtuellen Computer geladen und unter Verwendung der angegebenen Python-Umgebung ausgeführt.
 
 ## <a name="results"></a>Ergebnisse
 
-Die Ergebnisse aller Berechnungen, die vom eingebetteten Python-Code ausgeführt werden, müssen als ein pandas.DataFrame bereitgestellt werden, der automatisch in das Datasetformat von Azure Machine Learning konvertiert wird, sodass Sie die Ergebnisse zusammen mit anderen Modulen in der Pipeline verwenden können.
+Die Ergebnisse der Berechnungen des eingebetteten Python-Codes müssen als `pandas.DataFrame` bereitgestellt werden, der dann automatisch in das Azure Machine Learning-Datasetformat konvertiert wird. Anschließend können Sie die Ergebnisse mit anderen Modulen in der Pipeline nutzen.
 
 Das Modul gibt zwei Datasets zurück:  
   
-+ **Results Dataset 1** (Ergebnisdataset 1), durch den ersten zurückgegebenen pandas-Datenrahmen im Python-Skript definiert
++ **Results Dataset 1** (Ergebnisdataset 1), das durch den ersten zurückgegebenen Pandas-Datenrahmen im Python-Skript definiert wird
 
-+ **Results Dataset 2** (Ergebnisdataset 2), durch den zweiten zurückgegebenen pandas-Datenrahmen im Python-Skript definiert
++ **Results Dataset 2** (Ergebnisdataset 2), das durch den zweiten zurückgegebenen Pandas-Datenrahmen im Python-Skript definiert wird
 
 
 ## <a name="next-steps"></a>Nächste Schritte

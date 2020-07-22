@@ -3,12 +3,12 @@ title: Analysieren von Livevideos mit KI Ihrer Wahl – Azure
 description: In diesem Artikel erfahren Sie, wie Sie ein IoT Edge-Modul erstellen, das in Live Video Analytics in IoT Edge integriert werden kann, um Livevideos mithilfe eines Modells zum maschinellen Sehen Ihrer Wahl zu analysieren.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6a1ea3ebd8c7de4c691d7a982dbc08e9d08d9e38
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260643"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182864"
 ---
 # <a name="analyze-live-video-with-ai-of-your-choice"></a>Analysieren von Livevideos mit KI Ihrer Wahl
 
@@ -46,7 +46,7 @@ Der HTTP-Vertrag ist wie folgt definiert:
 
 Anforderungen vom Live Video Analytics-Modul an Ihr Modul lauten wie folgt:
 
-|||
+| Schlüssel | Wert |
 |---|---|
 |POST| `https://hostname/optional-path?optional-query`|
 |Akzeptieren|application/json, */*|
@@ -72,7 +72,7 @@ Content-Length: 519222
 
 Antworten von Ihrem Modul an das Live Video Analytics-Modul lauten wie folgt:
 
-|||
+| Schlüssel | Wert |
 |---|---|
 |Statuscodes|200 OK. Rückschlussergebnisse gefunden<br/>204 Kein Inhalt. Nicht von der KI gefunden.<br/>400 Ungültige Anforderung. Nicht erwartet.<br/>500 Interner Serverfehler. Nicht erwartet.<br/>503 Server ausgelastet. AMS-Backoff basierend auf dem „Retry-After“-Header oder, falls der Header nicht festgelegt wurde, basierend auf einer Standardzeitspanne.|
 |Content-Type|Anwendung/json|
@@ -265,7 +265,7 @@ Das folgende Beispiel enthält ein einzelnes Ereignis mit allen unterstützten R
  
 ## <a name="sample-http-extension-modules"></a>Beispiele für HTTP-Erweiterungsmodule
 
-Einige Beispiele für HTTP-Erweiterungsmodule finden Sie im [GitHub-Repository zu Live Video Analytics](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis). Eines dieser [Videoanalysebeispiele](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) zeigt, wie das [ONNX](http://onnx.ai/)-Modell [Yolov3](https://pjreddie.com/darknet/yolo/) verwendet wird, um ein IoT Edge-Modul für die Objekterkennung zu erstellen. Sie können den gleichen Ansatz verwenden, um ein eigenes Modul mit einem KI-Modell Ihrer Wahl zu erstellen.
+Einige Beispiele für HTTP-Erweiterungsmodule finden Sie im [GitHub-Repository zu Live Video Analytics](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis). Eines dieser [Videoanalysebeispiele](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) zeigt, wie das [ONNX](http://onnx.ai/)-Modell [YOLOv3](https://pjreddie.com/darknet/yolo/) verwendet wird, um ein IoT Edge-Modul für die Objekterkennung zu erstellen. Ein weiteres [Videoanalysebeispiel](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx-tiny) zeigt, wie Sie eine Tiny YOLOv3 verwenden, eine vereinfachte Version des YOLOv3-ONNX-Modells. Sie können den gleichen Ansatz verwenden, um ein eigenes Modul mit einem KI-Modell Ihrer Wahl zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
