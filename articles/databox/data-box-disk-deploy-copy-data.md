@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214325"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231538"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ Nachdem der Datenkopiervorgang abgeschlossen ist, können Sie mit der Überprüf
 
 Falls Sie das Aufteilen/Kopieren-Tool nicht zum Kopieren der Daten verwendet haben, müssen Sie Ihre Daten überprüfen. Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
 
-1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus.
+1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus. Dies ist nur für Windows-Umgebungen verfügbar. Linux-Benutzer müssen überprüfen, ob die Quelldaten, die auf den Datenträger kopiert werden, die [Voraussetzungen](https://docs.microsoft.com/azure/databox/data-box-disk-limits) erfüllen.
     
     ![Ausgabe des Data Box Disk-Überprüfungstools](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

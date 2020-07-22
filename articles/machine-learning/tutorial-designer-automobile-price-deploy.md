@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen von ML-Modellen mit dem Designer'
+title: 'Tutorial: Bereitstellen von ML-Modellen mit dem Designer (Vorschau)'
 titleSuffix: Azure Machine Learning
 description: In diesem Tutorial wird veranschaulicht, wie Sie im Azure Machine Learning-Designer (Vorschauversion) eine Predictive Analytics-Lösung erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells unter Verwendung von Drag & Drop-Modulen.
 author: peterclu
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 1d0cd074f6e4ad836bc5102f3f6edc61b75215e4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517456"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199958"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]

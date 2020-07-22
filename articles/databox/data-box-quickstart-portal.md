@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 04343f684539307957cd635822ba1ba5a1ce24c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313772"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201080"
 ---
-# <a name="get-started-with-azure-data-box"></a>Erste Schritte mit Azure Data Box 
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Erste Schritte mit Azure Data Box zum Importieren von Daten in Azure
 
 ::: zone target="docs"
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie das Azure Data Box-Gerät über das Azure-Portal bereitstellen. Die Schritte umfassen das Verkabeln, Konfigurieren und Kopieren von Daten in Data Box, damit sie in Azure hochgeladen werden können. Der Schnellstart erfolgt im Azure-Portal und auf der lokalen Webbenutzeroberfläche des Geräts.
+In dieser Schnellstartanleitung wird beschrieben, wie Sie das Azure Data Box-Gerät für einen Importauftrag über das Azure-Portal bereitstellen. Die Schritte umfassen das Verkabeln, Konfigurieren und Kopieren von Daten in Data Box, damit sie in Azure hochgeladen werden können. Die Schritte der Schnellstartanleitung werden im Azure-Portal und auf der lokalen Webbenutzeroberfläche des Geräts ausgeführt.
 
 Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nachverfolgung finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md).
 
@@ -28,7 +28,7 @@ Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nac
 
 ::: zone target="chromeless"
 
-In diesem Leitfaden wird beschrieben, wie Sie das Azure Data Box-Gerät über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Verkabeln und Verbinden Ihres Geräts sowie das Kopieren von Daten auf Ihr Gerät, damit sie in Azure hochgeladen werden können.
+In diesem Leitfaden wird beschrieben, wie Sie das Azure Data Box-Gerät für den Import über das Azure-Portal bereitstellen. Die Schritte umfassen das Prüfen von Voraussetzungen, das Verkabeln und Verbinden Ihres Geräts sowie das Kopieren von Daten auf Ihr Gerät, damit sie in Azure hochgeladen werden können.
 
 ::: zone-end
 

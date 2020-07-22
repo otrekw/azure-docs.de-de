@@ -4,28 +4,30 @@ description: In dieser Schnellstartanleitung verwenden Sie eine Azure Resource M
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969805"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252367"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen einer freigegebenen Abfrage mit einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Schnellstart: Erstellen einer freigegebenen Abfrage unter Verwendung einer Resource Manager-Vorlage
 
 Resource Graph-Abfragen können als _private Abfrage_ oder _freigegebene Abfrage_ gespeichert werden. Eine private Abfrage wird im Portalprofil eines Benutzers gespeichert und ist für andere Benutzer nicht sichtbar. Eine freigegebene Abfrage ist ein Resource Manager-Objekt, das über Berechtigungen und rollenbasierten Zugriff für andere Benutzer freigegeben werden kann. Eine freigegebene Abfrage ermöglicht eine allgemeine und konsistente Ausführung der Ressourcenermittlung. In dieser Schnellstartanleitung wird eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer freigegebenen Abfrage verwendet.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Erstellen einer freigegebenen Abfrage für Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-shared-query"></a>Erstellen einer freigegebenen Abfrage
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 In dieser Schnellstartanleitung erstellen Sie eine freigegebene Abfrage namens _VMs nach Betriebssystem zählen_. Informationen zum Ausprobieren dieser Abfrage im SDK oder im Portal mit dem Resource Graph-Explorer finden Sie unter [Zählen von virtuellen Computern nach Betriebssystemtyp](./samples/starter.md#count-os).
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
 
@@ -35,7 +37,7 @@ In der Vorlage ist die folgende Ressource definiert:
 
 - [Microsoft.ResourceGraph/queries](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 > [!NOTE]
 > Der Azure Resource Graph-Dienst ist kostenlos. Weitere Informationen finden Sie unter [Was ist Azure Resource Graph?](./overview.md).

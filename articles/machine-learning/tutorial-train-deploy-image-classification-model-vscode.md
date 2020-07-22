@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Trainieren und Bereitstellen von Modellen: VS-Code'
+title: 'Tutorial: Trainieren und Bereitstellen von Modellen: VS Code (Vorschauversion)'
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mit TensorFlow und der Azure Machine Learning-Erweiterung für Visual Studio Code ein Modell für die Bildklassifizierung trainieren und bereitstellen.
 services: machine-learning
@@ -8,16 +8,16 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
+ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 05857641df22e03362eeee1590fef62fa3a45530
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857711"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203550"
 ---
-# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Trainieren und Bereitstellen eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code
+# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Trainieren und Bereitstellen eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code (Vorschauversion)
 
 Hier erfahren Sie, wie Sie mit TensorFlow und der Azure Machine Learning-Erweiterung für Visual Studio Code ein Bildklassifizierungsmodell für die Erkennung handgeschriebener Ziffern trainieren und bereitstellen.
 
@@ -91,7 +91,7 @@ Erstellen eines Computeziels:
 1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das **Azure**-Symbol aus. Die Azure Machine Learning-Ansicht wird angezeigt. 
 1. Erweitern Sie Ihren Abonnementknoten. 
 1. Erweitern Sie den Knoten **TeamWorkspace**. 
-1. Klicken Sie unter dem Arbeitsbereichsknoten mit der rechten Maustaste auf den Knoten **Compute**, und wählen Sie **Create Compute** (Compute erstellen) aus. 
+1. Klicken Sie unter dem Arbeitsbereichsknoten mit der rechten Maustaste auf den Knoten **Computecluster**, und wählen Sie **Create Compute** (Compute erstellen) aus. 
 
     > [!div class="mx-imgBorder"]
     > ![Erstellen eines Computeziels](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
@@ -115,17 +115,8 @@ Erstellen eines Computeziels:
                 "scaleSettings": {
                     "maxNodeCount": 4,
                     "minNodeCount": 0,
-                    "nodeIdleTimeBeforeScaleDown": 120
-                },
-                "userAccountCredentials": {
-                    "adminUserName": "",
-                    "adminUserPassword": "",
-                    "adminUserSshPublicKey": ""
-                },
-                "subnetName": "",
-                "vnetName": "",
-                "vnetResourceGroupName": "",
-                "remoteLoginPortPublicAccess": ""
+                    "nodeIdleTimeBeforeScaleDown": "PT120S"
+                }
             }
         }
     }
@@ -138,7 +129,7 @@ Erstellen eines Computeziels:
     Azure ML: Save and Continue
     ```
 
-Nach einigen Minuten wird das neue Computeziel im Knoten *Compute* Ihres Arbeitsbereichs angezeigt.
+Nach einigen Minuten wird das neue Computeziel im Knoten *Computecluster* Ihres Arbeitsbereichs angezeigt.
 
 ## <a name="create-a-run-configuration"></a>Erstellen einer Laufzeitkonfiguration
 
@@ -148,7 +139,7 @@ So erstellen Sie eine Laufzeitkonfiguration:
 
 1. Wählen Sie auf der Aktivitätsleiste von Visual Studio Code das **Azure**-Symbol aus. Die Azure Machine Learning-Ansicht wird angezeigt. 
 1. Erweitern Sie Ihren Abonnementknoten. 
-1. Erweitern Sie den Knoten **TeamWorkspace > Compute**. 
+1. Erweitern Sie den Knoten **TeamWorkspace > Computecluster**. 
 1. Klicken Sie unter dem Knoten „Compute“ mit der rechten Maustaste auf den Computeknoten **TeamWkspc-com**, und wählen Sie **Laufzeitkonfiguration erstellen** aus.
 
     > [!div class="mx-imgBorder"]
@@ -214,6 +205,7 @@ So erstellen Sie eine Laufzeitkonfiguration:
     Azure ML: Save and Continue
     ```
 
+1. In diesem Beispiel wird kein in Azure Machine Learning registriertes Dataset verwendet. Stattdessen wird es bei der Ausführung von *train.py* geladen. Wenn Sie zur Erstellung eines Datenverweises für Ihre Trainingsausführung aufgefordert werden, geben Sie „n“ in der Aufforderung ein, und drücken Sie die **EINGABETASTE**.
 1. Drücken Sie die **EINGABETASTE**, um die Skriptdatei für die Ausführung auf dem Computeziel zu suchen. In diesem Fall ist die Datei `train.py` im Verzeichnis `vscode-tools-for-ai/mnist-vscode-docs-sample` das Skript zum Trainieren des Modells.
 
     Eine Datei mit dem Namen `MNIST-rc.runconfig` wird in VS Code angezeigt, deren Inhalt dem folgenden ähnelt:
@@ -221,6 +213,7 @@ So erstellen Sie eine Laufzeitkonfiguration:
     ```json
     {
         "script": "train.py",
+        "arguments": [],
         "framework": "Python",
         "communicator": "None",
         "target": "TeamWkspc-com",

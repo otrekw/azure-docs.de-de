@@ -2,20 +2,20 @@
 title: Taggen von Bildern in einem Bezeichnungsprojekt
 title.suffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie die Datentaggingtools in einem Azure Machine Learning-Bezeichnungsprojekt verwenden.
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147017"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>Taggen von Bildern in einem Bezeichnungsprojekt (Vorschau)
+# <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt 
 
 Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool (öffentliche Vorschau) schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
 
@@ -64,7 +64,7 @@ Azure aktiviert die Schaltfläche **Senden**, wenn Sie alle Bilder auf der Seite
 
 Nach der Übermittlung von Tags für die vorliegenden Daten aktualisiert Azure die Seite mit einer neuen Gruppe von Bildern aus der Arbeitswarteschlange.
 
-### <a name="assisted-machine-learning"></a>Unterstütztes Machine Learning 
+### <a name="assisted-machine-learning-preview"></a>Unterstütztes maschinelles Lernen (Vorschauversion) 
 
 Möglicherweise werden Machine Learning-Algorithmen ausgelöst. Wenn diese Algorithmen in Ihrem Projekt aktiviert sind, wird ggf. Folgendes angezeigt:
 

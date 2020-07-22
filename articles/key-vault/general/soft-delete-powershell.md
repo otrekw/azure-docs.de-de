@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 452dd99ae58858b661892e3f962fce8086d4503c
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85444657"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202127"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 
@@ -267,7 +267,7 @@ Beim Auflisten Ihrer gelöschten Schlüsseltresorobjekte wird angezeigt, wann ih
 
 Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht endgültig gelöscht werden, bis die Aufbewahrungsdauer abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Feature versichert zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist. Der Standardaufbewahrungszeitraum beträgt 90 Tage. Das Intervall der Aufbewahrungsrichtlinie kann jedoch während der Erstellung des Schlüsseltresors auf einen Wert zwischen 7 und 90 Tagen festgelegt werden. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. Nach der Festlegung kann das Intervall für die Aufbewahrungsrichtlinie nicht mehr geändert werden.
 
-Sie können den Bereinigungsschutz nur aktivieren, wenn auch das vorläufige Löschen aktiviert ist. Die Deaktivierung des Bereinigungsschutzes wird derzeit nicht unterstützt. 
+Sie können den Bereinigungsschutz nur aktivieren, wenn auch das vorläufige Löschen aktiviert ist. Die Deaktivierung des Bereinigungsschutzes wird nicht unterstützt. 
 
 Verwenden Sie das Cmdlet [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0), um beim Erstellen eines Tresors sowohl das vorläufige Löschen als auch den Bereinigungsschutz zu aktivieren:
 

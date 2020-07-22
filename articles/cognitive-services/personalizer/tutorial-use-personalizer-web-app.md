@@ -1,17 +1,17 @@
 ---
 title: 'Verwenden von Web-Apps: Personalisierung'
 description: Passen Sie eine C# .NET-Web-App mit einer Personalisierungsschleife an, um einem Benutzer basierend auf Aktionen (mit Features) und Kontextfeatures die richtigen Inhalte zu präsentieren.
-ms.topic: troubleshooting
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 9def69a1540e81b99723c16ad34ba522d1737c7f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84713893"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207609"
 ---
-# <a name="add-personalizer-to-a-net-web-app"></a>Hinzufügen einer Personalisierung zu einer .NET-Web-App
+# <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Tutorial: Hinzufügen einer Personalisierung zu einer .NET-Web-App
 
 Passen Sie eine C# .NET-Web-App mit einer Personalisierungsschleife an, um einem Benutzer basierend auf Aktionen (mit Features) und Kontextfeatures die richtigen Inhalte zu präsentieren.
 
@@ -156,7 +156,7 @@ Die Web-App verwendet die Personalisierung, um in der Liste der zur Wahl stehend
 * **Aktionen** mit ihren Features wie `taste` und `spiceLevel`
 * **Kontextfeatures** wie `time` am Tag, `taste`-Präferenz des Benutzers und die Benutzer-Agentinformationen des Browsers sowie Kontextfeatures
 * **Auszuschließende Aktionen** wie z. B. Saft
-* **Ereignis-ID**, die sich für jeden Aufruf der Rangfolge-API unterscheidet.
+* **Ereignis-ID**, die sich für jeden Aufruf der Rangfolge-API unterscheidet
 
 ## <a name="personalizer-model-features-in-a-web-app"></a>Features von Personalisierungsmodellen in einer Web-App
 
@@ -212,7 +212,7 @@ Für das Ausführen der browserbasierten Web-App (der Code steht vollständig zu
 
 Installieren Sie folgende Software:
 
-* [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1): Der Back-End-Beispielserver verwendet .NET Core
+* [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1): Der Back-End-Beispielserver verwendet .NET Core.
 * [Node.js](https://nodejs.org/): Der Client/das Front-End hängt von dieser Anwendung ab
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) oder [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/): Verwenden Sie entweder die Entwicklerumgebung von Visual Studio 2019 oder .NET Core CLI, um die App zu erstellen und auszuführen
 
@@ -294,7 +294,7 @@ Hier handelt es sich um eine typische .NET-Web-App mit einer Clientanwendung, ei
 
 In der **Startup.cs**-Datei des Servers werden Endpunkt und Schlüssel der Personalisierung verwendet, um den Personalisierungsclient zu erstellen. Die Clientanwendung braucht nicht mit der Personalisierung in dieser App zu kommunizieren, sie kann sich stattdessen darauf verlassen, dass der Server die SDK-Aufrufe vornimmt.
 
-Der .NET-Startcode des Websservers lautet:
+Der .NET-Startcode des Webservers lautet:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;

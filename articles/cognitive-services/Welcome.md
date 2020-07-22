@@ -10,16 +10,18 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588291"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223753"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
 Azure Cognitive Services sind APIs, SDKs und Dienste, die Entwicklern beim Erstellen intelligenter Anwendungen helfen, ohne direkte KI- oder Data Science-Fähigkeiten oder -Kenntnisse zu haben. Mit Azure Cognitive Services können Entwickler ganz einfach kognitive Funktionen in ihre Anwendungen integrieren. Das Ziel von Azure Cognitive Services ist es, Entwicklern zu helfen, Anwendungen zu entwickeln, die sehen, hören, sprechen, verstehen und sogar schlussfolgern können. Der Katalog der Dienste innerhalb von Azure Cognitive Services kann in fünf Hauptkategorien unterteilt werden: Bildanalyse, Spracheingabe, Sprache, Websuche und Entscheidungen.
+
+Möchten Sie mehr über die Neuerungen und Aktualisierungen in der Cognitive Services-Dokumentation erfahren? Sehen Sie sich [Neues in der Cognitive Services-Dokumentation](whats-new-docs.md) an.
 
 ## <a name="vision-apis"></a>Bildanalyse-APIs
 
@@ -78,17 +80,13 @@ Azure Cognitive Services sind APIs, SDKs und Dienste, die Entwicklern beim Erste
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Der Content Moderator bietet die Überwachung auf möglicherweise anstößige, unerwünschte und risikobehaftete Inhalte.|
 |[Personalisierung](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalisierung")|Mit der Personalisierung können Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen.|
 
-## <a name="use-free-trials"></a>Verwenden kostenloser Testversionen
-
-[Registrieren für kostenlose Testversionen](https://azure.microsoft.com/try/cognitive-services/ "Registrierungshilfe") erfordert nur eine E-Mail und ein paar einfache Schritte. Sie benötigen ein Microsoft-Konto, wenn Sie noch keines besitzen. Sie erhalten für jede angeforderte API ein eindeutiges Schlüsselpaar. Der zweite Schlüssel dient nur als Ersatz. Geben Sie die geheimen Schlüssel niemals an andere Personen weiter. Testversionen verfügen sowohl über ein Ratenlimit (Transaktionen pro Sekunde oder Minute) als auch über eine Begrenzung der monatlichen Nutzung. Eine Transaktion ist einfach ein API-Aufruf. Sie können ein Upgrade auf einen kostenpflichtigen Tarif durchführen, um die Einschränkungen aufzuheben.
-
 ## <a name="subscription-management"></a>Abonnementverwaltung
 
 Nachdem Sie sich mit Ihrem Microsoft-Konto angemeldet haben, können Sie auf [Meine Abonnements](https://www.microsoft.com/cognitive-services/subscriptions "Meine Abonnements") zugreifen, um die verwendeten Produkte, das verbleibende Kontingent und die Möglichkeit zum Hinzufügen von weiteren Produkten zu Ihrem Abonnement anzuzeigen.
 
 ## <a name="upgrade-to-unlock-limits"></a>Durchführen eines Upgrades zum Aufheben von Einschränkungen
 
-Für alle APIs gibt es einen Tarif mit einer kostenlosen Testversion, für den Grenzwerte für die Nutzung und den Durchsatz gelten.  Sie können diese Grenzwerte erhöhen, indem Sie ein kostenpflichtiges Angebot nutzen und einen geeigneten Tarif auswählen, wenn Sie den Dienst im Azure-Portal bereitstellen. [Erfahren Sie mehr über die Angebote und Preise](https://azure.microsoft.com/pricing/details/cognitive-services/ "Angebote und Preise"). Hierfür müssen Sie ein Azure-Abonnentenkonto mit einer Kreditkarte und einer Telefonnummer einrichten. Falls Sie eine besondere Anforderung erfüllen oder einfach mit dem Vertrieb sprechen möchten, können Sie oben auf der Seite „Preise“ einfach auf die Schaltfläche „Vertrieb kontaktieren“ klicken.
+Für alle APIs gibt es einen kostenlosen Tarif, für den Grenzwerte für die Nutzung und den Durchsatz gelten.  Sie können diese Grenzwerte erhöhen, indem Sie ein kostenpflichtiges Angebot nutzen und einen geeigneten Tarif auswählen, wenn Sie den Dienst im Azure-Portal bereitstellen. [Erfahren Sie mehr über die Angebote und Preise](https://azure.microsoft.com/pricing/details/cognitive-services/ "Angebote und Preise"). Hierfür müssen Sie ein Azure-Abonnentenkonto mit einer Kreditkarte und einer Telefonnummer einrichten. Falls Sie eine besondere Anforderung erfüllen oder einfach mit dem Vertrieb sprechen möchten, können Sie oben auf der Seite „Preise“ einfach auf die Schaltfläche „Vertrieb kontaktieren“ klicken.
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 

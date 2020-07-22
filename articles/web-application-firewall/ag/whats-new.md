@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5033d19de2321e0dfd3b6d89d2da3306b1723bd0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745149"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146590"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Neuerungen in Azure Web Application Firewall
 
@@ -27,6 +27,7 @@ Azure Web Application Firewall wird fortlaufend aktualisiert. Damit Sie bezügli
 
 |Funktion  |BESCHREIBUNG  |Hinzufügedatum  |
 |---------|---------|---------|
+|Allgemeine Verfügbarkeit der websitespezifischen Richtlinie| Die websitespezifische Richtlinie ist jetzt allgemein verfügbar. | Juli 2020 |
 |Regelsatz für die Risikominderung für Bots (Vorschau)|Sie können einen Regelsatz für die Risikominderung für Bots neben dem gewählten CRS-Regelsatz aktivieren. | November 2019 |
 |GeoDB-Integration (Vorschau)|Nun können Sie benutzerdefinierte Regeln erstellen, die den Datenverkehr nach Ursprungsland/-region einschränken. | November 2019 |
 |WAF pro Site/pro URI-Richtlinie (Vorschau)|WAF-v2 unterstützt jetzt das Anwenden einer Richtlinie auf Listener und pfadbasierte Regeln. Siehe [Erstellen einer WAF-Richtlinie](create-waf-policy-ag.md). | November 2019 |

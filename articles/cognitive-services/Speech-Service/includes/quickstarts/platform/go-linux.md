@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: gelecaro
-ms.openlocfilehash: 6d7d1d261bce671396d539cb7ecb1ecc3d950662
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a1bc980f8334ca815a1805f33f3572cded4ba0ef
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156687"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für Linux installieren.
 
@@ -24,7 +24,7 @@ Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
 Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 * gcc
-* go (1.13 oder höher)
+* [Go-Binärdatei (1.13 oder höher)](https://golang.org/dl/)
 
 * Für unterstützte Linux-Plattformen müssen bestimmte Bibliotheken installiert sein (`libssl` für die Unterstützung von Secure Sockets Layer und `libasound2` für Audiounterstützung). Im Anschluss finden Sie die Befehle für die Installation der richtigen Versionen dieser Bibliotheken für Ihre Distribution.
 

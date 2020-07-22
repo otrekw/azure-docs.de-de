@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3793f57a6c3dff04f678e629b2903ab216611f75
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5d325ac8da43f020f4ab39244d2e6a7dc6ed72b7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82975051"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156623"
 ---
 Beginnen Sie mit dem Einsatz der Clientbibliothek für die Bing-Vorschlagssuche für .NET. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
 
@@ -31,11 +31,11 @@ Verwenden Sie die Clientbibliothek für die Bing-Vorschlagssuche für .NET, um S
 ## <a name="create-environment-variables"></a>Erstellen von Umgebungsvariablen
 
 >[!NOTE]
-> Nach dem 1. Juli 2019 erstellte Endpunkte für Ressourcen, bei denen es sich nicht um Testressourcen handelt, verwenden das unten gezeigte benutzerdefinierte Format für Subdomänen. Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> Die nach dem 1. Juli 2019 erstellten Endpunkte für Ressourcen nutzen das unten gezeigte benutzerdefinierte Format für Subdomänen. Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
 
 Erstellen Sie unter Verwendung des Schlüssels und des Endpunkts der von Ihnen erstellten Ressource zwei Umgebungsvariablen für die Authentifizierung:
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY`: Der Ressourcenschlüssel zum Authentifizieren Ihrer Anforderungen
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`: Der Ressourcenschlüssel zum Authentifizieren Ihrer Anforderungen.
 * `AUTOSUGGEST_ENDPOINT`: Der Ressourcenendpunkt zum Senden von API-Anforderungen. Diese sollte wie folgt aussehen: `https://<your-custom-subdomain>.api.cognitive.microsoft.com`. 
 
 Führen Sie die Schritte für Ihr Betriebssystem aus:
@@ -167,7 +167,7 @@ async static Task RunQuickstart()
 
 ### <a name="send-an-autosuggest-request"></a>Senden einer Anforderung für die Vorschlagssuche
 
-Verwenden Sie in derselben Methode die [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_)-Methode des Clients, um eine Abfrage an Bing zu senden. Durchlaufen Sie dann die [Suggestion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet)-Antwort, und geben Sie den ersten Vorschlag aus.
+Verwenden Sie in derselben Methode die [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_)-Methode des Clients, um eine Abfrage an Bing zu senden. Durchlaufen Sie dann die [Suggestions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet)-Antwort, und geben Sie den ersten Vorschlag aus.
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");

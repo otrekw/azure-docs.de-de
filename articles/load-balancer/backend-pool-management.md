@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113971"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273760"
 ---
 # <a name="backend-pool-management"></a>Back-End-Pool-Verwaltung
 Der Back-End-Pool ist eine kritische Komponente des Lastenausgleichs. Der Back-End-Pool definiert die Gruppe der Ressourcen, die den Datenverkehr für eine bestimmte Lastenausgleichsregel verarbeiten.
@@ -22,9 +22,9 @@ Es gibt zwei Möglichkeiten, einen Back-End-Pool zu konfigurieren:
 * Netzwerkschnittstellenkarte (NIC)
 * Kombination aus IP-Adresse und VNET-Ressourcen-ID (Virtuelles Netzwerk)
 
-Konfigurieren Sie Ihren Back-End-Pool anhand der NIC, wenn Sie virtuelle Computer und VM-Skalierungsgruppen verwenden. Diese Methode erstellt die direkteste Verknüpfung zwischen ihrer Ressource und dem Back-End-Pool. 
+Konfigurieren Sie Ihren Back-End-Pool anhand der NIC, wenn Sie vorhandene virtuelle Computer und VM-Skalierungsgruppen verwenden. Diese Methode erstellt die direkteste Verknüpfung zwischen ihrer Ressource und dem Back-End-Pool. 
 
-In Szenarien, in denen eine NIC nicht verfügbar ist, z. B. Container oder Kubernetes Pods, konfigurieren Sie Ihren Back-End-Pool anhand der Kombination aus IP-Adresse und VNET-ID.
+Wenn Sie Ihrem Back-End-Pool vorab einen IP-Adressbereich zuweisen, in dem Sie später virtuelle Computer und VM-Skalierungsgruppen erstellen möchten, konfigurieren Sie den Back-End-Pool anhand der Kombination aus IP-Adresse und VNET-ID.
 
 Die Konfigurationsabschnitte dieses Artikels konzentrieren sich auf Folgendes:
 
@@ -249,7 +249,7 @@ JSON-Anforderungstext:
 Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die Netzwerkschnittstelle zum Back-End-Pool hinzuzufügen.
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Konfigurieren des Back-End-Pools anhand von IP-Adresse und virtuellem Netzwerk
-Verwenden Sie in Szenarien mit Containern oder einem vorab mit IPs aufgefüllten Back-End-Pool die IP-Adresse und das virtuelle Netzwerk.
+Verwenden Sie in Szenarien mit vorab aufgefüllten Back-End-Pool die IP-Adresse und das virtuelle Netzwerk.
 
 Die gesamte Back-End-Poolverwaltung erfolgt direkt in dem Back-End-Poolobjekt, wie in den folgenden Beispielen gezeigt.
 

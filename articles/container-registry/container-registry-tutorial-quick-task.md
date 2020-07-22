@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Container Regist
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78398502"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259486"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
@@ -176,7 +176,7 @@ In Produktionsszenarien müssen für den Zugriff auf eine Azure-Containerregistr
 
 #### <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 
-Wenn Sie noch keinen Tresor in [Azure Key Vault](/azure/key-vault/) haben, erstellen Sie einen mithilfe der Azure CLI und folgenden Befehle.
+Wenn Sie noch keinen Tresor in [Azure Key Vault](../key-vault/index.yml) haben, erstellen Sie einen mithilfe der Azure CLI und folgenden Befehle.
 
 ```azurecli-interactive
 AKV_NAME=$ACR_NAME-vault

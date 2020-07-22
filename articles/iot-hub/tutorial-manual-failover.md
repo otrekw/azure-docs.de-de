@@ -11,16 +11,16 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 86b39beb2958194f7c86409c5d78992616234b05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769907"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252571"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz
 
-Das manuelle Failover ist ein Feature des IoT Hub-Diensts, der Kunden die Ausführung eines [Failovers](https://en.wikipedia.org/wiki/Failover) für die Hubvorgänge einer primären Region in der entsprechenden geografisch gekoppelten Azure-Region ermöglicht. Das manuelle Failover kann im Falle eines regionalen Notfalls oder eines längeren Dienstausfalls ausgeführt werden. Sie können auch ein geplantes Failover zum Testen der Notfallwiederherstellungsfunktionen ausführen. Es wird jedoch empfohlen, einen IoT-Testhub anstelle einer in der Produktion ausgeführten Instanz zu verwenden. Das Feature für das manuelle Failover steht Kunden ohne zusätzliche Kosten zur Verfügung.
+Das manuelle Failover ist ein Feature des IoT Hub-Diensts, der Kunden die Ausführung eines [Failovers](https://en.wikipedia.org/wiki/Failover) für die Hubvorgänge einer primären Region in der entsprechenden geografisch gekoppelten Azure-Region ermöglicht. Das manuelle Failover kann im Falle eines regionalen Notfalls oder eines längeren Dienstausfalls ausgeführt werden. Sie können auch ein geplantes Failover zum Testen der Notfallwiederherstellungsfunktionen ausführen. Es wird jedoch empfohlen, einen IoT-Testhub anstelle einer in der Produktion ausgeführten Instanz zu verwenden. Das Feature für das manuelle Failover steht Kunden ohne zusätzliche Kosten für IoT-Hubs zur Verfügung, die nach dem 18. Mai 2017 erstellt wurden.
 
 In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 

@@ -4,18 +4,18 @@ description: Hier wird beschrieben, wie Sie einen benutzerdefinierten Windows-Co
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8f2f4f707300e3ebe31f059c65492247befe324a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205621"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169951"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrieren einer ASP.NET-App zu Azure App Service mithilfe eines Windows-Containers (Preview)
 
 [Azure App Service](overview.md) stellt vordefinierte Anwendungsstapel unter Windows wie ASP.NET oder Node.js bereit (ausgeführt unter IIS). Die vorkonfigurierte Windows-Umgebung sperrt das Betriebssystem für Administratorzugriff, Softwareinstallationen, Änderungen am globalen Assemblycache usw. (siehe [Betriebssystemfunktionen für Azure App Service](operating-system-functionality.md)). Jedoch ermöglicht Ihnen die Verwendung eines benutzerdefinierten Windows-Containers in App Service die Vornahme von Änderungen am Betriebssystem, die für Ihre App erforderlich sind, weshalb es einfach ist, eine lokale App zu migrieren, die eine benutzerdefinierte Betriebssystem- und Softwarekonfiguration erfordert. Dieses Tutorial veranschaulicht, wie Sie eine ASP.NET-App zu App Service migrieren, die benutzerdefinierte Schriftarten verwendet, die in der Schriftartenbibliothek von Windows installiert sind. Sie stellen ein benutzerdefiniert konfiguriertes Windows-Image aus Visual Studio in der [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) bereit und führen es dann in App Service aus.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![In einem Windows-Container ausgeführte Web-App](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -146,7 +146,7 @@ Konfigurieren Sie auf der Registerkarte **Grundlagen** die Einstellungen entspre
 
 Die Registerkarte **Grundlagen** sollte wie folgt aussehen:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
+![Registerkarte „Grundlagen“ für die Konfiguration der Web-App](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Konfigurieren des Windows-Containers
 
@@ -167,7 +167,7 @@ Klicken Sie auf **Erstellen**, und warten Sie, bis Azure die erforderlichen Ress
 
 Wenn der Azure-Vorgang abgeschlossen ist, wird ein Benachrichtigungsfeld angezeigt.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
+![Abgeschlossener Azure-Vorgang](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
 
 1. Klicken Sie auf **Zu Ressource wechseln**.
 
@@ -175,11 +175,11 @@ Wenn der Azure-Vorgang abgeschlossen ist, wird ein Benachrichtigungsfeld angezei
 
 Die folgende neue Browserseite wird geöffnet:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
+![Neue Browserseite für die Web-App](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
 Warten Sie einige Minuten, und wiederholen Sie den Vorgang, bis die Startseite mit der von Ihnen erwarteten, ausdrucksstarken Schriftart angezeigt wird:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Startseite mit der von Ihnen konfigurierten Schriftart](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 **Glückwunsch!** Sie haben eine ASP.NET-Anwendung zu Azure App Service in einen Windows-Container migriert.
 

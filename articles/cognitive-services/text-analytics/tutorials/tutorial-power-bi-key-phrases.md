@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4bf2f12ef79f8551291316b5446121f2735d9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75378533"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206584"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Kostenlos herunterladen](https://powerbi.microsoft.com/get-started/).
-- Ein Microsoft Azure-Konto. [Starten Sie eine kostenlose Testversion](https://azure.microsoft.com/free/), oder [melden Sie sich an](https://portal.azure.com/).
+- Ein Microsoft Azure-Konto. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/), oder [melden Sie sich an](https://portal.azure.com/).
 - Sie benötigen ein Cognitive Services-API-Konto mit der Textanalyse-API. Wenn Sie keines besitzen, können Sie sich für den Free-Tarif [registrieren](../../cognitive-services-apis-create-account.md) und so Zugriff auf 5.000 Transaktionen pro Monat erhalten. (Details zur Durchführung dieses Tutorials finden Sie auf der Seite mit den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).)
 - Außerdem benötigen Sie den [Zugriffsschlüssel für die Textanalyse](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), der bei der Registrierung für Sie generiert wurde.
 - Kundenkommentare. Sie können [unsere Beispieldaten](https://aka.ms/cogsvc/ta) oder Ihre eigenen Daten verwenden. In diesem Tutorial wird davon ausgegangen, dass Sie unsere Beispieldaten verwenden.
@@ -91,7 +91,7 @@ Sie können auch den Filter „Leere entfernen“ verwenden, um leere Nachrichte
 
 Die [Schlüsselbegriffs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) des Textanalysediensts kann bis zu tausend Textdokumente pro HTTP-Anforderung verarbeiten. Power BI bevorzugt die Verarbeitung einzelner Datensätze. Deshalb enthalten Ihre Aufrufe an die API in diesem Tutorial jeweils nur ein Dokument. Die Schlüsselbegriffs-API erfordert die folgenden Felder für jedes verarbeitete Dokument.
 
-| | |
+| Feld | BESCHREIBUNG |
 | - | - |
 | `id`  | Ein eindeutiger Bezeichner für dieses Dokument in der Anforderung. Dieses Feld ist auch in der Antwort enthalten. So können Sie bei der Verarbeitung mehrerer Dokumente die extrahierten Schlüsselbegriffe problemlos dem Dokument zuordnen, aus dem sie stammen. Da Sie in diesem Tutorial nur ein Dokument pro Anforderung verarbeiten, können Sie den Wert von `id` als vordefinierten Code aufnehmen, damit dieser für jede Anforderung identisch ist.|
 | `text`  | Der zu verarbeitende Text. Der Wert dieses Felds stammt aus der Spalte `Merged`, die Sie im [vorherigen Abschnitt](#PreparingData) erstellt haben und die Betreffzeile zusammen mit dem Kommentartext enthält. Die Schlüsselbegriffs-API erfordert, dass diese Daten höchstens ca. 5.120 Zeichen umfassen.|

@@ -10,34 +10,34 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300663"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252350"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>Schnellstart: Hinzufügen einer Azure-Rollenzuweisung mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Schnellstart: Hinzufügen einer Azure-Rollenzuweisung mithilfe einer Resource Manager-Vorlage
 
-Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](overview.md) verwaltet. In diesem Schnellstart erstellen Sie eine Ressourcengruppe und gewähren einem Benutzer Zugriff, um virtuelle Computer in dieser Ressourcengruppe zu erstellen und zu verwalten. In dieser Schnellstartanleitung wird eine Resource Manager-Vorlage zum Gewähren des Zugriffs verwendet.
+Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](overview.md) verwaltet. In diesem Schnellstart erstellen Sie eine Ressourcengruppe und gewähren einem Benutzer Zugriff, um virtuelle Computer in dieser Ressourcengruppe zu erstellen und zu verwalten. In dieser Schnellstartanleitung wird eine Azure Resource Manager-Vorlage (ARM-Vorlage) zum Gewähren des Zugriffs verwendet.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen zu können:
 
-* `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
+- Sie müssen drei Elemente angeben, um eine Rollenzuweisung hinzuzufügen: Sicherheitsprinzipal, Rollendefinition und Bereich. Für diesen Schnellstart sind Sie oder ein anderer Benutzer in Ihrem Verzeichnis der Sicherheitsprinzipal, die Rollendefinition lautet [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor), und der Bereich ist eine von Ihnen angegebene Ressourcengruppe.
 
-## <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Sie müssen drei Elemente angeben, um eine Rollenzuweisung hinzuzufügen: Sicherheitsprinzipal, Rollendefinition und Bereich. Für diesen Schnellstart sind Sie oder ein anderer Benutzer in Ihrem Verzeichnis der Sicherheitsprinzipal, die Rollendefinition lautet [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor), und der Bereich ist eine von Ihnen angegebene Ressourcengruppe.
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
-
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Die Vorlage hat drei Parameter und einen Ressourcenabschnitt. Beachten Sie im Abschnitt „Ressourcen“, dass er die drei Elemente einer Rollenzuweisung enthält: Sicherheitsprinzipal, Rollendefinition und Bereich. 
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Die Vorlage hat drei Parameter und einen Ressourcenabschnitt. Beachten Sie im Abschnitt „Ressourcen“, dass er die drei Elemente einer Rollenzuweisung enthält: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
 
@@ -45,7 +45,7 @@ In der Vorlage ist die folgende Ressource definiert:
 
 - [Microsoft.Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 

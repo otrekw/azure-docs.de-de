@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: faf77411abca63516b00ac953bc7203da69f3ca9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d08d7a81fddfe70593c31ac3ebd2191679ea1220
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854092"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206354"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
@@ -34,19 +34,19 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 
 | | Load Balancer Standard | Load Balancer Basic |
 | --- | --- | --- |
-| [Größe des Back-End-Pools](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
-| Back-End-Pool-Endpunkte | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |
-| [Integritätstests](./load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Verhalten bei Ausfall während Integritätstest](./load-balancer-custom-probe-overview.md#probedown) | TCP-Verbindungen bleiben bei Ausfall eines Instanztests __und__ bei Ausfall aller Tests bestehen. | TCP-Verbindungen bleiben bei Ausfall eines Instanztests bestehen. Bei Ausfall aller Tests werden alle TCP-Verbindungen getrennt. |
-| Verfügbarkeitszonen | Zonenredundante und zonale Front-Ends für eingehenden und ausgehenden Datenverkehr | Nicht verfügbar |
-| Diagnose | [Mehrdimensionale Azure Monitor-Metriken](./load-balancer-standard-diagnostics.md) | [Azure Monitor-Protokolle](./load-balancer-monitor-log.md) |
-| HA-Ports | [Verfügbar für den internen Lastenausgleich](./load-balancer-ha-ports-overview.md) | Nicht verfügbar |
-| Standardmäßig sicher | Für eingehende Datenflüsse geschlossen, sofern nicht durch eine Netzwerksicherheitsgruppe zugelassen. Hinweis: Interner Datenverkehr vom VNET zum internen Lastenausgleich ist zulässig. | Standardmäßig geöffnet. Netzwerksicherheitsgruppe optional. |
-| Regeln für ausgehenden Datenverkehr | [Deklarative ausgehende NAT-Konfiguration](./load-balancer-outbound-rules-overview.md) | Nicht verfügbar |
-| TCP-Zurücksetzung bei Leerlauf | [Verfügbar für jede Regel](./load-balancer-tcp-reset.md) | Nicht verfügbar |
-| [Mehrere Front-Ends](./load-balancer-multivip-overview.md) | Eingehend und [ausgehend](./load-balancer-outbound-connections.md) | Nur eingehend |
-| Verwaltungsvorgänge | Die meisten Vorgänge < 30 Sekunden | Meist 60 bis 90+ Sekunden |
-| SLA | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nicht verfügbar | 
+| **[Größe des Back-End-Pools](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
+| **Endpunkte des Back-End-Pools** | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |
+| **[Integritätstests](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
+| **[Verhalten bei Ausfall während Integritätstest](./load-balancer-custom-probe-overview.md#probedown)** | TCP-Verbindungen bleiben bei Ausfall eines Instanztests __und__ bei Ausfall aller Tests bestehen. | TCP-Verbindungen bleiben bei Ausfall eines Instanztests bestehen. Bei Ausfall aller Tests werden alle TCP-Verbindungen getrennt. |
+| **Verfügbarkeitszonen** | Zonenredundante und zonale Front-Ends für eingehenden und ausgehenden Datenverkehr | Nicht verfügbar |
+| **Diagnose** | [Mehrdimensionale Azure Monitor-Metriken](./load-balancer-standard-diagnostics.md) | [Azure Monitor-Protokolle](./load-balancer-monitor-log.md) |
+| **Hochverfügbarkeitsports** | [Verfügbar für den internen Lastenausgleich](./load-balancer-ha-ports-overview.md) | Nicht verfügbar |
+| **Standardmäßig sicher** | Für eingehende Datenflüsse geschlossen, sofern nicht durch eine Netzwerksicherheitsgruppe zugelassen. Hinweis: Interner Datenverkehr vom VNET zum internen Lastenausgleich ist zulässig. | Standardmäßig geöffnet. Netzwerksicherheitsgruppe optional. |
+| **Regeln für ausgehenden Datenverkehr** | [Deklarative ausgehende NAT-Konfiguration](./load-balancer-outbound-rules-overview.md) | Nicht verfügbar |
+| **TCP-Zurücksetzung bei Leerlauf** | [Verfügbar für jede Regel](./load-balancer-tcp-reset.md) | Nicht verfügbar |
+| **[Mehrere Front-Ends](./load-balancer-multivip-overview.md)** | Eingehend und [ausgehend](./load-balancer-outbound-connections.md) | Nur eingehend |
+| **Verwaltungsvorgänge** | Die meisten Vorgänge < 30 Sekunden | Meist 60 bis 90+ Sekunden |
+| **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nicht verfügbar | 
 
 Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Lesen Sie für den Standard-Load Balancer auch die ausführlicheren Informationen unter [Übersicht](load-balancer-standard-overview.md), [Preise](https://aka.ms/lbpricing) und [SLA](https://aka.ms/lbsla).
 

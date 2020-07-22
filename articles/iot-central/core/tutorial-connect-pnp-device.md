@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6727a2c45187e0e6bb583bb65e176024067d81e2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80064416"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219985"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Tutorial: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts (Vorschauversion) und Verbinden mit Ihrer IoT Central-Anwendung
 
@@ -86,7 +86,9 @@ Zum Herstellen einer Verbindung mit einer IoT Central-Anwendung benötigen Sie e
 
 1. Navigieren Sie zur Seite **Verwaltung**, und wählen Sie **Geräteverbindung**.
 
-1. Notieren Sie sich die Werte für **ID-Bereich** und **Primärschlüssel**, die beim Auswählen von **Schlüssel anzeigen** angezeigt werden. Diese Werte werden im weiteren Verlauf dieses Tutorials benötigt.
+1. Notieren Sie sich den Wert für **ID-Bereich**. Sie verwenden diesen Wert später in diesem Tutorial.
+
+1. Wählen Sie die Registrierungsgruppe **SAS-IoT-Devices** aus. Notieren Sie den Wert von **Primärschlüssel**. Sie verwenden diesen Wert später in diesem Tutorial.
 
     ![Geräteverbindung](./media/tutorial-connect-pnp-device/device-connection.png)
 

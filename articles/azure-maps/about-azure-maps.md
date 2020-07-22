@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191754"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242871"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -164,6 +164,14 @@ Ausführlichere Informationen zum Dienst „IP to Location“ finden Sie in der 
 Azure Maps ist auf Mobilität ausgelegt und kann zum Entwickeln plattformübergreifender Anwendungen eingesetzt werden. Es wird ein Programmiermodell genutzt, das sprachunabhängig ist und die JSON-Ausgabe über [REST-APIs](https://docs.microsoft.com/rest/api/maps/) unterstützt.
 
 Darüber hinaus bietet Azure Maps ein praktisches [JavaScript-Kartensteuerelement](https://docs.microsoft.com/javascript/api/azure-maps-control) mit einem einfachen Programmiermodell. Dies ermöglicht eine schnelle und einfache Entwicklung für webbasierte und mobile Anwendungen.
+
+## <a name="power-bi-visual"></a>Power BI-Visualisierung
+
+Das Azure Maps-Visual für Power BI ermöglicht umfangreiche Datenvisualisierungen für räumliche Daten auf einer Karte. Es wird geschätzt, dass mehr als 80 Prozent der Geschäftsdaten einen Standortkontext aufweisen. Das Azure Maps-Visual bietet eine Lösung ohne Code, mit der Sie Erkenntnisse zur Beziehung zwischen diesem Standortkontext und Ihren Geschäftsdaten sowie zur Auswirkung des Standortkontexts auf Ihre Geschäftsdaten gewinnen können.
+
+![Power BI Desktop mit vom Azure Maps-Visual angezeigten Geschäftsdaten](media/power-bi-visual/azure-maps-visual-hero.png)
+
+Weitere Informationen finden Sie in der Dokumentation [Erste Schritte mit dem Azure Maps-Visual für Power BI](power-bi-visual-getting-started.md).
 
 ## <a name="usage"></a>Verwendung
 

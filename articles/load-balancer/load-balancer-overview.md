@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 598df2f0a1e9badebbb1bf8e7ec0f93ff98d55ce
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341785"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170563"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -67,7 +67,7 @@ Im Anschluss finden Sie einige Schlüsselszenarien für Load Balancer Standard:
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Standardmäßig sicher
 
 Load Balancer Standard basiert auf dem Zero Trust-Netzwerksicherheitsmodell. Load Balancer Standard ist standardmäßig sicher und Bestandteil Ihres virtuellen Netzwerks. Das virtuelle Netzwerk ist ein privates und isoliertes Netzwerk.  Das bedeutet, dass Load Balancer Standard-Instanzen sowie öffentliche Standard-IP-Adressen für eingehende Datenflüsse geschlossen sind, sofern sie nicht durch Netzwerksicherheitsgruppen geöffnet werden. NSGs werden verwendet, um zulässigen Datenverkehr explizit zuzulassen.  Wenn Sie über keine NSG für ein Subnetz oder für eine NIC Ihrer VM-Ressource verfügen, ist diese Ressource für Datenverkehr nicht erreichbar. Weitere Informationen zu NSGs und ihrer Verwendung in Ihrem Szenario finden Sie unter [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
-Load Balancer Basic ist standardmäßig für das Internet geöffnet.
+Load Balancer Basic ist standardmäßig für das Internet geöffnet. Außerdem werden von Load Balancer keine Kundendaten gespeichert.
 
 ## <a name="pricing-and-sla"></a>Preise und SLA
 

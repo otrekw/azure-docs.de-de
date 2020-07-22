@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170493"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249358"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Resource Manager-Vorlage
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: ARM-Vorlage
 
-In dieser Schnellstartanleitung wird eine Resource Manager-Vorlage verwendet, um eine Azure Application Gateway-Instanz zu erstellen. Anschließend wird das Anwendungsgateway getestet, um sicherzustellen, dass es ordnungsgemäß funktioniert.
+In dieser Schnellstartanleitung verwenden Sie eine ARM-Vorlage (Azure Resource Manager), um eine Azure Application Gateway-Instanz zu erstellen. Anschließend wird das Anwendungsgateway getestet, um sicherzustellen, dass es ordnungsgemäß funktioniert.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ Diese Schnellstartanleitung steht auch für das [Azure-Portal](quick-create-port
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Der Einfachheit halber wird mit dieser Vorlage ein simples Setup mit einer öffentlichen Front-End-IP-Adresse, einem einfachen Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, einer einfachen Routingregel für Anforderungen und zwei virtuellen Computern im Back-End-Pool erstellt.
 
-### <a name="review-the-template"></a>Überprüfen der Vorlage
-
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/ag-docs-qs/).
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
@@ -50,10 +52,9 @@ In der Vorlage sind mehrere Azure-Ressourcen definiert:
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): Zwei für die virtuellen Computer.
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions): Zum Konfigurieren von IIS und Webseiten.
 
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
-
-Stellen Sie die Resource Manager-Vorlage in Azure bereit:
+Stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Durch die Vorlage werden ein Anwendungsgateway, die Netzwerkinfrastruktur und zwei virtuelle Computer im Back-End-Pool mit IIS erstellt.
 

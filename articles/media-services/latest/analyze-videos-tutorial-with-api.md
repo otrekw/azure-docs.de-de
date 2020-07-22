@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b7864d89cc14a1473fd43e94bfe74c368bcb391d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2ab87990981f08164bb47cef9eaa1876514f1ad6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349486"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202847"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Tutorial: Analysieren von Videos mit Media Services v3
 
@@ -44,7 +44,7 @@ Wichtig: Ihre Nutzung von Video Indexer darf nicht gegen geltende Gesetze versto
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie Visual Studio noch nicht installiert haben, laden Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunter.
+- Wenn Sie Visual Studio noch nicht installiert haben, laden Sie [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunter.
 - [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
 - Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 
@@ -148,7 +148,7 @@ Die folgende Funktion lädt die Ergebnisse aus dem [Ausgabeobjekt](https://docs.
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Bereinigen von Ressourcen in Ihrem Media Services-Konto
 
-Im Allgemeinen sollten Sie alles mit Ausnahme der Objekte bereinigen, die Sie wiederverwenden möchten. (In der Regel werden Transformationen wiederverwendet und Streaminglocators gespeichert.) Wenn Sie Ihr Konto nach dem Experimentieren bereinigen, sollten Sie alle Ressourcen löschen, die Sie nicht wiederverwenden möchten. Mit dem folgenden Code werden beispielsweise Aufträge gelöscht:
+Im Allgemeinen sollten Sie alles mit Ausnahme der Objekte bereinigen, die Sie wiederverwenden möchten. (In der Regel werden Transformationen wiederverwendet und Streaminglocators gespeichert.) Wenn Sie Ihr Konto nach dem Experimentieren bereinigen, sollten Sie alle Ressourcen löschen, die Sie nicht wiederverwenden möchten. Mit dem folgenden Code wird beispielsweise das Auftrags- und Ausgabemedienobjekt gelöscht:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 

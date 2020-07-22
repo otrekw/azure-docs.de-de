@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212903"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142842"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall für Azure Application Gateway
 
@@ -24,7 +24,7 @@ Die WAF für Application Gateway basiert auf der Version 3.1, 3.0 oder 2.2.9 de
 Alle unten aufgeführten WAF-Features befinden sich innerhalb einer WAF-Richtlinie. Sie können mehrere Richtlinien erstellen, und diese können einer Application Gateway-Instanz, einzelnen Listenern oder pfadbasierten Routingregeln für eine Application Gateway-Instanz zugeordnet werden. Dadurch können Sie bei Bedarf separate Richtlinien für jede Website hinter Ihrer Application Gateway-Instanz verwenden. Weitere Informationen zu WAF-Richtlinien finden Sie unter [Erstellen von Web Application Firewall-Richtlinien für Application Gateway](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > WAF-Richtlinien für einzelne Websites und einzelne URIs sind als Public Preview verfügbar. Das bedeutet, dass diese Funktion den zusätzlichen Nutzungsbedingungen von Microsoft unterliegt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > WAF-Richtlinien für einzelne URIs sind als Public Preview verfügbar. Das bedeutet, dass diese Funktion den zusätzlichen Nutzungsbedingungen von Microsoft unterliegt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway-WAF-Diagramm](../media/ag-overview/waf1.png)
 

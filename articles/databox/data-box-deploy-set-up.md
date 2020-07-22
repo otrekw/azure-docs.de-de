@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 850144e4835b43e219fa059bbc1c92bb3ef412f4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200498"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205231"
 ---
 ::: zone target="docs"
 
@@ -42,17 +42,19 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben das [Tutorial zum Bestellen einer Azure Data Box](data-box-deploy-ordered.md) durchgearbeitet.
-2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. 
+1. Sie haben die Bestellung für Azure Data Box aufgegeben.
+    - Weitere Informationen zu Importbestellungen finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md).
+    - Weitere Informationen zu Exportbestellungen finden Sie unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-export-ordered.md).
+1. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. 
     - Die Klarsichthülle, die am Gerät unter dem eigentlichen Etikett angebracht ist, enthält ein Adressetikett. Bewahren Sie dieses Etikett sicher auf, da Sie es für den Rückversand benötigen.
     - In einigen Regionen in Europa wird das Gerät unter Umständen in einer Kiste ausgeliefert. Packen Sie das Gerät aus, und behalten Sie die Kiste für die Rücksendung.
-3. Sie haben sich mit den [Sicherheitsrichtlinien für die Data Box](data-box-safety.md) vertraut gemacht.
-4. Sie haben ein geerdetes Netzkabel zur Verwendung mit dem 100-TB-Speichergerät erhalten.
-5. Sie haben einen Hostcomputer mit den Daten, die Sie auf die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
+1. Sie haben sich mit den [Sicherheitsrichtlinien für die Data Box](data-box-safety.md) vertraut gemacht.
+1. Sie haben ein geerdetes Netzkabel zur Verwendung mit dem 100-TB-Speichergerät erhalten.
+1. Sie verfügen über einen Hostcomputer, der zum Kopieren von Daten auf Ihre Data Box (Importauftrag) oder zum Kopieren von Daten von Ihrer Data Box (Exportauftrag) verwendet wird. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
     - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
     - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch aber die Geschwindigkeit der Kopiervorgänge leidet. 
-6. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
-7. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
+1. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
+1. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
     - Mindestens ein SFP+-Twinax-Kupferkabel oder SFP+-Glasfaserkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2). Die Data Box verfügt über die Netzwerkschnittstelle „Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0“, sodass mit dieser Schnittstelle kompatible Kabel verwendet werden können. Bei internen Tests wurde beispielsweise ein Kabel vom Typ „CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M“ verwendet. Weitere Informationen finden Sie in der [Liste der unterstützten Kabel und Switches von Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
@@ -135,7 +137,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät über die lokale Webbenutz
 
 Nach dem Konfigurieren der Datennetzwerkschnittstellen können Sie auch die IP-Adresse einer der Schnittstellen (DATA 1 bis DATA 3) verwenden, um auf die lokale Webbenutzeroberfläche unter `https://<IP address of a data network interface>` zuzugreifen. 
 
-Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindung mit den Gerätefreigaben herstellen und die Daten von Ihrem Computer auf das Gerät kopieren. 
+Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindung mit den Gerätefreigaben herstellen und die Daten kopieren. 
 
 ::: zone-end
 
@@ -143,7 +145,7 @@ Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindun
 
 ## <a name="connect-your-device"></a>Verbinden Ihres Geräts
 
-1. Zum Abrufen des Gerätekennworts wechseln Sie im **Azure-Portal** zu [Allgemein > Gerätedetails](https://portal.azure.com).
+1. Zum Abrufen des Gerätekennworts wechseln Sie im [Azure-Portal](https://portal.azure.com) zu **Allgemein > Gerätedetails**.
 2. Weisen Sie dem Ethernet-Adapter auf dem Computer, mit dem Sie sich mit der Data Box verbinden, die statische IP-Adresse 192.168.100.5 und das Subnetz 255.255.255.255.0 zu. Greifen Sie unter `https://192.168.100.10` auf die lokale Webbenutzeroberfläche des Geräts zu. Der Verbindungsaufbau kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern. 
 3. Melden Sie sich mit dem aus dem Azure-Portal abgerufenen Kennwort an. Sie sehen eine Fehlermeldung, die auf ein Problem mit dem Sicherheitszertifikat der Website hinweist. Befolgen Sie die browserspezifischen Anweisungen, um zur Webseite zu gelangen.
 4. Standardmäßig werden die Netzwerkeinstellungen für die Datenschnittstelle mit 10 Gbit/s (oder 1 Gbit/s) als DHCP konfiguriert. Bei Bedarf können Sie diese Schnittstelle als statisch konfigurieren und eine IP-Adresse angeben. 
@@ -161,10 +163,15 @@ In diesem Tutorial haben Sie Informationen zu Azure Data Box-Themen erhalten, da
 > * Verkabeln der Data Box
 > * Herstellen einer Verbindung mit der Data Box
 
-Im nächsten Tutorial erfahren Sie, wie Sie Daten auf Ihre Data Box kopieren.
+Im nächsten Tutorial erfahren Sie, wie Sie Daten kopieren:
 
 > [!div class="nextstepaction"]
-> [Kopieren der Daten auf die Azure Data Box](./data-box-deploy-copy-data.md)
+> [Tutorial: Kopieren von Daten in eine Azure Data Box über SMB](./data-box-deploy-copy-data.md)
+
+oder
+
+> [!div class="nextstepaction"]
+> [Tutorial: Kopieren von Daten aus Azure Data Box über SMB (Vorschau)](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 

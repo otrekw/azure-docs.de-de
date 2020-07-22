@@ -4,29 +4,31 @@ description: In dieser Schnellstartanleitung erstellen Sie mit einer Azure Resou
 ms.date: 05/21/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: c3a37e9086744fb45c8d1e4ebe3bd16da7a83770
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f4cb4cb1fc56d06ab1e061b2d0e9a031e0e511dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971146"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242048"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer ARM-Vorlage
 
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln.
-Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden. Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung _nicht konform_.
+Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden. Dazu wird eine ARM-Vorlage (Azure Resource Manager) verwendet. Am Ende dieses Prozesses können Sie erfolgreich virtuelle Computer identifizieren, die keine verwalteten Datenträger verwenden. Sie sind mit der Richtlinienzuweisung _nicht konform_.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen der ARM-Vorlage zum Zuweisen einer Azure-Richtlinie zu Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung und weisen eine integrierte Richtliniendefinition mit dem Namen _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_ zu. Eine Liste mit einem Teil der verfügbaren integrierten Richtlinien finden Sie unter [Azure Policy-Beispiele](./samples/index.md).
-
-### <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 
@@ -36,7 +38,7 @@ In der Vorlage ist die folgende Ressource definiert:
 
 - [Microsoft.Authorization/policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 > [!NOTE]
 > Der Azure Policy-Dienst ist kostenlos. Weitere Informationen finden Sie in der [Übersicht über Azure Policy](./overview.md).
@@ -63,7 +65,7 @@ Einige zusätzliche Ressourcen:
 
 - Weitere Beispielvorlagen finden Sie unter [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
 - Navigieren Sie zur [Azure-Vorlagenreferenz](/azure/templates/microsoft.authorization/allversions), um die Vorlagenreferenz anzuzeigen.
-- Informationen zur Entwicklung von Resource Manager-Vorlagen (ARM-Vorlagen) finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/management/overview.md).
+- Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/management/overview.md).
 - Informationen zur Bereitstellung auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../../azure-resource-manager/templates/deploy-to-subscription.md).
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75c6f8ec8410ff90b3da4fb6a50c9ef8ba7d1618
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196368"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184618"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
@@ -40,7 +40,7 @@ Azure Cache for Redis ist in folgenden Tarifen verfügbar:
 | Tarif | BESCHREIBUNG |
 |---|---|
 Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere Arbeitsspeichergrößen (250 MB–53 GB) und eignet sich perfekt für Entwicklungs-/Testworkloads und nicht kritische Workloads. Für den Basic-Tarif gilt keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA). |
-| Standard | Ein replizierter Cache in einer Primär-/Sekundärkonfiguration mit zwei Knoten, die von Azure verwaltet wird, mit Hochverfügbarkeits-SLA (99,9 Prozent). |
+| Standard | Ein replizierter Cache in einer Primär-/Replikatkonfiguration mit zwei Knoten, die von Azure verwaltet wird, mit Hochverfügbarkeits-SLA (99,9 Prozent) |
 | Premium | Die Dienstebene „Premium“ ist die Ebene für Unternehmen. Caches im Premium-Tarif unterstützen mehr Funktionen und bieten einen höheren Durchsatz bei niedrigeren Latenzen. Caches im Premium-Tarif werden auf leistungsfähigerer Hardware bereitgestellt und bieten im Vergleich zu den Tarifen „Basic“ und „Standard“ eine bessere Leistung. Dieser Vorteil bedeutet, dass der Durchsatz für einen Cache derselben Größe in der Premium-Dienstebene höher ist als in der Standard-Dienstebene. |
 
 > [!TIP]
