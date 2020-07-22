@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SQL Server-Datenbanken in Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie eine SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680726"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513314"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Sichern einer SQL Server-Datenbank auf einem virtuellen Azure-Computer
 
@@ -64,7 +64,7 @@ Vermeiden Sie folgende Zeichen in Datenbanknamen:
 * Schließende eckige Klammer „]“
 * Datenbanknamen, die mit „F:/“ beginnen
 
-Obwohl Aliasing für nicht unterstützte Zeichen aus Azure-Tabellen möglich ist, wird empfohlen, diese Zeichen zu vermeiden. [Weitere Informationen](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)
+Obwohl Aliasing für nicht unterstützte Zeichen aus Azure-Tabellen möglich ist, wird empfohlen, diese Zeichen zu vermeiden. [Weitere Informationen](/rest/api/storageservices/understanding-the-table-service-data-model)
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

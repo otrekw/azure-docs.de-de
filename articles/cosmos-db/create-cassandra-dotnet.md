@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e274db2983c476c2428fdd0d25f3dff9bbc5e6ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523875"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem .NET-SDK und Azure Cosmos DB
 
@@ -120,7 +120,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Verbindungszeichenfolge** aus.
 
-1. Verwenden Sie die Schaltfläche ![Schaltfläche „Kopieren“](./media/create-cassandra-dotnet/copy.png) auf der rechten Seite des Bildschirms, um den Benutzernamen zu kopieren.
+1. Verwenden Sie die Schaltfläche :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: auf der rechten Seite des Bildschirms, um den Benutzernamen zu kopieren.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Verbindungszeichenfolge“":::
 

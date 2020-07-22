@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 85b78ad92997344ff6ea0f30da25205790d90eef
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7da5e25624a0e3a323e60cdf91660b29f58f31d7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196776"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514746"
 ---
 # <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>Verwenden Sie die Azure CLI zum Verschieben einer Datenbank in Azure SQL-Datenbank in einen Pool für elastische SQL-Datenbanken
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| | |
+| Get-Help | Beschreibung |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Serverbefehle |
 | [az sql elastic-pools](/cli/azure/sql/elastic-pool) | Befehle für Pools für elastische Datenbanken |

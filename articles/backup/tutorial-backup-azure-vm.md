@@ -4,12 +4,12 @@ description: In diesem Tutorial wird erläutert, wie Sie mithilfe von Azure Powe
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513216"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Sichern virtueller Azure-Computer mit PowerShell
 
@@ -48,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Ein [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md) ist ein logischer Container, in dem Sicherungsdaten für geschützte Ressourcen wie Azure-VMs gespeichert werden. Beim Ausführen eines Sicherungsauftrags wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen.
 
 * In diesem Tutorial erstellen Sie den Tresor in der Ressourcengruppe und an dem Speicherort, die/den Sie auch für den zu sichernden virtuellen Computer verwendet haben.
-* Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy-grs.md). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
+* Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
 
 Erstellen Sie den Tresor wie folgt:
 

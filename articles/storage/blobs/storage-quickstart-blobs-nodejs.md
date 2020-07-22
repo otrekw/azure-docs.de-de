@@ -7,18 +7,23 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 18afd9faf21e5de4831d54d0870b64e79d29cb0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72d1048af5f1d6d812228d8928224b2104958300
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833298"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528569"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mithilfe von Node.js verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Sie führen das Hochladen, Herunterladen und Auflisten von Blobs durch und erstellen und löschen Container.
 
-[API-Referenzdokumentation](/javascript/api/@azure/storage-blob) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob) | [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+Zusätzliche Ressourcen:
+
+* [API-Referenzdokumentation](/javascript/api/@azure/storage-blob)
+* [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+* [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob)
+* [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

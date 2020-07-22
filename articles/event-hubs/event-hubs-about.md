@@ -3,12 +3,12 @@ title: Was ist Azure Event Hubs? – ein Big Data-Erfassungsdienst | Microsoft-D
 description: Erfahren Sie mehr über Azure Event Hubs, einem Big Data-Streamingdienst, der Millionen von Ereignissen pro Sekunde erfasst.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314247"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522107"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs: Big Data-Streamingplattform und Ereigniserfassungsdienst
 Bei Azure Event Hubs handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. Mit diesem Dienst können Millionen von Ereignissen pro Sekunde empfangen und verarbeitet werden. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden.
@@ -44,7 +44,7 @@ Erfassen, puffern, speichern und verarbeiten Sie Ihren Datenstrom in Echtzeit, u
 
 Erfassen Sie Ihre Daten mit [Capture](event-hubs-capture-overview.md) nahezu in Echtzeit in [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) oder [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) für die Langzeitaufbewahrung oder die Microbatch-Verarbeitung. Sie können dieses Verhalten für den gleichen Datenstrom erreichen, den Sie zum Ableiten von Echtzeitanalysen verwenden. Das Einrichten der Erfassung von Ereignisdaten geht schnell. Für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den  [Event Hub-Durchsatzeinheiten](event-hubs-scalability.md#throughput-units). Mit Event Hubs können Sie sich anstelle auf die Datenerfassung auf die Datenverarbeitung konzentrieren.
 
-Azure Event Hubs lässt sich für eine serverlose Architektur auch mit [Azure Functions](/azure/azure-functions/) integrieren.
+Azure Event Hubs lässt sich für eine serverlose Architektur auch mit [Azure Functions](../azure-functions/index.yml) integrieren.
 
 ## <a name="scalable"></a>Skalierbar
 
@@ -74,7 +74,7 @@ Mit Event Hubs in Azure Stack Hub können Sie Hybrid Cloud-Szenarien umsetzen. S
 
 Die Event Hubs-Editionen (in Azure Stack Hub und in Azure) bieten ein hohes Maß an Featureparität (Funktionsparität). Diese Parität bedeutet, dass SDKs, Beispiele, PowerShell, CLI und Portale eine ähnliche Funktionalität bieten, mit wenigen Unterschieden. 
 
-Event Hubs in Stack ist während der öffentlichen Vorschauphase kostenlos. Weitere Informationen finden Sie unter [Event Hubs in Azure Stack Hub – Übersicht](https://docs.microsoft.com/azure-stack/user/event-hubs-overview).
+Event Hubs in Stack ist während der öffentlichen Vorschauphase kostenlos. Weitere Informationen finden Sie unter [Event Hubs in Azure Stack Hub – Übersicht](/azure-stack/user/event-hubs-overview).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -94,5 +94,3 @@ Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
 
 - [Event Hubs-Features im Überblick](event-hubs-features.md)
 - [Häufig gestellte Fragen zu Event Hubs](event-hubs-faq.md)
-
-

@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203759"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498507"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
@@ -67,21 +67,21 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Senden eines Azure-Aktivitätsprotokolls an den Log Analytics-Arbeitsbereich per Azure Resource Manager-Vorlage](learn/quick-collect-activity-log-arm.md): Neuer Artikel.
 
 #### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Neue und aktualisierte Artikel aus der Neustrukturierung und Konsolidierung von Plattformprotokollinhalten
-- [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](platform/resource-logs-collect-storage.md)
+- [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](./platform/resource-logs.md#send-to-azure-storage)
 - [Ereignisschema des Azure-Aktivitätsprotokolls](platform/activity-log-schema.md)
 - [Azure-Aktivitätsprotokoll](platform/activity-log.md)
 - [CLI-Beispiele für Azure Monitor](samples/cli-samples.md)
 - [Beispiele zu PowerShell in Azure Monitor](samples/powershell-samples.md)
 - [Exemplarische Vorgehensweise für die Azure Monitoring-REST-API](platform/rest-api-walkthrough.md)
-- [Azure-Ressourcenprotokolle: Unterstützte Dienste und Schemas](platform/diagnostic-logs-schema.md)
+- [Azure-Ressourcenprotokolle: Unterstützte Dienste und Schemas](./platform/resource-logs-schema.md)
 - [Azure-Ressourcenprotokolle](platform/resource-logs.md)
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](platform/activity-log-collect.md)
-- [Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor](platform/resource-logs-collect-workspace.md)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](./platform/activity-log.md)
+- [Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](platform/diagnostic-settings.md)
-- [Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs](platform/activity-log-export.md)
+- [Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs](./platform/activity-log.md#legacy-collection-methods)
 - [Übersicht über Protokolle der Azure-Plattform](platform/platform-logs-overview.md)
-- [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](platform/resource-logs-stream-event-hubs.md)
-- [Anzeigen von Azure-Aktivitätsprotokollereignissen in Azure Monitor](platform/activity-log-view.md)
+- [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](./platform/resource-logs.md#send-to-azure-event-hubs)
+- [Anzeigen von Azure-Aktivitätsprotokollereignissen in Azure Monitor](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
 - [Aktivieren von Azure Monitor für VMs im Azure-Portal](insights/vminsights-enable-single-vm.md): Aktualisiert, um Azure Arc zu berücksichtigen.
@@ -155,7 +155,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 
 ### <a name="insights"></a>Einblicke
 - [Informationen zu Azure Monitor für Azure Cache for Redis (Vorschau)](insights/redis-cache-insights-overview.md): Neuer Artikel.
-- [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](insights/key-vaults-insights-overview.md): Neuer Artikel.
+- [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](./insights/key-vault-insights-overview.md): Neuer Artikel.
 
 ### <a name="logs"></a>Protokolle
 - [Erstellen und Konfigurieren von Log Analytics mit PowerShell](platform/powershell-workspace-configuration.md): Abschnitt zur Problembehandlung hinzugefügt.
@@ -280,7 +280,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 
 ### <a name="platform-logs"></a>Plattformprotokolle
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](platform/activity-log-collect.md): Überarbeitet, um die Erfassung des Aktivitätsprotokolls mit Diagnoseeinstellungen besser zu vermitteln.
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](./platform/activity-log.md): Überarbeitet, um die Erfassung des Aktivitätsprotokolls mit Diagnoseeinstellungen besser zu vermitteln.
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
 
@@ -326,7 +326,7 @@ Mehrere Updates im Rahmen der Überarbeitung des Inhalts der Diagnoseerweiterung
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
-- [Integrieren von Azure Active Directory in Azure Kubernetes Service](../aks/azure-ad-integration.md): Es wurde ein Hinweis für die Erstellung einer Clientanwendung zur Unterstützung eines RBAC-fähigen Clusters für die Unterstützung von Azure Monitor für Container hinzugefügt.
+- [Integrieren von Azure Active Directory in Azure Kubernetes Service](../aks/azure-ad-integration-cli.md): Es wurde ein Hinweis für die Erstellung einer Clientanwendung zur Unterstützung eines RBAC-fähigen Clusters für die Unterstützung von Azure Monitor für Container hinzugefügt.
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs
 
@@ -412,8 +412,8 @@ Mehrere neue Artikel zur Umstellung vom Ansicht-Designer auf Arbeitsmappen.
 
 ### <a name="platform-logs"></a>Plattformprotokolle
 
-- [Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls](platform/diagnostic-settings-legacy.md): In diesem Artikel wurden weitere Informationen zu geänderten Eigenschaften hinzugefügt.
-- [Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs](platform/activity-log-export.md): Dieser Artikel wurde mit Benutzeroberflächenänderungen aktualisiert. 
+- [Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls](./platform/activity-log.md): In diesem Artikel wurden weitere Informationen zu geänderten Eigenschaften hinzugefügt.
+- [Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs](./platform/activity-log.md#legacy-collection-methods): Dieser Artikel wurde mit Benutzeroberflächenänderungen aktualisiert. 
 
 ## <a name="december-2019"></a>Dezember 2019
 
@@ -450,7 +450,7 @@ Mehrere neue Artikel zur Umstellung vom Ansicht-Designer auf Arbeitsmappen.
 
 ### <a name="insights-and-solutions"></a>Erkenntnisse und Lösungen
 
-- [Häufig gestellte Fragen zu Azure Monitor](insights/container-insights-faq.md): Diesem Artikel wurde eine Frage zu den Feldern „Image“ und „Name“ hinzugefügt.
+- [Häufig gestellte Fragen zu Azure Monitor](./faq.md): Diesem Artikel wurde eine Frage zu den Feldern „Image“ und „Name“ hinzugefügt.
 - [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)](insights/azure-sql.md): In diesem Artikel wurde die Unterstützung für die verwaltete Instanz für Datenbankwartevorgänge aktualisiert.
 - [Konfigurieren der Datensammlung des Azure Monitor für Container-Agents](insights/container-insights-agent-config.md): Diesem Artikel wurde eine Einstellung für „enrich_container_logs“ hinzugefügt.
 - [Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container](insights/container-insights-hybrid-setup.md): Diesem Artikel wurde ein Problembehandlungsabschnitt hinzugefügt.
@@ -474,19 +474,19 @@ Mehrere neue Artikel zur Umstellung vom Ansicht-Designer auf Arbeitsmappen.
 
 Im Zuge der Neustrukturierung von Inhalten für Plattformprotokolle wurden mehrere Artikel aktualisiert. Grundlage dieser Aktualisierung ist ein neues Feature zum Konfigurieren des Aktivitätsprotokolls mit Diagnoseeinstellungen.
 
-- [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](platform/resource-logs-collect-storage.md)
+- [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](./platform/resource-logs.md#send-to-azure-storage)
 - [Ereignisschema des Azure-Aktivitätsprotokolls](platform/activity-log-schema.md)
 - [Azure Monitor-Diensteinschränkungen](service-limits.md)
-- [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](platform/activity-log-collect.md)
-- [Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls](platform/diagnostic-settings-legacy.md)
+- [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](./platform/activity-log.md)
+- [Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls](./platform/activity-log.md)
 - [Erfassen von Azure-Aktivitätsprotokollen für Azure Active Directory-Mandanten (Legacy) in Azure Monitor](platform/activity-log-collect-tenants.md)
-- [Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor](platform/resource-logs-collect-workspace.md)
+- [Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage](platform/diagnostic-settings-template.md)
 - [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](platform/diagnostic-settings.md)
-- [Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs](platform/activity-log-export.md)
+- [Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs](./platform/activity-log.md#legacy-collection-methods)
 - [Übersicht über Protokolle der Azure-Plattform](platform/platform-logs-overview.md)
 - [Streamen von Azure-Überwachungsdaten an einen Event Hub](platform/stream-monitoring-data-event-hubs.md)
-- [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](platform/resource-logs-stream-event-hubs.md)
+- [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](./platform/resource-logs.md#send-to-azure-event-hubs)
 
 ### <a name="quickstarts-and-tutorials"></a>Schnellstartanleitungen und Tutorials
 

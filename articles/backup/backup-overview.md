@@ -4,12 +4,12 @@ description: Hier finden Sie eine Übersicht über den Azure Backup-Dienst und e
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709928"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513522"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Worum handelt es sich beim Azure Backup-Dienst?
 
@@ -43,8 +43,8 @@ Azure Backup bietet im Wesentlichen folgende Vorteile:
 - **Kurz- und Langzeitaufbewahrung von Daten:** Sie können [Recovery Services-Tresore](backup-azure-recovery-services-vault-overview.md) für die kurz- und langfristige Datenaufbewahrung verwenden.
 - **Automatische Speicherverwaltung**: Für Hybridumgebungen ist häufig heterogener Speicher erforderlich – teilweise lokal und teilweise in der Cloud. Bei Azure Backup fallen keine Kosten für die Verwendung von lokalen Speichergeräten an. Azure Backup sorgt im Rahmen eines Modells mit nutzungsbasierter Bezahlung für die automatische Zuteilung und Verwaltung von Sicherungsspeicher. Sie zahlen daher nur für den Speicher, den Sie nutzen. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/backup) zu den Preisen.
 - **Mehrere Speicheroptionen:** Azure Backup bietet zwei Replikationsarten, um die Hochverfügbarkeit Ihres Speichers bzw. Ihrer Daten sicherzustellen.
-  - [Lokal redundanter Speicher (Locally Redundant Storage, LRS)](../storage/common/storage-redundancy-lrs.md) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
-  - [Geografisch redundanter Speicher (Geo-Redundant Storage, GRS)](../storage/common/storage-redundancy-grs.md) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Dauerhaftigkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
+  - [Lokal redundanter Speicher (Locally Redundant Storage, LRS)](../storage/common/storage-redundancy.md) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
+  - [Geografisch redundanter Speicher (Geo-Redundant Storage, GRS)](../storage/common/storage-redundancy.md) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Dauerhaftigkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8f6fa00f65a99798ee105852a269247d717ad75d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770729"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513267"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -23,7 +23,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie SAP HANA-Datenbanken, die auf 
 [Hier](sap-hana-backup-support-matrix.md#scenario-support) finden Sie alle Szenarien, die von uns derzeit unterstützt werden.
 
 >[!NOTE]
->[Erste Schritte](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 oder 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+>[Erste Schritte]() mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 oder 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,13 +53,13 @@ Diese Option lässt die [IP-Adressbereiche](https://www.microsoft.com/download/d
 
 ### <a name="allow-access-using-nsg-tags"></a>Zugriff mithilfe von NSG-Tags zulassen
 
-Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup mit dem Diensttag AzureBackup zulassen. Zusätzlich sollten Sie die Konnektivität für Authentifizierung und Datenübertragung mithilfe von [Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Azure AD und Azure Storage ermöglichen. Dies kann über das Azure-Portal oder mithilfe von PowerShell erfolgen.
+Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup mit dem Diensttag AzureBackup zulassen. Zusätzlich sollten Sie die Konnektivität für Authentifizierung und Datenübertragung mithilfe von [Regeln](../virtual-network/security-overview.md#service-tags) für Azure AD und Azure Storage ermöglichen. Dies kann über das Azure-Portal oder mithilfe von PowerShell erfolgen.
 
 So erstellen Sie eine Regel über das Portal
 
   1. Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
   2. Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
-  3. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf **Diensttag** und **Zieldiensttag** auf **AzureBackup** festgelegt wurde.
+  3. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](../virtual-network/manage-network-security-group.md#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf **Diensttag** und **Zieldiensttag** auf **AzureBackup** festgelegt wurde.
   4. Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
 
 So erstellen Sie eine Regel mit PowerShell:
@@ -85,7 +85,7 @@ So erstellen Sie eine Regel mit PowerShell:
  7. Speichern der NSG<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 
-**Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
+**Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](../firewall/fqdn-tags.md) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
 
 **Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SAP HANA-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
 
@@ -153,7 +153,7 @@ So erstellen Sie einen Recovery Services-Tresor
    * **Name**: Der Name wird zum Identifizieren des Recovery Services-Tresors verwendet und muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten. In diesem Tutorial haben wir den Namen **SAPHanaVault**verwendet.
    * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist. Hier haben wir das Abonnement **SAP HANA Solution Lab** verwendet.
    * **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Hier haben wir **SAPHANADemo** verwendet.<br>
-   Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource im Dropdownlistenfeld aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+   Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource im Dropdownlistenfeld aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/management/overview.md).
    * **Standort**: Wählen Sie die geografische Region für den Tresor aus. Die Region des Tresors muss mit der Region des virtuellen Computers übereinstimmen, auf dem SAP HANA ausgeführt wird. Wir haben **USA, Osten 2** verwendet.
 
 5. Klicken Sie auf **Überprüfen + erstellen**.

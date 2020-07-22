@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563712"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521648"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Übersicht über die Azure Firewall Manager-Richtlinie
 
@@ -47,8 +47,8 @@ Bei der Vererbung werden alle Änderungen an der übergeordneten Richtlinie auto
 Azure Firewall unterstützt sowohl herkömmliche Regeln und als auch herkömmliche Richtlinien. Die folgende Tabelle enthält eine Gegenüberstellung von Richtlinien und Regeln:
 
 
-|         |Richtlinie  |Regeln  |
-|---------|---------|---------|
+| Subject | Richtlinie  | Regeln |
+| ------- | ------- | ----- |
 |Enthält     |NAT, Netzwerk, Anwendungsregeln, benutzerdefinierte DNS- und DNS-Proxy-Einstellungen, IP-Gruppen und Threat Intelligence-Einstellungen (einschließlich Zulassungsliste)|NAT, Netzwerk, Anwendungsregeln, benutzerdefinierte DNS- und DNS-Proxy-Einstellungen, IP-Gruppen und Threat Intelligence-Einstellungen (einschließlich Zulassungsliste)|
 |Schutz     |Virtuelle Hubs und virtuelle Netzwerke|Nur virtuelle Netzwerke|
 |Portalfunktion     |Zentrale Verwaltung mithilfe von Firewall Manager|Eigenständige Firewallumgebung|

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 397fac7609d9527165a1a0a35215a2e2bac23c6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759217"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510326"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen einer Linux-VM mit PowerShell in Azure
 
@@ -39,11 +39,11 @@ ssh-keygen -t rsa -b 2048
 
 Ausführlichere Informationen zum Erstellen von SSH-Schlüsselpaaren, u.a. zur Verwendung von PuTTy, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md).
 
-Wenn Sie Ihr SSH-Schlüsselpaar mithilfe von Cloud Shell erstellen, wird es in einem Containerimage in einem [automatisch von Cloud Shell erstellten Speicherkonto](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) gespeichert. Wenn Sie das Speicherkonto oder die darin enthaltene Dateifreigabe löschen, bevor Sie Ihre Schlüssel abgerufen haben, können Sie nicht mehr auf den virtuellen Computer zugreifen. 
+Wenn Sie Ihr SSH-Schlüsselpaar mithilfe von Cloud Shell erstellen, wird es in einem Containerimage in einem [automatisch von Cloud Shell erstellten Speicherkonto](../../cloud-shell/persisting-shell-storage.md) gespeichert. Wenn Sie das Speicherkonto oder die darin enthaltene Dateifreigabe löschen, bevor Sie Ihre Schlüssel abgerufen haben, können Sie nicht mehr auf den virtuellen Computer zugreifen. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden:
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -111,7 +111,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-Erstellen Sie mit [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) eine virtuelle Netzwerkschnittstellenkarte (Network Interface Card, NIC). Die virtuelle NIC verbindet den virtuellen Computer mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
+Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) eine virtuelle Netzwerkschnittstellenkarte (Network Interface Card, NIC). Die virtuelle NIC verbindet den virtuellen Computer mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
@@ -160,7 +160,7 @@ Add-AzVMSshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-Kombinieren Sie jetzt die vorherigen Konfigurationsdefinitionen für die Erstellung mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
+Kombinieren Sie jetzt die vorherigen Konfigurationsdefinitionen für die Erstellung mit [New-AzVM](/powershell/module/az.compute/new-azvm):
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -172,7 +172,7 @@ Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. Fahren Sie 
 
 ## <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
 
-Erstellen Sie eine SSH-Verbindung mit dem virtuellen Computer unter Verwendung der öffentlichen IP-Adresse. Verwenden Sie zum Anzeigen der öffentlichen IP-Adresse der VM das Cmdlet [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress):
+Erstellen Sie eine SSH-Verbindung mit dem virtuellen Computer unter Verwendung der öffentlichen IP-Adresse. Verwenden Sie zum Anzeigen der öffentlichen IP-Adresse der VM das Cmdlet [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -207,7 +207,7 @@ Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von N
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) entfernen:
+Wenn die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"

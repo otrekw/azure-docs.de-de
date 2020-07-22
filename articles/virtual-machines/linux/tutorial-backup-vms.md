@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526995"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Linux-Computer in Azure
 
@@ -34,7 +34,7 @@ Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicheru
 
 Wenn der Azure Backup-Dienst eine Sicherung initiiert, löst er die Sicherungserweiterung zum Erstellen einer Momentaufnahme aus. Der Azure Backup-Dienst verwendet unter Linux die Erweiterung _VMSnapshotLinux_. Die Erweiterung wird während der ersten VM-Sicherung installiert, wenn die VM ausgeführt wird. Wenn die VM nicht ausgeführt wird, erstellt der Backup-Dienst eine Momentaufnahme des zugrunde liegenden Speichers (da keine Schreibvorgänge der Anwendung erfolgen, während die VM beendet ist).
 
-Standardmäßig erstellt Azure Backup eine dateisystemkonsistente Sicherung für Linux-VMs, der Dienst kann aber auch für [anwendungskonsistente Sicherungen mithilfe des Pre-Skript- und Post-Skript-Frameworks](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) konfiguriert werden. Nachdem der Azure Backup-Dienst die Momentaufnahme erstellt hat, werden die Daten in den Sicherungstresor übertragen. Um die Effizienz zu maximieren, werden vom Dienst nur diejenigen Datenblöcke bestimmt und übertragen, die seit der vorherigen Sicherung geändert wurden.
+Standardmäßig erstellt Azure Backup eine dateisystemkonsistente Sicherung für Linux-VMs, der Dienst kann aber auch für [anwendungskonsistente Sicherungen mithilfe des Pre-Skript- und Post-Skript-Frameworks](../../backup/backup-azure-linux-app-consistent.md) konfiguriert werden. Nachdem der Azure Backup-Dienst die Momentaufnahme erstellt hat, werden die Daten in den Sicherungstresor übertragen. Um die Effizienz zu maximieren, werden vom Dienst nur diejenigen Datenblöcke bestimmt und übertragen, die seit der vorherigen Sicherung geändert wurden.
 
 Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
 
@@ -171,4 +171,3 @@ Im nächsten Tutorial erhalten Sie Informationen zur Überwachung virtueller Com
 
 > [!div class="nextstepaction"]
 > [Virtual machine governance with Azure PowerShell](tutorial-govern-resources.md) (Steuern von virtuellen Computern mit Azure PowerShell)
-

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e559be82fc7c3d6b25b99319785d49e30f56287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c233ef9cfb6ded6f3d4e96b893970d4282dfc22e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460000"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526978"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure CLI
 
@@ -32,13 +32,13 @@ Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible C
 > * Ändern der Größe eines virtuellen Computers
 > * Anzeigen und Verstehen des Status von virtuellen Computern
 
-Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
+Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../../cloud-shell/overview.md), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mithilfe des Befehls [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. 
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus* erstellt. 
 
@@ -50,7 +50,7 @@ Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit dem Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm) einen virtuellen Computer. 
+Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm) einen virtuellen Computer. 
 
 Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung – beispielsweise Betriebssystemimage, Datenträgergröße und Administratoranmeldeinformationen. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* mit Ubuntu Server erstellt. Auf dem virtuellen Computer wird ein Benutzerkonto namens *azureuser* erstellt. Außerdem werden SSH-Schlüssel generiert, sofern sie am Standardspeicherort für Schlüssel ( *~/.ssh*) nicht vorhanden sind:
 
@@ -155,12 +155,12 @@ In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.
 
 | type                     | Gängige Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Allgemeiner Zweck](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
-| [Computeoptimiert](sizes-compute.md)   | Fsv2          | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
-| [Arbeitsspeicheroptimiert](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
-| [Speicheroptimiert](sizes-storage.md)      | Lsv2, Ls              | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
-| [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
-| [Hohe Leistung](sizes-hpc.md) | H        | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
+| [Allgemeiner Zweck](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
+| [Computeoptimiert](../sizes-compute.md)   | Fsv2          | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
+| [Arbeitsspeicheroptimiert](../sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
+| [Speicheroptimiert](../sizes-storage.md)      | Lsv2, Ls              | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
+| [GPU](../sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
+| [Hohe Leistung](../sizes-hpc.md) | H        | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
 
 
 ### <a name="find-available-vm-sizes"></a>Ermitteln der verfügbaren VM-Größen

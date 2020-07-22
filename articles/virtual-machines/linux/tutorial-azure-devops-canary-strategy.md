@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: e0fb26896b79fb23bb0f784c0f23aa3af0593c22
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871860"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510156"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Tutorial: Konfigurieren der Canary-Bereitstellungsstrategie für virtuelle Linux-Computer in Azure
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie eine CI/CD-Pipeline mit Canary-Strategie
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Konfigurieren von CI/CD auf virtuellen Computern
 
-Sie können virtuelle Computer als Ziele zu einer [Bereitstellungsgruppe](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) hinzufügen. Diese können dann als Ziel für die Aktualisierung mehrerer Computer verwendet werden. Sehen Sie sich nach der Bereitstellung auf Computern den **Bereitstellungsverlauf** in einer Bereitstellungsgruppe an. In dieser Ansicht können Sie eine Ablaufverfolgung vom virtuellen Computer zur Pipeline und dann zum Commit durchführen.
+Sie können virtuelle Computer als Ziele zu einer [Bereitstellungsgruppe](/azure/devops/pipelines/release/deployment-groups) hinzufügen. Diese können dann als Ziel für die Aktualisierung mehrerer Computer verwendet werden. Sehen Sie sich nach der Bereitstellung auf Computern den **Bereitstellungsverlauf** in einer Bereitstellungsgruppe an. In dieser Ansicht können Sie eine Ablaufverfolgung vom virtuellen Computer zur Pipeline und dann zum Commit durchführen.
 
 ### <a name="canary-deployments"></a>Canary-Bereitstellungen
 
@@ -87,5 +87,5 @@ Der Einstieg ist mit Azure ganz einfach. Starten Sie mit Azure DevOps Projects d
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Starter](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Implementieren von Continuous Deployment für Ihre App in einer VM-Skalierungsgruppe von Azure](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Starter](../../devops-project/azure-devops-project-vms.md)
+- [Implementieren von Continuous Deployment für Ihre App in einer VM-Skalierungsgruppe von Azure](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
