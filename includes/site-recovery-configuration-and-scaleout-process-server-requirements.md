@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85292182"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544479"
 ---
 **Anforderungen an den Konfigurations- und Prozessserver**
 
@@ -60,6 +60,9 @@ time.windows.com | Wird zum Überprüfen der Zeitsynchronisierung zwischen der S
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> *.services.visualstudio.com (optional) </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Bei der OVF-Einrichtung ist Zugriff auf diese zusätzlichen URLs erforderlich. Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet.
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | So schließen Sie den MySQL-Download ab </br> In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie ggf. sicher, dass die CDN-URL auch in der Whitelist enthalten ist.
 |
+
+> [!NOTE]
+> Wenn eine [Private Link-Verbindung](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md) mit einem Site Recovery-Tresor besteht, benötigen Sie keinen zusätzlichen Internetzugriff für den Konfigurationsserver. Es gibt jedoch eine Ausnahme: Wenn Sie den CS-Computer mithilfe einer OVA-Vorlage einrichten, benötigen Sie neben Private Link-Zugriff auch Zugriff auf die folgenden URLs: https://management.azure.com, https://www.live.com und https://www.microsoft.com. Wenn Sie den Zugriff auf diese URLs nicht zulassen möchten, richten Sie den CS-Computer mithilfe von Unified Installer ein.
 
 ## <a name="required-software"></a>Erforderliche Software
 
