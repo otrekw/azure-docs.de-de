@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132204"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528960"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Überprüfen von Kostenvorkalkulationen im VMware-Bereitstellungsplaner 
 
@@ -150,16 +150,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Währung|Name||Währung|Name||Währung|Name|
+|Währung|Name|Währung|Name|Währung|Name|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
-|CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (chf)||DKK|Dänische Krone (kr)|
-|EUR|Euro (€)||GBP|Britisches Pfund (£)||HKD|Hongkong-Dollar (HK$)|
-|IDR|Indonesische Rupiah (Rp)||INR|Indische Rupie (₹)||JPY|Japanischer Yen (¥)|
-|KRW|Südkoreanische Won (₩)||MXN|Mexikanischer Peso (MX$)||MYR|Malaysischer Ringgit (RM$)|
-|NOK|Norwegische Krone (kr)||NZD|Neuseeländischer Dollar ($)||RUB|Russische Rubel (руб)|
-|SAR|Saudi-Riyal (SR)||SEK|Schwedische Krone (kr)||TWD|Taiwanesische Dollar (NT$)|
-|TRY|Türkische Lira (TL)||USD| US-Dollar ($)||ZAR|Südafrikanischer Rand (R)|
+|ARS|Argentinische Pesos ($)|AUD|Australischer Dollar ($)|BRL|Brasilianischer Real (R$)|
+|CAD|Kanadischer Dollar ($)|CHF|Schweizer Franken (chf)|DKK|Dänische Krone (kr)|
+|EUR|Euro (€)|GBP|Britisches Pfund (£)|HKD|Hongkong-Dollar (HK$)|
+|IDR|Indonesische Rupiah (Rp)|INR|Indische Rupie (₹)|JPY|Japanischer Yen (¥)|
+|KRW|Südkoreanische Won (₩)|MXN|Mexikanischer Peso (MX$)|MYR|Malaysischer Ringgit (RM$)|
+|NOK|Norwegische Krone (kr)|NZD|Neuseeländischer Dollar ($)|RUB|Russische Rubel (руб)|
+|SAR|Saudi-Riyal (SR)|SEK|Schwedische Krone (kr)|TWD|Taiwanesische Dollar (NT$)|
+|TRY|Türkische Lira (TL)|USD| US-Dollar ($)|ZAR|Südafrikanischer Rand (R)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](./vmware-azure-tutorial.md).

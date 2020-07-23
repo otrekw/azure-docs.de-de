@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527913"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -84,7 +84,7 @@ azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/
 Anmeldung als Dienstprinzipal unter Verwendung eines geheimen Clientschlüssels. Legen Sie die Umgebungsvariable „AZCOPY_SPA_CLIENT_SECRET“ auf den geheimen Clientschlüssel für die geheimnisbasierte Dienstprinzipalautorisierung fest.
 
 ```azcopy
-azcopy login --service-principal
+azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
 ```
 
 Anmeldung als Dienstprinzipal unter Verwendung eines Zertifikats und eines Kennworts. Legen Sie die Umgebungsvariable „AZCOPY_SPA_CERT_PASSWORD“ auf das Kennwort des Zertifikats für die zertifikatbasierte Dienstprinzipalautorisierung fest.

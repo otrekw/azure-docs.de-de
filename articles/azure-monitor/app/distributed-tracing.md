@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892256"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539991"
 ---
 # <a name="what-is-distributed-tracing"></a>Was ist die verteilte Ablaufverfolgung?
 
@@ -21,9 +21,9 @@ In monolithischen Architekturen haben wir uns an das Debugging mit Aufruflisten 
 
 Hier kommt die verteilte Ablaufverfolgung ins Spiel.  
 
-Die verteilte Ablaufverfolgung ist das Äquivalent zu Aufruflisten für moderne Cloud- und Microservicesarchitekturen, ergänzt durch einen vereinfachten Leistungsprofiler. In Azure Monitor stehen zwei Oberflächen zur Nutzung der verteilten Ablaufverfolgungsdaten zur Verfügung. Die erste ist unsere [Transaktionsdiagnose](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)-Ansicht, die einer Aufrufliste mit zusätzlicher Zeitdimension gleicht. Die Transaktionsdiagnose-Ansicht bietet Einblick in eine einzelne Transaktion/Anforderung und ist hilfreich, um die Ursache für Zuverlässigkeitsprobleme und Leistungsengpässe auf Anforderungsbasis zu ermitteln.
+Die verteilte Ablaufverfolgung ist das Äquivalent zu Aufruflisten für moderne Cloud- und Microservicesarchitekturen, ergänzt durch einen vereinfachten Leistungsprofiler. In Azure Monitor stehen zwei Oberflächen zur Nutzung der verteilten Ablaufverfolgungsdaten zur Verfügung. Die erste ist unsere [Transaktionsdiagnose](./transaction-diagnostics.md)-Ansicht, die einer Aufrufliste mit zusätzlicher Zeitdimension gleicht. Die Transaktionsdiagnose-Ansicht bietet Einblick in eine einzelne Transaktion/Anforderung und ist hilfreich, um die Ursache für Zuverlässigkeitsprobleme und Leistungsengpässe auf Anforderungsbasis zu ermitteln.
 
-Zudem bietet Azure Monitor eine [Anwendungsübersicht](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)-Ansicht, die viele Transaktionen aggregiert, um eine topologische Ansicht der Interaktion der Systeme sowie der durchschnittlichen Leistung und Fehlerraten zu erhalten. 
+Zudem bietet Azure Monitor eine [Anwendungsübersicht](./app-map.md)-Ansicht, die viele Transaktionen aggregiert, um eine topologische Ansicht der Interaktion der Systeme sowie der durchschnittlichen Leistung und Fehlerraten zu erhalten. 
 
 ## <a name="how-to-enable-distributed-tracing"></a>Aktivieren der verteilten Ablaufverfolgung
 
@@ -33,16 +33,16 @@ Das Aktivieren der verteilten Ablaufverfolgung über die Dienste in einer Anwend
 
 Die verteilte Ablaufverfolgung wird von den Application Insights-Agents und/oder SDKs für .NET, .NET Core, Java, Node.js und JavaScript bereits nativ unterstützt. Anweisungen zum Installieren und Konfigurieren der einzelnen Application Insights SDKs finden Sie unter:
 
-* [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
-* [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [.NET](../learn/quick-monitor-portal.md)
+* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [Java](./java-in-process-agent.md)
+* [Node.js](../learn/nodejs-quick-start.md)
+* [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
-Wenn das richtige Application Insights SDK installiert und konfiguriert ist, werden Ablaufverfolgungsinformationen für gängige Frameworks, Bibliotheken und Technologien automatisch von der automatischen Erfassung (Auto-Collectors) für SDK-Abhängigkeiten gesammelt. Die vollständige Liste der unterstützten Technologien finden Sie unter [Automatisches Sammeln von Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
+Wenn das richtige Application Insights SDK installiert und konfiguriert ist, werden Ablaufverfolgungsinformationen für gängige Frameworks, Bibliotheken und Technologien automatisch von der automatischen Erfassung (Auto-Collectors) für SDK-Abhängigkeiten gesammelt. Die vollständige Liste der unterstützten Technologien finden Sie unter [Automatisches Sammeln von Abhängigkeiten](./auto-collect-dependencies.md).
 
- Darüber hinaus kann jede beliebige Technologie manuell durch einen Aufruf von [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) auf dem [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) überwacht werden.
+ Darüber hinaus kann jede beliebige Technologie manuell durch einen Aufruf von [TrackDependency](./api-custom-events-metrics.md) auf dem [TelemetryClient](./api-custom-events-metrics.md) überwacht werden.
 
 ## <a name="enable-via-opencensus"></a>Aktivieren über OpenCensus
 

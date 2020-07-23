@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05349554f4c5e076562a75d48d58e0849986d6cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668229"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539498"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Integrieren des allgemeinen Warnungsschemas mit Logic Apps
 
@@ -23,13 +23,13 @@ Das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) stellt ein
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind: 
-* Einrichten von Warnungsregeln ([Metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [Protokoll](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [Aktivitätsprotokoll](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
-* Einrichten von [Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* Aktivieren des [allgemeinen Warnungsschemas](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) aus Aktionsgruppen heraus
+* Einrichten von Warnungsregeln ([Metrik](./alerts-metric.md), [Protokoll](./alerts-log.md), [Aktivitätsprotokoll](./alerts-activity-log.md))
+* Einrichten von [Aktionsgruppen](./action-groups.md)
+* Aktivieren des [allgemeinen Warnungsschemas](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) aus Aktionsgruppen heraus
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Erstellen einer Logik-App, die das allgemeine Warnungsschema nutzt
 
-1. Führen Sie die [Schritte zum Erstellen einer Logik-App](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app) aus. 
+1. Führen Sie die [Schritte zum Erstellen einer Logik-App](./action-groups-logic-app.md) aus. 
 
 1.  Wählen Sie den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung**.
 
@@ -130,7 +130,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     Erfahren Sie mehr über das [Schreiben von Logik-App-Ausdrücken](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     Erfahren Sie mehr über das [Schreiben von Logik-App-Ausdrücken](../../logic-apps/workflow-definition-language-functions-reference.md#logical-comparison-functions).
 
     
 
@@ -139,4 +139,3 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
 * [Erfahren Sie mehr über Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
 * [Erfahren Sie mehr über das allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs).
-

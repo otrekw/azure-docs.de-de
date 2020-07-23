@@ -3,12 +3,12 @@ title: Datenmodell „Azure Monitor-Protokolle“
 description: In diesem Artikel werden die Details des Azure Monitor Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854756"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539073"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -18,7 +18,7 @@ Verwenden Sie das Log Analytics-Datenmodell, um benutzerdefinierte Warnungen in 
 
 > [!NOTE]
 >
-> Dieses Datenmodell bezieht sich auf den Azure-Diagnosemodus zum Senden von Diagnoseereignissen an Log Analytics (LA). Weitere Informationen zum Datenmodell für den neuen ressourcenspezifischen Modus finden Sie im folgenden Artikel: [Datenmodell für Azure Backup-Diagnoseereignisse](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+> Dieses Datenmodell bezieht sich auf den Azure-Diagnosemodus zum Senden von Diagnoseereignissen an Log Analytics (LA). Weitere Informationen zum Datenmodell für den neuen ressourcenspezifischen Modus finden Sie im folgenden Artikel: [Datenmodell für Azure Backup-Diagnoseereignisse](./backup-azure-reports-data-model.md)
 
 ## <a name="using-azure-backup-data-model"></a>Verwenden des Azure Backup-Datenmodells
 
@@ -465,7 +465,7 @@ Früher wurden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen an
 
 Aus Gründen der Abwärtskompatibilität werden Diagnosedaten für Azure Backup-Agent und Azure VM-Sicherungen aktuell sowohl im V1- als auch im V2-Schema an die Azure-Diagnosetabelle gesendet (wobei das V1-Schema mittlerweile als veralteter Zweig geführt wird). Sie können erkennen, welche Datensätze in der Protokollanalyse dem V1-Schema entsprechen, indem Sie Datensätze in Ihren Protokollabfragen nach „SchemaVersion_s=="V1"“ filtern. 
 
-Im oben beschriebenen [Datenmodell](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) sehen Sie in der dritten Spalte (Beschreibung), welche Spalten nur zum V1-Schema gehören.
+Im oben beschriebenen [Datenmodell](#using-azure-backup-data-model) sehen Sie in der dritten Spalte (Beschreibung), welche Spalten nur zum V1-Schema gehören.
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>Ändern der Abfragen zur Verwendung des V2-Schemas
 Da das V1-Schema bereits als veraltet gekennzeichnet wurde, empfiehlt es sich, bei allen benutzerdefinierten Abfragen von Azure Backup-Diagnosedaten nur das V2-Schema zu verwenden. Im folgenden Beispiel erfahren Sie, wie Sie Ihre Abfragen aktualisieren, um die Abhängigkeit vom V1-Schema zu entfernen:

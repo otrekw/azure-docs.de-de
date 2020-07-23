@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34b3ea9f07475affca76c8a3ff71de61abcadde8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74228143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529708"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs-Updates für iOS 13
 
@@ -58,7 +58,7 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Wenn Azure Notification Hubs eine Benachrichtigung erkennt, in der der Wert `apns-push-type` nicht festgelegt ist, leitet der Dienst den Pushtyp aus der Benachrichtigungsanforderung ab und legt den Wert automatisch fest, um Sie während dieses Übergangs zu unterstützen. Beachten Sie, dass Sie Azure Notification Hubs für die Verwendung von tokenbasierter Authentifizierung konfigurieren müssen, um den erforderlichen Header festzulegen. Weitere Informationen finden Sie unter [Tokenbasierte Authentifizierung (HTTP/2) für APNs](notification-hubs-push-notification-http2-token-authentification.md).
+Wenn Azure Notification Hubs eine Benachrichtigung erkennt, in der der Wert `apns-push-type` nicht festgelegt ist, leitet der Dienst den Pushtyp aus der Benachrichtigungsanforderung ab und legt den Wert automatisch fest, um Sie während dieses Übergangs zu unterstützen. Beachten Sie, dass Sie Azure Notification Hubs für die Verwendung von tokenbasierter Authentifizierung konfigurieren müssen, um den erforderlichen Header festzulegen. Weitere Informationen finden Sie unter [Tokenbasierte Authentifizierung (HTTP/2) für APNs](./notification-hubs-push-notification-http2-token-authentication.md).
 
 ## <a name="apns-priority"></a>APNs-Priorität
 

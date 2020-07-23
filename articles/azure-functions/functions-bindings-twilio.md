@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76715063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540263"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-Bindung für Azure Functions
 
@@ -241,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Im folgenden Beispiel wird gezeigt, wie Sie die Anmerkung [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) verwenden, um eine SMS-Nachricht zu senden. In der Attributdefinition müssen Werte für `to`, `from` und `body` angegeben werden, auch wenn Sie sie programmgesteuert überschreiben.
+Im folgenden Beispiel wird gezeigt, wie Sie die Anmerkung [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) verwenden, um eine SMS-Nachricht zu senden. In der Attributdefinition müssen Werte für `to`, `from` und `body` angegeben werden, auch wenn Sie sie programmgesteuert überschreiben.
 
 ```java
 package com.function;
@@ -319,7 +319,7 @@ Attribute werden von Python nicht unterstützt.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Platzieren Sie die Anmerkung [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) in einem Parameter vom Typ [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding). `T` kann hierbei ein beliebiger nativer Java-Typ (beispielsweise `int`, `String` oder `byte[]`) oder ein POJO-Typ sein.
+Platzieren Sie die Anmerkung [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) in einem Parameter vom Typ [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding). `T` kann hierbei ein beliebiger nativer Java-Typ (beispielsweise `int`, `String` oder `byte[]`) oder ein POJO-Typ sein.
 
 ---
 

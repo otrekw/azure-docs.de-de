@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232065"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536605"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -244,7 +244,7 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `basic` für die 
 
 Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `standard` für die obigen aktualisierten Microservices.
 
-1. Führen Sie in der Befehlszeile `kubectl proxy` aus. Weitere Informationen finden Sie unter [Accessing the Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/) (Zugreifen auf die Kubernetes-API).
+1. Führen Sie in der Befehlszeile `kubectl proxy` aus. Weitere Informationen finden Sie unter [Accessing the Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server) (Zugreifen auf die Kubernetes-API).
 
 1. Öffnen Sie die Verwaltungskonsole für Kubernetes.
 

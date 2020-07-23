@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: e51eeb32ecd306986dc22d6bfa09ee95b8b87852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658695"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527386"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Von Azure unterstützte Linux-Distributionen
 
-Partner stellen Linux-Images im Azure Marketplace bereit. Microsoft arbeitet mit verschiedenen Linux-Communitys zusammen, um der Liste der unterstützten Distributionen weitere Varianten hinzuzufügen. Für Distributionen, die nicht in Marketplace verfügbar sind, gilt Folgendes: Sie können stets Ihr eigenes Linux verwenden, sofern Sie die Richtlinien unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) einhalten.
+Partner stellen Linux-Images im Azure Marketplace bereit. Microsoft arbeitet mit verschiedenen Linux-Communitys zusammen, um der Liste der unterstützten Distributionen weitere Varianten hinzuzufügen. Für Distributionen, die nicht in Marketplace verfügbar sind, gilt Folgendes: Sie können stets Ihr eigenes Linux verwenden, sofern Sie die Richtlinien unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](./create-upload-generic.md) einhalten.
 
 ## <a name="supported-distributions-and-versions"></a>Unterstützte Distributionen und Versionen
 
@@ -46,7 +46,7 @@ Der Azure Linux-Agent ist bereits in den Images im Azure Marketplace vorinstalli
 
 ## <a name="image-update-cadence"></a>Imageaktualisierungsrhythmus
 
-Azure fordert, dass die Herausgeber der unterstützten Linux-Distributionen regelmäßig in einem vierteljährlichen oder häufigeren Rhythmus ihre Images im Azure Marketplace mit den neuesten Patches und Sicherheitsupdates aktualisieren. Aktualisierte Images im Azure Marketplace sind automatisch für Kunden als neue Versionen einer Image-SKU verfügbar. Weitere Informationen zum Suchen nach Linux-Images: [Suchen von Linux-VM-Images im Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+Azure fordert, dass die Herausgeber der unterstützten Linux-Distributionen regelmäßig in einem vierteljährlichen oder häufigeren Rhythmus ihre Images im Azure Marketplace mit den neuesten Patches und Sicherheitsupdates aktualisieren. Aktualisierte Images im Azure Marketplace sind automatisch für Kunden als neue Versionen einer Image-SKU verfügbar. Weitere Informationen zum Suchen nach Linux-Images: [Suchen von Linux-VM-Images im Azure Marketplace](./cli-ps-findimage.md).
 
 ## <a name="azure-tuned-kernels"></a>Optimierte Azure-Kernel
 

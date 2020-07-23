@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772617"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526655"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Behandeln von Leistungsproblemen von virtuellen Azure-Computern unter Linux oder Windows
 
-Dieser Artikel beschreibt die allgemeine Behandlung von Leistungsproblemen bei virtuellen Computern (VMs) durch Überwachen und Beobachten von Leistungsengpässen und bietet mögliche Korrekturen für Probleme, die auftreten können. Neben Überwachung können Sie auch Perfinsights verwenden, um einen Bericht mit Best Practice-Empfehlungen und wichtigen Engpässen rund um E/A, CPU und Arbeitsspeicher bereitzustellen. PerfInsights ist sowohl für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)- als auch für [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)-VMs in Azure verfügbar.
+Dieser Artikel beschreibt die allgemeine Behandlung von Leistungsproblemen bei virtuellen Computern (VMs) durch Überwachen und Beobachten von Leistungsengpässen und bietet mögliche Korrekturen für Probleme, die auftreten können. Neben Überwachung können Sie auch Perfinsights verwenden, um einen Bericht mit Best Practice-Empfehlungen und wichtigen Engpässen rund um E/A, CPU und Arbeitsspeicher bereitzustellen. PerfInsights ist sowohl für [Windows](./how-to-use-perfinsights.md)- als auch für [Linux](./how-to-use-perfinsights-linux.md)-VMs in Azure verfügbar.
 
 In diesem Artikel wird die Verwendung von Überwachung zur Diagnose von Leistungsengpässen erläutert.
 
@@ -30,7 +30,7 @@ In diesem Artikel wird die Verwendung von Überwachung zur Diagnose von Leistung
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Überwachung von virtuellen Azure-IaaS-Computern
 
-Zum Überwachen der Gast-VM verwenden Sie die Azure-VM-Überwachung, die Sie bei bestimmten Ressourcenbedingungen auf allgemeiner Ebene warnt. Informationen zum Überprüfen, ob die VM-Diagnose aktiviert ist, finden Sie in der [Übersicht über Azure-Ressourcenprotokolle](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Wenn Sie diese Meldung sehen, ist die Diagnose wahrscheinlich nicht aktiviert:
+Zum Überwachen der Gast-VM verwenden Sie die Azure-VM-Überwachung, die Sie bei bestimmten Ressourcenbedingungen auf allgemeiner Ebene warnt. Informationen zum Überprüfen, ob die VM-Diagnose aktiviert ist, finden Sie in der [Übersicht über Azure-Ressourcenprotokolle](../../azure-monitor/learn/tutorial-resource-logs.md). Wenn Sie diese Meldung sehen, ist die Diagnose wahrscheinlich nicht aktiviert:
 
 ![Überwachung ist nicht aktiviert](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -101,7 +101,7 @@ Um zu bestimmen, ob Ressourcenengpässe vorliegen, überprüfen Sie Ihre Daten. 
 
 ### <a name="cpu-observe-trends"></a>CPU-Beobachtungstrends
 
-Seien Sie sich bei der Untersuchung von Leistungsproblemen der Trends bewusst, und bemühen Sie sich darum, sie zu verstehen, wenn sie Sie betreffen. In den nächsten Abschnitten verwenden wir die Überwachungsdiagramme aus dem Portal, um Trends zu veranschaulichen. Sie können außerdem für Querverweise auf abweichendes Ressourcenverhalten innerhalb des gleichen Zeitraums nützlich sein. Klicken Sie zum Anpassen der Diagramme auf [Azure Monitor-Datenplattform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform).
+Seien Sie sich bei der Untersuchung von Leistungsproblemen der Trends bewusst, und bemühen Sie sich darum, sie zu verstehen, wenn sie Sie betreffen. In den nächsten Abschnitten verwenden wir die Überwachungsdiagramme aus dem Portal, um Trends zu veranschaulichen. Sie können außerdem für Querverweise auf abweichendes Ressourcenverhalten innerhalb des gleichen Zeitraums nützlich sein. Klicken Sie zum Anpassen der Diagramme auf [Azure Monitor-Datenplattform](../../azure-monitor/platform/data-platform.md).
 
 Spitzen: Spitzen können mit einer geplanten Aufgabe/einem bekannten Ereignis zusammenhängen. Wenn Sie die Aufgabe identifizieren können, bestimmen Sie, ob die Aufgabe auf der erforderlichen Leistungsstufe ausgeführt wird. Wenn die Leistung akzeptabel ist, müssen Sie möglicherweise keine weiteren Ressourcen zuweisen.
 
@@ -120,7 +120,7 @@ Wenn Ihre Anwendung oder Ihr Prozess nicht auf der richtigen Leistungsstufe ausg
 
 Wenn Sie die VM vergrößert haben und die CPU immer noch zu 95 % ausgelastet ist, bestimmen Sie, ob diese Einstellung bessere Leistung oder einen höheren Anwendungsdurchsatz auf einer akzeptablen Stufe bietet. Führen Sie andernfalls eine Problembehandlung der einzelnen Anwendung/des einzelnen Prozesses durch.
 
-Sie können Perfinsights für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) oder [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) verwenden, um zu analysieren, welcher Prozess für den CPU-Verbrauch verantwortlich ist. 
+Sie können Perfinsights für [Windows](./how-to-use-perfinsights.md) oder [Linux](./how-to-use-perfinsights-linux.md) verwenden, um zu analysieren, welcher Prozess für den CPU-Verbrauch verantwortlich ist. 
 
 ## <a name="check-for-memory-bottleneck"></a>Prüfen auf Speicherengpass
 
@@ -151,13 +151,13 @@ Um hohe Speicherauslastung zu beheben, führen Sie eine der folgenden Aufgaben a
 
 Wenn Sie nach dem Upgrade auf eine größere VM feststellen, dass Sie immer noch eine konstante ständige Zunahme bis 100 % verzeichnen, identifizieren Sie die Anwendung/den Prozess, und führen Sie eine Problembehandlung durch.
 
-Sie können Perfinsights für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) oder [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) verwenden, um zu analysieren, welcher Prozess für den Arbeitsspeicherverbrauch verantwortlich ist. 
+Sie können Perfinsights für [Windows](./how-to-use-perfinsights.md) oder [Linux](./how-to-use-perfinsights-linux.md) verwenden, um zu analysieren, welcher Prozess für den Arbeitsspeicherverbrauch verantwortlich ist. 
 
 ## <a name="check-for-disk-bottleneck"></a>Überprüfen der Datenträger auf Engpässe
 
 Um das Speichersubsystem der VM zu überprüfen, überprüfen Sie die Diagnoseprotokolle auf der Azure VM-Ebene mithilfe der Leistungsindikatoren in der VM-Diagnose und ebenfalls der Speicherkontodiagnose.
 
-Für die VM-spezifische Problembehandlung können Sie Perfinsights für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) oder [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) verwenden, um zu analysieren, welcher Prozess für die E/A-Vorgänge verantwortlich ist. 
+Für die VM-spezifische Problembehandlung können Sie Perfinsights für [Windows](./how-to-use-perfinsights.md) oder [Linux](./how-to-use-perfinsights-linux.md) verwenden, um zu analysieren, welcher Prozess für die E/A-Vorgänge verantwortlich ist. 
 
 Beachten Sie, dass keine Leistungsindikatoren für Zonenredundanz und Premium-Speicherkonten vorhanden sind. Bei Problemen im Zusammenhang mit diesen Leistungsindikatoren öffnen Sie eine Supportanfrage.
 
@@ -208,7 +208,7 @@ Um zu bestimmen, ob Sie den IOPS-Grenzwert erreichen, wechseln Sie zur Speicherk
 
 Mit neuen Datenträgerangeboten unter Storage Standard können die IOPS- und Durchsatzlimits abweichen, aber das kumulative Limit für das Storage Standard-Speicherkonto beträgt 20.000 IOPS (Storage Premium hat unterschiedliche Grenzwerte auf Konto- oder Datenträgerebene). Weitere Informationen zu Storage Standard-Datenträgerangeboten und Grenzwerten pro Datenträger:
 
-* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../windows/disk-scalability-targets.md).
 
 #### <a name="references"></a>References
 
@@ -224,19 +224,19 @@ Vergleichen Sie TotalIngress und TotalEgress mit den Grenzwerten für Ingress un
 
 Neue Datenträgerangebote in Storage Standard weisen unterschiedliche IOPS- und Durchsatzlimits auf (IOPS werden nicht pro VHD verfügbar gemacht). Sehen Sie sich die Daten an, um festzustellen, ob Sie auf der Grundlage der Datenlese- und -schreibvorgänge die Grenzwerte des kombinierten Durchsatzes in MB der VHD(s) erreichen, und optimieren Sie dann Ihre VM-Speicherkonfiguration, um eine Skalierung jenseits der Grenzwerte einzelner VHDs zu erreichen. Weitere Informationen zu Storage Standard-Datenträgerangeboten und Grenzwerten pro Datenträger:
 
-* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../windows/disk-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Wartung bei hoher Datenträgerverwendung/Latenz
 
 Verringern der Clientlatenz und Optimieren der VM-E/A, um eine Skalierung jenseits der VHD-Grenzwerte zu erreichen
 
-* [Optimieren der E/A für Windows in Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [Optimieren der E/A für Windows in Azure](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/toc.json)
 
-* [Optimieren der E/A für Linux in Azure](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [Optimieren der E/A für Linux in Azure](/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 
 #### <a name="reduce-throttling"></a>Verringern der Drosselung
 
-Wenn die oberen Grenzwerte von Speicherkonten erreicht werden, gleichen Sie die VHDs zwischen den einzelnen Speicherkonten neu aus. Informationen hierzu finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/).
+Wenn die oberen Grenzwerte von Speicherkonten erreicht werden, gleichen Sie die VHDs zwischen den einzelnen Speicherkonten neu aus. Informationen hierzu finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../../storage/common/scalability-targets-standard-account.md).
 
 ### <a name="increase-throughput-and-reduce-latency"></a>Vergrößern des Durchsatzes und Verringern der Latenz
 
@@ -244,9 +244,9 @@ Wenn Sie eine für Latenz anfällige Anwendung ausführen und hohen Durchsatz be
 
 Die spezifischen Szenarien werden in diesen Artikeln besprochen:
 
-* [Migrieren zu Azure Premium-Speicher](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Migrieren zu Azure Premium-Speicher](../windows/migrate-to-managed-disks.md)
 
-* [Verwenden von Azure Storage Premium mit SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [Verwenden von Azure Storage Premium mit SQL Server](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

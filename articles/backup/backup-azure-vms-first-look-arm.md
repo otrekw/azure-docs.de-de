@@ -3,12 +3,12 @@ title: Sichern einer Azure-VM über die VM-Einstellungen
 description: In diesem Artikel erfahren Sie, wie Sie entweder einen einzelnen virtuellen Azure-Computer oder mehrere virtuelle Azure-Computer mit dem Azure Backup-Dienst sichern können.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705444"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538886"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 
@@ -26,7 +26,7 @@ Dieser Artikel beschreibt, wie Sie Azure-VMs mit dem [Azure Backup](backup-overv
 
 Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Agent, der auf dem Computer ausgeführt wird. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, wird der Agent ausgeführt. In einigen Fällen, z.B. wenn Sie eine benutzerdefinierte VM erstellen oder einen Computer von lokalen Standorten aus migrieren, müssen den Agent ggf. manuell installieren.
 
-- Wenn Sie den VM-Agent manuell installieren müssen, folgen Sie den Anweisungen für [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- oder [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-VMs.
+- Wenn Sie den VM-Agent manuell installieren müssen, folgen Sie den Anweisungen für [Windows](../virtual-machines/extensions/agent-windows.md)- oder [Linux](../virtual-machines/extensions/agent-linux.md)-VMs.
 - Nach der Installation des Agent installiert Azure Backup die Sicherungserweiterung auf den Agent, wenn Sie die Sicherung aktivieren. Die Erweiterung wird ohne Eingreifen des Benutzers aktualisiert und gepatcht.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Sichern über Azure-VM-Einstellungen

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca8798af83108ca5e8bdfe5918a25423fd934d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84436202"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544878"
 ---
 Azure Managed Disks (verwaltete Azure-Datenträger) stellt derzeit vier Datenträgertypen bereit, wobei jeder Typ auf bestimmte Kundenszenarien ausgerichtet ist.
 
@@ -21,8 +21,8 @@ Azure Managed Disks (verwaltete Azure-Datenträger) stellt derzeit vier Datentr�
 
 Die folgende Tabelle enthält eine Gegenüberstellung von Ultra-Datenträgern, SSD Premium-, SSD Standard- und HDD Standard-Laufwerken für verwaltete Datenträger, um Ihnen die Entscheidung zu erleichtern.
 
-|   | Ultra-Datenträger   | SSD Premium   | SSD Standard   | HDD Standard   |
-|---------|---------|---------|---------|---------|
+| Detail | Ultra Disks | SSD Premium | SSD Standard | HDD Standard |
+| ------ | ---------- | ----------- | ------------ | ------------ |
 |Datenträgertyp   |SSD   |SSD   |SSD   |Festplattenlaufwerk   |
 |Szenario   |E/A-intensive Workloads wie [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), führende Datenbanken (z. B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
 |Maximale Datenträgergröße   |65.536 Gibibyte (GiB)    |32767 GiB    |32767 GiB   |32767 GiB   |

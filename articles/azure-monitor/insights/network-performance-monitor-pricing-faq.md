@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654391"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539651"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Preisänderungen für Azure-Netzwerkleistungsmonitor
 
-Wir haben Ihr Feedback berücksichtigt und vor kurzem eine [neue Preisgestaltung](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) für verschiedene Überwachungsdienste in Azure eingeführt. In diesem Artikel sind Preisänderungen im Zusammenhang mit dem Azure-[Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) in einem benutzerfreundlichen Frage-und-Antwort-Format festgehalten.
+Wir haben Ihr Feedback berücksichtigt und vor kurzem eine [neue Preisgestaltung](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) für verschiedene Überwachungsdienste in Azure eingeführt. In diesem Artikel sind Preisänderungen im Zusammenhang mit dem Azure-[Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) in einem benutzerfreundlichen Frage-und-Antwort-Format festgehalten.
 
 Der Netzwerkleistungsmonitor umfasst drei Komponenten:
-* [Systemmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Dienstendpunktmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute-Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [Systemmonitor](../../networking/network-monitoring-overview.md#performance-monitor)
+* [Dienstendpunktmonitor](../../networking/network-monitoring-overview.md)
+* [ExpressRoute-Monitor](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 In den folgenden Abschnitten werden die Preisänderungen für diese Komponenten des Netzwerkleistungsmonitors erläutert.
 
@@ -112,4 +112,3 @@ Im Abschnitt [Verbindungsüberwachung](https://azure.microsoft.com/pricing/detai
 ## <a name="references"></a>References
 
 [Häufig gestellte Fragen zu Log Analytics-Preisen](https://azure.microsoft.com/pricing/details/log-analytics/): Der Abschnitt „FAQ“ enthält Informationen zum Free-Tarif, zu Preisen pro Knoten und weitere Preisdetails.
-

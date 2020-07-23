@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244bea1aaf5457601ced9bac05c8dae43e5b9199
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759506"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527131"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Allgemeine Voraussetzungen für die Bereitstellung von OpenShift Container Platform 3.11 in Azure
 
@@ -84,7 +84,7 @@ ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 > [!NOTE]
 > Ihr SSH-Schlüsselpaar darf kein Kennwort/keine Passphrase enthalten.
 
-Weitere Informationen zu SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH-Schlüsseln in Windows](/azure/virtual-machines/linux/ssh-from-windows). Exportieren Sie den privaten Schlüssel im OpenSSH-Format.
+Weitere Informationen zu SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH-Schlüsseln in Windows](./ssh-from-windows.md). Exportieren Sie den privaten Schlüssel im OpenSSH-Format.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Speichern des privaten SSH-Schlüssels in Azure Key Vault
 Die OpenShift-Bereitstellung verwendet den erstellten SSH-Schlüssel zum Sicherstellen des Zugriffs auf den OpenShift-Master. Damit die Bereitstellung den SSH-Schlüssel sicher abrufen kann, speichern Sie den Schlüssel im Key Vault. Verwenden Sie hierzu den folgenden Befehl:
@@ -134,7 +134,7 @@ Notieren Sie die „appId“-Eigenschaft und das Kennwort, die vom Befehl zurüc
  > [!WARNING] 
  > Notieren Sie sich unbedingt das sichere Kennwort, da es nicht möglich ist, dieses Kennwort erneut abzurufen.
 
-Weitere Informationen über Dienstprinzipale finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+Weitere Informationen über Dienstprinzipale finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Voraussetzungen, die nur die Resource Manager-Vorlage betreffen
 

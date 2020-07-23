@@ -5,12 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74226737"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540382"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
 
@@ -71,7 +71,7 @@ Zum Abschließen der Installation der Azure Functions-Laufzeit müssen Sie die K
 
     ![Konfigurationstool für die Vorschauversion der Azure Functions-Laufzeit][7]
 
-1. Klicken Sie auf die Registerkarte **Datenbank**, geben Sie die Verbindungsdetails für die SQL Server-Instanz ein, einschließlich der Angabe eines [Datenbankhauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), und klicken Sie auf **Übernehmen**.  Die Verbindung mit einer SQL Server-Instanz ist erforderlich, damit die Azure Functions-Laufzeit eine Datenbank zur Unterstützung der Laufzeit erstellt.
+1. Klicken Sie auf die Registerkarte **Datenbank**, geben Sie die Verbindungsdetails für die SQL Server-Instanz ein, einschließlich der Angabe eines [Datenbankhauptschlüssels](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), und klicken Sie auf **Übernehmen**.  Die Verbindung mit einer SQL Server-Instanz ist erforderlich, damit die Azure Functions-Laufzeit eine Datenbank zur Unterstützung der Laufzeit erstellt.
 
     ![Datenbankkonfiguration für die Vorschauversion der Azure Functions-Laufzeit][8]
 

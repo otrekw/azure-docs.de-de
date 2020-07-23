@@ -3,12 +3,12 @@ title: Verschieben eines Azure Event Hubs-Namespace in eine andere Region | Micr
 description: In diesem Artikel erfahren Sie, wie Sie einen Azure Event Hubs-Namespace aus der aktuellen Region in eine andere verschieben.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b02c34b0c28420a7e27da56b107ed3925a761b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537070"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Verschieben eines Azure Event Hubs-Namespace in eine andere Region
 Es gibt verschiedene Szenarien, in denen Sie Ihren vorhandenen Azure Event Hubs-Namespace aus einer Region in eine andere verschieben möchten. Beispielsweise könnte es sein, dass Sie für Testzwecke einen Namespace mit derselben Konfiguration erstellen möchten. Möglicherweise möchten Sie im Rahmen der [Planung der Notfallwiederherstellung](event-hubs-geo-dr.md#setup-and-failover-flow) auch einen sekundären Namespace in einer anderen Region einrichten.
@@ -108,5 +108,5 @@ So löschen Sie einen Event Hubs-Quell- oder -Zielnamespace im Azure-Portal
 In diesem Tutorial haben Sie einen Azure Event Hubs-Namespace aus einer Region in eine andere verschoben und die Quellressourcen bereinigt.  Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter:
 
 
-- [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Verschieben virtueller Azure-Computer in eine andere Region](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Verschieben virtueller Azure-Computer in eine andere Region](../site-recovery/azure-to-azure-tutorial-migrate.md)

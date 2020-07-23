@@ -3,12 +3,12 @@ title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft
 description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 92f40961cd824925fe6ed1b67745667121a66d2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628234"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539974"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
@@ -59,7 +59,7 @@ Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
 Die Ansicht **Berechtigungen hinzufügen** unten bezieht sich in erster Linie auf Application Insights-Ressourcen. Wenn Sie die Zugriffssteuerungsberechtigungen einer höheren Ebene wie Ressourcengruppen anzeigen, sehen Sie zusätzliche, nicht Application Insights-bezogene Rollen.
 
-Wenn Sie Informationen zu allen integrierten Rollen für die rollenbasierte Zugriffssteuerung in Azure anzeigen möchten, nutzen Sie die [offiziellen Referenzinhalte](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Wenn Sie Informationen zu allen integrierten Rollen für die rollenbasierte Zugriffssteuerung in Azure anzeigen möchten, nutzen Sie die [offiziellen Referenzinhalte](../../role-based-access-control/built-in-roles.md).
 
 ![Screenshot einer Liste der Benutzerrollen für die Zugriffssteuerung](./media/resources-roles-access-control/0003-user-roles.png)
 
@@ -69,23 +69,23 @@ Wir haben Links zur zugehörigen offiziellen Referenzdokumentation angegeben (so
 
 | Role | In der Ressourcengruppe |
 | --- | --- |
-| [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs. |
-| [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Kann alle Elemente bearbeiten, einschließlich aller Ressourcen. |
-| [Mitwirkender der Application Insights-Komponente](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Kann Application Insights-Ressourcen bearbeiten. |
-| [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Kann Inhalte anzeigen, aber nicht ändern. |
-| [Application Insights-Momentaufnahmedebugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Erteilt dem Benutzer die Berechtigung zum Verwenden von Features des Application Insights-Momentaufnahmedebuggers. Beachten Sie, dass diese Rolle weder in der Rolle „Besitzer“ noch in der Rolle „Mitwirkender“ enthalten ist. |
+| [Besitzer](../../role-based-access-control/built-in-roles.md#owner) |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs. |
+| [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) |Kann alle Elemente bearbeiten, einschließlich aller Ressourcen. |
+| [Mitwirkender der Application Insights-Komponente](../../role-based-access-control/built-in-roles.md#application-insights-component-contributor) |Kann Application Insights-Ressourcen bearbeiten. |
+| [Leser](../../role-based-access-control/built-in-roles.md#reader) |Kann Inhalte anzeigen, aber nicht ändern. |
+| [Application Insights-Momentaufnahmedebugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Erteilt dem Benutzer die Berechtigung zum Verwenden von Features des Application Insights-Momentaufnahmedebuggers. Beachten Sie, dass diese Rolle weder in der Rolle „Besitzer“ noch in der Rolle „Mitwirkender“ enthalten ist. |
 | Mitwirkender der Releaseverwaltung für Azure App Service-Bereitstellung | Rolle „Mitwirkender“ für Dienste, die über Azure App Service-Bereitstellung bereitgestellt werden. |
-| [Datenpurger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Besondere Rolle für das Löschen von personenbezogenen Daten. Weitere Informationen finden Sie in unserem [Leitfaden für personenbezogene Daten](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data).   |
+| [Datenpurger](../../role-based-access-control/built-in-roles.md#data-purger) | Besondere Rolle für das Löschen von personenbezogenen Daten. Weitere Informationen finden Sie in unserem [Leitfaden für personenbezogene Daten](../platform/personal-data-mgmt.md).   |
 | ExpressRoute-Administrator | Kann Expressrouten erstellen, löschen und verwalten.|
-| [Log Analytics-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen.  |
-| [Log Analytics-Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. |
+| [Log Analytics-Mitwirkender](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen.  |
+| [Log Analytics-Leser](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. |
 | masterreader | Ermöglicht einem Benutzer, alle Inhalte anzuzeigen, aber keine Änderungen vorzunehmen. |
-| [Überwachungsmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Kann alle Überwachungsdaten lesen und Überwachungseinstellungen aktualisieren.|
-| [Herausgeber von Überwachungsmetriken](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. |
-| [Überwachungsleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Kann alle Überwachungsdaten lesen. |
+| [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) | Kann alle Überwachungsdaten lesen und Überwachungseinstellungen aktualisieren.|
+| [Herausgeber von Überwachungsmetriken](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher) | Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. |
+| [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) | Kann alle Überwachungsdaten lesen. |
 | Mitwirkender an Ressourcenrichtlinien (Vorschau) | Über EA abgeglichene Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie.  |
-| [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Ermöglicht einem Benutzer, den Zugriff für andere Benutzer auf Azure-Ressourcen zu verwalten.|
-| [Mitwirkender von Website](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf.|
+| [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) | Ermöglicht einem Benutzer, den Zugriff für andere Benutzer auf Azure-Ressourcen zu verwalten.|
+| [Mitwirkender von Website](../../role-based-access-control/built-in-roles.md#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf.|
 
 Zum "Bearbeiten" gehört das Erstellen, Löschen und Aktualisieren von:
 

@@ -3,12 +3,12 @@ title: Mit Azure Backup Server V3 RTM sicherbare Elemente
 description: Dieser Artikel bietet eine Schutzmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server V3 RTM geschützt werden.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84631676"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538565"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM-Schutzmatrix
 
@@ -98,7 +98,7 @@ Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten
 * Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
 * Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
 
-Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Öffentliches Peering gilt für neue Leitungen als veraltet.

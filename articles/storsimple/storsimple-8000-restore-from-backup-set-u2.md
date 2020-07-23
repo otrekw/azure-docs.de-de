@@ -4,30 +4,24 @@ description: Erläutert, wie Sie den Sicherungskatalog des StorSimple-Geräte-Ma
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f0be9609dfd00e8e5dc9919b20fc42ec91ce9eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514548"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527828"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz
 
 ## <a name="overview"></a>Übersicht
 
 In diesem Tutorial wird der Wiederherstellungsvorgang auf einem StorSimple-Gerät der Serie 8000 mit einem vorhandenen Sicherungssatz beschrieben. Verwenden Sie das Blatt **Sicherungskatalog** zum Wiederherstellen eines Volumes aus einer lokalen oder einer Cloudsicherung. Auf dem Blatt **Sicherungskatalog** werden alle Sicherungssätze angezeigt, die mithilfe manueller oder automatisierter Sicherungen erstellt wurden. Das Volume wird durch die Wiederherstellung aus dem Sicherungssatz sofort online geschaltet, während die Daten im Hintergrund heruntergeladen werden.
-
-Eine alternative Methode zum Starten der Wiederherstellung können Sie unter **Geräte > [Ihr Gerät] > Volumes** durchführen. Wählen Sie auf dem Blatt **Volumes** ein Volume aus, klicken Sie mit der rechten Maustaste darauf, um das Kontextmenü aufzurufen, und wählen Sie dann **Wiederherstellen** aus.
 
 ## <a name="before-you-restore"></a>Vor der Wiederherstellung
 

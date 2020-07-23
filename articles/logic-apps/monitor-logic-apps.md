@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732001"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536249"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Überwachen des Ausführungsstatus, Überprüfen des Triggerverlaufs und Einrichten von Benachrichtigungen für Azure Logic Apps
 
@@ -71,7 +71,7 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
 
    ![Überprüfen der Details jedes Schritts in der Ausführung](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   Sie können beispielsweise die **Korrelations-ID**-Eigenschaft der Ausführung abrufen, die Sie ggf. benötigen, wenn Sie die [REST-API für Logik-Apps](https://docs.microsoft.com/rest/api/logic) verwenden.
+   Sie können beispielsweise die **Korrelations-ID**-Eigenschaft der Ausführung abrufen, die Sie ggf. benötigen, wenn Sie die [REST-API für Logik-Apps](/rest/api/logic) verwenden.
 
 1. Um weitere Informationen zu einem bestimmten Schritt zu erhalten, wählen Sie eine der folgenden Optionen aus:
 
@@ -138,7 +138,7 @@ Jede Logik-App-Ausführung beginnt mit einem Trigger. Der Triggerverlauf enthäl
 
 ## <a name="set-up-monitoring-alerts"></a>Einrichten von Überwachungsbenachrichtigungen
 
-Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/platform/alerts-overview.md) ein, um auf Metriken oder überschrittenen Schwellenwerten basierende Benachrichtigungen für Ihre Logik-App zu erhalten. Informieren Sie sich über [Metriken in Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). Führen Sie die hier angegebenen Schritte aus, um Benachrichtigungen ohne [Azure Monitor](../log-analytics/log-analytics-overview.md) einzurichten.
+Richten Sie [Benachrichtigungen in Azure Monitor](../azure-monitor/platform/alerts-overview.md) ein, um auf Metriken oder überschrittenen Schwellenwerten basierende Benachrichtigungen für Ihre Logik-App zu erhalten. Informieren Sie sich über [Metriken in Azure](../azure-monitor/platform/data-platform.md). Führen Sie die hier angegebenen Schritte aus, um Benachrichtigungen ohne [Azure Monitor](../azure-monitor/log-query/log-query-overview.md) einzurichten.
 
 1. Wählen Sie im Menü Ihrer Logik-App unter **Überwachung** die Optionen **Benachrichtigungen** > **Neue Benachrichtigungsregel** aus.
 

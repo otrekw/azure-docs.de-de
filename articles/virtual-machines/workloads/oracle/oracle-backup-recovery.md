@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224450"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525600"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Sichern und Wiederherstellen einer Oracle Database 12c-Datenbank auf einem virtuellen Azure Linux-Computer
 
 Sie können über die Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) oder über Skripts Azure-Ressourcen erstellen und verwalten. In diesem Artikel verwenden Sie Skripts in der Azure-Befehlszeilenschnittstelle, um eine Oracle Database 12c-Datenbank aus einem Azure Marketplace-Katalogimage bereitzustellen.
 
-Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Vorbereiten der Umgebung
 
@@ -33,7 +33,7 @@ Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weit
 
 *   Sie müssen für die Sicherung und Wiederherstellung zuerst einen virtuellen Linux-Computer erstellen, auf dem eine Instanz von Oracle Database 12c installiert ist. Verwenden Sie zum Erstellen des virtuellen Computers das Marketplace-Image *Oracle:Oracle-Database-Ee:12.1.0.2:latest*.
 
-    Wie Sie eine Oracle-Datenbank erstellen, erfahren Sie im [Schnellstart zum Erstellen einer Oracle-Datenbank](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
+    Wie Sie eine Oracle-Datenbank erstellen, erfahren Sie im [Schnellstart zum Erstellen einer Oracle-Datenbank](./oracle-database-quick-create.md).
 
 
 ### <a name="step-2-connect-to-the-vm"></a>Schritt 2: Herstellen der Verbindung zum virtuellen Computer
@@ -572,6 +572,3 @@ az group delete --name myResourceGroup
 [Tutorial: Erstellen eines hoch verfügbaren virtuellen Computers](../../linux/create-cli-complete.md)
 
 [Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
-
-
-

@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709877"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538648"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -30,7 +30,7 @@ Welche Möglichkeiten zur Sicherung bestehen, hängt davon ab, welcher Agent ins
 **Installation** | **Details**
 --- | ---
 Aktuellen MARS-Agent herunterladen | Sie können die neueste Version des Agenten aus dem Tresor herunterladen oder [direkt herunterladen](https://aka.ms/azurebackup_agent).
-Direkt auf dem Computer installieren | Sie können den MARS-Agent direkt auf einem lokalen Windows-Server oder einem virtuellen Windows-Computer installieren, auf dem eines der [unterstützten Betriebssysteme](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems) ausgeführt wird.
+Direkt auf dem Computer installieren | Sie können den MARS-Agent direkt auf einem lokalen Windows-Server oder einem virtuellen Windows-Computer installieren, auf dem eines der [unterstützten Betriebssysteme](./backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) ausgeführt wird.
 Auf einem Sicherungsserver installieren | Wenn Sie DPM oder MABS für die Sicherung auf Azure einrichten, laden Sie den MARS-Agent herunter und installieren ihn auf dem Server. Sie können den Agent gemäß den [unterstützten Betriebssystemen](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) in der Supportmatrix des Sicherungsservers installieren.
 
 > [!NOTE]
@@ -85,7 +85,7 @@ Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten
 - Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
 - Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
 
-Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Öffentliches Peering gilt für neue Leitungen als veraltet.
@@ -128,7 +128,7 @@ Für die folgenden Betriebssysteme ist der Supportzeitraum abgelaufen. Wir empfe
 
 Falls bestehende Verpflichtungen ein Upgrade des Betriebssystems verhindern sollten, können Sie eine Migration der Windows-Server zu Azure-VMs erwägen und Azure-VM-Sicherungen nutzen, um den Schutz aufrechtzuerhalten. Weitere Informationen zur Migration Ihrer Windows-Server finden Sie auf [dieser Seite zur Migration](https://azure.microsoft.com/migration/windows-server/).
 
-Für lokale oder gehostete Umgebungen, für die ein Upgrade des Betriebssystems oder die Migration zu Azure nicht möglich ist, sollten Sie „Erweiterte Sicherheitsupdates“ für die Computer aktivieren, damit für den Schutz und Support gesorgt ist. Beachten Sie hierbei, dass nur für bestimmte Editionen Anspruch auf „Erweiterte Sicherheitsupdates“ besteht. Weitere Informationen finden Sie auf der [Seite mit den häufig gestellten Fragen](https://www.microsoft.com/cloud-platform/extended-security-updates).
+Für lokale oder gehostete Umgebungen, für die ein Upgrade des Betriebssystems oder die Migration zu Azure nicht möglich ist, sollten Sie „Erweiterte Sicherheitsupdates“ für die Computer aktivieren, damit für den Schutz und Support gesorgt ist. Beachten Sie hierbei, dass nur für bestimmte Editionen Anspruch auf „Erweiterte Sicherheitsupdates“ besteht. Weitere Informationen finden Sie auf der [Seite mit den häufig gestellten Fragen](https://www.microsoft.com/windows-server/extended-security-updates).
 
 | **Betriebssystem**                                       | **Dateien/Ordner** | **Systemstatus** | **Software-/Modulanforderungen**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |

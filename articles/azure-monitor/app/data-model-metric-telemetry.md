@@ -4,12 +4,12 @@ description: Application Insights-Datenmodell für Metriktelemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540008"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metriktelemetrie: Application Insights-Datenmodell
 
@@ -24,7 +24,7 @@ Metrik, die System- und Prozessleistungsindikatoren darstellt:
 | **.NET-Name**             | **Plattformunabhängiger Name** | **REST-API-Name** | **Beschreibung**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | In Bearbeitung... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | Computer-CPU insgesamt
-| `\Memory\Available Bytes`                 | In Bearbeitung... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Zeigt die Menge des physischen Speichers in Byte an, der für auf dem Computer ausgeführte Prozesse zur Verfügung steht. Diese wird durch Addieren der Menge des Speicherplatzes in den genullten, freien und Standbyspeicherlisten berechnet. Freier Speicher steht zur Verwendung bereit. Mit Leerdaten beschriebene Speicher bestehen aus Seiten von mit Nullen gefülltem Speicher, um zu verhindern, dass in nachfolgenden Prozessen Daten von vorherigen Prozessen angezeigt werden. Standbyspeicher sind Speicher, die aus dem Arbeitssatz eines Prozesses (dem physischen Speicher) bei der Übermittlung an einen Datenträger entfernt wurden, jedoch weiterhin für den Abruf verfügbar sind. Weitere Informationen finden Sie unter [Speicherobjekt](https://msdn.microsoft.com/library/ms804008.aspx).
+| `\Memory\Available Bytes`                 | In Bearbeitung... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Zeigt die Menge des physischen Speichers in Byte an, der für auf dem Computer ausgeführte Prozesse zur Verfügung steht. Diese wird durch Addieren der Menge des Speicherplatzes in den genullten, freien und Standbyspeicherlisten berechnet. Freier Speicher steht zur Verwendung bereit. Mit Leerdaten beschriebene Speicher bestehen aus Seiten von mit Nullen gefülltem Speicher, um zu verhindern, dass in nachfolgenden Prozessen Daten von vorherigen Prozessen angezeigt werden. Standbyspeicher sind Speicher, die aus dem Arbeitssatz eines Prozesses (dem physischen Speicher) bei der Übermittlung an einen Datenträger entfernt wurden, jedoch weiterhin für den Abruf verfügbar sind. Weitere Informationen finden Sie unter [Speicherobjekt](/previous-versions/ms804008(v=msdn.10)).
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | In Bearbeitung... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | CPU des Prozesses, der die Anwendung hostet
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | In Bearbeitung... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | Vom Prozess, der die Anwendung hostet, belegter Arbeitsspeicher
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | In Bearbeitung... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | Rate der E/A-Vorgänge des Prozesses, der die Anwendung hostet

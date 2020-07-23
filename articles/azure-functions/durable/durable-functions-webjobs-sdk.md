@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Durable Functions so codieren und konfigurier
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540297"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
 
@@ -31,7 +31,7 @@ Dieser Artikel setzt voraus, dass Sie mit den Grundlagen des WebJobs SDK, der En
 
 Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
 
-* [Installieren Sie Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) mit der Workload **Azure-Entwicklung**.
+* [Installieren Sie Visual Studio 2019](/visualstudio/install/) mit der Workload **Azure-Entwicklung**.
 
   Wenn Sie bereits über Visual Studio, jedoch nicht über diese Workload verfügen, müssen Sie die Workload hinzufügen, indem Sie **Tools** > **Tools und Features abrufen** auswählen.
 

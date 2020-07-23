@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561948"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525941"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux-VM startet mit Grub Rescue
 
@@ -34,8 +34,8 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 
 * Der Fehler **Unbekanntes Dateisystem** kann auf eine Beschädigung des Dateisystems auf der Startpartition oder auf eine falsche Kernelkonfiguration zurückzuführen sein.
 
-   * Informationen zur Vorgehensweise bei Dateisystemproblemen finden Sie im Artikel [Linux Recovery: Cannot SSH to Linux VM due to file system errors (fsck, inodes)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/) (Linux-Wiederherstellung: Aufgrund von Dateisystemfehlern keine SSH-Verbindung mit virtuellem Linux-Computer möglich (fsck, inodes)).
-   * Informationen zur Vorgehensweise bei Kernelproblemen finden Sie im Artikel [Linux Recovery: Manually fixing non-boot issues related to Kernel problems](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/) (Linux-Wiederherstellung: Manuelles Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen) oder unter [Linux Recovery: Fixing non-boot issues related to Kernel problems using chroot](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
+   * Informationen zur Vorgehensweise bei Dateisystemproblemen finden Sie im Artikel [Linux Recovery: Cannot SSH to Linux VM due to file system errors (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes) (Linux-Wiederherstellung: Aufgrund von Dateisystemfehlern keine SSH-Verbindung mit virtuellem Linux-Computer möglich (fsck, inodes)).
+   * Informationen zur Vorgehensweise bei Kernelproblemen finden Sie im Artikel [Linux Recovery: Manually fixing non-boot issues related to Kernel problems](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems) (Linux-Wiederherstellung: Manuelles Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen) oder unter [Linux Recovery: Fixing non-boot issues related to Kernel problems using chroot](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
    
 ### <a name="error---file-not-found"></a>Fehler: Datei nicht gefunden
 
@@ -51,7 +51,7 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 
 ### <a name="error---no-such-partition"></a>Fehler: Keine entsprechende Partition vorhanden
 
-* Wenn Sie den Fehler **No such partition** (Keine entsprechende Partition vorhanden) erhalten, lesen Sie [Case Scenario : “no such partition” error while trying to start the VM after attempting to extend the OS drive](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/) (Fallszenario: Fehler „no such partition“ (Keine entsprechende Partition vorhanden) beim Starten des virtuellen Computers nach dem Versuch, das Betriebssystemlaufwerk zu erweitern).
+* Wenn Sie den Fehler **No such partition** (Keine entsprechende Partition vorhanden) erhalten, lesen Sie [Case Scenario : “no such partition” error while trying to start the VM after attempting to extend the OS drive](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive) (Fallszenario: Fehler „no such partition“ (Keine entsprechende Partition vorhanden) beim Starten des virtuellen Computers nach dem Versuch, das Betriebssystemlaufwerk zu erweitern).
 
 ### <a name="error---grubcfg-file-not-found"></a>Fehler: Datei „grub.cfg“ nicht gefunden
 
@@ -69,4 +69,3 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 
 * [Übersicht über den Agent für virtuelle Azure-Computer](../extensions/agent-windows.md)
 * [Erweiterungen und Features für virtuelle Computer für Windows](../extensions/features-windows.md)
-

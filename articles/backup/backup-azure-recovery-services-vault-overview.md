@@ -3,12 +3,12 @@ title: Übersicht über Recovery Services-Tresore
 description: Übersicht über Recovery Services-und Azure Backup-Tresore sowie Vergleich dieser Tresore
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 11a218badfab141c41430c3f48a5e930bfa1af8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248905"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539039"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -36,9 +36,9 @@ Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azu
 
 Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle im Laufe der Zeit erstellten Sicherungen und Wiederherstellungspunkte gespeichert werden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.
 
-Azure Backup übernimmt automatisch die Speicherung für den Tresor. Informieren Sie sich, wie [Speichereinstellungen geändert werden können](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+Azure Backup übernimmt automatisch die Speicherung für den Tresor. Informieren Sie sich, wie [Speichereinstellungen geändert werden können](./backup-create-rs-vault.md#set-storage-redundancy).
 
-Weitere Informationen zur Speicherredundanz finden Sie in diesen Artikeln zur [Georedundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) und zur [lokalen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) Redundanz.
+Weitere Informationen zur Speicherredundanz finden Sie in diesen Artikeln zur [Georedundanz](../storage/common/storage-redundancy.md) und zur [lokalen](../storage/common/storage-redundancy.md) Redundanz.
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Verwalten von Recovery Services-Tresoren im Portal
 
@@ -62,7 +62,7 @@ Die folgenden Abschnitte enthalten Links zu Artikeln, in denen erläutert wird, 
 ### <a name="back-up-data"></a>Sichern von Daten
 
 - [Sichern einer Azure-VM](backup-azure-vms-first-look-arm.md)
-- [Sichern von Daten von Windows Server oder einer Windows-Arbeitsstation](backup-try-azure-backup-in-10-mins.md)
+- [Sichern von Daten von Windows Server oder einer Windows-Arbeitsstation](./backup-windows-with-mars-agent.md)
 - [Sichern von DPM-Workloads in Azure](backup-azure-dpm-introduction.md)
 - [Vorbereiten der Sicherung von Workloads per Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 
@@ -82,9 +82,9 @@ Die folgenden Abschnitte enthalten Links zu Artikeln, in denen erläutert wird, 
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](https://docs.microsoft.com/azure/advisor/) ist ein personalisierter Cloudberater, der Ihnen hilft, Azure optimal zu nutzen. Er analysiert Ihre Azure-Nutzung und bietet zeitnahe Empfehlungen, um Sie beim Optimieren und Schützen Ihrer Bereitstellungen zu unterstützen. Die Empfehlungen werden in vier Kategorien bereitgestellt: Hochverfügbarkeit, Sicherheit, Leistung und Kosten.
+[Azure Advisor](../advisor/index.yml) ist ein personalisierter Cloudberater, der Ihnen hilft, Azure optimal zu nutzen. Er analysiert Ihre Azure-Nutzung und bietet zeitnahe Empfehlungen, um Sie beim Optimieren und Schützen Ihrer Bereitstellungen zu unterstützen. Die Empfehlungen werden in vier Kategorien bereitgestellt: Hochverfügbarkeit, Sicherheit, Leistung und Kosten.
 
-Azure Advisor stellt stündlich [Empfehlungen](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion) für VMs bereit, die nicht gesichert werden, sodass Sie nie die Sicherung wichtiger VMs verpassen. Sie können die Empfehlungen auch steuern, indem Sie sie zurückstellen.  Sie können auf die Empfehlung klicken und die Sicherung von VMs inline aktivieren, indem Sie den Tresor (in dem die Sicherungen gespeichert werden) und die Sicherungsrichtlinie (Sicherungszeitplan und Aufbewahrung von Sicherungskopien) angeben.
+Azure Advisor stellt stündlich [Empfehlungen](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) für VMs bereit, die nicht gesichert werden, sodass Sie nie die Sicherung wichtiger VMs verpassen. Sie können die Empfehlungen auch steuern, indem Sie sie zurückstellen.  Sie können auf die Empfehlung klicken und die Sicherung von VMs inline aktivieren, indem Sie den Tresor (in dem die Sicherungen gespeichert werden) und die Sicherungsrichtlinie (Sicherungszeitplan und Aufbewahrung von Sicherungskopien) angeben.
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 

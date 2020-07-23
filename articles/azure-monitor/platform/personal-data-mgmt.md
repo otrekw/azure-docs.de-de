@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740449"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539328"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -67,8 +67,8 @@ Log Analytics ist ein flexibler Datenspeicher, der zwar ein Schema für die Date
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Daten im Speicher und während der Übertragung*: Application Insights erfasst Ausnahmen, Anforderungen, Abhängigkeitsaufrufe und Ablaufverfolgungen. Personenbezogene Daten können häufig auf Code- und HTTP-Aufrufebene gesammelt werden. Überprüfen Sie die Tabellen für Ausnahmen, Anforderungen, Abhängigkeiten und Ablaufverfolgungen, um solche Daten zu ermitteln. Verwenden Sie nach Möglichkeit [Telemetrieinitialisierer](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling), um diese Daten zu verschleiern.
-* *Aufzeichnungen des Momentaufnahmedebuggers*: Mithilfe des Features [Momentaufnahmedebugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) in Application Insights können Sie Debugmomentaufnahmen erfassen, sobald eine Ausnahme in der Produktionsinstanz Ihrer Anwendung abgefangen wird. Momentaufnahmen zeigen die gesamte Stapelüberwachung, die zu den Ausnahmen führt, sowie die Werte für lokale Variablen in jedem Schritt im Stapel. Leider ermöglicht dieses Feature weder das selektive Löschen von Fangpunkten noch den programmgesteuerten Zugriff auf Daten innerhalb der Momentaufnahme. Falls die Standardaufbewahrungsrate für Momentaufnahmen Ihren Compliancevorgaben nicht entspricht, wird empfohlen, das Feature zu deaktivieren.
+* *Daten im Speicher und während der Übertragung*: Application Insights erfasst Ausnahmen, Anforderungen, Abhängigkeitsaufrufe und Ablaufverfolgungen. Personenbezogene Daten können häufig auf Code- und HTTP-Aufrufebene gesammelt werden. Überprüfen Sie die Tabellen für Ausnahmen, Anforderungen, Abhängigkeiten und Ablaufverfolgungen, um solche Daten zu ermitteln. Verwenden Sie nach Möglichkeit [Telemetrieinitialisierer](../app/api-filtering-sampling.md), um diese Daten zu verschleiern.
+* *Aufzeichnungen des Momentaufnahmedebuggers*: Mithilfe des Features [Momentaufnahmedebugger](../app/snapshot-debugger.md) in Application Insights können Sie Debugmomentaufnahmen erfassen, sobald eine Ausnahme in der Produktionsinstanz Ihrer Anwendung abgefangen wird. Momentaufnahmen zeigen die gesamte Stapelüberwachung, die zu den Ausnahmen führt, sowie die Werte für lokale Variablen in jedem Schritt im Stapel. Leider ermöglicht dieses Feature weder das selektive Löschen von Fangpunkten noch den programmgesteuerten Zugriff auf Daten innerhalb der Momentaufnahme. Falls die Standardaufbewahrungsrate für Momentaufnahmen Ihren Compliancevorgaben nicht entspricht, wird empfohlen, das Feature zu deaktivieren.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Exportieren und Löschen personenbezogener Daten
 
@@ -101,7 +101,7 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 
 #### <a name="log-data"></a>Protokolldaten
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück. 
+* [POST purge](/rest/api/loganalytics/workspacepurge/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück. 
 * GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel:
 
     ```
@@ -113,7 +113,7 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 
 #### <a name="application-data"></a>Anwendungsdaten
 
-* [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück.
+* [POST purge](/rest/api/application-insights/components/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück.
 * GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel:
 
    ```

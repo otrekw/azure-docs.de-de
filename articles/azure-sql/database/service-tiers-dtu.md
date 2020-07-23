@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037951"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539175"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 
 Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [DTU-basiertes Kaufmodell](purchasing-models.md#dtu-based-purchasing-model).
 
-||Basic|Standard|Premium|
+|Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | Maximale Speichergröße | 2 GB | 1 TB | 4 TB  |
 | Maximale DTU-Anzahl | 5 | 3000 | 4000 | 
@@ -70,7 +70,7 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und Pooldatenbanken
 
-| | **Grundlegend** | **Standard** | **Premium** |
+| **Grundlegend** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB |
 | Maximale Speichergröße pro Pool | 156 GB | 4 TB | 4 TB |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361954"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539736"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -79,9 +79,9 @@ Zum Sammeln von Daten in Azure Monitor-Protokollen ist ein Log Analytics-Arbeits
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 Diagnoseeinstellungen definieren, wohin Ressourcenprotokolle und -metriken für eine bestimmte Ressource gesendet werden sollen. Mögliche Ziele:
 
-- [Log Analytics-Arbeitsbereiche](../platform/resource-logs-collect-workspace.md) ermöglichen Ihnen das Analysieren von Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, sowie die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen. 
-- [Event Hubs](../platform/resource-logs-stream-event-hubs.md) ermöglichen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. 
-- [Azure Storage-Konten](../platform/resource-logs-collect-storage.md) sind hilfreich für Überwachung, statische Analyse oder Sicherung.
+- [Log Analytics-Arbeitsbereiche](../platform/resource-logs.md#send-to-log-analytics-workspace) ermöglichen Ihnen das Analysieren von Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, sowie die Nutzung anderer Azure Monitor-Features wie Warnungen und Visualisierungen. 
+- [Event Hubs](../platform/resource-logs.md#send-to-azure-event-hubs) ermöglichen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. 
+- [Azure Storage-Konten](../platform/resource-logs.md#send-to-azure-storage) sind hilfreich für Überwachung, statische Analyse oder Sicherung.
 
 Befolgen Sie die Vorgehensweise unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../platform/diagnostic-settings.md), um Diagnoseeinstellungen über das Azure-Portal zu erstellen und zu verwalten. Unter [Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage](../platform/diagnostic-settings-template.md) erfahren Sie, wie Sie sie in einer Vorlage definieren und die komplette Überwachung für eine Ressource bei ihrer Erstellung aktivieren.
 
@@ -114,7 +114,7 @@ Analysieren Sie Metriken im Azure-Portal mit dem [Metrik-Explorer](../platform/m
 ### <a name="activity-log"></a>Aktivitätsprotokoll 
 Zeigen Sie die Einträge im Aktivitätsprotokoll im Azure-Portal an, wobei der anfängliche Filter auf die aktuelle Ressource festgelegt ist. Kopieren Sie das Aktivitätsprotokoll in einen Log Analytics-Arbeitsbereich, um darauf zuzugreifen und es in Protokollabfragen und Arbeitsmappen zu verwenden. 
 
-- Weitere Informationen zum Anzeigen des Aktivitätsprotokolls und zum Abrufen von Einträgen mithilfe verschiedener Methoden finden Sie unter [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../platform/activity-log-view.md).
+- Weitere Informationen zum Anzeigen des Aktivitätsprotokolls und zum Abrufen von Einträgen mithilfe verschiedener Methoden finden Sie unter [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../platform/activity-log.md#view-the-activity-log).
 - Informationen zu den spezifischen Ereignissen, die protokolliert werden, finden Sie in der Dokumentation zum jeweiligen Azure-Dienst.
 
 ![Aktivitätsprotokoll](media/monitor-azure-resource/activity-log.png)
@@ -125,8 +125,8 @@ Azure Monitor-Protokolle konsolidieren Protokolle und Metriken aus mehreren Dien
 [Log Analytics](../log-query/get-started-portal.md) ermöglicht Ihnen die Arbeit mit [Protokollabfragen](../log-query/log-query-overview.md). Hierbei handelt es sich um ein leistungsstarkes Feature von Azure Monitor, mit dem Sie mithilfe einer Abfragesprache mit vollem Funktionsumfang eine erweiterte Analyse der Protokolldaten durchführen können. Öffnen Sie Log Analytics über **Protokolle** im Menü **Überwachung** für eine Azure-Ressource, um mit Protokollabfragen mit dieser Ressource als [Abfragebereich](../log-query/scope.md#query-scope) zu arbeiten. Auf diese Weise können Sie Daten über mehrere Tabellen hinweg ausschließlich für diese Ressource analysieren. Verwenden Sie **Protokolle** im Menü von Azure Monitor, um auf Protokolle für alle Ressourcen zuzugreifen. 
 
 - Ein Tutorial zur Verwendung der Abfragesprache zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../log-query/get-started-queries.md).
-- Informationen zur Erfassung von Ressourcenprotokollen in Azure Monitor-Protokollen und Details dazu, wie Sie in einer Abfrage darauf zugreifen, finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../platform/resource-logs-collect-workspace.md).
-- Eine Erläuterung der Struktur von Ressourcenprotokolldaten in Azure Monitor-Protokollen finden Sie unter [Sammlungsmodus](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode).
+- Informationen zur Erfassung von Ressourcenprotokollen in Azure Monitor-Protokollen und Details dazu, wie Sie in einer Abfrage darauf zugreifen, finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../platform/resource-logs.md#send-to-log-analytics-workspace).
+- Eine Erläuterung der Struktur von Ressourcenprotokolldaten in Azure Monitor-Protokollen finden Sie unter [Sammlungsmodus](../platform/resource-logs.md#send-to-log-analytics-workspace).
 - Ausführliche Informationen zu den Tabellen der einzelnen Azure-Dienste in Azure Monitor Protokollen finden Sie in der jeweiligen Dokumentation.
 
 ![Protokolle](media/monitor-azure-resource/logs.png)
@@ -163,4 +163,4 @@ Verwenden Sie **Warnungen** im Menü einer Ressource, um Warnungen anzuzeigen un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zu Ressourcenprotokollen für die einzelnen Azure-Dienste finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/diagnostic-logs-schema.md).  
+* Ausführliche Informationen zu Ressourcenprotokollen für die einzelnen Azure-Dienste finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/resource-logs-schema.md).  

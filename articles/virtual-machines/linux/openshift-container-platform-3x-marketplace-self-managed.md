@@ -10,16 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527233"
 ---
 # <a name="configure-prerequisites"></a>Konfigurieren der Voraussetzungen
 
-Vor dem Verwenden des Marketplace-Angebots zum Bereitstellen eines selbstverwalteten OpenShift Container Platform 3.11-Clusters in Azure sind einige erforderliche Komponenten zu konfigurieren.  Im Artikel zu [erforderlichen Komponenten für OpenShift](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) finden Sie Anweisungen zum Erstellen eines SSH-Schlüssels (ohne Passphrase), des Azure-Schlüsseltresors, des Schlüsseltresor-Geheimnisses und eines Dienstprinzipals.
+Vor dem Verwenden des Marketplace-Angebots zum Bereitstellen eines selbstverwalteten OpenShift Container Platform 3.11-Clusters in Azure sind einige erforderliche Komponenten zu konfigurieren.  Im Artikel zu [erforderlichen Komponenten für OpenShift](./openshift-container-platform-3x-prerequisites.md) finden Sie Anweisungen zum Erstellen eines SSH-Schlüssels (ohne Passphrase), des Azure-Schlüsseltresors, des Schlüsseltresor-Geheimnisses und eines Dienstprinzipals.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Bereitstellen mithilfe des Marketplace-Angebots

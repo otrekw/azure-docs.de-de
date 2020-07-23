@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629261"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526009"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>VM reagiert nicht beim Anwenden der Richtlinie „Gruppenrichtlinie für lokale Benutzer und Gruppen“
 
@@ -27,7 +27,7 @@ In diesem Artikel werden die Schritte zum Beheben von Problemen beschrieben, bei
 
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um einen Screenshot der VM anzuzeigen, reagiert der Bildschirm beim Laden nicht mehr und zeigt die folgende Meldung an: „Applying Group Policy Local Users and Groups policy“ (Gruppenrichtlinie für lokale Benutzer und Gruppen wird angewendet).
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um einen Screenshot der VM anzuzeigen, reagiert der Bildschirm beim Laden nicht mehr und zeigt die folgende Meldung an: „Applying Group Policy Local Users and Groups policy“ (Gruppenrichtlinie für lokale Benutzer und Gruppen wird angewendet).
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Screenshot des Ladevorgangs zum Anwenden der Gruppenrichtlinie für lokale Benutzer und Gruppen (Windows Server 2012 R2)":::
 
@@ -58,7 +58,7 @@ Dies ist die problematische Richtlinie:
 
 ### <a name="step-1-create-and-access-a-repair-vm"></a>Schritt 1: Erstellen und Aufrufen einer Reparatur-VM
 
-1. Führen Sie die [Schritte 1 bis 3 der Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die [Schritte 1 bis 3 der Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um eine Reparatur-VM vorzubereiten.
 2. Stellen Sie über die Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="step-2-disable-the-policy"></a>Schritt 2: Deaktivieren der Richtlinie
@@ -140,7 +140,7 @@ Führen Sie dieses Skript aus, um die Speicherabbilderfassung und die serielle K
 
 ### <a name="step-4-rebuild-the-vm"></a>Schritt 4: Neuerstellen der VM
 
-Führen Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) aus, um die VM zu reassemblieren.
+Führen Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um die VM zu reassemblieren.
 
 Wenn das Problem behoben wurde, ist die Richtlinie nun lokal deaktiviert. Eine dauerhafte Lösung ist das Nichtverwenden der CleanupProfiles-Richtlinie auf VMs. Verwenden Sie eine andere Methode, um Profilbereinigungen durchzuführen.
 
@@ -150,4 +150,4 @@ Verwenden Sie diese Richtlinie nicht:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn beim Anwenden eines Windows Updates Probleme auftreten, lesen Sie [VM reagiert nicht mehr bei Anwenden von Windows Update, und Fehler C01A001D wird ausgegeben](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update).
+Wenn beim Anwenden eines Windows Updates Probleme auftreten, lesen Sie [VM reagiert nicht mehr bei Anwenden von Windows Update, und Fehler C01A001D wird ausgegeben](./unresponsive-vm-apply-windows-update.md).

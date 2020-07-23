@@ -9,12 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dc671e3aab7568da61e5dab870967d7fd2bb90f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232825"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525737"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
 
@@ -64,7 +64,7 @@ Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. Erstellen Sie mit dem Cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) das Speicherkonto **mystorageaccount** in dieser Ressourcengruppe:
+2. Erstellen Sie mit dem Cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) das Speicherkonto **mystorageaccount** in dieser Ressourcengruppe:
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -72,7 +72,7 @@ Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>Hochladen der VHD in Ihr Speicherkonto
-Verwenden Sie das Cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), um das Image in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei **myVHD.vhd** aus `"C:\Users\Public\Documents\Virtual hard disks\"` in das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** hochgeladen. Die Datei wird im Container **mycontainer** abgelegt. Der neue Dateiname lautet **myUploadedVHD.vhd**.
+Verwenden Sie das Cmdlet [Add-AzVhd](/powershell/module/az.compute/add-azvhd), um das Image in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei **myVHD.vhd** aus `"C:\Users\Public\Documents\Virtual hard disks\"` in das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** hochgeladen. Die Datei wird im Container **mycontainer** abgelegt. Der neue Dateiname lautet **myUploadedVHD.vhd**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -106,14 +106,14 @@ Sie können eine VHD in ein anderes Speicherkonto kopieren, das beim Erstellen e
 ### <a name="before-you-begin"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie:
 
-* über Informationen zu den **Quell- und Zielspeicherkonten** verfügen. Für die Quell-VM benötigen Sie den Speicherkonto- und den Containernamen. Der Containername ist üblicherweise **vhds**. Außerdem müssen Sie über ein Zielspeicherkonto verfügen. Wenn Sie nicht bereits über ein Zielspeicherkonto verfügen, können Sie es über das Portal (**Alle Dienste** > „Speicherkonten“ > „Hinzufügen“) oder mithilfe des Cmdlets [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) erstellen. 
-* das [AzCopy-Tool](../../storage/common/storage-use-azcopy.md) heruntergeladen und installiert haben. 
+* über Informationen zu den **Quell- und Zielspeicherkonten** verfügen. Für die Quell-VM benötigen Sie den Speicherkonto- und den Containernamen. Der Containername ist üblicherweise **vhds**. Außerdem müssen Sie über ein Zielspeicherkonto verfügen. Wenn Sie nicht bereits über ein Zielspeicherkonto verfügen, können Sie es über das Portal (**Alle Dienste** > „Speicherkonten“ > „Hinzufügen“) oder mithilfe des Cmdlets [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) erstellen. 
+* das [AzCopy-Tool](../../storage/common/storage-use-azcopy-v10.md) heruntergeladen und installiert haben. 
 
 ### <a name="deallocate-the-vm"></a>Aufheben der Zuordnung der VM
 Heben Sie die Zuordnung der VM auf, wodurch die VHD zum Kopieren freigegeben wird. 
 
 * **Portal**: Klicken Sie auf **Virtuelle Computer** > **myVM** > „Beenden“
-* **Powershell**: Verwenden Sie [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm), um die Zuordnung des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** aufzuheben.
+* **Powershell**: Verwenden Sie [Stop-AzVM](/powershell/module/az.compute/stop-azvm), um die Zuordnung des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** aufzuheben.
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -127,17 +127,17 @@ Sie benötigen die URLs der Quell- und Zielspeicherkonten. Die URLs sehen wie fo
 Sie können das Azure-Portal oder Azure PowerShell verwenden, um die URL abzurufen:
 
 * **Portal**: Klicken Sie auf **>** für **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Blobs**. Ihre VHD-Quelldatei befindet sich wahrscheinlich im Container **vhds**. Klicken Sie für den Container auf **Eigenschaften**, und kopieren Sie den Text mit der Bezeichnung **URL**. Sie benötigen die URLs des Quell- und des Zielcontainers. 
-* **Powershell**: Verwenden Sie [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm), um die Informationen des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** abzurufen. Suchen Sie in den Ergebnissen im Abschnitt **Speicherprofil** nach dem **VHD-URI**. Der erste Teil des URI ist die URL zum Container, und der zweite Teil ist der Betriebssystem-VHD-Name für die VM.
+* **Powershell**: Verwenden Sie [Get-AzVM](/powershell/module/az.compute/get-azvm), um die Informationen des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** abzurufen. Suchen Sie in den Ergebnissen im Abschnitt **Speicherprofil** nach dem **VHD-URI**. Der erste Teil des URI ist die URL zum Container, und der zweite Teil ist der Betriebssystem-VHD-Name für die VM.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
 ## <a name="get-the-storage-access-keys"></a>Abrufen der Speicherzugriffsschlüssel
-Suchen Sie die Zugriffsschlüssel für die Quell- und Zielspeicherkonten. Weitere Informationen zu Zugriffsschlüsseln finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md).
+Suchen Sie die Zugriffsschlüssel für die Quell- und Zielspeicherkonten. Weitere Informationen zu Zugriffsschlüsseln finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-create.md).
 
 * **Portal**: Klicken Sie auf **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Zugriffsschlüssel**. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
-* **Powershell**: Verwenden Sie [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey), um den Speicherschlüssel für das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** abzurufen. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
+* **Powershell**: Verwenden Sie [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey), um den Speicherschlüssel für das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** abzurufen. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -309,4 +309,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Nächste Schritte
 Melden Sie sich bei Ihrem neuen virtuellen Computer an. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md).
-

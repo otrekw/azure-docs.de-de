@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864401"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538818"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -28,7 +28,7 @@ Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich
 - Navigieren Sie im Azure-Portal zu **VM** > **Einstellungen**, und stellen Sie sicher, dass auf dem Blatt **Eigenschaften** der VM-Status **Wird ausgeführt** und der Agent-Status **Bereit** lautet. Wenn der VM-Agent beendet wurde oder sich in einem inkonsistenten Zustand befindet, starten Sie den Agent neu.<br>
   - Führen Sie für virtuelle Windows-Computer die folgenden [Schritte](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) aus, um den Gast-Agent zu starten.<br>
   - Führen Sie für virtuelle Linux-Computer die folgenden [Schritte](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) aus, um den Gast-Agent zu starten.
-- Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen**, und stellen Sie sicher, dass der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Führen Sie andernfalls [diese Schritte](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) aus, um das Problem zu beheben.
+- Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen**, und stellen Sie sicher, dass der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Führen Sie andernfalls [diese Schritte](#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) aus, um das Problem zu beheben.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich).
 
@@ -52,7 +52,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorVmProvisioningStateFailed<br>
 **Fehlermeldung**: Der VM befindet sich im Zustand „Fehler bei der Bereitstellung“<br>
 
-Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen > Status der Erweiterungen**, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Weitere Informationen finden Sie unter [Bereitstellungszustände](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states).
+Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen > Status der Erweiterungen**, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Weitere Informationen finden Sie unter [Bereitstellungszustände](../virtual-machines/windows/states-lifecycle.md#provisioning-states).
 
 - Wenn die VMSnapshot-Erweiterung den Status „Fehler“ aufweist, klicken Sie mit der rechten Maustaste auf die fehlerhafte Erweiterung, und entfernen Sie sie. Auslösen einer bedarfsgesteuerten Sicherung Durch diese Aktion werden die Erweiterungen neu installiert, und der Sicherungsauftrag wird ausgeführt.  <br>
 - Wenn eine andere Erweiterung den Status „Fehler“ aufweist, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass diese Erweiterungsprobleme gelöst sind, und wiederholen Sie den Sicherungsvorgang.
@@ -80,7 +80,7 @@ Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe
 **Fehlercode**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Fehlermeldung**: Backup verfügt nicht über ausreichende Berechtigungen für den Schlüsseltresor zur Sicherung verschlüsselter virtueller Computer. <br>
 
-Damit der Sicherungsvorgang auf verschlüsselten virtuellen Computern erfolgreich ist, benötigt er Berechtigungen zum Zugriff auf den Schlüsseltresor. Berechtigungen können über das [Azure-Portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) oder mithilfe von [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) festgelegt werden.
+Damit der Sicherungsvorgang auf verschlüsselten virtuellen Computern erfolgreich ist, benötigt er Berechtigungen zum Zugriff auf den Schlüsseltresor. Berechtigungen können über das [Azure-Portal](./backup-azure-vms-encryption.md) oder mithilfe von [PowerShell](./backup-azure-vms-automation.md#enable-protection) festgelegt werden.
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork: Snapshot operation failed due to no network connectivity on the virtual machine (Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer).
 
@@ -130,9 +130,9 @@ Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, we
 2. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus, für den die Sicherung konfiguriert ist.
 3. Klicken Sie im Tresordashboard-Menü auf **Sicherungsaufträge**, um alle Sicherungsaufträge anzuzeigen.
    - Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
-     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Wenn Sie die Sicherung in einem anderen Tresor neu konfiguriert haben, sollten Sie sicherstellen, dass im alten Tresor keine Sicherungsaufträge ausgeführt werden. Wenn ein Sicherungsauftrag vorhanden ist, brechen Sie ihn ab.
-     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
 4. Führen Sie den Sicherungsvorgang erneut durch.
 
 Wenn der geplante Sicherungsvorgang länger dauert und dadurch mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#backup-and-restore-considerations).
@@ -167,7 +167,7 @@ Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten
 6. Führen Sie eine bedarfsgesteuerten Sicherung aus:
    - Wählen Sie im Portal die Option **Jetzt sichern** aus.
 
-Überprüfen Sie auch, ob [Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) auf dem virtuellen Computer installiert ist. .NET 4.5 ist für die Kommunikation des VM-Agents mit dem Dienst erforderlich.
+Überprüfen Sie auch, ob [Microsoft .NET 4.5](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) auf dem virtuellen Computer installiert ist. .NET 4.5 ist für die Kommunikation des VM-Agents mit dem Dienst erforderlich.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).
 
@@ -175,7 +175,7 @@ Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten
 
 Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen Linux-Computern werden durch Probleme verursacht, die einen veralteten VM-Agent betreffen. Befolgen Sie diese allgemeinen Richtlinien, um dieses Problem zu beheben:
 
-1. Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/linux/update-agent.md).
+1. Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/extensions/update-linux-agent.md).
 
    > [!NOTE]
    > Wir *empfehlen dringend*, den Agent ausschließlich über ein Verteilungsrepository zu aktualisieren. Wir raten davon ab, den Agent-Code direkt von GitHub herunterzuladen und die Aktualisierung durchzuführen. Falls der aktuelle Agent für Ihre Distribution nicht verfügbar ist, können Sie sich an den zuständigen Support wenden, um Informationen zur Installation zu erhalten. Eine Prüfung auf den aktuellen Agent können Sie auf der Seite für den [Windows Azure-Linux-Agent](https://github.com/Azure/WALinuxAgent/releases) im GitHub-Repository durchführen.
@@ -207,7 +207,7 @@ Eine vollständige Liste der Optionen für die VM-Agent-Konfigurationsdatei find
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Die Anwendungssteuerungslösung blockiert „iaasbcdrextension.exe“
 
-Wenn Sie [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (oder eine andere Anwendungssteuerungslösung) ausführen und die Regeln auf dem Herausgeber oder Pfad basieren, blockieren sie ggf. das Ausführen der ausführbaren Datei **IaaSBcdrExtension.exe**.
+Wenn Sie [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (oder eine andere Anwendungssteuerungslösung) ausführen und die Regeln auf dem Herausgeber oder Pfad basieren, blockieren sie ggf. das Ausführen der ausführbaren Datei **IaaSBcdrExtension.exe**.
 
 #### <a name="solution"></a>Lösung
 

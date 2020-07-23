@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591651"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539600"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Übersicht über Protokollabfragen in Azure Monitor
 Mithilfe von Protokollabfragen können Sie die Daten, die in [Azure Monitor-Protokollen](../platform/data-platform-logs.md) erfasst werden, in vollem Umfang nutzen. Eine leistungsstarke Abfragesprache ermöglicht es Ihnen, Daten aus mehreren Tabellen zusammenzufügen, größere Mengen an Daten zu aggregieren und komplexe Vorgänge mit möglichst wenig Code auszuführen. Beinahe jede Frage kann beantwortet und jede Analyse durchgeführt werden, solange unterstützende Daten erfasst wurden und Sie wissen, wie die richtige Abfrage erstellt werden muss.
 
-Einige Features in Azure Monitor (z. B. [Einblicke](../insights/insights-overview.md) und [Lösungen](../insights/solutions-inventory.md)) verarbeiten Protokolldaten, ohne die zugrunde liegenden Abfragen für Sie offenzulegen. Sie sollten wissen, wie Abfragen aufgebaut sind und wie Sie sie verwenden können, um Daten auf interaktive Weise in Azure Monitor-Protokollen analysieren zu können, damit Sie auch die anderen Features von Azure Monitor in vollem Umfang nutzen können.
+Einige Features in Azure Monitor (z. B. [Einblicke](../insights/insights-overview.md) und [Lösungen](../monitor-reference.md)) verarbeiten Protokolldaten, ohne die zugrunde liegenden Abfragen für Sie offenzulegen. Sie sollten wissen, wie Abfragen aufgebaut sind und wie Sie sie verwenden können, um Daten auf interaktive Weise in Azure Monitor-Protokollen analysieren zu können, damit Sie auch die anderen Features von Azure Monitor in vollem Umfang nutzen können.
 
 Verwenden Sie diesen Artikel als Ausgangspunkt, um sich über Protokollabfragen in Azure Monitor zu informieren. Im Laufe des Artikels werden häufig gestellte Fragen beantwortet sowie Links zu anderen Dokumentationen angegeben, die weitere Informationen sowie Lerneinheiten umfassen.
 

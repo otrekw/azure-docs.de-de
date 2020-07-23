@@ -3,12 +3,12 @@ title: Sichern von Windows-Computern mit dem MARS-Agent
 description: Verwenden Sie den Microsoft Azure Recovery Services-Agent (MARS) zum Sichern von Windows-Computern.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604844"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538631"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Sichern von Windows Server-Dateien und -Ordnern in Azure
 
@@ -104,7 +104,7 @@ Ausführen einer Offlineübertragung:
 1. Schreiben Sie die Sicherungsdaten an einen Stagingspeicherort.
 1. Verwenden Sie das Tool „AzureOfflineBackupDiskPrep“, um die Daten vom Stagingspeicherort auf einen oder mehrere SATA-Datenträger zu kopieren.
 
-    Das Tool erstellt einen Azure-Importauftrag. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+    Das Tool erstellt einen Azure-Importauftrag. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](../storage/common/storage-import-export-service.md).
 1. Senden Sie die SATA-Datenträger an ein Azure-Rechenzentrum.
 
     Im Rechenzentrum werden die Daten auf den Datenträgern in ein Azure-Speicherkonto kopiert. Azure Backup kopiert die Daten aus dem Speicherkonto in den Tresor, und inkrementelle Sicherungen werden geplant.
@@ -115,7 +115,7 @@ Weitere Informationen zum Offlineseeding finden Sie unter [Offlinesicherung in A
 
 Sie können steuern, wie der MARS-Agent die Netzwerkbandbreite nutzt, indem Sie die Netzwerkdrosselung aktivieren. Eine Drosselung ist hilfreich, wenn Sie Daten während der Arbeitszeit sichern müssen, aber steuern möchten, wie viel Bandbreite für Sicherungs- und Wiederherstellungsaktivitäten verwendet wird.
 
-Für die Netzwerkdrosselung in Azure Backup wird [Quality of Service (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) auf dem lokalen Betriebssystem verwendet.
+Für die Netzwerkdrosselung in Azure Backup wird [Quality of Service (QoS)](/windows-server/networking/technologies/qos/qos-policy-top) auf dem lokalen Betriebssystem verwendet.
 
 Die Netzwerkdrosselung für Sicherungen ist ab Windows Server 2012 und Windows 8 verfügbar. Die Betriebssysteme müssen mit den neuesten Service Packs ausgeführt werden.
 

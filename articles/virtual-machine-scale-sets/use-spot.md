@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310562"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527454"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs für VM-Skalierungsgruppen 
 
@@ -115,12 +115,12 @@ Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-
 
 **F:** Wie werden Kontingente für Spot-Instanzen verwaltet?
 
-**A:** Für Spot-Instanzen und Standardinstanzen werden getrennte Kontingentpools verwendet. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+**A:** Für Spot-Instanzen und Standardinstanzen werden getrennte Kontingentpools verwendet. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
 **F:** Kann ich ein zusätzliches Kontingent für Spot anfordern?
 
-**A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Spot-VMs über den [Standard-Kontingentanforderungsprozess](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) übermitteln.
+**A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Spot-VMs über den [Standard-Kontingentanforderungsprozess](../azure-portal/supportability/per-vm-quota-requests.md) übermitteln.
 
 
 **F:** Kann ich vorhandene Skalierungsgruppen in Spot-Skalierungsgruppen konvertieren?
@@ -158,7 +158,7 @@ Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-
 |------------------------------|-----------------------------------|
 | Enterprise Agreement         | Ja                               |
 | Nutzungsbasierte Bezahlung                | Ja                               |
-| Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](/partner-center/azure-plan-get-started) |
 | Vorteile                     | Nicht verfügbar                     |
 | Sponsoren                    | Ja                               |
 | Kostenlose Testversion                   | Nicht verfügbar                     |
@@ -166,7 +166,7 @@ Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-
 
 **F:** Wo kann ich Fragen stellen?
 
-**A:** Sie können Ihre Frage in [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) veröffentlichen und mit `azure-spot` markieren. 
+**A:** Sie können Ihre Frage in [Q&A](/answers/topics/azure-spot.html) veröffentlichen und mit `azure-spot` markieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

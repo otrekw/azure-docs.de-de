@@ -4,12 +4,12 @@ description: Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Appl
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690866"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540042"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -346,7 +346,7 @@ Stellen Sie beim Instrumentieren der Nachrichtenlöschung sicher, dass Sie die V
 
 ### <a name="dependency-types"></a>Abhängigkeitstypen
 
-Application Insights verwendet Abhängigkeitstypen, um Benutzeroberflächen anzupassen. Für Warteschlangen werden folgende Typen von `DependencyTelemetry` erkannt, die die [Oberfläche zur Transaktionsdiagnose](/azure/azure-monitor/app/transaction-diagnostics) verbessern:
+Application Insights verwendet Abhängigkeitstypen, um Benutzeroberflächen anzupassen. Für Warteschlangen werden folgende Typen von `DependencyTelemetry` erkannt, die die [Oberfläche zur Transaktionsdiagnose](./transaction-diagnostics.md) verbessern:
 - `Azure queue` für Azure Storage-Warteschlangen
 - `Azure Event Hubs` für Azure Event Hubs
 - `Azure Service Bus` für Azure Service Bus
@@ -425,7 +425,7 @@ public async Task RunMyTaskAsync()
 
 Beim Löschvorgang wird der Vorgang beendet, sodass Sie hierfür stattdessen auch `StopOperation` aufrufen können.
 
-*Warnung*: In einigen Fällen kann durch eine unbehandelte Ausnahme [verhindert ](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) werden, dass `finally` aufgerufen wird, und die Vorgänge werden dann ggf. nicht nachverfolgt.
+*Warnung*: In einigen Fällen kann durch eine unbehandelte Ausnahme [verhindert ](/dotnet/csharp/language-reference/keywords/try-finally) werden, dass `finally` aufgerufen wird, und die Vorgänge werden dann ggf. nicht nachverfolgt.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Verarbeitung und Nachverfolgung von parallelen Vorgängen
 

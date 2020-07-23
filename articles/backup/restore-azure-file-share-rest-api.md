@@ -3,16 +3,16 @@ title: Wiederherstellen von Azure-Dateifreigaben mit der REST-API
 description: Erfahren Sie, wie Sie die REST-API verwenden, um Azure-Dateifreigaben oder bestimmte Dateien aus einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710574"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538155"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Wiederherstellen von Azure-Dateifreigaben mit der REST-API
 
-In diesem Artikel wird erläutert, wie Sie eine vollständige Dateifreigabe oder bestimmte Dateien von einem von [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) erstellten Wiederherstellungspunkt mithilfe der REST-API wiederherstellten können.
+In diesem Artikel wird erläutert, wie Sie eine vollständige Dateifreigabe oder bestimmte Dateien von einem von [Azure Backup](./backup-overview.md) erstellten Wiederherstellungspunkt mithilfe der REST-API wiederherstellten können.
 
 Am Ende dieses Artikels erfahren Sie, wie Sie die folgenden Vorgänge mit der REST-API ausführen:
 
@@ -33,7 +33,7 @@ In diesem Artikel verwenden Sie die folgenden Ressourcen:
 
 ## <a name="fetch-containername-and-protecteditemname"></a>Abrufen von „ContainerName“ und „ProtectedItemName“
 
-Für den größten Teil der API-Aufrufe im Zusammenhang mit der Wiederherstellung müssen Sie Werte für die URI-Parameter {containerName} und {protectedItemName} übergeben. Verwenden Sie das ID-Attribut im Antworttext des [GET backupprotectableitems](https://docs.microsoft.com/rest/api/backup/protecteditems/get)-Vorgangs, um Werte für diese Parameter abzurufen. In unserem Beispiel lautet die ID der Dateifreigabe, die wir schützen wollen:
+Für den größten Teil der API-Aufrufe im Zusammenhang mit der Wiederherstellung müssen Sie Werte für die URI-Parameter {containerName} und {protectedItemName} übergeben. Verwenden Sie das ID-Attribut im Antworttext des [GET backupprotectableitems](/rest/api/backup/protecteditems/get)-Vorgangs, um Werte für diese Parameter abzurufen. In unserem Beispiel lautet die ID der Dateifreigabe, die wir schützen wollen:
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -44,7 +44,7 @@ Die Werte lassen werden also wie folgt übersetzt:
 
 ## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Abrufen von Wiederherstellungspunkten für die gesicherte Azure-Dateifreigabe
 
-Um gesicherte Dateifreigaben oder Dateien wiederherzustellen, wählen Sie zunächst einen Wiederherstellungspunkt für den Wiederherstellungsvorgang aus. Die verfügbaren Wiederherstellungspunkte eines gesicherten Elements können mithilfe des REST-API-Aufrufs [Recovery Point-List](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) aufgelistet werden. Dabei handelt es sich um einen GET-Vorgang mit allen relevanten Werten.
+Um gesicherte Dateifreigaben oder Dateien wiederherzustellen, wählen Sie zunächst einen Wiederherstellungspunkt für den Wiederherstellungsvorgang aus. Die verfügbaren Wiederherstellungspunkte eines gesicherten Elements können mithilfe des REST-API-Aufrufs [Recovery Point-List](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) aufgelistet werden. Dabei handelt es sich um einen GET-Vorgang mit allen relevanten Werten.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
@@ -144,7 +144,7 @@ Der Wiederherstellungspunkt wird durch das {name}-Feld in der Antwort oben angeg
 ## <a name="full-share-recovery-using-rest-api"></a>Wiederherstellung einer vollständigen Freigabe mit der REST-API
 
 Verwenden Sie diese Wiederherstellungsoption, um die vollständige Dateifreigabe am ursprünglichen oder einem alternativen Speicherort wiederherzustellen.
-Das Auslösen der Wiederherstellung ist eine POST-Anforderung, und Sie können diesen Vorgang mit der REST-API [trigger restore](https://docs.microsoft.com/rest/api/backup/restores/trigger) durchführen.
+Das Auslösen der Wiederherstellung ist eine POST-Anforderung, und Sie können diesen Vorgang mit der REST-API [trigger restore](/rest/api/backup/restores/trigger) durchführen.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -164,7 +164,7 @@ Name |  type   |   BESCHREIBUNG
 --- | ---- | ----
 Eigenschaften | AzureFileShareRestoreRequest | RestoreRequestResource-Eigenschaften
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weiteren Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weiteren Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](/rest/api/backup/restores/trigger#request-body).
 
 ### <a name="restore-to-original-location"></a>An ursprünglichem Speicherort wiederherstellen
 
@@ -219,7 +219,7 @@ Der folgende Anforderungstext stellt die Dateifreigabe *azurefiles* im Speicherk
 
 ### <a name="response"></a>Antwort
 
-Das Auslösen einer Wiederherstellung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). In diesem Vorgang wird ein anderer Vorgang erstellt, der separat nachverfolgt werden muss.
+Das Auslösen einer Wiederherstellung ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). In diesem Vorgang wird ein anderer Vorgang erstellt, der separat nachverfolgt werden muss.
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
 #### <a name="response-example"></a>Beispielantwort
@@ -350,7 +350,7 @@ Bei einer alternativen Standortwiederherstellung sieht der Antworttext wie folgt
 }
 ```
 
-Da es sich beim Sicherungsauftrag um einen Vorgang mit langer Ausführungsdauer handelt, muss er gemäß der Erläuterung im [Dokument zur Auftragsüberwachung mit der REST-API](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job) nachverfolgt werden.
+Da es sich beim Sicherungsauftrag um einen Vorgang mit langer Ausführungsdauer handelt, muss er gemäß der Erläuterung im [Dokument zur Auftragsüberwachung mit der REST-API](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job) nachverfolgt werden.
 
 ## <a name="item-level-recovery-using-rest-api"></a>Wiederherstellung auf Elementebene mit der REST-API
 
@@ -374,7 +374,7 @@ Name |  type   |   BESCHREIBUNG
 --- | ---- | ----
 Eigenschaften | AzureFileShareRestoreRequest | RestoreRequestResource-Eigenschaften
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weiteren Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weiteren Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](/rest/api/backup/restores/trigger#request-body).
 
 ### <a name="restore-to-original-location"></a>An ursprünglichem Speicherort wiederherstellen
 

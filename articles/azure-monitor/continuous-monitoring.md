@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797601"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539685"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -38,7 +38,7 @@ Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. D
 - Sie erhalten automatisch [Plattformmetriken, Aktivitäts- und Diagnoseprotokolle](platform/data-sources.md) von den meisten Ihrer Azure-Ressourcen ohne Konfiguration.
 - Aktivieren Sie eine intensivere Überwachung für virtuelle Computer mit [Azure Monitor für VMs](insights/vminsights-overview.md).
 -  Aktivieren Sie eine intensivere Überwachung für AKS-Cluster mit [Azure Monitor für Container](insights/container-insights-overview.md).
-- Fügen Sie [Überwachungslösungen](insights/solutions-inventory.md) für verschiedene Anwendungen und Dienste in Ihrer Umgebung hinzu.
+- Fügen Sie [Überwachungslösungen](./monitor-reference.md) für verschiedene Anwendungen und Dienste in Ihrer Umgebung hinzu.
 
 
 [Infrastruktur als Code](/azure/devops/learn/what-is-infrastructure-as-code) ist die Verwaltung der Infrastruktur in einem beschreibenden Modell, wobei dieselbe Versionsverwaltung verwendet wird, die DevOps-Teams für Quellcode verwenden. Es erhöht die Zuverlässigkeit und Skalierbarkeit Ihrer Umgebung und ermöglicht es Ihnen, ähnliche Prozesse wie bei der Verwaltung Ihrer Anwendungen zu nutzen.

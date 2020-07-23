@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027651"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539192"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank-Instanz mit Sharding
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Dieser Artikel setzt sich aus zwei Hauptteilen zusammen:
 - [Tutorial](#goto_1_tutorial) zur Behandlung des PowerShell-Skriptcodes für die Durchführung der Bereitstellung und Katalogisierung
   - Im Tutorial wird die SaaS-Anwendung Wingtip Tickets verwendet, die an das Muster für mehrinstanzenfähige Datenbanken mit Sharding angepasst ist.
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>Datenbankmuster
 
@@ -111,7 +111,7 @@ Die Mandantenbereitstellungsskripts in diesem Tutorial unterstützen beide folge
 
 Mandantendaten werden anschließend initialisiert und in der Shardzuordnung im Katalog registriert. In der Beispiel-App wird Datenbanken mit mehreren Mandanten ein generischer Name wie *tenants1* oder *tenants2* zugewiesen. Datenbanken mit einem einzelnen Mandanten werden nach dem Mandanten benannt. Die spezifischen Benennungskonventionen, die im Beispiel verwendet werden, sind kein kritischer Teil des Musters, da die Verwendung eines Katalogs es ermöglicht, der Datenbank einen beliebigen Namen zuzuweisen.
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>Tutorial: Erste Schritte
 

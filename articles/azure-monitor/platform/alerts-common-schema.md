@@ -4,12 +4,12 @@ description: Enthält grundlegende Informationen zum allgemeinen Warnungsschema,
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539481"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
@@ -52,8 +52,8 @@ Sie können sowohl im Portal als auch in der REST-API über Aktionsgruppen eine 
 > 1. Für die folgenden Warnungstypen wird das allgemeine Schema standardmäßig unterstützt (keine Aktivierung erforderlich):
 >     * Warnungen der intelligenten Erkennung
 > 1. Von den folgenden Warnungstypen wird das allgemeine Schema derzeit nicht unterstützt:
->     * Von [Azure Monitor für VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) generierte Warnungen
->     * Von [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario) generierte Warnungen
+>     * Von [Azure Monitor für VMs](../insights/vminsights-overview.md) generierte Warnungen
+>     * Von [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) generierte Warnungen
 
 ### <a name="through-the-azure-portal"></a>Über das Azure-Portal
 
@@ -64,9 +64,9 @@ Sie können sowohl im Portal als auch in der REST-API über Aktionsgruppen eine 
 
 ### <a name="through-the-action-groups-rest-api"></a>Über die Aktionsgruppen-REST-API
 
-Sie können auch die [Aktionsgruppen-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) verwenden, um das allgemeine Warnungsschema zu aktivieren. Beim Durchführen des REST-API-Aufrufs zum [Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) können Sie das Flag „useCommonAlertSchema“ für die folgenden Aktionen auf „true“ (Aktivierung) oder „false“ (keine Aktivierung) festlegen: E-Mail, Webhook, Logik-App, Azure-Funktion oder Automation-Runbook.
+Sie können auch die [Aktionsgruppen-API](/rest/api/monitor/actiongroups) verwenden, um das allgemeine Warnungsschema zu aktivieren. Beim Durchführen des REST-API-Aufrufs zum [Erstellen oder Aktualisieren](/rest/api/monitor/actiongroups/createorupdate) können Sie das Flag „useCommonAlertSchema“ für die folgenden Aktionen auf „true“ (Aktivierung) oder „false“ (keine Aktivierung) festlegen: E-Mail, Webhook, Logik-App, Azure-Funktion oder Automation-Runbook.
 
-Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) wird beispielsweise Folgendes durchgeführt:
+Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder Aktualisieren](/rest/api/monitor/actiongroups/createorupdate) wird beispielsweise Folgendes durchgeführt:
 
 * Aktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „John Doe's email“
 * Deaktivieren des allgemeinen Warnungsschemas für die E-Mail-Aktion „Jane Smith's email“
@@ -121,7 +121,4 @@ Mit dem folgenden Anforderungstext für den REST-API-Vorgang zum [Erstellen oder
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks](https://aka.ms/commonAlertSchemaDefinitions)
-- [Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.](./alerts-common-schema-integrations.md) 

@@ -7,23 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: bc48c0ba23e73adec312adfeeb1fcd57dba6ceec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879155"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538002"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
+
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Mithilfe von Containern für die Formularerkennung können Sie eine Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann.
 
 Sie können die Runtimeumgebung für Container für die Formularerkennung über die Argumente des Befehls `docker run` konfigurieren. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Einige Beispiele finden Sie im Abschnitt [„Beispiele für docker run-Befehle“](#example-docker-run-commands). Die containerspezifischen Einstellungen sind die für die Abrechnung.
-
-> [!IMPORTANT]
-> Die Container der Formularerkennung verwenden derzeit Version 1.0 der Formularerkennungs-API. Sie können auf die neueste Version der API zugreifen, indem Sie stattdessen den verwalteten Dienst verwenden.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 

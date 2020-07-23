@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361937"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539855"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurieren von BYOS (Bring Your Own Storage) für Application Insights Profiler und Momentaufnahmedebugger
 
@@ -21,9 +21,9 @@ Wenn Sie Application Insights Profiler oder Momentaufnahmedebugger verwenden, we
 Mit Bring Your Own Storage werden diese Artefakte in ein Speicherkonto hochgeladen, das Ihrer Kontrolle unterliegt. Das bedeutet, dass Sie die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Verwaltung der Lebensdauer und den Netzwerkzugriff festlegen. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich.
 
 > [!NOTE]
-> Wenn Sie Private Link aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu Private Link für Application Insights finden Sie in der entsprechenden [Dokumentation](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security).
+> Wenn Sie Private Link aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu Private Link für Application Insights finden Sie in der entsprechenden [Dokumentation](../platform/private-link-security.md).
 >
-> Wenn Sie kundenseitig verwaltete Schlüssel aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu kundenseitig verwalteten Schlüsseln für Application Insights finden Sie in der entsprechenden [Dokumentation](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).
+> Wenn Sie kundenseitig verwaltete Schlüssel aktivieren, ist Bring Your Own Storage eine Voraussetzung. Weitere Informationen zu kundenseitig verwalteten Schlüsseln für Application Insights finden Sie in der entsprechenden [Dokumentation](../platform/customer-managed-keys.md).
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Wie erfolgt der Zugriff auf mein Speicherkonto?
 1. Agents, die in Virtual Machines oder App Service ausgeführt werden, laden Artefakte (Profile, Momentaufnahmen und Symbole) in Blobcontainer in Ihrem Konto hoch. Dabei wird vom Application Insights Profiler- oder Momentaufnahmedebuggerdienst ein SAS-Token (Shared Access Signature) für ein neues Blob in Ihrem Speicherkonto abgerufen.
@@ -60,7 +60,7 @@ Nachdem Sie die Rolle hinzugefügt haben, wird sie wie in Abbildung 1.1 im Absc
 _![Abbildung 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 _Abbildung 1.1_ 
 
-Wenn Sie auch Private Link verwenden, ist ein zusätzlicher Konfigurationsschritt erforderlich, um eine Verbindung mit unserem vertrauenswürdigen Microsoft-Dienst über Ihr virtuelles Netzwerk zuzulassen. Informationen hierzu finden Sie in der [Dokumentation zur Sicherheit des Speichernetzwerks](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services).
+Wenn Sie auch Private Link verwenden, ist ein zusätzlicher Konfigurationsschritt erforderlich, um eine Verbindung mit unserem vertrauenswürdigen Microsoft-Dienst über Ihr virtuelles Netzwerk zuzulassen. Informationen hierzu finden Sie in der [Dokumentation zur Sicherheit des Speichernetzwerks](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>Verknüpfen des Speicherkontos mit der Application Insights-Ressource
 Es gibt zwei Möglichkeiten, BYOS für die Diagnose auf Codeebene (Profiler/Debugger) zu konfigurieren:
@@ -73,7 +73,7 @@ Es gibt zwei Möglichkeiten, BYOS für die Diagnose auf Codeebene (Profiler/Debu
 
 1. Stellen Sie sicher, dass Sie Az PowerShell 4.2.0 installiert haben.
 
-    Informationen zum Installieren von Azure PowerShell finden Sie in der [offiziellen Dokumentation zu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+    Informationen zum Installieren von Azure PowerShell finden Sie in der [offiziellen Dokumentation zu Azure PowerShell](/powershell/azure/install-az-ps).
 
 1. Installieren Sie die PowerShell-Erweiterung Application Insights.
     ```powershell
@@ -85,7 +85,7 @@ Es gibt zwei Möglichkeiten, BYOS für die Diagnose auf Codeebene (Profiler/Debu
     Connect-AzAccount -Subscription "{subscription_id}"
     ```
 
-    Weitere Informationen zur Anmeldung finden Sie in der [Dokumentation zu Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    Weitere Informationen zur Anmeldung finden Sie in der [Dokumentation zu Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 1. Entfernen Sie das vorherige Speicherkonto, das mit Ihrer Application Insights-Ressource verknüpft ist.
 
@@ -121,7 +121,7 @@ Es gibt zwei Möglichkeiten, BYOS für die Diagnose auf Codeebene (Profiler/Debu
 
 1. Stellen Sie sicher, dass die Azure-Befehlszeilenschnittstelle installiert ist.
 
-    Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie in der [offiziellen Dokumentation zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli).
+    Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie in der [offiziellen Dokumentation zur Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 1. Installieren Sie die Application Insights-CLI-Erweiterung.
     ```powershell
@@ -152,7 +152,7 @@ Es gibt zwei Möglichkeiten, BYOS für die Diagnose auf Codeebene (Profiler/Debu
     ```
 
     > [!NOTE]
-    > Informationen zum Durchführen von Aktualisierungen für die verknüpften Speicherkonten auf die Application Insights-Ressource finden Sie in der [Dokumentation zur Application Insights-CLI](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage).
+    > Informationen zum Durchführen von Aktualisierungen für die verknüpften Speicherkonten auf die Application Insights-Ressource finden Sie in der [Dokumentation zur Application Insights-CLI](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage).
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Konfigurieren mit der Azure Resource Manager-Vorlage
 

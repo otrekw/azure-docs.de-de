@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842400"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526502"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Beheben von Problemen beim Starten von Linux-VMs aufgrund von Dateisystemfehlern
 
@@ -75,7 +75,7 @@ Für Linux sind mehrere Tools zur Dateisystemüberprüfung verfügbar. Die häuf
 
 ## <a name="resolution"></a>Lösung
 
-Um dieses Problem zu beheben, starten Sie den virtuellen Computer mithilfe der [seriellen Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) im Notfallmodus, und reparieren Sie das Dateisystem mit diesem Tool. Wenn die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert ist, finden Sie im Abschnitt [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline) dieses Artikels weitere Informationen.
+Um dieses Problem zu beheben, starten Sie den virtuellen Computer mithilfe der [seriellen Konsole](./serial-console-linux.md) im Notfallmodus, und reparieren Sie das Dateisystem mit diesem Tool. Wenn die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert ist, finden Sie im Abschnitt [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline) dieses Artikels weitere Informationen.
 
 ## <a name="use-the-serial-console"></a>Verwenden der seriellen Konsole
 
@@ -83,8 +83,8 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer mithilfe der [
 
    > [!Note]
    > Weitere Informationen zur seriellen Konsole für Linux finden Sie unter:
-   > * [Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus](../linux/serial-console-grub-single-user-mode.md)
+   > * [Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe](./serial-console-nmi-sysrq.md)
 
 2. Wählen Sie die Schaltfläche des Stromversorgungssymbols und dann „VM neu starten“ aus. (Wenn die serielle Konsole nicht aktiviert oder nicht ordnungsgemäß verbunden ist, wird die Schaltfläche nicht angezeigt.)
 
@@ -134,7 +134,7 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer mithilfe der [
 
 ## <a name="repair-the-vm-offline"></a>Reparieren des virtuellen Computers im Offlinestatus
 
-1. Fügen Sie den Systemdatenträger des virtuellen Computers als Datenträger für Daten an eine Wiederherstellungs-VM (beliebige funktionierende Linux-VM) an. Hierzu können Sie [CLI-Befehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) verwenden, oder Sie können die Einrichtung der Wiederherstellungs-VM mithilfe der [VM-Reparaturbefehle](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) automatisieren.
+1. Fügen Sie den Systemdatenträger des virtuellen Computers als Datenträger für Daten an eine Wiederherstellungs-VM (beliebige funktionierende Linux-VM) an. Hierzu können Sie [CLI-Befehle](./troubleshoot-recovery-disks-linux.md) verwenden, oder Sie können die Einrichtung der Wiederherstellungs-VM mithilfe der [VM-Reparaturbefehle](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) automatisieren.
 
 2. Suchen Sie die Laufwerkbezeichnung des angefügten Systemdatenträgers. In diesem Fall wird davon ausgegangen, dass die Bezeichnung des angefügten Systemdatenträgers „/dev/sdc1“ lautet. Ersetzen Sie dies durch den entsprechenden Wert für Ihre VM.
 
@@ -178,6 +178,5 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer mithilfe der [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
-
+* [Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI 2.0](./troubleshoot-recovery-disks-linux.md)
+* [Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals](../linux/attach-disk-portal.md)

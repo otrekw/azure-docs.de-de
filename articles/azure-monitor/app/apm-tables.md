@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204193"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540110"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Änderungen bei arbeitsbereichsbasierten Ressourcen (Vorschau)
 
-Vor der Einführung von [arbeitsbereichsbasierten Application Insights-Ressourcen](create-workspace-resource.md) wurden Application Insights-Daten getrennt von anderen Protokolldaten in Azure Monitor gespeichert. Beide basieren auf Azure Data Explorer und verwenden dieselbe Kusto-Abfragesprache (KQL). Dies ist unter [Protokolle in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) beschrieben.
+Vor der Einführung von [arbeitsbereichsbasierten Application Insights-Ressourcen](create-workspace-resource.md) wurden Application Insights-Daten getrennt von anderen Protokolldaten in Azure Monitor gespeichert. Beide basieren auf Azure Data Explorer und verwenden dieselbe Kusto-Abfragesprache (KQL). Dies ist unter [Protokolle in Azure Monitor](../platform/data-platform-logs.md) beschrieben.
 
 Bei arbeitsbereichsbasierten Application Insights-Ressourcen werden Daten in einem Log Analytics-Arbeitsbereich mit anderen Überwachungs- und Anwendungsdaten gespeichert. Dies vereinfacht die Konfiguration, da es Ihnen möglich ist, Daten in mehreren Lösungen einfacher zu analysieren und die Funktionen von Arbeitsbereichen zu nutzen.
 
@@ -467,4 +467,4 @@ Alte Tabelle: traces
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Untersuchen von Metriken](../../azure-monitor/platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../../azure-monitor/app/analytics.md)
+* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060686"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526434"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Häufige Fehler in der seriellen Azure-Konsole
 In der seriellen Azure-Konsole können mehrere bekannte Fehler auftreten. Diese Fehler und die jeweils entsprechenden Lösungsschritte sind nachfolgend aufgeführt.
@@ -40,7 +40,7 @@ Die Ressourcengruppe für das Startdiagnose-Speicherkonto *&lt;STORAGEACCOUNTNAM
 Die Bereitstellung für diesen virtuellen Computer war noch nicht erfolgreich. Stellen Sie sicher, dass der virtuelle Computer vollständig bereitgestellt wird, und versuchen Sie dann noch einmal, die Verbindung mit der seriellen Konsole herzustellen. | Die Bereitstellung des virtuellen Computers oder der VM-Skalierungsgruppe ist möglicherweise noch nicht abgeschlossen. Warten Sie einige Zeit, und versuchen Sie es erneut.
 Das Websocket ist geschlossen oder konnte nicht geöffnet werden. | Möglicherweise müssen Sie Firewallzugriff auf `*.console.azure.com` hinzufügen. Ein detaillierterer, aber längerer Ansatz besteht darin, Firewallzugriff auf die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) zuzulassen, die sich jedoch relativ regelmäßig ändern.
 Die serielle Konsole funktioniert nicht mit einem Speicherkonto, für das Azure Data Lake Storage Gen2 mit hierarchischen Namespaces verwendet wird. | Dies ist ein bekanntes Problem mit hierarchischen Namespaces. Stellen Sie zur Behebung des Problems sicher, dass das Startdiagnose-Speicherkonto Ihrer VM nicht per Azure Data Lake Storage Gen2 erstellt wird. Diese Option kann nur bei der Erstellung des Speicherkontos festgelegt werden. Unter Umständen müssen Sie ein separates Startdiagnose-Speicherkonto ohne Aktivierung von Azure Data Lake Storage Gen2 erstellen, um dieses Problem zu beheben.
-Fehler bei der Verbindung der seriellen Konsole mit der VM: 'Verboten'(SubscriptionNotEnabled) - Abonnementname nicht definiert, ID \<subscription id> befindet sich in einem nicht aktivierten Zustand | Dieses Problem kann auftreten, wenn das Abonnement, für das ein Benutzer sein Cloud Shell-Speicherkonto in erstellt hat, deaktiviert wurde. Um dies zu verhindern, starten Sie Cloud Shell und [führen Sie die erforderlichen Schritte](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) aus, um erneut ein unterstützendes Speicherkonto für Cloud Shell im aktuellen Abonnement bereitzustellen.
+Fehler bei der Verbindung der seriellen Konsole mit der VM: 'Verboten'(SubscriptionNotEnabled) - Abonnementname nicht definiert, ID \<subscription id> befindet sich in einem nicht aktivierten Zustand | Dieses Problem kann auftreten, wenn das Abonnement, für das ein Benutzer sein Cloud Shell-Speicherkonto in erstellt hat, deaktiviert wurde. Um dies zu verhindern, starten Sie Cloud Shell und [führen Sie die erforderlichen Schritte](../../cloud-shell/persisting-shell-storage.md#unmount-clouddrive-1) aus, um erneut ein unterstützendes Speicherkonto für Cloud Shell im aktuellen Abonnement bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur [seriellen Azure-Konsole für virtuelle Linux-Computer](./serial-console-linux.md)

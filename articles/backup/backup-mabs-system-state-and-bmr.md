@@ -3,12 +3,12 @@ title: Systemstatus- und Bare-Metal-Recovery-Schutz
 description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern und BMR-Schutz (Bare-Metal-Recovery) bereitzustellen.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538699"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Sichern des Systemstatus und Durchführen einer Bare-Metal-Wiederherstellung mithilfe von Azure Backup Server
 
@@ -98,12 +98,12 @@ Nach Abschluss der Sicherung wird die Datei auf den Backup Server-Computer übe
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 1. **Stellen Sie Azure Backup Server bereit**. Überprüfen Sie, ob Backup Server ordnungsgemäß bereitgestellt ist. Weitere Informationen finden Sie unter
-    * [Systemanforderungen für Azure Backup Server](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+    * [Systemanforderungen für Azure Backup Server](/system-center/dpm/install-dpm#setup-prerequisites)
     * [Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md)
 
-1. **Richten Sie Speicher ein**. Sie können mit Azure Sicherungsdaten auf Datenträger, auf Band und in der Cloud speichern. Weitere Informationen finden Sie unter [Vorbereiten des Datenspeichers](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage).
+1. **Richten Sie Speicher ein**. Sie können mit Azure Sicherungsdaten auf Datenträger, auf Band und in der Cloud speichern. Weitere Informationen finden Sie unter [Vorbereiten des Datenspeichers](/system-center/dpm/plan-long-and-short-term-data-storage).
 
-1. **Richten Sie den Schutz-Agent ein**. Installieren Sie den Schutz-Agent auf dem Computer, den Sie sichern möchten. Weitere Informationen finden Sie unter [Bereitstellen des DPM-Schutz-Agents](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
+1. **Richten Sie den Schutz-Agent ein**. Installieren Sie den Schutz-Agent auf dem Computer, den Sie sichern möchten. Weitere Informationen finden Sie unter [Bereitstellen des DPM-Schutz-Agents](/system-center/dpm/deploy-dpm-protection-agent).
 
 ## <a name="back-up-system-state-and-bare-metal"></a>Sichern von Systemstatus und BMR
 
@@ -115,7 +115,7 @@ So sichern Sie Systemstatus und BMR:
 
 1. Erweitern Sie auf der Seite **Gruppenmitglieder auswählen** den Computer, und wählen Sie dann entweder **BMR** oder **Systemstatus** aus.
 
-    Zur Erinnerung: Sie können BMR und den Systemstatus nicht für denselben Computer in unterschiedlichen Gruppen schützen. Bei Wahl von BMR wird der Systemstatus automatisch aktiviert. Weitere Informationen finden Sie unter [Bereitstellen von Schutzgruppen](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
+    Zur Erinnerung: Sie können BMR und den Systemstatus nicht für denselben Computer in unterschiedlichen Gruppen schützen. Bei Wahl von BMR wird der Systemstatus automatisch aktiviert. Weitere Informationen finden Sie unter [Bereitstellen von Schutzgruppen](/system-center/dpm/create-dpm-protection-groups).
 
 1. Wählen Sie auf der Seite **Datenschutzmethode auswählen** den gewünschten Umgang mit der kurz- und langfristigen Sicherung aus.
 

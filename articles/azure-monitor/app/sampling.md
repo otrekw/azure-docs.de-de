@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539821"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -21,7 +21,7 @@ Bei der Anzeige im Portal werden die Metrikergebnisse zur Berücksichtigung der 
 ## <a name="brief-summary"></a>Kurze Zusammenfassung
 
 * Es gibt drei verschiedene Arten der Stichprobenerstellung: adaptive Stichprobenerstellung, Stichprobenerstellung mit festem Prozentsatz und Erfassungs-Stichprobenerstellung.
-* Die adaptive Stichprobenerstellung ist in allen aktuellen Versionen der Application Insights ASP.NET und ASP.NET Core Software Development Kits (SDKs) standardmäßig aktiviert. Sie wird auch von [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) verwendet.
+* Die adaptive Stichprobenerstellung ist in allen aktuellen Versionen der Application Insights ASP.NET und ASP.NET Core Software Development Kits (SDKs) standardmäßig aktiviert. Sie wird auch von [Azure Functions](../../azure-functions/functions-overview.md) verwendet.
 * Die Stichprobenerstellung mit festem Prozentsatz ist in den neuesten Versionen der Application Insights-SDKs für ASP.NET, ASP.NET Core, Java (sowohl Agent als auch SDK) und Python verfügbar.
 * Die Erfassungs-Stichprobenerstellung wird auf dem Application Insights-Dienstendpunkt vorgenommen. Sie wird nur angewendet, wenn keine andere Stichprobenerstellung aktiv ist. Wenn das SDK Stichproben Ihrer Telemetriedaten erstellt, ist die Erfassungs-Stichprobenerstellung deaktiviert.
 * Wenn Sie im Fall von Webanwendungen benutzerdefinierte Ereignisse protokollieren und dabei sicherstellen müssen, dass eine Gruppe von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen die Ereignisse den gleichen Wert für `OperationId` aufweisen.
@@ -36,6 +36,7 @@ In der folgenden Tabelle sind die für die jeweiligen SDKs und Anwendungstypen v
 | ASP.NET Core | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | Azure-Funktionen | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-azure-functions) | Nein | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | Java | Nein | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
+| Node.JS | Nein | [Ja](./nodejs.md#sampling) | Nur wenn keine andere Stichprobenerstellung aktiv ist
 | Python | Nein | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | Alle anderen | Nein | Nein | [Ja](#ingestion-sampling) |
 
@@ -209,7 +210,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Konfigurieren der adaptiven Stichprobenerstellung für Azure Functions
 
-Folgen Sie den Anweisungen auf [dieser Seite](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling), um die adaptive Stichprobenerstellung für Apps zu konfigurieren, die in Azure Functions ausgeführt werden.
+Folgen Sie den Anweisungen auf [dieser Seite](../../azure-functions/functions-monitoring.md#configure-sampling), um die adaptive Stichprobenerstellung für Apps zu konfigurieren, die in Azure Functions ausgeführt werden.
 
 ## <a name="fixed-rate-sampling"></a>Stichprobenerstellung mit festem Prozentsatz
 
@@ -481,7 +482,7 @@ Wenn die Bedingungen für die Verwendung der anderen Stichprobenerstellungsarten
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>Erkennen, ob die Stichprobenerstellung ausgeführt wird
 
-Verwenden Sie etwa folgende [Analytics-Abfrage](../../azure-monitor/app/analytics.md) , um den tatsächlichen Stichproben-Prozentsatz unabhängig davon zu ermitteln, wo er angewendet wird:
+Verwenden Sie etwa folgende [Analytics-Abfrage](../log-query/log-query-overview.md) , um den tatsächlichen Stichproben-Prozentsatz unabhängig davon zu ermitteln, wo er angewendet wird:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -586,4 +587,4 @@ Vor ASP.NET SDK v2.5.0-beta2 und ASP.NET Core SDK v2.2.0-beta3 beruhte die En
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Filtern](../../azure-monitor/app/api-filtering-sampling.md) erhalten Sie eine strengere Kontrolle über die Sendungen Ihres SDK.
-* Lesen Sie den Developer Network-Artikel [Optimieren von Telemetrie mit Application Insights](https://msdn.microsoft.com/magazine/mt808502.aspx).
+* Lesen Sie den Developer Network-Artikel [Optimieren von Telemetrie mit Application Insights](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).

@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433593"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528399"
 ---
 # <a name="blob-versioning-preview"></a>Blobversionsverwaltung (Vorschau)
 
@@ -194,6 +195,10 @@ In der folgenden Tabelle werden die Berechtigungen aufgeführt, die für eine SA
 
 Blobversionsverwaltung ist als Vorschau in den folgenden Regionen verfügbar:
 
+- USA (Ost) 2
+- USA (Mitte)
+- Nordeuropa
+- Europa, Westen
 - Frankreich, Mitte
 - Kanada, Osten
 - Kanada, Mitte

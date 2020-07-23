@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373285"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526537"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Der virtuelle Windows-Computer kann aufgrund des Windows-Start-Managers nicht gestartet werden.
 
@@ -29,7 +29,7 @@ Dieser Artikel enthält Schritte zum Beheben von Problemen, bei denen der Window
 
 Der virtuelle Computer wartet auf eine Benutzereingabeaufforderung und wird erst gestartet, wenn er manuell dazu angewiesen wird.
 
-Wenn Sie [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot der VM anzuzeigen, sehen Sie, dass im Screenshot der Windows-Start-Manager mit der Meldung *Wählen Sie ein Betriebssystem aus, um zu starten, oder drücken Sie die TAB-TASTE, um ein Tool auszuwählen* angezeigt wird.
+Wenn Sie [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot der VM anzuzeigen, sehen Sie, dass im Screenshot der Windows-Start-Manager mit der Meldung *Wählen Sie ein Betriebssystem aus, um zu starten, oder drücken Sie die TAB-TASTE, um ein Tool auszuwählen* angezeigt wird.
 
 Abbildung 1
  
@@ -53,7 +53,7 @@ Prozessübersicht:
 
 Wenn Sie Zugriff auf die serielle Konsole haben, gibt es zwei Möglichkeiten, kürzere Startzeiten zu erzielen. Verringern Sie entweder die *displaybootmenu*-Wartezeit, oder entfernen Sie das Flag vollständig.
 
-1. Befolgen Sie die Anweisungen für den Zugriff auf die [serielle Azure-Konsole für Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows), um Zugriff auf die textbasierte Konsole zu erhalten.
+1. Befolgen Sie die Anweisungen für den Zugriff auf die [serielle Azure-Konsole für Windows](./serial-console-windows.md), um Zugriff auf die textbasierte Konsole zu erhalten.
 
    > [!NOTE]
    > Wenn Sie nicht auf die serielle Konsole zugreifen können, fahren Sie mit [Erstellen einer Reparatur-VM und Zugriff darauf](#create-and-access-a-repair-vm) fort.
@@ -77,7 +77,7 @@ Wenn Sie Zugriff auf die serielle Konsole haben, gibt es zwei Möglichkeiten, k�
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen einer Reparatur-VM und Zugriff darauf
 
-1. Führen Sie die [Schritte 1-3 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die [Schritte 1-3 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 2. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Konfigurieren einer kürzeren Startzeit auf einer Reparatur-VM
@@ -154,4 +154,4 @@ Um die Speicherabbildsammlung und die serielle Konsole zu aktivieren, führen Si
 
 ### <a name="rebuild-the-original-vm"></a>Neuerstellung der ursprünglichen VM
 
-Führen Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) aus, um die VM zu reassemblieren.
+Führen Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um die VM zu reassemblieren.

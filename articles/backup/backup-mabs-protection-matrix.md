@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 description: Dieser Artikel bietet eine Unterstützungsmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server geschützt werden.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: f950c7be28a4ff0dd0caa12d1327c2a0e2ac4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677320"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538733"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 
@@ -54,7 +54,7 @@ In den folgenden Abschnitten wird die Schutzunterstützungsmatrix für MABS deta
 
 | **Workload** | **Version**                               | **Azure Backup Server V2-Installation**                      | **Unterstützte Azure Backup Server-Instanz** | **Schutz und Wiederherstellung**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Linux, ausgeführt als Hyper-V- oder VMware-Gast | Physischer Server, lokaler virtueller Hyper-V-Computer, virtueller Windows-Computer in VMWare | V3 UR1                             | Hyper-V muss unter Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. Schützen:  Gesamter virtueller Computer   <br><br>   Wiederherstellen: Gesamter virtueller Computer   <br><br>    Es werden nur dateikonsistente Momentaufnahmen unterstützt.    <br><br>   Eine vollständige Liste der unterstützten Linux-Verteilungen und -Versionen finden Sie im Artikel [Linux auf von Azure unterstützten Verteilungen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros). |
+| Linux        | Linux, ausgeführt als Hyper-V- oder VMware-Gast | Physischer Server, lokaler virtueller Hyper-V-Computer, virtueller Windows-Computer in VMWare | V3 UR1                             | Hyper-V muss unter Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. Schützen:  Gesamter virtueller Computer   <br><br>   Wiederherstellen: Gesamter virtueller Computer   <br><br>    Es werden nur dateikonsistente Momentaufnahmen unterstützt.    <br><br>   Eine vollständige Liste der unterstützten Linux-Verteilungen und -Versionen finden Sie im Artikel [Linux auf von Azure unterstützten Verteilungen](../virtual-machines/linux/endorsed-distros.md). |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
 
@@ -74,7 +74,7 @@ Mit Microsoft-Peering: Wählen Sie die folgenden Dienste, Regionen und relevante
 * Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
 * Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
 
-Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Öffentliches Peering gilt für neue Leitungen als veraltet.

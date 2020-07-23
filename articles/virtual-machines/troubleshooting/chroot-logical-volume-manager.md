@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684129"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526876"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problembehandlung bei einem virtuellen Linux-Computer ohne Zugriff auf die serielle Azure-Konsole und bei Verwendung von LVM (Logical Volume Manager) im Datenträgerlayout
 
@@ -29,7 +29,7 @@ Dieser Leitfaden zur Problembehandlung ist von Vorteil für Szenarien, in denen 
 
 Erstellen Sie eine Momentaufnahme des betroffenen virtuellen Computers. 
 
-Die Momentaufnahme wird dann an einen virtuellen **Rettungscomputer** angefügt. Befolgen Sie die Anweisungen [hier](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) zum Erstellen einer **Momentaufnahme**.
+Die Momentaufnahme wird dann an einen virtuellen **Rettungscomputer** angefügt. Befolgen Sie die Anweisungen [hier](../linux/snapshot-copy-managed-disk.md#use-azure-portal) zum Erstellen einer **Momentaufnahme**.
 
 ## <a name="create-a-rescue-vm"></a>Erstellen eines virtuellen Rettungscomputers
 Normalerweise empfiehlt sich die Verwendung eines virtuellen Rettungscomputers mit derselben oder einer vergleichbaren Betriebssystemversion. Verwenden Sie dieselbe **Region** und **Ressourcengruppe** wie die des betroffenen virtuellen Computers.
@@ -209,7 +209,7 @@ Entfernen oder upgraden Sie bei Bedarf den **Kernel**.
 
 
 ### <a name="example-3---enable-serial-console"></a>Beispiel 3: Aktivieren der seriellen Konsole
-Wenn der Zugriff auf die serielle Azure-Konsole nicht möglich ist, überprüfen Sie die GRUB-Konfigurationsparameter für den virtuellen Linux-Computer, und korrigieren Sie sie. Ausführliche Informationen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration).
+Wenn der Zugriff auf die serielle Azure-Konsole nicht möglich ist, überprüfen Sie die GRUB-Konfigurationsparameter für den virtuellen Linux-Computer, und korrigieren Sie sie. Ausführliche Informationen finden Sie in [dieser Dokumentation](./serial-console-grub-proactive-configuration.md).
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Beispiel 4: Laden eines Kernels mit problematischem LVM-Auslagerungsvolume
 
@@ -274,4 +274,4 @@ Weitere Informationen
 
  [Serielle Azure-Konsole]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus](./serial-console-grub-single-user-mode.md)

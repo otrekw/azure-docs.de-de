@@ -9,15 +9,15 @@ ms.subservice: disks
 ms.date: 4/25/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e5bdb30929b4d93b05d850a56c9a6baf32f9856b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e4bdf868d3f8ddf3a049509ead30a4b1ba341b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125008"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527437"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
-Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.
+Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](./index.yml) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.
 
 > [!NOTE]
 > Wenn Sie eine Skalierungsgruppe mit angefügten Datenträgern erstellen, müssen Sie die Datenträger über einen virtuellen Computer einbinden und formatieren, um sie verwenden zu können – genau wie bei eigenständigen virtuellen Azure-Computern. Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Skript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren. Beispiele hierzu finden Sie unter [Azure-Befehlszeilenschnittstelle](tutorial-use-disks-cli.md#prepare-the-data-disks) und [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
@@ -33,7 +33,7 @@ Im weiteren Verlauf dieses Artikels werden bestimmte Verwendungsfälle behandelt
 
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>Erstellen eines Service Fabric-Clusters mit angefügten Datenträgern
-Jedem [Knotentyp](../service-fabric/service-fabric-cluster-nodetypes.md) in einem in Azure ausgeführten [Service Fabric](/azure/service-fabric)-Cluster liegt eine VM-Skalierungsgruppe zugrunde. Mit einer Azure Resource Manager-Vorlage können Sie Datenträger an die Skalierungsgruppen anfügen, aus denen sich der Service Fabric-Cluster zusammensetzt. Sie können eine [vorhandene Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates) als Ausgangspunkt verwenden. Fügen Sie in der Vorlage im Speicherprofil (_storageProfile_) der Ressourcen vom Typ _Microsoft.Compute/virtualMachineScaleSets_ einen Abschnitt namens _dataDisks_ ein, und stellen Sie die Vorlage bereit. Im folgenden Beispiel wird ein Datenträger mit einer Kapazität von 128 GB angefügt:
+Jedem [Knotentyp](../service-fabric/service-fabric-cluster-nodetypes.md) in einem in Azure ausgeführten [Service Fabric](../service-fabric/index.yml)-Cluster liegt eine VM-Skalierungsgruppe zugrunde. Mit einer Azure Resource Manager-Vorlage können Sie Datenträger an die Skalierungsgruppen anfügen, aus denen sich der Service Fabric-Cluster zusammensetzt. Sie können eine [vorhandene Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates) als Ausgangspunkt verwenden. Fügen Sie in der Vorlage im Speicherprofil (_storageProfile_) der Ressourcen vom Typ _Microsoft.Compute/virtualMachineScaleSets_ einen Abschnitt namens _dataDisks_ ein, und stellen Sie die Vorlage bereit. Im folgenden Beispiel wird ein Datenträger mit einer Kapazität von 128 GB angefügt:
 
 ```json
 "dataDisks": [
@@ -94,5 +94,3 @@ Im Skalierungsgruppenmodell angegebene Datenträger sind immer leer. Sie können
 Unterstützung für Azure Managed Disks und Skalierungsgruppen, die an Datenträger angefügt sind, ist über die API-Version [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) oder höher der Microsoft.Compute-API verfügbar.
 
 Die Unterstützung des Azure-Portals für angefügte Datenträger in Skalierungsgruppen ist begrenzt. Je nach Ihren Anforderungen können Sie Azure-Vorlagen, CLI, PowerShell, SDKs und REST API zum Verwalten angefügter Datenträger verwenden.
-
-
