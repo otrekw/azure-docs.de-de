@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076367"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207722"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
@@ -61,7 +61,7 @@ Optionen:
 
     Sie erhalten eine Antwort, die in etwa dem folgenden JSON entspricht:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,9 +83,7 @@ Optionen:
      * **class**: Die Klasse, die die MapReduce-Logik enthält
      * **arg**: Die Argumente, die an den MapReduce-Auftrag übergeben werden, in diesem Fall die Eingabetextdatei und das Verzeichnis für die Ausgabe
 
-    Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann:
-
-       job_1415651640909_0026
+    Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann: `job_1415651640909_0026`.
 
 1. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen. Ersetzen Sie den Wert für `JOBID` durch den **tatsächlichen** Wert, der im vorherigen Schritt zurückgegeben wurde. Ändern Sie den Speicherort von **jq** nach Bedarf.
 
@@ -116,7 +114,7 @@ Optionen:
 
     Sie erhalten eine Antwort, die in etwa dem folgenden JSON entspricht:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ Optionen:
     * **class**: Die Klasse, die die MapReduce-Logik enthält
     * **arg**: Die Argumente, die an den MapReduce-Auftrag übergeben werden, in diesem Fall die Eingabetextdatei und das Verzeichnis für die Ausgabe
 
-   Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann:
-
-       job_1415651640909_0026
+   Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann: `job_1415651640909_0026`.
 
 1. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen:
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106627"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274542"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL – Einzelserver über das Azure-Portal
 
@@ -78,15 +78,15 @@ Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
 
 6. Wählen Sie **OK**, um die Erstellung des Replikats zu bestätigen.
 
-Ein Replikat wird mit den gleichen Compute- und Speichereinstellungen erstellt wie der Master. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
-
-> [!IMPORTANT]
-> Bevor eine Masterservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
-
 Nach der Erstellung des Lesereplikats kann dieses im Fenster **Replikation** angezeigt werden:
 
 ![Anzeigen des neuen Replikats im Fenster „Replikation“](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> Lesen Sie den [Abschnitt „Überlegungen“ in der Übersicht über Lesereplikate](concepts-read-replicas.md#considerations).
+>
+> Bevor eine Masterservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
 
 ## <a name="stop-replication"></a>Beenden der Replikation
 Sie können die Replikation zwischen einem Masterserver und einem Lesereplikat beenden.

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080359"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259706"
 ---
 # <a name="encrypt-deployment-data"></a>Verschlüsseln von Bereitstellungsdaten
 
@@ -26,10 +26,10 @@ Sie können entweder von Microsoft verwaltete Schlüssel für die Verschlüsselu
 
 |    |    Von Microsoft verwaltete Schlüssel     |     Vom Kunden verwaltete Schlüssel     |
 |----|----|----|
-|    Verschlüsselungs-/Entschlüsselungsvorgänge    |    Azure    |    Azure    |
-|    Schlüsselspeicher    |    Microsoft-Schlüsselspeicher    |    Azure-Schlüsseltresor    |
-|    Verantwortlich für die Schlüsselrotation    |    Microsoft    |    Kunde    |
-|    Schlüsselzugriff    |    Nur Microsoft    |    Microsoft, Kunde    |
+|    **Verschlüsselungs-/Entschlüsselungsvorgänge**    |    Azure    |    Azure    |
+|    **Schlüsselspeicher**    |    Microsoft-Schlüsselspeicher    |    Azure-Schlüsseltresor    |
+|    **Verantwortlich für die Schlüsselrotation**    |    Microsoft    |    Kunde    |
+|    **Schlüsselzugriff**    |    Nur Microsoft    |    Microsoft, Kunde    |
 
 Im restlichen Dokument werden die Schritte beschrieben, die ausgeführt werden müssen, um Ihre ACI-Bereitstellungsdaten mit Ihrem Schlüssel (kundenseitig verwalteter Schlüssel) zu verschlüsseln. 
 
@@ -39,7 +39,7 @@ Im restlichen Dokument werden die Schritte beschrieben, die ausgeführt werden m
 
 ### <a name="create-service-principal-for-aci"></a>Erstellen eines Dienstprinzipals für ACI
 
-Als Erstes muss dafür gesorgt werden, dass Ihr [Azure-Mandant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) über einen zugewiesenen Dienstprinzipal verfügt, um dem Azure Container Instances-Dienst Berechtigungen zu gewähren. 
+Als Erstes muss dafür gesorgt werden, dass Ihr [Azure-Mandant](../active-directory/develop/quickstart-create-new-tenant.md) über einen zugewiesenen Dienstprinzipal verfügt, um dem Azure Container Instances-Dienst Berechtigungen zu gewähren. 
 
 > [!IMPORTANT]
 > Um den folgenden Befehl auszuführen und erfolgreich einen Dienstprinzipal zu erstellen, vergewissern Sie sich, dass Sie über die Berechtigungen zum Erstellen von Dienstprinzipalen in Ihrem Mandanten verfügen.
@@ -59,7 +59,7 @@ Falls Sie den Dienstprinzipal nicht erfolgreich erstellen können:
 
 ### <a name="create-a-key-vault-resource"></a>Erstellen einer Key Vault-Ressource
 
-Erstellen Sie eine Azure Key Vault-Ressource. Hierzu können Sie das [Azure-Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), die [Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/key-vault/quick-create-cli) oder [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell) verwenden. 
+Erstellen Sie eine Azure Key Vault-Ressource. Hierzu können Sie das [Azure-Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), die [Befehlszeilenschnittstelle](../key-vault/secrets/quick-create-cli.md) oder [PowerShell](../key-vault/secrets/quick-create-powershell.md) verwenden. 
 
 Berücksichtigen Sie bei den Eigenschaften Ihres Schlüsseltresors die folgenden Richtlinien: 
 * Name: Es ist ein eindeutiger Name erforderlich. 
@@ -96,7 +96,7 @@ Die Zugriffsrichtlinie sollte nun in den Zugriffsrichtlinien Ihres Schlüsseltre
 > [!IMPORTANT]
 > Das Verschlüsseln von Bereitstellungsdaten mit einem kundenseitig verwalteten Schlüssel ist in der neuesten API-Version (2019-12-01) verfügbar, deren Rollout momentan durchgeführt wird. Geben Sie diese API-Version in Ihrer Bereitstellungsvorlage an. Sollten dabei Probleme auftreten, wenden Sie sich an den Azure-Support.
 
-Fügen Sie Ihrer ACI-Bereitstellungsvorlage nach dem Einrichten des Schlüsseltresorschlüssels und der Zugriffsrichtlinie die folgenden Eigenschaften hinzu. Weitere Informationen zum Bereitstellen von ACI-Ressourcen mit einer Vorlage finden Sie im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Fügen Sie Ihrer ACI-Bereitstellungsvorlage nach dem Einrichten des Schlüsseltresorschlüssels und der Zugriffsrichtlinie die folgenden Eigenschaften hinzu. Weitere Informationen zum Bereitstellen von ACI-Ressourcen mit einer Vorlage finden Sie im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](./container-instances-multi-container-group.md). 
 * Legen Sie unter `resources` `apiVersion` auf `2019-12-01` fest.
 * Fügen Sie im Abschnitt mit den Containergruppeneigenschaften der Bereitstellungsvorlage eine `encryptionProperties` mit folgenden Werten hinzu:
   * `vaultBaseUrl`: Der DNS-Name Ihres Schlüsseltresors. Diesen finden Sie auf dem Übersichtsblatt der Schlüsseltresorressource im Portal.
@@ -129,7 +129,7 @@ Der folgende Vorlagenausschnitt zeigt diese zusätzlichen Eigenschaften zum Vers
 ]
 ```
 
-Im Folgenden finden Sie eine vollständige Vorlage, angepasst auf Grundlage der Vorlage im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Im Folgenden finden Sie eine vollständige Vorlage, angepasst auf Grundlage der Vorlage im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](./container-instances-multi-container-group.md). 
 
 ```json
 {
@@ -233,14 +233,14 @@ Erstellen Sie mithilfe des Befehls [az group create][az-group-create] eine Resso
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie mit dem Befehl [az group deployment create][az-group-deployment-create] die Vorlage bereit.
+Stellen Sie die Vorlage mit dem Befehl [az deployment group create][az-deployment-group-create] bereit.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten. Nach Abschluss der Bereitstellung werden alle bereitstellungsbezogenen Daten, die vom ACI-Dienst gespeichert werden, mit dem bereitgestellten Schlüssel verschlüsselt.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

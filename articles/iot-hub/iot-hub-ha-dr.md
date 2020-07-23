@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267629"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260166"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
 
@@ -75,6 +75,8 @@ Die große RTO-Zeitspanne ist dadurch bedingt, dass Microsoft das Failover für 
 Wenn Ihre geschäftlichen Betriebszeitziele durch das von Microsoft initiierte Failover nicht erfüllt werden, können Sie das manuelle Failover nutzen, um den Failoverprozess selbst auszulösen. Die RTO beträgt für diese Option 10 Minuten bis ein paar Stunden. Die RTO ist derzeit eine Funktion der Geräte, die für die IoT Hub-Instanz registriert sind und für die ein Failover ausgeführt wird. Für einen Hub, der etwa 100.000 Geräte hostet, beträgt die RTO ca. 15 Minuten. Die Gesamtzeit, nach der Laufzeitvorgänge nach Auslösung dieses Prozesses wieder vollständig funktionsfähig sind, wird im Abschnitt „Zeit bis zur Wiederherstellung“ beschrieben.
 
 Die manuelle Failoveroption ist immer verfügbar, unabhängig davon, ob in der primären Region Downtime auftritt. Daher lässt sich diese Option für ein geplantes Failover nutzen. Ein Beispiel für die Verwendung geplanter Failover ist die Durchführung regelmäßiger Failoverdrills. Beachten Sie jedoch, dass ein geplantes Failover zu einer Hubdowntime für die von der RTO für diese Option definierte Zeitdauer und zu Datenverlust führt, wie in der obigen RPO-Tabelle definiert. Sie könnten eine IoT Hub-Testinstanz einrichten, um die geplante Failoveroption regelmäßig auszuführen, damit Sie sich darauf verlassen können, dass Ihre End-to-End-Lösungen bei einem echten Notfall einsatzbereit sind.
+
+Das manuelle Failover steht ohne zusätzliche Kosten für IoT-Hubs zur Verfügung, die nach dem 18. Mai 2017 erstellt wurden.
 
 Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz](tutorial-manual-failover.md)
 

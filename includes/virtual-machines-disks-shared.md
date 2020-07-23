@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868124"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277766"
 ---
 Freigegebene Azure-Datenträger (Vorschauversion) sind ein neues Feature für verwaltete Azure-Datenträger, die das gleichzeitige Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer (Virtual Machines, VMs) ermöglichen. Durch das Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer können Sie entweder neue gruppierte Anwendungen in Azure bereitstellen oder bereits vorhandene gruppierte Anwendungen zu Azure migrieren.
 
@@ -41,7 +41,7 @@ Die meisten Windows-basierten Clustervorgänge basieren auf WSFC. WSFC kümmert 
 
 Die folgende Liste enthält einige beliebte Anwendungen, die unter WSFC ausgeführt werden:
 
-- SQL Server-Failoverclusterinstanzen (FCI)
+- [Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - Dateiserver mit horizontaler Skalierung (Scale-Out File Server, SOFS)
 - Dateiserver zur allgemeinen Verwendung (IW-Workload)
 - Remotedesktopserver-Benutzerprofildatenträger (Remote Desktop Server User Profile Disk, RDS UPD)
@@ -87,7 +87,12 @@ Disk Ultra-Datenträger bieten eine zusätzliche Drosselung, sodass insgesamt zw
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Abbildung einer Tabelle, die den schreibgeschützten Zugriff oder Lese-/Schreibzugriff für die Kategorien „Reservierungsinhaber“, „Registriert“ und „Andere“ darstellt":::
 
-## <a name="ultra-disk-performance-throttles"></a>Leistungsdrosselungen für Disk Ultra-Datenträger
+## <a name="performance-throttles"></a>Leistungsdrosselungen
+
+### <a name="premium-ssd-performance-throttles"></a>Leistungsdrosselungen für SSD Premium
+Bei SSD Premium werden die Datenträger-IOPS und der Durchsatz festgelegt. P30 umfasst beispielsweise 5000 IOPS. Dieser Wert bleibt unabhängig davon gleich, ob der Datenträger für zwei oder für fünf VMs freigegeben wird. Die Datenträgerlimits können von einer einzelnen VM erreicht oder auf zwei oder mehr VMs aufgeteilt werden. 
+
+### <a name="ultra-disk-performance-throttles"></a>Leistungsdrosselungen für Disk Ultra-Datenträger
 
 Disk Ultra-Datenträger bieten Ihnen die einzigartige Möglichkeit, Ihre Leistung festzulegen, indem sie modifizierbare Attribute verfügbar machen und es Ihnen ermöglichen, diese zu ändern. Standardmäßig gibt es nur zwei änderbare Attribute, aber freigegebene Disk Ultra-Datenträger verfügen über zwei zusätzliche Attribute.
 
@@ -111,23 +116,23 @@ Die folgenden Formeln erläutern, wie die Leistungsattribute festgelegt werden k
     - Der Grenzwert für den Durchsatz eines einzelnen Datenträgers beträgt 256 KiB/s für jeden bereitgestellten IOPS-Wert, bis zu maximal 2.000 MBit/s pro Datenträger.
     - Der garantierte Mindestdurchsatz pro Datenträger beträgt 4 KiB/s für jeden bereitgestellten IOPS-Wert mit einem Gesamtmindestwert von 1 MB/s.
 
-### <a name="examples"></a>Beispiele
+#### <a name="examples"></a>Beispiele
 
 In den folgenden Beispielen werden einige Szenarios veranschaulicht, die zeigen, wie die Drosselung insbesondere mit freigegebenen Disk Ultra-Datenträgern funktionieren kann.
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster mit zwei Knoten unter Verwendung von freigegebenen Clustervolumes
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster mit zwei Knoten unter Verwendung von freigegebenen Clustervolumes
 
 Es folgt ein Beispiel für einen WSFC mit zwei Knoten, der freigegebene Clustervolumes verwendet. Bei dieser Konfiguration haben beide virtuellen Computer gleichzeitigen Schreibzugriff auf den Datenträger, was dazu führt, dass die ReadWrite-Drosselung auf die beiden virtuellen Computer aufgeteilt wird und die ReadOnly-Drosselung nicht verwendet wird.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV-Beispiel für zwei Knoten, Ultra-Datenträger":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster mit zwei Knoten ohne freigegebene Clustervolumes
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster mit zwei Knoten ohne freigegebene Clustervolumes
 
 Es folgt ein Beispiel für einen WSFC mit zwei Knoten, der keine freigegebenen Clustervolumes verwendet. Bei dieser Konfiguration hat nur ein virtueller Computer Schreibzugriff auf den Datenträger. Dies führt dazu, dass die ReadWrite-Drosselung ausschließlich für den primären virtuellen Computer und die ReadOnly-Drosselung nur für den sekundären virtuellen Computer verwendet wird.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-Beispiel für zwei Knoten, Ultra-Datenträger ohne CSV":::
 
-#### <a name="four-node-linux-cluster"></a>Linux-Cluster mit vier Knoten
+##### <a name="four-node-linux-cluster"></a>Linux-Cluster mit vier Knoten
 
 Es folgt ein Beispiel für einen Linux-Cluster mit vier Knoten, einem einzelnen Writer und drei Lesern mit horizontaler Skalierung. Bei dieser Konfiguration hat nur ein virtueller Computer Schreibzugriff auf den Datenträger. Dies führt dazu, dass die ReadWrite-Drosselung ausschließlich für den primären virtuellen Computer verwendet und die ReadOnly-Drosselung auf die sekundären virtuellen Computer aufgeteilt wird.
 

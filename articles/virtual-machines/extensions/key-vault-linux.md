@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b651776ccd8c93271b57eab0efa24c6a79f50a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676232"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224263"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 
@@ -58,8 +58,12 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-        }      
-      }
+        },
+        "authenticationSettings": {
+                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
+                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
+       }
       }
     }
 ```
@@ -68,6 +72,10 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 > Die URLs der berücksichtigten Zertifikate müssen das folgende Format haben: `https://myVaultName.vault.azure.net/secrets/myCertName`.
 > 
 > Der Grund: Der Pfad `/secrets` gibt das vollständige Zertifikat einschließlich des privaten Schlüssels zurück, der Pfad `/certificates` dagegen nicht. Weitere Informationen zu Zertifikaten finden Sie hier: [Key Vault-Zertifikate](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+
+> [!NOTE]
+> Die Eigenschaft „authenticationSettings“ ist optional für Szenarios, in denen der VM mehrere Identitäten zugewiesen sind.
+> Mit dieser Eigenschaft kann die Identität angegeben werden, die für die Authentifizierung bei Key Vault verwendet werden soll.
 
 
 ### <a name="property-values"></a>Eigenschaftswerte
@@ -84,6 +92,8 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | Zeichenfolge |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Zeichenfolgenarray
+| msiEndpoint | http://169.254.169.254/metadata/identity | Zeichenfolge |
+| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | Zeichenfolge |
 
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen

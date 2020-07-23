@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 15cdd4c53105998488d2ae1f544e34c1e07a157a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 549fd9851ffce4459e16b4d84f368234bfdf207d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147127"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275817"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Bereitstellen eines Systems für horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf SUSE Linux Enterprise Server 
 
@@ -137,7 +137,7 @@ In den folgenden Anweisungen wird davon ausgegangen, dass Sie bereits [Azure Vir
 
 5. Stellen Sie Azure NetApp Files-Volumes entsprechend den Anweisungen in [Erstellen eines NFS-Volumes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereit.  
 
-   Stellen Sie beim Bereitstellen der Volumes sicher, dass Sie die Version **NFSv4.1** auswählen. Derzeit sind für den Zugriff auf NFSv4.1 zusätzliche Whitelists erforderlich. Stellen Sie die Volumes im festgelegten [Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. Die IP-Adressen der Azure NetApp-Volumes werden automatisch zugewiesen. 
+   Stellen Sie beim Bereitstellen der Volumes sicher, dass Sie die Version **NFSv4.1** auswählen. Derzeit ist für den Zugriff auf NFSv4.1 das Hinzufügen zu einer Zulassungsliste erforderlich. Stellen Sie die Volumes im festgelegten [Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. Die IP-Adressen der Azure NetApp-Volumes werden automatisch zugewiesen. 
    
    Denken Sie daran, dass sich die Azure NetApp Files-Ressourcen und die virtuellen Azure-Computer im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken befinden müssen. Beispielsweise sind „**HN1**-data-mnt00001“, „**HN1**-log-mnt00001“ usw. die Namen der Volumes, und „nfs://10.23.1.5/**HN1**-data-mnt00001“, „nfs://10.23.1.4/**HN1**-log-mnt00001“ usw. sind die Dateipfade für die Azure NetApp Files-Volumes.  
 

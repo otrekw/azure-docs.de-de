@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981929"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245304"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 
@@ -52,6 +52,11 @@ Das Geowiederherstellungsfeature stellt den Server mithilfe georedundanter Siche
 
 ## <a name="cross-region-read-replicas"></a>Regionsübergreifende Lesereplikate
 Mithilfe regionsübergreifender Lesereplikate können Sie Ihre BCDR-Planung (Business Continuity & Disaster Recovery) verbessern. Lesereplikate werden mithilfe der physischen Replikationstechnologie von PostgreSQL asynchron aktualisiert. Weitere Informationen zu Lesereplikaten, zu verfügbaren Regionen und zum Failover finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
+
+## <a name="faq"></a>Häufig gestellte Fragen
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Wo werden Kundendaten von Azure Database for PostgreSQL gespeichert?
+Standardmäßig werden Kundendaten von Azure Database for PostgreSQL in der Region gespeichert, in der sie bereitgestellt werden. Sie werden nicht aus dieser Region verschoben. Kunden können jedoch optional [georedundanten Sicherungen](concepts-backup.md#backup-redundancy-options) aktivieren oder [regionsübergreifenden Lesereplikate](concepts-read-replicas.md#cross-region-replication) zum Speichern von Daten in einer anderen Region erstellen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [automatisierten Sicherungen in Azure Database for PostgreSQL](concepts-backup.md). 

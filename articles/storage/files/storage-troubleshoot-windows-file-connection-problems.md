@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ca7aca1c11158e396c27d3f0ac37e18a9cbea361
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182728"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259975"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
-Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  verwenden, um sicherzustellen, dass die Windows-Clientumgebung über die richtigen erforderlichen Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure Files-Freigaben.
+Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)  verwenden, um sicherzustellen, dass die Windows-Clientumgebung über die richtigen erforderlichen Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure Files-Freigaben.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Fehler 5 beim Bereitstellen einer Azure-Dateifreigabe
@@ -65,7 +65,7 @@ Wenn Sie versuchen, eine Dateifreigabe aus einem lokalen oder einem anderen Date
 
 „Systemfehler 53“ und „Systemfehler 67“ können auftreten, wenn die von Port 445 ausgehende Kommunikation zu einem Azure Files-Datencenter blockiert ist. Um eine Zusammenfassung der ISPs anzuzeigen, die den Zugang von Port 445 aus zulassen oder verweigern, gehen Sie auf [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Um festzustellen, ob Port 445 durch Ihre Firewall oder Ihren Internetdienstanbieter blockiert wird, verwenden Sie das Tool [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) oder das Cmdlet `Test-NetConnection`. 
+Um festzustellen, ob Port 445 durch Ihre Firewall oder Ihren Internetdienstanbieter blockiert wird, verwenden Sie das Tool [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) oder das Cmdlet `Test-NetConnection`. 
 
 Um das Cmdlet `Test-NetConnection` verwenden zu können, muss das Azure PowerShell-Modul installiert sein. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resource-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 
@@ -131,11 +131,11 @@ Setzen Sie den Wert **LmCompatibilityLevel** auf den Standardwert 3 im folgenden
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>Fehler 1816 „Nicht genügend Quoten verfügbar, um diesen Befehl zu verarbeiten“, wenn Sie in eine Azure-Dateifreigabe kopieren
+## <a name="error-1816---not-enough-quota-is-available-to-process-this-command"></a>Fehler 1816: Unzureichendes Kontingent für die Verarbeitung dieses Befehls
 
 ### <a name="cause"></a>Ursache
 
-Der Fehler 1816 tritt auf, wenn Sie die Obergrenze der parallelen offenen Handles erreichen, die für eine Datei auf dem Computer zulässig sind, auf dem die Dateifreigabe bereitgestellt wird.
+Der Fehler 1816 tritt auf, wenn Sie die Obergrenze der parallelen offenen Handles erreichen, die für eine Datei oder ein Verzeichnis in der Azure-Dateifreigabe zulässig sind. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets).
 
 ### <a name="solution"></a>Lösung
 
@@ -334,7 +334,7 @@ Derzeit können Sie die nochmalige Bereitstellung des AAD DS mit einem neuen DN
 ### <a name="self-diagnostics-steps"></a>Selbstdiagnoseschritte
 Stellen Sie zunächst sicher, dass Sie alle vier Schritte durchgeführt haben, um die [Azure Files-AD-Authentifizierung](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable) zu aktivieren.
 
-Versuchen Sie dann, die [Azure-Dateifreigabe mit dem Speicherkontoschlüssel](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) einzubinden. Wenn beim Einbinden ein Fehler aufgetreten ist, laden Sie [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) herunter, um die Clientausführungsumgebung zu überprüfen und die nicht kompatible Clientkonfiguration zu erkennen, die zu einem Zugriffsfehler für Azure Files führen würde. Zudem stellt das Tool Anleitungen zur Selbsthilfe bereit und erfasst die Diagnoseablaufverfolgungen.
+Versuchen Sie dann, die [Azure-Dateifreigabe mit dem Speicherkontoschlüssel](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) einzubinden. Wenn beim Einbinden ein Fehler aufgetreten ist, laden Sie [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) herunter, um die Clientausführungsumgebung zu überprüfen und die nicht kompatible Clientkonfiguration zu erkennen, die zu einem Zugriffsfehler für Azure Files führen würde. Zudem stellt das Tool Anleitungen zur Selbsthilfe bereit und erfasst die Diagnoseablaufverfolgungen.
 
 Drittens können Sie das Cmdlet Debug-AzStorageAccountAuth ausführen, um eine Reihe grundlegender Überprüfungen Ihrer AD-Konfiguration mit dem angemeldeten AD-Benutzer durchzuführen. Dieses Cmdlet wird von der [Version AzFilesHybrid v0.1.2+](https://github.com/Azure-Samples/azure-files-samples/releases) unterstützt. Sie müssen dieses Cmdlet mit einem AD-Benutzer ausführen, der über die Besitzerberechtigung für das Zielspeicherkonto verfügt.  
 ```PowerShell

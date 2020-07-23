@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/09/2020
+ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146415"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259053"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -144,6 +144,6 @@ Mit der `pg_stat_statements.track`-Einstellung wird gesteuert, welche Anweisunge
 Zwischen den von pg_stat_statements bereitgestellten Abfrageausführungsinformationen und der Auswirkung auf die Serverleistung besteht ein Kompromiss, da jede SQL-Anweisung protokolliert wird. Wenn Sie die pg_stat_statements-Erweiterung nicht aktiv verwenden, empfiehlt es sich, `pg_stat_statements.track` auf `none` festzulegen. Einige Überwachungsdienste von Drittanbietern können sich auf pg_stat_statements beziehen, um Statistiken zur Abfrageleistung zu liefern. Bestätigen Sie daher, ob dieser Fall auf Sie zutrifft.
 
 ## <a name="dblink-and-postgres_fdw"></a>„dblink“ und „postgres_fdw“
-Sie können „dblink“ und „postgres_fdw“ verwenden, um eine Verbindung von einem PostgreSQL-Server mit einem anderen PostgreSQL-Server oder mit einer anderen Datenbank auf demselben Server herzustellen. Der empfangende Server muss Verbindungen vom sendenden Server über die Firewall zulassen. Um diese Erweiterungen zu verwenden, um eine Verbindung zwischen Azure Database for PostgreSQL-Servern herzustellen, legen Sie **Zugriff auf Azure-Dienste erlauben** auf „EIN“ fest. Sie müssen diese Einstellung auch aktivieren, wenn Sie die Erweiterungen für ein Loopback zum selben Server verwenden möchten. Die Einstellung **Zugriff auf Azure-Dienste erlauben** finden Sie auf der Azure-Portalseite für den Postgres-Server unter **Verbindungssicherheit**. Durch Aktivieren von **Zugriff auf Azure-Dienste erlauben** werden alle Azure-IP-Adressen in die Whitelist übernommen.
 
-Derzeit werden ausgehende Verbindungen mit Ausnahme von Verbindungen mit anderen Azure Database for PostgreSQL-Servern von Azure Database for PostgreSQL nicht unterstützt.
+Sie können „dblink“ und „postgres\_fdw“ verwenden, um eine Verbindung von einem PostgreSQL-Server mit einem anderen PostgreSQL-Server oder mit einer anderen Datenbank auf demselben Server herzustellen.  Der empfangende Server muss Verbindungen vom sendenden Server über die Firewall zulassen.  Um diese Erweiterungen für Verbindungen zwischen Azure Database for PostgreSQL-Servern oder Hyperscale (Citus)-Servergruppen zu verwenden, aktivieren Sie **Azure-Diensten und -Ressourcen den Zugriff auf diese Servergruppe (oder diesen Server) gestatten**.  Sie müssen diese Einstellung auch aktivieren, wenn Sie die Erweiterungen für ein Loopback zum selben Server verwenden möchten.
+Die Einstellung **Azure-Diensten und -Ressourcen den Zugriff auf diese Servergruppe gestatten** finden Sie auf der Azure-Portalseite für die Hyperscale (Citus)-Servergruppe unter **Netzwerk**.  Derzeit werden von einzelnen Azure Database for PostgreSQL-Servern und Hyperscale (Citus) ausgehende Verbindungen mit Ausnahme von Verbindungen mit anderen Azure Database for PostgreSQL-Servern und Hyperscale (Citus)-Servergruppen nicht unterstützt.

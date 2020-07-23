@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 26569606ce2aeb9d645f82e474b728cc4044ca93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250943"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276310"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -116,6 +116,8 @@ Um das Schreiben von Überwachungsprotokollen in einen Log Analytics-Arbeitsbere
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
+Weitere Informationen zu Azure Monitor-Protokollarbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment).
+   
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
 
 > [!WARNING]

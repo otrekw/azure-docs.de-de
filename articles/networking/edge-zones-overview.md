@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086890"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260069"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Informationen zur Vorschau von Azure Edge Zone
 
@@ -75,6 +75,8 @@ Typische Anwendungsfälle sind:
 Edge Zones werden in Partnerschaft mit den folgenden Betreibern angeboten:
 
 - AT&T (Atlanta, Dallas und Los Angeles) 
+
+ISVs, die an optimierten und skalierbaren Anwendungen in 5G-Netzwerken arbeiten, können beim Erstellen und Testen von Plattformen mit extrem geringer Latenz sowie in mobilen und vernetzten Szenarien jetzt den neuen Azure Edge Zone-Vorschaustandort Los Angeles mit AT&T verwenden. Registrieren Sie sich für das Early Adopter-Programm, um von sicherer Konnektivität mit hoher Bandbreite zu profitieren.
 
 Weitere Informationen erhalten Sie beim [Supportteam für Azure Edge Zone-Zonen](https://aka.ms/EdgeZones).
 

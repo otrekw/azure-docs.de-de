@@ -4,12 +4,12 @@ description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von K
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336634"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251857"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Ein Kubernetes-Cluster ist in zwei Komponenten unterteilt:
 
 ## <a name="control-plane"></a>Steuerungsebene
 
-Wenn Sie einen AKS-Cluster erstellen, wird automatisch eine Steuerungsebene erstellt und konfiguriert. Diese Steuerungsebene wird als verwaltete Azure-Ressource bereitgestellt, die für den Benutzer abstrahiert wird. Für die Steuerungsebene fallen keine Kosten an. Nur die Knoten, die Teil des AKS-Clusters sind, werden in Rechnung gestellt.
+Wenn Sie einen AKS-Cluster erstellen, wird automatisch eine Steuerungsebene erstellt und konfiguriert. Diese Steuerungsebene wird als verwaltete Azure-Ressource bereitgestellt, die für den Benutzer abstrahiert wird. Für die Steuerungsebene fallen keine Kosten an. Nur die Knoten, die Teil des AKS-Clusters sind, werden in Rechnung gestellt. Die Steuerungsebene und ihre Ressourcen befinden sich nur in der Region, in der Sie den Cluster erstellt haben.
 
 Die Steuerungsebene umfasst die folgenden Kubernetes-Kernkomponenten:
 
@@ -73,9 +73,9 @@ Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benöt
 
 ### <a name="resource-reservations"></a>Ressourcenreservierungen
 
-Knotenressourcen werden von AKS verwendet, damit der Knoten als Teil Ihres Clusters fungieren kann. Dies kann zu einer Abweichung zwischen den Gesamtressourcen des Knotens und den Ressourcen führen, die bei der Verwendung in AKS zugewiesen werden können. Dies sollte unbedingt beachtet werden, wenn Anforderungen und Grenzwerte für vom Benutzer bereitgestellte Pods festgelegt werden.
+Knotenressourcen werden von AKS verwendet, damit der Knoten als Teil Ihres Clusters fungieren kann. Diese Verwendung kann zu einer Abweichung zwischen den Gesamtressourcen des Knotens und den Ressourcen führen, die bei der Verwendung in AKS zugewiesen werden können. Diese Informationen müssen beim Festlegen von Anforderungen und Grenzwerten für vom Benutzer bereitgestellte Pods unbedingt beachtet werden.
 
-Führen Sie Folgendes aus, um die Ressourcen, die einem Knoten zugewiesen werden können, zu ermitteln:
+Führen Sie Folgendes aus, um die Ressourcen zu ermitteln, die einem Knoten zugewiesen werden können:
 ```kubectl
 kubectl describe node [NODE_NAME]
 
@@ -86,7 +86,7 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
 >[!NOTE]
 > Durch die Verwendung von AKS-Add-Ons wie Container Insights (OMS) werden zusätzliche Knotenressourcen beansprucht.
 
-- **CPU:** Die reservierten CPU-Ressourcen hängen vom Knotentyp und der Clusterkonfiguration ab. Dies kann dazu führen, dass weniger CPU-Ressourcen zugewiesen werden können, da zusätzliche Features ausgeführt werden.
+- **CPU:** Die reservierten CPU-Ressourcen hängen vom Knotentyp und der Clusterkonfiguration ab. Diese können dazu führen, dass weniger CPU-Ressourcen zugewiesen werden können, da zusätzliche Features ausgeführt werden.
 
 | CPU-Kerne auf dem Host | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
@@ -94,7 +94,7 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
 
 - **Arbeitsspeicher:** Der von AKS genutzte Arbeitsspeicher ergibt sich aus zwei Werten.
 
-1. Der Kubelet-Daemon wird auf allen Kubernetes-Agent-Knoten installiert, um die Erstellung und Beendigung von Containern zu verwalten. In AKS gilt für diesen Daemon standardmäßig die folgende Entfernungsregel: *memory.available<750Mi*. Dies bedeutet, dass der zuweisbare Arbeitsspeicher auf einem Knoten immer mindestens 750 Mi betragen muss.  Wenn ein Host den Schwellenwert des verfügbaren Arbeitsspeichers unterschreitet, beendet das Kubelet einen der ausgeführten Pods, um Speicher auf dem Hostcomputer freizugeben und zu schützen. Dies ist eine reaktive Aktion, die ausgeführt wird, sobald der verfügbare Arbeitsspeicher den Schwellenwert von 750 Mi unterschreitet.
+1. Der Kubelet-Daemon wird auf allen Kubernetes-Agent-Knoten installiert, um die Erstellung und Beendigung von Containern zu verwalten. In AKS gilt für diesen Daemon standardmäßig die folgende Entfernungsregel: *memory.available<750Mi*. Dies bedeutet, dass der zuweisbare Arbeitsspeicher auf einem Knoten immer mindestens 750 Mi betragen muss.  Wenn ein Host den Schwellenwert des verfügbaren Arbeitsspeichers unterschreitet, beendet das Kubelet einen der ausgeführten Pods, um Speicher auf dem Hostcomputer freizugeben und zu schützen. Diese Aktion wird ausgelöst, sobald der verfügbare Arbeitsspeicher den Schwellenwert von 750 Mi unterschreitet.
 
 2. Der zweite Wert ist die regressive Rate des Arbeitsspeichers, der für den Kubelet-Daemon reserviert ist, damit er ordnungsgemäß ausgeführt wird („kube-reserved“).
     - 25 % der ersten 4 GB Arbeitsspeicher
@@ -103,7 +103,7 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
     - 6 % der nächsten 112 GB Arbeitsspeicher (bis 128 GB)
     - 2 % des Arbeitsspeichers oberhalb von 128 GB
 
-Die obigen Regeln für die Arbeitsspeicher- und CPU-Zuteilung werden verwendet, um die Integrität von Agent-Knoten zu gewährleisten. Einige dieser Knoten hosten Systempods, die für die Clusterintegrität wichtig sind. Diese Zuteilungsregeln sorgen auch dafür, dass der Knoten weniger zuteilbaren Arbeitsspeicher und CPU meldet, als wenn sie kein Teil eines Kubernetes-Clusters wären. Die obigen Ressourcenreservierungen können nicht geändert werden.
+Die obigen Regeln für die Arbeitsspeicher- und CPU-Zuteilung werden verwendet, um die Integrität von Agent-Knoten zu gewährleisten. Einige dieser Knoten hosten Systempods, die für die Clusterintegrität wichtig sind. Diese Zuteilungsregeln sorgen auch dafür, dass der Knoten weniger zuteilbaren Arbeitsspeicher und weniger zuteilbare CPU meldet, als dies normalerweise bei Nichtzugehörigkeit zum Kubernetes-Cluster der Fall wäre. Die obigen Ressourcenreservierungen können nicht geändert werden.
 
 Wenn ein Knoten beispielsweise 7 GB bietet, werden 34 % des Arbeitsspeichers einschließlich des festen Entfernungsschwellenwerts von 750 Mi als nicht zuteilbar angegeben.
 
@@ -153,7 +153,7 @@ Wenn Sie einen Pod erstellen, können Sie *Ressourcenanforderungen* definieren, 
 
 Weitere Informationen finden Sie unter [Kubernetes Pods][kubernetes-pods] (Kubernetes-Pods) und [Kubernetes Pod Lifecycle][kubernetes-pod-lifecycle] (Lebenszyklus von Kubernetes-Pods).
 
-Ein Pod ist eine logische Ressource, aber die Container sind die Ressourcen, in denen die Anwendungsworkloads ausgeführt werden. Pods sind in der Regel kurzlebige Ressourcen, die gelöscht werden können. Einzeln geplante Pods bieten nicht alle Hochverfügbarkeits- und Redundanzfeatures von Kubernetes. Stattdessen werden Pods üblicherweise von Kubernetes-*Controllern* bereitgestellt und verwaltet, beispielsweise dem Bereitstellungscontroller.
+Ein Pod ist eine logische Ressource, aber die Container sind die Ressourcen, in denen die Anwendungsworkloads ausgeführt werden. Pods sind in der Regel kurzlebige Ressourcen, die gelöscht werden können. Einzeln geplante Pods bieten nicht alle Hochverfügbarkeits- und Redundanzfeatures von Kubernetes. Stattdessen werden Pods von Kubernetes-*Controllern* bereitgestellt und verwaltet, beispielsweise dem Bereitstellungscontroller.
 
 ## <a name="deployments-and-yaml-manifests"></a>Bereitstellungen und YAML-Manifeste
 
@@ -165,7 +165,7 @@ Die meisten zustandslosen Anwendungen in AKS sollten das Bereitstellungsmodell v
 
 Wenn eine Anwendung erfordert, dass jederzeit ein Quorum aus Instanzen verfügbar ist, damit Verwaltungsentscheidungen getroffen werden können, darf diese Funktionalität nicht durch Aktualisierungsprozesse unterbrochen werden. *Budgets für die Unterbrechung von Pods* können verwendet werden, um zu definieren, wie viele Replikate in einer Bereitstellung während einer Aktualisierung oder eines Knotenupgrades heruntergefahren werden können. Ein Beispiel: Wenn Sie in Ihrer Bereitstellung über *5* Replikate verfügen, können Sie eine Podunterbrechung für *4* Replikate definieren, damit nur ein Replikat gleichzeitig gelöscht bzw. neu geplant werden darf. Ebenso wie bei Podressourcenlimits besteht eine bewährte Methode darin, Budgets für die Unterbrechung von Pods für Anwendungen zu definieren, für die immer eine bestimmte Mindestanzahl von Replikaten vorhanden sein muss.
 
-Bereitstellungen werden in der Regel mit `kubectl create` oder `kubectl apply` erstellt und verwaltet. Um eine Bereitstellung zu erstellen, definieren Sie eine Manifestdatei im YAML-Format (YAML Ain't Markup Language). Das folgende Beispiel erstellt eine grundlegende Bereitstellung eines NGINX-Webservers. Die Bereitstellung gibt an, dass *3* Replikate erstellt werden sollen und dass Port *80* auf dem Container geöffnet werden soll. Es werden auch Ressourcenanforderungen und -limits für CPU und Arbeitsspeicher definiert.
+Bereitstellungen werden in der Regel mit `kubectl create` oder `kubectl apply` erstellt und verwaltet. Um eine Bereitstellung zu erstellen, definieren Sie eine Manifestdatei im YAML-Format (YAML Ain't Markup Language). Das folgende Beispiel erstellt eine grundlegende Bereitstellung eines NGINX-Webservers. Die Bereitstellung gibt an, dass *3* Replikate erstellt werden sollen und dass Port *80* auf dem Container geöffnet sein muss. Es werden auch Ressourcenanforderungen und -limits für CPU und Arbeitsspeicher definiert.
 
 ```yaml
 apiVersion: apps/v1

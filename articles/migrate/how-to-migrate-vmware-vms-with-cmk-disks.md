@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232702"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260018"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrieren von VMware-VMs zu Azure-VMS mit serverseitiger Verschlüsselung und von Kunden verwalteten Schlüsseln
 
@@ -58,7 +58,11 @@ Die Benutzeroberfläche des Servermigrationsportals vereinfacht die Vorbereitung
 
 Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält. Wenn Sie VMs mit CMK replizieren möchten, erstellen Sie einen Datenträgerverschlüsselungssatz, und übergeben Sie ihn als Eingabe an den Replikationsvorgang.
 
-Folgen Sie [diesem](../virtual-machines/windows/disk-encryption.md#powershell) Beispiel, um mit Azure PowerShell eine Datenträgerverschlüsselung zu erstellen. Stellen Sie sicher, dass der Datenträgerverschlüsselungssatz in dem Zielabonnement erstellt wird, zu dem die VMs migriert werden, und in der Azure-Zielregion für die Migration.
+Folgen Sie [diesem](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) Beispiel, um mit Azure PowerShell eine Datenträgerverschlüsselung zu erstellen. Stellen Sie sicher, dass der Datenträgerverschlüsselungssatz in dem Zielabonnement erstellt wird, zu dem die VMs migriert werden, und in der Azure-Zielregion für die Migration.
+
+Der Datenträgerverschlüsselungssatz kann für die Verschlüsselung verwalteter Datenträger mit einem kundenseitig verwalteten Schlüssel oder für die doppelte Verschlüsselung sowohl mit einem kundenseitig verwalteten Schlüssel als auch mit einem Plattformschlüssel konfiguriert werden. Wenn Sie die Option zur doppelten Verschlüsselung ruhender Daten verwenden möchten, konfigurieren Sie die Datenträgerverschlüsselung gemäß [dieser](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md) Beschreibung.
+
+Im unten gezeigten Beispiel wurde der Datenträgerverschlüsselungssatz für die Verwendung eines kundenseitig verwalteten Schlüssels konfiguriert.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463721"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224892"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Aktivieren und Verwalten des vorläufigen Löschens für Blobs
 
@@ -40,31 +40,31 @@ Aktivieren Sie das vorläufige Löschen für Blobs in Ihrem Speicherkonto über 
 
 5. Wählen Sie die Schaltfläche **Speichern** aus, um Ihre Datenschutzeinstellungen zu bestätigen.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![Screenshot des Azure-Portals mit ausgewähltem Datenschutzblobdienst.](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 Aktivieren Sie zum Anzeigen von vorläufig gelöschten Blobs das Kontrollkästchen **Gelöschte Blobs anzeigen**.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![Screenshot der Seite mit dem Datenschutzblobdienst mit hervorgehobener Option „Gelöschte Blobs anzeigen“.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 Um vorläufig gelöschte Momentaufnahmen für ein bestimmtes Blob anzuzeigen, wählen Sie das Blob aus, und klicken Sie dann auf **Momentaufnahmen anzeigen**.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![Screenshot der Seite mit dem Datenschutzblobdienst mit hervorgehobener Option „Momentaufnahmen anzeigen“.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 Stellen Sie sicher, dass das Kontrollkästchen **Gelöschte Momentaufnahmen anzeigen** aktiviert ist.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![Screenshot der Seite „Momentaufnahmen anzeigen“ mit hervorgehobener Option „Gelöschte Blobs anzeigen“.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 Beachten Sie beim Klicken auf ein vorläufig gelöschtes Blob oder eine Momentaufnahme die neuen Blobeigenschaften. Sie geben an, wann das Objekt gelöscht wurde und wie viele Tage verbleiben, bis das Blob oder die Blobmomentaufnahme dauerhaft gelöscht wird. Wenn das vorläufig gelöschte Objekt keine Momentaufnahme ist, ist auch eine Option verfügbar, den Löschvorgang rückgängig zu machen.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![Screenshot der Details eines vorläufig gelöschten Objekts.](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 Denken Sie daran, dass bei der Wiederherstellung eines Blob auch alle zugehörige Momentaufnahmen wiederhergestellt werden. Um vorläufig gelöschte Momentaufnahmen für ein aktives Blob wiederherzustellen, klicken Sie auf das Blob, und wählen Sie dann **Alle Momentaufnahmen wiederherstellen** aus.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![Screenshot der Details eines vorläufig gelöschten Blobs.](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 Sobald Sie die Momentaufnahmen eines Blobs wiederhergestellt haben, können Sie auf **Höher stufen** klicken, um eine Momentaufnahme über das Stammblob zu kopieren und so das Blob in der Momentaufnahme wiederherzustellen.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![Screenshot der Seite „Momentaufnahmen anzeigen“ mit hervorgehobener Option „Höherstufen“.](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

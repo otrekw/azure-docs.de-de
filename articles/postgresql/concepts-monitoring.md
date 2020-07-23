@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 89450e5518d854fbc31b43324ecb05f47e1ab5ac
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.date: 07/10/2020
+ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970993"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276633"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
@@ -34,7 +34,7 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |serverlog_storage_usage|Verwendeter Serverprotokollspeicher|Byte|Die Menge des verwendeten Serverprotokollspeichers.|
 |serverlog_storage_limit|Begrenzung des Serverprotokollspeichers|Byte|Der maximale Serverprotokollspeicher für diesen Server.|
 |active_connections|Die aktiven Verbindungen.|Anzahl|Die Anzahl aktiver Verbindungen mit dem Server|
-|connections_failed|Verbindungsfehler|Anzahl|Die Anzahl von Verbindungsfehlern für den Server|
+|connections_failed|Verbindungsfehler|Anzahl|Gibt an, wie viele fehlerhafte Verbindungen hergestellt wurden.|
 |network_bytes_egress|Netzwerk ausgehend|Byte|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen.|
 |network_bytes_ingress|Netzwerk eingehend|Byte|Eingehender Netzwerkdatenverkehr über aktive Verbindungen.|
 |backup_storage_used|Verwendeter Sicherungsspeicher|Byte|Die Menge des verwendeten Sicherungsspeichers.|

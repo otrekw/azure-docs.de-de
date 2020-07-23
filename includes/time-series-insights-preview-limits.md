@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77123249"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277954"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Vergleich der allgemeinen Verfügbarkeit und der Vorschauversion
 
@@ -22,16 +22,16 @@ In der folgenden Tabelle sind einige wesentliche Unterschiede zwischen Azure Tim
 
 | | Allgemein verfügbar | Vorschau |
 | --- | --- | ---|
-| Bürger erster Klasse | Ereigniszentriert | Zeitreihenzentriert |
-| Semantische Argumentation | Low-Level (Verweisdaten) | Allgemein (Modelle) |
-| Datenkontextualisierung | Nicht-Geräteebene | Geräte- und Nicht-Geräteebene |
-| Computelogikspeicher | Nein | In Typvariablen gespeichert, die Teil des Modells sind |
-| Speicher und Zugriffssteuerung | Nein | Über das Modell aktiviert |
-| Aggregationen/Sampling | Nein | Ereignisgewichtet und zeitgewichtet |
-| Signalwiederherstellung | Nein | Interpolation |
-| Produktion abgeleiteter Zeitreihen | Nein | Ja, Zusammenführungen und Joins |
-| Sprachflexibilität | Nicht zusammensetzbar | Zusammensetzbar |
-| Ausdruckssprache | Prädikatszeichenfolge | Zeitreihenausdrücke (Prädikatszeichenfolgen, Werte, Ausdrücke und Funktionen) |
+| **Bürger erster Klasse** | Ereigniszentriert | Zeitreihenzentriert |
+| **Semantische Argumentation** | Low-Level (Verweisdaten) | Allgemein (Modelle) |
+| **Datenkontextualisierung** | Nicht-Geräteebene | Geräte- und Nicht-Geräteebene |
+| **Computelogikspeicher** | Nein | In Typvariablen gespeichert, die Teil des Modells sind |
+| **Speicher und Zugriffssteuerung** | Nein | Über das Modell aktiviert |
+| **Aggregationen/Sampling** | Nein | Ereignisgewichtet und zeitgewichtet |
+| **Signalnachbildung** | Nein | Interpolation |
+| **Produktion abgeleiteter Zeitreihen** | Nein | Ja, Zusammenführungen und Joins |
+| **Sprachflexibilität** | Nicht zusammensetzbar | Zusammensetzbar |
+| **Ausdruckssprache** | Prädikatszeichenfolge | Zeitreihenausdrücke (Prädikatszeichenfolgen, Werte, Ausdrücke und Funktionen) |
 
 ### <a name="property-limits"></a>Eigenschaftsgrenzwerte
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734995"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221390"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Warnungen für Dienstprinzipale in Azure Active Directory Domain Services
 
@@ -38,7 +38,7 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, welcher Dienstprinzi
 
 1. Wählen Sie im Azure-Portal im linken Navigationsmenü die Option **Azure Active Directory** aus.
 1. Wählen Sie **Unternehmensanwendungen**. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option *Alle Anwendungen* und dann **Anwenden** aus.
-1. Suchen Sie nach den einzelnen Anwendungs-IDs. Wenn keine vorhandene Anwendung gefunden wird, führen Sie die *Lösungsschritte* aus, um den Dienstprinzipal zu erstellen oder den Namespace erneut zu registrieren.
+1. Suchen Sie nach den folgenden Anwendungs-IDs. Wenn keine vorhandene Anwendung gefunden wird, führen Sie die *Lösungsschritte* aus, um den Dienstprinzipal zu erstellen oder den Namespace erneut zu registrieren.
 
     | Anwendungs-ID | Lösung |
     | :--- | :--- |
@@ -49,9 +49,9 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, welcher Dienstprinzi
 
 ### <a name="recreate-a-missing-service-principal"></a>Neuerstellen eines fehlenden Dienstprinzipals
 
-Wenn die Anwendungs-ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* in Ihrem Azure AD-Verzeichnis fehlt, verwenden Sie Azure AD PowerShell, um die folgenden Schritte auszuführen. Weitere Informationen finden Sie unter [Installieren von Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
+Wenn die Anwendungs-ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* in Ihrem Azure AD-Verzeichnis fehlt, verwenden Sie Azure AD PowerShell, um die folgenden Schritte auszuführen. Weitere Informationen finden Sie unter [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
 
-1. Installieren Sie das Azure AD PowerShell-Modul, und importieren Sie es wie folgt:
+1. Installieren Sie ggf. das Azure AD PowerShell-Modul, und importieren Sie es wie folgt:
 
     ```powershell
     Install-Module AzureAD
@@ -89,7 +89,7 @@ Azure AD DS synchronisiert automatisch Benutzerkonten und Anmeldeinformationen v
 
 Zum erneuten Erstellen der Azure AD-Anwendung, die für die Synchronisierung von Anmeldeinformationen verwendet wird, führen Sie mithilfe von Azure AD PowerShell die folgenden Schritte aus. Weitere Informationen finden Sie unter [Installieren von Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
 
-1. Installieren Sie das Azure AD PowerShell-Modul, und importieren Sie es wie folgt:
+1. Installieren Sie ggf. das Azure AD PowerShell-Modul, und importieren Sie es wie folgt:
 
     ```powershell
     Install-Module AzureAD

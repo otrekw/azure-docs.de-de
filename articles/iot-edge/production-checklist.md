@@ -4,19 +4,19 @@ description: Lernen Sie den kompletten Lebenszyklus Ihrer Azure IoT Edge-Lösung
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258796"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -38,11 +38,14 @@ Es gibt zahlreiche IoT Edge-Geräte: von einem Raspberry Pi über einen Laptop b
 
 ### <a name="install-production-certificates"></a>Installieren von Produktionszertifikaten
 
-Auf jedem IoT Edge-Gerät in der Produktion muss ein Zertifikat der Zertifizierungsstelle (ZS) des Geräts installiert sein. Dieses Zertifizierungsstellenzertifikat wird in der „config.yaml“-Datei für die IoT Edge-Runtime deklariert. Für Entwicklungs- und Testszenarien erstellt die IoT Edge-Runtime temporäre Zertifikate, wenn in der Datei „config.yaml“ keine Zertifikate deklariert wurden. Allerdings laufen diese temporären Zertifikate nach drei Monaten ab und sind nicht sicher genug für die Produktion.
+Auf jedem IoT Edge-Gerät in der Produktion muss ein Zertifikat der Zertifizierungsstelle (ZS) des Geräts installiert sein. Dieses Zertifizierungsstellenzertifikat wird in der „config.yaml“-Datei für die IoT Edge-Runtime deklariert. Für Entwicklungs- und Testszenarien erstellt die IoT Edge-Runtime temporäre Zertifikate, wenn in der Datei „config.yaml“ keine Zertifikate deklariert wurden. Allerdings laufen diese temporären Zertifikate nach drei Monaten ab und sind nicht sicher genug für die Produktion. In Produktionsszenarien müssen Sie ein eigenes Zertifizierungsstellenzertifikat bereitstellen, das entweder von einer selbstsignierten Zertifizierungsstelle erstellt oder von einer kommerziellen Zertifizierungsstelle erworben wurde.
+
+> [!NOTE]
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
 
 Weitere Informationen zur Rolle des Zertifizierungsstellenzertifikat des Geräts finden Sie unter [Verwenden von Zertifikaten durch Azure IoT Edge](iot-edge-certs.md).
 
-Weitere Informationen zum Installieren von Zertifikaten auf einem IoT Edge-Gerät und zum Verweisen auf diese in der Datei „config.yaml“ erfahren Sie unter [Installieren von Produktionszertifikaten auf einem IoT Edge-Gerät](how-to-manage-device-certificates.md).
+Weitere Informationen zum Installieren von Zertifikaten auf einem IoT Edge-Gerät und zum Verweisen auf diese Zertifikate über die Datei „config.yaml“ erhalten Sie unter [Verwalten von Zertifikaten auf einem IoT Edge-Gerät](how-to-manage-device-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Erstellen eines Geräteverwaltungsplans
 

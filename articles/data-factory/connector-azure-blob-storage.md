@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 2edf2b61f46e3638af3c2291932a6ab1c1cf23e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 8862de0ba36d0731fff0e47ab51f828ff69af201
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100906"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220421"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Azure Data Factory
 
@@ -512,9 +512,11 @@ Beim Kopieren von Dateien von Amazon S3, Azure Blob Storage oder Azure Data Lak
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
 Wenn Sie Daten in Zuordnungsdatenflüsse transformieren, können Sie Dateien aus Azure Blob Storage in den folgenden Formaten lesen und schreiben:
-* [JSON](format-json.md#mapping-data-flow-properties)
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)
+* [Delta](format-delta.md#mapping-data-flow-properties)
+* [Excel](format-excel.md#mapping-data-flow-properties)
+* [JSON](format-json.md#mapping-data-flow-properties)
 * [Parquet](format-parquet.md#mapping-data-flow-properties)
 
 Formatspezifische Einstellungen finden Sie in der Dokumentation für das jeweilige Format. Weitere Informationen finden Sie unter [Quelltransformation in einem Zuordnungsdatenfluss](data-flow-source.md) und [Senkentransformation in einem Zuordnungsdatenfluss](data-flow-sink.md).

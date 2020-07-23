@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610063"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223457"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -181,7 +181,27 @@ Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübe
 |Beim Überprüfen von Bildern werden neu bezeichnete Bilder nicht angezeigt.     |   Wählen Sie die Schaltfläche **Erste** aus, um alle bezeichneten Bilder zu laden. Mit der Schaltfläche **Erste** gelangen Sie zurück an den Anfang der Liste, aber es werden alle bezeichneten Daten geladen.      |
 |Wird während der Erstellung von Bezeichnungen für die Objekterkennung ESC gedrückt, wird in der linken oberen Ecke eine Bezeichnung mit der Größe null erstellt. In diesem Fall ist die Übermittlung von Bezeichnungen nicht erfolgreich.     |   Löschen Sie die Bezeichnung, indem Sie auf das daneben angezeigte Kreuzsymbol klicken.  |
 
-### <a name="data-drift-monitors"></a>Datendriftüberwachung
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> Datendriftüberwachungen
+
+Einschränkungen und bekannte Probleme bei Datendriftüberwachungen:
+
+* Der Zeitbereich für die Analyse von Verlaufsdaten ist auf 31 Intervalle der Häufigkeitseinstellung für die Überwachung beschränkt. 
+* Es besteht eine Beschränkung auf 200 Features, es sei denn, es wurde keine Featureliste angegeben (alle Features werden verwendet).
+* Die Computegröße muss ausreichend sein, um die Daten zu verarbeiten.
+* Stellen Sie sicher, dass Ihr Dataset über Daten innerhalb des Zeitraums verfügt, der durch das Start- und Enddatum für die jeweilige Ausführung der Überwachung festgelegt ist.
+* Datasetmonitore funktionieren nur bei Datensätzen, die mindestens 50 Zeilen enthalten.
+* Spalten bzw. Features im Dataset werden basierend auf den Bedingungen in der unten angegebenen Tabelle als kategorisch oder numerisch klassifiziert. Wenn ein Feature diese Bedingungen nicht erfüllt – beispielsweise bei einer Spalte vom Typ „string“ mit mehr als 100 eindeutigen Werten –, wird es aus dem Datendriftalgorithmus entfernt. In die Profilerstellung wird es aber einbezogen. 
+
+    | Featuretyp | Datentyp | Bedingung | Einschränkungen | 
+    | ------------ | --------- | --------- | ----------- |
+    | Kategorisch | string, bool, int, float | Die Anzahl von eindeutigen Werten im Feature ist kleiner als 100 und geringer als 5 % der Anzahl von Zeilen. | NULL wird als eigene Kategorie behandelt. | 
+    | Numerisch | int, float | Die Werte im Feature weisen einen numerischen Datentyp auf und erfüllen die Bedingung für ein kategorisches Feature nicht. | Das Feature wird entfernt, wenn mehr als 15 % der Werte NULL sind. | 
+
+* Wenn Sie [eine Datendriftüberwachung erstellt haben](how-to-monitor-datasets.md), die Daten auf der Seite **Datasetüberwachungen** in Azure Machine Learning Studio jedoch nicht angezeigt werden, versuchen Sie Folgendes:
+
+    1. Überprüfen Sie, ob Sie oben auf der Seite den richtigen Datumsbereich ausgewählt haben.  
+    1. Wählen Sie auf der Registerkarte **Datasetüberwachungen** den Experimentlink aus, um den Ausführungsstatus zu prüfen.  Dieser Link befindet sich ganz rechts in der Tabelle.
+    1. Wenn die Ausführung erfolgreich abgeschlossen wurde, überprüfen Sie in den Treiberprotokollen, wie viele Metriken generiert wurden oder ob Warnmeldungen vorhanden sind.  Die Treiberprotokolle finden Sie nach dem Klicken auf ein Experiment auf der Registerkarte **Ausgabe + Protokolle**.
 
 * Wenn die SDK-Funktion `backfill()` nicht die erwartete Ausgabe generiert, kann dies auf ein Authentifizierungsproblem zurückzuführen sein.  Verwenden Sie beim Erstellen des Computeziels, das an diese Funktion übergeben wird, nicht `Run.get_context().experiment.workspace.compute_targets`.  Verwenden Sie stattdessen [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py), wie hier zu sehen, um das Computeziel zu erstellen, das Sie an die Funktion `backfill()` übergeben: 
 

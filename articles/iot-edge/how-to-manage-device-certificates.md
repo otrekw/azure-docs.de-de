@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308777"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257828"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Verwalten von Zertifikaten auf einem IoT Edge-Gerät
 
@@ -47,6 +47,9 @@ Sie sollten Ihre eigene Zertifizierungsstelle verwenden, um die folgenden Dateie
 * Privater Schlüssel des Zertifikats der Gerätezertifizierungsstelle
 
 In diesem Artikel ist mit *Stamm-CA* nicht die oberste Zertifizierungsstelle einer Organisation gemeint. Es ist die oberste Zertifizierungsstelle für das IoT Edge-Szenario gemeint, die das IoT Edge-Hub-Modul, die Benutzermodule und alle Downstreamgeräte verwenden, um eine gegenseitige Vertrauensstellung aufzubauen.
+
+> [!NOTE]
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
 
 Ein Beispiel für diese Zertifikate finden Sie in den Skripts zum Erstellen von Demozertifikaten in [Verwalten von Zertifikaten von Testzertifizierungsstellen für Beispiele und Tutorials](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
@@ -120,6 +123,9 @@ certificates:
   trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
   auto_generated_ca_lifetime_days: <value>
 ```
+
+> [!NOTE]
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
 
 Wenn Sie Ihre eigenen gerätebezogenen Zertifizierungsstellenzertifikate bereitgestellt haben, gilt dieser Wert nach wie vor für das workloadbezogene Zertifizierungsstellenzertifikat, sofern der von Ihnen festgelegte Wert für die Gültigkeitsdauer kürzer als die Gültigkeitsdauer des gerätebezogenen Zertifizierungsstellenzertifikats ist.
 

@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131303"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260030"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten
 
@@ -50,6 +50,9 @@ Zum Einrichten der automatischen Bereitstellung mit X.509 benötigen Sie die fol
 * Das Geräteidentitätszertifikat und das zugehörige private Schlüsselzertifikat. Das Geräteidentitätszertifikat wird auf DPS hochgeladen, wenn Sie eine individuelle Registrierung erstellen. Der private Schlüssel wird an die IoT Edge-Runtime übermittelt.
 * Ein vollständiges Kettenzertifikat, das mindestens die Geräteidentität und die Zwischenzertifikate enthalten sollte. Das vollständige Kettenzertifikat wird an die IoT Edge-Runtime übermittelt.
 * Ein Zwischenzertifikat oder ein Zertifikat der Stammzertifizierungsstelle aus der Zertifikatvertrauenskette. Dieses Zertifikat wird auf DPS hochgeladen, wenn Sie eine Gruppenregistrierung erstellen.
+
+> [!NOTE]
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
 
 ### <a name="use-test-certificates"></a>Verwenden von Testzertifikaten
 

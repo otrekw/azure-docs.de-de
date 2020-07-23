@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fd83cd164415f45929049541a8731f80a4ba146d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774045"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273505"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-Einrichtungen, Gelände und physische Sicherheit
 In diesem Artikel wird beschrieben, welche Maßnahmen Microsoft zur Sicherung der Azure-Infrastruktur ergreift.
@@ -30,7 +30,7 @@ Azure besteht aus einer [global verteilten Rechenzentrumsinfrastruktur](https://
 
 Die Infrastruktur bringt Anwendungen und Benutzer weltweit näher zusammen, stellt dabei die Datenresidenz sicher und bietet den Kunden umfassende Optionen hinsichtlich Compliance und Ausfallsicherheit. Azure hat 58 Regionen weltweit und ist in 140 Ländern/Regionen verfügbar.
 
-Als Region wird eine Reihe von Rechenzentren bezeichnet, die über ein großes und robustes Netzwerk miteinander verbunden sind. Das Netzwerk umfasst standardmäßig Inhaltsverteilung, Lastenausgleich, Redundanz und Verschlüsselung. Azure verfügt über mehr globale Regionen als jeder andere Cloudanbieter und bietet Ihnen damit die Flexibilität, Ihre Anwendungen genau dort bereitzustellen, wo Sie diese benötigen.
+Als Region wird eine Reihe von Rechenzentren bezeichnet, die über ein großes und robustes Netzwerk miteinander verbunden sind. Standardmäßig sind Inhaltsverteilung, Lastenausgleich, Redundanz und [Verschlüsselung der Sicherungsschicht](encryption-overview.md#encryption-of-data-in-transit) für den gesamten Azure-Datenverkehr innerhalb einer Region oder für Ortswechsel zwischen Regionen im Netzwerk enthalten. Azure verfügt über mehr globale Regionen als jeder andere Cloudanbieter und bietet Ihnen damit die Flexibilität, Ihre Anwendungen genau dort bereitzustellen, wo Sie diese benötigen.
 
 Azure-Regionen sind in Geografien unterteilt. Eine Azure-Geografie sorgt dafür, dass Anforderungen an Datenresidenz, Datenhoheit, Compliance und Ausfallsicherheit innerhalb geografischer Grenzen erfüllt werden.
 
@@ -70,7 +70,7 @@ Microsoft verwendet bewährte Verfahren und eine Zurücksetzungslösung, die [NI
 ## <a name="equipment-disposal"></a>Entsorgung von Ausrüstung
 Am Ende der Nutzungsdauer eines Systems befolgen die für den Betrieb zuständigen Microsoft-Mitarbeiter strenge Verfahren zum Umgang mit Daten und zur Entsorgung von Hardware, um sicherzustellen, dass Hardware, die eventuell Ihre Daten enthält, in keinem Fall nicht vertrauenswürdigen Dritten zugänglich gemacht wird. Wir verwenden ein sicheres Löschverfahren für Festplatten, die dieses Verfahren unterstützen. Bei Festplatten, die nicht zurückgesetzt werden können, verwenden wir ein Verfahren, das die Platte zerstört und eine Wiederherstellung der Daten unmöglich macht. Mögliche Zerstörungsverfahren sind Zersetzen, Schreddern, Pulverisieren oder Verbrennen. Wir bestimmen die Art der Entsorgung anhand des Ressourcentyps. Wir bewahren die Dokumentation der Zerstörung auf. Alle Azure-Dienste setzen anerkannte Dienste zur Speicherung und Entsorgung von Medien ein.
 
-## <a name="compliance"></a>Kompatibilität
+## <a name="compliance"></a>Compliance
 Wir haben die Azure-Infrastruktur zur Erfüllung einer Vielzahl von internationalen und branchenspezifischen Compliancestandards wie ISO 27001, HIPAA, FedRAMP, SOC 1 und SOC 2 konzipiert und verwalten sie entsprechend. Wir erfüllen auch länder- bzw. regionsspezifische Standards, z.B. Australia IRAP, UK G-Cloud und Singapore MTCS. In rigorosen Audits durch Drittanbieter – zum Beispiel durch das British Standards Institute – wird die Einhaltung der von diesen Standards geforderten strengen Sicherheitskontrollen überprüft.
 
 Eine vollständige Liste der von Azure eingehaltenen Compliancestandards finden Sie unter [Complianceangebote](https://www.microsoft.com/trustcenter/compliance/complianceofferings).

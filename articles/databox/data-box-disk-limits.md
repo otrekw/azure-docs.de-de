@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203514"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -60,11 +60,11 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 
 ## <a name="azure-storage-account-size-limits"></a>Größenbeschränkungen für das Azure-Speicherkonto
 
-Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto kopiert werden. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. Die neuesten Informationen zu diesen Einschränkungen finden Sie unter [Skalierbarkeitsziele für Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) und [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts).
+Dies sind die Grenzwerte für die Datenmenge, die in ein Speicherkonto kopiert werden kann. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. 
 
-| Größe der in das Azure-Speicherkonto kopierten Daten                      | Standardlimit          |
-|---------------------------------------------------------------------|------------------------|
-| Blockblob und Seitenblob                                            | 500TB pro Speicherkonto. <br> Dies schließt Daten aus allen Quellen einschließlich Data Box-Datenträger ein.|
+| Datentyp             | Standardlimit          |
+|--------------------------|------------------------|
+| Blockblob, Seitenblob    | Aktuelle Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Blob Storage](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [Skalierbarkeitsziele für Standardspeicherkonten](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts) und [Skalierungsziele für Dateifreigaben und Dateien](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> Die Grenzwerte schließen Daten aus allen Quellen ein, einschließlich Data Box Disk.|
 
 
 ## <a name="azure-object-size-limits"></a>Größenbeschränkungen für das Azure-Objekt

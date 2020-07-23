@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601383"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206148"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
@@ -413,6 +413,8 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Eine VM mit „geschachtelten Bereitstellungspunkten“, also mehrere Bereitstellungspunkte in einem einzelnen Pfad (z. B. „/1stmountpoint/data/2stmountpoint“).
 - Eine VM mit einem Datenlaufwerk, das über einem Betriebssystemordner eingebunden ist
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
+- Anwenden der [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) auf mit ADE verschlüsselte VMs und umgekehrt.
+- Migrieren einer mit ADE verschlüsselten VM zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

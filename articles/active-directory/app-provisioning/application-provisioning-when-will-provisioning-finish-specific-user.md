@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782023"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203009"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Überprüfen des Status der Benutzerbereitstellung
 
@@ -77,12 +77,11 @@ Die folgende Tabelle fasst die Synchronisierungsdauer für gängige Bereitstellu
 | Alle Benutzer in Azure AD synchronisieren|  < 1.000  | < 30 Minuten | < 30 Minuten |
 | Alle Benutzer in Azure AD synchronisieren | 1\.000 - 10.000  | 43 - 86 Minuten | < 30 Minuten |
 
-
 Nur für die Konfiguration **Nur zugewiesene Benutzer und Gruppen synchronisieren** können Sie die folgenden Formeln verwenden, um den ungefähren Mindest- und Höchstwert für die erwartete Dauer des **Startzyklus** zu bestimmen:
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- Mindestanzahl von Minuten = 0,01 × [Anzahl zugewiesener Benutzer, Gruppen und Gruppenmitglieder]
+- Höchstzahl von Minuten = 0,08 × [Anzahl zugewiesener Benutzer, Gruppen und Gruppenmitglieder]
+
 Zusammenfassung der Faktoren, die sich auf die Dauer bis zum Abschluss eines **Startzyklus** auswirken:
 
 - Die Gesamtanzahl von Benutzern und Gruppen im Bereitstellungsumfang.

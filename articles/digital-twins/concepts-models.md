@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392300"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258286"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -109,7 +109,7 @@ Hier ist ein Beispiel eines typischen Modells, das als DTDL-Schnittstelle geschr
 
 Die Felder des Modells sind wie folgt:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | `@id` | Ein Bezeichner für das Modell. Muss das Format `dtmi:<domain>:<unique model identifier>;<model version number>` haben. |
 | `@type` | Gibt die Art der beschriebenen Informationen an. Bei einer Schnittstelle ist der Typ *Schnittstelle*. |
@@ -197,9 +197,14 @@ Die erweiternde Schnittstelle kann keine Definitionen der übergeordneten Schnit
 
 ## <a name="validating-models"></a>Validieren von Modellen
 
-Es steht ein Beispiel für die Überprüfung von Modelldokumenten zur Verfügung, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek und ist sprachunabhängig. Sie finden es hier: [DTDL-Validierungssteuerelement (Beispiel)](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+> [!TIP]
+> Es wird empfohlen, Ihre Modelle offline zu validieren, bevor Sie sie in Ihre Azure Digital Twins-Instanz hochladen.
 
-Weitere Informationen zur Parserbibliothek, einschließlich eines Beispiels zur direkten Verwendung, finden Sie unter [Gewusst wie: Analysieren und Validieren von Modellen](how-to-use-parser.md).
+Für die Validierung von Modelldokumenten steht ein sprachunabhängiges Beispiel zur Verfügung, um sicherzustellen, dass die DTDL gültig ist. Sie finden es an der folgenden Stelle: [**DTDL-Validierungssteuerelement (Beispiel)** ](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+
+Das Beispiel für ein DTDL-Validierungssteuerelement basiert auf einer .NET-DTDL-Parserbibliothek, die auf NuGet als clientseitige Bibliothek verfügbar ist: [**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). Sie können die Bibliothek auch direkt verwenden, um eine eigene Validierungslösung zu entwerfen. Stellen Sie bei Verwendung der Parserbibliothek sicher, dass die verwendete Version mit der Version kompatibel ist, die von Azure Digital Twins ausgeführt wird. Während der Vorschauphase ist dies die Version *3.7.0*.
+
+Weitere Informationen zur Parserbibliothek, einschließlich Verwendungsbeispielen, finden Sie unter [Vorgehensweise: Analysieren und Validieren von Modellen](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

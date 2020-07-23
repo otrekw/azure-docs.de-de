@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696982"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276429"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Erste Schritte mit dem Azure-Metrik-Explorer
 
@@ -39,7 +39,7 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
     > ![Metrik auswählen](./media/metrics-getting-started/metric-picker.png)
 
-4. Optional können Sie die Metrikaggregation ändern, wenn Sie beispielsweise möchten, dass Ihr Diagramm nur die minimalen, maximalen oder durchschnittlichen Werte der Metrik anzeigt.
+4. Optional können Sie die [Metrikaggregation ändern](metrics-charts.md#changing-aggregation), wenn Sie beispielsweise möchten, dass Ihr Diagramm nur die minimalen, maximalen oder durchschnittlichen Werte der Metrik anzeigt.
 
 > [!NOTE]
 > Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie diese Schritte, wenn mehrere Metriken im gleichen Diagramm angezeigt werden sollen. Wenn mehrere Diagramme in einer Ansicht angezeigt werden sollen, klicken Sie oben auf **Diagramm hinzufügen**.
