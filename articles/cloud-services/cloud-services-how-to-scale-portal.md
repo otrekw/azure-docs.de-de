@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75360836"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223685"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurieren der automatischen Skalierung für einen Clouddienst im Portal
 
@@ -41,12 +41,12 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 Nachdem Sie Ihren Clouddienst ausgewählt haben, sollte das Blatt für den Clouddienst angezeigt werden.
 
 1. Wählen Sie auf dem Blatt für den Clouddienst auf der Kachel **Rollen und Instanzen** den Namen des Clouddiensts aus.   
-   **WICHTIG**: Sie müssen auf die Clouddienstrolle klicken, nicht auf die Rolleninstanz unterhalb der Rolle.
+   **WICHTIG:** Sie müssen auf die Clouddienstrolle klicken, nicht auf die Rolleninstanz unterhalb der Rolle.
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![Screenshot der Kachel „Rollen und Instanzen“ mit der rot umrandeten Option „WorkerRoleWithSBQueue1“](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Wählen Sie die Kachel **Skalieren** aus.
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![Screenshot der Seite „Vorgänge“ mit der rot umrandeten Kachel „Skalieren“](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatisches Skalieren
 Sie können die Skalierungseinstellungen für eine Rolle **manuell** oder **automatisch** konfigurieren. Bei der manuellen Konfiguration legen Sie die absolute Anzahl von Instanzen fest. Bei der automatischen Konfiguration können Sie jedoch Regeln festlegen, die steuern, wie und in welchem Umfang skaliert werden soll.
@@ -89,7 +89,7 @@ Regeln werden einem Profil hinzugefügt und stellen eine Bedingung dar, die die 
 
 Der Trigger der Regel basiert auf einer Metrik des Clouddiensts (CPU-Auslastung, Datenträgeraktivität oder Netzwerkaktivität), der Sie einen bedingten Wert hinzufügen können. Darüber hinaus kann der Trigger auch auf einer Nachrichtenwarteschlange oder der Metrik einer anderen mit Ihrem Abonnement verknüpften Azure-Ressource basieren.
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![Screenshot des Dialogfelds „Regel“ mit der rot umrandeten Option „Metrikname“](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 Nachdem Sie die Regel konfiguriert haben, wählen Sie unten auf dem Regelblatt die Schaltfläche **OK** aus.
 

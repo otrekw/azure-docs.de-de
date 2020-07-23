@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300925"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275715"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -137,7 +137,7 @@ AKS-Agent-Knoten werden als standardmäßige Azure-VMs abgerechnet. Wenn Sie als
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kann ich meinen Cluster zwischen Azure-Mandanten verschieben/migrieren?
 
-Der Befehl `az aks update-credentials` kann verwendet werden, um einen AKS-Cluster zwischen Azure-Mandanten zu verschieben. Folgen Sie den Anweisungen unter [Aktualisieren oder Erstellen eines Dienstprinzipals](https://docs.microsoft.com/azure/aks/update-credentials), und [aktualisieren Sie den AKS-Cluster mit neuen Anmeldeinformationen](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
+Der Befehl `az aks update-credentials` kann verwendet werden, um einen AKS-Cluster zwischen Azure-Mandanten zu verschieben. Folgen Sie den Anweisungen unter [Aktualisieren oder Erstellen eines Dienstprinzipals](./update-credentials.md), und [aktualisieren Sie den AKS-Cluster mit neuen Anmeldeinformationen](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Kann ich meinen Cluster zwischen Abonnements verschieben/migrieren?
 
@@ -146,6 +146,10 @@ Das Verschieben von Clustern zwischen Abonnements wird derzeit nicht unterstütz
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Kann ich meine AKS-Cluster aus dem aktuellen Azure-Abonnement in ein anderes verschieben? 
 
 Das Verschieben Ihres AKS-Clusters und der zugehörigen Ressourcen zwischen Azure-Abonnements wird nicht unterstützt.
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>Kann ich meine AKS-Cluster- oder AKS-Infrastrukturressourcen in andere Ressourcengruppen verschieben oder sie umbenennen?
+
+Das Verschieben oder Umbenennen Ihres AKS-Clusters und der zugehörigen Ressourcen wird nicht unterstützt.
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>Warum dauert das Löschen meines Clusters so lange? 
 
@@ -165,11 +169,11 @@ Dies wird in der Regel dadurch verursacht, dass eine oder mehrere Netzwerksicher
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Ich habe ein Upgrade ausgeführt, aber jetzt befinden sich die Pods in Absturzschleifen, und Bereitschaftstests schlagen fehl.
 
-Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Informationen finden Sie unter: [AKS-Dienstprinzipal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) und [Aktualisieren der AKS-Anmeldeinformationen](https://docs.microsoft.com/azure/aks/update-credentials).
+Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Informationen finden Sie unter: [AKS-Dienstprinzipal](./kubernetes-service-principal.md) und [Aktualisieren der AKS-Anmeldeinformationen](./update-credentials.md).
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Mein Cluster hat funktioniert, kann aber plötzlich keine LoadBalancer bereitstellen, keine PVCs mounten usw. 
 
-Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Informationen finden Sie unter: [AKS-Dienstprinzipal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) und [Aktualisieren der AKS-Anmeldeinformationen](https://docs.microsoft.com/azure/aks/update-credentials).
+Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Informationen finden Sie unter: [AKS-Dienstprinzipal](./kubernetes-service-principal.md) und [Aktualisieren der AKS-Anmeldeinformationen](./update-credentials.md).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Kann ich die VM-Skalierungsgruppen-APIs für eine manuelle Skalierung verwenden?
 
@@ -190,9 +194,9 @@ Nein. AKS ist ein verwalteter Dienst, und die Bearbeitung der IaaS-Ressourcen wi
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

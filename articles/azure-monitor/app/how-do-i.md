@@ -3,12 +3,12 @@ title: Gewusst wie ... in Azure Application Insights | Microsoft-Dokumentation
 description: Häufig gestellte Fragen in Application Insights
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110231"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224467"
 ---
 # <a name="how-do-i--in-application-insights"></a>Gewusst wie – in Application Insights
 ## <a name="get-an-email-when-"></a>Wie erhalte ich eine E-Mail-Nachricht, wenn...
@@ -18,7 +18,7 @@ Richten Sie einen [Webtest zur Verfügbarkeit](../../azure-monitor/app/monitor-w
 ### <a name="email-if-my-site-is-overloaded"></a>E-Mail, wenn meine Website überlastet ist
 Richten Sie eine [Warnung](../../azure-monitor/platform/alerts-log.md) zur **Serverantwortzeit**ein. Geeignet ist in der Regel ein Schwellenwert zwischen 1 und 2 Sekunden.
 
-![](./media/how-do-i/030-server.png)
+![Screenshot, der zeigt, wie eine Warnung für die Serverantwortzeit festgelegt wird](./media/how-do-i/030-server.png)
 
 Auch die Rückgabe von Fehlercodes kann ein Hinweis auf die Belastung Ihrer App sein. Richten Sie eine Warnung über **Anforderungsfehler**ein.
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 Erstellen Sie ein Diagramm im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) , um Ihre Warnung anzuzeigen:
 
-![](./media/how-do-i/010-alarm.png)
+![Screenshot, der zeigt, wie Sie im Metrik-Explorer ein Diagramm zum Anzeigen Ihrer Warnung erstellen](./media/how-do-i/010-alarm.png)
 
 Richten Sie jetzt eine Warnung ein, die ausgelöst wird, wenn die Metrik für kurze Zeit einen mittleren Wert überschreitet:
 
-![](./media/how-do-i/020-threshold.png)
+![Screenshot, der zeigt, wie Sie festlegen, dass eine Warnung ausgelöst wird, wenn die Metrik für kurze Zeit einen mittleren Wert überschreitet](./media/how-do-i/020-threshold.png)
 
 Legen Sie den Durchschnittszeitraum auf den Mindestwert fest.
 
@@ -106,11 +106,11 @@ Sie können anschließend folgende Aktionen durchführen:
 
 * Suchen nach bestimmten Benutzer-IDs
 
-![](./media/how-do-i/110-search.png)
+![Screenshot, der die Optionen für das Suchen nach bestimmten Benutzer-IDs zeigt](./media/how-do-i/110-search.png)
 
 * Filtern von Metriken für anonyme oder authentifizierte Benutzer
 
-![](./media/how-do-i/115-metrics.png)
+![Screenshot, der das Filtern von Metriken für anonyme oder authentifizierte Benutzer zeigt](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>Ändern von Eigenschaftennamen oder -werten
 Erstellen Sie einen [Filter](../../azure-monitor/app/api-filtering-sampling.md#filtering). So können Sie Telemetrie ändern oder filtern, bevor sie von Ihrer App aus an Application Insights gesendet wird.

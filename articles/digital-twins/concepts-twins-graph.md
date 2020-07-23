@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142400"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258219"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -21,11 +21,27 @@ In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung dur
 > [!TIP]
 > „Azure Digital Twins“ ist der Name dieses Azure-Diensts. „Digitale Zwillinge“ oder einfach „Zwillinge“ bezieht sich einzelne Zwillingsknoten auf Ihrer Instanz des Diensts.
 
-## <a name="creating-digital-twins"></a>Erstellen von digitalen Zwillingen
+## <a name="digital-twins"></a>Digital Twins
 
 Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [Konzepte: Benutzerdefinierte Modelle](concepts-models.md).
 
 Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ *Floor* (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ *Floor* mit dem Namen *GroundFloor*, einen anderen mit dem Namen *Floor2* usw.). 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>Beziehungen: ein Graph für digitale Zwillinge
+
+Zwillinge werden anhand ihrer Beziehungen zu einem Zwillingsgraphen vereint. Die Beziehungen, die ein Zwilling aufweisen kann, werden als Teil des Modells definiert.  
+
+Beispielsweise kann für das Modell *Floor* (Etage) eine Beziehung vom Typ *contains* (enthält) definiert werden, die für Zwillinge vom Typ *Room* (Zimmer) bestimmt ist. Mit dieser Definition können Sie mit Azure Digital Twins *contains*-Beziehungen von allen *Floor*-Zwillingen zu allen *Room*-Zwillingen erstellen (einschließlich Zwillingen mit Untertypen von *Room*). 
+
+Das Ergebnis dieses Prozesses ist eine Gruppe mit Knoten (die digitalen Zwillinge), die über Edges (die Beziehungen) in einem Graphen verbunden sind.
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>Erstellen mit den APIs
+
+In diesem Abschnitt wird gezeigt, wie das Erstellen digitaler Zwillinge und Beziehungen über eine Clientanwendung aussieht. Es sind .NET-Codebeispiele enthalten, die die [DigitalTwins-APIs](how-to-use-apis-sdks.md) nutzen, um zusätzlichen Kontext darüber bereitzustellen, was innerhalb der verschiedenen Konzepte passiert.
+
+### <a name="create-digital-twins"></a>Erstellen digitaler Zwillinge
 
 Unten ist ein Ausschnitt des Clientcodes angegeben, in dem die [DigitalTwins-APIs](how-to-use-apis-sdks.md) zum Instanziieren eines Zwillings vom Typ *Room* (Zimmer) verwendet wird.
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>Beziehungen: Erstellen eines Graphen für digitale Zwillinge
-
-Zwillinge werden anhand ihrer Beziehungen zu einem Zwillingsgraphen vereint. Die Beziehungen, die ein Zwilling aufweisen kann, werden als Teil des Modells definiert.  
-
-Beispielsweise kann für das Modell *Floor* (Etage) eine Beziehung vom Typ *contains* (enthält) definiert werden, die für Zwillinge vom Typ *Room* (Zimmer) bestimmt ist. Mit dieser Definition können Sie mit Azure Digital Twins *contains*-Beziehungen von allen *Floor*-Zwillingen zu allen *Room*-Zwillingen erstellen (einschließlich Zwillingen mit Untertypen von *Room*). 
+### <a name="create-relationships"></a>Erstellen von Beziehungen
 
 Hier ist ein Beispiel für Clientcode angegeben, in dem die [DigitalTwins-APIs](how-to-use-apis-sdks.md) verwendet werden, um eine Beziehung zwischen einem digitalen Zwilling vom Typ *Floor* (Etage) mit dem Namen *GroundFloor* und einem digitalen Zwilling vom Typ *Room* (Zimmer) mit dem Namen *Cafe* zu erstellen.
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-Das Ergebnis dieses Prozesses ist eine Gruppe mit Knoten (die digitalen Zwillinge), die über Edges (die Beziehungen) in einem Graphen verbunden sind.
 
 ## <a name="json-representations-of-graph-elements"></a>JSON-Darstellungen von Graphelementen
 

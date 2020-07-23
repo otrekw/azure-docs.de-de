@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012975"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276531"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -51,11 +51,11 @@ Bei der clientseitigen Verschlüsselung hat der Clouddienstanbieter keinen Zugri
 
 Die drei Modelle für die serverseitige Verschlüsselung bieten unterschiedliche Merkmale der Schlüsselverwaltung, die Sie je nach Ihren Anforderungen auswählen können:
 
-- **Dienstverwaltete Schlüssel:** bieten eine Kombination aus Kontrolle und Benutzerfreundlichkeit mit geringem Mehraufwand
+- **Vom Dienst verwaltete Schlüssel**: Bieten eine Kombination aus Kontrolle und Benutzerfreundlichkeit mit geringem Mehraufwand.
 
-- **Kundenverwaltete Schlüssel:** bieten Ihnen die Kontrolle über die Schlüssel, einschließlich der Möglichkeit, die BYOK-Funktion (Bring your Own Key) zu verwenden oder neue Schlüssel zu generieren
+- **Vom Kunden verwaltete Schlüssel**: Bieten Ihnen die Kontrolle über die Schlüssel, einschließlich der Möglichkeit, die BYOK-Funktion (Bring your Own Key) zu verwenden oder neue Schlüssel zu generieren.
 
-- **Dienstverwaltete Schlüssel auf vom Kunden gesteuerter Hardware:** ermöglichen es Ihnen, Schlüssel in Ihrem proprietären Repository zu verwalten, das sich außerhalb des Einflussbereichs von Microsoft befindet. Dies wird als „Host Your Own Key“ (HYOK) bezeichnet. Die Konfiguration ist jedoch komplex, und die meisten Azure-Dienste unterstützen dieses Modell nicht.
+- **Vom Dienst verwaltete Schlüssel auf vom Kunden gesteuerter Hardware**: Ermöglichen Ihnen, Schlüssel in Ihrem eigenen Repository zu verwalten, das sich außerhalb des Einflussbereichs von Microsoft befindet. Dies wird als „Host Your Own Key“ (HYOK) bezeichnet. Die Konfiguration ist jedoch komplex, und die meisten Azure-Dienste unterstützen dieses Modell nicht.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -79,7 +79,7 @@ Weitere Informationen zum Verwenden und Herunterladen des NuGet-Pakets „Azure 
 
 Bei Verwendung der clientseitigen Verschlüsselung mit Key Vault werden Ihre Daten mit einem einmaligen symmetrischen Inhaltsverschlüsselungsschlüssel (CEK, Content Encryption Key) verschlüsselt, der vom Azure Storage Client SDK generiert wird. Der CEK wird mit einem Schlüsselverschlüsselungsschlüssel (KEK, Key Encryption Key) verschlüsselt, bei dem es sich entweder um ein symmetrisches oder ein asymmetrisches Schlüsselpaar handeln kann. Sie können ihn lokal verwalten oder in Key Vault speichern. Die verschlüsselten Daten werden dann in Azure Storage hochgeladen.
 
-Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
+Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Schließlich können Sie auch die Azure Storage-Clientbibliothek für Java verwenden, um die clientseitige Verschlüsselung vor dem Hochladen von Daten in Azure Storage und die Entschlüsselung der Daten beim Herunterladen auf den Client durchzuführen. Um die Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt diese Bibliothek zudem die Integration in [Key Vault](https://azure.microsoft.com/services/key-vault/).
 
@@ -117,9 +117,13 @@ Drei Arten von Schlüsseln werden beim Verschlüsseln und Entschlüsseln von Dat
 
 Azure bietet viele Verfahren zum Schutz von Daten beim Übertragen zwischen verschiedenen Speicherorten.
 
-### <a name="tlsssl-encryption-in-azure"></a>TLS/SSL-Verschlüsselung in Azure
+### <a name="data-link-layer-encryption-in-azure"></a>Verschlüsselung in der Sicherungsschicht in Azure
 
-Microsoft verwendet das [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)-Protokoll (TLS) zum Schutz von Daten bei der Übertragung zwischen den Clouddiensten und Kunden. Die Microsoft-Rechenzentren verhandeln eine TLS-Verbindung mit Clientsystemen, die eine Verbindung mit Azure-Diensten herstellen. TLS bietet strenge Authentifizierung, Datenschutz von Nachrichten und Integrität (ermöglicht die Erkennung von Manipulation, Abfangen und Fälschung von Nachrichten), Interoperabilität, Algorithmusflexibilität sowie einfache Bereitstellung und Verwendung.
+Immer wenn Datenverkehr von Azure-Kunden zwischen Rechenzentren fließt (außerhalb von physischen Grenzen, die nicht von Microsoft (oder im Auftrag von Microsoft) kontrolliert werden), wird eine Verschlüsselungsmethode für die Sicherungsschicht mit dem [Standard IEEE 802.1AE MAC Security](https://1.ieee802.org/security/802-1ae/) (auch MACsec genannt) von Punkt zu Punkt auf der zugrunde liegenden Netzwerkhardware angewendet.  Die Pakete werden auf den Geräten vor dem Senden verschlüsselt und entschlüsselt. Dadurch werden physische Man-in-the-Middle-Angriffe und Spionage-/Abhörangriffe verhindert.  Da diese Technologie in die Netzwerkhardware selbst integriert ist, bietet sie Verschlüsselung auf der Netzwerkhardware mit der Leitungsrate ohne eine messbar höhere Verbindungslatenz.  Diese MACsec-Verschlüsselung ist standardmäßig für den gesamten Azure-Datenverkehr aktiviert, der innerhalb einer Region oder zwischen Regionen fließt, und der Kunde muss nichts tun, um sie zu aktivieren. 
+
+### <a name="tls-encryption-in-azure"></a>TLS-Verschlüsselung in Azure
+
+Microsoft gibt Kunden die Möglichkeit, das [Transport Layer Security-Protokoll](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) zum Schutz von Daten bei der Übertragung zwischen den Clouddiensten und Kunden zu verwenden. Die Microsoft-Rechenzentren verhandeln eine TLS-Verbindung mit Clientsystemen, die eine Verbindung mit Azure-Diensten herstellen. TLS bietet strenge Authentifizierung, Datenschutz von Nachrichten und Integrität (ermöglicht die Erkennung von Manipulation, Abfangen und Fälschung von Nachrichten), Interoperabilität, Algorithmusflexibilität sowie einfache Bereitstellung und Verwendung.
 
 [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) schützt Verbindungen zwischen den Clientsystemen von Kunden und den Clouddiensten von Microsoft durch eindeutige Schlüssel. Die Verbindungen verwenden zudem RSA-basierte Verschlüsselungsschlüssellängen von 2.048 Bit. Diese Kombination erschwert das Abfangen von Daten während der Übertragung und den Zugriff darauf.
 
@@ -141,7 +145,7 @@ Nachdem die SMB-Verschlüsselung für eine Freigabe oder einen Server aktiviert 
 
 ## <a name="in-transit-encryption-in-vms"></a>Verschlüsselung während der Übertragung zwischen virtuellen Computern
 
-Daten, die auf, von und zwischen virtuellen Computern unter Windows übertragen werden, werden je nach Art der Verbindung auf unterschiedliche Weise verschlüsselt.
+Daten, die auf, von und zwischen virtuellen Computern unter Windows übertragen werden, können je nach Art der Verbindung auf unterschiedliche Weise verschlüsselt werden.
 
 ### <a name="rdp-sessions"></a>RDP-Sitzungen
 

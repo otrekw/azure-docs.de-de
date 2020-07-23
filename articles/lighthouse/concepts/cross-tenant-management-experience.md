@@ -3,16 +3,16 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402371"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135486"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
-Als Dienstanbieter können Sie mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) Azure-Ressourcen für mehrere Kunden in Ihrem eigenen Mandanten im [Azure-Portal](https://portal.azure.com) verwalten. Die meisten Aufgaben und Dienste können auf delegierten Azure-Ressourcen über verwaltete Mandanten ausgeführt werden. In diesem Artikel werden einige der erweiterten Szenarien beschrieben, in denen die delegierte Azure-Ressourcenverwaltung effektiv sein kann.
+Als Dienstanbieter können Sie mit [Azure Lighthouse](../overview.md) Ressourcen für mehrere Kunden in Ihrem eigenen Mandanten im [Azure-Portal](https://portal.azure.com) verwalten. Die meisten Aufgaben und Dienste können mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) auf delegierten Azure-Ressourcen über verwaltete Mandanten ausgeführt werden.
 
 > [!NOTE]
 > Die delegierte Azure-Ressourcenverwaltung kann auch [in einem Unternehmen verwendet werden, das über mehrere eigene Mandanten verfügt](enterprise.md), um die mandantenübergreifende Verwaltung zu vereinfachen.
@@ -23,9 +23,9 @@ Ein Azure Active Directory-Mandant (Azure AD) ist eine Darstellung einer Organis
 
 Um Azure-Ressourcen für einen Kunden zu verwalten, müssten sich Dienstanbieter in der Regel mit einem Konto beim Azure-Portal anmelden, das dem Mandanten dieses Kunden zugeordnet ist, wofür ein Administrator im Mandanten des Kunden benötigt wird, um Benutzerkonten für den Dienstanbieter zu erstellen und zu verwalten.
 
-Mit der delegierten Azure-Ressourcenverwaltung gibt der Onboardingprozess Benutzer im Mandanten des Dienstanbieters an, die auf Abonnements, Ressourcengruppen und Ressourcen im Mandanten des Kunden zugreifen und diese verwalten können sollen. Diese Benutzer können sich dann beim Azure-Portal mit ihren eigenen Anmeldeinformationen anmelden. Innerhalb des Azure-Portals können Sie Ressourcen verwalten, die zu allen Kunden gehören, auf die sie Zugriff haben. Hierzu können Sie die Seite [Meine Kunden](../how-to/view-manage-customers.md) im Azure-Portal besuchen oder direkt im Kontext des Abonnements dieses Kunden arbeiten, entweder im Azure-Portal oder mittels APIs.
+Mit Azure Lighthouse gibt das Onboardingverfahren Benutzer im Mandanten des Dienstanbieters an, die auf Abonnements, Ressourcengruppen und Ressourcen im Mandanten des Kunden zugreifen und diese verwalten können sollen. Diese Benutzer können sich dann beim Azure-Portal mit ihren eigenen Anmeldeinformationen anmelden. Innerhalb des Azure-Portals können Sie Ressourcen verwalten, die zu allen Kunden gehören, auf die sie Zugriff haben. Hierzu können Sie die Seite [Meine Kunden](../how-to/view-manage-customers.md) im Azure-Portal besuchen oder direkt im Kontext des Abonnements dieses Kunden arbeiten, entweder im Azure-Portal oder mittels APIs.
 
-Die delegierte Azure-Ressourcenverwaltung ermöglicht größere Flexibilität bei der Verwaltung von Ressourcen für mehrere Kunden, ohne sich bei verschiedenen Konten in unterschiedlichen Mandanten anmelden zu müssen. So kann ein Dienstanbieter beispielsweise zwei Kunden mit unterschiedlichen Zuständigkeiten und Zugriffsebenen haben. Mithilfe der delegierten Azure-Ressourcenverwaltung können sich autorisierte Benutzer beim Mandanten des Dienstanbieters anmelden, um auf diese Ressourcen zuzugreifen.
+Azure Lighthouse ermöglicht größere Flexibilität bei der Verwaltung von Ressourcen für mehrere Kunden, ohne sich bei verschiedenen Konten in unterschiedlichen Mandanten anmelden zu müssen. So kann ein Dienstanbieter beispielsweise zwei Kunden mit unterschiedlichen Zuständigkeiten und Zugriffsebenen haben. Mithilfe von Azure Lighthouse können sich autorisierte Benutzer beim Mandanten des Dienstanbieters anmelden, um auf diese Ressourcen zuzugreifen.
 
 ![Über einen Dienstanbietermandanten verwaltete Kundenressourcen](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -33,22 +33,22 @@ Die delegierte Azure-Ressourcenverwaltung ermöglicht größere Flexibilität be
 
 Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder mithilfe von APIs und Verwaltungstools (z. B. Azure-Befehlszeilenschnittstelle und Azure PowerShell) durchführen. Alle vorhandenen APIs können für die Arbeit mit delegierten Ressourcen verwendet werden, solange die Funktionalität für mandantenübergreifende Verwaltung unterstützt wird und der Benutzer über die entsprechenden Berechtigungen verfügt.
 
-Das Azure PowerShell-Cmdlet [Get-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) zeigt die **tenantID** (Mandanten-ID) für jedes Abonnement, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zum Mandanten Ihres Dienstanbieters oder zu dem eines verwalteten Kunden gehört.
+Das Azure PowerShell-Cmdlet [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) zeigt die **tenantID** (Mandanten-ID) für jedes Abonnement, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zum Mandanten Ihres Dienstanbieters oder zu dem eines verwalteten Kunden gehört.
 
-Ebenso zeigen Azure CLI-Befehle wie [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) die Attribute **homeTenantId** und **managedByTenants** an.
+Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) die Attribute **homeTenantId** und **managedByTenants** an.
 
 > [!TIP]
 > Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
 
-Wir bieten außerdem APIs, die speziell für delegierte Aufgaben der Azure-Ressourcenverwaltung ausgelegt sind. Weitere Informationen finden Sie im Abschnitt **Referenz**.
+Wir bieten außerdem APIs, die speziell für Azure Lighthouse-Aufgaben ausgelegt sind. Weitere Informationen finden Sie im Abschnitt **Referenz**.
 
 ## <a name="enhanced-services-and-scenarios"></a>Verbesserte Dienste und Szenarien
 
-Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwaltete Mandanten ausgeführt werden. Im Folgenden finden Sie einige wichtige Szenarien, in denen die mandantenübergreifende Verwaltung effektiv sein kann.
+Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwaltete Mandanten ausgeführt werden. Im Folgenden finden Sie einige wichtige Szenarien, in denen die mandantenübergreifende Verwaltung besonders effektiv sein kann.
 
 [Azure Arc für Server (Vorschauversion):](../../azure-arc/servers/overview.md)
 
-- [Verbinden von Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/quickstart-onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
+- [Verbinden von Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
 - Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
 
 [Azure Automation](../../automation/index.yml):
@@ -60,6 +60,10 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Sichern und Wiederherstellen von Kundendaten in Kundenmandanten
 - Verwenden des [Backup-Explorers](../../backup/monitor-azure-backup-with-backup-explorer.md) zum Anzeigen von Betriebsinformationen zu Sicherungselementen (einschließlich noch nicht für die Sicherung konfigurierten Azure-Ressourcen) und Überwachungsinformationen (Aufträge und Warnungen) zu delegierten Abonnements. Der Backup-Explorer ist zurzeit nur für Azure-VM-Daten verfügbar.
 - Verwenden Sie übergreifende [Sicherungsberichte](../../backup/configure-reports.md) für delegierte Abonnements, um historische Trends nachzuverfolgen, den Sicherungsspeicherverbrauch zu analysieren und Sicherungen/Wiederherstellungen zu überwachen.
+
+[Azure-Kostenverwaltung und -Abrechnung](../../cost-management-billing/index.yml):
+
+- Über den verwaltenden Mandanten können CSP-Partner für Kunden, die dem Azure-Plan unterliegen, Verbrauchskosten vor Steuern anzeigen, verwalten und analysieren. (Käufe werden hierbei nicht berücksichtigt.) Die Kosten basieren auf Einzelhandelspreisen sowie auf dem Azure RBAC-Zugriff des Partners für das Abonnement des Kunden.
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
@@ -143,7 +147,6 @@ Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 - Rollenzuweisungen müssen [integrierte Rollen](../../role-based-access-control/built-in-roles.md) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [DataActions](../../role-based-access-control/role-definitions.md#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
 - Sie können Abonnements, die Azure Databricks verwenden, zwar integrieren, Benutzer im Verwaltungsmandanten können jedoch derzeit keine Azure Databricks-Arbeitsbereiche für ein delegiertes Abonnement starten.
 - Sie können zwar Abonnements und Ressourcengruppen mit Ressourcensperren in die delegierte Azure-Ressourcenverwaltung integrieren, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](../../role-based-access-control/deny-assignments.md), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
-- Benutzer im Verwaltungsmandanten verfügen über keinen Zugriff auf Abrechnungsinformationen für delegierte Kundenabonnements, selbst wenn sie über eine integrierte Rolle verfügen, die diesen Zugriff normalerweise gewährt. Das liegt daran, dass der Zugriff auf Abrechnungsinformationen zusätzliche Schritte erfordert, die derzeit nur für Benutzer im gleichen Mandanten unterstützt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

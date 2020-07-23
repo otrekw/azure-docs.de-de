@@ -1,5 +1,5 @@
 ---
-title: Kopieren eines Images aus einem anderen Katalog
+title: Kopieren eines Images aus einer anderen Galerie mithilfe von PowerShell
 description: Kopieren eines Images aus einer anderen Galerie mithilfe von Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793942"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221220"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Kopieren eines Images aus einem anderen Katalog
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopieren eines Images aus einer anderen Galerie mithilfe von PowerShell
 
 Wenn Sie in Ihrer Organisation über mehrere Kataloge verfügen, können Sie Images aus in anderen Katalogen gespeicherten Images erstellen. Beispielsweise können Sie über einen Entwicklungs- und Testkatalog verfügen, um neue Images zu erstellen und zu testen. Wenn diese für die Verwendung in der Produktion bereit sind, können Sie sie mithilfe dieses Beispiels in einen Produktionskatalog kopieren. Sie können auch ein Image aus einem Image in einem anderen Katalog erstellen, indem Sie die [Azure CLI](image-version-another-gallery-cli.md) verwenden.
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Sie müssen warten, bis die Imageversion vollständig erstellt und repliziert wurde, bevor Sie dieses verwaltete Image verwenden können, um eine weitere Imageversion zu erstellen.
 >
-> Sie können Ihr Image auch in Premium-Speicher durch Hinzufügen von `-StorageAccountType Premium_LRS` oder in [zonenredundantem Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) speichern, indem Sie `-StorageAccountType Standard_ZRS` hinzufügen, wenn Sie die Imageversion erstellen.
+> Sie können Ihr Image auch in einem Premium-Speicher durch Hinzufügen von `-StorageAccountType Premium_LRS` oder in einem [zonenredundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) speichern, indem Sie `-StorageAccountType Standard_ZRS` hinzufügen, wenn Sie die Imageversion erstellen.
 >
 
 
@@ -165,3 +165,5 @@ $job.State
 Erstellen Sie eine VM aus einer [generalisierten](vm-generalized-image-version-powershell.md) oder einer [spezialisierten](vm-specialized-image-version-powershell.md) Imageversion.
 
 [Azure Image Builder (Vorschauversion)](./linux/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](./linux/image-builder-gallery-update-image-version.md) verwenden. 
+
+Weitere Informationen zur Bereitstellung von Erwerbsplaninformationen finden Sie unter [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](marketplace-images.md).

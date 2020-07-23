@@ -10,22 +10,22 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 5/13/2020
-ms.openlocfilehash: fd552e3236732fd37b2fc5d23dd234f0a87f0f27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038101"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206947"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bei der serverlosen Computeebene handelt es sich um eine Computeebene für Singletons in Azure SQL-Datenbank, bei denen auf Workloadbedarf basierende Computeressourcen automatisch skaliert werden und die Nutzung sekundengenau abrechnet wird. Wenn nur der verwendete Speicher in Rechnung gestellt wird, hält die serverlose Computeebene außerdem Datenbanken während inaktiver Zeiträume automatisch an und startet diese wieder, wenn es wieder zu Aktivität kommt.
+„Serverless“ ist ein Computetarif für Einzeldatenbanken in Azure SQL-Datenbank, bei dem Computeressourcen basierend auf dem Workloadbedarf automatisch skaliert werden und die Nutzung dieser Ressourcen sekundengenau abrechnet wird. Wenn nur der verwendete Speicher in Rechnung gestellt wird, hält die serverlose Computeebene außerdem Datenbanken während inaktiver Zeiträume automatisch an und startet diese wieder, wenn es wieder zu Aktivität kommt.
 
 ## <a name="serverless-compute-tier"></a>Serverlose Computeebene
 
-Die serverlose Computeebene für Singletons in Azure SQL-Datenbank wird durch einen automatischen Computeskalierungsbereich und eine Verzögerung durch automatisches Anhalten parametrisiert.  Die Konfiguration dieser Parameter beeinflusst die Leistung und Computekosten der Datenbank.
+Die serverlose Computeebene für Singletons in Azure SQL-Datenbank wird durch einen automatischen Computeskalierungsbereich und eine Verzögerung durch automatisches Anhalten parametrisiert. Die Konfiguration dieser Parameter beeinflusst die Leistung und die Computekosten der Datenbank.
 
 ![Abrechnung – serverlos](./media/serverless-tier-overview/serverless-billing.png)
 
@@ -66,7 +66,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen der
 
 | | **Serverloses Computing**: | **Bereitgestelltes Computing** |
 |:---|:---|:---|
-|**Datenbanknutzungsmuster**| Wechselnde, unvorhersehbare Nutzung mit niedrigerer durchschnittlicher Computenutzung im Zeitverlauf. |  Regelmäßigere Nutzungsmuster mit höherer durchschnittlicher Computenutzung im Zeitverlauf oder mehrere Datenbanken, die Pools für elastische Datenbanken verwenden.|
+|**Datenbanknutzungsmuster**| Wechselnde, unvorhersehbare Nutzung mit niedrigerer durchschnittlicher Computenutzung im Zeitverlauf. | Regelmäßigere Nutzungsmuster mit höherer durchschnittlicher Computenutzung im Zeitverlauf oder mehrere Datenbanken, die Pools für elastische Datenbanken verwenden.|
 | **Aufwand bei der Leistungsverwaltung** |Geringer|Höher|
 |**Compute-Skalierung**|Automatic|Manuell|
 |**Compute-Reaktionsfähigkeit**|Geringer nach Inaktivitätszeiträumen|Unmittelbar|
@@ -88,9 +88,9 @@ Arbeitsspeicher für serverlose Datenbanken wird häufiger als bei bereitgestell
 
 #### <a name="cache-reclamation"></a>Freigabe von Cache
 
-Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQL-Cache von einer serverlosen Datenbank freigegeben, wenn eine geringe CPU- oder Cacheauslastung vorliegt.
+Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQL-Cache von einer serverlosen Datenbank freigegeben, wenn eine geringe CPU-Auslastung vorliegt oder der Cache kaum aktiv genutzt wird.  Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.
 
-- Die Cacheauslastung wird als niedrig angesehen, wenn die Gesamtgröße der zuletzt verwendeten Cacheeinträge für einen bestimmten Zeitraum unter einen Schwellenwert fällt.
+- Die aktive Cachenutzung gilt als niedrig, wenn die Gesamtgröße der zuletzt verwendeten Cacheeinträge für einen bestimmten Zeitraum unter einen Schwellenwert fällt.
 - Beim Auslösen der Cachefreigabe wird die Größe des Zielspeichers inkrementell auf einen Bruchteil der vorherigen Größe reduziert, und der Freigabevorgang wird nur fortgesetzt, wenn die Auslastung niedrig bleibt.
 - Während der Cachefreigabe entspricht die Richtlinie für die Auswahl der zu entfernenden Cacheeinträge der Auswahlrichtlinie für bereitgestellte Computedatenbanken bei hoher Speicherauslastung.
 - Der Cache wird niemals auf eine Größe verkleinert, die unter der Mindestgröße für den Arbeitsspeicher liegt. Dies wird über die Mindestanzahl von virtuellen Kernen definiert und kann entsprechend konfiguriert werden.
@@ -112,7 +112,7 @@ Das automatische Anhalten wird ausgelöst, wenn die folgenden Bedingungen für d
 
 Es ist eine Option verfügbar, mit der das automatische Anhalten ggf. deaktiviert werden kann.
 
-Das automatische Anhalten wird von den folgenden Features nicht unterstützt.  Das heißt, bei Verwendung eines der folgenden Features bleibt die Datenbank online, ungeachtet der Dauer der Inaktivität der Datenbank:
+Die folgenden Features unterstützen nicht das automatische Anhalten, sondern nur die automatische Skalierung.  Das heißt, bei Verwendung eines der folgenden Features bleibt die Datenbank online, ungeachtet der Dauer der Inaktivität der Datenbank:
 
 - Georeplikation (aktive Georeplikation und Gruppen für automatisches Failover).
 - Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
@@ -161,19 +161,8 @@ Falls die [vom Kunden verwaltete transparente Datenverschlüsselung](transparent
 
 Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene gilt dasselbe Muster wie beim Erstellen einer neuen Datenbank in der bereitgestellten Computeebene. Dieser Vorgang umfasst die folgenden zwei Schritte:
 
-1. Geben Sie das Dienstziel an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von virtuellen Kernen vor. Die folgende Tabelle enthält die verschiedenen Optionen für Dienstziele:
+1. Geben Sie das Dienstziel an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von virtuellen Kernen vor. Weitere Informationen zu Optionen für Dienstziele finden Sie unter [Limits für serverlose Ressourcen](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
-   |Name des Dienstziels|Dienstebene|Hardwaregeneration|Max. virtuelle Kerne|
-   |---|---|---|---|
-   |GP_S_Gen5_1|Universell|Gen5|1|
-   |GP_S_Gen5_2|Universell|Gen5|2|
-   |GP_S_Gen5_4|Universell|Gen5|4|
-   |GP_S_Gen5_6|Universell|Gen5|6|
-   |GP_S_Gen5_8|Universell|Gen5|8|
-   |GP_S_Gen5_10|Universell|Gen5|10|
-   |GP_S_Gen5_12|Universell|Gen5|12|
-   |GP_S_Gen5_14|Universell|Gen5|14|
-   |GP_S_Gen5_16|Universell|Gen5|16|
 
 2. Geben Sie optional die Mindestanzahl virtueller Kerne und die Verzögerung für das automatische Anhalten an, um deren Standardwerte zu ändern. In der folgenden Tabelle werden die verfügbaren Werte für diese Parameter aufgeführt.
 
@@ -183,11 +172,11 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
    |Verzögerung für das automatische Anhalten|Minimum: 60 Minuten (1 Stunde)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 10 Minuten<br>Automatisches Anhalten deaktivieren: -1|60 Minuten|
 
 
-### <a name="create-new-database-in-serverless-compute-tier"></a>Erstellen einer neuen Datenbank in der serverlosen Computeebene 
+### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Erstellen einer neuen Datenbank in der serverlosen Computeebene
 
 Die folgenden Beispiele erstellen eine neue Datenbank in der serverlosen Computeebene.
 
-#### <a name="use-azure-portal"></a>Verwenden des Azure-Portals
+#### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
 Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](single-database-create-quickstart.md).
 
@@ -199,7 +188,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+#### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -218,7 +207,7 @@ CREATE DATABASE testdb
 
 Weitere Informationen finden Sie unter [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
 
-### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Verschieben einer Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene
+### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Verschieben einer Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene
 
 In den folgenden Beispielen wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben.
 
@@ -231,7 +220,7 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+#### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
@@ -250,7 +239,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
-### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Verschieben einer Datenbank aus der serverlosen Computeebene in die bereitgestellte Computeebene
+### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Verschieben einer Datenbank aus der serverlosen Computeebene in die bereitgestellte Computeebene
 
 Eine serverlose Datenbank kann auf die gleiche Weise in eine bereitgestellte Computeebene verschoben werden wie eine bereitgestellte Datenbank in eine serverlose Computeebene.
 
@@ -260,7 +249,7 @@ Eine serverlose Datenbank kann auf die gleiche Weise in eine bereitgestellte Com
 
 Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den PowerShell-Befehl [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) mit den Argumenten `MaxVcore`, `MinVcore` und `AutoPauseDelayInMinutes` aus.
 
-### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
 Führen Sie zum Ändern der Ober- oder Untergrenze für V-Kerne sowie der Verzögerung für das automatische Anhalten den Azure CLI-Befehl [az sql db update](/cli/azure/sql/db#az-sql-db-update) mit den Argumenten `capacity`, `min-capacity` und `auto-pause-delay` aus.
 
@@ -307,7 +296,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+#### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
@@ -336,6 +325,19 @@ Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 
 Diese Menge wird pro Sekunde berechnet und über eine Minute aggregiert.
 
+### <a name="minimum-compute-bill"></a>Mindestrechnungsbetrag für Computeressourcen
+
+Wurde eine serverlose Datenbank angehalten, so beläuft sich der Rechnungsbetrag für Computeressourcen auf 0 (null).  Wurde sie nicht angehalten, so entspricht der Mindestrechnungsbetrag für Computeressourcen mindestens dem Betrag für die Anzahl von virtuellen Kernen basierend auf max. (min. virtuelle Kerne, min. Arbeitsspeicher GB * 1/3).
+
+Beispiele:
+
+- Angenommen, eine serverlose Datenbank wird nicht angehalten und ist so konfiguriert, dass die maximale Anzahl von virtuellen Kernen 8 und die minimale Anzahl von virtuellen Kernen 1 ist, was einem Mindestarbeitsspeicher von 3,0 GB entspricht.  Der Mindestrechnungsbetrag für Computeressourcen basiert dann auf max. (1 virtueller Kern, 3,0 GB * 1 virtueller Kern / 3 GB) = 1 virtueller Kern.
+- Angenommen, eine serverlose Datenbank wird nicht angehalten und ist so konfiguriert, dass die maximale Anzahl von virtuellen Kernen 4 und die minimale Anzahl von virtuellen Kernen 0,5 ist, was einem Mindestarbeitsspeicher von 2,1 GB entspricht.  Der Mindestrechnungsbetrag für Computeressourcen basiert dann auf max. (0,5 virtuelle Kerne, 2,1 GB * 1 virtueller Kern / 3 GB) = 0,7 virtuelle Kerne.
+
+Der [Preisrechner für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/calculator/?service=sql-database) für den Tarif Serverless kann verwendet werden, um den minimal konfigurierbaren Arbeitsspeicher zu bestimmen basierend auf der konfigurierten maximalen und minimalen Anzahl von virtuellen Kernen.  Wenn die konfigurierte Mindestanzahl von virtuellen Kernen größer als 0,5 ist, ist der Mindestrechnungsbetrag für Computeressourcen in der Regel unabhängig vom konfigurierten minimalen Arbeitsspeicher und basiert nur auf der konfigurierten minimalen Anzahl von virtuellen Kernen.
+
+### <a name="example-scenario"></a>Beispielszenario
+
 Erwägen Sie die Verwendung einer serverlosen Datenbank, für die für virtuelle Kerne ein Mindestwert von 1 und ein Höchstwert von 4 konfiguriert ist.  Dies entspricht ungefähr einem Arbeitsspeicher von mindestens 3 GB und maximal 12 GB.  Angenommen, die Verzögerung für automatisches Anhalten ist auf sechs Stunden festgelegt, und die Datenbankworkload ist während der ersten beiden Stunden eines Zeitraums von 24 Stunden aktiv und ansonsten inaktiv.    
 
 In diesem Fall werden für die Datenbank Compute- und Speicherkosten während der ersten acht Stunden berechnet.  Die Datenbank ist zwar nach der zweiten Stunde inaktiv, aber für die nachfolgenden sechs Stunden werden basierend auf der minimalen bereitgestellten Computeleistung trotzdem noch Computekosten berechnet, während die Datenbank online ist.  Während die Datenbank angehalten ist, werden in der restlichen Zeit des 24-Stunden-Zeitraums nur Kosten für den Speicher berechnet.
@@ -358,7 +360,7 @@ Rabatte für Azure-Hybridvorteil (Azure Hybrid Benefit, AHB) und reservierte Kap
 
 ## <a name="available-regions"></a>Verfügbare Regionen
 
-Die serverlose Computeebene ist weltweit verfügbar, mit Ausnahme der folgenden Regionen: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „Vereinigtes Königreich, Norden“, „Vereinigtes Königreich, Süden 2“, „USA, Westen-Mitte“ und „US Government, Mitte (Iowa)“.
+Die serverlose Computeebene ist weltweit verfügbar, mit Ausnahme der folgenden Regionen: „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“ und „US Gov Iowa“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

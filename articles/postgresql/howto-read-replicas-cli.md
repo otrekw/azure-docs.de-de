@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: b8da326ea48133d2029f385fc55450c00aecf656
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: de74258cadcdf81da211561a84ff06927830e690
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106610"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274406"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
 
@@ -84,9 +84,9 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 
 Wenn Sie den Parameter `azure.replication_support` auf einem universellen oder arbeitsspeicheroptimierten Masterserver nicht auf **REPLICA** festgelegt und den Server nicht neu gestartet haben, erhalten Sie einen Fehler. Führen Sie diese beiden Schritte aus, bevor Sie ein Replikat erstellen.
 
-Ein Replikat wird mit den gleichen Compute- und Speichereinstellungen erstellt wie der Master. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
-
 > [!IMPORTANT]
+> Lesen Sie den Abschnitt zu [Überlegungen zur Übersicht über Lesereplikate](concepts-read-replicas.md#considerations).
+>
 > Bevor eine Masterservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
 
 ### <a name="list-replicas"></a>Auflisten von Replikaten

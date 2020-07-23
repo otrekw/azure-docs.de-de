@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535705"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220719"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -78,11 +78,11 @@ Preisinformationen zu Azure App Service-Domänen finden Sie auf der Seite [App S
 ### <a name="launch-buy-domains"></a>Starten Sie „Domänen kaufen“
 Klicken Sie auf der Registerkarte **App Services** auf den Namen der App, wählen Sie **Einstellungen** aus, und klicken Sie anschließend auf **Benutzerdefinierte Domänen**.
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Screenshot mit hervorgehobener Option „Benutzerdefinierte Domänen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Klicken Sie auf der Seite **Benutzerdefinierte Domänen** auf **Domäne erwerben**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![Screenshot mit hervorgehobener Option „Domäne erwerben“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > Wenn der Abschnitt **App Service-Domänen** nicht angezeigt wird, müssen Sie das Ausgabenlimit für Ihr Azure-Konto entfernen (siehe [Voraussetzungen](#prerequisites)).
@@ -93,7 +93,7 @@ Klicken Sie auf der Seite **Benutzerdefinierte Domänen** auf **Domäne erwerben
 
 Tippen Sie den Domänennamen auf der Seite **App Service Domain** (App Service-Domäne) in das Suchfeld **Search for domain** (Domäne suchen) ein und drücken Sie `Enter`. Die vorgeschlagenen verfügbaren Domänen werden direkt unter dem Textfeld angezeigt. Klicken Sie mindestens eine Domäne an, die Sie kaufen möchten.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![Screenshot des Suchfelds „Nach Domäne suchen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > Die folgenden [Domänen der obersten Ebene](https://wikipedia.org/wiki/Top-level_domain) werden von App Service-Domänen unterstützt: _com_, _net_, _co.uk_, _org_, _nl_, _in_, _biz_, _org.uk_ und _co.in_.
@@ -122,19 +122,19 @@ Klicken Sie auf **Legal Terms** (Rechtliche Bedingungen), um die Bedingungen und
 
 Klicken Sie auf der Seite **App Service Domain** (App Service-Domäne) auf **OK**. Während der Vorgang ausgeführt wird, sehen Sie folgende Benachrichtigungen:
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![Screenshot der Nachricht „Überprüfung wird ausgeführt“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![Screenshot der Benachrichtigung darüber, dass der Kauf erfolgreich war](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>Testen des Hostnamens
 
 Wenn Sie Ihrer App Standardhostnamen zugewiesen haben, wird Ihnen für jeden ausgewählten Hostnamen eine Erfolgsbenachrichtigung angezeigt.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Screenshot der Benachrichtigung über Erfolg für die ausgewählten Hostnamen](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 Auf der Seite **Benutzerdefinierte Domänen** werden Ihnen die ausgewählten Hostnamen im Abschnitt **Benutzerdefinierte Hostnamen** angezeigt.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![Screenshot der ausgewählten Hostnamen im Bereich „Benutzerdefinierte Hostnamen“ auf der Seite „Benutzerdefinierte Domänen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > Die Bezeichnung **Nicht sicher** für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist und dass für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne abhängig vom Browser eine Warnung oder ein Fehler angezeigt wird. Weitere Informationen zum Konfigurieren einer TLS-/SSL-Bindung finden Sie unter [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service](configure-ssl-bindings.md).
@@ -154,11 +154,11 @@ In der App Service-Domäne können Sie auch jeder anderen App einen Hostnamen zu
 ### <a name="launch-add-hostname"></a>Starten Sie „Hostname hinzufügen“
 Wählen Sie auf der Seite **App Services** (App-Dienste) den Namen Ihrer App aus, der Sie Hostnamen zuweisen möchten, klicken Sie auf **Settings** (Einstellungen), und dann auf **Custom domains** (Benutzerdefinierte Domänen).
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Screenshot mit hervorgehobener Option „Benutzerdefinierte Domänen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Stellen Sie sicher, dass Ihre erworbene Domäne im Abschnitt**App Service Domains** (App Service-Domänen) aufgelistet ist, aber klicken Sie sie nicht an. 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![Screenshot Ihrer erworbenen Domäne im App Service-Bereich zu Domänen](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > Alle App Service-Domänen, die zum selben Abonnement gehören, werden auf der Seite **Custom domains** (Benutzerdefinierte Domänen) in der App angezeigt. Wenn Ihre Domäne sich im Abonnement der App befindet, jedoch nicht auf der Seite **Custom domains** (Benutzerdefinierte Domänen) der App angezeigt wird, öffnen Sie die Seite **Custom domains** (Benutzerdefinierte Domänen) erneut oder aktualisieren Sie die Webseite. Überprüfen Sie auch die Anzeige der Benachrichtigungsglocke am oberen Rand des Azure-Portals auf Fortschritts- oder Erstellungsfehler.
@@ -180,14 +180,14 @@ Wählen Sie **Hostnamen hinzufügen**.
 
 Wenn der Vorgang abgeschlossen ist, sehen Sie eine Erfolgsmeldung für den zugeordneten Hostnamen.  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Screenshot der Benachrichtigung über Erfolg für den zugewiesenen Hostnamen](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>Schließen Sie „Hostname hinzufügen“
 Auf der Seite **Add hostname** (Hostname hinzufügen) können Sie Ihrer App bei Bedarf einen beliebigen anderen Hostnamen zuweisen. Schließen Sie die Seite **Add hostname** (Hostname hinzufügen), wenn Sie fertig sind.
 
 Der oder die neu zugewiesenen Hostname(n) sollten nun auf der Seite **Custom Domains** (Benutzerdefinierte Domänen) in Ihrer App angezeigt werden.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![Screenshot der neu zugewiesenen Hostnamen auf der Seite „Benutzerdefinierte Domänen“ in Ihrer App](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>Testen des Hostnamens
 
@@ -201,15 +201,15 @@ Wenn Sie die automatische Verlängerung deaktivieren oder die Domäne manuell ve
 
 Klicken Sie auf der Registerkarte **App Services** auf den Namen der App, wählen Sie **Einstellungen** aus, und klicken Sie anschließend auf **Benutzerdefinierte Domänen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Screenshot mit hervorgehobener Option „Benutzerdefinierte Domänen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Wählen Sie im Abschnitt **App Service-Domänen** die Domäne aus, die Sie konfigurieren möchten.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![Screenshot Ihrer erworbenen Domäne im App Service-Bereich zu Domänen](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 Klicken Sie im linken Navigationsbereich der Domäne auf **Domänenverlängerung**. Wenn die Domäne nicht automatisch verlängert werden soll, klicken Sie auf **Aus** und dann auf **Speichern**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![Screenshot der Option zum automatischen Verlängern Ihrer Domäne](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 Wenn Sie Ihre Domäne manuell verlängern möchten, klicken Sie auf **Domäne verlängern**. Diese Schaltfläche wird aber erst [90 Tage vor Ablauf der Domäne](#when-domain-expires) aktiviert.
 
@@ -237,7 +237,7 @@ In Azure werden DNS-Datensätze für eine App Service-Domäne mithilfe von [Azur
 
 Klicken Sie im linken Menü des Azure-Portals auf **Alle Dienste** > **App Service-Domänen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Screenshot, der zeigt, wo auf App Service-Domänen zugegriffen werden kann](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Wählen Sie die Domäne, die verwaltet werden soll. 
 
@@ -245,7 +245,7 @@ Wählen Sie die Domäne, die verwaltet werden soll.
 
 Klicken Sie im linken Menü der Domäne auf **DNS zone** (DNS-Zone).
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![Screenshot, der zeigt, wo Sie die DNS-Zone auswählen können](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 Diese Aktion öffnet die Seite [DNS zone](../dns/dns-zones-records.md) (DNS-Zone) Ihrer App Service-Domäne in Azure DNS. Informationen zum Bearbeiten von DNS-Datensätzen finden Sie unter [How to manage DNS Zones in the Azure portal (Vorgehensweise: Verwalten von DNS-Zonen im Azure-Portal)](../dns/dns-operations-dnszones-portal.md).
 
@@ -257,7 +257,7 @@ Nach dem Kauf der App Service-Domäne haben Sie fünf Tage Zeit, um Ihren Kauf z
 
 Klicken Sie im linken Menü des Azure-Portals auf **Alle Dienste** > **App Service-Domänen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Screenshot, der zeigt, wo auf App Service-Domänen zugegriffen werden kann](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Wählen Sie die Domäne aus, die Sie stornieren oder löschen möchten. 
 
@@ -265,13 +265,13 @@ Wählen Sie die Domäne aus, die Sie stornieren oder löschen möchten.
 
 Klicken Sie im linken Menü der Domäne auf **Hostname bindings** (Hostnamenbindungen). Die Hostnamenbindungen aus allen Azure-Diensten werden hier aufgelistet.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![Screenshot der Seite „Hostnamenbindungen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 Die App Service-Domäne kann nicht gelöscht werden, bis alle Hostnamenbindungen gelöscht wurden.
 
 Löschen Sie jede Hostnamenbindung, indem Sie auf **...**  > **Delete** (Löschen) klicken. Nachdem alle Bindungen gelöscht worden sind, klicken Sie auf **Save** (Speichern).
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![Screenshot, der zeigt, wo die Hostnamenbindungen gelöscht werden können](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>Stornieren oder Löschen
 
@@ -279,7 +279,7 @@ Klicken Sie im linken Menü der Domäne auf **Overview** (Übersicht).
 
 Wenn die Kündigungsfrist für die erworbene Domäne nicht abgelaufen ist, klicken Sie auf **Cancel purchase** (Kauf stornieren). Andernfalls sehen Sie stattdessen die Schaltfläche **Delete** (Löschen). Klicken Sie zum Löschen der Domäne ohne Rückerstattung auf **Delete** (Löschen).
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![Screenshot, der zeigt, wo eine erworbene Domäne gelöscht oder der Kauf abgebrochen werden kann](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 Klicken Sie auf **Ja**, um den Vorgang zu bestätigen.
 

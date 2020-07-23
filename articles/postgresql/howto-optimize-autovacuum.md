@@ -5,18 +5,20 @@ author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116352"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274508"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimieren von Autovacuum auf einem Azure Database for PostgreSQL-Einzelserver
+
 In diesem Artikel wird beschrieben, wie Sie Autovacuum auf einem Azure Database for PostgreSQL-Server effizient optimieren können.
 
 ## <a name="overview-of-autovacuum"></a>Übersicht über Autovacuum
+
 PostgreSQL verwendet für eine bessere Datenbankparallelität MVCC (Multiversion Concurrency Control). Jede Aktualisierung führt zu einer Einfügung und einer Löschung, und jede Löschung führt dazu, dass die entsprechenden Zeilen vorläufig zum Löschen markiert werden. Die vorläufige Markierung sorgt dafür, dass inaktive Tupel identifiziert und später endgültig gelöscht werden. Um diese Aufgaben auszuführen, führt PostgreSQL einen Vacuum-Auftrag aus.
 
 Ein Vacuum-Auftrag kann manuell oder automatisch ausgelöst werden. Wenn in der Datenbank viele Aktualisierungs- oder Löschvorgänge stattfinden, sind viele inaktive Tupel vorhanden. Wenn sich die Datenbank im Leerlauf befindet, sind weniger inaktive Tupel vorhanden. Bei einer starken Auslastung der Datenbank müssen häufiger Vacuum-Aufträge ausgeführt werden. Das *manuelle* Ausführen von Vacuum-Aufträgen ist daher unpraktisch.
@@ -36,6 +38,7 @@ Wenn Sie Vacuum nicht hin und wieder ausführen, können sich inaktive Tupel ans
 - Steigende E/A
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>Überwachen der Überfrachtung mit Autovacuum-Abfragen
+
 Die folgende Beispielabfrage ist dazu konzipiert, die Anzahl inaktiver und aktiver Tupel in einer Tabelle mit dem Namen „XYZ“ zu identifizieren:
 
 ```sql
@@ -43,7 +46,9 @@ SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRa
 ```
 
 ## <a name="autovacuum-configurations"></a>Autovacuum-Konfigurationen
+
 Die Konfigurationsparameter zur Steuerung von Autovacuum werden durch zwei zentrale Fragen beeinflusst:
+
 - Wann sollte Autovacuum starten?
 - Wie viel sollte nach dem Start bereinigt werden?
 
@@ -55,10 +60,10 @@ autovacuum_vacuum_threshold|Gibt die minimale Anzahl von aktualisierten oder gel
 autovacuum_vacuum_scale_factor|Gibt einen Anteil der Tabellengröße an, der „autovacuum_vacuum_threshold“ zur Entscheidung über die Auslösung eines Vacuum-Vorgangs hinzugefügt wird. Der Standardwert ist 0,2 (20% der Tabellengröße). Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|0.2
 autovacuum_vacuum_cost_limit|Gibt den Kostengrenzwert an, der bei automatischen Vacuum-Vorgängen verwendet wird. Wenn –1 angegeben ist (der Standard), wird der normale vacuum_cost_limit-Wert verwendet. Falls mehr als ein Worker vorhanden ist, wird der Wert zwischen den ausgeführten Autovacuum-Workern proportional aufgeteilt. Die Summe der Grenzwerte für die einzelnen Worker überschreitet nicht den Wert dieser Variable. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|-1
 autovacuum_vacuum_cost_delay|Gibt den Kostenverzögerungswert an, der bei automatischen Vacuum-Vorgängen verwendet wird. Wenn –1 angegeben ist, wird der normale vacuum_cost_delay-Wert verwendet. Der Standardwert sind 20 Millisekunden. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|20 ms
-autovacuum_nap_time|Gibt die minimale Verzögerung zwischen Autovacuum-Ausführungen in einer bestimmten Datenbank an. In jeder Runde untersucht der Daemon die Datenbank und gibt nach Bedarf VACUUM- und ANALYZE-Befehle für Tabellen in dieser Datenbank aus. Die Verzögerung wird in Sekunden gemessen, und der Standardwert ist 1 Minute. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest.|15 s
-autovacuum_max_workers|Gibt die maximale Anzahl von Autovacuum-Prozessen (mit Ausnahme des Autovacuum-Startprogramms) an, die parallel ausgeführt werden können. Der Standardwert ist 3. Legen Sie diesen Parameter nur bei einem Serverstart fest.|3
+autovacuum_naptime | Gibt die minimale Verzögerung zwischen Autovacuum-Ausführungen in einer bestimmten Datenbank an. In jeder Runde untersucht der Daemon die Datenbank und gibt nach Bedarf VACUUM- und ANALYZE-Befehle für Tabellen in dieser Datenbank aus. Die Verzögerung wird in Sekunden gemessen. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest.| 15 s
+autovacuum_max_workers | Gibt die maximale Anzahl von Autovacuum-Prozessen (mit Ausnahme des Autovacuum-Startprogramms) an, die parallel ausgeführt werden können. Der Standardwert ist 3. Legen Sie diesen Parameter nur bei einem Serverstart fest.|3
 
-Um die Einstellungen für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter. 
+Um die Einstellungen für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.
 
 ## <a name="autovacuum-cost"></a>Autovacuum-Kosten
 
@@ -82,12 +87,14 @@ Der Standardskalierungsfaktor von 20 Prozent funktioniert gut für Tabellen mit 
 Mit PostgreSQL können Sie diese Parameter auf Tabellenebene oder Instanzebene festlegen. In Azure Database for PostgreSQL können diese Parameter derzeit nur auf Tabellenebene festgelegt werden.
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>Schätzen der Kosten für Autovacuum
+
 Das Ausführen von Autovacuum ist „kostenaufwendig“, und die Laufzeit von Vacuum-Vorgängen kann mit Parametern gesteuert werden. Die folgenden Parameter helfen dabei, die Kosten für die Ausführung von Vacuum zu schätzen:
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-Der Vacuum-Prozess liest physische Seiten und sucht nach inaktiven Tupeln. Für jede Seite in „shared_buffers“ wird vom Kostenwert 1 (vacuum_cost_page_hit) ausgegangen. Für alle anderen Seiten wird bei vorhandenen inaktiven Tupeln ein Kostenwert von 20 zugrunde gelegt (vacuum_cost_page_dirty). Wenn keine inaktiven Tupel vorhanden sind, wird der Kostenwert 10 angesetzt (vacuum_cost_page_miss). Der Vacuum-Vorgang wird beendet, wenn der Prozess „autovacuum_vacuum_cost_limit“ überschreitet. 
+Der Vacuum-Prozess liest physische Seiten und sucht nach inaktiven Tupeln. Für jede Seite in „shared_buffers“ wird vom Kostenwert 1 (vacuum_cost_page_hit) ausgegangen. Für alle anderen Seiten wird bei vorhandenen inaktiven Tupeln ein Kostenwert von 20 zugrunde gelegt (vacuum_cost_page_dirty). Wenn keine inaktiven Tupel vorhanden sind, wird der Kostenwert 10 angesetzt (vacuum_cost_page_miss). Der Vacuum-Vorgang wird beendet, wenn der Prozess „autovacuum_vacuum_cost_limit“ überschreitet.
 
 Nachdem der Grenzwert erreicht wird, verbringt der Prozess die durch den Parameter „autovacuum_vacuum_cost_delay“ angegebene Zeit im Ruhezustand, bevor er erneut gestartet wird. Wenn der Grenzwert nicht erreicht wird, wird Autovacuum nach der durch den Parameter autovacuum_nap_time angegebenen Zeit wieder gestartet.
 

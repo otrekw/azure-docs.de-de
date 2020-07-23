@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b6d949b50be348e72cedfc3710383308b04de106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336005"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205882"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapazität einer Azure API Management-Instanz
 
@@ -106,4 +106,5 @@ Eine niedrige **Kapazitätsmetrik** bedeutet nicht zwingend, dass Ihre API Manag
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[So skalieren oder aktualisieren Sie eine Azure API Management-Dienstinstanz](upgrade-and-scale.md)
+- [So skalieren oder aktualisieren Sie eine Azure API Management-Dienstinstanz](upgrade-and-scale.md)
+- [Ermitteln und Analysieren von Kosten mit der Kostenanalyse](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

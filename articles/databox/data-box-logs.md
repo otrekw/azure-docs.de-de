@@ -1,27 +1,27 @@
 ---
-title: Erfassen und Protokollieren von Azure Data Box- und Azure Data Box Heavy-Ereignissen| Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie Ereignisse in den verschiedenen Phasen Ihres Azure Data Box- oder Azure Data Box Heavy-Auftrags nachverfolgt und protokolliert werden.
+title: Erfassen und Protokollieren von Azure Data Box- und Azure Data Box Heavy-Ereignissen für Importaufträge | Microsoft-Dokumentation
+description: In diesem Artikel wird beschreiben, wie Ereignisse in den verschiedenen Phasen Ihres Azure Data Box- oder Azure Data Box Heavy-Importauftrags nachverfolgt und protokolliert werden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676410"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204299"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box- und Azure Data Box Heavy-Importaufträge
 
-Ein Data Box- oder Data Box Heavy-Auftrag durchläuft die folgenden Schritte: Bestellen, Einrichten, Kopieren von Daten, Zurücksenden, Hochladen in Azure und Überprüfen sowie Löschen von Daten. Für jeden Schritt des Auftrags können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag zu verfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
+Ein Data Box- oder Data Box Heavy-Importauftrag durchläuft die folgenden Schritte: Bestellen, Einrichten, Kopieren von Daten, Zurücksenden, Hochladen in Azure und Überprüfen und Löschen von Daten. Für jeden Schritt des Auftrags können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag zu verfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-Die folgende Tabelle zeigt eine Übersicht über die Schritte eines Data Box- oder Data Box Heavy-Auftrags und die verfügbaren Tools zum Nachverfolgen und Überwachen des Auftrags in jedem Schritt.
+Die folgende Tabelle enthält eine Übersicht der Schritte eines Data Box- oder Data Box Heavy-Importauftrags und die verfügbaren Tools zum Nachverfolgen und Überwachen des Auftrags in jedem Schritt.
 
-| Phase eines Data Box-Auftrags       | Tool zum Nachverfolgen und Überwachen                                                                        |
+| Phase des Data Box-Importauftrags       | Tool zum Nachverfolgen und Überwachen                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Erstellung des Auftrags               | [Einrichten der Zugriffssteuerung für den Auftrag über RBAC](#set-up-access-control-on-the-order)                                                    |
 | Auftrag verarbeitet            | [Nachverfolgen des Auftrags](#track-the-order) über <ul><li> Azure-Portal </li><li> Website des Spediteurs </li><li>E-Mail-Benachrichtigungen</ul> |
@@ -31,7 +31,7 @@ Die folgende Tabelle zeigt eine Übersicht über die Schritte eines Data Box- od
 | Datenupload in Azure       | [Überprüfen von Kopierprotokollen](#review-copy-log-during-upload-to-azure) auf Fehler beim Hochladen von Daten im Azure-Rechenzentrum                         |
 | Löschen von Daten vom Gerät   | [Anzeigen der Kette von Protokollen zur Rückverfolgbarkeit](#get-chain-of-custody-logs-after-data-erasure) einschließlich von Überwachungsprotokollen und Auftragsverlauf                |
 
-In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Aufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box als auch für Data Box Heavy. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
+In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Importaufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box- als auch für Data Box Heavy-Importaufträge. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
 
 ## <a name="set-up-access-control-on-the-order"></a>Einrichten der Zugriffssteuerung für den Auftrag
 

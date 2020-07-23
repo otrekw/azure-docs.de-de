@@ -3,12 +3,12 @@ title: Exportieren aus Azure Application Insights mithilfe von Stream Analytics 
 description: Stream Analytics kann aus Application Insights exportierte Daten fortlaufend transformieren, filtern und weiterleiten.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110486"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224518"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.
@@ -60,7 +60,7 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
     Darüber hinaus werden die Daten in Ihren Speicher exportiert. 
 2. Überprüfen Sie die exportierten Daten. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld „Neues Projekt“ und anschließend „Visual C#/Cloud/Microsoft Azure SDK für .NET abrufen“.)
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![Screenshot, der zeigt, wie Sie die Ereignistypen festlegen, die Sie anzeigen möchten](./media/export-stream-analytics/04-data.png)
    
     Notieren Sie sich den gemeinsamen Teil des Pfadnamens, der sich vom Anwendungsnamen und vom Instrumentierungsschlüssel ableitet. 
 
@@ -69,21 +69,21 @@ Die Ereignisse werden in Blobdateien im JSON-Format geschrieben. Jede Datei kann
 ## <a name="create-an-azure-stream-analytics-instance"></a>Erstellen einer Azure Stream Analytics-Instanz
 Wählen Sie im [Azure-Portal](https://portal.azure.com/) den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrag:
 
-![](./media/export-stream-analytics/SA001.png)
+![Screenshot, der die Hauptseite zum Erstellen eines Stream Analytics-Auftrags im Azure-Portal zeigt](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![Screenshot, der die erforderlichen Details beim Erstellen eines neuen Stream Analytics-Auftrags zeigt](./media/export-stream-analytics/SA002.png)
 
 Wählen Sie nach dem Erstellen des neuen Auftrags die Option **Zu Ressource wechseln** aus.
 
-![](./media/export-stream-analytics/SA003.png)
+![Screenshot, der die Meldung anzeigt, die empfangen wird, wenn die Bereitstellung des neuen Stream Analytics-Auftrags erfolgreich war](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>Hinzufügen einer neuen Eingabe
 
-![](./media/export-stream-analytics/SA004.png)
+![Screenshot, der zeigt, wie dem Stream Analytics-Auftrag Eingaben hinzugefügt werden](./media/export-stream-analytics/SA004.png)
 
 Legen Sie den Auftrag so fest, dass er Eingaben vom Blob für den fortlaufenden Export erhält:
 
-![](./media/export-stream-analytics/SA0005.png)
+![Screenshot, der die Konfiguration des Stream Analytics-Auftrags zum Übernehmen von Eingaben aus einem fortlaufenden Exportblob veranschaulicht](./media/export-stream-analytics/SA0005.png)
 
 Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, den Sie zuvor notiert haben. Legen Sie diesen als Speicherkontoschlüssel fest.
 
@@ -109,7 +109,7 @@ In diesem Beispiel:
 ## <a name="add-new-output"></a>Hinzufügen einer neuen Ausgabe
 Wählen Sie Ihren Auftrag und dann **Ausgaben** > **Hinzufügen** aus.
 
-![](./media/export-stream-analytics/SA006.png)
+![Screenshot, der das Auswählen des Stream Analytics-Auftrags zum Hinzufügen einer neuen Ausgabe zeigt](./media/export-stream-analytics/SA006.png)
 
 
 ![Wählen Sie den neuen Kanal aus, klicken Sie auf „Ausgaben“ > „Hinzufügen“ > „Power BI“.](./media/export-stream-analytics/SA010.png)

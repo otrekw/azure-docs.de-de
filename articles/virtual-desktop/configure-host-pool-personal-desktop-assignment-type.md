@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 158ac92a930b53e02ee81570c62711ca27dc4ae8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200391"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260817"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops
 
@@ -72,11 +72,26 @@ Um einen Benutzer einem bestimmten Sitzungshost zuzuweisen, führen Sie das folg
 Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -ResourceGroupName <resourcegroupname> -AssignedUser <userupn>
 ```
 
+So weisen Sie im Azure-Portal einen Benutzer einem Sitzungshost direkt zu
+
+1. Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
+2. Geben Sie **Windows Virtual Desktop** in die Suchleiste ein.
+3. Wählen Sie unter **Dienste** die Option **Windows Virtual Desktop** aus.
+4. Klicken Sie auf der Seite „Windows Virtual Desktop“ im Menü auf der linken Seite des Fensters auf **Hostpools**.
+5. Klicken Sie auf den Namen des Hostpools, den Sie aktualisieren möchten.
+6. Navigieren Sie als Nächstes zum Menü auf der linken Seite des Fensters, und klicken Sie auf **Anwendungsgruppen**.
+7. Klicken Sie auf den Namen der Desktop-App-Gruppe, die Sie bearbeiten möchten, und dann im Menü auf der linken Seite des Fensters auf **Zuweisungen**.
+8. Klicken Sie auf **+ Hinzufügen**, und wählen Sie dann die Benutzer oder Benutzergruppen aus, für die Sie diese Desktop-App-Gruppe veröffentlichen möchten.
+9. Klicken Sie in der Informationsleiste auf **Assign VM** (VM zuweisen), um einem Benutzer einen Sitzungshost zuzuweisen.
+10. Wählen Sie den Sitzungshost aus, den Sie dem Benutzer zuweisen möchten, und klicken Sie dann auf **Zuweisen**.
+11. Wählen Sie in der Liste der verfügbaren Benutzer den Benutzer aus, dem Sie den Sitzungshost zuweisen möchten.
+12. Klicken Sie auf **Auswählen**, wenn Sie fertig sind.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie den persönlichen Desktopzuweisungstyp konfiguriert haben, können Sie sich an einem Windows Virtual Desktop-Client anmelden, um ihn als Teil einer Benutzersitzung zu testen. In den nächsten zwei Vorgehensweisen erfahren Sie, wie Sie mit dem ausgewählten Client eine Verbindung zu einer Sitzung herstellen:
 
-- [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10.md)
 - [Herstellen einer Verbindung mit dem Webclient](connect-web.md)
 - [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
 - [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)

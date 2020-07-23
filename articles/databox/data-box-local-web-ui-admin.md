@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608246"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202539"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 
@@ -28,6 +28,8 @@ Dieser Artikel enthält folgende Lernprogramme:
 - Herunterladen von BOM- oder Manifestdateien
 - Anzeigen der verfügbaren Kapazität des Geräts
 - Überspringen der Überprüfung der Prüfsumme
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Erstellen eines Unterstützungspakets
 
@@ -80,9 +82,9 @@ Führen Sie zum Neustarten Ihres Data Box-Geräts die folgenden Schritte aus.
 
 ## <a name="download-bom-or-manifest-files"></a>Herunterladen von BOM- oder Manifestdateien
 
-Die Stückliste (Bill of Material, BOM) oder die Manifestdateien enthalten die Liste der Dateien, die auf das Data Box- oder Data Box Heavy-Gerät kopiert werden. Diese Dateien werden beim Vorbereiten des Geräts für den Versand generiert.
+Die Stückliste (Bill of Material, BOM) oder die Manifestdateien enthalten die Liste der Dateien, die auf das Data Box- oder Data Box Heavy-Gerät kopiert werden. Diese Dateien werden beim Vorbereiten des Geräts für den Versand für einen Importauftrag generiert.
 
-Stellen Sie zunächst sicher, dass für Ihr Gerät der Schritt **Versandvorbereitung** ausgeführt wurde. Führen Sie zum Herunterladen der BOM- oder Manifestdateien die folgenden Schritte aus:
+Stellen Sie zunächst sicher, dass für Ihr Gerät der Schritt **Versandvorbereitung** ausgeführt wurde. Führen Sie zum Herunterladen der BOM- oder Manifestdateien für Ihren Importauftrag die folgenden Schritte aus:
 
 1. Rufen Sie die lokale Webbenutzeroberfläche für Ihr Gerät auf. Dort sehen Sie, dass für das Gerät der Schritt zur Versandvorbereitung abgeschlossen wurde. Wenn die Vorbereitung des Geräts abgeschlossen ist, ändert sich der Gerätestatus in **Bereit für den Versand**.
 
@@ -168,6 +170,8 @@ Sie können auf dem Dashboard des Geräts die verfügbare und belegte Kapazität
 
 Prüfsummen werden standardmäßig für Ihre Daten generiert, wenn Sie den Versand vorbereiten. In bestimmten seltenen Fällen kann die Leistung je nach Datentyp (kleine Dateigrößen) schlecht sein. In solchen Fällen können Sie die Prüfsumme überspringen.
 
+Die Prüfsummenberechnung während der Vorbereitung für den Versand wird nur für Importaufträge durchgeführt, nicht für Exportaufträge. 
+
 Es wird dringend empfohlen, die Prüfsumme nicht zu deaktivieren, es sei denn, die Leistung wird erheblich beeinträchtigt.
 
 1. Klicken Sie auf der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke auf **Einstellungen**.
@@ -177,7 +181,8 @@ Es wird dringend empfohlen, die Prüfsumme nicht zu deaktivieren, es sei denn, d
 2. **Deaktivieren** Sie die Überprüfung der Prüfsumme.
 3. Klicken Sie auf **Anwenden**.
 
-## <a name="next-steps"></a>Nächste Schritte
+> [!NOTE]
+> Die Option zum Überspringen der Prüfsummenberechnung ist nur verfügbar, wenn das Azure Data Box-Gerät entsperrt ist. Die Option wird nicht angezeigt, wenn das Gerät gesperrt ist.
 
 - Erfahren Sie mehr zum [Verwalten von Data Box und Data Box Heavy im Azure-Portal](data-box-portal-admin.md).
 

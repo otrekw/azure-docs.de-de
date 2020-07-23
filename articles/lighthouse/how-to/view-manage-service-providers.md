@@ -1,14 +1,14 @@
 ---
 title: Dienstanbieter anzeigen und verwalten
 description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111625"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273777"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 
@@ -19,7 +19,7 @@ Um auf die Seite **Dienstanbieter** im Azure-Portal zuzugreifen, können die Kun
 > [!NOTE]
 > Um die Seite **Dienstanbieter** anzuzeigen, muss ein Benutzer im Mandanten des Kunden über die integrierte Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) (oder eine andere integrierte Rolle, die Leserzugriff umfasst) verfügen.
 >
-> Um Angebote hinzuzufügen, Ressourcen zu delegieren und Angebote zu entfernen, muss der Benutzer über die integrierte Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügen.
+> Der Benutzer über die integrierte Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügen, um Angebote hinzuzufügen oder zu aktualisieren, Ressourcen zu delegieren und Angebote zu entfernen.
 
 Beachten Sie, dass auf der Seite **Dienstanbieter** nur Informationen zu den Dienstanbietern angezeigt werden, die über Azure Lighthouse auf die Abonnements oder Ressourcengruppen des Kunden zugreifen können. Wenn ein Kunde mit zusätzlichen Dienstanbietern arbeitet, die nicht über Azure Lighthouse auf die Ressourcen des Kunden zugreifen, werden Informationen zu diesen Dienstanbietern hier nicht angezeigt.
 

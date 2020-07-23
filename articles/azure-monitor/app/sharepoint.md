@@ -3,12 +3,12 @@ title: Überwachen einer SharePoint-Website mit Application Insights
 description: Beginnen Sie mit der Überwachung einer neuen Anwendung mit einem neuen Instrumentationsschlüssel.
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671442"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221050"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Überwachen einer SharePoint-Website mit Application Insights
 Azure Application Insights überwacht die Verfügbarkeit, Leistung und Nutzung Ihrer Apps. Hier erfahren Sie, wie Sie dieses Tool für eine SharePoint-Website einrichten.
@@ -49,18 +49,18 @@ Wenn Sie die Masterseite der Website bearbeiten können, kann dadurch die Überw
 
 Checken Sie die Masterseite aus, und bearbeiten Sie sie mit SharePoint Designer oder einem anderen Editor.
 
-![](./media/sharepoint/03-master.png)
+![Screenshot, der zeigt, wie die Masterseite mithilfe von SharePoint Designer oder einem anderen Editor bearbeitet wird](./media/sharepoint/03-master.png)
 
 Fügen Sie den Code direkt vor dem Tag </head> ein. 
 
-![](./media/sharepoint/04-code.png)
+![Screenshot, der zeigt, wo Sie den Code zur Seite Ihrer Website hinzufügen können](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>Auf einzelnen Seiten
 Um eine begrenzte Anzahl von Seiten zu überwachen, fügen Sie das Skript separat auf jeder Seite hinzu. 
 
 Fügen Sie ein Webpart ein, und betten Sie den Codeausschnitt darin ein.
 
-![](./media/sharepoint/05-page.png)
+![Screenshot, der das Hinzufügen des Skripts zum Überwachen einer begrenzten Gruppe von Seiten zeigt](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>Anzeigen von Daten über Ihre App
 Stellen Sie Ihre App erneut bereit.
@@ -69,7 +69,7 @@ Kehren Sie zum Blatt Ihrer Anwendung im [Azure-Portal](https://portal.azure.com)
 
 Die ersten Ereignisse werden in der Suche angezeigt. 
 
-![](./media/sharepoint/09-search.png)
+![Screenshot, der die neuen Daten zeigt, die Sie in der App anzeigen können](./media/sharepoint/09-search.png)
 
 Klicken Sie nach einigen Sekunden auf "Aktualisieren", wenn Sie mehr Daten erwarten.
 
@@ -78,7 +78,7 @@ Der Codeausschnitt der Standardwebseite erfasst nicht die Benutzer-ID aus ShareP
 
 1. Kopieren Sie den Instrumentationsschlüssel Ihrer App aus der Essentials-Dropdownliste in Application Insights. 
 
-    ![](./media/sharepoint/02-props.png)
+    ![Screenshot, der das Kopieren der App-Instrumentierung vom Dropdownmenü „Grundlagen“ in Application Insights zeigt](./media/sharepoint/02-props.png)
 
 1. Ersetzen Sie „XXXX“ durch den Instrumentationsschlüssel im Codeausschnitt unten. 
 2. Betten Sie anstelle des Ausschnitts, den Sie aus dem Portal erhalten, das Skript in die SharePoint-App ein.

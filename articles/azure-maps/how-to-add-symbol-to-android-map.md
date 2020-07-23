@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6b73fef368dc8dec5d8c042cdac1d3cea899450
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335585"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242439"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Symbolebene zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -172,6 +172,8 @@ Wenn Sie Ihre Anwendung ausführen, sollten Sie an dieser Stelle einen Marker au
 
 ![Android-Kartenpin](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
+> [!TIP]
+> Standardmäßig optimieren Symbolebenen das Rendering von Symbolen, indem sie überlappende Symbole ausblenden. Beim Zoomen werden die ausgeblendeten Symbole angezeigt. Legen Sie die Option `iconAllowOverlap` auf `true` fest, um dieses Feature zu deaktivieren und alle Symbole jederzeit anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

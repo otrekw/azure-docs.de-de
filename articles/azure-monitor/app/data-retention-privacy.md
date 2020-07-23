@@ -3,12 +3,12 @@ title: Datenaufbewahrung und -speicherung in Azure Application Insights | Micros
 description: Hinweis zur Datenaufbewahrung und Datenschutzrichtlinie
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601359"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224484"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -62,7 +62,7 @@ Die gesammelten Daten lassen sich in folgende Hauptkategorien unterteilen:
 ## <a name="how-can-i-verify-whats-being-collected"></a>Wie kann ich überprüfen, was gesammelt wird?
 Wenn Sie die App mit Visual Studio entwickeln, führen Sie sie im Debugmodus (F5) aus. Die Telemetriedaten werden im Ausgabefenster angezeigt. Dort können Sie sie kopieren und zur einfachen Überprüfung als JSON formatieren. 
 
-![](./media/data-retention-privacy/06-vs.png)
+![Screenshot: Ausführung der App im Debugmodus in Visual Studio](./media/data-retention-privacy/06-vs.png)
 
 Es gibt auch eine lesbarere Ansicht im Fenster „Diagnose“.
 

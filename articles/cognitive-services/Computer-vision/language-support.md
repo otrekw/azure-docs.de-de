@@ -1,7 +1,7 @@
 ---
 title: Sprachunterstützung – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: 'Dieser Artikel enthält eine Liste der natürlichen Sprachen, die von Features für maschinelles Sehen unterstützt werden: OCR, Texterkennung und Lesen.'
+description: 'Dieser Artikel enthält eine Liste der natürlichen Sprachen, die von Features für maschinelles Sehen unterstützt werden: OCR, Bildanalyse.'
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560166"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205281"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
 Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hier nicht erwähnten Features unterstützen nur Englisch.
 
-## <a name="text-detection-ocr"></a>Texterkennung (OCR)
+## <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
-Maschinelles Sehen kann Text in zahlreichen Sprachen erkennen. Bei Verwendung der Lese- und OCR-APIs muss kein Sprachcode angegeben werden. Unter [Lesen von Text aus Bildern und Dokumenten](concept-recognizing-text.md) finden Sie weitere Informationen zu dieser Funktionalität und den Vorteilen der einzelnen APIs.
+Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Es muss kein Sprachcode angegeben werden. Weitere Informationen finden Sie unter [Optische Zeichenerkennung (OCR)](concept-recognizing-text.md).
 
 |Sprache| Sprachcode | OCR-API | Lese-API |
 |:-----|:----:|:-----:|:---:|

@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981306"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224705"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
 
 Dank mehrerer Zugriffs- und Verwaltungsfunktionen stehen zwar vielfältige Optionen zur Verfügung, diese Vielfalt kann aber auch ein erhebliches Risiko für eine Cloudbereitstellung darstellen. Administrative Aktionen lassen sich dadurch unter Umständen schwerer verwalten, nachvollziehen und überprüfen. Diese Variabilität kann auch mit Sicherheitsbedrohungen verbunden sein, wenn nicht regulierter Zugriff auf Clientendpunkte besteht, die zum Verwalten von Clouddiensten verwendet werden. Die Verwendung allgemeiner oder persönlicher Arbeitsstationen zum Entwickeln und Verwalten einer Infrastruktur geht mit unberechenbaren Bedrohungsvektoren einher. Hierzu zählen beispielsweise das Surfen im Web (etwa Watering Hole-Angriffe) oder E-Mails (etwa Social Engineering und Phishing).
 
-![](./media/management/typical-management-network-topology.png)
+![Diagramm, das die verschiedenen Möglichkeiten anzeigt, wie eine Bedrohung Angriffe einbinden könnte](./media/management/typical-management-network-topology.png)
 
 Das Potenzial für Angriffe ist bei dieser Art von Umgebung erhöht, da es aufwändig ist, Sicherheitsrichtlinien und Mechanismen zu schaffen, mit denen der Zugriff auf Azure-Schnittstellen (z.B. SMAPI) von den unterschiedlichsten Endpunkten angemessen verwaltet werden kann.
 
@@ -157,12 +157,12 @@ Mit einer eigenständigen Arbeitsstation mit verstärkter Sicherheit verfügen A
 
 Beim Szenario mit der eigenständigen Arbeitsstation mit verstärkter Sicherheit (unten dargestellt) wird die lokale Instanz der Windows-Firewall (oder einer anderen Clientfirewall, die nicht von Microsoft stammt) so konfiguriert, dass eingehende Verbindungen blockiert werden, z.B. RDP. Der Administrator kann sich an der Arbeitsstation mit verstärkter Sicherheit anmelden und eine RDP-Sitzung starten, für die eine Verbindung mit Azure hergestellt wird, nachdem eine VPN-Verbindung mit einem Azure Virtual Network hergestellt wurde. Es ist aber nicht möglich, sich an einem Unternehmens-PC anzumelden und RDP zu verwenden, um direkt mit der Arbeitsstation mit verstärkter Sicherheit eine Verbindung herzustellen.
 
-![](./media/management/stand-alone-hardened-workstation-topology.png)
+![Diagramm mit dem Szenario für die eigenständige Arbeitsstation mit verstärkter Sicherheit](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>Unternehmens-PC als virtueller Computer
 In Fällen, in denen die Nutzung einer separaten eigenständigen Arbeitsstation mit verstärkter Sicherheit aus Kostengründen oder Gründen der Benutzerfreundlichkeit nicht möglich ist, kann auf der Arbeitsstation mit verstärkter Sicherheit ein virtueller Computer gehostet werden, um nicht administrative Aufgaben durchzuführen.
 
-![](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![Diagramm mit der Arbeitsstation mit verstärkter Sicherheit, die einen virtuellen Computer hostet, um nicht administrative Aufgaben auszuführen](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 Um verschiedene Sicherheitsrisiken zu vermeiden, die sich aus der Verwendung einer Arbeitsstation für die Systemverwaltung und andere tägliche Aufgaben ergeben, können Sie einen virtuellen Windows Hyper-V-Computer auf der Arbeitsstation mit verstärkter Sicherheit bereitstellen. Dieser virtuelle Computer kann als Unternehmens-PC verwendet werden. Die Unternehmens-PC-Umgebung kann vom Host isoliert bleiben, um die Angriffsfläche zu reduzieren und die täglichen Aktivitäten des Benutzers (z.B. E-Mail) von sensiblen Verwaltungsaufgaben zu trennen.
 

@@ -1,0 +1,75 @@
+---
+title: 'Azure PowerShell: Aktivieren der doppelten Verschlüsselung für ruhende Daten – verwaltete Datenträger'
+description: Hier erfahren Sie, wie Sie die doppelte Verschlüsselung für ruhende Daten auf Ihren verwalteten Datenträgern mithilfe von Azure PowerShell aktivieren können.
+author: roygara
+ms.date: 07/10/2020
+ms.topic: how-to
+ms.author: rogarana
+ms.service: virtual-machines-windows
+ms.subservice: disks
+ms.custom: references_regions
+ms.openlocfilehash: 0f386e4ba4a1835b88b753574bde23e93f7f8d17
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86235666"
+---
+# <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell: Aktivieren der doppelten Verschlüsselung für ruhende Daten auf Ihren verwalteten Datenträgern
+
+Azure Disk Storage unterstützt die doppelte Verschlüsselung von ruhenden Daten auf verwalteten Datenträgern. Informationen zum Konzept der doppelten Verschlüsselung ruhender Daten sowie weitere Typen der Verschlüsselung von Daten auf verwalteten Datenträgern finden Sie im Abschnitt [Doppelte Verschlüsselung ruhender Daten](disk-encryption.md#double-encryption-at-rest) des Artikels zur Datenträgerverschlüsselung.
+
+## <a name="supported-regions"></a>Unterstützte Regionen
+
+[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Installieren Sie die aktuelle [Azure PowerShell-Version](/powershell/azure/install-az-ps), und melden Sie sich in einem Azure-Konto mithilfe von [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0) an.
+
+## <a name="getting-started"></a>Erste Schritte
+
+1. Erstellen Sie eine Azure Key Vault-Instanz und den Verschlüsselungsschlüssel.
+
+    Beim Erstellen der Key Vault-Instanz müssen Sie vorläufiges Löschen und den Schutz vor endgültigem Löschen aktivieren. Durch vorläufiges Löschen wird sichergestellt, dass der Schlüsseltresor einen gelöschten Schlüssel für einen bestimmten Aufbewahrungszeitraum (standardmäßig 90 Tage) speichert. Der Schutz vor endgültigem Löschen stellt sicher, dass ein gelöschter Schlüssel erst nach Ablauf der Aufbewahrungsdauer dauerhaft gelöscht werden kann. Diese Einstellungen schützen Sie vor dem Verlust von Daten durch versehentliches Löschen. Diese Einstellungen sind obligatorisch, wenn ein Schlüsseltresor für die Verschlüsselung verwalteter Datenträger verwendet wird.
+    
+    ```powershell
+    $ResourceGroupName="yourResourceGroupName"
+    $LocationName="westcentralus"
+    $keyVaultName="yourKeyVaultName"
+    $keyName="yourKeyName"
+    $keyDestination="Software"
+    $diskEncryptionSetName="yourDiskEncryptionSetName"
+
+    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnableSoftDelete -EnablePurgeProtection
+
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
+    ```
+
+1.  Erstellen Sie eine DiskEncryptionSet-Klasse. Legen Sie encryptionType dabei auf EncryptionAtRestWithPlatformAndCustomerKeys fest. Verwenden Sie die API-Version **2020-05-01** in der Azure Resource Manager-Vorlage (ARM). 
+    
+    ```powershell
+    New-AzResourceGroupDeployment -ResourceGroupName CMKTesting `
+    -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/DoubleEncryption/CreateDiskEncryptionSetForDoubleEncryption.json" `
+    -diskEncryptionSetName "yourDESForDoubleEncryption" `
+    -keyVaultId "subscriptions/dd80b94e-0463-4a65-8d04-c94f403879dc/resourceGroups/yourResourceGroupName/providers/Microsoft.KeyVault/vaults/yourKeyVaultName" `
+    -keyVaultKeyUrl "https://yourKeyVaultName.vault.azure.net/keys/yourKeyName/403445136dee4a57af7068cab08f7d42" `
+    -encryptionType "EncryptionAtRestWithPlatformAndCustomerKeys" `
+    -region "CentralUSEUAP"
+    ```
+
+1. Gewähren Sie der DiskEncryptionSet-Ressource Zugriff auf den Schlüsseltresor.
+
+    > [!NOTE]
+    > Es kann einige Minuten dauern, bis Azure die Identität des Datenträgerverschlüsselungssatzes in Azure Active Directory erstellt hat. Wenn Sie bei der Ausführung des folgenden Befehls einen ähnlichen Fehler wie „Active Directory-Objekt kann nicht gefunden werden“ erhalten, warten Sie einige Minuten, und versuchen Sie es erneut.
+
+    ```powershell  
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+    ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nachdem Sie diese Ressourcen erstellt und konfiguriert haben, können Sie diese zum Sichern Ihrer verwalteten Datenträger verwenden. Der folgende Link enthält Beispielskripts mit jeweils einem entsprechenden Szenario, die Sie zum Sichern Ihrer verwalteten Datenträger verwenden können.
+
+[Azure PowerShell: Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – verwaltete Datenträger](disks-enable-customer-managed-keys-powershell.md)
+[Beispiele für Azure Resource Manager-Vorlagen](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)

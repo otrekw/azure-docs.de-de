@@ -3,12 +3,12 @@ title: Problembehandlung ohne Daten – Application Insights für .NET
 description: Sie sehen in Azure Application Insights keine Daten? Versuchen Sie es hier.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485168"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221033"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problembehandlung ohne Daten – Application Insights für .NET/.NET Core
 
@@ -124,7 +124,7 @@ Behebung:
 *Ich habe meine App ausgeführt und dann den Application Insights-Dienst in Microsoft Azure geöffnet, aber für alle Diagramme wird „Erfahren Sie, wie Sie...“ oder „Nicht konfiguriert“ angezeigt.* Oder es sind *nur Seitenansichts- und Benutzerdaten zu sehen, aber keine Serverdaten*.
 
 * Führen Sie Ihre Anwendung in Visual Studio im Debugmodus aus (F5). Verwenden Sie die Anwendung, um einige Telemetriedaten zu generieren. Überprüfen Sie, ob im Visual Studio-Ausgabefenster protokollierte Ereignisse angezeigt werden.  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![Screenshot: Ausführung der Anwendung im Debugmodus in Visual Studio](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Öffnen Sie im Application Insights-Portal die [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md). Hier werden Daten normalerweise zuerst angezeigt.
 * Klicken Sie auf die Schaltfläche "Aktualisieren". Das Blatt aktualisiert sich in regelmäßigen Abständen selbst, doch Sie können es auch manuell aktualisieren. Das Aktualisierungsintervall für größere Zeiträume ist länger.
 * Überprüfen Sie, ob die Instrumentierungsschlüssel übereinstimmen. Sehen Sie sich im Application Insights-Portal auf dem Hauptblatt Ihrer App in der Dropdownliste **Zusammenfassung** den **Instrumentierungsschlüssel** an. Öffnen Sie dann in Ihrem Projekt in Visual Studio die Datei „ApplicationInsights.config“, und suchen Sie nach `<instrumentationkey>`. Überprüfen Sie, ob die beiden Schlüssel identisch sind. Gehen Sie wie folgt vor, falls dies nicht so ist:  

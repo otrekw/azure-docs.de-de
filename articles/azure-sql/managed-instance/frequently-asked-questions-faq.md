@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: d2e4b07c97e09fce5cdaa034e2fe67a18ef0d7f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171158"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224416"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -122,56 +122,121 @@ So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. *.contoso.c
 - Verwenden Sie „CliConfig“ zum Definieren eines Alias. Weil das Tool nur ein Wrapper für Registrierungseinstellungen ist, kann es auch mithilfe einer Gruppenrichtlinie oder eines Skripts ausgeführt werden.
 - Verwenden Sie *CNAME* mit der Option *TrustServerCertificate=true*.
 
-## <a name="move-a-database-from-sql-managed-instance"></a>Verschieben einer Datenbank aus SQL Managed Instance 
+## <a name="migration-options"></a>Migrationsoptionen
 
-**Wie kann ich eine Datenbank aus SQL Managed Instance zurück zu SQL Server oder Azure SQL-Datenbank verschieben?**
+**Wie kann ich eine Azure SQL-Einzeldatenbank oder einen Azure SQL-Pool für elastische Datenbanken zu einer verwalteten Instanz von SQL Managed Instance migrieren?**
 
-Sie können [eine Datenbank in eine BACPAC-Datei exportieren](../database/database-export.md) und dann [die BACPAC-Datei importieren](../database/database-import.md). Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist.
+Die verwaltete Instanz bietet die gleichen Leistungsstufen pro Compute- und Speichergröße wie andere Bereitstellungsoptionen von Azure SQL-Datenbank. Wenn Sie Daten in einer einzelnen Instanz konsolidieren möchten oder einfach eine Funktion ausschließlich in der verwalteten Instanz unterstützt werden soll, können Sie die Daten mithilfe der Export-/Import-Funktion (BACPAC) migrieren. Hier finden Sie weitere Optionen, wofür die SQL-Datenbankmigration zu SQL Managed Instance geeignet wäre: 
+- Verwenden der [externen Datenquelle]()
+- Verwenden von [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)
+- Verwenden von [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)
 
-Transaktionsreplikation kann verwendet werden, wenn alle Tabellen in der Datenbank Primärschlüssel aufweisen.
+**Wie kann ich meine Instanzdatenbank zu einer einzelnen Azure SQL-Datenbank migrieren?**
 
-Native `COPY_ONLY`-Sicherungen von SQL Managed Instance können nicht in SQL Server wiederhergestellt werden, da SQL Managed Instance eine höhere Datenbankversion als SQL Server aufweist.
+Eine Option ist das [Exportieren einer Datenbank in eine BACPAC-Datei](../database/database-export.md) und das anschließende [Importieren der BACPAC-Datei](../database/database-import.md). Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist.
 
-## <a name="migrate-an-instance-database"></a>Migrieren einer Instanzdatenbank
+[Transaktionsreplikation](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) kann verwendet werden, wenn alle Tabellen in der Datenbank *Primärschlüssel* aufweisen und in der Datenbank keine In-Memory-OLTP-Objekte vorhanden sind.
 
-**Wie kann ich meine Instanzdatenbank zu Azure SQL-Datenbank migrieren?**
+Native COPY_ONLY-Sicherungen einer verwalteten Instanz können nicht in SQL Server wiederhergestellt werden, da eine verwaltete Instanz eine höhere Datenbankversion als SQL Server aufweist. Weitere Informationen finden Sie unter [Kopiesicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15).
 
-Eine Option ist das [Exportieren der Datenbank in eine BACPAC-Datei](../database/database-export.md) und das anschließende [Importieren der BACPAC-Datei](../database/database-import.md). 
+**Wie kann ich meine SQL Server-Instanz zu SQL Managed Instance migrieren?**
 
-Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist. Transaktionsreplikation kann verwendet werden, wenn alle Tabellen in der Datenbank Primärschlüssel aufweisen.
+Informationen zum Migrieren Ihrer SQL Server-Instanz finden Sie unter [Migration einer SQL Server-Instanz zu Azure SQL Managed Instance](migrate-to-instance-from-sql-server.md).
+
+**Wie kann ich von anderen Plattformen zu SQL Managed Instance migrieren?**
+
+Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
 
 ## <a name="switch-hardware-generation"></a>Wechseln der Hardwaregeneration 
 
-**Kann ich für meine SQL Managed Instance online zwischen der Hardwaregeneration Gen 4 und Gen 5 wechseln?**
+**Kann ich für meine verwaltete Instanz online zwischen der Hardwaregeneration Gen 4 und Gen 5 wechseln?**
 
-Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn beide Hardwaregenerationen in der Region verfügbar sind, in der SQL Managed Instance bereitgestellt wurde. In diesem Fall können Sie auf der [Seite mit der Übersicht über das V-Kern-Modell](../database/service-tiers-vcore.md) Informationen dazu anzeigen, wie Sie zwischen den Hardwaregenerationen wechseln können.
+Der automatische Onlinewechsel von Gen4 zu Gen5 ist möglich, wenn die Gen5-Hardware in der Region verfügbar ist, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall können Sie auf der [Seite mit der Übersicht über das V-Kern-Modell](../database/service-tiers-vcore.md) nachsehen, wie Sie zwischen den Hardwaregenerationen wechseln können.
 
-Hierbei handelt es sich um einen Vorgang mit langer Ausführungszeit, da eine neue verwaltete Instanz im Hintergrund bereitgestellt wird und Datenbanken automatisch zwischen der alten und neuen Instanz mit einem schnellen Failover am Ende des Prozesses übertragen werden. 
+Dabei handelt es sich um einen Vorgang mit langer Ausführungszeit, da eine neue verwaltete Instanz im Hintergrund bereitgestellt wird und Datenbanken automatisch zwischen der alten und neuen Instanz mit einem schnellen Failover am Ende des Prozesses übertragen werden.
 
-**Was geschieht, wenn die beiden Hardwaregenerationen nicht in derselben Region unterstützt werden?**
+Hinweis: Die Gen4-Hardware wird eingestellt und steht für neue Bereitstellungen nicht mehr zur Verfügung. Alle neuen Datenbanken müssen auf Gen5-Hardware bereitgestellt werden. Der Wechsel von Gen5 zu Gen4 ist ebenfalls nicht möglich.
 
-Wenn nicht beide Hardwaregenerationen in der gleichen Region unterstützt werden, kann die Hardwaregeneration nur manuell gewechselt werden. Hierzu müssen Sie eine neue Instanz in der Region bereitstellen, in der die gewünschte Hardwaregeneration verfügbar ist, und die Daten zwischen der alten und neuen Instanz manuell sichern und wiederherstellen.
+## <a name="performance"></a>Leistung 
 
-**Was geschieht, wenn nicht genügend IP-Adressen zum Ausführen des Updatevorgangs vorhanden sind?**
+**Wie kann ich die Managed Instance-Leistung mit der SQL Server-Leistung vergleichen?**
 
-Falls nicht genügend IP-Adressen im Subnetz vorhanden sind, in dem die verwaltete Instanz bereitgestellt wird, müssen Sie ein neues Subnetz und darin eine neue verwaltete Instanz erstellen. Wir empfehlen Ihnen auch, das neue Subnetz mit mehr zugeordneten IP-Adressen zu erstellen, damit ähnliche Situationen bei zukünftigen Updatevorgängen vermieden werden können. (Informationen zur richtigen Subnetzgröße finden Sie im Artikel zum [Ermitteln der Größe eines VNET-Subnetzes](vnet-subnet-determine-size.md).) Nachdem die neue Instanz bereitgestellt wurde, können Sie Daten zwischen der alten und der neuen Instanz manuell sichern und wiederherstellen. Sie können auch eine instanzübergreifende [Point-in-Time-Wiederherstellung](point-in-time-restore.md?tabs=azure-powershell) durchführen. 
+Als Ausgangspunkt für einen Leistungsvergleich zwischen der verwalteten Instanz und SQL Server empfiehlt sich der Artikel [Best practices for performance comparison between Azure SQL Managed Instance and SQL Server](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210) (Bewährte Methoden für den Leistungsvergleich zwischen der verwalteten Azure-SQL-Instanz und SQL Server, in englischer Sprache).
 
+**Wodurch entstehen Leistungsunterschiede zwischen Managed Instance und SQL Server?**
 
-## <a name="tune-performance"></a>Optimieren der Leistung
+Weitere Informationen finden Sie unter [Hauptursache für Leistungsunterschiede zwischen SQL Managed Instance und SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/). Weitere Informationen zum Einfluss der Protokolldateigröße auf die Leistung einer universell verwalteten Instanz finden Sie unter [Auswirkung der Protokolldateigröße auf die Leistung einer universell verwalteten Instanz](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-**Wie optimiere ich die Leistung für SQL Managed Instance?**
+**Wie optimiere ich die Leistung meiner verwalteten Instanz?**
 
-Da für SQL Managed Instance im Tarif „Universell“ Remotespeicher verwendet wird, wirkt sich die Größe der Daten- und Protokolldateien auf die Leistung aus. Weitere Informationen finden Sie unter [Auswirkung der Protokolldateigröße auf die Leistung einer universellen SQL Managed Instance](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
+Sie können die Leistung Ihrer verwalteten Instanz wie folgt optimieren:
+- [Die automatische Optimierung](../database/automatic-tuning-overview.md), die aufgrund einer kontinuierlichen Leistungsoptimierung, die auf künstlicher Intelligenz und maschinellem Lernen basiert, für hohe Leistung und stabile Workloads sorgt.
+-   [In-Memory-OLTP](../in-memory-oltp-overview.md), das den Durchsatz und die Latenz bei transaktionalen Verarbeitungsworkloads verbessert und schnellere geschäftliche Erkenntnisse liefert. 
 
-Wenn Ihre Workload aus vielen kleinen Transaktionen besteht, sollten Sie den Verbindungstyp von Proxymodus in Umleitungsmodus ändern.
+Wenn Sie die Leistung noch weiter optimieren möchten, wenden Sie einige der *Best Practices* für die [Anwendungs- und Datenbankoptimierung](../database/performance-guidance.md#tune-your-database) an.
+Wenn Ihre Workload aus vielen kleinen Transaktionen besteht, sollten Sie den [Verbindungstyp von Proxymodus in Umleitungsmodus ändern](connection-types-overview.md#changing-connection-type), um eine niedrigere Latenz und höheren Durchsatz zu erreichen.
 
-## <a name="maximum-storage-size"></a>Maximale Speichergröße
+## <a name="monitoring-metrics-and-alerts"></a>Überwachung, Metriken und Warnungen
+
+**Welche Optionen sind für die Überwachung und Warnungen für meine verwaltete Instanz verfügbar?**
+
+Alle möglichen Optionen zur Überwachung und Warnung bei der Nutzung und Leistung von SQL Managed Instance finden Sie im [Blogbeitrag zu Überwachungsoptionen für Azure SQL Managed Instance](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416). Die Leistungsüberwachung in Echtzeit für SQL Managed Instance finden Sie unter [Leistungsüberwachung in Echtzeit für verwaltete Azure SQL-Datenbank-Instanzen](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance).
+
+**Kann ich SQL Profiler für die Leistungsüberwachung verwenden?**
+
+Ja, jeweils SQL Profiler oder SQL Managed Instance werden unterstützt. Weitere Informationen finden Sie unter [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15).
+
+**Werden Database Advisor und Query Performance Insight für verwaltete Instanzdatenbanken unterstützt?**
+
+Nein, sie werden nicht unterstützt. Sie können [DMVs](../database/monitoring-with-dmvs.md) und den [Abfragedatenspeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) zusammen mit [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) und [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) verwenden, um Ihre Datenbanken zu überwachen.
+
+**Kann ich Metrikwarnungen für SQL Managed Instance erstellen?**
+
+Ja. Anweisungen finden Sie unter [Erstellen von Warnungen für SQL Managed Instance](alerts-create.md).
+
+**Kann ich Warnungsmetriken für eine Datenbank in SQL Managed Instance erstellen?**
+
+Nein, Warnungsmetriken sind nur für eine verwaltete Instanz verfügbar. Warnungsmetriken für einzelne Datenbanken in einer verwalteten Instanz sind nicht verfügbar.
+
+## <a name="storage-size"></a>Speichergröße
 
 **Was ist die maximale Speichergröße für SQL Managed Instance?**
 
 Die Speichergröße für SQL Managed Instance hängt von der ausgewählten Dienstebene („Universell“ oder „Unternehmenskritisch“) ab. Informationen zu den Speichereinschränkungen dieser Dienstebenen finden Sie unter [Dienstebenen für Azure SQL-Datenbank und Azure SQL Managed Instance](../database/service-tiers-general-purpose-business-critical.md).
 
-  
+**Was ist die minimale Speichergröße, die für eine verwaltete Instanz verfügbar ist?**
+
+Die Mindestmenge an verfügbarem Speicherplatz in einer Instanz beträgt 32 GB. Der Speicher kann in Inkrementen von 32 GB bis zur maximalen Speichergröße hinzugefügt werden. Die ersten 32 GB sind kostenlos.
+
+**Kann ich den Speicherplatz, der einer Instanz zugewiesen ist, unabhängig von den Computeressourcen erhöhen?**
+
+Ja, Sie können Add-On-Speicher unabhängig von Computeressourcen in gewissem Umfang erwerben. Weitere Informationen finden Sie unter *Maximal reservierter Instanzspeicher* in der [Tabelle](resource-limits.md#hardware-generation-characteristics).
+
+**Wie kann ich die Speicherleistung auf der universellen Dienstebene optimieren?**
+
+Informationen zur Optimierung der Speicherleistung finden Sie unter [Best Practices für die Speicherleistung auf universeller Dienstebene](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525).
+
+## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
+
+**Wird der Sicherungsspeicher vom Speicher meiner verwalteten Instanz abgezogen?**
+
+Nein, der Sicherungsspeicher wird nicht vom Speicher Ihrer verwalteten Instanz abgezogen. Der Sicherungsspeicher ist unabhängig vom Instanzspeicherplatz, und seine Größe ist nicht begrenzt. Der Sicherungsspeicher wird durch den Zeitraum zum Beibehalten der Sicherung Ihrer Instanzdatenbanken begrenzt, der bis zu 35 Tagen festgelegt werden kann. Weitere Informationen finden Sie unter [Automatisierte Sicherungen](../database/automated-backups-overview.md).
+
+**Wie kann ich feststellen, wann automatisierte Sicherungen für meine verwaltete Instanz durchgeführt werden?**
+Informationen zum Nachverfolgen, wann automatisierte Sicherungen auf einer SQL Managed Instance-Instanz ausgeführt wurden, finden Sie unter [So werden automatische Sicherungen für Azure SQL Managed Instance nachverfolgt](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355).
+
+**Wird eine bedarfsgesteuerte Sicherung unterstützt?**
+Ja, Sie können im Azure Blob Storage eine vollständige Kopiesicherung erstellen. Diese kann jedoch nur in Managed Instance wieder hergestellt werden. Weitere Informationen finden Sie unter [Kopiesicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Allerdings ist die Kopiesicherung nicht möglich, wenn die Datenbank von einer dienstverwalteten TDE-Technologie verschlüsselt wird, da das für die Verschlüsselung verwendete Zertifikat nicht zugänglich ist. Verwenden Sie in diesem Fall die Point-in-Time-Wiederherstellung, um diese Datenbank auf eine andere Instanz von SQL Managed Instance zu verschieben, oder wechseln Sie zu einem kundenseitig verwalteten Schlüssel.
+
+**Wird die native Wiederherstellung (von BAK-Dateien) in Managed Instance unterstützt?**
+Ja, sie wird unterstützt und ist für SQL Server 2005 und höhere Versionen verfügbar.  Wenn Sie die native Wiederherstellung verwenden möchten, laden Sie die BAK-Datei in Azure Blob Storage hoch, und führen Sie die T-SQL-Befehle aus. Weitere Informationen finden Sie unter [Native RESTORE FROM URL-Option](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url).
+
+## <a name="business-continuity"></a>Geschäftskontinuität
+
+**Werden meine Systemdatenbanken auf die sekundäre Instanz in einer Failovergruppe repliziert?**
+
+Systemdatenbanken werden nicht in die sekundäre Instanz in einer Failovergruppe repliziert. Daher sind Szenarien, die von Objekten aus den Systemdatenbanken abhängen, in der sekundären Instanz nicht möglich, es sei denn, die Objekte werden manuell in der sekundären Instanz erstellt. Ein Problemumgehung finden Sie unter [Aktivieren von Szenarios in Abhängigkeit von Objekten in den Systemdatenbanken](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases).
+ 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen 
 
 **Welche Einschränkungen in Bezug auf den ein- und ausgehenden NSG-Datenverkehr gelten derzeit für Subnetze von verwalteten Instanzen?**
@@ -231,6 +296,44 @@ Dies ist nicht erforderlich. Sie können entweder [ein virtuelles Netzwerk für 
 
 Nein. Derzeit wird das Anordnen einer verwalteten Instanz in einem Subnetz, das bereits andere Ressourcentypen enthält, nicht unterstützt.
 
+## <a name="connectivity"></a>Konnektivität 
+
+**Kann ich mithilfe der IP-Adresse eine Verbindung mit einer verwalteten Instanz herstellen?**
+
+Nein, dies wird nicht unterstützt. Der Hostname der Instanz von Managed Instance wird dem Lastenausgleich (Load Balancer, LB) vor dem virtuellen Cluster von Managed Instance zugeordnet. Da ein einziger virtueller Cluster mehrere verwaltete Instanzen hosten könnte, könnte die Verbindung nicht an eine ordnungsgemäße verwaltete Instanz weitergeleitet werden, ohne deren Namen anzugeben.
+Weitere Informationen zur Architektur des virtuellen Clusters für SQL Managed Instances finden Sie unter [Verbindungsarchitektur für virtuelle Cluster](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
+
+**Kann eine verwaltete Instanz eine statische IP-Adresse aufweisen?**
+
+Dies wird derzeit nicht unterstützt.
+
+In seltenen, jedoch erforderlichen Situationen müssen Sie eine Onlinemigration einer verwalteten Instanz zu einem neuen virtuellen Cluster durchführen. Gegebenenfalls ist diese Migration aufgrund von Änderungen in unserem Technologiestapel erforderlich, mit denen die Sicherheit und Zuverlässigkeit des Diensts verbessert werden sollen. Die Migration zu einem neuen virtuellen Cluster führt zum Andern der IP-Adresse, die dem Hostnamen der verwalteten Instanz zugeordnet ist. Der Dienst für die verwaltete Instanz beansprucht keine Unterstützung statischer IP-Adressen und behält sich das Recht vor, die IP-Adresse im Rahmen regulärer Wartungszyklen zu ändern.
+
+Aus diesem Grund wird dringend empfohlen, keine statische IP-Adresse zu verwenden, da dies zu unnötigen Ausfallzeiten führen kann.
+
+**Verfügt Managed Instance über einen öffentlichen Endpunkt?**
+
+Ja. Managed Instanz verfügt über einen öffentlichen Endpunkt, der standardmäßig nur für die Dienstverwaltung verwendet wird. Ein Kunde kann diesen jedoch auch für den Datenzugriff aktivieren. Weitere Informationen finden Sie unter [Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Wechseln Sie zum Konfigurieren des öffentlichen Endpunkts zu [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](public-endpoint-configure.md).
+
+**Wie wird der Zugriff auf den öffentlichen Endpunkt von Managed Instance gesteuert?**
+
+Managed Instance steuert den Zugriff auf den öffentlichen Endpunkt sowohl auf Netzwerk- als auch auf Anwendungsebene.
+
+Verwaltungs- und Bereitstellungsdienste stellen über einen [Verwaltungsendpunkt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint), der einem externen Lastenausgleich zugeordnet ist, eine Verbindung mit einer verwalteten Instanz her. Der Datenverkehr wird nur an die Knoten weitergeleitet, wenn er an einer vordefinierten Gruppe von Ports empfangen wird, die ausschließlich die Verwaltungskomponenten der verwalteten Instanz verwenden. Eine integrierte Firewall auf den Knoten ist so eingerichtet, dass nur Datenverkehr von Microsoft-IP-Adressbereichen zulässig ist. Zertifikate authentifizieren gegenseitig die gesamte Kommunikation zwischen den Verwaltungskomponenten und der Verwaltungsebene. Weitere Informationen finden Sie unter [Verbindungsarchitektur für SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture).
+
+**Kann ich den öffentlichen Endpunkt verwenden, um auf die Daten in Managed Instance-Datenbanken zuzugreifen?**
+
+Ja. Der Kunde muss den Datenzugriff für öffentliche Endpunkte über das [Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) / ARM aktivieren und die NSG so konfigurieren, dass der Zugriff auf den Datenport (Portnummer 3342) gesperrt wird. Weitere Informationen finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](public-endpoint-configure.md) und [Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten](public-endpoint-overview.md). 
+
+**Kann ich einen benutzerdefinierten Port für einen oder mehrere SQL-Datenendpunkte angeben?**
+
+Nein, diese Option ist nicht verfügbar.  Für den privaten Datenendpunkt verwendet Managed Instance die Standardportnummer 1433 und für den öffentlichen Datenendpunkt die Standardportnummer 3342.
+
+**Was ist die empfohlene Vorgehensweise Verbinden von verwalteten Instanzen in unterschiedlichen Regionen?**
+
+Das Express Route-Leitungspeering ist die bevorzugte Methode. Dieses darf nicht mit dem regionsübergreifenden Peering virtueller Netzwerke kombiniert werden, das aufgrund von [Einschränkungen](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) bezüglich des internen Lastenausgleichs nicht unterstützt wird.
+
+Wenn das Express Route-Leitungspeering nicht möglich ist, besteht die einzige Option darin, eine Site-to-Site-VPN-Verbindung zu erstellen ([Azure-Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Mindern von Risiken bei der Datenexfiltration  
 
@@ -277,21 +380,6 @@ Die DNS-Konfiguration wird letztendlich aktualisiert:
 - Bei einem Plattformupgrade.
 
 Als Problemumgehung können Sie für SQL Managed Instance ein Downgrade auf vier virtuelle Kerne und danach ein Upgrade der Instanz durchführen. Dies hat die Nebenwirkung, dass die DNS-Konfiguration aktualisiert wird.
-
-
-## <a name="ip-address"></a>IP-Adresse
-
-**Kann ich mithilfe einer IP-Adresse eine Verbindung mit SQL Managed Instance herstellen?**
-
-Das Herstellen einer Verbindung mit SQL Managed Instance mithilfe einer IP-Adresse wird nicht unterstützt. Der Hostname von SQL Managed Instance wird einem Lastenausgleich (Load Balancer, LB) zugeordnet, der sich vor dem virtuellen Cluster von SQL Managed Instance befindet. Da von nur einem virtuellen Cluster mehrere verwaltete Instanzen gehostet werden können, kann die Verbindung nicht an die richtige verwaltete Instanz geroutet werden, ohne explizit deren Namen anzugeben.
-
-Weitere Informationen zur Architektur des virtuellen Clusters für SQL Managed Instances finden Sie unter [Verbindungsarchitektur für virtuelle Cluster](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
-
-**Kann SQL Managed Instance eine statische IP-Adresse aufweisen?**
-
-In seltenen Fällen (die aber manchmal erforderlich sind) müssen Sie eine Onlinemigration von SQL Managed Instance zu einem neuen virtuellen Cluster durchführen. Gegebenenfalls ist diese Migration aufgrund von Änderungen in unserem Technologiestapel erforderlich, mit denen die Sicherheit und Zuverlässigkeit des Diensts verbessert werden sollen. Die Migration zu einem neuen virtuellen Cluster führt zum Ändern der IP-Adresse, die dem Hostnamen der SQL Managed Instance zugeordnet ist. Der SQL Managed Instance-Dienst beansprucht keine Unterstützung statischer IP-Adressen und behält sich das Recht vor, die IP-Adresse im Rahmen regulärer Wartungszyklen zu ändern.
-
-Aus diesem Grund wird dringend empfohlen, keine statische IP-Adresse zu verwenden, da dies zu unnötigen Ausfallzeiten führen kann.
 
 ## <a name="change-time-zone"></a>Ändern der Zeitzone
 

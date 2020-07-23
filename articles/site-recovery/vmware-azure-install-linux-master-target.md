@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130142"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -27,7 +27,7 @@ Falls es sich bei Ihrem geschützten virtuellen Computer um einen virtuellen Win
 ## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Anleitungen zum Installieren eines Linux-Masterziels.
 
-Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microsoft F&A-Seite für Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) veröffentlichen.
+Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microsoft F&A-Seite für Azure Recovery Services](/answers/topics/azure-site-recovery.html) veröffentlichen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,6 +37,9 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microso
 * Das Masterziel sollte sich in einem Netzwerk befinden, das mit dem Prozessserver und dem Konfigurationsserver kommunizieren kann.
 * Die Version des Masterziels darf nicht höher als die des Prozess- und des Konfigurationsservers sein. Beispiel: Bei Version 9.4 des Konfigurationsservers kann die Version des Masterziels 9.4 oder 9.3, aber nicht 9.5 sein.
 * Das Masterziel kann nur ein virtueller VMware-Computer und kein physischer Server sein.
+
+> [!NOTE]
+> Stellen Sie sicher, dass Sie Storage vMotion nicht auf Verwaltungskomponenten wie dem Masterziel aktivieren. Wenn das Masterziel nach erfolgreichem erneuten Schützen verschoben wird, können die Datenträger des virtuellen Computers nicht getrennt werden. In diesem Fall tritt beim Failback ein Fehler auf.
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Größenrichtlinien für das Erstellen von Masterzielservern
 
@@ -274,16 +277,22 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 > [!NOTE]
 > Vergewissern Sie sich vor dem Installieren des Masterzielservers, dass die Datei **/etc/hosts** auf dem virtuellen Computer Einträge enthält, mit denen der lokale Hostname den IP-Adressen der einzelnen Netzwerkkarten zugeordnet wird.
 
-1. Kopieren Sie die Passphrase unter **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** auf dem Konfigurationsserver. Speichern Sie diese dann im gleichen Verzeichnis als **passphrase.txt**, indem Sie den folgenden Befehl ausführen:
+1. Führen Sie den folgenden Befehl aus, um das Masterziel zu installieren.
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. Kopieren Sie die Passphrase unter **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** auf dem Konfigurationsserver. Speichern Sie diese dann im gleichen Verzeichnis als **passphrase.txt**, indem Sie den folgenden Befehl ausführen:
 
     `echo <passphrase> >passphrase.txt`
 
     Beispiel: 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Notieren Sie sich die IP-Adresse des Konfigurationsservers. Führen Sie den folgenden Befehl aus, um den Masterzielserver zu installieren und den Server auf dem Konfigurationsserver zu registrieren.
+3. Notieren Sie sich die IP-Adresse des Konfigurationsservers. Führen Sie den folgenden Befehl aus, um den Server beim Konfigurationsserver zu registrieren.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -314,16 +323,10 @@ Nachdem die Installation abgeschlossen ist, registrieren Sie den Konfigurationss
 
 1. Notieren Sie die IP-Adresse des Konfigurationsservers. Sie benötigen sie im nächsten Schritt.
 
-2. Führen Sie den folgenden Befehl aus, um den Masterzielserver zu installieren und den Server auf dem Konfigurationsserver zu registrieren.
+2. Führen Sie den folgenden Befehl aus, um den Server beim Konfigurationsserver zu registrieren.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    Beispiel: 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich registriert wurde, wird es auf der **Site Recovery-Infrastrukturseite** im Portal aufgeführt.
@@ -348,9 +351,13 @@ Sie sehen, dass im Feld **Version** die Versionsnummer des Masterziels angegeben
 
 * Das Masterziel darf keine Momentaufnahmen auf dem virtuellen Computer aufweisen. Wenn Momentaufnahmen vorhanden sind, schlägt das Failback fehl.
 
-* Aufgrund von benutzerdefinierten NIC-Konfigurationen ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in den Dateien der Ethernet-Karte: „/etc/sysconfig/network-scripts/ifcfg-eth*“.
-    * BOOTPROTO=dhcp
-    * ONBOOT=yes
+* Aufgrund von benutzerdefinierten NIC-Konfigurationen ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in der Datei der Ethernet-Karte unter „/etc/network/interfaces“.
+    * auto eth0
+    * iface eth0 inet dhcp <br>
+
+    Starten Sie den Netzwerkdienst mit dem folgenden Befehl neu: <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>Nächste Schritte

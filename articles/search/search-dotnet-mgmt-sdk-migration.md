@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 74183eafbddada0125f739a1ac4bfed0286f9cd1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187488"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232048"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade der Versionen des Azure Search .NET Management SDK
 
@@ -27,7 +27,7 @@ Verwaltungs-SDKs zielen auf eine bestimmte Version der Verwaltungs-REST-API ab. 
 | SDK-Version | Zugehörige REST-API-Version | Neues Feature oder geändertes Verhalten |
 |-------------|--------------------------------|-------------------------------------|
 | [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-version=2020-30-20 | Fügt Endpunktsicherheit hinzu (IP-Firewalls und Integration mit [Azure Private Link](../private-link/private-endpoint-overview.md)) |
-| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-version=2019-10-01 | Verbesserungen der Benutzerfreundlichkeit |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-version=2019-10-01 | Verbesserungen der Benutzerfreundlichkeit Breaking Change für [Abfrageschlüssel auflisten](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) (GET wird nicht mehr unterstützt) |
 | [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-version=2015-08-19  | Erste Version |
 
 ## <a name="how-to-upgrade"></a>Aktualisieren

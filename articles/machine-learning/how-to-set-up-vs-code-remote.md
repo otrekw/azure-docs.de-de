@@ -1,5 +1,5 @@
 ---
-title: 'Interaktives Debuggen: VS Code- und ML Compute-Instanzen'
+title: 'Interaktives Debuggen: VS Code- und ML Compute-Instanzen (Vorschau)'
 titleSuffix: Azure Machine Learning
 description: Richten Sie VS Code Remote ein, um Ihren Code interaktiv mit Azure Machine Learning zu debuggen.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 12/09/2019
-ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433135"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203444"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie Visual Studio Code Remote auf einer Azure Machine Learning Compute-Instanz einrichten, sodass Sie Ihren **Code über VS Code interaktiv debuggen** können. 
 

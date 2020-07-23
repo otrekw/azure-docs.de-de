@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392232"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259437"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -111,14 +111,19 @@ Sie können auch Azure Private Link für Ihren Arbeitsbereich aktivieren. Privat
 
 ## <a name="data-encryption"></a>Datenverschlüsselung
 
+> [!IMPORTANT]
+> Für die Verschlüsselung in der Produktionsqualität während des __Trainings__ empfiehlt Microsoft, den Azure Machine Learning-Computecluster zu verwenden. Für die Verschlüsselung in der Produktionsqualität während der __Inferenz__ empfiehlt Microsoft die Verwendung von Azure Kubernetes Service.
+>
+> Die Azure Machine Learning-Computeinstanz ist eine Dev/Test-Umgebung. Wenn Sie sie verwenden, wird empfohlen, dass Sie Ihre Dateien in einer Dateifreigabe speichern (z. B. Notebooks und Skripte). Ihre Daten sollten in einem Datenspeicher gespeichert werden.
+
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
 > [!IMPORTANT]
 > Wenn Ihr Arbeitsbereich vertrauliche Daten enthält, wird empfohlen, das [hbi_workspace-Flag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) während der Erstellung Ihres Arbeitsbereichs festzulegen. 
 
-Das Flag `hbi_workspace` kontrolliert die Menge der von Microsoft zu Diagnosezwecken gesammelten Daten und ermöglicht eine zusätzliche Verschlüsselung in von Microsoft verwalteten Umgebungen. Darüber hinaus ermöglicht es Folgendes:
+Das Flag `hbi_workspace` kontrolliert die Menge der von Microsoft zu Diagnosezwecken gesammelten Daten und ermöglicht eine zusätzliche Verschlüsselung in von Microsoft verwalteten Umgebungen. Darüber hinaus ermöglicht es folgende Aktionen:
 
-* Startet die Verschlüsselung des lokalen Scratch-Datenträgers in Ihrem Amlcompute-Cluster, sofern Sie in diesem Abonnement keine vorherigen Cluster erstellt haben. Andernfalls müssen Sie ein Supportticket erstellen, um die Verschlüsselung des Scratch-Datenträgers Ihrer Computecluster zu aktivieren. 
+* Startet die Verschlüsselung des lokalen Scratch-Datenträgers in Ihrem Azure Machine Learning-Computecluster, sofern Sie in diesem Abonnement keine vorherigen Cluster erstellt haben. Andernfalls müssen Sie ein Supportticket erstellen, um die Verschlüsselung des Scratch-Datenträgers Ihrer Computecluster zu aktivieren. 
 * Bereinigt Ihren lokalen Scratch-Datenträger zwischen den Ausführungen.
 * Führt unter Verwendung Ihres Schlüsseltresors die sichere Übergabe der Anmeldeinformationen für Speicherkonto, Containerregistrierung und SSH-Konto von der Ausführungsebene zu Ihren Computeclustern durch.
 * Aktiviert IP-Filterung, um sicherzustellen, dass die zugrunde liegenden Batch-Pools nicht von anderen externen Diensten als AzureMachineLearningService aufgerufen werden können.

@@ -5,90 +5,29 @@ description: Erfahren Sie, wie ein Webdienst mit einem Modell bereitgestellt wir
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8569f4751c54d7b37aa15737a9b3f7f394c7e26e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/03/2020
+ms.custom: seodec18, contperfq4, tracking-python
+ms.openlocfilehash: ace657efaac323dcf48cfba95629abc59ca0cac3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983583"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231759"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Was sind Field Programmable Gate Arrays (FPGA) und wie werden sie bereitgestellt?
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dieser Artikel enthält eine Einführung in Field Programmable Gate Arrays (FPGAs) und erläutert, wie Sie Ihre Modelle mit [Azure Machine Learning](overview-what-is-azure-ml.md) für ein Azure-FPGA bereitstellen.
 
-FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarchie von neu konfigurierbaren Interconnects. Durch die Interconnects können diese Blöcke nach der Fertigung auf verschiedene Weise konfiguriert werden. Im Vergleich zu anderen Chips bieten FPGAs eine Kombination aus Programmierbarkeit und Leistung.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGAs im Vergleich zu CPU, GPU und ASIC
-
-Der folgende Abbildung und die Tabelle zeigen FPGAs im Vergleich zu anderen Prozessoren.
-
-![Diagramm zu Azure Machine Learning: FPGA-Vergleich](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
-
-|Prozessor||BESCHREIBUNG|
-|---|:-------:|------|
-|Anwendungsspezifische integrierte Schaltkreise|ASICs|Benutzerdefinierte Schaltkreise, z.B. TPUs (TensorFlow-Prozessoren) von Google, bieten die höchste Effizienz. Sie können nicht neu konfiguriert werden, wenn sich Ihre Anforderungen ändern.|
-|Field-Programmable Gate Arrays|FPGAs|FPGAs, wie sie in Azure verfügbar sind, stellen eine fast so gute Leistung wie ASICs bereit. Sie sind auch flexibel und können im Lauf der Zeit erneut konfiguriert werden, um neue Programmlogik zu implementieren.|
-|Grafikprozessoren|GPUs|Eine beliebte Wahl für KI-Berechnungen. GPUs bieten Funktionen zur Parallelverarbeitung und sind beim Grafikrendering schneller als CPUs.|
-|Zentralprozessoren|CPUs|CPUs sind Allzweckprozessoren, deren Leistung für die Grafik- und Videoverarbeitung nicht optimal ist.|
-
-FPGAs in Azure basieren auf den FPGA-Geräten von Intel, die Data Scientists und Entwickler verwenden, um KI-Echtzeitberechnungen zu beschleunigen. Diese FPGA-fähige Architektur bietet Leistung, Flexibilität und Skalierbarkeit und ist in Azure verfügbar.
-
-FPGAs ermöglichen es, eine geringe Latenzzeit für Echtzeit-Rückschlussanforderungen (oder Modellbewertungsanforderungen) zu erreichen. Asynchrone Anforderungen (Batchverarbeitung) sind nicht erforderlich. Die Batchverarbeitung kann zu Wartezeiten führen, weil mehr Daten verarbeitet werden müssen. Bei Implementierungen von neuronalen Prozessoren ist keine Batchverarbeitung erforderlich. Daher kann die Wartezeit im Vergleich zu CPU- und GPU-Prozessoren um ein Vielfaches geringer ausfallen.
-
-### <a name="reconfigurable-power"></a>Neu konfigurierbare Leistung
-Sie können FPGAs für verschiedene Arten von Machine Learning-Modellen neu konfigurieren. Durch diese Flexibilität ist es einfacher, die Anwendungen auf der Grundlage der optimalen numerischen Genauigkeit und des verwendeten Speichermodells zu beschleunigen. Da FPGAs neu konfigurierbar sind, können Sie mit den Anforderungen der sich schnell ändernden KI-Algorithmen Schritt halten.
-
-## <a name="whats-supported-on-azure"></a>In Azure unterstützte Funktionen
-Microsoft Azure ist die weltweit größte Cloudinvestition in FPGAs. Mit dieser FPGA-fähigen Hardwarearchitektur werden trainierte neuronale Netze schnell und mit geringerer Wartezeit ausgeführt. Azure kann vortrainierte DNNs (Deep Neural Networks) FPGA-übergreifend parallelisieren, um Ihren Dienst aufzuskalieren. Die DNNs können als Deep Featurizer zum Transferlernen vortrainiert oder durch aktualisierte Gewichtungen optimiert werden.
-
-FPGAs in Azure unterstützen:
-
-+ Szenarien zur Bildklassifizierung und -erkennung
-+ TensorFlow-Bereitstellung (erfordert Tensorflow 1.x)
-+ Intel FPGA-Hardware
-
-Diese DNN-Modelle sind derzeit verfügbar:
-  - ResNet 50
-  - ResNet 152
-  - DenseNet-121
-  - VGG-16
-  - SSD-VGG
-
-FPGAs sind in diesen Azure-Regionen verfügbar:
-  - East US
-  - Asien, Südosten
-  - Europa, Westen
-  - USA, Westen 2
-
-> [!IMPORTANT]
-> Um die Latenz und den Durchsatz zu optimieren, sollte sich Ihr Client, der Daten an das FPGA-Modell sendet, in einer der oben genannten Regionen befinden (in derjenigen Region, in der Sie das Modell bereitgestellt haben).
-
-Die **PBS-Familie virtueller Azure-Computer** enthält Intel Arria 10 FPGAs. In der Azure-Kontingentzuteilung wird dafür „Standard PBS Family vCPUs“ angezeigt. Der virtuelle PB6-Computer verfügt über sechs vCPUs und ein FPGA. Er wird von Azure ML automatisch im Rahmen der Bereitstellung eines Modells in einem FPGA bereitgestellt. Er wird nur mit Azure ML verwendet und kann keine beliebigen Bitströme ausführen. Sie können beispielsweise keine Bitströme auf dem FPGA für Verschlüsselung, Codierung usw. einspielen.
-
-### <a name="scenarios-and-applications"></a>Szenarien und Anwendungen
-
-Azure-FPGAs sind in Azure Machine Learning integriert. Microsoft verwendet FPGAs für die DNN-Auswertung, die Rangfolge bei der Bing-Suche und die Beschleunigung von Software Defined Networking (SDN), um die Latenz zu verringern und gleichzeitig CPUs für andere Aufgaben freizugeben.
-
-In den folgenden Szenarien werden FPGAs verwendet:
-+ [Automatisiertes optisches Untersuchungssystem](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
-
-+ [Landnutzungskartierung](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
-
-## <a name="deploy-models-on-fpgas"></a>Bereitstellen von Modellen auf FPGAs
-
-Sie können ein Modell als Webdienst auf FPGAs mit [hardwarebeschleunigten Azure Machine Learning-Modellen](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py) bereitstellen. Verwenden von FPGAs bietet Rückschlüsse mit extrem geringen Latenzzeiten, sogar mit einer einzigen Batchgröße. Rückschlüsse oder Modellbewertungen stellen die Phase dar, in der das bereitgestellte Modell für die Vorhersage verwendet wird (meist für Produktionsdaten).
-
-### <a name="prerequisites"></a>Voraussetzungen
-
-- Ein Azure-Abonnement.  Wenn Sie keins besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
-
+- Ein Azure-Abonnement. Wenn Sie noch nicht über ein Konto verfügen, müssen Sie ein Konto mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) erstellen. (Kostenlose Azure-Konten sind nicht für FPGA-Kontingente geeignet.)
+- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - FPGA-Kontingent. Überprüfen Sie mithilfe der Azure CLI, ob Sie über ein Kontingent verfügen:
 
     ```azurecli-interactive
@@ -118,17 +57,75 @@ Sie können ein Modell als Webdienst auf FPGAs mit [hardwarebeschleunigten Azure
     pip install --upgrade azureml-accel-models[cpu]
     ```
 
-### <a name="1-create-and-containerize-models"></a>1. Erstellen und Containerisieren von Modellen
+## <a name="what-are-fpgas"></a>Was sind FPGAs?
 
-Dieses Dokument beschreibt, wie ein TensorFlow-Diagramm erstellt wird, um das Eingabebild vorzuverarbeiten, es mit ResNet 50 auf einem FPGA als Feature zu erklären und die Features dann über einen anhand eines ImageNet-Datasets trainierten Klassifizierer auszuführen.
+FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarchie von neu konfigurierbaren Interconnects. Durch die Interconnects können diese Blöcke nach der Fertigung auf verschiedene Weise konfiguriert werden. Im Vergleich zu anderen Chips bieten FPGAs eine Kombination aus Programmierbarkeit und Leistung. 
 
-Befolgen Sie die Anweisungen für folgende Punkte:
+Der folgende Abbildung und die Tabelle zeigen FPGAs im Vergleich zu anderen Prozessoren.
+
+![Diagramm zu Azure Machine Learning: FPGA-Vergleich](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
+
+|Prozessor| Abkürzung |BESCHREIBUNG|
+|---|:-------:|------|
+|Anwendungsspezifische integrierte Schaltkreise|ASICs|Benutzerdefinierte Schaltkreise, z.B. TPUs (TensorFlow-Prozessoren) von Google, bieten die höchste Effizienz. Sie können nicht neu konfiguriert werden, wenn sich Ihre Anforderungen ändern.|
+|Field-Programmable Gate Arrays|FPGAs|FPGAs, wie sie in Azure verfügbar sind, stellen eine fast so gute Leistung wie ASICs bereit. Sie sind auch flexibel und können im Lauf der Zeit erneut konfiguriert werden, um neue Programmlogik zu implementieren.|
+|Grafikprozessoren|GPUs|Eine beliebte Wahl für KI-Berechnungen. GPUs bieten Funktionen zur Parallelverarbeitung und sind beim Grafikrendering schneller als CPUs.|
+|Zentralprozessoren|CPUs|CPUs sind Allzweckprozessoren, deren Leistung für die Grafik- und Videoverarbeitung nicht optimal ist.|
+
+FPGAs in Azure basieren auf den FPGA-Geräten von Intel, die Data Scientists und Entwickler verwenden, um KI-Echtzeitberechnungen zu beschleunigen. Diese FPGA-fähige Architektur bietet Leistung, Flexibilität und Skalierbarkeit und ist in Azure verfügbar.
+
+FPGAs ermöglichen es, eine geringe Latenzzeit für Echtzeit-Rückschlussanforderungen (oder Modellbewertungsanforderungen) zu erreichen. Asynchrone Anforderungen (Batchverarbeitung) sind nicht erforderlich. Die Batchverarbeitung kann zu Wartezeiten führen, weil mehr Daten verarbeitet werden müssen. Bei Implementierungen von neuronalen Prozessoren ist keine Batchverarbeitung erforderlich. Daher kann die Wartezeit im Vergleich zu CPU- und GPU-Prozessoren um ein Vielfaches geringer ausfallen.
+
+### <a name="reconfigurable-power"></a>Neu konfigurierbare Leistung
+
+Sie können FPGAs für verschiedene Arten von Machine Learning-Modellen neu konfigurieren. Durch diese Flexibilität ist es einfacher, die Anwendungen auf der Grundlage der optimalen numerischen Genauigkeit und des verwendeten Speichermodells zu beschleunigen. Da FPGAs neu konfigurierbar sind, können Sie mit den Anforderungen der sich schnell ändernden KI-Algorithmen Schritt halten.
+
+### <a name="fpga-support-in-azure"></a>FPGA-Unterstützung in Azure
+
+Microsoft Azure ist die weltweit größte Cloudinvestition in FPGAs. Microsoft verwendet FPGAs für die DNN-Auswertung, die Rangfolge bei der Bing-Suche und die Beschleunigung von Software Defined Networking (SDN), um die Latenz zu verringern und gleichzeitig CPUs für andere Aufgaben freizugeben.
+
+Azure-FPGAs sind in Azure Machine Learning integriert. Azure kann vortrainierte DNNs (Deep Neural Networks) FPGA-übergreifend parallelisieren, um Ihren Dienst aufzuskalieren. Die DNNs können als Deep Featurizer zum Transferlernen vortrainiert oder durch aktualisierte Gewichtungen optimiert werden.
+
+FPGAs in Azure unterstützen:
+
++ Szenarien zur Bildklassifizierung und -erkennung
++ TensorFlow-Bereitstellung (erfordert Tensorflow 1.x)
++ Intel FPGA-Hardware
+
+Diese DNN-Modelle sind derzeit verfügbar:
+
+  - ResNet 50
+  - ResNet 152
+  - DenseNet-121
+  - VGG-16
+  - SSD-VGG
+
+FPGAs sind in diesen Azure-Regionen verfügbar:
+
+  - East US
+  - Asien, Südosten
+  - Europa, Westen
+  - USA, Westen 2
+
+> [!IMPORTANT]
+> Um die Latenz und den Durchsatz zu optimieren, sollte sich Ihr Client, der Daten an das FPGA-Modell sendet, in einer der oben genannten Regionen befinden (in derjenigen Region, in der Sie das Modell bereitgestellt haben).
+
+Die **PBS-Familie virtueller Azure-Computer** enthält Intel Arria 10 FPGAs. In der Azure-Kontingentzuteilung wird dafür „Standard PBS Family vCPUs“ angezeigt. Der virtuelle PB6-Computer verfügt über sechs vCPUs und ein FPGA. Er wird von Azure ML automatisch im Rahmen der Bereitstellung eines Modells in einem FPGA bereitgestellt. Er wird nur mit Azure ML verwendet und kann keine beliebigen Bitströme ausführen. Sie können beispielsweise keine Bitströme auf dem FPGA für Verschlüsselung, Codierung usw. einspielen.
+
+## <a name="deploy-models-on-fpgas"></a>Bereitstellen von Modellen auf FPGAs
+
+Sie können ein Modell als Webdienst auf FPGAs mit [hardwarebeschleunigten Azure Machine Learning-Modellen](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py) bereitstellen. Verwenden von FPGAs bietet Rückschlüsse mit extrem geringen Latenzzeiten, sogar mit einer einzigen Batchgröße. Rückschlüsse oder Modellbewertungen stellen die Phase dar, in der das bereitgestellte Modell für die Vorhersage verwendet wird (meist für Produktionsdaten).
+
+Für das Bereitstellen eines Modells in einem FPGA sind die folgenden Schritte erforderlich:
 
 * Definieren des TensorFlow-Modells
-* Konvertieren des Modells
-* Bereitstellen des Modells
+* Konvertieren des Modells in ONNX
+* Bereitstellen des Modells in der Cloud oder auf einem Edgegerät
 * Nutzen des bereitgestellten Modells
-* Löschen bereitgestellter Dienste
+
+In diesem Beispiel erstellen Sie ein TensorFlow-Diagramm, um das Eingabebild vorzuverarbeiten, machen daraus mit ResNet50 einen Featurizer für ein FPGA und führen dann die Features über einen mit dem ImageNet-Dataset trainierten Klassifizierer aus. Anschließend wird das Modell in einem AKS-Cluster bereitgestellt.
+
+## <a name="1-define-the-tensorflow-model"></a>1. Definieren des TensorFlow-Modells
 
 Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), um eine Dienstdefinition zu erstellen. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme automatisch in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde bereits zur Ausführung im FPGA bereitgestellt.
 
@@ -144,7 +141,7 @@ Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsof
    print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
    ```
 
-2. Verarbeiten Sie das Bild vor. Die Eingabe an den Webdienst ist ein JPEG-Bild.  Der erste Schritt besteht im Decodieren und Vorverarbeiten des JPEG-Bilds.  JPEG-Bilder werden als Zeichenfolgen behandelt, und das Ergebnis sind Tensor-Elemente, die als Eingaben für das ResNet 50-Modell verwendet werden.
+1. Verarbeiten Sie das Bild vor. Die Eingabe an den Webdienst ist ein JPEG-Bild.  Der erste Schritt besteht im Decodieren und Vorverarbeiten des JPEG-Bilds.  JPEG-Bilder werden als Zeichenfolgen behandelt, und das Ergebnis sind Tensor-Elemente, die als Eingaben für das ResNet 50-Modell verwendet werden.
 
    ```python
    # Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
@@ -229,6 +226,10 @@ Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsof
      output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
      ```
 
+## <a name="2-convert-the-model"></a>2. Konvertieren des Modells
+
+Vor der Bereitstellung des Modells in FPGAs müssen Sie es in das ONNX-Format konvertieren.
+
 1. [Registrieren](concept-model-management-and-deployment.md) Sie das Modell über das SDK anhand der ZIP-Datei in Azure Blob Storage. Das Hinzufügen von Tags und anderen Metadaten zum Modell ermöglicht Ihnen das Nachverfolgen Ihrer trainierten Modelle.
 
    ```python
@@ -270,7 +271,9 @@ Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsof
          converted_model.id, converted_model.created_time, '\n')
    ```
 
-1. Erstellen Sie ein Docker-Image aus dem konvertierten Modell und allen Abhängigkeiten.  Dieses Docker-Image kann dann bereitgestellt und instanziiert werden.  Zu den unterstützten Bereitstellungszielen zählen AKS in der Cloud oder ein Edge-Gerät (etwa [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)).  Sie können auch Tags und Beschreibungen für das registrierte Docker-Image hinzufügen.
+## <a name="3-containerize-and-deploy-the-model"></a>3. Containerisieren und Bereitstellen des Modells
+
+Erstellen Sie ein Docker-Image aus dem konvertierten Modell und allen Abhängigkeiten.  Dieses Docker-Image kann dann bereitgestellt und instanziiert werden.  Zu den unterstützten Bereitstellungszielen zählen AKS in der Cloud oder ein Edge-Gerät (etwa [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)).  Sie können auch Tags und Beschreibungen für das registrierte Docker-Image hinzufügen.
 
    ```python
    from azureml.core.image import Image
@@ -295,53 +298,60 @@ Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsof
            i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
    ```
 
-### <a name="2-deploy-to-cloud-or-edge"></a>2. Bereitstellen in der Cloud oder in Edge
+### <a name="deploy-to-aks-cluster"></a>Bereitstellen in einem AKS-Cluster
 
-Um Ihr Modell als hochgradig skalierbaren Produktionswebdienst bereitzustellen, verwenden Sie Azure Kubernetes Service (AKS). Sie können mit dem Azure Machine Learning SDK, der CLI oder [Azure Machine Learning Studio](https://ml.azure.com) einen neuen erstellen.
+1. Um Ihr Modell als hochgradig skalierbaren Produktionswebdienst bereitzustellen, verwenden Sie Azure Kubernetes Service (AKS). Sie können mit dem Azure Machine Learning SDK, der CLI oder [Azure Machine Learning Studio](https://ml.azure.com) einen neuen erstellen.
 
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
+    ```python
+    from azureml.core.compute import AksCompute, ComputeTarget
+    
+    # Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
+    prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
+                                                        agent_count = 1,
+                                                        location = "eastus")
+    
+    aks_name = 'my-aks-cluster'
+    # Create the cluster
+    aks_target = ComputeTarget.create(workspace=ws,
+                                      name=aks_name,
+                                      provisioning_configuration=prov_config)
+    ```
 
-# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2". If no value is specified, the default is "eastus".
-prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
-                                                    agent_count = 1,
-                                                    location = "eastus")
+    Die AKS-Bereitstellung kann etwa 15 Minuten dauern.  Überprüfen Sie, ob die Bereitstellung erfolgreich war.
 
-aks_name = 'my-aks-cluster'
-# Create the cluster
-aks_target = ComputeTarget.create(workspace=ws,
-                                  name=aks_name,
-                                  provisioning_configuration=prov_config)
-```
+    ```python
+    aks_target.wait_for_completion(show_output=True)
+    print(aks_target.provisioning_state)
+    print(aks_target.provisioning_errors)
+    ```
 
-Die AKS-Bereitstellung kann etwa 15 Minuten dauern.  Überprüfen Sie, ob die Bereitstellung erfolgreich war.
+1. Stellen Sie den Container im AKS-Cluster bereit.
 
-```python
-aks_target.wait_for_completion(show_output=True)
-print(aks_target.provisioning_state)
-print(aks_target.provisioning_errors)
-```
+    ```python
+    from azureml.core.webservice import Webservice, AksWebservice
+    
+    # For this deployment, set the web service configuration without enabling auto-scaling or authentication for testing
+    aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
+                                                    num_replicas=1,
+                                                    auth_enabled=False)
+    
+    aks_service_name = 'my-aks-service'
+    
+    aks_service = Webservice.deploy_from_image(workspace=ws,
+                                               name=aks_service_name,
+                                               image=image,
+                                               deployment_config=aks_config,
+                                               deployment_target=aks_target)
+    aks_service.wait_for_deployment(show_output=True)
+    ```
 
-Stellen Sie den Container im AKS-Cluster bereit.
-```python
-from azureml.core.webservice import Webservice, AksWebservice
+### <a name="deploy-to-a-local-edge-server"></a>Bereitstellung auf einem lokalen Edge-Server
 
-# For this deployment, set the web service configuration without enabling auto-scaling or authentication for testing
-aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
-                                                num_replicas=1,
-                                                auth_enabled=False)
+Alle [Azure Data Box-Edge-Geräte](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+) enthalten ein FPGA für die Ausführung des Modells.  Es kann nur jeweils ein Modell gleichzeitig auf dem FPGA ausgeführt werden.  Um ein anderes Modell auszuführen, stellen Sie einfach einen neuen Container bereit. Anleitungen und Beispielcode finden Sie in [diesem Azure-Beispiel](https://github.com/Azure-Samples/aml-hardware-accelerated-models).
 
-aks_service_name = 'my-aks-service'
+## <a name="4-consume-the-deployed-model"></a>4. Nutzen des bereitgestellten Modells
 
-aks_service = Webservice.deploy_from_image(workspace=ws,
-                                           name=aks_service_name,
-                                           image=image,
-                                           deployment_config=aks_config,
-                                           deployment_target=aks_target)
-aks_service.wait_for_deployment(show_output=True)
-```
-
-#### <a name="test-the-cloud-service"></a>Testen des Clouddiensts
 Das Docker-Image unterstützt gRPC und die TensorFlow Serving-API „predict“.  Verwenden Sie den Beispielclient zum Aufrufen des Docker-Images, um Vorhersagen aus dem Modell zu erhalten.  Clientbeispielcode ist verfügbar:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
 - [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
@@ -385,7 +395,8 @@ for top in sorted_results[:5]:
     print(classes_entries[top[0]], 'confidence:', top[1])
 ```
 
-### <a name="clean-up-the-service"></a>Bereinigen des Diensts
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Löschen Sie Ihren Webdienst, das Image und das Modell (muss in dieser Reihenfolge ausgeführt werden, da Abhängigkeiten vorhanden sind).
 
 ```python
@@ -396,11 +407,6 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-### <a name="deploy-to-a-local-edge-server"></a>Bereitstellung auf einem lokalen Edge-Server
-
-Alle [Azure Data Box-Edge-Geräte](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
-) enthalten ein FPGA für die Ausführung des Modells.  Es kann nur jeweils ein Modell gleichzeitig auf dem FPGA ausgeführt werden.  Um ein anderes Modell auszuführen, stellen Sie einfach einen neuen Container bereit. Anleitungen und Beispielcode finden Sie in [diesem Azure-Beispiel](https://github.com/Azure-Samples/aml-hardware-accelerated-models).
-
 ## <a name="secure-fpga-web-services"></a>Sichere FPGA-Webdienste
 
 Zum Absichern von FPGA-Webdiensten lesen Sie das Dokument [Absichern von Webdiensten](how-to-secure-web-service.md).
@@ -410,9 +416,8 @@ Zum Absichern von FPGA-Webdiensten lesen Sie das Dokument [Absichern von Webdien
 Sehen Sie sich diese Notebooks, Videos und Blogs an:
 
 + Verschiedene [Beispielnotebooks](https://aka.ms/aml-accel-models-notebooks)
-
 + [Hyperscalehardware: ML mit Skalierung über Azure und FPGA: Build 2018 (Video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
-
 + [Einblicke in die FPGA-basierte konfigurierbare Cloud von Microsoft (Video)](https://channel9.msdn.com/Events/Build/2017/B8063)
-
 + [Project Brainwave für KI in Echtzeit: Projektstartseite](https://www.microsoft.com/research/project/project-brainwave/)
++ [Automatisiertes optisches Untersuchungssystem](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
++ [Landnutzungskartierung](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)

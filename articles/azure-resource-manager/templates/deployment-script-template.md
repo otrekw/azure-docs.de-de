@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 07/08/2020
 ms.author: jgao
-ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168572"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134564"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Verwenden von Bereitstellungsskripts in Vorlagen (Vorschauversion)
 
@@ -74,10 +74,10 @@ Die Bereitstellungsskriptressource ist nur in den Regionen verfügbar, in denen 
 
   ---
 
-- **Azure PowerShell** oder **Azure CLI**. Eine Liste der unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list); eine Liste der unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list).
+- **Azure PowerShell** oder **Azure CLI**. Eine Liste mit den unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Eine Liste mit den unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
     >[!IMPORTANT]
-    > Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für das Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](https://docs.microsoft.com/cli/azure/release-notes-azure-cli?view=azure-cli-latest). Wenn eine nicht unterstützte Version verwendet wird, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
+    > Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für das Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest). Wenn eine nicht unterstützte Version verwendet wird, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
 
     Sie benötigen diese Versionen nicht für Bereitstellungsvorlagen. Für das lokale Testen von Bereitstellungsskripts sind diese Versionen jedoch erforderlich. Siehe [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Sie können ein vorkonfiguriertes Docker-Image verwenden.  Weitere Informationen finden Sie unter [Konfigurieren der Entwicklungsumgebung](#configure-development-environment).
 
@@ -108,7 +108,7 @@ Nachfolgend finden Sie ein JSON-Beispiel.  Das neueste Vorlagenschema finden Sie
       "storageAccountKey": "myKey"
     },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
-    "arguments": "[concat('-name ', parameters('name'))]",
+    "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
         "name": "someSecret",
@@ -131,7 +131,7 @@ Nachfolgend finden Sie ein JSON-Beispiel.  Das neueste Vorlagenschema finden Sie
 ```
 
 > [!NOTE]
-> Dieses Beispiel dient zu Demonstrationszwecken.  **scriptContent** und **primaryScriptUris** dürfen nicht zusammen in einer Vorlage vorkommen.
+> Dieses Beispiel dient zu Demonstrationszwecken.  **scriptContent** und **primaryScriptUri** dürfen nicht gemeinsam in einer Vorlage enthalten sein.
 
 Details zu Eigenschaftswerten:
 
@@ -139,22 +139,35 @@ Details zu Eigenschaftswerten:
 - **kind:** Geben Sie den Typ des Skripts an. Zurzeit werden Azure PowerShell- und Azure CLI-Skripts unterstützt. Die Werte sind **AzurePowerShell** und **AzureCLI**.
 - **forceUpdateTag**: Wenn Sie diesen Wert zwischen Vorlagenbereitstellungen ändern, wird das Bereitstellungsskript erneut ausgeführt. Verwenden Sie eine der Funktionen newGuid() oder utcNow(), die als defaultValue eines Parameters festgelegt werden muss. Weitere Informationen finden Sie unter [Mehrmaliges Ausführen des Skripts](#run-script-more-than-once).
 - **containerSettings**: Geben Sie die Einstellungen zum Anpassen der Azure-Containerinstanz an.  **containerGroupName** dient zum Angeben des Namens der Containergruppe.  Falls nicht angegeben, wird der Gruppenname automatisch generiert.
-- **storageAccountSettings**: Geben Sie die Einstellungen zur Verwendung eines vorhandenen Speicherkontos an. Falls nicht angegeben, wird ein Speicherkonto automatisch erstellt. Weitere Informationen finden Sie unter [Verwenden eines vorhandenen Speicherkontos](#use-an-existing-storage-account).
+- **storageAccountSettings**: Geben Sie die Einstellungen zur Verwendung eines vorhandenen Speicherkontos an. Falls nicht angegeben, wird ein Speicherkonto automatisch erstellt. Weitere Informationen finden Sie unter [Verwenden eines vorhandenen Speicherkontos](#use-existing-storage-account).
 - **azPowerShellVersion**/**azCliVersion**: Geben Sie die zu verwendende Modulversion an. Eine Liste der unterstützten PowerShell- und CLI-Versionen finden Sie unter [Voraussetzungen](#prerequisites).
 - **arguments:** Geben Sie die Parameterwerte an. Die Werte werden durch Leerzeichen voneinander getrennt.
+
+    In Bereitstellungsskripts werden die Argumente mithilfe des Systemaufrufs [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) in ein Zeichenfolgenarray unterteilt. Dies ist erforderlich, da die Argumente als [Befehlseigenschaft](/rest/api/container-instances/containergroups/createorupdate#containerexec) an die Azure-Containerinstanz übergeben werden und es sich bei der Befehlseigenschaft um ein Zeichenfolgenarray handelt.
+
+    Wenn die Argumente Escapezeichen enthalten, verwenden Sie [JsonEscaper](https://www.jsonescaper.com/), um die Zeichen mit doppelten Escapezeichen zu versehen. Fügen Sie Ihre Originalzeichenfolge mit Escapezeichen in das Tool ein, und wählen Sie dann **Escape** (Mit Escapezeichen versehen) aus.  Daraufhin wird von dem Tool eine Zeichenfolge mit doppelten Escapezeichen ausgegeben. In der vorherigen Beispielvorlage wird beispielsweise das Argument **-name \\"John Dole\\"** verwendet.  Die Zeichenfolge mit Escapezeichen ist **-name \\\\\\"John dole\\\\\\"** .
+
+    Wenn Sie einen ARM-Vorlagenparameter vom Typ „Objekt“ als Argument übergeben möchten, konvertieren Sie das Objekt mithilfe der Funktion [string()](./template-functions-string.md#string) in eine Zeichenfolge, und verwenden Sie anschließend die Funktion [replace()](./template-functions-string.md#replace), um alle Vorkommen von **\\"** durch **\\\\\\"** zu ersetzen. Beispiel:
+
+    ```json
+    replace(string(parameters('tables')), '\"', '\\\"')
+    ```
+
+    Eine Beispielvorlage finden Sie [hier](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json).
+
 - **environmentVariables**: Geben Sie die Umgebungsvariablen an, die an das Skript übergeben werden sollen. Weitere Informationen finden Sie unter [Entwickeln von Bereitstellungsskripts](#develop-deployment-scripts).
 - **scriptContent**: Geben Sie den Skriptinhalt an. Wenn Sie ein externes Skript ausführen möchten, verwenden Sie stattdessen `primaryScriptUri`. Beispiele finden Sie unter [Verwenden von Inlineskripts](#use-inline-scripts) und [Verwenden externer Skripts](#use-external-scripts).
 - **primaryScriptUri**: Geben Sie eine öffentlich zugängliche URL zum primären Bereitstellungsskript mit unterstützten Dateierweiterungen an.
 - **supportingScriptUris**: Geben Sie ein Array öffentlich zugänglicher URLs zu unterstützenden Dateien an, die in `ScriptContent` oder `PrimaryScriptUri` aufgerufen werden.
 - **timeout:** Geben Sie die maximal zulässige Ausführungsdauer für das Skript im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) an. Der Standardwert ist **P1D**.
 - **cleanupPreference**. Geben Sie die Einstellung für das Bereinigen der Bereitstellungsressourcen an, nachdem die Skriptausführung beendet wurde. Die Standardeinstellung ist **Always**. Damit werden die Ressourcen unabhängig vom Endzustand (Erfolg, Fehler, Abbruch) gelöscht. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
-- **retentionInterval**: Geben Sie das Intervall an, das vom Dienst für die Aufbewahrung der Bereitstellungsskriptressourcen verwendet wird, nachdem das Bereitstellungsskript einen Beendigungszustand erreicht. Die Bereitstellungsskriptressourcen werden gelöscht, wenn dieser Zeitraum abgelaufen ist. Die Dauer basiert auf dem [ISO 8601-Muster](https://en.wikipedia.org/wiki/ISO_8601). Der Standardwert ist **P1D** und bedeutet sieben Tage. Diese Eigenschaft wird verwendet, wenn cleanupPreference auf *OnExpiration* festgelegt ist. Die *OnExpiration*-Eigenschaft ist derzeit nicht aktiviert. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
+- **retentionInterval**: Geben Sie das Intervall an, das vom Dienst für die Aufbewahrung der Bereitstellungsskriptressourcen verwendet wird, nachdem das Bereitstellungsskript einen Beendigungszustand erreicht. Die Bereitstellungsskriptressourcen werden gelöscht, wenn dieser Zeitraum abgelaufen ist. Die Dauer basiert auf dem [ISO 8601-Muster](https://en.wikipedia.org/wiki/ISO_8601). Der Standardwert lautet **P1D** und steht für sieben Tage. Diese Eigenschaft wird verwendet, wenn cleanupPreference auf *OnExpiration* festgelegt ist. Die *OnExpiration*-Eigenschaft ist derzeit nicht aktiviert. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>Weitere Beispiele
 
-- [Erstellen und Zuweisen eines Zertifikats zu einem Schlüsseltresor](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
-
-- [Erstellen und Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zu einer Ressourcengruppe und Ausführen eines Bereitstellungsskripts](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json).
+- [Beispiel 1:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json) In diesem Beispiel wird ein Schlüsseltresor erstellt und ein Bereitstellungsskript verwendet, um dem Schlüsseltresor ein Zertifikat zuzuweisen.
+- [Beispiel 2:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json) In diesem Beispiel werden eine Ressourcengruppe auf der Abonnementebene und ein Schlüsseltresor in der Ressourcengruppe erstellt. Anschließend wird ein Bereitstellungsskript verwendet, um dem Schlüsseltresor ein Zertifikat zuzuweisen.
+- [Beispiel 3:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json) In diesem Beispiel wird eine benutzerseitig verwaltete Identität erstellt. Der Identität wird die Rolle „Mitwirkender“ auf der Ressourcengruppenebene zugewiesen, und es wird ein Schlüsseltresor erstellt. Anschließend wird ein Bereitstellungsskript verwendet, um dem Schlüsseltresor ein Zertifikat zuzuweisen.
 
 > [!NOTE]
 > Es wird empfohlen, eine benutzerseitig zugewiesene Identität zu erstellen und im Voraus Berechtigungen zu gewähren. Möglicherweise erhalten Sie anmeldungs- und berechtigungsbezogene Fehler, wenn Sie in derselben Vorlage, in der Sie Bereitstellungsskripts ausführen, die Identität erstellen und Berechtigungen gewähren. Es dauert einige Zeit, bis die Berechtigungen wirksam werden.
@@ -168,7 +181,7 @@ Für die folgende Vorlage wurde eine Ressource mit dem Typ `Microsoft.Resources/
 > [!NOTE]
 > Da die Inlinebereitstellungsskripts in doppelte Anführungszeichen eingeschlossen sind, muss für Zeichenfolgen innerhalb der Bereitstellungsskripts **&#92;** als Escapezeichen verwendet werden, oder sie müssen in einfache Anführungszeichen eingeschlossen werden. Sie können auch, wie im vorherigen JSON-Beispiel gezeigt, eine Zeichenfolgenersetzung in Erwägung ziehen.
 
-Das Skript akzeptiert einen Parameter und gibt den Parameterwert aus. **DeploymentScriptOutputs** wird zum Speichern von Ausgaben verwendet.  Im Abschnitt „outputs“ zeigt die Zeile **value** an, wie auf die gespeicherten Werte zugegriffen wird. `Write-Output` wird zum Debuggen verwendet. Informationen zum Zugreifen auf die Ausgabedatei finden Sie unter [Debuggen von Bereitstellungsskripts](#debug-deployment-scripts).  Beschreibungen der Eigenschaften finden Sie unter [Beispielvorlagen](#sample-templates).
+Das Skript akzeptiert einen Parameter und gibt den Parameterwert aus. **DeploymentScriptOutputs** wird zum Speichern von Ausgaben verwendet.  Im Abschnitt „outputs“ zeigt die Zeile **value** an, wie auf die gespeicherten Werte zugegriffen wird. `Write-Output` wird zum Debuggen verwendet. Informationen zum Zugreifen auf die Ausgabedatei finden Sie unter [Überwachen von Bereitstellungsskripts und Behandeln von Problemen](#monitor-and-troubleshoot-deployment-scripts).  Beschreibungen der Eigenschaften finden Sie unter [Beispielvorlagen](#sample-templates).
 
 Wählen Sie zum Ausführen des Skripts **Jetzt testen** aus, um die Cloud Shell zu öffnen, und fügen Sie anschließend den folgenden Code in den Shellbereich ein.
 
@@ -244,65 +257,7 @@ Bereitstellungsskriptausgaben müssen am AZ_SCRIPTS_OUTPUT_PATH-Speicherort gesp
 
 Im vorherigen Beispiel wird [jq](https://stedolan.github.io/jq/) verwendet. Dies ist in den Containerimages enthalten. Weitere Informationen finden Sie unter [Konfigurieren der Entwicklungsumgebung](#configure-development-environment).
 
-## <a name="develop-deployment-scripts"></a>Entwickeln von Bereitstellungsskripts
-
-### <a name="handle-non-terminating-errors"></a>Behandeln von Fehlern ohne Abbruch
-
-Sie können steuern, wie PowerShell auf Fehler ohne Abbruch reagiert, indem Sie die Variable [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) in Ihrem Bereitstellungsskript verwenden. Der Wert wird vom Skriptdienst nicht festgelegt bzw. geändert.  Trotz des Werts, den Sie für „$ErrorActionPreference“ festgelegt haben, legt das Bereitstellungsskript den Bereitstellungsstatus der Ressource auf *Fehler* fest, wenn bei dem Skript ein Fehler auftritt.
-
-### <a name="pass-secured-strings-to-deployment-script"></a>Übergeben von sicheren Zeichenfolgen an Bereitstellungsskripts
-
-Das Festlegen von Umgebungsvariablen (EnvironmentVariable) in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Das Bereitstellungsskript verarbeitet nicht gesicherte und gesicherte Umgebungsvariablen auf dieselbe Weise wie Azure Container Instance. Weitere Informationen finden Sie unter [Festlegen von Umgebungsvariablen in Container Instances](../../container-instances/container-instances-environment-variables.md#secure-values).
-
-Die maximal zulässige Größe für Umgebungsvariablen beträgt 64 KB.
-
-## <a name="debug-deployment-scripts"></a>Debuggen von Bereitstellungsskripts
-
-Der Skriptdienst erstellt für die Ausführung von Skripts im Hintergrund ein [Speicherkonto](../../storage/common/storage-account-overview.md) (es sei denn, Sie geben ein vorhandenes Speicherkonto an) und eine [Containerinstanz](../../container-instances/container-instances-overview.md). Wenn diese Ressourcen automatisch vom Skriptdienst erstellt werden, haben die Namen der Ressourcen das Suffix **azscripts**.
-
-![Resource Manager-Vorlage: Namen von Bereitstellungsskriptressourcen](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
-
-Das Benutzerskript, die Ausführungsergebnisse und die stdout-Datei werden in den Dateifreigaben des Speicherkontos gespeichert. Es gibt einen Ordner namens **azscripts**. In diesem Ordner sind zwei weitere Ordner für die Eingabe- und Ausgabedateien enthalten: **azscriptinput** und **azscriptoutput**.
-
-Der Ausgabeordner enthält die Datei **executionresult.json** und die Skriptausgabedatei. Sie können die Fehlermeldung der Skriptausführung in **executionresult.json** anzeigen. Die Ausgabedatei wird nur erstellt, wenn das Skript erfolgreich ausgeführt wurde. Der Eingabeordner enthält eine PowerShell-Skriptdatei des Systems und die Bereitstellungsskriptdateien der Benutzer. Sie können die Skriptdatei für die Benutzerbereitstellung durch eine überarbeitete Version ersetzen und das Bereitstellungsskript erneut aus der Azure-Containerinstanz ausführen.
-
-Mithilfe der REST-API können Sie die Bereitstellungsinformationen der Bereitstellungsskriptressourcen auf Ressourcengruppenebene und Abonnementebene abrufen:
-
-```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
-```
-
-```rest
-/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
-```
-
-Im folgenden Beispiel wird [ARMClient](https://github.com/projectkudu/ARMClient) verwendet:
-
-```azurepowershell
-armclient login
-armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2019-10-01-preview
-```
-
-Die Ausgabe sieht in etwa wie folgt aus:
-
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-status.json" range="1-37" highlight="15,34":::
-
-Die Ausgabe zeigt den Bereitstellungsstatus und die IDs der Bereitstellungsskriptressourcen.
-
-Die folgende REST-API gibt das Protokoll zurück:
-
-```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
-```
-
-Dies funktioniert nur, bevor die Bereitstellungsskriptressourcen gelöscht werden.
-
-Wählen Sie im Portal die Option **Ausgeblendete Typen anzeigen** aus, um die deploymentScripts-Ressource anzuzeigen.
-
-![Resource Manager-Vorlage: Bereitstellungsskript, „Ausgeblendete Typen anzeigen“, Portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
-
-## <a name="use-an-existing-storage-account"></a>Verwenden eines vorhandenen Speicherkontos
+## <a name="use-existing-storage-account"></a>Verwenden eines vorhandenen Speicherkontos
 
 Für die Skriptausführung und Problembehandlung werden ein Speicherkonto und eine Containerinstanz benötigt. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto anzugeben. Andernfalls wird das Speicherkonto zusammen mit der Containerinstanz vom Skriptdienst automatisch erstellt. Die Voraussetzungen für die Verwendung eines vorhandenen Speicherkontos:
 
@@ -346,6 +301,228 @@ Ein vollständiges Beispiel für die Definition von `Microsoft.Resources/deploym
 
 Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, erstellt der Skriptdienst eine Dateifreigabe mit einem eindeutigen Namen. Informationen dazu, wie der Skriptdienst die Dateifreigabe bereinigt, finden Sie unter [Bereinigen von Ressourcen für Bereitstellungsskripts](#clean-up-deployment-script-resources).
 
+## <a name="develop-deployment-scripts"></a>Entwickeln von Bereitstellungsskripts
+
+### <a name="handle-non-terminating-errors"></a>Behandeln von Fehlern ohne Abbruch
+
+Sie können steuern, wie PowerShell auf Fehler ohne Abbruch reagieren soll, indem Sie die Variable **$ErrorActionPreference** in Ihrem Bereitstellungsskript verwenden. Ist die Variable in Ihrem Bereitstellungsskript nicht festgelegt, wird der Standardwert **Fortsetzen** verwendet.
+
+Tritt bei dem Skript ein Fehler auf, wird der Bereitstellungsstatus der Ressource ungeachtet der Einstellung von „$ErrorActionPreference“ auf **Fehler** festgelegt.
+
+### <a name="pass-secured-strings-to-deployment-script"></a>Übergeben von sicheren Zeichenfolgen an Bereitstellungsskripts
+
+Das Festlegen von Umgebungsvariablen (EnvironmentVariable) in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Das Bereitstellungsskript verarbeitet nicht gesicherte und gesicherte Umgebungsvariablen auf dieselbe Weise wie Azure Container Instance. Weitere Informationen finden Sie unter [Festlegen von Umgebungsvariablen in Container Instances](../../container-instances/container-instances-environment-variables.md#secure-values).
+
+Die maximal zulässige Größe für Umgebungsvariablen beträgt 64 KB.
+
+## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Überwachen von Bereitstellungsskripts und Behandeln von Problemen
+
+Der Skriptdienst erstellt für die Ausführung von Skripts im Hintergrund ein [Speicherkonto](../../storage/common/storage-account-overview.md) (es sei denn, Sie geben ein vorhandenes Speicherkonto an) und eine [Containerinstanz](../../container-instances/container-instances-overview.md). Wenn diese Ressourcen automatisch vom Skriptdienst erstellt werden, haben die Namen der Ressourcen das Suffix **azscripts**.
+
+![Resource Manager-Vorlage: Namen von Bereitstellungsskriptressourcen](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
+
+Das Benutzerskript, die Ausführungsergebnisse und die stdout-Datei werden in den Dateifreigaben des Speicherkontos gespeichert. Es gibt einen Ordner namens **azscripts**. In diesem Ordner sind zwei weitere Ordner für die Eingabe- und Ausgabedateien enthalten: **azscriptinput** und **azscriptoutput**.
+
+Der Ausgabeordner enthält die Datei **executionresult.json** und die Skriptausgabedatei. Sie können die Fehlermeldung der Skriptausführung in **executionresult.json** anzeigen. Die Ausgabedatei wird nur erstellt, wenn das Skript erfolgreich ausgeführt wurde. Der Eingabeordner enthält eine PowerShell-Skriptdatei des Systems und die Bereitstellungsskriptdateien der Benutzer. Sie können die Skriptdatei für die Benutzerbereitstellung durch eine überarbeitete Version ersetzen und das Bereitstellungsskript erneut aus der Azure-Containerinstanz ausführen.
+
+### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+
+Nachdem Sie eine Bereitstellungsskriptressource bereitgestellt haben, wird sie im Azure-Portal unter der Ressourcengruppe aufgeführt. Der folgende Screenshot zeigt die Übersichtsseite einer Bereitstellungsskriptressource:
+
+![Resource Manager-Vorlage: Übersicht über das Bereitstellungsskript im Portal](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
+
+Auf der Übersichtsseite werden einige wichtige Informationen der Ressource wie **Bereitstellungsstatus**, **Speicherkonto**, **Containerinstanz** und **Protokolle** angezeigt.
+
+Über das Menü auf der linken Seite können Sie den Inhalt des Bereitstellungsskripts, die an das Skript übergebenen Argumente und die Ausgabe anzeigen.  Außerdem können Sie eine Vorlage für das Bereitstellungsskript exportieren (einschließlich des Bereitstellungsskripts).
+
+### <a name="use-powershell"></a>Verwenden von PowerShell
+
+Mit Azure PowerShell können Sie Bereitstellungsskripts im Abonnement- oder Ressourcengruppenbereich verwalten:
+
+- [Get-AzDeploymentScript](/powershell/module/az.resources/get-azdeploymentscript): Dient zum Abrufen oder Auflisten von Bereitstellungsskripts.
+- [Get-AzDeploymentScriptLog](/powershell/module/az.resources/get-azdeploymentscriptlog): Dient zum Abrufen des Protokolls einer Bereitstellungsskriptausführung.
+- [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): Dient zum Entfernen eines Bereitstellungsskripts und der zugehörigen Ressourcen.
+- [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): Dient zum Speichern des Protokolls einer Bereitstellungsskriptausführung auf dem Datenträger.
+
+Die Ausgabe von „Get-AzDeploymentScript“ sieht in etwa wie folgt aus:
+
+```output
+Name                : runPowerShellInlineWithOutput
+Id                  : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput
+ResourceGroupName   : myds0618rg
+Location            : centralus
+SubscriptionId      : 01234567-89AB-CDEF-0123-456789ABCDEF
+ProvisioningState   : Succeeded
+Identity            : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/mydentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami
+ScriptKind          : AzurePowerShell
+AzPowerShellVersion : 3.0
+StartTime           : 6/18/2020 7:46:45 PM
+EndTime             : 6/18/2020 7:49:45 PM
+ExpirationDate      : 6/19/2020 7:49:45 PM
+CleanupPreference   : OnSuccess
+StorageAccountId    : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Storage/storageAccounts/ftnlvo6rlrvo2azscripts
+ContainerInstanceId : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.ContainerInstance/containerGroups/ftnlvo6rlrvo2azscripts
+Outputs             :
+                      Key                 Value
+                      ==================  ==================
+                      text                Hello John Dole
+
+RetentionInterval   : P1D
+Timeout             : PT1H
+```
+
+### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+
+Über die Azure-Befehlszeilenschnittstelle können Sie Bereitstellungsskripts im Abonnement- oder Ressourcengruppenbereich verwalten:
+
+- [az deployment-scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): Dient zum Löschen eines Bereitstellungsskripts.
+- [az deployment-scripts list](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): Dient zum Auflisten aller Bereitstellungsskripts.
+- [az deployment-scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): Dient zum Abrufen eines Bereitstellungsskripts.
+- [az deployment-scripts show-log](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): Dient zum Anzeigen von Bereitstellungsskriptprotokollen.
+
+Die Ausgabe des Befehls „list“ sieht in etwa wie folgt aus:
+
+```json
+[
+  {
+    "arguments": "-name \\\"John Dole\\\"",
+    "azPowerShellVersion": "3.0",
+    "cleanupPreference": "OnSuccess",
+    "containerSettings": {
+      "containerGroupName": null
+    },
+    "environmentVariables": null,
+    "forceUpdateTag": "20200625T025902Z",
+    "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+    "identity": {
+      "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+      "type": "userAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami": {
+          "clientId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+          "principalId": "01234567-89AB-CDEF-0123-456789ABCDEF"
+        }
+      }
+    },
+    "kind": "AzurePowerShell",
+    "location": "centralus",
+    "name": "runPowerShellInlineWithOutput",
+    "outputs": {
+      "text": "Hello John Dole"
+    },
+    "primaryScriptUri": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "myds0624rg",
+    "retentionInterval": "1 day, 0:00:00",
+    "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
+    "status": {
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.ContainerInstance/containerGroups/64lxews2qfa5uazscripts",
+      "endTime": "2020-06-25T03:00:16.796923+00:00",
+      "error": null,
+      "expirationTime": "2020-06-26T03:00:16.796923+00:00",
+      "startTime": "2020-06-25T02:59:07.595140+00:00",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Storage/storageAccounts/64lxews2qfa5uazscripts"
+    },
+    "storageAccountSettings": null,
+    "supportingScriptUris": null,
+    "systemData": {
+      "createdAt": "2020-06-25T02:59:04.750195+00:00",
+      "createdBy": "someone@contoso.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2020-06-25T02:59:04.750195+00:00",
+      "lastModifiedBy": "someone@contoso.com",
+      "lastModifiedByType": "User"
+    },
+    "tags": null,
+    "timeout": "1:00:00",
+    "type": "Microsoft.Resources/deploymentScripts"
+  }
+]
+```
+
+### <a name="use-rest-api"></a>Verwenden der REST-API
+
+Mithilfe der REST-API können Sie die Bereitstellungsinformationen der Bereitstellungsskriptressourcen auf Ressourcengruppenebene und Abonnementebene abrufen:
+
+```rest
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
+```
+
+```rest
+/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
+```
+
+Im folgenden Beispiel wird [ARMClient](https://github.com/projectkudu/ARMClient) verwendet:
+
+```azurepowershell
+armclient login
+armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2019-10-01-preview
+```
+
+Die Ausgabe sieht in etwa wie folgt aus:
+
+```json
+{
+  "kind": "AzurePowerShell",
+  "identity": {
+    "type": "userAssigned",
+    "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+    "userAssignedIdentities": {
+      "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami": {
+        "principalId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+        "clientId": "01234567-89AB-CDEF-0123-456789ABCDEF"
+      }
+    }
+  },
+  "location": "centralus",
+  "systemData": {
+    "createdBy": "someone@contoso.com",
+    "createdByType": "User",
+    "createdAt": "2020-06-25T02:59:04.7501955Z",
+    "lastModifiedBy": "someone@contoso.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2020-06-25T02:59:04.7501955Z"
+  },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "forceUpdateTag": "20200625T025902Z",
+    "azPowerShellVersion": "3.0",
+    "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
+    "arguments": "-name \\\"John Dole\\\"",
+    "retentionInterval": "P1D",
+    "timeout": "PT1H",
+    "containerSettings": {},
+    "status": {
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.ContainerInstance/containerGroups/64lxews2qfa5uazscripts",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Storage/storageAccounts/64lxews2qfa5uazscripts",
+      "startTime": "2020-06-25T02:59:07.5951401Z",
+      "endTime": "2020-06-25T03:00:16.7969234Z",
+      "expirationTime": "2020-06-26T03:00:16.7969234Z"
+    },
+    "outputs": {
+      "text": "Hello John Dole"
+    },
+    "cleanupPreference": "OnSuccess"
+  },
+  "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+  "type": "Microsoft.Resources/deploymentScripts",
+  "name": "runPowerShellInlineWithOutput"
+}
+
+```
+
+Die folgende REST-API gibt das Protokoll zurück:
+
+```rest
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
+```
+
+Dies funktioniert nur, bevor die Bereitstellungsskriptressourcen gelöscht werden.
+
+Wählen Sie im Portal die Option **Ausgeblendete Typen anzeigen** aus, um die deploymentScripts-Ressource anzuzeigen.
+
+![Resource Manager-Vorlage: Bereitstellungsskript, „Ausgeblendete Typen anzeigen“, Portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
+
 ## <a name="clean-up-deployment-script-resources"></a>Bereinigen von Bereitstellungsskriptressourcen
 
 Für die Skriptausführung und Problembehandlung werden ein Speicherkonto und eine Containerinstanz benötigt. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto anzugeben. Andernfalls wird ein Speicherkonto zusammen mit einer Containerinstanz vom Skriptdienst automatisch erstellt. Die beiden automatisch erstellten Ressourcen werden vom Skriptdienst gelöscht, sobald die Ausführung des Bereitstellungsskripts beendet ist. Die Ressourcen werden Ihnen in Rechnung gestellt, bis sie gelöscht werden. Preisinformationen finden Sie unter [Container Instances – Preise](https://azure.microsoft.com/pricing/details/container-instances/) und [Azure Storage – Preise](https://azure.microsoft.com/pricing/details/storage/).
@@ -354,9 +531,9 @@ Der Lebenszyklus dieser Ressourcen wird durch die folgenden Eigenschaften in der
 
 - **cleanupPreference**: Dies ist die Einstellung für die Bereinigung, wenn die Skriptausführung einen Beendigungszustand erreicht. Die unterstützten Werte sind:
 
-  - **Always:** Die Ressourcen werden gelöscht, sobald die Skriptausführung beendet ist. Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, löscht der Skriptdienst die im Speicherkonto erstellte Dateifreigabe. Da die Ressource deploymentScripts auch nach Bereinigung der Ressourcen noch vorhanden sein kann, speichern die Skriptdienste die Ergebnisse der Skriptausführung, z. B. stdout, Ausgaben, Rückgabewerte usw., ehe die Ressourcen gelöscht werden.
+  - **Always:** Die Ressourcen werden gelöscht, sobald die Skriptausführung beendet ist. Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, löscht der Skriptdienst die im Speicherkonto erstellte Dateifreigabe. Da die Ressource „deploymentScripts“ auch nach der Bereinigung der Ressourcen noch vorhanden sein kann, werden die Ergebnisse der Skriptausführung (beispielsweise stdout, Ausgaben, Rückgabewerte usw.) durch den Skriptdienst gespeichert, bevor die Ressourcen gelöscht werden.
   - **OnSuccess:** Die Ressourcen werden automatisch gelöscht, wenn die Skriptausführung erfolgreich war. Wenn ein vorhandenes Speicherkonto verwendet wird, entfernt der Skriptdienst die Dateifreigabe nur bei erfolgreicher Skriptausführung. Sie können weiterhin auf die Ressourcen zugreifen, um Debuginformationen zu finden.
-  - **OnExpiration:** Die Ressourcen werden automatisch gelöscht, wenn die Einstellung **retentionInterval** abgelaufen ist. Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, entfernt der Skriptdienst die Dateifreigabe und behält das Speicherkonto bei.
+  - **OnExpiration:** Die automatisch erstellten Ressourcen werden erst nach Ablauf der Einstellung **retentionInterval** gelöscht. Wenn ein vorhandenes Speicherkonto zum Einsatz kommt, entfernt der Skriptdienst die Dateifreigabe und behält das Speicherkonto bei.
 
 - **retentionInterval**: Geben Sie das Zeitintervall an, für das eine Skriptressource aufbewahrt wird und nach dem sie als abgelaufen gilt und gelöscht wird.
 
@@ -379,17 +556,9 @@ Die Ausführung des Bereitstellungsskripts ist ein idempotenter Vorgang. Wenn ke
 
 ## <a name="configure-development-environment"></a>Konfigurieren der Entwicklungsumgebung
 
-Sie können ein vorkonfiguriertes Docker-Containerimage als Entwicklungsumgebung für Ihr Bereitstellungsskript verwenden. Im folgenden Verfahren wird gezeigt, wie Sie das Docker-Image unter Windows konfigurieren. Für Linux und Mac finden Sie die entsprechenden Informationen im Internet.
+Sie können ein vorkonfiguriertes Docker-Containerimage als Entwicklungsumgebung für Ihr Bereitstellungsskript verwenden. Informationen zum Installieren von Docker finden Sie [hier](https://docs.docker.com/get-docker/).
+Darüber hinaus muss die Dateifreigabe so konfiguriert werden, dass das Verzeichnis mit den Bereitstellungsskripts in den Docker-Container eingebunden wird.
 
-1. Installieren Sie [Docker Desktop](https://www.docker.com/products/docker-desktop) auf dem Entwicklungscomputer.
-1. Öffnen Sie Docker Desktop.
-1. Wählen Sie auf der Taskleiste das Symbol für Docker Desktop und dann **Settings** (Einstellungen) aus.
-1. Wählen Sie **Shared Drives** (Freigegebene Laufwerke) und dann ein lokales Laufwerk aus, das für Ihre Container verfügbar sein soll. Wählen Sie dann **Apply** (Anwenden) aus.
-
-    ![Resource Manager-Vorlage: Bereitstellungsskript, Docker-Laufwerk](./media/deployment-script-template/resource-manager-deployment-script-docker-setting-drive.png)
-
-1. Geben Sie an der Eingabeaufforderung Ihre Windows-Anmeldeinformationen ein.
-1. Öffnen Sie ein Terminalfenster (entweder die Eingabeaufforderung oder Windows PowerShell – verwenden Sie nicht die PowerShell ISE).
 1. Pullen Sie das Containerimage für das Bereitstellungsskript auf den lokalen Computer:
 
     ```command
@@ -426,12 +595,11 @@ Sie können ein vorkonfiguriertes Docker-Containerimage als Entwicklungsumgebung
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Wählen Sie nach Aufforderung **Share it** (Freigeben) aus.
-1. Im folgenden Screenshot wird gezeigt, wie Sie ein PowerShell-Skript ausführen (sofern der Ordner „D:\docker“ die Datei „helloworld.ps1“ enthält).
+1. Der folgende Screenshot zeigt die Ausführung eines PowerShell-Skripts, wenn das freigegebene Laufwerk eine Datei namens „helloworld.ps1“ enthält.
 
     ![Resource Manager-Vorlage: Bereitstellungsskript, Docker-Befehle](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-Nachdem das Skript erfolgreich getestet wurde, können Sie es als Bereitstellungsskript verwenden.
+Nachdem das Skript erfolgreich getestet wurde, können Sie es als Bereitstellungsskript in Ihren Vorlagen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

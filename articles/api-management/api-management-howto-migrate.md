@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eed2328aca78402c5f4691bb9b3d07d4f36472e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70073460"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250225"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Regionsübergreifendes Migrieren von Azure API Management
 Wenn Sie API Management-Instanzen von einer Azure-Region zu einer anderen migrieren möchten, können Sie die Funktion [Sichern und Wiederherstellen](api-management-howto-disaster-recovery-backup-restore.md) verwenden. In den Quell- und Zielregionen sollten Sie denselben API Management-Tarif auswählen. 
 
 > [!NOTE]
-> Sichern und Wiederherstellen funktioniert nicht bei der Migration zwischen verschiedenen Cloudtypen. Dazu müssen Sie die Ressource [als Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-portal#export-resource-groups-to-templates) exportieren. Passen Sie dann die exportierte Vorlage für die Azure-Zielregion an, und erstellen Sie die Ressource neu. 
+> Sichern und Wiederherstellen funktioniert nicht bei der Migration zwischen verschiedenen Cloudtypen. Dazu müssen Sie die Ressource [als Vorlage](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates) exportieren. Passen Sie dann die exportierte Vorlage für die Azure-Zielregion an, und erstellen Sie die Ressource neu. 
 
 ## <a name="option-1-use-a-different-api-management-instance-name"></a>Option 1: Verwenden eines anderen API Management-Instanznamens
 
@@ -47,3 +47,4 @@ Wenn Sie API Management-Instanzen von einer Azure-Region zu einer anderen migrie
 ## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 * Weitere Informationen zur Funktion „Sichern und Wiederherstellen“ finden Sie unter [So implementieren Sie die Notfallwiederherstellung](api-management-howto-disaster-recovery-backup-restore.md).
 * Informationen zur Migration von Azure-Ressourcen finden Sie unter [Anleitung zur regionsübergreifenden Azure-Migration](https://github.com/Azure/Azure-Migration-Guidance).
+* [Ermitteln und Analysieren von Kosten mit der Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

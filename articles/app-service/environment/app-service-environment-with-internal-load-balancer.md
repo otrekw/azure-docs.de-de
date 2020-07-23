@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833102"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220812"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung
 
@@ -54,7 +54,7 @@ Das Erstellen einer ILB-ASE unterscheidet sich nicht wesentlich vom Erstellen ei
 7. Geben Sie einen Namen für die Unterdomäne an (diese Unterdomäne wird für Apps verwendet, die in dieser ASE erstellt werden).
 8. Wählen Sie **OK** und dann **Erstellen** aus.
 
-![][1]
+![Dieser Screenshot zeigt die zum Erstellen einer ILB-ASE verwendeten Bildschirme.][1]
 
 Im Bereich „Virtuelles Netzwerk“ gibt es eine Option für die VNET-Konfiguration, mit der Sie zwischen einer externen VIP oder einer internen VIP auswählen können. Die externe Adresse ist die Standardeinstellung. Wenn Sie „Extern“ festlegen müssen, verwendet Ihre ASE eine über das Internet zugängliche VIP. Bei Auswahl von „Intern“ wird Ihre ASE mit einem ILB unter einer IP-Adresse in Ihrem VNET konfiguriert. 
 
@@ -70,7 +70,7 @@ Das Erstellen einer App in einer ILB-ASE entspricht dem normalen Erstellen einer
 5. Wählen Sie einen App Service-Plan (ASP) aus, oder erstellen Sie einen Plan. Wenn Sie einen neuen ASP erstellen, wählen Sie Ihre ASE als Speicherort, und wählen Sie den Workerpool, in dem Ihre ASP erstellt werden soll. Beim Erstellen des ASP wählen Sie Ihre ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, sehen Sie, dass die Unterdomäne unter Ihrem App-Namen durch die Unterdomäne für Ihre ASE ersetzt wird. 
 6. Klicken Sie auf **Erstellen**. Aktivieren Sie das Kontrollkästchen **An das Dashboard anheften** aus, wenn die App im Dashboard angezeigt werden soll. 
 
-![][2]
+![Dieser Screenshot zeigt, wie eine App in einer ILB ASE im Azure-Portal erstellt wird.][2]
 
 Unter dem App-Namen wird der Name der Unterdomäne aktualisiert, um die Unterdomäne Ihrer ASE anzuzeigen. 
 
@@ -79,11 +79,11 @@ Eine ILB-ASE unterscheidet sich etwas von einer Nicht-ILB-ASE. Wie bereits erwä
 
 Nach dem Erstellen Ihrer ASE werden Sie bemerken, dass die Unterdomäne angezeigt wird, die Sie angegeben haben, und dass das Menü **Einstellung** ein neues Element **ILB-Zertifikat** enthält. Die ASE wird mit einem selbstsignierten Zertifikat erstellt, um das Testen von HTTPS zu vereinfachen. Im Portal werden Sie darauf hingewiesen, dass Sie Ihr eigenes Zertifikat für HTTPS bereitstellen müssen, aber der Zweck dabei ist, dass Sie ein zu Ihrer Unterdomäne passendes Zertifikat verwenden. 
 
-![][3]
+![Dieser Screenshot zeigt die Subdomäne, die Sie angegeben haben, als Sie die ASE erstellt haben.][3]
 
 Wenn Sie einfach experimentieren und nicht wissen, wie Sie ein Zertifikat erstellen, können Sie mit der IIS-MMC-Konsolenanwendung ein selbstsigniertes Zertifikat erstellen. Nach der Erstellung können Sie es als PFX-Datei exportieren und dann in die ILB-Zertifikatbenutzeroberfläche hochladen. Wenn Sie auf eine Website zugreifen, die mit einem selbstsignierten Zertifikat geschützt wird, werden Sie in einer Browserwarnung darauf hingewiesen, dass die Website, auf die Sie zugreifen, nicht sicher ist, weil das Zertifikat nicht validiert werden kann. Wenn Sie diese Warnung vermeiden möchten, benötigen Sie ein ordnungsgemäß signiertes Zertifikat, das Ihrer Unterdomäne entspricht und eine Zertifikatkette aufweist, die von Ihrem Browser erkannt wird.
 
-![][6]
+![Dieser Screenshot zeigt, wie die IIS-MMC-Konsolenanwendung verwendet wird, um ein selbstsigniertes Zertifikat zu erstellen.][6]
 
 Gehen Sie wie folgt vor, wenn Sie den Flow mit Ihren eigenen Zertifikaten ausprobieren und sowohl HTTP als auch HTTPS für den Zugriff auf die ASE testen möchten:
 
@@ -98,7 +98,7 @@ Gehen Sie wie folgt vor, wenn Sie den Flow mit Ihren eigenen Zertifikaten auspro
 
 Die IP-Adresse der ILB wird in den Eigenschaften als virtuelle IP-Adresse aufgeführt.
 
-![][4]
+![Dieser Screenshot zeigt, dass die IP-Adresse der ILB in den Eigenschaften als virtuelle IP-Adresse aufgeführt wird.][4]
 
 ## <a name="using-an-ilb-ase"></a>Verwenden einer ILB-ASE
 #### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
@@ -108,7 +108,7 @@ Wenn Sie NSGs verwenden möchten, um den Zugriff weiter einzuschränken, müssen
 
 Um Ihre Netzwerksicherheitsgruppen zu konfigurieren, müssen Sie die IP-Adresse kennen, die Azure zum Verwalten Ihrer ASE verwendet. Diese IP-Adresse ist auch die ausgehende IP-Adresse Ihrer ASE für Internetanfrage. Die ausgehende IP-Adresse für Ihr ASE bleibt während der Lebensdauer Ihrer ASE statisch. Wenn Sie die ASE löschen und neu erstellen, erhalten Sie eine neue IP-Adresse. Wechseln Sie zum Ermitteln der IP-Adresse zu **Einstellungen > Eigenschaften**, und suchen Sie nach **Ausgehende IP-Adresse**. 
 
-![][5]
+![Dieser Screenshot zeigt, wo Sie die IP-Adresse für ausgehenden Datenverkehr für Ihre ASE finden.][5]
 
 #### <a name="general-ilb-ase-management"></a>Allgemeine ILB-ASE-Verwaltung
 Das Verwalten einer ILB-ASE ist weitgehend identisch mit dem normalen Verwalten einer ASE. Sie müssen Ihre Workerpools hochskalieren, um weitere ASP-Instanzen zu hosten, und Ihre Front-End-Server hochskalieren, um zusätzlichen HTTP/HTTPS-Datenverkehr zu verarbeiten. Allgemeine Informationen zur Verwaltung der Konfiguration einer ASE finden Sie unter [Konfigurieren einer App Service-Umgebung][ASEConfig]. 

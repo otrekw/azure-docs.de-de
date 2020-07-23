@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477795"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220574"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Erstellen einer App Service-Umgebung v1 
 
@@ -26,7 +26,7 @@ Die App Service-Umgebung (ASE) ist eine Premium-Dienstoption von Azure App Servi
 ### <a name="before-you-create-your-ase"></a>Bevor Sie Ihre ASE erstellen
 Es ist wichtig, die Aspekte zu berücksichtigen, die Sie ändern können. Die folgenden Aspekte Ihrer ASE können Sie nicht ändern, nachdem sie erstellt wurde:
 
-* Position
+* Standort
 * Subscription
 * Ressourcengruppe
 * Verwendetes VNET
@@ -40,11 +40,11 @@ Um eine App Service-Umgebung v1 zu erstellen, müssen Sie den Azure Marketplace 
 
 1. Geben Sie den Namen Ihrer ASE an. Der für die ASE angegebene Name wird für die in der ASE erstellten Apps verwendet. Wenn der Name der App Service-Umgebung „appsvcenvdemo“ lautet, erhält die Unterdomäne den Namen *appsvcenvdemo.p.azurewebsites.net*. Wenn Sie also eine App namens *mytestapp* erstellt haben, kann diese über *mytestapp.appsvcenvdemo.p.azurewebsites.net* aufgerufen werden. Sie dürfen im Namen Ihrer ASE keine Leerzeichen verwenden. Bei Verwendung von Großbuchstaben im Namen wird der Domänenname dennoch vollständig in Kleinbuchstaben geschrieben. Bei Verwendung eines ILB wird Ihr ASE-Name nicht in Ihrer Unterdomäne verwendet, sondern stattdessen explizit während der ASE-Erstellung angegeben.
    
-    ![][1]
+    ![Screenshot mit dem Erstellen einer App Service-Umgebung (ASE)][1]
 2. Wählen Sie Ihr Abonnement aus. Das für Ihre ASE verwendete Abonnement gilt auch für alle Apps, die Sie in dieser ASE erstellen. Sie können Ihre ASE nicht in einem VNET platzieren, das einem anderen Abonnement angehört.
 3. Wählen eine neue Ressourcengruppe aus, oder geben Sie eine an. Die Ressourcengruppe, die für Ihre ASE verwendet wird, muss identisch mit derjenigen sein, die für das VNET verwendet wird. Wenn Sie ein bereits vorhandenes VNET auswählen, wird die Auswahl der Ressourcengruppe für Ihre ASE gemäß VNET aktualisiert.
    
-    ![][2]
+    ![Screenshot mit der Auswahl oder der Änderung einer neuen Ressourcengruppe][2]
 4. Treffen Sie Ihre Auswahl für „Virtuelles Netzwerk“ und „Speicherort“. Sie können ein neues VNET erstellen oder ein bereits vorhandenes VNET auswählen. Wenn Sie ein neues VNET auswählen, können Sie einen Namen und Speicherort angeben. Das neue VNET hat den Adressbereich 192.168.250.0/23 und ein Subnetz namens **default**, das als 192.168.250.0/24 definiert ist. Sie können auch einfach ein bereits vorhandenes klassisches oder Resource Manager-VNET auswählen. Die Auswahl des VIP-Typs bestimmt, ob auf Ihre ASE ein direkter Zugriff aus dem Internet möglich ist (extern) oder ob ein interner Load Balancer (ILB) verwendet wird. Mehr hierzu erfahren Sie unter [Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung][ILBASE]. Wenn Sie einen VIP-Adresstyp des Typs „Extern“ auswählen, können Sie auswählen, mit wie vielen externen IP-Adressen das System für IP-SSL-Zwecke erstellt wird. Bei Auswahl von „Intern“ müssen Sie die Unterdomäne angeben, die Ihrer ASE verwenden soll. ASEs können in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden. Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das VNET vorab erstellen. Bei Auswahl eines bereits bestehenden VNET müssen Sie während der Erstellung der ASE ein neues Subnetz erstellen. **Eine vorab erstelltes Subnetz kann nicht im Portal verwendet werden. Sie können eine ASE mit einem bereits vorhandenen Subnetz erstellen, wenn Sie Ihre ASE mithilfe einer Resource Manager-Vorlage erstellen.** Zum Erstellen einer App anhand einer Vorlage befolgen Sie die Angaben unter [Erstellen einer App Service-Umgebung aus einer Vorlage][ILBAseTemplate] und [Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen][ASEfromTemplate].
 
 ### <a name="details"></a>Details

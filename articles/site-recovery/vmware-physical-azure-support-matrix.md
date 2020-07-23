@@ -2,13 +2,13 @@
 title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellung in Azure Site Recovery
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/10/2020
+ms.openlocfilehash: 86aed87be2d65a78b2485d0ce71ce1f674ea9407
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131885"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224637"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -59,9 +59,6 @@ Ports | 443 für die Steuerkanalorchestrierung<br/>9443 für den Datentransport
 ## <a name="replicated-machines"></a>Replizierte Computer
 
 Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem unterstützten Computer ausgeführt werden.
-
-> [!Note]
-> In der folgenden Tabelle ist die Unterstützung für Computer mit BIOS-Start aufgeführt. Informationen zur Unterstützung auf UEFI-basierten Computern finden Sie im Abschnitt [Speicher](#storage).
 
 **Komponente** | **Details**
 --- | ---
@@ -181,6 +178,7 @@ Statische IP im Gast-/Servernetzwerk (Linux) | Ja. <br/><br/>VMs werden für die
 Mehrere NICs im Gast-/Servernetzwerk | Ja.
 
 
+
 ## <a name="azure-vm-network-after-failover"></a>Azure-VM-Netzwerk (nach Failover)
 
 **Komponente** | **Unterstützt**
@@ -224,7 +222,7 @@ Gast/Server – Datenträger ausschließen | Ja
 Gast-/Servermultipfad (MPIO) | Nein
 GPT-Partitionen von Gast/Server | Fünf Partitionen werden ab [Update Rollup 37](https://support.microsoft.com/help/4508614/) (Version 9.25 des Mobilitätsdiensts) unterstützt. Bisher wurden vier unterstützt.
 ReFS | Resilient File System (Robustes Dateisystem) wird ab Version 9.23 des Mobilitätsdiensts unterstützt.
-EFI-/UEFI-Start von Gast/Server | – Unterstüzt für Windows Server 2012 oder höher, SLES 12 SP4 und RHEL 8.0 mit Mobilitäts-Agent ab Version 9.30.<br/> – Sichere UEFI-Starttypen werden nicht unterstützt. [Weitere Informationen.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
+EFI-/UEFI-Start von Gast/Server | – Wird für alle [UEFI-Betriebssysteme in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-images-in-azure-marketplace) mit Version 9.30 und höher des Mobilitäts-Agent von Site Recovery unterstützt <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. [Weitere Informationen.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replikationskanäle
 
@@ -246,7 +244,9 @@ Speicherebene „Heiß“| Nein
 Blockblobs | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja
 Verschlüsselung ruhender Daten (CMK)| Ja (über PowerShell ab Az-Modulversion 3.3.0)
+Doppelte Verschlüsselung im Ruhezustand | Ja (über PowerShell ab Az-Modulversion 3.3.0). Weitere Informationen zu unterstützten Regionen für [Windows](../virtual-machines/windows/disk-encryption.md) und [Linux](../virtual-machines/linux/disk-encryption.md) erhalten Sie unter den jeweiligen Links.
 Storage Premium | Ja
+Option für die sichere Übertragung | Ja
 Import-/Exportdienst | Nein
 Azure Storage-Firewalls für VNets | Ja.<br/> Konfiguriert in Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten).
 Allgemeine v2-Speicherkonten (heiße und kalte Ebene) | Ja (Transaktionskosten sind wesentlich höher für V2 als für V1)

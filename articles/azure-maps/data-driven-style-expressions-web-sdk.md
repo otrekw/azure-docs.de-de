@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561647"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242609"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -104,7 +104,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Das obige Beispiel funktioniert problemlos, wenn alle Punktfeatures über die `zoneColor`-Eigenschaft verfügen. Wenn dies nicht der Fall ist, wird die Farbe wahrscheinlich auf „schwarz“ zurückgesetzt. Verwenden Sie zum Ändern der Fallbackfarbe einen `case`-Ausdruck in Kombination mit dem `has`-Ausdruck, um zu überprüfen, ob die Eigenschaft vorhanden ist. Wenn die Eigenschaft nicht vorhanden ist, geben Sie eine Fallbackfarbe zurück.
+Das obige Beispiel funktioniert problemlos, wenn alle Punktfeatures über die `zoneColor`-Eigenschaft verfügen. Wenn dies nicht der Fall ist, wird die Farbe wahrscheinlich auf „schwarz“ zurückgesetzt. Verwenden Sie zum Ändern der Fallbackfarbe einen `case`-Ausdruck in Kombination mit dem `has`-Ausdruck, um zu überprüfen, ob die Eigenschaft vorhanden ist. Geben Sie eine Ausweichfarbe für den Fall an, dass die Eigenschaft nicht vorhanden ist.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -747,7 +747,7 @@ Auf dieser Ebene wird das Punktfeature wie in der folgenden Abbildung gerendert:
 
 ### <a name="number-format-expression"></a>Number Format-Ausdruck
 
-Der `number-format`-Ausdruck kann nur mit der `textField`-Option einer Symbolebene verwendet werden. Mit diesem Ausdruck wird die angegebene Zahl in eine formatierte Zeichenfolge konvertiert. Mit diesem Ausdruck wird die JavaScript-Funktion [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) umschlossen, und sie unterstützt die folgenden Optionen.
+Der `number-format`-Ausdruck kann nur mit der `textField`-Option einer Symbolebene verwendet werden. Mit diesem Ausdruck wird die angegebene Zahl in eine formatierte Zeichenfolge konvertiert. Mit diesem Ausdruck wird die JavaScript-Funktion [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) umschlossen. Er unterstützt die folgenden Optionen.
 
  * `locale` – Geben Sie diese Option an, um Zahlen so in Zeichenfolgen zu konvertieren, dass sie für die angegebene Sprache geeignet sind. Übergeben Sie für diese Option ein [BCP 47-Sprachtag](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).
  * `currency` – Dient zum Konvertieren der Zahl in eine Zeichenfolge, die für eine Währung steht. Mögliche Werte sind die [ISO 4217-Währungscodes](https://en.wikipedia.org/wiki/ISO_4217), z. B. „USD“ für US-Dollar, „EUR“ für Euro oder „CNY“ für chinesische Renminbi.
@@ -779,7 +779,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency’: 'USD' }
+            { ‘currency': 'USD' }
         ],
 
         offset: [0, 0.75]

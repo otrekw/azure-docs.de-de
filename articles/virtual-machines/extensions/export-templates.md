@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703994"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201036"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportieren von Ressourcengruppen, die VM-Erweiterungen enthalten
 
@@ -33,18 +33,7 @@ Es sind viele Erweiterungen für virtuelle Computer verfügbar. Nicht alle Erwei
 
 Die folgenden Erweiterungen können mit dem Automatisierungsskriptfeature exportiert werden.
 
-| Durchwahl ||||
-|---|---|---|---|
-| Acronis Backup | Datadog Windows Agent | OS Patching For Linux | VM Snapshot Linux
-| Acronis Backup Linux | Docker-Erweiterung | Puppet Agent |
-| Bg Info | DSC Extension | Site 24x7 Apm Insight |
-| BMC CTM Agent Linux | Dynatrace Linux | Site 24x7 Linux Server |
-| BMC CTM Agent Windows | Dynatrace Windows | Site 24x7 Windows Server |
-| Chef Client | HPE Security Application Defender | Trend Micro DSA |
-| Custom Script | IaaS Antimalware | Trend Micro DSA Linux |
-| Benutzerdefinierte Skripterweiterung | IaaS-Diagnose | VM Access For Linux |
-| Custom Script for Linux | Linux Chef Client | VM Access For Linux |
-| Datadog Linux Agent | Linux-Diagnose | VM Snapshot |
+> Acronis Backup, Acronis Backup Linux, Bg Info, BMC CTM Agent Linux, BMC CTM Agent Windows, Chef Client, Custom Script, Custom Script Extension, Custom Script for Linux, Datadog Linux Agent, Datadog Windows Agent, Docker Extension, DSC Extension, Dynatrace Linux, Dynatrace Windows, HPE Security Application Defender, IaaS Antimalware, IaaS Diagnostics, Linux Chef Client, Linux Diagnostic, OS Patching For Linux, Puppet Agent, Site 24x7 Apm Insight, Site 24x7 Linux Server, Site 24x7 Windows Server, Trend Micro DSA, Trend Micro DSA Linux, VM Access For Linux, VM Access For Linux, VM Snapshot, VM Snapshot Linux
 
 ## <a name="export-the-resource-group"></a>Exportieren der Ressourcengruppe
 

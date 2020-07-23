@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076571"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252265"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Informationen zur Geschäftskontinuität in Azure Database for MariaDB
 
@@ -51,6 +51,10 @@ Die andere Option ist die Verwendung des Geowiederherstellungsfeatures von Azure
 ## <a name="cross-region-read-replicas"></a>Regionsübergreifende Lesereplikate
 
 Mithilfe regionsübergreifender Lesereplikate können Sie Ihre BCDR-Planung (Business Continuity & Disaster Recovery) verbessern. Lesereplikate werden mithilfe der binären Protokollreplikation von MariaDB asynchron aktualisiert. Weitere Informationen zu Lesereplikaten, zu verfügbaren Regionen und zum Failover finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
+
+## <a name="faq"></a>Häufig gestellte Fragen
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Wo speichert Azure Database for MariaDB Kundendaten?
+Standardmäßig speichert Azure Database for MariaDB Kundendaten in der Region, in der sie bereitgestellt werden, und verschiebt sie nicht aus dieser Region. Kunden können jedoch optional [georedundanten Sicherungen](concepts-backup.md#backup-redundancy-options) aktivieren oder [regionsübergreifenden Lesereplikate](concepts-read-replicas.md#cross-region-replication) zum Speichern von Daten in einer anderen Region erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

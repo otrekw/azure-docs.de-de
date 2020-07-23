@@ -1,7 +1,7 @@
 ---
-title: Ausführen eines Python-Skripts im Designer
+title: Ausführen eines Python-Skripts im Designer (Vorschauversion)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Python in Azure Machine Learning-Designer zur Datentransformation verwenden können.
+description: Hier erfahren Sie, wie Sie Python im Azure Machine Learning-Designer (Vorschauversion) zur Datentransformation verwenden können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer, tracking-python
-ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041012"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206810"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Ausführen von Python-Code in Azure Machine Learning-Designer
 
