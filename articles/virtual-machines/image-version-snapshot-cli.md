@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 585d3729a886f3a01dff6dcd9afdab63669c05b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224959"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502876"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Erstellen eines Images aus einer VHD oder Momentaufnahme in einer Shared Image Gallery-Instanz mithilfe der Azure CLI
 
@@ -69,7 +69,7 @@ Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden zum
 
 Stellen Sie beim Erstellen der Imagedefinition sicher, dass diese alle richtigen Informationen beinhaltet. In diesem Beispiel wird davon ausgegangen, dass es sich um die Momentaufnahme oder VHD einer VM handelt, die verwendet wird und nicht generalisiert wurde. Wenn die VHD oder Momentaufnahme von einem generalisierten Betriebssystem (nach dem Ausführen von Sysprep unter Windows bzw. [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` oder `-deprovision+user` unter Linux) erstellt wurde, ändern Sie den Wert für `-OsState` in `generalized`. 
 
-Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](./linux/shared-image-galleries.md#image-definitions).
 
 Erstellen Sie mithilfe von [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) eine Imagedefinition im Katalog.
 
@@ -120,7 +120,7 @@ Wenn Sie Datenträger in das Image aufnehmen möchten, müssen Sie sowohl den au
 > [!NOTE]
 > Sie müssen warten, bis die Imageversion vollständig erstellt und repliziert wurde, bevor Sie dieses verwaltete Image verwenden können, um eine weitere Imageversion zu erstellen.
 >
-> Sie können alle Ihre Imageversionsreplikate auch in [zonenredundantem Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) speichern, indem Sie `--storage-account-type standard_zrs` hinzufügen, wenn Sie die Imageversion erstellen.
+> Sie können alle Ihre Imageversionsreplikate auch in [zonenredundantem Speicher](../storage/common/storage-redundancy.md) speichern, indem Sie `--storage-account-type standard_zrs` hinzufügen, wenn Sie die Imageversion erstellen.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

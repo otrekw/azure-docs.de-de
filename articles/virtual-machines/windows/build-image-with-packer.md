@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 14b2e3df6d7ea3f72c1968cfed222a1b9b0d636d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202654"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525856"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Windows-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Windows-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Betriebssysteme und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel wird erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
 
-Dieser Artikel wurde zuletzt am 21.02.2019 unter Verwendung von Version 1.3.0 des [Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) und Version 1.3.4 von [Packer](https://www.packer.io/docs/install) geprüft.
+Dieser Artikel wurde zuletzt am 21.02.2019 unter Verwendung von Version 1.3.0 des [Azure PowerShell-Moduls](/powershell/azure/install-az-ps) und Version 1.3.4 von [Packer](https://www.packer.io/docs/install) geprüft.
 
 > [!NOTE]
 > Azure bietet jetzt einen Dienst zum Definieren und Erstellen eigener benutzerdefinierter Images: Azure Image Builder (Vorschauversion). Azure Image Builder baut auf Packer auf, daher können Sie sogar Ihre vorhandenen Packer Shell Provisioner-Skripts importieren. Informationen zu den ersten Schritten mit Azure Image Builder finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Azure Image Builder](image-builder.md).
@@ -26,7 +26,7 @@ Dieser Artikel wurde zuletzt am 21.02.2019 unter Verwendung von Version 1.3.0 de
 ## <a name="create-azure-resource-group"></a>Erstellen einer Azure-Ressourcengruppe
 Während des Buildprozesses zum Erstellen der Quell-VM erstellt Packer temporäre Azure-Ressourcen. Zum Erfassen dieser Quell-VM zur Verwendung als Image müssen Sie eine Ressourcengruppe definieren. Die Ausgabe des Packer-Buildprozesses wird in dieser Ressourcengruppe gespeichert.
 
-Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Erstellen von Azure-Anmeldeinformationen
 Packer authentifiziert sich bei Azure mithilfe eines Dienstprinzipals. Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die Sie mit Apps, Diensten und Automatisierungstools wie Packer verwenden können. Sie steuern und definieren die Berechtigungen hinsichtlich der Vorgänge, die der Dienstprinzipal in Azure ausführen können soll.
 
-Erstellen Sie mit [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) einen Dienstprinzipal, und weisen Sie mit [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) dem Dienstprinzipal Berechtigungen zum Erstellen und Verwalten von Ressourcen zu. Der Wert für `-DisplayName` muss eindeutig sein. Ersetzen Sie ihn wie erforderlich durch Ihren eigenen Wert.  
+Erstellen Sie mit [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) einen Dienstprinzipal, und weisen Sie mit [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) dem Dienstprinzipal Berechtigungen zum Erstellen und Verwalten von Ressourcen zu. Der Wert für `-DisplayName` muss eindeutig sein. Ersetzen Sie ihn wie erforderlich durch Ihren eigenen Wert.  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -54,7 +54,7 @@ $sp.ApplicationId
 ```
 
 
-Um sich bei Azure zu authentifizieren, müssen Sie mit [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) auch Ihren Azure-Mandanten und Ihre Azure-Abonnement-IDs abrufen:
+Um sich bei Azure zu authentifizieren, müssen Sie mit [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) auch Ihren Azure-Mandanten und Ihre Azure-Abonnement-IDs abrufen:
 
 ```powershell
 Get-AzSubscription
@@ -213,7 +213,7 @@ Es dauert einige Minuten, bis Packer die VM erstellt, die Provisioner ausgeführ
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>Erstellen virtueller Computer aus dem Packer-Image
-Sie können nun mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) einen virtuellen Computer anhand Ihres Images erstellen. Die unterstützenden Netzwerkressourcen werden erstellt, falls sie nicht bereits vorhanden sind. Geben Sie, wenn Sie dazu aufgefordert werden, einen Administratorbenutzernamen mit entsprechendem Kennwort ein, um die Erstellung auf der VM zu ermöglichen. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* anhand von *myPackerImage* erstellt:
+Sie können nun mit [New-AzVM](/powershell/module/az.compute/new-azvm) einen virtuellen Computer anhand Ihres Images erstellen. Die unterstützenden Netzwerkressourcen werden erstellt, falls sie nicht bereits vorhanden sind. Geben Sie, wenn Sie dazu aufgefordert werden, einen Administratorbenutzernamen mit entsprechendem Kennwort ein, um die Erstellung auf der VM zu ermöglichen. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* anhand von *myPackerImage* erstellt:
 
 ```powershell
 New-AzVm `
@@ -228,13 +228,13 @@ New-AzVm `
     -Image "myPackerImage"
 ```
 
-Wenn Sie VMs in einer anderen Ressourcengruppe oder Region als Ihr Packerimage erstellen möchten, geben Sie die Image-ID und nicht den Imagenamen an. Sie können die Image-ID mit [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage) abrufen.
+Wenn Sie VMs in einer anderen Ressourcengruppe oder Region als Ihr Packerimage erstellen möchten, geben Sie die Image-ID und nicht den Imagenamen an. Sie können die Image-ID mit [Get-AzImage](/powershell/module/az.compute/get-azimage) abrufen.
 
 Das Erstellen der VM anhand Ihres Packer-Images dauert einige Minuten.
 
 
 ## <a name="test-vm-and-webserver"></a>Testen von VM und Webserver
-Rufen Sie mit [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres virtuellen Computers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres virtuellen Computers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
 
 ```powershell
 Get-AzPublicIPAddress `

@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/13/2020
+ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134676"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539226"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -2188,7 +2188,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/usages | Nein | Nein |
 > | locations/validateresourceownership | Nein | Nein |
 > | locations/virtualnetworkavailableendpointservices | Nein | Nein |
-> | natgateways | Ja | Ja |
+> | natgateways | Nein | Nein |
 > | networkexperimentprofiles | Nein | Nein |
 > | networkintentpolicies | Ja | Ja |
 > | networkinterfaces | Ja | Ja |
