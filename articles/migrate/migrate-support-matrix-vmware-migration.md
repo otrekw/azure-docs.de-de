@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Migration in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Migration virtueller VMware-Computer in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d8a2488e16031a4d960d039d646d9da5de1c1c2e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134995"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223702"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -162,7 +162,7 @@ Architektur des Gastbetriebssystems | 64 Bit.
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. 
 Anzahl von Betriebssystem-Datenträgern | 1 
 Anzahl von Datenträgern für Daten | Maximal 64. 
-Datenträgergröße | Bis zu 4.095 GB 
+Datenträgergröße | Bis zu 8.095 GB
 Netzwerkadapter | Es werden mehrere Adapter unterstützt.
 Freigegebene VHD | Wird nicht unterstützt. 
 Fiber-Channel-Datenträger | Wird nicht unterstützt. 

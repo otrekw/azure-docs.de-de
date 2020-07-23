@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482971"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221135"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronisieren von Inhalt aus einem Cloudordner in Azure App Service
 Dieser Artikel zeigt Ihnen, wie Sie Ihre Inhalte in Dropbox und auf OneDrive mit [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) synchronisieren. 
@@ -24,11 +24,11 @@ Um die Inhaltssynchronisierung zu aktivieren, navigieren Sie im [Azure-Portal](h
 
 Klicken Sie im linken Menü auf **Bereitstellungscenter** > **OneDrive** oder **Dropbox** > **Autorisieren**. Befolgen Sie die Eingabeaufforderungen zur Autorisierung. 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![Zeigt, wie OneDrive oder Dropbox im Bereitstellungscenter im Azure-Portal autorisiert werden.](media/app-service-deploy-content-sync/choose-source.png)
 
 Die Autorisierung bei OneDrive oder Dropbox muss nur einmal erfolgen. Wenn Sie bereits autorisiert sind, klicken Sie einfach auf **Weiter**. Sie können das autorisierte OneDrive- oder Dropbox-Konto ändern, indem Sie auf **Konto ändern** klicken.
 
-![](media/app-service-deploy-content-sync/continue.png)
+![Zeigt, wie das autorisierte OneDrive- oder Dropbox-Konto im Bereitstellungscenter im Azure-Portal geändert wird.](media/app-service-deploy-content-sync/continue.png)
 
 Wählen Sie auf der Seite **Konfigurieren** den Ordner aus, den Sie synchronisieren möchten. Dieser Ordner wird unter dem folgenden festgelegten Inhaltspfad in OneDrive oder Dropbox erstellt. 
    
@@ -43,7 +43,7 @@ Klicken Sie abschließend auf **Weiter**.
 
 Wenn Sie Inhalte in Ihrem Cloudordner mit App Service synchronisieren möchten, kehren Sie zur Seite **Bereitstellungscenter** zurück, und klicken Sie auf **Synchronisieren**.
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![Zeigt, wie Sie Ihren Cloudordner mit App Service synchronisieren.](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > Infolge grundlegender Unterschiede bei den APIs wird **OneDrive for Business** derzeit nicht unterstützt. 
@@ -56,7 +56,7 @@ Um die Inhaltssynchronisierung zu deaktivieren, navigieren Sie im [Azure-Portal]
 
 Klicken Sie im linken Menü auf **Bereitstellungscenter** > **Trennen**.
 
-![](media/app-service-deploy-content-sync/disable.png)
+![Zeigt, wie Sie die Synchronisierung Ihres Cloudordners mit Ihrer App Service-App im Azure-Portal trennen.](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

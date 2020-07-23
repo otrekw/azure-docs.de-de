@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/10/2020
-ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: add2e0cc2852f9ab0b63565841f670ed6c53d9a7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669527"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206119"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -91,7 +91,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Computegröße (Dienstziel)|GP_S_Gen5_18|GP_S_Gen5_20|GP_S_Gen5_24|GP_S_Gen5_32|GP_S_Gen5_40|
 |:--- | --: |--: |--: |--: |--:|
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|
-|Min-Max V-Kerne|2,25-18|2,5-20|3-24|4-32|5-40|
+|Min-Max V-Kerne|2,25 - 18|2,5-20|3-24|4-32|5-40|
 |Min-Max-Arbeitsspeicher (GB)|6,75-54|7,5-60|9-72|12-96|15-120|
 |Min. bis max. Verzögerung für automatische Pause (Minuten)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
@@ -126,12 +126,12 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100|
-|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
+|Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
 |Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
-|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|Max. IOPS der lokalen SSD*|4000 |8\.000 |12000 |16000 |20000 |24.000 |
 |Max. Protokollrate (MBit/s)|100 |100 |100 |100 |100 |100 |
-|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|
@@ -139,6 +139,8 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
+
+\* Neben E/A-Vorgängen auf der lokalen SSD nutzen Workloads Remote-E/A-Vorgänge auf dem [Auslagerungsserver](service-tier-hyperscale.md#page-server). Der tatsächliche IOPS-Wert hängt von der Workload ab. Details dazu finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance) und [Daten-E/A in Statistiken zur Ressourcenauslastung](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen4-compute-generation-part-2"></a>Computegeneration Gen4 (Teil 2)
 
@@ -151,12 +153,12 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |
-|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
+|Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
 |Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
-|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|Max. IOPS der lokalen SSD*|28000 |32000 |36000 |40.000 |64000 |76800 |
 |Max. Protokollrate (MBit/s)|100 |100 |100 |100 |100 |100 |
-|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|
@@ -165,7 +167,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
 
-\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+\* Neben E/A-Vorgängen auf der lokalen SSD nutzen Workloads Remote-E/A-Vorgänge auf dem [Auslagerungsserver](service-tier-hyperscale.md#page-server). Der tatsächliche IOPS-Wert hängt von der Workload ab. Details dazu finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance) und [Daten-E/A in Statistiken zur Ressourcenauslastung](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>Hyperscale – bereitgestelltes Computing – Gen5
 
@@ -180,12 +182,12 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100|
-|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |
+|Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|448|
 |Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
-|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|Max. IOPS der lokalen SSD*|8\.000 |16000 |24.000 |32000 |40.000 |48000 |56000 |
 |Max. Protokollrate (MBit/s)|100 |100 |100 |100 |100 |100 |100 |
-|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
@@ -194,7 +196,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
 
-\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+\* Neben E/A-Vorgängen auf der lokalen SSD nutzen Workloads Remote-E/A-Vorgänge auf dem [Auslagerungsserver](service-tier-hyperscale.md#page-server). Der tatsächliche IOPS-Wert hängt von der Workload ab. Details dazu finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance) und [Daten-E/A in Statistiken zur Ressourcenauslastung](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
@@ -207,12 +209,12 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |
-|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |
+|Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |
-|Max. Datenrate, IOPS*|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|Max. IOPS der lokalen SSD*|64000 |72000 |80.000 |96000 |160000 |192000 |204800 |
 |Max. Protokollrate (MBit/s)|100 |100 |100 |100 |100 |100 |100 |
-|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8\.000|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
@@ -221,15 +223,13 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
 
-\* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+\* Neben E/A-Vorgängen auf der lokalen SSD nutzen Workloads Remote-E/A-Vorgänge auf dem [Auslagerungsserver](service-tier-hyperscale.md#page-server). Der tatsächliche IOPS-Wert hängt von der Workload ab. Details dazu finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance) und [Daten-E/A in Statistiken zur Ressourcenauslastung](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 #### <a name="notes"></a>Notizen
 
 **Hinweis 1:** Hyperscale ist eine mehrschichtige Architektur mit separaten Compute- und Speicherkomponenten: [Architektur der Dienstebene „Hyperscale“](service-tier-hyperscale.md#distributed-functions-architecture)
 
-**Hinweis 2:** Hyperscale ist eine mehrschichtige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab.
-
-**Hinweis 3:** Die Latenz beträgt 1–2 ms für Daten im SSD-basierten RBPEX-Cache auf Computereplikaten, der die am häufigsten verwendeten Datenseiten zwischenspeichert. Für Daten, die von Seitenservern abgerufen werden, gilt eine höhere Latenz.
+**Hinweis 2:** Die Latenz beträgt 1–2 ms für Daten auf der SSD für das lokale Computereplikat, die Datenseiten mit dem häufigsten Zugriff zwischenspeichert. Für Daten, die von Auslagerungsservern abgerufen werden, gilt eine höhere Latenz.
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>Universell – bereitgestelltes Computing – Gen4
 

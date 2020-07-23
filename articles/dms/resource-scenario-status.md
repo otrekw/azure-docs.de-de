@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/08/2020
+ms.openlocfilehash: 4e6f8a115e996ac6862f2fb04e5050b94f9f823b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254930"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132749"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -48,18 +48,20 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | Ziel  | `Source` | Support | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL-Datenbank** | SQL Server | ✔ | Allgemein verfügbar |
-|   | RDS SQL |  |  |
-|   | Oracle |  |  |
+|   | RDS SQL | X |  |
+|   | Oracle | X |  |
 | **Azure SQL-Datenbank MI** | SQL Server | ✔ | Allgemein verfügbar |
-|   | RDS SQL |  |  |
-|   | Oracle |  |   |
+|   | RDS SQL | X |  |
+|   | Oracle | X |   |
 | **Virtueller Azure SQL-Computer** | SQL Server | ✔ | Allgemein verfügbar |
-|   | Oracle |   |   |
+|   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
-| **Azure-Datenbank für MySQL** | MySQL |   |   |
-|   | RDS MySQL |   |   |
-| **Azure-Datenbank für PostgreSQL** | PostgreSQL |  |
-|  | RDS PostgreSQL |   |   |
+| **Azure-Datenbank für MySQL** | MySQL | X |   |
+|   | RDS MySQL | X |   |
+| **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
+| **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>Unterstützung der Onlinemigration (fortlaufende Synchronisierung)
 
@@ -69,18 +71,23 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL-Datenbank** | SQL Server | ✔ | Allgemein verfügbar |
 |   | RDS SQL | ✔ | Allgemein verfügbar |
-|   | Oracle |  |  |
+|   | Oracle | X |  |
 | **Azure SQL-Datenbank MI** | SQL Server | ✔ | Allgemein verfügbar |
 |   | RDS SQL | ✔ | Allgemein verfügbar |
-|   | Oracle | ✔ | Private Vorschau |
-| **Virtueller Azure SQL-Computer** | SQL Server |   |   |
-|   | Oracle  |  |  |
+|   | Oracle | X |  |
+| **Virtueller Azure SQL-Computer** | SQL Server | X |   |
+|   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
 | **Azure-Datenbank für MySQL** | MySQL | ✔ | Allgemein verfügbar |
 |   | RDS MySQL | ✔ | Allgemein verfügbar |
-| **Azure-Datenbank für PostgreSQL** | PostgreSQL | ✔ | Allgemein verfügbar |
+| **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | ✔ | Allgemein verfügbar |
+|   | Azure DB for PostgreSQL – Einzelserver* | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
 |   | Oracle | ✔ | Public Preview |
+| **Azure DB for PostgreSQL – Hyperscale (Citus)** | PostgreSQL | ✔ | Allgemein verfügbar |
+|   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
+
+\* Für PostgreSQL ab Version 10 unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

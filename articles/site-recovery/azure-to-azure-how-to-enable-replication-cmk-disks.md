@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 07/10/2020
 ms.author: mayg
-ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92b35284fd7bbb3d4f1196ee0d9bae4ce42d7c9e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135732"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224110"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Replizieren von Computern mit Datenträgern, die für kundenseitig verwaltete Schlüssel (CMK) aktiviert sind
 
@@ -81,3 +81,8 @@ Führen Sie die folgenden Schritte aus, um die Site Recovery-Standardzieleinstel
 * Ich habe dem replizierten Element einen neuen CMK-aktivierten Datenträger hinzugefügt. Wie kann ich diesen Datenträger mit Azure Site Recovery replizieren?
 
     Das Hinzufügen eines neuen CMK-aktivierten Datenträgers zu einem vorhandenen replizierten Element wird nicht unterstützt. Deaktivieren Sie die Replikation, und aktivieren Sie die Replikation für den virtuellen Computer dann erneut.
+
+* Ich habe sowohl plattform- als auch kundenseitig verwaltete Schlüssel aktiviert. Wie kann ich meine Datenträger schützen?
+
+    Die Aktivierung einer doppelten Verschlüsselung sowohl mit plattformseitig als auch mit kundenseitig verwalteten Schlüsseln wird von Site Recovery unterstützt. Befolgen Sie die Anweisungen in diesem Artikel, um Ihren Computer zu schützen. Sie müssen im Voraus einen für die doppelte Verschlüsselung aktivierten DES in der Zielregion erstellen. Diesen DES stellen Sie in dem Moment für Site Recovery bereit, in dem Sie die Replikation für eine solche VM aktivieren.
+

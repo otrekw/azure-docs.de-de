@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199647"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232456"
 ---
 # <a name="live-event-low-latency-settings"></a>LiveEvent-Einstellungen für niedrige Latenz
 
@@ -62,15 +62,15 @@ Die folgenden Tabellen zeigen übliche Latenzergebnisse (wenn das Flag „LowLat
 
 ||Niedrige Latenz aktiviert (2 Sek. GOP)|Niedrige Latenz aktiviert (1 Sek. GOP)|
 |---|---|---|
-|DASH in AMP|10 Sek.|8 Sek.|
-|HLS in nativem iOS-Player|14 Sek.|10 Sek.|
+|**DASH in AMP**|10 Sek.|8 Sek.|
+|**HLS in nativem iOS-Player**|14 Sek.|10 Sek.|
 
 ### <a name="live-encoding"></a>Live Encoding
 
 ||Niedrige Latenz aktiviert (2 Sek. GOP)|Niedrige Latenz aktiviert (1 Sek. GOP)|
 |---|---|---|
-|DASH in AMP|14 Sek.|10 Sek.|
-|HLS in nativem iOS-Player|18 Sek.|13 Sek.|
+|**DASH in AMP**|14 Sek.|10 Sek.|
+|**HLS in nativem iOS-Player**|18 Sek.|13 Sek.|
 
 > [!NOTE]
 > Die End-to-End-Latenz hängt vom lokalen Netzwerk ab und kann von einer CDN-Cachingebene beeinträchtigt werden. Testen Sie Ihre genauen Konfigurationen.

@@ -3,12 +3,12 @@ title: Exportieren aus Azure Application Insights mithilfe von Stream Analytics 
 description: Stream Analytics kann aus Application Insights exportierte Daten fortlaufend transformieren, filtern und weiterleiten.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224518"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539957"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * export-input ist der Alias, den wir der Datenstromeingabe gegeben haben.
 * „pbi-outout“ ist der definierte Ausgabealias.
-* Wir verwenden [OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics), weil sich der Ereignisname in einem geschachtelten JSON-Array befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics)-Klausel gruppiert die Elemente in Zeiträume von einer Minute.
+* Wir verwenden [OUTER APPLY GetElements](/stream-analytics-query/apply-azure-stream-analytics), weil sich der Ereignisname in einem geschachtelten JSON-Array befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](/stream-analytics-query/group-by-azure-stream-analytics)-Klausel gruppiert die Elemente in Zeiträume von einer Minute.
 
 ### <a name="query-to-display-metric-values"></a>Abfrage zum Anzeigen metrischer Werte
 
@@ -212,4 +212,3 @@ Noam Ben Zeev zeigt, wie exportierte Daten mit Stream Analytics verarbeitet werd
 * [Fortlaufendem Export](export-telemetry.md)
 * [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

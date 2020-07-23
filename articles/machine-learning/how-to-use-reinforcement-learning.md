@@ -1,7 +1,7 @@
 ---
-title: Trainieren und Bereitstellen eines Modells für vertiefendes Lernen
+title: Trainieren und Bereitstellen eines Modells für das Lernen durch Bestärkung (Vorschau).
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie das vertiefende Lernen (Reinforcement Learning, RL) von Azure Machine Learning nutzen, um einen RL-Agent zu trainieren, damit er Pong spielen kann.
+description: Erfahren Sie, wie Sie das Lernen durch Bestärkung (Reinforcement Learning, RL) von Azure Machine Learning nutzen, um einen RL-Agent so zu trainieren, dass er Pong spielen kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556942"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203283"
 ---
-# <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Vertiefendes Lernen (Vorschau) mit Azure Machine Learning
+# <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> Das vertiefende Lernen von Azure Machine Learning ist derzeit eine Previewfunktion. Momentan werden nur Ray- und RLlib-Frameworks unterstützt.
+> Das Lernen durch Bestärkung von Azure Machine Learning ist derzeit eine Previewfunktion. Momentan werden nur Ray- und RLlib-Frameworks unterstützt.
 
-In diesem Artikel erfahren Sie, wie Sie einen RL-Agent (Reinforcement Learning, vertiefendes Lernen) trainieren, damit er das Videospiel Pong spielen kann. Sie verwenden dabei die Open-Source-Python-Bibliothek [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) mit Azure Machine Learning, um komplexe verteilte RL-Aufträge zu verwalten.
+In diesem Artikel erfahren Sie, wie Sie einen RL-Agent (Reinforcement Learning, Lernen durch Bestärkung) trainieren, damit er das Videospiel Pong spielen kann. Sie verwenden dabei die Open-Source-Python-Bibliothek [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) mit Azure Machine Learning, um komplexe verteilte RL-Aufträge zu verwalten.
 
 In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -38,13 +38,13 @@ Dieser Artikel basiert auf dem [RLlib Pong-Beispiel](https://aka.ms/azureml-rl-p
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie diesen Code in einer der folgenden Umgebungen aus. Wir empfehlen Ihnen, die Azure Machine Learning-Computeinstanz zu testen, die einen schnellen Start ermöglicht. Die Beispielnotebooks für vertiefendes Lernen sind für schnelles Klonen und Ausführen auf einer Azure Machine Learning-Computeinstanz verfügbar.
+Führen Sie diesen Code in einer der folgenden Umgebungen aus. Wir empfehlen Ihnen, die Azure Machine Learning-Computeinstanz zu testen, die einen schnellen Start ermöglicht. Die Beispielnotebooks für Lernen durch Bestärkung sind für schnelles Klonen und Ausführen auf einer Azure Machine Learning-Computeinstanz verfügbar.
 
  - Azure Machine Learning-Computeinstanz
 
      - Erfahren Sie, wie Sie Beispielnotebooks klonen können: [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
          - Klonen Sie anstelle von **tutorials** den Ordner **how-to-use-azureml**.
-     - Führen Sie das Setup-Notebook für virtuelle Netzwerke unter `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` aus, um die Netzwerkports zu öffnen, die für das verteilte vertiefende Lernen verwendet werden.
+     - Führen Sie das Setup-Notebook für virtuelle Netzwerke unter `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` aus, um die Netzwerkports zu öffnen, die für das verteilte Lernen durch Bestärkung verwendet werden.
      - Führen Sie das Beispielnotebook `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb` aus.
  
  - Ihr eigener Jupyter Notebook-Server
@@ -52,12 +52,12 @@ Führen Sie diesen Code in einer der folgenden Umgebungen aus. Wir empfehlen Ihn
     - Installieren Sie das [Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
     - Installieren Sie das [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`.
     - Erstellen Sie eine [Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
-    - Führen Sie das [Setup-Notebook](https://aka.ms/azure-rl-env-setup) für virtuelle Netzwerke aus, um die Netzwerkports zu öffnen, die für das verteilte vertiefende Lernen verwendet werden.
+    - Führen Sie das [Setup-Notebook](https://aka.ms/azure-rl-env-setup) für virtuelle Netzwerke aus, um die Netzwerkports zu öffnen, die für das verteilte Lernen durch Bestärkung verwendet werden.
 
 
 ## <a name="how-to-train-a-pong-playing-agent"></a>Trainieren eines Agents, der Pong spielt
 
-Das vertiefende Lernen (Reinforcement Learning, RL) ist ein Ansatz für maschinelles Lernen, der durch das Ausführen von Tätigkeiten lernt. Während andere Techniken für maschinelles Lernen durch passives Übernehmen von Eingabedaten und Finden von darin enthaltenen Mustern lernen, verwendet RL **Trainings-Agents**, um aktiv Entscheidungen zu treffen und aus ihren Ergebnissen zu lernen.
+Das Lernen durch Bestärkung ist eine Methode des maschinellen Lernens, die durch das Ausführen von Tätigkeiten lernt. Während andere Techniken für maschinelles Lernen durch passives Übernehmen von Eingabedaten und Finden von darin enthaltenen Mustern lernen, verwendet RL **Trainings-Agents**, um aktiv Entscheidungen zu treffen und aus ihren Ergebnissen zu lernen.
 
 Ihre Trainings-Agents lernen in einer **simulierten Umgebung**, Pong zu spielen. Trainings-Agents treffen mit jedem Frame des Spiels eine Entscheidung, um das Paddle nach oben oder unten zu verschieben oder die Position beizubehalten. Sie treffen anhand des Zustands des Spiels (ein RGB-Bild des Bildschirms) eine Entscheidung.
 
@@ -105,9 +105,9 @@ Initialisieren Sie ein Arbeitsbereichsobjekt aus der Datei `config.json`, die im
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-reinforcement-learning-experiment"></a>Erstellen eines Experiments für vertiefendes Lernen
+### <a name="create-a-reinforcement-learning-experiment"></a>Erstellen eines Experiments für Lernen durch Bestärkung
 
-Erstellen Sie ein [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), um die Ausführung des vertiefenden Lernens nachzuverfolgen. In Azure Machine Learning handelt es sich bei Experimenten um logische Sammlungen verwandter Testversionen zum Organisieren von Ausführungsprotokollen, dem Verlauf, der Ausgabe usw.
+Erstellen Sie ein [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), um die Ausführung des Lernens durch Bestärkung nachzuverfolgen. In Azure Machine Learning handelt es sich bei Experimenten um logische Sammlungen verwandter Testversionen zum Organisieren von Ausführungsprotokollen, dem Verlauf, der Ausgabe usw.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -209,7 +209,7 @@ else:
     print(worker_compute_target.get_status().serialize())
 ```
 
-## <a name="create-a-reinforcement-learning-estimator"></a>Erstellen eines Estimators für vertiefendes Lernen
+## <a name="create-a-reinforcement-learning-estimator"></a>Erstellen eines Estimators für Lernen durch Bestärkung
 
 In diesem Abschnitt erfahren Sie, wie Sie mit dem [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) einen Trainingsauftrag an Azure Machine Learning übermitteln.
 
@@ -274,7 +274,7 @@ script_params = {
 }
 ```
 
-### <a name="define-the-reinforcement-learning-estimator"></a>Definieren des Estimators für vertiefendes Lernen
+### <a name="define-the-reinforcement-learning-estimator"></a>Definieren des Estimators für Lernen durch Bestärkung
 
 Verwenden Sie die Parameterliste und das Workerkonfigurationsobjekt, um den Estimator zu erstellen.
 
@@ -322,7 +322,7 @@ rl_estimator = ReinforcementLearningEstimator(
 
 ### <a name="entry-script"></a>Eingabeskript
 
-Das [Einstiegsskript](https://aka.ms/azure-rl-pong-script) `pong_rllib.py`trainiert ein neuronales Netz mithilfe der [OpenAI Gym-Umgebung](https://github.com/openai/gym/) `PongNoFrameSkip-v4`. OpenAI Gyms sind standardisierte Schnittstellen, mit denen Algorithmen für vertiefendes Lernen für klassische Atari-Spiele getestet werden können.
+Das [Einstiegsskript](https://aka.ms/azure-rl-pong-script) `pong_rllib.py`trainiert ein neuronales Netz mithilfe der [OpenAI Gym-Umgebung](https://github.com/openai/gym/) `PongNoFrameSkip-v4`. OpenAI Gyms sind standardisierte Schnittstellen, mit denen Algorithmen für Lernen durch Bestärkung für klassische Atari-Spiele getestet werden können.
 
 In diesem Beispiel wird ein Trainingsalgorithmus verwendet, der als [IMPALA](https://arxiv.org/abs/1802.01561) (Importance Weighted Actor-Learner Architecture, nach Bedeutung gewichtete Akteur-Lerner-Architektur) bezeichnet wird. IMPALA parallelisiert jeden einzelnen Lernakteur so, dass er über viele Computeknoten hinweg skaliert wird, ohne die Geschwindigkeit oder Stabilität zu beeinträchtigen.
 
@@ -427,8 +427,8 @@ Der Plot **episode_reward_mean** zeigt die durchschnittliche Anzahl der Punkte a
 
 Wenn Sie Protokolle der untergeordneten Ausführung durchsuchen, sehen Sie die Auswertungsergebnisse, die in der Datei driver_log.txt erfasst wurden. Möglicherweise müssen Sie einige Minuten warten, bis diese Metriken auf der Ausführungsseite verfügbar werden.
 
-In kurzer Zeit haben Sie gelernt, mehrere Computeressourcen zu konfigurieren, um einen Agent für vertiefendes Lernen so zu trainieren, dass er sehr gut Pong spielt.
+In kurzer Zeit haben Sie gelernt, mehrere Computeressourcen zu konfigurieren, um einen Agent für Lernen durch Bestärkung so zu trainieren, dass er sehr gut Pong spielt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie einen Agent für vertiefendes Lernen mithilfe eines IMPALA-Agents trainieren. Weitere Beispiele finden Sie im [GitHub-Repository für vertiefendes Lernen von Azure Machine Learning](https://aka.ms/azureml-rl-notebooks).
+In diesem Artikel haben Sie erfahren, wie Sie einen Agent für Lernen durch Bestärkung mithilfe eines IMPALA-Agents trainieren. Weitere Beispiele finden Sie im [GitHub-Repository für Lernen durch Bestärkung von Azure Machine Learning](https://aka.ms/azureml-rl-notebooks).

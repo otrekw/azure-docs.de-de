@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701829"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220693"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Erstellen einer Web-App in einer App Service-Umgebung v1
 
@@ -34,7 +34,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen > Web + Mobil > Web-App**. 
    
-    ![][1]
+    ![Screenshot, der zeigt, wo Sie eine Web-App im Azure-Portal erstellen.][1]
 2. Wählen Sie Ihr Abonnement aus.  
    
     Achten Sie bei mehreren Abonnements darauf, dass Sie zum Erstellen einer App in Ihrer App Service-Umgebung dasselbe Abonnement verwenden müssen, das Sie beim Erstellen der App Service-Umgebung verwendet haben. 
@@ -47,7 +47,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
    
     Sie können die App Service-Pläne in Ihrer ASE anhand des Standorts identifizieren, der unter dem Plannamen angegeben ist.  
    
-    ![][5]
+    ![Screenshot, der zeigt, wo Sie die App Service-Pläne in Ihrer ASE anzeigen können.][5]
    
     Wenn Sie einen App Service-Plan verwenden möchten, der bereits in Ihrer App Service-Umgebung vorhanden ist, wählen Sie diesen aus. Wenn Sie einen neuen App Service-Plan erstellen möchten, finden Sie weitere Informationen im folgenden Abschnitt dieses Tutorials, [Erstellen eines App Service-Plans in einer App Service-Umgebung](#createplan).
 5. Geben Sie den Namen für Ihre Web-App ein, und klicken Sie dann auf **Erstellen**. 
@@ -69,18 +69,18 @@ Die folgenden Schritte zeigen, wie Sie einen App Service-Plan während der Erste
    
     Da eine App Service-Umgebung im Wesentlichen ein privater Bereitstellungsort ist, wird sie unter "Standort" angezeigt. 
    
-    ![][2]
+    ![Screenshot, der die Standortauswahl zum Auswählen der gewünschten ASE zeigt.][2]
    
     Nach der Auswahl einer ASE in der Standortauswahl wird die Oberfläche zur Erstellung von App Service-Plänen aktualisiert.  Der Standort zeigt nun den Namen des ASE-Systems und die Region an, in der es sich befindet. Die Tarifplanauswahl wird durch eine Workerpoolauswahl ersetzt.  
    
-    ![][3]
+    ![Screenshot, der die ASE-Systemdetails nach Auswahl der ASE in der Standortauswahl zeigt.][3]
 
 ### <a name="selecting-a-worker-pool"></a>Auswählen eines Workerpools
 In Azure App Service und außerhalb einer App Service-Umgebung sind bei der Auswahl eines dedizierten Tarifplans üblicherweise drei Computegrößen verfügbar.  Auf ähnliche Weise können Sie für eine ASE bis zu drei Workerpools und die Computegröße angeben, die für den jeweiligen Workerpool verwendet wird.  Für Mandanten der ASE bedeutet dies, dass anstelle der Auswahl eines Tarifplans mit Computegröße für Ihren App Service-Plan ein sogenannter *Workerpool*ausgewählt wird.  
 
 Auf der Benutzeroberfläche zur Auswahl des Workerpools wird unterhalb des Namens die Computegröße angezeigt, die für diesen Workerpool verwendet wird.  Die verfügbare Größe entspricht der Anzahl von Serverinstanzen, die zur Verwendung in diesem Pools verfügbar sind.  Möglicherweise verfügt der Pool insgesamt über mehr Instanzen als diese Anzahl, der hier angezeigte Wert bezieht sich jedoch lediglich auf die Anzahl von Instanzen, die gegenwärtig nicht verwendet werden.  Informationen zum Hinzufügen von Computeressourcen zu Ihrer App Service-Umgebung finden Sie unter [Konfigurieren der App Service-Umgebung](app-service-web-configure-an-app-service-environment.md).
 
-![][4]
+![Screenshot, der den Bereich „Workerpool“ zeigt, in dem Sie Workerpools für die ASE auswählen können.][4]
 
 In diesem Beispiel werden lediglich zwei verfügbare Workerpools angezeigt. Der Grund dafür ist, dass der Administrator der App Service-Umgebung nur diesen beiden Workerpools Hosts zugewiesen hat.  Der dritte Pool würde angezeigt, wenn ihm virtuelle Computer zugewiesen würden.  
 

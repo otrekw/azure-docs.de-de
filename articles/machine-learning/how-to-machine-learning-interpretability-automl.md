@@ -1,5 +1,5 @@
 ---
-title: Erklärbarkeit beim automatisierten Machine Learning (ML)
+title: Erklärbarkeit beim automatisierten maschinellen Lernen (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Ihr automatisiertes Machine Learning-Modell die Featurerelevanz ermittelt und beim Verwenden des Azure Machine Learning SDK Vorhersagen trifft.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: mesameki
 author: mesameki
-ms.date: 03/11/2020
-ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430528"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206604"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

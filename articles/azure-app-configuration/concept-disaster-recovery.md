@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523763"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207188"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Resilienz und Notfallwiederherstellung
 
@@ -64,23 +64,31 @@ Beachten Sie den `optional`-Parameter, der an die `AddAzureAppConfiguration`-Fun
 
 ## <a name="synchronization-between-configuration-stores"></a>Synchronisierung zwischen Konfigurationsspeichern
 
-Es ist wichtig, dass all Ihre georedundanten Konfigurationsspeicher denselben Satz von Daten verwenden. Mit der Funktion **Exportieren** in App Configuration können Sie Daten nach Bedarf aus dem primären Speicher in den sekundären Speicher kopieren. Diese Funktion ist sowohl über das Azure-Portal als auch über die CLI verfügbar.
+Es ist wichtig, dass all Ihre georedundanten Konfigurationsspeicher denselben Satz von Daten verwenden. Es gibt zwei Möglichkeiten, dies zu erreichen:
+
+### <a name="backup-manually-using-the-export-function"></a>Manuelle Sicherung mithilfe der Exportfunktion
+
+Mit der Funktion **Exportieren** in App Configuration können Sie Daten nach Bedarf aus dem primären Speicher in den sekundären Speicher kopieren. Diese Funktion ist sowohl über das Azure-Portal als auch über die CLI verfügbar.
 
 Im Azure-Portal können Sie eine Änderung wie folgt an einen anderen Konfigurationsspeicher pushen:
 
 1. Wählen Sie auf der Registerkarte **Import/Export** Folgendes aus: **Exportieren** > **App-Konfiguration** > **Ziel** > **Ressource auswählen**.
 
-1. Geben Sie auf dem neuen Blatt, dass geöffnet wird, das Abonnement, die Ressourcengruppe und den Ressourcennamen Ihres sekundären Speichers an, und wählen Sie anschließend **Anwenden** aus.
+1. Geben Sie auf dem neuen Blatt, das geöffnet wird, das Abonnement, die Ressourcengruppe und den Ressourcennamen Ihres sekundären Speichers an, und wählen Sie anschließend **Anwenden** aus.
 
-1. Die Benutzeroberfläche wird aktualisiert, sodass Sie auswählen können, welche Konfigurationsdaten Sie in den sekundären Speicher exportieren möchten. Sie können den Standardzeitwert unverändert lassen sowie **Quellbezeichnung** und **Zielbezeichnung** auf den gleichen Wert festlegen. Wählen Sie **Übernehmen**.
+1. Die Benutzeroberfläche wird aktualisiert, sodass Sie auswählen können, welche Konfigurationsdaten Sie in den sekundären Speicher exportieren möchten. Sie können den Standardzeitwert unverändert lassen und **Quellbezeichnung** und **Bezeichnung** auf den gleichen Wert festlegen. Wählen Sie **Übernehmen**. Wiederholen Sie diesen Vorgang für alle Bezeichnungen in Ihrem primären Speicher.
 
-1. Wiederholen Sie die vorherigen Schritte für alle Konfigurationsänderungen.
+1. Wiederholen Sie die vorherigen Schritte jedes Mal, wenn sich die Konfiguration ändert.
 
-Dieser Exportprozess kann mithilfe der Azure-Befehlszeilenschnittstelle automatisiert werden. Der folgenden Befehl zeigt, wie Sie eine einzelne Konfigurationsänderung aus dem primären in den sekundären Speicher exportieren:
+Der Exportvorgang kann auch über die Azure CLI ausgeführt werden. Der folgenden Befehl zeigt, wie Sie alle Konfigurationen aus dem primären in den sekundären Speicher exportieren:
 
 ```azurecli
-    az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+    az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
+
+### <a name="backup-automatically-using-azure-functions"></a>Automatische Sicherung mithilfe von Azure Functions
+
+Der Sicherungsvorgang kann mit Azure Functions automatisiert werden. Dabei wird die Integration von Azure Event Grid in App Configuration genutzt. Nach der Einrichtung veröffentlicht App Configuration bei allen Änderungen, die an Schlüsselwerten in einem Konfigurationsspeicher vorgenommen wurden, Ereignisse in Event Grid. Daher kann eine Azure Functions-App auf diese Ereignisse lauschen und die Daten entsprechend sichern. Details dazu finden Sie im Tutorial zur [automatischen Sicherung von App Configuration-Speichern](./howto-backup-config-store.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

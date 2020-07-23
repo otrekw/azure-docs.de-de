@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589651"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224586"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 
@@ -23,11 +23,13 @@ ms.locfileid: "83589651"
 
 Das Tool Audio Content Creation basiert auf der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md). Um die Anpassung und Optimierung zu vereinfachen, ermöglicht Audio Content Creation das visuelle Untersuchen von Sprachsyntheseausgaben in Echtzeit.
 
+Informationen dazu finden Sie im [Videotutorial](https://www.youtube.com/watch?v=O1wIJ7mts_w) zu Audio Content Creation.
+
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
 Das folgende Diagramm zeigt die erforderlichen Schritte zum Optimieren der Sprachsyntheseausgaben. Verwenden Sie die unten angegebenen Links, um mehr über die einzelnen Schritte zu erfahren.
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![Ein Diagramm der erforderlichen Schritte zum Optimieren der Sprachsyntheseausgaben.](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. [Richten Sie Ihr Azure-Konto und die Speech-Ressource ein](#set-up-your-azure-account-and-speech-resource), um loszulegen.
 2. [Erstellen Sie eine Datei zur Audiooptimierung](#create-an-audio-tuning-file) als Nur-Text- oder SSML-Skript.

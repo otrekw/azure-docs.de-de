@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 4f2ed7f1cb24b9896b533fb5d18ac4e57db48e2c
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/15/2020
+ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780329"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134676"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -36,7 +36,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.AzureStackHCI](#microsoftazurestackhci)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
@@ -54,12 +53,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [Microsoft.ClassicSubscription](#microsoftclassicsubscription)
-> - [Microsoft.Cognition](#microsoftcognition)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Microsoft.Consumption](#microsoftconsumption)
-> - [Microsoft.Container](#microsoftcontainer)
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
@@ -109,6 +106,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
 > - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.HybridNetwork](#microsofthybridnetwork)
 > - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
@@ -126,7 +124,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
 > - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
-> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
@@ -151,11 +148,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Peering](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PortalSdk](#microsoftportalsdk)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft.PowerPlatform](#microsoftpowerplatform)
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
-> - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.ProviderHub](#microsoftproviderhub)
 > - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
@@ -179,7 +175,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft.Sql](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
@@ -191,7 +186,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Subscription](#microsoftsubscription)
 > - [microsoft.support](#microsoftsupport)
 > - [Microsoft.Synapse](#microsoftsynapse)
-> - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.Token](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
@@ -203,6 +197,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft.WorkloadBuilder](#microsoftworkloadbuilder)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
@@ -221,8 +216,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | privatelinkforazuread | Nein | Nein |
-> | tenants | Nein | Nein |
+> | diagnosticsettings | Nein | Nein |
+> | diagnosticsettingscategories | Nein | Nein |
+> | Vorgänge | Nein | Nein |
+> | privatelinkforazuread | Ja | Ja |
+> | tenants | Ja | Ja |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -327,6 +325,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/operationstatus | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | spring | Ja | Ja |
+> | spring/apps | Nein | Nein |
+> | spring/apps/deployments | Nein | Nein |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
@@ -361,11 +361,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | findorphanroleassignments | Nein | Nein |
 > | locks | Nein | Nein |
 > | Vorgänge | Nein | Nein |
+> | operationstatus | Nein | Nein |
 > | Berechtigungen | Nein | Nein |
 > | policyassignments | Nein | Nein |
 > | policydefinitions | Nein | Nein |
 > | policysetdefinitions | Nein | Nein |
+> | privatelinkassociations | Nein | Nein |
 > | provideroperations | Nein | Nein |
+> | resourcemanagementprivatelinks | Nein | Nein |
 > | roleassignments | Nein | Nein |
 > | roleassignmentsusagemetrics | Nein | Nein |
 > | roledefinitions | Nein | Nein |
@@ -388,6 +391,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 > [!IMPORTANT]
 > Runbooks müssen sich in der gleichen Ressourcengruppe befinden wie das Automation-Konto.
+>
+> Weitere Informationen finden Sie unter [Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
@@ -396,6 +401,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | locations | Nein | Nein |
 > | locations/checkquotaavailability | Nein | Nein |
+> | locations/checktrialavailability | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | privateclouds | Ja | Ja |
 > | privateclouds/clusters | Nein | Nein |
@@ -455,21 +461,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/checknameavailability | Nein | Nein |
 > | locations/quotas | Nein | Nein |
 > | Vorgänge | Nein | Nein |
-
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | clusters | Nein | Nein |
-> | fileservers | Nein | Nein |
-> | jobs | Nein | Nein |
-> | Vorgänge | Nein | Nein |
-> | workspaces | Nein | Nein |
-> | workspaces/clusters | Nein | Nein |
-> | workspaces/experiments | Nein | Nein |
-> | workspaces/experiments/jobs | Nein | Nein |
-> | workspaces/fileservers | Nein | Nein |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -644,7 +635,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/operationsstatus | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | redis | Ja | Ja |
-> | redis/privateendpointconnections | Nein | Nein |
+> | redis/eventgridfilters | Nein | Nein |
 > | redis/privatelinkresources | Nein | Nein |
 > | redisenterprise | Nein | Nein |
 
@@ -829,13 +820,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
-## <a name="microsoftcognition"></a>Microsoft.Cognition
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | syntheticsaccounts | Nein | Nein |
-
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
@@ -937,13 +921,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | tenants | Nein | Nein |
 > | terms | Nein | Nein |
 > | usagedetails | Nein | Nein |
-
-## <a name="microsoftcontainer"></a>Microsoft.Container
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | containergroups | Nein | Nein |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
@@ -1134,7 +1111,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | databoxedgedevices | Nein | Nein |
+> | availableskus | Nein | Nein |
+> | databoxedgedevices | Ja | Ja |
 > | databoxedgedevices/checknameavailability | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 
@@ -1428,6 +1406,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | elasticpools/iothubtenants | Nein | Nein |
 > | iothubs | Ja | Ja |
 > | iothubs/eventgridfilters | Nein | Nein |
+> | iothubs/securitysettings | Nein | Nein |
 > | operationresults | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | provisioningservices | Ja | Ja |
@@ -1473,6 +1452,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | digitaltwinsinstances | Nein | Nein |
+> | digitaltwinsinstances/operationresults | Nein | Nein |
 > | locations | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 
@@ -1520,7 +1500,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | domains | Ja | Ja |
-> | eventSubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. |
 > | domains/topics | Nein | Nein |
 > | eventsubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. |
 > | extensiontopics | Nein | Nein |
@@ -1672,8 +1651,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
+> | locations | Nein | Nein |
+> | locations/operationresults | Nein | Nein |
+> | locations/operationstatus | Nein | Nein |
 > | machines | Ja | Ja |
-> | machines/extensions | Nein | Nein |
+> | machines/extensions | Ja | Ja |
 > | Vorgänge | Nein | Nein |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
@@ -1683,6 +1665,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | datamanagers | Ja | Ja |
 > | Vorgänge | Nein | Nein |
+
+## <a name="microsofthybridnetwork"></a>Microsoft.HybridNetwork
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | devices | Nein | Nein |
+> | locations | Nein | Nein |
+> | locations/operationstatuses | Nein | Nein |
+> | Vorgänge | Nein | Nein |
+> | vnfs | Nein | Nein |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1718,6 +1711,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | components | Ja | Ja |
 > | components/events | Nein | Nein |
 > | components/linkedstorageaccounts | Nein | Nein |
+> | components/metadata | Nein | Nein |
 > | components/metrics | Nein | Nein |
 > | components/pricingplans | Nein | Nein |
 > | components/query | Nein | Nein |
@@ -1756,6 +1750,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Transaktionen | Nein | Nein |
 > | vminsightsonboardingstatuses | Nein | Nein |
 > | webtests | Ja | Ja |
+> | webtests/gettestresultfile | Nein | Nein |
 > | workbooks | Ja | Ja |
 > | workbooktemplates | Ja | Ja |
 
@@ -1794,6 +1789,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/deletedvaults | Nein | Nein |
 > | locations/deletevirtualnetworkorsubnets | Nein | Nein |
 > | locations/operationresults | Nein | Nein |
+> | managedhsms | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | vaults | Ja | Ja |
 > | vaults/accesspolicies | Nein | Nein |
@@ -1916,13 +1912,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | accounts | Nein | Nein |
-
-## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | hostingaccounts | Nein | Nein |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -2089,11 +2078,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | assessmentprojects | Ja | Ja |
+> | assessmentprojects | Nein | Nein |
 > | locations | Nein | Nein |
 > | locations/assessmentoptions | Nein | Nein |
 > | locations/checknameavailability | Nein | Nein |
-> | migrateprojects | Ja | Ja |
+> | migrateprojects | Nein | Nein |
 > | movecollections | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | projects | Nein | Nein |
@@ -2167,10 +2156,12 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | firewallpolicies | Ja | Ja |
 > | frontdooroperationresults | Nein | Nein |
 > | frontdoors | Nein | Nein |
+> | frontdoors/frontendendpoints | Nein | Nein |
 > | frontdoorwebapplicationfirewallmanagedrulesets | Nein | Nein |
 > | frontdoorwebapplicationfirewallpolicies | Nein | Nein |
 > | getdnsresourcereference | Nein | Nein |
 > | internalnotify | Nein | Nein |
+> | ipallocations | Ja | Ja |
 > | ipgroups | Ja | Ja |
 > | loadbalancers | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 > | localnetworkgateways | Ja | Ja |
@@ -2273,11 +2264,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | hypervsites | Ja | Ja |
-> | importsites | Ja | Ja |
+> | hypervsites | Nein | Nein |
+> | importsites | Nein | Nein |
 > | Vorgänge | Nein | Nein |
-> | serversites | Ja | Ja |
-> | vmwaresites | Ja | Ja |
+> | serversites | Nein | Nein |
+> | vmwaresites | Nein | Nein |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -2325,7 +2316,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Vorgänge | Nein | Nein |
 > | peerasns | Nein | Nein |
 > | peeringlocations | Nein | Nein |
-> | peerings | Ja | Ja |
+> | peerings | Nein | Nein |
 > | peeringservicecountries | Nein | Nein |
 > | peeringservicelocations | Nein | Nein |
 > | peeringserviceproviders | Nein | Nein |
@@ -2356,13 +2347,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Vorgänge | Nein | Nein |
 > | usersettings | Nein | Nein |
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | rootresources | Nein | Nein |
-
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
@@ -2384,6 +2368,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/operationstatuses | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 
+## <a name="microsoftpowerplatform"></a>Microsoft.PowerPlatform
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | Vorgänge | Nein | Nein |
+
 ## <a name="microsoftprojectbabylon"></a>Microsoft.ProjectBabylon
 
 > [!div class="mx-tableFixed"]
@@ -2392,13 +2383,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | accounts | Nein | Nein |
 > | checknameavailability | Nein | Nein |
 > | Vorgänge | Nein | Nein |
-
-## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | accounts | Nein | Nein |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
@@ -2504,6 +2488,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
+> | calculatetemplatehash | Nein | Nein |
 > | checkpolicycompliance | Nein | Nein |
 > | checkresourcename | Nein | Nein |
 > | deployments | Nein | Nein |
@@ -2623,6 +2608,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | aggregations | Nein | Nein |
 > | alertrules | Nein | Nein |
 > | alertruletemplates | Nein | Nein |
+> | automationrules | Nein | Nein |
 > | bookmarks | Nein | Nein |
 > | cases | Nein | Nein |
 > | dataconnectors | Nein | Nein |
@@ -2724,8 +2710,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | providerregistrations | Nein | Nein |
-> | providerregistrations/resourcetyperegistrations | Nein | Nein |
 > | rollouts | Nein | Nein |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -2770,7 +2754,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | checknameavailability | Nein | Nein |
 > | instancepools | Nein | Nein |
 > | locations | Ja | Ja |
-> | locations | Nein | Nein |
 > | locations/administratorazureasyncoperation | Nein | Nein |
 > | locations/administratoroperationresults | Nein | Nein |
 > | locations/auditingsettingsazureasyncoperation | Nein | Nein |
@@ -2940,7 +2923,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | virtualclusters | Ja | Ja |
 
 > [!IMPORTANT]
-> Datenbank und Server müssen sich in der gleichen Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
+> Datenbank und Server müssen sich in der gleichen Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank- und Azure Synapse Analytics-Datenbanken.
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
@@ -2956,13 +2939,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | sqlvirtualmachinegroups | Ja | Ja |
 > | sqlvirtualmachinegroups/availabilitygrouplisteners | Nein | Nein |
 > | sqlvirtualmachines | Ja | Ja |
-
-## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | dwvm | Nein | Nein |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -3001,6 +2977,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | locations | Nein | Nein |
 > | locations/checknameavailability | Nein | Nein |
+> | locations/operationresults | Nein | Nein |
+> | locations/operations | Nein | Nein |
 > | locations/workflows | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | storagesyncservices | Ja | Ja |
@@ -3098,14 +3076,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workspaces/operationstatuses | Nein | Nein |
 > | workspaces/sqlpools | Ja | Ja |
 
-## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | providerregistrations | Nein | Nein |
-> | ressourcen | Nein | Nein |
-
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
@@ -3133,6 +3103,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | imagetemplates | Nein | Nein |
+> | imagetemplates/runoutputs | Nein | Nein |
+> | locations | Nein | Nein |
+> | locations/operations | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
@@ -3201,6 +3174,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | accounts | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | plans | Nein | Nein |
+> | registeredsubscriptions | Nein | Nein |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -3279,6 +3253,16 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | deviceservices | Nein | Nein |
 > | Vorgänge | Nein | Nein |
+
+## <a name="microsoftworkloadbuilder"></a>Microsoft.WorkloadBuilder
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | locations | Nein | Nein |
+> | locations/operationstatuses | Nein | Nein |
+> | Vorgänge | Nein | Nein |
+> | workloads | Nein | Nein |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 

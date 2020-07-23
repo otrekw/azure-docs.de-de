@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988599"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242303"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Hinzufügen einer Kachelebene zu einer Karte
 
@@ -37,6 +37,7 @@ Die in eine Kachelebene übergebene Kachel-URL muss eine HTTP- oder HTTPS-URL zu
 * `{quadkey}`: Kachel-Quadkey-Bezeichner basierend auf der Namenskonvention des Bing Maps-Kachelsystems.
 * `{bbox-epsg-3857}`: Eine Begrenzungsrahmen-Zeichenfolge mit dem Format `{west},{south},{east},{north}` im Raumbezugssystem EPSG 3857.
 * `{subdomain}`: Ein Platzhalter für die Unterdomänenwerte. Falls angegeben, wird die `subdomain` hinzugefügt.
+* `{azMapsDomain}`: Ein Platzhalter zum Ausrichten der Domäne und Authentifizierung von Kachelanforderungen an dieselben Werte, die von der Karte verwendet werden.
 
 ## <a name="add-a-tile-layer"></a>Hinzufügen einer Kachelebene
 

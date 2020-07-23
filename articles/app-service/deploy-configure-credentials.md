@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649119"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223855"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
@@ -40,17 +40,17 @@ Im Azure-Portal muss mindestens eine App vorhanden sein, bevor Sie auf die Seite
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü die Optionen **App Services** >  **\<any_app>**  > **Bereitstellungscenter** > **FTP** > **Dashboard** aus.
 
-    ![](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Zeigt, wie Sie das FTP-Dashboard im Bereitstellungscenter in Azure App Services auswählen.](./media/app-service-deployment-credentials/access-no-git.png)
 
     Oder wenn Sie Git-Bereitstellung bereits konfiguriert haben, wählen Sie **App Services** >  **&lt;beliebige_App>**  > **Bereitstellungscenter** > **FTP/Anmeldeinformationen** aus.
 
-    ![](./media/app-service-deployment-credentials/access-with-git.png)
+    ![Zeigt, wie Sie das FTP-Dashboard für Ihre konfigurierte Git-Bereitstellung im Bereitstellungscenter in Azure App Services auswählen.](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. Wählen Sie **Benutzeranmeldeinformationen** aus, konfigurieren Sie den Benutzernamen und das Kennwort, und wählen Sie dann **Anmeldeinformationen speichern** aus.
 
 Wenn Sie Anmeldeinformationen für die Bereitstellung festgelegt haben, finden Sie den *Git*-Benutzernamen für Bereitstellungen auf der Seite **Übersicht** Ihrer App.
 
-![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![Zeigt, wie Sie den Benutzernamen der Git-Bereitstellung auf der Übersichtsseite Ihrer App finden.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 Wenn die Git-Bereitstellung konfiguriert ist, wird auf der Seite ein **Git-/Bereitstellungsbenutzername** angezeigt, andernfalls ein **FTP-/Bereitstellungsbenutzername**.
 

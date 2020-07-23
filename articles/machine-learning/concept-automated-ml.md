@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041726"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199887"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Was ist automatisiertes maschinelles Lernen (AutoML)?
 
@@ -220,21 +220,21 @@ Mit den folgenden Einstellungen können Sie Ihr Experiment für automatisiertes 
 
 | |Python SDK|Die Studioweboberfläche|
 ----|:----:|:----:
-Aufteilen der Daten in Trainings-/Validierungssätze| ✓|✓
-Unterstützt Aufgaben für maschinelles Lernen: Klassifizierung, Regression und Vorhersage| ✓| ✓
-Optimiert auf Grundlage der primären Metrik| ✓| ✓
-Unterstützt AML-Compute als Computeziel | ✓|✓
-Konfigurieren des Vorhersagehorizonts, der Zielverzögerungen und des rollierenden Fensters|✓|✓
-Festlegen der Beendigungskriterien |✓|✓ 
-Festlegen gleichzeitiger Iterationen| ✓|✓
-Löschen von Spalten (drop_columns)| ✓|✓
-Blockieren von Algorithmen|✓|✓
-Kreuzvalidierung im Vergleich |✓|✓
-Unterstützt das Training für Azure Databricks-Cluster| ✓|
-Anzeigen der Namen der technischen Features|✓|
-Featurezusammenfassung| ✓|
-Featurisierung für Feiertage|✓|
-Ausführlichkeitsgrade der Protokolldatei| ✓|
+|**Aufteilen der Daten in Trainings-/Validierungssätze**| ✓|✓
+|**Unterstützt Aufgaben für maschinelles Lernen: Klassifizierung, Regression und Vorhersage**| ✓| ✓
+|**Optimiert auf Grundlage der primären Metrik**| ✓| ✓
+|**Unterstützt AML-Compute als Computeziel** | ✓|✓
+|**Konfigurieren des Vorhersagehorizonts, der Zielverzögerungen und des rollierenden Fensters**|✓|✓
+|**Festlegen der Beendigungskriterien** |✓|✓ 
+|**Festlegen gleichzeitiger Iterationen**| ✓|✓
+|**Löschen von Spalten**| ✓|✓
+|**Blockieren von Algorithmen**|✓|✓
+|**Kreuzvalidierung im Vergleich** |✓|✓
+|**Unterstützt das Training für Azure Databricks-Cluster**| ✓|
+|**Anzeigen der Namen der technischen Features**|✓|
+|**Featurezusammenfassung**| ✓|
+|**Featurisierung für Feiertage**|✓|
+|**Ausführlichkeitsgrade der Protokolldatei**| ✓|
 
 ### <a name="model-settings"></a>Modelleinstellungen
 
@@ -242,11 +242,11 @@ Diese Einstellungen können auf das beste Modell als Ergebnis Ihres Experiments 
 
 | |Python SDK|Die Studioweboberfläche|
 |----|:----:|:----:|
-|Registrierung, Bereitstellung, Erklärbarkeit des besten Modells| ✓|✓|
-|Aktivieren von Abstimmungsensemble- und Stapelensemble-Modellen| ✓|✓|
-|Anzeigen des besten Modells auf der Basis von nicht primärer Metrik|✓||
-|Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells|✓||
-|Testen des Modells | ✓| |
+|**Registrierung, Bereitstellung, Erklärbarkeit des besten Modells**| ✓|✓|
+|**Aktivieren von Abstimmungsensemble- und Stapelensemble-Modellen**| ✓|✓|
+|**Anzeigen des besten Modells auf der Basis von nicht primärer Metrik**|✓||
+|**Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells**|✓||
+|**Testen des Modells** | ✓| |
 
 ### <a name="run-control-settings"></a>Ausführen der Steuerelementeinstellungen
 
@@ -254,10 +254,10 @@ Mit diesen Einstellungen können Sie Ihre Experimentausführungen und die Ausfü
 
 | |Python SDK|Die Studioweboberfläche|
 |----|:----:|:----:|
-|Ausführen der Zusammenfassungstabelle| ✓|✓|
-|Abbrechen von Ausführungen und untergeordneten Ausführungen| ✓|✓|
-|Abrufen von Schutzmaßnahmen| ✓|✓|
-|Anhalten und Fortsetzen von Ausführungen| ✓| |
+|**Ausführen der Zusammenfassungstabelle**| ✓|✓|
+|**Abbrechen von Ausführungen und untergeordneten Ausführungen**| ✓|✓|
+|**Abrufen von Schutzmaßnahmen**| ✓|✓|
+|**Anhalten und Fortsetzen von Ausführungen**| ✓| |
 
 <a name="use-with-onnx"></a>
 

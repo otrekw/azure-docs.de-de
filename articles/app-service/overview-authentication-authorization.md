@@ -3,15 +3,15 @@ title: Authentifizierung und Autorisierung
 description: Erfahren Sie etwas über die integrierte Authentifizierungs- und Autorisierungsunterstützung in Azure App Service und Azure Functions sowie darüber, wie sie zum Schutz Ihrer App vor unbefugtem Zugriff beitragen kann.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196435"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206752"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Authentifizierung und Autorisierung in Azure App Service und Azure Functions
 
@@ -35,7 +35,7 @@ Spezielle Informationen zu nativen mobilen Apps finden Sie unter [Authentifizier
 
 Das Modul für Authentifizierung und Autorisierung wird in der gleichen Sandbox wie Ihr Anwendungscode ausgeführt. Wenn es aktiviert ist, wird es von allen eingehenden HTTP-Anforderungen durchlaufen, bevor diese von Ihrem Anwendungscode behandelt werden.
 
-![](media/app-service-authentication-overview/architecture.png)
+![Ein Architekturdiagramm, das zeigt, wie Anforderungen durch einen Prozess in der Website-Sandbox abgefangen werden, der mit Identitätsanbietern interagiert, bevor Datenverkehr an die bereitgestellte Website zugelassen wird](media/app-service-authentication-overview/architecture.png)
 
 Dieses Modul erledigt einige Dinge für Ihre App:
 
@@ -63,7 +63,7 @@ App Service bietet einen integrierten Tokenspeicher. Dabei handelt es sich um ei
 
 In der Regel müssen Sie Code schreiben, um diese Token in Ihrer Anwendung zu erfassen, speichern und aktualisieren. Mit dem Tokenspeicher [rufen Sie die Token bei Bedarf einfach ab](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) und [weisen App Service an, sie zu aktualisieren](app-service-authentication-how-to.md#refresh-identity-provider-tokens), wenn sie ungültig werden. 
 
-Die ID-, Zugriffs- und Aktualisierungstoken für die authentifizierte Sitzung werden zwischengespeichert und sind nur für den zugehörigen Benutzer zugänglich.  
+Die ID-, Zugriffs- und Aktualisierungstoken werden für die authentifizierte Sitzung zwischengespeichert und sind nur für den zugehörigen Benutzer zugänglich.  
 
 Wenn Sie in Ihrer App nicht mit Token arbeiten müssen, können Sie den Tokenspeicher deaktivieren.
 
@@ -82,8 +82,11 @@ App Service nutzt die [Verbundidentität](https://en.wikipedia.org/wiki/Federate
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| Jeder [OpenID Connect](https://openid.net/connect/)-Anbieter (Vorschau) | `/.auth/login/<providerName>` |
 
-Wenn Sie die Authentifizierung und Autorisierung mit einem dieser Anbieter aktivieren, ist der entsprechende Anmeldungsendpunkt für die Benutzerauthentifizierung und die Überprüfung von Authentifizierungstoken vom Anbieter verfügbar. Sie können Ihren Benutzern problemlos eine beliebige Anzahl von diesen Anmeldeoptionen bereitstellen. Außerdem können Sie einen weiteren Identitätsanbieter oder eine [eigene benutzerdefinierte Identitätslösung][custom-auth] integrieren.
+Wenn Sie die Authentifizierung und Autorisierung mit einem dieser Anbieter aktivieren, ist der entsprechende Anmeldungsendpunkt für die Benutzerauthentifizierung und die Überprüfung von Authentifizierungstoken vom Anbieter verfügbar. Sie können Ihren Benutzern problemlos eine beliebige Anzahl von diesen Anmeldeoptionen bereitstellen.
+
+Zur Integration in andere Identitätsanbieter oder eine benutzerdefinierte Authentifizierungslösung ist ein [Pfad für die Legacyerweiterbarkeit][custom-auth] vorhanden, dieser wird aber nicht empfohlen. Nutzen Sie stattdessen die OpenID Connect-Unterstützung.
 
 ## <a name="authentication-flow"></a>Authentifizierungsfluss
 
@@ -113,7 +116,7 @@ Für Clientbrowser kann App Service alle nicht authentifizierten Benutzer automa
 
 Im [Azure-Portal](https://portal.azure.com) können Sie die App Service-Autorisierung mit einer Reihe von Verhaltensweisen konfigurieren, wenn eine eingehende Anforderung nicht authentifiziert ist.
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![Screenshot des Dropdownmenüs „Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist“](media/app-service-authentication-overview/authorization-flow.png)
 
 Die folgenden Überschriften beschreiben die Optionen.
 
@@ -151,13 +154,14 @@ Anbieterspezifische Anleitungen:
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung][Google]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung][MSA]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung][Twitter]
-* [Vorgehensweise: Verwenden einer benutzerdefinierten Authentifizierung für Ihre Anwendung][custom-auth]
+* [Konfigurieren Ihrer App für die Verwendung eines OpenID Connect-Anbieters für die Anmeldung (Vorschau)][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

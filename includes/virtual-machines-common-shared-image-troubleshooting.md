@@ -5,17 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772838"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226443"
 ---
-Wenn beim Ausführen von Vorgängen an Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen Probleme auftreten, führen Sie den fehlgeschlagenen Befehl erneut im Debugmodus aus. Der Debugmodus wird aktiviert, indem Sie in der CLI den Parameter **-debug** übergeben und bei der PowerShell den Parameter **-Debug**. Nachdem Sie den Fehler lokalisiert haben, befolgen Sie dieses Dokument, um die Fehler zu behandeln.
+Wenn beim Ausführen von Vorgängen an Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen Probleme auftreten, führen Sie den fehlgeschlagenen Befehl erneut im Debugmodus aus. Der Debugmodus wird aktiviert, indem Sie in der CLI den Switch `--debug` und in PowerShell den Switch `-Debug` übergeben. Nachdem Sie den Fehler lokalisiert haben, befolgen Sie dieses Dokument, um die Fehler zu behandeln.
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>Erstellen eines Katalogs mit geteilten Images nicht möglich
@@ -43,7 +43,7 @@ Zulässige Zeichen für Imagedefinitionen sind Groß- und Kleinbuchstaben, Zahle
 
 Die Eigenschaften wie Name, Herausgeber, Angebot, SKU und BS-Typ sind obligatorisch. Überprüfen Sie, ob alle Eigenschaften übergeben wurden.
 
-Stellen Sie sicher, dass der **OSType** der Imagedefinition, entweder Linux oder Windows, derselbe ist wie der des verwalteten Quellimages, das Sie verwenden, um die Imageversion zu erstellen. 
+Stellen Sie sicher, dass der **OSType** der Imagedefinition – entweder Linux oder Windows – derselbe ist wie der des Quellimages, das Sie zum Erstellen der Imageversion verwenden. 
 
 
 ## <a name="unable-to-create-an-image-version"></a>Erstellen einer Imageversion nicht möglich 
@@ -84,7 +84,7 @@ Wenden Sie sich an den Abonnementbesitzer und bitten Sie ihn,mittels [rollenbasi
 
 *Das Erstellen der VM oder VM-Skalierungsgruppe dauert lange.*
 
-Überprüfen Sie, ob der **OSType** der Imageversion, aus der Sie die VM oder VM-Skalierungsgruppe erstellen möchten, derselbe **OSType** wie der des verwalteten Quellimages ist, das Sie verwendet haben, um die Imageversion zu erstellen. 
+Überprüfen Sie, ob der **OSType** der Imageversion, aus der Sie die VM oder VM-Skalierungsgruppe erstellen möchten, derselbe **OSType** wie der des Quellimages ist, das Sie zum Erstellen der Imageversion verwendet haben. 
 
 ## <a name="unable-to-share-resources"></a>Teilen von Ressourcen nicht möglich
 

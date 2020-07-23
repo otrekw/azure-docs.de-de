@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262224"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203159"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
 
@@ -233,7 +233,7 @@ Sie können den Connector über eine Quelle auf GitHub erstellen oder die Uber-J
 Befolgen Sie die Anweisungen im Azure Databricks-Leitfaden im Abschnitt [Use the Azure Cosmos DB Spark connector (Verwenden des Azure Cosmos DB-Connectors)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html), um eine Bibliothek mithilfe Ihres Databricks-Arbeitsbereichs zu erstellen.
 
 > [!NOTE]
-> Beachten Sie, dass die Seite **Use the Azure Cosmos DB Spark connector (Verwenden des Azure Cosmos DB-Connectors)** aktuell nicht auf dem neuesten Stand ist. Statt die sechs JAR-Dateien in sechs verschiedene Bibliotheken zu laden, können Sie einfach die Uber-JAR-Datei von Maven unter https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) herunterladen und diese eine JAR-Datei/Bibliothek installieren.
+> Die Seite **Use the Azure Cosmos DB Spark connector** (Verwenden des Azure Cosmos DB-Connectors) ist derzeit nicht auf dem neuesten Stand. Statt die sechs JAR-Dateien in sechs verschiedene Bibliotheken zu laden, können Sie einfach die Uber-JAR-Datei von Maven unter [azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) herunterladen und diese eine JAR-Datei/Bibliothek installieren.
 > 
 
 ### <a name="using-spark-cli"></a>Verwenden von spark-cli

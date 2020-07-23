@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688679"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220557"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Skalieren von Apps in einer ASE v1
 In Azure App Service können üblicherweise drei Faktoren skaliert werden:
@@ -30,7 +30,7 @@ Im Hinblick auf Workergrößen kann der Administrator der App Service-Umgebung d
 
 Das Ändern dieser Elemente erfolgt über die entsprechende Benutzeroberfläche in Ihrem in der App Service-Umgebung gehosteten App Service-Plan.  
 
-![][1]
+![Screenshot, der veranschaulicht, wo die Details zum Dienstplan für die Skalierung und zum Dienstplan für den Workerpool angezeigt werden können.][1]
 
 Beachten Sie, dass Ihr ASP nicht über die Anzahl der verfügbaren Computeressourcen, die im Workerpool Ihres ASP enthalten sind, hinaus hochskaliert werden kann.  Wenn Sie in diesem Workerpool Compute-Ressourcen benötigen, bitten Sie den Administrator Ihrer App Service-Umgebung, diese hinzuzufügen.  Weitere Informationen rund um die Neukonfiguration der App Service-Umgebung finden Sie hier: [Konfigurieren einer App Service-Umgebung][HowtoConfigureASE].  Sie sollten auch die Features für das automatische Skalieren der App Service-Umgebung nutzen, um nach Zeitplan oder Metriken Kapazitäten hinzuzufügen.  Weitere Informationen zum Konfigurieren der automatischen Skalierung für die App Service-Umgebung selbst finden Sie unter [Skalieren von Apps in einer App Service-Umgebung][ASEAutoscale].
 
@@ -41,14 +41,14 @@ Wenn Sie Ihre Web-App in einer App Service-Umgebung erstellen, beginnt sie mit e
 
 Wenn Ihre App Service-Umgebung über ausreichend Kapazität verfügt, ist dies ganz einfach.  Wechseln Sie zum App Service-Plan, der die hochzuskalierenden Websites umfasst, und wählen Sie die Option zum Skalieren.  Daraufhin wird die Benutzeroberfläche geöffnet, auf der Sie manuell die Skalierung für Ihren ASP festlegen oder Regeln für das automatische Skalieren Ihres ASP konfigurieren können.  Zum manuellen Skalieren der App legen Sie einfach ***Skalieren nach*** auf ***Eine Anzahl von Instanzen, die ich manuell festlege*** fest.  Von hier aus können Sie entweder den Schieberegler auf die gewünschte Menge einstellen oder diese in das Feld neben dem Schieberegler eingeben.  
 
-![][2] 
+![Screenshot, der zeigt, wo Sie die Skalierung für Ihren ASP festlegen oder Regeln für das automatische Skalieren Ihres ASP konfigurieren können.][2] 
 
 Die Regeln für das automatische Skalieren eines ASPs in einer App Service-Umgebung funktionieren wie gewohnt.  Sie können ***CPU-Prozentsatz*** unter ***Skalieren nach*** auswählen und Regeln für das automatische Skalieren des ASPs basierend auf einem CPU-Prozentsatz erstellen, oder Sie können komplexere Regeln erstellen, die ***Zeitpläne und Leistungsregeln*** verwenden.  Ausführlichere Informationen zur Konfiguration der automatischen Skalierung finden Sie in der Anleitung unter [Skalieren einer App in Azure App Service][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Auswahl der Workerpools
 Wie bereits erwähnt erfolgt die Auswahl des Workerpools über die Benutzeroberfläche des App Service-Plans.  Öffnen Sie das Blatt für den App Service-Plan, den Sie skalieren und für den Sie einen Workerpool auswählen möchten.  Es werden alle Workerpools angezeigt, die Sie in der App Service-Umgebung konfiguriert haben.  Wenn Sie nur über einen Workerpool verfügen, wird nur dieser Pool aufgeführt.  Um den Workerpool für Ihren ASP zu ändern, wählen Sie einfach den Workerpool aus, in den Sie Ihren App Service-Plan verschieben möchten.  
 
-![][3]
+![Screenshot, der zeigt, wo Sie den Workerpool ändern können, in dem sich Ihr ASP befindet.][3]
 
 Vor dem Verschieben des ASPs aus einem Workerpool in einen anderen sollten Sie sicherstellen, dass Sie über eine ausreichende Kapazität für den ASP verfügen.  In der Liste der Workerpools wird nicht nur der Name des Workerpools aufgeführt, sondern Sie können auch sehen, wie viele Worker im Workerpool zur Verfügung stehen.  Stellen Sie sicher, dass eine ausreichende Anzahl von Instanzen für Ihren App Service-Plan vorhanden ist.  Wenn Sie mehr Compute-Ressourcen im Workerpool benötigen, in den Sie Ihren App Service-Plan verschieben möchten, bitten Sie den Administrator Ihrer App Service-Umgebung, weitere Ressourcen hinzuzufügen.  
 

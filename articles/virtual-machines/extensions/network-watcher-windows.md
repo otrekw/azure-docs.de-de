@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261668"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206016"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>VM-Erweiterung für den Network Watcher-Agent für Windows
 
@@ -34,7 +34,7 @@ Dieses Dokument enthält ausführliche Informationen zu den unterstützten Platt
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Network Watcher-Agent-Erweiterung für Windows kann unter Windows Server 2008 R2, 2012, 2012 R2 und 2016 ausgeführt werden. Nano Server wird zurzeit nicht unterstützt.
+Die Network Watcher-Agent-Erweiterung für Windows kann unter Windows Server 2008 R2, 2012, 2012 R2, 2016 und 2019 ausgeführt werden. Nano Server wird zurzeit nicht unterstützt.
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 

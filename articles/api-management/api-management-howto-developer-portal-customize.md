@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224890"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206244"
 ---
 # <a name="access-and-customize-developer-portal"></a>Zugreifen auf das Entwicklerportal und Anpassen dieses Portals
 
@@ -131,6 +131,7 @@ Nachdem Sie das Portal veröffentlicht haben, können Sie über die gleiche URL 
 Sie müssen CORS (Cross-Origin Resource Sharing) für Ihre APIs aktivieren, damit die Besucher Ihres Portals die APIs über die integrierte interaktive Konsole testen können. Weitere Informationen finden Sie in [diesem Dokumentationsartikel](api-management-howto-developer-portal.md#cors).
 
 ## <a name="next-steps"></a>Nächste Schritte
+- [Ermitteln und Analysieren von Kosten mit der Kostenanalyse](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 Weitere Informationen zum Entwicklerportal:
 

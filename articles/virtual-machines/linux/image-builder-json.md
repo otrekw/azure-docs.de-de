@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135069"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221203"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -150,6 +150,9 @@ Die API erfordert eine SourceType-Eigenschaft, die die Quelle für die Imageerst
 - PlatformImage: gibt an, dass es sich beim Quellimage um ein Marketplace-Image handelt.
 - ManagedImage: Verwenden Sie diesen Typ, wenn Sie mit einem normal verwalteten Image beginnen.
 - SharedImageVersion: Dieser Typ wird verwendet, wenn Sie eine Imageversion aus einem Katalog mit freigegebenen Images als Quellimage verwenden.
+
+> [!NOTE]
+> Bei Verwendung vorhandener benutzerdefinierter Windows-Images können Sie den Sysprep-Befehl bis zu 8-mal in einem einzigen Windows-Image ausführen. Weitere Informationen finden Sie in der Dokumentation zu [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep).
 
 ### <a name="iso-source"></a>ISO-Quelle
 Wir entfernen diese Funktion aus Image Builder, weil jetzt [Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos) verfügbar sind. Beachten Sie die folgenden Zeitpläne:
@@ -468,7 +471,10 @@ Azure Image Builder unterstützt drei Verteilungsziele:
 - **sharedImage:** Katalog mit freigegebenen Images
 - **VHD:** VHD in einem Speicherkonto
 
-Sie können ein Image in einer Konfiguration an beide Zieltypen verteilen. Informationen dazu finden Sie in den [Beispielen](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
+Sie können ein Image in ein und derselben Konfiguration an beide Zieltypen verteilen.
+
+> [!NOTE]
+> Der standardmäßige AIB-Sysprep-Befehl enthält „/mode:vm“ nicht. Dies ist jedoch möglicherweise erforderlich, wenn Sie Images erstellen, in denen die HyperV-Rolle installiert ist. Wenn Sie dieses Befehlsargument hinzufügen müssen, müssen Sie den Sysprep-Befehl überschreiben.
 
 Da Sie mehrere Verteilungsziele verwenden können, verwaltet Image Builder für jedes Verteilungsziel einen Zustand, auf den durch Abfragen von `runOutputName` zugegriffen werden kann.  `runOutputName` ist ein Objekt, das Sie nach der Verteilung abfragen können, um Informationen über die Verteilung abzurufen. Sie können beispielsweise den Speicherort der VHD oder die Regionen abfragen, in denen die Imageversion repliziert wurde. Dies ist eine Eigenschaft aller Verteilungsziele. `runOutputName` muss für jedes Verteilungsziel eindeutig sein. Das folgende Beispiel fragt eine Shared Image Gallery-Distribution ab:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686663"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202565"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -31,20 +31,20 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 
 | | Diagnose<br>erweiterung (WAD) | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
 |:---|:---|:---|:---|
-| Unterstützte Umgebungen | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | 
-| Agent-Anforderungen  | Keine | Keine | Erfordert Log Analytics-Agent |
-| Gesammelte Daten | Ereignisprotokolle<br>ETW-Ereignisse<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>.NET-App-Protokolle<br>Absturzabbilder<br>Agent-Diagnoseprotokolle | Ereignisprotokolle<br>Leistung<IIS logs><br>Dateibasierte Protokolle<br>Erkenntnisse und Lösungen<br>Sonstige Dienste | Prozessdetails und Abhängigkeiten<br>Netzwerkverbindungsmetriken |
-| Senden von Daten an | Azure Storage<br>Azure Monitor-Metriken<br>Event Hub | Azure Monitor-Protokolle | Azure Monitor-Protokolle |
+| **Unterstützte Umgebungen** | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | 
+| **Agent-Anforderungen**  | Keine | Keine | Erfordert Log Analytics-Agent |
+| **Gesammelte Daten** | Ereignisprotokolle<br>ETW-Ereignisse<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>.NET-App-Protokolle<br>Absturzabbilder<br>Agent-Diagnoseprotokolle | Ereignisprotokolle<br>Leistung<IIS logs><br>Dateibasierte Protokolle<br>Erkenntnisse und Lösungen<br>Sonstige Dienste | Prozessdetails und Abhängigkeiten<br>Netzwerkverbindungsmetriken |
+| **Senden von Daten an** | Azure Storage<br>Azure Monitor-Metriken<br>Event Hub | Azure Monitor-Protokolle | Azure Monitor-Protokolle |
 
 
 ### <a name="linux-agents"></a>Linux-Agents
 
 | | Diagnose<br>erweiterung (LAD) | Telegraf-<br>Agent | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
 |:---|:---|:---|:---|:---|
-| Unterstützte Umgebungen | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
-| Agent-Anforderungen  | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
-| Gesammelte Daten | syslog<br>Leistung | Leistung | syslog<br>Leistung| Prozessdetails und Abhängigkeiten<br>Netzwerkverbindungsmetriken |
-| Senden von Daten an | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle |
+| **Unterstützte Umgebungen** | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
+| **Agent-Anforderungen**  | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
+| **Gesammelte Daten** | syslog<br>Leistung | Leistung | syslog<br>Leistung| Prozessdetails und Abhängigkeiten<br>Netzwerkverbindungsmetriken |
+| **Senden von Daten an** | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle |
 
 ## <a name="log-analytics-agent"></a>Log Analytics-Agent
 

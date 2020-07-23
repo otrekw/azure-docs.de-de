@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: bf94631c821c8a7ba5e2870af0bf1ecfd268e888
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203589"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515443"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs in Azure Monitor mithilfe von PowerShell
 Dieser Artikel enthält zwei Codebeispiele, die zeigen, wie ein Log Analytics-Arbeitsbereich in Azure Monitor erstellt und konfiguriert wird.  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> Das Format für den **CustomLogRawJson**-Parameter, der die Konfiguration für ein benutzerdefiniertes Protokoll definiert, kann komplex sein. Verwenden Sie [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0), um die Konfiguration für ein vorhandenes benutzerdefiniertes Protokoll abzurufen. Die **Eigenschaften**-Eigenschaft ist die Konfiguration, die für den **CustomLogRawJson**-Parameter erforderlich ist.
+> Das Format für den **CustomLogRawJson**-Parameter, der die Konfiguration für ein benutzerdefiniertes Protokoll definiert, kann komplex sein. Verwenden Sie [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0), um die Konfiguration für ein vorhandenes benutzerdefiniertes Protokoll abzurufen. Die **Eigenschaften**-Eigenschaft ist die Konfiguration, die für den **CustomLogRawJson**-Parameter erforderlich ist.
 
 Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch definiert. Das Protokolltrennzeichen kann auch ein Zeitstempel sein.  Diese Formate werden unterstützt:
 
@@ -212,14 +212,13 @@ Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch def
 | `yyyy-MM-ddTHH:mm:ss` <br> Das „T“ steht für den Buchstaben „T“ | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Wenn Sie einen Arbeitsbereich erstellen, der in den letzten 14 Tagen gelöscht wurde und sich im [Zustand des vorläufigen Löschens](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior) befindet, kann der Vorgang je nach Arbeitsbereichskonfiguration ein anderes Ergebnis aufweisen:
+Wenn Sie einen Arbeitsbereich erstellen, der in den letzten 14 Tagen gelöscht wurde und sich im [Zustand des vorläufigen Löschens](./delete-workspace.md#soft-delete-behavior) befindet, kann der Vorgang je nach Arbeitsbereichskonfiguration ein anderes Ergebnis aufweisen:
 1. Wenn Sie denselben Arbeitsbereichsnamen, dieselbe Ressourcengruppe, dasselbe Abonnement und dieselbe Region wie beim gelöschten Arbeitsbereich angeben, wird der Arbeitsbereich einschließlich Daten, Konfiguration und verbundener Agents wiederhergestellt.
 2. Wenn Sie denselben Arbeitsbereichsnamen, aber andere Werte für Ressourcengruppe, Abonnement oder Region verwenden, erhalten Sie eine Fehlermeldung des Typs *Der Arbeitsbereichsname „Arbeitsbereichname“ ist nicht eindeutig* oder *Konflikt*. Wenn Sie das vorläufige Löschen außer Kraft setzen, den Arbeitsbereich dauerhaft löschen und einen neuen, gleichnamigen Arbeitsbereich erstellen möchten, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:
-   * [Wiederherstellen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) Ihres Arbeitsbereichs
-   * [Dauerhaftes Löschen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) Ihres Arbeitsbereichs
+   * [Wiederherstellen](./delete-workspace.md#recover-workspace) Ihres Arbeitsbereichs
+   * [Dauerhaftes Löschen](./delete-workspace.md#permanent-workspace-delete) Ihres Arbeitsbereichs
    * Erstellen eines neuen Arbeitsbereichs mit demselben Arbeitsbereichsnamen
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
-
+* [PowerShell-Cmdlets für Log Analytics](/powershell/module/az.operationalinsights/) .

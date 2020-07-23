@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488788"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218172"
 ---
 Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
@@ -41,7 +41,7 @@ Wenn Sie den gesamten ausgehenden Datenverkehr in Ihr VNET weiterleiten, unterli
 Es gibt einige Einschränkungen bei der Verwendung der VNET-Integration in VNETs in derselben Region:
 
 * Sie können nicht über Verbindungen mit globalem Peering auf Ressourcen zugreifen.
-* Die Funktion ist nur bei neueren Azure App Service-Skalierungseinheiten verfügbar, die App Service-Pläne mit dem Tarif „PremiumV2“ unterstützen.
+* Die Funktion ist nur bei neueren Azure App Service-Skalierungseinheiten verfügbar, die App Service-Pläne mit dem Tarif „PremiumV2“ unterstützen. Achtung: *Das bedeutet nicht, dass Ihre App in einem PremiumV2-Tarif ausgeführt werden muss*, sondern nur, dass sie in einem App Service-Plan ausgeführt werden muss, in dem die PremiumV2-Option verfügbar ist. (Dies bedeutet wiederum, dass es sich um eine neuere Skalierungseinheit handelt, bei der dieses VNET-Integrationsfeature ebenfalls verfügbar ist.)
 * Das Integrationssubnetz kann nur von einem App Service-Plan verwendet werden.
 * Die Funktion kann nicht für Apps im Plan „App Service (isoliert)“ in einer App Service-Umgebung verwendet werden.
 * Für das Feature ist ein nicht genutztes Subnetz vom Typ /27 mit 32 Adressen oder höher in einem Azure Resource Manager-VNET erforderlich.

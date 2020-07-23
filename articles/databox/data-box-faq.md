@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742995"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207000"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -38,10 +38,10 @@ A.  Der Azure Data Box-Dienst wurde für die Offlineerfassung von Daten konzipie
 ### <a name="q-what-is-azure-data-box"></a>Q. Was ist Azure Data Box?
 A. Azure Data Box ermöglicht eine schnelle, kostengünstige und sichere Übertragung von Daten im Terabyte-Bereich in Azure. Sie können das Data Box-Gerät im Azure-Portal bestellen. Microsoft liefert Ihnen über einen regionalen Zustelldienst ein Speichergerät mit einer nutzbaren Kapazität von 80 TB. 
 
-Nach Empfang des Geräts können Sie es auf der lokalen Webbenutzeroberfläche schnell einrichten. Kopieren Sie die Daten von Ihren Servern auf das Gerät, und senden Sie es zurück an Azure. Im Azure-Rechenzentrum werden Ihre Daten dann automatisch vom Gerät in Azure hochgeladen. Der gesamte Prozess wird im Azure-Portal vom Data Box-Dienst von Anfang bis Ende nachverfolgt.
+Nach Empfang des Geräts können Sie es auf der lokalen Webbenutzeroberfläche schnell einrichten. Kopieren Sie die Daten von Ihren Servern auf das Gerät oder vom Gerät auf die Server, und senden Sie das Gerät an Azure zurück. Bei einem Importauftrag werden Ihre Daten im Azure-Rechenzentrum automatisch vom Gerät in Azure hochgeladen. Der gesamte Prozess wird im Azure-Portal vom Data Box-Dienst von Anfang bis Ende nachverfolgt.
 
 ### <a name="q-when-should-i-use-data-box"></a>Q. Wann sollte ich Data Box nutzen?
-A. Sie profitieren von der Verwendung von Data Box, wenn Sie über 40-500 TB an Daten verfügen, die Sie in Azure übertragen möchten. Verwenden Sie Data Box Disk für Datenmengen von weniger als 40 TB und [Data Box Heavy](data-box-heavy-overview.md) für Datenmengen von mehr als 500 TB.
+A. Sie profitieren von der Data Box, wenn Sie 40–500 TB Daten nach oder von Azure übertragen möchten. Verwenden Sie Data Box Disk für Datenmengen von weniger als 40 TB und [Data Box Heavy](data-box-heavy-overview.md) für Datenmengen von mehr als 500 TB.
 
 ### <a name="q-what-is-the-price-of-data-box"></a>Q. Was kostet Data Box?
 A. Data Box ist gegen eine Schutzgebühr für 10 Tage erhältlich. Wenn Sie beim Anlegen eines Auftrags im Azure-Portal das Produktmodell auswählen, werden die Gebühren für das Gerät angezeigt. Der Versand ist kostenlos, aber es fallen Gebühren für Azure Storage an. Weitere Informationen finden Sie unter [Azure Data Box – Preise](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -84,7 +84,7 @@ A. Dies bedeutet, dass der Data Box-Dienst für die von Ihnen gewählte Kombinat
 A. Wenn Sie einen Auftrag erteilen, prüfen wir, ob ein Gerät zur Verfügung steht. Wenn ein Gerät verfügbar ist, versenden wir es binnen 10 Tagen. Es ist denkbar, dass es Zeiten mit hoher Nachfrage gibt. In diesem Fall wird Ihr Auftrag in eine Warteschlange gestellt, und Sie können die Statusänderung im Azure-Portal verfolgen. Wenn Ihr Auftrag innerhalb von 90 Tagen nicht erfüllt wird, wird der Auftrag automatisch storniert.
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Q. Ich habe meine Data Box mit Daten gefüllt und muss eine weitere bestellen. Gibt es eine Möglichkeit, die Bestellung ohne viel Zeitaufwand aufzugeben?
-A. Sie können Ihren vorherigen Auftrag klonen. Beim Klonen wird derselbe Auftrag noch einmal erstellt, und Sie müssen nur noch die Auftragsdetails angeben, ohne Adresse, Kontaktinformationen und Benachrichtigungsdetails erneut eingeben zu müssen.
+A. Sie können Ihren vorherigen Auftrag klonen. Beim Klonen wird derselbe Auftrag noch einmal erstellt, und Sie müssen nur noch die Auftragsdetails angeben, ohne Adresse, Kontaktinformationen und Benachrichtigungsdetails erneut eingeben zu müssen. Klonvorgänge sind nur bei Importaufträgen zulässig.
 
 ## <a name="configure-and-connect"></a>Konfigurieren und Verbinden
 
@@ -181,18 +181,7 @@ A.  Ja. Data Box unterstützt maximal 10 Speicherkonten (universell, klassisch o
 A. Wenn Ihr Gerät beschädigt zugestellt wurde oder es Anzeichen von Manipulationen gibt, verwenden Sie das Gerät nicht. [Wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md), und senden Sie das Gerät schnellstmöglich zurück. Sie können auch einen neuen Data Box-Auftrag für ein Ersatzgerät erstellen. In diesem Fall wird Ihnen das Ersatzgerät nicht in Rechnung gestellt.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. Kann ich meine Data Box-Bestellung selbst abholen? Kann ich die Data Box über einen Zustelldienst meiner Wahl zurückgeben?
-A. Ja. Microsoft bietet auch selbstverwalteten Versand in der Region „Gov (US)“ an. Beim Aufgeben der Data Box-Bestellung können Sie die Option für selbstverwalteten Versand auswählen. Führen Sie die folgenden Schritte aus, um Ihr Data Box-Gerät abzuholen:
-    
-1. Nachdem Sie die Bestellung aufgegeben haben, wird die Bestellung verarbeitet, und die Data Box wird vorbereitet. Sie werden per E-Mail benachrichtigt, dass Ihre Bestellung zur Abholung bereit ist. 
-2. Wenn die Bestellung bereit für die Abholung ist, rufen Sie im Azure-Portal Ihre Bestellung auf, und navigieren Sie zum Blatt **Übersicht**. 
-3. Im Azure-Portal wird eine Benachrichtigung mit einem Code angezeigt. Senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den Code an. Das Team gibt den Standort bekannt und plant ein Abholdatum und eine Uhrzeit. Sie müssen das Team innerhalb von fünf Werktagen nach Erhalt der E-Mail-Benachrichtigung anrufen.
-
-Führen Sie nach dem Kopieren der Daten die folgenden Schritte aus, um das Gerät zurückzugeben:
-
-1. Sobald das Kopieren der Daten fehlerfrei abgeschlossen ist, können Sie das **Vorbereiten auf den Versand** durchführen. Nach Abschluss der Vorbereitung erhalten Sie einen Code auf der lokalen Webbenutzeroberfläche des Geräts. Kopieren und speichern Sie den Code.
-2. Schalten Sie das Gerät aus, und entfernen Sie die Verbindungskabel.
-3. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-4. Senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den zuvor gespeicherten Code an. Sie erhalten Informationen darüber, wo und wann Sie das Gerät abgeben müssen.
+A. Ja. Microsoft bietet auch einen selbst verwalteten Versand an. Beim Aufgeben der Data Box-Bestellung können Sie die Option für selbstverwalteten Versand auswählen. Weitere Informationen finden Sie unter [Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal](data-box-portal-customer-managed-shipping.md).
 
 ### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>Q. Überqueren meine Data Box-Geräte beim Versand Länder-/Regionsgrenzen?
 A. Alle Data Box-Geräte werden aus demselben Land/derselben Region wie ihr Ziel versendet und überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU). Dort können Geräte in und aus beliebige(n) EU-Länder(n) bzw. EU-Regionen gesendet werden. Dies gilt sowohl für Data Box- als auch für Data Box Heavy-Geräte.
@@ -213,7 +202,7 @@ A.  Während des Versands dienen die folgenden Merkmale der Data Box dem Schutz 
  - Das Gerät ist gesperrt und benötigt ein Entsperrkennwort, um Daten eingeben und darauf zugreifen zu können.
 Weitere Informationen finden Sie unter [Sicherheitsmerkmale von Azure Data Box](data-box-security.md).  
 
-### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. Ich habe den Schritt „Für den Versand vorbereiten“ abgeschlossen und das Gerät heruntergefahren. Kann ich der Data Box noch weitere Daten hinzufügen?
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. Ich habe den Schritt „Für den Versand vorbereiten“ für meinen Importauftrag abgeschlossen und das Gerät heruntergefahren. Kann ich der Data Box noch weitere Daten hinzufügen?
 A. Ja. Sie können das Gerät einschalten und weitere Daten hinzufügen. Sie müssen den Schritt **Für den Versand vorbereiten** erneut ausführen, nachdem Sie den Kopiervorgang abgeschlossen haben.
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. Ich habe mein Gerät erhalten, und es startet nicht. Wie kann ich das Gerät zurücksenden?
@@ -253,7 +242,7 @@ A.  Die folgende Art der Berichterstellung ist zur Unterstützung von Rückverfo
 
 - Transportlogistik von UPS
 - Protokollierung des Einschaltens und Zugriffs auf die Benutzerfreigabe
-- Manifestdatei mit CRC-64-Prüfung (Cyclic Redundancy Check) oder Prüfsumme für jede Datei, die erfolgreich in der Data Box erfasst wurde
+- BOM- oder Manifestdatei mit CRC-64-Prüfung (Cyclic Redundancy Check mit 64 Bit) oder Prüfsumme für jede Datei, die erfolgreich in der Data Box erfasst wurde
 - Berichte zu Dateien, die nicht in das Azure Storage-Konto hochgeladen wurden
 - Bereinigung des Data Box-Geräts (gemäß NIST 800-88R1-Standards) nach Kopieren der Daten in Ihr Azure Storage-Konto
 
@@ -261,7 +250,9 @@ A.  Die folgende Art der Berichterstellung ist zur Unterstützung von Rückverfo
 A.  Die Sendungsverfolgungsprotokolle des Zustelldiensts werden im Data Box-Auftragsverlauf erfasst. Dieser Bericht steht Ihnen zur Verfügung, nachdem das Gerät an das Azure-Rechenzentrum zurückgesendet wurde und die Daten auf den Datenträgern des Geräts bereinigt wurden. Bei dringendem Bedarf können Sie auch die Website des Zustelldiensts direkt besuchen, die Sendungsverfolgungsnummer eingeben und die Sendungsverfolgungsinformationen abrufen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kann ich die Data Box selbst zum Azure-Rechenzentrum transportieren? 
-A.  Nein. Derzeit nimmt das Azure-Rechenzentrum die Zustellung der Data Box von Kunden oder anderen Zustelldiensten als UPS nicht an.
+A.  Nein. Wenn Sie sich für den von Microsoft verwalteten Versand entschieden haben, können Sie die Box nicht selbst transportieren. Derzeit akzeptiert Azure-Rechenzentrum keine Zustellung der Data Box von Kunden oder anderen Zustelldiensten als UPS.
+
+Wenn Sie sich für den selbst verwalteten Versand entschieden haben, können Sie Ihre Data Box vom Azure-Rechenzentrum abholen oder dort abgeben.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253712"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201806"
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -112,11 +112,11 @@ Wenn der Cache veraltet ist, werden Validierungssteuerelemente des HTTP-Caches v
 
 Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle zeigt, welche Ressourcen abhängig von der Art der HTTP-Antwort zwischengespeichert werden können. Mit HTTP-Antworten bereitgestellte Ressourcen, die nicht alle Bedingungen erfüllen, können nicht zwischengespeichert werden. Nur bei **Azure CDN Premium von Verizon** können Sie mithilfe der Regel-Engine einige dieser Bedingungen anpassen.
 
-|                   | Azure CDN von Microsoft          | Azure CDN von Verizon | Azure CDN von Akamai        |
-|-------------------|-----------------------------------|------------------------|------------------------------|
-| HTTP-Statuscodes | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
-| HTTP-Methoden      | GET, HEAD                         | GET                    | GET                          |
-| Dateigrößenbeschränkungen  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreaming-Optimierungen: 1,8 GB<br />– Optimierung großer Dateien: 150 GB |
+|                       | Azure CDN von Microsoft          | Azure CDN von Verizon | Azure CDN von Akamai        |
+|-----------------------|-----------------------------------|------------------------|------------------------------|
+| **HTTP-Statuscodes (Azure Cognitive Search)** | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
+| **HTTP-Methoden**      | GET, HEAD                         | GET                    | GET                          |
+| **Dateigrößenbeschränkungen**  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreaming-Optimierungen: 1,8 GB<br />– Optimierung großer Dateien: 150 GB |
 
 Damit das Zwischenspeichern von **Azure CDN Standard von Microsoft** bei einer Ressource funktioniert, muss der Ursprungsserver HEAD- und GET-HTTP-Anforderungen unterstützen, und die Inhaltslängenwerte müssen für alle HEAD- und GET-HTTP-Antworten für die Ressource identisch sein. Bei einer HEAD-Anforderung muss der Ursprungsserver die HEAD-Anforderung unterstützen und mit den gleichen Headern antworten wie beim Empfang einer GET-Anforderung.
 

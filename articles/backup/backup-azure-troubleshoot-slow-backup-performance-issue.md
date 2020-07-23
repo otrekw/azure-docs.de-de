@@ -3,12 +3,12 @@ title: Problembehandlung bei langsamer Sicherung von Dateien und Ordnern
 description: Enthält Informationen zu Problembehandlungsschritten, mit denen Sie die Ursache von Azure Backup-Leistungsproblemen diagnostizieren können.
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7bdda02b837cc2312b997b23ba7b714ca7ebb41a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135041"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513831"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 
@@ -95,7 +95,7 @@ Anhand der folgenden Indikatoren können Sie den Engpass identifizieren und dann
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung angezeigt**. Die Daten werden immer noch übertragen. Die Netzwerkbandbreite oder die Datenmenge könnte möglicherweise Verzögerungen verursachen.
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung nicht angezeigt**. Öffnen Sie die Protokolle unter „C:\Programme\Microsoft Azure Recovery Services Agent\Temp“, und suchen Sie in den Protokollen nach dem Eintrag „FileProvider::EndData“. Dieser Eintrag verdeutlicht, dass die Datenübertragung abgeschlossen ist und der Katalogisierungsvorgang durchgeführt wird. Brechen Sie die Sicherungsaufträge nicht ab. Warten Sie stattdessen noch ein wenig, bis die Katalogisierung beendet ist. Wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support), wenn das Problem weiterhin besteht.
 
-Wenn Sie versuchen, große Datenträger zu sichern, empfiehlt es sich, [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) für die erste Sicherung (erste Replikation) zu verwenden.  Ist die Verwendung von Data Box nicht möglich, können alle vorübergehenden Netzwerkprobleme, die in Ihrer Umgebung während der langen Datenübertragungen über das Netzwerk auftreten, zu Sicherungsfehlern führen.  Um sich vor diesen Fehlern zu schützen, können Sie Ihrer ersten Sicherung einige Ordner hinzufügen und inkrementell weitere Ordner hinzufügen, bis alle Ordner erfolgreich in Azure gesichert wurden.  Nachfolgende inkrementelle Sicherungen werden relativ schnell ausgeführt.
+Wenn Sie versuchen, große Datenträger zu sichern, empfiehlt es sich, [Azure Data Box](./offline-backup-azure-data-box.md) für die erste Sicherung (erste Replikation) zu verwenden.  Ist die Verwendung von Data Box nicht möglich, können alle vorübergehenden Netzwerkprobleme, die in Ihrer Umgebung während der langen Datenübertragungen über das Netzwerk auftreten, zu Sicherungsfehlern führen.  Um sich vor diesen Fehlern zu schützen, können Sie Ihrer ersten Sicherung einige Ordner hinzufügen und inkrementell weitere Ordner hinzufügen, bis alle Ordner erfolgreich in Azure gesichert wurden.  Nachfolgende inkrementelle Sicherungen werden relativ schnell ausgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

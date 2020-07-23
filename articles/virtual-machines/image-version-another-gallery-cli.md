@@ -1,5 +1,5 @@
 ---
-title: Kopieren einer Imageversion aus einem anderen Katalog
+title: Kopieren einer Imageversion aus einem anderen Katalog mithilfe der CLI
 description: Kopieren Sie mit der Azure-Befehlszeilenschnittstelle eine Imageversion aus einem anderen Katalog.
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 764fe98ad20aa29506b4fba723762124e24af245
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793982"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224331"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Kopieren eines Images aus einem anderen Katalog
+# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopieren eines Images aus einem anderen Katalog mithilfe der Azure CLI
 
 Wenn Sie in Ihrer Organisation über mehrere Kataloge verfügen, können Sie Imageversionen auch aus vorhandenen Imageversionen in anderen Katalogen erstellen. Beispielsweise können Sie über einen Entwicklungs- und Testkatalog verfügen, um neue Images zu erstellen und zu testen. Wenn diese für die Verwendung in der Produktion bereit sind, können Sie sie mithilfe dieses Beispiels in einen Produktionskatalog kopieren. Sie können auch mit [Azure PowerShell](image-version-another-gallery-powershell.md) ein Image aus einem Image in einem anderen Katalog erstellen.
 
@@ -162,3 +162,5 @@ az sig image-version create \
 Erstellen Sie eine VM aus einer [generalisierten](vm-generalized-image-version-cli.md) oder einer [spezialisierten](vm-specialized-image-version-cli.md) Imageversion.
 
 Probieren Sie auch [Azure VM Image Builder (Vorschauversion)](./linux/image-builder-overview.md) aus, das Ihnen beim Automatisieren der Erstellung von Imageversionen helfen kann. Sie können es sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](./linux/image-builder-gallery-update-image-version.md) verwenden. 
+
+Weitere Informationen zur Bereitstellung von Erwerbsplaninformationen finden Sie unter [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](marketplace-images.md).

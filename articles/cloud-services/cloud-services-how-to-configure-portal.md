@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811416"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223736"
 ---
 # <a name="how-to-configure-cloud-services"></a>Konfigurieren von Clouddiensten
 
@@ -48,7 +48,7 @@ Wenn eine Ausrichtung auf eine bestimmte Betriebssystemversion erforderlich ist,
 
 Sie können Ihrem Clouddienst Warnungen hinzufügen. Klicken Sie auf **Einstellungen** > **Warnungsregeln** > **Warnung hinzufügen**.
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![Screenshot des Einstellungsbereichs, in dem die Optionen „Warnungsregeln“ und „Warnung hinzufügen“ rot umrandet sind.](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 In dieser Ansicht können Sie eine Warnung einrichten. Über das Dropdownfeld **Metrik** können Sie eine Warnung für die folgenden Datentypen einrichten.
 
@@ -58,7 +58,7 @@ In dieser Ansicht können Sie eine Warnung einrichten. Über das Dropdownfeld **
 * Ausgehender Netzwerkverkehr
 * CPU-Prozentsatz
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![Screenshot des Bereichs „Warnungsregel hinzufügen“, alle Konfigurationsoptionen sind eingerichtet.](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Konfigurieren der Überwachung über eine Metrikkachel
 

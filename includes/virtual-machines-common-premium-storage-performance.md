@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017602"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218341"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -119,10 +119,10 @@ In der folgenden Tabelle sind die Leistungsfaktoren und die erforderlichen Schri
 
 Weitere Informationen zu VM-Größen und zu den verfügbaren IOPS, Durchsätzen und Latenzen für die einzelnen Typen von virtuellen Computern finden Sie unter [Linux VM-Größen](../articles/virtual-machines/linux/sizes.md) bzw. [Windows-VM-Größen](../articles/virtual-machines/windows/sizes.md).
 
-| &nbsp; | **IOPS** | **Durchsatz** | **Latenz** |
+| | **IOPS** | **Durchsatz** | **Latenz** |
 | --- | --- | --- | --- |
 | **Beispielszenario** |OLTP-Anwendung eines Großunternehmens, die eine sehr hohe Rate von Transaktionen pro Sekunde benötigt. |Data Warehouse-Anwendung eines Großunternehmens, die große Datenmengen verarbeitet. |Nahezu in Echtzeit arbeitende Anwendungen, die Antworten auf Benutzeranforderungen sofort benötigen, wie z. B. Onlinespiele. |
-| Leistungsfaktoren | &nbsp; | &nbsp; | &nbsp; |
+| **Leistungsfaktoren** | &nbsp; | &nbsp; | &nbsp; |
 | **E/A-Größe** |Kleinere E/A-Größe führt zu mehr IOPS. |Höhere E/A-Größe führt zu höherem Durchsatz. | &nbsp;|
 | **Größe des virtuellen Computers** |Wählen Sie eine VM-Größe, deren IOPS die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine VM-Größe aus, deren Durchsatzlimit die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine VM-Größe, deren Skalierungslimits die Anforderung Ihrer Anwendung übersteigen. |
 | **Datenträgergröße** |Wählen Sie eine Datenträgergröße, deren IOPS die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine Datenträgergröße, deren Durchsatzlimit die Anforderung Ihrer Anwendung übersteigt. |Wählen Sie eine Datenträgergröße, deren Skalierungslimits die Anforderung Ihrer Anwendung übersteigen. |

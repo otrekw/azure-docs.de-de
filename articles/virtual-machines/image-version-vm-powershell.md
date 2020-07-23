@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: caa8e928a10deb3d6d97e601c607074c09e0572e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838466"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223515"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Vorschau: Erstellen von VM-Images
 
@@ -23,8 +23,8 @@ Wenn Sie über eine VM verfügen, die Sie verwenden möchten, um mehrere identis
 Mithilfe von Azure PowerShell können Sie sowohl für [spezialisierte als auch für generalisierte](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) VMs ein Image erstellen. 
 
 Images in Imagekatalogen verfügen über zwei Komponenten, die in diesem Beispiel erstellt werden:
-- Eine **Imagedefinition** enthält Informationen zum Image und zu den Anforderungen für dessen Verwendung. Dies umfasst Angaben dazu, ob das Image unter Windows oder Linux erstellt wurde, ob es sich um eine spezialisierte oder eine generalisierte VM handelt und welche Mindest- und Höchstanforderungen für den Arbeitsspeicher gelten. Außerdem sind darin Hinweise zur jeweiligen Version enthalten. Es ist eine Definition eines Imagetyps. 
-- Bei der Verwendung von Shared Image Gallery werden **Imageversionen** verwendet, um VMs zu erstellen. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Bei der Erstellung von VMs werden die Imageversionen verwendet, um neue Datenträger für die VMs zu erstellen. Imageversionen können mehrmals verwendet werden.
+- Eine **Imagedefinition** enthält Informationen zum Image und zu den Anforderungen für dessen Verwendung. Dies umfasst Angaben dazu, ob es sich um ein Windows- oder Linux-Image handelt, ob es spezialisiert oder generalisiert ist sowie welche Mindest- und Höchstanforderungen für den Arbeitsspeicher gelten. Außerdem sind Versionshinweise enthalten. Es ist eine Definition eines Imagetyps. 
+- Bei der Verwendung eines Katalogs mit freigegebenen Images werden **Imageversionen** verwendet, um VMs zu erstellen. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Bei der Erstellung einer VM werden anhand der Imageversionen neue Datenträger für die VM erstellt. Imageversionen können mehrmals verwendet werden.
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -38,7 +38,7 @@ Ersetzen Sie, wenn nötig, im Laufe der Bearbeitung dieses Artikels die Ressourc
 
 ## <a name="get-the-gallery"></a>Abrufen des Katalogs
 
-Sie können alle Kataloge und Imagedefinitionen nach Name auflisten. Die Ergebnisse liegen im Format `gallery\image definition\image version` vor.
+Sie können alle Kataloge und Imagedefinitionen nach Namen auflisten. Die Ergebnisse liegen im Format `gallery\image definition\image version` vor.
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -73,7 +73,7 @@ Stop-AzVM `
 
 ## <a name="create-an-image-definition"></a>Erstellen einer Imagedefinition 
 
-Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden zum Verwalten von Informationen über das Image verwendet. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. 
+Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden zum Verwalten von Informationen zum Image verwendet. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. 
 
 Stellen Sie beim Erstellen der Imagedefinition sicher, dass diese alle zutreffenden Informationen beinhaltet. Wenn Sie die VM generalisiert haben (über Sysprep für Windows oder waagent-deprovision für Linux) sollten Sie unter Verwendung von `-OsState generalized` eine Imagedefinition erstellen. Wenn Sie die VM nicht generalisiert haben, erstellen Sie unter Verwendung von `-OsState specialized` eine Imagedefinition.
 
@@ -139,3 +139,5 @@ $job.State
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie überprüft haben, ob die neue Imageversion ordnungsgemäß funktioniert, können Sie eine VM erstellen. Erstellen Sie eine VM aus einer [spezialisierten](vm-specialized-image-version-powershell.md) oder einer [generalisierten](vm-generalized-image-version-powershell.md) Imageversion.
+
+Weitere Informationen zur Bereitstellung von Erwerbsplaninformationen finden Sie unter [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](marketplace-images.md).

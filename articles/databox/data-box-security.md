@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817712"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200400"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box – Sicherheit und Schutz von Daten
 
@@ -30,11 +30,14 @@ Die Microsoft Azure Data Box-Lösung besteht aus vier Hauptkomponenten, die mite
 - **Mit dem Gerät verbundene Clients/Hosts**: Die Clients in Ihrer Infrastruktur, die mit dem Data Box-Gerät verbunden werden und zu schützende Daten enthalten.
 - **Cloud-Speicher** – Der Speicherort in der Azure-Cloud, an dem die Daten gespeichert werden. Dies ist normalerweise das Speicherkonto, das mit der von Ihnen erstellten Azure Data Box-Ressource verknüpft ist.
 
-Im folgenden Diagramm ist der Datenfluss durch die Azure Data Box-Lösung vom lokalen Standort nach Azure beschrieben.
+Im folgenden Diagramm ist der Datenfluss durch die Azure Data Box-Lösung vom lokalen Standort nach Azure beschrieben. Dieser Datenfluss wird für einen Importauftrag für Ihre Data Box verwendet.
 
 ![Data Box-Sicherheit](media/data-box-security/data-box-security-2.png)
 
-Während die Daten diese Lösung durchlaufen, werden Ereignisse protokolliert und Protokolle erstellt. Weitere Informationen finden Sie unter [Tracking and event logging for your Azure Data Box](data-box-logs.md) (Nachverfolgung und Ereignisprotokollierung für Azure Data Box).
+Während die Daten diese Lösung durchlaufen, werden Ereignisse protokolliert und Protokolle erstellt. Weitere Informationen finden Sie unter:
+
+- [Nachverfolgung und Ereignisprotokollierung für Ihre Azure Data Box-Importaufträge](data-box-logs.md)
+- [Nachverfolgung und Ereignisprotokollierung für Ihre Azure Data Box-Exportaufträge](data-box-export-logs.md)
 
 ## <a name="security-features"></a>Sicherheitsfeatures
 

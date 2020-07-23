@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: f54adb54ca842ea389b0d3ea203d747df0071ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792029"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223294"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
@@ -123,7 +123,7 @@ Sobald eine Schreibanforderung für eine sequenzielle Reihe von Seiten im Blobdi
 
 Das folgende Diagramm zeigt 2 separate Schreibvorgänge:
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![Ein Diagramm, das die beiden separaten Schreibvorgänge zeigt.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 0 beginnt 
 2.  Einen Schreibvorgang mit der Länge 1.024 Bytes, der am Offset 4096 beginnt 
@@ -151,7 +151,7 @@ So können Sie das vollständige Blob oder einen Bereich von Bytes, der an einem
 
 Die folgende Abbildung zeigt einen Lesevorgang mit einem Offset von 256 und einer Bereichsgröße von 4352. Die zurückgegebenen Daten sind in Orange hervorgehoben. Nullen werden für NULL-Seiten zurückgegeben.
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![Ein Diagramm, das einen Lesevorgang mit einem Offset von 256 und einer Bereichsgröße von 4352 zeigt.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 Bei einem platzsparend gefüllten Blob sollten Sie nur die gültigen Seitenbereiche herunterladen, um nicht für ausgehende 0 (null) Bytes zu zahlen und die Downloadwartezeit zu verringern.  
 

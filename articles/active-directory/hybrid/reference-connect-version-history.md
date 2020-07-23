@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550121"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230382"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -47,6 +47,22 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 >Wenn Sie Azure AD Connect für die Synchronisierung aktiviert haben und eine der älteren Versionen ausführen, erhalten Sie in Kürze automatische Integritätsbenachrichtigungen, die Sie vor anstehenden Einstellungen warnen.
 >
 >In [diesem Artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
+
+## <a name="15420"></a>1.5.42.0
+
+### <a name="release-status"></a>Releasestatus
+10.07.2020: Für den Download veröffentlicht
+
+### <a name="functional-changes"></a>Funktionale Änderungen
+Dieses Release enthält eine öffentliche Vorschau der Funktion zum Exportieren der Konfiguration eines vorhandenen Azure AD Connect-Servers in eine JSON-Datei, die beim Installieren eines neuen Azure AD Connect-Servers verwendet werden kann, um eine Kopie des ursprünglichen Servers zu erstellen.
+
+Eine detaillierte Beschreibung dieser Funktion finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config).
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Es wurde ein Fehler behoben, der beim Upgrade zu einer falschen Warnung in Bezug auf die Größe der lokalen Datenbank in den lokalisierten Builds führte.
+- Es wurde ein Problem behoben, das in den App-Ereignissen für den Austausch von Kontoname und Domänenname fälschlicherweise zu einem Fehler führte.
+- Es wurde der Fehler „Mitglied nicht gefunden“ behoben, der dazu führte, dass Azure AD Connect nicht auf einem Domänencontroller installiert werden konnte.
+
 
 ## <a name="15300"></a>1.5.30.0
 

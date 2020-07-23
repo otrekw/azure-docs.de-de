@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884268"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223787"
 ---
 # <a name="soft-delete-for-blob-storage"></a>Vorläufiges Löschen für Blobspeicher
 
@@ -54,7 +54,7 @@ Vorläufiges Löschen behält Ihre Daten in vielen Fällen bei, in denen Objekte
 
 Wenn ein Blob mit **Put Blob**, **Put Block List** oder **Copy Blob** überschrieben wird, wird automatisch eine Version oder Momentaufnahme des Blobzustands vor dem Schreibvorgang generiert. Dieses Objekt ist unsichtbar, es sei denn, vorläufig gelöschte Objekte werden explizit aufgelistet. Informationen zum Auflisten vorläufig gelöschte Objekte finden Sie im Abschnitt [Wiederherstellung](#recovery).
 
-![](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
+![Ein Diagramm, das zeigt, wie Momentaufnahmen von Blobs gespeichert werden, bevor sie mit „Put Blob“, „Put Block List“ oder „Copy Blob“ überschrieben werden.](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
 
 *Vorläufig gelöschte Daten werden grau angezeigt, während aktive Daten blau sind. Die zuletzt geschriebenen Daten werden unter den älteren Daten angezeigt. Wenn B0 mit B1 überschrieben wird, wird eine vorläufig gelöschte Momentaufnahme von B0 generiert. Wenn B1 mit B2 überschrieben wird, wird eine vorläufig gelöschte Momentaufnahme von B1 generiert.*
 
@@ -66,13 +66,13 @@ Wenn ein Blob mit **Put Blob**, **Put Block List** oder **Copy Blob** überschri
 
 Wenn **Delete Blob** für eine Momentaufnahme aufgerufen wird, wird diese Momentaufnahme als „vorläufig gelöscht“ markiert. Eine neue Momentaufnahme wird nicht generiert.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+![Ein Diagramm, das zeigt, wie Momentaufnahmen von Blobs bei Verwendung von „Delete Blob“ vorläufig gelöscht werden.](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
 *Vorläufig gelöschte Daten werden grau angezeigt, während aktive Daten blau sind. Die zuletzt geschriebenen Daten werden unter den älteren Daten angezeigt. Wenn **Snapshot Blob** aufgerufen wird, wird B0 zu einer Momentaufnahme, und B1 ist der aktive Zustand des Blobs. Wenn die B0-Momentaufnahme gelöscht wird, wird sie als vorläufig gelöscht markiert.*
 
 Wenn **Delete Blob** für ein Basisblob (alle Blobs, die nicht selbst eine Momentaufnahme sind) aufgerufen wird, wird dieses Blob als vorläufig gelöscht markiert. Der Aufruf von **Delete Blob** für ein Blob mit aktiven Momentaufnahmen gibt einen Fehler zurück. Dies ist mit dem vorherigen Verhalten konsistent. Der Aufruf von **Delete Blob** für ein Blob mit vorläufig gelöschten Momentaufnahmen gibt keinen Fehler zurück. Sie können ein Blob und alle zugehörigen Momentaufnahmen weiterhin in einem einzigen Vorgang löschen, wenn vorläufiges Löschen aktiviert ist. Das Basisblob und die Momentaufnahmen werden dann als vorläufig gelöscht markiert.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
+![Ein Diagramm, das zeigt, was passiert, wenn „Delete Blog“ in einem Basisblob aufgerufen wird.](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
 
 *Vorläufig gelöschte Daten werden grau angezeigt, während aktive Daten blau sind. Die zuletzt geschriebenen Daten werden unter den älteren Daten angezeigt. Hier wird ein Aufruf **Delete Blob** vorgenommen, um B2 und alle zugehörigen Momentaufnahmen zu löschen. Das aktive Blob (B2) und alle zugehörigen Momentaufnahmen werden als vorläufig gelöscht markiert.*
 
@@ -105,7 +105,7 @@ Durch Aufrufen des Vorgangs [Undelete Blob](/rest/api/storageservices/undelete-b
 
 Um ein Blob in einer bestimmten vorläufig gelöschten Momentaufnahme wiederherzustellen, können Sie **Undelete Blob** für das Basisblob aufrufen. Anschließend können Sie die Momentaufnahme über das jetzt aktive Blob kopieren. Sie können die Momentaufnahme auch in ein neues Blob kopieren.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
+![Ein Diagramm, das zeigt, was bei Verwendung von „Undelete Blob“ passiert.](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
 
 *Vorläufig gelöschte Daten werden grau angezeigt, während aktive Daten blau sind. Die zuletzt geschriebenen Daten werden unter den älteren Daten angezeigt. Hier wird **Undelete Blob** für Blob B, aufgerufen, um das Basisblob (B1) und alle zugehörigen Momentaufnahmen (hier nur B0) als aktiv wiederherzustellen. Im zweiten Schritt wird B0 über das Basisblob kopiert. Dieser Kopiervorgang generiert eine vorläufig gelöschte Momentaufnahme von B1.*
 

@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561195"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220064"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Verwenden von Notofication Hubs mit Python
 
@@ -383,7 +383,7 @@ Beim Ausführen des Python-Codes sollte eine Benachrichtigung erstellt und auf d
 
 Wenn Sie beim Initialisieren von „NotificationHub“ das Flag „debug“ aktivieren, werden die detaillierte HTTP-Anforderung und -Antwort sowie das Benachrichtigungsergebnis wie folgt angezeigt. Dabei können Sie erkennen, welche HTTP-Header in der Anforderung übergeben werden und welche HTTP-Antwort vom Notification Hub empfangen wurde:
 
-![][1]
+![Screenshot einer Konsole mit den Details der HTTP-Anforderung und -Antwort sowie den Meldungen mit dem Benachrichtigungsergebnis (rot umrandet).][1]
 
 Das detaillierte Ergebnis des Notification Hubs wird angezeigt, z.B.
 
@@ -404,7 +404,7 @@ Beachten Sie die Header, die beim Senden einer Broadcast-Popupbenachrichtigung a
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![Screenshot einer Konsole mit den Details der HTTP-Anforderung und dem Service Bus-Benachrichtigungsformat sowie den XWNS-Typwerten (rot umrandet).][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Senden einer Benachrichtigung mit Angabe eines Tags (oder Tag-Ausdrucks)
 
@@ -414,7 +414,7 @@ Beachten Sie den HTTP-Header des Tags, der der HTTP-Anforderung hinzugefügt wir
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![Screenshot einer Konsole mit den Details der HTTP-Anforderung, dem Service Bus-Benachrichtigungsformat, Service Bus-Benachrichtigungstags sowie den XWNS-Typwerten (rot umrandet).][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Senden einer Benachrichtigung mit Angabe mehrerer Tags
 
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![Screenshot einer Konsole mit den Details der HTTP-Anforderung, dem Service Bus-Benachrichtigungsformat, Service Bus-Benachrichtigungstags sowie den XWNS-Typwerten (rot umrandet).][4]
 
 ### <a name="templated-notification"></a>Auf Vorlagen basierende Benachrichtigung
 
@@ -444,7 +444,7 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![Screenshot einer Konsole mit den Details der HTTP-Anforderung, dem Inhaltstyp und den Werten für das Service Bus-Benachrichtigungsformat (rot umrandet).][5]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

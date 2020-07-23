@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111342"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224059"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web Application Firewall und Azure Policy
 
@@ -38,10 +38,12 @@ Es gibt mehrere integrierte Azure-Richtlinien zum Verwalten von WAF-Ressourcen. 
 
 2.  Wählen Sie im Azure Policy-Dienst unter **Erstellung** die Option **Zuweisungen** aus.
 
+[!div class="mx-imgBorder"]
 ![Azure Web Application Firewall](../media/waf-azure-policy/policy-home.png)
 
 3.  Wählen Sie oben auf der Seite „Zuweisungen“ das Symbol **Richtlinie zuweisen** aus.
 
+[!div class="mx-imgBorder"]
 ![Azure Web Application Firewall](../media/waf-azure-policy/assign-policy.png)
 
 4.  Aktualisieren Sie auf der Registerkarte „Grundlagen“ der Seite „Richtlinie zuweisen“ die folgenden Felder:
@@ -49,6 +51,7 @@ Es gibt mehrere integrierte Azure-Richtlinien zum Verwalten von WAF-Ressourcen. 
     2.  **Ausschlüsse**: Wählen Sie alle Ressourcen im Bereich aus, die aus der Richtlinie ausgeschlossen werden sollen. 
     3.  **Richtliniendefinition**: Wählen Sie die Azure Policy aus, die auf den Bereich mit Ausschlüssen angewendet werden soll. Geben Sie in der Suchleiste "Web Application Firewall" ein, um die relevante Web Application Firewall Azure Policy auszuwählen.
 
+[!div class="mx-imgBorder"]
 ![Azure Web Application Firewall](../media/waf-azure-policy/policy-listing.png)
 
 

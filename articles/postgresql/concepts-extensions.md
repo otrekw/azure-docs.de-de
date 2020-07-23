@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/10/2020
+ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201270"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242065"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Einzelserver
 PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Bei Erweiterungen werden mehrere zusammengehörige SQL-Objekte zu einem Paket gebündelt und mit nur einem Befehl in die Datenbank geladen oder daraus entfernt. Nach dem Laden in die Datenbank funktionieren Erweiterungen genauso wie integrierte Features.
@@ -212,7 +212,7 @@ Zwischen den von pg_stat_statements bereitgestellten Abfrageausführungsinformat
 ## <a name="dblink-and-postgres_fdw"></a>„dblink“ und „postgres_fdw“
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) und [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) ermöglichen Ihnen das Herstellen einer Verbindung von einem PostgreSQL-Server mit einem anderen oder mit einer anderen Datenbank auf demselben Server. Der empfangende Server muss Verbindungen vom sendenden Server über die Firewall zulassen. Bei Verwendung dieser Erweiterungen für die Verbindung zwischen Azure Database for PostgreSQL-Server kann dazu die Einstellung „Zugriff auf Azure-Dienste erlauben“ auf EIN gesetzt werden. Dies ist auch erforderlich, wenn Sie die Erweiterungen für ein Loopback zum selben Server verwenden möchten. Die Einstellung „Zugriff auf Azure-Dienste erlauben“ finden Sie auf der Azure-Portalseite für den Postgres-Server unter „Verbindungssicherheit“. Wenn Sie „Zugriff auf Azure-Dienste erlauben“ auf „EIN“ festlegen, werden alle Azure-IP-Adressen in die Zulassungsliste eingefügt.
 
-Derzeit werden ausgehende Verbindungen von Azure Database for PostgreSQL nicht unterstützt – mit Ausnahme von Verbindungen mit anderen Azure Database for PostgreSQL-Servern.
+Derzeit werden ausgehende Verbindungen von Azure Database for PostgreSQL nicht unterstützt – mit Ausnahme von Verbindungen mit anderen Azure Database for PostgreSQL-Servern in derselben Region.
 
 ## <a name="uuid"></a>uuid
 Wenn Sie beabsichtigen, `uuid_generate_v4()` aus der [uuid-ossp-Erweiterung](https://www.postgresql.org/docs/current/uuid-ossp.html) zu verwenden, lassen sich durch einen Vergleich mit `gen_random_uuid()` aus der [pgcrypto-Erweiterung](https://www.postgresql.org/docs/current/pgcrypto.html) u. U. Leistungsvorteile erzielen.
