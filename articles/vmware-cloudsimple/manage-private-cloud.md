@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524995"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Verwalten von privaten Cloudressourcen und -aktivitäten
 
@@ -37,13 +37,13 @@ Wählen Sie eine private Cloud aus, um zusätzliche Informationen und Aktionen e
 
 ## <a name="private-cloud-summary"></a>Private Cloud – Zusammenfassung
 
-Sie erhalten einen umfassenden Überblick über die ausgewählte private Cloud.  Auf der Seite „Summary“ (Zusammenfassung) sind die in der privaten Cloud bereitgestellten DNS-Server aufgeführt.  Sie können die DNS-Weiterleitung von lokalen DNS-Servern an Ihre DNS-Server in der privaten Cloud einrichten.  Weitere Informationen zur DNS-Weiterleitung finden Sie im Thema zum [Konfigurieren der DNS-Namensauflösung für den lokalen Zugriff auf vCenter in einer privaten Cloud](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/).
+Sie erhalten einen umfassenden Überblick über die ausgewählte private Cloud.  Auf der Seite „Summary“ (Zusammenfassung) sind die in der privaten Cloud bereitgestellten DNS-Server aufgeführt.  Sie können die DNS-Weiterleitung von lokalen DNS-Servern an Ihre DNS-Server in der privaten Cloud einrichten.  Weitere Informationen zur DNS-Weiterleitung finden Sie im Thema zum [Konfigurieren der DNS-Namensauflösung für den lokalen Zugriff auf vCenter in einer privaten Cloud](./on-premises-dns-setup.md).
 
 ![Private Cloud – Zusammenfassung](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Verfügbare Aktionen
 
-* [Launch vSphere client](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) (vSphere-Client starten): Ermöglicht den vCenter-Zugriff für diese private Cloud.
+* [Launch vSphere client](./vcenter-access.md) (vSphere-Client starten): Ermöglicht den vCenter-Zugriff für diese private Cloud.
 * [Purchase nodes](create-nodes.md) (Knoten kaufen): Fügt dieser privaten Cloud Knoten hinzu.
 * [Expand](expand-private-cloud.md) (Erweitern): Fügt dieser privaten Cloud Knoten hinzu.
 * **Refresh** (Aktualisieren): Aktualisiert die Informationen auf dieser Seite.
@@ -58,10 +58,10 @@ Sie können die Liste der für die ausgewählte private Cloud definierten VLANs/
 
 ### <a name="available-actions"></a>Verfügbare Aktionen
 
-* [Add VLANS/Subnets](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/) (VLANS/Subnetze hinzufügen): Fügt der privaten Cloud ein VLAN/Subnetz hinzu.
+* [Add VLANS/Subnets](./create-vlan-subnet.md) (VLANS/Subnetze hinzufügen): Fügt der privaten Cloud ein VLAN/Subnetz hinzu.
 
 Wählen Sie für folgende Aktionen ein VLAN/Subnetz aus:
-* [Attach firewall table](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/) (Firewalltabelle anfügen): Fügt eine Firewalltabelle an diese private Cloud an.
+* [Attach firewall table](./firewall.md) (Firewalltabelle anfügen): Fügt eine Firewalltabelle an diese private Cloud an.
 * **Bearbeiten**
 * **Delete** (Löschen): nur benutzerdefinierte VLANs/Subnetze
 

@@ -4,17 +4,17 @@ description: Klassische Warnungen sind veraltet. Mit Warnungen können Sie Metri
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114499"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515953"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
 > [!NOTE]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md). Klassische Warnungen werden [eingestellt](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. 
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md). Klassische Warnungen werden [eingestellt](./monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. 
 >
 
 Mit Warnungen können Sie Bedingungen für Daten konfigurieren und benachrichtigt werden, wenn die Bedingungen Übereinstimmungen mit den aktuellen Überwachungsdaten ergeben.
@@ -89,7 +89,7 @@ Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:
 * Konfigurieren von [klassischen Metrikwarnungen über das Azure-Portal](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen mit PowerShell](alerts-classic-portal.md)
 * Konfigurieren von [klassischen Metrikwarnungen über die Befehlszeilenschnittstelle (CLI)](alerts-classic-portal.md)
-* Konfigurieren von [klassischen Metrikwarnungen mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* Konfigurieren von [klassischen Metrikwarnungen mithilfe der Azure Monitor-REST-API](/rest/api/monitor/alertrules)
 * Weitere Informationen zu [Aktivitätsprotokollen](platform-logs-overview.md)
 * Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](activity-log-alerts.md)
 * Konfigurieren von [Aktivitätsprotokollwarnungen über den Resource Manager](alerts-activity-log.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082300"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516140"
 ---
 # <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 Das Aktivitätsprotokoll ist ein [Plattformprotokoll](platform-logs-overview.md) in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen. Um zusätzliche Funktionen zu erhalten, sollten Sie eine Diagnoseeinstellung erstellen, mit der das Aktivitätsprotokoll an [Azure Monitor-Protokolle](data-platform-logs.md) gesendet wird, an Azure Event Hubs außerhalb von Azure weitergeleitet oder für die Archivierung an Azure Storage gesendet wird. In diesem Artikel wird ausführlich beschrieben, wie das Aktivitätsprotokoll angezeigt und an verschiedene Ziele gesendet wird.
@@ -43,9 +43,9 @@ Wenn Änderungen zu dem Ereignis vorhanden sind, sehen Sie eine Liste der Änder
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>Weitere Methoden zum Abrufen von Aktivitätsprotokollereignissen
 Sie können auch mithilfe der folgenden Methoden auf Aktivitätsprotokollereignisse zugreifen.
 
-- Verwenden Sie das Cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog), um das Aktivitätsprotokoll über PowerShell abzurufen. Siehe [Beispiele zu PowerShell in Azure Monitor](../samples/powershell-samples.md#retrieve-activity-log).
-- Verwenden Sie [az monitor activity-log](https://docs.microsoft.com/cli/azure/monitor/activity-log), um das Aktivitätsprotokoll über die CLI abzurufen.  Siehe [CLI-Beispiele für Azure Monitor](../samples/cli-samples.md#view-activity-log).
-- Verwenden Sie die [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/), um das Aktivitätsprotokoll über einen REST-Client abzurufen. 
+- Verwenden Sie das Cmdlet [Get-AzLog](/powershell/module/az.monitor/get-azlog), um das Aktivitätsprotokoll über PowerShell abzurufen. Siehe [Beispiele zu PowerShell in Azure Monitor](../samples/powershell-samples.md#retrieve-activity-log).
+- Verwenden Sie [az monitor activity-log](/cli/azure/monitor/activity-log), um das Aktivitätsprotokoll über die CLI abzurufen.  Siehe [CLI-Beispiele für Azure Monitor](../samples/cli-samples.md#view-activity-log).
+- Verwenden Sie die [Azure Monitor-REST-API](/rest/api/monitor/), um das Aktivitätsprotokoll über einen REST-Client abzurufen. 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>Senden an den Log Analytics-Arbeitsbereich
@@ -58,9 +58,9 @@ Sie können auch mithilfe der folgenden Methoden auf Aktivitätsprotokollereigni
 - Speichern von Aktivitätsprotokolleinträgen für mehr als 90 Tage
 - Keine Gebühren für die Erfassung oder Aufbewahrung von Aktivitätsprotokolldaten, die in einem Log Analytics-Arbeitsbereich gespeichert sind
 
-[Erstellen Sie eine Diagnoseeinstellung](diagnostic-settings.md), um das Aktivitätsprotokoll an einen Log Analytics-Arbeitsbereich zu senden. Sie können das Aktivitätsprotokoll von einem einzelnen Abonnement an bis zu fünf Arbeitsbereiche senden. Für eine mandantenübergreifende Erfassung von Protokollen ist [Azure Lighthouse](/azure/lighthouse) erforderlich.
+[Erstellen Sie eine Diagnoseeinstellung](diagnostic-settings.md), um das Aktivitätsprotokoll an einen Log Analytics-Arbeitsbereich zu senden. Sie können das Aktivitätsprotokoll von einem einzelnen Abonnement an bis zu fünf Arbeitsbereiche senden. Für eine mandantenübergreifende Erfassung von Protokollen ist [Azure Lighthouse](../../lighthouse/index.yml) erforderlich.
 
-Aktivitätsprotokolldaten in einem Log Analytics-Arbeitsbereich werden in der Tabelle *AzureActivity* gespeichert. Diese können Sie mit einer [Protokollabfrage](../log-query/log-query-overview.md) in [Log Analytics](../log-query/get-started-portal.md) abrufen. Die Struktur dieser Tabelle ist je nach [Kategorie des Protokolleintrags](activity-log-schema.md) verschieden. Eine Beschreibung der Tabelleneigenschaften finden Sie in der [Azure Monitor-Datenreferenz](https://docs.microsoft.com/azure/azure-monitor/reference/tables/azureactivity).
+Aktivitätsprotokolldaten in einem Log Analytics-Arbeitsbereich werden in der Tabelle *AzureActivity* gespeichert. Diese können Sie mit einer [Protokollabfrage](../log-query/log-query-overview.md) in [Log Analytics](../log-query/get-started-portal.md) abrufen. Die Struktur dieser Tabelle ist je nach [Kategorie des Protokolleintrags](activity-log-schema.md) verschieden. Eine Beschreibung der Tabelleneigenschaften finden Sie in der [Azure Monitor-Datenreferenz](/azure/azure-monitor/reference/tables/azureactivity).
 
 Verwenden Sie z. B. die folgende Abfrage, um die Anzahl der Aktivitätsprotokoll-Datensätze für jede Kategorie anzuzeigen.
 
@@ -281,7 +281,7 @@ Die Spalten in der folgenden Tabelle sind im aktualisierten Schema veraltet. Sie
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> In einigen Fällen werden die Werte in diesen Spalten vollständig in Großbuchstaben angegeben. Wenn Ihre Abfrage diese Spalten umfasst, sollten Sie den [=~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)-Operator verwenden, um einen Vergleich ohne Beachtung der Groß- und Kleinschreibung durchzuführen.
+> In einigen Fällen werden die Werte in diesen Spalten vollständig in Großbuchstaben angegeben. Wenn Ihre Abfrage diese Spalten umfasst, sollten Sie den [=~](/azure/kusto/query/datatypes-string-operators)-Operator verwenden, um einen Vergleich ohne Beachtung der Groß- und Kleinschreibung durchzuführen.
 
 Die folgenden Spalten wurden *AzureActivity* im aktualisierten Schema hinzugefügt:
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520799"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -54,8 +54,8 @@ Sie können registrierte Connectors auch für die Microsoft-Zertifizierung vorsc
 Weitere Informationen zu benutzerdefinierten Connectors finden Sie unter 
 
 * [Übersicht über benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md)
-* [Erstellen benutzerdefinierter Connectors aus Web-APIs](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Registrieren benutzerdefinierter Connectors in Azure Logic Apps](../logic-apps/logic-apps-custom-connector-register.md)
+* [Erstellen benutzerdefinierter Connectors aus Web-APIs](/connectors/custom-connectors/create-web-api-connector)
+* [Registrieren benutzerdefinierter Connectors in Azure Logic Apps](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>Nützliche Tools
 
@@ -228,7 +228,7 @@ Um Ihre benutzerdefinierten APIs allen Benutzern in Logic Apps, Power Automate u
 
 * Spezifische Hilfe zu benutzerdefinierten APIs finden Sie unter [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com).
 
-* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A für Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 
 * Zur Optimierung von Logic Apps können Sie auf der Website für [Benutzerfeedback zu Logic Apps](https://aka.ms/logicapps-wish) über Ideen abstimmen oder selbst Ideen einreichen. 
 

@@ -3,16 +3,16 @@ title: Wiederherstellen von VMware-VMs mit Azure Backup Server
 description: Verwenden Sie Azure Backup Server (MABS), um VMware-VMs wiederherzustellen, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77212359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524521"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Wiederherstellen von virtuellen VMware-Computern
 
-In diesem Artikel wird beschrieben, wie Sie Microsoft Azure Backup Server (MABS) zum Wiederherstellen von VMware-VM-Wiederherstellungspunkten verwenden. Eine Übersicht über die Verwendung von MABS zum Wiederherstellen von Daten finden Sie unter [Wiederherstellen von Daten von Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server). In der MABS-Administratorkonsole haben Sie zwei Möglichkeiten, wiederherstellbare Daten zu ermitteln: Suchen und Durchsuchen. Beim Wiederherstellen von Daten kann es auch sein, dass Sie die Daten oder eine VM nicht an demselben Speicherort wiederherstellen möchten. Aus diesem Grund unterstützt MABS drei Wiederherstellungsoptionen für VMware-VM-Sicherungen:
+In diesem Artikel wird beschrieben, wie Sie Microsoft Azure Backup Server (MABS) zum Wiederherstellen von VMware-VM-Wiederherstellungspunkten verwenden. Eine Übersicht über die Verwendung von MABS zum Wiederherstellen von Daten finden Sie unter [Wiederherstellen von Daten von Azure Backup Server](./backup-azure-alternate-dpm-server.md). In der MABS-Administratorkonsole haben Sie zwei Möglichkeiten, wiederherstellbare Daten zu ermitteln: Suchen und Durchsuchen. Beim Wiederherstellen von Daten kann es auch sein, dass Sie die Daten oder eine VM nicht an demselben Speicherort wiederherstellen möchten. Aus diesem Grund unterstützt MABS drei Wiederherstellungsoptionen für VMware-VM-Sicherungen:
 
 * **Wiederherstellung am ursprünglichen Speicherort**: Verwenden Sie diese Wiederherstellungsoption, um eine geschützte VM an ihrem ursprünglichen Speicherort wiederherzustellen. Sie können einen virtuellen Computer nur dann am ursprünglichen Speicherort wiederherstellen, wenn seit der Durchführung des Sicherungsvorgangs keine Datenträger hinzugefügt oder gelöscht wurden. Wenn Datenträger hinzugefügt oder gelöscht wurden, müssen Sie einen anderen Ort für die Wiederherstellung verwenden.
 

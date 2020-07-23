@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792875"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520714"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schemaaktualisierungen für Azure Logic Apps – 1. Juni 2016
 
@@ -29,7 +29,7 @@ Informationen zum Durchführen des Upgrades für Ihre Logik-App vom Schema vom 1
 
 ## <a name="scopes"></a>Bereiche
 
-Dieses Schema enthält Bereiche, mit denen Sie Aktionen gruppieren oder schachteln können. Beispielsweise kann eine Bedingung eine andere Bedingung enthalten. Informieren Sie sich unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md) über die Syntax von Bereichen, oder sehen Sie sich dieses einfache Beispiel zu Bereichen an:
+Dieses Schema enthält Bereiche, mit denen Sie Aktionen gruppieren oder schachteln können. Beispielsweise kann eine Bedingung eine andere Bedingung enthalten. Informieren Sie sich unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](./logic-apps-control-flow-loops.md) über die Syntax von Bereichen, oder sehen Sie sich dieses einfache Beispiel zu Bereichen an:
 
 ```json
 {
@@ -55,7 +55,7 @@ Dieses Schema enthält Bereiche, mit denen Sie Aktionen gruppieren oder schachte
 
 ## <a name="conditions-and-loops-changes"></a>Änderungen bei Bedingungen und Schleifen
 
-In den bisherigen Schemaversionen handelte es sich bei Bedingungen und Schleifen um Parameter, die einer einzelnen Aktion zugeordnet waren. Mit diesem Schema wird diese Einschränkung aufgehoben, sodass Bedingungen und Schleifen jetzt als Aktionstypen verfügbar sind. Erfahren Sie mehr über [Schleifen und Bereiche](../logic-apps/logic-apps-loops-and-scopes.md) und [Bedingungen](../logic-apps/logic-apps-control-flow-conditional-statement.md), oder arbeiten Sie dieses einfache Beispiel durch, das eine Bedingungsaktion zeigt:
+In den bisherigen Schemaversionen handelte es sich bei Bedingungen und Schleifen um Parameter, die einer einzelnen Aktion zugeordnet waren. Mit diesem Schema wird diese Einschränkung aufgehoben, sodass Bedingungen und Schleifen jetzt als Aktionstypen verfügbar sind. Erfahren Sie mehr über [Schleifen und Bereiche](./logic-apps-control-flow-loops.md) und [Bedingungen](../logic-apps/logic-apps-control-flow-conditional-statement.md), oder arbeiten Sie dieses einfache Beispiel durch, das eine Bedingungsaktion zeigt:
 
 ```json
 {
@@ -131,7 +131,7 @@ In der aktualisierten Definition gruppiert das Tool die „wahren“ und „fals
 
 #### <a name="foreach-loop-with-condition"></a>foreach-Schleife mit Bedingung
 
-Im neuen Schema können Sie die Filteraktion verwenden, um das Muster zu replizieren, das eine **For each**-Schleife mit einer Bedingung pro Element verwendet. Allerdings erfolgt die Änderung automatisch, wenn Sie ein Upgrade ausführen. Die Bedingung wird zu einer Filteraktion, die vor der **For each**-Schleife erscheint und nur ein Array mit Elementen zurückgibt, die die Bedingung erfüllen. Dieses Array wird dann an die **For each**-Aktion übergeben. Ein Beispiel hierzu finden Sie unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md).
+Im neuen Schema können Sie die Filteraktion verwenden, um das Muster zu replizieren, das eine **For each**-Schleife mit einer Bedingung pro Element verwendet. Allerdings erfolgt die Änderung automatisch, wenn Sie ein Upgrade ausführen. Die Bedingung wird zu einer Filteraktion, die vor der **For each**-Schleife erscheint und nur ein Array mit Elementen zurückgibt, die die Bedingung erfüllen. Dieses Array wird dann an die **For each**-Aktion übergeben. Ein Beispiel hierzu finden Sie unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](./logic-apps-control-flow-loops.md).
 
 ### <a name="resource-tags"></a>Ressourcentags
 

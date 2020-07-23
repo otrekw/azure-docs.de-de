@@ -4,12 +4,12 @@ description: Durchführen einer Massenwartung mithilfe der schnellen Problembehe
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79503926"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518061"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Schnelle Problembehebung für Advisor
 Die **schneller Problembehebung** ermöglicht eine schnellere und einfachere Wartung für Empfehlungen für mehrere Ressourcen. Sie bietet eine Möglichkeit für die Massenwartung von Ressourcen und unterstützt Sie bei der schnelleren Optimierung Ihrer Abonnements durch eine bedarfsgerechte Wartung Ihrer Ressourcen.
@@ -50,4 +50,4 @@ Weitere Informationen zu Advisor-Empfehlungen finden Sie unter:
 * [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 * [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 * [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md)
-* [Advisor-REST-API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor-REST-API](/rest/api/advisor/)

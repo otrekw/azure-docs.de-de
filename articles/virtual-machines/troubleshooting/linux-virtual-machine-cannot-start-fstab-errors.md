@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135269"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509051"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Beheben von Problemen beim Starten von Linux-VMs aufgrund von Fehlern in „fstab“
 
-Sie können über Secure Shell (SSH) keine Verbindung mit einem virtuellen Azure-Linux-Computer (VM) herstellen. Wenn Sie die [Startdiagnose](https://portal.azure.com/) im [Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) ausführen, werden Protokolleinträge aufgeführt, die den folgenden Beispielen ähneln:
+Sie können über Secure Shell (SSH) keine Verbindung mit einem virtuellen Azure-Linux-Computer (VM) herstellen. Wenn Sie die [Startdiagnose](https://portal.azure.com/) im [Azure-Portal](./boot-diagnostics.md) ausführen, werden Protokolleinträge aufgeführt, die den folgenden Beispielen ähneln:
 
 ## <a name="examples"></a>Beispiele
 
@@ -106,8 +106,8 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die seri
 
 ### <a name="using-single-user-mode"></a>Verwenden des Einzelbenutzermodus
 
-1. Stellen Sie eine Verbindung mit der [seriellen Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) her.
-2. Verwenden der seriellen Konsole für den Einzelbenutzermodus [Einzelbenutzermodus](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole](./serial-console-linux.md) her.
+2. Verwenden der seriellen Konsole für den Einzelbenutzermodus [Einzelbenutzermodus](../linux/serial-console-grub-single-user-mode.md)
 3. Nachdem der virtuelle Computer im Einzelbenutzermodus gestartet wurde. Öffnen Sie die Datei „fstab“ mit Ihrem bevorzugten Text-Editor. 
 
    ```
@@ -140,7 +140,7 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die seri
 
 ### <a name="using-root-password"></a>Verwenden des Stammkennworts
 
-1. Stellen Sie eine Verbindung mit der [seriellen Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) her.
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole](./serial-console-linux.md) her.
 2. Melden Sie sich mit einem lokalen Benutzer und Kennwort beim System an.
 
    > [!Note]
@@ -188,7 +188,7 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die seri
 
 ## <a name="repair-the-vm-offline"></a>Reparieren des virtuellen Computers im Offlinestatus
 
-1. Fügen Sie den Systemdatenträger des virtuellen Computers als Datenträger für Daten an eine Wiederherstellungs-VM (beliebige funktionierende Linux-VM) an. Hierzu können Sie [CLI-Befehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) verwenden, oder Sie können die Einrichtung der Wiederherstellungs-VM mithilfe der [VM-Reparaturbefehle](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) automatisieren.
+1. Fügen Sie den Systemdatenträger des virtuellen Computers als Datenträger für Daten an eine Wiederherstellungs-VM (beliebige funktionierende Linux-VM) an. Hierzu können Sie [CLI-Befehle](./troubleshoot-recovery-disks-linux.md) verwenden, oder Sie können die Einrichtung der Wiederherstellungs-VM mithilfe der [VM-Reparaturbefehle](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) automatisieren.
 
 2. Nachdem Sie den Systemdatenträger als Datenträger für Daten auf der Wiederherstellungs-VM eingebunden haben, sichern Sie die Datei „fstab“, bevor Sie Änderungen vornehmen, und führen Sie dann die folgenden Schritte aus, um die Datei „fstab“ zu korrigieren.
 
@@ -217,7 +217,7 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die seri
    > * Felder in den einzelnen Zeilen werden durch Tabstopps oder Leerzeichen voneinander getrennt. Leere Zeilen werden ignoriert. Zeilen, die als erstes Zeichen ein Nummernzeichen (#) aufweisen, sind Kommentare. Auskommentierte Zeilen können in der Datei „fstab“ verbleiben, werden aber nicht verarbeitet. Es wird empfohlen, dass Sie die Zeilen in „fstab“, bei denen Sie unsicher sind, nicht entfernen, sondern auskommentieren.
    > * Damit der virtuelle Computer wiederhergestellt und gestartet werden kann, sollten die Dateisystempartitionen die einzigen erforderlichen Partitionen sein. Auf dem virtuellen Computer treten möglicherweise Anwendungsfehler zu zusätzlichen kommentierten Partitionen auf. Der virtuelle Computer sollte jedoch ohne die zusätzlichen Partitionen gestartet werden. Sie können die Auskommentierung etwaiger kommentierter Zeilen später wieder aufheben.
    > * Es wird empfohlen, Datenträger auf Azure-VMs über die UUID der Dateisystempartition einzubinden. Führen Sie beispielsweise den folgenden Befehl aus: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Führen Sie den Befehl „blkid“ aus, um die UUID des Dateisystems zu ermitteln. Weitere Informationen zur Syntax erhalten Sie durch Ausführen des Befehls „blkid“. Beachten Sie, dass der Datenträger, den Sie wiederherstellen möchten, jetzt auf einem neuen virtuellen Computer eingebunden wird. Obwohl die UUIDs konsistent sein sollten, unterscheiden sich die Gerätepartitions-IDs (z. B. „/dev/sda1“) auf dieser VM. Die Dateisystempartitionen der ursprünglichen fehlerhaften VM, die sich auf einer Nicht-System-VHD befinden, sind für die Wiederherstellungs-VM [über CLI-Befehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) nicht verfügbar.
+   > * Führen Sie den Befehl „blkid“ aus, um die UUID des Dateisystems zu ermitteln. Weitere Informationen zur Syntax erhalten Sie durch Ausführen des Befehls „blkid“. Beachten Sie, dass der Datenträger, den Sie wiederherstellen möchten, jetzt auf einem neuen virtuellen Computer eingebunden wird. Obwohl die UUIDs konsistent sein sollten, unterscheiden sich die Gerätepartitions-IDs (z. B. „/dev/sda1“) auf dieser VM. Die Dateisystempartitionen der ursprünglichen fehlerhaften VM, die sich auf einer Nicht-System-VHD befinden, sind für die Wiederherstellungs-VM [über CLI-Befehle](./troubleshoot-recovery-disks-linux.md) nicht verfügbar.
    > * Mit der Option „nofail“ können Sie sicherstellen, dass der virtuelle Computer auch dann gestartet wird, wenn das Dateisystem beschädigt oder beim Start nicht vorhanden ist. Es wird empfohlen, die Option „nofail“ in der Datei „fstab“ zu verwenden, damit der Startvorgang nach Fehlern in Partitionen, die für den Start des virtuellen Computers nicht erforderlich sind, fortgesetzt werden kann.
 
 7. Ändern Sie falsche oder unnötige Zeilen in der Datei „fstab“, oder kommentieren Sie sie aus, damit der virtuelle Computer ordnungsgemäß gestartet werden kann.
@@ -240,5 +240,5 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die seri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mit dem Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI 2.0](./troubleshoot-recovery-disks-linux.md)
+* [Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mit dem Azure-Portal](./troubleshoot-recovery-disks-portal-linux.md)

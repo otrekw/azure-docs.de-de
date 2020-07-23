@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708041"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520731"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Einrichten von Azure Monitor-Protokollen und Sammeln von Diagnosedaten für Azure Logic Apps
 
-Um während der Laufzeit umfangreichere Debuginformationen zu ihren Logik-Apps zu erhalten, können Sie [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md) einrichten und verwenden, um Informationen zu Laufzeitdaten und -ereignissen aufzuzeichnen und zu speichern, z. B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse in einem [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs-collect-workspace.md). [Azure Monitor](../azure-monitor/overview.md) hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Durch die Verwendung von Azure Monitor-Protokollen können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu sammeln und zu überprüfen. Sie können [diese Diagnosedaten auch mit anderen Azure-Diensten verwenden](#extend-data), z. B. Azure Storage und Azure Event Hubs.
+Um während der Laufzeit umfangreichere Debuginformationen zu ihren Logik-Apps zu erhalten, können Sie [Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md) einrichten und verwenden, um Informationen zu Laufzeitdaten und -ereignissen aufzuzeichnen und zu speichern, z. B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse in einem [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). [Azure Monitor](../azure-monitor/overview.md) hilft Ihnen bei der Überwachung Ihrer Cloud- und lokalen Umgebungen, sodass Sie deren Verfügbarkeit und Leistung leichter sicherstellen können. Durch die Verwendung von Azure Monitor-Protokollen können Sie [Protokollabfragen](../azure-monitor/log-query/log-query-overview.md) erstellen, die Ihnen helfen, diese Informationen zu sammeln und zu überprüfen. Sie können [diese Diagnosedaten auch mit anderen Azure-Diensten verwenden](#extend-data), z. B. Azure Storage und Azure Event Hubs.
 
 Zum Einrichten der Protokollierung für Ihre Logik-App können Sie [beim Erstellen Ihrer Logik-App Log Analytics aktivieren](#logging-for-new-logic-apps), oder Sie können die [Logic Apps-Verwaltungslösung](#install-management-solution) in Ihrem Log Analytics-Arbeitsbereich für vorhandene Logik-Apps installieren. Diese Lösung bietet aggregierte Informationen für Ihre Logik-App-Ausführungen und umfasst spezifische Details wie Status, Ausführungszeit, Status der erneuten Übermittlung und Korrelations-IDs. Um dann die Protokollierung zu aktivieren und Abfragen für diese Informationen zu erstellen, [richten Sie Azure Monitor-Protokolle ein](#set-up-resource-logs).
 
@@ -23,7 +23,7 @@ In diesem Artikel wird gezeigt, wie Sie Log Analytics aktivieren, wenn Sie Logik
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, benötigen Sie einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs-collect-workspace.md). Falls Sie keinen Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
+Bevor Sie beginnen, benötigen Sie einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Falls Sie keinen Arbeitsbereich besitzen, lesen Sie die Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md).
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -176,15 +176,15 @@ Im Anschluss an die Ausführung Ihrer Logik-App können Sie die Daten zu diesen 
 
 In Verbindung mit Azure Monitor-Protokollen können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.:
 
-* [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md)
-* [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
 
 Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../azure-monitor/platform/powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel:
 
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-Stellen Sie auf Grundlage der Orte, an die Sie Diagnosedaten senden möchten, sicher, dass Sie zuerst [ein Azure Storage-Konto](../storage/common/storage-create-storage-account.md) oder [einen Azure Event Hub](../event-hubs/event-hubs-create.md) erstellen. Sie können dann die Ziele auswählen, an die Sie diese Daten senden möchten. Werte für die Beibehaltungsdauer gelten nur, wenn Sie ein Speicherkonto verwenden.
+Stellen Sie auf Grundlage der Orte, an die Sie Diagnosedaten senden möchten, sicher, dass Sie zuerst [ein Azure Storage-Konto](../storage/common/storage-account-create.md) oder [einen Azure Event Hub](../event-hubs/event-hubs-create.md) erstellen. Sie können dann die Ziele auswählen, an die Sie diese Daten senden möchten. Werte für die Beibehaltungsdauer gelten nur, wenn Sie ein Speicherkonto verwenden.
 
 ![Senden von Daten an das Azure-Speicherkonto oder einen Event Hub](./media/monitor-logic-apps-log-analytics/diagnostics-storage-event-hub-log-analytics.png)
 
@@ -192,7 +192,7 @@ Stellen Sie auf Grundlage der Orte, an die Sie Diagnosedaten senden möchten, si
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Monitor-Diagnoseereignisse
 
-Jedes Diagnoseereignis enthält Details zu Ihrer Logik-App und zum Ereignis, z.B. Status, Startzeit, Endzeit usw. Für die programmgesteuerte Einrichtung der Überwachung, Nachverfolgung und Protokollierung können Sie diese Informationen mit der [REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) und der [REST-API für Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) verwenden. Sie können außerdem die Eigenschaften `clientTrackingId` und `trackedProperties` verwenden, die angezeigt werden in 
+Jedes Diagnoseereignis enthält Details zu Ihrer Logik-App und zum Ereignis, z.B. Status, Startzeit, Endzeit usw. Für die programmgesteuerte Einrichtung der Überwachung, Nachverfolgung und Protokollierung können Sie diese Informationen mit der [REST-API für Azure Logic Apps](/rest/api/logic) und der [REST-API für Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) verwenden. Sie können außerdem die Eigenschaften `clientTrackingId` und `trackedProperties` verwenden, die angezeigt werden in 
 
 * `clientTrackingId`: Wenn sie nicht angegeben ist, wird diese ID von Azure automatisch generiert, und Ereignisse werden für eine Ausführung der Logik-App korreliert. Dies gilt auch für geschachtelte Workflows, die über die Logik-App aufgerufen werden. Sie können diese ID manuell in einem Trigger angeben, indem Sie einen `x-ms-client-tracking-id`-Header mit Ihrem benutzerdefinierten ID-Wert in der Triggeranforderung übergeben. Sie können einen Anforderungstrigger, HTTP-Trigger oder Webhooktrigger verwenden.
 

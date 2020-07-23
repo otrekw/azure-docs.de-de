@@ -11,19 +11,19 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56c7a0d6f0400811d085f60fd71fe72b88bf9ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557481"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520560"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Deep Learning- und KI-Frameworks für Azure Data Science VM
 Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | |
 | Unterstützte DSVM-Editionen      | Linux (Ubuntu)     |
@@ -32,7 +32,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | |
 | Unterstützte DSVM-Editionen      | Linux (Ubuntu)     |
@@ -41,7 +41,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 5,2 |
 | Unterstützte DSVM-Editionen      | Linux (Ubuntu)     |
@@ -50,7 +50,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA-, cuDNN-, NVIDIA-Treiber](https://developer.nvidia.com/cuda-toolkit)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 10.0.130|
 | Unterstützte DSVM-Editionen      | Windows und Linux   |
@@ -60,7 +60,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 0.16.1|
 | Unterstützte DSVM-Editionen      | Linux (Ubuntu)   |
@@ -69,7 +69,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="keras"></a>[Keras](https://keras.io/)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 2.2.4 |
 | Unterstützte DSVM-Editionen      | Windows und Linux   |
@@ -78,7 +78,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 2.5.1 |
 | Unterstützte DSVM-Editionen      | Windows und Linux   |
@@ -86,7 +86,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Zur Ausführung      | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie Python aus. <br/>Jupyter: Stellen Sie eine Verbindung mit [Jupyter](provision-vm.md) oder [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) her, und öffnen Sie dann das CNTK-Verzeichnis für Beispiele. |
 
 ## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 1.3.0 |
 | Unterstützte DSVM-Editionen      | Windows und Linux   |
@@ -95,7 +95,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 1.0.1 |
 | Unterstützte DSVM-Editionen      | Windows und Linux   |
@@ -104,7 +104,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia System Management Interface (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen |  |
 | Unterstützte DSVM-Editionen      | Windows und Linux   |
@@ -114,7 +114,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 1.2.0 (Ubuntu 16.04, Windows 2016), 1.4.0 (Ubuntu 18.04, Windows 2019) |
 | Unterstützte DSVM-Editionen      | Linux |
@@ -123,7 +123,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 1.13 |
 | Unterstützte DSVM-Editionen      | Windows, Linux |
@@ -132,7 +132,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 1.12 |
 | Unterstützte DSVM-Editionen      | Linux |
@@ -142,7 +142,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Unterstützte Versionen | 1.0.3 |
 | Unterstützte DSVM-Editionen      | Linux |

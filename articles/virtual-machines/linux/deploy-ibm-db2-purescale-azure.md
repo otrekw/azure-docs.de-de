@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78968891"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510728"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Bereitstellen von IBM DB2 pureScale in Azure
 
@@ -26,7 +26,7 @@ Zum Bereitstellen dieser Architektur laden Sie das Skript „deploy.sh“ herunt
 Das Repository enthält auch Skripts zum Einrichten eines Grafana-Dashboards. Sie können mit dem Dashboard Prometheus abfragen, das in DB2 enthaltene Open-Source-Überwachungs- und -Warnsystem.
 
 > [!NOTE]
-> Das Skript „deploy.sh“ auf dem Client erstellt private SSH-Schlüssel und übergibt diese per HTTPS an die Bereitstellungsvorlage. Aus Sicherheitsgründen wird empfohlen, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) zum Speichern von Geheimnissen, Schlüsseln und Kennwörtern zu verwenden.
+> Das Skript „deploy.sh“ auf dem Client erstellt private SSH-Schlüssel und übergibt diese per HTTPS an die Bereitstellungsvorlage. Aus Sicherheitsgründen wird empfohlen, [Azure Key Vault](../../key-vault/general/overview.md) zum Speichern von Geheimnissen, Schlüsseln und Kennwörtern zu verwenden.
 
 ## <a name="how-the-deployment-script-works"></a>Funktionsweise des Bereitstellungsskripts
 

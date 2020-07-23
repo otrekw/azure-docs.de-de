@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510445"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure-Befehlszeilenschnittstelle
 
@@ -34,7 +34,7 @@ Wenn Sie Ihre VHD in Azure hochladen möchten, müssen Sie einen leeren verwalte
 
 Diese Art des verwalteten Datenträgers verfügt über zwei eindeutige Zustände:
 
-- „ReadyToUpload“: Der Datenträger ist für den Upload bereit, jedoch wurde keine [SAS (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) generiert.
+- „ReadyToUpload“: Der Datenträger ist für den Upload bereit, jedoch wurde keine [SAS (Shared Access Signature)](../../storage/common/storage-sas-overview.md) generiert.
 - „ActiveUpload“: Der Datenträger ist für den Upload bereit, und die SAS wurde generiert.
 
 > [!NOTE]
@@ -132,4 +132,3 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun erfolgreich eine VHD auf einen verwalteten Datenträger hochgeladen haben, können Sie den Datenträger als [Datenträger für Daten an eine vorhandene VM](add-disk.md) anfügen oder [den Datenträger als Betriebssystemdatenträger](upload-vhd.md#create-the-vm) an eine VM anfügen, um eine neue VM zu erstellen. 
-

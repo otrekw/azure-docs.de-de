@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555237"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511397"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
@@ -200,16 +200,16 @@ Bei Analysetools variieren die Indexattribute je nachdem, ob Sie vordefinierte o
 
 #### <a name="predefined-analyzers"></a>Vordefinierte Analysetools
 
-|||  
-|-|-|  
+| type | BESCHREIBUNG |
+| ---- | ----------- |  
 |Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
 |type|Analysetooltypen aus der Liste der unterstützten Analysetools. Informationen dazu finden Sie in der Spalte **analyzer_type** in der Tabelle [Analysetool](#AnalyzerTable) unten.|  
 |Tastatur|Es müssen gültige Optionen eines vordefinierten Analysetools sein, die in der folgenden Tabelle [Analysetools ](#AnalyzerTable) aufgeführt sind.|  
 
 #### <a name="custom-analyzers"></a>Benutzerdefinierte Analysetools
 
-|||  
-|-|-|  
+| type | BESCHREIBUNG |
+| ---- | ----------- |  
 |Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
 |type|Muss "#Microsoft.Azure.Search.CustomAnalyzer" sein.|  
 |CharFilters|Wird entweder auf einen der vordefinierten Zeichenfilter festgelegt, die in der Tabelle [Zeichenfilter](#char-filters-reference) aufgeführt sind, oder auf einen benutzerdefinierten Zeichenfilter, der in der Indexdefinition angegeben ist.|  
@@ -225,8 +225,8 @@ Bei Analysetools variieren die Indexattribute je nachdem, ob Sie vordefinierte o
 
  Zeichenfilter werden verwendet, um den Eingabetext vorzubereiten, bevor er vom Tokenizer verarbeitet wird. Beispielsweise kann er bestimmte Zeichen oder Symbole ersetzen. Sie können in einem benutzerdefinierten Analysemodul mehrere Zeichenfilter verwenden. Zeichenfilter werden in der Reihenfolge ausgeführt, in der sie aufgeführt sind.  
 
-|||  
-|-|-|  
+| type | BESCHREIBUNG |
+| ---- | ----------- | 
 |Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
 |type|Zeichenfiltertyp aus der Liste der unterstützten Zeichenfilter. Informationen dazu finden Sie in der Spalte **char_filter_type** in der Tabelle [Zeichenfilter](#char-filters-reference) unten.|  
 |Tastatur|Müssen gültige Optionen für einen bestimmten Typ von [Zeichenfilter](#char-filters-reference) sein.|  
@@ -238,8 +238,8 @@ Bei Analysetools variieren die Indexattribute je nachdem, ob Sie vordefinierte o
  Sie können genau einen Tokenizer pro benutzerdefiniertem Analysetool angeben. Wenn Sie mehr als einen Tokenizer benötigen, können Sie mehrere benutzerdefinierte Analysetools erstellen und diese feldweise in Ihrem Indexschema zuordnen.  
 Ein benutzerdefiniertes Analysetool kann einen vordefinierten Tokenizer mit den Standard- oder den benutzerdefinierte Optionen verwenden.  
 
-|||  
-|-|-|  
+| type | BESCHREIBUNG |
+| ---- | ----------- | 
 |Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
 |type|Name der Tokenizer aus der Liste der unterstützten Tokenizer. Informationen dazu finden Sie in der Spalte **tokenizer_type** in der Tabelle [Tokenizer](#Tokenizers) unten.|  
 |Tastatur|Müssen gültige Optionen für einen bestimmten Tokenizertyp aus der Tabelle [Tokenizer](#Tokenizers) unten sein.|  
@@ -249,8 +249,8 @@ Ein benutzerdefiniertes Analysetool kann einen vordefinierten Tokenizer mit den 
  Ein Tokenfilter wird verwendet, um die von einem Tokenizer generierten Token herauszufiltern oder zu ändern. Sie können beispielsweise einen Filter für Kleinbuchstaben angeben, mit dem alle Zeichen in Kleinbuchstaben konvertiert werden.   
 Sie können in einem benutzerdefinierten Analysemodul mehrere Tokenfilter verwenden. Tokenfilter werden in der Reihenfolge ausgeführt, in der sie aufgeführt sind.  
 
-|||  
-|-|-|  
+| type | BESCHREIBUNG |
+| ---- | ----------- |  
 |Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
 |type|Name des Tokenfilters aus der Liste der unterstützten Tokenfilter. Informationen dazu finden Sie in der Spalte **token_filter_type** in der Tabelle [Tokenfilter](#TokenFilters) unten.|  
 |Tastatur|Müssen [Tokenfilter](#TokenFilters) eines bestimmten Tokenfiltertyps sein.|  

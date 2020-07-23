@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232650"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525465"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -66,7 +66,7 @@ In diesem Dokument werden die folgenden Begriffe verwendet:
 * **SAP-System**: Die Kombination einer DBMS-Schicht und einer Anwendungsschicht, die beispielsweise aus einem SAP ERP-Entwicklungssystem, einem SAP Business Warehouse-Testsystem oder einem SAP CRM-Produktionssystem bestehen kann. In Azure-Bereitstellungen wird die Aufteilung dieser beiden Schichten zwischen lokalen Systemen und Azure nicht unterstützt. Dies bewirkt, dass ein SAP-System entweder lokal oder in Azure bereitgestellt wird. Sie können die verschiedenen Systeme einer SAP-Landschaft in Azure oder lokal bereitstellen. Beispielsweise könnten Sie die SAP CRM-Entwicklungs- und Testsysteme in Azure, das SAP CRM-Produktionssystem jedoch lokal bereitstellen.
 * **Standortübergreifend**: Beschreibt ein Szenario, in dem virtuelle Computer in einem Azure-Abonnement bereitgestellt werden, das Site-to-Site-, Multisite- oder ExpressRoute-Konnektivität zwischen den lokalen Rechenzentren und Azure umfasst. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als standortübergreifende Szenarios bezeichnet. 
 
-    Durch die Verbindung sollen lokale Domänen, das lokale Active Directory und das lokale DNS auf Azure ausgeweitet werden. Die lokale Landschaft wird auf die Azure-Ressourcen des Abonnements erweitert. Durch diese Erweiterung können die VMs Teil der lokalen Domäne sein. Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf diesen virtuellen Computern ausführen (z. B. DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten virtuellen Computern und in Azure bereitgestellten virtuellen Computern ist möglich. Dieses Szenario ist das gängigste für die Bereitstellung von SAP-Ressourcen in Azure. Weitere Informationen finden Sie unter [Planung und Entwurf für VPN-Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
+    Durch die Verbindung sollen lokale Domänen, das lokale Active Directory und das lokale DNS auf Azure ausgeweitet werden. Die lokale Landschaft wird auf die Azure-Ressourcen des Abonnements erweitert. Durch diese Erweiterung können die VMs Teil der lokalen Domäne sein. Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf diesen virtuellen Computern ausführen (z. B. DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten virtuellen Computern und in Azure bereitgestellten virtuellen Computern ist möglich. Dieses Szenario ist das gängigste für die Bereitstellung von SAP-Ressourcen in Azure. Weitere Informationen finden Sie unter [Planung und Entwurf für VPN-Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 > [!NOTE]
 > Bei standortübergreifenden Bereitstellungen von SAP-Systemen sind virtuelle Azure-Computer mit SAP-Systemen Mitglieder einer lokalen Domäne und werden für SAP-Produktionssysteme unterstützt. Standortübergreifende Konfigurationen werden für die Bereitstellung von Teilen von SAP-Landschaften oder vollständigen SAP-Landschaften in Azure unterstützt. Auch für das Ausführen von vollständigen SAP-Landschaften in Azure müssen diese VMs Teil einer lokalen Domäne und von Active Directory/LDAP sein. 
@@ -78,7 +78,7 @@ In diesem Dokument werden die folgenden Begriffe verwendet:
 In einigen Microsoft-Dokumentationen werden standortübergreifende Szenarios etwas anders beschrieben, insbesondere bei DBMS-Hochverfügbarkeitskonfigurationen. In Dokumenten zu SAP bezieht sich ein standortübergreifendes Szenario nur auf Site-to-Site- oder private [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Konnektivität und eine SAP-Landschaft, die zwischen lokalen Systemen und Azure verteilt ist.
 
 ## <a name="resources"></a>Ressourcen
-Zur SAP-Workload in Azure sind weitere Artikel verfügbar. Beginnen Sie mit [Erste Schritte mit SAP in Azure-VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started), und wählen Sie dann den gewünschten Bereich.
+Zur SAP-Workload in Azure sind weitere Artikel verfügbar. Beginnen Sie mit [Erste Schritte mit SAP in Azure-VMs](./get-started.md), und wählen Sie dann den gewünschten Bereich.
 
 Die folgenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem Dokument behandelten Themen:
 
@@ -103,7 +103,7 @@ Die folgenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem Doku
 
 Informationen für alle SAP-Hinweise für Linux finden Sie im [Wiki der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes).
 
-Sie benötigen Kenntnisse der Microsoft Azure-Architektur sowie der Bereitstellung und Verwendung von virtuellen Microsoft Azure-Computern. Weitere Informationen finden Sie in der [Azure-Dokumentation](https://docs.microsoft.com/azure/).
+Sie benötigen Kenntnisse der Microsoft Azure-Architektur sowie der Bereitstellung und Verwendung von virtuellen Microsoft Azure-Computern. Weitere Informationen finden Sie in der [Azure-Dokumentation](../../../index.yml).
 
 Installation und Konfiguration von Windows, Linux und DBMS sind generell weitgehend identisch mit allen VMs oder Bare-Metal-Computern, die Sie lokal installieren. Bei der Implementierung der Architektur und Systemverwaltung gibt es jedoch einige Entscheidungen, die bei der Nutzung von Azure IaaS anders sind. Dieses Dokument erläutert die spezifischen Unterschiede bei Architektur und Systemverwaltung, die Sie bei der Verwendung von Azure IaaS kennen sollten.
 
@@ -158,8 +158,8 @@ Wenn Ihre IOPS-Anforderungen das übersteigen, was eine einzelne VHD bereitstell
 >
 > Nur MDADM und Logical Volume Manager (LVM) werden unterstützt, um ein Software-RAID unter Linux zu erstellen. Weitere Informationen finden Sie unter
 >
-> - [Konfigurieren von Software-RAID unter Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) mithilfe von MDADM
-> - [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm) (LVM)
+> - [Konfigurieren von Software-RAID unter Linux](../../linux/configure-raid.md) mithilfe von MDADM
+> - [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](../../linux/configure-lvm.md) (LVM)
 >
 >
 
@@ -170,9 +170,9 @@ Wenn Ihre IOPS-Anforderungen das übersteigen, was eine einzelne VHD bereitstell
 >
 
 ### <a name="managed-or-nonmanaged-disks"></a>Verwaltete oder nicht verwaltete Datenträger
-Ein Azure-Speicherkonto ist nicht nur ein Konzept für Verwaltungsaufgaben, sondern stellt auch eine Gruppe von Einschränkungen dar. Die Einschränkungen unterscheiden sich zwischen Storage Standard und Storage Premium-Konten. Informationen zu Funktionen und Einschränkungen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
+Ein Azure-Speicherkonto ist nicht nur ein Konzept für Verwaltungsaufgaben, sondern stellt auch eine Gruppe von Einschränkungen dar. Die Einschränkungen unterscheiden sich zwischen Storage Standard und Storage Premium-Konten. Informationen zu Funktionen und Einschränkungen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../../../storage/common/scalability-targets-standard-account.md).
 
-Denken Sie daran, dass bei Storage Standard eine Begrenzung der IOPS pro Speicherkonto gilt. Finden Sie die Zeile mit der **Gesamtanforderungsrate** im Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets). Für Speicherkonten gilt pro Azure-Abonnement außerdem eine anfängliche Einschränkung. Verteilen Sie daher VHDs für die größeren SAP-Landschaften auf verschiedene Speicherkonten, um die Grenzen dieser Speicherkonten nicht zu überschreiten. Dies ist sehr aufwändig, wenn Sie einige hundert VMs mit über tausend VHDs haben.
+Denken Sie daran, dass bei Storage Standard eine Begrenzung der IOPS pro Speicherkonto gilt. Finden Sie die Zeile mit der **Gesamtanforderungsrate** im Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](../../../storage/common/scalability-targets-standard-account.md). Für Speicherkonten gilt pro Azure-Abonnement außerdem eine anfängliche Einschränkung. Verteilen Sie daher VHDs für die größeren SAP-Landschaften auf verschiedene Speicherkonten, um die Grenzen dieser Speicherkonten nicht zu überschreiten. Dies ist sehr aufwändig, wenn Sie einige hundert VMs mit über tausend VHDs haben.
 
 Da die Verwendung von Standard-Speicher für DBMS-Bereitstellungen in Verbindung mit SAP-Workload nicht empfohlen wird, sind die entsprechenden Verweise und Empfehlungen auf diesen kurzen [Artikel](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) beschränkt.
 
@@ -188,8 +188,8 @@ Damit keine Verwaltung der Planung und Bereitstellung von VHDs über verschieden
 
 Informationen zum Konvertieren nicht verwalteter Datenträger in verwaltete Datenträger finden Sie unter:
 
-- [Konvertieren einer Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)
-- [Konvertieren einer Linux-VM von nicht verwalteten Datenträgern in verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks)
+- [Konvertieren einer Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger](../../windows/convert-unmanaged-to-managed-disks.md)
+- [Konvertieren einer Linux-VM von nicht verwalteten Datenträgern in verwaltete Datenträger](../../linux/convert-unmanaged-to-managed-disks.md)
 
 
 ### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Zwischenspeichern für VMs und Datenträger
@@ -221,13 +221,13 @@ Storage Premium hat die folgenden Optionen zum Zwischenspeichern:
 
 Für Storage Premium wird empfohlen, das **Zwischenspeichern von Lesevorgängen für Datendateien** in der SAP-Datenbank zu nutzen und **Kein Zwischenspeichern für die Datenträger von Protokolldateien** festzulegen.
 
-Für Bereitstellungen der M-Serie empfehlen wir, die Azure-Schreibbeschleunigung für die DBMS-Bereitstellung zu verwenden. Weitere Informationen, Einschränkungen und Bereitstellungsdetails für die Azure-Schreibbeschleunigung finden Sie im Dokument [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+Für Bereitstellungen der M-Serie empfehlen wir, die Azure-Schreibbeschleunigung für die DBMS-Bereitstellung zu verwenden. Weitere Informationen, Einschränkungen und Bereitstellungsdetails für die Azure-Schreibbeschleunigung finden Sie im Dokument [Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md).
 
 
 ### <a name="azure-nonpersistent-disks"></a>Nicht beständige Azure-Datenträger
 Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitgestellt wurde. Bei einem Neustart der VM werden alle Inhalte auf diesen Laufwerken gelöscht. Daher sollten Datendateien und Protokoll- bzw. Wiederholungsdateien von Datenbanken unter keinen Umständen auf diesen nicht permanenten Laufwerken gespeichert werden. Möglicherweise gibt es Ausnahmen für einige Datenbanken, in denen diese nicht permanenten Laufwerke für die Tabellenbereiche „tempdb“ und „temp“ geeignet sind. Verwenden Sie diese Laufwerke nicht für VMs der A-Serie, da diese nicht permanenten Laufwerke mit diesen VMs nur einen begrenzten Durchsatz ermöglichen. 
 
-Weitere Informationen finden Sie unter [Understand the temporary drive on Windows VMs in Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (Grundlegendes zum temporären Laufwerk auf Windows-VMs in Azure).
+Weitere Informationen finden Sie unter [Understand the temporary drive on Windows VMs in Azure](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) (Grundlegendes zum temporären Laufwerk auf Windows-VMs in Azure).
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -247,7 +247,7 @@ Weitere Informationen finden Sie unter [Understand the temporary drive on Window
 ### <a name="microsoft-azure-storage-resiliency"></a><a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage – Resilienz
 Microsoft Azure Storage speichert die Basis-VM (mit Betriebssystem) und angefügte Datenträger oder Blobs in mindestens drei getrennten Speicherknoten. Diese Art von Speicher wird als „lokal redundanter Speicher“ (LRS) bezeichnet. LRS ist die Standardeinstellung für alle Azure-Speichertypen.
 
-Es gibt andere Redundanzmethoden. Weitere Informationen finden Sie unter [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+Es gibt andere Redundanzmethoden. Weitere Informationen finden Sie unter [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
 
 > [!NOTE]
 >Storage Premium ist der empfohlene Speichertyp für DBMS-VMs und Datenträger, die Datenbank- sowie Protokoll- und Wiederholungsdateien speichern. Die einzige verfügbare Redundanzmethode für Storage Premium ist LRS. Daher müssen Sie Datenbankmethoden konfigurieren, um die Replikation von Datenbankdaten in eine andere Azure-Region oder Verfügbarkeitszone zu ermöglichen. Datenbankmethoden sind beispielsweise SQL Server Always On, Oracle Data Guard und HANA-Systemreplikation.
@@ -259,7 +259,7 @@ Es gibt andere Redundanzmethoden. Weitere Informationen finden Sie unter [Azure 
 
 
 ## <a name="vm-node-resiliency"></a>VM-Knoten – Resilienz
-Azure bietet verschiedene SLAs für VMs. Weitere Informationen finden Sie im letzten Release der [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Da die DBMS-Schicht in der Regel kritisch für die Verfügbarkeit in einem SAP-System ist, müssen Sie mit Verfügbarkeitsgruppen, Verfügbarkeitszonen und Wartungsereignissen vertraut sein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability).
+Azure bietet verschiedene SLAs für VMs. Weitere Informationen finden Sie im letzten Release der [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Da die DBMS-Schicht in der Regel kritisch für die Verfügbarkeit in einem SAP-System ist, müssen Sie mit Verfügbarkeitsgruppen, Verfügbarkeitszonen und Wartungsereignissen vertraut sein. Weitere Informationen zu diesen Konzepten finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../windows/manage-availability.md) und [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../linux/manage-availability.md).
 
 Mindestempfehlung für DBMS-Produktionsszenarien mit einer SAP-Workload:
 
@@ -269,43 +269,43 @@ Mindestempfehlung für DBMS-Produktionsszenarien mit einer SAP-Workload:
 
 Sie können auch eine dritte VM in einer anderen Azure-Region bereitstellen und die gleichen Datenbankmethoden verwenden, um ein asynchrones Replikat in einer anderen Azure-Region anzugeben.
 
-Informationen zum Einrichten von Azure-Verfügbarkeitsgruppen finden Sie in [diesem Tutorial](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
+Informationen zum Einrichten von Azure-Verfügbarkeitsgruppen finden Sie in [diesem Tutorial](../../windows/tutorial-availability-sets.md).
 
 
 
 ## <a name="azure-network-considerations"></a>Überlegungen zum Azure-Netzwerk
-Verwenden Sie in großen SAP-Bereitstellungen die Blaupause des [virtuellen Azure-Rechenzentrums](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter). Verwenden Sie sie für die Konfiguration des virtuellen Netzwerks sowie für Berechtigungen und Rollenzuweisungen zu verschiedenen Teilen Ihrer Organisation.
+Verwenden Sie in großen SAP-Bereitstellungen die Blaupause des [virtuellen Azure-Rechenzentrums](/azure/architecture/vdc/networking-virtual-datacenter). Verwenden Sie sie für die Konfiguration des virtuellen Netzwerks sowie für Berechtigungen und Rollenzuweisungen zu verschiedenen Teilen Ihrer Organisation.
 
 Diese bewährten Methoden sind das Ergebnis von Hunderten von Kundenbereitstellungen:
 
 - Die virtuellen Netzwerke, in denen die SAP-Anwendung bereitgestellt wird, haben keinen Zugriff auf das Internet.
 - Die Datenbank-VMs werden im selben virtuellen Netzwerk ausgeführt wie die Anwendungsschicht.
 - Die VMs im virtuellen Netzwerk haben eine statische Zuteilung der privaten IP-Adresse. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../../../virtual-network/public-ip-addresses.md).
-- Routingeinschränkungen in und aus DBMS-VMs werden *nicht* mit Firewalls festgelegt, die auf den lokalen DBMS-VMs installiert sind. Stattdessen wird Routing mit [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) definiert.
+- Routingeinschränkungen in und aus DBMS-VMs werden *nicht* mit Firewalls festgelegt, die auf den lokalen DBMS-VMs installiert sind. Stattdessen wird Routing mit [Netzwerksicherheitsgruppen (NSGs)](../../../virtual-network/security-overview.md) definiert.
 - Weisen Sie der VM verschiedene NICs zu, um den Datenverkehr zu den DBMS-VMs zu trennen und zu isolieren. Jede NIC erhält eine andere IP-Adresse und ist einem anderen Subnetz des virtuellen Netzwerks zugeordnet. Für jedes Subnetz gelten verschiedene NSG-Regeln. Die Isolation oder die Trennung des Netzwerkverkehrs ist eine Routingmaßnahme. Sie wird nicht zum Festlegen von Kontingenten zur Steigerung des Netzwerkdurchsatzes verwendet.
 
 > [!NOTE]
-> Statische IP-Adressen über Azure zuzuweisen bedeutet, sie einzelnen virtuellen NICs zuzuweisen. Weisen Sie statische IP-Adressen nicht innerhalb des Gastbetriebssystems einer virtuellen NIC zu. Einige Azure-Dienste (beispielsweise Azure Backup) sind darauf angewiesen, dass mindestens die primäre virtuelle NIC auf DHCP festgelegt ist und nicht auf statische IP-Adressen. Weitere Informationen finden Sie unter [Problembehandlung bei der Sicherung virtueller Azure-Computer](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Wenn Sie einem virtuellen Computer mehrere statische IP-Adressen zuweisen möchten, müssen Sie ihm mehrere virtuelle NICs zuweisen.
+> Statische IP-Adressen über Azure zuzuweisen bedeutet, sie einzelnen virtuellen NICs zuzuweisen. Weisen Sie statische IP-Adressen nicht innerhalb des Gastbetriebssystems einer virtuellen NIC zu. Einige Azure-Dienste (beispielsweise Azure Backup) sind darauf angewiesen, dass mindestens die primäre virtuelle NIC auf DHCP festgelegt ist und nicht auf statische IP-Adressen. Weitere Informationen finden Sie unter [Problembehandlung bei der Sicherung virtueller Azure-Computer](../../../backup/backup-azure-vms-troubleshoot.md#networking). Wenn Sie einem virtuellen Computer mehrere statische IP-Adressen zuweisen möchten, müssen Sie ihm mehrere virtuelle NICs zuweisen.
 >
 
 
 > [!IMPORTANT]
-> Das Konfigurieren [virtueller Netzwerkgeräte](https://azure.microsoft.com/solutions/network-appliances/) im Kommunikationspfad zwischen der SAP-Anwendung und der DBMS-Schicht eines SAP NetWeaver-, Hybris- oder S/4HANA-basierten SAP-Systems wird nicht unterstützt. Diese Einschränkung gilt aus Funktions- und Leistungsgründen. Der Kommunikationspfad zwischen der SAP-Anwendungsschicht und der DBMS-Schicht muss ein direkter Pfad sein. Die Einschränkung gilt nicht für [Regeln für Anwendungssicherheitsgruppen (ASGs) und NSGs](https://docs.microsoft.com/azure/virtual-network/security-overview), wenn diese ASG- und NSG-Regeln einen direkten Kommunikationspfad zulassen. 
+> Das Konfigurieren [virtueller Netzwerkgeräte](https://azure.microsoft.com/solutions/network-appliances/) im Kommunikationspfad zwischen der SAP-Anwendung und der DBMS-Schicht eines SAP NetWeaver-, Hybris- oder S/4HANA-basierten SAP-Systems wird nicht unterstützt. Diese Einschränkung gilt aus Funktions- und Leistungsgründen. Der Kommunikationspfad zwischen der SAP-Anwendungsschicht und der DBMS-Schicht muss ein direkter Pfad sein. Die Einschränkung gilt nicht für [Regeln für Anwendungssicherheitsgruppen (ASGs) und NSGs](../../../virtual-network/security-overview.md), wenn diese ASG- und NSG-Regeln einen direkten Kommunikationspfad zulassen. 
 >
 > Weitere Szenarien, in denen virtuelle Netzwerkgeräte nicht unterstützt werden:
 >
-> * Kommunikationspfade zwischen virtuellen Azure-Computern, die Linux Pacemaker-Clusterknoten und SBD-Geräte darstellen. Dies ist unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) beschrieben.
-> * Kommunikationspfade zwischen virtuellen Azure-Computern und einem Windows Server-Dateiserver mit horizontaler Skalierung (SOFS), die wie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share) beschrieben eingerichtet wurden. 
+> * Kommunikationspfade zwischen virtuellen Azure-Computern, die Linux Pacemaker-Clusterknoten und SBD-Geräte darstellen. Dies ist unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications](./high-availability-guide-suse.md) beschrieben.
+> * Kommunikationspfade zwischen virtuellen Azure-Computern und einem Windows Server-Dateiserver mit horizontaler Skalierung (SOFS), die wie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure](./sap-high-availability-guide-wsfc-file-share.md) beschrieben eingerichtet wurden. 
 >
 > Virtuelle Netzwerkgeräte in Kommunikationspfaden können die Netzwerklatenz zwischen zwei Kommunikationspartnern locker verdoppeln. Außerdem können sie den Durchsatz in kritischen Pfaden zwischen der SAP-Anwendungsschicht und der DBMS-Schicht einschränken. In einigen Kundenszenarien können virtuelle Netzwerkgeräte fehlerhafte Linux Pacemaker-Clustern zur Folge zu haben. In diesen Fällen erfolgt die Kommunikation zwischen den Linux Pacemaker-Clusterknoten und dem SBD-Gerät über ein virtuelles Netzwerkgerät.
 >
 
 > [!IMPORTANT]
-> Ein weiterer *nicht* unterstützter Entwurf ist die Aufteilung der SAP-Anwendungsschicht und der DBMS-Schicht auf verschiedene virtuelle Azure-Netzwerke, für die kein [Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) konfiguriert ist. Es wird empfohlen, die SAP-Anwendungsschicht und die DBMS-Schicht durch Subnetze innerhalb eines virtuellen Azure-Netzwerks zu trennen, anstatt verschiedene virtuelle Azure-Netzwerke zu verwenden. 
+> Ein weiterer *nicht* unterstützter Entwurf ist die Aufteilung der SAP-Anwendungsschicht und der DBMS-Schicht auf verschiedene virtuelle Azure-Netzwerke, für die kein [Peering](../../../virtual-network/virtual-network-peering-overview.md) konfiguriert ist. Es wird empfohlen, die SAP-Anwendungsschicht und die DBMS-Schicht durch Subnetze innerhalb eines virtuellen Azure-Netzwerks zu trennen, anstatt verschiedene virtuelle Azure-Netzwerke zu verwenden. 
 >
-> Wenn Sie sich dafür entscheiden, der Empfehlung nicht zu folgen und stattdessen die beiden Schichten auf verschiedene virtuelle Netzwerke aufzuteilen, muss für die beiden virtuellen Netzwerke ein [Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) konfiguriert werden. 
+> Wenn Sie sich dafür entscheiden, der Empfehlung nicht zu folgen und stattdessen die beiden Schichten auf verschiedene virtuelle Netzwerke aufzuteilen, muss für die beiden virtuellen Netzwerke ein [Peering](../../../virtual-network/virtual-network-peering-overview.md) konfiguriert werden. 
 >
-> Beachten Sie, dass für den Netzwerkdatenverkehr zwischen zwei virtuellen Azure-Netzwerken mit [Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Übertragungskosten anfallen. Zwischen der SAP-Anwendungsschicht und der DBMS-Schicht werden riesige Datenmengen im Terabytebereich ausgetauscht. Somit können erhebliche Kosten entstehen, wenn die SAP-Anwendungsschicht und die DBMS-Schicht auf zwei mittels Peering verknüpfte virtuelle Azure-Netzwerke aufgeteilt sind.
+> Beachten Sie, dass für den Netzwerkdatenverkehr zwischen zwei virtuellen Azure-Netzwerken mit [Peering](../../../virtual-network/virtual-network-peering-overview.md) Übertragungskosten anfallen. Zwischen der SAP-Anwendungsschicht und der DBMS-Schicht werden riesige Datenmengen im Terabytebereich ausgetauscht. Somit können erhebliche Kosten entstehen, wenn die SAP-Anwendungsschicht und die DBMS-Schicht auf zwei mittels Peering verknüpfte virtuelle Azure-Netzwerke aufgeteilt sind.
 
 Verwenden Sie zwei VMs für Ihre DBMS-Produktionsbereitstellung innerhalb einer Azure-Verfügbarkeitsgruppe. Verwenden Sie auch separates Routing für die SAP-Anwendungsschicht sowie den Datenverkehr für die Verwaltung und Vorgänge zu den beiden DBMS-VMs. Sehen Sie sich die folgende Abbildung an:
 
@@ -317,7 +317,7 @@ Die Verwendung von privaten virtuellen IP-Adressen, die in Funktionen wie SQL Se
 
 Bei einem Failover des Datenbankknotens muss die SAP-Anwendung nicht erneut konfiguriert werden. Stattdessen werden die gängigsten SAP-Anwendungsarchitekturen wieder mit der privaten virtuellen IP-Adresse verbunden. Inzwischen reagiert der Lastenausgleich auf das Failover des Knotens, indem er den Datenverkehr an die private virtuelle IP-Adresse auf dem zweiten Knoten umleitet.
 
-Azure bietet zwei verschiedene [Load Balancer-SKUs](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview): Basic und Standard. Wenn Sie nicht über Azure-Verfügbarkeitszonen hinweg bereitstellen möchten, ist die Load-Balancer-SKU „Basic“ vollkommen ausreichend.
+Azure bietet zwei verschiedene [Load Balancer-SKUs](../../../load-balancer/load-balancer-overview.md): Basic und Standard. Wenn Sie nicht über Azure-Verfügbarkeitszonen hinweg bereitstellen möchten, ist die Load-Balancer-SKU „Basic“ vollkommen ausreichend.
 
 Wird der Datenverkehr zwischen den DBMS-VMs und der SAP-Anwendungsschicht immer über den Lastenausgleich weitergeleitet? Die Antwort hängt von der Load Balancer-Konfiguration ab. 
 
@@ -327,7 +327,7 @@ Die Load Balancer-Instanz bietet eine Möglichkeit, DirectServerReturn. Wenn die
 
 Wir empfehlen, „DirectServerReturn“ in Kombination mit Lastenausgleichen zu konfigurieren, die zwischen der SAP-Anwendungsschicht und der DBMS-Schicht positioniert sind. Diese Konfiguration verringert die Netzwerklatenz zwischen den zwei Schichten.
 
-Ein Beispiel für die Einrichtung dieser Konfiguration mit SQL Server Always On finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
+Ein Beispiel für die Einrichtung dieser Konfiguration mit SQL Server Always On finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
 
 Wenn Sie veröffentlichte GitHub-JSON-Vorlagen als Referenz für Ihre SAP-Infrastrukturbereitstellungen in Azure verwenden, sehen Sie sich diese [Vorlage für ein dreischichtiges SAP-System](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md) an. In dieser Vorlage finden Sie auch die korrekten Einstellungen für den Lastenausgleich.
 
@@ -341,11 +341,11 @@ Um die Netzwerklatenz zwischen Azure-VMs weiter zu reduzieren, empfehlen wir Ihn
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Unter [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) erfahren Sie, wie VMs mit beschleunigtem Netzwerkbetrieb für Windows bereitgestellt werden.
+> Unter [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-powershell.md) erfahren Sie, wie VMs mit beschleunigtem Netzwerkbetrieb für Windows bereitgestellt werden.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Weitere Informationen zur Linux-Distribution finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).
+> Weitere Informationen zur Linux-Distribution finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-cli.md).
 >
 >
 
@@ -373,4 +373,3 @@ Weitere Informationen zu einem bestimmten DBMS finden Sie unter:
 - [SAP HANA in Azure – Betriebshandbuch](hana-vm-operations.md)
 - [Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer](sap-hana-availability-overview.md)
 - [Sicherungsanleitung für SAP HANA auf virtuellen Azure-Computern](sap-hana-backup-guide.md)
-

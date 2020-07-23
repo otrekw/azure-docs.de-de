@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791117"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524742"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler
 
@@ -23,7 +23,7 @@ Die Schnellansicht für Zeichnungsfehler ist eine eigenständige Webanwendung zu
 
 Vor dem Herunterladen der Schnellansicht für Zeichnungsfehler müssen folgende Schritte ausgeführt werden:
 
-1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 3. [Erstellen einer Creator-Ressource](how-to-manage-creator.md)
 

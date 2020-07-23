@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518129"
 ---
 # <a name="supported-account-types"></a>Unterstützte Kontotypen
 
@@ -45,7 +45,6 @@ Einige Kontotypen können mit bestimmten Authentifizierungsabläufen nicht verwe
 - Daemon-Anwendungen können nur mit Azure AD-Organisationen verwendet werden. Es wäre nicht sinnvoll, eine Daemon-Anwendung zu verwenden, um persönliche Microsoft-Konten zu manipulieren. Dazu würde niemals Administratorzustimmung erteilt.
 - Sie können den integrierten Windows-Authentifizierungsflow nur mit Geschäfts-, Schul- oder Unikonten (in Ihrer oder einer anderen Organisation) verwenden. Die integrierte Windows-Authentifizierung funktioniert mit Domänenkonten und setzt voraus, dass die Computer in die Domäne oder in Azure AD eingebunden sind. Dieser Flow ist für persönliche Microsoft-Konten nicht sinnvoll.
 - Die [Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers](./v2-oauth-ropc.md) (Benutzername/Kennwort) kann nicht mit persönlichen Microsoft-Konten verwendet werden. Persönliche Microsoft-Konten erfordern, dass der Benutzer bei jeder Anmeldesitzung dem Zugriff auf persönliche Ressourcen zustimmt. Daher ist dieses Verhalten mit nicht-interaktiven Flows nicht kompatibel.
-- Der Gerätecodeflow funktioniert nicht mit persönlichen Microsoft-Konten.
 
 ## <a name="account-types-in-national-clouds"></a>Kontotypen in nationalen Clouds
 

@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: a5613198b404f629727f3040b308c030763a10b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114367"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515800"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Wechseln der API-Einstellung für Protokollwarnungen
 
@@ -19,32 +19,32 @@ ms.locfileid: "81114367"
 > Der angegebene Inhalt gilt nur für Benutzer der öffentlichen Azure-Cloud und **nicht** für Azure Government oder Azure China-Cloud.  
 
 > [!NOTE]
-> Sobald sich ein Benutzer dafür entscheidet, zur neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) zu wechseln, ist keine Rückkehr zur Verwendung der älteren [Legacywarnungs-API von Log Analytics](api-alerts.md) mehr möglich.
+> Sobald sich ein Benutzer dafür entscheidet, zur neuen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) zu wechseln, ist keine Rückkehr zur Verwendung der älteren [Legacywarnungs-API von Log Analytics](api-alerts.md) mehr möglich.
 
-Bis vor kurzem haben Sie Warnungsregeln im Microsoft Operations Management Suite-Portal verwaltet. Die neue Warnungsfunktion wurde in verschiedene Dienste in Microsoft Azure integriert (darunter Log Analytics), und wir haben Sie gebeten, [Ihre Warnungsregeln aus dem OMS-Portal auf Azure](alerts-extend.md) zu erweitern. Um aber eine minimale Beeinträchtigung für Kunden zu gewährleisten, hat der Prozess die befehlsorientierte Benutzerschnittstellen für ihre Nutzung nicht verändert: die [Warnungs-API von Log Analytics](api-alerts.md), basierend auf SavedSearch.
+Bis vor kurzem haben Sie Warnungsregeln im Microsoft Operations Management Suite-Portal verwaltet. Die neue Warnungsfunktion wurde in verschiedene Dienste in Microsoft Azure integriert (darunter Log Analytics), und wir haben Sie gebeten, [Ihre Warnungsregeln aus dem OMS-Portal auf Azure](./alerts-unified-log.md) zu erweitern. Um aber eine minimale Beeinträchtigung für Kunden zu gewährleisten, hat der Prozess die befehlsorientierte Benutzerschnittstellen für ihre Nutzung nicht verändert: die [Warnungs-API von Log Analytics](api-alerts.md), basierend auf SavedSearch.
 
-Aber jetzt kündigen Sie für Benutzer, die die Warnungen von Log Analytics verwenden, eine echte programmgesteuerte Azure-Alternative an: [Azure Monitor – ScheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), die sich auch in Ihrer [Azure-Abrechnung für Protokollwarnungen](alerts-unified-log.md#pricing-and-billing-of-log-alerts) widerspiegelt. Weitere Informationen zum Verwalten Ihrer Protokollwarnungen über die API finden Sie unter [Verwalten von Protokollwarnungen mithilfe der Azure-Ressourcenvorlage](alerts-log.md#managing-log-alerts-using-azure-resource-template) und [Verwalten von Protokollwarnungen mit PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
+Aber jetzt kündigen Sie für Benutzer, die die Warnungen von Log Analytics verwenden, eine echte programmgesteuerte Azure-Alternative an: [Azure Monitor – ScheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules), die sich auch in Ihrer [Azure-Abrechnung für Protokollwarnungen](alerts-unified-log.md#pricing-and-billing-of-log-alerts) widerspiegelt. Weitere Informationen zum Verwalten Ihrer Protokollwarnungen über die API finden Sie unter [Verwalten von Protokollwarnungen mithilfe der Azure-Ressourcenvorlage](alerts-log.md#managing-log-alerts-using-azure-resource-template) und [Verwalten von Protokollwarnungen mit PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
 
 ## <a name="benefits-of-switching-to-new-azure-api"></a>Vorteile des Umstiegs auf die neue Azure-API
 
-Es gibt mehrere Vorteile beim Erstellen und Verwalten von Warnungen mithilfe der [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) im Vergleich zur [Legacywarnungs-API von Log Analytics](api-alerts.md). Wir haben einige der wichtigsten hier aufgelistet:
+Es gibt mehrere Vorteile beim Erstellen und Verwalten von Warnungen mithilfe der [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) im Vergleich zur [Legacywarnungs-API von Log Analytics](api-alerts.md). Wir haben einige der wichtigsten hier aufgelistet:
 
 - Möglichkeit, [arbeitsbereichübergreifende Protokollsuche](../log-query/cross-workspace-query.md) in Warnungsregeln auszuführen und externen Ressourcen wie Log Analytics-Arbeitsbereiche oder sogar Application Insights-Apps einzubeziehen.
-- Wenn mehrere Felder in der Abfrage zum Gruppieren verwendet werden, kann der Benutzer mit der [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) angeben, welches Feld im Azure-Portal zusammengefasst werden soll.
-- Für mit der [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) erstellte Protokollwarnungen kann ein Zeitraum von 48 Stunden definiert werden, und Daten können für einen längeren Zeitraum als bisher abgerufen werden.
+- Wenn mehrere Felder in der Abfrage zum Gruppieren verwendet werden, kann der Benutzer mit der [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) angeben, welches Feld im Azure-Portal zusammengefasst werden soll.
+- Für mit der [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) erstellte Protokollwarnungen kann ein Zeitraum von 48 Stunden definiert werden, und Daten können für einen längeren Zeitraum als bisher abgerufen werden.
 - Erstellen von Warnungsregeln in einem Durchgang als einzelne Ressource, ohne dass drei Ebenen von Ressourcen wie mit der [Legacywarnungs-API von Log Analytics](api-alerts.md) erstellt werden müssen.
-- Einzelne befehlsorientierte Benutzerschnittstellen für alle Varianten von abfragebasierten Protokollwarnungen in Azure: Die neue [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kann zum Verwalten von Regeln für Log Analytics und Application Insights verwendet werden.
+- Einzelne befehlsorientierte Benutzerschnittstellen für alle Varianten von abfragebasierten Protokollwarnungen in Azure: Die neue [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) kann zum Verwalten von Regeln für Log Analytics und Application Insights verwendet werden.
 - Verwalten Ihrer Protokollwarnungen mit [PowerShell-Cmdlets](alerts-log.md#managing-log-alerts-using-powershell)
-- Alle neuen Protokollwarnungsfunktionen und zukünftigen Entwicklungen werden nur über die neue [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) verfügbar sein.
+- Alle neuen Protokollwarnungsfunktionen und zukünftigen Entwicklungen werden nur über die neue [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) verfügbar sein.
 
 ## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Prozess des Umstiegs von der Legacyprotokollwarnungen-API
 
-Benutzer können entweder die [Legacywarnungs-API von Log Analytics](api-alerts.md) oder die neue [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) verwenden. Warnungsregeln, die von einer der beiden APIs erstellt wurden, können *nur von derselben API verwaltet werden* – ebenso wie über das Azure-Portal. Standardmäßig verwendet Azure Monitor weiterhin die [Legacywarnungs-API von Log Analytics](api-alerts.md) zur Erstellung einer neuen Warnungsregel über das Azure-Portal für vorhandene Arbeitsbereiche von Log Analytics. Wie angekündigt wird für den [neuen Protokollarbeitsbereich, der ab dem 1. Juni 2019 erstellt wurde](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), standardmäßig automatisch die neue [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) verwendet (auch im Azure-Portal).
+Benutzer können entweder die [Legacywarnungs-API von Log Analytics](api-alerts.md) oder die neue [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) verwenden. Warnungsregeln, die von einer der beiden APIs erstellt wurden, können *nur von derselben API verwaltet werden* – ebenso wie über das Azure-Portal. Standardmäßig verwendet Azure Monitor weiterhin die [Legacywarnungs-API von Log Analytics](api-alerts.md) zur Erstellung einer neuen Warnungsregel über das Azure-Portal für vorhandene Arbeitsbereiche von Log Analytics. Wie angekündigt wird für den [neuen Protokollarbeitsbereich, der ab dem 1. Juni 2019 erstellt wurde](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), standardmäßig automatisch die neue [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) verwendet (auch im Azure-Portal).
 
 Die Auswirkungen des Wechsels der Einstellung zur scheduledQueryRules-API werden im Folgenden zusammengefasst:
 
-- Alle Interaktionen, die zur Verwaltung von Protokollwarnungen über befehlsorientierte Benutzerschnittstellen durchgeführt werden, müssen nun stattdessen mit [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) durchgeführt werden. Weitere Informationen finden Sie unter [Beispiel für die Verwendung über eine Azure-Ressourcenvorlage](alerts-log.md#managing-log-alerts-using-azure-resource-template) und [Beispiel für die Verwendung über PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
-- Jede neue Protokollwarnungsregel, die im Azure-Portal erstellt wird, wird nur mit [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) erstellt und ermöglicht es Benutzern, die [zusätzliche Funktionalität der neuen API](#benefits-of-switching-to-new-azure-api) auch über das Azure-Portal zu nutzen.
+- Alle Interaktionen, die zur Verwaltung von Protokollwarnungen über befehlsorientierte Benutzerschnittstellen durchgeführt werden, müssen nun stattdessen mit [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) durchgeführt werden. Weitere Informationen finden Sie unter [Beispiel für die Verwendung über eine Azure-Ressourcenvorlage](alerts-log.md#managing-log-alerts-using-azure-resource-template) und [Beispiel für die Verwendung über PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
+- Jede neue Protokollwarnungsregel, die im Azure-Portal erstellt wird, wird nur mit [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) erstellt und ermöglicht es Benutzern, die [zusätzliche Funktionalität der neuen API](#benefits-of-switching-to-new-azure-api) auch über das Azure-Portal zu nutzen.
 - Der Schweregrad für Protokollwarnungsregeln wird verschoben von: *Kritisch, Warnung und Information* zu den *Schweregraden 0, 1 und 2*. Zusammen mit der Option zum Erstellen/Aktualisieren von Warnungsregeln mit Schweregrad 3 und 4.
 
 Der Prozess des Verschiebens von Warnungsregeln aus der [Warnungsregel-API von Log Analytics](api-alerts.md) bringt keinerlei Änderungen Ihrer Warnungsdefinition, Abfrage oder Konfiguration mit sich. Ihre Warnungsregeln und die Überwachung sind davon nicht betroffen und die Warnungen werden während oder nach dem Wechsel nicht beendet oder angehalten. Es finden lediglich folgende Änderungen statt:
@@ -52,7 +52,7 @@ Der Prozess des Verschiebens von Warnungsregeln aus der [Warnungsregel-API von L
 - Eine Änderung der API-Einstellung und des Zugriffs auf Ihre Regeln über eine neue API.
 - Ein geänderter Ressourcen-URI für Warnungsregeln, der die IDs, die in der [Legacywarnungs-API von Log Analytics](api-alerts.md) verwendet werden, anstelle des Warnungsregelnamens in dieser Struktur `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` enthält. Der Anzeigename der Warnungsregel bleibt unverändert.
 
-Jeder Kunde, der freiwillig auf die neuen [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) umsteigen und die Nutzung der [Legacywarnungs-API von Log Analytics](api-alerts.md) blockieren möchte, kann dies tun, indem er einen PUT-Aufruf für die unten genannte API ausführt, um alle Warnungsregeln, die dem spezifischen Log Analytics-Arbeitsbereich zugeordnet sind, zu wechseln.
+Jeder Kunde, der freiwillig auf die neuen [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) umsteigen und die Nutzung der [Legacywarnungs-API von Log Analytics](api-alerts.md) blockieren möchte, kann dies tun, indem er einen PUT-Aufruf für die unten genannte API ausführt, um alle Warnungsregeln, die dem spezifischen Log Analytics-Arbeitsbereich zugeordnet sind, zu wechseln.
 
 ```
 PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
@@ -73,7 +73,7 @@ $switchJSON = '{"scheduledQueryRulesEnabled": "true"}'
 armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
 ```
 
-Wenn der Wechsel aller Warnungsregeln im Log Analytics-Arbeitsbereich zur Verwendung der neuen [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) erfolgreich ist, wird die folgende Antwort bereitgestellt.
+Wenn der Wechsel aller Warnungsregeln im Log Analytics-Arbeitsbereich zur Verwendung der neuen [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) erfolgreich ist, wird die folgende Antwort bereitgestellt.
 
 ```json
 {
@@ -82,7 +82,7 @@ Wenn der Wechsel aller Warnungsregeln im Log Analytics-Arbeitsbereich zur Verwen
 }
 ```
 
-Benutzer können auch den aktuellen Status Ihres Log Analytics-Arbeitsbereichs überprüfen und anzeigen, ob er nur für die Verwendung von [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) umgeschaltet wurde. Zur Überprüfung können Benutzer einen GET-Aufruf für die unten aufgeführte API durchführen.
+Benutzer können auch den aktuellen Status Ihres Log Analytics-Arbeitsbereichs überprüfen und anzeigen, ob er nur für die Verwendung von [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) umgeschaltet wurde. Zur Überprüfung können Benutzer einen GET-Aufruf für die unten aufgeführte API durchführen.
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
@@ -94,7 +94,7 @@ Wie der obige Aufruf über die PowerShell-Befehlszeile mit dem [ARMClient](https
 armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Wenn der angegebene Log Analytics-Arbeitsbereich so umgeschaltet wurde, dass er nur [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) verwendet, ähnelt der JSON-Antwortcode dem Beispiel unten.
+Wenn der angegebene Log Analytics-Arbeitsbereich so umgeschaltet wurde, dass er nur [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) verwendet, ähnelt der JSON-Antwortcode dem Beispiel unten.
 
 ```json
 {
@@ -102,7 +102,7 @@ Wenn der angegebene Log Analytics-Arbeitsbereich so umgeschaltet wurde, dass er 
     "scheduledQueryRulesEnabled" : true
 }
 ```
-Wenn der angegebene Log Analytics-Arbeitsbereich noch nicht so umgeschaltet wurde, dass er nur [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) verwendet, ähnelt der JSON-Antwortcode dem Beispiel unten.
+Wenn der angegebene Log Analytics-Arbeitsbereich noch nicht so umgeschaltet wurde, dass er nur [scheduledQueryRules](/rest/api/monitor/scheduledqueryrules) verwendet, ähnelt der JSON-Antwortcode dem Beispiel unten.
 
 ```json
 {

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650547"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515783"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für einen virtuellen Windows-Computer
 Leistungsdaten vom Gastbetriebssystem auf virtuellen Azure-Computern werden nicht wie andere [Platformmetriken](../insights/monitor-azure-resource.md#monitoring-data) automatisch erfasst. Installieren Sie die Azure Monitor-[Diagnoseerweiterung](diagnostics-extension-overview.md), um Gastbetriebssystemmetriken in der Metrikdatenbank zu erfassen, damit sie für alle Features von Azure Monitor-Metriken verwendet werden können, einschließlich zeitnaher Benachrichtigung, Diagrammerstellung, Routing und Zugriff über eine REST-API. In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer mithilfe einer Resource Manager-Vorlage an die Metrikendatenbank senden. 
@@ -25,9 +25,9 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden.
+- Ihr Abonnement muss mit [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) registriert werden.
 
-- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
+- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](../../cloud-shell/overview.md) muss installiert sein.
 
 - Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](metrics-custom-overview.md#supported-regions). 
 
@@ -286,4 +286,3 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-

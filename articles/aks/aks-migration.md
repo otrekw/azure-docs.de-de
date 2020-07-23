@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255488"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518044"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrieren zu Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ AKS ist ein verwalteter Dienst, der einzigartige Funktionen mit geringerem Verwa
 
 Wir empfehlen die Verwendung von AKS-Clustern, die durch [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) und den [Azure Load Balancer Standard](./load-balancer-standard.md) unterstützt werden, um sicherzustellen, dass Sie Features wie [mehrfache Knotenpools](./use-multiple-node-pools.md), [Verfügbarkeitszonen](../availability-zones/az-overview.md), [autorisierte IP-Bereiche](./api-server-authorized-ip-ranges.md), [automatische Clusterskalierung](./cluster-autoscaler.md), [Azure Policy für AKS](../governance/policy/concepts/policy-for-kubernetes.md) und andere neue Features erhalten, sobald sie veröffentlicht werden.
 
-Von [Verfügbarkeitsgruppen für virtuelle Computer](../virtual-machine-scale-sets/availability.md#availability-sets) unterstützten AKS-Clustern werden viele dieser Features nicht unterstützt.
+Von [Verfügbarkeitsgruppen für virtuelle Computer](../virtual-machines/availability.md#availability-sets) unterstützten AKS-Clustern werden viele dieser Features nicht unterstützt.
 
 Im folgenden Beispiel wird ein AKS-Cluster mit einem einzigen Knotenpool erstellt, der von einer VM-Skalierungsgruppe unterstützt wird. Es wird eine Load Balancer Standard-Instanz verwendet. Außerdem wird die automatische Clusterskalierung im Knotenpool für den Cluster aktiviert und die Mindestanzahl von Knoten auf *1* sowie die maximale Knotenanzahl auf *3* festgelegt:
 

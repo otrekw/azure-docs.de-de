@@ -3,12 +3,12 @@ title: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von
 description: In diesem Artikel wird beschrieben, wie Sie Azure Policy für die automatische Aktivierung der Sicherung für alle VMs verwenden, die in einem bestimmten Bereich erstellt wurden.
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77584267"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514219"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
 
@@ -18,7 +18,7 @@ Heute bietet Azure Backup eine integrierte Richtlinie (unter Verwendung von Azur
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
-* Die integrierte Richtlinie wird derzeit nur für Azure-VMs unterstützt. Benutzer müssen darauf achten, dass die bei der Zuweisung angegebene Aufbewahrungsrichtlinie eine VM-Aufbewahrungsrichtlinie ist. In [diesem](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) Dokument finden Sie alle von dieser Richtlinie unterstützten VM-SKUs.
+* Die integrierte Richtlinie wird derzeit nur für Azure-VMs unterstützt. Benutzer müssen darauf achten, dass die bei der Zuweisung angegebene Aufbewahrungsrichtlinie eine VM-Aufbewahrungsrichtlinie ist. In [diesem](./backup-azure-policy-supported-skus.md) Dokument finden Sie alle von dieser Richtlinie unterstützten VM-SKUs.
 
 * Die Richtlinie kann immer nur einem einzelnen Standort und Abonnement zugewiesen werden. Zum Aktivieren der Sicherung für standort- und abonnementübergreifende virtuelle Computer müssen mehrere Instanzen der Richtlinienzuweisung erstellt werden, eine für jede Kombination aus Standort und Abonnement.
 
@@ -48,7 +48,7 @@ Um die Richtlinie dem erforderlichen Bereich zuzuweisen, führen Sie die folgend
 
 > [!NOTE]
 >
-> Azure Policy kann mithilfe von [Wiederherstellung](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) auch auf vorhandenen virtuellen Computern verwendet werden.
+> Azure Policy kann mithilfe von [Wiederherstellung](../governance/policy/how-to/remediate-resources.md) auch auf vorhandenen virtuellen Computern verwendet werden.
 
 > [!NOTE]
 >
@@ -56,4 +56,4 @@ Um die Richtlinie dem erforderlichen Bereich zuzuweisen, führen Sie die folgend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen zu Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)
+[Weitere Informationen zu Azure Policy](../governance/policy/overview.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555950"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511329"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Verbinden von Fortinet mit Azure Sentinel
 
@@ -36,12 +36,14 @@ Konfigurieren Sie Fortinet, um Syslog-Nachrichten im CEF-Format über den Syslog
 
 1. Öffnen Sie die Befehlszeilenschnittstelle für Ihre Fortinet-Appliance, und führen Sie die folgenden Befehle aus:
 
-        config log syslogd setting
-        set format cef
-        set port 514
-        set server <ip_address_of_Receiver>
-        set status enable
-        end
+    ```console
+    config log syslogd setting
+    set format cef
+    set port 514
+    set server <ip_address_of_Receiver>
+    set status enable
+    end
+    ```
 
     - Ersetzen Sie die **IP-Adresse** des Servers durch die IP-Adresse des Agents.
     - Legen Sie den **Syslog-Port** auf **514** fest (oder auf den Port, den Sie für den Agent festgelegt haben).

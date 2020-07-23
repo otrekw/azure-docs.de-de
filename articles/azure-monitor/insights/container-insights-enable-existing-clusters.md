@@ -3,16 +3,17 @@ title: Überwachen eines bereitgestellten Azure Kubernetes Service-Clusters | Mi
 description: Erfahren Sie, wie Sie die Überwachung eines Azure Kubernetes Service-Clusters (AKS) mit Azure Monitor für bereits in Ihrem Abonnement bereitgestellte Container aktivieren.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 438e9cfeebc561815c5c0cdbc70123fab718fed1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337972"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516650"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 
-In diesem Artikel wird beschrieben, wie Azure Monitor für Container eingerichtet und verwendet wird, um auf [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) verwaltete Kubernetes-Cluster zu überwachen, die bereits in Ihrem Abonnement bereitgestellt wurden.
+In diesem Artikel wird beschrieben, wie Azure Monitor für Container eingerichtet und verwendet wird, um auf [Azure Kubernetes Service](../../aks/index.yml) verwaltete Kubernetes-Cluster zu überwachen, die bereits in Ihrem Abonnement bereitgestellt wurden.
 
 Sie können die Überwachung eines bereits bereitgestellten AKS-Clusters mit einer der unterstützten Methoden aktivieren:
 
@@ -167,7 +168,7 @@ Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vert
 
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Erstellen und Ausführen von Vorlagen
 

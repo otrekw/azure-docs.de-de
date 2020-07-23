@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927903"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517143"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Benutzerdefinierte Sammlung von Metriken in .NET und .NET Core
 
@@ -22,7 +22,7 @@ Die .NET und .NET Core SDKs für Azure Monitor Application Insights bieten zum S
 
 `TrackMetric()` sendet rohe Telemetriedaten, die eine Metrik angeben. Es ist ineffizient, für jeden Wert ein einzelnes Telemetrieelement zu senden. `TrackMetric()` ist auch, was die Leistung betrifft, nicht effizient, da jedes `TrackMetric(item)`-Element die vollständige SDK-Pipeline von Telemetrieinitialisierern und -prozessoren durchläuft. Im Gegensatz zu `TrackMetric()` übernimmt `GetMetric()` für Sie die lokale Vorabaggregation und übermittelt dann nur in einem festen Intervall von einer Minute eine aggregierte zusammenfassende Metrik. Wenn Sie also eine bestimmte benutzerdefinierte Metrik auf Sekunden- oder sogar Millisekundenebene genau überwachen müssen, können Sie dies tun, während Ihnen nur die Kosten für Speicher und Netzwerkdatenverkehr für eine minütliche Überwachung entstehen. Dadurch wird auch das Risiko einer Drosselung stark verringert, da die Gesamtanzahl der Telemetrieelemente, die für eine aggregierte Metrik gesendet werden müssen, erheblich reduziert wird.
 
-In Application Insights unterliegen benutzerdefinierte Metriken, die über `TrackMetric()` und `GetMetric()` gesammelt wurden, nicht der [Stichprobenentnahme](https://docs.microsoft.com/azure/azure-monitor/app/sampling). Die Stichprobenentnahme wichtiger Metriken kann zu Szenarien führen, in denen die Warnungen, die Sie möglicherweise für diese Metriken eingerichtet haben, unzuverlässig werden könnten. Dadurch, dass Sie keine Stichproben Ihrer benutzerdefinierten Metriken entnehmen, können Sie sich im Allgemeinen darauf verlassen, dass bei Überschreitung Ihrer Warnschwellenwerte eine Warnung ausgelöst wird.  Da jedoch für benutzerdefinierte Metriken keine Stichproben entnommen werden, gibt es möglicherweise einige Bedenken.
+In Application Insights unterliegen benutzerdefinierte Metriken, die über `TrackMetric()` und `GetMetric()` gesammelt wurden, nicht der [Stichprobenentnahme](./sampling.md). Die Stichprobenentnahme wichtiger Metriken kann zu Szenarien führen, in denen die Warnungen, die Sie möglicherweise für diese Metriken eingerichtet haben, unzuverlässig werden könnten. Dadurch, dass Sie keine Stichproben Ihrer benutzerdefinierten Metriken entnehmen, können Sie sich im Allgemeinen darauf verlassen, dass bei Überschreitung Ihrer Warnschwellenwerte eine Warnung ausgelöst wird.  Da jedoch für benutzerdefinierte Metriken keine Stichproben entnommen werden, gibt es möglicherweise einige Bedenken.
 
 Wenn Sie Trends in einer Metrik im Sekundentakt oder in einem noch detaillierteren Intervall verfolgen müssen, kann dies zu folgendem Ergebnis führen:
 
@@ -30,16 +30,16 @@ Wenn Sie Trends in einer Metrik im Sekundentakt oder in einem noch detaillierter
 - Höherer Aufwand für Netzwerkdatenverkehr/Leistung. (In einigen Szenarien kann sich dies sowohl monetär als auch auf die Anwendungsleistung auswirken.)
 - Risiko der Erfassungsdrosselung. Der Azure Monitor-Dienst entfernt („drosselt“) Datenpunkte, wenn Ihre App in kurzen Abständen eine große Menge an Telemetriedaten sendet.
 
-Eine Drosselung ist insofern besonders problematisch, weil eine Drosselung ebenso wie eine Stichprobenentnahme zu verpassten Warnungen führen kann, da die Bedingung zum Auslösen einer Warnung lokal auftreten und dann am Erfassungsendpunkt aufgrund von zu vielen gesendeten Daten verloren gehen könnte. Aus diesem Grund empfehlen wir für .NET und .NET Core, `TrackMetric()` nur dann zu verwenden, wenn Sie Ihre eigene lokale Aggregationslogik implementiert haben. Wenn Sie versuchen, alle Fälle zu verfolgen, in denen ein Ereignis innerhalb einer bestimmten Zeitspanne auftritt, ist [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) womöglich besser geeignet. Denken Sie jedoch daran, dass im Gegensatz zu benutzerdefinierten Metriken für benutzerdefinierte Ereignisse Stichproben entnommen werden müssen. Sie können zwar `TrackMetric()` weiterhin verwenden, auch ohne Ihre eigene lokale Vorabaggregation zu schreiben. Wenn Sie dies jedoch tun, sollten Sie sich der Tücken bewusst sein.
+Eine Drosselung ist insofern besonders problematisch, weil eine Drosselung ebenso wie eine Stichprobenentnahme zu verpassten Warnungen führen kann, da die Bedingung zum Auslösen einer Warnung lokal auftreten und dann am Erfassungsendpunkt aufgrund von zu vielen gesendeten Daten verloren gehen könnte. Aus diesem Grund empfehlen wir für .NET und .NET Core, `TrackMetric()` nur dann zu verwenden, wenn Sie Ihre eigene lokale Aggregationslogik implementiert haben. Wenn Sie versuchen, alle Fälle zu verfolgen, in denen ein Ereignis innerhalb einer bestimmten Zeitspanne auftritt, ist [`TrackEvent()`](./api-custom-events-metrics.md#trackevent) womöglich besser geeignet. Denken Sie jedoch daran, dass im Gegensatz zu benutzerdefinierten Metriken für benutzerdefinierte Ereignisse Stichproben entnommen werden müssen. Sie können zwar `TrackMetric()` weiterhin verwenden, auch ohne Ihre eigene lokale Vorabaggregation zu schreiben. Wenn Sie dies jedoch tun, sollten Sie sich der Tücken bewusst sein.
 
 Zusammenfassend ist `GetMetric()` der empfohlene Ansatz, da dabei eine Vorabaggregation erfolgt, die Werte aus allen Aufrufen von Track() kumuliert und einmal pro Minute eine Zusammenfassung/Aggregation sendet. Dies kann den Kosten- und Leistungsaufwand erheblich reduzieren, da weniger Datenpunkte gesendet, aber dennoch alle relevanten Informationen erfasst werden.
 
 > [!NOTE]
-> Nur die .NET und .NET-Core SDKs bieten die GetMetric()-Methode. Wenn Sie mit Java arbeiten, können Sie [Micrometer-Metriken](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) oder `TrackMetric()` verwenden. Bei Python können Sie zum Senden benutzerdefinierter Metriken [OpenCensus.stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) verwenden. Bei JavaScript und Node.js können Sie weiterhin `TrackMetric()` einsetzen. Beachten Sie jedoch die im vorherigen Abschnitt dargelegten Nachteile.
+> Nur die .NET und .NET-Core SDKs bieten die GetMetric()-Methode. Wenn Sie mit Java arbeiten, können Sie [Micrometer-Metriken](./micrometer-java.md) oder `TrackMetric()` verwenden. Bei Python können Sie zum Senden benutzerdefinierter Metriken [OpenCensus.stats](./opencensus-python.md#metrics) verwenden. Bei JavaScript und Node.js können Sie weiterhin `TrackMetric()` einsetzen. Beachten Sie jedoch die im vorherigen Abschnitt dargelegten Nachteile.
 
 ## <a name="getting-started-with-getmetric"></a>Erste Schritte mit GetMetric
 
-Für unsere Beispiele verwenden wir eine einfache .NET Core 3.1-Workerdienstanwendung. Wenn Sie die Testumgebung, die mit diesen Beispielen verwendet wurde, exakt nachbilden möchten, befolgen Sie die Schritte 1-6 des [Artikels zum Überwachen des Workerdiensts](https://docs.microsoft.com/azure/azure-monitor/app/worker-service#net-core-30-worker-service-application), um Application Insights einer einfachen Projektvorlage für den Workerdienst hinzuzufügen. Diese Konzepte gelten für alle allgemeinen Anwendungen, für die das SDK verwendet werden kann, einschließlich Web- und Konsolen-Apps.
+Für unsere Beispiele verwenden wir eine einfache .NET Core 3.1-Workerdienstanwendung. Wenn Sie die Testumgebung, die mit diesen Beispielen verwendet wurde, exakt nachbilden möchten, befolgen Sie die Schritte 1-6 des [Artikels zum Überwachen des Workerdiensts](./worker-service.md#net-core-30-worker-service-application), um Application Insights einer einfachen Projektvorlage für den Workerdienst hinzuzufügen. Diese Konzepte gelten für alle allgemeinen Anwendungen, für die das SDK verwendet werden kann, einschließlich Web- und Konsolen-Apps.
 
 ### <a name="sending-metrics"></a>Senden von Metriken
 
@@ -111,7 +111,7 @@ Wenn wir unsere Application Insights-Ressource auf der Oberfläche „Protokolle
 > [!NOTE]
 > Da das rohe Telemetrieelement nach der Erfassung weder eine explizite Summeneigenschaft noch ein Summenfeld enthielt, erstellen wir eine(s) für Sie. In diesem Fall stellen die Eigenschaften `value` und `valueSum` dasselbe dar.
 
-Sie können auf Ihre benutzerdefinierte Metriktelemetrie auch im Abschnitt [_Metriken_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) im Portal zugreifen: sowohl als [protokollbasierte als auch als benutzerdefinierte Metrik](pre-aggregated-metrics-log-metrics.md). (Der nachfolgende Screenshot ist ein Beispiel für protokollbasiert.) ![Ansicht im Metrik-Explorer](./media/get-metric/metrics-explorer.png)
+Sie können auf Ihre benutzerdefinierte Metriktelemetrie auch im Abschnitt [_Metriken_](../platform/metrics-charts.md) im Portal zugreifen: sowohl als [protokollbasierte als auch als benutzerdefinierte Metrik](pre-aggregated-metrics-log-metrics.md). (Der nachfolgende Screenshot ist ein Beispiel für protokollbasiert.) ![Ansicht im Metrik-Explorer](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Referenz zur Zwischenspeicherung von Metriken für Nutzung mit hohem Durchsatz
 
@@ -302,8 +302,8 @@ SeverityLevel.Error);
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/app/worker-service) zum Überwachen von Workerdienstanwendungen.
-* Weitere Informationen finden Sie unter [Protokollbasierte und vorab aggregierte Metriken](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics).
-* [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [Erfahren Sie mehr](./worker-service.md) zum Überwachen von Workerdienstanwendungen.
+* Weitere Informationen finden Sie unter [Protokollbasierte und vorab aggregierte Metriken](./pre-aggregated-metrics-log-metrics.md).
+* [Metrik-Explorer](../platform/metrics-getting-started.md)
 * Aktivieren von Application Insights für [ASP.NET Core-Anwendungen](asp-net-core.md)
 * Aktivieren von Application Insights für [ASP.NET-Anwendungen](asp-net.md)

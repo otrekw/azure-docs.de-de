@@ -4,12 +4,12 @@ description: Lernen Sie das Schema des JSON-Codes kennen, der beim Aktivieren ei
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1db12f352ec79a3112eada68d82279c9e0343a04
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669045"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516157"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks für Azure-Aktivitätsprotokollwarnungen
 Als Teil der Definition einer Aktionsgruppe können Sie Webhookendpunkte für den Empfang von Aktivitätsprotokollwarnungs-Benachrichtigungen konfigurieren. Mithilfe von Webhooks können Sie diese Benachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. In diesem Artikel erfahren Sie, wie die Nutzlast für die HTTP POST-Methode für einen Webhook aussieht.
@@ -214,7 +214,7 @@ Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.c
 }
 ```
 
-Spezifische Schemainformationen zu Dienstintegritätsbenachrichtigungs-Aktivitätsprotokollwarnungen finden Sie unter [Dienstintegritätsbenachrichtigungen](../../azure-monitor/platform/service-notifications.md). Erfahren Sie außerdem, wie Sie [Webhookbenachrichtigungen zur Dienstintegrität mit Ihren vorhandenen Problemverwaltungslösungen konfigurieren](../../service-health/service-health-alert-webhook-guide.md).
+Spezifische Schemainformationen zu Dienstintegritätsbenachrichtigungs-Aktivitätsprotokollwarnungen finden Sie unter [Dienstintegritätsbenachrichtigungen](../../service-health/service-notifications.md). Erfahren Sie außerdem, wie Sie [Webhookbenachrichtigungen zur Dienstintegrität mit Ihren vorhandenen Problemverwaltungslösungen konfigurieren](../../service-health/service-health-alert-webhook-guide.md).
 
 ### <a name="resourcehealth"></a>ResourceHealth
 
@@ -292,4 +292,3 @@ Spezifische Schemainformationen zu allen anderen Aktivitätsprotokollwarnungen f
 * [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
-

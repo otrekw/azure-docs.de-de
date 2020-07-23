@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Konfiguration eines Tre
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248225"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513114"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualisieren von Konfigurationen eines Azure Recovery Services-Tresors mithilfe der REST-API
 
@@ -25,7 +25,7 @@ Sie müssen sich je nach Szenario genau überlegen, ob Sie das vorläufige Lösc
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Abrufen des Zustands des vorläufigen Löschens mithilfe der REST-API
 
-Das vorläufige Löschen ist für neu erstellte Recovery Services-Tresore standardmäßig aktiviert. Informationen zum Abrufen/Aktualisieren des Zustands des vorläufigen Löschens für einen Tresor finden Sie in der konfigurationsbezogenen [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) des Sicherungstresors.
+Das vorläufige Löschen ist für neu erstellte Recovery Services-Tresore standardmäßig aktiviert. Informationen zum Abrufen/Aktualisieren des Zustands des vorläufigen Löschens für einen Tresor finden Sie in der konfigurationsbezogenen [REST-API-Dokumentation](/rest/api/backup/backupresourcevaultconfigs) des Sicherungstresors.
 
 Verwenden Sie den folgenden *GET*-Vorgang, um den aktuellen Zustand des vorläufigen Löschens für einen Tresor abzurufen:
 
@@ -45,7 +45,7 @@ Die erfolgreiche Antwort für den GET-Vorgang sieht wie folgt aus:
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 – OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Beispielantwort
 
@@ -81,13 +81,13 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungstext zu erstellen:
 
-Ausführlichere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body).
+Ausführlichere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/backup/backupresourcevaultconfigs/update#request-body).
 
 |Name  |Erforderlich  |type  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  Optionales ETag       |
 |location     |  true       |String         |   Ressourcenspeicherort      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschaften des Tresors       |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschaften des Tresors       |
 |tags     |         | Object        |     Ressourcentags    |
 
 #### <a name="example-request-body"></a>Beispiel für Anforderungstext
@@ -109,7 +109,7 @@ Die erfolgreiche Antwort für den PATCH-Vorgang sieht wie folgt aus:
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 – OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Beispielantwort
 

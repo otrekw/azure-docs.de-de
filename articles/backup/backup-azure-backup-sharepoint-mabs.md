@@ -3,12 +3,12 @@ title: Sichern einer SharePoint-Farm in Azure mit MABS
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234789"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514236"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
 
@@ -18,7 +18,7 @@ Das Sichern von SharePoint auf Azure mit MABS ist ein Vorgang, der dem lokalen S
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Von SharePoint unterstützte Versionen und entsprechende Sicherungsszenarien
 
-Eine Liste der unterstützten SharePoint-Versionen und der MABS-Versionen, die zu deren Sicherung erforderlich sind, finden Sie in der [MABS-Sicherungsmatrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix).
+Eine Liste der unterstützten SharePoint-Versionen und der MABS-Versionen, die zu deren Sicherung erforderlich sind, finden Sie in der [MABS-Sicherungsmatrix](./backup-mabs-protection-matrix.md).
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -100,7 +100,7 @@ Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint 
 
 1. Auf der Seite **Onlineaufbewahrungsrichtlinie angeben** können Sie auswählen, wie die Wiederherstellungspunkte aus den täglichen, wöchentlichen, monatlichen und jährlichen Sicherungen in Azure aufbewahrt werden.
 
-1. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. [Weitere Informationen](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+1. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. [Weitere Informationen](./backup-azure-backup-import-export.md).
 
 1. Überprüfen Sie auf der Seite **Zusammenfassung** Ihre Einstellungen. Nach dem Klicken auf **Gruppe erstellen** erfolgt die erste Replikation der Daten. Nach Abschluss der Replikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Die Sicherung erfolgt anschließend gemäß den Schutzgruppeneinstellungen.
 

@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520748"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
@@ -22,7 +22,7 @@ Azure bietet [serverlose](https://azure.microsoft.com/solutions/serverless/) Too
 Für diese Lösung verwenden Sie die folgenden Azure-Schlüsselkomponenten für serverlose Apps: [Azure Functions](https://azure.microsoft.com/services/functions/) und [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Azure Logic Apps stellt ein serverloses Workflowmodul in der Cloud bereit, sodass Sie Orchestrierungen für serverlose Komponenten erstellen und eine Verbindung mit mehr als 200 Diensten und APIs herstellen können. Azure Functions ermöglicht serverloses Computing in der Cloud. Diese Lösung verwendet Azure Functions, um Kundentweets anhand von vordefinierten Schlüsselwörtern zu kennzeichnen.
 
-In diesem Szenario erstellen Sie eine Logik-App, die ausgelöst wird, wenn Feedback von Kunden gefunden wird. Zu den Connectors, die Sie beim Reagieren auf Kundenfeedback unterstützen, zählen Outlook.com, Office 365, Survey Monkey, Twitter und eine [HTTP-Anforderung aus einem Webformular](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Der von Ihnen erstellte Workflow überwacht ein Hashtag auf Twitter.
+In diesem Szenario erstellen Sie eine Logik-App, die ausgelöst wird, wenn Feedback von Kunden gefunden wird. Zu den Connectors, die Sie beim Reagieren auf Kundenfeedback unterstützen, zählen Outlook.com, Office 365, Survey Monkey, Twitter und eine [HTTP-Anforderung aus einem Webformular](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form). Der von Ihnen erstellte Workflow überwacht ein Hashtag auf Twitter.
 
 Sie können [die gesamte Lösung in Visual Studio erstellen](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) und [die Lösung mit einer Azure Resource Manager-Vorlage bereitstellen](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). Eine exemplarische Vorgehensweise zur Erstellung der Lösung wird in [diesem Channel 9-Video](https://aka.ms/logicappsdemo) gezeigt. 
 
@@ -67,7 +67,7 @@ Sie können auch eine Azure-Funktion erstellen und hinzufügen, um eine benutzer
 
 ## <a name="process-data-with-azure-functions"></a>Verarbeiten von Daten mit Azure Functions
 
-Erstellen Sie vor dem Erstellen einer Funktion eine Funktions-App in Ihrem Azure-Abonnement. Darüber hinaus muss die Funktion, damit Ihre Logik-App eine Funktion direkt aufrufen kann, eine HTTP-Triggerbindung aufweisen (verwenden Sie beispielsweise die Vorlage **HttpTrigger**). Erfahren Sie, [wie Sie Ihre erste Funktions-App im Azure-Portal erstellen](../azure-functions/functions-create-first-azure-function-azure-portal.md).
+Erstellen Sie vor dem Erstellen einer Funktion eine Funktions-App in Ihrem Azure-Abonnement. Darüber hinaus muss die Funktion, damit Ihre Logik-App eine Funktion direkt aufrufen kann, eine HTTP-Triggerbindung aufweisen (verwenden Sie beispielsweise die Vorlage **HttpTrigger**). Erfahren Sie, [wie Sie Ihre erste Funktions-App im Azure-Portal erstellen](../azure-functions/functions-create-first-azure-function.md).
 
 Für dieses Szenario verwenden Sie den Tweettext als Anforderungstext für Ihre Azure-Funktion. Definieren Sie im Funktionscode die Logik, die ermittelt, ob der Tweettext ein Schlüsselwort oder einen Schlüsselbegriff enthält. Verwenden Sie für das Szenario je nach Bedarf eine einfache oder komplexe Funktion.
 Geben Sie am Ende der Funktion eine Antwort mit einigen Daten an die Logik-App zurück, beispielsweise einen einfachen booleschen Wert wie `containsKeyword` oder ein komplexes Objekt.

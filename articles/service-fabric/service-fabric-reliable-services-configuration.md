@@ -5,12 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 640ee925a0a91c4f8424546e7ae734dfbeaed21d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253166"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518961"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurieren zustandsbehafteter Reliable Services
 Es gibt zwei Sets von Konfigurationseinstellungen für Reliable Services. Ein Set gilt global für alle Reliable Services im Cluster, während das andere für den jeweiligen Reliable Service spezifisch ist.
@@ -29,13 +29,15 @@ Die globale Konfiguration für Reliable Services wird im Clustermanifest für de
 
 Im folgenden Beispiel wird in einer Azure ARM- bzw. einer lokalen JSON-Vorlage gezeigt, wie Sie das freigegebene Transaktionsprotokoll ändern, das als Unterstützung zuverlässiger Sammlungen für zustandsbehaftete Dienste erstellt wird.
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>Beispiel für den Abschnitt „clustermanifest“ bei lokaler Entwicklung
 Wenn Sie dies in der lokalen Entwicklungsumgebung ändern möchten, müssen Sie die lokale Datei „clustermanifest.xml“ bearbeiten.

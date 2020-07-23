@@ -3,12 +3,12 @@ title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Do
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cb47453140c7659ca2f5e6da2e40d9d78405f8e7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200658"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517092"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -32,7 +32,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
    | **Ressourcenmodus** | `Classic` oder `Workspace-based` | Arbeitsbereichsbasierte Ressourcen befinden sich derzeit in der Public Preview-Phase und ermöglichen Ihnen das Senden Ihrer Application Insights-Telemetrie an einen gemeinsamen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie im [Artikel zu arbeitsbereichsbasierten Ressourcen](create-workspace-resource.md).
 
 > [!NOTE]
-> Obwohl Sie denselben Ressourcennamen für verschiedene Ressourcengruppen verwenden können, kann es vorteilhaft sein, einen global eindeutigen Namen zu verwenden. Dies kann hilfreich sein, wenn Sie planen, [ressourcenübergreifende Abfragen auszuführen](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application), da dadurch die erforderliche Syntax vereinfacht wird.
+> Obwohl Sie denselben Ressourcennamen für verschiedene Ressourcengruppen verwenden können, kann es vorteilhaft sein, einen global eindeutigen Namen zu verwenden. Dies kann hilfreich sein, wenn Sie planen, [ressourcenübergreifende Abfragen auszuführen](../log-query/cross-workspace-query.md#identifying-an-application), da dadurch die erforderliche Syntax vereinfacht wird.
 
 Geben Sie die entsprechenden Werte in die erforderlichen Felder ein, und wählen Sie dann **Überprüfen + erstellen** aus.
 
@@ -93,7 +93,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Die vollständige PowerShell-Dokumentation für dieses Cmdlet und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
+Die vollständige PowerShell-Dokumentation für dieses Cmdlet und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure PowerShell-Dokumentation](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
 
 ### <a name="azure-cli-preview"></a>Azure CLI (Vorschauversion)
 
@@ -150,12 +150,12 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
 * [Untersuchen von Metriken](../../azure-monitor/platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../../azure-monitor/app/analytics.md)
+* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
 
 <!--Link references-->
 

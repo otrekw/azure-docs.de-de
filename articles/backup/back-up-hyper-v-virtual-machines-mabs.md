@@ -3,12 +3,12 @@ title: Sichern von virtuellen Hyper-V-Computern mit MABS
 description: Dieser Artikel enthält die Verfahren zum Sichern und Wiederherstellen von virtuellen Computern mit Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420401"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514549"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Sichern von virtuellen Hyper-V-Computern mit Azure Backup Server
 
@@ -155,4 +155,4 @@ Wenn Sie einen gesicherten virtuellen Computer wiederherstellen können, wählen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Wiederherstellen von Daten von Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)
+[Wiederherstellen von Daten von Azure Backup Server](./backup-azure-alternate-dpm-server.md)

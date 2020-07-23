@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 595291549b4d181967ea168d0dc71bc7e2237a67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248684"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514202"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -23,7 +23,7 @@ Angenommen, Sie möchten den virtuellen Computer „testVM“ unter der Ressourc
 
 ### <a name="discover-unprotected-azure-vms"></a>Ermitteln nicht geschützter virtueller Azure-Computer
 
-Zunächst muss der Tresor den virtuellen Azure-Computer ermitteln können. Dies wird über den [„refresh“-Vorgang](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh) ausgelöst. Es handelt sich um einen asynchronen *POST*-Vorgang, mit dem sichergestellt wird, dass der Tresor die neueste Liste aller nicht geschützten virtuellen Computer im aktuellen Abonnement abruft und „zwischenspeichert“. Wenn der virtuelle Computer „zwischengespeichert“ wurde, kann in Recovery Services auf ihn zugegriffen werden, um ihn zu schützen.
+Zunächst muss der Tresor den virtuellen Azure-Computer ermitteln können. Dies wird über den [„refresh“-Vorgang](/rest/api/backup/protectioncontainers/refresh) ausgelöst. Es handelt sich um einen asynchronen *POST*-Vorgang, mit dem sichergestellt wird, dass der Tresor die neueste Liste aller nicht geschützten virtuellen Computer im aktuellen Abonnement abruft und „zwischenspeichert“. Wenn der virtuelle Computer „zwischengespeichert“ wurde, kann in Recovery Services auf ihn zugegriffen werden, um ihn zu schützen.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -37,7 +37,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Antworten
 
-Der „refresh“-Vorgang ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Der „refresh“-Vorgang ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
@@ -92,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Auswählen des entsprechenden virtuellen Azure-Computers
 
- Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-1) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer identifiziert.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
+ Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](/rest/api/backup/backupprotectableitems/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-1) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer identifiziert.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
 
 Dieser Vorgang ist ein *GET*-Vorgang.
 
@@ -106,7 +106,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Es ist kein zusätzlicher 
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
+|200 – OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
 #### <a name="example-responses"></a><a name="example-responses-1"></a>Beispielantworten
 
@@ -162,7 +162,7 @@ Im Beispiel ergeben die Werte oben Folgendes:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Aktivieren des Schutzes für den virtuellen Azure-Computer
 
-Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten wurde „DefaultPolicy“ ausgewählt.
+Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten wurde „DefaultPolicy“ ausgewählt.
 
 Beim Aktivieren des Schutzes handelt es sich um einen asynchronen *PUT*-Vorgang, mit dem ein „geschütztes Element“ erstellt wird.
 
@@ -184,7 +184,7 @@ Zum Erstellen eines geschützten Elements werden die folgenden Komponenten des A
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem-Ressourceneigenschaften         |
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Erstellen eines geschützten Elements](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Erstellen eines geschützten Elements](/rest/api/backup/protecteditems/createorupdate#request-body).
 
 ##### <a name="example-request-body"></a>Beispiel für Anforderungstext
 
@@ -204,13 +204,13 @@ Bei `{sourceResourceId}` handelt es sich um die oben genannte `{virtualMachineId
 
 #### <a name="responses"></a>Antworten
 
-Die Erstellung eines geschützten Elements ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Die Erstellung eines geschützten Elements ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
+|200 – OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
 
 ##### <a name="example-responses"></a>Beispielantworten
@@ -296,9 +296,9 @@ Zum Auslösen einer bedarfsgesteuerten Sicherung werden die folgenden Komponente
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-Eigenschaften         |
+|properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-Eigenschaften         |
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen von Sicherungen für geschützte Elemente](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen von Sicherungen für geschützte Elemente](/rest/api/backup/backups/trigger#request-body).
 
 #### <a name="example-request-body"></a>Beispiel für Anforderungstext
 
@@ -315,7 +315,7 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer S
 
 ### <a name="responses"></a>Antworten
 
-Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
@@ -419,7 +419,7 @@ Die Antwort erfolgt im gleichen Format wie beim [Auslösen einer bedarfsgesteuer
 
 ### <a name="stop-protection-and-delete-data"></a>Beenden des Schutzes und Löschen der Daten
 
-Um den Schutz für einen geschützten virtuellen Computer zu entfernen und auch die Sicherungsdaten zu löschen, führen Sie wie [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/delete) beschrieben einen Löschvorgang durch.
+Um den Schutz für einen geschützten virtuellen Computer zu entfernen und auch die Sicherungsdaten zu löschen, führen Sie wie [hier](/rest/api/backup/protecteditems/delete) beschrieben einen Löschvorgang durch.
 
 Das Beenden des Schutzes und das Löschen der Daten ist ein *DELETE*-Vorgang.
 
@@ -435,7 +435,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 #### <a name="responses"></a><a name="responses-2"></a>Antworten
 
-Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „204 (NoContent)“, wenn dieser Vorgang abgeschlossen ist.
 

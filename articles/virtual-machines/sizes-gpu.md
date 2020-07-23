@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bbd81730ea822381f1d0f0e15011fb4ed0c29e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735913"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509310"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Für GPU optimierte VM-Größen
 
@@ -31,11 +31,11 @@ GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einze
 
 Um die GPU-Funktionen von Azure-VMs der N-Serie nutzen zu können, müssen NVIDIA- oder AMD-GPU-Treiber installiert sein.
 
-- Bei VMs mit NVIDIA-GPUs werden mit der [NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows) die entsprechenden NVIDIA-CUDA- oder -GRID-Treiber installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows). Allgemeine Informationen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](/azure/virtual-machines/extensions/overview).
+- Bei VMs mit NVIDIA-GPUs werden mit der [NVIDIA-GPU-Treibererweiterung](./extensions/hpccompute-gpu-windows.md) die entsprechenden NVIDIA-CUDA- oder -GRID-Treiber installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](./extensions/hpccompute-gpu-windows.md). Allgemeine Informationen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](./extensions/overview.md).
 
-   Alternativ dazu können Sie NVIDIA-GPU-Treiber manuell installieren. Informationen zu unterstützten Betriebssystemen, Treibern sowie Installations- und Überprüfungsschritten finden Sie unter [Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Windows](/azure/virtual-machines/windows/n-series-driver-setup) bzw. [Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux](/azure/virtual-machines/linux/n-series-driver-setup).
+   Alternativ dazu können Sie NVIDIA-GPU-Treiber manuell installieren. Informationen zu unterstützten Betriebssystemen, Treibern sowie Installations- und Überprüfungsschritten finden Sie unter [Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Windows](./windows/n-series-driver-setup.md) bzw. [Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux](./linux/n-series-driver-setup.md).
 
-- Informationen zu unterstützten Betriebssystemen, Treibern sowie Installations- und Überprüfungsschritten zu VMs mit AMD-GPUs finden Sie unter [Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup).
+- Informationen zu unterstützten Betriebssystemen, Treibern sowie Installations- und Überprüfungsschritten zu VMs mit AMD-GPUs finden Sie unter [Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows](./windows/n-series-amd-driver-setup.md).
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 

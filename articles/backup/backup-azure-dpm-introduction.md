@@ -3,12 +3,12 @@ title: Vorbereiten des DPM-Servers zum Sichern von Workloads
 description: In diesem Artikel erfahren Sie, wie Sie System Center Data Protection Manager-Sicherungen (DPM) in Azure mithilfe des Azure Backup-Diensts vorbereiten.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9891be5eded94c64a6cc256b99510a9c0c673daf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718324"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514168"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -24,7 +24,7 @@ Der Artikel enthält Folgendes:
 
 ## <a name="why-back-up-dpm-to-azure"></a>Gründe für die Sicherung von DPM in Azure
 
-[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) sichert Datei- und Anwendungsdaten. DPM interagiert mit Azure Backup wie folgt:
+[System Center DPM](/system-center/dpm/dpm-overview) sichert Datei- und Anwendungsdaten. DPM interagiert mit Azure Backup wie folgt:
 
 - **Auf einem physischen Server oder lokalen virtuellen Computer ausgeführter DPM:** Sie können Daten zusätzlich zu Sicherungen auf Festplatte und Band in einem Sicherungstresor in Azure sichern.
 - **Auf einem virtuellen Azure-Computer ausgeführter DPM:** Sie können von System Center 2012 R2 mit Update 3 oder höher DPM auf einem virtuellen Azure-Computer bereitstellen. Sie können Daten auf mit dem virtuellen Computer verbundenen Azure-Datenträgern sichern oder die Daten mit Azure Backup in einem Sicherungstresor sichern.
@@ -43,12 +43,12 @@ DPM auf einem physischen Server | System Center 2012 SP1 oder höher, System Cen
 DPM auf einem virtuellen Hyper-V-Computer | System Center 2012 SP1 oder höher, System Center 2012 R2.
 DPM auf einem virtuellen VMware-Computer | System Center 2012 R2 mit Updaterollup 5 oder höher.
 Komponenten | Auf dem DPM-Server müssen die Komponenten Windows PowerShell und .NET Framework 4.5 installiert sein.
-Unterstützte Apps | [Erfahren Sie](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix), was DPM sichern kann.
+Unterstützte Apps | [Erfahren Sie](/system-center/dpm/dpm-protection-matrix), was DPM sichern kann.
 Unterstützte Dateitypen | Diese Dateitypen können mit Azure Backup gesichert werden: Verschlüsselt (nur vollständige Sicherungen), komprimiert (inkrementelle Sicherungen unterstützt), platzsparend (inkrementelle Sicherungen unterstützt), komprimiert und platzsparend (als platzsparend behandelt).
 Nicht unterstützte Dateitypen | Server auf Dateisystemen, bei denen die Groß-/Kleinschreibung beachtet werden muss, feste Links (übersprungen), Analysepunkte (übersprungen), verschlüsselt und komprimiert (übersprungen), verschlüsselt und platzsparend (übersprungen), komprimierter Stream, Analysestream.
 Lokaler Speicher | Jeder Computer, den Sie sichern möchten, muss mindestens 5 % der zu sichernden Datengröße als freien lokalen Speicher aufweisen. Beispielsweise erfordert das Sichern von 100GB an Daten mindestens 5GB freien Speicherplatz im Scratchverzeichnis.
 Tresorspeicher | Es gibt keine Beschränkung der Datenmenge, die Sie in einem Azure Backup-Tresor sichern, aber die Größe einer Datenquelle (beispielsweise ein virtueller Computer oder eine Datenbank) darf 54.400 GB nicht überschreiten.
-Azure ExpressRoute | Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Die Sicherung über privates Peering wird nicht unterstützt.<br/><br/> **Bei öffentlichem Peering**: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Mit Microsoft-Peering**: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:<br/><br/>– Azure Active Directory (12076:5060)<br/><br/>– Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>– Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).<br/><br/>**Hinweis**: Öffentliches Peering gilt für neue Leitungen als veraltet.
+Azure ExpressRoute | Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Die Sicherung über privates Peering wird nicht unterstützt.<br/><br/> **Bei öffentlichem Peering**: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Mit Microsoft-Peering**: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:<br/><br/>– Azure Active Directory (12076:5060)<br/><br/>– Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>– Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md).<br/><br/>**Hinweis**: Öffentliches Peering gilt für neue Leitungen als veraltet.
 Azure Backup-Agent | Wenn DPM in System Center 2012 SP1 ausgeführt wird, installieren Sie mindestens Updaterollup 2 für DPM SP1. Dies ist für die Installation des Agents erforderlich.<br/><br/> In diesem Artikel wird beschrieben, wie Sie die neueste Version des Azure Backup-Agents, auch als MARS-Agent (Microsoft Azure Recovery Service) bezeichnet, bereitstellen. Wenn Sie eine frühere Version bereitgestellt haben, aktualisieren Sie sie auf die neueste Version, um sicherzustellen, dass die Sicherung wie erwartet funktioniert.
 
 Vor dem Beginn benötigen Sie ein Azure-Konto mit aktiviertem Azure Backup-Feature. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Erfahren Sie mehr über [Preisgestaltung von Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
@@ -61,7 +61,7 @@ Sie haben die Wahl zwischen georedundantem Speicher und lokal redundantem Speich
 
 - Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher.
 - Behalten Sie den georedundanten Speicher bei, wenn der Tresor Ihre primäre Sicherung ist. Befolgen Sie die unten aufgeführten Schritte, um einen lokal redundanten Speicher zu konfigurieren, wenn Sie eine günstigere und weniger langfristige Option wünschen.
-- Erfahren Sie etwas über [Azure Storage](../storage/common/storage-redundancy.md) und die Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher.
+- Erfahren Sie etwas über [Azure Storage](../storage/common/storage-redundancy.md) und die Optionen für [georedundanten](../storage/common/storage-redundancy.md) und [lokal redundanten](../storage/common/storage-redundancy.md) Speicher.
 - Ändern Sie die Speichereinstellungen vor der ersten Sicherung. Wenn Sie ein Element bereits gesichert haben, beenden Sie die Sicherung im Tresor, bevor Sie Speichereinstellungen ändern.
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
@@ -165,7 +165,7 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
 
 7. Klicken Sie auf **Registrieren**, um den DPM-Server im Tresor zu registrieren.
 
-Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen. Zum Sichern von Workloads in Azure müssen Sie die Schutzgruppe in der DPM-Verwaltungskonsole konfigurieren. [Erfahren Sie](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019), wie Sie Schutzgruppen bereitstellen.
+Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen. Zum Sichern von Workloads in Azure müssen Sie die Schutzgruppe in der DPM-Verwaltungskonsole konfigurieren. [Erfahren Sie](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019), wie Sie Schutzgruppen bereitstellen.
 
 ## <a name="troubleshoot-vault-credentials"></a>Problembehandlung von Tresoranmeldeinformationen
 

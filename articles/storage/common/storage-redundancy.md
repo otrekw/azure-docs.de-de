@@ -10,12 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213991"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518503"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -62,8 +62,8 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 |    Speicherkontotyp    |    Unterstützte Regionen    |    Unterstützte Dienste    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Universell v2<sup>1</sup>    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> Südafrika, Norden<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2    |    Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Asien, Südosten<br /> Europa, Westen<br /> USA, Osten    |    Nur Blockblobs    |
-|    FileStorage    | Asien, Südosten<br /> Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
+|    BlockBlobStorage<sup>1</sup>    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten    |    Nur Blockblobs    |
+|    FileStorage    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
 
 <sup>1</sup> Die Archivspeicherebene wird derzeit nicht für ZRS-Konten unterstützt.<br />
 <sup>2</sup> Speicherkonten, die verwaltete Azure-Datenträger für virtuelle Computer enthalten, verwenden immer LRS. Für nicht verwaltete Azure-Datenträger sollte ebenfalls LRS verwendet werden. Es ist möglich, ein Speicherkonto für nicht verwaltete Azure-Datenträger zu erstellen, das GRS verwendet. Dies wird jedoch aufgrund von potenziellen Konsistenzproblemen mit der asynchronen Georeplikation nicht empfohlen. Weder verwaltete noch nicht verwaltete Datenträger unterstützen ZRS oder GZRS. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).

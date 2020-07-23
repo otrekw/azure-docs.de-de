@@ -3,12 +3,12 @@ title: 'Ausgleichen der Partitionsauslastung über mehrere Instanzen hinweg: Azu
 description: Beschreibt, wie Sie die Partitionsauslastung über mehrere Instanzen Ihrer Anwendung hinweg mithilfe eines Ereignisprozessors und des Azure Event Hubs SDK ausgleichen können.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff68408be15d8160ea7ecd878a05441d82700f99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314991"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512315"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg
 Um die Ereignisverarbeitungsanwendung zu skalieren, können Sie mehrere Instanzen der Anwendung ausführen und die Auslastung zwischen diesen untereinander ausgleichen. In älteren Versionen konnte [EventProcessorHost](event-hubs-event-processor-host.md) die Last zwischen mehreren Instanzen Ihres Programms und Prüfpunktereignissen bei deren Empfang ausgleichen. In den neueren Versionen (5.0 oder höher) ermöglichen **EventProcessorClient** (.NET und Java) oder **EventHubConsumerClient** (Python und JavaScript) die gleiche Funktionalität. Das Entwicklungsmodell wird durch die Verwendung von-Ereignissen vereinfacht. Sie abonnieren die Ereignisse, an denen Sie interessiert sind, indem Sie einen Ereignishandler registrieren.
@@ -16,7 +16,7 @@ Um die Ereignisverarbeitungsanwendung zu skalieren, können Sie mehrere Instanze
 In diesem Artikel wird ein Beispielszenario für die Verwendung mehrerer Instanzen zum Lesen von Ereignissen aus einem Event Hub beschrieben. Anschließend werden Details zu den Funktionen des Ereignisprozessorclients vorgestellt, mit denen Sie Ereignisse von mehreren Partitionen gleichzeitig empfangen und einen Lastenausgleich mit anderen Consumern ausführen können, die denselben Event Hub und dieselbe Consumergruppe verwenden.
 
 > [!NOTE]
-> Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](https://msdn.microsoft.com/library/dn568101.aspx) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
+> Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](/previous-versions/msp-n-p/dn568101(v=pandp.10)) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
 
 ## <a name="example-scenario"></a>Beispielszenario
 
@@ -75,7 +75,7 @@ Wenn ein Ereignisprozessor die Verbindung mit einer Partition trennt, kann eine 
 Wenn der Prüfpunkt ausgeführt wird, um ein Ereignis als verarbeitet zu markieren, wird ein Eintrag im Prüfpunktspeicher mit dem Offset und der Sequenznummer des Ereignisses hinzugefügt oder aktualisiert. Benutzer sollten die Häufigkeit festlegen, mit der der Prüfpunkt aktualisiert wird. Das Aktualisieren nach jedem erfolgreich verarbeiteten Ereignis kann Auswirkungen auf die Leistung und die Kosten haben, da es einen Schreibvorgang in den zugrunde liegenden Prüfpunktspeicher auslöst. Außerdem ist das Versehen mit Prüfpunkten aller Ereignisse ein Hinweis auf ein Messagingmuster mit Warteschlangen, für das eine Service Bus-Warteschlange möglicherweise besser als ein Event Hub geeignet ist. Das Konzept hinter Event Hubs ist, dass mindestens eine Übermittlung in großem Umfang erfolgt. Indem Sie Ihre Downstreamsysteme idempotent machen, ist es einfach, nach Fehlern oder Neustarts, die dazu führen, dass dieselben Ereignisse mehrmals empfangen werden, eine Wiederherstellung durchzuführen.
 
 > [!NOTE]
-> Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 
+> Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) oder [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)

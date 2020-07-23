@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996209"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523977"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator-Migration von V2 zu V3
 
@@ -116,8 +116,8 @@ Microsoft Translator V3 verwendet standardmäßig eine neuronale maschinelle Üb
 
 Die neuronale Übersetzung mit der Text-API von V3 unterstützt die Verwendung der Standardkategorien (SMT, speech, tech, generalnn) nicht.
 
-| |Endpunkt|    DSGVO-konformer Datenverarbeiter|    Verwendung von Translator Hub|    Verwendung von „Benutzerdefinierter Translator“ (Vorschau)|
-|:-----|:-----|:-----|:-----|:-----|
+| Version | Endpunkt | DSGVO-konformer Datenverarbeiter | Verwendung von Translator Hub | Verwendung von „Benutzerdefinierter Translator“ (Vorschau) |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
 |Translator-Version 2|    api.microsofttranslator.com|    Nein    |Ja    |Nein|
 |Translator-Version 3|    api.cognitive.microsofttranslator.com|    Ja|    Nein|    Ja|
 

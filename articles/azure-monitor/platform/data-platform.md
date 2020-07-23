@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457262"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515528"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -49,7 +49,7 @@ Protokolle in Azure Monitor werden in einem Log Analytics-Arbeitsbereich basiere
 > Es ist wichtig, zwischen Azure Monitor-Protokollen und Quellen von Protokolldaten in Azure zu unterscheiden. Beispielsweise werden Ereignisse auf Abonnementebene in Azure in ein [Aktivitätsprotokoll](platform-logs-overview.md) geschrieben, das Sie über das Azure Monitor-Menü anzeigen können. Die meisten Ressourcen schreiben Betriebsinformationen in ein [Ressourcenprotokoll](platform-logs-overview.md), das Sie an verschiedene Speicherorte weiterleiten können. Azure Monitor-Protokolle ist eine Protokolldatenplattform, die Aktivitätsprotokolle und Ressourcenprotokolle zusammen mit anderen Überwachungsdaten erfasst, um umfassende Analysen für die gesamte Gruppe von Ressourcen zu ermöglichen.
 
 
- Sie können mit [Log Analytics](../log-query/portals.md) im Azure-Portal interaktiv mit [Protokollabfragen](../log-query/log-query-overview.md) arbeiten oder die Ergebnisse einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzufügen. Sie können auch [Protokollwarnungen](alerts-log.md) erstellen, die eine Warnung basierend auf den Ergebnissen einer geplanten Abfrage auslösen.
+ Sie können mit [Log Analytics](../log-query/log-query-overview.md) im Azure-Portal interaktiv mit [Protokollabfragen](../log-query/log-query-overview.md) arbeiten oder die Ergebnisse einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzufügen. Sie können auch [Protokollwarnungen](alerts-log.md) erstellen, die eine Warnung basierend auf den Ergebnissen einer geplanten Abfrage auslösen.
 
 Weitere Informationen zu Azure Monitor-Protokollen, einschließlich ihrer Datenquellen, finden Sie unter [Protokolle in Azure Monitor](data-platform-logs.md).
 
@@ -81,7 +81,7 @@ Eine Liste der verschiedenen Datenquellen, die den jeweiligen Typ ausfüllen, fi
 
 
 ## <a name="stream-data-to-external-systems"></a>Streamen von Daten zu externen Systemen
-Über die Verwendung der Tools in Azure für die Analyse von Überwachungsdaten hinaus besteht bei Ihnen möglicherweise die Anforderung, diese auch an ein externes Tool wie ein SIEM-Produkt (Security Information and Event Management) weiterzuleiten. Diese Weiterleitung erfolgt normalerweise mithilfe von [Azure Event Hubs](/azure/event-hubs/) direkt von den überwachten Ressourcen aus. Einige Datenquellen können dazu konfiguriert werden, Daten direkt an einen Event Hub zu senden, während Sie einen anderen Prozess wie z.B. eine Logik-App verwenden können, um die erforderlichen Daten abzurufen. Ausführlichere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](stream-monitoring-data-event-hubs.md).
+Über die Verwendung der Tools in Azure für die Analyse von Überwachungsdaten hinaus besteht bei Ihnen möglicherweise die Anforderung, diese auch an ein externes Tool wie ein SIEM-Produkt (Security Information and Event Management) weiterzuleiten. Diese Weiterleitung erfolgt normalerweise mithilfe von [Azure Event Hubs](../../event-hubs/index.yml) direkt von den überwachten Ressourcen aus. Einige Datenquellen können dazu konfiguriert werden, Daten direkt an einen Event Hub zu senden, während Sie einen anderen Prozess wie z.B. eine Logik-App verwenden können, um die erforderlichen Daten abzurufen. Ausführlichere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](stream-monitoring-data-event-hubs.md).
 
 
 

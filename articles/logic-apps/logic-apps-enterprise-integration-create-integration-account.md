@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a0d3c344d19d0831dd8525ddf3311e0ce7cd682
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691757"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520816"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -39,7 +39,7 @@ In diesem Thema wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 ## <a name="create-integration-account"></a>Integrationskonto erstellen
 
-Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritte in diesem Abschnitt ausführen. Alternativ dazu können Sie auch [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create) verwenden.
+Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritte in diesem Abschnitt ausführen. Alternativ dazu können Sie auch [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount) oder die [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-create) verwenden.
 
 1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -132,13 +132,13 @@ Um diese Änderung durchzuführen, können Sie das Azure-Portal verwenden, indem
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-1. [Installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
+1. [Installieren Sie die Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
 
-1. Öffnen Sie die Azure-[**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)-Umgebung im Azure-Portal.
+1. Öffnen Sie die Azure-[**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest)-Umgebung im Azure-Portal.
 
    ![Öffnen von Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. Geben Sie an der Eingabeaufforderung den [Befehl **az resource**](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) ein, und legen Sie `skuName` auf den gewünschten höheren Tarif fest.
+1. Geben Sie an der Eingabeaufforderung den [Befehl **az resource**](/cli/azure/resource?view=azure-cli-latest#az-resource-update) ein, und legen Sie `skuName` auf den gewünschten höheren Tarif fest.
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -154,15 +154,15 @@ Um diese Änderung durchzuführen, können Sie das Azure-Portal verwenden, indem
 
 ### <a name="downgrade-pricing-tier"></a>Tarifdowngrade
 
-Verwenden Sie für diese Änderung die [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Verwenden Sie für diese Änderung die [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
-1. [Installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
+1. [Installieren Sie die Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
 
-1. Öffnen Sie die Azure-[**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)-Umgebung im Azure-Portal.
+1. Öffnen Sie die Azure-[**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest)-Umgebung im Azure-Portal.
 
    ![Öffnen von Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. Geben Sie an der Eingabeaufforderung den [Befehl **az resource**](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) ein, und legen Sie `skuName` auf den gewünschten niedrigeren Tarif fest.
+1. Geben Sie an der Eingabeaufforderung den [Befehl **az resource**](/cli/azure/resource?view=azure-cli-latest#az-resource-update) ein, und legen Sie `skuName` auf den gewünschten niedrigeren Tarif fest.
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -222,7 +222,7 @@ Wenn Sie Ihre Logik-App mit einem anderen Integrationskonto verknüpfen oder kei
 
 Sie können Ihr Integrationskonto in eine andere Azure-Ressourcengruppe bzw. ein anderes Azure-Abonnement verschieben. Wenn Sie Ressourcen verschieben, erstellt Azure neue Ressourcen-IDs. Stellen Sie daher sicher, dass Sie die neuen IDs verwenden, und aktualisieren Sie alle Skripts und Tools, die den verschobenen Ressourcen zugeordnet sind. Wenn Sie das Abonnement ändern möchten, müssen Sie auch eine vorhandene oder neue Ressourcengruppe angeben.
 
-Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritte in diesem Abschnitt ausführen. Alternativ dazu können Sie auch die [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-move) verwenden.
+Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritte in diesem Abschnitt ausführen. Alternativ dazu können Sie auch die [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-move) verwenden.
 
 1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -254,7 +254,7 @@ Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritt
 
 ## <a name="delete-integration-account"></a>Löschen eines Integrationskontos
 
-Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritte in diesem Abschnitt ausführen. Alternativ dazu können Sie auch die [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete) oder [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) verwenden.
+Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritte in diesem Abschnitt ausführen. Alternativ dazu können Sie auch die [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-delete) oder [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) verwenden.
 
 1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
 

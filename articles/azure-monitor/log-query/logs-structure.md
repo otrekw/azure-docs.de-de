@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196289"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516191"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktur von Azure Monitor-Protokollen
 Die Möglichkeit, mit einer [Protokollabfrage](log-query-overview.md) schnell Einblicke in Ihre Daten zu gewinnen, ist ein leistungsstarkes Feature von Azure Monitor. Sie sollten mit den grundlegenden Konzepten vertraut sein, um effiziente und nützliche Abfragen zu erstellen. Dazu gehört beispielsweise, dass Sie wissen, wo sich die gewünschten Daten befinden und wie diese strukturiert sind. Dieser Artikel enthält die grundlegenden Konzepte, die Sie für den Einstieg benötigen.
@@ -29,7 +29,7 @@ Die folgende Abbildung zeigt Beispiele für Datenquellen, die in verschiedene Ta
 ![Tabellen](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-Alle von Azure Monitor-Protokollen erfasste Daten (außer Application Insights) werden in einem [Log Analytics-Arbeitsbereich](../platform/manage-access.md) gespeichert. Sie können je nach Ihren Anforderungen einen oder mehrere Arbeitsbereiche erstellen. [Datenquellen](../platform/data-sources.md) wie Aktivitäts- und Ressourcenprotokolle aus Azure-Ressourcen, Agents auf virtuellen Computern und Daten aus Insights- und Überwachungslösungen schreiben Daten in einen oder mehrere Arbeitsbereiche, die Sie als Teil des Onboardings konfigurieren. Andere Dienste wie [Azure Security Center](/azure/security-center/) und [Azure Sentinel](/azure/sentinel/) verwenden ebenfalls einen Log Analytics-Arbeitsbereich zum Speichern von Daten, sodass dieser mithilfe von Protokollabfragen und Überwachungsdaten aus anderen Quellen analysiert werden kann.
+Alle von Azure Monitor-Protokollen erfasste Daten (außer Application Insights) werden in einem [Log Analytics-Arbeitsbereich](../platform/manage-access.md) gespeichert. Sie können je nach Ihren Anforderungen einen oder mehrere Arbeitsbereiche erstellen. [Datenquellen](../platform/data-sources.md) wie Aktivitäts- und Ressourcenprotokolle aus Azure-Ressourcen, Agents auf virtuellen Computern und Daten aus Insights- und Überwachungslösungen schreiben Daten in einen oder mehrere Arbeitsbereiche, die Sie als Teil des Onboardings konfigurieren. Andere Dienste wie [Azure Security Center](../../security-center/index.yml) und [Azure Sentinel](../../sentinel/index.yml) verwenden ebenfalls einen Log Analytics-Arbeitsbereich zum Speichern von Daten, sodass dieser mithilfe von Protokollabfragen und Überwachungsdaten aus anderen Quellen analysiert werden kann.
 
 Verschiedene Arten von Daten werden in unterschiedlichen Tabellen im Arbeitsbereich gespeichert, und jede Tabelle verfügt über mehrere eindeutige Eigenschaften. Beim Erstellen eines Arbeitsbereichs werden diesem mehrere Standardtabellen sowie neue Tabellen für verschiedene Datenquellen, Lösungen und Dienste hinzugefügt, da diese integriert sind. Sie können mit der [Datensammler-API](../platform/data-collector-api.md) auch benutzerdefinierte Tabellen erstellen.
 
@@ -45,7 +45,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-Weitere Details zu den Tabellen, die erstellt werden, finden Sie in der Dokumentation für jede Datenquelle. Die Beispiele enthalten Artikel zu [ Agent-Datenquellen](../platform/agent-data-sources.md), [Ressourcenprotokollen](../platform/diagnostic-logs-schema.md) und [Überwachungslösungen](../insights/solutions-inventory.md).
+Weitere Details zu den Tabellen, die erstellt werden, finden Sie in der Dokumentation für jede Datenquelle. Die Beispiele enthalten Artikel zu [ Agent-Datenquellen](../platform/agent-data-sources.md), [Ressourcenprotokollen](../platform/resource-logs-schema.md) und [Überwachungslösungen](../monitor-reference.md).
 
 ### <a name="workspace-permissions"></a>Arbeitsbereichberechtigungen
 Weitere Informationen zur Zugriffssteuerungsstrategie und Empfehlungen für das Gewähren von Zugriff auf Daten in einem Arbeitsbereich finden Sie unter [Entwerfen einer Azure Monitor-Protokollbereitstellung](../platform/design-logs-deployment.md). Zusätzlich zum Erteilen des Zugriffs auf den Arbeitsbereich selbst können Sie mithilfe von [RBAC auf Tabellenebene](../platform/manage-access.md#table-level-rbac) den Zugriff auf einzelne Tabellen beschränken.
@@ -88,5 +88,5 @@ Während jede Tabelle in Azure Monitor-Protokollen über ein eigenes Schema verf
 | _BilledSize   |            | Gibt die Größe der in Rechnung zu stellenden Daten in Bytes an. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über die Verwendung von [Log Analytics zum Erstellen und Bearbeiten von Protokollsuchen](../log-query/portals.md).
+- Erfahren Sie mehr über die Verwendung von [Log Analytics zum Erstellen und Bearbeiten von Protokollsuchen](./log-query-overview.md).
 - Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](../log-query/get-started-queries.md) mit der neuen Abfragesprache an.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: cce74358a206c7103d537ba80c62d6561606b818
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242031"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515511"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-Datenquellen in Azure Monitor
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können. Wenn der Log Analytics-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent. Der Agent sendet die Nachricht dann an Azure Monitor, wo ein entsprechender Datensatz erstellt wird.  
@@ -90,7 +90,6 @@ Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfig
 user.error    @127.0.0.1:25224
 ```
 
-
 #### <a name="syslog-ng"></a>syslog-ng
 Die Konfigurationsdatei für „syslog-ng“ befindet sich am Speicherort **/etc/syslog-ng/syslog-ng.conf**.  Ihr Standardinhalt wird unten aufgeführt. So werden Syslog-Nachrichten gesammelt, die der lokale Agent für alle Einrichtungen und alle Schweregrade gesendet hat.   
 
@@ -163,17 +162,16 @@ Sie können die Portnummer ändern, indem Sie zwei Konfigurationsdateien erstell
 
 * Die FluentD-Konfigurationsdatei muss eine neue Datei im Verzeichnis `/etc/opt/microsoft/omsagent/conf/omsagent.d` sein. Ersetzen Sie dann den Wert im Eintrag **Port** mit Ihrer benutzerdefinierten Portnummer.
 
-    ```config
+    ```xml
     <source>
-      type syslog
-      port %SYSLOG_PORT%
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
+        type syslog
+        port %SYSLOG_PORT%
+        bind 127.0.0.1
+        protocol_type udp
+        tag oms.syslog
     </source>
     <filter oms.syslog.**>
-      type filter_syslog
-    </filter>
+        type filter_syslog
     ```
 
 * Für „rsyslog“ müssen Sie eine neue Konfigurationsdatei im Verzeichnis `/etc/rsyslog.d/` erstellen. Ersetzen Sie dann den Wert „%SYSLOG_PORT“ mit Ihrer benutzerdefinierten Portnummer.  

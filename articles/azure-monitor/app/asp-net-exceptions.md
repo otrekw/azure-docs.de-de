@@ -3,12 +3,12 @@ title: Diagnostizieren von Fehlern und Ausnahmen mit Azure Application Insights
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892341"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517211"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
 Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-monitor/app/app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
@@ -19,7 +19,7 @@ Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-mo
   * Azure-VMs und Azure-VM-Skalierungsgruppen – in IIS gehostete Apps: Fügen Sie die [Erweiterung zur Anwendungsüberwachung](../../azure-monitor/app/azure-vm-vmss-apps.md) hinzu.
   * Installieren Sie das [Application Insights SDK](../../azure-monitor/app/asp-net.md) in Ihrer App.
   * IIS-Webserver: Führen Sie den [Application Insights-Agent](../../azure-monitor/app/monitor-performance-live-website-now.md) aus, oder
-  * Java-Web-Apps: Aktivieren Sie den [Java-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+  * Java-Web-Apps: Aktivieren Sie den [Java-Agent](./java-in-process-agent.md).
 * Installieren Sie den [JavaScript-Codeausschnitt](../../azure-monitor/app/javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
 * In einigen Anwendungsframeworks oder bei bestimmten Einstellungen müssen Sie einige zusätzliche Schritte ausführen, um weitere Ausnahmen zu erfassen:
   * [Webformulare](#web-forms)
@@ -28,7 +28,7 @@ Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-mo
   * [Web-API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
-  Dieser Artikel konzentriert sich speziell auf .NET Framework-Apps aus Codebeispielperspektive. Einige der Methoden, die für .NET Framework eingesetzt werden, sind im .NET Core SDK veraltet. Wenn Sie eine .NET Core-App besitzen, nutzen Sie die Informationen in der [.NET Core SDK-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
+  Dieser Artikel konzentriert sich speziell auf .NET Framework-Apps aus Codebeispielperspektive. Einige der Methoden, die für .NET Framework eingesetzt werden, sind im .NET Core SDK veraltet. Wenn Sie eine .NET Core-App besitzen, nutzen Sie die Informationen in der [.NET Core SDK-Dokumentation](./asp-net-core.md).
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostizieren von Ausnahmen mithilfe von Visual Studio
 Öffnen Sie für das Debuggen die App-Projektmappe in Visual Studio.
@@ -214,7 +214,7 @@ Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender
 ### <a name="prior-versions-support"></a>Unterstützung von früheren Versionen
 Wenn Sie MVC 4 (und früher) des Application Insights Web SDK 2.5 (und früher) verwenden, sind die folgenden Beispiele zum Nachverfolgen von Ausnahmen hilfreich.
 
-Wenn die [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx)-Konfiguration `Off` lautet, stehen für das zu erfassende [HTTP-Modul](https://msdn.microsoft.com/library/ms178468.aspx) Ausnahmen zur Verfügung. Lautet sie allerdings `RemoteOnly` (Standardeinstellung) oder `On`, wird die Ausnahme gelöscht und steht für die automatische Erfassung durch Application Insights nicht zur Verfügung. Diesen Umstand können Sie beheben, indem Sie die [System.Web.Mvc.HandleErrorAttribute-Klasse](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx) außer Kraft setzen und die außer Kraft gesetzte Klasse wie unten gezeigt für die verschiedenen MVC-Versionen anwenden ([GitHub-Quelle](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Wenn die [CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100))-Konfiguration `Off` lautet, stehen für das zu erfassende [HTTP-Modul](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) Ausnahmen zur Verfügung. Lautet sie allerdings `RemoteOnly` (Standardeinstellung) oder `On`, wird die Ausnahme gelöscht und steht für die automatische Erfassung durch Application Insights nicht zur Verfügung. Diesen Umstand können Sie beheben, indem Sie die [System.Web.Mvc.HandleErrorAttribute-Klasse](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2) außer Kraft setzen und die außer Kraft gesetzte Klasse wie unten gezeigt für die verschiedenen MVC-Versionen anwenden ([GitHub-Quelle](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;

@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273204"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525261"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
 
-Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung von SAP ASE in Azure IaaS. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) zu lesen. In diesem Dokument wird SAP ASE behandelt, das unter Linux und unter Windows-Betriebssystemen ausgeführt wird. Das unterstützte Minimalrelease in Azure ist SAP ASE 16.0.02 (Release 16 Support Pack 2). Es wird empfohlen, die neueste Version von SAP und die neueste Patchebene bereitzustellen.  Empfohlen wird mindestens SAP ASE 16.0.03.07 (Release 16 Support Pack 3 Patch Level 7).  Die neueste Version von SAP ist zu finden in [Targeted ASE 16.0 Release Schedule and CR list Information](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
+Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung von SAP ASE in Azure IaaS. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](./get-started.md) zu lesen. In diesem Dokument wird SAP ASE behandelt, das unter Linux und unter Windows-Betriebssystemen ausgeführt wird. Das unterstützte Minimalrelease in Azure ist SAP ASE 16.0.02 (Release 16 Support Pack 2). Es wird empfohlen, die neueste Version von SAP und die neueste Patchebene bereitzustellen.  Empfohlen wird mindestens SAP ASE 16.0.03.07 (Release 16 Support Pack 3 Patch Level 7).  Die neueste Version von SAP ist zu finden in [Targeted ASE 16.0 Release Schedule and CR list Information](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
 
 Zusätzliche Informationen zum Release-Support bei SAP-Anwendungen oder zum Speicherort für Installationsmedien sind – über die SAP-Produktverfügbarkeitsmatrix hinaus – an folgenden Orten zu finden:
 
@@ -58,7 +59,7 @@ Die Seitengröße ist normalerweise 2.048 KB. Einzelheiten dazu finden Sie im A
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Empfehlungen zur VM- und Datenträgerstruktur für SAP ASE-Bereitstellungen
 
-SAP ASE für SAP NetWeaver-Anwendungen wird auf allen VM-Typen unterstützt, die im [SAP-Supporthinweis Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgelistet werden. Zu typischen VM-Typen, die für SAP ASE-Datenbankserver mittlerer Größe verwendet werden, gehört Esv3.  Große Datenbanken mit mehreren Terabyte können VM-Typen der M-Serie nutzen. Die Leistung des Datenträgers beim Schreiben des SAP ASE-Transaktionsprotokolls kann durch Aktivieren der Schreibbeschleunigung für die M-Serie verbessert werden. Aufgrund der Art und Weise, wie SAP ASE Protokoll Schreibvorgänge durchführt, sollte Schreibbeschleunigung mit SAP ASE sorgfältig getestet werden.  Lesen Sie den [SAP-Supporthinweis Nr. 2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator), und erwägen Sie die Ausführung eines Leistungstests.  
+SAP ASE für SAP NetWeaver-Anwendungen wird auf allen VM-Typen unterstützt, die im [SAP-Supporthinweis Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgelistet werden. Zu typischen VM-Typen, die für SAP ASE-Datenbankserver mittlerer Größe verwendet werden, gehört Esv3.  Große Datenbanken mit mehreren Terabyte können VM-Typen der M-Serie nutzen. Die Leistung des Datenträgers beim Schreiben des SAP ASE-Transaktionsprotokolls kann durch Aktivieren der Schreibbeschleunigung für die M-Serie verbessert werden. Aufgrund der Art und Weise, wie SAP ASE Protokoll Schreibvorgänge durchführt, sollte Schreibbeschleunigung mit SAP ASE sorgfältig getestet werden.  Lesen Sie den [SAP-Supporthinweis Nr. 2816580](../../windows/how-to-enable-write-accelerator.md), und erwägen Sie die Ausführung eines Leistungstests.  
 Schreibbeschleunigung ist nur für den Transaktionsprotokoll-Datenträger vorgesehen. Der Cache auf Datenträgerebene sollte auf NONE festgelegt werden. Seien Sie nicht überrascht, wenn Azure-Schreibbeschleunigung keine ähnlichen Verbesserungen wie bei anderen DBMS zeigt. Basierend auf der Art und Weise, wie SAP ASE in das Transaktionsprotokoll schreibt, könnte es sein, dass es nur eine geringe bis keine Beschleunigung durch Azure-Schreibbeschleunigung gibt.
 Für Daten- und Protokollgeräte werden separate Datenträger empfohlen.  Die Systemdatenbanken „sybsecurity“ und `saptools` erfordern keine dedizierten Datenträger und können auf den Datenträgern abgelegt werden, die die SAP-Datenbankdaten und Protokollgeräte enthalten. 
 
@@ -70,7 +71,7 @@ SAP ASE schreibt Daten sequenziell in Datenträgerspeichergeräte, sofern sie ni
 Es wird empfohlen, die automatische Datendankerweiterung so zu konfigurieren, wie im Artikel [Configuring Automatic Database Space Expansion in SAP Adaptive Server Enterprise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) (Konfigurieren der automatischen Datenbankspeichererweiterung in SAP Adaptive Server Enterprise) und im [SAP-Supporthinweis Nr. 1815695](https://launchpad.support.sap.com/#/notes/1815695) beschrieben wird. 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Beispielkonfigurationen für SAP ASE auf virtuellen Azure-Computern, Datenträgern und Dateisystemen 
-Die nachstehenden Vorlagen zeigen Beispielkonfigurationen für Linux und Windows. Vergewissern Sie sich vor der Bestätigung des virtuellen Computers und der Datenträgerkonfiguration, dass die Netzwerk- und Speicherbandbreitenkontingente der einzelnen virtuellen Computer ausreichen, um die Geschäftsanforderungen zu erfüllen. Beachten Sie außerdem, dass unterschiedliche Azure-VM-Typen eine unterschiedliche maximale Anzahl von Datenträgern aufweisen, die an den virtuellen Computer angefügt werden können. Beispielsweise hat eine E4s_v3-VM einen Speicher-E/A-Durchsatz mit einem Grenzwert von 48 MB/Sek. Wenn der für die Datenbanksicherungsaktivität erforderliche Speicherdurchsatz mehr als 48 MB/Sek. erfordert, ist ein größerer VM-Typ mit mehr Speicherbandbreitendurchsatz unvermeidlich. Beim Konfigurieren von Azure Storage müssen Sie auch bedenken, dass sich vor allem bei [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance) der Durchsatz und die IOPS pro GB Kapazität ändern. Weitere Informationen zu diesem Thema finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types). Die Kontingente für bestimmte Azure-VM-Typen werden im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/sizes-memory) und den damit verlinkten Artikeln dokumentiert. 
+Die nachstehenden Vorlagen zeigen Beispielkonfigurationen für Linux und Windows. Vergewissern Sie sich vor der Bestätigung des virtuellen Computers und der Datenträgerkonfiguration, dass die Netzwerk- und Speicherbandbreitenkontingente der einzelnen virtuellen Computer ausreichen, um die Geschäftsanforderungen zu erfüllen. Beachten Sie außerdem, dass unterschiedliche Azure-VM-Typen eine unterschiedliche maximale Anzahl von Datenträgern aufweisen, die an den virtuellen Computer angefügt werden können. Beispielsweise hat eine E4s_v3-VM einen Speicher-E/A-Durchsatz mit einem Grenzwert von 48 MB/Sek. Wenn der für die Datenbanksicherungsaktivität erforderliche Speicherdurchsatz mehr als 48 MB/Sek. erfordert, ist ein größerer VM-Typ mit mehr Speicherbandbreitendurchsatz unvermeidlich. Beim Konfigurieren von Azure Storage müssen Sie auch bedenken, dass sich vor allem bei [Azure Storage Premium](../../windows/premium-storage-performance.md) der Durchsatz und die IOPS pro GB Kapazität ändern. Weitere Informationen zu diesem Thema finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](../../windows/disks-types.md). Die Kontingente für bestimmte Azure-VM-Typen werden im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) und den damit verlinkten Artikeln dokumentiert. 
 
 > [!NOTE]
 >  Wenn ein DBMS-System von einem lokalen Standort nach Azure verschoben wird, wird empfohlen, die Überwachung auf dem virtuellen Computer durchzuführen sowie CPU, Arbeitsspeicher, IOPS und den Speicherdurchsatz zu bewerten. Vergleichen Sie die Spitzenwerte, die bei den in den oben erwähnten Artikeln dokumentierten VM-Kontingentgrenzwerten festgestellt wurden.
@@ -212,7 +213,7 @@ Der SAP-Softwarebereitstellungs-Manager (SAP Software Provisioning Manager, SWPM
 - Verwendung von UltraDisk für x-large-Systeme in Betracht ziehen 
 - `saptune` SAP ASE unter dem Linux-Betriebssystem ausführen 
 - Die Datenbank mit Datenbankverschlüsselung sichern – Schlüssel in Azure Key Vault manuell speichern 
-- Die [Checkliste „SAP in Azure“](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) vervollständigen 
+- Die [Checkliste „SAP in Azure“](./sap-deployment-checklist.md) vervollständigen 
 - Protokollsicherung und vollständige Sicherung konfigurieren 
 - HA/DR, Sicherung und Wiederherstellung testen sowie Belastungs- und Volumetests durchführen 
 - Bestätigen, dass die automatische Datenbankerweiterung funktioniert 
@@ -309,5 +310,4 @@ Ein monatlicher Newsletter wird über [SAP-Supporthinweis Nr. 2381575](https://l
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sehen Sie sich den Artikel [Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) an.
-
+Sehen Sie sich den Artikel [Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure](./sap-deployment-checklist.md) an.

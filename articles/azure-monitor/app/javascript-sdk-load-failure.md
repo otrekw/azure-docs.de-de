@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a76ed65ebc1c56232d4fa42c6df20f619fe14ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229532"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517058"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Beheben von Fehlern beim Laden des SDK für JavaScript-Web-Apps
 
@@ -63,7 +63,7 @@ Dasselbe gilt auch für die Verwendung des SDK mit der auf NPM-Paketen basierend
 
 Sie können auch versuchen, das Application Insights SDK mithilfe von [NPM-Paketen](#use-npm-packages-to-embed-the-application-insight-sdk) einzubetten.
 
-Um zeitweilige Ausfälle der Netzwerkverbindung zu minimieren, haben wir Cache-Control-Header für sämtliche CDN-Dateien implementiert. Sobald der Browser des Endbenutzers die aktuelle Version des SDK heruntergeladen hat, muss er es nicht erneut herunterladen, denn der Browser verwendet die zuvor abgerufene Kopie wieder (weitere Informationen finden Sie unter [Funktionsweise der Zwischenspeicherung](https://docs.microsoft.com/azure/cdn/cdn-how-caching-works)). Wenn die Zwischenspeicherprüfung fehlschlägt oder es eine neue Version gibt, muss der Browser Ihres Endbenutzers die aktualisierte Version herunterladen. So kann es sein, dass Sie einen Hintergrundpegel von _Stördatenverkehr_ im Szenario der Ausfallprüfung oder eine vorübergehende Spitze erleben, wenn eine neue Version vorliegt und allgemein verfügbar gemacht (im CDN bereitgestellt) wird.
+Um zeitweilige Ausfälle der Netzwerkverbindung zu minimieren, haben wir Cache-Control-Header für sämtliche CDN-Dateien implementiert. Sobald der Browser des Endbenutzers die aktuelle Version des SDK heruntergeladen hat, muss er es nicht erneut herunterladen, denn der Browser verwendet die zuvor abgerufene Kopie wieder (weitere Informationen finden Sie unter [Funktionsweise der Zwischenspeicherung](../../cdn/cdn-how-caching-works.md)). Wenn die Zwischenspeicherprüfung fehlschlägt oder es eine neue Version gibt, muss der Browser Ihres Endbenutzers die aktualisierte Version herunterladen. So kann es sein, dass Sie einen Hintergrundpegel von _Stördatenverkehr_ im Szenario der Ausfallprüfung oder eine vorübergehende Spitze erleben, wenn eine neue Version vorliegt und allgemein verfügbar gemacht (im CDN bereitgestellt) wird.
  
 ## <a name="application-insights-cdn-outage"></a>Ausfall des Application Insights CDN
 

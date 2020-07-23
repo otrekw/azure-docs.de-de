@@ -3,12 +3,12 @@ title: 'Azure VMware Solution: Anfordern von Hilfe zu Bereitstellungen oder Bere
 description: In diesem Artikel erfahren Sie, wie Sie die Informationen in Ihrer privaten Azure VMware Solution-Cloud (AVS) finden, die für das Erstellen einer Serviceanfrage zu einer AVS-Bereitstellung oder zu AVS-Bereitstellungsfehlern erforderlich sind.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 3032c01d48617347c454d71498571b0e6b789e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514576"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Solution: Anfordern von Hilfe zu Bereitstellungen oder Bereitstellungsfehlern
 
@@ -72,7 +72,7 @@ Fügen Sie die ExpressRoute-ID in das entsprechende Feld in der neuen Supportanf
 
 ## <a name="create-your-support-request"></a>Erstellen einer Supportanfrage
 
-Einen allgemeinen Leitfaden zum Erstellen einer Supportanfrage finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+Einen allgemeinen Leitfaden zum Erstellen einer Supportanfrage finden Sie unter [Erstellen einer Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 Dieser Artikel enthält zusätzliche Anleitungen für das Erstellen einer Supportanfrage zu AVS-Bereitstellungen oder AVS-Bereitstellungsfehlern.
 

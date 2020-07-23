@@ -3,12 +3,12 @@ title: Kontinuierliches Überwachen der DevOps-Releasepipeline mit Azure Pipelin
 description: Dieser Artikel enthält Anweisungen zum schnellen Einrichten der kontinuierlichen Überwachung mit Application Insights.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652763"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517126"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Hinzufügen der kontinuierlichen Überwachung zur Releasepipeline
 
@@ -101,4 +101,4 @@ Sie können das Verhalten von Bereitstellungsgates und andere Releaseschritte de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Pipelines finden Sie in der [Azure Pipelines-Dokumentation](https://docs.microsoft.com/azure/devops/pipelines).
+Weitere Informationen zu Azure Pipelines finden Sie in der [Azure Pipelines-Dokumentation](/azure/devops/pipelines).

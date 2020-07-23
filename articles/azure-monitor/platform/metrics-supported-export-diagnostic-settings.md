@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f0a8fd186862cf95ebdbb2d5bd92d8ff860b3ba1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515477"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken
 
-Azure Monitor stellt [Plattformmetriken](data-platform-metrics.md) standardmäßig ohne Konfiguration bereit. Es gibt verschiedene Methoden für die Interaktion mit Plattformmetriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Eine vollständige Liste der Plattformmetriken, die derzeit mit der konsolidierten Metrikpipeline von Azure Monitor zur Verfügung stehen, finden Sie unter [Unterstützte Metriken](metrics-supported.md). Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung.
+Azure Monitor stellt [Plattformmetriken](data-platform-metrics.md) standardmäßig ohne Konfiguration bereit. Es gibt verschiedene Methoden für die Interaktion mit Plattformmetriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Eine vollständige Liste der Plattformmetriken, die derzeit mit der konsolidierten Metrikpipeline von Azure Monitor zur Verfügung stehen, finden Sie unter [Unterstützte Metriken](metrics-supported.md). Verwenden Sie die [API-Version 2018-01-01](/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung.
 
 Sie können die Plattformmetriken auf eine von zwei Arten aus der Azure Monitor-Pipeline an andere Speicherorte exportieren.
 1. Mit [Diagnoseeinstellungen](diagnostic-settings.md) können Sie Metriken an Log Analytics, Event Hubs oder Azure Storage senden.
-2. Sie können die [REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics/list) verwenden.
+2. Sie können die [REST-API für Metriken](/rest/api/monitor/metrics/list) verwenden.
 
 Aufgrund von Feinheiten im Azure Monitor-Back-End können nicht alle Metriken mithilfe von Diagnoseeinstellungen exportiert werden. In der folgenden Tabelle ist angegeben, welche Metriken mithilfe von Diagnoseeinstellungen exportiert bzw. nicht exportiert werden können.
 

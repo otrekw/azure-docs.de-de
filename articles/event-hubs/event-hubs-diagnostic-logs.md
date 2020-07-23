@@ -3,12 +3,12 @@ title: Einrichten der Diagnoseprotokolle – Azure Event Hubs | Microsoft-Dokume
 description: Erfahren Sie, wie Sie Aktivitäts- und Diagnoseprotokolle für Event Hubs in Azure einrichten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322454"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521937"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
@@ -233,7 +233,7 @@ Die JSON-Zeichenfolge im Benutzerprotokoll für kundenseitig verwaltete Schlüss
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Einführung in Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Einführung in Event Hubs](./event-hubs-about.md)
 - [Event Hubs-Beispiele](sdks.md)
 - Erste Schritte mit Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)

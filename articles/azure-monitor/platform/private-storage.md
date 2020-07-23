@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184496"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515426"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Kundeneigene Speicherkonten für die Protokollerfassung in Azure Monitor
 
-Azure Monitor verwendet Speicherkonten für den Erfassungsprozess einiger Datentypen, beispielsweise bei [benutzerdefinierten Protokollen](data-sources-custom-logs.md) und einigen [Azure-Protokollen](azure-storage-iis-table.md). Während des Erfassungsprozesses werden die Protokolle zuerst an ein Speicherkonto gesendet und später in Log Analytics oder Application Insights erfasst. Wenn Sie während der Erfassung Kontrolle über Ihre Daten benötigen, können Sie Ihre eigenen Speicherkonten anstatt des über den Dienst verwalteten Speichers verwenden. Mit einem eigenen Speicherkonto haben Sie die Kontrolle über Zugriff, Inhalte, Verschlüsselung und Aufbewahrung der Protokolle während der Erfassung. Dies wird als „Bring Your Own Storage“ bzw. BYOS bezeichnet. 
+Azure Monitor verwendet Speicherkonten für den Erfassungsprozess einiger Datentypen, beispielsweise bei [benutzerdefinierten Protokollen](data-sources-custom-logs.md) und einigen [Azure-Protokollen](./diagnostics-extension-logs.md). Während des Erfassungsprozesses werden die Protokolle zuerst an ein Speicherkonto gesendet und später in Log Analytics oder Application Insights erfasst. Wenn Sie während der Erfassung Kontrolle über Ihre Daten benötigen, können Sie Ihre eigenen Speicherkonten anstatt des über den Dienst verwalteten Speichers verwenden. Mit einem eigenen Speicherkonto haben Sie die Kontrolle über Zugriff, Inhalte, Verschlüsselung und Aufbewahrung der Protokolle während der Erfassung. Dies wird als „Bring Your Own Storage“ bzw. BYOS bezeichnet. 
 
 Ein Szenario, das BYOS erfordert, ist die Netzwerkisolation über Private Link-Instanzen. Bei der Verwendung von virtuellen Netzwerken ist die Netzwerkisolation häufig eine Anforderung, und der Zugriff auf das öffentliche Internet ist beschränkt. In solchen Fällen wird der Zugriff auf den Azure Monitor-Dienstspeicher zur Protokollerfassung entweder vollständig blockiert oder als nicht empfohlene Vorgehensweise eingestuft. Stattdessen sollten Protokolle mit einem kundeneigenen Speicherkonto erfasst werden, das sich innerhalb des virtuellen Netzwerks befindet oder auf das problemlos aus diesem Netzwerk zugegriffen werden kann.
 
@@ -23,7 +23,7 @@ Ein weiteres Szenario ist die Verschlüsselung von Protokollen mit kundenseitig 
 
 ## <a name="data-types-supported"></a>Unterstützte Datentypen
 
-Folgende Datentypen können aus einem Speicherkonto erfasst werden. Weitere Informationen zum Erfassen dieser Typen finden Sie unter [Sammeln von Daten aus der Azure-Diagnoseerweiterung in Azure Monitor-Protokollen](azure-storage-iis-table.md).
+Folgende Datentypen können aus einem Speicherkonto erfasst werden. Weitere Informationen zum Erfassen dieser Typen finden Sie unter [Sammeln von Daten aus der Azure-Diagnoseerweiterung in Azure Monitor-Protokollen](./diagnostics-extension-logs.md).
 
 | type | Tabelleninformationen |
 |:-----|:------------------|
@@ -54,7 +54,7 @@ Links können ausschließlich über die REST-API erstellt und entfernt werden. I
 ## <a name="command-line-and-rest-api"></a>Befehlszeile und REST-API
 
 ### <a name="command-line"></a>Befehlszeile
-Um verknüpfte Speicherkonten zu erstellen und zu verwalten, verwenden Sie den Befehl [az monitor log-analytics workspace linked-storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Mit diesem Befehl können Sie Speicherkonten mit einem Arbeitsbereich verknüpfen und die Verknüpfung aufheben und die verknüpften Speicherkonten auflisten.
+Um verknüpfte Speicherkonten zu erstellen und zu verwalten, verwenden Sie den Befehl [az monitor log-analytics workspace linked-storage](/cli/azure/monitor/log-analytics/workspace/linked-storage). Mit diesem Befehl können Sie Speicherkonten mit einem Arbeitsbereich verknüpfen und die Verknüpfung aufheben und die verknüpften Speicherkonten auflisten.
 
 ### <a name="request-and-cli-values"></a>Anforderungs- und CLI-Werte
 

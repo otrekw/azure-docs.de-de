@@ -3,16 +3,17 @@ title: Überwachen eines neuen AKS-Clusters (Azure Kubernetes Service) | Microso
 description: Hier erfahren Sie, wie Sie die Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service) mit Azure Monitor für ein Containerabonnement aktivieren.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516633"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Aktivieren der Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service)
 
-In diesem Artikel erfahren Sie, wie Sie Azure Monitor für Container einrichten, um verwaltete, in [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) gehostete Kubernetes-Cluster zu überwachen, die Sie für die Bereitstellung in Ihrem Abonnement vorbereiten.
+In diesem Artikel erfahren Sie, wie Sie Azure Monitor für Container einrichten, um verwaltete, in [Azure Kubernetes Service](../../aks/index.yml) gehostete Kubernetes-Cluster zu überwachen, die Sie für die Bereitstellung in Ihrem Abonnement vorbereiten.
 
 Sie können die Überwachung eines AKS-Clusters mit einer der unterstützten Methoden aktivieren:
 
@@ -24,7 +25,7 @@ Sie können die Überwachung eines AKS-Clusters mit einer der unterstützten Met
 Um die Überwachung eines mit der Azure-Befehlszeilenschnittstelle erstellten neuen AKS-Clusters zu aktivieren, führen Sie die Schritte im Schnellstartartikel im Abschnitt [Erstellen eines AKS-Clusters](../../aks/kubernetes-walkthrough.md#create-aks-cluster) durch.  
 
 >[!NOTE]
->Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.74 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Wenn Sie Version 0.4.12 oder höher der CLI-Erweiterung „aks-preview“ installiert haben, entfernen Sie alle Änderungen, die Sie vorgenommen haben, um eine Vorschauerweiterung zu aktivieren, da diese das Standardverhalten der Azure CLI außer Kraft setzen kann. Der Grund dafür ist, dass AKS-Previewfunktionen in der Azure US Government-Cloud nicht verfügbar sind.
+>Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.74 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Wenn Sie Version 0.4.12 oder höher der CLI-Erweiterung „aks-preview“ installiert haben, entfernen Sie alle Änderungen, die Sie vorgenommen haben, um eine Vorschauerweiterung zu aktivieren, da diese das Standardverhalten der Azure CLI außer Kraft setzen kann. Der Grund dafür ist, dass AKS-Previewfunktionen in der Azure US Government-Cloud nicht verfügbar sind.
 
 ## <a name="enable-using-terraform"></a>Aktivieren mithilfe von Terraform
 

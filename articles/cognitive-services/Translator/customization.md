@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996997"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523994"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -47,8 +47,8 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 
 ## <a name="custom-translator-versus-hub"></a>Benutzerdefinierter Translator im Vergleich zum Hub
 
-|   | **Hub** | **Benutzerdefinierter Translator**|
-|:-----|:----:|:----:|
+| Funktion | Hub | Benutzerdefinierter Translator |
+| ------- | :-: | :---------------: |
 |Status des Anpassungsfeatures    | Allgemeine Verfügbarkeit    | Allgemeine Verfügbarkeit |
 | Version der Text-API    | Nur V2    | Nur V3 |
 | SMT-Anpassung    | Ja    | Nein |

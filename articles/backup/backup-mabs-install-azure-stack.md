@@ -3,12 +3,12 @@ title: Installieren von Azure Backup Server in Azure Stack
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um Workloads in Azure Stack zu schützen oder zu sichern.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 634f560174413dd75bebdee6513160a3700df9a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747451"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513896"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -89,9 +89,9 @@ Die Azure Backup Server-VM muss einer Domäne angehören. Ein Domänenbenutzer m
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Verwenden einer IaaS-VM in Azure Stack
 
-Beim Wählen eines Servers für Azure Backup Server starten Sie mit einem Katalogimage von Windows Server 2012 R2 Datacenter oder Windows Server 2016 Datacenter. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten mit dem empfohlenen virtuellen Computer. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: A2-Standard mit zwei Kernen und 3,5 GB RAM.
+Beim Wählen eines Servers für Azure Backup Server starten Sie mit einem Katalogimage von Windows Server 2012 R2 Datacenter oder Windows Server 2016 Datacenter. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json) enthält ein Tutorial zu den ersten Schritten mit dem empfohlenen virtuellen Computer. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: A2-Standard mit zwei Kernen und 3,5 GB RAM.
 
-Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Die [Schutzmatrix für MABS](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) hilft, diese Nuancen zu erklären. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
+Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Die [Schutzmatrix für MABS](./backup-mabs-protection-matrix.md) hilft, diese Nuancen zu erklären. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
 
 > [!NOTE]
 > Azure Backup Server ist für die Ausführung auf einer dedizierten VM konzipiert, die nur zu diesem Zweck verwendet wird. Azure Backup Server kann nicht auf folgenden Computern installiert werden:
@@ -107,7 +107,7 @@ Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie Azure Backup 
 
 ### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
 
-Die Option zur Replikation des Recovery Services-Tresorspeichers ermöglicht Ihnen, zwischen georedundantem und lokal redundantem Speicher zu wählen. Recovery Services-Tresore verwenden standardmäßig georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine kostengünstigere und weniger langlebige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
+Die Option zur Replikation des Recovery Services-Tresorspeichers ermöglicht Ihnen, zwischen georedundantem und lokal redundantem Speicher zu wählen. Recovery Services-Tresore verwenden standardmäßig georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine kostengünstigere und weniger langlebige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md) und [lokal redundanten](../storage/common/storage-redundancy.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
@@ -243,7 +243,7 @@ Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden
 
     ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass die Größe des Scratchverzeichnisses mindestens 5 % der Datenmenge entspricht, die in Azure gesichert werden soll. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Vorbereiten der Datenspeicherung](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass die Größe des Scratchverzeichnisses mindestens 5 % der Datenmenge entspricht, die in Azure gesichert werden soll. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Vorbereiten der Datenspeicherung](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
 6. Geben Sie auf dem Bildschirm **Sicherheitseinstellungen** ein sicheres Kennwort für eingeschränkte lokale Benutzerkonten an, und klicken Sie auf **Weiter**.
 
@@ -309,7 +309,7 @@ Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden
 
 ## <a name="add-backup-storage"></a>Hinzufügen von Backup Storage
 
-Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azure Backup Server-Computer zugeordnet ist. Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Hinzufügen von Speicher zu DPM 2016](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
+Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azure Backup Server-Computer zugeordnet ist. Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Hinzufügen von Speicher zu DPM 2016](/system-center/dpm/add-storage).
 
 > [!NOTE]
 > Sie müssen auch dann Backup Storage hinzufügen, wenn Sie Daten an Azure senden möchten. In der Architektur von Azure Backup Server enthält der Recovery Services-Tresor die *zweite* Kopie der Daten, während der lokale Speicher die erste (obligatorische) Sicherungskopie enthält.
@@ -359,10 +359,10 @@ Sie können auch [Azure Backup – Häufig gestellte Fragen](backup-azure-backup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Der Artikel [Vorbereiten der Umgebung für DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801) enthält Informationen zu unterstützten Azure Backup Server-Konfigurationen.
+Der Artikel [Vorbereiten der Umgebung für DPM](/system-center/dpm/prepare-environment-for-dpm) enthält Informationen zu unterstützten Azure Backup Server-Konfigurationen.
 
 In den folgenden Artikeln finden Sie weiteführende Informationen zum Schutz von Workloads mit Microsoft Azure Backup Server.
 
-- [SQL Server-Sicherung](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
-- [SharePoint Server-Sicherung](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server-Sicherung](./backup-mabs-sql-azure-stack.md)
+- [SharePoint Server-Sicherung](./backup-mabs-sharepoint-azure-stack.md)
 - [Sicherung eines anderen Servers](backup-azure-alternate-dpm-server.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434200"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517466"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Verwenden des Moduls „Gebäudepläne“ von Azure Maps
 
@@ -21,7 +21,7 @@ Das Azure Maps Web-SDK umfasst das Modul *Azure Maps Indoor*. Mit dem Modul *Azu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Erstellen einer Erstellerressource](how-to-manage-creator.md)
 3. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account), auch bezeichnet als primärer Schlüssel oder Abonnementschlüssel.
 4. Rufen Sie eine `tilesetId` und eine `statesetId` ab, indem Sie das [Tutorial zum Erstellen von Gebäudeplänen](tutorial-creator-indoor-maps.md) absolvieren.

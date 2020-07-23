@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985308"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514719"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ Damit der Server die in Azure Key Vault (AKV) gespeicherte TDE-Schutzvorrichtung
 
 - **unwrapKey:** zum Aufheben des Schutzes (Verschlüsselung) des DEK
 
-Der Key Vault-Administrator kann auch die [Protokollierung von Key Vault-Überwachungsereignissen aktivieren](../../azure-monitor/insights/azure-key-vault.md), damit sie später überprüft werden können.
+Der Key Vault-Administrator kann auch die [Protokollierung von Key Vault-Überwachungsereignissen aktivieren](../../azure-monitor/insights/key-vault-insights-overview.md), damit sie später überprüft werden können.
 
 Wenn der Server erstmals für die Verwendung einer TDE-Schutzvorrichtung aus Azure Key Vault konfiguriert wird, sendet der Server den DEK jeder Datenbank mit TDE zur Verschlüsselung an Key Vault. Key Vault gibt den verschlüsselten DEK zurück, der in der Benutzerdatenbank gespeichert wird.
 

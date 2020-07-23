@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71057989"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509000"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Das Herstellen einer Remoteverbindung mit einem virtuellen Windows 10- oder Windows Server 2016-Computer in Azure ist aufgrund von „netvsc.sys“ nicht möglich.
 
@@ -69,7 +69,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 ### <a name="repair-the-vm-offline"></a>Reparieren des virtuellen Computers im Offlinestatus
 
-1. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](../windows/troubleshoot-recovery-disks-portal.md)
+1. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](./troubleshoot-recovery-disks-portal-windows.md)
 
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
@@ -114,7 +114,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [Trennen Sie den Systemdatenträger, und erstellen Sie den virtuellen Computer erneut](../windows/troubleshoot-recovery-disks-portal.md).
+16. [Trennen Sie den Systemdatenträger, und erstellen Sie den virtuellen Computer erneut](./troubleshoot-recovery-disks-portal-windows.md).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

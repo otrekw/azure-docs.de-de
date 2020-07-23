@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
-ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509357"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größen von virtuellen Computern in Azure
 
@@ -79,7 +79,7 @@ Wenn Sie Verfügbarkeitszonen verwenden, versuchen Sie es mit einer anderen Zone
 
 Wenn Ihre Zuordnungsanforderung groß ist (mehr als 500 Kerne umfasst), lesen Sie die Anweisungen in den folgenden Abschnitten, um die Anforderung in kleinere Bereitstellungen aufzuteilen.
 
-Versuchen Sie, [den virtuellen Computer erneut bereitzustellen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows). Durch die erneute Bereitstellung des virtuellen Computers wird er einem neuen Cluster in der Region zugeordnet.
+Versuchen Sie, [den virtuellen Computer erneut bereitzustellen](./redeploy-to-new-node-windows.md). Durch die erneute Bereitstellung des virtuellen Computers wird er einem neuen Cluster in der Region zugeordnet.
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Zuordnungsfehler bei älteren VM-Größen (Av1, Dv1, DSv1, D15v2, DS15v2 usw.)
 
@@ -94,7 +94,7 @@ Im Zuge der Erweiterung der Azure-Infrastruktur stellen wir Hardware einer neuer
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Zuordnungsfehler bei großen Bereitstellungen (mehr als 500 Kerne)
 
-Verringern Sie die Anzahl der Instanzen der angeforderten VM-Größe, und wiederholen Sie dann den Bereitstellungsvorgang. Darüber hinaus sollten Sie bei größeren Bereitstellungen die [Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) auswerten. Die Anzahl der VM-Instanzen kann je nach Bedarf oder definiertem Zeitplan automatisch erhöht oder verringert werden, und Sie haben eine größere Chance auf eine erfolgreiche Zuordnung, weil die Bereitstellungen auf mehrere Cluster verteilt werden können. 
+Verringern Sie die Anzahl der Instanzen der angeforderten VM-Größe, und wiederholen Sie dann den Bereitstellungsvorgang. Darüber hinaus sollten Sie bei größeren Bereitstellungen die [Azure-VM-Skalierungsgruppen](../../virtual-machine-scale-sets/index.yml) auswerten. Die Anzahl der VM-Instanzen kann je nach Bedarf oder definiertem Zeitplan automatisch erhöht oder verringert werden, und Sie haben eine größere Chance auf eine erfolgreiche Zuordnung, weil die Bereitstellungen auf mehrere Cluster verteilt werden können. 
 
 ## <a name="background-information"></a>Hintergrundinformationen
 ### <a name="how-allocation-works"></a>Funktionsweise der Zuordnung
@@ -105,5 +105,3 @@ Für die Server in Azure-Rechenzentren wird eine Partitionierung in Cluster vorg
 Wenn eine Zuordnungsanforderung mit einem Cluster verknüpft ist, ist die Wahrscheinlichkeit höher, dass keine freien Ressourcen gefunden werden, da der verfügbare Ressourcenpool kleiner ist. Falls Ihre Zuordnungsanforderung mit einem Cluster verknüpft ist, der von Ihnen angeforderte Ressourcentyp für diesen Cluster aber nicht unterstützt wird, schlägt die Anforderung auch dann fehl, wenn der Cluster über eine freie Ressource verfügt. Im nachstehenden Diagramm 3 ist der Fall dargestellt, in dem eine verknüpfte Zuordnung fehlschlägt, weil der einzige Kandidatencluster nicht über freie Ressourcen verfügt. In Diagramm 4 ist der Fall dargestellt, in dem eine verknüpfte Zuordnung fehlschlägt, weil der einzige Kandidatencluster die angeforderte Größe des virtuellen Computers nicht unterstützt, obwohl der Cluster über freie Ressourcen verfügt.
 
 ![Verknüpfte Zuordnung, Fehler](./media/virtual-machines-common-allocation-failure/Allocation2.png)
-
-

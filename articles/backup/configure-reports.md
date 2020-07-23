@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484972"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513624"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -18,7 +18,7 @@ Eine häufige Anforderung an Sicherungsadministratoren besteht darin, basierend 
 - Überwachung von Sicherungen und Wiederherstellungen.
 - Identifizierung wichtiger Trends auf verschiedenen Granularitätsebenen.
 
-Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) und [Azure-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) verwendet werden. Mithilfe dieser Ressourcen erhalten Sie umfassende Einblicke in Ihre Sicherungen in Ihrem gesamten Sicherungsumfeld. In diesem Artikel wird das Konfigurieren und Anzeigen von Azure Backup-Berichten erläutert.
+Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor-Protokolle](../azure-monitor/log-query/get-started-portal.md) und [Azure-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) verwendet werden. Mithilfe dieser Ressourcen erhalten Sie umfassende Einblicke in Ihre Sicherungen in Ihrem gesamten Sicherungsumfeld. In diesem Artikel wird das Konfigurieren und Anzeigen von Azure Backup-Berichten erläutert.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
@@ -26,7 +26,7 @@ Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor
 - Bei DPM-Workloads werden Backup-Berichte für DPM, Version 5.1.363.0 und höher, sowie Agent, Version 2.0.9127.0 und höher, unterstützt.
 - Bei MABS-Workloads werden Backup-Berichte für MABS, Version 13.0.415.0 und höher, sowie Agent, Version 2.0.9170.0 und höher, unterstützt.
 - Backup-Berichte können für alle Sicherungselemente, Tresore, Abonnements und Regionen angezeigt werden, solange deren Daten an einen Log Analytics-Arbeitsbereich gesendet werden, auf den der Benutzer Zugriff hat. Zum Anzeigen von Berichten für eine Gruppe von Tresoren müssen Sie nur über Lesezugriff auf den Log Analytics-Arbeitsbereich verfügen, an den die Tresore ihre Daten senden. Sie benötigen keinen Zugriff auf die einzelnen Tresore.
-- Wenn Sie ein [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/)-Benutzer mit delegiertem Zugriff auf die Abonnements Ihrer Kunden sind, können Sie diese Berichte mit Azure Lighthouse verwenden, um Berichte zu allen Ihren Mandanten anzuzeigen.
+- Wenn Sie ein [Azure Lighthouse](../lighthouse/index.yml)-Benutzer mit delegiertem Zugriff auf die Abonnements Ihrer Kunden sind, können Sie diese Berichte mit Azure Lighthouse verwenden, um Berichte zu allen Ihren Mandanten anzuzeigen.
 - Zurzeit können Daten in Sicherungsberichten für maximal 100 Log Analytics-Arbeitsbereiche (mandantenübergreifend) angezeigt werden.
 - Daten für Protokollsicherungsaufträge werden in den Berichten zurzeit nicht angezeigt.
 
@@ -38,22 +38,22 @@ Führen Sie die folgenden Schritte aus, um die Berichte verwenden zu können:
 
 Richten Sie einen oder mehrere Log Analytics-Arbeitsbereiche zum Speichern Ihrer Backup-Berichtsdaten ein. Der Ort und das Abonnement, an dem bzw. in dem dieser Log Analytics-Arbeitsbereich erstellt werden kann, sind unabhängig von dem Ort und dem Abonnement, der bzw. das Ihre Tresore enthält.
 
-Eine Anleitung zum Einrichten eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Eine Anleitung zum Einrichten eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
 
-Standardmäßig werden die Daten in einem Log Analytics-Arbeitsbereich 30 Tage lang aufbewahrt. Wenn Sie Daten für einen längeren Zeithorizont anzeigen möchten, ändern Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs. Informationen zum Ändern des Aufbewahrungszeitraums finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage).
+Standardmäßig werden die Daten in einem Log Analytics-Arbeitsbereich 30 Tage lang aufbewahrt. Wenn Sie Daten für einen längeren Zeithorizont anzeigen möchten, ändern Sie den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs. Informationen zum Ändern des Aufbewahrungszeitraums finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/platform/manage-cost-storage.md).
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. Konfigurieren von Diagnoseeinstellungen für Ihre Tresore
 
 Azure Resource Manager-Ressourcen, etwa Azure Recovery-Tresore, zeichnen Informationen zu geplanten Vorgängen und benutzergesteuerten Vorgängen als Diagnosedaten auf.
 
-Wählen Sie im Überwachungsabschnitt Ihres Recovery Services-Tresors **Diagnoseeinstellungen** aus, und geben Sie das Ziel für die Diagnosedaten des Tresors an. Weitere Informationen zur Verwendung von Diagnoseereignissen finden Sie unter [Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
+Wählen Sie im Überwachungsabschnitt Ihres Recovery Services-Tresors **Diagnoseeinstellungen** aus, und geben Sie das Ziel für die Diagnosedaten des Tresors an. Weitere Informationen zur Verwendung von Diagnoseereignissen finden Sie unter [Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore](./backup-azure-diagnostic-events.md).
 
 ![Bereich „Diagnoseeinstellungen“](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup bietet auch eine integrierte Azure-Richtliniendefinition, die die Konfiguration der Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich automatisiert. Informationen dazu, wie Sie diese Richtlinie verwenden können, finden Sie unter [Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics).
+Azure Backup bietet auch eine integrierte Azure-Richtliniendefinition, die die Konfiguration der Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich automatisiert. Informationen dazu, wie Sie diese Richtlinie verwenden können, finden Sie unter [Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen](./azure-policy-configure-diagnostics.md).
 
 > [!NOTE]
-> Nachdem Sie die Diagnose konfiguriert haben, dauert es möglicherweise bis zu 24 Stunden, bis der erste Datenpush abgeschlossen ist. Nachdem die Übertragung von Daten in den Log Analytics-Arbeitsbereich begonnen hat, werden Daten in den Berichten möglicherweise nicht sofort angezeigt, weil es sich dabei um Daten für den aktuellen Teiltag handelt. Weitere Informationen finden Sie unter [In Backup-Berichten verwendete Konventionen](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports). Wir empfehlen, dass Sie erst zwei Tage nach dem Konfigurieren Ihrer Tresore zum Senden von Daten an Log Analytics beginnen sollten, die Berichte anzuzeigen.
+> Nachdem Sie die Diagnose konfiguriert haben, dauert es möglicherweise bis zu 24 Stunden, bis der erste Datenpush abgeschlossen ist. Nachdem die Übertragung von Daten in den Log Analytics-Arbeitsbereich begonnen hat, werden Daten in den Berichten möglicherweise nicht sofort angezeigt, weil es sich dabei um Daten für den aktuellen Teiltag handelt. Weitere Informationen finden Sie unter [In Backup-Berichten verwendete Konventionen](#conventions-used-in-backup-reports). Wir empfehlen, dass Sie erst zwei Tage nach dem Konfigurieren Ihrer Tresore zum Senden von Daten an Log Analytics beginnen sollten, die Berichte anzuzeigen.
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3. Anzeigen von Berichten im Azure-Portal
 
@@ -103,7 +103,7 @@ Wählen Sie am oberen Rand jedes Widgets die Schaltfläche zum Anheften aus, um 
 
 ## <a name="cross-tenant-reports"></a>Mandantenübergreifende Berichte
 
-Wenn Sie [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) mit delegiertem Zugriff auf Abonnements in mehreren Mandantenumgebungen nutzen, können Sie den Standardabonnementfilter verwenden. Wählen Sie in der oberen rechten Ecke des Azure-Portals die Filterschaltfläche aus, um alle Abonnements auszuwählen, für die Sie Daten anzeigen möchten. Auf diese Weise können Sie Log Analytics-Arbeitsbereiche für Ihre Mandanten auswählen, um mehrinstanzenfähige Berichte anzuzeigen.
+Wenn Sie [Azure Lighthouse](../lighthouse/index.yml) mit delegiertem Zugriff auf Abonnements in mehreren Mandantenumgebungen nutzen, können Sie den Standardabonnementfilter verwenden. Wählen Sie in der oberen rechten Ecke des Azure-Portals die Filterschaltfläche aus, um alle Abonnements auszuwählen, für die Sie Daten anzeigen möchten. Auf diese Weise können Sie Log Analytics-Arbeitsbereiche für Ihre Mandanten auswählen, um mehrinstanzenfähige Berichte anzuzeigen.
 
 ## <a name="conventions-used-in-backup-reports"></a>In Backup-Berichten verwendete Konventionen
 
@@ -131,8 +131,8 @@ Die Widgets im Backup-Bericht werden von Kusto-Abfragen unterstützt, die in den
 
 - Die frühere Power BI-Vorlagen-App für die Berichterstellung, die Daten aus einem Azure Storage-Konto bezogen hat, wird bald eingestellt. Wir empfehlen, dass Sie mit dem Senden von Tresordiagnosedaten an Log Analytics beginnen, um Berichte anzeigen zu können.
 
-- Darüber hinaus wird auch das [V1-Schema](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) zum Senden von Diagnosedaten an ein Speicherkonto oder einen LA-Arbeitsbereich bald eingestellt. Das heißt, wenn Sie benutzerdefinierte Abfragen oder Automatisierungen auf der Grundlage des V1-Schemas geschrieben haben, sollten Sie diese Abfragen so aktualisieren, dass sie das derzeit unterstützte V2-Schema verwenden.
+- Darüber hinaus wird auch das [V1-Schema](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) zum Senden von Diagnosedaten an ein Speicherkonto oder einen LA-Arbeitsbereich bald eingestellt. Das heißt, wenn Sie benutzerdefinierte Abfragen oder Automatisierungen auf der Grundlage des V1-Schemas geschrieben haben, sollten Sie diese Abfragen so aktualisieren, dass sie das derzeit unterstützte V2-Schema verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Weitere Informationen zu Überwachung und Berichterstellung mit Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[Weitere Informationen zu Überwachung und Berichterstellung mit Azure Backup](./backup-azure-monitor-alert-faq.md)

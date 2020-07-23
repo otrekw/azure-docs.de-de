@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641828"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520968"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -39,7 +39,7 @@ Logik-App-Beispielvorlagen finden Sie in den folgenden Beispielen:
 * [Vollständige Beispielvorlage](#full-example-template), die für die Beispiele in diesem Thema verwendet wird
 * [Logik-App-Beispielvorlage für Schnellstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) in GitHub
 
-Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten und Integrationskontoartefakte gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
+Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten und Integrationskontoartefakte gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions).
 
 <a name="template-structure"></a>
 
@@ -328,7 +328,7 @@ Die folgenden Attribute gehören speziell zur Ressourcendefinition Ihrer Logik-A
 | `accessControl` | Nein | Object | Hiermit werden Sicherheitsattribute für Ihre Logik-App angegeben, etwa Einschränken des IP-Zugriffs auf Anforderungstrigger oder Ausführungsverlaufseingaben und -ausgaben. Weitere Informationen finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
-Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten und Integrationskontoartefakte gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
+Vorlagenressourceninformationen, die speziell für Logik-Apps, Integrationskonten und Integrationskontoartefakte gelten, finden Sie unter [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions).
 
 <a name="workflow-definition-parameters"></a>
 
@@ -910,7 +910,7 @@ Es folgt ein Beispiel, in dem der Kontoname und der Zugriffsschlüssel für eine
 
 ### <a name="authenticate-connections"></a>Authentifizieren von Verbindungen
 
-Nach der Bereitstellung funktioniert Ihre Logik-App vollständig mit gültigen Parametern. Allerdings müssen Sie weiterhin jede OAuth-Verbindung autorisieren, um gültige Zugriffstoken zum [Authentifizieren Ihrer Anmeldeinformationen](../active-directory/develop/authentication-scenarios.md) zu generieren. Weitere Informationen finden Sie unter [Autorisieren von OAuth-Verbindungen](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
+Nach der Bereitstellung funktioniert Ihre Logik-App vollständig mit gültigen Parametern. Allerdings müssen Sie weiterhin jede OAuth-Verbindung autorisieren, um gültige Zugriffstoken zum [Authentifizieren Ihrer Anmeldeinformationen](../active-directory/develop/authentication-vs-authorization.md) zu generieren. Weitere Informationen finden Sie unter [Autorisieren von OAuth-Verbindungen](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
 
 Für einige Verbindungen wird die Verwendung eines Azure AD-[Dienstprinzipals](../active-directory/develop/app-objects-and-service-principals.md) (Azure Active Directory) unterstützt, um Verbindungen für eine Logik-App zu autorisieren, die [in Azure AD registriert ist](../active-directory/develop/quickstart-register-app.md). Als Beispiel ist in dieser Azure Data Lake-Verbindungsressourcendefinition gezeigt, wie auf die Vorlagenparameter verwiesen wird, die die Informationen des Dienstprinzipals enthalten, und wie diese Parameter in der Vorlage deklariert sind:
 
@@ -1006,7 +1006,7 @@ In dem auf oberster Vorlagenebene befindlichen `parameters`-Objekt sind diese Pa
 Weitere Informationen zum Arbeiten mit Dienstprinzipale finden Sie in den folgenden Themen:
 
 * [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)
 * [Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>

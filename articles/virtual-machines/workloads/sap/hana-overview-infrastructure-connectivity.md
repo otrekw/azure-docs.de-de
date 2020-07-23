@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98ecb9ab208b6ead3944455b95f7fe6baa044d35
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616921"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525108"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>Bereitstellung von SAP HANA (große Instanzen) 
 
@@ -36,7 +36,7 @@ Microsoft benötigt zum Bereitstellen der Einheiten vom Typ „HANA (große Inst
 - Für jede Azure-Bereitstellungsregion:
     - Ein /29-IP-Adressbereich für ER-P2P-Verbindungen, über die virtuelle Azure-Netzwerke mit HANA (große Instanzen) verbunden werden.
     - Ein /24-CIDR-Block, der für den HANA (große Instanzen)-Server-IP-Pool verwendet wird.
-    - Bei der Verwendung von [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) zum Aktivieren des direkten Umleitens lokaler Einheiten an Einheiten großer HANA-Instanzen oder zum Umleiten zwischen Einheiten großer HANA-Instanzen in verschiedenen Azure-Regionen müssen Sie einen weiteren /29-IP-Adressbereich reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
+    - Bei der Verwendung von [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) zum Aktivieren des direkten Umleitens lokaler Einheiten an Einheiten großer HANA-Instanzen oder zum Umleiten zwischen Einheiten großer HANA-Instanzen in verschiedenen Azure-Regionen müssen Sie einen weiteren /29-IP-Adressbereich reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
 - Die IP-Adressbereichswerte, die im Attribut für den „Adressraum des virtuellen Netzwerks“ jedes virtuellen Azure-Netzwerks verwendet werden, für das Verbindungen mit HANA (große Instanzen) hergestellt werden.
 - Daten für jedes System vom Typ „HANA (große Instanzen)“:
   - Der gewünschte Hostname – idealerweise mit vollqualifiziertem Domänennamen.
@@ -53,4 +53,3 @@ Verwenden Sie die folgende Sequenz, um eine Verbindung mit HANA (große Instanze
 1. [Verbinden von virtuellen Azure-Computern mit HANA (große Instanzen)](hana-connect-azure-vm-large-instances.md)
 2. [Herstellen einer ExpressRoute-Verbindung zwischen einem VNET und HANA (große Instanzen)](hana-connect-vnet-express-route.md)
 3. [Zusätzliche Netzwerkanforderungen (optional)](hana-additional-network-requirements.md)
-

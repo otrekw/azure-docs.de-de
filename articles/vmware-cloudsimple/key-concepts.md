@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 8677bc7e4b9f4c2b24b5439aeefb307b9c544ed3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525023"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Wichtige Konzepte für die Verwaltung von Azure VMware Solution by CloudSimple
 
@@ -61,4 +61,4 @@ Mit dem CloudSimple-Dienst können Sie virtuelle VMware-Computer über das Azure
 Weitere Informationen:
 
 * [Virtuelle CloudSimple-Computer](cloudsimple-virtual-machines.md)
-* [Azure-Abonnementzuordnung](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)
+* [Azure-Abonnementzuordnung](./azure-subscription-mapping.md)

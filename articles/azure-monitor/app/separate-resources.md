@@ -3,12 +3,12 @@ title: 'Entwerfen der Application Insights-Bereitstellung: Eine oder mehrere Res
 description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516718"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Wie viele Application Insights-Ressourcen soll ich bereitstellen?
 
@@ -35,7 +35,7 @@ Jede Application Insights-Ressource umfasst Metriken, die standardmäßig verfü
 
 ### <a name="other-things-to-keep-in-mind"></a>Weitere zu beachtende Punkte
 
--   Möglicherweise müssen Sie benutzerdefinierten Code hinzufügen, um sicherzustellen, dass aussagekräftige Werte im Attribut [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) festgelegt werden. Wenn für dieses Attribut keine aussagekräftigen Werte festgelegt werden, funktioniert *KEINE* der Benutzeroberflächen im Portal.
+-   Möglicherweise müssen Sie benutzerdefinierten Code hinzufügen, um sicherzustellen, dass aussagekräftige Werte im Attribut [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) festgelegt werden. Wenn für dieses Attribut keine aussagekräftigen Werte festgelegt werden, funktioniert *KEINE* der Benutzeroberflächen im Portal.
 - Bei Service Fabric-Anwendungen und klassischen Clouddiensten liest das SDK automatisch aus der Azure-Rollenumgebung und legt diese fest. Bei allen anderen App-Typen müssen Sie dies wahrscheinlich explizit festlegen.
 -   Die Benutzeroberfläche für Livemetriken unterstützt kein Aufteilen nach Rollenname.
 
@@ -76,7 +76,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="create-additional-application-insights-resources"></a>Erstellen zusätzlicher Application Insights-Ressourcen
 
-Zum Erstellen einer Application Insights-Ressource befolgen Sie den [Leitfaden zum Erstellen einer Ressource ](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+Zum Erstellen einer Application Insights-Ressource befolgen Sie den [Leitfaden zum Erstellen einer Ressource ](./create-new-resource.md).
 
 ### <a name="getting-the-instrumentation-key"></a>Abrufen des Instrumentierungsschlüssels
 Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt haben.

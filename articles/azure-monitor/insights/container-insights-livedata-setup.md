@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d60836af350e9af99355db9a7cc140a949d1492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516463"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
@@ -19,7 +19,7 @@ Diese Funktion unterstützt die folgenden Methoden, um den Zugriff auf die Proto
 
 - AKS ohne aktivierte Kubernetes RBAC-Autorisierung
 - Mit Kubernetes RBAC-Autorisierung aktivierter AKS
-    - Mit Clusterrollenbindung **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** konfigurierter AKS
+    - Mit Clusterrollenbindung **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** konfigurierter AKS
 - Mit auf SAML basiertem SSO in Azure Active Directory (AD) aktivierter AKS
 
 Für diese Anweisungen ist sowohl Administratorzugriff auf den Kubernetes-Cluster als auch Administratorzugriff auf Azure AD (wenn Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert wird) erforderlich.
@@ -108,7 +108,7 @@ Die Azure AD-Clientregistrierung muss neu konfiguriert werden, damit das Azure-P
 Weitere Informationen zur Einrichtung für erweiterte Sicherheit in Kubernetes finden Sie in der [Kubernetes-Dokumentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
->Wenn Sie einen neuen RBAC-fähigen Cluster erstellen, lesen Sie [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration.md), und folgen Sie den Schritten zum Konfigurieren der Azure AD-Authentifizierung. Während der Schritte zum Erstellen der Clientanwendung werden in einem Hinweis in diesem Abschnitt zwei Umleitungs-URLs hervorgehoben, die Sie für Azure Monitor für Container erstellen müssen, die den in Schritt 3 unten angegebenen Containern entsprechen.
+>Wenn Sie einen neuen RBAC-fähigen Cluster erstellen, lesen Sie [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration-cli.md), und folgen Sie den Schritten zum Konfigurieren der Azure AD-Authentifizierung. Während der Schritte zum Erstellen der Clientanwendung werden in einem Hinweis in diesem Abschnitt zwei Umleitungs-URLs hervorgehoben, die Sie für Azure Monitor für Container erstellen müssen, die den in Schritt 3 unten angegebenen Containern entsprechen.
 
 ### <a name="client-registration-reconfiguration"></a>Neukonfiguration der Clientregistrierung
 

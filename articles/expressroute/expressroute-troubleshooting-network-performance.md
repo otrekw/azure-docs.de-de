@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738242"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521665"
 ---
 # <a name="troubleshooting-network-performance"></a>Beheben von Problemen bei der Netzwerkleistung
 ## <a name="overview"></a>Übersicht
@@ -177,9 +177,8 @@ Testeinrichtung:
 >
 >
 
-| | | | | | |
-|-|-|-|-|-|-|
-|ExpressRoute<br/>Position|Azure<br/>Region|Geschätzte<br/>Entfernung (km)|Latency|1 Sitzung:<br/>Bandbreite|Maximum<br/>Bandbreite|
+| ExpressRoute<br/>Position|Azure<br/>Region | Geschätzte<br/>Entfernung (km) | Latency|1 Sitzung:<br/>Bandbreite | Maximum<br/>Bandbreite |
+| ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | USA, Westen 2        |    191 km |   5 ms | 262 MBit/s |  3,74 GBit/s |
 | Seattle | USA (Westen)          |  1\.094 km |  18 ms |  82,3 MBit/s |  3,7 GBit/s |
 | Seattle | USA (Mitte)       |  2\.357 km |  40 ms |  38,8 MBit/s |  2,55 GBit/s |

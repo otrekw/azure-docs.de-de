@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525040"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Sichern von Workload-VMs in einer privaten CloudSimple-Cloud mithilfe von Veeam B&R
 
@@ -195,7 +195,7 @@ Stellen Sie eine Verbindung zwischen Ihrem virtuellen Netzwerk und der privaten 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Konfigurieren von Azure-Blobspeicher für die langfristige Datenaufbewahrung
 
 1. Erstellen Sie ein universelles Speicherkonto (GPv2) des Standardtyps und einen Blobcontainer, wie im Microsoft-Video [Getting Started with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage) (Erste Schritte mit Azure Storage) beschrieben.
-2. Erstellen Sie einen Azure Storage-Container, wie in der Referenz [Erstellen eines Containers](https://docs.microsoft.com/rest/api/storageservices/create-container) beschrieben.
+2. Erstellen Sie einen Azure Storage-Container, wie in der Referenz [Erstellen eines Containers](/rest/api/storageservices/create-container) beschrieben.
 2. Laden Sie das `azcopy`-Befehlszeilenhilfsprogramm für Linux von Microsoft herunter. Sie können die folgenden Befehle in der Bash-Shell in CentOS 7.5 verwenden.
 
     ```
@@ -206,7 +206,7 @@ Stellen Sie eine Verbindung zwischen Ihrem virtuellen Netzwerk und der privaten 
     sudo yum -y install icu
     ```
 
-3. Verwenden Sie den Befehl `azcopy`, um Sicherungsdateien in den und aus dem Blobcontainer zu kopieren.  Ausführliche Informationen zu den Befehlen finden Sie unter [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-linux.md).
+3. Verwenden Sie den Befehl `azcopy`, um Sicherungsdateien in den und aus dem Blobcontainer zu kopieren.  Ausführliche Informationen zu den Befehlen finden Sie unter [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-v10.md).
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-Konsole der privaten Cloud: Installieren von Veeam B&R
 
@@ -291,8 +291,8 @@ Informationen zum Einschränken von Berechtigungen finden Sie unter [Einschränk
 * [Erstellen eines virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [Erste Schritte mit Azure Storage (Video)](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Erstellen eines Containers](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-linux.md)
+* [Erstellen eines Containers](/rest/api/storageservices/create-container)
+* [Übertragen von Daten mit AzCopy unter Linux](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>VMware-Referenzen
 

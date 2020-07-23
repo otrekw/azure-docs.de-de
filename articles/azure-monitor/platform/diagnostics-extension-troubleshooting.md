@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696965"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515494"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -50,7 +50,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrikdaten werden nicht im Azure-Portal angezeigt
-Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind, und um sicherzustellen, dass der [Ressourcenanbieter](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) „Microsoft.Insights“ registriert ist.
+Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind, und um sicherzustellen, dass der [Ressourcenanbieter](../../azure-resource-manager/management/resource-providers-and-types.md) „Microsoft.Insights“ registriert ist.
 
 Hier ist der **PartitionKey** der Tabelle die Ressourcen-ID, der virtuelle Computer oder die VM-Skalierungsgruppe. **RowKey** ist der Metrikname (auch als Leistungsindikatorname bezeichnet).
 
@@ -297,4 +297,3 @@ Auf der Portaloberfläche auf den virtuellen Computern werden bestimmte Leistung
 - Haben die Daten im Speicher englische Indikatornamen? Wenn die Indikatornamen nicht auf Englisch sind, können sie vom Portalmetrikdiagramm nicht erkannt werden. **Lösung**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. Wählen Sie hierzu **Systemsteuerung** > **Region** > **Verwaltung** > **Einstellungen kopieren**. Deaktivieren Sie als Nächstes die Option **Willkommensseite und Systemkonten**, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird.
 
 - Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren, wenn die Leistungsindikatoren an die Azure Storage-Senke gesendet werden. **Lösung**: Um sicherzustellen, dass Sie Platzhalter verwenden können und das Portal zudem den (\*) erweitert, leiten Sie Ihre Leistungsindikatoren an die Azure Monitor-Senke weiter.
-

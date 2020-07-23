@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9541eb3b7c662b43de0d3a609ecec4fe2621ca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208541"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519404"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
@@ -59,25 +59,19 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](securi
 
 * Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn **Get-MprotComputerStatus** ausgeführt wird und eine der folgenden Situationen eintritt:
 
-    * Mindestens eine der folgenden Eigenschaften ist „False“:
+  * Mindestens eine der folgenden Eigenschaften ist „False“:
 
-            **AMServiceEnabled**
+    * **AMServiceEnabled**
+    * **AntispywareEnabled**
+    * **RealTimeProtectionEnabled**
+    * **BehaviorMonitorEnabled**
+    * **IoavProtectionEnabled**
+    * **OnAccessProtectionEnabled**
 
-            **AntispywareEnabled**
-    
-            **RealTimeProtectionEnabled**
-    
-            **BehaviorMonitorEnabled**
-    
-            **IoavProtectionEnabled**
-    
-            **OnAccessProtectionEnabled**
-          
-    * Mindestens eine oder beide folgenden Signaturaktualisierungen ist größer oder gleich 7. 
+  * Mindestens eine oder beide folgenden Signaturaktualisierungen ist größer oder gleich 7. 
 
-            **AntispywareSignatureAge**
-    
-            **AntivirusSignatureAge**
+    * **AntispywareSignatureAge**
+    * **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 

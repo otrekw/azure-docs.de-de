@@ -3,12 +3,12 @@ title: Intelligente Erkennung in Azure Application Insights | Microsoft Docs
 description: Application Insights führt eine automatische umfassende Analyse Ihrer App-Telemetrie durch und warnt Sie vor potenziellen Problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700838"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516871"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligente Erkennung in Application Insights
  Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen und Fehleranomalien in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
@@ -34,7 +34,7 @@ Die intelligente Erkennung entdeckt eine Reihe von Problemen und gibt Benachrich
 
 * [Intelligente Erkennung – Fehlerabweichungen](../../azure-monitor/app/proactive-failure-diagnostics.md). Wir nutzen Machine Learning, um die voraussichtliche Rate fehlerhafter Anforderungen für Ihre App (korreliert mit Lastangaben und anderen Faktoren) festzulegen. Falls die Fehlerrate den erwarteten Rahmen überschreitet, wird eine Warnung gesendet.
 * [Intelligente Erkennung – Leistungsabweichungen](../../azure-monitor/app/proactive-performance-diagnostics.md). Sie erhalten Benachrichtigungen, wenn sich die Reaktionszeit eines Vorgangs oder die Abhängigkeitsdauer im Vergleich zu den typischen Verlaufsdaten verschlechtert oder wenn für die Reaktionszeit oder die Seitenladezeit ein anomales Muster erkannt wird.   
-* Allgemeine Beeinträchtigungen und Probleme wie [Verschlechterung der Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [Speicherverlust](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [anomaler Anstieg im Ausnahmevolume](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) und [Verdachtsmomente für ein Sicherheitsproblem](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* Allgemeine Beeinträchtigungen und Probleme wie [Verschlechterung der Ablaufverfolgung](./proactive-trace-severity.md), [Speicherverlust](./proactive-potential-memory-leak.md), [anomaler Anstieg im Ausnahmevolume](./proactive-exception-volume.md) und [Verdachtsmomente für ein Sicherheitsproblem](./proactive-application-security-detection-pack.md).
 
 (Über die Hilfelinks in den jeweiligen Benachrichtigungen gelangen Sie zu den relevanten Artikeln.)
 
@@ -44,7 +44,7 @@ Alle Regeln für die intelligente Erkennung, mit Ausnahme der als _Vorschauversi
 
 Zum Konfigurieren von E-Mail-Benachrichtigungen für eine bestimmte Regel für die intelligente Erkennung können Sie das Blatt **Einstellungen** für die intelligente Erkennung öffnen, und die entsprechende Regel auswählen. Dadurch wird das Blatt **Regel bearbeiten** geöffnet.
 
-Alternativ können Sie die Konfiguration mithilfe von Azure Resource Manager-Vorlagen ändern. Weitere Informationen finden Sie unter [Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config).
+Alternativ können Sie die Konfiguration mithilfe von Azure Resource Manager-Vorlagen ändern. Weitere Informationen finden Sie unter [Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen](./proactive-arm-config.md).
 
 ## <a name="video"></a>Video
 
@@ -61,4 +61,3 @@ Die intelligente Erkennungen erfolgt vollkommen automatisch. Vielleicht möchten
 
 * [Einrichten von Warnungen in Application Insights](../../azure-monitor/platform/alerts-log.md)
 * [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) 
-

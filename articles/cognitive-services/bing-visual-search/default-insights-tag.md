@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "60510121"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512638"
 ---
 # <a name="default-insights-tag"></a>Standardinformationstag
 
@@ -425,4 +425,12 @@ Die Auswertung vom Typ DocumentLevelSuggestions bietet eine Liste vorgeschlagene
 
 Sehen Sie sich [Beispiele für die Verwendung von Auswertungen in Bing](bing-insights-usage.md) an, um zu erfahren, wie Bing möglicherweise die visuellen Auswertungen anzeigt.
 
-Die Schnellstartanleitungen [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md) ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung.
+Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung:
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [Node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md).

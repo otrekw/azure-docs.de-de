@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4235e948dba76c0b2926d9965ccd2fcb072cad62
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248474"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520782"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
-In diesem Artikel sind die Einschränkungen und Konfigurationsdetails beschrieben, die beim Erstellen und Ausführen von automatisierten Workflows mit Azure Logic Apps zu beachten sind. Informationen zu Power Automate finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config).
+In diesem Artikel sind die Einschränkungen und Konfigurationsdetails beschrieben, die beim Erstellen und Ausführen von automatisierten Workflows mit Azure Logic Apps zu beachten sind. Informationen zu Power Automate finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](/flow/limits-and-config).
 
 <a name="definition-limits"></a>
 
@@ -129,7 +129,7 @@ Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastu
 
 ## <a name="gateway-limits"></a>Einschränkungen für Gateway
 
-Azure Logic Apps unterstützt Schreibvorgänge, einschließlich Einfügungen und Aktualisierungen, über das Gateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+Azure Logic Apps unterstützt Schreibvorgänge, einschließlich Einfügungen und Aktualisierungen, über das Gateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="request-limits"></a>
 
@@ -154,7 +154,7 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 | Name | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
 | Nachrichtengröße | 100 MB | 200 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. <p><p>- Connectors wie AS2, X12 und EDIFACT verfügen über eigene [B2B-Nachrichtenlimits](#b2b-protocol-limits). <br>- ISE-Connectors verwenden den ISE-Grenzwert, nicht ihre Grenzwerte für Nicht-ISE-Connectors. |
-| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p><p>Wenn Sie eine ISE verwenden, unterstützt die Logic Apps-Engine diesen Grenzwert. Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen in der [Referenz zur API des Azure Blob Storage-Connectors](https://docs.microsoft.com/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
+| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p><p>Wenn Sie eine ISE verwenden, unterstützt die Logic Apps-Engine diesen Grenzwert. Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen in der [Referenz zur API des Azure Blob Storage-Connectors](/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||
 
 #### <a name="character-limits"></a>Zeichengrenzwerte
@@ -180,7 +180,7 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 
 ### <a name="authentication-limits"></a>Authentifizierungslimits
 
-Hier finden Sie die Limits für eine Logik-App, die mit einem Anforderungstrigger startet und [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe an den Anforderungstrigger aktiviert:
+Hier finden Sie die Limits für eine Logik-App, die mit einem Anforderungstrigger startet und [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe an den Anforderungstrigger aktiviert:
 
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
@@ -216,7 +216,7 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 
 Für jedes Azure-Abonnement gelten folgende Grenzwerte für das Integrationskonto:
 
-* Ein Integrationskonto im [Tarif „Free“](../logic-apps/logic-apps-pricing.md#integration-accounts) pro Azure-Region. Diese Dienstebene ist nur für öffentliche Regionen in Azure verfügbar, z. B. „USA, Westen“ oder „Asien, Südosten“, aber nicht für [Azure China 21ViaNet](https://docs.microsoft.com/azure/china/overview-operations) oder [Azure Government](../azure-government/documentation-government-welcome.md).
+* Ein Integrationskonto im [Tarif „Free“](../logic-apps/logic-apps-pricing.md#integration-accounts) pro Azure-Region. Diese Dienstebene ist nur für öffentliche Regionen in Azure verfügbar, z. B. „USA, Westen“ oder „Asien, Südosten“, aber nicht für [Azure China 21ViaNet](/azure/china/overview-operations) oder [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * 1\.000 Integrationskonten insgesamt, einschließlich Integrationskonten in beliebigen [Integrationsdienstumgebungen (Integration Service Environments, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) in [Developer- und Premium-SKUs](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
 
@@ -258,7 +258,7 @@ Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.micr
 | Artefakt | Begrenzung | Notizen |
 | -------- | ----- | ----- |
 | Assembly | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB ein [Azure Storage-Konto und einen Blobcontainer](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
-| Zuordnung (XSLT-Datei) | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB die [Zuordnungen der REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate). <p><p>**Hinweis**: Die Menge der Daten oder Datensätze, die eine Zuordnung erfolgreich verarbeiten kann, basiert auf den Grenzwerten für Nachrichtengröße und Aktionstimeout in Azure Logic Apps. Wenn Sie z. B. eine HTTP-Aktion verwenden, die auf [HTTP-Nachrichtengröße und -Timeoutlimits](#request-limits) basiert, kann eine Zuordnung Daten bis zum HTTP-Nachrichtengrößenlimit verarbeiten, wenn der Vorgang innerhalb des HTTP-Timeoutlimits abgeschlossen wird. |
+| Zuordnung (XSLT-Datei) | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB die [Zuordnungen der REST-API für Azure Logic Apps](/rest/api/logic/maps/createorupdate). <p><p>**Hinweis**: Die Menge der Daten oder Datensätze, die eine Zuordnung erfolgreich verarbeiten kann, basiert auf den Grenzwerten für Nachrichtengröße und Aktionstimeout in Azure Logic Apps. Wenn Sie z. B. eine HTTP-Aktion verwenden, die auf [HTTP-Nachrichtengröße und -Timeoutlimits](#request-limits) basiert, kann eine Zuordnung Daten bis zum HTTP-Nachrichtengrößenlimit verarbeiten, wenn der Vorgang innerhalb des HTTP-Timeoutlimits abgeschlossen wird. |
 | Schema | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB ein [Azure Storage-Konto und einen Blobcontainer](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
@@ -299,7 +299,7 @@ Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert.
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Firewallkonfiguration: IP-Adressen und Diensttags
 
-Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe verwendet, hängen von der Region ab, in der sich Ihre Logik-App befindet. Für *alle* Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet. Einige [Power Automate](https://docs.microsoft.com/power-automate/getting-started)-Aufrufe, z. B. **HTTP**- und **HTTP + OpenAPI**-Anforderungen, werden direkt über den Azure Logic Apps-Dienst geleitet und stammen von den hier aufgeführten IP-Adressen. Weitere Informationen zu von Power Automate verwendeten IP-Adressen finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
+Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe verwendet, hängen von der Region ab, in der sich Ihre Logik-App befindet. Für *alle* Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet. Einige [Power Automate](/power-automate/getting-started)-Aufrufe, z. B. **HTTP**- und **HTTP + OpenAPI**-Anforderungen, werden direkt über den Azure Logic Apps-Dienst geleitet und stammen von den hier aufgeführten IP-Adressen. Weitere Informationen zu von Power Automate verwendeten IP-Adressen finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](/flow/limits-and-config#ip-address-configuration).
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional [Diensttags](../virtual-network/service-tags-overview.md) verwenden, anstatt die Logic Apps-IP-Adressen für jede Region anzugeben (weiter unten in diesem Abschnitt beschrieben).
@@ -308,7 +308,7 @@ Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe ver
 > * **LogicAppsManagement**: Steht für die IP-Adresspräfixe des Logic Apps-Diensts in eingehender Richtung.
 > * **LogicApps**: Steht für die IP-Adresspräfixe des Logic Apps-Diensts in ausgehender Richtung.
 
-* Für [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) sind keine festen oder reservierten IP-Adressen für [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) und [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) (z. B. Azure Storage, SQL Server, Office 365 Outlook usw.) verfügbar.
+* Für [Azure China 21Vianet](/azure/china/) sind keine festen oder reservierten IP-Adressen für [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) und [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) (z. B. Azure Storage, SQL Server, Office 365 Outlook usw.) verfügbar.
 
 * Um die Aufrufe zu unterstützen, die Ihre Logik-Apps direkt mit [HTTP](../connectors/connectors-native-http.md)., [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)- und anderen HTTP-Anforderungen durchführen, richten Sie Ihre Firewalls mit allen [eingehenden](#inbound) *und* [ausgehenden](#outbound) IP-Adressen ein, die vom Logic Apps-Dienst verwendet werden. Führen Sie dies basierend auf den Regionen durch, in denen sich Ihre Logik-Apps befinden. Diese Adressen werden unter den Überschriften **Eingehend** und **Ausgehend** in diesem Abschnitt angezeigt, wobei sie nach Region sortiert sind.
 

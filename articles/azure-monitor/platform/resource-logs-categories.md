@@ -4,12 +4,12 @@ description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418590"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515392"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
@@ -712,6 +712,6 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Weitere Informationen zu Ressourcenprotokollen](../../azure-monitor/platform/platform-logs-overview.md)
-* [Streamen von Ressourcenprotokollen an **Event Hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Ändern der Diagnoseeinstellungen für Ressourcenprotokolle mithilfe der Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [Streamen von Ressourcenprotokollen an **Event Hubs**](./resource-logs.md#send-to-azure-event-hubs)
+* [Ändern der Diagnoseeinstellungen für Ressourcenprotokolle mithilfe der Azure Monitor-REST-API](/rest/api/monitor/diagnosticsettings)
+* [Analysieren von Protokollen aus Azure Storage mit Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)
