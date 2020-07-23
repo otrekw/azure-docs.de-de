@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80299190"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509034"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Startfehler – This is not a Bootable Disk
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält die Schritte zum Beheben von Problemen, bei denen der Da
 
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, wird im Screenshot eine Eingabeaufforderung mit der Meldung „This is not a bootable disk. Please insert a bootable floppy and press any key to try again...“ angezeigt.
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, wird im Screenshot eine Eingabeaufforderung mit der Meldung „This is not a bootable disk. Please insert a bootable floppy and press any key to try again...“ angezeigt.
 
    Abbildung 1
 
@@ -52,7 +52,7 @@ Diese Fehlermeldung bedeutet, dass der Betriebssystemstartprozess keine aktive S
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen einer Reparatur-VM und Zugreifen darauf
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 2. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="set-partition-status-to-active"></a>Festlegen des Partitionsstatus auf „Active“
@@ -148,4 +148,4 @@ Führen Sie das folgende Skript aus, um die Speicherabbildsammlung und die serie
 
 ### <a name="rebuild-the-original-vm"></a>Neuerstellen der ursprünglichen VM
 
-Führen Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) aus, um die VM zu reassemblieren.
+Führen Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um die VM zu reassemblieren.

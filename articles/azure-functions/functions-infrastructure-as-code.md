@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506229"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -309,7 +309,7 @@ Der Premium-Tarif bietet die gleiche Skalierung wie der Verbrauchstarif, umfasst
 
 ### <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
-Ein Premium-Plan ist eine besondere Art von „Serverfarm“-Ressource. Sie können ihn angeben, indem Sie entweder `EP1`, `EP2` oder `EP3` für den `Name`-Eigenschaftswert im `sku`-[Beschreibungsobjekt](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object) angeben.
+Ein Premium-Plan ist eine besondere Art von „Serverfarm“-Ressource. Sie können ihn angeben, indem Sie entweder `EP1`, `EP2` oder `EP3` für den `Name`-Eigenschaftswert im `sku`-[Beschreibungsobjekt](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object) angeben.
 
 ```json
 {
@@ -516,7 +516,7 @@ Linux-Apps sollten auch eine `linuxFxVersion`-Eigenschaft unter `siteConfig` ent
 }
 ```
 
-Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-create-function-linux-custom-image.md), müssen Sie es mit `linuxFxVersion` angeben und eine Konfiguration einbeziehen, die das Pullen Ihres Images ermöglicht, wie in [App Service unter Linux – Dokumentation](/azure/app-service/containers). Setzen Sie außerdem `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf `false`, da Ihr App-Inhalt im Container selbst bereitgestellt wird:
+Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-create-function-linux-custom-image.md), müssen Sie es mit `linuxFxVersion` angeben und eine Konfiguration einbeziehen, die das Pullen Ihres Images ermöglicht, wie in [App Service unter Linux – Dokumentation](../app-service/containers/index.yml). Setzen Sie außerdem `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf `false`, da Ihr App-Inhalt im Container selbst bereitgestellt wird:
 
 ```json
 {

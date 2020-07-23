@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496178"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -65,7 +65,7 @@ Azure-Dateisynchronisierung wurde mit dem Ziel der unbegrenzten Nutzung entwicke
 
 ### <a name="azure-file-sync-performance-metrics"></a>Leistungsmetriken der Azure-Dateisynchronisierung
 
-Da der Azure-Dateisynchronisierungs-Agent auf einem Windows Server-Computer ausgeführt wird, der eine Verbindung mit den Azure-Dateifreigaben herstellt, hängt die effektive Synchronisierungsleistung von einer Reihe von Faktoren in Ihrer Infrastruktur ab: von Windows Server und der zugrunde liegenden Datenträgerkonfiguration, der Netzwerkbandbreite zwischen dem Server und dem Azure-Speicher, der Dateigröße, der Größe des gesamten Datasets und der Aktivität auf dem Dataset. Da die Azure-Dateisynchronisierung auf Dateiebene ausgeführt wird, werden die Leistungsmerkmale einer auf der Azure-Dateisynchronisierung basierenden Lösung besser in der Anzahl von Objekten (Dateien und Verzeichnisse) gemessen, die pro Sekunde verarbeitet werden.
+Da der Azure-Dateisynchronisierungs-Agent auf einem Windows Server-Computer ausgeführt wird, der mit den Azure-Dateifreigaben verbunden wird, hängt die effektive Synchronisierungsleistung von einer Reihe von Faktoren in Ihrer Infrastruktur ab: von Windows Server und der zugrunde liegenden Datenträgerkonfiguration, der Netzwerkbandbreite zwischen dem Server und Azure Storage, der Dateigröße, der gesamten Datasetgröße und der Aktivität im Dataset. Da die Azure-Dateisynchronisierung auf Dateiebene ausgeführt wird, werden die Leistungsmerkmale einer auf der Azure-Dateisynchronisierung basierenden Lösung besser in der Anzahl von Objekten (Dateien und Verzeichnisse) gemessen, die pro Sekunde verarbeitet werden.
 
 Bei der Azure-Dateisynchronisierung ist die Leistung in zwei Phasen entscheidend:
 
@@ -74,7 +74,7 @@ Bei der Azure-Dateisynchronisierung ist die Leistung in zwei Phasen entscheidend
 
 Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folgenden die Ergebnisse an, die bei den internen Tests auf einem System mit einer Konfiguration zustande kamen.
 
-| Systemkonfiguration |  |
+| Systemkonfiguration | Details |
 |-|-|
 | CPU | 64 virtuelle Kerne mit 64-MiB-L3-Cache |
 | Arbeitsspeicher | 128 GB |
@@ -82,7 +82,7 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Netzwerk | 1-GBit/s-Netzwerk |
 | Workload | Allgemeiner Dateiserver|
 
-| Erste einmalige Bereitstellung  |  |
+| Erste einmalige Bereitstellung  | Details |
 |-|-|
 | Anzahl der Objekte | 25 Millionen Objekte |
 | Datasetgröße| ca. 4,7 TiB |
@@ -92,7 +92,7 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 
 *Wenn ein neuer Serverendpunkt erstellt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
 
-| Laufende Synchronisierung  |   |
+| Laufende Synchronisierung  | Details  |
 |-|--|
 | Anzahl der synchronisierten Objekte| 125.000 Objekte (Änderungsumfang ca. 1 %) |
 | Datasetgröße| 50 GiB |

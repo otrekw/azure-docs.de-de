@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945056"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502332"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale in Azure
 
@@ -67,7 +67,7 @@ Bei dieser Architektur werden die Anwendungs-, Speicher- und Datenebenen auf vir
 
 -   Einen DB2 pureScale-Cluster. Der Typ der in Azure benötigten Computeressourcen hängt von der jeweiligen Einrichtung ab. Im Allgemeinen können zwei Ansätze verwendet werden:
 
-    -   Verwendung eines Netzwerks in HPC-Ausführung (High-Performance Computing) mit mehreren Knoten, bei dem kleine bis mittlere Instanzen auf freigegebenen Speicher zugreifen. Für diesen HPC-Konfigurationstyp bieten arbeitsspeicheroptimierte [virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) der E-Serie oder L-Serie in Azure die erforderliche Computeleistung.
+    -   Verwendung eines Netzwerks in HPC-Ausführung (High-Performance Computing) mit mehreren Knoten, bei dem kleine bis mittlere Instanzen auf freigegebenen Speicher zugreifen. Für diesen HPC-Konfigurationstyp bieten arbeitsspeicheroptimierte [virtuelle Computer](../windows/sizes.md) der E-Serie oder L-Serie in Azure die erforderliche Computeleistung.
 
     -   Verwendung weniger großer VM-Instanzen für die Daten-Engines. Bei großen Instanzen sind die größten speicheroptimierten virtuellen Computer der [M-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/) ideal für arbeitsspeicherintensive Workloads. Je nach Größe der logischen Partition (LPAR), die zum Ausführen von DB2 verwendet wird, kann eine dedizierte Instanz erforderlich sein.
 
@@ -96,11 +96,11 @@ Ein großer DB2 pureScale-Cluster kann 200 Terabyte (TB) oder mehr freigegebenen
 
 IBM empfiehlt InfiniBand-Netzwerkfunktionen für alle Member in einem DB2 pureScale-Cluster. DB2 pureScale verwendet für die CFs außerdem Remotezugriff auf den direkten Speicher (Remote Direct Memory Access, RDMA), sofern dieser verfügbar ist.
 
-Während des Setups erstellen Sie eine Azure-[Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), die dann alle virtuellen Computer enthält. Ressourcen werden allgemein auf der Grundlage ihrer Lebensdauer sowie auf der Grundlage der Benutzer gruppiert, die sie verwalten. Die virtuellen Computer in dieser Architektur erfordern [beschleunigten Netzwerkbetrieb](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Dies ist ein Azure-Feature, das konsistente, extrem geringe Netzwerklatenz über E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer bietet.
+Während des Setups erstellen Sie eine Azure-[Ressourcengruppe](../../azure-resource-manager/management/overview.md), die dann alle virtuellen Computer enthält. Ressourcen werden allgemein auf der Grundlage ihrer Lebensdauer sowie auf der Grundlage der Benutzer gruppiert, die sie verwalten. Die virtuellen Computer in dieser Architektur erfordern [beschleunigten Netzwerkbetrieb](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Dies ist ein Azure-Feature, das konsistente, extrem geringe Netzwerklatenz über E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer bietet.
 
-Jeder virtuelle Azure-Computer wird in einem virtuellen Netzwerk mit mehreren Subnetzen bereitgestellt: Hauptsubnetz, GlusterFS-Front-End (gfsfe), GlusterFS-Back-End (bfsbe), DB2 pureScale (db2be) und DB2 pureScale-Front-End (db2fe). Das Installationsskript erstellt auch die primären [NICs](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) auf den virtuellen Computern im Hauptsubnetz.
+Jeder virtuelle Azure-Computer wird in einem virtuellen Netzwerk mit mehreren Subnetzen bereitgestellt: Hauptsubnetz, GlusterFS-Front-End (gfsfe), GlusterFS-Back-End (bfsbe), DB2 pureScale (db2be) und DB2 pureScale-Front-End (db2fe). Das Installationsskript erstellt auch die primären [NICs](./multiple-nics.md) auf den virtuellen Computern im Hauptsubnetz.
 
-Mithilfe von [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) werden der Netzwerkdatenverkehr innerhalb des virtuellen Netzwerks eingeschränkt und Subnetze isoliert.
+Mithilfe von [Netzwerksicherheitsgruppen](../../virtual-network/virtual-network-vnet-plan-design-arm.md) werden der Netzwerkdatenverkehr innerhalb des virtuellen Netzwerks eingeschränkt und Subnetze isoliert.
 
 In Azure muss DB2 pureScale TCP/IP als Netzwerkverbindung zum Speicher verwenden.
 

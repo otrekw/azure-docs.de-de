@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117120"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507844"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA (große Instanzen) in Azure
 
@@ -42,11 +42,11 @@ Wenn Sie planen, HANA 2.0 zu installieren, lesen Sie [SAP Support Note #2235581 
 
 Nachdem Sie die HANA-Einheiten (große Instanzen) von Microsoft erhalten haben, überprüfen Sie die folgenden Einstellungen und passen sie nach Bedarf an.
 
-Nachdem Sie SAP HANA (große Instanzen) erhalten und den Zugriff auf die Instanzen und die Konnektivität mit ihnen hergestellt haben, ist der **erste Schritt**, im Azure-Portal zu überprüfen, ob die Instanzen dort mit den richtigen SKUs und Betriebssystemen angezeigt werden. Lesen Sie [Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal), um sich über die erforderlichen Schritte zum Durchführen der Überprüfungen zu informieren.
+Nachdem Sie SAP HANA (große Instanzen) erhalten und den Zugriff auf die Instanzen und die Konnektivität mit ihnen hergestellt haben, ist der **erste Schritt**, im Azure-Portal zu überprüfen, ob die Instanzen dort mit den richtigen SKUs und Betriebssystemen angezeigt werden. Lesen Sie [Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal](./hana-li-portal.md), um sich über die erforderlichen Schritte zum Durchführen der Überprüfungen zu informieren.
 
 Der **zweite Schritt** nach dem Erhalt der SAP HANA-Einheiten (große Instanzen) und der Einrichtung des Zugriffs und der Konnektivität besteht darin, das Betriebssystem der Instanz bei Ihrem Betriebssystemanbieter zu registrieren. Zu diesem Schritt gehört das Registrieren Ihres SUSE Linux-Betriebssystems in einer Instanz von SUSE SMT, die auf einer VM in Azure bereitgestellt ist. 
 
-Die HANA-Einheit (große Instanzen) kann eine Verbindung mit dieser SMT-Instanz herstellen. (Weitere Informationen finden Sie unter [Einrichten eines SMT-Servers für SUSE Linux](hana-setup-smt.md).) Alternativ dazu muss Ihr Red Hat-Betriebssystem beim Red Hat Subscription Manager registriert werden, mit dem Sie eine Verbindung herstellen müssen. Weitere Informationen finden Sie unter [Was ist SAP HANA in Azure (große Instanzen)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Die HANA-Einheit (große Instanzen) kann eine Verbindung mit dieser SMT-Instanz herstellen. (Weitere Informationen finden Sie unter [Einrichten eines SMT-Servers für SUSE Linux](hana-setup-smt.md).) Alternativ dazu muss Ihr Red Hat-Betriebssystem beim Red Hat Subscription Manager registriert werden, mit dem Sie eine Verbindung herstellen müssen. Weitere Informationen finden Sie unter [Was ist SAP HANA in Azure (große Instanzen)?](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json). 
 
 Dieser Schritt ist auch zum Patchen des Betriebssystems notwendig – dies liegt in der Zuständigkeit des Kunden. Für SUSE finden Sie die Dokumentation zur Installation und Konfiguration von SMT auf der Seite zur [SMT-Installation](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
@@ -127,10 +127,10 @@ Deshalb müssen Sie einen separaten Zeitserver einrichten, der von den auf Azure
 ## <a name="networking"></a>Netzwerk
 Es wird davon ausgegangen, dass Sie beim Entwerfen Ihrer virtuellen Azure-Netzwerke und Verbinden dieser Netzwerke mit den großen HANA-Instanzen den Empfehlungen in den folgenden Dokumenten gefolgt sind:
 
-- [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](./hana-overview-architecture.md)
 - [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Es gibt einige Details zum Netzwerkbetrieb der einzelnen Einheiten, die Sie kennen sollten. Jede HANA-Einheit (große Instanzen) wird mit zwei oder drei IP-Adressen geliefert, die zwei oder drei Netzwerkkartenports zugewiesen sind. Drei IP-Adressen werden in HANA-Konfigurationen für die horizontale Skalierung und im Szenario für die HANA-Systemreplikation verwendet. Eine der IP-Adressen, die der Netzwerkkarte der Einheit zugewiesen sind, stammt aus dem Server-IP-Pool, der in [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) beschrieben ist.
+Es gibt einige Details zum Netzwerkbetrieb der einzelnen Einheiten, die Sie kennen sollten. Jede HANA-Einheit (große Instanzen) wird mit zwei oder drei IP-Adressen geliefert, die zwei oder drei Netzwerkkartenports zugewiesen sind. Drei IP-Adressen werden in HANA-Konfigurationen für die horizontale Skalierung und im Szenario für die HANA-Systemreplikation verwendet. Eine der IP-Adressen, die der Netzwerkkarte der Einheit zugewiesen sind, stammt aus dem Server-IP-Pool, der in [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](./hana-overview-architecture.md) beschrieben ist.
 
 Weitere Informationen zu den Ethernet-Daten für Ihre Architektur finden Sie unter [Unterstützte Szenarien für große HANA-Instanzen](hana-supported-scenario.md).
 
@@ -265,7 +265,3 @@ Informationen zum Speicherlayout für Ihre Architektur finden Sie unter [Unterst
 
 
  
-
-
-
-

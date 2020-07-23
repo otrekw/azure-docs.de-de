@@ -3,20 +3,20 @@ title: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 description: Konfigurieren von Log Analytics-Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich mithilfe von Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e6ba8eb98ca1d6af9fc745d9baf3840ccd1ac224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195705"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498048"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 
-Die von Azure Backup bereitgestellte Berichterstellungslösung nutzt Log Analytics (LA). Damit die Daten eines beliebigen Tresors an La gesendet werden, muss für diesen Tresor eine [Diagnoseeinstellung](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) erstellt werden.
+Die von Azure Backup bereitgestellte Berichterstellungslösung nutzt Log Analytics (LA). Damit die Daten eines beliebigen Tresors an La gesendet werden, muss für diesen Tresor eine [Diagnoseeinstellung](./backup-azure-diagnostic-events.md) erstellt werden.
 
 Häufig ist das manuelle Hinzufügen einer Diagnoseeinstellung pro Tresor eine mühselige Aufgabe. Außerdem müssen für jeden neu erstellten Tresor auch Diagnoseeinstellungen aktiviert sein, damit für diesen Tresor Berichte angezeigt werden können.
 
-Um das Erstellen von Diagnoseeinstellungen nach Maß (mit LA als Ziel) zu vereinfachen, bietet Azure Backup eine integrierte [Azure Policy](https://docs.microsoft.com/azure/governance/policy/). Diese Richtlinie fügt allen Tresoren in einem bestimmten Abonnement oder einer bestimmten Ressourcengruppe eine LA-Diagnoseeinstellung hinzu. Die folgenden Abschnitte enthalten Anweisungen zur Verwendung dieser Richtlinie.
+Um das Erstellen von Diagnoseeinstellungen nach Maß (mit LA als Ziel) zu vereinfachen, bietet Azure Backup eine integrierte [Azure Policy](../governance/policy/index.yml). Diese Richtlinie fügt allen Tresoren in einem bestimmten Abonnement oder einer bestimmten Ressourcengruppe eine LA-Diagnoseeinstellung hinzu. Die folgenden Abschnitte enthalten Anweisungen zur Verwendung dieser Richtlinie.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
@@ -70,7 +70,7 @@ Der Korrekturtask wird auf Tresore angewendet, die gemäß der Definition der Ri
 * Für den Tresor ist keine Diagnoseeinstellung vorhanden.
 * Für den Tresor sind Diagnoseeinstellungen vorhanden, aber für keine der Einstellungen sind **alle** ressourcenspezifischen Ereignisse mit LA als Ziel aktiviert und **Ressourcenspezifisch** in der Umschaltfläche ausgewählt.
 
-Also auch wenn ein Benutzer über einen Tresor verfügt, für den das AzureBackupReport-Ereignis im AzureDiagnostics-Modus (der von Sicherungsberichten unterstützt wird) aktiviert ist, wird der Korrekturtask weiterhin für diesen Tresor angewendet, da der ressourcenspezifische Modus [zukünftig](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) die empfohlene Methode zum Erstellen von Diagnoseeinstellungen ist.
+Also auch wenn ein Benutzer über einen Tresor verfügt, für den das AzureBackupReport-Ereignis im AzureDiagnostics-Modus (der von Sicherungsberichten unterstützt wird) aktiviert ist, wird der Korrekturtask weiterhin für diesen Tresor angewendet, da der ressourcenspezifische Modus [zukünftig](./backup-azure-diagnostic-events.md#legacy-event) die empfohlene Methode zum Erstellen von Diagnoseeinstellungen ist.
 
 Außerdem wird dann, wenn ein Benutzer über einen Tresor verfügt, für den nur eine Teilmenge der sechs ressourcenspezifischen Ereignisse aktiviert ist, der Korrekturtask für diesen Tresor angewendet, da Sicherungsberichte nur dann erwartungsgemäß funktionieren, wenn alle sechs ressourcenspezifischen Ereignisse aktiviert sind.
 
@@ -84,6 +84,6 @@ Außerdem wird dann, wenn ein Benutzer über einen Tresor verfügt, für den nur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [ Weitere Informationen zum Verwenden von Sicherungsberichten](https://docs.microsoft.com/azure/backup/configure-reports)
-* [Weitere Informationen zu Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
-* [Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+* [ Weitere Informationen zum Verwenden von Sicherungsberichten](./configure-reports.md)
+* [Weitere Informationen zu Azure Policy](../governance/policy/index.yml)
+* [Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy](./backup-azure-auto-enable-backup.md)

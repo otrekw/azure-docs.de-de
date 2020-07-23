@@ -6,12 +6,12 @@ ms.author: mbullwin
 author: mrbullwinkle
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: c903855dd7a550cfeef845d9c176e7ce7806a0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90743a213092aacfa10139c12f47bc11faf0d86d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946908"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498711"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>Problembehandlung für arbeitsmappenbasierte Erkenntnisse
 
@@ -72,4 +72,4 @@ Wählen Sie „Edit“ (Bearbeiten) in diesem Schritt aus, und wählen Sie dann 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

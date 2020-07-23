@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945493"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498915"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Informationen zu Azure Monitor für Azure Cosmos DB
 
@@ -78,7 +78,7 @@ Wählen Sie oben auf der Seite **Fehler** aus, und der Bereich **Fehler** der Ar
 | `201 Created` | Ein POST-Vorgang zum Erstellen einer Ressource war erfolgreich. |
 | `404 Not Found` | Es wird versucht, eine nicht mehr vorhandene Ressource zu verarbeiten. Beispiel: Die Ressource wurde möglicherweise bereits gelöscht. |
 
-Eine vollständige Liste der Statuscodes finden Sie im Artikel zu [Azure Cosmos DB HTTP-Statuscodes](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Eine vollständige Liste der Statuscodes finden Sie im Artikel zu [Azure Cosmos DB HTTP-Statuscodes](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ### <a name="capacity"></a>Capacity
 
@@ -98,7 +98,7 @@ Im folgenden Beispiel ist ersichtlich, dass `eastus-billingint` hauptsächlich L
 
 ## <a name="pin-export-and-expand"></a>Anheften, Exportieren und Erweitern
 
-Sie können einen beliebigen Metrikabschnitt an ein [Azure-Dashboard](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) anheften, indem Sie oben rechts im Abschnitt das Stecknadelsymbol auswählen.
+Sie können einen beliebigen Metrikabschnitt an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md) anheften, indem Sie oben rechts im Abschnitt das Stecknadelsymbol auswählen.
 
 ![Beispiel für das Anheften eines Metrikabschnitts an das Dashboard](./media/cosmosdb-insights-overview/pin.png)
 
@@ -126,6 +126,6 @@ Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
+* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
 
 * Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

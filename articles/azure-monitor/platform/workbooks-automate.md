@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982138"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504919"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programmgesteuertes Verwalten von Arbeitsmappen
 
@@ -78,7 +78,7 @@ Es gibt zwei Arten von Arbeitsmappenressourcen, die programmgesteuert verwaltet 
     }
     ```
 1. Geben Sie im `galleries`-Objekt für die Schlüssel `name` und `category` Ihre Werte ein. Im nächsten Abschnitt erfahren Sie mehr über [Parameter](#parameters).
-2. Stellen Sie diese Azure Resource Manager-Vorlage über das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), die [Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli) oder [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell) usw. bereit.
+2. Stellen Sie diese Azure Resource Manager-Vorlage über das [Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), die [Befehlszeilenschnittstelle](../../azure-resource-manager/templates/deploy-cli.md) oder [PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) usw. bereit.
 3. Öffnen Sie das Azure-Portal, und navigieren Sie zum Arbeitsmappenkatalog, der in der Azure Resource Manager-Vorlage ausgewählt wurde. Navigieren Sie in der Beispielvorlage zum Azure Monitor-Arbeitsmappenkatalog:
     1. Öffnen Sie das Azure-Portal, und navigieren Sie zu Azure Monitor.
     2. Öffnen Sie `Workbooks` aus dem Inhaltsverzeichnis.

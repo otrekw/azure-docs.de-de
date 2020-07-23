@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60878394"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497181"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Verschlüsselung von Daten in Azure Data Lake Storage Gen1
 
@@ -52,8 +52,8 @@ In beiden Modi wird der Masterverschlüsselungsschlüssel geschützt, indem er A
 
 Im Anschluss folgt eine kurze Gegenüberstellung der Funktionen, die in den beiden MEK-Verwaltungsmodi zur Verfügung stehen:
 
-|  | Vom Dienst verwaltete Schlüssel | Vom Kunden verwaltete Schlüssel |
-| --- | --- | --- |
+| Frage | Vom Dienst verwaltete Schlüssel | Vom Kunden verwaltete Schlüssel |
+| -------- | -------------------- | --------------------- |
 |Wie werden die Daten gespeichert?|Immer verschlüsselt (vor dem Speichern)|Immer verschlüsselt (vor dem Speichern)|
 |Wo wird der Masterverschlüsselungsschlüssel gespeichert?|Key Vault|Key Vault|
 |Werden Verschlüsselungsschlüssel unverschlüsselt außerhalb von Key Vault gespeichert? |Nein|Nein|
@@ -74,7 +74,7 @@ Beachten Sie beim Auswählen des Modus für die Masterverschlüsselungsschlüsse
 
 Im Rahmen der Datenverschlüsselung gibt es drei Arten von Schlüsseln. In der folgenden Tabelle erhalten Sie einen Überblick:
 
-| Key                   | Abkürzung | Zugeordnet zu | Speicherort                             | type       | Notizen                                                                                                   |
+| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | type       | Hinweise                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Masterverschlüsselungsschlüssel | MEK          | Ein Data Lake Storage Gen1-Konto | Key Vault                              | Asymmetrisch | Kann von Data Lake Storage Gen1 oder von Ihnen verwaltet werden.                                                              |
 | Datenverschlüsselungsschlüssel   | DEK          | Ein Data Lake Storage Gen1-Konto | Persistenter Speicher (vom Data Lake Storage Gen1-Dienst verwaltet) | Symmetrisch  | Der DEK wird vom MEK verschlüsselt. Der verschlüsselte DEK ist das, was auf einem persistenten Medium gespeichert wird. |

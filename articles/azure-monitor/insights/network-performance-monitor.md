@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480877"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498962"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -32,7 +32,7 @@ Der Netzwerkleistungsmonitor bietet drei allgemeine Funktionen:
 
 * [ExpressRoute-Monitor](network-performance-monitor-expressroute.md): Überwachen Sie die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über Azure ExpressRoute.  
 
-Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) unterstützten Funktionen sind online verfügbar.
+Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) unterstützten Funktionen sind online verfügbar.
  
 ## <a name="supported-regions"></a>Unterstützte Regionen
 NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der folgenden Regionen gehostet wird:
@@ -61,7 +61,7 @@ NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil de
 * China, Osten 2
 
 
-Die Liste der unterstützten Regionen für ExpressRoute-Monitor ist in der [Dokumentation](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117) verfügbar.
+Die Liste der unterstützten Regionen für ExpressRoute-Monitor ist in der [Dokumentation](../../expressroute/how-to-npm.md?utm_swu=8117) verfügbar.
 
 
 ## <a name="set-up-and-configure"></a>Einrichten und Konfigurieren
@@ -256,9 +256,9 @@ Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten graf
 
 ## <a name="alerts"></a>Alerts
 
-Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
+Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](../platform/alerts-overview.md).
 
-Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) verwaltet werden.  
+Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](../platform/action-groups.md) verwaltet werden.  
 
 Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu erstellen: 
 1. Es wird ein Link angezeigt, der Sie zum Azure-Portal umleitet. Klicken Sie darauf, um das Portal aufzurufen.
@@ -269,7 +269,7 @@ Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu
 Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über das Azure-Portal zu erstellen:  
 1. Sie können wahlweise Ihre E-Mail-Adresse direkt eingeben oder Warnungen über Aktionsgruppen erstellen.
 2. Wenn Sie Ihre E-Mail-Adresse direkt eingeben möchten, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt und die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt.
-3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
+3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
 4. Nachdem die Warnung erfolgreich erstellt wurde, können Sie über den Link „Warnungen verwalten“ Ihre Warnungen verwalten. 
 
 Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle 5 Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/pricing/details/monitor/) abgerechnet.

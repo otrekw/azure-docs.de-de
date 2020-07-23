@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 6fb9f691afc8874b19ca4575408027357f07cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833535"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505770"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Aktualisieren von Log Analytics-Dashboardvisualisierungen
 
@@ -25,7 +25,7 @@ Diese neue Visualisierungstechnologie ermöglicht Ihnen neue und verbesserte Fun
 
 Mit Azure-Dashboards können Sie den Status Ihrer gesamten Azure-Oberfläche visualisieren. Dashboards bieten eine zentrale Konsole für den Status Ihrer Azure-Umgebung und ermöglichen eine Vielzahl von Verknüpfungen für häufige Aktionen. 
 
-Weitere Informationen finden Sie unter [Azure-Dashboards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards).
+Weitere Informationen finden Sie unter [Azure-Dashboards](../../azure-portal/azure-portal-dashboards.md).
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>Aktualisieren von Log Analytics-Dashboardbereichen

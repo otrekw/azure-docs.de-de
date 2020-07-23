@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 854421452228a54833da4b0f05669c6d5f1c842f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460425"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501737"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -40,10 +40,10 @@ Für die folgenden Schritte benötigen Sie Folgendes:
 - Einen virtuellen Linux-Computer, der für die Verwendung in Azure vorbereitet wurde. Im Abschnitt [Vorbereiten des virtuellen Computers](#prepare-the-vm) dieses Artikels erfahren Sie, wo Sie distributionsspezifische Informationen zur Installation des Azure Linux-Agents (waagent) finden. Dieser ist erforderlich, um eine SSH-Verbindung mit einem virtuellen Computer herstellen zu können.
 - Die VHD-Datei einer vorhandenen [ von Azure unterstützten Linux-Distribution](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (oder [Informationen zu nicht unterstützten Distributionen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) an einen virtuellen Datenträger im VHD-Format. Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
   - Installieren und konfigurieren Sie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) oder [KVM](https://www.linux-kvm.org/page/RunningKVM), und verwenden Sie dabei „VHD“ als Imageformat. Bei Bedarf können Sie mit `qemu-img convert`[ein Image konvertieren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats).
-  - Unter [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) und [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) können Sie auch Hyper-V verwenden.
+  - Unter [Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) und [Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)) können Sie auch Hyper-V verwenden.
 
 > [!NOTE]
-> Das modernere VHDX-Format wird in Azure noch nicht unterstützt. Wenn Sie einen virtuellen Computer erstellen, geben Sie als Format VHD an. VHDX-Datenträger können bei Bedarf mit [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) oder mit dem PowerShell-Cmdlet [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) in eine VHD konvertiert werden. Das Hochladen dynamischer VHDs wird von Azure nicht unterstützt. Daher müssen solche Datenträger vor dem Hochladen in statische VHDs konvertiert werden. Mit Tools wie den [Azure VHD-Hilfsprogrammen für Go](https://github.com/Microsoft/azure-vhd-utils-for-go) können Sie dynamische Datenträger beim Hochladen in Azure konvertieren.
+> Das modernere VHDX-Format wird in Azure noch nicht unterstützt. Wenn Sie einen virtuellen Computer erstellen, geben Sie als Format VHD an. VHDX-Datenträger können bei Bedarf mit [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) oder mit dem PowerShell-Cmdlet [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) in eine VHD konvertiert werden. Das Hochladen dynamischer VHDs wird von Azure nicht unterstützt. Daher müssen solche Datenträger vor dem Hochladen in statische VHDs konvertiert werden. Mit Tools wie den [Azure VHD-Hilfsprogrammen für Go](https://github.com/Microsoft/azure-vhd-utils-for-go) können Sie dynamische Datenträger beim Hochladen in Azure konvertieren.
 > 
 > 
 

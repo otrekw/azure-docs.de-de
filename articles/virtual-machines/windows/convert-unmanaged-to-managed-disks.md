@@ -7,12 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658198"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508609"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
@@ -35,7 +35,7 @@ Wenn Sie über vorhandene virtuelle Windows-Computer (VMs) verfügen, die nicht 
 ## <a name="convert-single-instance-vms"></a>Konvertieren von Einzelinstanz-VMs
 In diesem Abschnitt wird beschrieben, wie Sie für Einzelinstanz-VMs von Azure die Konvertierung von nicht verwalteten Datenträgern in verwaltete Datenträger durchführen. (Wenn Ihre VMs in einer Verfügbarkeitsgruppe enthalten sind, lesen Sie den nächsten Abschnitt.) 
 
-1. Heben Sie die Zuordnung der VM mit dem Cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) auf. Im folgenden Beispiel wird die Zuordnung für die VM `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben: 
+1. Heben Sie die Zuordnung der VM mit dem Cmdlet [Stop-AzVM](/powershell/module/az.compute/stop-azvm) auf. Im folgenden Beispiel wird die Zuordnung für die VM `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben: 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -43,7 +43,7 @@ In diesem Abschnitt wird beschrieben, wie Sie für Einzelinstanz-VMs von Azure d
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. Konvertieren Sie die VM mit dem Cmdlet [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) in verwaltete Datenträger. Mit dem folgenden Prozess wird der vorherige virtuelle Computer einschließlich des Betriebssystemdatenträgers und der anderen Datenträger konvertiert, und der virtuelle Computer wird gestartet:
+2. Konvertieren Sie die VM mit dem Cmdlet [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) in verwaltete Datenträger. Mit dem folgenden Prozess wird der vorherige virtuelle Computer einschließlich des Betriebssystemdatenträgers und der anderen Datenträger konvertiert, und der virtuelle Computer wird gestartet:
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -55,7 +55,7 @@ In diesem Abschnitt wird beschrieben, wie Sie für Einzelinstanz-VMs von Azure d
 
 Falls sich die VMs, die Sie in verwaltete Datenträger konvertieren möchten, in einer Verfügbarkeitsgruppe befinden, müssen Sie zuerst für die Verfügbarkeitsgruppe die Konvertierung in eine verwaltete Verfügbarkeitsgruppe durchführen.
 
-1. Konvertieren Sie die Verfügbarkeitsgruppe mit dem Cmdlet [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset). Im folgenden Beispiel wird die Verfügbarkeitsgruppe `myAvailabilitySet` aus der Ressourcengruppe `myResourceGroup` aktualisiert:
+1. Konvertieren Sie die Verfügbarkeitsgruppe mit dem Cmdlet [Update-AzAvailabilitySet](/powershell/module/az.compute/update-azavailabilityset). Im folgenden Beispiel wird die Verfügbarkeitsgruppe `myAvailabilitySet` aus der Ressourcengruppe `myResourceGroup` aktualisiert:
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -72,7 +72,7 @@ Falls sich die VMs, die Sie in verwaltete Datenträger konvertieren möchten, in
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. Heben Sie die Zuordnung der VMs in der Verfügbarkeitsgruppe auf, und konvertieren Sie sie. Das folgende Skript hebt mit dem Cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) die Zuordnung aller virtuellen Computer auf, konvertiert sie mit [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) und startet sie als Teil des Konvertierungsprozesses automatisch neu:
+2. Heben Sie die Zuordnung der VMs in der Verfügbarkeitsgruppe auf, und konvertieren Sie sie. Das folgende Skript hebt mit dem Cmdlet [Stop-AzVM](/powershell/module/az.compute/stop-azvm) die Zuordnung aller virtuellen Computer auf, konvertiert sie mit [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) und startet sie als Teil des Konvertierungsprozesses automatisch neu:
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -108,4 +108,3 @@ Nach Abschluss der Migration wird die VM angehalten und neu gestartet.
 [Konvertieren von verwalteten Standarddatenträgern in Premium-Datenträger](convert-disk-storage.md)
 
 Erstellen Sie eine schreibgeschützte Kopie eines virtuellen Computers mit [Momentaufnahmen](snapshot-copy-managed-disk.md).
-

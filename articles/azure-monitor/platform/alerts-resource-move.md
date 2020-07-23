@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830059"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505481"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Aktualisieren von Warnungs- oder Aktionsregeln beim Verschieben der entsprechenden Zielressource in eine andere Azure-Region
 
-In diesem Artikel erfahren Sie, warum das Verschieben anderer Azure-Ressourcen in eine andere Region möglicherweise Auswirkungen auf vorhandene [Warnungsregeln](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) und [Aktionsregeln](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) hat, und wie Sie diese Probleme identifizieren und beheben. Weitere Informationen dazu, wann ein Verschieben von Ressourcen in eine andere Region sinnvoll ist, sowie eine Checkliste für die Planung eines Verschiebungsvorgangs finden Sie in der [Hauptdokumentation für das Verschieben von Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-region).
+In diesem Artikel erfahren Sie, warum das Verschieben anderer Azure-Ressourcen in eine andere Region möglicherweise Auswirkungen auf vorhandene [Warnungsregeln](./alerts-overview.md) und [Aktionsregeln](./alerts-action-rules.md) hat, und wie Sie diese Probleme identifizieren und beheben. Weitere Informationen dazu, wann ein Verschieben von Ressourcen in eine andere Region sinnvoll ist, sowie eine Checkliste für die Planung eines Verschiebungsvorgangs finden Sie in der [Hauptdokumentation für das Verschieben von Ressourcen](../../azure-resource-manager/management/move-region.md).
 
 ## <a name="why-the-problem-exists"></a>Gründe für das Problem
 
-Warnungsregeln und Aktionsregeln verweisen auf andere Azure-Ressourcen. Beispiele hierfür sind [Azure-VMs](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate), [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-move-resources-across-regions) und [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-move). Wenn Sie die Ressourcen verschieben, auf die diese Regeln verweisen, funktionieren die Regeln wahrscheinlich nicht mehr ordnungsgemäß, da sie die Ressourcen, auf die sie verweisen, nicht finden können.
+Warnungsregeln und Aktionsregeln verweisen auf andere Azure-Ressourcen. Beispiele hierfür sind [Azure-VMs](../../site-recovery/azure-to-azure-tutorial-migrate.md), [Azure SQL](../../azure-sql/database/move-resources-across-regions.md) und [Azure Storage](../../storage/common/storage-account-move.md). Wenn Sie die Ressourcen verschieben, auf die diese Regeln verweisen, funktionieren die Regeln wahrscheinlich nicht mehr ordnungsgemäß, da sie die Ressourcen, auf die sie verweisen, nicht finden können.
 
 Es gibt zwei Hauptgründe dafür, warum Ihre Regeln nach dem Verschieben der Zielressourcen möglicherweise nicht mehr funktionieren:
 
@@ -94,20 +94,20 @@ Wenn **nur ein paar** der Ressourcen im Bereich verschoben wurden, müssen Sie d
 
 ### <a name="change-scope-of-a-rule-using-rest-api"></a>Ändern des Bereichs einer Regel über die REST-API
 
-1. Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](https://docs.microsoft.com/rest/api/monitor/metricalerts/get), [Aktivitätsprotokollwarnungen](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/get)).
-2. Ändern Sie den Bereich ([Aktivitätsprotokollwarnungen](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/update)).
-3. Stellen Sie die Regel erneut bereit ([Metrikwarnungen](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate), [Aktivitätsprotokollwarnungen](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/createorupdate)).
+1. Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](/rest/api/monitor/metricalerts/get), [Aktivitätsprotokollwarnungen](/rest/api/monitor/activitylogalerts/get)).
+2. Ändern Sie den Bereich ([Aktivitätsprotokollwarnungen](/rest/api/monitor/activitylogalerts/update)).
+3. Stellen Sie die Regel erneut bereit ([Metrikwarnungen](/rest/api/monitor/metricalerts/createorupdate), [Aktivitätsprotokollwarnungen](/rest/api/monitor/activitylogalerts/createorupdate)).
 
 ### <a name="change-scope-of-a-rule-using-powershell"></a>Ändern des Bereichs einer Regel mit PowerShell
 
-1. Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2), [Aktivitätsprotokollwarnungen](https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert), [Aktionsregeln](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Get-AzActionRule)).
+1. Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](/powershell/module/az.monitor/get-azmetricalertrulev2), [Aktivitätsprotokollwarnungen](/powershell/module/az.monitor/get-azactivitylogalert), [Aktionsregeln](/powershell/module/az.alertsmanagement/get-azactionrule)).
 2. Ändern Sie den Bereich. Teilen Sie die Regel ggf. in zwei Regeln auf (bei Metrikwarnungen in einigen Fällen relevant, siehe oben).
-3. Stellen Sie die Regel erneut bereit ([Metrikwarnungen](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2), [Aktivitätsprotokollwarnungen](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert), [Aktionsregeln](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)).
+3. Stellen Sie die Regel erneut bereit ([Metrikwarnungen](/powershell/module/az.monitor/add-azmetricalertrulev2), [Aktivitätsprotokollwarnungen](/powershell/module/az.monitor/enable-azactivitylogalert), [Aktionsregeln](/powershell/module/az.alertsmanagement/set-azactionrule)).
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Ändern des Bereichs einer Regel über die Azure CLI
 
-1.  Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [Aktivitätsprotokollwarnungen](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
-2.  Aktualisieren Sie den Regelbereich direkt ([Metrikwarnungen](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [Aktivitätsprotokollwarnungen](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope)).
+1.  Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+2.  Aktualisieren Sie den Regelbereich direkt ([Metrikwarnungen](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert/scope)).
 3.  Teilen Sie die Regel ggf. in zwei Regeln auf (bei Metrikwarnungen in einigen Fällen relevant, siehe oben).
 
 ## <a name="next-steps"></a>Nächste Schritte

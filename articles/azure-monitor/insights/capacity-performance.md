@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666942"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499544"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (veraltet)
 
@@ -44,7 +44,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 | [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
 | [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein    | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
 | [SCOM-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
-| [Azure-Speicherkonto](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
+| [Azure-Speicherkonto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -109,7 +109,7 @@ Klicken Sie auf die Kachel „Kapazität und Leistung“, um das Dashboard „Ka
 
 Computingumgebungen für die Produktion können sich von einer Organisation zur nächsten stark unterscheiden. Die Workloads in Bezug auf die Kapazität und Leistung richten sich unter Umständen danach, wie Ihre VMs ausgeführt werden und was Sie als normal betrachten. Bestimmte Verfahren, die Ihnen beim Messen der Leistung als Hilfe dienen sollen, treffen für Ihre Umgebung also ggf. nicht zu. Aus diesem Grund ist eine allgemeiner gehaltene Anleitung für Sie hilfreicher. Microsoft veröffentlicht viele verschiedene Artikel mit Anleitungen und Beschreibungen zum Messen der Leistung.
 
-Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazität und Leistung aus verschiedenen Quellen gesammelt werden, z.B. auch von Leistungsindikatoren. Nutzen Sie diese Daten zur Kapazität und Leistung, die auf den einzelnen Oberflächen der Lösung angezeigt werden, und vergleichen Sie Ihre Ergebnisse mit den Ergebnissen im Artikel [Measuring Performance on Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) (Messen der Leistung in Hyper-V). Der Artikel wurde zwar schon vor einiger Zeit veröffentlicht, aber die Metriken, Aspekte und Richtlinien sind immer noch gültig. Der Artikel enthält auch Links zu anderen nützlichen Ressourcen.
+Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazität und Leistung aus verschiedenen Quellen gesammelt werden, z.B. auch von Leistungsindikatoren. Nutzen Sie diese Daten zur Kapazität und Leistung, die auf den einzelnen Oberflächen der Lösung angezeigt werden, und vergleichen Sie Ihre Ergebnisse mit den Ergebnissen im Artikel [Measuring Performance on Hyper-V](https://www.microsoft.com/en-us/download/details.aspx?id=56495) (Messen der Leistung in Hyper-V). Der Artikel wurde zwar schon vor einiger Zeit veröffentlicht, aber die Metriken, Aspekte und Richtlinien sind immer noch gültig. Der Artikel enthält auch Links zu anderen nützlichen Ressourcen.
 
 
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen

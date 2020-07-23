@@ -6,12 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114427"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505447"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
 > [!WARNING]
@@ -176,7 +176,7 @@ Um eine Warnung mithilfe einer Resource Manager-Vorlage zu erstellen, erstellen 
 }
 ```
 
-Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel [finden Sie hier](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel [finden Sie hier](/rest/api/monitor/alertrules).
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Resource Manager-Vorlage für eine Ressource mit einer klassischen Metrikwarnung
 Eine Warnung in einer Resource Manager-Vorlage ist sehr nützlich, wenn bei der Erstellung einer Ressource auch eine Warnung erstellt wird. Ein Beispiel: Sie möchten sicherstellen, dass die Regel „CPU % > 80“ jedes Mal bei der Bereitstellung eines virtuellen Computers eingerichtet wird. Dazu fügen Sie die Warnungsregel dem Ressourcenarray für Ihre VM-Vorlage als Ressource hinzu und richten außerdem mithilfe der Eigenschaft `dependsOn` eine Abhängigkeit zur Ressourcen-ID des virtuellen Computers ein. Das folgende vollständige Beispiel erstellt einen virtuellen Windows-Computer und fügt eine Warnung hinzu, die Abonnementadministratoren benachrichtigt, wenn die CPU-Auslastung die Schwelle von 80 % überschreitet.
@@ -402,4 +402,3 @@ Eine Warnung in einer Resource Manager-Vorlage ist sehr nützlich, wenn bei der 
 * [Weitere Informationen zu Warnungen](alerts-overview.md)
 * [Hinzufügen von Diagnoseeinstellungen](../../azure-monitor/platform/diagnostic-settings-template.md) zu Ihrer Resource Manager-Vorlage
 * Informationen zur JSON-Syntax und zu den Eigenschaften finden Sie in der Vorlagenreferenz für [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules).
-

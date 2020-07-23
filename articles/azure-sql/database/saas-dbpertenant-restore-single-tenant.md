@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027901"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504328"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Wiederherstellen eines einzelnen Mandanten mit einer SaaS-Anwendung mit einer Datenbank pro Mandant
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie zwei Muster der Datenwiederherstellung kennen:
 > * Wiederherstellen einer Datenbank in eine parallele Datenbank (Nebeneinander)
 > * Direktes Wiederherstellen einer Datenbank mit Ersetzen der vorhandenen Datenbank
 
-|||
+| Muster | BESCHREIBUNG |
 |:--|:--|
 | Wiederherstellen in eine parallele Datenbank | Dieses Muster kann für Aufgaben wie Überprüfung, Überwachung und Compliance verwendet werden, um einem Mandanten das Überprüfen des Zustands seiner Daten zu einem früheren Zeitpunkt zu ermöglichen. Die aktuelle Datenbank des Mandanten bleibt online und unverändert erhalten. |
 | Direktes Wiederherstellen | Dieses Muster wird normalerweise zum Wiederherstellen eines Mandanten auf einen früheren Zeitpunkt verwendet, nachdem der Mandant versehentlich Daten gelöscht oder beschädigt hat. Die ursprüngliche Datenbank wird offline geschaltet und durch die wiederhergestellte Datenbank ersetzt. |

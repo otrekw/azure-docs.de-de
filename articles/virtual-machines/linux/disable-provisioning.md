@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045755"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494512"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Deaktivieren oder Entfernen des Linux-Agents aus VMs und Images
 
 Bevor Sie den Linux-Agent entfernen, sollten Sie wissen, welche Aktionen die VM nicht mehr ausführen kann, nachdem der Linux-Agent entfernt wurde.
 
-[Erweiterungen](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) für Azure-VMs sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf Azure-VMs nach der Bereitstellung ermöglichen. Erweiterungen werden über die Azure-Steuerungsebene installiert und verwaltet. Es ist Aufgabe des [Azure Linux-Agents](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux), die Plattformerweiterungsbefehle zu verarbeiten und den ordnungsgemäßen Zustand der Erweiterungen auf der jeweiligen VM sicherzustellen.
+[Erweiterungen](../extensions/overview.md) für Azure-VMs sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf Azure-VMs nach der Bereitstellung ermöglichen. Erweiterungen werden über die Azure-Steuerungsebene installiert und verwaltet. Es ist Aufgabe des [Azure Linux-Agents](../extensions/agent-linux.md), die Plattformerweiterungsbefehle zu verarbeiten und den ordnungsgemäßen Zustand der Erweiterungen auf der jeweiligen VM sicherzustellen.
 
 Auf der Azure-Plattform werden Erweiterungen für viele Zwecke gehostet, z.B. VM-Konfiguration, Überwachung, Sicherheit und Hilfsprogramme. Es gibt eine große Auswahl an Erst- und Drittanbietererweiterungen. Zu den Beispielen für Hauptszenarien, für die Erweiterungen verwendet werden, gehören:
 * Unterstützung von Erstanbieter-Azure-Diensten wie Azure Backup, Überwachung, Datenträgerverschlüsselung, Sicherheit, Standortreplikation und weitere
@@ -31,7 +31,7 @@ Auf der Azure-Plattform werden Erweiterungen für viele Zwecke gehostet, z.B. VM
 
 ## <a name="disabling-extension-processing"></a>Deaktivieren von Erweiterungsverarbeitung
 
-Je nach Ihren Anforderungen gibt es mehrere Möglichkeiten, die Erweiterungsverarbeitung zu deaktivieren. Aber bevor Sie fortfahren, **MÜSSEN** Sie alle Erweiterungen entfernen, die auf der VM bereitgestellt werden. Dazu können Sie z. B. die AZ-CLI verwenden, um [aufzulisten](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) und zu [löschen](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Je nach Ihren Anforderungen gibt es mehrere Möglichkeiten, die Erweiterungsverarbeitung zu deaktivieren. Aber bevor Sie fortfahren, **MÜSSEN** Sie alle Erweiterungen entfernen, die auf der VM bereitgestellt werden. Dazu können Sie z. B. die AZ-CLI verwenden, um [aufzulisten](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) und zu [löschen](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ Wenn Sie die VM aus einem Image erstellen, das keinen Linux-Agent hat, müssen S
 > 
 > Wenn Sie dies nicht tun, versucht die Plattform, die Erweiterungskonfiguration zu senden, und nach 40 Minuten ergibt sich ein Timeout für die Plattform.
 
-Um die VM mit deaktivierten Erweiterungen bereitzustellen, können Sie die Azure CLI mit [--enable-agent](https://docs.microsoft.com/cli/azure/vm#az-vm-create) verwenden.
+Um die VM mit deaktivierten Erweiterungen bereitzustellen, können Sie die Azure CLI mit [--enable-agent](/cli/azure/vm#az-vm-create) verwenden.
 
 ```bash
 az vm create \

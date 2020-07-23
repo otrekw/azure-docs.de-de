@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255234"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507827"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Sicherungsanleitung für SAP HANA in Azure Virtual Machines
 
@@ -25,11 +25,11 @@ ms.locfileid: "78255234"
 
 In der Sicherungsanleitung für SAP HANA auf virtuellen Azure-Computern (Azure Virtual Machines) werden nur Azure-spezifische Themen beschrieben. Informationen zu allgemeinen Aspekten der SAP HANA-Sicherung finden Sie in der Dokumentation zu SAP HANA. Wir erwarten, dass Sie mit den grundsätzlichen Sicherungsstrategien für Datenbanken sowie den Gründen und Motiven für eine zuverlässige und effektive Sicherungsstrategie vertraut sind. Außerdem sollten Sie mit den Anforderungen Ihres Unternehmens an das Sicherungsverfahren, der Aufbewahrungsdauer der Sicherungen und dem Wiederherstellungsverfahren vertraut sein.
 
-SAP HANA wird offiziell von verschiedenen Azure-VM-Typen, z.B der Azure M-Serie, unterstützt. Eine vollständige Liste der für SAP HANA zertifizierten Azure-VMs und Einheiten für SAP HANA (große Instanzen) finden Sie unter [Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) (Zertifizierte IaaS-Plattformen). Microsoft Azure bietet eine Reihe von Einheiten, in denen SAP HANA nicht virtualisiert auf physischen Servern läuft. Dieser Dienst heißt [HANA (große Instanzen)](hana-overview-architecture.md). In diesem Leitfaden werden Sicherungsprozesse und Tools für HANA (große Instanzen) nicht behandelt. Wir beschränken uns auf virtuelle Azure-Computer. Einzelheiten zu Sicherungs-/Wiederherstellungsverfahren für HANA (große Instanzen) finden Sie im Artikel [Sichern und Wiederherstellen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore).
+SAP HANA wird offiziell von verschiedenen Azure-VM-Typen, z.B der Azure M-Serie, unterstützt. Eine vollständige Liste der für SAP HANA zertifizierten Azure-VMs und Einheiten für SAP HANA (große Instanzen) finden Sie unter [Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) (Zertifizierte IaaS-Plattformen). Microsoft Azure bietet eine Reihe von Einheiten, in denen SAP HANA nicht virtualisiert auf physischen Servern läuft. Dieser Dienst heißt [HANA (große Instanzen)](hana-overview-architecture.md). In diesem Leitfaden werden Sicherungsprozesse und Tools für HANA (große Instanzen) nicht behandelt. Wir beschränken uns auf virtuelle Azure-Computer. Einzelheiten zu Sicherungs-/Wiederherstellungsverfahren für HANA (große Instanzen) finden Sie im Artikel [Sichern und Wiederherstellen](./hana-backup-restore.md).
 
 Der Schwerpunkt dieses Artikels liegt auf drei Sicherungsmöglichkeiten für SAP HANA auf virtuellen Azure-Computern:
 
-- HANA-Sicherung per [Azure Backup-Dienste](https://docs.microsoft.com/azure/backup/backup-overview) 
+- HANA-Sicherung per [Azure Backup-Dienste](../../../backup/backup-overview.md) 
 - HANA-Sicherung im Dateisystem eines virtuellen Azure-Computers mit Linux (siehe [SAP HANA-Azure-Sicherung auf Dateiebene](sap-hana-backup-file-level.md))
 - HANA-Sicherung basierend auf Speichermomentaufnahmen per manueller Nutzung der Azure Storage Blob-Momentaufnahmenfunktion oder des Azure Backup-Diensts
 
@@ -37,18 +37,18 @@ Der Schwerpunkt dieses Artikels liegt auf drei Sicherungsmöglichkeiten für SAP
 SAP HANA verfügt über eine Sicherungs-API, sodass Sicherungstools von Drittanbietern direkt in SAP HANA integriert werden können. Produkte wie der Azure Backup-Dienst oder [Commvault](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/) nutzen diese proprietäre Schnittstelle, um SAP HANA-Datenbank- oder -Redo-Log-Sicherungen auszulösen. 
 
 
-Informationen dazu, wie Sie herausfinden können, welche SAP-Software in Azure unterstützt wird, finden Sie im Artikel [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure).
+Informationen dazu, wie Sie herausfinden können, welche SAP-Software in Azure unterstützt wird, finden Sie im Artikel [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](./sap-supported-product-on-azure.md).
 
 ## <a name="azure-backup-service"></a>Azure Backup-Dienst
 
 Im ersten gezeigten Szenario werden der Azure Backup-Dienst und die SAP HANA-Schnittstelle `backint` verwendet, um eine Streamingsicherung einer SAP HANA-Datenbank durchzuführen. Alternativ können Sie auch eine allgemeinere Funktion des Azure Backup-Diensts einsetzen, um eine anwendungskonsistente Datenträger-Momentaufnahme zu erstellen und diese in den Azure Backup-Dienst übertragen zu lassen.
 
-Azure Backup ist eine integrierte und zertifizierte Sicherungslösung für SAP HANA, die die proprietäre SAP HANA-Schnittstelle [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) verwendet. Weitere Einzelheiten zur Lösung, ihren Fähigkeiten und den Azure-Regionen, in denen sie verfügbar ist, finden Sie im Artikel [Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). Einzelheiten und grundsätzliche Informationen zum Azure Backup-Dienst für HANA finden Sie im Artikel [Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines](https://docs.microsoft.com/azure/backup/sap-hana-db-about). 
+Azure Backup ist eine integrierte und zertifizierte Sicherungslösung für SAP HANA, die die proprietäre SAP HANA-Schnittstelle [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) verwendet. Weitere Einzelheiten zur Lösung, ihren Fähigkeiten und den Azure-Regionen, in denen sie verfügbar ist, finden Sie im Artikel [Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern](../../../backup/sap-hana-backup-support-matrix.md#scenario-support). Einzelheiten und grundsätzliche Informationen zum Azure Backup-Dienst für HANA finden Sie im Artikel [Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines](../../../backup/sap-hana-db-about.md). 
 
-Die zweite Möglichkeit, den Azure Backup-Dienst zu nutzen, ist die Erstellung einer anwendungskonsistenten Sicherung mithilfe von Datenträger-Momentaufnahmen von Azure Storage Premium. Andere für HANA zertifizierte Azure-Speicher wie [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd) und [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) unterstützen diese Art von Momentaufnahmen über den Azure Backup-Dienst nicht. Lesen Sie diese Artikel:
+Die zweite Möglichkeit, den Azure Backup-Dienst zu nutzen, ist die Erstellung einer anwendungskonsistenten Sicherung mithilfe von Datenträger-Momentaufnahmen von Azure Storage Premium. Andere für HANA zertifizierte Azure-Speicher wie [Azure Ultra Disk](../../linux/disks-enable-ultra-ssd.md) und [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) unterstützen diese Art von Momentaufnahmen über den Azure Backup-Dienst nicht. Lesen Sie diese Artikel:
 
-- [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
-- [Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) 
+- [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../../../backup/backup-azure-vms-introduction.md)
+- [Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure](../../../backup/backup-azure-linux-app-consistent.md) 
 
 Diese Abfolge von Aktivitäten ergibt sich:
 
@@ -104,7 +104,7 @@ Informationen zur Überprüfung der Konsistenz von Tabellen finden Sie außerdem
 
 Im SAP-System besteht keine Präferenz in Bezug auf die HANA-Sicherung bzw. die Speichermomentaufnahme. Die Vor- und Nachteile werden aufgeführt, damit Benutzer je nach Situation und verfügbarer Speichertechnologie ermitteln können, welches Verfahren am besten geeignet ist (siehe [Planning Your Backup and Recovery Strategy](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) (Planen Ihrer Sicherungs- und Wiederherstellungsstrategie)).
 
-Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Dateisystemkonsistenz auf mehreren Datenträgern garantiert ist (siehe [Using blob snapshots with PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) [Verwenden von Blob-Momentaufnahmen mit PowerShell]). 
+Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Dateisystemkonsistenz auf mehreren Datenträgern garantiert ist (siehe [Using blob snapshots with PowerShell](/archive/blogs/cie/using-blob-snapshots-with-powershell) [Verwenden von Blob-Momentaufnahmen mit PowerShell]). 
 
 Außerdem sollten Sie über die Abrechnungsaspekte informiert sein, wenn Sie Blob-Momentaufnahmen häufiger nutzen. Dies ist in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges) (Informationen zu den Gebühren, die für Momentaufnahmen entstehen). Dies ist nicht so einfach wie die Verwendung von virtuellen Azure-Datenträgern.
 

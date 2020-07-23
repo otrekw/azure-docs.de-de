@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945459"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498950"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)
 Azure Monitor für Key Vault (Vorschauversion) ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
@@ -24,7 +24,7 @@ Bevor Sie sich mit der Umgebung befassen, sollten Sie sich mit der Darstellung u
 -   **Drilldownanalyse** für einen bestimmten Schlüsseltresor, um eine ausführliche Analyse zu ermöglichen.
 -    **Anpassbarkeit**. Dadurch können Sie ändern, welche Metriken angezeigt werden, auf Ihre Grenzwerte abgestimmte Schwellenwerte festlegen und Ihre eigene Arbeitsmappe speichern. Diagramme in der Arbeitsmappe können an Azure-Dashboards angeheftet werden.
 
-Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. Die metrikbasierten Überwachungsdaten stehen allen Benutzern zur Verfügung. Für die Einbeziehung protokollbasierter Visualisierungen müssen die Benutzer jedoch unter Umständen die [Protokollierung ihrer Azure Key Vault-Instanz aktivieren](https://docs.microsoft.com/azure/key-vault/key-vault-logging).
+Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. Die metrikbasierten Überwachungsdaten stehen allen Benutzern zur Verfügung. Für die Einbeziehung protokollbasierter Visualisierungen müssen die Benutzer jedoch unter Umständen die [Protokollierung ihrer Azure Key Vault-Instanz aktivieren](../../key-vault/general/logging.md).
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>Konfigurieren Ihrer Schlüsseltresore für die Überwachung
 
@@ -39,7 +39,7 @@ Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um e
 
 3. Nachdem Sie die Diagnoseeinstellungen gespeichert haben, können Sie alle protokollbasierten Diagramme und Visualisierungen unterhalb der Key Vault-Erkenntnisse anzeigen. Beachten Sie, dass es einige Minuten oder Stunden dauern kann, bis die Protokolle aufgefüllt werden.
 
-4. Weitere Informationen zur Aktivierung von Diagnoseprotokollen für Ihren Key Vault-Dienst finden Sie im [vollständigen Leitfaden](https://docs.microsoft.com/azure/key-vault/key-vault-logging).
+4. Weitere Informationen zur Aktivierung von Diagnoseprotokollen für Ihren Key Vault-Dienst finden Sie im [vollständigen Leitfaden](../../key-vault/general/logging.md).
 
 ## <a name="view-from-azure-monitor"></a>Anzeigen in Azure Monitor
 
@@ -75,7 +75,7 @@ Für Spalten in der Arbeitsmappe, in denen API-Treffermetriken mit einem blauen 
 
 In der Arbeitsmappe werden erfolgreiche Vorgänge (2xx-Statuscodes), Authentifizierungsfehler (401/403-Statuscodes), Drosselungen (429-Statuscodes) und andere Fehler (4xx-Statuscodes) angezeigt.
 
-Informationen zum besseren Verständnis der einzelnen Statuscodes finden Sie in der [Dokumentation zu Status- und Antwortcodes von Azure Key Vault](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses).
+Informationen zum besseren Verständnis der einzelnen Statuscodes finden Sie in der [Dokumentation zu Status- und Antwortcodes von Azure Key Vault](../../key-vault/general/authentication-requests-and-responses.md).
 
 ## <a name="operations--latency-workbook"></a>Arbeitsmappe „Vorgänge und Wartezeit“
 
@@ -120,7 +120,7 @@ Die Arbeitsmappe „Vorgänge“ ermöglicht es Benutzern, sich mit sämtlichen 
 Benutzer können in der oberen Tabelle auch Sichten auf der Grundlage spezifischer Transaktionstypen festlegen, wodurch die untere Tabelle dynamisch aktualisiert wird. Dort können Benutzer dann umfassende Vorgangsdetails in einem eingeblendeten Kontextbereich anzeigen.
 
 >[!NOTE]
-> Zum Anzeigen dieser Arbeitsmappe müssen die Diagnoseeinstellungen aktiviert sein. Weitere Informationen zum Aktivieren von Diagnoseeinstellungen finden Sie unter [Azure Key Vault-Protokollierung](https://docs.microsoft.com/azure/key-vault/general/logging).
+> Zum Anzeigen dieser Arbeitsmappe müssen die Diagnoseeinstellungen aktiviert sein. Weitere Informationen zum Aktivieren von Diagnoseeinstellungen finden Sie unter [Azure Key Vault-Protokollierung](../../key-vault/general/logging.md).
 
 ## <a name="pin-and-export"></a>Anheften und exportieren
 
@@ -164,7 +164,7 @@ Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekann
 
 ### <a name="resolving-performance-issues-or-failures"></a>Beheben von Leistungsproblemen oder Fehlern
 
-Informationen zur Behandlung schlüsseltresorbezogener Probleme, die Sie mit Azure Monitor für Key Vault (Vorschauversion) identifizieren, finden Sie in der [Dokumentation zu Azure Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Informationen zur Behandlung schlüsseltresorbezogener Probleme, die Sie mit Azure Monitor für Key Vault (Vorschauversion) identifizieren, finden Sie in der [Dokumentation zu Azure Key Vault](../../key-vault/index.yml).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Warum werden nur 200 Schlüsseltresore angezeigt?
 
@@ -208,4 +208,4 @@ Sie können die vorhandene Arbeitsmappe im Bearbeitungsmodus bearbeiten und Ihre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.

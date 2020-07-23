@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494784"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-Erweiterung für Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) ist eine Verwaltungsplattform, die Ihnen das Verwalten Ihrer IT- und Entwicklungsinfrastruktur per Konfiguration in Form von Code ermöglicht.
 
 > [!NOTE]
-> Die DSC-Erweiterung für Linux und die [Azure Monitor-VM-Erweiterung für Linux](/azure/virtual-machines/extensions/oms-linux) stehen zurzeit im Konflikt miteinander, und parallele Konfigurationen der beiden werden nicht unterstützt. Verwenden Sie nicht beide Lösungen zusammen auf der gleichen VM.
+> Die DSC-Erweiterung für Linux und die [Azure Monitor-VM-Erweiterung für Linux](./oms-linux.md) stehen zurzeit im Konflikt miteinander, und parallele Konfigurationen der beiden werden nicht unterstützt. Verwenden Sie nicht beide Lösungen zusammen auf der gleichen VM.
 
 Die DSCForLinux-Erweiterung wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den OMI- und DSC-Agent auf virtuellen Azure-Computern. Die DSC-Erweiterung kann auch die folgenden Aktionen ausführen:
 
@@ -42,7 +42,7 @@ Die DSCForLinux-Erweiterung wird von Microsoft veröffentlicht und unterstützt.
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die DSC Linux-Erweiterung unterstützt alle [von Azure unterstützte Distributionen von Linux](/azure/virtual-machines/linux/endorsed-distros), außer:
+Die DSC Linux-Erweiterung unterstützt alle [von Azure unterstützte Distributionen von Linux](../linux/endorsed-distros.md), außer:
 
 | Distribution | Version |
 |---|---|

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443586"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500921"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-Neustartschleife auf einem virtuellen Azure-Computer
 In diesem Artikel wird die Neustartschleife beschrieben, die auf einem virtuellen Windows-Computer (Virtual Machine, VM) in Microsoft Azure auftreten kann.
@@ -50,7 +50,7 @@ Eine Beschädigung des Dateisystems kann die Ursache dafür sein. Die Änderung,
 
 ## <a name="solution"></a>Lösung
 
-Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern](../windows/snapshot-copy-managed-disk.md), [den Betriebssystemdatenträger an einen virtuellen Wiederherstellungscomputer anfügen](../windows/troubleshoot-recovery-disks-portal.md) und dann den Lösungsoptionen entsprechend folgen oder die einzelnen Lösungen nacheinander ausprobieren.
+Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern](../windows/snapshot-copy-managed-disk.md), [den Betriebssystemdatenträger an einen virtuellen Wiederherstellungscomputer anfügen](./troubleshoot-recovery-disks-portal-windows.md) und dann den Lösungsoptionen entsprechend folgen oder die einzelnen Lösungen nacheinander ausprobieren.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
@@ -94,7 +94,7 @@ Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern
 
 16. [Erstellen Sie einen neuen virtuellen Computer auf Grundlage des Betriebssystemdatenträgers](../windows/create-vm-specialized.md).
 
-17. Wenn das Problem behoben wurde, müssen Sie möglicherweise den [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) („WaAppAgent.exe“) neu installieren.
+17. Wenn das Problem behoben wurde, müssen Sie möglicherweise den [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) („WaAppAgent.exe“) neu installieren.
 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
@@ -113,5 +113,3 @@ Stellen Sie die letzte als funktionierend bekannte Konfiguration des virtuellen 
 4. Entfernen Sie den Datenträger von dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, und warten Sie ca. 2 Minuten, bis Azure diesen Datenträger freigibt.
 
 5. [Erstellen Sie einen neuen virtuellen Computer auf Grundlage des Betriebssystemdatenträgers](../windows/create-vm-specialized.md).
-
-

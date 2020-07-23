@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564022"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507572"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory
 
@@ -80,7 +80,7 @@ Zum Einrichten einer neuen Active Directory-Gesamtstruktur und -Domäne benötig
 * Mindestens einen virtueller Computer, auf dem Microsoft Windows Server ausgeführt wird und der als Domänencontroller für die neue Active Directory-Gesamtstruktur und -Domäne verwendet werden soll.
 * Mindestens ein virtueller Computer, auf dem der DNS-Dienst für Namensauflösung ausgeführt wird.
 
-Ausführliche Schritte finden Sie unter [Installieren einer neuen Windows Server 2012 Active Directory-Gesamtstruktur](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-).
+Ausführliche Schritte finden Sie unter [Installieren einer neuen Windows Server 2012 Active Directory-Gesamtstruktur](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-).
 
 > [!TIP]
 > Für Hochverfügbarkeit von Diensten empfiehlt es sich, mehrere Domänencontroller und DNS-Server einzurichten.
@@ -94,7 +94,7 @@ Um eine neue Active Directory-Domäne in einer vorhandenen Active Directory-Gesa
 * Site-to-Site-VPN-Verbindung mit dem Standort Ihrer Active Directory-Gesamtstruktur.
 * DNS-Server, um den Namen der vorhandenen Active Directory-Gesamtstruktur aufzulösen.
 
-Ausführliche Schritte finden Sie unter [Installieren einer neuen untergeordneten Windows Server 2012-Active Directory-Domäne oder -Strukturdomäne](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-).
+Ausführliche Schritte finden Sie unter [Installieren einer neuen untergeordneten Windows Server 2012-Active Directory-Domäne oder -Strukturdomäne](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-).
 
 Nachdem Sie die Active Directory-Domäne eingerichtet haben, können Sie [eine Identitätsquelle für vCenter](#add-an-identity-source-on-vcenter) für Ihr neues Active Directory hinzufügen.
 

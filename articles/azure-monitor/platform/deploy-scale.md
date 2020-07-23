@@ -4,12 +4,12 @@ description: Bedarfsorientiertes Bereitstellen der Features von Azure Monitor mi
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678697"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505209"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy
 Während einige Features von Azure Monitor einmalig oder nur für eine begrenzte Zahl von Malen konfiguriert werden, muss dies bei anderen für jede Ressource wiederholt werden, die Sie überwachen möchten. In diesem Artikel werden Methoden beschrieben, wie Sie Azure Monitor mit Azure Policy bedarfsorientiert implementieren, um sicherzustellen, dass die Überwachung für alle Ihre Azure-Ressourcen konsistent und genau konfiguriert ist.
@@ -31,7 +31,7 @@ Azure Policy umfasst die Objekte in der folgenden Tabelle: Eine ausführlichere 
 | Zuweisung | Eine Richtliniendefinition oder -initiative tritt erst in Kraft, wenn sie einem Bereich zugewiesen wird. Weisen Sie z. B. einer Ressourcengruppe eine Richtlinie zu, um sie auf alle Ressourcen anzuwenden, die in dieser Ressource erstellt werden, oder wenden Sie sie auf ein Abonnement an, um sie auf alle Ressourcen in diesem Abonnement anzuwenden.  Weitere Informationen finden Sie unter [Azure Policy-Zuweisungsstruktur](../../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Integrierte Richtliniendefinitionen für Azure Monitor
-Azure Policy enthält mehrere vordefinierte Definitionen im Zusammenhang mit Azure Monitor. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine umfassende Liste der integrierten Richtlinien in der Kategorie **Überwachung** finden Sie unter [Integrierte Azure Policy-Definitionen für Azure Monitor](../policy-samples.md).
+Azure Policy enthält mehrere vordefinierte Definitionen im Zusammenhang mit Azure Monitor. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine umfassende Liste der integrierten Richtlinien in der Kategorie **Überwachung** finden Sie unter [Integrierte Azure Policy-Definitionen für Azure Monitor](../samples/policy-samples.md).
 
 Führen Sie die folgenden Schritte aus, um die in Bezug auf die Überwachung integrierten Richtliniendefinitionen anzuzeigen:
 
@@ -60,7 +60,7 @@ Für Ressourcentypen, die über keine integrierte Richtlinie verfügen, müssen 
 Das Skript [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) erstellt Richtliniendateien für einen bestimmten Ressourcentyp, die Sie mithilfe von PowerShell oder der CLI installieren können. Erstellen Sie eine benutzerdefinierte Richtliniendefinition für Diagnoseeinstellungen mit folgendem Verfahren.
 
 
-1. Vergewissern Sie sich, dass [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) installiert ist.
+1. Vergewissern Sie sich, dass [Azure PowerShell](/powershell/azure/install-az-ps) installiert ist.
 2. Installieren Sie das Skript mit folgendem Befehl:
   
     ```azurepowershell

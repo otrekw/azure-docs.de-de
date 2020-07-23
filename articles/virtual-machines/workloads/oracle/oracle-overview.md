@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: rogardle
-ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507861"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Übersicht über Oracle-Anwendungen und -Lösungen in Azure
 
@@ -55,13 +55,13 @@ Führen Sie Unternehmensanwendungen in Azure mit unterstützten Oracle Linux-Ima
 
 * Verwenden Sie [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md), um die Notfallwiederherstellung für Ihre Oracle Linux-VMs in Azure sowie für Ihre physischen Server zu organisieren und zu verwalten. 
 
-* Aktivieren Sie Oracle Real Application Cluster (RAC) in Azure mithilfe von [Azure VMware Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) oder [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
+* Aktivieren Sie Oracle Real Application Cluster (RAC) in Azure mithilfe von [Azure VMware Solution](../../../vmware-cloudsimple/oracle-real-application-clusters.md) oder [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="backup-oracle-workloads"></a>Sichern von Oracle-Workloads
 
-* Sichern Sie Ihre Oracle-VMs mit [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
+* Sichern Sie Ihre Oracle-VMs mit [Azure Backup](../../../backup/backup-overview.md).
 
-* Sichern Sie Ihre Oracle Database-Datenbank mit Oracle RMAN, und verwenden Sie optional [Azure Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux), um ein [hochgradig redundantes Azure Blob Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-redundancy) einzubinden und ihre RMAN-Sicherungen in dieses Konto zu schreiben, um weitere Resilienz zu erreichen.
+* Sichern Sie Ihre Oracle Database-Datenbank mit Oracle RMAN, und verwenden Sie optional [Azure Blobfuse](../../../storage/blobs/storage-how-to-mount-container-linux.md), um ein [hochgradig redundantes Azure Blob Storage-Konto](../../../storage/common/storage-redundancy.md) einzubinden und ihre RMAN-Sicherungen in dieses Konto zu schreiben, um weitere Resilienz zu erreichen.
 
 ## <a name="integration-of-azure-with-oci"></a>Integration von Azure in OCI
 

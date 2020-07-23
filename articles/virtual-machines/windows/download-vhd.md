@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20236ccf1ec8e1f8d8113f0597d37c20e2788987
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500428"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Herunterladen einer Windows-VHD von Azure
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals eine Windows-
 
 ## <a name="optional-generalize-the-vm"></a>Optional: Generalisieren des virtuellen Computers
 
-Wenn Sie die VHD als [Image](tutorial-custom-images.md) verwenden möchten, um andere VMs zu erstellen, sollten Sie mithilfe von [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) das Betriebssystem generalisieren. 
+Wenn Sie die VHD als [Image](tutorial-custom-images.md) verwenden möchten, um andere VMs zu erstellen, sollten Sie mithilfe von [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) das Betriebssystem generalisieren. 
 
 Um die VHD als Image zum Erstellen von anderen VMs zu verwenden, generalisieren Sie die VM.
 
@@ -45,7 +45,7 @@ Eine VHD kann nicht von Azure heruntergeladen werden, wenn sie an eine ausgefüh
 
 ## <a name="generate-download-url"></a>Generieren der Download-URL
 
-Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
+Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
 
 1. Klicken Sie auf der Seite für den virtuellen Computer im linken Menü auf **Datenträger**.
 1. Wählen Sie den Betriebssystemdatenträger für die VM aus.
@@ -68,4 +68,3 @@ Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signa
 - Erfahren Sie, wie Sie eine [VHD-Datei in Azure hochladen](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Erstellen verwalteter Datenträger auf der Grundlage nicht verwalteter Datenträger in einem Speicherkonto](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Verwalten von Azure-Datenträgern mit PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

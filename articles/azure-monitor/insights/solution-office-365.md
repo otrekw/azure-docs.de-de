@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971044"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498796"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -228,7 +228,7 @@ Sie werden zur Eingabe Ihrer Anmeldeinformationen aufgefordert. Geben Sie die An
 
 ## <a name="data-collection"></a>Datensammlung
 
-Es kann einige Stunden dauern, bis die Daten gesammelt werden. Sobald die Sammlung begonnen hat, sendet Office 365 immer dann, wenn ein Datensatz erstellt wurde, eine [Webhookbenachrichtigung](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) mit detaillierten Daten an Azure Monitor. Dieser Datensatz ist innerhalb weniger Minuten nach dem Empfang in Azure Monitor verfügbar.
+Es kann einige Stunden dauern, bis die Daten gesammelt werden. Sobald die Sammlung begonnen hat, sendet Office 365 immer dann, wenn ein Datensatz erstellt wurde, eine [Webhookbenachrichtigung](/office/office-365-management-api/office-365-management-activity-api-reference#receiving-notifications) mit detaillierten Daten an Azure Monitor. Dieser Datensatz ist innerhalb weniger Minuten nach dem Empfang in Azure Monitor verfügbar.
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 

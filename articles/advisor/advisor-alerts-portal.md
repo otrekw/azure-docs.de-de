@@ -3,18 +3,18 @@ title: Erstellen von Azure Advisor-Warnungen für neue Empfehlungen über das Az
 description: Erstellen von Azure Advisor-Warnungen für neue Empfehlungen
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567582"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507215"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Erstellen von Azure Advisor-Warnungen für neue Empfehlungen über das Azure-Portal 
 
 In diesem Artikel erfahren Sie, wie Sie eine Warnung für neue Empfehlungen von Azure Advisor über das Azure-Portal einrichten. 
 
-Sobald Azure Advisor eine neue Empfehlung für eine Ihrer Ressourcen erkennt, wird ein Ereignis im [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) gespeichert. Sie können Warnungen für diese Ereignisse von Azure Advisor mithilfe einer Benutzeroberfläche für die Erstellung empfehlungsspezifischer Warnungen einrichten. Sie können ein Abonnement und optional eine Ressourcengruppe auswählen, um die Ressourcen anzugeben, für die Sie Warnungen erhalten möchten. 
+Sobald Azure Advisor eine neue Empfehlung für eine Ihrer Ressourcen erkennt, wird ein Ereignis im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) gespeichert. Sie können Warnungen für diese Ereignisse von Azure Advisor mithilfe einer Benutzeroberfläche für die Erstellung empfehlungsspezifischer Warnungen einrichten. Sie können ein Abonnement und optional eine Ressourcengruppe auswählen, um die Ressourcen anzugeben, für die Sie Warnungen erhalten möchten. 
 
 Sie können auch die Arten von Empfehlungen mithilfe der folgenden Eigenschaften festlegen:
 
@@ -57,7 +57,7 @@ Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalte
 
     ![Advisor-Warnung – Aktionsgruppe](./media/advisor-alerts/create6.png)
 
-7. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Vorhandene hinzufügen** aus, um eine bereits erstellte Aktionsgruppe zu verwenden, oder wählen Sie **Neu erstellen** aus, um eine neue [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) einzurichten. 
+7. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Vorhandene hinzufügen** aus, um eine bereits erstellte Aktionsgruppe zu verwenden, oder wählen Sie **Neu erstellen** aus, um eine neue [Aktionsgruppe](../azure-monitor/platform/action-groups.md) einzurichten. 
 
     ![Advisor-Warnung – Vorhandene hinzufügen](./media/advisor-alerts/create7.png)
 

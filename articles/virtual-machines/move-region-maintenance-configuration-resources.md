@@ -6,18 +6,18 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676890"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501652"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Verschieben von Ressourcen in einer Wartungssteuerungskonfiguration in eine andere Region
 
 In diesem Artikel wird beschrieben, wie Sie Ressourcen, die einer Wartungssteuerungskonfiguration zugeordnet sind, in eine andere Azure-Region verschieben. Eine Konfiguration kann aus verschiedenen Gründen verschoben werden. Beispielsweise, um eine neue Region zu nutzen, um Features oder Dienste bereitzustellen, die in einer bestimmten Region verfügbar sind, um interne Richtlinien- und Governanceanforderungen zu erfüllen oder als Reaktion auf die Kapazitätsplanung.
 
-Mit der Wartungssteuerung können Sie mit angepassten Wartungskonfigurationen steuern, wie Plattformupdates auf [Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable)-VMs und auf Azure Dedicated Hosts angewendet werden. Es gibt eine Reihe von Szenarien, in denen die Wartungssteuerung regionsübergreifend verschoben wird:
+Mit der Wartungssteuerung können Sie mit angepassten Wartungskonfigurationen steuern, wie Plattformupdates auf [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)- und [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable)-VMs und auf Azure Dedicated Hosts angewendet werden. Es gibt eine Reihe von Szenarien, in denen die Wartungssteuerung regionsübergreifend verschoben wird:
 
 - Befolgen Sie die Schritte diesen Artikel, um die einer Wartungskonfiguration zugeordneten Ressourcen, nicht aber die Konfiguration selbst zu verschieben.
 - Wenn Sie Ihre Wartungssteuerungskonfiguration, nicht aber die der Konfiguration zugeordneten Ressourcen verschieben möchten, befolgen Sie [diese Anweisungen](move-region-maintenance-configuration.md).
@@ -49,7 +49,7 @@ Bevor Sie mit dem Verschieben der Ressourcen beginnen, die mit einer Wartungsste
     $adh | Name des dedizierten Hosts | „myhost“
     $adhParentName | Name der übergeordneten Ressource | „HostGroup“
     
-2. Abrufen der Wartungskonfigurationen mithilfe des PowerShell-Befehls [Get-AZConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/Get-AzConfigurationAssignment?view=azps-3.5.0):
+2. Abrufen der Wartungskonfigurationen mithilfe des PowerShell-Befehls [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0):
 
     - Führen Sie für Azure Dedicated Hosts Folgendes aus:
         ```
@@ -61,7 +61,7 @@ Bevor Sie mit dem Verschieben der Ressourcen beginnen, die mit einer Wartungsste
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. Abrufen der Wartungskonfigurationen mithilfe des CLI-Befehls [az maintenance assignment](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest):
+3. Abrufen der Wartungskonfigurationen mithilfe des CLI-Befehls [az maintenance assignment](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest):
 
     - Für Azure Dedicated Hosts:
 
@@ -78,7 +78,7 @@ Bevor Sie mit dem Verschieben der Ressourcen beginnen, die mit einer Wartungsste
 
 ## <a name="move"></a>Move 
 
-1. [Befolgen Sie diese Anweisungen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json), um die Azure-VMs in die neue Region zu verschieben.
+1. [Befolgen Sie diese Anweisungen](../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json), um die Azure-VMs in die neue Region zu verschieben.
 2. Wenden Sie nach dem Verschieben der Ressourcen die Wartungskonfigurationen bei Bedarf erneut auf die Ressourcen in der neuen Region an, je nachdem, ob Sie die Wartungskonfigurationen verschoben haben. Sie können eine Wartungskonfiguration mithilfe [von PowerShell](../virtual-machines/maintenance-control-powershell.md) oder der [CLI](../virtual-machines/maintenance-control-cli.md) auf eine Ressource anwenden.
 
 

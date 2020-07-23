@@ -3,12 +3,12 @@ title: Überwachen der Nutzung und Leistung bei Windows-Desktop-Apps
 description: Analysieren Sie die Nutzung und Leistung Ihrer Windows-Desktop-App mit Application Insights.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718783"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499187"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Überwachen der Nutzung und Leistung von klassischen Windows-Desktop-Apps
 
@@ -73,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 Standardmäßig erfasst und speichert dieses SDK den Computernamen des Systems, das Telemetriedaten ausgibt.
 
-Der Computername wird vom [Legacy-Enterprise-Tarif (pro Knoten)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) von Application Insights zu internen Abrechnungszwecken verwendet. Wenn Sie `telemetry.Context.Cloud.RoleInstance` mithilfe eines Telemetrie-Initialisierers überschreiben, wird standardmäßig die separate `ai.internal.nodeName`-Eigenschaft gesendet, die weiterhin den Wert des Computernamens enthält. Dieser Wert wird nicht mit Ihrer Application Insights-Telemetrie gespeichert, sondern intern bei der Erfassung verwendet, um Abwärtskompatibilität mit dem knotenbasierten Legacyabrechnungsmodell zuzulassen.
+Der Computername wird vom [Legacy-Enterprise-Tarif (pro Knoten)](./pricing.md#legacy-enterprise-per-node-pricing-tier) von Application Insights zu internen Abrechnungszwecken verwendet. Wenn Sie `telemetry.Context.Cloud.RoleInstance` mithilfe eines Telemetrie-Initialisierers überschreiben, wird standardmäßig die separate `ai.internal.nodeName`-Eigenschaft gesendet, die weiterhin den Wert des Computernamens enthält. Dieser Wert wird nicht mit Ihrer Application Insights-Telemetrie gespeichert, sondern intern bei der Erfassung verwendet, um Abwärtskompatibilität mit dem knotenbasierten Legacyabrechnungsmodell zuzulassen.
 
-Wenn Sie den [Legacy-Enterprise-Tarif (pro Knoten)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) verwenden und lediglich die Speicherung des Computernamens außer Kraft setzen müssen, verwenden Sie einen Telemetrie-Initialisierer:
+Wenn Sie den [Legacy-Enterprise-Tarif (pro Knoten)](./pricing.md#legacy-enterprise-per-node-pricing-tier) verwenden und lediglich die Speicherung des Computernamens außer Kraft setzen müssen, verwenden Sie einen Telemetrie-Initialisierer:
 
 **Schreiben Sie einen benutzerdefinierten Telemetrie-Initialisierer wie nachfolgend gezeigt.**
 
@@ -116,7 +116,7 @@ Instanziieren Sie den Initialisierer in der `Main()`-Methode `Program.cs` unten,
 
 ## <a name="override-transmission-of-computer-name"></a>Außerkraftsetzung der Übertragung des Computernamens
 
-Wenn Sie nicht den [Legacy-Enterprise-Tarif (pro Knoten)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) verwenden und alle Telemetriedaten, die den Computernamen enthalten, vollständig verhindern möchten, müssen Sie einen Telemetrieprozessor verwenden.
+Wenn Sie nicht den [Legacy-Enterprise-Tarif (pro Knoten)](./pricing.md#legacy-enterprise-per-node-pricing-tier) verwenden und alle Telemetriedaten, die den Computernamen enthalten, vollständig verhindern möchten, müssen Sie einen Telemetrieprozessor verwenden.
 
 ### <a name="telemetry-processor"></a>Telemetrieprozessor
 
@@ -172,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> Obwohl Sie selbst im [Legacy-Enterprise-Tarif (pro Knoten)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) grundsätzlich auch wie oben beschrieben einen Telemetrieprozessor verwenden können, führt dies zu einer möglichen erhöhten Abrechnung, da Knoten für die Abrechnung pro Knoten nicht ordnungsgemäß voneinander unterschieden werden können.
+> Obwohl Sie selbst im [Legacy-Enterprise-Tarif (pro Knoten)](./pricing.md#legacy-enterprise-per-node-pricing-tier) grundsätzlich auch wie oben beschrieben einen Telemetrieprozessor verwenden können, führt dies zu einer möglichen erhöhten Abrechnung, da Knoten für die Abrechnung pro Knoten nicht ordnungsgemäß voneinander unterschieden werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen eines Dashboards](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
 * [Untersuchen von Metriken](../../azure-monitor/platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../../azure-monitor/app/analytics.md)
-
+* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)

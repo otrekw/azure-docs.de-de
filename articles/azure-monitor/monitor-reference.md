@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085496"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505719"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -32,7 +32,7 @@ Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte A
 [Azure Monitor für Ressourcengruppen (Vorschauversion)](insights/resource-group-insights.md) |  Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und Bereitstellen eines Kontexts für die Integrität und Leistung der Ressourcengruppe als Ganzes. |
 | [Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)](insights/storage-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. |
 | [Azure Monitor für VMs](insights/vminsights-overview.md) | Überwacht Ihre virtuellen Azure-Computer (VM) und VM-Skalierungsgruppen bedarfsorientiert. Der Dienst analysiert die Leistung und Integrität Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. |
-| [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](insights/key-vaults-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. |
+| [Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)](./insights/key-vault-insights-overview.md) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. |
 | [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](insights/redis-cache-insights-overview.md) |  Bietet eine einheitliche, interaktive Ansicht der Leistung, Fehler, Kapazität und Betriebsintegrität insgesamt. |
 
 
@@ -118,7 +118,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Intune | Nein | Ja | Nein |  |
 |IoT Central | Nein | Nein | Nein |  |
 |IoT Hub | Ja | Ja | Nein |  |
-|Key Vault | Ja | Ja | [Ja](insights/key-vaults-insights-overview.md) |  |
+|Key Vault | Ja | Ja | [Ja](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nein | Nein | [Ja](insights/container-insights-overview.md)  |  |
 |Load Balancer | Ja | Ja | Nein |  |
 |Logic Apps | Ja | Ja | Nein |  |
@@ -176,20 +176,19 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 
 | Produkt/Dienst | BESCHREIBUNG |
 |:---|:---|
-| [Azure Automation](/azure/automation/) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking.md) und [Updateverwaltung](../automation/automation-update-management.md). |
-| [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klassifizieren und optionales Schützen von Dokumenten und E-Mails. Informationen finden Sie unter [Zentrale Berichterstellung für Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
-| [Azure Security Center](/azure/security-center/) | Sammeln und Analysieren von Sicherheitsereignissen und Durchführen einer Bedrohungsanalyse. Informationen finden Sie unter [Datensammlung in Azure Security Center](/azure/security-center/security-center-enable-data-collection). |
-| [Azure Sentinel](/azure/sentinel/) | Stellt eine Verbindung mit verschiedenen Quellen her, einschließlich Office 365 und Amazon Web Services CloudTrail. Lesen Sie dazu [Herstellen einer Verbindung mit Datenquellen](/azure/sentinel/connect-data-sources). |
-| [Key Vault-Analysen](insights/azure-key-vault.md) | Analysieren der AuditEvent-Protokolle von Azure Key Vault. |
-| [Microsoft Intune](https://docs.microsoft.com/intune/) | Erstellen einer Diagnoseeinstellung zum Senden von Protokollen an Azure Monitor. Informationen finden Sie unter [Senden von Daten an den Speicher, an Event Hubs oder Log Analytics in Intune (Vorschauversion)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
+| [Azure Automation](../automation/index.yml) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking.md) und [Updateverwaltung](../automation/automation-update-management.md). |
+| [Azure Information Protection](/azure/information-protection/) | Klassifizieren und optionales Schützen von Dokumenten und E-Mails. Informationen finden Sie unter [Zentrale Berichterstellung für Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
+| [Azure Security Center](../security-center/index.yml) | Sammeln und Analysieren von Sicherheitsereignissen und Durchführen einer Bedrohungsanalyse. Informationen finden Sie unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md). |
+| [Azure Sentinel](../sentinel/index.yml) | Stellt eine Verbindung mit verschiedenen Quellen her, einschließlich Office 365 und Amazon Web Services CloudTrail. Lesen Sie dazu [Herstellen einer Verbindung mit Datenquellen](../sentinel/connect-data-sources.md). |
+| [Microsoft Intune](/intune/) | Erstellen einer Diagnoseeinstellung zum Senden von Protokollen an Azure Monitor. Informationen finden Sie unter [Senden von Daten an den Speicher, an Event Hubs oder Log Analytics in Intune (Vorschauversion)](/intune/fundamentals/review-logs-using-azure-monitor).  |
+| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](../network-watcher/traffic-analytics.md): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
 | [Office 365](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Azure Sentinel verfügbar. |
 | [Azure SQL-Analyse](insights/azure-sql.md) | Bedarfsorientiertes und abonnementübergreifendes Überwachen der Leistung von Azure SQL-Datenbanken und verwalteten SQL-Instanzen. |
 | [Surface Hub](insights/surface-hubs.md) | Nachverfolgen der Integrität und Nutzung von Surface Hub-Geräten. |
-| [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | Erfassen der Daten von Operations Manager-Agents durch Herstellen einer Verbindung zwischen der jeweiligen Verwaltungsgruppe und Azure Monitor. Informationen finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](platform/om-agents.md).<br> Bewerten des Risikos und der Integrität Ihrer System Center Operations Manager-Verwaltungsgruppe mithilfe der Lösung zur [Operations Manager-Bewertung](insights/scom-assessment.md). |
-| [Microsoft Teams-Räume](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Integrierte End-to-End-Verwaltung von Geräten für Microsoft Teams-Räume. |
-| [Visual Studio App Center](https://docs.microsoft.com/appcenter/) | Erstellen, Testen und Verteilen von Anwendungen und anschließendes Überwachen von Status und Nutzung. Informationen finden Sie unter [Analysieren Ihrer mobilen Apps mit App Center und Application Insights](learn/mobile-center-quickstart.md). |
-| Windows | [Windows Update Compliance](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started): Bewerten Ihrer Windows Desktop-Upgrades.<br>[Desktop Analytics](https://docs.microsoft.com/configmgr/desktop-analytics/overview): Ist in Configuration Manager integriert und bietet Einblicke und Informationen, mit denen fundiertere Entscheidungen zur Updatebereitschaft Ihres Windows-Clients getroffen werden können. |
+| [System Center Operations Manager](/system-center/scom) | Erfassen der Daten von Operations Manager-Agents durch Herstellen einer Verbindung zwischen der jeweiligen Verwaltungsgruppe und Azure Monitor. Informationen finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](platform/om-agents.md).<br> Bewerten des Risikos und der Integrität Ihrer System Center Operations Manager-Verwaltungsgruppe mithilfe der Lösung zur [Operations Manager-Bewertung](insights/scom-assessment.md). |
+| [Microsoft Teams-Räume](/microsoftteams/room-systems/azure-monitor-deploy) | Integrierte End-to-End-Verwaltung von Geräten für Microsoft Teams-Räume. |
+| [Visual Studio App Center](/appcenter/) | Erstellen, Testen und Verteilen von Anwendungen und anschließendes Überwachen von Status und Nutzung. Informationen finden Sie unter [Analysieren Ihrer mobilen Apps mit App Center und Application Insights](learn/mobile-center-quickstart.md). |
+| Windows | [Windows Update Compliance](/windows/deployment/update/update-compliance-get-started): Bewerten Ihrer Windows Desktop-Upgrades.<br>[Desktop Analytics](/configmgr/desktop-analytics/overview): Ist in Configuration Manager integriert und bietet Einblicke und Informationen, mit denen fundiertere Entscheidungen zur Updatebereitschaft Ihres Windows-Clients getroffen werden können. |
 
 
 
@@ -204,7 +203,7 @@ Für die Überwachung verschiedener Anwendungen und Dienste stehen andere Lösun
 | [DNS-Analyse (Vorschauversion)](insights/dns-analytics.md) | Erfasst, analysiert und korreliert Windows-DNS-Analyseprotokolle und -Überwachungsprotokolle sowie andere zugehörige Daten von Ihren DNS-Servern. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Sammeln, Anzeigen und Analysieren von Integritäts- und Leistungsmetriken des Cloud Foundry-Systems über mehrere Bereitstellungen hinweg. |
 | [Container](insights/containers.md) | Anzeigen und Verwalten von Docker- und Windows-Containerhosts. |
-| [Bedarfsgesteuerte Bewertungen](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Bewerten und Optimieren der Verfügbarkeit, Sicherheit und Leistung Ihrer lokalen, hybriden und cloudbasierten Umgebungen mit Microsoft-Technologie. |
+| [Bedarfsgesteuerte Bewertungen](/services-hub/health/getting_started_with_on_demand_assessments) | Bewerten und Optimieren der Verfügbarkeit, Sicherheit und Leistung Ihrer lokalen, hybriden und cloudbasierten Umgebungen mit Microsoft-Technologie. |
 | [SQL-Integritätsprüfung](insights/sql-assessment.md) | Bewerten des Risikos und der Integrität Ihrer SQL Server-Umgebungen.  |
 | [Wire Data](insights/wire-data.md) | Konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und mit Linux verbundenen Computern mit dem Log Analytics-Agent gesammelt werden. |
 
@@ -220,7 +219,7 @@ Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor 
 
 | Resource | Methode |
 |:---|:---|
-| Anwendungen | Überwachen von Webanwendungen außerhalb von Azure mithilfe von Application Insights. Informationen finden Sie unter [Was ist Application Insights?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) |
+| Anwendungen | Überwachen von Webanwendungen außerhalb von Azure mithilfe von Application Insights. Informationen finden Sie unter [Was ist Application Insights?](./app/app-insights-overview.md) |
 | Virtuelle Computer | Verwenden des Log Analytics-Agents zum Sammeln von Daten aus dem Gastbetriebssystem virtueller Computer in anderen Cloudumgebungen oder lokal. Informationen finden Sie unter [Sammeln von Protokolldaten mit dem Log Analytics-Agent](platform/log-analytics-agent.md). |
 | REST-API-Client | Zum Schreiben von Daten in Azure Monitor-Protokolle und -Metriken von jedem Rest-API-Client aus stehen separate APIs zur Verfügung. Weitere Informationen finden Sie unter [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API](platform/data-collector-api.md) (für Protokolle) und [Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API](platform/metrics-store-custom-rest-api.md) (für Metriken). |
 

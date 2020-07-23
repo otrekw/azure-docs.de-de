@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135319"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494733"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
 Azure stellt die DNS-Namensauflösung standardmäßig für alle in einem einzelnen virtuellen Netzwerk enthaltenen virtuellen Computer bereit. Sie können Ihre eigene Lösung für die DNS-Namensauflösung implementieren, indem Sie auf Ihren in Azure gehosteten virtuellen Computern Ihre eigenen DNS-Dienste konfigurieren. Die folgenden Szenarien sollten Ihnen dabei helfen, situationsabhängig die jeweils am besten geeignete Lösung zu wählen.
@@ -121,7 +121,7 @@ Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuell
 
 Bei Verwendung der von Azure bereitgestellten Namensauflösung wird jedem virtuellen Computer über DHCP das interne DNS-Suffix bereitgestellt. Wenn Sie eine eigene Lösung für die Namensauflösung verwenden, wird dieses Suffix nicht für die virtuellen Computer bereitgestellt, weil es Konflikte mit anderen DNS-Architekturen verursacht. Um per FQDN auf Computer zu verweisen oder das Suffix auf Ihren virtuellen Computern zu konfigurieren, können Sie das Suffix mithilfe von PowerShell oder der API ermitteln:
 
-* Für von Azure Resource Manager verwaltete virtuelle Netzwerke ist das Suffix über die Ressource [Netzwerkkarte](https://msdn.microsoft.com/library/azure/mt163668.aspx) verfügbar. Zudem können Sie den Befehl `azure network public-ip show <resource group> <pip name>` ausführen, um die Details der öffentlichen IP-Adresse, einschließlich des FQDN der Netzwerkkarte, anzuzeigen.
+* Für von Azure Resource Manager verwaltete virtuelle Netzwerke ist das Suffix über die Ressource [Netzwerkkarte](/rest/api/virtualnetwork/networkinterfaces) verfügbar. Zudem können Sie den Befehl `azure network public-ip show <resource group> <pip name>` ausführen, um die Details der öffentlichen IP-Adresse, einschließlich des FQDN der Netzwerkkarte, anzuzeigen.
 
 Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, müssen Sie eine eigene DNS-Lösung bereitstellen.  Die DNS-Lösung muss Folgendes leisten:
 
@@ -131,6 +131,6 @@ Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, m�
 * Schutz vor einem Zugriff aus dem Internet, um mögliche Bedrohungen durch externe Agents zu minimieren.
 
 > [!NOTE]
-> Für eine optimale Leistung bei Verwendung von virtuellen Azure-Computern als DNS-Server sollte IPv6 deaktiviert und eine [öffentliche IP auf Instanzebene](../../virtual-network/virtual-networks-instance-level-public-ip.md) jedem virtuellen DNS-Servercomputer zugewiesen werden.  
+> Für eine optimale Leistung bei Verwendung von virtuellen Azure-Computern als DNS-Server sollte IPv6 deaktiviert und eine [öffentliche IP auf Instanzebene](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) jedem virtuellen DNS-Servercomputer zugewiesen werden.  
 >
 >

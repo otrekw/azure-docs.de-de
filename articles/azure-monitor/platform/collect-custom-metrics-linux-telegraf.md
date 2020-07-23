@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186440"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505345"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent
 
@@ -25,7 +25,7 @@ Mit Azure Monitor können Sie benutzerdefinierte Metriken über Ihre Anwendungst
  ![Übersicht über den Telegraf-Agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Benutzerdefinierte Metriken werden nicht in allen Regionen unterstützt. Die unterstützten Regionen sind [hier](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions) aufgeführt.
+> Benutzerdefinierte Metriken werden nicht in allen Regionen unterstützt. Die unterstützten Regionen sind [hier](./metrics-custom-overview.md#supported-regions) aufgeführt.
 
 ## <a name="send-custom-metrics"></a>Senden benutzerdefinierter Metriken 
 
@@ -137,6 +137,3 @@ Wenn die Ressourcengruppe, der virtuelle Computer und die dazugehörigen Ressour
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-
-
-

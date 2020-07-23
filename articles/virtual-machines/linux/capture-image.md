@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 26c8a8746fe748585f36e5282ad6e694cdcef1f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723305"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494461"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Erstellen eines verwalteten Images eines virtuellen Computers oder einer VHD
 
@@ -25,7 +25,7 @@ Wenn Sie ein verwaltetes Image erstellen möchten, müssen Sie persönliche Kont
 
 Wenn Sie zum Sichern oder Debuggen eine Kopie Ihres vorhandenen virtuellen Linux-Computers erstellen oder eine spezielle Linux-VHD über einen lokalen virtuellen Computer hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](upload-vhd.md).  
 
-Sie können den **Azure VM Image Builder (Public Preview)** -Dienst nutzen, um ein eigenes Bild zu erstellen, ohne vorher den Umgang mit Tools zu erlernen oder eine Buildpipeline einzurichten. Sie geben einfach nur eine Bildkonfiguration an, und der Image Builder erstellt dann das Bild. Weitere Informationen finden Sie unter [Erste Schritte mit Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
+Sie können den **Azure VM Image Builder (Public Preview)** -Dienst nutzen, um ein eigenes Bild zu erstellen, ohne vorher den Umgang mit Tools zu erlernen oder eine Buildpipeline einzurichten. Sie geben einfach nur eine Bildkonfiguration an, und der Image Builder erstellt dann das Bild. Weitere Informationen finden Sie unter [Erste Schritte mit Azure VM Image Builder](./image-builder-overview.md).
 
 Damit Sie ein Image erstellen können, müssen die folgenden Voraussetzungen erfüllt sein:
 
@@ -137,4 +137,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Kataloge mit freigegebenen Images](shared-images.md).
+Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Kataloge mit freigegebenen Images](../shared-images-cli.md).

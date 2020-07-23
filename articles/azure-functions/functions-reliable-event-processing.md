@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676130"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506025"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Zuverlässige Ereignisverarbeitung in Azure Functions
 
@@ -70,7 +70,7 @@ Durch die Einführung von Fehlerbehandlungsbibliotheken in ihre Funktionen könn
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) ist ein Beispiel für eine Bibliothek für Resilienz und die Behandlung vorübergehender Fehler für C#-Anwendungen.
 
-Bei der Arbeit mit vorkompilierten C#-Klassenbibliotheken gestatten Ihnen [Ausnahmefilter](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) die Ausführung von Code, wenn eine nicht behandelte Ausnahme auftritt.
+Bei der Arbeit mit vorkompilierten C#-Klassenbibliotheken gestatten Ihnen [Ausnahmefilter](/dotnet/csharp/language-reference/keywords/try-catch) die Ausführung von Code, wenn eine nicht behandelte Ausnahme auftritt.
 
 Beispiele, die veranschaulichen, wie Sie Ausnahmefilter verwenden, sind im Repository [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) verfügbar.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: d480b9309c9028d8f55ab50c72a86889f320810b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773783"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500114"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
 Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](../../cost-management-billing/understand/review-individual-bill.md).
@@ -138,10 +138,9 @@ Storage Premium-fähige virtuelle Computer werden mit derselben Gebühr wie VMs,
 
 Es gibt drei Stellen in den APIs, an denen möglicherweise das auf der VM ausgeführte Betriebssystem angezeigt wird:
 
-1) Wenn Sie VMs ausführen, die über den Gast-Agent verfügen, (alle Linux-VMs und die meisten Windows-VMs), werden der Betriebssystemname und die Betriebssystemversion in der Ansicht „VM Instances“ (VM-Instanzen) angezeigt. Diese Angaben sind immer zutreffend, aber da die Informationen vom Gast-Agent stammen, sind sie nicht bei allen VMs verfügbar. Die API-Dokumentation finden Sie [hier](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview).
-2) Über ein Plattformimage bereitgestellte VMs enthalten die Imagedetails, die möglicherweise die Betriebssystemversion in den vom Herausgeber gewählten Benennungen für das Angebot oder die SKU enthalten. Da diese Benennungen vom Herausgeber stammen, gibt es jedoch keine Garantie dafür, dass das Betriebssystem aus ihnen hervorgeht. Die API-Dokumentation finden Sie [hier](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes).
-3) Bei jedem Betriebssystem-Datenträger ist ein bestimmter Wert für Windows oder Linux angegeben. Dieser Wert wird beim Erstellen des Betriebssystem-Datenträgers aus einem Image von diesem Image geerbt. Wenn ein Betriebssystem-Datenträger direkt auf die Plattform hochgeladen wird, wird der Wert für das Betriebssystem beim Erstellen des Betriebssystem-Datenträgers festgelegt. Dieser Wert ist immer vorhanden, aber die Azure-Plattform stellt nicht dessen Richtigkeit sicher. Die API-Dokumentation finden Sie [hier](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes).
+1) Wenn Sie VMs ausführen, die über den Gast-Agent verfügen, (alle Linux-VMs und die meisten Windows-VMs), werden der Betriebssystemname und die Betriebssystemversion in der Ansicht „VM Instances“ (VM-Instanzen) angezeigt. Diese Angaben sind immer zutreffend, aber da die Informationen vom Gast-Agent stammen, sind sie nicht bei allen VMs verfügbar. Die API-Dokumentation finden Sie [hier](/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview).
+2) Über ein Plattformimage bereitgestellte VMs enthalten die Imagedetails, die möglicherweise die Betriebssystemversion in den vom Herausgeber gewählten Benennungen für das Angebot oder die SKU enthalten. Da diese Benennungen vom Herausgeber stammen, gibt es jedoch keine Garantie dafür, dass das Betriebssystem aus ihnen hervorgeht. Die API-Dokumentation finden Sie [hier](/rest/api/compute/images/get#operatingsystemtypes).
+3) Bei jedem Betriebssystem-Datenträger ist ein bestimmter Wert für Windows oder Linux angegeben. Dieser Wert wird beim Erstellen des Betriebssystem-Datenträgers aus einem Image von diesem Image geerbt. Wenn ein Betriebssystem-Datenträger direkt auf die Plattform hochgeladen wird, wird der Wert für das Betriebssystem beim Erstellen des Betriebssystem-Datenträgers festgelegt. Dieser Wert ist immer vorhanden, aber die Azure-Plattform stellt nicht dessen Richtigkeit sicher. Die API-Dokumentation finden Sie [hier](/rest/api/compute/virtualmachineimages/get#operatingsystemtypes).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Nutzungsdetails finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md).
-

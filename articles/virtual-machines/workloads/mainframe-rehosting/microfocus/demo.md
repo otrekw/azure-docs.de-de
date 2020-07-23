@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80411074"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508048"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure
 
@@ -273,7 +273,7 @@ Glückwunsch! Sie führen jetzt eine CICS-Anwendung in Azure aus, die Micro Focu
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Ausführen von Enterprise Server in Docker-Containern in Azure](run-enterprise-server-container.md)
-- [Mainframemigration – Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Problembehandlung](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Mainframemigration – Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [Virtuelle Computer](../../../linux/overview.md)
+- [Problembehandlung](../../../troubleshooting/index.yml)
 - [Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/) (Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure)

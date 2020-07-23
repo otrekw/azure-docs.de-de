@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 8ca16c8f114cf1732bcfb1c8a7d9ae85414d70e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d15db9c9ef6e1cd637d9585fe07be269346f161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79232002"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502278"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Verwalten der Verfügbarkeit virtueller Linux-Computer
 
@@ -21,5 +21,4 @@ Erfahren Sie, wie Sie mehrere virtuelle Computer einrichten und verwalten könne
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich für virtuelle Computer](../virtual-machines-linux-load-balance.md).
-
+Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich für virtuelle Computer](../../load-balancer/load-balancer-overview.md).

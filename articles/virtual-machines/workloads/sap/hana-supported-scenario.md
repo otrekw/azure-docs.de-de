@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617183"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507946"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieser Artikel beschreibt die unterstützten Szenarien und Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
@@ -195,7 +195,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](./hana-overview-architecture.md) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>Einzelner Knoten mit Notfallwiederherstellung mithilfe der Speicherreplikation
  
@@ -232,9 +232,9 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](./hana-overview-architecture.md) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der DR-HLI-Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
+- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](./hana-overview-high-availability-disaster-recovery.md).
 - Das Startvolume für die *SKU-Typ I-Klasse* wird auf dem DR-Knoten repliziert.
 
 
@@ -281,9 +281,9 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](./hana-overview-architecture.md) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der DR-HLI-Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](./hana-overview-high-availability-disaster-recovery.md). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, Protokolle und freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die Installation der QA-Instanz konfiguriert.
 - Das Startvolume für die *SKU-Typ I-Klasse* wird auf dem DR-Knoten repliziert.
 
@@ -333,7 +333,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](./hana-overview-architecture.md) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - STONITH: Eine SBD wird für das STONITH-Setup konfiguriert. Die Verwendung von STONITH ist jedoch optional.
 
 
@@ -387,11 +387,11 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](./hana-overview-architecture.md) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - STONITH: Eine SBD wird für das STONITH-Setup konfiguriert. Die Verwendung von STONITH ist jedoch optional.
 - Am DR-Standort: *Zwei Sätze von Speichervolumes* sind für die Replikation des primären und sekundären Knotens erforderlich.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der DR-HLI-Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](./hana-overview-high-availability-disaster-recovery.md). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, Protokolle und freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die Installation der QA-Instanz konfiguriert.
 - Das Startvolume für die *SKU-Typ I-Klasse* wird auf dem DR-Knoten repliziert.
 
@@ -555,7 +555,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 -  Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der DR-HLI-Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme vom Produktionsstandort repliziert. Diese Volumes werden nur während eines Failovers bereitgestellt. Weitere Informationen finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](./hana-overview-high-availability-disaster-recovery.md). 
 - Das Startvolume für die *SKU-Typ I-Klasse* wird auf dem DR-Knoten repliziert.
 
 
@@ -594,9 +594,9 @@ Die folgenden Bereitstellungspunkte sind auf beiden HLI-Einheiten (primär und D
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](./hana-overview-architecture.md) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Der primäre Knoten führt über die HANA-Systemreplikation eine Synchronisierung mit dem DR-Knoten durch. 
-- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
+- Mit [Global Reach](../../../expressroute/expressroute-global-reach.md) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
 
 
 
@@ -644,11 +644,11 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](./hana-overview-architecture.md) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der HLI-Einheit für die Notfallwiederherstellung konfiguriert (als „PROD-Instanz am DR-Standort“ markiert). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, Protokolle und freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die Installation der QA-Instanz konfiguriert.
 - Der primäre Knoten führt über die HANA-Systemreplikation eine Synchronisierung mit dem DR-Knoten durch. 
-- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
+- Mit [Global Reach](../../../expressroute/expressroute-global-reach.md) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>Hochverfügbarkeit und Notfallwiederherstellung mit HSR 
  
@@ -693,7 +693,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der HLI-Einheit für die Notfallwiederherstellung konfiguriert (als „PROD-DR-Instanz“ markiert). 
 - Der primäre Standortknoten führt über die HANA-Systemreplikation eine Synchronisierung mit dem DR-Knoten durch. 
-- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
+- Mit [Global Reach](../../../expressroute/expressroute-global-reach.md) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>Hochverfügbarkeit und Notfallwiederherstellung mit HSR (kostenoptimiert)
  
@@ -742,7 +742,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der HLI-Einheit für die Notfallwiederherstellung konfiguriert (als „PROD-DR-Instanz“ markiert). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, Protokolle und freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die Installation der QA-Instanz konfiguriert.
 - Der primäre Standortknoten führt über die HANA-Systemreplikation eine Synchronisierung mit dem DR-Knoten durch. 
-- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
+- Mit [Global Reach](../../../expressroute/expressroute-global-reach.md) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
 
 ## <a name="scale-out-with-dr-using-hsr"></a>Horizontales Hochskalieren mit DR über HSR
  
@@ -789,9 +789,9 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz auf der HLI-Einheit für die Notfallwiederherstellung konfiguriert. 
 - Der primäre Standortknoten führt über die HANA-Systemreplikation eine Synchronisierung mit dem DR-Knoten durch. 
-- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
+- Mit [Global Reach](../../../expressroute/expressroute-global-reach.md) werden die ExpressRoute-Leitungen miteinander verbunden, um ein privates Netzwerk zwischen Ihren regionalen Netzwerken aufzubauen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Infrastruktur und Konnektivität](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) für große HANA-Instanzen
-- [Hochverfügbarkeit und Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) für große HANA-Instanzen
+- [Infrastruktur und Konnektivität](./hana-overview-infrastructure-connectivity.md) für große HANA-Instanzen
+- [Hochverfügbarkeit und Notfallwiederherstellung](./hana-overview-high-availability-disaster-recovery.md) für große HANA-Instanzen

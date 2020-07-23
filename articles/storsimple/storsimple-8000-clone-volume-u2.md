@@ -4,22 +4,18 @@ description: Beschreibt die verschiedenen Klontypen und ihre Verwendung und wie 
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514984"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496144"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Verwenden des StorSimple-Geräte-Manager-Diensts im Azure-Portal zum Klonen eines Volumes
 
@@ -51,7 +47,7 @@ Beim Klonen eines Volumes müssen Sie folgende Informationen beachten.
 
 Sie können einen Klon anhand einer lokalen oder Cloudmomentaufnahme auf dem gleichen Gerät, auf einem anderen Gerät oder sogar auf einem Cloudgerät erstellen.
 
-Das folgende Verfahren beschreibt, wie ein Klon über den Sicherungskatalog erstellt wird.  Eine alternative Methode zum Initiieren eines Klons ist wie folgt: Wechseln Sie zu **Volumes**, und wählen Sie ein Volume aus. Klicken Sie mit der rechten Maustaste, um das Kontextmenü aufzurufen, und wählen Sie **Klonen** aus.
+Das folgende Verfahren beschreibt, wie ein Klon über den Sicherungskatalog erstellt wird.  
 
 Führen Sie die folgenden Schritte aus, um einen Klon des Volumes aus dem Sicherungskatalog zu erstellen.
 

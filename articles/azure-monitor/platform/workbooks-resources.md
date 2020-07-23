@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658101"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504990"
 ---
 # <a name="workbook-resource-parameters"></a>Ressourcenparameter für Arbeitsmappen
 
@@ -61,7 +61,7 @@ Die Werte der Ressourcenauswahl können aus dem Arbeitsmappenkontext, einer stat
 > [!NOTE]
 > Azure Resource Graph ist noch nicht in allen Clouds verfügbar. Stellen Sie sicher, dass es in Ihrer Zielcloud unterstützt wird, wenn Sie diese Methode wählen.
 
-[Azure Resource Graph – Dokumentation](https://docs.microsoft.com/azure/governance/resource-graph/overview)
+[Azure Resource Graph – Dokumentation](../../governance/resource-graph/overview.md)
 
 ## <a name="creating-a-resource-parameter--json-list"></a>Erstellen eines Ressourcenparameters (JSON-Liste)
 1. Beginnen Sie mit einer leeren Arbeitsmappe im Bearbeitungsmodus.

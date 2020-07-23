@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c74d4f0b2e0b2d8ca09c9b2c1f1091594f5657dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111013"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499323"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-Agent (ehemals „Statusmonitor v2“): Ausführliche Anleitungen
 
@@ -29,9 +29,7 @@ Für den Einstieg benötigen Sie einen Instrumentierungsschlüssel. Weitere Info
 PowerShell benötigt Berechtigungen auf Administratorebene, um Änderungen an Ihrem Computer vornehmen zu können.
 ### <a name="execution-policy"></a>Ausführungsrichtlinie
 - Beschreibung: Die Ausführung von PowerShell-Skripts ist standardmäßig deaktiviert. Es wird empfohlen, RemoteSigned-Skripts nur für den aktuellen Bereich zuzulassen.
-- Referenz: [Informationen zu Ausführungsrichtlinien](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) und [Set-ExecutionPolicy](
-https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
-).
+- Referenz: [Informationen zu Ausführungsrichtlinien](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) und [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6).
 - Befehl: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
 - Optionaler Parameter:
     - `-Force`. Umgeht die Bestätigungsaufforderung.
@@ -80,7 +78,7 @@ Diese Schritte bereiten Ihren Server darauf vor, Module aus dem PowerShell-Katal
 1. Führen Sie PowerShell als Administrator mit einer Ausführungsrichtlinie mit erhöhten Rechten aus.
 2. Installieren Sie den NuGet-Paketanbieter.
     - Beschreibung: Sie benötigen diesen Anbieter für die Interaktion mit NuGet-basierten Repositorys wie dem PowerShell-Katalog.
-    - Referenz: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Referenz: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
     - Befehl: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
     - Optionale Parameter:
         - `-Proxy`. Gibt einen Proxyserver für die Anforderung an.
@@ -100,7 +98,7 @@ Diese Schritte bereiten Ihren Server darauf vor, Module aus dem PowerShell-Katal
 
 3. Konfigurieren Sie den PowerShell-Katalog als vertrauenswürdiges Repository.
     - Beschreibung: Standardmäßig ist der PowerShell-Katalog ein nicht vertrauenswürdiges Repository.
-    - Referenz: [Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Referenz: [Set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6).
     - Befehl: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
     - Optionaler Parameter:
         - `-Proxy`. Gibt einen Proxyserver für die Anforderung an.
@@ -146,7 +144,7 @@ Mit diesen Schritten wird das Az.ApplicationMonitor-Modul aus dem PowerShell-Kat
 1. Sorgen Sie dafür, dass alle Voraussetzungen für den PowerShell-Katalog erfüllt sind.
 2. Führen Sie PowerShell als Administrator mit einer Ausführungsrichtlinie mit erhöhten Rechten aus.
 3. Installieren Sie das Az.ApplicationMonitor-Modul.
-    - Referenz: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
+    - Referenz: [Install-Module](/powershell/module/powershellget/install-module?view=powershell-6).
     - Befehl: `Install-Module -Name Az.ApplicationMonitor`.
     - Optionale Parameter:
         - `-Proxy`. Gibt einen Proxyserver für die Anforderung an.
@@ -172,7 +170,7 @@ Weitere Informationen finden Sie unter [Installieren eines PowerShell-Moduls](/p
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Entpacken von Nupkg als ZIP-Datei mithilfe von Expand-Archive (v1.0.1.0)
 
 - Beschreibung: Die Basisversion der Microsoft.PowerShell.Archive (v1.0.1.0) kann keine Nupkg-Dateien extrahieren. Benennen Sie die Datei mit der Erweiterung „.zip“ um.
-- Referenz: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Referenz: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
 - Befehl:
 
     ```console
@@ -186,7 +184,7 @@ Weitere Informationen finden Sie unter [Installieren eines PowerShell-Moduls](/p
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Entpacken von Nupkg mithilfe von Expand-Archive (v1.1.0.0)
 
 - Beschreibung: Verwenden Sie eine aktuelle Version von Expand-Archive, um Nupkg-Dateien zu entpacken, ohne die Erweiterung zu ändern.
-- Referenz: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) und [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Referenz: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) und [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Befehl:
 
     ```console
@@ -199,7 +197,7 @@ Weitere Informationen finden Sie unter [Installieren eines PowerShell-Moduls](/p
 Installieren Sie das manuell heruntergeladene PowerShell-Modul in einem PowerShell-Verzeichnis, damit es von PowerShell-Sitzungen erkannt werden kann.
 Weitere Informationen finden Sie unter [Installieren eines PowerShell-Moduls](/powershell/scripting/developer/module/installing-a-powershell-module).
 
-Wenn Sie das Modul in einem anderen Verzeichnis installieren, importieren Sie es manuell mithilfe von [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
+Wenn Sie das Modul in einem anderen Verzeichnis installieren, importieren Sie es manuell mithilfe von [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
 
 > [!IMPORTANT] 
 > DLLs werden über relative Pfade installiert.
@@ -218,14 +216,14 @@ Wenn Sie einen Computer in Ihrem privaten Intranet überwachen, müssen Sie HTTP
 Die PowerShell-Befehle zum Herunterladen und Installieren von Az.ApplicationMonitor aus dem PowerShell-Katalog unterstützen einen `-Proxy`-Parameter.
 Lesen Sie die vorstehenden Anleitungen, wenn Sie Ihre Installationsskripts schreiben.
 
-Das Application Insights SDK muss die Telemetrie Ihrer App an Microsoft senden. Es wird empfohlen, dass Sie die Proxyeinstellungen für Ihre App in der Datei „web.config“ konfigurieren. Weitere Informationen finden Sie unter [Application Insights – Häufig gestellte Fragen: Proxy-Passthrough](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
+Das Application Insights SDK muss die Telemetrie Ihrer App an Microsoft senden. Es wird empfohlen, dass Sie die Proxyeinstellungen für Ihre App in der Datei „web.config“ konfigurieren. Weitere Informationen finden Sie unter [Application Insights – Häufig gestellte Fragen: Proxy-Passthrough](../faq.md#proxy-passthrough).
 
 
 ## <a name="enable-monitoring"></a>Aktivieren der Überwachung
 
 Verwenden Sie den Befehl `Enable-ApplicationInsightsMonitoring` zum Aktivieren der Überwachung.
 
-Lesen Sie die [API-Referenz](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
+Lesen Sie die [API-Referenz](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring) mit einer ausführlichen Beschreibung zur Verwendung dieses Cmdlets.
 
 
 
@@ -235,7 +233,7 @@ Lesen Sie die [API-Referenz](https://docs.microsoft.com/azure/azure-monitor/app/
 
 - [Untersuchen Sie Metriken](../../azure-monitor/platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
 - [Durchsuchen Sie Ereignisse und Protokolle](../../azure-monitor/app/diagnostic-search.md), um Probleme zu diagnostizieren.
-- Verwenden Sie [Analytics](../../azure-monitor/app/analytics.md) für erweiterte Abfragen.
+- Verwenden Sie [Analytics](../log-query/log-query-overview.md) für erweiterte Abfragen.
 - [Erstellen Sie Dashboards](../../azure-monitor/app/overview-dashboard.md).
 
  Hinzufügen weiterer Telemetrieelemente:

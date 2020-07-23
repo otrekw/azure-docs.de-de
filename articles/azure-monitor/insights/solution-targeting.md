@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663231"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498677"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Zielgruppenadressierung für Überwachungslösungen in Azure Monitor (Vorschau)
 Wenn Sie eine Überwachungslösung zu Ihrem Abonnement hinzufügen, wird sie automatisch standardmäßig für alle mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt, wie Sie das Feature der **Zielgruppenadressierung für eine Lösung** verwenden, um einen Geltungsbereich auf Ihre Lösungen anzuwenden.
@@ -59,7 +59,7 @@ Wenden Sie eine Bereichskonfiguration mithilfe des folgenden Vorgangs an.
 Im Folgenden werden die Kriterien für Agents und Lösungen erörtert, die nicht mit der Zielgruppenadressierung für Lösung verwendet werden können.
 
 - Zielgruppenadressierung für Lösung kann nur auf Lösungen angewendet werden, die für Agents bereitgestellt werden.
-- Zielgruppenadressierung für Lösung kann nur auf Lösungen angewendet werden, die von Microsoft bereitgestellt werden.  Sie kann nicht auf Lösungen angewendet werden, die [von Ihnen selbst oder Partnern erstellt](solutions-creating.md) worden sind.
+- Zielgruppenadressierung für Lösung kann nur auf Lösungen angewendet werden, die von Microsoft bereitgestellt werden.  Sie kann nicht auf Lösungen angewendet werden, die [von Ihnen selbst oder Partnern erstellt](./solutions.md) worden sind.
 - Sie können nur Agents herausfiltern, die direkt mit Azure Monitor verbunden sind.  Lösungen werden automatisch für alle Agents bereitgestellt, die Teil einer verbundenen Operations Manager-Verwaltungsgruppe sind, und zwar unabhängig davon, ob sie in einer Bereichskonfiguration enthalten sind oder nicht.
 
 ### <a name="exceptions"></a>Ausnahmen

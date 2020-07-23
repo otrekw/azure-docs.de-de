@@ -4,12 +4,12 @@ description: Erfahren Sie, wie der MARS-Agent die Sicherungsszenarien unterstüt
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497946"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informationen zum Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -40,10 +40,10 @@ Der MARS-Agent unterstützt die folgenden Wiederherstellungsszenarien:
 ## <a name="backup-process"></a>Sicherungsprozess
 
 1. Erstellen Sie im Azure-Portal einen [Recovery Services-Tresor](install-mars-agent.md#create-a-recovery-services-vault), und wählen Sie unter **Sicherungsziele** die gewünschten Dateien und Ordner und den Systemstatus aus.
-2. [Laden Sie die Anmeldeinformationen für den Recovery Services-Tresor und das Agent-Installationsprogramm auf einen lokalen Computer herunter](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent).
+2. [Laden Sie die Anmeldeinformationen für den Recovery Services-Tresor und das Agent-Installationsprogramm auf einen lokalen Computer herunter](./install-mars-agent.md#download-the-mars-agent).
 
-3. [Installieren Sie den Agent](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent), und verwenden Sie die heruntergeladenen Tresoranmeldeinformationen, um den Computer im Recovery Services-Tresor zu registrieren.
-4. Wechseln Sie zur Agent-Konsole auf dem Client, und [konfigurieren Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy), um anzugeben, welche Elemente gesichert werden sollen, wann die Sicherung ausgeführt werden soll (Zeitplan) und wie lange die Sicherungen in Azure aufbewahrt werden sollen (Aufbewahrungsrichtlinie). Dann können Sie mit dem Schutz beginnen.
+3. [Installieren Sie den Agent](./install-mars-agent.md#install-and-register-the-agent), und verwenden Sie die heruntergeladenen Tresoranmeldeinformationen, um den Computer im Recovery Services-Tresor zu registrieren.
+4. Wechseln Sie zur Agent-Konsole auf dem Client, und [konfigurieren Sie die Sicherung](./backup-windows-with-mars-agent.md#create-a-backup-policy), um anzugeben, welche Elemente gesichert werden sollen, wann die Sicherung ausgeführt werden soll (Zeitplan) und wie lange die Sicherungen in Azure aufbewahrt werden sollen (Aufbewahrungsrichtlinie). Dann können Sie mit dem Schutz beginnen.
 
 ![Azure Backup-Agent-Diagramm](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
@@ -57,12 +57,12 @@ Der MARS-Agent unterstützt die folgenden Wiederherstellungsszenarien:
 
 ### <a name="additional-scenarios"></a>Zusätzliche Szenarien
 
-- **Sichern bestimmter Dateien und Ordner in virtuellen Azure-Computern**: Die primäre Methode für die Sicherung von virtuellen Azure-Computern (VMs) besteht in der Verwendung einer Azure Backup-Erweiterung auf der VM. Diese Erweiterung sichert die gesamte VM. Wenn Sie bestimmte Dateien und Ordner einer VM sichern möchten, können Sie den MARS-Agent auf den Azure-VMs installieren. Weitere Informationen finden Sie unter [Architektur: Integrierte Azure-VM-Sicherung](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
+- **Sichern bestimmter Dateien und Ordner in virtuellen Azure-Computern**: Die primäre Methode für die Sicherung von virtuellen Azure-Computern (VMs) besteht in der Verwendung einer Azure Backup-Erweiterung auf der VM. Diese Erweiterung sichert die gesamte VM. Wenn Sie bestimmte Dateien und Ordner einer VM sichern möchten, können Sie den MARS-Agent auf den Azure-VMs installieren. Weitere Informationen finden Sie unter [Architektur: Integrierte Azure-VM-Sicherung](./backup-architecture.md#architecture-built-in-azure-vm-backup).
 
 - **Offlineseeding**: Die erste vollständige Datensicherungen in Azure überträgt in der Regel große Datenmengen und erfordert mehr Netzwerkbandbreite. Bei nachfolgenden Sicherungen wird nur die Delta- oder inkrementelle Datenmenge übertragen. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des *Offlineseedings* kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen. Weitere Informationen finden Sie unter [Azure Backup-Offlinesicherung mit Azure Data Box](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Unterstützungsmatrix für den MARS-Agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
+[Unterstützungsmatrix für den MARS-Agent](./backup-support-matrix-mars-agent.md)
 
-[Häufig gestellte Fragen: MARS-Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
+[Häufig gestellte Fragen: MARS-Agent](./backup-azure-file-folder-backup-faq.md)

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fc411d3833fcd47477e7e0fe11c6da9e2114143
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502026"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -26,7 +26,7 @@ In diesem Artikel werden Möglichkeiten zum Generieren und Verwenden von *Secure
 ## <a name="windows-packages-and-ssh-clients"></a>Windows-Pakete und SSH-Clients
 Die Verbindungsherstellung mit virtuellen Linux-Computern in Azure sowie deren Verwaltung wird mithilfe eines *SSH-Clients* durchgeführt. Computer, die Linux oder macOS ausführen, verfügen in der Regel über eine Suite von SSH-Befehlen zum Generieren und Verwalten von SSH-Schlüsseln und Herstellen von SSH-Verbindungen. 
 
-Auf Windows-Computern sind nicht immer vergleichbare SSH-Befehle installiert. Neuere Versionen von Windows 10 bieten [OpenSSH-Clientbefehle](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) zum Erstellen und Verwalten von SSH-Schlüsseln und SSH-Verbindungen über eine Eingabeaufforderung. Bei aktuellen Windows 10-Versionen mit dem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/about) können Sie direkt aus einer Bash-Shell auf Hilfsprogramme, z.B. einen SSH-Client, zugreifen und diese ausführen. 
+Auf Windows-Computern sind nicht immer vergleichbare SSH-Befehle installiert. Neuere Versionen von Windows 10 bieten [OpenSSH-Clientbefehle](https://devblogs.microsoft.com/commandline/windows10v1803/) zum Erstellen und Verwalten von SSH-Schlüsseln und SSH-Verbindungen über eine Eingabeaufforderung. Bei aktuellen Windows 10-Versionen mit dem [Windows-Subsystem für Linux](/windows/wsl/about) können Sie direkt aus einer Bash-Shell auf Hilfsprogramme, z.B. einen SSH-Client, zugreifen und diese ausführen. 
 
 Andere gängige Windows-SSH-Clients, die Sie lokal installieren können, sind in den folgenden Paketen enthalten:
 
@@ -123,4 +123,4 @@ Wenn Sie das [PuTTY-Downloadpaket](https://www.chiark.greenend.org.uk/~sgtatham/
 
 * Sie können auch PowerShell in Azure Cloud Shell zum Generieren von SSH-Schlüsseln und Herstellen von SSH-Verbindungen mit virtuellen Linux-Computern verwenden. Siehe [PowerShell – Schnellstart](../../cloud-shell/quickstart-powershell.md#ssh).
 
-* Sollten beim Herstellen der SSH-Verbindung mit Ihren virtuellen Linux-Computern Probleme auftreten, lesen Sie unter [Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter.
+* Sollten beim Herstellen der SSH-Verbindung mit Ihren virtuellen Linux-Computern Probleme auftreten, lesen Sie unter [Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json) weiter.

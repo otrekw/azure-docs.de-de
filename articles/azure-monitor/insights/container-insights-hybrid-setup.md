@@ -3,12 +3,12 @@ title: Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Contai
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Stack oder einer anderen Umgebung gehostet werden.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801460"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498898"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container
 
@@ -22,7 +22,7 @@ Folgende Konfigurationen werden offiziell für Azure Monitor für Container unte
 
     - Lokales Kubernetes
     
-    - AKS-Engine in Azure und Azure Stack Weitere Informationen finden Sie unter [AKS-Engine in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+    - AKS-Engine in Azure und Azure Stack Weitere Informationen finden Sie unter [AKS-Engine in Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
     
     - [Openshift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) Version 4 und höher, lokale oder andere Cloudumgebungen.
 
@@ -85,7 +85,7 @@ Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vert
 
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 Diese Methode umfasst zwei JSON-Vorlagen. Eine Vorlage gibt die Konfiguration zur Aktivierung der Überwachung an, während die andere Vorlage die zu konfigurierenden Parameterwerte enthält, mit denen Folgendes festgelegt wird:
 
@@ -202,7 +202,7 @@ Führen Sie die folgenden Schritte aus, um zunächst die für den Wert des `work
     }
     ```
 
-7. Ändern Sie nach dem Ausführen des Azure CLI-Befehls [az monitor log-analytics workspace show](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list) die Werte für **workspaceResourceId** in den Wert, den Sie in Schritt 3 kopiert haben, und kopieren Sie für **workspaceRegion** den Wert **Region**.
+7. Ändern Sie nach dem Ausführen des Azure CLI-Befehls [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list) die Werte für **workspaceResourceId** in den Wert, den Sie in Schritt 3 kopiert haben, und kopieren Sie für **workspaceRegion** den Wert **Region**.
 
 8. Speichern Sie diese Datei als „containerSolutionParams.json“ in einem lokalen Ordner.
 

@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499459"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Nachverfolgen von Abhängigkeiten mit OpenCensus Python
 
@@ -86,7 +86,7 @@ conn.close()
 Verfolgen Sie Ihre ausgehenden Django-Anforderungen mit der OpenCensus-`django`-Integration nach.
 
 > [!NOTE]
-> Die einzigen ausgehenden Django-Anforderungen, die nachverfolgt werden, sind Aufrufe an eine Datenbank. Informationen zu Anforderungen an die Django-Anwendung finden Sie unter [Eingehende Anforderungen](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications).
+> Die einzigen ausgehenden Django-Anforderungen, die nachverfolgt werden, sind Aufrufe an eine Datenbank. Informationen zu Anforderungen an die Django-Anwendung finden Sie unter [Eingehende Anforderungen](./opencensus-python-request.md#tracking-django-applications).
 
 Laden Sie `opencensus-ext-django` von [PyPI](https://pypi.org/project/opencensus-ext-django/) herunter, installieren Sie es, und fügen Sie die folgende Zeile zum Abschnitt `MIDDLEWARE` in der Django-`settings.py`-Datei hinzu.
 

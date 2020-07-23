@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697068"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503607"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -46,14 +46,14 @@ Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-ba
 | Fehlermeldung      | <span style="font-weight:normal">Der angegebene SAP HANA-Vorgang wird nicht unterstützt.</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Mögliche Ursachen**    | Azure Backup für SAP HANA unterstützt keine inkrementellen Sicherungen und keine Aktionen, die für SAP HANA-native Clients (Studio/Cockpit/DBA Cockpit) ausgeführt werden. |
-| **Empfohlene Maßnahme** | Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
+| **Empfohlene Maßnahme** | Weitere Informationen finden Sie [hier](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
 | Fehlermeldung      | <span style="font-weight:normal">Diese SAP HANA-Datenbank unterstützt nicht den angeforderten Sicherungstyp.</span>  |
 | ------------------ | ------------------------------------------------------------ |
 | **Mögliche Ursachen**    | Azure Backup unterstützt keine inkrementellen Sicherungen und keine Sicherungen mit Momentaufnahmen. |
-| **Empfohlene Maßnahme** | Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
+| **Empfohlene Maßnahme** | Weitere Informationen finden Sie [hier](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
@@ -67,14 +67,14 @@ Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-ba
 | Fehlermeldung      | <span style="font-weight:normal">Upgrade von SDC auf MDC erkannt.</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **Mögliche Ursachen**    | Es wurde ein Upgrade der SAP HANA-Instanz von SDC auf MDC ausgeführt. Sicherungen können nach dem Upgrade nicht mehr ausgeführt werden. |
-| **Empfohlene Maßnahme** | Führen Sie die unter [Upgrade von SDC zu MDC ](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) aufgeführten Schritte aus, um das Problem zu beheben. |
+| **Empfohlene Maßnahme** | Führen Sie die unter [Upgrade von SDC zu MDC ](#sdc-to-mdc-upgrade-with-a-change-in-sid) aufgeführten Schritte aus, um das Problem zu beheben. |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
 | Fehlermeldung      | <span style="font-weight:normal">Ungültige backint-Konfiguration erkannt.</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **Mögliche Ursachen**    | Die backint-Parameter sind nicht ordnungsgemäß für Azure Backup angegeben. |
-| **Empfohlene Maßnahme** | Überprüfen Sie, ob die folgenden backint-Parameter festgelegt sind:<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>Wenn in HOST backint-Parameter vorhanden sind, entfernen Sie sie. Wenn Parameter auf HOST-Ebene nicht vorhanden sind, aber auf Datenbankebene manuell geändert wurden, setzen Sie sie wie oben beschrieben auf die entsprechenden Werte zurück. Oder führen Sie im Azure-Portal [Schutz beenden und Sicherungsdaten beibehalten](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) aus, und wählen Sie dann **Sicherung fortsetzen** aus. |
+| **Empfohlene Maßnahme** | Überprüfen Sie, ob die folgenden backint-Parameter festgelegt sind:<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>Wenn in HOST backint-Parameter vorhanden sind, entfernen Sie sie. Wenn Parameter auf HOST-Ebene nicht vorhanden sind, aber auf Datenbankebene manuell geändert wurden, setzen Sie sie wie oben beschrieben auf die entsprechenden Werte zurück. Oder führen Sie im Azure-Portal [Schutz beenden und Sicherungsdaten beibehalten](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) aus, und wählen Sie dann **Sicherung fortsetzen** aus. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
@@ -204,4 +204,4 @@ In den vorhergehenden Szenarien sollten Sie einen Neuregistrierungsvorgang auf d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) zum Sichern von SAP HANA-Datenbanken auf Azure-VMs an.
+- Sehen Sie sich die [häufig gestellten Fragen](./sap-hana-faq-backup-azure-vm.md) zum Sichern von SAP HANA-Datenbanken auf Azure-VMs an.

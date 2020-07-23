@@ -5,28 +5,28 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945340"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505124"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Authentifizierungen so durchführen, dass Ihr Code die [REST-API-Referenz für Microsoft Azure Monitor](https://docs.microsoft.com/rest/api/monitor/)nutzen kann.
+In diesem Artikel erfahren Sie, wie Sie die Authentifizierungen so durchführen, dass Ihr Code die [REST-API-Referenz für Microsoft Azure Monitor](/rest/api/monitor/)nutzen kann.
 
 Mit der Azure Monitor-API können Sie die verfügbaren Standardmetrikdefinitionen, Granularität und Metrikwerte programmgesteuert abrufen. Die Daten können in einem separaten Datenspeicher abgelegt werden, z.B. in Azure SQL-Datenbank, Azure Cosmos DB oder Azure Data Lake. Von dort aus können ggf. weitere Analysen durchgeführt werden.
 
-Außer dem Arbeiten mit verschiedenen Metrikdatenpunkten können Sie mit der Monitor-API auch Warnungsregeln auflisten, Aktivitätsprotokolle anzeigen und vieles mehr. Eine vollständige Liste aller verfügbaren Vorgänge finden Sie in der [REST-API-Referenz für Microsoft Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
+Außer dem Arbeiten mit verschiedenen Metrikdatenpunkten können Sie mit der Monitor-API auch Warnungsregeln auflisten, Aktivitätsprotokolle anzeigen und vieles mehr. Eine vollständige Liste aller verfügbaren Vorgänge finden Sie in der [REST-API-Referenz für Microsoft Azure Monitor](/rest/api/monitor/).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Authentifizieren von Azure Monitor-Anforderungen
 
 Zunächst muss die Anforderung authentifiziert werden.
 
-Alle für die Azure Monitor-API ausgeführten Aufgaben verwenden das Azure Resource Manager-Authentifizierungsmodell. Daher müssen alle Anforderungen mithilfe von Azure Active Directory (Azure AD) authentifiziert werden. Ein Ansatz für die Authentifizierung der Clientanwendung ist die Erstellung eines Azure AD-Dienstprinzipals und das Abrufen des Authentifizierungstokens (JWT). Das folgende Beispielskript zeigt, wie ein Azure AD-Dienstprinzipal mithilfe von PowerShell erstellt werden kann. Eine ausführlichere Anleitung finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Es ist außerdem möglich, [einen Dienstprinzipal über das Azure-Portal zu erstellen](../../active-directory/develop/howto-create-service-principal-portal.md).
+Alle für die Azure Monitor-API ausgeführten Aufgaben verwenden das Azure Resource Manager-Authentifizierungsmodell. Daher müssen alle Anforderungen mithilfe von Azure Active Directory (Azure AD) authentifiziert werden. Ein Ansatz für die Authentifizierung der Clientanwendung ist die Erstellung eines Azure AD-Dienstprinzipals und das Abrufen des Authentifizierungstokens (JWT). Das folgende Beispielskript zeigt, wie ein Azure AD-Dienstprinzipal mithilfe von PowerShell erstellt werden kann. Eine ausführlichere Anleitung finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps). Es ist außerdem möglich, [einen Dienstprinzipal über das Azure-Portal zu erstellen](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -85,13 +85,13 @@ Nach der Authentifizierung können Abfragen für die Azure Monitor-REST-API ausg
 2. Abrufen der Metrikwerte
 
 > [!NOTE]
-> Weitere Informationen zur Authentifizierung mit der Azure-REST-API finden Sie in der [Azure-REST-API-Referenz](https://docs.microsoft.com/rest/api/azure/).
+> Weitere Informationen zur Authentifizierung mit der Azure-REST-API finden Sie in der [Azure-REST-API-Referenz](/rest/api/azure/).
 >
 >
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>Abrufen von Metrikdefinitionen (mehrdimensionale API)
 
-Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) für den Zugriff auf die Liste von Metriken, die für einen Dienst verfügbar sind.
+Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](/rest/api/monitor/metricdefinitions) für den Zugriff auf die Liste von Metriken, die für einen Dienst verfügbar sind.
 
 **Methode**: GET
 
@@ -228,7 +228,7 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel: (Beachten Sie, da
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Abrufen der Dimensionswerte (mehrdimensionale API)
 
-Nachdem die verfügbaren Metrikdefinitionen bekannt sind, gibt es möglicherweise einige Metriken mit Dimensionen. Bevor Sie die Metrik abfragen, sollten Sie den Bereich der Werte einer Dimension ermitteln. Basierend auf diesen Dimensionswerten können Sie dann die Metriken filtern oder segmentieren, die auf Dimensionswerten basieren, während Sie Metriken abfragen.  Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics), um dies zu erreichen.
+Nachdem die verfügbaren Metrikdefinitionen bekannt sind, gibt es möglicherweise einige Metriken mit Dimensionen. Bevor Sie die Metrik abfragen, sollten Sie den Bereich der Werte einer Dimension ermitteln. Basierend auf diesen Dimensionswerten können Sie dann die Metriken filtern oder segmentieren, die auf Dimensionswerten basieren, während Sie Metriken abfragen.  Verwenden Sie die [Azure Monitor-REST-API für Metriken](/rest/api/monitor/metrics), um dies zu erreichen.
 
 Verwenden Sie den Metriknamen „value“ (nicht „localizedValue“) für sämtliche Filteranforderungen. Werden keine Filter verwendet, wird die Standardmetrik zurückgegeben. Bei Verwendung dieser API kann nur eine Dimension über einen Platzhalterfilter verfügen.
 
@@ -301,7 +301,7 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel:
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>Abrufen von Metrikwerten (mehrdimensionale API)
 
-Sobald die verfügbaren Metrikdefinitionen und alle möglichen Dimensionswerte bekannt sind, können die entsprechenden Metrikwerte abgerufen werden.  Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics), um dies zu erreichen.
+Sobald die verfügbaren Metrikdefinitionen und alle möglichen Dimensionswerte bekannt sind, können die entsprechenden Metrikwerte abgerufen werden.  Verwenden Sie die [Azure Monitor-REST-API für Metriken](/rest/api/monitor/metrics), um dies zu erreichen.
 
 Verwenden Sie den Metriknamen „value“ (nicht „localizedValue“) für sämtliche Filteranforderungen. Wenn keine Dimensionsfilter angegeben werden, wird die zurückgesetzte aggregierte Metrik zurückgegeben. Wenn eine Metrik mehrere Zeitreihen zurückgibt, können Sie die Abfrageparameter „Top“ und „OrderBy“ verwenden, um eine eingeschränkte sortierte Liste mit Zeitreihen zurückzugeben.
 
@@ -387,7 +387,7 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel:
 
 ## <a name="retrieve-metric-definitions"></a>Abrufen der Metrikdefinitionen
 
-Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](https://msdn.microsoft.com/library/mt743621.aspx) für den Zugriff auf die Liste von Metriken, die für einen Dienst verfügbar sind.
+Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](/rest/api/monitor/metricdefinitions) für den Zugriff auf die Liste von Metriken, die für einen Dienst verfügbar sind.
 
 **Methode**: GET
 
@@ -451,7 +451,7 @@ Der resultierende JSON-Antworttext ähnelt folgendem Beispiel:
 }
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zum [Auflisten der Metrikdefinitionen für eine Ressource in der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/mt743621.aspx) .
+Weitere Informationen finden Sie in der Dokumentation zum [Auflisten der Metrikdefinitionen für eine Ressource in der Azure Monitor-REST-API](/rest/api/monitor/metricdefinitions) .
 
 ## <a name="retrieve-metric-values"></a>Abrufen von Metrikwerten
 
@@ -594,7 +594,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 ## <a name="retrieve-the-resource-id"></a>Abrufen der Ressourcen-ID
 
-Die Verwendung der REST-API kann Ihnen dabei helfen, die verfügbaren Metrikdefinitionen, die Granularität und die entsprechenden Werte zu verstehen. Diese Informationen sind für die Nutzung der [Azure-Verwaltungsbibliothek](https://msdn.microsoft.com/library/azure/mt417623.aspx)hilfreich.
+Die Verwendung der REST-API kann Ihnen dabei helfen, die verfügbaren Metrikdefinitionen, die Granularität und die entsprechenden Werte zu verstehen. Diese Informationen sind für die Nutzung der [Azure-Verwaltungsbibliothek](/previous-versions/azure/reference/mt417623(v=azure.100))hilfreich.
 
 Für den oben angegebenen Code muss als Ressourcen-ID der vollständige Pfad zur gewünschten Azure-Ressource angegeben werden. Zum Beispiel würde die Ressourcen-ID für die Abfrage einer Azure Web-App wie folgt lauten:
 
@@ -705,7 +705,7 @@ Die Ergebnisse sollten in etwa wie das folgende Beispiel aussehen:
 
 ## <a name="retrieve-activity-log-data"></a>Abrufen von Aktivitätsprotokolldaten
 
-Außer Metrikdefinitionen und den entsprechenden Werten können auch zusätzliche interessante Informationen über Ihre Azure-Ressourcen mithilfe der Azure Monitor-REST-API abgerufen werden. So können beispielsweise [Aktivitätsprotokolldaten](https://msdn.microsoft.com/library/azure/dn931934.aspx) abgefragt werden. In den folgenden Beispielanforderungen wird die Azure Monitor-REST-API zum Abfragen des Aktivitätsprotokolls verwendet.
+Außer Metrikdefinitionen und den entsprechenden Werten können auch zusätzliche interessante Informationen über Ihre Azure-Ressourcen mithilfe der Azure Monitor-REST-API abgerufen werden. So können beispielsweise [Aktivitätsprotokolldaten](/rest/api/monitor/activitylogs) abgefragt werden. In den folgenden Beispielanforderungen wird die Azure Monitor-REST-API zum Abfragen des Aktivitätsprotokolls verwendet.
 
 Abrufen von Aktivitätsprotokollen mit Filter:
 
@@ -735,5 +735,5 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 * Lesen Sie die [Übersicht über die Überwachung](../../azure-monitor/overview.md).
 * Lesen Sie [Unterstützte Metriken von Azure Monitor](metrics-supported.md).
-* Lesen Sie die [REST-API-Referenz zu Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
-* Schlagen Sie in der [Azure-Verwaltungsbibliothek](https://msdn.microsoft.com/library/azure/mt417623.aspx)nach.
+* Lesen Sie die [REST-API-Referenz zu Microsoft Azure Monitor](/rest/api/monitor/).
+* Schlagen Sie in der [Azure-Verwaltungsbibliothek](/previous-versions/azure/reference/mt417623(v=azure.100))nach.

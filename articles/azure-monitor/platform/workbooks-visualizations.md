@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658029"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504936"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Visualisierungen von Azure Monitor-Arbeitsmappen
 
@@ -51,7 +51,7 @@ Arbeitsmappen unterstützen Diagramme für Protokolle und Metrikdatenquellen.
 1. Versetzen Sie die Arbeitsmappe in den Bearbeitungsmodus, indem Sie auf das Symbolleistenelement **Bearbeiten** klicken.
 2. Klicken Sie auf den Link **Abfrage hinzufügen**, um der Arbeitsmappe ein Protokollabfrage-Steuerelement hinzuzufügen.
 3. Wählen Sie für den Abfragetyp **Protokoll** aus, wählen Sie den Ressourcentyp (z. B. Application Insights) sowie die Zielressourcen aus.
-4. Geben Sie über den Abfrage-Editor die [KQL](https://docs.microsoft.com/azure/kusto/query/) für Ihre Analyse ein (z. B. Trend der Anforderungen).
+4. Geben Sie über den Abfrage-Editor die [KQL](/azure/kusto/query/) für Ihre Analyse ein (z. B. Trend der Anforderungen).
 5. Legen Sie für die Visualisierung eine der folgenden Optionen fest: **Fläche**, **Balken**, **Balkendiagramm (kategorisch)** , **Linie**, **Kreis**, **Punkt** oder **Zeit**.
 6. Legen Sie ggf. weitere Parameter fest, beispielsweise Zeitraum, Visualisierung, Größe, Farbpalette und Legende.
 

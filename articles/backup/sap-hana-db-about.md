@@ -3,16 +3,16 @@ title: Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines
 description: In diesem Artikel erfahren Sie mehr über das Sichern von SAP HANA-Datenbanken, die in Azure Virtual Machines ausgeführt werden.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 52c235c95cea73a0c51c62fcb55f7f711d2eff21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476456"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503505"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines
 
-SAP HANA-Datenbanken sind geschäftskritische Workloads, die eine niedrige Recovery Point Objective (RPO) und schnelle Recovery Time Objective (RTO) erfordern. Sie können [auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbanken jetzt mithilfe von [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) sichern](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db).
+SAP HANA-Datenbanken sind geschäftskritische Workloads, die eine niedrige Recovery Point Objective (RPO) und schnelle Recovery Time Objective (RTO) erfordern. Sie können [auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbanken jetzt mithilfe von [Azure Backup](./backup-overview.md) sichern](./tutorial-backup-sap-hana-db.md).
 
 Azure Backup ist SAP [Backint-zertifiziert](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) und bietet native Sicherungsunterstützung durch Verwendung der nativen APIs von SAP HANA. Dieses Angebot von Azure Backup orientiert sich an dem Azure Backup-Mantra von **Sicherungen ohne Infrastruktur**, sodass keine Sicherungsinfrastruktur bereitgestellt und verwaltet werden muss. Sie können SAP HANA Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden, jetzt nahtlos sichern und wiederherstellen ([virtuelle Computer der M-Serie](../virtual-machines/m-series.md) werden jetzt auch unterstützt) und die von Azure Backup bereitgestellten Unternehmensverwaltungsfunktionen nutzen.
 
@@ -25,18 +25,18 @@ Die Verwendung von Azure Backup zum Sichern und Wiederherstellen von SAP HANA-Da
 * **Langfristige Aufbewahrung**: Gemäß strengen Compliance- und Überwachungsanforderungen. Bewahren Sie Ihre Sicherungen basierend auf der Aufbewahrungsdauer über Jahre hinweg auf, nach deren Ablauf die Wiederherstellungspunkte automatisch durch die integrierte Funktionen zur Lebenszyklusverwaltung gelöscht werden.
 * **Sicherungsverwaltung von Azure**: Verwenden Sie die Verwaltungs- und Überwachungsfunktionen von Azure Backup, um die Verwaltung zu verbessern. Azure CLI wird ebenfalls unterstützt.
 
-Informationen zu den zurzeit unterstützten Sicherungs- und Wiederherstellungsszenarien finden Sie in der [Unterstützungsmatrix für SAP HANA-Szenarien](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support).
+Informationen zu den zurzeit unterstützten Sicherungs- und Wiederherstellungsszenarien finden Sie in der [Unterstützungsmatrix für SAP HANA-Szenarien](./sap-hana-backup-support-matrix.md#scenario-support).
 
 ## <a name="backup-architecture"></a>Sichern der Architektur
 
 ![Diagramm der Sicherungsarchitektur](./media/sap-hana-db-about/backup-architecture.png)
 
-* Der Sicherungsvorgang beginnt mit dem [Erstellen eines Recovery Services-Tresors](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) in Azure. Dieser Tresor dient zum Speichern der Sicherungen und Wiederherstellungspunkte, die im Laufe der Zeit erstellt werden.
-* Der virtuelle Azure-Computer, auf dem der SAP HANA-Server ausgeführt wird, ist beim Tresor registriert, und die zu sichernden Datenbanken werden [erkannt](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases). Um dem Azure Backup-Dienst das Ermitteln von Datenbanken zu ermöglichen, muss ein [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) auf dem HANA-Server als root-Benutzer ausgeführt werden.
+* Der Sicherungsvorgang beginnt mit dem [Erstellen eines Recovery Services-Tresors](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) in Azure. Dieser Tresor dient zum Speichern der Sicherungen und Wiederherstellungspunkte, die im Laufe der Zeit erstellt werden.
+* Der virtuelle Azure-Computer, auf dem der SAP HANA-Server ausgeführt wird, ist beim Tresor registriert, und die zu sichernden Datenbanken werden [erkannt](./tutorial-backup-sap-hana-db.md#discover-the-databases). Um dem Azure Backup-Dienst das Ermitteln von Datenbanken zu ermöglichen, muss ein [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) auf dem HANA-Server als root-Benutzer ausgeführt werden.
 * Mit diesem Skript wird **AZUREWLBACKUPHANAUSER** DB-Benutzer und ein entsprechender Schlüssel mit demselben Namen in **hdbuserstore** erstellt. Weitere Informationen zu den Funktionen des Skripts finden Sie im Abschnitt [Aufgaben des Vorregistrierungsskripts](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 * Der Azure Backup Dienst installiert jetzt das **Azure Backup-Plug-In für HANA** auf dem registrierten SAP HANA-Server.
 * Der durch das Vorregistrierungsskript erstellte **AZUREWLBACKUPHANAUSER** DB-Benutzer wird vom **Azure Backup-Plug-In für HANA** verwendet, um alle Sicherungs- und Wiederherstellungsvorgänge auszuführen. Wenn Sie versuchen, die Sicherung für SAP HANA-Datenbanken zu konfigurieren, ohne dieses Skript auszuführen, wird möglicherweise der folgende Fehler angezeigt: **UserErrorHanaScriptNotRun**.
-* Um die [Sicherung der ermittelten Datenbanken zu konfigurieren](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup), wählen Sie die erforderliche Sicherungsrichtlinie aus, und aktivieren Sie Sicherungen.
+* Um die [Sicherung der ermittelten Datenbanken zu konfigurieren](./tutorial-backup-sap-hana-db.md#configure-backup), wählen Sie die erforderliche Sicherungsrichtlinie aus, und aktivieren Sie Sicherungen.
 
 * Nachdem die Sicherung konfiguriert wurde, richtet der Azure Backup-Dienst die folgenden Backint-Parameter auf dem geschützten SAP HANA-Server auf DATABASE-Ebene ein:
   * [catalog_backup_using_backint:true]
@@ -74,5 +74,5 @@ Ein virtueller Computer mit SAP HANA kann wie folgt wiederhergestellt werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [eine auf einem virtuellen Azure-Computer ausgeführte SAP HANA-Datenbank wiederherstellen](https://docs.microsoft.com/azure/backup/sap-hana-db-restore).
-* [Verwalten und Überwachen gesicherter SAP HANA-Datenbanken](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* Erfahren Sie, wie Sie [eine auf einem virtuellen Azure-Computer ausgeführte SAP HANA-Datenbank wiederherstellen](./sap-hana-db-restore.md).
+* [Verwalten und Überwachen gesicherter SAP HANA-Datenbanken](./sap-hana-db-manage.md)

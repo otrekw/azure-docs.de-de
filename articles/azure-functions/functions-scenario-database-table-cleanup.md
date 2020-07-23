@@ -4,16 +4,16 @@ description: Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine 
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254275"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506076"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
-In diesem Artikel wird erläutert, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, über den eine Verbindung mit einer Azure SQL-Datenbank-Instanz oder einer verwalteten Azure SQL-Instanz hergestellt wird. Der Funktionscode bereinigt die Zeilen in einer Tabelle in der Datenbank. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Zeitgebertrigger in Visual Studio 2019 erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. Für eine verwaltete Azure SQL-Instanz müssen Sie [den öffentlichen Endpunkt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) aktivieren, um eine Verbindung über Azure Functions herstellen zu können. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
+In diesem Artikel wird erläutert, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, über den eine Verbindung mit einer Azure SQL-Datenbank-Instanz oder einer verwalteten Azure SQL-Instanz hergestellt wird. Der Funktionscode bereinigt die Zeilen in einer Tabelle in der Datenbank. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Zeitgebertrigger in Visual Studio 2019 erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. Für eine verwaltete Azure SQL-Instanz müssen Sie [den öffentlichen Endpunkt](../azure-sql/managed-instance/public-endpoint-configure.md) aktivieren, um eine Verbindung über Azure Functions herstellen zu können. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
 
 Wenn Sie C#-Funktionen zum ersten Mal verwenden, sollten Sie die [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md) lesen.
 
@@ -23,7 +23,7 @@ Wenn Sie C#-Funktionen zum ersten Mal verwenden, sollten Sie die [C#-Entwicklerr
 
 + In diesem Artikel wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Führen Sie die Schritte im Artikel [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../azure-sql/database/single-database-create-quickstart.md) aus, um die Beispieldatenbank „AdventureWorksLT“ zu erstellen.
 
-+ Sie müssen eine [Firewallregel auf Serverebene](../sql-database/sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers hinzufügen, den Sie für diesen Schnellstart verwenden. Diese Regel ist erforderlich, damit über den lokalen Computer auf die SQL-Datenbank-Instanz zugegriffen werden kann.  
++ Sie müssen eine [Firewallregel auf Serverebene](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) für die öffentliche IP-Adresse des Computers hinzufügen, den Sie für diesen Schnellstart verwenden. Diese Regel ist erforderlich, damit über den lokalen Computer auf die SQL-Datenbank-Instanz zugegriffen werden kann.  
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 

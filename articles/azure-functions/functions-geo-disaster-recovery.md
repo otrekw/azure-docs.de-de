@@ -4,12 +4,12 @@ description: Verwenden von geografischen Regionen für Redundanz und Failover in
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506280"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Functions
 
@@ -22,7 +22,7 @@ Azure Functions werden in einer bestimmten Region ausgeführt.  Um eine höhere 
 * Aktiv/aktiv. Beide Regionen sind aktiv und empfangen Ereignisse (dupliziert oder rotierend). Aktiv/aktiv wird für HTTPS-Funktionen in Kombination mit Azure Front Door empfohlen.
 * Aktiv/passiv. Eine Region ist aktiv und empfängt Ereignisse, während sich eine sekundäre Region im Leerlauf befindet.  Wenn ein Failover erforderlich ist, wird die sekundäre Region aktiviert und übernimmt die Verarbeitung.  Dies wird für Nicht-HTTP-Funktionen wie Service Bus und Event Hubs empfohlen.
 
-Weitere Informationen zu Bereitstellungen in mehreren Regionen finden Sie unter [Ausführen von Apps in mehreren Regionen](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
+Weitere Informationen zu Bereitstellungen in mehreren Regionen finden Sie unter [Ausführen von Apps in mehreren Regionen](/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
 ## <a name="activeactive-for-https-functions"></a>Aktiv/aktiv für HTTPS-Funktionen
 

@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 102808d716c080102cce4c02921637101da9fab7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 071baacd375cb5595bc99eeead7e818a35c4539b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553090"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500411"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu derzeit ausgeführten Instanzen virtueller Computer bereit, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine vollständige Liste der verfügbaren Daten finden Sie unter [Metadaten-APIs](#metadata-apis).
-Der Instance Metadata Service ist sowohl für VMs als auch für Instanzen von VM-Skalierungsgruppen verfügbar. Er steht nur für laufende VMs zur Verfügung, die mit dem [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) erstellt/verwaltet werden.
+Der Instance Metadata Service ist sowohl für VMs als auch für Instanzen von VM-Skalierungsgruppen verfügbar. Er steht nur für laufende VMs zur Verfügung, die mit dem [Azure Resource Manager](/rest/api/resources/) erstellt/verwaltet werden.
 
 Azure IMDS ist ein REST-Endpunkt, der unter einer bekannten, nicht routingfähigen IP-Adresse (`169.254.169.254`) zur Verfügung steht, auf die nur innerhalb der VM zugegriffen werden kann. Die Kommunikation zwischen dem virtuellen Computer und IMDS verlässt niemals den Host.
-Es wird empfohlen, dass die HTTP-Clients bei Abfragen von IMDS Webproxys innerhalb des virtuellen Computers umgehen und `169.254.169.254` gleich behandeln wie [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+Es wird empfohlen, dass die HTTP-Clients bei Abfragen von IMDS Webproxys innerhalb des virtuellen Computers umgehen und `169.254.169.254` gleich behandeln wie [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="security"></a>Sicherheit
 
@@ -39,7 +39,7 @@ Zudem müssen Anforderungen einen `Metadata: true`-Header enthalten, um sicherzu
 
 ### <a name="accessing-azure-instance-metadata-service"></a>Zugriff auf den Azure Instance Metadata Service
 
-Erstellen Sie für den Zugriff auf den Instance Metadata Service eine VM über den [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) oder das [Azure-Portal](https://portal.azure.com), und arbeiten Sie die Beispiele unten durch.
+Erstellen Sie für den Zugriff auf den Instance Metadata Service eine VM über den [Azure Resource Manager](/rest/api/resources/) oder das [Azure-Portal](https://portal.azure.com), und arbeiten Sie die Beispiele unten durch.
 Weitere Beispiele zum Abfragen von IMDS finden Sie unter [Beispiele für Azure-Instanzmetadaten](https://github.com/microsoft/azureimds).
 
 Unten finden Sie den Beispielcode zum Abrufen aller Metadaten für eine Instanz; Informationen zum Zugriff auf eine bestimmte Datenquelle finden Sie im Abschnitt [Metadaten-API](#metadata-apis). 
@@ -246,14 +246,14 @@ name | Name des virtuellen Computers | 2017-04-02
 offer | Angebotsinformationen für das VM-Image, diese sind nur für Images vorhanden, die über den Azure-Imagekatalog bereitgestellt werden | 2017-04-02
 osType | Linux oder Windows | 2017-04-02
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
-Tarif | Der [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
+Tarif | Der [Plan](/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
 platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 Provider | Anbieter des virtuellen Computers | 2018-10-01
-publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
+publicKeys | [Sammlung von öffentlichen Schlüsseln](/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 publisher | Herausgeber des VM-Images | 2017-04-02
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/management/overview.md) für den virtuellen Computer | 2017-08-01
-resourceId | Die [vollqualifizierte](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID der Ressource | 11.03.2019
+resourceId | Die [vollqualifizierte](/rest/api/resources/resources/getbyid) ID der Ressource | 11.03.2019
 sku | Spezifische SKU für das VM-Image | 2017-04-02
 storageProfile | Siehe [Speicherprofil](#storage-metadata). | 2019-06-01
 subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
@@ -261,7 +261,7 @@ tags | [Tags](../../azure-resource-manager/management/tag-resources.md) für den
 tagsList | Tags, die zur einfacheren programmgesteuerten Analyse als JSON-Arrays formatiert sind  | 2019-06-04
 version | Version des VM-Image | 2017-04-02
 vmId | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM | 2017-04-02
-vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
+vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
 vmSize | [Größe des virtuellen Computers](sizes.md) | 2017-04-02
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01
 
@@ -686,7 +686,7 @@ Das Dokument enthält die folgenden Felder:
 Daten | BESCHREIBUNG
 -----|------------
 nonce | Eine Zeichenfolge, die optional mit der Anforderung angegeben werden kann. Wenn keine Nonce angegeben wurde, wird der aktuelle UTC-Zeitstempel verwendet.
-Tarif | Der [Plan für das Azure Marketplace-Image](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan). Enthält die Plan-ID („name“), das Produktimage oder -angebot („product“) und die Herausgeber-ID („publisher“).
+Tarif | Der [Plan für das Azure Marketplace-Image](/rest/api/compute/virtualmachines/createorupdate#plan). Enthält die Plan-ID („name“), das Produktimage oder -angebot („product“) und die Herausgeber-ID („publisher“).
 timestamp/createdOn | Der UTC-Zeitstempel für den Zeitpunkt, an dem das signierte Dokument erstellt wurde
 timestamp/expiresOn | Der UTC-Zeitstempel für den Zeitpunkt, an dem das signierte Dokument abläuft
 vmId |  [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM
@@ -852,7 +852,7 @@ HTTP-Statuscode | `Reason`
 1. Nicht alle Daten wurden für die neue Version eingetragen.
    * Fügen Sie für VMs, die nach September 2016 erstellt wurden, ein [Tag](../../azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Fügen Sie bei älteren VMs (die vor September 2016 erstellt wurden) Erweiterungen oder Datenträger zu den VM-Instanzen hinzu, oder entfernen Sie sie, um Metadaten zu aktualisieren.
 1. Warum erhalte ich die Fehler `500 Internal Server Error` oder `410 Resource Gone`?
-   * Wiederholen Sie die Anforderung basierend auf dem System des exponentiellen Backoffs oder anderen Methoden, die unter [Behandeln vorübergehender Fehler](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults) beschrieben werden. Wenn das Problem weiterhin besteht, erstellen Sie im Azure-Portal ein Supportproblem für den virtuellen Computer.
+   * Wiederholen Sie die Anforderung basierend auf dem System des exponentiellen Backoffs oder anderen Methoden, die unter [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) beschrieben werden. Wenn das Problem weiterhin besteht, erstellen Sie im Azure-Portal ein Supportproblem für den virtuellen Computer.
 1. Gilt dies auch für VM-Skalierungsgruppeninstanzen?
    * Ja, Metadata Service ist für Skalierungsgruppeninstanzen verfügbar.
 1. Ich habe die Tags in VM-Skalierungsgruppen aktualisiert, aber sie werden im Gegensatz zu Einzelinstanz-VMs nicht in den Instanzen angezeigt.
@@ -894,7 +894,7 @@ HTTP-Statuscode | `Reason`
                Subnet Mask . . . . . . . . . . . : 255.255.255.0
             ... (continues) ...
             ```
-        1. Vergewissern Sie sich, dass die Schnittstelle der primären NIC und der primären IP-Adresse des virtuellen Computers entspricht. Sie finden die primäre NIC und primäre IP-Adresse in der Netzwerkkonfiguration im Azure-Portal oder durch Suchen [mithilfe der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show). Notieren Sie sich die öffentlichen und privaten IP-Adressen (und bei Verwendung der Azure-Befehlszeilenschnittstelle die MAC-Adresse). PowerShell-CLI-Beispiel:
+        1. Vergewissern Sie sich, dass die Schnittstelle der primären NIC und der primären IP-Adresse des virtuellen Computers entspricht. Sie finden die primäre NIC und primäre IP-Adresse in der Netzwerkkonfiguration im Azure-Portal oder durch Suchen [mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show). Notieren Sie sich die öffentlichen und privaten IP-Adressen (und bei Verwendung der Azure-Befehlszeilenschnittstelle die MAC-Adresse). PowerShell-CLI-Beispiel:
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'

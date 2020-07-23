@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670133"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505804"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Übergang von der Log Analytics-Protokollsuche zu Azure Monitor-Protokollen
 Die Protokollsuche in Log Analytics wurde vor Kurzem durch eine neue Vorgehensweise für das Analysieren von Azure Monitor-Protokollen ersetzt. Die Seite für die Protokollsuche ist derzeit noch über die Menüoption **Protokolle (klassisch)** auf der Seite **Log Analytics-Arbeitsbereiche** im Azure-Portal zugänglich, wird jedoch am 15. Februar 2019 entfernt. Dieser Artikel beschreibt die Unterschiede zwischen den beiden Vorgehensweisen, um Ihnen den Übergang von der Protokollsuche zu erleichtern. 
@@ -58,7 +58,7 @@ In Azure Monitor-Protokollen müssen Sie die Abfrage ändern, um diese Datensät
 ![Azure Monitor-Protokolldrilldown](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>Ausführen einer Aktion
-In der Protokollsuche können Sie aus einem Suchergebnis [ein Runbook starten](take-action.md), indem Sie **Aktion ausführen** auswählen.
+In der Protokollsuche können Sie aus einem Suchergebnis [ein Runbook starten](../platform/action-groups.md), indem Sie **Aktion ausführen** auswählen.
 
 ![Ausführen einer Aktion](media/log-search-transition/take-action-log-search.png)
 

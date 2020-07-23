@@ -6,12 +6,12 @@ ms.author: yossiy
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be2d49a824066b8926ae455978facb34c0b44310
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505464"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Abfragen von Protokollwarnungen in Azure Monitor
 [Warnungsregeln, die auf Azure Monitor-Protokollen basieren](alerts-unified-log.md), werden in regelmäßigen Abständen ausgeführt. Sie sollten deshalb sicherstellen, dass sie so geschrieben sind, dass Mehraufwand und Latenz minimiert werden. Dieser Artikel enthält Empfehlungen zum Schreiben effizienter Abfragen für Protokollwarnungen und einen Prozess zum Konvertieren vorhandener Abfragen. 
@@ -50,7 +50,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
->Eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) in Protokollwarnungen wird in der neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) unterstützt. Standardmäßig verwendet Azure Monitor die [Legacywarnungs-API von Log Analytics](api-alerts.md) zum Erstellen neuer Protokollwarnungsregeln über das Azure-Portal, es sei denn, Sie nehmen einen Umstieg von der [Legacyprotokollwarnungen-API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) vor. Nach dem Umstieg wird die neue API standardmäßig für neue Warnungsregeln im Azure-Portal verwendet, und Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen. Sie können Protokollwarnungsregeln für [ressourcenübergreifende Abfragen](../log-query/cross-workspace-query.md) erstellen, ohne den Umstieg vorzunehmen, indem Sie die [ARM-Vorlage für die scheduledQueryRules-API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) verwenden. Diese Warnungsregel wird jedoch über die [ scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) und nicht über das Azure-Portal verwaltet.
+>Eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) in Protokollwarnungen wird in der neuen [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) unterstützt. Standardmäßig verwendet Azure Monitor die [Legacywarnungs-API von Log Analytics](api-alerts.md) zum Erstellen neuer Protokollwarnungsregeln über das Azure-Portal, es sei denn, Sie nehmen einen Umstieg von der [Legacyprotokollwarnungen-API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) vor. Nach dem Umstieg wird die neue API standardmäßig für neue Warnungsregeln im Azure-Portal verwendet, und Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen. Sie können Protokollwarnungsregeln für [ressourcenübergreifende Abfragen](../log-query/cross-workspace-query.md) erstellen, ohne den Umstieg vorzunehmen, indem Sie die [ARM-Vorlage für die scheduledQueryRules-API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) verwenden. Diese Warnungsregel wird jedoch über die [ scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) und nicht über das Azure-Portal verwaltet.
 
 ## <a name="examples"></a>Beispiele
 Die folgenden Beispiele umfassen Protokollabfragen mit `search` und `union` und enthalten Schritte, mit denen Sie diese Abfragen für die Verwendung mit Warnungsregeln ändern können.
@@ -217,4 +217,3 @@ on Hour
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Protokollwarnungen](alerts-log.md) in Azure Monitor.
 - Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md).
-

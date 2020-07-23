@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322514"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506535"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -59,7 +59,7 @@ Bei Verwendung von Visual Studio können Sie die Erweiterungen abrufen, indem Si
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurieren von Authentifizierung/Autorisierung
 
-Für die in diesem Artikel beschriebenen Bindungen muss eine Identität verwendet werden. Dies ermöglicht Microsoft Graph, Berechtigungen zu erzwingen und Interaktionen zu überwachen. Die Identität kann ein Benutzer sein, der auf Ihre Anwendung zugreift, oder die Anwendung selbst. Um diese Identität zu konfigurieren, richten Sie [App Service-Authentifizierung/-Autorisierung](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) mit Azure Active Directory ein. Sie müssen auch alle Ressourcenberechtigungen anfordern, die in Ihren Funktionen benötigt werden.
+Für die in diesem Artikel beschriebenen Bindungen muss eine Identität verwendet werden. Dies ermöglicht Microsoft Graph, Berechtigungen zu erzwingen und Interaktionen zu überwachen. Die Identität kann ein Benutzer sein, der auf Ihre Anwendung zugreift, oder die Anwendung selbst. Um diese Identität zu konfigurieren, richten Sie [App Service-Authentifizierung/-Autorisierung](../app-service/overview-authentication-authorization.md) mit Azure Active Directory ein. Sie müssen auch alle Ressourcenberechtigungen anfordern, die in Ihren Funktionen benötigt werden.
 
 > [!Note] 
 > Die Microsoft Graph-Erweiterung unterstützt nur die Azure AD-Authentifizierung. Benutzer müssen sich mit einem Geschäfts-, Schul- oder Unikonto anmelden.
@@ -983,7 +983,7 @@ Mit Webhooks können Sie auf Ereignisse in Microsoft Graph reagieren. Zur Unters
 - Eine [Microsoft Graph-Webhookabonnement-Eingabebindung](#webhook-input) ermöglicht Ihnen das Auflisten und optionale Aktualisieren von vorhandenen Abonnements.
 - Eine [Microsoft Graph-Webhookabonnement-Ausgabebindung](#webhook-output) ermöglicht Ihnen das Erstellen und Löschen von Webhookabonnements.
 
-Für die eigentlichen Bindungen sind keine Azure AD-Berechtigungen erforderlich, aber Sie benötigen die entsprechenden Berechtigungen für den Ressourcentyp, auf den Sie reagieren möchten. Eine Liste der für jeden Ressourcentyp erforderlichen Berechtigungen finden Sie unter [Abonnementberechtigungen](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
+Für die eigentlichen Bindungen sind keine Azure AD-Berechtigungen erforderlich, aber Sie benötigen die entsprechenden Berechtigungen für den Ressourcentyp, auf den Sie reagieren möchten. Eine Liste der für jeden Ressourcentyp erforderlichen Berechtigungen finden Sie unter [Abonnementberechtigungen](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
 Weitere Informationen über Webhooks finden Sie unter [Arbeiten mit Webhooks in Microsoft Graph].
 

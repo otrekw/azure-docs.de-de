@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631799"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505736"
 ---
 # <a name="azure-monitor-log-queries"></a>Protokollabfragen in Azure Monitor
 
@@ -27,7 +27,7 @@ Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Pro
 ## <a name="concepts"></a>Konzepte
 
 - [Analysieren von Protokolldaten in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) gibt einen kurzen Überblick über Protokollabfragen und beschreibt, wie Azure Monitor-Protokolldaten strukturiert sind.
-- [Anzeigen und Analysieren von Protokolldaten in Azure Monitor](../../azure-monitor/log-query/portals.md) erklärt die Portale, in denen Sie Protokollabfragen erstellen und ausführen.
+- [Anzeigen und Analysieren von Protokolldaten in Azure Monitor](./log-query-overview.md) erklärt die Portale, in denen Sie Protokollabfragen erstellen und ausführen.
 
 ## <a name="reference"></a>Verweis
 

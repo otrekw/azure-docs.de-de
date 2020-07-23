@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72025941"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499918"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure
 
@@ -56,13 +56,13 @@ In diesem Artikel wird beschrieben, wie Sie die ZD&T Enterprise Edition in Azure
 
 ## <a name="create-the-base-image-and-connect"></a>Erstellen des Basisimages und Herstellen einer Verbindung
 
-1. [Erstellen Sie im Azure-Portal eine VM](/azure/virtual-machines/linux/quick-create-portal) mit der gewünschten Betriebssystemkonfiguration. In diesem Artikel wird eine B4ms-VM (mit 4 vCPUs und 16 GB Arbeitsspeicher) unter Ubuntu 16.04 vorausgesetzt.
+1. [Erstellen Sie im Azure-Portal eine VM](../../../linux/quick-create-portal.md) mit der gewünschten Betriebssystemkonfiguration. In diesem Artikel wird eine B4ms-VM (mit 4 vCPUs und 16 GB Arbeitsspeicher) unter Ubuntu 16.04 vorausgesetzt.
 
 2. Öffnen Sie nach der Erstellung der VM die eingehenden Ports 22 für SSH, 21 für FTP und 9443 für den Webserver.
 
 3. Rufen Sie auf dem Blatt **Übersicht** der VM über die Schaltfläche **Verbinden** die SSH-Anmeldeinformationen ab. Klicken Sie auf die Registerkarte **SSH**, und kopieren Sie den SSH-Anmeldebefehl in die Zwischenablage.
 
-4. Melden Sie sich auf Ihrem lokalen PC bei einer [Bash-Shell](/azure/cloud-shell/quickstart) an, und fügen Sie den Befehl ein. Er weist folgendes Format auf: **ssh\<user id\>\@\<IP Address\>** . Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden, um eine Verbindung mit dem Basisverzeichnis herzustellen.
+4. Melden Sie sich auf Ihrem lokalen PC bei einer [Bash-Shell](../../../../cloud-shell/quickstart.md) an, und fügen Sie den Befehl ein. Er weist folgendes Format auf: **ssh\<user id\>\@\<IP Address\>** . Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden, um eine Verbindung mit dem Basisverzeichnis herzustellen.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Kopieren der Installationsdatei auf den Server
 

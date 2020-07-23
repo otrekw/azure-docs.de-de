@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697271"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506127"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -19,7 +19,7 @@ Eine PowerShell-Azure-Funktion (Funktion) wird als ein PowerShell-Skript dargest
 
 Wie andere Arten von Funktionen akzeptieren PowerShell-Skriptfunktionen Parameter, die den Namen aller Eingabebindungen entsprechen, die in der Datei `function.json` definiert sind. Ein `TriggerMetadata`-Parameter wird ebenfalls übergeben. Dieser enthält zusätzliche Informationen zu dem Trigger, der die Funktion gestartet hat.
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Sie sollten auch den [Schnellstart für Functions und PowerShell](functions-create-first-function-powershell.md) abgeschlossen haben, in dem Sie Ihre erste PowerShell-Funktion erstellen.
+In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Sie sollten auch den [Schnellstart für Functions und PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) abgeschlossen haben, in dem Sie Ihre erste PowerShell-Funktion erstellen.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 

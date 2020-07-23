@@ -3,16 +3,16 @@ title: Private Endpunkte
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124254"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503760"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
-Azure Backup ermöglicht Ihnen die sichere Sicherung und Wiederherstellung Ihrer Daten aus Ihren Recovery Services-Tresoren unter Verwendung [privater Endpunkte](https://docs.microsoft.com/azure/private-link/private-endpoint-overview). Private Endpunkte arbeiten mit einer oder mehreren privaten IP-Adressen in Ihrem VNET, wodurch der Dienst faktisch in Ihr VNET eingebunden wird.
+Azure Backup ermöglicht Ihnen die sichere Sicherung und Wiederherstellung Ihrer Daten aus Ihren Recovery Services-Tresoren unter Verwendung [privater Endpunkte](../private-link/private-endpoint-overview.md). Private Endpunkte arbeiten mit einer oder mehreren privaten IP-Adressen in Ihrem VNET, wodurch der Dienst faktisch in Ihr VNET eingebunden wird.
 
 In diesem Artikel erfahren Sie, wie private Endpunkte für Azure Backup erstellt werden und in welchen Szenarien sie dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 
@@ -45,7 +45,7 @@ Dieser Abschnitt befasst sich mit den Schritten zum Erstellen und Verwenden priv
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-In [diesem Abschnitt](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) erfahren Sie, wie Sie einen Tresor mit dem Azure Resource Manager-Client erstellen. Dadurch wird ein Tresor erstellt, dessen verwaltete Identität bereits aktiviert ist. [Hier](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) erfahren Sie mehr zu Recovery Services-Tresoren.
+In [diesem Abschnitt](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) erfahren Sie, wie Sie einen Tresor mit dem Azure Resource Manager-Client erstellen. Dadurch wird ein Tresor erstellt, dessen verwaltete Identität bereits aktiviert ist. [Hier](./backup-azure-recovery-services-vault-overview.md) erfahren Sie mehr zu Recovery Services-Tresoren.
 
 ## <a name="enable-managed-identity-for-your-vault"></a>Aktivieren der verwalteten Identität für Ihren Tresor
 
@@ -111,9 +111,9 @@ Regionscodes finden Sie in [dieser Liste](https://download.microsoft.com/downloa
 
 Informationen zu Benennungskonventionen für URLs in nationalen Regionen:
 
-- [China](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Deutschland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Deutschland](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 ### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Verknüpfen privater DNS-Zonen mit Ihrem virtuellen Netzwerk
 

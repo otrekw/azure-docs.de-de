@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205706"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499408"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurieren von Application Insights Profiler
 
@@ -41,7 +41,7 @@ Letzte Profilerstellungssitzungen | Zeigt Informationen zu vergangenen Profilers
 ## <a name="profile-now"></a>Jetzt Profil erstellen
 Mit dieser Option können Sie bei Bedarf eine Profilerstellungssitzung starten. Wenn Sie auf diesen Link klicken, beginnen alle Profiler-Agents, die Daten an diese Application Insights-Instanz senden, mit der Erfassung eines Profils. Nach 5 bis 10 Minuten wird die Profilsitzung in der Liste unten angezeigt.
 
-Damit ein Benutzer eine Profilersitzung manuell auslösen kann, muss er in seiner Rolle mindestens über Schreibzugriff für die Application Insights-Komponente verfügen. In den meisten Fällen erhalten Sie diesen Zugriff automatisch, und es sind keine weiteren Arbeitsschritte erforderlich. Wenn Sie Probleme haben, müssen Sie die entsprechende Rolle für den Abonnementbereich, d. h. „Mitwirkender der Application Insights-Komponente“, hinzufügen. [Weitere Informationen zur Rollenzugriffssteuerung mithilfe der Azure-Überwachung](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
+Damit ein Benutzer eine Profilersitzung manuell auslösen kann, muss er in seiner Rolle mindestens über Schreibzugriff für die Application Insights-Komponente verfügen. In den meisten Fällen erhalten Sie diesen Zugriff automatisch, und es sind keine weiteren Arbeitsschritte erforderlich. Wenn Sie Probleme haben, müssen Sie die entsprechende Rolle für den Abonnementbereich, d. h. „Mitwirkender der Application Insights-Komponente“, hinzufügen. [Weitere Informationen zur Rollenzugriffssteuerung mithilfe der Azure-Überwachung](./resources-roles-access-control.md).
 
 ## <a name="trigger-settings"></a>Triggereinstellungen
 ![Triggereinstellungen-Flyout][trigger-settings-flyout]

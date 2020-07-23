@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508864"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Informationen zum Systemneustart für virtuelle Azure-Computer
 
@@ -34,7 +34,7 @@ Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der 
 
 ## <a name="resource-health-information"></a>Informationen zu Resource Health
 
-Azure Resource Health ist ein Dienst, der die Integrität von einzelnen Azure-Ressourcen offenlegt und wertvolle Hinweise zur Behandlung von Problemen bietet. Das Ziel von Resource Health in einer Cloudumgebung, in der es nicht möglich ist, direkt auf Server oder Infrastrukturelemente zuzugreifen, ist die Reduzierung der Zeit, die Sie für die Problembehandlung aufbringen müssen. Das vorrangigste Ziel ist die Reduzierung der Zeit, die Sie mit der Bestimmung verbringen, ob die Hauptursache des Problems die Anwendung oder ein Ereignis auf der Azure-Plattform ist. Weitere Informationen finden Sie unter [Grundlegendes zu Resource Health](../../resource-health/resource-health-overview.md).
+Azure Resource Health ist ein Dienst, der die Integrität von einzelnen Azure-Ressourcen offenlegt und wertvolle Hinweise zur Behandlung von Problemen bietet. Das Ziel von Resource Health in einer Cloudumgebung, in der es nicht möglich ist, direkt auf Server oder Infrastrukturelemente zuzugreifen, ist die Reduzierung der Zeit, die Sie für die Problembehandlung aufbringen müssen. Das vorrangigste Ziel ist die Reduzierung der Zeit, die Sie mit der Bestimmung verbringen, ob die Hauptursache des Problems die Anwendung oder ein Ereignis auf der Azure-Plattform ist. Weitere Informationen finden Sie unter [Grundlegendes zu Resource Health](../../service-health/resource-health-overview.md).
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Aktionen und Ereignisse, die zu einem Neustart virtueller Computer führen können
 
@@ -46,8 +46,8 @@ Allerdings erfordern einige Updates einen Neustart. In diesen Fällen werden die
 
 Grundlagen zur geplanten Wartung in Azure – was sie ist und wie sie sich auf die Verfügbarkeit Ihrer virtuellen Linux-Computer auswirken kann – finden Sie in den hier aufgeführten Artikeln. Die Artikel bieten Hintergrundinformationen zu den Prozessen bei der geplanten Wartung in Azure und zum Erstellen eines Zeitplans für die geplante Wartung, um die Auswirkungen weiter zu verringern.
 
-- [Geplante Wartung für virtuelle Computer in Azure](../windows/planned-maintenance.md)
-- [Planen der Wartung auf virtuellen Azure-Computern](../windows/classic/planned-maintenance-schedule.md)
+- [Geplante Wartung für virtuelle Computer in Azure](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
+- [Planen der Wartung auf virtuellen Azure-Computern](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
 
 ### <a name="memory-preserving-updates"></a>Speichererhaltende Updates
 
@@ -72,7 +72,7 @@ Zu weiteren Szenarien, in denen in der Regel der virtuelle Computer neu gestarte
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center und Windows Update
 
-Azure Security Center überprüft virtuelle Windows- und Linux-Computer täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen virtuellen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates. Die Anwendung dieser Systemupdates wird über das Security Center im Azure-Portal gesteuert. Nachdem Sie einige Updates angewendet haben, sind unter Umständen Neustarts der virtuellen Computer erforderlich. Weitere Informationen finden Sie unter [Anwenden von Systemupdates in Azure Security Center](../../security-center/security-center-apply-system-updates.md).
+Azure Security Center überprüft virtuelle Windows- und Linux-Computer täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen virtuellen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates. Die Anwendung dieser Systemupdates wird über das Security Center im Azure-Portal gesteuert. Nachdem Sie einige Updates angewendet haben, sind unter Umständen Neustarts der virtuellen Computer erforderlich. Weitere Informationen finden Sie unter [Anwenden von Systemupdates in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md).
 
 Wie bei lokalen Servern überträgt Azure Updates von Windows Update nicht per Push auf virtuelle Windows-Computer, da diese Computer durch ihre Benutzer verwaltet werden sollen. Es empfiehlt sich jedoch, die Einstellung für automatische Windows-Updates aktiviert zu lassen. Die automatische Installation von Updates über Windows Update kann auch dazu führen, dass Neustarts durchgeführt werden, nachdem die Updates angewendet wurden. Weitere Informationen finden Sie unter [Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq).
 
@@ -115,7 +115,7 @@ Das Herunterfahren kann lediglich fünf Minuten dauern, aber auch deutlich läng
 
 **Überschreiten der E/A-Grenzwerte**
 
-Virtuelle Computer werden ggf. vorübergehend heruntergefahren, wenn E/A-Anforderungen dauerhaft aufgrund einer großen Menge von E/A-Vorgängen pro Sekunde (IOPS), die die E/A-Grenzwerte für den Datenträger überschreiten, gedrosselt sind. (Der Standard-Datenträgerspeicher ist auf 500 IOPS beschränkt.) Verwenden Sie zum Umgehen dieses Problems abhängig von der Workload das Datenträgerstriping, oder konfigurieren Sie den Speicherplatz auf der Gast-VM. Weitere Informationen finden Sie unter [Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) (Konfigurieren von virtuellen Azure-Computern für optimale Speicherleistung).
+Virtuelle Computer werden ggf. vorübergehend heruntergefahren, wenn E/A-Anforderungen dauerhaft aufgrund einer großen Menge von E/A-Vorgängen pro Sekunde (IOPS), die die E/A-Grenzwerte für den Datenträger überschreiten, gedrosselt sind. (Der Standard-Datenträgerspeicher ist auf 500 IOPS beschränkt.) Verwenden Sie zum Umgehen dieses Problems abhängig von der Workload das Datenträgerstriping, oder konfigurieren Sie den Speicherplatz auf der Gast-VM. 
 
 ### <a name="other-incidents"></a>Sonstige Vorfälle
 
