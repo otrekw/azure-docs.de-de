@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184547"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539668"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -19,11 +19,11 @@ ms.locfileid: "86184547"
 
 Dieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.
 
-Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) und [die Leistung von Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
+Der [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) und [die Leistung von Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
 
 Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. 
 
-Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) unterstützten Funktionen sind online verfügbar.
+Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) unterstützten Funktionen sind online verfügbar.
 
 ## <a name="set-up-and-configure-agents"></a>Einrichten und Konfigurieren von Agents
 
@@ -149,7 +149,7 @@ NetworkMonitoring
 Der Netzwerkleistungsmonitor ermittelt nur die IP-Adresse und den Hostnamen der zugrunde liegenden Netzwerkhops (Switches, Router, Server usw.) zwischen der Quell- und der Ziel-IP-Adresse. Zudem wird die Latenz zwischen diesen identifizierten Hops ermittelt. Diese zugrunde liegenden Hops werden nicht einzeln überwacht.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Kann mit dem Netzwerkleistungsmonitor die Netzwerkkonnektivität zwischen Azure und AWS überwacht werden?
-Ja. Weitere Informationen finden Sie im Artikel [Monitor Azure, AWS, and on-premises networks using NPM](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) (Überwachen von Azure, AWS und lokalen Netzwerken mit dem Netzwerkleistungsmonitor).
+Ja. Weitere Informationen finden Sie im Artikel [Monitor Azure, AWS, and on-premises networks using NPM](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) (Überwachen von Azure, AWS und lokalen Netzwerken mit dem Netzwerkleistungsmonitor).
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Gibt die ExpressRoute-Bandbreitennutzung die eingehende oder die ausgehende Bandbreite an?
 Die Bandbreitennutzung ist die Summe der eingehenden und ausgehenden Bandbreite. Sie wird in Bit/s angegeben.
@@ -188,7 +188,7 @@ Der Netzwerkleistungsmonitor kann die Konnektivität zwischen Netzwerken in jede
 Der Netzwerkleistungsmonitor kann die Konnektivität mit Diensten in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) gehostet wird.
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welche Regionen werden für den ExpressRoute-Monitor des Netzwerkleistungsmonitors unterstützt?
-Der Netzwerkleistungsmonitor kann die ExpressRoute-Leitungen in jeder Azure-Region überwachen. Zur Integration in den Netzwerkleistungsmonitor benötigen Sie einen Log Analytics-Arbeitsbereich, der in einer der [unterstützten Regionen](/azure/expressroute/how-to-npm) gehostet werden muss.
+Der Netzwerkleistungsmonitor kann die ExpressRoute-Leitungen in jeder Azure-Region überwachen. Zur Integration in den Netzwerkleistungsmonitor benötigen Sie einen Log Analytics-Arbeitsbereich, der in einer der [unterstützten Regionen](../../expressroute/how-to-npm.md) gehostet werden muss.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
@@ -231,7 +231,7 @@ Das kann der Fall sein, wenn die Hostfirewall oder die zwischengeschaltete Firew
 * Um sicherzustellen, dass die Hostfirewall die Kommunikation am entsprechenden Port nicht blockiert, überprüfen Sie den Integritätsstatus der Quell- und Zielknoten in der folgenden Ansicht: „Netzwerkleistungsmonitor -> Konfiguration -> Knoten“. 
   Wenn sie fehlerhaft sind, sehen Sie sich die Anweisungen an, und nehmen Sie Korrekturmaßnahmen vor. Wenn die Knoten fehlerfrei sind, fahren Sie mit dem nächsten Schritt fort. .
 * Um sicherzustellen, dass keine zwischengeschaltete Netzwerkfirewall oder Azure-NSG die Kommunikation am entsprechenden Port blockiert, verwenden Sie wie folgt das Drittanbieterhilfsprogramm PsPing:
-  * Das Hilfsprogramm PsPing ist [hier](https://technet.microsoft.com/sysinternals/psping.aspx) als Download verfügbar. 
+  * Das Hilfsprogramm PsPing ist [hier](/sysinternals/downloads/psping) als Download verfügbar. 
   * Führen Sie im Quellknoten den folgenden Befehl aus.
     * psping -n 15 \<destination node IPAddress\>:portNumber (NPM verwendet standardmäßig Port 8084). Wenn Sie den Port explizit über das Skript „EnableRules.ps1“ geändert haben, geben Sie die verwendete benutzerdefinierte Portnummer ein. Dies ist ein Ping vom Azure-Computer an den lokalen Computer.
 * Überprüfen Sie, ob die Pings erfolgreich ausgeführt werden. Wenn dies nicht der Fall ist, bedeutet das, dass eine zwischengeschaltete Netzwerkfirewall oder Azure-NSG den Datenverkehr an diesem Port blockiert.
