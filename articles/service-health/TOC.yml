@@ -24,7 +24,7 @@
 - name: Vorgehensweise
   items:
     - name: Konfigurieren von Warnungen für Service Health-Ereignisse
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
       href: service-notifications.md
     - name: Senden von Warnungen an externe Systeme über einen Webhook
