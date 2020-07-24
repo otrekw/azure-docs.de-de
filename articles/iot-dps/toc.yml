@@ -11,7 +11,7 @@
       items:
         - name: Azure-Portal
           href: quick-setup-auto-provision.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM-Vorlage
           href: quick-setup-auto-provision-rm.md
@@ -99,6 +99,8 @@
       href: concepts-security.md
     - name: TLS-Unterstützung
       href: tls-support.md
+    - name: VNET-Unterstützung
+      href: virtual-network-support.md
     - name: Dienst
       href: concepts-service.md
     - name: Informationen zu DPS-IP-Adressen
@@ -109,7 +111,7 @@
       href: concepts-symmetric-key-attestation.md
     - name: Sicherheitsmaßnahmen für Gerätehersteller
       href: concepts-device-oem-security-practices.md
-- name: Anleitungen
+- name: Exemplarische Vorgehensweisen
   items:
     - name: Herstellen einer Verbindung zwischen MXChip IoT DevKit und IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
