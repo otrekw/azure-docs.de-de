@@ -6,7 +6,7 @@
       href: ../overview.md
     - name: Dokumentation zum Spring 2020 Release
       href: ../create-host-pools-azure-marketplace.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: 1. Erstellen eines Mandanten
       href: tenant-setup-azure-active-directory.md
@@ -70,6 +70,8 @@
           href: diagnostics-log-analytics-2019.md
     - name: Veröffentlichen von integrierten Apps
       href: publish-apps-2019.md
+    - name: Einrichten von Azure Multi-Factor Authentication
+      href: ../set-up-mfa.md
 - name: Konzepte
   items:
     - name: Windows Virtual Desktop-Umgebung
