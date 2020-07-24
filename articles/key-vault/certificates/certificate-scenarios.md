@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765096"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224858"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -81,6 +81,9 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
       -   Status: abgeschlossen, Fehler mit Fehlerinformationen oder abgebrochen  
       -   Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
 
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Netzwerksicherheit und Zugriffsrichtlinien, die der integrierten Zertifizierungsstelle zugeordnet sind
+Der Key Vault-Dienst sendet Anforderungen an die Zertifizierungsstelle (ausgehender Datenverkehr). Daher ist sie vollständig kompatibel mit firewallfähigen Schlüsseltresoren. Der Key Vault-Dienst verwendet keine Zugriffsrichtlinien gemeinsam mit der Zertifizierungsstelle. Die Zertifizierungsstelle muss so konfiguriert werden, dass Signieranforderungen unabhängig akzeptiert werden. [Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+
 ## <a name="import-a-certificate"></a>Importieren eines Zertifikats  
  Alternative: Ein Zertifikat kann in Key Vault als PFX oder PEM importiert werden.  
 
@@ -103,7 +106,7 @@ Die folgenden Importtypen werden für das PEM-Dateiformat unterstützt. Ein einz
 
 -----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
 
-Wenn Sie das Zertifikat importieren, müssen Sie sicherstellen, dass der Schlüssel in der Datei selbst enthalten ist. Wenn der private Schlüssel separat in einem anderen Format vorliegt, müssen Sie den Schlüssel mit dem Zertifikat kombinieren. Einige Zertifizierungsstellen bieten Zertifikate in verschiedenen Formaten an. Stellen Sie daher vor dem Importieren des Zertifikats sicher, dass es in einem der Formate PEM oder PFX vorliegt. 
+Wenn Sie das Zertifikat importieren, müssen Sie sicherstellen, dass der Schlüssel in der Datei selbst enthalten ist. Wenn der private Schlüssel separat in einem anderen Format vorliegt, müssen Sie den Schlüssel mit dem Zertifikat kombinieren. Einige Zertifizierungsstellen bieten Zertifikate in verschiedenen Formaten an. Stellen Sie daher vor dem Importieren des Zertifikats sicher, dass in einem der Formate PEM oder PFX vorliegt. 
 
 ### <a name="formats-of-merge-csr-we-support"></a>Unterstützte Formate von Merge CSR
 AKV unterstützt zwei PEM-basierte Formate. Sie können ein einzelnes PKCS#8-codiertes Zertifikat oder eine Base64-codierte P7B-Datei (von der Zertifizierungsstelle signierte Zertifikatkette) zusammenführen. 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147395"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259174"
 ---
 # <a name="about-virtual-hub-routing"></a>Informationen zum Routing virtueller Hubs
 
@@ -63,6 +63,9 @@ Für jeden virtuellen Hub ist auch eine **Keine-Routingtabelle** verfügbar. Die
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurieren statischer Routen in einer virtuellen Netzwerkverbindung
 
 Die Konfiguration statischer Routen bietet einen Mechanismus zum Steuern des Datenverkehrs über die IP-Adresse eines nächsten Hops, bei dem es sich um ein virtuelles Netzwerkgerät (NVA) handeln könnte, das in einem an einen virtuellen Hub angefügten Spoke-VNet bereitgestellt wird. Die statische Route besteht aus einem Routennamen, einer Liste von Zielpräfixen und einer IP-Adresse des nächsten Hops.
+
+## <a name="reset-hub"></a><a name="route"></a>Zurücksetzen des Hubs
+Mit dieser nur im Azure-Portal verfügbaren Option kann der Benutzer fehlerhafte Ressourcen wie z. B. Routingtabellen, Hubrouter oder die virtuelle Hubressource selbst wieder in den richtigen Bereitstellungszustand bringen. Dies ist eine zusätzliche Option, die der Benutzer nutzt, bevor er Microsoft um Support bittet. Mit diesem Vorgang werden keine Gateways in einem virtuellen Hub zurückgesetzt. 
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Routingtabellen in Virtual WAN-Instanzen vom Typ „Basic“ und „Standard“ vor dem Featuresatz von Zuordnung und Weitergabe
 

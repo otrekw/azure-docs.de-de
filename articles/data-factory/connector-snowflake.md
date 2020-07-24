@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 347f37fb999656a1c4951f01a75a392887b5b882
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/09/2020
+ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045670"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220302"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Snowflake mithilfe von Azure Data Factory
 
@@ -60,7 +60,7 @@ Die folgenden Eigenschaften werden für den mit Snowflake verknüpften Dienst un
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>(optional)"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ Die folgenden Eigenschaften werden für den mit Snowflake verknüpften Dienst un
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>(optional)",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 
@@ -156,14 +156,19 @@ Wenn der Senkendatenspeicher und das Format die in diesem Abschnitt beschriebene
 
 - Der **verknüpfte Senkendienst** ist [**Azure Blob Storage**](connector-azure-blob-storage.md) mit **SAS**-Authentifizierung.
 
-- Das **Senkendatenformat** lautet **Parquet** oder **Durch Trennzeichen getrennter Text** – mit den folgenden Konfigurationen:
+- Das **Senkendatenformat** lautet **Parquet**, **Durch Trennzeichen getrennter Text** oder **JSON** mit den folgenden Konfigurationen:
 
-   - Beim Format **Parquet** wird einer der Komprimierungscodecs **None**, **Snappy** oder **Lzo** verwendet.
-   - Beim Format **Durch Trennzeichen getrennter Text**:
-     - `rowDelimiter` ist **\r\n** oder ein beliebiges einzelnes Zeichen.
-     - `compression` kann auf **keine Komprimierung** oder auf **gzip**, **bzip2** oder **deflate** festgelegt sein.
-     - `encodingName` wird als Standardwert übernommen oder ist auf **utf-8** festgelegt.
-     - `quoteChar` ist als **doppeltes Anführungszeichen**, **einfaches Anführungszeichen** oder als **leere Zeichenfolge** (kein Anführungszeichen) festgelegt.
+    - Beim Format **Parquet** wird einer der Komprimierungscodecs **None**, **Snappy** oder **Lzo** verwendet.
+    - Beim Format **Durch Trennzeichen getrennter Text**:
+        - `rowDelimiter` ist **\r\n** oder ein beliebiges einzelnes Zeichen.
+        - `compression` kann auf **keine Komprimierung** oder auf **gzip**, **bzip2** oder **deflate** festgelegt sein.
+        - `encodingName` wird als Standardwert übernommen oder ist auf **utf-8** festgelegt.
+        - `quoteChar` ist als **doppeltes Anführungszeichen**, **einfaches Anführungszeichen** oder als **leere Zeichenfolge** (kein Anführungszeichen) festgelegt.
+    - Für das **JSON**-Format unterstützt direktes Kopieren nur den Fall, dass die Snowflake-Quelltabelle oder das Abfrageergebnis nur eine einzelne Spalte hat und der Datentyp dieser Spalte **VARIANT**, **OBJECT** oder **ARRAY** ist.
+        - `compression` kann auf **keine Komprimierung** oder auf **gzip**, **bzip2** oder **deflate** festgelegt sein.
+        - `encodingName` wird als Standardwert übernommen oder ist auf **utf-8** festgelegt.
+        - `filePattern` in der Senke der Kopieraktivität wird auf dem Standardwert belassen oder auf **setOfObjects** festgelegt.
+
 - In der Quelle der Kopieraktivität ist `additionalColumns` nicht angegeben.
 - Die Spaltenzuordnung ist nicht angegeben.
 
@@ -282,15 +287,19 @@ Wenn der Quelldatenspeicher und das Format die in diesem Abschnitt beschriebenen
 
 - Der **verknüpfte Quelldienst** ist [**Azure Blob Storage**](connector-azure-blob-storage.md) mit **SAS**-Authentifizierung.
 
-- Das **Quelldatenformat** lautet **Parquet** oder **Durch Trennzeichen getrennter Text** – mit den folgenden Konfigurationen:
+- Das **Quelldatenformat** lautet **Parquet**, **Durch Trennzeichen getrennter Text** oder **JSON** mit den folgenden Konfigurationen:
 
-   - Beim Format **Parquet** wird einer der Komprimierungscodecs **None** oder **Snappy** verwendet.
+    - Beim Format **Parquet** wird einer der Komprimierungscodecs **None** oder **Snappy** verwendet.
 
-   - Beim Format **Durch Trennzeichen getrennter Text**:
-     - `rowDelimiter` ist **\r\n** oder ein beliebiges einzelnes Zeichen. Wenn das Zeilentrennzeichen nicht „\r\n“ ist, muss `firstRowAsHeader` auf **false** festgelegt sein. `skipLineCount` ist nicht angegeben.
-     - `compression` kann auf **keine Komprimierung** oder auf **gzip**, **bzip2** oder **deflate** festgelegt sein.
-     - `encodingName` wird als Standardwert übernommen oder ist auf „UTF-8“, „UTF-16“, „UTF-16BE“, „UTF-32“, „UTF-32BE“, „BIG5“, „EUC-JP“, „EUC-KR“, „GB18030“, „ISO-2022-JP“, „ISO-2022-KR“, „ISO-8859-1“, „ISO-8859-2“, „ISO-8859-5“, „ISO-8859-6“, „ISO-8859-7“, „ISO-8859-8“, „ISO-8859-9“, „WINDOWS-1250“, „WINDOWS-1251“, „WINDOWS-1252“, „WINDOWS-1253“, „WINDOWS-1254“ oder „WINDOWS-1255“ festgelegt.
-     - `quoteChar` ist als **doppeltes Anführungszeichen**, **einfaches Anführungszeichen** oder als **leere Zeichenfolge** (kein Anführungszeichen) festgelegt.
+    - Beim Format **Durch Trennzeichen getrennter Text**:
+        - `rowDelimiter` ist **\r\n** oder ein beliebiges einzelnes Zeichen. Wenn das Zeilentrennzeichen nicht „\r\n“ ist, muss `firstRowAsHeader` auf **false** festgelegt sein. `skipLineCount` ist nicht angegeben.
+        - `compression` kann auf **keine Komprimierung** oder auf **gzip**, **bzip2** oder **deflate** festgelegt sein.
+        - `encodingName` wird als Standardwert übernommen oder ist auf „UTF-8“, „UTF-16“, „UTF-16BE“, „UTF-32“, „UTF-32BE“, „BIG5“, „EUC-JP“, „EUC-KR“, „GB18030“, „ISO-2022-JP“, „ISO-2022-KR“, „ISO-8859-1“, „ISO-8859-2“, „ISO-8859-5“, „ISO-8859-6“, „ISO-8859-7“, „ISO-8859-8“, „ISO-8859-9“, „WINDOWS-1250“, „WINDOWS-1251“, „WINDOWS-1252“, „WINDOWS-1253“, „WINDOWS-1254“ oder „WINDOWS-1255“ festgelegt.
+        - `quoteChar` ist als **doppeltes Anführungszeichen**, **einfaches Anführungszeichen** oder als **leere Zeichenfolge** (kein Anführungszeichen) festgelegt.
+    - Für das **JSON**-Format unterstützt direktes Kopieren nur den Fall, dass die Snowflake-Senkentabelle nur eine einzelne Spalte hat und der Datentyp dieser Spalte **VARIANT**, **OBJECT** oder **ARRAY** ist.
+        - `compression` kann auf **keine Komprimierung** oder auf **gzip**, **bzip2** oder **deflate** festgelegt sein.
+        - `encodingName` wird als Standardwert übernommen oder ist auf **utf-8** festgelegt.
+        - Die Spaltenzuordnung ist nicht angegeben.
 
 - In der Quelle der Kopieraktivität: 
 

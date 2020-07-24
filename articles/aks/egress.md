@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für a
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: a2f0394b172361e9053b1490a46357a5d3f2f47d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145498"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205777"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
 
@@ -96,7 +96,7 @@ Erstellen Sie den Dienst und die Bereitstellung mit dem Befehl `kubectl apply`.
 kubectl apply -f egress-service.yaml
 ```
 
-Beim Erstellen dieses Dienstes wird eine neue Front-End-IP in Azure Load Balancer konfiguriert. Wenn keine anderen IP-Adressen konfiguriert wurden, wird ab sofort **sämtlicher ausgehender Datenverkehr** diese Adresse verwenden. Wenn mehrere IP-Adressen im Azure Load Balancer konfiguriert wurden, nutzt der ausgehende Datenverkehr die erste IP-Adresse im Load Balancer.
+Beim Erstellen dieses Dienstes wird eine neue Front-End-IP in Azure Load Balancer konfiguriert. Wenn keine anderen IP-Adressen konfiguriert wurden, wird ab sofort **sämtlicher ausgehender Datenverkehr** diese Adresse verwenden. Wenn für den Azure Load Balancer mehrere Adressen konfiguriert sind, sind diese öffentlichen IP-Adressen Kandidaten für ausgehende Datenflüsse, und eine davon wird nach dem Zufallsprinzip ausgewählt.
 
 ## <a name="verify-egress-address"></a>Überprüfen der Adresse für ausgehende Daten
 

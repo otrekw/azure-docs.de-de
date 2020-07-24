@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169907"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242762"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -17,6 +17,9 @@ App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoption
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-run-local.md#local-settings-file).
+
+> [!NOTE]  
+> Sie können Anwendungseinstellungen verwenden, um host.json-Einstellungswerte zu überschreiben, ohne die Datei „host.json“ ändern zu müssen. Dies ist hilfreich für Szenarien, in denen bestimmte host.json-Einstellungen für eine bestimmte Umgebung konfiguriert oder geändert werden müssen. So können Sie auch host.json-Einstellungen ändern, ohne das Projekt erneut veröffentlichen zu müssen. Weitere Informationen finden Sie im [Referenzartikel zu „host.json“](functions-host-json.md#override-hostjson-values).  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -38,7 +41,7 @@ Die Verbindungszeichenfolge für Application Insights. Verwenden Sie `APPLICATIO
 
 Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in der gleichen Functions-App zu senden. Die Verknüpfung wird anstelle einer neuen HTTP-Anforderung verwendet. Diese Einstellung ermöglicht das Deaktivieren dieses Verknüpfungsverhaltens.
 
-|Schlüssel|Wert|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden nicht direkt an die Funktion gesendet. Stattdessen werden die Anforderungen wieder an das HTTP-Front-End für die Funktions-App zurückgeleitet.|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden direkt an die Funktion weitergeleitet. Dies ist der Standardwert. |
@@ -47,7 +50,7 @@ Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfun
 
 Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden. 
 
-|Schlüssel|Wert|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Routenparameter mit codierten Schrägstrichen werden decodiert. |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Alle Routenparameter werden unverändert weitergegeben (Standardverhalten). |
@@ -72,7 +75,7 @@ Wenn `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` auf `true` festgelegt ist
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Konfiguriert in Version 2.x oder höher der Functions-Runtime das App-Verhalten auf der Grundlage der Runtimeumgebung. Dieser Wert ist [während der Initialisierung lesen](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Sie können `AZURE_FUNCTIONS_ENVIRONMENT` auf beliebige Werte festlegen, aber [drei Werte](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) werden unterstützt: [Entwicklung](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) und [Produktion](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Wenn `AZURE_FUNCTIONS_ENVIRONMENT` nicht festgelegt ist, wird als Standardwert in einer lokalen Umgebung `Development` und in Azure `Production` verwendet. Diese Einstellung sollte anstelle von `ASPNETCORE_ENVIRONMENT` verwendet werden, um die Laufzeitumgebung festzulegen. 
+Konfiguriert in Version 2.x oder höher der Functions-Runtime das App-Verhalten auf der Grundlage der Runtimeumgebung. Dieser Wert ist [während der Initialisierung lesen](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Sie können `AZURE_FUNCTIONS_ENVIRONMENT` auf beliebige Werte festlegen, aber [drei Werte](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) werden unterstützt: [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) und [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Wenn `AZURE_FUNCTIONS_ENVIRONMENT` nicht festgelegt ist, wird als Standardwert in einer lokalen Umgebung `Development` und in Azure `Production` verwendet. Diese Einstellung sollte anstelle von `ASPNETCORE_ENVIRONMENT` verwendet werden, um die Laufzeitumgebung festzulegen. 
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
@@ -255,7 +258,7 @@ Ermöglicht es Ihrer Funktions-App, über eine bereitgestellte Paketdatei ausgef
 |---|------------|
 |WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
-Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellungspaketdatei aufgelöst werden kann, oder `1`. Bei einer Festlegung auf `1` muss sich das Paket im Ordner `d:\home\data\SitePackages` befinden. Wenn Sie die Zip-Bereitstellung mit dieser Einstellung verwenden, wird das Paket automatisch an diesen Speicherort hochgeladen. In der Vorschau wurde diese Einstellung als `WEBSITE_RUN_FROM_ZIP` bezeichnet. Weitere Informationen finden Sie unter [Ausführen von Azure Functions über eine Paketdatei](run-functions-from-deployment-package.md).
+Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellungspaketdatei aufgelöst werden kann, oder `1`. Bei einer Festlegung auf `1` muss sich das Paket im Ordner `d:\home\data\SitePackages` befinden. Wenn Sie die Zip-Bereitstellung mit dieser Einstellung verwenden, wird das Paket automatisch an diesen Speicherort hochgeladen. In der Vorschau wurde diese Einstellung als `WEBSITE_RUN_FROM_ZIP` bezeichnet. Weitere Informationen finden Sie unter [Ausführen Ihrer Azure Functions aus einem Paket](run-functions-from-deployment-package.md).
 
 ## <a name="website_time_zone"></a>WEBSITE\_TIME\_ZONE
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055493"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255437"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -54,7 +54,7 @@ Ein häufiges Problem bei *Azure CNI* ist, dass der zugewiesene IP-Adressbereich
 
 Als Kompromiss können Sie einen AKS-Cluster erstellen, der *kubenet* verwendet und eine Verbindung mit einem vorhandenen Subnetz eines virtuellen Netzwerks herstellt. Mit diesem Ansatz können die Knoten definierte IP-Adressen empfangen, ohne dass vorab eine große Anzahl von IP-Adressen für alle möglichen Pods reserviert werden muss, die im Cluster ausgeführt werden könnten.
 
-Mit *kubenet* können Sie einen viel kleineren IP-Adressbereich verwenden und große Cluster und Anwendungsanforderungen unterstützen. Sie könnten beispielsweise noch mit einem */27*-IP-Adressbereich einen Cluster mit 20-25 Knoten mit genügend Platz zum Skalieren oder Aktualisieren ausführen. Diese Clustergröße unterstützt bis zu *2.200-2.750* Pods (mit standardmäßig maximal 110 Pods pro Knoten). Die maximale Anzahl von Pods pro Knoten, die Sie mit *Kubenet* in AKS konfigurieren können, ist 110.
+Mit *kubenet* können Sie einen viel kleineren IP-Adressbereich verwenden und große Cluster und Anwendungsanforderungen unterstützen. Sie könnten beispielsweise noch mit einem */27*-IP-Adressbereich in Ihrem Subnetz einen Cluster mit 20-25 Knoten mit genügend Platz zum Skalieren oder Aktualisieren ausführen. Diese Clustergröße unterstützt bis zu *2.200-2.750* Pods (mit standardmäßig maximal 110 Pods pro Knoten). Die maximale Anzahl von Pods pro Knoten, die Sie mit *Kubenet* in AKS konfigurieren können, ist 110.
 
 Die folgenden grundlegenden Berechnungen zeigen den Unterschied zwischen Netzwerkmodellen im Vergleich:
 
@@ -238,7 +238,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks bereitgestellt ist, können Sie den Cluster jetzt wie gewohnt verwenden. Steigen Sie ein in das [Erstellen von Apps mithilfe von Azure Dev Spaces][dev-spaces], das [Bereitstellen vorhandener Apps mithilfe von Helm][use-helm] oder in das [Erstellen neuer Apps mithilfe von Helm][develop-helm].
 
 <!-- LINKS - External -->
-[dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[dev-spaces]: ../dev-spaces/index.yml
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy

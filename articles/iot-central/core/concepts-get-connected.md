@@ -3,20 +3,19 @@ title: Gerätekonnektivität in Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Artikel werden die wichtigsten Konzepte in Bezug auf die Gerätekonnektivität in Azure IoT Central vorgestellt.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710438"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224746"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -73,19 +72,40 @@ Verwenden Sie die Verbindungsinformationen aus der Exportdatei in Ihrem Gerätec
 
 In einer Produktionsumgebung ist die Verwendung von X.509-Zertifikaten der empfohlene Mechanismus zur Geräteauthentifizierung für IoT Central. Weitere Informationen finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](../../iot-hub/iot-hub-x509ca-overview.md).
 
-Bevor Sie ein Gerät mit einem X.509-Zertifikat verbinden, müssen Sie ein X.509-Zwischen- oder -Stammzertifikat in der Anwendung hinzufügen und überprüfen. Geräte müssen vom Stamm- oder Zwischenzertifikat generierte X.509-Blattzertifikate verwenden.
+So stellen Sie eine Verbindung eines Geräts mit einem X.509-Zertifikat mit Ihrer Anwendung her:
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Hinzufügen und Überprüfen eines Stamm- oder Zwischenzertifikats
+1. Erstellen Sie eine *Registrierungsgruppe*, die den Nachweistyp **X.509-Zertifikate** verwendet.
+2. Fügen Sie ein X.509-Zwischen- oder Stammzertifikat in der Registrierungsgruppe hinzu, und überprüfen Sie es.
+3. Registrieren Sie Geräte, die aus dem Stamm- oder Zwischenzertifikat in der Registrierungsgruppe generierte untergeordnete X.509-Zertifikate verwenden, und stellen Sie Verbindungen mit Ihnen her.
 
-Navigieren Sie zu **Verwaltung > Geräteverbindung > Primäres Zertifikat verwalten**, und fügen Sie das X.509-Stamm- oder Zwischenzertifikat hinzu, das Sie zum Generieren der Gerätezertifikate verwenden.
+### <a name="create-an-enrollment-group"></a>Erstellen einer Registrierungsgruppe
 
-![Verbindungseinstellungen](media/concepts-get-connected/manage-x509-certificate.png)
+Eine [Registrierungsgruppe](../../iot-dps/concepts-service.md#enrollment) ist eine Gruppe von Geräten, die einen bestimmten Nachweistyp gemeinsam nutzen. Die zwei unterstützten Nachweistypen sind X.509-Zertifikate und SAS:
 
-Durch das Verifizieren des Zertifikatbesitzes wird sichergestellt, dass die Person, die das Zertifikat hochgeladen hat, im Besitz des privaten Schlüssels für das Zertifikat ist. So verifizieren Sie das Zertifikat:
+- In einer X.509-Registrierungsgruppe verwenden alle Geräte, die eine Verbindung mit IoT Central herstellen, aus dem Stamm- oder Zwischenzertifikat in der Registrierungsgruppe generierte untergeordnete X.509-Zertifikate.
+- In einer SAS-Registrierungsgruppe verwenden alle Geräte, die eine Verbindung mit IoT Central herstellen, ein aus dem SAS-Token in der Registrierungsgruppe generiertes SAS-Token.
 
-  1. Wählen Sie die Schaltfläche neben **Überprüfungscode** aus, um einen Code zu generieren.
-  1. Erstellen Sie ein X.509-Verifizierungszertifikat mit dem Überprüfungscode, den Sie im vorherigen Schritt generiert haben. Speichern Sie das Zertifikat als CER-Datei.
-  1. Laden Sie das signierte Verifizierungszertifikat hoch, und wählen Sie **Überprüfen** aus. Das Zertifikat wird als **Verifiziert** gekennzeichnet, wenn die Überprüfung erfolgreich ist.
+Die beiden Standardregistrierungsgruppen in jeder IoT Central-Anwendung sind SAS-Registrierungsgruppen – eine für IoT-Geräte und eine für Azure IoT Edge-Geräte. Navigieren Sie zum Erstellen einer X.509-Registrierungsgruppe zur Seite **Geräteverbindung**, und wählen Sie **+ Registrierungsgruppe hinzufügen** aus:
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="Screenshot: Hinzufügen einer X.509-Registrierungsgruppe":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>Hinzufügen und Überprüfen eines X.509-Stamm- oder Zwischenzertifikats
+
+So fügen Sie ein Stamm- oder Zwischenzertifikat Ihrer Registrierungsgruppe hinzu und überprüfen es:
+
+1. Navigieren Sie zu der soeben erstellten X.509-Registrierungsgruppe. Sie haben die Möglichkeit, sowohl primäre als auch sekundäre X.509-Zertifikate hinzuzufügen. Wählen Sie **+ Primäre verwalten** aus.
+
+1. Laden Sie auf der Seite **Primäres Zertifikat** Ihr primäres X.509-Zertifikat hoch. Dies ist Ihr Stamm- oder Zwischenzertifikat:
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Screenshot: Primäres Zertifikat":::
+
+1. Generieren Sie mit der Option **Überprüfungscode** einen Überprüfungscode in dem von Ihnen verwendeten Tool. Wählen Sie **Überprüfen** aus, um das Überprüfungszertifikat hochzuladen.
+
+1. Nach erfolgreicher Überprüfung wird die folgende Bestätigung angezeigt:
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Screenshot: Überprüftes primäres Zertifikat":::
+
+Durch das Verifizieren des Zertifikatbesitzes wird sichergestellt, dass die Person, die das Zertifikat hochgeladen hat, im Besitz des privaten Schlüssels für das Zertifikat ist.
 
 Wenn eine Sicherheitsverletzung auftritt oder Ihr primäres Zertifikat abläuft, verwenden Sie das sekundäre Zertifikat, um Downtime zu verringern. Sie können weiterhin Geräte mit dem sekundären Zertifikat bereitstellen, während Sie das primäre Zertifikat aktualisieren.
 
@@ -93,7 +113,7 @@ Wenn eine Sicherheitsverletzung auftritt oder Ihr primäres Zertifikat abläuft,
 
 Zum Massenverbinden von Geräten mithilfe von X.509-Zertifikaten registrieren Sie zunächst die Geräte in Ihrer Anwendung, indem Sie mithilfe einer CSV-Datei die [Geräte-IDs und Gerätenamen importieren](howto-manage-devices.md#import-devices). Die Geräte-IDs sollten ausschließlich Kleinbuchstaben aufweisen.
 
-Generieren Sie X.509-Blattzertifikate für Ihre Geräte mit dem hochgeladenen Stamm- oder Zwischenzertifikat. Verwenden Sie die **Geräte-ID** als `CNAME`-Wert in den Blattzertifikaten. Für den Gerätecode werden der Wert **ID-Bereich** für Ihre Anwendung, die **Geräte-ID** und das entsprechende Gerätezertifikat benötigt.
+Generieren Sie untergeordnete X.509-Zertifikate für Ihre Geräte mit dem Stamm- oder Zwischenzertifikat, das Sie in Ihre X.509-Registrierungsgruppe hochgeladen haben. Verwenden Sie die **Geräte-ID** als `CNAME`-Wert in den Blattzertifikaten. Für den Gerätecode werden der Wert **ID-Bereich** für Ihre Anwendung, die **Geräte-ID** und das entsprechende Gerätezertifikat benötigt.
 
 #### <a name="sample-device-code"></a>Beispiel für Gerätecode
 
@@ -123,9 +143,9 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Verbinden von Geräten, die SAS-Token verwenden, ohne Registrierung
 
-1. Kopieren Sie den primären Gruppenschlüssel der IoT Central-Anwendung:
+1. Kopieren Sie den Gruppenprimärschlüssel aus der **SAS-IoT-Devices**-Registrierungsgruppe:
 
-    ![Primärer SAS-Schlüssel der Anwendungsgruppe](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Gruppenprimärschlüssel aus der SAS-IoT-Devices-Registrierungsgruppe":::
 
 1. Verwenden Sie das Tool [dps-keygen](https://www.npmjs.com/package/dps-keygen), um die SAS-Schlüssel für das Gerät zu generieren. Verwenden Sie den primären Gruppenschlüssel aus dem vorherigen Schritt. Die Geräte-ID muss aus Kleinbuchstaben bestehen:
 
@@ -146,7 +166,7 @@ Der Flow unterscheidet sich geringfügig danach, ob die Geräte SAS-Token oder X
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Verbinden von Geräten, die X.509-Zertifikate verwenden, ohne Registrierung
 
-1. [Fügen Sie ein X.509-Stamm- oder Zwischenzertifikat zu Ihrer IoT Central-Anwendung hinzu, und überprüfen Sie es](#connect-devices-using-x509-certificates).
+1. [Erstellen Sie eine Registrierungsgruppe](#create-an-enrollment-group), [fügen Sie dann ein X.509-Stamm- oder Zwischenzertifikat Ihrer IoT Central-Anwendung hinzu, und überprüfen Sie es](#add-and-verify-a-root-or-intermediate-x509-certificate).
 
 1. Generieren Sie die untergeordneten Zertifikate für Ihre Geräte, indem Sie das Stamm- bzw. Zwischenzertifikat verwenden, das Sie Ihrer IoT Central-Anwendung hinzugefügt haben. Verwenden Sie in den Blattzertifikaten Geräte-IDs in Kleinbuchstaben als `CNAME`.
 

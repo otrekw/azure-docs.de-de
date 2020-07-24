@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478398"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275392"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -362,7 +362,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 |Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|BESCHREIBUNG|
 |-----|-----|-----|-----|
 |Join|string1, string2, separator|outputClaim|Verknüpft Eingabezeichenfolgen mit einer eingefügten Trennzeichen. Zum Beispiel: Zeichenfolge1:"foo@bar.com" , Zeichenfolge2:"sandbox" , Trennzeichen:"." ergibt outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|outputClaim|Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein \@-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
+|ExtractMailPrefix|E-Mail-Adresse oder UPN|UPN|Erweiterungsattribute 1-15 oder sonstige Schemaerweiterungen, die einen UPN- oder E-Mail-Adress-Wert für den Benutzer speichern, z. B. johndoe@contoso.com. Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein \@-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
 
 **InputClaims:** Verwenden Sie ein InputClaims-Element, um die Daten aus einem Anspruchsschemaeintrag an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **ClaimTypeReferenceId** und **TransformationClaimType**.
 

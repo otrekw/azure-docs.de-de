@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253867"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223311"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrieren des aktuellen Benutzers für Pushbenachrichtigungen mit ASP.NET
 
@@ -44,11 +44,11 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
 
      Ihr Storyboard sieht nun wie folgt aus:
 
-     ![][0]
+     ![Screenshot der MainStoryboard_iPhone.storyboard-App mit den hinzugefügten Komponenten.][0]
 
 2. Erstellen Sie im Assistant Editor Outlets für alle Switches, und rufen Sie sie auf. Verbinden Sie die Textfelder mit dem View Controller (delegate) und erstellen Sie eine **Action** für die **login**-Schaltfläche.
 
-    ![][1]
+    ![Screenshot des Assistenten-Editors in der MainStoryboard_iPhone.storyboard-App][1]
 
     Die Datei "BreakingNewsViewController.h" sollte nun den folgenden Code enthalten:
 

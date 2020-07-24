@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 40dd985b7cf09ddc2a902630cec3f0c74a1edbe1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e21009341857cc6de3cb7aa411445bc10e6827e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734604"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223481"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>Beheben von Verzeichniskonfliktfehlern für vorhandene verwaltete Azure Active Directory Domain Services-Domänen
 
@@ -28,26 +28,32 @@ In diesem Artikel wird erläutert, warum der Fehler auftritt und wie er behoben 
 
 Ein Verzeichniskonfliktfehler tritt auf, wenn eine von Azure AD DS verwaltete Domäne und ein virtuelles Netzwerk zu zwei verschiedenen Azure AD Mandanten gehören. Angenommen, Sie verfügen über die verwaltete Domäne *aaddscontoso.com*, die auf dem Azure AD-Mandanten von Contoso ausgeführt wird. Das virtuelle Azure-Netzwerk für die verwaltete Domäne ist jedoch Teil des Azure AD-Mandanten von Fabrikam.
 
-Azure verwendet die rollenbasierte Zugriffs Steuerung (Role-Based Access Control, RBAC), um den Zugriff auf Ressourcen einzuschränken. Wenn Sie Azure AD DS in einem Azure AD-Mandanten aktivieren, werden Anmeldeinformationshashes mit der verwalteten Domäne synchronisiert. Dieser Vorgang erfordert es, dass Sie ein Mandantenadministrator für das Azure AD-Verzeichnis sind, und der Zugriff auf die Anmeldeinformationen muss gesteuert werden. Zum Bereitstellen von Ressourcen in einem virtuellen Azure-Netzwerk und zum Steuern des Datenverkehrs müssen Sie über Administratorrechte für das virtuelle Netzwerk verfügen, in dem Sie Azure AD DS bereitstellen.
+Azure verwendet die rollenbasierte Zugriffs Steuerung (Role-Based Access Control, RBAC), um den Zugriff auf Ressourcen einzuschränken. Wenn Sie Azure AD DS in einem Azure AD-Mandanten aktivieren, werden Anmeldeinformationshashes mit der verwalteten Domäne synchronisiert. Dieser Vorgang erfordert es, dass Sie ein Mandantenadministrator für das Azure AD-Verzeichnis sind, und der Zugriff auf die Anmeldeinformationen muss gesteuert werden.
+
+Zum Bereitstellen von Ressourcen in einem virtuellen Azure-Netzwerk und zum Steuern des Datenverkehrs müssen Sie über Administratorrechte für das virtuelle Netzwerk verfügen, in dem Sie die verwaltete Domäne bereitstellen.
 
 Die verwaltete Domäne und das virtuelle Netzwerk müssen zu demselben Azure AD Mandanten gehören, damit RBAC konsistent und sicher auf alle von Azure AD DS verwendeten Ressourcen zugreifen kann.
 
-In der Resource Manager-Umgebung gelten die folgenden Regeln:
+Für Bereitstellungen gelten folgende Regeln:
 
 - Ein Azure AD-Verzeichnis kann über mehrere Azure-Abonnements verfügen.
 - Ein Azure-Abonnement kann über mehrere Ressourcen, wie etwa virtuelle Netzwerke, verfügen.
-- Eine einzelne verwaltete Azure AD Domain Services-Domäne ist für ein Azure AD-Verzeichnis aktiviert.
-- Eine verwaltete Azure AD Domain Services-Domäne kann auf einem virtuellen Netzwerk aktiviert sein, das zu einem der Azure-Abonnements des gleichen Azure AD-Mandanten gehört.
+- Eine einzelne verwaltete Domäne ist für ein Azure AD-Verzeichnis aktiviert.
+- Eine verwaltete Domäne kann auf einem virtuellen Netzwerk aktiviert sein, das zu einem der Azure-Abonnements des gleichen Azure AD-Mandanten gehört.
 
 ### <a name="valid-configuration"></a>Gültige Konfiguration
 
-Im folgenden Beispielszenario für die Bereitstellung ist die verwaltete Domäne von Contoso im Mandanten „Contoso Azure AD“ aktiviert. Die verwaltete Domäne wird in einem virtuellen Netzwerk bereitgestellt, das zu einem Azure-Abonnement gehört, dessen Besitzer der Mandant „Contoso Azure AD“ ist. Sowohl die verwaltete Domäne als auch das virtuelle Netzwerk gehören zu demselben Azure AD-Mandanten. Diese Beispielkonfiguration ist gültig und wird vollständig unterstützt.
+Im folgenden Beispielszenario für die Bereitstellung ist die verwaltete Domäne von Contoso im Mandanten „Contoso Azure AD“ aktiviert. Die verwaltete Domäne wird in einem virtuellen Netzwerk bereitgestellt, das zu einem Azure-Abonnement gehört, dessen Besitzer der Mandant „Contoso Azure AD“ ist.
+
+Sowohl die verwaltete Domäne als auch das virtuelle Netzwerk gehören zu demselben Azure AD-Mandanten. Diese Beispielkonfiguration ist gültig und wird vollständig unterstützt.
 
 ![Gültige Azure AD DS-Mandantenkonfiguration mit der verwalteten Domäne und dem virtuellen Netzwerkteil desselben Azure AD-Mandanten](./media/getting-started/valid-tenant-config.png)
 
 ### <a name="mismatched-tenant-configuration"></a>Nicht übereinstimmende Mandantenkonfiguration
 
-In diesem Beispielszenario für die Bereitstellung ist die verwaltete Domäne von Contoso im Mandanten „Contoso Azure AD“ aktiviert. Allerdings wird die verwaltete Domäne in einem virtuellen Netzwerk bereitgestellt, das zu einem Azure-Abonnement gehört, dessen Besitzer der Fabrikam-Azure AD-Mandant ist. Die verwaltete Domäne und das virtuelle Netzwerk gehören zu zwei verschiedenen Azure AD-Mandanten. Diese Beispielkonfiguration ist ein nicht übereinstimmender Mandant und wird nicht unterstützt. Das virtuelle Netzwerk muss in denselben Azure AD-Mandanten wie die verwaltete Domäne verschoben werden.
+In diesem Beispielszenario für die Bereitstellung ist die verwaltete Domäne von Contoso im Mandanten „Contoso Azure AD“ aktiviert. Allerdings wird die verwaltete Domäne in einem virtuellen Netzwerk bereitgestellt, das zu einem Azure-Abonnement gehört, dessen Besitzer der Fabrikam-Azure AD-Mandant ist.
+
+Die verwaltete Domäne und das virtuelle Netzwerk gehören zu zwei verschiedenen Azure AD-Mandanten. Diese Beispielkonfiguration ist ein nicht übereinstimmender Mandant und wird nicht unterstützt. Das virtuelle Netzwerk muss in denselben Azure AD-Mandanten wie die verwaltete Domäne verschoben werden.
 
 ![Nicht übereinstimmende Mandantenkonfiguration](./media/getting-started/mismatched-tenant-config.png)
 
@@ -55,7 +61,7 @@ In diesem Beispielszenario für die Bereitstellung ist die verwaltete Domäne vo
 
 Die beiden folgenden Optionen beheben den Verzeichniskonfliktfehler:
 
-* [Löschen Sie die verwaltete Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis. [Erstellen Sie eine verwaltete Ersatzdomäne](tutorial-create-instance.md) im selben Azure AD-Verzeichnis wie das virtuelle Netzwerk, das Sie verwenden möchten. Wenn Sie fertig sind, verknüpfen Sie alle Computer, die zuvor mit der gelöschten Domäne verknüpft waren, mit der neu erstellten verwalteten Domäne.
+* [Löschen Sie zuerst die verwaltete Domäne](delete-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis. [Erstellen Sie dann eine verwaltete Ersatzdomäne](tutorial-create-instance.md) im selben Azure AD-Verzeichnis wie das virtuelle Netzwerk, das Sie verwenden möchten. Wenn Sie fertig sind, verknüpfen Sie alle Computer, die zuvor mit der gelöschten Domäne verknüpft waren, mit der neu erstellten verwalteten Domäne.
 * [Verschieben Sie das Azure-Abonnement](../cost-management-billing/manage/billing-subscription-transfer.md) mit dem virtuellen Netzwerk in dasselbe Azure AD-Verzeichnis wie die verwaltete Domäne.
 
 ## <a name="next-steps"></a>Nächste Schritte

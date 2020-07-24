@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143750"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260642"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit der kognitiven Azure-Suche
 
@@ -74,8 +74,8 @@ Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie u
 Sie haben folgende Möglichkeiten zum Angeben der Anmeldeinformationen für den Blobcontainer:
 
 - **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) oder zu „Einstellungen“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
-- Verbindungszeichenfolge für eine **Shared Access Signature (SAS) für ein Speicherkonto**: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für Container und Objekte (in diesem Fall Blobs) verfügen.
--  **Shared Access Signature des Containers**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
+- **Speicherkonto Shared Access Signature-Verbindungszeichenfolge** (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Die SAS sollte über die Berechtigungen zum Auflisten und Lesen für Container und Objekte (in diesem Fall Blobs) verfügen.
+-  **Container und Shared Access Signature**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
 
 Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
@@ -210,6 +210,25 @@ Hier wird beschrieben, wie Sie Feldzuordnungen hinzufügen und die Base64-Codier
 >
 >
 
+#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>Was geschieht, wenn Sie ein Feld codieren müssen, um es als Schlüssel zu verwenden, aber Sie es auch durchsuchen möchten?
+
+Manchmal müssen Sie eine codierte Version eines Felds wie „metadata_storage_path“ als Schlüssel verwenden, aber dieses Feld muss auch durchsuchbar sein (ohne Codierung). Um dieses Problem zu beheben, können Sie zwei Felder zuordnen. Eines wird für den Schlüssel verwendet und das andere für Suchzwecke. Im folgenden Beispiel enthält das Feld *key* den codierten Pfad, während das Feld *path* nicht codiert ist und als durchsuchbares Feld im Index verwendet wird.
+
+```http
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "dataSourceName" : " blob-datasource ",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+      ]
+    }
+```
 <a name="WhichBlobsAreIndexed"></a>
 ## <a name="controlling-which-blobs-are-indexed"></a>Steuern, welche Blobs indiziert werden
 Sie können steuern, welche Blobs indiziert und welche übersprungen werden.
@@ -272,7 +291,7 @@ Die oben beschriebenen Konfigurationsparameter werden auf alle Blobs angewendet.
 
 | Eigenschaftenname | Eigenschaftswert | Erklärung |
 | --- | --- | --- |
-| AzureSearch_Skip |"true" |Weist den Blobindexer an, das Blob vollständig zu überspringen. Weder die Metadaten- noch die Inhaltsextraktion werden versucht. Dies ist nützlich, wenn ein bestimmtes Blob wiederholt fehlschlägt und den Indizierungsprozess unterbricht. |
+| AzureSearch_Skip |"true""true" |Weist den Blobindexer an, das Blob vollständig zu überspringen. Weder die Metadaten- noch die Inhaltsextraktion werden versucht. Dies ist nützlich, wenn ein bestimmtes Blob wiederholt fehlschlägt und den Indizierungsprozess unterbricht. |
 | AzureSearch_SkipContent |"true" |Dies entspricht der [oben](#PartsOfBlobToIndex) beschriebenen Einstellung `"dataToExtract" : "allMetadata"` zu einem bestimmten Blob. |
 
 <a name="DealingWithErrors"></a>

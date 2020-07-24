@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186927"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259448"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -35,8 +35,8 @@ Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung ve
 * **Containerregistrierungen**: Sie benötigen eine vorhandene Quellregistrierung mit zu übertragenden Artefakten und eine Zielregistrierung. Die ACR-Übertragung ist für die Verschiebung über physisch getrennte Clouds hinweg vorgesehen. Zu Testzwecken können sich die Quell- und Zielregistrierungen in demselben oder einem anderen Azure-Abonnement, Active Directory-Mandanten bzw. in einer Cloud befinden. Wenn Sie eine Registrierung erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Erstellen einer privaten Containerregistrierung mit der Azure CLI](container-registry-get-started-azure-cli.md). 
 * **Speicherkonten**: Erstellen Sie Quell- und Zielspeicherkonten in einem Abonnement und an einem Speicherort Ihrer Wahl. Zu Testzwecken können Sie dasselbe Abonnement oder dieselben Abonnements wie Ihre Quell- und Zielregistrierungen verwenden. Für Cloudszenarien erstellen Sie in der Regel in jeder Cloud ein separates Speicherkonto. Erstellen Sie bei Bedarf die Speicherkonten mit der [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) oder anderen Tools. 
 
-  Erstellen Sie einen Blobcontainer für die Artefaktübertragung in jedem Konto. Erstellen Sie z. B. einen Container namens *transfer*. Mindestens zwei Übertragungspipelines können dasselbe Speicherkonto gemeinsam nutzen, sollten jedoch unterschiedliche Speichercontainerbereiche verwenden.
-* **Schlüsseltresore**: Schlüsseltresore sind erforderlich, um SAS-Tokengeheimnisse für den Zugriff auf Quell- und Zielspeicherkonten zu speichern. Erstellen Sie die Quell- und Zielschlüsseltresore in demselben Azure-Abonnement oder in den gleichen Abonnements wie Ihre Quell- und Zielregistrierungen. Erstellen Sie Schlüsseltresore bei Bedarf mit der [Azure CLI](../key-vault/quick-create-cli.md) oder anderen Tools.
+  Erstellen Sie einen Blobcontainer für die Artefaktübertragung in jedem Konto.Erstellen Sie einen Blobcontainer für die Artefaktübertragung in jedem Konto. Erstellen Sie z. B. einen Container namens *transfer*. Mindestens zwei Übertragungspipelines können dasselbe Speicherkonto gemeinsam nutzen, sollten jedoch unterschiedliche Speichercontainerbereiche verwenden.
+* **Schlüsseltresore**: Schlüsseltresore sind erforderlich, um SAS-Tokengeheimnisse für den Zugriff auf Quell- und Zielspeicherkonten zu speichern. Erstellen Sie die Quell- und Zielschlüsseltresore in demselben Azure-Abonnement oder in den gleichen Abonnements wie Ihre Quell- und Zielregistrierungen. Erstellen Sie Schlüsseltresore bei Bedarf mit der [Azure CLI](../key-vault/secrets/quick-create-cli.md) oder anderen Tools.
 * **Umgebungsvariablen**: Legen Sie für die Beispielbefehle in diesem Artikel die folgenden Umgebungsvariablen für die Quell- und Zielumgebungen fest. Alle Beispiele sind für die Bash-Shell formatiert.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -172,7 +172,7 @@ EXPORT_RES_ID=$(az group deployment show \
   --output tsv)
 ```
 
-## <a name="create-importpipeline-with-resource-manager"></a>Erstellen von ImportPipeline mit Resource Manager 
+## <a name="create-importpipeline-with-resource-manager"></a>Erstellen Sie mithilfe der Azure Resource Manager-Vorlagenbereitstellung eine ImportPipeline-Ressource in der Zielcontainerregistrierung. 
 
 Erstellen Sie mithilfe der Azure Resource Manager-Vorlagenbereitstellung eine ImportPipeline-Ressource in der Zielcontainerregistrierung. Standardmäßig ist die Pipeline für automatischen Import aktiviert, wenn das Speicherkonto in der Zielumgebung über ein Artefaktblob verfügt.
 
@@ -257,7 +257,7 @@ az storage blob list \
 
 Verwenden Sie das AzCopy-Tool oder andere Methoden, um Blobdaten aus dem Quellspeicherkonto in das Zielspeicherkonto zu [übertragen](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts).
 
-Beispielsweise kopiert der folgende [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy)-Befehl „myblob“ aus dem Container *transfer* des Quellkontos in den Container *transfer* im Zielkonto. Wenn das Blob im Zielkonto vorhanden ist, wird es überschrieben. Bei der Authentifizierung werden SAS-Token mit den entsprechenden Berechtigungen für die Quell- und Zielcontainer verwendet. (Die Schritte zum Erstellen von Token werden nicht gezeigt.)
+Beispielsweise kopiert der folgende [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md)-Befehl „myblob“ aus dem Container *transfer* des Quellkontos in den Container *transfer* im Zielkonto. Wenn das Blob im Zielkonto vorhanden ist, wird es überschrieben. Bei der Authentifizierung werden SAS-Token mit den entsprechenden Berechtigungen für die Quell- und Zielcontainer verwendet. (Die Schritte zum Erstellen von Token werden nicht gezeigt.)
 
 ```console
 azcopy copy \
@@ -366,6 +366,3 @@ Wenn Sie einzelne Containerimages aus einer öffentlichen Registrierung oder ein
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

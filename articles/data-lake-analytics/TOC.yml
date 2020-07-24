@@ -21,6 +21,12 @@
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+- name: Konzepte
+  items:
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
+          href: security-baseline.md
 - name: Anleitung
   items:
     - name: Verwalten von Data Lake Analytics
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: Durchsuchen und Anzeigen von Aufträgen
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: 'Debuggen von benutzerdefiniertem C#-Code'
+            - name: Debuggen von benutzerdefiniertem C#-Code
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: Problembehandlung für periodische Aufträge
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md
@@ -151,7 +157,7 @@
       href: /rest/api/datalakeanalytics/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.datalakeanalytics/allversions
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: 'https://docs.microsoft.com/cli/azure/dla'
 - name: Ressourcen
   items:

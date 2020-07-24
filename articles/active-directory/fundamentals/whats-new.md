@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cbf811fdb8ff051ec1bb782eb3da12ea45b29bdf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170444"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256815"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -44,8 +44,8 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert. Wenn S
 ### <a name="user-risk-condition-in-conditional-access-policy"></a>Die Bedingung „Benutzerrisiko“ in der Richtlinie für bedingten Zugriff
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie:** Bedingter Zugriff  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Dienstkategorie**: Bedingter Zugriff  
+**Produktfunktion**: Identitätssicherheit und -schutz
  
 
 Die Unterstützung des Benutzerrisikos in der Azure AD-Richtlinie für bedingten Zugriff ermöglicht es Ihnen, mehrere benutzerrisikobasierte Richtlinien zu erstellen. Für verschiedene Benutzer und Apps sind unter Umständen unterschiedliche Mindestbenutzerrisikostufen erforderlich. Basierend auf dem Benutzerrisiko können Sie Richtlinien erstellen, um den Zugriff zu blockieren oder eine mehrstufige Authentifizierung, eine sichere Kennwortänderung oder eine Umleitung zu Microsoft Cloud App Security zum Erzwingen von Sitzungsrichtlinien zu erfordern, wie z. B. eine zusätzliche Überwachung.
@@ -57,8 +57,8 @@ Die Benutzerrisikobedingung erfordert Azure AD Premium P2, da sie Azure Identity
 ### <a name="saml-sso-now-supports-apps-that-require-spnamequalifier-to-be-set-when-requested"></a>SAML SSO unterstützt jetzt Apps, bei denen „SPNameQualifier“ nach Aufforderung festgelegt werden muss.
 
 **Typ:** Korrigiert  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** SSO
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
  
 Einige SAML-Anwendungen erfordern, dass „SPNameQualifier“ bei Anforderung im Assertionbetreff zurückgegeben wird. Nun antwortet Azure AD ordnungsgemäß, wenn ein „SPNameQualifier“ in der Anforderungs-NameID-Richtlinie angefordert wird. Dies funktioniert auch für die SP-initiierte Anmeldung, und die IDP-initiierte Anmeldung folgt.  Weitere Informationen zum SAML-Protokoll in Azure Active Directory finden Sie unter [SAML-Protokoll für einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol).
 
@@ -68,7 +68,7 @@ Einige SAML-Anwendungen erfordern, dass „SPNameQualifier“ bei Anforderung im
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 
 Azure Government-Mandanten, die die B2B-Zusammenarbeitsfunktionen verwenden, können Benutzer jetzt mit einem Microsoft- oder Google-Konto einladen. Um festzustellen, ob Ihr Mandant diese Funktionen nutzen kann, befolgen Sie die Anweisungen unter [Wie kann ich erkennen, ob die B2B-Zusammenarbeit in meinem Mandanten der Azure-Cloud für US-Behörden verfügbar ist?](https://docs.microsoft.com/azure/active-directory/b2b/current-limitations#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant).
@@ -80,7 +80,7 @@ Azure Government-Mandanten, die die B2B-Zusammenarbeitsfunktionen verwenden, kö
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 
 Die Eigenschaften „externalUserState“ und „externalUserStateChangedDateTime“ können zum Auffinden von eingeladenen B2B-Gäste verwendet werden, die ihre Einladungen noch nicht akzeptiert haben, sowie zur Automatisierung wie etwa zum Löschen von Benutzern, die ihre Einladungen nach einigen Tagen nicht akzeptiert haben. Diese Eigenschaften sind jetzt in MS Graph v1 verfügbar. Anleitungen zur Verwendung dieser Eigenschaften finden Sie unter [Benutzerressourcentyp](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0).
@@ -89,9 +89,9 @@ Die Eigenschaften „externalUserState“ und „externalUserStateChangedDateTim
 
 ### <a name="manage-authentication-sessions-in-azure-ad-conditional-access-is-now-generally-available"></a>Verwalten von Authentifizierungssitzungen im bedingten Azure AD-Zugriff ist jetzt allgemein verfügbar
 
-**Typ:** Neues Feature  
-**Dienstkategorie:** Bedingter Zugriff  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Bedingter Zugriff  
+**Produktfunktion**: Identitätssicherheit und -schutz
  
 Die Verwaltungsfunktionen für Authentifizierungssitzungen erlauben es Ihnen, zu konfigurieren, wie oft Ihre Benutzer Anmeldeinformationen bereitstellen müssen und ob sie Anmeldeinformationen nach dem Schließen und erneuten Öffnen des Browsers angeben müssen, um mehr Sicherheit und Flexibilität in Ihrer Umgebung zu erreichen.
  
@@ -102,8 +102,8 @@ Zusätzlich wurde die Verwaltung von Authentifizierungssitzungen bisher nur für
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---june-2020"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – Juni 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Juni 2020 haben wir die folgenden 29 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
 
@@ -117,7 +117,7 @@ Die Dokumentation zu allen Anwendungen finden Sie auch hier: https://aka.ms/Apps
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 API-Connectors für externe Identitäten ermöglichen es Ihnen, Web-APIs zu nutzen, um die Self-Service-Registrierung für externe Cloudsysteme zu integrieren. Dies bedeutet, dass Sie jetzt Web-APIs als spezifische Schritte in einem Registrierungsablauf aufrufen können, um cloudbasierte benutzerdefinierte Workflows auszulösen. Beispielsweise können Sie mit API-Connectors folgende Aktionen ausführen:
 
@@ -135,7 +135,7 @@ Weitere Informationen zu allen Möglichkeiten von API-Connectors finden Sie unte
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
  
 Der Azure AD-Bereitstellungsdienst wird zurzeit zyklisch betrieben. Der Dienst wird alle 40 Minuten ausgeführt. Mit der [bedarfsorientierten Bereitstellung](https://aka.ms/provisionondemand) können Sie einen Benutzer auswählen und in wenigen Sekunden bereitstellen. Mit dieser Funktion können Sie Probleme bei der Bereitstellung schnell beheben, ohne dass ein Neustart erforderlich ist, um einen erneuten Start des Bereitstellungsprozesses zu erzwingen. 
  
@@ -144,7 +144,7 @@ Der Azure AD-Bereitstellungsdienst wird zurzeit zyklisch betrieben. Der Dienst w
 ### <a name="new-permission-for-using-azure-ad-entitlement-management-in-graph"></a>Neue Berechtigung zum Verwenden der Azure AD-Berechtigungsverwaltung in Graph
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Andere  
+**Dienstkategorie:** Sonstige  
 **Produktfunktion:** Berechtigungsverwaltung
  
 Die neue delegierte Berechtigung „EntitlementManagement.Read.All“ ist jetzt für die Verwendung mit der Berechtigungsverwaltungs-API in Microsoft Graph Beta verfügbar. Weitere Informationen zu den verfügbaren APIs finden Sie unter [Arbeiten mit der Azure AD-Berechtigungsverwaltungs-API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta).
@@ -154,7 +154,7 @@ Die neue delegierte Berechtigung „EntitlementManagement.Read.All“ ist jetzt 
 ### <a name="identity-protection-apis-available-in-v10"></a>In v1.0 verfügbare Identity Protection-APIs
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Schutz der Identität (Identity Protection)  
+**Dienstkategorie**: Identitätsschutz  
 **Produktfunktion:** Identitätssicherheit und -schutz
  
 Die Microsoft Graph-APIs „riskyUsers“ und „riskDetections“ sind jetzt allgemein verfügbar. Nachdem sie nun am v 1.0-Endpunkt verfügbar sind, laden wir Sie ein, sie in der Produktion zu verwenden. Weitere Informationen finden Sie unter [Microsoft Graph-Dokumente](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0).
@@ -164,8 +164,8 @@ Die Microsoft Graph-APIs „riskyUsers“ und „riskDetections“ sind jetzt al
 ### <a name="sensitivity-labels-to-apply-policies-to-microsoft-365-groups-is-now-generally-available"></a>Vertraulichkeitsbezeichnungen zum Anwenden von Richtlinien auf Microsoft 365-Gruppen sind jetzt allgemein verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Gruppenverwaltung  
-**Produktfunktion:** Zusammenarbeit
+**Dienstkategorie**: Gruppenverwaltung  
+**Produktfunktion:** Kollaboration
  
 
 Sie können jetzt Vertraulichkeitsbezeichnungen erstellen und mithilfe der Bezeichnungseinstellungen Richtlinien auf Microsoft 365-Gruppen anwenden, einschließlich Richtlinien für den Datenschutz (öffentlich oder privat) und den externen Benutzerzugriff. Sie können eine Bezeichnung mit der Datenschutzrichtlinie erstellen, die privat ist, und eine Richtlinie für den externen Benutzerzugriff, damit das Hinzufügen von Gastbenutzern nicht zulässig ist. Wenn ein Benutzer diese Bezeichnung auf eine Gruppe anwendet, ist die Gruppe privat, und es dürfen keine Gastbenutzer zur Gruppe hinzugefügt werden. 
@@ -178,7 +178,7 @@ Vertraulichkeitsbezeichnungen sind wichtig, um Ihre unternehmenskritischen Daten
 
 **Typ:** Geändertes Feature  
 **Dienstkategorie:** Microsoft Identity Manager  
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
  
 Der Azure-Support ist jetzt für Azure AD-Integrationskomponenten von Microsoft Identity Manager 2016 verfügbar, und zwar bis zum Ende des erweiterten Supports für Microsoft Identity Manager 2016. Weitere Informationen finden Sie unter [Supportupdate für Azure AD Premium-Kunden, die Microsoft Identity Manager verwenden](https://docs.microsoft.com/microsoft-identity-manager/support-update-for-azure-active-directory-premium-customers).
 
@@ -187,8 +187,8 @@ Der Azure-Support ist jetzt für Azure AD-Integrationskomponenten von Microsoft 
 ### <a name="the-use-of-group-membership-conditions-in-sso-claims-configuration-is-increased"></a>Die Verwendung von Bedingungen für Gruppenmitgliedschaften bei der Konfiguration von SSO-Ansprüchen wurde erweitert
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** SSO
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
  
 Bisher war die Anzahl der Gruppen, die Sie verwenden können, wenn Sie Ansprüche basierend auf der Gruppenmitgliedschaft in einer einzelnen Anwendungskonfiguration bedingt ändern, auf 10 beschränkt. Die Verwendung von Bedingungen für Gruppenmitgliedschaften bei der Konfiguration von SSO-Ansprüchen ist auf maximal 50 Gruppen gestiegen. Weitere Informationen zum Konfigurieren von Ansprüchen finden Sie unter [Konfiguration von SSO-Ansprüchen für Unternehmensanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#emitting-claims-based-on-conditions). 
 
@@ -197,7 +197,7 @@ Bisher war die Anzahl der Gruppen, die Sie verwenden können, wenn Sie Ansprüch
 ### <a name="enabling-basic-formatting-on-the-sign-in-page-text-component-in-company-branding"></a>Aktivieren der grundlegenden Formatierung im Text der Anmeldeseite im Unternehmensbranding
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Die Unternehmensbrandingfunktion für die Azure AD-/Microsoft 365-Anmeldung wurde aktualisiert, damit der Kunde Hyperlinks und einfache Formatierungen hinzufügen kann, einschließlich fett, unterstrichen und kursiv. Anweisungen zur Verwendung dieser Funktion erhalten Sie unter [Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation](https://docs.microsoft.com/azure/active-directory/fundamentals/customize-branding).
@@ -206,7 +206,7 @@ Die Unternehmensbrandingfunktion für die Azure AD-/Microsoft 365-Anmeldung wurd
 
 ### <a name="provisioning-performance-improvements"></a>Leistungsverbesserungen bei der Bereitstellung
 
-**Typ:** Geändertes Feature  
+**Typ:** Geänderte Funktion  
 **Dienstkategorie:** App-Bereitstellung  
 **Produktfunktion:** Identity Lifecycle Management
  
@@ -231,7 +231,7 @@ Außerdem haben wir die Arbeit abgeschlossen, um alle Azure AD Graph-Funktionen 
 ### <a name="retirement-of-properties-in-signins-riskyusers-and-riskdetections-apis"></a>Außerbetriebnahme von Eigenschaften in signIns-, riskyUsers- und riskDetections-APIs
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie:** Schutz der Identität (Identity Protection)  
+**Dienstkategorie**: Identitätsschutz  
 **Produktfunktion:** Identitätssicherheit und -schutz
 
 Derzeit werden Aufzählungstypen verwendet, um die Eigenschaft „riskType“ in der riskDetections-API und in „riskyUserHistoryItem“ (Vorschauversion) darzustellen. Aufzählungstypen werden auch für die riskEventTypes-Eigenschaft in der signIns-API verwendet. In Zukunft werden diese Eigenschaften als Zeichenfolgen dargestellt. 
@@ -256,10 +256,10 @@ Wir haben eine neue riskEventsTypes_v2 (string)-Eigenschaft für die signIns v1.
 
 **Typ:** Plan für Änderung  
 **Dienstkategorie:** MFA  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Produktfunktion**: Identitätssicherheit und -schutz
  
 
-Wir nehmen die folgenden Änderungen an den MFA-E-Mail-Benachrichtigungen für MFA vor:
+Wir nehmen die folgenden Änderungen an den E-Mail-Benachrichtigungen für die Cloud-MFA vor:
 
 E-Mail-Benachrichtigungen werden von den folgenden Adressen gesendet: azure-noreply@microsoft.com und msonlineservicesteam@microsoftonline.com. Wir aktualisieren den Inhalt von E-Mails mit Betrugswarnungen, um die erforderlichen Schritte zum Entsperren von Verwendungen besser anzugeben.
 
@@ -268,7 +268,7 @@ E-Mail-Benachrichtigungen werden von den folgenden Adressen gesendet: azure-nore
 ### <a name="new-self-service-sign-up-for-users-in-federated-domains-who-cant-access-microsoft-teams-because-they-arent-synced-to-azure-active-directory"></a>Neue Self-Service-Registrierung für Benutzer in Verbunddomänen, die nicht auf Microsoft Teams zugreifen können, weil sie nicht mit Azure Active Directory synchronisiert sind.
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 
@@ -279,8 +279,8 @@ Derzeit können Benutzer, die sich in Azure AD-Verbunddomänen befinden, aber n
 ### <a name="upcoming-fix-the-oidc-discovery-document-for-the-azure-government-cloud-is-being-updated-to-reference-the-correct-graph-endpoints"></a>Anstehende Korrektur: Das OIDC-Ermittlungsdokument für die Azure Government-Cloud wird aktualisiert, sodass es auf die richtigen Graph-Endpunkte verweist.
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie:** Sovereign Clouds  
-**Produktfunktion:** Benutzerauthentifizierung
+**Dienstkategorie:** Unabhängige Clouds  
+**Produktfunktion**: Benutzerauthentifizierung
  
 Ab Juni gibt das OIDC-Ermittlungsdokument [Microsoft Identity Platform und das OpenID Connect-Protokoll](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) auf dem [Azure Government-Cloud](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)-Endpunkt (login.microsoftonline.us) den richtigen [Nationale Cloudbereitstellungen](https://docs.microsoft.com/graph/deployments)-Endpunkt (https://graph.microsoft.us oder https://dod-graph.microsoft.us) auf Basis des bereitgestellten Mandanten zurück.  Derzeit wird der falsche Graph-Endpunkt (graph.microsoft.com) „msgraph_host“-Feld angezeigt.  
 
@@ -291,8 +291,8 @@ Diese Fehlerbehebung wird schrittweise über ungefähr 2 Monate hinweg eingefü
 ### <a name="azure-government-users-will-no-longer-be-able-to-sign-in-on-loginmicrosoftonlinecom"></a>Azure Government-Benutzer können sich nicht mehr bei „login.microsoftonline.com“ anmelden.
 
 **Typ:** Geplante Änderung  
-**Dienstkategorie:** Sovereign Clouds  
-**Produktfunktion:** Benutzerauthentifizierung
+**Dienstkategorie:** Unabhängige Clouds  
+**Produktfunktion**: Benutzerauthentifizierung
  
 Am 1. Juni 2018 hat sich die offizielle Azure Active Directory (AAD)-Autorität für Azure Government von https://login-us.microsoftonline.com in https://login.microsoftonline.us geändert. Wenn Sie eine Anwendung in einem Azure Government-Mandanten besitzen, müssen Sie Ihre Anwendung aktualisieren, damit die Benutzer am US-Endpunkt angemeldet werden.
 
@@ -305,8 +305,8 @@ Diese Änderung wird schrittweise eingeführt, wobei die Erzwingung für alle Ap
 ### <a name="saml-single-logout-request-now-sends-nameid-in-the-correct-format"></a>Die SAML-Anforderung für einmaliges Abmelden sendet jetzt eine NameID im richtigen Format
 
 **Typ:** Korrigiert  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
-**Produktfunktion:** Benutzerauthentifizierung
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Produktfunktion**: Benutzerauthentifizierung
  
 Wenn ein Benutzer auf die Abmeldung klickt (z. B. im MyApps-Portal), sendet Azure AD eine SAML-Nachricht für einmaliges Abmelden an jede App, die in der Benutzersitzung aktiv ist und für die eine Abmelde-URL konfiguriert ist. Diese Nachrichten enthalten eine NameID in einem persistenten Format.
 
@@ -318,7 +318,7 @@ Wenn das ursprüngliche SAML-Anmeldetoken ein anderes Format für die NameID ver
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Azure AD-Cloudbereitstellung  
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
  
 IT-Administratoren können jetzt die neue „Hybridadministrator“-Rolle als am wenigsten privilegierte Rolle zum Einrichten der Azure ADConnect-Cloudbereitstellung verwenden. Mit dieser neuen Rolle ist es nicht mehr erforderlich, die Rolle „Globaler Administrator“ zum Einrichten und Konfigurieren der Cloudbereitstellung zu verwenden. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-by-task#connect)
  
@@ -327,8 +327,8 @@ IT-Administratoren können jetzt die neue „Hybridadministrator“-Rolle als am
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---may-2020"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – Mai 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Mai 2020 haben wir die folgenden 36 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
 
@@ -343,8 +343,8 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie h
 ### <a name="report-only-mode-for-conditional-access-is-now-generally-available"></a>Reiner Berichtsmodus für den bedingten Zugriff jetzt allgemein verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Bedingter Zugriff  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Dienstkategorie**: Bedingter Zugriff  
+**Produktfunktion**: Identitätssicherheit und -schutz
 
 Mit dem [reinen Berichtsmodus für den bedingten Azure AD-Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only) können Sie das Ergebnis einer Richtlinie auswerten, ohne die Zugriffssteuerungen zu erzwingen. Im reinen Berichtsmodus können Sie Richtlinien in Ihrer Organisation vor der Aktivierung testen und deren Auswirkungen verstehen, sodass die Bereitstellung sicherer und einfacher wird. In den letzten Monaten haben wir eine hohe Akzeptanz des reinen Berichtsmodus festgestellt. Richtlinien im reinen Berichtsmodus weisen bereits einen Umfang von mehr als 26 Millionen Benutzern auf. Mit der heutigen Ankündigung werden neue Richtlinien für den bedingten Azure AD-Zugriff standardmäßig im reinen Berichtsmodus erstellt. Dies bedeutet, dass Sie die Auswirkungen Ihrer Richtlinien vom Zeitpunkt der Erstellung an überwachen können. Benutzer der MS Graph-APIs können zudem [Richtlinien im reinen Berichtsmodus programmgesteuert verwalten](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta). 
 
@@ -354,7 +354,7 @@ Mit dem [reinen Berichtsmodus für den bedingten Azure AD-Zugriff](https://docs.
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 Mit „Externe Identitäten“ in Azure AD können Sie Personen außerhalb Ihrer Organisation den Zugriff auf Ihre Apps und Ressourcen erlauben. Gleichzeitig können sie sich mit der von ihnen bevorzugten Identität anmelden. Wenn Sie eine Anwendung für externe Benutzer freigeben, wissen Sie möglicherweise nicht immer im Voraus, wer Zugriff auf die Anwendung benötigt. Mit [Self-Service-Registrierung](https://docs.microsoft.com/azure/active-directory/b2b/self-service-sign-up-overview) können Sie Gastbenutzern ermöglichen, sich zu registrieren und ein Gastkonto für Ihre LOB-Apps (Line of Business, Branche) zu erhalten. Der Registrierungsfluss kann erstellt und so angepasst werden, dass er Azure AD und soziale Identitäten unterstützt. Sie können auch während der Registrierung zusätzliche Informationen über den Benutzer sammeln.
 
@@ -363,8 +363,8 @@ Mit „Externe Identitäten“ in Azure AD können Sie Personen außerhalb Ihre
  ### <a name="conditional-access-insights-and-reporting-workbook-is-generally-available"></a>Arbeitsmappe für Erkenntnisse und Berichterstellung zum bedingten Zugriff jetzt allgemein verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Bedingter Zugriff  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Dienstkategorie**: Bedingter Zugriff  
+**Produktfunktion**: Identitätssicherheit und -schutz
 
 Die [Arbeitsmappe für Erkenntnisse und Berichterstellung](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) bietet Administratoren eine Zusammenfassungsansicht des bedingten Azure AD-Zugriffs in ihrem Mandanten. Mit der Möglichkeit, eine einzelne Richtlinie auszuwählen, können Administratoren besser verstehen, was jede Richtlinie bewirkt, und Änderungen in Echtzeit überwachen. Die Arbeitsmappe streamt die in Azure Monitor gespeicherten Daten, die Sie [anhand dieser Anweisungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) in wenigen Minuten einrichten können. Damit das Dashboard leichter zu finden ist, haben wir es auf die neue Registerkarte „Erkenntnisse und Berichte“ im Menü „Bedingter Azure AD-Zugriff“ verschoben.
 
@@ -373,8 +373,8 @@ Die [Arbeitsmappe für Erkenntnisse und Berichterstellung](https://docs.microsof
 ### <a name="policy-details-blade-for-conditional-access-is-in-public-preview"></a>Blatt „Richtliniendetails“ für den bedingten Zugriff als öffentliche Vorschau verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Bedingter Zugriff  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Dienstkategorie**: Bedingter Zugriff  
+**Produktfunktion**: Identitätssicherheit und -schutz
 
 Auf dem neuen Blatt [Richtliniendetails](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access) wird angezeigt, welche Zuweisungen, Bedingungen und Steuerelemente während der Auswertung der Richtlinie für bedingten Zugriff erfüllt wurden. Sie können auf das Blatt zugreifen, indem Sie in den Anmeldedetails auf der Registerkarte „Bedingter Zugriff“ oder der Registerkarte „Nur Bericht“ eine Zeile auswählen.
 
@@ -382,7 +382,7 @@ Auf dem neuen Blatt [Richtliniendetails](https://docs.microsoft.com/azure/active
 
 ### <a name="new-query-capabilities-for-directory-objects-in-microsoft-graph-are-in-public-preview"></a>Neue Abfragefunktionen für Verzeichnisobjekte in Microsoft Graph sind in Public Preview
 
-**Typ:** Neues Feature  
+**Typ:** Neue Funktion  
 **Dienstkategorie:** MS Graph **Produktfunktion**: Entwickleroberfläche
 
 Für Microsoft Graph-Verzeichnisobjekt-APIs werden neue Funktionen eingeführt, die Zähl-, Such-, Filter- und Sortiervorgänge ermöglichen. So erhalten Entwickler die Möglichkeit, unsere Verzeichnisobjekte ohne Problemumgehungen wie In-Memory-Filterung und -Sortierung schnell abzufragen. Weitere Informationen finden Sie in diesem [Blogbeitrag](https://aka.ms/CountFilterMSGraphAAD).
@@ -394,8 +394,8 @@ Wir sind zurzeit in der Public Preview und bitten um Feedback. Bitte senden Sie 
 ### <a name="configure-saml-based-single-sign-on-using-microsoft-graph-api-beta"></a>Konfigurieren von SAML-basiertem einmaligem Anmelden unter Verwendung von Microsoft Graph-APIs (Beta)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** SSO
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
  
 Unterstützung für das Erstellen und Konfigurieren einer Anwendung aus dem Azure AD-Katalog mithilfe von MS Graph-APIs in der Betaversion ist jetzt verfügbar. Wenn Sie SAML-basiertes einmaliges Anmelden für mehrere Instanzen einer Anwendung einrichten müssen, sparen Sie Zeit, indem Sie die Microsoft Graph-APIs verwenden, um die [Konfiguration von SAML-basiertem einmaligem Anmelden zu automatisieren](https://docs.microsoft.com/azure/active-directory/manage-apps/application-saml-sso-configure-api).
  
@@ -405,7 +405,7 @@ Unterstützung für das Erstellen und Konfigurieren einer Anwendung aus dem Azur
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -422,8 +422,8 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 ### <a name="saml-token-encryption-is-generally-available"></a>SAML-Tokenverschlüsselung ist allgemein verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** SSO
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
  
 [Die SAML-Tokenverschlüsselung](https://docs.microsoft.com/azure/active-directory/manage-apps/howto-saml-token-encryption) ermöglicht die Konfiguration von Anwendungen für den Empfang verschlüsselter SAML-Assertionen. Die Funktion ist nun in allen Clouds allgemein verfügbar.
  
@@ -432,8 +432,8 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 ### <a name="group-name-claims-in-application-tokens-is-generally-available"></a>Gruppennamenansprüche in Anwendungstoken sind allgemein verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** SSO
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
  
 Die in einem Token ausgestellten Gruppenansprüche können jetzt auf die Gruppen beschränkt werden, die der Anwendung zugewiesen sind.  Dies ist besonders wichtig, wenn Benutzer einer großen Anzahl von Gruppen angehören und das Risiko besteht, dass die Beschränkungen der Tokengröße überschritten werden. Mit dieser neuen Funktion ist die Möglichkeit, [Token Gruppennamen hinzuzufügen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims), allgemein verfügbar.
  
@@ -443,7 +443,7 @@ Die in einem Token ausgestellten Gruppenansprüche können jetzt auf die Gruppen
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
  
 Wir haben die Workday Writeback-Bereitstellungs-App erweitert, um jetzt das Rückschreiben von Geschäftstelefonnummer- und Mobilnummerattributen zu unterstützen. Zusätzlich zu E-Mail-Adresse und Benutzername können Sie nun die Workday Writeback-Bereitstellungs-App so konfigurieren, dass Telefonnummerwerte von Azure AD an Workday weitergeleitet werden. Weitere Informationen zum Konfigurieren des Rückschreibens von Telefonnummern finden Sie im Tutorial zur [Workday Writeback](https://aka.ms/WorkdayWriteback)-App. 
 
@@ -451,9 +451,9 @@ Wir haben die Workday Writeback-Bereitstellungs-App erweitert, um jetzt das Rüc
 
 ### <a name="publisher-verification-preview"></a>Herausgeberüberprüfung (Vorschauversion)
 
-**Typ:** Neues Feature  
-**Dienstkategorie:** Andere  
-**Produktfunktion:** Entwickleroberfläche
+**Typ:** Neue Funktion  
+**Dienstkategorie:** Sonstige  
+**Produktfunktion**: Entwickleroberfläche
  
 Die Herausgeberüberprüfung (Vorschauversion) unterstützt Administratoren und Endbenutzer dabei, die Authentizität von Anwendungsentwicklern zu verstehen, die in die Microsoft Identity Platform integriert sind. Weitere Informationen finden Sie unter [Herausgeberüberprüfung (Vorschau)](https://docs.microsoft.com/azure/active-directory/develop/publisher-verification-overview).
  
@@ -479,8 +479,8 @@ Bisher konnten nur die Filter „Aktiviert“ und „Aktivitätsdatum“ verwend
 ### <a name="the-new-app-registrations-experience-for-azure-ad-b2c-is-now-generally-available"></a>Die neue Benutzeroberfläche für App-Registrierungen in Azure AD B2C ist jetzt allgemein verfügbar
 
 **Typ:** Geändertes Feature   
-**Dienstkategorie:** B2C – Verwaltung von Endbenutzeridentitäten  
-**Produktfunktion:** Identity Lifecycle Management
+**Dienstkategorie**: B2C – Kundenidentitätsverwaltung  
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
  
 Die neue Benutzeroberfläche für App-Registrierungen in Azure AD B2C ist jetzt allgemein verfügbar. 
 
@@ -502,9 +502,9 @@ Weitere Informationen finden Sie unter [Die neue App-Registrierungsbenutzeroberf
 
 **Typ:** Neues Feature
 
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)
 
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Produktfunktion**: Identitätssicherheit und -schutz
 
 Die Umgebung für die kombinierte Registrierung für Multi-Factor Authentication (MFA) und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) ist jetzt allgemein verfügbar. Diese neue Registrierungsumgebung bietet den Benutzern die Möglichkeit, sich in einem einzigen schrittweisen Prozess für MFA und SSPR zu registrieren. Wenn Sie die neue Umgebung für Ihre Organisation bereitstellen, können sich die Benutzer schneller und unkomplizierter registrieren. Lesen Sie [hier](https://bit.ly/3etiRyQ) den Blogbeitrag.
 
@@ -514,9 +514,9 @@ Die Umgebung für die kombinierte Registrierung für Multi-Factor Authentication
 
 **Typ:** Neues Feature
 
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)
 
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Produktfunktion**: Identitätssicherheit und -schutz
 
 Die fortlaufende Zugriffsevaluierung ist ein neues Sicherheitsfeature, das bei Ereignissen in Azure AD (z. B. Löschen von Benutzerkonten) die Durchsetzung von Richtlinien in nahezu Echtzeit bei den vertrauenden Seiten ermöglicht, die Azure AD-Zugriffstoken verwenden. Dieses Feature wird zuerst für Teams- und Outlook-Clients eingeführt. Weitere Einzelheiten finden Sie in unserem [Blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933) und der [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation).
 
@@ -526,9 +526,9 @@ Die fortlaufende Zugriffsevaluierung ist ein neues Sicherheitsfeature, das bei E
 
 **Typ:** Neues Feature
 
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)
 
-**Produktfunktion:** Benutzerauthentifizierung
+**Produktfunktion**: Benutzerauthentifizierung
 
 Office startet eine Reihe von vorwiegend mobilen Business-Apps, die sich an unkonventionelle Organisationen und an Mitarbeiter in großen Organisationen richten, die E-Mails nicht als primäre Kommunikationsmethode verwenden. Zielgruppe für diese Apps sind Mitarbeiter in Service und Produktion, Mitarbeiter ohne PC-gestützten Arbeitsplatz, Außendienstmitarbeiter oder Mitarbeiter im Einzelhandel, die möglicherweise von Ihrem Arbeitgeber keine E-Mail-Adresse erhalten oder auf einen Computer bzw. Informationstechnologie zugreifen können. Dieses Projekt bietet diesen Mitarbeiter die Möglichkeit, sich durch Eingabe einer Telefonnummer und Austausch eines Codes bei Geschäftsanwendungen anzumelden. Weitere Informationen finden Sie in unserer [Administratordokumentation](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-sms-signin) und der [Endbenutzerdokumentation](https://docs.microsoft.com/azure/active-directory/user-help/sms-sign-in-explainer).
 
@@ -550,7 +550,7 @@ Die B2B-Einladungsfunktion wird derzeit erweitert, damit in Zukunft vorhandene i
 
 **Typ:** Neues Feature
 
-**Dienstkategorie:** Bedingter Zugriff
+**Dienstkategorie**: Bedingter Zugriff
 
 **Produktfunktion:** Identitätssicherheit und -schutz
 
@@ -562,7 +562,7 @@ Mit dem [reinen Berichtsmodus für den bedingten Azure AD-Zugriff](https://docs.
 
 **Typ:** Neues Feature
 
-**Dienstkategorie:** Bedingter Zugriff
+**Dienstkategorie**: Bedingter Zugriff
 
 **Produktfunktion:** Identitätssicherheit und -schutz
 
@@ -574,9 +574,9 @@ Die [Arbeitsmappe für Erkenntnisse und Berichterstellung](https://docs.microsof
 
 **Typ:** Neues Feature
 
-**Dienstkategorie:** Bedingter Zugriff
+**Dienstkategorie**: Bedingter Zugriff
 
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Produktfunktion**: Identitätssicherheit und -schutz
 
 Auf dem neuen Blatt [Richtliniendetails](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access) wird angezeigt, welche Zuweisungen, Bedingungen und Steuerelemente während der Auswertung der Richtlinie für bedingten Zugriff erfüllt wurden. Sie können auf das Blatt zugreifen, indem Sie in den Anmeldedetails auf der Registerkarte **Bedingter Zugriff** oder der Registerkarte **Nur Bericht** eine Zeile auswählen.
 
@@ -586,9 +586,9 @@ Auf dem neuen Blatt [Richtliniendetails](https://docs.microsoft.com/azure/active
 
 **Typ:** Neues Feature
 
-**Dienstkategorie:** Unternehmens-Apps
+**Dienstkategorie**: Unternehmens-Apps
 
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
 
 Im April 2020 haben wir diese 31 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
 
@@ -600,11 +600,11 @@ Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration m
 
 ### <a name="microsoft-graph-delta-query-support-for-oauth2permissiongrant-available-for-public-preview"></a>Unterstützung der Delta-Abfrage in Microsoft Graph für oAuth2PermissionGrant in der öffentlichen Vorschau verfügbar
 
-**Typ:** Neues Feature
+**Typ:** Neue Funktion
 
 **Dienstkategorie:** MS Graph
 
-**Produktfunktion:** Entwickleroberfläche
+**Produktfunktion**: Entwickleroberfläche
 
 Die Delta-Abfrage für oAuth2PermissionGrant ist in der öffentlichen Vorschau verfügbar. Sie können jetzt Änderungen nachverfolgen, ohne kontinuierlich Microsoft Graph abfragen zu müssen. [Weitere Informationen.](https://docs.microsoft.com/graph/api/oAuth2PermissionGrant-delta?view=graph-rest-beta&tabs=http)
 
@@ -612,11 +612,11 @@ Die Delta-Abfrage für oAuth2PermissionGrant ist in der öffentlichen Vorschau v
 
 ### <a name="microsoft-graph-delta-query-support-for-organizational-contact-generally-available"></a>Unterstützung der Delta-Abfrage in Microsoft Graph für Organisationskontakte jetzt allgemein verfügbar
 
-**Typ:** Neues Feature
+**Typ:** Neue Funktion
 
 **Dienstkategorie:** MS Graph
 
-**Produktfunktion:** Entwickleroberfläche
+**Produktfunktion**: Entwickleroberfläche
 
 Die Delta-Abfrage für Organisationskontakte ist allgemein verfügbar. Sie können jetzt Änderungen an Produktions-Apps nachverfolgen, ohne kontinuierlich Microsoft Graph abfragen zu müssen. Ersetzen Sie vorhandenen Code, der kontinuierlich orgContact-Daten abruft, durch die Delta-Abfrage, um die Leistung deutlich zu verbessern. [Weitere Informationen.](https://docs.microsoft.com/graph/api/orgcontact-delta?view=graph-rest-1.0&tabs=http)
 
@@ -628,7 +628,7 @@ Die Delta-Abfrage für Organisationskontakte ist allgemein verfügbar. Sie könn
 
 **Dienstkategorie:** MS Graph
 
-**Produktfunktion:** Entwickleroberfläche
+**Produktfunktion**: Entwickleroberfläche
 
 Die Delta-Abfrage für Anwendungen ist allgemein verfügbar. Sie können jetzt Änderungen an Produktions-Apps nachverfolgen, ohne kontinuierlich Microsoft Graph abfragen zu müssen. Ersetzen Sie vorhandenen Code, der kontinuierlich Anwendungsdaten abruft, durch die Delta-Abfrage, um die Leistung deutlich zu verbessern. [Weitere Informationen.](https://docs.microsoft.com/graph/api/application-delta?view=graph-rest-1.0)
 
@@ -640,7 +640,7 @@ Die Delta-Abfrage für Anwendungen ist allgemein verfügbar. Sie können jetzt �
 
 **Dienstkategorie:** MS Graph
 
-**Produktfunktion:** In der Entwicklerumgebung ist die Delta-Abfrage für Verwaltungseinheiten in der öffentlichen Vorschau verfügbar. Sie können jetzt Änderungen nachverfolgen, ohne kontinuierlich Microsoft Graph abfragen zu müssen. [Weitere Informationen.](https://docs.microsoft.com/graph/api/administrativeunit-delta?view=graph-rest-beta&tabs=http)
+**Produktfunktion:** In der Entwicklerumgebung ist die Delta-Abfrage für Verwaltungseinheiten in der öffentlichen Vorschau verfügbar! Sie können jetzt Änderungen nachverfolgen, ohne kontinuierlich Microsoft Graph abfragen zu müssen. [Weitere Informationen.](https://docs.microsoft.com/graph/api/administrativeunit-delta?view=graph-rest-beta&tabs=http)
 
 ---
 
@@ -650,7 +650,7 @@ Die Delta-Abfrage für Anwendungen ist allgemein verfügbar. Sie können jetzt �
 
 **Dienstkategorie:** MS Graph
 
-**Produktfunktion:** Entwickleroberfläche
+**Produktfunktion**: Entwickleroberfläche
 
 Diese APIs sind ein wichtiges Tool zum Verwalten der Authentifizierungsmethoden Ihrer Benutzer. Sie können jetzt programmgesteuert die für MFA und die Self-Service-Kennwortzurücksetzung (SSPR) verwendeten Authentifikatoren vorab registrieren und verwalten. Hierbei handelt es sich um eine der am häufigsten gewünschten Funktionen im Bereich Azure MFA, SSPR und Microsoft Graph. Mit den neuen APIs in dieser Veröffentlichungswelle haben Sie folgende Möglichkeiten:
 
@@ -668,7 +668,7 @@ Weitere Informationen finden Sie unter [Übersicht über die Azure AD-Authentifi
 
 **Dienstkategorie:** RBAC
 
-**Produktfunktion:** Zugriffssteuerung
+**Produktfunktion**: Zugriffssteuerung
 
 Verwaltungseinheiten ermöglichen es Ihnen, Administratorberechtigungen zu erteilen, die auf eine von Ihnen definierte Abteilung, Region oder ein anderes Segment Ihrer Organisation beschränkt sind. Mithilfe von Verwaltungseinheiten können Sie Berechtigungen an regionale Administratoren delegieren oder Richtlinien auf granularer Ebene festlegen. Beispielsweise kann ein Benutzerkontoadministrator nur in seiner Verwaltungseinheit Profilinformationen aktualisieren, Kennwörter zurücksetzen und Benutzern Lizenzen zuweisen.
 
@@ -688,7 +688,7 @@ Weitere Informationen finden Sie unter [Verwalten von Verwaltungseinheiten in Az
 
 **Dienstkategorie:** RBAC
 
-**Produktfunktion:** Zugriffssteuerung
+**Produktfunktion**: Zugriffssteuerung
 
 **Druckeradministrator**: Benutzer mit dieser Rolle können Drucker registrieren und alle Aspekte der gesamten Druckerkonfiguration in der Microsoft Universal Print-Lösung verwalten, einschließlich der Microsoft Universal Print-Connectoreinstellungen. Sie können in alle delegierten Druckberechtigungsanforderungen einwilligen. Druckeradministratoren haben außerdem Zugriff auf Druckberichte. 
 
@@ -702,7 +702,7 @@ Weitere Informationen finden Sie unter [Verwalten von Verwaltungseinheiten in Az
 
 **Dienstkategorie:** RBAC
 
-**Produktfunktion:** Zugriffssteuerung
+**Produktfunktion**: Zugriffssteuerung
 
 Benutzer mit dieser Rolle können Dienste und Einstellungen im Zusammenhang mit der Aktivierung der Hybrididentität in Azure AD aktivieren, konfigurieren und verwalten. Diese Rolle bietet die Möglichkeit, Azure AD für eine der drei unterstützten Authentifizierungsmethoden – Kennworthashsynchronisierung, Pass-Through-Authentifizierung oder Verbund (AD FS oder Drittanbieterverbund) – zu konfigurieren und eine zugehörige lokale Infrastruktur für die Aktivierung bereitzustellen. Die lokale Infrastruktur umfasst Bereitstellungs- und PTA-Agents. Diese Rolle gewährt die Fähigkeit, S-SSO (Seamless Single Sign-On, nahtloses einmaliges Anmelden) zu aktivieren, um eine nahtlose Authentifizierung auf Geräten ohne Windows 10 bzw. Computern ohne Windows Server 2016 zu ermöglichen. Außerdem bietet diese Rolle zur Überwachung und Problembehandlung die Möglichkeit, Anmeldeprotokolle anzuzeigen und auf Integritäts- und Analysedaten zuzugreifen. [Weitere Informationen.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#hybrid-identity-administrator)
 
@@ -714,7 +714,7 @@ Benutzer mit dieser Rolle können Dienste und Einstellungen im Zusammenhang mit 
 
 **Dienstkategorie:** RBAC
 
-**Produktfunktion:** Zugriffssteuerung
+**Produktfunktion**: Zugriffssteuerung
 
 Benutzer mit dieser Rolle können Empfehlungen zur Netzwerkumkreisarchitektur von Microsoft überprüfen, die auf Netzwerktelemetriedaten von Benutzerstandorten basieren. Die Netzwerkleistung für Office 365 basiert auf einer sorgfältigen Netzwerkumkreisarchitektur für Unternehmenskunden, die im Allgemeinen für den Benutzerstandort spezifisch ist. Diese Rolle ermöglicht das Bearbeiten von ermittelten Benutzerstandorten und das Konfigurieren von Netzwerkparametern für diese Standorte, um verbesserte Telemetriemessungen und Entwurfsempfehlungen zu ermöglichen. [Weitere Informationen.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#network-administrator)
 
@@ -722,11 +722,11 @@ Benutzer mit dieser Rolle können Empfehlungen zur Netzwerkumkreisarchitektur vo
 
 ### <a name="bulk-activity-and-downloads-in-the-azure-ad-admin-portal-experience"></a>Massenaktivitäten und -Downloads im Azure AD-Verwaltungsportal
 
-**Typ:** Neues Feature
+**Typ:** Neue Funktion
 
 **Dienstkategorie:** Benutzerverwaltung
 
-**Produktfunktion:** Verzeichnis
+**Produktfunktion**: Verzeichnis
 
 Jetzt können Sie Massenaktivitäten für Benutzer und Gruppen in Azure AD ausführen, indem Sie eine CSV-Datei in das Azure AD-Verwaltungsportal hochladen. Sie können Benutzer erstellen, Benutzer löschen und Gastbenutzer einladen. Sie können außerdem Mitglieder zu einer Gruppe hinzufügen und daraus entfernen.
 
@@ -743,7 +743,7 @@ Weitere Informationen finden Sie über die folgenden Links:
 
 ### <a name="my-staff-delegated-user-management"></a>Delegierte Benutzerverwaltung „Meine Mitarbeiter“
 
-**Typ:** Neues Feature
+**Typ:** Neue Funktion
 
 **Dienstkategorie:** Benutzerverwaltung
 
@@ -755,9 +755,9 @@ Weitere Informationen finden Sie über die folgenden Links:
 
 ### <a name="an-upgraded-end-user-experience-in-access-reviews"></a>Aktualisierte Endbenutzerumgebung für Zugriffsüberprüfungen
 
-**Typ:** Geändertes Feature
+**Typ:** Geänderte Funktion
 
-**Dienstkategorie:** Zugriffsüberprüfungen
+**Dienstkategorie**: Zugriffsüberprüfungen
 
 **Produktfunktion:** Identity Governance
 
@@ -789,7 +789,7 @@ Wir haben die [Anleitung in unserem Tutorial](https://docs.microsoft.com/azure/a
 
 **Dienstkategorie:** App-Bereitstellung
 
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
 
 In der Vergangenheit waren Benutzer mit der Rolle „Standardzugriff“ nicht im Bereitstellungsumfang enthalten. Aus dem Kundenfeedback ging der Wunsch hervor, dass Benutzer mit dieser Rolle im Bereitstellungsumfang enthalten sein sollten. Ab dem 16. April 2020 werden Benutzer mit der Rolle „Standardzugriff“ in allen neuen Bereitstellungskonfigurationen berücksichtigt. Wir werden das Verhalten der vorhandenen Bereitstellungskonfigurationen schrittweise ändern, um die Bereitstellung von Benutzern mit dieser Rolle zu unterstützen. [Weitere Informationen.](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned)
 
@@ -801,7 +801,7 @@ In der Vergangenheit waren Benutzer mit der Rolle „Standardzugriff“ nicht im
 
 **Dienstkategorie:** App-Bereitstellung
 
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
 
 Wir haben die Bereitstellungsumgebung aktualisiert, um eine stärker fokussierte Verwaltungsansicht zu erstellen. Wenn Sie zum Blatt für die Bereitstellung einer Unternehmensanwendung navigieren, die bereits konfiguriert wurde, können Sie den Fortschritt der Bereitstellung und die Verwaltung von Aktionen (z. B. Starten, Beenden und Neustarten der Bereitstellung) problemlos überwachen. [Weitere Informationen.](https://docs.microsoft.com/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal)
 
@@ -811,9 +811,9 @@ Wir haben die Bereitstellungsumgebung aktualisiert, um eine stärker fokussierte
 
 **Typ:** Geändertes Feature
 
-**Dienstkategorie:** Gruppenverwaltung
+**Dienstkategorie**: Gruppenverwaltung
 
-**Produktfunktion:** Zusammenarbeit
+**Produktfunktion:** Kollaboration
 
 Azure Active Directory (Azure AD) bietet nun die Möglichkeit, dynamische Gruppenregeln zu überprüfen. Auf der Registerkarte **Regeln überprüfen** können Sie Ihre dynamische Regel anhand von Beispielgruppenmitgliedern überprüfen, um zu bestätigen, dass die Regel erwartungsgemäß funktioniert. Beim Erstellen oder Aktualisieren von Regeln für dynamische Gruppen möchten Administratoren wissen, ob ein Benutzer oder ein Gerät Mitglied der Gruppe sein wird. So können sie besser auswerten, ob ein Benutzer oder Gerät die Regelkriterien erfüllt und eine entsprechende Problembehandlung durchführen, wenn keine Mitgliedschaft erwartet wird.
 
@@ -823,11 +823,11 @@ Weitere Informationen finden Sie unter [Überprüfen einer dynamischen Gruppenmi
 
 ### <a name="identity-secure-score---security-defaults-and-mfa-improvement-action-updates"></a>Identity Secure Score – Aktualisierungen von Sicherheitsstandards und MFA-Verbesserungsaktionen
 
-**Typ:** Geändertes Feature
+**Typ:** Geänderte Funktion
 
-**Dienstkategorie:** –
+**Dienstkategorie:** Nicht verfügbar
 
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Produktfunktion**: Identitätssicherheit und -schutz
 
 **Unterstützung von Sicherheitsstandards für Azure AD Verbesserungsaktionen:** Bei Microsoft Secure Score werden die Verbesserungsaktionen aktualisiert, um die [Sicherheitsstandards in Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) zu unterstützen. Dadurch wird es einfacher, Ihre Organisation mit vorkonfigurierten Sicherheitseinstellungen vor häufigen Angriffen zu schützen. Dies betrifft die folgenden Verbesserungsaktionen:
 
@@ -858,7 +858,7 @@ Diese neuen Verbesserungsaktionen setzen voraus, dass sich Benutzer oder Adminis
 
 **Typ:** Plan für Änderung  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 **Ab dem 31. März 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure Active Directory-Konten und -Mandanten für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Ihnen, sich für die [Authentifizierung mit Einmalkennung per E-Mail](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) zu entscheiden.
 
@@ -868,7 +868,7 @@ Diese neuen Verbesserungsaktionen setzen voraus, dass sich Benutzer oder Adminis
 
 **Typ:** Plan für Änderung  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
  
 In der Vergangenheit waren Benutzer mit der Rolle „Standardzugriff“ nicht im Bereitstellungsumfang enthalten. Aus dem Kundenfeedback ging der Wunsch hervor, dass Benutzer mit dieser Rolle im Bereitstellungsumfang enthalten sein sollten. Wir arbeiten an der Implementierung einer Änderung, damit Benutzer mit der Rolle „Standardzugriff“ in allen neuen Bereitstellungskonfigurationen berücksichtigt werden. Wir werden schrittweise das Verhalten der bereits vorhandenen Bereitstellungskonfigurationen ändern, um die Bereitstellung von Benutzern mit dieser Rolle zu unterstützen. Es ist keine Kundenaktion erforderlich. Wir werden in unserer [Dokumentation](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned) ein Update veröffentlichen, sobald diese Änderung vorgenommen wurde.
 
@@ -878,7 +878,7 @@ In der Vergangenheit waren Benutzer mit der Rolle „Standardzugriff“ nicht im
 
 **Typ:** Plan für Änderung  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 Die Funktionen der Azure AD B2B-Zusammenarbeit werden in Microsoft Azure-Instanzen verfügbar gemacht, die von 21Vianet-Mandanten (Azure China 21Vianet) betrieben werden. Dadurch können Benutzer in einem Azure China 21Vianet-Mandanten nahtlos mit Benutzern in anderen Azure China 21Vianet-Mandanten zusammenarbeiten. [Weitere Informationen zur Azure AD B2B-Zusammenarbeit](https://docs.microsoft.com/azure/active-directory/b2b/).
 
@@ -888,7 +888,7 @@ Die Funktionen der Azure AD B2B-Zusammenarbeit werden in Microsoft Azure-Instanz
 
 **Typ:** Plan für Änderung  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 Die [E-Mails](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements), die der Einladungsdienst für die Zusammenarbeit in Azure AD B2B sendet, um Benutzer in das Verzeichnis einzuladen, werden neu gestaltet, um die Einladungsinformationen und die nächsten Schritte des Benutzers besser zu verdeutlichen.
 
@@ -906,9 +906,9 @@ Bisher waren Änderungen an der [HomeRealmDiscovery-Richtlinie](https://docs.mic
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---march-2020"></a>Neue Verbund-Apps im Azure AD-App-Katalog verfügbar – März 2020
 
-**Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im März 2020 haben wir die folgenden 51 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
 
@@ -922,7 +922,7 @@ Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration m
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** B2B  
-**Produktfunktion:** B2B/B2C
+**Produktfunktion**: B2B/B2C
  
 Die Funktionen der Azure AD B2B-Zusammenarbeit sind jetzt für die Zusammenarbeit zwischen einigen Azure Government-Mandanten verfügbar.  Um festzustellen, ob Ihr Mandant diese Funktionen nutzen kann, befolgen Sie die Anweisungen unter [Wie kann ich erkennen, ob die B2B-Zusammenarbeit in meinem Mandanten der Azure-Cloud für US-Behörden verfügbar ist?](https://docs.microsoft.com/azure/active-directory/b2b/current-limitations#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant).
 
@@ -931,7 +931,7 @@ Die Funktionen der Azure AD B2B-Zusammenarbeit sind jetzt für die Zusammenarbei
 ### <a name="azure-monitor-integration-for-azure-logs-is-now-available-in-azure-government"></a>Azure Monitor-Integration für Azure-Protokolle jetzt in Azure Government verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 Die Integration von Azure AD-Protokollen in Azure Monitor ist jetzt in Azure Government verfügbar. Sie können Azure AD-Protokolle (Überwachungs- und Anmeldeprotokolle) an ein Speicherkonto, einen Event Hub und Log Analytics weiterleiten. Sehen Sie sich die [ausführliche Dokumentation](https://aka.ms/aadlogsinamd) sowie die [Bereitstellungspläne für die Berichterstellung und Überwachung](https://docs.microsoft.com/azure/active-directory/reports-monitoring/plan-monitoring-and-reporting) für Azure AD-Szenarien an.
@@ -941,7 +941,7 @@ Die Integration von Azure AD-Protokollen in Azure Monitor ist jetzt in Azure Gov
 ### <a name="identity-protection-refresh-in-azure-government"></a>Identity Protection-Aktualisierung in Azure Government
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Schutz der Identität (Identity Protection)  
+**Dienstkategorie**: Identitätsschutz  
 **Produktfunktion:** Identitätssicherheit und -schutz
 
 Wir freuen uns, Ihnen mitteilen zu können, dass wir jetzt die aktualisierte [Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs) -Umgebung im [Microsoft Azure Government-Portal](https://portal.azure.us/) eingeführt haben. Weitere Informationen finden Sie in unserem [Ankündigungsblogbeitrag](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667).
@@ -952,7 +952,7 @@ Wir freuen uns, Ihnen mitteilen zu können, dass wir jetzt die aktualisierte [Az
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Identity Lifecycle Management
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
  
 Der Azure AD-Bereitstellungsdienst stellt umfangreiche Konfigurationsfunktionen bereit. Kunden müssen in der Lage sein, ihre Konfiguration zu speichern, um diese später verwenden oder einen Rollback auf eine als funktionierend bekannte Version durchführen zu können. Wir haben die Möglichkeit hinzugefügt, Ihre Bereitstellungskonfiguration als JSON-Datei herunterzuladen und bei Bedarf hochzuladen. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration)
 
@@ -973,8 +973,8 @@ Wir sind jetzt dabei, zwischen Azure China 21Vianet und der öffentlichen Cloud 
 ### <a name="password-length-is-limited-to-256-characters"></a>Kennwortlänge auf 256 Zeichen beschränkt
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
-**Produktfunktion:** Benutzerauthentifizierung
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Produktfunktion**: Benutzerauthentifizierung
  
 Um die Zuverlässigkeit des Azure AD-Diensts sicherzustellen, sind die Benutzerkennwörter jetzt auf 256 Zeichen beschränkt. Benutzer mit längeren Kennwörtern werden aufgefordert, ihr Kennwort bei der nächsten Anmeldung zu ändern, indem sie sich entweder an ihren Administrator wenden oder die SSPR-Funktion (Self-Service-Kennwortzurücksetzung) verwenden.
 
@@ -984,8 +984,8 @@ Diese Änderung ist am 13. März 2020, 10 Uhr PST (18 Uhr UTC), in Kraft getrete
 
 ### <a name="azure-ad-sign-in-logs-are-now-available-for-all-free-tenants-through-the-azure-portal"></a>Azure AD-Anmeldeprotokolle jetzt für alle kostenlosen Mandanten über das Azure-Portal verfügbar
 
-**Typ:** Geändertes Feature  
-**Dienstkategorie:** Berichterstellung  
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 Ab sofort können Kunden mit kostenlosen Mandanten bis zu sieben Tage lang auf die [Azure AD-Anmeldeprotokolle im Azure-Portal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) zugreifen. Bisher waren Anmeldeprotokolle nur für Kunden mit Azure Active Directory Premium-Lizenzen verfügbar. Durch diese Änderung können alle Mandanten über das Portal auf diese Protokolle zugreifen.
@@ -997,9 +997,9 @@ Ab sofort können Kunden mit kostenlosen Mandanten bis zu sieben Tage lang auf d
 
 ### <a name="deprecation-of-directory-wide-groups-option-from-groups-general-settings-on-azure-portal"></a>Einstellung der Option für verzeichnisweite Gruppen in den allgemeinen Gruppeneinstellungen im Azure-Portal
 
-**Typ:** Als veraltet markiert  
-**Dienstkategorie:** Gruppenverwaltung  
-**Produktfunktion:** Zusammenarbeit
+**Typ**: Veraltet  
+**Dienstkategorie**: Gruppenverwaltung  
+**Produktfunktion:** Kollaboration
 
 Um Kunden eine flexiblere Möglichkeit zu bieten, optimale verzeichnisweite Gruppen für ihre Anforderungen zu erstellen, haben wir die Option **verzeichnisweite Gruppen** der Einstellungen unter **Gruppen** > **Allgemein** im Azure-Portal durch einen Link zur [dynamischen Gruppendokumentation](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership) ersetzt. Wir haben unsere Dokumentation um zusätzliche Anweisungen erweitert, damit Administratoren Gruppen mit allen Benutzern (mit oder ohne Gastbenutzer) erstellen können.
 
@@ -1011,7 +1011,7 @@ Um Kunden eine flexiblere Möglichkeit zu bieten, optimale verzeichnisweite Grup
 
 **Typ:** Plan für Änderung  
 **Dienstkategorie:** MFA  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Produktfunktion**: Identitätssicherheit und -schutz
  
 Wir planen, die aktuell in der Vorschau befindlichen benutzerdefinierten Steuerelemente durch einen Ansatz zu ersetzen, der vom Partner bereitgestellte Authentifizierungsfunktionen erlaubt, um nahtlos mit Azure Active Directory-Administrator- und Endbenutzerumgebungen zusammenzuarbeiten. Derzeit unterliegen MFA-Partnerlösungen folgenden Einschränkungen: Sie funktionieren nur nach Eingabe eines Kennworts und dienen nicht als MFA für die Step-up-Authentifizierung in anderen wichtigen Szenarien. Zudem sind sie nicht in Verwaltungsfunktionen für Endbenutzer- oder administrative Anmeldeinformationen integriert. Mit der neuen Implementierung können vom Partner bereitgestellte Authentifizierungsfaktoren zusammen mit integrierten Faktoren für wichtige Szenarien verwendet werden. Hierzu zählen u.a. Registrierung, Nutzung, MFA-Ansprüche, Step-up-Authentifizierung, Berichterstellung und Protokollierung. 
 
@@ -1023,7 +1023,7 @@ Neben dem neuen Design werden benutzerdefinierte Steuerelemente weiterhin in der
 
 **Typ:** Plan für Änderung  
 **Dienstkategorie:** MFA  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Produktfunktion**: Identitätssicherheit und -schutz
  
 Unter Berücksichtigung der Tatsache, dass Unternehmen bei der Anwendung von funktionierenden Richtlinien für ihr Unternehmen höchste Sicherheit gewährleisten müssen, entfernt Microsoft Secure Score drei Verbesserungsaktionen im Zusammenhang mit Multi-Factor Authentication (MFA) und fügt zwei hinzu.
 
@@ -1044,9 +1044,9 @@ Diese neuen Verbesserungsaktionen setzen voraus, dass sich Benutzer oder Adminis
 
 ### <a name="azure-ad-domain-services-sku-selection"></a>Azure AD Domain Services – SKU-Auswahl
 
-**Typ:** Neues Feature  
-**Dienstkategorie:** Azure AD Domain Services  
-**Produktfunktion:** Azure AD Domain Services
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Azure AD Domain Services  
+**Produktfunktion**: Azure AD Domain Services
  
 Dem Kundenfeedback zufolge wünschten sich Kunden von Azure AD Domain Services mehr Flexibilität bei der Auswahl von Leistungsstufen für ihre Instanzen. Ab dem 1. Februar 2020 haben wir das dynamische Modell (bei dem Azure AD anhand der Objektanzahl Leistung und Tarif ermittelte) auf ein Modell mit Selbstauswahl umgestellt. Kunden können nun eine Leistungsstufe auswählen, die ihrer Umgebung entspricht. Diese Änderung ermöglicht es uns auch, neue Szenarien wie Ressourcengesamtstrukturen und Premiumfunktionen wie tägliche Sicherungen zu aktivieren. Die Objektanzahl ist jetzt unbegrenzt für alle SKUs, wir bieten jedoch weiterhin Vorschläge für die Objektanzahl auf jeder Stufe an.
 
@@ -1057,8 +1057,8 @@ Dem Kundenfeedback zufolge wünschten sich Kunden von Azure AD Domain Services m
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2020"></a>Neue Verbund-Apps im Azure AD-App-Katalog verfügbar – Februar 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Februar 2020 haben wir die folgenden 31 neuen Apps mit Verbundunterstützung in unseren App-Katalog aufgenommen: 
 
@@ -1072,8 +1072,8 @@ Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration m
 ### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---february-2020"></a>Neue Bereitstellungsconnectors im Azure AD-Anwendungskatalog – Februar 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -1090,8 +1090,8 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 ### <a name="azure-ad-support-for-fido2-security-keys-in-hybrid-environments"></a>Azure AD-Unterstützung für FIDO2-Sicherheitsschlüssel in Hybridumgebungen
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
-**Produktfunktion:** Benutzerauthentifizierung
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Produktfunktion**: Benutzerauthentifizierung
  
 Wir geben die Azure AD-Unterstützung für FIDO2-Sicherheitsschlüssel in Hybridumgebungen (Public Preview) bekannt. Benutzer können sich jetzt mit FIDO2-Sicherheitsschlüsseln bei ihren hybrid in Azure AD eingebundenen Geräten unter Windows 10 anmelden und über die nahtlose Anmeldung (Seamless Sign-On, SSO) auf ihre lokalen und Cloudressourcen zugreifen. Die Unterstützung für Hybridumgebungen stand bei unseren Kunden mit kennwortloser Authentifizierung ganz oben auf der Wunschliste, da wir zunächst die FIDO2-Unterstützung für in Azure AD eingebundene Geräte in der Public Preview gestartet haben. Die kennwortlose Authentifizierung mit modernen Technologien wie biometrische Merkmale und Verschlüsselung mit öffentlichen/privaten Schlüsseln ist nicht nur bequem und benutzerfreundlich, sondern auch sicher. Mit dieser Public Preview haben Sie nun die Möglichkeit, eine moderne Authentifizierung wie FIDO2-Sicherheitsschlüssel für den Zugriff auf herkömmliche Active Directory-Ressourcen zu verwenden. Weitere Informationen finden Sie unter [Einmaliges Anmelden bei lokalen Ressourcen](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises). 
 
@@ -1124,7 +1124,7 @@ Die URL für die neue Endbenutzerumgebung „Mein Konto“ wird nächsten Monat 
 ### <a name="the-new-my-apps-portal-is-now-generally-available"></a>Das neue Portal „Meine Apps“ ist jetzt allgemein verfügbar
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie:** Meine Apps  
+**Dienstkategorie**: Meine Apps  
 **Produktfunktion:** Endbenutzerumgebungen
  
 Führen Sie für Ihre Organisation ein Upgrade auf das neue Portal „Meine Apps“ durch, das jetzt allgemein verfügbar ist! Weitere Informationen zum neuen Portal und zu Sammlungen finden Sie unter [Erstellen von Sammlungen im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
@@ -1133,8 +1133,8 @@ Führen Sie für Ihre Organisation ein Upgrade auf das neue Portal „Meine Apps
  
 ### <a name="workspaces-in-azure-ad-have-been-renamed-to-collections"></a>Arbeitsbereiche in Azure AD wurden in Sammlungen umbenannt
 
-**Typ:** Geändertes Feature  
-**Dienstkategorie:** Meine Apps   
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Meine Apps   
 **Produktfunktion:** Endbenutzerumgebungen
  
 Arbeitsbereiche (die Filter, die Administratoren zum Organisieren Ihrer Benutzer-Apps konfigurieren können) werden nun als Sammlungen bezeichnet. Weitere Informationen zum Konfigurieren dieser Sammlungen finden Sie unter [Erstellen von Sammlungen im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
@@ -1143,9 +1143,9 @@ Arbeitsbereiche (die Filter, die Administratoren zum Organisieren Ihrer Benutzer
  
 ### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C (Öffentliche Vorschau)
 
-**Typ:** Neues Feature  
-**Dienstkategorie:** B2C – Verwaltung von Endbenutzeridentitäten  
-**Produktfunktion:** B2B/B2C
+**Typ:** Neue Funktion  
+**Dienstkategorie**: B2C – Kundenidentitätsverwaltung  
+**Produktfunktion**: B2B/B2C
  
 Mit der Telefonregistrierung und -anmeldung können Entwickler und Unternehmen ihren Kunden die Registrierung und Anmeldung mit einem Einmalkennwort ermöglichen, das per SMS an die Telefonnummer des Benutzers gesendet wird. Mit dieser Funktion kann der Kunden auch seine Telefonnummer ändern, falls er keinen Zugriff auf das Telefon mehr hat. Dank der Leistungsfähigkeit benutzerdefinierter Richtlinien können Entwickler und Unternehmen mit der Telefonregistrierung und -anmeldung ihre Marke durch Seitenanpassung kommunizieren. Weitere Informationen finden Sie unter [Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication).
  
@@ -1154,8 +1154,8 @@ Mit der Telefonregistrierung und -anmeldung können Entwickler und Unternehmen i
 ### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---january-2020"></a>Neue Bereitstellungsconnectors im Azure AD-Anwendungskatalog – Januar 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -1169,8 +1169,8 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2020"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog – Januar 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Januar 2020 haben wir die folgenden 33 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
 
@@ -1182,9 +1182,9 @@ Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration m
 
 ### <a name="two-new-identity-protection-detections"></a>Zwei neue Erkennungen in Identity Protection
 
-**Typ:** Neues Feature  
-**Dienstkategorie:** Schutz der Identität (Identity Protection)  
-**Produktfunktion:** Identitätssicherheit und -schutz
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Identitätsschutz  
+**Produktfunktion**: Identitätssicherheit und -schutz
  
 Identity Protection wurde um zwei neue, mit der Anmeldung verknüpfte Erkennungstypen ergänzt: „Verdächtige Regeln zur Posteingangsänderung“ und „Unmöglicher Ortswechsel“. Diese Offline-Erkennungen werden von MACS (Microsoft Cloud App Security) erkannt und beeinflussen das Benutzer- und Anmelderisiko in Identity Protection. Weitere Informationen zu diesen Erkennungen finden Sie unter [Risikotypen für die Anmeldung](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk).
  
@@ -1192,9 +1192,9 @@ Identity Protection wurde um zwei neue, mit der Anmeldung verknüpfte Erkennungs
  
 ### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>Breaking Change: URI-Fragmente werden nicht über die Anmeldeumleitung übergeben
 
-**Typ:** Geändertes Feature  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
-**Produktfunktion:** Benutzerauthentifizierung
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Produktfunktion**: Benutzerauthentifizierung
  
 Ab dem 8. Februar 2020 fügt der Dienst ein leeres Fragment an die Anforderung an, wenn eine Anforderung an login.microsoftonline.com gesendet wird, um einen Benutzer anzumelden.  Dadurch wird eine Klasse von Umleitungsangriffen verhindert, indem sichergestellt wird, dass der Browser jedes vorhandene Fragment in der Anforderung bereinigt. Keine Anwendung sollte eine Abhängigkeit von diesem Verhalten aufweisen. Weitere Informationen finden Sie unter [Breaking Changes](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) in der Dokumentation zu Microsoft Identity Platform.
 

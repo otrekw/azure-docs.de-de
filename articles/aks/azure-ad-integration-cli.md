@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/08/2020
 ms.author: thomasge
-ms.openlocfilehash: 0465c54df2095cff7647e974765e61fa9b9ff3e1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169458"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252078"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service mit der Azure CLI
 
@@ -90,7 +90,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-Gewähren Sie schließlich mit dem Befehl [az ad app permission grant][az-ad-app-permission-grant] die im vorherigen Schritt zugewiesenen Berechtigungen für die Serveranwendung. Dieser Schritt schlägt fehl, wenn das aktuelle Konto keinem Mandantenadministrator gehört. Sie müssen auch Berechtigungen für die Azure AD-Anwendung hinzufügen, um Informationen anzufordern, für die andernfalls die Zustimmung des Administrators erforderlich wäre. Verwenden Sie dazu den Befehl [az ad app permission admin-consent][az-ad-app-permission-admin-consent]:
+Gewähren Sie schließlich mit dem Befehl [az ad app permission grant][az-ad-app-permission-grant] die im vorherigen Schritt zugewiesenen Berechtigungen für die Serveranwendung. Bei diesem Schritt tritt ein Fehler auf, wenn das aktuelle Konto keinem Mandantenadministrator gehört. Sie müssen auch Berechtigungen für die Azure AD-Anwendung hinzufügen, um Informationen anzufordern, für die andernfalls die Zustimmung des Administrators erforderlich wäre. Verwenden Sie dazu den Befehl [az ad app permission admin-consent][az-ad-app-permission-admin-consent]:
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -263,7 +263,7 @@ Best Practices zur Identitäts- und Ressourcenkontrolle finden Sie unter [Best P
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
 [az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update
@@ -275,7 +275,6 @@ Best Practices zur Identitäts- und Ressourcenkontrolle finden Sie unter [Best P
 [az-group-create]: /cli/azure/group#az-group-create
 [az-account-show]: /cli/azure/account#az-account-show
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
-[azure-ad-portal]: azure-ad-integration.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ac76ef5eeebd278dc10e03d661bb21469c8f4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610563"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203667"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -238,6 +238,9 @@ Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encrypt
 - Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - VMs der Lsv2-Serie (siehe: [Lsv2-Serie](../lsv2-series.md))
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
+- Anwenden der [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) auf mit ADE verschlüsselte VMs und umgekehrt.
+- Migrieren einer mit ADE verschlüsselten VM zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
