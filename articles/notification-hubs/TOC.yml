@@ -54,8 +54,6 @@
               href: ios-sdk-300.md
             - name: Objective-C (Version 2.0.4)
               href: ios-sdk-204.md
-            - name: Swift
-              href: ios-sdk-swift-rest.md
         - name: Senden von Pushbenachrichtigungen an bestimmte Geräte
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Senden von Pushbenachrichtigungen an bestimmte Benutzer
@@ -64,16 +62,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: Senden von lokalisierten Pushbenachrichtigungen an iOS-Geräte
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Plattformübergreifend
-      items:
-        - name: Senden von Pushbenachrichtigungen über einen Back-End-Dienst
-          items:
-            - name: Xamarin.Forms
-              href: notification-hubs-backend-service-xamarin-forms.md
-            - name: Flutter
-              href: notification-hubs-backend-service-flutter.md
-            - name: React Native
-              href: notification-hubs-backend-service-react-native.md
     - name: Windows Phone
       items:
         - name: Senden von Pushbenachrichtigungen an Apps
@@ -188,7 +176,7 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-notification-hubs.html'
+      href: /answers/topics/azure-notification-hubs.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
     - name: Anfordern eines Features
