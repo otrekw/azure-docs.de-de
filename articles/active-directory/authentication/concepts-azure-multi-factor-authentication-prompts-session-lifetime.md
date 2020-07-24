@@ -106,7 +106,7 @@ Führen Sie die folgenden Schritte aus, um die Einstellungen für Multi-Factor A
 1. Suchen Sie im Azure AD-Portal nach *Azure Active Directory*, und wählen Sie es aus.
 1. Wählen Sie **Sicherheit** und anschließend **MFA** aus.
 1. Wählen Sie unter **Konfigurieren** die Option **Zusätzliche cloudbasierte MFA-Einstellungen** aus.
-1. Scrollen Sie auf der Seite *Multi-factor authentication service settings* (Diensteinstellung für Multi-Factor Authentication) zu **remember multi-factor authentication settings** (Multi-Factor Authentication-Einstellungen speichern). Deaktivieren Sie die Einstellung, indem Sie das Kontrollkästchen deaktivieren.
+1. Scrollen Sie auf der Seite *Multi-factor authentication service settings* (Diensteinstellungen für Multi-Factor Authentication) zu **remember multi-factor authentication settings** (Multi-Factor Authentication-Einstellungen speichern). Deaktivieren Sie die Einstellung, indem Sie das Kontrollkästchen deaktivieren.
 
 Führen Sie die folgenden Schritte aus, um Richtlinien für bedingten Zugriff für die Anmeldehäufigkeit und eine persistente Browsersitzung zu konfigurieren:
 
