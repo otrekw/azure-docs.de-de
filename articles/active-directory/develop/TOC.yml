@@ -343,8 +343,6 @@
               href: msal-js-use-ie-browser.md
             - name: 'Bekannte Probleme: IE und Microsoft Edge'
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: 'Bekannte Probleme: Safari'
-              href: msal-js-known-issues-safari-browser.md
             - name: Behandeln von Fehlern und Ausnahmen
               href: msal-handling-exceptions.md?tabs=javascript
             - name: Protokollierung

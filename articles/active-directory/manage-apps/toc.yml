@@ -38,48 +38,44 @@
       href: application-management-fundamentals.md
     - name: Allgemeine App-Verwaltungsszenarien
       href: common-scenarios.md
-    - name: Cloud-Apps und einmaliges Anmelden
+    - name: Planen der Integration von Cloud-Apps
       items:
-        - name: Planen der Integration von Cloud-Apps
-          items:
-            - name: Erste Schritte bei der App-Integration
-              href: plan-an-application-integration.md
-            - name: Planen der Bereitstellung eines Zugriffsbereichs
-              href: access-panel-deployment-plan.md
-            - name: Leitfaden für Entwickler
-              href: developer-guidance-for-integrating-applications.md
-        - name: Einmaliges Anmelden
-          items:
-            - name: Aktivieren von SSO für Ihre mehrinstanzenfähige Anwendung
-              href: isv-sso-content.md
-            - name: Erstellen eines Azure-Mandanten für eine mehrinstanzenfähige Anwendung
-              href: isv-tenant-multi-tenant-app.md
-            - name: Auswählen eines Verbunds mit mehreren Mandanten
-              href: isv-choose-multi-tenant-federation.md
-            - name: Dokumentation für mehrinstanzenfähige Anwendung erstellen
-              href: isv-create-sso-documentation.md
-            - name: Planen einer Bereitstellung für einmaliges Anmelden
-              href: plan-sso-deployment.md
-        - name: One-Click-SSO
-          items:
-            - name: Was ist One-Click-SSO?
-              href: one-click-sso-tutorial.md
-        - name: Anwendungssicherheit
-          items:
-            - name: Optionen für den App-Zugriff
-              href: what-is-access-management.md
-            - name: Optionen für die Zertifikatsignatur
-              href: certificate-signing-options.md
-            - name: Verwalten von Zertifikaten
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: Mandanteneinschränkungen
-              href: tenant-restrictions.md
-            - name: Konfigurieren der SAML-Tokenverschlüsselung
-              href: howto-saml-token-encryption.md
-            - name: Endbenutzerportale
-              href: end-user-experiences.md
-    - name: Sichtbarkeit und Steuerung von Cloud-Apps
-      href: cloud-app-security.md
+        - name: Erste Schritte bei der App-Integration
+          href: plan-an-application-integration.md
+        - name: Planen der Bereitstellung eines Zugriffsbereichs
+          href: access-panel-deployment-plan.md
+        - name: Leitfaden für Entwickler
+          href: developer-guidance-for-integrating-applications.md
+    - name: Einmaliges Anmelden
+      items:
+        - name: Aktivieren von SSO für Ihre mehrinstanzenfähige Anwendung
+          href: isv-sso-content.md
+        - name: Erstellen eines Azure-Mandanten für eine mehrinstanzenfähige Anwendung
+          href: isv-tenant-multi-tenant-app.md
+        - name: Auswählen eines Verbunds mit mehreren Mandanten
+          href: isv-choose-multi-tenant-federation.md
+        - name: Dokumentation für mehrinstanzenfähige Anwendung erstellen
+          href: isv-create-sso-documentation.md
+        - name: Planen einer Bereitstellung für einmaliges Anmelden
+          href: plan-sso-deployment.md
+        - name: Einmaliges Anmelden mit einem Klick
+          href: one-click-sso-tutorial.md
+    - name: Anwendungssicherheit
+      items:
+        - name: Optionen für den App-Zugriff
+          href: what-is-access-management.md
+        - name: Optionen für die Zertifikatsignatur
+          href: certificate-signing-options.md
+        - name: Verwalten von Zertifikaten
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: Mandanteneinschränkungen
+          href: tenant-restrictions.md
+        - name: Konfigurieren der SAML-Tokenverschlüsselung
+          href: howto-saml-token-encryption.md
+        - name: Endbenutzerportale
+          href: end-user-experiences.md
+        - name: Sichtbarkeit und Steuerung von Cloud-Apps
+          href: cloud-app-security.md
     - name: Anwendungsproxy für lokale Apps
       items:
         - name: Anwendungsproxy
