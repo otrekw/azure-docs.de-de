@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e00538d1112492c5b7f9fc0f91c86df6d3500701
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793838"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223549"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrieren von einem verwalteten Image zu einem Image in einem Katalog mit freigegebenen Images
 
@@ -134,3 +134,4 @@ Remove-AzImage `
 
 Nachdem Sie sich vergewissert haben, dass die Replikation abgeschlossen ist, können Sie eine VM aus dem [generalisierten Image](vm-generalized-image-version-powershell.md) erstellen.
 
+Informationen zur Bereitstellung von Erwerbsplaninformationen finden Sie unter [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](marketplace-images.md).

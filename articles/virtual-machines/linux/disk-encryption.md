@@ -2,28 +2,26 @@
 title: Serverseitige Verschlüsselung von Azure Managed Disks – Azure CLI
 description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihrer verwalteten Datenträger nutzen, oder Sie können mit vom Kunden verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten.
 author: roygara
-ms.date: 04/21/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: a77f40f554e459ad1f28b11969421689cd29b4bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 2d4fc47247c9fe2ed1af0eee59500db7e894fdd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609378"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260141"
 ---
-# <a name="server-side-encryption-of-azure-managed-disks"></a>Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern
+# <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
-Verwaltete Azure-Datenträger verschlüsseln Daten standardmäßig automatisch, wenn die Daten in der Cloud gespeichert werden. Die serverseitige Verschlüsselung (Server-side Encryption, SSE) schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. 
+Die serverseitige Verschlüsselung (Server-side Encryption, SSE) schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Durch SSE werden Ihre auf verwalteten Azure-Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) gespeicherten ruhenden Daten standardmäßig automatisch verschlüsselt, wenn sie in der Cloud gespeichert werden. 
 
 Daten in verwalteten Azure-Datenträgern werden transparent mit 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) – einer der stärksten verfügbaren Blockverschlüsselungen – FIPS 140-2-konform ver- und entschlüsselt. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
-Die Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten für die Verschlüsselung an. 
-
-> [!NOTE]
-> Temporäre Datenträger sind keine verwalteten Datenträger und werden nicht von SSE verschlüsselt. Weitere Informationen zu temporären Datenträgern finden Sie unter [Übersicht über verwaltete Datenträger: Datenträgerrollen](managed-disks-overview.md#disk-roles).
+Die serverseitige Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. 
 
 ## <a name="about-encryption-key-management"></a>Informationen zur Verwaltung von Verschlüsselungsschlüsseln
 
@@ -31,166 +29,59 @@ Sie können von der Plattform verwaltete Schlüssel für die Verschlüsselung de
 
 In den folgenden Abschnitten werden die einzelnen Optionen für die Schlüsselverwaltung ausführlicher beschrieben.
 
-## <a name="platform-managed-keys"></a>Von der Plattform verwaltete Schlüssel
+### <a name="platform-managed-keys"></a>Von der Plattform verwaltete Schlüssel
 
 Verwaltete Datenträger verwenden standardmäßig von der Plattform verwaltete Verschlüsselungsschlüssel. Seit 10. Juni 2017 werden alle neuen verwalteten Datenträger, Momentaufnahmen, Images und neuen Daten, die auf vorhandene verwaltete Datenträger geschrieben wurden, im Ruhezustand automatisch mit von der Plattform verwalteten Schlüsseln verschlüsselt.
 
-## <a name="customer-managed-keys"></a>Vom Kunden verwaltete Schlüssel
+### <a name="customer-managed-keys"></a>Vom Kunden verwaltete Schlüssel
 
-Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eigenen Schlüsseln verwalten. Die serverseitige Verschlüsselung für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln bietet eine integrierte Benutzerfunktionalität mit Azure Key Vault. Sie können entweder [ihre RSA-Schlüssel](../../key-vault/keys/hsm-protected-keys.md) in den Schlüsseltresor importieren oder neue RSA-Schlüssel in Azure Key Vault generieren. 
+[!INCLUDE [virtual-machines-managed-disks-description-customer-managed-keys](../../../includes/virtual-machines-managed-disks-description-customer-managed-keys.md)]
 
-Die Verschlüsselung und Entschlüsselung von verwalteten Azure-Datenträgern erfolgt durch [Umschlagverschlüsselung](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) vollständig transparent. Daten werden mithilfe eines [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)-256 basierten Datenverschlüsselungsschlüssels (DEK) verschlüsselt, der wiederum mit Ihren Schlüsseln geschützt wird. Der Speicherdienst generiert Datenverschlüsselungsschlüssel und verschlüsselt sie mit vom Kunden verwalteten Schlüsseln unter Verwendung der RSA-Verschlüsselung. Mithilfe der Umschlagverschlüsselung können Sie Ihre Schlüssel gemäß Ihren Kompatibilitätsrichtlinien regelmäßig rotieren (ändern), ohne Ihre VMs zu beeinträchtigen. Wenn Sie Ihre Schlüssel rotieren, verschlüsselt der Speicherdienst die Datenverschlüsselungsschlüssel mit den neuen, vom Kunden verwalteten Schlüsseln neu. 
-
-Sie müssen den Zugriff auf verwaltete Datenträger in Ihrem Schlüsseltresor gewähren, damit Sie Ihre Schlüssel zum Verschlüsseln und Entschlüsseln des DEK verwenden können. Dies ermöglicht eine umfassende Kontrolle über Ihre Daten und Schlüssel. Sie können Ihre Schlüssel jederzeit deaktivieren oder den Zugriff auf verwaltete Datenträger widerrufen. Sie können auch die Verwendung von Verschlüsselungsschlüsseln mithilfe der Azure Key Vault-Überwachung überwachen, um sicherzustellen, dass nur verwaltete Datenträger oder andere vertrauenswürdige Azure-Dienste auf Ihre Schlüssel zugreifen.
-
-Für SSD Premium, SSD Standard und HDD Standard gilt Folgendes: Wenn Sie Ihren Schlüssel deaktivieren oder löschen, werden alle virtuellen Computer mit Datenträgern, die diesen Schlüssel verwenden, automatisch heruntergefahren. Danach können die virtuellen Computer nur verwendet werden, wenn der Schlüssel erneut aktiviert wird oder wenn Sie einen neuen Schlüssel zuweisen.
-
-Wenn Sie bei Ultra-Datenträgern einen Schlüssel deaktivieren oder löschen, werden virtuelle Computer mit Ultra-Datenträgern, die den Schlüssel verwenden, nicht automatisch heruntergefahren. Nachdem die Zuordnung der virtuellen Computer aufgehoben wurde und die virtuellen Computer neu gestartet wurden, wird der Schlüssel nicht mehr von den Datenträgern verwendet, und die virtuellen Computer werden nicht wieder online geschaltet. Um die virtuellen Computer wieder online zu schalten, müssen Sie einen neuen Schlüssel zuweisen oder den vorhandenen Schlüssel aktivieren.
-
-Das folgende Diagramm zeigt, wie verwaltete Datenträger Azure Active Directory und Azure Key Vault verwenden, um Anforderungen mit dem vom Kunden verwalteten Schlüssel zu senden:
-
-![Workflow für verwaltete Datenträger und vom Kunden verwaltete Schlüssel. Ein Administrator erstellt eine Azure Key Vault-Instanz, dann einen Datenträgerverschlüsselungssatz und richtet den Datenträgerverschlüsselungssatz ein. Der Satz ist einem virtuellen Computer zugeordnet, der dem Datenträger ermöglicht, Azure AD zur Authentifizierung zu verwenden.](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
-
-
-In der folgenden Liste wird das Diagramm ausführlicher erläutert:
-
-1. Ein Azure Key Vault-Administrator erstellt Schlüsseltresorressourcen.
-1. Der Schlüsseltresoradministrator importiert die jeweiligen RSA-Schlüssel in Key Vault oder generiert neue RSA-Schlüssel in Key Vault.
-1. Dieser Administrator erstellt eine Instanz der Datenträgerverschlüsselungssatz-Ressource und gibt eine Azure Key Vault-ID sowie eine Schlüssel-URL an. Der Datenträgerverschlüsselungssatz ist eine neue Ressource, die zur Vereinfachung der Schlüsselverwaltung für verwaltete Datenträger eingeführt wurde. 
-1. Beim Erstellen eines Datenträgerverschlüsselungssatzes wird eine [vom System zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) in Azure Active Directory (AD) erstellt und mit dem Datenträgerverschlüsselungssatz verknüpft. 
-1. Der Azure Key Vault-Administrator erteilt dann der verwalteten Identität Berechtigungen zum Durchführen von Vorgängen im Schlüsseltresor.
-1. Ein VM-Benutzer erstellt Datenträger, indem er sie dem Datenträgerverschlüsselungssatz zuordnet. Der VM-Benutzer kann auch die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln für vorhandene Ressourcen aktivieren, indem er diese dem Datenträgerverschlüsselungssatz zuordnet. 
-1. Verwaltete Datenträger verwenden die verwaltete Identität, um Anforderungen an den Azure Key Vault zu senden.
-1. Zum Lesen oder Schreiben von Daten senden verwaltete Datenträger Anforderungen an Azure Key Vault, um den Datenverschlüsselungsschlüssel zu verschlüsseln (wrap) und zu entschlüsseln (unwrap), um die Daten zu verschlüsseln und zu entschlüsseln. 
-
-Informationen zum Widerrufen von Kunden verwalteter Schlüsseln finden Sie in den Artikeln zu [Azure Key Vault-PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) und zur [Azure Key Vault-CLI](https://docs.microsoft.com/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Daten im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Verschlüsselungsschlüssel hat.
-
-### <a name="supported-regions"></a>Unterstützte Regionen
-
-[!INCLUDE [virtual-machines-disks-encryption-regions](../../../includes/virtual-machines-disks-encryption-regions.md)]
-
-### <a name="restrictions"></a>Beschränkungen
+#### <a name="restrictions"></a>Beschränkungen
 
 Vorerst gelten für vom Kunden verwaltete Schlüssel die folgenden Einschränkungen:
 
 - Wenn dieses Feature für Ihren Datenträger aktiviert ist, können Sie es nicht deaktivieren.
     Bei Bedarf müssen Sie [alle Daten auf einen anderen verwalteten Datenträger ohne kundenseitig verwaltete Schlüssel kopieren](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk).
-- Es werden ausschließlich [Software- und HSM RSA-Schlüssel](../../key-vault/keys/about-keys.md) der Größe 2048 unterstützt, keine anderen Schlüssel oder Größen.
-- Datenträger, die aus benutzerdefinierten Images erstellt werden, die mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wurden, müssen mit denselben vom Kunden verwalteten Schlüsseln verschlüsselt werden und sich im selben Abonnement befinden.
-- Momentaufnahmen, die von Datenträgern erstellt werden, die mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wurden, müssen mit denselben vom Kunden verwalteten Schlüsseln verschlüsselt werden.
-- Alle Ressourcen, die sich auf Ihre vom Kunden verwalteten Schlüssel (Azure Key Vaults, Datenträgerverschlüsselungssätze, VMs, Datenträger und Momentaufnahmen) beziehen, müssen sich im selben Abonnement und in derselben Region befinden.
-- Mit vom Kunden verwalteten Schlüsseln verschlüsselte Datenträger, Momentaufnahmen und Images können nicht in ein anderes Abonnement verschoben werden.
-- Verwaltete Datenträger, die mithilfe von kundenseitig verwalteten Schlüsseln verschlüsselt werden, können nicht auch mit Azure Disk Encryption verschlüsselt werden.
-- Informationen über die Verwendung von Kunden verwalteter Schlüssel mit Katalogen freigegebener Images finden Sie unter [Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images](../image-version-encryption.md).
-
-### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-#### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Einrichten von Azure Key Vault und DiskEncryptionSet
-
-[!INCLUDE [virtual-machines-disks-encryption-create-key-vault](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
-
-#### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Erstellen einer VM mit einem Marketplace-Image, Verschlüsseln der Datenträger für Betriebssystem und Daten mit vom Kunden verwalteten Schlüsseln
-
-```azurecli
-rgName=yourResourceGroupName
-vmName=yourVMName
-location=westcentralus
-vmSize=Standard_DS3_V2
-image=UbuntuLTS 
-diskEncryptionSetName=yourDiskencryptionSetName
-
-diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
-
-az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 128 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
-```
-
-
-#### <a name="encrypt-existing-managed-disks"></a>Verschlüsseln vorhandener verwalteter Datenträger 
-
-Die vorhandenen Datenträger dürfen nicht an einen laufenden virtuellen Computer angefügt werden, damit Sie sie mithilfe des folgenden Skripts verschlüsseln können:
-
-```azurecli
-rgName=yourResourceGroupName
-diskName=yourDiskName
-diskEncryptionSetName=yourDiskEncryptionSetName
- 
-az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetName
-```
-
-#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Erstellen einer VM-Skalierungsgruppe mit einem Marketplace-Image, Verschlüsseln der Datenträger für Betriebssystem und Daten mit vom Kunden verwalteten Schlüsseln
-
-```azurecli
-rgName=yourResourceGroupName
-vmssName=yourVMSSName
-location=westcentralus
-vmSize=Standard_DS3_V2
-image=UbuntuLTS 
-diskEncryptionSetName=yourDiskencryptionSetName
-
-diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
-az vmss create -g $rgName -n $vmssName --image UbuntuLTS --upgrade-policy automatic --admin-username azureuser --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 64 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
-```
-
-#### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Erstellen eines leeren Datenträgers, der mit serverseitiger Verschlüsselung und vom Kunden verwalteten Schlüsseln verschlüsselt wird, und Anfügen an eine VM
-
-```azurecli
-vmName=yourVMName
-rgName=yourResourceGroupName
-diskName=yourDiskName
-diskSkuName=Premium_LRS
-diskSizeinGiB=30
-location=westcentralus
-diskLUN=2
-diskEncryptionSetName=yourDiskEncryptionSetName
-
-
-diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
-
-az disk create -n $diskName -g $rgName -l $location --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetId --size-gb $diskSizeinGiB --sku $diskSkuName
-
-diskId=$(az disk show -n $diskName -g $rgName --query [id] -o tsv)
-
-az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId 
-
-```
-
-#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>Ändern des Schlüssels eines DiskEncryptionSet, um den Schlüssel für alle Ressourcen, die auf das DiskEncryptionSet verweisen, zu rotieren
-
-```azurecli
-
-rgName=yourResourceGroupName
-keyVaultName=yourKeyVaultName
-keyName=yourKeyName
-diskEncryptionSetName=yourDiskEncryptionSetName
-
-
-keyVaultId=$(az keyvault show --name $keyVaultName--query [id] -o tsv)
-
-keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
-
-az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url $keyVaultKeyUrl --source-vault $keyVaultId
-
-```
-
-#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>Ermitteln des Status der serverseitigen Verschlüsselung eines Datenträgers
-
-[!INCLUDE [virtual-machines-disks-encryption-status-cli](../../../includes/virtual-machines-disks-encryption-status-cli.md)]
+[!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
 > [!IMPORTANT]
-> Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger von einem Azure AD-Verzeichnis in ein anderes Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass vom Kunden verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+> Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger in ein anderes Azure AD-Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass kundenseitig verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
-[!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
+## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Verschlüsselung auf dem Host: End-to-End-Verschlüsselung für Ihre VM-Daten
 
-> [!IMPORTANT]
-> Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger von einem Azure AD-Verzeichnis in ein anderes Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass vom Kunden verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+Wenn Sie die Verschlüsselung auf dem Host aktivieren, wird die Verschlüsselung auf dem VM-Host gestartet (also auf dem Azure-Server, dem Ihr virtueller Computer zugeordnet ist). Die Daten für Ihren temporären Datenträger sowie für den Cache von Betriebssystemdatenträgern und regulären Datenträgern werden auf diesem VM-Host gespeichert. Nach Aktivierung der Verschlüsselung auf dem Host werden alle diese Daten sowohl im Ruhezustand als auch bei der Übertragung an den Speicherdienst verschlüsselt, wo sie gespeichert werden. Mit der Verschlüsselung auf dem Host erreichen Sie also im Grunde eine End-to-End-Verschlüsselung Ihrer Daten. Bei der Verschlüsselung auf dem Host wird weder die CPU Ihres virtuellen Computers beansprucht noch die Leistung Ihres virtuellen Computers beeinträchtigt. 
+
+Temporäre Datenträger werden im Ruhezustand mit plattformseitig verwalteten Schlüsseln verschlüsselt, wenn Sie die End-to-End-Verschlüsselung aktivieren. Der Cache von Betriebssystemdatenträgern und regulären Datenträgern wird im Ruhezustand entweder mit kundenseitig verwalteten Schlüsseln oder mit plattformseitig verwalteten Schlüsseln verschlüsselt. Dies hängt vom ausgewählten Datenträgerverschlüsselungstyp ab. Wenn ein Datenträger beispielsweise mit kundenseitig verwalteten Schlüsseln verschlüsselt ist, wird der Cache für den Datenträger ebenfalls mit kundenseitig verwalteten Schlüsseln verschlüsselt. Ist ein Datenträger dagegen mit plattformseitig verwalteten Schlüsseln verschlüsselt, wird auch der Cache für den Datenträger mit plattformseitig verwalteten Schlüsseln verschlüsselt.
+
+### <a name="restrictions"></a>Beschränkungen
+
+[!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
+
+#### <a name="supported-regions"></a>Unterstützte Regionen
+
+[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
+
+#### <a name="supported-vm-sizes"></a>Unterstützte VM-Größen
+
+[!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
+
+## <a name="double-encryption-at-rest"></a>Doppelte Verschlüsselung im Ruhezustand
+
+Kunden mit besonders hohen Sicherheitsanforderungen, die befürchten, dass ein einzelner Verschlüsselungsalgorithmus, eine einzelne Verschlüsselungsimplementierung oder ein einzelner Verschlüsselungsschlüssel kompromittiert werden könnte, haben nun die Möglichkeit, eine zusätzliche Verschlüsselungsebene mit einem anderen Verschlüsselungsalgorithmus/-modus auf der Infrastrukturebene zu nutzen (unter Verwendung von plattformseitig verwalteten Schlüsseln). Diese neue Ebene kann auf Datenträger, Momentaufnahmen und Images angewendet werden, um sie im Ruhezustand mit doppelter Verschlüsselung zu verschlüsseln.
+
+### <a name="supported-regions"></a>Unterstützte Regionen
+
+[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Vergleich: Serverseitige Verschlüsselung und Azure-Datenträgerverschlüsselung
 
-[Azure Disk Encryption für virtuelle Computer und virtuelle VM-Skalierungsgruppen](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) nutzt das [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)-Feature von Linux zum Verschlüsseln verwalteter Datenträger mit vom Kunden verwalteten Schlüsseln innerhalb der Gast-VM.  Die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln bewirkt eine ADE-Verbesserung, indem Sie beliebige Betriebssystemtypen und Images für Ihre VMs verwenden können, indem Daten im Speicherdienst verschlüsselt werden.
+[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) nutzt das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um verwaltete Datenträger innerhalb des virtuellen Gastcomputers mit kundenseitig verwalteten Schlüsseln zu verschlüsseln.  Die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln bewirkt eine ADE-Verbesserung, indem Sie beliebige Betriebssystemtypen und Images für Ihre VMs verwenden können, indem Daten im Speicherdienst verschlüsselt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Untersuchen der Azure Resource Manager-Vorlagen zum Erstellen verschlüsselter Datenträger mit vom Kunden verwalteten Schlüsseln](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host – Azure CLI](disks-enable-host-based-encryption-cli.md)
+- [Azure CLI: Aktivieren der doppelten Verschlüsselung für ruhende Daten auf Ihren verwalteten Datenträgern](disks-enable-double-encryption-at-rest-cli.md)
+- [Azure CLI: Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – verwaltete Datenträger](disks-enable-customer-managed-keys-cli.md)
+- [Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – verwaltete Datenträger – Portal](disks-enable-customer-managed-keys-portal.md)
 - [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)
-- [Replizieren von Computern mit Datenträgern, die für kundenseitig verwaltete Schlüssel aktiviert sind](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
-- [Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

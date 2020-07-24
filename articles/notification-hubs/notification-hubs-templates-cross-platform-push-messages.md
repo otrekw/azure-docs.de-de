@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76263743"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219962"
 ---
-# <a name="templates"></a>Vorlagen
+# <a name="notification-hubs-templates"></a>Notification Hubs-Vorlagen
 
 Mithilfe von Vorlagen kann eine Clientanwendung das genaue Format der Benachrichtigungen angeben, die sie empfangen möchte. Die Verwendung von Vorlagen bietet einer App viele verschiedene Vorteile, einschließlich der folgenden:
 
@@ -62,7 +62,7 @@ Das Notification Hubs-Vorlagenfeature ermöglicht einer Client-App das Erstellen
 
 Das Verfahren wird in der folgenden Abbildung veranschaulicht.
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![Diagramm, das den Prozess für die plattformübergreifende Verwendung von Vorlagen veranschaulicht](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 Die Vorlage für die Registrierung der iOS-Client-App sieht wie folgt aus:
 
@@ -121,7 +121,7 @@ Die an den Notification Hub gesendete Nachricht enthält die folgenden Eigenscha
 
 Durch die Verwendung dieses Musters sendet das Back-End nur eine einzelne Nachricht und muss keine bestimmten Personalisierungsoptionen für die App-Benutzer speichern. Dieses Szenario wird in der folgenden Abbildung veranschaulicht.
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![Diagramm, das zeigt, wie das Back-End nur eine einzelne Nachricht an jede Plattform sendet](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Registrieren von Vorlagen
 
@@ -139,7 +139,7 @@ In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
 | $(prop, n)       | Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
 | .(prop, n)       | Wie oben, allerdings werden dem Text beim Abschneiden drei Punkte als Suffix hinzugefügt. Die Gesamtgröße der abgeschnittenen Zeichenfolge und des Suffixes überschreitet n Zeichen nicht. Bei .(title, 20) mit der Eingabeeigenschaft "This is the title line" erhalten Sie **This is the title...** |
 | %(prop)          | Ähnlich wie $(name) mit der Ausnahme, dass die Ausgabe URI-codiert ist. |
-| #(prop)          | Wird in JSON-Vorlagen (z.B. für iOS- und Android-Vorlagen) verwendet.<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z.B. Apple-Vorlagen). Wenn in diesem Fall die Funktion nicht von „{','}“ umschlossen ist (z.B. 'myJsonProperty' : '#(name)'), und zu einer Zahl im Javascript-Format ausgewertet wird (z.B. regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?), ist die Ausgabe-JSON eine Zahl.<br><br>Beispiel: 'badge : '#(name)' wird zu 'badge' : 40 (nicht '40'). |
+| #(prop)          | Wird in JSON-Vorlagen (z.B. für iOS- und Android-Vorlagen) verwendet.<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z.B. Apple-Vorlagen). Wenn in diesem Fall die Funktion nicht von „{','}“ umschlossen ist (z.B. 'myJsonProperty' : '#(name)') und zu einer Zahl im JavaScript-Format ausgewertet wird (z.B. regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?), ist der JSON-Ausgabecode eine Zahl.<br><br>Beispiel: 'badge : '#(name)' wird zu 'badge' : 40 (nicht '40'). |
 | 'text' oder "text" | Ein Literal. Literale enthalten beliebigen Text, der in einfache oder doppelte Anführungszeichen eingeschlossen ist. |
 | expr1 + expr2    | Der Verkettungsoperator, der zwei Ausdrücke zu einer Zeichenfolge verbindet. |
 

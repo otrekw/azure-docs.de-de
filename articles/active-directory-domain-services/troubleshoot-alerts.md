@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d3300151dc5fdfde0b34aa3f76c3ed9494d34fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734060"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86222971"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Häufige Warnungen und deren Auflösung in Azure AD Domain Services
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung für häufige Warnun
 
 Dieser Fehler wird normalerweise verursacht, wenn ein Azure-Abonnement in ein neues Azure AD-Verzeichnis verschoben und das alte Azure AD-Verzeichnis, das Azure AD DS zugeordnet ist, gelöscht wird.
 
-Dieser Fehler ist nicht behebbar. Zum Auflösen der Warnung müssen Sie [Ihre vorhandene verwaltete Azure AD DS-Domäne löschen](delete-aadds.md) und sie in Ihrem neuen Verzeichnis neu erstellen. Wenn Probleme beim Löschen der verwalteten Domäne auftreten, [öffnen Sie eine Azure-Supportanfrage][azure-support], um zusätzliche Hilfe bei der Problembehandlung zu erhalten.
+Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, [löschen Sie Ihre vorhandene verwaltete Domäne](delete-aadds.md), und erstellen Sie sie in Ihrem neuen Verzeichnis neu. Wenn Probleme beim Löschen der verwalteten Domäne auftreten, [öffnen Sie eine Azure-Supportanfrage][azure-support], um zusätzliche Hilfe bei der Problembehandlung zu erhalten.
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C wird in diesem Verzeichnis ausgeführt
 
@@ -131,7 +131,7 @@ Azure AD DS erfordert ein aktives Abonnement und kann nicht in ein anderes Abonn
 
 Azure AD DS erstellt zusätzliche Ressourcen wie öffentliche IP-Adressen, virtuelle Netzwerkschnittstellen und einen Load Balancer, um ordnungsgemäß funktionieren zu können. Wenn eine dieser Ressourcen gelöscht wird, befindet sich die verwaltete Domäne in einem nicht unterstützten Zustand und kann nicht mehr verwaltet werden kann. Weitere Informationen zu diesen Ressourcen finden Sie unter [Von Azure AD DS verwendete Netzwerkressourcen](network-considerations.md#network-resources-used-by-azure-ad-ds).
 
-Diese Warnung wird generiert, wenn eine dieser erforderlichen Ressourcen gelöscht wird. Wenn die Ressource vor weniger als 4 Stunden gelöscht wurde, besteht die Möglichkeit, dass die Azure-Plattform die gelöschte Ressource automatisch neu erstellen kann. In den folgenden Schritten wird beschrieben, wie Sie den Integritätsstatus und den Zeitstempel für das Löschen von Ressourcen überprüfen:
+Diese Warnung wird generiert, wenn eine dieser erforderlichen Ressourcen gelöscht wird. Wenn die Ressource vor weniger als vier Stunden gelöscht wurde, besteht die Möglichkeit, dass die Azure-Plattform die gelöschte Ressource automatisch neu erstellen kann. In den folgenden Schritten wird beschrieben, wie Sie den Integritätsstatus und den Zeitstempel für das Löschen von Ressourcen überprüfen:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie im linken Navigationsbereich den Eintrag **Integrität** aus.
@@ -148,7 +148,7 @@ Diese Warnung wird generiert, wenn eine dieser erforderlichen Ressourcen gelösc
 
 ### <a name="resolution"></a>Lösung
 
-Das Subnetz des virtuellen Netzwerks für Azure AD DS benötigt genügend IP-Adressen für die automatisch erstellten Ressourcen. Dieser IP-Adressraum beinhaltet auch die Notwendigkeit zum Erstellen von Ersatzressourcen bei einem Wartungsereignis. Um das Risiko zu minimieren, dass nicht genügend IP-Adressen verfügbar sind, sollten Sie im selben Subnetz des virtuellen Netzwerks neben Azure AD DS keine weiteren Ressourcen (z.B. eigene virtuelle Computer) bereitstellen.
+Das Subnetz des virtuellen Netzwerks für Azure AD DS benötigt genügend IP-Adressen für die automatisch erstellten Ressourcen. Dieser IP-Adressraum beinhaltet auch die Notwendigkeit zum Erstellen von Ersatzressourcen bei einem Wartungsereignis. Um das Risiko zu minimieren, dass nicht genügend IP-Adressen verfügbar sind, sollten Sie im selben Subnetz des virtuellen Netzwerks neben der verwalteten Domäne keine weiteren Ressourcen (z. B. eigene virtuelle Computer) bereitstellen.
 
 Dieser Fehler ist nicht behebbar. Zum Auflösen der Warnung müssen Sie [Ihre vorhandene verwaltete Domäne löschen](delete-aadds.md) und neu erstellen. Wenn Probleme beim Löschen der verwalteten Domäne auftreten, [öffnen Sie eine Azure-Supportanfrage][azure-support], um zusätzliche Hilfe bei der Problembehandlung zu erhalten.
 
@@ -173,14 +173,14 @@ Einige automatisch generierte Dienstprinzipale werden zum Verwalten und Erstelle
 
 ### <a name="resolution"></a>Lösung
 
-Das Subnetz des virtuellen Netzwerks für Azure AD DS benötigt genügend IP-Adressen für die automatisch erstellten Ressourcen. Dieser IP-Adressraum beinhaltet auch die Notwendigkeit zum Erstellen von Ersatzressourcen bei einem Wartungsereignis. Um das Risiko zu minimieren, dass nicht genügend IP-Adressen verfügbar sind, sollten Sie im selben Subnetz des virtuellen Netzwerks neben Azure AD DS keine weiteren Ressourcen (z.B. eigene virtuelle Computer) bereitstellen.
+Das Subnetz des virtuellen Netzwerks für Azure AD DS benötigt genügend IP-Adressen für die automatisch erstellten Ressourcen. Dieser IP-Adressraum beinhaltet auch die Notwendigkeit zum Erstellen von Ersatzressourcen bei einem Wartungsereignis. Um das Risiko zu minimieren, dass nicht genügend IP-Adressen verfügbar sind, sollten Sie im selben Subnetz des virtuellen Netzwerks neben der verwalteten Domäne keine weiteren Ressourcen (z. B. eigene virtuelle Computer) bereitstellen.
 
 Zum Auflösen dieser Warnung müssen Sie Ihre vorhandene verwaltete Domäne löschen und die Domäne in einem virtuellen Netzwerk mit einem ausreichend großen IP-Adressbereich neu erstellen. Dieser Vorgang geht mit einer Dienstunterbrechung einher, weil die verwaltete Domäne nicht verfügbar ist und alle von Ihnen erstellten benutzerdefinierten Ressourcen wie Organisationseinheiten oder Dienstkonten verloren gehen.
 
 1. [Löschen Sie die verwaltete Domäne](delete-aadds.md) aus Ihrem Verzeichnis.
-1. Um den IP-Adressbereich des virtuellen Netzwerks zu aktualisieren, suchen Sie im Azure-Portal nach dem Eintrag *Virtuelles Netzwerk*, und wählen Sie ihn aus. Wählen Sie das virtuelle Netzwerk für Azure AD DS aus, für das ein zu kleiner IP-Adressbereich festgelegt ist.
+1. Um den IP-Adressbereich des virtuellen Netzwerks zu aktualisieren, suchen Sie im Azure-Portal nach dem Eintrag *Virtuelles Netzwerk*, und wählen Sie ihn aus. Wählen Sie das virtuelle Netzwerk für die verwaltete Domäne aus, für die ein zu kleiner IP-Adressbereich festgelegt ist.
 1. Wählen Sie unter *Einstellungen* die Option **Adressraum** aus.
-1. Aktualisieren Sie den Adressbereich, indem Sie den vorhandenen Adressbereich auswählen und bearbeiten oder einen zusätzlichen Adressbereich hinzufügen. Stellen Sie sicher, dass der neue IP-Adressbereich für den Azure AD DS-Subnetzbereich groß genug ist. **Speichern** Sie abschließend die Änderungen.
+1. Aktualisieren Sie den Adressbereich, indem Sie den vorhandenen Adressbereich auswählen und bearbeiten oder einen zusätzlichen Adressbereich hinzufügen. Stellen Sie sicher, dass der neue IP-Adressbereich für den Subnetzbereich der verwalteten Domäne groß genug ist. **Speichern** Sie abschließend die Änderungen.
 1. Wählen Sie im linken Navigationsbereich den Eintrag **Subnetze** aus.
 1. Wählen Sie das Subnetz aus, das Sie bearbeiten möchten, oder erstellen Sie ein zusätzliches Subnetz.
 1. Geben Sie einen genügend großen IP-Adressbereich an, oder aktualisieren Sie den vorhandenen. **Speichern** Sie anschließend Ihre Änderungen.
@@ -220,7 +220,7 @@ Ressourcensperren können auf Azure-Ressourcen angewandt werden, um Änderungs- 
 
 Führen Sie die folgenden Schritte aus, um die Azure AD DS-Komponenten auf Ressourcensperren zu überprüfen und diese zu entfernen:
 
-1. Überprüfen Sie für jede Azure AD DS-Netzwerkkomponente in der Ressourcengruppe (z. B. virtuelles Netzwerk, Netzwerkschnittstelle oder öffentliche IP-Adresse) die Vorgangsprotokolle im Azure-Portal. Diese Vorgangsprotokolle sollten darauf hinweisen, warum ein Vorgang fehlschlägt und wo eine Ressourcensperre angewendet wird.
+1. Überprüfen Sie für jede Netzwerkkomponente der verwalteten Domäne in der Ressourcengruppe (z. B. virtuelles Netzwerk, Netzwerkschnittstelle oder öffentliche IP-Adresse) die Vorgangsprotokolle im Azure-Portal. Diese Vorgangsprotokolle sollten darauf hinweisen, warum ein Vorgang fehlschlägt und wo eine Ressourcensperre angewendet wird.
 1. Wählen Sie die Ressource aus, auf die eine Sperre angewendet wird. Wählen Sie dann unter **Sperren** die Sperre(n) aus, und entfernen Sie diese.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: Ressourcen nicht verwendbar
@@ -235,7 +235,7 @@ Richtlinien werden auf Azure-Ressourcen und -Ressourcengruppen angewandt, um zu 
 
 Führen Sie die folgenden Schritte aus, um die Azure AD DS-Komponenten auf angewendete Richtlinien zu überprüfen und entsprechend zu aktualisieren:
 
-1. Überprüfen Sie für jede Azure AD DS-Netzwerkkomponente in der Ressourcengruppe (z.B. virtuelles Netzwerk, NIC oder öffentliche IP-Adresse) die Vorgangsprotokolle im Azure-Portal. Diese Vorgangsprotokolle sollten darauf hinweisen, warum ein Vorgang fehlschlägt und wo eine restriktive Richtlinie angewendet wird.
+1. Überprüfen Sie für jede Netzwerkkomponente der verwalteten Domäne in der Ressourcengruppe (z. B. virtuelles Netzwerk, Netzwerkadapter oder öffentliche IP-Adresse) die Vorgangsprotokolle im Azure-Portal. Diese Vorgangsprotokolle sollten darauf hinweisen, warum ein Vorgang fehlschlägt und wo eine restriktive Richtlinie angewendet wird.
 1. Wählen Sie die Ressource aus, auf die eine Richtlinie angewendet wird, und wählen Sie dann unter **Richtlinien** die Richtlinie aus, und bearbeiten Sie diese, damit sie weniger restriktiv ist.
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: Synchronisierung wurde nicht in kurzer Zeit abgeschlossen
@@ -250,7 +250,7 @@ Führen Sie die folgenden Schritte aus, um die Azure AD DS-Komponenten auf angew
 
 Die folgenden häufigen Gründe können dazu führen, dass die Synchronisierung in einer verwalteten Domäne beendet wird:
 
-* Die erforderliche Netzwerkkonnektivität ist blockiert. Weitere Informationen zum Überprüfen des virtuellen Azure-Netzwerks auf Probleme und zum Ermitteln der erforderlichen Schritte finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen](alert-nsg.md) und [Netzwerkanforderungen für Azure AD Domain Services](network-considerations.md).
+* Die erforderliche Netzwerkkonnektivität ist blockiert. Weitere Informationen zum Überprüfen des virtuellen Azure-Netzwerks auf Probleme und zum Ermitteln der erforderlichen Schritte finden Sie unter [Bekannte Probleme: Netzwerkkonfigurationswarnungen in Azure Active Directory Domain Services](alert-nsg.md) und [Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure Active Directory Domain Services](network-considerations.md).
 *  Die Kennwortsynchronisierung wurde nicht eingerichtet oder nicht erfolgreich abgeschlossen, als die verwaltete Domäne bereitgestellt wurde. Sie können die Kennwortsynchronisierung für [Reine Cloudbenutzer](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) oder [Hybridbenutzer aus der lokalen Umgebung](tutorial-configure-password-hash-sync.md) einrichten.
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: Eine Sicherung wurde eine Weile nicht durchgeführt

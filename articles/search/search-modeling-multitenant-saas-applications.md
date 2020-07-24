@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081104"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230756"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
 
@@ -43,12 +43,12 @@ Die kognitive Azure-Suche bietet verschiedene [Tarife](https://azure.microsoft.c
 
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| Maximale Anzahl von Replikaten pro Dienst |3 |12 |12 |12 |12 |
-| Maximale Anzahl von Partitionen pro Dienst |1 |12 |12 |12 |3 |
-| Maximale Anzahl von Sucheinheiten (Replikate x Partitionen) pro Dienst |3 |36 |36 |36 |36 (max. 3 Partitionen) |
-| Maximale Speicherkapazität pro Dienst |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
-| Maximale Speicherkapazität pro Partition |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Maximale Anzahl von Indizes pro Dienst |5 |50 |200 |200 |3\.000 (max. 1.000 Indizes/Partition) |
+| **Maximale Anzahl von Replikaten pro Dienst** |3 |12 |12 |12 |12 |
+| **Maximale Anzahl von Partitionen pro Dienst** |1 |12 |12 |12 |3 |
+| **Maximale Anzahl von Sucheinheiten (Replikate x Partitionen) pro Dienst** |3 |36 |36 |36 |36 (max. 3 Partitionen) |
+| **Maximale Speicherkapazität pro Dienst** |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
+| **Maximale Speicherkapazität pro Partition** |2 GB |25 GB |100 GB |200 GB |200 GB |
+| **Maximale Anzahl von Indizes pro Dienst** |5 |50 |200 |200 |3\.000 (max. 1.000 Indizes/Partition) |
 
 #### <a name="s3-high-density"></a>S3 High Density
 Der Tarif „S3“ der kognitiven Azure-Suche bietet als Option einen HD-Modus (High Density), der speziell auf Szenarien mit mehreren Mandanten ausgelegt ist. In vielen Fällen ist es notwendig, eine große Zahl von kleineren Mandanten unter einem einzelnen Dienst zu unterstützen, um die Vorteile der Einfachheit und Kosteneffizienz nutzen zu können.

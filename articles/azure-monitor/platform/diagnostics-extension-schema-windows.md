@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e078f81db75dd6b89a65ff2d00bb2805ea912d0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676433"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249137"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schema der Diagnoseerweiterung für Windows
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und den Workloads von Azure-Computeressourcen sammelt. In diesem Artikel wird das Schema erläutert, das zur Konfiguration der Diagnoseerweiterung auf virtuellen Windows-Computern und anderen Computeressourcen verwendet wird.
@@ -76,7 +76,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 |----------------|-----------------|  
 | **overallQuotaInMB** | Der maximale lokale Speicherplatz, der von den verschiedenen Typen von Diagnosedaten genutzt werden kann, die von der Azure-Diagnose erfasst werden. Die Standardeinstellung lautet 4.096 MB.<br />
 |**useProxyServer** | Konfigurieren Sie die Azure-Diagnose, um die Proxyservereinstellungen den IE-Einstellungen entsprechend zu verwenden.|
-|**Senken** | Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten für alle untergeordneten Elemente zu senden, die Senken unterstützen. Senkenbeispiele sind Application Insights oder Event Hubs.|  
+|**Senken** | Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten für alle untergeordneten Elemente zu senden, die Senken unterstützen. Senkenbeispiele sind Application Insights oder Event Hubs. Beachten Sie, dass Sie die Eigenschaft *resourceId* unter dem Element *Metrics* hinzufügen müssen, wenn in Event Hubs hochgeladene Ereignisse über eine Ressourcen-ID verfügen sollen. |  
 
 
 <br /> <br />
@@ -189,7 +189,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Ermöglicht Ihnen das Generieren einer Leistungsindikatortabelle, die für schnelle Abfragen optimiert ist. Jeder Leistungsindikator, der im **PerformanceCounters**-Element definiert ist, wird in der Metriktabelle zusätzlich zur Leistungsindikatortabelle gespeichert.  
 
- Das **resourceId**-Attribut muss angegeben werden.  Die Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, auf dem bzw. in der Sie die Azure-Diagnose bereitstellen. Rufen Sie **resourceID** im [Azure-Portal](https://portal.azure.com) ab. Wählen Sie **Durchsuchen** -> **Ressourcengruppen** ->  **<Name\>** aus. Klicken Sie auf die Kachel **Eigenschaften**, und kopieren Sie den Wert aus dem Feld **ID**.  
+ Das **resourceId**-Attribut muss angegeben werden.  Die Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, auf dem bzw. in der Sie die Azure-Diagnose bereitstellen. Rufen Sie **resourceID** im [Azure-Portal](https://portal.azure.com) ab. Wählen Sie **Durchsuchen** -> **Ressourcengruppen** ->  **<Name\>** aus. Klicken Sie auf die Kachel **Eigenschaften**, und kopieren Sie den Wert aus dem Feld **ID**.  Die Eigenschaft „resourceID“ wird sowohl zum Senden von benutzerdefinierten Metriken als auch zum Hinzufügen einer resourceID-Eigenschaft zu Daten verwendet, die an Event Hubs gesendet werden. Beachten Sie, dass Sie die Eigenschaft *resourceId* unter dem Element *Metrics* hinzufügen müssen, wenn in Event Hubs hochgeladene Ereignisse über eine Ressourcen-ID verfügen sollen.
 
 |Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
@@ -209,7 +209,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 |Untergeordnetes Element|BESCHREIBUNG|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Die folgenden Attribute sind erforderlich:<br /><br /> - **counterSpecifier**: Der Name des Leistungsindikators Beispiel: `\Processor(_Total)\% Processor Time`. Führen Sie zum Abrufen einer Liste der Leistungsindikatoren auf Ihrem Host den Befehl `typeperf` aus.<br /><br /> - **sampleRate**: Gibt an, wie oft Stichproben für den Indikator erstellt werden.<br /><br /> Optionales Attribut:<br /><br /> **unit**: Die Maßeinheit des Indikators Die Werte sind in der [UnitType-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) verfügbar. |
-|**Senken** | Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispiel: Azure Monitor oder Event Hubs.|    
+|**Senken** | Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispiel: Azure Monitor oder Event Hubs. Beachten Sie, dass Sie die Eigenschaft *resourceId* unter dem Element *Metrics* hinzufügen müssen, wenn in Event Hubs hochgeladene Ereignisse über eine Ressourcen-ID verfügen sollen.|    
 
 
 
@@ -239,7 +239,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 |**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Die Standardeinstellung ist 0.|  
 |**scheduledTransferLogLevelFilter**|**string**|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**scheduledTransferPeriod**|**duration**|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
-|**Senken** |**string**| Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispielsweise Application Insights oder Event Hubs.|  
+|**Senken** |**string**| Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispielsweise Application Insights oder Event Hubs. Beachten Sie, dass Sie die Eigenschaft *resourceId* unter dem Element *Metrics* hinzufügen müssen, wenn in Event Hubs hochgeladene Ereignisse über eine Ressourcen-ID verfügen sollen.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – DiagnosticMonitorConfiguration – DockerSources*
@@ -327,7 +327,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 *PublicConfig* und *PrivateConfig* sind getrennt, da sie in den meisten JSON-Nutzungsszenarien als unterschiedliche Variablen übergeben werden. Zu diesen Szenarien gehören Resource Manager-Vorlagen, PowerShell und Visual Studio.
 
 > [!NOTE]
-> Die öffentliche Konfiguration der Azure Monitor-Senkendefinition verfügt über zwei Eigenschaften: *resourceId* und *region*. Diese sind nur für klassische virtuelle Computer und klassische Clouddienste erforderlich. Diese Eigenschaften sollten für andere Ressourcen nicht verwendet werden.
+> Die öffentliche Konfiguration der Azure Monitor-Senkendefinition verfügt über zwei Eigenschaften: *resourceId* und *region*. Diese sind nur für klassische virtuelle Computer und klassische Clouddienste erforderlich. Die Eigenschaft *region* sollte nicht für andere Ressourcen verwendet werden. Die Eigenschaft *resourceId* wird auf virtuellen ARM-Computern genutzt, um das Feld „resourceID“ in den in Event Hubs hochgeladenen Protokollen aufzufüllen.
 
 ```json
 "PublicConfig" {

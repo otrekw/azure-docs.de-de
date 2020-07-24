@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134036"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201202"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -120,7 +120,7 @@ Nein, dieses Szenario wird nicht unterstützt. Wenn Sie jedoch versehentlich Spe
 Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsverlauf von Wiederherstellungspunkten. Die Richtlinie definiert auch die Häufigkeit anwendungskonsistenter Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit folgenden Standardeinstellungen:
 
 - 24 Stunden für den Aufbewahrungsverlauf von Wiederherstellungspunkten.
-- 60 Minuten für die Häufigkeit anwendungskonsistenter Momentaufnahmen.
+- 4 Stunden für die Häufigkeit anwendungskonsistenter Momentaufnahmen.
 
 [Weitere Informationen zu Replikationseinstellungen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 

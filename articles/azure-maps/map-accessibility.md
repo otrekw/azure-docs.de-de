@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648576"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242371"
 ---
 # <a name="building-an-accessible-application"></a>Erstellen einer zugänglichen Anwendung
 
@@ -22,7 +22,7 @@ Mehr als 20 % der Internetbenutzer benötigen barrierefreie Webanwendungen. Dah
 Bei umfassenden interaktiven Inhalten wie einer Karte gelten einige allgemeine Überlegungen zur Barrierefreiheit:
 - Unterstützung der Sprachausgabe für Benutzer, die Probleme beim Betrachten der Webanwendung haben.
 - Es gibt verschiedene Methoden zum Interagieren mit Webanwendungen und dem Navigieren darin, z. B. die Verwendung einer Maus oder Tastatur oder das Berühren.
-- Richten Sie den Farbkontrast so ein, dass die Farben nicht verschwimmen, sodass sie schwierig voneinander unterschieden werden können. 
+- Richten Sie den Farbkontrast so ein, dass die Farben nicht verschwimmen, weil sie dann schwer voneinander unterschieden werden können. 
 
 Das Azure Maps Web SDK enthält zahlreiche Funktionen zur Barrierefreiheit wie die folgenden:
 - Beschreibungen bei der Sprachausgabe, wenn die Karte verschoben wird und der Benutzer auf ein Steuerelement oder ein Popup fokussiert
@@ -46,6 +46,7 @@ Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neige
 - Verwenden Sie bei fokussierter Karte das Minuszeichen (`-`) oder den Unterstrich (`_`), um eine Ebene zu verkleinern.
 - Verwenden Sie das Zoomsteuerelement mit einer Maus, der Berührungssteuerung oder auf einer Tastatur der TAB- oder EINGABETASTE.
 - Halten Sie die Schaltfläche `Shift` und die linke Maustaste auf der Karte gedrückt, und ziehen Sie einen Bereich der Karte, um die Karte zu vergrößern.
+- Bei einigen Multitouch-Pads ziehen Sie zum Verkleinern zwei Finger nach oben und zum Vergrößern zwei Finger nach unten.
 
 **Schwenken der Karte**
 

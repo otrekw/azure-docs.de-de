@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 285f5aabe32013a629eebb150e55ba343150f589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734842"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220288"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -40,9 +40,9 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 ## <a name="create-a-domain-joined-windows-vm"></a>Erstellen einer in die Domäne eingebundenen Windows-VM
 
-Um den Datenverkehr an in Ihrer Umgebung ausgeführte Anwendungen weiterzuleiten, installieren Sie die Connectorkomponente des Azure AD-Anwendungsproxys. Dieser Azure AD-Anwendungsproxyconnector muss auf virtuellen Windows Server-Computern (Virtual Machines, VMs) installiert werden, die in die verwaltete Domäne eingebunden sind. Bei einigen Anwendungen können Sie mehrere Server bereitstellen, auf denen der Connector installiert ist. Diese Bereitstellungsoption bietet Ihnen eine größere Verfügbarkeit und hilft bei der Verarbeitung größerer Authentifizierungslasten.
+Um den Datenverkehr an in Ihrer Umgebung ausgeführte Anwendungen weiterzuleiten, installieren Sie die Connectorkomponente des Azure AD-Anwendungsproxys. Dieser Azure AD-Anwendungsproxyconnector muss auf einem virtuellen Windows Server-Computer (Virtual Machine, VM) installiert werden, der in die verwaltete Domäne eingebunden ist. Bei einigen Anwendungen können Sie mehrere Server bereitstellen, auf denen der Connector installiert ist. Diese Bereitstellungsoption bietet Ihnen eine größere Verfügbarkeit und hilft bei der Verarbeitung größerer Authentifizierungslasten.
 
-Die VM, auf der der Azure AD-Anwendungsproxyconnector ausgeführt wird, muss sich im gleichen oder in einem per Peering verbundenen virtuellen Netzwerk befinden, in dem Azure AD DS aktiviert ist. Die VMs, auf denen die von Ihnen über den Anwendungsproxy veröffentlichten Anwendungen dann gehostet werden, müssen ebenfalls im gleichen virtuellen Azure-Netzwerk bereitgestellt sein.
+Die VM, auf der der Azure AD-Anwendungsproxyconnector ausgeführt wird, muss sich im gleichen virtuellen Netzwerk wie Ihre verwaltete Domäne oder in einem per Peering verbundenen virtuellen Netzwerk befinden. Die VMs, auf denen die von Ihnen über den Anwendungsproxy veröffentlichten Anwendungen dann gehostet werden, müssen ebenfalls im gleichen virtuellen Azure-Netzwerk bereitgestellt sein.
 
 Um eine VM für den Azure AD-Anwendungsproxyconnector zu erstellen, führen Sie die folgenden Schritte aus:
 
@@ -72,7 +72,7 @@ Nachdem Sie über eine VM verfügen, die als Azure AD-Anwendungsproxyconnector v
         > [!NOTE]
         > Das zum Registrieren des Connectors verwendete globale Administratorkonto muss demselben Verzeichnis angehören, in dem Sie den Anwendungsproxydienst aktivieren.
         >
-        > Wenn die Azure AD-Domäne beispielsweise *aaddscontoso.com* lautet, muss sich der globale Administrator als `admin@aaddscontoso.com` oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
+        > Wenn die Azure AD-Domäne beispielsweise *contoso.com* lautet, muss sich der globale Administrator als `admin@contoso.com` oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
 
    * Falls auf der VM, auf der Sie den Connector installieren, die Option „Verstärkte Sicherheitskonfiguration für Internet Explorer“ aktiviert ist, ist der Registrierungsbildschirm möglicherweise blockiert. Zum Zulassen des Zugriffs befolgen Sie die Anweisungen in der Fehlermeldung, um „Verstärkte Sicherheitskonfiguration für Internet Explorer“ während des Installationsvorgangs zu deaktivieren.
    * Falls bei der Connectorregistrierung ein Fehler auftritt, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](../active-directory/manage-apps/application-proxy-troubleshoot.md) weiter.

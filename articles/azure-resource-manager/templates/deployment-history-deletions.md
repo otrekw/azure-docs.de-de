@@ -2,13 +2,13 @@
 title: Löschung des Bereitstellungsverlaufs
 description: Hier erfahren Sie, wie Azure Resource Manager Bereitstellungen automatisch aus dem Bereitstellungsverlauf löscht. Bereitstellungen werden gelöscht, wenn der Verlauf den Grenzwert von 800 Einträgen überschreitet.
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981655"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248979"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische Löschungen aus dem Bereitstellungsverlauf
 
@@ -23,16 +23,18 @@ Azure Resource Manager beginnt bald mit dem automatischen Löschen von Bereitste
 
 ## <a name="when-deployments-are-deleted"></a>Wann Bereitstellungen gelöscht werden
 
-Bereitstellungen werden erst aus Ihrem Bereitstellungsverlauf gelöscht, wenn Sie den Grenzwert von 790 Bereitstellungen erreicht haben. Azure Resource Manager löscht eine kleine Teilmenge der ältesten Bereitstellungen, um Platz für zukünftige Bereitstellungen zu schaffen. Der Großteil Ihres Verlaufs bleibt unverändert. Die ältesten Bereitstellungen werden immer zuerst gelöscht.
+Bereitstellungen werden aus Ihrem Verlauf gelöscht, wenn Sie den Grenzwert von 775 Bereitstellungen erreicht haben. Azure Resource Manager löscht Bereitstellungen, bis der Verlauf wieder 750 Bereitstellungen enthält. Die ältesten Bereitstellungen werden immer zuerst gelöscht.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Löschungen aus dem Bereitstellungsverlauf":::
+
+> [!NOTE]
+> Die Anfangszahl (775) und die Endzahl (750) können geändert werden.
+>
+> Wenn Ihre Ressourcengruppe bereits den Grenzwert von 800 erreicht hat, schlägt Ihre nächste Bereitstellung fehl. Der automatische Löschvorgang wird sofort gestartet. Nach einer kurzen Wartezeit können Sie die Bereitstellung noch mal versuchen.
 
 Neben Bereitstellungen können Sie Löschungen auch auslösen, wenn Sie den [what-if-Vorgang](template-deploy-what-if.md) ausführen oder eine Bereitstellung überprüfen.
 
 Wenn Sie einer Bereitstellung einen Namen geben, der bereits im Verlauf vorhanden ist, setzen Sie dessen Position im Verlauf zurück. Die Bereitstellung wechselt dann zur aktuellsten Position im Verlauf. Die Position einer Bereitstellung wird auch zurückgesetzt, wenn Sie nach einem Fehler ein [Rollback auf diese Bereitstellung ausführen](rollback-on-error.md).
-
-> [!NOTE]
-> Wenn Ihre Ressourcengruppe bereits den Grenzwert von 800 erreicht hat, schlägt Ihre nächste Bereitstellung fehl. Der automatische Löschvorgang wird sofort gestartet. Nach einer kurzen Wartezeit können Sie die Bereitstellung noch mal versuchen.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Deaktivieren der automatischen Löschungen
 

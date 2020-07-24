@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 35f92afea9f9e8da3cf1eeefa81cac0cb712843a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2802445bbb80a4412787362a3ee9aaee4adcd40
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734621"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223498"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure Active Directory Domain Services vom klassischen virtuellen Netzwerkmodell zu Resource Manager
 
@@ -98,13 +98,15 @@ Bei der Vorbereitung und anschließenden Migration einer verwalteten Domäne sin
 
 Die IP-Adressen der Domänencontroller für eine verwaltete Domäne ändern sich nach der Migration. Diese Änderung gilt auch für die öffentliche IP-Adresse des Secure LDAP-Endpunkts. Die neuen IP-Adressen liegen innerhalb des Adressbereichs für das neue Subnetz im virtuellen Resource Manager-Netzwerk.
 
-Bei einem Rollback können sich die IP-Adressen nach dem Rollbackvorgang ändern.
+Sollte ein Rollback erforderlich sein, können sich die IP-Adressen nach dem Rollbackvorgang ändern.
 
 Von Azure AD DS werden normalerweise die ersten beiden verfügbaren IP-Adressen im Adressbereich verwendet, aber dies ist nicht garantiert. Sie können derzeit nicht die IP-Adressen angeben, die nach der Migration verwendet werden sollen.
 
 ### <a name="downtime"></a>Ausfallzeit
 
-Während des Migrationsprozesses sind die Domänencontroller eine Zeit lang offline. Auf Domänencontroller kann nicht zugegriffen werden, während für Azure AD DS die Migration zum Resource Manager-Bereitstellungsmodell und virtuellen Netzwerk durchgeführt wird. Im Durchschnitt hat die Ausfallzeit eine Länge von ein bis drei Stunden. Dieser Zeitraum reicht von dem Moment, in dem die Domänencontroller in den Offlinezustand versetzt werden, bis zum dem Zeitpunkt, zu dem der erste Domänencontroller wieder online ist. Dieser Durchschnittswert enthält nicht die Zeit, die zum Replizieren des zweiten Domänencontrollers benötigt wird, oder die Zeit, die ggf. für die Migration zusätzlicher Ressourcen zum Resource Manager-Bereitstellungsmodell aufgewendet werden muss.
+Während des Migrationsprozesses sind die Domänencontroller eine Zeit lang offline. Auf Domänencontroller kann nicht zugegriffen werden, während für Azure AD DS die Migration zum Resource Manager-Bereitstellungsmodell und virtuellen Netzwerk durchgeführt wird.
+
+Im Durchschnitt hat die Ausfallzeit eine Länge von ein bis drei Stunden. Dieser Zeitraum reicht von dem Moment, in dem die Domänencontroller in den Offlinezustand versetzt werden, bis zum dem Zeitpunkt, zu dem der erste Domänencontroller wieder online ist. Dieser Durchschnittswert enthält nicht die Zeit, die zum Replizieren des zweiten Domänencontrollers benötigt wird, oder die Zeit, die ggf. für die Migration zusätzlicher Ressourcen zum Resource Manager-Bereitstellungsmodell aufgewendet werden muss.
 
 ### <a name="account-lockout"></a>Kontosperrung
 
@@ -207,7 +209,7 @@ Führen Sie die folgenden Schritte aus, um die verwaltete Domäne für die Migra
 
 ## <a name="migrate-the-managed-domain"></a>Migrieren der verwalteten Domäne
 
-Nachdem die verwaltete Domäne vorbereitet und gesichert wurde, kann sie migriert werden. In diesem Schritt werden die Domänencontroller-VMs von Azure AD Domain Services basierend auf dem Resource Manager-Bereitstellungsmodell neu erstellt. Es kann ein bis drei Stunden dauern, bis dieser Schritt abgeschlossen ist.
+Nachdem die verwaltete Domäne vorbereitet und gesichert wurde, kann sie migriert werden. In diesem Schritt werden die Domänencontroller-VMs von Azure AD DS basierend auf dem Resource Manager-Bereitstellungsmodell neu erstellt. Es kann ein bis drei Stunden dauern, bis dieser Schritt abgeschlossen ist.
 
 Führen Sie das Cmdlet `Migrate-Aadds` mit dem Parameter *-Commit* aus. Geben Sie den *-ManagedDomainFqdn* für Ihre eigene im vorherigen Abschnitt vorbereitete verwaltete Domäne (z. B. *aaddscontoso.com*) an:
 
@@ -248,10 +250,12 @@ Beim Resource Manager-Bereitstellungsmodell werden die Netzwerkressourcen für d
 
 Führen Sie die folgenden Konfigurationsschritte aus, um die Netzwerkkonnektivität mit VMs herzustellen, wenn mindestens ein Domänencontroller verfügbar ist.
 
-* **Aktualisieren von DNS-Servereinstellungen**: Aktualisieren Sie die DNS-Einstellungen mit den IP-Adressen der neuen Domänencontroller, damit andere Ressourcen im virtuellen Resource Manager-Netzwerk die verwaltete Domäne auflösen und verwenden können. Diese Einstellungen können im Azure-Portal automatisch für Sie konfiguriert werden. Weitere Informationen zum Konfigurieren des virtuellen Resource Manager-Netzwerks finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk][update-dns].
+* **Aktualisieren von DNS-Servereinstellungen**: Aktualisieren Sie die DNS-Einstellungen mit den IP-Adressen der neuen Domänencontroller, damit andere Ressourcen im virtuellen Resource Manager-Netzwerk die verwaltete Domäne auflösen und verwenden können. Diese Einstellungen können im Azure-Portal automatisch für Sie konfiguriert werden.
+
+    Weitere Informationen zum Konfigurieren des virtuellen Resource Manager-Netzwerks finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk][update-dns].
 * **Neustarten von in die Domäne eingebundenen VMs**: Wenn sich die IP-Adressen des DNS-Servers für die Azure AD DS-Domänencontroller ändern, sollten Sie alle in die Domäne eingebundenen VMs neu starten, damit diese dann die neuen DNS-Servereinstellungen verwenden. Falls Anwendungen oder VMs über manuell konfigurierte DNS-Einstellungen verfügen, müssen Sie diese manuell mit den neuen DNS-Server-IP-Adressen der Domänencontroller aktualisieren, die im Azure-Portal angezeigt werden.
 
-Testen Sie jetzt die Verbindung und Namensauflösung für das virtuelle Netzwerk. Führen Sie auf einer VM, die mit dem virtuellen Resource Manager-Netzwerk verbunden oder per Peering damit verknüpft ist, die folgenden Tests zur Netzwerkkommunikation durch:
+Testen Sie jetzt die Verbindung und Namensauflösung für das virtuelle Netzwerk. Führen Sie auf einer VM, die mit dem virtuellen Resource Manager-Netzwerk verbunden oder per Peering damit verknüpft ist, die folgenden Tests zur Netzwerkkommunikation durch:
 
 1. Überprüfen Sie, ob Sie die IP-Adresse von einem der Domänencontroller pingen können, z. B. `ping 10.1.0.4`.
     * Die IP-Adressen der Domänencontroller werden im Azure-Portal auf der Seite **Eigenschaften** für die verwaltete Domäne angezeigt.
@@ -270,7 +274,7 @@ Von Azure AD DS werden Überwachungsprotokolle verfügbar gemacht, um als Hilfe
 
 Sie können Vorlagen verwenden, um wichtige Informationen zu überwachen, die in den Protokollen verfügbar gemacht werden. Beispielsweise können mit der Arbeitsmappenvorlage für Überwachungsprotokolle mögliche Kontosperrungen in der verwalteten Domäne überwacht werden.
 
-### <a name="configure-azure-ad-domain-services-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen für Azure AD Domain Services
+### <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 
 Aktualisieren Sie im Azure-Portal die Einstellungen für E-Mail-Benachrichtigungen, um benachrichtigt zu werden, wenn in der verwalteten Domäne ein Problem erkannt wird. Weitere Informationen finden Sie unter [Konfigurieren von Benachrichtigungseinstellungen][notifications].
 
@@ -297,7 +301,7 @@ Bis zu einem bestimmten Zeitpunkt des Migrationsprozesses können Sie ein Rollba
 
 ### <a name="roll-back"></a>Rollback
 
-Wenn beim Ausführen des PowerShell-Cmdlets zur Vorbereitung der Migration in Schritt 2 oder bei der eigentlichen Migration in Schritt 3 ein Fehler auftritt, kann für die verwaltete Domäne ein Rollback zur ursprünglichen Konfiguration ausgeführt werden. Für dieses Rollback ist das ursprüngliche klassische virtuelle Netzwerk erforderlich. Beachten Sie, dass sich die IP-Adressen nach dem Rollback weiterhin ändern können.
+Wenn beim Ausführen des PowerShell-Cmdlets zur Vorbereitung der Migration in Schritt 2 oder bei der eigentlichen Migration in Schritt 3 ein Fehler auftritt, kann für die verwaltete Domäne ein Rollback zur ursprünglichen Konfiguration ausgeführt werden. Für dieses Rollback ist das ursprüngliche klassische virtuelle Netzwerk erforderlich. Die IP-Adressen können sich nach dem Rollback weiterhin ändern.
 
 Führen Sie das Cmdlet `Migrate-Aadds` mit dem Parameter *-Abort* aus. Geben Sie den *-ManagedDomainFqdn* für Ihre eigene im vorherigen Abschnitt vorbereitete verwaltete Domäne (z. B. *aaddscontoso.com*) sowie den Namen des klassischen virtuellen Netzwerks (z. B. *myClassicVnet*) an:
 

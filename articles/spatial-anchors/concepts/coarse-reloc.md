@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844393"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202378"
 ---
 # <a name="coarse-relocalization"></a>Ungefähre Standortbestimmung
 
@@ -120,13 +120,11 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 Anschließend müssen Sie entscheiden, welche Sensoren Sie für die ungefähre Standortbestimmung verwenden möchten. Diese Entscheidung ist von der Anwendung abhängig, die Sie entwickeln. Die im Folgenden aufgeführten Empfehlungen sollten Ihnen jedoch einen guten Ausgangspunkt vermitteln:
 
-
-|             | In Gebäuden | Im Freien |
-|-------------|---------|----------|
-| GPS         | Aus | Andererseits |
-| WLAN        | Andererseits | Aktiviert (optional) |
-| BLE-Beacons | Aktiviert (optional, mit Einschränkungen, siehe unten) | Aus |
-
+|                 | In Gebäuden | Im Freien |
+|-----------------|---------|----------|
+| **GPS**         | Aus | Andererseits |
+| **WiFi**        | Andererseits | Aktiviert (optional) |
+| **BLE-Beacons** | Aktiviert (optional, mit Einschränkungen, siehe unten) | Aus |
 
 ### <a name="enabling-gps"></a>Aktivieren von GPS
 
@@ -658,12 +656,11 @@ In der folgenden Tabelle wird der erwartete Suchbereich für jeden Sensortyp ges
 
 In der folgenden Tabelle werden die Sensordaten, die von den einzelnen unterstützten Plattformen unterstützt werden, sowie alle plattformspezifischen Einschränkungen zusammengefasst:
 
-
-|             | HoloLens | Android | iOS |
-|-------------|----------|---------|-----|
-| GPS         | – | Wird von [LocationManager][3]-APIs unterstützt (sowohl GPS als auch NETWORK). | Wird von [CLLocationManager][4]-APIs unterstützt. |
-| WLAN        | Wird mit einer Rate von etwa einer Überprüfung alle drei Sekunden unterstützt. | Unterstützt. Ab API-Ebene 28, werden WLAN-Überprüfungen auf vier Aufrufe alle 2 Minuten gedrosselt. Ab Android 10 kann die Drosselung über das Menü „Entwicklereinstellungen“ deaktiviert werden. Weitere Informationen finden Sie in der [Android-Dokumentation][5]. | Nicht vorhanden – keine öffentliche API |
-| BLE-Beacons | Beschränkt auf [Eddystone][1] und [iBeacon][2] | Beschränkt auf [Eddystone][1] und [iBeacon][2] | Beschränkt auf [Eddystone][1] und [iBeacon][2] |
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **GPS**         | – | Wird von [LocationManager][3]-APIs unterstützt (sowohl GPS als auch NETWORK). | Wird von [CLLocationManager][4]-APIs unterstützt. |
+| **WiFi**        | Wird mit einer Rate von etwa einer Überprüfung alle drei Sekunden unterstützt. | Unterstützt. Ab API-Ebene 28, werden WLAN-Überprüfungen auf vier Aufrufe alle 2 Minuten gedrosselt. Ab Android 10 kann die Drosselung über das Menü „Entwicklereinstellungen“ deaktiviert werden. Weitere Informationen finden Sie in der [Android-Dokumentation][5]. | Nicht vorhanden – keine öffentliche API |
+| **BLE-Beacons** | Beschränkt auf [Eddystone][1] und [iBeacon][2] | Beschränkt auf [Eddystone][1] und [iBeacon][2] | Beschränkt auf [Eddystone][1] und [iBeacon][2] |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

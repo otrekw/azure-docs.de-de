@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: cad76677464ba4895141e53ea45b98f55cc2f655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515754"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207499"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Datenübertragung für große Datasets mit geringer oder keiner Netzwerkbandbreite
  
@@ -47,19 +47,19 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Importieren/Exportieren                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    Datengröße                        |    Bis zu 35 TB                 |    Bis zu 80 TB pro Gerät                       |    Bis zu 800 TB pro Gerät               |    Variable                            |
-|    Datentyp                        |    Azure-Blobs                  |    Azure-Blobs<br>Azure Files                    |    Azure-Blobs<br>Azure Files            |    Azure-Blobs<br>Azure Files          |
-|    Formfaktor                      |    5 SSDs pro Auftrag             |    1 x 22,7 kg Gerät in Desktopgröße pro Auftrag    |    1 x ca. 226,8 kg großes Gerät pro Auftrag    |    Bis zu 10 HDDs/SSDs pro Auftrag        |
-|    Für Anfangskonfiguration benötigte Zeit               |    Niedrig <br>(15 Min.)            |    Niedrig bis mittel <br> (< 30 Min.)               |    Moderat<br>(1 bis 2 Stunden)               |    Mittel bis schwierig<br>(variabel) |
-|    Senden von Daten an Azure               |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
-|    Exportieren von Daten aus Azure           |    Nein                           |    Nein                                            |    Nein                                    |    Ja                                 |
-|    Verschlüsselung                       |    AES 128-Bit                  |    AES 256-Bit                                   |    AES 256-Bit                           |    AES 128-Bit                         |
-|    Hardware                         |     Von Microsoft bereitgestellt          |    Von Microsoft bereitgestellt                            |    Von Microsoft bereitgestellt                    |    Vom Kunden bereitgestellt                   |
-|    Netzwerkschnittstelle                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    Partnerintegration              |    Einige                         |    [Hoch](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Hoch](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Einige                                |
-|    Versand                         |    Von Microsoft verwaltet            |    Von Microsoft verwaltet                             |    Von Microsoft verwaltet                     |    Vom Kunden verwaltet                    |
-| Verwendung bei Datenbewegungen         |Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Über geografische Grenzen hinweg, z.B. aus den USA in die EU|
-|    Preise                          |    [Preise](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Preise](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Preise](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Preise](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    **Datengröße**                    |    Bis zu 35 TB                 |    Bis zu 80 TB pro Gerät                       |    Bis zu 800 TB pro Gerät               |    Variable                            |
+|    **Datentyp**                    |    Azure-Blobs                  |    Azure-Blobs<br>Azure Files                    |    Azure-Blobs<br>Azure Files            |    Azure-Blobs<br>Azure Files          |
+|    **Formfaktor**                  |    5 SSDs pro Auftrag             |    1 x 22,7 kg Gerät in Desktopgröße pro Auftrag    |    1 x ca. 226,8 kg großes Gerät pro Auftrag    |    Bis zu 10 HDDs/SSDs pro Auftrag        |
+|    **Für Ersteinrichtung benötigte Zeit**           |    Niedrig <br>(15 Min.)            |    Niedrig bis mittel <br> (< 30 Min.)               |    Moderat<br>(1 bis 2 Stunden)               |    Mittel bis schwierig<br>(variabel) |
+|    **Senden von Daten an Azure**           |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
+|    **Exportieren von Daten aus Azure**       |    Nein                           |    Nein                                            |    Nein                                    |    Ja                                 |
+|    **Verschlüsselung**                   |    AES 128-Bit                  |    AES 256-Bit                                   |    AES 256-Bit                           |    AES 128-Bit                         |
+|    **Hardware**                     |     Von Microsoft bereitgestellt          |    Von Microsoft bereitgestellt                            |    Von Microsoft bereitgestellt                    |    Vom Kunden bereitgestellt                   |
+|    **Netzwerkschnittstelle**            |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
+|    **Partnerintegration**          |    Einige                         |    [Hoch](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Hoch](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Einige                                |
+|    **Versand**                     |    Von Microsoft verwaltet            |    Von Microsoft verwaltet                             |    Von Microsoft verwaltet                     |    Vom Kunden verwaltet                    |
+| **Verwendung bei Datenbewegungen**     |Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Über geografische Grenzen hinweg, z.B. aus den USA in die EU|
+|    **Preise**                      |    [Preise](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Preise](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Preise](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Preise](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

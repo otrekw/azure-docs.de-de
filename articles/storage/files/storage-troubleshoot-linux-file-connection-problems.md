@@ -7,18 +7,18 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dddc2eab5004377afd6743c4722498dd5c6e2a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511998"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260003"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
 Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Azure Files, wenn Sie eine Verbindung von Linux-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. 
 
-Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) verwenden, um sicherzustellen, dass der Linux-Client die erforderlichen Voraussetzungen erfüllt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der in diesem Artikel erwähnten Symptome. Das Tool hilft Ihnen dabei, Ihre Umgebung optimal einzurichten. Diese Informationen stehen auch in der [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zur Verfügung. Die Problembehandlung unterstützt Sie beim Behandeln von Verbindungs-, Zuordnungs- und Einbindungsproblemen im Zusammenhang mit Azure Files-Freigaben.
+Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) verwenden, um sicherzustellen, dass der Linux-Client die erforderlichen Voraussetzungen erfüllt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der in diesem Artikel erwähnten Symptome. Das Tool hilft Ihnen dabei, Ihre Umgebung optimal einzurichten. Diese Informationen stehen auch in der [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zur Verfügung. Die Problembehandlung unterstützt Sie beim Behandeln von Verbindungs-, Zuordnungs- und Einbindungsproblemen im Zusammenhang mit Azure Files-Freigaben.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Verbindungsherstellung mit oder Einbindung von Azure-Dateifreigabe nicht möglich
 
@@ -30,12 +30,12 @@ Häufige Ursachen für dieses Problem:
 
 |   | SMB 2.1 <br>(Einbindungen auf virtuellen Computern innerhalb der gleichen Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04+ | 16.04 und höher |
-| RHEL | 7 und höher | 7.5 und höher |
-| CentOS | 7 und höher |  7.5 und höher |
-| Debian | 8 und höher |   |
-| openSUSE | 13.2 und höher | 42.3+ |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 und höher |
+| **Ubuntu Server** | 14.04+ | 16.04 und höher |
+| **RHEL** | 7 und höher | 7.5 und höher |
+| **CentOS** | 7 und höher |  7.5 und höher |
+| **Debian** | 8 und höher |   |
+| **openSUSE** | 13.2 und höher | 42.3+ |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3 und höher |
 
 - Auf dem Client sind keine CIFS-Hilfsprogramme (cifs-utils) installiert.
 - Die mindestens erforderliche SMB-/CIFS-Version 2.1 ist auf dem Client nicht installiert.
@@ -84,9 +84,9 @@ Unter Linux erhalten Sie eine Fehlermeldung, die wie folgt aussieht:
 
 ### <a name="cause"></a>Ursache
 
-Sie haben die obere Grenze der gleichzeitig geöffneten Handles erreicht, die für eine Datei zulässig sind.
+Sie haben die obere Grenze der gleichzeitig geöffneten Handles erreicht, die für eine Datei oder ein Verzeichnis zulässig sind.
 
-Für eine einzelne Datei gilt ein Kontingent von 2.000 geöffneten Handles. Wenn Sie über 2.000 geöffnete Handles verfügen, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass das Kontingent erreicht ist.
+Für eine einzelne Datei oder ein einzelnes Verzeichnis gilt ein Kontingent von 2.000 geöffneten Handles. Wenn Sie über 2.000 geöffnete Handles verfügen, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass das Kontingent erreicht ist.
 
 ### <a name="solution"></a>Lösung
 

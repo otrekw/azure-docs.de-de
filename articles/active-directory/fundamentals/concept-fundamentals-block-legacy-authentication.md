@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196392"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200540"
 ---
 # <a name="blocking-legacy-authentication"></a>Blockieren der Legacyauthentifizierung
  
@@ -32,9 +32,9 @@ Heute stammt der Großteil aller gefährdenden Anmeldeversuche von Legacyauthent
 
 Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, müssen Sie zuerst wissen, ob Ihre Benutzer über Apps verfügen, die die Legacyauthentifizierung verwenden, und wie sich dies auf Ihr gesamtes Verzeichnis auswirkt. Sie können Azure AD-Anmeldungsprotokolle verwenden, um herauszufinden, ob Sie die Legacyauthentifizierung verwenden.
 
-1. Navigieren Sie zu  **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
+1. Navigieren Sie zu **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
 1. Falls die Spalte **Client-App** nicht angezeigt wird, fügen Sie sie durch Klicken auf  **Spalten** > **Client-App** hinzu.
-1. Filtern Sie nach **Client-App** , und aktivieren Sie alle angezeigten Optionen für **Legacy-Authentifizierungsclients**.
+1. Filtern Sie nach**Client-App**, und aktivieren Sie alle angezeigten Optionen für **Legacy-Authentifizierungsclients**.
 1. Filtern Sie nach **Status** > **Erfolg**. 
 1. Erweitern Sie ggf. den Datumsbereich mithilfe des Filters **Datum**.
 

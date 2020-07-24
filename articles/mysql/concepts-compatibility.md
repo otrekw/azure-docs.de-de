@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3cf2603dec7e921159824f565336cd91a575731
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537209"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205655"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
 In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL kompatibel sind.
@@ -45,14 +45,14 @@ Der Kompatibilitätsvorteil erstreckt sich bis in die Datenbank-Verwaltungstools
 
 |                                     | **MySQL Workbench ab Version 6.x** | **Navicat 12** | **PHPMyAdmin ab Version 4.x** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Erstellen, Aktualisieren, Lesen, Schreiben, Löschen | X | X | X |
-| SSL-Verbindung | X | X | X |
-| Automatische Vervollständigung von SQL-Abfragen | X | X |  |
-| Daten importieren und exportieren | X | X | X | 
-| Exportieren in mehreren Formaten | X | X | X |
-| Sichern und Wiederherstellen |  | X |  |
-| Anzeigen von Serverparametern | X | X | X |
-| Anzeigen von Clientverbindungen | X | X | X |
+| **Erstellen, Aktualisieren, Lesen, Schreiben, Löschen** | X | X | X |
+| **SSL-Verbindung** | X | X | X |
+| **Automatische Vervollständigung von SQL-Abfragen** | X | X |  |
+| **Importieren und Exportieren von Daten** | X | X | X |
+| **Exportieren in mehreren Formaten** | X | X | X |
+| **Sichern und Wiederherstellen** |  | X |  |
+| **Anzeigen von Serverparametern** | X | X | X |
+| **Anzeigen von Clientverbindungen** | X | X | X |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

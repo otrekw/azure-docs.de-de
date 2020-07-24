@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982727"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247012"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Grundlegendes zur Verwendung von Zertifikaten durch Azure IoT Edge
 
@@ -25,6 +25,9 @@ In diesem Artikel wird erläutert, wie IoT Edge-Zertifikate in Produktions-, Ent
 ## <a name="iot-edge-certificates"></a>IoT Edge-Zertifikate
 
 Hersteller sind normalerweise nicht die Endbenutzer eines IoT Edge-Geräts. Manchmal besteht die einzige Beziehung zwischen den beiden darin, dass der Endbenutzer oder Operator ein generisches Gerät vom Hersteller erwirbt. In anderen Fällen fertigt der Hersteller unter einem Vertrag ein benutzerdefiniertes Gerät für den Operator. Der Entwurf des IoT Edge-Zertifikats versucht, beide Szenarien in Betracht zu ziehen.
+
+> [!NOTE]
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen. Diese Einschränkung gilt für das Zertifikat der Gerätezertifizierungsstelle, alle Zertifikate in der Vertrauenssammlung und die Geräte-ID-Zertifikate, die für X.509-Bereitstellungsmethoden verwendet werden.
 
 Die folgende Abbildung veranschaulicht die IoT Edge-Verwendung von Zertifikaten. Je nach der Anzahl der beteiligten Entitäten sind null, ein oder mehrere Zwischensignaturzertifikate zwischen dem Zertifikat der Stammzertifizierungsstelle und dem Zertifikat der Gerätezertifizierungsstelle möglich. Hier wird ein Fall gezeigt.
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/27/2020
+ms.date: 7/10/2020
 ms.author: raynew
-ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132415"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219877"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -76,6 +76,7 @@ HTTPS-Proxy | Nein | Nein
 
 
 
+
 ## <a name="azure-vm-network-configuration-after-failover"></a>Netzwerkkonfiguration für virtuellen Azure-Computer (nach Failover)
 
 **Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
@@ -136,11 +137,13 @@ Speicherebene „Heiß“| Nein | Nein
 Blockblobs | Nein | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
 Verschlüsselung ruhender Daten (CMK) <br></br> (Nur für Failover auf verwalteten Datenträgern)| Ja (über PowerShell ab Az-Modulversion 3.3.0) | Ja (über PowerShell ab Az-Modulversion 3.3.0)
+Doppelte Verschlüsselung im Ruhezustand <br></br> (Nur für Failover auf verwalteten Datenträgern) <br></br> Erfahren Sie mehr über unterstützte Regionen für [Windows](../virtual-machines/windows/disk-encryption.md) und [Linux](../virtual-machines/linux/disk-encryption.md). | Ja (über PowerShell ab Az-Modulversion 3.3.0) | Ja (über PowerShell ab Az-Modulversion 3.3.0)
 Storage Premium | Ja | Ja
 Standardspeicher | Ja | Ja
 Import/Export-Dienst | Nein | Nein
 Azure-Speicherkonten mit aktivierter Firewall | Ja. Für Zielspeicher und Cache | Ja. Für Zielspeicher und Cache
 Speicherkonto ändern | Nein. Das betreffende Azure-Zielspeicherkonto kann nach Aktivieren der Replikation nicht geändert werden. Zum Ändern muss die Notfallwiederherstellung deaktiviert und anschließend erneut aktiviert werden. | Nein
+Option für die sichere Übertragung | Ja
 
 
 ## <a name="azure-compute-features"></a>Azure-Computefeatures

@@ -2,13 +2,13 @@
 title: Bewährte Methoden für Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/10/2020
+ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058060"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248916"
 ---
 # <a name="arm-template-best-practices"></a>Bewährte Methoden für ARM-Vorlagen
 
@@ -160,7 +160,7 @@ Die folgenden Informationen können bei der Arbeit mit [Variablen](template-vari
 
 Verwenden Sie die folgenden Richtlinien für die Entscheidung, welche [Abhängigkeiten](define-resource-dependency.md) festgelegt werden sollen:
 
-* Verwenden Sie die **reference**-Funktion, und übergeben Sie den Ressourcennamen, um eine implizite Abhängigkeit zwischen Ressourcen festzulegen, die eine Eigenschaft gemeinsam nutzen müssen. Fügen Sie kein explizites `dependsOn`-Element hinzu, wenn Sie bereits eine implizite Abhängigkeit definiert haben. Dieser Ansatz reduziert das Risiko unnötiger Abhängigkeiten.
+* Verwenden Sie die **reference**-Funktion, und übergeben Sie den Ressourcennamen, um eine implizite Abhängigkeit zwischen Ressourcen festzulegen, die eine Eigenschaft gemeinsam nutzen müssen. Fügen Sie kein explizites `dependsOn`-Element hinzu, wenn Sie bereits eine implizite Abhängigkeit definiert haben. Dieser Ansatz reduziert das Risiko unnötiger Abhängigkeiten. Ein Beispiel für das Festlegen einer impliziten Abhängigkeit finden Sie im Abschnitt zur [impliziten Abhängigkeit](define-resource-dependency.md#reference-and-list-functions).
 
 * Legen Sie für eine untergeordnete Ressource eine Abhängigkeit von der übergeordneten Ressource fest.
 

@@ -3,12 +3,12 @@ title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131090"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206389"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -27,14 +27,13 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 [Rollup 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Rollup 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Rollup 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
-[Rollup 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
 
 > [!NOTE]
 > Updaterollup 44 wird in der Tabelle nicht angezeigt, da keine Updates für die Site Recovery-Anbieter und -Agents enthalten waren.
 
-## <a name="updates-june-2020"></a>Updates (Juni 2020)
+## <a name="updates-july-2020"></a>Updates (Juli 2020)
 
 ### <a name="update-rollup-47"></a>Updaterollup 47
 

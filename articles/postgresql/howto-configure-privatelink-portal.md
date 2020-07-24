@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 6986d5882e4d62ffc2e25b7ea998f46f41c67330
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f05b70c8197283d9fa576d6ea464aa08554dd773
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102462"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206767"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver im Portal
 
@@ -164,7 +164,7 @@ In diesem Abschnitt erstellen Sie einen PostgreSQL-Server und fügen diesem eine
     | ------- | ----- |
     |**NETZWERK**| |
     | Virtuelles Netzwerk| Wählen Sie *MyVirtualNetwork* aus. |
-    | Subnet | Wählen Sie *mySubnet* aus. |
+    | Subnet | Wählen Sie *mySubnet* aus. |
     |**PRIVATE DNS-INTEGRATION**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
     |Private DNS-Zone |Wählen Sie *(New)privatelink.postgres.database.azure.com* aus. |
@@ -209,7 +209,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>Privates Zugreifen auf den PostgreSQL-Server vom virtuellen Computer
 
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
+1. Öffnen Sie auf dem Remotedesktop von *myVM* PowerShell.
 
 2. Geben Sie `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` ein. 
 
@@ -246,7 +246,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie den privaten Endpunkt, den PostgreSQL-Server und den virtuellen Computer nicht mehr benötigen, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
 
-1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus.
+1. Geben Sie oben im Portal die Zeichenfolge *myResourceGroup* ins Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus.
 2. Wählen Sie die Option **Ressourcengruppe löschen**.
 3. Geben Sie „myResourceGroup“ für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 

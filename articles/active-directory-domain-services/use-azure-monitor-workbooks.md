@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733397"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223039"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Überprüfen von Sicherheitsüberwachungsereignissen in Azure Active Directory Domain Services mithilfe von Azure Monitor-Arbeitsmappen
 
@@ -32,8 +32,8 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance] aus.
-* Sicherheitsüberwachungsereignisse, die für Ihre verwaltete Azure Active Directory Domain Services-Domäne aktiviert sind und Daten in einen Log Analytics-Arbeitsbereich streamen.
-    * Falls dies erforderlich ist, [aktivieren Sie Sicherheitsüberwachungen für Azure AD Domain Services][enable-security-audits].
+* Sicherheitsüberwachungsereignisse, die für Ihre verwaltete Domäne aktiviert sind und Daten in einen Log Analytics-Arbeitsbereich streamen.
+    * Sie können bei Bedarf [Sicherheitsüberwachungen in Azure AD DS aktivieren][enable-security-audits].
 
 ## <a name="azure-monitor-workbooks-overview"></a>Übersicht über Azure Monitor-Arbeitsmappen
 
@@ -61,7 +61,9 @@ Führen Sie die folgenden Schritte aus, um auf die Arbeitsmappenvorlage für „
     ![Auswählen der Menüoption „Arbeitsmappen“ im Azure-Portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Wählen Sie **Security Overview Report** (Sicherheitsübersichtsbericht) aus.
-1. Wählen Sie in den Dropdownmenüs oben in der Arbeitsmappe Ihr Azure-Abonnement und dann den Azure Monitor-Arbeitsbereich aus. Wählen Sie einen **Zeitbereich** aus, z. B. *Letzte 7 Tage*.
+1. Wählen Sie in den Dropdownmenüs oben in der Arbeitsmappe Ihr Azure-Abonnement und dann einen Azure Monitor-Arbeitsbereich aus.
+
+    Wählen Sie unter **Zeitbereich** einen Wert aus, etwa *Letzte 7 Tage*, wie im folgenden Beispielscreenshot gezeigt:
 
     ![Auswählen der Menüoption „Arbeitsmappen“ im Azure-Portal](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
@@ -85,7 +87,11 @@ Führen Sie die folgenden Schritte aus, um auf die Arbeitsmappenvorlage für „
 1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie im Menü auf der linken Seite **Überwachung > Arbeitsmappen** aus.
 1. Wählen Sie **Account Activity Report** (Bericht zur Kontoaktivität) aus.
-1. Wählen Sie in den Dropdownmenüs oben in der Arbeitsmappe Ihr Azure-Abonnement und dann den Azure Monitor-Arbeitsbereich aus. Wählen Sie einen **Zeitbereich** aus, z. B. *Letzte 30 Tage*, und legen Sie dann fest, wie die Daten in der **Kachelansicht** dargestellt werden sollen. Sie können nach **Kontobenutzername** filtern, z. B. *felix*, wie im folgenden Beispielbericht dargestellt:
+1. Wählen Sie in den Dropdownmenüs oben in der Arbeitsmappe Ihr Azure-Abonnement und dann einen Azure Monitor-Arbeitsbereich aus.
+
+    Wählen Sie einen **Zeitbereich** aus, z. B. *Letzte 30 Tage*, und legen Sie dann fest, wie die Daten in der **Kachelansicht** dargestellt werden sollen.
+
+    Sie können nach **Kontobenutzername** filtern, z. B. *felix*, wie im folgenden Beispielbericht dargestellt:
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

@@ -1,27 +1,25 @@
 ---
-title: Verwalten von Azure AD-Rollen in Privileged Identity Management (PIM) | Microsoft-Dokumentation
+title: Azure AD-Rollenfeatures in Privileged Identity Management | Microsoft-Dokumentation
 description: Verwalten benutzerdefinierter Azure AD-Rollen für die Zuweisung in Privileged Identity Management (PIM)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
-ms.devlang: na
-ms.topic: how-to
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742860"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256627"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Verwaltungsfunktionen für Azure AD-Rollen in Privileged Identity Management
 
@@ -29,28 +27,30 @@ Die Verwaltungsfunktionen für Azure AD Rollen in Privileged Identity Managemen
 
 Mit dem aktuell eingeführten Update führen wir beide Funktionen in einer einzigen Verwaltungsumgebung zusammen, in der Sie die gleichen Funktionen für Azure AD-Rollen wie für Azure-Ressourcenrollen finden. In diesem Artikel erhalten Sie Informationen zu den aktualisierten Features und sämtlichen Anforderungen.
 
-
 ## <a name="time-bound-assignments"></a>Zeitgebundene Zuweisungen
 
-Zuvor waren in Privileged Identity Management für Azure AD-Rollen Rollenzuweisungen mit zwei möglichen Zuständen bekannt: *berechtigt* und *permanent*. Nun können Sie eine Start- und Endzeit für jeden Zuweisungstyp festlegen. Diese Ergänzung erlaubt vier mögliche Zustände, die Sie einer Zuweisung zuordnen können:
+Bisher gab es zwei mögliche Zustände für Rollenzuweisungen: *Berechtigt* und *Permanent*. Nun können Sie auch eine Start- und Endzeit für jeden Zuweisungstyp festlegen. Diese Ergänzung erlaubt vier mögliche Zustände, die Sie einer Zuweisung zuordnen können:
 
 - Permanent berechtigt
 - Permanent aktiv
-- Berechtigt, mit angegebenen Start-/Enddaten für die Zuweisung
-- Aktiv, mit angegebenen Start-/Enddaten für die Zuweisung
+- Berechtigt, mit angegebenen Start- und Enddaten für die Zuweisung
+- Aktiv, mit angegebenen Start- und Enddaten für die Zuweisung
 
 In vielen Fällen können Sie auch dann, wenn Sie für Benutzer nicht jedes Mal Berechtigungen zuweisen und Rollen aktivieren möchten, Ihre Azure AD-Organisation schützen, indem Sie eine Ablaufzeit für Zuweisungen festlegen. Wenn Sie z. B. über einige temporäre Benutzer verfügen, die berechtigt sind, sollten Sie eine Ablaufzeit festlegen, damit diese automatisch aus der Rollenzuweisung entfernt werden, wenn ihre Arbeit erledigt ist.
 
 ## <a name="new-role-settings"></a>Neue Rolleneinstellungen
 
-Wir fügen außerdem neue Einstellungen für Azure AD-Rollen hinzu. Zuvor konnten Sie nur Aktivierungseinstellungen für einzelne Rollen konfigurieren. Das heißt, dass Aktivierungseinstellungen wie Anforderungen für die mehrstufige Authentifizierung und Incident-/Anforderungstickets auf alle Benutzer angewandt wurden, die für eine bestimmte Rolle berechtigt waren. Nun können Sie konfigurieren, ob ein einzelner Benutzer eine mehrstufige Authentifizierung ausführen muss, bevor er eine Rolle aktivieren kann. Außerdem haben Sie mehr Kontrolle über Ihre Privileged Identity Management-E-Mails zu bestimmten Rollen.
+Wir fügen außerdem neue Einstellungen für Azure AD-Rollen hinzu.
+
+- **Zuvor** konnten Sie nur Aktivierungseinstellungen für einzelne Rollen konfigurieren. Das heißt, dass Aktivierungseinstellungen wie Anforderungen für die mehrstufige Authentifizierung und Incident-/Anforderungstickets auf alle Benutzer angewandt wurden, die für eine bestimmte Rolle berechtigt waren.
+- **Nun** können Sie konfigurieren, ob ein einzelner Benutzer eine mehrstufige Authentifizierung ausführen muss, bevor er eine Rolle aktivieren kann. Außerdem haben Sie mehr Kontrolle über Ihre Privileged Identity Management-E-Mails zu bestimmten Rollen.
 
 ## <a name="extend-and-renew-assignments"></a>Verlängern und Erneuern von Zuweisungen
 
 Wenn Sie sich mit der zeitgebundenen Zuweisung vertraut machen, fragen Sie sich vielleicht, was passiert, wenn eine Rolle abgelaufen ist? In dieser neuen Version bieten wir zwei Optionen für dieses Szenario:
 
-- Verlängern: Wenn eine Rollenzuweisung demnächst abläuft, kann der Benutzer über Privileged Identity Management eine Verlängerung für diese Rollenzuweisung anfordern.
-- Erneuern: Wenn eine Rollenzuweisung abgelaufen ist, kann der Benutzer über Privileged Identity Management eine Erneuerung für diese Rollenzuweisung anfordern.
+- **Erweitern**: Wenn eine Rollenzuweisung demnächst abläuft, kann der Benutzer über Privileged Identity Management eine Verlängerung für diese Rollenzuweisung anfordern.
+- **Verlängern:** Wenn eine Rollenzuweisung abgelaufen ist, kann der Benutzer über Privileged Identity Management eine Verlängerung für diese Rollenzuweisung anfordern.
 
 Diese beiden vom Benutzer initiierten Aktionen erfordern eine Genehmigung von einem globalen Administrator oder einem Administrator für privilegierte Rollen. Administratoren müssen sich also nicht mehr um die Verwaltung von ablaufenden Zuweisungen kümmern. Sie müssen nur auf die Anforderungen zur Verlängerung oder Erneuerung warten und sie genehmigen, wenn die Anforderung berechtigt ist.
 

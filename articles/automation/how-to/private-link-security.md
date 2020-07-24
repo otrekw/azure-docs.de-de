@@ -4,24 +4,27 @@ description: Verwenden von Azure Private Link zum sicheren Verbinden von Netzwer
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: fa473591355ef9e1ee582dd9c9b820dfa2f93f36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268649"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207280"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation (Vorschauversion)
 
 Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNet und bindet den Automation-Dienst dadurch in Ihr VNet ein. Der Netzwerkdatenverkehr zwischen den Computern im VNet und dem Automation-Konto wird über das VNet und eine private Verbindung im Microsoft-Backbone-Netzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt.
 
-Angenommen, Sie verfügen über ein VNet, in dem der ausgehende Internetzugriff deaktiviert ist. Sie möchten jedoch privat auf Ihr Automation-Konto zugreifen und Automation-Funktionen wie Webhooks, State Configuration und Runbookaufträge für Hybrid Runbook Worker verwenden. Außerdem möchten Sie, dass Benutzer nur über das VNet auf das Automation-Konto zugreifen können. Dies kann erreicht werden, indem Sie private Endpunkte bereitstellen.
+Angenommen, Sie verfügen über ein VNet, in dem der ausgehende Internetzugriff deaktiviert ist. Sie möchten jedoch privat auf Ihr Automation-Konto zugreifen und Automation-Funktionen wie Webhooks, State Configuration und Runbookaufträge für Hybrid Runbook Worker verwenden. Außerdem möchten Sie, dass Benutzer nur über das VNet auf das Automation-Konto zugreifen können.  Diese Ziele werden durch die Bereitstellung eines privaten Endpunkts erreicht.
 
-In diesem Artikel wird erläutert, wann und wie Sie einen privaten Endpunkt mit Ihrem Automation-Konto einrichten.
+In diesem Artikel wird erläutert, wann und wie Sie einen privaten Endpunkt mit Ihrem Automation-Konto (Vorschauversion) einrichten.
 
 ![Konzeptionelle Übersicht von Private Link für Azure Automation](./media/private-link-security/private-endpoints-automation.png)
+
+>[!NOTE]
+> Die Unterstützung für Private Link mit Azure Automation (Vorschauversion) ist nur in Azure Commercial-Clouds und Clouds der US-Regierungsbehörden verfügbar.
 
 ## <a name="advantages"></a>Vorteile
 
@@ -46,9 +49,11 @@ Azure Automation Private Link stellt eine Verbindung zwischen einem oder mehrere
 
 Nachdem Sie private Endpunkte für Automation erstellt haben, wird jede der öffentlichen Automation-URLs, die Sie oder ein Computer direkt kontaktieren können, einem privaten Endpunkt in Ihrem VNet zugeordnet.
 
+Im Rahmen der Vorschauversion kann ein Automation-Konto nicht auf Azure-Ressourcen zugreifen, die mithilfe eines privaten Endpunkts geschützt werden. Beispiele: Azure Key Vault, Azure SQL, Azure Storage-Konto usw.
+
 ### <a name="webhook-scenario"></a>Webhook-Szenario
 
-Sie können Runbooks starten, indem Sie einen POST in der Webhook-URL ausführen. Die URL sieht beispielsweise wie folgt aus: `https://<automationAccountId>.webhooks. <region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+Sie können Runbooks starten, indem Sie einen POST in der Webhook-URL ausführen. Die URL sieht beispielsweise wie folgt aus: `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`.
 
 ### <a name="state-configuration-agentsvc-scenario"></a>State Configuration-Szenario (agentsvc)
 
@@ -60,11 +65,11 @@ Die URL für einen öffentlichen und privaten Endpunkt wäre identisch, würde a
 
 ## <a name="planning-based-on-your-network"></a>Planung basierend auf dem Netzwerk
 
-Bevor Sie Ihre Automation-Kontoressource einrichten, überprüfen Sie Ihre Anforderungen an die Netzwerkisolation. Bewerten Sie den Zugriff Ihrer virtuellen Netzwerke auf das öffentliche Internet sowie die Zugriffsbeschränkungen für Ihr Automation-Konto (einschließlich des Einrichtens eines Private Link-Gruppenbereichs für Azure Monitor-Protokolle, falls diese in Ihr Automation-Konto integriert sind).
+Bevor Sie Ihre Automation-Kontoressource einrichten, überprüfen Sie Ihre Anforderungen an die Netzwerkisolation. Bewerten Sie den Zugriff Ihrer virtuellen Netzwerke auf das öffentliche Internet sowie die Zugriffsbeschränkungen für Ihr Automation-Konto (einschließlich des Einrichtens eines Private Link-Gruppenbereichs für Azure Monitor-Protokolle, falls diese in Ihr Automation-Konto integriert sind). Nehmen Sie außerdem eine Überprüfung der [DNS-Einträge](./automation-region-dns-records.md) des Automation-Diensts in Ihren Plan auf, um sicherzustellen, dass die unterstützten Features ohne Probleme funktionieren.
 
 ### <a name="connect-to-a-private-endpoint"></a>Herstellen einer Verbindung mit einem privaten Endpunkt
 
-Erstellen Sie einen privaten Endpunkt, um eine Verbindung mit unserem Netzwerk herzustellen. Sie können diese Aufgabe im [Private Link-Center des Azure-Portals](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints) ausführen. Nachdem Ihre Änderungen an „publicNetworkAccess“ und Private Link übernommen wurden, kann es bis zu 35 Minuten dauern, bis sie wirksam werden.
+Erstellen Sie einen privaten Endpunkt, um eine Verbindung mit unserem Netzwerk herzustellen. Sie können ihn im [Private Link-Center des Azure-Portals](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints) erstellen. Nachdem Ihre Änderungen an „publicNetworkAccess“ und Private Link übernommen wurden, kann es bis zu 35 Minuten dauern, bis sie wirksam werden.
 
 In diesem Abschnitt erstellen Sie einen privaten Endpunkt für Ihre Automation-Konto.
 
@@ -72,7 +77,7 @@ In diesem Abschnitt erstellen Sie einen privaten Endpunkt für Ihre Automation-K
 
 2. Wählen Sie unter **Private Link-Center – Übersicht** bei der Option **Private Verbindung mit einem Dienst herstellen** den Befehl **Starten** aus.
 
-3. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
+3. Geben Sie unter **Virtuellen Computer erstellen – Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -86,7 +91,7 @@ In diesem Abschnitt erstellen Sie einen privaten Endpunkt für Ihre Automation-K
 
 4. Klicken Sie auf **Weiter: Ressource** aus.
 
-5. Geben Sie unter **Privaten Endpunkt erstellen – Ressource** diese Informationen ein, oder wählen Sie sie aus:
+5. Geben Sie unter **Privaten Endpunkt erstellen – Ressource** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -94,12 +99,12 @@ In diesem Abschnitt erstellen Sie einen privaten Endpunkt für Ihre Automation-K
     | Subscription| Wählen Sie Ihr Abonnement aus. |
     | Ressourcentyp | Wählen Sie **Microsoft.Automation/automationAccounts** aus. |
     | Resource |Wählen Sie *myAutomationAccount* aus.|
-    |Zielunterressource |Wählen Sie je nach Ihrem Szenario *Webhook* oder *DSCAndHybridWorker* aus.|
+    |Unterressource des Ziels |Wählen Sie je nach Ihrem Szenario *Webhook* oder *DSCAndHybridWorker* aus.|
     |||
 
 6. Klicken Sie auf **Weiter: Konfiguration** aus.
 
-7. Geben Sie unter **Privaten Endpunkt erstellen – Konfiguration** die folgenden Informationen ein, oder wählen Sie sie aus:
+7. Geben Sie unter **Privaten Endpunkt erstellen – Konfiguration** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -141,7 +146,7 @@ $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 
 ## <a name="dns-configuration"></a>DNS-Konfiguration
 
-Wenn Sie eine Verbindung mit einer Private Link-Ressource über einen FQDN als Teil der Verbindungszeichenfolge herstellen, ist es wichtig, Ihre DNS-Einstellungen so zu konfigurieren, dass sie in die zugewiesene private IP-Adresse aufgelöst werden. Bestehende Azure-Dienste verfügen möglicherweise bereits über eine DNS-Konfiguration, die beim Herstellen einer Verbindung über einen öffentlichen Endpunkt verwendet werden kann. Diese muss überschrieben werden, um eine Verbindung mithilfe Ihres privaten Endpunkts herzustellen.
+Wenn Sie eine Verbindung mit einer Private Link-Ressource über einen voll qualifizierten Domänennamen (FQDN) als Teil der Verbindungszeichenfolge herstellen, ist es wichtig, Ihre DNS-Einstellungen so zu konfigurieren, dass sie in die zugewiesene private IP-Adresse aufgelöst werden. Bestehende Azure-Dienste verfügen möglicherweise bereits über eine DNS-Konfiguration, die beim Herstellen einer Verbindung über einen öffentlichen Endpunkt verwendet werden kann. Ihre DNS-Konfiguration sollte überprüft und aktualisiert werden, um eine Verbindung mithilfe Ihres privaten Endpunkts herzustellen.
 
 Die Netzwerkschnittstelle, die dem privaten Endpunkt zugeordnet ist, enthält alle Informationen, die zur Konfiguration Ihres DNS erforderlich sind, einschließlich FQDN und privater IP-Adressen, die einer bestimmten Private Link-Ressource zugewiesen wurden.
 

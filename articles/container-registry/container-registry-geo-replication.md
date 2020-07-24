@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508793"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247131"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -28,7 +28,7 @@ Eine Registrierung mit Georeplikation bietet folgende Vorteile:
 >
 
 ## <a name="example-use-case"></a>Beispiel eines Anwendungsfalls
-Contoso betreibt eine öffentlich zugängliche Website in den USA, Kanada und Europa. Um diese Märkte mit lokalen und netzwerknahen Inhalten zu bedienen, betreibt Contoso [Azure Kubernetes Service](/azure/aks/)-Cluster (AKS) in den Regionen „USA, Westen“, „USA, Osten“, „Kanada, Mitte“ und „Europa, Westen“. Die Websiteanwendung, die als Docker-Image bereitgestellt ist, verwendet in allen Regionen den gleichen Code und das gleiche Image. Der für die jeweilige Region lokale Inhalt wird aus einer Datenbank abgerufen, die in jeder Region individuell bereitgestellt wird. Jede regionale Bereitstellung hat eine eigene Konfiguration für Ressourcen wie die lokale Datenbank.
+Contoso betreibt eine öffentlich zugängliche Website in den USA, Kanada und Europa. Um diese Märkte mit lokalen und netzwerknahen Inhalten zu bedienen, betreibt Contoso [Azure Kubernetes Service](../aks/index.yml)-Cluster (AKS) in den Regionen „USA, Westen“, „USA, Osten“, „Kanada, Mitte“ und „Europa, Westen“. Die Websiteanwendung, die als Docker-Image bereitgestellt ist, verwendet in allen Regionen den gleichen Code und das gleiche Image. Der für die jeweilige Region lokale Inhalt wird aus einer Datenbank abgerufen, die in jeder Region individuell bereitgestellt wird. Jede regionale Bereitstellung hat eine eigene Konfiguration für Ressourcen wie die lokale Datenbank.
 
 Das Bereitstellungsteam befindet sich in Seattle im US-Bundesstaat Washington und nutzt das Rechenzentrum USA, Westen.
 
@@ -95,7 +95,7 @@ ACR beginnt, Images in den konfigurierten Replikaten zu synchronisieren. Sobald 
 * Wenn Sie mithilfe von Push oder Pull Images in eine georeplizierte Registrierung oder daraus übertragen, sendet der Azure Traffic Manager die Anforderung im Hintergrund an die Registrierung in der im Sinne der Netzwerklatenz nächstgelegenen Region.
 * Nachdem Sie ein Image oder Tag mithilfe von Push in die nächstgelegene Region übertragen haben, benötigt Azure Container Registry etwas Zeit, um die Manifeste und Ebenen in die von Ihnen ausgewählten verbleibenden Regionen zu replizieren. Für die Replikation größerer Images wird mehr Zeit benötigt als für kleinere Images. Images und Tags werden anhand eines Modells für letztliche Konsistenz über die Replikationsregionen hinweg synchronisiert.
 * Um Workflows zu verwalten, die von der Pushübertragung von Updates in eine georeplizierte Registrierung abhängen, wird die Konfiguration von [Webhooks](container-registry-webhook.md) zur Antwort auf die Pushereignisse empfohlen. Sie können regionale Webhooks innerhalb einer georeplizierten Registrierung einrichten, um Pushereignisse nachzuverfolgen, wenn diese über die georeplizierten Regionen hinweg abgeschlossen werden.
-* Zum Verarbeiten von Blobdaten, die Inhaltsebenen darstellen, verwendet die Azure Container Registry Datenendpunkte. Sie können [dedizierte Datenendpunkte](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) für Ihre Registrierung in jeder georeplizierten Region Ihrer Registrierung aktivieren. Diese Endpunkte ermöglichen die Konfiguration streng verteilter Firewallzugriffsregeln.
+* Zum Verarbeiten von Blobdaten, die Inhaltsebenen darstellen, verwendet Azure Container Registry Datenendpunkte. Sie können [dedizierte Datenendpunkte](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) für Ihre Registrierung in jeder georeplizierten Region Ihrer Registrierung aktivieren. Diese Endpunkte ermöglichen die Konfiguration streng verteilter Firewallzugriffsregeln.
 * Wenn Sie einen [privaten Link](container-registry-private-link.md) für Ihre Registrierung über private Endpunkte in einem virtuellen Netzwerk konfigurieren, werden standardmäßig in jeder der georeplizierten Regionen dedizierte Datenendpunkte aktiviert. 
 
 ## <a name="delete-a-replica"></a>Löschen eines Replikats
