@@ -6,7 +6,7 @@
       href: overview.md
 - name: Beispiele
   items:
-    - name: Azure Policy-Integrationen
+    - name: Integrierte Azure Policy-Aktionen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -25,6 +25,11 @@
       href: extension-resource-types.md
     - name: Grenzwert für Ressourceninstanzen
       href: resources-without-resource-group-limit.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Anleitung
   items:
     - name: 'Verschieben: Ressourcengruppen/Abonnements'
