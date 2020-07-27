@@ -351,13 +351,15 @@
           items:
             - name: Erstellen von Warnungen zu Metriken
               href: howto-hyperscale-alert-on-metric.md
+            - name: Zugriff auf Datenbankprotokolle
+              href: howto-hyperscale-logging.md
         - name: Problembehandlung
           items:
             - name: Beheben von Verbindungsproblemen
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/postgres
     - name: REST-API
       href: /rest/api/postgresql

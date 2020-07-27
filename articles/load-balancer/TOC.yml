@@ -18,17 +18,19 @@
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Lastenausgleich erstellen – ARM-Vorlage
       href: quickstart-load-balancer-standard-public-template.md
-    - name: Internen Lastenausgleich erstellen – Portal
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: Internen Lastenausgleich erstellen – Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: Internen Lastenausgleich erstellen – Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: Internen Lastenausgleich erstellen – ARM-Vorlage
-      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Tutorials
   items:
+    - name: Interner Lastenausgleich
+      items:
+        - name: Internen Lastenausgleich erstellen – Portal
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: Internen Lastenausgleich erstellen – Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: Internen Lastenausgleich erstellen – Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Internen Lastenausgleich erstellen – ARM-Vorlage
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: Back-End-Pool-Verwaltung
       href: backend-pool-management.md
+    - name: Load Balancer Standard und Virtual Machine Scale Sets
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Anleitung
   items:
     - name: VM-Skalierungsgruppen

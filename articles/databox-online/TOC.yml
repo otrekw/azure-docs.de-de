@@ -7,7 +7,7 @@
       items:
         - name: Was ist Data Box Gateway?
           href: data-box-gateway-overview.md
-    - name: Tutorials
+    - name: Lernprogramme
       items:
         - name: 1 – Vorbereiten
           href: data-box-gateway-deploy-prep.md
@@ -123,8 +123,10 @@
           href: azure-stack-edge-contact-microsoft-support.md
         - name: Überwachen
           href: azure-stack-edge-monitor.md
-        - name: Zurückgeben oder Ersetzen eines Geräts
+        - name: Zurückgeben des Geräts
           href: azure-stack-edge-return-device.md
+        - name: Gerät ersetzen
+          href: azure-stack-edge-replace-device.md
     - name: Versionshinweise
       items:
         - name: '2007: Aktuell'
@@ -137,6 +139,14 @@
           href: data-box-gateway-1905-release-notes.md
         - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
           href: data-box-gateway-release-notes.md
+    - name: Verweis
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST-API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
 - name: Ressourcen
   items:
     - name: "Beispiele für ein Azure Stack\_Edge-C#-Modul (.NET)"

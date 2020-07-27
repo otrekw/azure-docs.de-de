@@ -44,7 +44,7 @@
       href: migrate-to-policy.md
     - name: DNS-Einstellungen
       href: dns-settings.md
-    - name: Bereitstellen mehrerer öffentlicher IPs
+    - name: 'Bereitstellen mehrerer öffentlicher IP-Adressen: PowerShell'
       href: multiple-public-ip-powershell.md
 - name: Verweis
   items:

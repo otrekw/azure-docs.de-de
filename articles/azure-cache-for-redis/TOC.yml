@@ -59,13 +59,15 @@
     - name: Planen
       items:
         - name: Auswählen einer Cacheebene
-          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
+          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
         - name: Verteilen Ihres Caches mit Clustering
           href: cache-how-to-premium-clustering.md
         - name: Einrichten eines persistenten Cache mit Redis-Datenpersistenz
           href: cache-how-to-premium-persistence.md
         - name: Schützen Ihres Caches mit einem virtuellen Netzwerk
           href: cache-how-to-premium-vnet.md
+        - name: Herstellen einer privaten Verbindung mit einem Cache
+          href: cache-private-link.md
         - name: Einrichten der Georeplikation
           href: cache-how-to-geo-replication.md
         - name: Sparen mit reservierter Kapazität
@@ -101,9 +103,9 @@
         - name: Importieren/Exportieren von Daten
           href: cache-how-to-import-export-data.md
         - name: Reboot
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: Planen von Updates
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: Konfigurieren des Zugriffs für „redis-cli.exe“
           href: cache-how-to-redis-cli-tool.md
         - name: "Entfernen von TLS\_1.0 und\_1.1"
@@ -113,7 +115,7 @@
         - name: Überwachen im Azure-Portal
           href: cache-how-to-monitor.md
         - name: Festlegen von Warnungen für Ausnahmen
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
     - name: Diagnostizieren und Behandeln von Problemen
       items:
         - name: Problembehandlung für Redis-Server
@@ -136,7 +138,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
     - name: Azure PowerShell
       href: /powershell/module/az.rediscache
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/redis
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis

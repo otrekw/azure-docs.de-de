@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: Entscheidungswaldregression
           href: decision-forest-regression.md
+        - name: Schnelle gesamtstrukturbasierte Quantilregression
+          href: fast-forest-quantile-regression.md
         - name: Lineare Regression
           href: linear-regression.md
         - name: Regression mit neuronalen Netzwerken
           href: neural-network-regression.md
+        - name: Poisson-Regression
+          href: poisson-regression.md
     - name: Clustering
       items:
         - name: K-Means Clustering

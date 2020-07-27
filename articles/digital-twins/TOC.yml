@@ -6,7 +6,7 @@
       href: overview.md
     - name: Unterschiede zur vorherigen Version
       href: overview-differences.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Codieren einer Client-App
       href: tutorial-code.md
@@ -40,9 +40,11 @@
       items:
         - name: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle
           href: how-to-use-cli.md
-        - name: Erstellen einer Azure Digital Twins-Instanz
-          href: how-to-set-up-instance.md
-        - name: Authentifizieren einer Clientanwendung
+        - name: Einrichten einer Instanz und der Authentifizierung (per Skript)
+          href: how-to-set-up-instance-scripted.md
+        - name: Einrichten einer Instanz und der Authentifizierung (per manuell)
+          href: how-to-set-up-instance-manual.md
+        - name: Schreiben von App-Authentifizierungscode
           href: how-to-authenticate-client.md
     - name: Entwerfen von Modellen
       items:
@@ -50,6 +52,8 @@
           href: how-to-manage-model.md
         - name: Analysieren und Validieren von Modellen
           href: how-to-use-parser.md
+        - name: Hinzufügen von Tags
+          href: how-to-use-tags.md
     - name: Verwenden einer Liveausführungsumgebung
       items:
         - name: Verwalten digitaler Zwillinge
@@ -72,10 +76,16 @@
           href: how-to-manage-routes.md
         - name: Integration in Azure Maps
           href: how-to-integrate-maps.md
+        - name: Integration in Azure Time Series Insights
+          href: how-to-integrate-time-series-insights.md
     - name: Problembehandlung
       items:
         - name: Bekannte Probleme
           href: troubleshoot-known-issues.md
+        - name: Problemlösung
+          items:
+            - name: 403 (Unzulässig)
+              href: troubleshoot-error-403.md
 - name: Verweis
   items:
     - name: Grenzwerte des Digital Twins-Diensts
@@ -145,7 +155,7 @@
         - name: Azure Digital Twins-Beispiele
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
         - name: Azure Digital Twins-Explorer (Beispiel)
-          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL-Validierungssteuerelement (Beispiel)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
     - name: Azure-Tools

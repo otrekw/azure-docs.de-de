@@ -19,7 +19,7 @@
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: Beispiele
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -81,24 +81,44 @@
     - name: REST
       href: /rest/api/resources/
     - name: Benutzeroberflächenfunktionen
-      href: create-uidefinition-functions.md
+      items:
+        - name: Alle Funktionen
+          href: create-uidefinition-functions.md
+        - name: Auflistungsfunktionen
+          href: create-ui-definition-collection-functions.md
+        - name: Konvertierungsfunktionen
+          href: create-ui-definition-conversion-functions.md
+        - name: Datumsfunktionen
+          href: create-ui-definition-date-functions.md
+        - name: Logische Funktionen
+          href: create-ui-definition-logical-functions.md
+        - name: Mathematische Funktionen
+          href: create-ui-definition-math-functions.md
+        - name: Verweisfunktionen
+          href: create-ui-definition-referencing-functions.md
+        - name: Zeichenfolgenfunktionen
+          href: create-ui-definition-string-functions.md
     - name: Benutzeroberflächenelemente
       href: create-uidefinition-elements.md
       items:
         - name: Allgemein
           items:
+            - name: CheckBox
+              href: microsoft-common-checkbox.md
             - name: DropDown
               href: microsoft-common-dropdown.md
             - name: FileUpload
               href: microsoft-common-fileupload.md
             - name: InfoBox
               href: microsoft-common-infobox.md
-            - name: OptionsGroup
+            - name: OptionsGroup (Optionsfeld)
               href: microsoft-common-optionsgroup.md
             - name: PasswordBox
               href: microsoft-common-passwordbox.md
             - name: '`Section`'
               href: microsoft-common-section.md
+            - name: Schieberegler
+              href: microsoft-common-slider.md
             - name: TagsByResource
               href: microsoft-common-tagsbyresource.md
             - name: TextBlock
@@ -123,6 +143,12 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
+        - name: Lösungen
+          items:
+            - name: ArmApiControl
+              href: microsoft-solutions-armapicontrol.md
+            - name: ResourceSelector
+              href: microsoft-solutions-resourceselector.md
         - name: Storage
           items:
             - name: MultiStorageAccountCombo

@@ -280,6 +280,8 @@
           href: storage-blob-pageblob-overview.md
         - name: Statische Websites
           href: storage-blob-static-website.md
+        - name: "Unterstützung des NFS\_3.0-Protokolls"
+          href: network-file-system-protocol-support.md
     - name: Anleitung
       items:
         - name: Erstellen und Verwalten von Speicherkonten
@@ -469,12 +471,12 @@
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Einbinden eines Blobspeichers als Dateisystem unter Linux
+            - name: Einbinden von Speicher aus Linux mithilfe von NFS
+              href: network-file-system-protocol-support-how-to.md
+            - name: Einbinden von Speicher aus Linux mithilfe von blobfuse
               href: storage-how-to-mount-container-linux.md
             - name: Übertragen von Daten mit der Datenverschiebungsbibliothek
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Speichermigration – häufig gestellte Fragen
-              href: ../common/storage-migration-faq.md
         - name: Entwickeln mit Blobs
           items:
             - name: C++
@@ -662,6 +664,9 @@
               href: security-recommendations.md
             - name: Zugriffssteuerung (Verzeichnisse und Dateien)
               href: data-lake-storage-access-control.md
+            - name: Sicherheitskontrollen von Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Kompatibilität
           items:
             - name: Zugriff auf mehrere Protokolle

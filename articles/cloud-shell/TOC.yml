@@ -8,7 +8,7 @@
       href: quickstart-powershell.md
 - name: Features und Tools
   href: features.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Ansible
       items:
@@ -20,7 +20,7 @@
       items:
         - name: Erstellen eines Ausführungsplans
           href: example-terraform-bash.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: PowerShell Cloud Shell für Windows-Benutzer
       href: cloud-shell-windows-users.md
@@ -32,13 +32,15 @@
       href: msi-authorization.md
     - name: Einbetten von Cloud Shell
       href: embed-cloud-shell.md
+    - name: Cloud Shell in Azure Virtual Network
+      href: private-vnet.md
 - name: Verwenden des Cloud Shell-Editors
   href: using-cloud-shell-editor.md
 - name: Problembehandlung und Einschränkungen
   href: troubleshooting.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure
     - name: Azure PowerShell
       href: /powershell/azure

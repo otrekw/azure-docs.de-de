@@ -124,6 +124,9 @@
           href: network-security.md
         - name: Integrierte Sicherheitskontrollen
           href: event-hubs-security-controls.md
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
           href: security-baseline.md
     - name: Leitfaden zum AMQP 1.0-Protokoll
@@ -196,7 +199,7 @@
         - name: Einrichten von Diagnoseprotokollen
           href: event-hubs-diagnostic-logs.md
         - name: Streamen von Azure-Diagnosedaten mit Event Hubs
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: Automatisches Skalieren von Durchsatzeinheiten
           href: event-hubs-auto-inflate.md
         - name: Event Hubs-Verwaltungsbibliotheken
@@ -289,6 +292,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: Kontingente
       href: event-hubs-quotas.md
+    - name: Apache Kafka-Konfigurationen
+      href: apache-kafka-configurations.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

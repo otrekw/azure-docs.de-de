@@ -18,6 +18,8 @@
   items:
     - name: "Erstellen eines privaten Azure Red Hat OpenShift\_4-Clusters"
       href: howto-create-private-cluster-4x.md
+    - name: "Aktualisieren des Pull-Geheimnisses für einen Azure Red Hat OpenShift\_4-Cluster"
+      href: howto-add-update-pull-secret.md
     - name: "Konfigurieren der DNS-Weiterleitung für einen Azure Red Hat OpenShift\_4-Cluster"
       href: dns-forwarding.md
     - name: "Konfigurieren von Azure Active Directory-Authentifizierung für einen Azure Red Hat OpenShift\_4-Cluster"
@@ -67,6 +69,10 @@
               href: cluster-administration-cluster-admin-role.md
             - name: "2. Verwalten von Einschränkungen des Sicherheitskontexts in Azure Red Hat OpenShift\_3.11"
               href: cluster-administration-security-context-constraints.md
+- name: Konzepte
+  items:
+    - name: "Netzwerke in Azure Red Hat OpenShift\_4-Clustern"
+      href: concepts-networking.md
 - name: Verweis
   items:
     - name: Azure Red Hat OpenShift-CLI

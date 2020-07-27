@@ -60,6 +60,8 @@
         - name: Ihre Marketplace-Vorteile
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Vorteil eines Prepaidtarifs für den Azure-Verbrauch
+              href: ./azure-consumption-commitment-benefit.md
             - name: Partner-Engagement für Co-Selling
               href: ./marketplace-co-sell.md
             - name: Bevorzugte Lösungen

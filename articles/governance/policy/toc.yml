@@ -93,9 +93,14 @@
     - name: Entwerfen von Workflows für Policy-as-Code
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
-    - name: Azure Policy für Kubernetes (Vorschauversion)
-      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
-      href: ./concepts/policy-for-kubernetes.md
+    - name: Kubernetes-Integration
+      items:
+        - name: Azure Policy für Kubernetes (Vorschauversion)
+          displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+          href: ./concepts/policy-for-kubernetes.md
+        - name: Sichern von Pods mit Azure Policy (Vorschau)
+          displayName: 'aks, psp, rego, opa'
+          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Überwachen virtueller Computer mit der Gastkonfiguration
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

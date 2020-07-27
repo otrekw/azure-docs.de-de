@@ -68,8 +68,8 @@
           href: url-route-overview.md
         - name: Umleitung
           href: redirect-overview.md
-        - name: Erneutes Generieren von HTTP-Headern
-          href: rewrite-http-headers.md
+        - name: Erneutes Generieren von HTTP-Headern und der URL
+          href: rewrite-http-headers-url.md
     - name: SSL
       items:
         - name: SSL-Terminierung und End-to-End-SSL
@@ -198,14 +198,20 @@
               href: redirect-internal-site-cli.md
         - name: Umleiten von Webdatenverkehr mithilfe von Azure PowerShell
           href: tutorial-url-redirect-powershell.md
-    - name: Erneutes Generieren von HTTP-Headern
+    - name: Erneutes Generieren von HTTP-Headern und der URL
       items:
-        - name: Azure-Portal
-          href: rewrite-http-headers-portal.md
-        - name: Azure PowerShell
-          href: add-http-header-rewrite-rule-powershell.md
-        - name: Erstellen und erneutes Generieren von HTTP-Headern
-          href: tutorial-http-header-rewrite-powershell.md
+        - name: Erneutes Generieren von Headern
+          items:
+            - name: Azure-Portal
+              href: rewrite-http-headers-portal.md
+            - name: Azure PowerShell
+              href: add-http-header-rewrite-rule-powershell.md
+            - name: Erstellen und erneutes Generieren von HTTP-Headern
+              href: tutorial-http-header-rewrite-powershell.md
+        - name: URL Rewrite
+          items:
+            - name: Azure-Portal
+              href: rewrite-url-portal.md
     - name: Konfigurieren von App Service-Web-Apps und mehrinstanzenfähigen Diensten
       items:
         - name: Portal
@@ -249,7 +255,7 @@
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api
     - name: Java

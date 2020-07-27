@@ -1,20 +1,28 @@
 - name: Allgemein
   href: index.yml
 - name: Übersicht
-  expanded: true
   items:
     - name: Informationen zu Azure Key Vault
       href: overview.md
     - name: 'Informationen zu Schlüsseln, Geheimnissen und Zertifikaten'
       href: about-keys-secrets-certificates.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Befehlszeilenschnittstelle (CLI)
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: Portal
+      href: quick-create-portal.md
 - name: Tutorials
   items:
     - name: Virtueller Azure-Computer
       items:
-        - name: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in .NET
-          href: tutorial-net-windows-virtual-machine.md
-        - name: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in Python
-          href: tutorial-python-windows-virtual-machine.md
+        - name: Verwenden von Azure Key Vault mit einem virtuellen Windows in .NET
+          href: tutorial-net-virtual-machine.md
+        - name: Verwenden von Azure Key Vault mit einem virtuellen Windows in Python
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes Service
       items:
         - name: Integrieren von Azure Key Vault mit Kubernetes
@@ -117,15 +125,11 @@
     - name: Verschieben von Key Vault
       items:
         - name: Verschieben von Key Vault in eine andere Ressourcengruppe
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: Verschieben von Key Vault in ein anderes Abonnement
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: Verschieben von Key Vault in eine andere Region
-          href: keyvault-moveregion.md
-    - name: Problembehandlung
-      items:
-        - name: Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: Verweis
   items:
     - name: 'REST-API-Fehlercodes: Azure Key Vault'

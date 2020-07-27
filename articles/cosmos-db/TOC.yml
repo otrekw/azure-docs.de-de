@@ -1104,6 +1104,8 @@
       items:
         - name: Wiederherstellen von Daten aus einer Sicherung
           href: how-to-backup-and-restore.md
+        - name: Kontingenterhöhung anfordern
+          href: create-support-request-quota-increase.md
     - name: Überwachen
       items:
         - name: Überwachen von Cosmos DB
@@ -1112,6 +1114,8 @@
           items:
             - name: Azure Monitor für Cosmos (Vorschauversion)
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Szenarien für die Überwachung
+              href: use-metrics.md
             - name: Überwachen der serverseitigen Wartezeit
               href: monitor-server-side-latency.md
             - name: Überwachen der Nutzung von Anforderungseinheiten
@@ -1124,8 +1128,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: Überprüfung von Protokollen der Steuerungsebene
               href: audit-control-plane-logs.md
-        - name: Anzeigen von Metriken über das Cosmos DB-Konto
-          href: use-metrics.md
+        - name: Konfigurieren von Warnungen
+          href: create-alerts.md
         - name: Überwachen von Daten – Referenz
           href: monitor-cosmos-db-reference.md
         - name: Anwendungsprotokollierung mit Logic Apps

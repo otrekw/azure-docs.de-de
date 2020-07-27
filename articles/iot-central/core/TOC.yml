@@ -67,6 +67,8 @@
       href: concepts-app-templates.md
     - name: Was sind Gerätevorlagen?
       href: concepts-device-templates.md
+    - name: Nutzlasten von Nachrichten
+      href: concepts-telemetry-properties-commands.md
     - name: Gerätekonnektivität
       href: concepts-get-connected.md
     - name: Verbinden von IoT Edge-Geräten

@@ -46,6 +46,8 @@
           href: expand-existing-host-pool.md
         - name: Verwalten von App-Gruppen mit PowerShell
           href: manage-app-groups-powershell.md
+    - name: Löschen eines Hostpools
+      href: delete-host-pool.md
     - name: Erstellen eines Profilcontainers
       items:
         - name: Verwenden einer VM-basierten Dateifreigabe
@@ -72,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: Installieren von Office für ein VHD-Masterimage
           href: install-office-on-wvd-master-image.md
+    - name: Automatisches Skalieren von Sitzungshosts
+      href: set-up-scaling-script.md
     - name: Feed anpassen
       href: customize-feed-for-virtual-desktop-users.md
     - name: Verwenden der Service-Diagnose
@@ -108,6 +112,8 @@
       href: store-fslogix-profile.md
     - name: Partnerintegrationen
       href: partners.md
+    - name: Häufig gestellte Fragen zu Windows Virtual Desktop
+      href: faq.md
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
       href: windows-10-multisession-faq.md
     - name: Datenspeicherorte

@@ -6,7 +6,7 @@
       href: overview.md
     - name: Was ist Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: false
   items:
     - name: Konfigurieren der Azure AD-Hybrideinbindung für verwaltete Domänen
@@ -75,6 +75,8 @@
           href: enterprise-state-roaming-faqs.md
 - name: Verweis
   items:
+    - name: "Erzwingen von TLS\_1.2"
+      href: reference-device-registration-tls-1-2.md
     - name: 'Enterprise State Roaming: GPO-Einstellungen'
       href: enterprise-state-roaming-group-policy-settings.md
     - name: 'Enterprise State Roaming: Windows-Einstellungen'
