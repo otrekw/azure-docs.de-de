@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine .NET Core-Anwendung im Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b38562879fa67d7ee82e3251ea2fcaa57a2075d6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240210"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512451"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes: Visual Studio Code und .NET Core: Azure Dev Spaces
 
@@ -102,7 +102,7 @@ Dieser Befehl generiert ein Dockerfile und ein Helm-Chart, um Ihr Projekt für d
 
 Klicken Sie links auf das Symbol *Debuggen* und dann oben auf *.NET Core Launch (AZDS)* (.NET Core-Start (AZDS)).
 
-![](media/get-started-netcore/debug-configuration.png)
+![Der Screenshot zeigt die obere linke Ecke des Visual Studio Code-Fensters. Das Symbol „Debuggen“ ist hervorgehoben, der linke Bereich hat den Titel „DEBUGGEN“, und in der Dropdownliste rechts vom Titel wird „.NET Core Launch (AZDS)“ (.NET Core-Start (AZDS)) angezeigt.](media/get-started-netcore/debug-configuration.png)
 
 Mit diesem Befehl wird Ihr Dienst in Azure Dev Spaces im Debugmodus erstellt und ausgeführt. Im Fenster *Terminal* am unteren Rand werden die Buildausgabe und die URLs zur Ausführung in Azure Dev Spaces für Ihren Dienst angezeigt. In der *Debugging-Konsole* wird die Protokollausgabe angezeigt.
 
@@ -155,7 +155,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 Speichern Sie die Datei . Klicken Sie auf *Debuggen* und dann auf *Debugging erneut starten*, oder klicken Sie in der *Debug-Symbolleiste* auf die Schaltfläche *Debugging erneut starten*.
 
-![](media/common/debug-action-refresh.png)
+![Die Debugsymbolleiste ist ein kleiner Bereich oben in der Mitte der Seite (direkt unterhalb des Seitentitels). Auf der Schaltfläche „Neu starten“ wird ein kreisförmiger Pfeil angezeigt, der hervorgehoben ist. Das Hoverbild für die Schaltfläche ist „Neu starten (STRG+UMSCHALT+F5)“.](media/common/debug-action-refresh.png)
 
 Öffnen Sie Ihren Dienst in einem Browser. Sie sehen, dass Ihre aktualisierte Meldung angezeigt wird.
 

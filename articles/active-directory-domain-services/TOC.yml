@@ -31,6 +31,8 @@
       href: powershell-create-instance.md
     - name: Erstellen einer verwalteten Domäne mithilfe einer Vorlage
       href: template-create-instance.md
+    - name: Konfigurieren der bereichsbezogenen Synchronisierung mithilfe von Azure AD PowerShell
+      href: powershell-scoped-synchronization.md
 - name: Konzepte
   items:
     - name: Verwaltungsgrundlagen

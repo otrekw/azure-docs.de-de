@@ -416,6 +416,8 @@
                   href: how-to-custom-commands-add-interaction-rules.md
                 - name: Hinzufügen von Sprachgenerierungsvorlagen für Sprachantworten
                   href: how-to-custom-commands-add-language-generation-templates.md
+                - name: Verwenden von Custom Voice
+                  href: how-to-custom-commands-use-custom-voice.md
             - name: Integrieren
               items:
                 - name: Integrieren in eine Client-App mithilfe des Sprach-SDK
@@ -452,6 +454,8 @@
               href: faq-voice-assistants.md
             - name: Sprach-SDK
               href: speech-sdk.md
+            - name: Verschlüsselung ruhender Daten mithilfe benutzerdefinierter Befehle
+              href: custom-commands-encryption-of-data-at-rest.md
     - name: Direct Line Speech
       items:
         - name: Was ist Direct Line Speech?

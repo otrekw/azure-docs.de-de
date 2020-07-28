@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562540"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529623"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -27,11 +27,11 @@ Bevorzugen Sie PowerShell? Verwenden Sie die Azure Resource Manager-[Dienstvorla
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Die folgenden Diensteigenschaften sind für die Lebensdauer des Diensts festgelegt, und ihre Änderung erfordert einen neuen Dienst. Wenn Sie einen Dienst erstellen, denken Sie darüber nach, wie Sie ihn nutzen werden:
+Die folgenden Diensteigenschaften sind für die Lebensdauer des Diensts festgelegt, und ihre Änderung erfordert einen neuen Dienst. Da sie festgelegt sind, sollten Sie beim Ausfüllen der einzelnen Eigenschaften ihre Auswirkungen auf die Nutzung berücksichtigen:
 
-* Name (schauen Sie sich [diese Vorschläge](#name-the-service) für Dienstnamen an)
-* Tarif (Free, Basic, Standard [wirkt sich auf die Abrechnung aus](search-sku-tier.md) und legt eine Obergrenze für die Kapazität fest)
-* Region (wählen Sie einen Standort mit verwandten Diensten aus. Für die Integration mit Cognitive Services oder Azure Machine Learning ist die Zusammenstellung von Diensten in derselben Region eine Anforderung)
+* Der Dienstname wird Teil des URL-Endpunkts. (Hilfreiche Informationen zu Dienstnamen finden Sie unter [Benennen des Diensts](#name-the-service).)
+* Der Tarif [wirkt sich auf die Abrechnung aus](search-sku-tier.md) und legt eine Obergrenze für die Kapazität fest.
+* Die Dienstregion kann die Verfügbarkeit bestimmter Szenarien bestimmen. Wenn Sie an Knowledge Mining und KI-Anreicherung interessiert sind, benötigen Sie Cognitive Services und ggf. Azure Machine Learning in derselben Region wie Azure Cognitive Search.
 
 ## <a name="subscribe-free-or-paid"></a>Abonnieren (kostenlos oder kostenpflichtig)
 

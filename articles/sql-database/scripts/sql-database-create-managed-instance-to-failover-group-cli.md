@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bf4e2b04c540ee5672bea6e097496ced5a0d622a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115395"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528875"
 ---
-# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Hinzufügen einer Azure SQL Managed Instance zu einer Failovergruppe mit der CLI
+# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>Erstellen einer Azure SQL Managed Instance-Instanz für eine Failovergruppe mithilfe der CLI
 
 Mit diesem Azure CLI-Beispielskript werden zwei verwaltete Instanzen erstellt und einer Failovergruppe hinzugefügt. Anschließend wird das Failover von der primären verwalteten Instanz auf die sekundäre verwaltete Instanz getestet.
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| | |
+| Get-Help | Beschreibung |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | Befehle für virtuelle Netzwerke  |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | Befehle für Subnetze des virtuellen Netzwerks |

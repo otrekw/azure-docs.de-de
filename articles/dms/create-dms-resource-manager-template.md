@@ -1,30 +1,34 @@
 ---
 title: Erstellen einer DMS-Instanz (Azure Resource Manager-Vorlage)
-description: Es wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage eine Database Migration Service-Instanz erstellen.
+description: Hier wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Database Migration Service-Instanz erstellen.
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 9e0d537a948e960c90737cc3f367940a0ffca74c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852478"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537444"
 ---
-# <a name="create-instance-of-azure-database-migration-service-azure-resource-manager-template"></a>Erstellen einer Azure Database Migration Service-Instanz (Azure Resource Manager-Vorlage)
+# <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Schnellstart: Erstellen einer Azure Database Migration Service-Instanz mithilfe einer ARM-Vorlage
 
-Verwenden Sie diese Azure Resource Manager-Vorlage, um eine Azure Database Migration Service-Instanz bereitzustellen. 
+Verwenden Sie diese Azure Resource Manager-Vorlage (ARM-Vorlage), um eine Azure Database Migration Service-Instanz bereitzustellen. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-database-migration-simple-deploy%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ARM-Vorlage für die Azure Database Migration Service-Instanz benötigen Sie Folgendes: 
 
-- Die aktuelle Version der [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) bzw. von [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7). 
+- Die aktuelle Version der [Azure CLI](/cli/azure/install-azure-cli) bzw. von [PowerShell](/powershell/scripting/install/installing-powershell). 
 - Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
@@ -39,7 +43,7 @@ In der Vorlage sind drei Azure-Ressourcen definiert:
 - [Microsoft.Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets): Erstellt das Subnetz. 
 - [Microsoft.DataMigration/services](/azure/templates/microsoft.datamigration/services): Stellt eine Azure Database Migration Service-Instanz bereit. 
 
-Weitere Azure Database Migration Service-Vorlagen finden Sie im Katalog unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration).
+Weitere Azure Database Migration Service-Vorlagen finden Sie im Katalog unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
@@ -105,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter folgendem Link:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Weitere Möglichkeiten zum Bereitstellen von Azure Database Migration Service finden Sie unter: 
 - [Azure-Portal](quickstart-create-data-migration-service-portal.md)

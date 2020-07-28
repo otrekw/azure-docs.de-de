@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 28080517a33f1bbf9bee3436493f178b60c0d161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601410"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523603"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto
 
@@ -155,6 +155,12 @@ Bei bestimmten Kundenumstellungsanforderungen ist aufgrund der Art der aktuellen
 Das Verzeichnis der übertragenen Azure-Abonnements muss dem Verzeichnis des Kunden entsprechen, das beim Etablieren der CSP-Beziehung ausgewählt wurde.
 
 Stimmen diese beiden Verzeichnisse nicht überein, konnten die Abonnements nicht übertragen werden. Sie müssen entweder eine neue CSP-Handelspartnerbeziehung mit dem Kunden etablieren, indem Sie das Verzeichnis der Azure-Abonnements auswählen, oder das Verzeichnis der Azure-Abonnements ändern, sodass es dem CSP-Beziehungsverzeichnis des Kunden entspricht. Weitere Informationen finden Sie unter [So weisen Sie Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement zu](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+
+### <a name="ea-subscription-in-the-non-orgnization-directory"></a>EA-Abonnement in einem Verzeichnis außerhalb der Organisation
+
+Die EA-Abonnements aus Verzeichnissen außerhalb der Organisation können übertragen werden, sofern das Verzeichnis über eine Handelspartnerbeziehung mit dem CSP verfügt. Hat das Verzeichnis keine Handelspartnerbeziehung, müssen Sie sicherstellen, dass der Organisationsbenutzer im Verzeichnis Berechtigungen vom Typ *Globaler Administrator* besitzt, damit er die Partnerbeziehung akzeptieren kann. Der Domänenteil des Benutzernamens muss entweder der Name der anfängliche Standarddomänenname „[domain name]. onmicrosoft.com" oder eine überprüfte, nicht im Verbund konfigurierte benutzerdefinierte Domäne wie „contoso.com“ sein.  
+
+Informationen zum Hinzufügen eines Benutzers zum Verzeichnis finden Sie unter [ Hinzufügen oder Löschen von Benutzern in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Partnervereinbarung
 

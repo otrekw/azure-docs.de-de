@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808045"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496048"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Was ist Azure Synapse Analytics (Vorschau für Arbeitsbereiche)?
 
@@ -40,7 +40,7 @@ Darüber hinaus vereinfacht Azure Synapse das Erstellen von Vorhersagemodellen u
 
 * Synapse SQL bietet sowohl **serverlose** als auch **bereitgestellte** Ressourcenmodelle sowie bedarfsorientierte Verbrauchs- und Abrechnungsoptionen. Stellen Sie Pools zur Reservierung von Rechenleistung für in SQL-Tabellen gespeicherte Daten bereit, um von planbarer Leistung und planbaren Kosten zu profitieren. Für ungeplante Workloads oder Workloads mit Bedarfsspitzen kann der serverlose, immer verfügbare SQL-Endpunkt verwendet werden.
 * Nutzen Sie die integrierten **Streamingfunktionen**, um Daten aus Clouddatenquellen in SQL-Tabellen zu übertragen.
-* Integrieren Sie mithilfe von **Machine Learning**-Modellen KI in SQL, um Daten per T-SQL-Vorhersagefunktion (PREDICT) zu bewerten.
+* Integrieren Sie mithilfe von **Machine Learning**-Modellen KI in SQL, um Daten per [T-SQL-Vorhersagefunktion (PREDICT)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) zu bewerten.
 
 ### <a name="industry-standard-apache-spark"></a>Branchenübliches Apache Spark
 

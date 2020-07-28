@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 6b9440375c4ba6cc04ae68268c5a6164b8aa6a71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 11158609aa14b9a6cc59e5057c7a631266cc1bbb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978961"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545110"
 ---
-Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-javascript">Speech SDK-JavaScript-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Machen Sie andernfalls hier weiter.
+Sie können sich alle <a href="https://aka.ms/speech/github-javascript">Speech SDK-JavaScript-Beispiele</a> auf GitHub ansehen oder diese herunterladen. 

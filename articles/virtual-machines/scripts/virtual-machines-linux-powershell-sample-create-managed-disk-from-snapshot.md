@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen eines verwalteten Datenträgers auf der Grundlage einer Momentaufnahme: PowerShell-Beispiel'
+title: 'Erstellen eines verwalteten Datenträgers auf der Grundlage einer Momentaufnahme (Linux): PowerShell-Beispiel'
 description: Azure PowerShell-Skriptbeispiel – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
 services: virtual-machines-linux
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 89ab1a388aa6497e559a1746ee8165ccd8cae1ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2faa98ec21d260e6a7cbdf9eceba24baf4b13c61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459887"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501132"
 ---
-# <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Erstellen verwalteter Datenträger aus einer Momentaufnahme mithilfe von PowerShell
+# <a name="create-a-managed-disk-from-a-snapshot-with-powershell-linux"></a>Erstellen eines verwalteten Datenträgers auf der Grundlage einer Momentaufnahme mithilfe von PowerShell (Linux)
 
 Dieses Skript erstellt einen verwalteten Datenträger aus einer Momentaufnahme. Sie können es zum Wiederherstellen eines virtuellen Computers aus Momentaufnahmen von Betriebssystem und Datenträgern verwenden. Erstellen Sie verwaltete Datenträger für Betriebssystem und Daten aus den jeweiligen Momentaufnahmen und anschließend einen neuen virtuellen Computer durch Anfügen der verwalteten Datenträger. Sie können auch die Datenträger eines vorhandenen virtuellen Computers wiederherstellen, indem Sie die aus Momentaufnahmen erstellten Datenträger anfügen.
 
@@ -38,9 +38,9 @@ Dieses Skript verwendet die folgenden Befehle, um einen verwalteten Datenträger
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | Ruft Eigenschaften von Momentaufnahmen ab.  |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Erstellt die Datenträgerkonfiguration, die für die Datenträgererstellung verwendet wird. Enthält die Ressourcen-ID der übergeordneten Momentaufnahme, des Speicherorts, der mit dem Speicherort der übergeordneten Momentaufnahme übereinstimmt, sowie des Speichertyp.  |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Erstellt einen Datenträger mit Datenträgerkonfiguration, Datenträgername und Name der Ressourcengruppe, die als Parameter übergeben werden. |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | Ruft Eigenschaften von Momentaufnahmen ab.  |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | Erstellt die Datenträgerkonfiguration, die für die Datenträgererstellung verwendet wird. Enthält die Ressourcen-ID der übergeordneten Momentaufnahme, des Speicherorts, der mit dem Speicherort der übergeordneten Momentaufnahme übereinstimmt, sowie des Speichertyp.  |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | Erstellt einen Datenträger mit Datenträgerkonfiguration, Datenträgername und Name der Ressourcengruppe, die als Parameter übergeben werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

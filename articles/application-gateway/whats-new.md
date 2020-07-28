@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186689"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517619"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Neuerungen in Azure Application Gateway
 
@@ -27,7 +27,9 @@ Azure Application Gateway wird fortlaufend aktualisiert. Damit Sie bezüglich de
 
 |Funktion  |BESCHREIBUNG  |Hinzufügedatum  |
 |---------|---------|---------|
-| Benutzerdefinierter Port für Integritätstests | In der Application Gateway v2-SKU kann nun ein benutzerdefinierter Port in der Konfiguration für Integritätstests angegeben werden. Weitere Informationen finden Sie unter [Systemüberwachung des Application Gateways – Übersicht](application-gateway-probe-overview.md). | Juli 2020
+| Platzhalterhostnamen in Listenern (Vorschauversion) | Sie können jetzt Platzhalterhostnamen in einem Listener für mehrere Standorte und bis zu fünf Hostnamen pro Listener definieren. Unter [Platzhalterhostnamen in Listenern (Vorschauversion)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) finden Sie weitere Informationen, und unter [Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal](create-multiple-sites-portal.md) finden Sie eine Schritt-für-Schritt-Anleitung. | Juli 2020 |
+| URL-Rewrite (Vorschauversion) | Sie können den URL-Pfad und die Abfragezeichenfolgenparameter nun mithilfe von URL-Rewrite umschreiben Unter [Umschreiben von HTTP-Headern und -URLs mit Application Gateway](rewrite-http-headers-url.md) finden Sie weitere Informationen, und unter [Umschreiben von URLs mit Azure Application Gateway: Azure-Portal (Vorschau)](rewrite-url-portal.md) finden Sie eine Schritt-für-Schritt-Anleitung. | Juli 2020 |
+| Benutzerdefinierter Port für Integritätstests | In der Application Gateway v2-SKU kann nun ein benutzerdefinierter Port in der Konfiguration für Integritätstests angegeben werden. Weitere Informationen finden Sie unter [Systemüberwachung des Application Gateways – Übersicht](application-gateway-probe-overview.md). | Juli 2020 |
 | AKS-Add-On für den Application Gateway-Eingangscontroller (Application Gateway Ingress Controller, AGIC) (Vorschau) |Der Application Gateway-Eingangscontroller kann nun über die Azure CLI in einer Zeile als natives AKS-Add-On bereitgestellt werden. Da es sich um ein AKS-Add-On handelt, kann AGIC ein vollständig verwalteter Dienst werden und dennoch im AKS-Cluster des Kunden ausgeführt werden. Weitere Informationen finden Sie im Abschnitt mit den [Unterschieden zwischen AGIC-Add-Ons](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |Juni 2020 |
 | Benutzerdefinierte Routen (User-Defined Routes, UDR) in Version 2 (Vorschau) |Benutzerdefinierte Routen werden nun in einigen Szenarien in Application Gateway v2-SKUs unterstützt. Weitere Informationen finden Sie unter [Application Gateway-Konfiguration: Übersicht](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet). |März 2020 |
 |Änderungen für das Affinitätscookie |Wenn die cookiebasierte Affinität aktiviert ist, fügt Application Gateway zusätzlich zum bereits vorhandenen Cookie „ApplicationGatewayAffinity“ ein identisches Cookie namens *ApplicationGatewayAffinityCORS* ein. *ApplicationGatewayAffinityCORS* werden zwei weitere Attribute hinzugefügt ( *"SameSite = None; Secure"* ), damit persistente Sitzungen auch bei ursprungsübergreifenden Anforderungen erhalten bleiben. Weitere Informationen finden Sie unter [Cookiebasierte Affinität](configuration-overview.md#cookie-based-affinity). |Februar 2020 |

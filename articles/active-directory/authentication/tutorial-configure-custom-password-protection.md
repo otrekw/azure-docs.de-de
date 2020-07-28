@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78253120"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518538"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Tutorial: Konfigurieren von benutzerdefinierten gesperrten Kennwörtern für den Azure Active Directory-Kennwortschutz
 
@@ -36,12 +36,12 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*.
 * Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. Sie testen ein Kennwortänderungsereignis, indem Sie im Rahmen des Tutorials dieses Konto nutzen.
-    * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../add-users-azure-active-directory.md) weiter.
+    * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) weiter.
     * Zum Testen des Kennwortänderungsvorgangs mit einem gesperrten Kennwort muss für den Azure AD-Mandanten die [Self-Service-Kennwortzurücksetzung konfiguriert sein](tutorial-enable-sspr.md).
 
 ## <a name="what-are-banned-password-lists"></a>Was sind Listen mit gesperrten Kennwörtern?
 
-Azure AD enthält eine globale Liste mit gesperrten Kennwörtern. Der Inhalt der globalen Liste mit gesperrten Kennwörtern basiert nicht auf einer externen Datenquelle. Stattdessen basiert die globale Liste mit gesperrten Kennwörtern auf den fortlaufenden Ergebnissen der Azure AD-Sicherheitstelemetriedaten und -Analysen. Wenn ein Benutzer oder Administrator versucht, seine Anmeldeinformationen zu ändern oder zurückzusetzen, wird das gewünschte Kennwort anhand der Liste mit gesperrten Kennwörtern überprüft. Die Anforderung einer Kennwortänderung ist nicht erfolgreich, wenn sich eine Übereinstimmung mit der globalen Liste mit gesperrten Kennwörtern ergibt.
+Azure AD enthält eine globale Liste mit gesperrten Kennwörtern. Der Inhalt der globalen Liste mit gesperrten Kennwörtern basiert nicht auf einer externen Datenquelle. Stattdessen basiert die globale Liste mit gesperrten Kennwörtern auf den fortlaufenden Ergebnissen der Azure AD-Sicherheitstelemetriedaten und -Analysen. Wenn ein Benutzer oder Administrator versucht, seine Anmeldeinformationen zu ändern oder zurückzusetzen, wird das gewünschte Kennwort anhand der Liste mit gesperrten Kennwörtern überprüft. Die Anforderung einer Kennwortänderung ist nicht erfolgreich, wenn sich eine Übereinstimmung mit der globalen Liste mit gesperrten Kennwörtern ergibt. Sie können diese globale Standardliste gesperrter Kennwörter nicht bearbeiten.
 
 Sie können auch eine benutzerdefinierte Liste mit gesperrten Kennwörtern definieren, um flexibel festzulegen, welche Kennwörter zulässig sind. Die benutzerdefinierte Liste mit gesperrten Kennwörtern wird zusammen mit der globalen Liste mit gesperrten Kennwörtern eingesetzt, um in Ihrer Organisation die Nutzung sicherer Kennwörter zu erzwingen. Der benutzerdefinierten Liste mit gesperrten Kennwörtern können organisationsspezifische Ausdrücke hinzugefügt werden, z. B.:
 
@@ -91,7 +91,7 @@ Für eine Hybridumgebung können Sie den [Azure AD-Kennwortschutz auch in einer 
 Ändern Sie ein Kennwort in eine Variante eines Kennworts, das Sie im vorherigen Abschnitt hinzugefügt haben, um die benutzerdefinierte Liste mit gesperrten Kennwörtern in Aktion zu sehen. Wenn Azure AD versucht, die Kennwortänderung zu verarbeiten, wird das Kennwort mit einem Eintrag in der benutzerdefinierten Liste mit gesperrten Kennwörtern abgeglichen. Dem Benutzer wird dann ein Fehler angezeigt.
 
 > [!NOTE]
-> Bevor ein Benutzer sein Kennwort im webbasierten Portal zurücksetzen kann, muss der Azure AD-Mandant für die [Self-Service-Kennwortzurücksetzung konfiguriert](tutorial-enable-sspr.md) werden.
+> Bevor ein Benutzer sein Kennwort im webbasierten Portal zurücksetzen kann, muss der Azure AD-Mandant für die [Self-Service-Kennwortzurücksetzung konfiguriert](tutorial-enable-sspr.md) werden. Der Benutzer kann sich dann bei Bedarf [unter https://aka.ms/ssprsetup für SSPR registrieren](https://aka.ms/ssprsetup).
 
 1. Navigieren Sie zur Seite **Meine Apps** unter [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. Klicken Sie in der oberen rechten Ecke auf Ihren Namen, und wählen Sie dann aus dem Dropdownmenü die Option **Profil** aus.

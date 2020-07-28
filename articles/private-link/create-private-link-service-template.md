@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines Private Link-Diensts in Azure Private Link
-description: In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage einen Private Link-Dienst.
+description: In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen Private Link-Dienst.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: c9ed628501e8fa02b816a1564b91620404dfc379
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 2a3c7245a4e6c69e87791ca3364ad588b82572c6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817620"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529606"
 ---
-# <a name="quickstart-create-a-private-link-service-by-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Private Link-Diensts mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Private Link-Diensts mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage einen Private Link-Dienst.
+In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen Private Link-Dienst.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Diese Schnellstartanleitung steht auch für das [Azure-Portal](create-private-link-service-portal.md), für [Azure PowerShell](create-private-link-service-powershell.md) und für die [Azure-Befehlszeilenschnittstelle](create-private-link-service-cli.md) zur Verfügung.
 
-## <a name="prerequisite"></a>Voraussetzung
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-link-service"></a>Erstellen eines Private Link-Diensts
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Diese Vorlage erstellt einen Private Link-Dienst.
 
-### <a name="review-the-template"></a>Überprüfen der Vorlage
-
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-privatelink-service/).
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
@@ -48,13 +50,13 @@ In der Vorlage sind mehrere Azure-Ressourcen definiert:
 - [**Microsoft.Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses): Es gibt zwei öffentliche IP-Adressen, eine für jeden virtuellen Computer.
 - [**Microsoft.Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints): Der private Endpunkt für den Zugriff auf den Dienst
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-So stellen Sie die Azure Resource Manager-Vorlage in Azure bereit:
+So stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Die Vorlage erstellt einen virtuellen Computer, einen Standardlastenausgleich, einen Private Link-Dienst, einen privaten Endpunkt, ein Netzwerk und einen virtuellen Computer zur Überprüfung.
 
-   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
 
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
 3. Geben Sie den Administratorbenutzernamen für den virtuellen Computer und das zugehörige Kennwort ein.
@@ -63,7 +65,7 @@ So stellen Sie die Azure Resource Manager-Vorlage in Azure bereit:
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
 > [!NOTE]
-> Die Azure Resource Manager-Vorlage generiert jeweils einen eindeutigen Namen für die VM-Ressource „myConsumerVm<b>{eindeutige ID}</b>“. Ersetzen Sie **{eindeutige ID}** durch den entsprechenden generierten Wert.
+> Die ARM-Vorlage generiert jeweils einen eindeutigen Namen für die VM-Ressource „myConsumerVm<b>{eindeutige ID}</b>“. Ersetzen Sie **{eindeutige ID}** durch den entsprechenden generierten Wert.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
 
@@ -95,7 +97,7 @@ Stellen Sie wie folgt über das Internet eine Verbindung mit dem virtuellen Comp
 Hier wird erläutert, wie Sie mithilfe des privaten Endpunkts über den virtuellen Computer eine Verbindung mit dem HTTP-Dienst herstellen.
 
 1.  Navigieren Sie zum Remotedesktop von _myConsumerVm{eindeutige ID}_ .
-2.  Öffnen Sie einen Browser, und geben Sie die Adresse des privaten Endpunkts ein: http://10.0.0.5/.
+2.  Öffnen Sie einen Browser, und geben Sie die Adresse des privaten Endpunkts ein: `http://10.0.0.5/`.
 3.  Die IIS-Standardseite wird angezeigt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

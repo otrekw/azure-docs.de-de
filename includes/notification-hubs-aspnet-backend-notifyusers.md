@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77193152"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530169"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
 
@@ -30,7 +30,7 @@ Gehen Sie zum Erstellen des neuen ASP.NET-WebAPI-Back-Ends wie folgt vor:
 >
 >Um dies zu überprüfen, starten Sie Visual Studio. Wählen Sie im Menü **Extras** die Option **Erweiterungen und Updates** aus. Suchen Sie in Ihrer Version von Visual Studio nach **NuGet-Paket-Manager**, und vergewissern Sie sich, dass Sie über die neueste Version verfügen. Deinstallieren Sie andernfalls Ihre Version, und installieren Sie den NuGet-Paket-Manager erneut.
 
-![][B4]
+![Screenshot: Dialogfeld „Erweiterungen und Updates“ mit hervorgehobenem Paket für den NuGet-Paket-Manager für Visual Studio][B4]
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie das Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) für die Websitebereitstellung installiert haben.
@@ -140,7 +140,7 @@ In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandl
     ```
 
     > [!NOTE]
-    > Sicherheitshinweis: Die Klasse `AuthenticationTestHandler` bietet keine echte Authentifizierung. Sie wird nur verwendet, um eine Standardauthentifizierung zu imitieren, und ist nicht sicher. Sie müssen einen sicheren Authentifizierungsmechanismus in Ihren Produktionsanwendungen und -diensten implementieren.
+    > Sicherheitshinweis: Die Klasse `AuthenticationTestHandler` ermöglicht keine wirkliche Authentifizierung. Sie wird nur verwendet, um eine Standardauthentifizierung zu imitieren, und ist nicht sicher. Sie müssen einen sicheren Authentifizierungsmechanismus in Ihren Produktionsanwendungen und -diensten implementieren.
 5. Fügen Sie am Ende der Methode `Register` in der Klasse **App_Start/WebApiConfig.cs** den folgenden Code hinzu, um den Meldungshandler zu registrieren:
 
     ```csharp

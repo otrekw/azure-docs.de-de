@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 40d028ade5429c89ce40b718c90c601dfcb0e470
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307070"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502179"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Bereitstellen und Erstellen von Linux-Images in Azure
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die Entscheidungspunkte und Anforderungen für Images s
 ## <a name="difference-between-managed-disks-and-images"></a>Unterschied zwischen verwalteten Datenträgern und Images
 
 
-Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual Hard Disk, VHD) auf der Plattform, die Sie als [verwalteten Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#managed-disks) oder als Quelle für ein Image verwenden können. 
+Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual Hard Disk, VHD) auf der Plattform, die Sie als [verwalteten Datenträger](../windows/faq-for-disks.md#managed-disks) oder als Quelle für ein Image verwenden können. 
 
 Verwaltete Azure-Datenträger sind einzelne VHDs. Sie können entweder anhand einer vorhandenen VHD einen verwalteten Datenträger erstellen oder einen leeren verwalteten Datenträger von Grund auf erstellen. Sie können VMs von verwalteten Datenträgern erstellen, indem Sie den Datenträger an den virtuellen Computer anfügen, aber Sie können nur eine VHD mit einem virtuellen Computer verwenden. Sie können keine Betriebssystemeigenschaften ändern. Azure versucht lediglich, den virtuellen Computer zu aktivieren und mit diesem Datenträger zu starten. 
 
@@ -49,16 +49,16 @@ Azure bietet zwei Haupttypen von Images, generalisierte und spezialisierte Image
 Bei einem generalisierten Image handelt es sich um ein Image, für das die Einrichtung beim ersten Start abgeschlossen werden muss. Beispielsweise legen Sie beim ersten Start den Hostnamen, den Administratorbenutzer und andere VM-spezifische Konfigurationen fest. Dies ist nützlich, wenn das Image mehrfach wiederverwendet werden soll und wenn bei der Erstellung Parameter übergeben werden sollen. Wenn das generalisierte Image den Azure-Agent enthält, verarbeitet der Agent die Parameter und signalisiert der Plattform, dass die Erstkonfiguration abgeschlossen wurde. Dieser Vorgang wird als **Bereitstellung** bezeichnet. 
 
 Für die Bereitstellung ist es erforderlich, dass ein Bereitsteller im Image enthalten ist. Es gibt zwei Bereitsteller:
-- [Azure Linux-Agents](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)
-- [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+- [Azure Linux-Agents](../extensions/agent-linux.md)
+- [cloud-init](./using-cloud-init.md)
 
-Dabei handelt es sich um [Voraussetzungen](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) für das Erstellen eines Image.
+Dabei handelt es sich um [Voraussetzungen](./create-upload-generic.md) für das Erstellen eines Image.
 
 
 ### <a name="specialized-images"></a>Spezialisierte Images
 Dies sind vollständig konfigurierte Images, die keine VM- und speziellen Parameter benötigen. Die Plattform schaltet den virtuellen Computer nur ein, und Sie müssen für Eindeutigkeit innerhalb des virtuellen Computers sorgen (z. B. einen Hostnamen festlegen), um DNS-Konflikte in demselben VNET zu vermeiden. 
 
-Für diese Images sind keine Bereitstellungs-Agents erforderlich. Möglicherweise möchten Sie jedoch Funktionen für den Umgang mit Erweiterungen nutzen. Sie können den Linux-Agent installieren, aber die Bereitstellungsoption deaktivieren. Auch wenn Sie keinen Bereitstellungs-Agent benötigen, muss das Image die [Voraussetzungen](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) für Azure-Images erfüllen.
+Für diese Images sind keine Bereitstellungs-Agents erforderlich. Möglicherweise möchten Sie jedoch Funktionen für den Umgang mit Erweiterungen nutzen. Sie können den Linux-Agent installieren, aber die Bereitstellungsoption deaktivieren. Auch wenn Sie keinen Bereitstellungs-Agent benötigen, muss das Image die [Voraussetzungen](./create-upload-generic.md) für Azure-Images erfüllen.
 
 
 ## <a name="image-storage-options"></a>Imagespeicheroptionen
@@ -94,13 +94,14 @@ Im Allgemeinen erstellen Sie einen SIG, der aus folgenden Elementen besteht:
 
 ## <a name="hyper-v-generation"></a>Hyper-V Generation
 
-Azure unterstützt Hyper-V Generation 1 (Gen1) und Generation 2 (Gen2). Gen2 ist die neueste Generation, die zusätzliche Funktionalität gegenüber Gen1 bietet, beispielsweise mehr Arbeitsspeicher, Intel Software Guard Extensions (Intel SGX) und virtualisierten persistenten Speicher (virtualized Persistent Memory, vPMEM). VMs der Generation 2, die lokal ausgeführt werden, weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt „Features und Funktionen“. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2). Erstellen Sie Gen2-Images, wenn Sie diese zusätzliche Funktionalität benötigen.
+Azure unterstützt Hyper-V Generation 1 (Gen1) und Generation 2 (Gen2). Gen2 ist die neueste Generation, die zusätzliche Funktionalität gegenüber Gen1 bietet, beispielsweise mehr Arbeitsspeicher, Intel Software Guard Extensions (Intel SGX) und virtualisierten persistenten Speicher (virtualized Persistent Memory, vPMEM). VMs der Generation 2, die lokal ausgeführt werden, weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt „Features und Funktionen“. Weitere Informationen finden Sie in [diesem Artikel](../windows/generation-2.md). Erstellen Sie Gen2-Images, wenn Sie diese zusätzliche Funktionalität benötigen.
 
-Wenn Sie dennoch ein eigenes Image erstellen müssen, stellen Sie sicher, dass es die [Imagevoraussetzungen](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) erfüllt, und laden Sie das Image in Azure hoch. Verteilungsspezifische Anforderungen:
+Wenn Sie dennoch ein eigenes Image erstellen müssen, stellen Sie sicher, dass es die [Imagevoraussetzungen](./create-upload-generic.md) erfüllt, und laden Sie das Image in Azure hoch. Verteilungsspezifische Anforderungen:
 
 
 - [CentOS-basierte Verteilungen](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
 - [Oracle Linux](oracle-create-upload-vhd.md)
 - [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
 - [SLES &amp; openSUSE](suse-create-upload-vhd.md)
@@ -110,6 +111,3 @@ Wenn Sie dennoch ein eigenes Image erstellen müssen, stellen Sie sicher, dass e
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie eine [Shared Image Gallery-Instanz erstellen](tutorial-custom-images.md).
-
-
-

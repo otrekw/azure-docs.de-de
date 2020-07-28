@@ -1,21 +1,22 @@
 ---
-title: Erstellen eines Labs mit Azure DevTest Labs und einer Resource Manager-Vorlage
-description: In diesem Tutorial erstellen Sie in Azure DevTest Labs ein Lab, indem Sie eine Azure Resource Manager-Vorlage verwenden. Ein Lab-Administrator richtet ein Lab ein, erstellt virtuelle Computer im Lab und konfiguriert Richtlinien.
-ms.topic: tutorial
+title: Erstellen eines Labs mithilfe von Azure DevTest Labs und einer Azure Resource Manager-Vorlage
+description: In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) in Azure DevTest Labs ein Lab. Ein Lab-Administrator richtet ein Lab ein, erstellt virtuelle Computer im Lab und konfiguriert Richtlinien.
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ba4ffeec22a45c07b096b0a754d08c8230dd8f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476205"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537546"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs-resource-manager-template"></a>Tutorial: Einrichten eines Labs mit Azure DevTest Labs (Resource Manager-Vorlage)
-In diesem Tutorial erstellen Sie ein Lab mit einer Windows Server 2019 Datacenter-VM, indem Sie eine Azure Resource Manager-Vorlage verwenden. 
+# <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Schnellstart: Einrichten eines Labs mithilfe von Azure DevTest Labs und einer ARM-Vorlage
+In dieser Schnellstartanleitung erstellen Sie ein Lab mit einer Windows Server 2019 Datacenter-VM, indem Sie eine ARM-Vorlage (Azure Resource Manager) verwenden. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-In diesem Tutorial führen Sie die folgenden Aktionen aus:
+In dieser Schnellstartanleitung führen Sie folgende Aktionen aus:
 
 > [!div class="checklist"]
 > * Überprüfen der Vorlage 
@@ -23,11 +24,13 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Überprüfen der Vorlage
 > * Bereinigen von Ressourcen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Keine.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -46,7 +49,7 @@ Weitere Beispiele für Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](ht
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 Klicken Sie auf die folgende Schaltfläche, um die Bereitstellung automatisch auszuführen. 
 
-[![In Azure bereitstellen](./media/create-lab-windows-vm-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 1. Erstellen Sie eine **neue Ressourcengruppe**, um die spätere Bereinigung zu erleichtern.
 1. Wählen Sie einen **Speicherort** für die Ressourcengruppe aus. 
@@ -59,7 +62,7 @@ Klicken Sie auf die folgende Schaltfläche, um die Bereitstellung automatisch au
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="Seite „Vorlage bereitstellen“":::
 
-## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
+## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 1. Wählen Sie oben die Option **Benachrichtigungen** aus, um den Status der Bereitstellung anzuzeigen, und klicken Sie auf den Link **Bereitstellung wird ausgeführt**.
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Bereitstellungsbenachrichtigung":::
@@ -76,7 +79,7 @@ Klicken Sie auf die folgende Schaltfläche, um die Bereitstellung automatisch au
     > [!IMPORTANT] 
     > Lassen Sie diese Seite geöffnet, und befolgen Sie die Anleitung zum Bereinigen von Ressourcen im nächsten Abschnitt, um Kosten für die Ausführung des Labs und der VM in Azure zu vermeiden. Falls Sie das nächste Tutorial zum Testen des Zugriffs auf die VM im Lab durcharbeiten möchten, sollten Sie die Ressourcen anschließend bereinigen. 
 
-## <a name="cleanup-resources"></a>Bereinigen von Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 1. Löschen Sie zuerst das Lab, damit Sie die Ressourcengruppe löschen können. Das Löschen der Ressourcengruppe ist nicht möglich, wenn sie ein Lab enthält. Wählen Sie zum Löschen des Labs in der Symbolleiste die Option **Löschen** aus. 
 
@@ -90,8 +93,7 @@ Klicken Sie auf die folgende Schaltfläche, um die Bereitstellung automatisch au
     :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Schaltfläche „Ressourcengruppe löschen“":::
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie ein Lab mit einer VM erstellt. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie auf das Lab zugreifen:
+In dieser Schnellstartanleitung haben Sie ein Lab mit einer VM erstellt. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie auf das Lab zugreifen:
 
 > [!div class="nextstepaction"]
 > [Tutorial: Zugreifen auf das Lab](tutorial-use-custom-lab.md)
-

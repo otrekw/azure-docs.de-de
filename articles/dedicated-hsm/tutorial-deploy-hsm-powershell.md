@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474423"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512502"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -62,13 +62,7 @@ Der Dienst für dedizierte HSMs muss wie bereits erwähnt für Ihr Abonnement re
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-Der folgende Befehl überprüft die Netzwerkfeatures, die für den Dienst für dedizierte HSMs erforderlich sind:
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-Fahren Sie erst mit den weiteren Schritten fort, wenn bei beiden Befehlen der Status „Registered“ zurückgegeben wird, wie in der folgenden Abbildung zu sehen.  Falls Sie sich noch für den Dienst registrieren müssen, wenden Sie sich an Ihren Microsoft-Kontobeauftragten.
+Fahren Sie erst mit den weiteren Schritten fort, wenn beim Befehl der Status „Registered“ zurückgegeben wird, wie in der folgenden Abbildung zu sehen.  Falls Sie sich noch nicht für diesen Dienst registriert haben, wenden Sie sich an Ihren Microsoft-Kontobeauftragten.
 
 ![Abonnementstatus](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
@@ -217,7 +211,7 @@ Die Verbindung mit dem virtuellen Computer wird mithilfe des ssh-Tools hergestel
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Als Kennwort muss das Kennwort aus der Parameterdatei verwendet werden.
-Nach der Anmeldung bei dem virtuellen Linux-Computer können Sie sich unter Verwendung der privaten IP-Adresse, die im Portal für die Ressource „\<Präfix>hsm_vnic“ angegeben ist, beim HSM anmelden.
+Nach der Anmeldung bei dem virtuellen Linux-Computer können Sie sich unter Verwendung der privaten IP-Adresse, die im Portal für die Ressource „\<prefix>hsm_vnic“ angegeben ist, beim HSM anmelden.
 
 ```powershell
 

@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77021643"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497045"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Tutorial: Erstellen eines Power BI-Anbieterdashboards
 
 
 
-Im Rahmen einer Lösung für die kontinuierliche Patientenüberwachung können Sie auch ein Dashboard erstellen, mit dem das Pflegepersonal im Krankenhaus Patientendaten visualisieren kann. In diesem Tutorial erfahren Sie, wie Sie aus Ihrer IoT Central-Vorlage für eine Anwendung zur kontinuierlichen Patientenüberwachung ein Power BI-Dashboard mit Echtzeitstreaming erstellen.
+Im Rahmen einer Lösung für die kontinuierliche Patientenüberwachung können Sie auch ein Dashboard erstellen, mit dem das Pflegepersonal im Krankenhaus Patientendaten visualisieren kann. In diesem Tutorial erfahren Sie, wie Sie aus Ihrer IoT Central-Vorlage für eine Anwendung zur kontinuierlichen Patientenüberwachung ein Power BI-Dashboard mit Echtzeitstreaming erstellen. Wenn für Ihren Anwendungsfall kein Zugriff auf Echtzeitdaten erforderlich ist, können Sie das [IoT Central-Power BI-Dashboard](../core/howto-connect-powerbi.md) verwenden, das einen vereinfachten Bereitstellungsprozess ermöglicht. 
 
 >[!div class="mx-imgBorder"]
 >![GIF-Abbildung des Dashboards](media/dashboard-gif-3.gif)

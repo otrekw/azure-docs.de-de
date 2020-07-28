@@ -1,18 +1,18 @@
 ---
-title: Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
-description: Erfahren Sie, wie Sie mit einer Resource Manager-Vorlage eine Metrikwarnung erstellen.
+title: Beispiele für Resource Manager-Vorlagen für Metrikwarnungen
+description: Dieser Artikel enthält Beispiele für Resource Manager-Vorlagen zum Erstellen von Metrikwarnungen in Azure Monitor.
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853303"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515375"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Metrikwarnungsregeln in Azure Monitor
 
@@ -20,7 +20,7 @@ Dieser Artikel enthält Beispiele für die Verwendung von [Azure Resource Manage
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-Eine Liste mit Ressourcen, für die Metrikwarnungsregeln verwendet werden können, finden Sie unter [Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor](../platform/alerts-metric-near-real-time.md). Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel finden Sie unter [Metrikwarnungen – Erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Eine Liste mit Ressourcen, für die Metrikwarnungsregeln verwendet werden können, finden Sie unter [Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor](../platform/alerts-metric-near-real-time.md). Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel finden Sie unter [Metrikwarnungen – Erstellen oder aktualisieren](/rest/api/monitor/metricalerts/createorupdate).
 
 > [!NOTE]
 > Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie unter [Ressourcenvorlage für Metrikwarnungen für Protokolle](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
@@ -1094,7 +1094,7 @@ Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser 
 
 Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel mit statischem Schwellenwert für eine benutzerdefinierte Metrik erstellen.
 
-Weitere Informationen zu benutzerdefinierten Metriken in Azure Monitor finden Sie unter [Benutzerdefinierte Metriken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Weitere Informationen zu benutzerdefinierten Metriken in Azure Monitor finden Sie unter [Benutzerdefinierte Metriken in Azure Monitor](../platform/metrics-custom-overview.md).
 
 Wenn Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, müssen Sie sowohl den Metriknamen als auch den Metriknamespace angeben. Sie sollten sich auch vergewissern, dass die benutzerdefinierte Metrik bereits gemeldet wird, da Sie keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen können, die noch nicht vorhanden ist.
 
@@ -1325,7 +1325,7 @@ Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als �
 
 >[!NOTE]
 >
-> Sie können den Metriknamespace einer bestimmten benutzerdefinierten Metrik ermitteln, indem Sie [Ihre benutzerdefinierten Metriken über das Azure-Portal durchsuchen](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal).
+> Sie können den Metriknamespace einer bestimmten benutzerdefinierten Metrik ermitteln, indem Sie [Ihre benutzerdefinierten Metriken über das Azure-Portal durchsuchen](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal).
 
 
 ## <a name="multiple-resources"></a>Mehrere Ressourcen

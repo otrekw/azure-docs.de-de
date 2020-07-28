@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, Objective-C – Speech-Dienst'
+title: 'Schnellstart: Erkennen von Sprache, Objective-C – Speech-Dienst (macOS)'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie Sprache in Objective-C unter macOS mit dem Speech SDK erkennen.
+description: Hier erfahren Sie, wie Sie eine App zum Erkennen von Sprache in Objective-C für einen macOS-Computer mithilfe des Cognitive Services Speech SDK erstellen.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: b73925165552fe428be7df465b33701eeed157cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391518"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524232"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter macOS mit dem Speech SDK
 

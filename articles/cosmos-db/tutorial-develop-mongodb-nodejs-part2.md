@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a796ae32033dbc09b1f5b888ded9ea5e1f4c457e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119170"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523484"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Erstellen einer Node.js Express-App
 
@@ -147,11 +147,11 @@ Weitere Voraussetzungen für dieses Tutorial:
 
 7. Er speichert alle geänderten Dateien. 
 
-8. Klicken Sie in Visual Studio Code auf die Schaltfläche **Debuggen**![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), und klicken Sie auf die Zahnradschaltfläche ![Zahnradschaltfläche in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Die neue Datei „launch.json“ wird in Visual Studio Code geöffnet.
+8. Klicken Sie in Visual Studio Code auf die Schaltfläche **Debuggen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: und auf die Zahnradschaltfläche :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png":::. Die neue Datei „launch.json“ wird in Visual Studio Code geöffnet. 
 
 8. Ändern Sie `"${workspaceFolder}\\server"` in Zeile 11 der Datei „launch.json“ in `"program": "${workspaceRoot}/src/server/index.js"`, und speichern Sie die Datei.
 
-9. Klicken Sie auf die Schaltfläche **Debugging starten**![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png), um die App auszuführen.
+9. Klicken Sie auf die Schaltfläche **Debuggen starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png":::, um die App auszuführen.
 
     Die App sollte ohne Fehler ausgeführt werden.
 

@@ -9,39 +9,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: f1d5a5cf6fb23ce3ccf92faf75d80cbe760b9bdc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7b027ead90c0bde8611fc08f19f261c934de2e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038388"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545011"
 ---
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
 
-In dieser Schnellstartanleitung erstellen Sie eine Android-App von Grund auf neu und integrieren den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
+In dieser Schnellstartanleitung erstellen Sie eine Android-App von Grund auf neu und integrieren den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](../../how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
-* [Git-Client](https://git-scm.com/)
-* [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk)
+* [Git](https://git-scm.com/).
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk)
 * [Android Studio](https://developer.android.com/studio)
 
 ## <a name="create-an-android-project"></a>Erstellen eines Android-Projekts
 
-Beginnen Sie ein neues Projekt in Android Studio. Der Quellcode für dieses Beispiel ist als Teil des [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) verfügbar.
+Beginnen Sie ein neues Projekt in Android Studio. Der Quellcode für dieses Beispiel ist als Teil des [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) verfügbar.
 
 ![Neues Projekt](../../media/android/java/android-studio-create-project.png)
 
-Wählen Sie im Fenster zur Projektauswahl **Leere Aktivität** aus, und klicken Sie dann auf ‚Weiter‘.
+Wählen Sie im Fenster **Choose your project** (Projekt auswählen) die Option **Empty Activity** (Leere Aktivität) und dann **Next** (Weiter) aus.
 
 ![Leeres Aktivitätsprojekt](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurieren des Projekts
 
-Nennen Sie das Projekt „QuickstartJava“, wählen Sie einen Speicherort aus, wählen Sie „Java“ als Programmiersprache aus, und klicken Sie dann auf „Fertigstellen“.
+Nennen Sie das Projekt **QuickstartJava**, und wählen Sie einen Speicherort dafür aus. Wählen Sie als Programmiersprache **Java** und dann **Finish** (Fertigstellen) aus.
 
 ![Konfigurieren des Projekts](../../media/android/java/android-studio-configure-project.png)
 
@@ -51,7 +51,7 @@ Erstellen Sie einen neuen Ordner **/assets**.
 
 ![Erstellen eines neuen Medienobjektordners](../../media/android/java/android-studio-assets-folder.png)
 
- Erstellen Sie eine Datei mit dem Namen **ENV** im Medienobjektordner. Fügen Sie den folgenden Quellcode hinzu, und setzen Sie bei Bedarf Werte ein. Committen Sie diese ENV-Datei nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind.
+ Erstellen Sie eine Datei mit dem Namen **ENV** im Medienobjektordner. Fügen Sie die folgenden Namen und Werte hinzu, und geben Sie entsprechende Werte an. Committen Sie diese ENV-Datei nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind.
 
 ![Neue ENV-Datei erstellen](../../media/android/java/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 
-Ersetzen Sie die vorhandenen Abhängigkeiten in der Datei **build.gradle** durch die Implementierungen unten, um GSON (JSON-Analyse und -Serialisierung) und DOTENV zu aktivieren, um auf die in der ENV-Datei definierten Variablen zu verweisen. Möglicherweise müssen Sie das Projekt beim Implementieren von Aktivitäten später in diesem Schnellstart erneut synchronisieren.
+Ersetzen Sie die vorhandenen Abhängigkeiten in der Datei **build.gradle** durch die folgenden Implementierungen, um GSON (JSON-Analyse und -Serialisierung) und DOTENV zu aktivieren, um auf die in der ENV-Datei definierten Variablen zu verweisen. Möglicherweise müssen Sie das Projekt beim Implementieren von Aktivitäten später in diesem Schnellstart erneut synchronisieren.
 
 ```build.gradle
 dependencies {
@@ -84,7 +84,7 @@ dependencies {
 
 ## <a name="update-app-strings-and-layout-resources"></a>Aktualisieren von App-Zeichenfolgen und Layoutressourcen
 
-Ersetzen Sie den Inhalt in **res/strings/strings.xml** durch die unten angegebenen Zeichenfolgen für die Verwendung in der App.
+Ersetzen Sie den Inhalt in **res/strings/strings.xml** durch die folgenden Zeichenfolgen für die Verwendung in der App.
 
 ![App strings.xml](../../media/android/java/android-studio-strings.png)
 
@@ -102,7 +102,7 @@ Ersetzen Sie den Inhalt in **res/strings/strings.xml** durch die unten angegeben
 </resources>
 ```
 
-Ersetzen Sie die Inhalte in **res/layout/activity_main.xml** durch den XML-Code unten für die Verwendung in der App. Dies ist das Benutzeroberflächenlayout der App.
+Ersetzen Sie den Inhalt in **res/layout/activity_main.xml** durch den folgenden XML-Code für die Verwendung in der App. Dieser XML-Code ist das Benutzeroberflächenlayout der App.
 
 ![App activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
 
@@ -203,7 +203,7 @@ Ersetzen Sie die Inhalte in **res/layout/activity_main.xml** durch den XML-Code 
 
 ## <a name="add-the-web-view-layout"></a>Hinzufügen des Layouts für die Webansicht
 
-Erstellen Sie im Ordner **res/layout/** eine neue Layoutressourcendatei, und nennen Sie sie **activity_immersive_reader**. Ersetzen Sie dann ihren Inhalt durch den XML-Code unten. Dadurch wird die WebView-Komponente hinzugefügt, die vom IRActivity-Java-Code verwendet wird, der in einem späteren Schritt erstellt wird. In diesem Schritt ist er undefiniert und verursacht Fehler.
+Erstellen Sie im Ordner **res/layout/** eine neue Layoutressourcendatei, und nennen Sie sie **activity_immersive_reader**. Ersetzen Sie dann ihren Inhalt durch den XML-Code unten. Durch diesen XML-Code wird die WebView-Komponente hinzugefügt, die vom IRActivity-Java-Code verwendet wird, der in einem späteren Schritt erstellt wird. In diesem Schritt ist er undefiniert und verursacht Fehler.
 
 ![Erstellen einer neuen Layoutressourcendatei](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -256,9 +256,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates a new activity, finds its content and the Immersive Reader button
- * when clicked the app sends the content to the Immersive Reader SDK and
- * Launches the Immersive Reader
+ * Creates a new activity, finds its content and the Immersive Reader button.
+ * When clicked, the app sends the content to the Immersive Reader SDK and
+ * launches the Immersive Reader.
  */
 public class MainActivity extends Activity {
 
@@ -287,13 +287,13 @@ public class MainActivity extends Activity {
 }
 ```
 
-Wir erstellen 16 weitere Java-Klassendateien im Ordner **/Java/com.example.quickstartjava**. Alle diese Klassen werden von der App verwendet, um das SDK für Plastischer Reader zu integrieren. In jeder neuen Datei gibt es im Code ein paar Verweise auf Klassen, die noch nicht vorhanden sind und erst später erstellt werden. Sobald alle Klassen erstellt wurden, sollten keine Fehler wegen leerer Verweise mehr auftreten.
+Im Ordner **/Java/com.example.quickstartjava** werden 16 weitere Java-Klassendateien erstellt. Alle diese Klassen werden von der App verwendet, um das Immersive Reader SDK zu integrieren. In jeder neuen Datei gibt es im Code ein paar Verweise auf Klassen, die noch nicht vorhanden sind und erst später erstellt werden. Sobald alle Klassen erstellt wurden, sollten keine Fehler wegen leerer Verweise mehr auftreten.
 
-Erstellen Sie eine neue **ImmersiveReader.java**-Java-Klassendatei, indem Sie mit der rechten Maustaste auf den Ordner in Android Studio klicken und dann ‚Neu‘ gefolgt von ‚‘Java Class‘ auswählen. Für jede neu erstellte Java-Klassendatei verwenden Sie stets diese Methode.
+Erstellen Sie eine neue **ImmersiveReader.java**-Java-Klassendatei, indem Sie mit der rechten Maustaste auf den Ordner in Android Studio klicken und dann **New** (Neu) gefolgt von **Java Class** (Java-Klasse) auswählen. Für jede neu erstellte Java-Klassendatei verwenden Sie stets diese Methode.
 
 ![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
 
-Ersetzen Sie die Inhalte von **ImmersiveReader.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **ImmersiveReader.java** durch den folgenden Code:
 
 ```ImmersiveReader.java
 /**
@@ -347,7 +347,7 @@ public class ImmersiveReader {
      * @param dataToRead - Content to be read
      * @return IRError - IRError, with following error codes:
      * a) Error.NONE in case of successful launch of Immersive Reader
-     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token.
+     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token
      * c) Error.INVALID_STATE in case of empty activity
      * d) Error.INVALID_CONTENT in case of empty list of text chunks
      */
@@ -377,7 +377,7 @@ Erstellen Sie eine neue **IRActivity.java**-Java-Klassendatei.
 
 ![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
 
-Ersetzen Sie die Inhalte von **IRActivity.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **IRActivity.java** durch den folgenden Code:
 
 ```IRActivity.java
 /**
@@ -408,8 +408,8 @@ public class ImmersiveReader {
 
     /**
      * Interface to accept access token from client app.
-     * Note that it is client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
-     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string
+     * Note that it is the client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
+     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string.
      */
     @Keep
     public interface IAuthenticator {
@@ -461,7 +461,7 @@ Erstellen Sie eine neue **IRError.java**-Java-Klassendatei.
 
 ![IRError](../../media/android/java/android-studio-irerror-java.png)
 
-Ersetzen Sie die Inhalte von **IRError.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **IRError.java** durch den folgenden Code:
 
 ```IRError.java
 /**
@@ -540,7 +540,7 @@ Erstellen Sie eine neue **Error.java**-Java-Klassendatei.
 
 ![Fehler](../../media/android/java/android-studio-error-java.png)
 
-Ersetzen Sie den Inhalt von **Error.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **Error.java** durch den folgenden Code:
 
 ```Error.java
 /**
@@ -571,7 +571,7 @@ Erstellen Sie eine neue **ReadableContent.java**-Java-Klassendatei.
 
 ![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
 
-Ersetzen Sie die Inhalte von **ReadableContent.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **ReadableContent.java** durch den folgenden Code:
 
 ```ReadableContent.java
 /**
@@ -615,7 +615,7 @@ Erstellen Sie eine neue **ReadableTextChunk.java**-Java-Klassendatei.
 
 ![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
 
-Ersetzen Sie die Inhalte von **ReadableTextChunk.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **ReadableTextChunk.java** durch den folgenden Code:
 
 ```ReadableTextChunk.java
 /**
@@ -647,7 +647,7 @@ Erstellen Sie eine neue **IRDataHolder.java**-Java-Klassendatei.
 
 ![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
 
-Ersetzen Sie die Inhalte von **IRDataHolder.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **IRDataHolder.java** durch den folgenden Code:
 
 ```IRDataHolder.java
 /**
@@ -663,7 +663,7 @@ import androidx.annotation.Keep;
  * A thin singleton class that is used to hold the Client's IAuthenticator's implementation and the Content to be read.
  * This is required for two reasons:
  * 1) As per Android guidelines, data being passed via intent should be limited to a few KBs. Alternative is to use Singleton holder classes like this one.
- * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios
+ * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios.
  */
 
 @Keep
@@ -712,7 +712,7 @@ Erstellen Sie eine neue **IRAuthenticator.java**-Java-Klassendatei.
 
 ![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
 
-Ersetzen Sie die Inhalte von **IRAuthenticator.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **IRAuthenticator.java** durch den folgenden Code:
 
 ```IRAuthenticator.java
 /**
@@ -739,10 +739,10 @@ import java.net.URL;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
     private static final String LOG_TAG = "IRAuthenticator";
@@ -823,7 +823,7 @@ Erstellen Sie eine neue **IRLauncher.java**-Java-Klasssendatei.
 
 ![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
 
-Ersetzen Sie die Inhalte von **IRLauncher.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **IRLauncher.java** durch den folgenden Code:
 
 ```IRLauncher.java
 /**
@@ -853,7 +853,7 @@ import java.util.concurrent.Callable;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Responsible for setting up the web view with appropriate bridging between JS and Java to launch the Immersive reader url for reading the content
+ * Responsible for setting up the web view with appropriate bridging between JavaScript and Java to launch the Immersive Reader url for reading the content.
  */
 
 public class IRLauncher {
@@ -876,7 +876,7 @@ public class IRLauncher {
         // Invoked in case of empty access token or empty content request to be read
         void onFailure(IRError error);
 
-        // Invoked when Immersive reader is exiting (e.g.) user pressed back in the immersive reader experience
+        // Invoked when Immersive Reader is exiting (e.g.) user pressed back in the Immersive Reader experience
         void onExit();
     }
 
@@ -981,7 +981,7 @@ public class IRLauncher {
             }
         });
 
-        // Prepare and set the WebAppInterface to hear back from the JS
+        // Prepare and set the WebAppInterface to hear back from the JavaScript
         WebAppInterface jsInterface = new WebAppInterface(new WebAppInterface.WebAppListener() {
             @Override
             public void onShowToast(String toast) {
@@ -1012,11 +1012,11 @@ public class IRLauncher {
 }
 ```
 
-Erstellen Sie eine neue **IRStore.java**-Java-Klassendatei.
+Erstellen Sie eine neue **IRStore.java**-Java-Klasssendatei.
 
 ![IRStore](../../media/android/java/android-studio-irstore-java.png)
 
-Ersetzen Sie die Inhalte von **IRStore.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **IRStore.java** durch den folgenden Code:
 
 ```IRStore.java
 /**
@@ -1037,11 +1037,11 @@ public final class IRStore {
 }
 ```
 
-Erstellen Sie eine neue **AuthenticationTask.java**-Java-Klassendatei.
+Erstellen Sie eine neue **AuthenticationTask.java**-Java-Klasssendatei.
 
 ![AuthenticationTask](../../media/android/java/android-studio-authenticationtask-java.png)
 
-Ersetzen Sie die Inhalte von **AuthenticationTask.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **AuthenticationTask.java** durch den folgenden Code:
 
 ```AuthenticationTask.java
 /**
@@ -1098,7 +1098,7 @@ Erstellen Sie eine neue **Chunk.java**-Java-Klassendatei.
 
 ![Block](../../media/android/java/android-studio-chunk-java.png)
 
-Ersetzen Sie den Inhalt von **Chunk.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **Chunk.java** durch den folgenden Code:
 
 ```Chunk.java
 /**
@@ -1112,8 +1112,8 @@ import androidx.annotation.Keep;
 
 /**
  * The chunk object that will be sent to the Immersive Reader SDK.
- * The content is a string of text, the lang is a string, e.g. 'll-cc'
- * and the mimeType is also a string, e.g. 'text/plain'
+ * The content is a string of text, the lang is a string, e.g. 'll-cc',
+ * and the mimeType is also a string, e.g. 'text/plain'.
  */
 
 @Keep
@@ -1135,7 +1135,7 @@ Erstellen Sie eine neue **Content.java**-Java-Klassendatei.
 
 ![Inhalt](../../media/android/java/android-studio-content-java.png)
 
-Ersetzen Sie den Inhalt von **Content.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **Content.java** durch den folgenden Code:
 
 ```Content.java
 /**
@@ -1171,7 +1171,7 @@ Erstellen Sie eine neue **Options.java**-Java-Klassendatei.
 
 ![Tastatur](../../media/android/java/android-studio-options-java.png)
 
-Ersetzen Sie den Inhalt von **Options.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **Options.java** durch den folgenden Code:
 
 ```Options.java
 /**
@@ -1205,7 +1205,7 @@ Erstellen Sie eine neue **Message.java**-Java-Klassendatei.
 
 ![`Message`](../../media/android/java/android-studio-message-java.png)
 
-Ersetzen Sie die Inhalte von **Message.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **Message.java** durch den folgenden Code:
 
 ```Message.java
 /**
@@ -1217,7 +1217,7 @@ import androidx.annotation.Keep;
 
 /**
  * The message object that will be sent to the Immersive Reader SDK.
- * This object contains the access token, sub domain, Content and Options.
+ * This object contains the access token, sub domain, Content, and Options.
  */
 
 @Keep
@@ -1239,11 +1239,11 @@ public class Message {
 }
 ```
 
-Erstellen Sie eine neue **WebAppInterface.java** Java-Klassendatei.
+Erstellen Sie eine neue **WebAppInterface.java**-Java-Klassendatei.
 
 ![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
 
-Ersetzen Sie die Inhalte von **WebAppInterface.java** durch den folgenden Code.
+Ersetzen Sie den Inhalt von **WebAppInterface.java** durch den folgenden Code.
 
 ```WebAppInterface.java
 /**
@@ -1257,7 +1257,7 @@ import androidx.annotation.Keep;
 import android.webkit.JavascriptInterface;
 
 /**
- * JavaScript interface implementation passed to the WebView to enable talking between JS and Java
+ * JavaScript interface implementation passed to the WebView to enable talking between JavaScript and Java.
  */
 
 @Keep
@@ -1296,7 +1296,7 @@ Damit die Implementierung der Webansicht funktioniert, ist HTML erforderlich. Kl
 
 ![Speicherort des HTML-Medienobjekts](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
-Fügen Sie den unten abgebildeten HTML- und JavaScript-Code hinzu. Dadurch wird der App das SDK für Plastischer Reader hinzugefügt und mithilfe des von uns geschriebenen App-Codes zum Starten des Plastischen Readers verwendet.
+Fügen Sie den folgenden HTML- und JavaScript-Code hinzu. Dadurch wird der App das Immersive Reader SDK hinzugefügt und mithilfe des von Ihnen geschriebenen App-Codes zum Starten des plastischen Readers verwendet.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1353,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
 
-Da die Anwendung Netzwerkaufrufe an das SDK für Plastischer Reader vornehmen muss, müssen wir sicherstellen, dass die App-Berechtigungen so konfiguriert sind, dass Netzwerkzugriff zugelassen wird. Ersetzen Sie den Inhalt von **/manifests/AndroidManifest.xml** durch den XML-Code unten.
+Da die Anwendung Netzwerkaufrufe an das Immersive Reader SDK vornehmen muss, müssen Sie sicherstellen, dass die App-Berechtigungen so konfiguriert sind, dass Netzwerkzugriff zugelassen wird. Ersetzen Sie den Inhalt von **/manifests/AndroidManifest.xml** durch den folgenden XML-Code:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1384,12 +1384,12 @@ Da die Anwendung Netzwerkaufrufe an das SDK für Plastischer Reader vornehmen mu
 </manifest>
 ```
 
-## <a name="running-the-app"></a>Ausführen der App
+## <a name="run-the-app"></a>Ausführen der App
 
-Verwenden Sie Android Studio, um die App auf einem Geräteemulator auszuführen. Wenn Sie auf die Schaltfläche **Plastischer Reader** klicken, sehen Sie, dass der plastische Reader mit dem Inhalt in der App gestartet wurde.
+Verwenden Sie Android Studio, um die App auf einem Geräteemulator auszuführen. Wenn Sie **Plastischer Reader**auswählen, wird der plastische Reader mit dem Inhalt der App geöffnet.
 
 ![Plastischer Reader](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](../../reference.md) vertraut.
+Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](../../reference.md) vertraut.

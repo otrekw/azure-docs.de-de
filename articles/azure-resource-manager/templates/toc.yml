@@ -302,6 +302,8 @@
         - name: Bereitstellungsskript
           displayName: custom script
           href: deployment-script-template.md
+        - name: Erstellen einer Entwicklungsumgebung für Bereitstellungsskripts
+          href: deployment-script-template-configure-dev.md
         - name: Modularisieren von Vorlagen
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
@@ -449,7 +451,7 @@
       href: /rest/api/resources/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/resource
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.resourcemanager

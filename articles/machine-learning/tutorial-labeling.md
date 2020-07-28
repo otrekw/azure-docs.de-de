@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628386"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536163"
 ---
-# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts (Vorschau) für mehrklassige Bildklassifizierung 
+# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dieses Tutorial zeigt Ihnen, wie Sie den Prozess der Beschriftung (auch als Tagging bezeichnet) von Bildern verwalten, die als Daten für die Erstellung von Machine Learning-Modellen verwendet werden sollen. Die Datenbeschriftung in Azure Machine Learning ist in der Public Preview-Phase.
@@ -130,7 +130,7 @@ Klicken Sie auf **Weiter**, um fortzufahren.
 
 1. Wählen Sie **Weiter** aus.
 
-1. Lassen Sie auf dem Formular **Durch ML unterstützte Beschriftung** das Kontrollkästchen deaktiviert. Die durch ML unterstützte Beschriftung erfordert mehr Daten als in diesem Tutorial verwendet werden.
+1. Bei Verwendung eines Unternehmensarbeitsbereichs wird der Abschnitt **Durch ML unterstützte Beschriftung** angezeigt.  Lassen Sie das Kontrollkästchen deaktiviert. Die durch ML unterstützte Beschriftung erfordert mehr Daten als in diesem Tutorial verwendet werden.
 
 1. Wählen Sie **Projekt erstellen** aus.
 

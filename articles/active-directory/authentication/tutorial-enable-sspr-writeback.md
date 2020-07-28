@@ -5,24 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/24/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202543"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518486"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
 Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) in Azure Active Directory (Azure AD) können Benutzer über einen Webbrowser ihre Kennwörter aktualisieren oder ihre Konten entsperren. In einer Hybridumgebung, in der Azure AD mit einer lokalen Active Directory Domain Services-Umgebung (AD DS) verbunden ist, kann dieses Szenario dazu führen, dass sich Kennwörter zwischen den beiden Verzeichnissen unterscheiden.
 
 Das Kennwortrückschreiben kann genutzt werden, um Kennwortänderungen in Azure AD mit Ihrer lokalen AD DS-Umgebung zu synchronisieren. Azure AD Connect bietet einen sicheren Mechanismus zum Zurücksenden dieser Kennwortänderungen in ein vorhandenes lokales Verzeichnis aus Azure AD.
+
+> [!IMPORTANT]
+> In diesem Tutorial wird erläutert, wie ein Administrator die Self-Service-Kennwortzurücksetzung wieder in einer lokalen Umgebung aktiviert. Wenn Sie bereits als Endbenutzer für die Self-Service-Kennwortzurücksetzung registriert sind und wieder zu Ihrem Konto zurückkehren müssen, gehen Sie zu https://aka.ms/sspr.
+>
+> Wenn Ihr IT-Team die Möglichkeit zum Zurücksetzen Ihres eigenen Kennworts nicht aktiviert hat, wenden Sie sich an den Helpdesk, um weitere Unterstützung zu erhalten.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -35,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
-* Ein funktionierender Azure AD-Mandant mit mindestens einer aktivierten Azure AD Premium P1- oder P2-Testlizenz.
+* Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure AD Premium P1-Testlizenz.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * Weitere Informationen finden Sie unter [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*.
@@ -54,9 +59,7 @@ Damit Sie das SSPR-Rückschreiben ordnungsgemäß verwenden können, müssen fü
 * **Zurücksetzen des Kennworts**
 * **Schreibberechtigungen** auf `lockoutTime`
 * **Schreibberechtigungen** auf `pwdLastSet`
-* **Erweiterte Rechte** für „Abgelaufenes Kennwort wiederherstellen“ für:
-   * Das Stammobjekt von *jeder Domäne* in dieser Gesamtstruktur
-   * Der Benutzerorganisationseinheiten, für die SSPR möglich sein soll
+* **Erweiterte Rechte** für „Abgelaufenes Kennwort wiederherstellen“ für das Stammobjekt *jeder Domäne* in dieser Gesamtstruktur, sofern noch nicht festgelegt.
 
 Wenn Sie diese Berechtigungen nicht zuweisen, ist das Rückschreiben scheinbar ordnungsgemäß konfiguriert, Benutzer erhalten jedoch Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud zu verwalten. Berechtigungen müssen für **Dieses und alle untergeordneten Objekte** angewendet werden, damit „Abgelaufenes Kennwort wiederherstellen“ angezeigt wird.  
 
@@ -74,7 +77,7 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 1. Wählen Sie in der Dropdownliste **Gilt für** den Eintrag **Nachfolgerbenutzerobjekte** aus.
 1. Aktivieren Sie unter *Berechtigungen* das Kontrollkästchen für die folgende Option:
     * **Zurücksetzen des Kennworts**
-1. Aktivieren Sie unter *Eigenschaften* die Kontrollkästchen für folgende Optionen. Sie müssen durch die Liste scrollen, um zu diesen Optionen zu gelangen. Möglicherweise sind sie bereits standardmäßig festgelegt:
+1. Aktivieren Sie unter *Eigenschaften* die Kontrollkästchen für folgende Optionen. Scrollen Sie durch die Liste, um zu diesen Optionen zu gelangen. Möglicherweise sind sie bereits standardmäßig festgelegt:
     * **lockoutTime schreiben**
     * **pwdLastSet schreiben**
 
@@ -89,13 +92,13 @@ Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, 
 Warten Sie beim Aktualisieren der Gruppenrichtlinie, bis die aktualisierte Richtlinie repliziert wurde, oder verwenden Sie den Befehl `gpupdate /force`.
 
 > [!Note]
-> Damit Kennwörter sofort geändert werden können, muss für das Kennwortrückschreiben die Einstellung „0“ festgelegt werden. Wenn sich Benutzer aber an die lokalen Richtlinien halten und *Minimales Kennwortalter* auf einen höheren Wert als „0“ festgelegt ist, funktioniert das Kennwortrückschreiben auch nach dem Auswerten der lokalen Richtlinien noch. 
+> Damit Kennwörter sofort geändert werden können, muss für das Kennwortrückschreiben die Einstellung „0“ festgelegt werden. Wenn sich Benutzer aber an die lokalen Richtlinien halten und *Minimales Kennwortalter* auf einen höheren Wert als „0“ festgelegt ist, funktioniert das Kennwortrückschreiben auch nach dem Auswerten der lokalen Richtlinien noch.
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Aktivieren des Kennwortrückschreibens in Azure AD Connect
 
 Eine Konfigurationsoption in Azure AD Connect ist das Kennwortrückschreiben. Wenn diese Option aktiviert ist, führen Kennwortänderungsereignisse dazu, dass Azure AD Connect die aktualisierten Anmeldeinformationen wieder mit der lokalen AD DS-Umgebung synchronisiert.
 
-Aktivieren Sie zum Aktivieren der Self-Service-Kennwortzurücksetzung zunächst die Rückschreiboption in Azure AD Connect. Führen Sie auf dem Azure AD Connect-Server die folgenden Schritte aus:
+Aktivieren Sie zum Aktivieren der SSPR zunächst die Rückschreiboption in Azure AD Connect. Führen Sie auf dem Azure AD Connect-Server die folgenden Schritte aus:
 
 1. Melden Sie sich bei Ihrem Azure AD Connect-Server an, und starten Sie den **Azure AD Connect**-Konfigurations-Assistenten.
 1. Wählen Sie auf der Seite **Willkommen** die Option **Konfigurieren** aus.

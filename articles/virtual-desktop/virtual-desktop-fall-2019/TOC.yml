@@ -1,12 +1,12 @@
-- name: Windows Virtual Desktop Fall 2019 Release
+- name: Windows Virtual Desktop (klassisch)
   href: ../index.yml
 - name: Übersicht
   items:
     - name: Was ist Windows Virtual Desktop?
       href: ../overview.md
-    - name: Dokumentation zum Spring 2020 Release
+    - name: Dokumentation zu Windows Virtual Desktop
       href: ../create-host-pools-azure-marketplace.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Erstellen eines Mandanten
       href: tenant-setup-azure-active-directory.md

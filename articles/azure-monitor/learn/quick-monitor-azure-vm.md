@@ -1,18 +1,18 @@
 ---
-title: Überwachen einer Azure-Ressource mit Azure Monitor
-description: Hier erfahren Sie, wie Sie Daten für eine Azure-Ressource in Azure Monitor erfassen und analysieren.
+title: Überwachen eines virtuellen Azure-Computers mit Azure Monitor
+description: Hier erfahren Sie, wie Sie Daten für einen virtuellen Azure-Computer in Azure Monitor erfassen und analysieren.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805115"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516395"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Schnellstart: Überwachen eines virtuellen Azure-Computers mit Azure Monitor
 [Azure Monitor](../overview.md) beginnt sofort nach der Erstellung virtueller Azure-Computer mit der Datenerfassung. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für einen virtuellen Azure-Computer automatisch gesammelt werden und wie sie im Azure-Portal angezeigt werden können. Anschließend erfahren Sie, wie Sie [Azure Monitor für VMs](../insights/vminsights-overview.md) für Ihren virtuellen Computer aktivieren, sodass Agents auf dem virtuellen Computer Daten aus dem Gastbetriebssystem erfassen und analysieren können (einschließlich Prozesse und deren Abhängigkeiten).
@@ -107,4 +107,4 @@ Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, muss er für die P
 In dieser Schnellstartanleitung haben Sie Azure Monitor für VMs für einen virtuellen Computer aktiviert und den Log Analytics-Arbeitsbereich konfiguriert, um Ereignisse für das Gastbetriebssystem zu erfassen. Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem Tutorial fort.
 
 > [!div class="nextstepaction"]
-> [Anzeigen oder Analysieren der Daten in Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Anzeigen oder Analysieren der Daten in Log Analytics](../log-query/get-started-portal.md)

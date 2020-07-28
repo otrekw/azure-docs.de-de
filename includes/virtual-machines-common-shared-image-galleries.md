@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221634"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501956"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -83,7 +83,7 @@ Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informa
 
 ## <a name="regional-support"></a>Regionsunterstützung
 
-Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://azure.microsoft.com/global-infrastructure/australia/contact/
+Alle öffentlichen Regionen können Zielregionen sein, aber für die Replikation in „Australien, Mitte“ und „Australien, Mitte 2“ muss Ihr Abonnement in die Zulassungsliste aufgenommen werden. Navigieren Sie zu https://azure.microsoft.com/global-infrastructure/australia/contact/, um die Aufnahme eines Abonnements in die Zulassungsliste anzufordern.
 
 ## <a name="limits"></a>Einschränkungen 
 

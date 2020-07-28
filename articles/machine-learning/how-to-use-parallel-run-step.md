@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520628"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,6 +33,7 @@ In diesem Artikel lernen Sie Folgendes:
 > * Schreiben Ihres Rückschlussskripts.
 > * Erstellen einer [Machine Learning-Pipeline](concept-ml-pipelines.md), die ParallelRunStep enthält, und Ausführen von Batchrückschluss für MNIST-Testbilder. 
 > * Erneutes Übermitteln einer Batchrückschluss-Ausführung mit neuer Dateneingabe und neuen Parametern. 
+> * Zeigen Sie die Ergebnisse an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -159,9 +160,7 @@ Objekte vom Typ [`PipelineData`](https://docs.microsoft.com/python/api/azureml-p
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>Vorbereiten des Modells
@@ -266,17 +265,17 @@ Jetzt haben Sie alles, was Sie brauchen: die Dateneingaben, das Modell, die Ausg
 
 ### <a name="prepare-the-environment"></a>Vorbereiten der Umgebung
 
-Geben Sie zunächst die Abhängigkeiten für Ihr Skript an. Diese ermöglicht es Ihnen, sowohl PIP-Pakete zu installieren als auch die Umgebung zu konfigurieren. Schließen Sie immer die Pakete **azureml-core** und **azureml-dataprep[pandas, fuse]** mit ein.
+Geben Sie zunächst die Abhängigkeiten für Ihr Skript an. Diese ermöglicht es Ihnen, sowohl PIP-Pakete zu installieren als auch die Umgebung zu konfigurieren.
 
-Wenn Sie ein benutzerdefiniertes Docker-Image verwenden (user_managed_dependencies=True), sollte auf Ihrem System außerdem Conda installiert sein.
+Fügen Sie der Liste der pip-Pakete stets **azureml-core** und **azureml-dataset-runtime[pandas, fuse]** hinzu. Wenn Sie ein benutzerdefiniertes Docker-Image verwenden (user_managed_dependencies=True), sollte auf Ihrem System außerdem Conda installiert sein.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -286,7 +285,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>Angeben der Parameter mithilfe von ParallelRunConfig
 
-`ParallelRunConfig` ist die Hauptkonfiguration für die `ParallelRunStep`-Instanz innerhalb der Azure Machine Learning-Pipeline. Sie wird verwendet, um Ihr Skript zu umschließen und die erforderlichen Parameter zu konfigurieren:
+`ParallelRunConfig` ist die Hauptkonfiguration für die `ParallelRunStep`-Instanz innerhalb der Azure Machine Learning-Pipeline. Sie wird verwendet, um Ihr Skript zu umschließen und die erforderlichen Parameter, einschließlich der folgenden Einträge, zu konfigurieren:
 - `entry_script`: Ein Benutzerskript als lokaler Dateipfad, das parallel auf mehreren Knoten ausgeführt wird. Ist `source_directory` vorhanden, verwenden Sie einen relativen Pfad. Verwenden Sie andernfalls einen beliebigen Pfad, auf den auf dem Computer zugegriffen werden kann.
 - `mini_batch_size`: Die Größe des Minibatchs, der an einen einzelnen Aufruf von `run()` übergeben wird (Optional. Der Standardwert ist `10` Dateien für FileDataset und `1MB` für TabularDataset.)
     - Bei `FileDataset` handelt es sich um die Anzahl von Dateien (Mindestwert: `1`). Mehrere Dateien können zu einem Minibatch zusammengefasst werden.
@@ -305,7 +304,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: Das Timeout für den Aufruf der Methode `run()` in Sekunden. (optional; Standardwert `60`)
 - `run_max_try`: Maximale Anzahl der Versuche von `run()` für einen Minibatch. Ein `run()` ist fehlgeschlagen, wenn eine Ausnahme ausgelöst wird oder beim Erreichen von `run_invocation_timeout` nichts zurückgegeben wird (optional; der Standardwert ist `3`). 
 
-Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden eines Pipelinelaufs optimieren können. In diesem Beispiel verwenden Sie PipelineParameter für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie später erneut einen Lauf senden. 
+Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden einer Pipelineausführung optimieren können. In diesem Beispiel verwenden Sie PipelineParameter für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie später erneut einen Lauf senden. 
 
 In diesem Beispiel wird davon ausgegangen, dass Sie das `digit_identification.py`-Skript verwenden, das zuvor erläutert wurde. Wenn Sie ein eigenes Skript verwenden, ändern Sie die Parameter `source_directory` und `entry_script` entsprechend.
 
@@ -392,6 +391,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
+
+Die Ergebnisse aus der obigen Ausführung werden in den Datenspeicher geschrieben, der im PipelineData-Objekt als Ausgabedaten angegeben ist. In diesem Fall heißt er *inferences*. Die Ergebnisse werden im Standardblobcontainer gespeichert. Sie können zu Ihrem Speicherkonto navigieren und ihn über Storage-Explorer anzeigen. Der Dateipfad lautet „azureml-blobstore-*GUID*/azureml/*RunId*/*output_dir*“.
+
+Sie können diese Daten auch herunterladen, um die Ergebnisse anzuzeigen. Nachfolgend sehen Sie den Beispielcode zum Anzeigen der ersten zehn Zeilen:
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

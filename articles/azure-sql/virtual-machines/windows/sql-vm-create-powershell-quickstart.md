@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e821c650bae7694070624aeebe7fcc3482f7a3b9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667402"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514610"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Schnellstart: Erstellen von SQL Server auf einem virtuellen Windows-Computer mit Azure PowerShell
 
@@ -147,13 +147,34 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    > [!TIP]
    > Die Erstellung des virtuellen Computers dauert einige Minuten.
 
-## <a name="install-the-sql-iaas-agent"></a>Installieren des SQL-IaaS-Agents
+## <a name="register-with-sql-vm-rp"></a>Registrieren bei SQL-VM-RP 
 
-Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie die [Erweiterung für SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md) installieren. Führen Sie nach der Erstellung des virtuellen Computers den folgenden Befehl aus, um den Agent auf dem neuen virtuellen Computer zu installieren:
+Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie sich beim [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md) registrieren.
 
-   ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
-   ```
+Damit der vollständige Funktionsumfang zur Verfügung steht, müssen Sie sich im vollständigen Modus beim Ressourcenanbieter registrieren. Dadurch wird jedoch der SQL Server-Dienst neu gestartet. Die empfohlene Vorgehensweise ist daher, sich im Lightweight-Modus zu registrieren und dann während eines Wartungsfensters auf den vollständigen Modus zu aktualisieren. 
+
+Registrieren Sie die SQL Server-VM zunächst im Modus „Lightweight“: 
+
+```powershell-interactive
+# Get the existing compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+        
+# Register SQL VM with 'Lightweight' SQL IaaS agent
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+  -LicenseType PAYG -SqlManagementType LightWeight
+```
+
+Führen Sie dann während eines Wartungsfensters ein Upgrade auf den vollständigen Modus durch: 
+
+```powershell-interactive
+# Get the existing Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+      
+# Register with SQL VM resource provider in full mode
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+```
+
+
 
 ## <a name="remote-desktop-into-the-vm"></a>Herstellen einer Remotedesktopverbindung mit dem virtuellen Computer
 

@@ -10,19 +10,19 @@
       items:
         - name: Einführung
           href: get-started.md
-        - name: "Schritt\_1: Erstellen eines Synapse-Arbeitsbereichs"
+        - name: 1. Erstellen eines Synapse-Arbeitsbereichs
           href: get-started-create-workspace.md
-        - name: "Schritt\_2: Analysieren mithilfe eines SQL-Pools"
+        - name: 2. Analysieren mithilfe eines SQL-Pools
           href: get-started-analyze-sql-pool.md
-        - name: "Schritt\_3: Analysieren mithilfe von Spark"
+        - name: 3. Analysieren mithilfe von Spark
           href: get-started-analyze-spark.md
-        - name: "Schritt\_4: Analysieren mithilfe von SQL On-Demand"
+        - name: 4. Analysieren mithilfe von SQL On-Demand
           href: get-started-analyze-sql-on-demand.md
-        - name: "Schritt\_5: Analysieren von Daten in einem Speicherkonto"
+        - name: 5. Analysieren von Daten in einem Speicherkonto
           href: get-started-analyze-storage.md
-        - name: "Schritt\_6: Orchestrieren mit Pipelines"
+        - name: 6. Orchestrieren mit Pipelines
           href: get-started-pipelines.md
-        - name: "Schritt\_7: Visualisieren mit Power BI"
+        - name: 7. Visualisieren mit Power BI
           href: get-started-visualize-power-bi.md
     - name: Cheat Sheet
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Zwischenspeichern von Resultsets
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning-Vorhersagen
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: Tabellen
               items:
                 - name: Übersicht

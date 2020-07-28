@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 9a5c03664205676d53c083bddcfa6833ace641d2
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457149"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505821"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -44,7 +44,7 @@ Für viele Azure-Ressourcen können die von Azure Monitor gesammelten Daten dire
 
 ![Metriken](media/overview/metrics.png)
 
-Die in Azure Monitor gesammelten Protokolldaten können mit [Abfragen](log-query/log-query-overview.md) analysiert werden, die die gesammelten Daten schnell abrufen, konsolidieren und analysieren.  Sie können Abfragen mit [Log Analytics](log-query/portals.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit diesen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](visualizations.md) oder [Warnungsregeln](platform/alerts-overview.md) speichern.
+Die in Azure Monitor gesammelten Protokolldaten können mit [Abfragen](log-query/log-query-overview.md) analysiert werden, die die gesammelten Daten schnell abrufen, konsolidieren und analysieren.  Sie können Abfragen mit [Log Analytics](./log-query/log-query-overview.md) im Azure-Portal erstellen und testen und die Daten dann entweder mit verschiedenen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](visualizations.md) oder [Warnungsregeln](platform/alerts-overview.md) speichern.
 
 Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Abfragesprache Kusto](/azure/kusto/query/), die für einfache Protokollabfragen geeignet ist, aber auch erweiterte Funktionen enthält, z.B. Aggregationen, Verknüpfungen und intelligente Analysen. Sie können die Abfragesprache schnell erlernen, indem Sie [mehrere Lektionen](log-query/get-started-queries.md) nutzen.  Es ist eine spezielle Anleitung für Benutzer vorhanden, die bereits mit [SQL](log-query/sql-cheatsheet.md) und [Splunk](log-query/splunk-cheatsheet.md) vertraut sind.
 
@@ -90,7 +90,7 @@ Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den B
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Überwachungslösungen
-[Überwachungslösungen](insights/solutions.md) in Azure Monitor sind Programmpakete, die Einblicke für eine bestimmte Anwendung oder einen bestimmten Dienst liefern. Dazu gehören die Logik zum Sammeln von Überwachungsdaten für die Anwendung oder den Dienst, [Abfragen](log-query/log-query-overview.md) zur Analyse dieser Daten und [Ansichten](../log-analytics/log-analytics-view-designer.md) zur Visualisierung. Überwachungslösungen sind bei Partnern und [von Microsoft verfügbar](insights/solutions-inventory.md) und bieten Überwachung für verschiedene Azure-Dienste und andere Anwendungen.
+[Überwachungslösungen](insights/solutions.md) in Azure Monitor sind Programmpakete, die Einblicke für eine bestimmte Anwendung oder einen bestimmten Dienst liefern. Dazu gehören die Logik zum Sammeln von Überwachungsdaten für die Anwendung oder den Dienst, [Abfragen](log-query/log-query-overview.md) zur Analyse dieser Daten und [Ansichten](./platform/view-designer.md) zur Visualisierung. Überwachungslösungen sind bei Partnern und [von Microsoft verfügbar](./monitor-reference.md) und bieten Überwachung für verschiedene Azure-Dienste und andere Anwendungen.
 
 ![Überwachungslösungen](media/overview/solutions-overview.png)
 
@@ -119,12 +119,12 @@ Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie v
 ![Dashboard](media/overview/dashboard.png)
 
 ### <a name="views"></a>Sichten
-[Ansichten](../log-analytics/log-analytics-view-designer.md) stellen Protokolldaten in Azure Monitor visuell dar.  Jede Ansicht enthält eine einzelne Kachel, auf der ein Drilldown zu einer Kombination aus Visualisierungen möglich ist, z.B. Balken- und Liniendiagramme sowie Listen, in denen wichtige Daten zusammengefasst sind.  Überwachungslösungen enthalten Ansichten, in denen Daten für eine bestimmte Anwendung zusammengefasst sind, und Sie können Ihre eigenen Ansichten erstellen, um Daten aus beliebigen Protokollabfragen darzustellen. Wie andere Elemente in Azure Monitor können Ansichten zu Azure-Dashboards hinzugefügt werden.
+[Ansichten](./platform/view-designer.md) stellen Protokolldaten in Azure Monitor visuell dar.  Jede Ansicht enthält eine einzelne Kachel, auf der ein Drilldown zu einer Kombination aus Visualisierungen möglich ist, z.B. Balken- und Liniendiagramme sowie Listen, in denen wichtige Daten zusammengefasst sind.  Überwachungslösungen enthalten Ansichten, in denen Daten für eine bestimmte Anwendung zusammengefasst sind, und Sie können Ihre eigenen Ansichten erstellen, um Daten aus beliebigen Protokollabfragen darzustellen. Wie andere Elemente in Azure Monitor können Ansichten zu Azure-Dashboards hinzugefügt werden.
 
 ![Sicht](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) ist ein Business Analytics-Dienst, der interaktive Visualisierungen für eine Vielzahl von Datenquellen bereitstellt und eine effektive Möglichkeit darstellt, Daten für andere Personen innerhalb und außerhalb Ihrer Organisation verfügbar zu machen. Sie können Power BI für den [automatischen Import von Protokolldaten aus Azure Monitor](../log-analytics/log-analytics-powerbi.md) konfigurieren, um diese zusätzlichen Visualisierungen zu nutzen.
+[Power BI](https://powerbi.microsoft.com) ist ein Business Analytics-Dienst, der interaktive Visualisierungen für eine Vielzahl von Datenquellen bereitstellt und eine effektive Möglichkeit darstellt, Daten für andere Personen innerhalb und außerhalb Ihrer Organisation verfügbar zu machen. Sie können Power BI für den [automatischen Import von Protokolldaten aus Azure Monitor](./platform/powerbi.md) konfigurieren, um diese zusätzlichen Visualisierungen zu nutzen.
 
 
 ![Power BI](media/overview/power-bi.png)
@@ -134,7 +134,7 @@ Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie v
 Oft besteht die Anforderung, Azure Monitor in andere Systeme zu integrieren und benutzerdefinierte Lösungen zu erstellen, die Ihre Überwachungsdaten nutzen. Andere Azure-Dienste arbeiten mit Azure Monitor, um diese Integration zu ermöglichen.
 
 ### <a name="event-hub"></a>Event Hub
-[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) ist eine Streamingplattform und ein Datenerfassungsdienst, der Daten mithilfe beliebiger Echtzeit-Analyseanbieter oder Batchverarbeitungs-/Speicheradapter transformieren und speichern kann. Verwenden Sie Event Hubs für das [Streamen von Azure Monitor-Daten](platform/stream-monitoring-data-event-hubs.md) zu SIEM- und Überwachungstools von Partnern.
+[Azure Event Hubs](../event-hubs/index.yml) ist eine Streamingplattform und ein Datenerfassungsdienst, der Daten mithilfe beliebiger Echtzeit-Analyseanbieter oder Batchverarbeitungs-/Speicheradapter transformieren und speichern kann. Verwenden Sie Event Hubs für das [Streamen von Azure Monitor-Daten](platform/stream-monitoring-data-event-hubs.md) zu SIEM- und Überwachungstools von Partnern.
 
 
 ### <a name="logic-apps"></a>Logic Apps
@@ -150,4 +150,4 @@ Weitere Informationen:
 * [Metriken und Protokolle](platform/data-platform.md) für die von Azure Monitor gesammelten Daten
 * [Datenquellen](platform/data-sources.md) dazu, wie die verschiedenen Komponenten Ihrer Anwendung Telemetriedaten senden
 * [Protokollabfragen](log-query/log-query-overview.md) zur Analyse der gesammelten Daten
-* [Bewährte Methoden](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) zum Überwachen von Cloudanwendungen und-Diensten.
+* [Bewährte Methoden](/azure/architecture/best-practices/monitoring) zum Überwachen von Cloudanwendungen und-Diensten.

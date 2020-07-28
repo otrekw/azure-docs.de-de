@@ -1020,6 +1020,10 @@
           href: insights/resource-group-insights.md
         - name: Problembehandlung für Erkenntnisse
           href: insights/troubleshoot-workbooks.md
+    - name: Ändern der Analyse
+      items:
+        - name: Ändern der Analyse
+          href: app/change-analysis.md
     - name: Lösungen
       items:
         - name: Übersicht
@@ -1073,30 +1077,6 @@
               href: insights/vmware.md
             - name: Wire Data-Lösung
               href: insights/wire-data.md
-        - name: Sichten
-          items:
-            - name: Konvertieren von Ansichten in Arbeitsmappen
-              items:
-                - name: Konvertierungsübersicht
-                  href: platform/view-designer-conversion-overview.md
-                - name: Konvertierungsoptionen
-                  href: platform/view-designer-conversion-options.md
-                - name: Übersicht und Zugriff
-                  href: platform/view-designer-conversion-access.md
-                - name: Häufige Aufgaben
-                  href: platform/view-designer-conversion-tasks.md
-                - name: Kachelkonvertierungen
-                  href: platform/view-designer-conversion-tiles.md
-                - name: Beispiele
-                  href: platform/view-designer-conversion-examples.md
-            - name: Sicht-Designer
-              href: platform/view-designer.md
-            - name: Kachelreferenz
-              href: platform/view-designer-tiles.md
-            - name: Referenz zur Visualisierungskomponente
-              href: platform/view-designer-parts.md
-            - name: Filter
-              href: platform/view-designer-filters.md
     - name: Arbeitsmappen
       items:
         - name: Übersicht
@@ -1124,6 +1104,20 @@
                   href: platform/workbooks-time.md
                 - name: Textparameter
                   href: platform/workbooks-text.md
+        - name: Konvertieren von Ansichten in Arbeitsmappen
+          items:
+            - name: Konvertierungsübersicht
+              href: platform/view-designer-conversion-overview.md
+            - name: Konvertierungsoptionen
+              href: platform/view-designer-conversion-options.md
+            - name: Übersicht und Zugriff
+              href: platform/view-designer-conversion-access.md
+            - name: Häufige Aufgaben
+              href: platform/view-designer-conversion-tasks.md
+            - name: Kachelkonvertierungen
+              href: platform/view-designer-conversion-tiles.md
+            - name: Beispiele
+              href: platform/view-designer-conversion-examples.md
     - name: Weitere Visualisierungen
       items:
         - name: Power BI
@@ -1217,6 +1211,8 @@
           href: app/azure-functions-supported-features.md
         - name: Versionshinweise
           items:
+            - name: SDKs für die codebasierte Überwachung
+              href: app/release-notes.md
             - name: Web-App-Erweiterung
               href: app/web-app-extension-release-notes.md
         - name: Datenmodell
@@ -1297,6 +1293,16 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault-Analyse (veraltet)
           href: insights/azure-key-vault-deprecated.md
+        - name: Sichten
+          items:
+            - name: Sicht-Designer
+              href: platform/view-designer.md
+            - name: Kachelreferenz
+              href: platform/view-designer-tiles.md
+            - name: Referenz zur Visualisierungskomponente
+              href: platform/view-designer-parts.md
+            - name: Filter
+              href: platform/view-designer-filters.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

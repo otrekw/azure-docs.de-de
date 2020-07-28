@@ -1,5 +1,5 @@
 ---
-title: 'Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen'
+title: Tabellen mit gemeinsam genutzten Metadaten
 description: Azure Synapse Analytics bietet ein Modell mit gemeinsam genutzten Metadaten, das es ermöglicht, über die zugehörige SQL On-Demand-Engine (Vorschauversion) und die SQL-Pool-Engine auf eine in Apache Spark erstellte Tabelle zuzugreifen, ohne dass die Daten dupliziert werden.
 services: sql-data-warehouse
 author: MikeRys
@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 257847a34821ad48d0491472cf7365932f7740c0
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080780"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496025"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 

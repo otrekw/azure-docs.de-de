@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: Bedingter Zugriff
                   href: database/conditional-access-configure.md
+                - name: Dienstprinzipale (Anwendungen)
+                  href: database/authentication-aad-service-principal.md
             - name: TDE (Transparent Data Encryption)
               items:
                 - name: Übersicht
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: Sicherheit
           items:
+            - name: "Erstellen von Azure\_AD-Gastbenutzern und Festlegen als Azure\_AD-Administrator"
+              href: database/authentication-aad-guest-users.md
             - name: Konfigurieren von TDE mit BYOK
               href: database/transparent-data-encryption-byok-configure.md
             - name: Speichern von Sicherheitsrisikoüberprüfungen im Speicher
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: Entfernen einer TDE-Schutzvorrichtung
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: Erstellen von Benutzern mithilfe von Dienstprinzipalen
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: Verschieben von Daten
           items:
             - name: Migrieren mithilfe von DMS
@@ -613,7 +619,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -849,7 +855,7 @@
           href: managed-instance/alerts-create.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1012,7 +1018,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: /cli/azure/
             - name: T-SQL
               href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
@@ -1074,7 +1080,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

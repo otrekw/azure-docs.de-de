@@ -3,12 +3,12 @@ title: Worum handelt es sich bei Language Understanding (LUIS)?
 description: Language Understanding (LUIS) ist ein cloudbasierter API-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen.
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538036"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -61,7 +61,7 @@ Das LUIS-Modell beginnt mit Kategorien von Benutzerabsichten, die als **[Absicht
 
 ## <a name="query-prediction-endpoint"></a>Abfragen eines Vorhersageendpunkts
 
-Nachdem Ihre App trainiert und für den Endpunkt veröffentlicht wurde, sendet die Clientanwendung Äußerungen an die API des [Vorhersageendpunkts](https://go.microsoft.com/fwlink/?linkid=2092356). Die API wendet zu Analysezwecken die App auf die Äußerung an und liefert Vorhersageergebnisse in einem JSON-Format zurück.
+Nachdem Ihre App trainiert und für den Endpunkt veröffentlicht wurde, sendet die Clientanwendung Äußerungen an die API des [Vorhersageendpunkts](https://go.microsoft.com/fwlink/?linkid=2092356). Die API wendet zu Analysezwecken das Modell auf die Äußerung an und antwortet mit Vorhersageergebnissen im JSON-Format.
 
 Die JSON-Endpunktantwort enthält mindestens die Abfrageäußerung und die Absicht mit der höchsten Bewertung. Sie kann auch Daten wie die folgende Entität **Kontakttyp** und die allgemeine Stimmung extrahieren.
 

@@ -79,7 +79,7 @@
       href: sql-api-python-samples.md
     - name: PowerShell
       href: powershell-samples-sql.md
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
@@ -574,6 +574,9 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Erweiterter Schutz vor Bedrohungen
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
           href: security-baseline.md
     - name: Unternehmensfähigkeit
@@ -988,7 +991,7 @@
           href: how-to-manage-indexing-policy.md
         - name: Definieren eindeutiger Schlüssel
           href: how-to-define-unique-keys.md
-    - name: Leistung und Problembehandlung
+    - name: Leistung
       items:
         - name: Abfrage
           items:
@@ -996,28 +999,20 @@
               href: profile-sql-api-query.md
             - name: Optimieren der Abfrageleistung
               href: sql-api-query-metrics.md
-            - name: Problembehandlung der Abfrageleistung
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: Tipps zur Leistungssteigerung für .NET SDK v3
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: Tipps zur Leistungssteigerung für .NET SDK v2
               href: performance-tips.md
-            - name: Problembehandlung für das .NET SDK
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: Tipps zur Leistungssteigerung für das Java SDK v4
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Problembehandlung für das Java SDK v4
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: Async Java SDK v2
               href: performance-tips-async-java.md
             - name: Sync Java SDK v2
               href: performance-tips-java.md
-            - name: 'Problembehandlung: Async Java SDK v2'
-              href: troubleshoot-java-async-sdk.md
         - name: 'Leistungstest: Beispiel-App'
           href: performance-testing.md
         - name: Kostengünstige Lese- und Schreibvorgänge
@@ -1026,6 +1021,36 @@
       items:
         - name: Migrieren zum Java V4 SDK
           href: migrate-java-v4-sdk.md
+    - name: Problembehandlung
+      items:
+        - name: Häufige Fehler
+          items:
+            - name: Problembehandlung der Abfrageleistung
+              href: troubleshoot-query-performance.md
+            - name: Problembehandlung beim Timeout einer Dienstanforderung
+              href: troubleshoot-request-timeout.md
+            - name: Problembehandlung bei zu hoher Anforderungsrate
+              href: troubleshoot-request-rate-too-large.md
+            - name: Problembehandlung bei einem Fehler vom Typ „Nicht gefunden“
+              href: troubleshoot-not-found.md
+            - name: Problembehandlung bei einem Fehler vom Typ „Nicht autorisiert“
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: 'Allgemeine Problembehandlung: .NET SDK'
+              href: troubleshoot-dot-net-sdk.md
+            - name: Problembehandlung bei zu großen Anforderungsheadern
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: Problembehandlung bei einem Anforderungstimeout
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: Problembehandlung bei einem Fehler vom Typ „Nicht verfügbar“
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: Problembehandlung für das Java SDK v4
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: 'Problembehandlung: Async Java SDK v2'
+              href: troubleshoot-java-async-sdk.md
     - name: Änderungsfeed
       items:
         - name: "Protokolle für Azure Cosmos\_DB-Trigger"
