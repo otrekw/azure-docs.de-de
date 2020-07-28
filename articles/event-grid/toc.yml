@@ -8,6 +8,8 @@
       href: overview.md
     - name: Vergleich von Messagingdiensten
       href: compare-messaging-services.md
+    - name: Versionshinweise
+      href: whats-new.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -58,7 +60,7 @@
       href: custom-event-to-hybrid-connection.md
 - name: Beispiele
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
       items:
         - name: Erstellen eines benutzerdefinierten Themas

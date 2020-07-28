@@ -64,6 +64,8 @@
       href: manage-recording-policy-how-to.md
     - name: Analysieren von Livevideos mit KI Ihrer Wahl
       href: analyze-with-ai-your-choice-how-to.md
+    - name: Aufrufen direkter Methoden über das Portal
+      href: use-azure-portal-to-invoke-direct-methods.md
     - name: Problembehandlung
       href: troubleshoot-how-to.md
 - name: Verweis

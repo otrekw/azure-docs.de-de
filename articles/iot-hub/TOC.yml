@@ -65,7 +65,7 @@
               href: tutorial-routing.md
             - name: Azure RM-Vorlage
               href: tutorial-routing-config-message-routing-RM-template.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: tutorial-routing-config-message-routing-CLI.md
             - name: PowerShell
               href: tutorial-routing-config-message-routing-PowerShell.md
@@ -85,7 +85,7 @@
       href: tutorial-connectivity.md
 - name: Beispiele
   items:
-    - name: Azure Policy-Integrationen
+    - name: Integrierte Azure Policy-Aktionen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -419,10 +419,10 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
-      href: /powershell/module/az.iothub#iot
+      href: /powershell/module/az.iothub#iothub
     - name: .NET (Gerät)
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (Dienst)

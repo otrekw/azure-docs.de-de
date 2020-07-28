@@ -329,7 +329,7 @@
         - name: Freigegebene Datenträger
           href: disks-shared.md
         - name: Kurzlebige Betriebssystemdatenträger
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: Netzwerk
       href: ../network-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Skalierungsgruppen
@@ -662,7 +662,7 @@
           items:
             - name: Übersicht
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Befehlszeilenschnittstelle (CLI)
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -1015,7 +1015,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

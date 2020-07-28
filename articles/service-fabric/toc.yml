@@ -143,6 +143,9 @@
           href: cluster-security-certificates.md
         - name: Zertifikatverwaltung in Service Fabric
           href: cluster-security-certificate-management.md
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
           href: security-baseline.md
     - name: Begriff

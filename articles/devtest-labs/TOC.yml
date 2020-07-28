@@ -36,7 +36,7 @@
           href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: 'Azure PowerShell: Modul „Az.DevTestLabs2“'
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: samples-cli.md
       items:
         - name: Erstellen und Überprüfen der Verfügbarkeit eines virtuellen Computers
@@ -291,7 +291,7 @@
     - name: 'PowerShell: Beispielmodul „sample Az.DevTestLabs2“'
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: REST-API
-      href: 'https://docs.microsoft.com/rest/api/dtl/'
+      href: /rest/api/dtl/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.devtestlab/allversions
 - name: Ressourcen
@@ -301,7 +301,7 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-devtestlabs.html'
+      href: /answers/topics/azure-devtestlabs.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
     - name: Videos
