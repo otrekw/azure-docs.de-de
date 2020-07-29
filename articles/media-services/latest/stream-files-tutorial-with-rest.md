@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f12771e55ced3b8783b6c7497b83e6b041c66b75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074464"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST
 
@@ -42,7 +42,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
 
     Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
 
@@ -125,7 +125,7 @@ In diesem Abschnitt senden wir relevante Anforderungen für die Codierung und Er
 
 ### <a name="start-a-streaming-endpoint"></a>Starten eines Streamingendpunkts
 
-Um das Streamen zu ermöglichen, muss zunächst der [Streamingendpunkt](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) gestartet werden, von dem aus Sie das Video streamen möchten.
+Um das Streamen zu ermöglichen, muss zunächst der [Streamingendpunkt](./streaming-endpoint-concept.md) gestartet werden, von dem aus Sie das Video streamen möchten.
 
 > [!NOTE]
 > Es werden nur ausgeführte Streamingendpunkte abgerechnet.
@@ -147,11 +147,11 @@ Um das Streamen zu ermöglichen, muss zunächst der [Streamingendpunkt](https://
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        Der Artikel [Nachverfolgen asynchroner Vorgänge in Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) enthält ausführliche Informationen zur Nachverfolgung des Status asynchroner Azure-Vorgänge anhand von Werten aus der zurückgegebenen Antwort.
+        Der Artikel [Nachverfolgen asynchroner Vorgänge in Azure](../../azure-resource-manager/management/async-operations.md) enthält ausführliche Informationen zur Nachverfolgung des Status asynchroner Azure-Vorgänge anhand von Werten aus der zurückgegebenen Antwort.
 
 ### <a name="create-an-output-asset"></a>Erstellen eines Ausgabemedienobjekts
 
-Das [Ausgabeobjekt](https://docs.microsoft.com/rest/api/media/assets) speichert das Ergebnis Ihres Codierungsauftrags. 
+Das [Ausgabeobjekt](/rest/api/media/assets) speichert das Ergebnis Ihres Codierungsauftrags. 
 
 1. Wählen Sie im linken Fenster der Postman-App „Assets“ (Medienobjekte) aus.
 2. Klicken Sie anschließend auf „Create or update an Asset“ (Medienobjekt erstellen oder aktualisieren).
@@ -175,14 +175,14 @@ Das [Ausgabeobjekt](https://docs.microsoft.com/rest/api/media/assets) speichert 
 
 ### <a name="create-a-transform"></a>Erstellen einer Transformation
 
-Bei der Codierung oder Verarbeitung von Inhalten in Media Services besteht ein allgemeines Muster darin, die Codierungseinstellungen als eine Anleitung einzurichten. Anschließend übermitteln Sie einen **Auftrag**, um diese Anleitung auf ein Video anzuwenden. Durch die Übermittlung von neuen Aufträgen für jedes neue Video wenden Sie diese Anleitung auf alle Videos in Ihrer Bibliothek an. Eine Anleitung wird in Media Services als eine **Transformation** aufgerufen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md). Das in diesem Tutorial beschriebene Beispiel definiert eine Anleitung, die das Video codiert, damit es auf eine Vielzahl von iOS- und Android-Geräte gestreamt werden kann. 
+Bei der Codierung oder Verarbeitung von Inhalten in Media Services besteht ein allgemeines Muster darin, die Codierungseinstellungen als eine Anleitung einzurichten. Anschließend übermitteln Sie einen **Auftrag**, um diese Anleitung auf ein Video anzuwenden. Durch die Übermittlung von neuen Aufträgen für jedes neue Video wenden Sie diese Anleitung auf alle Videos in Ihrer Bibliothek an. Eine Anleitung wird in Media Services als eine **Transformation** aufgerufen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](./transforms-jobs-concept.md). Das in diesem Tutorial beschriebene Beispiel definiert eine Anleitung, die das Video codiert, damit es auf eine Vielzahl von iOS- und Android-Geräte gestreamt werden kann. 
 
-Beim Erstellen einer neuen [Transformations](https://docs.microsoft.com/rest/api/media/transforms)instanz müssen Sie angeben, was als Ausgabe generiert werden soll. Der erforderliche Parameter ist ein Objekt vom Typ **TransformOutput**. Jedes **TransformOutput**-Objekt enthält eine **Voreinstellung**. Die **Voreinstellung** beschreibt die schrittweisen Anweisungen von Video- und/oder Audioverarbeitungsvorgängen, die verwendet werden sollen, um das gewünschte **TransformOutput**-Objekt zu generieren. Das in diesem Artikel beschriebene Beispiel verwendet eine integrierte Voreinstellung namens **AdaptiveStreaming**. Die Voreinstellung codiert das Eingabevideo in eine automatisch generierte Bitratenkette (Paare aus Bitrate und Auflösung) auf Basis der Eingabeauflösung und -bitrate und generiert ISO MP4-Dateien mit H.264-Video und AAC-Audio entsprechend jedem Paar aus Bitrate und Auflösung. Weitere Informationen zu dieser Voreinstellung finden Sie unter [Automatische Erstellen einer Bitratenkette](autogen-bitrate-ladder.md).
+Beim Erstellen einer neuen [Transformations](/rest/api/media/transforms)instanz müssen Sie angeben, was als Ausgabe generiert werden soll. Der erforderliche Parameter ist ein Objekt vom Typ **TransformOutput**. Jedes **TransformOutput**-Objekt enthält eine **Voreinstellung**. Die **Voreinstellung** beschreibt die schrittweisen Anweisungen von Video- und/oder Audioverarbeitungsvorgängen, die verwendet werden sollen, um das gewünschte **TransformOutput**-Objekt zu generieren. Das in diesem Artikel beschriebene Beispiel verwendet eine integrierte Voreinstellung namens **AdaptiveStreaming**. Die Voreinstellung codiert das Eingabevideo in eine automatisch generierte Bitratenkette (Paare aus Bitrate und Auflösung) auf Basis der Eingabeauflösung und -bitrate und generiert ISO MP4-Dateien mit H.264-Video und AAC-Audio entsprechend jedem Paar aus Bitrate und Auflösung. Weitere Informationen zu dieser Voreinstellung finden Sie unter [Automatische Erstellen einer Bitratenkette](autogen-bitrate-ladder.md).
 
 Sie können ein integriertes EncoderNamedPreset-Objekt oder benutzerdefinierte Voreinstellungen verwenden. 
 
 > [!Note]
-> Beim Erstellen einer [Transformation](https://docs.microsoft.com/rest/api/media/transforms) sollten Sie zunächst mit der Methode **Get** überprüfen, ob bereits eine Transformation vorhanden ist. In diesem Tutorial wird davon ausgegangen, dass Sie die Transformation mit einem eindeutigen Namen erstellen.
+> Beim Erstellen einer [Transformation](/rest/api/media/transforms) sollten Sie zunächst mit der Methode **Get** überprüfen, ob bereits eine Transformation vorhanden ist. In diesem Tutorial wird davon ausgegangen, dass Sie die Transformation mit einem eindeutigen Namen erstellen.
 
 1. Klicken Sie im linken Fenster der Postman-App auf „Encoding and Analysis“ (Codierung und Analyse).
 2. Klicken Sie anschließend auf „Create Transform“ (Transformation erstellen).
@@ -215,7 +215,7 @@ Sie können ein integriertes EncoderNamedPreset-Objekt oder benutzerdefinierte V
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
 
-Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentliche Anforderung an Azure Media Services, um die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an.
+Ein [Auftrag](/rest/api/media/jobs) ist die eigentliche Anforderung an Azure Media Services, um die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an.
 
 In diesem Beispiel basiert die Eingabe des Auftrags auf einer HTTPS-URL (https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/).
 
@@ -256,18 +256,18 @@ Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, *
 
 #### <a name="job-error-codes"></a>Auftragsfehlercodes
 
-Weitere Informationen finden Sie unter [Fehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Weitere Informationen finden Sie unter [Fehlercodes](/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="create-a-streaming-locator"></a>Erstellen Sie eines Streaminglocators
 
-Nach Abschluss des Codierungsauftrags muss das Video im **Ausgabemedienobjekt** für die Wiedergabe durch Clients verfügbar gemacht werden. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
+Nach Abschluss des Codierungsauftrags muss das Video im **Ausgabemedienobjekt** für die Wiedergabe durch Clients verfügbar gemacht werden. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [StreamingLocator](/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
 
 Der Vorgang zum Erstellen eines Streaminglocators wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der Streaminglocator sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
 
-Beim Erstellen eines [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten **StreamingPolicyName** angeben. In diesem Beispiel streamen Sie unverschlüsselte Inhalte. Daher wird die vordefinierte Richtlinie für unverschlüsseltes Streaming (Predefined_ClearStreamingOnly) verwendet.
+Beim Erstellen eines [StreamingLocator](/rest/api/media/streaminglocators) müssen Sie den gewünschten **StreamingPolicyName** angeben. In diesem Beispiel streamen Sie unverschlüsselte Inhalte. Daher wird die vordefinierte Richtlinie für unverschlüsseltes Streaming (Predefined_ClearStreamingOnly) verwendet.
 
 > [!IMPORTANT]
-> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre StreamingLocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. 
+> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre StreamingLocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. 
 
 Ihr Media Services-Konto weist ein Kontingent für die Anzahl von **Streamingrichtlinieneinträgen** auf. Sie sollten nicht für jeden Streaminglocator eine neue **Streamingrichtlinie** erstellen.
 
@@ -297,7 +297,7 @@ Ihr Media Services-Konto weist ein Kontingent für die Anzahl von **Streamingric
 
 #### <a name="list-paths"></a>Auflisten der Pfade
 
-Nachdem der [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen.
+Nachdem der [Streaminglocator](/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen.
 
 1. Klicken Sie im linken Fenster der Postman-App auf „Streaming Policies“ (Streamingrichtlinien).
 2. Klicken Sie anschließend auf „List Paths“ (Pfade auflisten).

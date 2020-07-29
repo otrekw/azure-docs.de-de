@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006431"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Tutorial: Erstellen einer End-to-End-Datenpipeline zum Gewinnen von Erkenntnissen aus Vertriebsdaten in Azure HDInsight
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Mitglied der [integrierten Azure-Rolle „Besitzer“](../role-based-access-control/built-in-roles.md)
 
-* Wenn Sie PowerShell zum Auslösen der Data Factory-Pipeline verwenden, benötigen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/overview).
+* Wenn Sie PowerShell zum Auslösen der Data Factory-Pipeline verwenden, benötigen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/).
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller), um am Ende dieses Tutorials geschäftliche Erkenntnisse zu visualisieren
 

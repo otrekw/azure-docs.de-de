@@ -2,17 +2,18 @@
 title: 'Schnellstart: Azure Queue Storage-Bibliothek v12 – Java'
 description: Erfahren Sie, wie Sie die Azure Queue Storage-Bibliothek v12 für Java verwenden, um eine Warteschlange zu erstellen und dieser Nachrichten hinzuzufügen. Dann lernen Sie, wie Sie Nachrichten in der Warteschlange lesen und löschen. Zudem erfahren Sie, wie Sie eine Warteschlange löschen.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232337"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319370"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Java
 
@@ -27,7 +28,12 @@ Mit der Azure Queue Storage-Clientbibliothek v12 für Java können Sie Folgendes
 * Empfangen und Löschen von Nachrichten aus einer Warteschlange
 * Löschen einer Warteschlange
 
-[API-Referenzdokumentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+Zusätzliche Ressourcen:
+
+* [API-Referenzdokumentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+* [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+* [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

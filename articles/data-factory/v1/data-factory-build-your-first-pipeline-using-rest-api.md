@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15c388336efc92381ac5ebd84df9145c1890cfcc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007213"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktiv
   2. Beschaffen Sie die **Client-ID** und den **geheimen Schlüssel**.
   3. Beschaffen Sie die **Mandanten-ID**.
   4. Weisen Sie die Anwendung **ADFGetStartedApp** der Rolle **Data Factory-Mitwirkender** zu.
-* Installieren Sie [Azure PowerShell](/powershell/azure/overview).
+* Installieren Sie [Azure PowerShell](/powershell/azure/).
 * Starten Sie **PowerShell** , und führen Sie den folgenden Befehl aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
   1. Führen Sie **Connect-AzAccount** aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie für die Anmeldung beim Azure-Portal verwenden.
   2. Führen Sie **Get-AzSubscription** aus, um alle Abonnements für dieses Konto anzuzeigen.
