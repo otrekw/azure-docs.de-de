@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042073"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510972"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problembehandlung bei VM-Bereitstellung mit cloud-init
 
@@ -21,17 +21,17 @@ Wenn Sie generalisierte benutzerdefinierte Images erstellt haben, die mit cloud-
 
 Einige Beispiele für Probleme bei einer Bereitstellung:
 - Die VM bleibt 40 Minuten lang beim „Erstellen“ hängen, und die VM-Erstellung wird als fehlerhaft markiert.
-- CustomData wird nicht verarbeitet.
+- `CustomData` wird nicht verarbeitet
 - Der kurzlebige Datenträger kann nicht eingebunden werden.
 - Benutzer werden nicht erstellt, oder es gibt Probleme beim Benutzerzugriff.
 - Das Netzwerk wird nicht ordnungsgemäß eingerichtet.
 - Es treten Auslagerungsdatei- oder Partitionsfehler auf.
 
-Dieser Artikel enthält die Schritte zur Problembehandlung von cloud-init: Ausführlichere Informationen finden Sie unter [Tiefere Einblicke in cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive).
+Dieser Artikel enthält die Schritte zur Problembehandlung von cloud-init: Ausführlichere Informationen finden Sie unter [Tiefere Einblicke in cloud-init](./cloud-init-deep-dive.md).
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>Schritt 1: Testen der Bereitstellung ohne customData
+## <a name="step-1-test-the-deployment-without-customdata"></a>Schritt 1: Testen der Bereitstellung ohne `customData`
 
-Cloud-init kann customData akzeptieren, die an es übergeben werden, wenn die VM erstellt wird. Zuerst sollten Sie sicherstellen, dass dadurch keine Probleme mit Bereitstellungen verursacht werden. Versuchen Sie, die VM bereitzustellen, ohne dabei eine Konfiguration zu übergeben. Wenn Sie feststellen, dass die VM nicht bereitgestellt werden kann, fahren Sie mit den folgenden Schritten fort. Wenn Sie feststellen, dass die übergebene Konfiguration nicht angewendet wird, wechseln Sie zu [Schritt 4](). 
+Cloud-init kann das `customData`-Element akzeptieren, das bei der Erstellung der VM übergeben wird. Zuerst sollten Sie sicherstellen, dass dadurch keine Probleme mit Bereitstellungen verursacht werden. Versuchen Sie, die VM bereitzustellen, ohne dabei eine Konfiguration zu übergeben. Wenn Sie feststellen, dass die VM nicht bereitgestellt werden kann, fahren Sie mit den folgenden Schritten fort. Wenn Sie feststellen, dass die übergebene Konfiguration nicht angewendet wird, wechseln Sie zu [Schritt 4](). 
 
 ## <a name="step-2-review-image-requirements"></a>Schritt 2: Überprüfen der Imageanforderungen
 Die Hauptursache für VM-Bereitstellungfehler besteht darin, dass das Betriebssystemimage nicht die Voraussetzungen für ein Ausführen in Azure erfüllt. Stellen Sie sicher, dass Ihre Images ordnungsgemäß vorbereitet sind, bevor Sie versuchen, diese in Azure bereitzustellen. 
@@ -39,15 +39,16 @@ Die Hauptursache für VM-Bereitstellungfehler besteht darin, dass das Betriebssy
 
 In den folgenden Artikeln sind die Schritte aufgeführt, mit denen die verschiedenen Linux-Distributionen vorbereitet werden, die in Azure unterstützt werden:
 
-- [CentOS-basierte Verteilungen](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SLES &amp; openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Sonstige: nicht unterstützte Distributionen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS-basierte Verteilungen](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES &amp; openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
+- [Sonstige: nicht unterstützte Distributionen](create-upload-generic.md)
 
-Für die [unterstützten cloud-init-Images für Azure](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) enthalten die Linux-Distributionen bereits alle erforderlichen Pakete und Konfigurationen, um das jeweilige Images ordnungsgemäß in Azure bereitstellen zu können. Wenn Sie feststellen, dass Ihre VM nicht aus dem von Ihnen zusammengestellten Image erstellt werden kann, versuchen Sie es mit einem unterstützten Azure Marketplace Image, das bereits für cloud-init konfiguriert ist, mit ihren optionalen customData. Können die customData ordnungsgemäß mit einem Azure Marketplace-Image verarbeitet werden, liegt wahrscheinlich ein Problem mit dem von Ihnen zusammengestellten Image vor.
+Für die [unterstützten cloud-init-Images für Azure](./using-cloud-init.md) enthalten die Linux-Distributionen bereits alle erforderlichen Pakete und Konfigurationen, um das jeweilige Images ordnungsgemäß in Azure bereitstellen zu können. Wenn Sie feststellen, dass Ihre VM aus dem von Ihnen zusammengestellten Image nicht erstellt werden kann, sollten Sie es mit einem unterstützten Azure Marketplace-Image versuchen, das bereits für cloud-init konfiguriert ist (mit Ihren optionalen Daten vom Typ `customData`). Falls die korrekte Verarbeitung von `customData` mit einem Azure Marketplace-Image möglich ist, liegt wahrscheinlich ein Problem mit dem von Ihnen zusammengestellten Image vor.
 
 ## <a name="step-3-collect--review-vm-logs"></a>Schritt 3: Sammeln und Auswerten der VM-Protokolle
 
@@ -55,11 +56,11 @@ Kann die VM nicht bereitgestellt werden, zeigt Azure für 20 Minuten den Status 
 
 Während die VM ausgeführt wird, benötigen Sie die Protokolle der VM, um erkennen zu können, warum die Bereitstellung fehlgeschlagen ist.  Damit Sie erkennen können, warum die VM-Bereitstellung fehlgeschlagen ist, dürfen Sie die VM nicht anhalten. Lassen Sie die VM weiter ausführen. Sie müssen die fehlerhafte VM im Status „wird ausgeführt“ belassen, um Protokolle zu erfassen. Verwenden Sie eine der folgenden Methoden, um die Protokolle zu erfassen:
 
-- [Serielle Konsole](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+- [Serielle Konsole](./serial-console-grub-single-user-mode.md)
 
-- [Aktivieren Sie die Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics), bevor Sie die VM erstellen, und [zeigen Sie die Startdiagnose an](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics), während die VM gestartet wird.
+- [Aktivieren Sie die Startdiagnose](./tutorial-monitor.md#enable-boot-diagnostics), bevor Sie die VM erstellen, und [zeigen Sie die Startdiagnose an](./tutorial-monitor.md#view-boot-diagnostics), während die VM gestartet wird.
 
-- [Führen Sie AZ VM Repair aus](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands), um den Betriebssystemdatenträger anzufügen und einzubinden, wonach Sie diese Protokolle erfassen können:
+- [Führen Sie AZ VM Repair aus](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md), um den Betriebssystemdatenträger anzufügen und einzubinden, wonach Sie diese Protokolle erfassen können:
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -107,7 +108,7 @@ Nachdem Sie einen Fehler oder eine Warnung gefunden haben, lesen Sie das cloud-i
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Wenn Sie Zugriff auf die [serielle Konsole](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode) haben, können Sie versuchen, den Befehl erneut auszuführen, den cloud-init ausführen wollte.
+Wenn Sie Zugriff auf die [serielle Konsole](./serial-console-grub-single-user-mode.md) haben, können Sie versuchen, den Befehl erneut auszuführen, den cloud-init ausführen wollte.
 
 Die Protokollierung für `/var/log/cloud-init.log` kann in „/etc/cloud/cloud.cfg.d/05_logging.cfg“ neu konfiguriert werden. Weitere Informationen zur cloud-init-Protokollierung finden Sie in der [cloud-init-Dokumentation](https://cloudinit.readthedocs.io/en/latest/topics/logging.html). 
 
@@ -132,4 +133,4 @@ Nicht jeder Fehler in cloud-init führt zu einem schwerwiegenden Bereitstellungs
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie immer noch nicht ermitteln können, warum cloud-init die Konfiguration nicht ausgeführt hat, müssen Sie sich genauer ansehen, was in den einzelnen cloud-init-Phasen geschieht und wann die Module ausgeführt werden. Weitere Informationen finden Sie unter [Tiefere Einblicke in cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive). 
+Wenn Sie immer noch nicht ermitteln können, warum cloud-init die Konfiguration nicht ausgeführt hat, müssen Sie sich genauer ansehen, was in den einzelnen cloud-init-Phasen geschieht und wann die Module ausgeführt werden. Weitere Informationen finden Sie unter [Tiefere Einblicke in cloud-init](./cloud-init-deep-dive.md). 

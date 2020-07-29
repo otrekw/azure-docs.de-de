@@ -3,12 +3,12 @@ title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Mic
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186910"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511312"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -48,7 +48,7 @@ Die beste Quelle für Informationen zur Funktionsweise von AMQP ist die AMQP 1.0
 
 In AMQP werden die kommunizierenden Programme als *Container* bezeichnet. Die Container enthalten *Knoten*, bei denen es sich um die kommunizierenden Entitäten in den Containern handelt. Eine Warteschlange kann ein Knoten dieser Art sein. AMQP ermöglicht Multiplexing, sodass eine Verbindung für viele Kommunikationspfade zwischen Knoten verwendet werden kann. Beispielsweise kann ein Anwendungsclient über eine Netzwerkverbindung gleichzeitig Daten von einer Warteschlange erhalten und Daten an eine andere Warteschlange senden.
 
-![][1]
+![Abbildung zu Sitzungen und Verbindungen zwischen Containern.][1]
 
 Die Netzwerkverbindung ist also im Container verankert. Sie wird vom Container in der Clientrolle initiiert. Es wird eine ausgehende TCP-Socketverbindung mit einem Container in der Empfängerrolle hergestellt, über die das Abhören und Akzeptieren von eingehenden TCP-Verbindungen durchgeführt wird. Der Verbindungshandshake umfasst die Aushandlung der Protokollversion, die Deklaration oder Aushandlung der Nutzung von Transport Level Security (TLS/SSL) und einen Handshake für die Authentifizierung/Autorisierung für den Verbindungsbereich, der auf SASL basiert.
 
@@ -84,7 +84,7 @@ Bei einem .NET-Client tritt ein SocketException-Fehler auf („Der Zugriff auf e
 
 Für AMQP werden Nachrichten über Verknüpfungen (Links) übertragen. Eine Verknüpfung ist ein Kommunikationspfad, der für eine Sitzung erstellt wird und mit dem Nachrichten in einer Richtung übertragen werden können. Die Aushandlung des Übertragungsstatus wird über die Verknüpfung und in bidirektionaler Form zwischen den verbundenen Parteien durchgeführt.
 
-![][2]
+![Abbildung zu einer Sitzung mit einer Linkverbindung zwischen zwei Containern.][2]
 
 Verknüpfungen können jederzeit von jedem Container und über eine vorhandene Sitzung erstellt werden. Dies unterscheidet AMQP von vielen anderen Protokollen, z.B. HTTP und MQTT, bei denen die Initiierung von Übertragungen und der Übertragungspfad alleiniges Privileg der Partei sind, die die Socketverbindung erstellt.
 
@@ -100,7 +100,7 @@ Der verbindende Client ist auch zum Verwenden eines lokalen Knotennamens zum Ers
 
 Nachdem eine Verknüpfung eingerichtet wurde, können Nachrichten über die Verknüpfung übertragen werden. In AMQP wird eine Übertragung mit einer expliziten Protokollgeste (der *transfer*-Performative) ausgeführt, durch die eine Nachricht über eine Verknüpfung vom Absender zum Empfänger befördert wird. Eine Übertragung ist abgeschlossen, wenn eine „Übereinkunft“ (settled) erzielt wurde. Dies bedeutet, dass sich beide Parteien auf das Ergebnis der Übertragung geeinigt haben.
 
-![][3]
+![Abbildung zur Übertragung einer Nachricht zwischen dem Absender und Empfänger und zur sich daraus ergebenden „Disposition“.][3]
 
 Im einfachsten Fall kann sich der Absender Nachrichten im Zustand „vor der Übereinkunft“ (pre-settled) senden. Das bedeutet, dass der Client am Ergebnis nicht interessiert ist und der Empfänger kein Feedback zum Ergebnis des Vorgangs liefert. Dieser Modus wird von Service Bus auf AMQP-Protokollebene unterstützt, aber nicht in den Client-APIs verfügbar gemacht.
 
@@ -120,7 +120,7 @@ Um das mögliche doppelte Senden zu kompensieren, unterstützt Service Bus die D
 
 Zusätzlich zum Modell der Flusssteuerung auf Sitzungsebene, das bereits erwähnt wurde, verfügt jede Verknüpfung über ein eigenes Modell für die Flusssteuerung. Die Flusssteuerung auf Sitzungsebene schützt den Container davor, zu viele Frames auf einmal verarbeiten zu müssen. Bei der Flusssteuerung auf Verknüpfungsebene kann die Anwendung entscheiden, wie viele Nachrichten einer Verknüpfung und zu welchem Zeitpunkt diese Nachrichten verarbeitet werden sollen.
 
-![][4]
+![Screenshot eines Protokolls mit Quelle, Ziel, Quellport, Zielport und Protokollname. In der ersten Zeile ist der Zielport 10401 (0x28 A 1) schwarz hervorgehoben.][4]
 
 Für eine Verknüpfung können Übertragungen nur durchgeführt werden, wenn der Absender über genügend *Link Credit* (Verknüpfungsguthaben) verfügt. Das Verknüpfungsguthaben ist ein Indikator, der vom Empfänger mit der *flow*-Performative für den Bereich einer Verknüpfung festgelegt wird. Wenn dem Absender ein Verknüpfungsguthaben zugewiesen wird, versucht er, dieses Guthaben durch das Zustellen von Nachrichten aufzubrauchen. Mit jeder Nachrichtenzustellung wird das verbleibende Verknüpfungsguthaben um den Wert 1 verringert. Wenn das Verknüpfungsguthaben aufgebraucht ist, werden die Zustellungen beendet.
 
@@ -269,7 +269,7 @@ Um mit Transaktionsaufgaben zu beginnen, benötigt der Controller eine `txn-id` 
 | attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>target=Coordinator()<br/>) |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()** )}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={Transaktions-ID}<br/>)|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={Transaktions-ID}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>Entladen einer Transaktion
 
@@ -280,8 +280,8 @@ Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-
 | Client (Controller) | Direction | Servicebus (Coordinator) |
 | :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
-| | erforderlich. erforderlich. erforderlich. <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> erforderlich. erforderlich. erforderlich. |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
+| | erforderlich. erforderlich. erforderlich. <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)** )}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()** )|
 
@@ -292,7 +292,7 @@ Alle Transaktionsaufgaben erfolgen mit dem Transaktionsübermittlungsstatus `tra
 | Client (Controller) | Direction | Servicebus (Coordinator) |
 | :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
 | transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ Nutzlast }| ------> |  |
 | | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))|
 
@@ -303,7 +303,7 @@ Die Nachrichtenlöschung umfasst Vorgänge wie `Complete` / `Abandon` / `DeadLet
 | Client (Controller) | Direction | Servicebus (Coordinator) |
 | :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ Nutzlast }|  
 | disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))| ------> |
 
