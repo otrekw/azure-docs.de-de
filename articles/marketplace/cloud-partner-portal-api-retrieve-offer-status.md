@@ -4,18 +4,20 @@ description: API zum Abrufen des aktuellen Status des Angebots.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114073"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535874"
 ---
 # <a name="retrieve-offer-status"></a>Abrufen des Angebotsstatus
 
 > [!NOTE]
-> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Der Übergang führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach dem Übergang zu Partner Center weiterhin funktioniert. CPP-APIs sollten nur für vorhandene Produkte verwendet werden, die bereits vor dem Übergang zu Partner Center integriert wurden. Neue Produkte sollten die Partner Center-APIs für die Übermittlung verwenden.
 
 Ruft den aktuellen Status des Angebots ab.
 
@@ -30,7 +32,6 @@ Ruft den aktuellen Status des Angebots ab.
 |  api-version    | Neueste Version der API                        |     Date       |
 |  |  |
 
-
 ## <a name="header"></a>Header
 
 
@@ -41,7 +42,6 @@ Ruft den aktuellen Status des Angebots ab.
 |  |  |
 
 ## <a name="body-example"></a>Beispiel für Hauptteil
-
 
 ### <a name="response"></a>Antwort
 
@@ -115,7 +115,6 @@ Ruft den aktuellen Status des Angebots ab.
       liveLinks": [],
   }
 ```
-
 
 ### <a name="response-body-properties"></a>Eigenschaften für Antworthauptteil
 

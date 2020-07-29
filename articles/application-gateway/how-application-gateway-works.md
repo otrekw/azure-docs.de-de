@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250229"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506552"
 ---
 # <a name="how-an-application-gateway-works"></a>Funktionsweise von Anwendungsgateways
 
@@ -62,7 +62,7 @@ Anwendungsgateways fügen vier zusätzliche Header in alle Anforderungen ein, be
 
 Die gültigen Werte für x-forwarded-proto sind HTTP und HTTPS. „x-forwarded-port“ gibt den Port an, an dem die Anforderung das Anwendungsgateway erreicht hat. Der X-original-host-Header enthält den ursprünglichen Hostheader, mit dem die Anforderung eingetroffen ist. Dieser Header ist nützlich bei der Azure-Websiteintegration, bei der der eingehende Hostheader vor dem Routen des Datenverkehrs zum Back-End geändert wird. Wenn Sitzungsaffinität als Option aktiviert ist, wird ein vom Gateway verwaltetes Affinitätscookie eingefügt.
 
-Sie können das Anwendungsgateway so konfigurieren, dass Header durch das [erneute Generieren von HTTP-Headern](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) oder der URI-Pfad mithilfe der Einstellung für die Pfadüberschreibung geändert werden. Sofern dies nicht konfiguriert ist, werden jedoch alle eingehenden Anforderungen per Proxy an das Back-End weitergeleitet.
+Sie können das Anwendungsgateway so konfigurieren, dass Anforderungs- und Antwortheader sowie die URL durch das [erneute Generieren von HTTP-Headern und URLs](rewrite-http-headers-url.md) geändert werden oder der URI-Pfad mithilfe der Einstellung für die Pfadüberschreibung geändert wird. Sofern dies nicht konfiguriert ist, werden jedoch alle eingehenden Anforderungen per Proxy an das Back-End weitergeleitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

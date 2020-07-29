@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398237"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497079"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -66,7 +66,13 @@ Führen Sie die folgenden Schritte aus, um die obigen Informationen zu generiere
     cd  
     ```
 
-6. Führen Sie den folgenden Befehl aus. Dadurch wird ein Skript in Ihr Basisverzeichnis heruntergeladen.
+6. Führen Sie den folgenden Befehl aus. Damit wird eine Verbindung mit einem authentifizierten Konto hergestellt, das für Azure AD-Anforderungen verwendet werden soll.
+
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+    
+7. Führen Sie den folgenden Befehl aus. Dadurch wird ein Skript in Ihr Basisverzeichnis heruntergeladen.
 
     ```azurepowershell-interactive 
 
@@ -74,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um die obigen Informationen zu generiere
 
     ```
 
-7. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite **Azure Active Directory** > **Übersicht** erhalten können.
+8. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite **Azure Active Directory** > **Übersicht** erhalten können.
 
     ```azurepowershell-interactive 
 
@@ -82,7 +88,7 @@ Führen Sie die folgenden Schritte aus, um die obigen Informationen zu generiere
 
     ```
 
-8. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
+9. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrieren von Gerätedaten unter Verwendung der generierten Anmeldeinformationen
 

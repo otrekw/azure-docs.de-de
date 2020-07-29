@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628162"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522719"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Verschieben von Dateien mit Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Artikel wird eine Lösungsvorlage beschrieben, mit der Sie Dateien aus einem Ordner in einen anderen Ordner in einem anderen dateibasierten Speicher verschieben können. Eines der häufigsten Szenarien für die Verwendung dieser Vorlage: Dateien werden fortlaufend in einem Eingangsordner des Quellspeichers abgelegt. Durch das Erstellen eines geplanten Triggers kann die ADF-Pipeline diese Dateien in regelmäßigen Abständen aus dem Quell-in den Zielspeicher verschieben.  Die ADF-Pipeline verschiebt Dateien wie folgt: Die einzelnen Dateien im Eingangsordner werden in einen anderen Ordner im Zielspeicher kopiert und dann aus dem Eingangsordner im Quellspeicher gelöscht.
+Die ADF-Kopieraktivität verfügt über integrierte Unterstützung für die Verschiebung beim Kopieren von Binärdateien zwischen Speichern.  Legen Sie „deleteFilesAfterCompletion“ in der Kopieraktivität auf TRUE fest, um dieses Verhalten zu aktivieren. Dadurch löscht die Kopieraktivität nach Abschluss des Auftrags Dateien aus dem Datenquellenspeicher. 
+
+In diesem Artikel wird eine Lösungsvorlage als alternative Vorgehensweise beschrieben. Diese nutzt die flexible Ablaufsteuerung von ADF sowie die Kopier- und die Löschaktivität, um dasselbe Verhalten zu erzielen. Eines der häufigsten Szenarien für die Verwendung dieser Vorlage: Dateien werden fortlaufend in einem Eingangsordner des Quellspeichers abgelegt. Durch das Erstellen eines geplanten Triggers kann die ADF-Pipeline diese Dateien in regelmäßigen Abständen aus dem Quell-in den Zielspeicher verschieben.  Die ADF-Pipeline verschiebt Dateien wie folgt: Die einzelnen Dateien im Eingangsordner werden in einen anderen Ordner im Zielspeicher kopiert und dann aus dem Eingangsordner im Quellspeicher gelöscht.
 
 > [!NOTE]
 > Beachten Sie, dass diese Vorlage zum Verschieben von Dateien und nicht zum Verschieben von Ordnern vorgesehen ist.  Lassen Sie Vorsicht walten, wenn Sie den Ordner verschieben möchten, indem Sie das Dataset ändern, damit es nur einen Ordnerpfad enthält, und anschließend eine Copy- und eine Delete-Aktivität verwenden, um auf das gleiche Dataset zu verweisen, das einen Ordner darstellt. In diesem Fall müssen Sie sicherstellen, dass zwischen dem Kopiervorgang und dem Löschvorgang KEINE neuen Dateien im Ordner platziert werden. Wenn neue Dateien zu dem Zeitpunkt im Ordner platziert werden, zu dem die Copy-Aktivität gerade abgeschlossen, die Delete-Aktivität jedoch noch nicht gestartet wurde, werden diese neuen Dateien, die noch NICHT ins Ziel kopiert wurden, unter Umständen von der Delete-Aktivität durch Löschung des gesamten Ordners gelöscht.

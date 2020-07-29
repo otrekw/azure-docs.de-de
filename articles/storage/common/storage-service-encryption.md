@@ -4,17 +4,17 @@ description: Azure Storage schützt Ihre Daten, indem der Dienst diese automatis
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 06/17/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8b4236e40e8dfbe6ce67bca007be0b6737a6e0c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6244b3ab72f7fa8ea375ff67a08e8d1d241df4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945578"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527896"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
@@ -32,6 +32,8 @@ Alle Blockblobs, Anfügeblobs und Seitenblobs, die nach dem 20. Oktober 2017 in
 
 Weitere Informationen zu den kryptografischen Modulen, die der Azure Storage-Verschlüsselung zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
+Weitere Informationen zur Verschlüsselung und Schlüsselverwaltung für verwaltete Azure-Datenträger finden Sie unter [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../../virtual-machines/windows/disk-encryption.md) für Windows-VMs bzw. [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../../virtual-machines/linux/disk-encryption.md) für Linux-VMs.
+
 ## <a name="about-encryption-key-management"></a>Informationen zur Verwaltung von Verschlüsselungsschlüsseln
 
 Daten in einem neuen Speicherkonto werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihrer Daten nutzen oder die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten. Wenn Sie die Verschlüsselungsverwaltung mit Ihren eigenen Schlüsseln wählen, haben Sie zwei Optionen:
@@ -41,18 +43,56 @@ Daten in einem neuen Speicherkonto werden mit von Microsoft verwalteten Schlüss
 
 In der folgenden Tabelle werden die Schlüsselverwaltungsoptionen für Azure Storage-Verschlüsselung verglichen.
 
-|                                        |    Von Microsoft verwaltete Schlüssel                             |    Vom Kunden verwaltete Schlüssel                                                                                                                        |    Vom Kunden bereitgestellte Schlüssel                                                          |
-|----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-|    Verschlüsselungs-/Entschlüsselungsvorgänge    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Unterstützte Azure Storage-Dienste    |    All                                                |    Blob Storage, Azure Files<sup>1,2</sup>                                                                                                               |    Blob Storage                                                                  |
-|    Schlüsselspeicher                         |    Microsoft-Schlüsselspeicher    |    Azure-Schlüsseltresor                                                                                                                              |    Eigener Schlüsselspeicher des Kunden                                                                 |
-|    Verantwortlich für die Schlüsselrotation         |    Microsoft                                          |    Kunde                                                                                                                                     |    Kunde                                                                      |
-|    Schlüsselkontrolle                          |    Microsoft                                     |    Kunde                                                                                                                    |    Kunde                                                                 |
+| Schlüsselverwaltungsparameter | Von Microsoft verwaltete Schlüssel | Vom Kunden verwaltete Schlüssel | Vom Kunden bereitgestellte Schlüssel |
+|--|--|--|--|
+| Verschlüsselungs-/Entschlüsselungsvorgänge | Azure | Azure | Azure |
+| Unterstützte Azure Storage-Dienste | All | Blob Storage, Azure Files<sup>1,2</sup> | Blob Storage |
+| Schlüsselspeicher | Microsoft-Schlüsselspeicher | Azure-Schlüsseltresor | Eigener Schlüsselspeicher des Kunden |
+| Verantwortlich für die Schlüsselrotation | Microsoft | Kunde | Kunde |
+| Schlüsselkontrolle | Microsoft | Kunde | Kunde |
 
 <sup>1</sup> Informationen zum Erstellen eines Kontos, das die Verwendung von kundenseitig verwalteten Schlüsseln mit Queue Storage unterstützt, finden Sie unter [Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Warteschlangen](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) unterstützt.<br />
 <sup>2</sup> Informationen zum Erstellen eines Kontos, das die Verwendung von kundenseitig verwalteten Schlüsseln mit Table Storage unterstützt, finden Sie unter [Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) unterstützt.
 
-Weitere Informationen zur Verschlüsselung und Schlüsselverwaltung für verwaltete Azure-Datenträger finden Sie unter [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../../virtual-machines/windows/disk-encryption.md) für Windows-VMs bzw. [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../../virtual-machines/linux/disk-encryption.md) für Linux-VMs.
+## <a name="encryption-scopes-for-blob-storage-preview"></a>Verschlüsselungsbereiche für Blobspeicher (Vorschau)
+
+Standardmäßig wird ein Speicherkonto mit einem Schlüssel verschlüsselt, der für das Speicherkonto festgelegt ist. Sie können entweder von Microsoft verwaltete Schlüssel oder kundenseitig verwaltete Schlüssel verwenden, die in Azure Key Vault gespeichert sind, um den Schlüssel, der Ihre Daten verschlüsselt, zu schützen und Zugriff darauf zu steuern.
+
+Verschlüsselungsbereiche ermöglichen Ihnen die optionale Verwaltung der Verschlüsselung auf der Ebene des Containers oder eines einzelnen Blobs. Sie können Verschlüsselungsbereiche verwenden, um sichere Grenzen zwischen Daten zu erstellen, die sich im selben Speicherkonto befinden, aber zu unterschiedlichen Kunden gehören.
+
+Mithilfe des Azure Storage-Ressourcenanbieters können Sie einen oder mehrere Verschlüsselungsbereiche für ein Speicherkonto erstellen. Beim Erstellen eines Verschlüsselungsbereichs geben Sie an, ob der Bereich durch einen von Microsoft verwalteten Schlüssel oder einen kundenseitig verwalteten Schlüssel, der in Azure Key Vault gespeichert ist, geschützt wird. Unterschiedliche Verschlüsselungsbereiche im gleichen Speicherkonto können entweder von Microsoft verwaltete oder kundenseitig verwaltete Schlüssel verwenden.
+
+Nachdem Sie einen Verschlüsselungsbereich erstellt haben, können Sie diesen für eine Anforderung zum Erstellen eines Containers oder Blobs angeben. Weitere Informationen zum Erstellen eines Verschlüsselungsbereichs finden Sie unter [Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschau)](../blobs/encryption-scope-manage.md).
+
+> [!NOTE]
+> Verschlüsselungsbereiche werden für georedundante Speicher mit Lesezugriff (RA-GRS) während der Vorschau nicht unterstützt.
+
+> [!IMPORTANT]
+> Die Vorschauversion der Verschlüsselungsbereiche ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
+>
+> Achten Sie darauf, alle derzeit nicht benötigten Verschlüsselungsbereiche zu deaktivieren, um unerwartete Kosten zu vermeiden.
+
+### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Erstellen eines Containers oder Blobs mit einem Verschlüsselungsbereich
+
+Blobs, die unter einem Verschlüsselungsbereich erstellt werden, werden mit dem für diesen Bereich angegebenen Schlüssel verschlüsselt. Sie können einen Verschlüsselungsbereich für ein einzelnes Blob angeben, wenn Sie es erstellen, oder Sie können einen Standardverschlüsselungsbereich angeben, wenn Sie einen Container erstellen. Wenn ein Standardverschlüsselungsbereich auf der Ebene eines Containers angegeben wird, werden alle Blobs in diesem Container mit dem Schlüssel verschlüsselt, der dem Standardbereich zugeordnet ist.
+
+Wenn Sie ein Blob in einem Container erstellen, der über einen Standardverschlüsselungsbereich verfügt, können Sie einen Verschlüsselungsbereich angeben, der den Standardverschlüsselungsbereich außer Kraft setzt, wenn der Container so konfiguriert ist, dass Außerkraftsetzungen des Standardverschlüsselungsbereichs zulässig sind. Um Außerkraftsetzungen des Standardverschlüsselungsbereichs zu verhindern, konfigurieren Sie den Container so, dass Außerkraftsetzungen für ein einzelnes Blob verweigert werden.
+
+Lesevorgänge für ein Blob, das zu einem Verschlüsselungsbereich gehört, erfolgen transparent, sofern der Verschlüsselungsbereich nicht deaktiviert ist.
+
+### <a name="disable-an-encryption-scope"></a>Deaktivieren eines Verschlüsselungsbereichs
+
+Wenn Sie einen Verschlüsselungsbereich deaktivieren, schlagen alle nachfolgenden Lese- oder Schreibvorgänge, die mit dem Verschlüsselungsbereich vorgenommen werden, mit dem HTTP-Fehlercode 403 (unzulässig) fehl. Wenn Sie den Verschlüsselungsbereich erneut aktivieren, werden Lese- und Schreibvorgänge in der Regel wieder normal ausgeführt.
+
+Wenn ein Verschlüsselungsbereich deaktiviert ist, wird Ihnen dieser nicht mehr in Rechnung gestellt. Deaktivieren Sie alle Verschlüsselungsbereiche, die nicht benötigt werden, um unnötige Gebühren zu vermeiden.
+
+Wenn Ihr Verschlüsselungsbereich durch kundenseitig verwaltete Schlüssel für Azure Key Vault geschützt ist, können Sie auch den zugehörigen Schlüssel im Schlüsseltresor löschen, um den Verschlüsselungsbereich zu deaktivieren. Beachten Sie, dass kundenseitig verwaltete Schlüssel in Azure Key Vault gegen vorläufiges und endgültiges Löschen geschützt werden, und ein gelöschter Schlüssel verhält sich diesen Eigenschaften entsprechend. Weitere Information finden Sie in den folgenden Themen in der Azure Key Vault-Dokumentation:
+
+- [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/general/soft-delete-powershell.md)
+- [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/general/soft-delete-cli.md)
+
+> [!NOTE]
+> Das Löschen eines Verschlüsselungsbereichs ist nicht möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

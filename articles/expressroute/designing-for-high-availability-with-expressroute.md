@@ -7,17 +7,20 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da90bbbce485616afdac5997576da99ac4d62c6f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076683"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521903"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Entwurf für Hochverfügbarkeit mit ExpressRoute
 
 ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keine einzelne Fehlerquelle im ExpressRoute-Pfad im Microsoft-Netzwerk. Um die Verfügbarkeit zu maximieren, sollten auch das Kunden- und das Dienstanbietersegment Ihrer ExpressRoute-Verbindung auf Hochverfügbarkeit ausgelegt sein. In diesem Artikel werden zunächst Überlegungen zur Netzwerkarchitektur für den Aufbau einer robusten Netzwerkverbindung mit einer ExpressRoute-Verbindung angestellt, dann werden die Optimierungsmöglichkeiten untersucht, die Ihnen helfen, die Hochverfügbarkeit Ihrer ExpressRoute-Verbindung zu verbessern.
 
+>[!NOTE]
+>Die in diesem Artikel beschriebenen Konzepte gelten gleichermaßen, wenn eine ExpressRoute-Leitung innerhalb oder außerhalb eine Virtual WAN erstellt wird.
+>
 
 ## <a name="architecture-considerations"></a>Überlegungen zur Architektur
 

@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055255"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514304"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -42,10 +42,10 @@ Recovery Services-Tresore bieten die folgenden Vorteile:
 - Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand.
 - In jedem Azure-Abonnement können bis zu 500 Tresore erstellt werden.
 - Sie können gesicherte Elemente einschließlich virtueller Azure-Computer und lokaler Computer in einem Tresor überwachen.
-- Der Zugriff auf den Tresor kann mithilfe der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC) von Azure verwaltet werden.
+- Der Zugriff auf den Tresor kann mithilfe der [rollenbasierten Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) (Role-Based Access Control, RBAC) von Azure verwaltet werden.
 - Sie können angeben, wie die Daten im Tresor repliziert werden sollen, um für Redundanz zu sorgen:
-  - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
-  - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)
+  - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](../storage/common/storage-redundancy.md)
+  - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](../storage/common/storage-redundancy.md)
   - Recovery Services-Tresore verwenden standardmäßig GRS.
 
 ## <a name="backup-agents"></a>Sicherungs-Agents
@@ -120,6 +120,17 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
 - Wenn ein Tresor erstellt wurde, wird auch eine Standardrichtlinie mit dem Namen „DefaultPolicy“ erstellt. Diese kann zum Sichern von Ressourcen verwendet werden.
 - Jede Änderung der Aufbewahrungsdauer für eine Sicherungsrichtlinie wird nicht nur auf neue Wiederherstellungspunkte, sondern auch rückwirkend auf alle älteren Wiederherstellungspunkte angewendet.
 
+### <a name="additional-reference"></a>Zusätzliche Referenz 
+
+-   Virtuelle Azure-Computer: Informationen zum [Erstellen](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) und [Ändern](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) von Richtlinien 
+-   SQL Server-Datenbank auf einem virtuellen Azure-Computer: Informationen zum [Erstellen](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) und [Ändern](./manage-monitor-sql-database-backup.md#modify-policy) von Richtlinien 
+-   Azure-Dateifreigabe: Informationen zum [Erstellen](./backup-afs.md#discover-file-shares-and-configure-backup) und [Ändern](./manage-afs-backup.md#modify-policy) von Richtlinien 
+-   SAP HANA: Informationen zum [Erstellen](./backup-azure-sap-hana-database.md#create-a-backup-policy) und [Ändern](./sap-hana-db-manage.md#change-policy) von Richtlinien 
+-   MARS: Informationen zum [Erstellen](./backup-windows-with-mars-agent.md#create-a-backup-policy) und [Ändern](./backup-azure-manage-mars.md#modify-a-backup-policy) von Richtlinien 
+-   [Gibt es Beschränkungen bei der Planung der Sicherung?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [Was passiert, wenn ich meine Sicherungsrichtlinie ändere?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+
+
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektur: Integrierte Azure-VM-Sicherung
 
 1. Wenn Sie die Sicherung für einen virtuellen Azure-Computer aktivieren, wird eine Sicherung gemäß dem von Ihnen angegebenen Zeitplan ausgeführt.
@@ -134,7 +145,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
     - Es werden nur Datenblöcke kopiert, die seit der letzten Sicherung geändert wurden.
     - Die Daten werden nicht verschlüsselt. Azure Backup kann virtuelle Azure-Computer sichern, die mit Azure Disk Encryption verschlüsselt wurden.
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten kann die Sicherung mehrere Stunden dauern. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
-1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
+1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](./backup-instant-restore-capability.md).
 
 Sie brauchen die Internetverbindung nicht explizit zuzulassen, um Ihre virtuellen Azure-Computer zu sichern.
 

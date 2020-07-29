@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a30ea70c623c8456ae97c8ca9475e4989784edf
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995850"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511601"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -126,6 +126,30 @@ In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefi
 | `DataActions`</br>`dataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Wenn Sie eine benutzerdefinierte Rolle mit `DataActions`erstellen, kann diese Rolle im Verwaltungsgruppenbereich nicht zugewiesen werden. Weitere Informationen finden Sie unter [DataActions](role-definitions.md#dataactions). |
 | `NotDataActions`</br>`notDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, die von den zulässigen `DataActions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotDataActions](role-definitions.md#notdataactions). |
 | `AssignableScopes`</br>`assignableScopes` | Ja | String[] | Ein Array von Zeichenfolgen, das die Bereiche angibt, in denen die benutzerdefinierte Rolle zur Zuweisung verfügbar ist. Sie können in den `AssignableScopes` einer benutzerdefinierten Rolle nur eine einzige Verwaltungsgruppe definieren. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase. Weitere Informationen finden Sie unter [AssignableScopes](role-definitions.md#assignablescopes). |
+
+## <a name="wildcard-permissions"></a>Platzhalterberechtigungen
+
+`Actions`, `NotActions`, `DataActions` und `NotDataActions` unterstützen Platzhalter (`*`) beim Definieren von Berechtigungen. Ein Platzhalter (`*`) erweitert eine Berechtigung auf alles, was der von Ihnen angegebenen Aktionszeichenfolge entspricht. Angenommen, Sie möchten alle Berechtigungen hinzufügen, die sich auf Azure Cost Management und Exporte beziehen. Sie können alle nachfolgend aufgeführten Aktionszeichenfolgen hinzufügen:
+
+```
+Microsoft.CostManagement/exports/action
+Microsoft.CostManagement/exports/read
+Microsoft.CostManagement/exports/write
+Microsoft.CostManagement/exports/delete
+Microsoft.CostManagement/exports/run/action
+```
+
+Anstatt all diese Zeichenfolgen hinzuzufügen, können Sie jedoch auch einfach eine Platzhalterzeichenfolge hinzufügen. Die folgende Platzhalterzeichenfolge entspricht beispielsweise den oben genannten fünf Zeichenfolgen. Dies schließt auch alle zukünftigen Exportberechtigungen ein, die möglicherweise hinzugefügt werden.
+
+```
+Microsoft.CostManagement/exports/*
+```
+
+Eine Zeichenfolge kann auch mehrere Platzhalter enthalten. Die folgende Zeichenfolge stellt z. B. alle Abfrageberechtigungen für Cost Management dar.
+
+```
+Microsoft.CostManagement/*/query/*
+```
 
 ## <a name="steps-to-create-a-custom-role"></a>Schritte zum Erstellen einer benutzerdefinierten Rolle
 

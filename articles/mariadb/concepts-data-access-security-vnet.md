@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 4cfbc757b33c10ac559e7f8d6b62b9ccdaed404e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099822"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536095"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MariaDB
 
@@ -23,6 +23,8 @@ Zum Erstellen einer VNET-Regel benötigen Sie ein [virtuelles Netzwerk][vm-virtu
 
 > [!NOTE]
 > Dieses Feature steht in allen Regionen von Azure zur Verfügung, in denen Azure Database for MariaDB für universelle und arbeitsspeicheroptimierte Server bereitgestellt wird.
+
+Sie können auch die Verwendung [Private Link](concepts-data-access-security-private-link.md) für Verbindungen in Erwägung ziehen. Private Link stellt eine private IP-Adresse in Ihrem VNET für den Azure Database for MariaDB-Server bereit.
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -62,11 +64,6 @@ Sie können die IP-Option weiter nutzen, indem Sie eine *statische* IP-Adresse f
 
 Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird. VNET-Regeln sind einfacher einzurichten und zu verwalten.
 
-### <a name="c-cannot-yet-have-azure-database-for-mariadb-on-a-subnet-without-defining-a-service-endpoint"></a>C. Zuweisen von Azure Database for MariaDB zu einem Subnetz ohne Festlegen eines Dienstendpunkts noch nicht möglich
-
-Würde sich Ihr **Microsoft.Sql**-Server auf einem Knoten in einem Subnetz in Ihrem virtuellen Netzwerk befinden, könnten alle Knoten innerhalb des virtuellen Netzwerks mit Ihrem Azure Database for MariaDB-Server kommunizieren. Dann könnten auch Ihre virtuellen Computer mit der Azure Database for MariaDB-Instanz kommunizieren – ohne VNET- oder IP-Regeln.
-
-Allerdings gehört der Azure Database for MariaDB-Dienst noch nicht zu den Diensten, die einem Subnetz direkt zugewiesen werden können (Stand August 2018).
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -119,6 +116,8 @@ Bei Azure Database for MariaDB gelten für VNET-Regeln folgende Einschränkungen
 
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 
+- Wenn **Microsoft.Sql** in einem Subnetz aktiviert ist, weist dies darauf hin, dass Sie für Verbindungen nur VNET-Regeln nutzen möchten. [VNET-fremde Firewallregeln](concepts-firewall-rules.md) von Ressourcen in diesem Subnetz funktionieren nicht.
+
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, VNET-Regeln jedoch nicht:
     - [Virtuelles privates S2S-Netzwerk (Site-to-Site-VPN)][vpn-gateway-indexmd-608y]
     - Lokal über [ExpressRoute][expressroute-indexmd-744v]
@@ -131,7 +130,7 @@ Sie müssen IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindun
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Hinzufügen einer VNET-Firewallregel zu Ihrem Server ohne Aktivierung von VNET-Dienstendpunkten
 
-Allein das Festlegen einer Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
+Allein das Festlegen einer VNET-Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
 
 Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingServiceEndpoint** festzulegen.
 

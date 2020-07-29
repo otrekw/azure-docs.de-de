@@ -1,5 +1,5 @@
 ---
-title: 'Delegierter Zugriff in Windows Virtual Desktop: Azure'
+title: 'Delegierter Zugriff in Windows Virtual Desktop, Release vom Herbst 2019: Azure'
 description: Es wird beschrieben, wie Sie Verwaltungsfunktionen in einer Windows Virtual Desktop-Bereitstellung delegieren, und es werden Beispiele gezeigt.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 899e42e3b592ce1bc92d7d47578e10355b1c6de7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527556"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop"></a>Delegierter Zugriff in Windows Virtual Desktop
+# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Delegierter Zugriff in Windows Virtual Desktop, Release vom Herbst 2019
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../delegated-access-virtual-desktop.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995121"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518418"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Bedingter Zugriff: Blockieren des Zugriffs nach Standort
 
@@ -43,17 +43,15 @@ Weitere Informationen zur Standortbedingung in Conditional Access finden Sie im 
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
-   1. Wählen Sie **Fertig**aus.
-1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** und dann **Fertig** aus.
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** aus.
 1. Unter **Bedingungen** > **Standort**.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
    1. Wählen Sie unter **Einschließen** die Option **Ausgewählte Standorte** aus.
    1. Wählen Sie den blockierten Standort aus, den Sie für Ihr Unternehmen erstellt haben.
-   1. Klicken Sie auf **Auswählen** > **Fertig** > **Fertig**.
-1. Legen Sie unter **Bedingungen** > **Client-Apps (Vorschau)** die Option **Konfigurieren** auf **Ja** fest, und wählen Sie **Fertig** aus.
-1. Wählen Sie unter **Zugriffskontrollen** > **Blockieren** die Option **Auswählen** aus.
+   1. Klicken Sie auf **Auswählen**.
+1. Wählen Sie unter **Zugriffssteuerung** die Option **Zugriff blockieren** aus, und klicken Sie dann auf **Auswählen**.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
-1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
+1. Wählen Sie **Erstellen** aus, um die Richtlinie für bedingten Zugriff zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

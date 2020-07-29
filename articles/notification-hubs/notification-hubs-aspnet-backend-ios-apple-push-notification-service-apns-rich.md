@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ae4b984d0ce66dec2a32b3431301ed97fe2c3fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71212188"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530133"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs – Umfassende Pushbenachrichtigungen
 
@@ -31,7 +31,7 @@ Um Benutzer augenblicklich mit umfassenden Inhalten zu versorgen, kann eine Anwe
 
 Dieses Lernprogramm ist zu iOS 7 und 8 kompatibel.
 
-  ![][IOS1]
+  ![Drei Screenshots: Ein App-Bildschirm mit einer Schaltfläche zum Senden eines Pushs, ein Startbildschirm auf einem Gerät und ein Windows-Logo mit der Schaltfläche „Zurück“.][IOS1]
 
 Allgemeines:
 
@@ -49,7 +49,7 @@ Allgemeines:
 3. Klicken Sie im Projektmappen-Explorer auf **Alle Dateien anzeigen**, klicken Sie mit der rechten Maustaste auf den Ordner, und wählen Sie **Zu Projekt hinzufügen** aus.
 4. Wählen Sie das Bild aus, und ändern Sie dessen "Buildvorgang" im Fenster "Eigenschaften" in **Eingebettete Ressource**.
 
-    ![][IOS2]
+    ![Screenshot des Projektmappen-Explorers. Die Imagedatei ist ausgewählt, und im Eigenschaftenbereich ist die eingebettete Ressource als Buildaktion aufgeführt.][IOS2]
 5. Fügen Sie in `Notifications.cs` die folgende using-Anweisung hinzu:
 
     ```csharp
@@ -146,12 +146,12 @@ Nachdem Sie das Back-End nun so geändert haben, dass nur die *ID* einer Benachr
 1. Öffnen Sie das iOS-Projekt, und aktivieren Sie Remotebenachrichtigungen, indem Sie zu dem Haupt-App-Ziel im Abschnitt **Targets** navigieren.
 2. Klicken Sie auf **Capabilities**, aktivieren Sie **Background Modes**, und aktivieren Sie das Kontrollkästchen **Remote notifications**.
 
-    ![][IOS3]
+    ![Screenshot des iOS-Projekts mit dem Bildschirm „Capabilities“. Die Option „Background Modes“ und das Kontrollkästchen „Remote notifications“ sind aktiviert.][IOS3]
 3. Öffnen Sie `Main.storyboard`, und vergewissern Sie sich, dass Sie einen Ansichtscontroller (in diesem Tutorial als „Home View Controller“ bezeichnet) aus dem Tutorial [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) haben.
 4. Fügen Sie Ihrem Storyboard einen **Navigation Controller** hinzu, und ziehen Sie bei gedrückter STRG-TASTE zum Home View Controller, um ihn zur **Stammansicht** der Navigation zu machen. Achten Sie darauf, dass die Option **Is Initial View Controller** in "Attributes inspector" nur für den Navigation Controller ausgewählt ist.
 5. Fügen Sie dem Storyboard einen **View Controller** hinzu, und fügen Sie eine **Image View** hinzu. Dies ist die Seite, die Benutzern angezeigt wird, nachdem sie auf die Benachrichtigung geklickt haben, um weitere Informationen zu erhalten. Ihr Storyboard sollte nun folgendermaßen aussehen:
 
-    ![][IOS4]
+    ![Screenshot eines Storyboards. Drei App-Bildschirme sind zu sehen: eine Navigationsansicht, eine Startansicht und eine Bildansicht.][IOS4]
 6. Klicken Sie im Storyboard auf den **Home View Controller**, und stellen Sie sicher, dass für den Controller die Klasse **homeViewController** als dessen **Custom Class** sowie **Storyboard ID** unter dem „Identity Inspector“ angegeben ist.
 7. Gehen Sie für Image View Controller als **imageViewController**gleichermaßen vor.
 8. Erstellen Sie dann eine neue View Controller-Klasse mit dem Namen **imageViewController** , um die soeben erstellte Benutzeroberfläche zu verarbeiten.

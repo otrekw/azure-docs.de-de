@@ -1,5 +1,5 @@
 ---
-title: Bevorstehende Änderungen an den Erfassungs- und Vereinfachungsregeln in Azure Time Series Insights | Microsoft-Dokumentation
+title: Bevorstehende Änderungen an den Erfassungs- und Vereinfachungsregeln in Azure Time Series Insights Gen2 | Microsoft-Dokumentation
 description: Änderungen an den Erfassungsregeln
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 067244aa40256e3cc76239343790974bc3c06481
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f667ca5ad82182fcf40d5c1fbb325f2ea99a7e08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919036"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495107"
 ---
 # <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>Bevorstehende Änderungen an den JSON-Vereinfachungs- und -Escaperegeln für neue Umgebungen
 
-Diese Änderungen werden nur auf *neue* Azure Time Series Insights-Umgebungen mit nutzungsbasierter Bezahlung angewendet. Sie gelten nicht für Standard-SKU-Umgebungen.
+**Diese Änderungen werden nur auf *neu erstellte* Azure Time Series Insights Gen2-Umgebungen angewandt. Sie gelten nicht für Gen1-Umgebungen.**
 
-Ihre Azure Time Series Insights-Umgebung erstellt die Speicherspalten dynamisch unter Berücksichtigung bestimmter Namenskonventionen. Wenn ein Ereignis erfasst wird, werden bestimmte Regeln auf die Namen der JSON-Nutzlast und JSON-Eigenschaften angewendet. Ab Juli 2020 gelten für neue Azure Time Series Insights-Instanzen mit nutzungsbasierter Bezahlung Änderungen an der Art und Weise, wie JSON-Daten vereinfacht und gespeichert werden. Dies betrifft Sie in den folgenden Fällen:
+Ihre Azure Time Series Insights Gen2-Umgebung erstellt die Speicherspalten dynamisch unter Berücksichtigung bestimmter Namenskonventionen. Wenn ein Ereignis erfasst wird, werden bestimmte Regeln auf die Namen der JSON-Nutzlast und JSON-Eigenschaften angewendet. Ab Juli 2020 gelten für neue Azure Time Series Insights Gen2-Instanzen Änderungen an der Art und Weise, wie JSON-Daten vereinfacht und gespeichert werden. Dies betrifft Sie in den folgenden Fällen:
 
 * Wenn Ihre JSON-Nutzlast geschachtelte Objekte enthält
 *  Wenn Ihre JSON-Nutzlast Arrays enthält
@@ -45,15 +45,16 @@ Arrays von Objekten werden immer vereinfacht und mehrere Ereignisse generiert. |
 
  #### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Wenn Ihre Nutzlast geschachtelten JSON-Code oder Sonderzeichen enthält, und Sie die Erstellung von variablen Ausdrücken für das [Zeitreihenmodell](.\time-series-insights-update-tsm.md) automatisieren
 
-*  Aktualisieren Sie den Clientcode, indem Sie [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch#typesbatchput) ausführen, um ihn an die neuen Erfassungsregeln anzupassen. Beispielsweise sollte ein bisheriger [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) von `"value": {"tsx": "$event.series_value.Double"}` auf eine der folgenden Optionen aktualisiert werden:
+*  Aktualisieren Sie den Clientcode, indem Sie [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) ausführen, um ihn an die neuen Erfassungsregeln anzupassen. Beispielsweise sollte ein bisheriger [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) von `"value": {"tsx": "$event.series_value.Double"}` auf eine der folgenden Optionen aktualisiert werden:
     * `"value": {"tsx": "$event.series.value.Double"}`
     * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den Artikel [Hinzufügen von Unterstützung für den Long-Datentyp](./time-series-insights-long-data-type.md).
+- Lesen Sie den Artikel [Datenspeicherung und -eingang in Azure Time Series Insights Gen2](./time-series-insights-update-storage-ingress.md).
 
-- Lesen Sie den Artikel [Datenspeicherung und -eingang in Azure Time Series Insights Preview](./time-series-insights-update-storage-ingress.md).
+- Erfahren Sie mehr über das Abfragen von Daten mit [Time Series-Abfrage-APIs](./concepts-query-overview.md).
+
+- Erfahren Sie mehr über die [neue Time Series-Ausdruckssyntax](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 

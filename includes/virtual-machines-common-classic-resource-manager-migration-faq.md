@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837926"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527206"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Wie viel Zeit ist für die Migration erforderlich?
 
@@ -28,7 +29,7 @@ Kunden, die im Februar 2020 über aktive oder beendete, aber zugewiesene IaaS-V
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Warum erhalte ich eine Fehlermeldung mit dem Hinweis „NewClassicVMCreationNotAllowedForSubscription“?
 
-Im Rahmen des Deaktivierungsvorgangs sind IaaS-VMs (klassisch) nicht mehr für neue Kunden verfügbar. Wir haben Sie als neuen Kunden identifiziert, daher wurde Ihr Vorgang nicht autorisiert. Es wird dringend empfohlen, [Azure Virtual Machines mit ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) zu verwenden. Wenn Sie keine Azure-VMs mit ARM verwenden können, wenden Sie sich an den Support, um Ihr Abonnement in die Whitelist aufnehmen zu lassen.
+Im Rahmen des Deaktivierungsvorgangs sind IaaS-VMs (klassisch) nicht mehr für neue Kunden verfügbar. Wir haben Sie als neuen Kunden identifiziert, daher wurde Ihr Vorgang nicht autorisiert. Es wird dringend empfohlen, [Azure Virtual Machines mit ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) zu verwenden. Wenn Sie keine Azure-VMs mit ARM verwenden können, wenden Sie sich an den Support, um Ihr Abonnement in die Zulassungsliste aufnehmen zu lassen.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Wirkt sich dieser Migrationsplan auf meine vorhandenen Dienste oder Anwendungen aus, die auf virtuellen Azure-Computern ausgeführt werden? 
 

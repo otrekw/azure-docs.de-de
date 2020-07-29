@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: ffdfeacad2fcfa7f77f3bcb55e8b1edaea865202
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: e8bae2062051156d6de378e54bc354b3f785e403
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145158"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515460"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -21,7 +21,7 @@ ms.locfileid: "86145158"
 
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. 
 
-Dieser Artikel ist eine vollständige Liste aller Plattformmetriken (d. h. der automatisch erfassten), die derzeit mit der konsolidierten Metrikpipeline von Azure Monitor zur Verfügung stehen. Die Liste wurde am 27. März 2020 zuletzt aktualisiert. Nach diesem Datum geänderte oder hinzugefügte Metriken werden möglicherweise unten nicht angezeigt. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken programmgesteuert abzufragen und auf die Liste zuzugreifen. Andere Metriken, die nicht in dieser Liste enthalten sind, stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung.
+Dieser Artikel ist eine vollständige Liste aller Plattformmetriken (d. h. der automatisch erfassten), die derzeit mit der konsolidierten Metrikpipeline von Azure Monitor zur Verfügung stehen. Die Liste wurde am 27. März 2020 zuletzt aktualisiert. Nach diesem Datum geänderte oder hinzugefügte Metriken werden möglicherweise unten nicht angezeigt. Verwenden Sie die [API-Version 2018-01-01](/rest/api/monitor/metricdefinitions), um diese Metriken programmgesteuert abzufragen und auf die Liste zuzugreifen. Andere Metriken, die nicht in dieser Liste enthalten sind, stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung.
 
 Die Metriken sind nach Ressourcenanbietern und Ressourcentyp geordnet. Eine Liste der Dienste und der Ressourcenanbieter, die zu diesen gehören, finden Sie unter [Ressourcenanbieter für Azure-Dienste](../../azure-resource-manager/management/azure-services-resource-providers.md). 
 
@@ -516,7 +516,7 @@ Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleit
 |FileShareCount|Anzahl von Dateifreigaben|Anzahl|Average|Die Anzahl von Dateifreigaben im Dateidienst des Speicherkontos.|Keine|
 |FileShareSnapshotCount|Anzahl von Momentaufnahmen in Dateifreigabe|Anzahl|Average|Die Anzahl der in der Freigabe im Dateidienst des Speicherkontos enthaltenen Momentaufnahmen.|FileShare|
 |FileShareSnapshotSize|Größe der Momentaufnahmen in Dateifreigabe|Byte|Average|Die Speichermenge in Byte, die von den Momentaufnahmen im Dateidienst des Speicherkontos verwendet wird.|FileShare|
-|FileShareQuota|Kontingentgröße für Dateifreigabe|Byte|Average|Die Obergrenze für die Speichermenge zur Verwendung durch den Azure Files-Dienst, angegeben in Byte.|FileShare|
+|FileShareCapacityQuota|Kontingentgröße für Dateifreigabe|Byte|Average|Die Obergrenze für die Speichermenge zur Verwendung durch den Azure Files-Dienst, angegeben in Byte.|FileShare|
 |Transaktionen|Transaktionen|Anzahl|Gesamt|Die Anzahl von Anforderungen, die an einen Speicherdienst oder an den angegebenen API-Vorgang gerichtet wurden. Diese Anzahl umfasst erfolgreiche und fehlgeschlagene Anforderungen sowie Anforderungen, die Fehler erzeugt haben. Verwenden Sie die Dimension „ResponseType“ für die Anzahl von verschiedenen Antworttypen.|ResponseType, GeoType, ApiName, Authentication, FileShare|
 |Eingehende Daten|Eingehende Daten|Byte|Gesamt|Die Menge der Eingangsdaten in Byte. Dieser Wert umfasst an Azure Storage gerichtete eingehende Daten von einem externen Client sowie eingehende Daten innerhalb von Azure.|GeoType, ApiName, Authentication, FileShare|
 |Ausgehende Daten|Ausgehende Daten|Byte|Gesamt|Die Menge der Ausgangsdaten in Byte. Dieser Wert umfasst an Azure Storage gerichtete ausgehende Daten von einem externen Client sowie ausgehende Daten innerhalb von Azure. Der Wert stellt somit keine gebührenpflichtigen ausgehenden Daten dar.|GeoType, ApiName, Authentication, FileShare|
@@ -748,21 +748,6 @@ Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleit
 |BytesUploadedToCloud|Hochgeladene Cloudbytes (Gerät)|Byte|Average|Die Gesamtzahl von Bytes, die in Azure von einem Gerät während des Berichtszeitraum hochgeladen wird.|Keine|
 |HyperVVirtualProcessorUtilization|Edgecomputing – CPU in Prozent|Percent|Average|Prozentsatz der CPU-Auslastung|InstanceName|
 |HyperVMemoryUtilization|Edgecomputing – Arbeitsspeichernutzung|Percent|Average|Größe des genutzten Arbeitsspeichers|InstanceName|
-
-
-## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.DataCatalog/datacatalogs
-
-|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
-|---|---|---|---|---|---|
-|AssetDistributionByClassification|Ressourcenverteilung nach Klassifizierung|Anzahl|Gesamt|Gibt die Anzahl von Ressourcen an, denen eine bestimmte Klassifizierung zugewiesen ist, die also mit dieser Bezeichnung klassifiziert sind.|Classification, Source|
-|AssetDistributionByStorageType|Ressourcenverteilung nach Speichertyp|Anzahl|Gesamt|Gibt die Anzahl von Ressourcen mit einem bestimmten Speichertyp an.|StorageType|
-|NumberOfAssetsWithClassifications|Anzahl von Ressourcen mit mindestens einer Klassifizierung|Anzahl|Average|Gibt die Anzahl von Ressourcen an, die über mindestens eine Klassifizierung verfügen.|Keine|
-|ScanCancelled|Überprüfung abgebrochen|Anzahl|Gesamt|Gibt die Anzahl von Überprüfungen an, die abgebrochen wurden.|Keine|
-|ScanCompleted|Überprüfung abgeschlossen|Anzahl|Gesamt|Gibt die Anzahl von Überprüfungen an, die erfolgreich abgeschlossen wurden.|Keine|
-|ScanFailed|Fehler bei der Überprüfung|Anzahl|Gesamt|Gibt die Anzahl von Überprüfungen an, bei denen ein Fehler aufgetreten ist.|Keine|
-|ScanTimeTaken|Überprüfungsdauer|Sekunden|Gesamt|Gibt die Gesamtdauer der Überprüfung in Sekunden an.|Keine|
-|CatalogActiveUsers|Aktive Benutzer pro Tag|Anzahl|Gesamt|Anzahl von aktiven Benutzern pro Tag|Keine|
-|CatalogUsage|Nutzungsverteilung nach Vorgang|Anzahl|Gesamt|Gibt die Anzahl von Vorgängen an, die ein Benutzer für den Katalog durchführt (z. B. Zugriff, Suche, Glossar).|Vorgang|
 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
@@ -2145,7 +2130,7 @@ Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleit
 |FileShareCount|Anzahl von Dateifreigaben|Anzahl|Average|Die Anzahl von Dateifreigaben im Dateidienst des Speicherkontos.|Keine|
 |FileShareSnapshotCount|Anzahl von Momentaufnahmen in Dateifreigabe|Anzahl|Average|Die Anzahl der in der Freigabe im Dateidienst des Speicherkontos enthaltenen Momentaufnahmen.|FileShare|
 |FileShareSnapshotSize|Größe der Momentaufnahmen in Dateifreigabe|Byte|Average|Die Speichermenge in Byte, die von den Momentaufnahmen im Dateidienst des Speicherkontos verwendet wird.|FileShare|
-|FileShareQuota|Kontingentgröße für Dateifreigabe|Byte|Average|Die Obergrenze für die Speichermenge zur Verwendung durch den Azure Files-Dienst, angegeben in Byte.|FileShare|
+|FileShareCapacityQuota|Kontingentgröße für Dateifreigabe|Byte|Average|Die Obergrenze für die Speichermenge zur Verwendung durch den Azure Files-Dienst, angegeben in Byte.|FileShare|
 |Transaktionen|Transaktionen|Anzahl|Gesamt|Die Anzahl von Anforderungen, die an einen Speicherdienst oder an den angegebenen API-Vorgang gerichtet wurden. Diese Anzahl umfasst erfolgreiche und fehlgeschlagene Anforderungen sowie Anforderungen, die Fehler erzeugt haben. Verwenden Sie die Dimension „ResponseType“ für die Anzahl von verschiedenen Antworttypen.|ResponseType, GeoType, ApiName, Authentication, FileShare|
 |Eingehende Daten|Eingehende Daten|Byte|Gesamt|Die Menge der Eingangsdaten in Byte. Dieser Wert umfasst an Azure Storage gerichtete eingehende Daten von einem externen Client sowie eingehende Daten innerhalb von Azure.|GeoType, ApiName, Authentication, FileShare|
 |Ausgehende Daten|Ausgehende Daten|Byte|Gesamt|Die Menge der Ausgangsdaten in Byte. Dieser Wert umfasst an Azure Storage gerichtete ausgehende Daten von einem externen Client sowie ausgehende Daten innerhalb von Azure. Der Wert stellt somit keine gebührenpflichtigen ausgehenden Daten dar.|GeoType, ApiName, Authentication, FileShare|
@@ -2534,4 +2519,3 @@ Es gibt einige Einschränkungen in Hinsicht darauf, welche Metriken weitergeleit
 * [Informationen zu Metriken in Azure Monitor](data-platform.md)
 * [Erstellen von Warnungen zu Metriken](alerts-overview.md)
 * [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](platform-logs-overview.md)
-

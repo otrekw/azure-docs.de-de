@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667317"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513861"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -16,7 +16,7 @@ SAP HANA-Datenbanken sind kritische Workloads, die eine niedrige Recovery Point 
 
 In diesem Artikel wird veranschaulicht, wie SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden, in einem Azure Backup Recovery Services-Tresor gesichert werden.
 
-In diesem Artikel wird Folgendes behandelt:
+In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
 >
 > * Erstellen und Konfigurieren eines Tresors
@@ -25,7 +25,7 @@ In diesem Artikel wird Folgendes behandelt:
 > * Ausführen eines bedarfsgesteuerten Sicherungsauftrag
 
 >[!NOTE]
->[Erste Schritte](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 oder 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+>[Erste Schritte](./tutorial-backup-sap-hana-db.md) mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 oder 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
 
 >[!NOTE]
 >**Die Workloads für vorläufiges Löschen für SQL Server auf virtuellen Azure-Computern und vorläufiges Löschen für SAP HANA auf virtuellen Azure-Computern** sind jetzt als Vorschauversion verfügbar.<br>
@@ -53,17 +53,17 @@ Weitere Informationen zur Verwendung dieser Optionen finden Sie unten:
 
 #### <a name="private-endpoints"></a>Private Endpunkte
 
-Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem virtuellen Netzwerk mit Ihrem Recovery Services-Tresor herzustellen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Tresor. Der Netzwerkdatenverkehr zwischen Ihren Ressourcen innerhalb des virtuellen Netzwerks und dem Tresor wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbone-Netzwerk übertragen. Dadurch wird er vom öffentlichen Internet isoliert. Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](https://docs.microsoft.com/azure/backup/private-endpoints).
+Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem virtuellen Netzwerk mit Ihrem Recovery Services-Tresor herzustellen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Tresor. Der Netzwerkdatenverkehr zwischen Ihren Ressourcen innerhalb des virtuellen Netzwerks und dem Tresor wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbone-Netzwerk übertragen. Dadurch wird er vom öffentlichen Internet isoliert. Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](./private-endpoints.md).
 
 #### <a name="nsg-tags"></a>NSG-Tags
 
-Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für *Azure AD* und *Azure Storage* erstellen.  Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
+Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](../virtual-network/security-overview.md#service-tags) für *Azure AD* und *Azure Storage* erstellen.  Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
 
 1. Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
 
 1. Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
 
-1. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf *Diensttag* und **Zieldiensttag** auf *AzureBackup* festgelegt wurde.
+1. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](../virtual-network/manage-network-security-group.md#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf *Diensttag* und **Zieldiensttag** auf *AzureBackup* festgelegt wurde.
 
 1. Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
 
@@ -71,7 +71,7 @@ Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Stor
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall-Tags
 
-Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [Azure Firewall-FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) *AzureBackup*. Dies erlaubt sämtlichen ausgehenden Zugriff auf Azure Backup.
+Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [Azure Firewall-FQDN-Tags](../firewall/fqdn-tags.md) *AzureBackup*. Dies erlaubt sämtlichen ausgehenden Zugriff auf Azure Backup.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Zulassen des Zugriffs auf Dienst-IP-Bereiche
 
@@ -85,7 +85,7 @@ Sie können auch die folgenden FQDNs verwenden, um den Zugriff auf die erforderl
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | Gewähren des Zugriffs auf FQDNs gemäß Abschnitt 56 und 59, wie in [diesem Artikel](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) beschrieben |
+| Azure AD      | Gewähren des Zugriffs auf FQDNs gemäß Abschnitt 56 und 59, wie in [diesem Artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) beschrieben |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Verwenden eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr
 
@@ -199,17 +199,19 @@ Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgest
 Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio) eine lokale Sicherung einer Datenbank ausführen möchten, die mit Azure Backup gesichert wird:
 
 1. Warten Sie, bis alle vollständigen Sicherungen oder Protokollsicherungen für die Datenbank abgeschlossen sind. Überprüfen Sie den Status in SAP HANA Studio/Cockpit.
-2. Deaktivieren Sie Protokollsicherungen, und legen Sie den Sicherungskatalog auf das Dateisystem für die entsprechende Datenbank fest.
-3. Doppelklicken Sie hierzu auf **systemdb** > **Konfiguration** > **Datenbank auswählen** > **Filter (Protokoll)** .
-4. Legen Sie **enable_auto_log_backup** auf **No** fest.
-5. Legen Sie **log_backup_using_backint** auf **False** fest.
-6. Erstellen Sie eine bedarfsgesteuerte vollständige Sicherung der Datenbank.
-7. Warten Sie, bis die vollständige Sicherung und die Katalogsicherung abgeschlossen sind.
-8. Stellen Sie die vorherigen Einstellungen für Azure wieder her:
+1. Deaktivieren Sie Protokollsicherungen, und legen Sie den Sicherungskatalog auf das Dateisystem für die entsprechende Datenbank fest.
+1. Doppelklicken Sie hierzu auf **systemdb** > **Konfiguration** > **Datenbank auswählen** > **Filter (Protokoll)** .
+1. Legen Sie **enable_auto_log_backup** auf **No** fest.
+1. Legen Sie **log_backup_using_backint** auf **False** fest.
+1. Legen Sie **catalog_backup_using_backint** auf **FALSE** fest.
+1. Erstellen Sie eine bedarfsgesteuerte vollständige Sicherung der Datenbank.
+1. Warten Sie, bis die vollständige Sicherung und die Katalogsicherung abgeschlossen sind.
+1. Stellen Sie die vorherigen Einstellungen für Azure wieder her:
     * Legen Sie **enable_auto_log_backup** auf **Yes** fest.
     * Legen Sie **log_backup_using_backint** auf **True** fest.
+    * Legen Sie **catalog_backup_using_backint** auf **True** fest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [nur auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbanken wiederherstellen können](https://docs.microsoft.com/azure/backup/sap-hana-db-restore).
-* Erfahren Sie, wie Sie [mit Azure Backup gesicherte SAP HANA-Datenbanken verwalten können](https://docs.microsoft.com/azure/backup/sap-hana-db-manage).
+* Erfahren Sie, wie Sie [nur auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbanken wiederherstellen können](./sap-hana-db-restore.md).
+* Erfahren Sie, wie Sie [mit Azure Backup gesicherte SAP HANA-Datenbanken verwalten können](./sap-hana-db-manage.md).

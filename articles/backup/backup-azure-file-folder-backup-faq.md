@@ -1,18 +1,18 @@
 ---
-title: Sichern von Dateien und Ordnern – Häufig gestellte Fragen
+title: Microsoft Azure Recovery Services-Agent (MARS) – häufig gestellte Fragen
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056173"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514066"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)
 
-Dieser Artikel beantwortet häufige Fragen zur Sicherung von Dateien und Ordnern mit dem Microsoft Azure Recovery Services-Agent (MARS) im [Azure Backup](backup-overview.md)-Dienst.
+Dieser Artikel beantwortet häufige Fragen zur Sicherung von Daten mit dem Microsoft Azure Recovery Services-Agent (MARS) im [Azure Backup](backup-overview.md)-Dienst.
 
 ## <a name="configure-backups"></a>Konfigurieren von Sicherungen
 
@@ -74,11 +74,11 @@ Wenn Sie einen Windows-Computer umbenennen, werden alle derzeit konfigurierten S
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Wie lang ist die maximale Dateipfadlänge für die Sicherung?
 
-Der MARS-Agent basiert auf NTFS und verwendet die durch die [Windows-API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) begrenzte Dateipfadlänge. Wenn die Dateien, die Sie sichern möchten, länger als der zulässige Wert sind, sichern Sie den übergeordneten Ordner oder das Laufwerk.  
+Der MARS-Agent basiert auf NTFS und verwendet die durch die [Windows-API](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths) begrenzte Dateipfadlänge. Wenn die Dateien, die Sie sichern möchten, länger als der zulässige Wert sind, sichern Sie den übergeordneten Ordner oder das Laufwerk.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Welche Zeichen sind in Dateipfaden zulässig?
 
-Der MARS-Agent basiert auf NTFS und erlaubt [unterstützte Zeichen](/windows/desktop/FileIO/naming-a-file#naming-conventions) in Dateinamen/Pfaden.
+Der MARS-Agent basiert auf NTFS und erlaubt [unterstützte Zeichen](/windows/win32/FileIO/naming-a-file#naming-conventions) in Dateinamen/Pfaden.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Die Warnung „Azure-Sicherungen wurden für diesen Server nicht konfiguriert“ wird angezeigt.
 
@@ -165,7 +165,7 @@ Der Azure Backup-Agent benötigt eine Passphrase (die Sie bei der Registrierung 
 
 | Ursprünglicher Computer <br> *(Quellcomputer, auf dem Sicherungen erstellt wurden)* | Passphrase | Verfügbare Optionen |
 | --- | --- | --- |
-| Verfügbar |Verloren |Wenn Ihr ursprünglicher Computer (auf dem die Sicherungen erstellt wurden) verfügbar ist und noch bei demselben Recovery Services-Tresor registriert ist, können Sie die Passphrase mithilfe der folgenden [Schritte](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase) erneut generieren.  |
+| Verfügbar |Verloren |Wenn Ihr ursprünglicher Computer (auf dem die Sicherungen erstellt wurden) verfügbar ist und noch bei demselben Recovery Services-Tresor registriert ist, können Sie die Passphrase mithilfe der folgenden [Schritte](./backup-azure-manage-mars.md#re-generate-passphrase) erneut generieren.  |
 | Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
 
 Unter den folgenden Bedingungen ziehen Sie Folgendes in Betracht:
@@ -175,7 +175,7 @@ Unter den folgenden Bedingungen ziehen Sie Folgendes in Betracht:
   * *einer anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
 * Wenn Sie den Agent auf einem *anderen Computer* installieren, und zwar mit
   * der *gleichen Passphrase* (die auf dem ursprünglichen Computer verwendet wurde), dann können Sie Ihre gesicherten Daten wiederherstellen.
-  * einer *anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
+  * *einer anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
 * Wenn der ursprüngliche Computer beschädigt ist (Sie also die Passphrase nicht über die MARS-Konsole neu generieren können), Sie den ursprünglichen, vom MARS-Agent verwendeten Ablageordner aber wiederherstellen bzw. darauf zugreifen können, ist die Wiederherstellung ggf. möglich, wenn Sie das Kennwort vergessen haben. Weitere Unterstützung erhalten Sie vom Kundensupport.
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Wie kann ich die Daten wiederherstellen, wenn ich mein Originalcomputer (auf dem die Sicherungen erstellt wurden) verloren habe?
@@ -184,7 +184,7 @@ Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben h
 
 | Ursprünglicher Computer | Passphrase | Verfügbare Optionen |
 | --- | --- | --- |
-| Verloren |Verfügbar |Sie können den MARS-Agent auf einem anderen Computer mit der gleichen Passphrase, die Sie bei der Registrierung des ursprünglichen Computers angegeben haben, installieren und registrieren. Wählen Sie **Wiederherstellungsoption** > **Anderer Speicherort** aus, um die Wiederherstellung auszuführen. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Verloren |Verfügbar |Sie können den MARS-Agent auf einem anderen Computer mit der gleichen Passphrase, die Sie bei der Registrierung des ursprünglichen Computers angegeben haben, installieren und registrieren. Wählen Sie **Wiederherstellungsoption** > **Anderer Speicherort** aus, um die Wiederherstellung auszuführen. Weitere Informationen finden Sie in [diesem Artikel](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Meine Sicherungsaufträge schlagen fehl oder werden schon lange nicht mehr ausgeführt. Der Aufbewahrungszeitraum ist überschritten. Kann ich dennoch eine Wiederherstellung ausführen?

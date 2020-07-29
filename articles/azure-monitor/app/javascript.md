@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464571"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517109"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -186,14 +186,14 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | isBeaconApiDisabled | true | Bei „false“ sendet das SDK alle Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
 | onunloadDisableBeacon | false | Die Standardeinstellung ist „false“. Wenn die Registerkarte geschlossen ist, sendet das SDK alle verbleibenden Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
 | sdkExtension | NULL | Legt den Erweiterungsnamen „sdk“ fest. Hierbei sind nur alphabetische Zeichen zulässig. Der Erweiterungsname wird dem Tag ‚ai.internal.sdkVersion‘ als Präfix hinzugefügt (z.B. ‚ext_javascript:2.0.0‘). Der Standardwert lautet null. |
-| isBrowserLinkTrackingEnabled | false | Der Standardwert ist "false". Bei „true“ wird das SDK alle Anforderungen vom Typ [Browserverknüpfung](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) nachverfolgen. |
+| isBrowserLinkTrackingEnabled | false | Der Standardwert ist "false". Bei „true“ wird das SDK alle Anforderungen vom Typ [Browserverknüpfung](/aspnet/core/client-side/using-browserlink) nachverfolgen. |
 | appId | NULL | „AppId“ wird für die Korrelation zwischen AJAX-Abhängigkeiten verwendet, die clientseitig mit den serverseitigen Anforderungen erfolgt. Wenn die Beacon-API aktiviert ist, kann sie nicht automatisch verwendet werden. Sie kann aber in der Konfiguration manuell festgelegt werden. Die Standardeinstellung ist „null“. |
 | enableCorsCorrelation | false | Bei „true“ fügt das SDK allen CORS-Anforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um ausgehende AJAX-Abhängigkeiten mit entsprechenden serverseitigen Anforderungen zu korrelieren. Die Standardeinstellung ist „false“. |
 | namePrefix | nicht definiert | Ein optionaler Wert, der als „name“-Postfix für „localStorage“ und den Cookienamen verwendet wird.
 | enableAutoRouteTracking | false | Routenänderungen in Single-Page-Webanwendungen (Single Page Applications, SPA) automatisch nachverfolgen. Bei „true“ sendet jede Routenänderung einen neuen Seitenaufruf an Application Insights. Hashroutenänderungen (`example.com/foo#bar`) werden ebenfalls als neue Seitenaufrufe aufgezeichnet.
 | enableRequestHeaderTracking | false | Bei „true“ werden AJAX- und Fetch-Anforderungsheader nachverfolgt.Der Standardwert ist „false“.
 | enableResponseHeaderTracking | false | Bei „true“ werden Antwortheader für AJAX- und Fetch-Anforderungen nachverfolgt.Der Standardwert ist „false“.
-| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt. Ein Beispiel finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps).
+| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt. Ein Beispiel finden Sie [hier](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
 | enableAjaxErrorStatusText | false | Die Standardeinstellung ist „false“. Bei TRUE wird der Text zu Antwortfehlerdaten im Abhängigkeitsereignis für fehlerhafte AJAX-Anforderungen aufgeführt.
 | enableAjaxPerfTracking | false | Die Standardeinstellung ist „false“. Flag, das die Suche nach und das Aufnehmen von zusätzlichen „window.performance“-Timings von Browsern in gemeldeten Ajax-Metriken (XHR und fetch) ermöglicht.
 | maxAjaxPerfLookupAttempts | 3 | Der Standardwert ist 3. Die maximale Anzahl von Malen, die nach „window.performance“-Timings gesucht werden kann (falls vorhanden). Dies ist erforderlich, weil nicht alle Browser „window.performance“ befüllen, bevor das Ende der XHR-Anforderung gemeldet wird. Bei fetch-Anforderungen wird dies nach der Fertigstellung hinzugefügt.
@@ -211,7 +211,7 @@ Wir bieten derzeit ein separates [React-Plug-In](#react-extensions) an, das Sie 
 
 ## <a name="configuration-autotrackpagevisittime"></a>Konfiguration: autoTrackPageVisitTime
 
-Wenn Sie `autoTrackPageVisitTime: true` festlegen, wird die Zeit nachverfolgt, die ein Benutzer auf jeder Seite verbringt. Bei jedem neuen Seitenaufruf wird die Zeitdauer, die der Benutzer auf der *vorherigen* Seite verbracht hat, als [benutzerdefinierte Metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) mit dem Namen `PageVisitTime`gesendet. Diese benutzerdefinierte Metrik kann im [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) als eine „protokollbasierte Metrik“ angezeigt werden.
+Wenn Sie `autoTrackPageVisitTime: true` festlegen, wird die Zeit nachverfolgt, die ein Benutzer auf jeder Seite verbringt. Bei jedem neuen Seitenaufruf wird die Zeitdauer, die der Benutzer auf der *vorherigen* Seite verbracht hat, als [benutzerdefinierte Metrik](../platform/metrics-custom-overview.md) mit dem Namen `PageVisitTime`gesendet. Diese benutzerdefinierte Metrik kann im [Metrik-Explorer](../platform/metrics-getting-started.md) als eine „protokollbasierte Metrik“ angezeigt werden.
 
 ## <a name="react-extensions"></a>React-Erweiterungen
 
@@ -224,21 +224,21 @@ Wenn Sie `autoTrackPageVisitTime: true` festlegen, wird die Zeit nachverfolgt, d
 
 Browser-/clientseitige Daten können angezeigt werden, indem Sie zu **Metriken** navigieren und einzelne Metriken hinzufügen, an denen Sie interessiert sind:
 
-![](./media/javascript/page-view-load-time.png)
+![Screenshot der Seite „Metriken“ in Application Insights mit grafischen Darstellungen von Metrikdaten für eine Webanwendung.](./media/javascript/page-view-load-time.png)
 
 Sie können Ihre Daten auch aus dem JavaScript SDK über die Browseroberfläche im Portal anzeigen.
 
 Wählen Sie **Browser** und dann **Fehler** oder **Leistung** aus.
 
-![](./media/javascript/browser.png)
+![Screenshot der Seite „Browser“ in Application Insights, der zeigt, wie Sie den Metriken, die Sie für Ihre Webanwendung anzeigen können, Browserfehler oder Browserleistung hinzufügen können.](./media/javascript/browser.png)
 
 ### <a name="performance"></a>Leistung
 
-![](./media/javascript/performance-operations.png)
+![Screenshot der Seite „Leistung“ in Application Insights mit grafischen Darstellungen von Vorgangsmetriken für eine Webanwendung.](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>Abhängigkeiten
 
-![](./media/javascript/performance-dependencies.png)
+![Screenshot der Seite „Leistung“ in Application Insights mit grafischen Darstellungen von Abhängigkeitsmetriken für eine Webanwendung.](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>Analytics
 
@@ -271,7 +271,7 @@ Sie können Ihre Application Insights-Ressource mit dem eigenen Azure Blob Stora
 
 1. Wählen Sie im Azure-Portal ein Element vom Typ „Ausnahmetelemetrie“ aus, um dessen „End-to-End-Transaktionsdetails“ anzuzeigen.
 2. Identifizieren Sie, welche Quellzuordnungsdateien dieser Aufrufliste entsprechen. Die Quellzuordnungsdatei muss mit der Quelldatei eines Stapelrahmens übereinstimmen, die allerdings mit dem Suffix `.map` versehen ist.
-3. Verschieben Sie die Quellzuordnungsdateien mit Drag & Drop in die Aufrufliste im Azure-Portal ![](https://i.imgur.com/Efue9nU.gif).
+3. Ziehen Sie die Sourcemaps per Drag & Drop in die Aufrufliste im Azure-Portal ![Animierte Darstellung des Drag & Drop-Vorgangs der Sourcemaps aus einem Buildordner in das Fenster der Aufrufliste im Azure-Portal](https://i.imgur.com/Efue9nU.gif).
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 

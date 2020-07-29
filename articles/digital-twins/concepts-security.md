@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833163"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522260"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Schützen von Azure Digital Twins mit rollenbasierter Zugriffssteuerung
 
@@ -58,7 +58,7 @@ Rollen können auf zwei Arten zugewiesen werden:
 * Über den Bereich „Zugriffssteuerung (IAM)“ für Azure Digital Twins im Azure-Portal (siehe [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md))
 * Mithilfe von CLI-Befehlen zum Hinzufügen oder Entfernen einer Rolle
 
-Ausführlichere Schritte hierzu finden Sie im [Azure Digital Twins-Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md).
+Ausführlichere Schritte hierzu finden Sie im [Azure Digital Twins-Tutorial: *Verbinden einer End-to-End-Lösung*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>Berechtigungsbereiche
 
@@ -73,6 +73,6 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Durchlaufen dieser Schritte mit einer exemplarischen Clientanwendung finden Sie unter [Authentifizieren einer Clientanwendung mit Azure Digital Twins](how-to-authenticate-client.md).
+* Informationen zum Durchlaufen dieser Schritte mit einer exemplarischen Clientanwendung finden Sie unter [*Gewusst wie: Authentifizieren einer Clientanwendung*](how-to-authenticate-client.md).
 
 * Erfahren Sie mehr über [RBAC für Azure](../role-based-access-control/overview.md).

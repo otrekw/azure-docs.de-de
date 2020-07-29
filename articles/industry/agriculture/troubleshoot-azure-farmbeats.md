@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187709"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497062"
 ---
-# <a name="troubleshoot"></a>Problembehandlung
+# <a name="troubleshoot-azure-farmbeats"></a>Problembehandlung in Azure FarmBeats
 
 In diesem Artikel finden Sie Lösungen für häufige Probleme mit Azure FarmBeats. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an unser [Supportforum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats), oder senden Sie eine E-Mail an farmbeatssupport@microsoft.com.
 
@@ -58,8 +58,8 @@ Kontaktieren Sie uns mit den folgenden Details:
 
 **Korrekturmaßnahme**:
 
-1. Wechseln Sie zur Ressourcengruppe für Ihren FarmBeats-Datenhub.
-2. Wählen Sie den **Event Hub** (DatafeedEventHubNamespace) aus, und überprüfen Sie die Anzahl eingehender Nachrichten.
+1. Wechseln Sie zu Ihrer FarmBeats-Ressourcengruppe.
+2. Wählen Sie den **Event Hub**-Namespace aus („sensor-partner-eh-namespace-xxxx“), klicken Sie auf „Event Hubs“, und überprüfen Sie die Anzahl von eingehenden Nachrichten in dem Event Hub, der dem Partner zugewiesen ist.
 3. Führen Sie einen der folgenden Schritte aus:
 
    - Wenn *keine eingehenden Nachrichten* vorhanden sind, wenden Sie sich an Ihren Gerätepartner.  

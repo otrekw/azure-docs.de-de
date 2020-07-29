@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203181"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506807"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
@@ -49,7 +49,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Festlegen eines benutzerdefinierten Domänennamens für Ihr selbstgehostetes Gateway über das Azure-Portal
 
-1. Wählen Sie **Gateways** unter **Einstellungen** aus.
+1. Wählen Sie die **Gateways** unter **Bereitstellung und Infrastruktur** aus.
 2. Wählen Sie das selbstgehostete Gateway aus, für das Sie den Domänennamen konfigurieren möchten.
 3. Wählen Sie **Hostnamen** unter **Einstellungen** aus.
 4. Wählen Sie **+ Hinzufügen** aus.

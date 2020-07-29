@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223457"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536112"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -96,6 +96,22 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
     ```bash
     automl_setup
     ```
+    
+* **KeyError: 'brand' when running AutoML on local compute or Azure Databricks cluster**
+
+    Wenn nach dem 10. Juni 2020 eine neue Umgebung mit der SDK-Version 1.7.0 oder früher erstellt wurde, kann dieser Fehler beim Training aufgrund eines Updates im py-cpuinfo-Pakets auftreten. (Umgebungen, die bis einschließlich 10. Juni 2020 erstellt wurden, sind davon nicht betroffen. Gleiches gilt für Experimente, die auf Remotecomputern ausgeführt werden, weil zwischengespeicherte Trainingsbilder verwendet werden.) Führen Sie einen der folgenden beiden Schritte aus, um das Problem zu umgehen:
+    
+    * Aktualisieren Sie die SDK-Version auf 1.8.0 oder höher (damit wird auch py-cpuinfo auf 5.0.0 herabgestuft):
+    
+      ```bash
+      pip install --upgrade azureml-sdk[automl]
+      ```
+    
+    * Stufen Sie die installierte Version von py-cpuinfo auf 5.0.0 herab:
+    
+      ```bash
+      pip install py-cpuinfo==5.0.0
+      ```
   
 * **Fehlermeldung: 'PyYAML' kann nicht deinstalliert werden.**
 
@@ -146,6 +162,12 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 > Das Verschieben des Azure Machine Learning-Arbeitsbereichs in ein anderes Abonnement oder das Verschieben des besitzenden Abonnements in einen neuen Mandanten wird nicht unterstützt. Andernfalls können Fehler auftreten.
 
 * **Azure-Portal**: Wenn Sie Ihren Arbeitsbereich direkt über einen Freigabelink aus dem SDK oder dem Portal anzeigen, können Sie die normale **Übersichtsseite** mit Abonnementinformationen in der Erweiterung nicht anzeigen. Außerdem können Sie nicht zu einem anderen Arbeitsbereich wechseln. Wenn Sie einen anderen Arbeitsbereich anzeigen möchten, wechseln Sie direkt zu [Azure Machine Learning-Studio](https://ml.azure.com) und suchen nach dem Namen des Arbeitsbereichs.
+
+* **Unterstützte Browser im Azure Machine Learning Studio-Webportal**: Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
+  * Microsoft Edge (Die neueste Version von Microsoft Edge. Keine ältere Microsoft Edge-Version.)
+  * Safari (neueste Version, nur auf Mac)
+  * Chrome (neueste Version)
+  * Firefox (neueste Version)
 
 ## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
@@ -217,9 +239,16 @@ Einschränkungen und bekannte Probleme bei Datendriftüberwachungen:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 
-Bekannte Probleme:
+* **Lange Computevorbereitungszeit**:
 
-* **Lange Compute-Vorbereitungszeit**: Es kann einige Minuten oder sogar länger dauern, wenn Sie zum ersten Mal eine Verbindung zu einem Computeziel herstellen oder ein Computeziel erstellen. 
+Es kann einige Minuten oder sogar länger dauern, wenn Sie zum ersten Mal eine Verbindung zu einem Computeziel herstellen oder ein Computeziel erstellen. 
+
+Es kann bis zu 10 Minuten dauern, bis Daten aus dem Modelldatensammler in Ihrem Blobspeicherkonto eintreffen (in der Regel wird der Vorgang schneller ausgeführt). Warten Sie 10 Minuten, um sicherzustellen, dass die folgenden Zellen ausgeführt werden.
+
+```python
+import time
+time.sleep(600)
+```
 
 ## <a name="train-models"></a>Trainieren von Modellen
 

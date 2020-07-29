@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 705f9f3055d40d23c9ec5e24cfccfc0c96e114a5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235688"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502570"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host – Azure CLI
 
@@ -77,7 +77,7 @@ az group deployment create -g <yourResourceGroupName> \
 
 Ältere VM-Größen werden nicht unterstützt. Die Liste der unterstützten VM-Größen finden Sie folgendermaßen:
 
-Rufen Sie die [Resource Skus-API](https://docs.microsoft.com/rest/api/compute/resourceskus/list) auf, und stellen Sie sicher, dass die `EncryptionAtHostSupported`-Funktion auf **True** festgelegt ist.
+Rufen Sie die [Resource Skus-API](/rest/api/compute/resourceskus/list) auf, und stellen Sie sicher, dass die `EncryptionAtHostSupported`-Funktion auf **True** festgelegt ist.
 
 ```json
     {
@@ -98,7 +98,7 @@ Rufen Sie die [Resource Skus-API](https://docs.microsoft.com/rest/api/compute/re
     }
 ```
 
-Alternativ können Sie auch das PowerShell-Cmdlet [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) aufrufen.
+Alternativ können Sie auch das PowerShell-Cmdlet [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) aufrufen.
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

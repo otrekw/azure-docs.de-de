@@ -3,12 +3,12 @@ title: Konfigurieren des öffentlichen Registrierungszugriffs
 description: Konfigurieren von IP-Regeln, um den Zugriff auf eine Azure-Containerregistrierung über ausgewählte öffentliche IP-Adressen oder -Adressbereiche zu ermöglichen.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702092"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523824"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurieren von Netzwerkregeln für öffentliche IP-Adressen
 
@@ -101,6 +101,13 @@ az acr update --name myContainerRegistry --public-network-enabled true
 1. Wählen Sie auf der Registerkarte **Öffentlicher Zugriff** in **Öffentlichen Netzwerkzugriff zulassen** die Option **Alle Netzwerke** aus. Klicken Sie dann auf **Speichern**.
 
 ![Öffentlicher Zugriff aus allen Netzwerken][acr-access-all-networks]
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+Wenn eine Regel für das öffentliche Netzwerk festgelegt ist oder der öffentliche Zugriff auf die Registrierung verweigert wird, tritt beim Versuch, sich aus dem nicht zulässigen öffentlichen Netzwerk bei der Registrierung anzumelden, ein Fehler auf. Der Clientzugriff aus einer Umgebung hinter einem HTTPS-Proxy ist ebenfalls nicht möglich, wenn keine Zugriffsregel für den Proxy festgelegt ist. Es wird eine Fehlermeldung ähnlich der folgenden angezeigt: `Error response from daemon: login attempt failed with status: 403 Forbidden` oder `Looks like you don't have access to registry`.
+
+Diese Fehler können auch dann auftreten, wenn Sie einen HTTPS-Proxy verwenden, der durch eine Netzwerkzugriffsregel zugelassen ist, aber in der Clientumgebung nicht ordnungsgemäß konfiguriert wurde. Überprüfen Sie, ob sowohl Ihr Docker-Client als auch Ihr Docker-Daemon für das Proxyverhalten konfiguriert sind. Details finden Sie unter [HTTP/HTTPS-Proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) in der Docker-Dokumentation.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

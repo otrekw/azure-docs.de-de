@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efec7656675b649d365a479c184de06a67d33db0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545081"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -95,7 +95,7 @@ Kunden können eine Momentaufnahme ihrer verwalteten Datenträger erstellen und 
 
 Ja, es werden verwaltete und nicht verwaltete Datenträger unterstützt. Allerdings wird empfohlen, für neue Workloads verwaltete Datenträger zu verwenden und aktuelle Workloads zu verwalteten Datenträgern zu migrieren.
 
-**Kann ich verwaltete und nicht verwaltete Datenträger zusammen auf derselben VM platzieren?**
+**Kann ich verwaltete und nicht verwaltete Datenträger auf ein und derselben VM zusammenstellen?**
 
 Nein.
 
@@ -158,15 +158,19 @@ Azure-Datenträgerreservierungen werden für eine bestimmte Region und SKU erwor
 **Was geschieht beim Ablauf meiner Azure-Datenträgerreservierung?**     
 Sie erhalten 30 Tage vor dem Ablauf und am Ablaufdatum eine E-Mail-Benachrichtigung. Nach dem Ablauf der Reservierung werden bereitgestellte Datenträger weiterhin ausgeführt und mit dem aktuellen [Satz für die nutzungsbasierte Bezahlung](https://azure.microsoft.com/pricing/details/managed-disks/) in Rechnung gestellt.
 
+**Unterstützen Standard-SSD-Datenträger SLAs für Einzelinstanz-VMs?**
+
+Ja, alle Datenträgertypen unterstützen SLAs für Einzelinstanz-VMs.
+
 ### <a name="azure-shared-disks"></a>Freigegebene Azure-Datenträger
 
 **Wird das Feature Freigegebene Datenträger für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
 
-Nein, es wird nur für verwaltete SSD-Premium-Datenträger unterstützt.
+Nein, es wird nur für Ultra-Datenträger und verwaltete SSD-Premium-Datenträger unterstützt.
 
 **Welche Regionen unterstützen freigegebene Datenträger?**
 
-Zurzeit nur USA, Westen-Mitte.
+Informationen zu Regionen finden Sie in unserem [Konzeptartikel](../articles/virtual-machines/linux/disks-shared.md).
 
 **Können freigegebene Datenträger als Betriebssystemdatenträger verwendet werden?**
 
@@ -174,11 +178,11 @@ Nein, freigegebene Datenträger werden nur für Datenträger mit Daten unterstü
 
 **Welche Datenträgergrößen werden als freigegebene Datenträger unterstützt?**
 
-Nur Premium-SSDs der Kategorie P15 oder höher unterstützen freigegebene Datenträger.
+Informationen zu unterstützten Größen finden Sie in unserem [Konzeptartikel](../articles/virtual-machines/linux/disks-shared.md).
 
-**Wenn ich über eine vorhandene Premium-SSD verfüge, kann ich darauf freigegebene Datenträger aktivieren?**
+**Wenn ich bereits über einen Datenträger verfüge, kann ich darauf freigegebene Datenträger aktivieren?**
 
-Alle verwalteten Datenträger, die mit API-Version 2019-07-01 oder höher erstellt wurden, können freigegebene Datenträger aktivieren. Zu diesem Zweck müssen Sie die Einbindung des Datenträgers in allen VMs aufheben, an die er angefügt ist. Bearbeiten Sie als nächstes die `maxShares`-Eigenschaft des Datenträgers.
+Alle verwalteten Datenträger, die mit API-Version 2019-07-01 oder höher erstellt wurden, können freigegebene Datenträger aktivieren. Zu diesem Zweck müssen Sie die Einbindung des Datenträgers in allen VMs aufheben, an die er angefügt ist. Bearbeiten Sie anschließend die **maxShares**-Eigenschaft des Datenträgers.
 
 **Wenn ich einen Datenträger nicht mehr im freigegebenen Modus verwenden möchte, wie kann ich die Funktion deaktivieren?**
 
@@ -194,7 +198,7 @@ Nein.
 
 **Kann ich die Hostzwischenspeicherung für einen Datenträger aktivieren, auf dem auch freigegebene Datenträger aktiviert sind?**
 
-Die einzige unterstützte Option für die Hostzwischenspeicherung ist „Ohne“.
+Die einzige unterstützte Option für die Hostzwischenspeicherung ist **Ohne**.
 
 ## <a name="ultra-disks"></a>Ultra-Datenträger
 
@@ -202,10 +206,10 @@ Die einzige unterstützte Option für die Hostzwischenspeicherung ist „Ohne“
 Wenn Sie nicht sicher sind, auf welchen Wert Sie den Datenträgerdurchsatz festlegen sollen, nehmen Sie zunächst eine E/A-Größe von 16 KiB an, und passen Sie die Leistung davon ausgehend an, während Sie Ihre Anwendung überwachen. Die Formel lautet: Durchsatz in MBit/s = Wert von IOPS * 16/1000.
 
 **Ich habe meinen Datenträger auf 40000 IOPS konfiguriert, sehe aber nur 12800 IOPS. Warum wird die Leistung des Datenträgers nicht angezeigt?**
-Zusätzlich zur Datenträgerdrosselung gibt es eine E/A-Drosselung, die auf VM-Ebene durchgesetzt wird. Stellen Sie sicher, dass für die von Ihnen verwendete VM-Größe die Ebenen unterstützt werden, die auf Ihren Datenträgern konfiguriert sind. Weitere Informationen zu den von Ihrer VM vorgegebenen E/A-Beschränkungen finden Sie [Größen für virtuelle Windows-Computer in Azure](../articles/virtual-machines/windows/sizes.md).
+Zusätzlich zur Datenträgerdrosselung gibt es eine E/A-Drosselung, die auf VM-Ebene durchgesetzt wird. Stellen Sie sicher, dass die von Ihnen verwendete VM-Größe die Ebenen unterstützt, die auf Ihren Datenträgern konfiguriert sind. Weitere Informationen zu den von Ihrer VM vorgegebenen E/A-Beschränkungen finden Sie [Größen für virtuelle Windows-Computer in Azure](../articles/virtual-machines/windows/sizes.md).
 
 **Kann ich Zwischenspeicherungsebenen (Cachingebenen) mit einem Ultra-Datenträger verwenden?**
-Nein, für Ultra-Datenträger werden die verschiedenen Zwischenspeicherungsmethoden, die für andere Datenträgertypen unterstützt werden, nicht unterstützt. Legen Sie die Datenträgerzwischenspeicherung auf „Keine“ (None) fest.
+Nein, für Ultra-Datenträger werden die verschiedenen Zwischenspeicherungsmethoden, die für andere Datenträgertypen unterstützt werden, nicht unterstützt. Legen Sie die Datenträgerzwischenspeicherung auf **Ohne** fest.
 
 **Kann ich meinem vorhandenen virtuellen Computer einen Ultra-Datenträger zuordnen?**
 Möglicherweise muss sich Ihr virtueller Computer in einer Kombination aus Region und Verfügbarkeitszone befinden, für die Ultra-Datenträger unterstützt werden. Weitere Informationen finden Sie unter [Verwenden von Azure Ultra-Datenträgern](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md).
@@ -262,9 +266,6 @@ Im Vergleich zu Festplattenlaufwerken bieten SSD Standard-Datenträger eine bess
 
 **Kann ich Standard-SSDs als nicht verwaltete Datenträger verwenden?**
 Nein, Standard-SSD-Datenträger sind nur als verwaltete Datenträger verfügbar.
-
-**Unterstützen Standard-SSD-Datenträger SLAs für Einzelinstanz-VMs?**
-Nein, Standard-SSDs weisen keine SLA für Einzelinstanz-VMs auf. Verwenden Sie Premium-SSD-Datenträger für eine SLA für Einzelinstanz-VMs.
 
 ## <a name="migrate-to-managed-disks"></a>Migrieren zu Managed Disks
 
@@ -413,7 +414,7 @@ Sie müssen Ihre vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, d
 |Azure-Tools      | Unterstützte Versionen                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Versionsnummer 4.1.0: Release vom Juni 2017 oder später|
-|Azure-CLI V1     | Versionsnummer 0.10.13: Release vom Mai 2017 oder später|
+|Azure-CLI V1     | Versionsnummer 0.10.13: Release vom Mai 2017 oder später|
 |Azure CLI v2     | Versionsnummer 2.0.12: Release vom Juli 2017 oder später|
 |AzCopy              | Versionsnummer 6.1.0: Release vom Juni 2017 oder später|
 
@@ -451,7 +452,41 @@ Die SKUs für Datenträger mit 8TiB, 16TiB und 32TiB werden in allen Regionen un
 
 **Wird die Aktivierung der Hostzwischenspeicherung auf allen Datenträgergrößen unterstützt?**
 
-Die Hostzwischenspeicherung (schreibgeschützter und Lese-/Schreibzugriff) wird für Datenträgergrößen unter 4 TiB unterstützt. Das bedeutet, dass alle Datenträger, die mit einer Größe von maximal 4095 GiB bereitgestellt wurden, von der Hostzwischenspeicherung profitieren können. Die Hostzwischenspeicherung wird für Datenträger größer oder gleich 4096 GiB nicht unterstützt. Ein Beispiel: Ein P50-Premium-Datenträger, der mit 4095 GiB bereitgestellt wurde, kann die Hostzwischenspeicherung nutzen, ein mit 4096 GiB bereitgestellter P50-Datenträger dagegen nicht. Es wird empfohlen, die Zwischenspeicherung für kleinere Datenträgergrößen zu nutzen, bei denen durch das Zwischenspeichern von Daten auf der VM eine Leistungssteigerung zu erwarten ist.
+Die Hostzwischenspeicherung (**ReadOnly** und **Read/Write**) wird auf Datenträgergrößen unter 4 TiB unterstützt. Das bedeutet, dass alle Datenträger, die mit einer Größe von maximal 4095 GiB bereitgestellt wurden, von der Hostzwischenspeicherung profitieren können. Die Hostzwischenspeicherung wird für Datenträger größer oder gleich 4096 GiB nicht unterstützt. Ein Beispiel: Ein P50-Premium-Datenträger, der mit 4095 GiB bereitgestellt wurde, kann die Hostzwischenspeicherung nutzen, ein mit 4096 GiB bereitgestellter P50-Datenträger dagegen nicht. Es wird empfohlen, die Zwischenspeicherung für kleinere Datenträgergrößen zu nutzen, bei denen durch das Zwischenspeichern von Daten auf der VM eine Leistungssteigerung zu erwarten ist.
+
+## <a name="private-links-for-securely-exporting-and-importing-managed-disks"></a>Private Link für einen sicheren Export und Import von Managed Disks
+
+**Welchen Vorteil bietet Private Link für das Exportieren und Importieren von Managed Disks?**
+
+Sie können Private Link nutzen, um den Export und Import aus bzw. in Managed Disks nur auf Ihr virtuelles Azure-Netzwerk zu beschränken. 
+
+**Wie kann ich sicherstellen, dass ein Datenträger nur über Private Link exportiert oder importiert wird?**
+
+Sie müssen die Eigenschaft `DiskAccessId` auf eine Instanz eines Datenträgerzugriffsobjekts und die NetworkAccessPolicy-Eigenschaft auf `AllowPrivate` festlegen.
+
+**Kann ich mehrere virtuelle Netzwerke mit demselben Datenträgerzugriffsobjekt verknüpfen?**
+
+Nein. Derzeit können Sie ein Datenträgerzugriffsobjekt nur mit einem einzigen virtuellen Netzwerk verknüpfen.
+
+**Kann ich ein virtuelles Netzwerk mit einem Datenträgerzugriffsobjekt in einem anderen Abonnement verknüpfen?**
+
+Nein. Derzeit können Sie ein Datenträgerzugriffsobjekt nur mit einem virtuellen Netzwerk im selben Abonnement verknüpfen.
+
+**Kann ich ein virtuelles Netzwerk mit einem Datenträgerzugriffsobjekt in einem anderen Abonnement verknüpfen?**
+
+Nein. Derzeit können Sie ein Datenträgerzugriffsobjekt nur mit einem virtuellen Netzwerk im selben Abonnement verknüpfen.
+
+**Wie viele Export- oder Importvorgänge mit demselben Datenträgerzugriffsobjekt können gleichzeitig stattfinden?**
+
+5
+
+**Kann ich einen SAS-URI eines Datenträgers oder einer Momentaufnahme verwenden, um die zugrunde liegende VHD einer VM im selben Subnetz herunterzuladen, in dem sich auch der dem Datenträger zugeordnete private Endpunkt befindet?**
+
+Ja.
+
+**Kann ich einen SAS-URI eines Datenträgers oder einer Momentaufnahme verwenden, um die zugrunde liegende VHD einer VM herunterzuladen, die sich nicht im selben Subnetz wie der dem Datenträger nicht zugeordnete private Endpunkt befindet?**
+
+Nein.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 

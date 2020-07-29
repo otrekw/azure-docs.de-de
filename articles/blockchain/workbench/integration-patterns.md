@@ -4,12 +4,12 @@ description: Übersicht über Smart Contract-Integrationsmuster in Azure Blockch
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254632"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538336"
 ---
 # <a name="smart-contract-integration-patterns"></a>Smart Contract-Integrationsmuster
 
@@ -134,7 +134,7 @@ Dieses Muster wird normalerweise mit dem folgenden Ansatz implementiert:
 -   Die Zustandsänderung wird als Ereignis für einen nachgeschalteten Consumer angezeigt.
 -   Der nachgeschaltete Consumer empfängt das Ereignis und löst die externe Codeausführung aus.
 
-![Übergabe der Steuerung an den externen Prozess](./media/integration-patterns/transition-external-process.png)
+![Im Diagramm ist eine Zustandsänderung im Vertrag zu sehen, die bewirkt, dass ein Ereignis in den Distributed Ledger wechselt. Blockchain Workbench ruft dann das Ereignis ab und veröffentlicht es.](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>Rückgabe der Steuerung aus dem Smart Contract
 
@@ -142,7 +142,7 @@ Abhängig von der Möglichkeit, das externe System anzupassen, kann es Nachricht
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direkte Übermittlung einer Azure Blockchain Workbench im erwarteten Format
 
-![](./media/integration-patterns/direct-delivery.png)
+![Im Diagramm ist eine API-Nachricht aus dem externen System zu sehen, die von Blockchain Workbench über Service Bus abgerufen wird. Blockchain Workbench sendet dann im Auftrag des Agents eine Nachricht als Transaktion an den Distributed Ledger. Sie wird an den Vertrag weitergegeben und bewirkt dort eine Zustandsänderung.](./media/integration-patterns/direct-delivery.png)
 
 In diesem Modell erfolgt die Kommunikation mit dem Vertrag und die anschließende Zustandsänderung nach dem obigen Verfahren, wobei Folgendes gilt:
 

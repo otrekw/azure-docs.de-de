@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen zu Azure DevTest Labs | Microsoft Docs
 description: Dieser Artikel enthält Antworten auf einige häufig gestellte Fragen zu Azure DevTest Labs.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481662"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537483"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -200,7 +200,7 @@ So kopieren Sie Ihre vorhandenen VMs in DevTest Labs
 Ja, Sie können mehrere Datenträger an Ihre VMs anfügen.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Werden Gen2-Images von DevTest Labs unterstützt?
-Nein. Der DevTest Labs-Dienst unterstützt keine [Gen2-Images](../virtual-machines/windows/generation-2.md). Wenn Gen1- und Gen2-Images verfügbar sind, wird in DevTest Labs nur das Gen1-Image angezeigt, wenn Sie eine VM erstellen. Wenn nur die Gen2-Version verfügbar ist, wird kein Image angezeigt. 
+Ja. Der DevTest Labs-Dienst unterstützt [Gen2-Images](../virtual-machines/windows/generation-2.md). Wenn jedoch Gen1- und Gen2-Images verfügbar sind, wird in DevTest Labs nur das Gen1-Image angezeigt, wenn Sie eine VM erstellen. Wenn nur die Gen2-Version verfügbar ist, wird das Image angezeigt. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Wenn ich ein Windows-Betriebssystemimage für meine Tests verwenden möchte, muss ich dann ein MSDN-Abonnement erwerben?
 Um Windows-Clientbetriebssystem-Images (Windows 7 oder höher) für Ihre Entwicklung oder Ihre Tests in Azure zu verwenden, müssen Sie einen der folgenden Schritte durchführen:
@@ -212,7 +212,7 @@ Weitere Informationen zu den Azure-Gutschriften für die einzelnen MSDN-Angebote
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Wie kann ich den Löschvorgang für alle VMs in meinem Lab automatisieren?
-Als Labbesitzer können Sie VMs aus Ihrem Lab im Azure-Portal löschen. Mit einem PowerShell-Skript können Sie ebenfalls alle VMs im Lab löschen. Ändern Sie im folgenden Beispiel die Werte der Parameter unter dem Kommentar **values to change** (Zu ändernde Werte). Sie können die Werte für subscriptionId, labResourceGroup und labName aus dem Lab-Bereich im Azure-Portal abrufen.
+Als Labbesitzer können Sie VMs aus Ihrem Lab im Azure-Portal löschen. Mit einem PowerShell-Skript können Sie ebenfalls alle VMs im Lab löschen. Ändern Sie im folgenden Beispiel die Werte der Parameter unter dem Kommentar **values to change** (Zu ändernde Werte). Sie können die Werte `subscriptionId`, `labResourceGroup` und `labName` über den Labbereich im Azure-Portal abrufen.
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -340,9 +340,9 @@ Für andere Continuous Integration(CI)/Continuous Delivery(CD)-Toolketten könne
 ## <a name="networking"></a>Netzwerk
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Wann sollte ich ein neues virtuelles Netzwerk für meine DevTest Labs-Umgebung erstellen und wann ein vorhandenes virtuelles Netzwerk nutzen?
-Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, erwägen Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung. Wenn Sie ExpressRoute verwenden, kann es sinnvoll sein, die Menge der VNets/Subnetze zu minimieren, um die Fragmentierung Ihres IP-Adressraums zu vermeiden, der für die Verwendung in den Abonnements zugewiesen wird.
+Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, erwägen Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung. Wenn Sie ExpressRoute verwenden, kann es sinnvoll sein, die Anzahl virtuellen Netzwerke/Subnetze zu minimieren, um die Fragmentierung Ihres IP-Adressraums zu vermeiden, der für die Verwendung in den Abonnements zugewiesen wird.
 
-Sie sollten hier auch die Verwendung des VNet-Peeringmusters ([Nabe-Speiche-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende VNet/Subnetz-Kommunikation. Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen.
+Sie sollten hier auch die Verwendung des Peeringmusters für virtuelle Netzwerke ([Hub-Spoke-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende VNet/Subnetz-Kommunikation. Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen.
 
 Die Anzahl der virtuellen Netzwerke pro Abonnement ist [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md). Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
 

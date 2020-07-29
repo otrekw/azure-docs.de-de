@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224416"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498439"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,11 +66,11 @@ Sie können eine Migration zu anderen Azure-Varianten erwägen, die zu Ihrer Wor
 **Wohin kann ich eine Migration durchführen, wenn ich über bestimmte Hardwareanforderungen verfüge, z. B. ein höheres Verhältnis von Arbeitsspeicher zu virtuellen Kernen oder weitere CPUs?**
 Sie können erwägen, eine Migration zu [SQL Server auf virtuellen Azure-Computern](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) oder zu [Azure SQL-Datenbank](../database/sql-database-paas-overview.md) mit Arbeitsspeicher- bzw. CPU-Optimierung durchzuführen.
 
-## <a name="known-issues--bugs"></a>Bekannte Probleme und Fehler
+## <a name="known-issues-and-defects"></a>Bekannte Probleme und Fehler
 
 **Wo finde ich bekannte Probleme und Fehler?**
 
-Informationen zu Programmfehlern und bekannten Problemen finden Sie unter [Bekannte Probleme](../database/doc-changes-updates-release-notes.md#known-issues).
+Informationen zu Produktfehlern und bekannten Problemen finden Sie unter [Bekannte Probleme](../database/doc-changes-updates-release-notes.md#known-issues).
 
 ## <a name="new-features"></a>Neue Funktionen
 
@@ -127,7 +127,7 @@ So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. *.contoso.c
 **Wie kann ich eine Azure SQL-Einzeldatenbank oder einen Azure SQL-Pool für elastische Datenbanken zu einer verwalteten Instanz von SQL Managed Instance migrieren?**
 
 Die verwaltete Instanz bietet die gleichen Leistungsstufen pro Compute- und Speichergröße wie andere Bereitstellungsoptionen von Azure SQL-Datenbank. Wenn Sie Daten in einer einzelnen Instanz konsolidieren möchten oder einfach eine Funktion ausschließlich in der verwalteten Instanz unterstützt werden soll, können Sie die Daten mithilfe der Export-/Import-Funktion (BACPAC) migrieren. Hier finden Sie weitere Optionen, wofür die SQL-Datenbankmigration zu SQL Managed Instance geeignet wäre: 
-- Verwenden der [externen Datenquelle]()
+- Verwenden der [externen Datenquelle](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210)
 - Verwenden von [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)
 - Verwenden von [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)
 
@@ -349,21 +349,6 @@ Kunden wird empfohlen, zum Mindern von Risiken bei der Datenexfiltration eine Re
 - Aktivieren Sie [SQL-Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine), und integrieren Sie sie in Warnungsmechanismen.
 - Aktivieren Sie die [Bedrohungserkennung](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) über das [Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)-Paket (ADS).
 
-
-## <a name="cost-saving-use-cases"></a>Anwendungsfälle für Kosteneinsparungen
-
-**Wo finde ich Anwendungsfälle und entsprechende Kosteneinsparungen für SQL Managed Instance?**
-
-Fallstudien zu SQL Managed Instance:
-
-- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
-- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
-
-Es gibt auch eine Forrester-Studie, die ein besseres Verständnis der Vorteile, Kosten und Risiken im Zusammenhang mit der Bereitstellung von Azure SQL Managed Instance vermittelt: [The Total Economic Impact™ von Microsoft Azure SQL Database Managed Instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
-
-
 ## <a name="dns"></a>DNS
 
 **Kann ich ein benutzerdefiniertes DNS für SQL Managed Instance konfigurieren?**
@@ -467,6 +452,19 @@ Sie können die Kosten für den Sicherungsspeicher über das Azure-Portal überw
 **Wie kann ich die Kosten für Sicherungsspeicher auf der verwalteten Instanz optimieren?**
 
 Informationen zur Optimierung Ihrer Kosten für Sicherungsspeicher finden Sie unter [Optimieren von Sicherungen für SQL Managed Instance](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935).
+
+## <a name="cost-saving-use-cases"></a>Anwendungsfälle für Kosteneinsparungen
+
+**Wo finde ich Anwendungsfälle und entsprechende Kosteneinsparungen für SQL Managed Instance?**
+
+Fallstudien zu SQL Managed Instance:
+
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+Es gibt auch eine Forrester-Studie, die ein besseres Verständnis der Vorteile, Kosten und Risiken im Zusammenhang mit der Bereitstellung von Azure SQL Managed Instance vermittelt: [The Total Economic Impact™ von Microsoft Azure SQL Database Managed Instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 ## <a name="password-policy"></a>Kennwortrichtlinie 
 

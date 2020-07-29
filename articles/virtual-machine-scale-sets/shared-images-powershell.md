@@ -1,5 +1,5 @@
 ---
-title: Verwenden von VM-Images zum Erstellen von Skalierungsgruppen in Azure
+title: Verwenden von freigegebenen VM-Images zum Erstellen von Skalierungsgruppen in Azure PowerShell
 description: Erfahren Sie, wie Sie mit Azure PowerShell freigegebene VM-Images erstellen können, mit denen Sie VM-Skalierungsgruppen in Azure bereitstellen können.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 55ca80296bfdfde162ca5a4df348fd80328dd184
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494920"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Erstellen und Verwenden von freigegebenen Images für VM-Skalierungsgruppen mit Azure PowerShell
 

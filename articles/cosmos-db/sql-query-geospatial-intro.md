@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367583"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523518"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Räumliche Daten und GeoJSON-Standortdaten in Azure Cosmos DB
 
@@ -21,9 +21,19 @@ Dieser Artikel bietet eine Einführung in die Funktionalität von Geodaten in Az
 * Wie kann ich Geodaten in Azure Cosmos DB in SQL und LINQ abfragen?
 * Wie aktiviere oder deaktiviere ich die räumliche Indizierung in Azure Cosmos DB?
 
+## <a name="spatial-data-use-cases"></a>Anwendungsfälle für räumliche Daten
+
+Räumliche Daten werden häufig in Abfragen zur örtlichen Nähe verwendet, beispielsweise: „Suche alle Cafés in der Nähe meines aktuellen Standorts“. Gängige Anwendungsfälle:
+
+* Analysen geografischer Standorte für bestimmte lokale Marketinginitiativen.
+* Standortbasierte Personalisierung für verschiedene Branchen wie z. B. Einzelhandel und Gesundheitswesen.
+* Verbesserungen in der Logistik zur Optimierung des Transports.
+* Risikoanalysen, insbesondere für Versicherungen und Finanzunternehmen.
+* Berücksichtigen von Situationen für Warnungen und Benachrichtigungen.
+
 ## <a name="introduction-to-spatial-data"></a>Einführung in räumliche Daten
 
-Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und Geodaten. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Zu den häufigen Einsatzbereichen gehören oft Abfragen zur örtlichen Nähe, z.B.: „suche alle Cafés in der Nähe meines aktuellen Standorts“.
+Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und Geodaten. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees.
 
 Die SQL-API von Azure Cosmos DB unterstützt zwei Typen räumlicher Daten: **geometrische** und **geografische**.
 
@@ -206,5 +216,5 @@ Wenn Sie die Informationen zu Breiten- und Längengrad nicht haben, aber über d
 Nachdem Sie die ersten Schritte mit räumlichen Daten in Azure Cosmos DB erlernt haben, haben Sie folgende Möglichkeiten:
 
 * Weitere Informationen zur [Azure Cosmos DB-Abfrage](sql-query-getting-started.md)
-* Informieren Sie sich ausführlicher über das [Abfragen räumlicher Daten mit Azure Cosmos DB](sql-query-geospatial-query.md).
+* Weitere Informationen zum [Abfragen räumlicher Daten mit Azure Cosmos DB](sql-query-geospatial-query.md)
 * Informieren Sie sich ausführlicher über das [Indizieren von räumlichen Daten mit Azure Cosmos DB](sql-query-geospatial-index.md).

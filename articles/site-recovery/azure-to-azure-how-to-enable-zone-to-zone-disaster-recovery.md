@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528977"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Aktivieren der Notfallwiederherstellung zwischen Zonen für virtuelle Azure-Computer
 
@@ -22,6 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie Replikation, Failover und Failback f
 >
 >- Site Recovery unterstützt derzeit keine Wiederherstellungspläne für die Notfallwiederherstellung zwischen Zonen über das Portal. Verwenden Sie PowerShell oder die REST-API, um Wiederherstellungspläne für die Notfallwiederherstellung zwischen Zonen zu verwenden. 
 >- Unterstützung für Notfallwiederherstellung zwischen Zonen ist derzeit auf zwei Regionen beschränkt: „Asien, Südosten“ und „Vereinigtes Königreich, Süden“.  
+>- Wenn der Kunde die Notfallwiederherstellung zwischen Zonen verwendet, speichert Site Recovery Kundendaten nur in der Region, in sie bereitgestellt wurden, und verschiebt sie nicht aus dieser Region. Kunden können auf Wunsch einen Recovery Services-Tresor aus einer anderen Region auswählen. Der Recovery Services-Tresor enthält Metadaten, aber keine tatsächlichen Kundendaten.
 
 Der Site Recovery-Dienst unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Es handelt sich dabei um die empfohlene Notfallwiederherstellungsoption, um Ihre Anwendungen bei regionalen Ausfällen aktiv und betriebsbereit zu halten.
 

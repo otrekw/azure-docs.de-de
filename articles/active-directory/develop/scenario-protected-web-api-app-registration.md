@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868846"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518273"
 ---
 # <a name="protected-web-api-app-registration"></a>Geschützte Web-API: App-Registrierung
 
@@ -29,15 +29,15 @@ Die allgemeinen Schritte zum Registrieren einer App sind beschrieben in [Schnell
 
 Der Microsoft Identity Platform-Endpunkt kann v1.0-Token und v2.0-Token ausgeben. Weitere Informationen zu diesen Token finden Sie unter [Zugriffstoken](access-tokens.md).
 
-Die akzeptierte Tokenversion hängt von dem Wert ab, den Sie beim Erstellen Ihrer Anwendung unter **Unterstützte Kontotypen** ausgewählt haben.
+Die Tokenversion, die von Ihrer API akzeptiert wird, richtet sich nach den **unterstützten Kontotypen**, die Sie beim Erstellen der Registrierung Ihrer Web-API-Anwendung im Azure-Portal ausgewählt haben.
 
-- Wenn der Wert für **Unterstützte Kontotypen** auf **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z.B. Skype, Xbox, Outlook.com)** festgelegt ist, wird v2.0 als Tokenversion akzeptiert.
-- Andernfalls wird v1.0 als Tokenversion akzeptiert.
+- Wenn der Wert von **Unterstützte Kontotypen** auf **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** festgelegt ist, wird nur Tokenversion v2.0 akzeptiert.
+- Andernfalls wird auch v1.0 als Tokenversion akzeptiert.
 
 Nachdem Sie die Anwendung erstellt haben, können Sie die akzeptierte Tokenversion ermitteln oder ändern, indem Sie die folgenden Schritte ausführen:
 
 1. Wählen Sie im Azure-Portal Ihre App und dann **Manifest** aus.
-1. Suchen Sie im Manifest nach der Eigenschaft **accessTokenAcceptedVersion**. Der Standardwert für die Eigenschaft ist „2“.
+1. Suchen Sie im Manifest nach der Eigenschaft **accessTokenAcceptedVersion**.
 1. Dieser Wert gibt Azure Active Directory (Azure AD) an, welche Tokenversion die Web-API akzeptiert.
     - Mit dem Wert „2“ akzeptiert die Web-API v2.0-Token.
     - Ist der Wert **Null**, akzeptiert die Web-API v1.0-Token.
@@ -52,7 +52,7 @@ Web-APIs müssen keinen Umleitungs-URI registrieren, da kein Benutzer interaktiv
 
 ## <a name="exposed-api"></a>Verfügbar gemachte API
 
-Weitere für Web-APIs spezifische Einstellungen sind die verfügbar gemachte API und die verfügbar gemachten Bereiche.
+Weitere für Web-APIs spezifische Einstellungen sind die verfügbar gemachte API und die verfügbar gemachten Bereiche oder App-Rollen.
 
 ### <a name="application-id-uri-and-scopes"></a>Anwendungs-ID-URI und Bereiche
 
@@ -64,7 +64,7 @@ Bei der App-Registrierung müssen Sie die folgenden Parameter definieren:
 - Mindestens einen Bereich
 - Mindestens eine App-Rolle
 
-Standardmäßig empfiehlt das Anwendungsregistrierungsportal die Verwendung von `api://{clientId}` als Ressourcen-URI. Dieser URI ist eindeutig, aber nicht von Menschen lesbar. Wenn Sie den URI ändern, müssen Sie sicherstellen, dass der neue Wert eindeutig ist.
+Standardmäßig empfiehlt das Anwendungsregistrierungsportal die Verwendung von `api://{clientId}` als Ressourcen-URI. Dieser URI ist eindeutig, aber nicht von Menschen lesbar. Wenn Sie den URI ändern, müssen Sie sicherstellen, dass der neue Wert eindeutig ist. Das Anwendungsregistrierungsportal stellt sicher, dass Sie eine [konfigurierte Herausgeberdomäne](howto-configure-publisher-domain.md) verwenden.
 
 Den Clientanwendungen werden Bereiche als *delegierte Berechtigungen* und App-Rollen als *Anwendungsberechtigungen* für Ihre Web-API angezeigt.
 
@@ -72,6 +72,8 @@ Bereiche werden den Benutzern Ihrer App auch im Zustimmungsfenster angezeigt. Da
 
 - Aus Sicht eines Benutzers
 - Aus Sicht eines Mandantenadministrators, der Administratoreinwilligung erteilen kann
+
+Die Einwilligung zu App-Rollen kann nicht durch einen Benutzer erteilt werden (da sie von einer Anwendung verwendet werden, die die Web-API selbstständig oder im Auftrag aufruft). Ein Mandantenadministrator muss in Clientanwendungen der App-Rollen einwilligen, die Ihre Web-API verfügbar machen. Weitere Informationen finden Sie unter [Administratoreinwilligung](v2-admin-consent.md).
 
 ### <a name="exposing-delegated-permissions-scopes"></a>Verfügbarmachen delegierter Berechtigungen (Bereiche)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945391"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539702"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Überwachen von virtuellen Azure-Computern mit Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten von virtuellen Azure-Computern erfassen und analysieren, um deren Integrität aufrechtzuerhalten. Virtuelle Computer können wie alle [anderen Azure-Ressourcen](monitor-azure-resource.md) mit Azure Monitor auf Verfügbarkeit und Leistung überwacht werden, unterscheiden sich jedoch von anderen Ressourcen darin, dass Sie außerdem das Gastbetriebssystem und die darin ausgeführten Workloads überwachen müssen. 
@@ -133,12 +133,12 @@ Nachdem Sie die Sammlung von Überwachungsdaten für einen virtuellen Computer k
 | Menüoption | BESCHREIBUNG |
 |:---|:---|
 | Übersicht | Zeigt [Plattformmetriken](../platform/data-platform-metrics.md) für den VM-Host an. Klicken Sie auf ein Diagramm, um mit diesen Daten im [Metrik-Explorer](../platform/metrics-getting-started.md) zu arbeiten. |
-| Aktivitätsprotokoll | [Aktivitätsprotokolleinträge](../platform/activity-log-view.md), die für den aktuellen virtuellen Computer gefiltert werden. |
+| Aktivitätsprotokoll | [Aktivitätsprotokolleinträge](../platform/activity-log.md#view-the-activity-log), die für den aktuellen virtuellen Computer gefiltert werden. |
 | Einblicke | Öffnet [Azure Monitor für VMs](../insights/vminsights-overview.md) mit der Zuordnung für den aktuell ausgewählten virtuellen Computer. |
 | Alerts | Zeigt [Warnungen](../platform/alerts-overview.md) für die aktuelle VM an.  |
 | Metriken | Öffnet den [Metrik-Explorer](../platform/metrics-getting-started.md), wobei der Bereich auf den aktuellen virtuellen Computer festgelegt ist. |
 | Diagnoseeinstellungen | Aktiviert und konfiguriert die [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) für die aktuelle VM. |
-| Advisor-Empfehlungen | Empfehlungen für die aktuelle VM vom [Azure Advisor](/azure/advisor/). |
+| Advisor-Empfehlungen | Empfehlungen für die aktuelle VM vom [Azure Advisor](../../advisor/index.yml). |
 | Protokolle | Öffnet [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics), wobei der [Bereich](../log-query/scope.md) auf den aktuellen virtuellen Computer festgelegt ist. |
 | Verbindungsmonitor | Öffnet [Network Watcher – Verbindungsmonitor](../../network-watcher/connection-monitor-preview.md), um die Verbindungen zwischen dem aktuellen virtuellen Computer und anderen VMs zu überwachen. |
 
@@ -226,7 +226,7 @@ Event
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) bietet eine präzise Überwachung von Workloads auf virtuellen Computern. Einen Vergleich der Überwachungsplattformen und verschiedenen Implementierungsstrategien finden Sie im [Leitfaden zur Cloudüberwachung: Einführung](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/).
+System Center Operations Manager (SCOM) bietet eine präzise Überwachung von Workloads auf virtuellen Computern. Einen Vergleich der Überwachungsplattformen und verschiedenen Implementierungsstrategien finden Sie im [Leitfaden zur Cloudüberwachung: Einführung](/azure/cloud-adoption-framework/manage/monitor/).
 
 Wenn Sie über eine vorhandene SCOM-Umgebung verfügen, die Sie weiterhin verwenden möchten, können Sie sie in Azure Monitor integrieren, um zusätzliche Funktionen bereitzustellen. Da von Azure Monitor und SCOM derselbe Log Analytics-Agent verwendet wird, senden überwachte virtuelle Computer Daten an beide. Sie müssen den Agent weiterhin Azure Monitor für VMs hinzufügen und den Arbeitsbereich so konfigurieren, dass wie oben angegeben zusätzliche Daten gesammelt werden, aber der virtuelle Computer kann weiterhin Ihre vorhandenen Management Packs ohne Änderung in einer SCOM-Umgebung ausführen.
 
@@ -242,4 +242,3 @@ Ausführliche Informationen zum Verbinden Ihrer vorhandenen SCOM-Verwaltungsgrup
 
 * [Erfahren Sie, wie Sie Daten in Azure Monitor-Protokollen mithilfe von Protokollabfragen analysieren.](../log-query/get-started-queries.md)
 * [Erfahren Sie mehr über Warnungen mithilfe von Metriken und Protokollen in Azure Monitor.](../platform/alerts-overview.md)
-

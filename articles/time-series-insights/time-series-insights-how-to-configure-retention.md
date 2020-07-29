@@ -1,23 +1,23 @@
 ---
 title: Konfigurieren der Vermerkdauer in Ihrer Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Vermerkdauer in Ihrer Azure Time Series Insights-Umgebung konfigurieren.
+description: Erfahren Sie, wie Sie die Datenaufbewahrung in Ihrer Azure Time Series Insights-Umgebung konfigurieren.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee06501134515d9369e98e724e55a66f040fffa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605046"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495124"
 ---
-# <a name="configuring-retention-in-time-series-insights"></a>Konfigurieren der Vermerkdauer in Time Series Insights
+# <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Konfigurieren der Datenaufbewahrung in Azure Time Series Insights Gen1
 
 In diesem Artikel wird beschrieben, wie Sie die **Datenaufbewahrungsdauer** und das **Verhalten bei Überschreitung des Speicherlimits** in Azure Time Series Insights konfigurieren.
 
@@ -25,18 +25,18 @@ In diesem Artikel wird beschrieben, wie Sie die **Datenaufbewahrungsdauer** und 
 
 Jede Azure Time Series Insights-Umgebung verfügt über eine Einstellung zum Konfigurieren der **Datenaufbewahrungsdauer**. Der Wert kann zwischen 1 und 400 Tagen liegen. Die Daten werden anhand der Speicherkapazität der Umgebung oder der Aufbewahrungsdauer (1 - 400) gelöscht, je nachdem, welcher Fall zuerst eintritt.
 
-Jede Time Series Insights-Umgebung verfügt über die zusätzliche Einstellung **Verhalten bei Überschreitung des Speicherlimits**. Diese Einstellung steuert das Verhalten bei Eingang und Bereinigung, wenn in einer Umgebung die maximale Kapazität erreicht ist. Sie können zwischen zwei Verhaltensweisen wählen:
+Jede Azure Time Series Insights-Umgebung verfügt über die zusätzliche Einstellung **Verhalten bei Überschreitung des Speicherlimits**. Diese Einstellung steuert das Verhalten bei Eingang und Bereinigung, wenn in einer Umgebung die maximale Kapazität erreicht ist. Sie können zwischen zwei Verhaltensweisen wählen:
 
 - **Alte Daten bereinigen** (Standard)
 - **Eingang anhalten**
 
-Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen finden Sie unter [Grundlegendes zur Vermerkdauer in Time Series Insights](time-series-insights-concepts-retention.md).  
+Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen finden Sie unter [Grundlagen der Datenaufbewahrung in Azure Time Series Insights](time-series-insights-concepts-retention.md).  
 
 ## <a name="configure-data-retention"></a>Konfigurieren der Datenaufbewahrung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Suchen Sie die vorhandene Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Time Series Insights-Umgebung aus.
+1. Suchen Sie die vorhandene Azure Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Azure Time Series Insights-Umgebung aus.
 
 1. Wählen Sie unter der Überschrift **Einstellungen** die Option **Speicherkonfiguration** aus.
 
@@ -54,8 +54,8 @@ Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Grundlegendes zur Vermerkdauer in Time Series Insights](time-series-insights-concepts-retention.md).
+- Weitere Informationen finden Sie unter [Grundlagen der Datenaufbewahrung in Azure Time Series Insights](time-series-insights-concepts-retention.md).
 
-- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.
+- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.
 
 - Informieren Sie sich über die [Planung Ihrer Umgebung](time-series-insights-environment-planning.md).

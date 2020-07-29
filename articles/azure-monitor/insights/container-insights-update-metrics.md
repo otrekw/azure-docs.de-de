@@ -2,13 +2,13 @@
 title: 'Gewusst wie: Aktualisieren von Azure Monitor für Container für Metriken | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktualisieren, um die Funktion für benutzerdefinierte Metriken zu aktivieren, für die das Untersuchen und Senden von Warnungen zu aggregierten Metriken unterstützt wird.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298260"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498983"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
 
@@ -22,21 +22,23 @@ Im Rahmen dieses Features werden die folgenden Metriken aktiviert:
 
 | Metriknamespace | Metrik | BESCHREIBUNG |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dies sind Metriken vom Typ *node* (Knoten), die *host* als Dimension enthalten. Außerdem enthalten sie den<br> Namen des Knotens als Wert für die Dimension *host*. |
-| insights.container/pods | podCount | Dies sind Metriken vom Typ *pod*. Sie enthalten Folgendes als Dimension: ControllerName, Kubernetes-Namespace, Name, Phase. |
+| Insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | Als *Knotenmetriken* enthalten Sie *Host* als Dimension. Sie enthalten auch den<br> Namen des Knotens als Wert für die Dimension *host*. |
+| Insights.container/pods | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | Als *Pod-Metriken* enthalten sie Folgendes als Dimension: ControllerName, Kubernetes-Namespace, Name, Phase. |
+| Insights.container/containers | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-Die Aktualisierung des Clusters zur Unterstützung dieser neuen Funktionen kann über das Azure-Portal, Azure PowerShell oder mit der Azure CLI durchgeführt werden. Mit Azure PowerShell und der CLI können Sie dies pro Cluster oder für alle Cluster in Ihrem Abonnement aktivieren. Neue Bereitstellungen von AKS enthalten diese Konfigurationsänderung und die Funktionen automatisch.
+Um diese neuen Funktionen zu unterstützen, ist ein neuer containerisierter Agent, Version **microsoft/oms:ciprod02212019** im Release enthalten. Neue Bereitstellungen von AKS enthalten diese Konfigurationsänderung und die Funktionen automatisch. Die Aktualisierung Ihres Clusters zur Unterstützung dieser Funktion kann über das Azure-Portal, Azure PowerShell oder mit der Azure CLI durchgeführt werden. Mit Azure PowerShell und der CLI können Sie dies pro Cluster oder für alle Cluster in Ihrem Abonnement aktivieren.
 
 Bei beiden Prozessen wird die Rolle **Überwachungsmetriken veröffentlichen** dem Dienstprinzipal des Clusters oder der benutzerseitig zugewiesenen MSI für das Überwachungs-Add-On zugewiesen, sodass die vom Agent erfassten Daten für Ihre Clusterressource veröffentlicht werden können. Die Rolle „Überwachungsmetriken veröffentlichen“ verfügt nur über die Berechtigung zum Übertragen von Metriken per Pushvorgang an die Ressource. Das Ändern eines Zustands, Aktualisieren der Ressource oder Lesen von Daten ist nicht möglich. Weitere Informationen zur Rolle finden Sie unter [Herausgeber von Überwachungsmetriken](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie beginnen:
+Stellen Sie vor dem Aktualisieren Ihres Clusters Folgendes sicher:
 
 * Benutzerdefinierte Metriken sind nur in einigen Azure-Regionen verfügbar. Eine Liste der unterstützten Regionen finden Sie [hier](../platform/metrics-custom-overview.md#supported-regions).
-* Sie sind Mitglied der Rolle **[Besitzer](../../role-based-access-control/built-in-roles.md#owner)** in der AKS-Clusterressource, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen. 
 
-Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+* Sie sind Mitglied der Rolle **[Besitzer](../../role-based-access-control/built-in-roles.md#owner)** in der AKS-Clusterressource, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen.
+
+Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Aktualisieren eines Clusters über das Azure-Portal
 
@@ -122,4 +124,4 @@ Führen Sie die folgenden Schritte aus, um mit Azure PowerShell einen bestimmten
 
 ## <a name="verify-update"></a>Überprüfen von Updatevorgängen
 
-Nach dem Initiieren des Updatevorgangs mit einer der oben beschriebenen Methoden können Sie den Metrik-Explorer von Azure Monitor verwenden und über den **Metriknamespace** überprüfen, ob **insights** aufgeführt ist. Wenn ja, ist dies der Hinweis darauf, dass Sie mit dem Einrichten von [Metrikwarnungen](../platform/alerts-metric.md) bzw. dem Anheften Ihrer Diagramme in [Dashboards](../../azure-portal/azure-portal-dashboards.md) beginnen können.  
+Nach dem Initiieren des Updatevorgangs mit einer der oben beschriebenen Methoden können Sie den Metrik-Explorer von Azure Monitor verwenden und über den **Metriknamespace** überprüfen, ob **insights** aufgeführt ist. Wenn ja, können Sie mit dem Einrichten von [Metrikwarnungen](../platform/alerts-metric.md) bzw. dem Anheften Ihrer Diagramme in [Dashboards](../../azure-portal/azure-portal-dashboards.md) beginnen.  

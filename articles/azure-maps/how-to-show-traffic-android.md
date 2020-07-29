@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92e111a6e76dbe285dd8cc7a93ce75f556142565
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335371"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540144"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Anzeigen von Verkehrsdaten auf der Karte mithilfe des Android SDK für Azure Maps
 
@@ -21,9 +21,9 @@ Flussdaten und Störungsdaten sind die zwei Arten von Verkehrsdaten, die auf der
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie Verkehrsdaten auf der Karte anzeigen können, müssen Sie [ein Azure-Konto erstellen](quick-demo-map-app.md#create-an-account-with-azure-maps) und [einen Abonnementschlüssel abrufen](quick-demo-map-app.md#get-the-primary-key-for-your-account). Anschließend müssen Sie das [Android SDK für Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installieren und eine Karte laden.
+Bevor Sie Verkehrsdaten auf der Karte anzeigen können, müssen Sie [ein Azure-Konto erstellen](quick-demo-map-app.md#create-an-azure-maps-account) und [einen Abonnementschlüssel abrufen](quick-demo-map-app.md#get-the-primary-key-for-your-account). Anschließend müssen Sie das [Android SDK für Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installieren und eine Karte laden.
 
-## <a name="incidents-traffic-data"></a>Verkehrsstörungsdaten 
+## <a name="incidents-traffic-data"></a>Verkehrsstörungsdaten
 
 Sie müssen die folgenden Bibliotheken importieren, um `setTraffic` und `incidents` aufzurufen:
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Verwenden Sie folgenden Codeausschnitt, um Verkehrsflussdaten festzulegen. Ähnlich wie bei dem Code im vorherigen Abschnitt übergeben wir den Rückgabewert der `flow`-Methode an die `setTraffic`-Methode. Es gibt vier Werte, die an `flow` übermittelt werden können, und jeder Wert würde bei `flow` die Rückgabe des entsprechenden Werts auslösen. Der Rückgabewert von `flow` wird dann als Argument an `setTraffic` übergeben. Diese vier Werte finden Sie in der unten stehenden Tabelle:
 
-| | |
+|Wert des Verkehrsflusses | BESCHREIBUNG|
 | :-- | :-- |
 | TrafficFlow.NONE | Zeigt keine Verkehrsdaten auf der Karte an. |
 | TrafficFlow.RELATIVE | Zeigt Verkehrsdaten an, die relativ zur Geschwindigkeit bei ungehindertem Verkehrsfluss auf der Straße sind. |

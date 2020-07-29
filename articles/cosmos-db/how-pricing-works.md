@@ -5,26 +5,26 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/14/2020
+ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955811"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523535"
 ---
-# <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB 
+# <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB
 
 Das Preismodell für Azure Cosmos DB vereinfacht das Kostenmanagement und die Kostenplanung. Bei Azure Cosmos DB zahlen Sie für den bereitgestellten Durchsatz und den verwendeten Speicher.
 
-* **Bereitgestellter Durchsatz**: Bereitgestellter Durchsatz (auch als reservierter Durchsatz bezeichnet) garantiert eine hohe Leistung auf jeder Skalierungsstufe. Sie geben den benötigten Durchsatz (Anforderungseinheiten pro Sekunde, RUs/Sek.) an, und Azure Cosmos DB reserviert die Ressourcen, die erforderlich sind, um den konfigurierten Durchsatz zu gewährleisten. Die Abrechnung erfolgt auf Stundenbasis für den für die jeweilige Stunde bereitgestellten maximalen Durchsatz.
+* **Bereitgestellter Durchsatz**: Der [bereitgestellte Durchsatz](how-to-choose-offer.md) (auch als reservierter Durchsatz bezeichnet) garantiert eine hohe Leistung in jeder Größenordnung. Sie geben den benötigten Durchsatz (Anforderungseinheiten pro Sekunde, RUs/Sek.) an, und Azure Cosmos DB reserviert die Ressourcen, die erforderlich sind, um den konfigurierten Durchsatz zu gewährleisten. Die Abrechnung erfolgt auf Stundenbasis für den für die jeweilige Stunde bereitgestellten maximalen Durchsatz. Sie können den Durchsatz manuell bereitstellen oder die [Autoskalierung](provision-throughput-autoscale.md) verwenden.
 
    > [!NOTE]
-   > Da bei diesem Durchsatzmodell Ressourcen für Container oder Datenbank bereitgestellt bzw. reserviert werden, wird Ihnen der bereitgestellte Durchsatz auch dann in Rechnung gestellt, wenn Sie keine Workloads ausführen.
+   > Da das Modell mit bereitgestelltem Durchsatz Ressourcen dediziert für Ihren Container oder Ihre Datenbank bereitstellt, wird Ihnen der bereitgestellte Durchsatz auch dann in Rechnung gestellt, wenn Sie keine Workloads ausführen.
 
 * **Speichernutzung**: Für die Gesamtmenge des Speichers (GB), der für Daten und Indizes für eine bestimmte Stunde genutzt wird, wird eine Pauschale berechnet.
 
-Der bereitgestellte Durchsatz, der in [Anforderungseinheiten](request-units.md) pro Sekunde (RUs/Sek.) angegeben wird, ermöglicht das Lesen oder Schreiben von Daten in Containern oder Datenbanken. Sie können [Durchsatz entweder für eine Datenbank oder einen Container bereitstellen](set-throughput.md). Basierend auf Ihren Workloadanforderungen können Sie den Durchsatz jederzeit zentral hoch- oder herunterskalieren. Die Preisgestaltung für Azure Cosmos DB ist elastisch und verhält sich proportional zu dem Durchsatz, den Sie für eine Datenbank oder einen Container konfigurieren. Die Mindestwerte für Durchsatz und Speicher sowie die Skalierungseinheiten bilden ein vollständiges Preis-/Elastizitätsspektrum für alle Kundensegmente und von kleinen bis zu umfangreichen Containern ab. Der bereitgestellte Durchsatz wird für jede Datenbank bzw. jeden Container auf Stundenbasis in Einheiten von 100 RUs/Sek. (Mindestbereitstellungsmenge 400 RUs/Sek.) und der genutzte Speicher in GB in Rechnung gestellt. Im Gegensatz zum bereitgestellten Durchsatz wird der Speicher auf Nutzungsbasis abgerechnet. Das heißt, Speicher müssen Sie nicht im Voraus reservieren. Die Berechnung erfolgt nur für den Speicher, den Sie nutzen.
+Der bereitgestellte Durchsatz, der in [Anforderungseinheiten](request-units.md) pro Sekunde (RUs/Sek.) angegeben wird, ermöglicht das Lesen oder Schreiben von Daten in Containern oder Datenbanken. Sie können [Durchsatz entweder für eine Datenbank oder einen Container bereitstellen](set-throughput.md). Basierend auf Ihren Workloadanforderungen können Sie den Durchsatz jederzeit zentral hoch- oder herunterskalieren. Die Preisgestaltung für Azure Cosmos DB ist elastisch und verhält sich proportional zu dem Durchsatz, den Sie für eine Datenbank oder einen Container konfigurieren. Die Mindestwerte für Durchsatz und Speicher sowie die Skalierungseinheiten bilden ein vollständiges Preis-/Elastizitätsspektrum für alle Kundensegmente und von kleinen bis zu umfangreichen Containern ab. Der bereitgestellte Durchsatz wird für jede Datenbank bzw. jeden Container auf Stundenbasis in Einheiten von 100 RUs/Sek. (Mindestbereitstellungsmenge 400 RUs/Sek.) und der genutzte Speicher in GB in Rechnung gestellt. Im Gegensatz zum bereitgestellten Durchsatz wird der Speicher auf Nutzungsbasis abgerechnet. Das bedeutet, dass Sie keinerlei Speicher im Voraus reservieren müssen. Die Berechnung erfolgt nur für den Speicher, den Sie nutzen.
 
 Weitere Informationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) und unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md).
 
@@ -41,9 +41,11 @@ Wie in der obigen Tabelle zu sehen, beginnt der Preis für den Mindestdurchsatz 
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB kostenlos testen
 
-Azure Cosmos DB bietet für Entwickler verschiedene Optionen kostenlos an. Die Optionen umfassen:
+Azure Cosmos DB bietet viele Optionen für Entwickler kostenlos an. Die Optionen umfassen:
 
-* **Kostenloses Azure-Konto**: Azure bietet einen [Free-Tarif](https://azure.microsoft.com/free/) an, mit dem Sie ein Azure-Guthaben von 200 USD für die ersten 30 Tage und 12 Monate lang eine begrenzte Anzahl kostenloser Dienste erhalten. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB ist Bestandteil des kostenlosen Azure-Kontos. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 5 GB und bereitgestellten Durchsatz von 400 RUs/Sek. für das ganze Jahr. 
+* **Free-Tarif von Azure Cosmos DB**: Der Free-Tarif von Azure Cosmos DB erleichtert Ihnen den Einstieg, die Entwicklung und die Durchführung von Tests für Ihre Anwendungen. Sie können sogar kleinere Produktionsworkloads kostenlos ausführen. Wenn für ein Konto der Free-Tarif aktiviert ist, sind die ersten 400 RU/s und 5 GB Speicher während der gesamten Lebensdauer des Kontos kostenlos. Sie können pro Azure-Abonnement maximal ein Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. [Erstellen Sie zunächst ein neues Konto im Azure-Portal mit aktiviertem Free-Tarif](create-cosmosdb-resources-portal.md), oder verwenden Sie eine [Resource Manager-Vorlage](manage-sql-with-resource-manager.md#free-tier).
+
+* **Kostenloses Azure-Konto**: Azure bietet einen [Free-Tarif](https://azure.microsoft.com/free/) an, mit dem Sie ein Azure-Guthaben von 200 USD für die ersten 30 Tage und 12 Monate lang eine begrenzte Anzahl kostenloser Dienste erhalten. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB ist Bestandteil des kostenlosen Azure-Kontos. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 5 GB und einen bereitgestellten Durchsatz von 400 RU/s für das ganze Jahr.
 
 * **Azure Cosmos DB kostenlos testen**: Azure Cosmos DB bietet eine zeitlich begrenzte Benutzererfahrung, indem Sie Azure Cosmos DB für kostenlose Konten testen. Mithilfe der Schnellstartanleitungen und den Tutorials können Sie ein Azure Cosmos DB-Konto sowie eine Datenbank und Sammlungen erstellen und eine Beispielanwendung ausführen. Sie können die Beispielanwendung ausführen, ohne sich für ein Azure-Konto registrieren oder Ihre Kreditkarte verwenden zu müssen. [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) stellt Azure Cosmos DB einen Monat lang mit der Möglichkeit bereit, Ihr Konto beliebig oft zu erneuern.
 

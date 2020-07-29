@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510818"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528382"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivieren des vorläufigen Löschens für Azure-Dateifreigaben
 
@@ -33,7 +33,7 @@ In den folgenden Abschnitten erfahren Sie, wie Sie vorläufiges Löschen für Az
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Zum Aktivieren des vorläufigen Löschens müssen die Diensteigenschaften eines Dateiclients aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert:
+Cmdlets für vorläufiges Löschen sind in der Vorschauversion 2.1.1 des Az.Storage-Moduls verfügbar. Zum Aktivieren des vorläufigen Löschens müssen die Diensteigenschaften eines Dateiclients aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"
@@ -70,7 +70,7 @@ So stellen Sie eine vorläufig gelöschte Dateifreigabe wieder her:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Eine vorläufig gelöschte Dateifreigabe kann mithilfe des folgenden Befehls wiederhergestellt werden:
+Cmdlets für vorläufiges Löschen sind in der Vorschauversion 2.1.1 des Az.Storage-Moduls verfügbar. Eine vorläufig gelöschte Dateifreigabe kann mithilfe des folgenden Befehls wiederhergestellt werden:
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -91,7 +91,7 @@ Wenn Sie das vorläufige Löschen nicht mehr verwenden oder eine Dateifreigabe e
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Das vorläufige Löschen für Ihr Speicherkonto kann mithilfe des folgenden Befehls deaktiviert werden:
+Cmdlets für vorläufiges Löschen sind in der Vorschauversion 2.1.1 des Az.Storage-Moduls verfügbar. Das vorläufige Löschen für Ihr Speicherkonto kann mithilfe des folgenden Befehls deaktiviert werden:
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

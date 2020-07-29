@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8c13dc43f4b7c66bd804fd9ec016f5e1a467bd8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536764"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
 
@@ -47,11 +47,11 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 
 Der Spark-Cluster in HDInsight wird mit der Anaconda-Installation erstellt. Im Cluster gibt es zwei Python-Installationen: Anaconda Python 2.7 and Python 3.5. In der folgenden Tabelle sind die Python-Standardeinstellungen für Spark, Livy und Jupyter aufgeführt.
 
-| |Python 2,7|Python 3.5|
+|Einstellung |Python 2,7|Python 3.5|
 |----|----|----|
 |`Path`|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Standard ist 2.7|–|
-|Livy|Standard ist 2.7|–|
+|Spark-Version|Standard ist 2.7|–|
+|Livy-Version|Standard ist 2.7|–|
 |Jupyter|PySpark-Kernel|PySpark3-Kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Sicheres Installieren externer Python-Pakete

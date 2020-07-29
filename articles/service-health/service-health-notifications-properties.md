@@ -3,14 +3,14 @@ title: Was sind Azure-Dienstintegritätsbenachrichtigungen?
 description: Mit Dienstintegritätsbenachrichtigungen können Sie von Microsoft Azure veröffentlichte Dienstintegritätsmeldungen anzeigen.
 ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77653967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529011"
 ---
-# <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
+# <a name="use-the-azure-portal-to-view-service-health-notifications"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
 Dienstintegritätsbenachrichtigungen werden von Azure veröffentlicht und enthalten Informationen zu den Ressourcen in Ihrem Abonnement. Diese Benachrichtigungen sind eine Unterklasse von Aktivitätsprotokollereignissen und auch im Aktivitätsprotokoll zu finden. Dienstintegritätsbenachrichtigungen können je nach Klasse informativ oder handlungsrelevant sein.
 

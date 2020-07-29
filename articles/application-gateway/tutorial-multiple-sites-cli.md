@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806268"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517898"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -30,7 +30,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
 > * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-![Beispiel zum Routing für mehrere Websites](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Anwendungsgateway für mehrere Standorte":::
 
 Sie können für dieses Verfahren auch [Azure PowerShell](tutorial-multiple-sites-powershell.md) verwenden.
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>Hinzufügen von Back-End-Listenern
+### <a name="add-listeners"></a>Hinzufügen der Listener
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) die Back-End-Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) die Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
+
+>[!NOTE]
+> Mit der SKU für Application Gateway oder WAF v2 können Sie auch bis zu fünf Hostnamen pro Listener konfigurieren und Platzhalterzeichen im Hostnamen verwenden. Weitere Informationen finden Sie unter [Hostnamen mit Platzhalterzeichen im Listener](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
+>Um in der Azure CLI mehrere Hostnamen und Platzhalterzeichen in einem Listener zu verwenden, müssen Sie `--host-names` statt `--host-name` verwenden. Sie können bis zu fünf Hostnamen als durch Trennzeichen getrennte Werte angeben. Zum Beispiel, `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

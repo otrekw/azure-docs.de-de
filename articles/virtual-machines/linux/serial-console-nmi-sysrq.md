@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758485"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501890"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
@@ -23,11 +23,11 @@ Sobald die SysRq-Sequenz übermittelt wurde, bestimmt die Kernelkonfiguration di
 
 Mit der seriellen Konsole in Azure können Sie einen SysRq-Befehl an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Screenshot der seriellen Azure-Konsole. Das Tastatursymbol ist hervorgehoben, und das Menü ist sichtbar. Dieses Menü enthält das Element „SysRq-Befehl senden“.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Durch die Auswahl von „SysRq-Befehl senden“ wird ein Dialogfeld geöffnet. Hier werden entweder allgemeine SysRq-Optionen bereitgestellt, oder Sie können eine Sequenz von im Dialogfeld eingegebenen SysRq-Befehlen übernehmen.  Dadurch werden eine Reihe von SysRq-Befehlen zum Ausführen einer Operation auf höchster Stufe (z. B. ein sicherer Neustart mit `REISUB`) ermöglicht.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Screenshot des Dialogfelds „SysRq-Befehl an Gast senden“. Die Option zum Eingeben von Befehlen ist ausgewählt, und das Befehlsfeld enthält „REISUB“.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 Der SysRq-Befehl kann nicht auf virtuellen Computern verwendet werden, die angehalten wurden oder deren Kernel sich in einem nicht reaktionsfähigen Status befindet (z. B. Kernel panic).
 
@@ -96,7 +96,7 @@ Ein nicht maskierbarer Interrupt (NMI) dient dazu, ein Signal zu erstellen, das 
 
 Sie können mit der seriellen Konsole einen NMI an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste. Nach der Übermittlung des NMI bestimmt die Konfiguration des virtuellen Computers, wie das System reagiert.  Linux-Betriebssysteme können so konfiguriert werden, dass beim Empfang eines NMI ein Absturz erfolgt und ein Speicherabbild erstellt wird.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Screenshot der seriellen Konsole. Das Tastatursymbol ist hervorgehoben, und das Menü ist sichtbar. Dieses Menü enthält das Element „Nicht maskierbaren Interrupt senden“.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstützen, können Sie beim Empfang dieses NMI einen „Panic“-Status aktivieren. Gehen Sie dazu wie folgt vor:
 1. Hinzufügen der folgenden Zeile zu */etc/sysctl.conf* <br>
@@ -121,7 +121,7 @@ Weitere Informationen zu Linux-Kernelkonfigurationen (einschließlich `unknown_n
 - [Sammeln von Absturzprotokollen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Die Hauptseite der Linux-Dokumentation für die serielle Konsole finden Sie [hier](serial-console.md).
+* Die Hauptseite der Linux-Dokumentation für die serielle Konsole finden Sie [hier](../troubleshooting/serial-console-linux.md).
 * Verwenden Sie die seriellen Konsole zum [Starten in GRUB und zum Wechseln in den Einzelbenutzermodus](serial-console-grub-single-user-mode.md)
-* Die serielle Konsole ist auch für [virtuelle Windows-Computer](../windows/serial-console.md) verfügbar.
-* Erfahren Sie mehr über die [Startdiagnose](boot-diagnostics.md).
+* Die serielle Konsole ist auch für [virtuelle Windows-Computer](../troubleshooting/serial-console-windows.md) verfügbar.
+* Erfahren Sie mehr über die [Startdiagnose](../troubleshooting/boot-diagnostics.md).

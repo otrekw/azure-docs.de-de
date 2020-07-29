@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119292"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520271"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Erstellen, Konfigurieren und Veröffentlichen eines IoT Edge-Modulangebots im Azure Marketplace
 
@@ -286,13 +286,13 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt „
 
 ### <a name="plan-overview"></a>Planübersicht
 
-Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb des gleichen Angebots im Partner Center angeben. Diese Pläne wurden bisher als SKUs (Stock Keeping Units) bezeichnet. Pläne können sich hinsichtlich der verfügbaren Clouds, wie etwa globaler Clouds oder Government-Clouds und des Images unterscheiden, auf das der Plan verweist. Damit Ihr Angebot im Marketplace aufgelistet wird, müssen Sie mindestens einen Plan auswählen.
+Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb des gleichen Angebots im Partner Center angeben. Pläne (zuvor als SKUs bezeichnet) können sich hinsichtlich der verfügbaren Clouds, wie etwa globaler Clouds oder Government-Clouds, und des Images, auf das der Plan verweist, unterscheiden. Damit Ihr Angebot im Marketplace aufgelistet wird, müssen Sie mindestens einen Plan auswählen.
 
 Nach dem Erstellen Ihres Plans zeigt die Registerkarte **Planübersicht** folgende Informationen an:
 
 - Plannamen
 - Preismodell
-- Cloudverfügbarkeit (Global oder Government)
+- Azure-Regionen (global oder Government)
 - Aktueller Veröffentlichungsstatus
 - Eventuell verfügbare Aktionen
 
@@ -329,7 +329,7 @@ Wählen Sie [Azure Government](../../azure-government/documentation-government-w
 
 #### <a name="azure-government-certifications"></a>Azure Government-Zertifizierungen
 
-Diese Option ist nur sichtbar, wenn **Azure Government** unter **Cloudverfügbarkeit** ausgewählt ist.
+Diese Option ist nur sichtbar, wenn **Azure Government** unter **Azure-Regionen** ausgewählt ist.
 
 Azure Government-Dienste verarbeiten Daten, die bestimmten behördlichen Vorschriften und Anforderungen unterliegen. Beispielsweise FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 und CJIS. Um bei Ihren Zertifizierungen ein Bewusstsein für diese Programme zu schaffen, können Sie bis zu 100 Links bereitstellen, in denen Ihre Zertifizierungen beschrieben werden. Hierbei kann es sich um Links zu Ihren Auflistungen direkt im Programm oder auf Ihrer eigenen Website handeln. Diese Links sind nur für Azure Government-Kunden sichtbar.
 

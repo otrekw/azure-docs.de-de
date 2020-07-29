@@ -1,5 +1,5 @@
 ---
-title: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen – Azure PowerShell – Traffic Manager
+title: Weiterleiten von Netzwerkdatenverkehr für Hochverfügbarkeit – Azure PowerShell
 description: 'Azure PowerShell-Skriptbeispiel: Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen'
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 183599fccfad1806faae3cb90de225d388b77da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40f24fa7b37bf5131256287c5f9c74dc7e0dec26
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74049248"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530150"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-powershell"></a>Weiterleiten von Datenverkehr für Hochverfügbarkeit von Anwendungen – Azure PowerShell
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816448"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519012"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -110,6 +110,12 @@ Arbeitsmappen können arbeitsbereichsübergreifende Abfragen mit einer von drei 
 | Arbeitsmappe interaktiv bearbeiten | Ein fortgeschrittener Benutzer, der eine bestehende Arbeitsmappe ändert, kann die darin enthaltenen Abfragen bearbeiten, indem er die Zielarbeitsbereiche mithilfe des Arbeitsbereichsselektors im Editor auswählt. | Über diese Option kann ein Hauptbenutzer bestehende Arbeitsmappen problemlos ändern, um mit mehreren Arbeitsbereichen arbeiten zu können. |
 |
 
+### <a name="cross-workspace-hunting"></a>Arbeitsbereichsübergreifendes Hunting
+
+Azure Sentinel bietet vorab geladene Abfragebeispiele, um Ihnen die ersten Schritte zu vereinfachen und Sie mit den Tabellen und der Abfragesprache vertraut zu machen. Diese integrierten Bedrohungssuchabfragen werden von Microsoft-Sicherheitsexperten kontinuierlich entwickelt. Dies geschieht sowohl durch Hinzufügen neuer Abfragen als auch Optimieren vorhandener Abfragen, um Ihnen einen Einstiegspunkt zu bieten, ab dem Sie nach neuen Erkennungen suchen und Anzeichen von Eindringversuchen identifizieren können, die von Ihren Sicherheitstools möglicherweise unentdeckt geblieben sind.  
+
+Mithilfe der arbeitsbereichsübergreifenden Hunting-Funktionen können Ihre Bedrohungsspezialisten neue Hunting-Abfragen erstellen oder vorhandene anpassen, um mehrere Arbeitsbereiche abzudecken. Dazu werden der Union-Operator und der workspace()-Ausdruck wie oben gezeigt verwendet.
+
 ## <a name="cross-workspace-management-using-automation"></a>Arbeitsbereichsübergreifende Verwaltung mithilfe von Automatisierung
 
 Um mehrere Azure Sentinel-Arbeitsbereiche zu konfigurieren und zu verwalten, müssen Sie die Verwendung der Azure Sentinel Management-API automatisieren. Weitere Informationen zur automatisierten Bereitstellung von Azure Sentinel-Ressourcen, einschließlich Warnungsregeln, Hunting-Abfragen, Arbeitsmappen und Playbooks, finden Sie unter [Erweitern von Azure Sentinel: APIs, Integration und Verwaltungsautomatisierung](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885).
@@ -122,8 +128,6 @@ Weitere Informationen finden Sie zudem unter [Bereitstellen und Verwalten von Az
 Die folgenden Funktionen werden zwischen mehreren Arbeitsbereichen nicht unterstützt:
 
 - Eine geplante Warnungsregel kann nicht über eine arbeitsbereichsübergreifende Abfrage für mehrere Arbeitsbereiche durchgesetzt werden.
-
-- Hunting-Abfragen unterstützen keine arbeitsbereichsübergreifenden Abfragen.
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Mandantenübergreifende Verwaltung von Arbeitsbereichen mithilfe von Azure Lighthouse
 

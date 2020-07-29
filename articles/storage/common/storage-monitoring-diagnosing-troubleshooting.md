@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513385"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518588"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -79,7 +79,7 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
 ## <a name="introduction"></a><a name="introduction"></a>Einführung
 Diese Anleitung zeigt Ihnen, wie Sie Funktionen wie Azure Storage Analytics, clientseitige Protokollierung in der Azure-Speicherclient-Bibliothek und andere Tools von Drittanbietern verwenden, um mit Azure-Speicher verbundene Probleme zu erkennen, zu diagnostizieren und zu beheben.
 
-![][1]
+![Diagramm, das den Informationsfluss zwischen Clientanwendungen und Azure-Speicherdiensten zeigt.][1]
 
 Dieser Leitfaden richtet sich in erster Linie an Entwickler von Online-Diensten, die Azure-Speicherdienste verwenden, sowie an IT-Experten, die für die Verwaltung solcher Online-Dienste verantwortlich sind. Mit dieser Anleitung möchten wir:
 
@@ -118,7 +118,7 @@ Sie sollten Ihre Azure-Anwendungen kontinuierlich überwachen, um sicherzustelle
 
 Die Diagramme in der folgenden Abbildung illustrieren, wie die Durchschnittsberechnung für die Stundenmetrik Aktivitätsspitzen verstecken kann. Die Stundenmetriken scheinen eine konstante Anfragerate anzuzeigen, während die Minutenmetriken die wirklichen Schwankungen offenbaren.
 
-![][3]
+![Charts, die illustrieren, wie Aktivitätsspitzen bei der Durchschnittsberechnung für die Stundenmetrik ausgeblendet werden können.][3]
 
 Im verbliebenen Teil dieses Abschnitts wird beschrieben, welche Metriken Sie überwachen sollten und warum.
 
@@ -348,7 +348,7 @@ Bezieht sich Ihr Problem auf die Verfügbarkeit eines Speicherdiensts?
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Metriken zeigen hohe AverageE2ELatency und niedrige AverageServerLatency an
 Die Abbildung unten aus dem Überwachungstool des [Azure-Portals](https://portal.azure.com) zeigt ein Beispiel, in dem die **AverageE2ELatency** wesentlich höher als die **AverageServerLatency** ist.
 
-![][4]
+![Abbildung aus dem Azure-Portal, die ein Beispiel zeigt, in dem „AverageE2ELatency“ wesentlich höher als „AverageServerLatency“ ist.][4]
 
 Der Speicherdienst berechnet die Metrik **AverageE2ELatency** nur für erfolgreiche Anforderungen und bezieht dabei im Gegensatz zu **AverageServerLatency** die Zeit ein, die der Client zum Senden der Daten und zum Empfangen der Bestätigung des Speicherdiensts benötigt. Eine Differenz zwischen **AverageE2ELatency** und **AverageServerLatency** kann daher entweder durch eine langsame Reaktion der Clientanwendung oder durch das Netzwerk bedingt sein.
 
@@ -626,7 +626,7 @@ Die wahrscheinlichste Ursache dieses Szenarios ist, dass der Client eine Löscha
 Wenn dieses Problem häufig auftritt, sollten Sie untersuchen, warum der Client keine Bestätigungen aus dem Tabellendienst erhält. Wenn das Problem intermittierend ist, sollten Sie den Fehler "HTTP (404) Nicht gefunden" eingrenzen und im Client protokollieren, aber dem Client die Fortführung erlauben.
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Der Client empfängt HTTP 409 (Konflikt)-Meldungen
-Die folgende Tabelle zeigt einen Auszug aus dem serverseitigen Protokoll für zwei Clientvorgänge: **DeleteIfExists** unmittelbar gefolgt von **CreateIfNotExists** mit dem gleichen Namen des Blob-Container. Jeder Clientvorgang führt zu zwei an den Server gesendeten Anforderungen: **GetContainerProperties** (um zu prüfen, ob der Container vorhanden ist) und anschließend entweder **DeleteContainer** oder **CreateContainer**.
+Die folgende Tabelle enthält einen Auszug aus dem serverseitigen Protokoll für zwei Clientvorgänge: **DeleteIfExists**, unmittelbar gefolgt von **CreateIfNotExists** unter Verwendung des gleichen Blobcontainernamens. Jeder Clientvorgang führt zu zwei an den Server gesendeten Anforderungen: **GetContainerProperties** (um zu prüfen, ob der Container vorhanden ist) und anschließend entweder **DeleteContainer** oder **CreateContainer**.
 
 | Timestamp | Vorgang | Ergebnis | Containername | Clientanfrage-ID |
 | --- | --- | --- | --- | --- |
@@ -727,7 +727,7 @@ Nachdem Sie Fiddler gestartet haben, beginnt die Erfassung von HTTP- und HTTPS-D
 
 Um die Menge des von Fiddler erfassten Verkehrs einzuschränken, können Sie Filter verwenden, die Sie auf der Registerkarte **Filter** konfigurieren. Der folgende Screenshot zeigt einen Filter, der nur an den Speicherendpunkt **contosoemaildist.table.core.windows.net** gesendeten Verkehr erfasst:
 
-![][5]
+![Screenshot, der einen Filter zeigt, der nur an den Speicherendpunkt „contosoemaildist.table.core.windows.net“ gesendeten Verkehr erfasst.][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr.
 [Wireshark](https://www.wireshark.org/) ist ein Netzwerkprotokoll-Analysator, mit dem Sie detaillierte Paketinformationen für einen breiten Netzwerkprotokollbereich anzeigen können.
@@ -739,18 +739,18 @@ Das folgende Verfahren zeigt, wie Sie detaillierte Paketinformationen für Daten
 3. Klicken Sie auf **Capture Options**.
 4. Fügen Sie einen Filter zum Textfeld **Capture Filter** hinzu. Beispielsweise wird Wireshark durch **host contosoemaildist.table.core.windows.net** so konfiguriert, dass nur Pakete erfasst werden, die an den Tabellenspeicherdienst-Endpunkt im **contosoemaildist**-Speicherkonto oder von diesem Tabellenspeicherdienst-Endpunkt gesendet werden. Sehen Sie sich die [vollständige Liste der Erfassungsfilter](https://wiki.wireshark.org/CaptureFilters)an.
 
-   ![][6]
+   ![Screenshot, der zeigt, wie Sie einen Filter zum Textfeld „Erfassungsfilter“ hinzufügen.][6]
 5. Klicken Sie auf **Start**. Wireshark wird nun alle an oder aus dem Tabellendienstendpunkt gesendeten Pakete erfassen, wenn Sie Ihre Clientanwendung auf dem lokalen Computer verwenden.
 6. Wenn Sie fertig sind, klicken Sie im Hauptmenü auf **Capture** (Erfassen) und anschließend auf **Stop** (Beenden).
 7. Um die erfassten Daten in einer Wireshark-Erfassungsdatei zu speichern, klicken Sie im Hauptmenü auf **File** (Datei) und anschließend auf **Save** (Speichern).
 
 WireShark wird alle aufgetretenen Fehler im Fenster **Packetlist** markieren. Sie können auch eine Zusammenfassung der Fehler und Warnungen im Fenster **Expert Info** (Experteninformationen) anzeigen. Klicken Sie hierzu auf **Analyze** (Analysieren) und dann auf **Expert Info** (Experteninformationen).
 
-![][7]
+![Screenshot, der das Fenster „Experteninformationen“ zeigt, in dem Sie eine Zusammenfassung der Fehler und Warnungen anzeigen können.][7]
 
 Sie können die TCP-Daten auch so anzeigen, wie sie in der Anwendungsschicht vorliegen, indem Sie mit der rechten Maustaste auf die TCP-Daten klicken und **Follow TCP Stream** auswählen. Dies ist nützlich, wenn Sie Ihre Sicherung ohne Erfassungsfilter erfassen. Weitere Informationen finden Sie in unter [Following TCP-Streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
-![][8]
+![Screenshot, der zeigt, wie die TCP-Daten in der gleichen Ansicht wie in der Anwendungsschicht angezeigt werden.][8]
 
 > [!NOTE]
 > Weitere Informationen zu Wireshark finden Sie im [Wireshark-Benutzerhandbuch](https://www.wireshark.org/docs/wsug_html_chunked).
@@ -783,11 +783,11 @@ Neben der Erfassung des HTTP-/HTTPS-Datenverkehrs zwischen der Anwendung und dem
 
 Der folgende Screenshot zeigt ein Beispiel für die **Local-Link-Layer**-Ablaufverfolgung mit einigen **Informationsmeldungen** in der Spalte **DiagnosisTypes**. Mit einem Klick auf die Spalte **DiagnosisTypes** werden die Nachrichtendetails angezeigt. In diesem Beispiel hat der Server Nachricht "#305" neu übertragen, weil sie keine Bestätigung vom Client erhalten hat:
 
-![][9]
+![Screenshot, der ein Beispiel für die Local-Link-Layer-Ablaufverfolgung mit einigen Informationsmeldungen in der Spalte „DiagnosisTypes“ zeigt.][9]
 
 Wenn Sie die Rückverfolgungssession in Microsoft Message Analyzer erstellen, können Sie Filter festlegen, um die Störungsmenge bei der Rückverfolgung zu reduzieren. Klicken Sie auf der Seite **Erfassung/Rückverfolgung**, auf der Sie die Ablaufverfolgung definieren, neben **Microsoft-Windows-NDIS-PacketCapture** auf den Link **Konfigurieren**. Der folgende Screenshot zeigt eine Konfiguration, die TCP-Datenverkehr für die IP-Adressen der drei Speicherdienste filtert:
 
-![][10]
+![Screenshot, der eine Konfiguration zeigt, die TCP-Datenverkehr für die IP-Adressen der drei Speicherdienste filtert.][10]
 
 Weitere Informationen zur Local-Link-Layer-Rückverfolgung von Microsoft Message Analyzer finden Sie unter [Microsoft-PEF-NDIS-PacketCapture Provider](https://technet.microsoft.com/library/jj659264.aspx).
 

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie ein persistentes Volume mit Azure-Datenträgern in Azure Kubernetes Service (AKS) dynamisches erstellen.
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751354"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518010"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -31,14 +31,14 @@ Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfi
 
 Mit einer Speicherklasse wird festgelegt, wie eine Speichereinheit dynamisch in einem persistenten Volume erstellt wird. Weitere Informationen zu Kubernetes-Speicherklassen finden Sie unter [Kubernetes-Speicherklassen][kubernetes-storage-classes].
 
-Jeder AKS-Cluster schließt zwei vorab erstellte Speicherklassen ein, die beide für die Arbeit mit Azure-Datenträgern konfiguriert sind:
+Jeder AKS-Cluster enthält vier vorab erstellte Speicherklassen, von denen zwei für die Arbeit mit Azure-Datenträgern konfiguriert sind:
 
-* Die Speicherklasse *default* stellt einen Azure Standard-Datenträger bereit.
-    * Der Standardspeicher basiert auf Festplatten und stellt eine kostengünstige, leistungsstarke Speicherlösung dar. Standarddatenträger sind ideal für eine kostengünstige Entwicklungs- und Testworkload.
+* Die Speicherklasse *default* stellt einen Azure SSD Standard-Datenträger bereit.
+    * Der Standardspeicher basiert auf SSD Standard-Laufwerken und stellt eine kostengünstige Speicherlösung mit zuverlässiger Leistung dar. 
 * Die Speicherklasse *managed-premium* stellt einen Azure Premium-Datenträger bereit.
     * Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Wenn die AKS-Knoten in dem Cluster Storage Premium verwenden, wählen Sie die *managed-premium*-Klasse aus.
     
-Wenn Sie eine der Standardspeicherklassen verwenden, können Sie die Volumegröße nicht mehr aktualisieren, nachdem die Speicherklasse erstellt wurde. Wenn Sie die Volumegröße auch nach der Erstellung einer Speicherklasse noch ändern können möchten, fügen Sie einer der Standardspeicherklassen die Zeile `allowVolumeExpansion: true` hinzu, oder Sie erstellen Ihre eigene, benutzerdefinierte Speicherklasse. Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. 
+Wenn Sie eine der Standardspeicherklassen verwenden, können Sie die Volumegröße nicht mehr aktualisieren, nachdem die Speicherklasse erstellt wurde. Wenn Sie die Volumegröße auch nach der Erstellung einer Speicherklasse noch ändern können möchten, fügen Sie einer der Standardspeicherklassen die Zeile `allowVolumeExpansion: true` hinzu, oder Sie erstellen Ihre eigene, benutzerdefinierte Speicherklasse. Beachten Sie, dass eine Reduzierung der PVC-Größe nicht unterstützt wird (zur Vermeidung von Datenverlusten). Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. 
 
 Wenn Sie beispielsweise einen Datenträger mit einer Größe von 4 TiB verwenden möchten, müssen Sie eine Speicherklasse erstellen, die `cachingmode: None` definiert, da [Datenträgerzwischenspeicherungen für Datenträger ab 4 TiB nicht unterstützt werden](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
 
@@ -151,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>Verwenden von Ultra-Datenträgern
+Informationen zum Nutzen von Ultra-Datenträgern finden Sie unter [Verwenden von Ultra-Datenträgern in Azure Kubernetes Service (AKS)](use-ultra-disks.md).
 
 ## <a name="back-up-a-persistent-volume"></a>Sichern eines persistenten Volumes
 
@@ -284,3 +287,11 @@ Erfahren Sie mehr über persistente Kubernetes-Volumes bei Verwendung von Azure-
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

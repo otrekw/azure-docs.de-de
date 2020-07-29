@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517874"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -156,7 +156,9 @@ Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokoll
 
 ### <a name="access-log"></a>Zugriffsprotokoll
 
-Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel für v1 im JSON-Format protokolliert:
+Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie unten gezeigt im JSON-Format protokolliert. 
+
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>Für die SKU Application Gateway Standard und WAF (v1)
 
 |Wert  |BESCHREIBUNG  |
 |---------|---------|
@@ -200,7 +202,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
     }
 }
 ```
-Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzliche Informationen an:
+#### <a name="for-application-gateway-and-waf-v2-sku"></a>Für die SKU Application Gateway und WAF v2
 
 |Wert  |BESCHREIBUNG  |
 |---------|---------|
@@ -221,7 +223,10 @@ Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzli
 |serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
 |serverStatus| HTTP-Statuscode des Back-End-Servers|
 |serverResponseLatency| Wartezeit für die Antwort vom Back-End-Server|
-|host| Adresse im host-Header der Anforderung|
+|host| Adresse im host-Header der Anforderung Wenn dieses Feld neu geschrieben wird, enthält es den aktualisierten Hostnamen.|
+|originalRequestUriWithArgs| Dieses Feld enthält die ursprüngliche Anforderungs-URL. |
+|requestUri| Dieses Feld enthält die URL nach dem Vorgang zur erneuten Generierung in Application Gateway. |
+|originalHost| Dieses Feld enthält den Hostnamen der ursprüngliche Anforderung.
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",

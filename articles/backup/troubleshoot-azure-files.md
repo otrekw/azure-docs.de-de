@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079886"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524487"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -57,6 +57,9 @@ Wiederholen Sie die Registrierung. Wenden Sie sich an den Support, wenn das Prob
 >Ein Recovery Services-Tresor kann nur nach dem Aufheben der Registrierung aller Speicherkonten gelöscht werden, die beim Tresor registriert sind.
 
 ## <a name="common-backup-or-restore-errors"></a>Allgemeine Sicherungs- und Wiederherstellungsfehler
+
+>[!NOTE]
+>Stellen Sie mit [diesem Dokument](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup) sicher, dass Sie über ausreichende Berechtigungen zum Ausführen von Sicherungs- oder Wiederherstellungsvorgängen verfügen.
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound: Vorgangsfehler, weil die Dateifreigabe nicht gefunden wurde.
 
@@ -313,7 +316,7 @@ Fehlercode: UserErrorBackupAFSInDeleteState
 
 Fehlermeldung: Fehler bei der Sicherung, da die zugeordnete Azure-Dateifreigabe dauerhaft gelöscht wurde.
 
-Überprüfen Sie, ob die gesicherte Dateifreigabe dauerhaft gelöscht wurde. Beenden Sie in diesem Fall die Sicherung für diese Dateifreigabe, um wiederholte Sicherungsfehler zu vermeiden. Weitere Informationen zum Beenden des Schutzes finden Sie unter [Beendigung des Schutzes für eine Azure-Dateifreigabe](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
+Überprüfen Sie, ob die gesicherte Dateifreigabe dauerhaft gelöscht wurde. Beenden Sie in diesem Fall die Sicherung für diese Dateifreigabe, um wiederholte Sicherungsfehler zu vermeiden. Weitere Informationen zum Beenden des Schutzes finden Sie unter [Beendigung des Schutzes für eine Azure-Dateifreigabe](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

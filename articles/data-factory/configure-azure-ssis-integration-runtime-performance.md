@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255533"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523314"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurieren von Azure-SSIS Integration Runtime für hohe Leistung
 
@@ -104,11 +104,15 @@ Wenn Sie nicht viele Pakete ausführen müssen und die Pakete schnell ausgeführ
 
 Diese Daten stellen eine einzelne Paketausführung auf einem einzelnen Workerknoten dar. Das Paket lädt 3 Millionen Datensätze mit Vor- und Nachnamespalten aus Azure Blob Storage herunter, erstellt eine Spalte für den vollständigen Namen und schreibt Datensätze, bei denen der vollständige Name mehr als 20 Zeichen umfasst, in Azure Blob Storage.
 
+Die Y-Achse zeigt die Anzahl von Paketen, deren Ausführung innerhalb einer Stunde abgeschlossen wurde. Beachten Sie, dass dies nur ein Testergebnis eines Pakets ist, das Arbeitsspeicher verbraucht. Wenn Sie den Durchsatz Ihres Pakets ermitteln möchten, sollten Sie den Test selbst ausführen.
+
 ![SSIS Integration Runtime: Paketausführungsgeschwindigkeit](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>Konfigurieren für allgemeinen Durchsatz
 
 Wenn Sie viele Pakete ausführen müssen und für Sie der allgemeine Durchsatz im Vordergrund steht, wählen Sie anhand der Informationen im folgenden Diagramm einen geeigneten VM-Typ für Ihr Szenario aus.
+
+Die Y-Achse zeigt die Anzahl von Paketen, deren Ausführung innerhalb einer Stunde abgeschlossen wurde. Beachten Sie, dass dies nur ein Testergebnis eines Pakets ist, das Arbeitsspeicher verbraucht. Wenn Sie den Durchsatz Ihres Pakets ermitteln möchten, sollten Sie den Test selbst ausführen.
 
 ![SSIS Integration Runtime: Maximaler allgemeiner Durchsatz](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

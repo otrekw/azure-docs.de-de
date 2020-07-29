@@ -4,26 +4,26 @@ description: API zum Abrufen einer zusammengefassten Liste der Angebote unter ei
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: ab5f09d0d81d8a6aa526576faea0b11a6536381a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 22d22feb3931f466647c2c4d94bdf924568f2dc5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113478"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535891"
 ---
-<a name="retrieve-offers"></a>Abrufen von Angeboten
-===============
+# <a name="retrieve-offers"></a>Abrufen von Angeboten
 
 > [!NOTE]
-> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Der Übergang führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach dem Übergang zu Partner Center weiterhin funktioniert. CPP-APIs sollten nur für vorhandene Produkte verwendet werden, die bereits vor dem Übergang zu Partner Center integriert wurden. Neue Produkte sollten die Partner Center-APIs für die Übermittlung verwenden.
 
 Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace ab.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-Parameter
---------------
+## <a name="uri-parameters"></a>URI-Parameter
 
 | **Name**         |  **Beschreibung**                         |  **Datentyp** |
 | -------------    |  ------------------------------------    |  -----------   |
@@ -31,9 +31,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  api-version     | Neueste Version der API                    |    Date        |
 |  |  |
 
-
-<a name="header"></a>Header
-------
+## <a name="header"></a>Header
 
 |  **Name**        |         **Wert**       |
 |  --------------- |       ----------------  |
@@ -41,9 +39,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  Authorization   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
-
-<a name="body-example"></a>Beispiel für Hauptteil
-------------
+## <a name="body-example"></a>Beispiel für Hauptteil
 
 ### <a name="response"></a>Antwort
 
@@ -77,7 +73,6 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  changedTime    | Uhrzeit (UTC), zu der das Angebot letztmalig geändert wurde                                                                              |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>Antwortstatuscodes
 
 | **Code**  |  **Beschreibung**                                                                                                   |
@@ -87,7 +82,6 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  403      | `Forbidden` – der Client hat keinen Zugriff auf den angegebenen Namespace.                                          |
 |  404      | `Not found`: Die angegebene Entität ist nicht vorhanden.                                                                 |
 |  |  |
-
 
 ### <a name="offer-status"></a>Angebotsstatus
 

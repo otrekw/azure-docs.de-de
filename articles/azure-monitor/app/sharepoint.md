@@ -3,15 +3,19 @@ title: Überwachen einer SharePoint-Website mit Application Insights
 description: Beginnen Sie mit der Überwachung einer neuen Anwendung mit einem neuen Instrumentationsschlüssel.
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221050"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516888"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Überwachen einer SharePoint-Website mit Application Insights
+
 Azure Application Insights überwacht die Verfügbarkeit, Leistung und Nutzung Ihrer Apps. Hier erfahren Sie, wie Sie dieses Tool für eine SharePoint-Website einrichten.
+
+> [!NOTE]
+> Aufgrund von Sicherheitsbedenken können Sie das in diesem Artikel beschriebene Skript auf der modernen SharePoint-Benutzeroberfläche nicht direkt zu Ihren Webseiten hinzufügen. Als Alternative können Sie das [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) verwenden, um eine benutzerdefinierte Erweiterung zu erstellen, über die Sie Application Insights in Ihren SharePoint-Websites installieren können. Weitere Informationen finden Sie unter [How to create a SPFx extension solution with AppInsights installed from scratch](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) (Erstellen einer SPFx-Erweiterungslösung mit neu installiertem AppInsights) oder in [diesem Beispiel](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample). 
 
 ## <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 Erstellen Sie im [Azure-Portal](https://portal.azure.com)eine neue Application Insights-Ressource. Wählen Sie als Anwendungstyp "ASP.NET" aus.
@@ -137,5 +141,3 @@ function onRequestFail(sender, args) {
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) für andere App-Typen.
 
 <!--Link references-->
-
-

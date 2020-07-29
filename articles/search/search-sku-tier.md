@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 07/14/2020
+ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119220"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519732"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -23,14 +23,17 @@ Die meisten Kunden starten mit dem Tarif „Free“, um den Dienst vorab zu test
 
 ## <a name="feature-availability-by-tier"></a>Funktionsverfügbarkeit pro Tarif
 
-Fast jedes Feature ist in jedem Tarif verfügbar, auch im Free-Tarif, aber ressourcenintensive Features oder Workflows funktionieren möglicherweise nicht gut, wenn ihnen nicht ausreichend Kapazität zugewiesen wurde. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Qualifikationen mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
-
 In der folgenden Tabelle werden die tarifbezogenen Featureeinschränkungen beschrieben.
 
 | Funktion | Einschränkungen |
 |---------|-------------|
 | [Indexer](search-indexer-overview.md) | Indexer sind auf S3 HD nicht verfügbar. |
+| [KI-Anreicherung](search-security-manage-encryption-keys.md) | Wird im Free-Tarif ausgeführt, aber nicht empfohlen. |
 | [Von Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) | Im Free-Tarif nicht verfügbar. |
+| [IP-Firewallzugriff](service-configure-firewall.md) | Im Free-Tarif nicht verfügbar. |
+| [Integration mit Azure Private Link](service-create-private-endpoint.md) | Im Free-Tarif nicht verfügbar. |
+
+Die meisten Features sind in jedem Tarif verfügbar, auch im Free-Tarif, aber ressourcenintensive Features funktionieren möglicherweise nicht gut, wenn ihnen keine ausreichende Kapazität zugewiesen wurde. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Skills mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
 
 ## <a name="tiers-skus"></a>Tarife (SKUs)
 
@@ -57,10 +60,10 @@ Weitere Informationen zu den verschiedenen Tarifen finden Sie auf der [Seite mit
 
 Für eine auf der kognitiven Azure-Suche basierende Lösung können folgende Kosten anfallen:
 
-+ Fixkosten für den Dienst selbst, der rund um die Uhr mit einer minimalen Konfiguration ausgeführt wird (eine Partition und ein Replikat)
-+ Inkrementelle Kosten beim zentralen Hochskalieren (Hinzufügen von Replikaten oder Partitionen)
++ Kosten für den Dienst selbst, der rund um die Uhr mit einer minimalen Konfiguration ausgeführt wird (eine Partition und ein Replikat)
++ Hinzufügen von Kapazität (Replikate oder Partitionen)
 + Bandbreitengebühren (ausgehende Datenübertragung) 
-+ Kognitive Suche (Anfügen von Cognitive Services für die KI-Anreicherung oder Verwendung von Azure Storage für den Wissensspeicher)
++ Add-On-Dienste wie z. B. die KI-Anreicherung (Anfügen von Cognitive Services an Skillsets, die die KI-Verarbeitung definieren, oder Verwenden von Azure Storage für den Wissensspeicher) oder das Bereitstellen eines Suchdiensts in einem privaten virtuellen Netzwerk
 
 ### <a name="service-costs"></a>Dienstkosten
 
@@ -72,7 +75,7 @@ Wenn Sie Ihre Kosten für eine Suchlösung abschätzen möchten, bedenken Sie, d
 
 ### <a name="bandwidth-charges"></a>Bandbreitengebühren
 
-Die Verwendung von [Indexern der kognitiven Azure-Suche](search-indexer-overview.md) kann je nach Standort der Dienste Auswirkungen auf die Kosten haben. Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Dienst für die kognitive Azure-Suche in derselben Region wie Ihre Daten erstellen. Die folgenden Informationen stammen von der Seite [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/):
+Die Verwendung von [Indexern](search-indexer-overview.md) kann je nach Standort der Dienste Auswirkungen auf die Kosten haben. Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Dienst für die kognitive Azure-Suche in derselben Region wie Ihre Daten erstellen. Die folgenden Informationen stammen von der Seite [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/):
 
 + Microsoft berechnet keine Gebühren für in beliebige Azure-Dienste eingehende Daten oder für ausgehende Daten aus der kognitiven Azure-Suche.
 + Bei Lösungen mit mehreren Diensten fallen keine Gebühren für Datenübertragungen an, wenn sich alle Dienste in derselben Region befinden.
@@ -108,7 +111,7 @@ Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halte
 
 ## <a name="how-to-manage-costs"></a>Verwalten von Kosten
 
-Die folgenden Vorschläge können Ihnen dabei helfen, die Kosten minimal zu halten:
+Die folgenden Vorschläge können Ihnen helfen, die Kosten zu senken oder effektiver zu verwalten:
 
 + Erstellen Sie alle Ressourcen in derselben Region oder in möglichst wenigen Regionen, um Bandbreitengebühren zu minimieren oder auszuschließen.
 
@@ -141,7 +144,7 @@ Zwischen der Kapazität und den Kosten für die Ausführung des Diensts besteht 
 
 In der Regel diktieren Geschäftsanforderungen die erforderliche Anzahl der Indizes. Für ein großes Repository von Dokumenten benötigen Sie beispielsweise einen globalen Index. Oder Sie benötigen möglicherweise je nach Region, Anwendung oder Geschäftsnische mehrere Indizes.
 
-Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-create-index-portal.md). Die Größe basiert auf den importierten Daten und der Indexkonfiguration, also beispielsweise, ob Sie Vorschlagsfunktionen, die Filterung und Sortierung aktivieren. Weitere Informationen zu den Auswirkungen, die die Konfiguration auf die Größe hat, finden Sie unter [Erstellen eines einfachen Index](search-what-is-an-index.md).
+Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-what-is-an-index.md). Die Größe basiert auf den importierten Daten und der Indexkonfiguration, also beispielsweise, ob Sie Vorschlagsfunktionen, die Filterung und Sortierung aktivieren.
 
 Bei der Volltextsuche entspricht die primäre Datenstruktur der Struktur eines [invertierten Indexes](https://en.wikipedia.org/wiki/Inverted_index), die über andere Eigenschaften als die Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie eingeben. Eine große Datenquelle mit hoher Redundanz könnte einen kleineren Index ergeben als ein kleineres Dataset mit stark variierendem Inhalt. Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
 
@@ -155,7 +158,7 @@ Eine Möglichkeit zum Abschätzen der Kapazität besteht darin, mit dem Tarif �
 
 + [Erstellen Sie einen kostenlosen Dienst](search-create-service-portal.md).
 + Bereiten Sie ein kleines repräsentatives Dataset vor.
-+ [Erstellen Sie einen anfänglichen Index im Portal](search-create-index-portal.md), und notieren Sie sich die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch das Hinzufügen von Vorschlagsfunktionen (Search-as-you-Type-Abfragen) erhöhen sich beispielsweise die Speicheranforderungen. Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#index-size).
++ [Erstellen Sie einen anfänglichen Index im Portal](search-get-started-portal.md), und notieren Sie sich die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch das Hinzufügen von Vorschlagsfunktionen (Search-as-you-Type-Abfragen) erhöhen sich beispielsweise die Speicheranforderungen. Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#index-size).
 
 Mit einer groben Schätzung können Sie die betreffende Größe für zwei Indizes verdoppeln (Entwicklung und Produktion) und dann Ihren Tarif entsprechend auswählen.
 
@@ -171,7 +174,7 @@ Dedizierte Ressourcen ermöglichen längere Sampling- und Verarbeitungszeiten un
     + Sind umfangreiche Indizierungs- und Abfragelasten vorgesehen, starten Sie mit einem höheren Tarif, wie „S2“ oder sogar „S3“.
     + Beginnen Sie mit einem Tarif vom Typ „Speicheroptimiert“ („L1“ oder „L2“), wenn Sie sehr viele Daten indizieren möchten und die Abfragelast relativ gering ist (etwa im Fall einer internen Geschäftsanwendung).
 
-1. [Erstellen Sie einen anfänglichen Index](search-create-index-portal.md), um zu bestimmen, wie Quelldaten in einen Index übersetzt werden. Dies ist die einzige Möglichkeit, die Größe des Indexes zu schätzen.
+1. [Erstellen Sie einen anfänglichen Index](search-what-is-an-index.md), um zu bestimmen, wie Quelldaten in einen Index übersetzt werden. Dies ist die einzige Möglichkeit, die Größe des Indexes zu schätzen.
 
 1. [Überwachen Sie Speicher, Dienstgrenzwerte, Abfragevolumen und Latenz](search-monitor-usage.md) im Portal. Im Portal werden die Abfragen pro Sekunde, gedrosselte Abfragen und die Wartezeit bei Suchvorgängen angezeigt. Diese Werte können Ihnen dabei helfen, den richtigen Tarif auszuwählen. 
 

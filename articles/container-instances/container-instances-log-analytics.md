@@ -2,14 +2,14 @@
 title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Erfahren Sie, wie Sie Ressourcenprotokolle und Ereignisdaten aus Containergruppen in Azure Container Instances an Azure Monitor-Protokolle senden können.
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: danlep
-ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259607"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524011"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokollierung für Containergruppen und -instanzen mit Azure Monitor-Protokollen
 
@@ -38,11 +38,10 @@ Azure Container Instances benötigt die Berechtigung zum Senden von Daten an Ihr
 So erhalten Sie die Log Analytics-Arbeitsbereichs-ID und den Primärschlüssel:
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Log Analytics-Arbeitsbereich.
-1. Wählen Sie unter **Einstellungen** die Option **Erweiterte Einstellungen** aus.
-1. Klicken Sie auf **Verbundene Quellen** > **Windows-Server** (oder **Linux-Server**, ID und Schlüssel sind für beide identisch).
+1. Wählen Sie unter **Einstellungen** die Option **Agent-Verwaltung** aus.
 1. Notieren Sie sich Folgendes:
-   * **ARBEITSBEREICHS-ID**
-   * **PRIMÄRSCHLÜSSEL**
+   * **Arbeitsbereichs-ID**
+   * **Primärschlüssel**
 
 ## <a name="create-container-group"></a>Erstellen einer Containergruppe
 
@@ -102,7 +101,9 @@ Sie sollten kurz nach Ausgabe des Befehls eine Antwort von Azure mit den Bereits
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 
-Nach der Bereitstellung der Containergruppe kann es bis zu 10 Minuten dauern, bis die ersten Protokolleinträge im Azure-Portal angezeigt werden. So zeigen Sie die Protokolle der Containergruppen in der Tabelle `ContainerInstanceLog_CL` an:
+Nach der Bereitstellung der Containergruppe kann es bis zu 10 Minuten dauern, bis die ersten Protokolleinträge im Azure-Portal angezeigt werden. 
+
+So zeigen Sie die Protokolle der Containergruppen in der Tabelle `ContainerInstanceLog_CL` an:
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Log Analytics-Arbeitsbereich.
 1. Wählen Sie unter **Allgemein** die Option **Protokolle** aus.  

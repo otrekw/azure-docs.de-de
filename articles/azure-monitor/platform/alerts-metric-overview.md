@@ -1,15 +1,15 @@
 ---
 title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor.
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
-ms.date: 07/09/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187522"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539430"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -119,6 +119,15 @@ Nehmen wir an, Sie haben eine Web-App mit vielen Instanzen, und Sie wissen nicht
 Diese Regel überwacht, ob die durchschnittliche CPU-Auslastung in den letzten fünf Minuten das erwartete Verhalten für jede Instanz überschreitet. Mit der gleichen Regel können Sie Ihre Instanzen überwachen, ohne Ihre Metrikwarnungsregel erneut ändern zu müssen. Jede Instanz erhält einen Schwellenwert, der dem Verhaltensmuster der Metrikreihe entspricht. Er wird basierend auf neuen Daten fortlaufend geändert, um die Genauigkeit des Schwellenwerts zu verbessern. Wie zuvor wird jede Instanz einzeln überwacht, und Sie erhalten individuelle Benachrichtigungen.
 
 Wenn Sie die Anzahl der zurückliegenden Zeiträume und Verstöße erhöhen, können Sie Warnungen filtern, damit Sie nur Warnungen erhalten, die Ihrer Definition von einer erheblichen Abweichung entsprechen. [Erfahren Sie mehr über erweiterte Optionen für dynamische Schwellenwerte.](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)
+
+> [!NOTE]
+>
+> Es wird empfohlen, eine *Aggregationsgranularität (Zeitraum)* auszuwählen, die größer ist als die *Häufigkeit der Auswertung*, um die Wahrscheinlichkeit zu verringern, dass die erste Auswertung einer hinzugefügten Zeitreihe in den folgenden Fällen ausgelassen wird:
+> - Metrikwarnungsregel, die mehrere Dimensionen überwacht: wenn eine neue Kombination aus Dimensionswerten hinzugefügt wird
+> - Metrikwarnungsregel, die mehrere Ressourcen überwacht: wenn dem Bereich eine neue Ressource hinzugefügt wird
+> - Metrikwarnungsregel, die eine nicht kontinuierlich ausgegebene Metrik überwacht (seltene Metrik): wenn die Metrik erst nach einem längeren Zeitraum als 24 Stunden wieder ausgegeben wird
+
+
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bedarfsorientierte Überwachung mithilfe von Metrikwarnungen in Azure Monitor
 

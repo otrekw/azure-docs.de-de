@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545628"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511839"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
 
@@ -38,7 +38,7 @@ Im Grunde ist ein Bereitstellungsmanifest eine Liste von Modulzwillingen, die mi
 
 Jedes Bereitstellungsmanifest erfordert zwei Module: `$edgeAgent` und `$edgeHub`. Diese Module gehören zur IoT Edge-Runtime, die das IoT Edge-Gerät und die darauf ausgeführten Module verwaltet. Weitere Informationen zu diesen Modulen finden Sie unter [Grundlegendes zur IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
-Zusätzlich zu den beiden Runtimemodulen können Sie bis zu 20 eigene Module hinzufügen, die auf einem IoT Edge-Gerät ausgeführt werden.
+Zusätzlich zu den beiden Runtimemodulen können Sie bis zu 30 eigene Module hinzufügen, die auf einem IoT Edge-Gerät ausgeführt werden.
 
 Ein Bereitstellungsmanifest, das nur die IoT Edge-Runtime („edgeAgent“ und „edgeHub“) enthält, ist gültig.
 
