@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537883"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Versionshinweise und Ressourcen zu Azure Cosmos DB Java SDK v4 für die Core (SQL)-API
 > [!div class="op_single_selector"]
@@ -61,6 +61,17 @@ Das Azure Cosmos DB Java SDK v4 für Core (SQL) kombiniert eine asynchrone API u
 | **Azure Cosmos DB-Workshops und -Labs** |[Homepage der Cosmos DB-Workshops](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>Releaseverlauf
+
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+* Die API für die Skriptprotokollierung wurde `CosmosStoredProcedureRequestOptions` hinzugefügt.
+* Für `DirectConnectionConfig` wurde die Standardeinstellung von `idleEndpointTimeout` auf „1 Stunde“ und die Standardeinstellung von `connectTimeout` auf „5 Sekunden“ aktualisiert.
+#### <a name="key-bug-fixes"></a>Wichtige Fehlerbehebungen
+* Es wurde ein Problem behoben, bei dem `DirectConnectionConfig` `idleConnectionTimeout` von `GatewayConnectionConfig` `idleConnectionTimeout` außer Kraft gesetzt wurde.
+* Die APIs für das Abrufen und Festlegen für `responseContinuationTokenLimitInKb` wurden in `CosmosQueryRequestOptions` korrigiert.
+* Es wurde ein Problem im Abfrage- und Änderungsfeed behoben, das beim Neuerstellen der Sammlung gleichen Namens aufgetreten ist.
+* Es wurde ein Problem behoben, bei dem für die oberste Abfrage „ClassCastException“ ausgelöst wurde.
+* Es wurde ein Problem behoben, bei dem für die Abfrage „NullPointerException“ ausgelöst wurde.
+* Es wurde ein Problem mit der Verarbeitung von abgebrochenen Anforderungen im direkten Modus behoben, bei dem der Reaktor `onErrorDropped` aufgerufen wurde. 
 
 ### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
 #### <a name="new-features"></a>Neue Funktionen
