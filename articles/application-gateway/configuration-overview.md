@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254666"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517840"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -146,7 +146,7 @@ Wenn Sie einen neuen Listener erstellen, wählen Sie zwischen [*grundlegend* und
 
 - Wenn alle Ihre Anforderungen (für eine beliebige Domäne) akzeptiert und an Back-End-Pools weitergeleitet werden sollen, wählen Sie „Basic“ aus. Erfahren Sie, [wie Sie ein Application Gateway mit einem grundlegenden Listener erstellen](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Wenn Sie Anforderungen an verschiedene Back-End-Pools weiterleiten möchten, abhängig vom *Host*header oder Hostnamen, wählen Sie Listener für mehrere Standorte aus, bei dem Sie auch einen Hostnamen angeben müssen, der mit der eingehenden Anforderung übereinstimmt. Das hat den Grund, dass Application Gateway HTTP 1.1-Hostheader verwendet, um mehrere Websites an der gleichen öffentlichen IP-Adresse und dem gleichen Port zu hosten.
+- Wenn Sie Anforderungen an verschiedene Back-End-Pools weiterleiten möchten, die auf dem *Hostheader* oder den Hostnamen basieren, wählen Sie den Listener für mehrere Standorte aus, bei dem Sie auch einen Hostnamen angeben müssen, der mit der eingehenden Anforderung übereinstimmt. Das hat den Grund, dass Application Gateway HTTP 1.1-Hostheader verwendet, um mehrere Websites an der gleichen öffentlichen IP-Adresse und dem gleichen Port zu hosten. Weitere Informationen finden Sie unter [Anwendungsgateways – Hosten mehrerer Websites](multiple-site-overview.md).
 
 #### <a name="order-of-processing-listeners"></a>Verarbeitungsreihenfolge von Listenern
 
@@ -279,12 +279,16 @@ Weitere Informationen zur Umleitung finden Sie unter:
 - [Erstellen eines Anwendungsgateways mit externer Umleitung durch Azure PowerShell](redirect-external-site-powershell.md)
 - [Erstellen eines Anwendungsgateways mit externer Umleitung durch die Azure CLI](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>Umschreiben der HTTP-Headereinstellung
+### <a name="rewrite-http-headers-and-url"></a>Neuschreibung von HTTP-Headern und der URL
 
-Diese Einstellung fügt HTTP-Anforderungs- und -Antwortheader hinzu, entfernt oder aktualisiert sie, während die Anforderungs-/Antwortpakete zwischen dem Client und den Back-End-Pools verschoben werden. Weitere Informationen finden Sie unter
+Mithilfe von Neuschreibungsregeln können Sie HTTP(S)-Anforderungs- und -Antwortheader sowie den URL-Pfad und Abfragezeichenfolgenparameter hinzufügen, entfernen oder aktualisieren, während die Anforderungs- und Antwortpakete über das Anwendungsgateway zwischen dem Client und den Back-End-Pools weitergeleitet werden.
 
- - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](rewrite-http-headers.md)
+Die Header und URL-Parameter können auf statische Werte oder auf andere Header und Servervariablen festgelegt werden. Dies ist hilfreich bei wichtigen Anwendungsfällen, z.B. beim Extrahieren von Client-IP-Adressen, beim Entfernen vertraulicher Informationen zum Back-End, beim Verbessern der Sicherheit usw.
+Weitere Informationen finden Sie unter
+
+ - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](rewrite-http-headers-url.md)
  - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](rewrite-http-headers-portal.md)
+ - [Konfigurieren von URL-Rewrite](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP-Einstellungen
 
@@ -357,7 +361,7 @@ Diese Einstellung ordnet einen [benutzerdefinierten Test](application-gateway-pr
 > [!NOTE]
 > Der benutzerdefinierte Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit einem Listener zugeordnet ist.
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Auswählen eines Hostnamens aus der Back-End-Adresse
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>Auswählen eines Hostnamens aus der Back-End-Adresse
 
 Diese Funktion legt den *Host*-Header in der Anforderung dynamisch auf den Hostnamen des Back-End-Pools fest. Sie verwendet dazu eine IP-Adresse oder einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN ).
 

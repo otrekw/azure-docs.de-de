@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 6512edd26b59dac11f046e82940db4877728943c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243591"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499612"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -67,6 +67,8 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 Die `cors`-Richtlinie fügt Unterstützung für CORS (Cross-Origin Resource Sharing) einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe von browserbasierten Clients aus zu ermöglichen.
 
 Mit CORS können Browser und Server miteinander interagieren und ermitteln, ob bestimmte ursprungsübergreifende Anfragen (z. B. XMLHttpRequests-Aufrufe aus JavaScript in einer Webseite an andere Domänen) zulässig sind. Dies bietet mehr Flexibilität als wenn nur Anfragen gleichen Ursprungs erlaubt sind, und ist gleichzeitig sicherer als wenn alle ursprungsübergreifenden Anfragen erlaubt sind.
+
+Sie müssen die CORS-Richtlinie anwenden, um die interaktive Konsole im Entwicklerportal zu aktivieren. Ausführliche Informationen finden Sie in der Dokumentation zum [Entwicklerportal](./api-management-howto-developer-portal.md#cors).
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -124,18 +126,18 @@ In diesem Beispiel wird die Unterstützung von Preflightanforderungen veranschau
 
 |Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
-|cors|Stammelement|Ja|–|
-|allowed-origins|Enthält `origin`-Elemente, die die zulässigen Ursprünge für domänenübergreifende Anforderungen beschreiben. `allowed-origins` kann entweder ein einzelnes `origin`-Element enthalten, das `*` angibt, um einen beliebigen Ursprung zuzulassen, oder ein oder mehrere `origin`-Elemente, die einen URI enthalten.|Ja|–|
+|cors|Stammelement|Ja|N/V|
+|allowed-origins|Enthält `origin`-Elemente, die die zulässigen Ursprünge für domänenübergreifende Anforderungen beschreiben. `allowed-origins` kann entweder ein einzelnes `origin`-Element enthalten, das `*` angibt, um einen beliebigen Ursprung zuzulassen, oder ein oder mehrere `origin`-Elemente, die einen URI enthalten.|Ja|N/V|
 |origin|Der Wert kann entweder `*` lauten, um alle Ursprünge zuzulassen, oder ein URI sein, der einen einzelnen Ursprung angibt. Die URI muss Schema, Host und Port enthalten.|Ja|Wenn der Port in einem URI ausgelassen wird, wird Port 80 für HTTP bzw. Port 443 für HTTPS verwendet.|
 |allowed-methods|Dieses Element ist erforderlich, wenn andere Methoden als GET oder POST zulässig sind. Enthält `method`-Elemente, die die unterstützten HTTP-Verben angeben. Der Wert `*` dient zum Angeben aller Methoden.|Nein|Wenn dieser Abschnitt nicht vorhanden ist, werden GET und POST unterstützt.|
 |method|Gibt ein HTTP-Verb an.|Mindestens ein `method`-Element ist erforderlich, wenn der Abschnitt `allowed-methods` vorhanden ist.|–|
 |allowed-headers|Dieses Element enthält `header`-Elemente, die die Namen der Header angeben, die in der Anforderung enthalten sein können.|Nein|–|
 |expose-headers|Dieses Element enthält `header`-Elemente, die die Namen der Header angeben, auf die der Client zugreifen kann.|Nein|–|
-|Header|Gibt einen Headernamen an.|Mindestens ein `header`-Element ist in `allowed-headers` oder `expose-headers` erforderlich, wenn der Abschnitt vorhanden ist.|–|
+|header|Gibt einen Headernamen an.|Mindestens ein `header`-Element ist in `allowed-headers` oder `expose-headers` erforderlich, wenn der Abschnitt vorhanden ist.|–|
 
 ### <a name="attributes"></a>Attributes
 
-|Name|Beschreibung|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|Der Header `Access-Control-Allow-Credentials` in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Clients aus, Anmeldeinformationen in domänenübergreifenden Anforderungen zu senden.|Nein|false|
 |preflight-result-max-age|Der Header `Access-Control-Max-Age` in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Benutzer-Agents aus, die Preflightantwort zwischenzuspeichern.|Nein|0|

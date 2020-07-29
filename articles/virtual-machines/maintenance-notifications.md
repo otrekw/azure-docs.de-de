@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678510"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510037"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen
 
@@ -25,7 +25,7 @@ Azure führt regelmäßig Updates durch, um die Zuverlässigkeit, Leistung und S
 
 Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle hat einen anderen Umfang (Regionen).
 
-- Eine Welle beginnt mit einer Kundenbenachrichtigung. Standardmäßig wird die Benachrichtigung an den Dienstadministrator und an Co-Administratoren gesendet. Sie können weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks mithilfe von [Aktivitätsprotokollwarnungen](../service-health/alerts-activity-log-service-notifications.md) hinzufügen.  
+- Eine Welle beginnt mit einer Kundenbenachrichtigung. Standardmäßig wird die Benachrichtigung an den Dienstadministrator und an Co-Administratoren gesendet. Sie können weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks mithilfe von [Aktivitätsprotokollwarnungen](../service-health/alerts-activity-log-service-notifications-portal.md) hinzufügen.  
 - Sobald eine Benachrichtigung erfolgt, wird ein *Self-Service-Zeitfenster* bereitgestellt. In diesem Fenster können Sie abfragen, welche Ihrer virtuellen Computer betroffen sind, und die Wartung basierend auf Ihren eigenen Planungsanforderungen starten. Das Self-Service-Zeitfenster umfasst in der Regel ca. 35 Tage.
 - Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
@@ -76,13 +76,13 @@ Verwenden Sie Self-Service-Wartung am besten in den folgenden Fällen:
 
 **A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer werden wie Updatedomänen (UD) behandelt. Bei der Wartung berücksichtigt Azure die UD-Einschränkung und startet virtuelle Computer nicht von einer anderen UD (innerhalb derselben Verfügbarkeitsgruppe) aus neu.  Azure wartet auch mindestens 30 Minuten vor dem Wechsel zur nächsten Gruppe von virtuellen Computern. 
 
-Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit für virtuelle Computer in Azure](./linux/availability.md).
+Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit für virtuelle Computer in Azure](availability.md).
 
 **F: Wie werde ich über eine geplante Wartung benachrichtigt?**
 
 **A:** Eine geplante Wartungsaktion beginnt mit dem Festlegen eines Zeitplans für eine oder mehrere Azure-Regionen. Bald danach wird eine E-Mail-Benachrichtigung an die Abonnementadministratoren gesendet (pro Abonnement eine E-Mail). Zusätzliche Kanäle und Empfänger für diese Benachrichtigung können mit Aktivitätsprotokollwarnungen konfiguriert werden. Falls Sie einen virtuellen Computer in einer Region bereitstellen, wo bereits Wartung geplant ist, erhalten Sie die Benachrichtigung nicht, sondern müssen vielmehr den Wartungsstatus des virtuellen Computers überprüfen.
 
-**F: Mir wird weder im Portal noch über PowerShell oder über die Befehlszeilenschnittstelle ein Hinweis auf eine geplante Wartung angezeigt. Was ist schiefgelaufen?**
+**F: Mir wird weder im Portal noch über PowerShell oder die Befehlszeilenschnittstelle ein Hinweis auf eine geplante Wartung angezeigt. Was ist schiefgelaufen?**
 
 **A:** Informationen im Zusammenhang mit geplanter Wartung stehen während einer geplanten Wartungsaktion nur für die virtuellen Computer zur Verfügung, die davon betroffen sind. D.h., wenn Ihnen keine Daten angezeigt werden, ist es möglich, dass die Wartungsaktion bereits abgeschlossen (oder nicht gestartet) wurde, bzw. Ihr virtueller Computer bereits auf einem aktualisierten Server gehostet wird.
 
@@ -122,4 +122,3 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit fü
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können die geplante Wartung mithilfe der [Azure-Befehlszeilenschnittstelle](maintenance-notifications-cli.md), mit [Azure PowerShell](maintenance-notifications-powershell.md) oder über das [Portal](maintenance-notifications-portal.md) vornehmen.
-

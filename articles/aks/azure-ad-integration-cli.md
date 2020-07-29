@@ -1,25 +1,28 @@
 ---
-title: Integrieren von Azure Active Directory in Azure Kubernetes Service
-description: In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI einen Azure Active Directory-fähigen AKS (Azure Kubernetes Service)-Cluster erstellen.
+title: Integrieren von Azure Active Directory in Azure Kubernetes Service (Legacy)
+description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) einen Azure Active Directory-fähigen Azure Kubernetes Service-Cluster (AKS-Cluster) erstellen (Legacy).
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252078"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518027"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service mit der Azure CLI
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service mit Azure CLI (Legacy)
 
 Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert werden. In dieser Konfiguration melden Sie sich an einem AKS-Cluster über ein Azure AD-Authentifizierungstoken an. Clusterbetreiber können auch die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Kubernetes auf der Grundlage einer Benutzeridentität oder Verzeichnisgruppenmitgliedschaft konfigurieren.
 
 In diesem Artikel wird erläutert, wie Sie die erforderlichen Azure AD-Komponenten erstellen, anschließend einen Azure AD-fähigen Cluster bereitstellen und dann eine grundlegende RBAC-Rolle im AKS-Cluster erstellen.
 
 Die vollständiges Beispielskript, das in diesem Artikel verwendet wird, finden Sie unter [Azure CLI-Beispiele: AKS-Integration in Azure AD][complete-script].
+
+> [!Important]
+> AKS verfügt über eine neue verbesserte [von AKS verwaltete Azure AD][managed-aad]-Umgebung, in der Sie die Server- oder Clientanwendung nicht verwalten müssen. Wenn Sie die Migration durchführen möchten, folgen Sie den [hier angegebenen Anweisungen][managed-aad-migrate].
 
 ## <a name="the-following-limitations-apply"></a>Es gelten die folgenden Einschränkungen:
 
@@ -90,7 +93,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-Gewähren Sie schließlich mit dem Befehl [az ad app permission grant][az-ad-app-permission-grant] die im vorherigen Schritt zugewiesenen Berechtigungen für die Serveranwendung. Bei diesem Schritt tritt ein Fehler auf, wenn das aktuelle Konto keinem Mandantenadministrator gehört. Sie müssen auch Berechtigungen für die Azure AD-Anwendung hinzufügen, um Informationen anzufordern, für die andernfalls die Zustimmung des Administrators erforderlich wäre. Verwenden Sie dazu den Befehl [az ad app permission admin-consent][az-ad-app-permission-admin-consent]:
+Gewähren Sie schließlich mit dem Befehl [az ad app permission grant][az-ad-app-permission-grant] die im vorherigen Schritt zugewiesenen Berechtigungen für die Serveranwendung. Dieser Schritt schlägt fehl, wenn das aktuelle Konto keinem Mandantenadministrator gehört. Sie müssen auch Berechtigungen für die Azure AD-Anwendung hinzufügen, um Informationen anzufordern, für die andernfalls die Zustimmung des Administrators erforderlich wäre. Verwenden Sie dazu den Befehl [az ad app permission admin-consent][az-ad-app-permission-admin-consent]:
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -280,3 +283,5 @@ Best Practices zur Identitäts- und Ressourcenkontrolle finden Sie unter [Best P
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[managed-aad]: managed-aad.md
+[managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration

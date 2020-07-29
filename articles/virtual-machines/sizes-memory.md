@@ -15,12 +15,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 5e920f165232ec79dcced1de632d90f463ff58d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf2b4ac189e0e1eff77c2aae98a1fb53268821ab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791468"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509315"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Arbeitsspeicheroptimierte Größen virtueller Computer
 
@@ -34,9 +34,9 @@ Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Ve
 
 - Die [Serien Ev3 und Esv3](ev3-esv3-series.md) bieten den Intel&reg; Xeon&reg;-Prozessor 8171M mit 2,1 GHz (Skylake) oder den Intel&reg; Xeon&reg;-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) in einer Hyperthreadkonfiguration und somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads und besseren Einklang von Ev3 mit den universellen VMs der meisten anderen Clouds. Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um auf den Übergang zum Hyperthreading vorbereitet zu sein. Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
 
-- [Die Ev4- und die Esv4-Serie](ev4-esv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) in einer Hyperthreadkonfiguration ausgeführt, eignen sich optimal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und unterstützen zu bis zu 504 GiB RAM. Sie verfügen über [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
+- [Die Ev4- und die Esv4-Serie](ev4-esv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) in einer Hyperthreadkonfiguration ausgeführt, eignen sich optimal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und unterstützen zu bis zu 504 GiB RAM. Sie verfügen über [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Die Ev4- und die Esv4-Serie enthalten keinen lokalen temporären Datenträger. Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.md).
 
-- Die [Edv4- und die Edsv4-Serie](edv4-edsv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) ausgeführt und eignen sich optimal für besonders große Datenbanken oder andere Anwendungen, die von einer hohen vCPU-Anzahl und umfangreichem Speicher profitieren. Sie verfügen über eine kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne sowie [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
+- Die [Edv4- und die Edsv4-Serie](edv4-edsv4-series.md) werden auf Intel&reg; Xeon&reg; Platinum 8272CL-Prozessoren der zweiten Generation (Cascade Lake) ausgeführt und eignen sich optimal für besonders große Datenbanken oder andere Anwendungen, die von einer hohen vCPU-Anzahl und umfangreichem Speicher profitieren. Darüber hinaus umfassen diese VM-Größen einen schnellen, größeren lokalen SSD-Speicher für Anwendungen, die von lokalem Hochgeschwindigkeitsspeicher mit geringer Latenz profitieren. Sie verfügen über eine kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology und ](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)Intel[ Advanced Vector Extensions 512 (&reg;Intel AVX-512).](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)
 
 - Die [M-Serie](m-series.md) verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge an Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
 
