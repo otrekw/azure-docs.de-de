@@ -3,21 +3,21 @@ title: 'Azure AD-Mandant für Benutzer-VPN-Verbindungen: Azure AD-Authentifizier
 description: Sie können über das Benutzer-VPN von Azure Virtual WAN (Point-to-Site) mithilfe der Azure AD-Authentifizierung eine Verbindung mit Ihrem VNET herstellen.
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 76c65d194d03dd1b7ff4cc2f3b45d84ff7909968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88437dc03772348ebbe0d179afc7fd4ddd24bd9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753355"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507555"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Erstellen eines Azure Active Directory-Mandanten für Benutzer-VPN-Verbindungen über das OpenVPN-Protokoll
+# <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Vorbereiten eines Azure Active Directory-Mandanten für Benutzer-VPN-Verbindungen über das OpenVPN-Protokoll
 
-Beim Herstellen einer Verbindung mit Ihrem VNet können Sie die zertifikatbasierte Authentifizierung oder die RADIUS-Authentifizierung verwenden. Wenn Sie das Open VPN-Protokoll verwenden, können Sie jedoch auch die Azure Active Directory-Authentifizierung verwenden. In diesem Artikel erfahren Sie, wie Sie einen Azure AD-Mandanten für eine Virtual WAN-Benutzer-VPN-Verbindung mit OpenVPN-Authentifizierung einrichten.
+Beim Herstellen einer Verbindung mit Ihrem virtuellen Hub über das IKEv2-Protokoll können Sie die zertifikatbasierte Authentifizierung oder die RADIUS-Authentifizierung nutzen. Bei Verwendung des OpenVPN-Protokolls können Sie auch die Azure Active Directory-Authentifizierung nutzen. In diesem Artikel wird beschrieben, wie Sie einen Azure AD-Mandanten für eine Virtual WAN-Benutzer-VPN-Verbindung (Point-to-Site) mit OpenVPN-Authentifizierung einrichten.
 
 > [!NOTE]
 > Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN&reg;-Protokoll unterstützt.
@@ -25,9 +25,9 @@ Beim Herstellen einer Verbindung mit Ihrem VNet können Sie die zertifikatbasier
 
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Erstellen des Azure AD-Mandanten
 
-Erstellen Sie mit den im Artikel [Erstellen eines neuen Mandanten](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) beschriebenen Schritten einen Azure AD-Mandanten:
+Stellen Sie sicher, dass Sie über einen Azure AD-Mandanten verfügen. Wenn Sie über keinen Azure AD Mandanten verfügen, können Sie mithilfe der Schritte im Artikel [Erstellen eines neuen Mandanten](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) einen neuen Mandanten erstellen:
 
-* Organisationsname
+* Organization name (Name der Organisation)
 * Name der Anfangsdomäne
 
 Beispiel:
@@ -36,24 +36,15 @@ Beispiel:
 
 ## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. Erstellen von Azure AD-Mandantenbenutzern
 
-Erstellen Sie als Nächstes zwei Benutzerkonten. Erstellen Sie ein globales Administratorkonto und ein Masterbenutzerkonto. Das Masterbenutzerkonto wird als Masterkonto für die Einbettung verwendet (Dienstkonto). Wenn Sie ein Azure AD-Mandantenbenutzerkonto erstellen, passen Sie die Verzeichnisrolle für den Typ des Benutzers an, den Sie erstellen möchten.
+Erstellen Sie als Nächstes auf dem neu erstellten Azure AD-Mandanten zwei Benutzerkonten: ein Konto eines globalen Administrators und ein Benutzerkonto. Das Benutzerkonto kann verwendet werden, um die OpenVPN-Authentifizierung zu testen, und das Konto für den globalen Administrator wird genutzt, um die Einwilligung für die Registrierung der Azure-VPN-App zu erteilen. Nachdem Sie ein Azure AD-Benutzerkonto erstellt haben, weisen Sie dem Benutzer eine **Verzeichnisrolle** zu, um Administratorberechtigungen zu delegieren.
 
-Verwenden Sie die Schritte in [diesem Artikel](../active-directory/fundamentals/add-users-azure-active-directory.md), um mindestens zwei Benutzer für Ihren Azure AD-Mandanten zu erstellen. Achten Sie darauf, dass Sie die **Verzeichnisrolle** ändern, um die Kontotypen zu erstellen:
+Verwenden Sie die Schritte in [diesem Artikel](../active-directory/fundamentals/add-users-azure-active-directory.md), um die beiden Benutzer für Ihren Azure AD-Mandanten zu erstellen. Achten Sie darauf, dass Sie die **Verzeichnisrolle** für eines der erstellten Konten in **Globaler Administrator** ändern.
 
-* Globaler Administrator
-* Benutzer
+## <a name="3-grant-consent-to-the-azure-vpn-app-registration"></a><a name="enable-authentication"></a>3. Erteilen der Einwilligung für die Registrierung der Azure-VPN-App
 
-## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. Aktivieren der Azure AD-Authentifizierung im Aktivieren der Azure AD-Authentifizierung im VPN-Gateway
+1. Melden Sie sich beim Azure-Portal als Benutzer an, dem die Rolle als **globaler Administrator** zugewiesen ist.
 
-1. Suchen Sie die Verzeichnis-ID des Verzeichnisses, das Sie für die Authentifizierung verwenden möchten. Sie wird im Abschnitt „Eigenschaften“ der Active Directory-Seite aufgeführt.
-
-    ![Verzeichnis-ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
-
-2. Kopieren Sie die Verzeichnis-ID.
-
-3. Melden Sie sich beim Azure-Portal als Benutzer an, dem die Rolle als **globaler Administrator** zugewiesen ist.
-
-4. Geben Sie als nächstes Administratoreinwilligung. Kopieren Sie die URL für den jeweiligen Bereitstellungsspeicherort und fügen Sie sie in die Adressleiste Ihres Browsers ein:
+2. Erteilen Sie als Nächstes die Administratoreinwilligung für Ihre Organisation. Dies ermöglicht der Azure-VPN-Anwendung die Anmeldung und das Lesen von Benutzerprofilen. Kopieren Sie die URL für den jeweiligen Bereitstellungsspeicherort und fügen Sie sie in die Adressleiste Ihres Browsers ein:
 
     Öffentlich
 
@@ -79,20 +70,18 @@ Verwenden Sie die Schritte in [diesem Artikel](../active-directory/fundamentals/
     https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
-5. Wählen Sie das Konto **Globaler Administrator** aus, wenn Sie dazu aufgefordert werden.
+3. Wählen Sie das Konto vom Typ **Globaler Administrator** aus, wenn die Aufforderung angezeigt wird.
 
     ![Verzeichnis-ID](./media/openvpn-create-azure-ad-tenant/pick.png)
 
-6. Wählen Sie **Akzeptieren** aus, wenn Sie dazu aufgefordert werden.
+4. Wählen Sie **Akzeptieren** aus, wenn Sie dazu aufgefordert werden.
 
     ![Akzeptieren](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-7. Unter ihrem Azure AD wird in **Unternehmensanwendungen** **Azure-VPN** aufgeführt.
+5. In Azure AD sollte unter **Unternehmensanwendungen** jetzt der Eintrag **Azure-VPN** aufgeführt sein.
 
     ![Azure-VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
 
-8. Führen Sie die Schritte in [Konfigurieren der Azure AD-Authentifizierung für eine Point-to-Site-Verbindung zu Azure](virtual-wan-point-to-site-azure-ad.md), um die Azure AD-Authentifizierung für das Benutzer-VPN zu konfigurieren und einem virtuellen Hub zuzuweisen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um eine Verbindung mit Ihrem virtuellen Netzwerk herzustellen, müssen Sie ein VPN-Clientprofil erstellen und konfigurieren und einem virtuellen Hub zuordnen. Informationen finden Sie unter [Konfigurieren der Azure AD-Authentifizierung für eine Point-to-Site-Verbindung mit Azure](virtual-wan-point-to-site-azure-ad.md).
+Zum Herstellen einer Verbindung mit Ihren virtuellen Netzwerken per Azure AD-Authentifizierung müssen Sie eine Benutzer-VPN-Konfiguration erstellen und einem virtuellen Hub zuordnen. Informationen finden Sie unter [Konfigurieren der Azure AD-Authentifizierung für eine Point-to-Site-Verbindung mit Azure](virtual-wan-point-to-site-azure-ad.md).

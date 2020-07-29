@@ -1,14 +1,14 @@
 ---
 title: Bewährte Methoden
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
-ms.date: 06/22/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954148"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497776"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -146,6 +146,10 @@ Verzeichnisverbindungen, manchmal auch als feste Verzeichnisverknüpfungen bezei
 ### <a name="collect-the-batch-agent-logs"></a>Erfassen der Batch-Agent-Protokolle
 
 Wenn Sie ein Problem bemerken, das mit dem Verhalten eines Knotens oder einer Aufgabe, die auf einem Knoten ausgeführt wird, zusammenhängt, sollten Sie die Batch-Agent-Protokolle vor dem Aufheben der Zuordnung der fraglichen Knoten erfassen. Die Batch-Agent-Protokolle lassen sich mithilfe der API zum Hochladen von Batch-Dienstprotokollen erfassen. Diese Protokolle können als Teil eines Supporttickets an Microsoft bereitgestellt werden und helfen bei der Behandlung und Behebung von Problemen.
+
+### <a name="manage-os-upgrades"></a>Verwalten von Betriebssystem-Upgrades
+
+Bei Batch-Konten im Modus „Benutzerabonnement“ können automatische Betriebssystem-Upgrades den Taskfortschritt unterbrechen, insbesondere dann, wenn Tasks über einen längeren Zeitraum ausgeführt werden. Das [Entwickeln idempotenter Tasks](#build-durable-tasks) kann zur Reduzierung von Fehlern beitragen, die durch diese Unterbrechungen verursacht werden. Wir empfehlen außerdem, [Upgrades von Betriebssystem-Images für Uhrzeiten zu planen, in denen erwartungsgemäß keine Tasks ausgeführt werden](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
 ## <a name="isolation-security"></a>Isolierungssicherheit
 

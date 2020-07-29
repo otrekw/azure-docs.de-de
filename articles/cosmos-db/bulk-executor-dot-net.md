@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 4bcd2349913c1823e80d46565dfa869d9efe955f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ab95223d084436d1bf39ba557ec3b01c0b534d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260660"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503386"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Zurzeit wird die BulkExecutor-Bibliothek nur von den SQL-API- und Gremlin-API-Ko
 
 Beginnen Sie jetzt mit der Arbeit mit Code, indem Sie eine .NET-Beispielanwendung von GitHub herunterladen. Diese Anwendung führt Massenvorgänge für die in Ihrem Azure Cosmos-Konto gespeicherten Daten aus. Um die Anwendung zu klonen, öffnen Sie eine Eingabeaufforderung, navigieren Sie zu dem Verzeichnis, in das Sie die Anwendung kopieren möchten, und führen Sie den folgenden Befehl aus:
 
-```
+```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
@@ -203,4 +203,4 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den NuGet-Paketen und Versionshinweise finden Sie unter den [Details zum BulkExecutor SDK](sql-api-sdk-bulk-executor-dot-net.md).
+* Informationen zu NuGet-Paketen und Versionshinweise finden Sie unter den [Details zum BulkExecutor-SDK](sql-api-sdk-bulk-executor-dot-net.md).

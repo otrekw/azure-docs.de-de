@@ -7,14 +7,14 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 6d476572ace6803dba6cd9cab97a55953be1d5f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a9d68527a44d78a702e00d3b6ce910c2e9473dac
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202266"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527012"
 ---
-# <a name="azure-virtual-machine-powershell-samples"></a>Virtueller Azure-Computer – PowerShell-Beispiele
+# <a name="azure-virtual-machine-powershell-samples-for-creating-and-managing-linux-vms"></a>Virtueller Azure-Computer – PowerShell-Beispiele zum Erstellen und Verwalten virtueller Linux-Computer
 
 Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die virtuelle Linux-Computer erstellen und verwalten.
 

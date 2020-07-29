@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555725"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519250"
 ---
 # <a name="connect-windows-security-events"></a>Herstellen einer Verbindung mit Windows-Sicherheitsereignissen 
 
@@ -87,7 +87,29 @@ Gehen Sie wie folgt vor, um sicherheitsrelevante Windows-Ereignisse in Azure Sen
 
 Es kann etwa 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden. 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>Konfigurieren des Connectors für sicherheitsrelevante Ereignisse zur Erkennung von ungewöhnlichen RDP-Anmeldungen
 
+> [!IMPORTANT]
+> Die Erkennung ungewöhnlicher RDP-Anmeldungen befindet sich derzeit in der öffentlichen Vorschauphase.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Sentinel kann Machine Learning (ML) auf die Daten von sicherheitsrelevanten Ereignissen anwenden, um ungewöhnliche RDP-Anmeldeaktivitäten (Remotedesktopprotokoll) zu erkennen. Mögliche Szenarien:
+
+- **Ungewöhnliche IP-Adresse**: Die IP-Adresse ist in den letzten 30 Tagen nur selten oder gar nicht aufgetreten.
+
+- **Ungewöhnliche Geolocation**: IP-Adresse, Ort, Land und ASN sind in den letzten 30 Tagen nur selten oder gar nicht aufgetreten.
+
+- **Neuer Benutzer**: Ein neuer Benutzer meldet sich über eine IP-Adresse oder Geolocation an, mit deren Auftreten (einzeln oder gemeinsam) anhand der Daten der letzten 30 Tage nicht gerechnet wurde.
+
+**Konfigurationsanweisungen**
+
+1. Sie müssen RDP-Anmeldedaten (Ereignis-ID 4624) über den Datenconnector für **Sicherheitsereignisse** erfassen. Stellen Sie sicher, dass Sie noch einen anderen [Ereignissatz](#event-sets) als „None“ (Keine) für das Streamen an Azure Sentinel ausgewählt haben.
+
+1. Klicken Sie im Azure Sentinel-Portal auf **Analytics** und dann auf die Registerkarte **Regelvorlagen**. Wählen Sie die Regel **(Vorschau) Erkennung anomaler RDP-Anmeldungen** aus, und legen Sie den Schieberegler **Status** auf **Aktiviert** fest.
+
+    > [!NOTE]
+    > Da für den Machine Learning-Algorithmus zum Erstellen eines Basisprofils für das Benutzerverhalten die Daten von 30 Tagen benötigt werden, müssen Sie die Erfassung für 30 Tage mit sicherheitsrelevanten Ereignissen zulassen, bevor Incidents erkannt werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Windows-Sicherheitsereignisse mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:

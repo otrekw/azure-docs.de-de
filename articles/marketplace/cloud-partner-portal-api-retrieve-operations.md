@@ -4,18 +4,20 @@ description: API zum Abrufen aller Vorgänge im Angebot oder eines bestimmten Vo
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: c0611cb3cbc24e2b105cdef134e30a7c2fbdd445
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113461"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520288"
 ---
 # <a name="retrieve-operations"></a>Abrufen von Vorgängen
 
 > [!NOTE]
-> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Der Übergang führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach dem Übergang zu Partner Center weiterhin funktioniert. CPP-APIs sollten nur für vorhandene Produkte verwendet werden, die bereits vor dem Übergang zu Partner Center integriert wurden. Neue Produkte sollten die Partner Center-APIs für die Übermittlung verwenden.
 
 Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene Vorgangs-ID ab. Der Client kann Abfrageparameter zum Filtern nach ausgeführten Vorgängen verwenden.
 
@@ -26,7 +28,6 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
   GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/operations/<operationId>?api-version=2017-10-31
 
 ```
-
 
 ## <a name="uri-parameters"></a>URI-Parameter
 
@@ -40,13 +41,11 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 
 ## <a name="header"></a>Header
 
-
 |  **Name**          |  **Wert**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  Authorization     | `Bearer YOUR_TOKEN`  |
 |  |  |
-
 
 ## <a name="body-example"></a>Beispiel für Hauptteil
 

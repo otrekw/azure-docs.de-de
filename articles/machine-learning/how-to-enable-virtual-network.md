@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/30/2020
+ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186859"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520697"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,24 @@ Nachdem Sie den Arbeitsbereich und das Speicherdienstkonto dem virtuellen Netzwe
 
 Für __Azure Blob Storage__ wird die verwaltete Identität des Arbeitsbereichs auch als [Blob Data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) (Blobdatenleser) hinzugefügt, sodass Daten aus Blobspeicher gelesen werden können.
 
+
+### <a name="azure-machine-learning-designer-default-datastore"></a>Standarddatenspeicher für Azure Machine Learning-Designer
+
+Der Designer verwendet als Ausgabespeicher standardmäßig das mit Ihrem Arbeitsbereich verknüpfte Speicherkonto. Sie können jedoch einen beliebigen Datenspeicher, auf den Sie Zugriff haben, als Ausgabespeicher angeben. Wenn Sie in Ihrer Umgebung virtuelle Netzwerke verwenden, können Sie mit diesen Steuerelementen sicherstellen, dass Ihre Daten sicher und zugänglich bleiben.
+
+So legen Sie einen neuen Standardspeicher für eine Pipeline fest
+
+1. Wählen Sie in einem Pipeline-Entwurf das **Zahnradsymbol für Einstellungen** neben dem Pipeline-Titel aus.
+1. Wählen Sie **Standarddatenspeicher auswählen** aus.
+1. Geben Sie einen neuen Datenspeicher an.
+
+Sie können den Standarddatenspeicher auch auf Modulbasis überschreiben. Dadurch können Sie den Speicherort für jedes einzelne Modul steuern.
+
+1. Wählen Sie das Modul aus, für das Sie den Ausgabespeicher angeben möchten.
+1. Erweitern Sie den Abschnitt **Ausgabeeinstellungen**.
+1. Wählen Sie **Standardausgabeeinstellungen außer Kraft setzen** aus.
+1. Wählen Sie **Ausgabeeinstellungen festlegen** aus.
+1. Geben Sie einen neuen Datenspeicher an.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Zugriffssteuerung von Azure Data Lake Storage Gen2
 
@@ -286,8 +304,8 @@ Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden
 - Verweigern Sie ausgehende Internetverbindungen mit NSG-Regeln.
 
 - Beschränken Sie für eine __Compute-Instanz__ oder einen __Computecluster__ den ausgehenden Verkehr auf die folgenden Elemente:
-   - Azure Storage mithilfe der __Dienstkennung__ von __Storage.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
-   - Azure Container Registry mithilfe der __Dienstkennung__ von __AzureContainerRegistry.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
+   - Azure Storage, mithilfe der __Dienstkennung__ von __Storage__.
+   - Azure Container Registry, mithilfe der __Dienstkennung__ von __AzureContainerRegistry__.
    - Azure Machine Learning, mit dem __Diensttag__ von __AzureMachineLearning__
    - Azure Resource Manager mithilfe der __Dienstkennung__ von __AzureResourceManager__
    - Azure Active Directory mithilfe der __Dienstkennung__ von __AzureActiveDirectory__
@@ -326,11 +344,15 @@ Die NSG-Regelkonfiguration im Azure-Portal wird in der folgenden Abbildung darge
 > run = exp.submit(est)
 > ```
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>Benutzerdefinierte Routen für erzwungenes Tunneln
+### <a name="forced-tunneling"></a>Tunnelerzwingung
 
-Wenn Sie das erzwungene Tunneling mit Azure Machine Learning Compute verwenden, fügen Sie dem Subnetz mit den Computeressourcen [benutzerdefinierte Routen (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) hinzu.
+Wenn Sie das [erzwungene Tunneling](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) mit Azure Machine Learning Compute verwenden, müssen Sie dem Subnetz mit der Computeressource die Kommunikation mit dem öffentlichen Internet erlauben. Diese Kommunikation wird für die Aufgabenplanung und den Zugriff auf Azure Storage verwendet.
 
-* Richten Sie für jede IP-Adresse eine benutzerdefinierte Route ein, die vom Azure Batch-Dienst in der Region Ihrer Ressourcen verwendet wird. Diese benutzerdefinierten Routen ermöglichen dem Batch-Dienst, für die zeitliche Planung von Tasks mit den Serverknoten zu kommunizieren. Fügen Sie außerdem die IP-Adresse für Azure Machine Learning Service hinzu, in dem die Ressourcen enthalten sind, da dies für den Zugriff auf Computeinstanzen erforderlich ist. Über die folgenden Methoden können Sie eine Liste der IP-Adressen des Batch-Diensts und von Azure Machine Learning Service abrufen:
+Es gibt zwei Möglichkeiten, dies zu erreichen:
+
+* Verwenden Sie [Virtual Network NAT](../virtual-network/nat-overview.md). Ein NAT-Gateway stellt für ein oder mehrere Subnetze in Ihrem virtuellen Netzwerk die ausgehende Internetverbindung bereit. Weitere Informationen hierzu finden Sie unter [Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen](../virtual-network/nat-gateway-resource.md).
+
+* Fügen Sie dem Subnetz mit der Computeressource [Benutzerdefinierte Routen (UDRs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) hinzu. Richten Sie für jede IP-Adresse eine benutzerdefinierte Route ein, die vom Azure Batch-Dienst in der Region Ihrer Ressourcen verwendet wird. Diese benutzerdefinierten Routen ermöglichen dem Batch-Dienst, für die zeitliche Planung von Tasks mit den Serverknoten zu kommunizieren. Fügen Sie außerdem die IP-Adresse für Azure Machine Learning Service hinzu, in dem die Ressourcen enthalten sind, da dies für den Zugriff auf Computeinstanzen erforderlich ist. Über die folgenden Methoden können Sie eine Liste der IP-Adressen des Batch-Diensts und von Azure Machine Learning Service abrufen:
 
     * Laden Sie die [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) herunter, und suchen Sie in der Datei nach `BatchNodeManagement.<region>` und `AzureMachineLearning.<region>`, wobei `<region>` Ihre Azure-Region ist.
 
@@ -340,14 +362,15 @@ Wenn Sie das erzwungene Tunneling mit Azure Machine Learning Compute verwenden, 
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+    
+    Wenn Sie die benutzerdefinierten Routen hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix, und legen Sie den __Typ des nächsten Hops__ auf __Internet__ fest. Die folgende Abbildung zeigt ein Beispiel dieser benutzerdefinierten Route im Azure-Portal:
 
-* Ausgehender Datenverkehr an Azure Storage darf nicht durch Ihre lokale Netzwerkappliance blockiert werden. Insbesondere sind die URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`.
+    ![Beispiel für eine benutzerdefinierte Route für ein Adresspräfix](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Wenn Sie die benutzerdefinierten Routen hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix, und legen Sie den __Typ des nächsten Hops__ auf __Internet__ fest. Die folgende Abbildung zeigt ein Beispiel dieser benutzerdefinierten Route im Azure-Portal:
+    Zusätzlich zu allen von Ihnen angegebenen benutzerdefinierten Routen muss der ausgehende Datenverkehr zu Azure Storage über Ihre lokale Netzwerkappliance zugelassen werden. Die speziellen URLs für diesen Datenverkehr sind in folgenden Formularen zu finden: `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`. 
 
-![Beispiel für eine benutzerdefinierte Route für ein Adresspräfix](./media/how-to-enable-virtual-network/user-defined-route.png)
+    Weitere Informationen finden Sie unter [Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
-Weitere Informationen finden Sie unter [Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Erstellen eines Computeclusters in einem virtuellen Netzwerk
 
@@ -480,6 +503,40 @@ Standardmäßig wird den AKS-Bereitstellungen eine öffentliche IP-Adresse zugew
 
 Eine private IP-Adresse wird aktiviert, indem AKS zur Verwendung eines _internen Lastenausgleichs_ konfiguriert wird. 
 
+#### <a name="network-contributor-role"></a>Rolle „Netzwerkmitwirkender“
+
+> [!IMPORTANT]
+> Wenn Sie einen AKS-Cluster erstellen oder anfügen, indem Sie ein zuvor erstelltes virtuelles Netzwerk bereitstellen, müssen Sie dem Dienst Prinzipal (Service Principal, SP) oder der verwalteten Identität für den AKS-Cluster die Rolle _Netzwerkmitwirkender_ der Ressourcengruppe zuweisen, die das virtuelle Netzwerk enthält. Dies muss geschehen, bevor Sie versuchen, den internen Load Balancer auf eine private IP-Adresse umzustellen.
+>
+> Um die Identität als Netzwerkmitwirkenden hinzuzufügen, führen Sie die folgenden Schritte aus:
+
+1. Verwenden Sie zum Ermitteln der ID des Dienstprinzipals oder der verwalteten Identität für AKS die folgenden Azure CLI Befehle. Ersetzen Sie `<aks-cluster-name>` durch den Namen des Clusters. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die den _AKS-Cluster enthält_:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    Wenn dieser Befehl den Wert `msi` zurückgibt, verwenden Sie den folgenden Befehl, um die Prinzipal-ID für die verwaltete Identität zu bestimmen:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. Verwenden Sie den folgenden Befehl, um die ID der Ressourcengruppe zu ermitteln, die das virtuelle Netzwerk enthält. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die das _virtuelle Azure-Netzwerk enthält_:
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. Um den Dienstprinzipal oder die verwaltete Identität als Netzwerkmitwirkenden hinzuzufügen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<SP-or-managed-identity>` durch die für den Dienstprinzipal oder die verwaltete Identität zurückgegebene ID. Ersetzen Sie `<resource-group-id>` durch die ID, die für die Ressourcengruppe mit dem virtuellen Netzwerk zurückgegeben wurde:
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
+Weitere Informationen zur Verwendung des internen Lastenausgleichs mit AKS finden Sie unter [Verwenden des internen Lastenausgleichs mit Azure Kubernetes Service](/azure/aks/internal-lb).
+
+#### <a name="enable-private-ip"></a>Aktivieren einer privaten IP-Adresse
+
 > [!IMPORTANT]
 > Sie können beim Erstellen des Azure Kubernetes Service-Clusters keine private IP-Adresse aktivieren. Er muss als Update eines bestehenden Clusters aktiviert werden.
 
@@ -570,38 +627,6 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-__Rolle „Netzwerkmitwirkender“__
-
-> [!IMPORTANT]
-> Wenn Sie einen AKS-Cluster erstellen oder anfügen, indem Sie ein zuvor erstelltes virtuelles Netzwerk bereitstellen, müssen Sie dem Dienst Prinzipal (Service Principal, SP) oder der verwalteten Identität für den AKS-Cluster die Rolle _Netzwerkmitwirkender_ der Ressourcengruppe zuweisen, die das virtuelle Netzwerk enthält. Dies muss geschehen, bevor Sie versuchen, den internen Load Balancer auf eine private IP-Adresse umzustellen.
->
-> Um die Identität als Netzwerkmitwirkenden hinzuzufügen, führen Sie die folgenden Schritte aus:
-
-1. Verwenden Sie zum Ermitteln der ID des Dienstprinzipals oder der verwalteten Identität für AKS die folgenden Azure CLI Befehle. Ersetzen Sie `<aks-cluster-name>` durch den Namen des Clusters. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die den _AKS-Cluster enthält_:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
-    ``` 
-
-    Wenn dieser Befehl den Wert `msi` zurückgibt, verwenden Sie den folgenden Befehl, um die Prinzipal-ID für die verwaltete Identität zu bestimmen:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
-    ```
-
-1. Verwenden Sie den folgenden Befehl, um die ID der Ressourcengruppe zu ermitteln, die das virtuelle Netzwerk enthält. Ersetzen Sie `<resource-group-name>` durch den Namen der Ressourcengruppe, die das _virtuelle Azure-Netzwerk enthält_:
-
-    ```azurecli-interactive
-    az group show -n <resource-group-name> --query id
-    ```
-
-1. Um den Dienstprinzipal oder die verwaltete Identität als Netzwerkmitwirkenden hinzuzufügen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<SP-or-managed-identity>` durch die für den Dienstprinzipal oder die verwaltete Identität zurückgegebene ID. Ersetzen Sie `<resource-group-id>` durch die ID, die für die Ressourcengruppe mit dem virtuellen Netzwerk zurückgegeben wurde:
-
-    ```azurecli-interactive
-    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
-    ```
-Weitere Informationen zur Verwendung des internen Lastenausgleichs mit AKS finden Sie unter [Verwenden des internen Lastenausgleichs mit Azure Kubernetes Service](/azure/aks/internal-lb).
-
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances (ACIs)
 
 Azure Container Instances werden beim Bereitstellen eines Modells dynamisch erstellt. Damit Azure Machine Learning ACIs innerhalb des virtuellen Netzwerks erstellen kann, müssen Sie __Subnetzdelegierung__ für das von der Bereitstellung verwendete Subnetz aktivieren.
@@ -630,6 +655,7 @@ Informationen zur Verwendung von Azure Machine Learning mit Azure Firewall finde
 > Azure Container Registry (ACR) kann in einem virtuellen Netzwerk platziert werden, jedoch müssen die folgenden Voraussetzungen erfüllt sein:
 >
 > * Der Azure Machine Learning-Arbeitsbereich muss Enterprise Edition aufweisen. Informationen zum Durchführen eines Upgrades finden Sie unter [Upgrade auf Enterprise Edition](how-to-manage-workspace.md#upgrade).
+> * Ihre Azure Machine Learning-Arbeitsbereichsregion sollte eine [private, über Link aktivierte Region](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) sein. 
 > * Azure Container Registry muss die Premium-Version aufweisen. Informationen zum Durchführen eines Upgrades finden Sie unter [Wechseln von SKUs](/azure/container-registry/container-registry-skus#changing-skus).
 > * Azure Container Registry muss sich in demselben virtuellen Netzwerk und Subnetz befinden wie das Speicherkonto und die Computeziele, die für Training oder Rückschluss verwendet werden.
 > * Der Azure Machine Learning-Arbeitsbereich muss einen [Azure Machine Learning-Computecluster](how-to-set-up-training-targets.md#amlcompute) enthalten.

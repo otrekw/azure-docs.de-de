@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262632"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497759"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Verwenden von Azure Kubernetes mit Azure Cosmos DB (Vorschauversion)
 
@@ -33,7 +33,7 @@ Weitere Informationen über die etcd-API in Azure Cosmos DB finden Sie im [Über
 
    Die Azure Kubernetes Engine (**aks-engine**) generiert Azure Resource Manager-Vorlagen für Kubernetes-Cluster in Azure. Die Eingabe für aks-engine ist eine Clusterdefinitionsdatei, in der der gewünschte Cluster beschrieben ist, einschließlich Orchestrator, Funktionen und Agents. Die Struktur der Eingabedateien ist der öffentlichen API für Azure Kubernetes Service sehr ähnlich.
 
-1. Die etcd-API in Azure Cosmos DB liegt aktuell in einer Vorschauversion vor. Wenn Sie die Vorschauversion verwenden möchten, melden Sie sich an unter: https://aka.ms/cosmosetcdapi-signup. Nachdem Sie das Formular übermittelt haben, wird Ihr Abonnement in die Whitelist aufgenommen, damit die etcd-API von Azure Cosmos verwendet werden kann. 
+1. Die etcd-API in Azure Cosmos DB liegt aktuell in einer Vorschauversion vor. Wenn Sie die Vorschauversion verwenden möchten, melden Sie sich an unter: https://aka.ms/cosmosetcdapi-signup. Nachdem Sie das Formular übermittelt haben, dürfen Sie mit Ihrem Abonnement die etcd-API von Azure Cosmos verwenden. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Bereitstellen des Clusters mit Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Weitere Informationen über die etcd-API in Azure Cosmos DB finden Sie im [Über
    az login 
    ```
 
-1. Wenn Sie mehrere Abonnements haben, wechseln Sie zu dem Abonnement, das für die etcd-API von Azure Cosmos DB in die Whitelist aufgenommen wurde. Mit dem folgenden Befehl können Sie zum erforderlichen Abonnement wechseln:
+1. Wenn Sie mehrere Abonnements haben, wechseln Sie zu dem Abonnement, dem die Nutzung der etcd-API von Azure Cosmos DB erlaubt wurde. Mit dem folgenden Befehl können Sie zum erforderlichen Abonnement wechseln:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"

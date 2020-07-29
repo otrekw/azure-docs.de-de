@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497113"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog
 
@@ -190,7 +190,7 @@ Nachdem Sie mit Logstash eine Verbindung mit den Datenflussprotokollen hergestel
 
    Nachdem Sie die Eingabe starten, sollten Sie eswie in der folgenden Abbildung gezeigt, im Abschnitt **Lokale Eingaben** sehen:
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![Screenshot mit dem Abschnitt „Lokale Eingaben“, der die von Ihnen gestartete Eingabe enthält.](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    Weitere Informationen zum Graylog-Nachrichteneingaben finden Sie in der [Dokumentation](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 

@@ -3,12 +3,12 @@ title: C#-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254366"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506509"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -202,6 +202,28 @@ Wenn Sie Core Tools mithilfe von npm installieren, wirkt sich dies nicht auf die
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+Sie können ihre Funktions-App als [ReadyToRun-Binärdateien](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images) kompilieren. ReadyToRun ist eine Form der Vorabkompilierung, die zur Optimierung der Startleistung beitragen und die Auswirkungen eines [Kaltstarts](functions-scale.md#cold-start) bei Ausführung in einem [Verbrauchstarif](functions-scale.md#consumption-plan) reduzieren kann.
+
+ReadyToRun ist in .NET 3.0 verfügbar und setzt [Azure Functions Runtimeversion 3.0](functions-versions.md) voraus.
+
+Um Ihr Projekt als „ReadyToRun“ zu kompilieren, aktualisieren Sie die Projektdatei, indem Sie die Elemente `<PublishReadyToRun>` und `<RuntimeIdentifier>` hinzufügen. Im Folgenden finden Sie die Konfiguration für die Veröffentlichung in einer Windows 32-Bit-Funktions-App.
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun unterstützt derzeit keine Kreuzkompilierung. Sie müssen Ihre App auf derselben Plattform erstellen, auf der sich auch das Bereitstellungsziel befindet. Achten Sie auch auf die „Bitanzahl“, die in ihrer Funktions-App konfiguriert wird. Wenn Ihre Funktions-App in Azure z. B. mit Windows 64-Bit konfiguriert wird, müssen Sie Ihre App unter Windows mit `win-x64` als [Runtimebezeichner](/dotnet/core/rid-catalog) kompilieren.
+
+Sie können Ihre App mit ReadyToRun auch über die Befehlszeile erstellen. Weitere Informationen finden Sie unter der Option `-p:PublishReadyToRun=true` in [`dotnet publish`](/dotnet/core/tools/dotnet-publish).
+
 ## <a name="supported-types-for-bindings"></a>Unterstützte Typen für Bindungen
 
 Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blobtriggerattribut auf einen Zeichenfolgeparameter, einen POCO-Parameter, einen `CloudBlockBlob`-Parameter oder einen von mehreren anderen unterstützten Typen angewendet werden. Im [Bindungsreferenzartikel für Blobbindungen](functions-bindings-storage-blob-trigger.md#usage) sind alle unterstützten Parametertypen aufgelistet. Weitere Informationen hierzu finden Sie unter [Trigger und Bindungen](functions-triggers-bindings.md) und in den [Bindungsreferenzdokumenten für jeden Bindungstyp](functions-triggers-bindings.md#next-steps).
@@ -238,7 +260,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Protokollierung
 
-Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) ein. Es wird empfohlen, diesen wie im folgenden Beispiel `log` zu nennen:  
+Um eine Ausgabe in C# in Ihren Streamingprotokollen zu dokumentieren, fügen Sie ein Argument vom Typ [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) ein. Es wird empfohlen, diesen wie im folgenden Beispiel `log` zu nennen:  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +279,7 @@ Vermeiden Sie die Verwendung von `Console.Write` in Azure Functions. Weitere Inf
 
 ## <a name="async"></a>Async
 
-Um eine Funktion [asynchron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/) auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
+Um eine Funktion [asynchron](/dotnet/csharp/programming-guide/concepts/async/) auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 App-Einstellungen können sowohl beim lokalen Entwickeln als auch bei der Ausführung unter Azure aus Umgebungsvariablen gelesen werden. Beim lokalen Entwickeln kommen App-Einstellungen aus der `Values`-Sammlung in der Datei *local.settings.json*. In beiden Umgebungen, lokal und Azure, ruft `GetEnvironmentVariable("<app setting name>")` den Wert der benannten App-Einstellung ab. Bei der lokalen Ausführung würde beispielsweise „My Site Name“ zurückgegeben, wenn Ihre *local.settings.json*-Datei `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` enthält.
 
-Die Eigenschaft [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) ist eine alternative API zum Abrufen von Werten einer App-Einstellung, jedoch wird die hier gezeigte Verwendung von `GetEnvironmentVariable` empfohlen.
+Die Eigenschaft [System.Configuration.ConfigurationManager.AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) ist eine alternative API zum Abrufen von Werten einer App-Einstellung, jedoch wird die hier gezeigte Verwendung von `GetEnvironmentVariable` empfohlen.
 
 ## <a name="binding-at-runtime"></a>Binden zur Laufzeit
 

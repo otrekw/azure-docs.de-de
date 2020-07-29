@@ -1,24 +1,20 @@
 ---
-title: References
-description: ''
+title: Azure FarmBeats-APIs
+description: Lernen Sie die Azure FarmBeats-APIs kennen, die Unternehmen im Agrarsektor eine standardisierte RESTful-Schnittstelle mit JSON-basierten Antworten bieten.
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488034"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536571"
 ---
-# <a name="references"></a>References
+# <a name="azure-farmbeats-apis"></a>Azure FarmBeats-APIs
 
-In diesem Artikel werden die Azure FarmBeats-APIs beschrieben.
-
-## <a name="rest-api"></a>REST-API
-
-Die Azure FarmBeats-APIs bieten Unternehmen im Agrarsektor eine standardisierte RESTful-Schnittstelle mit JSON-basierten Antworten, damit die Funktionen von Azure FarmBeats genutzt werden können. Beispiele hierfür sind:
+In diesem Artikel werden die Azure FarmBeats-APIs beschrieben. Die Azure FarmBeats-APIs bieten Unternehmen im Agrarsektor eine standardisierte RESTful-Schnittstelle mit JSON-basierten Antworten, damit die Funktionen von Azure FarmBeats genutzt werden können. Beispiele hierfür sind:
 
 - APIs zum Abrufen von Daten aus Sensoren, Kameras, Drohnen oder Satelliten zu Wettersituationen und Bodenbeschaffenheit.
 - Normalisierung und Kontextualisierung von Daten von allen gängigen Datenanbietern.
@@ -63,7 +59,7 @@ Um eine authentifizierte Anforderung an die REST-APIs zu senden, erfordert der C
 
 Das Zugriffstoken muss in nachfolgenden API-Anforderungen wie folgt im Headerabschnitt gesendet werden:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -182,6 +178,6 @@ Nachdem Sie die oben beschriebenen Schritte ausgeführt haben, kann Ihre App-Reg
 
 Senden Sie das Zugriffstoken in nachfolgenden API-Anforderungen im Headerabschnitt:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```
