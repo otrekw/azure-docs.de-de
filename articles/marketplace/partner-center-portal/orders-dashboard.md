@@ -3,14 +3,14 @@ title: Partner Center-Dashboard „Aufträge“ in Analysen für den kommerziell
 description: Erfahren Sie, wie Sie auf Analyseberichte in einem grafischen und herunterladbaren Format zugreifen, die Informationen zu Aufträgen für Ihre Marketplace-Angebote enthalten.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536129"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -29,12 +29,9 @@ Im Dashboard **Aufträge** des Menüs **Analyse** werden die aktuellen Aufträge
 - [Bestellungen nach Geographie](#orders-by-geography)
 - [Aufträge nach Angeboten](#orders-by-offers)
 - [Auftragstrend: pro Standort/pro Arbeitsplatz im Vergleich](#orders-trend-per-site-versus-per-seat)
-- [Aufträge nach SKUs](#orders-by-skus)
+- [Aufträge nach Plänen](#orders-by-plans)
 - [Trend im Hinblick auf Aufträge und Arbeitsplätze](#orders-and-seats-trend)
 - [Tabelle der Bestelldetails](#order-details-table)
-
-> [!NOTE]
-> Es gibt Unterschiede zwischen der Anzeige von Analyseberichten im Cloud-Partnerportal (CPP) und dem neuen Programm für den kommerziellen Marketplace in Partner Center. Eine Besonderheit besteht darin, dass **Verkäufer-Insights** in CPP über eine Registerkarte **Aufträge und Nutzung** verfügt, auf der Daten für nutzungsbasierte Angebote und nicht nutzungsbasierte Angebote angezeigt werden. Im Partner Center verfügt die Seite **Bestellungen** über eine separate Registerkarte für SaaS-Angebote.
 
 ## <a name="order-dashboard-details"></a>Details zum Dashboard „Aufträge“
 
@@ -76,16 +73,16 @@ Im Ringdiagramm **Aufträge nach Angeboten** sind Aufträge (einschließlich sto
 
 Im Ringdiagramm **Pro Standort/pro Arbeitsplatz im Vergleich** sind von Kunden erworbene SaaS-Aufträge pro Standort und pro Arbeitsplatz aufgeschlüsselt (dieses Diagramm umfasst stornierte Aufträge). Im Säulendiagramm ist der Trend der von Kunden erworbenen SaaS-Aufträge pro Standort und pro Arbeitsplatz dargestellt (dieses Diagramm umfasst stornierte Aufträge).
 
-### <a name="orders-by-skus"></a>Aufträge nach SKUs
+### <a name="orders-by-plans"></a>Aufträge nach Plänen
 
-Im Diagramm **Aufträge nach SKUs** ist der Auftragstrend auf für all Ihre Angebote auf SKU-Ebene (Stock Keeping Unit) dargestellt (dieses Diagramm umfasst stornierte Aufträge). Im Ringdiagramm ist die Aufschlüsselung der fünf Top-SKU-Aufträge und im Säulendiagramm der Auftragstrend für die fünf Top-SKUs dargestellt.
+Im Diagramm **Aufträge nach Plänen** ist der Auftragstrend für Ihre gesamten Angebote auf Planebene dargestellt (dieses Diagramm enthält stornierte Aufträge). Im Ringdiagramm ist die Aufschlüsselung der fünf Top-Planaufträge und im Säulendiagramm der Auftragstrend für die fünf Top-Pläne dargestellt.
 
 ### <a name="orders-and-seats-trend"></a>Trend im Hinblick auf Aufträge und Arbeitsplätze
 
 Im Diagramm **Trend im Hinblick auf Aufträge und Arbeitsplätze** werden die 50 Top-Angebote mit der höchsten Anzahl von Aufträgen dargestellt. Diese werden in einer Bestenliste angezeigt und sind nach der höchsten Anzahl von Aufträgen und dem höchsten Prozentsatz der Aufträge sortiert.
 
-- **Aufträge nach SKUs**: Wählen Sie ein Angebot aus, um die Aufschlüsselung der Auftragsanzahl für die fünf Top-SKUs im Diagramm anzuzeigen.
-- **Arbeitsplätze nach SKUs**: Der monatliche Trend der Arbeitsplätze für die fünf Top-SKUs. Wenn es sich bei dem ausgewählten Angebot nicht um ein Angebot pro Arbeitsplatz handelt, werden in diesem Flächendiagramm keine Daten angezeigt.
+- **Aufträge nach Plänen**: Wählen Sie ein Angebot aus, um die Aufschlüsselung der Auftragsanzahl für die fünf Top-Pläne im Diagramm anzuzeigen.
+- **Arbeitsplätze nach Plänen**: Der monatliche Trend der Arbeitsplätze für die fünf Top-Pläne. Wenn es sich bei dem ausgewählten Angebot nicht um ein Angebot pro Arbeitsplatz handelt, werden in diesem Flächendiagramm keine Daten angezeigt.
 
 ### <a name="canceled-orders-by-offers"></a>Stornierte Aufträge nach Angeboten
 
