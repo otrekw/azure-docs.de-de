@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987296"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537121"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -111,7 +111,7 @@ Microsoft überprüft, ob Ihnen die angegebenen „Angekündigten öffentlichen 
 
 Wenn die Meldung „Überprüfung erforderlich“ angezeigt wird, sammeln Sie die Dokumente, in denen die öffentlichen Präfixe angezeigt werden, die Ihrer Organisation von der Entität zugewiesen wurden, die als Besitzer der Präfixe in der Routing Registry aufgeführt ist, und senden Sie diese Dokumente durch Öffnen eines Supporttickets zur manuellen Überprüfung, wie unten gezeigt.
 
-![](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
+![Screenshot: Neue Supportanfrage (Supportticket) für „Proof of ownership for public prefixes“ (Besitznachweis für öffentliche Präfixe)](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Wird Dynamics 365 in ExpressRoute unterstützt?
 
@@ -176,7 +176,7 @@ Weitere Informationen zur BGP-Pfadauswahl und allgemeinen Routerkonfigurationen 
 
 Wenn Ihr Dienstanbieter zwei virtuelle Ethernetverbindungen über die physische Verbindung herstellen kann, benötigen Sie nur eine einzige physische Verbindung. Die physische Verbindung (z.B. Glasfaser) wird auf einem Layer 1-Gerät (L1) beendet (siehe Abbildung). Die zwei virtuellen Ethernet-Verbindungen werden mit unterschiedlichen VLAN-IDs markiert, eine für die primäre Verbindung und eine für die sekundäre Verbindung. Diese VLAN-IDs befinden sich im äußeren 802.1Q-Ethernet-Header. Der innere 802.1Q-Ethernet-Header (nicht dargestellt) wird einer bestimmten [ExpressRoute-Routingdomäne](expressroute-circuit-peerings.md) zugeordnet.
 
-![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
+![Diagramm, in dem primäre und sekundäre virtuelle Verbindungen der Ebene 1 (L1) dargestellt sind, die die physische Verbindung zwischen den Switches am Kundenstandort und an einem ExpressRoute-Standort bilden](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Kann ich eines meiner VLANs mithilfe von ExpressRoute auf Azure erweitern?
 

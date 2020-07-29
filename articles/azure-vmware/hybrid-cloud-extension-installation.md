@@ -2,19 +2,19 @@
 title: Installieren von Hybrid Cloud Extension (HCX)
 description: Einrichten der VMware-HCX-Lösung (Hybrid Cloud Extension) für die private AVS-Cloud (Azure VMware Solution)
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367545"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539158"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Installieren von HCX für eine Azure-VMware-Lösung
 
 In diesem Artikel werden die Vorgehensweisen zum Einrichten der VMware-HCX-Lösung (Hybrid Cloud Extension) für Ihre private AVS-Cloud (Azure VMware Solution) beschrieben. HCX ermöglicht die Migration Ihrer VMware-Workloads zur Cloud und zu anderen verbundenen Standorten mithilfe verschiedener integrierter, von HCX unterstützter Migrationstypen.
 
-Die Standardinstallation HCX Advanced unterstützt bis zu drei externe Standorte. Wenn mehr als drei Standorte erforderlich sind, können die Kunden das HCX Enterprise-Add-on über den Support aktivieren. Für die HCX Enterprise-Installation fallen über die allgemeine Verfügbarkeit (GA) hinaus zusätzliche Gebühren für Kunden an, die Version bietet jedoch [zusätzliche Funktionen](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+Die Standardinstallation HCX Advanced unterstützt bis zu drei externe vCenter-Instanzen. Wenn mehr als drei Instanzen erforderlich sind, können Kunden das HCX Enterprise-Add-On über den Support aktivieren. Für die HCX Enterprise-Installation fallen über die allgemeine Verfügbarkeit (GA) hinaus zusätzliche Gebühren für Kunden an, die Version bietet jedoch [zusätzliche Funktionen](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
 
 Lesen Sie zuerst die Informationen unter [Voraussetzungen (Vorbereitung)](#before-you-begin), [Erforderliche Softwareversionen](#software-version-requirements) und [Voraussetzungen](#prerequisites). 

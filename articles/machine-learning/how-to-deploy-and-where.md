@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146549"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536384"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -442,7 +442,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 In diesem Beispiel gibt die Konfiguration die folgenden Einstellungen an:
 
 * Die Angabe, dass für das Modell Python erforderlich ist
-* Das [Eingangsskript](#script), mit dem Webanforderungen verarbeitet werden, die an den bereitgestellten Dienst gesendet wurden
+* Das [Eingangsskript](#script), das zum Verarbeiten von an den bereitgestellten Dienst gesendeten Webanforderungen verwendet wird.
 * Die Conda-Datei, in der die Python-Pakete beschrieben sind, die für Rückschlüsse erforderlich sind
 
 Informationen zur Verwendung eines benutzerdefinierten Docker-Images mit einer Rückschlusskonfiguration finden Sie unter [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](how-to-deploy-custom-docker-image.md).
@@ -459,7 +459,7 @@ Um ein Profil Ihres Modells erstellen zu können, benötigen Sie Folgendes:
 > [!IMPORTANT]
 > An dieser Stelle unterstützen wir nur die Profilerstellung von Diensten, die erwarten, dass ihre Anforderungsdaten eine Zeichenfolge sind. Beispiel: string serialized json, text, string serialized image, usw. Der Inhalt der einzelnen Zeilen des Datasets (Zeichenfolge) wird in den Hauptteil der HTTP-Anforderung eingefügt und an den Dienst gesendet, der das Modell zur Bewertung kapselt.
 
-Nachfolgend finden Sie ein Beispiel dafür, wie Sie ein Eingabedataset konstruieren können, um ein Profil eines Diensts zu erstellen, der erwartet, dass seine eingehenden Anforderungsdaten serialisierten JSON-Code enthalten. In diesem Fall haben wir ein Dataset erstellt, das auf hundert Instanzen desselben Anforderungsdateninhalts basiert. In realen Szenarien wird empfohlen, dass Sie größere Datasets mit verschiedenen Eingaben verwenden, insbesondere wenn die Nutzung bzw. das Verhalten Ihrer Modellressourcen von Eingaben abhängig ist.
+Nachfolgend finden Sie ein Beispiel dafür, wie Sie ein Eingabedataset konstruieren können, um ein Profil eines Diensts zu erstellen, der erwartet, dass seine eingehenden Anforderungsdaten serialisierten JSON-Code enthalten. In diesem Fall haben Sie ein Dataset erstellt, das auf 100 Instanzen desselben Anforderungsdateninhalts basiert. In realen Szenarien wird empfohlen, dass Sie größere Datasets mit verschiedenen Eingaben verwenden, insbesondere wenn die Nutzung bzw. das Verhalten Ihrer Modellressourcen von Eingaben abhängig ist.
 
 ```python
 import json
@@ -537,7 +537,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="deploy-to-target"></a>Bereitstellen auf dem Ziel
 
-Zum Bereitstellen der Modelle wird die Bereitstellungskonfiguration für die Rückschlusskonfiguration verwendet. Der Bereitstellungsprozess ist unabhängig vom Computeziel ähnlich. Eine Bereitstellung in AKS ist geringfügig anders, da Sie eine Referenz zum AKS-Cluster bereitstellen müssen.
+Zum Bereitstellen der Modelle wird die Bereitstellungskonfiguration für die Rückschlusskonfiguration verwendet. Der Bereitstellungsprozess ist unabhängig vom Computeziel ähnlich. Eine Bereitstellung in Azure Kubernetes Service (AKS) ist geringfügig anders, da Sie eine Referenz zum AKS-Cluster bereitstellen müssen.
 
 ### <a name="choose-a-compute-target"></a>Auswählen eines Computeziels
 
@@ -878,7 +878,7 @@ Die Modellimplementierung ohne Code ist derzeit in der Vorschauphase und unterst
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel-Format
 Tensorflow-Modelle müssen im **SavedModel-Format** registriert werden, um mit der Modellbereitstellung ohne Code zu funktionieren.
 
-Informationen zum Erstellen eines „SavedModel“ finden Sie unter [diesem Link](https://www.tensorflow.org/guide/saved_model).
+Informationen zum Erstellen von „SavedModel“ finden Sie unter [diesem Link](https://www.tensorflow.org/guide/saved_model).
 
 ```python
 from azureml.core import Model
@@ -914,6 +914,12 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+Informationen zum Bewerten eines Modells finden Sie unter [Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service). Viele ONNX-Projekte verwenden protobuf-Dateien, um Trainings- und Validierungsdaten kompakt zu speichern. Dadurch kann es schwierig sein, das vom Dienst erwartete Datenformat zu erkennen. Als Modellentwickler sollten Sie Folgendes für Ihre Entwickler dokumentieren:
+
+* Eingabeformat (JSON- oder Binärformat)
+* Eingabedatenform und -typ (z. B. ein Array von Gleitkommazahlen in der Form [100,100,3])
+* Domäneninformationen (z. B. bei einem Bild der Farbraum, die Komponentenreihenfolge und die Angabe, ob die Werte normalisiert sind)
+
 Wenn Sie Pytorch verwenden, enthält der [Export von Modellen aus PyTorch zu ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) die Details zur Konvertierung und zu den Einschränkungen. 
 
 ### <a name="scikit-learn-models"></a>Scikit-learn-Modelle
@@ -939,7 +945,7 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-HINWEIS:  Modelle, die predict_proba unterstützen, werden diese Methode standardmäßig verwenden. Sie können den POST-Text wie unten beschrieben ändern, um dies für die Verwendung von Vorhersagen außer Kraft zu setzen:
+HINWEIS:  Modelle, die predict_proba unterstützen, verwenden diese Methode standardmäßig. Sie können den POST-Text wie unten beschrieben ändern, um dies für die Verwendung von Vorhersagen außer Kraft zu setzen:
 ```python
 import json
 

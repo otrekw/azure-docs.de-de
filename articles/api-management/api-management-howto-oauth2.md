@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: f4f5c5d9a77353f36119b77601b88f9dab01ccc0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7eb77b9ffae49c7d8d3e5612b685e5725829898f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243612"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499782"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management
 
@@ -50,7 +50,7 @@ Diese Anleitung beschreibt, wie Sie eine Instanz des API Management-Diensts zur 
     > [!NOTE]
     > Anhand dieser Felder wird der OAuth 2.0-Autorisierungsserver innerhalb der aktuellen Instanz des API Management-Diensts identifiziert. Die Werte der Felder stammen nicht vom OAuth 2.0-Server.
 
-3. Geben Sie die **Seiten-URL für Clientregistrierung ein**. Auf dieser Seite können Benutzer ihre Konten erstellen und verwalten. Die Seite variiert je nach OAuth 2.0-Anbieter. **Seiten-URL für Clientregistrierung** verweist auf die Seite, die Benutzer zum Erstellen und Konfigurieren eigener Konten für OAuth 2.0-Anbieter nutzen können, die eine Benutzerverwaltung für Konten unterstützen. Einige Organisationen nutzen diese Funktionalität nicht, selbst wenn der OAuth 2.0-Anbieter sie unterstützt. Wenn für Ihren OAuth 2.0-Anbieter keine Benutzerverwaltung für Konten konfiguriert ist, geben Sie hier eine Platzhalter-URL ein, z. B. die URL Ihres Unternehmens oder eine URL wie `https://placeholder.contoso.com`.
+3. Geben Sie die **Seiten-URL für Clientregistrierung ein**. Auf dieser Seite können Benutzer ihre Konten erstellen und verwalten. Die Seite variiert je nach OAuth 2.0-Anbieter. Die **Seiten-URL für Clientregistrierung** verweist auf die Seite, die Benutzer zum Erstellen und Konfigurieren eigener Konten für OAuth 2.0-Anbieter nutzen können, die eine Benutzerverwaltung für Konten unterstützen. Ein Beispiel ist `https://contoso.com/login`. Einige Organisationen nutzen diese Funktionalität nicht, selbst wenn der OAuth 2.0-Anbieter sie unterstützt. Wenn für Ihren OAuth 2.0-Anbieter keine Benutzerverwaltung für Konten konfiguriert ist, geben Sie hier eine Platzhalter-URL ein, z. B. die URL Ihres Unternehmens oder eine URL wie `https://placeholder.contoso.com`.
 
     ![Neuer OAuth 2.0-Server](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -75,6 +75,11 @@ Diese Anleitung beschreibt, wie Sie eine Instanz des API Management-Diensts zur 
     Die Standardeinstellung für **Clientauthentifizierungsmethoden** lautet **Basis**, und die **Sendemethode für Zugriffstoken** ist **Autorisierungsheader**. Diese Werte werden zusammen mit **Standardmäßiger Geltungsbereich**in diesem Abschnitt des Formulars festgelegt.
 
 6. Der Abschnitt **Clientanmeldeinformationen** enthält die Werte für **Client-ID** und **Geheimer Clientschlüssel**, die beim Erstellen und Konfigurieren Ihres OAuth 2.0-Servers abgerufen werden. Nachdem die Werte für **Client-ID** und **Geheimer Clientschlüssel** angegeben wurden, wird der **Umleitungs-URI** für den **Autorisierungscode** generiert. Die URI wird zum Konfigurieren der Antwort-URL in Ihrer OAuth 2.0-Serverkonfiguration verwendet.
+
+    Im neuen Entwicklerportal hat das URI-Suffix das folgende Format:
+
+    - `/signin-oauth/code/callback/{authServerName}` für den Flow zur Autorisierungscodegenehmigung
+    - `/signin-oauth/implicit/callback` für den Flow zur impliziten Genehmigung
 
     ![Neuer OAuth 2.0-Server](./media/api-management-howto-oauth2/oauth-04.png)
 

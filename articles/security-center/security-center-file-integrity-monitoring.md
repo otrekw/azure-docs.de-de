@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628288"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519336"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -46,7 +46,7 @@ Die Überwachung der Dateiintegrität von Security Center überprüft die Integr
 In Security Center erhalten Sie Empfehlungen dafür, welche Entitäten überwacht werden sollen. Für diese können Sie die Überwachung der Dateiintegrität einfach aktivieren. Sie können ebenfalls eigene Richtlinien oder Entitäten zur Überwachung durch die Überwachung der Dateiintegrität definieren. Dies wird in der exemplarischen Vorgehensweise erläutert.
 
 > [!NOTE]
-> Das Feature „Überwachung der Dateiintegrität“ funktioniert auf physischen und virtuellen Windows- und Linux-Computern und ist im Standard-Tarif von Security Center enthalten. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md). Die Überwachung der Dateiintegrität lädt Daten in den Log Analytics-Arbeitsbereich hoch. Die Gebühren für diese Daten hängen von der hochgeladenen Datenmenge ab. Weitere Informationen erhalten Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
+> Das Feature „Überwachung der Dateiintegrität“ (File Integrity Monitoring, FIM) funktioniert auf physischen und virtuellen Windows- und Linux-Computern und ist im Standard-Tarif von Security Center enthalten. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md). Die Überwachung der Dateiintegrität lädt Daten in den Log Analytics-Arbeitsbereich hoch. Die Gebühren für diese Daten hängen von der hochgeladenen Datenmenge ab. Weitere Informationen erhalten Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 Die Überwachung der Dateiintegrität verwendet die Azure-Lösung „Änderungsnachverfolgung“, um Änderungen in Ihrer Umgebung nachzuverfolgen und zu identifizieren. Wenn die Überwachung der Dateiintegrität aktiviert ist, besitzen Sie die Ressource **Änderungsnachverfolgung** vom Typ **Lösung**. Informationen zur Häufigkeit der Datensammlung für die Azure-Änderungsnachverfolgung finden Sie unter [Details zur Datensammlung für die Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
 
@@ -108,7 +108,7 @@ Folgende Informationen werden für jeden Arbeitsbereich angegeben:
 Außerdem können folgende Schaltflächen für einen Arbeitsbereich angezeigt werden:
 
 - ![Symbol „Aktivieren“][3] Gibt an, dass die Überwachung der Dateiintegrität nicht für den Arbeitsbereich aktiviert ist. Durch das Auswählen des Arbeitsbereichs können Sie die Überwachung der Dateiintegrität auf allen Computern im Arbeitsbereich aktivieren.
-- ![Symbol „Upgradeplan“][4] Gibt an, dass der Arbeitsbereich oder das Abonnement nicht im Standard-Tarif von Security Center ausgeführt wird. Ihr Abonnement muss sich im Standard-Tarif befinden, um das Feature „Überwachung der Dateiintegrität“ zu verwenden.  Wenn Sie den Arbeitsbereich auswählen, können Sie ein Upgrade auf den Standard-Tarif durchführen. Weitere Informationen zum Standard-Tarif und zum Upgradevorgang finden Sie unter [Upgrade to Security Center's Standard tier for enhanced security (Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit)](security-center-pricing.md).
+- ![Symbol „Upgradeplan“][4] Gibt an, dass der Arbeitsbereich oder das Abonnement nicht im Standard-Tarif von Security Center ausgeführt wird. Ihr Abonnement muss sich im Standard-Tarif befinden, um das Feature „Überwachung der Dateiintegrität“ zu verwenden.  Wenn Sie den Arbeitsbereich auswählen, können Sie ein Upgrade auf den Standard-Tarif durchführen. Weitere Informationen zum Standard-Tarif und zum Upgradevorgang finden Sie unter [Upgrade auf den Standard-Tarif für erhöhte Sicherheit](security-center-pricing.md).
 - Wenn keine Schaltfläche vorhanden ist, bedeutet das, dass die Überwachung der Dateiintegrität für den Arbeitsbereich bereits aktiviert ist.
 
 Unter **Überwachung der Dateiintegrität** können Sie einen Arbeitsbereich auswählen, für den diese aktiviert werden soll, das Dashboard „Überwachung der Dateiintegrität“ für diesen Arbeitsbereich anzeigen oder den Arbeitsbereich auf den Standard-Tarif [upgraden](security-center-pricing.md).

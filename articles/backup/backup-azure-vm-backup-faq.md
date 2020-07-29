@@ -4,16 +4,16 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82800650"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538767"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Sicherung von Azure-VMs mit dem Dienst [Azure Backup](backup-introduction-to-azure-backup.md).
+Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Sicherung von Azure-VMs mit dem Dienst [Azure Backup](./backup-overview.md).
 
 ## <a name="backup"></a>Backup
 
@@ -83,7 +83,7 @@ Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigu
 
 Azure Backup kann den Datenträger mit aktivierter Schreibbeschleunigung nicht sichern, kann ihn aber von der Sicherung ausschließen. Die Sicherung bietet jedoch keine Datenbankkonsistenz, da die Informationen auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht gesichert werden. Sie können Datenträger mit dieser Konfiguration sichern, wenn Sie eine Sicherung des Betriebssystemdatenträgers möchten, sowie Sicherungen von Datenträgern ohne aktivierte Schreibbeschleunigung durchführen.
 
-Azure Backup bietet eine Streamingsicherungslösung für SAP HANA-Datenbanken mit einer RPO von 15 Minuten. Der Dienst ist Backint-zertifiziert durch SAP und bietet native Sicherungsunterstützung durch Verwendung der nativen APIs von SAP HANA. Erfahren Sie mehr über [das Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/sap-hana-db-about).
+Azure Backup bietet eine Streamingsicherungslösung für SAP HANA-Datenbanken mit einer RPO von 15 Minuten. Der Dienst ist Backint-zertifiziert durch SAP und bietet native Sicherungsunterstützung durch Verwendung der nativen APIs von SAP HANA. Erfahren Sie mehr über [das Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern](./sap-hana-db-about.md).
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mit welcher maximalen Verzögerung muss ich bei der Startzeit der Sicherungskopie im Vergleich zu der geplanten Sicherungszeit rechnen, die ich in meiner VM-Sicherungsrichtlinie eingerichtet habe?
 
@@ -129,7 +129,11 @@ Der Wiederherstellungsvorgangs bleibt gleich. Wenn der Wiederherstellungspunkt e
 
 [Hier](backup-azure-vms-automation.md#restore-an-azure-vm) finden Sie weitere Informationen dazu, wie Sie diese Schritte in PowerShell ausführen.
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Kann ich die VM wiederherstellen, die gelöscht wurde?
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>Was geschieht mit den in der Wiederherstellung enthaltenen Datenträgern, wenn die VM bei der Wiederherstellung nicht erstellt wird?
+
+Bei der Wiederherstellung einer verwalteten VM werden die Datenträger auch dann wiederhergestellt, wenn bei der VM-Erstellung ein Fehler auftritt.
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Kann ich eine gelöschte VM wiederherstellen?
 
 Ja. Selbst wenn Sie die VM gelöscht haben, können Sie diese über das entsprechende Sicherungselement im Tresor mithilfe eines Wiederherstellungspunkts wiederherstellen.
 
@@ -143,13 +147,13 @@ Die Funktion zur [sofortigen Wiederherstellung](backup-instant-restore-capabilit
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Was geschieht, wenn wir die Key Vault-Einstellungen für die verschlüsselte VM ändern?
 
-Nachdem Sie die Schlüsseltresoreinstellungen für die verschlüsselte VM geändert haben, funktionieren Sicherungen weiterhin mit dem neuen Satz von Informationen. Nach der Wiederherstellung von einem Wiederherstellungspunkt vor der Änderung müssen Sie jedoch die Geheimnisse in einem Schlüsseltresor wiederherstellen, bevor Sie die VM daraus erstellen können. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret).
+Nachdem Sie die Schlüsseltresoreinstellungen für die verschlüsselte VM geändert haben, funktionieren Sicherungen weiterhin mit dem neuen Satz von Informationen. Nach der Wiederherstellung von einem Wiederherstellungspunkt vor der Änderung müssen Sie jedoch die Geheimnisse in einem Schlüsseltresor wiederherstellen, bevor Sie die VM daraus erstellen können. Weitere Informationen finden Sie in [diesem Artikel](./backup-azure-restore-key-secret.md).
 
 Für Vorgänge wie Geheimnis-/Schlüsselrollover ist dieser Schritt nicht erforderlich, und nach der Wiederherstellung kann derselbe Schlüsseltresor verwendet werden.
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>Kann ich auf den virtuellen Computer nach dessen Wiederherstellung zugreifen, die erforderlich war, weil ein virtueller Computer die Beziehung zum Domänencontroller unterbrochen hat?
 
-Ja, dieser Zugriff ist möglich. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps).
+Ja, dieser Zugriff ist möglich. Weitere Informationen finden Sie in [diesem Artikel](./backup-azure-arm-restore-vms.md#post-restore-steps).
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678765"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526757"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Das Herunterfahren einer Azure-Windows-VM bleibt bei „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ hängen.
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die Schritte zum Beheben von Problemen bei den Meldunge
 
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot der VM anzuzeigen, wird auf dem Screenshot möglicherweise die Meldung „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ anzeigt.
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot der VM anzuzeigen, wird auf dem Screenshot möglicherweise die Meldung „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ anzeigt.
 
 ![Bildschirme „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -41,7 +41,7 @@ Windows verwendet den Herunterfahren-Prozess, um Systemwartungsvorgänge auszuf�
 
 2. Trennen Sie den Datenträger, der die Dateien enthält, die vom funktionierenden virtuellen Computer benötigt werden, und fügen Sie den Datenträger an die getrennte VM an. Dieser Datenträger wird **Hilfsprogrammdatenträger**  genannt.
 
-Verwenden Sie die [serielle Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows), um die folgenden Schritte auszuführen:
+Verwenden Sie die [serielle Konsole](./serial-console-windows.md), um die folgenden Schritte auszuführen:
 
 1. Öffnen Sie eine administrative PowerShell-Eingabeaufforderung, und ermitteln Sie den Dienst, der beim Beenden nicht mehr reagiert.
 
@@ -81,13 +81,13 @@ Wenn Sie auf die Verarbeitung der Änderungen gewartet haben und das Problem tro
 
 **Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung**
 
-1. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
-2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 
 3. Remotedesktopverbindung mit der Wiederherstellungs-VM.
 
-4. Ist der Betriebssystemdatenträger verschlüsselt, müssen Sie die Verschlüsselung deaktivieren, bevor Sie mit dem nächsten Schritt fortfahren. Weitere Informationen zum Entschlüsseln des verschlüsselten Betriebssystemdatenträgers des virtuellen Computers, der nicht gestartet werden kann, finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
+4. Ist der Betriebssystemdatenträger verschlüsselt, müssen Sie die Verschlüsselung deaktivieren, bevor Sie mit dem nächsten Schritt fortfahren. Weitere Informationen zum Entschlüsseln des verschlüsselten Betriebssystemdatenträgers des virtuellen Computers, der nicht gestartet werden kann, finden Sie [hier](./troubleshoot-bitlocker-boot-error.md#solution).
 
 **Suche nach der Sicherungsdatei und Senden eines Supporttickets**
 
@@ -142,7 +142,7 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+5. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](./troubleshoot-recovery-disks-portal-windows.md).
 
 6. Starten Sie den virtuellen Computer, und greifen Sie auf die serielle Konsole zu.
 

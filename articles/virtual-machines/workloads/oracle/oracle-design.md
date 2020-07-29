@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224569"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507929"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -43,17 +43,17 @@ Ein wichtiger Unterschied besteht darin, dass in einer Azure-Implementierung Res
 
 Die folgende Tabelle enthält einige der Unterschiede zwischen einer lokalen Implementierung und einer Azure-Implementierung von Oracle-Datenbanken.
 
-> 
-> |  | **Lokale Implementierung** | **Azure-Implementierung** |
-> | --- | --- | --- |
-> | **Netzwerk** |LAN/WAN  |SDN (Software-Defined Networking)|
-> | **Sicherheitsgruppe** |Tools für IP/Port-Einschränkungen |[Netzwerksicherheitsgruppe (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Resilienz** |MTBF (Mean Time Between Failure, mittlere Betriebsdauer zwischen Ausfällen) |MTTR (Mean Time To Recover, mittlere Reparaturzeit)|
-> | **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Patchen/Upgrades werden von Azure verwaltet) |
-> | **Ressource** |Dediziert  |Für andere Clients freigegeben|
-> | **Regionen** |Rechenzentren |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Skalieren** |Vertikale Skalierung |Horizontale Skalierung|
+
+|  | Lokale Implementierung | Azure-Implementierung |
+| --- | --- | --- |
+| **Netzwerk** |LAN/WAN  |SDN (Software-Defined Networking)|
+| **Sicherheitsgruppe** |Tools für IP/Port-Einschränkungen |[Netzwerksicherheitsgruppe (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+| **Resilienz** |MTBF (Mean Time Between Failure, mittlere Betriebsdauer zwischen Ausfällen) |MTTR (Mean Time To Recover, mittlere Reparaturzeit)|
+| **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](../../windows/infrastructure-example.md) (Patchen/Upgrades werden von Azure verwaltet) |
+| **Ressource** |Dediziert  |Für andere Clients freigegeben|
+| **Regionen** |Rechenzentren |[Regionspaare](../../regions.md#region-pairs)|
+| **Storage** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **Skalieren** |Vertikale Skalierung |Horizontale Skalierung|
 
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
@@ -116,11 +116,11 @@ Die folgenden Diagramme zeigen das gesamte E/A-Volumen der Lese- und Schreibvorg
 
 #### <a name="2-choose-a-vm"></a>2. Auswählen einer VM
 
-Basierend auf den Informationen aus dem AWR-Bericht wählen Sie im nächsten Schritt eine VM mit ähnlicher Größe aus, die Ihren Anforderungen entspricht. Eine Liste der verfügbaren VMs finden Sie im Artikel [Memory optimized](../../linux/sizes-memory.md) (Optimierter Speicher).
+Basierend auf den Informationen aus dem AWR-Bericht wählen Sie im nächsten Schritt eine VM mit ähnlicher Größe aus, die Ihren Anforderungen entspricht. Eine Liste der verfügbaren VMs finden Sie im Artikel [Memory optimized](../../sizes-memory.md) (Optimierter Speicher).
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Optimieren der VM-Größe mit ähnlicher, auf der ACU basierender VM-Serie
 
-Sobald Sie die VM ausgewählt haben, sollten Sie auf die Azure Compute-Einheit (Azure Compute Unit, ACU) für die VM achten. Sie können sich anhand des ACU-Werts auch für eine andere VM entscheiden, die Ihre Anforderungen möglicherweise besser erfüllt. Weitere Informationen finden Sie unter [Azure-Compute-Einheit (ACU)](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
+Sobald Sie die VM ausgewählt haben, sollten Sie auf die Azure Compute-Einheit (Azure Compute Unit, ACU) für die VM achten. Sie können sich anhand des ACU-Werts auch für eine andere VM entscheiden, die Ihre Anforderungen möglicherweise besser erfüllt. Weitere Informationen finden Sie unter [Azure-Compute-Einheit (ACU)](../../acu.md).
 
 ![Screenshot der Seite der ACUs](./media/oracle-design/acu_units.png)
 
@@ -143,8 +143,8 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 
 - Die Netzwerklatenz ist höher als bei einer lokalen Bereitstellung. Eine Verringerung der Netzwerkroundtrips kann die Leistung deutlich verbessern.
 - Zur Reduzierung von Roundtrips sollten Anwendungen, die ein hohes Transaktionsaufkommen aufweisen oder kommunikationsintensiv sind, auf demselben virtuellen Computer konsolidiert werden.
-- Verwenden Sie Virtual Machines mit [beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), um eine bessere Netzwerkleistung zu erzielen.
-- Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
+- Verwenden Sie Virtual Machines mit [beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-cli.md), um eine bessere Netzwerkleistung zu erzielen.
+- Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](../../linux/configure-lvm.md#trimunmap-support).
 - Installieren Sie [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) auf einem separaten virtuellen Computer.
 - Große Seiten sind unter Linux nicht standardmäßig aktiviert. Erwägen Sie das Aktivieren großer Seiten, und legen Sie `use_large_pages = ONLY` für die Oracle Database fest. Dies kann helfen, die Leistung zu steigern. Weitere Informationen finden Sie [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
@@ -187,7 +187,7 @@ Sobald Sie eine genaue Vorstellung von den E/A-Anforderungen haben, können Sie 
 - Reduzieren Sie die E/A mit Datenkomprimierung (für Daten und Indizes).
 - Trennen Sie Redo-Protokolle, SYSTEM- und TEMP- sowie UNDO-Tabellenbereiche durch separate Datenträger.
 - Speichern Sie keine Anwendungsdateien auf dem standardmäßigen Betriebssystemdatenträger (/dev/sda). Diese Datenträger sind für schnelle VM-Startzeiten optimiert und erbringen für Ihre Anwendung möglicherweise keine gute Leistung.
-- Wenn Sie VMs der M-Serie in Storage Premium verwenden, aktivieren Sie [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) für Datenträger mit Wiederholungsprotokollen.
+- Wenn Sie VMs der M-Serie in Storage Premium verwenden, aktivieren Sie [Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md) für Datenträger mit Wiederholungsprotokollen.
 
 ### <a name="disk-cache-settings"></a>Cacheeinstellungen von Datenträgern
 

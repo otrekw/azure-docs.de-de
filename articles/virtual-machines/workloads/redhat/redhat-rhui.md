@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250348"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525414"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat-Updateinfrastruktur für virtuelle On-Demand-Red Hat Enterprise Linux-VMs in Azure
  Mit der [Red Hat-Updateinfrastruktur](https://access.redhat.com/products/red-hat-update-infrastructure) können Cloudanbieter (z. B. Azure) in Red Hat gehostete Repositoryinhalte spiegeln, benutzerdefinierte Repositorys mit Azure-spezifischem Inhalt erstellen und diese für Endbenutzer-VMs zur Verfügung stellen.
@@ -86,7 +86,7 @@ Für Kunden, die ihre RHEL-VMs nach der Bereitstellung der VM auf eine bestimmte
 Zum Zeitpunkt der Erstellung dieses Artikels war die EUS-Unterstützung für RHEL <= 7.4 bereits eingestellt. Ausführlichere Informationen finden Sie in der [Red Hat-Dokumentation](https://access.redhat.com/support/policy/updates/errata/#Long_Support) im Abschnitt „Red Hat Enterprise Linux Extended Maintenance“.
 * EUS-Unterstützung für RHEL 7.4 endet am 31. August 2019.
 * EUS-Unterstützung für RHEL 7.5 endet am 30. April 2020.
-* EUS-Unterstützung für RHEL 7.6 endet am 31. Oktober 2020.
+* EUS-Unterstützung für RHEL 7.6 endet am 31. Mai 2021.
 * EUS-Unterstützung für RHEL 7.7 endet am 30. August 2021.
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Wechseln einer RHEL-VM zu EUS (Versionssperrung auf eine bestimmte Nebenversion)
@@ -168,7 +168,7 @@ Wenn Sie den Zugriff von virtuellen RHEL-PAYG-Computern per Netzwerkkonfiguratio
 >Für die neuen Azure US Government-Images wird ab Januar 2020 die öffentliche IP-Adresse verwendet, die oben unter „Azure Global“ aufgeführt sind.
 
 >[!NOTE]
->Beachten Sie auch, dass Azure Deutschland zu Gunsten öffentlicher Deutschland-Regionen veraltet ist. Die Empfehlung für Azure Deutschland-Kunden besteht darin, die [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers) aufgeführten Schritte auszuführen, um auf die öffentliche RHUI zu verweisen.
+>Beachten Sie auch, dass Azure Deutschland zu Gunsten öffentlicher Deutschland-Regionen veraltet ist. Die Empfehlung für Azure Deutschland-Kunden besteht darin, die [hier](#manual-update-procedure-to-use-the-azure-rhui-servers) aufgeführten Schritte auszuführen, um auf die öffentliche RHUI zu verweisen.
 
 ## <a name="azure-rhui-infrastructure"></a>Azure-RHUI-Infrastruktur
 

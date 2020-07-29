@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537510"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
@@ -46,7 +46,7 @@ Alternativ enthält die Ereignisnachricht auch die ID des Quellzwillings, der di
 
 Darüber hinaus muss die Computeressource Sicherheits -und Zugriffsberechtigungen unabhängig einrichten.
 
-Eine Anleitung für das Einrichten einer Azure-Funktion zum Verarbeiten von Ereignissen für digitale Zwillinge finden Sie unter [ Einrichten einer Azure-Funktion zum Verarbeiten von Daten](how-to-create-azure-function.md).
+Eine Anleitung für das Einrichten einer Azure-Funktion zum Verarbeiten von Ereignissen für digitale Zwillinge finden Sie unter [*Verbinden von Azure Functions-Apps für die Verarbeitung von Daten*](how-to-create-azure-function.md).
 
 ## <a name="create-an-endpoint"></a>Erstellen eines Endpunkts
 
@@ -90,7 +90,7 @@ Verschiedene Arten von Ereignissen in IoT Hub und Azure Digital Twins führen zu
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Einrichten und Verwalten einer Ereignisroute finden Sie unter:
-* [Gewusst wie: Verwalten von Endpunkten und Routen](how-to-manage-routes.md)
+* [*Verwalten von Endpunkten und Routen in Azure Digital Twins*](how-to-manage-routes.md)
 
 Weitere Informationen zur Verwendung von Azure Functions zum Weiterleiten von Ereignissen innerhalb von Azure Digital Twins finden Sie unter:
-* [Gewusst wie: Herstellen einer Verbindung mit Azure Functions-Apps zum Verarbeiten von Daten](how-to-create-azure-function.md)
+* [*Verbinden von Azure Functions-Apps für die Verarbeitung von Daten*](how-to-create-azure-function.md)

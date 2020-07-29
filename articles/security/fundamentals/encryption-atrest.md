@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd54c8f7e8a3784672f5364efc6f6b51186f911d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454678"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529283"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -258,9 +258,8 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 
 #### <a name="encryption-model-and-key-management-table"></a>Tabelle für Verschlüsselungsmodell und Schlüsselverwaltung
 
-|                                  |                    | **Verschlüsselungsmodell und Schlüsselverwaltung** |                    |
+| Produkt, Feature oder Dienst | Serverseitig mit vom Dienst verwaltetem Schlüssel   | Serverseitig mit kundenseitig verwaltetem Schlüssel | Clientseitig mit vom Client verwaltetem Schlüssel  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit vom Client verwaltetem Schlüssel**      |
 | **KI und Machine Learning**      |                    |                    |                    |
 | Azure Cognitive Search           | Ja                | Ja                | -                  |
 | Azure Cognitive Services         | Ja                | Ja                | -                  |

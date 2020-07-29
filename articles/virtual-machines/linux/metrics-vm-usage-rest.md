@@ -8,22 +8,22 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa108d7f903ed791c534b2b88550eb8d022ef64
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944750"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502077"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Abrufen von VM-Nutzungsmetriken mithilfe der REST-API
 
-In diesem Beispiel wird gezeigt, wie Sie die CPU-Nutzung für einen [virtuellen Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) mithilfe der [Azure-REST-API](/rest/api/azure/) abrufen.
+In diesem Beispiel wird gezeigt, wie Sie die CPU-Nutzung für einen virtuellen Linux-Computer mithilfe der [Azure-REST-API](/rest/api/azure/) abrufen.
 
 Eine vollständige Dokumentation und weitere Beispiele für die REST-API sind in der [Azure Monitor-REST-Referenz](/rest/api/monitor) verfügbar. 
 
 ## <a name="build-the-request"></a>Erstellen der Anforderung
 
-Verwenden Sie die folgende GET-Anforderung zum Sammeln der [prozentualen CPU-Metrik](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) von einem virtuellen Computer.
+Verwenden Sie die folgende GET-Anforderung zum Sammeln der [prozentualen CPU-Metrik](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) von einem virtuellen Computer.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -42,10 +42,10 @@ Die folgenden Header sind erforderlich:
 
 | Name | BESCHREIBUNG |
 | :--- | :---------- |
-| subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
+| subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
 | resourceGroupName | Name der Azure-Ressourcengruppe, die der Ressource zugeordnet ist. Dieser Wert kann über die Azure Resource Manager-API, die Befehlszeilenschnittstelle oder das Portal abgerufen werden. |
 | vmname | Name des virtuellen Azure-Computers. |
-| metricnames | Durch Trennzeichen getrennte Liste der gültigen [Load Balancer-Metriken](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| metricnames | Durch Trennzeichen getrennte Liste der gültigen [Load Balancer-Metriken](../../load-balancer/load-balancer-standard-diagnostics.md). |
 | api-version | API-Version, die für die Anforderung verwendet werden soll.<br /><br /> In diesem Dokument wird API-Version `2018-01-01` behandelt, die in der obigen URL enthalten ist.  |
 | Zeitraum | Zeichenfolge im Format `startDateTime_ISO/endDateTime_ISO`, die den Zeitraum der zurückgegebenen Metriken definiert. Dieser optionale Parameter ist im Beispiel zum Zurückgeben eines gesamten Tages an Daten festgelegt. |
 | &nbsp; | &nbsp; |

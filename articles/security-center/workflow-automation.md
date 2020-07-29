@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eac72832d75c0c26addaef283015155c09b3935
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529368"
 ---
 # <a name="workflow-automation"></a>Workflowautomatisierung
 
@@ -34,16 +34,13 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
     - **Rolle „Sicherheitsadministrator“** für die Ressourcengruppe (oder **Besitzer**)
     - Außerdem sind Schreibberechtigungen für die Zielressource erforderlich
     - Damit Sie Azure Logic Apps-Workflows anwenden können, benötigen Sie die folgenden Logic Apps-Rollen/-Berechtigungen:
-
-        * Die Berechtigungen der Rolle [Logik-App-Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) oder der Lese-/Triggerzugriff von Logic Apps sind erforderlich. (Diese Rolle kann keine Logik-Apps erstellen oder bearbeiten, sondern nur vorhandene *ausführen*.)
-
-        * Die Berechtigungen der Rolle [Logik-App-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) sind für die Erstellung und Änderung von Logik-Apps erforderlich.
-
-        * Wenn Sie Logik-App-Connectors verwenden möchten, benötigen Sie möglicherweise zusätzliche Anmeldeinformationen für die Anmeldung bei den jeweiligen Diensten (z. B. Ihren Instanzen von Outlook, Teams oder Slack).
+        - Die Berechtigungen der Rolle [Logik-App-Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) oder der Lese-/Triggerzugriff von Logic Apps sind erforderlich. (Diese Rolle kann keine Logik-Apps erstellen oder bearbeiten, sondern nur vorhandene *ausführen*.)
+        - Die Berechtigungen der Rolle [Logik-App-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) sind für die Erstellung und Änderung von Logik-Apps erforderlich.
+        - Wenn Sie Logik-App-Connectors verwenden möchten, benötigen Sie möglicherweise zusätzliche Anmeldeinformationen für die Anmeldung bei den jeweiligen Diensten (z. B. Ihren Instanzen von Outlook, Teams oder Slack).
 - Clouds: 
     - ✔ Kommerzielle Clouds
-    - ✔ US Gov
-    - ✘ China Gov, andere Gov
+    - ✘ US Government-Cloud
+    - ✘ China Government-Cloud, andere Government-Clouds
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Erstellen einer Logik-App und Definieren des Zeitpunkts ihrer automatischen Ausführung 

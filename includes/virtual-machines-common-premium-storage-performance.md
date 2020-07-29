@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218341"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526032"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -138,7 +138,7 @@ Weitere Informationen zu VM-Größen und zu den verfügbaren IOPS, Durchsätzen 
 Eine E/A-Anforderung ist eine E/A-Vorgangseinheit, die Ihre Anwendung ausführt. Das Bestimmen der Art der E/A-Anforderungen – zufällig oder sequenziell, Lese- oder Schreibvorgang, klein oder groß – hilft beim Ermitteln der Leistungsanforderungen Ihrer Anwendung. Sie müssen sich mit der Art der E/A-Anforderungen vertraut machen, um beim Entwurf der Anwendungsinfrastruktur die richtigen Entscheidungen zu treffen. E/A-Vorgänge müssen gleichmäßig verteilt sein, um die bestmögliche Leistung zu erzielen.
 
 Die E/A-Größe ist einer der wichtigsten Faktoren. Die E/A-Größe ist die Größe des angeforderten E/A-Vorgangs, den Ihre Anwendung generiert hat. Die E/A-Größe hat einen erheblichen Einfluss auf die Leistung, insbesondere auf die IOPS und Bandbreite, die die Anwendung erzielen kann. Die folgende Formel zeigt die Beziehung zwischen IOPS, E/A-Größe und Bandbreite/Durchsatz.  
-    ![](media/premium-storage-performance/image1.png)
+    ![Eine Abbildung der Gleichung IOPS × E/A-Größe = Durchsatz](media/premium-storage-performance/image1.png)
 
 Einige Anwendungen ermöglichen Ihnen das Ändern der E/A-Größe, andere hingegen nicht. Beispielsweise bestimmt SQL Server selbst die optimale E/A-Größe und bietet Benutzern keine Möglichkeiten, sie zu ändern. Oracle bietet dagegen den Parameter [DB\_BLOCK\_SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815), mit dem Sie die E/A-Anforderungsgröße der Datenbank konfigurieren können.
 
@@ -177,7 +177,7 @@ Hochleistungs-VMs stehen in mehreren Größen mit jeweils einer anderen Anzahl v
 | Größe des virtuellen Computers | CPU-Kerne | Arbeitsspeicher | VM-Datenträgergrößen | Maximal Anzahl Datenträger | Cachegröße | IOPS | Limits für Bandbreite, Cache und E/A |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |Betriebssystem = 1023 GB <br> Lokales SSD = 224 GB |32 |576 GB |50.000 IOPS <br> 512 MB pro Sekunde |4\.000 IOPS und 33 MB pro Sekunde |
-| Standard_GS5 |32 |448 GB |Betriebssystem = 1023 GB <br> Lokales SSD = 896 GB |64 |4\.224 GB |80.000 IOPS <br> 2.000 MB pro Sekunde |5\.000 IOPS und 50 MB pro Sekunde |
+| Standard_GS5 |32 |448 GB |Betriebssystem = 1023 GB <br> Lokales SSD = 896 GB |64 |4\.224 GB |80.000 IOPS <br> 2\.000 MB pro Sekunde |5\.000 IOPS und 50 MB pro Sekunde |
 
 Eine vollständige Übersicht mit allen verfügbaren Azure-VM-Größen finden Sie unter [Windows VM-Größen](../articles/virtual-machines/windows/sizes.md) oder [Linux VM-Größen](../articles/virtual-machines/linux/sizes.md). Wählen Sie eine VM-Größe, die Ihre Anforderungen an die Anwendungsleistung erfüllen und entsprechend skaliert werden kann. Berücksichtigen Sie darüber hinaus folgende wichtige Aspekte bei der Wahl der VM-Größe.
 
@@ -371,13 +371,13 @@ Beispiel: Wenn in SQL Server der MAXDOP-Wert für eine Abfrage auf 4 festgelegt 
 
 *Optimale Warteschlangenlänge*  
 Eine sehr hohe Warteschlangenlänge hat jedoch auch Nachteile. Wenn der Wert zu hoch ist, versucht die Anwendung, eine sehr hohe IOPS-Rate zu erzielen. Außer wenn die Anwendung über beständige Datenträger mit ausreichend bereitgestellten IOPS verfügt, kann sich dies negativ auf die Anwendungslatenz auswirken. Die folgende Formel zeigt die Beziehung zwischen IOPS, Latenz und Warteschlangenlänge.  
-    ![](media/premium-storage-performance/image6.png)
+    ![Eine Abbildung der Gleichung IOPS × Wartezeit = Warteschlangenlänge](media/premium-storage-performance/image6.png)
 
 Die Warteschlangenlänge darf nicht auf einen beliebig hohen Wert festgelegt werden. Wichtig ist ein optimaler Wert, der der Anwendung genügend IOPS bieten kann, ohne für mehr Latenz zu sorgen. Wenn z. B. die Anwendungslatenz 1 Millisekunde sein muss, ist die erforderliche Warteschlangenlänge zum Erzielen von 5.000 IOPS wie folgt: WL = 5000 x 0,001 = 5.
 
 *Warteschlangenlänge für Stripesetvolume*  
 Für ein Stripesetvolume muss die Warteschlangenlänge so hoch sein, dass jeder Datenträger über eine individuelle Spitzenwarteschlangenlänge verfügt. Nehmen wir als Beispiel eine Anwendung mit dem Wert 2 für die Warteschlangenlänge und mit vier Datenträgern im Stripeset. Die beiden E/A-Anforderungen werden an zwei Datenträger gerichtet, während die restlichen inaktiv bleiben. Konfigurieren Sie deshalb die Warteschlangenlänge so, dass alle Datenträger ausgelastet werden. Folgende Formel veranschaulicht, wie Sie die Warteschlangenlänge von Stripesetvolumes bestimmen.  
-    ![](media/premium-storage-performance/image7.png)
+    ![Eine Abbildung der Gleichung Warteschlangenlänge pro Datenträger × Anzahl der Spalten pro Volume = Warteschlangenlänge des Stripesetvolume](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Drosselung
 

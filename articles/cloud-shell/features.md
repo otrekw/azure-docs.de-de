@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506564"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538172"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
 
@@ -49,19 +49,19 @@ Das Azure-Laufwerk ermöglicht die einfache Ermittlung und Navigation von Azure-
 Sie können weiterhin unabhängig vom Laufwerk, in dem Sie sich befinden, die vertrauten [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure) zur Verwaltung dieser Ressourcen verwenden.
 Alle an den Azure-Ressourcen vorgenommenen Änderungen, die entweder direkt im Azure-Portal oder über Azure PowerShell-Cmdlets durchgeführt wurden, werden auf dem Azure-Laufwerk reflektiert.  Sie können `dir -Force` ausführen, um Ihre Ressourcen zu aktualisieren.
 
-![](media/features-powershell/azure-drive.png)
+![Screenshot: Azure Cloud Shell-Instanz, die initialisiert wird, und eine Liste der Verzeichnisressourcen](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>Verwalten von Exchange Online
 
 PowerShell in Cloud Shell enthält einen privaten Build des Exchange Online-Moduls.  Führen Sie `Connect-EXOPSSession` aus, um Ihre Exchange-Cmdlets abzurufen.
 
-![](media/features-powershell/exchangeonline.png)
+![Screenshot: Azure Cloud Shell-Instanz, die die Befehle „Connect-EXOPSSession“ und „Get-User“ ausführt](media/features-powershell/exchangeonline.png)
 
  Ausführen von `Get-Command -Module tmp_*`
 > [!NOTE]
 > Der Modelname sollte mit `tmp_` beginnen, wenn Sie Module mit demselben Präfix installiert haben, werden auch deren Cmdlets ausgegeben. 
 
-![](media/features-powershell/exchangeonlinecmdlets.png)
+![Screenshot: Azure Cloud Shell-Instanz, die den Befehl „Get-Command -Module tmp_*“ ausführt](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Enge Integration in Open Source-Tools
 

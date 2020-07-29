@@ -3,12 +3,12 @@ title: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 description: In diesem Artikel wird beschrieben, wie die alten und neuen Diagnoseereignisse für Azure Backup verwendet werden.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: be99b73a4dac12c9e70e4cb8a85f34b97f5c42d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7dbc6d97cd923c75a25eadccef2c2292b10deb41
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514140"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 
@@ -29,15 +29,15 @@ Azure Backup stellt die folgenden Diagnoseereignisse bereit. Jedes Ereignis biet
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-Wenn Sie das [Legacy-Ereignis](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) AzureBackupReport verwenden, sollten Sie so bald wie möglich zu den oben aufgeführten Ereignissen wechseln.
+Wenn Sie das [Legacy-Ereignis](#legacy-event) AzureBackupReport verwenden, sollten Sie so bald wie möglich zu den oben aufgeführten Ereignissen wechseln.
 
-Weitere Informationen finden Sie unter [Datenmodell für Azure Backup-Diagnoseereignisse](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model).
+Weitere Informationen finden Sie unter [Datenmodell für Azure Backup-Diagnoseereignisse](./backup-azure-reports-data-model.md).
 
 Daten für diese Ereignisse können an ein Speicherkonto, einen Log Analytics-Arbeitsbereich oder Event Hub gesendet werden. Wenn Sie diese Daten an einen Log Analytics-Arbeitsbereich senden, wählen Sie auf dem Bildschirm **Diagnoseeinstellungen** den Schalter **Ressourcenspezifisch** aus. Weitere Informationen finden Sie in den folgenden Abschnitten.
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>Verwenden von Diagnoseeinstellungen mit Log Analytics
 
-Azure Backup ermöglicht nun für die Sicherung das Übertragen von Tresordiagnosedaten in dedizierte Log Analytics-Tabellen. Diese Tabellen werden als [ressourcenspezifische Tabellen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific) bezeichnet.
+Azure Backup ermöglicht nun für die Sicherung das Übertragen von Tresordiagnosedaten in dedizierte Log Analytics-Tabellen. Diese Tabellen werden als [ressourcenspezifische Tabellen](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) bezeichnet.
 
 So senden Sie Tresordiagnosedaten an Log Analytics
 
@@ -52,23 +52,23 @@ So senden Sie Tresordiagnosedaten an Log Analytics
 Sobald Daten im Log Analytics-Arbeitsbereich eingehen, werden im Arbeitsbereich für jedes dieser Ereignisse dedizierte Tabellen erstellt. Sie können jede dieser Tabellen direkt abfragen. Sie können bei Bedarf für diese Tabellen Joins oder Vereinigungen durchführen.
 
 > [!IMPORTANT]
-> Die sechs Ereignisse (CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy und AddonAzureBackupStorage) werden *nur* im ressourcenspezifischen Modus in [Sicherungsberichten](https://docs.microsoft.com/azure/backup/configure-reports) unterstützt. *Beim Versuch, Daten für diese sechs Ereignisse im Azure-Diagnosemodus zu senden, werden in Sicherungsberichten keine Daten angezeigt.*
+> Die sechs Ereignisse (CoreAzureBackup, AddonAzureBackupAlerts, AddonAzureBackupProtectedInstance, AddonAzureBackupJobs, AddonAzureBackupPolicy und AddonAzureBackupStorage) werden *nur* im ressourcenspezifischen Modus in [Sicherungsberichten](./configure-reports.md) unterstützt. *Beim Versuch, Daten für diese sechs Ereignisse im Azure-Diagnosemodus zu senden, werden in Sicherungsberichten keine Daten angezeigt.*
 
 ## <a name="legacy-event"></a>Legacy-Ereignis
 
 Bisher waren alle sicherungsbezogenen Diagnosedaten für einen Tresor in einem einzelnen Ereignis namens AzureBackupReport enthalten. Die sechs hier beschriebenen Ereignisse sind im Wesentlichen eine Aufschlüsselung aller Daten, die in AzureBackupReport enthalten sind.
 
-Derzeit unterstützen wir das Ereignis AzureBackupReport weiterhin aus Gründen der Abwärtskompatibilität, wenn Benutzer benutzerdefinierte Abfragen für dieses Ereignis haben. Beispiele sind benutzerdefinierte Protokollwarnungen und Visualisierungen. *Es wird empfohlen, dass Sie so früh wie möglich auf die [neuen Ereignisse](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) umstellen.* Die Vorteile der neuen Ereignisse:
+Derzeit unterstützen wir das Ereignis AzureBackupReport weiterhin aus Gründen der Abwärtskompatibilität, wenn Benutzer benutzerdefinierte Abfragen für dieses Ereignis haben. Beispiele sind benutzerdefinierte Protokollwarnungen und Visualisierungen. *Es wird empfohlen, dass Sie so früh wie möglich auf die [neuen Ereignisse](#diagnostics-events-available-for-azure-backup-users) umstellen.* Die Vorteile der neuen Ereignisse:
 
 * Vereinfachen das Arbeiten mit den Daten in Protokollabfragen
 * Sorgen für eine bessere Erkennbarkeit von Schemas und ihrer Struktur
 * Verbessern die Leistung sowohl hinsichtlich Erfassungslatenz als auch Abfragezeiten
 
-*Das Legacy-Ereignis im Azure-Diagnosemodus wird in naher Zukunft als veraltet markiert. Wenn Sie sich für die neuen Ereignisse entscheiden, können Sie möglicherweise komplexe Migrationen zu einem späteren Zeitpunkt vermeiden*. Für unsere mit Log Analytics arbeitende [Berichterstellungslösung](https://docs.microsoft.com/azure/backup/configure-reports) wird die Unterstützung von Daten aus dem Legacy-Ereignis ebenfalls eingestellt.
+*Das Legacy-Ereignis im Azure-Diagnosemodus wird in naher Zukunft als veraltet markiert. Wenn Sie sich für die neuen Ereignisse entscheiden, können Sie möglicherweise komplexe Migrationen zu einem späteren Zeitpunkt vermeiden*. Für unsere mit Log Analytics arbeitende [Berichterstellungslösung](./configure-reports.md) wird die Unterstützung von Daten aus dem Legacy-Ereignis ebenfalls eingestellt.
 
 ### <a name="steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace"></a>Schritte zum Umstieg auf die neuen Diagnoseeinstellungen für einen Log Analytics-Arbeitsbereich
 
-1. Ermitteln Sie mithilfe des Legacy-Ereignisses, welche Tresore Daten an die Log Analytics-Arbeitsbereiche senden und zu welchen Abonnements sie gehören. Führen Sie die folgenden Arbeitsbereiche aus, um diese Tresore und Abonnements zu ermitteln.
+1. Ermitteln Sie mithilfe des Legacy-Ereignisses, welche Tresore Daten an die Log Analytics-Arbeitsbereiche senden und zu welchen Abonnements sie gehören. Führen Sie die folgende Abfrage in allen Arbeitsbereichen aus, um diese Tresore und Abonnements zu ermitteln.
 
     ````Kusto
     let RangeStart = startofday(ago(3d));
@@ -84,7 +84,7 @@ Derzeit unterstützen wir das Ereignis AzureBackupReport weiterhin aus Gründen 
         | project ResourceId, Category};
         // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
     let CombinedVaultTable = (){
-        CombinedTable | union isfuzzy = true
+        union isfuzzy = true
         (VaultUnderAzureDiagnostics() ),
         (VaultUnderResourceSpecific() )
         | distinct ResourceId, Category};
@@ -96,7 +96,11 @@ Derzeit unterstützen wir das Ereignis AzureBackupReport weiterhin aus Gründen 
     | project ResourceId, SubscriptionId, VaultName
     ````
 
-1. Verwenden Sie die in Azure Backup [integrierten Azure Policy-Definitionen](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics), um für alle Tresore in einem angegebenen Geltungsbereich eine neue Diagnoseeinstellung hinzuzufügen. Diese Richtlinie fügt Tresoren, die entweder nicht über eine Diagnoseeinstellung verfügen oder nur eine Legacy-Diagnoseeinstellung aufweisen, eine neue Diagnoseeinstellung hinzu. Diese Richtlinie kann jeweils nur einem gesamten Abonnement oder einer Ressourcengruppe zugewiesen werden. Sie benötigen für jedes Abonnement, dem die Richtlinie zugewiesen ist, die Zugriffsberechtigung „Besitzer“.
+    Hier sehen Sie einen Screenshot der Abfrage, die in einem der Arbeitsbereiche ausgeführt wird:
+
+    ![Arbeitsbereich und Abfrage](./media/backup-azure-diagnostics-events/workspace-query.png)
+
+2. Verwenden Sie die in Azure Backup [integrierten Azure Policy-Definitionen](./azure-policy-configure-diagnostics.md), um für alle Tresore in einem angegebenen Geltungsbereich eine neue Diagnoseeinstellung hinzuzufügen. Diese Richtlinie fügt Tresoren, die entweder nicht über eine Diagnoseeinstellung verfügen oder nur eine Legacy-Diagnoseeinstellung aufweisen, eine neue Diagnoseeinstellung hinzu. Diese Richtlinie kann jeweils nur einem gesamten Abonnement oder einer Ressourcengruppe zugewiesen werden. Sie benötigen für jedes Abonnement, dem die Richtlinie zugewiesen ist, die Zugriffsberechtigung „Besitzer“.
 
 Sie können separate Diagnoseeinstellungen für AzureBackupReport und die sechs neuen Ereignisse verwenden, bis Sie alle benutzerdefinierten Abfragen migriert haben, um Daten aus den neuen Tabellen zu verwenden. Die folgende Abbildung zeigt ein Beispiel eines Tresors mit zwei Diagnoseeinstellungen. Die erste Einstellung mit dem Namen **Setting1** sendet Daten des AzureBackupReport-Ereignisses an einen Log Analytics-Arbeitsbereich im Azure-Diagnosemodus. Die zweite Einstellung mit dem Namen **Setting2** sendet Daten der sechs neuen Azure Backup-Ereignisse an einen Log Analytics-Arbeitsbereich im ressourcenspezifischen Modus.
 
@@ -126,4 +130,4 @@ Die folgende Abbildung zeigt ein Beispiel eines Benutzers mit drei Diagnoseeinst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Informationen zum Log Analytics-Datenmodell für Diagnoseereignisse](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+[Informationen zum Log Analytics-Datenmodell für Diagnoseereignisse](./backup-azure-reports-data-model.md)
