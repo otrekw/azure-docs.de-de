@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539413"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -21,17 +21,17 @@ Es wird empfohlen, vor der Konfiguration die [Einschränkungen](#limitationsandc
 
 ## <a name="customer-managed-key-cmk-overview"></a>Übersicht über kundenseitig verwaltete Schlüssel (Customer-Managed Key, CMK)
 
-Die [Verschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) ist eine übliche Datenschutz- und Sicherheitsanforderung in Organisationen. Sie können die Verschlüsselung ruhender Daten vollständig von Azure verwalten lassen, wobei Ihnen verschiedene Optionen zum genauen Verwalten der Verschlüsselung oder Verschlüsselungsschlüssel bereitstehen.
+Die [Verschlüsselung ruhender Daten](../../security/fundamentals/encryption-atrest.md) ist eine übliche Datenschutz- und Sicherheitsanforderung in Organisationen. Sie können die Verschlüsselung ruhender Daten vollständig von Azure verwalten lassen, wobei Ihnen verschiedene Optionen zum genauen Verwalten der Verschlüsselung oder Verschlüsselungsschlüssel bereitstehen.
 
-Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfragen im Ruhezustand mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt werden. Azure Monitor bietet auch eine Option für die Verschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)-Instanz gespeichert ist und auf den über die Authentifizierung der systemseitig zugewiesenen [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zugegriffen wird. Dieser Schlüssel (CMK) kann entweder durch [Software oder Hardware (HSM) geschützt](https://docs.microsoft.com/azure/key-vault/key-vault-overview) werden.
+Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfragen im Ruhezustand mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt werden. Azure Monitor bietet auch eine Option für die Verschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer [Azure Key Vault](../../key-vault/general/overview.md)-Instanz gespeichert ist und auf den über die Authentifizierung der systemseitig zugewiesenen [verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) zugegriffen wird. Dieser Schlüssel (CMK) kann entweder durch [Software oder Hardware (HSM) geschützt](../../key-vault/general/overview.md) werden.
 
-Die Verwendung der Verschlüsselung durch Azure Monitor ist identisch mit der Funktionsweise der  [Azure Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption). 
+Die Verwendung der Verschlüsselung durch Azure Monitor ist identisch mit der Funktionsweise der  [Azure Storage-Verschlüsselung](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption). 
 
 Mit CMK können Sie den Zugriff auf Ihre Daten steuern und jederzeit widerrufen. In Azure Monitor Storage werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt. Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese Daten bleiben unabhängig von der CMK-Konfiguration mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der  [Schlüsselsperrung](#cmk-kek-revocation). Wir arbeiten daran, dass SSD-Daten in der zweiten Hälfte des Jahres 2020 mit CMK verschlüsselt werden.
 
 Die CMK-Funktion wird auf dedizierten Log Analytics-Clustern bereitgestellt. Um sicherzustellen, dass die erforderliche Kapazität in Ihrer Region vorhanden ist, muss Ihr Abonnement im Voraus zugelassen sein. Wenden Sie sich an Ihren Microsoft-Kontakt, um Ihr Abonnement zuzulassen, bevor Sie mit der Konfiguration von CMK beginnen.
 
-Beim  [Preismodell für Log Analytics-Cluster](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) werden Kapazitätsreservierungen ab 1000 GB/Tag verwendet.
+Beim  [Preismodell für Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters) werden Kapazitätsreservierungen ab 1000 GB/Tag verwendet.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Funktionsweise von CMK in Azure Monitor
 
@@ -91,7 +91,7 @@ Hierbei stellt *eyJ0eXAiO....* das vollständige Autorisierungstoken dar.
 
 Sie können das Token mit einer der folgenden Methoden abrufen:
 
-1. Verwenden Sie die Methode der [App-Registrierungen](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens).
+1. Verwenden Sie die Methode der [App-Registrierungen](/graph/auth/auth-concepts#access-tokens).
 2. Im Azure-Portal
     1. Navigieren Sie zum Azure-Portal, während Sie sich im „Entwicklertool“ (F12) befinden.
     1. Suchen Sie in einer der „batch?api-version“-Instanzen unter „Anforderungsheader“ nach der Autorisierungszeichenfolge. Diese ähnelt Folgendem: „authorization: Bearer eyJ0eXAiO....“. 
@@ -185,15 +185,16 @@ Erstellen Sie eine Azure Key Vault-Instanz oder verwenden Sie eine vorhandene In
 
 ![Einstellungen für vorläufiges Löschen und Löschschutz](media/customer-managed-keys/soft-purge-protection.png)
 
-Die folgenden Einstellungen sind über die CLI und PowerShell verfügbar:
-- [Vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-- [Bereinigungsschutz](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) schützt vor erzwungenem Löschen des Geheimnisses/Tresors auch nach vorläufigem Löschen
+Diese Einstellungen können über die CLI und PowerShell aktualisiert werden:
+
+- [Vorläufiges Löschen](../../key-vault/general/overview-soft-delete.md)
+- [Bereinigungsschutz](../../key-vault/general/overview-soft-delete.md#purge-protection) schützt vor erzwungenem Löschen des Geheimnisses/Tresors auch nach vorläufigem Löschen
 
 ### <a name="create-cluster-resource"></a>Erstellen einer *Clusterressource*
 
 Diese Ressource wird als eine temporäre Identitätsverbindung zwischen Key Vault und Ihren Log Analytics-Arbeitsbereichen verwendet. Nachdem Sie eine Bestätigung erhalten haben, dass Ihre Abonnements zugelassen wurden, erstellen Sie eine Log Analytics-*Clusterressource* in der Region, in der sich Ihre Arbeitsbereiche befinden.
 
-Beim Erstellen einer *Clusterressource* müssen Sie die *Kapazitätsreservierungsebene* (sku) angeben. Die *Kapazitätsreservierungsebene* kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen, und Sie können sie später in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an uns unter LAIngestionRate@microsoft.com. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+Beim Erstellen einer *Clusterressource* müssen Sie die *Kapazitätsreservierungsebene* (sku) angeben. Die *Kapazitätsreservierungsebene* kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen, und Sie können sie später in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an uns unter LAIngestionRate@microsoft.com. [Weitere Informationen](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
 - *Cluster* (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
@@ -210,7 +211,7 @@ Dieser Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 > 
 
 ```powershell
-New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity daily-ingestion-gigabyte 
 ```
 
 ```rst
@@ -408,7 +409,7 @@ Content-type: application/json
 Erfasste Daten werden nach dem Zuordnungsvorgang mit Ihrem verwalteten Schlüssel verschlüsselt gespeichert, was bis zu 90 Minuten dauern kann. Sie können den Zuordnungsstatus des Arbeitsbereichs auf zwei Arten überprüfen:
 
 1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-2. Senden Sie eine Anforderung [Arbeitsbereiche – Get](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) und sehen Sie sich die Antwort an. Zugeordnete Arbeitsbereiche haben eine clusterResourceId unter „Features“.
+2. Senden Sie eine Anforderung [Arbeitsbereiche – Get](/rest/api/loganalytics/workspaces/get) und sehen Sie sich die Antwort an. Zugeordnete Arbeitsbereiche haben eine clusterResourceId unter „Features“.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -468,13 +469,13 @@ Die in Log Analytics verwendete Abfragesprache ist ausdrucksstark und kann vertr
 > [!NOTE]
 > CMK wird für Abfragen in Arbeitsmappen und Azure-Dashboards noch nicht unterstützt. Diese Abfragen bleiben mit dem Microsoft-Schlüssel verschlüsselt.  
 
-Wenn Sie [Bring Your Own Storage](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) verwenden und es Ihrem Arbeitsbereich zuordnen, lädt der Dienst Abfragen für *gespeicherte Suchen* und *Protokollwarnungen* in Ihr Speicherkonto hoch. Dies bedeutet, dass Sie das Speicherkonto und die [Richtlinie für die Verschlüsselung ruhender Daten](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) entweder mit dem gleichen Schlüssel steuern, den Sie zum Verschlüsseln von Daten im Log Analytics-Cluster verwenden, oder mit einem anderen Schlüssel. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich. 
+Wenn Sie [Bring Your Own Storage](./private-storage.md) (BYOS) verwenden und es Ihrem Arbeitsbereich zuordnen, lädt der Dienst Abfragen für *gespeicherte Suchen* und *Protokollwarnungen* in Ihr Speicherkonto hoch. Dies bedeutet, dass Sie das Speicherkonto und die [Richtlinie für die Verschlüsselung ruhender Daten](../../storage/common/encryption-customer-managed-keys.md) entweder mit dem gleichen Schlüssel steuern, den Sie zum Verschlüsseln von Daten im Log Analytics-Cluster verwenden, oder mit einem anderen Schlüssel. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich. 
 
 **Überlegungen vor dem Festlegen von CMK für Abfragen**
 * Sie müssen für Ihren Arbeitsbereich und das Speicherkonto über die Berechtigung „Schreiben“ verfügen.
 * Stellen Sie sicher, dass Sie Ihr Speicherkonto in derselben Region erstellen, in der sich Ihr Log Analytics-Arbeitsbereich befindet.
 * Die *gespeicherten Suchvorgänge* im Speicher werden als Dienstartefakte angesehen und ihr Format kann sich ändern.
-* Vorhandene *gespeicherte Suchvorgänge* werden aus dem Arbeitsbereich entfernt. Kopieren Sie alle *gespeicherten Suchvorgänge*, die Sie vor der Konfiguration benötigen. Sie können Ihre *gespeicherten Suchvorgänge* mithilfe von [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch) anzeigen.
+* Vorhandene *gespeicherte Suchvorgänge* werden aus dem Arbeitsbereich entfernt. Kopieren Sie alle *gespeicherten Suchvorgänge*, die Sie vor der Konfiguration benötigen. Sie können Ihre *gespeicherten Suchvorgänge* mithilfe von [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) anzeigen.
 * Der Abfrageverlauf wird nicht unterstützt, und Sie können keine Abfragen sehen, die Sie ausgeführt haben.
 * Sie können dem Arbeitsbereich ein einzelnes Speicherkonto zum Speichern von Abfragen zuordnen, es kann aber sowohl für Abfragen für *gespeicherte Suchvorgänge* als auch *Protokollwarnungen* verwendet werden.
 * Anheften an das Dashboard wird nicht unterstützt.
@@ -484,7 +485,7 @@ Wenn Sie [Bring Your Own Storage](https://docs.microsoft.com/azure/azure-monitor
 Ordnen Sie das Speicherkonto für *Abfragen* Ihrem Arbeitsbereich zu. Abfragen für *gespeicherte Suchvorgänge* werden in Ihrem Speicherkonto gespeichert. 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
 
@@ -511,7 +512,7 @@ Nach der Konfiguration werden alle neuen Abfragen *gespeicherter Suchvorgänge* 
 Ordnen Sie das Speicherkonto für *Warnungen* Ihrem Arbeitsbereich zu. Abfragen für *Protokollwarnungen* werden in Ihrem Speicherkonto gespeichert. 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
 
@@ -659,7 +660,7 @@ Nach der Konfiguration werden alle neuen Warnungsabfragen in Ihrem Speicher gesp
   Erfasste Daten werden nach dem Aufheben der Zuordnung im Log Analytics-Speicher gespeichert. Dieser Vorgang kann bis zu 90 Minuten dauern. Sie können den Zuordnungsstatus des Arbeitsbereichs auf zwei Arten überprüfen:
 
   1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-  2. Senden Sie eine [GET-Anforderung zum Abrufen von Arbeitsbereichen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get), und sehen Sie sich die Antwort an. Für Arbeitsbereiche, deren Zuordnung aufgehoben wurde, wird die *clusterResourceId* nicht unter *features* aufgeführt.
+  2. Senden Sie eine [GET-Anforderung zum Abrufen von Arbeitsbereichen](/rest/api/loganalytics/workspaces/get), und sehen Sie sich die Antwort an. Für Arbeitsbereiche, deren Zuordnung aufgehoben wurde, wird die *clusterResourceId* nicht unter *features* aufgeführt.
 
 - **Überprüfung des Arbeitsbereichszuordnungs-Status**
   
@@ -694,26 +695,25 @@ Nach der Konfiguration werden alle neuen Warnungsabfragen in Ihrem Speicher gesp
 
 ## <a name="limitationsandconstraints"></a>Einschränkungen
 
-- Der CMK wird auf dedizierten Log Analytics-Clustern unterstützt und eignet sich für Kunden, die 1 TB oder mehr pro Tag senden.
+- Der CMK wird auf dedizierten Log Analytics-Clustern unterstützt und eignet sich für Kunden, die 1 TB oder mehr pro Tag senden.
 
-- Die maximale Anzahl von *Clusterressourcen* pro Region und Abonnement beträgt 2.
+- Die maximale Anzahl von *Clusterressourcen* pro Region und Abonnement beträgt 2.
 
-- Sie können Ihrer  *Clusterressource* einen Arbeitsbereich zuordnen und die Zuordnung dann aufheben, wenn CMK für den Arbeitsbereich nicht erforderlich ist. Die Anzahl der Zuordnungen eines bestimmten Arbeitsbereichs ist in einem Zeitraum von 30 Tagen auf 2 begrenzt.
+- Sie können Ihrer *Clusterressource* einen Arbeitsbereich zuordnen und dann die Zuordnung aufheben, wenn der CMK für den Arbeitsbereich nicht erforderlich ist. Die Anzahl der Zuordnungen in einem bestimmten Arbeitsbereich ist innerhalb eines Zeitraums von 30 Tagen auf 2 begrenzt.
 
-- Die Zuordnung eines Arbeitsbereichs zu einer  *Clusterressource*  sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Log Analytics-Clusterbereitstellung abgeschlossen wurde. Daten, die vor dem Abschluss an den Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
+- Die Arbeitsbereichszuordnung zu einer *Clusterressource* sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Log Analytics-Clusterbereitstellung abgeschlossen wurde. Daten, die vor dem Abschluss an Ihren Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
 
-- Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration     neu erfasste Daten. Daten, die vor der CMK-Konfiguration     erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können     vor und nach der CMK-Konfiguration erfasste Daten nahtlos abfragen.
+- Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration neu erfasste Daten. Daten, die vor der CMK-Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der CMK-Konfiguration erfasste Daten nahtlos abfragen.
 
-- Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:
+- Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:<br>
+  - [Vorläufiges Löschen](../../key-vault/general/overview-soft-delete.md)
+  - Der [Bereinigungsschutz](../../key-vault/general/overview-soft-delete.md#purge-protection) sollte aktiviert werden, wenn Sie sich auch nach dem vorläufigen Löschen vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
 
-  - [Vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-    muss aktiviert werden. Der   - [Bereinigungsschutz](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) sollte aktiviert werden, wenn Sie sich auch nach dem vorläufigen Löschen vor dem erzwungenen Löschen des Geheimnisses/Schlüsseltresors schützen möchten.
+- Das Verschieben einer *Clusterressource* in eine andere Ressourcengruppe oder ein anderes Abonnement wird derzeit nicht unterstützt.
 
--Das Verschieben einer  *Clusterressource* in eine andere Ressourcengruppe oder ein anderes Abonnement     wird derzeit nicht unterstützt.
+- Azure Key Vault, *Clusterressource* und zugehörige Arbeitsbereiche müssen sich in derselben Region und in demselben Azure Active Directory (Azure AD)-Mandanten befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
 
-- Azure Key Vault,  *Clusterressource* und zugehörige Arbeitsbereiche müssen sich in derselben Region und in demselben Azure Active Directory (Azure AD)-Mandanten befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
-
-- Die Arbeitsbereichszuordnung zur  *Clusterressource* schlägt fehl, wenn sie     einer anderen  *Clusterressource* zugeordnet ist.
+- Die Arbeitsbereichszuordnung zur *Clusterressource* schlägt fehl, wenn sie einer anderen *Clusterressource* zugeordnet ist.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -743,3 +743,41 @@ Nach der Konfiguration werden alle neuen Warnungsabfragen in Ihrem Speicher gesp
   2. Senden Sie eine GET-Anforderung an *Cluster* oder Arbeitsbereich, und beobachten Sie die Antwort. Beispielsweise weist der nicht zugeordnete Arbeitsbereich unter *features* nicht die *clusterResourceId* auf.
 
 - Wenn Sie Unterstützung und Hilfe im Zusammenhang mit kundenseitig verwalteten Schlüsseln benötigen, nutzen Sie Ihre Kontakte zu Microsoft.
+
+- Fehlermeldungen
+  
+  *Clusterressource* – Erstellen:
+  -  400 – Der Clustername ist ungültig. Der Clustername darf die Zeichen „a–z“, „A–Z“, „0–9“ und die Länge „3–63“ enthalten.
+  -  400 – Der Text der Anforderung ist NULL oder hat ein ungültiges Format.
+  -  400 – Der SKU-Name ist ungültig. Legen Sie den SKU-Namen auf „capacityReservation“ fest.
+  -  400 – Kapazität wurde bereitgestellt, aber SKU ist nicht „capacityReservation“. Legen Sie den SKU-Namen auf „capacityReservation“ fest.
+  -  400 – Fehlende Kapazität in SKU. Legen Sie den Kapazitätswert in Schritten von 100 (GB) auf „1.000“ oder höher fest.
+  -  400 – Die Kapazität in SKU liegt nicht im Bereich. Sie sollte mindestens 1.000 und bis zur maximal zulässigen Kapazität betragen, die in Ihrem Arbeitsbereich unter „Nutzung und geschätzte Kosten“ zur Verfügung steht.
+  -  400 – Die Kapazität ist für 30 Tage gesperrt. Eine Verringerung der Kapazität ist 30 Tage nach dem Update zulässig.
+  -  400 – Es wurde keine SKU festgelegt. Legen Sie den SKU-Namen auf „capacityReservation“ und den Kapazitätswert in Schritten von 100 (GB) auf „1.000“ oder höher fest.
+  -  400 – „Identität“ ist NULL oder leer. Legen Sie die Identität mit dem Typ „systemAssigned“ fest.
+  -  400 – „KeyVaultProperties“ werden bei der Erstellung festgelegt. Aktualisieren Sie „KeyVaultProperties“ nach der Clustererstellung.
+  -  400 – Der Vorgang kann jetzt nicht ausgeführt werden. Der asynchrone Vorgang befindet sich in einem anderen Zustand als „erfolgreich“. Der Cluster muss seinen Vorgang beenden, bevor ein Aktualisierungsvorgang ausgeführt wird.
+
+  *Clusterressource* – Aktualisieren
+  -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Asynchroner Vorgang wird ausgeführt. Der Cluster muss seinen Vorgang beenden, bevor ein Aktualisierungsvorgang ausgeführt wird.
+  -  400 – „KeyVaultProperties“ ist nicht leer, hat aber ein ungültiges Format. Lesen Sie [Key Identifier Update](#update-cluster-resource-with-key-identifier-details) (Aktualisierung des Schlüsselbezeichners).
+  -  400 – Fehler beim Überprüfen des Schlüssels in Key Vault. Mögliche Ursachen: Fehlende Berechtigungen, oder der Schlüssel ist nicht vorhanden. Vergewissern Sie sich, dass Sie die [Schlüssel- und Zugriffsrichtlinie in Key Vault](#grant-key-vault-permissions) festgelegt haben.
+  -  400 – Der Schlüssel kann nicht wiederhergestellt werden. Key Vault muss auf „Vorläufiges Löschen und Löschschutz“ festgelegt werden. Lesen Sie die [Dokumentation zu Key Vault](../../key-vault/general/overview-soft-delete.md).
+  -  400 – Der Vorgang kann jetzt nicht ausgeführt werden. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
+  -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
+
+    *Clusterressource* – Abrufen:
+    -  404 – Der Cluster wurde nicht gefunden; möglicherweise wurde er gelöscht. Wenn Sie versuchen, einen Cluster mit diesem Namen zu erstellen, und es zu einem Konflikt kommt, ist der Cluster 14 Tage lang im Zustand „Vorläufig gelöscht“. Sie können den Support kontaktieren, um ihn wiederherzustellen, oder einen anderen Namen zum Erstellen eines neuen Clusters verwenden. 
+
+  *Clusterressource* – Löschen:
+    -  409 – Ein Cluster kann im Bereitstellungsstatus nicht gelöscht werden. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
+
+  Arbeitsbereichszuordnung:
+  -  404 – Arbeitsbereich nicht gefunden. Der von Ihnen angegebene Arbeitsbereich ist nicht vorhanden oder wurde gelöscht.
+  -  409 – Vorgang der Arbeitsbereichszuordnung oder deren Aufhebung läuft.
+  -  400 – Der Cluster wurde nicht gefunden, der angegebene Cluster ist nicht vorhanden, oder er wurde gelöscht. Wenn Sie versuchen, einen Cluster mit diesem Namen zu erstellen, und es zu einem Konflikt kommt, ist der Cluster 14 Tage lang im Zustand „Vorläufig gelöscht“. Sie können den Support kontaktieren, um ihn wiederherzustellen.
+
+  Aufhebung der Arbeitsbereichszuordnung:
+  -  404 – Arbeitsbereich nicht gefunden. Der von Ihnen angegebene Arbeitsbereich ist nicht vorhanden oder wurde gelöscht.
+  -  409 – Vorgang der Arbeitsbereichszuordnung oder deren Aufhebung läuft.

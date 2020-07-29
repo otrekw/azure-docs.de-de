@@ -1,31 +1,30 @@
 ---
-title: Zeitreihenmodell – Azure Time Series Insights | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Zeitreihenmodell in Azure Time Series Insights Preview.
+title: Zeitreihenmodell – Azure Time Series Insights Gen2 | Microsoft-Dokumentation
+description: Hier erfahren Sie mehr über das Zeitreihenmodell in Azure Time Series Insights Gen2.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5a22987b1d67f9e9f8384e5376343af2f91b5e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495379"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Zeitreihenmodell in Azure Time Series Insights Preview
+# <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Zeitreihenmodell in Azure Time Series Insights Gen2
 
-Dieser Artikel beschreibt das Zeitreihenmodell sowie die zugehörigen Funktionen und erläutert, wie Sie selbst Modelle in der Azure Time Series Insights Preview-Umgebung erstellen und aktualisieren.
+Dieser Artikel beschreibt das Zeitreihenmodell sowie die zugehörigen Funktionen und erläutert, wie Sie Ihre eigenen Modelle in der Azure Time Series Insights Gen2-Umgebung erstellen und aktualisieren können.
 
 > [!TIP]
 >
 > * Wechseln Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples), um ein Livebeispiel für ein Zeitreihenmodell zu sehen.
-> * Informieren Sie sich über den [Azure Time Series Insights Preview-Explorer](time-series-insights-update-explorer.md), um zu erfahren, wie Sie in der Benutzeroberfläche ihres Zeitreihenmodells navigieren können.
-> * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](time-series-insights-update-how-to-tsm.md) mithilfe des Time Series Insights-Web-Explorers.
+> * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](time-series-insights-update-how-to-tsm.md) mithilfe des Azure Time Series Insights Gen2-Explorers.
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -58,7 +57,7 @@ Ein **Zeitreihenmodell bietet eine praktische Lösung** für viele Szenarien in 
 
 ### <a name="key-capabilities"></a>Wichtige Funktionen
 
-Mit dem Ziel, die Verwaltung der Zeitreihenkontextualisierung einfach und mühelos zu gestalten, ermöglicht das Zeitreihenmodell die folgenden Funktionen in Time Series Insights Preview. Es ermöglicht Folgendes:
+Mit dem Ziel, die Verwaltung der Zeitreihenkontextualisierung einfach und mühelos zu gestalten, ermöglicht das Zeitreihenmodell die folgenden Funktionen in Azure Time Series Insights Gen2. Es ermöglicht Folgendes:
 
 * Erstellen und Verwalten von Berechnungen oder Formeln auf Basis von Skalarfunktionen, Aggregieren von Vorgängen usw.
 * Definieren von Beziehungen zwischen über- und untergeordneten Elementen, um Navigation, Suche und Verweise zu ermöglichen.
@@ -72,11 +71,11 @@ Das Zeitreihenmodell besteht aus drei Kernkomponenten:
 * [Zeitreihenmodellhierarchien](#time-series-model-hierarchies)
 * [Zeitreihenmodelltypen](#time-series-model-types)
 
-Diese Komponenten werden kombiniert, um ein Zeitreihenmodell anzugeben und Ihre Azure Time Series Insights-Daten zu organisieren.
+Diese Komponenten werden kombiniert, um ein Zeitreihenmodell anzugeben und Ihre Daten zu organisieren.
 
 [![Übersicht über Zeitreihenmodelldiagramm](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Ein Zeitreihenmodell kann über die Schnittstelle [Time Series Insights Preview](time-series-insights-update-how-to-tsm.md) erstellt und verwaltet werden. Die Einstellungen eines Zeitreihenmodells können über die [Modelleinstellungs-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) verwaltet werden.
+Ein Zeitreihenmodell kann über die Schnittstelle [Azure Time Series Insights Gen2-Explorer](time-series-insights-update-how-to-tsm.md) erstellt und verwaltet werden. Die Einstellungen eines Zeitreihenmodells können über die [Modelleinstellungs-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) verwaltet werden.
 
 ## <a name="time-series-model-instances"></a>Zeitreihenmodellinstanzen
 
@@ -88,7 +87,7 @@ Instanzen sind beschreibende Informationen zugeordnet, die als *Instanzeigenscha
 
 *Instanzfelder* sind eine Sammlung beschreibender Informationen, die Werte für Hierarchieebenen sowie für Hersteller, Bediener usw. umfassen können.
 
-Nachdem eine Ereignisquelle für die Time Series Insights-Umgebung konfiguriert wurde, werden Instanzen in einem Zeitreihenmodell automatisch entdeckt und erstellt. Die Instanzen können mit Zeitreihenmodellabfragen über den Time Series Insights-Explorer erstellt oder aktualisiert werden.
+Nachdem eine Ereignisquelle für die Azure Time Series Insights Gen2-Umgebung konfiguriert wurde, werden Instanzen in einem Zeitreihenmodell automatisch entdeckt und erstellt. Die Instanzen können mithilfe von Zeitreihenmodellabfragen über den Azure Time Series Insights Gen2-Explorer erstellt oder aktualisiert werden.
 
 Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples) stellt zahlreiche Beispiele für Live-Instanzen bereit.
 
@@ -130,15 +129,15 @@ Instanzen weisen die folgende JSON-Darstellung auf:
 ```
 
 > [!TIP]
-> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](concepts-query-overview.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Instance-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> Informationen zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) bei der Instanz-API finden Sie im Artikel [Datenabfragen](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Instanz-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Zeitreihenmodellhierarchien
 
 *Hierarchien* von Zeitreihenmodellen organisieren Instanzen durch Angabe von Eigenschaftsnamen und Beziehungen.
 
-Sie können in jeder Time Series Insights-Umgebung mehrere Hierarchien konfigurieren. Eine Zeitreihenmodellinstanz kann einer einzelnen Hierarchie oder mehreren Hierarchien (m:n-Beziehung) zugeordnet werden.
+Sie können in einer bestimmten Azure Time Series Insights Gen2-Umgebung mehrere Hierarchien konfigurieren. Eine Zeitreihenmodellinstanz kann einer einzelnen Hierarchie oder mehreren Hierarchien (m:n-Beziehung) zugeordnet werden.
 
-Die Clientschnittstelle der Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples) zeigt eine standardmäßige Instanz- und Typhierarchie an.
+Die [Demo „Contoso Wind Farm“](https://insights.timeseries.azure.com/preview/samples) zeigt eine standardmäßige Instanz- und Typhierarchie an.
 
 [![Beispiel für Zeitreihenmodellhierarchie](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -187,7 +186,7 @@ Im oben stehenden JSON-Beispiel gilt:
 * `ManufactureDate` definiert eine Hierarchie mit übergeordneten `year`-Elementen und untergeordneten `month`-Elementen. Jedes `ManufactureDate`-Element kann mehrere `years`-Elemente enthalten, die wiederum mehrere `months`-Elemente umfassen können.
 
 > [!TIP]
-> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](concepts-query-overview.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Hierarchy-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Informationen zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) bei der Hierarchie-API finden Sie im Artikel [Datenabfragen](concepts-query-overview.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Hierarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Beispiel für eine Hierarchie
 
@@ -217,13 +216,13 @@ Mit den in der vorherigen Definition verwendeten Instanzfeldern und verschiedene
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | Weder „building“ noch „floor“ noch „room“ wurden festgelegt. |
 
-Die Zeitreihen **ID1** und **ID4** werden im [Azure Time Series Insights-Explorer](time-series-insights-update-explorer.md) als Teil der Hierarchie **H1** angezeigt, weil sie vollständig definierte und richtig angeordnete Parameter *building*, *floor* und *room* aufweisen.
+Die Zeitreihen **ID1** und **ID4** werden im [Azure Time Series Insights Gen2-Explorer](time-series-insights-update-explorer.md) als Teil der Hierarchie **H1** angezeigt, weil sie vollständig definierte und richtig angeordnete *building*-, *floor*- und *room*-Parameter aufweisen.
 
 Die anderen Zeitreihen sind unter *Unparented Instances* klassifiziert, weil sie der angegebenen Datenhierarchie nicht entsprechen.
 
 ## <a name="time-series-model-types"></a>Zeitreihenmodelltypen
 
-Zeitreihenmodell*typen* helfen Ihnen beim Definieren von Variablen oder Formeln zur Durchführung von Berechnungen. Typen sind einer bestimmten Time Series Insights-Instanz zugeordnet.
+Zeitreihenmodell*typen* helfen Ihnen beim Definieren von Variablen oder Formeln zur Durchführung von Berechnungen. Typen werden einer bestimmten-Instanz zugeordnet.
 
 Ein Typ kann eine oder mehrere Variablen enthalten. Beispielsweise könnte eine Zeitreihenmodellinstanz den Typ *Temperatursensor* aufweisen, der aus den Variablen *durchschnittliche Temperatur*, *Mindesttemperatur* und *Höchsttemperatur* besteht.
 
@@ -232,7 +231,7 @@ Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/previ
 [![Beispiel für Zeitreihenmodelltyp](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Informationen zur Time Series Insights Instance-API und zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) finden Sie im Artikel [Datenabfragen](concepts-query-overview.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Type-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Informationen zur Unterstützung von CRUD-Vorgängen (Create, Read, Update, Delete) bei der Typen-API finden Sie im Artikel [Datenabfragen](concepts-query-overview.md#time-series-model-query-tsm-q-apis) und in der [REST-Dokumentation für die Typen-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Typeigenschaften
 
@@ -266,7 +265,7 @@ Typen entsprechen dem folgenden JSON-Beispiel:
         "Interpolated Speed": {
           "kind": "numeric",
           "value": {
-              "tsx": "$event.[speed].Double"
+              "tsx": "$event['Speed-Sensor'].Double"
           },
           "filter": null,
           "interpolation": {
@@ -276,7 +275,7 @@ Typen entsprechen dem folgenden JSON-Beispiel:
               }
           },
           "aggregation": {
-              "tsx": "left($value)"
+              "tsx": "right($value)"
           }
         }
       }
@@ -284,114 +283,12 @@ Typen entsprechen dem folgenden JSON-Beispiel:
   ]
 }
 ```
-
-### <a name="variables"></a>Variables
-
-Time Series Insights-Typen können über viele Variablen verfügen, die Formel- und Berechnungsregeln bei Ereignissen angeben.
-
-Jede Variable kann eine der drei folgenden *Arten* aufweisen: *numerisch*, *kategorisch* und *aggregiert*.
-
-* **Numerische** Variablen arbeiten mit kontinuierlichen Werten.
-* **Kategorische** Variablen arbeiten mit einem definierten Satz diskreter Werte.
-* Bei **aggregierten** Werten werden mehrere Variablen einer einzigen Art kombiniert (entweder nur „numerisch“ oder nur „kategorisch“).
-
-Die folgende Tabelle zeigt die Eigenschaften, die für die jeweilige Variablenart relevant sind.
-
-[![Tabelle für Zeitreihenmodellvariable](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
-
-#### <a name="numeric-variables"></a>Numerische Variablen
-
-| Variableneigenschaft | BESCHREIBUNG |
-| --- | ---|
-| Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
-| Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen oder mithilfe von Zeitreihenausdrücken transformiert werden. Numerische Variablen müssen den Typ *Double* aufweisen.|
-| Variableninterpolation | Die Interpolation gibt an, wie ein Signal anhand von vorhandenen Daten rekonstruiert wird. Für numerische Variablen sind die Interpolationsoptionen *Schritt* und *linear* verfügbar. |
-| Variablenaggregation | Unterstützt die Berechnung mithilfe von *Avg*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last* sowie zeitgewichteter Operatoren (*Avg*, *Min*, *Max*, *Sum*, *Left*). |
-
-Variablen entsprechen dem folgenden JSON-Beispiel:
-
-```JSON
-"Interpolated Speed": {
-  "kind": "numeric",
-  "value": {
-    "tsx": "$event.[speed].Double"
-  },
-  "filter": null,
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span": "P1D"
-    }
-  },
-  "aggregation": {
-    "tsx": "left($value)"
-  }
-}
-```
-
-#### <a name="categorical-variables"></a>Kategorische Variablen
-
-| Variableneigenschaft | BESCHREIBUNG |
-| --- | ---|
-| Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
-| Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen. Kategorische Variablen müssen entweder den Typ *Long* oder den Typ *String* aufweisen. |
-| Variableninterpolation | Die Interpolation gibt an, wie ein Signal anhand von vorhandenen Daten rekonstruiert wird. Die Option *Schrittinterpolation* ist für kategorische Variablen verfügbar. |
-| Variablenkategorien | Kategorien sorgen für die Zuordnung zwischen den aus einem Gerät oder Sensor stammenden Werten und einer Bezeichnung. |
-| Standardkategorie für Variablen | Die Standardkategorie steht für alle Werte zur Verfügung, die nicht in der Eigenschaft „Kategorien“ zugeordnet werden. |
-
-Variablen entsprechen dem folgenden JSON-Beispiel:
-
-```JSON
-"Status": {
-  "kind": "categorical",
-  "value": {
-     "tsx": "toLong($event.[Status].Double)"
-},
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span" : "PT1M"
-    }
-  },
-  "categories": [
-    {
-      "values": [0, 1, 2],
-      "label": "Good"
-    },
-    {
-      "values": [3],
-      "label": "Bad"
-    }
-  ],
-  "defaultCategory": {
-    "label": "Not Applicable"
-  }
-}
-```
-
-#### <a name="aggregate-variables"></a>Aggregieren von Variablen
-
-| Variableneigenschaft | BESCHREIBUNG |
-| --- | ---|
-| Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
-| Variablenaggregation | Unterstützt Berechnungen mit *Avg*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last*. |
-
-Variablen entsprechen dem folgenden JSON-Beispiel:
-
-```JSON
-"Aggregate Speed": {
-  "kind": "aggregate",
-  "filter": null,
-  "aggregation": {
-    "tsx": "avg($event.Speed.Double)"
-  }
-}
-```
-
-Variablen werden in der Typdefinition eines Zeitreihenmodells gespeichert und können inline über [Abfrage-APIs](concepts-query-overview.md) bereitgestellt werden, um die gespeicherte Definition zu überschreiben.
+Zeitreihenmodelltypen können viele Variablen haben, die Formel- und Berechnungsregeln bei Ereignissen angeben. Weitere Informationen finden Sie unter [Definieren von Zeitreihenmodellvariablen](./concepts-variables.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu [Datenabfragen](concepts-query-overview.md)
+- Weitere Informationen zum Bearbeiten des Modells über APIs finden Sie in der Referenzdokumentation zum [Zeitreihenmodell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
 
-* Lesen Sie die Referenzdokumentation zu [Zeitreihenmodellen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
+- Untersuchen Sie die Formeln und Berechnungen, die Sie mit [Zeitreihenmodellvariablen](./concepts-variables.md) erstellen können.
+
+- Weitere Informationen zum [Abfragen von Daten](concepts-query-overview.md) in Azure Time Series Insights Gen2

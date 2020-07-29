@@ -3,12 +3,12 @@ title: 'Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät: Azure'
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026966"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519897"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät
 
@@ -24,7 +24,7 @@ In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung vo
 * [Installieren der Azure IoT Edge-Runtime auf Debian-basierten Linux-Systemen](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Erstellen eines Azure Media Services-Kontos](../latest/create-account-howto.md)
     * Verwenden Sie eine dieser Regionen: USA, Osten 2, USA, Mitte; USA, Norden-Mitte; Japan, Osten; USA, Westen 2; USA, Westen-Mitte, Kanada, Osten, Vereinigtes Königreich, Süden, Frankreich, Mitte, Frankreich, Süden, Schweiz, Norden, Schweiz, Westen und Japan, Westen.
-    * Es wird empfohlen, Speicherkonten vom Typ „Allgemein V2“ (GPv2) zu verwenden.
+    * Es wird empfohlen, dass Sie Speicherkonten vom Typ „Allgemein v2“ (GPv2) verwenden.
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Konfigurieren von Azure-Ressourcen für die Verwendung von Live Video Analytics
 
@@ -34,7 +34,7 @@ Lesen Sie dazu [Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Einrichten eines Premium-Streamingendpunkts
 
-Wenn Sie Live Video Analytics verwenden möchten, um Videos in der Cloud aufzuzeichnen und anschließend wiederzugeben, sollten Sie Ihren Media Service für die Verwendung eines [Premium-Streamingendpunkts](../latest/streaming-endpoint-concept.md#types) aktualisieren.  
+Wenn Sie Live Video Analytics zum kontinuierlichen Aufzeichnen von Videos in der Cloud verwenden möchten, und anschließend [Abfrage-APIs](playback-recordings-how-to.md#query-api) verwenden, bevor Sie sie wiedergeben, empfiehlt es sich, Ihren Media Service für die Verwendung eines [Premium-Streamingendpunkts](../latest/streaming-endpoint-concept.md#types) zu aktualisieren.  
 
 Dieser Schritt ist optional. Sie können für ihn diesen Azure CLI-Befehl verwenden:
 

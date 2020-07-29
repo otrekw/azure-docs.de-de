@@ -1,34 +1,34 @@
 ---
 title: Verhindern von anonymem öffentlichem Lesezugriff auf Container und Blobs
 titleSuffix: Azure Storage
-description: ''
+description: Hier erfahren Sie, wie Sie anonyme Anforderungen für ein Speicherkonto analysieren und anonymen Zugriff für das gesamte Speicherkonto oder für einen einzelnen Container verhindern können.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 90d7cd65bbc07524391f34fe0efce2b044664cef
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518723"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Verhindern von anonymem öffentlichem Lesezugriff auf Container und Blobs
 
-Anonymer öffentlicher Lesezugriff auf Container und Blobs in Azure Storage ist eine praktische Methode für die Weitergabe von Daten, stellt aber unter Umständen auch ein Sicherheitsrisiko dar. Anonymer Zugriff muss mit Bedacht aktiviert werden, und Sie müssen wissen, wie der anonyme Zugriff auf Ihre Daten zu bewerten ist. Betriebliche Komplexität, menschliche Fehler oder böswillige Angriffe auf öffentlich zugängliche Daten können kostspielige Datenschutzverletzungen zur Folge haben. Microsoft empfiehlt, den anonymen Zugriff nur zu aktivieren, wenn dies für Ihr Anwendungsszenario erforderlich ist.
+Anonymer öffentlicher Lesezugriff auf Container und Blobs in Azure Storage ist eine praktische Methode für die Weitergabe von Daten, stellt aber unter Umständen auch ein Sicherheitsrisiko dar. Anonymer Zugriff muss mit Bedacht verwaltet werden, und Sie müssen verstehen, wie Sie den anonymen Zugriff auf Ihre Daten auswerten können. Betriebliche Komplexität, menschliche Fehler oder böswillige Angriffe auf öffentlich zugängliche Daten können kostspielige Datenschutzverletzungen zur Folge haben. Microsoft empfiehlt, den anonymen Zugriff nur zu aktivieren, wenn dies für Ihr Anwendungsszenario erforderlich ist.
 
-Standardmäßig kann ein Speicherkontobenutzer mit entsprechenden Berechtigungen den öffentlichen Zugriff auf Container und Blobs konfigurieren. Diese Funktion kann auf der Speicherkontoebene deaktiviert werden, damit Container und Blobs im Konto nicht mehr für den öffentlichen Zugriff konfiguriert werden können.
+Standardmäßig kann ein Benutzer mit entsprechenden Berechtigungen den öffentlichen Zugriff auf Container und Blobs konfigurieren. Sie können den gesamten öffentlichen Zugriff auf der Ebene des Speicherkontos verhindern. Wenn Sie den öffentlichen Zugriff auf Blobs für das Speicherkonto verweigern, können Container im Konto nicht für öffentlichen Zugriff konfiguriert werden. Container, die bereits für öffentlichen Zugriff konfiguriert wurden, akzeptieren keine anonymen Anforderungen mehr. Weitere Informationen finden Sie unter [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](anonymous-read-access-configure.md).
 
 In diesem Artikel erfahren Sie, wie Sie anonyme Anforderungen für ein Speicherkonto analysieren und den anonymen Zugriff für das gesamte Speicherkonto oder für einen einzelnen Container verhindern.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Erkennen anonymer Anforderungen von Clientanwendungen
 
-Wenn Sie den öffentlichen Lesezugriff für ein Speicherkonto deaktivieren, besteht die Gefahr, dass Anforderungen für Container und Blobs abgelehnt werden, die gegenwärtig für den öffentlichen Zugriff konfiguriert sind. Durch die Deaktivierung des öffentlichen Zugriffs für ein Speicherkonto werden die Einstellungen für den öffentlichen Zugriff für alle Container in diesem Speicherkonto überschrieben. Wenn der öffentliche Zugriff für das Speicherkonto deaktiviert wird, tritt künftig bei anonymen Anforderungen für dieses Konto ein Fehler auf.
+Wenn Sie öffentlichen Lesezugriff für ein Speicherkonto verweigern, besteht die Gefahr, dass Anforderungen für Container und Blobs abgelehnt werden, die zurzeit für öffentlichen Zugriff konfiguriert sind. Durch Verweigerung des öffentlichen Zugriffs für ein Speicherkonto werden die Einstellungen für den öffentlichen Zugriff für alle Container in diesem Konto außer Kraft gesetzt. Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, tritt bei künftigen anonymen Anforderungen für dieses Konto ein Fehler auf.
 
-Um die möglichen Auswirkungen der Deaktivierung des öffentlichen Zugriffs auf Clientanwendungen zu verstehen, empfiehlt Microsoft, die Protokollierung und Metriken für dieses Konto zu aktivieren und Muster anonymer Anforderungen für ein Zeitintervall zu analysieren. Verwenden Sie Metriken, um die Anzahl anonymer Anforderungen für das Speicherkonto zu ermitteln, und Protokolle, um zu ermitteln, auf welche Container anonym zugegriffen wird.
+Wenn Sie die möglichen Auswirkungen einer Verweigerung des öffentlichen Zugriffs auf Clientanwendungen verstehen möchten, empfiehlt Microsoft, dass Sie die Protokollierung und Metriken für dieses Konto aktivieren sowie Muster anonymer Anforderungen über einen Zeitraum analysieren. Verwenden Sie Metriken, um die Anzahl anonymer Anforderungen für das Speicherkonto zu ermitteln, und Protokolle, um zu ermitteln, auf welche Container anonym zugegriffen wird.
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Überwachen anonymer Anforderungen mit dem Metrik-Explorer
 
@@ -92,7 +92,7 @@ Eine Referenz der Felder, die in Azure Storage-Protokollen in Azure Monitor ver
 
 Azure Storage-Protokolle in Azure Monitor enthalten die Art der Autorisierung, die bei einer Anforderung für ein Speicherkonto verwendet wurde. Filtern Sie in Ihrer Protokollabfrage nach der Eigenschaft **AuthenticationType**, um anonyme Anforderungen anzuzeigen.
 
-Wenn Sie Protokolle für anonyme Blobspeicheranforderungen der letzten sieben Tage abrufen möchten, öffnen Sie Ihren Log Analytics-Arbeitsbereich. Fügen Sie dann die folgende Abfrage in eine neue Protokollabfrage ein, und führen Sie sie aus. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie Protokolle für anonyme Blobspeicheranforderungen der letzten sieben Tage abrufen möchten, öffnen Sie Ihren Log Analytics-Arbeitsbereich. Fügen Sie dann die folgende Abfrage in eine neue Protokollabfrage ein, und führen Sie sie aus:
 
 ```kusto
 StorageBlobLogs
@@ -106,13 +106,13 @@ Sie können auch eine auf dieser Abfrage basierende Warnungsregel konfigurieren,
 
 Nachdem Sie anonyme Anforderungen für Container und Blobs in Ihrem Speicherkonto untersucht haben, können Sie Maßnahmen ergreifen, um den öffentlichen Zugriff einzuschränken oder zu verhindern. Müssen einige Container in Ihrem Speicherkonto für öffentliche Zugriffe verfügbar sein, können Sie die Einstellung für den öffentlichen Zugriff für jeden Container in Ihrem Speicherkonto konfigurieren. Dank dieser Option kann der öffentliche Zugriff äußerst präzise gesteuert werden. Weitere Informationen finden Sie unter [Festlegen der öffentlichen Zugriffsebene auf einen Container](anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
-Zur Erhöhung der Sicherheit können Sie den öffentlichen Zugriff für ein gesamtes Speicherkonto deaktivieren. Durch die Einstellung für den öffentlichen Zugriff für ein Speicherkonto werden die individuellen Einstellungen für Container in diesem Konto überschrieben. Wenn Sie den öffentlichen Zugriff für ein Speicherkonto deaktivieren, kann auf Container, die für öffentlichen Zugriff konfiguriert sind, nicht mehr anonym zugegriffen werden. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren des öffentlichen Lesezugriffs für ein Speicherkonto](anonymous-read-access-configure.md#enable-or-disable-public-read-access-for-a-storage-account).
+Zur Erhöhung der Sicherheit können Sie den öffentlichen Zugriff für das gesamte Speicherkonto verweigern. Durch die Einstellung für den öffentlichen Zugriff für ein Speicherkonto werden die individuellen Einstellungen für Container in diesem Konto überschrieben. Wenn Sie den öffentlichen Zugriff für ein Speicherkonto verweigern, kann auf Container, die für öffentlichen Zugriff konfiguriert wurden, nicht mehr anonym zugegriffen werden. Weitere Informationen finden Sie unter [Zulassen oder Verweigern des öffentlichen Lesezugriffs für ein Speicherkonto](anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
 
-Falls in Ihrem Szenario bestimmte Container für öffentlichen Zugriff verfügbar sein müssen, empfiehlt es sich gegebenenfalls, diese Container und die zugehörigen Blobs in Speicherkonten zu verschieben, die für öffentlichen Zugriff reserviert sind. Anschließend können Sie den öffentlichen Zugriff für alle anderen Speicherkonten deaktivieren.
+Falls in Ihrem Szenario bestimmte Container für den öffentlichen Zugriff verfügbar sein müssen, empfiehlt es sich gegebenenfalls, diese Container und die zugehörigen Blobs in Speicherkonten zu verschieben, die für öffentlichen Zugriff reserviert sind. Anschließend können Sie den öffentlichen Zugriff für alle anderen Speicherkonten verweigern.
 
 ### <a name="verify-that-public-access-to-a-blob-is-not-permitted"></a>Vergewissern, dass der öffentliche Zugriff auf ein Blob nicht gestattet ist
 
-Wenn Sie sich vergewissern möchten, dass öffentliche Zugriffe auf ein bestimmtes Blob verweigert werden, können Sie versuchen, das Blob über seine URL herunterzuladen. Ist der Download erfolgreich, ist das Blob weiterhin öffentlich verfügbar. Ist das Blob nicht öffentlich zugänglich, da der öffentliche Zugriff für das Speicherkonto deaktiviert wurde, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass öffentliche Zugriffe auf dieses Speicherkonto nicht zulässig sind.
+Wenn Sie sich vergewissern möchten, dass der öffentliche Zugriff auf ein bestimmtes Blob verweigert wird, können Sie versuchen, das Blob über seine URL herunterzuladen. Ist der Download erfolgreich, ist das Blob weiterhin öffentlich verfügbar. Wenn das Blob nicht öffentlich zugänglich ist, weil der öffentliche Zugriff für das Speicherkonto verweigert wurde, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass öffentliche Zugriffe auf dieses Speicherkonto nicht zulässig sind.
 
 Im folgenden Beispiel wird gezeigt, wie Sie mithilfe von PowerShell versuchen können, ein Blob über seine URL herunterzuladen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -124,7 +124,7 @@ Invoke-WebRequest -Uri $url -OutFile $downloadTo -ErrorAction Stop
 
 ### <a name="verify-that-modifying-the-containers-public-access-setting-is-not-permitted"></a>Vergewissern, dass die Einstellung für den öffentlichen Zugriff des Containers nicht geändert werden kann
 
-Wenn Sie sich vergewissern möchten, dass die Einstellung für den öffentlichen Zugriff eines Containers nicht geändert werden kann, nachdem der öffentliche Zugriff für das Speicherkonto deaktiviert wurde, können Sie versuchen, die Einstellung zu ändern. Wurde der öffentliche Zugriff für das Speicherkonto deaktiviert, kann die Einstellung für den öffentlichen Zugriff eines Containers nicht geändert werden.
+Wenn Sie sich vergewissern möchten, dass die Einstellung für den öffentlichen Zugriff eines Containers nicht geändert werden kann, nachdem der öffentliche Zugriff für das Speicherkonto verweigert wurde, können Sie versuchen, die Einstellung zu ändern. Wird der öffentliche Zugriff für das Speicherkonto verweigert, kann die Einstellung für den öffentlichen Zugriff des Containers nicht geändert werden.
 
 Im folgenden Beispiel wird gezeigt, wie Sie mithilfe von PowerShell versuchen können, die Einstellung für den öffentlichen Zugriff eines Containers zu ändern. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -141,10 +141,10 @@ Set-AzStorageContainerAcl -Context $ctx -Container $containerName -Permission Bl
 
 ### <a name="verify-that-creating-a-container-with-public-access-enabled-is-not-permitted"></a>Vergewissern, dass kein Container mit aktiviertem öffentlichem Zugriff erstellt werden kann
 
-Wenn der öffentliche Zugriff für das Speicherkonto deaktiviert ist, können Sie keinen neuen Container mit aktiviertem öffentlichem Zugriff erstellen. Zur Überprüfung können Sie versuchen, einen Container mit aktiviertem öffentlichem Zugriff zu erstellen.
+Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, können Sie keinen neuen Container mit aktiviertem öffentlichem Zugriff erstellen. Zur Überprüfung können Sie versuchen, einen Container mit aktiviertem öffentlichem Zugriff zu erstellen.
 
 Im folgenden Beispiel wird gezeigt, wie Sie mithilfe von PowerShell versuchen können, einen Container mit aktiviertem öffentlichem Zugriff zu erstellen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
- 
+
 ```powershell
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
