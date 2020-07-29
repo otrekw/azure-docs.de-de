@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 06/04/2020
-ms.openlocfilehash: 340f4310da5131ea0d2576e7c77d8f6cd0a731b3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/20/2020
+ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983103"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515115"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -101,7 +101,7 @@ Der Speicherverbrauch für Sicherungen bis zur maximalen Datengröße für eine 
 
 ## <a name="backup-retention"></a>Sicherungsaufbewahrung
 
-Für alle neuen, wiederhergestellten und kopierten Datenbanken behalten Azure SQL-Datenbank und Azure SQL Managed Instance standardmäßig ausreichende Sicherungen für die Point-in-Time-Wiederherstellung in den letzten 7 Tagen bei. Mit Ausnahme von Hyperscale-Datenbanken können Sie die [Beibehaltungsdauer für die Sicherung](#change-the-pitr-backup-retention-period) pro Datenbank im Bereich von 1 bis 35 Tagen ändern. Wie unter [Sicherungsspeicherverbrauch](#backup-storage-consumption) beschrieben, liegen Sicherungen, die zum Ermöglichen der Point-in-Time-Wiederherstellung gespeichert wurden, möglicherweise zeitlich vor der Beibehaltungsdauer.
+Für alle neuen, wiederhergestellten und kopierten Datenbanken behalten Azure SQL-Datenbank und Azure SQL Managed Instance standardmäßig ausreichende Sicherungen für die Point-in-Time-Wiederherstellung in den letzten 7 Tagen bei. Mit Ausnahme von Hyperscale-Datenbanken können Sie den [Aufbewahrungszeitraum von Sicherungen](#change-the-pitr-backup-retention-period) pro aktiver Datenbank im Bereich von 1 bis 35 Tagen ändern. Wie unter [Sicherungsspeicherverbrauch](#backup-storage-consumption) beschrieben, liegen Sicherungen, die zum Ermöglichen der Point-in-Time-Wiederherstellung gespeichert wurden, möglicherweise zeitlich vor der Beibehaltungsdauer. Nur für Azure SQL Managed Instance ist es möglich, die PITR-Sicherungsaufbewahrungsrate festzulegen, nachdem eine Datenbank innerhalb des Zeitraums von 0 bis 35 Tagen gelöscht wurde. 
 
 Wenn Sie eine Datenbank löschen, behält das System Sicherungen genauso bei, wie dies für eine Onlinedatenbank mit der jeweiligen Beibehaltungsdauer gelten würde. Die Beibehaltungsdauer für eine gelöschte Datenbank kann nicht geändert werden.
 
@@ -192,7 +192,7 @@ Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen im A
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Ändern der PITR-Aufbewahrungsdauer im Azure-Portal
 
-Um die Aufbewahrungsdauer der PITR-Sicherung im Azure-Portal zu ändern, navigieren Sie im Portal zum Server oder der verwalteten Instanz mit den Datenbanken, deren Aufbewahrungsdauer Sie ändern möchten. 
+Um die PITR-Aufbewahrungsdauer von Sicherungen für aktive Datenbanken im Azure-Portal zu ändern, navigieren Sie im Portal zum Server oder zur verwalteten Instanz mit den Datenbanken, deren Aufbewahrungsdauer geändert werden soll. 
 
 #### <a name="sql-database"></a>[SQL-Datenbank](#tab/single-database)
 
@@ -214,9 +214,54 @@ Bei SQL Managed Instance wird die Aufbewahrung für Sicherungen für Zeitpunktwi
 > [!IMPORTANT]
 > Das PowerShell-Modul AzureRM wird weiterhin von SQL-Datenbank und SQL Managed Instance unterstützt, in Zukunft wird jedoch nur das Modul Az.Sql weiterentwickelt. Weitere Informationen finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
+#### <a name="sql-database"></a>[SQL-Datenbank](#tab/single-database)
+
+Verwenden Sie das folgende PowerShell-Beispiel, um die PITR-Aufbewahrungsdauer von Sicherungen für aktive Azure SQL-Datenbanken zu ändern.
+
 ```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+
+Verwenden Sie das folgende PowerShell-Beispiel, um die PITR-Aufbewahrungsdauer von Sicherungen für eine **einzelne aktive** SQL Managed Instance-Datenbank zu ändern.
+
+```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
+```
+
+Verwenden Sie das folgende PowerShell-Beispiel, um die PITR-Aufbewahrungsdauer von Sicherungen für **alle aktiven** SQL Managed Instance-Datenbanken zu ändern.
+
+```powershell
+# SET new PITR backup retention period for ALL active databases
+# Valid backup retention must be between 1 and 35 days
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
+```
+
+Verwenden Sie das folgende PowerShell-Beispiel, um die PITR-Aufbewahrungsdauer von Sicherungen für eine **einzelne gelöschte** SQL Managed Instance-Datenbank zu ändern.
+ 
+```powershell
+# SET new PITR backup retention on an individual deleted database
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database.
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+Verwenden Sie das folgende PowerShell-Beispiel, um die PITR-Aufbewahrungsdauer von Sicherungen für **alle gelöschten** SQL Managed Instance-Datenbanken zu ändern.
+
+```powershell
+# SET new PITR backup retention for ALL deleted databases
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+Eine Aufbewahrungsdauer von null (0) Tagen bedeutet, dass die Sicherung sofort gelöscht wird und für eine gelöschte Datenbank nicht aufbewahrt wird.
+Nachdem die PITR-Aufbewahrungsdauer von Sicherungen für eine gelöschte Datenbank reduziert wurde, kann sie nicht mehr erhöht werden.
+
+---
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>Ändern der PITR-Aufbewahrungsdauer über die REST-API
 
@@ -260,3 +305,4 @@ Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Siche
 - Erfahren Sie mehr zum [Wiederherstellen einer Datenbank bis zu einem bestimmten Zeitpunkt mit PowerShell](scripts/restore-database-powershell.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der Langzeitaufbewahrung automatisierter Sicherungen in Azure Blob Storage im Azure-Portal finden Sie im Artikel [Verwalten der langfristigen Aufbewahrung von Sicherungen im Azure-Portal](long-term-backup-retention-configure.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen in Azure Blob Storage mit PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen mit PowerShell](long-term-backup-retention-configure.md).
+- Informationen zum Optimieren der Aufbewahrung im Sicherungsspeicher und der Kosten für Azure SQL Managed Instance finden Sie unter [Optimieren der Kosten für Sicherungsspeicher einer verwalteten Instanz](https://aka.ms/mi-backup-tuning).

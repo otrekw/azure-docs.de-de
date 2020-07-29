@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024879"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519353"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -33,7 +33,7 @@ Azure Security Center erstellt die Sicherheitsempfehlungen auf der Grundlage der
 
 Security Center bietet die folgenden Optionen für die Arbeit mit Sicherheitsrichtlinien:
 
-* **Anzeigen und Bearbeiten der integrierten Standardrichtlinie:** Wenn Sie Security Center aktivieren, wird eine integrierte Initiative mit dem Namen „ASC default“ (ASC Standard) automatisch allen in Security Center registrierten Abonnements (Tarife „Free“ oder „Standard“) zugewiesen. Zum Anpassen dieser Initiative können Sie die einzelnen enthaltenen Richtlinien aktivieren bzw. deaktivieren. Sehen Sie sich die Liste der [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md) an, um die standardmäßig verfügbaren Optionen zu verstehen.
+* **Anzeigen und Bearbeiten der integrierten Standardrichtlinie:** Wenn Sie Security Center aktivieren, wird eine integrierte Initiative mit dem Namen „ASC default“ (ASC Standard) automatisch allen in Security Center registrierten Abonnements (Tarif „Free“ oder „Standard“) zugewiesen. Zum Anpassen dieser Initiative können Sie die einzelnen enthaltenen Richtlinien aktivieren bzw. deaktivieren. Sehen Sie sich die Liste der [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md) an, um die standardmäßig verfügbaren Optionen zu verstehen.
 
 * **Hinzufügen eigener benutzerdefinierter Richtlinien:** Wenn Sie die auf Ihr Abonnement angewandten Sicherheitsinitiativen anpassen möchten, können Sie dies in Security Center durchführen. Sie erhalten dann Empfehlungen, wenn Ihre Computer Ihre erstellten Richtlinien nicht einhalten. Anweisungen zum Erstellen und Zuweisen von benutzerdefinierten Richtlinien finden Sie unter [Verwenden von benutzerdefinierten Sicherheitsrichtlinien](custom-security-policies.md).
 
@@ -86,14 +86,18 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
 Sie können Sicherheitsrichtlinien über das Azure Policy-Portal, über die REST-API oder über Windows PowerShell bearbeiten.
 
-Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Dabei werden integrierte Rollen bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Das bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement der Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
+Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Hierbei werden integrierte Rollen bereitgestellt, die Sie Azure-Benutzern, -Gruppen und -Diensten zuweisen können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Dies bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement der Ressource zugewiesen wird. Darüber hinaus gibt es noch zwei spezifische Security Center-Rollen:
 
-- **Sicherheitsleseberechtigter**: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
-- **Sicherheitsadministrator**: Verfügt über dieselben Anzeigeberechtigungen wie ein *Sicherheitsleseberechtigter*, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
+- **Sicherheitsleseberechtigter**: Verfügt über Rechte zum Anzeigen von Security Center-Elementen, z. B. Empfehlungen, Warnungen, Richtlinie und Integrität. Änderungen können nicht vorgenommen werden.
+- **Sicherheitsadministrator**: Verfügt über die gleichen Rechte wie *Sicherheitsleseberechtigter*. Kann außerdem die Sicherheitsrichtlinie aktualisieren und Warnungen schließen.
 
 
-## <a name="disable-security-policies"></a>Deaktivieren von Sicherheitsrichtlinien
-Wenn die Standardsicherheitsrichtlinie eine Empfehlung generiert, die für Ihre Umgebung nicht relevant ist, können Sie dies beenden, indem Sie die Richtliniendefinition deaktivieren, die diese Empfehlung sendet.
+## <a name="disable-security-policies-and-disable-recommendations"></a>Deaktivieren von Sicherheitsrichtlinien und Empfehlungen
+
+Wenn von Ihrer Sicherheitsinitiative eine Empfehlung ausgelöst wird, die für Ihre Umgebung irrelevant ist, können Sie verhindern, dass die Empfehlung erneut angezeigt wird. Deaktivieren Sie die spezifische Richtlinie, von der die Empfehlung generiert wird, um eine Empfehlung zu deaktivieren.
+
+Die Empfehlung, die Sie deaktivieren möchten, wird weiterhin angezeigt, wenn sie für einen gesetzlichen Standard erforderlich ist, den Sie mit den Security Center-Tools zur Einhaltung gesetzlicher Bestimmungen angewendet haben. Auch wenn Sie eine Richtlinie in der integrierten Initiative deaktiviert haben, wird die Empfehlung von einer Richtlinie in der Initiative zum gesetzlichen Standard weiterhin ausgelöst, falls dies aus Compliancegründen erforderlich ist. Sie können Richtlinien aus Initiativen für gesetzliche Standards nicht deaktivieren.
+
 Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheitsempfehlungen](security-center-recommendations.md).
 
 1. Wählen Sie in Security Center im Abschnitt **Richtlinie und Konformität** die Option **Sicherheitsrichtlinie** aus.
@@ -103,7 +107,7 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 2. Wählen Sie das Abonnement aus, für das Sie die Empfehlung deaktivieren möchten.
 
    > [!NOTE]
-   > Denken Sie daran, dass eine Verwaltungsgruppe ihre Richtlinien auf ihre Abonnements anwendet. Aus diesem Grund erhalten Sie weiterhin Richtlinienempfehlungen, wenn Sie eine Abonnementrichtlinie deaktivieren und das Abonnement zu einer Verwaltungsgruppe gehört, die immer noch dieselbe Richtlinie verwendet. Die Richtlinie wird immer noch von der Verwaltungsebene aus angewandt, und die Empfehlungen werden immer noch generiert.
+   > Denken Sie daran, dass eine Verwaltungsgruppe ihre Richtlinien auf ihre Abonnements anwendet. Wenn Sie die Richtlinie eines Abonnements deaktivieren und es zu einer Verwaltungsgruppe gehört, in der dieselbe Richtlinie weiterhin angewendet wird, erhalten Sie auch weiterhin die Empfehlungen für die Richtlinie. Die Richtlinie wird immer noch von der Verwaltungsebene aus angewandt, und die Empfehlungen werden immer noch generiert.
 
 1. Wählen Sie **Effektive Richtlinie anzeigen** aus.
 
@@ -125,7 +129,7 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie sich über Sicherheitsrichtlinien informiert. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel werden die Sicherheitsrichtlinien beschrieben. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * Anweisungen dazu, wie Richtlinien über PowerShell festgelegt werden, finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe des Azure PowerShell-Moduls](../governance/policy/assign-policy-powershell.md).
 

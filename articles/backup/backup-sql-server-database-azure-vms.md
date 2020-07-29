@@ -3,12 +3,12 @@ title: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup sichern können.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfd8233b9a696b5b4b1981eefa81aa9723f6431
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817545"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538957"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -59,17 +59,17 @@ Weitere Informationen zur Verwendung dieser Optionen finden Sie unten:
 
 #### <a name="private-endpoints"></a>Private Endpunkte
 
-Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem virtuellen Netzwerk mit Ihrem Recovery Services-Tresor herzustellen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Tresor. Der Netzwerkdatenverkehr zwischen Ihren Ressourcen innerhalb des virtuellen Netzwerks und dem Tresor wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbone-Netzwerk übertragen. Dadurch wird er vom öffentlichen Internet isoliert. Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](https://docs.microsoft.com/azure/backup/private-endpoints).
+Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem virtuellen Netzwerk mit Ihrem Recovery Services-Tresor herzustellen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Tresor. Der Netzwerkdatenverkehr zwischen Ihren Ressourcen innerhalb des virtuellen Netzwerks und dem Tresor wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbone-Netzwerk übertragen. Dadurch wird er vom öffentlichen Internet isoliert. Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](./private-endpoints.md).
 
 #### <a name="nsg-tags"></a>NSG-Tags
 
-Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für *Azure AD* und *Azure Storage* erstellen.  Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
+Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden Zugriff auf Azure Backup mithilfe des Diensttags *AzureBackup* zulassen. Zusätzlich zum Tag „Azure Backup“ müssen Sie auch Konnektivität für Authentifizierung und Datenübertragung zulassen, indem Sie ähnliche [NSG-Regeln](../virtual-network/security-overview.md#service-tags) für *Azure AD* und *Azure Storage* erstellen.  Die folgenden Schritte beschreiben das Vorgehen zum Erstellen einer Regel für das Azure Backup-Tag:
 
 1. Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
 
 1. Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
 
-1. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf *Diensttag* und **Zieldiensttag** auf *AzureBackup* festgelegt wurde.
+1. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](../virtual-network/manage-network-security-group.md#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf *Diensttag* und **Zieldiensttag** auf *AzureBackup* festgelegt wurde.
 
 1. Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
 
@@ -77,7 +77,7 @@ Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Stor
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall-Tags
 
-Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [Azure Firewall-FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) *AzureBackup*. Dies erlaubt sämtlichen ausgehenden Zugriff auf Azure Backup.
+Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [Azure Firewall-FQDN-Tags](../firewall/fqdn-tags.md) *AzureBackup*. Dies erlaubt sämtlichen ausgehenden Zugriff auf Azure Backup.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Zulassen des Zugriffs auf Dienst-IP-Bereiche
 
@@ -91,7 +91,7 @@ Sie können auch die folgenden FQDNs verwenden, um den Zugriff auf die erforderl
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | Gewähren des Zugriffs auf FQDNs gemäß Abschnitt 56 und 59, wie in [diesem Artikel](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) beschrieben |
+| Azure AD      | Gewähren des Zugriffs auf FQDNs gemäß Abschnitt 56 und 59, wie in [diesem Artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) beschrieben |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Verwenden eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr
 
@@ -107,7 +107,7 @@ Verwenden Sie in Datenbanknamen nicht die folgenden Elemente:
 * Semikolon ';'
 * Schrägstrich '/'
 
-Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](/rest/api/storageservices/understanding-the-table-service-data-model).
 
 >[!NOTE]
 >Der Vorgang **Schutz konfigurieren** wird für Datenbanken mit Sonderzeichen wie „+“ oder „&“ im Namen nicht unterstützt. Sie können entweder den Datenbanknamen ändern oder **Automatischen Schutz** aktivieren, sodass diese Datenbanken erfolgreich geschützt werden können.
@@ -161,11 +161,15 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
    ![Auswählen von „Sicherung konfigurieren“](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. Unter **Elemente für die Sicherung auswählen** sehen Sie alle registrierten Verfügbarkeitsgruppen und eigenständigen SQL Server-Instanzen. Klicken Sie auf den Pfeil links neben einer Zeile, um die Liste aller ungeschützten Datenbanken in dieser Instanz oder Always On-Verfügbarkeitsgruppe zu erweitern.  
+1. Klicken Sie auf **Ressourcen hinzufügen**, um alle registrierten Verfügbarkeitsgruppen und eigenständigen SQL Server-Instanzen anzuzeigen.
 
-    ![Anzeigen aller SQL Server-Instanzen mit eigenständigen Datenbanken](./media/backup-azure-sql-database/list-of-sql-databases.png)
+    ![Auswählen von „Ressourcen hinzufügen“](./media/backup-azure-sql-database/add-resources.png)
 
-3. Wählen Sie alle Datenbanken, die Sie schützen möchten, und klicken Sie dann auf **OK**.
+1. Wählen Sie auf dem Bildschirm **Elemente für die Sicherung auswählen** den Pfeil links neben einer Zeile aus, um die Liste mit allen ungeschützten Datenbanken der Instanz bzw. Always On-Verfügbarkeitsgruppe zu erweitern.
+
+    ![Auswählen von „Elemente für die Sicherung auswählen“](./media/backup-azure-sql-database/select-items-to-backup.png)
+
+1. Wählen Sie alle Datenbanken, die Sie schützen möchten, und klicken Sie dann auf **OK**.
 
    ![Schützen der Datenbank](./media/backup-azure-sql-database/select-database-to-protect.png)
 
@@ -174,28 +178,20 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
      * Zum Schützen von mehr als 50 Datenbanken konfigurieren Sie mehrere Sicherungen.
      * Zum [Aktivieren](#enable-auto-protection) der gesamten Instanz oder Always On-Verfügbarkeitsgruppe wählen Sie in der Dropdownliste **AUTOMATISCHER SCHUTZ** die Option **EIN** aus und klicken dann auf **OK**.
 
-    > [!NOTE]
-    > Das Feature [Automatischer Schutz](#enable-auto-protection) ermöglicht nicht nur den gleichzeitigen Schutz aller vorhandenen Datenbanken, sondern schützt auch automatisch alle neuen Datenbanken, die dieser Instanz oder Verfügbarkeitsgruppe hinzugefügt werden.  
+         > [!NOTE]
+         > Das Feature [Automatischer Schutz](#enable-auto-protection) ermöglicht nicht nur den gleichzeitigen Schutz aller vorhandenen Datenbanken, sondern schützt auch automatisch alle neuen Datenbanken, die dieser Instanz oder Verfügbarkeitsgruppe hinzugefügt werden.  
 
-4. Klicken Sie auf **OK**, um **Sicherungsrichtlinie** zu öffnen.
+1. Definieren Sie die **Sicherungsrichtlinie**. Führen Sie einen der folgenden Schritte aus:
 
-    ![Aktivieren des automatischen Schutzes für die Always On-Verfügbarkeitsgruppe](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-5. Wählen Sie unter **Sicherungsrichtlinie**eine Richtlinie und anschließend **OK** aus.
-
-   * Wählen Sie als Standardrichtlinie HourlyLogBackup aus.
+   * Wählen Sie als Standardrichtlinie *HourlyLogBackup* aus.
    * Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
    * Definieren einer neuen Richtlinie basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
 
      ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. Klicken Sie unter **Sicherung** auf **Sicherung aktivieren**.
+1. Klicken Sie auf **Sicherung aktivieren**, um den Vorgang **Schutz konfigurieren** zu übermitteln, und verfolgen Sie den Konfigurationsstatus im Bereich **Benachrichtigungen** des Portals nach.
 
-    ![Aktivieren der ausgewählten Sicherungsrichtlinie](./media/backup-azure-sql-database/enable-backup-button.png)
-
-7. Den Konfigurationsprozess können Sie im Portalbereich **Benachrichtigungen** nachverfolgen.
-
-    ![Benachrichtigungsbereich](./media/backup-azure-sql-database/notifications-area.png)
+   ![Nachverfolgen des Konfigurationsstatus](./media/backup-azure-sql-database/track-configuration-progress.png)
 
 ### <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
 
@@ -210,22 +206,22 @@ Eine Sicherungsrichtlinie legt fest, wann Sicherungen erstellt und wie lange sie
 So erstellen Sie eine Sicherungsrichtlinie
 
 1. Klicken Sie im Tresor auf **Sicherungsrichtlinien** > **Hinzufügen**.
-2. Wählen Sie in **Hinzufügen** zum Definieren des Richtlinientyps **SQL Server in Azure-VM**  aus.
+1. Wählen Sie in **Hinzufügen** zum Definieren des Richtlinientyps **SQL Server in Azure-VM**  aus.
 
    ![Auswählen eines Richtlinientyps für die neue Sicherungsrichtlinie](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. Geben Sie unter **Richtlinienname** einen Namen für die neue Richtlinie ein.
-4. Wählen Sie in **Richtlinie für vollständige Sicherung** eine **Sicherungshäufigkeit** aus. Wählen Sie entweder **Täglich** oder **Wöchentlich**.
+1. Geben Sie unter **Richtlinienname** einen Namen für die neue Richtlinie ein.
 
-   * Wählen Sie für **Täglich** die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
-   * Wählen Sie für **Wöchentlich** den Wochentag, die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
-   * Sie müssen eine vollständige Sicherung ausführen, da die Option **Vollständige Sicherung** nicht deaktiviert werden kann.
-   * Klicken Sie auf **Vollständige Sicherung**, um die Richtlinie anzuzeigen.
-   * Sie können keine differenziellen Sicherungen für tägliche vollständige Sicherungen erstellen.
+    ![Eingeben des Richtliniennamens](./media/backup-azure-sql-database/policy-name.png)
+
+1. Klicken Sie auf den Link **Bearbeiten** für **Vollständige Sicherung**, um die Standardeinstellungen zu ändern.
+
+   * Wählen Sie eine **Sicherungshäufigkeit** aus. Wählen Sie entweder **Täglich** oder **Wöchentlich**.
+   * Wählen Sie für **Täglich** die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus. Sie können keine differenziellen Sicherungen für tägliche vollständige Sicherungen erstellen.
 
      ![Neue Felder für Sicherungsrichtlinien](./media/backup-azure-sql-database/full-backup-policy.png)  
 
-5. In **BEIBEHALTUNGSDAUER** sind standardmäßig alle Optionen aktiviert. Deaktivieren Sie alle Optionen für die Beibehaltungsdauer, die Sie nicht wünschen, und legen Sie dann die zu verwendenden Intervalle fest.
+1. In **BEIBEHALTUNGSDAUER** sind standardmäßig alle Optionen aktiviert. Deaktivieren Sie alle Optionen für die Beibehaltungsdauer, die Sie nicht wünschen, und legen Sie dann die zu verwendenden Intervalle fest.
 
     * Die Mindestbeibehaltungsdauer beträgt für alle Sicherungstypen (vollständig/differenziell/Protokoll) sieben Tage.
     * Wiederherstellungspunkte werden unter Berücksichtigung ihrer Beibehaltungsdauer mit einer Markierung versehen. Wenn Sie beispielsweise eine tägliche vollständige Sicherung wählen, wird pro Tag nur eine vollständige Sicherung ausgelöst.
@@ -234,28 +230,28 @@ So erstellen Sie eine Sicherungsrichtlinie
 
        ![Intervalleinstellungen für Beibehaltungsdauer](./media/backup-azure-sql-database/retention-range-interval.png)
 
-6. Wählen Sie im Menü **Richtlinie für vollständige Sicherung** **OK** aus, um die Einstellungen zu übernehmen.
-7. Um eine Richtlinie für eine differenzielle Sicherung hinzuzufügen, wählen Sie **Differenzielle Sicherung** aus.
+1. Wählen Sie **OK** aus, um die Einstellung für vollständige Sicherungen zu akzeptieren.
+1. Klicken Sie auf den Link **Bearbeiten** für **Differenzielle Sicherung**, um die Standardeinstellungen zu ändern.
 
-   ![Intervalleinstellungen für Beibehaltungsdauer](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![Öffnen des Menüs „Richtlinie für differenzielle Sicherung“](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+    * Wählen Sie in **Richtlinie für differenzielle Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
+    * Pro Tag können Sie nur eine differenzielle Sicherung auslösen. Eine differenzielle Sicherung kann nicht am selben Tag wie eine vollständige Sicherung ausgelöst werden.
+    * Differenzielle Sicherungen können maximal 180 Tage aufbewahrt werden.
+    * Die differenzielle Sicherung wird für die Masterdatenbank nicht unterstützt.
 
-8. Wählen Sie in **Richtlinie für differenzielle Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
+      ![Richtlinie für differenzielle Sicherung](./media/backup-azure-sql-database/differential-backup-policy.png)
 
-    * Pro Tag können Sie nur eine differenzielle Sicherung auslösen.
-    * Differenzielle Sicherungen können maximal 180 Tage aufbewahrt werden. Verwenden Sie für eine längere Aufbewahrung vollständige Sicherungen.
+1. Klicken Sie auf den Link **Bearbeiten** für **Protokollsicherung**, um die Standardeinstellungen zu ändern.
 
-9. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
+    * Wählen Sie in **Protokollsicherung** die Option **Aktivieren** aus, und legen Sie die Einstellungen für Häufigkeit und Aufbewahrung fest.
+    * Transaktionsprotokollsicherungen können alle 15 Minuten erfolgen und bis zu 35 Tage aufbewahrt werden.
+    * Wenn für die Datenbank das [einfache Wiederherstellungsmodell](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15) verwendet wird, wird der Zeitplan der Protokollsicherung für diese Datenbank angehalten, sodass keine Protokollsicherungen ausgelöst werden.
+    * Wenn sich das Wiederherstellungsmodell der Datenbank von **Vollständig** in **Einfach** ändert, wird die Durchführung von Protokollsicherungen innerhalb von 24 Stunden nach der Änderung des Wiederherstellungsmodells angehalten. Analog hierzu gilt Folgendes: Wenn das Wiederherstellungsmodell von **Einfach** in einen anderen Zustand geändert wird und Protokollsicherungen für die Datenbank unterstützt werden, werden die Zeitpläne für die Protokollsicherungen entsprechend innerhalb von 24 Stunden nach der Änderung des Wiederherstellungsmodells aktiviert.
 
-10. Um eine Richtlinie für eine Transaktionsprotokollsicherung hinzuzufügen, wählen Sie **Protokollsicherung** aus.
-11. Wählen Sie in **Protokollsicherung** die Option **Aktivieren** aus, und legen Sie die Einstellungen für Häufigkeit und Aufbewahrung fest. Transaktionsprotokollsicherungen können alle 15 Minuten erfolgen und bis zu 35 Tage aufbewahrt werden.
-12. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
+      ![Richtlinie für Protokollsicherung](./media/backup-azure-sql-database/log-backup-policy.png)
 
-    ![Bearbeiten der Richtlinie für die Transaktionsprotokollsicherung](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+1. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird. Diese Option ist standardmäßig deaktiviert. Wenn sie aktiviert ist, sendet SQL Server einen komprimierten Sicherungsdatenstrom an die VDI. Von Azure Backup werden je nach Wert dieses Steuerelements die Standardwerte für Instanzebenen mit der Klausel „COMPRESSION/NO_COMPRESSION“ überschrieben.
 
-13. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird. Diese Option ist standardmäßig deaktiviert. Wenn sie aktiviert ist, sendet SQL Server einen komprimierten Sicherungsdatenstrom an die VDI.  Beachten Sie, dass Azure Backup je nach Wert dieses Steuerelements die Standardwerte für Instanzebenen mit der Klausel „COMPRESSION / NO_COMPRESSION“ überschreibt.
-
-14. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus.
+1. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus.
 
 > [!NOTE]
 > Jede Protokollsicherung wird mit der vorherigen vollständigen Sicherung zu einer Wiederherstellungskette verkettet. Diese vollständige Sicherung wird aufbewahrt, bis die Aufbewahrungsdauer der letzten Protokollsicherung abgelaufen ist. Das kann bedeuten, dass die vollständige Sicherung für einen zusätzlichen Zeitraum aufbewahrt wird, um sicherzustellen, dass alle Protokolle wiederhergestellt werden können. Ein Beispiel: Ein Benutzer hat eine wöchentliche vollständige Sicherung, tägliche differenzielle Sicherungen und alle zwei Stunden ausgeführte Protokolle eingerichtet. Alle werden 30 Tage lang aufbewahrt. Die wöchentliche vollständige Sicherung kann aber erst vollständig bereinigt/gelöscht werden, wenn die nächste vollständige Sicherung verfügbar ist, also nach 30 + 7 Tagen. Angenommen, am 16. November erfolgt eine wöchentliche vollständige Sicherung. Gemäß der Aufbewahrungsrichtlinie wird diese bis zum 16. Dezember aufbewahrt. Die letzte Protokollsicherung hierfür erfolgt vor der nächsten geplanten vollständigen Sicherung, und zwar am 22. November. Solange dieses Protokoll bis zum 22. Dezember verfügbar ist, kann die vollständige Sicherung vom 16. November nicht gelöscht werden. Die vollständige Sicherung vom 16. November wird also bis zum 22. Dezember aufbewahrt.
