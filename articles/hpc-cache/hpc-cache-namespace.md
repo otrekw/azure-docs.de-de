@@ -1,17 +1,17 @@
 ---
-title: Erstellen einer Azure HPC Cache-Instanz
-description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
+title: Verwenden des aggregierten Azure HPC Cache-Namespace
+description: Planen des virtuellen Namespace für Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045806"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497028"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Planen des aggregierten Namespace
 
@@ -30,7 +30,7 @@ Ziehen Sie beispielsweise ein System in Erwägung, in dem eine Instanz von Azure
 Die Vorlagendaten sind in einem Rechenzentrum gespeichert, und die für diesen Auftrag erforderlichen Informationen sind in diesen Unterverzeichnissen gespeichert:
 
 * */goldline/templates/acme2017/sku798*
-* */goldline/templates/acme2017/sku980* 
+* */goldline/templates/acme2017/sku980*
 
 Das Speichersystem des Rechenzentrums macht diese Exporte verfügbar:
 
@@ -52,10 +52,10 @@ Ein NFS-Speicherziel kann mehrere virtuelle Namespacepfade aufweisen, sofern jed
 
 Da es sich bei den NFS-Quellpfaden um Unterverzeichnisse des gleichen Exports handelt, müssen Sie für das gleiche Speicherziel mehrere Namespacepfade definieren.
 
-| Hostname des Speicherziels  | NFS-Exportpfad      | Unterverzeichnispfad | Namespacepfad    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *IP-Adresse oder Hostname* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *IP-Adresse oder Hostname* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| Hostname des Speicherziels  | NFS-Exportpfad     | Unterverzeichnispfad | Namespacepfad    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *IP-Adresse oder Hostname* | /goldline/templates | acme2017/sku798   | /templates/sku798 |
+| *IP-Adresse oder Hostname* | /goldline/templates | acme2017/sku980   | /templates/sku980 |
 
 Eine Clientanwendung kann den Cache einbinden und komfortabel auf die Dateipfade ``/source``, ``/templates/sku798`` und ``/templates/sku980`` des aggregierten Namespace zugreifen.
 
