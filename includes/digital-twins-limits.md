@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 76ccd6f42f2cfd83512a2e817e8c2ac9aa61a28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21d910fb0e0992b35aa19ce65fc216734e30265c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391480"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515868"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
@@ -47,4 +47,4 @@ Diese Tabelle gibt die Ratenbegrenzungen verschiedener APIs an.
 
 Grenzwerte für Datentypen und Felder in DTDL-Dokumenten für Azure Digital Twins-Modelle finden Sie in der Dokumentation zu den entsprechenden Spezifikationen in GitHub: [Digital Twins Definition Language (DTDL) – Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
  
-Details zur Abfragelatenz und andere Richtlinien zum Schreiben von Abfragen während der Vorschau finden Sie in [Vorgehensweise: Abfragen des Zwillingsgraphen](../articles/digital-twins/how-to-query-graph.md).
+Details zur Abfragelatenz und andere Richtlinien zum Schreiben von Abfragen während der Vorschau finden Sie in [*Vorgehensweise: Abfragen des Zwillingsgraphen*](../articles/digital-twins/how-to-query-graph.md).

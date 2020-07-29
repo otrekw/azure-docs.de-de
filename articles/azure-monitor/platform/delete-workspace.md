@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ecd40d34233ba6f0b886f4b55aedf4339bf6de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505192"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -41,7 +41,7 @@ Mit dem Löschvorgang des Arbeitsbereichs wird die Resource Manager-Ressource de
 > [!NOTE] 
 > Installierte Lösungen und verknüpfte Dienste wie Ihr Azure Automation-Konto werden zum Zeitpunkt der Löschung dauerhaft aus dem Arbeitsbereich entfernt und können nicht wiederhergestellt werden. Diese sollten nach dem Wiederherstellungsvorgang neu konfiguriert werden, um den vorherigen konfigurierten Zustand des Arbeitsbereichs wiederherzustellen.
 
-Sie können einen Arbeitsbereich mithilfe von [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), über die [REST-API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) oder im [Azure-Portal](https://portal.azure.com) löschen.
+Sie können einen Arbeitsbereich mithilfe von [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), über die [REST-API](/rest/api/loganalytics/workspaces/delete) oder im [Azure-Portal](https://portal.azure.com) löschen.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -64,10 +64,10 @@ Die Methode des vorläufigen Löschens ist in einigen Szenarien möglicherweise 
 > [!IMPORTANT]
 > Verwenden Sie dauerhafte Löschungen von Arbeitsbereichen mit Vorsicht, da dieser Vorgang nicht rückgängig gemacht werden kann. Sie können dann weder den Arbeitsbereich noch dessen Daten wiederherstellen.
 
-Fügen Sie das „-force“-Tag hinzu, um Ihren Arbeitsbereich dauerhaft zu löschen:
+Fügen Sie das Tag „-forceDelete“ hinzu, um Ihren Arbeitsbereich dauerhaft zu löschen:
 
 ```powershell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
 ```
 
 ## <a name="recover-workspace"></a>Wiederherstellen eines Arbeitsbereichs
@@ -112,6 +112,6 @@ Sie benötigen mindestens die Berechtigungen der Rolle *Log Analytics-Mitwirkend
 * Wenn Sie beim Erstellen eines Arbeitsbereichs die Fehlermeldung *Dieser Arbeitsbereichsname wird bereits verwendet* oder einen *Konflikt* erhalten, kann dies folgende Gründe haben:
   * Der Name des Arbeitsbereichs ist nicht verfügbar und wird bereits von jemandem in Ihrer Organisation oder von einem anderen Kunden verwendet.
   * Der Arbeitsbereich wurde innerhalb der letzten 14 Tage gelöscht, und der Name wurde für den Zeitraum der vorläufigen Löschung reserviert. Zum Überschreiben der vorübergehenden Löschung und der dauerhaften Löschen des Arbeitsbereichs, um einen neuen, gleichnamigen Arbeitsbereich zu erstellen, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:<br>
-     1. [Stellen Sie Ihren Arbeitsbereich wieder her.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
-     2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+     1. [Stellen Sie Ihren Arbeitsbereich wieder her.](#recover-workspace)
+     2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](#permanent-workspace-delete)
      3. Erstellen Sie einen neuen Arbeitsbereich mit demselben Arbeitsbereichnamen.

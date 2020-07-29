@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69016655"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530387"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Vergleich der Azure On-Demand Media Encoder  
 
@@ -34,7 +34,7 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 |---|---|---|
 |Anwenden bedingter Logik beim Codieren<br/>(z.B. wenn die Eingabe in HD erfolgt, dann in 5.1-Audio codieren)|Nein|Ja|
 |Untertitelung|Nein|[Ja](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® Professional Loudness Correction](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> mit Dialogue Intelligence™|Nein|Ja|
+|[Dolby&reg; Professional Loudness Correction](https://professional.dolby.com/product/broadcast/vm600/)<br/> mit Dialogue Intelligence&trade;|Nein|Ja|
 |Deinterlacing, Inverse Telecine|Basic|Broadcastqualität|
 |Erkennen und Entfernen von schwarzen Rahmen <br/>(Pillarbox, Letterbox)|Nein|Ja|
 |Erstellen von Miniaturansichten|[Ja](media-services-dotnet-generate-thumbnail-with-mes.md)|[Ja](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -52,7 +52,7 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 ## <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
 | Eingabecontainer/Dateiformate | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Ja |Ja |
+| Adobe&reg; Flash&reg; F4V |Ja |Ja |
 | MXF/SMPTE 377M |Ja |Ja |
 | GXF |Ja |Ja |
 | MPEG-2-Transportdatenstrom |Ja |Ja |
@@ -73,7 +73,7 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 | Avid DNxHD (in MXF) |Ja |Ja |
 | DVCPro/DVCProHD (in MXF) |Ja |Ja |
 | JPEG2000 |Ja |Ja |
-| MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs® und D10 eingeschlossen) |Bis zu 422 Profile |Ja |
+| MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs&reg; und D10 eingeschlossen) |Bis zu 422 Profile |Ja |
 | MPEG-1 |Ja |Ja |
 | Windows Media Video/VC-1 |Ja |Ja |
 | Canopus HQ/HQX |Nein |Nein |
@@ -91,9 +91,9 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 | Codecs für Audioeingang | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M und 302M, AES3-2003) |Nein |Ja |
-| Dolby® E |Nein |Ja |
-| Dolby® Digital (AC3) |Nein |Ja |
-| Dolby® Digital Plus (E-AC3) |Nein |Ja |
+| Dolby&reg; E |Nein |Ja |
+| Dolby&reg; Digital (AC3) |Nein |Ja |
+| Dolby&reg; Digital Plus (E-AC3) |Nein |Ja |
 | AAC (AAC-LC, AAC-HE und AAC-HEv2; bis 5.1) |Ja |Ja |
 | MPEG Layer 2 |Ja |Ja |
 | MP3 (MPEG-1 Audio Layer 3) |Ja |Ja |
@@ -106,7 +106,7 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 ## <a name="output-containerfile-formats"></a>Ausgabecontainer/Dateiformate
 | Ausgabecontainer/Dateiformate | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Nein |Ja |
+| Adobe&reg; Flash&reg; F4V |Nein |Ja |
 | MXF (OP1a, XDCAM und AS02) |Nein |Ja |
 | DPP (einschließlich AS11) |Nein |Ja |
 | GXF |Nein |Ja |
@@ -122,7 +122,7 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 | AVC (H.264; 8-Bit; bis High Profile, Level 5.2; 4K Ultra HD; AVC Intra) |Nur 8-Bit 4:2:0 |Ja |
 | HEVC (H.265; 8 Bit und 10 Bit)  |Nein |Ja |
 | Avid DNxHD (in MXF) |Nein |Ja |
-| MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs® und D10 eingeschlossen) |Nein |Ja |
+| MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs&reg; und D10 eingeschlossen) |Nein |Ja |
 | MPEG-1 |Nein |Ja |
 | Windows Media Video/VC-1 |Nein |Ja |
 | Erstellung von JPEG-Miniaturansichten |Ja |Ja |
@@ -133,15 +133,15 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 | Codecs für Audioausgabe | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M und 302M, AES3-2003) |Nein |Ja |
-| Dolby® Digital (AC3) |Nein |Ja |
-| Dolby® Digital Plus (E-AC3) bis 7.1 |Nein |Ja |
+| Dolby&reg; Digital (AC3) |Nein |Ja |
+| Dolby&reg; Digital Plus (E-AC3) bis 7.1 |Nein |Ja |
 | AAC (AAC-LC, AAC-HE und AAC-HEv2; bis 5.1) |Ja |Ja |
 | MPEG Layer 2 |Nein |Ja |
 | MP3 (MPEG-1 Audio Layer 3) |Nein |Ja |
 | Windows Media Audio |Nein |Ja |
 
 >[!NOTE]
->Wenn Sie in Dolby® Digital (AC3) codieren, kann die Ausgabe nur in eine ISO MP4-Datei geschrieben werden.
+>Wenn Sie in Dolby&reg; Digital (AC3) codieren, kann die Ausgabe nur in eine ISO MP4-Datei geschrieben werden.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -4,12 +4,12 @@ description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516055"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -20,7 +20,7 @@ Aktivitätsprotokollwarnungen werden aktiviert, wenn ein neues Aktivitätsprotok
 Diese Warnungen gelten für Azure-Ressourcen und können mit einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. Normalerweise erstellen Sie Aktivitätsprotokollwarnungen, um Benachrichtigungen zu erhalten, wenn es für Ressourcen in Ihrem Azure-Abonnement zu spezifischen Änderungen kommt. Warnungen gelten häufig für bestimmte Ressourcengruppen oder Ressourcen. Es kann beispielsweise sein, dass Sie benachrichtigt werden möchten, wenn ein beliebiger virtueller Computer in der Beispielressourcengruppe **myProductionResourceGroup** gelöscht wird. Unter Umständen möchten Sie auch benachrichtigt werden, wenn einem Benutzer unter Ihrem Abonnement neue Rollen zugewiesen werden.
 
 > [!IMPORTANT]
-> Warnungen zur Service Health-Benachrichtigung können nicht über die Schnittstelle zur Erstellung von Aktivitätsprotokollwarnungen erstellt werden. Weitere Informationen zum Erstellen und Verwenden von Service Health-Benachrichtigungen finden Sie unter [Empfangen von Aktivitätsprotokollwarnungen zu Service Health-Benachrichtigungen](alerts-activity-log-service-notifications.md).
+> Warnungen zur Service Health-Benachrichtigung können nicht über die Schnittstelle zur Erstellung von Aktivitätsprotokollwarnungen erstellt werden. Weitere Informationen zum Erstellen und Verwenden von Service Health-Benachrichtigungen finden Sie unter [Empfangen von Aktivitätsprotokollwarnungen zu Service Health-Benachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 Stellen Sie beim Erstellen von Warnungsregeln Folgendes sicher:
 
@@ -28,6 +28,7 @@ Stellen Sie beim Erstellen von Warnungsregeln Folgendes sicher:
 - Die Kriterien, für die die Warnung konfiguriert wird, müssen die Ereigniskategorie „Ebene“, „Status“, „Aufrufer“, „Ressourcengruppe“, „Ressourcen-ID“ oder „Ressourcentyp“ sein.
 - Im JSON-Code für die Warnungskonfiguration gibt es keine Bedingung „anyOf“ oder geschaltete Bedingungen. Grundsätzlich ist nur eine „allOf“-Bedingung ohne weitere „allOf“- oder „anyOf“-Bedingungen zulässig.
 - Wenn die Kategorie „Verwaltung“ lautet, müssen Sie in Ihrer Warnung mindestens ein Kriterium der oben genannten Kriterien angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
+- Warnungen können für Ereignisse in der Kategorie „Warnung“ des Aktivitätsprotokolls nicht erstellt werden.
 
 ## <a name="azure-portal"></a>Azure-Portal
 
@@ -101,7 +102,7 @@ Verwenden Sie das folgende Verfahren.
     Sie können eine Regel aktivieren, deaktivieren, bearbeiten oder löschen. Erfahren Sie mehr über die Verwaltung von Aktivitätsprotokollregeln.
 
 
-Eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsregeln in einem Aktivitätsprotokoll erstellt werden können, ist die Untersuchung oder Filterung von Ereignissen über das [Aktivitätsprotokoll im Azure-Portal](activity-log-view.md#azure-portal). Auf dem Bildschirm **Azure Monitor – Aktivitätsprotokoll** können Sie erforderliche Ereignisse filtern oder finden und dann eine Warnung mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. Befolgen Sie dann die Schritte 4 bis 7 wie zuvor gezeigt.
+Eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsregeln in einem Aktivitätsprotokoll erstellt werden können, ist die Untersuchung oder Filterung von Ereignissen über das [Aktivitätsprotokoll im Azure-Portal](./activity-log.md#view-the-activity-log). Auf dem Bildschirm **Azure Monitor – Aktivitätsprotokoll** können Sie erforderliche Ereignisse filtern oder finden und dann eine Warnung mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. Befolgen Sie dann die Schritte 4 bis 7 wie zuvor gezeigt.
     
  ![Hinzufügen einer Warnung aus dem Aktivitätsprotokoll](media/alerts-activity-log/add-activity-log.png)
     
@@ -243,7 +244,7 @@ Weitere Informationen zu den Aktivitätsprotokollfeldern finden Sie [hier](https
 > Es kann bis zu 5 Minuten dauern, bis die neue Warnungsregel des Aktivitätsprotokolls aktiv wird.
 
 ## <a name="rest-api"></a>REST-API 
-Die [Azure Monitor-Aktivitätsprotokollwarnungen-API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) ist eine Rest-API. Sie ist vollständig mit der Azure Resource Manager-Rest-API kompatibel. Sie kann über PowerShell mit dem Resource Manager-Cmdlet oder der Azure CLI verwendet werden.
+Die [Azure Monitor-Aktivitätsprotokollwarnungen-API](/rest/api/monitor/activitylogalerts) ist eine Rest-API. Sie ist vollständig mit der Azure Resource Manager-Rest-API kompatibel. Sie kann über PowerShell mit dem Resource Manager-Cmdlet oder der Azure CLI verwendet werden.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -262,29 +263,29 @@ Dabei enthält die Datei „sampleActivityLogAlert.parameters.json“ die Werte 
 
 In Aktivitätsprotokollwarnungen stehen folgende dedizierte PowerShell-Cmdlets zur Verfügung:
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert): Erstellt eine neue Aktivitätsprotokollwarnung oder aktualisiert eine vorhandene Aktivitätsprotokollwarnung.
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert): Ruft mindestens eine Aktivitätsprotokoll-Warnungsressource ab.
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert): Aktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): Deaktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert): Entfernt eine Aktivitätsprotokollwarnung.
+- [Set-AzActivityLogAlert](/powershell/module/az.monitor/set-azactivitylogalert): Erstellt eine neue Aktivitätsprotokollwarnung oder aktualisiert eine vorhandene Aktivitätsprotokollwarnung.
+- [Get-AzActivityLogAlert](/powershell/module/az.monitor/get-azactivitylogalert): Ruft mindestens eine Aktivitätsprotokoll-Warnungsressource ab.
+- [Enable-AzActivityLogAlert](/powershell/module/az.monitor/enable-azactivitylogalert): Aktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
+- [Disable-AzActivityLogAlert](/powershell/module/az.monitor/disable-azactivitylogalert): Deaktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
+- [Remove-AzActivityLogAlert](/powershell/module/az.monitor/remove-azactivitylogalert): Entfernt eine Aktivitätsprotokollwarnung.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Unter [az monitor activity-log alert](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) stehen dedizierte Azure CLI-Befehle zum Verwalten von Aktivitätsprotokoll-Warnungsregeln zur Verfügung.
+Unter [az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) stehen dedizierte Azure CLI-Befehle zum Verwalten von Aktivitätsprotokoll-Warnungsregeln zur Verfügung.
 
 Verwenden Sie für die Erstellung einer neuen Warnungsregel des Aktivitätsprotokolls die folgenden Befehle in der angegebenen Reihenfolge:
 
-1. [az monitor activity-log alert create:](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create) Erstellen einer neuen Ressource für Warnungsregeln des Aktivitätsprotokolls.
-1. [az monitor activity-log alert scope:](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope) Hinzufügen des Bereichs für die erstellte Warnungsregel des Aktivitätsprotokolls.
-1. [az monitor activity-log alert action-group:](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group) Hinzufügen einer Aktionsgruppe zur Warnungsregel des Aktivitätsprotokolls.
+1. [az monitor activity-log alert create:](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create) Erstellen einer neuen Ressource für Warnungsregeln des Aktivitätsprotokolls.
+1. [az monitor activity-log alert scope:](/cli/azure/monitor/activity-log/alert/scope) Hinzufügen des Bereichs für die erstellte Warnungsregel des Aktivitätsprotokolls.
+1. [az monitor activity-log alert action-group:](/cli/azure/monitor/activity-log/alert/action-group) Hinzufügen einer Aktionsgruppe zur Warnungsregel des Aktivitätsprotokolls.
 
-Zum Abrufen einer Ressource für Warnungsregeln des Aktivitätsprotokolls verwenden Sie den Azure CLI-Befehl [az monitor activity-log alert show](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
-). Zum Anzeigen aller Ressourcen für Warnungsregeln des Aktivitätsprotokolls in einer Ressourcengruppe verwenden Sie den Befehl [az monitor activity-log alert list](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
-Ressourcen für Warnungsregeln des Aktivitätsprotokolls können mit dem Azure CLI-Befehl [az monitor activity-log alert delete](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) entfernt werden.
+Zum Abrufen einer Ressource für Warnungsregeln des Aktivitätsprotokolls verwenden Sie den Azure CLI-Befehl [az monitor activity-log alert show](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+). Zum Anzeigen aller Ressourcen für Warnungsregeln des Aktivitätsprotokolls in einer Ressourcengruppe verwenden Sie den Befehl [az monitor activity-log alert list](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
+Ressourcen für Warnungsregeln des Aktivitätsprotokolls können mit dem Azure CLI-Befehl [az monitor activity-log alert delete](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokolle](../../azure-monitor/platform/activity-log-alerts-webhook.md).
 - Lesen Sie eine [Übersicht über Aktivitätsprotokolle](../../azure-monitor/platform/activity-log-alerts.md).
 - Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).  
-- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../azure-monitor/platform/service-notifications.md).
+- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../service-health/service-notifications.md).

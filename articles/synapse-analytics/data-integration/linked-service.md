@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen und Schützen eines verknüpften Diensts in Azure Synapse Analytics
+title: Schützen eines verknüpften Diensts
 description: Hier erfahren Sie, wie Sie einen verknüpften Dienst per verwaltetem VNET bereitstellen und schützen.
 services: synapse-analytics
 author: acomet
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427238"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496076"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link 
 

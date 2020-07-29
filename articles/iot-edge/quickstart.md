@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c0476c7190dcf2ac42dafc9896540be83a938016
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801708"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511907"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Windows-Gerät
 
@@ -37,7 +37,7 @@ Wenn Sie über kein aktives Azure-Abonnement verfügen, können Sie ein [kostenl
 
 Verwenden Sie die Azure CLI, um viele der Schritte in dieser Schnellstartanleitung auszuführen. Azure IoT verfügt über eine Erweiterung, um zusätzliche Funktionen zu aktivieren.
 
-Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
+Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
 
    ```azurecli-interactive
    az extension add --name azure-iot
@@ -84,7 +84,7 @@ Beginnen Sie den Schnellstart, indem Sie an der Azure-Befehlszeilenschnittstelle
 
 Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie IoT Hub schon einmal genutzt und bereits einen Hub erstellt haben, können Sie diesen IoT-Hub verwenden.
 
-Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe `IoTEdgeResources` erstellt. Ersetzen Sie `{hub_name}` durch einen eindeutigen Namen für Ihren IoT-Hub.
+Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe `IoTEdgeResources` erstellt. Ersetzen Sie `{hub_name}` durch einen eindeutigen Namen für Ihren IoT-Hub. Die Erstellung einer IoT Hub-Instanz kann einige Minuten dauern.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -107,7 +107,7 @@ Da IoT Edge-Geräte sich von typischen IoT-Geräten unterscheiden und auf unters
    az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
    ```
 
-   Falls Sie eine Fehlermeldung zu iothubowner-Richtlinienschlüsseln erhalten, überprüfen Sie, ob in Ihrer Cloud Shell-Instanz die aktuelle Version der Erweiterung „azure-iot“ ausgeführt wird.
+   Falls Sie eine Fehlermeldung zu iothubowner-Richtlinienschlüsseln erhalten, überprüfen Sie, ob in Ihrer Cloud Shell-Instanz die aktuelle Version der Erweiterung „azure-iot“ ausgeführt wird.
 
 2. Zeigen Sie die Verbindungszeichenfolge für Ihr Gerät an, über die Ihr physisches Gerät mit seiner Identität in IoT Hub verknüpft wird. Sie enthält den Namen Ihres IoT-Hubs, den Namen Ihres Geräts und einen gemeinsam verwendeten Schlüssel, mit dem die Verbindungen zwischen diesen Komponenten authentifiziert werden.
 
@@ -124,7 +124,7 @@ Da IoT Edge-Geräte sich von typischen IoT-Geräten unterscheiden und auf unters
 Installieren Sie die Azure IoT Edge-Runtime auf Ihrem IoT Edge-Gerät, und konfigurieren Sie es mit einer Geräte-Verbindungszeichenfolge.
 ![Diagramm: Starten der Runtime auf einem Gerät](./media/quickstart/start-runtime.png)
 
-Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein IoT Edge-Gerät gestartet wird. Hierbei wird der IoT Edge-Agent gestartet, um einen Bootstrapvorgang durchzuführen. Mit dem **IoT Edge-Agent** wird die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hubs, verwaltet. Der **IoT Edge-Hub** verarbeitet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub.
+Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der *Daemon für die IoT Edge-Sicherheit* wird jedes Mal gestartet, wenn ein IoT Edge-Gerät gestartet wird. Hierbei wird der IoT Edge-Agent gestartet, um einen Bootstrapvorgang durchzuführen. Mit dem *IoT Edge-Agent* wird die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hubs, verwaltet. Der *IoT Edge-Hub* verarbeitet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub.
 
 Das Installationsskript beinhaltet auch ein Containermodul namens Moby, das die Containerimages auf Ihrem IoT Edge-Gerät verwaltet.
 
@@ -236,10 +236,19 @@ Wenn Sie mit den IoT Edge-Tutorials fortfahren möchten, können Sie das Gerät 
 
 Wenn Sie Ihren virtuellen Computer und Azure IoT Hub in einer neuen Ressourcengruppe erstellt haben, können Sie diese Gruppe und alle zugehörigen Ressourcen löschen. Überprüfen Sie den Inhalt der Ressourcengruppe, um sicherzustellen, dass sie keine Elemente enthält, die Sie behalten möchten. Wenn Sie nicht die gesamte Gruppe löschen möchten, können Sie stattdessen einzelne Ressourcen löschen.
 
-Entfernen Sie die Gruppe **IoTEdgeResources**.
+> [!IMPORTANT]
+> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden.
+
+Entfernen Sie die Gruppe **IoTEdgeResources**. Das Löschen einer Ressourcengruppe kann einige Minuten dauern.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+Sie können sich vergewissern, dass die Ressourcengruppe entfernt wurde, indem Sie die Liste der Ressourcengruppen anzeigen.
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
