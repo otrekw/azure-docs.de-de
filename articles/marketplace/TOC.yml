@@ -169,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: Erstellen eines SaaS-Angebots
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Azure AD-Authentifizierung für SaaS
+              items:
+                - name: Übersicht über Azure AD und SaaS
+                  href: ./azure-ad-saas.md
+                - name: Landing Page für transaktionsfähige Angebote
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: Landing Page für kostenlose Angebote und Testangebote
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS-Fulfillment-APIs
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
