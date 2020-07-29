@@ -485,7 +485,7 @@
             - name: Anzeigen von Benachrichtigungen
               href: ../service-health/service-notifications.md
             - name: Konfigurieren von Warnungen für Benachrichtigungsereignisse
-              href: platform/alerts-activity-log-service-notifications.md
+              href: ../service-health/alerts-activity-log-service-notifications-portal.md
         - name: Benachrichtigungen und Aktionen
           items:
             - name: Aktionsregeln (Vorschauversion)
@@ -905,18 +905,24 @@
           href: insights/vminsights-ga-release-faq.md
         - name: Häufig gestellte Fragen
           href: faq.md#azure-monitor-for-vms
-        - name: Aktivieren der Überwachung
+        - name: Konfigurieren des Arbeitsbereichs
+          href: insights/vminsights-configure-workspace.md
+        - name: Installieren von Agents
           items:
-            - name: 'Aktivieren der Überwachung: Übersicht'
+            - name: Übersicht
               href: insights/vminsights-enable-overview.md
-            - name: Aktivieren für einen einzelnen virtuellen Azure-Computer
-              href: insights/vminsights-enable-single-vm.md
-            - name: Aktivieren mithilfe von Azure Policy
-              href: insights/vminsights-enable-at-scale-policy.md
-            - name: Aktivieren mithilfe von Azure PowerShell
-              href: insights/vminsights-enable-at-scale-powershell.md
-            - name: Aktivieren für Hybridumgebungen
-              href: insights/vminsights-enable-hybrid-cloud.md
+            - name: Azure-Portal
+              href: insights/vminsights-enable-portal.md
+            - name: Azure PowerShell
+              href: insights/vminsights-enable-powershell.md
+            - name: ARM-Vorlagen
+              href: insights/vminsights-enable-resource-manager.md
+            - name: Azure Policy
+              href: insights/vminsights-enable-policy.md
+            - name: Hybrid-VMs
+              href: insights/vminsights-enable-hybrid.md
+            - name: Upgrade des Dependency-Agents
+              href: insights/vminsights-dependency-agent-maintenance.md
         - name: Zuordnen von Abhängigkeiten
           href: insights/vminsights-maps.md
         - name: Überwachen der Leistung
@@ -927,15 +933,13 @@
           href: insights/vminsights-workbooks.md
         - name: Erstellen von Warnungsregeln
           href: insights/vminsights-alerts.md
-        - name: Upgrade des Dependency-Agents
-          href: insights/vminsights-dependency-agent-maintenance.md
         - name: Deaktivieren der Überwachung
           href: insights/vminsights-optout.md
     - name: Azure Monitor für Container
       items:
         - name: Übersicht
           href: insights/container-insights-overview.md
-        - name: Häufig gestellte Fragen
+        - name: FAQ
           href: faq.md#azure-monitor-for-containers
         - name: Aktivieren der Überwachung
           items:

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 886e6cf237df94c056ec7c592e0b535327339871
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243795"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507062"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -49,7 +49,7 @@ In AKS ist eine allgemein verfügbare Version als eine Version definiert, die in
 > [!NOTE]
 > AKS verwendet sichere Bereitstellungsmethoden einschließlich einer graduellen Bereitstellung in Regionen. Das bedeutet, dass es bis zu zehn Werktage dauern kann, bis ein neues Release oder eine neue Version in allen Regionen verfügbar ist.
 
-Das unterstützte Fenster für Kubernetes-Versionen in AKS wird als „N-2“ bezeichnet: „N“ für das neueste Release – 2 für die Anzahl der Nebenversionen.
+Das unterstützte Fenster für Kubernetes-Versionen in AKS wird als „N-2“ bezeichnet: („N“ für das neueste Release – 2 für die Anzahl der Nebenversionen).
 
 Wenn AKS beispielsweise die Version *1.17.a* einführt, werden die folgenden Versionen unterstützt:
 
@@ -131,7 +131,7 @@ Den Verlauf der letzten Versionen finden Sie [hier](https://en.wikipedia.org/wik
 | 1.17  | 09. Dezember 2019  | Januar 2019   | Juli 2020  | 1.20 GA | 
 | 1.18  | 23. März 2020  | Mai 2020   | August 2020  | 1.21 GA | 
 | 1.19  | 04. August 2020  | August 2020   | November 2020  | 1.22 GA | 
-| 1.20  | *November 2020    | *Dezember 2021   | *Januar 2021  | 1.23 GA | 
+| 1.20  | *November 2020    | *Dezember 2020   | *Januar 2021  | 1.23 GA | 
 
 \* Vorbehaltlich der Bestätigung des Upstreamreleasedatums.
 
@@ -181,4 +181,4 @@ Weitere Informationen zum Upgrade Ihres Clusters finden Sie unter [Durchführen 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions
-[preview-terms]: /support/legal/preview-supplemental-terms
+[preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

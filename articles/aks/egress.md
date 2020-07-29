@@ -5,20 +5,22 @@ description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für a
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205777"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517772"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr mit einem Lastenausgleich der SKU *Basic* in Azure Kubernetes Service (AKS)
 
-Standardmäßig wird die ausgehende IP-Adresse eines AKS-Clusters zufällig zugewiesen. Diese Konfiguration ist nicht ideal, wenn Sie beispielsweise eine IP-Adresse für den Zugriff auf externe Dienste identifizieren müssen. Stattdessen müssen Sie möglicherweise eine statische IP-Adresse zuweisen, die für den Dienstzugriff in die Whitelist aufgenommen werden kann.
+Standardmäßig wird die ausgehende IP-Adresse eines AKS-Clusters zufällig zugewiesen. Diese Konfiguration ist nicht ideal, wenn Sie beispielsweise eine IP-Adresse für den Zugriff auf externe Dienste identifizieren müssen. Stattdessen müssen Sie möglicherweise eine statische IP-Adresse zuweisen, die einer Liste zugelassener IP-Adressen für den Dienstzugriff hinzugefügt wird.
 
 In diesem Artikel wird Ihnen gezeigt, wie Sie eine statische öffentliche IP-Adresse für ausgehenden Datenverkehr in einem AKS-Cluster erstellen und verwenden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
+
+In diesem Artikel wird davon ausgegangen, dass Sie Azure Load Balancer Basic verwenden.  Wir empfehlen die Verwendung von [Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview), und Sie können erweiterte Features zum [Steuern des ausgehenden AKS-Datenverkehrs](https://docs.microsoft.com/azure/aks/limit-egress-traffic) verwenden.
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
@@ -105,7 +107,7 @@ Sie können einen DNS-Lookup-Dienst wie `checkip.dyndns.org` verwenden, um zu ü
 Beginnen Sie zunächst mit dem Anfügen eines einfachen *Debian*-Pods:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 Verwenden Sie `apt-get` zum Installieren von `curl` im Container, um innerhalb des Containers auf eine Website zuzugreifen.

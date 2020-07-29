@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181731"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518180"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web-App, die Web-APIs aufruft: Abrufen eines Tokens für die App
 
@@ -50,6 +50,7 @@ Der `ITokenAcquisition`-Dienst wird von ASP.NET mithilfe der Abhängigkeitsinjek
 Im Folgenden finden Sie den vereinfachten Code für die Aktion des `HomeController`, mit der ein Token zum Aufrufen von Microsoft Graph abgerufen wird:
 
 ```csharp
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,6 +66,8 @@ public async Task<IActionResult> Profile()
 
 Um den für dieses Szenario erforderlichen Code besser zu verstehen, sollten Sie sich den Schritt der 2. Phase ([2.1 Web-App ruft Microsoft Graph auf](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) im Tutorial [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) ansehen.
 
+Das `AuthorizeForScopes`-Attribut über der Controlleraktion (oder der Razor-Seite bei Verwendung einer Razor-Vorlage) wird von Microsoft.Identity.Web bereitgestellt. Damit wird sichergestellt, dass der Benutzer bei Bedarf (und inkrementell) zur Zustimmung aufgefordert wird.
+
 Es gibt andere komplexe Varianten, wie beispielsweise:
 
 - Aufrufen mehrerer APIs
@@ -79,6 +82,36 @@ Der Code für ASP.NET ähnelt dem für ASP.NET Core dargestellten Code:
 - Eine durch das Attribut „[Authorize]“ geschützte Controlleraktion extrahiert die Mandanten- und Benutzer-ID des `ClaimsPrincipal`-Members aus dem Controller. (ASP.NET verwendet `HttpContext.User`.)
 - Anschließend wird ein MSAL.NET-`IConfidentialClientApplication`-Objekt erstellt.
 - Zuletzt wird die `AcquireTokenSilent`-Methode der vertraulichen Clientanwendung aufgerufen.
+- Wenn eine Interaktion erforderlich ist, muss die Web-App den Benutzer (zur erneuten Anmeldung) auffordern und weitere Ansprüche anfordern.
+
+Der folgende Codeausschnitt wurde aus [HomeController.cs#L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) aus dem ASP.NET MVC-Codebeispiel [ms-identity-aspnet-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) extrahiert:
+
+```C#
+public async Task<ActionResult> ReadMail()
+{
+    IConfidentialClientApplication app = MsalAppBuilder.BuildConfidentialClientApplication();
+    AuthenticationResult result = null;
+    var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetMsalAccountId());
+    string[] scopes = { "Mail.Read" };
+
+    try
+    {
+        // try to get token silently
+        result = await app.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false);
+    }
+    catch (MsalUiRequiredException)
+    {
+        ViewBag.Relogin = "true";
+        return View();
+    }
+
+    // More code here
+    return View();
+}
+```
+
+Weitere Details finden Sie im Code für [BuildConfidentialClientApplication()](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs) und [GetMsalAccountId](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Utils/ClaimPrincipalExtension.cs#L38) im Codebeispiel.
+
 
 # <a name="java"></a>[Java](#tab/java)
 

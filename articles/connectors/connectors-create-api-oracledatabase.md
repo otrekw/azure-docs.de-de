@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836276"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524164"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
 
@@ -58,30 +58,30 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 2. Wählen Sie beim Starten Ihrer Logik-App den Trigger **Anforderung/Antwort - Anforderung** aus: 
 
-    ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
+    ![Ein Dialogfeld mit einem Feld zum Suchen aller Trigger. Es wird auch ein einzelner Trigger („Anforderung/Antwort – Anforderung“) mit einer Auswahlschaltfläche angezeigt.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. Wählen Sie **Speichern** aus. Beim Speichern wird automatisch eine Anforderungs-URL generiert. 
 
 4. Wählen Sie **Neuer Schritt** aus und anschließend **Aktion hinzufügen**. Geben Sie `oracle` ein, um die verfügbaren Aktionen anzuzeigen: 
 
-    ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
+    ![Ein Suchfeld, das den Begriff „oracle“ enthält. Die Suche ergibt einen Treffer mit der Bezeichnung „Oracle Database“. Es ist eine Registerkartenseite mit einer Registerkarte „TRIGGER (0)“ und einer weiteren Registerkarte „AKTIONEN (6)“dargestellt. Es sind sechs Aktionen aufgeführt. Die erste dieser Aktionen lautet „Zeile abrufen Vorschau“.](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > Dies ist auch die schnellste Methode, um die Trigger und Aktionen anzuzeigen, die für Connectors verfügbar sind. Geben Sie einen Teil des Connectornamens ein, z.B. `oracle`. Der Designer führt alle Trigger und Aktionen auf. 
 
 5. Wählen Sie eine der Aktionen aus, z.B. **Oracle-Datenbank - Zeile abrufen**. Wählen Sie **Verbinden über lokales Datengateway**. Geben Sie den Oracle-Servernamen, die Authentifizierungsmethode, den Benutzernamen und das Kennwort ein, und wählen Sie das Gateway aus:
 
-    ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
+    ![Das Dialogfeld hat den Titel „Oracle Database – Zeile abrufen“. Darin ist ein aktiviertes Kontrollkästchen mit der Bezeichnung „Verbindung über lokales Datengateway herstellen“ enthalten. Darunter sind fünf Textfelder vorhanden.](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
 6. Nachdem die Verbindung hergestellt wurde, wählen Sie eine Tabelle aus der Liste aus und geben Sie die Zeilen-ID in Ihre Tabelle ein. Sie müssen den Bezeichner der Tabelle kennen. Wenn Sie diesen nicht kennen, wenden Sie sich an den Administrator der Oracle-Datenbank und rufen Sie die Ausgabe über `select * from yourTableName` ab. Hierdurch erhalten Sie die ID-Informationen, die Sie benötigen, um den Vorgang fortzusetzen.
 
     Im folgenden Beispiel werden die Auftragsdaten aus einer Datenbank der Personalabteilung zurückgegeben: 
 
-    ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![Das Dialogfeld mit dem Titel „Zeile abrufen (Vorschau)“ enthält zwei Textfelder: Das Feld „Tabellenname“, das „HRJOBS“ enthält und über eine Dropdownliste verfügt, und das Feld „Zeilen-ID“, das „SA_REP“ enthält.](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. Beim nächsten Schritt können Sie einen der anderen Connectors verwenden, um Ihren Workflow zu erstellen. Wenn Sie den Abruf von Daten von Oracle prüfen möchten, senden Sie durch einen der Connectors zum Senden von E-Mails (z. B. Office 365 oder Outlook) eine E-Mail mit den Oracle-Daten an sich selbst. Erstellen Sie mithilfe der dynamischen Token von der Oracle-Tabelle `Subject` und `Body` Ihrer E-Mail:
+7. Beim nächsten Schritt können Sie einen der anderen Connectors verwenden, um Ihren Workflow zu erstellen. Wenn Sie den Abruf von Daten von Oracle testen möchten, senden Sie mithilfe eines der Connectors zum Senden von E-Mails (z. B. Office 365 Outlook) eine E-Mail mit den Oracle-Daten an sich selbst. Erstellen Sie mithilfe der dynamischen Token von der Oracle-Tabelle `Subject` und `Body` Ihrer E-Mail:
 
-    ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
+    ![Es sind zwei Dialogfelder dargestellt. Das Dialogfeld „E-Mail senden“ enthält Felder zum Angeben des Texts, des Betreffs und der Empfängeradresse der E-Mail. Das Dialogfeld „Dynamischen Inhalt hinzufügen“ enthält eine Suche nach dynamischem Inhalt aus den im Flow verwendeten Apps und Diensten.](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
 8. **Speichern** Sie Ihre Logik-App und wählen Sie dann **Ausführen** aus. Schließen Sie den Designer und prüfen Sie den Status im Ausführungsverlauf. Falls der Schritt fehlgeschlagen ist, markieren Sie die Zeile mit der fehlerhaften Nachricht. Der daraufhin geöffnete Designer zeigt an, welcher Schritt fehlgeschlagen ist, und stellt darüber hinaus Fehlerinformationen bereit. Falls der Schritt erfolgreich ausgeführt wurde, sollten Sie eine E-Mail mit den von Ihnen hinzugefügten Informationen erhalten.
 
@@ -90,11 +90,11 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 * Es empfiehlt sich, den Hashtag #oracle zu überprüfen und die Tweets in einer Datenbank zu speichern, damit diese abgefragt und in anderen Anwendungen verwendet werden können. Fügen Sie in einer Logik-App den `Twitter - When a new tweet is posted`-Trigger hinzu und geben Sie den Hashtag **#oracle** ein. Fügen Sie anschließend die Aktion `Oracle Database - Insert row` hinzu und wählen Sie Ihre Tabelle aus:
 
-    ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
+    ![Im Dialogfeld „Wenn ein neuer Tweet gepostet wird“ ist als Suchtext „#oracle“ enthalten, und Sie können die Häufigkeit der Suche/Überprüfung angeben. Dieses Dialogfeld führt zum Dialogfeld „Oracle Database“, in dem Sie die Aktion auswählen können.](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
 * Nachrichten werden an eine Service Bus-Warteschlange gesendet. Sie sollten diese Nachrichten abrufen und in einer Datenbank speichern. Fügen Sie in einer Logik-App den Trigger `Service Bus - when a message is received in a queue` hinzu und wählen Sie die Warteschlange aus. Fügen Sie anschließend die Aktion `Oracle Database - Insert row` hinzu und wählen Sie Ihre Tabelle aus:
 
-    ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
+    ![Im Dialogfeld „Wenn eine Nachricht in ...“ wird als Warteschlangenname „Aufträge“ angezeigt, und Sie können die Häufigkeit der Überprüfung angeben. Dieses Dialogfeld führt zum Dialogfeld „Zeile einfügen (Vorschau)“, in dem Sie den Tabellennamen auswählen können.](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>Häufige Fehler
 

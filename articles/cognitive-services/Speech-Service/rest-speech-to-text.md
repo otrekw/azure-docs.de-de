@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636086"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537968"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -223,10 +223,10 @@ Das Objekt in der `NBest`-Liste kann Folgendes enthalten:
 | `ITN` | Die inverse Textnormalisierung („kanonische Form“) des erkannten Texts mit Telefonnummern, Zahlen, Abkürzungen („doctor smith“ in „dr. smith“) und anderen angewendeten Transformationen. |
 | `MaskedITN` | Die ITN-Form mit angewendeter Obszönitätenmaskierung, wenn angefordert. |
 | `Display` | Die Anzeigeform des erkannten Texts mit hinzugefügten Satzzeichen und Großschreibung. Dieser Parameter ist derselbe wie `DisplayText`, wenn das Format `simple` entspricht. |
-| `AccuracyScore` | Der Score, der die Aussprachegenauigkeit des übergebenen Sprachtexts angibt. |
-| `FluencyScore` | Der Score, der die Flüssigkeit des übergebenen Sprachtexts angibt. |
-| `CompletenessScore` | Der Score, der die Vollständigkeit des übergebenen Sprachtexts durch Berechnen des Verhältnisses ausgesprochener Wörter zur Gesamteingabe angibt. |
-| `PronScore` | Der Gesamtscore, der die Aussprachequalität des übergebenen Sprachtexts angibt. Dieser wird aus `AccuracyScore`, `FluencyScore` und `CompletenessScore` mit Gewichtung berechnet. |
+| `AccuracyScore` | Genauigkeit der Aussprache des Texts. Genauigkeit heißt dabei, wie exakt Phoneme der Aussprache eines Muttersprachlers entsprechen. Der Score für Genauigkeit auf Wort- und Volltextebene wird aus dem Score der Genauigkeit auf Phonemebene aggregiert. |
+| `FluencyScore` | Redefluss eines gegebenen Texts. Der Redefluss bedeutet, wie exakt der ausgegebene Text mit den Pausen zwischen Wörtern eines Muttersprachlers übereinstimmt. |
+| `CompletenessScore` | Vollständigkeit des Texts. Dafür wird das Verhältnis ausgesprochener Wörter zur Texteingabe berechnet. |
+| `PronScore` | Der Gesamtscore, der die Aussprachequalität des übergebenen Sprachtexts angibt. Dieser wird aus `AccuracyScore`, `FluencyScore` und `CompletenessScore` mit Gewichtung aggregiert. |
 | `ErrorType` | Dieser Wert gibt an, ob ein Wort im Vergleich zu `ReferenceText`ausgelassen, eingefügt oder schlecht ausgesprochen wird. Die möglichen Werte sind `None` (d. h. kein Fehler in diesem Wort), `Omission`, `Insertion` und `Mispronunciation`. |
 
 ## <a name="sample-responses"></a>Beispielantworten

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine hostbasierte Verschlüsselung in einem A
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244309"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517721"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Hostbasierte Verschlüsselung in Azure Kubernetes Service (AKS) (Vorschau)
 
@@ -27,18 +27,18 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 
 - Stellen Sie sicher, dass die `aks-preview`-CLI-Erweiterung v0.4.55 oder höher installiert ist.
 - Stellen Sie sicher, dass das `EncryptionAtHost`-Featureflag unter `Microsoft.Compute` aktiviert ist.
-- Stellen Sie sicher, dass das `EncryptionAtHost`-Featureflag unter `Microsoft.ContainerService` aktiviert ist.
+- Stellen Sie sicher, dass das `EnableEncryptionAtHostPreview`-Featureflag unter `Microsoft.ContainerService` aktiviert ist.
 
 ### <a name="register-encryptionathost--preview-features"></a>Registrieren der `EncryptionAtHost`-Vorschaufunktionen
 
-Um einen AKS-Cluster zu erstellen, der eine hostbasierte Verschlüsselung verwendet, müssen Sie das Featureflag `EncryptionAtHost` in Ihrem Abonnement aktivieren.
+Sie müssen die Featureflags `EnableEncryptionAtHostPreview` und `EncryptionAtHost` in Ihrem Abonnement aktivieren, um einen AKS-Cluster zu erstellen, der eine hostbasierte Verschlüsselung verwendet.
 
 Registrieren Sie das `EncryptionAtHost`-Featureflag mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 
-az feature register --namespace "Microsoft.ContainerService"  --name "EncryptionAtHost"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
@@ -46,7 +46,7 @@ Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wi
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EncryptionAtHost')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Wenn Sie fertig sind, aktualisieren Sie die Registrierung des `Microsoft.ContainerService`- und `Microsoft.Compute`-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register]:
@@ -58,7 +58,7 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 > [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
 >
 > - [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md)
 > - [Häufig gestellte Fragen zum Azure-Support](faq.md)

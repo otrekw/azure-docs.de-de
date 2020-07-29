@@ -4,15 +4,15 @@ description: Erfahren Sie etwas über den Netzwerkdatenverkehr in einer App Serv
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/29/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517852"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -153,18 +153,20 @@ NSGs können über das Azure-Portal und über PowerShell konfiguriert werden. Di
 Damit eine ASE funktioniert, müssen die erforderlichen Einträge in einer Netzwerksicherheitsgruppe zum Zulassen von Datenverkehr festgelegt werden:
 
 **Eingehend**
-* aus dem IP-Diensttag AppServiceManagement an den Ports 454 und 455
-* aus dem Lastenausgleich an Port 16001
+* TCP aus dem IP-Diensttag „AppServiceManagement“ an den Ports 454 und 455
+* TCP aus dem Lastenausgleich an Port 16001
 * von ASE-Subnetz zu ASE-Subnetz an allen Ports
 
 **Ausgehend**
-* an alle IPs an Port 123
-* an alle IPs an den Ports 80 und 443
-* an das IP-Diensttag AzureSQL an Port 1433
-* an alle IPs an Port 12000
+* UDP an alle IPs an Port 123
+* TCP an alle IPs an den Ports 80 und 443
+* TCP an das IP-Diensttag „AzureSQL“ an Port 1433
+* TCP an alle IPs an Port 12000
 * an das ASE-Subnetz an allen Ports
 
-Der DNS-Port muss nicht hinzugefügt werden, da sich die NSG-Regeln nicht auf Datenverkehr zu DNS auswirken. Diese Ports umfassen nicht die Ports, die Ihre Apps zur erfolgreichen Verwendung benötigen. Die normalen App-Zugriffsports sind:
+Diese Ports umfassen nicht die Ports, die Ihre Apps zur erfolgreichen Verwendung benötigen. Beispielsweise muss Ihre App möglicherweise einen MySQL-Server an Port 3306 aufrufen. Der DNS-Port, Port 53, muss nicht hinzugefügt werden, weil der Datenverkehr zu DNS von NSG-Regeln nicht beeinflusst wird. Das Network Time Protocol (NTP) an Port 123 ist das vom Betriebssystem verwendete Zeitsynchronisierungsprotokoll. Die NTP-Endpunkte sind nicht spezifisch für App Services, können je nach Betriebssystem variieren und sind nicht in einer klar definierten Liste von Adressen enthalten. Um Zeitsynchronisierungsprobleme zu vermeiden, müssen Sie den UDP-Datenverkehr an alle Adressen an Port 123 zulassen. Der ausgehende TCP-Datenverkehr zu Port 12000 dient der Systemunterstützung und -analyse. Die Endpunkte sind dynamisch und nicht in einem klar definierten Satz von Adressen enthalten.
+
+Die normalen App-Zugriffsports sind:
 
 | Zweck | Ports |
 |----------|-------------|
