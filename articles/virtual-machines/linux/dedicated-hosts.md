@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: c19b3410e106aaf5fed53aba45d06eac6dd9d601
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e19f74c40bbeb83c9230e620c4488778823ef99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970728"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510802"
 ---
-# <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
+# <a name="azure-dedicated-hosts-for-virtual-machines"></a>Azure Dedicated Hosts für virtuelle Computer
 
 Azure Dedicated Host ist ein Dienst zum Bereitstellen physischer Server, die virtuelle Computer hosten können und ausschließlich für ein Azure-Abonnement reserviert sind. Dedizierte Hosts sind die in unseren Rechenzentren verwendeten physischen Server, die als Ressource bereitgestellt werden. Sie können dedizierte Hosts in einer Region, einer Verfügbarkeitszone und einer Fehlerdomäne bereitstellen. Anschließend können Sie VMs direkt in Ihren bereitgestellten Hosts platzieren, und zwar in einer beliebigen Konfiguration, die Ihren Anforderungen am besten entspricht.
 

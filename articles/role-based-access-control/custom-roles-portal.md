@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2020
+ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511720"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal
 
@@ -204,17 +204,7 @@ Führen Sie diese Schritte aus, um Berechtigungen für Ihre benutzerdefinierte R
 
 ### <a name="add-wildcard-permissions"></a>Hinzufügen von Platzhalterberechtigungen
 
-Abhängig davon, wie Sie den Vorgang zum Erstellen von Rollen starten, enthält Ihre Liste mit Berechtigungen möglicherweise Berechtigungen mit Platzhaltern (\*). Ein Platzhalter (\*) erweitert eine Berechtigung auf alles, was der von Ihnen angegebenen Zeichenfolge entspricht. Angenommen, Sie möchten alle Berechtigungen hinzufügen, die sich auf Azure Cost Management und Exporte beziehen. Sie könnten alle nachfolgend aufgeführten Berechtigungen hinzufügen:
-
-```
-Microsoft.CostManagement/exports/action
-Microsoft.CostManagement/exports/read
-Microsoft.CostManagement/exports/write
-Microsoft.CostManagement/exports/delete
-Microsoft.CostManagement/exports/run/action
-```
-
-Stattdessen können Sie jedoch auch einfach eine Platzhalterberechtigung hinzufügen. Die folgende Platzhalterberechtigung entspricht beispielsweise den oben genannten fünf Berechtigungen. Dies schließt auch alle zukünftigen Exportberechtigungen ein, die möglicherweise hinzugefügt werden.
+Abhängig davon, wie Sie den Vorgang zum Erstellen von Rollen starten, enthält Ihre Liste mit Berechtigungen möglicherweise Berechtigungen mit Platzhaltern (`*`). Ein Platzhalter (`*`) erweitert eine Berechtigung auf alles, was der von Ihnen angegebenen Aktionszeichenfolge entspricht. Beispielsweise werden mit der folgenden Platzhalterzeichenfolge alle Berechtigungen für Azure Cost Management und Exporte hinzugefügt. Dies schließt auch alle zukünftigen Exportberechtigungen ein, die möglicherweise hinzugefügt werden.
 
 ```
 Microsoft.CostManagement/exports/*
@@ -224,7 +214,7 @@ Neue Platzhalterberechtigungen können nicht über den Bereich **Berechtigungen 
 
 ### <a name="exclude-permissions"></a>Ausschließen von Berechtigungen
 
-Wenn Ihre Rolle über eine Platzhalterberechtigung (\*) verfügt und Sie bestimmte Berechtigungen von dieser Platzhalterberechtigung ausschließen oder entfernen möchten, können Sie sie ausschließen. Angenommen, Sie haben die folgende Platzhalterberechtigung:
+Wenn Ihre Rolle über eine Platzhalterberechtigung (`*`) verfügt und Sie bestimmte Berechtigungen von dieser Platzhalterberechtigung ausschließen oder entfernen möchten, können Sie sie ausschließen. Angenommen, Sie haben die folgende Platzhalterberechtigung:
 
 ```
 Microsoft.CostManagement/exports/*
@@ -269,7 +259,7 @@ Auf der Registerkarte **Zuweisbare Bereiche** geben Sie an, wo Ihre benutzerdefi
 
 ## <a name="step-6-json"></a>Schritt 6: JSON
 
-Auf der Registerkarte **JSON** wird Ihre benutzerdefinierte Rolle im JSON-Format angezeigt. Wenn Sie möchten, können Sie den JSON-Code direkt bearbeiten. Diese Registerkarte muss zudem verwendet werden, wenn Sie eine Platzhalterberechtigung (\*) hinzufügen möchten.
+Auf der Registerkarte **JSON** wird Ihre benutzerdefinierte Rolle im JSON-Format angezeigt. Wenn Sie möchten, können Sie den JSON-Code direkt bearbeiten. Diese Registerkarte muss zudem verwendet werden, wenn Sie eine Platzhalterberechtigung (`*`) hinzufügen möchten.
 
 1. Um den JSON-Code zu bearbeiten, klicken Sie auf **Bearbeiten**.
 

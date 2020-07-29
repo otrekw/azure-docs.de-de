@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7fd8fd35ee411d929843be81a1daaa512e0b3ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8429f58b9b8ce1be12fea861b805084347a0e2b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84611046"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537696"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,8 +33,8 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
 | encodingName     | Der zu Lesen/Schreiben von Testdateien verwendete Codierungstyp. <br>Es sind die folgenden Werte zulässig: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Nein       |
 | compression | Gruppe von Eigenschaften zum Konfigurieren der Dateikomprimierung. Konfigurieren Sie diesen Abschnitt, wenn Sie während der Aktivitätsausführung eine Komprimierung/Dekomprimierung durchführen möchten. | Nein |
-| type | Der zum Lesen und Schreiben von JSON-Dateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **Gzip**, **deflate**, **ZipDeflate**, **snappy** oder **lz4**, die beim Speichern der Datei verwendet werden können. Standardmäßig erfolgt keine Komprimierung.<br>**Hinweis** Die Kopieraktivität unterstützt zurzeit nicht „snappy“ und „lz4“ und der Zuordnungsdatenfluss nicht „ZipDeflate“.<br>**Beachten Sie**, dass bei Verwendung der Kopieraktivität zum Dekomprimieren von **ZipDeflate**-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher diese Dateien standardmäßig in den Ordner `<path specified in dataset>/<folder named as source zip file>/` extrahiert werden. Verwenden Sie in diesem Fall `preserveZipFileNameAsFolder` für die [Quelle der Kopieraktivität](#json-as-source), um zu steuern, ob der Name der ZIP-Datei als Ordnerstruktur beibehalten werden soll. | Nein.  |
-| level | Das Komprimierungsverhältnis. <br>Zulässige Werte sind **Optimal** oder **Sehr schnell**.<br>- **Sehr schnell:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist.<br>- **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt. Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nein       |
+| type<br/>(*unter `compression`* ) | Der zum Lesen und Schreiben von JSON-Dateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **Gzip**, **deflate**, **ZipDeflate**, **snappy** oder **lz4**, die beim Speichern der Datei verwendet werden können. Standardmäßig erfolgt keine Komprimierung.<br>**Hinweis** Die Kopieraktivität unterstützt zurzeit nicht „snappy“ und „lz4“ und der Zuordnungsdatenfluss nicht „ZipDeflate“.<br>**Beachten Sie**, dass bei Verwendung der Kopieraktivität zum Dekomprimieren von **ZipDeflate**-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher diese Dateien standardmäßig in den Ordner `<path specified in dataset>/<folder named as source zip file>/` extrahiert werden. Verwenden Sie in diesem Fall `preserveZipFileNameAsFolder` für die [Quelle der Kopieraktivität](#json-as-source), um zu steuern, ob der Name der ZIP-Datei als Ordnerstruktur beibehalten werden soll. | Nein.  |
+| level<br/>(*unter `compression`* ) | Das Komprimierungsverhältnis. <br>Zulässige Werte sind **Optimal** oder **Sehr schnell**.<br>- **Sehr schnell:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist.<br>- **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt. Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nein       |
 
 Nachfolgend sehen Sie ein Beispiel für ein JSON-Dataset in Azure Blob Storage:
 
@@ -65,6 +65,8 @@ Nachfolgend sehen Sie ein Beispiel für ein JSON-Dataset in Azure Blob Storage:
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der JSON-Quelle und -Senke unterstützt werden.
+
+Unter [Schema- und Datentypzuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Daten aus JSON-Dateien extrahieren und dem Senkendatenspeicher/-format zuordnen (oder umgekehrt).
 
 ### <a name="json-as-source"></a>JSON als Quelle
 
@@ -204,12 +206,12 @@ In der folgenden Tabelle sind die von einer JSON-Quelle unterstützten Eigenscha
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein | String[] | wildcardPaths |
 | Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
-| Liste der Dateien | Gibt an, ob Ihre Quelle auf eine Textdatei verweist, in der die zu verarbeitenden Dateien aufgelistet sind. | nein | `true` oder `false` | fileList |
+| Liste mit den Dateien | Gibt an, ob Ihre Quelle auf eine Textdatei verweist, in der die zu verarbeitenden Dateien aufgelistet sind. | nein | `true` oder `false` | fileList |
 | Spalte, in der der Dateiname gespeichert wird | Erstellt eine neue Spalte mit dem Namen und Pfad der Quelldatei. | nein | String | rowUrlColumn |
 | Nach Abschluss | Löscht oder verschiebt die Dateien nach der Verarbeitung. Dateipfad beginnt mit dem Containerstamm | nein | Löschen: `true` oder `false` <br> Verschieben: `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | Nach der letzten Änderung filtern | Filtern Sie Dateien nach dem Zeitpunkt ihrer letzten Änderung. | nein | Timestamp | modifiedAfter <br> modifiedBefore |
 | Einzelnes Dokument | Zuordnungsdatenflüsse lesen aus jeder Datei ein JSON-Dokument. | nein | `true` oder `false` | singleDocument |
-| Spaltennamen ohne Anführungszeichen | Wenn **Spaltennamen ohne Anführungszeichen** ausgewählt ist, liest Mapping Data Flow JSON-Spalten, die nicht in Anführungszeichen eingeschlossen sind. | nein | `true` oder `false` |  unquotedColumnNames
+| Spaltennamen ohne Anführungszeichen | Wenn **Spaltennamen ohne Anführungszeichen** ausgewählt ist, liest Mapping Data Flow JSON-Spalten, die nicht in Anführungszeichen eingeschlossen sind. | nein | `true` oder `false` |  unquotedColumnNames |
 | Mit Kommentaren | Wählen Sie **Mit Kommentaren** aus, wenn die JSON-Daten Kommentare im C- oder C++-Stil enthalten. | nein | `true` oder `false` | asComments |
 | Einfache Anführungszeichen | Liest JSON-Spalten, die nicht in Anführungszeichen eingeschlossen sind. | nein | `true` oder `false` | singleQuoted |
 | Umgekehrter Schrägstrich mit Escapezeichen | Wählen Sie **Umgekehrter Schrägstrich mit Escapezeichen** aus, wenn in den JSON-Daten umgekehrte Schrägstriche als Escapezeichen verwendet werden. | nein | `true` oder `false` | backslashEscape |
@@ -297,7 +299,7 @@ In der folgenden Tabelle sind die von einer JSON-Senke unterstützten Eigenschaf
 
 | Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird | nein | `true` oder `false` | truncate |
+| Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird. | nein | `true` oder `false` | truncate |
 | Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>`. | nein | Muster: String <br> Pro Partition: String[] <br> Wie Daten in Spalte: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 
 ### <a name="creating-json-structures-in-a-derived-column"></a>Erstellen von JSON-Strukturen in abgeleiteten Spalten

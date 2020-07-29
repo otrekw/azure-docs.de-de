@@ -1,22 +1,22 @@
 ---
-title: In Azure Data Factory unterstützte Dateiformate
-description: In diesem Thema werden die Dateiformate und Komprimierungscodecs beschrieben, die von dateibasierten Connectors in Azure Data Factory unterstützt werden.
+title: Von der Copy-Aktivität unterstützte Dateiformate in Azure Data Factory
+description: In diesem Thema werden die Dateiformate und Komprimierungscodecs beschrieben, die von der Copy-Aktivität in Azure Data Factory unterstützt werden.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 07/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 24edeb686136a1264d75e81fd9527feff3d17c48
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c044208699bf5bebb6383cfef00bf53b744369d0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191085"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522437"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
+# <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Von der Copy-Aktivität unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 *Dieser Artikel bezieht sich auf die folgenden Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md).*

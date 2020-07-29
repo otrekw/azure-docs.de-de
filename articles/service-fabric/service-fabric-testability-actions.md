@@ -5,12 +5,12 @@ author: motanv
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14b2b5bd2577a10ad77a715fb5d20e10da84cf1d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518978"
 ---
 # <a name="testability-actions"></a>Testability-Aktionen
 Zur Simulierung einer unzuverlässigen Infrastruktur bietet Azure Service Fabric Ihnen, dem Entwickler, die Möglichkeit, verschiedene Ausfälle und Statusübergänge aus der Praxis zu simulieren. Diese werden als Testability-Aktionen verfügbar gemacht. Bei den Aktionen handelt es sich um Low-Level-APIs, die eine bestimmte Fault Injection, einen Statusübergang oder eine Überprüfung bewirken. Diese Aktionen können von Ihnen zu umfassenden Testszenarien für Ihre Dienste kombiniert werden.
@@ -79,7 +79,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 Der folgende Screenshot zeigt den Testability-Befehl **Restart-ServiceFabricNode** in Aktion.
 
-![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
+![Screenshot: Ausführen des Befehls „Restart-ServiceFabricNode“ in PowerShell](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
 Die Ausgabe der ersten Instanz von **Get-ServiceFabricNode** (ein Cmdlet aus dem Service Fabric-PowerShell-Modul) zeigt, dass der lokale Cluster über fünf Knoten verfügt: „Node.1“ bis „Node.5“. Nach Ausführung der Testability-Aktion **Restart-ServiceFabricNode** (Cmdlet) für „Node.4“ ist zu sehen, dass die Betriebszeit des Knotens zurückgesetzt wurde.
 

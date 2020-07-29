@@ -3,12 +3,12 @@ title: Vorläufiges Löschen für Azure Backup
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116415"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538835"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Vorläufiges Löschen für Azure Backup
 
@@ -29,7 +29,7 @@ Im folgenden Flussdiagramm sind die unterschiedlichen Schritte und Zustände ein
 
 Vorläufiges Löschen ist für neu erstellte Tresore standardmäßig aktiviert, um Sicherungsdaten vor versehentlichen oder vorsätzlichen Löschvorgängen zu schützen.  Es wird davon abgeraten, dieses Feature zu deaktivieren. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung). Nur der Tresorbesitzer kann dieses Feature deaktivieren. Wenn Sie dieses Feature deaktivieren, führen alle künftigen Löschvorgänge geschützter Elemente zu einer sofortigen Entfernung, ohne dass eine Wiederherstellung möglich ist. Sicherungsdaten, die vor der Deaktivierung dieses Features mit dem Status „Vorläufig gelöscht“ vorhanden waren, behalten 14 Tage diesen Status. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden.
 
- Beachten Sie, dass die Deaktivierung des Features vorläufiges Löschen für alle Arten von Workloads gilt, einschließlich SQL-Servern und SAP HANA-Workloads. Nachdem z. B. die [Vorschau für SQL Server/SAP HANA](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview) für ein Abonnement aktiviert wurde, ist es nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, aber gleichzeitig für virtuelle Computer im gleichen Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
+ Beachten Sie, dass die Deaktivierung des Features vorläufiges Löschen für alle Arten von Workloads gilt, einschließlich SQL-Servern und SAP HANA-Workloads. Nachdem z. B. die [Vorschau für SQL Server/SAP HANA](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) für ein Abonnement aktiviert wurde, ist es nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, aber gleichzeitig für virtuelle Computer im gleichen Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Deaktivieren des vorläufigen Löschens für VMs über das Azure-Portal
 
@@ -46,7 +46,7 @@ Gehen Sie zum Deaktivieren des vorläufigen Löschens wie folgt vor:
 > [!IMPORTANT]
 > Die erforderliche Mindestversion von Az.RecoveryServices für die Verwendung des vorläufigen Löschens mit Azure PS ist 2.2.0. Verwenden Sie ```Install-Module -Name Az.RecoveryServices -Force```, um die aktuelle Version herunterzuladen.
 
-Verwenden Sie zum Deaktivieren das PowerShell-Cmdlet [Set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0).
+Verwenden Sie zum Deaktivieren das PowerShell-Cmdlet [Set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty).
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -87,11 +87,11 @@ Folgen Sie diesen Schritten:
 
 5. Wählen Sie **Sicherungsdaten löschen** aus, um die Sicherungsdaten endgültig zu löschen.
 
-   ![Auswählen von „Sicherungsdaten löschen“](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Auswählen von „Sicherungsdaten löschen“](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Geben Sie den Namen des Sicherungselements ein, um zu bestätigen, dass Sie die Wiederherstellungspunkte löschen möchten.
 
-   ![Eingeben des Namens des Sicherungselements](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Eingeben des Namens des Sicherungselements](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
 

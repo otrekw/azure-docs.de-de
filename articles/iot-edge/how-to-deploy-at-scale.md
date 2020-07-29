@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134054"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512009"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen von IoT Edge-Modulen mithilfe des Azure-Portals
 
@@ -61,7 +61,7 @@ Zum Erstellen einer Bereitstellung müssen fünf Schritte ausgeführt werden. Di
 
 ### <a name="step-2-modules"></a>Schritt 2: Module
 
-Sie können einer Bereitstellung bis zu 20 Module hinzufügen. Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Zielgeräten entfernt.
+Sie können einer Bereitstellung bis zu 30 Module hinzufügen. Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Zielgeräten entfernt.
 
 In Bereitstellungen können Sie die Einstellungen für die IoT Edge-Agent- und IoT Edge-Hub-Module verwalten. Wählen Sie **Laufzeiteinstellungen** aus, um die beiden Laufzeitmodule zu konfigurieren. Weil die Laufzeitmodule in einer mehrstufigen Bereitstellung nicht enthalten sind, können sie nicht konfiguriert werden.
 

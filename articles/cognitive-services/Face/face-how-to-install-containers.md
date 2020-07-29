@@ -9,16 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a74b77ac59ece98f1a64839fd5000f4ab5d638f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497878"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Installieren und Ausführen von Containern für die Gesichtserkennung (Vorschauversion)
+
+> [!IMPORTANT]
+> Der Grenzwert für Benutzer von Gesichtserkennungscontainern wurde erreicht. Wir akzeptieren derzeit keine neuen Anträge für den Gesichtserkennungscontainer.
 
 Die Azure Cognitive Services-Gesichtserkennung bietet einen standardisierten Linux-Container für Docker, der menschliche Gesichter in Bildern erkennt. Sie identifiziert auch zugehörige Attribute wie Gesichtsmerkmale (z. B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung anhand einer Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter auf demselben Bild oder auf verschiedenen Bildern identisch sind. Die Gesichtserkennung kann auch Gesichter anhand einer Datenbank vergleichen, um zu prüfen, ob bereits ein ähnliches oder identisches Gesicht vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.
 
@@ -35,12 +38,6 @@ Zur Verwendung des Containers für den Gesichtserkennungsdienst müssen die folg
 |Gesichtserkennungsressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ **Gesichtserkennung** sowie den zugehörigen API-Schlüssel und Endpunkt-URI. Beide Werte stehen auf den Seiten **Übersicht** und **Schlüssel** der Ressource zur Verfügung. Sie sind zum Starten des Containers erforderlich.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
-
-Füllen Sie das [Anforderungsformular](https://aka.ms/cognitivegate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. 
-
-[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 

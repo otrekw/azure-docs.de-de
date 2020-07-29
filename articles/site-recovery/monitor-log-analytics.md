@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300789"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529028"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
@@ -68,8 +68,8 @@ Sie können die Änderungsdateninformationen und die Quelldaten-Uploadrateninfor
 7. Nachdem die Installation abgeschlossen ist, wechseln Sie in den Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**. Wechseln Sie zur Seite **Daten**, und klicken Sie dann auf **Windows-Leistungsindikatoren**. 
 8. Klicken Sie auf **„+“** , um die folgenden beiden Indikatoren mit dem Stichprobenintervall von 300 Sekunden hinzuzufügen:
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 Die Änderungs- und Uploadratendaten werden in den Arbeitsbereich eingegeben.
 

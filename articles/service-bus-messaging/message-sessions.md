@@ -3,12 +3,12 @@ title: Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Nachrichtensitzungen zum Ermöglichen der gemeinsamen und geordneten Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten verwendet werden.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341189"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511295"
 ---
 # <a name="message-sessions"></a>Nachrichtensitzungen
 Microsoft Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen zusammengehöriger Nachrichten. Sitzungen können mit **FIFO**-Mustern (First in, First Out) und **Anforderung/Antwort**-Mustern verwendet werden. In diesem Artikel wird gezeigt, wie Sie diese Muster mithilfe von Sitzungen implementieren, wenn Sie Service Bus verwenden. 
@@ -31,7 +31,7 @@ Das Sitzungsfeature in Service Bus ermöglicht einen bestimmten Empfangsvorgang 
 
 Im Portal legen Sie das Flag mit dem folgenden Kontrollkästchen fest:
 
-![][2]
+![Screenshot: Dialogfeld „Warteschlange erstellen“ mit aktivierter und rot umrandeter Option „Sitzungen aktivieren“][2]
 
 > [!NOTE]
 > Wenn Sitzungen für eine Warteschlange oder ein Abonnement aktiviert sind, können die Clientanwendungen ***keine*** regulären Nachrichten mehr senden/empfangen. Alle Nachrichten müssen im Rahmen einer Sitzung (durch Festlegen der Sitzungs-ID) gesendet und durch Empfangen der Sitzung empfangen werden.
@@ -42,7 +42,7 @@ Die APIs für Sitzungen sind für Warteschlangen- und Abonnementclients vorhande
 
 Sitzungen ermöglichen das gleichzeitige Demultiplexing von verschachtelten Nachrichtenströmen unter Beibehaltung und Gewährleistung der geordneten Zustellung.
 
-![][1]
+![Ein Diagramm, das zeigt, wie das Sitzungsfeature die geordnete Zustellung beibehält][1]
 
 Ein [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession)-Empfänger wird vom Client erstellt, der eine Sitzung annimmt. In C# ruft der Client [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) oder [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) auf. Im reaktiven Rückrufmodell registriert er einen Sitzungshandler.
 

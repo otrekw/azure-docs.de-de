@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 413f53feedc4fee0877694e3f3a3a509c4d38001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783539"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503029"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure-VM-Größen ohne lokalen temporären Datenträger 
 In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure-VM-Größen, die nicht über einen lokalen temporären Datenträger verfügen. Weitere Informationen zu diesen VM-Größen finden Sie in den [Spezifikationen für die Dv4- und Dsv4-Serie (universelle Workloads)](dv4-dsv4-series.md) oder den [Spezifikationen für die Ev4- und Esv4-Serie (arbeitsspeicheroptimierte Workloads)](ev4-esv4-series.md).
@@ -23,7 +23,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure-VM-
 ## <a name="what-does-no-local-temp-disk-mean"></a>Was bedeutet es, wenn eine VM keinen lokalen temporären Datenträger hat? 
 Bisher hatten unsere VM-Größen (z. B. „Standard_D2s_v3“ oder „Standard_E48_v3“) einen kleinen lokalen Datenträger (d. h. ein Laufwerk „D:“). Bei den neuen VM-Größen gibt es diesen kleinen lokalen Datenträger nicht mehr, Sie können jedoch weiterhin HDD Standard-, SSD Premium- oder SSD Ultra-Datenträger anfügen.
 
-## <a name="what-if-i-still-want-local-temp-disk"></a>Was kann ich tun, wenn ich weiterhin einen lokalen temporären Datenträger haben möchte?
+## <a name="what-if-i-still-want-a-local-temp-disk"></a>Was kann ich tun, wenn ich weiterhin einen lokalen temporären Datenträger haben möchte?
 Für Workloads, die einen lokalen temporären Datenträger erfordern, stehen Ihnen unsere neuen VM-Größen [Ddv4 und Ddsv4](ddv4-ddsv4-series.md) bzw. [Edv4 und Edsv4](edv4-edsv4-series.md) zur Verfügung. Diese Größen bieten im Vergleich zu den vorherigen v3-Größen einen um 50 % größeren temporären Datenträger.
 
 > [!NOTE]

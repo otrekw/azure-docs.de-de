@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14fa6859a16dc173e75091983abee717bf813220
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984623"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499020"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Containerüberwachungslösung in Azure Monitor
 
@@ -45,7 +45,7 @@ Prüfen Sie zunächst anhand der folgenden Informationen, ob die Voraussetzungen
 
 Die folgende Tabelle zeigt die Docker-Orchestrierung und die Unterstützung der Betriebssystemüberwachung von Containerbestand, Leistung und Protokollen mit Azure Monitor:   
 
-| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Node<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Log | Container<br>Log |
+|Docker-Orchestrierung | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Node<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Log | Container<br>Log |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -105,11 +105,11 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
        - Siehe [Konfigurieren eines Log Analytics-Linux-Agents für Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes)
        - Lesen Sie [Konfigurieren eines Log Analytics-Windows-Agents für Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Lesen Sie „Verwenden von Helm zum Bereitstellen des Log Analytics-Agents unter Linux Kubernetes“.
-     - Wenn Sie über einen DC/OS-Cluster in Azure Container Service verfügen, finden Sie unter [Überwachen eines Azure Container Service-DC/OS-Clusters mit Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md) weitere Informationen.
+     - Wenn Sie über einen DC/OS-Cluster in Azure Container Service verfügen, finden Sie unter [Überwachen eines Azure Container Service-DC/OS-Clusters mit Log Analytics](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms) weitere Informationen.
      - Wenn Sie über eine Umgebung im Docker Swarm-Modus verfügen, finden Sie weitere Informationen unter „Konfigurieren eines Log Analytics-Agents für Docker Swarm“.
      - Wenn Sie über einen Service Fabric-Cluster verfügen, finden Sie weitere Informationen unter [Überwachen von Containern mit Azure Monitor-Protokollen](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
-Weitere Informationen zum Installieren und Konfigurieren von Docker-Engines auf Windows-Computern finden Sie im Artikel [Docker-Engine unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Weitere Informationen zum Installieren und Konfigurieren von Docker-Engines auf Windows-Computern finden Sie im Artikel [Docker-Engine unter Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 > [!IMPORTANT]
 > Docker muss ausgeführt werden, **bevor** Sie den [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) auf Ihren Containerhosts installieren. Wenn Sie den Agent bereits vor der Installation von Docker installiert haben, müssen Sie den Log Analytics-Agent für Linux erneut installieren. Weitere Informationen zu Docker finden Sie auf der [Docker-Website](https://www.docker.com).
@@ -505,7 +505,7 @@ dockerd --register-service -H npipe:// -H 0.0.0.0:2375
 Start-Service docker
 ```
 
-Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern finden Sie unter [Docker-Engine unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern finden Sie unter [Docker-Engine unter Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 #### <a name="install-windows-agents"></a>Installieren des Windows-Agents
 

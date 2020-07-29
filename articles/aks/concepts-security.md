@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244530"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507096"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -54,9 +54,9 @@ Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind derzeit nicht völ
 
 ### <a name="compute-isolation"></a>Computeisolation
 
- Bestimmte Workloads erfordern möglicherweise aufgrund von Konformitäts- oder gesetzlichen Anforderungen einen hohen Grad an Isolation von anderen Kundenworkloads. Für diese Workloads bietet Azure [isolierte virtuelle Computer](../virtual-machines/linux/isolation.md), die als Agentknoten in einem AKS-Cluster verwendet werden können. Diese isolierten VMs sind für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt. 
+ Bestimmte Workloads erfordern möglicherweise aufgrund von Konformitäts- oder gesetzlichen Anforderungen einen hohen Grad an Isolation von anderen Kundenworkloads. Für diese Workloads bietet Azure [isolierte virtuelle Computer](../virtual-machines/isolation.md), die als Agentknoten in einem AKS-Cluster verwendet werden können. Diese isolierten VMs sind für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt. 
 
- Wenn Sie diese isolierten virtuellen Computer mit einem AKS-Cluster verwenden möchten, wählen Sie eine der [hier](../virtual-machines/linux/isolation.md) aufgeführten Größen für isolierte virtuelle Computer als **Knotengröße** beim Erstellen eines AKS-Clusters oder Hinzufügen eines Knotenpools aus.
+ Wenn Sie diese isolierten virtuellen Computer mit einem AKS-Cluster verwenden möchten, wählen Sie eine der [hier](../virtual-machines/isolation.md) aufgeführten Größen für isolierte virtuelle Computer als **Knotengröße** beim Erstellen eines AKS-Clusters oder Hinzufügen eines Knotenpools aus.
 
 
 ## <a name="cluster-upgrades"></a>Clusterupgrades
@@ -82,6 +82,8 @@ Für Konnektivität und Sicherheit bei lokalen Netzwerken können Sie Ihren AKS-
 
 Zum Filtern des Datenverkehrsflusses in virtuellen Netzwerken verwendet Azure Netzwerksicherheitsgruppen-Regeln. Diese Regeln bestimmen die Quell- und Ziel-IP-Adressbereiche, Ports und Protokolle, die für den Zugriff auf Ressourcen zugelassen oder abgelehnt werden. Standardregeln werden erstellt, um TLS-Datenverkehr zum Kubernetes-API-Server zu ermöglichen. Wenn Sie Dienste mit Lastenausgleich, Portzuordnungen oder Eingangsrouten erstellen, ändert AKS automatisch die Netzwerksicherheitsgruppe, damit der Datenverkehr entsprechend fließen kann.
 
+Nehmen Sie in Fällen, in denen Sie Ihr eigenes Subnetz für Ihren AKS-Cluster bereitstellen und den Datenverkehrsfluss ändern möchten, keine Änderungen an der von AKS verwalteten Netzwerksicherheitsgruppe auf Subnetzebene vor. Sie können zusätzliche Netzwerksicherheitsgruppen auf Subnetzebene erstellen, um den Datenverkehrsfluss zu ändern, solange sie nicht den für die Verwaltung des Clusters erforderlichen Datenverkehr beeinträchtigen, z. B. den Zugriff auf das Lastenausgleichsmodul, die Kommunikation mit der Steuerungsebene und den [ausgehenden][aks-limit-egress-traffic] Datenverkehr.
+
 ### <a name="kubernetes-network-policy"></a>Kubernetes-Netzwerkrichtlinie
 
 Zur Einschränkung von Netzwerkdatenverkehr zwischen Pods in Ihrem Cluster bietet AKS Unterstützung für [Kubernetes-Netzwerkrichtlinien][network-policy]. Mit Netzwerkrichtlinien können Sie den Zugriff auf bestimmte Netzwerkpfade im Cluster basierend auf Namespaces und Bezeichnungsselektoren zulassen oder verweigern.
@@ -90,7 +92,7 @@ Zur Einschränkung von Netzwerkdatenverkehr zwischen Pods in Ihrem Cluster biete
 
 Ein Kubernetes-*Geheimnis* wird verwendet, um sensible Daten wie Anmeldeinformationen oder Schlüssel in Pods einzufügen. Zuerst erstellen Sie ein Geheimnis mit der Kubernetes-API. Wenn Sie Ihren Pod oder die Bereitstellung definieren, kann ein bestimmtes Geheimnis angefordert werden. Geheimnisse werden nur für Knoten bereitgestellt, die über einen eingeplanten Pod verfügen, der es benötigt, und das Geheimnis wird in *tmpfs* gespeichert, nicht auf den Datenträger geschrieben. Wenn der letzte Pod auf einem Knoten gelöscht wird, der ein Geheimnis benötigt, wird das Geheimnis aus dem Verzeichnis „tmpfs“ des Knotens gelöscht. Geheimnisse werden in einem bestimmten Namespace gespeichert, und nur Pods im gleichen Namespace können darauf zugreifen.
 
-Die Verwendung von Geheimnissen reduziert die vertraulichen Informationen, die im YAML-Manifest für den Pod oder den Dienst definiert werden. Stattdessen fordern Sie im Rahmen Ihres YAML-Manifests das im Kubernetes-API-Server gespeicherte Geheimnis an.Stattdessen fordern Sie im Rahmen Ihres YAML-Manifests das im Kubernetes-API-Server gespeicherte Geheimnis an. Mit diesem Ansatz erhält nur der spezielle Pod Zugriff auf das Geheimnis. Hinweis: Die unformatierten geheimen Manifestdateien enthalten die geheimen Daten im Base64-Format (weitere Einzelheiten finden Sie in der [offiziellen Dokumentation][secret-risks]). Aus diesem Grund sollte diese Datei wie vertrauliche Daten behandelt und nie in die Quellcodeverwaltung committet werden.
+Die Verwendung von Geheimnissen reduziert die vertraulichen Informationen, die im YAML-Manifest für den Pod oder den Dienst definiert werden. Stattdessen fordern Sie im Rahmen Ihres YAML-Manifests das im Kubernetes-API-Server gespeicherte Geheimnis an. Mit diesem Ansatz erhält nur der spezielle Pod Zugriff auf das Geheimnis. Hinweis: Die unformatierten geheimen Manifestdateien enthalten die geheimen Daten im Base64-Format (weitere Einzelheiten finden Sie in der [offiziellen Dokumentation][secret-risks]). Aus diesem Grund sollte diese Datei wie vertrauliche Daten behandelt und nie in die Quellcodeverwaltung committet werden.
 
 Kubernetes-Geheimnisse werden in „etcd“ gespeichert, einem verteilten Schlüssel-Wert-Speicher. Der etcd-Speicher wird vollständig von AKS verwaltet, und [Daten werden im Ruhezustand innerhalb der Azure Platform verschlüsselt][encryption-atrest]. 
 
@@ -123,6 +125,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md

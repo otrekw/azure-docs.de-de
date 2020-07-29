@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610352"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510496"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption-Beispielskripts 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption-Beispielskripts für virtuelle Linux-Computer
 
 Dieser Artikel bietet Beispielskripts für die Vorbereitung vorab verschlüsselter VHDs und andere Aufgaben.
 
@@ -186,7 +186,7 @@ Konfigurieren Sie die Verschlüsselung während der Installation einer Distribut
 
    ![Ubuntu 16.04-Setup: Passphrase beim Starten angeben](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. Bereiten Sie die VM für das Hochladen in Azure anhand [dieser Anleitung](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+6. Bereiten Sie die VM für das Hochladen in Azure anhand [dieser Anleitung](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
 Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schritte ausführen:
 
@@ -262,7 +262,7 @@ Konfigurieren Sie die Verschlüsselung während der Installation einer Distribut
 
    ![openSUSE 13.2-Setup: Passphrase beim Starten angeben](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen im Abschnitt zum [Vorbereiten einer SLES- oder openSUSE-VM für Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+3. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen im Abschnitt zum [Vorbereiten einer SLES- oder openSUSE-VM für Azure](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
 Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schritte ausführen:
 1. Bearbeiten Sie die Datei „/etc/dracut.conf“, und fügen Sie die folgende Zeile hinzu:
@@ -339,7 +339,7 @@ Konfigurieren Sie die Verschlüsselung während der Installation einer Distribut
 
    ![CentOS 7-Setup: Passphrase beim Start eingeben](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen zu CentOS 7.0+ im Abschnitt zum [Vorbereiten einer CentOS-basierten VM für Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+5. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen zu CentOS 7.0+ im Abschnitt zum [Vorbereiten einer CentOS-basierten VM für Azure](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
 
 6. Nun können Sie die Bereitstellung der VM aufheben und Ihre VHD in Azure hochladen.
 
@@ -439,7 +439,7 @@ Verwenden Sie [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvau
 Verwenden Sie im nächsten Schritt `$secretUrl`, um [den Betriebssystemdatenträger ohne KEK anzufügen](#without-using-a-kek).
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Geheimnis der Datenträgerverschlüsselung mit Verschlüsselung per KEK
-Das Geheimnis kann optional mit einem KEK verschlüsselt werden, bevor er in den Schlüsseltresor hochgeladen wird. Verwenden Sie die Wrapper-[API](https://msdn.microsoft.com/library/azure/dn878066.aspx), um das Geheimnis zuerst mit dem KEK zu verschlüsseln. Die Ausgabe dieses Wrapper-Vorgangs ist eine Base64-codierte URL-Zeichenfolge, die dann als Geheimnis mit dem [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret)-Cmdlet hochgeladen wird.
+Das Geheimnis kann optional mit einem KEK verschlüsselt werden, bevor er in den Schlüsseltresor hochgeladen wird. Verwenden Sie die Wrapper-[API](/rest/api/keyvault/wrapkey), um das Geheimnis zuerst mit dem KEK zu verschlüsseln. Die Ausgabe dieses Wrapper-Vorgangs ist eine Base64-codierte URL-Zeichenfolge, die dann als Geheimnis mit dem [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret)-Cmdlet hochgeladen wird.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

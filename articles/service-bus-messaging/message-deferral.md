@@ -3,12 +3,13 @@ title: 'Azure Service Bus: Nachrichtenverzögerung'
 description: In diesem Artikel wird erläutert, wie die Übermittlung von Azure Service Bus-Nachrichten verzögert wird. Die Nachricht verbleibt in der Warteschlange oder im Abonnement, wird jedoch zurückgestellt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341230"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511278"
 ---
 # <a name="message-deferral"></a>Nachrichtenverzögerung
 
@@ -19,6 +20,9 @@ Das Verzögerungsfeature wurde speziell für Szenarios für die Workflowverarbei
 Ein einfaches und anschauliches Beispiel ist die Verarbeitungssequenz für eine Bestellung, bei der eine Zahlungsaufforderung von einem externen Zahlungsdienstleister in einem System angezeigt wird, bevor die entsprechende Bestellung vom Geschäft an das Abwicklungssystem weitergegeben wurde. In diesem Fall kann das Abwicklungssystem das Verarbeiten der Zahlungsaufforderung verzögern, bis eine Bestellung vorhanden ist, der diese zugeordnet werden kann. In Rendezvousszenarios, bei denen Nachrichten von verschiedenen Quellen einen Workflow vorantreiben, kann die Echtzeitausführung einer Bestellung korrekt sein, aber die Nachrichten, die die Ergebnisse darstellen, können in der falschen Reihenfolge eingehen.
 
 Die Verzögerung hilft letztendlich beim Neuordnen der Nachrichten von der Eingangsreihenfolge in eine Reihenfolge, in der sie verarbeitet werden können. Dabei werden die Nachrichten, deren Verarbeitung verschoben werden muss, sicher im Nachrichtenspeicher belassen.
+
+> [!NOTE]
+> Verzögerte Nachrichten werden [nach ihrem Ablauf](./service-bus-dead-letter-queues.md#exceeding-timetolive) nicht automatisch in die Warteschlange für unzustellbare Nachrichten verschoben. Dieses Verhalten ist beabsichtigt:
 
 ## <a name="message-deferral-apis"></a>APIs für die Nachrichtenverzögerung
 

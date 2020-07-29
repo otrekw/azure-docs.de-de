@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970479"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510479"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
+# <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Leitfaden zur Problembehandlung für Azure Disk Encryption für Linux-VMs
 
 Dieser Leitfaden ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren bestimmt, in deren Organisationen Azure Disk Encryption verwendet wird. Dieser Artikel hilft beim Beheben von Problemen mit der Verschlüsselung von Datenträgern.
 
@@ -111,5 +111,5 @@ Verwenden Sie zum Deaktivieren von Azure Disk Encryption mit der CLI [az vm encr
 
 In diesem Dokument haben Sie weitere Informationen zu einigen häufigen Problemen in Azure Disk Encryption und deren Behandlung erhalten. Weitere Informationen zu diesem Dienst und seinen Funktionen finden Sie in den folgenden Artikeln:
 
-- [Anwenden der Datenträgerverschlüsselung in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
+- [Anwenden der Datenträgerverschlüsselung in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
 - [Datenverschlüsselung ruhender Azure-Daten](../../security/fundamentals/encryption-atrest.md)

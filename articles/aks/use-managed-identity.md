@@ -4,26 +4,26 @@ description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure Kubernetes S
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 30d1290f9eb7b2750f09e5e256d4dd212c7e4607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95a303a4b6a83901560b26679bca920b9de4d3f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610284"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250904"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
 Derzeit erfordert ein AKS-Cluster (Azure Kubernetes Service) und insbesondere der Kubernetes-Cloudanbieter zum Erstellen zusätzlicher Ressourcen in Azure Container Service, wie Lastenausgleichsmodule und verwaltete Datenträger, eine Identität. Dabei kann es sich um eine *verwaltete Identität* oder einen *Dienstprinzipal* handeln. Wenn Sie einen [Dienstprinzipal](kubernetes-service-principal.md) verwenden, müssen Sie diesen bereitstellen oder in Ihrem Namen durch AKS erstellen lassen. Wenn Sie eine verwaltete Identität verwenden, wird diese automatisch von AKS erstellt. Cluster mit Dienstprinzipalen erreichen irgendwann einen Zustand, in dem der Dienstprinzipal erneuert werden muss, damit der Cluster ordnungsgemäß funktioniert. Das Verwalten von Dienstprinzipalen erhöht die Komplexität, daher ist es einfacher, stattdessen verwaltete Identitäten zu verwenden. Dieselben Berechtigungsanforderungen gelten sowohl für Dienstprinzipale als auch für verwaltete Identitäten.
 
-*Verwaltete Identitäten* stellen im Wesentlichen einen Wrapper um Dienstprinzipale dar und vereinfachen deren Verwaltung. Die Rotation der Anmeldeinformationen für verwaltete Identitäten erfolgt in Azure Active Directory standardmäßig automatisch alle 46 Tage. AKS unterstützt sowohl systemseitig zugewiesene als auch benutzerseitig zugewiesene Typen verwalteter Identitäten. Diese Identitäten sind derzeit unveränderlich. Weitere Informationen finden Sie im Artikel über [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+*Verwaltete Identitäten* stellen im Wesentlichen einen Wrapper um Dienstprinzipale dar und vereinfachen deren Verwaltung. Die Rotation der Anmeldeinformationen für verwaltete Identitäten erfolgt in Azure Active Directory standardmäßig automatisch alle 46 Tage. AKS unterstützt sowohl systemseitig zugewiesene als auch benutzerseitig zugewiesene Typen verwalteter Identitäten. Diese Identitäten sind derzeit unveränderlich. Weitere Informationen finden Sie im Artikel über [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Die folgenden Ressourcen müssen installiert sein:
 
-- Azure CLI ab Version 2.2.0
+- Azure CLI ab Version 2.8.0
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -110,4 +110,4 @@ Der Cluster wird in wenigen Minuten erstellt. Sie können Ihre Anwendungsworkloa
 * Erstellen Sie mithilfe von [Azure Resource Manager-Vorlagen (ARM)][aks-arm-template] Cluster mit aktivierter verwalteter Identität.
 
 <!-- LINKS - external -->
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters

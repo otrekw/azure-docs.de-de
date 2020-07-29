@@ -4,12 +4,12 @@ description: Informationen zum Skalieren in Azure Kubernetes Service (AKS) einsc
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244513"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499884"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -58,7 +58,7 @@ Die automatische Clusterskalierung wird normalerweise zusammen mit der horizonta
 
 Informationen zu den ersten Schritten mit der automatischen Clusterskalierung in AKS finden Sie unter [Automatische Clusterskalierung in AKS][aks-cluster-autoscaler].
 
-### <a name="scale-up-events"></a>Hochskalieren
+### <a name="scale-out-events"></a>Aufskalieren von Ereignissen
 
 Wenn ein Knoten nicht über ausreichende Computeressourcen zum Ausführen eines angeforderten Pods verfügt, kann dieser Pod den Planungsprozess nicht erfüllen. Der Pod kann erst dann gestartet werden, wenn innerhalb des Knotenpools zusätzliche Computeressourcen verfügbar sind.
 
@@ -66,7 +66,7 @@ Wenn die automatische Clusterskalierung Pods erkennt, die aufgrund von Einschrä
 
 Wenn Ihre Anwendung schnell skalieren muss, bleiben einige Pods möglicherweise in einem Zustand des Wartens darauf, eingeplant zu werden, bis die zusätzlichen, von der automatischen Clusterskalierung bereitgestellten Knoten die eingeplanten Pods annehmen können. Für Anwendungen mit hohen Burstanforderungen können Sie mit virtuellen Knoten und Azure Container Instances skalieren.
 
-### <a name="scale-down-events"></a>Zentrales Herunterskalieren
+### <a name="scale-in-events"></a>Abskalieren von Ereignissen
 
 Die automatische Clusterskalierung überwacht auch den Status der Podplanung für Knoten, die nicht vor kurzem neue Planungsanforderungen empfangen haben. Dieses Szenario zeigt, dass der Knotenpool mehr Computeressourcen als erforderlich besitzt, und dass die Anzahl der Knoten verringert werden kann.
 

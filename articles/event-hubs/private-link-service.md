@@ -3,17 +3,17 @@ title: Integrieren von Azure Event Hubs in den Azure Private Link-Dienst
 description: Erfahren Sie, wie Sie Azure Event Hubs in den Azure Private Link-Dienst integrieren.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312829"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512253"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Integrieren von Event Hubs in Azure Private Link
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
 
-Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
+Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk und bindet den Dienst dadurch in Ihr virtuelles Netzwerk ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
 
 Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md).
 
@@ -58,10 +58,13 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
 2. Geben Sie auf der Suchleiste den Suchbegriff **Event Hubs** ein.
 3. Wählen Sie in der Liste den **Namespace** aus, dem Sie einen privaten Endpunkt hinzufügen möchten.
 4. Wählen Sie die Registerkarte **Netzwerk** unter **Einstellungen** aus.
-5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus. 
-6. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 
-    ![Image](./media/private-link-service/private-link-service-3.png)
+    > [!NOTE]
+    > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
+1. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus. 
+1. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
+
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Seite „Netzwerk“ – Registerkarte „Verbindungen mit privatem Endpunkt“ – Link „Privaten Endpunkt hinzufügen“":::
 7. Führen Sie auf der Seite **Grundlagen** die folgenden Schritte aus: 
     1. Wählen Sie das **Azure-Abonnement** aus, in dem Sie den privaten Endpunkt erstellen möchten. 
     2. Wählen Sie die **Ressourcengruppe** für die private Endpunktressource aus.

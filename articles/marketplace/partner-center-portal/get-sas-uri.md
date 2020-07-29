@@ -3,22 +3,22 @@ title: Shared Access Signature-URI für VM-Images – Azure Marketplace
 description: Generieren Sie im Azure Marketplace einen SAS-URI (Shared Access Signature) für Ihre virtuellen Festplatten (VHDs).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 04/09/2020
-ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121723"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536146"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
 
 In diesem Artikel wird beschrieben, wie Sie einen SAS-URI (Shared Access Signature Uniform Resource Identifier) für die einzelnen virtuellen Festplatten (VHDs) generieren.
 
-Während des Veröffentlichungsvorgangs müssen Sie einen URI für jede VHD angeben, die Ihren Plänen zugeordnet ist. Diese Pläne wurden bisher als SKUs (Stock Keeping Units) bezeichnet. Microsoft benötigt während des Zertifizierungsprozesses Zugriff auf diese VHDs. Sie geben den URI im Partner Center auf der Registerkarte **Pläne** ein.
+Während des Veröffentlichungsvorgangs müssen Sie einen URI für jede VHD angeben, die Ihren Plänen (zuvor als SKUs bezeichnet) zugeordnet ist. Microsoft benötigt während des Zertifizierungsprozesses Zugriff auf diese VHDs. Sie geben den URI im Partner Center auf der Registerkarte **Pläne** ein.
 
 Stellen Sie beim Generieren von SAS-URIs für Ihre VHDs sicher, dass die folgenden Anforderungen erfüllt sind:
 
@@ -110,7 +110,7 @@ Es gibt zwei Tools, die häufig zum Erstellen einer SAS-Adresse (URL) verwendet 
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-Wiederholen Sie diese Schritte für jede virtuelle Festplatte in den SKUs, die Sie veröffentlichen möchten.
+Wiederholen Sie diese Schritte für jede VHD in den Plänen, die Sie veröffentlichen möchten.
 
 ## <a name="verify-the-sas-uri"></a>Überprüfen des SAS-URI
 

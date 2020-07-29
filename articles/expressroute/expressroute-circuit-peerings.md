@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847043"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537019"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-Verbindungen und Peering
 
 Über ExpressRoute-Verbindungen wird Ihre lokale Infrastruktur über einen Konnektivitätsanbieter mit Microsoft verbunden. In diesem Artikel werden ExpressRoute-Verbindungen und Routingdomänen/Peering erläutert. Die folgende Abbildung zeigt eine logische Darstellung der Konnektivität zwischen Ihrem WAN und Microsoft.
 
-![](./media/expressroute-circuit-peerings/expressroute-basic.png)
+![Diagramm, das zeigt, wie über ExpressRoute-Verbindungen Ihre lokale Infrastruktur über einen Konnektivitätsanbieter mit Microsoft verbunden wird](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
 > Öffentliches Azure-Peering wurde als veraltet markiert und ist für neue ExpressRoute-Leitungen nicht verfügbar. Neue Leitungen unterstützen Microsoft-Peering und privates Peering.  
@@ -42,7 +42,7 @@ Standardkontingente und -grenzwerte gelten für alle ExpressRoute-Verbindungen. 
 
 Einer ExpressRoute-Verbindung sind mehrere Routingdomänen/Peerings zugeordnet: öffentliche oder private Azure-Routingdomänen/-Peerings sowie Microsoft-Routingdomänen/-Peerings. Alle Peerings sind für Hochverfügbarkeit auf einem Routerpaar identisch konfiguriert (mit einer Aktiv/Aktiv-Konfiguration oder einer Nutzlastverteilungskonfiguration). Azure-Dienste sind zur Darstellung der IP-Adressierungsschemas als *Azure – Öffentlich* und *Azure – Privat* kategorisiert.
 
-![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
+![Diagramm, das zeigt, wie öffentliche und private Azure-Dienste sowie Microsoft-Peerings in einer ExpressRoute-Verbindung konfiguriert werden](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="azure-private-peering"></a><a name="privatepeering"></a>Privates Azure-Peering:
 

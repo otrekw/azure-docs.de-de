@@ -2,25 +2,20 @@
 title: Technische Sicherheitsfunktionen in Azure – Microsoft Azure
 description: Einführung in die Sicherheitsdienste in Azure, die helfen, Ihre Daten, Ressourcen und Anwendungen in der Cloud zu schützen.
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845349"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519319"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 Dieser Artikel enthält eine Einführung in die Sicherheitsdienste in Azure, die helfen, Ihre Daten, Ressourcen und Anwendungen in der Cloud zu schützen, und die Sicherheitsanforderungen Ihres Unternehmens erfüllen.
@@ -170,77 +165,11 @@ Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur
 Einer der Schlüssel zum Schutz von Daten in der Cloud ist die Berücksichtigung der möglichen Zustände, in denen Ihre Daten auftreten können. Außerdem sollten Sie die Steuerungsmöglichkeiten beachten, die für diesen Zustand verfügbar sind. Im Rahmen der empfohlenen Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure befassen sich die Empfehlungen mit den folgenden Datenzuständen:
 
 - Ruhende Daten: Dies umfasst alle Informationsspeicherobjekte, Container und Typen, die statisch in physischen Medien existieren, sei es auf Magnetplattenspeichern oder optischen Datenträgern.
-
 - Während der Übertragung: Wenn Daten zwischen Komponenten, Speicherorten oder Programmen übertragen werden, beispielsweise über das Netzwerk, über einen Service Bus (von dem lokalen Computer in die Cloud und umgekehrt, inklusive Hybridverbindungen wie ExpressRoute) oder während eines Eingabe-/Ausgabevorganges, werden Sie als „in Bewegung befindlich“ betrachtet.
 
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
-Für die Verschlüsselung ruhender Daten ist Folgendes erforderlich:
-
-Unterstützung von mindestens einem der empfohlenen Verschlüsselungsmodelle zum Verschlüsseln von Daten, die in der folgenden Tabelle beschrieben sind.
-
-| Verschlüsselungsmodelle |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| Serververschlüsselung | Serververschlüsselung | Serververschlüsselung | Clientverschlüsselung
-| Serverseitige Verschlüsselung mit vom Dienst verwalteten Schlüsseln | Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln in Azure Key Vault | Serverseitige Verschlüsselung mit lokalen vom Kunden verwalteten Schlüsseln |
-| • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch <br> • Microsoft verwaltet die Schlüssel <br>• Vollständige Cloud-Funktionen | • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch<br>• Kunde steuert Schlüssel per Azure Key Vault<br>• Vollständige Cloud-Funktionen | • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch <br>• Kunde steuert Schlüssel lokal <br> • Vollständige Cloud-Funktionen| • Azure-Dienste können entschlüsselte Daten nicht erkennen <br>• Kunden bewahren die Schlüssel lokal auf (oder in anderen sicheren Speichern). Schlüssel sind für Azure-Dienste nicht verfügbar <br>• Reduzierte Cloud-Funktionen|
-
-### <a name="enabling-encryption-at-rest"></a>Aktivieren der Verschlüsselung ruhender Daten
-
-**Identifizieren aller Speicherorte Ihrer gespeicherten Daten**
-
-Das Ziel der Verschlüsselung ruhender Daten ist die Verschlüsselung aller Daten. Hiermit wird verhindert, dass wichtige Daten oder alle persistent gemachten Standorte übergangen werden. Sie können alle Daten auflisten, die von Ihrer Anwendung gespeichert wurden.
-
-> [!Note]
-> Dies gilt nicht nur für „Anwendungsdaten“ oder „personenbezogene Informationen“, sondern für alle Daten, die sich auf die Anwendung beziehen, z.B. Kontometadaten (Abonnementzuordnungen, Vertragsinformationen, personenbezogene Informationen).
-
-Überlegen Sie, welche Speicher Sie zum Speichern von Daten verwenden. Beispiel:
-
-- Externer Speicher (z.B. SQL Azure, DocumentDB, HDInsights, Data Lake usw.)
-
-- Temporärer Speicher (beliebiger lokaler Cache, der Mandantendaten enthält)
-
-- In-Memory-Cache (kann in die Auslagerungsdatei eingefügt werden)
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Nutzen der vorhandenen Unterstützung zur Verschlüsselung ruhender Daten in Azure
-
-Für jeden verwendeten Speicher können Sie die vorhandene Unterstützung zur Verschlüsselung ruhender Daten nutzen.
-
-- Azure Storage: Siehe [Azure-Speicherdienstverschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md),
-
-- SQL Azure: Siehe [Immer verschlüsselt (Datenbank-Engine)](https://msdn.microsoft.com/library/mt163865.aspx)
-
-- VM- und lokaler Datenträgerspeicher ([Azure Disk Encryption](../azure-security-disk-encryption-overview.md))
-
-Verwenden Sie für VM- und lokalen Datenträgerspeicher Azure Disk Encryption, sofern dies unterstützt wird:
-
-#### <a name="iaas"></a>IaaS
-
-Für Dienste mit IaaS-VMs (Windows oder Linux) sollte [Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) verwendet werden, um Volumes zu verschlüsseln, die Kundendaten enthalten.
-
-#### <a name="paas-v2"></a>PaaS v2
-
-Für Dienste, die unter PaaS v2 mit Service Fabric ausgeführt werden, kann Azure Disk Encryption für VM-Skalierungsgruppen (VMSS) verwendet werden, um die entsprechenden PaaS v2-VMs zu verschlüsseln.
-
-#### <a name="paas-v1"></a>PaaS v1
-
-Für PaaS v1 wird Azure Disk Encryption derzeit nicht unterstützt. Daher müssen Sie die Verschlüsselung auf Anwendungsebene verwenden, um persistent gemachte ruhende Daten zu verschlüsseln.  Dies gilt auch für Anwendungsdaten, temporäre Dateien, Protokolle und Absturzabbilder, aber ist nicht darauf beschränkt.
-
-Für die meisten Dienste sollte versucht werden, die Verschlüsselung eines Anbieters von Speicherressourcen zu nutzen. Für einige Dienste muss eine explizite Verschlüsselung durchgeführt werden. Beispielsweise müssen alle persistent gemachten wichtigen Daten (Zertifikate, Stamm-/Hauptschlüssel) in Key Vault gespeichert werden.
-
-Wenn Sie die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln unterstützen, muss für den Kunden die Möglichkeit bestehen, uns den Schlüssel zur Verfügung zu stellen. Die unterstützte und empfohlene Vorgehensweise ist hierbei die Integration in Azure Key Vault (AKV). Kunden können ihre Schlüssel dann in Azure Key Vault hinzufügen und verwalten. Ein Kunde kann sich unter [Erste Schritte mit dem Azure-Schlüsseltresor](https://go.microsoft.com/fwlink/?linkid=521402) darüber informieren, wie AKV genutzt wird.
-
-Für die Integration in Azure Key Vault fügen Sie Code hinzu, mit dem bei Bedarf für die Entschlüsselung ein Schlüssel von AKV angefordert wird.
-
-- Informationen zur Integration mit AKV finden Sie unter [Azure Key Vault – Step by Step](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/) (Azure Key Vault – Schritt für Schritt).
-
-Wenn Sie vom Kunden verwaltete Schlüssel unterstützen, müssen Sie eine Benutzeroberfläche für Kunden bereitstellen, über die der zu verwendende Key Vault (bzw. der Key Vault-URI) angegeben werden kann.
-
-Da die Verschlüsselung ruhender Daten die Verschlüsselung von Host-, Infrastruktur- und Mandantendaten umfasst, kann der Verlust der Schlüssel aufgrund eines Systemausfalls oder einer schädlichen Aktivität bedeuten, dass alle verschlüsselten Daten verloren gehen. Aus diesem Grund ist es von entscheidender Bedeutung, dass Ihre Lösung für die Verschlüsselung ruhender Daten über umfassende Funktionalität für die Notfallwiederherstellung verfügt, die gegen Systemausfälle und schädliche Aktivitäten resistent ist.
-
-Dienste, für die die Verschlüsselung ruhender Daten implementiert wird, sind normalerweise weiterhin dafür anfällig, dass die Verschlüsselungsschlüssel oder die Daten unverschlüsselt auf dem Hostlaufwerk aufbewahrt werden (z.B. in der Auslagerungsdatei des Hostbetriebssystems). Für Dienste muss also sichergestellt werden, dass das verwendete Hostvolume verschlüsselt ist. Zu diesem Zweck hat das Compute-Team die Bereitstellung der Hostverschlüsselung ermöglicht, bei der zum Verschlüsseln des Hostvolumes [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP und Erweiterungen des DCM-Diensts und -Agents verwendet werden.
-
-Die meisten Dienste werden auf virtuellen Azure-Standardcomputern implementiert. Für diese Dienste sollte die [Hostverschlüsselung](../azure-security-disk-encryption-overview.md) automatisch abgerufen werden, wenn sie von Compute aktiviert wird. Für Dienste, die in per Compute verwalteten Clustern ausgeführt werden, wird die Hostverschlüsselung automatisch aktiviert, wenn der Rollout von Windows Server 2016 durchgeführt wird.
+Die Verschlüsselung ruhender Daten wird ausführlich unter [Azure-Datenverschlüsselung ruhender Daten](encryption-atrest.md) erläutert.
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 

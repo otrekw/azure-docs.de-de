@@ -3,12 +3,13 @@ title: Service Bus-Warteschlangen für unzustellbare Nachrichten | Microsoft Doc
 description: Beschreibung von Warteschlangen für unzustellbare Nachrichten in Azure Service Bus Service Bus-Warteschlangen und -Themenabonnements verfügen über eine sekundäre Unterwarteschlange, die als „Warteschlange für unzustellbare Nachrichten“ bezeichnet wird.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 62db4e71d99d1242cfbb69bdb7979bf9e5dc67ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337585"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511210"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -57,7 +58,7 @@ Dieses Verhalten kann nicht deaktiviert werden, aber Sie können [MaxDeliveryCou
 
 Wenn die Eigenschaft [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) bzw. [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) auf **TRUE** festgelegt ist (die Standardeinstellung lautet **FALSE**), werden alle ablaufenden Nachrichten in die Warteschlange für unzustellbare Nachrichten verschoben, und der Ursachencode `TTLExpiredException` wird angegeben.
 
-Abgelaufene Nachrichten werden nur bereinigt und in die Warteschlange für unzustellbare Nachrichten verschoben, wenn mindestens ein aktiver Empfänger den Pullvorgang aus der Hauptwarteschlange oder dem Abonnement durchführt. Dieses Verhalten ist beabsichtigt.
+Abgelaufene Nachrichten werden nur bereinigt und in die Warteschlange für unzustellbare Nachrichten verschoben, wenn mindestens ein aktiver Empfänger per Pull aus der Hauptwarteschlange oder dem Abonnement abruft. [Verzögerte Nachrichten](./message-deferral.md) werden nach ihrem Ablauf ebenfalls nicht bereinigt und in die Warteschlange für unzustellbare Nachrichten verschoben. Dieses Verhalten ist beabsichtigt.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Fehler beim Verarbeiten von Regeln für Abonnements
 
