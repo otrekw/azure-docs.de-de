@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 72c0c33c973219a9701c8a7c8d45324681e14850
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435973"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529776"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Linux-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Linux-Ressourcen aktivieren, die außerhalb von Azure (etwa lokal oder in anderen Clouds) ausgeführt werden. Stellen Sie dazu einen Agent bereit. Der Agent heißt Log Analytics-Agent, wird aber auch als OMS-Agent bezeichnet.
@@ -56,7 +56,7 @@ Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Secu
 
    ![Installieren des Agents][5]
 
-Die Protokolle für den Agent befinden sich unter */var/opt/microsoft/omsagent/\<Arbeitsbereichs-ID>/log/* :
+Die Protokolle für den Agent befinden sich unter */var/opt/microsoft/omsagent/\<workspace id>/log/* .
 
   ![Protokolle für Agent][6]
 
