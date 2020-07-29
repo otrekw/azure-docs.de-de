@@ -9,6 +9,7 @@ ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.openlocfilehash: 0727f98b917944f3721c6c6758fde05c2efd8773
 ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 06/05/2020
 ms.locfileid: "84449830"
