@@ -5,41 +5,41 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797888"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321920"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Anwendungsüberwachung ohne Instrumentierung für gehostete Kubernetes-Anwendungen mit Istio – VERALTET
 
 > [!IMPORTANT]
 > Diese Funktion wird derzeit eingestellt und wird nach dem 1. August 2020 nicht mehr unterstützt.
-> Zurzeit kann die Überwachung ohne Code nur für [Java über einen eigenständigen Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) aktiviert werden. Verwenden Sie für andere Sprachen die SDKs, um Ihre Apps in AKS zu überwachen: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript) und [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+> Zurzeit kann die Überwachung ohne Code nur für [Java über einen eigenständigen Agent](./java-in-process-agent.md) aktiviert werden. Verwenden Sie für andere Sprachen die SDKs, um Ihre Apps in AKS zu überwachen: [ASP.NET Core](./asp-net-core.md), [ASP.NET](./asp-net.md), [Node.js](./nodejs.md), [JavaScript](./javascript.md) und [Python](./opencensus-python.md).
 
-Azure Monitor nutzt jetzt die Service Mesh-Technologie in Ihrem Kubernetes-Cluster, um vorgefertigte Anwendungsüberwachung für jegliche gehosteten Kubernetes-Apps bereitzustellen. Mit standardmäßigen Application Insight-Features wie [Anwendungszuordnung](../../azure-monitor/app/app-map.md) zum Modellieren Ihrer Abhängigkeiten, [Live Metrics Stream](../../azure-monitor/app/live-stream.md) für die Überwachung in Echtzeit, leistungsfähige Visualisierungen mit dem [Standarddashboard](../../azure-monitor/app/overview-dashboard.md), [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md) und [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md). Mit diesem Feature können Benutzer innerhalb eines ausgewählten Kubernetes-Namespaces Leistungsengpässe und Fehlerhotspots in allen ihren Kubernetes-Workloads erkennen. Mit Nutzung Ihrer vorhandenen Service Mesh-Investitionen in Technologien wie Istio ermöglicht Azure Monitor automatisch instrumentierte App-Überwachung ohne Änderungen des Codes Ihrer Anwendung.
+Azure Monitor nutzt jetzt die Service Mesh-Technologie in Ihrem Kubernetes-Cluster, um vorgefertigte Anwendungsüberwachung für jegliche gehosteten Kubernetes-Apps bereitzustellen. Mit standardmäßigen Application Insight-Features wie [Anwendungszuordnung](./app-map.md) zum Modellieren Ihrer Abhängigkeiten, [Live Metrics Stream](./live-stream.md) für die Überwachung in Echtzeit, leistungsfähige Visualisierungen mit dem [Standarddashboard](./overview-dashboard.md), [Metrik-Explorer](../platform/metrics-getting-started.md) und [Arbeitsmappen](../platform/workbooks-overview.md). Mit diesem Feature können Benutzer innerhalb eines ausgewählten Kubernetes-Namespaces Leistungsengpässe und Fehlerhotspots in allen ihren Kubernetes-Workloads erkennen. Mit Nutzung Ihrer vorhandenen Service Mesh-Investitionen in Technologien wie Istio ermöglicht Azure Monitor automatisch instrumentierte App-Überwachung ohne Änderungen des Codes Ihrer Anwendung.
 
 > [!NOTE]
-> Dies ist eine von vielen Möglichkeiten, Anwendungsüberwachung in Kubernetes durchzuführen. Sie können auch alle in Kubernetes gehosteten Apps mit dem [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) instrumentieren, ohne dass ein Service Mesh notwendig ist. Um Kubernetes ohne Instrumentierung der Anwendung mit einem SDK zu überwachen, können Sie die folgende Methode verwenden.
+> Dies ist eine von vielen Möglichkeiten, Anwendungsüberwachung in Kubernetes durchzuführen. Sie können auch alle in Kubernetes gehosteten Apps mit dem [Application Insights SDK](../azure-monitor-app-hub.yml) instrumentieren, ohne dass ein Service Mesh notwendig ist. Um Kubernetes ohne Instrumentierung der Anwendung mit einem SDK zu überwachen, können Sie die folgende Methode verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein [Kubernetes-Cluster](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads).
+- Ein [Kubernetes-Cluster](../../aks/concepts-clusters-workloads.md).
 - Konsolenzugriff auf den Cluster zum Ausführen von *kubectl*.
 - Eine [Application Insights-Ressource](create-new-resource.md)
-- Ein Service Mesh. Wenn Istio nicht in Ihrem Cluster bereitgestellt ist, können Sie sich über das [Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/istio-install) informieren.
+- Ein Service Mesh. Wenn Istio nicht in Ihrem Cluster bereitgestellt ist, können Sie sich über das [Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)](../../aks/servicemesh-istio-install.md) informieren.
 
 ## <a name="capabilities"></a>Funktionen
 
 Mithilfe der Anwendungsüberwachung ohne Instrumentierung für gehostete Kubernetes-Apps können Sie Folgendes verwenden:
 
-- [Anwendungszuordnung](../../azure-monitor/app/app-map.md)
-- [Live Stream-Metriken](../../azure-monitor/app/live-stream.md)
-- [Dashboards](../../azure-monitor/app/overview-dashboard.md)
-- [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md)
-- [Verteilte Ablaufverfolgung](../../azure-monitor/app/distributed-tracing.md)
-- [End-to-End-Transaktionsüberwachung](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
+- [Anwendungszuordnung](./app-map.md)
+- [Live Stream-Metriken](./live-stream.md)
+- [Dashboards](./overview-dashboard.md)
+- [Metrik-Explorer](../platform/metrics-getting-started.md)
+- [Verteilte Ablaufverfolgung](./distributed-tracing.md)
+- [End-to-End-Transaktionsüberwachung](../learn/tutorial-performance.md#identify-slow-server-operations)
 
 ## <a name="installation-steps"></a>Installationsschritte
 
@@ -141,4 +141,5 @@ kubectl delete -f <filename.yaml>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Zusammenwirken von Azure Monitor und Containern finden Sie unter [Azure Monitor für Container – Übersicht](../../azure-monitor/insights/container-insights-overview.md).
+Weitere Informationen zum Zusammenwirken von Azure Monitor und Containern finden Sie unter [Azure Monitor für Container – Übersicht](../insights/container-insights-overview.md).
+

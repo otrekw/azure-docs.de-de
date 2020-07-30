@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084584"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -57,7 +57,7 @@ Bei Verwendung einer Open-Einschränkung übermittelt das System den Schlüssel 
 ### <a name="token-restriction"></a>Token-Einschränkung
 Zum Auswählen der durch „Token“ eingeschränkten Richtlinie wählen Sie die Schaltfläche **TOKEN** aus.
 
-Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im Format „Simple Web Token“ ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und „JSON Web Token“ (JWT). Weitere Informationen finden Sie unter [JWT-Authentifizierung](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im Format „Simple Web Token“ ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) und „JSON Web Token“ (JWT). Weitere Informationen finden Sie unter [JWT-Authentifizierung](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
 
 Media Services stellt keinen Sicherheitstokendienst (STS) bereit. Sie können einen benutzerdefinierten STS zum Ausstellen von Token erstellen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Der Schlüsselübermittlungsdienst von Media Services gibt den Verschlüsselungsschlüssel an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Inhaltsschlüssel konfigurierten Ansprüchen übereinstimmen.
 
@@ -94,4 +94,3 @@ Sie können die Schaltfläche **XML für Importrichtlinie** auswählen und einen
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

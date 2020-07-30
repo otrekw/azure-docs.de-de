@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118935"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320050"
 ---
 # <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen 
 
@@ -109,21 +111,13 @@ Für ein einzelnes Angebot können maximal 18 individuelle Dimensionen konfigur
 
 ## <a name="get-support"></a>Support
 
-In den folgenden Fällen können Sie ein Supportticket öffnen.
+Sollte eines der folgenden Probleme bei Ihnen auftreten, können Sie ein Supportticket erstellen:
 
 * Technische Probleme mit der Marketplace-Messungsdienst-API
 * Ein Problem, das aufgrund eines Fehlers auf Ihrer Seite eskaliert werden muss (beispielsweise ein falsches Nutzungsereignis)
 * Ein anderes Problem im Zusammenhang mit der getakteten Abrechnung
 
-Führen Sie die folgenden Schritte aus, um Ihr Supportticket zu übermitteln:
-
-1. Navigieren Sie zur [Supportseite](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt. Geben Sie für den Marketplace-Support die Produktfamilie als **Cloud und Onlinedienste** und das Produkt als **Marketplace-Herausgeber** an. Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
-2. Wählen Sie unter „Produktversion auswählen“ die Option **Live-Angebotsverwaltung** aus.
-3. Wählen Sie unter „Wählen Sie eine Kategorie aus, die das Problem am besten beschreibt“ die Option **Azure-Anwendungsangebot** aus.
-4. Wählen Sie unter „Wählen Sie ein Problem aus, das das Problem am besten beschreibt“ die Option **getaktete Abrechnung** aus.
-5. Durch Auswählen der Schaltfläche **Weiter** gelangen Sie zur Seite **Problemdetails**, wo Sie weitere Details zu Ihrem Problem eingeben können.
-
-Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](support.md).
+Befolgen Sie die Anleitung unter [Support für das Programm „Kommerzieller Marketplace“ in Partner Center](./support.md), um sich mit den Supportoptionen für Herausgeber vertraut zu machen und ein Supportticket bei Microsoft zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

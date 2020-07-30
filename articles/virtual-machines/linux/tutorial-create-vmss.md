@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 06/01/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e97611cdfdca28b2c2b22f21d3aedcc79c4ee6d0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d005cf64089abee07c44f584366fee9cd26c2c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085417"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Tutorial: Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hochverfügbaren App unter Linux mit der Azure-Befehlszeilenschnittstelle
 
@@ -28,7 +28,7 @@ Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch 
 > * Anzeigen von Verbindungsinformationen für die Skalierungsgruppeninstanzen
 > * Verwenden von Datenträgern mit Skalierungsgruppen
 
-Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
+Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](../../cloud-shell/overview.md), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 

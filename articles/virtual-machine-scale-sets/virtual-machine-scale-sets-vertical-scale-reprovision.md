@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029279"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 
@@ -89,7 +89,7 @@ Sie können die vertikale Skalierung so einrichten, dass sie auf Grundlage von m
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Erstellen eines Azure Automation-Kontos mit der Funktion „Ausführen als“
 Als Erstes müssen Sie lediglich ein Azure Automation-Konto erstellen, in dem die Runbooks gehostet werden. So können die Instanzen der VM-Skalierungsgruppen skaliert werden. Vor kurzem wurde in [Azure Automation](https://azure.microsoft.com/services/automation/) das Feature „Als Konto ausführen“ eingeführt, wodurch der Dienstprinzipal für die automatische Ausführung der Runbooks im Auftrag des Benutzers eingerichtet wird. Weitere Informationen finden Sie unter
 
-* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
+* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/manage-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importieren der Azure Automation-Runbooks für die vertikale Skalierung in Ihr Abonnement
 

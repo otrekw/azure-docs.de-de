@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045198"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -26,9 +26,9 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden. 
+- Ihr Abonnement muss mit [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) registriert werden. 
 
-- Sie müssen [Azure PowerShell](/powershell/azure) installiert haben, oder Sie können [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwenden. 
+- Sie müssen [Azure PowerShell](/powershell/azure) installiert haben, oder Sie können [Azure Cloud Shell](../../cloud-shell/overview.md) verwenden. 
 
 - Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](metrics-custom-overview.md#supported-regions).
 
@@ -293,5 +293,3 @@ Sie können dann auch die Verwendung der Dimensionen zu dieser Metrik auswählen
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-
-

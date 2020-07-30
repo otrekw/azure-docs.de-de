@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: c86a58c384c7356ecdaf668644f08c011a4c0a40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d40618c5d1a7200b452268a6b36841a846c6cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041888"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid-Trigger für Azure Functions
 
@@ -413,7 +413,7 @@ Weitere Informationen zum Erstellen von Abonnements über das Azure-Portal finde
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Verwenden Sie den Befehl [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create), um ein Abonnement über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) zu erstellen.
+Verwenden Sie den Befehl [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create), um ein Abonnement über die [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) zu erstellen.
 
 Für den Befehl ist die Endpunkt-URL erforderlich, über die die Funktion aufgerufen wird. Das folgende Beispiel zeigt das versionsabhängige URL-Muster:
 
@@ -508,7 +508,7 @@ Zum lokalen Testen eines Event Grid-Triggers müssen Event Grid-HTTP-Anforderung
 1. [Generieren Sie eine Anforderung](#generate-a-request), und kopieren Sie den Anforderungstext von der Viewer-App.
 1. [Stellen Sie die Anforderung manuell](#manually-post-the-request) für die localhost-URL der Event Grid-Triggerfunktion bereit.
 
-Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion verwenden, indem Sie den Endpunkt aktualisieren. Verwenden Sie dazu den Azure CLI-Befehl [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update).
+Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion verwenden, indem Sie den Endpunkt aktualisieren. Verwenden Sie dazu den Azure CLI-Befehl [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update).
 
 ### <a name="create-a-viewer-web-app"></a>Erstellen einer Viewer-Web-App
 

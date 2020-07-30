@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515375"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322294"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Metrikwarnungsregeln in Azure Monitor
 
@@ -23,7 +23,7 @@ Dieser Artikel enthält Beispiele für die Verwendung von [Azure Resource Manage
 Eine Liste mit Ressourcen, für die Metrikwarnungsregeln verwendet werden können, finden Sie unter [Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor](../platform/alerts-metric-near-real-time.md). Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel finden Sie unter [Metrikwarnungen – Erstellen oder aktualisieren](/rest/api/monitor/metricalerts/createorupdate).
 
 > [!NOTE]
-> Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie unter [Ressourcenvorlage für Metrikwarnungen für Protokolle](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie unter [Ressourcenvorlage für Metrikwarnungen für Protokolle](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 
 
@@ -3127,7 +3127,7 @@ Im folgenden Beispiel wird eine Metrikwarnungsregel mit dynamischem Schwellenwer
 
 
 ## <a name="availability-test-with-metric-alert"></a>Verfügbarkeitstest mit Metrikwarnung
-Mithilfe von [Application Insights-Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) können Sie die Verfügbarkeit Ihrer Website/Anwendung an verschiedenen Standorten auf der ganzen Welt überwachen. Durch Warnungen zu Verfügbarkeitstests werden Sie benachrichtigt, wenn Verfügbarkeitstests an einer bestimmten Anzahl von Standorten fehlschlagen. Warnungen zu Verfügbarkeitstests sind vom gleichen Ressourcentyp wie Metrikwarnungen (Microsoft.Insights/metricAlerts). Im folgenden Beispiel werden ein einfacher Verfügbarkeitstest und eine zugehörige Warnung erstellt.
+Mithilfe von [Application Insights-Verfügbarkeitstests](../app/monitor-web-app-availability.md) können Sie die Verfügbarkeit Ihrer Website/Anwendung an verschiedenen Standorten auf der ganzen Welt überwachen. Durch Warnungen zu Verfügbarkeitstests werden Sie benachrichtigt, wenn Verfügbarkeitstests an einer bestimmten Anzahl von Standorten fehlschlagen. Warnungen zu Verfügbarkeitstests sind vom gleichen Ressourcentyp wie Metrikwarnungen (Microsoft.Insights/metricAlerts). Im folgenden Beispiel werden ein einfacher Verfügbarkeitstest und eine zugehörige Warnung erstellt.
 
 > [!NOTE]
 > `&amp`; ist der HTML-Entitätsverweis für „&.“ URL-Parameter werden weiterhin durch einen einzelnen „&“ getrennt, aber wenn Sie die URL in HTML erwähnen, müssen Sie sie codieren. Wenn Ihr pingURL-Parameterwert also einen „&“ enthält, müssen Sie ihn mit dem Escapezeichen `&amp`; versehen.
@@ -3266,3 +3266,4 @@ Mithilfe von [Application Insights-Verfügbarkeitstests](../../azure-monitor/app
 - [Rufen Sie weitere Beispielvorlagen für Azure Monitor ab](resource-manager-samples.md).
 - [Erfahren Sie mehr über Warnungen](../platform/alerts-overview.md).
 - [Rufen Sie ein Beispiel zum Erstellen einer Aktionsgruppe mit einer Resource Manager-Vorlage ab](resource-manager-action-groups.md).
+

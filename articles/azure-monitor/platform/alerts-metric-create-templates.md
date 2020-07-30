@@ -7,21 +7,21 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539464"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321138"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md)[neuere Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) verfügbar.
+In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md)[neuere Metrikwarnungen](./alerts-metric-near-real-time.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) verfügbar.
 
 > [!IMPORTANT]
-> Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie im Artikel [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie im Artikel [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Die grundlegenden Schritte lauten wie folgt:
 
@@ -3464,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Vorlage für einen Verfügbarkeitstest zusammen mit einer Metrikwarnung
 
-Mithilfe von [Application Insights-Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) können Sie die Verfügbarkeit Ihrer Website/Anwendung an verschiedenen Standorten auf der ganzen Welt überwachen. Durch Warnungen zu Verfügbarkeitstests werden Sie benachrichtigt, wenn Verfügbarkeitstests an einer bestimmten Anzahl von Standorten fehlschlagen.
+Mithilfe von [Application Insights-Verfügbarkeitstests](../app/monitor-web-app-availability.md) können Sie die Verfügbarkeit Ihrer Website/Anwendung an verschiedenen Standorten auf der ganzen Welt überwachen. Durch Warnungen zu Verfügbarkeitstests werden Sie benachrichtigt, wenn Verfügbarkeitstests an einer bestimmten Anzahl von Standorten fehlschlagen.
 Warnungen zu Verfügbarkeitstests sind vom gleichen Ressourcentyp wie Metrikwarnungen (Microsoft.Insights/metricAlerts). Mit der folgende Azure Resource Manager-Beispielvorlage können Sie einen einfachen Verfügbarkeitstest und eine zugehörige Warnung einrichten.
 
 Speichern Sie den JSON-Code unten als „availabilityalert.json“ für diese exemplarische Vorgehensweise.
@@ -3628,3 +3628,4 @@ az group deployment create \
 - Weitere Informationen zu [Warnungen in Azure](alerts-overview.md).
 - Erfahren Sie, wie Sie [eine Aktionsgruppe mithilfe einer Resource Manager-Vorlage erstellen](action-groups-create-resource-manager-template.md).
 - Informationen zur JSON-Syntax und zu den Eigenschaften finden Sie in der Vorlagenreferenz für [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts).
+

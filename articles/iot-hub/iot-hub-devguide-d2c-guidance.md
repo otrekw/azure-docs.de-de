@@ -11,12 +11,14 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733215"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319132"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Leitfaden zur D2C-Kommunikation
 
@@ -32,7 +34,7 @@ Beim Senden von Informationen von der Geräte-App an das Lösungs-Back-End stehe
 
 Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die D2C-Kommunikation.
 
-|  | D2C-Nachrichten | Gemeldete Eigenschaften des Gerätezwillings | Dateiuploads |
+| Faktor | D2C-Nachrichten | Gemeldete Eigenschaften des Gerätezwillings | Dateiuploads |
 | ---- | ------- | ---------- | ---- |
 | Szenario | Telemetrie-Zeitreihen und -Warnungen, Beispiel: Sendung von 256-KB-Sensordatenbatches alle 5 Minuten | Verfügbare Funktionen und Bedingungen, z.B. der aktuelle Gerätekonnektivitätsmodus wie Mobilfunk oder WLAN. Synchronisierung von Workflows mit langer Laufzeit, z.B. Konfiguration und Softwareupdates. | Mediendateien. Große (normalerweise komprimierte) Telemetriebatches. |
 | Speichern und Abrufen | Temporäre Speicherung durch IoT Hub, bis zu 7 Tage. Nur sequenzielles Lesen. | Von IoT Hub im Gerätezwilling gespeichert. Abrufbar mithilfe der [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md). | Speicherung im vom Benutzer bereitgestellten Azure Storage-Konto. |

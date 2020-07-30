@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674551"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055438"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Schnellstart: Erstellen Ihrer ersten, über HTTP ausgelösten Funktion mit Kotlin und IntelliJ
 
@@ -26,7 +26,7 @@ Installieren Sie die folgende Software, um eine Funktion mit Kotlin und IntelliJ
 - [Java Developer Kit](https://aka.ms/azure-jdks) (JDK), Version 8
 - [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download), Community- oder Ultimate-Version mit Maven
-- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure)
 - [Version 2.x](functions-run-local.md#v2) der Azure Functions Core Tools. Sie stellen eine lokale Entwicklungsumgebung zum Schreiben, Ausführen und Debuggen von Azure Functions bereit.
 
 > [!IMPORTANT]
@@ -45,7 +45,7 @@ Installieren Sie die folgende Software, um eine Funktion mit Kotlin und IntelliJ
 1. Wählen Sie **OK** und anschließend **Weiter** aus.
 1. Geben Sie Ihre Details für das aktuelle Projekt ein, und wählen Sie **Fertig stellen** aus.
 
-Maven erstellt die Projektdateien in einem neuen Ordner mit dem Wert von _ArtifactId_ als Name. Bei dem generierten Code des Projekts handelt es sich um eine einfache [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Hauptteil der über HTTP ausgelösten Anforderung wiederholt.
+Maven erstellt die Projektdateien in einem neuen Ordner mit dem Wert von _ArtifactId_ als Name. Bei dem generierten Code des Projekts handelt es sich um eine einfache [durch HTTP ausgelöste](./functions-bindings-http-webhook.md) Funktion, die den Hauptteil der über HTTP ausgelösten Anforderung wiederholt.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Lokales Ausführen von Funktionen in der IDE
 

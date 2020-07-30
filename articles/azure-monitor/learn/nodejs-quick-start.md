@@ -6,13 +6,13 @@ ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: af75afb2840d2bc14e1fa46310f76f662efa2a54
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516497"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384785"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Schnellstart: Starten der Überwachung Ihrer Node.js-Webanwendung mit Azure Application Insights
 
@@ -112,11 +112,11 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
    </script>
    ```
 
-5. Wählen Sie links die Option **Metrik** aus. Untersuchen Sie mithilfe des Metrik-Explorers die Integrität und Auslastung Ihrer Ressource. Sie können **Neues Diagramm hinzufügen** auswählen, um zusätzliche benutzerdefinierte Ansichten zu erstellen, oder **Bearbeiten** auswählen, um Typ, Höhe, Farbpalette, Gruppierungen und Metriken der vorhandenen Diagramme zu ändern. Sie können beispielsweise ein Diagramm für die durchschnittliche Seitenladezeit des Browsers erstellen, indem Sie in der Metrik-Dropdownliste die Option für die Browser-Seitenladezeit und unter „Aggregation“ die Durchschnittsoption auswählen. Weitere Informationen zum Azure-Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+5. Wählen Sie links die Option **Metrik** aus. Untersuchen Sie mithilfe des Metrik-Explorers die Integrität und Auslastung Ihrer Ressource. Sie können **Neues Diagramm hinzufügen** auswählen, um zusätzliche benutzerdefinierte Ansichten zu erstellen, oder **Bearbeiten** auswählen, um Typ, Höhe, Farbpalette, Gruppierungen und Metriken der vorhandenen Diagramme zu ändern. Sie können beispielsweise ein Diagramm für die durchschnittliche Seitenladezeit des Browsers erstellen, indem Sie in der Metrik-Dropdownliste die Option für die Browser-Seitenladezeit und unter „Aggregation“ die Durchschnittsoption auswählen. Weitere Informationen zum Azure-Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../platform/metrics-getting-started.md).
 
    ![Application Insights-Diagramm der Servermetriken](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-Weitere Informationen zum Überwachen von Node.js finden Sie in der [weiteren Dokumentation zu AppInsights und Node.js](../../azure-monitor/app/nodejs.md).
+Weitere Informationen zum Überwachen von Node.js finden Sie in der [weiteren Dokumentation zu AppInsights und Node.js](../app/nodejs.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -132,3 +132,4 @@ Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und all
 
 > [!div class="nextstepaction"]
 > [Suchen nach und Diagnostizieren von Leistungsproblemen](../log-query/log-query-overview.md)
+

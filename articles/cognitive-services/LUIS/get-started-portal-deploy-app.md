@@ -3,12 +3,12 @@ title: 'Schnellstart: Bereitstellen einer App im LUIS-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine App bereitstellen, indem Sie eine Vorhersageendpunktressource erstellen, die Ressource zuweisen, ein Training durchführen und die App veröffentlichen.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653230"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336366"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -19,7 +19,7 @@ In diesem Schnellstart erfahren Sie, wie eine Anwendung bereitgestellt wird. Sie
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Erwerben Sie ein [Azure-Abonnement](https://azure.microsoft.com/free).
-* Führen Sie den vorherigen [Schnellstart: Erstellen einer neuen App im LUIS-Portal](get-started-portal-build-app.md) durch, oder [laden Sie die App herunter, und importieren Sie die App](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Führen Sie den vorherigen [Schnellstart: Erstellen einer neuen App im LUIS-Portal](get-started-portal-build-app.md) durch, oder [laden Sie die App herunter, und importieren Sie die App](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/portal-build-app.json).
 * Wenn Sie über Apps verfügen, die vor der Azure-Ressourcenauthentifizierung erstellt wurden, [migrieren Sie zu einer Azure-Ressource](luis-migration-authoring.md). Einige Portalseiten sehen anders aus, wenn die E-Mail-Authentifizierung verwendet wird.
 
 <a name="create-the-endpoint-resource"></a>

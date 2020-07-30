@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55993162c4ea3cd5bf60a9ee9acc869cc088a9d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085128"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements und Azure Active Directory-Mandanten
 
@@ -181,7 +181,7 @@ Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind
 
 In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden.
 
-1. Vergewissern Sie sich, dass Sie über Azure PowerShell-Version 1.0.0 oder höher verfügen. Zu diesem Zweck können Sie `Get-Module -Name Az` ausführen. Wir empfehlen Ihnen, die aktuelle Version des PowerShell-[Az](/powershell/azure/install-az-ps)-Moduls zu installieren. Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+1. Vergewissern Sie sich, dass Sie über Azure PowerShell-Version 1.0.0 oder höher verfügen. Zu diesem Zweck können Sie `Get-Module -Name Az` ausführen. Wir empfehlen Ihnen, die aktuelle Version des PowerShell-[Az](/powershell/azure/install-az-ps)-Moduls zu installieren. Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 2. Starten Sie eine PowerShell-Sitzung.
 3. Melden Sie sich in PowerShell als UserA bei Azure an, indem Sie den Befehl `Connect-AzAccount` eingeben. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#permissions).
 4. Erstellen Sie eine Ressourcengruppe und das virtuelle Netzwerk A. Kopieren Sie das folgende Skript in einen Text-Editor auf Ihrem PC. Ersetzen Sie `<SubscriptionA-Id>` durch die ID von SubscriptionA. Wenn Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl `Get-AzSubscription` ein. Der Wert für **Id** in der Ausgabe ist Ihre Abonnement-ID. Um das Skript auszuführen, kopieren Sie das geänderte Skript. Fügen Sie es in PowerShell ein, und drücken Sie dann `Enter`.

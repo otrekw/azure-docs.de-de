@@ -6,16 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320645"
 ---
 # <a name="availability-alerts"></a>Verfügbarkeitswarnungen
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Außerdem kann dieser Dienst Sie warnen, wenn Ihre Anwendung nicht oder zu langsam reagieren sollte.
+[Azure Application Insights](./app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Außerdem kann dieser Dienst Sie warnen, wenn Ihre Anwendung nicht oder zu langsam reagieren sollte.
 
 ## <a name="enable-alerts"></a>Aktivieren von Warnungen
 
@@ -24,7 +24,7 @@ Warnungen werden jetzt zwar standardmäßig automatisch aktiviert, aber Sie müs
 ![Erstellen einer Erfahrung](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Bei den [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) in der Warnungsumgebung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen.
+>  Bei den [neuen einheitlichen Warnungen](../platform/alerts-overview.md) **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](../platform/action-groups.md) in der Warnungsumgebung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen.
 
 1. Nach dem Speichern des Verfügbarkeitstests, klicken Sie auf der Registerkarte „Details“ auf die Auslassungspunkte neben dem Test, den Sie gerade erstellt haben. Klicken Sie auf „Warnung bearbeiten“.
 
@@ -39,7 +39,7 @@ Warnungen werden jetzt zwar standardmäßig automatisch aktiviert, aber Sie müs
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Warnung bei X von Y Standorten, die Fehler melden
 
-Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnungserfahrung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) standardmäßig aktiviert, wenn Sie einen neuen Verfügbarkeitstest erstellen. Sie können sich dagegen entscheiden, indem Sie die „klassische“ Option auswählen oder die Warnungsregel deaktivieren.
+Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnungserfahrung](../platform/alerts-overview.md) standardmäßig aktiviert, wenn Sie einen neuen Verfügbarkeitstest erstellen. Sie können sich dagegen entscheiden, indem Sie die „klassische“ Option auswählen oder die Warnungsregel deaktivieren.
 
 > [!NOTE]
 > Konfigurieren Sie die Aktionsgruppen so, dass sie Benachrichtigungen empfangen, wenn die Warnung ausgelöst wird, indem Sie die oben beschriebenen Schritte ausführen. Ohne diese Schritte erhalten Sie nur portalinterne Benachrichtigungen, wenn die Regel ausgelöst wird.
@@ -47,7 +47,7 @@ Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnu
 
 ### <a name="alert-on-availability-metrics"></a>Warnung bei Verfügbarkeitsmetriken
 
-Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) können Sie sowohl bei segmentierter aggregierter Verfügbarkeit als auch bei Testdauermetriken warnen:
+Mithilfe der [neuen einheitlichen Warnungen](../platform/alerts-overview.md) können Sie sowohl bei segmentierter aggregierter Verfügbarkeit als auch bei Testdauermetriken warnen:
 
 1. Wählen Sie eine Application Insights-Ressource in der Metrikenerfahrung aus, und wählen Sie eine Verfügbarkeitsmetrik aus:
 
@@ -57,7 +57,7 @@ Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/mo
 
 ### <a name="alert-on-custom-analytics-queries"></a>Warnung bei benutzerdefinierten Analyseabfragen
 
-Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) können Sie bei [benutzerdefinierten Protokollabfragen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log) warnen. Mit benutzerdefinierten Abfragen können Sie bei jeder beliebigen Bedingung warnen, die Ihnen hilft, das zuverlässigste Signal für Verfügbarkeitsprobleme abzurufen. Dies ist auch anwendbar, wenn Sie benutzerdefinierte Verfügbarkeitsergebnisse mithilfe des TrackAvailability SDK senden.
+Mithilfe der [neuen einheitlichen Warnungen](../platform/alerts-overview.md) können Sie bei [benutzerdefinierten Protokollabfragen](../platform/alerts-unified-log.md) warnen. Mit benutzerdefinierten Abfragen können Sie bei jeder beliebigen Bedingung warnen, die Ihnen hilft, das zuverlässigste Signal für Verfügbarkeitsprobleme abzurufen. Dies ist auch anwendbar, wenn Sie benutzerdefinierte Verfügbarkeitsergebnisse mithilfe des TrackAvailability SDK senden.
 
 > [!Tip]
 > Die Metriken zu Verfügbarkeitsdaten umfassen alle benutzerdefinierten Verfügbarkeitsergebnisse, die Sie möglicherweise durch Aufrufen unseres TrackAvailability SDKs übermitteln. Sie können die Unterstützung für Warnungen bei Metriken verwenden, um bei benutzerdefinierten Verfügbarkeitsergebnissen zu warnen.
@@ -65,7 +65,7 @@ Mithilfe der [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/mo
 
 ## <a name="automate-alerts"></a>Automatisieren von Warnungen
 
-Informationen zur Automatisierung dieses Prozesses mit Azure Resource Manager-Vorlagen finden Sie in der Dokumentation zum [Erstellen einer Metrikwarnung mit Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
+Informationen zur Automatisierung dieses Prozesses mit Azure Resource Manager-Vorlagen finden Sie in der Dokumentation zum [Erstellen einer Metrikwarnung mit Resource Manager-Vorlagen](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -75,3 +75,4 @@ Informationen zur Automatisierung dieses Prozesses mit Azure Resource Manager-Vo
 
 * [Multi-step web tests (Mehrstufige Webtests)](availability-multistep.md)
 * [Url ping web tests (URL-Pingtests)](monitor-web-app-availability.md)
+

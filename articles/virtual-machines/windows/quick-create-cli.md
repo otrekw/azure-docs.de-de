@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 178c4b92722453cd1c97471e725cb0fc68abb6fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82098015"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020320"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Windows-VM mit der Azure CLI
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location eastus
 
 Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt: Dieses Beispiel verwendet *azureuser* als Administratorbenutzernamen. 
 
-Sie müssen ein Kennwort angeben, das die [Kennwortanforderungen für Azure-VMs](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+Sie müssen ein Kennwort angeben, das die [Kennwortanforderungen für Azure-VMs](./faq.md#what-are-the-password-requirements-when-creating-a-vm
 ) erfüllt. Beim folgenden Beispiel werden Sie zur Eingabe eines Kennworts in der Befehlszeile aufgefordert. Sie können auch den Parameter `--admin-password` mit einem Wert für Ihr Kennwort hinzufügen. Benutzername und Kennwort werden später verwendet, wenn Sie eine Verbindung mit dem virtuellen Computer herstellen.
 
 ```azurecli-interactive

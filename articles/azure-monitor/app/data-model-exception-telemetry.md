@@ -4,16 +4,16 @@ description: Application Insights-Datenmodell für Ausnahmentelemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6732fb3dde79abd5c69e2b0a91710bdd2356d6aa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671935"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320594"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Ausnahmentelemetrie: Application Insights-Datenmodell
 
-In [Application Insights](../../azure-monitor/app/app-insights-overview.md) stellt eine Instanz einer Ausnahme eine behandelte oder nicht behandelte Ausnahme dar, die während der Ausführung der überwachten Anwendung aufgetreten ist.
+In [Application Insights](./app-insights-overview.md) stellt eine Instanz einer Ausnahme eine behandelte oder nicht behandelte Ausnahme dar, die während der Ausführung der überwachten Anwendung aufgetreten ist.
 
 ## <a name="problem-id"></a>Problem-ID
 
@@ -40,5 +40,6 @@ Schweregrad der Ablaufverfolgung. Möglicher Wert: `Verbose`, `Information`, `Wa
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](data-model.md).
-- Erfahren Sie mehr zum [Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).
+- Erfahren Sie mehr zum [Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights](./asp-net-exceptions.md).
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
+

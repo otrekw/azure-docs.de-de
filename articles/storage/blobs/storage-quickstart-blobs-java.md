@@ -2,23 +2,29 @@
 title: 'Schnellstart: Azure Blob Storage-Bibliothek v12 – Java'
 description: In diesem Schnellstart erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek Version 12 für Java ein Container und ein Blob in Blob Storage (Objektspeicher) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 01/27/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d30260f8718d061473dfa4b29b7c35e33b27390d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c0b8d6ea772d3d655eb6fbe39afa5ef9edafc11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871389"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319812"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Schnellstart: Verwalten von Blobs per Java v12 SDK
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mithilfe von Java verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Sie führen das Hochladen, Herunterladen und Auflisten von Blobs durch und erstellen und löschen Container.
 
-[API-Referenzdokumentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+Zusätzliche Ressourcen:
+
+* [API-Referenzdokumentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html)
+* [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
+* [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
+* [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -26,9 +32,6 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mithilfe von Java ve
 - Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable), Version 8 oder höher.
 - [Apache Maven](https://maven.apache.org/download.cgi).
-
-> [!NOTE]
-> Informationen zu den ersten Schritten mit der vorherigen SDK-Version finden Sie unter [Schnellstart: Verwalten von Blobs mit Java SDK, Version 8](storage-quickstart-blobs-java-legacy.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

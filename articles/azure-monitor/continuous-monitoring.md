@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539685"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318129"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -26,9 +26,9 @@ In diesem Artikel werden bestimmte Schritte für die Verwendung von Azure Monito
 Um die Transparenz in Ihrer gesamten Umgebung sicherzustellen, müssen Sie die Überwachung für Ihre gesamten Webanwendungen und -dienste aktivieren. Auf diese Weise können Sie ganz einfach End-to-End-Transaktionen und -Verbindungen über alle Komponenten hinweg visualisieren.
 
 - [Azure DevOps Projects](../devops-project/overview.md) bietet eine vereinfachte Umgebung mit Ihrem vorhandenen Code und dem Git-Repository, oder wählen Sie eine der Beispielanwendungen aus, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen.
-- Die [kontinuierliche Überwachung in Ihrer DevOps-Releasepipeline](../azure-monitor/app/continuous-monitoring.md) ermöglicht es Ihnen, Ihre Bereitstellung auf der Grundlage von Überwachungsdaten zu steuern oder zurückzusetzen.
-- Der [Statusmonitor](../azure-monitor/app/monitor-performance-live-website-now.md) ermöglicht es Ihnen, eine .NET-Live-App unter Windows mit Azure Application Insights zu instrumentieren, ohne Ihren Code ändern oder neu bereitstellen zu müssen.
-- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](../azure-monitor/app/app-insights-overview.md), indem Sie das Azure Monitor Application Insights-SDK für [.NET](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md) oder [alle anderen Programmiersprachen](../azure-monitor/app/platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
+- Die [kontinuierliche Überwachung in Ihrer DevOps-Releasepipeline](./app/continuous-monitoring.md) ermöglicht es Ihnen, Ihre Bereitstellung auf der Grundlage von Überwachungsdaten zu steuern oder zurückzusetzen.
+- Der [Statusmonitor](./app/monitor-performance-live-website-now.md) ermöglicht es Ihnen, eine .NET-Live-App unter Windows mit Azure Application Insights zu instrumentieren, ohne Ihren Code ändern oder neu bereitstellen zu müssen.
+- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](./app/app-insights-overview.md), indem Sie das Azure Monitor Application Insights-SDK für [.NET](./learn/quick-monitor-portal.md), [Java](./app/java-get-started.md), [Node.js](./learn/nodejs-quick-start.md) oder [alle anderen Programmiersprachen](./app/platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
 
 
 
@@ -50,7 +50,7 @@ Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. D
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Kombinieren von Ressourcen in Azure-Ressourcengruppen
 Eine typische Anwendung in Azure umfasst heute mehrere Ressourcen wie VMs und App Services oder Microservices, die in Cloud Services, AKS-Clustern oder Service Fabric gehostet werden. Diese Anwendungen nutzen häufig Abhängigkeiten wie Event Hubs, Storage, SQL und Service Bus.
 
-- Kombinieren Sie Ressourcen in Azure-Ressourcengruppen, um eine vollständige Sichtbarkeit über Ihre gesamten Ressourcen zu erhalten, aus denen sich Ihre verschiedenen Anwendungen zusammensetzen. [Azure Monitor für Ressourcengruppen](../azure-monitor/insights/resource-group-insights.md) bietet eine einfache Möglichkeit, die Integrität und Leistung Ihrer gesamten systemübergreifenden Anwendung zu verfolgen und ermöglicht es, für Untersuchungen oder Debugging einen Drilldown in die entsprechenden Komponenten auszuführen.
+- Kombinieren Sie Ressourcen in Azure-Ressourcengruppen, um eine vollständige Sichtbarkeit über Ihre gesamten Ressourcen zu erhalten, aus denen sich Ihre verschiedenen Anwendungen zusammensetzen. [Azure Monitor für Ressourcengruppen](./insights/resource-group-insights.md) bietet eine einfache Möglichkeit, die Integrität und Leistung Ihrer gesamten systemübergreifenden Anwendung zu verfolgen und ermöglicht es, für Untersuchungen oder Debugging einen Drilldown in die entsprechenden Komponenten auszuführen.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Sicherstellen der Qualität durch Continuous Deployment
 Mit Continuous Integration/Continuous Deployment können Sie Codeänderungen automatisch in Ihre Anwendung auf Basis der Ergebnisse automatisierter Tests integrieren und bereitstellen. Es optimiert den Bereitstellungsprozess und sichert die Qualität aller Änderungen, bevor sie in die Produktionsumgebung übernommen werden.
@@ -58,32 +58,33 @@ Mit Continuous Integration/Continuous Deployment können Sie Codeänderungen aut
 
 - Verwenden Sie [Azure Pipelines](/azure/devops/pipelines), um Continuous Deployment zu implementieren und Ihren gesamten Prozess (vom Codecommit bis zur Produktion) auf Basis Ihrer CI/CD-Tests zu automatisieren.
 - Verwenden Sie [Quality Gates](/azure/devops/pipelines/release/approvals/gates), um die Überwachung in die Prozesse vor oder nach der Bereitstellung zu integrieren. Dadurch wird sichergestellt, dass Sie die wichtigsten Integritäts-/Leistungsmetriken (KPIs) erfüllen, wenn Ihre Anwendungen von der Entwicklung in die Produktionsumgebung wechseln und Unterschiede in der Infrastrukturumgebung oder -größe sich nicht negativ auf Ihre KPIs auswirken.
-- [Unterhalten Sie separate Überwachungsinstanzen](../azure-monitor/app/separate-resources.md) zwischen Ihren verschiedenen Bereitstellungsumgebungen wie Entwicklung, Test, Canary und Produktion. Auf diese Weise wird sichergestellt, dass die gesammelten Daten für alle zugehörigen Anwendungen und Infrastrukturen relevant sind. Wenn Sie Daten umgebungsübergreifend korrelieren möchten, können Sie [Diagramme für mehrere Ressourcen im Metrik-Explorer](../azure-monitor/platform/metrics-charts.md) verwenden oder [ressourcenübergreifende Abfragen in Azure Monitor](log-query/cross-workspace-query.md) erstellen.
+- [Unterhalten Sie separate Überwachungsinstanzen](./app/separate-resources.md) zwischen Ihren verschiedenen Bereitstellungsumgebungen wie Entwicklung, Test, Canary und Produktion. Auf diese Weise wird sichergestellt, dass die gesammelten Daten für alle zugehörigen Anwendungen und Infrastrukturen relevant sind. Wenn Sie Daten umgebungsübergreifend korrelieren möchten, können Sie [Diagramme für mehrere Ressourcen im Metrik-Explorer](./platform/metrics-charts.md) verwenden oder [ressourcenübergreifende Abfragen in Azure Monitor](log-query/cross-workspace-query.md) erstellen.
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Erstellen von handlungsrelevanten Warnungen mit Aktionen
 Ein kritischer Aspekt der Überwachung ist die proaktive Benachrichtigung von Administratoren über aktuelle und vorhergesagte Probleme. 
 
-- Erstellen Sie [Warnungen in Azure Monitor](../azure-monitor/platform/alerts-overview.md) basierend auf Protokollen und Metriken, um vorhersehbare Fehlerstatus zu identifizieren. Sie sollten das Ziel haben, dass alle Warnungen handlungsrelevant sind. Das bedeutet, dass sie tatsächliche kritische Bedingungen darstellen und versuchen, falsch positive Ergebnisse zu reduzieren. Verwenden Sie [dynamische Schwellenwerte](platform/alerts-dynamic-thresholds.md), um automatisch Grundwerte für Metrikdaten zu berechnen, anstatt Ihre eigenen statischen Schwellenwerte zu definieren. 
+- Erstellen Sie [Warnungen in Azure Monitor](./platform/alerts-overview.md) basierend auf Protokollen und Metriken, um vorhersehbare Fehlerstatus zu identifizieren. Sie sollten das Ziel haben, dass alle Warnungen handlungsrelevant sind. Das bedeutet, dass sie tatsächliche kritische Bedingungen darstellen und versuchen, falsch positive Ergebnisse zu reduzieren. Verwenden Sie [dynamische Schwellenwerte](platform/alerts-dynamic-thresholds.md), um automatisch Grundwerte für Metrikdaten zu berechnen, anstatt Ihre eigenen statischen Schwellenwerte zu definieren. 
 - Definieren Sie Aktionen für Warnungen, um die effektivsten Mittel zur Benachrichtigung Ihrer Administratoren zu nutzen. Verfügbare [Aktionen für Benachrichtigungen](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) sind SMS, E-Mails, Pushbenachrichtigungen oder Sprachanrufe.
 - Verwenden Sie erweiterte Aktionen, um [eine Verbindung zu Ihrem ITSM-Tool](platform/itsmc-overview.md) oder anderen Warnungsverwaltungssystemen über [Webhooks](platform/activity-log-alerts-webhook.md) herzustellen.
 - Beheben Sie Situationen, die in Warnungen identifiziert wurden, auch mit [Azure Automation Runbooks](../automation/automation-webhooks.md) oder [Logic Apps](/connectors/custom-connectors/create-webhook-trigger), die mithilfe von Webhooks aus einer Warnung heraus gestartet werden können. 
-- Verwenden Sie die [automatische Skalierung](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md), um Ihre Computeressourcen basierend auf gesammelten Metriken dynamisch zu erhöhen und zu verringern.
+- Verwenden Sie die [automatische Skalierung](./learn/tutorial-autoscale-performance-schedule.md), um Ihre Computeressourcen basierend auf gesammelten Metriken dynamisch zu erhöhen und zu verringern.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Vorbereiten von Dashboards und Arbeitsmappen
 Die Sicherstellung, dass Entwicklung und Betrieb Zugriff auf dieselbe Telemetrie und dieselben Tools haben, ermöglicht es ihnen, Muster in der gesamten Umgebung anzuzeigen und die mittlere Zeit bis zur Erkennung (MTTD) und die mittlere Zeit bis zur Wiederherstellung (MTTR) zu minimieren.
 
-- Bereiten Sie [benutzerdefinierte Dashboards](../azure-monitor/learn/tutorial-app-dashboards.md) auf der Grundlage gemeinsamer Metriken und Protokolle für die verschiedenen Rollen in Ihrem Unternehmen vor. Dashboards können Daten aus allen Azure-Ressourcen kombinieren.
-- Bereiten Sie [Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) vor, um den Wissensaustausch zwischen Entwicklung und Betrieb sicherzustellen. Diese können als dynamische Berichte mit Metrikdiagrammen und Protokollabfragen oder auch als Leitfäden zur Problembehandlung von Entwicklern erstellt werden, die dem Kundensupport oder dem operativen Betrieb bei der Lösung grundlegender Probleme helfen.
+- Bereiten Sie [benutzerdefinierte Dashboards](./learn/tutorial-app-dashboards.md) auf der Grundlage gemeinsamer Metriken und Protokolle für die verschiedenen Rollen in Ihrem Unternehmen vor. Dashboards können Daten aus allen Azure-Ressourcen kombinieren.
+- Bereiten Sie [Arbeitsmappen](./platform/workbooks-overview.md) vor, um den Wissensaustausch zwischen Entwicklung und Betrieb sicherzustellen. Diese können als dynamische Berichte mit Metrikdiagrammen und Protokollabfragen oder auch als Leitfäden zur Problembehandlung von Entwicklern erstellt werden, die dem Kundensupport oder dem operativen Betrieb bei der Lösung grundlegender Probleme helfen.
 
 ## <a name="continuously-optimize"></a>Kontinuierliche Optimierung
  Die Überwachung ist einer der grundlegenden Aspekte der beliebten Erstellen-Messen-Lernen-Philosophie, die empfiehlt, Ihre KPIs und Benutzerverhaltensmetriken kontinuierlich zu verfolgen und dann durch Planungsiterationen zu optimieren. Azure Monitor hilft Ihnen, Metriken und Protokolle zu sammeln, die für Ihr Unternehmen relevant sind, und bei Bedarf neue Datenpunkte bei der nächsten Bereitstellung hinzuzufügen.
 
-- Verwenden Sie Tools in Application Insights, um [das Verhalten und die Bindung von Endbenutzern zu verfolgen](../azure-monitor/learn/tutorial-users.md).
-- Verwenden Sie die [Auswirkungsanalyse](../azure-monitor/app/usage-impact.md), um Ihnen zu helfen, die wichtigen Bereiche zu priorisieren, um entscheidende KPIs zu erreichen.
+- Verwenden Sie Tools in Application Insights, um [das Verhalten und die Bindung von Endbenutzern zu verfolgen](./learn/tutorial-users.md).
+- Verwenden Sie die [Auswirkungsanalyse](./app/usage-impact.md), um Ihnen zu helfen, die wichtigen Bereiche zu priorisieren, um entscheidende KPIs zu erreichen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die verschiedenen Komponenten von [Azure Monitor](overview.md).
-- [Hinzufügen der kontinuierlichen Überwachung](../azure-monitor/app/continuous-monitoring.md) zur Releasepipeline
+- [Hinzufügen der kontinuierlichen Überwachung](./app/continuous-monitoring.md) zur Releasepipeline
+

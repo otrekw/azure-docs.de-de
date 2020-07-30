@@ -5,13 +5,13 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556580"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373367"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Erstellen Ihrer ersten Azure-Funktion mit Java und IntelliJ
 
@@ -44,7 +44,7 @@ Installieren Sie die folgende Software, um eine Funktion mit Java und IntelliJ z
 2. Öffnen Sie zur Anmeldung beim Azure-Konto Randleiste **Azure Explorer**, und klicken Sie dann auf die **Azure Sign In** in der Leiste oben auf (oder im Menü der IDEE **Tools/Azure/Azure-Anmeldung**).
     ![IntelliJ-Befehl für Azure-Anmeldung][intellij-azure-login]
 
-3. Wählen Sie im Fenster für **die Azure-Anmeldung** die Option **Device Login** (Geräteanmeldung) aus, und klicken Sie anschließend auf **Sign in** (Anmelden). Weitere Anmeldeoptionen finden Sie [hier](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions).
+3. Wählen Sie im Fenster für **die Azure-Anmeldung** die Option **Device Login** (Geräteanmeldung) aus, und klicken Sie anschließend auf **Sign in** (Anmelden). Weitere Anmeldeoptionen finden Sie [hier](/azure/developer/java/toolkit-for-intellij/sign-in-instructions).
 
    ![Fenster für die Azure Anmeldung mit ausgewählter Geräteanmeldung][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ In diesem Abschnitt wird mithilfe des Azure-Toolkits für IntelliJ ein lokales A
 Sie haben ein Java-Funktionsprojekt mit einer per HTTP ausgelösten Funktion erstellt, auf Ihrem lokalen Computer ausgeführt und für Azure bereitgestellt. Erweitern Sie nun Ihre Funktion durch...
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer Azure Storage-Warteschlangen-Ausgabebindung](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [Hinzufügen einer Azure Storage-Warteschlangen-Ausgabebindung](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

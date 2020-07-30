@@ -4,16 +4,16 @@ description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Mic
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d28d7bd85326e8a4cf27dba1f3f605b64477c5aa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829936"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374036"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Häufig gestellte Fragen zu Azure Disk Encryption für Linux-VMs
 
@@ -154,15 +154,15 @@ Die Verschlüsselung von XFS-Datenträgern für Daten wird nur bei Verwendung de
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Kann ich einen verschlüsselten virtuellen Computer sichern und wiederherstellen? 
 
-Azure Backup bietet einen Mechanismus zum Sichern und Wiederherstellen verschlüsselter virtueller Computer innerhalb desselben Abonnements und derselben Region.  Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Das Wiederherstellen eines verschlüsselten virtuellen Computers in einer anderen Region wird derzeit nicht unterstützt.  
+Azure Backup bietet einen Mechanismus zum Sichern und Wiederherstellen verschlüsselter virtueller Computer innerhalb desselben Abonnements und derselben Region.  Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](../../backup/backup-azure-vms-encryption.md).  Das Wiederherstellen eines verschlüsselten virtuellen Computers in einer anderen Region wird derzeit nicht unterstützt.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Wo kann ich Fragen stellen oder Feedback geben?
 
-Sie können auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Disk Encryption](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html) Fragen stellen und Feedback geben.
+Sie können auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Disk Encryption](/answers/topics/azure-disk-encryption.html) Fragen stellen und Feedback geben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie Antworten auf die am häufigsten gestellten Fragen im Zusammenhang mit Azure Disk Encryption erhalten. Weitere Informationen zu diesem Dienst finden Sie in den folgenden Artikeln:
 
 - [Übersicht über Azure Disk Encryption](disk-encryption-overview.md)
-- [Anwenden der Datenträgerverschlüsselung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Datenverschlüsselung ruhender Azure-Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Anwenden der Datenträgerverschlüsselung in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Datenverschlüsselung ruhender Azure-Daten](../../security/fundamentals/encryption-atrest.md)

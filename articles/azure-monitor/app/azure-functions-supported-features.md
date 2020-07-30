@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655649"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033512"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Unterstützte Features in Application Insights für Azure Functions
 
@@ -57,11 +57,11 @@ Automatische Erfassung von Leistungsindikatoren kann nur für Windows-Computer v
 
 ## <a name="live-metrics--secure-control-channel"></a>Livemetriken und sicherer Steuerkanal
 
-Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Livemetrikkomponente des Application Insights SDK zurückgesendet. Der Filter können potenziell vertrauliche Informationen wie z.B. Kunden-IDs enthalten. Sie können den Kanal mit einem geheimen API-Schlüssel sicher machen. Anleitungen dazu finden Sie unter [Sichern des Steuerkanals](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel).
+Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Livemetrikkomponente des Application Insights SDK zurückgesendet. Der Filter können potenziell vertrauliche Informationen wie z.B. Kunden-IDs enthalten. Sie können den Kanal mit einem geheimen API-Schlüssel sicher machen. Anleitungen dazu finden Sie unter [Sichern des Steuerkanals](./live-stream.md#secure-the-control-channel).
 
 ## <a name="sampling"></a>Stichproben
 
-Azure Functions aktiviert die Stichprobenentnahme in der Konfiguration standardmäßig. Weitere Informationen finden Sie unter [Configure Sampling](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) (Konfigurieren der Stichprobenentnahme).
+Azure Functions aktiviert die Stichprobenentnahme in der Konfiguration standardmäßig. Weitere Informationen finden Sie unter [Configure Sampling](../../azure-functions/functions-monitoring.md#configure-sampling) (Konfigurieren der Stichprobenentnahme).
 
 Wenn Ihr Projekt zur manuellen Nachverfolgung der Telemetrie vom Application Insights SDK abhängig ist, kann ein unerwartetes Verhalten auftreten, wenn Ihre Konfiguration der Stichprobenentnahme von der Konfiguration in Functions abweicht. 
 

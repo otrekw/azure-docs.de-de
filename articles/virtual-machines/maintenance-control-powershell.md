@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675841"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028650"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
@@ -47,7 +47,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-Verwenden Sie [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration), um eine Wartungskonfiguration zu erstellen. In diesem Beispiel wird eine Wartungskonfiguration mit dem Namen *myConfig* erstellt, die für den Host gilt. 
+Verwenden Sie [New-AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration), um eine Wartungskonfiguration zu erstellen. In diesem Beispiel wird eine Wartungskonfiguration mit dem Namen *myConfig* erstellt, die für den Host gilt. 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -61,7 +61,7 @@ Durch die Verwendung von `-MaintenanceScope host` wird sichergestellt, dass die 
 
 Wenn Sie versuchen, eine Konfiguration mit dem gleichen Namen, aber an einem anderen Speicherort zu erstellen, erhalten Sie eine Fehlermeldung. Konfigurationsnamen müssen für Ihr Abonnement eindeutig sein.
 
-Sie können verfügbare Wartungskonfigurationen abfragen, indem Sie [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration) verwenden.
+Sie können verfügbare Wartungskonfigurationen abfragen, indem Sie [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration) verwenden.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
@@ -69,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ## <a name="assign-the-configuration"></a>Zuweisen der Konfiguration
 
-Verwenden Sie [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment), um die Konfiguration Ihrer isolierten VM oder dem Azure Dedicated Host zuzuweisen.
+Verwenden Sie [New-AzConfigurationAssignment](/powershell/module/az.maintenance/new-azconfigurationassignment), um die Konfiguration Ihrer isolierten VM oder dem Azure Dedicated Host zuzuweisen.
 
 ### <a name="isolated-vm"></a>Isolierte VM
 
@@ -106,7 +106,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Prüfen auf ausstehende Updates
 
-Verwenden Sie [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate), um zu überprüfen, ob noch Updates ausstehen. Verwenden Sie `-subscription`, um das Azure-Abonnement der VM anzugeben, wenn diese nicht der Computer ist, bei dem Sie sich angemeldet haben.
+Verwenden Sie [Get-AzMaintenanceUpdate](/powershell/module/az.maintenance/get-azmaintenanceupdate), um zu überprüfen, ob noch Updates ausstehen. Verwenden Sie `-subscription`, um das Azure-Abonnement der VM anzugeben, wenn diese nicht der Computer ist, bei dem Sie sich angemeldet haben.
 
 Wenn keine Updates zum Anzeigen vorhanden sind, gibt der Befehl keinen Wert zurück. Andernfalls wird ein PSApplyUpdate-Objekt zurückgegeben:
 
@@ -152,7 +152,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>Anwenden von Updates
 
-Verwenden Sie [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate), um ausstehende Updates anzuwenden.
+Verwenden Sie [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate), um ausstehende Updates anzuwenden.
 
 ### <a name="isolated-vm"></a>Isolierte VM
 
@@ -183,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>Überprüfen des Updatestatus
-Verwenden Sie [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate), um den Status eines Updates zu überprüfen. Die unten gezeigten Befehle zeigen den Status des neuesten Updates mithilfe von `default` für den Parameter `-ApplyUpdateName` an. Sie können den Namen des Updates ersetzen (vom Befehl [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) zurückgegeben), um den Status eines bestimmten Updates zu erhalten.
+Verwenden Sie [Get-AzApplyUpdate](/powershell/module/az.maintenance/get-azapplyupdate), um den Status eines Updates zu überprüfen. Die unten gezeigten Befehle zeigen den Status des neuesten Updates mithilfe von `default` für den Parameter `-ApplyUpdateName` an. Sie können den Namen des Updates ersetzen (vom Befehl [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) zurückgegeben), um den Status eines bestimmten Updates zu erhalten.
 
 ```text
 Status         : Completed
@@ -227,7 +227,7 @@ Get-AzApplyUpdate `
 
 ## <a name="remove-a-maintenance-configuration"></a>Entfernen einer Wartungskonfiguration
 
-Verwenden Sie [Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration), um eine Wartungskonfiguration zu löschen.
+Verwenden Sie [Remove-AzMaintenanceConfiguration](/powershell/module/az.maintenance/remove-azmaintenanceconfiguration), um eine Wartungskonfiguration zu löschen.
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `

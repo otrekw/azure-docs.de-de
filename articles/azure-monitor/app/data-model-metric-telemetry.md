@@ -4,16 +4,16 @@ description: Application Insights-Datenmodell für Metriktelemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540008"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320577"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metriktelemetrie: Application Insights-Datenmodell
 
-Es gibt zwei Arten von Metriktelemetrie, die von [Application Insights](../../azure-monitor/app/app-insights-overview.md) unterstützt werden: Einzelmessung und vorab aggregierte Metrik. Eine Einzelmessung ist nur ein Name und Wert. Eine vorab aggregierte Metrik gibt den Mindest- und Höchstwert der Metrik im Aggregationsintervall und die Standardabweichung davon an.
+Es gibt zwei Arten von Metriktelemetrie, die von [Application Insights](./app-insights-overview.md) unterstützt werden: Einzelmessung und vorab aggregierte Metrik. Eine Einzelmessung ist nur ein Name und Wert. Eine vorab aggregierte Metrik gibt den Mindest- und Höchstwert der Metrik im Aggregationsintervall und die Standardabweichung davon an.
 
 Vorab aggregierte Metriktelemetrie setzt voraus, das die Aggregationsdauer eine Minute betrug.
 
@@ -65,6 +65,7 @@ Metrik, deren benutzerdefinierte Eigenschaft `CustomPerfCounter` auf `true` fest
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie die [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) nutzen.
+- Erfahren Sie, wie Sie die [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](./api-custom-events-metrics.md#trackmetric) nutzen.
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](data-model.md).
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
+

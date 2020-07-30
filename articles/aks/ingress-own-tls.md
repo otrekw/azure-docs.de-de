@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller, der Ihre eigenen Zertifikate verwendet, in einem AKS-Cluster (Azure Kubernetes Service) konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: b3e844c0c4d4861f7a0a0e12c4ae9d59e23c24e2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: 7588614f615e7aa7dee00fa7553ad986f2e26b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251510"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056965"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers und Verwenden Ihrer eigenen TLS-Zertifikate in Azure Kubernetes Service (AKS)
 
@@ -211,7 +211,7 @@ Im Abschnitt *tls* wird die Eingangsroute dazu aufgefordert, das Geheimnis namen
 Erstellen Sie eine Datei mit dem Namen `hello-world-ingress.yaml`, und fügen Sie den folgenden YAML-Beispielcode ein.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -257,13 +257,13 @@ ingress.extensions/hello-world-ingress created
 Zum Testen der Zertifikate mit unserem Fakehost *demo.azure.com* verwenden Sie `curl` und geben den Parameter *--resolve* an. Mit diesem Parameter können Sie den Namen *demo.azure.com* der öffentlichen IP-Adresse des Eingangscontrollers zuordnen. Geben Sie die öffentliche IP-Adresse Ihres eigenen Eingangscontrollers an, wie im folgenden Beispiel gezeigt:
 
 ```
-curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
+curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 ```
 
 Die Adresse wurde ohne zusätzlichen Pfad angegeben, sodass der Eingangscontroller standardmäßig die Route */* verwendet. Die erste Demoanwendung wird zurückgegeben, wie in der folgenden verkürzten Beispielausgabe gezeigt:
 
 ```
-$ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
+$ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 
 [...]
 <!DOCTYPE html>
@@ -290,7 +290,7 @@ Durch den Parameter *-v* in unserem `curl`-Befehl werden ausführliche Informati
 Fügen Sie nun den Pfad */hello-world-two* der Adresse hinzu, z.B`https://demo.azure.com/hello-world-two`. Die zweite Demoanwendung wird mit dem benutzerdefinierten Titel zurückgegeben, wie in der folgenden verkürzten Beispielausgabe gezeigt:
 
 ```
-$ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
+$ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com/hello-world-two
 
 [...]
 <!DOCTYPE html>

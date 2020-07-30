@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052930"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen  
 
@@ -30,7 +30,7 @@ In diesem Artikel wird erläutert, wie Sie die erweiterten Codierungsaufgaben mi
 In diesem Artikel erfahren Sie, wie Sie eine Voreinstellung anpassen, indem Sie die Anzahl der Ebenen in der Voreinstellung [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) reduzieren. Der Artikel [Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen](media-services-advanced-encoding-with-mes.md) zeigt benutzerdefinierte Voreinstellungen, die verwendet werden können, um erweiterte Codierungsaufgaben auszuführen.
 
 > [!NOTE]
-> Die in diesem Artikel beschriebenen benutzerdefinierten Voreinstellungen können nicht in [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/)-Transformationen oder in den Befehlen der Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie unter [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Die in diesem Artikel beschriebenen benutzerdefinierten Voreinstellungen können nicht in [Media Services V3](../latest/index.yml)-Transformationen oder in den Befehlen der Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie unter [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> Anpassen einer MES-Voreinstellung
 

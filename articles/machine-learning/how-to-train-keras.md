@@ -5,18 +5,18 @@ description: Hier erfahren Sie, wie Sie ein in TensorFlow ausgeführtes Keras-De
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 14649d3e7bc12205283863f725a902a3cef20290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: ab0b90e08d51602979e31486a1a446731f66e5ba
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433857"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320934"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Trainieren und Registrieren eines Keras-Klassifizierungsmodells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -126,6 +126,8 @@ except ComputeTargetException:
 
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 Weitere Informationen zu Computezielen finden Sie im Artikel [Was ist ein Computeziel?](concept-compute-target.md).
 

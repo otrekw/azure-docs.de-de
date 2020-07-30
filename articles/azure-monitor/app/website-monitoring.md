@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Mon
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: eb6c0a8319257949cee8f35be6cdfac22f1fe5d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323433"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Schnellstart: Beginnen der Überwachung Ihrer Website mit Azure Monitor Application Insights
 
@@ -30,7 +30,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 1. Klicken Sie auf **Ressource erstellen** > **Verwaltungstools** > **Application Insights**.
 
    > [!NOTE]
-   >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, finden Sie unter [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) weitere Informationen dazu.
+   >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, finden Sie unter [Erstellen einer Application Insights-Ressource](./create-new-resource.md) weitere Informationen dazu.
 1. Wenn das Dialogfeld für die Konfiguration angezeigt wird, füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
     | Einstellungen        | Wert           | BESCHREIBUNG  |
@@ -105,15 +105,15 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 
    ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/website-monitoring/analytics-query.png)
 
-1. Kehren Sie zur Seite **Übersicht** zurück. Wählen Sie unter der Überschrift **Untersuchen** die Option **Browser** und anschließend **Leistung** aus.  Metriken im Zusammenhang mit der Leistung Ihrer Website werden angezeigt. Es gibt eine Ansicht zum Analysieren von Fehlern und Ausnahmen für Ihre Website. Sie können **Beispiele** auswählen, um auf die [End-to-End-Transaktionsdetails](../../azure-monitor/app/transaction-diagnostics.md) zuzugreifen.
+1. Kehren Sie zur Seite **Übersicht** zurück. Wählen Sie unter der Überschrift **Untersuchen** die Option **Browser** und anschließend **Leistung** aus.  Metriken im Zusammenhang mit der Leistung Ihrer Website werden angezeigt. Es gibt eine Ansicht zum Analysieren von Fehlern und Ausnahmen für Ihre Website. Sie können **Beispiele** auswählen, um auf die [End-to-End-Transaktionsdetails](./transaction-diagnostics.md) zuzugreifen.
 
    ![Servermetriken – Diagramm](./media/website-monitoring/browser-performance.png)
 
-1. Wählen Sie im Hauptmenü von Application Insights unter der Überschrift **Nutzung** die Option [**Benutzer**](../../azure-monitor/app/usage-segmentation.md) aus, um die [Analysetools für Benutzerverhalten](../../azure-monitor/app/usage-overview.md) zu erkunden. Da wir zum Testen einen einzelnen Computer verwenden, werden nur Daten für einen einzelnen Benutzer angezeigt. Bei einer Livewebsite kann die Benutzerverteilung beispielsweise wie folgt aussehen:
+1. Wählen Sie im Hauptmenü von Application Insights unter der Überschrift **Nutzung** die Option [**Benutzer**](./usage-segmentation.md) aus, um die [Analysetools für Benutzerverhalten](./usage-overview.md) zu erkunden. Da wir zum Testen einen einzelnen Computer verwenden, werden nur Daten für einen einzelnen Benutzer angezeigt. Bei einer Livewebsite kann die Benutzerverteilung beispielsweise wie folgt aussehen:
 
      ![Benutzerdiagramm](./media/website-monitoring/usage-users.png)
 
-1. Für eine komplexere Website mit mehreren Seiten können Sie das Tool [**Benutzerabläufe**](../../azure-monitor/app/usage-flows.md) verwenden, um die Navigation der Besucher auf Ihrer Website nachzuvollziehen.
+1. Für eine komplexere Website mit mehreren Seiten können Sie das Tool [**Benutzerabläufe**](./usage-flows.md) verwenden, um die Navigation der Besucher auf Ihrer Website nachzuvollziehen.
 
    ![Visualisierung von Benutzerabläufen](./media/website-monitoring/user-flows.png)
 
@@ -132,4 +132,5 @@ Wenn Sie planen, mit zusätzlichen Schnellstarts oder Tutorials fortzufahren, so
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Suchen nach und Diagnostizieren von Leistungsproblemen](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [Suchen nach und Diagnostizieren von Leistungsproblemen](../log-query/log-query-overview.md)
+
