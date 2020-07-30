@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89241558164505573e098bdf580af6542c6095c5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099262"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372381"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -138,6 +138,7 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Microsoft.BotService/botServices/channels | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
@@ -664,7 +665,7 @@ Die Eigenschaft **managedBy** wird nur für Ressourcengruppen zurückgegeben, di
 
 ### <a name="remarks"></a>Bemerkungen
 
-Die Funktion `resourceGroup()` kann nicht in einer Vorlage verwendet werden, die [auf der Abonnementebene bereitgestellt](deploy-to-subscription.md) wird. Sie kann nur in Vorlagen verwendet werden, die in einer Ressourcengruppe bereitgestellt werden. Sie können die `resourceGroup()`-Funktion in einer [verknüpften oder geschachtelten Vorlage (mit innerem Bereich)](linked-templates.md) verwenden, deren Ziel eine Ressourcengruppe ist, auch wenn die übergeordnete Vorlage im Abonnement bereitgestellt wurde. In diesem Szenario wird die verknüpfte oder geschachtelte Vorlage auf Ressourcengruppenebene bereitgestellt. Weitere Informationen zum Einrichten einer Ressourcengruppe als Ziel in einer Bereitstellung auf Ressourcenebene finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-resource-group-deployment.md).
+Die Funktion `resourceGroup()` kann nicht in einer Vorlage verwendet werden, die [auf der Abonnementebene bereitgestellt](deploy-to-subscription.md) wird. Sie kann nur in Vorlagen verwendet werden, die in einer Ressourcengruppe bereitgestellt werden. Sie können die `resourceGroup()`-Funktion in einer [verknüpften oder geschachtelten Vorlage (mit innerem Bereich)](linked-templates.md) verwenden, deren Ziel eine Ressourcengruppe ist, auch wenn die übergeordnete Vorlage im Abonnement bereitgestellt wurde. In diesem Szenario wird die verknüpfte oder geschachtelte Vorlage auf Ressourcengruppenebene bereitgestellt. Weitere Informationen zum Einrichten einer Ressourcengruppe als Ziel in einer Bereitstellung auf Ressourcenebene finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-scope-deployment.md).
 
 Die Funktion „resourceGroup“ wird häufig verwendet, um Ressourcen am gleichen Speicherort wie die Ressourcengruppe zu erstellen. Das folgende Beispiel nutzt den Speicherort der Ressourcengruppe als einen Parameterstandardwert.
 
@@ -679,7 +680,7 @@ Die Funktion „resourceGroup“ wird häufig verwendet, um Ressourcen am gleich
 
 Die Funktion „resourceGroup“ kann auch verwendet werden, um Tags aus einer Ressourcengruppe auf eine Ressource anzuwenden. Weitere Informationen finden Sie unter [Apply tags from resource group](../management/tag-resources.md#apply-tags-from-resource-group) (Anwenden von Tags aus einer Ressourcengruppe).
 
-Wenn Sie für die Bereitstellung in mehreren Ressourcengruppen geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der resourceGroup-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-resource-group-deployment.md).
+Wenn Sie für die Bereitstellung in mehreren Ressourcengruppen geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der resourceGroup-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-scope-deployment.md).
 
 ### <a name="resource-group-example"></a>resourceGroup-Beispiel
 
@@ -861,7 +862,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -889,7 +890,7 @@ Die Funktion gibt das folgende Format zurück:
 
 ### <a name="remarks"></a>Bemerkungen
 
-Wenn Sie für die Bereitstellung in mehreren Abonnements geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der subscription-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-resource-group-deployment.md).
+Wenn Sie für die Bereitstellung in mehreren Abonnements geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der subscription-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-scope-deployment.md).
 
 ### <a name="subscription-example"></a>subscription-Beispiel
 

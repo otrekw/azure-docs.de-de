@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80333508"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117068"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
 
@@ -37,8 +37,9 @@ Vergewissern Sie sich, dass die Firewall oder der Proxy so konfiguriert ist, das
 |*.ods.opinsights.azure.com |Port 443 |Ausgehend|Ja |  
 |*.oms.opinsights.azure.com |Port 443 |Ausgehend|Ja |  
 |*.blob.core.windows.net |Port 443 |Ausgehend|Ja |  
+|*.agentsvc.azure-automation.net |Port 443 |Ausgehend|Ja |  
 
-Informationen zur Firewall, die für Azure Government erforderlich sind, finden Sie unter [Azure Government-Verwaltung](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Wenn Sie den Azure Automation Hybrid Runbook Worker zum Herstellen einer Verbindung mit dem Automatisierungsdienst bzw. die Registrierung bei diesem nutzen möchten, um Runbooks oder Verwaltungslösungen in Ihrer Umgebung zu verwenden, muss dieser Zugriff auf die Portnummer und die unter [Konfigurieren Ihres Netzwerks für den Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning) beschriebenen URLs besitzen. 
+Informationen zur Firewall, die für Azure Government erforderlich sind, finden Sie unter [Azure Government-Verwaltung](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). Wenn Sie den Azure Automation Hybrid Runbook Worker zum Herstellen einer Verbindung mit dem Automatisierungsdienst bzw. die Registrierung bei diesem nutzen möchten, um Runbooks oder Verwaltungslösungen in Ihrer Umgebung zu verwenden, muss dieser Zugriff auf die Portnummer und die unter [Konfigurieren Ihres Netzwerks für den Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning) beschriebenen URLs besitzen. 
 
 Es gibt mehrere Möglichkeiten zur Überprüfung, ob der Agent erfolgreich mit Azure Monitor kommuniziert.
 
@@ -103,4 +104,3 @@ Wenn die Abfrage Ergebnisse zurückgibt, müssen Sie feststellen, ob ein bestimm
     |8\.000 |Integritätsdienst |Dieses Ereignis gibt an, ob ein Workflow im Zusammenhang mit der Leistung, ein Ereignis oder ein anderer gesammelter Datentyp nicht zur Erfassung im Arbeitsbereich an den Dienst weitergeleitet werden kann. | Ereignis-ID 2136 aus der Integritätsdienstquelle wird zusammen mit diesem Ereignis geschrieben und kann angeben, dass der Agent nicht mit dem Dienst kommunizieren kann. Der Grund dafür ist möglicherweise eine falsche Konfiguration der Proxy- und Authentifizierungseinstellungen, ein Netzwerkausfall oder dass die Netzwerkfirewall/der Netzwerkproxy keinen TCP-Datenverkehr vom Computer zum Dienst zulässt.| 
     |10102 und 10103 |Integritätsdienstmodule |Workflow konnte Datenquelle nicht auflösen. |Dies kann auftreten, wenn der angegebene Leistungsindikator oder die Instanz auf dem Computer nicht vorhanden oder in den Einstellungen des Arbeitsbereichs falsch definiert ist. Wenn es sich um einen vom Benutzer angegebenen [Leistungsindikator](data-sources-performance-counters.md#configuring-performance-counters) handelt, überprüfen Sie, ob die angegebenen Informationen das richtige Format aufweisen und auf den Zielcomputern vorhanden sind. |
     |26002 |Integritätsdienstmodule |Workflow konnte Datenquelle nicht auflösen. |Dies kann auftreten, wenn das angegebene Windows-Ereignisprotokoll auf dem Computer nicht vorhanden ist. Dieser Fehler kann ignoriert werden, wenn nicht erwartet wird, dass auf dem Computer dieses Ereignisprotokoll registriert ist. Andernfalls überprüfen Sie bei einem vom Benutzer angegebenen [Ereignisprotokoll](data-sources-windows-events.md#configuring-windows-event-logs), ob die angegebenen Informationen korrekt sind. |
-
