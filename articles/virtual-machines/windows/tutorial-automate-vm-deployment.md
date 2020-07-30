@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c576ac1f56a29fc73f92e2292b457262828c5046
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065296"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Tutorial: Bereitstellen von Anwendungen auf einem virtuellen Windows-Computer in Azure mit der benutzerdefinierten Skripterweiterung
 
-Virtuelle Computer (virtual machines, VMs) können unter Verwendung der [benutzerdefinierten Skripterweiterung für Windows](extensions-customscript.md) schnell und konsistent konfiguriert werden. In diesem Tutorial lernen Sie Folgendes:
+Virtuelle Computer (virtual machines, VMs) können unter Verwendung der [benutzerdefinierten Skripterweiterung für Windows](../extensions/custom-script-windows.md) schnell und konsistent konfiguriert werden. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Verwenden der benutzerdefinierten Skripterweiterung zur Installation von IIS
@@ -39,13 +39,13 @@ Sie können die benutzerdefinierte Skripterweiterung mit Windows- und Linux-VMs 
 
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Nun können Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den virtuellen Computer erstellen. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* für den Standort *EastUS* erstellt. Falls sie nicht bereits vorhanden sind, werden die Ressourcengruppe *myResourceGroupAutomate* und unterstützende Netzwerkressourcen erstellt. Um Webdatenverkehr zuzulassen, öffnet das Cmdlet auch Port *80*.
+Nun können Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) den virtuellen Computer erstellen. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* für den Standort *EastUS* erstellt. Falls sie nicht bereits vorhanden sind, werden die Ressourcengruppe *myResourceGroupAutomate* und unterstützende Netzwerkressourcen erstellt. Um Webdatenverkehr zuzulassen, öffnet das Cmdlet auch Port *80*.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -64,7 +64,7 @@ Die Erstellung der Ressourcen und VM dauert einige Minuten.
 
 
 ## <a name="automate-iis-install"></a>Automatisieren der Installation von IIS
-Verwenden Sie [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension), um die benutzerdefinierte Skripterweiterung zu installieren. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite *Default.htm* mit dem Hostnamen der VM:
+Verwenden Sie [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension), um die benutzerdefinierte Skripterweiterung zu installieren. Die Erweiterung führt `powershell Add-WindowsFeature Web-Server` zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite *Default.htm* mit dem Hostnamen der VM:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -79,7 +79,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Testen der Website
-Rufen Sie mit [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIPAddress* abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIPAddress* abgerufen, die wir zuvor erstellt haben:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `

@@ -3,12 +3,12 @@ title: Fehler wegen ungültiger Vorlage
 description: Hier wird beschrieben, wie Fehler aufgrund ungültiger Vorlagen beim Bereitstellen von Azure Resource Manager-Vorlagen behoben werden.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118884"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373809"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen
 
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Lösung 4 – zu viele Zielressourcengruppen
 
-Dieser Fehler wird in früheren Bereitstellungen möglicherweise angezeigt, weil in einer einzigen Bereitstellung nur fünf Zielressourcengruppen vorhanden sein durften. Im Mai 2020 wurde dieses Limit auf 800 Ressourcengruppen erhöht. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-resource-group-deployment.md).
+Dieser Fehler wird in früheren Bereitstellungen möglicherweise angezeigt, weil in einer einzigen Bereitstellung nur fünf Zielressourcengruppen vorhanden sein durften. Im Mai 2020 wurde dieses Limit auf 800 Ressourcengruppen erhöht. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-scope-deployment.md).
 
 <a id="circular-dependency"></a>
 

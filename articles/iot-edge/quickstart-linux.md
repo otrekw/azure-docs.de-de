@@ -9,23 +9,24 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536520"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384802"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät
 
 In dieser Schnellstartanleitung können Sie Azure IoT Edge ausprobieren, indem Sie Code in Containern auf einem virtuellen Linux-IoT Edge-Gerät bereitstellen. IoT Edge ermöglicht Ihnen die Remoteverwaltung von Code auf Ihren Geräten, damit Sie noch mehr Workloads an den Edgebereich senden können. Im Rahmen dieser Schnellstartanleitung wird die Verwendung eines virtuellen Azure-Computers als IoT Edge-Gerät empfohlen. So können Sie schnell einen Testcomputer mit dem IoT Edge-Dienst erstellen und anschließend löschen, wenn Sie ihn nicht mehr benötigen.
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
-
-1. Erstellen Sie einen IoT Hub.
-2. Registrieren eines IoT Edge-Geräts für Ihren IoT Hub
-3. Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
-4. Durchführen der Remotebereitstellung eines Moduls auf einem IoT Edge-Gerät
+> [!div class="checklist"]
+>
+> * Erstellen Sie einen IoT Hub.
+> * Registrieren eines IoT Edge-Geräts für Ihren IoT Hub
+> * Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
+> * Durchführen der Remotebereitstellung eines Moduls auf einem IoT Edge-Gerät
 
 ![Diagramm: Schnellstart-Architektur für Geräte und Cloud](./media/quickstart-linux/install-edge-full.png)
 
@@ -116,14 +117,7 @@ Verwenden Sie den folgenden CLI-Befehl, um Ihr IoT Edge-Gerät basierend auf der
 * Bash- oder Cloud Shell-Benutzer: Kopieren Sie den folgenden Befehl in einen Text-Editor, ersetzen Sie den Platzhaltertext durch Ihre Informationen, und kopieren Sie ihn dann in Ihr Bash- bzw. Cloud Shell-Fenster:
 
    ```azurecli-interactive
-   az deployment group create \
-   --resource-group IoTEdgeResources \
-   --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
-   --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password' \
-   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * PowerShell-Benutzer: Kopieren Sie den folgenden Befehl in Ihr PowerShell-Fenster, und ersetzen Sie den Platzhaltertext dann durch Ihre eigenen Informationen:

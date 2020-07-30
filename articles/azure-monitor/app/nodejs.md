@@ -3,16 +3,17 @@ title: Überwachen von Node.js-Diensten per Azure Application Insights | Microso
 description: Es wird beschrieben, wie Sie die Leistung überwachen und Probleme in Node.js-Diensten mit Application Insights diagnostizieren.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309763"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371616"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 
-Mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) werden Ihre Back-End-Dienste und -Komponenten nach der Bereitstellung überwacht, damit Sie Leistungsprobleme und andere Probleme erkennen und schnell diagnostizieren können. Sie können Application Insights für Node.js-Dienste verwenden, die in Ihrem Rechenzentrum, auf virtuellen Azure-Computern, in Web-Apps und sogar in anderen öffentlichen Clouds gehostet werden.
+Mit [Application Insights](./app-insights-overview.md) werden Ihre Back-End-Dienste und -Komponenten nach der Bereitstellung überwacht, damit Sie Leistungsprobleme und andere Probleme erkennen und schnell diagnostizieren können. Sie können Application Insights für Node.js-Dienste verwenden, die in Ihrem Rechenzentrum, auf virtuellen Azure-Computern, in Web-Apps und sogar in anderen öffentlichen Clouds gehostet werden.
 
 Fügen Sie das SDK in Ihren Code ein, und richten Sie dann in Azure eine entsprechende Application Insights-Ressource ein, um Ihre Überwachungsdaten zu empfangen, zu speichern und zu untersuchen. Das SDK sendet Daten zur weiteren Analyse und Untersuchung an diese Ressource.
 
@@ -29,7 +30,7 @@ Führen Sie die folgenden Aufgaben durch, um die Überwachung für eine App oder
 Stellen Sie zuerst sicher, dass Sie über ein Azure-Abonnement verfügen, oder [beschaffen Sie sich kostenlos ein neues Abonnement][azure-free-offer]. Falls Ihre Organisation bereits über ein Azure-Abonnement verfügt, kann Ihr Administrator Sie anhand [dieser Anleitung][add-aad-user] hinzufügen.
 
 [azure-free-offer]: https://azure.microsoft.com/free/
-[add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
+[add-aad-user]: ../../active-directory/fundamentals/add-users-azure-active-directory.md
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Einrichten einer Application Insights-Ressource
 
@@ -80,8 +81,8 @@ Da das SDK Daten zur Übermittlung in Batches zusammenfasst, kann es ggf. eine W
 
 * Fahren Sie mit der Verwendung der Anwendung fort. Führen Sie mehr Aktionen durch, um mehr Telemetriedaten zu generieren.
 * Klicken Sie in der Ressourcenansicht des Portals auf **Aktualisieren**. Diagramme aktualisieren sich regelmäßig selbst, aber bei der manuellen Aktualisierung wird der Vorgang sofort erzwungen.
-* Stellen Sie sicher, dass die [erforderlichen ausgehenden Ports](../../azure-monitor/app/ip-addresses.md) geöffnet sind.
-* Verwenden Sie [Suchen](../../azure-monitor/app/diagnostic-search.md), um nach bestimmten Ereignissen zu suchen.
+* Stellen Sie sicher, dass die [erforderlichen ausgehenden Ports](./ip-addresses.md) geöffnet sind.
+* Verwenden Sie [Suchen](./diagnostic-search.md), um nach bestimmten Ereignissen zu suchen.
 * Lesen Sie die [häufig gestellten Fragen][FAQ].
 
 ## <a name="basic-usage"></a>Grundlegende Verwendung
@@ -216,7 +217,7 @@ appInsights
 
 ## <a name="telemetryclient-api"></a>TelemetryClient-API
 
-Eine vollständige Beschreibung der TelemetryClient-API finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../../azure-monitor/app/api-custom-events-metrics.md).
+Eine vollständige Beschreibung der TelemetryClient-API finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](./api-custom-events-metrics.md).
 
 Sie können alle Anforderungen, Ereignisse, Metriken oder Ausnahmen mit dem Application Insights-Node.js-SDK nachverfolgen. Im folgenden Codebeispiel werden einige APIs veranschaulicht, die Sie verwenden können:
 
@@ -414,10 +415,11 @@ Diese Eigenschaften sind clientspezifisch, d. h. dass Sie `appInsights.defaultC
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Überwachen Ihrer Telemetriedaten im Portal](../../azure-monitor/app/overview-dashboard.md)
-* [Schreiben von Analytics-Abfragen über Ihre Telemetriedaten](../../azure-monitor/log-query/get-started-portal.md)
+* [Überwachen Ihrer Telemetriedaten im Portal](./overview-dashboard.md)
+* [Schreiben von Analytics-Abfragen über Ihre Telemetriedaten](../log-query/get-started-portal.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[FAQ]: ../../azure-monitor/app/troubleshoot-faq.md
+[FAQ]: ../faq.md
+

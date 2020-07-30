@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611414"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078140"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Schemareferenzleitfaden für die Workflowdefinitionssprache in Azure Logic Apps
 
@@ -178,7 +178,7 @@ Mit JSON können Sie über Literalwerte verfügen, die zur Entwurfszeit vorhande
 "rainbowColorsCount": 7
 ```
 
-Sie können auch über Werte verfügen, die erst zur Laufzeit vorhanden sind. Zur Darstellung dieser Werte können Sie *Ausdrücke* verwenden, die zur Laufzeit ausgewertet werden. Ein Ausdruck ist eine Sequenz, die mindestens eine [Funktion](#functions), einen [Operator](#operators), eine [Variable](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values), einen expliziten Wert oder eine Konstante enthalten kann. In Ihrer Workflowdefinition können Sie einen Ausdruck an einer beliebigen Stelle in einem JSON-Zeichenfolgenwert verwenden, indem Sie dem Ausdruck das at-Zeichen voranstellen (\@). Beim Auswerten eines Ausdrucks, der einen JSON-Wert darstellt, wird der Ausdruckskörper durch Entfernen des \@-Zeichens extrahiert. Dies führt immer zu einem anderen JSON-Wert.
+Sie können auch über Werte verfügen, die erst zur Laufzeit vorhanden sind. Zur Darstellung dieser Werte können Sie *Ausdrücke* verwenden, die zur Laufzeit ausgewertet werden. Ein Ausdruck ist eine Sequenz, die mindestens eine [Funktion](#functions), einen [Operator](#operators), eine [Variable](./logic-apps-create-variables-store-values.md), einen expliziten Wert oder eine Konstante enthalten kann. In Ihrer Workflowdefinition können Sie einen Ausdruck an einer beliebigen Stelle in einem JSON-Zeichenfolgenwert verwenden, indem Sie dem Ausdruck das at-Zeichen voranstellen (\@). Beim Auswerten eines Ausdrucks, der einen JSON-Wert darstellt, wird der Ausdruckskörper durch Entfernen des \@-Zeichens extrahiert. Dies führt immer zu einem anderen JSON-Wert.
 
 Für die zuvor definierte Eigenschaft `customerName` können Sie den Eigenschaftswert in einem Ausdruck beispielsweise über die Funktion [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) abrufen und diesen Wert der Eigenschaft `accountName` zuweisen:
 
@@ -282,7 +282,7 @@ So sieht die allgemeine Struktur einer Ausgabedefinition aus:
 | <*key-value*> | Ja | Entspricht <*key-type*> | Der Rückgabewert der Ausgabe |
 |||||
 
-Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf Ihrer Logik-App sowie Details überprüfen oder die [REST-API des Workflows](https://docs.microsoft.com/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, z.B. Power BI, um Dashboards erstellen zu können.
+Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf Ihrer Logik-App sowie Details überprüfen oder die [REST-API des Workflows](/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, z.B. Power BI, um Dashboards erstellen zu können.
 
 <a name="operators"></a>
 
@@ -307,4 +307,4 @@ Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Au
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu [Aktionen und Triggern für die Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-actions-triggers.md)
-* Weitere Informationen zum programmgesteuerten Erstellen und Verwalten von Logik-Apps mit der [Workflow-REST-API](https://docs.microsoft.com/rest/api/logic/workflows)
+* Weitere Informationen zum programmgesteuerten Erstellen und Verwalten von Logik-Apps mit der [Workflow-REST-API](/rest/api/logic/workflows)

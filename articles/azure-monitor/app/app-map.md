@@ -3,13 +3,14 @@ title: Anwendungszuordnung in Azure Application Insights | Microsoft-Dokumentati
 description: Überwachen von komplexen Anwendungstopologien mit der Anwendungsübersicht
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80989526"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367009"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -157,7 +158,7 @@ Zum Hinzufügen eines neuen `TelemetryInitializer` für [ASP.NET Core](asp-net-c
 
 **Java-Agent**
 
-Für [Java-Agent 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) ist der Name der Cloudrolle wie folgt festgelegt:
+Für [Java-Agent 3.0](./java-in-process-agent.md) ist der Name der Cloudrolle wie folgt festgelegt:
 
 ```json
 {
@@ -259,15 +260,15 @@ Bei Problemen mit der Anwendungsübersicht können Sie Folgendes versuchen:
 
 1. Vergewissern Sie sich, dass Sie ein offiziell unterstütztes SDK verwenden. Nicht unterstützte SDKs oder Community-SDKs unterstützen möglicherweise keine Korrelation.
 
-    Eine Liste mit unterstützten SDKs finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/application-insights/app-insights-platforms).
+    Eine Liste mit unterstützten SDKs finden Sie in [diesem Artikel](./platforms.md).
 
 2. Upgraden Sie alle Komponenten auf die neueste SDK-Version.
 
-3. Wenn Sie Azure Functions mit C# verwenden, führen Sie ein Upgrade auf [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions) durch.
+3. Wenn Sie Azure Functions mit C# verwenden, führen Sie ein Upgrade auf [Functions V2](../../azure-functions/functions-versions.md) durch.
 
 4. Vergewissern Sie sich, dass [Cloudrollenname](#set-cloud-role-name) richtig konfiguriert wurde.
 
-5. Sollte eine Abhängigkeit fehlen, stellen Sie sicher, dass sie sich in der Liste [automatisch erfasster Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) befindet. Andernfalls können Sie sie auch manuell mit einem [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) nachverfolgen.
+5. Sollte eine Abhängigkeit fehlen, stellen Sie sicher, dass sie sich in der Liste [automatisch erfasster Abhängigkeiten](./auto-collect-dependencies.md) befindet. Andernfalls können Sie sie auch manuell mit einem [TrackDependency-Aufruf](./api-custom-events-metrics.md#trackdependency) nachverfolgen.
 
 ### <a name="too-many-nodes-on-the-map"></a>Zu viele Knoten in der Übersicht
 
@@ -281,7 +282,7 @@ Um dies zu beheben, müssen Sie die Instrumentierung ändern, um die Felder für
 
 * Der Abhängigkeitstyp muss den logischen Typ einer Abhängigkeit darstellen. HTTP, SQL oder Azure-Blob sind beispielsweise typische Abhängigkeitstypen. Er sollte keine eindeutigen IDs enthalten.
 
-* Der Zweck des Cloudrollennamens ist im [Abschnitt weiter oben](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name) beschrieben.
+* Der Zweck des Cloudrollennamens ist im [Abschnitt weiter oben](#set-cloud-role-name) beschrieben.
 
 ## <a name="portal-feedback"></a>Feedback zum Portal
 

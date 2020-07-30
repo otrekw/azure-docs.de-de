@@ -15,12 +15,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076699"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs
 
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus:
 
 - **Azure-Abonnement**. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 - Microsoft Visual Studio 2017 oder höher. Für das Beispiel in diesem Tutorial wird [Visual Studio 2019](https://www.visualstudio.com/products) verwendet.
-- [Installierte Entwicklungstools für UWP-Apps](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- [Installierte Entwicklungstools für UWP-Apps](/windows/uwp/get-started/get-set-up)
 - Ein aktives Windows Store-Konto
 - Vergewissern Sie sich, dass die Einstellung **Benachrichtigungen von Apps und anderen Absendern abrufen** aktiviert ist. 
     - Starten Sie das Fenster **Einstellungen** auf Ihrem Computer.
@@ -191,6 +191,6 @@ notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 <!-- URLs. -->
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[toast catalog]: https://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[tile catalog]: https://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[badge overview]: https://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: /previous-versions/windows/apps/hh761494(v=win.10)
+[tile catalog]: /previous-versions/windows/apps/hh761491(v=win.10)
+[badge overview]: /previous-versions/windows/apps/hh779719(v=win.10)

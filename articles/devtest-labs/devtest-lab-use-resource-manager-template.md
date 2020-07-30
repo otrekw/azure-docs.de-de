@@ -3,12 +3,12 @@ title: Anzeigen und Verwenden der Azure Resource Manager-Vorlage eines virtuelle
 description: Es wird beschrieben, wie Sie die Azure Resource Manager-Vorlage eines virtuellen Computers verwenden, um andere virtuelle Computer zu erstellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a53a6ad44cac59bd925e6d200ca50074a2fcd963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476613"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272690"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
@@ -35,7 +35,7 @@ Es gibt zwei Möglichkeiten zum Erstellen von VMs in DevTest Labs mit einer Reso
 
 Im restlichen Teil dieses Artikels werden Resource Manager-Vorlagen beschrieben, für die „Microsoft.DevTestLab/labs/virtualmachines“ verwendet wird. Sie werden von Lab-Administratoren zum Automatisieren der Erstellung von Lab-VMs (z.B. abrufbare VMs) oder der Generierung von Gold-Images (z.B. Imagefactorys) verwendet.
 
-Unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) finden Sie zuverlässige und leicht anzuwendende Richtlinien und Vorschläge zum Erstellen einer Azure Resource Manager-Vorlage.
+Unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-best-practices.md) finden Sie zuverlässige und leicht anzuwendende Richtlinien und Vorschläge zum Erstellen einer Azure Resource Manager-Vorlage.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Anzeigen und Speichern der Resource Manager-Vorlage eines virtuellen Computers
 1. Führen Sie die Schritte unter [Erstellen Ihres ersten virtuellen Computers in einem Lab in Azure DevTest Labs](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) aus, um mit dem Erstellen eines virtuellen Computers zu beginnen.

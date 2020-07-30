@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c89fcf22f669c97f2b17acce57c293eabcf96de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009695"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -46,9 +46,9 @@ In der Regel treten Probleme bei der VM-Aktivierung in Azure auf, wenn die Windo
 ## <a name="solution"></a>Lösung
 
 >[!NOTE]
->Wenn Sie ein Standort-zu-Standort-VPN und eine Tunnelerzwingung verwenden, gehen Sie unter [Verwenden von benutzerdefinierten Azure-Routen zum Aktivieren der KMS-Aktivierung mit Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). 
+>Wenn Sie ein Standort-zu-Standort-VPN und eine Tunnelerzwingung verwenden, gehen Sie unter [Verwenden von benutzerdefinierten Azure-Routen zum Aktivieren der KMS-Aktivierung mit Tunnelerzwingung](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md). 
 >
->Wenn Sie ExpressRoute verwenden und eine Standardroute veröffentlicht haben, finden Sie weitere Informationen unter [Kann ich die Verbindung mit dem Internet für virtuelle Netzwerke blockieren, die mit ExpressRoute-Verbindungen verbunden sind?](https://docs.microsoft.com/azure/expressroute/expressroute-faqs).
+>Wenn Sie ExpressRoute verwenden und eine Standardroute veröffentlicht haben, finden Sie weitere Informationen unter [Kann ich die Verbindung mit dem Internet für virtuelle Netzwerke blockieren, die mit ExpressRoute-Verbindungen verbunden sind?](../../expressroute/expressroute-faqs.md).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Schritt 1: Konfigurieren der entsprechenden KMS-Clientsetupschlüssel
 
@@ -61,7 +61,7 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Wenn **slmgr.vbs /dlv** den RETAIL-Kanal zeigt, führen Sie die folgenden Befehle aus, um den [KMS-Clientsetupschlüssel](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) für die aktuelle Version von Windows Server festzulegen, und erzwingen Sie die erneute Aktivierung: 
+2. Wenn **slmgr.vbs /dlv** den RETAIL-Kanal zeigt, führen Sie die folgenden Befehle aus, um den [KMS-Clientsetupschlüssel](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?f=255&MSPPError=-2147217396) für die aktuelle Version von Windows Server festzulegen, und erzwingen Sie die erneute Aktivierung: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -77,7 +77,7 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Schritt 2: Überprüfen der Konnektivität zwischen dem virtuellen Computer und dem Azure KMS-Dienst
 
-1. Laden Sie das [PSping](https://docs.microsoft.com/sysinternals/downloads/psping)-Tool herunter, und extrahieren Sie es in einem lokalen Ordner auf der VM, die nicht aktiviert wird. 
+1. Laden Sie das [PSping](/sysinternals/downloads/psping)-Tool herunter, und extrahieren Sie es in einem lokalen Ordner auf der VM, die nicht aktiviert wird. 
 
 2. Wechseln Sie zu „Start“, suchen Sie nach Windows PowerShell, klicken Sie mit der rechten Maustaste auf „Windows PowerShell“, und wählen Sie anschließend „Als Administrator ausführen“ aus.
 
@@ -102,7 +102,7 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
   
     Stellen Sie außerdem sicher, dass der ausgehende Netzwerkdatenverkehr an den KMS-Endpunkt mit Port 1688 nicht durch die Firewall auf der VM blockiert wird.
 
-5. Vergewissern Sie sich mithilfe der Funktion [Network Watcher – nächster Hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview), dass der Typ des nächsten Hops von der betreffenden VM an die Ziel-IP-Adresse 23.102.135.246 (für kms.core.windows.net) oder die IP-Adresse des entsprechenden KMS-Endpunkts für Ihre Region **Internet** lautet.  Wenn das Ergebnis „VirtualAppliance“ oder „VirtualNetworkGateway“ lautet, ist wahrscheinlich eine Standardroute vorhanden.  Wenden Sie sich an Ihren Netzwerkadministrator, und legen Sie in Zusammenarbeit mit ihm die richtige Vorgehensweise fest.  Hierbei kann es sich um eine [benutzerdefinierte Route](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) handeln, wenn diese Lösung mit den Richtlinien Ihrer Organisation konsistent ist.
+5. Vergewissern Sie sich mithilfe der Funktion [Network Watcher – nächster Hop](../../network-watcher/network-watcher-next-hop-overview.md), dass der Typ des nächsten Hops von der betreffenden VM an die Ziel-IP-Adresse 23.102.135.246 (für kms.core.windows.net) oder die IP-Adresse des entsprechenden KMS-Endpunkts für Ihre Region **Internet** lautet.  Wenn das Ergebnis „VirtualAppliance“ oder „VirtualNetworkGateway“ lautet, ist wahrscheinlich eine Standardroute vorhanden.  Wenden Sie sich an Ihren Netzwerkadministrator, und legen Sie in Zusammenarbeit mit ihm die richtige Vorgehensweise fest.  Hierbei kann es sich um eine [benutzerdefinierte Route](./custom-routes-enable-kms-activation.md) handeln, wenn diese Lösung mit den Richtlinien Ihrer Organisation konsistent ist.
 
 6. Nachdem Sie erfolgreich die Verbindung zu „kms.core.windows.net“ überprüft haben, führen Sie den folgenden Befehl auf der erhöhten Windows PowerShell-Aufforderung aus. Dieser Befehl versucht mehrmals, die Aktivierung durchzuführen.
 
@@ -130,7 +130,7 @@ Ja.
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Was geschieht, wenn der Zeitraum für die Windows-Aktivierung abläuft? 
 
  
-Wenn der Aktivierungszeitraum abgelaufen und Windows immer noch nicht aktiviert ist, zeigen Windows Server 2008 R2 und höheren Versionen von Windows zusätzliche Benachrichtigungen zur Aktivierung an. Der Desktophintergrund bleibt schwarz und Windows Update installiert nur Sicherheitsupdates und wichtige Updates, jedoch keine optionalen Updates. Weitere Informationen finden Sie im Abschnitt „Notifications“ (Benachrichtigungen) am Ende der Seite [Licensing Conditions (Linzenzierungsbedingungen)](https://technet.microsoft.com/library/ff793403.aspx).   
+Wenn der Aktivierungszeitraum abgelaufen und Windows immer noch nicht aktiviert ist, zeigen Windows Server 2008 R2 und höheren Versionen von Windows zusätzliche Benachrichtigungen zur Aktivierung an. Der Desktophintergrund bleibt schwarz und Windows Update installiert nur Sicherheitsupdates und wichtige Updates, jedoch keine optionalen Updates. Weitere Informationen finden Sie im Abschnitt „Notifications“ (Benachrichtigungen) am Ende der Seite [Licensing Conditions (Linzenzierungsbedingungen)](/previous-versions/tn-archive/ff793403(v=technet.10)).   
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf1e3abc1d4fceaa6547f63346ecd64e1128eac2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4868db7df6209c620c5ae1bd9b1207072214ad35
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074216"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuelle Windows-Computer in Azure
 
@@ -30,7 +30,7 @@ Virtuelle Azure-Computer können auf vielfältige Weise genutzt werden. Beispiel
 Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann hoch- oder aufskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
-Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
+Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](/azure/architecture/reference-architectures/n-tier/windows-vm) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
 
 * Die Namen Ihrer Anwendungsressourcen
 * Den Speicherort der Ressourcen
@@ -48,9 +48,9 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | Methode | BESCHREIBUNG |
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
-| Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
-| REST-API |Verwenden Sie den Vorgang [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) (Standorte auflisten). |
-| Azure CLI |Verwenden Sie den Vorgang [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
+| Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
+| REST-API |Verwenden Sie den Vorgang [List locations](/rest/api/resources/subscriptions) (Standorte auflisten). |
+| Azure CLI |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Verfügbarkeit
 Für Azure wurde eine branchenweit führende Vereinbarung zum Servicelevel von 99,9 Prozent für Einzelinstanz-VMs angekündigt. Sie gilt unter der Voraussetzung, dass Sie den virtuellen Computer mit Storage Premium für alle Datenträger bereitstellen.  Damit Ihre Bereitstellung die Qualifikation für unsere VM-Standardvereinbarung zum Servicelevel von 99,95 Prozent erreicht, müssen Sie weiterhin mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. Durch eine Verfügbarkeitsgruppe wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen in den Azure-Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -74,20 +74,20 @@ Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen z
 | Methode | BESCHREIBUNG |
 | --- | --- |
 | Azure-Portal |Die Werte werden automatisch angegeben, wenn Sie ein zu verwendendes Image auswählen. |
-| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *Speicherort*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *Speicherort* -Publisher *Herausgebername*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *Speicherort* -Publisher *Herausgebername* -Offer *Angebotsname* |
-| REST-APIs |[List image publishers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers) (Imageherausgeber auflisten)<BR>[List image offers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers) (Imageangebote auflisten)<BR>[List image skus](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) (Image-SKUs auflisten) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *Speicherort*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *Speicherort* -Publisher *Herausgebername*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *Speicherort* -Publisher *Herausgebername* -Offer *Angebotsname* |
+| REST-APIs |[List image publishers](/rest/api/compute/platformimages/platformimages-list-publishers) (Imageherausgeber auflisten)<BR>[List image offers](/rest/api/compute/platformimages/platformimages-list-publisher-offers) (Imageangebote auflisten)<BR>[List image skus](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) (Image-SKUs auflisten) |
+| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
 
 Sie können auch [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md). In diesem Fall werden Herausgebername, Angebot und SKU nicht verwendet.
 
 ### <a name="extensions"></a>Erweiterungen
-Durch [Erweiterungen](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) können Sie den Funktionsumfang Ihres virtuellen Computers mittels Konfiguration nach der Bereitstellung sowie mittels automatisierter Aufgaben erweitern.
+Durch [Erweiterungen](../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json) können Sie den Funktionsumfang Ihres virtuellen Computers mittels Konfiguration nach der Bereitstellung sowie mittels automatisierter Aufgaben erweitern.
 
 Mit Erweiterungen können folgende allgemeine Aufgaben umgesetzt werden:
 
-* **Ausführen benutzerdefinierter Skripts:** Die [benutzerdefinierte Skripterweiterung](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) unterstützt Sie beim Konfigurieren von Workloads auf dem virtuellen Computer, indem beim Bereitstellen des virtuellen Computers Ihr Skript ausgeführt wird.
-* **Bereitstellen und Verwalten von Konfigurationen:** Die [PowerShell-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) unterstützt Sie beim Einrichten der Konfiguration des gewünschten Zustands auf einem virtuellen Computer, um Konfigurationen und Umgebungen zu verwalten.
-* **Sammeln von Diagnosedaten:** Die [Azure-Diagnoseerweiterung](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) unterstützt Sie dabei, den virtuellen Computer für die Sammlung von Diagnosedaten zu konfigurieren, die zum Überwachen der Integrität Ihrer Anwendung verwendet werden können.
+* **Ausführen benutzerdefinierter Skripts:** Die [benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json) unterstützt Sie beim Konfigurieren von Workloads auf dem virtuellen Computer, indem beim Bereitstellen des virtuellen Computers Ihr Skript ausgeführt wird.
+* **Bereitstellen und Verwalten von Konfigurationen:** Die [PowerShell-Erweiterung zum Konfigurieren des gewünschten Zustands](../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json) unterstützt Sie beim Einrichten der Konfiguration des gewünschten Zustands auf einem virtuellen Computer, um Konfigurationen und Umgebungen zu verwalten.
+* **Sammeln von Diagnosedaten:** Die [Azure-Diagnoseerweiterung](../extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json) unterstützt Sie dabei, den virtuellen Computer für die Sammlung von Diagnosedaten zu konfigurieren, die zum Überwachen der Integrität Ihrer Anwendung verwendet werden können.
 
 ### <a name="related-resources"></a>Zugehörige Ressourcen
 Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet und müssen beim Erstellen des virtuellen Computers vorhanden sein oder erstellt werden:
@@ -95,7 +95,7 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 | Resource | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | [Ressourcengruppe](../../azure-resource-manager/management/overview.md) |Ja |Der virtuelle Computer muss sich in einer Ressourcengruppe befinden. |
-| [Speicherkonto](../../storage/common/storage-create-storage-account.md) |Ja |Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten. |
+| [Speicherkonto](../../storage/common/storage-account-create.md) |Ja |Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten. |
 | [Virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) |Ja |Der virtuelle Computer muss einem virtuellen Netzwerk angehören. |
 | [Öffentliche IP-Adresse](../../virtual-network/public-ip-addresses.md) |Nein |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden. |
 | [Netzwerkschnittstelle](../../virtual-network/virtual-network-network-interface.md) |Ja |Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk. |
@@ -108,4 +108,3 @@ Erstellen Sie Ihren ersten virtuellen Computer!
 - [Portal](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure-Befehlszeilenschnittstelle](quick-create-cli.md)
-

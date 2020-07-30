@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 1869dbd7d6c323feaed849b3d26a360e28b4f509
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a470166d0ed172d95e80fadeb26139a702f40bb2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84985780"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387454"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Schnellstart: Verwenden eines Domänenmodells mit der REST-API und Python in der Maschinelles Sehen-API
 
@@ -90,6 +90,7 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(landmark_name, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response-for-the-landmarks-sample"></a>Untersuchen der Antwort für das Beispiel zu Sehenswürdigkeiten
@@ -167,6 +168,7 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(celebrity_name, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response-for-the-celebrities-sample"></a>Untersuchen der Antwort für das Beispiel zu Prominenten

@@ -7,16 +7,16 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 06/30/2020
-ms.openlocfilehash: 466b9258962c27457962ce51b72d2aeb2c029cc2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569436"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078129"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen eines Logik-App-Workflows mithilfe einer ARM-Vorlage
 
-Bei [Azure Logic Apps](../logic-apps/logic-apps-overview.md) handelt es sich um einen Clouddienst, mit dem Sie automatisierte Workflows erstellen und ausführen können, die Daten, Apps, cloudbasierte Dienste und lokale Systeme integrieren, indem Sie aus [Hunderten von Connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors) auswählen. In dieser Schnellstartanleitung wird in erster Linie die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer einfachen Logik-App erörtert, die den Status für Azure nach einem stündlichen Zeitplan überprüft. 
+Bei [Azure Logic Apps](../logic-apps/logic-apps-overview.md) handelt es sich um einen Clouddienst, mit dem Sie automatisierte Workflows erstellen und ausführen können, die Daten, Apps, cloudbasierte Dienste und lokale Systeme integrieren, indem Sie aus [Hunderten von Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) auswählen. In dieser Schnellstartanleitung wird in erster Linie die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer einfachen Logik-App erörtert, die den Status für Azure nach einem stündlichen Zeitplan überprüft. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -32,11 +32,11 @@ Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Az
 
 In dieser Schnellstartanleitung wird die Vorlage [**Logik-App erstellen**](https://azure.microsoft.com/resources/templates/101-logic-app-create/) verwendet, die Sie im [Azure-Schnellstartvorlagen-Katalog](https://azure.microsoft.com/resources/templates) finden können, die aber zu lang ist, um sie hier wiederzugeben. Stattdessen können Sie die Datei [„azuredeploy.json“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) der Schnellstartvorlage im Vorlagenkatalog überprüfen.
 
-Mit der Schnellstartvorlage wird ein Logik-App-Workflow erstellt, der den Wiederholungstrigger (Recurrence) verwendet, der auf die stündliche Ausführung festgelegt ist, sowie eine [*integrierte* HTTP-Aktion](https://docs.microsoft.com/azure/connectors/apis-list#connector-types), die eine URL aufruft, die den Status für Azure zurückgibt. Eine integrierte Aktion ist für die Azure Logic Apps-Plattform nativ.
+Mit der Schnellstartvorlage wird ein Logik-App-Workflow erstellt, der den Wiederholungstrigger (Recurrence) verwendet, der auf die stündliche Ausführung festgelegt ist, sowie eine [*integrierte* HTTP-Aktion](../connectors/apis-list.md#connector-types), die eine URL aufruft, die den Status für Azure zurückgibt. Eine integrierte Aktion ist für die Azure Logic Apps-Plattform nativ.
 
 Diese Vorlage erstellt die folgenden Azure-Ressource:
 
-* [**Microsoft.Logic/workflows**](https://docs.microsoft.com/azure/templates/microsoft.logic/workflows), die den Workflow für eine Logik-App erstellt.
+* [**Microsoft.Logic/workflows**](/azure/templates/microsoft.logic/workflows), die den Workflow für eine Logik-App erstellt.
 
 Weitere Schnellstartvorlagen für Azure Logic Apps finden Sie in den [Microsoft.Logic](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic)-Vorlagen im Katalog.
 
@@ -49,9 +49,9 @@ Befolgen Sie die Option, die Sie zum Bereitstellen der Schnellstartvorlage verwe
 | Option | BESCHREIBUNG |
 |--------|-------------|
 | [Azure portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Wenn Ihre Azure-Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, helfen Ihnen diese Schritte bei der direkten Anmeldung bei Azure und beim Öffnen der Schnellstartvorlage im Azure-Portal. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure-Portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure-Befehlszeilenschnittstelle](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Die Azure-Befehlszeilenschnittstelle (Azure CLI) setzt sich aus Befehlen zum Erstellen und Verwalten von Azure-Ressourcen zusammen. Um diese Befehle auszuführen, benötigen Sie Azure CLI, Version 2.6 oder höher. Geben Sie zum Überprüfen Ihrer CLI-Version `az --version` ein. Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Was ist die Azure CLI?](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Erste Schritte mit der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell bietet eine Reihe von Cmdlets, die das Azure Resource Manager-Modell für die Verwaltung von Azure-Ressourcen verwenden. Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Übersicht über Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [Einführung in das Az-Modul von Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-| [REST-API für Azure-Ressourcenverwaltung](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure bietet REST-APIs (Representational State Transfer), bei denen es sich um Dienstendpunkte handelt, die HTTP-Vorgänge (Methoden) unterstützen, die Sie zum Erstellen, Abrufen, Aktualisieren oder Löschen des Zugriffs auf Dienstressourcen verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-REST-API](https://docs.microsoft.com/rest/api/azure/). |
+| [Azure-Befehlszeilenschnittstelle](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Die Azure-Befehlszeilenschnittstelle (Azure CLI) setzt sich aus Befehlen zum Erstellen und Verwalten von Azure-Ressourcen zusammen. Um diese Befehle auszuführen, benötigen Sie Azure CLI, Version 2.6 oder höher. Geben Sie zum Überprüfen Ihrer CLI-Version `az --version` ein. Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Was ist die Azure CLI?](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell bietet eine Reihe von Cmdlets, die das Azure Resource Manager-Modell für die Verwaltung von Azure-Ressourcen verwenden. Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Übersicht über Azure PowerShell](/powershell/azure/azurerm/overview) <br>- [Einführung in das Az-Modul von Azure PowerShell](/powershell/azure/new-azureps-module-az) <br>- [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps) |
+| [REST-API für Azure-Ressourcenverwaltung](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure bietet REST-APIs (Representational State Transfer), bei denen es sich um Dienstendpunkte handelt, die HTTP-Vorgänge (Methoden) unterstützen, die Sie zum Erstellen, Abrufen, Aktualisieren oder Löschen des Zugriffs auf Dienstressourcen verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-REST-API](/rest/api/azure/). |
 |||
 
 <a name="deploy-azure-portal"></a>
@@ -97,7 +97,7 @@ read
 
 Weitere Informationen finden Sie in den folgenden Themen:
 
-* [Azure CLI: az deployment group](https://docs.microsoft.com/cli/azure/deployment/group)
+* [Azure CLI: az deployment group](/cli/azure/deployment/group)
 * [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -117,8 +117,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Weitere Informationen finden Sie in den folgenden Themen:
 
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
+* [Azure PowerShell: New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
+* [Azure PowerShell: New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)
 * [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 
 #### <a name="rest-api"></a>[REST-API](#tab/rest-api)
@@ -143,8 +143,8 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
    Weitere Informationen finden Sie in den folgenden Themen:
 
-   * [Azure-REST-API-Referenz: Aufrufen von Azure-REST-APIs](https://docs.microsoft.com/rest/api/azure/)
-   * [REST-API für Ressourcenverwaltung: Ressourcengruppen: Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate).
+   * [Azure-REST-API-Referenz: Aufrufen von Azure-REST-APIs](/rest/api/azure/)
+   * [REST-API für Ressourcenverwaltung: Ressourcengruppen: Erstellen oder Aktualisieren](/rest/api/resources/resourcegroups/createorupdate).
 
 1. Befolgen Sie zum Bereitstellen der Schnellstartvorlage in Ihrer Ressourcengruppe diese Syntax für die Anforderung, die Sie an die REST-API für die Ressourcenverwaltung senden:
 
@@ -165,7 +165,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
    ```
 
-   Weitere Informationen finden Sie unter [REST-API füpr die Ressourcenverwaltung: Bereitstellungen: Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate).
+   Weitere Informationen finden Sie unter [REST-API füpr die Ressourcenverwaltung: Bereitstellungen: Erstellen oder Aktualisieren](/rest/api/resources/deployments/createorupdate).
 
 1. Um die für die Bereitstellung zu verwendenden Werte anzugeben, z. B. die Azure-Region und Links zur Schnellstartvorlage und der [Parameterdatei](../azure-resource-manager/templates/template-parameters.md), die die Werte enthält, die die Schnellstartvorlage bei der Bereitstellung verwenden soll, befolgen Sie diese Syntax für den Anforderungstext, den Sie an die REST-API für die Ressourcenverwaltung senden:
 
@@ -191,7 +191,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
    | `location`| <*Azure-Region*> | Die für die Bereitstellung zu verwendende Azure-Region. In diesem Beispiel wird `West US` verwendet. |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | Der URL-Speicherort für die Schnellstartvorlage, die für die Bereitstellung verwendet werden soll: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*quickstart-template-parameter-file-URL*> | Der URL-Speicherort für die Parameterdatei der Schnellstartvorlage, die für die Bereitstellung verwendet werden soll: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>Weitere Informationen zur Resource Manager-Parameterdatei finden Sie unter diesen Themen: <p><p>- [Erstellen einer Resource Manager-Parameterdatei](../azure-resource-manager/templates/parameter-files.md) <br>- [Tutorial: Verwenden von Parameterdateien zum Bereitstellen Ihrer ARM-Vorlage](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
-   | `mode` | <*deployment-mode*> | Entweder ein inkrementelles Update oder ein vollständiges Update ausführen. In diesem Beispiel wird `Incremental` verwendet, wobei es sich um den Standardwert handelt. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes). |
+   | `mode` | <*deployment-mode*> | Entweder ein inkrementelles Update oder ein vollständiges Update ausführen. In diesem Beispiel wird `Incremental` verwendet, wobei es sich um den Standardwert handelt. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](../azure-resource-manager/templates/deployment-modes.md). |
    |||
 
    Beispiel:
@@ -215,7 +215,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 Weitere Informationen finden Sie in den folgenden Themen:
 
-* [REST-API für Ressourcenverwaltung](https://docs.microsoft.com/rest/api/resources/)
+* [REST-API für Ressourcenverwaltung](/rest/api/resources/)
 * [Bereitstellen von Ressourcen mit ARM-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/templates/deploy-rest.md)
 
 ---
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Weitere Informationen finden Sie unter [Azure CLI: az logic workflow show](https://docs.microsoft.com/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show).
+Weitere Informationen finden Sie unter [Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -255,7 +255,7 @@ Get-AzLogicApp -Name $logicAppName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-Weitere Informationen finden Sie unter [Azure PowerShell: Get-AzLogicApp](https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapp).
+Weitere Informationen finden Sie unter [Azure PowerShell: Get-AzLogicApp](/powershell/module/az.logicapp/get-azlogicapp).
 
 ### <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
@@ -276,7 +276,7 @@ Beispiel:
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
 ```
 
-Weitere Informationen finden Sie unter [Logic Apps-REST-API: Workflows: Abrufen](https://docs.microsoft.com/rest/api/logic/workflows/get).
+Weitere Informationen finden Sie unter [Logic Apps-REST-API: Workflows: Abrufen](/rest/api/logic/workflows/get).
 
 ---
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Weitere Informationen finden Sie unter [Azure CLI: az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Weitere Informationen finden Sie unter [Azure CLI: az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -313,7 +313,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-Weitere Informationen finden Sie unter [Azure PowerShell: Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Weitere Informationen finden Sie unter [Azure PowerShell: Remove-AzResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
 ### <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
@@ -333,7 +333,7 @@ Beispiel:
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01
 ```
 
-Weitere Informationen finden Sie unter [REST-API füpr die Ressourcenverwaltung: Ressourcengruppen: Löschen](https://docs.microsoft.com/rest/api/resources/resourcegroups/delete).
+Weitere Informationen finden Sie unter [REST-API füpr die Ressourcenverwaltung: Ressourcengruppen: Löschen](/rest/api/resources/resourcegroups/delete).
 
 ---
 

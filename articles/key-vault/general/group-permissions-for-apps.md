@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 21cb7133bad27013895a5e717cb7729b71795ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126228"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078955"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie
 
@@ -39,7 +39,7 @@ Ausführliche Informationen zur Key Vault-Zugriffssteuerung finden Sie unter [Az
    - [Erstellen eines Schlüsseltresors mit der Azure CLI](../secrets/quick-create-cli.md)
    - [Erstellen eines Schlüsseltresors mit Azure PowerShell](../secrets/quick-create-powershell.md)
    - [Erstellen eines Schlüsseltresors im Azure-Portal](../secrets/quick-create-portal.md)
-- Die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/overview). Alternativ können Sie auch das [Azure-Portal](https://portal.azure.com) verwenden.
+- Die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/). Alternativ können Sie auch das [Azure-Portal](https://portal.azure.com) verwenden.
 
 ## <a name="grant-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor
 

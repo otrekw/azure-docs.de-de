@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/15/2020
 ms.author: juliako
-ms.openlocfilehash: 2f1694825319ed8b8682c044e7e2282ed4c43dcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e32a9053e4ab7cc3618f7b50b7291a660a14e1b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474063"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053495"
 ---
 # <a name="create-a-media-services-account"></a>Erstellen eines Media Services-Kontos
 
@@ -39,7 +39,7 @@ Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes
 
 * Verwalten von Media Services v3-[Liveereignissen](live-events-outputs-concept.md) 
 * Anzeigen (nicht verwalten) von [Medienobjekten](assets-concept.md) der Version 3 
-* [Abrufen von Informationen über den Zugriff auf APIs](access-api-portal.md) 
+* [Abrufen von Informationen über den Zugriff auf APIs](./access-api-howto.md) 
 
 Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
@@ -90,9 +90,9 @@ az group create --name amsResourceGroup --location westus2
 
 Wenn Sie ein Media Services-Konto erstellen, müssen Sie den Namen einer Azure Storage-Kontoressource angeben. Das angegebene Speicherkonto wird an Ihr Media Services-Konto angefügt. Weitere Informationen zur Verwendung von Speicherkonten in Media Services finden Sie unter [Storage accounts](storage-account-concept.md) (Storage-Konten).
 
-Sie müssen über ein **primäres** Storage-Konto verfügen. Darüber hinaus können Sie beliebig viele **sekundäre** Storage-Konten an Ihr Media Services-Konto anfügen. Media Services unterstützt Konten des Typs **Allgemein v2** (GPv2) oder **Allgemein v1** (GPv1). Reine Blobkonten sind als **primäre** Konten nicht zulässig. Weitere Informationen zu Storage-Konten finden Sie unter [Optionen für Azure Storage-Konten](../../storage/common/storage-account-options.md). 
+Sie müssen über ein **primäres** Storage-Konto verfügen. Darüber hinaus können Sie beliebig viele **sekundäre** Storage-Konten an Ihr Media Services-Konto anfügen. Media Services unterstützt Konten des Typs **Allgemein v2** (GPv2) oder **Allgemein v1** (GPv1). Reine Blobkonten sind als **primäre** Konten nicht zulässig. Weitere Informationen zu Storage-Konten finden Sie unter [Optionen für Azure Storage-Konten](../../storage/common/storage-account-overview.md). 
 
-In diesem Beispiel erstellen Sie ein universelles LRS-Standardkonto der Version 2. Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie jedoch die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option geografische Replikation zum Gewährleisten der Geschäftskontinuität bietet. Weitere Informationen finden Sie unter [Storage accounts](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest) (Speicherkonten).
+In diesem Beispiel erstellen Sie ein universelles LRS-Standardkonto der Version 2. Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie jedoch die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option geografische Replikation zum Gewährleisten der Geschäftskontinuität bietet. Weitere Informationen finden Sie unter [Storage accounts](/cli/azure/storage/account?view=azure-cli-latest) (Speicherkonten).
  
 Der folgende Befehl erstellt ein Storage-Konto, das dem Media Services-Konto zugeordnet werden soll. Im folgenden Skript können Sie `storageaccountforams` durch Ihren Wert ersetzen. `amsResourceGroup` muss dem Wert entsprechen, den Sie für die Ressourcengruppe im vorherigen Schritt angegeben haben. Der Speicherkontoname muss kürzer als 24 Zeichen sein.
 
@@ -116,8 +116,8 @@ az ams account create --name amsaccount \
 
 ### <a name="see-also"></a>Weitere Informationen
 
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-* [Anfügen eines sekundären Speichers an ein Media Services-Konto](https://docs.microsoft.com/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/ams?view=azure-cli-latest)
+* [Anfügen eines sekundären Speichers an ein Media Services-Konto](/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
 
 ---
 

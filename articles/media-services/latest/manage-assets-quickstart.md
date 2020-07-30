@@ -3,12 +3,12 @@ title: 'Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals: Azur
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Portal verwenden, um Inhalte mit Azure Media Services hochzuladen, zu codieren und zu streamen.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053353"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Schnellstart: Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals
 
@@ -35,7 +35,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie das Azure-Portal verwenden
 
         Bei Verwendung des Azure-Portals können Sie aktuell TTML- und WebVTT-Untertiteldateien generieren. Dateien in diesen Formaten können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen. Darüber hinaus können Sie Schlüsselwörter aus Ihrem Inhalt extrahieren.
 
-        Für umfassende Funktionen zur Extrahierung von Erkenntnissen aus Video- und Audiodateien können Sie Media Services v3-Voreinstellungen verwenden, wie unter [Tutorial: Analysieren von Videos mit Media Services v3](analyze-videos-tutorial-with-api.md) beschrieben. <br/>Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) direkt.    
+        Für umfassende Funktionen zur Extrahierung von Erkenntnissen aus Video- und Audiodateien können Sie Media Services v3-Voreinstellungen verwenden, wie unter [Tutorial: Analysieren von Videos mit Media Services v3](analyze-videos-tutorial-with-api.md) beschrieben. <br/>Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie [Video Indexer](../video-indexer/index.yml) direkt.    
 * Nach der Verarbeitung Ihrer Inhalte können Sie Medieninhalte für Clientplayer bereitstellen. Wenn Sie Videos im Ausgabemedienobjekt für die Clientwiedergabe verfügbar machen möchten, müssen Sie einen **Streaminglocator** erstellen. Bei der Erstellung eines **Streaminglocators** muss eine **Streamingrichtlinie** angegeben werden. Mithilfe von **Streamingrichtlinien** können Sie Streamingprotokolle und ggf. Verschlüsselungsoptionen für Ihre **Streaminglocators** definieren.
     
     Überprüfung:

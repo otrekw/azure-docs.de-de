@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978177"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035977"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure
 
@@ -42,10 +42,10 @@ Dieser Artikel behandelt den Übergang von einer einzelnen (A)SCS-Installation z
 >
 >Dies bedeutet, dass die maximale Anzahl von SAP ASCS/SCS-Instanzen auf einem WSFC-Cluster gleich der maximalen Anzahl privater Front-End-IPs pro internem Azure-Lastenausgleichsmodul ist.
 >
-> Die Verwendung der in dieser Dokumentation eingeführten Konfiguration wird noch nicht für [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) unterstützt.
+> Die Verwendung der in dieser Dokumentation eingeführten Konfiguration wird noch nicht für [Azure-Verfügbarkeitszonen](../../../availability-zones/az-overview.md) unterstützt.
 > 
 
-Weitere Informationen zu den Grenzwerten für Lastenausgleichsmodule finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleichsmodul“ unter [Netzwerkgrenzwerte: Azure Resource Manager][networking-limits-azure-resource-manager]. Erwägen Sie außerdem die Verwendung der [Azure Load Balancer Standard-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) anstelle der einfachen SKU des Azure Load Balancers.
+Weitere Informationen zu den Grenzwerten für Lastenausgleichsmodule finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleichsmodul“ unter [Netzwerkgrenzwerte: Azure Resource Manager][networking-limits-azure-resource-manager]. Erwägen Sie außerdem die Verwendung der [Azure Load Balancer Standard-SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) anstelle der einfachen SKU des Azure Load Balancers.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

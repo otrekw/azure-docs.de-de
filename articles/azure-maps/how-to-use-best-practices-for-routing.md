@@ -1,19 +1,19 @@
 ---
 title: Bewährte Methoden für den Azure Maps-Routendienst | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie mit dem Routendienst von Microsoft Azure Maps Fahrzeuge effizient leiten.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266694"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132210"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Bewährte Methoden für den Azure Maps-Routendienst
 
@@ -31,7 +31,7 @@ Die Wegbeschreibungs- und Routenmatrix-APIs im [Routendienst](https://docs.micro
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure Maps-APIs aufrufen zu können, benötigen Sie ein Azure Maps-Konto mit zugehörigem Schlüssel. Weitere Informationen finden Sie unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps) und [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). Der Primärschlüssel wird auch als primärer Abonnementschlüssel oder Abonnementschlüssel bezeichnet.
+Um die Azure Maps-APIs aufrufen zu können, benötigen Sie ein Azure Maps-Konto mit zugehörigem Schlüssel. Weitere Informationen finden Sie unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account) und [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). Der Primärschlüssel wird auch als primärer Abonnementschlüssel oder Abonnementschlüssel bezeichnet.
 
 Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md). Weitere Informationen zur Abdeckung des Routendiensts finden Sie unter [Abgedeckter Routingbereich](routing-coverage.md).
 

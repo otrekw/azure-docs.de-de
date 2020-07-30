@@ -3,18 +3,18 @@ title: Sichern von Azure-Dateifreigaben mit der REST-API
 description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben mithilfe der REST-API im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055024"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Sichern einer Azure-Dateifreigabe mithilfe von Azure Backup über die REST-API
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure-Dateifreigabe mithilfe von Azure Backup über die REST-API sichern.
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Recovery Services-Tresor und Richtlinien für die Konfiguration des Backups für Ihre Dateifreigabe erstellt haben. Wenn nicht, finden Sie Informationen zum Erstellen neuer Tresore und Richtlinien in den REST-API-Tutorials zum [Erstellen eines Tresors](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) und zum [Erstellen einer Richtlinie](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy).
+In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Recovery Services-Tresor und Richtlinien für die Konfiguration des Backups für Ihre Dateifreigabe erstellt haben. Wenn nicht, finden Sie Informationen zum Erstellen neuer Tresore und Richtlinien in den REST-API-Tutorials zum [Erstellen eines Tresors](./backup-azure-arm-userestapi-createorupdatevault.md) und zum [Erstellen einer Richtlinie](./backup-azure-arm-userestapi-createorupdatepolicy.md).
 
 In diesem Artikel verwenden Sie die folgenden Ressourcen:
 
@@ -32,7 +32,7 @@ In diesem Artikel verwenden Sie die folgenden Ressourcen:
 
 ### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Ermitteln von Speicherkonten mit ungeschützten Azure-Dateifreigaben
 
-Der Tresor muss im Abonnement alle Azure-Speicherkonten mit Dateifreigaben ermitteln, die im Recovery Services-Tresor gesichert werden können. Dies wird über den [„refresh“-Vorgang](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh) ausgelöst. Es handelt sich um einen asynchronen *POST*-Vorgang, mit dem sichergestellt wird, dass der Tresor die neueste Liste aller ungeschützten Azure-Dateifreigaben im aktuellen Abonnement abruft und „zwischenspeichert“. Sobald die Dateifreigabe „zwischengespeichert“ wurde, kann Recovery Services auf die Dateifreigabe zugreifen und sie schützen.
+Der Tresor muss im Abonnement alle Azure-Speicherkonten mit Dateifreigaben ermitteln, die im Recovery Services-Tresor gesichert werden können. Dies wird über den [„refresh“-Vorgang](/rest/api/backup/protectioncontainers/refresh) ausgelöst. Es handelt sich um einen asynchronen *POST*-Vorgang, mit dem sichergestellt wird, dass der Tresor die neueste Liste aller ungeschützten Azure-Dateifreigaben im aktuellen Abonnement abruft und „zwischenspeichert“. Sobald die Dateifreigabe „zwischengespeichert“ wurde, kann Recovery Services auf die Dateifreigabe zugreifen und sie schützen.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
@@ -56,7 +56,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Antworten
 
-Der „refresh“-Vorgang ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Der „refresh“-Vorgang ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
@@ -108,7 +108,7 @@ Date   : Mon, 27 Jan 2020 10:53:04 GMT
 
 ### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Abrufen der Liste der Speicherkonten, die mit dem Recovery Services-Tresor geschützt werden können
 
-Um sicherzustellen, dass die Zwischenspeicherung abgeschlossen ist, listen Sie alle schützbaren Speicherkonten im Abonnement auf. Suchen Sie in der Antwort dann nach dem gewünschten Speicherkonto. Dies erfolgt mithilfe des Vorgangs [GET ProtectableContainers](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list).
+Um sicherzustellen, dass die Zwischenspeicherung abgeschlossen ist, listen Sie alle schützbaren Speicherkonten im Abonnement auf. Suchen Sie in der Antwort dann nach dem gewünschten Speicherkonto. Dies erfolgt mithilfe des Vorgangs [GET ProtectableContainers](/rest/api/backup/protectablecontainers/list).
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -160,7 +160,7 @@ Da wird das Speicherkonto *testvault2* im Antworttext mit dem Anzeigenamen finde
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>Registrieren des Speicherkontos beim Recovery Services-Tresor
 
-Dieser Schritt ist nur erforderlich, wenn Sie das Speicherkonto noch nicht beim Tresor registriert haben. Sie können den Tresor über den [ProtectionContainers-Register-Vorgang](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register) registrieren.
+Dieser Schritt ist nur erforderlich, wenn Sie das Speicherkonto noch nicht beim Tresor registriert haben. Sie können den Tresor über den [ProtectionContainers-Register-Vorgang](/rest/api/backup/protectioncontainers/register) registrieren.
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -209,7 +209,7 @@ Der Text von „Anforderung erstellen“ lautet wie folgt:
  }
 ```
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie unter[ProtectionContainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie unter[ProtectionContainers-Register](/rest/api/backup/protectioncontainers/register#azurestoragecontainer).
 
 Dabei handelt es sich um einen asynchronen Vorgang, der zwei Antworten zurückgibt: „202 – Akzeptiert“, wenn der Vorgang akzeptiert wird, und „200 OK“, wenn der Vorgang abgeschlossen ist.  Um den Vorgangsstatus nachzuverfolgen, verwenden Sie den location-Header, um den aktuellen Status des Vorgangs abzurufen.
 
@@ -241,7 +241,7 @@ Sie können anhand des Wertes des Parameters *registrationstatus* im Antworttext
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Abfragen aller ungeschützten Dateifreigaben unter einem Speicherkonto
 
-Mit dem [Protection Containers-Inquire](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire)-Vorgang können Sie schützbare Elemente in einem Speicherkonto abfragen. Es handelt sich um einen asynchronen Vorgang, und die Ergebnisse sollten anhand des location-Headers nachverfolgt werden.
+Mit dem [Protection Containers-Inquire](/rest/api/backup/protectioncontainers/inquire)-Vorgang können Sie schützbare Elemente in einem Speicherkonto abfragen. Es handelt sich um einen asynchronen Vorgang, und die Ergebnisse sollten anhand des location-Headers nachverfolgt werden.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -276,7 +276,7 @@ Date  : Mon, 27 Jan 2020 10:53:05 GMT
 
 ### <a name="select-the-file-share-you-want-to-back-up"></a>Auswählen der zu sichernden Dateifreigabe
 
-Sie können alle schützbaren Elemente unter dem Abonnement auflisten und die gewünschte Dateifreigabe, die gesichert werden soll, mit dem [GET backupprotectableItems](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list)-Vorgang suchen.
+Sie können alle schützbaren Elemente unter dem Abonnement auflisten und die gewünschte Dateifreigabe, die gesichert werden soll, mit dem [GET backupprotectableItems](/rest/api/backup/backupprotectableitems/list)-Vorgang suchen.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
@@ -351,7 +351,7 @@ Die Antwort enthält die Liste aller ungeschützten Azure-Dateifreigaben sowie a
 
 ### <a name="enable-backup-for-the-file-share"></a>Aktivieren der Sicherung für die Dateifreigabe
 
-Nachdem die betreffende Dateifreigabe mit dem Anzeigenamen „identifiziert“ wurde, wählen Sie die Richtlinie für den Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy).
+Nachdem die betreffende Dateifreigabe mit dem Anzeigenamen „identifiziert“ wurde, wählen Sie die Richtlinie für den Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](./backup-azure-arm-userestapi-createorupdatepolicy.md).
 
 Beim Aktivieren des Schutzes handelt es sich um einen asynchronen *PUT*-Vorgang, mit dem ein „geschütztes Element“ erstellt wird.
 
@@ -471,7 +471,7 @@ Zum Auslösen einer bedarfsgesteuerten Sicherung werden die folgenden Komponente
 | ---------- | -------------------------- | --------------------------------- |
 | Eigenschaften | AzurefilesharebackupReques | BackupRequestResource-Eigenschaften |
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen von Sicherungen für geschützte Elemente](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen von Sicherungen für geschützte Elemente](/rest/api/backup/backups/trigger#request-body).
 
 Beispiel für Anforderungstext
 
@@ -489,7 +489,7 @@ Beispiel für Anforderungstext
 
 ### <a name="responses"></a>Antworten
 
-Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
@@ -540,7 +540,7 @@ Wenn der Vorgang abgeschlossen ist, wird „200 (OK)“ mit der ID des resultier
 }
 ```
 
-Da es sich bei dem Sicherungsauftrag um einen Vorgang mit langer Ausführungsdauer handelt, muss er wie im [Dokument zum Überwachen von Aufträgen mit der REST-API](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job) erläutert nachverfolgt werden.
+Da es sich bei dem Sicherungsauftrag um einen Vorgang mit langer Ausführungsdauer handelt, muss er wie im [Dokument zum Überwachen von Aufträgen mit der REST-API](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job) erläutert nachverfolgt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

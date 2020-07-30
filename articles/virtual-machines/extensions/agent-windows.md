@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ff5825f3272f0dadc74147d36e8c5fd8e7838d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010953"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -71,13 +71,13 @@ $vm | Update-AzVM
 ### <a name="prerequisites"></a>Voraussetzungen
 - Für die Ausführung des Windows-VM-Agent ist mindestens Windows Server 2008 (64 Bit) sowie .NET Framework 4.0 erforderlich. Siehe [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) (Unterstützte Mindestversion für VM-Agents in Azure).
 
-- Stellen Sie sicher, dass Ihr virtueller Computer Zugriff auf die IP-Adresse 168.63.129.16 hat. Weitere Informationen finden Sie unter [Was ist die IP-Adresse 168.63.129.16?](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+- Stellen Sie sicher, dass Ihr virtueller Computer Zugriff auf die IP-Adresse 168.63.129.16 hat. Weitere Informationen finden Sie unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="detect-the-vm-agent"></a>Erkennen des VM-Agents
 
 ### <a name="powershell"></a>PowerShell
 
-Mithilfe des Azure Resource Manager-PowerShell-Moduls können Sie Informationen zu Azure-VMs abrufen. Informationen zu einer VM wie etwa dem Bereitstellungsstatus für den Azure-VM-Agent finden Sie unter [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm):
+Mithilfe des Azure Resource Manager-PowerShell-Moduls können Sie Informationen zu Azure-VMs abrufen. Informationen zu einer VM wie etwa dem Bereitstellungsstatus für den Azure-VM-Agent finden Sie unter [Get-AzVM](/powershell/module/az.compute/get-azvm):
 
 ```powershell
 Get-AzVM

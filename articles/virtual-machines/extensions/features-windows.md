@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082629"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -35,7 +35,7 @@ Dieser Artikel enthält eine Übersicht der VM-Erweiterungen, erläutert Vorauss
 Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsfälle verfügbar. Beispiele hierfür sind:
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf eine VM mithilfe der DSC-Erweiterung für Windows. Weitere Informationen finden Sie unter [Azure Desired State configuration extension](dsc-overview.md) (Azure-Erweiterung für die gewünschte Statuskonfiguration).
-- Konfigurieren der Überwachung einer VM mit der Log Analytics-Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Verbinden von virtuellen Azure-Computern mit Azure Monitor-Protokollen](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Konfigurieren der Überwachung einer VM mit der Log Analytics-Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Verbinden von virtuellen Azure-Computern mit Azure Monitor-Protokollen](../../azure-monitor/learn/quick-collect-azurevm.md).
 - Konfigurieren eines virtuellen Azure-Computers mit Chef. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](../../chef/chef-automation.md).
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Datadog-Erweiterung. Weitere Informationen finden Sie im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
@@ -65,18 +65,18 @@ Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In dies
 
 #### <a name="network-access"></a>Netzwerkzugriff
 
-Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie [unterstützte](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) Versionen der Agents verwenden, müssen Sie keinen Zugriff auf Azure Storage in der VM-Region zulassen, da Sie über den Agent die Kommunikation mit Agents an den Azure-Fabric Controller umleiten können (HostGAPlugin-Feature über den privilegierten Kanal der privaten IP-Adresse [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
+Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie [unterstützte](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) Versionen der Agents verwenden, müssen Sie keinen Zugriff auf Azure Storage in der VM-Region zulassen, da Sie über den Agent die Kommunikation mit Agents an den Azure-Fabric Controller umleiten können (HostGAPlugin-Feature über den privilegierten Kanal der privaten IP-Adresse [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)). Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
 
 > [!IMPORTANT]
 > Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall oder einem Proxy blockiert haben, treten bei den Erweiterungen unabhängig von den gerade beschriebenen Szenarien Fehler auf. Die Ports 80, 443 und 32526 sind erforderlich.
 
-Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage oder Azure Active Directory benötigen, können Sie den Zugriff über [Azure-NSG-Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Storage bzw. AzureActiveDirectory gewähren.
+Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage oder Azure Active Directory benötigen, können Sie den Zugriff über [Azure-NSG-Diensttags](../../virtual-network/security-overview.md#service-tags) für Storage bzw. AzureActiveDirectory gewähren.
 
 Der Windows-Gast-Agent unterstützt nicht das Umleiten von Datenverkehrsanforderungen des Agents über einen Proxyserver. Das bedeutet, dass der Windows-Gast-Agent Ihren benutzerdefinierten Proxy (sofern vorhanden) für den Zugriff auf Ressourcen im Internet oder auf dem Host über die IP-Adresse 168.63.129.16 verwendet.
 
 ## <a name="discover-vm-extensions"></a>Ermitteln von VM-Erweiterungen
 
-Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Eine vollständige Liste finden Sie unter [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). Im folgenden Beispiel werden alle verfügbaren Erweiterungen am Standort *WestUS* aufgelistet:
+Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Eine vollständige Liste finden Sie unter [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage). Im folgenden Beispiel werden alle verfügbaren Erweiterungen am Standort *WestUS* aufgelistet:
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -92,7 +92,7 @@ Die folgenden Methoden können verwendet werden, um eine Erweiterung für eine v
 
 ### <a name="powershell"></a>PowerShell
 
-Mehrere PowerShell-Befehle können zum Ausführen einzelner Erweiterungen verwendet werden. Verwenden Sie zum Anzeigen einer Liste [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command), und filtern Sie nach *Extension*:
+Mehrere PowerShell-Befehle können zum Ausführen einzelner Erweiterungen verwendet werden. Verwenden Sie zum Anzeigen einer Liste [Get-Command](/powershell/module/microsoft.powershell.core/get-command), und filtern Sie nach *Extension*:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-Im folgenden Beispiel wird die VM-Zugriffserweiterung verwendet, um das Administratorkennwort eines virtuellen Windows-Computers auf ein vorübergehendes zurückzusetzen. Weitere Informationen über die VM-Zugriffserweiterung finden Sie unter [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](../windows/reset-rdp.md). Sobald Sie dies durchgeführt haben, sollten Sie bei der ersten Anmeldung das Kennwort zurücksetzen:
+Im folgenden Beispiel wird die VM-Zugriffserweiterung verwendet, um das Administratorkennwort eines virtuellen Windows-Computers auf ein vorübergehendes zurückzusetzen. Weitere Informationen über die VM-Zugriffserweiterung finden Sie unter [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](../troubleshooting/reset-rdp.md). Sobald Sie dies durchgeführt haben, sollten Sie bei der ersten Anmeldung das Kennwort zurücksetzen:
 
 ```powershell
 $cred=Get-Credential
@@ -137,7 +137,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-Mit dem `Set-AzVMExtension`-Befehl kann jede beliebige VM-Erweiterung gestartet werden. Weitere Informationen finden Sie in der [Referenz zu Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+Mit dem `Set-AzVMExtension`-Befehl kann jede beliebige VM-Erweiterung gestartet werden. Weitere Informationen finden Sie in der [Referenz zu Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension).
 
 
 ### <a name="azure-portal"></a>Azure-Portal
@@ -315,7 +315,7 @@ Sie sollten in Ihren Bereitstellungen von Erweiterungen immer automatische Updat
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Erkennen, ob die Erweiterung auf „autoUpgradeMinorVersion“ auf einer VM festgelegt ist
 
-Sie können am VM-Modell erkennen, ob die Erweiterung mit „autoUpgradeMinorVersion“ bereitgestellt wurde. Um dies zu überprüfen, verwenden Sie [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm), und geben Sie die Ressourcengruppe und den VM-Namen wie folgt an:
+Sie können am VM-Modell erkennen, ob die Erweiterung mit „autoUpgradeMinorVersion“ bereitgestellt wurde. Um dies zu überprüfen, verwenden Sie [Get-AzVm](/powershell/module/az.compute/get-azvm), und geben Sie die Ressourcengruppe und den VM-Namen wie folgt an:
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -371,7 +371,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 ### <a name="view-extension-status"></a>Anzeigen des Erweiterungsstatus
 
-Wenn eine VM-Erweiterung für einen virtuellen Computer ausgeführt wurde, können Sie mit [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) zum Erweiterungsstatus zurückkehren. *Substatuses[0]* zeigt, dass die Bereitstellung der Erweiterung erfolgreich war. Das bedeutet, dass Sie der VM erfolgreich bereitgestellt wurde. Wenn die Ausführung der Erweiterung innerhalb der VM fehlgeschlagen ist, ist der Status *Substatuses[1]* .
+Wenn eine VM-Erweiterung für einen virtuellen Computer ausgeführt wurde, können Sie mit [Get-AzVM](/powershell/module/az.compute/get-azvm) zum Erweiterungsstatus zurückkehren. *Substatuses[0]* zeigt, dass die Bereitstellung der Erweiterung erfolgreich war. Das bedeutet, dass Sie der VM erfolgreich bereitgestellt wurde. Wenn die Ausführung der Erweiterung innerhalb der VM fehlgeschlagen ist, ist der Status *Substatuses[1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -407,7 +407,7 @@ Der Ausführungsstatus von Erweiterungen findet sich ebenfalls im Azure-Portal. 
 
 ### <a name="rerun-vm-extensions"></a>Erneutes Ausführen von VM-Erweiterungen
 
-In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Sie können eine Erweiterung erneut ausführen, indem Sie sie entfernen und die Erweiterung dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Verwenden Sie zum Entfernen einer Erweiterung [Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) wie folgt:
+In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Sie können eine Erweiterung erneut ausführen, indem Sie sie entfernen und die Erweiterung dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Verwenden Sie zum Entfernen einer Erweiterung [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension) wie folgt:
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"

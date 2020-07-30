@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009763"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -74,7 +74,7 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
 
 #### <a name="mitigation-3-pstools-commands"></a>Lösung 3: PSTools-Befehle
 
-1.  Laden Sie auf den virtuellen Computer, der zur Problembehandlung dient, [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools) herunter.
+1.  Laden Sie auf den virtuellen Computer, der zur Problembehandlung dient, [PSTools](/sysinternals/downloads/pstools) herunter.
 
 2.  Öffnen Sie eine CMD-Instanz, und greifen Sie dann über deren DIP-Adresse auf den virtuellen Computer zu.
 

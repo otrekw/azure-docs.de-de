@@ -3,20 +3,20 @@ title: 'Azure Application Insights: Außerkraftsetzen der SDK-Standardendpunkte'
 description: Ändern der Standardendpunkte des Azure Monitor Application Insights SDK für Regionen wie Azure Government
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions
-ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions, devx-track-javascript
+ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194832"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373129"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
 
 Zum Senden von Daten aus Application Insights in bestimmten Regionen müssen Sie die standardmäßigen Endpunktadressen überschreiben. Jedes SDK erfordert geringfügig andere Änderungen, die in diesem Artikel beschrieben werden. Diese Änderungen erfordern eine Anpassung des Beispielcodes und das Ersetzen der Platzhalterwerte für `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` und `Profile_Query_Endpoint_address` durch die tatsächlichen Endpunktadressen der jeweiligen Region. Am Ende dieses Artikels finden Sie Links zu den Endpunktadressen für Regionen, in denen diese Konfiguration erforderlich ist.
 
 > [!NOTE]
-> [Verbindungszeichenfolgen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) sind die neue bevorzugte Methode zum Festlegen von benutzerdefinierten Endpunkten in Application Insights.
+> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) sind die neue bevorzugte Methode zum Festlegen von benutzerdefinierten Endpunkten in Application Insights.
 
 ---
 
@@ -77,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure-Funktionen](#tab/functions)
 
-Für Azure Functions wird nun empfohlen, [Verbindungszeichenfolgen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) zu verwenden, die in den Anwendungseinstellungen der Funktion festgelegt werden. Um im Funktionsbereich auf die Anwendungseinstellungen für Ihre Funktion zuzugreifen, wählen Sie **Einstellungen** > **Konfiguration** > **Anwendungseinstellungen** aus. 
+Für Azure Functions wird nun empfohlen, [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) zu verwenden, die in den Anwendungseinstellungen der Funktion festgelegt werden. Um im Funktionsbereich auf die Anwendungseinstellungen für Ihre Funktion zuzugreifen, wählen Sie **Einstellungen** > **Konfiguration** > **Anwendungseinstellungen** aus. 
 
 Name: `APPLICATIONINSIGHTS_CONNECTION_STRING` Wert: `Connection String Value`
 
@@ -156,7 +156,7 @@ Anleitungen zum Ändern des Erfassungsendpunkts für das opencensus-python-SDK f
 
 ## <a name="regions-that-require-endpoint-modification"></a>Regionen, für die Endpunktänderungen erforderlich sind
 
-Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
+Derzeit sind [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) und [Azure China](/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
 
 |Region |  Endpoint Name (Endpunktname) | Wert |
 |-----------------|:------------|:-------------|
@@ -180,5 +180,5 @@ Wenn Sie derzeit die [Application Insights-REST-API](https://dev.applicationinsi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Um mehr über die benutzerdefinierten Änderungen für Azure Government zu erfahren, lesen Sie die detaillierten Anleitungen für die [Überwachung und Verwaltung von Azure](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
-- Weitere Informationen zu Azure China finden Sie im [Playbook zu Azure China](https://docs.microsoft.com/azure/china/).
+- Um mehr über die benutzerdefinierten Änderungen für Azure Government zu erfahren, lesen Sie die detaillierten Anleitungen für die [Überwachung und Verwaltung von Azure](../../azure-government/compare-azure-government-global-azure.md#application-insights).
+- Weitere Informationen zu Azure China finden Sie im [Playbook zu Azure China](/azure/china/).

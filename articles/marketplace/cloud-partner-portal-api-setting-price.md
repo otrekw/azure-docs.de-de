@@ -3,26 +3,25 @@ title: Preise für VM-Angebote – Azure Marketplace
 description: Erläutert die drei Methoden zum Festlegen der Preise für VM-Angebote.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b3d38c59d4c79e908aeef857164603a2a5160e05
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271721"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
-==================================
+# <a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
 
 > [!NOTE]
-> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Der Übergang führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach dem Übergang zu Partner Center weiterhin funktioniert. CPP-APIs sollten nur für vorhandene Produkte verwendet werden, die bereits vor dem Übergang zu Partner Center integriert wurden. Neue Produkte sollten die Partner Center-APIs für die Übermittlung verwenden.
 
 Es gibt drei Möglichkeiten, die Preise für VM-Angebote anzugeben: angepasste Kernpreise, Preise pro Kern und Tabellenpreise.
 
-
-<a name="customized-core-pricing"></a>Angepasste Kernpreise
------------------------
+## <a name="customized-core-pricing"></a>Angepasste Kernpreise
 
 Die Preise sind für jede Kombination aus Region und Kern unterschiedlich. Jede Region in der Verkaufsliste muss im **virtualMachinePricing**/**regionPrices**-Abschnitt der Definition angegeben werden.  Verwenden Sie für jede [Region](#regions) in Ihrer Anforderung die richtigen Währungscodes.  Das folgende Beispiel veranschaulicht diese Anforderungen:
 
@@ -66,9 +65,7 @@ Die Preise sind für jede Kombination aus Region und Kern unterschiedlich. Jede 
      }
 ```
 
-
-<a name="per-core-pricing"></a>Preise pro Kern
-----------------
+## <a name="per-core-pricing"></a>Preise pro Kern
 
 In diesem Fall geben die Herausgeber einen Preis in US-Dollar für ihre SKU an, und alle anderen Preise werden automatisch generiert. Der Preis pro Kern wird im **einzelnen** Parameter in der Anforderung angegeben.
 
@@ -84,9 +81,7 @@ In diesem Fall geben die Herausgeber einen Preis in US-Dollar für ihre SKU an, 
      }
 ```
 
-
-<a name="spreadsheet-pricing"></a>Tabellenpreise
--------------------
+## <a name="spreadsheet-pricing"></a>Tabellenpreise
 
 Der Herausgeber kann auch seine Preistabelle an einen temporären Speicherort hochladen und dann den URI wie andere Dateiartefakte in die Anforderung einbeziehen. Die Tabelle wird dann hochgeladen, übersetzt, um den angegebenen Preisplan auszuwerten, und aktualisiert schließlich das Angebot mit den Preisinformationen. Nachfolgende GET-Anforderungen für das Angebot geben den Tabellen-URI und die ausgewerteten Preise für die Region zurück.
 
@@ -101,14 +96,11 @@ Der Herausgeber kann auch seine Preistabelle an einen temporären Speicherort ho
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2.7.2019 hinzugefügt.
----------------------------
+## <a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2.7.2019 hinzugefügt.
 
 VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Für vorhandene VM-Angebote wurden die neue Preise für diese Kerngrößen basierend auf den aktuellen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
 
-
-<a name="regions"></a>Regions
--------
+## <a name="regions"></a>Regions
 
 Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste Kernpreise angeben können, und ihre entsprechenden Währungscodes.
 

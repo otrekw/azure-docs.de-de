@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 5cd4b4049b5584673a6988ab175c1a5da5fdc18b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7e182b44810a322a0cf3a26e7131a411f6259dc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073537"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>Verwenden von PowerShell zum Importieren einer BACPAC-Datei in eine Datenbank in SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -55,6 +55,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie in den [Azure PowerShell samples for Azure SQL Database](../powershell-script-content-guide.md) (Azure PowerShell-Beispiele für Azure SQL-Datenbank).

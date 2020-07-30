@@ -3,22 +3,22 @@ title: Ändern einer Verfügbarkeitsgruppe für virtuelle Computer
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell die Verfügbarkeitsgruppe für Ihren virtuellen Computer ändern.
 ms.service: virtual-machines
 author: cynthn
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: f774056a8faf40e3796b06718e90cd7da988241c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165854"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284624"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>Ändern der Verfügbarkeitsgruppe für einen virtuellen Computer
 Die folgenden Schritte beschreiben, wie Sie die Verfügbarkeitsgruppe eines virtuellen Computers über Azure PowerShell ändern. Ein virtueller Computer kann nur zum Zeitpunkt der Erstellung zu einer Verfügbarkeitsgruppe hinzugefügt werden. Um die Verfügbarkeitsgruppe zu ändern, müssen Sie den virtuellen Computer löschen und neu erstellen. 
 
 Dieser Artikel gilt sowohl für virtuelle Linux- als auch für virtuelle Windows-Computer.
 
-Dieser Artikel wurde zuletzt am 12.02.2019 unter Verwendung von [Azure Cloud Shell](https://shell.azure.com/powershell) und Version 1.2.0 des [Az-PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) geprüft.
+Dieser Artikel wurde zuletzt am 12.02.2019 unter Verwendung von [Azure Cloud Shell](https://shell.azure.com/powershell) und Version 1.2.0 des [Az-PowerShell-Moduls](/powershell/azure/install-az-ps) geprüft.
 
 In diesem Beispiel wird nicht überprüft, ob der virtuelle Computer mit einem Lastenausgleich verknüpft ist. Ist Ihr virtueller Computer mit einem Lastenausgleich verknüpft, muss das Skript entsprechend aktualisiert werden. 
 
@@ -107,4 +107,3 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hinzufügen.
-

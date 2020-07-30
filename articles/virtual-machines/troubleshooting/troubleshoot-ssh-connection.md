@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036263"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
 Dieser Artikel hilft Ihnen dabei, Probleme zu suchen und zu beheben, die aufgrund von SSH-Fehlern (Secure Shell), SSH-Verbindungsfehlern oder der Ablehnung einer SSH-Verbindung, wenn Sie versuchen, eine Verbindung mit einem virtuellen Linux-Computer herzustellen, auftreten. Sie können das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder die VM-Zugriffserweiterung für Linux verwenden, um Verbindungsproblemen zu ermitteln und zu beheben.
@@ -34,7 +34,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
 3. Überprüfen Sie, ob die Regeln der [Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md) SSH-Datenverkehr zulassen.
    * Stellen Sie sicher, dass eine [Netzwerksicherheitsgruppen-Regel](#security-rules) vorhanden ist, die SSH-Datenverkehr zulässt (standardmäßig über TCP-Port 22).
    * Sie können die Portweiterleitung/-zuordnung nicht ohne Azure-Lastenausgleich verwenden.
-4. Überprüfen Sie die [Ressourcenintegrität des virtuellen Computers](../../resource-health/resource-health-overview.md).
+4. Überprüfen Sie die [Ressourcenintegrität des virtuellen Computers](../../service-health/resource-health-overview.md).
    * Stellen Sie sicher, dass der virtuelle Computer als fehlerfrei gemeldet wird.
    * Wenn Sie die [Startdiagnose aktiviert](boot-diagnostics.md) haben, stellen Sie sicher, dass der virtuelle Computer in den Protokollen keine Startfehler meldet.
 5. [Starten Sie den virtuellen Computer neu.](#restart-vm)
@@ -69,11 +69,11 @@ Um die Anmeldeinformationen eines vorhandenen Benutzers zurückzusetzen, wählen
 
 ### <a name="check-security-rules"></a><a id="security-rules" />Überprüfen von Sicherheitsregeln
 
-Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an einen oder von einem virtuellen Computer blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den SSH-Port (standardmäßig 22) Priorität hat. Weitere Informationen finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an einen oder von einem virtuellen Computer blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den SSH-Port (standardmäßig 22) Priorität hat. Weitere Informationen finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ### <a name="check-routing"></a>Überprüfen des Routings
 
-Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](../../virtual-network/diagnose-network-routing-problem.md).
+Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/diagnose-vm-network-routing-problem.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-vm-serial-console"></a>Verwenden der seriellen Konsole für virtuelle Azure-Computer
 Die [serielle Konsole für virtuelle Azure-Computer](./serial-console-linux.md) ermöglicht den Zugriff auf eine textbasierte Konsole für virtuelle Linux-Computer. Sie können die Konsole zum Beheben von Problemen mit Ihrer SSH-Verbindung in einer interaktiven Shell verwenden. Stellen Sie sicher, dass Sie die [Voraussetzungen](./serial-console-linux.md#prerequisites) zur Verwendung der seriellen Konsole erfüllt haben, und probieren Sie die unten angegebenen Befehle aus, um die Problembehandlung für Ihre SSH-Verbindung durchzuführen.
@@ -137,7 +137,7 @@ Erstellen Sie eine Datei namens `settings.json` mit folgendem Inhalt:
 
 ```json
 {
-    "reset_ssh":"True"
+    "reset_ssh":True
 }
 ```
 
@@ -173,7 +173,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>Verwenden der klassischen Azure-Befehlszeilenschnittstelle
-[Installieren Sie die klassische Azure-Befehlszeilenschnittstelle, und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../../cli-install-nodejs.md) (falls noch nicht geschehen). Vergewissern Sie sich wie folgt, dass Sie den Resource Manager-Modus verwenden:
+[Installieren Sie die klassische Azure-Befehlszeilenschnittstelle, und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/install-classic-cli) (falls noch nicht geschehen). Vergewissern Sie sich wie folgt, dass Sie den Resource Manager-Modus verwenden:
 
 ```azurecli
 azure config mode arm
@@ -232,7 +232,7 @@ azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />Erneutes Bereitstellen eines virtuellen Computers
-Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Informationen zum erneuten Bereitstellen eines virtuellen Computers finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Informationen zum erneuten Bereitstellen eines virtuellen Computers finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
 > [!NOTE]
 > Nach Beendigung dieses Vorgangs gehen kurzlebige Datenträgerdaten verloren, und dynamische IP-Adressen, die dem virtuellen Computer zugeordnet sind, werden aktualisiert.
@@ -268,10 +268,10 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 * Setzen Sie den Remotezugriff über das [Azure-Portal](https://portal.azure.com)zurück. Wählen Sie im Azure-Portal Ihren virtuellen Computer und dann **Remote zurücksetzen** aus.
 * Starten Sie den virtuellen Computer neu. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren virtuellen Computer und dann **Neu starten** aus.
 
-* Stellen Sie den virtuellen Computer auf einem neuen Azure-Knoten erneut bereit. Informationen zum erneuten Bereitstellen eines virtuellen Computers finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Stellen Sie den virtuellen Computer auf einem neuen Azure-Knoten erneut bereit. Informationen zum erneuten Bereitstellen eines virtuellen Computers finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
     Nach Beendigung dieses Vorgangs gehen kurzlebige Datenträgerdaten verloren, und dynamische IP-Adressen, die dem virtuellen Computer zugeordnet sind, werden aktualisiert.
-* Führen Sie die unter [Zurücksetzen des Kennworts oder des SSH-Schlüssels für Linux-basierte virtuelle Computer](../linux/classic/reset-access-classic.md) beschriebenen Anweisungen aus, um Folgendes zu erreichen:
+* Führen Sie die unter [Zurücksetzen des Kennworts oder des SSH-Schlüssels für Linux-basierte virtuelle Computer](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic) beschriebenen Anweisungen aus, um Folgendes zu erreichen:
 
   * Zurücksetzen des Kennworts oder des SSH-Schlüssels
   * Erstellen eines *sudo*-Benutzerkontos
@@ -281,5 +281,5 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * Wenn Sie nach Ausführung der Schritte immer noch nicht keine SSH-Verbindung mit Ihrem virtuellen Computer herstellen können, finden Sie unter [Ausführliche Schritte zur Problembehandlung bei SSH](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weitere Hinweise, damit Sie das Problem lösen können.
-* Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](../linux/classic/reset-access-classic.md).
+* Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+* Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic).

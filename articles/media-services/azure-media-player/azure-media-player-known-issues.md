@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 05/11/2020
-ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043609"
 ---
 # <a name="known-issues"></a>Bekannte Probleme #
 
@@ -50,7 +50,7 @@ Im aktuellen Release können die folgenden bekannten Probleme auftreten:
 
 - Medienobjekte, die nur aus Audiodaten bestehen, werden über die AzureHtml5JS-Technologie nicht wiedergegeben.
   - Wenn Sie Medienobjekte ohne Audio wiedergeben möchten, fügen Sie über das [Azure Media Services-Explorer-Tool](https://aka.ms/amse) leere Audiospuren ein.
-  - Informationen zum Einfügen einer stillen Audiospur finden Sie [hier](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio).
+  - Informationen zum Einfügen einer stillen Audiospur finden Sie [hier](../previous/media-services-advanced-encoding-with-mes.md#silent_audio).
 
 ## <a name="flash"></a>Blinken ##
 
