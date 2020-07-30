@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37b3e5eff0baee736fc05760e19c31fdc513e23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79137321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060376"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalisieren von zeitgesteuerten Metadaten beim Livestreaming 
 
@@ -80,8 +80,8 @@ Die folgenden Dokumente enthalten Bestimmungen, die durch Verweise innerhalb die
 | [MPEGDASH]        | Information Technology – Dynamic adaptive streaming over HTTP (Informationstechnologie – Dynamisches adaptives Streaming über HTTP) (DASH) – Part 1 (Teil 1): Media Presentation description und segment formats (Medienpräsentationsbeschreibung und -segmentformate). Mai 2014. Veröffentlicht. URL: https://www.iso.org/standard/65274.html         |
 | [MPEGCMAF]        | Information Technology – Multimedia application format (MPEG-A) (Informationstechnologie – Multimediaanwendungsformat) – Part 19 (Teil 19): Common media application format (CMAF) for segmented media (Allgemeines Medienanwendungsformat (CMAF) für segmentierte Medien). Januar 2018. Veröffentlicht. URL: https://www.iso.org/standard/71975.html |
 | [MPEGCENC]        | Information Technology – MPEG systems technologies (Informationstechnologie – MPEG-Systemtechnologien) – Part 7 (Teil 7): Common encryption in ISO base media file format files (Allgemeine Verschlüsselung in ISO-Basismediendateiformat-Dateien) Februar 2016. Veröffentlicht. URL: https://www.iso.org/standard/68042.html                   |
-| [MS-SSTR]         | [„Microsoft Smooth Streaming Protocol“, 15. Mai 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) (Microsoft Smooth Streaming-Protokoll)                                                     |
-| [MS-SSTR-Ingest]  | [Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [MS-SSTR]         | [„Microsoft Smooth Streaming Protocol“, 15. Mai 2014](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) (Microsoft Smooth Streaming-Protokoll)                                                     |
+| [MS-SSTR-Ingest]  | [Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | R. Pantos, Ed.; W. May. HTTP Live Streaming. August 2017. Zur Information. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | The Base16, Base32, and Base64 Data Encodings (Die Datencodierungen Base16, Base32 und Base64) – [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | [RTMP]            | [„Adobe’s Real-Time Messaging Protocol“, 21. Dezember 2012 (Echtzeit-Nachrichtenprotokoll von Adobe)](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |

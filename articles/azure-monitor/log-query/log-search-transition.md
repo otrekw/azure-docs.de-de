@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8abd9d7f33a07141418ad67cc2128af40ad0bd51
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505804"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324759"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Übergang von der Log Analytics-Protokollsuche zu Azure Monitor-Protokollen
 Die Protokollsuche in Log Analytics wurde vor Kurzem durch eine neue Vorgehensweise für das Analysieren von Azure Monitor-Protokollen ersetzt. Die Seite für die Protokollsuche ist derzeit noch über die Menüoption **Protokolle (klassisch)** auf der Seite **Log Analytics-Arbeitsbereiche** im Azure-Portal zugänglich, wird jedoch am 15. Februar 2019 entfernt. Dieser Artikel beschreibt die Unterschiede zwischen den beiden Vorgehensweisen, um Ihnen den Übergang von der Protokollsuche zu erleichtern. 
@@ -44,7 +44,7 @@ Wählen Sie zum Speichern der aktuellen Abfrage in Azure Monitor-Protokollen **S
 ![Speichern von Protokollabfragen](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Gespeicherte Abfragen
-In der Protokollsuche stehen Ihre gespeicherten Abfragen über das Element **Gespeicherte Suchvorgänge** der Aktionsleiste zur Verfügung. In Azure Monitor-Protokollen können Sie über den [Abfrage-Explorer](../log-query/get-started-portal.md#save-queries) auf gespeicherte Abfragen zugreifen.
+In der Protokollsuche stehen Ihre gespeicherten Abfragen über das Element **Gespeicherte Suchvorgänge** der Aktionsleiste zur Verfügung. In Azure Monitor-Protokollen können Sie über den [Abfrage-Explorer](./get-started-portal.md#save-queries) auf gespeicherte Abfragen zugreifen.
 
 ![Abfrage-Explorer](media/log-search-transition/query-explorer.png)
 
@@ -69,3 +69,4 @@ In Azure Monitor-Protokollen [erstellen Sie eine Warnung aus der Protokollabfrag
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die neue [Vorgehensweise für Azure Monitor-Protokolle](get-started-portal.md).
+

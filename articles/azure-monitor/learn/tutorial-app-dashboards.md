@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77661633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318418"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
@@ -31,7 +31,7 @@ Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln en
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md).
+- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../app/asp-net.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -127,4 +127,5 @@ Da es sich bei Azure Applications Insights-Protokolle (Analytics) um einen separ
 Da Sie jetzt wissen, wie Sie benutzerdefinierte Dashboards erstellen, können Sie einen Blick auf die übrige Application Insights-Dokumentation einschließlich einer Fallstudie werfen.
 
 > [!div class="nextstepaction"]
-> [Eingehende Diagnose](../../azure-monitor/app/devops.md)
+> [Eingehende Diagnose](../app/devops.md)
+

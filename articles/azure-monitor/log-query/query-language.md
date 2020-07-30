@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 080af271870362e6e0633aaf590820f2fadb6144
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325388"
 ---
 # <a name="azure-monitor-log-queries"></a>Protokollabfragen in Azure Monitor
 
@@ -26,15 +26,15 @@ Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Pro
 
 ## <a name="concepts"></a>Konzepte
 
-- [Analysieren von Protokolldaten in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) gibt einen kurzen Überblick über Protokollabfragen und beschreibt, wie Azure Monitor-Protokolldaten strukturiert sind.
+- [Analysieren von Protokolldaten in Azure Monitor](./log-query-overview.md) gibt einen kurzen Überblick über Protokollabfragen und beschreibt, wie Azure Monitor-Protokolldaten strukturiert sind.
 - [Anzeigen und Analysieren von Protokolldaten in Azure Monitor](./log-query-overview.md) erklärt die Portale, in denen Sie Protokollabfragen erstellen und ausführen.
 
 ## <a name="reference"></a>Verweis
 
 - [Referenz zur Abfragesprache](/azure/kusto/query) ist die vollständige Sprachreferenz für die Abfragesprache Kusto.
 - [Azure Monitor-Protokollabfragesprache – Unterschiede](data-explorer-difference.md) beschreibt die Unterschiede zwischen den Versionen der Abfragesprache Kusto.
-- [Standardeigenschaften in Azure Monitor-Protokolldatensätzen](../../azure-monitor/platform/log-standard-properties.md) beschreibt Standardeigenschaften aller Azure Monitor-Protokolldaten.
-- [Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/cross-workspace-query.md) beschreibt, wie Sie Protokollabfragen schreiben, die Daten aus mehreren Log Analytics-Arbeitsbereichen und Application Insights-Anwendungen verwenden.
+- [Standardeigenschaften in Azure Monitor-Protokolldatensätzen](../platform/log-standard-properties.md) beschreibt Standardeigenschaften aller Azure Monitor-Protokolldaten.
+- [Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor](./cross-workspace-query.md) beschreibt, wie Sie Protokollabfragen schreiben, die Daten aus mehreren Log Analytics-Arbeitsbereichen und Application Insights-Anwendungen verwenden.
 
 ## <a name="examples"></a>Beispiele
 
@@ -58,3 +58,4 @@ Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Pro
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Greifen Sie auf die vollständige [Referenzdokumentation für die Abfragesprache Kusto](/azure/kusto/query/) zu.
+

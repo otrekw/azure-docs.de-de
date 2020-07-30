@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5a09d672f44ce8835571277ab35f7545c7f5f33e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060215"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Erste Schritte zum Bereitstellen von On Demand-Inhalten über das Azure-Portal
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie einen einfachen Dienst zur Übermittlung von Video On Demand-Inhalten mit einer Azure Media Services-Anwendung in Azure-Portal implementieren.
 
@@ -125,7 +125,7 @@ Eine SAS-URL hat das folgende Format:
 > 
 > 
 
-Das Ablaufdatum eines Locators kann mithilfe einer [REST-API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) oder mithilfe einer [.NET-API](https://go.microsoft.com/fwlink/?LinkID=533259) aktualisiert werden. 
+Das Ablaufdatum eines Locators kann mithilfe einer [REST-API](/rest/api/media/operations/locator#update_a_locator) oder mithilfe einer [.NET-API](https://go.microsoft.com/fwlink/?LinkID=533259) aktualisiert werden. 
 
 > [!NOTE]
 > Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.

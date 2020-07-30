@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520739"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325371"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -43,7 +43,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
  Zusätzliche Konfigurationen | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >Änderungen an den Konfigurationsdateien für Leistungsindikatoren und Syslog werden überschrieben, wenn die Sammlung für Ihren Arbeitsbereich im Azure-Portal über das [Menü „Daten“ in den erweiterten Einstellungen von Log Analytics](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) konfiguriert wird. Um die Konfiguration für alle Agents zu deaktivieren, deaktivieren Sie die Sammlung auf dem Blatt **Erweiterte Einstellungen** für Log Analytics. Wenn Sie die Konfiguration für einen einzelnen Agent deaktivieren möchten, führen Sie den folgenden Befehl aus:  
+ >Änderungen an den Konfigurationsdateien für Leistungsindikatoren und Syslog werden überschrieben, wenn die Sammlung für Ihren Arbeitsbereich im Azure-Portal über das [Menü „Daten“ in den erweiterten Einstellungen von Log Analytics](./agent-data-sources.md#configuring-data-sources) konfiguriert wird. Um die Konfiguration für alle Agents zu deaktivieren, deaktivieren Sie die Sammlung auf dem Blatt **Erweiterte Einstellungen** für Log Analytics. Wenn Sie die Konfiguration für einen einzelnen Agent deaktivieren möchten, führen Sie den folgenden Befehl aus:  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>Codes für Installationsfehler
@@ -53,7 +53,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 | NOT_DEFINED | Da die erforderlichen Abhängigkeiten nicht installiert sind, wird das Plug-In „auoms auditd“ nicht installiert. | Bei der Installation von auoms ist ein Fehler aufgetreten. Installieren Sie das auditd-Paket. |
 | 2 | Für das Shellbündel wurde eine ungültige Option angegeben. Führen Sie `sudo sh ./omsagent-*.universal*.sh --help` aus, um Informationen zur Verwendung anzuzeigen. |
 | 3 | Für das Shellbündel wurde keine Option angegeben. Führen Sie `sudo sh ./omsagent-*.universal*.sh --help` aus, um Informationen zur Verwendung anzuzeigen. |
-| 4 | Ungültiger Pakettyp ODER ungültige Proxyeinstellungen. omsagent-*rpm*.sh-Pakete können nur auf RPM-basierten Systemen installiert werden, und omsagent-*deb*.sh-Pakete können nur auf Debian-basierten Systemen installiert werden. Es wird empfohlen, den universellen Installer der [aktuellen Version](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux) zu verwenden. Überprüfen Sie auch Ihre Proxyeinstellungen. |
+| 4 | Ungültiger Pakettyp ODER ungültige Proxyeinstellungen. omsagent-*rpm*.sh-Pakete können nur auf RPM-basierten Systemen installiert werden, und omsagent-*deb*.sh-Pakete können nur auf Debian-basierten Systemen installiert werden. Es wird empfohlen, den universellen Installer der [aktuellen Version](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux) zu verwenden. Überprüfen Sie auch Ihre Proxyeinstellungen. |
 | 5 | Das Shellbündel muss als Root-Benutzer ausgeführt werden, ODER während des Onboardings wurde ein Fehler 403 zurückgegeben. Führen Sie den Befehl mit `sudo` aus. |
 | 6 | Ungültige Paketarchitektur ODER während des Onboardings wurde ein Fehler 200 zurückgegeben. omsagent-*x64.sh-Pakete können nur auf 64-Bit-Systemen installiert werden, und omsagent-* x86.sh-Pakete können nur auf 32-Bit-Systemen installiert werden. Laden Sie das richtige Paket für Ihre Architektur aus der [aktuellen Version](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest) herunter. |
 | 17 | Fehler bei der Installation des OMS-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
@@ -228,7 +228,7 @@ Leistungsbezogene Fehler kommen nicht immer vor und sind nur sehr schwer zu repr
 * Die Anzahl pro Sekunde weitergeleiteter Nachrichten ist zu groß für die Basiskonfiguration des Log Analytics-Agents für Linux.
 
 ### <a name="resolution"></a>Lösung
-* Überprüfen Sie, ob die Konfiguration im Log Analytics-Arbeitsbereich für Syslog alle Facilities und die richtigen Protokollebenen enthält. Lesen Sie die Informationen zum [Konfigurieren der Syslog-Sammlung im Azure-Portal](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal).
+* Überprüfen Sie, ob die Konfiguration im Log Analytics-Arbeitsbereich für Syslog alle Facilities und die richtigen Protokollebenen enthält. Lesen Sie die Informationen zum [Konfigurieren der Syslog-Sammlung im Azure-Portal](./data-sources-syslog.md#configure-syslog-in-the-azure-portal).
 * Stellen Sie sicher, dass native Syslog-Messagingdaemons (`rsyslog`, `syslog-ng`) die weitergeleiteten Nachrichten empfangen können.
 * Überprüfen Sie die Firewall-Einstellungen auf dem Syslog-Server, um sicherzustellen, dass Nachrichten nicht blockiert werden.
 * Simulieren Sie mit dem Befehl `logger` eine Syslog-Nachricht an Log Analytics.
@@ -422,7 +422,7 @@ Sie können das erneute Onboarding nach der Verwendung der Option `--purge` fort
 ### <a name="resolution"></a>Lösung 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben.
 1. Entfernen Sie die Erweiterung aus dem Azure-Portal.
-2. Installieren Sie den Agent gemäß den [Anweisungen](../../azure-monitor/learn/quick-collect-linux-computer.md).
+2. Installieren Sie den Agent gemäß den [Anweisungen](../learn/quick-collect-linux-computer.md).
 3. Starten Sie den Agent neu, indem Sie den folgenden Befehl ausführen: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 * Warten Sie einige Minuten. Der Bereitstellungsstatus ändert sich dann in **Bereitstellung erfolgreich**.
 
@@ -444,3 +444,4 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben.
     ```
 
 3. Aktualisieren Sie die Pakete, indem Sie `sudo sh ./omsagent-*.universal.x64.sh --upgrade` ausführen.
+

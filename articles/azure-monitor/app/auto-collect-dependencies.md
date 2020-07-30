@@ -5,16 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891608"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324181"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 
-Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angegeben, die automatisch als Abhängigkeiten erkannt werden, ohne dass am Code Ihrer Anwendung zusätzliche Änderungen erforderlich sind. Diese Abhängigkeiten werden in Application Insights in den Ansichten [Anwendungsübersicht](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) und [Transaktionsdiagnose](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) visualisiert. Falls Ihre Abhängigkeit in der Liste unten nicht angegeben ist, können Sie sie per [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) trotzdem manuell nachverfolgen.
+Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angegeben, die automatisch als Abhängigkeiten erkannt werden, ohne dass am Code Ihrer Anwendung zusätzliche Änderungen erforderlich sind. Diese Abhängigkeiten werden in Application Insights in den Ansichten [Anwendungsübersicht](./app-map.md) und [Transaktionsdiagnose](./transaction-diagnostics.md) visualisiert. Falls Ihre Abhängigkeit in der Liste unten nicht angegeben ist, können Sie sie per [TrackDependency-Aufruf](./api-custom-events-metrics.md#trackdependency) trotzdem manuell nachverfolgen.
 
 ## <a name="net"></a>.NET
 
@@ -62,7 +62,7 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 
 > [!NOTE]
 > \* Mit Ausnahme der Unterstützung für reaktive Programmierung.
-> <br>†Installation des [JVM-Agents](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java) erforderlich.
+> <br>†Installation des [JVM-Agents](./java-agent.md#install-the-application-insights-agent-for-java) erforderlich.
 
 ## <a name="nodejs"></a>Node.js
 
@@ -88,9 +88,10 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [.NET](../../azure-monitor/app/asp-net-dependencies.md)
-- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [Java](../../azure-monitor/app/java-agent.md)
-- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md)
-- [Schreiben benutzerdefinierter Telemetriedaten zu Abhängigkeiten](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](../../azure-monitor/app/data-model.md).
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [.NET](./asp-net-dependencies.md)
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [Java](./java-agent.md)
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [OpenCensus Python](./opencensus-python-dependency.md)
+- [Schreiben benutzerdefinierter Telemetriedaten zu Abhängigkeiten](./api-custom-events-metrics.md#trackdependency)
+- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](./data-model.md).
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
+

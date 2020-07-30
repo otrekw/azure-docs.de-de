@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 06/18/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 9ecbd7778480d37fb0a0cf135d3cc5db48bf2add
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513543"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323654"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe einer ARM-Vorlage
 
@@ -64,7 +64,6 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
 
 3. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus. Nachdem die Bereitstellung der Ressource erfolgreich abgeschlossen wurde, ist die Schaltfläche **Zu Ressource wechseln** hervorgehoben.
 
-
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/CLI)
 
 > [!NOTE]
@@ -84,6 +83,8 @@ read
 ```
 
 ---
+
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung

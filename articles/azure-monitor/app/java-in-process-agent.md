@@ -3,12 +3,12 @@ title: Überwachen von Java-Anwendungen in beliebiger Umgebung – Azure Monitor
 description: Überwachen der Anwendungsleistung für Java-Anwendungen, die in einer beliebigen Umgebung ausgeführt werden, ohne die App zu instrumentieren. Verteilte Ablaufverfolgung und Anwendungszuordnung.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014336"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights – Public Preview
 
@@ -32,11 +32,11 @@ Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/ap
 
 Typische JVM-Argumente sind `-Xmx512m` und `-XX:+UseG1GC`. Wenn Sie wissen, wo diese hinzugefügt werden, wissen Sie auch, wo dieses Argument hinzuzufügen ist.
 
-Weitere Informationen zum Konfigurieren der JVM-Argumente Ihrer Anwendung finden Sie unter [3.0 Preview: Tipps zum Aktualisieren Ihrer JVM-Argumente](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
+Weitere Informationen zum Konfigurieren der JVM-Argumente Ihrer Anwendung finden Sie unter [3.0 Preview: Tipps zum Aktualisieren Ihrer JVM-Argumente](./java-standalone-arguments.md).
 
 **3. Verweisen des Agents auf die Application Insights-Ressource**
 
-Wenn Sie noch nicht über eine Application Insights-Ressource verfügen, können Sie eine neue Ressource erstellen, indem Sie die Schritte im [Leitfaden zum Erstellen einer Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ausführen.
+Wenn Sie noch nicht über eine Application Insights-Ressource verfügen, können Sie eine neue Ressource erstellen, indem Sie die Schritte im [Leitfaden zum Erstellen einer Ressource](./create-new-resource.md) ausführen.
 
 Verweisen Sie den Agent auf Ihre Application Insights-Ressource, indem Sie eine Umgebungsvariable festlegen:
 
@@ -80,7 +80,7 @@ In der Datei `ApplicationInsights.json` können Sie zusätzlich Folgendes konfig
 * HTTP-Proxy
 * Selbstdiagnose
 
-Ausführliche Informationen finden Sie unter [3.0 Public Preview: Konfigurationsoptionen](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
+Ausführliche Informationen finden Sie unter [3.0 Public Preview: Konfigurationsoptionen](./java-standalone-config.md).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Automatisch gesammelte Anforderungen, Abhängigkeiten, Protokolle und Metriken
 

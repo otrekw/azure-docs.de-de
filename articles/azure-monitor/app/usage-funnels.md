@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797832"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323722"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Informieren Sie sich mit Application Insights-Trichtern darüber, wie die Kunden Ihre Anwendung verwenden
 
@@ -37,7 +37,7 @@ Der folgende Screenshot enthält ein Beispiel für die Art der Daten, die mit de
 ### <a name="funnels-features"></a>Trichter-Features
 Der obige Screenshot enthält fünf hervorgehobene Bereiche. Dies sind Features des Trichters. In der folgenden Liste werden die einzelnen Bereiche des Screenshots näher beschrieben:
 1. Wenn für Ihre App Stichproben erstellt werden, wird ein entsprechendes Banner angezeigt. Wenn Sie das Banner auswählen, wird ein Kontextbereich mit Informationen zum Deaktivieren der Stichprobenfunktion geöffnet. 
-2. Sie können den Trichter nach [Power BI](../../azure-monitor/app/export-power-bi.md ) exportieren.
+2. Sie können den Trichter nach [Power BI](./export-power-bi.md) exportieren.
 3. Wählen Sie einen Schritt aus, um rechts weitere Details anzuzeigen. 
 4. Im Graphen zum Verlauf der Abschlüsse sind die Abschlussraten für die letzten 90 Tage angegeben. 
 5. Entwickeln Sie ein besseres Verständnis Ihrer Benutzer, indem Sie auf das Benutzertool zugreifen. Sie können in jedem Schritt Filter verwenden. 
@@ -46,7 +46,7 @@ Der obige Screenshot enthält fünf hervorgehobene Bereiche. Dies sind Features 
   * [Nutzungsübersicht](usage-overview.md)
   * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](usage-segmentation.md)
   * [Vermerkdauer](usage-retention.md)
-  * [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
+  * [Arbeitsmappen](../platform/workbooks-overview.md)
   * [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
-  * [Exportieren nach Power BI](../../azure-monitor/app/export-power-bi.md )
+  * [Exportieren nach Power BI](./export-power-bi.md)
 

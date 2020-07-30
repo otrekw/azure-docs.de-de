@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516344"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321869"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Erfassen von Azure-Aktivitätsprotokollen für Azure Active Directory-Mandanten (Legacy) in Azure Monitor
 
@@ -340,4 +340,5 @@ Zuletzt überprüfen Sie den Log Analytics-Arbeitsbereich, um sicherzustellen, d
 In diesem Artikel haben Sie eine Logik-App zum Lesen von Azure-Aktivitätsprotokollen aus einem Event Hub und zum Senden dieser Protokolle zur Analyse an den Log Analytics-Arbeitsbereich erstellt. Weitere Informationen zum Visualisieren von Daten in einem Arbeitsbereich, einschließlich dem Erstellen von Dashboards, finden Sie im Tutorial zum Visualisieren von Daten.
 
 > [!div class="nextstepaction"]
-> [Lernprogramm – Visualisieren der Daten von einer Protokollsuche](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [Lernprogramm – Visualisieren der Daten von einer Protokollsuche](../learn/tutorial-logs-dashboards.md)
+

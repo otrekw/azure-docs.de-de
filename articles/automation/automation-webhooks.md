@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015101"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
@@ -133,7 +133,7 @@ Wenn die Anforderung erfolgreich ist, enthält die Antwort des Webhooks wie im F
 {"JobIds":["<JobId>"]}
 ```
 
-Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wurde, noch den Abschlussstatus aus einem Webhook abrufen. Diese Informationen können mithilfe der Auftrags-ID unter Verwendung einer anderen Methode ermittelt werden, z. B. mit [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) oder der [Azure Automation-API](/rest/api/automation/job).
+Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wurde, noch den Abschlussstatus aus einem Webhook abrufen. Diese Informationen können mithilfe der Auftrags-ID unter Verwendung einer anderen Methode ermittelt werden, z. B. mit [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) oder der [Azure Automation-API](/rest/api/automation/job).
 
 ## <a name="renew-a-webhook"></a>Verlängern eines Webhooks
 

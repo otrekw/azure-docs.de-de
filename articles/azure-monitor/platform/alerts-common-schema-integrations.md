@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 05349554f4c5e076562a75d48d58e0849986d6cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539498"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322090"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Integrieren des allgemeinen Warnungsschemas mit Logic Apps
 
@@ -137,5 +137,6 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr über Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
+* [Erfahren Sie mehr über Aktionsgruppen](./action-groups.md).
 * [Erfahren Sie mehr über das allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs).
+

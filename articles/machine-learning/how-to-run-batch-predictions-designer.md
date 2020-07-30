@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie ein Modell trainieren und eine Batchvorhersag
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
-ms.custom: Ignite2019, designer
-ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84429930"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319608"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -34,6 +34,8 @@ Informationen zum Einrichten von Batchbewertungsdiensten mit dem SDK finden Sie 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Diese Anleitung geht davon aus, dass Sie bereits über eine Trainingspipeline verfügen. Eine Einführung in den Designer finden Sie im [ersten Teil des Designer-Tutorials](tutorial-designer-automobile-price-train-score.md). 
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-batch-inference-pipeline"></a>Erstellen einer Batchrückschlusspipeline
 

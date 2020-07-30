@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092931"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -146,7 +146,7 @@ Informationen zum Konfigurieren von Azure AD finden Sie hier:
 - [Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal](../../active-directory/fundamentals/add-custom-domain.md)
 - [Windows Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)
 - [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-whatis.md)
-- [Übersicht über Azure PowerShell](/powershell/azure/overview?view=azureadps-2.0)
+- [Übersicht über Azure PowerShell](/powershell/azure/?view=azureadps-2.0)
 - [Erforderliche Ports und Protokolle für die Hybrid-Identität](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>Verwalten des Datenbankzugriffs

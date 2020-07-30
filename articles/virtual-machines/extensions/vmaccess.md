@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
-ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3b6c9d5835f6d81ab8641d8a43fb7228b6b53ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085638"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Verwalten von Administratoren, SSH und Überprüfen oder Reparieren von Datenträgern auf Linux-VMs mit der VMAccess-Erweiterung und der Azure CLI
 ## <a name="overview"></a>Übersicht
 Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn dies früher zu Rechenzentrumszeiten geschah, mussten Sie dorthin fahren und den KVM öffnen, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure VMAccess-Erweiterung einen Datenträger überprüfen oder reparieren, den Benutzerzugriff zurücksetzen, Administratorkonten verwalten oder die SSH-Konfiguration unter Linux aktualisieren, wenn die virtuellen Computer als virtuelle Azure Resource Manager ausgeführt werden. Wenn Sie klassisch bereitgestellte virtuelle Computer verwalten möchten, können Sie die Anweisungen in der [Dokumentation zu klassisch bereitgestellten virtuellen Computern](../linux/classic/reset-access-classic.md) befolgen. 
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure VMAccess-Erweiterung einen Datenträger überprüfen oder reparieren, den Benutzerzugriff zurücksetzen, Administratorkonten verwalten oder die SSH-Konfiguration unter Linux aktualisieren, wenn die virtuellen Computer als virtuelle Azure Resource Manager ausgeführt werden. Wenn Sie klassisch bereitgestellte virtuelle Computer verwalten möchten, können Sie die Anweisungen in der [Dokumentation zu klassisch bereitgestellten virtuellen Computern](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic) befolgen. 
  
 > [!NOTE]
 > Wenn Sie die VMAccess-Erweiterung verwenden, um das Kennwort Ihres virtuellen Computers nach der Installation der AAD-Anmeldeerweiterung zurückzusetzen, müssen Sie die AAD-Anmeldeerweiterung erneut ausführen, um die AAD-Anmeldung für Ihren Computer erneut zu aktivieren.

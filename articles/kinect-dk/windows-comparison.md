@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, Vergleich, SDK, Unterschiede, Hardware, Software
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67454185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031574"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Vergleich zwischen Azure Kinect und Kinect Windows v2
 
@@ -22,8 +22,8 @@ Die Hardware und die Software Development Kits für Azure Kinect DK und Kinect f
 
 Die allgemeinen Unterschiede zwischen dem Azure Kinect Development Kit und Kinect für Windows v2 sind in der folgenden Tabelle aufgeführt.
 
-|    |      | Azure Kinect DK |  Kinect für Windows v2 |
-|----------|---------------|--------| ------------|
+| Funktion | type | Azure Kinect DK | Kinect für Windows v2 |
+| ------- | ---- | --------------- | --------------------- |
 | **Audio** | Details  | Array mit 7 kreisförmig angeordneten Mikrofonen | Array mit 4 in Reihe angeordneten Mikrofonen |
 | **Bewegungssensor** | Details | 3-Achsen-Beschleunigungssensor und -Gyrometer | 3-Achsen-Beschleunigungsmesser |
 | **RGB-Kamera**    | Details | 3840 × 2160 px @30 FPS | 1920 × 1080 px @30 FPS |

@@ -3,18 +3,18 @@ title: 'Azure PowerShell-Skriptbeispiel: Erstellen eines VPN-Gateways | Microsof
 description: Erstellen Sie ein VPN-Gateway mithilfe von PowerShell.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 52a5a70bc8c9f56ff4c5a2e971775d582c8db94d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1531bf7fdb2ec23be49f5a31145e3d8c2487aedc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086998"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>Erstellen eines VPN-Gateways mithilfe von PowerShell
 
@@ -82,4 +82,4 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

@@ -3,12 +3,12 @@ title: 'Überwachung und Protokollierung: Azure'
 description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokollierung von Live Video Analytics in IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060453"
 ---
 # <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
 
@@ -98,7 +98,7 @@ Live Video Analytics in IoT Edge gibt Ereignisse oder Telemetriedaten entspreche
      }
    }
    ```
-Die Ereignisse, die vom Modul ausgegeben werden, werden an den [IoT Edge-Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) gesendet und können von dort aus an andere Ziele weitergeleitet werden. 
+Die Ereignisse, die vom Modul ausgegeben werden, werden an den [IoT Edge-Hub](../../iot-edge/iot-edge-runtime.md#iot-edge-hub) gesendet und können von dort aus an andere Ziele weitergeleitet werden. 
 
 ## <a name="controlling-events"></a>Steuern von Ereignissen
 
@@ -110,7 +110,7 @@ Sie können die folgenden Eigenschaften von Modulzwillingen verwenden, wie im [J
    
 Die Analyseereignisse werden von Knoten wie dem Verarbeitungsknoten für die Bewegungserkennung oder dem Verarbeitungsknoten der HTTP-Erweiterung erstellt, und die IoT-Hub-Senke wird verwendet, um sie an den IoT Edge-Hub zu senden. 
 
-Sie können das [Routing aller oben aufgeführten Ereignisse](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) über eine gewünschte Eigenschaft des $edgeHub-Modulzwillings (im Bereitstellungsmanifest) steuern:
+Sie können das [Routing aller oben aufgeführten Ereignisse](../../iot-edge/module-composition.md#declare-routes) über eine gewünschte Eigenschaft des $edgeHub-Modulzwillings (im Bereitstellungsmanifest) steuern:
 
 ```
  "$edgeHub": {
@@ -126,14 +126,14 @@ Sie können das [Routing aller oben aufgeführten Ereignisse](https://docs.micro
  }
 ```
 
-Im Beispiel oben ist IvaEdge der Name des Live Video Analytics in IoT Edge-Moduls, und die Routingregel folgt dem in [Deklarieren von Routen](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) definierten Schema.
+Im Beispiel oben ist IvaEdge der Name des Live Video Analytics in IoT Edge-Moduls, und die Routingregel folgt dem in [Deklarieren von Routen](../../iot-edge/module-composition.md#declare-routes) definierten Schema.
 
 > [!NOTE]
 > Um sicherzustellen, dass die Analyseereignisse den IoT Edge-Hub erreichen, muss ein IoT-Hub-Senkknoten vorhanden sein, der einem Verarbeitungsknoten für die Bewegungserkennung und/oder einem Verarbeitungsknoten der HTTP-Erweiterung im Datenstrom nachgelagert ist.
 
 ## <a name="event-schema"></a>Ereignisschema
 
-Ereignisse haben auf dem Edge-Gerät ihren Ursprung und können auf dem Edge-Gerät oder in der Cloud verbraucht werden. Ereignisse, die von Live Video Analytics in IoT Edge generiert werden, entsprechen dem von Azure IoT Hub eingerichteten [Streaming-Messagingmuster](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) mit Systemeigenschaften, Anwendungseigenschaften und einem Textkörper.
+Ereignisse haben auf dem Edge-Gerät ihren Ursprung und können auf dem Edge-Gerät oder in der Cloud verbraucht werden. Ereignisse, die von Live Video Analytics in IoT Edge generiert werden, entsprechen dem von Azure IoT Hub eingerichteten [Streaming-Messagingmuster](../../iot-hub/iot-hub-devguide-messages-construct.md) mit Systemeigenschaften, Anwendungseigenschaften und einem Textkörper.
 
 ### <a name="summary"></a>Zusammenfassung
 
@@ -200,7 +200,7 @@ Die Ereigniszeit ist in der ISO8601-Zeichenfolge beschrieben. Dies ist die Zeit,
 
 ## <a name="logging"></a>Protokollierung
 
-Wie bei anderen IoT Edge-Modulen, können Sie außerdem [die Containerprotokolle auf dem Edge-Gerät untersuchen](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues). Die in den Protokollen erfassten Informationen können durch die Eigenschaften des [folgenden Modulzwillings](module-twin-configuration-schema.md) gesteuert werden:
+Wie bei anderen IoT Edge-Modulen, können Sie außerdem [die Containerprotokolle auf dem Edge-Gerät untersuchen](../../iot-edge/troubleshoot.md#check-container-logs-for-issues). Die in den Protokollen erfassten Informationen können durch die Eigenschaften des [folgenden Modulzwillings](module-twin-configuration-schema.md) gesteuert werden:
 
 * logLevel
 
@@ -222,7 +222,7 @@ Wie bei anderen IoT Edge-Modulen, können Sie außerdem [die Containerprotokolle
 
 In bestimmten Fällen müssen Sie möglicherweise ausführlichere als die oben beschriebenen Protokolle generieren, um den Azure-Support beim Beheben eines Problems zu unterstützen. Dies erreichen Sie in zwei Schritten.
 
-Zunächst [verknüpfen Sie den Modulspeicher mit dem Gerätespeicher](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage), mithilfe von „createOptions“. Wenn Sie eine [Vorlage für ein Bereitstellungsmanifest](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) aus den Schnellstartanleitungen untersuchen, sehen Sie Folgendes:
+Zunächst [verknüpfen Sie den Modulspeicher mit dem Gerätespeicher](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage), mithilfe von „createOptions“. Wenn Sie eine [Vorlage für ein Bereitstellungsmanifest](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) aus den Schnellstartanleitungen untersuchen, sehen Sie Folgendes:
 
 ```
 "createOptions": {

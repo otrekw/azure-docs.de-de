@@ -3,12 +3,12 @@ title: Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs | Microsof
 description: Erfahren Sie, wie Sie mit Azure DevTest Labs ein vorhandenes virtuelles Netzwerk und ein Subnetz konfigurieren und auf einem virtuellen Computer verwenden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482648"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283553"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs
 Wie im Artikel [Hinzufügen eines virtuellen Computers zu einem Lab](devtest-lab-add-vm.md) erläutert, können Sie beim Erstellen eines virtuellen Computers in einem Lab ein konfiguriertes virtuelles Netzwerk angeben. Dies ist z.B. erforderlich, wenn Sie von Ihren virtuellen Computern aus auf Ihre Unternehmensnetzwerkressourcen zugreifen müssen, und zwar über ein virtuelles Netzwerk, das mit ExpressRoute oder Site-to-Site-VPN konfiguriert wurde.
@@ -53,10 +53,9 @@ Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtu
 
 Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines virtuellen Computers ausgewählt werden. Informationen zum Erstellen eines virtuellen Computers und zum Angeben eines virtuellen Netzwerks finden Sie im Artikel [Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md). 
 
-Die [Dokumentation zu Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network) enthält weitere Informationen zur Verwendung von VNETs, einschließlich Informationen zum Einrichten und Verwalten eines VNET und zum Verbinden von diesem mit Ihrem lokalen Netzwerk.
+Die [Dokumentation zu Azure Virtual Network](../virtual-network/index.yml) enthält weitere Informationen zur Verwendung von VNETs, einschließlich Informationen zum Einrichten und Verwalten eines VNET und zum Verbinden von diesem mit Ihrem lokalen Netzwerk.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Ihrem Lab das gewünschte virtuelle Netzwerk hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm.md).
-

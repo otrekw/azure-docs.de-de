@@ -3,17 +3,17 @@ title: Azure Application Insights-Datenmodell | Microsoft-Dokumentation
 description: Beschreibt die Eigenschaften, die aus dem fortlaufenden Export in JSON exportiert und als Filter verwendet wurden.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1577e56960edcb1941c5d7b73ef44c514706d4e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110248"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324385"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell
-In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDKs an das Portal gesendet werden.
+In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](./app-insights-overview.md) SDKs an das Portal gesendet werden.
 Sie sehen diese Eigenschaften in der Datenausgabe von [Fortlaufender Export](export-telemetry.md).
-Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) und in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md) angezeigt.
+Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](../platform/metrics-charts.md) und in der [Diagnosesuche](./diagnostic-search.md) angezeigt.
 
 Beachten Sie Folgendes:
 
@@ -144,7 +144,7 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.user.accountId |Zeichenfolge | |
 | context.user.anonAcquisitionDate |Zeichenfolge | |
 | context.user.anonId |Zeichenfolge | |
-| context.user.authAcquisitionDate |Zeichenfolge |[Authentifizierter Benutzer](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authAcquisitionDate |Zeichenfolge |[Authentifizierter Benutzer](./api-custom-events-metrics.md#authenticated-users) |
 | context.user.authId |Zeichenfolge | |
 | context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |Zeichenfolge | |
@@ -152,23 +152,23 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | internal.data.id |Zeichenfolge | `Unique id`, die beim Erfassen eines Elements in Application Insights zugewiesen wird. |
 
 ## <a name="events"></a>Events
-Von [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)generierte benutzerdefinierte Ereignisse.
+Von [TrackEvent()](./api-custom-events-metrics.md#trackevent)generierte benutzerdefinierte Ereignisse.
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
-| event [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| event [0] count |integer |100/([Stichproben](./sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | event [0] name |Zeichenfolge |Ereignisname.  Länge: 250 |
 | event [0] url |Zeichenfolge | |
 | event [0] urlData.base |Zeichenfolge | |
 | event [0] urlData.host |Zeichenfolge | |
 
 ## <a name="exceptions"></a>Ausnahmen
-Melden [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) auf dem Server und im Browser.
+Melden [Ausnahmen](./asp-net-exceptions.md) auf dem Server und im Browser.
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
 | basicException [0] assembly |Zeichenfolge | |
-| basicException [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| basicException [0] count |integer |100/([Stichproben](./sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | basicException [0] exceptionGroup |Zeichenfolge | |
 | basicException [0] exceptionType |Zeichenfolge | |
 | basicException [0] failedUserCodeMethod |Zeichenfolge | |
@@ -192,7 +192,7 @@ Melden [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) auf dem Server
 | basicException [0] typeName |Zeichenfolge | |
 
 ## <a name="trace-messages"></a>Ablaufverfolgungsmeldungen
-Gesendet von [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) und über die [Protokollierungsadapter](../../azure-monitor/app/asp-net-trace-logs.md).
+Gesendet von [TrackTrace](./api-custom-events-metrics.md#tracktrace) und über die [Protokollierungsadapter](./asp-net-trace-logs.md).
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
@@ -202,14 +202,14 @@ Gesendet von [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#t
 | message [0] severityLevel |Zeichenfolge | |
 
 ## <a name="remote-dependency"></a>Remoteabhängigkeit
-Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [Aufrufen von abhängigen Komponenten](../../azure-monitor/app/asp-net-dependencies.md) auf dem Server sowie von AJAX-Aufrufen im Browser verwendet.
+Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [Aufrufen von abhängigen Komponenten](./asp-net-dependencies.md) auf dem Server sowie von AJAX-Aufrufen im Browser verwendet.
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |Zeichenfolge | |
 | remoteDependency [0] commandName |Zeichenfolge |Beispiel: "home/index" |
-| remoteDependency [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| remoteDependency [0] count |integer |100/([Stichproben](./sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | remoteDependency [0] dependencyTypeName |Zeichenfolge |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |number |Zeit vom Aufruf bis zum Abschließen der Antwort durch die Abhängigkeit. |
 | remoteDependency [0] `id` |Zeichenfolge | |
@@ -223,11 +223,11 @@ Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [A
 | remoteDependency [0] urlData.host |Zeichenfolge |Max. Länge: 200 |
 
 ## <a name="requests"></a>Requests
-Gesendet von [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). Die Standardmodule verwenden TrackRequest zum Berichten der Serverantwortzeit, gemessen auf dem Server.
+Gesendet von [TrackRequest](./api-custom-events-metrics.md#trackrequest). Die Standardmodule verwenden TrackRequest zum Berichten der Serverantwortzeit, gemessen auf dem Server.
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
-| request [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| request [0] count |integer |100/([Stichproben](./sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | request [0] durationMetric.value |number |Zeit vom Empfang der Anforderung bis zur Antwort. 1e7 == 1s |
 | request [0] `id` |Zeichenfolge |`Operation id` |
 | request [0] name |Zeichenfolge |GET/POST + URL-Basis.  Länge: 250 |
@@ -258,11 +258,11 @@ Kontextwerte zeigen Clientbetriebssystem und Browserversion.
 | clientPerformance [0] urlData.protocol |Zeichenfolge | |
 
 ## <a name="page-views"></a>Seitenaufrufe
-Gesendet von trackPageView() oder [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
+Gesendet von trackPageView() oder [stopTrackPage](./api-custom-events-metrics.md#page-views)
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
-| view [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| view [0] count |integer |100/([Stichproben](./sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | view [0] durationMetric.value |integer |Wert optional in trackPageView() oder über startTrackPage() - stopTrackPage() festgelegt. Ist nicht dasselbe wie die clientPerformance-Werte. |
 | view [0] name |Zeichenfolge |Seitentitel, Max.  Länge: 250 |
 | view [0] url |Zeichenfolge | |
@@ -271,13 +271,13 @@ Gesendet von trackPageView() oder [stopTrackPage](../../azure-monitor/app/api-cu
 | view [0] urlData.host |Zeichenfolge | |
 
 ## <a name="availability"></a>Verfügbarkeit
-Liefert Berichtdaten zu [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md).
+Liefert Berichtdaten zu [Verfügbarkeitswebtests](./monitor-web-app-availability.md).
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |Zeichenfolge |availability |
 | availability [0] availabilityMetric.value |number |1.0 oder 0.0 |
-| availability [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| availability [0] count |integer |100/([Stichproben](./sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | availability [0] dataSizeMetric.name |Zeichenfolge | |
 | availability [0] dataSizeMetric.value |integer | |
 | availability [0] durationMetric.name |Zeichenfolge | |
@@ -345,12 +345,13 @@ Der Zweck der weiteren Felder besteht darin, Metriken im SDK zu aggregieren, um 
 
 In den obigen Tabellen wurden die selten verwendeten Felder „count“, „min“, „max“, „stdDev“ und „sampledValue“ ausgelassen.
 
-Anstelle einer Vorabaggretation von Metriken können Sie die [Stichprobenerstellung](../../azure-monitor/app/sampling.md) nutzen, wenn Sie den Umfang der Telemetriedaten verringern möchten.
+Anstelle einer Vorabaggretation von Metriken können Sie die [Stichprobenerstellung](./sampling.md) nutzen, wenn Sie den Umfang der Telemetriedaten verringern möchten.
 
 ### <a name="durations"></a>Zeitspannen
 Sofern nicht anders angegeben, wird die Dauer in Zehnteln einer Mikrosekunde angegeben, d. h. 10000000.0 entspricht 1 Sekunde.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
 * [Fortlaufender Export](export-telemetry.md)
 * [Codebeispiele](export-telemetry.md#code-samples)
+

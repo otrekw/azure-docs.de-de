@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9c7e6733a9149008f6ed98ae7a7e0103f92f79f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196232"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325269"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardeigenschaften in Azure Monitor-Protokollen
 Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../log-query/logs-structure.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutige Menge an Eigenschaften verfügt. Viele Datentypen weisen Standardeigenschaften auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Eigenschaften beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
@@ -211,5 +211,6 @@ union withsource = tt *
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr zum [Speichern von Azure Monitor-Protokolldaten](../log-query/log-query-overview.md).
-- Arbeiten Sie eine Lektion zum [Schreiben von Protokollabfragen ](../../azure-monitor/log-query/get-started-queries.md) durch.
-- Arbeiten Sie eine Lektion zum [Verknüpfen von Tabellen in Protokollabfragen](../../azure-monitor/log-query/joins.md) durch.
+- Arbeiten Sie eine Lektion zum [Schreiben von Protokollabfragen ](../log-query/get-started-queries.md) durch.
+- Arbeiten Sie eine Lektion zum [Verknüpfen von Tabellen in Protokollabfragen](../log-query/joins.md) durch.
+

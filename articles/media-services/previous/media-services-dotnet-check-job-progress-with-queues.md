@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060333"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET 
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
-Beim Ausführen von Codierungsaufträgen ist es nützlich, deren Status nachverfolgen zu können. Sie können Media Services zur Übermittlung von Benachrichtigungen an [Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md) konfigurieren. Sie können den Status des Auftrags überwachen, indem Sie Benachrichtigungen aus Queue Storage abrufen. 
+Beim Ausführen von Codierungsaufträgen ist es nützlich, deren Status nachverfolgen zu können. Sie können Media Services zur Übermittlung von Benachrichtigungen an [Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md) konfigurieren. Sie können den Status des Auftrags überwachen, indem Sie Benachrichtigungen aus Queue Storage abrufen. 
 
 Auf die an den Warteschlangenspeicher übermittelten Nachrichten kann von überall auf der Welt aus zugegriffen werden. Die Benachrichtigungsarchitektur von Queue Storage ist zuverlässig und hochgradig skalierbar. Das Abrufen von Nachrichten aus Queue Storage wird gegenüber anderen Methoden empfohlen.
 
@@ -37,10 +37,10 @@ In diesem Artikel wird gezeigt, wie Sie Benachrichtigungen aus Queue Storage abr
 ## <a name="considerations"></a>Überlegungen
 Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die Queue Storage verwenden:
 
-* Queue Storage bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* Queue Storage bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](/previous-versions/azure/hh767287(v=azure.100)).
 * Queue Storage ist kein Pushdienst. Sie müssen die Warteschlange abfragen.
-* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* Queue Storage verfügt über einige Einschränkungen und Besonderheiten, die Sie berücksichtigen müssen. Diese werden unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted) besprochen.
+* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](/rest/api/storageservices/queue-service-rest-api).
+* Queue Storage verfügt über einige Einschränkungen und Besonderheiten, die Sie berücksichtigen müssen. Diese werden unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) besprochen.
 
 ## <a name="net-code-example"></a>Codebeispiel für .NET
 

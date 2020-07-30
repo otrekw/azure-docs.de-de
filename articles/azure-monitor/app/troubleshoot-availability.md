@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233957"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318146"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -35,7 +35,7 @@ Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsübe
 |----|---------|
 |Ein Verbindungsversuch ist fehlgeschlagen, weil die Partei, mit der eine Verbindung hergestellt werden sollte, in einem bestimmten Zeitraum nicht reagiert hat.  | Test-Agents werden an bestimmten Orten von einer Firewall blockiert.|
 |    |Die Umleitung von bestimmten IP-Adressen erfolgt über (Lastenausgleichsmodule, Geo-Traffic-Manager, Azure ExpressRoute) 
-|    |Bei der Verwendung von Azure ExpressRoute können Pakete im Fall von [asymmetrischem Routing](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) gelöscht werden.|
+|    |Bei der Verwendung von Azure ExpressRoute können Pakete im Fall von [asymmetrischem Routing](../../expressroute/expressroute-asymmetric-routing.md) gelöscht werden.|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>Testfehler aufgrund einer Protokollverletzung
 
@@ -66,11 +66,11 @@ Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsübe
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Ich habe die Webhookbenachrichtigung nicht empfangen.
 
-Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook).
+Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](../platform/alerts-log-webhook.md).
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Ich erhalte die Fehler „Unzulässig – 403“, was bedeutet das?
 
-Dieser Fehler zeigt an, dass Sie Firewallausnahmen hinzufügen müssen, damit die Verfügbarkeits-Agents Ihre Ziel-URL testen können. Eine vollständige Liste der zuzulassenden Agent-IP-Adressen finden Sie im Artikel zur [IP-Ausnahme](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests).
+Dieser Fehler zeigt an, dass Sie Firewallausnahmen hinzufügen müssen, damit die Verfügbarkeits-Agents Ihre Ziel-URL testen können. Eine vollständige Liste der zuzulassenden Agent-IP-Adressen finden Sie im Artikel zur [IP-Ausnahme](./ip-addresses.md#availability-tests).
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Ein zeitweiliger Testfehler aufgrund einer Protokollverletzung ist aufgetreten.
 
@@ -81,7 +81,7 @@ Der Fehler („protocol violation..CR must be followed by LF“) weist auf ein P
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Ich sehe keine zugehörigen serverseitigen Telemetriedaten zum Diagnostizieren von Testfehlern.*
 
-Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](../../azure-monitor/app/sampling.md) in Betrieb ist. Wählen Sie ein anderes Verfügbarkeitsergebnis aus.
+Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](./sampling.md) in Betrieb ist. Wählen Sie ein anderes Verfügbarkeitsergebnis aus.
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Kann ich Code aus meinem Webtest aufrufen?
 
@@ -96,8 +96,8 @@ Die beiden Begriffe sind austauschbar. „Verfügbarkeitstests“ ist ein allgem
 
    Es gibt zwei mögliche Lösungen:
 
-   * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](../../azure-monitor/app/ip-addresses.md) zugelassen werden.
-   * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden auf den Blättern der Verfügbarkeitswebtests angezeigt. Die Funktionalität ist jedoch leicht vereinfacht gegenüber den Funktionen, die für über das Portal erstellte Tests zur Verfügung stehen. Benutzerdefinierte Verfügbarkeitstests werden auch als Verfügbarkeitsergebnisse in Analysen, Suchen und Metriken angezeigt.
+   * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](./ip-addresses.md) zugelassen werden.
+   * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden auf den Blättern der Verfügbarkeitswebtests angezeigt. Die Funktionalität ist jedoch leicht vereinfacht gegenüber den Funktionen, die für über das Portal erstellte Tests zur Verfügung stehen. Benutzerdefinierte Verfügbarkeitstests werden auch als Verfügbarkeitsergebnisse in Analysen, Suchen und Metriken angezeigt.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Fehler beim Hochladen eines mehrstufigen Webtests
 
@@ -134,3 +134,4 @@ Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Ec
 
 * [Multi-step web testing (Mehrstufiger Webtest)](availability-multistep.md)
 * [URL ping tests (URL-Pingtests)](monitor-web-app-availability.md)
+

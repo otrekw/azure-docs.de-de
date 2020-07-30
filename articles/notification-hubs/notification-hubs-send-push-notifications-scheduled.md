@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ef5eedaa903480ae670f9bc48d0af89744a99d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d91b7816ee05d4b5ef5266b4c2556abdc1175b87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71213003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084261"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>Gewusst wie: Senden von geplanten Benachrichtigungen
 
@@ -30,7 +30,7 @@ Stellen Sie sich ein Szenario vor, bei dem Sie zu einem späteren Zeitpunkt eine
 
 
 ## <a name="schedule-your-notifications"></a>Planen Ihrer Benachrichtigungen
-Verwenden Sie beim Senden einer Benachrichtigung einfach die [`ScheduledNotification`-Klasse](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) im Notification Hubs SDK, wie im folgenden Beispiel veranschaulicht:
+Verwenden Sie beim Senden einer Benachrichtigung einfach die [`ScheduledNotification`-Klasse](/dotnet/api/microsoft.azure.notificationhubs.schedulednotification?view=azure-dotnet#microsoft_azure_notificationhubs_schedulednotification) im Notification Hubs SDK, wie im folgenden Beispiel veranschaulicht:
 
 ```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");

@@ -3,12 +3,13 @@ title: Erstellen und Konfigurieren von Recovery Services-Tresoren
 description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore zum Speichern von Sicherungen und Wiederherstellungspunkten erstellen und konfigurieren.
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.custom: references_regions
+ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032951"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -21,7 +22,7 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
 > [!NOTE]
 > Bevor Sicherungen im Tresor konfiguriert werden, muss der **Speicherreplikationstyp** (lokal redundant/georedundant) für einen Recovery Services-Tresor geändert werden. Sobald Sie eine Sicherung konfigurieren, wird die Änderungsoption deaktiviert.
 >
->- Wenn Sie noch keine Sicherung konfiguriert haben, [führen Sie die folgenden Schritte aus](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy), um die Einstellungen zu überprüfen und zu ändern.
+>- Wenn Sie noch keine Sicherung konfiguriert haben, [führen Sie die folgenden Schritte aus](#set-storage-redundancy), um die Einstellungen zu überprüfen und zu ändern.
 >- Wenn Sie die Sicherung bereits konfiguriert haben und von georedundantem Speicher (GRS) zu lokal redundantem Speicher (LRS) wechseln müssen, [überprüfen Sie diese Problemumgehungen](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor. Klicken Sie im Abschnitt **Einstellungen** auf **Eigenschaften**.
@@ -33,14 +34,14 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
 
    - Wir empfehlen, dass Sie, wenn Sie Azure als primären Endpunkt für den Sicherungsspeicher verwenden, weiterhin die Standardeinstellung **Georedundant** verwenden.
    - Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher.
-   - Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy-grs.md) and [lokale Redundanz](../storage/common/storage-redundancy-lrs.md).
+   - Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy.md) and [lokale Redundanz](../storage/common/storage-redundancy.md).
 
 >[!NOTE]
 >Die Speicherreplikationseinstellungen für den Tresor sind nicht relevant für das Sichern von Azure-Dateifreigaben, da die aktuelle Lösung auf Momentaufnahmen basiert und keine Daten in den Tresor übertragen werden. Momentaufnahmen werden im gleichen Speicherkonto gespeichert wie die gesicherte Dateifreigabe.
 
 ## <a name="set-cross-region-restore"></a>Festlegen der bereichsübergreifenden Wiederherstellung
 
-Als eine der Wiederherstellungsoptionen ermöglicht die bereichsübergreifende Wiederherstellung (Cross Region Restore, CRR) die Wiederherstellung von virtuellen Azure-Computern in einer sekundären Region, bei der es sich um eine [gepaarte Azure-Region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) handelt. Diese Option ermöglicht Folgendes:
+Als eine der Wiederherstellungsoptionen ermöglicht die bereichsübergreifende Wiederherstellung (Cross Region Restore, CRR) die Wiederherstellung von virtuellen Azure-Computern in einer sekundären Region, bei der es sich um eine [gepaarte Azure-Region](../best-practices-availability-paired-regions.md) handelt. Diese Option ermöglicht Folgendes:
 
 - Durchführen von Übungen für Audit- oder Complianceanforderungen
 - Wiederherstellen des virtuellen Computers oder dessen Datenträgers im Falle eines Notfalls in der primären Region
@@ -83,10 +84,10 @@ Informationen zum Überwachen von Wiederherstellungsaufträgen für die sekundä
 Es wird dringend empfohlen, vor dem Konfigurieren von Sicherungen im Tresor die Standardeinstellungen für **Speicherreplikationstyp** und **Sicherheitseinstellungen** zu überprüfen.
 
 - Der **Speicherreplikationstyp** ist standardmäßig auf **Georedundant** (GRS) festgelegt. Nachdem Sie die Sicherung konfiguriert haben, ist die Option zum Ändern deaktiviert.
-  - Wenn Sie noch keine Sicherung konfiguriert haben, [führen Sie die folgenden Schritte aus](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy), um die Einstellungen zu überprüfen und zu ändern.
+  - Wenn Sie noch keine Sicherung konfiguriert haben, [führen Sie die folgenden Schritte aus](#set-storage-redundancy), um die Einstellungen zu überprüfen und zu ändern.
   - Wenn Sie die Sicherung bereits konfiguriert haben und von georedundantem Speicher (GRS) zu lokal redundantem Speicher (LRS) wechseln müssen, [überprüfen Sie diese Problemumgehungen](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-- **Vorläufiges Löschen** ist für neu erstellte Tresore standardmäßig auf **Aktiviert** festgelegt, um das versehentliche oder bösartige Löschen von Sicherungsdaten zu verhindern. [Führen Sie diese Schritte aus](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete), um die Einstellungen zu überprüfen und zu ändern.
+- **Vorläufiges Löschen** ist für neu erstellte Tresore standardmäßig auf **Aktiviert** festgelegt, um das versehentliche oder bösartige Löschen von Sicherungsdaten zu verhindern. [Führen Sie diese Schritte aus](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete), um die Einstellungen zu überprüfen und zu ändern.
 
 ### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>Wechseln von GRS zu LRS nach dem Konfigurieren einer Sicherung
 
@@ -123,7 +124,7 @@ Wenn Sie die aktuell geschützten Daten im GRS-Tresor aufbewahren und den Schutz
   - Für die Wiederherstellung gesicherter Daten können Sie nur nicht abgelaufene Wiederherstellungspunkte im GRS-Tresor auswählen.
   - Im LRS-Tresor muss ein neues Erstreplikat der Daten erstellt werden.
 
-- Bei einem virtuellen Azure-Computer können Sie [Beendigung des Schutzes mit Beibehaltung der Daten](backup-azure-manage-vms.md#stop-protecting-a-vm) für den virtuellen Computer im GRS-Tresor auswählen, den virtuellen Computer in eine andere Ressourcengruppe verschieben und dann den virtuellen Computer im LRS-Tresor schützen. Weitere Informationen zum Verschieben eines virtuellen Computers in eine andere Ressourcengruppe finden Sie unter [Anleitungen und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations).
+- Bei einem virtuellen Azure-Computer können Sie [Beendigung des Schutzes mit Beibehaltung der Daten](backup-azure-manage-vms.md#stop-protecting-a-vm) für den virtuellen Computer im GRS-Tresor auswählen, den virtuellen Computer in eine andere Ressourcengruppe verschieben und dann den virtuellen Computer im LRS-Tresor schützen. Weitere Informationen zum Verschieben eines virtuellen Computers in eine andere Ressourcengruppe finden Sie unter [Anleitungen und Einschränkungen](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md).
 
   Ein virtueller Computer kann jeweils nur in einem Tresor geschützt werden. Der virtuelle Computer in der neuen Ressourcengruppe kann jedoch im LRS-Tresor geschützt werden, da er als anderer virtueller Computer betrachtet wird.
 

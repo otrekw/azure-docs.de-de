@@ -7,12 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744130"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318163"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analysieren von Trends in Visual Studio
 Mit dem Application Insights-Tool „Trends“ wird visualisiert, wie sich die wichtigen Telemetrieereignisse Ihrer Webanwendung im Laufe der Zeit ändern, damit Sie Probleme und Anomalien schnell identifizieren können. Durch die Angabe von Links zu ausführlicheren Diagnoseinformationen kann das Trends-Tool Sie in Bezug auf das Verbessern der App-Leistung, das Ermitteln der Ursachen von Ausnahmen und das Erlangen von Einblicken in benutzerdefinierte Ereignisse unterstützen.
@@ -21,7 +21,7 @@ Mit dem Application Insights-Tool „Trends“ wird visualisiert, wie sich die w
 
 ## <a name="configure-your-web-app-for-application-insights"></a>Konfigurieren der Web-App für Application Insights
 
-Falls noch nicht geschehen, können Sie [Ihre Web-App für Application Insights konfigurieren](../../azure-monitor/app/app-insights-overview.md). So wird ermöglicht, dass Telemetriedaten an das Application Insights-Portal gesendet werden. Mit dem Tool Trends können die Telemetriedaten darin dann gelesen werden.
+Falls noch nicht geschehen, können Sie [Ihre Web-App für Application Insights konfigurieren](./app-insights-overview.md). So wird ermöglicht, dass Telemetriedaten an das Application Insights-Portal gesendet werden. Mit dem Tool Trends können die Telemetriedaten darin dann gelesen werden.
 
 Application Insights-Trends ist als Teil von Visual Studio 2015 Update 3 und höher verfügbar.
 
@@ -98,7 +98,7 @@ Mit dem Tool Trends können Sie Blasen mit Ereignissen hervorheben, die im Vergl
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 |  |  |
 | --- | --- |
-| **[Arbeiten mit Application Insights in Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Durchsuchen Sie die Telemetriedaten, zeigen Sie Daten in CodeLens an, und konfigurieren Sie Application Insights. Alles in Visual Studio. |![Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie „Application Insights > Durchsuchen“ aus.](./media/visual-studio-trends/34.png) |
-| **[Hinzufügen weiterer Daten](../../azure-monitor/app/asp-net-more.md)**<br/>Überwachen Sie Nutzung, Verfügbarkeit, Abhängigkeiten und Ausnahmen. Integrieren Sie Ablaufverfolgungen aus Protokollierungsframeworks. Schreiben Sie benutzerdefinierte Telemetriedaten. |![Visual Studio](./media/visual-studio-trends/64.png) |
-| **[Navigation und Dashboards im Application Insights-Portal](../../azure-monitor/app/overview-dashboard.md)**<br/>Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen und zum Export von Telemetriedaten sowie eine Livekarte der Abhängigkeiten Ihrer Anwendung. |![Visual Studio](./media/visual-studio-trends/62.png) |
+| **[Arbeiten mit Application Insights in Visual Studio](./visual-studio.md)**<br/>Durchsuchen Sie die Telemetriedaten, zeigen Sie Daten in CodeLens an, und konfigurieren Sie Application Insights. Alles in Visual Studio. |![Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie „Application Insights > Durchsuchen“ aus.](./media/visual-studio-trends/34.png) |
+| **[Hinzufügen weiterer Daten](./asp-net-more.md)**<br/>Überwachen Sie Nutzung, Verfügbarkeit, Abhängigkeiten und Ausnahmen. Integrieren Sie Ablaufverfolgungen aus Protokollierungsframeworks. Schreiben Sie benutzerdefinierte Telemetriedaten. |![Visual Studio](./media/visual-studio-trends/64.png) |
+| **[Navigation und Dashboards im Application Insights-Portal](./overview-dashboard.md)**<br/>Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen und zum Export von Telemetriedaten sowie eine Livekarte der Abhängigkeiten Ihrer Anwendung. |![Visual Studio](./media/visual-studio-trends/62.png) |
 

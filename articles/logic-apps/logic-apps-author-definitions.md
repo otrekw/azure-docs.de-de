@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060667"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Workflowdefinitionen in Azure Logic Apps
 
 Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen, verwenden die zugrunde liegenden Logik-App-Definitionen einfachen und deklarativen JSON-Code (JavaScript Object Notation) sowie das [Schema der Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) zur Beschreibung und Überprüfung der Definitionen. Diese Formate erleichtern Benutzern ohne umfassende Codekenntnisse das Lesen und Verständnis von Logik-App-Definitionen.
 Wenn Sie die Erstellung und Bereitstellung von Logik-Apps automatisieren möchten, können Sie Logik-App-Definitionen als [Azure-Ressourcen](../azure-resource-manager/management/overview.md) in [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md) einbinden.
-Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), die [Azure CLI](../azure-resource-manager/templates/deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](https://docs.microsoft.com/rest/api/logic/) verwenden.
+Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](/powershell/module/az.logicapp), die [Azure CLI](../azure-resource-manager/templates/deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](/rest/api/logic/) verwenden.
 
 Um mit Logik-App-Definitionen in JSON zu arbeiten, öffnen Sie im Azure-Portal oder in Visual Studio den Codeansichts-Editor, oder kopieren Sie die Definition in einen Editor Ihrer Wahl.
 Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.

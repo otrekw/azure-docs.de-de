@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c881068fa97361176e4bef2bc156ea213a79c54
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 14b7e269fffaf1be4fff0b2f112a5844fd73cdbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>Tutorial: Azure Active Directory-Integration mit HPE SaaS
 
@@ -111,7 +111,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei HPE SaaS
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<subdomain>.saas.hpe.com`.
 
     > [!NOTE]
-    > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam für HPE SaaS](https://saas.hpe.com/en-us/contact), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam für HPE SaaS](https://www.sas.com/en_us/contact.html), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -129,7 +129,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei HPE SaaS
 
 ### <a name="configure-hpe-saas-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für HPE SaaS
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **HPE SaaS** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von HPE SaaS](https://saas.hpe.com/en-us/contact) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **HPE SaaS** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von HPE SaaS](https://www.sas.com/en_us/contact.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-hpe-saas-test-user"></a>Erstellen des HPE SaaS-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in HPE SaaS einen Benutzer mit dem Namen „Britta Simon“. Arbeiten Sie mit dem [Supportteam von HPE SaaS](https://saas.hpe.com/en-us/contact) zusammen, um die Benutzer der HPE SaaS-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in HPE SaaS einen Benutzer mit dem Namen „Britta Simon“. Arbeiten Sie mit dem [Supportteam von HPE SaaS](https://www.sas.com/en_us/contact.html) zusammen, um die Benutzer der HPE SaaS-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

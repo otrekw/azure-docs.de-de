@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797903"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323705"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Auswirkungsanalyse mit Application Insights
 
@@ -28,7 +28,7 @@ Die Leistungsanalyse ist jedoch nur ein Teilbereich der Funktionen von Impact. D
 ![Screenshot der Konvertierung nach Browsern](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, damit das Impact-Tool eingesetzt werden kann. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](../../azure-monitor/app/javascript.md). Bedenken Sie auch, dass die Beispielgröße von Bedeutung ist, weil Sie die Korrelation analysieren.
+> Ihre Application Insights-Ressource muss Seitenaufrufe oder benutzerdefinierte Ereignisse enthalten, damit das Impact-Tool eingesetzt werden kann. [Informieren Sie sich darüber, wie Sie Ihre App so einrichten können, dass Seitenansichten automatisch mit dem Application Insights-JavaScript-SDK erfasst werden](./javascript.md). Bedenken Sie auch, dass die Beispielgröße von Bedeutung ist, weil Sie die Korrelation analysieren.
 >
 >
 
@@ -80,10 +80,11 @@ Wie die Auswirkung letztlich berechnet wird, hängt davon ab, ob wir nach Metrik
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md#trackevent) oder [Seitenansichten](./api-custom-events-metrics.md#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Trichter](usage-funnels.md)
     - [Vermerkdauer](usage-retention.md)
     - [Benutzerabläufe](usage-flows.md)
-    - [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
+    - [Arbeitsmappen](../platform/workbooks-overview.md)
     - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
+
