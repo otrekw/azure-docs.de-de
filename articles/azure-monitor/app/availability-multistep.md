@@ -3,12 +3,12 @@ title: Überwachen mit mehrstufigen Webtests – Azure Application Insights
 description: Einrichten von mehrstufigen Webtests zur Überwachung Ihrer Webanwendungen mit Azure Application Insights
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873352"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024772"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
@@ -17,7 +17,7 @@ Sie können eine aufgezeichnete Sequenz von URLs und Interaktionen mithilfe eine
 > [!NOTE]
 > Mehrstufige Webtests sind von Visual Studio-Webtestdateien abhängig. Es wurde [angekündigt](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/), dass Visual Studio 2019 die letzte Version mit Webtestfunktionen sein wird. Es ist wichtig zu verstehen, dass zwar keine neuen Features hinzugefügt werden, aber Webtestfunktionen in Visual Studio 2019 derzeit noch und auch während des Supportlebenszyklus des Produkts weiterhin unterstützt werden. Das Azure Monitor-Produktteam hat Fragen zur Zukunft von mehrstufigen Verfügbarkeitstests [hier](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101) behandelt.  
 > </br>
-> Mehrstufige Webtests werden in der [Azure Government](https://docs.microsoft.com/azure/azure-government/)-Cloud **nicht unterstützt**.
+> Mehrstufige Webtests werden in der [Azure Government](../../azure-government/index.yml)-Cloud **nicht unterstützt**.
 
 
 ## <a name="pre-requisites"></a>Voraussetzungen
@@ -37,7 +37,7 @@ Sie finden die Testingtools im **Visual Studio-Installer** > **Einzelne Komponen
 > [!WARNING]
 > Die Verwendung der mehrstufigen Aufzeichnung wird nicht mehr empfohlen. Die Aufzeichnung wurde für statische HTML-Seiten mit grundlegenden Interaktionen entwickelt und bietet keine Funktionalität für moderne Webseiten.
 
-Anleitungen zum Erstellen von Visual Studio-Webtests finden Sie in der [offiziellen Dokumentation zu Visual Studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+Anleitungen zum Erstellen von Visual Studio-Webtests finden Sie in der [offiziellen Dokumentation zu Visual Studio 2019](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>Hochladen des Webtests
 

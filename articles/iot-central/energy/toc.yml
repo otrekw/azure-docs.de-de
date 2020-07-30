@@ -4,7 +4,7 @@
   items:
     - name: Erstellen von Lösungen für die Energiebranche mit Azure IoT Central
       href: overview-iot-central-energy.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer App für die Überwachung von intelligenten Stromzählern
       href: tutorial-smart-meter-app.md
@@ -18,12 +18,10 @@
       href: concept-iot-central-solar-panel-app.md
     - name: Was sind Anwendungsvorlagen?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen Geräten
       items:
-        - name: Vorbereiten und Verbinden eines MXChip IoT DevKit
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: "Vorbereiten und Verbinden einer Rigado Cascade\_500-Einheit"
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Überwachen der Gerätekonnektivität per Azure CLI
@@ -105,9 +103,9 @@
     - name: Azure IoT SDKs
       items:
         - name: IoT-Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Kundendatenanforderungen
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Unterstützte Browser

@@ -3,16 +3,16 @@ title: 'JSON-Schema des Modulzwillings: Azure'
 description: In diesem Thema wird das JSON-Schema des Modulzwillings für Live Video Analytics in IoT Edge beschrieben.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266813"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053074"
 ---
 # <a name="module-twin-json-schema"></a>JSON-Schema des Modulzwillings
 
-Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, z. B. Metadaten, Konfigurationen und Bedingungen. Azure IoT Hub pflegt einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. Eine ausführliche Beschreibung finden Sie unter [Verstehen und Verwenden von Modulzwillingen in IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins).
+Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, z. B. Metadaten, Konfigurationen und Bedingungen. Azure IoT Hub pflegt einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. Eine ausführliche Beschreibung finden Sie unter [Verstehen und Verwenden von Modulzwillingen in IoT Hub](../../iot-hub/iot-hub-devguide-module-twins.md).
 
 In diesem Thema wird das JSON-Schema des Modulzwillings für Live Video Analytics in IoT Edge beschrieben.
 
@@ -43,7 +43,7 @@ Bei Live Video Analytics in IoT Edge werden die folgenden Eigenschaften von Modu
 
 <sup>*</sup>Sie MÜSSEN entweder ein Dienstprinzipalzertifikat der ein Kennwort angeben. 
 
-Dynamische Eigenschaften können aktualisiert werden, ohne das Modul neu zu starten. Sie können die Werte für mehrere dieser Eigenschaften abrufen, indem Sie die Anleitung im Artikel [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](../latest/access-api-cli-how-to.md) befolgen. 
+Dynamische Eigenschaften können aktualisiert werden, ohne das Modul neu zu starten. Sie können die Werte für mehrere dieser Eigenschaften abrufen, indem Sie die Anleitung im Artikel [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](../latest/access-api-howto.md) befolgen. 
 
 Weitere Informationen zur Rolle der optionalen Diagnoseeinstellungen finden Sie im Artikel zur [Überwachung und Protokollierung](monitoring-logging.md).
 

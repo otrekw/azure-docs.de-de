@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013962"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
@@ -149,7 +149,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ### <a name="log-alerts"></a>Protokollwarnungen
 
 > [!NOTE]
-> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludeSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get) verwenden. 
+> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludeSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](/rest/api/loganalytics/dataaccess/query/get) verwenden. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs).
-- Erfahren Sie, wie Sie eine [Logik-App erstellen, die das allgemeine Warnungsschema verwendet, um all Ihre Warnungen zu verarbeiten](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
-
+- Erfahren Sie, wie Sie eine [Logik-App erstellen, die das allgemeine Warnungsschema verwendet, um all Ihre Warnungen zu verarbeiten](./alerts-common-schema-integrations.md). 

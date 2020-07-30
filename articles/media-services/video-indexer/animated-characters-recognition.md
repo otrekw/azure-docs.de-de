@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76989908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047492"
 ---
 # <a name="animated-character-detection-preview"></a>Erkennung animierter Figuren (Vorschauversion)
 
@@ -134,7 +134,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
         ![Anpassung des Inhaltsmodells](./media/animated-characters-recognition/content-model-customization-tab.png)
 
      1. Nach dem Trainieren werden die trainierten Figuren in allen Videos erkannt, die erstmals oder erneut mit diesem Modell indiziert werden. 
-    Bei kostenpflichtigen Konten mit Zugriff auf das Custom Vision-Konto können die Modelle und getaggten Bilder dort angezeigt werden. Weitere Informationen zur Verbesserung Ihrer Klassifizierung in Custom Vision finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+    Bei kostenpflichtigen Konten mit Zugriff auf das Custom Vision-Konto können die Modelle und getaggten Bilder dort angezeigt werden. Weitere Informationen zur Verbesserung Ihrer Klassifizierung in Custom Vision finden Sie [hier](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md).
 
 1. Löschen Sie eine animierte Figur.
 
@@ -160,7 +160,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
 1. Stellen Sie eine Verbindung mit einem Custom Vision-Konto her.
 
     Wenn Sie über ein kostenpflichtiges Video Indexer-Konto verfügen, müssen Sie zunächst eine Verbindung mit einem Custom Vision-Konto herstellen. <br/>
-    Sollten Sie noch nicht über ein Custom Vision-Konto verfügen, müssen Sie eins erstellen. Weitere Informationen finden Sie unter [Was ist Azure Custom Vision?](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+    Sollten Sie noch nicht über ein Custom Vision-Konto verfügen, müssen Sie eins erstellen. Weitere Informationen finden Sie unter [Was ist Azure Custom Vision?](../../cognitive-services/custom-vision-service/home.md).
 
     [Stellen Sie unter Verwendung der API eine Verbindung mit Ihrem Custom Vision-Konto her.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)
 1. Erstellen Sie ein Modell für animierte Figuren.

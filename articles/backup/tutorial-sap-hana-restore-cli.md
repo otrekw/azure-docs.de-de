@@ -3,16 +3,16 @@ title: 'Tutorial: Wiederherstellen einer SAP HANA-Datenbank unter Azure per CLI'
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, über die Azure CLI aus einem Recovery Services-Tresor von Azure Backup wiederherstellen.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 14e5023bf79e3e20f96c00fdc73f19c8cd095b73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 617c21d8c62ed83678f6fc99741409e82eb3c0b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170580"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023924"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Wiederherstellen von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
-Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Dokumentation wird beschrieben, wie Sie eine gesicherte SAP HANA-Datenbank auf einem virtuellen Azure-Computer über die Azure CLI wiederherstellen. Sie können [diese Schritte auch über das Azure-Portal ausführen](https://docs.microsoft.com/azure/backup/sap-hana-db-restore).
+Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Dokumentation wird beschrieben, wie Sie eine gesicherte SAP HANA-Datenbank auf einem virtuellen Azure-Computer über die Azure CLI wiederherstellen. Sie können [diese Schritte auch über das Azure-Portal ausführen](./sap-hana-db-restore.md).
 
 Verwenden Sie [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md), um die CLI-Befehle auszuführen.
 
@@ -33,7 +33,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie über eine per Azure Backup 
 
 ## <a name="view-restore-points-for-a-backed-up-database"></a>Anzeigen von Wiederherstellungspunkten für eine gesicherte Datenbank
 
-Verwenden Sie das Cmdlet[az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) wie folgt, um die Liste mit allen Wiederherstellungspunkten anzuzeigen:
+Verwenden Sie das Cmdlet[az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) wie folgt, um die Liste mit allen Wiederherstellungspunkten anzuzeigen:
 
 ```azurecli-interactive
 az backup recoverypoint list --resource-group saphanaResourceGroup \
@@ -56,7 +56,7 @@ DefaultRangeRecoveryPoint                                    AzureWorkload      
 Wie Sie sehen, enthält die obige Liste drei Wiederherstellungspunkte: jeweils einen für die vollständige, differenzielle und Protokollsicherung.
 
 >[!NOTE]
->Sie können auch die Start- und Endpunkte für alle ununterbrochenen Protokollsicherungsketten anzeigen, indem Sie das Cmdlet [az backup recoverypoint show-log-chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) verwenden.
+>Sie können auch die Start- und Endpunkte für alle ununterbrochenen Protokollsicherungsketten anzeigen, indem Sie das Cmdlet [az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) verwenden.
 
 ## <a name="prerequisites-to-restore-a-database"></a>Voraussetzungen für die Wiederherstellung einer Datenbank
 
@@ -73,7 +73,7 @@ Azure Backup kann auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbank
 * Wiederherstellung eines bestimmten Datums oder einer bestimmten Uhrzeit (sekundengenau) mithilfe von Protokollsicherungen. Azure Backup ermittelt automatisch die geeigneten vollständige differenziellen Sicherungen und die Kette von Protokollsicherungen, die für die Wiederherstellung Ihrer Daten basierend auf dem ausgewählten Zeitpunkt benötigt werden.
 * Wiederherstellung einer bestimmten vollständigen oder differenziellen Sicherung, um die Daten eines bestimmten Wiederherstellungspunkts wiederherzustellen.
 
-Verwenden Sie zum Wiederherstellen einer Datenbank das Cmdlet [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl). Hierfür ist ein Objekt für die Wiederherstellungskonfiguration als eines der Eingabeelemente erforderlich. Sie können dieses Objekt generieren, indem Sie das Cmdlet [az backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) verwenden. Das Objekt für die Wiederherstellungskonfiguration enthält alle Details zur Durchführung einer Wiederherstellung. Hierbei ist ein Punkt der Wiederherstellungsmodus: **OriginalWorkloadRestore** oder **AlternateWorkloadRestore**.
+Verwenden Sie zum Wiederherstellen einer Datenbank das Cmdlet [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl). Hierfür ist ein Objekt für die Wiederherstellungskonfiguration als eines der Eingabeelemente erforderlich. Sie können dieses Objekt generieren, indem Sie das Cmdlet [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) verwenden. Das Objekt für die Wiederherstellungskonfiguration enthält alle Details zur Durchführung einer Wiederherstellung. Hierbei ist ein Punkt der Wiederherstellungsmodus: **OriginalWorkloadRestore** oder **AlternateWorkloadRestore**.
 
 >[!NOTE]
 > **OriginalWorkloadRestore**: Die Daten werden auf derselben SAP HANA-Instanz wiederhergestellt, auf der sich auch die ursprüngliche Quelle befunden hat. Bei dieser Option wird die ursprüngliche Datenbank überschrieben. <br>
@@ -85,7 +85,7 @@ Verwenden Sie **AlternateWorkloadRestore** als Wiederherstellungsmodus, wenn Sie
 
 In diesem Tutorial stellen Sie die Daten eines zurückliegenden Wiederherstellungspunkts wieder her. Zeigen Sie die [Liste mit den Wiederherstellungspunkten](#view-restore-points-for-a-backed-up-database) für die Datenbank an, und wählen Sie den Punkt aus, für den Sie die Wiederherstellung durchführen möchten. In diesem Tutorial wird der Wiederherstellungspunkt mit dem Namen *7660777527047692711* verwendet.
 
-Mit dem obigen Wiederherstellungspunkt-Namen und unter Nutzung des Wiederherstellungsmodus erstellen wir nun das Objekt für die Wiederherstellungskonfiguration. Hierfür verwenden wir das Cmdlet [az backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show). Die übrigen Parameter dieses Cmdlets haben die folgende Bedeutung:
+Mit dem obigen Wiederherstellungspunkt-Namen und unter Nutzung des Wiederherstellungsmodus erstellen wir nun das Objekt für die Wiederherstellungskonfiguration. Hierfür verwenden wir das Cmdlet [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show). Die übrigen Parameter dieses Cmdlets haben die folgende Bedeutung:
 
 * **--target-item-name**: Dies ist der Name, der von der wiederhergestellten Datenbank verwendet wird. In diesem Fall haben wir den Namen *restored_database* genutzt.
 * **--target-server-name**: Dies ist der Name eines SAP HANA-Servers, der erfolgreich für einen Recovery Services-Tresor registriert wurde und in derselben Region wie die wiederherzustellende Datenbank angeordnet ist. In diesem Tutorial stellen wir die Datenbank auf demselben SAP HANA-Server mit dem Namen *hxehost* wieder her, den wir geschützt haben.
@@ -112,7 +112,7 @@ Die Antwort auf die obige Abfrage ist ein Objekt für die Wiederherstellungskonf
 {"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-Führen Sie nun zum Wiederherstellen der Datenbank das Cmdlet [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die obige JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
+Führen Sie nun zum Wiederherstellen der Datenbank das Cmdlet [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die obige JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -129,13 +129,13 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
+In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
 
 ## <a name="restore-and-overwrite"></a>Wiederherstellen und Überschreiben
 
 Wir verwenden **OrignialWorkloadRestore** als Wiederherstellungsmodus, um die Wiederherstellung am ursprünglichen Ort durchzuführen. Anschließend müssen Sie den Wiederherstellungspunkt auswählen. Dies kann entweder ein früherer Zeitpunkt oder einer der zurückliegenden Wiederherstellungspunkte sein.
 
-Für dieses Tutorial wählen wir den zurückliegenden Zeitpunkt „28-11-2019-09:53:00“ für die Wiederherstellung aus. Sie können diesen Wiederherstellungspunkt in den folgenden Formaten angeben: „tt-mm-jjjj“ und „tt-mm-jjjj-hh:mm:ss“. Verwenden Sie das Cmdlet [az backup recoverypoint show-log-chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain), um einen gültigen Zeitpunkt für die Wiederherstellung auszuwählen. Hiermit werden die Intervalle mit den ununterbrochenen Protokollkettensicherungen aufgelistet.
+Für dieses Tutorial wählen wir den zurückliegenden Zeitpunkt „28-11-2019-09:53:00“ für die Wiederherstellung aus. Sie können diesen Wiederherstellungspunkt in den folgenden Formaten angeben: „tt-mm-jjjj“ und „tt-mm-jjjj-hh:mm:ss“. Verwenden Sie das Cmdlet [az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain), um einen gültigen Zeitpunkt für die Wiederherstellung auszuwählen. Hiermit werden die Intervalle mit den ununterbrochenen Protokollkettensicherungen aufgelistet.
 
 ```azurecli-interactive
 az backup recoveryconfig show --resource-group saphanaResourceGroup \
@@ -153,7 +153,7 @@ Die Antwort auf die obige Abfrage ist ein Objekt für die Wiederherstellungskonf
 {"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-Führen Sie nun zum Wiederherstellen der Datenbank das Cmdlet [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die obige JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
+Führen Sie nun zum Wiederherstellen der Datenbank das Cmdlet [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die obige JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -170,15 +170,15 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
+In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
 
 ## <a name="restore-as-files"></a>Wiederherstellen als Dateien
 
 Um die Sicherungsdaten als Dateien anstatt einer Datenbank wiederherzustellen, verwenden wir **RestoreAsFiles** als Wiederherstellungsmodus. Wählen Sie dann den Wiederherstellungspunkt aus. Dies kann entweder ein früherer Zeitpunkt oder einer der zurückliegenden Wiederherstellungspunkte sein. Nachdem die Dateien in einem angegebenen Pfad gesichert wurden, können Sie diese Dateien auf jeden SAP HANA-Computer verschieben, auf dem sie als Datenbank wiederhergestellt werden sollen. Da Sie diese Dateien auf einen beliebigen Computer verschieben können, können Sie nun die Daten über Abonnements und Regionen hinweg wiederherstellen.
 
-In diesem Tutorial wählen wir den vorherigen Zeitpunkt `28-11-2019-09:53:00` für die Wiederherstellung und den Speicherort für Sicherungsdateikopien als `/home/saphana/restoreasfiles` auf demselben SAP HANA-Server aus. Sie können diesen Wiederherstellungspunkt in einem der folgenden Formate angeben: **tt-mm-jjjj** oder **tt-mm-jjjj-hh:mm:ss**. Verwenden Sie das Cmdlet [az backup recoverypoint show-log-chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain), um einen gültigen Zeitpunkt für die Wiederherstellung auszuwählen. Hiermit werden die Intervalle mit den ununterbrochenen Protokollkettensicherungen aufgelistet.
+In diesem Tutorial wählen wir den vorherigen Zeitpunkt `28-11-2019-09:53:00` für die Wiederherstellung und den Speicherort für Sicherungsdateikopien als `/home/saphana/restoreasfiles` auf demselben SAP HANA-Server aus. Sie können diesen Wiederherstellungspunkt in einem der folgenden Formate angeben: **tt-mm-jjjj** oder **tt-mm-jjjj-hh:mm:ss**. Verwenden Sie das Cmdlet [az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain), um einen gültigen Zeitpunkt für die Wiederherstellung auszuwählen. Hiermit werden die Intervalle mit den ununterbrochenen Protokollkettensicherungen aufgelistet.
 
-Mit dem oben aufgeführten Wiederherstellungspunktnamen und unter Nutzung des Wiederherstellungsmodus erstellen wir nun das Objekt für die Wiederherstellungskonfiguration. Hierfür verwenden wir das Cmdlet [az backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show). Die übrigen Parameter dieses Cmdlets haben die folgende Bedeutung:
+Mit dem oben aufgeführten Wiederherstellungspunktnamen und unter Nutzung des Wiederherstellungsmodus erstellen wir nun das Objekt für die Wiederherstellungskonfiguration. Hierfür verwenden wir das Cmdlet [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show). Die übrigen Parameter dieses Cmdlets haben die folgende Bedeutung:
 
 * **--target-container-name**: Dies ist der Name eines SAP HANA-Servers, der erfolgreich für einen Recovery Services-Tresor registriert wurde und in derselben Region wie die wiederherzustellende Datenbank angeordnet ist. In diesem Tutorial stellen wir die Datenbank als Datenen auf demselben SAP HANA-Server mit dem Namen *hxehost* wieder her, den wir geschützt haben.
 * **--rp-name**: Für eine Point-in-Time-Wiederherstellung lautet der Wiederherstellungspunktname **DefaultRangeRecoveryPoint**.
@@ -215,7 +215,7 @@ Die Antwort auf die Abfrage oben ist ein Objekt für die Wiederherstellungskonfi
 }
 ```
 
-Führen Sie nun zum Wiederherstellen der Datenbank als Dateien das Cmdlet [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die oben aufgeführte JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
+Führen Sie nun zum Wiederherstellen der Datenbank als Dateien das Cmdlet [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) aus. Zum Verwenden dieses Befehls geben wir die oben aufgeführte JSON-Ausgabe ein, die in einer Datei mit dem Namen *recoveryconfig.json* gespeichert wird.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -266,7 +266,7 @@ Die Ausgabe sieht dann wie folgt aus:
 }
 ```
 
-In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
+In der Antwort ist der Auftragsname enthalten. Dieser Auftragsname kann zum Nachverfolgen des Auftragsstatus mit dem Cmdlet [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) verwendet werden.
 
 Die folgenden Dateien werden im Zielcontainer gesichert:
 
@@ -347,4 +347,4 @@ Verschieben Sie diese wiederhergestellten Dateien auf den SAP HANA-Server, auf d
 
 * Fahren Sie mit dem Tutorial [Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI](tutorial-sap-hana-backup-cli.md) fort, um sich darüber zu informieren, wie Sie per Azure CLI gesicherte SAP HANA-Datenbanken verwalten.
 
-* Informationen zum Wiederherstellen einer auf einer Azure-VM ausgeführten SAP HANA-Datenbank über das Azure-Portal finden Sie unter [Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/sap-hana-db-restore).
+* Informationen zum Wiederherstellen einer auf einer Azure-VM ausgeführten SAP HANA-Datenbank über das Azure-Portal finden Sie unter [Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern](./sap-hana-db-restore.md).

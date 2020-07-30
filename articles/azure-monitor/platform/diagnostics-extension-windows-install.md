@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3e9a14edf9235baff2955c9f8419dc78e45755c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007978"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)
 Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. Dieser Artikel enthält ausführliche Informationen zum Installieren und Konfigurieren der Windows-Diagnoseerweiterung sowie eine Beschreibung der Speicherung von Daten in einem Azure Storage-Konto.
@@ -77,7 +77,7 @@ Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im A
 Informationen zum Bereitstellen der Diagnoseerweiterung mit Azure Resource Manager-Vorlagen finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../../virtual-machines/extensions/diagnostics-template.md). 
 
 ## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
-Sie können die Azure-Diagnoseerweiterung mithilfe der Azure-Befehlszeilenschnittstelle über [az vm extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) auf einem vorhandenen virtuellen Computer bereitstellen, wie im folgenden Beispiel erläutert. 
+Sie können die Azure-Diagnoseerweiterung mithilfe der Azure-Befehlszeilenschnittstelle über [az vm extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) auf einem vorhandenen virtuellen Computer bereitstellen, wie im folgenden Beispiel erläutert. 
 
 ```azurecli
 az vm extension set \
@@ -133,7 +133,7 @@ Die öffentlichen Einstellungen werden im [Public-Element](diagnostics-extension
 
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
-Sie können die Azure-Diagnoseerweiterung mithilfe von PowerShell über [Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) auf einem vorhandenen virtuellen Computer bereitstellen, wie im folgenden Beispiel erläutert. 
+Sie können die Azure-Diagnoseerweiterung mithilfe von PowerShell über [Set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) auf einem vorhandenen virtuellen Computer bereitstellen, wie im folgenden Beispiel erläutert. 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `

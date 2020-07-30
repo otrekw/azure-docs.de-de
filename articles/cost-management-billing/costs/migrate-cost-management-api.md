@@ -3,16 +3,16 @@ title: Migrieren von EA zu APIs der Microsoft-Kundenvereinbarung
 description: Dieser Artikel hilft Ihnen, die Folgen einer Migration von Microsoft Enterprise Agreement (EA) zu einer Microsoft-Kundenvereinbarung zu verstehen.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c556f2371ffba239ceee64fd4180143ae9b9230
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77201032"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290047"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 

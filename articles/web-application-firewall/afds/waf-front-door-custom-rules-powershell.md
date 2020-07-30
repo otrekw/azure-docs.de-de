@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005547"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Richtlinie mit Azure PowerShell
 
@@ -29,7 +29,7 @@ Bevor Sie mit der Einrichtung einer Richtlinie für ein Ratenlimit beginnen, mü
 
 Azure PowerShell bietet eine Reihe von Cmdlets, die das [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-Modell für die Verwaltung von Azure-Ressourcen verwenden. 
 
-Sie können [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) auf Ihrem lokalen Computer installieren und in einer beliebigen PowerShell-Sitzung nutzen. Befolgen Sie die Anweisungen auf der Seite, um sich mit Ihren Azure-Anmeldeinformationen anzumelden und das Azure PowerShell-Modul zu installieren.
+Sie können [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) auf Ihrem lokalen Computer installieren und in einer beliebigen PowerShell-Sitzung nutzen. Befolgen Sie die Anweisungen auf der Seite, um sich mit Ihren Azure-Anmeldeinformationen anzumelden und das Azure PowerShell-Modul zu installieren.
 
 #### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

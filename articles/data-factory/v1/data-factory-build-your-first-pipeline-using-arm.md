@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: e6a14cbb758426203a46ac508fe8e4bfdf3090cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4bbcd107459b860b08cdcbb53e2f09a9cd35bb5e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007468"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Die Pipeline in diesem Tutorial enthält nur eine Aktivität: eine **HDInsight H
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
-* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
+* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
 * Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) . 
 
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte

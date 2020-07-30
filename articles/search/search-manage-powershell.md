@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: a08b59464855b805173fa76d696107f8a7673d39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021901"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Verwalten des Azure Cognitive Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Innerhalb eines Diensts erfolgt die Erstellung und Verwaltung von Inhalten über
 
 ## <a name="check-versions-and-load-modules"></a>Überprüfen von Versionen und Laden von Modulen
 
-Die Beispiele in diesem Artikel sind interaktiv und erfordern erhöhte Berechtigungen. Azure PowerShell (das **Az**-Modul) muss installiert sein. Weitere Informationen finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/overview).
+Die Beispiele in diesem Artikel sind interaktiv und erfordern erhöhte Berechtigungen. Azure PowerShell (das **Az**-Modul) muss installiert sein. Weitere Informationen finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/).
 
 ### <a name="powershell-version-check-51-or-later"></a>Überprüfen der PowerShell-Version (5.1 oder höher)
 
