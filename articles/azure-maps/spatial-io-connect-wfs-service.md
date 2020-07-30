@@ -1,19 +1,20 @@
 ---
 title: Herstellen einer Verbindung mit einem WFS-Dienst (Web Feature Service) | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie eine Verbindung mit einem WFS-Dienst herstellen und anschließend den WFS-Dienst mit dem Azure Maps Web SDK und Modul Spatial IO abfragen.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 890bf60ac794740716817094a60f2b4cb4ba5835
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282788"
 ---
 # <a name="connect-to-a-wfs-service"></a>Herstellen einer Verbindung mit einem WFS-Dienst
 
@@ -26,7 +27,7 @@ Die folgenden Features werden von der Klasse `WfsClient` unterstützt:
 - Anforderungen werden nur über `HTTP GET` gestellt.
 - Unterstützte Vorgänge:
 
-    | | |
+    | Vorgang | BESCHREIBUNG |
     | :-- | :-- |
     | GetCapabilities | Generiert ein Metadatendokument mit gültigen WFS-Vorgängen und -Parametern |
     | GetFeature | Gibt eine Auswahl von Features aus einer Datenquelle zurück |

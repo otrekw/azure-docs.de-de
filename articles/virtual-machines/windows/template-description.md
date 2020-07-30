@@ -4,19 +4,19 @@ description: Es wird beschrieben, wie die Ressource des virtuellen Computers in 
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100531"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283230"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
-In diesem Artikel werden die Aspekte einer Azure Resource Manager-Vorlage beschrieben, die für virtuelle Computer gelten. Es wird keine vollständige Vorlage zum Erstellen eines virtuellen Computers beschrieben. Hierfür benötigen Sie Ressourcendefinitionen für Speicherkonten, Netzwerkschnittstellen, öffentliche IP-Adressen und virtuelle Netzwerke. Weitere Informationen dazu, wie diese Ressourcen zusammen definiert werden können, finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+In diesem Artikel werden die Aspekte einer Azure Resource Manager-Vorlage beschrieben, die für virtuelle Computer gelten. Es wird keine vollständige Vorlage zum Erstellen eines virtuellen Computers beschrieben. Hierfür benötigen Sie Ressourcendefinitionen für Speicherkonten, Netzwerkschnittstellen, öffentliche IP-Adressen und virtuelle Netzwerke. Weitere Informationen dazu, wie diese Ressourcen zusammen definiert werden können, finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 Es sind viele [Vorlagen im Katalog](https://azure.microsoft.com/documentation/templates/?term=VM) enthalten, die eine VM-Ressource aufweisen. Hier werden nicht alle Elemente beschrieben, die in eine Vorlage eingebunden werden können.
 
@@ -156,14 +156,14 @@ Die Version der API, die Sie in Ihrer Vorlage angeben, wirkt sich darauf aus, we
 
 Verwenden Sie diese Optionen zum Abrufen der aktuellen API-Versionen:
 
-- REST-API: [Auflisten aller Ressourcenanbieter](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell: [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI – [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- REST-API: [Auflisten aller Ressourcenanbieter](/rest/api/resources/providers)
+- PowerShell: [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI – [az provider show](/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>Parameter und Variablen
 
-[Parameter](../../resource-group-authoring-templates.md) erleichtern Ihnen das Angeben von Werten für die Vorlage, wenn Sie sie ausführen. Dieser Parameterabschnitt wird im Beispiel verwendet:
+[Parameter](../../azure-resource-manager/templates/template-syntax.md) erleichtern Ihnen das Angeben von Werten für die Vorlage, wenn Sie sie ausführen. Dieser Parameterabschnitt wird im Beispiel verwendet:
 
 ```json
 "parameters": {
@@ -175,7 +175,7 @@ Verwenden Sie diese Optionen zum Abrufen der aktuellen API-Versionen:
 
 Beim Bereitstellen der Beispielvorlage geben Sie Werte für den Namen und das Kennwort des Administratorkontos auf jeder VM und die Anzahl von zu erstellenden VMs an. Sie haben die Möglichkeit, Parameterwerte in einer separaten Datei anzugeben, die mit der Vorlage verwaltet wird, oder Werte nach Aufforderung anzugeben.
 
-[Variablen](../../resource-group-authoring-templates.md) erleichtern Ihnen das Einrichten von Werten in der Vorlage, die darin wiederholt verwendet werden oder die sich im Laufe der Zeit ändern können. Dieser Variablenabschnitt wird im Beispiel verwendet:
+[Variablen](../../azure-resource-manager/templates/template-syntax.md) erleichtern Ihnen das Einrichten von Werten in der Vorlage, die darin wiederholt verwendet werden oder die sich im Laufe der Zeit ändern können. Dieser Variablenabschnitt wird im Beispiel verwendet:
 
 ```json
 "variables": { 
@@ -208,7 +208,7 @@ Beim Bereitstellen der Beispielvorlage geben Sie Werte für den Namen und das Ke
 }, 
 ```
 
-Beim Bereitstellen der Beispielvorlage werden für den Namen und Bezeichner des zuvor erstellten Speicherkontos Variablenwerte verwendet. Variablen werden auch genutzt, um die Einstellungen für die Diagnoseerweiterung anzugeben. Verwenden Sie die [bewährten Methoden zum Erstellen von Azure Resource Manager-Vorlagen](../../resource-manager-template-best-practices.md), um besser entscheiden zu können, wie Sie die Parameter und Variablen in Ihrer Vorlage strukturieren möchten.
+Beim Bereitstellen der Beispielvorlage werden für den Namen und Bezeichner des zuvor erstellten Speicherkontos Variablenwerte verwendet. Variablen werden auch genutzt, um die Einstellungen für die Diagnoseerweiterung anzugeben. Verwenden Sie die [bewährten Methoden zum Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-best-practices.md), um besser entscheiden zu können, wie Sie die Parameter und Variablen in Ihrer Vorlage strukturieren möchten.
 
 ## <a name="resource-loops"></a>Ressourcenschleifen
 
@@ -247,7 +247,7 @@ Beachten Sie, dass die Erstellung einer Schleife für eine Ressource in der Vorl
 
 ## <a name="dependencies"></a>Abhängigkeiten
 
-Um richtig funktionieren zu können, sind die meisten Ressourcen von anderen Ressourcen abhängig. Virtuelle Computer müssen einem virtuellen Netzwerk zugeordnet werden, und hierfür wird eine Netzwerkschnittstelle benötigt. Mit dem [dependsOn](../../resource-group-define-dependencies.md)-Element wird sichergestellt, dass die Netzwerkschnittstelle für die Verwendung bereit ist, bevor die VMs erstellt werden:
+Um richtig funktionieren zu können, sind die meisten Ressourcen von anderen Ressourcen abhängig. Virtuelle Computer müssen einem virtuellen Netzwerk zugeordnet werden, und hierfür wird eine Netzwerkschnittstelle benötigt. Mit dem [dependsOn](../../azure-resource-manager/templates/define-resource-dependency.md)-Element wird sichergestellt, dass die Netzwerkschnittstelle für die Verwendung bereit ist, bevor die VMs erstellt werden:
 
 ```json
 "dependsOn": [
@@ -277,7 +277,7 @@ Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Eini
 - [size](sizes.md)
 - [Name](/azure/architecture/best-practices/resource-naming) und Anmeldeinformationen
 - Datenträger- und [Betriebssystemeinstellungen](cli-ps-findimage.md)
-- [Netzwerkschnittstelle](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- [Netzwerkschnittstelle](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - Startdiagnose
 
 ## <a name="disks-and-images"></a>Datenträger und Images
@@ -369,7 +369,7 @@ Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl vo
 
 ## <a name="extensions"></a>Erweiterungen
 
-[Erweiterungen](extensions-features.md) sind zwar eine separate Ressource, aber sie sind eng an virtuelle Computer gebunden. Erweiterungen können als untergeordnete Ressource der VM oder als separate Ressource hinzugefügt werden. Im Beispiel ist zu sehen, wie die [Diagnoseerweiterung](extensions-diagnostics-template.md) den VMs hinzugefügt wird:
+[Erweiterungen](../extensions/features-windows.md) sind zwar eine separate Ressource, aber sie sind eng an virtuelle Computer gebunden. Erweiterungen können als untergeordnete Ressource der VM oder als separate Ressource hinzugefügt werden. Im Beispiel ist zu sehen, wie die [Diagnoseerweiterung](../extensions/diagnostics-template.md) den VMs hinzugefügt wird:
 
 ```json
 { 
@@ -404,7 +404,7 @@ Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl vo
 
 Für diese Erweiterungsressource werden die storageName-Variable und die Diagnosevariablen zum Angeben von Werten verwendet. Wenn Sie die Daten ändern möchten, die von dieser Erweiterung gesammelt werden, können Sie der Variablen „wadperfcounters“ weitere Leistungsindikatoren hinzufügen. Außerdem können Sie die Diagnosedaten auch in einem anderen Speicherkonto als für die VM-Datenträger ablegen.
 
-Es gibt viele Erweiterungen, die Sie auf einer VM installieren können, aber am nützlichsten ist wahrscheinlich die [Benutzerdefinierte Skripterweiterung](extensions-customscript.md). Im Beispiel wird auf jeder VM nach dem ersten Starten ein PowerShell-Skript mit dem Namen „start.ps1“ ausgeführt:
+Es gibt viele Erweiterungen, die Sie auf einer VM installieren können, aber am nützlichsten ist wahrscheinlich die [Benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.md). Im Beispiel wird auf jeder VM nach dem ersten Starten ein PowerShell-Skript mit dem Namen „start.ps1“ ausgeführt:
 
 ```json
 {
@@ -447,11 +447,11 @@ Wenn Sie den Status der Ressourcen einer Bereitstellung anzeigen möchten, zeige
 
 ![Abrufen von Bereitstellungsinformationen](./media/template-description/virtual-machines-deployment-info.png)
     
-Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualisieren von vorhandenen Ressourcen zu nutzen. Wenn Sie Befehle zum Bereitstellen von Vorlagen verwenden, haben Sie die Möglichkeit, den gewünschten [Modus](../../resource-group-template-deploy.md) anzugeben. Der Modus kann entweder auf **Complete** oder **Incremental** festgelegt werden. Inkrementelle Updates sind die Standardeinstellung. Gehen Sie bei der Verwendung des Modus **Complete** mit Bedacht vor, damit Sie nicht versehentlich Ressourcen löschen. Wenn Sie den Modus auf **Complete** festlegen, löscht Resource Manager alle Ressourcen in der Ressourcengruppe, die nicht in der Vorlage enthalten sind.
+Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualisieren von vorhandenen Ressourcen zu nutzen. Wenn Sie Befehle zum Bereitstellen von Vorlagen verwenden, haben Sie die Möglichkeit, den gewünschten [Modus](../../azure-resource-manager/templates/deploy-powershell.md) anzugeben. Der Modus kann entweder auf **Complete** oder **Incremental** festgelegt werden. Inkrementelle Updates sind die Standardeinstellung. Gehen Sie bei der Verwendung des Modus **Complete** mit Bedacht vor, damit Sie nicht versehentlich Ressourcen löschen. Wenn Sie den Modus auf **Complete** festlegen, löscht Resource Manager alle Ressourcen in der Ressourcengruppe, die nicht in der Vorlage enthalten sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erstellen Sie Ihre eigene Vorlage: [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
+- Erstellen Sie Ihre eigene Vorlage: [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 - Stellen Sie die Vorlagen bereit, die Sie erstellt haben: [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](ps-template.md).
 - Erfahren Sie, wie Sie die erstellten virtuellen Computer verwalten, indem Sie [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) durcharbeiten.
 - Informationen zur JSON-Syntax und zu den Eigenschaften von Ressourcentypen in Vorlagen finden Sie in der [Azure Resource Manager-Vorlagenreferenz](/azure/templates/).

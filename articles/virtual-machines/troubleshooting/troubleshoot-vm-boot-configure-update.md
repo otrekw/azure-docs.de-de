@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 415895b894261ade9b2332eb3fb926eba74fe937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079841"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM-Start bleibt in Azure bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.
 
@@ -45,7 +45,7 @@ Wenn Sie auf die Verarbeitung der Änderungen gewartet haben und das Problem tro
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
 1. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
-2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 3. Remotedesktopverbindung mit der Wiederherstellungs-VM. 
 4. Ist der Betriebssystemdatenträger verschlüsselt, müssen Sie die Verschlüsselung deaktivieren, bevor Sie mit dem nächsten Schritt fortfahren. Weitere Informationen zum Entschlüsseln des verschlüsselten Betriebssystemdatenträgers des virtuellen Computers, der nicht gestartet werden kann, finden Sie [hier](troubleshoot-bitlocker-boot-error.md#solution).
 
@@ -99,7 +99,7 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
         reg unload HKLM\BROKENSYSTEM
         ```
 
-3. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](../windows/troubleshoot-recovery-disks-portal.md).
+3. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](./troubleshoot-recovery-disks-portal-windows.md).
 4. Starten Sie den virtuellen Computer, und greifen Sie auf die serielle Konsole zu.
 5. Wählen Sie **Nicht maskierbaren Interrupt (NMI) senden** aus, um die Generierung des Speicherabbilds auszulösen.
     ![Abbildung, die zeigt, wo der nicht maskierbare Interrupt gesendet wird](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)

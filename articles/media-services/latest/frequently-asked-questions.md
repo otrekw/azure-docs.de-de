@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011684"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v3
 
@@ -46,7 +46,7 @@ Ausführliche Informationen dazu finden Sie unter [Skalieren der Medienverarbeit
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Was ist die empfohlene Methode zum Verarbeiten von Videos?
 
-Verwenden Sie [Transformationen](https://docs.microsoft.com/rest/api/media/transforms), um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede Transformation beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben für die Verarbeitung Ihrer Video- oder Audiodateien. Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentliche Anforderung an Media Services, die erstellte Transformation auf ein Eingabevideo oder auf einen Audioinhalt anzuwenden. Nach dem Erstellen der Transformation können Sie mithilfe von Media Services-APIs oder veröffentlichten SDKs Aufträge übermitteln. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
+Verwenden Sie [Transformationen](/rest/api/media/transforms), um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede Transformation beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben für die Verarbeitung Ihrer Video- oder Audiodateien. Ein [Auftrag](/rest/api/media/jobs) ist die eigentliche Anforderung an Media Services, die erstellte Transformation auf ein Eingabevideo oder auf einen Audioinhalt anzuwenden. Nach dem Erstellen der Transformation können Sie mithilfe von Media Services-APIs oder veröffentlichten SDKs Aufträge übermitteln. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Ich habe ein Video hochgeladen, codiert und veröffentlicht. Warum wird das Video nicht abgespielt, wenn ich versuche, es zu streamen?
 
@@ -159,9 +159,9 @@ Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes
 
 * Verwalten von [Liveereignissen](live-events-outputs-concept.md) in Media Services v3 
 * Anzeigen (nicht Verwalten) von [Medienobjekten](assets-concept.md) der Version 3 
-* [Abrufen von Informationen zum Zugriff auf APIs](access-api-portal.md) 
+* [Abrufen von Informationen zum Zugriff auf APIs](./access-api-howto.md) 
 
-Verwenden Sie für alle anderen Verwaltungsaufgaben (z. B. [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://docs.microsoft.com/rest/api/media/), die [Azure-Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+Verwenden Sie für alle anderen Verwaltungsaufgaben (z. B. [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](/rest/api/media/), die [Azure-Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Gibt es in v3 ein AssetFile-Konzept?
 
@@ -171,7 +171,7 @@ Weitere Informationen finden Sie unter [Migration zu Media Services v3](media-se
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Wo ist die clientseitige Speicherverschlüsselung geblieben?
 
-Es wird jetzt wird empfohlen, die serverseitige Speicherverschlüsselung (die standardmäßig aktiviert ist) zu verwenden. Weitere Informationen finden Sie unter [Azure-Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Es wird jetzt wird empfohlen, die serverseitige Speicherverschlüsselung (die standardmäßig aktiviert ist) zu verwenden. Weitere Informationen finden Sie unter [Azure-Speicherdienstverschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md).
 
 ## <a name="offline-streaming"></a>Offlinestreaming
 

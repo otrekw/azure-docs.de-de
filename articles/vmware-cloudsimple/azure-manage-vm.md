@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77014996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082068"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Verwalten Ihrer virtuellen Computer in der privaten CloudSimple-Cloud in Azure
 
@@ -29,7 +29,7 @@ Die folgenden Steuerelemente sind auf der Seite **Übersicht** für den ausgewä
 | Start | Starten des angegebenen virtuellen Computers.  |
 | Neu starten | Herunterfahren und anschließendes Einschalten des angegebenen virtuellen Computers.  |
 | Beenden | Herunterfahren des jeweiligen virtuellen Computers.  |
-| Erfassung | Erfassen eines Images der angegebenen VM, damit es als Image zum Erstellen anderer VMs verwendet werden kann. Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/classic/capture-image.md).   |
+| Erfassung | Erfassen eines Images der angegebenen VM, damit es als Image zum Erstellen anderer VMs verwendet werden kann. Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).   |
 | Move | Verschieben des angegebenen virtuellen Computers.  |
 | Löschen | Entfernen des angegebenen virtuellen Computers.  |
 | Aktualisieren | Aktualisieren der Daten in der Anzeige.  |

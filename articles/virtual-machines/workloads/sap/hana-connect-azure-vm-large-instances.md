@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74224726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082170"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Verbinden von Azure-VMs mit HANA (große Instanzen)
 
-Im Artikel [Was ist SAP HANA in Azure (große Instanzen)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wird erwähnt, dass die minimale Bereitstellung von HANA (große Instanzen) mit der SAP-Anwendungsschicht in Azure wie folgt aussieht:
+Im Artikel [Was ist SAP HANA in Azure (große Instanzen)?](./hana-overview-architecture.md) wird erwähnt, dass die minimale Bereitstellung von HANA (große Instanzen) mit der SAP-Anwendungsschicht in Azure wie folgt aussieht:
 
 ![Mit SAP HANA in Azure (große Instanzen) und lokal verbundenes Azure-VNET](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -94,13 +94,13 @@ Einige der IP-Adressbereiche, die für die Bereitstellung von HANA (große Insta
 
 Optionale IP-Adressbereiche, die später einmal an Microsoft übermittelt werden müssen:
 
-- Wenn Sie [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) verwenden, um direktes Routing von der lokalen Umgebung zu Einheiten vom Typ „HANA (große Instanz)“ zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
-- Wenn Sie [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) verwenden, um direktes Routing von einem Mandanten vom Typ „HANA (große Instanz)“ in einer Azure-Region zu einem anderen Mandanten vom Typ „HANA (große Instanz)“ in einer anderen Azure-Region zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
+- Wenn Sie [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) verwenden, um direktes Routing von der lokalen Umgebung zu Einheiten vom Typ „HANA (große Instanz)“ zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
+- Wenn Sie [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) verwenden, um direktes Routing von einem Mandanten vom Typ „HANA (große Instanz)“ in einer Azure-Region zu einem anderen Mandanten vom Typ „HANA (große Instanz)“ in einer anderen Azure-Region zu ermöglichen, müssen Sie einen weiteren IP-Adressbereich vom Typ „/29“ reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
 
 Weitere Informationen zu ExpressRoute Global Reach sowie zur Verwendung mit großen HANA-Instanzen finden Sie in den folgenden Dokumenten:
 
-- [SAP HANA-Netzwerkarchitektur (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA-Netzwerkarchitektur (große Instanzen)](./hana-network-architecture.md)
+- [Verbinden eines virtuellen Netzwerks mit großen HANA-Instanzen](./hana-connect-vnet-express-route.md)
  
 Sie müssen die zuvor beschriebenen IP-Adressbereiche planen und definieren. Es müssen jedoch nicht alle an Microsoft übertragen werden. Sie müssen die folgenden IP-Adressbereiche für Microsoft angeben:
 

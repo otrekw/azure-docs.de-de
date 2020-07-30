@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077682"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Überwachen der Ressourcennutzung und Abfrageaktivität in Azure Synapse Analytics
 
@@ -42,9 +42,6 @@ Im Azure-Portal stehen die folgenden Metriken für Synapse SQL zur Verfügung. D
 | Prozentsatz der Cachetreffer    | (Cachetreffer/Cachefehler) × 100, wobei die Cachetreffer die Summe aller Columnstore-Segmenttreffer im lokalen SSD-Cache und die Cachefehler die Columnstore-Segmentfehler im lokalen SSD-Cache repräsentieren, summiert über alle Knoten | Durchschnitt, Minimum, Maximum    |
 | Cacheverwendung in Prozent   | (Cacheverwendung/Cachekapazität) × 100, wobei die Cacheverwendung die Summe aller Bytes im lokalen SSD-Cache für alle Knoten darstellt und die Cachekapazität die Summe der Speicherkapazität im lokalen SSD-Cache für alle Knoten repräsentiert | Durchschnitt, Minimum, Maximum    |
 | Lokaler tempdb-Prozentsatz | Lokale tempdb-Auslastung für alle Computeknoten, Werte werden alle fünf Minuten ausgegeben | Durchschnitt, Minimum, Maximum    |
-| Data Storage Size (GB) (Größe des Datenspeichers (GB)) | Gesamtgröße der Datenbank. Dies umfasst verwendeten, reservierten und nicht zugewiesenen Speicherplatz. Zur Optimierung der Abfrage- und Ladeleistung wird nicht zugewiesener Speicherplatz für die Datenbank beibehalten. | SUM |
-| Notfallwiederherstellungsgröße (GB) | Gesamtgröße der Geosicherung, die alle 24 Stunden erfolgt | SUM |
-| Momentaufnahmen-Speichergröße (GB) | Gesamtgröße der Momentaufnahmen, die zur Bereitstellung von Datenbankwiederherstellungspunkten angefertigt werden. Dies umfasst automatisierte und benutzerdefinierte Momentaufnahmen. | SUM |
 
 Beim Anzeigen von Metriken und Festlegen von Warnungen zu berücksichtigende Aspekte:
 

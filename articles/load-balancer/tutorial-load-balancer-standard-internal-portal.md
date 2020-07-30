@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f7f16093074b48610c1db8fec7f05ee01e7ab1ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920856"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078769"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Standard“ über das Azure-Portal
 
@@ -32,25 +32,23 @@ Falls Sie es vorziehen, können Sie diese Schritte auch mit der [Azure CLI](load
 
 Melden Sie sich zum Ausführen der Schritte dieses Tutorials am Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) an.
 
-## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>Erstellen eines VNET, von Back-End-Servern und eines virtuellen Testcomputers
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-Erstellen Sie zunächst ein virtuelles Netzwerk (VNET). Erstellen Sie im VNET zwei virtuelle Computer für den Back-End-Pool Ihres Lastenausgleichs im Tarif „Standard“ und einen dritten virtuellen Computer zum Testen des Lastenausgleichs. 
+| Parameter                   | Wert                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | USA (Ost) 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-
-1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
    
-1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** diese Werte ein (bzw. wählen Sie sie aus):
-   
-   - **Name**: Geben Sie **MyVNet** ein.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie **MyResourceGroupLB** ein, und wählen Sie anschließend **OK** aus. 
-   - **Subnetz** > **Name**: Geben Sie **MyBackendSubnet** ein.
-   
-1. Klicken Sie auf **Erstellen**.
 
-   ![Erstellen eines virtuellen Netzwerks](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
+## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
 1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter**. 
    

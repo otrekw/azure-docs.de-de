@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007995"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Übersicht zur Azure-Diagnoseerweiterung
 Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](agents-overview.md), der Überwachungsdaten vom Gastbetriebssystem von Azure-Computeressourcen inklusive VMs sammelt. Dieser Artikel bietet eine Übersicht zur Azure-Diagnoseerweiterung einschließlich spezifischer Funktionen, die unterstützt werden, sowie Optionen für die Installation und Konfiguration. 
@@ -34,7 +34,7 @@ Beachten Sie die folgenden Hauptunterschiede:
 
 - Die Azure-Diagnoseerweiterung kann nur mit virtuellen Azure-Computern verwendet werden. Der Log Analytics-Agent kann mit virtuellen Computern in Azure, anderen Clouds und lokal verwendet werden.
 - Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent erfasst Daten für [Azure Monitor-Protokolle](data-platform-logs.md).
-- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor für VMs](../insights/vminsights-overview.md) und andere Dienste wie [Azure Security Center](/azure/security-center/) erforderlich.
+- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor für VMs](../insights/vminsights-overview.md) und andere Dienste wie [Azure Security Center](../../security-center/index.yml) erforderlich.
 
 ## <a name="costs"></a>Kosten
 Es fallen keine Kosten für die Azure-Diagnoseerweiterung an, aber möglicherweise Gebühren für die erfassten Daten. Unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) finden Sie Informationen für das Ziel, auf dem Sie Daten sammeln.
@@ -50,8 +50,8 @@ In den folgenden Tabellen sind die Daten aufgeführt, die von der Windows- und L
 | Leistungsindikatoren | Numerische Werte, die die Leistung verschiedener Aspekte von Betriebssystem und Workloads messen. |
 | IIS-Protokolle             | Nutzungsinformationen für IIS-Websites, die unter dem Gastbetriebssystem ausgeführt werden. |
 | Anwendungsprotokolle     | Von Ihrer Anwendung geschriebene Ablaufverfolgungsmeldungen. |
-| .NET EventSource-Protokolle |Code zum Schreiben von Ereignissen mit der .NET-Klasse [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) |
-| [Manifestbasierte ETW-Protokolle](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Von einem beliebigen Prozess generierte Ereignisse der Ereignisablaufverfolgung für Windows. |
+| .NET EventSource-Protokolle |Code zum Schreiben von Ereignissen mit der .NET-Klasse [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) |
+| [Manifestbasierte ETW-Protokolle](/windows/desktop/etw/about-event-tracing) |Von einem beliebigen Prozess generierte Ereignisse der Ereignisablaufverfolgung für Windows. |
 | Absturzabbilder (Protokolle)   | Informationen zum Status des Prozesses bei Absturz einer Anwendung. |
 | Dateibasierte Protokolle    | Von Ihrer Anwendung oder Ihrem Dienst erstellte Protokolle |
 | Agent-Diagnoseprotokolle | Informationen zur Azure-Diagnose selbst. |
@@ -117,4 +117,3 @@ Weitere Informationen zum Installieren und Konfigurieren der Diagnoseerweiterung
 
 * Hier erhalten Sie Informationen zur Verwendung von [Leistungsindikatoren in der Azure-Diagnose](../../cloud-services/diagnostics-performance-counters.md).
 * Wenn bei der Diagnose Probleme mit dem Starten oder dem Finden von Daten in Azure-Speichertabellen auftreten, finden Sie weitere Informationen unter [Problembehandlung mit Azure-Diagnose](diagnostics-extension-troubleshooting.md).
-

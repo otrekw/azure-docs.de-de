@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 1d1ac838befc905c3c2b860551b26928f5114e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955156"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071926"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen 
 
@@ -30,7 +30,7 @@ In diesem Thema wird das Anpassen von Media Encoder Standard-Voreinstellungen ge
 Stellen Sie bei der Verwendung einer XML-Voreinstellung sicher, dass Sie die Reihenfolge der Elemente beibehalten, wie in den untenstehenden XML-Beispielen gezeigt wird (z.B. KeyFrameInterval sollte SceneChangeDetection voranstehen).
 
 > [!NOTE] 
-> Viele der erweiterten Features von Media Services v2 des Media Encoder Standard sind derzeit in v3 nicht verfügbar. Weitere Informationen finden Sie unter [Featurelücken](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis).
+> Viele der erweiterten Features von Media Services v2 des Media Encoder Standard sind derzeit in v3 nicht verfügbar. Weitere Informationen finden Sie unter [Featurelücken](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Unterstützung relativer Größen
 

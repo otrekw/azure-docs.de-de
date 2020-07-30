@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124923"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080521"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 
@@ -113,4 +113,4 @@ Wenn Sie ein benutzerdefiniertes VM-Image mit vorinstallierter Anwendung verwend
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Beim Erstellen und Bereitstellen von Anwendungen in Ihren Skalierungsgruppen helfen Ihnen die Informationen unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md) weiter. Weitere Informationen zum Verwalten Ihrer Skalierungsgruppe finden Sie unter [Manage a virtual machine scale set with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md) (Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell).
+Beim Erstellen und Bereitstellen von Anwendungen in Ihren Skalierungsgruppen helfen Ihnen die Informationen unter [Überlegungen zum Entwurf von Skalierungsgruppen](virtual-machine-scale-sets-design-overview.md) weiter. Weitere Informationen zum Verwalten Ihrer Skalierungsgruppe finden Sie unter [Manage a virtual machine scale set with Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md) (Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell).

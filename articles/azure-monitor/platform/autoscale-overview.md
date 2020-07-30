@@ -4,17 +4,17 @@ description: Autoskalierung in Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d9ba94d9990e494a8d3e68bbcd7c176bb30e6ce2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073477"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Übersicht über die Autoskalierung in Microsoft Azure
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
 
-Die Autoskalierung von Azure Monitor gilt nur für [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/), [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) und [Azure Data Explorer-Cluster](https://docs.microsoft.com/azure/data-explorer/).
+Die Autoskalierung von Azure Monitor gilt nur für [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/), [API Management-Dienste](../../api-management/api-management-key-concepts.md) und [Azure Data Explorer-Cluster](/azure/data-explorer/).
 
 > [!NOTE]
 > Azure verfügt über zwei Methoden für die automatische Skalierung. Eine ältere Version der automatischen Skalierung gilt für virtuelle Computer (Verfügbarkeitsgruppen). Diese Funktion verfügt über eingeschränkten Support. Wir empfehlen die Migration zu Skalierungsgruppen für virtuelle Computer, um für einen schnelleren und zuverlässigeren Support der automatischen Skalierung zu sorgen. Dieser Artikel enthält einen Link zur Verwendung der älteren Technologie.  
@@ -74,12 +74,12 @@ Für die automatische Skalierung wird die folgende Terminologie bzw. Struktur ve
 
 ![Azure-Autoskalierungseinstellung, Profil und Regelstruktur](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
 
-Die vollständige Liste mit den konfigurierbaren Feldern und Beschreibungen finden Sie unter den Informationen zur [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931928.aspx).
+Die vollständige Liste mit den konfigurierbaren Feldern und Beschreibungen finden Sie unter den Informationen zur [REST-API für die automatische Skalierung](/rest/api/monitor/autoscalesettings).
 
 Codebeispiele finden Sie unter:
 
 * [Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](autoscale-virtual-machine-scale-sets.md)  
-* [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
+* [REST-API für die automatische Skalierung](/rest/api/monitor/autoscalesettings)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>Horizontale und vertikale Skalierung
 Bei der automatischen Skalierung wird nur horizontal skaliert. Dies bedeutet, dass die Anzahl von VM-Instanzen erhöht („horizontal hochskalieren“) oder verringert wird („horizontal herunterskalieren“).  Die horizontale Skalierung ist in einer Cloudsituation flexibler, da Sie bei Bedarf Tausende von VMs ausführen können, um die Last zu bewältigen.
@@ -90,29 +90,28 @@ Bei der vertikalen Skalierung ist dies anders. Hierbei wird die gleiche Anzahl v
 Zum Einrichten der automatischen Skalierung können Sie Folgendes verwenden:
 
 * [Azure portal](autoscale-get-started.md)
-* [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 * [Plattformübergreifende Befehlszeilenschnittstelle](../samples/cli-samples.md#autoscale)
-* [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Azure Monitor-REST-API](/rest/api/monitor/autoscalesettings)
 
 ## <a name="supported-services-for-autoscale"></a>Unterstützte Dienste für die automatische Skalierung
 | Dienst | Schema und Dokumente |
 | --- | --- |
 | Web-Apps |[Skalieren von Web-Apps](autoscale-get-started.md) |
 | Cloud Services |[Automatisches Skalieren eines Clouddiensts](../../cloud-services/cloud-services-how-to-scale-portal.md) |
-| VMs: Klassisch |[Scaling Classic Virtual Machine Availability Sets (Skalieren von klassischen VM-Verfügbarkeitsgruppen)](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| VMs: Klassisch |[Scaling Classic Virtual Machine Availability Sets (Skalieren von klassischen VM-Verfügbarkeitsgruppen)](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | VMs: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | VMs: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | VMs: Windows-Beispiel |[Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
-| API Management-Dienst|[Automatisches Skalieren einer Azure API Management-Instanz](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
-| Azure Data Explorer-Cluster|[Verwalten der Skalierung von Azure Data Explorer-Clustern bei sich änderndem Bedarf](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
-| Azure App Service |[Hochskalieren einer App in Azure App Service](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
-| Logic Apps |[Hinzufügen von ISE-Kapazität (Integration Service Environment, Integrationsdienstumgebung)](https://docs.microsoft.com/azure/logic-apps/ise-manage-integration-service-environment#add-ise-capacity)|
+| API Management-Dienst|[Automatisches Skalieren einer Azure API Management-Instanz](../../api-management/api-management-howto-autoscale.md)
+| Azure Data Explorer-Cluster|[Verwalten der Skalierung von Azure Data Explorer-Clustern bei sich änderndem Bedarf](/azure/data-explorer/manage-cluster-horizontal-scaling)|
+| Azure App Service |[Hochskalieren einer App in Azure App Service](../../app-service/manage-scale-up.md)|
+| Logic Apps |[Hinzufügen von ISE-Kapazität (Integration Service Environment, Integrationsdienstumgebung)](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur automatischen Skalierung können Sie den obigen exemplarischen Vorgehensweisen für die automatische Skalierung oder den folgenden Ressourcen entnehmen:
 
 * [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](autoscale-common-metrics.md)
 * [Best Practices für die automatische Skalierung in Azure Monitor](autoscale-best-practices.md)
 * [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](autoscale-webhook-email.md)
-* [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
+* [REST-API für die automatische Skalierung](/rest/api/monitor/autoscalesettings)
 * [Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-

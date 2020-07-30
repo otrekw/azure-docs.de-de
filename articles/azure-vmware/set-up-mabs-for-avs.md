@@ -3,12 +3,12 @@ title: Einrichten von Azure Backup Server für Azure VMware Solution
 description: Richten Sie Ihre Azure VMware Solution-Umgebung so ein, dass virtuelle Computer über Azure Backup Server gesichert werden.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079535"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Einrichten von Azure Backup Server für Azure VMware Solution
 
@@ -309,7 +309,7 @@ Haben Sie das Softwarepaket auf einen anderen Server heruntergeladen, kopieren S
    * **Datenbank**: **DatabaseName** sollte **ReportServer$\<SQLInstanceName>** lauten.
    * **Webportal-URL**: **Virtuelles Verzeichnis** sollte **Reports_\<SQLInstanceName>** lauten.
 
-   Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017).
+   Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017).
 
    > [!NOTE]
    > In den [Microsoft-Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) ist die Lizenzierung für die SQL Server-Instanz geregelt, die als Datenbank für Azure Backup Server verwendet wird. Gemäß OST kann die SQL Server-Instanz, die mit Azure Backup Server gebündelt ist, nur als Datenbank für Azure Backup Server verwendet werden.
@@ -319,7 +319,7 @@ Haben Sie das Softwarepaket auf einen anderen Server heruntergeladen, kopieren S
 1. Geben Sie einen Speicherort für die Installation der Microsoft Azure Backup-Serverdateien an, und wählen Sie **Weiter** aus.
 
    > [!NOTE]
-   > Der Scratchspeicherort (Scratchverzeichnis) ist zum Sichern in Azure erforderlich. Stellen Sie sicher, dass das Scratchverzeichnis eine Größe von mindestens 5 % der Daten aufweist, die in der Cloud gesichert werden. Für den Datenträgerschutz müssen separate Datenträger konfiguriert werden, nachdem die Installation abgeschlossen ist. Weitere Informationen zu Speicherpools finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+   > Der Scratchspeicherort (Scratchverzeichnis) ist zum Sichern in Azure erforderlich. Stellen Sie sicher, dass das Scratchverzeichnis eine Größe von mindestens 5 % der Daten aufweist, die in der Cloud gesichert werden. Für den Datenträgerschutz müssen separate Datenträger konfiguriert werden, nachdem die Installation abgeschlossen ist. Weitere Informationen zu Speicherpools finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
    ![Microsoft Azure Backup Setup: Installationseinstellungen](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Wechseln Sie zum nächsten Tutorial, um zu erfahren, wie Sie mit Azure Backup Se
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Sicherung von Azure VMware Solution-VMs](backup-avs-vms-with-mabs.md)
-

@@ -4,16 +4,16 @@ description: Es wird beschrieben, wie Sie den Ethereum-Blockchain-Connector mit 
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077030"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Verwenden des Ethereum-Blockchain-Connectors mit Azure Logic Apps
 
-Verwenden Sie den [Ethereum-Blockchain-Connector](https://docs.microsoft.com/connectors/blockchainethereum/) mit [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) zum Ausführen von Smart Contract-Funktionen sowie zum Reagieren auf Smart Contract-Ereignisse. Angenommen, Sie möchten einen REST-basierten Microservice erstellen, der Informationen von einem Blockchainledger zurückgibt. Mithilfe einer Logik-App können Sie HTTP-Anforderungen akzeptieren, die in einem Blockchainledger gespeicherte Informationen abfragen.
+Verwenden Sie den [Ethereum-Blockchain-Connector](/connectors/blockchainethereum/) mit [Azure Logic Apps](../../logic-apps/index.yml) zum Ausführen von Smart Contract-Funktionen sowie zum Reagieren auf Smart Contract-Ereignisse. Angenommen, Sie möchten einen REST-basierten Microservice erstellen, der Informationen von einem Blockchainledger zurückgibt. Mithilfe einer Logik-App können Sie HTTP-Anforderungen akzeptieren, die in einem Blockchainledger gespeicherte Informationen abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

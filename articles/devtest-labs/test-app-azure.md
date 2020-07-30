@@ -3,12 +3,12 @@ title: Testen Ihrer App in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Dateifreigabe in einem Lab erstellen und auf Ihrem lokalen Computer und auf einem virtuellen Computer im Lab einbinden und dann Desktop-/Webanwendungen in der Dateifreigabe bereitstellen und testen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476494"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282244"
 ---
 # <a name="test-your-app-in-azure"></a>Testen Ihrer App in Azure 
 Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von DevTest Labs. Zunächst richten Sie eine Dateifreigabe in einem Lab ein und binden sie als Laufwerk auf Ihrem lokalen Entwicklungscomputer und einem virtuellen Computer in einem Lab ein. Anschließend stellen Sie die App in Visual Studio 2019 in der Dateifreigabe bereit, damit Sie die App auf dem virtuellen Computer im Lab ausführen können.  
@@ -18,7 +18,7 @@ Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von 
 ## <a name="prerequisites"></a>Voraussetzungen 
 1. [Erstellen Sie ein Azure-Abonnement](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen, und melden Sie sich im [Azure-Portal](https://portal.azure.com) an.
 2. Befolgen Sie die Anweisungen in [diesem Artikel](devtest-lab-create-lab.md), um mithilfe von Azure DevTest Labs ein Lab zu erstellen. Heften Sie das Lab an Ihr Dashboard an, damit Sie es bei Ihrer nächsten Anmeldung leichter finden. Mit Azure DevTest Labs können Sie Ressourcen in Azure schnell erstellen und dabei den Ressourcenverbrauch minimieren und die Kontrolle über die Kosten behalten. Weitere Informationen zu DevTest Labs finden Sie in der [Übersicht](devtest-lab-overview.md). 
-3. Erstellen Sie anhand der Anweisungen im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md) ein Azure Storage-Konto in der Ressourcengruppe des Labs. Wählen Sie auf der Seite **Speicherkonto erstellen** die Option **Vorhandene verwenden** für **Ressourcengruppe** und die **Lab-Ressourcengruppe** aus. 
+3. Erstellen Sie anhand der Anweisungen im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) ein Azure Storage-Konto in der Ressourcengruppe des Labs. Wählen Sie auf der Seite **Speicherkonto erstellen** die Option **Vorhandene verwenden** für **Ressourcengruppe** und die **Lab-Ressourcengruppe** aus. 
 4. Erstellen Sie anhand der Anweisungen im Artikel [Erstellen einer Dateifreigabe in Azure Files](../storage/files/storage-how-to-create-file-share.md) eine Dateifreigabe in Ihrem Azure-Speicher. 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Einbinden der Dateifreigabe auf dem lokalen Computer

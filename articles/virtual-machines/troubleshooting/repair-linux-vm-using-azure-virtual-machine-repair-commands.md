@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: a7357ef3b0151096746e37bddd235f0db53baed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7fbe46d378d45f49a8510f9fdd01a9cae665d0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444810"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074380"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Linux-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
 
 Wenn für Ihren virtuellen Linux-Computer (Linux-VM) in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie das Problem möglicherweise selbst auf dem Datenträger beheben. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel ist beschrieben, wie Sie mit Reparaturbefehlen für virtuelle Azure-Computer den Datenträger mit einem anderen virtuellen Linux-Computer verbinden, um Fehler zu beheben, und dann Ihren ursprünglichen virtuellen Computer wiederherstellen.
 
 > [!IMPORTANT]
-> * Die Skripts in diesem Artikel gelten nur für VMs, für die [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwendet wird.
+> * Die Skripts in diesem Artikel gelten nur für VMs, für die [Azure Resource Manager](../../azure-resource-manager/management/overview.md) verwendet wird.
 > * Damit das Skript ausgeführt werden kann, ist eine ausgehende Verbindung von der VM (Port 443) erforderlich.
 > * Es kann immer nur jeweils ein Skript ausgeführt werden.
 > * Ein Skript, das ausgeführt wird, kann nicht abgebrochen werden.
@@ -45,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um das VM-Problem zu beheben:
 4. Führen Sie die Reparaturschritte aus.
 5. Führen Sie „az vm repair restore“ aus.
 
-Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair).
+Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](/cli/azure/ext/vm-repair/vm/repair).
 
 ## <a name="repair-process-example"></a>Beispiel für einen Reparaturprozess
 
@@ -57,9 +57,9 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
 
    Wählen Sie **Kopieren** aus, um die Codeblöcke zu kopieren. Fügen Sie den Code anschließend in Cloud Shell ein, und wählen Sie **Eingabe**, um den Code auszuführen.
 
-   Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie ``az --version`` aus, um die Version zu ermitteln. Informationen zum Installieren oder Aktualisieren Ihrer Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Azure CLI-Version 2.0.30 verwenden. Führen Sie ``az --version`` aus, um die Version zu ermitteln. Informationen zum Installieren oder Aktualisieren Ihrer Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
    
-   Wenn Sie sich bei Cloud Shell mit einem Konto anmelden müssen, das nicht das Konto ist, mit dem Sie zurzeit beim Azure-Portal angemeldet sind, können Sie ``az login`` ([az login-Referenz](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)) verwenden.  Um zwischen den Abonnements zu wechseln, die Ihrem Konto zugeordnet sind, können Sie ``az account set --subscription`` ([az account set-Referenz](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)) verwenden.
+   Wenn Sie sich bei Cloud Shell mit einem Konto anmelden müssen, das nicht das Konto ist, mit dem Sie zurzeit beim Azure-Portal angemeldet sind, können Sie ``az login`` ([az login-Referenz](/cli/azure/reference-index?view=azure-cli-latest#az-login)) verwenden.  Um zwischen den Abonnements zu wechseln, die Ihrem Konto zugeordnet sind, können Sie ``az account set --subscription`` ([az account set-Referenz](/cli/azure/account?view=azure-cli-latest#az-account-set)) verwenden.
 
 2. Wenn Sie die `az vm repair`-Befehle zum ersten Mal verwenden, fügen Sie die CLI-Erweiterung „vm-repair“ hinzu.
 
@@ -99,6 +99,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, helfen Ihnen die Informationen unter [Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection) weiter.
-* Konsultieren Sie [Beheben von Anwendungskonnektivitätsproblemen auf virtuellen Computern in Azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.
-* Weitere Informationen zu Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+* Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, helfen Ihnen die Informationen unter [Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer](./troubleshoot-rdp-connection.md) weiter.
+* Konsultieren Sie [Beheben von Anwendungskonnektivitätsproblemen auf virtuellen Computern in Azure](./troubleshoot-app-connection.md) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.
+* Weitere Informationen zu Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md).

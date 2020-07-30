@@ -12,12 +12,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34d91b23b0383f4128b7f03619ad0e2b07496f33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014149"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transparent Data Encryption in SQL Managed Instance mithilfe eines eigenen Schl체ssels aus dem Azure Key Vault
 
@@ -45,6 +45,6 @@ Wenn Sie PowerShell lokal ausf체hren, m체ssen Sie auch `Connect-AzAccount` ausf�
 
 ## <a name="next-steps"></a>N채chste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Weitere PowerShell-Skriptbeispiele f체r SQL Managed Instance finden Sie unter [Azure PowerShell-Beispiele f체r Azure SQL-Datenbank und verwaltete Azure SQL-Instanzen](../../database/powershell-script-content-guide.md).

@@ -3,18 +3,18 @@ title: Metriken in Azure Monitor – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zur Verwendung von Azure Monitor zum Überwachen von Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074858"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-Metriken in Azure Monitor
 
 Event Hubs-Metriken geben Aufschluss über den Zustand von Event Hubs-Ressourcen in Ihrem Azure-Abonnement. Mithilfe eines umfangreichen Satzes von Metrikdaten können Sie die allgemeine Integrität Ihrer Event Hubs nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Diese Statistiken können wichtig sein, da sie Sie beim Überwachen des Zustands Ihrer Event Hubs unterstützen. Metriken können auch beim Beheben der Ursachen von Problemen helfen, ohne dass Sie sich an den Azure-Support wenden müssen.
 
-Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende Überwachung verschiedener Azure-Dienste. Weitere Informationen finden Sie unter [Überwachung in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) und im Beispiel zum [Abrufen von Azure Monitor-Metriken mit .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) auf GitHub.
+Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende Überwachung verschiedener Azure-Dienste. Weitere Informationen finden Sie unter [Überwachung in Microsoft Azure](../azure-monitor/overview.md) und im Beispiel zum [Abrufen von Azure Monitor-Metriken mit .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) auf GitHub.
 
 ## <a name="access-metrics"></a>Zugreifen auf Metriken
 
@@ -103,7 +103,7 @@ Azure Event Hubs unterstützt folgende Dimensionen für Metriken in Azure Monito
 Durch das Weiterleiten von Überwachungsdaten (Aktivitätsprotokollen, Diagnoseprotokollen usw.) an einen Event Hub mit Azure Monitor erreichen Sie auf einfache Weise eine Integration mit SIEM-Tools (Security Information & Event Management). Weitere Informationen finden Sie in den folgenden Artikeln und Blogbeiträgen:
 
 - [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Einführung in Azure Log Integration](../security/fundamentals/azure-log-integration-overview.md)
+- [Einführung in Azure Log Integration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [Verwenden von Azure Monitor zur Integration in SIEM-Tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 Wenn Sie in einem Szenario, in dem ein SIEM-Tool Daten von einem Event Hub verwendet, im Metrikendiagramm keine eingehenden Nachrichten oder eingehende Nachrichten, jedoch keine ausgehenden Nachrichten sehen, führen Sie die folgenden Schritte aus:
@@ -114,7 +114,7 @@ Wenn Sie in einem Szenario, in dem ein SIEM-Tool Daten von einem Event Hub verwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen finden Sie unter [Übersicht über die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-overview.md).
+* Weitere Informationen finden Sie unter [Übersicht über die Azure-Überwachung](../azure-monitor/overview.md).
 * Rufen Sie das [Azure Monitor-Metrikbeispiel mit .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) auf GitHub ab. 
 
 Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
@@ -129,6 +129,3 @@ Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png
 [2]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor2.png
-
-
-

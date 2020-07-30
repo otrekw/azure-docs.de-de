@@ -7,16 +7,16 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997823"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284114"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Datensätzen in Common Data Service mithilfe von Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Common Data Service-Connector](https://docs.microsoft.com/connectors/commondataservice/) können Sie automatisierte Workflows erstellen, die Datensätze in Ihrer [Common Data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro)-Datenbank verwalten. Diese Workflows können Datensätze erstellen und aktualisieren sowie andere Vorgänge ausführen. Sie können auch Informationen aus Ihrer Common Data Service-Datenbank abrufen und die Ausgabe für andere Aktionen zur Verwendung in Ihrer Logik-App bereitstellen. Wenn ein Datensatz z. B. in der Common Data Service-Datenbank aktualisiert wird, können Sie mithilfe des Outlook-Connectors von Office 365 eine E-Mail senden.
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Common Data Service-Connector](/connectors/commondataservice/) können Sie automatisierte Workflows erstellen, die Datensätze in Ihrer [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro)-Datenbank verwalten. Diese Workflows können Datensätze erstellen und aktualisieren sowie andere Vorgänge ausführen. Sie können auch Informationen aus Ihrer Common Data Service-Datenbank abrufen und die Ausgabe für andere Aktionen zur Verwendung in Ihrer Logik-App bereitstellen. Wenn ein Datensatz z. B. in der Common Data Service-Datenbank aktualisiert wird, können Sie mithilfe des Outlook-Connectors von Office 365 eine E-Mail senden.
 
 In diesem Artikel erfahren Sie, wie Sie eine Logik-App erstellen, die einen Aufgabendatensatz erstellt, sobald ein neuer Leaddatensatz erstellt wird.
 
@@ -24,10 +24,10 @@ In diesem Artikel erfahren Sie, wie Sie eine Logik-App erstellen, die einen Aufg
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Eine [Common Data Service-Umgebung](https://docs.microsoft.com/power-platform/admin/environments-overview), bei der es sich um einen Bereich handelt, in dem Ihre Organisation Geschäftsdaten und eine Common Data Service-Datenbank speichert, verwaltet und freigibt. Weitere Informationen finden Sie in den folgenden Ressourcen:<p>
+* Eine [Common Data Service-Umgebung](/power-platform/admin/environments-overview), bei der es sich um einen Bereich handelt, in dem Ihre Organisation Geschäftsdaten und eine Common Data Service-Datenbank speichert, verwaltet und freigibt. Weitere Informationen finden Sie in den folgenden Ressourcen:<p>
 
-  * [Learn: Erste Schritte mit Common Data Service](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Übersicht über Power Platform-Umgebungen](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [Learn: Erste Schritte mit Common Data Service](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Übersicht über Power Platform-Umgebungen](/power-platform/admin/environments-overview)
 
 * Grundlegende Informationen zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) und zu der Logik-App, von der aus Sie auf die Datensätze in der Common Data Service-Datenbank zugreifen möchten. Um Ihre Logik-App mit einem Common Data Service-Trigger starten zu können, benötigen Sie eine leere Logik-App. Falls Sie mit Azure Logic Apps noch nicht vertraut sind, lesen Sie zunächst das Dokument [Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -51,7 +51,7 @@ Fügen Sie für dieses Beispiel den Common Data Service-Trigger hinzu, der ausge
 
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
-   | **Umgebung** | Ja | Die zu überwachende Umgebung, z. B. „Fabrikam Sales Production“. Weitere Informationen finden Sie in der [Power Platform-Umgebungsübersicht](https://docs.microsoft.com/power-platform/admin/environments-overview). |
+   | **Umgebung** | Ja | Die zu überwachende Umgebung, z. B. „Fabrikam Sales Production“. Weitere Informationen finden Sie in der [Power Platform-Umgebungsübersicht](/power-platform/admin/environments-overview). |
    | **Name der Entität** | Ja | Die zu überwachende Entität, z. B. „Leads“. |
    | **Umfang** | Ja | Die Quelle, die den neuen Datensatz erstellt hat, z. B. ein Benutzer in ihrer Geschäftseinheit oder ein beliebiger Benutzer in Ihrer Organisation. In diesem Beispiel wird „Business Unit“ verwendet. |
    ||||
@@ -126,7 +126,7 @@ Für Aktionen, die Datensätze zurückgeben, z. B. die Aktion **List records** 
 
    ![Eingeben der ODATA-Filterabfrage zum Filtern von Datensätzen](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-Weitere Informationen zu `$filter`-Systemabfrageoptionen finden Sie unter [Common Data Service: Filterergebnisse](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
+Weitere Informationen zu `$filter`-Systemabfrageoptionen finden Sie unter [Common Data Service: Filterergebnisse](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
 
 ## <a name="list-records-based-on-an-order"></a>Auflisten von Datensätzen auf Grundlage einer Reihenfolge
 
@@ -140,7 +140,7 @@ Für Aktionen, die Datensätze zurückgeben, z. B. die Aktion **List records** 
 
    ![Eingeben der ODATA-Filterabfrage zum Sortieren von Datensätzen](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-Weitere Informationen zu `$orderby`-Systemabfrageoptionen finden Sie unter [Common Data Service: Soertierergebnisse](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
+Weitere Informationen zu `$orderby`-Systemabfrageoptionen finden Sie unter [Common Data Service: Soertierergebnisse](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
 
 ## <a name="field-data-types"></a>Felddatentypen
 
@@ -166,7 +166,7 @@ Dieses Beispiel zeigt, wie die Aktion **Create a new record** (Neuen Datensatz e
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Informationen, die auf der Swagger-Beschreibung des Connectors basieren (z. B. Trigger, Aktionen und Grenzwerte sowie andere Details), finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/commondataservice/).
+Technische Informationen, die auf der Swagger-Beschreibung des Connectors basieren (z. B. Trigger, Aktionen und Grenzwerte sowie andere Details), finden Sie auf der [Referenzseite des Connectors](/connectors/commondataservice/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

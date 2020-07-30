@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75665886"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284063"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Suchen von Ergebnissen in der Bing-Suche mithilfe von Azure Logic Apps
 
@@ -21,7 +21,7 @@ In diesem Artikel wird gezeigt, wie Sie mit dem Bing-Suche-Connector innerhalb e
 Sie können z.B. Nachrichtenelemente basierend auf Suchkriterien finden und diese Elemente in Twitter in Ihrem Twitter-Feed als Tweets bereitstellen.
 
 Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Connectorspezifische technische Informationen finden Sie in der [Referenz zum Bing-Suche-Connector](https://docs.microsoft.com/connectors/bingsearch/).
+Connectorspezifische technische Informationen finden Sie in der [Referenz zum Bing-Suche-Connector](/connectors/bingsearch/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -168,3 +168,4 @@ Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagge
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

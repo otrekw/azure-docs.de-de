@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: rohogue
-ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082765"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel
 
@@ -20,7 +20,7 @@ Dieser Artikel enthält Lösungen für einige häufige Konfigurationsfehler und 
 Dieser Artikel enthält Details zum Überprüfen von Ports und Aktivieren des Root-Zugriffs auf ein NAS-System. Er enthält außerdem ausführliche Informationen zu weniger häufigen Problemen, durch die beim Erstellen des NFS-Speicherziels Fehler auftreten können.
 
 > [!TIP]
-> Informieren Sie sich vor der Verwendung dieses Leitfadens über die [Voraussetzungen für NFS-Speicherziele](hpc-cache-prereqs.md#nfs-storage-requirements).
+> Informieren Sie sich vor der Verwendung dieses Leitfadens über die [Voraussetzungen für NFS-Speicherziele](hpc-cache-prerequisites.md#nfs-storage-requirements).
 
 Wenn die Lösung für Ihr Problem hier nicht enthalten ist, [öffnen Sie ein Supportticket](hpc-cache-support-ticket.md), damit Microsoft Service and Support mit Ihnen zusammen das Problem untersuchen und beheben kann.
 

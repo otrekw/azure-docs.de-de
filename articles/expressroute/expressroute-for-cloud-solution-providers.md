@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5bf7a1e3cc2bfa8ccf42d05e199c58b8c9314fce
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67849262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281700"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
@@ -130,5 +130,5 @@ Der Cloud Solution Provider-Dienst ermöglicht es Ihnen, Ihren Nutzen für Kunde
 Weitere Informationen finden Sie unter den folgenden Links:
 
 [Azure im Cloud Solution Provider-Programm](https://docs.microsoft.com/azure/cloud-solution-provider)  
-[Vorbereitung auf Transaktionen als Cloud Solution Provider](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch)  
-[Microsoft Cloud Solution Provider – Ressourcen](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources)
+[Vorbereitung auf Transaktionen als Cloud Solution Provider](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch)  
+[Microsoft Cloud Solution Provider – Ressourcen](https://partner.microsoft.com/solutions/cloud-reseller-resources)

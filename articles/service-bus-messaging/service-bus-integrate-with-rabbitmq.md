@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: df0541802dfc331ffc94e95be112ea7e005960b5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071635"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Integrieren von RabbitMQ in Azure Service Bus
 
@@ -90,7 +90,7 @@ Diese Verbindungszeichenfolge können Sie erst verwenden, nachdem Sie sie in das
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Verbindungszeichenfolge konvertieren":::
 
-Öffnen Sie nun das RabbitMQ-Management-Plugin in einem unserer Browser [http://localhost:15672/#/dynamic-shovels](http://localhost:15672/#/dynamic-shovels), und wechseln Sie zu `Admin -> Shovel Management`. Hier können Sie die neue Shovel-Instanz hinzufügen, mit der Nachrichten aus einer RabbitMQ-Warteschlange an die Azure Service Bus-Warteschlange gesendet werden.
+Öffnen Sie nun das RabbitMQ-Management-Plugin in einem unserer Browser `http://localhost:15672/#/dynamic-shovels`, und wechseln Sie zu `Admin -> Shovel Management`. Hier können Sie die neue Shovel-Instanz hinzufügen, mit der Nachrichten aus einer RabbitMQ-Warteschlange an die Azure Service Bus-Warteschlange gesendet werden.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="RabbitMQ Shovel hinzufügen":::
 

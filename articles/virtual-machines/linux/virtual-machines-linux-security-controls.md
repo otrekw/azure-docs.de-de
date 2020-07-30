@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 300acaf4a9d2a11ef107e19df99452c909257d54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 132f696dd1298384c302eeadc264e857d1edff96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080062"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>Sicherheitskontrollen für virtuelle Linux-Computer
 
@@ -29,13 +29,13 @@ In diesem Artikel sind die Sicherheitskontrollen dokumentiert, die in virtuellen
 | Unterstützung des Dienstendpunkts| Ja | |
 | Unterstützung der VNet-Einschleusung| Ja | |
 | Netzwerkisolation und Firewallunterstützung| Ja |  |
-| Unterstützung der Tunnelerzwingung| Ja | Siehe [Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Unterstützung der Tunnelerzwingung| Ja | Siehe [Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md). |
 
 ## <a name="monitoring--logging"></a>Überwachung und Protokollierung
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Siehe [Überwachen und Aktualisieren eines virtuellen Linux-Computers in Azure](/azure/virtual-machines/linux/tutorial-monitoring). |
+| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Siehe [Überwachen und Aktualisieren eines virtuellen Linux-Computers in Azure](./tutorial-monitor.md). |
 | Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja |  |
 | Protokollierung und Überwachung auf Datenebene | Nein |  |
 
@@ -51,8 +51,8 @@ In diesem Artikel sind die Sicherheitskontrollen dokumentiert, die in virtuellen
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
 | Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Siehe [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md). |
-| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, Verschlüsselung im VNET und VNET-zu-VNET-Verschlüsselung)| Ja | Azure Virtual Machines unterstützt [ExpressRoute](/azure/expressroute)- und VNET-Verschlüsselung. Siehe [Verschlüsselung während der Übertragung zwischen virtuellen Computern](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Ja | Von Kunden verwaltete Schlüssel werden bei der Azure-Verschlüsselung unterstützt; siehe [Übersicht über die Azure-Verschlüsselung](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
+| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, Verschlüsselung im VNET und VNET-zu-VNET-Verschlüsselung)| Ja | Azure Virtual Machines unterstützt [ExpressRoute](../../expressroute/index.yml)- und VNET-Verschlüsselung. Siehe [Verschlüsselung während der Übertragung zwischen virtuellen Computern](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms). |
+| Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Ja | Von Kunden verwaltete Schlüssel werden bei der Azure-Verschlüsselung unterstützt; siehe [Übersicht über die Azure-Verschlüsselung](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms).|
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
 | Verschlüsselte API-Aufrufe| Ja | Per HTTPS und TLS |
 

@@ -3,12 +3,12 @@ title: 'PowerShell-Skript: Wiederherstellen einer gelöschten Dateifreigabe'
 description: Erfahren Sie, wie Sie ein Azure PowerShell-Skript verwenden, um eine versehentlich gelöschte Dateifreigabe wiederherzustellen.
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d3a3ad3c2904b98f7a3350d3672b51f3a1e9415e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007631"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>PowerShell-Skript zum Wiederherstellen einer versehentlich gelöschten Dateifreigabe
 
@@ -154,7 +154,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. Installieren Sie die neuesten Azure PowerShell Az-Module von [diesem Link](//powershell/azure/install-az-ps), bevor Sie das Skript ausführen.
+1. Installieren Sie die neuesten Azure PowerShell Az-Module von [diesem Link](/powershell/azure/install-az-ps), bevor Sie das Skript ausführen.
 2. Halten Sie die folgenden Angaben griffbereit, da Sie sie als Werte für verschiedene Parameter des Skripts übergeben müssen:
 
     * **-SubscriptionId**: ID des Abonnements, unter dem sich die Dateifreigabe befindet.

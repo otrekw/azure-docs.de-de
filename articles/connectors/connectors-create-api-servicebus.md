@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283995"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -156,7 +156,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
 ## <a name="send-correlated-messages-in-order"></a>Senden von korrelierten Nachrichten in einer bestimmten Reihenfolge
 
-Wenn Sie zusammengehörige Nachrichten in einer bestimmten Reihenfolge senden müssen, können Sie das [Muster für einen *sequenziellen Konvoi*](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) verwenden, indem Sie den [Azure Service Bus-Connector](../connectors/connectors-create-api-servicebus.md) nutzen. Korrelierte Nachrichten verfügen über eine Eigenschaft zum Definieren der Beziehung zwischen diesen Nachrichten, z. B. die ID für die [Sitzung](../service-bus-messaging/message-sessions.md) in Service Bus.
+Wenn Sie zusammengehörige Nachrichten in einer bestimmten Reihenfolge senden müssen, können Sie das [Muster für einen *sequenziellen Konvoi*](/azure/architecture/patterns/sequential-convoy) verwenden, indem Sie den [Azure Service Bus-Connector](../connectors/connectors-create-api-servicebus.md) nutzen. Korrelierte Nachrichten verfügen über eine Eigenschaft zum Definieren der Beziehung zwischen diesen Nachrichten, z. B. die ID für die [Sitzung](../service-bus-messaging/message-sessions.md) in Service Bus.
 
 Beim Erstellen einer Logik-App können Sie die Vorlage für eine **korrelierte geordnete Bereitstellung mit Service Bus-Sitzungen** auswählen, mit der das Muster für einen sequenziellen Konvoi implementiert wird. Weitere Informationen finden Sie im Artikel zum [Senden zusammengehöriger Nachrichten in der richtigen Reihenfolge](../logic-apps/send-related-messages-sequential-convoy.md).
 
@@ -171,3 +171,4 @@ Andere technische Details zu Triggern, Aktionen und Beschränkungen aus der Swag
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

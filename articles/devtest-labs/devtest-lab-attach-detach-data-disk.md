@@ -3,22 +3,22 @@ title: Anfügen oder Trennen eines Datenträgers an einen oder von einem virtuel
 description: Erfahren Sie, wie Sie einen Datenträger an einen virtuellen Computer in Azure DevTest Labs anfügen oder von diesem trennen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 164c2335f0aadc08a447dd61e259786d5bfb104d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482971"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287566"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Anfügen oder Trennen eines Datenträgers an einen oder von einem virtuellen Computer in Azure DevTest Labs
-[Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) verwaltet die Speicherkonten, die VM-Datenträgern zugeordnet sind. Ein Benutzer muss lediglich einen neuen Datenträger an eine VM anfügen sowie Typ und Größe, die er benötigt, angeben – der Datenträger wird dann automatisch von Azure erstellt und verwaltet. Anschließend kann der Datenträger von der VM getrennt und später wieder an dieselbe VM oder an eine andere VM, die diesem Benutzer gehört, angefügt werden.
+[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) verwaltet die Speicherkonten, die VM-Datenträgern zugeordnet sind. Ein Benutzer muss lediglich einen neuen Datenträger an eine VM anfügen sowie Typ und Größe, die er benötigt, angeben – der Datenträger wird dann automatisch von Azure erstellt und verwaltet. Anschließend kann der Datenträger von der VM getrennt und später wieder an dieselbe VM oder an eine andere VM, die diesem Benutzer gehört, angefügt werden.
 
 Diese Funktionalität ist besonders für die Verwaltung von Speicher oder Software außerhalb der einzelnen virtuellen Computer praktisch. Befindet sich der Speicher oder die Software bereits auf einem Datenträger, kann dieser einfach an eine VM angefügt, von dieser getrennt und wieder an eine VM des Benutzers, dem dieser Datenträger gehört, angefügt werden.
 
 ## <a name="attach-a-data-disk"></a>Datenträger anfügen
 Bevor Sie einen Datenträger an eine VM anfügen, lesen Sie diese Tipps:
 
-- Die Größe der VM bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+- Die Größe der VM bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../virtual-machines/sizes.md).
 - Sie können nur einen Datenträger an eine gegenwärtig ausgeführte VM anfügen. Bevor Sie versuchen, einen Datenträger anzufügen, stellen Sie sicher, dass die VM ausgeführt wird.
 
 ### <a name="attach-a-new-disk"></a>Anfügen eines neuen Datenträgers
@@ -90,4 +90,3 @@ Um ein Upgrade für einen nicht verwalteten Datenträger durchzuführen, führen
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie, wie Datenträger für [abrufbare VMs](devtest-lab-add-claimable-vm.md#unclaim-a-vm) verwaltet werden.
-
