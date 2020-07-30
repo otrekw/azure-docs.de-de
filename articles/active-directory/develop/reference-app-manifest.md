@@ -1,5 +1,6 @@
 ---
 title: Grundlegendes zum Azure Active Directory-App-Manifest
+titleSuffix: Microsoft identity platform
 description: Sie erhalten ausführliche Informationen über das Azure Active Directory-App-Manifest, das die Identitätskonfiguration einer Anwendung in einem Azure AD-Mandanten darstellt, und für die OAuth-Autorisierung, den Zustimmungsprozess und andere Zwecke genutzt wird.
 services: active-directory
 author: rwike77
@@ -12,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479248"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026746"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
-Das Anwendungsmanifest enthält eine Definition aller Attribute eines Anwendungsobjekts auf der Microsoft Identity Platform. Darüber hinaus dient es als Mechanismus für die Aktualisierung des Anwendungsobjekts. Weitere Informationen zur Anwendungsentität und zum zugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity).
+Das Anwendungsmanifest enthält eine Definition aller Attribute eines Anwendungsobjekts auf der Microsoft Identity Platform. Darüber hinaus dient es als Mechanismus für die Aktualisierung des Anwendungsobjekts. Weitere Informationen zur Anwendungsentität und zum zugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](/graph/api/resources/application).
 
-Sie können die Attribute einer App über das Azure-Portal oder programmgesteuert mit der [REST-API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) oder [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) konfigurieren. Es gibt aber einige Szenarien, in denen Sie das App-Manifest bearbeiten müssen, um das Attribut einer App zu konfigurieren. Zu diesen Szenarien gehören:
+Sie können die Attribute einer App über das Azure-Portal oder programmgesteuert mit der [REST-API](/graph/api/resources/application) oder [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) konfigurieren. Es gibt aber einige Szenarien, in denen Sie das App-Manifest bearbeiten müssen, um das Attribut einer App zu konfigurieren. Zu diesen Szenarien gehören:
 
 * Wenn Sie die App als mehrinstanzenfähige Azure AD-App und für persönliche Microsoft-Konten registriert haben, können Sie die unterstützten Microsoft-Konten nicht über die Benutzeroberfläche ändern. In diesem Fall müssen Sie den unterstützten Kontotyp mithilfe des Anwendungsmanifest-Editors ändern.
 * Wenn Sie Berechtigungen und Rollen definieren müssen, die von Ihrer App unterstützt werden, müssen Sie das Anwendungsmanifest ändern.
@@ -433,7 +434,7 @@ Beispiel:
 | parentalControlSettings | String |
 
 - `countriesBlockedForMinors` gibt die Länder/Regionen an, in denen die App für Minderjährige blockiert wird.
-- `legalAgeGroupRule` gibt die Regel für die rechtliche Altersgruppe an, die für Benutzer der App gilt. Dieser Wert kann auf `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors`, `RequireConsentForKids` oder `BlockMinors` festgelegt werden.  
+- `legalAgeGroupRule` gibt die Regel für die rechtliche Altersgruppe an, die für Benutzer der App gilt. Dieser Wert kann auf `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors`, `RequireConsentForKids` oder `BlockMinors` festgelegt werden.
 
 Beispiel:
 
@@ -493,7 +494,7 @@ Beispiel:
 | :--- | :--- |
 | publicClient | Boolean|
 
-Gibt an, ob es sich bei dieser Anwendung um einen öffentlichen Client handelt (beispielsweise eine installierte Anwendung auf einem mobilen Gerät). 
+Gibt an, ob es sich bei dieser Anwendung um einen öffentlichen Client handelt (beispielsweise eine installierte Anwendung auf einem mobilen Gerät).
 
 Diese Eigenschaft ist nur in der Benutzeroberfläche **App-Registrierungen (Vorgängerversion)** verfügbar. In der Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `allowPublicClient` ersetzt.
 
@@ -669,7 +670,7 @@ Wenn Sie versuchen, ein zuvor heruntergeladenes Manifest hochzuladen, wird mögl
 
 Wenn eine dieser Fehlermeldungen angezeigt wird, werden folgende Aktionen empfohlen:
 
-1. Bearbeiten Sie die Attribute einzeln im Manifest-Editor, anstatt ein zuvor heruntergeladenes Manifest hochzuladen. In der Tabelle [Manifestreferenz](#manifest-reference) können Sie die Syntax und Semantik alter und neuer Attribute einsehen und damit die gewünschten Attribute bearbeiten. 
+1. Bearbeiten Sie die Attribute einzeln im Manifest-Editor, anstatt ein zuvor heruntergeladenes Manifest hochzuladen. In der Tabelle [Manifestreferenz](#manifest-reference) können Sie die Syntax und Semantik alter und neuer Attribute einsehen und damit die gewünschten Attribute bearbeiten.
 1. Wenn Sie in Ihrem Workflow die Manifeste zur späteren Verwendung im Quellrepository speichern müssen, sollten Sie ein Rebase der gespeicherten Manifeste in Ihrem Repository mit dem in der Benutzeroberfläche **App-Registrierungen** angezeigten Manifest ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte

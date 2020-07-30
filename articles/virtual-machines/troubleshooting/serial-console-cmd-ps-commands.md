@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77167025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028463"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-Befehle – CMD und PowerShell
 
 Dieser Abschnitt enthält Beispielbefehle für allgemeine Aufgaben in Szenarios, in denen Sie ggf. über die spezielle Verwaltungskonsole (Special Administration Console, SAC) auf den virtuellen Windows-Computer zugreifen müssen, um beispielsweise Probleme mit RDP-Verbindungsfehlern zu behandeln.
 
-SAC ist seit Windows Server 2003 in allen Windows-Versionen enthalten, standardmäßig aber deaktiviert. SAC basiert auf dem Kernel-Treiber `sacdrv.sys`, dem Dienst `Special Administration Console Helper` (`sacsvr`) und dem Prozess `sacsess.exe`. Weitere Informationen finden Sie unter [Emergency Management Services Tools and Settings](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)) (Tools und Einstellungen für die Notverwaltungsdienste).
+SAC ist seit Windows Server 2003 in allen Windows-Versionen enthalten, standardmäßig aber deaktiviert. SAC basiert auf dem Kernel-Treiber `sacdrv.sys`, dem Dienst `Special Administration Console Helper` (`sacsvr`) und dem Prozess `sacsess.exe`. Weitere Informationen finden Sie unter [Emergency Management Services Tools and Settings](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)) (Tools und Einstellungen für die Notverwaltungsdienste).
 
 Mit SAC können Sie über den seriellen Port eine Verbindung mit dem aktiven Betriebssystem herstellen. Wenn Sie CMD über SAC starten, wird `cmd.exe` von `sacsess.exe` innerhalb Ihres aktiven Betriebssystems gestartet. Dies ist im Task-Manager zu sehen, wenn Sie eine RDP-Verbindung mit Ihrem virtuellen Computer herstellen, während über die serielle Konsole eine Verbindung mit SAC besteht. Bei der CMD-Instanz, auf die Sie über SAC zugreifen, handelt es sich um die Instanz von `cmd.exe`, die Sie auch verwenden, wenn Sie über RDP eine Verbindung herstellen. Ihnen stehen die gleichen Befehle und Tools zur Verfügung – einschließlich der Möglichkeit, PowerShell über diese CMD-Instanz zu starten. Dies ist ein entscheidender Unterschied zwischen SAC und der Windows-Wiederherstellungsumgebung (Windows Recovery Environment, WinRE), da Sie mit SAC Ihr aktives Betriebssystem verwalten können. Im Gegensatz dazu startet WinRE mit einem anderen, minimalen Betriebssystem. Virtuelle Azure-Computer unterstützen zwar den Zugriff auf WinRE nicht, können mit der seriellen Konsole aber über SAC verwaltet werden.
 
@@ -91,7 +91,7 @@ oder
 ### <a name="set-nic-to-use-dhcp"></a>Konfigurieren der NIC für die DHCP-Verwendung
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-Für weitere Informationen `netsh`[klicken Sie hier](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
+Für weitere Informationen `netsh`[klicken Sie hier](/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Virtuelle Azure-Computer müssen im Gastbetriebssystem immer so konfiguriert werden, dass sie eine IP-Adresse über DHCP beziehen. DHCP wird auch bei Verwendung der Azure-Einstellung für statische IP-Adressen verwendet, um die statische IP-Adresse für den virtuellen Computer zu vergeben.
 ### <a name="ping"></a>Pingen
@@ -183,11 +183,11 @@ Dieses Beispiel gibt die Dateiversion des virtuellen NIC-Treibers zurück (je na
 ### <a name="scan-for-system-file-corruption"></a>Überprüfen des Dateisystems auf Beschädigungen
 `sfc /scannow`
 
-Siehe auch: [Repair a Windows Image](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
+Siehe auch: [Repair a Windows Image](/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
 ### <a name="scan-for-system-file-corruption"></a>Überprüfen des Dateisystems auf Beschädigungen
 `dism /online /cleanup-image /scanhealth`
 
-Siehe auch: [Repair a Windows Image](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
+Siehe auch: [Repair a Windows Image](/windows-hardware/manufacture/desktop/repair-a-windows-image) (Reparieren eines Windows-Images)
 ### <a name="export-file-permissions-to-text-file"></a>Exportieren von Dateiberechtigungen in eine Textdatei
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>Speichern von Dateiberechtigungen in einer ACL-Datei
@@ -436,7 +436,7 @@ Sie können Azure-Instanzmetadaten aus Ihrem virtuellen Azure-Computer abfragen,
 
 Voraussetzung für das Abfragen von Instanzmetadaten ist eine ordnungsgemäß funktionierende Gastnetzwerkverbindung, da hierzu ein REST-Aufruf über den Azure-Host an den Instanzmetadatendienst gerichtet werden muss. Wenn Sie also Instanzmetadaten abfragen können, kann der Gast über das Netzwerk mit einem von Azure gehosteten Dienst kommunizieren.
 
-Weitere Informationen finden Sie unter [Azure-Instanzmetadatendienst](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
+Weitere Informationen finden Sie unter [Azure-Instanzmetadatendienst](../windows/instance-metadata-service.md).
 
 ### <a name="instance-metadata"></a>Instanzmetadaten
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

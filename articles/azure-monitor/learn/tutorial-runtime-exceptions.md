@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516361"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322430"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -36,7 +36,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     - Azure-Entwicklung
 - Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
 - Aktivieren Sie [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](../app/snapshot-debugger.md).
-- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../app/asp-net.md). 
 - Das Tutorial verfolgt die Identifikation einer Ausnahme in Ihrer Anwendung, ändern Sie also den Code in Ihrer Entwicklungs- oder Testumgebung, um eine Ausnahme zu generieren. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
@@ -63,7 +63,7 @@ Application Insights erfasst alle Fehler in Ihrer Anwendung und ermöglicht Ihne
 
     ![Beispiele für Anforderungsfehler](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. Die Details des Anforderungsfehlers enthalten ein Gantt-Diagramm, dem Sie entnehmen können, dass bei dieser Transaktion zwei Abhängigkeitsfehler aufgetreten sind, die über 50 Prozent der Gesamtdauer der Transaktion ausgemacht haben. Auf dieser Oberfläche werden alle Telemetriedaten für die Komponenten einer verteilten Anwendung dargestellt, die mit dieser Vorgangs-ID zusammenhängen. [Weitere Informationen zur neuen Oberfläche](../../azure-monitor/app/transaction-diagnostics.md) Sie können auf beliebige Elemente klicken, um auf der rechten Seite entsprechende Details anzuzeigen. 
+6. Die Details des Anforderungsfehlers enthalten ein Gantt-Diagramm, dem Sie entnehmen können, dass bei dieser Transaktion zwei Abhängigkeitsfehler aufgetreten sind, die über 50 Prozent der Gesamtdauer der Transaktion ausgemacht haben. Auf dieser Oberfläche werden alle Telemetriedaten für die Komponenten einer verteilten Anwendung dargestellt, die mit dieser Vorgangs-ID zusammenhängen. [Weitere Informationen zur neuen Oberfläche](../app/transaction-diagnostics.md) Sie können auf beliebige Elemente klicken, um auf der rechten Seite entsprechende Details anzuzeigen. 
 
     ![Details zu Anforderungen mit Fehlern](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -112,4 +112,5 @@ Wenn Sie Application Insights mit einem Nachverfolgungssystem wie Azure DevOps o
 Nachdem Sie sich nun mit dem Identifizieren von Laufzeitausnahmen vertraut gemacht haben, können Sie mit dem nächsten Tutorial fortfahren. Dort erfahren Sie, wie Leistungsprobleme identifiziert und diagnostiziert werden.
 
 > [!div class="nextstepaction"]
-> [Identifizieren von Leistungsproblemen](../../azure-monitor/learn/tutorial-performance.md)
+> [Identifizieren von Leistungsproblemen](./tutorial-performance.md)
+

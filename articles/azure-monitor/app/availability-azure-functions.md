@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320628"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Erstellen und Ausführen von benutzerdefinierten Verfügbarkeitstests mit Azure Functions
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure-Funktion mit „TrackAvailability()“ erstellen, die gemäß der Konfiguration der Funktion „TimerTrigger“ regelmäßig mit Ihrer eigenen Geschäftslogik ausgeführt wird. Die Ergebnisse dieses Tests werden an Ihre Application Insights-Ressource gesendet. Dort können Sie für die Ergebnisdaten zur Verfügbarkeit Abfragen durchführen und Warnungen einrichten. So können Sie angepasste Tests auf ähnliche Weise wie per [Verfügbarkeitsüberwachung](../../azure-monitor/app/monitor-web-app-availability.md) im Portal erstellen. Mit angepassten Tests können Sie komplexere Verfügbarkeitstests als bei Verwendung der Portalbenutzeroberfläche schreiben, eine App in Ihrem virtuellen Azure-Netzwerk (VNET) überwachen, die Endpunktadresse ändern oder auch dann einen Verfügbarkeitstest erstellen, falls dieses Feature in Ihrer Region nicht verfügbar ist.
+In diesem Artikel wird beschrieben, wie Sie eine Azure-Funktion mit „TrackAvailability()“ erstellen, die gemäß der Konfiguration der Funktion „TimerTrigger“ regelmäßig mit Ihrer eigenen Geschäftslogik ausgeführt wird. Die Ergebnisse dieses Tests werden an Ihre Application Insights-Ressource gesendet. Dort können Sie für die Ergebnisdaten zur Verfügbarkeit Abfragen durchführen und Warnungen einrichten. So können Sie angepasste Tests auf ähnliche Weise wie per [Verfügbarkeitsüberwachung](./monitor-web-app-availability.md) im Portal erstellen. Mit angepassten Tests können Sie komplexere Verfügbarkeitstests als bei Verwendung der Portalbenutzeroberfläche schreiben, eine App in Ihrem virtuellen Azure-Netzwerk (VNET) überwachen, die Endpunktadresse ändern oder auch dann einen Verfügbarkeitstest erstellen, falls dieses Feature in Ihrer Region nicht verfügbar ist.
 
 > [!NOTE]
 > Dieses Beispiel wurde ausschließlich dazu entworfen, die Funktionsweise des API-Aufrufs „TrackAvailability()“ innerhalb einer Azure-Funktion zu veranschaulichen. Es dient nicht zur Veranschaulichung des Schreibens des zugrunde liegenden HTTP-Testcodes bzw. der Geschäftslogik, die erforderlich ist, um dies in einen voll funktionsfähigen Verfügbarkeitstest umzuwandeln. Beim Durchlaufen dieses Beispiels erstellen Sie normalerweise einen Verfügbarkeitstest, der immer einen Fehler generiert.
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure-Funktion mit „TrackAvai
 
 - Bei Verwendung einer Application Insights-Ressource:
     - Standardmäßig wird von Azure Functions eine Application Insights-Ressource erstellt, aber falls Sie eine Ihrer bereits erstellten Ressourcen verwenden möchten, müssen Sie dies bei der Erstellung angeben.
-    - Befolgen Sie die Anleitung zum [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (Stopp vor Bereinigung) mit den folgenden Auswahlmöglichkeiten.
+    - Befolgen Sie die Anleitung zum [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](../../azure-functions/functions-create-scheduled-function.md) (Stopp vor Bereinigung) mit den folgenden Auswahlmöglichkeiten.
         -  Wählen Sie oben die Registerkarte **Überwachung** aus.
 
             ![ Erstellen einer Azure Functions-App mit Ihrer eigenen App Insights-Ressource](media/availability-azure-functions/create-function-app.png)
@@ -35,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure-Funktion mit „TrackAvai
         - Klicken Sie auf **Überprüfen + erstellen**.
 - Falls Sie noch keine Application Insights-Ressource für die vom Timer ausgelöste Funktion erstellt haben:
     - Wenn Sie Ihre Azure Functions-Anwendung erstellen, wird standardmäßig eine Application Insights-Ressource für Sie erstellt.
-    - Befolgen Sie die Anleitung zum [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (Stopp vor Bereinigung).
+    - Befolgen Sie die Anleitung zum [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](../../azure-functions/functions-create-scheduled-function.md) (Stopp vor Bereinigung).
 
 ## <a name="sample-code"></a>Beispielcode
 
@@ -45,7 +45,7 @@ Kopieren Sie den unten angegebenen Code in die Datei „run.csx“ (ersetzt den 
 >![„Run.csx“ einer Azure-Funktion im Azure-Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Als Endpunktadresse verwenden Sie Folgendes: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Falls sich Ihre Ressource in einer Region wie „Azure Government“ oder „Azure China“ befindet, sollten Sie sich den Artikel zum Thema [Außerkraftsetzen der Standardendpunkte](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) durchlesen und den entsprechenden Telemetriekanal-Endpunkt für Ihre Region auswählen.
+> Als Endpunktadresse verwenden Sie Folgendes: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Falls sich Ihre Ressource in einer Region wie „Azure Government“ oder „Azure China“ befindet, sollten Sie sich den Artikel zum Thema [Außerkraftsetzen der Standardendpunkte](./custom-endpoints.md#regions-that-require-endpoint-modification) durchlesen und den entsprechenden Telemetriekanal-Endpunkt für Ihre Region auswählen.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -177,7 +177,7 @@ Wenn Sie alles unverändert ausgeführt haben (ohne Geschäftslogik hinzuzufüge
 
 ## <a name="query-in-logs-analytics"></a>Abfragen in „Protokolle (Analytics)“
 
-Sie können „Protokolle (Analytics)“ verwenden, um Ihre Verfügbarkeitsergebnisse, Abhängigkeiten und mehr anzuzeigen. Weitere Informationen zu Protokollen finden Sie unter [Übersicht über Protokollabfragen](../../azure-monitor/log-query/log-query-overview.md).
+Sie können „Protokolle (Analytics)“ verwenden, um Ihre Verfügbarkeitsergebnisse, Abhängigkeiten und mehr anzuzeigen. Weitere Informationen zu Protokollen finden Sie unter [Übersicht über Protokollabfragen](../log-query/log-query-overview.md).
 
 >[!div class="mx-imgBorder"]
 >![Verfügbarkeitsergebnisse](media/availability-azure-functions/availabilityresults.png)
@@ -187,5 +187,6 @@ Sie können „Protokolle (Analytics)“ verwenden, um Ihre Verfügbarkeitsergeb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anwendungszuordnung](../../azure-monitor/app/app-map.md)
-- [Transaktionsdiagnose](../../azure-monitor/app/transaction-diagnostics.md)
+- [Anwendungszuordnung](./app-map.md)
+- [Transaktionsdiagnose](./transaction-diagnostics.md)
+

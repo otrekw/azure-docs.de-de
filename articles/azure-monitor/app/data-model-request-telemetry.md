@@ -4,16 +4,16 @@ description: Application Insights-Datenmodell für Anforderungstelemetrie
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807654"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320560"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
 
-Ein Anforderungstelemetrieelement (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) stellt die logische Reihenfolge der Ausführung dar, die durch eine externe Anforderung bei der Anwendung ausgelöst wird. Jede Anforderungsausführung wird durch eine eindeutige `ID` und `url` identifiziert, die alle Ausführungsparameter enthalten. Sie können Anforderungen nach logischen `name`-Werten gruppieren und die `source` der jeweiligen Anforderung definieren. Die Codeausführung kann zu `success` oder `fail` führen und verfügt über eine bestimmte `duration`. Sowohl erfolgreiche als auch erfolglose Ausführungen können weiter nach `resultCode` gruppiert werden. Die Startzeit für die Anforderungstelemetrie wird auf Umschlagebene definiert.
+Ein Anforderungstelemetrieelement (in [Application Insights](./app-insights-overview.md)) stellt die logische Reihenfolge der Ausführung dar, die durch eine externe Anforderung bei der Anwendung ausgelöst wird. Jede Anforderungsausführung wird durch eine eindeutige `ID` und `url` identifiziert, die alle Ausführungsparameter enthalten. Sie können Anforderungen nach logischen `name`-Werten gruppieren und die `source` der jeweiligen Anforderung definieren. Die Codeausführung kann zu `success` oder `fail` führen und verfügt über eine bestimmte `duration`. Sowohl erfolgreiche als auch erfolglose Ausführungen können weiter nach `resultCode` gruppiert werden. Die Startzeit für die Anforderungstelemetrie wird auf Umschlagebene definiert.
 
 Die Anforderungstelemetrie unterstützt das Standarderweiterbarkeitsmodell mit benutzerdefinierten `properties` und `measurements`.
 
@@ -27,7 +27,7 @@ Maximale Länge: 1.024 Zeichen
 
 ## <a name="id"></a>id
 
-Bezeichner einer Anforderungsaufrufinstanz. Wird für die Korrelation zwischen dem Anforderungselement und anderen Telemetrieelementen verwendet. Die ID muss global eindeutig sein. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](../../azure-monitor/app/correlation.md).
+Bezeichner einer Anforderungsaufrufinstanz. Wird für die Korrelation zwischen dem Anforderungselement und anderen Telemetrieelementen verwendet. Die ID muss global eindeutig sein. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](./correlation.md).
 
 Maximale Länge: 128 Zeichen
 
@@ -39,7 +39,7 @@ Maximale Länge: 2.048 Zeichen
 
 ## <a name="source"></a>`Source`
 
-Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des Aufrufers oder die IP-Adresse des Aufrufers. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](../../azure-monitor/app/correlation.md).
+Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des Aufrufers oder die IP-Adresse des Aufrufers. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](./correlation.md).
 
 Maximale Länge: 1.024 Zeichen
 
@@ -73,7 +73,8 @@ Weitere Informationen zu Ergebniscodes und Statuscodes von Anforderungen finden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schreiben benutzerdefinierter Anforderungstelemetriedaten](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- [Schreiben benutzerdefinierter Anforderungstelemetriedaten](./api-custom-events-metrics.md#trackrequest)
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](data-model.md).
-- Informieren Sie sich über das [Konfigurieren von ASP.NET Core-Anwendungen](../../azure-monitor/app/asp-net.md) mit Application Insights.
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).
+- Informieren Sie sich über das [Konfigurieren von ASP.NET Core-Anwendungen](./asp-net.md) mit Application Insights.
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
+

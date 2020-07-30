@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987610"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048658"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Verwenden Sie einen sequenziellen Konvoi in Azure Logic Apps mit Azure Service Bus, um verwandte Nachrichten in der richtigen Reihenfolge zu senden
 
-Wenn Sie korrelierte Nachrichten in einer bestimmten Reihenfolge senden müssen, können Sie bei Verwendung von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) mit dem [Azure Service Bus-Connector](../connectors/connectors-create-api-servicebus.md) das [Muster für einen *sequenziellen Konvoi*](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) nutzen. Korrelierte Nachrichten verfügen über eine Eigenschaft zum Definieren der Beziehung zwischen diesen Nachrichten, z. B. die ID für die [Sitzung](../service-bus-messaging/message-sessions.md) in Service Bus.
+Wenn Sie korrelierte Nachrichten in einer bestimmten Reihenfolge senden müssen, können Sie bei Verwendung von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) mit dem [Azure Service Bus-Connector](../connectors/connectors-create-api-servicebus.md) das [Muster für einen *sequenziellen Konvoi*](/azure/architecture/patterns/sequential-convoy) nutzen. Korrelierte Nachrichten verfügen über eine Eigenschaft zum Definieren der Beziehung zwischen diesen Nachrichten, z. B. die ID für die [Sitzung](../service-bus-messaging/message-sessions.md) in Service Bus.
 
 Beispiel: Sie verfügen über zehn Nachrichten für die Sitzung „Sitzung 1“ und fünf Nachrichten für die Sitzung „Sitzung 2“, die alle an dieselbe [Service Bus-Warteschlange](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) gesendet werden. Sie können eine Logik-App zur Verarbeitung von Nachrichten aus der Warteschlange erstellen, bei der alle Nachrichten aus „Sitzung 1“ von einer einzigen Triggerausführung behandelt und alle Nachrichten von „Sitzung 2“ von der nächsten Triggerausführung behandelt werden.
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Logik-App erstellen, die dieses Mus
 
 Einzelheiten zur JSON-Datei dieser Vorlage finden Sie unter [GitHub: service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json).
 
-Weitere Informationen finden Sie unter [Muster für einen sequenziellen Konvoi](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
+Weitere Informationen finden Sie unter [Muster für einen sequenziellen Konvoi](/azure/architecture/patterns/sequential-convoy).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -202,7 +202,7 @@ Führen Sie die folgenden Schritte aus, um die Werte für den Trigger und die Ak
   | **Frequency** | Ja | **Sekunde**, **Minute**, **Stunde**, **Tag**, **Woche** oder **Monat** | Die Zeiteinheit für die Wiederholung, wenn überprüft wird, ob eine Nachricht vorhanden ist. <p>**Tipp**: Zum Hinzufügen einer **Zeitzone** oder einer **Startzeit** wählen Sie diese Eigenschaften aus der Liste **Neuen Parameter hinzufügen** aus. |
   |||||
 
-  Weitere Informationen zu Triggern finden Sie unter [Service Bus – Wenn eine Nachricht in einer Warteschlange empfangen wird (Peek-Lock)](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Der Trigger gibt eine [Service Bus-Nachricht](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage) aus.
+  Weitere Informationen zu Triggern finden Sie unter [Service Bus – Wenn eine Nachricht in einer Warteschlange empfangen wird (Peek-Lock)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Der Trigger gibt eine [Service Bus-Nachricht](/connectors/servicebus/#servicebusmessage) aus.
 
 Nach der Initialisierung der Sitzung verwendet der Workflow die **Variable initialisieren**-Aktion, um eine boolesche Variable zu erstellen, die anfänglich auf `false` festgelegt ist und anzeigt, wenn die folgenden Bedingungen erfüllt sind: 
 
@@ -422,4 +422,4 @@ Senden Sie Nachrichten an Ihre Service Bus-Warteschlange, um Ihre Logik-App zu t
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu den [Triggern und Aktionen des Service Bus-Connectors](https://docs.microsoft.com/connectors/servicebus/)
+* Weitere Informationen zu den [Triggern und Aktionen des Service Bus-Connectors](/connectors/servicebus/)

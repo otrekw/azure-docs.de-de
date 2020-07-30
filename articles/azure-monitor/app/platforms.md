@@ -4,50 +4,51 @@ description: Verfügbare Programmiersprachen, Plattformen und Integrationsmögli
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 153d4ad3d95c182dcc4f2aa3bad857d7e1984cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35dc6c5146edd13309a42702d1bc247333ff0fd7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891109"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322447"
 ---
 # <a name="supported-languages"></a>Unterstützte Sprachen
 
-* [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [JavaScript](../../azure-monitor/app/javascript.md)
-* [Node.JS](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [C#|VB (.NET)](./asp-net.md)
+* [Java](./java-get-started.md)
+* [JavaScript](./javascript.md)
+* [Node.JS](./nodejs.md)
+* [Python](./opencensus-python.md)
 
 ## <a name="supported-platforms-and-frameworks"></a>Unterstützte Plattformen und Frameworks
 
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Instrumentierung für bereits bereitgestellte Anwendungen (ohne Code, Agent-basiert)
-* [Virtuelle Azure-Computer und Azure-VM-Skalierungsgruppen](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
-* [ASP.NET – Für Apps, die bereits aktiv sind.](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Cloud Services](../../azure-monitor/app/cloudservices.md), einschließlich Web- und Workerrollen
-* [Azure-Funktionen](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+* [Virtuelle Azure-Computer und Azure-VM-Skalierungsgruppen](./azure-vm-vmss-apps.md)
+* [Azure App Service](./azure-web-apps.md)
+* [ASP.NET – Für Apps, die bereits aktiv sind.](./monitor-performance-live-website-now.md)
+* [Azure Cloud Services](./cloudservices.md), einschließlich Web- und Workerrollen
+* [Azure-Funktionen](../../azure-functions/functions-monitoring.md)
 ### <a name="instrumentation-through-code-sdks"></a>Instrumentierung durch Code (SDKs)
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Java EE](../../azure-monitor/app/java-get-started.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Android](../learn/mobile-center-quickstart.md) (App Center)
+* [iOS](../learn/mobile-center-quickstart.md) (App Center)
+* [Java EE](./java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [Python](../../azure-monitor/app/opencensus-python.md)
-* [Universelle Windows-App](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Windows-Desktopanwendungen, -Dienste und -Workerrollen](../../azure-monitor/app/windows-desktop.md)
+* [Python](./opencensus-python.md)
+* [Universelle Windows-App](../learn/mobile-center-quickstart.md) (App Center)
+* [Windows-Desktopanwendungen, -Dienste und -Workerrollen](./windows-desktop.md)
 
 ## <a name="logging-frameworks"></a>Protokollierungsframeworks
-* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
-* [Log4Net, NLog oder System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
-* [Java, Log4J oder Logback](../../azure-monitor/app/java-trace-logs.md)
+* [ILogger](./ilogger.md)
+* [Log4Net, NLog oder System.Diagnostics.Trace](./asp-net-trace-logs.md)
+* [Java, Log4J oder Logback](./java-trace-logs.md)
 * [LogStash-Plug-in](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Azure Monitor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
+* [Azure Monitor](/archive/blogs/msoms/application-insights-connector-in-oms)
 
 ## <a name="export-and-data-analysis"></a>Export und Datenanalyse
 * [Power BI](https://powerbi.microsoft.com/blog/explore-your-application-insights-data-with-power-bi/)
-* [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
+* [Stream Analytics](./export-power-bi.md)
 
 ## <a name="unsupported-sdks"></a>Nicht unterstützte SDKs
 Wir sind uns bewusst, dass es noch einige andere von der Community unterstützte SDKs gibt. Für Azure Monitor wird aber nur Support geleistet, wenn die auf dieser Seite aufgeführten unterstützten SDKs verwendet werden. Wir prüfen ständig neue Möglichkeiten zur Unterstützung anderer Sprachen. Verfolgen Sie daher die Seite mit den [GitHub-Ankündigungen](https://github.com/microsoft/ApplicationInsights-Announcements/issues), um die aktuellen SDK-News zu erhalten. 
+

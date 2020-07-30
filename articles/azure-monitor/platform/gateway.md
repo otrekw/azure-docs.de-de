@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298332"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305209"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
@@ -89,7 +89,7 @@ Das Log Analytics-Gateway ist in den folgenden Sprachen verfügbar:
 
 Das Log Analytics-Gateway unterstützt nur Transport Layer Security (TLS) 1.0, 1.1 und 1.2.  Secure Sockets Layer (SSL) wird nicht unterstützt.  Um die Sicherheit der Daten während der Übertragung an Log Analytics zu gewährleisten, konfigurieren Sie das Gateway so, dass es mindestens TLS 1.2 verwendet. Ältere Versionen von TLS- oder SSL sind anfällig. Obwohl sie zurzeit Abwärtskompatibilität zulassen, sollten Sie diese älteren Versionen vermeiden.  
 
-Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](./data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Unterstützte Anzahl von Agent-Verbindungen
 
@@ -134,7 +134,7 @@ Führen Sie zum Installieren des Gateways mit dem Setup-Assistenten die folgende
    a. Geben Sie die für das Gateway zu verwendende TCP-Portnummer ein. Das Setup verwendet diese Portnummer, um eine Eingangsregel für die Windows-Firewall zu konfigurieren.  Der Standardwert ist 8080.
       Zulässig sind Portnummern im Bereich zwischen 1 und 65535. Wenn die Eingabe außerhalb dieses Bereichs liegt, wird eine Fehlermeldung angezeigt.
 
-   b. Falls der Server, auf dem das Gateway installiert ist, über einen Proxy kommunizieren muss, geben Sie die Proxyadresse ein, mit der das Gateway eine Verbindung herstellen muss. Geben Sie z. B. `http://myorgname.corp.contoso.com:80` ein   Wenn Sie dieses Feld leer lassen, versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen.  Falls der Proxyserver eine Authentifizierung erfordert, geben Sie einen Benutzernamen und ein Kennwort ein.
+   b. Falls der Server, auf dem das Gateway installiert ist, über einen Proxy kommunizieren muss, geben Sie die Proxyadresse ein, mit der das Gateway eine Verbindung herstellen muss. Geben Sie z. B. `http://myorgname.corp.contoso.com:80` ein  Wenn Sie dieses Feld leer lassen, versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen.  Falls der Proxyserver eine Authentifizierung erfordert, geben Sie einen Benutzernamen und ein Kennwort ein.
 
    c. Wählen Sie **Weiter** aus.
 
@@ -149,7 +149,7 @@ Führen Sie zum Installieren des Gateways mit dem Setup-Assistenten die folgende
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Installieren des Log Analytics-Gateways über die Befehlszeile
 
-Die heruntergeladene Datei für das Gateway ist ein Windows Installer-Paket, mit dem die automatische Installation über die Befehlszeile oder mit einer anderen automatisierten Methode unterstützt wird. Wenn Sie nicht mit den standardmäßigen Befehlszeilenoptionen für Windows Installer vertraut sind, finden Sie entsprechende Informationen unter [Command-line options](https://docs.microsoft.com/windows/desktop/Msi/command-line-options) (Befehlszeilenoptionen).
+Die heruntergeladene Datei für das Gateway ist ein Windows Installer-Paket, mit dem die automatische Installation über die Befehlszeile oder mit einer anderen automatisierten Methode unterstützt wird. Wenn Sie nicht mit den standardmäßigen Befehlszeilenoptionen für Windows Installer vertraut sind, finden Sie entsprechende Informationen unter [Command-line options](/windows/desktop/msi/command-line-options) (Befehlszeilenoptionen).
  
 In der folgenden Tabelle sind die beim Setup unterstützten Parameter aufgeführt.
 
@@ -185,11 +185,11 @@ Nach der Installation können Sie mit den folgenden PowerShell-Cmdlets bestätig
 
 ## <a name="configure-network-load-balancing"></a>Konfigurieren des Netzwerklastenausgleichs
 
-Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den [Netzwerklastenausgleich (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing) von Microsoft, [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) oder einen hardwarebasierten Lastenausgleich verwenden. Beim Lastenausgleich werden die angeforderten Verbindungen von Log Analytics-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten umgeleitet. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.
+Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den [Netzwerklastenausgleich (NLB)](/windows-server/networking/technologies/network-load-balancing) von Microsoft, [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) oder einen hardwarebasierten Lastenausgleich verwenden. Beim Lastenausgleich werden die angeforderten Verbindungen von Log Analytics-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten umgeleitet. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft-Netzwerklastenausgleich
 
-Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clusters unter Windows Server 2016 finden Sie unter [Netzwerklastenausgleich](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). In den folgenden Schritten wird das Konfigurieren eines Clusters mit Microsoft-Netzwerklastenausgleich beschrieben.  
+Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clusters unter Windows Server 2016 finden Sie unter [Netzwerklastenausgleich](/windows-server/networking/technologies/network-load-balancing). In den folgenden Schritten wird das Konfigurieren eines Clusters mit Microsoft-Netzwerklastenausgleich beschrieben.  
 
 1. Melden Sie sich mit einem Administratorkonto bei dem Windows-Server an, der dem NLB-Cluster angehört.  
 2. Öffnen Sie im Server-Manager den Netzwerklastenausgleich-Manager, klicken Sie auf **Tools**, und klicken Sie anschließend auf **Netzwerklastenausgleich-Manager**.
@@ -388,4 +388,5 @@ Um Hilfe zu erhalten, wählen Sie das Fragezeichensymbol in der oberen rechten E
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Fügen Sie Datenquellen hinzu](../../azure-monitor/platform/agent-data-sources.md), um Daten aus verbundenen Quellen zu erfassen und die Daten in Ihrem Log Analytics-Arbeitsbereich zu speichern.
+[Fügen Sie Datenquellen hinzu](./agent-data-sources.md), um Daten aus verbundenen Quellen zu erfassen und die Daten in Ihrem Log Analytics-Arbeitsbereich zu speichern.
+

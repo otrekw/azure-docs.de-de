@@ -3,16 +3,16 @@ title: Leistungsindikatoren in Application Insights | Microsoft Docs
 description: Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungsindikatoren in Application Insights.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701467"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322515"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 
-Windows bietet eine Vielzahl von [Leistungsindikatoren](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) wie z.B. CPU-Belegung, Arbeitsspeicher, Datenträger und Netzwerkverwendung. Sie können auch eigene Leistungsindikatoren definieren. Die Erfassung von Leistungsindikatoren wird unterstützt, sofern Ihre Anwendung unter IIS auf einem lokalen Host oder auf einem virtuellen Computer ausgeführt wird, auf den Sie Administratorzugriff haben. Für Anwendungen, die als Azure-Web-Apps ausgeführt werden, besteht zwar kein direkter Zugriff auf Leistungsindikatoren, aber eine Teilmenge der verfügbaren Indikatoren wird von Application Insights erfasst.
+Windows bietet eine Vielzahl von [Leistungsindikatoren](/windows/desktop/perfctrs/about-performance-counters) wie z.B. CPU-Belegung, Arbeitsspeicher, Datenträger und Netzwerkverwendung. Sie können auch eigene Leistungsindikatoren definieren. Die Erfassung von Leistungsindikatoren wird unterstützt, sofern Ihre Anwendung unter IIS auf einem lokalen Host oder auf einem virtuellen Computer ausgeführt wird, auf den Sie Administratorzugriff haben. Für Anwendungen, die als Azure-Web-Apps ausgeführt werden, besteht zwar kein direkter Zugriff auf Leistungsindikatoren, aber eine Teilmenge der verfügbaren Indikatoren wird von Application Insights erfasst.
 
 ## <a name="view-counters"></a>Anzeigen von Indikatoren
 
@@ -40,7 +40,7 @@ Wenn der gewünschte Leistungsindikator nicht in der Liste der Metriken enthalte
 
     `Get-Counter -ListSet *`
 
-    (Informationen hierzu finden Sie unter [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx).)
+    (Informationen hierzu finden Sie unter [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1).)
 2. Öffnen Sie "ApplicationInsights.config".
 
    * Wenn Sie Application Insights während der Entwicklung zu Ihrer Anwendung hinzugefügt haben, bearbeiten Sie die Datei „ApplicationInsights.config“ in Ihrem Projekt und stellen Sie sie anschließend erneut auf Ihren Servern bereit.
@@ -109,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Leistungsindikatoren in Analytics
-In [Analytics](../../azure-monitor/app/analytics.md) können Sie nach Leistungsindikatorberichten suchen und diese anzeigen.
+In [Analytics](../log-query/log-query-overview.md) können Sie nach Leistungsindikatorberichten suchen und diese anzeigen.
 
 Das Schema **performanceCounters** zeigt die `category`, den `counter`-Namen und `instance`-Namen der einzelnen Leistungsindikatoren.  In den Telemetriedaten jeder Anwendung werden nur die Indikatoren für diese Anwendung angezeigt. Beispielsweise, um verfügbare Leistungsindikatoren anzuzeigen: 
 
@@ -131,7 +131,7 @@ Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `clo
 
 * *Ausnahmerate* ist ein Systemleistungsindikator. Die CLR zählt alle behandelten und nicht behandelten Ausnahmen, die ausgelöst werden, und dividiert das Ergebnis innerhalb eines Samplingintervalls durch die Länge dieses Intervalls. Das Application Insights SDK sammelt dieses Ergebnis und sendet es an das Portal.
 
-* *Ausnahmen* ist die Anzahl der TrackException-Meldungen, die das Portal innerhalb des Samplingintervalls des Diagramms empfangen hat. Sie enthält nur die behandelten Ausnahmen, wo Sie TrackException-Aufrufe in Ihren Code geschrieben haben, und enthält nicht alle [nicht behandelten Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md). 
+* *Ausnahmen* ist die Anzahl der TrackException-Meldungen, die das Portal innerhalb des Samplingintervalls des Diagramms empfangen hat. Sie enthält nur die behandelten Ausnahmen, wo Sie TrackException-Aufrufe in Ihren Code geschrieben haben, und enthält nicht alle [nicht behandelten Ausnahmen](./asp-net-exceptions.md). 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Leistungsindikatoren für Anwendungen, die in Azure-Web-Apps ausgeführt werden
 
@@ -147,10 +147,10 @@ Für die Unterstützung von Leistungsindikatoren in ASP.NET Core gelten die folg
 * Die SDK-Versionen 2.8.0 und höher unterstützen Leistungsindikatoren für CPU und Arbeitsspeicher unter Linux. Es werden kein weiteren Leistungsindikatoren unter Linux unterstützt. Die empfohlene Vorgehensweise für Systemleistungsindikatoren unter Linux (und in anderen Nicht-Windows-Umgebungen) ist die Verwendung von [EventCounters](eventcounters.md).
 
 ## <a name="alerts"></a>Alerts
-Wie bei anderen Metriken können Sie [eine Warnung festlegen](../../azure-monitor/platform/alerts-log.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
+Wie bei anderen Metriken können Sie [eine Warnung festlegen](../platform/alerts-log.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
-* [Abhängigkeitsüberwachung](../../azure-monitor/app/asp-net-dependencies.md)
-* [Ausnahmeverfolgung](../../azure-monitor/app/asp-net-exceptions.md)
+* [Abhängigkeitsüberwachung](./asp-net-dependencies.md)
+* [Ausnahmeverfolgung](./asp-net-exceptions.md)
 

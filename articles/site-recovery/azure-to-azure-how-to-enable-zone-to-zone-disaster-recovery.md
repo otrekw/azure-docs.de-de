@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021646"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Aktivieren der Notfallwiederherstellung zwischen Zonen für virtuelle Azure-Computer
 
@@ -20,7 +20,6 @@ In diesem Artikel wird beschrieben, wie Sie Replikation, Failover und Failback f
 
 >[!NOTE]
 >
->- Site Recovery unterstützt derzeit keine Wiederherstellungspläne für die Notfallwiederherstellung zwischen Zonen über das Portal. Verwenden Sie PowerShell oder die REST-API, um Wiederherstellungspläne für die Notfallwiederherstellung zwischen Zonen zu verwenden. 
 >- Unterstützung für Notfallwiederherstellung zwischen Zonen ist derzeit auf zwei Regionen beschränkt: „Asien, Südosten“ und „Vereinigtes Königreich, Süden“.  
 >- Wenn der Kunde die Notfallwiederherstellung zwischen Zonen verwendet, speichert Site Recovery Kundendaten nur in der Region, in sie bereitgestellt wurden, und verschiebt sie nicht aus dieser Region. Kunden können auf Wunsch einen Recovery Services-Tresor aus einer anderen Region auswählen. Der Recovery Services-Tresor enthält Metadaten, aber keine tatsächlichen Kundendaten.
 
