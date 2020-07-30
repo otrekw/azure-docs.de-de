@@ -3,16 +3,16 @@ title: Automatisieren von Aufgaben mit mehreren Azure-Diensten
 description: 'Tutorial: Erstellen automatisierter Workflows für die Verarbeitung von E-Mails mit Azure Logic Apps, Azure Storage und Azure Functions'
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/27/2020
-ms.openlocfilehash: 332be9cb0f31119e7d2f2d9fe2d3dc1f73e6d3ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146727"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132329"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Tutorial: Automatisieren von Aufgaben zur Verarbeitung von E-Mails mithilfe von Azure Logic Apps, Azure Functions und Azure Storage
 
@@ -38,22 +38,20 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/).
+* Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](/connectors/).
 
   In dieser Logik-App verwenden wir ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
   > [!IMPORTANT]
-  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Laden Sie den kostenlosen [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) herunter, und installieren Sie ihn. Mit diesem Tool können Sie überprüfen, ob Ihr Speichercontainer ordnungsgemäß eingerichtet ist.
-
-## <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
-
-Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="set-up-storage-to-save-attachments"></a>Einrichten von Speicher zum Speichern von Anlagen
 
 Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontainer](../storage/common/storage-introduction.md) gespeichert werden.
+
+1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Damit Sie einen Speichercontainer erstellen können, müssen Sie zunächst im Azure-Portal auf der Registerkarte **Grundlagen**[ein Speicherkonto](../storage/common/storage-account-create.md) mit den folgenden Einstellungen erstellen:
 
@@ -65,7 +63,7 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
    | **Location** | <*Azure-Region*> | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Leistung** | Standard | Diese Einstellung gibt die unterstützten Datentypen und die Medien für die Datenspeicherung an. Weitere Informationen finden Sie unter [Speicherkontentypen](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Kontoart** | Allgemeiner Zweck | Der [Speicherkontotyp](../storage/common/storage-introduction.md#types-of-storage-accounts). |
-   | **Replikation** | Lokal redundanter Speicher (LRS) | Diese Einstellung gibt an, wie Ihre Daten kopiert, gespeichert, verwaltet und synchronisiert werden. Siehe [Lokal redundanter Speicher (LRS): Kostengünstige Datenredundanz für Azure Storage](../storage/common/storage-redundancy-lrs.md). |
+   | **Replikation** | Lokal redundanter Speicher (LRS) | Diese Einstellung gibt an, wie Ihre Daten kopiert, gespeichert, verwaltet und synchronisiert werden. Siehe [Lokal redundanter Speicher (LRS): Kostengünstige Datenredundanz für Azure Storage](../storage/common/storage-redundancy.md). |
    | **Zugriffsebene (Standard)** | Behalten Sie die aktuelle Einstellung bei. |
    ||||
 
@@ -76,7 +74,7 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
    | **Sichere Übertragung erforderlich** | Disabled | Diese Einstellung gibt die erforderliche Sicherheit für Anforderungen von Verbindungen an. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md). |
    ||||
 
-   Sie können auch [Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) oder die [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) verwenden, um Ihr Speicherkonto zu erstellen.
+   Sie können auch [Azure PowerShell](../storage/common/storage-account-create.md?tabs=powershell) oder die [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) verwenden, um Ihr Speicherkonto zu erstellen.
 
 1. Wählen Sie abschließend **Überprüfen + erstellen** aus.
 
@@ -88,7 +86,7 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
 
       ![Kopieren und Speichern von Speicherkontoname und -schlüssel](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   Sie können auch [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) verwenden, um den Zugriffsschlüssel Ihres Speicherkontos abzurufen.
+   Sie können auch [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) oder die [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) verwenden, um den Zugriffsschlüssel Ihres Speicherkontos abzurufen.
 
 1. Erstellen Sie einen Blobspeichercontainer für Ihre E-Mail-Anlagen.
 
@@ -104,7 +102,7 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
 
       ![Fertiger Speichercontainer](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Sie können auch [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) oder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) verwenden, um einen Speichercontainer zu erstellen.
+   Sie können auch [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) verwenden, um einen Speichercontainer zu erstellen.
 
 Stellen Sie als Nächstes eine Storage-Explorer-Verbindung mit Ihrem Speicherkonto her.
 
@@ -141,7 +139,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
 1. [Erstellen Sie zunächst eine Funktions-App](../azure-functions/functions-create-function-app-portal.md) mit den folgenden Einstellungen, um eine Funktion erstellen können:
 
-   | Einstellung | Wert | BESCHREIBUNG |
+   | Einstellung | Wert | Beschreibung |
    | ------- | ----- | ----------- |
    | **App-Name** | <*Funktions-App-Name*> | Der Name Ihrer Funktions-App (muss innerhalb von Azure global eindeutig sein). Da „CleanTextFunctionApp“ in diesem Beispiel bereits verwendet wird, muss ein anderer Name angegeben werden (beispielsweise „MyCleanTextFunctionApp-<*Ihr Name*>“). |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. |
@@ -244,7 +242,7 @@ Nachdem Sie sich vergewissert haben, dass die Funktion funktioniert, können Sie
    | **Ressourcengruppe** | LA-Tutorial-RG | Die gleiche Azure-Ressourcengruppe, die Sie auch zuvor verwendet haben. |
    | **Name der Logik-App** | LA-ProcessAttachment | Der Name Ihrer Logik-App |
    | **Speicherort auswählen** | USA (Westen) | Die gleiche Region, die Sie auch zuvor verwendet haben. |
-   | **Log Analytics** | Aus | Wählen Sie für dieses Tutorial die Einstellung **Aus** aus. |
+   | **Log Analytics** | Deaktiviert | Wählen Sie für dieses Tutorial die Einstellung **Aus** aus. |
    ||||
 
 1. Wählen Sie nach der Bereitstellung Ihrer App durch Azure auf der Azure-Symbolleiste das Benachrichtigungssymbol und anschließend **Zu Ressource wechseln** aus.

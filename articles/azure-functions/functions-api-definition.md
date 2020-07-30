@@ -1,16 +1,14 @@
 ---
 title: OpenAPI-Metadaten in Azure Functions
 description: Übersicht über OpenAPI-Unterstützung in Azure Functions
-author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.author: alkarche
-ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81866721"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385822"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
 Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions ist eine Vorschaufunktion, mit der Sie eine OpenAPI 2.0-Definition in einer Funktions-App schreiben können. Diese Datei kann dann mit der Funktions-App gehostet werden.
@@ -23,7 +21,7 @@ Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions is
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->Es empfiehlt sich, mit dem [Erste-Schritte-Tutorial](./functions-api-definition-getting-started.md) zu beginnen und dann zu diesem Dokument zurückzukehren, um das Wissen über bestimmte Features zu vertiefen.
+>Es empfiehlt sich, mit dem [Erste-Schritte-Tutorial](./functions-openapi-definition.md) zu beginnen und dann zu diesem Dokument zurückzukehren, um das Wissen über bestimmte Features zu vertiefen.
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>Aktivieren der Unterstützung für eine OpenAPI-Definition
 Sie können alle OpenAPI-Einstellungen auf der Seite **API-Definition** in den **Plattformfunktionen** der Funktions-App konfigurieren.
@@ -36,7 +34,7 @@ Um das Generieren einer gehosteten OpenAPI-Definition und einer Schnellstartdefi
 ## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>Generieren eines Swagger-Gerüsts aus den Metadaten Ihrer Funktion
 Eine Vorlage kann beim Schreiben Ihrer ersten OpenAPI-Definition hilfreich sein. Das Feature für Definitionsvorlagen erstellt eine spärlich konfigurierte OpenAPI-Definition anhand aller Metadaten in der Datei „function.json“ für jede Ihrer HTTP-Triggerfunktionen. Sie müssen weitere Informationen zu Ihrer API aus der [OpenAPI-Spezifikation](https://swagger.io/specification/), eintragen, z.B. Vorlagen für Anforderungen (request) und Antworten (response).
 
-Schrittweise Anweisungen finden Sie im [Erste-Schritte-Tutorial](./functions-api-definition-getting-started.md).
+Schrittweise Anweisungen finden Sie im [Erste-Schritte-Tutorial](./functions-openapi-definition.md).
 
 ### <a name="available-templates"></a><a name="templates"></a>Verfügbare Vorlagen
 
@@ -60,7 +58,7 @@ In der folgenden Tabelle sind die Azure-Portaleinstellungen und die entsprechend
 > [!NOTE]
 > Die Erweiterung „x-ms-summary“ stellt einen Anzeigenamen in Logic Apps, PowerApps und Flow bereit.
 >
-> Weitere Informationen finden Sie unter [Anpassen der Swagger-Definition für PowerApps](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions).
+> Weitere Informationen finden Sie unter [Anpassen der Swagger-Definition für PowerApps](/connectors/custom-connectors/openapi-extensions).
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>Verwenden von CI/CD, um eine API-Definition festzulegen
 
@@ -70,12 +68,12 @@ In der folgenden Tabelle sind die Azure-Portaleinstellungen und die entsprechend
    1. Legen Sie **API-Definitionsquelle** auf **Funktion** fest.
    1. Klicken Sie auf **API-Definitionsvorlage generieren** und anschließend auf **Speichern**, um eine Vorlagendefinition zu erstellen, die Sie später ändern können.
    1. Notieren Sie sich die URL und den Schlüssel der API-Definition.
-1. [Einrichten von Continuous Integration/Continuous Deployment (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
+1. [Einrichten von Continuous Integration/Continuous Deployment (CI/CD)](./functions-continuous-deployment.md#requirements-for-continuous-deployment).
 2. Ändern Sie „swagger.json“ in der Quellcodeverwaltung unter „\site\wwwroot\.azurefunctions\swagger\swagger.json“.
 
 Nun werden Änderungen an „swagger.json“ in Ihrem Repository von Ihrer Funktions-App unter der URL und mit dem Schlüssel der API-Definition gehostet, die Sie sich in Schritt 1.c notiert haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erste-Schritte-Tutorial](functions-api-definition-getting-started.md). Probieren Sie unsere exemplarische Vorgehensweise aus, um eine OpenAPI-Definition in Aktion zu sehen!
+* [Erste-Schritte-Tutorial](./functions-openapi-definition.md). Probieren Sie unsere exemplarische Vorgehensweise aus, um eine OpenAPI-Definition in Aktion zu sehen!
 * [Azure Functions-GitHub-Repository](https://github.com/Azure/Azure-Functions/). Testen Sie das Functions-Repository, und geben Sie uns Feedback zur Vorschauversion der Unterstützung von API-Definitionen! Erstellen Sie ein GitHub-Problem für jeden Punkt, für den Sie eine Aktualisierung wünschen.
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md). Informieren Sie sich über das Programmieren von Funktionen und das Festlegen von Triggern und Bindungen.

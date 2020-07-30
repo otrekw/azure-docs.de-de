@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Ermitteln einer Route zu einem Ort | Microsoft Azure Maps'
 description: In diesem Tutorial wird gezeigt, wie Sie mit dem Microsoft Azure Maps-Routingdienst die Route zu einem Ort (Point of Interest) auf einer Karte darstellen.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 98c36176ecd2996e5f735c52017162a076ef4bde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333760"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287407"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Tutorial: Route zu einem Point of Interest mit Azure Maps
 
@@ -27,7 +27,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und das Ro
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Befolgen Sie vor dem Fortfahren die Anleitung unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps). Sie benötigen ein Abonnement mit dem Tarif „S1“. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Befolgen Sie vor dem Fortfahren die Anleitung unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account). Sie benötigen ein Abonnement mit dem Tarif „S1“. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 <a id="getcoordinates"></a>
 

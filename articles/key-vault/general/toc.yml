@@ -67,7 +67,9 @@
     - name: Vorläufiges Löschen
       items:
         - name: Vorläufiges Löschen in Azure Key Vault
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: Standardmäßige Aktivierung von vorläufigem Löschen
+          href: soft-delete-change.md
     - name: 'Authentifizierung, Anforderungen und Antworten'
       href: authentication-requests-and-responses.md
     - name: Anleitung zur Drosselung von Azure Key Vault
@@ -140,7 +142,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet

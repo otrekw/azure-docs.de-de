@@ -3,20 +3,18 @@ title: 'Tutorial: Azure Notebook: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial wird ein Personalisierungsschleifensystem in einer Azure Notebook-Instanz simuliert, mit dem vorgeschlagen wird, welche Art von Kaffee ein Kunde bestellen soll. Die Benutzer und ihre Präferenzen werden in einem Benutzerdataset gespeichert. Informationen zum Kaffee sind ebenfalls verfügbar und werden in einem Kaffeedataset gespeichert.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
 ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608484"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131972"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutorial: Verwenden der Personalisierung in Azure Notebook
 

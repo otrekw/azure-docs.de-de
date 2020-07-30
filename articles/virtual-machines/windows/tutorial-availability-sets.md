@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065255"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Bereitstellen hoch verfügbarer virtueller Computer mit Azure PowerShell
 
@@ -47,7 +47,7 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 Die Hardware an einem Standort ist in mehrere Updatedomänen und Fehlerdomänen unterteilt. Eine **Updatedomäne** ist eine Gruppe von virtuellen Computern und der zugrunde liegenden physischen Hardwarekomponenten, die gleichzeitig neu gestartet werden können. Virtuelle Computer in ein und derselben **Fehlerdomäne** nutzen denselben Speicher sowie eine Stromquelle und einen Netzwerkswitch gemeinsam.  
 
-Sie können mithilfe von [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) eine Verfügbarkeitsgruppe erstellen. In diesem Beispiel beträgt die Anzahl von Update- und Fehlerdomänen *2*, und die Verfügbarkeitsgruppe hat den Namen*myAvailabilitySet*.
+Sie können mithilfe von [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) eine Verfügbarkeitsgruppe erstellen. In diesem Beispiel beträgt die Anzahl von Update- und Fehlerdomänen *2*, und die Verfügbarkeitsgruppe hat den Namen*myAvailabilitySet*.
 
 Erstellen Sie eine Ressourcengruppe.
 
@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-Erstellen Sie mit [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) mit dem Parameter `-sku aligned` eine verwaltete Verfügbarkeitsgruppe.
+Erstellen Sie mit [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) mit dem Parameter `-sku aligned` eine verwaltete Verfügbarkeitsgruppe.
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -73,15 +73,15 @@ New-AzAvailabilitySet `
 Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sicherzustellen, dass sie ordnungsgemäß auf die Hardwarekomponenten verteilt werden. Nach der Erstellung kann einer Verfügbarkeitsgruppe kein vorhandener virtueller Computer mehr hinzugefügt werden. 
 
 
-Verwenden Sie beim Erstellen eines virtuellen Computers mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den Parameter `-AvailabilitySetName`, um den Namen der Verfügbarkeitsgruppe anzugeben.
+Verwenden Sie beim Erstellen eines virtuellen Computers mit [New-AzVM](/powershell/module/az.compute/new-azvm) den Parameter `-AvailabilitySetName`, um den Namen der Verfügbarkeitsgruppe anzugeben.
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) zuerst den Benutzernamen und das Kennwort des VM-Administrators fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) zuerst den Benutzernamen und das Kennwort des VM-Administrators fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Erstellen Sie nun mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) zwei virtuelle Computer in der Verfügbarkeitsgruppe.
+Erstellen Sie nun mit [New-AzVM](/powershell/module/az.compute/new-azvm) zwei virtuelle Computer in der Verfügbarkeitsgruppe.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -107,7 +107,7 @@ Im Portal sollten Sie bei der Verfügbarkeitsgruppe unter **Ressourcengruppen** 
 
 ## <a name="check-for-available-vm-sizes"></a>Prüfen der verfügbaren VM-Größen 
 
-Wenn Sie einen virtuellen Computer in einer Verfügbarkeitsgruppe erstellen, müssen Sie wissen, welche VM-Größen in der Hardware verfügbar sind. Rufen Sie mit dem Befehl [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) alle verfügbaren Größen für virtuelle Computer ab, die Sie in der Verfügbarkeitsgruppe bereitstellen können.
+Wenn Sie einen virtuellen Computer in einer Verfügbarkeitsgruppe erstellen, müssen Sie wissen, welche VM-Größen in der Hardware verfügbar sind. Rufen Sie mit dem Befehl [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) alle verfügbaren Größen für virtuelle Computer ab, die Sie in der Verfügbarkeitsgruppe bereitstellen können.
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -136,5 +136,3 @@ Im nächsten Tutorial erhalten Sie Informationen zu VM-Skalierungsgruppen.
 
 > [!div class="nextstepaction"]
 > [Erstellen einer VM-Skalierungsgruppe](tutorial-create-vmss.md)
-
-

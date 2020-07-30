@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525941"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284675"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux-VM startet mit Grub Rescue
 
@@ -35,7 +35,7 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 * Der Fehler **Unbekanntes Dateisystem** kann auf eine Beschädigung des Dateisystems auf der Startpartition oder auf eine falsche Kernelkonfiguration zurückzuführen sein.
 
    * Informationen zur Vorgehensweise bei Dateisystemproblemen finden Sie im Artikel [Linux Recovery: Cannot SSH to Linux VM due to file system errors (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes) (Linux-Wiederherstellung: Aufgrund von Dateisystemfehlern keine SSH-Verbindung mit virtuellem Linux-Computer möglich (fsck, inodes)).
-   * Informationen zur Vorgehensweise bei Kernelproblemen finden Sie im Artikel [Linux Recovery: Manually fixing non-boot issues related to Kernel problems](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems) (Linux-Wiederherstellung: Manuelles Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen) oder unter [Linux Recovery: Fixing non-boot issues related to Kernel problems using chroot](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
+   * Informationen zur Vorgehensweise bei Kernelproblemen finden Sie im Artikel [Linux Recovery: Manually fixing non-boot issues related to Kernel problems](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Manuelles Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen) oder unter [Linux Recovery: Fixing non-boot issues related to Kernel problems using chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
    
 ### <a name="error---file-not-found"></a>Fehler: Datei nicht gefunden
 

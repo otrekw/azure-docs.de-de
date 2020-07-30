@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194969"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288115"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Datensicherheits- und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps
 
-Ab dem **1. Mai 2020** wirken sich Änderungen aufgrund der [Datensicherheits- und Datenschutzrichtlinien](https://www.blog.google/technology/safety-security/project-strobe/) von Google möglicherweise auf Ihre Logik-App-Workflows aus, wenn diese den [Gmail-Connector](https://docs.microsoft.com/connectors/gmail/) verwenden. Wenn Ihre Logik-Apps den Gmail-Connector mit einem Gmail-Endbenutzerkonto verwenden (E-Mail-Adresse, die mit @gmail.com oder @googlemail.com endet), können Ihre Logik-Apps nur bestimmte, [von Google genehmigte Trigger, Aktionen und Connectors](#approved-connectors) verwenden.
+Ab dem **1. Mai 2020** wirken sich Änderungen aufgrund der [Datensicherheits- und Datenschutzrichtlinien](https://www.blog.google/technology/safety-security/project-strobe/) von Google möglicherweise auf Ihre Logik-App-Workflows aus, wenn diese den [Gmail-Connector](/connectors/gmail/) verwenden. Wenn Ihre Logik-Apps den Gmail-Connector mit einem Gmail-Endbenutzerkonto verwenden (E-Mail-Adresse, die mit @gmail.com oder @googlemail.com endet), können Ihre Logik-Apps nur bestimmte, [von Google genehmigte Trigger, Aktionen und Connectors](#approved-connectors) verwenden.
 
 > [!NOTE]
 > Wenn Ihre Logik-Apps den Gmail-Connector mit einem G Suite-Geschäftskonto verwenden (E-Mail-Adresse mit benutzerdefinierter Domäne), sind Ihre Logik-Apps nicht betroffen, und es gibt keine Einschränkungen für die Verwendung des Gmail-Connectors.
@@ -62,7 +62,7 @@ Im Folgenden sind einige Beispiele aufgeführt, bei denen der Gmail-Connector mi
 
   ![Nicht kompatible Logik-App: Beispiel 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
-Die jeweils aktuellen Informationen finden Sie in der [technischen Referenzdokumentation für den Gmail-Connector](https://docs.microsoft.com/connectors/gmail/).
+Die jeweils aktuellen Informationen finden Sie in der [technischen Referenzdokumentation für den Gmail-Connector](/connectors/gmail/).
 
 <a name="update-affected-workflows"></a>
 
@@ -74,11 +74,11 @@ Wenn Sie den Gmail-Connector mit einem Gmail-Endbenutzerkonto und nicht von Goog
 
 1. Verwenden Sie in Ihrem Gmail-Connector die Client-ID und den geheimen Clientschlüssel aus Ihrer Google-Client-App.
 
-Weitere Informationen finden Sie in der [technischen Referenzdokumentation für den Gmail-Connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application).
+Weitere Informationen finden Sie in der [technischen Referenzdokumentation für den Gmail-Connector](/connectors/gmail/#authentication-and-bring-your-own-application).
 
 ### <a name="create-google-client-app"></a>Erstellen einer Google-Client-App
 
-Verwenden Sie den [Assistenten für die Google API Console](https://console.developers.google.com/start/api?id=gmail&credential=client_key), und befolgen Sie die Anweisungen, um ein Projekt für Ihre Client-App zu erstellen. Alternativ finden Sie detaillierte Schritte in den Anweisungen in der [technischen Referenzdokumentation für den Gmail-Connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application).
+Verwenden Sie den [Assistenten für die Google API Console](https://console.developers.google.com/start/api?id=gmail&credential=client_key), und befolgen Sie die Anweisungen, um ein Projekt für Ihre Client-App zu erstellen. Alternativ finden Sie detaillierte Schritte in den Anweisungen in der [technischen Referenzdokumentation für den Gmail-Connector](/connectors/gmail/#authentication-and-bring-your-own-application).
 
 Wenn Sie fertig sind, sieht Ihr Bildschirm wie in diesem Beispiel aus, mit dem Unterschied, dass Sie über Ihre eigene **Client-ID** und Ihren eigenen **geheimen Clientschlüssel** verfügen, die Sie später in Ihrer Logik-App verwenden.
 
@@ -117,4 +117,5 @@ Gehen Sie folgendermaßen vor, um die Client-ID und den geheimen Clientschlüsse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Gmail-Connector](https://docs.microsoft.com/connectors/gmail/)
+Weitere Informationen zum [Gmail-Connector](/connectors/gmail/)
+

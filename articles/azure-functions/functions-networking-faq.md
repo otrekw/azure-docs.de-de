@@ -1,17 +1,15 @@
 ---
 title: Häufig gestellte Fragen zu Netzwerken in Azure Functions
 description: Hier finden Sie Antworten auf einige der häufigsten Fragen und Szenarien im Zusammenhang mit Netzwerken in Azure Functions.
-author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75409527"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385907"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Häufig gestellte Fragen zu Netzwerken in Azure Functions
 
@@ -55,7 +53,7 @@ Sie können eine Funktion auch über alle anderen Ressourcen in einem virtuellen
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Wie kann ich meine Funktions-App in einem virtuellen Netzwerk bereitstellen?
 
-Die Bereitstellung in einer App Service Umgebung ist die einzige Möglichkeit, eine Funktions-App zu erstellen, die sich vollständig in einem virtuellen Netzwerk befindet. Details zur Verwendung eines internen Load Balancers in einer App Service-Umgebung finden Sie im Artikel [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Die Bereitstellung in einer App Service Umgebung ist die einzige Möglichkeit, eine Funktions-App zu erstellen, die sich vollständig in einem virtuellen Netzwerk befindet. Details zur Verwendung eines internen Load Balancers in einer App Service-Umgebung finden Sie im Artikel [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
 
 Informationen zu Szenarien, in denen Sie nur unidirektionalen Zugriff auf Ressourcen des virtuellen Netzwerks oder eine weniger umfassende Netzwerkisolation benötigen, finden Sie in der [Übersicht über die Netzwerkoptionen von Functions](functions-networking-options.md).
 

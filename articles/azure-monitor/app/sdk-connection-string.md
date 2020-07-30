@@ -5,13 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
+ms.custom: devx-track-javascript
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482121"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383629"
 ---
 # <a name="connection-strings"></a>Verbindungszeichenfolgen
 
@@ -31,12 +32,12 @@ Kundenszenarien, die die wichtigsten Auswirkungen veranschaulichen:
 
 - Firewallausnahmen oder Proxyumleitungen 
 
-    Wenn eine Überwachung für den Intranetwebserver erforderlich ist, mussten Kunden bei unseren früheren Lösungen ihrer Konfiguration einzelne Dienstendpunkte hinzufügen. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
+    Wenn eine Überwachung für den Intranetwebserver erforderlich ist, mussten Kunden bei unseren früheren Lösungen ihrer Konfiguration einzelne Dienstendpunkte hinzufügen. Weitere Informationen finden Sie [hier](../faq.md#can-i-monitor-an-intranet-web-server). 
     Verbindungszeichenfolgen stellen eine bessere Alternative dar, da der gesamte Aufwand auf eine einzige Einstellung reduziert wird. Ein einfacher Präfix-Suffix-Zusatz ermöglicht das automatische Auffüllen und Umleiten aller Endpunkte an die richtigen Dienste. 
 
 - Sovereign Cloud- oder Hybrid Cloud-Umgebungen
 
-    Benutzer können Daten an eine definierte [Azure Government-Region](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) senden.
+    Benutzer können Daten an eine definierte [Azure Government-Region](../../azure-government/compare-azure-government-global-azure.md#application-insights) senden.
     Mit Verbindungszeichenfolgen können Sie Endpunkteinstellungen für Ihre Intranetserver oder Hybrid Cloud-Einstellungen definieren. 
 
 ## <a name="getting-started"></a>Erste Schritte
@@ -274,14 +275,15 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 Beginnen mit der Laufzeitmethode mit:
 
-* [Virtueller Azure-Computer und Azure-VM-Skalierungsgruppe – Auf IIS gehostete Apps](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [IIS-Server](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure-Web-Apps](../../azure-monitor/app/azure-web-apps.md)
+* [Virtueller Azure-Computer und Azure-VM-Skalierungsgruppe – Auf IIS gehostete Apps](./azure-vm-vmss-apps.md)
+* [IIS-Server](./monitor-performance-live-website-now.md)
+* [Azure-Web-Apps](./azure-web-apps.md)
 
 Beginnen mit der Entwicklungszeitmethode mit:
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
+

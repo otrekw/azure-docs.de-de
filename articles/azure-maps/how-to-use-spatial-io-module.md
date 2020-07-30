@@ -1,19 +1,20 @@
 ---
 title: Verwenden des Moduls Spatial IO von Azure Maps | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie das Modul Spatial IO verwenden, das vom Azure Maps Web SDK bereitgestellt wird. Dieses Modul bietet zuverlässige Features, die es Entwicklern erleichtern, räumliche Daten in das Azure Maps Web SDK zu integrieren.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f848274f67b5ebf5349cbef24a769aaae39b9955
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804638"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287045"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Verwenden des Moduls Spatial IO von Azure Maps
 
@@ -39,7 +40,7 @@ Dieses Video enthält eine Übersicht über das Modul Spatial IO im Azure Maps 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie das Modul Spatial IO einsetzen können, müssen Sie [ein Azure Maps-Konto einrichten](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps) und [den primären Abonnementschlüssel für Ihr Konto ](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account) abrufen.
+Bevor Sie das Modul Spatial IO einsetzen können, müssen Sie [ein Azure Maps-Konto einrichten](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) und [den primären Abonnementschlüssel für Ihr Konto ](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account) abrufen.
 
 ## <a name="installing-the-spatial-io-module"></a>Installieren des Moduls Spatial IO
 

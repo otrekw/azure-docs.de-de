@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3d785edb82e62363dd96d9fd67447f1be7ffe8f5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013979"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>Verwalten von Datenbanken in Azure SQL-Datenbank mit Azure Automation
 
@@ -34,7 +34,7 @@ Indem Sie die Aufgaben in Zusammenhang mit der Cloudverwaltung mit Azure Automat
 
 ## <a name="how-azure-automation-can-help-manage-your-databases"></a>So hilft Azure Automation bei der Verwaltung Ihrer Datenbanken
 
-Mit Azure Automation können Sie Datenbanken in Azure SQL-Datenbank mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) verwalten, die in den [Azure PowerShell-Tools](/powershell/azure/overview) zur Verfügung stehen. In Azure Automation sind diese PowerShell-Cmdlets für Azure SQL-Datenbank sofort einsatzfähig, sodass Sie alle Aufgaben in Zusammenhang mit der Verwaltung Ihrer SQL-Datenbank-Instanz innerhalb des Diensts ausführen können. Sie können diese Cmdlets in Azure Automation auch an die Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben über Azure-Dienste und Drittanbietersysteme hinweg zu automatisieren.
+Mit Azure Automation können Sie Datenbanken in Azure SQL-Datenbank mit [PowerShell-Cmdlets](/powershell/module/servicemanagement/azure.service/#sql) verwalten, die in den [Azure PowerShell-Tools](/powershell/azure/) zur Verfügung stehen. In Azure Automation sind diese PowerShell-Cmdlets für Azure SQL-Datenbank sofort einsatzfähig, sodass Sie alle Aufgaben in Zusammenhang mit der Verwaltung Ihrer SQL-Datenbank-Instanz innerhalb des Diensts ausführen können. Sie können diese Cmdlets in Azure Automation auch an die Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben über Azure-Dienste und Drittanbietersysteme hinweg zu automatisieren.
 
 Azure Automation bietet außerdem die Möglichkeit, über die Ausgabe von SQL-Befehlen in PowerShell direkt mit SQL-Servern zu kommunizieren.
 

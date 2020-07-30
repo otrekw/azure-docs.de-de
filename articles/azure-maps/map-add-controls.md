@@ -1,19 +1,20 @@
 ---
 title: Hinzufügen von Steuerelementen zu einer Karte | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie einer Karte Steuerelemente für Zoom, Neigung und Drehen sowie eine Stilauswahl in Microsoft Azure Maps hinzufügen.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9a54ef02677c657d9a86507370344dd335fd497c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334559"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287003"
 ---
 # <a name="add-controls-to-a-map"></a>Hinzufügen von Steuerelementen zu einer Karte
 
