@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054439"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287800"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection: Entwerfen robuster Lösungen
 
@@ -48,7 +48,7 @@ Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil gen
 
 Die Skalierbarkeit zeigt, wie gut ein System eine höhere Last verarbeiten kann. Entwerfen der Anwendungen für eine [horizontale Skalierung](/azure/architecture/guide/design-principles/scale-out), um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.
 
-Wählen Sie für [Azure App Service](/azure/app-service/app-service-value-prop-what-is) einen [App Service-Plan](/azure/app-service/overview-hosting-plans) aus, der mehrere Instanzen bietet. Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](/azure/cloud-services/cloud-services-choose-me) verwenden. Stellen Sie für [Azure Virtual Machines](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VMs) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](/azure/virtual-machines/virtual-machines-windows-manage-availability) gehört. Sie sollten [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) für Funktionen zur automatischen Skalierung verwenden.
+Wählen Sie für [Azure App Service](/azure/app-service/app-service-value-prop-what-is) einen [App Service-Plan](/azure/app-service/overview-hosting-plans) aus, der mehrere Instanzen bietet. Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](/azure/cloud-services/cloud-services-choose-me) verwenden. Stellen Sie für [Azure Virtual Machines](../../virtual-machines/index.yml) (VMs) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../../virtual-machines/windows/tutorial-availability-sets.md) gehört. Sie sollten [Virtual Machine Scale Sets](../../virtual-machine-scale-sets/overview.md) für Funktionen zur automatischen Skalierung verwenden.
 
 ### <a name="defense-in-depth"></a>Tiefgehende Verteidigung
 

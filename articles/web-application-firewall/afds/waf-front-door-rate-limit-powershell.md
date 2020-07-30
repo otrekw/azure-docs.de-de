@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649363"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005411"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Regel zur Ratenbegrenzung mit Azure PowerShell
 Die Azure-WAF-Ratenbegrenzungsregel (Web Application Firewall) für Azure Front Door steuert die Anzahl der Anforderungen, die von Clients in einem Zeitraum von einer Minute zulässig sind.
@@ -25,7 +25,7 @@ Bevor Sie mit der Einrichtung einer Richtlinie für ein Ratenlimit beginnen, mü
 ### <a name="set-up-your-powershell-environment"></a>Einrichten Ihrer PowerShell-Umgebung
 Azure PowerShell bietet eine Reihe von Cmdlets, die das [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-Modell für die Verwaltung von Azure-Ressourcen verwenden. 
 
-Sie können [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) auf Ihrem lokalen Computer installieren und in einer beliebigen PowerShell-Sitzung nutzen. Befolgen Sie die Anweisungen auf der Seite, um sich mit Ihren Azure-Anmeldeinformationen anzumelden und das Azure PowerShell-Modul zu installieren.
+Sie können [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) auf Ihrem lokalen Computer installieren und in einer beliebigen PowerShell-Sitzung nutzen. Befolgen Sie die Anweisungen auf der Seite, um sich mit Ihren Azure-Anmeldeinformationen anzumelden und das Azure PowerShell-Modul zu installieren.
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Herstellen einer Verbindung mit Azure über ein interaktives Anmeldedialogfeld
 ```

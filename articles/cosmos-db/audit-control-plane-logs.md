@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023686"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Überwachen von Azure Cosmos DB-Vorgängen auf Steuerungsebene
 
@@ -27,9 +27,9 @@ Im Folgenden finden Sie einige Beispielszenarien, in denen das Überwachen von V
 
 ## <a name="disable-key-based-metadata-write-access"></a>Deaktivieren des schlüsselbasierten Metadatenschreibzugriffs
 
-Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deaktivieren Sie den schlüsselbasierten Metadatenschreibzugriff für Ihr Konto. Wenn der schlüsselbasierte Metadatenschreibzugriff deaktiviert ist, können Clients, die über Kontoschlüssel eine Verbindung mit dem Azure Cosmos-Konto herstellen, nicht auf das Konto zugreifen. Sie können den Schreibzugriff deaktivieren, indem Sie Eigenschaft `disableKeyBasedMetadataWriteAccess` auf „true“ festlegen. Nachdem Sie diese Eigenschaft festgelegt haben, können Änderungen an allen Ressourcen von Benutzern vorgenommen werden, die über die richtige RBAC-Rolle (rollenbasierte Zugriffssteuerung) und Anmeldeinformationen verfügen. Weitere Informationen zum Festlegen dieser Eigenschaft finden Sie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk). 
+Bevor Sie die Vorgänge auf Steuerungsebene in Azure Cosmos DB überwachen, deaktivieren Sie den schlüsselbasierten Metadatenschreibzugriff für Ihr Konto. Wenn der schlüsselbasierte Metadatenschreibzugriff deaktiviert ist, können Clients, die über Kontoschlüssel eine Verbindung mit dem Azure Cosmos-Konto herstellen, nicht auf das Konto zugreifen. Sie können den Schreibzugriff deaktivieren, indem Sie Eigenschaft `disableKeyBasedMetadataWriteAccess` auf „true“ festlegen. Nachdem Sie diese Eigenschaft festgelegt haben, können Änderungen an allen Ressourcen von Benutzern vorgenommen werden, die über die richtige RBAC-Rolle (rollenbasierte Zugriffssteuerung) und Anmeldeinformationen verfügen. Weitere Informationen zum Festlegen dieser Eigenschaft finden Sie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#prevent-sdk-changes). 
 
-Wenn `disableKeyBasedMetadataWriteAccess` aktiviert wurde und die SDK-basierten Clients Erstell- oder Aktualisierungsvorgänge ausführen, wird der Fehler *Vorgang „POST“ für die Ressource „ContainerNameorDatabaseName“ ist über den Azure Cosmos DB-Endpunkt nicht zulässig* zurückgegeben. Sie müssen den Zugriff auf solche Vorgänge für Ihr Konto aktivieren oder die Erstellungs-/Aktualisierungsvorgänge über Azure Resource Manager, Azure CLI oder Azure PowerShell ausführen. Um die Umstellung rückgängig zu machen, legen Sie disableKeyBasedMetadataWriteAccess mit Azure CLI auf **false** fest, wie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) beschrieben. Stellen Sie sicher, dass Sie den Wert von `disableKeyBasedMetadataWriteAccess` in „false“ anstelle von „true“ ändern.
+Wenn `disableKeyBasedMetadataWriteAccess` aktiviert wurde und die SDK-basierten Clients Erstell- oder Aktualisierungsvorgänge ausführen, wird der Fehler *Vorgang „POST“ für die Ressource „ContainerNameorDatabaseName“ ist über den Azure Cosmos DB-Endpunkt nicht zulässig* zurückgegeben. Sie müssen den Zugriff auf solche Vorgänge für Ihr Konto aktivieren oder die Erstellungs-/Aktualisierungsvorgänge über Azure Resource Manager, Azure CLI oder Azure PowerShell ausführen. Um die Umstellung rückgängig zu machen, legen Sie disableKeyBasedMetadataWriteAccess mit Azure CLI auf **false** fest, wie im Artikel [Verhindern von Änderungen im Cosmos SDK](role-based-access-control.md#prevent-sdk-changes) beschrieben. Stellen Sie sicher, dass Sie den Wert von `disableKeyBasedMetadataWriteAccess` in „false“ anstelle von „true“ ändern.
 
 Beachten Sie die folgenden Punkte, wenn Sie den Metadatenschreibzugriff deaktivieren:
 

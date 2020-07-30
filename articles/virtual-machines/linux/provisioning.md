@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080147"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux-VM-Bereitstellung
 Wenn Sie einen virtuellen Computer (Virtual Machine, VM) aus einem generalisierten Image (über Shared Image Gallery oder ein verwaltetes Image) erstellen, ermöglicht Ihnen die Steuerungsebene das Erstellen eines virtuellen Computers und das Übergeben von Parametern und Einstellungen an den VM. Dies wird als VM-*Bereitstellung* bezeichnet. Während der Bereitstellung stellt die Plattform dem virtuellen Computer beim Starten die erforderlichen „VM Create“-Parameterwerte (Hostname, Benutzername, Kennwort, SSH-Schlüssel, CustomData) zur Verfügung. 
 
 Ein im Image erstellter Bereitstellungs-Agent stellt eine Verbindung mit der Plattform her (wobei eine Verbindung mit mehreren unabhängigen Bereitstellungsschnittstellen hergestellt wird) und legt die Eigenschaften und das Signal für die Plattform fest. 
 
-Bei den Bereitstellungs-Agents kann es sich um den [Azure Linux-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) oder [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) handeln. Sie gelten als [Voraussetzungen](create-upload-generic.md) für das Erstellen generalisierter Images.
+Bei den Bereitstellungs-Agents kann es sich um den [Azure Linux-Agent](../extensions/agent-linux.md) oder [cloud-init](./using-cloud-init.md) handeln. Sie gelten als [Voraussetzungen](create-upload-generic.md) für das Erstellen generalisierter Images.
 
-Die Bereitstellungs-Agents bieten Unterstützung für alle [von Azure unterstützten Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), und in vielen Fällen werden die unterstützten Distributionsimages sowohl mit cloud-init als auch mit dem Linux-Agent ausgeliefert. Dadurch haben Sie die Möglichkeit, dass cloud-init die Bereitstellung übernimmt, und der Linux-Agent bietet dann Unterstützung für die Handhabung der [Azure-Erweiterungen](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows). Die Unterstützung für Erweiterungen bedeutet, dass der virtuelle Computer dann zusätzliche Azure-Dienste unterstützen kann, z. B. die VM-Kennwortzurücksetzung, Azure Monitor, Azure Backup, Azure Disk Encryption usw.
+Die Bereitstellungs-Agents bieten Unterstützung für alle [von Azure unterstützten Linux-Distributionen](./endorsed-distros.md), und in vielen Fällen werden die unterstützten Distributionsimages sowohl mit cloud-init als auch mit dem Linux-Agent ausgeliefert. Dadurch haben Sie die Möglichkeit, dass cloud-init die Bereitstellung übernimmt, und der Linux-Agent bietet dann Unterstützung für die Handhabung der [Azure-Erweiterungen](../extensions/features-windows.md). Die Unterstützung für Erweiterungen bedeutet, dass der virtuelle Computer dann zusätzliche Azure-Dienste unterstützen kann, z. B. die VM-Kennwortzurücksetzung, Azure Monitor, Azure Backup, Azure Disk Encryption usw.
 
 Nachdem die Bereitstellung abgeschlossen ist, wird cloud-init bei jedem Start ausgeführt. Cloud-init überwacht Änderungen am virtuellen Computer, z. B. Netzwerkänderungen, Einbinden und Formatieren des kurzlebigen Datenträgers und Starten des Linux-Agents. Der Linux-Agent wird kontinuierlich auf dem Server ausgeführt und sucht einen „Zielstatus“ (neue Konfiguration) der Azure-Plattform. Wenn Sie also Erweiterungen installieren, kann der Agent diese verarbeiten.
 

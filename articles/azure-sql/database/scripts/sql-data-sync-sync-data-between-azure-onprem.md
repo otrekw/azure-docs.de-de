@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ca07e30f9d3ef8dee185884cfb4946d93b515932
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 432f9a3e6af60beda9dd8a8dd1237cb93cc40639
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084925"
 ---
 # <a name="use-powershell-to-sync-data-between-sql-database-and-sql-server"></a>Verwenden von PowerShell zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und SQL Server
 
@@ -307,7 +307,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie unter [Azure PowerShell-Beispiele für Azure SQL-Datenbank](../powershell-script-content-guide.md).
 

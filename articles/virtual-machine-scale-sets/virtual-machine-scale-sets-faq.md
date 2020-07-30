@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855594"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080470"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -71,15 +71,15 @@ Ja. Weitere Informationen hierzu finden Sie in der [Dokumentation zu Skalierungs
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Was sind die bewährten Methoden für die automatische Skalierung in Azure?
 
-Bewährte Methoden für die automatische Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung von VMs, VM-Skalierungsgruppen und Clouddiensten](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices).
+Bewährte Methoden für die automatische Skalierung finden Sie unter [Empfohlene Methoden für die automatische Skalierung von VMs, VM-Skalierungsgruppen und Clouddiensten](../azure-monitor/platform/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Wo finde ich Metriknamen für die automatische Skalierung mit hostbasierten Metriken?
 
-Metriknamen für die automatische Skalierung mit hostbasierten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/).
+Metriknamen für die automatische Skalierung mit hostbasierten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/platform/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Gibt es Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge?
 
-Ja. Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/).
+Ja. Beispiele für die automatische Skalierung auf der Grundlage eines Azure Service Bus-Themas und der Warteschlangenlänge finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-common-metrics.md).
 
 Verwenden Sie für eine Service Bus-Warteschlange den folgenden JSON-Code:
 
@@ -104,9 +104,9 @@ Ersetzen Sie die Beispielwerte durch die URIs (Uniform Resource Identifiers) Ihr
 
 Sie können eine Einstellung zur automatischen Skalierung auf einem virtuellen Computer erstellen, um Metriken zu verwenden, die auf der Hostebene oder auf dem Gastbetriebssystem basieren.
 
-Eine Liste mit unterstützten Metriken finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics).
+Eine Liste mit unterstützten Metriken finden Sie unter [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-common-metrics.md).
 
-Ein vollständiges Beispiel für VM-Skalierungsgruppen finden Sie unter [Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets).
+Ein vollständiges Beispiel für VM-Skalierungsgruppen finden Sie unter [Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
 
 In dem Beispiel werden die CPU-Metrik auf der Hostebene und die Metrik für die Nachrichtenanzahl verwendet.
 
@@ -114,13 +114,13 @@ In dem Beispiel werden die CPU-Metrik auf der Hostebene und die Metrik für die 
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Wie lege ich Warnungsregeln für eine VM-Skalierungsgruppe fest?
 
-Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) und unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
+Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) und unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](../azure-monitor/samples/cli-samples.md#work-with-alerts).
 
 Die Zielressourcen-ID (TargetResourceId) der VM-Skalierungsgruppe sieht wie folgt aus:
 
 /subscriptions/IhreAbonnementID/resourceGroups/<Ihre Ressourcengruppe>/providers/Microsoft.Compute/virtualMachineScaleSets/<Name Ihrer VM-Skalierungsgruppe>
 
-Als Metrik, für die eine Warnung festgelegt werden soll, können Sie einen beliebigen VM-Leistungsindikator auswählen. Weitere Informationen finden Sie im Artikel [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/) unter [Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) und [Gastbetriebssystem-Metriken für virtuelle Linux-Computer](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms).
+Als Metrik, für die eine Warnung festgelegt werden soll, können Sie einen beliebigen VM-Leistungsindikator auswählen. Weitere Informationen finden Sie im Artikel [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../azure-monitor/platform/autoscale-common-metrics.md) unter [Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) und [Gastbetriebssystem-Metriken für virtuelle Linux-Computer](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms).
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Wie richte ich die automatische Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell ein?
 
@@ -159,7 +159,7 @@ Verwenden Sie dazu den folgenden JSON-Code:
 
 Der Code ist für Windows und Linux geeignet.
 
-Weitere Informationen finden Sie unter [Create or update a set](https://msdn.microsoft.com/library/mt589035.aspx) (Erstellen oder Aktualisieren einer Gruppe).
+Weitere Informationen finden Sie unter [Create or update a set](/rest/api/compute/virtualmachinescalesets/createorupdate) (Erstellen oder Aktualisieren einer Gruppe).
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Wie verwende ich selbstsignierte Zertifikate, die für Azure Service Fabric-Cluster bereitgestellt werden?
@@ -169,7 +169,7 @@ Verwenden Sie für das neueste Beispiel die folgende Azure-CLI-Anweisung innerha
 az sf cluster create -h
 ```
 
-Selbstsignierte Zertifikate können nicht für verteilte Vertrauensstellungen verwendet werden, die von einer Zertifizierungsstelle bereitgestellt werden, und sie sollten nicht für Service Fabric Cluster verwendet werden, die zum Hosten von Produktionslösungen von Unternehmen bestimmt sind; weitere Anleitungen zur Service Fabric-Sicherheit finden Sie in [Azure Service Fabric Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) (Azure Service Fabric-Sicherheit – bewährte Methoden) und [Service Fabric cluster security scenarios](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/) (Service Fabric Cluster-Sicherheitsszenarien).
+Selbstsignierte Zertifikate können nicht für verteilte Vertrauensstellungen verwendet werden, die von einer Zertifizierungsstelle bereitgestellt werden, und sie sollten nicht für Service Fabric Cluster verwendet werden, die zum Hosten von Produktionslösungen von Unternehmen bestimmt sind; weitere Anleitungen zur Service Fabric-Sicherheit finden Sie in [Azure Service Fabric Security Best Practices](../security/fundamentals/service-fabric-best-practices.md) (Azure Service Fabric-Sicherheit – bewährte Methoden) und [Service Fabric cluster security scenarios](../service-fabric/service-fabric-cluster-security.md) (Service Fabric Cluster-Sicherheitsszenarien).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Kann ich ein SSH-Schlüsselpaar für die SSH-Authentifizierung mit einer Linux-VM-Skalierungsgruppe über eine Resource Manager-Vorlage angeben?
 
@@ -197,7 +197,7 @@ Schließen Sie **osProfile** in Ihre Vorlage ein:
 
 Dieser JSON-Block wird in [dieser Azure-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) verwendet.
 
-Weitere Informationen finden Sie unter [Create or update a set](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration) (Erstellen oder Aktualisieren einer Gruppe).
+Weitere Informationen finden Sie unter [Create or update a set](/rest/api/compute/virtualmachinescalesets/createorupdate#linuxconfiguration) (Erstellen oder Aktualisieren einer Gruppe).
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>Wie entferne ich veraltete Zertifikate?
 
@@ -240,7 +240,7 @@ Dieser Fall kann eintreten, wenn Sie versuchen, den gleichen Tresor erneut hinzu
 
 Aktualisieren Sie die Liste „$vmss.properties.osProfile.secrets[0].vaultCertificates“, um weitere Geheimnisse aus dem gleichen Schlüsseltresor hinzuzufügen.
 
-Die erwartete Eingabestruktur finden Sie unter [Create or update a set](https://msdn.microsoft.com/library/azure/mt589035.aspx) (Erstellen oder Aktualisieren einer Gruppe).
+Die erwartete Eingabestruktur finden Sie unter [Create or update a set](/rest/api/compute/virtualmachinescalesets/createorupdate) (Erstellen oder Aktualisieren einer Gruppe).
 
 Suchen Sie im Schlüsseltresor das Geheimnis im VM-Skalierungsgruppenobjekt. Fügen Sie anschließend Ihren Zertifikatsverweis (URL und Name des Geheimnisspeichers) der dem Tresor zugeordneten Liste hinzu.
 
@@ -268,7 +268,7 @@ Zertifikate werden allen Ihren virtuellen Computern hinzugefügt. Das gilt auch 
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Wohin platziere ich Zertifikate für virtuelle Linux-Computer?
 
-Eine Anleitung zum Bereitstellen von Zertifikaten für virtuelle Linux-Computer finden Sie unter [Deploy Certificates to VMs from customer-managed Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) (Bereitstellen von Zertifikaten für virtuelle Computer über eine vom Kunden verwaltete Key Vault-Instanz).
+Eine Anleitung zum Bereitstellen von Zertifikaten für virtuelle Linux-Computer finden Sie unter [Deploy Certificates to VMs from customer-managed Key Vault](/archive/blogs/kv/deploy-certificates-to-vms-from-customer-managed-key-vault) (Bereitstellen von Zertifikaten für virtuelle Computer über eine vom Kunden verwaltete Key Vault-Instanz).
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>Wie füge ich einem neuen Zertifikatobjekt ein neues Tresorzertifikat hinzu?
 
@@ -304,7 +304,7 @@ Wenn Sie einen virtuellen Computer erstellen und anschließend Ihr Geheimnis im 
 
 Wenn Sie öffentliche CER-Schlüssel für eine VM-Skalierungsgruppe bereitstellen möchten, können Sie eine PFX-Datei erstellen, die nur CER-Dateien enthält. Verwenden Sie hierzu `X509ContentType = Pfx`. Laden Sie beispielsweise die CER-Datei als Objekt vom Typ „x509Certificate2“ in C# oder PowerShell, und rufen Sie dann die Methode auf.
 
-Weitere Informationen finden Sie unter [X509Certificate.Export Method (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)) (X509Certificate.Export-Methode (X509ContentType, String)).
+Weitere Informationen finden Sie unter [X509Certificate.Export Method (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_) (X509Certificate.Export-Methode (X509ContentType, String)).
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Wie übergebe ich Zertifikate als base64-Zeichenfolgen?
 
@@ -334,7 +334,7 @@ VM-Skalierungsgruppen sind hinsichtlich der Konformität ein grundlegender Besta
 
 Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
-### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Können [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/msi-overview) zusammen mit einer VM-Skalierungsgruppe verwendet werden?
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Können [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) zusammen mit einer VM-Skalierungsgruppe verwendet werden?
 
 Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) und [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
@@ -436,7 +436,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>Wie führe ich ein benutzerdefiniertes Skript aus, das in einem privaten Speicherkonto gehostet wird?
 
-Zum Ausführen eines benutzerdefinierten Skripts, das in einem privaten Speicherkonto gehostet wird, müssen Sie geschützte Einstellungen mit dem Speicherkontoschlüssel und -name einrichten. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
+Zum Ausführen eines benutzerdefinierten Skripts, das in einem privaten Speicherkonto gehostet wird, müssen Sie geschützte Einstellungen mit dem Speicherkontoschlüssel und -name einrichten. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung](../virtual-machines/extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json#property-managedidentity).
 
 ## <a name="passwords"></a>Kennwörter
 
@@ -448,7 +448,7 @@ Es gibt zwei Hauptmethoden zum Ändern des Kennworts für virtuelle Computer in 
 
     Aktualisieren Sie die Administratoranmeldeinformationen direkt im Skalierungsgruppenmodell (z. B. mit dem Azure-Ressourcen-Explorer, mit PowerShell oder mit CLI). Sobald die Skalierungsgruppe aktualisiert wurde, werden für alle neuen virtuellen Computer die neuen Anmeldeinformationen verwendet. Vorhandene virtuelle Computer erhalten die neuen Anmeldeinformationen nur, wenn für sie ein Reimaging durchgeführt wird.
 
-- Setzen Sie das Kennwort mit den Zugriffserweiterungen für virtuelle Computer zurück. Achten Sie darauf, den Kennwortanforderungen zu folgen, wie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm) beschrieben.
+- Setzen Sie das Kennwort mit den Zugriffserweiterungen für virtuelle Computer zurück. Achten Sie darauf, den Kennwortanforderungen zu folgen, wie [hier](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) beschrieben.
 
     Verwenden Sie das folgende PowerShell-Beispiel:
 
@@ -635,7 +635,7 @@ Ja, Sie können Skalierungsgruppenressourcen in ein neues Abonnement oder eine n
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Wie kann ich meine VM-Skalierungsgruppe auf ein neues Image aktualisieren? Wie verwalte das Patchen?
 
-Informationen zum Aktualisieren Ihrer VM-Skalierungsgruppe auf ein neues Image sowie zum Verwalten des Patchens finden Sie unter [Upgraden einer VM-Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
+Informationen zum Aktualisieren Ihrer VM-Skalierungsgruppe auf ein neues Image sowie zum Verwalten des Patchens finden Sie unter [Upgraden einer VM-Skalierungsgruppe](./virtual-machine-scale-sets-upgrade-scale-set.md).
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Kann ich einen virtuellen Computer mittels Reimaging zurücksetzen, ohne das Image zu ändern? (Ich möchte einen virtuellen Computer auf die Werkseinstellungen zurücksetzen, nicht auf ein neues Image.)
 

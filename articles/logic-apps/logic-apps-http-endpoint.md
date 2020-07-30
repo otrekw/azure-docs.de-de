@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078663"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Logik-Apps mithilfe von HTTPS-Endpunkten in Azure Logic Apps
 
@@ -388,7 +388,7 @@ Um die JSON-Definition der Antwortaktion und die vollständige JSON-Definition I
 
 #### <a name="q-what-about-url-security"></a>F: Wie sieht es mit der URL-Sicherheit aus?
 
-**A:** Azure generiert über eine [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature) auf sichere Weise Rückruf-URLs für Logik-Apps. Diese Signatur wird als Abfrageparameter übergeben und muss überprüft werden, bevor Ihre Logik-App ausgeführt werden kann. Azure generiert die Signatur durch eine eindeutige Kombination aus einem geheimen Schlüssel pro Logik-App, dem Namen des Triggers und dem ausgeführten Vorgang. Nur wenn ein Benutzer Zugriff auf den geheimen Logik-App-Schlüssel hat, kann er eine gültige Signatur generieren.
+**A:** Azure generiert über eine [Shared Access Signature (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature) auf sichere Weise Rückruf-URLs für Logik-Apps. Diese Signatur wird als Abfrageparameter übergeben und muss überprüft werden, bevor Ihre Logik-App ausgeführt werden kann. Azure generiert die Signatur durch eine eindeutige Kombination aus einem geheimen Schlüssel pro Logik-App, dem Namen des Triggers und dem ausgeführten Vorgang. Nur wenn ein Benutzer Zugriff auf den geheimen Logik-App-Schlüssel hat, kann er eine gültige Signatur generieren.
 
 > [!IMPORTANT]
 > Bei Produktionssystemen und Systemen mit höherer Sicherheit wird dringend davon abgeraten, Ihre Logik-App direkt aus dem Browser aufzurufen. Das hat folgende Gründe:

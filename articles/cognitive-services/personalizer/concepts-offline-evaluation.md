@@ -3,19 +3,17 @@ title: 'Verwenden der Offlineauswertungsmethode: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel wird erläutert, wie Sie mit der Offlineauswertung die Effektivität Ihrer App zu messen und Ihre Lernschleife analysieren können.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623588"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132754"
 ---
 # <a name="offline-evaluation"></a>Offlineauswertung
 

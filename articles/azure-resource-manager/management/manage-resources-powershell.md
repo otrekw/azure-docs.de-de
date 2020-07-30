@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 2c14e8ae7de48752466cea43205445d5bb4856c9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9cb5a9aa782017075a58737f8cb94569c2cc6288
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055357"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373299"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Verwalten von Azure-Ressourcen mithilfe von Azure PowerShell
 
@@ -59,11 +59,11 @@ Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit 
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Bereitstellen einer Ressourcengruppe und von Ressourcen
 
-Sie können eine Ressourcengruppe erstellen und Ressourcen in der Gruppe bereitstellen. Weitere Informationen finden Sie unter [Erstellen einer Ressourcengruppe und Bereitstellen von Ressourcen](../templates/deploy-to-subscription.md#resource-group-and-resources).
+Sie können eine Ressourcengruppe erstellen und Ressourcen in der Gruppe bereitstellen. Weitere Informationen finden Sie unter [Erstellen einer Ressourcengruppe und Bereitstellen von Ressourcen](../templates/deploy-to-subscription.md#resource-groups).
 
 ## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Bereitstellen von Ressourcen für mehrere Abonnements oder Ressourcengruppen
 
-In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourcengruppe bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](../templates/cross-resource-group-deployment.md).
+In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourcengruppe bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](../templates/cross-scope-deployment.md).
 
 ## <a name="delete-resources"></a>Löschen von Ressourcen
 

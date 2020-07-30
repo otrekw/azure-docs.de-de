@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084499"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Verwalten von Streamingendpunkten mithilfe des Azure-Portals 
 
@@ -67,7 +67,7 @@ Mit einem Streamingendpunkt können Sie die folgenden Eigenschaften konfiguriere
 * Cachesteuerung
 * Websiteübergreifende Zugriffsrichtlinien
 
-Ausführliche Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+Ausführliche Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).
 
 >[!NOTE]
 >Bei aktiviertem CDN ist kein IP-Zugriff möglich. Der IP-Zugriff ist nur anwendbar, wenn kein CDN vorhanden ist.
@@ -122,4 +122,3 @@ Sie können das CDN-Profil konfigurieren, indem Sie oben auf die Schaltfläche *
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

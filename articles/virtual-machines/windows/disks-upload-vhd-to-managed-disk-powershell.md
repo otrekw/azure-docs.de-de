@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944626"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009611"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure PowerShell
 
@@ -34,7 +34,7 @@ Wenn Sie Ihre VHD in Azure hochladen möchten, müssen Sie einen leeren verwalte
 
 Diese Art des verwalteten Datenträgers verfügt über zwei eindeutige Zustände:
 
-- „ReadyToUpload“: Der Datenträger ist für den Upload bereit, jedoch wurde keine [SAS (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) generiert.
+- „ReadyToUpload“: Der Datenträger ist für den Upload bereit, jedoch wurde keine [SAS (Shared Access Signature)](../../storage/common/storage-sas-overview.md) generiert.
 - „ActiveUpload“: Der Datenträger ist für den Upload bereit, und die SAS wurde generiert.
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Diese Art des verwalteten Datenträgers verfügt über zwei eindeutige Zustände
 
 Bevor Sie eine leere HDD Standard zum Hochladen erstellen können, benötigen Sie die Dateigröße der VHD in Byte, die Sie hochladen möchten. Der Beispielcode ruft diese Größe für Sie ab. Wenn Sie die Größe manuell abrufen möchten, können Sie Folgendes verwenden: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Dieser Wert wird verwendet, wenn der Parameter **-UploadSizeInBytes** angegeben wird.
 
-Erstellen Sie nun für das Hochladen (Upload) einen leeren HDD Standard-Datenträger. Führen Sie dazu in Ihrer lokalen Shell das [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0)-Cmdlet aus, für das Sie die **Upload**-Einstellung im **-CreateOption**-Parameter und den **-UploadSizeInBytes**-Parameter angeben. Rufen Sie dann [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) auf, um den Datenträger zu erstellen.
+Erstellen Sie nun für das Hochladen (Upload) einen leeren HDD Standard-Datenträger. Führen Sie dazu in Ihrer lokalen Shell das [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0)-Cmdlet aus, für das Sie die **Upload**-Einstellung im **-CreateOption**-Parameter und den **-UploadSizeInBytes**-Parameter angeben. Rufen Sie dann [New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) auf, um den Datenträger zu erstellen.
 
 Ersetzen Sie `<yourdiskname>`, `<yourresourcegroupname>` und `<yourregion>`, und führen Sie dann die folgenden Befehle aus:
 

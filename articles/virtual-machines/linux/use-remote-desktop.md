@@ -10,15 +10,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d9d7ff9c9a54b74e3160b9de3df1f08a81e6531
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291082"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -133,11 +133,10 @@ tail -f /var/log/syslog
 
 Andere Linux-Distributionen, wie etwa Red Hat Enterprise Linux und SUSE, verwenden möglicherweise andere Verfahren zum erneuten Starten von Diensten sowie andere Speicherorte für die zu überprüfenden Protokolldateien.
 
-Wenn Sie in Ihrem Remotedesktopclient keine Antwort empfangen und keine Ereignisse im Systemprotokoll finden, zeigt dieses Verhalten an, dass der Remotedesktop-Datenverkehr den virtuellen Computer nicht erreicht. Überprüfen Sie die Regeln Ihrer Netzwerksicherheitsgruppe, um sicherzustellen, dass eine Regel in Kraft ist, die TCP an Port 3389 zulässt. Weitere Informationen finden Sie unter [Behandlung von Konnektivitätsproblemen mit Anwendungen](../windows/troubleshoot-app-connection.md).
+Wenn Sie in Ihrem Remotedesktopclient keine Antwort empfangen und keine Ereignisse im Systemprotokoll finden, zeigt dieses Verhalten an, dass der Remotedesktop-Datenverkehr den virtuellen Computer nicht erreicht. Überprüfen Sie die Regeln Ihrer Netzwerksicherheitsgruppe, um sicherzustellen, dass eine Regel in Kraft ist, die TCP an Port 3389 zulässt. Weitere Informationen finden Sie unter [Behandlung von Konnektivitätsproblemen mit Anwendungen](../troubleshooting/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Erstellen und Verwenden von SSH-Schlüsseln mit virtuellen Linux-Computern finden Sie unter [Erstellen von SSH-Schlüsseln für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
 
 Informationen zum Verwenden von SSH unter Windows finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows](ssh-from-windows.md).
-

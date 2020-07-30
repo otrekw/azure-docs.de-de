@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 12/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 45dee04601dd2d6ffb1dba79ccf81c90d859af08
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1b3ca729a1f2eae6807e2105d9094f10fe2d6263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072897"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
@@ -102,20 +102,20 @@ So stellen Sie Clouddienste im Azure-Portal erneut bereit:
 
 So stellen Sie Clouddienste über PowerShell erneut bereit:
 
-1. [Erstellen Sie einen neuen Clouddienst](/powershell/module/servicemanagement/azure/new-azureservice), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
+1. [Erstellen Sie einen neuen Clouddienst](/powershell/module/servicemanagement/azure.service/new-azureservice), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
 
     ```powershell
     New-AzureService -ServiceName <yourServiceName> -Label <MyTestService> -Location <westeurope>
     ```
 
-1. [Erstellen Sie eine neuen Bereitstellung](/powershell/module/servicemanagement/azure/new-azuredeployment), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
+1. [Erstellen Sie eine neuen Bereitstellung](/powershell/module/servicemanagement/azure.service/new-azuredeployment), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
 
     ```powershell
     New-AzureDeployment -ServiceName <yourServiceName> -Slot <Production> -Package <YourCspkgFile.cspkg> -Configuration <YourConfigFile.cscfg>
     ```
 
 1. Aktualisieren Sie den [CNAME- oder A-Eintrag](../cloud-services/cloud-services-custom-domain-name-portal.md) zur Umleitung des Datenverkehrs an den neuen Clouddienst.
-1. Wenn Datenverkehr auf den neuen Clouddienst verweist, [löschen Sie den alten Clouddienst](/powershell/module/servicemanagement/azure/remove-azureservice) in Azure Deutschland.
+1. Wenn Datenverkehr auf den neuen Clouddienst verweist, [löschen Sie den alten Clouddienst](/powershell/module/servicemanagement/azure.service/remove-azureservice) in Azure Deutschland.
 
     ```powershell
     Remove-AzureService -ServiceName <yourOldServiceName>

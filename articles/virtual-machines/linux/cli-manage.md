@@ -3,21 +3,21 @@ title: Häufig verwendete Azure-CLI-Befehle
 description: Erfahren Sie mehr über häufig verwendete Azure CLI-Befehle für den Einstieg in die Verwaltung Ihrer virtuellen Computer im Azure Resource Manager-Modus
 author: RicksterCDN
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969247"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372245"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Häufig verwendete Azure CLI-Befehle zum Verwalten von Azure-Ressourcen
 
 Mit Azure CLI können Sie Ihre Azure-Ressourcen unter macOS, Linux und Windows erstellen und verwalten. In diesem Artikel werden einige der am häufigsten verwendeten Befehle zum Erstellen und Verwalten von virtuellen Computern (VMs) erläutert.
 
-Für diesen Artikel ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) weitere Informationen. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
+Für diesen Artikel ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) weitere Informationen. Sie können auch [Cloud Shell](../../cloud-shell/quickstart.md) in Ihrem Browser verwenden.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Grundlegende Azure Resource Manager-Befehle in der Azure-Befehlszeilenschnittstelle
 Ausführlichere Informationen zu bestimmten Befehlszeilenschaltern und -optionen finden Sie in der Onlinehilfe zu Befehlen und Optionen, die Sie durch Eingeben von `az <command> <subcommand> --help` aufrufen können.
@@ -60,6 +60,3 @@ Ausführlichere Informationen zu bestimmten Befehlszeilenschaltern und -optionen
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Beispiele für CLI-Befehle finden Sie im Tutorial [Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](tutorial-manage-vm.md).
-
-
-

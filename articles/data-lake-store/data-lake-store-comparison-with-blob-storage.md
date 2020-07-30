@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9ab1e2ed4aeace0ec98cb358f32a07f64c3dfea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075053"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Vergleich von Azure Data Lake Storage Gen1 und Azure Blob Storage
 
@@ -19,8 +19,8 @@ ms.locfileid: "82691723"
 
 In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lake Storage Gen1 und Azure Blob Storage zusammengefasst und einige wichtige Aspekte der Big Data-Verarbeitung aufgezeigt. Azure Blob Storage ist ein universell einsetzbarer und skalierbarer Objektspeicher, der auf eine Vielzahl von Speicherszenarien ausgelegt ist. Azure Data Lake Storage Gen1 ist ein hochgradig skalierbares Repository, das für Big Data-Analyseworkloads optimiert ist.
 
-|  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
-| --- | --- | --- |
+| Category | Azure Data Lake Storage Gen1 | Azure Blob Storage |
+| -------- | ---------------------------- | ------------------ |
 | Zweck |Optimierter Speicher für Big Data-Analyseworkloads |Universell einsetzbarer Objektspeicher für eine Vielzahl von Speicherszenarien, wie z.B. Big Data-Analysen |
 | Anwendungsfälle |Batch-, interaktive Streaming Analytics- und Machine Learning-Daten wie beispielsweise Protokolldateien, IoT-Daten, Clickstreams, große Datasets |Jede Art von Text- oder Binärdaten, beispielsweise Daten des Anwendungs-Back-Ends, Sicherungsdaten, Medienspeicher für Streaming und universelle Daten Zusätzlich vollständige Unterstützung für Analyseworkloads; Batch-, interaktive Streaming Analytics- und Machine Learning-Daten wie beispielsweise Protokolldateien, IoT-Daten, Clickstreams, große Datasets |
 | Wichtige Konzepte |Das Data Lake Storage Gen1-Konto enthält Ordner, die wiederum als Dateien gespeicherte Daten enthalten. |Das Speicherkonto enthält Container, die wiederum Daten in Form von Blobs enthalten. |

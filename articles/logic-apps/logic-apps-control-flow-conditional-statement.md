@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066352"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Erstellen bedingter Anweisungen zum Steuern von Workflowaktionen in Azure Logic Apps
 
@@ -110,7 +110,7 @@ So sieht die allgemeine Codedefinition hinter einer bedingten Anweisung aus:
 
 ## <a name="get-support"></a>Support
 
-* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

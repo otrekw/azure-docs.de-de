@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327904"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
@@ -30,7 +30,7 @@ Um nachzuverfolgen, welche Vorgänge ein Benutzer im Laufe der Zeit durchführt,
 - Sitzungen: Fügen Sie die Sitzungs-ID ein.
 
 > [!NOTE]
-> In diesem Artikel werden die manuellen Schritte zum Nachverfolgen der Benutzeraktivität mit Application Insights erläutert. Bei vielen Webanwendungen **sind diese Schritte möglicherweise nicht erforderlich**, da die serverseitigen Standard-SDKs zusammen mit dem [clientseitigen/browserseitigen JavaScript SDK](../../azure-monitor/app/website-monitoring.md ) oftmals ausreichend sind, um die Benutzeraktivität automatisch nachzuverfolgen. Wenn Sie zusätzlich zum serverseitigen SDK die [clientseitige Überwachung](../../azure-monitor/app/website-monitoring.md ) noch nicht konfiguriert haben, erledigen Sie dies zunächst, und testen Sie anschließend, ob die Analysetools für Benutzerverhalten wie erwartet ausgeführt werden.
+> In diesem Artikel werden die manuellen Schritte zum Nachverfolgen der Benutzeraktivität mit Application Insights erläutert. Bei vielen Webanwendungen **sind diese Schritte möglicherweise nicht erforderlich**, da die serverseitigen Standard-SDKs zusammen mit dem [clientseitigen/browserseitigen JavaScript SDK](./website-monitoring.md) oftmals ausreichend sind, um die Benutzeraktivität automatisch nachzuverfolgen. Wenn Sie zusätzlich zum serverseitigen SDK die [clientseitige Überwachung](./website-monitoring.md) noch nicht konfiguriert haben, erledigen Sie dies zunächst, und testen Sie anschließend, ob die Analysetools für Benutzerverhalten wie erwartet ausgeführt werden.
 
 ## <a name="choosing-user-ids"></a>Auswählen von Benutzer-IDs
 
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](usage-segmentation.md)
     - [Trichter](usage-funnels.md)
     - [Vermerkdauer](usage-retention.md)
-    - [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
+    - [Arbeitsmappen](../platform/workbooks-overview.md)
+

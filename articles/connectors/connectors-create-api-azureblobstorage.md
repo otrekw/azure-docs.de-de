@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711288"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284080"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure Blob Storage mithilfe von Azure Logic Apps
 
@@ -20,7 +20,7 @@ In diesem Artikel wird veranschaulicht, wie Sie auf Dateien zugreifen und diese 
 
 Angenommen, Sie verfügen über ein Tool, das auf einer Azure-Website aktualisiert wird, die als Trigger für Ihre Logik-App fungiert. Wenn dieses Ereignis eintritt, können Sie über Ihre Logik-App eine Datei in Ihrem Blobspeichercontainer aktualisieren. Hierbei handelt es sich um eine Aktion in Ihrer Logik-App.
 
-Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen finden Sie in der [Referenz zu Azure Blob Storage](https://docs.microsoft.com/connectors/azureblobconnector/).
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen finden Sie in der [Referenz zu Azure Blob Storage](/connectors/azureblobconnector/).
 
 > [!IMPORTANT]
 > Logik-Apps können nicht direkt auf Speicherkonten zugreifen, die sich hinter Firewalls befinden, wenn sich beide in derselben Region befinden. Um dieses Problem zu umgehen, können Sie Ihre Logik-Apps und Ihr Speicherkonto in verschiedenen Regionen einrichten. Weitere Informationen zum Aktivieren des Zugriffs von Azure Logic Apps auf Speicherkonten hinter Firewalls finden Sie weiter unten in diesem Thema im Abschnitt [Zugriff auf Speicherkonten hinter Firewalls](#storage-firewalls).
@@ -137,7 +137,7 @@ In diesem Beispiel wird nur der Inhalt für ein Blob abgerufen. Fügen Sie zum A
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/azureblobconnector/).
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/azureblobconnector/).
 
 > [!NOTE]
 > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
@@ -194,7 +194,7 @@ Um die Ausnahme und die Unterstützung für verwaltete Identitäten einzurichten
 1. Fügen Sie im Workflow ihrer Logik-App die HTTP-Aktion oder den HTTP-Trigger für den Zugriff auf das Speicherkonto oder die Entität hinzu, und richten Sie diese ein.
 
    > [!IMPORTANT]
-   > Stellen Sie für ausgehende HTTP-Aktions- oder -Triggeraufrufe an Azure-Speicherkonten sicher, dass der Anforderungsheader die Eigenschaft `x-ms-version` und die API-Version für den Vorgang enthält, den Sie in dem Speicherkonto ausführen möchten. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs mithilfe einer verwalteten Identität](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) und [Versionsverwaltung für Azure Storage-Dienste](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
+   > Stellen Sie für ausgehende HTTP-Aktions- oder -Triggeraufrufe an Azure-Speicherkonten sicher, dass der Anforderungsheader die Eigenschaft `x-ms-version` und die API-Version für den Vorgang enthält, den Sie in dem Speicherkonto ausführen möchten. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs mithilfe einer verwalteten Identität](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) und [Versionsverwaltung für Azure Storage-Dienste](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
 
 1. Bei dieser Aktion [wählen Sie die verwaltete Identität aus](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity), die für die Authentifizierung verwendet werden soll.
 
@@ -207,3 +207,4 @@ Wenn Sie für [API Management](../api-management/api-management-key-concepts.md)
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

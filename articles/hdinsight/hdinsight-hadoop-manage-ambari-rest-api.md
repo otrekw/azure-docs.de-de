@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 03ef1708f836eb016d8f2fce530b9588cc61cd35
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081065"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -253,7 +253,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
     Der Rückgabewert ähnelt `/clusters/CLUSTERNAME/`. Dieser Wert ist ein Pfad im Data Lake Storage-Konto. Dieser Pfad ist der Stamm des HDFS-kompatiblen Dateisystems für den Cluster.  
 
 > [!NOTE]  
-> Das Cmdlet [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) von [Azure PowerShell](/powershell/azure/overview) gibt auch die Speicherinformationen für den Cluster zurück.
+> Das Cmdlet [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) von [Azure PowerShell](/powershell/azure/) gibt auch die Speicherinformationen für den Cluster zurück.
 
 ### <a name="get-all-configurations"></a>Abrufen aller Konfigurationen
 

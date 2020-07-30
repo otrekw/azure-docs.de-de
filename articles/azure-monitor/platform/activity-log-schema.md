@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327275"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) gewährt Einblick in alle Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel beschreibt die Kategorien des Aktivitätsprotokolls und das jeweils zugehörige Schema. 
 
 Das Schema variiert je nachdem, wie Sie auf das Protokoll zugreifen:
  
-- Die in diesem Artikel beschriebenen Schemas gelten für den Zugriff auf das Aktivitätsprotokoll über die [REST-API](https://docs.microsoft.com/rest/api/monitor/activitylogs). Diese Schemas werden auch verwendet, wenn Sie beim Anzeigen eines Ereignisses im Azure-Portal die Option **JSON** auswählen.
+- Die in diesem Artikel beschriebenen Schemas gelten für den Zugriff auf das Aktivitätsprotokoll über die [REST-API](/rest/api/monitor/activitylogs). Diese Schemas werden auch verwendet, wenn Sie beim Anzeigen eines Ereignisses im Azure-Portal die Option **JSON** auswählen.
 - Im letzten Abschnitt, [Schema aus Speicherkonto und Event Hubs](#schema-from-storage-account-and-event-hubs) finden Sie Informationen zum Schema für eine [Diagnoseeinstellung](diagnostic-settings.md) zum Senden des Aktivitätsprotokolls an Azure Storage oder Azure Event Hubs.
-- Unter [Azure Monitor-Datenreferenz](https://docs.microsoft.com/azure/azure-monitor/reference/) finden Sie das Schema, das zur Anwendung kommt, wenn Sie das Aktivitätsprotokoll über eine [Diagnoseeinstellung](diagnostic-settings.md) an einen Log Analytics-Arbeitsbereich senden.
+- Unter [Azure Monitor-Datenreferenz](/azure/azure-monitor/reference/) finden Sie das Schema, das zur Anwendung kommt, wenn Sie das Aktivitätsprotokoll über eine [Diagnoseeinstellung](diagnostic-settings.md) an einen Log Analytics-Arbeitsbereich senden.
 
 
 ## <a name="categories"></a>Kategorien
-Jedes Ereignis im Aktivitätsprotokoll verfügt über eine bestimmte Kategorie. Die Kategorien sind in der folgenden Tabelle beschrieben. In den folgenden Abschnitten finden Sie detaillierte Informationen zu jeder Kategorie und dem zugehörigen Schema, wenn Sie über PowerShell, die CLI, das Portal oder die REST-API auf das Aktivitätsprotokoll zugreifen. Das Schema ist unterschiedlich, wenn Sie das [Aktivitätsprotokoll in den Speicher oder an Event Hubs streamen](resource-logs-stream-event-hubs.md). Eine Zuordnung der Eigenschaften zum [Ressourcenprotokollschema](diagnostic-logs-schema.md) befindet sich im letzten Abschnitt dieses Artikels.
+Jedes Ereignis im Aktivitätsprotokoll verfügt über eine bestimmte Kategorie. Die Kategorien sind in der folgenden Tabelle beschrieben. In den folgenden Abschnitten finden Sie detaillierte Informationen zu jeder Kategorie und dem zugehörigen Schema, wenn Sie über PowerShell, die CLI, das Portal oder die REST-API auf das Aktivitätsprotokoll zugreifen. Das Schema ist unterschiedlich, wenn Sie das [Aktivitätsprotokoll in den Speicher oder an Event Hubs streamen](./resource-logs.md#send-to-azure-event-hubs). Eine Zuordnung der Eigenschaften zum [Ressourcenprotokollschema](./resource-logs-schema.md) befindet sich im letzten Abschnitt dieses Artikels.
 
 | Category | BESCHREIBUNG |
 |:---|:---|
@@ -214,7 +214,7 @@ Diese Kategorie enthält Datensätze zu allen Incidents im Zusammenhang mit der 
   }
 }
 ```
-Informationen zu den Werten in den Eigenschaften finden Sie im Artikel [Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal](./../../azure-monitor/platform/service-notifications.md).
+Informationen zu den Werten in den Eigenschaften finden Sie im Artikel [Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal](../../service-health/service-notifications.md).
 
 ## <a name="resource-health-category"></a>Kategorie „Ressourcenintegrität“
 Diese Kategorie enthält Datensätze zu allen Ereignissen im Zusammenhang mit der Ressourcenintegrität, die für Ihre Azure-Ressourcen aufgetreten sind. Ein Beispiel für die Art der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Integritätsstatus des virtuellen Computers ist zu Nicht verfügbar gewechselt“. Ereignisse zur Ressourcenintegrität können über einen von vier Integritätsstatus verfügen: „Available“, „Unavailable“, „Degraded“ und „Unknown“. Darüber hinaus können Ereignisse zur Ressourcenintegrität kategorisiert werden. Dabei sind die Kategorien „Von der Plattform initiiert“ oder „Vom Benutzer initiiert“ verfügbar.
@@ -793,10 +793,10 @@ Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, d
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>Schema aus Speicherkonto und Event Hubs
-Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder Event Hub entsprechen die Daten dem [Ressourcenprotokollschema](diagnostic-logs-schema.md). Die folgende Tabelle zeigt die Zuordnung der Eigenschaften aus den oben genannten Schemas zum Ressourcenprotokollschema.
+Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder Event Hub entsprechen die Daten dem [Ressourcenprotokollschema](./resource-logs-schema.md). Die folgende Tabelle zeigt die Zuordnung der Eigenschaften aus den oben genannten Schemas zum Ressourcenprotokollschema.
 
 > [!IMPORTANT]
-> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden](diagnostic-logs-append-blobs.md).
+> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden](/azure/azure-monitor/platform/resource-logs-blob-format).
 
 
 | Eigenschaft im Ressourcenprotokollschema | Eigenschaft im REST-API-Schema des Aktivitätsprotokolls | Notizen |

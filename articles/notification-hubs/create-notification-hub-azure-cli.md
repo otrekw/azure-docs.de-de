@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080946"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Schnellstart: Erstellen einer Azure Notification Hubs-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -95,7 +95,7 @@ Für Notification Hubs ist mindestens die Version 2.0.67 der Azure-Befehlszeile
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   Wenn der Wert für `--name`, den Sie für den Befehl `az notification-hub namespace create` angegeben haben, nicht verfügbar ist oder die [Benennungsregeln und -einschränkungen für Azure-Ressourcen](/azure/azure-resource-manager/management/resource-name-rules) nicht erfüllt, reagiert die Azure CLI mit der folgenden Konsolenausgabe:
+   Wenn der Wert für `--name`, den Sie für den Befehl `az notification-hub namespace create` angegeben haben, nicht verfügbar ist oder die [Benennungsregeln und -einschränkungen für Azure-Ressourcen](../azure-resource-manager/management/resource-name-rules.md) nicht erfüllt, reagiert die Azure CLI mit der folgenden Konsolenausgabe:
 
    ```output
    #the name is not available
@@ -148,7 +148,7 @@ Für Notification Hubs ist mindestens die Version 2.0.67 der Azure-Befehlszeile
 
 1. Listen Sie die Zugriffsrichtlinien für einen Notification Hub auf.
 
-   Azure Notification Hubs nutzt [SAS-Sicherheit (Shared Access Signature)](/azure/notification-hubs/notification-hubs-push-notification-security) durch die Verwendung von Zugriffsrichtlinien.  Zwei Richtlinien werden automatisch erstellt, wenn Sie einen Benachrichtigungs-Hub erstellen.  Die Verbindungszeichenfolgen aus diesen Richtlinien sind zum Konfigurieren von Pushbenachrichtigungen erforderlich.  Mit dem Befehl [az  notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) wird eine Liste mit Richtliniennamen und den entsprechenden Ressourcengruppen bereitgestellt.
+   Azure Notification Hubs nutzt [SAS-Sicherheit (Shared Access Signature)](./notification-hubs-push-notification-security.md) durch die Verwendung von Zugriffsrichtlinien.  Zwei Richtlinien werden automatisch erstellt, wenn Sie einen Benachrichtigungs-Hub erstellen.  Die Verbindungszeichenfolgen aus diesen Richtlinien sind zum Konfigurieren von Pushbenachrichtigungen erforderlich.  Mit dem Befehl [az  notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) wird eine Liste mit Richtliniennamen und den entsprechenden Ressourcengruppen bereitgestellt.
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -167,7 +167,7 @@ Für Notification Hubs ist mindestens die Version 2.0.67 der Azure-Befehlszeile
 
 3. Listen Sie die Schlüssel und Verbindungszeichenfolgen für eine Notification Hub-Zugriffsrichtlinie auf.
 
-   Jede Zugriffsrichtlinie verfügt über zwei Gruppen von Schlüsseln und Verbindungszeichenfolgen.  Sie werden später zum [Konfigurieren eines Benachrichtigungs-Hubs](/azure/notification-hubs/configure-notification-hub-portal-pns-settings) benötigt.  Führen Sie den Befehl [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) aus, um die Schlüssel und Verbindungszeichenfolgen für eine Notification Hub-Zugriffsrichtlinie aufzulisten.
+   Jede Zugriffsrichtlinie verfügt über zwei Gruppen von Schlüsseln und Verbindungszeichenfolgen.  Sie werden später zum [Konfigurieren eines Benachrichtigungs-Hubs](./configure-notification-hub-portal-pns-settings.md) benötigt.  Führen Sie den Befehl [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) aus, um die Schlüssel und Verbindungszeichenfolgen für eine Notification Hub-Zugriffsrichtlinie aufzulisten.
 
    ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature

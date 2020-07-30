@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071183"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Beheben von Fehlern beim Ausführen eines Failovers einer VMware-VM oder eines physischen Computers nach Azure
 
@@ -54,9 +54,11 @@ Um den Starttyp der Treiber für das **Windows-Gastbetriebssystem** manuell zu �
 
     Es wird folgendes Ergebnis ausgegeben, wenn eine Hydration erforderlich ist:
 
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system doesn't meet no-hydration requirement.
+    This system doesn't meet no-hydration requirement.
+    ```
 
     Wenn für die VM keine Hydration erforderlich ist, gibt das Skript folgendes Ergebnis aus: „Für dieses System ist keine Hydration erforderlich“. In diesem Fall befinden sich alle Treiber und Dienste im von Azure geforderten Zustand und eine Hydration auf der VM ist nicht erforderlich.
 
@@ -65,12 +67,14 @@ Um den Starttyp der Treiber für das **Windows-Gastbetriebssystem** manuell zu �
     `.\Script-no-hydration.ps1 -set`
     
     Damit wird der Startuptyp der Treiber und konvertiert und das folgende Ergebnis ausgegeben:
-    
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
-        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system is now no-hydration compatible. 
+    Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0
+
+    This system is now no-hydration compatible.
+    ```
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Fehler beim Verbindungsaufbau über RDP/SSH mit dem virtuellen Computer (VM), für den ein Failover ausgeführt wurde, aufgrund ausgegrauter Schaltfläche „Verbinden“ auf der VM
 
@@ -116,11 +120,15 @@ Wenn Sie eine Verbindung mit dem Computer über RDP herstellen, aber die seriell
 
 * Wenn das Betriebssystem des Computers Red Hat oder Oracle Linux 7.*/8.0 ist, führen Sie den folgenden Befehl auf der Azure-Failover-VM mit root-Berechtigungen aus. Starten Sie die VM nach dem Befehl neu.
 
-        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```
 
 * Wenn das Betriebssystem des Computers CentOS  7.* ist, führen Sie den folgenden Befehl auf der Azure-Failover-VM mit root-Berechtigungen aus. Starten Sie die VM nach dem Befehl neu.
 
-        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>Nachricht über unerwartetes Herunterfahren (Ereignis-ID 6008)
 

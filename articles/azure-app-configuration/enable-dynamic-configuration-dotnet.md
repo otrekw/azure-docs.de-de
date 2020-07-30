@@ -8,16 +8,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7b6081e6bad1382ca2b3a8349036234c0c01cb13
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e8bc1d2eb978e0685552ff9b86d70ea4731285cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277739"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App
 
-Die App Configuration-.NET-Clientbibliothek unterstützt die Aktualisierung einer Reihe von Konfigurationseinstellungen bei Bedarf, ohne dass eine Anwendung neu gestartet werden muss. Dies kann implementiert werden, indem zuerst eine Instanz von `IConfigurationRefresher` aus den Optionen für den Konfigurationsanbieter abgerufen und anschließend `Refresh` für diese Instanz an einer beliebigen Stelle Ihres Codes aufgerufen wird.
+Die App Configuration-.NET-Clientbibliothek unterstützt die Aktualisierung einer Reihe von Konfigurationseinstellungen bei Bedarf, ohne dass eine Anwendung neu gestartet werden muss. Dies kann implementiert werden, indem zuerst eine Instanz von `IConfigurationRefresher` aus den Optionen für den Konfigurationsanbieter abgerufen und anschließend `TryRefreshAsync` für diese Instanz an einer beliebigen Stelle Ihres Codes aufgerufen wird.
 
 Um die Einstellungen auf dem aktuellen Stand zu halten und zu viele Aufrufe des Konfigurationsspeichers zu vermeiden, wird ein Cache für jede Einstellung verwendet. Bis der zwischengespeicherte Wert einer Einstellung abgelaufen ist, wird der Wert vom Aktualisierungsvorgang nicht aktualisiert. Dies gilt auch, wenn sich der Wert im Konfigurationsspeicher geändert hat. Die Standardablaufzeit jeder Anforderung beträgt 30 Sekunden, aber dies kann bei Bedarf außer Kraft gesetzt werden.
 
@@ -95,7 +95,7 @@ In diesem Tutorial lernen Sie Folgendes:
         PrintMessage().Wait();
     }
     ```
-    Die `ConfigureRefresh`-Methode wird genutzt, um die Einstellungen anzugeben, die zum Aktualisieren der Konfigurationsdaten mit dem App Configuration-Speicher verwendet werden, wenn ein Aktualisierungsvorgang ausgelöst wird. Eine Instanz von `IConfigurationRefresher` kann durch das Aufrufen der `GetRefresher`-Methode in den Optionen der `AddAzureAppConfiguration`-Methode abgerufen werden. Die `Refresh`-Methode dieser Instanz kann verwendet werden, um einen Aktualisierungsvorgang an einer beliebigen Stelle Ihres Codes auszulösen.
+    Die `ConfigureRefresh`-Methode wird genutzt, um die Einstellungen anzugeben, die zum Aktualisieren der Konfigurationsdaten mit dem App Configuration-Speicher verwendet werden, wenn ein Aktualisierungsvorgang ausgelöst wird. Eine Instanz von `IConfigurationRefresher` kann durch das Aufrufen der `GetRefresher`-Methode in den Optionen der `AddAzureAppConfiguration`-Methode abgerufen werden. Die `TryRefreshAsync`-Methode dieser Instanz kann verwendet werden, um einen Aktualisierungsvorgang an einer beliebigen Stelle Ihres Codes auszulösen.
 
     > [!NOTE]
     > Die Standardablaufzeit für eine Konfigurationseinstellung beträgt 30 Sekunden, aber dieser Wert kann außer Kraft gesetzt werden. Rufen Sie hierzu die `SetCacheExpiration`-Methode im Initialisierer für die Optionen auf, die als Argument an die `ConfigureRefresh`-Methode übergeben wird.
@@ -110,7 +110,7 @@ In diesem Tutorial lernen Sie Folgendes:
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
     ```

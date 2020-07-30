@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
-ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791050"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000950"
 ---
 # <a name="media-services-live-event-error-codes"></a>Azure Media Services-Fehlercodes für Liveereignisse
 
@@ -26,7 +26,7 @@ In den Tabellen in diesem Abschnitt sind die [Liveereignis](live-events-outputs-
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Wenn Sie die [Event Grid](https://docs.microsoft.com/azure/event-grid/)-Ereignisse für ein Liveereignis abonnieren, wird möglicherweise einer der folgenden Fehler aus dem [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)-Ereignis ausgegeben.
+Wenn Sie die [Event Grid](../../event-grid/index.yml)-Ereignisse für ein Liveereignis abonnieren, wird möglicherweise einer der folgenden Fehler aus dem [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)-Ereignis ausgegeben.
 
 | Ergebniscode | BESCHREIBUNG |
 | ----------- | ----------- |

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 05d5d901a6ed908dc4ff766a440d5f3e05cb7db3
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: f67df4fa654c8b78e66f008d67ac8386f427b343
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373793"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046236"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Anfügen und Verwenden von Datenträgern mit einer VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe, fügt Datenträger an und bereitet sie vor.
@@ -46,4 +46,4 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

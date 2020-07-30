@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f18885634503cc65a5bf78d93bd84afd018956bd
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e79469aa0e405a0096d483ae290d10415fe74f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000048"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Verwalten von Media Services-Entitäten mit REST  
 
@@ -149,7 +149,7 @@ Host: media.windows.net
 ```
 
 ## <a name="updating-entities"></a>Aktualisieren von Entitäten
-Abhängig vom Typ und dem Status der Entität können Sie Eigenschaften für diese Entität über die HTTP-Anforderungen PATCH, PUT oder MERGE aktualisieren. Weitere Informationen zu diesen Vorgängen finden Sie unter [PATCH, PUT, MERGE](https://msdn.microsoft.com/library/dd541276.aspx).
+Abhängig vom Typ und dem Status der Entität können Sie Eigenschaften für diese Entität über die HTTP-Anforderungen PATCH, PUT oder MERGE aktualisieren. Weitere Informationen zu diesen Vorgängen finden Sie unter [PATCH, PUT, MERGE](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893).
 
 Im folgenden Codebeispiel wird veranschaulicht, wie die Name-Eigenschaft für eine Asset-Entität aktualisiert wird.
 
@@ -190,4 +190,3 @@ Content-Length: 0
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

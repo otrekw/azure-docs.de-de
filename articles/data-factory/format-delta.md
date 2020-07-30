@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044535"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Deltaformat in Azure Data Factory
 
@@ -22,6 +22,8 @@ In diesem Artikel erfahren Sie, wie Sie Daten unter Verwendung des Deltaformats 
 
 > [!NOTE]
 > Der Deltaformatconnector für Zuordnungsdatenflüsse ist zurzeit als Public Preview verfügbar.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
@@ -37,7 +39,7 @@ Die folgende Tabelle enthält die von einer Deltaquelle unterstützten Eigenscha
 | Dateisystem | Der Container bzw. das Dateisystem der Delta Lake-Instanz. | ja | String | fileSystem |
 | Ordnerpfad | Das Verzeichnis der Delta Lake-Instanz. | ja | String | folderPath |
 | Komprimierungstyp | Der Komprimierungstyp der Deltatabelle. | nein | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| Komprimierungsgrad | Wählen Sie aus, ob die Komprimierung schnellstmöglich abgeschlossen oder die resultierende Datei optimal komprimiert werden soll. | Erforderlich, wenn `compressedType` angegeben wird. | compressionLevel |
+| Komprimierungsgrad | Wählen Sie aus, ob die Komprimierung schnellstmöglich abgeschlossen oder die resultierende Datei optimal komprimiert werden soll. | Erforderlich, wenn `compressedType` angegeben wird. | `Optimal` oder `Fastest` | compressionLevel |
 | Zeitreise | Wählen Sie aus, ob eine ältere Momentaufnahme einer Deltatabelle abgefragt werden soll. | nein | Abfragen nach Zeitstempel: Timestamp <br> Abfragen nach Version: Integer | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>Schema importieren
@@ -67,13 +69,13 @@ source(output(movieId as integer,
 
 Die folgende Tabelle enthält die von einer Deltasenke unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `delta` sein | ja | `delta` | format |
 | Dateisystem | Der Container bzw. das Dateisystem der Delta Lake-Instanz. | ja | String | fileSystem |
 | Ordnerpfad | Das Verzeichnis der Delta Lake-Instanz. | ja | String | folderPath |
 | Komprimierungstyp | Der Komprimierungstyp der Deltatabelle. | nein | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| Komprimierungsgrad | Wählen Sie aus, ob die Komprimierung schnellstmöglich abgeschlossen oder die resultierende Datei optimal komprimiert werden soll. | Erforderlich, wenn `compressedType` angegeben wird. | compressionLevel |
+| Komprimierungsgrad | Wählen Sie aus, ob die Komprimierung schnellstmöglich abgeschlossen oder die resultierende Datei optimal komprimiert werden soll. | Erforderlich, wenn `compressedType` angegeben wird. | `Optimal` oder `Fastest` | compressionLevel |
 | Vakuum | Geben Sie für ältere Versionen der Tabelle den Schwellenwert für die Aufbewahrung in Stunden an. Bei einem Wert von Null oder weniger werden standardmäßig 30 Tage verwendet. | ja | Integer | vacuum |
 | Updatemethode | Geben Sie an, welche Updatevorgänge für die Delta Lake-Instanz zulässig sind. Für Methoden, bei denen es sich nicht um Einfügevorgänge handelt, ist zuerst eine Zeilenänderungstransformation erforderlich, um Zeilen zu markieren. | ja | `true` oder `false` | deletable <br> insertable <br> updateable <br> upsertable |
 

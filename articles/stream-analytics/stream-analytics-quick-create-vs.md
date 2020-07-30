@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767237"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337471"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio
 
@@ -42,9 +42,9 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
    
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
-   |Subscription  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
+   |Subscription  | \<Your subscription\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
    |Resource group   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
-   |Region  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
+   |Region  |  \<Select the region that is closest to your users\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
    |IoT Hub-Name  | MyASAIoTHub  |   Wählen Sie einen Namen für Ihre IoT Hub-Instanz aus.   |
 
    ![Erstellen eines IoT Hubs](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
@@ -116,7 +116,7 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
    |Quellentyp   |  Datenstrom |  Wählen Sie die geeignete Eingabequelle aus: Datenstrom oder Referenzdaten.   |
    |`Source`  |  IoT Hub |  Wählen Sie die geeignete Eingabequelle aus.   |
    |Resource  | Datenquelle aus aktuellem Konto wählen | Geben Sie Daten entweder manuell ein, oder wählen Sie ein vorhandenes Konto aus.   |
-   |Subscription  |  \<Ihr Abonnement\>   | Wählen Sie das Azure-Abonnement aus, in dem sich die erstellte IoT Hub-Instanz befindet.   |
+   |Subscription  |  \<Your subscription\>   | Wählen Sie das Azure-Abonnement aus, in dem sich die erstellte IoT Hub-Instanz befindet.   |
    |IoT Hub  |  MyASAIoTHub   |  Wählen Sie den Namen Ihrer IoT Hub-Instanz aus, oder geben Sie ihn ein. IoT Hub-Namen werden automatisch erkannt, wenn sie unter demselben Abonnement erstellt werden.   |
    
 3. Übernehmen Sie für die anderen Optionen die Standardwerte, und klicken Sie zum Speichern der Einstellungen auf **Speichern**.  
@@ -134,7 +134,7 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
    |Ausgabealias  |  Output   |  Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein.   |
    |Senke   |  Blob Storage |  Wählen Sie die geeignete Senke aus.    |
    |Resource  |  Geben Sie die Datenquelleneinstellungen manuell an. |  Geben Sie Daten entweder manuell ein, oder wählen Sie ein vorhandenes Konto aus.   |
-   |Subscription  |  \<Ihr Abonnement\>   | Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben.   |
+   |Subscription  |  \<Your subscription\>   | Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben.   |
    |Speicherkonto  |  asaquickstartstorage   |  Wählen Sie den Namen des Speicherkontos aus, oder geben Sie ihn ein. Speicherkontonamen werden automatisch erkannt, wenn sie im gleichen Abonnement erstellt werden.   |
    |Container  |  container1   |  Wählen Sie den vorhandenen Container aus, den Sie in Ihrem Speicherkonto erstellt haben.   |
    |Pfadmuster  |  output   |  Geben Sie den Namen eines Dateipfads ein, der innerhalb des Containers erstellt werden soll.   |
@@ -151,8 +151,8 @@ Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enth
 
    ```sql
    SELECT *
-   INTO BlobOutput
-   FROM IoTHubInput
+   INTO Output
+   FROM Input
    HAVING Temperature > 27
    ```
 

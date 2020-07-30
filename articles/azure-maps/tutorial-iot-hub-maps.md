@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Implementieren der räumlichen IoT-Analyse | Microsoft Azure Maps'
 description: Hier wird beschrieben, wie Sie IoT Hub in Microsoft Azure Maps-Dienst-APIs integrieren.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2bb5876424730e55d15cc52aeb98aa04af040821
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318925"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133400"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -110,7 +110,7 @@ Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie zunächst 
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos 
 
-Um Geschäftslogik auf der Grundlage der räumlichen Azure Maps-Analyse implementieren zu können, muss in der erstellten Ressourcengruppe ein Azure Maps-Konto erstellt werden. Befolgen Sie die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement im Tarif S1 zu erstellen. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Um Geschäftslogik auf der Grundlage der räumlichen Azure Maps-Analyse implementieren zu können, muss in der erstellten Ressourcengruppe ein Azure Maps-Konto erstellt werden. Befolgen Sie die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account), um ein Azure Maps-Kontoabonnement im Tarif S1 zu erstellen. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 
 

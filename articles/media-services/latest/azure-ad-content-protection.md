@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001399"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Tutorial: End-to-End-Inhaltsschutz mithilfe von Azure AD
 
@@ -48,13 +48,13 @@ Hier werden folgende aktuelle Technologieversionen und Konzepte verwendet. Es wi
 Im Idealfall sollten Sie vor Beginn dieses Tutorials mit folgenden Konzepten vertraut sein:
 
 * Digital Rights Management (DRM)
-* [Azure Media Services (AMS) v3](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Azure Media Services (AMS) v3](./media-services-overview.md)
 * [Richtlinien für Inhaltsschlüssel](content-key-policy-concept.md) von AMS mit der AMS-API v3, dem Azure-Portal oder dem Tool [Azure Media Services Explorer (AMSE)](https://github.com/Azure/Azure-Media-Services-Explorer)
-* Azure AD-Endpunkte der Version 2 in [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/)
-* Moderne Cloudauthentifizierung (beispielsweise [OAuth 2.0 und OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols))
-  * [OAuth 2.0-Autorisierungscodeflow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) und Gründe für PKCE
-  * [Gegenüberstellung von delegierter Berechtigung und Anwendungsberechtigung](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#permissions)
-* [JWT-Token](https://docs.microsoft.com/azure/active-directory/develop/access-tokens), zugehörige Ansprüche und Rollover von Signaturschlüsseln (im Beispiel enthalten)
+* Azure AD-Endpunkte der Version 2 in [Microsoft Identity Platform](../../active-directory/develop/index.yml)
+* Moderne Cloudauthentifizierung (beispielsweise [OAuth 2.0 und OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md))
+  * [OAuth 2.0-Autorisierungscodeflow](../../active-directory/develop/v2-oauth2-auth-code-flow.md) und Gründe für PKCE
+  * [Gegenüberstellung von delegierter Berechtigung und Anwendungsberechtigung](../../active-directory/develop/developer-glossary.md#permissions)
+* [JWT-Token](../../active-directory/develop/access-tokens.md), zugehörige Ansprüche und Rollover von Signaturschlüsseln (im Beispiel enthalten)
 
 ### <a name="prerequisite-code-and-installations"></a>Erforderlicher Code und erforderliche Installationen
 
@@ -63,7 +63,7 @@ Im Idealfall sollten Sie vor Beginn dieses Tutorials mit folgenden Konzepten ver
 * Eine Installation von Node.js. Node.js können Sie hier herunterladen: [https://nodejs.org](https://nodejs.org). npm ist in der Installation enthalten.
 * Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 * Ein AMS-Konto (Azure Media Services).
-* @azure/msal-browser v2.0, eines der Mitglieder der SDK-Familie von [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) für verschiedene Clientplattformen.
+* @azure/msal-browser v2.0, eines der Mitglieder der SDK-Familie von [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) für verschiedene Clientplattformen.
 * Die neueste Version von [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples) (im Beispiel enthalten).
 * FPS-Anmeldeinformationen von Apple, wenn Sie FairPlay-DRM und das mit CORS gehostete Anwendungszertifikat einschließen möchten, auf das über clientseitigen JavaScript-Code zugegriffen werden kann.
 
@@ -98,7 +98,7 @@ Der Entwurf des Subsystems ist in der Abbildung weiter unten dargestellt.  Er um
 
 ![Bildschirm für die Analyse von JWT-Token](media/aad-ams-content-protection/subsystem.svg)
 
-Ausführlichere Informationen zum Subsystem finden Sie unter [Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung](https://docs.microsoft.com/azure/media-services/latest/design-multi-drm-system-with-access-control).
+Ausführlichere Informationen zum Subsystem finden Sie unter [Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung](./design-multi-drm-system-with-access-control.md).
 
 ## <a name="understand-the-single-page-app"></a>Grundlegendes zur Single-Page-Webanwendung
 
@@ -339,7 +339,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-Der Anspruch *groups* ist Mitglied eines [eingeschränkten Anspruchssatzes](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets) in Azure AD.
+Der Anspruch *groups* ist Mitglied eines [eingeschränkten Anspruchssatzes](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) in Azure AD.
 
 #### <a name="test"></a>Testen
 

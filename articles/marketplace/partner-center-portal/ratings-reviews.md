@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109228"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304189"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
 
@@ -24,7 +26,7 @@ Dieser Artikel enthält Informationen zum Dashboard „Bewertungen und Rezension
 
 ## <a name="access-the-dashboard"></a>Zugreifen auf das Dashboard
 
-Erweitern Sie in Partner Center im [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) den Abschnitt **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** , und wählen Sie **Bewertungen und Rezensionen** aus.
+Erweitern Sie in Partner Center im [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) den Abschnitt **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** , und wählen Sie **Bewertungen und Rezensionen** aus.
 
 Im Dashboard wird eine grafische Darstellung der folgenden Kundenaktivität angezeigt:
 

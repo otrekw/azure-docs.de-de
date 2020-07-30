@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672428"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008097"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage
 [Diagnoseeinstellungen](diagnostic-settings.md) in Azure Monitor bezeichnen den Ort, an den die von Azure-Ressourcen erfassten [Plattformprotokolle](platform-logs-overview.md) gesendet werden sollen, sowie die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details und Beispiele für die Verwendung einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedenen Zielen zu erfassen.
@@ -30,7 +30,7 @@ Ausführliche Informationen finden Sie unter [Bereitstellen von Ressourcen mit A
 
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
-Für Ressourcenprotokolle fügen Sie der Vorlage eine Ressource vom Typ `<resource namespace>/providers/diagnosticSettings` hinzu. Der Eigenschaftenabschnitt verwendet das unter [Diagnoseeinstellungen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate) beschriebene Format. Geben Sie im Abschnitt `logs` ein `category`-Element für jede der Kategorien an, die für die zu erfassende Ressource gültig sind. Fügen Sie die `metrics`-Eigenschaft hinzu, um Ressourcenmetriken an denselben Ziele zu erfassen, falls die [Ressource Metriken unterstützt](metrics-supported.md).
+Für Ressourcenprotokolle fügen Sie der Vorlage eine Ressource vom Typ `<resource namespace>/providers/diagnosticSettings` hinzu. Der Eigenschaftenabschnitt verwendet das unter [Diagnoseeinstellungen – Erstellen oder Aktualisieren](/rest/api/monitor/diagnosticsettings/createorupdate) beschriebene Format. Geben Sie im Abschnitt `logs` ein `category`-Element für jede der Kategorien an, die für die zu erfassende Ressource gültig sind. Fügen Sie die `metrics`-Eigenschaft hinzu, um Ressourcenmetriken an denselben Ziele zu erfassen, falls die [Ressource Metriken unterstützt](metrics-supported.md).
 
 Es folgt eine Vorlage, mit der eine Ressourcenprotokollkategorie für eine bestimmte Ressource in einem Log Analytics-Arbeitsbereich, einem Speicherkonto und einem Event Hub erfasst wird.
 
@@ -144,7 +144,7 @@ Es folgt ein Beispiel, bei dem eine Diagnoseeinstellung für eine Autoskalierung
 ```
 
 ## <a name="activity-log"></a>Aktivitätsprotokoll
-Für das Azure-Aktivitätsprotokoll fügen Sie eine Ressource vom Typ `Microsoft.Insights/diagnosticSettings` hinzu. Die verfügbaren Kategorien sind unter [Kategorien im Aktivitätsprotokoll](activity-log-view.md#categories-in-the-activity-log) aufgelistet. Es folgt eine Vorlage, mit der alle Aktivitätsprotokollkategorien in einem Log Analytics-Arbeitsbereich, einem Speicherkonto und einem Event Hub erfasst werden.
+Für das Azure-Aktivitätsprotokoll fügen Sie eine Ressource vom Typ `Microsoft.Insights/diagnosticSettings` hinzu. Die verfügbaren Kategorien sind unter [Kategorien im Aktivitätsprotokoll](./activity-log.md#view-the-activity-log) aufgelistet. Es folgt eine Vorlage, mit der alle Aktivitätsprotokollkategorien in einem Log Analytics-Arbeitsbereich, einem Speicherkonto und einem Event Hub erfasst werden.
 
 
 ```json

@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: e4bdf1c06a4a52a9483b3d2bbae8d2737c531eb0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 97ded67b9f9daa2652b2740a21a4b7d6a0ac2bdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068272"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-powershell"></a>Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe von PowerShell
 
@@ -124,5 +124,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 - Weitere Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

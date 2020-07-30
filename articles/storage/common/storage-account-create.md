@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 219638f70797fc5ea413e4db72e528262df2fa87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037048"
 ---
 # <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
 Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
 
-In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) oder eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/management/overview.md) ein Speicherkonto erstellen.  
+In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) oder eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/management/overview.md) ein Speicherkonto erstellen.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

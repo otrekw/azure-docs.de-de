@@ -3,12 +3,13 @@ title: Problembehandlung bei Application Insights in einem Java-Webprojekt
 description: Handbuch zur Problembehandlung – Überwachen von Live-Java-Apps mit Application Insights
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484796"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372517"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
@@ -24,7 +25,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Warten Sie eine Minute, und klicken Sie auf "Aktualisieren". Die Diagramme aktualisieren sich in regelmäßigen Abständen selbst, können aber auch manuell aktualisiert werden. Das Aktualisierungsintervall hängt vom Zeitbereich des Diagramms ab.
 * Prüfen Sie, ob Sie in der Datei „ApplicationInsights.xml“ (im Ressourcenordner Ihres Projekts) einen Instrumentierungsschlüssel definiert oder als Umgebungsvariable konfiguriert haben.
 * Stellen Sie sicher, dass es in der XML-Datei keinen Knoten `<DisableTelemetry>true</DisableTelemetry>` gibt.
-* In Ihrer Firewall müssen Sie möglicherweise die TCP-Ports 80 und 443 für ausgehenden Datenverkehr zu „dc.services.visualstudio.com“ öffnen. Weitere Informationen finden Sie in den [hier](../../azure-monitor/app/ip-addresses.md)
+* In Ihrer Firewall müssen Sie möglicherweise die TCP-Ports 80 und 443 für ausgehenden Datenverkehr zu „dc.services.visualstudio.com“ öffnen. Weitere Informationen finden Sie in den [hier](./ip-addresses.md)
 * Schauen Sie sich auf der Startseite von Microsoft Azure die Dienststatusübersicht an. Falls es eine Warnungsanzeige gibt, warten Sie, bis sie wieder "OK" anzeigt, und schließen Sie das Application Insights-Anwendungsfenster, bevor Sie es erneut öffnen.
 * [Aktivieren Sie die Protokollierung](#debug-data-from-the-sdk) durch Hinzufügen eines `<SDKLogger />`-Elements unter dem Stammknoten in der Datei „ApplicationInsights.xml“ (im Ressourcenordner Ihres Projekts), und suchen Sie nach Einträgen, denen „AI: INFO/WARN/ERROR“ für verdächtige Protokolleinträge vorangestellt ist. 
 * Stellen Sie sicher, dass die richtige Datei "ApplicationInsights.xml" vom Java-SDK geladen wurde, indem Sie die von der Konsole ausgegebenen Meldungen auf den Hinweis untersuchen, dass die Konfigurationsdatei gefunden wurde.
@@ -38,7 +39,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Sehen Sie die richtige AI-Ressource? Stimmen Sie den iKey Ihrer Anwendung mit der Ressource ab, wo Sie Telemetriedaten erwarten. Sie sollten identisch sein.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Nicht alle Daten werden erwartungsgemäß angezeigt.
-* Öffnen Sie die Seite „Nutzung und geschätzte Kosten“, und überprüfen Sie, ob die [Stichprobenerstellung](../../azure-monitor/app/sampling.md) in Betrieb ist. (Eine Übertragung von 100 % bedeutet, dass kein Sampling durchgeführt wird.) Der Application Insights-Dienst kann für die Übernahmen nur eines Bruchteils der Telemetriedaten, die von Ihrer App empfangen werden, konfiguriert werden. So können Sie sicherstellen, dass Sie Ihr monatliches Kontingent an Telemetriedaten nicht überschreiten.
+* Öffnen Sie die Seite „Nutzung und geschätzte Kosten“, und überprüfen Sie, ob die [Stichprobenerstellung](./sampling.md) in Betrieb ist. (Eine Übertragung von 100 % bedeutet, dass kein Sampling durchgeführt wird.) Der Application Insights-Dienst kann für die Übernahmen nur eines Bruchteils der Telemetriedaten, die von Ihrer App empfangen werden, konfiguriert werden. So können Sie sicherstellen, dass Sie Ihr monatliches Kontingent an Telemetriedaten nicht überschreiten.
 * Haben Sie die SDK-Stichprobenerstellung aktiviert? Wenn Ja, werden Stichproben der Daten mit der Rate erstellt, die für alle entsprechenden Typen angegeben ist.
 * Führen Sie eine ältere Version des Java-SDKs aus? Mit Version 2.0.1 haben wir einen Fehlertoleranzmechanismus zum Behandeln zeitweilig auftretender Netzwerk- und Back-End-Fehler sowie die Datenpersistenz auf lokalen Laufwerken eingeführt.
 * Tritt eine Drosselung aufgrund übermäßiger Telemetriedaten auf? Wenn Sie die INFO-Protokollierung aktivieren, wird eine Protokollmeldung „App wird gedrosselt“ angezeigt. Unser aktueller Grenzwert beträgt 32.000 Telemetrieelemente/Sekunde.
@@ -193,11 +194,11 @@ Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-J
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

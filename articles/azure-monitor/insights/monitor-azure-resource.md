@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326170"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -96,7 +96,7 @@ Viele Dienste stellen auf der Seite **Übersicht** Überwachungsdaten bereit, di
 
 
 ### <a name="insights-and-solutions"></a>Erkenntnisse und Lösungen 
-Einige Dienste bieten Tools, die über die Standardfeatures von Azure Monitor hinausgehen. [Erkenntnisse](../insights/insights-overview.md) bieten eine angepasste Überwachungsumgebung, die auf der Azure Monitor-Datenplattform und den Standardfeatures basiert. [Lösungen](../insights/solutions.md) bieten eine vordefinierte Überwachungslogik, die auf Azure Monitor-Protokollen basiert. 
+Einige Dienste bieten Tools, die über die Standardfeatures von Azure Monitor hinausgehen. [Erkenntnisse](./insights-overview.md) bieten eine angepasste Überwachungsumgebung, die auf der Azure Monitor-Datenplattform und den Standardfeatures basiert. [Lösungen](./solutions.md) bieten eine vordefinierte Überwachungslogik, die auf Azure Monitor-Protokollen basiert. 
 
 Wenn für einen Dienst eine Azure Monitor-Erkenntnis bereitgestellt wird, können Sie über **Überwachung** im Menü der jeweiligen Ressourcen darauf zugreifen. Sie können auf alle Erkenntnisse und Lösungen über das **Azure Monitor**-Menü zugreifen.
 
@@ -164,3 +164,4 @@ Verwenden Sie **Warnungen** im Menü einer Ressource, um Warnungen anzuzeigen un
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ausführliche Informationen zu Ressourcenprotokollen für die einzelnen Azure-Dienste finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/resource-logs-schema.md).  
+

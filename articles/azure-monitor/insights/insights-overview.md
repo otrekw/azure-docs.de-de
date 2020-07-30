@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3eefb97c85b3865abbf116b9912dc45f6db8ce8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836038"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326867"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Übersicht über Erkenntnisse in Azure Monitor
 Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitgestellt. Hierbei werden Daten auf der [Azure Monitor-Datenplattform](../platform/data-platform.md) gespeichert und weitere Azure Monitor-Funktionen für Analyse und Warnungen genutzt, doch können auch zusätzliche Daten gesammelt und eine einzigartige Benutzeroberfläche im Azure-Portal bereitgestellt werden. Greifen Sie auf Erkenntnisse im Azure-Portal über den Abschnitt **Erkenntnisse** im Azure Monitor-Menü zu.
@@ -29,14 +29,14 @@ Informationen finden Sie unter [Was ist Application Insights?](../app/app-insigh
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 Azure Monitor für Container überwacht die Leistung von Containerworkloads, die entweder in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden. Die Überwachung Ihrer Container ist vor allem dann entscheidend, wenn Sie einen umfangreichen Produktionscluster mit mehreren Anwendungen ausführen.
 
-Informationen finden Sie unter [Azure Monitor für Container – Übersicht](../insights/container-insights-overview.md).
+Informationen finden Sie unter [Azure Monitor für Container – Übersicht](./container-insights-overview.md).
 
 ![Azure Monitor für Container](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor für Ressourcengruppen (Vorschauversion)
 Azure Monitor für Ressourcengruppen hilft beim Selektieren und Diagnostizieren von Problemen Ihrer individuellen Ressourcen und bietet gleichzeitig einen Kontext für die Integrität und Leistung der Ressourcengruppe als Ganzes.
 
-Informationen finden Sie unter [Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)](../insights/resource-group-insights.md).
+Informationen finden Sie unter [Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)](./resource-group-insights.md).
 
 ![Azure Monitor für Ressourcengruppen](media/insights-overview/resource-group-insights.png)
 
@@ -55,3 +55,4 @@ Informationen finden Sie unter [Was ist Azure Monitor für VMs?](vminsights-over
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die [Azure Monitor-Datenplattform](../platform/data-platform.md), die von Erkenntnissen genutzt wird.
 * Erfahren Sie mehr über die verschiedenen [Datenquellen, die von Azure Monitor verwendet werden](../platform/data-sources.md), und die verschiedenen Arten von Daten, die von den jeweiligen Erkenntnissen erfasst werden.
+

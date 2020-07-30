@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023227"
 ---
 # <a name="filters"></a>Filter
 
@@ -38,8 +38,8 @@ Media Services ermöglicht es Ihnen, **Kontofilter** und **Medienobjektfilter** 
 
 Es gibt zwei Arten von Filtern: 
 
-* [Kontofilter](https://docs.microsoft.com/rest/api/media/accountfilters) (global): Diese Filter können auf jedes Medienobjekt im Azure Media Services-Konto angewendet werden und haben die Lebensdauer des Kontos.
-* [Medienobjektfilter](https://docs.microsoft.com/rest/api/media/assetfilters) (lokal): Sie können nur auf ein Medienobjekt angewendet werden, dem der Filter bei der Erstellung zugeordnet wurde, und haben die Lebensdauer des Medienobjekts. 
+* [Kontofilter](/rest/api/media/accountfilters) (global): Diese Filter können auf jedes Medienobjekt im Azure Media Services-Konto angewendet werden und haben die Lebensdauer des Kontos.
+* [Medienobjektfilter](/rest/api/media/assetfilters) (lokal): Sie können nur auf ein Medienobjekt angewendet werden, dem der Filter bei der Erstellung zugeordnet wurde, und haben die Lebensdauer des Medienobjekts. 
 
 Die Typen **Kontofilter** und **Medienobjektfilter** besitzen exakt dieselben Eigenschaften zum Definieren/Beschreiben des jeweiligen Filters. Außer beim Erstellen des **Medienobjektfilters** müssen Sie den Namen des Medienobjekts angeben, dem Sie den Filter zuordnen möchten.
 
@@ -139,7 +139,7 @@ Das folgende Beispiel definiert einen Livestreamingfilter:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
 
-Sie können eine Liste von [Medienobjekt- oder Kontofiltern](filters-concept.md) für Ihren [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) angeben. Der [dynamische Paketerstellungs-Manager](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. 
+Sie können eine Liste von [Medienobjekt- oder Kontofiltern](filters-concept.md) für Ihren [Streaminglocator](/rest/api/media/streaminglocators/create#request-body) angeben. Der [dynamische Paketerstellungs-Manager](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. 
 
 Hierzu folgende Beispiele:
 
@@ -161,4 +161,3 @@ Die folgenden Artikel enthalten Informationen zum programmgesteuerten Erstellen 
 - [Erstellen von Filtern mit REST-APIs](filters-dynamic-manifest-rest-howto.md)
 - [Erstellen von Filtern mit .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Erstellen von Filtern mit der CLI](filters-dynamic-manifest-cli-howto.md)
-

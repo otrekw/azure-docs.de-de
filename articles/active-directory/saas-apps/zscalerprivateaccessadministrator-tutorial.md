@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7f0bc04bb8e7358f5bdb2e4dfc3db198e24303f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 104583522c7041d89d9c63ba67a5633a3bd383f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67085643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Tutorial: Azure Active Directory-Integration mit Zscaler Private Access Administrator
 
@@ -41,6 +41,9 @@ Um die Azure AD-Integration mit Zscaler Private Access Administrator konfigurier
 
 * Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 * Abonnement für Zscaler Private Access Administrator, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 

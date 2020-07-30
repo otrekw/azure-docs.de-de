@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080096"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Linux-Computer
 
@@ -57,7 +57,7 @@ Der Datensammlungs-Agent von Security Center wird daraufhin auf allen virtuellen
 
 ## <a name="set-up-a-security-policy"></a>Einrichten einer Sicherheitsrichtlinie
 
-Sicherheitsrichtlinien werden verwendet, um die Elemente zu definieren, für die Security Center Daten sammelt und Empfehlungen gibt. Sie können unterschiedliche Sicherheitsrichtlinien auf verschiedene Gruppen von Azure-Ressourcen anwenden. Obwohl Azure-Ressourcen standardmäßig für sämtliche Richtlinienelemente ausgewertet werden, können Sie einzelne Richtlinienelemente für alle Azure-Ressourcen oder für eine Ressourcengruppe deaktivieren. Ausführliche Informationen zu Security Center-Sicherheitsrichtlinien finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](../../security-center/security-center-policies.md). 
+Sicherheitsrichtlinien werden verwendet, um die Elemente zu definieren, für die Security Center Daten sammelt und Empfehlungen gibt. Sie können unterschiedliche Sicherheitsrichtlinien auf verschiedene Gruppen von Azure-Ressourcen anwenden. Obwohl Azure-Ressourcen standardmäßig für sämtliche Richtlinienelemente ausgewertet werden, können Sie einzelne Richtlinienelemente für alle Azure-Ressourcen oder für eine Ressourcengruppe deaktivieren. Ausführliche Informationen zu Security Center-Sicherheitsrichtlinien finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](../../security-center/tutorial-security-policy.md). 
 
 So richten Sie eine Sicherheitsrichtlinie für ein gesamtes Abonnement ein:
 
@@ -134,4 +134,3 @@ Wechseln Sie zum nächsten Tutorial, um mehr über das Erstellen einer CI/CD-Pip
 
 > [!div class="nextstepaction"]
 > [Erstellen einer CI/CD-Infrastruktur mit Jenkins, GitHub und Docker](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
-
