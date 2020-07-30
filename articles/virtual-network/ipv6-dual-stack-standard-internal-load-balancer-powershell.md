@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289577"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und interner Load Balancer Standard-Instanz in Azure – PowerShell (Vorschauversion)
 
 In diesem Artikel erfahren Sie, wie Sie in Azure eine Anwendung mit dualem Stapel (IPv4 und IPv6) bereitstellen, die ein virtuelles Netzwerk mit dualem Stapel und Subnetz, eine interne Load Balancer Standard-Instanz mit dualen Front-End-Konfigurationen (IPv4 und IPv6), virtuelle Computer mit NICs mit dualer IP-Konfiguration, Netzwerksicherheitsgruppenregeln und öffentliche IP-Adressen umfasst.
-
-> [!Important]
-> Die IPv6-Unterstützung für Azure Virtual Network ist derzeit als Public Preview verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Die Vorgehensweise zum Erstellen einer IPv6-fähigen internen Load Balancer-Instanz ist nahezu identisch mit der [hier](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) beschriebenen Vorgehensweise zum Erstellen einer IPv6-Load Balancer-Instanz mit Internetzugriff. Bei der Erstellung eines internen Lastenausgleichs unterscheidet sich lediglich die Front-End-Konfiguration, wie im folgenden PowerShell-Beispiel zu sehen:
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 053ee85318d8ac9ccd5fb8b63fb44df966d34821
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075026"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell
 
@@ -38,7 +38,7 @@ Befolgen Sie die Anweisungen in den nächsten fünf Abschnitten, um HDInsight zu
 Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgenden Anforderungen erfüllen:
 
 * **Ein Azure-Abonnement**: Navigieren Sie zu [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 oder höher:** Siehe [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+* **Azure PowerShell 1.0 oder höher:** Siehe [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 * **Windows Software Development Kit (SDK):** Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/downloads), um das Windows SDK zu installieren. Das SDK dient zum Erstellen eines Sicherheitszertifikats.
 * **Azure Active Directory-Dienstprinzipal:** In diesem Tutorial wird beschrieben, wie ein Dienstprinzipal in Azure Active Directory (Azure AD) erstellt wird. Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
 

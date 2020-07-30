@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368248"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073988"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -41,7 +41,7 @@ Für den Azure Fence-Agent müssen keine zusätzlichen virtuellen Computer berei
 ![Übersicht über Pacemaker unter SLES](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Bei der Planung und Implementierung von Linux Pacemaker-Clusterknoten und SBD-Geräten ist es für die Gesamtzuverlässigkeit der gesamten Clusterkonfiguration entscheidend, dass das Routing zwischen den beteiligten VMs und den VMs, die die SBD-Geräte hosten, nicht durch andere Geräte wie [NVAs](https://azure.microsoft.com/solutions/network-appliances/) verläuft. Andernfalls können Probleme und Wartungsereignisse mit der NVA negative Auswirkungen auf die Stabilität und Zuverlässigkeit der gesamten Clusterkonfiguration haben. Um derartige Probleme zu vermeiden, definieren Sie keine Routingregeln von NVAs und keine [benutzerdefinierten Routingregeln](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview), die den Datenverkehr zwischen Clusterknoten und SBD-Geräten durch NVAs und ähnliche Geräte leiten, wenn Sie Linux Pacemaker-Clusterknoten und SBD-Geräte planen und bereitstellen. 
+> Bei der Planung und Implementierung von Linux Pacemaker-Clusterknoten und SBD-Geräten ist es für die Gesamtzuverlässigkeit der gesamten Clusterkonfiguration entscheidend, dass das Routing zwischen den beteiligten VMs und den VMs, die die SBD-Geräte hosten, nicht durch andere Geräte wie [NVAs](https://azure.microsoft.com/solutions/network-appliances/) verläuft. Andernfalls können Probleme und Wartungsereignisse mit der NVA negative Auswirkungen auf die Stabilität und Zuverlässigkeit der gesamten Clusterkonfiguration haben. Um derartige Probleme zu vermeiden, definieren Sie keine Routingregeln von NVAs und keine [benutzerdefinierten Routingregeln](../../../virtual-network/virtual-networks-udr-overview.md), die den Datenverkehr zwischen Clusterknoten und SBD-Geräten durch NVAs und ähnliche Geräte leiten, wenn Sie Linux Pacemaker-Clusterknoten und SBD-Geräte planen und bereitstellen. 
 >
 
 ## <a name="sbd-fencing"></a>SBD-Umgrenzung
@@ -583,7 +583,7 @@ Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microso
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Erstellen einer benutzerdefinierten Rolle für den Fence Agent.
 
-Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen dem Dienstprinzipal Berechtigungen zum Starten und Beenden (Freigeben) aller virtuellen Computer des Clusters gewähren. Wenn Sie noch keine benutzerdefinierte Rolle erstellt haben, können Sie sie mit [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) erstellen.
+Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen dem Dienstprinzipal Berechtigungen zum Starten und Beenden (Freigeben) aller virtuellen Computer des Clusters gewähren. Wenn Sie noch keine benutzerdefinierte Rolle erstellt haben, können Sie sie mit [PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) oder der [Azure-Befehlszeilenschnittstelle](../../../role-based-access-control/custom-roles-cli.md) erstellen.
 
 Verwenden Sie folgenden Inhalt für die Eingabedatei. Sie müssen den Inhalt an Ihre Abonnements anpassen, d.h., Sie müssen „c276fc76-9cd4-44c9-99a7-4fd71546436e“ und „e91d47c4-76f3-4271-a796-21b4ecfe3624“ durch die IDs Ihres Abonnements ersetzen. Wenn Sie nur über ein Abonnement verfügen, entfernen Sie den zweiten Eintrag in AssignableScopes.
 
@@ -647,11 +647,11 @@ sudo crm configure property stonith-timeout=900
 > Die Überwachungs- und Umgrenzungsvorgänge werden deserialisiert. Wenn daher ein Überwachungsvorgang mit längerer Laufzeit und einem gleichzeitigen Umgrenzungsereignis ausgeführt wird, erfolgt der Clusterfailover ohne Verzögerung, da der Überwachungsvorgang bereits ausgeführt wird.
 
 > [!TIP]
->Azure Fence Agent erfordert ausgehende Konnektivität mit öffentlichen Endpunkten, wie zusammen mit möglichen Lösungen in [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) beschrieben.  
+>Azure Fence Agent erfordert ausgehende Konnektivität mit öffentlichen Endpunkten, wie zusammen mit möglichen Lösungen in [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](./high-availability-guide-standard-load-balancer-outbound-connections.md) beschrieben.  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-Konfiguration für geplante Azure-Ereignisse
 
-Azure verfügt über [geplante Ereignisse](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
+Azure verfügt über [geplante Ereignisse](../../linux/scheduled-events.md). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
 
 1. **[A]** stellen Sie sicher, dass das Paket für den **azure-events**-Agent bereits installiert und auf dem neuesten Stand ist. 
 

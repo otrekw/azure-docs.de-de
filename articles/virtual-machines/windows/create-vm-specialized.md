@@ -4,15 +4,15 @@ description: Erstellen Sie eine neue Windows-VM, indem Sie über das Resource Ma
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87266893"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Erstellen einer Windows-VM von einem speziellen Datenträger mithilfe von PowerShell
 
@@ -33,7 +33,7 @@ Es wird empfohlen, die Anzahl gleichzeitiger Bereitstellungen auf Grundlage eine
 
 ## <a name="option-1-use-an-existing-disk"></a>Option 1: Verwenden eines vorhandenen Datenträgers
 
-Wenn Sie einen virtuellen Computer gelöscht haben und den Betriebssystemdatenträger erneut verwenden möchten, um einen neuen virtuellen Computer zu erstellen, verwenden Sie [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
+Wenn Sie einen virtuellen Computer gelöscht haben und den Betriebssystemdatenträger erneut verwenden möchten, um einen neuen virtuellen Computer zu erstellen, verwenden Sie [Get-AzDisk](/powershell/module/az.compute/get-azdisk).
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -68,7 +68,7 @@ Wenn Sie einen vorhandenen virtuellen Computer in eine andere Region kopieren m�
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Erstellen einer Momentaufnahme des Betriebssystemdatenträgers
 
-Sie können eine Momentaufnahme einer gesamten VM (einschließlich aller Datenträger) oder nur von einem einzelnen Datenträger erstellen. Die folgenden Schritte zeigen, wie Sie mit dem Cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) eine Momentaufnahme von nur dem Betriebssystemdatenträger Ihrer VM erstellen. 
+Sie können eine Momentaufnahme einer gesamten VM (einschließlich aller Datenträger) oder nur von einem einzelnen Datenträger erstellen. Die folgenden Schritte zeigen, wie Sie mit dem Cmdlet [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) eine Momentaufnahme von nur dem Betriebssystemdatenträger Ihrer VM erstellen. 
 
 Legen Sie zuerst einige Parameter fest. 
 
@@ -116,7 +116,7 @@ Um die Momentaufnahme zum Erstellen einer auf hohe Leistung ausgelegten VM zu nu
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Erstellen eines neuen Datenträgers über die Momentaufnahme
 
-Erstellen Sie mit [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) einen verwalteten Datenträger aus der Momentaufnahme. Dieses Beispiel verwendet *myOSDisk* für den Namen des Datenträgers an.
+Erstellen Sie mit [New-AzDisk](/powershell/module/az.compute/new-azdisk) einen verwalteten Datenträger aus der Momentaufnahme. Dieses Beispiel verwendet *myOSDisk* für den Namen des Datenträgers an.
 
 Erstellen Sie eine neue Ressourcengruppe für die neue VM.
 
@@ -236,7 +236,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>Hinzufügen des Betriebssystemdatenträgers 
 
-Fügen Sie der Konfiguration mit [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) den Betriebssystemdatenträger hinzu. In diesem Beispiel wird die Größe des Datenträgers auf *128 GB* festgelegt und der verwaltete Datenträger als *Windows*-Betriebssystem-Datenträger angefügt.
+Fügen Sie der Konfiguration mit [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) den Betriebssystemdatenträger hinzu. In diesem Beispiel wird die Größe des Datenträgers auf *128 GB* festgelegt und der verwaltete Datenträger als *Windows*-Betriebssystem-Datenträger angefügt.
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -245,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>Fertigstellen der VM 
 
-Erstellen Sie die VM über [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) mithilfe der soeben erstellten Konfigurationen.
+Erstellen Sie die VM über [New-AzVM](/powershell/module/az.compute/new-azvm) mithilfe der soeben erstellten Konfigurationen.
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -270,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Nächste Schritte
 Melden Sie sich bei Ihrem neuen virtuellen Computer an. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md).
-

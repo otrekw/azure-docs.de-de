@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b7ab9e63bfe92967eca22b60dceec0de882768a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075619"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Häufig gestellte Fragen zu Windows Virtual Desktop
 
@@ -121,7 +121,7 @@ In der folgenden Tabelle finden Sie Beispiele dafür, wie viele Ressourcen ein F
 | Resource | Anforderung |
 |---|---|
 | IOPS im stabilen Zustand | 10 |
-| IOPS für Anmelde-/Abmeldevorgänge | 5 |
+| IOPS für Anmelde-/Abmeldevorgänge | 50 |
 
 Das Beispiel in dieser Tabelle gilt für einen einzelnen Benutzer, kann jedoch zur Einschätzung der Anforderungen für die Gesamtzahl von Benutzern in Ihrer Umgebung herangezogen werden. Für 100 Benutzer würden Sie beispielsweise etwa 1.000 IOPS im stabilen Zustand und 5.000 IOPS bei Anmelde- und Abmeldevorgänge benötigen.
 

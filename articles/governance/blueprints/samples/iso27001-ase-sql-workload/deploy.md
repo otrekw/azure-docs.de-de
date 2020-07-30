@@ -1,14 +1,14 @@
 ---
 title: 'Bereitstellen des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“'
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“, einschließlich Details zum Blaupausenartefaktparameter'
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072895"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -117,7 +117,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Standort|Die bei der Erstellung des Log Analytics-Arbeitsbereichs verwendete Region. Der Standardwert ist _USA, Westen 2_.|
 |Netzwerkressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Netzwerkressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Netzwerkressourcengruppe|Resource group|Position|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Netzwerksicherheitsgruppen-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Private IP-Adresse von Azure Firewall|Konfiguriert die private IP-Adresse von [Azure Firewall](../../../../firewall/overview.md). Sollte Teil der CIDR-Notation sein, die in _ISO 27001: Gemeinsame Dienste_ im Artefaktparameter **Adresspräfix für Azure Firewall-Subnetz** definiert ist. Der Standardwert ist _10.0.4.4_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Abonnement-ID für gemeinsame Dienste|Wert, der zum Aktivieren des VNET-Peerings zwischen einer Workload und gemeinsamen Diensten verwendet wird.|
@@ -125,13 +125,13 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Standardsubnetz|Die CIDR-Notation für das Standardsubnetz des virtuellen Netzwerks. Der Standardwert ist _10.1.0.0/16_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|ADDS-IP-Adresse|IP-Adresse der ersten ADDS-VM. Dieser Wert wird als benutzerdefinierter VNET-DNS verwendet.|
 |Schlüsseltresor-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Schlüsseltresor-Ressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Schlüsseltresor-Ressourcengruppe|Resource group|Position|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|AAD-Objekt-ID|Der AAD-Objektbezeichner des Kontos, das Zugriff auf die Key Vault-Instanz benötigt. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Key Vault-SKU|Gibt die SKU der erstellten Key Vault-Instanz an. Der Standardwert ist _Premium_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Der Benutzername für den Zugriff auf Azure SQL Server. Muss mit dem Eigenschaftswert in **Vorlage für Azure SQL-Datenbank** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
 |Azure SQL-Datenbank-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-azsql-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Azure SQL-Datenbank-Ressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Azure SQL-Datenbank-Ressourcengruppe|Resource group|Position|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Benutzername für Azure SQL Server. Muss mit dem Eigenschaftswert in **Key Vault-Vorlage** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/ subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter **Name der Organisation**.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Geheimnisname)|Benutzername des SQL Server-Administrators. Muss mit dem Wert in der Eigenschaft **Azure SQL Server-Administratorbenutzername** von **Key Vault-Vorlage** übereinstimmen.|

@@ -6,12 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076022"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions
 Ein Schlüsseltresor ist ein sicherer Ort zum Speichern von Schlüsseln. Unternehmensbenutzer müssen Anmeldeinformationen für CI/CD-Umgebungen im von ihnen kontrollierten Bereich speichern. Der Schlüssel zum Abrufen von Anmeldeinformationen im Schlüsseltresor muss auf den Ressourcenbereich beschränkt sein.  Er ermöglicht nur den Zugriff auf den Schlüsseltresorbereich und nicht auf den gesamten Azure-Bereich. Somit ist er vergleichbar mit einem Schlüssel, der nur ein bestimmtes Schließfach öffnet (im Gegensatz zu einem Hauptschlüssel, mit dem sämtliche Türen in einem Gebäude geöffnet werden können). Er ermöglicht das Abrufen eines Schlüssels mithilfe eines anderen Schlüssels, was in einem CI/CD-Workflow hilfreich ist. 

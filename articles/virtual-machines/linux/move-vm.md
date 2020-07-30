@@ -4,15 +4,15 @@ description: Verschieben Sie mit der Azure-Befehlszeilenschnittstelle einen virt
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944601"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291104"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>Verschieben eines virtuellen Computers in ein anderes Abonnement oder eine andere Ressourcengruppe
 In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer (Virtual Machine, VM) zwischen Ressourcengruppen oder Abonnements verschieben. Das Verschieben einer VM zwischen Abonnements kann nützlich sein, wenn Sie eine VM in einem persönlichen Abonnement erstellt haben und sie nun in das Abonnement Ihres Unternehmens verschieben möchten.

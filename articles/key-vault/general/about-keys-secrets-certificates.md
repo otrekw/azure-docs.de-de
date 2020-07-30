@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: cb8a29c5d2eff46eecb2cf977bfb492f28731e68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043634"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -58,7 +58,7 @@ Ein Objektbezeichner hat das folgende allgemeine Format:
 
 Hierbei gilt:  
 
-|||  
+| Element | BESCHREIBUNG |  
 |-|-|  
 |`keyvault-name`|Der Name eines Schlüsseltresors im Microsoft Azure Key Vault-Dienst.<br /><br /> Schlüsseltresornamen werden vom Benutzer ausgewählt und sind global eindeutig.<br /><br /> Der Key Vault-Name muss zwischen 3 und 24 Zeichen lang sein und darf nur die Ziffern 0-9, die Buchstaben a-z und A-Z sowie das Minuszeichen („-“) enthalten.|  
 |`object-type`|Die Art des Objekts (Schlüssel, Geheimnisse oder Zertifikate)|  

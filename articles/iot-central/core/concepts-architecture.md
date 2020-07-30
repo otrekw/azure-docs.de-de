@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337142"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
@@ -135,7 +135,7 @@ In einer Azure IoT Central-Anwendung definieren Gerätevorlagen das Verhalten un
 
 In einer Gerätevorlage für eine IoT Central-Anwendung gilt Folgendes:
 
-- **Gerätefunktionsmodelle** geben die Funktionen eines Geräts an, z. B. die vom Gerät gesendeten Telemetriedaten, die Eigenschaften, die den Gerätestatus definieren, und die Befehle, auf die das Gerät reagiert. Gerätefunktionen sind in einer oder mehreren Schnittstellen organisiert. Weitere Informationen zu Gerätefunktionsmodellen finden Sie in der Dokumentation zu [IoT Plug & Play (Vorschauversion)](../../iot-pnp/overview-iot-plug-and-play.md).
+- **Gerätefunktionsmodelle** geben die Funktionen eines Geräts an, z. B. die vom Gerät gesendeten Telemetriedaten, die Eigenschaften, die den Gerätestatus definieren, und die Befehle, auf die das Gerät reagiert. Gerätefunktionen sind in einer oder mehreren Schnittstellen organisiert.
 - **Cloudeigenschaften** geben die Eigenschaften an, die IoT Central für ein Gerät speichert. Diese Eigenschaften werden nur in IoT Central gespeichert und nie an ein Gerät gesendet.
 - **Ansichten** geben die Dashboards und Formulare an, die der Generator erstellt, damit der Operator die Geräte überwachen und verwalten kann.
 - Durch **Anpassungen** kann der Generator einige der Definitionen im Gerätefunktionsmodell überschreiben, damit Sie für die IoT Central-Anwendung relevanter werden.

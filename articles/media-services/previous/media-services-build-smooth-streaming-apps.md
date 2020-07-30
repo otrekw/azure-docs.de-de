@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071905"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Erstellen einer Smooth Streaming Windows Store-Anwendung  
 
@@ -53,7 +53,7 @@ In dieser Lektion erstellen Sie eine Windows Store-Anwendung mit einem MediaElem
 
 ![Beispiel für Smooth Streaming Windows Store-Anwendung][PlayerApplication]
 
-Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie unter [Entwickeln von Apps für Windows 8](https://msdn.microsoft.com/windows/apps/br229512.aspx). Diese Lektion enthält die folgenden Prozeduren:
+Weitere Informationen zum Entwickeln von Windows Store-Anwendungen finden Sie unter [Entwickeln von Apps für Windows 8](https://developer.microsoft.com/en-us/windows/). Diese Lektion enthält die folgenden Prozeduren:
 
 1. Erstellen eines Windows Store-Projekts
 2. Entwerfen der Benutzeroberfläche (XAML)
@@ -1045,4 +1045,3 @@ Sie haben Lektion 4 abgeschlossen.  In dieser Lektion haben Sie die Funktion zu
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

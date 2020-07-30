@@ -4,12 +4,12 @@ description: Überwachen von Azure Blockchain Service über Azure Monitor
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076914"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Überwachen von Azure Blockchain Service über Azure Monitor  
 
@@ -17,20 +17,20 @@ Wenn Kunden Blockchainszenarien in einer Produktionsumgebung mit Azure Blockchai
 
 ## <a name="what-is-azure-monitor"></a>Was ist Azure Monitor?
 
-Azure Blockchain Service erstellt Überwachungsdaten mit Azure Monitor. Dies ist ein Azure-Dienst zur vollständigen Stapelüberwachung, der sämtliche Funktionen für das Überwachen Ihrer Azure-Ressourcen bereitstellt. Weitere Informationen zu Azure Monitor finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource).
+Azure Blockchain Service erstellt Überwachungsdaten mit Azure Monitor. Dies ist ein Azure-Dienst zur vollständigen Stapelüberwachung, der sämtliche Funktionen für das Überwachen Ihrer Azure-Ressourcen bereitstellt. Weitere Informationen zu Azure Monitor finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
  
 
 Die folgenden Abschnitte basieren auf diesem Artikel, indem sie die speziellen von Azure Blockchain Service gesammelten Daten beschreiben und Beispiele für die Konfiguration der Datensammlung und die Analyse dieser Daten mit Azure-Tools bereitstellen.
 
 ## <a name="monitor-data-collected-from-azure-blockchain-service"></a>Überwachen von Daten, die von Azure Blockchain Service gesammelt wurden  
 
-Azure Blockchain Service sammelt dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachungsdaten](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data) von Azure-Ressourcen beschrieben sind. Eine ausführliche Referenz zu den Protokollen und Metriken, die von Azure Blockchain Service erstellt werden, finden Sie unter [Überwachen von Azure Blockchain Service-Daten – Referenz](#monitor-azure-blockchain-service-data-reference).
+Azure Blockchain Service sammelt dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachungsdaten](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data) von Azure-Ressourcen beschrieben sind. Eine ausführliche Referenz zu den Protokollen und Metriken, die von Azure Blockchain Service erstellt werden, finden Sie unter [Überwachen von Azure Blockchain Service-Daten – Referenz](#monitor-azure-blockchain-service-data-reference).
 
 Die im Azure-Portal für jede Azure Blockchain Service-Mitgliedsressource angezeigte Übersichtsseite enthält eine Kurzansicht der Transaktionen, einschließlich der verwalteten und verarbeiteten Blöcke. Einige dieser Daten werden automatisch gesammelt und sind für Analysen verfügbar, sobald Sie die Azure Blockchain Service-Mitgliedsressource erstellt haben. Darüber hinaus können Sie mit einer weiteren Konfiguration zusätzliche Datensammlungen aktivieren.
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen  
 
-Plattformmetriken und das Aktivitätsprotokoll werden automatisch gesammelt, aber Sie müssen eine Diagnoseeinstellung erstellen, um Ressourcenprotokolle zu sammeln oder außerhalb von Azure Monitor weiterzuleiten. Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings).
+Plattformmetriken und das Aktivitätsprotokoll werden automatisch gesammelt, aber Sie müssen eine Diagnoseeinstellung erstellen, um Ressourcenprotokolle zu sammeln oder außerhalb von Azure Monitor weiterzuleiten. Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../../azure-monitor/platform/diagnostic-settings.md).
 
 Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorien von Protokollen gesammelt werden sollen. Die Kategorien für Azure Blockchain Service sind nachstehend aufgeführt.
 
@@ -42,13 +42,13 @@ Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorien v
 
 ## <a name="analyze-metric-data"></a>Analysieren von Metrikdaten  
 
-Sie können Metriken für Azure Blockchain Service mit dem Metrik-Explorer analysieren. Navigieren Sie zur Registerkarte „Metriken“ im Abschnitt „Überwachung“ auf dem Blatt für ABS-Ressourcen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started). Die vollständigen Metriken für Azure Blockchain Service befinden sich im Namespace für Azure Blockchain Service-Standardmetriken.
+Sie können Metriken für Azure Blockchain Service mit dem Metrik-Explorer analysieren. Navigieren Sie zur Registerkarte „Metriken“ im Abschnitt „Überwachung“ auf dem Blatt für ABS-Ressourcen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md). Die vollständigen Metriken für Azure Blockchain Service befinden sich im Namespace für Azure Blockchain Service-Standardmetriken.
 
 Sie können die **Knoten**-Dimension verwenden, wenn Sie einen Filter hinzufügen oder die Metriken teilen. Dadurch werden im Wesentlichen Metrikwerte pro Transaktionsknoten und Validierungsknoten des ABS-Mitglieds bereitgestellt.
 
 ## <a name="analyze-log-data"></a>Analysieren von Protokolldaten
 
-Es folgen einige Abfragen, die Sie in die Leiste für Protokollsuchvorgänge eingeben können, um Ihre Azure Blockchain Service-Mitglieder zu verwalten. Diese Abfragen arbeiten mit der [neuen Sprache](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Es folgen einige Abfragen, die Sie in die Leiste für Protokollsuchvorgänge eingeben können, um Ihre Azure Blockchain Service-Mitglieder zu verwalten. Diese Abfragen arbeiten mit der [neuen Sprache](../../azure-monitor/log-query/log-query-overview.md).
 
 Um die Fehlerbedingungen in den Blockchainanwendungsprotokollen abzufragen, verwenden Sie die folgende Abfrage:
 
@@ -74,7 +74,7 @@ Dieser Artikel enthält eine Referenz von Protokoll- und Metrikdaten, die gesamm
 
 ### <a name="resource-logs"></a>Ressourcenprotokolle
 
-Für alle Ressourcenprotokolle wird ein gemeinsames grundsätzliches Schema verwendet, das einige eindeutige Eigenschaften enthält, die nur für den Blockchain-Dienst gelten. Weitere Informationen finden Sie im Artikel [Ressourcenprotokollschema der obersten Ebene](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema). Details zu den speziellen Azure Blockchain Service-Eigenschaften sind nachstehend aufgeführt.  
+Für alle Ressourcenprotokolle wird ein gemeinsames grundsätzliches Schema verwendet, das einige eindeutige Eigenschaften enthält, die nur für den Blockchain-Dienst gelten. Weitere Informationen finden Sie im Artikel [Ressourcenprotokollschema der obersten Ebene](../../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema). Details zu den speziellen Azure Blockchain Service-Eigenschaften sind nachstehend aufgeführt.  
 
 In der folgenden Tabelle sind die Eigenschaften für Azure Blockchain-Proxyprotokolle aufgelistet, wenn sie in Azure Monitor-Protokollen oder Azure Storage gesammelt werden.  
 
@@ -124,7 +124,7 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Blockchain-Anwendungs
 
 In den nachstehenden Tabellen sind die für Azure Blockchain Service gesammelten Plattformmetriken aufgelistet. Alle Metriken werden im Namespace **Azure Blockchain Service**-Standardmetriken gespeichert.
 
-Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure Blockchain Service) finden Sie unter [Unterstützte Metriken von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure Blockchain Service) finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
 
 ### <a name="blockchain-metrics"></a>Blockchainmetriken
 
@@ -169,4 +169,4 @@ In der folgenden Tabelle sind die Leistungsmetriken aufgeführt, die für jeden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Blockchain Data Manager](https://docs.microsoft.com/azure/blockchain/service/data-manager), um Blockchaindaten zu erfassen und nach Azure Event Grid zu transformieren.
+Erfahren Sie mehr über [Blockchain Data Manager](./data-manager.md), um Blockchaindaten zu erfassen und nach Azure Event Grid zu transformieren.

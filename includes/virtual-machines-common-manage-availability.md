@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e0f9bbf4e0d8edd153798b39f880f0adb8be6587
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502277"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292397"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -32,7 +32,7 @@ Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, so
 
 * [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]
 * [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]
-* [Verwenden von geplanten Ereignissen für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Verwenden von geplanten Ereignissen für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken](../articles/virtual-machines/linux/scheduled-events.md)
 * [Konfigurieren einzelner Logikschichten in separaten Verfügbarkeitsgruppen]
 * [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]
 * [Verwenden von Verfügbarkeitszonen als Schutz vor Ausfällen auf Datencenterebene]
@@ -96,11 +96,11 @@ Gehen Sie wie folgt vor, wenn Sie planen, VMs mit nicht verwalteten Datenträger
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Verwenden von Scheduled Events für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken
 
-Wenn Sie [geplante Ereignisse](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events) abonnieren, wird Ihr virtueller Computer über geplante Wartungsereignisse unterrichtet, die Ihren virtuellen Computer beeinträchtigen können. Wenn geplante Ereignisse aktiviert sind, erhält Ihr virtueller Computer ein Mindestmaß an Zeit, bevor die Wartungsaktivität ausgeführt wird. Beispielsweise werden Host-BS-Updates, die Ihren virtuellen Computer beeinträchtigen könnten, als Ereignisse in die Warteschlange gestellt, die die Auswirkung sowie den Zeitpunkt angeben, zu dem die Wartung durchgeführt wird, wenn keine Aktion ausgeführt wird. Geplante Ereignisse werden auch in eine Warteschlange gestellt, wenn Azure den bevorstehenden Hardwarefehler erkennt, der sich auf Ihren virtuellen Computer auswirken könnte, sodass Sie entscheiden können, wann die Reparatur ausgeführt werden soll. Kunden können das Ereignis nutzen, um Aufgaben vor der Wartung auszuführen, z.B. Speichern des Status, Failover zum sekundären Standort usw. Nachdem Sie Ihre Logik zur ordnungsgemäßen Behandlung des Wartungsereignisses fertig gestellt haben, können Sie das ausstehende geplante Ereignis genehmigen, um der Plattform zu ermöglichen, die Wartung fortzusetzen.
+Wenn Sie [geplante Ereignisse](../articles/virtual-machines/linux/scheduled-events.md) abonnieren, wird Ihr virtueller Computer über geplante Wartungsereignisse unterrichtet, die Ihren virtuellen Computer beeinträchtigen können. Wenn geplante Ereignisse aktiviert sind, erhält Ihr virtueller Computer ein Mindestmaß an Zeit, bevor die Wartungsaktivität ausgeführt wird. Beispielsweise werden Host-BS-Updates, die Ihren virtuellen Computer beeinträchtigen könnten, als Ereignisse in die Warteschlange gestellt, die die Auswirkung sowie den Zeitpunkt angeben, zu dem die Wartung durchgeführt wird, wenn keine Aktion ausgeführt wird. Geplante Ereignisse werden auch in eine Warteschlange gestellt, wenn Azure den bevorstehenden Hardwarefehler erkennt, der sich auf Ihren virtuellen Computer auswirken könnte, sodass Sie entscheiden können, wann die Reparatur ausgeführt werden soll. Kunden können das Ereignis nutzen, um Aufgaben vor der Wartung auszuführen, z.B. Speichern des Status, Failover zum sekundären Standort usw. Nachdem Sie Ihre Logik zur ordnungsgemäßen Behandlung des Wartungsereignisses fertig gestellt haben, können Sie das ausstehende geplante Ereignis genehmigen, um der Plattform zu ermöglichen, die Wartung fortzusetzen.
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Kombinieren eines Lastenausgleichs mit Verfügbarkeitszonen oder -gruppen
-Kombinieren Sie den Azure-Lastenausgleich ([Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md)) mit einer Verfügbarkeitszone oder -gruppe, um höchste Anwendungsresilienz zu erzielen. Der Azure-Lastenausgleich verteilt den Datenverkehr auf mehrere virtuelle Computer. In die virtuellen Computer der Standardebene ist der Azure-Lastenausgleich bereits integriert. Der Azure Load Balancer ist aber nicht auf allen Ebenen des virtuellen Computers verfügbar. Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich zwischen virtuellen Computern](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
+Kombinieren Sie den Azure-Lastenausgleich ([Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md)) mit einer Verfügbarkeitszone oder -gruppe, um höchste Anwendungsresilienz zu erzielen. Der Azure-Lastenausgleich verteilt den Datenverkehr auf mehrere virtuelle Computer. In die virtuellen Computer der Standardebene ist der Azure-Lastenausgleich bereits integriert. Der Azure Load Balancer ist aber nicht auf allen Ebenen des virtuellen Computers verfügbar. Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich zwischen virtuellen Computern](../articles/virtual-machines/linux/tutorial-load-balancer.md).
 
 Wenn der Lastenausgleich nicht für die gleichmäßige Verteilung des Datenverkehrs auf mehrere virtuelle Computer konfiguriert ist, wirkt sich ein geplantes Wartungsereignis schließlich auf den einzigen virtuellen Computer, der den Datenverkehr aufrechterhält, aus und führt zu einem Ausfall der Anwendungsebene. Werden dagegen mehrere virtuelle Computer derselben Ebene demselben Lastenausgleich und derselben Verfügbarkeitsgruppe zugeordnet, wird der Datenverkehr kontinuierlich von mindestens einer Instanz aufrechterhalten.
 

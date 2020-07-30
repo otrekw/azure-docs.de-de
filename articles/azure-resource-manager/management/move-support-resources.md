@@ -3,12 +3,12 @@ title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079508"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -288,6 +288,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
+> [!IMPORTANT]
+> Ein auf die Verbrauchs-SKU festgelegter API Management-Dienst kann nicht verschoben werden.
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -298,9 +301,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | reportfeedback | Nein | Nein |
 > | Dienst | Ja | Ja |
 > | validateservicename | Nein | Nein |
-
-> [!IMPORTANT]
-> Ein auf die Verbrauchs-SKU festgelegter API Management-Dienst kann nicht verschoben werden.
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -330,15 +330,15 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | apiapps | Nein | Nein |
 > | appidentities | Nein | Nein |
 > | gateways | Nein | Nein |
-
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -375,6 +375,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
+> [!IMPORTANT]
+> Runbooks müssen sich in der gleichen Ressourcengruppe befinden wie das Automation-Konto.
+>
+> Weitere Informationen finden Sie unter [Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -388,11 +393,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | automationaccounts/softwareupdateconfigurations | Nein | Nein |
 > | automationaccounts/webhooks | Nein | Nein |
 > | Vorgänge | Nein | Nein |
-
-> [!IMPORTANT]
-> Runbooks müssen sich in der gleichen Ressourcengruppe befinden wie das Automation-Konto.
->
-> Weitere Informationen finden Sie unter [Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
@@ -626,6 +626,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
+> [!IMPORTANT]
+> Wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von Netzwerkressourcen](./move-limitations/networking-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -638,9 +641,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | redis/eventgridfilters | Nein | Nein |
 > | redis/privatelinkresources | Nein | Nein |
 > | redisenterprise | Nein | Nein |
-
-> [!IMPORTANT]
-> Wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von Netzwerkressourcen](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -700,6 +700,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -707,9 +710,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | certificateorders/certificates | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | validatecertificateregistrationinformation | Nein | Nein |
-
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
 
 ## <a name="microsoftchangeanalysis"></a>Microsoft.ChangeAnalysis
 
@@ -719,6 +719,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Vorgänge | Nein | Nein |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
+
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
@@ -746,20 +749,20 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | virtualmachines/metricdefinitions | Nein | Nein |
 > | virtualmachines/metrics | Nein | Nein |
 
+## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
+
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
-
-## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | classicinfrastructureresources | Nein | Nein |
 
+## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
-
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
@@ -776,10 +779,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | virtualnetworks/remotevirtualnetworkpeeringproxies | Nein | Nein |
 > | virtualnetworks/virtualnetworkpeerings | Nein | Nein |
 
+## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
-
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
@@ -807,18 +810,15 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | storageaccounts/vmimages | Nein | Nein |
 > | vmimages | Nein | Nein |
 
+## <a name="microsoftclassicsubscription"></a>Microsoft.ClassicSubscription
+
 > [!IMPORTANT]
 > Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
-
-## <a name="microsoftclassicsubscription"></a>Microsoft.ClassicSubscription
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | Vorgänge | Nein | Nein |
-
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
@@ -843,6 +843,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | usageaggregates | Nein | Nein |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
+
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for virtual machines](./move-limitations/virtual-machines-move-limitations.md) (Anleitung zum Verschieben virtueller Computer).
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
@@ -888,9 +891,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | virtualmachinescalesets/publicipaddresses | Nein | Nein |
 > | virtualmachinescalesets/virtualmachines | Nein | Nein |
 > | virtualmachinescalesets/virtualmachines/networkinterfaces | Nein | Nein |
-
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Move guidance for virtual machines](./move-limitations/virtual-machines-move-limitations.md) (Anleitung zum Verschieben virtueller Computer).
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
@@ -1613,6 +1613,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
+> [!IMPORTANT]
+> Sie können HDInsight-Cluster in ein neues Abonnement oder eine neue Ressourcengruppe verschieben. Dagegen können die mit dem HDInsight-Cluster verknüpften Netzwerkressourcen (z.B. virtuelles Netzwerk, NIC oder Load Balancer) nicht zwischen Abonnements verschoben werden. Darüber hinaus kann eine NIC, die an einen virtuellen Computer für den Cluster angefügt ist, nicht in eine neue Ressourcengruppe verschoben werden.
+>
+> Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zunächst andere Ressourcen (z.B. das Speicherkonto) verschieben. Verschieben Sie erst anschließend den HDInsight-Cluster.
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -1627,11 +1632,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/usages | Nein | Nein |
 > | locations/validatecreaterequest | Nein | Nein |
 > | Vorgänge | Nein | Nein |
-
-> [!IMPORTANT]
-> Sie können HDInsight-Cluster in ein neues Abonnement oder eine neue Ressourcengruppe verschieben. Dagegen können die mit dem HDInsight-Cluster verknüpften Netzwerkressourcen (z.B. virtuelles Netzwerk, NIC oder Load Balancer) nicht zwischen Abonnements verschoben werden. Darüber hinaus kann eine NIC, die an einen virtuellen Computer für den Cluster angefügt ist, nicht in eine neue Ressourcengruppe verschoben werden.
->
-> Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zunächst andere Ressourcen (z.B. das Speicherkonto) verschieben. Verschieben Sie erst anschließend den HDInsight-Cluster.
 
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 
@@ -1699,6 +1699,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
+> [!IMPORTANT]
+> Berücksichtigen Sie beim Verschieben in ein neues Abonnement die [Abonnementkontingente](azure-subscription-service-limits.md#azure-monitor-limits).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -1754,9 +1757,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workbooks | Ja | Ja |
 > | workbooktemplates | Ja | Ja |
 
-> [!IMPORTANT]
-> Berücksichtigen Sie beim Verschieben in ein neues Abonnement die [Abonnementkontingente](azure-subscription-service-limits.md#azure-monitor-limits).
-
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
@@ -1779,6 +1779,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
+> [!IMPORTANT]
+> Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht in einer Ressourcengruppe im gleichen Abonnement oder zwischen Abonnements verschoben werden.
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -1795,9 +1798,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | vaults/accesspolicies | Nein | Nein |
 > | vaults/eventgridfilters | Nein | Nein |
 > | vaults/secrets | Nein | Nein |
-
-> [!IMPORTANT]
-> Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht in einer Ressourcengruppe im gleichen Abonnement oder zwischen Abonnements verschoben werden.
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
@@ -2115,6 +2115,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -2237,9 +2240,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | vpnserverconfigurations | Nein | Nein |
 > | vpnsites (Virtual WAN) | Nein | Nein |
 
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Move guidance for networking resources](./move-limitations/networking-move-limitations.md) (Anleitung zum Verschieben von Netzwerkressourcen).
-
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -2272,6 +2272,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
+> [!IMPORTANT]
+> Berücksichtigen Sie beim Verschieben in ein neues Abonnement die [Abonnementkontingente](azure-subscription-service-limits.md#azure-monitor-limits).
+>
+> Arbeitsbereiche, die ein verknüpftes Automation-Konto besitzen, können nicht verschoben werden. Bevor Sie mit einem Verschiebevorgang beginnen, stellen Sie sicher, dass Sie die Verknüpfung jeglicher Automation-Kontos aufheben.
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -2289,11 +2294,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workspaces/metadata | Nein | Nein |
 > | workspaces/query | Nein | Nein |
 > | workspaces/scopedprivatelinkproxies | Nein | Nein |
-
-> [!IMPORTANT]
-> Berücksichtigen Sie beim Verschieben in ein neues Abonnement die [Abonnementkontingente](azure-subscription-service-limits.md#azure-monitor-limits).
->
-> Arbeitsbereiche, die ein verknüpftes Automation-Konto besitzen, können nicht verschoben werden. Bevor Sie mit einem Verschiebevorgang beginnen, stellen Sie sicher, dass Sie die Verknüpfung jeglicher Automation-Kontos aufheben.
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -2406,6 +2406,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -2426,9 +2429,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Vorgänge | Nein | Nein |
 > | replicationeligibilityresults | Nein | Nein |
 > | vaults | Ja | Ja |
-
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
 
@@ -2532,6 +2532,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
+> [!IMPORTANT]
+> Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -2540,9 +2543,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Vorgänge | Nein | Nein |
 > | resourcehealthmetadata | Nein | Nein |
 > | searchservices | Ja | Ja |
-
-> [!IMPORTANT]
-> Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -2748,6 +2748,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
+> [!IMPORTANT]
+> Datenbank und Server müssen sich in der gleichen Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank- und Azure Synapse Analytics-Datenbanken.
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -2922,9 +2925,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers/vulnerabilityassessments | Nein | Nein |
 > | virtualclusters | Ja | Ja |
 
-> [!IMPORTANT]
-> Datenbank und Server müssen sich in der gleichen Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank- und Azure Synapse Analytics-Datenbanken.
-
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
@@ -3012,6 +3012,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
+> [!IMPORTANT]
+> Stream Analytics-Aufträge können nicht verschoben werden, während sie ausgeführt werden.
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -3020,9 +3023,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/quotas | Nein | Nein |
 > | Vorgänge | Nein | Nein |
 > | streamingjobs | Ja | Ja |
-
-> [!IMPORTANT]
-> Stream Analytics-Aufträge können nicht verschoben werden, während sie ausgeführt werden.
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 
@@ -3110,6 +3110,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
+> [!IMPORTANT]
+> Informationen zum Ändern des Abonnements für Azure DevOps finden Sie unter [Change or remove the Azure subscription that your organization uses for billing](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) (Ändern oder Entfernen des Azure-Abonnements, das von Ihrer Organisation für die Abrechnung verwendet wird).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -3118,9 +3121,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | account/project | Nein | Nein |
 > | checknameavailability | Nein | Nein |
 > | Vorgänge | Nein | Nein |
-
-> [!IMPORTANT]
-> Informationen zum Ändern des Abonnements für Azure DevOps finden Sie unter [Change or remove the Azure subscription that your organization uses for billing](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) (Ändern oder Entfernen des Azure-Abonnements, das von Ihrer Organisation für die Abrechnung verwendet wird).
 
 ## <a name="microsoftvmware"></a>Microsoft.VMware
 
@@ -3178,6 +3178,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
+
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
@@ -3232,9 +3235,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | staticsites | Nein | Nein |
 > | validate | Nein | Nein |
 > | verifyhostingenvironmentvnet | Nein | Nein |
-
-> [!IMPORTANT]
-> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
 
 ## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464163"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337448"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien
 
@@ -55,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um die Richtlinien zum Benutzerrisiko un
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Identity Protection** > **Übersicht**.
-1. Wählen Sie **Benutzerrisikorichtlinie konfigurieren** aus.
+1. Wählen Sie **Benutzerrisiko-Richtlinie** aus.
    1. Unter **Zuweisungen**
       1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
          1. Optional können Sie Benutzer aus der Richtlinie ausschließen.
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um die Richtlinien zum Benutzerrisiko un
       1. **Zugriff**: Die Empfehlung von Microsoft lautet, den **Zugriff zuzulassen** und eine **Kennwortänderung anzufordern**.
    1. **Richtlinie erzwingen** - **Ein**
    1. **Speichern**: Diese Aktion kehrt zur Seite **Übersicht** zurück.
-1. Wählen Sie **Anmelderisikorichtlinie konfigurieren** aus.
+1. Wählen Sie **Anmelderisiko-Richtlinie** aus.
    1. Unter **Zuweisungen**
       1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
          1. Optional können Sie Benutzer aus der Richtlinie ausschließen.

@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungs- und Wiederherst
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0170bda1ca956efe971695e34dc0d14b68eb109a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74173413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079331"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Erstellen eines Azure Recovery Services-Tresors mit der REST-API
 
-Die Schritte zum Erstellen eines Azure Recovery Services-Tresors mit der REST-API sind in der Dokumentation unter [Vaults – Create Or Update](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) (Tresore – Erstellen oder Aktualisieren) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen eines Tresors mit dem Namen „testVault“ in der Region „West US“ (USA, Westen).
+Die Schritte zum Erstellen eines Azure Recovery Services-Tresors mit der REST-API sind in der Dokumentation unter [Vaults – Create Or Update](/rest/api/recoveryservices/vaults/createorupdate) (Tresore – Erstellen oder Aktualisieren) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen eines Tresors mit dem Namen „testVault“ in der Region „West US“ (USA, Westen).
 
 Verwenden Sie den folgenden *PUT*-Vorgang, um einen Azure Recovery Services-Tresor zu erstellen oder zu aktualisieren.
 
@@ -30,7 +30,7 @@ Die folgenden Header sind erforderlich:
 | Anforderungsheader   | BESCHREIBUNG |
 |------------------|-----------------|
 | *Content-Type:*  | Erforderlich. Legen Sie diese Option auf `application/json` fest. |
-| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
+| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
 
 Weitere Informationen zum Erstellen der Anforderung finden Sie unter [Komponenten einer REST-API-Anforderung/Antwort](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -42,8 +42,8 @@ Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungste
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  Optionales ETag       |
 |location     |  true       |String         |   Ressourcenspeicherort      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschaften des Tresors       |
-|sku     |         |  [sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Gibt den eindeutigen Systembezeichner für jede Azure-Ressource an.     |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschaften des Tresors       |
+|sku     |         |  [sku](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Gibt den eindeutigen Systembezeichner für jede Azure-Ressource an.     |
 |tags     |         | Object        |     Ressourcentags    |
 
 Beachten Sie, dass der Tresorname und Ressourcengruppenname im PUT-URI bereitgestellt werden. Im Anforderungstext wird der Standort definiert.
@@ -68,8 +68,8 @@ Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen Recovery Services
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |   [Tresor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 – Erstellt     | [Tresor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Erstellt      |
+|200 – OK     |   [Tresor](/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
+|201 – Erstellt     | [Tresor](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Erstellt      |
 
 Weitere Informationen zu REST-API-Antworten finden Sie unter [Verarbeiten der Antwortnachricht](/rest/api/azure/#process-the-response-message).
 

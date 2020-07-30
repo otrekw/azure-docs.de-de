@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 63b05662e16dbcfd999788aa39c6c37eb12cf2c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292880"
 ---
 # <a name="playback-with-azure-media-player"></a>Wiedergabe mit Azure Media Player
 
 Azure Media Player ist ein Webvideoplayer für die Wiedergabe von Medieninhalten aus Microsoft Azure Media Services über eine Vielzahl von Browsern und Geräten. Der Azure Media Player nutzt Industriestandards wie HTML5, MSE (Media Source Extensions) und EME (Encrypted Media Extensions) für ein funktionsreiches adaptives Streaming. Wenn diese Standards auf einem Gerät oder in einem Browser nicht verfügbar sind, verwendet Azure Media Player Flash und Silverlight als Fallback-Technologien. Unabhängig von der verwendeten Wiedergabetechnologie müssen Entwickler eine einheitliche Schnittstelle für JavaScript für den Zugriff auf APIs verwenden. Dies ermöglicht die Inhaltswiedergabe von Azure Media Services über eine breite Palette von Geräten und Browsern ohne jeglichen Zusatzaufwand.
 
-Mit Microsoft Azure Media Services können Inhalte in den Streamingformaten HLS, DASH und Smooth Streaming wiedergegeben werden. Der Azure Media Player erkennt diese unterschiedlichen Formate und übernimmt automatisch die beste Verknüpfung basierend auf den Funktionen von Plattform und Browser. Media Services ermöglicht auch die dynamische Verschlüsselung von Medienobjekten mit PlayReady-Verschlüsselung oder AES-128-Bit-Umschlagverschlüsselung. Der Azure Media Player ermöglicht bei entsprechender Konfiguration die Entschlüsselung von PlayReady- und AES-128-Bit-verschlüsselten Inhalten. 
+Mit Microsoft Azure Media Services können Inhalte in den Streamingformaten HLS, DASH und Smooth Streaming wiedergegeben werden. Der Azure Media Player erkennt diese unterschiedlichen Formate und übernimmt automatisch die beste Verknüpfung basierend auf den Funktionen von Plattform und Browser. Media Services ermöglicht auch die dynamische Verschlüsselung von Medienobjekten mit PlayReady-Verschlüsselung oder AES-128-Bit-Umschlagverschlüsselung. Der Azure Media Player ermöglicht bei entsprechender Konfiguration die Entschlüsselung von PlayReady- und AES-128-Bit-verschlüsselten Inhalten.
 
 > [!NOTE]
 > Für Inhalte mit Widevine-Verschlüsselung ist die HTTPS-Wiedergabe erforderlich.
@@ -41,13 +41,13 @@ Wählen Sie **Erweiterte Optionen**, um die Wiedergabeoptionen zu konfigurieren 
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Überwachen der Diagnosedaten eines Videostreams
 
-Sie können mithilfe der [Azure Media Player-Demoseite](https://aka.ms/azuremediaplayer) die Diagnosedaten eines Videostreams überwachen. 
+Sie können mithilfe der [Azure Media Player-Demoseite](https://aka.ms/azuremediaplayer) die Diagnosedaten eines Videostreams überwachen.
 
 ![Azure Media Player-Diagnose](./media/azure-media-player/diagnostics.png)
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>Einrichten von Azure Media Player in Ihrem HTML-Code
 
-Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenblicke, bis die einfache Wiedergabe von Medieninhalten über Ihr Media Services-Konto möglich ist. Ausführliche Informationen zur Einrichtung und Konfiguration von Azure Media Player finden Sie in der [Azure Media Player-Dokumentation](https://aka.ms/ampdocs). 
+Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenblicke, bis die einfache Wiedergabe von Medieninhalten über Ihr Media Services-Konto möglich ist. Ausführliche Informationen zur Einrichtung und Konfiguration von Azure Media Player finden Sie in der [Azure Media Player-Dokumentation](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview).
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
@@ -55,5 +55,5 @@ Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenbl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Media Player-Dokumentation](https://aka.ms/ampdocs)
-- [Azure Media Player-Beispiele](https://aka.ms/ampsamples)
+* [Azure Media Player-Dokumentation](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Azure Media Player-Beispiele](https://github.com/Azure-Samples/azure-media-player-samples)

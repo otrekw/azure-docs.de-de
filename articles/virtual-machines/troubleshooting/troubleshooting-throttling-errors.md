@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045363"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074289"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Behandeln von API-Drosselungsfehlern 
 
@@ -26,7 +26,7 @@ Azure Compute-Anforderungen können in einem Abonnement und auf Basis der jeweil
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Vergleich der Drosselung durch Azure Resource Manager gegenüber Ressourcenanbietern  
 
-Als „Eingangstür“ zu Azure übernimmt Azure Resource Manager die Authentifizierung und Validierung erster Ordnung sowie die Drosselung aller eingehenden API-Anforderungen. Grenzwerte für Azure Resource Manager-Aufrufraten und HTTP-Kopfzeilen verwandter Diagnoseantworten werden [hier](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling) beschrieben.
+Als „Eingangstür“ zu Azure übernimmt Azure Resource Manager die Authentifizierung und Validierung erster Ordnung sowie die Drosselung aller eingehenden API-Anforderungen. Grenzwerte für Azure Resource Manager-Aufrufraten und HTTP-Kopfzeilen verwandter Diagnoseantworten werden [hier](../../azure-resource-manager/management/request-limits-and-throttling.md) beschrieben.
  
 Wenn ein Azure-API-Client einen Drosselungsfehler erhält, ist der HTTP-Status „429: Zu viele Anforderungen“. Um herauszufinden, ob die Anforderungsdrosselung durch Azure Resource Manager oder einen zugrunde liegenden Ressourcenanbieter wie CRP erfolgt, untersuchen Sie die `x-ms-ratelimit-remaining-subscription-reads` auf GET-Anforderungen und die `x-ms-ratelimit-remaining-subscription-writes`-Antwortkopfzeilen auf Nicht-GET-Anforderungen. Wenn sich die Anzahl verbleibender Aufrufe 0 nähert, wurde das von Azure Resource Manager definierte allgemeine Aufruflimit des Abonnements erreicht. Die Aktivitäten von allen Abonnementclients werden zusammen gezählt. Andernfalls erfolgt die Drosselung durch den Zielressourcenanbieter (dem im Segment „`/providers/<RP>`“ der Anforderungs-URL adressierten). 
 
@@ -79,8 +79,8 @@ Wie oben gezeigt, enthält jeder Drosselungsfehler die `Retry-After`-Kopfzeile, 
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>Analysetool für API-Aufrufrate und Drosselungsfehler
 Für die API des Computeressourcenanbieters steht die Vorschauversion eines Features zur Problembehandlung zur Verfügung. Diese PowerShell-Cmdlets liefern Statistiken über die API-Anforderungsrate pro Zeitintervall pro Vorgang und die Drosselungsverletzungen pro Vorgangsgruppe (Richtlinie):
--   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Export-AzLogAnalyticRequestRateByInterval](/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-AzLogAnalyticThrottledRequest](/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 Die Statistiken über die API-Aufrufe ermöglichen umfassende Einblicke in das Verhalten der Clients eines Abonnements sowie die einfache Identifizierung von Aufrufmustern, die zu einer Drosselung führen.
 
@@ -100,4 +100,4 @@ Die PowerShell-Cmdlets verwenden eine Dienst-REST-API, die auf einfache Weise di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Wiederholungsanleitung für andere Dienste in Azure finden Sie unter [Wiederholungsanleitung für bestimmte Dienste](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific).
+Weitere Informationen zur Wiederholungsanleitung für andere Dienste in Azure finden Sie unter [Wiederholungsanleitung für bestimmte Dienste](/azure/architecture/best-practices/retry-service-specific).

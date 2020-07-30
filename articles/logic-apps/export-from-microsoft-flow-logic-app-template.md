@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324859"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078742"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
 
@@ -20,9 +20,9 @@ Sie können diesen Flow aus [Microsoft Flow](https://flow.microsoft.com) zu [Pow
 > [!NOTE]
 > Nicht alle Power Automate-Connectors sind in Azure Logic Apps verfügbar. Sie können nur Power Automate-Flows migrieren, die in Azure Logic Apps über äquivalente Connectors verfügen. Beispielsweise sind der Trigger „Schaltfläche“, der Connector „Genehmigung“ und der Connector „Benachrichtigung“ spezifisch für Power Automate. Aktuell werden der Export und die Bereitstellung von auf OpenAPI basierenden Flows in Power Automate als Vorlagen für Logik-Apps nicht unterstützt.
 >
-> * Informationen dazu, welche Power Automate-Connectors keine Logic Apps-Entsprechungen besitzen, finden Sie unter [Power Automate-Connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Informationen dazu, welche Power Automate-Connectors keine Logic Apps-Entsprechungen besitzen, finden Sie unter [Power Automate-Connectors](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 >
-> * Informationen dazu, welche Logic Apps-Connectors keine Power Automate-Entsprechungen besitzen, finden Sie unter [Logic Apps-Connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Informationen dazu, welche Logic Apps-Connectors keine Power Automate-Entsprechungen besitzen, finden Sie unter [Logic Apps-Connectors](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

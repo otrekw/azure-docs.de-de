@@ -3,12 +3,12 @@ title: Verwenden von Azure DevTest Labs durch Entwickler | Microsoft-Dokumentati
 description: Erfahren Sie mehr über Azure DevTest Labs-Features, die zum Erfüllen von Entwickleranforderungen verwendet werden können, und lernen Sie die ausführlichen Schritte kennen, die ausführt werden müssen, um ein Lab einzurichten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6bb2c4d21ee6b6cb072c550c82c380b3a380f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fd8ae93c873d1450d4b09496dca3ad9014baa6d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481033"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293017"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Verwenden von Azure DevTest Labs durch Entwickler
 Azure DevTest Labs kann zum Implementieren vieler wichtiger Szenarien verwendet werden. Eines der primären Szenarien stellt aber die Verwendung von DevTest Labs zum Hosten von Entwicklungscomputern für Entwickler dar. In diesem Szenario bietet DevTest Labs folgende Vorteile:
@@ -45,7 +45,7 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    | --- | --- |
    | [Konfigurieren von Azure Marketplace-Images](devtest-lab-configure-marketplace-images.md) |Erfahren Sie, wie Sie Azure Marketplace-Images der Positivliste hinzufügen. Dabei werden nur die Images zur Auswahl zur Verfügung gestellt, die Sie für Entwickler verwenden möchten.|
    | [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md) |Erstellen Sie ein benutzerdefiniertes Image, indem Sie die für Entwickler erforderliche Software vorinstallieren, sodass Lab-Benutzer mithilfe des benutzerdefinierten Images schnell einen virtuellen Computer erstellen können.|
-   | [Erfahren Sie mehr über Imagefactorys.](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Sehen Sie sich ein Video an, in dem beschrieben wird, wie Sie eine Imagefactory einrichten und verwenden.|
+   | [Erfahren Sie mehr über Imagefactorys.](./devtest-lab-faq.md#blog-post) |Sehen Sie sich ein Video an, in dem beschrieben wird, wie Sie eine Imagefactory einrichten und verwenden.|
 
 3. **Erstellen von wiederverwendbaren Vorlagen für Entwicklercomputer** 
    
@@ -124,4 +124,3 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

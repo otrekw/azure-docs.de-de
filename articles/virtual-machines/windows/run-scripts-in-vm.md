@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2999d5bd6d780d5815f22d18e6e8cdd580987af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020167"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Ausführen von Skripts in Ihrer Windows-VM
 
@@ -34,7 +34,7 @@ Die [benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.m
 Die Funktion [Befehl ausführen](run-command.md) ermöglicht die Verwaltung und Problembehandlung von virtuellen Computern mithilfe von Skripts und ist selbst dann verfügbar, wenn der Computer nicht erreicht werden kann, etwa weil in der Gastfirewall der RDP- oder SSH-Port nicht geöffnet ist.
 
 * Ausführen von Skripts auf virtuellen Azure-Computern.
-* Kann mithilfe des [Azure-Portals](run-command.md), der [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), des [Azure CLIs](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) oder von [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) ausgeführt werden.
+* Kann mithilfe des [Azure-Portals](run-command.md), der [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), des [Azure CLIs](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) oder von [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) ausgeführt werden.
 * Führen Sie im Azure-Portal schnell ein Skript aus, zeigen Sie die Ausgabe an, und wiederholen Sie bei Bedarf.
 * Skripts können direkt eingegeben werden, oder Sie können eins der integrierten Skripts ausführen.
 * Führen Sie auf Windows-Computern PowerShell-Skripts und auf Linux-Computern Bash-Skripts aus.
@@ -57,7 +57,7 @@ Der [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md
 
 ## <a name="serial-console"></a>Serielle Konsole
 
-Die [serielle Konsole](serial-console.md) stellt direkten Zugriff auf eine VM zur Verfügung, ähnlich, als wäre eine Tastatur mit der VM verbunden.
+Die [serielle Konsole](../troubleshooting/serial-console-windows.md) stellt direkten Zugriff auf eine VM zur Verfügung, ähnlich, als wäre eine Tastatur mit der VM verbunden.
 
 * Ausführen von Befehlen auf virtuellen Azure-Computern.
 * Kann mithilfe einer textbasierten Konsole für den Computer im Azure-Portal ausgeführt werden.
@@ -71,4 +71,4 @@ Erfahren Sie mehr über die verschiedenen Funktionen, die zur Ausführung von Sk
 * [Benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.md)
 * [Befehl ausführen](run-command.md)
 * [Hybrid-Runbook-Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Serielle Konsole](serial-console.md)
+* [Serielle Konsole](../troubleshooting/serial-console-windows.md)

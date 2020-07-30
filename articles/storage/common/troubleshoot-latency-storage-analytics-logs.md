@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113104"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075948"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Behandeln von Latenzproblemen mithilfe von Storage Analytics-Protokollen
 
@@ -97,7 +97,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
 
    In der folgenden Tabelle finden Sie Informationen zu „OperationType“ mit hoher Latenz und den Ergebnissen für „RequestStatus“:
 
-   |   |RequestStatus=<br>Erfolg|RequestStatus=<br>(SAS)NetworkError|Empfehlung|
+   | Blobtyp |RequestStatus=<br>Erfolg|RequestStatus=<br>(SAS)NetworkError|Empfehlung|
    |---|---|---|---|
    |GetBlob|Ja|Nein|[**GetBlob-Vorgang:** RequestStatus = Success](#getblob-operation-requeststatus--success)|
    |GetBlob|Nein|Ja|[**GetBlob-Vorgang:** RequestStatus = (SAS)NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
