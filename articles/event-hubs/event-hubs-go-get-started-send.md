@@ -3,12 +3,12 @@ title: 'Schnellstart: Senden und Empfangen von Ereignissen unter Verwendung von 
 description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Go-Anwendung, die Ereignisse aus Azure Event Hubs sendet.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320351"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002453"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Schnellstart: Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Go
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -126,7 +126,7 @@ Glückwunsch! Sie haben jetzt Nachrichten an einen Event Hub gesendet.
 
 ### <a name="create-a-storage-account-and-container"></a>Erstellen eines Storage-Kontos und -Containers
 
-Angaben zum Status, z.B. Leases auf Partitionen und Prüfpunkte im Ereignisstream, werden über einen Azure Storage-Container zwischen den Empfängern freigegeben. Sie können ein Speicherkonto und einen Container erstellen, indem Sie das Go SDK verwenden oder die Anweisungen unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) befolgen.
+Angaben zum Status, z.B. Leases auf Partitionen und Prüfpunkte im Ereignisstream, werden über einen Azure Storage-Container zwischen den Empfängern freigegeben. Sie können ein Speicherkonto und einen Container erstellen, indem Sie das Go SDK verwenden oder die Anweisungen unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md) befolgen.
 
 Beispiele zum Erstellen von Storage-Artefakte mit dem Go SDK finden Sie im [Go-Beispielrepository](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) und im Beispiel für dieses Tutorial.
 

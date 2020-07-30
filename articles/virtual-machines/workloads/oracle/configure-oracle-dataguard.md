@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 2b0b85792fe1266d2ec6478561193ef0c80ac98f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083377"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementieren von Oracle Data Guard auf einem virtuellen Azure-Linux-Computer 
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Artikel wird beschrieben, wie Sie Skripts in der Azure CLI verwenden, um eine Oracle Database 12c-Datenbank aus einem Azure Marketplace-Image bereitzustellen. Anschließend wird in diesem Artikel Schritt für Schritt gezeigt, wie Sie Data Guard auf einem virtuellen Azure-Computer (VM) installieren und konfigurieren.
 
-Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Vorbereiten der Umgebung
 ### <a name="assumptions"></a>Annahmen
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 
-Die Erstellung einer Verfügbarkeitsgruppe ist optional, wird jedoch empfohlen. Weitere Informationen finden Sie im [Leitfaden zu Azure-Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Die Erstellung einer Verfügbarkeitsgruppe ist optional, wird jedoch empfohlen. Weitere Informationen finden Sie im [Leitfaden zu Azure-Verfügbarkeitsgruppen](../../windows/infrastructure-example.md).
 
 ```azurecli
 az vm availability-set create \

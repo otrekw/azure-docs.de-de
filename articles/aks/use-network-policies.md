@@ -5,12 +5,12 @@ description: Es wird beschrieben, wie Sie ein- und ausgehenden Datenverkehr bei 
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e494c6ac89289a9b271d16b871b8a22e1ca9e6a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050482"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -158,13 +158,13 @@ kubectl label namespace/development purpose=development
 Erstellen Sie einen Beispiel-Back-End-Pod, der NGINX ausführt. Dieser Back-End-Pod kann verwendet werden, um eine Beispielanwendung auf Back-End-Web-Basis zu simulieren. Erstellen Sie diesen Pod im *development* -Namespace, und öffnen Sie Port *80* für den Webdatenverkehr. Geben Sie dem Pod die Bezeichnung *app=webapp,role=backend*, damit wir im nächsten Abschnitt eine auf ihn zielgerichtete Netzwerkrichtlinie einfügen können:
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
+kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 Erstellen Sie einen weiteren Pod, und fügen Sie eine Terminalsitzung an, um zu testen, ob Sie die NGINX-Standardwebseite erreichen können:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können:
@@ -220,7 +220,7 @@ kubectl apply -f backend-policy.yaml
 Jetzt prüfen wir, ob Sie die NGINX-Webseite auf dem Back-End-Pod verwenden können. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Legen Sie dieses Mal einen Timeoutwert auf *2* Sekunden fest. Die Netzwerkrichtlinie blockiert jetzt sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
@@ -277,7 +277,7 @@ kubectl apply -f backend-policy.yaml
 Planen Sie einen Pod mit der Bezeichnung *app=webapp,role=frontend*, und fügen Sie eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können:
@@ -307,7 +307,7 @@ exit
 Die Netzwerkrichtlinie lässt Datenverkehr von Pods mit der Bezeichnung *app: webapp,role: frontend* zu, sollte aber den gesamten sonstigen Datenverkehr verweigern. Wir testen nun, ob ein anderer Pod ohne diese Bezeichnungen auf den Back-End-NGINX-Pod zugreifen kann. Erstellen Sie einen anderen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können. Die Netzwerkrichtlinie blockiert sämtlichen eingehenden Datenverkehr, damit die Seite nicht geladen werden kann. Dies ist im folgenden Beispiel dargestellt:
@@ -340,7 +340,7 @@ kubectl label namespace/production purpose=production
 Planen Sie einen Testpod im *production*-Namespace mit der Bezeichnung *app=webapp,role=frontend*. Fügen Sie eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass Sie auf die NGINX-Standardwebseite zugreifen können:
@@ -404,7 +404,7 @@ kubectl apply -f backend-policy.yaml
 Planen Sie einen weiteren Pod im *production*-Namespace, und fügen Sie eine Terminalsitzung an:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie Datenverkehr nun ablehnt:
@@ -426,7 +426,7 @@ exit
 Da der Datenverkehr vom *production*-Namespace jetzt abgelehnt wird, können Sie einen Testpod im *development*-Namespace planen und eine Terminalsitzung anfügen:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 Vergewissern Sie sich an der Shelleingabeaufforderung mit `wget`, dass die Netzwerkrichtlinie den Datenverkehr zulässt:

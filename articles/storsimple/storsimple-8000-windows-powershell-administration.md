@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999515"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
 
@@ -29,7 +29,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 > [!NOTE]
 > * Windows PowerShell für StorSimple-Cmdlets ermöglicht Ihnen die Verwaltung Ihres StorSimple-Geräts über eine serielle Konsole oder die Remoteverwaltung über Windows PowerShell-Remoting. Weitere Informationen zu den einzelnen Cmdlets, die an dieser Schnittstelle verwendet werden können, finden Sie in der [Cmdlet-Referenz für Windows PowerShell für StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
-> * Die Azure PowerShell-Cmdlets für StorSimple sind eine andere Sammlung von Cmdlets, die Ihnen die Automatisierung von Aufgaben auf StorSimple-Dienstebene und Migrationsaufgaben über die Befehlszeile ermöglichen. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie in der [Referenz zu den Azure StorSimple-Cmdlets](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
+> * Die Azure PowerShell-Cmdlets für StorSimple sind eine andere Sammlung von Cmdlets, die Ihnen die Automatisierung von Aufgaben auf StorSimple-Dienstebene und Migrationsaufgaben über die Befehlszeile ermöglichen. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie in der [Referenz zu den Azure StorSimple-Cmdlets](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
 Es gibt zwei Möglichkeiten des Zugriffs auf Windows PowerShell für StorSimple:

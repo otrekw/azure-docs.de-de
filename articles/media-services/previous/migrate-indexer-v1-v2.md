@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84e4e34ab7b9f0250ae7bc94248fa98cbf23cd6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084380"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrieren von Media Indexer und Media Indexer 2 zu Video Indexer
 
-Die Medienprozessoren [Azure Media Indexer](media-services-index-content.md) und [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) Medienprozessoren werden außer Betrieb genommen. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md). [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ersetzt diese Legacy-Medienprozessoren.
+Die Medienprozessoren [Azure Media Indexer](media-services-index-content.md) und [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) Medienprozessoren werden außer Betrieb genommen. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diese Legacy-Medienprozessoren.
 
 Azure Media Services Video Indexer baut auf Azure Media Analytics, Azure Cognitive Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und benutzerdefinierter Spracherkennungsdienst) auf. Sie ermöglicht Ihnen, mithilfe der Video- und Audiomodelle von Video Indexer Erkenntnisse aus Ihren Videos zu gewinnen. Informationen zu den Szenarien, in denen Video Indexer verwendet werden kann, zu den gebotenen Funktionen und zum Einstieg finden Sie unter [Video- und Audiomodelle von Video Indexer](../video-indexer/video-indexer-overview.md). 
 
@@ -42,13 +42,13 @@ In diesem Artikel werden die Schritte zum Migrieren von Azure Media Indexer und 
 
 ## <a name="getting-started-with-video-indexer"></a>Erste Schritte mit Video Indexer
 
-Der folgende Abschnitt enthält Links zum Thema: [Wie kann ich mich mit Video Indexer vertraut machen?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+Der folgende Abschnitt enthält Links zum Thema: [Wie kann ich mich mit Video Indexer vertraut machen?](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Erste Schritte mit Media Services v3-APIs
 
 Mit der Azure Media Services (AMS) v3-API können Sie Inhalte aus Video- und Audiodateien mit den [Azure Media Services v3-Analyse-Einstellungen](../latest/analyzing-video-audio-files-concept.md) extrahieren. 
 
-**AudioAnalyzerPreset** ermöglicht Ihnen, mehrere Audioinformationen aus einer Audio- oder Videodatei zu extrahieren. Die Ausgabe beinhaltet eine VTT- oder TTML-Datei für das Audiotranskript und eine JSON-Datei (mit allen zusätzlichen Audio-Erkenntnissen). Zu den Audio-Erkenntnissen gehören Schlüsselwörter, Sprecherindizierung und Sprachempfindungsanalyse. AudioAnalyzerPreset unterstützt außerdem für bestimmte Sprachen die Spracherkennung. Ausführliche Informationen finden Sie unter [Transformationen](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
+**AudioAnalyzerPreset** ermöglicht Ihnen, mehrere Audioinformationen aus einer Audio- oder Videodatei zu extrahieren. Die Ausgabe beinhaltet eine VTT- oder TTML-Datei für das Audiotranskript und eine JSON-Datei (mit allen zusätzlichen Audio-Erkenntnissen). Zu den Audio-Erkenntnissen gehören Schlüsselwörter, Sprecherindizierung und Sprachempfindungsanalyse. AudioAnalyzerPreset unterstützt außerdem für bestimmte Sprachen die Spracherkennung. Ausführliche Informationen finden Sie unter [Transformationen](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
 ### <a name="get-started"></a>Erste Schritte
 
@@ -60,12 +60,12 @@ Informationen zu den ersten Schritten finden Sie unter:
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>Erste Schritte mit den Cognitive Services-Spracherkennungsdiensten
 
-[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) bietet einen Spracherkennungsdienst, der Audiodatenströme in Echtzeit in Text umwandelt, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. Sie können die Spracherkennung verenden, um [Ihr eigenes Akustikmodell, Sprachmodell oder Aussprachemodell anzupassen](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md). Weitere Informationen finden Sie unter [Cognitive Services-Spracherkennung](../../cognitive-services/speech-service/speech-to-text.md). 
+[Azure Cognitive Services](../../cognitive-services/index.yml) bietet einen Spracherkennungsdienst, der Audiodatenströme in Echtzeit in Text umwandelt, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. Sie können die Spracherkennung verenden, um [Ihr eigenes Akustikmodell, Sprachmodell oder Aussprachemodell anzupassen](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md). Weitere Informationen finden Sie unter [Cognitive Services-Spracherkennung](../../cognitive-services/speech-service/speech-to-text.md). 
 
 > [!NOTE] 
-> Der Spracherkennungsdienst akzeptiert keine Videodateiformate und auch nur [bestimmte Audioformate](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#audio-formats). 
+> Der Spracherkennungsdienst akzeptiert keine Videodateiformate und auch nur [bestimmte Audioformate](../../cognitive-services/speech-service/rest-speech-to-text.md#audio-formats). 
 
-Weitere Informationen zum Spracherkennungsdienst und Ihren ersten Schritten damit finden Sie unter [Was ist die Spracherkennung?](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text)
+Weitere Informationen zum Spracherkennungsdienst und Ihren ersten Schritten damit finden Sie unter [Was ist die Spracherkennung?](../../cognitive-services/speech-service/speech-to-text.md)
 
 ## <a name="known-differences-from-deprecated-services"></a>Bekannte Unterschiede zu veralteten Diensten 
 
@@ -83,5 +83,3 @@ Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](htt
 
 * [Legacy-Komponenten](legacy-components.md)
 * [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/media-services/#encoding)
-
-

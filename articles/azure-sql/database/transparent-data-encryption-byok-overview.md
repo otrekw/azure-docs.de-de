@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514719"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387114"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Der Schlüsseltresor und die (verwaltete) SQL-Datenbank-Instanz müssen demselben Azure Active Directory-Mandanten angehören. Mandantenübergreifende Interaktionen zwischen Schlüsseltresor und Server werden nicht unterstützt. Damit Ressourcen später verschoben werden können, muss die TDE mit AKV neu konfiguriert werden. Erfahren Sie mehr über das [Verschieben von Ressourcen](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- Die Funktion zum [vorläufigen Löschen](../../key-vault/general/overview-soft-delete.md) muss im Schlüsseltresor aktiviert sein, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht in der Zwischenzeit vom Kunden wiederhergestellt oder endgültig gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert und kann über [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) oder die [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete) aktiviert werden. Die Aktivierung über das Azure-Portal ist nicht möglich.  
+- Die Funktion zum [vorläufigen Löschen](../../key-vault/general/soft-delete-overview.md) muss im Schlüsseltresor aktiviert sein, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht in der Zwischenzeit vom Kunden wiederhergestellt oder endgültig gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert und kann über [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) oder die [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete) aktiviert werden. Die Aktivierung über das Azure-Portal ist nicht möglich.  
 
 - Gewähren Sie dem Server oder der verwalteten Instanz über die entsprechende Azure Active Directory-Identität Zugriff auf den Schlüsseltresor (get, wrapKey, unwrapKey). Wenn Sie das Azure-Portal verwenden, wird die Azure AD-Identität automatisch erstellt. Bei der Verwendung von PowerShell oder der CLI muss die Azure AD-Identität explizit erstellt werden, und der Abschluss des Vorgangs sollte überprüft werden. Unter [Konfigurieren von TDE mit BYOK](transparent-data-encryption-byok-configure.md) und [Konfigurieren von TDE mit BYOK für SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) finden Sie ausführliche Anleitungen für die Verwendung von PowerShell.
 

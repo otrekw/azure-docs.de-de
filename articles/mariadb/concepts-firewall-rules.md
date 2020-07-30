@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/17/2020
+ms.openlocfilehash: 4b5898629c373e31d94ad09ca4af66de0428a7a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047615"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Firewallregeln für den Azure Database for MariaDB-Server
 Firewalls verhindern jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
 
 Zum Konfigurieren einer Firewall erstellen Sie Firewallregeln, die Bereiche zulässiger IP-Adressen festlegen. Sie können Firewallregeln auf Serverebene erstellen.
 
-**Firewallregeln**: Diese Regeln ermöglichen es Clients, auf den gesamten Azure Database for MariaDB-Server zuzugreifen, also auf alle Datenbanken im selben logischen Server. Firewallregeln auf Serverebene können über das Azure-Portal oder mithilfe von Azure CLI-Befehlen konfiguriert werden. Zum Erstellen von Firewallregeln auf Serverebene müssen Sie der Besitzer oder ein Mitwirkender des Abonnements sein.
+**Firewallregeln:** Diese Regeln ermöglichen es Clients, auf den gesamten Azure Database for MariaDB-Server zuzugreifen (also auf alle Datenbanken innerhalb desselben logischen Servers). Firewallregeln auf Serverebene können über das Azure-Portal oder mithilfe von Azure CLI-Befehlen konfiguriert werden. Zum Erstellen von Firewallregeln auf Serverebene müssen Sie der Besitzer oder ein Mitwirkender des Abonnements sein.
 
 ## <a name="firewall-overview"></a>Firewallübersicht
 Jeglicher Datenbankzugriff auf Ihren Azure Database for MariaDB-Server wird standardmäßig von der Firewall blockiert. Damit Sie Ihren Server über einen anderen Computer verwenden können, müssen Sie eine oder mehrere Firewallregeln auf Serverebene angeben, die Zugriff auf Ihren Server ermöglichen. Legen Sie mithilfe der Firewallregeln fest, welche IP-Adressbereiche aus dem Internet zugelassen werden sollen. Der Zugriff auf die Website des Azure-Portals selbst wird durch die Firewallregeln nicht beeinträchtigt.
@@ -56,9 +56,9 @@ Siehe auch [Erstellen und Verwalten von Firewallregeln für Azure Database for M
 ## <a name="troubleshooting-firewall-issues"></a>Behandeln von Firewallproblemen
 Wenn der Zugriff auf den Microsoft Azure Database for MariaDB-Serverdienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
 
-* **Änderungen an der Zulassungsliste sind noch nicht wirksam**: Änderungen der Firewallkonfiguration für den Azure Database for MariaDB-Server werden möglicherweise erst nach fünf Minuten wirksam.
+* **Änderungen an der Zulassungsliste sind noch nicht wirksam:** Änderungen an der Firewallkonfiguration für den Azure Database for MariaDB-Server werden möglicherweise erst nach fünf Minuten wirksam.
 
-* **Die Anmeldung ist nicht autorisiert, oder ein falsches Kennwort wurde verwendet**: Wenn eine Anmeldung nicht über Berechtigungen für den Azure Database for MariaDB-Server verfügt oder das verwendete Kennwort falsch ist, wird die Verbindung mit dem Azure Database for MariaDB-Server verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, eine Verbindung mit dem Server herzustellen. Jeder Client muss die erforderlichen Sicherheitsanmeldeinformationen bereitstellen.
+* **Die Anmeldung ist nicht autorisiert, oder ein falsches Kennwort wurde verwendet:** Wenn eine Anmeldung nicht über Berechtigungen auf dem Azure Database for MariaDB-Server verfügt, oder das verwendete Kennwort falsch ist, wird die Verbindung zum Azure-Datenbank für MariaDB-Server verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, eine Verbindung mit dem Server herzustellen. Jeder Client muss die erforderlichen Sicherheitsanmeldeinformationen bereitstellen.
 
 * **Dynamische IP-Adresse**: Wenn Sie über eine Internetverbindung mit dynamischer IP-Adresszuweisung verfügen und Probleme beim Passieren der Firewall auftreten, können Sie eine der folgenden Lösungen ausprobieren:
 
@@ -67,6 +67,11 @@ Wenn der Zugriff auf den Microsoft Azure Database for MariaDB-Serverdienst nicht
    * Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als Firewallregeln hinzu.
 
 * **Die IP-Adresse des Servers scheint öffentlich zu sein:** Verbindungen mit dem Azure Database for MariaDB-Server werden über ein öffentlich zugängliches Azure-Gateway geleitet. Die tatsächliche Server-IP-Adresse wird jedoch durch die Firewall geschützt. Weitere Informationen finden Sie im Artikel zur [Verbindungsarchitektur](concepts-connectivity-architecture.md). 
+
+* **Verbindungsherstellung von Azure-Ressource mit zulässiger IP-Adresse nicht möglich:** Überprüfen Sie, ob der Dienstendpunkt **Microsoft.Sql** für das Subnetz aktiviert ist, von dem aus Sie die Verbindung herstellen möchten. Wenn **Microsoft.Sql** aktiviert ist, ist dies ein Hinweis darauf, dass Sie in diesem Subnetz nur [VNET-Dienstendpunkt-Regeln](concepts-data-access-security-vnet.md) nutzen möchten.
+
+   Beispielsweise wird ggf. der folgende Fehler angezeigt, wenn Sie eine Verbindung von einer Azure-VM in einem Subnetz herstellen, für das **Microsoft.Sql** aktiviert, aber keine entsprechende VNET-Regel vorhanden ist: `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe des Microsoft Azure-Portals](./howto-manage-firewall-portal.md)

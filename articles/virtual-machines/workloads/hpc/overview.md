@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083428"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>High Performance Computing auf VMs der H-Serie
 
@@ -39,7 +39,7 @@ Weitere Informationen zur Einrichtung von InfiniBand auf Ihren VMs der HB- und H
 
 ## <a name="get-started"></a>Erste Schritte
 
-Entscheiden Sie zuerst, welche VM der H-Serie Sie verwenden möchten. Ausführlichere Informationen zu VMs, die für HPC optimiert sind, finden Sie unter der [Übersicht zur HB-Serie](hb-series-overview.md) und der [Übersicht zur HC-Serie](hc-series-overview.md). Informationen zur Spezifikation finden Sie unter [High Performance Computing-VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc).
+Entscheiden Sie zuerst, welche VM der H-Serie Sie verwenden möchten. Ausführlichere Informationen zu VMs, die für HPC optimiert sind, finden Sie unter der [Übersicht zur HB-Serie](hb-series-overview.md) und der [Übersicht zur HC-Serie](hc-series-overview.md). Informationen zur Spezifikation finden Sie unter [High Performance Computing-VM-Größen](../../sizes-hpc.md).
 
 Nachdem Sie eine VM für Ihre Anwendung ausgewählt und erstellt haben, müssen Sie sie konfigurieren, indem Sie InfiniBand aktivieren. Informationen dazu, wie Sie InfiniBand auf Windows- und Linux-VMs aktivieren, finden Sie unter [Aktivieren von InfiniBand](enable-infiniband.md).
 
@@ -51,4 +51,4 @@ Nachdem Sie Ihre VM-Serie ausgewählt haben, richten Sie Infiniband und MPI ein.
 
 - Lesen Sie die [Übersicht zur HB-Serie](hb-series-overview.md) und die [Übersicht zur HC-Serie](hc-series-overview.md), um sich über die wichtigen Unterschiede und Spezifikationen zu informieren.
 
-- Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+- Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: So funktioniert die Kennworthashsynchronisierung
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Überlegungen zum virtuellen Netzwerk
+      href: network-considerations.md
     - name: Vorteile der Migration einer klassischen Bereitstellung
       href: concepts-migration-benefits.md
     - name: Was ist Azure Active Directory?
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: Erstellen eines gruppenverwalteten Dienstkontos (gMSA)
           href: create-gmsa.md
-    - name: Planen für Azure AD DS
-      items:
-        - name: Überlegungen zum virtuellen Netzwerk
-          href: network-considerations.md
     - name: Verwalten von Azure AD DS
       items:
         - name: Verwalten einer Gruppenrichtlinie

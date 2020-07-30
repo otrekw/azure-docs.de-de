@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536300"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387845"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln
 
@@ -30,7 +30,7 @@ Sowohl Ressourcendatenträger als auch verwaltete Datenträger auf den einzelnen
 
 Wenn die Schlüsseltresor-Firewall für den Schlüsseltresor aktiviert ist, in dem der Schlüssel für die Datenträgerverschlüsselung gespeichert ist, müssen die IP-Adressen der regionalen HDInsight-Ressourcenanbieter für die Region, in der der Cluster bereitgestellt wird, der Konfiguration für die Schlüsseltresor-Firewall hinzugefügt werden. Dies ist erforderlich, weil HDInsight kein vertrauenswürdiger Azure Key Vault-Dienst ist.
 
-Sie können für das sichere Rotieren der Schlüssel im Schlüsseltresor das Azure-Portal oder die Azure CLI verwenden. Beim Rotieren eines Schlüssels beginnt der HDInsight-Cluster innerhalb weniger Minuten mit der Verwendung des neuen Schlüssels. Aktivieren Sie die Schlüsselschutzfunktion [Vorläufiges Löschen](../key-vault/general/overview-soft-delete.md) zum Schutz vor Ransomware und versehentlichem Löschen. Schlüsseltresore ohne diese Schutzfunktion werden nicht unterstützt.
+Sie können für das sichere Rotieren der Schlüssel im Schlüsseltresor das Azure-Portal oder die Azure CLI verwenden. Beim Rotieren eines Schlüssels beginnt der HDInsight-Cluster innerhalb weniger Minuten mit der Verwendung des neuen Schlüssels. Aktivieren Sie die Schlüsselschutzfunktion [Vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) zum Schutz vor Ransomware und versehentlichem Löschen. Schlüsseltresore ohne diese Schutzfunktion werden nicht unterstützt.
 
 |Clustertyp |Betriebssystemdatenträger (verwalteter Datenträger) |Datenträger für Daten (verwalteter Datenträger) |Temporärer Datenträger (lokale SSD) |
 |---|---|---|---|

@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79461009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000940"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3: Übersicht
 
@@ -31,7 +31,7 @@ Azure Media Services ist eine cloudbasierte Plattform für die Erstellung von L�
 Die Media Services v3 SDKs basieren auf der [OpenAPI-Spezifikation von Media Services v3 (Swagger)](https://aka.ms/ams-v3-rest-sdk).
 
 > [!NOTE]
-> Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten der [Liveereignisse](live-events-outputs-concept.md) von Media Services v3, Anzeigen (nicht Verwalten) von v3-[Objekten](assets-concept.md) und [Abrufen von Informationen zum Zugreifen auf APIs](access-api-portal.md). Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://docs.microsoft.com/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+> Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten der [Liveereignisse](live-events-outputs-concept.md) von Media Services v3, Anzeigen (nicht Verwalten) von v3-[Objekten](assets-concept.md) und [Abrufen von Informationen zum Zugreifen auf APIs](./access-api-howto.md). Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,8 +53,8 @@ Mit Media Services können Sie eine Vielzahl von Medienworkflows in der Cloud er
 * Analysieren Sie aufgezeichnete Videos oder Audioinhalte. Um beispielsweise eine höhere Kundenzufriedenheit zu erreichen, können Unternehmen Sprache-in-Text extrahieren und Suchindizes und Dashboards erstellen. Sie können dann Daten zu häufigen Beschwerden und ihren Ursachen sowie andere relevante Daten extrahieren.
 * Erstellen Sie einen Abonnementvideodienst, und streamen Sie durch DRM geschützte Inhalte, wenn ein Kunde (z.B. ein Filmstudio) den Zugriff und die Nutzung von urheberrechtlich geschützten Werken einschränken muss.
 * Stellen Sie Offlineinhalte für die Wiedergabe in Flugzeugen, Zügen und Autos bereit. Möglicherweise muss ein Kunde Inhalte zur Wiedergabe auf sein Smartphone oder Tablet herunterladen, wenn er eine Trennung vom Netzwerk erwartet.
-* Implementieren Sie eine E-Learning-Videoplattform mit Azure Media Services und [Azure Cognitive Services-APIs](https://docs.microsoft.com/azure/?pivot=products&panel=ai) für Sprache-in-Text-Untertitel, Übersetzung in mehrere Sprachen usw.
-* Verwenden Sie Azure Media Services zusammen mit [Azure Cognitive Services-APIs](https://docs.microsoft.com/azure/?pivot=products&panel=ai), um Untertitel zu Videos hinzuzufügen und so ein breiteres Publikum anzusprechen (z.B. Menschen mit Hörbehinderungen oder Menschen, die in einer anderen Sprache mitlesen möchten).
+* Implementieren Sie eine E-Learning-Videoplattform mit Azure Media Services und [Azure Cognitive Services-APIs](../../index.yml?pivot=products&panel=ai) für Sprache-in-Text-Untertitel, Übersetzung in mehrere Sprachen usw.
+* Verwenden Sie Azure Media Services zusammen mit [Azure Cognitive Services-APIs](../../index.yml?pivot=products&panel=ai), um Untertitel zu Videos hinzuzufügen und so ein breiteres Publikum anzusprechen (z.B. Menschen mit Hörbehinderungen oder Menschen, die in einer anderen Sprache mitlesen möchten).
 * Aktivieren Sie Azure CDN, um eine umfassende Skalierung zu erreichen und hohe Auslastungen besser zu bewältigen (z.B. den Beginn einer Produkteinführung).
 
 ## <a name="how-can-i-get-started-with-v3"></a>Wie kann ich erste Schritte mit v3 ausführen? 
@@ -76,7 +76,7 @@ Die Schnellstartanleitungen enthalten grundlegende Informationen für Einsteiger
 * [Streamen von Videodateien: CLI](stream-files-cli-quickstart.md)
 * [Streamen von Videodateien: Node.js](stream-files-nodejs-quickstart.md)
 
-### <a name="tutorials"></a>Lernprogramme
+### <a name="tutorials"></a>Tutorials
 
 Die Tutorials enthalten szenariobasierte Verfahren für einige der wichtigsten Media Services-Aufgaben.
 
@@ -88,14 +88,14 @@ Die Tutorials enthalten szenariobasierte Verfahren für einige der wichtigsten M
 
 ### <a name="samples"></a>Beispiele
 
-Verwenden Sie diesen [Beispielbrowser](https://docs.microsoft.com/samples/browse/?products=azure-media-services), um Azure Media Services-Codebeispiele zu durchsuchen.
+Verwenden Sie diesen [Beispielbrowser](/samples/browse/?products=azure-media-services), um Azure Media Services-Codebeispiele zu durchsuchen.
 
-### <a name="how-to-guides"></a>Gewusst-wie-Anleitungen
+### <a name="how-to-guides"></a>Anleitungen
 
 Die Anleitungen enthalten Codebeispiele, um die Ausführung einer Aufgabe zu veranschaulichen. In diesem Abschnitt finden Sie viele Beispiele. Einige davon sind:
 
-* [Erstellen eines Azure Media Services-Kontos](create-account-cli-how-to.md)
-* [Zugriff auf Azure Media Services-API mit Azure CLI](access-api-cli-how-to.md)
+* [Erstellen eines Azure Media Services-Kontos](./create-account-howto.md)
+* [Zugriff auf Azure Media Services-API mit Azure CLI](./access-api-howto.md)
 * [Codieren mit HTTPS als Auftragseingabe: .NET](job-input-from-http-how-to.md)  
 * [Überwachen von Ereignissen: Portal](monitor-events-portal-how-to.md)
 * [Dynamische Verschlüsselung mit Multi-DRM: .NET](protect-with-drm.md) 

@@ -4,16 +4,16 @@ description: Übersicht über verfügbare Datenbanksichten in der Azure Blockcha
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: 585084b4c85c48533bdad96d4f99813ef2e418b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74325988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003320"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Datenbanksichten in Azure Blockchain Workbench
 
-Azure Blockchain Workbench (Vorschauversion) stellt Daten über Distributed Ledgers in einer *Off-Chain*-SQL-Datenbank bereit. Die Off-Chain-Datenbank ermöglicht es, SQL und vorhandene Tools zu nutzen, z.B. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), um mit Blockchain-Daten zu interagieren.
+Azure Blockchain Workbench (Vorschauversion) stellt Daten über Distributed Ledgers in einer *Off-Chain*-SQL-Datenbank bereit. Die Off-Chain-Datenbank ermöglicht es, SQL und vorhandene Tools zu nutzen, z.B. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), um mit Blockchain-Daten zu interagieren.
 
 Azure Blockchain Workbench verfügt über einen Satz mit Datenbanksichten, mit denen der Zugriff auf Daten möglich ist, die beim Durchführen Ihrer Abfragen nützlich sind. Die Sichten sind stark denormalisiert, um den schnellen Einstieg in die Erstellung von Berichten und Analysen und die anderweitige Nutzung von Blockchain-Daten mit vorhandenen Tools zu ermöglichen, ohne dass die für Datenbanken zuständigen Mitarbeiter neu geschult werden müssen.
 

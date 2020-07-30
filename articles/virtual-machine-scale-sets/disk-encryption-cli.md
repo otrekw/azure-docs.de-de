@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: fd8b88e55f487032f76aa379018f09c144842d60
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa86773f52c05818f4abea2b7a8b5347e1778274
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046312"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verschlüsseln von Betriebssystem- und angefügten Datenträgern in einer VM-Skalierungsgruppe mit Azure CLI
 
@@ -32,7 +32,7 @@ Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group c
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie dann mit [az vmss create](/cli/azure/vmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, die automatisch aktualisiert wird, wenn Änderungen angewendet werden. Außerdem werden SSH-Schlüssel generiert, falls sie unter *~/.ssh/id_rsa* nicht vorhanden sind. Jeder VM-Instanz wird ein Datenträger mit einer Kapazität von 32 GB angefügt, und die [benutzerdefinierte Skripterweiterung](../virtual-machines/linux/extensions-customscript.md) für Azure wird zum Vorbereiten der Datenträger mit [az vmss extension set](/cli/azure/vmss/extension) verwendet:
+Erstellen Sie dann mit [az vmss create](/cli/azure/vmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, die automatisch aktualisiert wird, wenn Änderungen angewendet werden. Außerdem werden SSH-Schlüssel generiert, falls sie unter *~/.ssh/id_rsa* nicht vorhanden sind. Jeder VM-Instanz wird ein Datenträger mit einer Kapazität von 32 GB angefügt, und die [benutzerdefinierte Skripterweiterung](../virtual-machines/extensions/custom-script-linux.md) für Azure wird zum Vorbereiten der Datenträger mit [az vmss extension set](/cli/azure/vmss/extension) verwendet:
 
 ```azurecli-interactive
 # Create a scale set with attached data disk

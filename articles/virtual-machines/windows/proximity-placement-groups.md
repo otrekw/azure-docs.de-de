@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083445"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Bereitstellen von VMs für Näherungsplatzierungsgruppen mit PowerShell
 
@@ -24,7 +24,7 @@ Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein mö
 
 
 ## <a name="create-a-proximity-placement-group"></a>Erstellen einer Näherungsplatzierungsgruppe
-Erstellen Sie mithilfe des Cmdlets [New-AzProximityPlacementGroup ](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) eine Näherungsplatzierungsgruppe. 
+Erstellen Sie mithilfe des Cmdlets [New-AzProximityPlacementGroup ](/powershell/module/az.compute/new-azproximityplacementgroup) eine Näherungsplatzierungsgruppe. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
-Erstellen Sie mit `-ProximityPlacementGroup $ppg.Id` eine VM in der Näherungsplatzierungsgruppe, um auf die Näherungsplatzierungsgruppen-ID zu verweisen, wenn Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) die VM erstellen.
+Erstellen Sie mit `-ProximityPlacementGroup $ppg.Id` eine VM in der Näherungsplatzierungsgruppe, um auf die Näherungsplatzierungsgruppen-ID zu verweisen, wenn Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) die VM erstellen.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -146,7 +146,7 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Skalierungsgruppen
 
-Sie können auch eine Skalierungsgruppe in ihrer Näherungsplatzierungsgruppe erstellen. Verwenden Sie den gleichen `-ProximityPlacementGroup`-Parameter mit [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss), um eine Skalierungsgruppe zu erstellen, und alle Instanzen werden in derselben Näherungsplatzierungsgruppe erstellt.
+Sie können auch eine Skalierungsgruppe in ihrer Näherungsplatzierungsgruppe erstellen. Verwenden Sie den gleichen `-ProximityPlacementGroup`-Parameter mit [New-AzVmss](/powershell/module/az.compute/new-azvmss), um eine Skalierungsgruppe zu erstellen, und alle Instanzen werden in derselben Näherungsplatzierungsgruppe erstellt.
 
 
 Um einer Näherungsplatzierungsgruppe eine vorhandene Skalierungsgruppe hinzuzufügen oder sie aus ihr zu entfernen, müssen Sie die Skalierungsgruppe zuerst beenden. 

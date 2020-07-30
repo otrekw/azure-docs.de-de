@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d00dd096bcfba32912337b122aefd0c00195ee8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64867100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000855"
 ---
 # <a name="monitor-job-progress-using-net"></a>Überwachen des Auftragsfortschritts mit .NET 
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Fortschritt überprüfen, indem Sie einen StateChanged-Ereignishandler definieren (wie im vorliegenden Thema beschrieben) oder Azure-Warteschlangenspeicher zur Überwachung von Media Services-Auftragsbenachrichtigungen verwenden (wie in [diesem](media-services-dotnet-check-job-progress-with-queues.md) Thema beschrieben).
 
@@ -117,4 +117,3 @@ Das folgende Codebeispiel definiert den StateChanged-Ereignishandler. Dieser Ere
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

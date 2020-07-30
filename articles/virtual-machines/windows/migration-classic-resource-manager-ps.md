@@ -8,17 +8,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 314d7a4725709f00ba5cdbf54595857502bc5805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b869556e1bd49018b2afce27e732a3109b9fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81865946"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999121"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von PowerShell
 
 > [!IMPORTANT]
-> Derzeit nutzen etwa 90 % der IaaS-VMs [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Seit dem 28. Februar 2020 gelten klassische VMs als veraltet. Sie werden am 1. März 2023 vollständig eingestellt. [Erfahren Sie mehr]( https://aka.ms/classicvmretirement) zu dieser Einstellung und den [Auswirkungen auf Sie](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Derzeit nutzen etwa 90 % der IaaS-VMs [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Seit dem 28. Februar 2020 gelten klassische VMs als veraltet. Sie werden am 1. März 2023 vollständig eingestellt. [Erfahren Sie mehr]( https://aka.ms/classicvmretirement) zu dieser Einstellung und den [Auswirkungen auf Sie](../classic-vm-deprecation.md#how-does-this-affect-me).
 
 Diese Schritte zeigen, wie Sie Azure PowerShell-Befehle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden.
 
@@ -49,7 +49,7 @@ Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie überlege
 ## <a name="step-2-install-the-latest-version-of-powershell"></a>Schritt 2: Installieren der neuesten PowerShell-Version
 Für die Installation von Azure PowerShell stehen zwei Hauptoptionen zur Verfügung: [PowerShell-Katalog](https://www.powershellgallery.com/profiles/azure-sdk/) oder [Webplattform-Installer (WebPI)](https://aka.ms/webpi-azps). WebPI empfängt monatliche Updates. Der PowerShell-Katalog wird fortlaufend aktualisiert. Dieser Artikel basiert auf Azure PowerShell Version 2.1.0.
 
-Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Schritt 3: Sicherstellen, dass Sie Administrator für das Abonnement sind
 Um diese Migration auszuführen, müssen Sie im [Azure-Portal](https://portal.azure.com) als Co-Administrator für das Abonnement hinzugefügt werden.
@@ -221,7 +221,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
 Um virtuelle Computer in einem virtuellen Netzwerk zu migrieren, migrieren Sie das virtuelle Netzwerk. Die virtuellen Computer werden automatisch zusammen mit dem virtuellen Netzwerk migriert. Wählen Sie das virtuelle Netzwerk aus, das Sie migrieren möchten.
 > [!NOTE]
-> [Migrieren Sie einen einzelnen virtuellen Computer](migrate-single-classic-to-resource-manager.md), der mit dem klassischen Bereitstellungsmodell erstellt wurde, indem Sie einen neuen virtuellen Resource Manager-Computer mit Managed Disks unter Verwendung der VHD-Dateien (Betriebssystem und Daten) des virtuellen Computers erstellen.
+> [Migrieren Sie einen einzelnen virtuellen Computer](./create-vm-specialized-portal.md), der mit dem klassischen Bereitstellungsmodell erstellt wurde, indem Sie einen neuen virtuellen Resource Manager-Computer mit Managed Disks unter Verwendung der VHD-Dateien (Betriebssystem und Daten) des virtuellen Computers erstellen.
 <br>
 
 > [!NOTE]

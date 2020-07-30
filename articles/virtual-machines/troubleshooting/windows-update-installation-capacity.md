@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999104"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Beheben von Problemen beim Betriebssystemstart: Windows Update-Installationskapazität
 
@@ -49,7 +49,7 @@ In dieser Situation ist das Betriebssystem (OS) nicht in der Lage, eine Windows 
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen einer Reparatur-VM und Zugreifen darauf
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="free-up-space-on-the-disk"></a>Freigeben von Speicherplatz auf der Festplatte
@@ -60,10 +60,10 @@ So beheben Sie das Problem:
 - Führen Sie eine Datenträgerbereinigung durch.
 - Defragmentieren Sie das Laufwerk.
 
-1. Überprüfen Sie, ob der Datenträger voll ist. Wenn die Größe des Datenträgers unter 1 TB liegt, [erweitern Sie ihn mit PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) auf eine maximale Größe von 1 TB.
+1. Überprüfen Sie, ob der Datenträger voll ist. Wenn die Größe des Datenträgers unter 1 TB liegt, [erweitern Sie ihn mit PowerShell](../windows/expand-os-disk.md) auf eine maximale Größe von 1 TB.
 1. Wenn der Datenträger bereits 1 TB groß ist, müssen Sie eine Datenträgerbereinigung durchführen.
-   1. Trennen Sie den Datenträger [von der defekten VM](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk).
-   1. Fügen Sie den Datenträger [an eine funktionsfähige VM an](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+   1. Trennen Sie den Datenträger [von der defekten VM](../windows/detach-disk.md).
+   1. Fügen Sie den Datenträger [an eine funktionsfähige VM an](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
    1. Geben Sie mit dem [Datenträgerbereinigungstool](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) Speicherplatz frei.
 1. Wenn Änderung der Größe und Bereinigung abgeschlossen sind, defragmentieren Sie das Laufwerk mit dem folgenden Befehl:
 
@@ -123,4 +123,4 @@ Je nach dem Grad der Fragmentierung kann die Defragmentierung mehrere Stunden da
    
 ### <a name="rebuild-the-vm"></a>Neuerstellen der VM
 
-Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example), um die VM neu zu erstellen.
+Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example), um die VM neu zu erstellen.

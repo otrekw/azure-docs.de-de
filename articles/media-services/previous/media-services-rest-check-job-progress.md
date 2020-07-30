@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d5f3382965d9166fabf99ac650e707e29c38a72
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a8ada16bbfff66c60a1400542742396b667160dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000515"
 ---
 # <a name="how-to-check-job-progress"></a>Vorgehensweise: Prüfen des Auftragsfortschritts
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
-Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Auftragsstatus mithilfe der State-Eigenschaft des Auftrags feststellen. Weitere Informationen zur State-Eigenschaft finden Sie unter [Eigenschaften von Auftragsentitäten](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Auftragsstatus mithilfe der State-Eigenschaft des Auftrags feststellen. Weitere Informationen zur State-Eigenschaft finden Sie unter [Eigenschaften von Auftragsentitäten](/rest/api/media/operations/job#job_entity_properties).
 
 ## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
 

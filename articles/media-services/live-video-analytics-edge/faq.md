@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen zu Live Video Analytics in IoT Edge: Azure'
 description: In diesem Thema erhalten Sie Antworten auf häufig gestellte Fragen (FAQs) zu Live Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011514"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 
@@ -20,14 +20,14 @@ Welche Systemvariablen können in der Definition der Diagrammtopologie verwendet
 
 |Variable   |BESCHREIBUNG|
 |---|---|
-|[System.DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Stellt einen Zeitpunkt dar, der üblicherweise als Datum und Uhrzeit ausgedrückt wird.|
+|[System.DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Stellt einen Zeitpunkt dar, der üblicherweise als Datum und Uhrzeit ausgedrückt wird.|
 |System.GraphTopologyName   |Stellt eine Mediendiagrammtopologie dar und enthält die Blaupause eines Diagramms.|
 |System.GraphInstanceName|  Stellt eine Mediendiagramminstanz dar, enthält die Parameterwerte und verweist auf die Topologie.|
 
 ## <a name="configuration-and-deployment"></a>Konfiguration und Bereitstellung
 
 Kann ich das Edgemodul für Medien auf einem Windows 10-Gerät bereitstellen?
-    * Ja. Weitere Informationen finden Sie unter [Linux-Container unter Windows 10](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers).
+    * Ja. Weitere Informationen finden Sie unter [Linux-Container unter Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Aufzeichnen von IP-Kameras und RTSP-Einstellungen
 

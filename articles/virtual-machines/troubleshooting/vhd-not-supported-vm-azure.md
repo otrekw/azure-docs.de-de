@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: ff4822b513ed2aea6a18ba45bffc1d060ee2410e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a843a42de6fc1e6cd8ef788552ab4a8ac17b4e25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999053"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>VHD wird beim Erstellen eines virtuellen Computers in Azure nicht unterstützt
 
@@ -48,21 +48,21 @@ Dieses Problem tritt aus einem der folgenden Gründe auf:
 
 Ändern Sie zur Behebung dieses Problems die Größe des Datenträgers so, dass die 1-MB-Ausrichtung eingehalten wird:
 
-- Verwenden Sie das [PowerShell-Cmdlet zum Ändern der Größe der VHD](https://docs.microsoft.com/powershell/module/hyper-v/resize-vhd) (Resize-VHD), um das Problem in Windows zu beheben. Beachten Sie, dass **Resize-VHD** kein Azure PowerShell-Cmdlet ist.
+- Verwenden Sie das [PowerShell-Cmdlet zum Ändern der Größe der VHD](/powershell/module/hyper-v/resize-vhd) (Resize-VHD), um das Problem in Windows zu beheben. Beachten Sie, dass **Resize-VHD** kein Azure PowerShell-Cmdlet ist.
 
-  1. [Installieren der Hyper-V-Rolle auf Windows Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
-  1. [Konvertieren des virtuellen Datenträgers in eine VHD mit fester Größe](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#convert-the-virtual-disk-to-a-fixed-size-vhd)
+  1. [Installieren der Hyper-V-Rolle auf Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
+  1. [Konvertieren des virtuellen Datenträgers in eine VHD mit fester Größe](../windows/prepare-for-upload-vhd-image.md#convert-the-virtual-disk-to-a-fixed-size-vhd)
 
-- Verwenden Sie zur Lösung des Problems unter Linux den Befehl [qemu-img](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+- Verwenden Sie zur Lösung des Problems unter Linux den Befehl [qemu-img](../linux/create-upload-generic.md).
 
 Weitere Informationen zum Erstellen und Hochladen einer VHD zur Erstellung von virtuellen Azure-Computern finden Sie in den folgenden Artikeln:
 
-- [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage mithilfe der Azure CLI 1.0](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
-- [Erstellen und Hochladen einer Windows Server-VHD in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+- [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage mithilfe der Azure CLI 1.0](../linux/upload-vhd.md)
+- [Erstellen und Hochladen einer Windows Server-VHD in Azure](../windows/upload-generalized-managed.md)
 
 Anhaltende Probleme können auf einen beschädigte VHD hinweisen. In dieser Situation empfiehlt es sich, die VHD von Grund auf neu zu erstellen.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Informationen zur Windows-VHD](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#about-vhds)
-- [Informationen zur Linux-VHD](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds#about-vhds)
+- [Informationen zur Windows-VHD](../windows/managed-disks-overview.md)
+- [Informationen zur Linux-VHD](../linux/managed-disks-overview.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 945f8896a844e7a73107df44d03abc7290f4e3fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999136"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Eine RDP-Verbindung mit Azure Virtual Machines ist nicht möglich, da der DHCP-Clientdienst deaktiviert ist
 
@@ -204,7 +204,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
-1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her. Stellen Sie sicher, dass der angefügte Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 3.  Öffnen Sie eine Eingabeaufforderungsinstanz mit erhöhten Rechten (**Als Administrator ausführen**). Führen Sie dann das folgende Skript aus. Dieses Skript setzt voraus, dass der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugeordnet ist, **F** ist. Ersetzen Sie den Buchstaben durch den entsprechenden Wert auf dem virtuellen Computer.
 
@@ -222,7 +222,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Steuerung, um DHCP zu akt
     reg unload HKLM\BROKENSYSTEM
     ```
 
-4. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](../windows/troubleshoot-recovery-disks-portal.md) Überprüfen Sie dann, ob das Problem behoben ist.
+4. [Trennen Sie den Betriebssystemdatenträger, und erstellen die VM neu.](./troubleshoot-recovery-disks-portal-windows.md) Überprüfen Sie dann, ob das Problem behoben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

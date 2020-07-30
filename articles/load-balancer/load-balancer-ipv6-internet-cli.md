@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 03bedba280fca4c051685eabdfa47eaaf00f05d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001572"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -268,7 +268,7 @@ Erstellen Sie NICs, und ordnen Sie diese NAT-Regeln, Lastenausgleichsregeln und 
 
 ## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Erstellen der Back-End-VM-Ressourcen und Anfügen der NICs
 
-Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich müssen die VMs zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zum Erstellen von VMs finden Sie unter [Erstellen eines virtuellen Windows-Computers mit PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich müssen die VMs zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zum Erstellen von VMs finden Sie unter [Erstellen eines virtuellen Windows-Computers mit PowerShell](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
 1. Richten Sie die PowerShell-Variablen ein:
 

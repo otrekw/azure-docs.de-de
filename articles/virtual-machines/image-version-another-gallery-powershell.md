@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221220"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082595"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopieren eines Images aus einer anderen Galerie mithilfe von PowerShell
 
@@ -100,7 +100,7 @@ Die Ausgabe sieht in etwa wie folgt aus:
 }
 ```
 
-Erstellen Sie mit dem Cmdlet [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) und den Informationen aus der Ausgabe oben eine neue Imagedefinition in Ihrem Zielkatalog.
+Erstellen Sie mit dem Cmdlet [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) und den Informationen aus der Ausgabe oben eine neue Imagedefinition in Ihrem Zielkatalog.
 
 
 In diesem Beispiel heißt die Imagedefinition *myDestinationImgDef* im Katalog mit dem Namen *myDestinationGallery*.
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>Erstellen der Imageversion
 
-Erstellen Sie mit [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) eine Imageversion. Sie müssen die ID des Quellimages im `--managed-image`-Parameter übergeben, um die Imageversion in Ihrem Zielkatalog zu erstellen. 
+Erstellen Sie mit [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) eine Imageversion. Sie müssen die ID des Quellimages im `--managed-image`-Parameter übergeben, um die Imageversion in Ihrem Zielkatalog zu erstellen. 
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Sie müssen warten, bis die Imageversion vollständig erstellt und repliziert wurde, bevor Sie dieses verwaltete Image verwenden können, um eine weitere Imageversion zu erstellen.
 >
-> Sie können Ihr Image auch in einem Premium-Speicher durch Hinzufügen von `-StorageAccountType Premium_LRS` oder in einem [zonenredundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) speichern, indem Sie `-StorageAccountType Standard_ZRS` hinzufügen, wenn Sie die Imageversion erstellen.
+> Sie können Ihr Image auch in einem Premium-Speicher durch Hinzufügen von `-StorageAccountType Premium_LRS` oder in einem [zonenredundanten Speicher](../storage/common/storage-redundancy.md) speichern, indem Sie `-StorageAccountType Standard_ZRS` hinzufügen, wenn Sie die Imageversion erstellen.
 >
 
 

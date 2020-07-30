@@ -3,12 +3,12 @@ title: Sichern des Windows-Systemstatus in Azure
 description: Erfahren Sie, wie Sie den Systemstatus von Windows Server und/oder Windows-Computern in Azure sichern.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003844"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Sichern des Windows-Systemstatus in Azure
 
@@ -40,7 +40,7 @@ Vergewissern Sie sich beim Erstellen eines Recovery Services-Tresors, dass die S
 
     ![Speicherkonfigurationsoptionen](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin die Option **Georedundant**. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in [dieser Übersicht über Speicherredundanz](../storage/common/storage-redundancy.md).
+    Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin die Option **Georedundant**. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md) und [lokal redundanten](../storage/common/storage-redundancy.md) Speicher finden Sie in [dieser Übersicht über Speicherredundanz](../storage/common/storage-redundancy.md).
 
 Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows-Systemstatus konfigurieren.
 
@@ -174,7 +174,7 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Age
 
 5. Klicken Sie auf **Schließen** , um den Assistenten zu schließen. Wenn Sie den Assistenten schließen, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
     > [!NOTE]
-    > Der MARS-Agent löst SFC/verifyonly als Teil der Vorabüberprüfungen vor jeder Systemstatussicherung aus. Dadurch wird sichergestellt, dass Dateien, die im Rahmen des Systemstatus gesichert werden, die richtigen Versionen entsprechend der Windows-Version aufweisen. Weitere Informationen zu System File Checker (SFC) finden Sie in [diesem Artikel](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc).
+    > Der MARS-Agent löst SFC/verifyonly als Teil der Vorabüberprüfungen vor jeder Systemstatussicherung aus. Dadurch wird sichergestellt, dass Dateien, die im Rahmen des Systemstatus gesichert werden, die richtigen Versionen entsprechend der Windows-Version aufweisen. Weitere Informationen zu System File Checker (SFC) finden Sie in [diesem Artikel](/windows-server/administration/windows-commands/sfc).
     >
 
 Nach Abschluss des ersten Backups wird der Status des Auftrags in der Backup-Konsole als **Auftrag abgeschlossen** angezeigt.

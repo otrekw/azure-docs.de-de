@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045242"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Behandeln von Problemen bei Azure Monitor-Warnungen
 
@@ -241,13 +241,13 @@ Wenn Sie einen Fehler beim Erstellen, Aktualisieren oder Löschen einer [Aktions
 
 1. **Haben Sie einen Berechtigungsfehler erhalten?**  
 
-    Sie sollten entweder über die  [integrierte Rolle „Mitwirkender an der Überwachung“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) oder die spezifischen Berechtigungen im Bezug zu Aktionsregeln und Warnungen verfügen.
+    Sie sollten entweder über die  [integrierte Rolle „Mitwirkender an der Überwachung“](../../role-based-access-control/built-in-roles.md#monitoring-contributor) oder die spezifischen Berechtigungen im Bezug zu Aktionsregeln und Warnungen verfügen.
 
 1. **Haben Sie die Aktionsregelparameter überprüft?**  
 
-    Weitere Informationen hierzu finden Sie in der [Dokumentation zu Aktionsregeln](alerts-action-rules.md) oder dem Artikel zum Aktionsregelbefehl [PowerShell Set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0). 
+    Weitere Informationen hierzu finden Sie in der [Dokumentation zu Aktionsregeln](alerts-action-rules.md) oder dem Artikel zum Aktionsregelbefehl [PowerShell Set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Verwendung von Protokollwarnungen finden Sie unter [Behandeln von Problemen bei Protokollwarnungen](alert-log-troubleshoot.md).
+- Weitere Informationen zur Verwendung von Protokollwarnungen finden Sie unter [Behandeln von Problemen bei Protokollwarnungen](./alerts-troubleshoot-log.md).
 - Rufen Sie das [Azure-Portal](https://portal.azure.com) wieder auf, um zu überprüfen, ob Sie das Problem mithilfe der oben genannten Anweisungen erfolgreich beheben konnten. 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
-ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001484"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Codieren und Decodieren von Flatfiles in Azure Logic Apps mithilfe des Enterprise Integration Pack
 
@@ -25,7 +25,7 @@ Bevor Sie XML-Inhalt in einem B2B-Szenario (Business-to-Business) an einen Gesch
 
 * Die Logik-App, in der Sie den **Flatfile**-Connector und einen Trigger verwenden möchten, der den Workflow Ihre Logik-App startet. Der **Flatfile**-Connector stellt nur Aktionen und keine Trigger bereit. Sie können entweder den Trigger oder eine andere Aktion verwenden, um den XML-Inhalt zur Codierung oder Decodierung an Ihre Logik-App zu übertragen. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zunächst das Dokument [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), das Ihrem Azure-Abonnement zugeordnet und [mit der Logik-App verknüpft](logic-apps-enterprise-integration-accounts.md#link-account) ist, in der Sie den **Flatfile**-Connector verwenden möchten. Sowohl Ihre Logik-App als auch Ihr Integrationskonto müssen an demselben Standort oder in derselben Azure-Region vorhanden sein.
+* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), das Ihrem Azure-Abonnement zugeordnet und [mit der Logik-App verknüpft](./logic-apps-enterprise-integration-create-integration-account.md#link-account) ist, in der Sie den **Flatfile**-Connector verwenden möchten. Sowohl Ihre Logik-App als auch Ihr Integrationskonto müssen an demselben Standort oder in derselben Azure-Region vorhanden sein.
 
 * Ein Flatfile-[Schema](logic-apps-enterprise-integration-schemas.md), das Sie zum Codieren oder Decodieren des XML-Inhalts in Ihr Integrationskonto hochgeladen haben.
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050138"
 ---
 # <a name="keys-and-values"></a>Schlüssel und Werte
 
@@ -77,7 +77,7 @@ Sie können in Bezeichnungen beliebige Unicodezeichen verwenden, mit Ausnahme vo
 
 Jeder Schlüsselwert wird anhand seines Schlüssels und einer Bezeichnung, die auch `null` lauten kann, eindeutig identifiziert. Sie fragen Schlüsselwerte aus einem App Configuration-Speicher ab, indem Sie ein Muster angeben. Der App Configuration-Speicher gibt alle Schlüsselwerte zurück, die mit dem Muster und den entsprechenden Werten und Attributen übereinstimmen. Verwenden Sie die folgenden Schlüsselmuster in REST-API-Aufrufen für App Configuration:
 
-| Key | |
+| Key | BESCHREIBUNG |
 |---|---|
 | `key` wird weggelassen oder lautet `key=*` | Übereinstimmung mit allen Schlüsseln |
 | `key=abc` | Exakte Übereinstimmung mit dem Schlüsselnamen **abc** |
@@ -86,7 +86,7 @@ Jeder Schlüsselwert wird anhand seines Schlüssels und einer Bezeichnung, die a
 
 Sie können auch die folgenden Bezeichnungsmuster verwenden:
 
-| Bezeichnung | |
+| Bezeichnung | BESCHREIBUNG |
 |---|---|
 | `label` wird weggelassen oder lautet `label=*` | Übereinstimmung mit einer beliebigen Bezeichnung, einschließlich `null` |
 | `label=%00` | Übereinstimmung mit der Bezeichnung `null` |

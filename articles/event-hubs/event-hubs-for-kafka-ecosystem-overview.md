@@ -2,13 +2,13 @@
 title: Verwenden eines Event Hubs aus der Apache Kafka-App – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zur Azure Event Hubs-Unterstützung für Apache Kafka.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 733623895176bb3b573c2efcbda8a40b9e2d87c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002477"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen
 Event Hubs stellt einen Kafka-Endpunkt bereit, der von Ihren vorhandenen Kafka-basierten Anwendungen als Alternative zum Betreiben eines eigenen Kafka-Clusters verwendet werden kann. Event Hubs unterstützt [Apache Kafka-Protokoll 1.0 und höher](https://kafka.apache.org/documentation/) und funktioniert mit Ihren vorhandenen Kafka-Anwendungen, einschließlich MirrorMaker.  
@@ -79,12 +79,10 @@ Event Hubs für Kafka ermöglicht Ihnen, mit einem Protokoll zu schreiben und mi
 
 Aufstellung der Kafka-Features, die noch nicht unterstützt werden:
 
-*   Idempotenter Produzent
 *   Transaktion
 *   Komprimierung
 *   Größenbasierte Aufbewahrung
 *   Protokollkomprimierung
-*   Hinzufügen von Partitionen zu einem vorhandenen Thema
 *   Unterstützung der HTTP-Kafka-API
 *   Kafka Streams
 

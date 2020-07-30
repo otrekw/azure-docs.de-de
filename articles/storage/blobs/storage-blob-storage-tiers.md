@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919923"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011344"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -248,7 +248,7 @@ Die Zugriffsebenen „Heiß“ und „Kalt“ sind zusammen mit dem Blobebenenti
 
 Blobs der Zugriffsebene „Heiß“ weisen die gleiche Latenz wie Blobs in GPv1-, GPv2- und Blobspeicherkonten auf. Blobs der Zugriffsebene „Kalt“ verfügen über eine ähnliche Latenz (in Millisekunden) wie Blobs in GPv1-, GPv2- und Blobspeicherkonten. In GPv1-, GPv2- und Blobspeicherkonten gilt für Blobs auf der Zugriffsebene „Archiv“ eine Latenzzeit von mehreren Stunden.
 
-Für Blobs der Zugriffsebene „Kalt“ gilt in Bezug auf die Verfügbarkeit ein etwas geringerer Servicelevel (SLA) als für Blobs, die auf der Zugriffsebene „Heiß“ gespeichert sind. Weitere Informationen finden Sie unter [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
+Für Blobs der Zugriffsebene „Kalt“ gilt in Bezug auf die Verfügbarkeit ein etwas geringerer Servicelevel (SLA) als für Blobs, die auf der Zugriffsebene „Heiß“ gespeichert sind. Weitere Informationen finden Sie unter [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage/v1_5/).
 
 **Sind die Vorgänge für die Ebenen „Hot“, „Cool“ und „Archiv“ identisch?**
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 0ddf15ffad086bab5ed6c4e2508cd0874f6ee567
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166177"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000124"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualisieren von Media Services nach dem Austausch der Speicherzugriffsschlüssel 
 
 Wenn Sie ein neues Azure Media Services-Konto (AMS) erstellen, müssen Sie auch ein Azure Storage-Konto auswählen, das zum Speichern Ihrer Medieninhalte verwendet wird. Sie können Ihrem Media Services-Konto mehrere Speicherkonten hinzufügen. In diesem Artikel wird das Rotieren von Speicherschlüsseln erläutert. Außerdem wird erläutert, wie einem Medienkonto Speicherkonten hinzugefügt werden. 
 
-Um die in diesem Artikel beschriebenen Aktionen auszuführen, müssen Sie [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](https://docs.microsoft.com/powershell/module/az.media) verwenden.  Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen mit PowerShell und Resource Manager](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
+Um die in diesem Artikel beschriebenen Aktionen auszuführen, müssen Sie [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](/powershell/module/az.media) verwenden.  Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen mit PowerShell und Resource Manager](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -72,7 +72,7 @@ Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountNam
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Schritte zum Hinzufügen von Speicherkonten zu Ihrem AMS-Konto
 
-Im folgenden Artikel wird gezeigt, wie Sie Ihrem AMS-Konto Speicherkonten hinzufügen: [Anfügen von mehreren Speicherkonten an ein einzelnes Media Services-Konto](meda-services-managing-multiple-storage-accounts.md).
+Im folgenden Artikel wird gezeigt, wie Sie Ihrem AMS-Konto Speicherkonten hinzufügen: [Anfügen von mehreren Speicherkonten an ein einzelnes Media Services-Konto](./media-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
