@@ -4,12 +4,12 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090976"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -49,7 +49,7 @@ Der Standardwert von „DefaultBackupTasksThreshold“ ist **20**.
 
 3. Speichern Sie Ihre Änderungen, und schließen Sie die Datei.
 4. Öffnen Sie auf der SQL Server-Instanz **Task-Manager**. Starten Sie den Dienst **AzureWLBackupCoordinatorSvc** neu.<br/> <br/>
- Zwar ist diese Methode hilfreich, wenn die Sicherungsanwendung viele Ressourcen verbraucht, der [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) von SQL Server stellt jedoch eine allgemeinere Möglichkeit zur Angabe von Grenzwerten für die Menge an CPU, physischer E/A und Speicher dar, den eingehende Anwendungsanforderungen nutzen können.
+ Zwar ist diese Methode hilfreich, wenn die Sicherungsanwendung viele Ressourcen verbraucht, der [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) von SQL Server stellt jedoch eine allgemeinere Möglichkeit zur Angabe von Grenzwerten für die Menge an CPU, physischer E/A und Speicher dar, den eingehende Anwendungsanforderungen nutzen können.
 
 > [!NOTE]
 > Über die Benutzeroberfläche können Sie dennoch jederzeit entsprechend viele Sicherungen planen. Diese werden allerdings in einem gleitenden Fenster verarbeitet mit z. B. immer 5 Sicherungen gleichzeitig wie im obigen Beispiel.

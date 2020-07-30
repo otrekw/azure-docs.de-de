@@ -3,12 +3,12 @@ title: Senden von Azure Service Health-Warnungen mit PagerDuty
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre PagerDuty-Instanz.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091537"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Senden von Azure Service Health-Warnungen mit PagerDuty mit Webhooks
 
@@ -39,7 +39,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Erstellen einer Warnung mithilfe von PagerDuty im Azure-Portal
 ### <a name="for-a-new-action-group"></a>Für eine neue Aktionsgruppe:
-1. Befolgen Sie die Schritte 1 bis 8 in [Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Befolgen Sie die Schritte 1 bis 8 in [Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal](./alerts-activity-log-service-notifications-portal.md).
 
 1. Definieren Sie in der Liste der **Aktionen** Folgendes:
 
@@ -87,5 +87,5 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../azure-monitor/platform/service-notifications.md).
+- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](./service-notifications.md).
 - Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).

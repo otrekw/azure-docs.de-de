@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052843"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET 
 
@@ -282,7 +282,7 @@ Beachten Sie die Verwendung des Makros {Resolution} im Element „FileName“. D
 In allen oben genannten Beispielen wurde erläutert, dass Sie eine Codierungsaufgabe, die nur Bilder erzeugt, übermitteln können. Jedoch ist die Video- bzw. Audiocodierung auch beim Generieren von Miniaturansichten möglich. Die folgende JSON- und XML-Voreinstellung weist **Media Encoder Standard** an, bei der Codierung eine Miniaturansicht zu generieren.
 
 ### <a name="json-preset"></a><a id="json"></a>JSON-Voreinstellung
-Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Artikel.
+Informationen zum Schema finden Sie in [diesem](/azure/media-services/previous/media-services-mes-schema) Artikel.
 
 ```json
     {
@@ -347,7 +347,7 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML-Voreinstellung
-Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Artikel.
+Informationen zum Schema finden Sie in [diesem](/azure/media-services/previous/media-services-mes-schema) Artikel.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -576,4 +576,3 @@ Sie können den [Status des Auftrags](media-services-check-job-progress.md) übe
 
 ## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
-

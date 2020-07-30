@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664778"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322906"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
@@ -27,7 +27,7 @@ Die Lösung verwendet die native Syslog-Funktionalität des ESXi-Hosts, um Daten
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-* Fügen Sie Ihrem Abonnement anhand der unter [Installieren einer Überwachungslösung](../insights/solutions.md#install-a-monitoring-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
+* Fügen Sie Ihrem Abonnement anhand der unter [Installieren einer Überwachungslösung](./solutions.md#install-a-monitoring-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
 
 #### <a name="supported-vmware-esxi-hosts"></a>Unterstützte VMware ESXi-Hosts
 vSphere ESXi-Host 5.5, 6.0 und 6.5
@@ -156,7 +156,7 @@ Das Speichern von Protokollabfragen ist ein Standardfeature in Azure Monitor und
 ![Docker-Dashboardansicht](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
-Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
+Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Was muss ich bei den ESXi-Hosteinstellungen beachten? Wie wirken diese sich auf meine aktuelle Umgebung aus?
@@ -200,3 +200,4 @@ Dafür kann es mehrere Gründe geben:
 * Verwenden Sie [Protokollabfragen](../log-query/log-query-overview.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
 * [Erstellen Sie eigene Dashboards](../learn/tutorial-logs-dashboards.md), die VMware-Hostdaten anzeigen.
 * [Erstellen Sie Warnungen](../platform/alerts-overview.md) für das Auftreten bestimmter VMware-Hostereignisse.
+

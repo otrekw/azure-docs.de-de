@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c9787a88cba051dcfaa58a188bf43fb03cafe70a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539753"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325167"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -30,7 +30,7 @@ So führen Sie diesen Schnellstart durch:
 - [Installieren Sie das .NET Core 2.0 SDK](https://dotnet.microsoft.com/download).
 - Sie benötigen ein Azure-Abonnement und eine vorhandene .NET Core-Webanwendung.
 
-Wenn Sie keine ASP.NET Core-Webanwendung haben, können Sie anhand unserer detaillierten Anleitung [eine ASP.NET Core-App erstellen und Application Insights hinzufügen](../../azure-monitor/app/asp-net-core.md).
+Wenn Sie keine ASP.NET Core-Webanwendung haben, können Sie anhand unserer detaillierten Anleitung [eine ASP.NET Core-App erstellen und Application Insights hinzufügen](../app/asp-net-core.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -96,7 +96,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    ![Diagramm der Übersichtszeitachse für die Integrität](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. Klicken Sie auf der linken Seite auf **Metriken**. Untersuchen Sie mithilfe des Metrik-Explorers die Integrität und Auslastung Ihrer Ressource. Sie können auf **Neues Diagramm hinzufügen** klicken, um zusätzliche benutzerdefinierte Ansichten zu erstellen, oder auf **Bearbeiten** klicken, um Typ, Höhe, Farbpalette, Gruppierungen und Metriken der vorhandenen Diagramme zu ändern. Sie können beispielsweise ein Diagramm für die durchschnittliche Seitenladezeit des Browsers erstellen, indem Sie in der Metrik-Dropdownliste die Option für die Browser-Seitenladezeit und unter „Aggregation“ die Durchschnittsoption auswählen. Weitere Informationen zum Azure-Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+5. Klicken Sie auf der linken Seite auf **Metriken**. Untersuchen Sie mithilfe des Metrik-Explorers die Integrität und Auslastung Ihrer Ressource. Sie können auf **Neues Diagramm hinzufügen** klicken, um zusätzliche benutzerdefinierte Ansichten zu erstellen, oder auf **Bearbeiten** klicken, um Typ, Höhe, Farbpalette, Gruppierungen und Metriken der vorhandenen Diagramme zu ändern. Sie können beispielsweise ein Diagramm für die durchschnittliche Seitenladezeit des Browsers erstellen, indem Sie in der Metrik-Dropdownliste die Option für die Browser-Seitenladezeit und unter „Aggregation“ die Durchschnittsoption auswählen. Weitere Informationen zum Azure-Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../platform/metrics-getting-started.md).
 
      ![Registerkarte „Metriken“: Diagramm der durchschnittlichen Ladezeit der Browserseite](./media/dotnetcore-quick-start/8metrics.png)
 
@@ -113,3 +113,4 @@ Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und all
 
 > [!div class="nextstepaction"]
 > [Suchen nach und Diagnostizieren von Laufzeitausnahmen](./tutorial-runtime-exceptions.md)
+

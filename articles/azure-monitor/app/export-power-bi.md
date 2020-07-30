@@ -3,20 +3,20 @@ title: Exportieren nach Power BI aus Azure Application Insights | Microsoft-Doku
 description: Analytics-Abfragen können in Power BI angezeigt werden.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663996"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324368"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
-[Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+[Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](./app-insights-overview.md).
 
 Es gibt drei Methoden zum Exportieren von Application Insights-Daten nach Power BI:
 
 * [**Exportieren von Analytics-Abfragen**](#export-analytics-queries). Dies ist die bevorzugte Methode. Schreiben Sie eine beliebige Abfrage, und exportieren Sie sie in Power BI. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
-* [**Fortlaufender Export und Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Diese Methode ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume speichern möchten. Wenn Sie keine erweiterte Datenaufbewahrungsanforderung erfüllen müssen, verwenden Sie die Methode zum Exportieren von Analytics-Abfragen. Für fortlaufenden Export und Stream Analytics fallen mehr Einrichtungsaufgaben und zusätzlicher Speichermehraufwand an.
+* [**Fortlaufender Export und Azure Stream Analytics**](./export-stream-analytics.md). Diese Methode ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume speichern möchten. Wenn Sie keine erweiterte Datenaufbewahrungsanforderung erfüllen müssen, verwenden Sie die Methode zum Exportieren von Analytics-Abfragen. Für fortlaufenden Export und Stream Analytics fallen mehr Einrichtungsaufgaben und zusätzlicher Speichermehraufwand an.
 * **Power BI-Adapter**. Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
 
 > [!NOTE]
@@ -31,7 +31,7 @@ Zum Importieren Ihrer Application Insights-Abfrage verwenden Sie die Desktopvers
 Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Exportieren einer Analytics-Abfrage
-1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](../../azure-monitor/log-query/get-started-portal.md).
+1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](../log-query/get-started-portal.md).
 2. Testen und optimieren Sie die Abfrage, bis Sie mit den Ergebnissen zufrieden sind. Stellen Sie sicher, dass die Abfrage ordnungsgemäß in Analytics ausgeführt wird, bevor Sie sie exportieren.
 3. Wählen Sie im Menü **Exportieren** die Option **Power BI (M)** . Speichern Sie die Textdatei.
    
@@ -56,7 +56,7 @@ Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/
 8. Aktualisieren Sie den Bericht in bestimmten Abständen manuell, oder richten Sie auf der Seite mit den Optionen eine geplante Aktualisierung ein.
 
 ### <a name="export-a-funnel"></a>Exportieren eines Trichters
-1. [Erstellen Sie Ihren Trichter.](../../azure-monitor/app/usage-funnels.md)
+1. [Erstellen Sie Ihren Trichter.](./usage-funnels.md)
 2. Wählen Sie **Power BI**aus.
 
    ![Screenshot der Power BI-Schaltfläche](./media/export-power-bi/button.png)
@@ -112,7 +112,7 @@ Wenn das Verkleinern des von der Analytics-Abfrage stammenden Datasets Ihre Anfo
  ```
 
 ## <a name="about-sampling"></a>Informationen zur Stichprobenerstellung (Sampling)
-Abhängig von der Menge der Daten, die von Ihrer Anwendung gesendet werden, sollten Sie ggf. die Funktion für die adaptive Stichprobenerstellung verwenden, bei der nur ein prozentualer Anteil der Telemetriedaten gesendet wird. Dasselbe gilt, wenn Sie die Stichprobenerstellung entweder im SDK oder bei der Erfassung manuell festgelegt haben. [Erfahren Sie mehr über Sampling](../../azure-monitor/app/sampling.md).
+Abhängig von der Menge der Daten, die von Ihrer Anwendung gesendet werden, sollten Sie ggf. die Funktion für die adaptive Stichprobenerstellung verwenden, bei der nur ein prozentualer Anteil der Telemetriedaten gesendet wird. Dasselbe gilt, wenn Sie die Stichprobenerstellung entweder im SDK oder bei der Erfassung manuell festgelegt haben. [Erfahren Sie mehr über Sampling](./sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI-Adapter (veraltet)
 Mit dieser Methode wird für Sie ein vollständiges Dashboard mit Telemetriedaten erstellt. Das anfängliche Dataset ist vordefiniert, aber Sie können weitere Daten hinzufügen.
@@ -146,5 +146,5 @@ Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich akt
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Power BI – Informationen](https://www.powerbi.com/learning/)
-* [Analytics-Tutorial](../../azure-monitor/log-query/get-started-portal.md)
+* [Analytics-Tutorial](../log-query/get-started-portal.md)
 

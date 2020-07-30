@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521104"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386264"
 ---
 # <a name="azure-key-vault-backup"></a>Sicherung in Azure Key Vault
 
@@ -27,7 +27,7 @@ Azure Key Vault stellt automatisch Features zur Gewährleistung der Verfügbarke
 
 Key Vault gewährleistet die Verfügbarkeit in Notfallszenarien und führt automatisch ein Failover von Anforderungen auf ein Regionspaar aus, ohne dass ein Eingreifen des Benutzers erforderlich ist. Weitere Informationen finden Sie unter [Azure Key Vault: Verfügbarkeit und Redundanz](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
 
-Wenn Sie Ihre Geheimnisse vor versehentlichem oder böswilligem Löschen schützen möchten, konfigurieren Sie für Ihren Schlüsseltresor die Funktionen zum Schutz vor vorläufigem und endgültigem Löschen. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete).
+Wenn Sie Ihre Geheimnisse vor versehentlichem oder böswilligem Löschen schützen möchten, konfigurieren Sie für Ihren Schlüsseltresor die Funktionen zum Schutz vor vorläufigem und endgültigem Löschen. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
 
 ## <a name="limitations"></a>Einschränkungen
 

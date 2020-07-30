@@ -12,16 +12,16 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 900e76fff3e5ccf88fa1e25ebea97f26e406a358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042540"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Bereitstellen von Micro Focus Enterprise Server 5.0 für AKS
 
-In einem anderen [Artikel](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container) habe ich die Schritte zum Ausführen von Micro Focus Enterprise Server 5.0 in einem Docker-Container beschrieben. Als Nächstes möchte ich Ihnen nun zeigen, wie Sie das erstellte Docker-Image für Azure Kubernetes Service (AKS) bereitstellen können.
+In einem anderen [Artikel](./run-enterprise-server-container.md) habe ich die Schritte zum Ausführen von Micro Focus Enterprise Server 5.0 in einem Docker-Container beschrieben. Als Nächstes möchte ich Ihnen nun zeigen, wie Sie das erstellte Docker-Image für Azure Kubernetes Service (AKS) bereitstellen können.
 
 Azure Kubernetes Service ist ein verwalteter Orchestrierungsdienst, der auf Kubernetes basiert. Er ermöglicht die Bereitstellung, Skalierung und Verwaltung von Docker-Containern (und anderen auf Containern basierenden Anwendungen) in einem Cluster aus Containerhosts.
 

@@ -3,12 +3,12 @@ title: EventCounters in Application Insights | Microsoft-Dokumentation
 description: Überwachen Sie systemeigene und benutzerdefinierte .NET/.NET Core-EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539940"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324402"
 ---
 # <a name="eventcounters-introduction"></a>Einführung in EventCounters
 
@@ -124,7 +124,7 @@ customMetrics
 Wie für andere Telemetriedaten ist auch in der Tabelle **customMetrics** eine `cloud_RoleInstance`-Spalte enthalten, die die Identität der Hostserverinstanz angibt, auf dem Ihre Anwendung ausgeführt wird. Die obige Abfrage zeigt den Indikatorwert pro Instanz und kann zum Vergleichen der Leistung verschiedener Serverinstanzen verwendet werden.
 
 ## <a name="alerts"></a>Alerts
-Wie bei anderen Metriken können Sie [eine Warnung einrichten](../../azure-monitor/platform/alerts-log.md), damit Sie gewarnt werden, wenn ein EventCounter einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
+Wie bei anderen Metriken können Sie [eine Warnung einrichten](../platform/alerts-log.md), damit Sie gewarnt werden, wenn ein EventCounter einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -148,4 +148,5 @@ EventCounter erfordert keine besonderen Berechtigungen und wird auf allen Plattf
 
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
-* [Abhängigkeitsüberwachung](../../azure-monitor/app/asp-net-dependencies.md)
+* [Abhängigkeitsüberwachung](./asp-net-dependencies.md)
+

@@ -4,19 +4,20 @@ description: API zum Abrufen des angegebenen Angebots im Herausgebernamespace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115535"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271840"
 ---
-<a name="retrieve-a-specific-offer"></a>Abrufen eines bestimmten Angebots
-=========================
+# <a name="retrieve-a-specific-offer"></a>Abrufen eines bestimmten Angebots
 
 > [!NOTE]
-> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Der Übergang führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach dem Übergang zu Partner Center weiterhin funktioniert. CPP-APIs sollten nur für vorhandene Produkte verwendet werden, die bereits vor dem Übergang zu Partner Center integriert wurden. Neue Produkte sollten die Partner Center-APIs für die Übermittlung verwenden.
 
 Ruft das angegebene Angebot im Herausgebernamespace ab.  
 
@@ -34,10 +35,7 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 
 ```
 
-
-<a name="uri-parameters"></a>URI-Parameter
---------------
-
+## <a name="uri-parameters"></a>URI-Parameter
 
 | **Name**    | **Beschreibung**                                                                          | **Datentyp** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
@@ -48,9 +46,7 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 | api-version | Neueste Version der API                                                                    | Date          |
 |  |  |  |
 
-
-<a name="header"></a>Header
-------
+## <a name="header"></a>Header
 
 |  **Name**          |   **Wert**            |
 |  ---------------   |  --------------        |
@@ -58,9 +54,7 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 |  Authorization     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
-
-<a name="body-example"></a>Beispiel für Hauptteil
-------------
+## <a name="body-example"></a>Beispiel für Hauptteil
 
 ### <a name="response"></a>Antwort
 
@@ -175,7 +169,6 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 }
 ```
 
-
 ### <a name="response-body-properties"></a>Eigenschaften für Antworthauptteil
 
 |  **Name**       |   **Beschreibung**                                                                                                               |
@@ -189,7 +182,6 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 |  changedTime    | UTC-Zeitpunkt (Datum und Uhrzeit), zu dem das Angebot letztmalig geändert wurde                                                                                   |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>Antwortstatuscodes
 
 | **Code**  | **Beschreibung**                                                                                                                 |
@@ -199,7 +191,6 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 |  403      | `Forbidden` – der Client hat keinen Zugriff auf den angegebenen Namespace.                                                        |
 |  404      | `Not found`: Die angegebene Entität ist nicht vorhanden. Für den Client sollten die Parameter „publisherId“, „offerId“ und „version“ geprüft werden (sofern angegeben).      |
 |  |  |
-
 
 ### <a name="offer-status"></a>Angebotsstatus
 

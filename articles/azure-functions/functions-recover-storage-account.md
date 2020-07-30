@@ -1,16 +1,14 @@
 ---
 title: 'Problembehandlung: Azure Functions-Runtime ist nicht erreichbar'
 description: Erfahren Sie, wie Sie Problembehandlung für ein ungültiges Speicherkonto durchführen.
-author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: alkarche
-ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c46ca214ab6c0798fdc39ead575fb2873b8c51c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063780"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385856"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Problembehandlung: „Azure Functions-Runtime ist nicht erreichbar“
 
@@ -18,7 +16,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung für die folgende Fe
 
 > „Fehler: Die Azure Functions-Runtime ist nicht erreichbar. Klicken Sie hier, um Informationen zur Speicherkonfiguration zu erhalten.“
 
-Dieses Problem tritt auf, wenn die Azure Functions-Runtime nicht gestartet werden kann. Der häufigste Grund für das Problem ist, dass für die Funktions-App kein Zugriff auf das Speicherkonto mehr besteht. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
+Dieses Problem tritt auf, wenn die Azure Functions-Runtime nicht gestartet werden kann. Der häufigste Grund für das Problem ist, dass für die Funktions-App kein Zugriff auf das Speicherkonto mehr besteht. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](./functions-create-function-app-portal.md#storage-account-requirements).
 
 Der Rest dieses Artikels hilft Ihnen bei der Problembehandlung der folgenden Ursachen dieses Fehlers, einschließlich der Vorgehensweise zum Identifizieren und Auflösen jedes Falls.
 
@@ -26,7 +24,7 @@ Der Rest dieses Artikels hilft Ihnen bei der Problembehandlung der folgenden Urs
 
 Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Konto gelöscht wird, funktioniert Ihre Funktion nicht.
 
-Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Der Name Ihres Speicherkontos (eingeschlossen in eine Verbindungszeichenfolge) ist entweder in `AzureWebJobsStorage` oder in `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthalten. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Der Name Ihres Speicherkontos (eingeschlossen in eine Verbindungszeichenfolge) ist entweder in `AzureWebJobsStorage` oder in `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthalten. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](./functions-app-settings.md#azurewebjobsstorage).
 
 Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, um zu ermitteln, ob es noch vorhanden ist. Wenn es gelöscht wurde, müssen Sie das Speicherkonto neu erstellen und Ihre Verbindungszeichenfolgen für den Speicher ersetzen. Ihr Funktionscode ist verloren gegangen, und Sie müssen ihn erneut bereitstellen.
 
@@ -37,12 +35,12 @@ Wenn Sie im vorherigen Schritt keine Verbindungszeichenfolge für das Speicherko
 ### <a name="required-application-settings"></a>Erforderliche Anwendungseinstellungen
 
 * Erforderlich:
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
 * Für Verbrauchsplanfunktionen erforderlich:
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
+Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](./functions-app-settings.md).
 
 ### <a name="guidance"></a>Anleitungen
 
@@ -52,7 +50,7 @@ Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure
 
 ## <a name="storage-account-credentials-are-invalid"></a>Anmeldeinformationen des Speicherkontos sind ungültig
 
-Die oben erwähnten Verbindungszeichenfolgen für Speicherkonten müssen aktualisiert werden, wenn Sie Speicherschlüssel neu erstellen. Weitere Informationen zur Verwaltung von Speicherschlüsseln finden Sie unter [Erstellen eines Azure-Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Die oben erwähnten Verbindungszeichenfolgen für Speicherkonten müssen aktualisiert werden, wenn Sie Speicherschlüssel neu erstellen. Weitere Informationen zur Verwaltung von Speicherschlüsseln finden Sie unter [Erstellen eines Azure-Speicherkontos](../storage/common/storage-account-create.md).
 
 ## <a name="storage-account-is-inaccessible"></a>Kein Zugriff auf das Speicherkonto
 
@@ -60,7 +58,7 @@ Ihre Funktions-App muss auf das Speicherkonto zugreifen können. Häufige Proble
 
 * Die Funktions-App wurde in Ihrer App Service-Umgebung ohne die richtigen Netzwerkregeln bereitgestellt, die Datenverkehr zum und vom Speicherkonto zulassen.
 
-* Die Firewall des Speicherkontos ist aktiviert und nicht für das Zulassen von Datenverkehr von und zu Functions konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Die Firewall des Speicherkontos ist aktiviert und nicht für das Zulassen von Datenverkehr von und zu Functions konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="daily-execution-quota-is-full"></a>Tägliches Ausführungskontingent erreicht
 
@@ -88,7 +86,7 @@ Das Azure-Portal sendet Aufrufe direkt an die ausgeführte App, um die Liste mit
    
 Sie können das Portal auch auf einem Computer verwenden, der mit dem virtuellen Netzwerk verbunden ist, in dem Ihre App ausgeführt wird, oder auf einem virtuellen Computer, der in Ihrem virtuellen Netzwerk ausgeführt wird. 
 
-Weitere Informationen zur Konfiguration der Regeln für eingehenden Datenverkehr finden Sie unter [Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups) im Abschnitt „Netzwerksicherheitsgruppen“.
+Weitere Informationen zur Konfiguration der Regeln für eingehenden Datenverkehr finden Sie unter [Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung](../app-service/environment/network-info.md#network-security-groups) im Abschnitt „Netzwerksicherheitsgruppen“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

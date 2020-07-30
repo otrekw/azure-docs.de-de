@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76960395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091248"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>Ermöglichen Sie es Private CloudSimple-Cloud-DNS-Servern, die DNS-Suche von lokalen Ressourcen an Ihre DNS-Server weiterzuleiten.
 
@@ -32,7 +32,7 @@ Die Weiterleitung der DNS-Suche für Ihren lokalen DNS-Server ermöglicht es Ihn
 Damit die DNS-Weiterleitung funktioniert, muss eine Netzwerkverbindung von Ihrem privaten Cloudnetzwerk zu Ihrem lokalen Netzwerk bestehen.  Sie können die Netzwerkverbindung folgendermaßen einrichten:
 
 * [Herstellen einer Verbindung von lokalen Standorten mit CloudSimple mithilfe von ExpressRoute](on-premises-connection.md)
-* [Einrichten eines Site-to-Site-VPN-Gateways](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [Einrichten eines Site-to-Site-VPN-Gateways](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 Damit die DNS-Weiterleitung funktioniert, müssen an dieser Verbindung Firewallports geöffnet werden.  Die verwendeten Ports sind TCP-Port 53 oder UDP-Port 53.
 

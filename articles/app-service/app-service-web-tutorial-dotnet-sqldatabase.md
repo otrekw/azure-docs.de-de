@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: a1fdc9e37084b1e8064bf642ff84646149c32ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050676"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Tutorial: Bereitstellen einer ASP.NET-App in Azure mit Azure SQL-Datenbank
 
@@ -415,3 +415,8 @@ Weitere Ressourcen:
 
 > [!div class="nextstepaction"]
 > [Konfigurieren einer ASP.NET-App](configure-language-dotnet-framework.md)
+
+Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
+
+> [!div class="nextstepaction"]
+> [Beginnen mit der Kostenanalyse mit Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

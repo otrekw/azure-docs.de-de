@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fbd1c7f5e7fab9f77815e782160e855a9a854dc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054614"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -56,7 +56,7 @@ Verwenden Sie eine Aktionsgruppe, um einen Benachrichtigungskanal anzugeben. Wä
 
 Sie können alle Warnungs- und Überwachungsanforderungen von Log Analytics allein erfüllen, oder Sie können Log Analytics verwenden, um integrierte Benachrichtigungen zu ergänzen.
 
-Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) und [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md) und [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
 ### <a name="sample-kusto-queries"></a>Kusto-Beispielabfragen
 
@@ -180,7 +180,7 @@ Identifizieren Sie das geeignete Protokoll, und erstellen Sie eine Warnung:
 
 2. Wählen Sie den Vorgangsnamen aus, um die relevanten Details anzuzeigen.
 3. Wählen Sie **Neue Warnungsregel** aus, um die Seite **Regel erstellen** zu öffnen.
-4. Erstellen Sie eine Warnung anhand der unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log) beschriebenen Schritte.
+4. Erstellen Sie eine Warnung anhand der unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../azure-monitor/platform/alerts-activity-log.md) beschriebenen Schritte.
 
    ![Neue Warnungsregel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
@@ -193,8 +193,8 @@ In Azure Monitor können Sie alle Warnungen anzeigen, die aus Aktivitätsprotoko
 Obwohl Sie Benachrichtigungen über Aktivitätsprotokolle erhalten können, empfehlen wir dringend die Verwendung von Log Analytics anstelle von Aktivitätsprotokollen für die Überwachung im richtigen Maßstab. Dies ist der Grund:
 
 - **Eingeschränkte Szenarien**: Benachrichtigungen über Aktivitätsprotokolle gelten nur für Azure-VM-Sicherungen. Die Benachrichtigungen müssen für jeden Recovery Services-Tresor eingerichtet werden.
-- **Definitionsübereinstimmung**: Die geplante Sicherungsaktivität passt nicht zur aktuellen Definition von Aktivitätsprotokollen. Stattdessen wird sie an [Ressourcenprotokollen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace) ausgerichtet. Diese Ausrichtung führt zu unerwarteten Auswirkungen, wenn sich die Daten, die durch den Aktivitätsprotokollkanal fließen, ändern.
-- **Probleme mit dem Aktivitätsprotokollkanal**: In Recovery Services-Tresoren folgen Aktivitätsprotokolle, die aus Azure Backup gepusht werden, einem neuen Modell. Leider wirkt sich diese Änderung auf die Generierung von Aktivitätsprotokollen in Azure Government, Azure Deutschland und Azure China 21Vianet aus. Wenn Benutzer dieser Clouddienste Warnungen aus Aktivitätsprotokollen in Azure Monitor erstellen oder konfigurieren, werden die Warnungen nicht ausgelöst. Außerdem werden diese Protokolle in allen öffentlichen Azure-Regionen nicht angezeigt, wenn ein Benutzer [Recovery Services-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich erfasst](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs).
+- **Definitionsübereinstimmung**: Die geplante Sicherungsaktivität passt nicht zur aktuellen Definition von Aktivitätsprotokollen. Stattdessen wird sie an [Ressourcenprotokollen](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) ausgerichtet. Diese Ausrichtung führt zu unerwarteten Auswirkungen, wenn sich die Daten, die durch den Aktivitätsprotokollkanal fließen, ändern.
+- **Probleme mit dem Aktivitätsprotokollkanal**: In Recovery Services-Tresoren folgen Aktivitätsprotokolle, die aus Azure Backup gepusht werden, einem neuen Modell. Leider wirkt sich diese Änderung auf die Generierung von Aktivitätsprotokollen in Azure Government, Azure Deutschland und Azure China 21Vianet aus. Wenn Benutzer dieser Clouddienste Warnungen aus Aktivitätsprotokollen in Azure Monitor erstellen oder konfigurieren, werden die Warnungen nicht ausgelöst. Außerdem werden diese Protokolle in allen öffentlichen Azure-Regionen nicht angezeigt, wenn ein Benutzer [Recovery Services-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich erfasst](../azure-monitor/platform/activity-log.md).
 
 Verwenden Sie einen Log Analytics-Arbeitsbereich für die ordnungsgemäße Überwachung und Warnungserstellung für alle Ihre durch Azure Backup geschützten Workloads.
 

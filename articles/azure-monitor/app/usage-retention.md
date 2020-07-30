@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323535"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Benutzerbindungsanalyse für Webanwendungen mit Azure Application Insights
 
-Mithilfe des Vermerkdauer-Features in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) können Sie analysieren, wie viele Benutzer zu Ihrer App zurückkehren und wie oft sie bestimmte Aufgaben durchführen oder Ziele erreichen. Beispiel: Wenn Sie eine Spielewebsite betreiben, können Sie die Anzahl der Benutzer, die nach einem verlorenen Spiel zurückkehren, mit der Anzahl vergleichen, die nach einem gewonnenen Spiel zurückkehren. Mit diesem Wissen können Sie sowohl die Benutzererfahrung als auch Ihre Geschäftsstrategie verbessern.
+Mithilfe des Vermerkdauer-Features in [Azure Application Insights](./app-insights-overview.md) können Sie analysieren, wie viele Benutzer zu Ihrer App zurückkehren und wie oft sie bestimmte Aufgaben durchführen oder Ziele erreichen. Beispiel: Wenn Sie eine Spielewebsite betreiben, können Sie die Anzahl der Benutzer, die nach einem verlorenen Spiel zurückkehren, mit der Anzahl vergleichen, die nach einem gewonnenen Spiel zurückkehren. Mit diesem Wissen können Sie sowohl die Benutzererfahrung als auch Ihre Geschäftsstrategie verbessern.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -54,7 +54,7 @@ Oder im ASP.NET-Servercode:
    telemetry.TrackEvent("won game");
 ```
 
-[Erfahren Sie mehr über das Schreiben von benutzerdefinierten Ereignissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+[Erfahren Sie mehr über das Schreiben von benutzerdefinierten Ereignissen](./api-custom-events-metrics.md#trackevent).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -63,5 +63,6 @@ Oder im ASP.NET-Servercode:
     - [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md)
     - [Trichter](usage-funnels.md)
     - [Benutzerabläufe](usage-flows.md)
-    - [Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
+    - [Arbeitsmappen](../platform/workbooks-overview.md)
     - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
+
