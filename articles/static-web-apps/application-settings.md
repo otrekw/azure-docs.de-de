@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71748959f8b5350a4bd34349eefedbf9d99c76e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083615"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurieren von Anwendungseinstellungen für Azure Static Web Apps (Vorschau)
 
@@ -33,7 +33,7 @@ Anwendungseinstellungen werden auch als Umgebungsvariablen bezeichnet.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine Azure Static Web Apps-Anwendung
-- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="types-of-application-settings"></a>Arten von Anwendungseinstellungen
 

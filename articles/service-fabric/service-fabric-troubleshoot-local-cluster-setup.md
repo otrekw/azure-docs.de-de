@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ca0bb7b81b3896538f08ff2ef52ed1ac6b363f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75465508"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091605"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Problembehandlung beim Einrichten des Clusters für die lokale Entwicklung
 Wenn beim Interagieren mit Ihrem lokalen Azure Service Fabric Entwicklungscluster ein Problem auftritt, sind bei der Lösung unter Umständen die folgenden Vorschläge hilfreich.
@@ -20,12 +20,13 @@ Wenn beim Interagieren mit Ihrem lokalen Azure Service Fabric Entwicklungscluste
 #### <a name="problem"></a>Problem
 Beim Ausführen des DevClusterSetup-Skripts tritt der folgende Fehler auf:
 
-    Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
-    At line:1 char:1 + .\DevClusterSetup.ps1
-    + ~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo : NotSpecified: (:) [Write-Error], WriteErrorException
-    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,DevClusterSetup.ps1
-
+```output
+Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
+At line:1 char:1 + .\DevClusterSetup.ps1
++ ~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo : NotSpecified: (:) [Write-Error], WriteErrorException
++ FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,DevClusterSetup.ps1
+```
 
 #### <a name="solution"></a>Lösung
 Schließen Sie das aktuelle PowerShell-Fenster, und öffnen Sie ein neues PowerShell-Fenster als Administrator. Nun kann das Skript erfolgreich ausgeführt werden.
@@ -43,12 +44,14 @@ Die Pfadvariable wurde während der Installation nicht ordnungsgemäß festgeleg
 #### <a name="problem"></a>Problem
 Für einen Aufruf von Connect-ServiceFabricCluster tritt ein Fehler der folgenden Art auf:
 
-    Connect-ServiceFabricCluster : The object is closed.
-    At line:1 char:1
-    + Connect-ServiceFabricCluster
-    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo : InvalidOperation: (:) [Connect-ServiceFabricCluster], FabricObjectClosedException
-    + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
+```output
+Connect-ServiceFabricCluster : The object is closed.
+At line:1 char:1
++ Connect-ServiceFabricCluster
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo : InvalidOperation: (:) [Connect-ServiceFabricCluster], FabricObjectClosedException
++ FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
+```
 
 #### <a name="solution"></a>Lösung
 Schließen Sie das aktuelle PowerShell-Fenster, und öffnen Sie ein neues PowerShell-Fenster als Administrator.

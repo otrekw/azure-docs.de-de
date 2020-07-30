@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30096e84c31f9e73e0ce02daa5765e98bdcd192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085094"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB-Trigger für Azure Functions 2.x und höher
 
@@ -209,7 +209,7 @@ Attribute werden von Python nicht unterstützt.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Verwenden Sie die `@CosmosDBInput`-Anmerkung in der [Runtimebibliothek für Java-Funktionen](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) für Parameter, die Daten aus Cosmos DB lesen.
+Verwenden Sie die `@CosmosDBInput`-Anmerkung in der [Runtimebibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, die Daten aus Cosmos DB lesen.
 
 ---
 

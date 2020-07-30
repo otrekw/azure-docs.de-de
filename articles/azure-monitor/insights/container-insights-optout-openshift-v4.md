@@ -3,12 +3,12 @@ title: Beenden der Überwachung Ihres Azure- und Red Hat OpenShift v4-Clusters |
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihres Azure Red Hat OpenShift- und Red Hat OpenShift Version 4-Clusters mit Azure Monitor für Container beenden können.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091146"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Beenden der Überwachung Ihres Azure- und Red Hat OpenShift v4-Clusters
 
@@ -49,4 +49,4 @@ Die Änderung der Konfiguration kann einige Minuten dauern. Da Helm Ihre Release
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn der Log Analytics-Arbeitsbereich nur als Unterstützung für die Clusterüberwachung erstellt wurde und nicht mehr benötigt wird, müssen Sie ihn manuell löschen. Wie ein Arbeitsbereich gelöscht wird, erfahren Sie unter [Löschen eines Log Analytics-Arbeitsbereichs](../../log-analytics/log-analytics-manage-del-workspace.md).
+Wenn der Log Analytics-Arbeitsbereich nur als Unterstützung für die Clusterüberwachung erstellt wurde und nicht mehr benötigt wird, müssen Sie ihn manuell löschen. Wie ein Arbeitsbereich gelöscht wird, erfahren Sie unter [Löschen eines Log Analytics-Arbeitsbereichs](../platform/delete-workspace.md).

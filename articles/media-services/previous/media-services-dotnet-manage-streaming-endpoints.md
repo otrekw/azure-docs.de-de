@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74901271"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038731"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>Verwalten von Streamingendpunkten mit .NET SDK  
 
 >[!NOTE]
->Sehen Sie sich zunächst den Artikel [Übersicht](media-services-streaming-endpoints-overview.md) an. Lesen Sie außerdem [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Sehen Sie sich zunächst den Artikel [Übersicht](media-services-streaming-endpoints-overview.md) an. Lesen Sie außerdem [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).
 
 Der Code in diesem Artikel zeigt, wie die folgenden Aufgaben mithilfe des Azure Media Services .NET SDK ausgeführt werden:
 
@@ -150,4 +150,3 @@ namespace AMSStreamingEndpoint
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

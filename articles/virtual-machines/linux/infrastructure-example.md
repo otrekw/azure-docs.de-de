@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementieru
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 500de3f89bd041adf0b73e21762495d8c89e19c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944900"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286290"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Linux-VMs
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich der Namenskonventionen, Verfügbarkeit, virtuellen Netzwerke und Lastenausgleichsmodule relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).

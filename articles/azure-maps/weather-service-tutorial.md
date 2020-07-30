@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python) | Microsoft Azure Maps'
 description: In diesem Tutorial erfahren Sie, wie Sie Sensordaten unter Verwendung von Azure Notebooks (Python) mit Wettervorhersagedaten des Microsoft Azure Maps-Wetterdiensts verknüpfen.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5a262c95328fef772c9158082f554de9f7ac5f81
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560374"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133230"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
@@ -35,7 +35,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 Für dieses Tutorial sind folgende Vorbereitungen erforderlich:
 
-1. Gehen Sie wie unter [Erstellen eines Kontos und Abrufen Ihres Schlüssels](quick-demo-map-app.md#create-an-account-with-azure-maps) beschrieben vor, um ein Azure Maps-Kontoabonnement im Tarif S0 zu erstellen.
+1. Gehen Sie wie unter [Erstellen eines Kontos und Abrufen Ihres Schlüssels](quick-demo-map-app.md#create-an-azure-maps-account) beschrieben vor, um ein Azure Maps-Kontoabonnement im Tarif S0 zu erstellen.
 2. Gehen Sie wie unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) beschrieben vor, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 

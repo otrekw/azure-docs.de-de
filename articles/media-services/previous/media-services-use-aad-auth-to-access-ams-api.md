@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d73c280e3f5639b11e0d07b9ef2f775f48cd3c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682047"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038487"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung  
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Die Azure Media Services-API ist eine RESTful-API. Sie können sie nutzen, um Vorgänge für Medienressourcen durchzuführen, indem Sie eine REST-API oder verfügbare Client-SDKs verwenden. Azure Media Services stellt ein Media Services-Client-SDK für Microsoft .NET bereit. Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Services-Ressourcen und die Media Services-API zuzugreifen. 
 
@@ -149,12 +149,11 @@ Lösung: Damit die Media Services-REST-Anforderung erfolgreich ist, muss der auf
 
 Die folgenden Artikel enthalten Übersichten über Azure AD-Authentifizierungskonzepte: 
 
-- [Grundlagen der Authentifizierung in Azure AD](../../active-directory/develop/authentication-scenarios.md)
-- [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+- [Grundlagen der Authentifizierung in Azure AD](../../active-directory/develop/authentication-vs-authorization.md)
+- [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-register-app.md)
 - [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Verwenden Sie das Azure-Portal zum [Zugreifen auf die Azure AD-Authentifizierung, um die Azure Media Services-API zu nutzen](media-services-portal-get-started-with-aad.md).
 * Verwenden Sie die Azure AD-Authentifizierung zum [Zugreifen auf die Azure Media Services-API mit .NET](media-services-dotnet-get-started-with-aad.md).
-

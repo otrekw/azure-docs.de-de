@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 9788c4663908497b51fbaaf7f824125d857e7c81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090160"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API  
 
@@ -56,7 +56,7 @@ Authentifiziert einen Dienst mit einer App und einem Geheimnis von Azure Active 
 
 Im Abschnitt **AAD-App und Geheimnis verwalten** können Sie eine neue Azure AD-App auswählen oder erstellen und ein Geheimnis generieren. Aus Sicherheitsgründen kann das Geheimnis nicht mehr angezeigt werden, nachdem das Blatt geschlossen wurde. Die Anwendung verwendet die Anwendungs-ID und das Geheimnis für die Authentifizierung, um ein gültiges Token für Media Services zu erhalten.
 
-Stellen Sie sicher, dass Sie über ausreichende Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Azure-Abonnement zuzuweisen. Weitere Informationen finden Sie unter [Erforderliche Berechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+Stellen Sie sicher, dass Sie über ausreichende Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Azure-Abonnement zuzuweisen. Weitere Informationen finden Sie unter [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 #### <a name="connect-to-media-services-api"></a>Herstellen einer Verbindung mit der Media Services-API
 

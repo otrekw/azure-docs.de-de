@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 2d547b1d86b95a4f90d3faaa2f676c7cc37255d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091129"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
 
@@ -38,8 +38,8 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 
 Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange-Server zu installieren:
 
-1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der DPM-Verwaltungskonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des DPM-Schutz-Agents](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
+1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der DPM-Verwaltungskonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des DPM-Schutz-Agents](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Erstellen einer Schutzgruppe für den Exchange-Server
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
 4. Wählen Sie die Datenbank des Exchange Servers aus, die Sie schützen möchten, und klicken Sie auf **Weiter**.
 
    > [!NOTE]
-   > Wenn Sie Exchange 2013 schützen, aktivieren Sie die [Exchange 2013-Voraussetzungen](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016).
+   > Wenn Sie Exchange 2013 schützen, aktivieren Sie die [Exchange 2013-Voraussetzungen](/system-center/dpm/back-up-exchange).
    >
    >
 

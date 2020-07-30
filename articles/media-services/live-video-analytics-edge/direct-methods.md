@@ -3,16 +3,16 @@ title: 'Verwenden von direkten Methoden in Live Video Analytics in IoT Edge: Azu
 description: Live Video Analytics in IoT Edge stellt verschiedene direkte Methoden zur Verfügung. Die direkten Methoden basieren auf den in diesem Thema beschriebenen Konventionen.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091826"
 ---
 # <a name="direct-methods"></a>Direkte Methoden
 
-Live Video Analytics in IoT Edge stellt verschiedene direkte Methoden zur Verfügung, die von IoT Hub aufgerufen werden können. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dieser Ansatz eignet sich für Szenarien, in denen die Vorgehensweise bei sofortigen Aktionen unterschiedlich ist, je nachdem, ob das Gerät reagieren konnte oder nicht. Weitere Informationen finden Sie unter [Verstehen und Aufrufen direkter Methoden von IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+Live Video Analytics in IoT Edge stellt verschiedene direkte Methoden zur Verfügung, die von IoT Hub aufgerufen werden können. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dieser Ansatz eignet sich für Szenarien, in denen die Vorgehensweise bei sofortigen Aktionen unterschiedlich ist, je nachdem, ob das Gerät reagieren konnte oder nicht. Weitere Informationen finden Sie unter [Verstehen und Aufrufen direkter Methoden von IoT Hub](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
 In diesem Thema werden diese Methoden und Konventionen beschrieben.
 

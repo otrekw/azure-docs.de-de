@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 2aadc5806f0c5c610dc28b32039ca944af87ab13
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-java
+ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091452"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung
 Verwaltete Identitäten stellen für Azure-Ressourcen wie Ihre Azure Spring Cloud-Anwendung eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.

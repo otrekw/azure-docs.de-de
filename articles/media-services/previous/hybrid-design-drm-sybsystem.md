@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad4c60d6a3facd49f08749b2b3f4b01242d3844c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091792"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybriddesign des DRM-Subsystems 
 
@@ -103,7 +103,7 @@ Gemäß der Erläuterungen im vorherigen Abschnitt verwenden die folgenden fünf
 |AMS|Drittanbieter|Außerhalb|Nein|Nein|Beispiel 4|
 |Drittanbieter|Drittanbieter|AMS|Ja|Nein|    
 
-In den Beispielen funktioniert der PlayReady-Schutz für DASH und Smooth Streaming. Die Video-URLs unten sind Smooth Streaming-URLs. Um die entsprechenden DASH-URLs zu erhalten, fügen Sie nur „(format=mpd-time-csf)“ an. Sie können den [Azure Media-Testplayer](https://aka.ms/amtest) zum Testen in einem Browser verwenden. Damit können Sie konfigurieren, welches Streamingprotokoll unter welcher Technologie verwendet werden soll. IE11 und Microsoft Edge unter Windows 10 unterstützen PlayReady über EME. Weitere Informationen finden Sie unter [Azure Media Test Tool](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+In den Beispielen funktioniert der PlayReady-Schutz für DASH und Smooth Streaming. Die Video-URLs unten sind Smooth Streaming-URLs. Um die entsprechenden DASH-URLs zu erhalten, fügen Sie nur „(format=mpd-time-csf)“ an. Sie können den [Azure Media-Testplayer](https://aka.ms/amtest) zum Testen in einem Browser verwenden. Damit können Sie konfigurieren, welches Streamingprotokoll unter welcher Technologie verwendet werden soll. IE11 und Microsoft Edge unter Windows 10 unterstützen PlayReady über EME. Weitere Informationen finden Sie unter [Azure Media Test Tool](/azure/media-services/previous/offline-playready-streaming-windows-10).
 
 ### <a name="sample-1"></a>Beispiel 1
 
@@ -142,4 +142,3 @@ Sehen Sie sich die Media Services-Lernpfade an.
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

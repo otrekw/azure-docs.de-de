@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780333"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023108"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Erstellen von Filtern mit der Media Services-REST-API
 
@@ -26,7 +26,7 @@ Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen od
 
 Eine ausführliche Beschreibung dieses Features und der Szenarien, in denen es verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
-In diesem Thema wird beschrieben, wie Sie einen Filter für ein Video on Demand-Medienobjekt definieren und mithilfe von REST-APIs [Kontofilter](https://docs.microsoft.com/rest/api/media/accountfilters) und [Medienobjektfilter](https://docs.microsoft.com/rest/api/media/assetfilters) erstellen. 
+In diesem Thema wird beschrieben, wie Sie einen Filter für ein Video on Demand-Medienobjekt definieren und mithilfe von REST-APIs [Kontofilter](/rest/api/media/accountfilters) und [Medienobjektfilter](/rest/api/media/assetfilters) erstellen. 
 
 > [!NOTE]
 > Lesen Sie die Informationen zu [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -97,7 +97,7 @@ Wählen Sie **Senden** aus.
 
 Der Filter wurde erstellt.
 
-Weitere Informationen finden Sie unter [Account Filters – Create Or Update](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate) (Erstellen oder Aktualisieren von Kontofiltern). Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Weitere Informationen finden Sie unter [Account Filters – Create Or Update](/rest/api/media/accountfilters/createorupdate) (Erstellen oder Aktualisieren von Kontofiltern). Siehe auch [JSON-Beispiele für Filter](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Erstellen von Medienobjektfiltern  
 
@@ -115,13 +115,13 @@ Wählen Sie **Senden** aus.
 
 Der Medienobjektfilter wurde erstellt.
 
-Ausführliche Informationen zum Erstellen oder Aktualisieren von Medienobjektfiltern finden Sie unter [Erstellen und Aktualisieren](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Ausführliche Informationen zum Erstellen oder Aktualisieren von Medienobjektfiltern finden Sie unter [Erstellen und Aktualisieren](/rest/api/media/assetfilters/createorupdate). Siehe auch [JSON-Beispiele für Filter](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
 ## <a name="associate-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
 
 Sie können eine Liste von Medienobjekt- oder Kontenfiltern angeben, die für Ihren Streaminglocator gelten würden. Der [dynamische Paketerstellungs-Manager (Streamingendpunkt)](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. Es wird empfohlen, dieses Feature zu verwenden, wenn Sie Filter anwenden, aber nicht die Filternamen in der URL verfügbar machen möchten.
 
-Um Filter mit einem Streaminglocator mit REST zu erstellen und zuzuordnen, verwenden Sie die API [Streaminglocators – Erstellen](https://docs.microsoft.com/rest/api/media/streaminglocators/create) und geben Sie `properties.filters` im [Anforderungstext](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) an.
+Um Filter mit einem Streaminglocator mit REST zu erstellen und zuzuordnen, verwenden Sie die API [Streaminglocators – Erstellen](/rest/api/media/streaminglocators/create) und geben Sie `properties.filters` im [Anforderungstext](/rest/api/media/streaminglocators/create#request-body) an.
                                 
 ## <a name="stream-using-filters"></a>Streamen unter Verwendung von Filtern
 

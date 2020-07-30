@@ -4,12 +4,12 @@ description: Erstellen von Azure Advisor-Warnungen für neue Empfehlungen
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: ef15891cc01d0481c6253023de262f14dce0ec81
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2becfbbc63beb6451e5e877c5a60553d98650494
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921076"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057827"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Schnellstart: Erstellen von Azure Advisor-Warnungen für neue Empfehlungen per ARM-Vorlage
 
@@ -17,7 +17,7 @@ In diesem Artikel wird veranschaulicht, wie Sie eine Warnung für neue Empfehlun
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Sobald Azure Advisor eine neue Empfehlung für eine Ihrer Ressourcen erkennt, wird ein Ereignis im [Azure-Aktivitätsprotokoll](/azure/azure-monitor/platform/activity-logs-overview) gespeichert. Sie können Warnungen für diese Ereignisse von Azure Advisor mithilfe einer Benutzeroberfläche für die Erstellung empfehlungsspezifischer Warnungen einrichten. Sie können ein Abonnement und optional eine Ressourcengruppe auswählen, um die Ressourcen anzugeben, für die Sie Warnungen erhalten möchten.
+Sobald Azure Advisor eine neue Empfehlung für eine Ihrer Ressourcen erkennt, wird ein Ereignis im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) gespeichert. Sie können Warnungen für diese Ereignisse von Azure Advisor mithilfe einer Benutzeroberfläche für die Erstellung empfehlungsspezifischer Warnungen einrichten. Sie können ein Abonnement und optional eine Ressourcengruppe auswählen, um die Ressourcen anzugeben, für die Sie Warnungen erhalten möchten.
 
 Sie können auch die Arten von Empfehlungen mithilfe der folgenden Eigenschaften festlegen:
 

@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294916"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309340"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -22,7 +22,7 @@ Diese Methode kann bei der Bereitstellung neuer Application Insights-Ressourcen 
 
 Sie können die folgenden Einstellungen für intelligente Erkennungsregel konfigurieren:
 - Wenn die Regel aktiviert ist (der Standardwert ist **true**.)
-- Ob bei einer Erkennung E-Mails an Benutzer gesendet werden sollen, denen die Rollen [Überwachungsleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) und [Überwachungsmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) zugewiesen sind (Standardwert ist **true**).
+- Ob bei einer Erkennung E-Mails an Benutzer gesendet werden sollen, denen die Rollen [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) und [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) zugewiesen sind (Standardwert ist **true**).
 - Alle weiteren E-Mail-Empfänger, die eine Benachrichtigung erhalten sollen, wenn eine Erkennung gefunden wird.
     -  Die E-Mail-Konfiguration ist für Regeln für die intelligente Erkennung, die als _Vorschauversion_ markiert sind, nicht verfügbar.
 
@@ -192,6 +192,7 @@ Diese Azure Resource Manager-Vorlage zeigt, wie eine Warnungsregel für Fehleran
 
 Weitere Informationen zur automatischen Erkennung finden Sie hier:
 
-- [Anomalien bei Fehlern](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Arbeitsspeicherverluste](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [Leistungsanomalien](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [Anomalien bei Fehlern](./proactive-failure-diagnostics.md)
+- [Arbeitsspeicherverluste](./proactive-potential-memory-leak.md)
+- [Leistungsanomalien](./proactive-performance-diagnostics.md)
+

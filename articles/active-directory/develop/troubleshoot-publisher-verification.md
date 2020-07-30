@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477038"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282975"
 ---
 # <a name="troubleshoot-publisher-verification-preview"></a>Problembehandlung bei der Herausgeberüberprüfung (Vorschauversion)
 Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung (Vorschauversion)](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 
@@ -37,7 +37,7 @@ Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auft
     1. Navigieren Sie zur [Seite für die MPN-Registrierung](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new).
     1. Melden Sie sich mit einem Benutzerkonto im primären Azure AD-Mandanten der Organisation an. 
     1. Wenn bereits ein MPN-Konto vorhanden ist, wird dies erkannt, und Sie werden dem Konto hinzugefügt. 
-    1. Navigieren Sie zur [Partnerprofilseite](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile), auf der die MPN-ID und der Hauptkontakt für das Konto aufgeführt sind.
+    1. Navigieren Sie zur [Partnerprofilseite](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile), auf der die MPN-ID und der Hauptkontakt für das Konto aufgeführt sind.
 
 - **Ich weiß nicht, wer mein globaler Azure AD-Administrator (auch als Unternehmensadministrator oder Mandantenadministrator bezeichnet) ist. Wie finde ich diese Informationen? Wie sieht es mit dem App-Administrator oder einer anderen Administratorrolle aus?**
     1. Melden Sie sich mit einem Benutzerkonto im primären Mandanten Ihrer Organisation beim [Azure AD-Portal](https://aad.portal.azure.com) an.
@@ -45,14 +45,14 @@ Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auft
     1. Klicken Sie auf „Globaler Administrator“ oder auf die gewünschte Administratorrolle.
     1. Es wird eine Liste der Benutzer angezeigt, denen diese Rolle zugewiesen ist.
 
-- **Ich weiß nicht, wer Administrator für mein MPN-Konto ist** Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/en-us/pcv/users), und filtern Sie die Benutzerliste, um die Benutzer in verschiedenen Administratorrollen anzuzeigen.
+- **Ich weiß nicht, wer Administrator für mein MPN-Konto ist** Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/pcv/users), und filtern Sie die Benutzerliste, um die Benutzer in verschiedenen Administratorrollen anzuzeigen.
 
 - **Ich erhalte eine Fehlermeldung, die besagt, dass meine MPN-ID ungültig ist oder dass ich keinen Zugriff darauf habe.**
-    1. Navigieren Sie zu Ihrem [Partnerprofil](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile), und stellen Sie Folgendes sicher: 
+    1. Navigieren Sie zu Ihrem [Partnerprofil](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile), und stellen Sie Folgendes sicher: 
         - Dass die MPN-ID korrekt ist. 
         - Dass keine Fehler oder „ausstehenden Aktionen“ angezeigt werden und der Überprüfungsstatus unter „Rechtliches Geschäftsprofil“ und „Partnerinformationen“ jeweils „autorisiert“ oder „erfolgreich“ lauten.
-    1. Navigieren Sie zur [Seite für die MPN-Mandantenverwaltung](https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement), und vergewissern Sie sich, dass der Mandant, in dem die App registriert ist und von dem Sie sich mit einem Benutzerkonto anmelden, in der Liste der zugeordneten Mandanten aufgeführt ist.
-    1. Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/en-us/pcv/users), und vergewissern Sie sich, dass der Benutzer, unter dem Sie sich anmelden, entweder „Globaler Administrator“, „MPN-Administrator“ oder „Kontoadministrator“ ist.
+    1. Navigieren Sie zur [Seite für die MPN-Mandantenverwaltung](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement), und vergewissern Sie sich, dass der Mandant, in dem die App registriert ist und von dem Sie sich mit einem Benutzerkonto anmelden, in der Liste der zugeordneten Mandanten aufgeführt ist.
+    1. Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/pcv/users), und vergewissern Sie sich, dass der Benutzer, unter dem Sie sich anmelden, entweder „Globaler Administrator“, „MPN-Administrator“ oder „Kontoadministrator“ ist.
 
 - **Wenn ich mich beim Azure AD-Portal anmelde, werden mir keine registrierten Apps angezeigt. Warum?** 
     Möglicherweise wurden Ihre App-Registrierungen mit einem anderen Benutzerkonto oder in einem anderen Mandanten erstellt. Stellen Sie sicher, dass Sie mit dem richtigen Konto in dem Mandanten angemeldet sind, in dem Ihre App-Registrierungen erstellt wurden.

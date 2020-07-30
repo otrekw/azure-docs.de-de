@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle od
 author: cynthn
 ms.service: virtual-machines-linux
 ms.subservice: networking
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706680"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283264"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
 
@@ -167,7 +167,7 @@ Azure Resource Manager-Vorlagen verwenden deklarative JSON-Dateien zum Definiere
 }
 ```
 
-Informieren Sie sich über das [Erstellen mehrerer Instanzen mithilfe von *copy*](../../resource-group-create-multiple.md). 
+Informieren Sie sich über das [Erstellen mehrerer Instanzen mithilfe von *copy*](../../azure-resource-manager/templates/copy-resources.md). 
 
 Sie können auch `copyIndex()` verwenden und eine Zahl an einen Ressourcennamen anfügen, sodass Sie `myNic1`, `myNic2` usw. erstellen können. Das folgende Beispiel veranschaulicht das Anfügen des Indexwerts:
 

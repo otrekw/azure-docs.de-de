@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131337"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083768"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen
 
@@ -102,12 +102,14 @@ Die Verbindungszeichenfolge gibt die Datenbank an, mit der die Website kommunizi
 
 Falls die Verbindungszeichenfolge auf den virtuellen Datenbankcomputer mit einer IP-Adresse verweist, muss sie nach dem Failover aktualisiert werden. Die unten angegebene Verbindungszeichenfolge verweist beispielsweise auf die Datenbank mit der IP-Adresse 127.0.1.2.
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-        <connectionStrings>
-        <add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
-        </connectionStrings>
-        </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<connectionStrings>
+<add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
+</connectionStrings>
+</configuration>
+```
 
 Zum Aktualisieren der Verbindungszeichenfolge auf der Webebene fügen Sie das [Skript für das IIS-Verbindungsupdate](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) nach Gruppe 3 im Wiederherstellungsplan hinzu.
 

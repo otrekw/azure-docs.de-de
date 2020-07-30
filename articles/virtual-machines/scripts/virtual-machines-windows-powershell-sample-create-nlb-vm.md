@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4b726c125c6a1d5cd5a96428f3125167efba18af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b7dad64d7c3e3ab7caa56db26719996b3519b6d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082408"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Lastenausgleich für den Datenverkehr zwischen hoch verfügbaren virtuellen Computern
 
@@ -79,6 +79,6 @@ $vmConfig = New-AzVMConfig -VMName 'myVM3' -VMSize Standard_DS1_v2 -Availability
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche VM-PowerShell-Skriptbeispiele finden Sie in der [Dokumentation zu Windows-VMs in Azure](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

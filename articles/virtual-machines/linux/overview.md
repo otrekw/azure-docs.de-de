@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a62cb11e862bb8733e2758297d82aa7732b2d739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082463"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuelle Linux-Computer in Azure
 
@@ -30,7 +30,7 @@ Virtuelle Azure-Computer können auf vielfältige Weise genutzt werden. Beispiel
 Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann hoch- oder aufskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
-Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
+Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](/azure/architecture/reference-architectures/n-tier/windows-vm) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
 
 * Die Namen Ihrer Anwendungsressourcen
 * Den Speicherort der Ressourcen
@@ -48,9 +48,9 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | Methode | BESCHREIBUNG |
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
-| Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
-| REST-API |Verwenden Sie den Vorgang [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) (Standorte auflisten). |
-| Azure CLI |Verwenden Sie den Vorgang [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
+| Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
+| REST-API |Verwenden Sie den Vorgang [List locations](/rest/api/resources/subscriptions) (Standorte auflisten). |
+| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Verfügbarkeit
 Für Azure wurde eine branchenweit führende Vereinbarung zum Servicelevel von 99,9 Prozent für Einzelinstanz-VMs angekündigt. Sie gilt unter der Voraussetzung, dass Sie den virtuellen Computer mit Storage Premium für alle Datenträger bereitstellen.  Damit Ihre Bereitstellung die Qualifikation für unsere VM-Standardvereinbarung zum Servicelevel von 99,95 Prozent erreicht, müssen Sie weiterhin mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. Durch eine Verfügbarkeitsgruppe wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen in den Azure-Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -95,7 +95,7 @@ Microsoft arbeitet eng mit Partnern zusammen, um sicherzustellen, dass die verf�
 Um eine sinnvolle DevOps-Kultur zu erzielen, muss die gesamte Infrastruktur als Code definiert sein.  Wenn die Infrastruktur vollständig im Codeformat vorliegt, kann sie problemlos neu erstellt werden.  Azure arbeitet mit allen wichtigen Automatisierungstools zusammen, wie z.B. Ansible, Chef, SaltStack und Puppet.  Azure stellt auch eigene Tools für die Automatisierung bereit:
 
 * [Azure-Vorlagen](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](using-vmaccess-extension.md)
+* [Azure VMAccess](../extensions/vmaccess.md)
 
 Azure unterstützt [cloud-init](https://cloud-init.io/) für die meisten Linux-Distributionen ein, die dies unterstützen.  Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos mit VMs und VM-Skalierungsgruppen.
 
@@ -120,4 +120,3 @@ Erstellen Sie Ihren ersten virtuellen Computer!
 - [Portal](quick-create-portal.md)
 - [Azure-Befehlszeilenschnittstelle](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)
-

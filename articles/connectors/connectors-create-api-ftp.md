@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656331"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284012"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Erstellen, Überwachen und Verwalten von FTP-Dateien mithilfe von Azure Logic Apps
 
@@ -171,7 +171,7 @@ Um zu überprüfen, ob Ihr Workflow den erwarteten Inhalt zurückgibt, fügen Si
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/ftpconnector/).
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/ftpconnector/).
 
 > [!NOTE]
 > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
@@ -179,3 +179,4 @@ Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Gre
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

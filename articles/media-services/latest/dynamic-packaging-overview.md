@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/11/2020
 ms.author: juliako
-ms.openlocfilehash: 20389c8298f4e970c4b3ba93d96f811fdc905003
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791604"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090109"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische Paketerstellung in Media Services v3
 
@@ -28,7 +28,7 @@ Mit Microsoft Azure Media Services können zahlreiche Medienquelldateiformate co
 In Media Services repräsentiert ein [Streamingendpunkt](streaming-endpoint-concept.md) (Ursprung) einen dynamischen Just-In-Time-Paketerstellungs- und Ursprungsdienst, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann. Der Streamingendpunkt verwendet hierbei eines der im nächsten Abschnitt beschriebenen allgemeinen Streamingmedienprotokolle. Die Funktion für die *dynamische Paketerstellung* ist standardmäßig auf allen Streamingendpunkten (Standard oder Premium) vorhanden.
 
 > [!NOTE]
-> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und Abrufen von Informationen zum Zugreifen auf APIs. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für Transformationen und Aufträge) die [REST-API](https://docs.microsoft.com/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und Abrufen von Informationen zum Zugreifen auf APIs. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für Transformationen und Aufträge) die [REST-API](/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>So bereiten Sie die Quelldateien für die Bereitstellung vor
 
@@ -126,7 +126,7 @@ Informationen zum Livestreaming in Media Services v3 finden Sie unter [Übersich
 Die dynamische Paketerstellung unterstützt MP4-Dateien mit Video, das mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert wurde.
 
 > [!NOTE]
-> Mit der *dynamischen Paketerstellung* wurden Auflösungen von bis zu 4K und Bildfrequenzen von bis zu 60 Frames/Sekunde getestet. Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs.
+> Mit der *dynamischen Paketerstellung* wurden Auflösungen von bis zu 4K und Bildfrequenzen von bis zu 60 Frames/Sekunde getestet. Der [Premium-Encoder](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Audiocodecs
 

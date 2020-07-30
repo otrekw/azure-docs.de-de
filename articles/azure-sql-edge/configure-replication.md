@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667878"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282771"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Konfigurieren der Replikation in Azure SQL Edge (Vorschau) 
 
@@ -24,7 +24,7 @@ Sie können eine Azure SQL Edge-Instanz als Pushabonnenten für eine unidirektio
   
 - Die Azure SQL Edge-Instanz muss ein Pushabonnent für einen Verleger sein.
 - Verleger und Verteiler können Folgendes sein:
-   - Eine lokal ausgeführte SQL Server-Instanz oder eine auf einer Azure-VM ausgeführte SQL Server-Instanz. Weitere Informationen finden Sie unter [Was ist SQL Server auf virtuellen Azure-Computern? (Windows)](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/). SQL Server-Instanzen müssen eine neuere Version als SQL Server 2016 verwenden.
+   - Eine lokal ausgeführte SQL Server-Instanz oder eine auf einer Azure-VM ausgeführte SQL Server-Instanz. Weitere Informationen finden Sie unter [Was ist SQL Server auf virtuellen Azure-Computern? (Windows)](https://docs.microsoft.com/azure/azure-sql/virtual-machines/). SQL Server-Instanzen müssen eine neuere Version als SQL Server 2016 verwenden.
    - Eine verwaltete Azure SQL-Instanz. SQL Managed Instance kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Weitere Informationen finden Sie unter [Replikation mit einer verwalteten SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
 
 - Die Verteilungsdatenbank und Replikations-Agents können nicht in einer Azure SQL Edge-Instanz platziert werden.  

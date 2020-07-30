@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ab87990981f08164bb47cef9eaa1876514f1ad6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e5c74f6356c8b07cfef923dfb5e12547aa4693ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053552"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Tutorial: Analysieren von Videos mit Media Services v3
 
 > [!NOTE]
-> Obwohl in diesem Tutorial die [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-Beispiele verwendet werden, sind die allgemeinen Schritte für die [REST-API](https://docs.microsoft.com/rest/api/media/liveevents), die [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) oder für andere unterstützte [SDKs](media-services-apis-overview.md#sdks) dieselben.
+> Obwohl in diesem Tutorial die [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-Beispiele verwendet werden, sind die allgemeinen Schritte für die [REST-API](/rest/api/media/liveevents), die [CLI](/cli/azure/ams/live-event?view=azure-cli-latest) oder für andere unterstützte [SDKs](media-services-apis-overview.md#sdks) dieselben.
 
 In diesem Tutorial wird gezeigt, wie Videos mit Azure Media Services analysiert werden. Es gibt viele Szenarien, in denen Sie umfassende Einblicke in aufgezeichnete Videos oder Audioinhalte erlangen möchten. Um beispielsweise eine höhere Kundenzufriedenheit zu erreichen, können Unternehmen eine Spracherkennung ausführen, um Kundensupportaufzeichnungen in einen durchsuchbaren Katalog mit Indizes und Dashboards umzuwandeln. Dann können sie Einblicke in ihr Geschäft erhalten. Dazu zählen etwa eine Liste der häufigsten Beschwerden, Quellen solcher Beschwerden und weitere nützliche Informationen.
 
@@ -45,8 +45,8 @@ Wichtig: Ihre Nutzung von Video Indexer darf nicht gegen geltende Gesetze versto
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie Visual Studio noch nicht installiert haben, laden Sie [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunter.
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
@@ -58,7 +58,7 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Beispiel enth�
 
 Das Beispiel befindet sich im Ordner [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
 
-Öffnen Sie in Ihrem heruntergeladenen Projekt die Datei [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json). Ersetzen Sie die Werte durch die Anmeldeinformationen, die Sie per [API-Zugriff](access-api-cli-how-to.md) abgerufen haben.
+Öffnen Sie in Ihrem heruntergeladenen Projekt die Datei [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json). Ersetzen Sie die Werte durch die Anmeldeinformationen, die Sie per [API-Zugriff](./access-api-howto.md) abgerufen haben.
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Untersuchen des Codes für die Analyse des angegebenen Videos
 
@@ -84,33 +84,33 @@ Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie e
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Erstellen eines Eingabeobjekts und Hochladen einer lokalen Datei in dieses 
 
-Die **CreateInputAsset**-Funktion erstellt ein neues [Eingabeobjekt](https://docs.microsoft.com/rest/api/media/assets) und lädt die angegebene lokale Videodatei in dieses hoch. Dieses Objekt wird als Eingabe für Ihren Codierungsauftrag verwendet. In Media Services v3 kann die Eingabe in einen Auftrag ein Objekt sein, oder es kann sich um Inhalte handeln, die Sie für Ihr Media Services-Konto über HTTPS-URLs zur Verfügung stellen. Um zu erfahren, wie die Codierung aus einer HTTPS-URL erfolgt, lesen Sie [diesen](job-input-from-http-how-to.md) Artikel.  
+Die **CreateInputAsset**-Funktion erstellt ein neues [Eingabeobjekt](/rest/api/media/assets) und lädt die angegebene lokale Videodatei in dieses hoch. Dieses Objekt wird als Eingabe für Ihren Codierungsauftrag verwendet. In Media Services v3 kann die Eingabe in einen Auftrag ein Objekt sein, oder es kann sich um Inhalte handeln, die Sie für Ihr Media Services-Konto über HTTPS-URLs zur Verfügung stellen. Um zu erfahren, wie die Codierung aus einer HTTPS-URL erfolgt, lesen Sie [diesen](job-input-from-http-how-to.md) Artikel.  
 
 In Media Services v3 verwenden Sie Azure Storage-APIs zum Hochladen von Dateien. Im folgenden Codeausschnitt wird gezeigt, wie dies funktioniert.
 
 Die folgende Funktion führt diese Aktionen aus:
 
 * Erstellen eines Medienobjekts
-* Abrufen einer nicht schreibgeschützten [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) für den [Container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) des Medienobjekts im Speicher
+* Abrufen einer nicht schreibgeschützten [SAS-URL](../../storage/common/storage-sas-overview.md) für den [Container](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container) des Medienobjekts im Speicher
 
-    Beachten Sie Folgendes: Wenn Sie die Funktion [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) des Medienobjekts zum Abrufen von SAS-URLs verwenden, gibt die Funktion mehrere SAS-URLs zurück, da für jedes Speicherkonto zwei Speicherkontoschlüssel vorhanden sind. Ein Speicherkonto verfügt über zwei Schlüssel, um eine nahtlose Rotation von Speicherkontoschlüsseln zu ermöglichen. (So kann beispielsweise ein Schlüssel geändert werden, während der andere in Gebrauch ist. Anschließend kann dann der neue Schlüssel verwendet werden, während der andere rotiert wird.) Die erste SAS-URL steht für Speicherschlüssel1 und die zweite für Speicherschlüssel2.
+    Beachten Sie Folgendes: Wenn Sie die Funktion [ListContainerSas](/rest/api/media/assets/listcontainersas) des Medienobjekts zum Abrufen von SAS-URLs verwenden, gibt die Funktion mehrere SAS-URLs zurück, da für jedes Speicherkonto zwei Speicherkontoschlüssel vorhanden sind. Ein Speicherkonto verfügt über zwei Schlüssel, um eine nahtlose Rotation von Speicherkontoschlüsseln zu ermöglichen. (So kann beispielsweise ein Schlüssel geändert werden, während der andere in Gebrauch ist. Anschließend kann dann der neue Schlüssel verwendet werden, während der andere rotiert wird.) Die erste SAS-URL steht für Speicherschlüssel1 und die zweite für Speicherschlüssel2.
 * Hochladen der Datei in den Container im Speicher mithilfe der SAS-URL
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
 
 ### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Erstellen eines Ausgabemedienobjekts zum Speichern des Auftragsergebnisses
 
-Das [Ausgabeobjekt](https://docs.microsoft.com/rest/api/media/assets) speichert das Ergebnis Ihres Auftrags. Das Projekt definiert die **DownloadResults**-Funktion, die die Ergebnisse aus diesem Ausgabeobjekt in den Ordner „output“ herunterlädt, damit Sie sehen können, was Sie abgerufen haben.
+Das [Ausgabeobjekt](/rest/api/media/assets) speichert das Ergebnis Ihres Auftrags. Das Projekt definiert die **DownloadResults**-Funktion, die die Ergebnisse aus diesem Ausgabeobjekt in den Ordner „output“ herunterlädt, damit Sie sehen können, was Sie abgerufen haben.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Erstellen einer Transformation und eines Auftrags, der Videos analysiert
 
-Bei der Codierung oder Verarbeitung von Inhalten in Media Services ist es gängige Praxis, Codierungseinstellungen als Anleitung einzurichten. Anschließend übermitteln Sie einen **Auftrag**, um diese Anleitung auf ein Video anzuwenden. Durch die Übermittlung von neuen Aufträgen für jedes neue Video wenden Sie diese Anleitung auf alle Videos in Ihrer Bibliothek an. Eine solche Anleitung wird in Media Services als **Transformation** bezeichnet. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md). Das Beispiel in diesem Tutorial definiert eine Anleitung, die das angegebene Video analysiert.
+Bei der Codierung oder Verarbeitung von Inhalten in Media Services ist es gängige Praxis, Codierungseinstellungen als Anleitung einzurichten. Anschließend übermitteln Sie einen **Auftrag**, um diese Anleitung auf ein Video anzuwenden. Durch die Übermittlung von neuen Aufträgen für jedes neue Video wenden Sie diese Anleitung auf alle Videos in Ihrer Bibliothek an. Eine solche Anleitung wird in Media Services als **Transformation** bezeichnet. Weitere Informationen finden Sie unter [Transformationen und Aufträge](./transforms-jobs-concept.md). Das Beispiel in diesem Tutorial definiert eine Anleitung, die das angegebene Video analysiert.
 
 #### <a name="transform"></a>Transformieren
 
-Beim Erstellen einer neuen [Transformations](https://docs.microsoft.com/rest/api/media/transforms)instanz müssen Sie angeben, was als Ausgabe generiert werden soll. **TransformOutput** ist ein erforderlicher Parameter. Jedes **TransformOutput**-Objekt enthält eine **Voreinstellung**. Die **Voreinstellung** beschreibt schrittweise Anweisungen von Video- und/oder Audioverarbeitungsvorgängen, die verwendet werden sollen, um das gewünschte **TransformOutput**-Objekt zu generieren. In diesem Beispiel wird die **VideoAnalyzerPreset**-Voreinstellung verwendet und die Sprache („en-US“) an ihren Konstruktor übergeben (`new VideoAnalyzerPreset("en-US")`). Diese Voreinstellung ermöglicht Ihnen, mehrere Audio- und Videoinformationen aus einer Videodatei zu extrahieren. Sie können die **AudioAnalyzerPreset**-Voreinstellung verwenden, wenn Sie mehrere Audioinformationen aus einem Video extrahieren müssen.
+Beim Erstellen einer neuen [Transformations](/rest/api/media/transforms)instanz müssen Sie angeben, was als Ausgabe generiert werden soll. **TransformOutput** ist ein erforderlicher Parameter. Jedes **TransformOutput**-Objekt enthält eine **Voreinstellung**. Die **Voreinstellung** beschreibt schrittweise Anweisungen von Video- und/oder Audioverarbeitungsvorgängen, die verwendet werden sollen, um das gewünschte **TransformOutput**-Objekt zu generieren. In diesem Beispiel wird die **VideoAnalyzerPreset**-Voreinstellung verwendet und die Sprache („en-US“) an ihren Konstruktor übergeben (`new VideoAnalyzerPreset("en-US")`). Diese Voreinstellung ermöglicht Ihnen, mehrere Audio- und Videoinformationen aus einer Videodatei zu extrahieren. Sie können die **AudioAnalyzerPreset**-Voreinstellung verwenden, wenn Sie mehrere Audioinformationen aus einem Video extrahieren müssen.
 
 Überprüfen Sie beim Erstellen einer **Transformation** zunächst mit der **Get**-Methode, ob eine solche bereits vorhanden ist. Der folgende Code zeigt dies. In Media Services v3 geben **Get**-Methoden für Entitäten **null** zurück, wenn die Entität nicht vorhanden ist (eine Überprüfung des Namens ohne Unterscheidung zwischen Groß-/Kleinschreibung ).
 
@@ -118,7 +118,7 @@ Beim Erstellen einer neuen [Transformations](https://docs.microsoft.com/rest/api
 
 #### <a name="job"></a>Auftrag
 
-Wie bereits erwähnt, ist das [Transformations](https://docs.microsoft.com/rest/api/media/transforms)objekt die Anleitung und ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) die tatsächliche Anforderung an Media Services, diese **Transformation** auf ein bestimmtes Eingabevideo oder einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Videos wie folgt angeben: Über HTTPS-URLs, SAS-URLs oder Medienobjekte in Ihrem Media Service-Konto.
+Wie bereits erwähnt, ist das [Transformations](/rest/api/media/transforms)objekt die Anleitung und ein [Auftrag](/rest/api/media/jobs) die tatsächliche Anforderung an Media Services, diese **Transformation** auf ein bestimmtes Eingabevideo oder einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Videos wie folgt angeben: Über HTTPS-URLs, SAS-URLs oder Medienobjekte in Ihrem Media Service-Konto.
 
 In diesem Beispiel ist die Auftragseingabe ein lokales Video.  
 
@@ -126,7 +126,7 @@ In diesem Beispiel ist die Auftragseingabe ein lokales Video.
 
 ### <a name="wait-for-the-job-to-complete"></a>Warten auf den Abschluss des Auftrags
 
-Die Auftragsausführung dauert einige Zeit. Nach Abschluss des Auftrags möchten Sie eine Benachrichtigung erhalten. Es bestehen verschiedene Optionen, sich beim Abschluss des [Auftrags](https://docs.microsoft.com/rest/api/media/jobs) benachrichtigen zu lassen. Die einfachste Möglichkeit (die hier gezeigt wird) ist die Verwendung von Abrufvorgängen.
+Die Auftragsausführung dauert einige Zeit. Nach Abschluss des Auftrags möchten Sie eine Benachrichtigung erhalten. Es bestehen verschiedene Optionen, sich beim Abschluss des [Auftrags](/rest/api/media/jobs) benachrichtigen zu lassen. Die einfachste Möglichkeit (die hier gezeigt wird) ist die Verwendung von Abrufvorgängen.
 
 Der Abruf gehört aufgrund potenzieller Latenzzeiten nicht zu den empfohlenen Best Practices für Produktionsanwendungen. Der Abruf kann gedrosselt werden, wenn er für ein Konto im Übermaß verwendet wird. Entwickler sollten stattdessen Event Grid verwenden.
 
@@ -138,11 +138,11 @@ Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, *
 
 ### <a name="job-error-codes"></a>Auftragsfehlercodes
 
-Weitere Informationen finden Sie unter [Fehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Weitere Informationen finden Sie unter [Fehlercodes](/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="download-the-result-of-the-job"></a>Herunterladen des Ergebnisses des Auftrags
 
-Die folgende Funktion lädt die Ergebnisse aus dem [Ausgabeobjekt](https://docs.microsoft.com/rest/api/media/assets) in den Ordner „output“ herunter, damit Sie die Ergebnisse des Auftrags untersuchen können.
+Die folgende Funktion lädt die Ergebnisse aus dem [Ausgabeobjekt](/rest/api/media/assets) in den Ordner „output“ herunter, damit Sie die Ergebnisse des Auftrags untersuchen können.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
@@ -160,7 +160,7 @@ Wenn das Programm ausgeführt wird, generiert der Auftrag Miniaturansichten für
 
 ## <a name="examine-the-output"></a>Untersuchen der Ausgabe
 
-Die Ausgabedatei der Analyse von Videos wird als „insights.json“ bezeichnet. Diese Datei enthält Informationen zu Ihrem Video. Sie finden eine Beschreibung der Elemente in der JSON-Datei im Artikel [Medienintelligenz](intelligence-concept.md).
+Die Ausgabedatei der Analyse von Videos wird als „insights.json“ bezeichnet. Diese Datei enthält Informationen zu Ihrem Video. Sie finden eine Beschreibung der Elemente in der JSON-Datei im Artikel [Medienintelligenz](./analyzing-video-audio-files-concept.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

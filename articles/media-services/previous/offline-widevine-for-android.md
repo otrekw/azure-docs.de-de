@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294334"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065500"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine-Offlinestreaming für Android  
 
@@ -29,7 +29,7 @@ ms.locfileid: "80294334"
 > * [Version 2](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Neben dem Schutz von Inhalten für Onlinestreaming bieten Abonnement- und Verleihdienste für Medieninhalte herunterladbare Inhalte, die genutzt werden können, wenn keine Internetverbindung besteht. Dadurch können Sie beispielsweise Inhalte auf Ihr Smartphone oder Tablet herunterladen und im Offlinemodus ansehen, wenn Sie mit dem Flugzeug unterwegs sind und keine Netzwerkverbindung verfügbar ist. Weitere Szenarien, in denen Sie möglicherweise Inhalte herunterladen möchten:
 
@@ -181,7 +181,7 @@ Daher benötigt der Sicherheitstokendienst (Secure Token Service, STS) die Gesch
 
 ### <a name="question"></a>Frage
 
-In der [Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) sind drei verschiedene Widevine-Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
+In der [Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) sind drei verschiedene Widevine-Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](./media-services-widevine-license-template-overview.md) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
 
 ### <a name="answer"></a>Antwort
 
@@ -191,7 +191,7 @@ In der [Widevine DRM-Architekturübersicht](https://storage.googleapis.com/wvdoc
 2.  Sicherheitsstufe 2: Die gesamte Kryptografie (aber nicht die Videoverarbeitung) wird innerhalb der TEE durchgeführt. Entschlüsselte Puffer werden an die Anwendungsdomäne zurückgegeben und über separate Videohardware oder -software verarbeitet. Kryptografieinformationen werden auf der zweiten Stufe allerdings weiterhin nur innerhalb der TEE verarbeitet.
 3.  Sicherheitsstufe 3: Verfügt über keine TEE auf dem Gerät. Zum Schutz der kryptografischen Informationen und entschlüsselter Inhalte können geeignete Maßnahmen unter dem Hostbetriebssystem ergriffen werden. Eine Implementierung der dritten Stufe kann auch ein hardwarebasiertes Kryptografiemodul enthalten. Dadurch verbessert sich aber nur die Leistung, nicht die Sicherheit.
 
-Gemäß [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview) kann die security_level-Eigenschaft von „content_key_specs“ folgende fünf Werte (Clientstabilitätsanforderungen für die Wiedergabe) besitzen:
+Gemäß [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](./media-services-widevine-license-template-overview.md) kann die security_level-Eigenschaft von „content_key_specs“ folgende fünf Werte (Clientstabilitätsanforderungen für die Wiedergabe) besitzen:
 
 1.  Erfordert softwarebasierte White-Box-Verschlüsselung.
 2.  Erfordert Softwareverschlüsselung und einen verborgenen Decoder.

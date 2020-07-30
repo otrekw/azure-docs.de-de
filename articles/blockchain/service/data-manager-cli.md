@@ -4,12 +4,12 @@ description: Erstellen und Verwalten von Blockchain Data Manager-Instanzen für 
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023737"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurieren von Blockchain Data Manager mithilfe der Azure CLI
 
@@ -25,7 +25,7 @@ So konfigurieren Sie eine Blockchain Data Manager-Instanz
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Installieren der neuesten [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) und Anmelden unter Verwendung von `az login`
+* Installieren der neuesten [Azure CLI](/cli/azure/install-azure-cli) und Anmelden unter Verwendung von `az login`
 * [Quickstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md) aus. Der Tarif *Standard* von Azure Blockchain Service wird empfohlen, wenn Sie Blockchain Data Manager verwenden.
 * Erstellen eines [Event Grid-Themas](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * Weitere Informationen zu [Ereignishandlern in Azure Event Grid](../../event-grid/event-handlers.md)
@@ -36,11 +36,11 @@ Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritt
 
 Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
-Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Version 2.0.51 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie die CLI installieren oder aktualisieren müssen, finden Sie die entsprechende Anleitung unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Version 2.0.51 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie die CLI installieren oder aktualisieren müssen, finden Sie die entsprechende Anleitung unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mithilfe des Befehls [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
