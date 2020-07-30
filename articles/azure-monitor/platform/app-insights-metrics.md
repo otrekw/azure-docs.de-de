@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664914"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327071"
 ---
 # <a name="application-insights-log-based-metrics"></a>Protokollbasierte Metriken von Application Insights
 
 Mit den protokollbasierten Metriken von Application Insights können Sie die Integrität Ihrer überwachten Apps analysieren, leistungsstarke Dashboards erstellen und Warnungen konfigurieren. Es gibt zwei Arten von Metriken:
 
-* [Protokollbasierte Metriken](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) im Hintergrund werden aus gespeicherten Ereignissen in [Kusto-Abfragen](https://docs.microsoft.com/azure/kusto/query/) übersetzt.
-* [Standardmetriken](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) werden als vorab aggregierte Zeitreihe gespeichert.
+* [Protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) im Hintergrund werden aus gespeicherten Ereignissen in [Kusto-Abfragen](/azure/kusto/query/) übersetzt.
+* [Standardmetriken](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) werden als vorab aggregierte Zeitreihe gespeichert.
 
 Da *Standardmetriken* während der Erfassung vorab aggregiert werden, weisen sie zum Abfragezeitpunkt eine bessere Leistung auf. Dies macht sie zu einer besseren Wahl für Dashboarding und Echtzeitwarnungen. Die *protokollbasierten Metriken* verfügen über mehr Dimensionen, was sie zur überlegenen Option für die Datenanalyse und Ad-hoc-Diagnosen macht. Verwenden Sie die [Namespace-Auswahl](metrics-getting-started.md#create-your-first-metric-chart), um im [Metrik-Explorer](metrics-getting-started.md) zwischen protokollbasierten Metriken und Standardmetriken zu wechseln.
 
@@ -38,11 +38,11 @@ Wenn Sie die gleiche Metrik im [Metrik-Explorer](metrics-getting-started.md) dar
 - Die ausgewählte **Teilungsdiagramm**-Dimension wird in eine zusätzliche Zusammenfassungseigenschaft übersetzt. Wenn Sie beispielsweise Ihr Diagramm nach *Standort* aufteilen und mit einer Zeitgranularität von 5 Minuten grafisch darstellen, wird die *summarize*-Klausel in der Form *... by bin(timestamp, 5 m), location* zusammengefasst.
 
 > [!NOTE]
-> Wenn Sie noch nicht mit der Kusto-Abfragesprache vertraut sind, müssen Sie zunächst die Kusto-Anweisungen kopieren und in den Log Analytics-Abfragebereich einfügen, ohne Änderungen vorzunehmen. Klicken Sie auf **Ausführen**, um das grundlegende Diagramm anzuzeigen. Wenn Sie mit der Syntax der Abfragesprache vertraut sind, können Sie damit beginnen, kleine Änderungen vorzunehmen und die Auswirkung Ihrer Änderung anzuzeigen. Das Untersuchen Ihrer eigenen Daten ist eine gute Möglichkeit, um die volle Leistungsfähigkeit von [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) und [Azure Monitor](../../azure-monitor/overview.md) zu erkennen.
+> Wenn Sie noch nicht mit der Kusto-Abfragesprache vertraut sind, müssen Sie zunächst die Kusto-Anweisungen kopieren und in den Log Analytics-Abfragebereich einfügen, ohne Änderungen vorzunehmen. Klicken Sie auf **Ausführen**, um das grundlegende Diagramm anzuzeigen. Wenn Sie mit der Syntax der Abfragesprache vertraut sind, können Sie damit beginnen, kleine Änderungen vorzunehmen und die Auswirkung Ihrer Änderung anzuzeigen. Das Untersuchen Ihrer eigenen Daten ist eine gute Möglichkeit, um die volle Leistungsfähigkeit von [Log Analytics](../log-query/get-started-portal.md) und [Azure Monitor](../overview.md) zu erkennen.
 
 ## <a name="availability-metrics"></a>Verfügbarkeitsmetriken
 
-Metriken der Kategorie „Verfügbarkeit“ ermöglichen es Ihnen, die Integrität Ihrer Webanwendung so anzuzeigen, wie sie an Punkten auf der ganzen Welt zu beobachten ist. [Konfigurieren Sie die Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md), damit Sie Metriken aus dieser Kategorie verwenden können.
+Metriken der Kategorie „Verfügbarkeit“ ermöglichen es Ihnen, die Integrität Ihrer Webanwendung so anzuzeigen, wie sie an Punkten auf der ganzen Welt zu beobachten ist. [Konfigurieren Sie die Verfügbarkeitstests](../app/monitor-web-app-availability.md), damit Sie Metriken aus dieser Kategorie verwenden können.
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>Verfügbarkeit (availabilityResults/availabilityPercentage)
 Die Metrik *Verfügbarkeit* zeigt den Prozentsatz der Webtestläufe, bei denen keine Probleme erkannt wurden. Der kleinstmögliche Wert ist 0 und gibt an, dass bei allen Webtestläufen Fehler aufgetreten sind. Der Wert 100 bedeutet, dass alle Webtestläufe die Überprüfungskriterien erfüllt haben.
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>Verfügbarkeitstestdauer (availabilityResults/duration)
 
-Die Metrik *Verfügbarkeitstestdauer* gibt an, wie lange die Ausführung des Webtests gedauert hat. Bei den [mehrstufigen Webtests](../../azure-monitor/app/availability-multistep.md) spiegelt die Metrik die gesamte Ausführungszeit aller Stufen wider.
+Die Metrik *Verfügbarkeitstestdauer* gibt an, wie lange die Ausführung des Webtests gedauert hat. Bei den [mehrstufigen Webtests](../app/availability-multistep.md) spiegelt die Metrik die gesamte Ausführungszeit aller Stufen wider.
 
 |Unit of measure|Unterstützte Aggregationen|Unterstützte Dimensionen|
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ availabilityResults
 Browsermetriken werden vom Application Insights JavaScript SDK aus echten Endbenutzerbrowsern gesammelt. Sie bieten nützliche Einblicke in die Erfahrungen der Benutzer mit Ihrer Webanwendung. Für Browsermetriken werden in der Regel keine Stichproben verwendet, was bedeutet, dass sie eine höhere Genauigkeit der Nutzungszahlen bieten als serverseitige Metriken, die durch die Verwendung von Stichproben verzerrt sein können.
 
 > [!NOTE]
-> Um Browsermetriken zu erfassen, muss Ihre Anwendung mit dem [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) ausgestattet sein.
+> Um Browsermetriken zu erfassen, muss Ihre Anwendung mit dem [Application Insights JavaScript SDK](../app/javascript.md) ausgestattet sein.
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Browser-Seitenladezeit (browserTimings/totalDuration)
 
@@ -210,7 +210,7 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>Ausnahmen (exceptions/count)
 
-Jedes Mal, wenn Sie eine Ausnahme bei Application Insights protokollieren, erfolgt ein Aufruf der [trackException()-Methode](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) des SDK. Die Metrik „Ausnahmen“ zeigt die Anzahl der protokollierten Ausnahmen an.
+Jedes Mal, wenn Sie eine Ausnahme bei Application Insights protokollieren, erfolgt ein Aufruf der [trackException()-Methode](../app/api-custom-events-metrics.md#trackexception) des SDK. Die Metrik „Ausnahmen“ zeigt die Anzahl der protokollierten Ausnahmen an.
 
 |Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
 |---|---|---|---|
@@ -224,7 +224,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Fehlerhafte Anforderungen (requests/failed)
 
-Die Anzahl der verfolgten Serveranforderungen, die als *fehlgeschlagen* markiert wurden. Standardmäßig markiert das Application Insights SDK automatisch jede Serveranforderung, die den HTTP-Antwortcode 5xx oder 4xx zurückgegeben hat, als fehlerhafte Anforderung. Sie können diese Logik anpassen, indem Sie die Eigenschaft *Erfolg* des Anforderungstelemetrieelements in einem [benutzerdefinierten Telemetrieinitialisierer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) ändern.
+Die Anzahl der verfolgten Serveranforderungen, die als *fehlgeschlagen* markiert wurden. Standardmäßig markiert das Application Insights SDK automatisch jede Serveranforderung, die den HTTP-Antwortcode 5xx oder 4xx zurückgegeben hat, als fehlerhafte Anforderung. Sie können diese Logik anpassen, indem Sie die Eigenschaft *Erfolg* des Anforderungstelemetrieelements in einem [benutzerdefinierten Telemetrieinitialisierer](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) ändern.
 
 |Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
 |---|---|---|---|
@@ -254,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
 
-Verwenden Sie Metriken in der Kategorie **Leistungsindikatoren**, um auf [die von Application Insights erfassten Systemleistungsindikatoren](../../azure-monitor/app/performance-counters.md) zuzugreifen.
+Verwenden Sie Metriken in der Kategorie **Leistungsindikatoren**, um auf [die von Application Insights erfassten Systemleistungsindikatoren](../app/performance-counters.md) zuzugreifen.
 
 ### <a name="available-memory-performancecountersavailablememory"></a>Verfügbarer Speicher (performanceCounters/availableMemory)
 
@@ -492,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

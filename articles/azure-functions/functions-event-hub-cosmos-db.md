@@ -5,12 +5,13 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-java
+ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77425322"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372449"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Tutorial: Erstellen einer Funktion in Java mit einem Event Hub-Trigger und einer Azure Cosmos DB-Ausgabebindung
 
@@ -445,9 +446,9 @@ az group delete --name $RESOURCE_GROUP
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie eine Azure-Funktion erstellen, die Event Hub-Ereignisse verarbeitet und eine Cosmos DB aktualisiert. Weitere Informationen finden Sie im [Java-Entwicklerhandbuch für Azure Functions](/azure/azure-functions/functions-reference-java). Informationen zu den verwendeten Anmerkungen finden Sie in der Referenz zu [com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation).
+In diesem Tutorial haben Sie erfahren, wie Sie eine Azure-Funktion erstellen, die Event Hub-Ereignisse verarbeitet und eine Cosmos DB aktualisiert. Weitere Informationen finden Sie im [Java-Entwicklerhandbuch für Azure Functions](./functions-reference-java.md). Informationen zu den verwendeten Anmerkungen finden Sie in der Referenz zu [com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation).
 
-In diesem Tutorial wurden Umgebungsvariablen und Anwendungseinstellungen verwendet, um Geheimnisse wie Verbindungszeichenfolgen zu speichern. Informationen zum Speichern dieser Geheimnisse in Azure Key Vault finden Sie unter [Verwenden von Key Vault-Verweisen für App Service und Azure Functions](/azure/app-service/app-service-key-vault-references).
+In diesem Tutorial wurden Umgebungsvariablen und Anwendungseinstellungen verwendet, um Geheimnisse wie Verbindungszeichenfolgen zu speichern. Informationen zum Speichern dieser Geheimnisse in Azure Key Vault finden Sie unter [Verwenden von Key Vault-Verweisen für App Service und Azure Functions](../app-service/app-service-key-vault-references.md).
 
 Als nächstes erfahren Sie, wie Sie CI/CD in Azure Pipelines für die automatisierte Bereitstellung verwenden:
 

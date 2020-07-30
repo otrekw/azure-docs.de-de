@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539702"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326187"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Überwachen von virtuellen Azure-Computern mit Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten von virtuellen Azure-Computern erfassen und analysieren, um deren Integrität aufrechtzuerhalten. Virtuelle Computer können wie alle [anderen Azure-Ressourcen](monitor-azure-resource.md) mit Azure Monitor auf Verfügbarkeit und Leistung überwacht werden, unterscheiden sich jedoch von anderen Ressourcen darin, dass Sie außerdem das Gastbetriebssystem und die darin ausgeführten Workloads überwachen müssen. 
@@ -134,7 +134,7 @@ Nachdem Sie die Sammlung von Überwachungsdaten für einen virtuellen Computer k
 |:---|:---|
 | Übersicht | Zeigt [Plattformmetriken](../platform/data-platform-metrics.md) für den VM-Host an. Klicken Sie auf ein Diagramm, um mit diesen Daten im [Metrik-Explorer](../platform/metrics-getting-started.md) zu arbeiten. |
 | Aktivitätsprotokoll | [Aktivitätsprotokolleinträge](../platform/activity-log.md#view-the-activity-log), die für den aktuellen virtuellen Computer gefiltert werden. |
-| Einblicke | Öffnet [Azure Monitor für VMs](../insights/vminsights-overview.md) mit der Zuordnung für den aktuell ausgewählten virtuellen Computer. |
+| Einblicke | Öffnet [Azure Monitor für VMs](./vminsights-overview.md) mit der Zuordnung für den aktuell ausgewählten virtuellen Computer. |
 | Alerts | Zeigt [Warnungen](../platform/alerts-overview.md) für die aktuelle VM an.  |
 | Metriken | Öffnet den [Metrik-Explorer](../platform/metrics-getting-started.md), wobei der Bereich auf den aktuellen virtuellen Computer festgelegt ist. |
 | Diagnoseeinstellungen | Aktiviert und konfiguriert die [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) für die aktuelle VM. |
@@ -242,3 +242,4 @@ Ausführliche Informationen zum Verbinden Ihrer vorhandenen SCOM-Verwaltungsgrup
 
 * [Erfahren Sie, wie Sie Daten in Azure Monitor-Protokollen mithilfe von Protokollabfragen analysieren.](../log-query/get-started-queries.md)
 * [Erfahren Sie mehr über Warnungen mithilfe von Metriken und Protokollen in Azure Monitor.](../platform/alerts-overview.md)
+

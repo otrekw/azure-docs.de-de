@@ -2,19 +2,20 @@
 title: Schützen einer Webanwendung mit interaktiver einmaliger Anmeldung
 titleSuffix: Azure Maps
 description: Erfahren Sie, wie Sie eine Webanwendung konfigurieren, die einmaliges Anmelden über Azure AD mit dem Azure Maps Web SDK unter Verwendung des Protokolls OpenID Connect unterstützt.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1f591e52ba0c54dcf3242d11f7e81e8e73a570c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b86a8f726c039e3fa909cdc6f3f7b33b7c9c01ff
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279745"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Schützen einer Webanwendung mit Benutzeranmeldung
 

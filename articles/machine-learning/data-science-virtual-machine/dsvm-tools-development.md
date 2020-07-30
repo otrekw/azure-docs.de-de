@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012382"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Entwicklungstools in Azure Data Science Virtual Machine
 
@@ -23,7 +23,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 
 ## <a name="visual-studio-community-edition"></a>Visual Studio Community Edition
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Universelle IDE      |
 | Unterstützte DSVM-Versionen      | Windows: Visual Studio 2017, Windows 2019: Visual Studio 2019      |
@@ -37,7 +37,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Universelle IDE      |
 | Unterstützte DSVM-Versionen      | Windows, Linux     |
@@ -47,7 +47,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 
 ## <a name="rstudio-desktop"></a>RStudio Desktop
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Client-IDE für R   |
 | Unterstützte DSVM-Versionen      | Windows, Linux      |
@@ -57,7 +57,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 
 ## <a name="rstudio-server"></a>RStudio Server
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Client-IDE für R   |
 | Was ist das?   | Webbasierte IDE für R    |
@@ -68,7 +68,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 
 ## <a name="juno"></a>Juno 
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Client-IDE für Julia   |
 | Unterstützte DSVM-Versionen      | Windows, Linux      |
@@ -78,7 +78,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 
 ## <a name="pycharm"></a>PyCharm
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Client-IDE für Python    |
 | Unterstützte DSVM-Versionen      | Windows 2019, Linux      |

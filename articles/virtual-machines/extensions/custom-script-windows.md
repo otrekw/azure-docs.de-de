@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010936"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -144,7 +144,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 * `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
 * `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
-* `managedIdentity` (optional, JSON-Objekt): die [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien
+* `managedIdentity` (optional, JSON-Objekt): die [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zum Herunterladen von Dateien
   * `clientId` (optional, Zeichenfolge): die Client-ID der verwalteten Identität
   * `objectId` (optional, Zeichenfolge): die Objekt-ID der verwalteten Identität
 
@@ -160,9 +160,9 @@ Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sei
 > [!NOTE]
 > Diese Eigenschaft **muss** nur in geschützten Einstellungen angegeben werden.
 
-CustomScript (ab Version 1.10) unterstützt [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs oder -Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
+CustomScript (ab Version 1.10) unterstützt [verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs oder -Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
 
-Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) oder [vom Benutzer zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder das -Blob gewähren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) oder [vom Benutzer zugewiesene](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder das -Blob gewähren](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access).
 
 Um die vom System zugewiesene Identität für die Ziel-VM/VMSS zu verwenden, legen Sie das Feld „managedidentity“ auf ein leeres JSON-Objekt fest. 
 
@@ -283,7 +283,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
-Informationen zum Bereitstellen der benutzerdefinierten Skripterweiterung für eine Skalierungsgruppe finden Sie unter [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0).
+Informationen zum Bereitstellen der benutzerdefinierten Skripterweiterung für eine Skalierungsgruppe finden Sie unter [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0).
 
 ## <a name="classic-vms"></a>Klassische virtuelle Computer
 
@@ -301,7 +301,7 @@ Wählen Sie auf der Seite **Erweiterung installieren** die lokale PowerShell-Dat
 
 ### <a name="powershell"></a>PowerShell
 
-Mit dem Cmdlet [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) können Sie die benutzerdefinierte Skripterweiterung für einen vorhandenen virtuellen Computer bereitstellen.
+Mit dem Cmdlet [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) können Sie die benutzerdefinierte Skripterweiterung für einen vorhandenen virtuellen Computer bereitstellen.
 
 ```powershell
 # define your file URI

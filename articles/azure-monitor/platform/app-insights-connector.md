@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327105"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
 ![Application Insights-Symbol](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Durch die Unterstützung von [ressourcenübergreifenden Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) ist die Application Insights-Connector-Verwaltungslösung nicht mehr erforderlich. Sie wurde eingestellt und aus dem Azure Marketplace entfernt. Gleichzeitig wurde das OMS-Portal entfernt, das für die kommerzielle Azure-Cloud am 15. Januar 2019 offiziell als veraltet eingestuft wurde. Für die Azure US Government-Cloud wird die Lösung am 30. März 2019 außer Betrieb gesetzt.
+> Durch die Unterstützung von [ressourcenübergreifenden Abfragen](../log-query/cross-workspace-query.md) ist die Application Insights-Connector-Verwaltungslösung nicht mehr erforderlich. Sie wurde eingestellt und aus dem Azure Marketplace entfernt. Gleichzeitig wurde das OMS-Portal entfernt, das für die kommerzielle Azure-Cloud am 15. Januar 2019 offiziell als veraltet eingestuft wurde. Für die Azure US Government-Cloud wird die Lösung am 30. März 2019 außer Betrieb gesetzt.
 >
 >Vorhandene Verbindungen sind weiterhin bis zum 30 Juni 2019 einsetzbar.  Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Ein Skript zur Verwendung von PowerShell für das Entfernen vorhandener Verbindungen finden Sie weiter unten im Abschnitt [Entfernen des Connectors mit PowerShell](#removing-the-connector-with-powershell).
 >
->Eine Anleitung zum Abfragen von Application Insights-Protokolldaten für mehrere Anwendungen finden Sie unter [Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen](../log-query/unify-app-resource-data.md). Weitere Informationen zur Veraltung des OMS-Portals finden Sie unter [Wechsel des OMS-Portals zu Azure](../../azure-monitor/platform/oms-portal-transition.md).
+>Eine Anleitung zum Abfragen von Application Insights-Protokolldaten für mehrere Anwendungen finden Sie unter [Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen](../log-query/unify-app-resource-data.md). Weitere Informationen zur Veraltung des OMS-Portals finden Sie unter [Wechsel des OMS-Portals zu Azure](./oms-portal-transition.md).
 >
 > 
 
-Mit der Application Insights-Connector-Lösung können Sie Leistungsprobleme diagnostizieren und verstehen, wofür Benutzer Ihre App verwenden, wenn sie mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht wird. Ansichten der gleichen Anwendungstelemetrie, die Entwickler in Application Insights sehen, sind in Log Analytics verfügbar. Durch Integration Ihrer Application Insights-Apps in Log Analytics erzielen Sie jedoch eine höhere Transparenz für Ihre Anwendungen, da sich die Vorgangs- und Anwendungsdaten an ein- und demselben Ort befinden. Sie können besser mit Ihren App-Entwicklern zusammenarbeiten, wenn jeweils die gleichen Ansichten genutzt werden. Die gemeinsamen Ansichten verringern den Zeitaufwand, der für das Erkennen und Lösen von Anwendungs- und Plattformproblemen anfällt.
+Mit der Application Insights-Connector-Lösung können Sie Leistungsprobleme diagnostizieren und verstehen, wofür Benutzer Ihre App verwenden, wenn sie mit [Application Insights](../app/app-insights-overview.md) überwacht wird. Ansichten der gleichen Anwendungstelemetrie, die Entwickler in Application Insights sehen, sind in Log Analytics verfügbar. Durch Integration Ihrer Application Insights-Apps in Log Analytics erzielen Sie jedoch eine höhere Transparenz für Ihre Anwendungen, da sich die Vorgangs- und Anwendungsdaten an ein- und demselben Ort befinden. Sie können besser mit Ihren App-Entwicklern zusammenarbeiten, wenn jeweils die gleichen Ansichten genutzt werden. Die gemeinsamen Ansichten verringern den Zeitaufwand, der für das Erkennen und Lösen von Anwendungs- und Plattformproblemen anfällt.
 
 Bei Verwendung der Lösung haben Sie folgende Möglichkeiten:
 
@@ -44,10 +44,10 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | Nein | Die Lösung erfasst keine Informationen von Windows-Agents. |
-| [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine Informationen von Linux-Agents. |
-| [SCOM-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | Nein | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
-| [Azure-Speicherkonto](collect-azure-metrics-logs.md) | Nein | Die Lösung sammelt keine Informationen von Azure Storage. |
+| [Windows-Agents](./agent-windows.md) | Nein | Die Lösung erfasst keine Informationen von Windows-Agents. |
+| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine Informationen von Linux-Agents. |
+| [SCOM-Verwaltungsgruppe](./om-agents.md) | Nein | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
+| [Azure-Speicherkonto](./resource-logs.md#send-to-log-analytics-workspace) | Nein | Die Lösung sammelt keine Informationen von Azure Storage. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,7 +57,7 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 
 ## <a name="configuration"></a>Konfiguration
 
-1. Aktivieren Sie die Lösung Azure-Web-Apps-Analyse in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) oder mit den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Schritten.
+1. Aktivieren Sie die Lösung Azure-Web-Apps-Analyse in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) oder mit den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../insights/solutions.md) beschriebenen Schritten.
 2. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Alle Dienste**, um Application Insights zu öffnen. Suchen Sie dann nach „Application Insights“. 
 3. Wählen Sie unter **Abonnements** ein Abonnement aus, das über Application Insights-Ressourcen verfügt, und wählen Sie dann unter **Name** mindestens eine Anwendung aus.
 4. Klicken Sie auf **Speichern**.
@@ -144,7 +144,7 @@ Klicken Sie zum Pivotieren auf die Auslassungspunkte ( **…** ) am Ende einer Z
 
 ### <a name="sample-corrected-data"></a>Datenkorrektur durch Sampling
 
-Application Insights ermöglicht eine *[Korrektur durch Stichprobenentnahme](../../azure-monitor/app/sampling.md)* , um den Telemetriedatenverkehr zu reduzieren. Wenn Sie das Sampling in Ihrer Application Insights-App aktivieren, erhalten Sie eine verringerte Anzahl von Einträgen, die sowohl in Application Insights als auch in Log Analytics gespeichert werden. Die Konsistenz der Daten wird für die Seite **Application Insights-Connector** und die Perspektiven beibehalten, aber Sie sollten Datenstichproben für Ihre benutzerdefinierten Abfragen manuell korrigieren.
+Application Insights ermöglicht eine *[Korrektur durch Stichprobenentnahme](../app/sampling.md)* , um den Telemetriedatenverkehr zu reduzieren. Wenn Sie das Sampling in Ihrer Application Insights-App aktivieren, erhalten Sie eine verringerte Anzahl von Einträgen, die sowohl in Application Insights als auch in Log Analytics gespeichert werden. Die Konsistenz der Daten wird für die Seite **Application Insights-Connector** und die Perspektiven beibehalten, aber Sie sollten Datenstichproben für Ihre benutzerdefinierten Abfragen manuell korrigieren.
 
 Hier ist ein Beispiel für die Samplingkorrektur in einer Abfrage der Protokollsuche angegeben:
 
@@ -163,8 +163,8 @@ Die Lösung empfängt die folgenden Telemetrietypen der Daten von Ihren verbunde
 - Verfügbarkeit
 - Ausnahmen
 - Requests
-- Seitenansichten: Damit Ihr Arbeitsbereich Seitenansichten erhält, müssen Sie für Ihre Apps das Sammeln dieser Informationen konfigurieren. Weitere Informationen finden Sie unter [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Benutzerdefinierte Ereignisse: Damit Ihr Arbeitsbereich benutzerdefinierte Ereignisse erhält, müssen Sie für Ihre Apps das Sammeln dieser Informationen konfigurieren. Weitere Informationen finden Sie unter [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Seitenansichten: Damit Ihr Arbeitsbereich Seitenansichten erhält, müssen Sie für Ihre Apps das Sammeln dieser Informationen konfigurieren. Weitere Informationen finden Sie unter [PageViews](../app/api-custom-events-metrics.md#page-views).
+- Benutzerdefinierte Ereignisse: Damit Ihr Arbeitsbereich benutzerdefinierte Ereignisse erhält, müssen Sie für Ihre Apps das Sammeln dieser Informationen konfigurieren. Weitere Informationen finden Sie unter [TrackEvent](../app/api-custom-events-metrics.md#trackevent).
 
 Die Daten werden von Log Analytics über Application Insights empfangen, wenn sie verfügbar sind.
 
@@ -304,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Dieses Skript erfordert ein Bearertoken zur Authentifizierung für Azure Active Directory. Als eine Möglichkeit zum Abrufen dieses Tokens können Sie einen Artikel auf der [Dokumentationswebsite für die REST-API](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate) verwenden. Klicken Sie auf **Jetzt testen**, und melden Sie sich bei Ihrem Azure-Abonnement an. Sie können das Bearertoken aus der **Anforderungsvorschau** kopieren, wie es in der folgenden Abbildung dargestellt ist.
+Dieses Skript erfordert ein Bearertoken zur Authentifizierung für Azure Active Directory. Als eine Möglichkeit zum Abrufen dieses Tokens können Sie einen Artikel auf der [Dokumentationswebsite für die REST-API](/rest/api/loganalytics/datasources/createorupdate) verwenden. Klicken Sie auf **Jetzt testen**, und melden Sie sich bei Ihrem Azure-Abonnement an. Sie können das Bearertoken aus der **Anforderungsvorschau** kopieren, wie es in der folgenden Abbildung dargestellt ist.
 
 
 ![Bearertoken](media/app-insights-connector/bearer-token.png)
@@ -318,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Verwenden Sie die [Protokollsuche](../../azure-monitor/log-query/log-query-overview.md), um ausführliche Informationen zu Ihren Application Insights-Apps anzuzeigen.
+- Verwenden Sie die [Protokollsuche](../log-query/log-query-overview.md), um ausführliche Informationen zu Ihren Application Insights-Apps anzuzeigen.
+

@@ -5,13 +5,13 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054728"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373316"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 
@@ -28,7 +28,7 @@ Wenn Sie eine Funktions-App mit Java und Eclipse entwickeln möchten, muss Folge
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), Version 8.
 -  [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 -  [Eclipse](https://www.eclipse.org/downloads/packages/) mit Java- und Maven- Unterstützung
--  [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
+-  [Azure-Befehlszeilenschnittstelle](/cli/azure)
 
 > [!IMPORTANT] 
 > Damit Sie diesen Schnellstart durchführen können, muss die Umgebungsvariable JAVA_HOME auf den Installationsspeicherort des JDK festgelegt sein.
@@ -43,7 +43,7 @@ Es wird dringend empfohlen, auch [Version 2 der Azure Functions Core Tools](func
 1. Sie müssen Werte für alle Felder eingeben, einschließlich `resourceGroup`, `appName` und `appRegion` (geben Sie einen anderen appName als **fabrikam-function-20170920120101928** an), und wählen Sie abschließend **Fertig stellen** aus.
     ![Erstellung eines Maven-Projekts in Eclipse 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_. Bei dem generierten Code im Projekt handelt es sich um eine einfache [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Körper der über HTTP ausgelösten Anforderung wiederholt.
+Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_. Bei dem generierten Code im Projekt handelt es sich um eine einfache [durch HTTP ausgelöste](./functions-bindings-http-webhook.md) Funktion, die den Körper der über HTTP ausgelösten Anforderung wiederholt.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Lokales Ausführen von Funktionen in der IDE
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba6ceec3064c5c876ca899ab58881e23913b9701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85b0137f8d89def2f38ffe82199950c9158888d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81426766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070052"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Entwurfsentscheidungen und Programmiertechniken für Synapse SQL-Features in Azure Synapse Analytics
 In diesem Artikel finden Sie eine Liste von Ressourcen für SQL-Pool- und SQL On-Demand-Funktionen (Vorschauversion) von Synapse SQL. Die empfohlenen Artikel sind in zwei Abschnitte unterteilt: Wesentliche Entwurfsentscheidungen und Entwicklungs- und Programmiertechniken.
@@ -25,8 +25,8 @@ Das Ziel dieser Artikel ist es, Ihnen bei der Entwicklung des optimalen technisc
 ## <a name="key-design-decisions"></a>Wesentliche Entwurfsentscheidungen
 Die folgenden Artikel heben Konzepte und Entwurfsentscheidungen für die Synapse SQL-Entwicklung hervor:
 
-|                                                          |   SQL-Pool   | SQL On-Demand |
-| -----------------------------------------------------    | ---- | ---- |
+| Artikel | SQL-Pool | SQL On-Demand |
+| ------- | -------- | ------------- |
 | [Verbindungen](connect-overview.md)                    | Ja | Ja |
 | [Ressourcenklassen und Parallelität](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Ja    | Nein |
 | [Transaktionen](develop-transactions.md)              | Ja | Nein |
@@ -44,8 +44,8 @@ Die folgenden Artikel heben Konzepte und Entwurfsentscheidungen für die Synapse
 
 Im Folgenden finden Sie wichtige Artikel, die bestimmte Programmiertechniken, Tipps und Empfehlungen für die Entwicklung hervorheben:
 
-|                                            | SQL-Pool | SQL On-Demand |
-| ------------------------------------------ | ------------------ | ----------------------- |
+| Artikel | SQL-Pool | SQL On-Demand |
+| ------- | -------- | ------------- |
 | [Gespeicherten Prozeduren](develop-stored-procedures.md)  | Ja                | Nein                      |
 | [Bezeichnungen](develop-label.md)                           | Ja                | Nein                      |
 | [Ansichten](develop-views.md)                             | Ja                | Ja                     |
