@@ -3,16 +3,16 @@ title: Geografische Verfügbarkeit und Unterstützung von Währungen für den ko
 description: Die geografische Verfügbarkeit und Unterstützung von Währungen für Transaktionen im kommerziellen Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120006"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387437"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
@@ -43,9 +43,9 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 | Brasilien                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
 | Bulgarien                            | BG        | EUR          |
+| Cabo Verde                          | CV        | USD          |
 | Kamerun                            | CM        | USD          |
 | Canada                              | CA        | CAD          |
-| Cabo Verde                          | CV        | USD          |
 | Kaimaninseln                      | HE        | USD          |
 | Chile                               | CL        | USD          |
 | China\**                            | CN        | –          |
@@ -110,8 +110,8 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 | Namibia                             | Nicht verfügbar        | USD          |
 | Nepal                               | NP        | USD          |
 | Niederlande                         | NL        | EUR          |
-| Nicaragua                           | NI        | USD          |
 | Neuseeland                         | NZ        | NZD          |
+| Nicaragua                           | NI        | USD          |
 | Nigeria                             | NG        | USD          |
 | Norwegen                              | Nein        | NOK          |
 | Oman                                | OM        | USD          |
@@ -148,15 +148,15 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 | Tunesien                             | TN        | USD          |
 | Türkei                              | TR        | USD          |
 | Turkmenistan                        | TM        | USD          |
-| Vatikanstadt (Heiliger Stuhl)             | VA        | EUR          |
-| Amerikanische Jungferninseln | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukraine                             | UA        | USD          |
 | Vereinigte Arabische Emirate                | AE        | USD          |
 | United Kingdom                      | GB        | GBP          |
 | USA                       | US        | USD          |
+| USA Jungferninseln                 | VI        | USD          |
 | Uruguay                             | UY        | USD          |
 | Usbekistan                          | UZ        | USD          |
+| Vatikanstadt (Heiliger Stuhl)             | VA        | EUR          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
 | Jemen                               | YE        | USD          |

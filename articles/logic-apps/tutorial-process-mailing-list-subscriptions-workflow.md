@@ -3,16 +3,16 @@ title: Erstellen genehmigungsbasierter automatisierter Workflows
 description: 'Tutorial: Erstellen eines genehmigungsbasierten automatisierten Workflows, mit dem Adressenlistenabonnements mithilfe von Azure Logic Apps verarbeitet werden'
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: 7d7f573e5b18e6e0e63d3275aecefe408a9143fb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75456610"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132397"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter genehmigungsbasierter Workflows mithilfe von Azure Logic Apps
 
@@ -21,6 +21,7 @@ In diesem Tutorial wird gezeigt, wie Sie eine [Logik-App](../logic-apps/logic-ap
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen einer leeren Logik-App
 > * Hinzufügen eines Triggers, der E-Mails auf Abonnementanforderungen überwacht
 > * Hinzufügen einer Aktion, die E-Mails zur Genehmigung/Ablehnung dieser Anforderungen sendet
@@ -41,11 +42,9 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 * Ein E-Mail-Konto bei Office 365 Outlook oder Outlook.com, das Genehmigungsworkflows unterstützt. In diesem Artikel wird Office 365 Outlook verwendet. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
-
-Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
-
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
+
+1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
 
@@ -106,7 +105,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
       ![Hinzufügen der Eigenschaft „Betrefffilter“ zum Trigger](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
-      Weitere Informationen zu den Eigenschaften dieses Triggers finden Sie in der [Referenz zum Office 365 Outlook-Connector](https://docs.microsoft.com/connectors/office365/) oder in der [Referenz zum Outlook.com-Connector](https://docs.microsoft.com/connectors/outlook/).
+      Weitere Informationen zu den Eigenschaften dieses Triggers finden Sie in der [Referenz zum Office 365 Outlook-Connector](/connectors/office365/) oder in der [Referenz zum Outlook.com-Connector](/connectors/outlook/).
 
    1. Wenn die Eigenschaft im Trigger angezeigt wird, geben Sie den folgenden Text ein: `subscribe-test-members-ML`.
 
@@ -145,7 +144,7 @@ Nachdem Sie nun über einen Trigger verfügen, fügen Sie als Nächstes eine [Ak
 
    Ignorieren Sie vorerst die Liste mit den dynamischen Inhalten, die beim Klicken auf bestimmte Bearbeitungsfelder angezeigt wird. In dieser Liste können Sie verfügbare Ausgaben aus vorherigen Aktionen auswählen, die als Eingabe in Ihrem Workflow verwendet werden können.
 
-   Weitere Informationen zu den Eigenschaften dieser Aktion finden Sie in der [Referenz zum Office 365 Outlook-Connector](https://docs.microsoft.com/connectors/office365/) oder in der [Referenz zum Outlook.com-Connector](https://docs.microsoft.com/connectors/outlook/).
+   Weitere Informationen zu den Eigenschaften dieser Aktion finden Sie in der [Referenz zum Office 365 Outlook-Connector](/connectors/office365/) oder in der [Referenz zum Outlook.com-Connector](/connectors/outlook/).
  
 1. Speichern Sie Ihre Logik-App.
 
@@ -210,7 +209,7 @@ Fügen Sie nun eine Aktion hinzu, die das genehmigte Mitglied Ihrer Adressenlist
    | **E-Mail-Adresse** | Ja | <*E-Mail-Adresse des neuen Mitglieds*> | Wählen Sie in der Liste mit den dynamischen Inhalten unter **Wenn eine neue E-Mail empfangen wird** das Feld **Von** aus. Dadurch wird die E-Mail-Adresse des neuen Mitglieds übergeben. |
    ||||
 
-   Weitere Informationen zu den Eigenschaften dieser Aktion finden Sie in der [Referenz zum MailChimp-Connector](https://docs.microsoft.com/connectors/mailchimp/).
+   Weitere Informationen zu den Eigenschaften dieser Aktion finden Sie in der [Referenz zum MailChimp-Connector](/connectors/mailchimp/).
 
 1. Speichern Sie Ihre Logik-App.
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4e5d4af74ab54479a49963369cb99dbc19fca848
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 413616034dfe7d1f13612ba12ba86014af62c704
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505276"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325626"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokolle in Azure Monitor
 
@@ -42,14 +42,14 @@ In der folgenden Tabelle sind die unterschiedlichen Optionen zur Nutzung von Pro
 |  | BESCHREIBUNG |
 |:---|:---|
 | **Analysieren** | Verwenden von [Log Analytics](../log-query/get-started-portal.md) im Azure-Portal zum Schreiben von [Protokollabfragen](../log-query/log-query-overview.md) und interaktives Analysieren von Protokolldaten mithilfe der leistungsstarken Daten-Explorer-Analyse-Engine.<br>Verwenden der [Application Insights Analytics-Konsole](../log-query/log-query-overview.md) im Azure-Portal zum Schreiben von Protokollabfragen und interaktives Analysieren von Protokolldaten aus Application Insights. |
-| **Visualisieren** | Anheften der als Tabellen oder Diagramme gerenderten Abfrageergebnisse an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).<br>Erstellen einer [Arbeitsmappe](../platform/workbooks-overview.md), um mehrere Sätze von Daten in einem interaktiven Bericht zu kombinieren. <br>Exportieren der Ergebnisse einer Abfrage nach [Power BI](powerbi.md), um verschiedene Visualisierungen zu verwenden und sie mit Benutzern außerhalb von Azure zu teilen.<br>Exportieren der Ergebnisse einer Abfrage nach [Grafana](grafana-plugin.md), um dessen Dashboards zu nutzen und sie mit anderen Quellen zu kombinieren.|
+| **Visualisieren** | Anheften der als Tabellen oder Diagramme gerenderten Abfrageergebnisse an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).<br>Erstellen einer [Arbeitsmappe](./workbooks-overview.md), um mehrere Sätze von Daten in einem interaktiven Bericht zu kombinieren. <br>Exportieren der Ergebnisse einer Abfrage nach [Power BI](powerbi.md), um verschiedene Visualisierungen zu verwenden und sie mit Benutzern außerhalb von Azure zu teilen.<br>Exportieren der Ergebnisse einer Abfrage nach [Grafana](grafana-plugin.md), um dessen Dashboards zu nutzen und sie mit anderen Quellen zu kombinieren.|
 | **Warnung** | Konfigurieren einer [Protokollwarnungsregel](alerts-log.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, wenn die Ergebnisse der Abfrage mit einem bestimmten Ergebnis übereinstimmen.<br>Konfigurieren einer [Metrikwarnungsregel](alerts-metric-logs.md) für bestimmte Protokolldaten, die als Metriken extrahiert werden. |
 | **Abrufen** | Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [PowerShell-Cmdlets](/powershell/module/az.operationalinsights).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine benutzerdefinierte Anwendung mit der [REST-API](https://dev.loganalytics.io/). |
-| **Export** | Erstellen eines Workflows zum Abrufen von Protokolldaten und kopieren der Daten an einen externen Speicherort mithilfe von [Logic Apps](~/articles/logic-apps/index.yml). |
+| **Export** | Erstellen eines Workflows zum Abrufen von Protokolldaten und kopieren der Daten an einen externen Speicherort mithilfe von [Logic Apps](../../logic-apps/index.yml). |
 
 
 ## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Wie sind Daten in Azure Monitor-Protokollen strukturiert?
-Die von Azure Monitor-Protokolle erfassten Daten werden in einem [Log Analytics-Arbeitsbereich](../platform/design-logs-deployment.md) gespeichert. Jeder Arbeitsbereich enthält mehrere Tabellen, in denen jeweils Daten aus einer bestimmten Quelle gespeichert werden. Zwar weisen alle Tabellen [einige gemeinsame Eigenschaften](log-standard-properties.md) auf, doch hat jede auch eindeutige Eigenschaften, die von der Art der darin gespeicherten Daten abhängen. Ein neuer Arbeitsbereich weist einen Standardsatz von Tabellen auf, und es werden weitere Tabellen von verschiedenen Überwachungslösungen und anderen Diensten hinzugefügt, die in den Arbeitsbereich schreiben.
+Die von Azure Monitor-Protokolle erfassten Daten werden in einem [Log Analytics-Arbeitsbereich](./design-logs-deployment.md) gespeichert. Jeder Arbeitsbereich enthält mehrere Tabellen, in denen jeweils Daten aus einer bestimmten Quelle gespeichert werden. Zwar weisen alle Tabellen [einige gemeinsame Eigenschaften](log-standard-properties.md) auf, doch hat jede auch eindeutige Eigenschaften, die von der Art der darin gespeicherten Daten abhängen. Ein neuer Arbeitsbereich weist einen Standardsatz von Tabellen auf, und es werden weitere Tabellen von verschiedenen Überwachungslösungen und anderen Diensten hinzugefügt, die in den Arbeitsbereich schreiben.
 
 Protokolldaten aus Application Insights verwenden dieselbe Log Analytics-Engine wie Arbeitsbereiche, werden aber für jede überwachte Anwendung getrennt gespeichert. Jede Anwendung verfügt über einen Standardsatz von Tabellen zum Speichern von Daten wie Anwendungsanforderungen, Ausnahmen und Seitenansichten.
 
@@ -133,3 +133,4 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 - Informieren Sie sich über die [Azure Monitor-Datenplattform](data-platform.md).
 - Informieren Sie sich über [Metriken in Azure Monitor](data-platform-metrics.md).
 - Erfahren Sie mehr über die für verschiedene Ressourcen in Azure [verfügbaren Überwachungsdaten](data-sources.md).
+

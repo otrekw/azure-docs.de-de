@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d776362b0447b148c0b2bdedba1287fa56058b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000192"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST  
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "86170784"
 > * [Portal](media-services-portal-upload-files.md)
 > 
 
-In Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch. Die Entität [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten.  Nachdem die Dateien in das Medienobjekt hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert. 
+In Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch. Die Entität [Asset](/rest/api/media/operations/asset) kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten.  Nachdem die Dateien in das Medienobjekt hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert. 
 
 In diesem Tutorial erfahren Sie, wie Sie eine Datei hochladen und andere damit verbundene Vorgänge durchführen:
 
@@ -45,7 +45,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine Datei hochladen und andere damit v
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 - [Erstellen Sie ein Azure Media Services-Konto mithilfe des Azure-Portals](media-services-portal-create-account.md).
 - Lesen Sie den Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung – Übersicht](media-services-use-aad-auth-to-access-ams-api.md).
-- Weitere Informationen finden Sie im Artikel [Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad).
+- Weitere Informationen finden Sie im Artikel [Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST](./media-services-rest-connect-with-aad.md).
 - Konfigurieren Sie **Postman** gemäß der Beschreibung in [Konfigurieren von Postman für Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).
 
 ## <a name="considerations"></a>Überlegungen
@@ -106,7 +106,7 @@ Schritte zum Einrichten von Postman für dieses Tutorial finden Sie unter [Konfi
 >[!NOTE]
 >Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-dotnet-manage-entities.md#limit-access-policies).
 
-Bevor Sie Dateien in den Blobspeicher hochladen, legen Sie die Zugriffsrichtlinienberechtigungen für das Schreiben in ein Medienobjekt fest. Senden Sie dazu eine HTTP POST-Anforderung an die AccessPolicies-Entitätenmenge. Definieren Sie bei der Erstellung einen DurationInMinutes-Wert, da Sie andernfalls eine Antwort mit einer Meldung „500 Interner Serverfehler“ empfangen. Weitere Informationen zu "AccessPolicies" finden Sie unter [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Bevor Sie Dateien in den Blobspeicher hochladen, legen Sie die Zugriffsrichtlinienberechtigungen für das Schreiben in ein Medienobjekt fest. Senden Sie dazu eine HTTP POST-Anforderung an die AccessPolicies-Entitätenmenge. Definieren Sie bei der Erstellung einen DurationInMinutes-Wert, da Sie andernfalls eine Antwort mit einer Meldung „500 Interner Serverfehler“ empfangen. Weitere Informationen zu "AccessPolicies" finden Sie unter [AccessPolicy](/rest/api/media/operations/accesspolicy).
 
 ### <a name="create-an-access-policy"></a>Erstellen einer Zugriffsrichtlinie
 
@@ -121,7 +121,7 @@ Bevor Sie Dateien in den Blobspeicher hochladen, legen Sie die Zugriffsrichtlini
 
 ### <a name="overview"></a>Übersicht
 
-Ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/operations/asset) ist ein Container für mehrere Typen oder Gruppen von Objekten in Media Services. Dazu gehören Videos, Audiodateien, Bilder, Miniaturansichtsammlungen, Texttitel und Untertiteldateien. In der REST-API muss beim Erstellen eines Medienobjekts eine POST-Anforderung an Media Services gesendet werden. Dabei müssen alle Eigenschaftsinformationen zum Medienobjekt im Anforderungstext enthalten sein.
+Ein [Medienobjekt](/rest/api/media/operations/asset) ist ein Container für mehrere Typen oder Gruppen von Objekten in Media Services. Dazu gehören Videos, Audiodateien, Bilder, Miniaturansichtsammlungen, Texttitel und Untertiteldateien. In der REST-API muss beim Erstellen eines Medienobjekts eine POST-Anforderung an Media Services gesendet werden. Dabei müssen alle Eigenschaftsinformationen zum Medienobjekt im Anforderungstext enthalten sein.
 
 Eine der Eigenschaften, die Sie beim Erstellen eines Medienobjekts hinzufügen können, ist **Options**. Sie können eine der folgenden Verschlüsselungsoptionen angeben: **Keine** (Standardwert, es wird keine Verschlüsselung verwendet), **StorageEncrypted** (für Inhalte, die mit clientseitiger Speicherverschlüsselung vorverschlüsselt wurden), **CommonEncryptionProtected** oder **EnvelopeEncryptionProtected**. Wenn Sie über ein verschlüsseltes Medienobjekt verfügen, müssen Sie eine Übermittlungsrichtlinie konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -144,9 +144,9 @@ In diesem Beispiel erstellen wir ein unverschlüsseltes Medienobjekt.
 
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie die eigentliche Datei mithilfe der Azure Storage-REST-APIs in einen Azure Blob Storage-Container hochladen. Sie müssen die Dateien als Blockblobs hochladen. Seitenblobs werden von Azure Media Services nicht unterstützt.  
 
-Weitere Informationen zum Arbeiten mit Azure Storage-Blobs finden Sie unter [REST-API für den Blobdienst](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Weitere Informationen zum Arbeiten mit Azure Storage-Blobs finden Sie unter [REST-API für den Blobdienst](/rest/api/storageservices/blob-service-rest-api).
 
-Um die eigentliche Upload-URL zu empfangen, erstellen Sie einen SAS-Locator (siehe unten). Ein Locator definiert die Startzeit und den Typ des Verbindungsendpunkts für Clients, die auf Dateien in einem Medienobjekt zugreifen möchten. Sie können mehrere Locator-Entitäten für ein bestimmtes AccessPolicy-/ Asset-Paar erstellen, um unterschiedliche Clientanforderungen und -voraussetzungen zu verarbeiten. Jeder dieser Locators verwendet den „StartTime“-Wert plus den „DurationInMinutes“-Wert des „AccessPolicy“-Objekts, um zu bestimmen, für welchen Zeitraum eine URL verwendet werden kann. Weitere Informationen finden Sie unter [Locator](https://docs.microsoft.com/rest/api/media/operations/locator).
+Um die eigentliche Upload-URL zu empfangen, erstellen Sie einen SAS-Locator (siehe unten). Ein Locator definiert die Startzeit und den Typ des Verbindungsendpunkts für Clients, die auf Dateien in einem Medienobjekt zugreifen möchten. Sie können mehrere Locator-Entitäten für ein bestimmtes AccessPolicy-/ Asset-Paar erstellen, um unterschiedliche Clientanforderungen und -voraussetzungen zu verarbeiten. Jeder dieser Locators verwendet den „StartTime“-Wert plus den „DurationInMinutes“-Wert des „AccessPolicy“-Objekts, um zu bestimmen, für welchen Zeitraum eine URL verwendet werden kann. Weitere Informationen finden Sie unter [Locator](/rest/api/media/operations/locator).
 
 Eine SAS-URL weist das folgende Format auf:
 
@@ -175,9 +175,9 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 Nachdem Sie nun über die Upload-URL verfügen, müssen Sie mithilfe der Azure Blob-APIs direkt Code schreiben, um Ihre Datei in den SAS-Container hochzuladen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Verwenden der Azure Storage-REST-API](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [PUT Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Hochladen von Blobs in Blobspeicher](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Verwenden der Azure Storage-REST-API](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [PUT Blob](/rest/api/storageservices/put-blob)
+- [Hochladen von Blobs in Blobspeicher](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Hochladen einer Datei mit Postman
 
@@ -209,7 +209,7 @@ Die Datei sollte mit festgelegten Metadaten hochgeladen werden.
 
 ## <a name="validate"></a>Überprüfen
 
-Um zu überprüfen, ob die Datei erfolgreich hochgeladen wurde, sollten Sie [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) abfragen und **ContentFileSize** (oder andere Details) mit dem vergleichen, was Sie im neuen Medienobjekt erwarten. 
+Um zu überprüfen, ob die Datei erfolgreich hochgeladen wurde, sollten Sie [AssetFile](/rest/api/media/operations/assetfile) abfragen und **ContentFileSize** (oder andere Details) mit dem vergleichen, was Sie im neuen Medienobjekt erwarten. 
 
 Beispielsweise stellt die folgende **GET**-Operation Dateidaten für Ihre Medienobjektdatei (im Falle der Datei „BigBuckBunny.mp4“) bereit. Die Abfrage verwendet die zuvor von Ihnen festgelegten [Umgebungsvariablen](postman-environment.md).
 
@@ -229,4 +229,3 @@ Die Antwort enthält Größe, Name und andere Informationen.
 Sie können nun Ihre hochgeladenen Medienobjekte codieren. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-portal-encode.md).
 
 Sie können auch mithilfe von Azure Functions einen Codierungsauftrag auslösen, wenn eine Datei im konfigurierten Container eingeht. Weitere Informationen finden Sie in [diesem Beispiel](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
-

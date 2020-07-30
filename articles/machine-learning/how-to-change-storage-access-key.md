@@ -5,17 +5,18 @@ description: Erfahren Sie, wie Sie die Zugriffsschlüssel für das von Ihrem Arb
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483311"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387063"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +26,7 @@ Erfahren Sie, wie Sie die Zugriffsschlüssel für Azure Storage-Konten ändern, 
 Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für ein Azure Storage-Konto ändern. Wenn Sie den Zugriffsschlüssel neu generieren, muss Azure Machine Learning aktualisiert werden, um den neuen Schlüssel zu verwenden. Azure Machine Learning kann das Speicherkonto sowohl für die Modellspeicherung als auch als Datenspeicher verwenden.
 
 > [!IMPORTANT]
-> Anmeldeinformationen, die mit Datenspeichern registriert werden, werden im Azure Key Vault gespeichert, der dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) für Ihren Key Vault aktiviert haben, sollten Sie diesen Artikel zum Aktualisieren von Anmeldeinformationen befolgen. Das Aufheben der Registrierung des Datenspeichers und die erneute Registrierung unter demselben Namen schlägt fehl.
+> Anmeldeinformationen, die mit Datenspeichern registriert werden, werden im Azure Key Vault gespeichert, der dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) für Ihren Key Vault aktiviert haben, sollten Sie diesen Artikel zum Aktualisieren von Anmeldeinformationen befolgen. Das Aufheben der Registrierung des Datenspeichers und die erneute Registrierung unter demselben Namen schlägt fehl.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

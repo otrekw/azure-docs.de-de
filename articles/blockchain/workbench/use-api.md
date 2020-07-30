@@ -4,12 +4,12 @@ description: Szenarien für die Verwendung der REST-API der Vorschauversion von 
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003065"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Verwenden der REST-API der Vorschauversion von Azure Blockchain Workbench
 
@@ -32,7 +32,7 @@ Der Zugriff auf Blockchain Workbench-APIs erfolgt über einen Endpunkt für Ihre
 
 Anforderungen an die Blockchain Workbench-REST-API werden durch Azure Active Directory (Azure AD) geschützt.
 
-Um eine authentifizierte Anforderung an die REST-APIs zu senden, erfordert der Clientcode eine Authentifizierung mit gültigen Anmeldeinformationen, bevor Sie die API aufrufen können. Die Authentifizierung zwischen den verschiedenen Akteuren wird von Azure AD koordiniert. Ihr Client erhält ein [Zugriffstoken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) als Nachweis der Authentifizierung. Das Token wird dann im HTTP-Autorisierungsheader der REST-API-Anforderungen gesendet. Weitere Informationen zur Azure AD-Authentifizierung finden Sie unter [Azure Active Directory für Entwickler](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+Um eine authentifizierte Anforderung an die REST-APIs zu senden, erfordert der Clientcode eine Authentifizierung mit gültigen Anmeldeinformationen, bevor Sie die API aufrufen können. Die Authentifizierung zwischen den verschiedenen Akteuren wird von Azure AD koordiniert. Ihr Client erhält ein [Zugriffstoken](../../active-directory/develop/developer-glossary.md#access-token) als Nachweis der Authentifizierung. Das Token wird dann im HTTP-Autorisierungsheader der REST-API-Anforderungen gesendet. Weitere Informationen zur Azure AD-Authentifizierung finden Sie unter [Azure Active Directory für Entwickler](../../active-directory/develop/index.yml).
 
 Beispiele zum Authentifizieren finden Sie unter [REST-API-Beispiele](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples).
 
@@ -44,7 +44,7 @@ Wenn Sie Workbench-APIs testen oder mit ihnen experimentieren möchten, können 
 
 Sie erstellen Blockchain Workbench-Anwendungen mithilfe von zwei API-Aufrufen. Diese Methode kann nur von Benutzern ausgeführt werden, die Workbench-Administratoren sind.
 
-Verwenden Sie die [Anwendungs-POST-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost), um die JSON-Datei der Anwendung hochzuladen und eine Anwendungs-ID zu erhalten.
+Verwenden Sie die [Anwendungs-POST-API](/rest/api/azure-blockchain-workbench/applications/applicationspost), um die JSON-Datei der Anwendung hochzuladen und eine Anwendungs-ID zu erhalten.
 
 ### <a name="applications-post-request"></a>Anwendungs-POST-Anforderung
 
@@ -70,7 +70,7 @@ Content-Type: "application/json"
 
 ### <a name="contract-code-post-request"></a>Vertragscode-POST-Anforderung
 
-Laden Sie die Solidity-Codedatei der Anwendung über die [Anwendungen-Vertragscode-POST-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) hoch, indem Sie die Anwendungs-ID übergeben. Bei der Nutzlast kann es sich um eine einzelne Solidity-Datei oder eine ZIP-Datei mit Solidity-Dateien handeln.
+Laden Sie die Solidity-Codedatei der Anwendung über die [Anwendungen-Vertragscode-POST-API](/rest/api/azure-blockchain-workbench/applications/contractcodepost) hoch, indem Sie die Anwendungs-ID übergeben. Bei der Nutzlast kann es sich um eine einzelne Solidity-Datei oder eine ZIP-Datei mit Solidity-Dateien handeln.
 
 Ersetzen Sie die folgenden Werte:
 
@@ -98,7 +98,7 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>Zuweisen von Rollen zu Benutzern
 
-Erstellen Sie mithilfe der [Anwendungs-Rollenzuweisungs-POST-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) eine Zuordnung zwischen Benutzer und Rolle in der angegebenen Blockchainanwendung, indem Sie die Anwendungs-ID, die Benutzer-ID und die Anwendungsrollen-ID übergeben. Diese Methode kann nur von Benutzern ausgeführt werden, die Workbench-Administratoren sind.
+Erstellen Sie mithilfe der [Anwendungs-Rollenzuweisungs-POST-API](/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) eine Zuordnung zwischen Benutzer und Rolle in der angegebenen Blockchainanwendung, indem Sie die Anwendungs-ID, die Benutzer-ID und die Anwendungsrollen-ID übergeben. Diese Methode kann nur von Benutzern ausgeführt werden, die Workbench-Administratoren sind.
 
 ### <a name="role-assignments-post-request"></a>Rollenzuweisungs-POST-Anforderung
 
@@ -132,7 +132,7 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>Auflisten von Anwendungen
 
-Verwenden Sie die [Anwendungs-GET-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget), um alle Blockchain Workbench-Anwendungen für den Benutzer abzurufen. In diesem Beispiel hat der angemeldete Benutzer Zugriff auf zwei Anwendungen:
+Verwenden Sie die [Anwendungs-GET-API](/rest/api/azure-blockchain-workbench/applications/applicationsget), um alle Blockchain Workbench-Anwendungen für den Benutzer abzurufen. In diesem Beispiel hat der angemeldete Benutzer Zugriff auf zwei Anwendungen:
 
 - [AssetTransfer](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md) (Vermögensübertragung)
 - [RefrigeratedTransportation](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md) (Transport mit Kühlkette)
@@ -180,7 +180,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Auflisten von Workflows für eine Anwendung
 
-Listen Sie mithilfe der [Anwendungsworkflow-GET-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) alle Workflows der angegebenen Blockchainanwendung auf, auf die ein Benutzer in Blockchain Workbench Zugriff hat. Jede Blockchainanwendung besitzt mindestens einen Workflow, und jeder Workflow verfügt über null oder mehr Smart Contract-Instanzen. Bei Blockchainclientanwendungen mit nur einem Workflow wird empfohlen, den Schritt auf der Benutzeroberfläche zu überspringen, der den Benutzern die Auswahl des entsprechenden Workflows ermöglicht.
+Listen Sie mithilfe der [Anwendungsworkflow-GET-API](/rest/api/azure-blockchain-workbench/applications/workflowsget) alle Workflows der angegebenen Blockchainanwendung auf, auf die ein Benutzer in Blockchain Workbench Zugriff hat. Jede Blockchainanwendung besitzt mindestens einen Workflow, und jeder Workflow verfügt über null oder mehr Smart Contract-Instanzen. Bei Blockchainclientanwendungen mit nur einem Workflow wird empfohlen, den Schritt auf der Benutzeroberfläche zu überspringen, der den Benutzern die Auswahl des entsprechenden Workflows ermöglicht.
 
 ### <a name="application-workflows-request"></a>Anwendungsworkflow-Anforderung
 
@@ -214,7 +214,7 @@ Content-type: application/json
 
 ## <a name="create-a-contract-instance"></a>Erstellen einer Vertragsinstanz
 
-Verwenden Sie [Vertrags-POST-API V2](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost), um eine neue Smart Contract-Instanz für einen Workflow zu erstellen. Benutzer können nur dann eine neue Smart Contract-Instanz erstellen, wenn sie einer Anwendungsrolle zugeordnet sind, die diese Instanz für den Workflow initiieren kann.
+Verwenden Sie [Vertrags-POST-API V2](/rest/api/azure-blockchain-workbench/contractsv2/contractpost), um eine neue Smart Contract-Instanz für einen Workflow zu erstellen. Benutzer können nur dann eine neue Smart Contract-Instanz erstellen, wenn sie einer Anwendungsrolle zugeordnet sind, die diese Instanz für den Workflow initiieren kann.
 
 > [!NOTE]
 > In diesem Beispiel wird Version 2 der API verwendet. Vertrags-APIs der Version 2 bieten eine feinere Granularität für die zugehörigen ProvisioningStatus-Felder.
@@ -477,4 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Referenzinformationen zu Blockchain Workbench-APIs finden Sie in der [Referenz zur REST-API von Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).
+Referenzinformationen zu Blockchain Workbench-APIs finden Sie in der [Referenz zur REST-API von Azure Blockchain Workbench](/rest/api/azure-blockchain-workbench).

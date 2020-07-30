@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4e36a21e9dbab6f9bf814cdeb86f175ded38ea8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516191"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327292"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktur von Azure Monitor-Protokollen
 Die Möglichkeit, mit einer [Protokollabfrage](log-query-overview.md) schnell Einblicke in Ihre Daten zu gewinnen, ist ein leistungsstarkes Feature von Azure Monitor. Sie sollten mit den grundlegenden Konzepten vertraut sein, um effiziente und nützliche Abfragen zu erstellen. Dazu gehört beispielsweise, dass Sie wissen, wo sich die gewünschten Daten befinden und wie diese strukturiert sind. Dieser Artikel enthält die grundlegenden Konzepte, die Sie für den Einstieg benötigen.
@@ -89,4 +89,5 @@ Während jede Tabelle in Azure Monitor-Protokollen über ein eigenes Schema verf
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über die Verwendung von [Log Analytics zum Erstellen und Bearbeiten von Protokollsuchen](./log-query-overview.md).
-- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](../log-query/get-started-queries.md) mit der neuen Abfragesprache an.
+- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](./get-started-queries.md) mit der neuen Abfragesprache an.
+

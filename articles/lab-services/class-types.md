@@ -3,12 +3,12 @@ title: Beispielklassentypen für Azure Lab Services | Microsoft-Dokumentation
 description: In diesem Artikel sind einige Typen von Klassen aufgeführt, für die Sie mithilfe von Azure Lab Services Labs einrichten können.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8564f5ece9d6df7db852c5ac16f00f1455d013ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001622"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Übersicht über Klassentypen: Azure Lab Services
 
@@ -45,11 +45,6 @@ Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Ein
 Sie können einen Vorlagencomputer in Azure Lab Services mit den Tools einrichten, die erforderlich sind, um Kursteilnehmern die Verwendung von [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) zu vermitteln. Jupyter Notebooks ist ein Open-Source-Projekt, mit dem Sie problemlos Rich-Text und ausführbaren [Python](https://www.python.org/)-Quellcode in einem einzelnen Zeichenbereich kombinieren können, der als Notebook bezeichnet wird. Das Ausführen eines Notebooks führt zu einem linearen Datensatz von Eingaben und Ausgaben.  Diese Ausgaben können Text, Tabellen mit Informationen, Punktdiagramme und mehr enthalten.
 
 Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln von Data Science mit Python und Jupyter Notebooks](class-type-jupyter-notebook.md).
-
-## <a name="mobile-app-development-with-android-studio"></a>Entwicklung mobiler Apps mit Android Studio
-Sie können ein Lab in Azure Lab Services einrichten, um eine Einführungsklasse für die Entwicklung mobiler Anwendungen zu unterrichten. Diese Klasse befasst sich mit mobilen Android-Anwendungen, die im [Google Play Store](https://play.google.com/store/apps) veröffentlicht werden können.  Die Kursteilnehmer lernen, wie Anwendungen mit [Android Studio](https://developer.android.com/studio) erstellt werden.  Für das lokale Testen der Anwendung wird der [Visual Studio-Emulator für Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) verwendet.
-
-Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln der Entwicklung mobiler Anwendungen mit Android Studio](class-type-mobile-dev-android-studio.md).
 
 ## <a name="big-data-analytics"></a>Big Data-Analyse
 Sie können für einen Big Data-Analysekurs ein GPU-Lab einrichten. Bei dieser Art von Kurs lernen die Kursteilnehmer, mit großen Datenmengen umzugehen und maschinelle und statistische Lernalgorithmen anzuwenden, um Erkenntnisse aus Daten zu gewinnen. Ein wichtiges Ziel für Kursteilnehmer ist es, den Umgang mit Datenanalysetools zu erlernen, z. B. mit dem Open-Source-Softwarepaket von Apache Hadoop, das Tools für die Speicherung, Verwaltung und Verarbeitung von Big Data bereitstellt. 

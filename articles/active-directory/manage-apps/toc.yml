@@ -21,8 +21,6 @@
       href: delete-application-portal.md
 - name: Tutorials
   items:
-    - name: Hinzufügen einer nicht im Katalog aufgeführten App
-      href: add-non-gallery-app.md
     - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"
       href: /azure/active-directory/saas-apps/
     - name: Hinzufügen einer lokalen App mit dem Anwendungsproxy
@@ -42,6 +40,8 @@
       items:
         - name: Erste Schritte bei der App-Integration
           href: plan-an-application-integration.md
+        - name: Planen für nicht im Katalog aufgeführte Apps
+          href: non-gallery-apps.md
         - name: Planen der Bereitstellung eines Zugriffsbereichs
           href: access-panel-deployment-plan.md
         - name: Leitfaden für Entwickler
@@ -106,7 +106,7 @@
             - name: Konfigurieren des SAML-basierten einmaligen Anmeldens
               items:
                 - name: Konfigurieren des SAML-basierten einmaligen Anmeldens
-                  href: configure-single-sign-on-non-gallery-applications.md
+                  href: configure-saml-single-sign-on.md
                 - name: Anpassen von Benutzerattributen und Ansprüchen
                   items:
                     - name: Konfigurieren von Gruppenansprüchen

@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998475"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
@@ -43,11 +43,11 @@ Das folgende Diagramm zeigt die logische Verbindung von einem lokalen Netzwerk m
 
 1. Bestimmen Sie die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung.
 1. Bestimmen Sie die Durchsatzlimits für Ihr Azure VPN Gateway. Wenn Sie Hilfe benötigen, lesen Sie den Abschnitt „Gateway-SKUs“ von [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku).
-1. Bestimmen Sie die [Durchsatzanleitung des virtuellen Azure-Computers](../virtual-machines/virtual-machines-windows-sizes.md) für die Größe Ihres virtuellen Computers.
+1. Bestimmen Sie die [Durchsatzanleitung des virtuellen Azure-Computers](../virtual-machines/sizes.md) für die Größe Ihres virtuellen Computers.
 1. Bestimmen Sie die Bandbreite Ihres Internetdienstanbieters.
 1. Berechnen Sie Ihren erwarteten Durchsatz, indem Sie die geringste Bandbreite entweder der VM, des VPN-Gateways oder des ISP verwenden. Diese wird in Megabit pro Sekunde (/) geteilt durch acht (8) gemessen.
 
-Wenn der berechnete Durchsatz nicht die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung erfüllt, müssen Sie die Bandbreite der Ressource erhöhen, die Sie als Engpass identifiziert haben. Informationen zum Ändern der Größe für ein Azure VPN Gateway finden Sie unter [Ändern einer Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Informationen zum Ändern der Größe eines virtuellen Computers finden Sie unter [Ändern der Größe eines virtuellen Computers](../virtual-machines/virtual-machines-windows-resize-vm.md). Wenn Sie nicht die erwartete Internetbandbreite erhalten, sollten Sie sich auch an Ihren Internetdienstanbieter wenden.
+Wenn der berechnete Durchsatz nicht die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung erfüllt, müssen Sie die Bandbreite der Ressource erhöhen, die Sie als Engpass identifiziert haben. Informationen zum Ändern der Größe für ein Azure VPN Gateway finden Sie unter [Ändern einer Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Informationen zum Ändern der Größe eines virtuellen Computers finden Sie unter [Ändern der Größe eines virtuellen Computers](../virtual-machines/windows/resize-vm.md). Wenn Sie nicht die erwartete Internetbandbreite erhalten, sollten Sie sich auch an Ihren Internetdienstanbieter wenden.
 
 > [!NOTE]
 > Der Durchsatz des VPN-Gateways ist eine Summe aller Site-to-Site-\VNET-to-VNET- oder Point-to-Site-Verbindungen.

@@ -24,6 +24,8 @@
           href: get-started-pipelines.md
         - name: 7. Visualisieren mit Power BI
           href: get-started-visualize-power-bi.md
+        - name: 8. Überwachen
+          href: get-started-monitor.md
     - name: Cheat Sheet
       href: overview-cheat-sheet.md
     - name: Häufig gestellte Fragen
@@ -847,6 +849,10 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Problembehandlung des Connectors
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Problembehandlung für das Tool zum Kopieren von Daten
+              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Problembehandlung für selbstgehostete Integration Runtimes
+              href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Verbinden von Tools mit Synapse Analytics
       items:
         - name: Synapse-SQL

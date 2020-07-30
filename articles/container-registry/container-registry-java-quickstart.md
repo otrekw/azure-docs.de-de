@@ -2,15 +2,16 @@
 title: 'Schnellstart: Erstellen und Pushen von Java-Containerimages in Azure Container Registry mithilfe von Maven und Jib'
 description: Erstellen Sie eine Java-App in einem Container, und übertragen Sie sie mithilfe des Maven-Jib-Plug-ins per Push an Azure Container Registry.
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 87a4741ea8a64445c10c73bb1204aef1a2fcfaaf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9310fb92b4b0ad1163d343f13daf42c15923ec20
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327411"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Schnellstart: Erstellen und Pushen von Java-Containerimages in Azure Container Registry
 

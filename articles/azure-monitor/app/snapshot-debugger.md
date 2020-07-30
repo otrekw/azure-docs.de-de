@@ -4,15 +4,15 @@ description: Debugmomentaufnahmen werden automatisch beim Auslösen von Ausnahme
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58fbb0cee5e4f06c20d31b4b5011582957f6f6c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692018"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325643"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
-Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht Ausnahmetelemetriedaten aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md).
+Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger in [Azure Application Insights](./app-insights-overview.md) überwacht Ausnahmetelemetriedaten aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](./asp-net-exceptions.md).
 
 Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2019 Enterprise. In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
 
@@ -62,7 +62,7 @@ Nachdem in Ihrer Anwendung eine Ausnahme aufgetreten ist und eine Momentaufnahme
 
 ![Seite „Fehler“](./media/snapshot-debugger/failures-page.png)
 
-Wählen Sie einen Vorgang oder eine Ausnahme im rechten Bereich aus, um den Bereich **End-to-End-Transaktionsdetails** zu öffnen, und wählen Sie dann das Ausnahmeereignis aus. Wenn eine Momentaufnahme für die entsprechende Ausnahme verfügbar ist, wird im rechten Bereich die Schaltfläche **Debugmomentaufnahme öffnen** mit Details für die [Ausnahme](../../azure-monitor/app/asp-net-exceptions.md) angezeigt.
+Wählen Sie einen Vorgang oder eine Ausnahme im rechten Bereich aus, um den Bereich **End-to-End-Transaktionsdetails** zu öffnen, und wählen Sie dann das Ausnahmeereignis aus. Wenn eine Momentaufnahme für die entsprechende Ausnahme verfügbar ist, wird im rechten Bereich die Schaltfläche **Debugmomentaufnahme öffnen** mit Details für die [Ausnahme](./asp-net-exceptions.md) angezeigt.
 
 ![Schaltfläche zum Erstellen einer Debug-Momentaufnahme für eine Ausnahme](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -85,11 +85,11 @@ Die heruntergeladene Momentaufnahme enthält alle Symboldateien, die auf Ihrem W
 
 ## <a name="how-snapshots-work"></a>Funktionsweise von Momentaufnahmen
 
-Der Snapshot Collector wird als [Application Insights-Telemetrieprozessor](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet) implementiert. Wenn die Anwendung ausgeführt wird, wird der Snapshot Collector-Telemetrieprozessor der Telemetriepipeline Ihrer Anwendung hinzugefügt.
-Bei jedem Aufruf von [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions) durch Ihre Anwendung berechnet der Snapshot Collector auf der Grundlage der Art der ausgelösten Ausnahme und der auslösenden Methode eine Problem-ID.
+Der Snapshot Collector wird als [Application Insights-Telemetrieprozessor](./configuration-with-applicationinsights-config.md#telemetry-processors-aspnet) implementiert. Wenn die Anwendung ausgeführt wird, wird der Snapshot Collector-Telemetrieprozessor der Telemetriepipeline Ihrer Anwendung hinzugefügt.
+Bei jedem Aufruf von [TrackException](./asp-net-exceptions.md#exceptions) durch Ihre Anwendung berechnet der Snapshot Collector auf der Grundlage der Art der ausgelösten Ausnahme und der auslösenden Methode eine Problem-ID.
 Bei jedem Aufruf von „TrackException“ durch Ihre Anwendung erhöht sich der Zähler für die entsprechende Problem-ID. Wenn der Zähler den Wert `ThresholdForSnapshotting` erreicht, wird die Problem-ID einem Sammlungsplan hinzugefügt.
 
-Der Snapshot Collector abonniert auch das Ereignis [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception), um ausgelöste Ausnahmen zu überwachen. Wenn dieses Ereignis ausgelöst wird, wird die Problem-ID der Ausnahme berechnet und mit den Problem-IDs im Sammlungsplan verglichen.
+Der Snapshot Collector abonniert auch das Ereignis [AppDomain.CurrentDomain.FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception), um ausgelöste Ausnahmen zu überwachen. Wenn dieses Ereignis ausgelöst wird, wird die Problem-ID der Ausnahme berechnet und mit den Problem-IDs im Sammlungsplan verglichen.
 Ist eine Entsprechung vorhanden, wird eine Momentaufnahme des ausgeführten Prozesses erstellt. Der Momentaufnahme wird ein eindeutiger Bezeichner zugewiesen, und die Ausnahme wird mit diesem Bezeichner gekennzeichnet. Nach Ausführung des Handlers „FirstChanceException“ wird die ausgelöste Ausnahme ganz normal verarbeitet. Letztendlich erreicht die Ausnahme wieder die Methode „TrackException“ und wird zusammen mit dem Momentaufnahmebezeichner an Application Insights gemeldet.
 
 Der Hauptprozess wird mit minimaler Unterbrechung weiter ausgeführt und stellt weiter Datenverkehr für Benutzer bereit. In der Zwischenzeit wird die Momentaufnahme an den Snapshot Uploader-Prozess übergeben. Der Snapshot Uploader erstellt einen Minidump mit allen relevanten Symboldateien (PDB-Dateien) und lädt ihn in Application Insights hoch.
@@ -117,7 +117,7 @@ Die Version 15.2 (oder höher) von Visual Studio 2017 veröffentlicht Symbole f�
 Stellen Sie für Azure Compute und andere Typen sicher, dass die Symboldateien im selben Ordner wie die DLL-Datei der Hauptanwendung (in der Regel `wwwroot/bin`) liegen oder unter dem aktuellen Pfad verfügbar sind.
 
 > [!NOTE]
-> Weitere Informationen zu den verschiedenen verfügbaren Symboloptionen finden Sie in der [Visual Studio-Dokumentation](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Weitere Informationen zu den verschiedenen verfügbaren Symboloptionen finden Sie in der [Visual Studio-Dokumentation](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 ). Um optimale Ergebnisse zu erzielen, wird die Verwendung von „full“, „portable“ oder „embedded“ empfohlen.
 
 ### <a name="optimized-builds"></a>Optimierte Builds
@@ -138,6 +138,7 @@ Aktivieren des Application Insights-Momentaufnahmedebuggers für Ihre Anwendung:
 
 Über den Application Insights-Momentaufnahmedebugger hinaus:
  
-* [Legen Sie Fangpunkte in Ihrem Code fest](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications), um Momentaufnahmen abzurufen, ohne auf eine Ausnahme warten zu müssen.
-* Unter [Diagnostizieren von Ausnahmen in Ihren Web-Apps](../../azure-monitor/app/asp-net-exceptions.md) erfahren Sie, wie Sie weitere Ausnahmen für Application Insights sichtbar machen.
-* Die [intelligente Erkennung](../../azure-monitor/app/proactive-diagnostics.md) ermittelt automatisch Leistungsanomalien.
+* [Legen Sie Fangpunkte in Ihrem Code fest](/visualstudio/debugger/debug-live-azure-applications), um Momentaufnahmen abzurufen, ohne auf eine Ausnahme warten zu müssen.
+* Unter [Diagnostizieren von Ausnahmen in Ihren Web-Apps](./asp-net-exceptions.md) erfahren Sie, wie Sie weitere Ausnahmen für Application Insights sichtbar machen.
+* Die [intelligente Erkennung](./proactive-diagnostics.md) ermittelt automatisch Leistungsanomalien.
+

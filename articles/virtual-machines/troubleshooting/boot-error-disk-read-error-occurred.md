@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069156"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Behandeln von Startfehlern: Fehler beim Lesen des Datenträgers
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält die Schritte zum Beheben von Problemen, bei denen der Da
 
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, wird im Screenshot eine Eingabeaufforderung mit folgender Meldung angezeigt: „Fehler beim Lesen des Datenträgers. Drücken Sie STRG+ALT+ENTF für einen Neustart.“
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, wird im Screenshot eine Eingabeaufforderung mit folgender Meldung angezeigt: „Fehler beim Lesen des Datenträgers. Drücken Sie STRG+ALT+ENTF für einen Neustart.“
 
    ![Fehlermeldung: Fehler beim Lesen des Datenträgers. Drücken Sie STRG+ALT+ENTF für einen Neustart.](./media/disk-read-error-occurred/1.png)
 
@@ -51,7 +51,7 @@ Diese Fehlermeldung gibt an, dass die Datenträgerstruktur beschädigt und nicht
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen und Aufrufen einer Reparatur-VM
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="set-partition-status-to-active"></a>Festlegen des Partitionsstatus auf „Active“
@@ -143,4 +143,4 @@ Bei virtuellen Computern der Generation 1 sollten Sie zunächst überprüfen, o
    
 ### <a name="rebuild-the-vm"></a>Neuerstellen der VM
 
-Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example), um die VM neu zu erstellen.
+Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example), um die VM neu zu erstellen.

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515528"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325575"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -36,7 +36,7 @@ Azure-Ressourcen generieren eine erhebliche Menge an Überwachungsdaten. Azure M
 
 Metriken in Azure Monitor werden in einer Zeitreihendatenbank gespeichert, die für das Analysieren von Daten mit Zeitstempel optimiert ist. Dadurch sind Metriken besonders für Warnungen und das schnelle Erkennen von Problemen geeignet. Sie bieten Informationen über die Leistung Ihres Systems, müssen aber in der Regel mit Protokollen kombiniert werden, um die zugrunde liegende Ursache von Problemen zu identifizieren.
 
-Metriken sind für die interaktive Analyse im Azure-Portal mit [Azure-Metrik-Explorer](../platform/metrics-getting-started.md) verfügbar. Sie können einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzugefügt und für [Warnungen](alerts-metric.md) nahezu in Echtzeit verwendet werden.
+Metriken sind für die interaktive Analyse im Azure-Portal mit [Azure-Metrik-Explorer](./metrics-getting-started.md) verfügbar. Sie können einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzugefügt und für [Warnungen](alerts-metric.md) nahezu in Echtzeit verwendet werden.
 
 Weitere Informationen zu Azure Monitor-Metriken, einschließlich ihrer Datenquellen, finden Sie unter [Metriken in Azure Monitor](data-platform-metrics.md).
 
@@ -90,3 +90,4 @@ Eine Liste der verschiedenen Datenquellen, die den jeweiligen Typ ausfüllen, fi
 - Informieren Sie sich ausführlicher über [Metriken in Azure Monitor](data-platform-metrics.md).
 - Informieren Sie sich ausführlicher über [Protokolle in Azure Monitor](data-platform-logs.md).
 - Erfahren Sie mehr über die für verschiedene Ressourcen in Azure [verfügbaren Überwachungsdaten](data-sources.md).
+
