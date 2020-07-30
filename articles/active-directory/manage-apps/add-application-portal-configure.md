@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8418a45c9eba596339999c2bddf937a516d3e2d9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223345"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338043"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)
 
@@ -41,15 +40,15 @@ Nachdem Sie Ihrem Azure AD-Mandanten eine Anwendung hinzugefügt haben, wird di
 So bearbeiten Sie die Anwendungseigenschaften:
 
 1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
-1. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
+2. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
 
     ![Screenshot des Bildschirms „Eigenschaften“ mit den App-Eigenschaften, die bearbeitet werden können](media/add-application-portal/edit-properties.png)
 
-1. Nehmen Sie sich einen Moment Zeit, um sich mit den zur Verfügung stehenden konfigurierbaren Optionen vertraut zu machen:
+3. Nehmen Sie sich einen Moment Zeit, um sich mit den zur Verfügung stehenden konfigurierbaren Optionen vertraut zu machen:
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
     - Mit **Für Benutzer sichtbar?** wird festgelegt, ob den einer App zugewiesenen Benutzern die Anwendung im [Zugriffsbereich](https://myapps.microsoft.com) und im Office 365-App-Startfeld angezeigt wird. (Siehe das Waffelmenü in der oberen linken Ecke einer Office 365- oder Microsoft 365-Website.)
-1. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind:
+4. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind:
 
    - Verhalten für *zugewiesene* Benutzer:
 
@@ -86,10 +85,10 @@ So bearbeiten Sie die Anwendungseigenschaften:
 So verwenden Sie ein benutzerdefiniertes Logo:
 
 1. Erstellen Sie ein Logo mit 215 x 215 Pixeln, und speichern Sie es im PNG-Format.
-1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
-1. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen. 
-1. Wählen Sie das Symbol zum Hochladen des Logos aus.
-1. Wählen Sie abschließend **Speichern** aus.
+2. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
+3. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen. 
+4. Wählen Sie das Symbol zum Hochladen des Logos aus.
+5. Wählen Sie abschließend **Speichern** aus.
 
     ![Screenshot des Bildschirms „Eigenschaften“, in dem zu sehen ist, wie das Logo geändert wird](media/add-application-portal/change-logo.png)
 

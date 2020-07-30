@@ -15,12 +15,12 @@ ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511601"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124152"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -192,7 +192,7 @@ In der nachstehenden Liste werden die Grenzwerte bei benutzerdefinierten Rollen 
 - Benutzerdefinierte Rollen mit `DataActions` können im Verwaltungsgruppenbereich nicht zugewiesen werden.
 - Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist.
 
-Weitere Informationen zu benutzerdefinierten Rollen und Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment).
+Weitere Informationen zu benutzerdefinierten Rollen und Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment).
 
 ## <a name="input-and-output-formats"></a>Eingabe- und Ausgabeformate
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: de5b490f1ffd50e44defb1c3e3c6f0ad32ca689c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f86cc5e3edc659a233066fcf2544ed4a5019d0f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516378"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324283"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal
 Im Menü **Log Analytics-Arbeitsbereiche** können Sie einen Log Analytics-Arbeitsbereich über das Azure-Portal einrichten. Ein Log Analytics-Arbeitsbereich ist eine spezifische Umgebung für Azure Monitor-Protokolldaten. Jeder Arbeitsbereich verfügt über ein eigenes Datenrepository und eine eigene Konfiguration. Datenquellen und Lösungen sind so konfiguriert, dass die zugehörigen Daten in einem bestimmten Arbeitsbereich gespeichert werden. Ein Log Analytics-Arbeitsbereich ist erforderlich, wenn Sie Daten aus den folgenden Quellen erfassen möchten:
@@ -23,8 +23,8 @@ Im Menü **Log Analytics-Arbeitsbereiche** können Sie einen Log Analytics-Arbei
 
 Informationen zu anderen Quellen in Ihrer Umgebung (etwa virtuelle Azure-Computer und virtuelle Windows- oder Linux-Computer) finden Sie in folgenden Themen:
 
-*  [Sammeln von Daten von virtuellen Azure-Computern](../learn/quick-collect-azurevm.md) 
-*  [Sammeln von Daten von Linux-Hybridcomputern](../learn/quick-collect-linux-computer.md)
+*  [Sammeln von Daten von virtuellen Azure-Computern](./quick-collect-azurevm.md) 
+*  [Sammeln von Daten von Linux-Hybridcomputern](./quick-collect-linux-computer.md)
 *  [Sammeln von Daten von Windows-Hybridcomputern](quick-collect-windows-computer.md)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -66,3 +66,4 @@ Sie besitzen einen verfügbaren Arbeitsbereich und können nun die Erfassung von
 * [Fügen Sie System Center Operations Manager als Datenquelle hinzu](../platform/om-agents.md), um Daten von Agents zu sammeln, die an die Operations Manager-Verwaltungsgruppe berichten, und sie im Log Analytics-Arbeitsbereich zu speichern. 
 * Stellen Sie eine Verbindung mit [Configuration Manager](../platform/collect-sccm.md) her, um Computer zu importieren, die Sammlungen in der Hierarchie angehören.  
 * Sehen Sie sich die verfügbaren [Überwachungslösungen](../insights/solutions.md) sowie Informationen dazu an, wie Sie eine Lösung Ihrem Arbeitsbereich hinzufügen bzw. daraus entfernen.
+

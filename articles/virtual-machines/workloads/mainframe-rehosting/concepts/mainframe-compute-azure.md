@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76288930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998934"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Verschieben von Mainframe-Computing zu Azure
 
@@ -94,13 +94,13 @@ Bei diesem Ansatz werden LPARs auf einzelne VMs migriert. Dann kann Azure proble
 
 Einer der Vorteile einer Azure-basierten Lösung ist die Möglichkeit der Aufskalierung. Durch die Skalierung steht einer Anwendung eine nahezu unbegrenzte Rechenleistung zur Verfügung. Azure unterstützt mehrere Methoden, um die Rechenleistung aufzuskalieren:
 
-- **Lastenausgleich im gesamten Cluster.** In diesem Szenario kann eine Anwendung mit einem [Load Balancer](/azure/load-balancer/load-balancer-overview) oder Ressourcenmanager die Workload auf mehrere VMs in einem Cluster verteilen. Wenn Sie mehr Computingkapazität benötigt wird, werden zusätzliche VMs zum Cluster hinzugefügt.
+- **Lastenausgleich im gesamten Cluster.** In diesem Szenario kann eine Anwendung mit einem [Load Balancer](../../../../load-balancer/load-balancer-overview.md) oder Ressourcenmanager die Workload auf mehrere VMs in einem Cluster verteilen. Wenn Sie mehr Computingkapazität benötigt wird, werden zusätzliche VMs zum Cluster hinzugefügt.
 
-- **VM-Skalierungsgruppen.** In diesem Burst-Szenario kann eine Anwendung auf zusätzliche [Computingressourcen](/azure/virtual-machine-scale-sets/overview) basierend auf der VM-Nutzung skaliert werden. Wenn der Bedarf sinkt, kann auch die Anzahl der VMs in einer Skalierungsgruppe sinken, was eine effiziente Nutzung der Computingleistung gewährleistet.
+- **VM-Skalierungsgruppen.** In diesem Burst-Szenario kann eine Anwendung auf zusätzliche [Computingressourcen](../../../../virtual-machine-scale-sets/overview.md) basierend auf der VM-Nutzung skaliert werden. Wenn der Bedarf sinkt, kann auch die Anzahl der VMs in einer Skalierungsgruppe sinken, was eine effiziente Nutzung der Computingleistung gewährleistet.
 
-- **PaaS-Skalierung.** Azure PaaS ermöglicht das Skalieren von Computingressourcen. So weist beispielsweise [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) Computingressourcen zu, um den Anstieg des Anfragevolumens zu bewältigen.
+- **PaaS-Skalierung.** Azure PaaS ermöglicht das Skalieren von Computingressourcen. So weist beispielsweise [Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md) Computingressourcen zu, um den Anstieg des Anfragevolumens zu bewältigen.
 
-- **Kubernetes-Cluster.** Anwendungen auf Azure können [Kubernetes-Cluster](/azure/aks/concepts-clusters-workloads) für die Berechnung von Diensten für bestimmte Ressourcen verwenden. Azure Kubernetes Service (AKS) ist ein verwalteter Dienst, der Kubernetes-Knoten, -Pools und -Cluster in Azure orchestriert.
+- **Kubernetes-Cluster.** Anwendungen auf Azure können [Kubernetes-Cluster](../../../../aks/concepts-clusters-workloads.md) für die Berechnung von Diensten für bestimmte Ressourcen verwenden. Azure Kubernetes Service (AKS) ist ein verwalteter Dienst, der Kubernetes-Knoten, -Pools und -Cluster in Azure orchestriert.
 
 Um die richtige Methode zur horizontalen Skalierung von Computingressourcen zu wählen, ist es wichtig zu verstehen, wie sich Azure und Mainframes unterscheiden. Der Schlüssel ist, wie oder ob Daten von Computingressourcen gemeinsam genutzt werden. In Azure werden Daten (standardmäßig) in der Regel nicht von mehreren VMs gemeinsam genutzt. Wenn die gemeinsame Nutzung von Daten durch mehrere VMs in einem Scale-Out-Computingcluster erforderlich ist, müssen sich die gemeinsamen Daten in einer Ressource befinden, die diese Funktionalität unterstützt. Bei Azure beinhaltet die gemeinsame Nutzung von Daten die Speicherung, wie im folgenden Abschnitt beschrieben.
 
@@ -115,7 +115,7 @@ Jede Ebene kann auch entsprechende Dienste für die Notfallwiederherstellung ber
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Mainframemigration](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Mainframerehosting auf virtuellen Azure-Computern](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Mainframerehosting auf virtuellen Azure-Computern](../overview.md)
 - [Verschieben von Mainframespeicher zu Azure](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM-Ressourcen

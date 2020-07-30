@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022906"
 ---
 # <a name="manage-assets"></a>Verwalten von Objekten
 
-In Azure Media Services bietet ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets) folgende Möglichkeiten: 
+In Azure Media Services bietet ein [Medienobjekt](/rest/api/media/assets) folgende Möglichkeiten: 
 
 * Hochladen von Mediendateien in ein Medienobjekt
 * Erfassen und Archivieren von Livestreams in einem Medienobjekt
@@ -56,13 +56,13 @@ Nachdem die digitalen Dateien in den Speicher hochgeladen und einem Medienobjekt
     ```
 2. Rufen Sie eine SAS-URL mit Lese-/Schreibberechtigungen ab, die verwendet wird, um digitale Dateien in den Medienobjektcontainer hochzuladen.
 
-    Sie können die Media Services-API verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+    Sie können die Media Services-API verwenden, um [die Medienobjektcontainer-URLs aufzulisten](/rest/api/media/assets/listcontainersas).
 
-    **AssetContainerSas.listContainerSas** nimmt einen [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)-Parameter an, für den Sie `expiryTime` festlegen. Die Zeit sollte auf < 24 Stunden festgelegt werden.
+    **AssetContainerSas.listContainerSas** nimmt einen [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput)-Parameter an, für den Sie `expiryTime` festlegen. Die Zeit sollte auf < 24 Stunden festgelegt werden.
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) gibt mehrere SAS-URLs zurück, da für jedes Speicherkonto zwei Speicherkontoschlüssel vorhanden sind. Speicherkonten weisen zwei Schlüssel auf, weil dies das Failover und die nahtlose Rotation von Speicherkontoschlüsseln erleichtert. Die erste SAS-URL stellt den ersten Speicherkontoschlüssel dar, die zweite SAS-URL den zweiten.
+    [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) gibt mehrere SAS-URLs zurück, da für jedes Speicherkonto zwei Speicherkontoschlüssel vorhanden sind. Speicherkonten weisen zwei Schlüssel auf, weil dies das Failover und die nahtlose Rotation von Speicherkontoschlüsseln erleichtert. Die erste SAS-URL stellt den ersten Speicherkontoschlüssel dar, die zweite SAS-URL den zweiten.
 3. Verwenden Sie die Azure Storage-APIs oder SDKs (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um Dateien in den Medienobjektcontainer hochzuladen.
-4. Verwenden Sie Media Services v3-APIs, um eine Transformation und einen Auftrag zur Verarbeitung Ihres Eingabemedienobjekts zu erstellen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md).
+4. Verwenden Sie Media Services v3-APIs, um eine Transformation und einen Auftrag zur Verarbeitung Ihres Eingabemedienobjekts zu erstellen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](./transforms-jobs-concept.md).
 5. Streamen Sie die Inhalte des Ausgabemedienobjekts.
 
 ### <a name="create-a-new-asset"></a>Erstellen des neuen Medienobjekts
@@ -76,7 +76,7 @@ Nachdem die digitalen Dateien in den Speicher hochgeladen und einem Medienobjekt
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-Ein REST-Beispiel finden Sie unter [Erstellen eines Medienobjekts mit REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples).
+Ein REST-Beispiel finden Sie unter [Erstellen eines Medienobjekts mit REST](/rest/api/media/assets/createorupdate#examples).
 
 Dieses Beispiel zeigt, wie Sie den **Anforderungstext** erstellen, in dem Sie Beschreibung, Containername, Speicherkonto und weitere hilfreiche Informationen angeben können.
 
@@ -107,7 +107,7 @@ curl -X PUT \
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Erfassen und Archivieren von Livestreams in einem Medienobjekt
 
-In Media Services verhält sich ein [Liveausgabe](https://docs.microsoft.com/rest/api/media/liveoutputs)-Objekt wie ein digitaler Videorekorder, der Ihren Livestream erfasst und in einem Medienobjekt (Asset) in Ihrem Media Services-Konto aufzeichnet. Der aufgezeichnete Inhalt wird in dem durch die Ressource [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets) definierten Container beibehalten.
+In Media Services verhält sich ein [Liveausgabe](/rest/api/media/liveoutputs)-Objekt wie ein digitaler Videorekorder, der Ihren Livestream erfasst und in einem Medienobjekt (Asset) in Ihrem Media Services-Konto aufzeichnet. Der aufgezeichnete Inhalt wird in dem durch die Ressource [Medienobjekt](/rest/api/media/assets) definierten Container beibehalten.
 
 Weitere Informationen finden Sie unter
 
@@ -145,6 +145,6 @@ Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Ser
 
 Betrachten Sie die vollständigen Codebeispiele, die zeigen, wie Sie hochladen, codieren, analysieren sowie live und bedarfsgesteuert streamen können: 
 
-* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [REST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
+* [.NET](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [REST](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

@@ -3,12 +3,12 @@ title: Azure Application Insights-Übersichtsdashboard | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Anwendungen mit Azure Application Insights und dem Übersichtsdashboard überwachen.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669895"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322532"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-Übersichtsdashboard
 
@@ -57,6 +57,7 @@ Wenn Sie **Kacheleinstellungen konfigurieren** auswählen und einen benutzerdefi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Trichter](../../azure-monitor/app/usage-funnels.md)
-- [Vermerkdauer](../../azure-monitor/app/usage-retention.md)
-- [Benutzerabläufe](../../azure-monitor/app/usage-flows.md)
+- [Trichter](./usage-funnels.md)
+- [Vermerkdauer](./usage-retention.md)
+- [Benutzerabläufe](./usage-flows.md)
+

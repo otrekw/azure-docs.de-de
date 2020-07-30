@@ -43,8 +43,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: Herstellen einer Verbindung mit einem Gerät (Python)
           href: tutorial-connect-device-python.md
-        - name: Herstellen einer Verbindung mit einem Plug & Play-Gerät (Vorschauversion)
-          href: tutorial-connect-pnp-device.md
         - name: Erstellen einer Gatewaygerätevorlage
           href: tutorial-define-gateway-device-type.md
         - name: Verbinden mit einem IoT Edge-Gerät
@@ -79,8 +77,6 @@
       items:
         - name: Einrichten einer Gerätevorlage
           href: howto-set-up-template.md
-        - name: Vorbereiten und Verbinden eines MXChip IoT DevKit
-          href: howto-connect-devkit.md
         - name: Vorbereiten und Verbinden eines Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: Vorbereiten und Verbinden eines RuuviTag-Geräts
@@ -161,7 +157,7 @@
               href: howto-show-hide-chat.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:

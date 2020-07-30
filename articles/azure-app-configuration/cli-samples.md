@@ -6,18 +6,18 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 02/19/2020
-ms.openlocfilehash: a255db3fbce2c111a0a629c01b86cc891d71e803
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c68dfdf5357d73cc3b01d19cad61525404ab955f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523746"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050162"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-Beispiele
 
 Die folgende Tabelle enthält Links zu Bash-Skripts für Azure App Configuration, bei denen die Azure-Befehlszeilenschnittstelle verwendet wird.
 
-| | |
+| Skript | BESCHREIBUNG |
 |-|-|
 |**Erstellen**||
 | [Erstellen eines App Configuration-Speichers](./scripts/cli-create-service.md) | Erstellt eine Ressourcengruppe und eine Instanz des App Configuration-Speichers.  |

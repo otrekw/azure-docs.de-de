@@ -3,15 +3,15 @@ title: Erstellen und Hochladen einer Linux-VHD
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Linux-Betriebssystem enthält.
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a80cc29f318cff8e5a4c665cd07ba1829d25d66d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066756"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373384"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Distributionen
 
@@ -24,17 +24,18 @@ Für alle Distributionen, die in Azure ausgeführt werden, gelten einige Vorauss
 
 Wir empfehlen Ihnen, mit einer der [unterstützten Distributionen von Linux in Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zu beginnen. In den folgenden Artikeln wird gezeigt, wie Sie die verschiedenen in Azure unterstützten Linux-Distributionen vorbereiten:
 
-* **[CentOS-basierte Verteilungen](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES und openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+- [CentOS-basierte Verteilungen](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES &amp; openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
 
 Der restliche Artikel enthält eine allgemeine Anleitung zum Ausführen Ihrer Linux-Distribution in Azure.
 
 ## <a name="general-linux-installation-notes"></a>Allgemeine Installationshinweise für Linux
-* Das Hyper-V-VHDX-Format (Virtual Hard Disk) wird in Azure nicht unterstützt, sondern nur *VHDs mit fester Größe*.  Sie können den Datenträger mit dem Hyper-V-Manager oder dem Cmdlet [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) in das VHD-Format konvertieren. Wenn Sie VirtualBox verwenden, wählen Sie beim Erstellen des Datenträgers die Option **Feste Größe** aus, nicht die Standardeinstellung mit dynamischer Zuweisung.
+* Das Hyper-V-VHDX-Format (Virtual Hard Disk) wird in Azure nicht unterstützt, sondern nur *VHDs mit fester Größe*.  Sie können den Datenträger mit dem Hyper-V-Manager oder dem Cmdlet [Convert-VHD](/powershell/module/hyper-v/convert-vhd) in das VHD-Format konvertieren. Wenn Sie VirtualBox verwenden, wählen Sie beim Erstellen des Datenträgers die Option **Feste Größe** aus, nicht die Standardeinstellung mit dynamischer Zuweisung.
 * Azure unterstützt die virtuellen Computer Gen1 (BIOS-Start) und Gen2 (UEFI-Start).
 * Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB.
 * Beim Installieren des Linux-Betriebssystems wird empfohlen, anstelle von Logical Volume Manager (LVM), der bei vielen Installationen voreingestellt ist, Standardpartitionen zu verwenden. Mit Standardpartitionen lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein Betriebssystemdatenträger zu Fehlerbehebungszwecken an einen anderen identischen virtuellen Computer angefügt werden soll. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) können auf Datenträgern verwendet werden.
@@ -66,7 +67,7 @@ VHD-Images in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet
 
 * Die VHD „http://\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd“ weist eine nicht unterstützte virtuelle Größe von 21.475.270.656 Bytes auf. Die Größe muss eine ganze Zahl (in MB) sein.
 
-Ändern Sie in diesem Fall die Größe des virtuellen Computers über die Hyper-V-Manager-Konsole oder mit dem PowerShell-Cmdlet [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx).  Wenn Sie nicht in einer Windows-Umgebung arbeiten, sollten Sie `qemu-img` verwenden, um (falls erforderlich) die Konvertierung durchzuführen und die Größe der virtuellen Festplatte zu ändern.
+Ändern Sie in diesem Fall die Größe des virtuellen Computers über die Hyper-V-Manager-Konsole oder mit dem PowerShell-Cmdlet [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps).  Wenn Sie nicht in einer Windows-Umgebung arbeiten, sollten Sie `qemu-img` verwenden, um (falls erforderlich) die Konvertierung durchzuführen und die Größe der virtuellen Festplatte zu ändern.
 
 > [!NOTE]
 > Es gibt einen [bekannten Fehler in den qemu-img](https://bugs.launchpad.net/qemu/+bug/1490611)-Versionen >= 2.2.1, der zu einer nicht ordnungsgemäßen Formatierung der virtuellen Festplatte führt. Dieses Problem wurde in QEMU 2.6 behoben. Es wird empfohlen, entweder `qemu-img` 2.2.0 oder niedriger oder 2.6 oder höher zu verwenden.
@@ -189,4 +190,3 @@ Der [Azure-Linux-Agent](../extensions/agent-linux.md) `waagent` stellt einen vir
    > In Virtualbox wird nach dem Ausführen von `waagent -force -deprovision` möglicherweise der folgende Fehler angezeigt: `[Errno 5] Input/output error`. Diese Fehlermeldung ist nicht kritisch und kann ignoriert werden.
 
 * Fahren Sie den virtuellen Computer herunter, und laden Sie die virtuelle Festplatte in Azure hoch.
-

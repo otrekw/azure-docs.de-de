@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 33548df0b8eb73d28dfe6348f057266cca4c0290
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 15dc4ee8a5c1021587bb5c37e634070a76b3f05d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168540"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058228"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Tutorial: Integrieren von RingCentral in Azure Active Directory
 
@@ -38,6 +38,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * RingCentral-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -91,14 +94,18 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Geben Sie Werte in die folgenden Felder ein, wenn Sie keine **Dienstanbieter-Metadatendatei** besitzen:
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL ein:
-
-    - `https://sso.ringcentral.com`
-    - `https://ssoeuro.ringcentral.com`
+  
+    | Bezeichner |
+    |--|
+    |  `https://sso.ringcentral.com` |
+    | `https://ssoeuro.ringcentral.com` |
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL folgendermaßen ein:
 
-    - `https://sso.ringcentral.com/sp/ACS.saml2`
-    - `https://ssoeuro.ringcentral.com/sp/ACS.saml2`
+    | Antwort-URL |
+    |--|
+    | `https://sso.ringcentral.com/sp/ACS.saml2` |
+    | `https://ssoeuro.ringcentral.com/sp/ACS.saml2` |
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 

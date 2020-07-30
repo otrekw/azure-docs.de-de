@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369385"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321121"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
@@ -32,7 +32,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
 
 3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
 
-4. Wenn die ausgewählte Ressource über Metriken verfügt, für die Sie Warnungen erstellen können, enthält die Option **Verfügbare Signale** unten rechts entsprechende Metriken. Sie können die vollständige Liste der für Metrikwarnungen unterstützten Ressourcentypen in diesem [Artikel](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) einsehen.
+4. Wenn die ausgewählte Ressource über Metriken verfügt, für die Sie Warnungen erstellen können, enthält die Option **Verfügbare Signale** unten rechts entsprechende Metriken. Sie können die vollständige Liste der für Metrikwarnungen unterstützten Ressourcentypen in diesem [Artikel](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) einsehen.
 
 5. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
 
@@ -90,7 +90,7 @@ Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „
 
 ## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
-In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). In diesem Artikel verwendeten wir Cloud Shell.
+In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest). In diesem Artikel verwendeten wir Cloud Shell.
 
 1. Wechseln Sie zum Azure-Portal, und klicken Sie auf **Cloud Shell**.
 
@@ -136,8 +136,8 @@ In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Po
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen von Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Erstellen von Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen](./alerts-metric-create-templates.md)
 - [Informationen zur Funktionsweise von Metrikwarnungen](alerts-metric-overview.md)
 - [Informationen zur Funktionsweise von Metrikwarnungen mit Bedingung „Dynamische Schwellenwerte“ ](alerts-dynamic-thresholds.md).
-- [Informationen zum Webhook-Schema für Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [Informationen zum Webhook-Schema für Metrikwarnungen](./alerts-metric-near-real-time.md#payload-schema)
 

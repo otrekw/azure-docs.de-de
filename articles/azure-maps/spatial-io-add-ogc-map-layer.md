@@ -1,19 +1,19 @@
 ---
 title: Hinzufügen einer OGC-Kartenebene (Open Geospatial Consortium) | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie eine OGC-Kartenebene auf der Karte überlagern und die verschiedenen Optionen in der OgcMapLayer-Klasse nutzen können.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334299"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128555"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Hinzufügen einer Kartenebene aus Open Geospatial Consortium (OGC)
 
@@ -28,7 +28,7 @@ In den folgenden Abschnitten werden die Web Map Service-Funktionen beschrieben, 
 - GetFeatureInfo erfordert, dass der Dienst `EPSG:4326` unterstützt oder Neuprojektionen durchführt. 
 - Unterstützte Vorgänge:
 
-    | | |
+    | Vorgang | BESCHREIBUNG |
     | :-- | :-- |
     | GetCapabilities | Ruft Metadaten zum Dienst mit den unterstützten Funktionen ab |
     | GetMap | Ruft ein Kartenbild für eine angegebene Region ab |
@@ -42,7 +42,7 @@ In den folgenden Abschnitten werden die Web Map Service-Funktionen beschrieben, 
 - Der Bezeichner TileMatrix muss ein ganzzahliger Wert sein, der einer Zoomstufe auf der Karte entspricht. Auf einer Azure-Karte ist die Zoomstufe ein Wert von `"0"` bis `"22"`. Daher wird `"0"` unterstützt, `"00"` jedoch nicht.
 - Unterstützte Vorgänge:
 
-    | | |
+    | Vorgang | BESCHREIBUNG |
     | :-- | :-- |
     | GetCapabilities | Ruft die unterstützten Vorgänge und Features ab |
     | GetTile | Ruft Aufnahmen für eine bestimmte Kachel ab |

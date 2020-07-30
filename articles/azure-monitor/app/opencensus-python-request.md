@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753209"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324589"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Nachverfolgen eingehender Anforderungen mit OpenCensus Python
 
 Eingehende Anforderungsdaten werden mithilfe von OpenCensus Python und dessen verschiedenen Integrationen erfasst. Verfolgen Sie eingehende Anforderungsdaten, die an Ihre auf den gängigen Webframeworks `django`, `flask` und `pyramid` basierenden Webanwendungen gesendet werden. Die Daten werden dann als `requests`-Telemetriedaten an Application Insights unter Azure Monitor gesendet.
 
-Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
+Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensus Python SDK](./opencensus-python.md).
 
 ## <a name="tracking-django-applications"></a>Verfolgen von Django-Anwendungen
 
@@ -119,8 +119,9 @@ Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Anwendungszuordnung](../../azure-monitor/app/app-map.md)
-* [Verfügbarkeit](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Suchen,](../../azure-monitor/app/diagnostic-search.md)
-* [Protokollabfragen](../../azure-monitor/log-query/log-query-overview.md)
-* [Transaktionsdiagnose](../../azure-monitor/app/transaction-diagnostics.md)
+* [Anwendungszuordnung](./app-map.md)
+* [Verfügbarkeit](./monitor-web-app-availability.md)
+* [Suchen,](./diagnostic-search.md)
+* [Protokollabfragen](../log-query/log-query-overview.md)
+* [Transaktionsdiagnose](./transaction-diagnostics.md)
+

@@ -3,12 +3,12 @@ title: 'Erste Schritte mit Live Video Analytics in IoT Edge: Azure'
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in die Nutzung von Live Video Analytics in IoT Edge einsteigen. Es wird beschrieben, wie Sie in einem Livevideostream Bewegung erkennen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090075"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Schnellstart: Erste Schritte: Live Video Analytics in IoT Edge
 
@@ -34,7 +34,7 @@ Für dieses Tutorial werden die folgenden Azure-Ressourcen benötigt:
 * IoT Hub
 * Speicherkonto
 * Azure Media Services-Konto
-* Ein virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Ein virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge-linux.md)
 
 Für diese Schnellstartanleitung wird die Verwendung des [Setupskripts für Live Video Analytics-Ressourcen](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) zum Bereitstellen der erforderlichen Ressourcen in Ihrem Azure-Abonnement empfohlen. Gehen Sie dazu folgendermaßen vor:
 
@@ -561,7 +561,7 @@ Im **Ausgabefenster** wird die folgende Meldung angezeigt:
 
 Beachten Sie die folgenden Details:
 
-* Die Meldung enthält die beiden Abschnitte `body` und `applicationProperties`. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+* Die Meldung enthält die beiden Abschnitte `body` und `applicationProperties`. Weitere Informationen finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](../../iot-hub/iot-hub-devguide-messages-construct.md).
 * In `applicationProperties` wird von `subject` auf den Knoten des `MediaGraph`-Elements verwiesen, von dem die Meldung generiert wurde. In diesem Fall stammt die Meldung vom Bewegungserkennungsprozessor.
 * In `applicationProperties` wird unter `eventType` darauf hingewiesen, dass es sich hierbei um ein Analyseereignis handelt.
 * Der Wert `eventTime` ist die Uhrzeit, zu der das Ereignis eingetreten ist.

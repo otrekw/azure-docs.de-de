@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5213a13539ac028d3e2bfec3bc7476ac645f615b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 136d0627e701104e9958d51b2e37256de5659f25
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043477"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271415"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics auf IoT Edge
  
@@ -43,12 +43,13 @@ ASA verwendet IoT Hub zur Bereitstellung von Edge-Aufträgen auf Geräten. Weite
 
 ### <a name="installation-instructions"></a>Installationsanweisungen
 Die grundsätzlichen Schritte sind in der folgenden Tabelle beschrieben. Ausführliche Informationen finden Sie in den nachfolgenden Abschnitten.
-|Schritt   | Notizen   |
-| ---   |  ---      |
-| **Erstellen eines Speichercontainers**   | Speichercontainer werden verwendet, um die Auftragsdefinition zu speichern. Dort können Ihre IoT-Geräte darauf zugreifen. <br>  Sie können auch bereits vorhandene Speichercontainer verwenden.     |
-| **Erstellen eines ASA-Edge-Auftrags**   |  Sie erstellen einen neuen Auftrag und wählen **Edge** als **Hostingumgebung** aus. <br> Diese Aufträge werden aus der Cloud heraus erstellt/verwaltet und auf Ihren IoT Edge-Geräten ausgeführt.     |
-| **Einrichten der IoT Edge-Umgebung auf Ihren Geräten**   | Anleitungen für [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) und [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)          |
-| **Bereitstellen von ASA auf Ihren IoT Edge-Geräten**   |  Die ASA-Auftragsdefinition wird in den zuvor erstellten Speichercontainer exportiert.       |
+
+| Schritt | Notizen |
+| --- | --- |
+| **Erstellen eines Speichercontainers** | Speichercontainer werden verwendet, um die Auftragsdefinition zu speichern. Dort können Ihre IoT-Geräte darauf zugreifen. <br>  Sie können auch bereits vorhandene Speichercontainer verwenden. |
+| **Erstellen eines ASA-Edge-Auftrags** | Sie erstellen einen neuen Auftrag und wählen **Edge** als **Hostingumgebung** aus. <br> Diese Aufträge werden aus der Cloud heraus erstellt/verwaltet und auf Ihren IoT Edge-Geräten ausgeführt. |
+| **Einrichten der IoT Edge-Umgebung auf Ihren Geräten** | Anleitungen für [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) und [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)|
+| **Bereitstellen von ASA auf Ihren IoT Edge-Geräten** | Die ASA-Auftragsdefinition wird in den zuvor erstellten Speichercontainer exportiert. |
 
 Führen Sie [dieses Schritttutorial](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) aus, um Ihren ersten ASA-Auftrag auf IoT Edge bereitzustellen. Anhand des folgenden Videos können Sie nachvollziehen, wie ein Stream Analytics-Auftrag auf einem IoT Edge-Gerät ausgeführt wird:  
 

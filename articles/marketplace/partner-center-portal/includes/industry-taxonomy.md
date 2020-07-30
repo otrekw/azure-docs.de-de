@@ -7,12 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 06/17/2020
 ms.custom: include file
-ms.openlocfilehash: b2ac8a8937745a94aeeb13d3de98c9c607971ff7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d61e16a7cbdcfe713f6d7162e0322a6ed11e415e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121837"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317643"
 ---
 Sie können optional bis zu zwei Branchen und zwei Sektoren in jeder Branche auswählen. Diese Kategorien werden zum Anzeigen Ihres Angebots verwendet, wenn Branche und Sektor in Suchfiltern verwendet und in der Storefront übernommen werden. Wenn Ihr Angebot auf eine bestimmte Branche und/oder einen Sektor ausgerichtet ist, erläutern Sie in der Angebotsbeschreibung, wie Ihr Angebot die ausgewählten Branchen oder Sektoren unterstützt. Wenn Ihr Angebot nicht branchenspezifisch ist, treffen Sie hier keine Auswahl, sondern lassen diesen Abschnitt leer.
 

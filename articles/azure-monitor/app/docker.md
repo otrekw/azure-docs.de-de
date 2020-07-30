@@ -3,12 +3,12 @@ title: Überwachen von Docker-Anwendungen in Azure Application Insights | Micros
 description: In Application Insights können Docker-Leistungsindikatoren, -Ereignisse und -Ausnahmen zusammen mit der Telemetrie von in Containern ausgeführten Apps angezeigt werden.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539923"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324419"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Überwachen von Docker-Anwendungen in Application Insights (verwaltet)
 
@@ -23,15 +23,15 @@ Wenn Sie das [Application Insights-Image](https://hub.docker.com/r/microsoft/app
 
 * Lebenszyklustelemetrie für alle Container, die auf dem Host ausgeführt werden: Start, Ende usw.
 * Leistungsindikatoren für alle Container. CPU, Arbeitsspeicher, Netzwerkauslastung und vieles mehr.
-* Wenn Sie das [Application Insights-SDK](../../azure-monitor/app/java-get-started.md) in den in den Containern ausgeführten Apps installiert haben, weisen alle Telemetriedaten dieser Apps zusätzliche Eigenschaften auf, durch die der Container und der Hostcomputer identifiziert werden. Wenn beispielsweise Instanzen einer App auf mehreren Hosts ausgeführt werden, können Sie so die App-Telemetrie problemlos nach dem Host filtern.
+* Wenn Sie das [Application Insights-SDK](./java-get-started.md) in den in den Containern ausgeführten Apps installiert haben, weisen alle Telemetriedaten dieser Apps zusätzliche Eigenschaften auf, durch die der Container und der Hostcomputer identifiziert werden. Wenn beispielsweise Instanzen einer App auf mehreren Hosts ausgeführt werden, können Sie so die App-Telemetrie problemlos nach dem Host filtern.
 
 ## <a name="set-up-your-application-insights-resource"></a>Einrichten der Application Insights-Ressource
 
-1. Melden Sie sich im [Microsoft Azure-Portal](https://azure.com) an, und öffnen Sie die Application Insights-Ressource für Ihre App, oder [erstellen Sie eine neue Ressource](../../azure-monitor/app/create-new-resource.md ). 
+1. Melden Sie sich im [Microsoft Azure-Portal](https://azure.com) an, und öffnen Sie die Application Insights-Ressource für Ihre App, oder [erstellen Sie eine neue Ressource](./create-new-resource.md). 
    
-    *Welche Ressource soll ich verwenden?* Wenn die Apps, die Sie auf Ihrem Host ausführen, von einer anderen Person entwickelt wurden, müssen Sie [eine neue Application Insights-Ressource erstellen](../../azure-monitor/app/create-new-resource.md ). In dieser Ressource zeigen Sie die Telemetriedaten an und analysieren sie. (Wählen Sie „Allgemein“ als App-Typ aus.)
+    *Welche Ressource soll ich verwenden?* Wenn die Apps, die Sie auf Ihrem Host ausführen, von einer anderen Person entwickelt wurden, müssen Sie [eine neue Application Insights-Ressource erstellen](./create-new-resource.md). In dieser Ressource zeigen Sie die Telemetriedaten an und analysieren sie. (Wählen Sie „Allgemein“ als App-Typ aus.)
    
-    Wenn Sie jedoch die Apps selbst entwickelt haben, haben Sie hoffentlich jeder App das [Application Insights-SDK hinzugefügt](../../azure-monitor/app/java-get-started.md) . Wenn es sich bei den Apps um Komponenten einer einzelnen Geschäftsanwendung handelt, können Sie alle Apps so konfigurieren, dass die Telemetriedaten an eine Ressource gesendet werden, und dann mithilfe dieser Ressource die Lebenszyklus- und Leistungsdaten von Docker anzeigen. 
+    Wenn Sie jedoch die Apps selbst entwickelt haben, haben Sie hoffentlich jeder App das [Application Insights-SDK hinzugefügt](./java-get-started.md) . Wenn es sich bei den Apps um Komponenten einer einzelnen Geschäftsanwendung handelt, können Sie alle Apps so konfigurieren, dass die Telemetriedaten an eine Ressource gesendet werden, und dann mithilfe dieser Ressource die Lebenszyklus- und Leistungsdaten von Docker anzeigen. 
    
     Im dritten möglichen Szenario haben Sie die meisten Apps selbst entwickelt, verwenden aber separate Ressourcen, um die zugehörigen Telemetriedaten anzuzeigen. In diesem Fall erstellen Sie wahrscheinlich auch eine separate Ressource für die Docker-Daten.
 
@@ -54,7 +54,7 @@ Nachdem nun ein Ort zum Anzeigen der Telemetrie vorhanden ist, können Sie die i
 Pro Docker-Host ist nur ein Application Insights-Image erforderlich. Wenn Ihre Anwendung auf mehreren Docker-Hosts bereitgestellt wird, wiederholen Sie den Befehl auf jedem Host.
 
 ## <a name="update-your-app"></a>Aktualisieren Ihrer App
-Wenn Ihre Anwendung mit dem [Application Insights-SDK für Java](../../azure-monitor/app/java-get-started.md) instrumentiert ist, fügen Sie in der Datei „ApplicationInsights.xml“ in Ihrem Projekt unter dem Element `<TelemetryInitializers>` die folgende Zeile ein:
+Wenn Ihre Anwendung mit dem [Application Insights-SDK für Java](./java-get-started.md) instrumentiert ist, fügen Sie in der Datei „ApplicationInsights.xml“ in Ihrem Projekt unter dem Element `<TelemetryInitializers>` die folgende Zeile ein:
 
 ```xml
 
@@ -73,7 +73,7 @@ Dort werden Sie gleich die von der Docker-App eingehenden Daten sehen, insbesond
 ### <a name="docker-container-events"></a>Ereignisse im Docker-Container
 ![Beispiel](./media/docker/13.png)
 
-Um einzelne Ereignisse zu untersuchen, klicken Sie auf [Suche](../../azure-monitor/app/diagnostic-search.md). Suchen Sie die gewünschten Ereignisse, und filtern Sie sie bei Bedarf. Klicken Sie auf ein beliebiges Ereignis, um weitere Details anzuzeigen.
+Um einzelne Ereignisse zu untersuchen, klicken Sie auf [Suche](./diagnostic-search.md). Suchen Sie die gewünschten Ereignisse, und filtern Sie sie bei Bedarf. Klicken Sie auf ein beliebiges Ereignis, um weitere Details anzuzeigen.
 
 ### <a name="exceptions-by-container-name"></a>Ausnahmen nach Containername
 ![Beispiel](./media/docker/14.png)
@@ -90,7 +90,7 @@ Von der mit dem AI SDK instrumentierten Anwendung gesendete Anforderungstelemetr
 
 *Wie erhalte ich Telemetrie aus der App selbst?*
 
-* Installieren Sie das Application Insights SDK in der App. So gehen Sie vor bei [Java-Web-Apps](../../azure-monitor/app/java-get-started.md) und [Windows-Web-Apps](../../azure-monitor/app/asp-net.md).
+* Installieren Sie das Application Insights SDK in der App. So gehen Sie vor bei [Java-Web-Apps](./java-get-started.md) und [Windows-Web-Apps](./asp-net.md).
 
 ## <a name="video"></a>Video
 
@@ -98,6 +98,7 @@ Von der mit dem AI SDK instrumentierten Anwendung gesendete Anforderungstelemetr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Application Insights für Java](../../azure-monitor/app/java-get-started.md)
-* [Application Insights für Node.js](../../azure-monitor/app/nodejs.md)
-* [Application Insights für ASP.NET](../../azure-monitor/app/asp-net.md)
+* [Application Insights für Java](./java-get-started.md)
+* [Application Insights für Node.js](./nodejs.md)
+* [Application Insights für ASP.NET](./asp-net.md)
+

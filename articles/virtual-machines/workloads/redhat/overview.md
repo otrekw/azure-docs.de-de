@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052107"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-Workloads in Azure
 
@@ -45,7 +45,7 @@ Azure bietet auch Red Hat Gold-Images (`rhel-byos`). Diese Images eignen sich 
 
 ### <a name="generation-2-images"></a>Images der Generation 2
 
-Virtuelle Computer der 2. Generation bieten im Vergleich zu virtuellen Computern der 1. Generation einige neuere Features. Weitere Informationen finden Sie in der [Dokumentation zur 2. Generation](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Der Hauptunterschied aus Sicht eines RHEL-Images besteht darin, dass virtuelle Computer der 2. Generation eine UEFI anstelle einer BIOS-Firmwareschnittstelle verwenden. Außerdem nutzen sie beim Systemstart eine GUID-Partitionstabelle (GPT) anstelle eines Master Boot Records (MBR). Dank der Verwendung einer GPT können unter anderem Betriebssystemdatenträger größer als 2 TB sein. Darüber hinaus werden [virtuelle Computer der Mv2-Serie](../../mv2-series.md) nur mit Images der Generation 2 ausgeführt.
+Virtuelle Computer der 2. Generation bieten im Vergleich zu virtuellen Computern der 1. Generation einige neuere Features. Weitere Informationen finden Sie in der [Dokumentation zur 2. Generation](../../linux/generation-2.md). Der Hauptunterschied aus Sicht eines RHEL-Images besteht darin, dass virtuelle Computer der 2. Generation eine UEFI anstelle einer BIOS-Firmwareschnittstelle verwenden. Außerdem nutzen sie beim Systemstart eine GUID-Partitionstabelle (GPT) anstelle eines Master Boot Records (MBR). Dank der Verwendung einer GPT können unter anderem Betriebssystemdatenträger größer als 2 TB sein. Darüber hinaus werden [virtuelle Computer der Mv2-Serie](../../mv2-series.md) nur mit Images der Generation 2 ausgeführt.
 
 RHEL-Images der 2. Generation sind im Azure Marketplace verfügbar. Suchen Sie in der Liste mit allen Images, die bei Verwendung der Azure-Befehlszeilenschnittstelle angezeigt wird, nach „gen2“ in der Image-SKU. Navigieren Sie im Rahmen des VM-Bereitstellungsprozesses zur Registerkarte **Erweitert**, um einen virtuellen Computer der 2. Generation bereitzustellen.
 

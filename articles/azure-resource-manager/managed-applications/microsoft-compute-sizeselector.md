@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063656"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Benutzeroberflächenelement „Microsoft.Compute.SizeSelector“
 
@@ -20,11 +20,11 @@ Ein Steuerelement zum Auswählen einer Größe für VM-Instanzen.
 
 Der Benutzer sieht eine Auswahl mit Standardwerten aus der Elementdefinition.
 
-![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft-compute-sizeselector.png)
 
 Nach dem Auswählen des Steuerelements sieht der Benutzer eine erweiterte Ansicht der verfügbaren Größen.
 
-![Microsoft.Compute.SizeSelector, erweitert](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
+![Microsoft.Compute.SizeSelector, erweitert](./media/managed-application-elements/microsoft-compute-sizeselector-expanded.png)
 
 ## <a name="schema"></a>Schema
 

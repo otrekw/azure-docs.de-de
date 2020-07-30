@@ -4,12 +4,12 @@ description: Dieser Artikel enthält hilfreiche Informationen zur Governance der
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481577"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289360"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Governance der Azure DevTest Labs-Infrastruktur: Migration und Integration von Anwendungen
 Nach der Einrichtung Ihrer Entwicklungs-/Test Lab-Umgebung müssen Sie sich die folgenden Fragen stellen:
@@ -50,14 +50,14 @@ Ein weiterer Faktor, der Beachtung verdient, ist jedoch die Häufigkeit von Änd
 Wie kann ich einen leicht wiederholbaren Prozess einrichten, um meine benutzerdefinierten organisationseigenen Images in einer DevTest Labs-Umgebung einzusetzen?
 
 ### <a name="answer"></a>Antwort
-Sehen Sie sich dazu [dieses Video zum Image Factory-Muster](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) an. Dabei handelt es sich um ein erweitertes Szenario, und die bereitgestellten Skripts stellen lediglich Beispielskripts dar. Wenn irgendwelche Änderungen erforderlich sind, müssen Sie die in Ihrer Umgebung verwendeten Skripts verwalten und warten.
+Sehen Sie sich dazu [dieses Video zum Image Factory-Muster](./devtest-lab-faq.md#blog-post) an. Dabei handelt es sich um ein erweitertes Szenario, und die bereitgestellten Skripts stellen lediglich Beispielskripts dar. Wenn irgendwelche Änderungen erforderlich sind, müssen Sie die in Ihrer Umgebung verwendeten Skripts verwalten und warten.
 
 Hier finden Sie weitere Informationen, um mit DevTest Labs eine benutzerdefinierte Imagepipeline in Azure Pipelines zu erstellen:
 
-- [Einführung: Betriebsfertig machen von VMs innerhalb von Minuten durch Einrichten einer Image Factory in Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Image Factory – Teil 2: Einrichten von Azure Pipelines und Factory Lab zum Erstellen von VMs](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Image Factory – Teil 3: Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Video: Factory für benutzerdefinierte Images mit Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+- [Einführung: Betriebsfertig machen von VMs innerhalb von Minuten durch Einrichten einer Image Factory in Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
+- [Image Factory – Teil 2: Einrichten von Azure Pipelines und Factory Lab zum Erstellen von VMs](./devtest-lab-faq.md#blog-post)
+- [Image Factory – Teil 3: Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs](./devtest-lab-faq.md#blog-post)
+- [Video: Factory für benutzerdefinierte Images mit Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Muster zum Einrichten der Netzwerkkonfiguration
 
