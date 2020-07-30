@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617037"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085213"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA in Azure (große Instanzen) – Migration zu Azure Virtual Machines
 In diesem Artikel werden mögliche Szenarien für die Bereitstellung von Azure (große Instanzen) beschrieben, und es werden Planungs- und Migrationskonzepte mit minimierten Ausfallzeiten beim Übergang angeboten.
@@ -41,7 +41,7 @@ Dieser Artikel geht von den folgenden Annahmen aus:
 - Die Kunden haben den Entwurf und den Migrationsplan überprüft.
 - Planen Sie VMs für die Notfallwiederherstellung zusammen mit dem primären Standort.  Kunden können den HLI-Knoten nicht für die Notfallwiederherstellung am primären Standort verwenden, der nach der Migration auf VMs ausgeführt wird.
 - Die Kunden haben die erforderlichen Sicherungsdateien entsprechend den Anforderungen für Geschäftswiederherstellung und Compliance auf die Ziel-VMs kopiert. Dies ermöglicht bei von den virtuellen Computern aus zugänglichen Sicherungen die Zeitpunktwiederherstellung während des Übergangszeitraums.
-- Für HSR-Hochverfügbarkeit müssen Kunden das STONITH-Gerät gemäß den SAP HANA-Anweisungen zur Hochverfügbarkeit für [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) und [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) einrichten und konfigurieren.  Dies ist nicht wie HLI vorkonfiguriert.
+- Für HSR-Hochverfügbarkeit müssen Kunden das STONITH-Gerät gemäß den SAP HANA-Anweisungen zur Hochverfügbarkeit für [SLES](./high-availability-guide-suse-pacemaker.md) und [RHEL](./high-availability-guide-rhel-pacemaker.md) einrichten und konfigurieren.  Dies ist nicht wie HLI vorkonfiguriert.
 - Dieser Migrationsansatz ist nicht für HLI-SKUs mit Optane-Konfiguration ausgelegt.
 
 ## <a name="deployment-scenarios"></a>Bereitstellungsszenarien
@@ -49,21 +49,21 @@ In der folgenden Tabelle sind allgemeine Bereitstellungsmodelle mit HLI-Kunden z
 
 | Szenario-ID | HLI-Szenario | Unverändert zu VM migrieren? | Anmerkung |
 | --- | --- | --- | --- |
-| 1 | [Einzelner Knoten mit einer SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Ja | - |
-| 2 | [Einzelner Knoten mit MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Ja | - |
-| 3 | [Einzelner Knoten mit DR mithilfe der Speicherreplikation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | Nein | Die Speicherreplikation ist für die virtuelle Azure-Plattform nicht verfügbar. Ändern Sie die aktuelle Notfallwiederherstellungslösung in HSR oder Sicherung/Wiederherstellung. |
-| 4 | [Einzelner Knoten mit DR (Mehrzweck) mithilfe der Speicherreplikation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | Nein | Die Speicherreplikation ist für die virtuelle Azure-Plattform nicht verfügbar. Ändern Sie die aktuelle Notfallwiederherstellungslösung in HSR oder Sicherung/Wiederherstellung. |
-| 5 | [HSR mit STONITH für Hochverfügbarkeit](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Ja | Keine vorkonfigurierte SBD für Ziel-VMs.  Auswählen und Bereitstellen einer STONITH-Lösung.  Mögliche Optionen: Azure Fencing Agent (unterstützt sowohl für [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) als auch für [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
-| 6 | [Hochverfügbarkeit mit HSR, Notfallwiederherstellung mit Speicherreplikation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | Nein | Ersetzen der Speicherreplikation für Notfallwiederherstellungsanforderungen durch HSR oder Sicherung/Wiederherstellung |
-| 7 | [Automatisches Hostfailover (1+1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Ja | Verwenden von ANF für freigegebenen Speicher mit Azure-VMs |
-| 8 | [Horizontales Hochskalieren mit Standby](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Ja | BW/4HANA mit VMs der Typen M128s, M416s, M416ms nur mit ANF für Speicherung |
-| 9 | [Horizontales Hochskalieren ohne Standby](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Ja | BW/4HANA mit VMs der Typen M128s, M416s, M416ms (mit oder ohne ANF für Speicherung) |
-| 10 | [Horizontale Skalierung mit DR mithilfe der Speicherreplikation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | Nein | Ersetzen der Speicherreplikation für Notfallwiederherstellungsanforderungen durch HSR oder Sicherung/Wiederherstellung |
-| 11 | [Einzelner Knoten mit DR über HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Ja | - |
-| 12 | [HSR in einem einzelnen Knoten für Notfallwiederherstellung (kostenoptimiert)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Ja | - |
-| 13 | [Hochverfügbarkeit und Notfallwiederherstellung mit HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Ja | - |
-| 14 | [Hochverfügbarkeit und Notfallwiederherstellung mit HSR (kostenoptimiert)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Ja | - |
-| 15 | [Horizontale Skalierung mit DR über HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Ja | BW/4HANA mit VMs der Typen M128s. M416s, M416ms (mit oder ohne ANF für Speicherung) |
+| 1 | [Einzelner Knoten mit einer SID](./hana-supported-scenario.md#single-node-with-one-sid) | Ja | - |
+| 2 | [Einzelner Knoten mit MCOS](./hana-supported-scenario.md#single-node-mcos) | Ja | - |
+| 3 | [Einzelner Knoten mit DR mithilfe der Speicherreplikation](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | Nein | Die Speicherreplikation ist für die virtuelle Azure-Plattform nicht verfügbar. Ändern Sie die aktuelle Notfallwiederherstellungslösung in HSR oder Sicherung/Wiederherstellung. |
+| 4 | [Einzelner Knoten mit DR (Mehrzweck) mithilfe der Speicherreplikation](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | Nein | Die Speicherreplikation ist für die virtuelle Azure-Plattform nicht verfügbar. Ändern Sie die aktuelle Notfallwiederherstellungslösung in HSR oder Sicherung/Wiederherstellung. |
+| 5 | [HSR mit STONITH für Hochverfügbarkeit](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Ja | Keine vorkonfigurierte SBD für Ziel-VMs.  Auswählen und Bereitstellen einer STONITH-Lösung.  Mögliche Optionen: Azure Fencing Agent (unterstützt sowohl für [RHEL](./high-availability-guide-rhel-pacemaker.md) als auch für [SLES](./high-availability-guide-suse-pacemaker.md)), SBD |
+| 6 | [Hochverfügbarkeit mit HSR, Notfallwiederherstellung mit Speicherreplikation](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | Nein | Ersetzen der Speicherreplikation für Notfallwiederherstellungsanforderungen durch HSR oder Sicherung/Wiederherstellung |
+| 7 | [Automatisches Hostfailover (1+1)](./hana-supported-scenario.md#host-auto-failover-11) | Ja | Verwenden von ANF für freigegebenen Speicher mit Azure-VMs |
+| 8 | [Horizontales Hochskalieren mit Standby](./hana-supported-scenario.md#scale-out-with-standby) | Ja | BW/4HANA mit VMs der Typen M128s, M416s, M416ms nur mit ANF für Speicherung |
+| 9 | [Horizontales Hochskalieren ohne Standby](./hana-supported-scenario.md#scale-out-without-standby) | Ja | BW/4HANA mit VMs der Typen M128s, M416s, M416ms (mit oder ohne ANF für Speicherung) |
+| 10 | [Horizontale Skalierung mit DR mithilfe der Speicherreplikation](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | Nein | Ersetzen der Speicherreplikation für Notfallwiederherstellungsanforderungen durch HSR oder Sicherung/Wiederherstellung |
+| 11 | [Einzelner Knoten mit DR über HSR](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | Ja | - |
+| 12 | [HSR in einem einzelnen Knoten für Notfallwiederherstellung (kostenoptimiert)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | Ja | - |
+| 13 | [Hochverfügbarkeit und Notfallwiederherstellung mit HSR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | Ja | - |
+| 14 | [Hochverfügbarkeit und Notfallwiederherstellung mit HSR (kostenoptimiert)](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Ja | - |
+| 15 | [Horizontale Skalierung mit DR über HSR](./hana-supported-scenario.md#scale-out-with-dr-using-hsr) | Ja | BW/4HANA mit VMs der Typen M128s. M416s, M416ms (mit oder ohne ANF für Speicherung) |
 
 
 ## <a name="source-hli-planning"></a>Quellplanung (HLI)
@@ -73,7 +73,7 @@ Beim Onboarding eines HLI-Servers mussten das Microsoft Service Management und d
 Es ist eine bewährte Betriebspraxis, den Datenbankinhalt zu bereinigen, sodass unerwünschte oder veraltete Daten sowie veraltete Protokolle nicht zur neuen Datenbank migriert werden.  Das Housekeeping umfasst im Allgemeinen das Löschen oder Archivieren alter, abgelaufener oder inaktiver Daten.  Diese „Datenhygiene“-Aktionen sollten in Nicht-Produktionssystemen getestet werden, um die Gültigkeit der Datenbereinigung vor dem Einsatz in einer Produktionsumgebung zu überprüfen.
 
 ### <a name="allow-network-connectivity-for-new-vms-and-or-virtual-network"></a>Zulassen der Netzwerkkonnektivität für neue VMs oder virtuelle Netzwerke 
-In der HLI-Bereitstellung eines Kunden wurde das Netzwerk entsprechend den Informationen im Artikel [SAP HANA-Netzwerkarchitektur (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) eingerichtet. Das Routing von Netzwerkdatenverkehr erfolgt außerdem wie im Abschnitt „Routing in Azure“ beschrieben.
+In der HLI-Bereitstellung eines Kunden wurde das Netzwerk entsprechend den Informationen im Artikel [SAP HANA-Netzwerkarchitektur (große Instanzen)](./hana-network-architecture.md) eingerichtet. Das Routing von Netzwerkdatenverkehr erfolgt außerdem wie im Abschnitt „Routing in Azure“ beschrieben.
 - Durch Einrichten einer neuen VM als Migrationsziel ist kein weiteres Update der Konnektivität erforderlich, falls die VM im vorhandenen virtuellen Netzwerk mit IP-Adressbereichen platziert wird, die bereits für Verbindungen mit HLI zugelassen sind.
 - Wenn die neue Azure-VM in einem neuen Microsoft Azure Virtual Network platziert wird – etwa in einer anderen Region – und per Peering mit dem vorhandenen virtuellen Netzwerk verbunden wird, können der ExpressRoute-Dienstschlüssel und die Ressourcen-ID aus der ursprünglichen HLI-Bereitstellung verwendet werden, um den Zugriff dieses neuen IP-Adressbereichs für das virtuelle Netzwerk zuzulassen.  Sprechen Sie sich mit Microsoft Service Management ab, um die Verbindung des virtuellen Netzwerks mit HLI zuzulassen.  Hinweis: Um die Netzwerklatenz zwischen der Anwendungs- und der Datenbankschicht zu minimieren, müssen sich die Anwendungs- und die Datenbankschichten im selben virtuellen Netzwerk befinden.  
 
@@ -107,7 +107,7 @@ Das Aufbauen einer neuen Infrastruktur als Ersatz für eine vorhandene setzt ein
 Die aktuelle Bereitstellungsregion des SAP-Anwendungsservers befindet sich normalerweise in unmittelbarer Nähe zu den zugeordneten HLIs.  HLIs werden jedoch an weniger Standorten angeboten, als Azure-Regionen verfügbar sind.  Die Migration der physischen HLI-Umgebung zu Azure-VM stellt außerdem einen guten Anlass dar, die Nähe aller beteiligten Dienste zwecks Leistungsoptimierung zu anzupassen.  Dabei sollte vor allem sichergestellt werden, dass in der ausgewählten Region alle erforderlichen Ressourcen vorhanden sind.  Beispiele: Verfügbarkeit bestimmter VM-Familien oder das Angebot von Azure-Zonen zum Einrichten von Hochverfügbarkeit.
 
 ### <a name="virtual-network"></a>Virtuelles Netzwerk 
-Die Kunden müssen entscheiden, ob die neue HANA-Datenbank in einem vorhandenen virtuellen Netzwerk betrieben oder ein neues erstellt werden soll.  Der wichtigste Faktor für diese Entscheidung ist das aktuelle Netzwerklayout für die SAP-Landschaft.  Außerdem bringt es Änderungen der Architektur mit sich, wenn die Infrastruktur von einer Bereitstellung in einer Zone zu einer in zwei Zonen mit PPG wechselt. Weitere Informationen finden Sie im Artikel [Azure-PPG für optimale Netzwerklatenz bei SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios).   
+Die Kunden müssen entscheiden, ob die neue HANA-Datenbank in einem vorhandenen virtuellen Netzwerk betrieben oder ein neues erstellt werden soll.  Der wichtigste Faktor für diese Entscheidung ist das aktuelle Netzwerklayout für die SAP-Landschaft.  Außerdem bringt es Änderungen der Architektur mit sich, wenn die Infrastruktur von einer Bereitstellung in einer Zone zu einer in zwei Zonen mit PPG wechselt. Weitere Informationen finden Sie im Artikel [Azure-PPG für optimale Netzwerklatenz bei SAP-Anwendungen](./sap-proximity-placement-scenarios.md).   
 
 ### <a name="security"></a>Sicherheit
 Unabhängig davon, ob die neue SAP HANA-VM in einem neuen oder bereits vorhandenen VNET/Subnetz betrieben wird, stellt sie einen wichtigen Geschäftsdienst dar, der abgesichert werden muss.  Für diese neue Dienstklasse muss eine Zugriffsteuerung bewertet und bereitgestellt werden, die der Informationssicherheitsrichtlinie des Unternehmens entspricht.
@@ -116,7 +116,7 @@ Unabhängig davon, ob die neue SAP HANA-VM in einem neuen oder bereits vorhanden
 Die Migration stellt außerdem eine gute Gelegenheit dar, die Größe Ihrer HANA-Compute-Engine zu optimieren.  Sie können HANA-[Systemansichten](https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/3859e48180bb4cf8a207e15cf25a7e57.html) in Verbindung mit HANA Studio verwenden, um den Verbrauch von Systemressourcen zu verstehen und damit die richtige Größe für eine höhere Ausgabeneffizienz zu ermitteln.
 
 ### <a name="storage"></a>Storage 
-Die Speicherleistung ist einer der Faktoren, die sich auf die Benutzererfahrung mit SAP-Anwendungen auswirken.  Für jede VM-SKU gibt es eine Mindestempfehlung für das Speicherlayout, die unter [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) veröffentlicht ist. Es wird empfohlen, diese Mindestspezifikationen zu überprüfen und mit den vorhandenen HLI-Systemstatistiken zu vergleichen, um eine angemessene E/A-Kapazität und Leistung für die neue HANA-VM sicherzustellen.
+Die Speicherleistung ist einer der Faktoren, die sich auf die Benutzererfahrung mit SAP-Anwendungen auswirken.  Für jede VM-SKU gibt es eine Mindestempfehlung für das Speicherlayout, die unter [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md) veröffentlicht ist. Es wird empfohlen, diese Mindestspezifikationen zu überprüfen und mit den vorhandenen HLI-Systemstatistiken zu vergleichen, um eine angemessene E/A-Kapazität und Leistung für die neue HANA-VM sicherzustellen.
 
 Wenn Sie eine PPG für die neue HANA-VM und die zugehörigen Server konfigurieren, übermitteln Sie ein Supportticket, um die Zusammenstellung des Speichers und der VM zu überprüfen und sicherzustellen. Da die Sicherungslösung möglicherweise geändert werden muss, sollten die Speicherkosten ebenfalls erneut untersucht werden, um Überraschungen bei den Betriebsausgaben zu vermeiden.
 
@@ -124,13 +124,13 @@ Wenn Sie eine PPG für die neue HANA-VM und die zugehörigen Server konfiguriere
 Mit der Einführung von HLI wurde Speicherreplikation als Standardoption für die Notfallwiederherstellung angeboten. Dieses Feature ist nicht die Standardoption für SAP HANA auf Azure-VMs. Ziehen Sie HSR, Sicherung/Wiederherstellung oder andere unterstützte Lösungen gemäß Ihren geschäftlichen Anforderungen in Betracht.
 
 ### <a name="availability-sets-availability-zones-and-proximity-placement-groups"></a>Verfügbarkeitsgruppen, Verfügbarkeitszonen und Näherungsplatzierungsgruppen 
-Um die Entfernung zwischen der Anwendungsschicht und SAP HANA zu verringern und die Netzwerklatenz so gering wie möglich zu halten, sollten die neue Datenbank-VM und die aktuellen SAP-Anwendungsserver in einer PPG platziert werden. Informationen zur Funktionsweise von Verfügbarkeitsgruppen und Verfügbarkeitszonen in Azure mit PPG für SAP-Bereitstellungen finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios).
+Um die Entfernung zwischen der Anwendungsschicht und SAP HANA zu verringern und die Netzwerklatenz so gering wie möglich zu halten, sollten die neue Datenbank-VM und die aktuellen SAP-Anwendungsserver in einer PPG platziert werden. Informationen zur Funktionsweise von Verfügbarkeitsgruppen und Verfügbarkeitszonen in Azure mit PPG für SAP-Bereitstellungen finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](./sap-proximity-placement-scenarios.md).
 Wenn Teile des HANA-Zielsystems in mehreren Azure-Zonen bereitgestellt werden, sollten die Kunden über eine klare Ansicht des Latenzprofils der ausgewählten Zonen verfügen. Die Platzierung der SAP-Systemkomponenten ist in Bezug auf die Entfernung zwischen der SAP-Anwendung und der Datenbank optimal.  Mit dem [Testtool für die Verfügbarkeitszonenlatenz](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) (Public Domain) können Sie die Messung vereinfachen.  
 
 
 ### <a name="backup-strategy"></a>Sicherungsstrategie
 Viele Kunden verwenden bereits Sicherungslösungen von Drittanbietern für SAP HANA in HLI.  In diesem Fall müssen nur eine zusätzliche geschützte VM und die HANA-Datenbanken konfiguriert werden.  Laufende HLI-Sicherungsaufträge können jetzt aus der Planung entfernt werden, wenn der Computer nach der Migration außer Betrieb gesetzt wird.
-Azure Backup für SAP HANA auf VMs ist jetzt allgemein verfügbar.  Unter den folgenden Links finden Sie ausführliche Informationen: [Sichern](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database), [Wiederherstellen](https://docs.microsoft.com/azure/backup/sap-hana-db-restore), [Verwalten](https://docs.microsoft.com/azure/backup/sap-hana-db-manage) von SAP HANA-Sicherungen auf Azure-VMs.
+Azure Backup für SAP HANA auf VMs ist jetzt allgemein verfügbar.  Unter den folgenden Links finden Sie ausführliche Informationen: [Sichern](../../../backup/backup-azure-sap-hana-database.md), [Wiederherstellen](../../../backup/sap-hana-db-restore.md), [Verwalten](../../../backup/sap-hana-db-manage.md) von SAP HANA-Sicherungen auf Azure-VMs.
 
 ### <a name="dr-strategy"></a>Strategie zur Notfallwiederherstellung
 Wenn Ihre Servicelevelziele eine längere Wiederherstellungszeit, eine einfache Sicherung in Blob Storage und eine lokale Wiederherstellung oder Wiederherstellung auf einer neuen VM zulassen, ist dies die einfachste und kostengünstigste Strategie zur Notfallwiederherstellung.  
@@ -197,5 +197,5 @@ Im Verlauf der Einrichtung der VM-Server und der Außerbetriebnahme der HLI-Blad
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen hierzu finden Sie in diesen Artikeln:
-- [SAP HANA-Infrastrukturkonfigurationen und -vorgänge in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
-- [Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
+- [SAP HANA-Infrastrukturkonfigurationen und -vorgänge in Azure](./hana-vm-operations.md)
+- [Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure](./sap-deployment-checklist.md)

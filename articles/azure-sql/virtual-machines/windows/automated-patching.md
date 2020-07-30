@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f1f564a36a3f0103832bc81bbbc65d2818c03143
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 822d74c6f080a1bb1e5e5af38bdf2c221af16d52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086760"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatisiertes Patchen für SQL Server auf Azure-VMs (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Beachten Sie bei der Verwendung des automatisierten Patchens die folgenden Vorau
 
 * Windows Server 2008 R2
 * Windows Server 2012
-* Windows Server 2012 R2
+* Windows Server 2012 R2
 * Windows Server 2016
 
 **SQL Server-Version:**
@@ -51,7 +51,7 @@ Beachten Sie bei der Verwendung des automatisierten Patchens die folgenden Vorau
 
 **Azure PowerShell:**
 
-* [Installieren Sie die aktuellen Azure PowerShell-Befehle](/powershell/azure/overview) , wenn Sie das automatisierte Patchen mit PowerShell konfigurieren möchten.
+* [Installieren Sie die aktuellen Azure PowerShell-Befehle](/powershell/azure/) , wenn Sie das automatisierte Patchen mit PowerShell konfigurieren möchten.
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

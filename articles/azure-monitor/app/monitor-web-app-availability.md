@@ -4,16 +4,16 @@ description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Bena
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670031"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310275"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
-Nachdem Sie die Web-App/Website bereitgestellt haben, können Sie regelmäßige Tests einrichten, um die Verfügbarkeit und Reaktionszeit zu überwachen. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Außerdem kann dieser Dienst Sie warnen, wenn Ihre Anwendung nicht oder zu langsam reagieren sollte.
+Nachdem Sie die Web-App/Website bereitgestellt haben, können Sie regelmäßige Tests einrichten, um die Verfügbarkeit und Reaktionszeit zu überwachen. [Azure Application Insights](./app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Außerdem kann dieser Dienst Sie warnen, wenn Ihre Anwendung nicht oder zu langsam reagieren sollte.
 
 Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Internet zugänglich ist, Verfügbarkeitstests einrichten. Sie müssen keinerlei Änderungen an der Website vornehmen, die Sie testen. Sie müssen nicht einmal der Eigentümer der Website sein. Sie können die Verfügbarkeit einer REST-API testen, von der Ihr Dienst abhängig ist.
 
@@ -23,7 +23,7 @@ Es gibt drei Arten von Verfügbarkeitstests:
 
 * [URL-Pingtest](#create-a-url-ping-test): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
 * [Multi-step web test (Mehrstufiger Webtest):](availability-multistep.md) Eine Aufzeichnung einer Sequenz von Webanforderungen, die wiedergegeben werden kann, um komplexere Szenarios zu testen. Mehrstufige Webtests werden in Visual Studio Enterprise erstellt und zur Ausführung im Portal hochgeladen.
-* [Custom Track Availability Tests (Benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit):](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) Wenn Sie eine benutzerdefinierte Anwendung zum Ausführen von Verfügbarkeitstests erstellen möchten, können Sie die `TrackAvailability()`-Methode verwenden, um die Ergebnisse an Application Insights zu senden.
+* [Custom Track Availability Tests (Benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit):](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) Wenn Sie eine benutzerdefinierte Anwendung zum Ausführen von Verfügbarkeitstests erstellen möchten, können Sie die `TrackAvailability()`-Methode verwenden, um die Ergebnisse an Application Insights zu senden.
 
 **Sie können bis zu 100 Verfügbarkeitstests pro Application Insights-Ressource erstellen.**
 
@@ -51,7 +51,7 @@ Der Begriff „URL-Pingtest“ ist irreführend. Der Test setzt nämlich kein IC
 |**Testhäufigkeit**| Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Standardfrequenz von fünf Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.|
 |**Teststandorte**| Die Orte, von denen aus unsere Server Webanforderungen an Ihre URL senden. **Es wird empfohlen, mindestens fünf Teststandorte festzulegen**, um sicherzustellen, dass Sie Probleme mit Ihrer Website von Netzwerkproblemen unterscheiden können. Sie können bis zu 16 Standorte auswählen.
 
-**Wenn Ihre URL im öffentlichen Internet nicht sichtbar ist, können auswählen, dass Ihre Firewall geöffnet werden soll, sodass nur die Testtransaktionen passieren können.** Weitere Informationen zu Firewallausnahmen für unsere Agents für Verfügbarkeitstests finden Sie im [Leitfaden für Verfügbarkeitstests](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests).
+**Wenn Ihre URL im öffentlichen Internet nicht sichtbar ist, können auswählen, dass Ihre Firewall geöffnet werden soll, sodass nur die Testtransaktionen passieren können.** Weitere Informationen zu Firewallausnahmen für unsere Agents für Verfügbarkeitstests finden Sie im [Leitfaden für Verfügbarkeitstests](./ip-addresses.md#availability-tests).
 
 > [!NOTE]
 > Es wird dringend empfohlen, Tests an mehreren Standorten auszuführen **(mindestens fünf)** . Dies dient dazu, Fehlalarme zu vermeiden, die durch vorübergehende Probleme an einem bestimmten Standort entstehen können. Darüber hinaus haben wir festgestellt, dass in einer optimalen Konfiguration die **Anzahl von Teststandorten dem Warnungsschwellenwert für Standorte + 2 entspricht**.
@@ -107,21 +107,21 @@ Aus einem Verfügbarkeitstestergebnis können Sie die Transaktionsdetails für a
 * Protokollieren Sie in Git oder Azure Boards ein Problem oder ein Arbeitselement, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
 * Öffnen Sie das Webtestergebnis in Visual Studio.
 
-Weitere Informationen zur End-to-End-Transaktionsdiagnoseerfahrung finden Sie [hier](../../azure-monitor/app/transaction-diagnostics.md).
+Weitere Informationen zur End-to-End-Transaktionsdiagnoseerfahrung finden Sie [hier](./transaction-diagnostics.md).
 
-Klicken Sie auf die Ausnahmezeile, um die Details der serverseitigen Ausnahme anzuzeigen, die zum Fehlschlagen des synthetischen Verfügbarkeitstest geführt hat. Sie können auch die [Debugmomentaufnahme](../../azure-monitor/app/snapshot-debugger.md) abrufen, um eine umfangreichere Diagnose auf Codeebene durchzuführen.
+Klicken Sie auf die Ausnahmezeile, um die Details der serverseitigen Ausnahme anzuzeigen, die zum Fehlschlagen des synthetischen Verfügbarkeitstest geführt hat. Sie können auch die [Debugmomentaufnahme](./snapshot-debugger.md) abrufen, um eine umfangreichere Diagnose auf Codeebene durchzuführen.
 
 ![Serverseitige Diagnose](./media/monitor-web-app-availability/open-instance-4.png)
 
-Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) zwei wichtige Verfügbarkeitsmetriken abrufen:
+Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](../platform/metrics-getting-started.md) zwei wichtige Verfügbarkeitsmetriken abrufen:
 
 1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen.
 2. Testdauer: Durchschnittliche Testdauer für alle Testausführungen.
 
 ## <a name="automation"></a>Automation
 
-* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](../../azure-monitor/app/powershell.md#add-an-availability-test).
-* Richten Sie einen [Webhook](../../azure-monitor/platform/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
+* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](./powershell.md#add-an-availability-test).
+* Richten Sie einen [Webhook](../platform/alerts-webhooks.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -131,5 +131,4 @@ Zusätzlich zu den reinen Ergebnissen können Sie im [Metrik-Explorer](https://d
 
 * [Availability Alerts (Verfügbarkeitswarnungen)](availability-alerts.md)
 * [Multi-step web tests (Mehrstufige Webtests)](availability-multistep.md)
-
 

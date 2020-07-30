@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75454192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082808"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Verwenden des OPC Vault-Zertifikatverwaltungsdiensts
 
@@ -38,7 +38,7 @@ Erstellen Sie das ZS-Zertifikat des Zertifikatausstellers, falls dies noch nicht
 
 1. Öffnen Sie Ihren Zertifikatdienst unter `https://myResourceGroup-app.azurewebsites.net`, und melden Sie sich an.
 2. Wechseln Sie zu **Jetzt registrieren**. Für eine Anwendungsregistrierung muss einem Benutzer mindestens die Rolle „Writer“ zugewiesen sein.
-2. Für das Eingabeformular gelten die Namenskonventionen in OPC UA. Im nachstehenden Screenshot beispielsweise sind die Einstellungen für das Beispiel [OPC UA-Referenzserver](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) im OPC UA .NET Standard-Stapel dargestellt:
+2. Für das Eingabeformular gelten die Namenskonventionen in OPC UA. Im nachstehenden Screenshot beispielsweise sind die Einstellungen für das Beispiel [OPC UA-Referenzserver](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) im OPC UA .NET Standard-Stapel dargestellt:
 
    ![Screenshot: Registrierung des UA-Referenzservers](media/howto-opc-vault-secure/reference-server-registration.png "Registrierung des UA-Referenzservers")
 

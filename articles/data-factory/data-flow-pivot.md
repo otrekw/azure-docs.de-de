@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/17/2020
+ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086658"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Pivottransformation im Zuordnungsdatenfluss
 
@@ -20,6 +20,8 @@ ms.locfileid: "83683299"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Verwenden Sie die Pivottransformation, um aus den eindeutigen Zeilenwerten einer einzelnen Spalte mehrere Spalten zu erstellen. Pivotieren ist eine Aggregationstransformation, bei der Sie die Option „Nach Spalten gruppieren“ auswählen und mithilfe von [Aggregatfunktionen](data-flow-expression-functions.md#aggregate-functions) Pivotspalten erstellen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4C4YN]
 
 ## <a name="configuration"></a>Konfiguration
 

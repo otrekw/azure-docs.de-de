@@ -3,16 +3,16 @@ title: Verwalten der Sicherungen von Azure-Dateifreigaben mit der REST-API
 description: Erfahren Sie, wie Sie die REST-API verwenden, um Azure-Dateifreigaben, die durch Azure Backup gesichert wurden, zu verwalten und zu überwachen.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073252"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit der REST-API
 
-In diesem Artikel wird erläutert, wie Sie die Aufgaben zur Verwaltung und Überwachung der durch [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) gesicherten Azure-Dateifreigaben durchführen.
+In diesem Artikel wird erläutert, wie Sie die Aufgaben zur Verwaltung und Überwachung der durch [Azure Backup](./backup-overview.md) gesicherten Azure-Dateifreigaben durchführen.
 
 ## <a name="monitor-jobs"></a>Überwachen von Aufträgen
 
@@ -38,7 +38,7 @@ Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backu
 }
 ```
 
-Der Sicherungsauftrag für Azure-Dateifreigaben wird anhand des Felds **jobId** identifiziert und kann wie [hier](https://docs.microsoft.com/rest/api/backup/jobdetails/) beschrieben mit einer GET-Anforderung nachverfolgt werden.
+Der Sicherungsauftrag für Azure-Dateifreigaben wird anhand des Felds **jobId** identifiziert und kann wie [hier](/rest/api/backup/jobdetails/) beschrieben mit einer GET-Anforderung nachverfolgt werden.
 
 ### <a name="tracking-the-job"></a>Nachverfolgen des Auftrags
 
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>Beenden des Schutzes und Löschen der Daten
 
-Um den Schutz einer geschützten Dateifreigabe zu entfernen und auch die Sicherungsdaten zu löschen, führen Sie wie [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/delete) beschrieben einen Löschvorgang durch.
+Um den Schutz einer geschützten Dateifreigabe zu entfernen und auch die Sicherungsdaten zu löschen, führen Sie wie [hier](/rest/api/backup/protecteditems/delete) beschrieben einen Löschvorgang durch.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

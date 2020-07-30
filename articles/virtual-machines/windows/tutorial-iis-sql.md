@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c53194bd345c18ac582acd538f1e8f8e1e34d54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027851"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Tutorial: Installieren des SQL-/IIS-/.NET-Stapels auf einem virtuellen Windows-Computer mit Azure PowerShell
 
@@ -33,7 +33,7 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 ## <a name="create-an-iis-vm"></a>Erstellen einer IIS-VM 
 
-In diesem Beispiel verwenden wir das Cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) in der PowerShell-Cloud Shell, um einen virtuellen Computer unter Windows Server 2016 zu erstellen und dann IIS und .NET Framework zu installieren. Der virtuelle IIS- und der virtuelle SQL-Computer gehören derselben Ressourcengruppe und demselben virtuellen Netzwerk an, daher erstellen wir Variablen für diese Namen.
+In diesem Beispiel verwenden wir das Cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) in der PowerShell-Cloud Shell, um einen virtuellen Computer unter Windows Server 2016 zu erstellen und dann IIS und .NET Framework zu installieren. Der virtuelle IIS- und der virtuelle SQL-Computer gehören derselben Ressourcengruppe und demselben virtuellen Netzwerk an, daher erstellen wir Variablen für diese Namen.
 
 
 ```azurepowershell-interactive
@@ -52,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-Installieren Sie IIS und .NET Framework mit dem Cmdlet [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) unter Verwendung der benutzerdefinierten Skripterweiterung.
+Installieren Sie IIS und .NET Framework mit dem Cmdlet [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) unter Verwendung der benutzerdefinierten Skripterweiterung.
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -76,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-Erstellen Sie mit [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) eine Konfiguration für das Subnetz.
+Erstellen Sie mit [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) eine Konfiguration für das Subnetz.
 
 
 ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-Verwenden Sie [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork), um das VNET mit den neuen Subnetzinformationen zu aktualisieren.
+Verwenden Sie [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork), um das VNET mit den neuen Subnetzinformationen zu aktualisieren.
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -111,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-Verwenden Sie [Set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension), um dem virtuellen SQL-Computer die [SQL Server-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) hinzuzufügen.
+Verwenden Sie [Set-AzVMSqlServerExtension](/powershell/module/az.compute/set-azvmsqlserverextension), um dem virtuellen SQL-Computer die [SQL Server-Erweiterung](../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md) hinzuzufügen.
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -135,4 +135,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie einen IIS-Webserver mit TLS/SSL-Zert
 
 > [!div class="nextstepaction"]
 > [Schützen eines IIS-Webservers mit TLS/SSL-Zertifikaten](tutorial-secure-web-server.md)
-

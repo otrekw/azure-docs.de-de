@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 07/09/2020
-ms.openlocfilehash: da09cb8aa112cdf927c1a67401ab3f6a92e85ece
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224969"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075182"
 ---
 # <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Cognitive Services-Dokumentation: Neuerungen vom 1. bis zum 30. Juni 2020
 
@@ -69,16 +69,16 @@ In diesem Artikel erfahren Sie mehr über die Neuerungen in der Dokumentation zu
 ### <a name="new-articles"></a>Neue Artikel
 
 - [Konzepte benutzerdefinierter Befehle](/azure/cognitive-services/speech-service/custom-commands-references)
-- [Hinzufügen von Bestätigungen zu einem Befehl](/azure/cognitive-services/speech-service/how-to-custom-commands-add-confirmations)
-- [Konfigurieren von Parametern als externe Katalogentität](/azure/cognitive-services/speech-service/how-to-custom-commands-add-external-catalog-string-entity)
+- [Hinzufügen von Bestätigungen zu einem Befehl](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
+- [Konfigurieren von Parametern als externe Katalogentität](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
 - [Verwenden von Sprachgenerierungsvorlagen für Sprachantworten](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [Implementieren von Korrekturen in einem Befehl](/azure/cognitive-services/speech-service/how-to-custom-commands-add-one-step-correction)
+- [Implementieren von Korrekturen in einem Befehl](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
 - [Hinzufügen von Parametern zu Befehlen](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [Hinzufügen einfacher Befehle](/azure/cognitive-services/speech-service/how-to-custom-commands-add-simple-commands)
-- [Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle](/azure/cognitive-services/speech-service/how-to-custom-commands-add-validations)
-- [Erstellen einer Anwendung für benutzerdefinierte Befehle](/azure/cognitive-services/speech-service/how-to-custom-commands-create-empty-project)
+- [Hinzufügen einfacher Befehle](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
+- [Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
+- [Erstellen einer Anwendung für benutzerdefinierte Befehle](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
 - [CI/CD für Custom Speech](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [Erstellen eines End-to-End-Sprachassistenten mithilfe von benutzerdefinierten Befehlen](/azure/cognitive-services/speech-service/quickstart-custom-commands-e2e-application)
+- [Erstellen eines End-to-End-Sprachassistenten mithilfe von benutzerdefinierten Befehlen](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
 - [Schnellstart: Testen eines Modells mithilfe einer Audiodatei in Speech Studio](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
 - [Grundlagen zur Sprechererkennung](/azure/cognitive-services/speech-service/speaker-recognition-basics)
 - [Was ist der Azure-Sprechererkennungsdienst?](/azure/cognitive-services/speech-service/speaker-recognition-overview)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066535"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Business Continuity & Disaster Recovery für Azure Logic Apps
 
@@ -157,7 +157,7 @@ Wenn Ihre Logik-App ausgelöst und ihre Ausführung gestartet wird, wird der Sta
 
 Um die Anzahl der abgebrochenen Workflowinstanzen zu minimieren, können Sie aus verschiedenen Nachrichtenmustern auswählen, die Sie implementieren können, beispielsweise:
 
-* [Muster „Fixed Routing Slip“](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [Muster „Fixed Routing Slip“](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   Dieses Unternehmensnachrichtenmuster unterteilt einen Geschäftsprozess in kleinere Phasen. Für jede Phase richten Sie eine Logik-App ein, die die Workload für diese Phase verarbeitet. Um miteinander zu kommunizieren, verwenden Ihre Logik-Apps ein asynchrones Messagingprotokoll, z. B. Azure Service Bus-Warteschlangen oder -Themen. Wenn Sie einen Prozess in kleinere Phasen aufteilen, verringern Sie die Anzahl von Geschäftsprozessen, die möglicherweise aufgrund einer fehlerhaften Logik-App-Instanz nicht verarbeitet werden. Weitere allgemeine Informationen zu diesem Muster finden Sie unter [Unternehmensintegrationsmuster: Routing Slip](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html).
 
@@ -165,7 +165,7 @@ Um die Anzahl der abgebrochenen Workflowinstanzen zu minimieren, können Sie aus
 
   ![Aufteilen eines Geschäftsprozesses in Phasen, die von Logic-Apps dargestellt werden, die über Azure Service Bus-Warteschlangen miteinander kommunizieren](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  Wenn sowohl primäre als auch sekundäre Logik-App-Instanzen das gleiche Routing Slip-Muster an ihren Standorten verwenden, können Sie das [Muster für konkurrierende Consumer](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) implementieren, indem Sie [Aktiv/Aktiv-Rollen](#roles) für diese Instanzen einrichten.
+  Wenn sowohl primäre als auch sekundäre Logik-App-Instanzen das gleiche Routing Slip-Muster an ihren Standorten verwenden, können Sie das [Muster für konkurrierende Consumer](/azure/architecture/patterns/competing-consumers) implementieren, indem Sie [Aktiv/Aktiv-Rollen](#roles) für diese Instanzen einrichten.
 
 * [Muster „Prozess-Manager“ (Broker)](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ Aus der Perspektive der Notfallwiederherstellung sollten Sie beim Einrichten der
   Beispielsweise wird durch das Lesen aus einer Nachrichtenwarteschlange (z. B. einer Azure Service Bus-Warteschlange) der serverseitige Zustand verwendet, da der Warteschlangendienst Sperren für Nachrichten verwaltet, um zu verhindern, dass andere Clients dieselben Nachrichten lesen.
 
   > [!NOTE]
-  > Wenn Ihre Logik-App Nachrichten in einer bestimmten Reihenfolge lesen muss (z. B. aus einer Service Bus-Warteschlange), können Sie das Muster der konkurrierenden Consumer verwenden. Dies gilt aber nur in Kombination mit Service Bus-Sitzungen und wird auch als [*sequenzielles Konvoimuster*](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) bezeichnet. Andernfalls müssen Sie Ihre Logik-App-Instanzen mit den Aktiv/Passiv-Rollen einrichten.
+  > Wenn Ihre Logik-App Nachrichten in einer bestimmten Reihenfolge lesen muss (z. B. aus einer Service Bus-Warteschlange), können Sie das Muster der konkurrierenden Consumer verwenden. Dies gilt aber nur in Kombination mit Service Bus-Sitzungen und wird auch als [*sequenzielles Konvoimuster*](/azure/architecture/patterns/sequential-convoy) bezeichnet. Andernfalls müssen Sie Ihre Logik-App-Instanzen mit den Aktiv/Passiv-Rollen einrichten.
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ Aus Sicht der Notfallwiederherstellung ist der Anforderungstrigger ein passiver 
 
 * [Aktiv/Passiv](#roles): Nur die primäre Instanz ist aktiv und verarbeitet alle Aufgaben, während die sekundäre Instanz wartet, bis die primäre Instanz unterbrochen wird oder ausfällt. Der Aufrufer oder Router bestimmt, wann die sekundäre Instanz aufgerufen werden soll.
 
-Als empfohlene Architektur können Sie Azure API Management als Proxy für die Logik-Apps verwenden, die Anforderungstrigger verwenden. API Management bietet [integrierte regionsübergreifende Resilienz und die Möglichkeit, Datenverkehr über mehrere Endpunkte weiterzuleiten](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region).
+Als empfohlene Architektur können Sie Azure API Management als Proxy für die Logik-Apps verwenden, die Anforderungstrigger verwenden. API Management bietet [integrierte regionsübergreifende Resilienz und die Möglichkeit, Datenverkehr über mehrere Endpunkte weiterzuleiten](../api-management/api-management-howto-deploy-multi-region.md).
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Erstellen Sie für diese Aufgabe am sekundären Standort eine Watchdog-Logik-App
 
 ### <a name="activate-your-secondary-instance"></a>Aktivieren der sekundären Instanz
 
-Zum automatischen Aktivieren der sekundären Instanz können Sie eine Logik-App erstellen, die die Management API aufruft, z. B. den [Azure Resource Manager-Connector](https://docs.microsoft.com/connectors/arm/), um die entsprechenden Logik-Apps am sekundären Standort zu aktivieren. Nachdem eine bestimmte Anzahl von Fehlern aufgetreten ist, können Sie Ihre Watchdog-App erweitern, um diese Aktivierungs-Logik-App aufzurufen.
+Zum automatischen Aktivieren der sekundären Instanz können Sie eine Logik-App erstellen, die die Management API aufruft, z. B. den [Azure Resource Manager-Connector](/connectors/arm/), um die entsprechenden Logik-Apps am sekundären Standort zu aktivieren. Nachdem eine bestimmte Anzahl von Fehlern aufgetreten ist, können Sie Ihre Watchdog-App erweitern, um diese Aktivierungs-Logik-App aufzurufen.
 
 <a name="collect-diagnostic-data"></a>
 
@@ -348,9 +348,9 @@ Sie können Protokollierung für Ihre Logik-App-Ausführungen einrichten und die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Resilienz für Azure (Übersicht)](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [Checkliste für Resilienz für bestimmte Azure-Dienste](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Datenverwaltung für Resilienz in Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Sicherung und Notfallwiederherstellung von Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [Resilienz für Azure (Übersicht)](/azure/architecture/framework/resiliency/overview)
+* [Checkliste für Resilienz für bestimmte Azure-Dienste](/azure/architecture/checklist/resiliency-per-service)
+* [Datenverwaltung für Resilienz in Azure](/azure/architecture/framework/resiliency/data-management)
+* [Sicherung und Notfallwiederherstellung von Azure-Anwendungen](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [Vereinbarungen zum Servicelevel (SLAs) für Azure-Dienste](https://azure.microsoft.com/support/legal/sla/)

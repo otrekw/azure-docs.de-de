@@ -4,12 +4,12 @@ description: Überwachen Sie Probleme wie Startfehler, Abstürze und Schleifen b
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669742"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309289"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Warnung bei Problemen in Azure Cloud Services mit der Azure-Diagnoseintegration in Azure Application Insights
 
@@ -111,7 +111,7 @@ Nachdem Sie die Aktionsgruppe definiert haben, bestätigen Sie Ihre Änderungen,
 
 Weitere Informationen zur automatischen Erkennung finden Sie hier:
 
-[Fehleranomalien](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[Arbeitsspeicherverluste](../../azure-monitor/app/proactive-potential-memory-leak.md)
-[Leistungsanomalien](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[Fehleranomalien](./proactive-failure-diagnostics.md)
+[Arbeitsspeicherverluste](./proactive-potential-memory-leak.md)
+[Leistungsanomalien](./proactive-performance-diagnostics.md)
 

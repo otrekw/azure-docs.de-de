@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d8ca41c56239bc994b34119600dfa9db60ada6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083088"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -140,7 +140,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-Weitere Informationen zur Verwendung von „CloudTable“ finden Sie unter [Erste Schritte mit Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md).
+Weitere Informationen zur Verwendung von „CloudTable“ finden Sie unter [Erste Schritte mit Azure Table Storage](../cosmos-db/tutorial-develop-table-dotnet.md).
 
 Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
@@ -306,7 +306,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-Weitere Informationen zur Verwendung von „CloudTable“ finden Sie unter [Erste Schritte mit Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md).
+Weitere Informationen zur Verwendung von „CloudTable“ finden Sie unter [Erste Schritte mit Azure Table Storage](../cosmos-db/tutorial-develop-table-dotnet.md).
 
 Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
@@ -607,7 +607,7 @@ Tabellendaten werden als JSON-Zeichenfolge an die Funktion übergeben. Deseriali
 
 # <a name="java"></a>[Java](#tab/java)
 
-Das [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput)-Attribut gewährt Ihnen Zugriff auf die Tabellenzeile, die die Funktion ausgelöst hat.
+Das [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput)-Attribut gewährt Ihnen Zugriff auf die Tabellenzeile, die die Funktion ausgelöst hat.
 
 ---
 
@@ -978,15 +978,15 @@ Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeilen-Nachricht a
 
 - **Rückgabewert**: Legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest. Mit dieser Konfiguration wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
 
-- **Imperativ**: Übergeben Sie einen Wert an die [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)-Methode des Parameters, der als [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)-Typ deklariert ist. Der an `set` übergebene Wert wird als Event Hub-Nachricht beibehalten.
+- **Imperativ**: Übergeben Sie einen Wert an die [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)-Methode des Parameters, der als [Out](/python/api/azure-functions/azure.functions.out?view=azure-python)-Typ deklariert ist. Der an `set` übergebene Wert wird als Event Hub-Nachricht beibehalten.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeile aus einer Funktion mittels der [TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)-Anmerkung:
+Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeile aus einer Funktion mittels der [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)-Anmerkung:
 
 - **Rückgabewert**: Wenn Sie die Anmerkung auf die Funktion selbst anwenden, wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
 
-- **Imperativ**: Um den Nachrichtenwert explizit festzulegen, wenden Sie die Anmerkung auf einen bestimmten Parameter des Typs [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) an, wobei `T` die Eigenschaften `PartitionKey` und `RowKey` enthält. Diese Eigenschaften gehen häufig mit der Implementierung von `ITableEntity` oder der Vererbung von `TableEntity` einher.
+- **Imperativ**: Um den Nachrichtenwert explizit festzulegen, wenden Sie die Anmerkung auf einen bestimmten Parameter des Typs [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) an, wobei `T` die Eigenschaften `PartitionKey` und `RowKey` enthält. Diese Eigenschaften gehen häufig mit der Implementierung von `ITableEntity` oder der Vererbung von `TableEntity` einher.
 
 ---
 
@@ -994,9 +994,9 @@ Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeile aus einer Fu
 
 | Bindung | Verweis |
 |---|---|
-| Tabelle | [Tabellenfehlercodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| Blob, Tabelle, Warteschlange | [Speicherfehlercodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Tabelle, Warteschlange | [Problembehandlung](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Tabelle | [Tabellenfehlercodes](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob, Tabelle, Warteschlange | [Speicherfehlercodes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, Tabelle, Warteschlange | [Problembehandlung](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

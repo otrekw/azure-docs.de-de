@@ -4,12 +4,12 @@ description: Übersicht über Azure Blockchain Service
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214076"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076950"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Was ist der Azure Blockchain-Dienst?
 
@@ -75,7 +75,7 @@ Neues zu Azure Blockchain: Mit dem [Azure Blockchain-Blog](https://azure.microso
 
 Diskutieren Sie mit Microsoft-Technikern und Azure Blockchain-Communityexperten.
 
-* [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Blockchain Service](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
+* [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Blockchain Service](/answers/topics/azure-blockchain-service.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
