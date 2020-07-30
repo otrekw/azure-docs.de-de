@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 6560bf452f04ae5d88168b8d3fad300feb90b16f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5898177c546fd2ba7d0802afe0334089d6a05e67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028820"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg
 
-Mithilfe von Katalogen mit freigegebenen Images können Sie Images über RBAC freigeben. Sie können RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Weitere Informationen zu dieser einfachen Freigabeoption finden Sie unter [Freigeben des Katalogs](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery).
+Mithilfe von Katalogen mit freigegebenen Images können Sie Images über RBAC freigeben. Sie können RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Weitere Informationen zu dieser einfachen Freigabeoption finden Sie unter [Freigeben des Katalogs](./shared-images-portal.md#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 

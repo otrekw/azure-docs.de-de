@@ -3,15 +3,15 @@ title: Erstellen einer Linux-VM mit der REST-API
 description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer in Azure erstellen, der verwaltete Datenträger und SSH-Authentifizierung mit der Azure-REST-API verwendet.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970271"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373401"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
 
@@ -46,7 +46,7 @@ Die folgenden Header sind erforderlich:
 | Anforderungsheader   | BESCHREIBUNG |
 |------------------|-----------------|
 | *Content-Type:*  | Erforderlich. Legen Sie diese Option auf `application/json` fest. |
-| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
+| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
 
 Allgemeine Informationen zum Arbeiten mit REST-API-Anforderung finden Sie unter [Komponenten einer REST-API-Anforderung/Antwort](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -122,7 +122,7 @@ Eine vollständige Liste der verfügbaren Definitionen im Anforderungstext finde
 
 ## <a name="sending-the-request"></a>Absenden der Anforderung
 
-Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung verwenden. Sie können außerdem ein [In-Browser-Tool](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) verwenden, indem Sie auf die Schaltfläche **Testen** klicken.
+Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung verwenden. Sie können außerdem ein [In-Browser-Tool](/rest/api/compute/virtualmachines/createorupdate) verwenden, indem Sie auf die Schaltfläche **Testen** klicken.
 
 ### <a name="responses"></a>Antworten
 
@@ -151,4 +151,4 @@ Weitere Informationen zu den Azure-REST-APIs oder anderen Verwaltungstools, z.B.
 - [Azure Compute-Anbieter-REST-API](/rest/api/compute/)
 - [Erste Schritte mit der Azure-REST-API](/rest/api/azure/)
 - [Azure-Befehlszeilenschnittstelle](/cli/azure/)
-- [Azure PowerShell-Modul](/powershell/azure/overview)
+- [Azure PowerShell-Modul](/powershell/azure/)

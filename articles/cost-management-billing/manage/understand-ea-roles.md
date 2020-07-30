@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045143"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124339"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Verwalten von Azure Enterprise-Rollen
 
@@ -32,7 +32,7 @@ Der erste Registrierungsadministrator, der während der Registrierungsbereitstel
 
 Wenn der ursprüngliche Authentifizierungstyp auf „Gemischt“ festgelegt wird, wird das EA als Microsoft-Konto hinzugefügt, und der Rechnungsempfänger besitzt EA-Administratorberechtigungen vom Typ „Schreibgeschützt“. Wenn der EA-Administrator die Microsoft-Kontoautorisierung für einen vorhandenen Rechnungsempfänger nicht genehmigt, kann der EA-Administrator den betreffenden Benutzer löschen und den Kunden bitten, den Benutzer als Administrator mit Leseberechtigung für ein Geschäfts-, Schul-oder Unikonto hinzuzufügen, das nur auf Registrierungsebene im EA Portal festgelegt ist.
 
-Diese Rollen sind spezifisch für die Verwaltung von Azure Enterprise Agreements und ergänzend zu den integrierten Rollen in Azure zum Steuern des Zugriffs auf Ressourcen. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../../role-based-access-control/built-in-roles.md).
+Diese Rollen sind spezifisch für die Verwaltung von Azure Enterprise Agreements und ergänzend zu den integrierten Rollen in Azure zum Steuern des Zugriffs auf Ressourcen. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
 Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der einzelnen Rollen.
 
@@ -121,4 +121,4 @@ Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von
 
 - [Verwalten des Zugriffs auf Abrechnungsinformationen für Azure](manage-billing-access.md)
 - [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md)
-- [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md)
+- [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md)

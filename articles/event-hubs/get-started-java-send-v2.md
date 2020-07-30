@@ -3,12 +3,13 @@ title: Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs unter 
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen einer Java-Anwendung, die unter Verwendung des aktuellen Pakets „azure-messaging-eventhubs“ Ereignisse an Azure Event Hubs sendet bzw. von dort empfängt.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ab28b3d434c1e44fb173655c6414412ceda1101f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-java
+ms.openlocfilehash: b1e18942e1e39c4238d73c6689c5de21d0d390db
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537087"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366788"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs unter Verwendung von Java (azure-messaging-eventhubs)
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Java-Pakets **azure-messaging-eventhubs** Ereignisse an einen Event Hub senden bzw. von dort empfangen.

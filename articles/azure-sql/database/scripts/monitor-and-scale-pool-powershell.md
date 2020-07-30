@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: c0ce0a1019554592f769d88f4168da7dc6188586
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 14c6193b4a4373d754e3e90d573eccd2735de56c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196837"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085026"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Verwenden von PowerShell zum Überwachen und Skalieren eines Pools für elastische Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -60,6 +60,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche PowerShell-Skriptbeispiele finden Sie unter [Azure PowerShell-Skripts](../powershell-script-content-guide.md).

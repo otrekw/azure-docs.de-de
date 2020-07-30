@@ -3,15 +3,15 @@ title: Szenarien der Notfallwiederherstellung
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 43e7cb0906fc6008e8bdbfafec84ecfd8e8be6b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525822"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289677"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Was passiert, wenn sich die Störung eines Azure-Diensts auf Azure-VMs auswirkt?
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.

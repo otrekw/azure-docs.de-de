@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 30b4386c223240217096550330c0920ad9ab6871
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b382efc4d283d64ce0f833bde9104fa2e3bc973a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132921"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088544"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows zeigt Bluescreenfehler beim Starten einer Azure-VM an
 Dieser Artikel beschreibt Bluescreenfehler, die möglicherweise beim Starten eines virtuellen Windows-Computers (VM) in Microsoft Azure angezeigt werden. Er bietet Schritte, mit denen Sie Daten für ein Supportticket sammeln können. 
@@ -47,7 +47,7 @@ Um dieses Problem zu beheben, müssten Sie die erste Sicherungsdatei für den Ab
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
 1. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
-2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md). 
+2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md). 
 3. Remotedesktopverbindung mit der Wiederherstellungs-VM.
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Suche nach der Sicherungsdatei und Senden eines Supporttickets
@@ -100,9 +100,6 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
     reg unload HKLM\BROKENSYSTEM
     ```
 
-3. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](../windows/troubleshoot-recovery-disks-portal.md).
+3. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](./troubleshoot-recovery-disks-portal-windows.md).
 4. Starten Sie die VM, um das Problem zu reproduzieren. Daraufhin wird eine Sicherungsdatei generiert.
 5. Fügen Sie den Betriebssystemdatenträger an eine Wiederherstellungs-VM an, sammeln Sie die Sicherungsdatei, und [senden Sie dann ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mit der Sicherungsdatei.
-
-
-

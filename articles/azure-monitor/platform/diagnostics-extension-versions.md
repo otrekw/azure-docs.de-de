@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672241"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305090"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Konfigurationsschema der Azure-Diagnoseerweiterung für Windows – Versionen und Versionsverlauf
 Dieser Artikel bietet Informationen zum Versionsverlauf der Schemaversionen der [Azure-Diagnoseerweiterung für Windows](diagnostics-extension-overview.md), die im Rahmen des Microsoft Azure SDK geliefert wird.  
@@ -46,8 +46,8 @@ Verschiedene Versionen der Azure-Diagnose verwenden unterschiedliche Konfigurati
 
 ### <a name="diagnostics-extension-111"></a>Diagnoseerweiterung 1.11
 Unterstützung für die Azure Monitor-Senke wurde hinzugefügt. Diese Senke ist nur auf Leistungsindikatoren anwendbar. Sie ermöglicht es, Leistungsindikatoren, die auf Ihrem virtuellen Computer, Ihrer VMSS oder in Ihrem Clouddienst gesammelt wurden, als benutzerdefinierte Metriken an Azure Monitor zu senden. Die Azure Monitor-Senke unterstützt Folgendes:
-* Abrufen aller Leistungsindikatoren, die über die [APIs der Azure Monitor-Metriken](https://docs.microsoft.com/rest/api/monitor/metrics/list) an Azure Monitor gesendet wurden.
-* Benachrichtigung für alle Leistungsindikatoren, die über die neue [einheitliche Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md) in Azure Monitor an Azure Monitor gesendet werden.
+* Abrufen aller Leistungsindikatoren, die über die [APIs der Azure Monitor-Metriken](/rest/api/monitor/metrics/list) an Azure Monitor gesendet wurden.
+* Benachrichtigung für alle Leistungsindikatoren, die über die neue [einheitliche Oberfläche für Warnungen](./alerts-overview.md) in Azure Monitor an Azure Monitor gesendet werden.
 * Behandeln von Platzhalteroperatoren in Leistungsindikatoren als die Dimension „Instanz“ in Ihrer Metrik. Wenn Sie z. B. den Indikator „LogicalDisk(\*)/DiskWrites/Sek.“ erfasst haben, können Sie die Dimension „Instanz“ filtern und aufteilen, um für jeden logischen Datenträger (C:, D: usw.) Schreibvorgänge pro Sekunde darzustellen oder hinsichtlich dieser Vorgänge Warnungen auszugeben.
 
 Definieren von Azure Monitor als neue Senke in Ihrer Konfiguration der Diagnoseerweiterung
@@ -155,7 +155,7 @@ Speichertyp zu PublicConfig hinzugefügt. StorageType kann *Table*, *Blob* oder 
 Möglichkeit zum Routen an EventHub hinzugefügt.
 
 ### <a name="diagnostics-extension-15"></a>Diagnoseerweiterung 1.5
-Das Element „sinks“ wurde hinzugefügt, ebenso die Möglichkeit, Diagnosedaten an [Application Insights](../../azure-monitor/app/cloudservices.md) zu senden. Dies vereinfacht die Diagnose von Problemen sowohl in Ihrer gesamten Anwendung als auch auf System- und Infrastrukturebene.
+Das Element „sinks“ wurde hinzugefügt, ebenso die Möglichkeit, Diagnosedaten an [Application Insights](../app/cloudservices.md) zu senden. Dies vereinfacht die Diagnose von Problemen sowohl in Ihrer gesamten Anwendung als auch auf System- und Infrastrukturebene.
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 und Diagnoseerweiterung 1.3
 Für Clouddienstprojekte in Visual Studio wurden die folgenden Änderungen vorgenommen. (Diese Änderungen gelten auch für spätere Versionen des Azure SDK.)

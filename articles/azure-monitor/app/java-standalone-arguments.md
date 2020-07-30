@@ -3,12 +3,13 @@ title: Überwachen von in beliebiger Umgebung ausgeführten Java-Anwendungen –
 description: Überwachen der Anwendungsleistung für Java-Anwendungen, die in einer beliebigen Umgebung ausgeführt werden, mit eigenständigem Java-Agent und ohne die App zu instrumentieren. Verteilte Ablaufverfolgung und Anwendungszuordnung.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.custom: devx-track-java
+ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508036"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374302"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurieren eines eigenständigen Java-Agents für JVM-Argumente für Azure Monitor Application Insights
 
@@ -16,7 +17,7 @@ ms.locfileid: "82508036"
 
 ## <a name="azure-environments"></a>Azure-Umgebungen
 
-Konfigurieren Sie [App Services](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options).
+Konfigurieren Sie [App Services](../../app-service/configure-language-java.md#set-java-runtime-options).
 
 ## <a name="spring-boot"></a>Spring Boot
 

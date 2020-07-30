@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: f8f65d5f5fe9ec2345279d9f680cb77354834715
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: aa182f27fcd3ab2984bbd9f960b2b828880c36f5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735547"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375193"
 ---
 <a name="HOLTop"></a>
 
@@ -30,7 +30,7 @@ ms.locfileid: "84735547"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio-IDE](https://visualstudio.microsoft.com/vs/)
 * Sobald Sie über Ihr Azure-Abonnement verfügen, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Erstellen einer Textanalyseressource"  target="_blank"> erstellen Sie eine Textanalyseressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten.  Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und den Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Textanalyse-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
@@ -44,7 +44,7 @@ Erstellen Sie über die Visual Studio-IDE eine neue .NET Core-Konsolenanwendung.
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Installieren Sie die Clientbibliothek, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe klicken und **NuGet-Pakete verwalten** auswählen. Wählen Sie im daraufhin geöffneten Paket-Manager die Option **Durchsuchen** aus, und suchen Sie nach `Azure.AI.TextAnalytics`. Wählen Sie die Version `1.0.0` und anschließend **Installieren** aus. Sie können auch die [Paket-Manager-Konsole](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) verwenden.
+Installieren Sie die Clientbibliothek, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe klicken und **NuGet-Pakete verwalten** auswählen. Wählen Sie im daraufhin geöffneten Paket-Manager die Option **Durchsuchen** aus, und suchen Sie nach `Azure.AI.TextAnalytics`. Wählen Sie die Version `5.0.0` und anschließend **Installieren** aus. Sie können auch die [Paket-Manager-Konsole](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package) verwenden.
 
 
 > [!TIP]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711849"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021374"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
 
@@ -84,7 +84,7 @@ Bevor Sie das Cloudgerät bereitstellen, müssen Sie in Ihrer Umgebung die folge
 * [Konfigurieren Sie für das Cloudgerät ein virtuelles Netzwerk in Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Wenn Sie Storage Premium verwenden, müssen Sie ein virtuelles Netzwerk in einer Azure-Region erstellen, die Storage Premium unterstützt. Storage Premium-Regionen sind Regionen, die der Zeile „Disk Storage“ in der Liste [Azure-Produkte nach Region](https://azure.microsoft.com/regions/services/) entsprechen.
 * Es ist ratsam, die von Azure bereitgestellten DNS-Standardserver zu verwenden, anstatt einen eigenen DNS-Servernamen anzugeben. Wenn Ihr DNS-Servername ungültig ist oder der DNS-Server IP-Adressen nicht richtig auflösen kann, ist die Erstellung des Cloudgeräts nicht möglich.
 * Punkt-zu-Standort und Standort-zu-Standort sind optional, aber nicht erforderlich. Sie können diese Optionen gegebenenfalls für erweiterte Szenarios konfigurieren.
-* Sie können [virtuelle Azure-Computer](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (Hostserver) im virtuellen Netzwerk erstellen, die die vom Cloudgerät verfügbar gemachten Volumes verwenden können. Diese Server müssen die folgenden Anforderungen erfüllen:
+* Sie können [virtuelle Azure-Computer](../virtual-machines/windows/quick-create-portal.md) (Hostserver) im virtuellen Netzwerk erstellen, die die vom Cloudgerät verfügbar gemachten Volumes verwenden können. Diese Server müssen die folgenden Anforderungen erfüllen:
 
   * Es muss sich um virtuelle Windows- oder Linux-Computer mit iSCSI-Initiatorsoftware handeln.
   * Sie müssen im gleichen virtuellen Netzwerk wie das Cloudgerät ausgeführt werden.

@@ -3,20 +3,22 @@ title: API-Voraussetzungen – Azure Marketplace
 description: Voraussetzungen für das Verwenden der Cloud-Partnerportal-APIs.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: c932db1b86cecae4d90b0d6acffc4a0cde49e369
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 2cce5d3463ced126a3e6e77323110e4a70024acb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115739"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292902"
 ---
 <a name="api-prerequisites"></a>API-Voraussetzungen
 ================
 
 > [!NOTE]
-> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Der Übergang führt zu kleineren Änderungen. Beachten Sie die in der [Cloud-Partnerportal-API-Referenz](./cloud-partner-portal-api-overview.md) aufgeführten Änderungen, um sicherzustellen, dass Ihr Code nach dem Übergang zu Partner Center weiterhin funktioniert. CPP-APIs sollten nur für vorhandene Produkte verwendet werden, die bereits vor dem Übergang zu Partner Center integriert wurden. Neue Produkte sollten die Partner Center-APIs für die Übermittlung verwenden.
 
 Es gibt zwei programmatische Ressourcen, die Sie benötigen, um die Cloud-Partnerportal-APIs verwenden zu können: ein Dienstprinzipal- und ein Azure Active Directory-Zugriffstoken (Azure AD-Zugriffstoken).
 

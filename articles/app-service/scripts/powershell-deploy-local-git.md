@@ -6,18 +6,18 @@ ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be2f066f5150c0d3a9f1cfce639c26db853e0cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74684842"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084890"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository
 
 Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über ein lokales Git-Repository bereit.
 
-Führen Sie bei Bedarf anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview) ein Update auf die neueste Azure PowerShell-Version durch, und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus muss der Anwendungscode in einem lokalen Git-Repository committet werden.
+Führen Sie bei Bedarf anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/) ein Update auf die neueste Azure PowerShell-Version durch, und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. Darüber hinaus muss der Anwendungscode in einem lokalen Git-Repository committet werden.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -43,6 +43,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche Azure PowerShell-Beispiele für Azure App Service-Web-Apps finden Sie unter [Azure PowerShell-Beispiele](../samples-powershell.md).

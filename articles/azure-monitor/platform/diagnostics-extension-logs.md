@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672394"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317177"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Sammeln von Daten aus der Azure-Diagnoseerweiterung in Azure Monitor-Protokollen
 Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](agents-overview.md), der Überwachungsdaten aus dem Gastbetriebssystem von Azure-Computeressourcen einschließlich VMs sammelt. In diesem Artikel wird beschrieben, wie von der Diagnoseerweiterung gesammelte Daten aus Azure Storage in Azure Monitor-Protokollen erfasst werden.
@@ -63,6 +63,7 @@ Nach etwa 30 Minuten können Sie Daten aus dem Speicherkonto im Log Analytics-Ar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Sammeln von Protokollen und Metriken für Azure-Dienste](collect-azure-metrics-logs.md) für unterstützte Azure-Dienste.
-* [Aktivieren Sie Lösungen](../../azure-monitor/insights/solutions.md) , um Einblick in die Daten bereitzustellen.
-* [Erstellen Sie Suchabfragen](../../azure-monitor/log-query/log-query-overview.md) , um die Daten zu analysieren.
+* [Sammeln von Protokollen und Metriken für Azure-Dienste](./resource-logs.md#send-to-log-analytics-workspace) für unterstützte Azure-Dienste.
+* [Aktivieren Sie Lösungen](../insights/solutions.md) , um Einblick in die Daten bereitzustellen.
+* [Erstellen Sie Suchabfragen](../log-query/log-query-overview.md) , um die Daten zu analysieren.
+

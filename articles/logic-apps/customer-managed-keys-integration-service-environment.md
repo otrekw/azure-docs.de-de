@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687003"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386162"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -39,7 +39,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 * Ein Azure-Schlüsseltresor mit aktivierten Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen)
 
-  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/overview-soft-delete.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Wenn Sie noch nicht mit Azure Key Vault vertraut sind, informieren Sie sich, wie Sie mithilfe des Azure-Portals oder des Azure PowerShell-Befehls [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) [einen Schlüsseltresor erstellen](../key-vault/secrets/quick-create-portal.md#create-a-vault).
+  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Wenn Sie noch nicht mit Azure Key Vault vertraut sind, informieren Sie sich, wie Sie mithilfe des Azure-Portals oder des Azure PowerShell-Befehls [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) [einen Schlüsseltresor erstellen](../key-vault/secrets/quick-create-portal.md#create-a-vault).
 
 * Ein Schlüssel in Ihrem Schlüsseltresor, der mit diesen Eigenschaftswerten erstellt wurde:
 
@@ -52,7 +52,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
   ![Erstellen des vom Kunden verwalteten Verschlüsselungsschlüssels](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Weitere Informationen finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) und unter dem Azure PowerShell-Befehl [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey).
+  Weitere Informationen finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) und unter dem Azure PowerShell-Befehl [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
 
 * Ein Tool, mit dem Sie Ihre ISE durch Aufrufen der Logic Apps-REST-API mit einer HTTPS PUT-Anforderung erstellen können. Beispielsweise können Sie [Postman](https://www.getpostman.com/downloads/) verwenden oder eine Logik-App erstellen, die diese Aufgabe ausführt.
 
@@ -199,7 +199,7 @@ In diesem Beispielanforderungstext werden die Beispielwerte gezeigt:
 
 Innerhalb von *30 Minuten* nach dem Senden der HTTP PUT-Anforderung zum Erstellen der ISE müssen Sie Ihrem Schlüsseltresor eine Zugriffsrichtlinie für die vom System zugewiesene Identität Ihrer ISE hinzufügen. Andernfalls tritt bei der Erstellung Ihrer ISE ein Fehler auf, und Sie erhalten einen Berechtigungsfehler. 
 
-Für diese Aufgabe können Sie entweder den Azure PowerShell-Befehl [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) verwenden oder die folgenden Schritte im Azure-Portal ausführen:
+Für diese Aufgabe können Sie entweder den Azure PowerShell-Befehl [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) verwenden oder die folgenden Schritte im Azure-Portal ausführen:
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihren Azure-Schlüsseltresor.
 

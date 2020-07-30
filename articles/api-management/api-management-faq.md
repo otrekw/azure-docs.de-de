@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243578"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050332"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -77,7 +77,7 @@ So fügen Sie Benutzer zur Gruppe „Administratoren“ hinzu:
 2. Wechseln Sie zur Ressourcengruppe mit der API Management-Instanz, die Sie aktualisieren möchten.
 3. Weisen Sie in API Management dem Benutzer die Rolle **Api Management Service Contributor** (Mitwirkender für API Management) hinzu.
 
-Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](/powershell/azure/overview) verwenden. So melden Sie sich als Administrator an:
+Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](/powershell/azure/) verwenden. So melden Sie sich als Administrator an:
 
 1. Verwenden Sie das `Connect-AzAccount`-Cmdlet, um sich anzumelden.
 2. Legen Sie den Kontext auf das Abonnement fest, das den Dienst enthält. Verwenden Sie hierfür `Set-AzContext -SubscriptionID <subscriptionGUID>`.

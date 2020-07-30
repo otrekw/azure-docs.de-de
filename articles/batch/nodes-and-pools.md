@@ -3,12 +3,12 @@ title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 5707d834a7d99e147a81ee2b39952863a63ed695
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144919"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385754"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
@@ -119,7 +119,7 @@ Weitere Informationen finden Sie unter [Choose a VM size for compute nodes in an
 
 Bei dynamischen Workloads können Sie eine Richtlinie für automatische Skalierung auf einen Pool anwenden. Der Batch-Dienst wertet Ihre Formel regelmäßig aus und passt die Anzahl der Knoten innerhalb des Pools dynamisch an die aktuelle Workload und den Ressourcenverbrauch Ihres Computeszenarios an. So können Sie die Gesamtkosten für die Ausführung Ihrer Anwendung senken, indem Sie nur die erforderlichen Ressourcen verwenden und nicht benötigte Ressourcen freigeben.
 
-Sie aktivieren die automatische Skalierung, indem Sie eine [Formel für die automatische Skalierung](batch-automatic-scaling.md#automatic-scaling-formulas) erstellen und diese Formel einem Pool zuordnen. Der Batch-Dienst verwendet die Formel, um die vorgegebene Anzahl von Knoten im Pool für das nächste Skalierungsintervall (welches Sie konfigurieren können) zu bestimmen. Sie können für einen Pool die Einstellungen für die automatische Skalierung angeben, wenn Sie diesen erstellen, oder Sie können die Skalierung für einen Pool später aktivieren. Außerdem können Sie die Skalierungseinstellungen für einen Pool aktualisieren, für den die Skalierung aktiviert ist.
+Sie aktivieren die automatische Skalierung, indem Sie eine [Formel für die automatische Skalierung](batch-automatic-scaling.md#autoscale-formulas) erstellen und diese Formel einem Pool zuordnen. Der Batch-Dienst verwendet die Formel, um die vorgegebene Anzahl von Knoten im Pool für das nächste Skalierungsintervall (welches Sie konfigurieren können) zu bestimmen. Sie können für einen Pool die Einstellungen für die automatische Skalierung angeben, wenn Sie diesen erstellen, oder Sie können die Skalierung für einen Pool später aktivieren. Außerdem können Sie die Skalierungseinstellungen für einen Pool aktualisieren, für den die Skalierung aktiviert ist.
 
 Beispielsweise kann es für einen Auftrag erforderlich sein, eine große Anzahl von Tasks zu übermitteln, die ausgeführt werden sollen. Sie können dem Pool eine Skalierungsformel zuweisen, die die Anzahl von Knoten im Pool auf der Grundlage der aktuellen Anzahl von Tasks in der Warteschlange sowie der Abschlussrate der Tasks im Auftrag anpasst. Der Batch-Dienst wertet die Formel in regelmäßigen Abständen aus und ändert die Größe des Pools auf Grundlage von Workload und anderen Formeleinstellungen. Der Dienst fügt bei Bedarf Knoten hinzu, wenn eine große Anzahl von Tasks in der Warteschlange vorhanden ist und entfernt Knoten, wenn keine Tasks in der Warteschlange sind oder ausgeführt werden.
 

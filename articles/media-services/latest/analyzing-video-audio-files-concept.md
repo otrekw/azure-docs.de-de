@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053474"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysieren von Video- und Audiodateien mit Azure Media Services
 
 Mit Azure Media Services, Version 3 können Sie Inhalte aus Video- und Audiodateien mit Video Indexer extrahieren. In diesem Artikel werden die Voreinstellungen der Version 3 des Media Services-Analysetools beschrieben, mit denen diese Inhalte extrahiert werden. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt. Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Transformation**, und senden Sie einen **Auftrag**, der eine der folgenden Voreinstellungen verwendet: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) oder **AudioAnalyzerPreset**. Ein Tutorial zur Verwendung von **VideoAnalyzerPreset** finden Sie unter [Analysieren von Videos mit Azure Media Services](analyze-videos-tutorial-with-api.md).
+Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Transformation**, und senden Sie einen **Auftrag**, der eine der folgenden Voreinstellungen verwendet: [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) oder **AudioAnalyzerPreset**. Ein Tutorial zur Verwendung von **VideoAnalyzerPreset** finden Sie unter [Analysieren von Videos mit Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Wenn Sie Voreinstellungen eines Video- oder Audioanalysetools verwenden, legen Sie über das Azure-Portal für Ihr Konto zehn reservierte Einheiten für Medien (S3) fest. Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](media-reserved-units-cli-how-to.md).
@@ -38,9 +38,9 @@ Media Services unterstützt derzeit die folgenden integrierten Analysevoreinstel
 
 |**Name der Voreinstellung**|**Szenario**|**Details**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analysieren von Audioinhalten|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen, einsprachigen Audiospur. Sie können die Sprache für die Audionutzlast in der Eingabe angeben. Verwenden Sie dazu das BCP-47-Format des Tags zur Identifizierung von Sprache und Region. Folgende Sprachen werden unterstützt: Englisch („en-US“ und „en-GB“), Spanisch („es-ES“ und „es-MX“), Französisch („fr-FR“), Italienisch („it-IT“), Japanisch („ja-JP“), Portugiesisch („pt-BR“), Chinesisch („zh-CN“), Deutsch („de-DE“), Arabisch („ar-EG“ und „ar-SY“), Russisch („ru-RU“), Hindi („hi-IN“) und Koreanisch („ko-KR“).<br/><br/> Wenn keine Sprache angegeben oder NULL festgelegt ist, wählt die automatische Spracherkennung die erste erkannte Sprache aus und verwendet diese für die gesamte Datei. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch. Sie unterstützt nicht das dynamische Wechseln zwischen Sprachen, nachdem die erste Sprache erkannt wurde. Die automatische Spracherkennung funktioniert am besten mit Audioaufnahmen mit deutlicher Sprache. Kann die Sprache nicht automatisch erkannt werden, wird standardmäßig Englisch für die Transkription verwendet.|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Erkennen von Gesichtern in Videos|Beschreibt die Einstellungen, die bei der Analyse eines Videos verwendet werden, um alle erscheinenden Gesichter zu erkennen|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analysieren von Audioinhalten|Die Voreinstellung wendet einen vordefinierten Satz von AI-basierten Analysevorgängen, einschließlich Sprachtranskription, an. Die Voreinstellung unterstützt derzeit die Verarbeitung von Inhalten mit einer einzelnen, einsprachigen Audiospur. Sie können die Sprache für die Audionutzlast in der Eingabe angeben. Verwenden Sie dazu das BCP-47-Format des Tags zur Identifizierung von Sprache und Region. Folgende Sprachen werden unterstützt: Englisch („en-US“ und „en-GB“), Spanisch („es-ES“ und „es-MX“), Französisch („fr-FR“), Italienisch („it-IT“), Japanisch („ja-JP“), Portugiesisch („pt-BR“), Chinesisch („zh-CN“), Deutsch („de-DE“), Arabisch („ar-EG“ und „ar-SY“), Russisch („ru-RU“), Hindi („hi-IN“) und Koreanisch („ko-KR“).<br/><br/> Wenn keine Sprache angegeben oder NULL festgelegt ist, wählt die automatische Spracherkennung die erste erkannte Sprache aus und verwendet diese für die gesamte Datei. Die automatische Spracherkennung unterstützt derzeit Englisch, Chinesisch, Französisch, Deutsch, Italienisch, Japanisch, Spanisch, Russisch und Portugiesisch. Sie unterstützt nicht das dynamische Wechseln zwischen Sprachen, nachdem die erste Sprache erkannt wurde. Die automatische Spracherkennung funktioniert am besten mit Audioaufnahmen mit deutlicher Sprache. Kann die Sprache nicht automatisch erkannt werden, wird standardmäßig Englisch für die Transkription verwendet.|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analysieren von Audio und Video|Extrahiert Erkenntnisse (umfangreiche Metadaten) von Audio- und Videoinhalten und gibt eine Datei im JSON-Format aus. Beim Verarbeiten einer Videodatei können Sie angeben, ob Sie nur Audioerkenntnisse erhalten möchten. Weitere Informationen finden Sie unter [Analysieren von Videos](analyze-videos-tutorial-with-api.md).|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|Erkennen von Gesichtern in Videos|Beschreibt die Einstellungen, die bei der Analyse eines Videos verwendet werden, um alle erscheinenden Gesichter zu erkennen|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 

@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 95bf939feaad39d261e03938a3c7dd12a76cdd99
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 2a6516ad5f0fc8d9faefd7b7f89ddb1eaa3fd7d6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805861"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374956"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für 64-Bit-Java 8 JRE installieren. Wenn Sie nur den Paketnamen benötigen, um selbständig einzusteigen, ist das Java SDK im zentralen Maven-Repository nicht verfügbar. Unabhängig davon, ob Sie Gradle oder eine Abhängigkeitsdatei vom Typ `pom.xml` verwenden, müssen Sie ein benutzerdefiniertes Repository hinzufügen, das auf `https://csspeechstorage.blob.core.windows.net/maven/` verweist. (Der Paketname ist weiter unten angegeben.)
 

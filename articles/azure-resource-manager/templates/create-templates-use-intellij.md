@@ -4,12 +4,13 @@ description: Hier erfahren Sie, wie Sie über IntelliJ IDEA Ihre erste Azure Res
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-java
+ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057448"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321818"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>Erstellen und Bereitstellen von Resource Manager-Vorlagen über IntelliJ IDEA
 
@@ -27,7 +28,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 * Eine installierte Instanz von [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) (Ultimate Edition oder Community Edition)
 * Wenn das [Azure-Toolkit für IntelliJ](https://plugins.jetbrains.com/plugin/8053) installiert ist, entnehmen Sie weitere Informationen dem [IntelliJ-Handbuch zur Verwaltung von Plug-Ins](https://www.jetbrains.com/help/idea/managing-plugins.html).
-* Sie müssen für das Azure-Toolkit für IntelliJ bei Ihrem Azure-Konto [angemeldet sein](/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions).
+* Sie müssen für das Azure-Toolkit für IntelliJ bei Ihrem Azure-Konto [angemeldet sein](/azure/developer/java/toolkit-for-intellij/sign-in-instructions).
 
 ## <a name="deploy-a-quickstart-template"></a>Bereitstellen einer Schnellstartvorlage
 

@@ -3,12 +3,12 @@ title: 'Fortlaufende Videoaufzeichnung: Azure'
 description: Fortlaufende Videoaufzeichnung (Continuous Video Recording, CVR) bezeichnet die kontinuierliche Erfassung von Videodaten von einer Videoquelle. In diesem Thema wird erläutert, was CVR bedeutet.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260623"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043317"
 ---
 # <a name="continuous-video-recording"></a>Fortlaufende Videoaufzeichnung  
 
@@ -34,7 +34,7 @@ Live Video Analytics in IoT Edge unterstützt den Betrieb mit nicht optimalen N
     "localMediaCacheMaximumSizeMiB": "2048",
     "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
-Die letzteren beiden Eigenschaften sind für die resiliente Aufzeichnung relevant (beide Eigenschaften sind auch für einen Senkenknoten für Medienobjekte erforderlich). Die localMediaCachePath-Eigenschaft weist die Medienobjektsenke an, diesen Ordnerpfad zum Zwischenspeichern von Mediendaten vor dem Hochladen in das Medienobjekt zu verwenden. In [diesem Artikel](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module) wird erläutert, wie das Edgemodul den lokalen Speicher Ihres Geräts verwenden kann. Die localMediaCacheMaximumSizeMiB-Eigenschaft definiert, wie viel Speicherplatz die Medienobjektsenke als Cache verwenden kann (1 MiB = 1.024 × 1.024 Byte). 
+Die letzteren beiden Eigenschaften sind für die resiliente Aufzeichnung relevant (beide Eigenschaften sind auch für einen Senkenknoten für Medienobjekte erforderlich). Die localMediaCachePath-Eigenschaft weist die Medienobjektsenke an, diesen Ordnerpfad zum Zwischenspeichern von Mediendaten vor dem Hochladen in das Medienobjekt zu verwenden. In [diesem Artikel](../../iot-edge/how-to-access-host-storage-from-module.md) wird erläutert, wie das Edgemodul den lokalen Speicher Ihres Geräts verwenden kann. Die localMediaCacheMaximumSizeMiB-Eigenschaft definiert, wie viel Speicherplatz die Medienobjektsenke als Cache verwenden kann (1 MiB = 1.024 × 1.024 Byte). 
 
 Wenn die Verbindung Ihres Edgemoduls für einen sehr langen Zeitraum getrennt wird und der im Cacheordner gespeicherte Inhalt den Wert von localMediaCacheMaximumSizeMiB erreicht, beginnt die Medienobjektsenke damit, Daten aus dem Cache zu entfernen. Sie beginnt dabei mit den ältesten Daten. Wenn die Geräteverbindung z. B. um 10:00 Uhr verloren gegangen ist und der Cache den maximalen Grenzwert um 18:00 Uhr erreicht, beginnt die Medienobjektsenke mit dem Löschen bei den Daten, die um 10:00 Uhr aufgezeichnet wurden. 
 

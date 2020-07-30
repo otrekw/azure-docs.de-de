@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4025ace5c2609783a8d0f09b99d60537addb6f08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64869465"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060100"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Hochladen von Dateien in ein Media Services-Konto mit .NET 
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch oder erfassen sie auf diese Weise. Die Entität **Asset** kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten.  Nachdem die Dateien hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert.
 
@@ -315,4 +315,3 @@ Sie können auch mithilfe von Azure Functions einen Codierungsauftrag auslösen,
 Sie haben nun ein Medienobjekt in Media Services hochgeladen und können mit dem Artikel [Gewusst wie: Abrufen einer Medienprozessorinstanz][How to Get a Media Processor] fortfahren.
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-

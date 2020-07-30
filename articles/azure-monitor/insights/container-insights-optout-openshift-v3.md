@@ -3,12 +3,12 @@ title: Beenden der Überwachung Ihres Azure Red Hat OpenShift 3-Clusters | Micr
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihres Azure Red Hat OpenShift-Clusters mit Azure Monitor für Container beenden können.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091214"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Beenden der Überwachung Ihres Azure Red Hat OpenShift 3-Clusters
 
@@ -22,7 +22,7 @@ Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vert
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen die Azure CLI-Version 2.0.65 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen die Azure CLI-Version 2.0.65 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Erstellen der Vorlage
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn der Arbeitsbereich nur als Unterstützung für die Clusterüberwachung erstellt wurde und nicht mehr benötigt wird, müssen Sie ihn manuell löschen. Wie ein Arbeitsbereich gelöscht wird, erfahren Sie unter [Löschen eines Log Analytics-Arbeitsbereichs](../../log-analytics/log-analytics-manage-del-workspace.md).
+Wenn der Arbeitsbereich nur als Unterstützung für die Clusterüberwachung erstellt wurde und nicht mehr benötigt wird, müssen Sie ihn manuell löschen. Wie ein Arbeitsbereich gelöscht wird, erfahren Sie unter [Löschen eines Log Analytics-Arbeitsbereichs](../platform/delete-workspace.md).

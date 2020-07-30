@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8b19b5bbb327c55b4f4103a133e77e73f0ae4bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77591352"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088256"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern unter Windows mit Azure NetApp Files (SMB) für SAP-Anwendungen
 
@@ -57,9 +57,9 @@ ms.locfileid: "77591352"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems auf virtuellen Windows-Computern mithilfe von [SMB](https://docs.microsoft.com/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) auf [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) beschrieben.  
+In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems auf virtuellen Windows-Computern mithilfe von [SMB](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) auf [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) beschrieben.  
 
-Die Datenbankschicht wird in diesem Artikel nicht ausführlich behandelt. Bei den folgenden Schritten wird davon ausgegangen, dass bereits ein [virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) erstellt wurde.  
+Die Datenbankschicht wird in diesem Artikel nicht ausführlich behandelt. Bei den folgenden Schritten wird davon ausgegangen, dass bereits ein [virtuelles Azure-Netzwerk](../../../virtual-network/virtual-networks-overview.md) erstellt wurde.  
 
 Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 
@@ -76,17 +76,17 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * SAP-Hinweis [2802770](https://launchpad.support.sap.com/#/notes/2802770) mit Informationen zur Problembehandlung bei der langsamen Ausführung von SAP-Transaktion AL11 unter Windows 2012 und 2016
 * SAP-Hinweis [1911507](https://launchpad.support.sap.com/#/notes/1911507) mit Informationen zur Funktion für transparente Failover für eine Dateifreigabe unter Windows Server mit dem SMB 3.0-Protokoll
 * SAP-Hinweis [662452](https://launchpad.support.sap.com/#/notes/662452) mit Empfehlungen (Deaktivierung der Namensgenerierung aus Version 8.3) für das Beheben von Problemen im Zusammenhang mit einer schlechten Dateisystemleistung und das Beheben von Fehlern während des Datenzugriffs
-* [Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share) 
-* [Azure Virtual Machines – Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+* [Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure](./sap-high-availability-installation-wsfc-file-share.md) 
+* [Azure Virtual Machines – Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver](./sap-high-availability-architecture-scenarios.md)
 * [Hinzufügen des Testports in der ASCS-Clusterkonfiguration](sap-high-availability-installation-wsfc-file-share.md)
 * [Installieren einer (A)SCS-Instanz auf einem Failovercluster](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Erstellen eines SMB-Volumes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
+* [Erstellen eines SMB-Volumes für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
 * [NetApp-SAP-Anwendungen in Microsoft Azure mithilfe von Azure NetApp Files][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Übersicht
 
 SAP hat neue Ansätze und eine Alternative zum Gruppieren von freigegebenen Datenträgern entwickelt, die eine Gruppierung von SAP ASCS/SCS-Instanzen in einem Windows-Failovercluster ermöglichen. Anstatt freigegebene Datenträger in einem Cluster zu verwenden, können Sie mit einer SMB-Dateifreigabe globale SAP-Hostdateien bereitstellen. Azure NetApp Files unterstützt SMBv3 (zusammen mit NFS) mit der NTFS-Zugriffssteuerungsliste mithilfe von Active Directory. Azure NetApp Files ist automatisch hochverfügbar, da es sich hierbei um einen PaaS-Dienst handelt. Diese Funktionen machen Azure NetApp Files zur optimalen Lösung für das globale Hosten der SMB-Dateifreigabe für SAP.  
-Sowohl [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) als auch [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) wird unterstützt. Bereits vorhandene Active Directory-Domänencontroller können mit Azure NetApp Files verwendet werden. Domänencontroller können als virtuelle Computer in Azure oder lokal über ExpressRoute oder S2S-VPN betrieben werden. In diesem Artikel wird ein Domänencontroller auf einem virtuellen Azure-Computer verwendet.  
+Sowohl [Azure Active Directory (AD) Domain Services](../../../active-directory-domain-services/overview.md) als auch [Active Directory Domain Services (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) wird unterstützt. Bereits vorhandene Active Directory-Domänencontroller können mit Azure NetApp Files verwendet werden. Domänencontroller können als virtuelle Computer in Azure oder lokal über ExpressRoute oder S2S-VPN betrieben werden. In diesem Artikel wird ein Domänencontroller auf einem virtuellen Azure-Computer verwendet.  
 Hochverfügbarkeit (HA) für zentrale Dienste von SAP NetWeaver erfordert freigegebenen Speicher. Bisher musste entweder ein SOFS-Cluster erstellt oder freigegebene Clusterdatenträgersoftware wie SIOS verwendet werden, um dies unter Windows zu erreichen. Jetzt ist es möglich, Hochverfügbarkeit für SAP NetWeaver mithilfe von freigegebenem Speicher zu erreichen, der auf Azure NetApp Files bereitgestellt wird. Wenn Sie Azure NetApp Files für den freigegebenen Speicher nutzen, entfällt die Notwendigkeit der Verwendung von SOFS und SIOS.  
 
 > [!NOTE]
@@ -107,16 +107,16 @@ Die Dateifreigabe für SAP Central Services in dieser Referenzarchitektur wird v
 
 Führen Sie die folgenden Schritte aus, um die Verwendung von Azure NetApp Files vorzubereiten.  
 
-1. Führen Sie die Schritte für die [Registrierung bei Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register) aus.  
-2. Erstellen Sie ein Azure NetApp Files-Konto, indem Sie die im Artikel [Erstellen eines NetApp-Kontos](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account) beschriebenen Schritte ausführen.  
-3. Befolgen Sie die Anweisungen im Artikel [Einrichten eines Kapazitätspools](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool), um einen Kapazitätspool einzurichten.
-4. Azure NetApp Files-Ressourcen müssen sich im delegierten Subnetz befinden. Befolgen Sie die Anweisungen im Artikel [Delegieren eines Subnetzes an Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet), um das delegierte Subnetz zu erstellen.  
+1. Führen Sie die Schritte für die [Registrierung bei Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md) aus.  
+2. Erstellen Sie ein Azure NetApp Files-Konto, indem Sie die im Artikel [Erstellen eines NetApp-Kontos](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md) beschriebenen Schritte ausführen.  
+3. Befolgen Sie die Anweisungen im Artikel [Einrichten eines Kapazitätspools](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md), um einen Kapazitätspool einzurichten.
+4. Azure NetApp Files-Ressourcen müssen sich im delegierten Subnetz befinden. Befolgen Sie die Anweisungen im Artikel [Delegieren eines Subnetzes an Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md), um das delegierte Subnetz zu erstellen.  
 
 > [!IMPORTANT]
-> Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst Active Directory-Verbindungen erstellen. Überprüfen Sie die [Anforderungen für Active Directory-Verbindungen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections).  
+> Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst Active Directory-Verbindungen erstellen. Überprüfen Sie die [Anforderungen für Active Directory-Verbindungen](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
 
-5. Stellen Sie wie unter [Herstellen einer Active Directory-Verbindung](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#create-an-active-directory-connection) beschrieben eine Active Directory-Verbindung her.  
-6. Befolgen Sie die im Artikel [Hinzufügen eines SMB-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#add-an-smb-volume) beschriebenen Anweisungen, um das Azure NetApp Files-SMB-Volume zu erstellen.  
+5. Stellen Sie wie unter [Herstellen einer Active Directory-Verbindung](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) beschrieben eine Active Directory-Verbindung her.  
+6. Befolgen Sie die im Artikel [Hinzufügen eines SMB-Volumes](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) beschriebenen Anweisungen, um das Azure NetApp Files-SMB-Volume zu erstellen.  
 7. Stellen Sie das SMB-Volume auf Ihrem virtuellen Windows-Computer bereit.
 
 > [!TIP]
@@ -124,15 +124,15 @@ Führen Sie die folgenden Schritte aus, um die Verwendung von Azure NetApp Files
 
 ## <a name="prepare-the-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster"></a>Vorbereiten der Infrastruktur für SAP HA mit einem Windows-Failovercluster 
 
-1. [Festlegen der erforderlichen DNS-IP-Adressen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
-2. [Festlegen der statischen IP-Adressen für die virtuellen SAP-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#84c019fe-8c58-4dac-9e54-173efd4b2c30)
-3. [Festlegen der statischen IP-Adresse für den internen Azure Load Balancer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#7a8f3e9b-0624-4051-9e41-b73fff816a9e)
-4. [Festlegen von Standardregeln für den ASCS-/SCS-Lastenausgleich für den internen Azure Load Balancer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#f19bd997-154d-4583-a46e-7f5a69d0153c)
-5. [Ändern der Standardregeln für den ASCS/SCS-Lastenausgleich für den internen Azure Load Balancer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#fe0bd8b5-2b43-45e3-8295-80bee5415716)
-6. [Hinzufügen virtueller Windows-Computer zur Domäne](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#e69e9a34-4601-47a3-a41c-d2e11c626c0c)
-7. [Hinzufügen von Registrierungseinträgen auf beiden Clusterknoten für eine SAP ASCS-/SCS-Instanz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#661035b2-4d0f-4d31-86f8-dc0a50d78158)
-8. [Einrichten eines Windows Server-Failoverclusters für eine SAP ASCS-/SCS-Instanz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk#0d67f090-7928-43e0-8772-5ccbf8f59aab)
-9. Wenn Sie Windows Server 2016 verwenden, wird empfohlen, einen [Azure-Cloudzeugen](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) zu konfigurieren.
+1. [Festlegen der erforderlichen DNS-IP-Adressen](./sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
+2. [Festlegen der statischen IP-Adressen für die virtuellen SAP-Computer](./sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30)
+3. [Festlegen der statischen IP-Adresse für den internen Azure Load Balancer](./sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e)
+4. [Festlegen von Standardregeln für den ASCS-/SCS-Lastenausgleich für den internen Azure Load Balancer](./sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c)
+5. [Ändern der Standardregeln für den ASCS/SCS-Lastenausgleich für den internen Azure Load Balancer](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716)
+6. [Hinzufügen virtueller Windows-Computer zur Domäne](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c)
+7. [Hinzufügen von Registrierungseinträgen auf beiden Clusterknoten für eine SAP ASCS-/SCS-Instanz](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
+8. [Einrichten eines Windows Server-Failoverclusters für eine SAP ASCS-/SCS-Instanz](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
+9. Wenn Sie Windows Server 2016 verwenden, wird empfohlen, einen [Azure-Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness) zu konfigurieren.
 
 
 ## <a name="install-sap-ascs-instance-on-both-nodes"></a>Installieren der SAP ASCS-Instanz auf beiden Knoten
@@ -140,7 +140,7 @@ Führen Sie die folgenden Schritte aus, um die Verwendung von Azure NetApp Files
 Sie benötigen die folgende SAP-Software:
    * Das Installationstool SAP Software Provisioning Manager (SWPM) Version SPS25 oder höher.
    * SAP Kernel 7.49 oder höher
-   * Erstellen Sie wie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS-/SCS-Clusterinstanz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#a97ad604-9094-44fe-a364-f89cb39bf097) beschrieben einen virtuellen Hostnamen (Clusternetzwerknamen) für die SAP ASCS-/SCS-Clusterinstanz.
+   * Erstellen Sie wie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS-/SCS-Clusterinstanz](./sap-high-availability-installation-wsfc-shared-disk.md#a97ad604-9094-44fe-a364-f89cb39bf097) beschrieben einen virtuellen Hostnamen (Clusternetzwerknamen) für die SAP ASCS-/SCS-Clusterinstanz.
 
 > [!NOTE]
 > Das Gruppieren von SAP ASCS/SCS-Instanzen über eine Dateifreigabe wird für SAP NetWeaver 7.40-Produkte (und höher) mit SAP Kernel 7.49 (und höher) unterstützt.  
@@ -158,7 +158,7 @@ Sie benötigen die folgende SAP-Software:
 > [!TIP]
 > Wenn in den Ergebnissen der Voraussetzungsprüfung in SWPM angezeigt wird, dass die Bedingung für die Tauschgröße nicht erfüllt werden, können Sie die Tauschgröße anpassen, indem Sie zu „Arbeitsplatz > Systemeigenschaften > Leistungseinstellungen > Erweitert > Virtueller Arbeitsspeicher > Ändern“ navigieren.  
 
-4. Konfigurieren Sie eine SAP-Clusterressource und den `SAP-SID-IP`-Testport mithilfe von PowerShell. Führen Sie diese Konfiguration wie im Artikel [Konfigurieren des Testports](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761) beschrieben auf einem der SAP ASCS-/SCS-Clusterknoten aus.
+4. Konfigurieren Sie eine SAP-Clusterressource und den `SAP-SID-IP`-Testport mithilfe von PowerShell. Führen Sie diese Konfiguration wie im Artikel [Konfigurieren des Testports](./sap-high-availability-installation-wsfc-shared-disk.md#10822f4f-32e7-4871-b63a-9b86c76ce761) beschrieben auf einem der SAP ASCS-/SCS-Clusterknoten aus.
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Installieren einer ASCS/SCS-Instanz auf dem zweiten ASCS/SCS-Clusterknoten
 

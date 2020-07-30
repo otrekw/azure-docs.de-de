@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 67df782cf8044593859e7761278d93187d258d26
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 638a7fa96f4112f9805fd46618dc0acd1c2f382f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063224"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatisieren von Verwaltungsaufgaben auf virtuellen Azure-Computern mit der SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,7 +71,7 @@ Anforderungen für die Verwendung der SQL Server-IaaS-Agent-Erweiterung auf Ihr
 
 **Azure PowerShell:**
 
-* [Herunterladen und Konfigurieren der aktuellen Azure PowerShell-Befehle](/powershell/azure/overview)
+* [Herunterladen und Konfigurieren der aktuellen Azure PowerShell-Befehle](/powershell/azure/)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

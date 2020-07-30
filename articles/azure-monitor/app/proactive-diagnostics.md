@@ -3,15 +3,15 @@ title: Intelligente Erkennung in Azure Application Insights | Microsoft Docs
 description: Application Insights führt eine automatische umfassende Analyse Ihrer App-Telemetrie durch und warnt Sie vor potenziellen Problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305872"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligente Erkennung in Application Insights
- Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen und Fehleranomalien in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
+ Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen und Fehleranomalien in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](./app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
 
 Sie können über die erhaltenen E-Mails und das Blatt für die intelligenten Erkennung auf Ergebnisse der intelligenten Erkennung zugreifen.
 
@@ -32,8 +32,8 @@ Wählen Sie eine Erkennung aus, um ihre Details anzuzeigen.
 ## <a name="what-problems-are-detected"></a>Welche Probleme werden erkannt?
 Die intelligente Erkennung entdeckt eine Reihe von Problemen und gibt Benachrichtigungen dazu aus, z.B.:
 
-* [Intelligente Erkennung – Fehlerabweichungen](../../azure-monitor/app/proactive-failure-diagnostics.md). Wir nutzen Machine Learning, um die voraussichtliche Rate fehlerhafter Anforderungen für Ihre App (korreliert mit Lastangaben und anderen Faktoren) festzulegen. Falls die Fehlerrate den erwarteten Rahmen überschreitet, wird eine Warnung gesendet.
-* [Intelligente Erkennung – Leistungsabweichungen](../../azure-monitor/app/proactive-performance-diagnostics.md). Sie erhalten Benachrichtigungen, wenn sich die Reaktionszeit eines Vorgangs oder die Abhängigkeitsdauer im Vergleich zu den typischen Verlaufsdaten verschlechtert oder wenn für die Reaktionszeit oder die Seitenladezeit ein anomales Muster erkannt wird.   
+* [Intelligente Erkennung – Fehlerabweichungen](./proactive-failure-diagnostics.md). Wir nutzen Machine Learning, um die voraussichtliche Rate fehlerhafter Anforderungen für Ihre App (korreliert mit Lastangaben und anderen Faktoren) festzulegen. Falls die Fehlerrate den erwarteten Rahmen überschreitet, wird eine Warnung gesendet.
+* [Intelligente Erkennung – Leistungsabweichungen](./proactive-performance-diagnostics.md). Sie erhalten Benachrichtigungen, wenn sich die Reaktionszeit eines Vorgangs oder die Abhängigkeitsdauer im Vergleich zu den typischen Verlaufsdaten verschlechtert oder wenn für die Reaktionszeit oder die Seitenladezeit ein anomales Muster erkannt wird.   
 * Allgemeine Beeinträchtigungen und Probleme wie [Verschlechterung der Ablaufverfolgung](./proactive-trace-severity.md), [Speicherverlust](./proactive-potential-memory-leak.md), [anomaler Anstieg im Ausnahmevolume](./proactive-exception-volume.md) und [Verdachtsmomente für ein Sicherheitsproblem](./proactive-application-security-detection-pack.md).
 
 (Über die Hilfelinks in den jeweiligen Benachrichtigungen gelangen Sie zu den relevanten Artikeln.)
@@ -53,11 +53,12 @@ Alternativ können Sie die Konfiguration mithilfe von Azure Resource Manager-Vor
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen:
 
-* [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md)
-* [Suchexplorer](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics: Leistungsfähige Abfragesprache](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrik-Explorer](../platform/metrics-charts.md)
+* [Suchexplorer](./diagnostic-search.md)
+* [Analytics: Leistungsfähige Abfragesprache](../log-query/get-started-portal.md)
 
 Die intelligente Erkennungen erfolgt vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
-* [Einrichten von Warnungen in Application Insights](../../azure-monitor/platform/alerts-log.md)
-* [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) 
+* [Einrichten von Warnungen in Application Insights](../platform/alerts-log.md)
+* [Verfügbarkeitswebtests](./monitor-web-app-availability.md) 
+

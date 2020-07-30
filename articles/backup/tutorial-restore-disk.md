@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datent
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 75aa06d4c99c2b9c99015acfae98c30e75209f64
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289467"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM in Azure
 
@@ -83,7 +83,7 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
         --container-name myVM \
         --item-name myVM \
         --storage-account mystorageaccount \
-        --rp-name myRecoveryPointName
+        --rp-name myRecoveryPointName \
         --target-resource-group targetRG
     ```
 
@@ -97,7 +97,7 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
     --container-name myVM \
     --item-name myVM \
     --storage-account mystorageaccount \
-    --rp-name myRecoveryPointName
+    --rp-name myRecoveryPointName \
     --restore-as-unmanaged-disk
     ```
 
@@ -139,7 +139,7 @@ Wie bereits erwähnt, werden die nicht verwalteten Datenträger standardmäßig 
         --container-name myVM \
         --item-name myVM \
         --storage-account mystorageaccount \
-        --rp-name myRecoveryPointName
+        --rp-name myRecoveryPointName \
         --restore-to-staging-storage-account
     ```
 

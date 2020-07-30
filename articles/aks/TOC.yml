@@ -52,8 +52,12 @@
     - name: Zugriff und Identität
       href: concepts-identity.md
     - name: Sicherheit
-      href: concepts-security.md
-      items: null
+      items:
+        - name: Sicherheit für Anwendungen und Cluster
+          href: concepts-security.md
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
     - name: Speicher
@@ -362,7 +366,7 @@
           href: troubleshoot-linux.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

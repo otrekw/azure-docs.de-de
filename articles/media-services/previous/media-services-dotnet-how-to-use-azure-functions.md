@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052834"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
 
@@ -338,7 +338,7 @@ Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container
 4. Wählen Sie **Hochladen** aus, und navigieren Sie zu einer MP4-Datei, die Sie hochladen möchten.
 
 >[!NOTE]
-> Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Weitere Informationen finden Sie unter [Blob Storage-Trigger und -Bindungen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
+> Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Weitere Informationen finden Sie unter [Blob Storage-Trigger und -Bindungen](../../azure-functions/functions-bindings-storage-blob.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -350,4 +350,3 @@ Lesen Sie auch [Verwenden von Azure-Webhooks zum Überwachen von Media Services-
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

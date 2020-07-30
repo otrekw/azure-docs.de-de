@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ad01155259ea03806f56c6e75b315ff85b606220
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085757"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern – Azure-Portal
 
@@ -61,4 +61,4 @@ Wenn Sie über nicht verwaltete Datenträger verfügen, die nicht an einen virtu
 
 Wenn Sie eine automatisierte Methode zum Suchen und Löschen von nicht angefügten Speicherkonten benötigen, finden Sie weitere Informationen in unseren [CLI](linux/find-unattached-disks.md)- oder [PowerShell](windows/find-unattached-disks.md)-Artikeln.
 
-Weitere Informationen finden Sie unter [Löschen von Speicherkonten](../storage/common/storage-account-create.md#delete-a-storage-account) und [Identifizieren verwaister Datenträger mit PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/).
+Weitere Informationen finden Sie unter [Löschen von Speicherkonten](../storage/common/storage-account-create.md#delete-a-storage-account) und [Identifizieren verwaister Datenträger mit PowerShell](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell).

@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677932"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028584"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Behandeln von geplanten Wartungen mithilfe von PowerShell
 
 **Dieser Artikel gilt für virtuelle Computer, auf denen sowohl Linux als auch Windows ausgeführt wird.**
 
-Sie können mithilfe von Azure PowerShell ermitteln, wann die [Wartung](maintenance-notifications.md) für VMs geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) unter Verwendung des Parameters `-status` ermittelt werden.
+Sie können mithilfe von Azure PowerShell ermitteln, wann die [Wartung](maintenance-notifications.md) für VMs geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm) unter Verwendung des Parameters `-status` ermittelt werden.
   
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung für den virtuellen Computer geplant, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
@@ -40,7 +40,7 @@ Unter „MaintenanceRedeployStatus“ werden folgende Eigenschaften zurückgegeb
 
 
 
-Sie können auch den Wartungsstatus für alle virtuellen Computer in einer Ressourcengruppe abrufen. Verwenden Sie hierzu [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ohne Angabe eines virtuellen Computers.
+Sie können auch den Wartungsstatus für alle virtuellen Computer in einer Ressourcengruppe abrufen. Verwenden Sie hierzu [Get-AzVM](/powershell/module/az.compute/get-azvm) ohne Angabe eines virtuellen Computers.
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status

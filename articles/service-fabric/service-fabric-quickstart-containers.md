@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260510"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089616"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Windows-Containern in Service Fabric
 
@@ -86,7 +86,7 @@ Das Dienstmanifest gibt weiterhin nur ein Image für den Nanoserver `mcr.microso
 
 Das folgende Beispielskript erstellt einen Service Fabric-Cluster mit fünf Knoten, der mit einem X.509-Zertifikat geschützt wird. Der Befehl erstellt ein selbstsigniertes Zertifikat und lädt es in einen neuen Key Vault hoch. Das Zertifikat wird außerdem in ein lokales Verzeichnis kopiert. Weitere Informationen zum Erstellen eines Clusters mithilfe dieses Skripts finden Sie unter [Erstellen von Service Fabric-Clustern](scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
-Installieren Sie bei Bedarf Azure PowerShell anhand der Anweisungen im [Azure PowerShell-Handbuch](/powershell/azure/overview).
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anweisungen im [Azure PowerShell-Handbuch](/powershell/azure/).
 
 Führen Sie vor der Ausführung des folgenden Skripts zunächst `Connect-AzAccount` in PowerShell aus, um eine Verbindung mit Azure zu erstellen.
 

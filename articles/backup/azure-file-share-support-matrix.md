@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514548"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289508"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben
 
@@ -20,10 +20,6 @@ Sie können den [Azure Backup-Dienst](./backup-overview.md) verwenden, um Azure-
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Regionen mit allgemeiner Verfügbarkeit für die Sicherung von Azure-Dateifreigaben
 
 Die Sicherung von Azure-Dateifreigaben ist in allen Regionen verfügbar **mit Ausnahme von**: „Deutschland, Mitte (Sovereign)“, „Deutschland, Nordosten (Sovereign)“, „China, Osten“, „China, Osten 2“, „China, Norden“, „China, Norden 2“, „US Gov Iowa“
-
-### <a name="supported-regions-for-accidental-delete-protection"></a>Unterstützte Regionen für Schutz vor versehentlichem Löschen
-
-„USA, Westen-Mitte“, „Australien, Südosten“, „Kanada, Mitte“, „Indien, Süden“, „USA, Norden-Mitte“, „Japan, Osten“, „Brasilien, Süden“, USA, Süden-Mitte“, „Australien, Osten“, „USA, Osten“, USA, Osten 2“
 
 ## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
 

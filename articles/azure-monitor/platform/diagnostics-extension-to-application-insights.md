@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672326"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305804"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights
 Cloud Services, Virtual Machines, VM-Skalierungsgruppen und Service Fabric verwenden die Azure-Diagnoseerweiterung zum Sammeln von Daten.  Die Azure-Diagnose sendet die Daten an Azure Storage-Tabellen.  Sie können jedoch auch alle oder einen Teil der Daten mithilfe der Azure-Diagnoseerweiterung 1.5 oder höher an andere Speicherorte weiterleiten.
@@ -59,8 +59,8 @@ Beispielkonfiguration einer Senke für Application Insights:
 - Das Attribut **Sink** *Name* ist ein Zeichenfolgenwert, der die Senke eindeutig identifiziert.
 
 - Das Element **ApplicationInsights** gibt den Instrumentierungsschlüssel der Application Insights-Ressource an, an die die Azure-Diagnosedaten gesendet werden.
-    - Wenn Sie keine vorhandene Application Insights-Ressource besitzen, finden Sie weitere Informationen zum Erstellen einer Ressource sowie zum Abrufen des Instrumentierungsschlüssels unter [Erstellen einer neuen Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md ).
-    - Wenn Sie einen Clouddienst mit dem Azure SDK 2.8 und höher entwickeln, wird dieser Instrumentierungsschlüssel automatisch aufgefüllt. Der Wert basiert auf der Dienstkonfigurationseinstellung **APPINSIGHTS_INSTRUMENTATIONKEY**, die beim Verpacken des Clouddienstprojekts festgelegt wird. Weitere Informationen finden Sie unter [Verwenden von Application Insights mit Cloud Services](../../azure-monitor/app/cloudservices.md).
+    - Wenn Sie keine vorhandene Application Insights-Ressource besitzen, finden Sie weitere Informationen zum Erstellen einer Ressource sowie zum Abrufen des Instrumentierungsschlüssels unter [Erstellen einer neuen Application Insights-Ressource](../app/create-new-resource.md).
+    - Wenn Sie einen Clouddienst mit dem Azure SDK 2.8 und höher entwickeln, wird dieser Instrumentierungsschlüssel automatisch aufgefüllt. Der Wert basiert auf der Dienstkonfigurationseinstellung **APPINSIGHTS_INSTRUMENTATIONKEY**, die beim Verpacken des Clouddienstprojekts festgelegt wird. Weitere Informationen finden Sie unter [Verwenden von Application Insights mit Cloud Services](../app/cloudservices.md).
 
 - Das Element **Channels** enthält ein oder mehrere **Channel**-Elemente.
     - Das Attribut *Name* gibt diesen Kanal eindeutig an.
@@ -213,7 +213,7 @@ In der vorherigen Konfiguration haben die folgenden Zeilen die folgende Bedeutun
 - **Sie können keine von der Azure-Diagnoseerweiterung gesammelten Blobdaten an Application Insights senden.** Beispiel: Alle Daten unter dem Knoten *Directories*. Bei Absturzabbildern wird das tatsächliche Absturzabbild weiterhin an den Blobspeicher gesendet, und es wird nur eine Benachrichtigung, dass das Absturzabbild generiert wurde, an Application Insights gesendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie etwas über das [Anzeigen von Azure-Diagnoseinformationen](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) in Application Insights.
+* Erfahren Sie etwas über das [Anzeigen von Azure-Diagnoseinformationen](../app/cloudservices.md) in Application Insights.
 * Verwenden Sie [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) , um die Azure-Diagnose-Erweiterung für Ihre Anwendung zu aktivieren.
 * Verwenden Sie [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) , um die Azure-Diagnose-Erweiterung für Ihre Anwendung zu aktivieren.
 

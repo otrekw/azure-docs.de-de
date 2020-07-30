@@ -4,17 +4,17 @@ description: Einrichten von Leistungs- und Auslastungstests mit Azure Applicatio
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669861"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024349"
 ---
 # <a name="performance-testing"></a>Leistungstests
 
 > [!NOTE]
-> Der cloudbasierte Dienst für Auslastungstests ist veraltet. Weitere Informationen zu Veralten, Dienstverfügbarkeit und alternativen Diensten finden Sie [hier](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
+> Der cloudbasierte Dienst für Auslastungstests ist veraltet. Weitere Informationen zu Veralten, Dienstverfügbarkeit und alternativen Diensten finden Sie [hier](/azure/devops/test/load-test/overview?view=azure-devops).
 
 Mithilfe von Application Insights können Sie Auslastungstests für Ihre Websites generieren. Genauso wie bei [Verfügbarkeitstest](monitor-web-app-availability.md) können Sie entweder einfache Anforderungen oder [mehrstufige Anforderungen](availability-multistep.md) über unsere weltweit vorhandenen Azure-Test-Agents senden. Mithilfe von Leistungstests können Sie bis zu 20.000 Benutzer gleichzeitig für einen Zeitraum von bis zu 60 Minuten simulieren.
 

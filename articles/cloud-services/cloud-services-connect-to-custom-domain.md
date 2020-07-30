@@ -7,19 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75387019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092710"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
 Zunächst richten wir ein Virtual Network (VNet) in Azure ein. Anschließend fügen wir dem VNet einen Active Directory-Domänencontroller (gehostet auf einem virtuellen Azure-Computer) hinzu. Danach fügen wir dem erstellten VNET vorhandene Clouddienstrollen hinzu und verbinden diese mit dem Domänencontroller.
 
 Bedenken Sie vor dem Start Folgendes:
 
-1. In diesem Tutorial wird PowerShell verwendet. Vergewissern Sie sich daher, dass Azure PowerShell installiert und einsatzbereit ist. Unterstützung bei der Einrichtung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+1. In diesem Tutorial wird PowerShell verwendet. Vergewissern Sie sich daher, dass Azure PowerShell installiert und einsatzbereit ist. Unterstützung bei der Einrichtung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 2. Ihr AD-Domänencontroller und Ihre Web-/Workerrolleninstanzen müssen sich im VNet befinden.
 
 Befolgen Sie diese Schrittanleitung, und fügen Sie am Ende des Artikels einen Kommentar ein, falls Probleme auftreten sollten. Wir werden uns mit Ihnen in Verbindung setzen (wir lesen die Kommentare wirklich).

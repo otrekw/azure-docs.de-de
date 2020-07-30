@@ -5,18 +5,18 @@ description: Verwenden Sie ein virtuelles Azure-Netzwerk mit Azure Machine Learn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520697"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320169"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -304,8 +304,8 @@ Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden
 - Verweigern Sie ausgehende Internetverbindungen mit NSG-Regeln.
 
 - Beschränken Sie für eine __Compute-Instanz__ oder einen __Computecluster__ den ausgehenden Verkehr auf die folgenden Elemente:
-   - Azure Storage, mithilfe der __Dienstkennung__ von __Storage__.
-   - Azure Container Registry, mithilfe der __Dienstkennung__ von __AzureContainerRegistry__.
+   - Azure Storage mithilfe der __Dienstkennung__ von __Storage.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
+   - Azure Container Registry mithilfe der __Dienstkennung__ von __AzureContainerRegistry.RegionName__. Dabei ist `{RegionName}` der Name einer Azure-Region.
    - Azure Machine Learning, mit dem __Diensttag__ von __AzureMachineLearning__
    - Azure Resource Manager mithilfe der __Dienstkennung__ von __AzureResourceManager__
    - Azure Active Directory mithilfe der __Dienstkennung__ von __AzureActiveDirectory__
@@ -429,6 +429,8 @@ except ComputeTargetException:
 ```
 
 Nach Abschluss des Erstellungsprozesses trainieren Sie Ihr Modell, indem Sie den Cluster in einem Experiment verwenden. Weitere Informationen finden Sie unter [Auswählen und Verwenden eines Computeziels für das Training](how-to-set-up-training-targets.md).
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="access-data-in-a-compute-instance-notebook"></a>Zugreifen auf Daten auf einem Compute-Instanz-Notebook
 

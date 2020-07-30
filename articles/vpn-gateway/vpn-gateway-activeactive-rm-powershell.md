@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/24/2018
+ms.date: 07/28/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 854ca905ca8f951fb7678e46268b8bef57bd02bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6a28922aca7105d90e6c8662986b68c90804481
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988053"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387590"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen mit Azure VPN Gateways
 
@@ -49,13 +49,13 @@ Die anderen Eigenschaften sind mit den Eigenschaften von anderen Gateways identi
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 * Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Sie müssen die PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Übersicht über Azure PowerShell](/powershell/azure/overview).
+* Sie müssen die PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Übersicht über Azure PowerShell](/powershell/azure/).
 
 ### <a name="step-1---create-and-configure-vnet1"></a>Schritt 1: Erstellen und Konfigurieren von VNet1
 #### <a name="1-declare-your-variables"></a>1. Deklarieren von Variablen
 Bei dieser Übung beginnen wir mit dem Deklarieren der Variablen. Im folgenden Beispiel werden die Variablen mit den Werten für diese Übung deklariert. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen, wenn Sie die Konfiguration für die Produktion durchführen. Sie können diese Variablen verwenden, wenn Sie die Schritte durchgehen, um sich mit dieser Art der Konfiguration vertraut zu machen. Ändern Sie die Variablen, kopieren Sie sie, und fügen Sie sie in die PowerShell-Konsole ein.
 
-```powershell
+```azurepowershell-interactive
 $Sub1 = "Ross"
 $RG1 = "TestAARG1"
 $Location1 = "West US"
@@ -85,7 +85,7 @@ Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Ressourcen
 
 Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
-```powershell
+```azurepowershell-interactive
 Connect-AzAccount
 Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -94,7 +94,7 @@ New-AzResourceGroup -Name $RG1 -Location $Location1
 #### <a name="3-create-testvnet1"></a>3. Erstellen von TestVNet1
 Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen TestVNet1 und drei Subnetzen erstellt. Diese haben die Namen „GatewaySubnet“, „FrontEnd“ und „Backend“. Beim Ersetzen der Werte ist es wichtig, dass Sie Ihrem Gatewaysubnetz immer den Namen „GatewaySubnet“ geben. Wenn Sie einen anderen Namen verwenden, tritt beim Erstellen des Gateways ein Fehler auf.
 
-```powershell
+```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
 $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
 $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
@@ -106,7 +106,7 @@ New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Locatio
 #### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. Erstellen der öffentlichen IP-Adressen und Gateway-IP-Konfigurationen
 Fordern Sie zwei öffentliche IP-Adressen zur Zuordnung zu dem Gateway an, das Sie für Ihr VNet erstellen. Definieren Sie auch die erforderlichen Subnetz- und IP-Konfigurationen.
 
-```powershell
+```azurepowershell-interactive
 $gw1pip1 = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
 $gw1pip2 = New-AzPublicIpAddress -Name $GW1IPName2 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
 
@@ -119,14 +119,14 @@ $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $sub
 #### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. Erstellen des VPN-Gateways mit Aktiv/Aktiv-Konfiguration
 Erstellen Sie das virtuelle Netzwerkgateway für Ihr TestVNet1. Beachten Sie, dass zwei GatewayIpConfig-Einträge vorhanden sind und das EnableActiveActiveFeature-Flag festgelegt wurde. Das Erstellen eines Gateways kann einige Zeit dauern (45 Minuten oder mehr).
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
 #### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. Abrufen der öffentlichen IP-Adressen für das Gateway und der BGP-Peer-IP-Adresse
 Nachdem das Gateway erstellt wurde, müssen Sie die BGP-Peer-IP-Adresse auf dem Azure VPN Gateway abrufen. Diese Adresse ist erforderlich, um das Azure VPN Gateway als BGP-Peer für Ihre lokalen VPN-Geräte zu konfigurieren.
 
-```powershell
+```azurepowershell-interactive
 $gw1pip1 = Get-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1
 $gw1pip2 = Get-AzPublicIpAddress -Name $GW1IPName2 -ResourceGroupName $RG1
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
@@ -134,7 +134,7 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 
 Verwenden Sie die folgenden Cmdlets zum Anzeigen der beiden öffentlichen IP-Adressen, die für Ihr VPN-Gateway zugeordnet wurden, und der entsprechenden BGP-Peer-IP-Adressen für jede Gatewayinstanz:
 
-```powershell
+```azurepowershell-interactive
 PS D:\> $gw1pip1.IpAddress
 40.112.190.5
 
@@ -164,7 +164,7 @@ Schließen Sie zunächst [Teil 1](#aagateway) dieser Übung ab, bevor Sie fortfa
 #### <a name="1-declare-your-variables"></a>1. Deklarieren von Variablen
 In dieser Übung fahren wir mit dem Erstellen der im Diagramm gezeigten Konfiguration fort. Achten Sie darauf, dass Sie die Werte durch die Werte ersetzen, die Sie für die Konfiguration verwenden möchten.
 
-```powershell
+```azurepowershell-interactive
 $RG5 = "TestAARG5"
 $Location5 = "West US"
 $LNGName51 = "Site5_1"
@@ -184,7 +184,7 @@ In Bezug auf die lokalen Netzwerkgateway-Parameter sind ein paar Dinge zu beacht
 #### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Erstellen des lokalen Netzwerkgateways für Site5
 Stellen Sie vor dem Fortfahren sicher, dass die Verbindung mit Abonnement 1 noch besteht. Erstellen Sie die Ressourcengruppe, falls dies noch nicht durchgeführt wurde.
 
-```powershell
+```azurepowershell-interactive
 New-AzResourceGroup -Name $RG5 -Location $Location5
 New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP51 -AddressPrefix $LNGPrefix51 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP51
 ```
@@ -192,7 +192,7 @@ New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Lo
 ### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Schritt 2: Verbinden des VNet Gateways und des lokalen Netzwerkgateways
 #### <a name="1-get-the-two-gateways"></a>1. Abrufen der beiden Gateways
 
-```powershell
+```azurepowershell-interactive
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
@@ -200,7 +200,7 @@ $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 #### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Erstellen der Verbindung von TestVNet1 zu Site5
 In diesem Schritt erstellen Sie die Verbindung zwischen „TestVNet1“ und „Site5_1“ mit der Einstellung „$True“ für „EnableBGP“.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
@@ -229,25 +229,25 @@ Wenn Sie über zwei VPN-Geräte in demselben lokalen Netzwerk verfügen, können
 #### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. Erstellen des zweiten lokalen Netwerkgateways für Site5
 Die Gateway-IP-Adresse, das Adresspräfix und die BGP-Peeringadresse für das zweite lokale Netzwerkgateway dürfen sich nicht mit dem vorherigen lokalen Netzwerkgateway für dasselbe lokale Netzwerk überschneiden.
 
-```powershell
+```azurepowershell-interactive
 $LNGName52 = "Site5_2"
 $LNGPrefix52 = "10.52.255.254/32"
 $LNGIP52 = "131.107.72.23"
 $BGPPeerIP52 = "10.52.255.254"
 ```
 
-```powershell
+```azurepowershell-interactive
 New-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
 #### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. Verbinden des VNet-Gateways mit dem zweiten lokalen Netzwerkgateway
 Erstellen Sie die Verbindung von TestVNet1 mit „Site5_2“ mit der Einstellung „$True“ für „EnableBGP“.
 
-```powershell
+```azurepowershell-interactive
 $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
 ```
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw2 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
@@ -283,7 +283,7 @@ In diesem Beispiel gehören die virtuellen Netzwerke zum gleichen Abonnement. Si
 #### <a name="1-declare-your-variables"></a>1. Deklarieren von Variablen
 Achten Sie darauf, dass Sie die Werte durch die Werte ersetzen, die Sie für die Konfiguration verwenden möchten.
 
-```powershell
+```azurepowershell-interactive
 $RG2 = "TestAARG2"
 $Location2 = "East US"
 $VNetName2 = "TestVNet2"
@@ -308,7 +308,7 @@ $Connection12 = "VNet1toVNet2"
 
 #### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. Erstellen von TestVNet2 in der neuen Ressourcengruppe
 
-```powershell
+```azurepowershell-interactive
 New-AzResourceGroup -Name $RG2 -Location $Location2
 
 $fesub2 = New-AzVirtualNetworkSubnetConfig -Name $FESubName2 -AddressPrefix $FESubPrefix2
@@ -321,7 +321,7 @@ New-AzVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Locatio
 #### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. Erstellen des Aktiv/Aktiv-VPN-Gateways für TestVNet2
 Fordern Sie zwei öffentliche IP-Adressen zur Zuordnung zu dem Gateway an, das Sie für Ihr VNet erstellen. Definieren Sie auch die erforderlichen Subnetz- und IP-Konfigurationen.
 
-```powershell
+```azurepowershell-interactive
 $gw2pip1 = New-AzPublicIpAddress -Name $GW2IPName1 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
 $gw2pip2 = New-AzPublicIpAddress -Name $GW2IPName2 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
 
@@ -333,7 +333,7 @@ $gw2ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW2IPconf2 -Subnet $sub
 
 Erstellen Sie das VPN-Gateway mit der ASN und dem Flag „EnableActiveActiveFeature“. Beachten Sie, dass Sie die Standard-ASN auf Ihren Azure VPN Gateways überschreiben müssen. Die ASNs für die verbundenen VNets müssen für die Aktivierung von BGP und Transitrouting unterschiedlich sein.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN -EnableActiveActiveFeature
 ```
 
@@ -343,7 +343,7 @@ In diesem Beispiel befinden sich beide Gateways im selben Abonnement. Sie könne
 #### <a name="1-get-both-gateways"></a>1. Abrufen der beiden Gateways
 Stellen Sie sicher, dass Sie sich bei Abonnement 1 anmelden und die Verbindung mit diesem Abonnement herstellen.
 
-```powershell
+```azurepowershell-interactive
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
@@ -351,7 +351,7 @@ $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 #### <a name="2-create-both-connections"></a>2. Erstellen der beiden Verbindungen
 In diesem Schritt erstellen Sie die Verbindung von TestVNet1 zu TestVNet2 sowie die Verbindung von TestVNet2 zu TestVNet1.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name $Connection12 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet2gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
 
 New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG2 -VirtualNetworkGateway1 $vnet2gw -VirtualNetworkGateway2 $vnet1gw -Location $Location2 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
@@ -378,7 +378,7 @@ Im folgenden Beispiel wird ein Aktiv/Standby-Gateway in ein Aktiv/Aktiv-Gateway 
 
 Ersetzen Sie die folgenden für die Beispiele verwendeten Parameter durch die Einstellungen, die Sie für Ihre eigene Konfiguration benötigen, und deklarieren Sie diese Variablen.
 
-```powershell
+```azurepowershell-interactive
 $GWName = "TestVNetAA1GW"
 $VNetName = "TestVNetAA1"
 $RG = "TestVPNActiveActive01"
@@ -388,7 +388,7 @@ $GWIPconf2 = "gw1ipconf2"
 
 Nachdem Sie die Variablen deklariert haben, können Sie dieses Beispiel kopieren und in Ihre PowerShell-Konsole einfügen.
 
-```powershell
+```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
@@ -397,7 +397,7 @@ $location = $gw.Location
 
 #### <a name="2-create-the-public-ip-address-then-add-the-second-gateway-ip-configuration"></a>2. Erstellen der öffentlichen IP-Adresse und anschließendes Hinzufügen der zweiten Gateway-IP-Konfiguration
 
-```powershell
+```azurepowershell-interactive
 $gwpip2 = New-AzPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG -Location $location -AllocationMethod Dynamic
 Add-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPconf2 -Subnet $subnet -PublicIpAddress $gwpip2
 ```
@@ -412,7 +412,7 @@ In diesem Schritt aktivieren Sie den Aktiv/Aktiv-Modus und aktualisieren das Gat
 
 Wenn Sie dies in Ihrer Umgebung verwenden und die Größe des Gateways nicht ändern müssen, brauchen Sie „-GatewaySku“ nicht anzugeben. Beachten Sie, dass Sie in diesem Schritt das Gatewayobjekt in PowerShell festlegen müssen, um das eigentliche Update auszulösen. Dieses Update kann 30 bis 45 Minuten in Anspruch nehmen, selbst wenn Sie Ihr Gateway nicht ändern.
 
-```powershell
+```azurepowershell-interactive
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeature -GatewaySku HighPerformance
 ```
 
@@ -421,14 +421,14 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeatur
 
 Ersetzen Sie die folgenden für die Beispiele verwendeten Parameter durch die Einstellungen, die Sie für Ihre eigene Konfiguration benötigen, und deklarieren Sie diese Variablen.
 
-```powershell
+```azurepowershell-interactive
 $GWName = "TestVNetAA1GW"
 $RG = "TestVPNActiveActive01"
 ```
 
 Nach dem Deklarieren der Variablen rufen Sie den Namen der IP-Konfiguration auf, die Sie entfernen möchten.
 
-```powershell
+```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $ipconfname = $gw.IpConfigurations[1].Name
 ```
@@ -437,7 +437,7 @@ $ipconfname = $gw.IpConfigurations[1].Name
 
 Richten Sie sich nach diesem Beispiel, um die Gateway-IP-Konfiguration zu entfernen und den Aktiv/Aktiv-Modus zu deaktivieren. Beachten Sie, dass Sie das Gatewayobjekt in PowerShell festlegen müssen, um das eigentliche Update auszulösen.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVirtualNetworkGatewayIpConfig -Name $ipconfname -VirtualNetworkGateway $gw
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActiveFeature
 ```
@@ -445,4 +445,4 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActiveFeatu
 Diese Aktualisierung kann 30 bis 45 Minuten dauern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .

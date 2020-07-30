@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054469"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Schnellstart: Sichern eines virtuellen Computers in Azure mit einer ARM-Vorlage
 
-Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird gezeigt, wie Sie eine Azure-VM mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) und Azure PowerShell sichern. In dieser Schnellstartanleitung geht es um die Bereitstellung einer ARM-Vorlage zum Erstellen eines Recovery Services-Tresors. Weitere Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](/azure/azure-resource-manager/) und der [Vorlagenreferenz](/azure/templates/microsoft.recoveryservices/allversions).
+Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird gezeigt, wie Sie eine Azure-VM mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) und Azure PowerShell sichern. In dieser Schnellstartanleitung geht es um die Bereitstellung einer ARM-Vorlage zum Erstellen eines Recovery Services-Tresors. Weitere Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../azure-resource-manager/index.yml) und der [Vorlagenreferenz](/azure/templates/microsoft.recoveryservices/allversions).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

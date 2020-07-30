@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: 5449bb335232d3c7a6f2b97c5cce41a8bd2cf0f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdf5d006cf47f4552684aac8af4a759ed1761c93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249753"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087950"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -238,7 +238,7 @@ Vergleichen Sie zum Messen der Verzögerung in Bezug auf Änderungen in der prim
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programmgesteuertes Verwalten der aktiven Georeplikation
 
-Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md).
+Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md).
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Verwalten des Failovers von Einzel- und Pooldatenbanken
 

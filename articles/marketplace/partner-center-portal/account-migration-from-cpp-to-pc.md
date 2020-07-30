@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289338"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Migrieren Ihres Kontos vom Cloud-Partnerportal zu Partner Center
 
@@ -59,7 +59,7 @@ Unternehmen, die mit Microsoft zusammenarbeiten möchten, müssen Mitglied im Mi
 
 Wenn Sie noch kein Mitglied des Microsoft Partner Network sind, können Sie [hier beitreten](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new), um eine MPN-ID zu erhalten. Notieren Sie sich Ihre MPN-ID, da Sie sie während der Kontoaktivierung eingeben müssen.
 
-Weitere Informationen zum Microsoft Partner Network finden Sie unter [Mitglied werden im Microsoft Partner Network](https://partner.microsoft.com/en-US/membership) auf der Partnerwebsite. Weitere Informationen zu den ISV-Vorteilen des Microsoft Partner Network finden Sie unter [ISV-Ressourcenhub](https://partner.microsoft.com/isv-resource-hub).  
+Weitere Informationen zum Microsoft Partner Network finden Sie unter [Mitglied werden im Microsoft Partner Network](https://partner.microsoft.com/membership) auf der Partnerwebsite. Weitere Informationen zu den ISV-Vorteilen des Microsoft Partner Network finden Sie unter [ISV-Ressourcenhub](https://partner.microsoft.com/isv-resource-hub).  
 
 ## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>Verschieben von Dynamics 365- und PowerApps-Angeboten in Partner Center
 

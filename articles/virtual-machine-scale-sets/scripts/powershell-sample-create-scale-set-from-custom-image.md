@@ -9,12 +9,12 @@ ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh
-ms.openlocfilehash: bdd36a2c58bddce5bea0ba43e5d21da9ef89a14d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 10f0cb1f6f3b5ee25538a588fadda75a2aeb6079
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088916"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Erstellen einer VM-Skalierungsgruppe auf der Grundlage eines benutzerdefinierten VM-Images mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe mit einem benutzerdefinierten VM-Image als Quelle für die VM-Instanzen.
@@ -43,4 +43,4 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
