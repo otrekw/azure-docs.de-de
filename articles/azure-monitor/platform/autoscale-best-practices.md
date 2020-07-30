@@ -4,12 +4,12 @@ description: Autoskalierungsmuster in Azure für Web-Apps, VM-Skalierungsgruppen
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539532"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327054"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](../../api-management/api-management-key-concepts.md).
@@ -22,7 +22,7 @@ Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgrupp
   Eine Einstellung für die automatische Skalierung hat einen Höchst-, Mindest- und Standardwert von Instanzen.
 * Eine automatische Skalierungsaufgabe liest die zugeordnete Skalierungsmetrik und überprüft dabei, ob die konfigurierten Schwellenwerte zum horizontalen Hoch- oder Herunterskalieren überschritten wurden. Eine Liste der Metriken, nach der die automatische Skalierung vorgenommen werden kann, finden Sie unter [Übliche Metriken für die automatische Skalierung in Azure Monitor](autoscale-common-metrics.md).
 * Alle Schwellenwerte werden auf Instanzebene berechnet. Beispielsweise besagt „Skaliere um eine Instanz horizontal hoch, wenn die durchschnittliche CPU-Auslastung &gt; 2 % und die Instanzenanzahl 80 ist“, dass aufskaliert werden soll, wenn die durchschnittliche CPU-Auslastung über alle Instanzen hinweg größer als 80 % ist.
-* Alle Fehler bei der automatischen Skalierung werden im Aktivitätsprotokoll protokolliert. Anschließend können Sie eine [Warnung für das Aktivitätsprotokoll](./../../azure-monitor/platform/activity-log-alerts.md) konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn bei der automatischen Skalierung ein Fehler auftritt.
+* Alle Fehler bei der automatischen Skalierung werden im Aktivitätsprotokoll protokolliert. Anschließend können Sie eine [Warnung für das Aktivitätsprotokoll](./activity-log-alerts.md) konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn bei der automatischen Skalierung ein Fehler auftritt.
 * Auf ähnliche Weise werden alle erfolgreichen Skalierungsaktionen im Aktivitätsprotokoll erfasst. Anschließend können Sie eine Warnung für das Aktivitätsprotokoll konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn die automatischen Skalierung erfolgreich abgeschlossen wurde. Sie können auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="autoscale-best-practices"></a>Empfohlene Methoden für die automatische Skalierung
@@ -151,3 +151,4 @@ Neben der Verwendung von Warnungen zu Aktivitätsprotokollen können Sie auf der
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungsvorgänge zum Abskalieren und Aufskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

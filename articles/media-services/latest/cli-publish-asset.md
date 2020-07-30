@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ccc981af63391527473452e2f53e7abd108fb739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74896118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092149"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI-Beispiel: Veröffentlichen eines Medienobjekts
 
@@ -27,7 +27,7 @@ Das Azure CLI-Skript in diesem Artikel zeigt, wie ein Streaminglocator erstellt 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-[Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+[Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

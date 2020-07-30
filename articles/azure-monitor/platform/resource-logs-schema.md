@@ -4,19 +4,19 @@ description: Erläuterung der unterstützten Dienste und Ereignisschemas für Az
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 37c4093e52caf091489c60a8cdf497cffeffe9ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6504f28b891fb16bd588b899b7a0402b65b4e44
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413857"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318282"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle
 
 > [!NOTE]
 > Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen. Außerdem war bisher die Liste der Ressourcenprotokollkategorien, die von Ihnen gesammelt werden können, in diesem Artikel enthalten. Diese wurde nun in den Artikel [Ressourcenprotokollkategorien](resource-logs-categories.md) verschoben. 
 
-[Azure Monitor-Ressourcenprotokolle](../../azure-monitor/platform/platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
+[Azure Monitor-Ressourcenprotokolle](./platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
 
 Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. In diesem Artikel wird das Schema der obersten Ebene für Ressourcenprotokolle beschrieben, und es sind Links zu den Schemas für jeden Dienst vorhanden.
 
@@ -60,7 +60,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Cognitive Services | [Protokollierung für Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Containerregistrierung | [Protokollierung für Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Azure-Protokolle für CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
-| CosmosDB | [Azure Cosmos DB-Protokollierung](../../cosmos-db/logging.md) |
+| CosmosDB | [Azure Cosmos DB-Protokollierung](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Zugreifen auf Protokolle für Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Zugreifen auf Protokolle für Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
@@ -74,7 +74,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS-Schutz | [Verwalten von Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
-| Power BI Dedicated | [Protokollierung für Power BI Embedded in Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Power BI Dedicated | [Protokollierung für Power BI Embedded in Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datenmodell für Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Suchen, |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus-Protokolle](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,7 +88,8 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Anzeigen der Ressourcenprotokollkategorien, die Sie sammeln können](resource-logs-categories.md)
-* [Weitere Informationen zu Ressourcenprotokollen](../../azure-monitor/platform/platform-logs-overview.md)
-* [Streamen von Ressourcenprotokollen an **Event Hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Ändern der Diagnoseeinstellungen für Ressourcenprotokolle mithilfe der Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [Weitere Informationen zu Ressourcenprotokollen](./platform-logs-overview.md)
+* [Streamen von Ressourcenprotokollen an **Event Hubs**](./resource-logs.md#send-to-azure-event-hubs)
+* [Ändern der Diagnoseeinstellungen für Ressourcenprotokolle mithilfe der Azure Monitor-REST-API](/rest/api/monitor/diagnosticsettings)
+* [Analysieren von Protokollen aus Azure Storage mit Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)
+

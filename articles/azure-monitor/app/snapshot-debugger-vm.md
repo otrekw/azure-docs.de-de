@@ -6,12 +6,12 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1cc9893a309dcdf7ac575494d164052bb0c617c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671340"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325677"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Aktivieren des Momentaufnahmedebuggers für.NET-Anwendungen in Azure Service Fabric, Cloud Service und Virtual Machines
 
@@ -21,11 +21,11 @@ Wenn Ihre Anwendung in Azure Service Fabric, Cloud Service, Virtual Machines ode
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurieren der Momentaufnahmesammlung für ASP.NET-Anwendungen
 
-1. Falls noch nicht geschehen, [aktivieren Sie Application Insights für Ihre Web-App](../../azure-monitor/app/asp-net.md).
+1. Falls noch nicht geschehen, [aktivieren Sie Application Insights für Ihre Web-App](./asp-net.md).
 
 2. Binden Sie das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre App ein.
 
-3. Bei Bedarf können Sie die Konfiguration des Momentaufnahmedebuggers anpassen, die zu [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) hinzugefügt wurde. Die Standardkonfiguration des Momentaufnahmedebuggers ist weitgehend leer und alle Einstellungen sind optional. Hier folgt ein Beispiel für eine Konfiguration, die der Standardkonfiguration entspricht:
+3. Bei Bedarf können Sie die Konfiguration des Momentaufnahmedebuggers anpassen, die zu [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) hinzugefügt wurde. Die Standardkonfiguration des Momentaufnahmedebuggers ist weitgehend leer und alle Einstellungen sind optional. Hier folgt ein Beispiel für eine Konfiguration, die der Standardkonfiguration entspricht:
 
     ```xml
     <TelemetryProcessors>
@@ -59,12 +59,12 @@ Wenn Ihre Anwendung in Azure Service Fabric, Cloud Service, Virtual Machines ode
     </TelemetryProcessors>
     ```
 
-4. Momentaufnahmen werden nur zu Ausnahmen erfasst, die Application Insights gemeldet wurden. In einigen Fällen (z.B. bei älteren Versionen der .NET-Plattform) müssen Sie möglicherweise die [Ausnahmesammlung konfigurieren](../../azure-monitor/app/asp-net-exceptions.md#exceptions), um Ausnahmen mit Momentaufnahmen im Portal zu sehen.
+4. Momentaufnahmen werden nur zu Ausnahmen erfasst, die Application Insights gemeldet wurden. In einigen Fällen (z.B. bei älteren Versionen der .NET-Plattform) müssen Sie möglicherweise die [Ausnahmesammlung konfigurieren](./asp-net-exceptions.md#exceptions), um Ausnahmen mit Momentaufnahmen im Portal zu sehen.
 
 
 ## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Konfigurieren der Momentaufnahmesammlung für Anwendungen mit ASP.NET Core 2.0 oder höher
 
-1. Falls noch nicht geschehen, [aktivieren Sie Application Insights für Ihre ASP.NET Core-Web-App](../../azure-monitor/app/asp-net-core.md).
+1. Falls noch nicht geschehen, [aktivieren Sie Application Insights für Ihre ASP.NET Core-Web-App](./asp-net-core.md).
 
     > [!NOTE]
     > Stellen Sie sicher, dass Ihre Anwendung mindestens auf Version 2.1.1 des Microsoft.ApplicationInsights.AspNetCore-Pakets verweist.
@@ -151,7 +151,7 @@ Wenn Ihre Anwendung in Azure Service Fabric, Cloud Service, Virtual Machines ode
 
 ## <a name="configure-snapshot-collection-for-other-net-applications"></a>Konfigurieren der Momentaufnahmesammlung für andere .NET-Anwendungen
 
-1. Wenn Ihre Anwendung noch nicht mit Application Insights instrumentiert wurde, beginnen Sie mit dem [Aktivieren von Application Insights und Festlegen des Instrumentierungsschlüssels](../../azure-monitor/app/windows-desktop.md).
+1. Wenn Ihre Anwendung noch nicht mit Application Insights instrumentiert wurde, beginnen Sie mit dem [Aktivieren von Application Insights und Festlegen des Instrumentierungsschlüssels](./windows-desktop.md).
 
 2. Fügen Sie das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihrer App hinzu.
 
@@ -180,3 +180,4 @@ Wenn Ihre Anwendung in Azure Service Fabric, Cloud Service, Virtual Machines ode
 - Generieren Sie Datenverkehr für Ihre Anwendung, der eine Ausnahme auslösen kann. Warten Sie dann 10 bis 15 Minuten, bis die Momentaufnahmen an die Application Insights-Instanz gesendet werden.
 - Weitere Informationen finden Sie unter [Momentaufnahmen](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) im Azure-Portal.
 - Hilfe bei der Behandlung von Problemen mit dem Momentaufnahmedebugger finden Sie unter [Problembehandlung für Momentaufnahmedebugger](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+

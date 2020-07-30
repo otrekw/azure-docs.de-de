@@ -9,16 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69ed934e97d2726995a7a5cd122fadbd4a791942
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671833"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320526"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights-Telemetriedatenmodell
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet Telemetrie von Ihrer Webanwendung zum Azure-Portal, damit Sie die Leistung und Nutzung der Anwendung analysieren können. Der Telemetriemodell ist standardisiert, damit eine plattform- und sprachunabhängige Überwachung erstellt werden kann. 
+[Azure Application Insights](./app-insights-overview.md) sendet Telemetrie von Ihrer Webanwendung zum Azure-Portal, damit Sie die Leistung und Nutzung der Anwendung analysieren können. Der Telemetriemodell ist standardisiert, damit eine plattform- und sprachunabhängige Überwachung erstellt werden kann. 
 
 Die mit Application Insights-Modellen gesammelten Daten ergeben dieses typische Anwendungsausführungsmuster:
 
@@ -28,7 +28,7 @@ Folgende Telemetrietypen werden zum Überwachen der Ausführung Ihrer App verwen
 
 * [**Anforderung**](data-model-request-telemetry.md) – Zum Protokollieren einer Anforderung generiert, die von Ihrer App empfangen wurde. Das Web-SDK von Application Insights generiert z. B. automatisch einen Eintrag für „Telemetrie anfordern“ für jede HTTP-Anforderung, die Ihre Web-App empfängt. 
 
-    Ein **Vorgang** umfasst den Ausführungsthread, der eine Anforderung verarbeitet. Sie können auch [Code schreiben](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest), um andere Vorgangstypen zu überwachen, z. B. ein „wake up“ (aktivieren) in einem Webauftrag oder einer Funktion, die regelmäßig Daten verarbeitet.  Jeder Vorgang verfügt über eine ID. Mit dieser ID können alle Telemetriedaten [gruppiert](../../azure-monitor/app/correlation.md) werden, die bei der Verarbeitung der Anforderung durch Ihre App generiert werden. Jeder Vorgang wird entweder erfolgreich oder nicht erfolgreich ausgeführt und verfügt über eine bestimmte Dauer.
+    Ein **Vorgang** umfasst den Ausführungsthread, der eine Anforderung verarbeitet. Sie können auch [Code schreiben](./api-custom-events-metrics.md#trackrequest), um andere Vorgangstypen zu überwachen, z. B. ein „wake up“ (aktivieren) in einem Webauftrag oder einer Funktion, die regelmäßig Daten verarbeitet.  Jeder Vorgang verfügt über eine ID. Mit dieser ID können alle Telemetriedaten [gruppiert](./correlation.md) werden, die bei der Verarbeitung der Anforderung durch Ihre App generiert werden. Jeder Vorgang wird entweder erfolgreich oder nicht erfolgreich ausgeführt und verfügt über eine bestimmte Dauer.
 * [**Ausnahme**](data-model-exception-telemetry.md) – Stellt in der Regel eine Ausnahme dar, die zum Fehlschlagen eines Vorgangs führt.
 * [**Abhängigkeit**](data-model-dependency-telemetry.md) – Stellt einen Aufruf von Ihrer App an einen externen Dienst oder Speicher wie REST-API oder SQL dar. Abhängigkeitsaufrufe von SQL werden in ASP.NET durch `System.Data` definiert. Aufrufe von HTTP-Endpunkten werden durch `System.Net` definiert. 
 
@@ -40,7 +40,7 @@ Application Insights bietet drei zusätzliche Datentypen für benutzerdefinierte
 
 Jedes Telemetrieelement kann die [Kontextinformationen](data-model-context.md) (z.B. Anwendungsversion oder Benutzersitzungs-ID) definieren. Beim Kontext handelt es sich um eine Gruppe stark typisierter Felder, die bestimmte Szenarien zulässt. Wenn die Anwendungsversion ordnungsgemäß initialisiert wird, kann Application Insights neue Muster im Anwendungsverhalten in Korrelation mit der erneuten Bereitstellung erkennen. Über die Sitzungs-ID können der Ausfall oder die Auswirkung eines Problems für Benutzer berechnet werden. Die Berechnung des Distinct Count Measure der Werte der Sitzungs-ID für bestimmte fehlerhafte Abhängigkeiten, Fehlerablaufverfolgungen oder kritische Ausnahmen trägt zum besseren Verständnis der Auswirkungen bei.
 
-Mit dem Application Insights-Telemetriedatenmodell wird eine Weise definiert, auf die Telemetriedaten mit dem zugehörigen Vorgang [korreliert](../../azure-monitor/app/correlation.md) werden. Eine Anforderung kann z.B. SQL-Datenbankaufrufe durchführen und Diagnoseinformationen aufzeichnen. Sie können den Korrelationskontext für diese Telemetrieelemente festlegen, über den diese wieder mit der Anforderungstelemetrie verknüpft werden.
+Mit dem Application Insights-Telemetriedatenmodell wird eine Weise definiert, auf die Telemetriedaten mit dem zugehörigen Vorgang [korreliert](./correlation.md) werden. Eine Anforderung kann z.B. SQL-Datenbankaufrufe durchführen und Diagnoseinformationen aufzeichnen. Sie können den Korrelationskontext für diese Telemetrieelemente festlegen, über den diese wieder mit der Anforderungstelemetrie verknüpft werden.
 
 ## <a name="schema-improvements"></a>Schemaverbesserungen
 
@@ -50,7 +50,8 @@ Wenn Sie Probleme mit dem Datenmodell oder dem Schema melden möchten oder Frage
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schreiben benutzerdefinierter Telemetriedaten](../../azure-monitor/app/api-custom-events-metrics.md)
-- Informationen zum [Erweitern und Filtern von Telemetriedaten](../../azure-monitor/app/api-filtering-sampling.md).
-- Verwenden von [Stichproben](../../azure-monitor/app/sampling.md) zum Minimieren der auf dem Datenmodell basierenden Telemetriedaten.
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).
+- [Schreiben benutzerdefinierter Telemetriedaten](./api-custom-events-metrics.md)
+- Informationen zum [Erweitern und Filtern von Telemetriedaten](./api-filtering-sampling.md).
+- Verwenden von [Stichproben](./sampling.md) zum Minimieren der auf dem Datenmodell basierenden Telemetriedaten.
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
+

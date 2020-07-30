@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662263"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321257"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API
 
 In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Metriken für Azure-Ressourcen über eine REST-API an den Metrikenspeicher von Azure Monitor senden können. Sobald sich die Metriken in Azure Monitor befinden, können Sie die gleichen Aktionen für sie ausführen wie für die Standardmetriken. Beispiele wären etwa das Erstellen von Diagrammen und Warnungen sowie das Weiterleiten an andere externe Tools.  
 
 >[!NOTE]  
->Die REST-API gestattet nur das Senden von benutzerdefinierten Metriken für Azure-Ressourcen. Sie können mit [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md) Metriken für Ressourcen in verschiedenen Umgebungen oder lokal senden.    
+>Die REST-API gestattet nur das Senden von benutzerdefinierten Metriken für Azure-Ressourcen. Sie können mit [Application Insights](../app/api-custom-events-metrics.md) Metriken für Ressourcen in verschiedenen Umgebungen oder lokal senden.    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Erstellen und Autorisieren eines Dienstprinzipals zur Ausgabe von Metriken 
@@ -93,7 +93,7 @@ Sollte im Rahmen des Prozesses eine Fehlermeldung angezeigt werden, berücksicht
 1. Sie können Metriken nicht für ein Abonnement oder eine Ressourcengruppe als Ihre Azure-Ressource ausgeben. 
 1. Dem Speicher können keine Metriken hinzugefügt werden, die älter als 20 Minuten sind. Der Metrikspeicher ist für die Benachrichtigung und Diagrammerstellung in Echtzeit optimiert. 
 2. Die Anzahl von Dimensionsnamen muss mit den Werten übereinstimmen (und umgekehrt). Überprüfen Sie die Werte. 
-2. Möglicherweise geben Sie Metriken für Regionen aus, die keine benutzerdefinierten Metriken unterstützen. Weitere Informationen finden Sie unter [Unterstützte Regionen](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+2. Möglicherweise geben Sie Metriken für Regionen aus, die keine benutzerdefinierten Metriken unterstützen. Weitere Informationen finden Sie unter [Unterstützte Regionen](./metrics-custom-overview.md#supported-regions). 
 
 
 
@@ -117,5 +117,5 @@ Sollte im Rahmen des Prozesses eine Fehlermeldung angezeigt werden, berücksicht
 
  
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [benutzerdefinierte Metriken](../../azure-monitor/platform/metrics-custom-overview.md).
+- Erfahren Sie mehr über [benutzerdefinierte Metriken](./metrics-custom-overview.md).
 

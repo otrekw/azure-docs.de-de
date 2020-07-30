@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78206235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321886"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -19,7 +19,7 @@ Dieser Artikel zeigt Ihnen, wie eine Logik-App eingerichtet und ausgelöst wird,
 
 ## <a name="overview"></a>Übersicht
 
-Wenn eine Azure Monitor-Warnung auslöst wird, wird eine [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) aufgerufen. Aktionsgruppen ermöglichen Ihnen das Auslösen von mindestens einer Aktion, um andere über eine Warnung zu benachrichtigen und diese auch zu beseitigen.
+Wenn eine Azure Monitor-Warnung auslöst wird, wird eine [Aktionsgruppe](./action-groups.md) aufgerufen. Aktionsgruppen ermöglichen Ihnen das Auslösen von mindestens einer Aktion, um andere über eine Warnung zu benachrichtigen und diese auch zu beseitigen.
 
 Der allgemeine Vorgang besteht aus den folgenden Schritten:
 
@@ -128,7 +128,7 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 14. Wählen Sie oben im **Logik-Apps-Designer** die Option **Speichern** aus, um Ihre Logik-App zu speichern.
 
-15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
+15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](./action-groups.md), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
 
     ![Aktualisieren der Aktionsgruppe](media/action-groups-logic-app/update-action-group.png "Aktualisieren der Aktionsgruppe")
 
@@ -294,7 +294,7 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
 Logic Apps verfügt über verschiedene Connectors, mit denen Sie Aktionen in einer Vielzahl von Anwendungen und Datenbanken auslösen können. Slack, SQL Server, Oracle, Salesforce sind lediglich einige Beispiele. Weitere Informationen zu Connectors finden Sie unter [Logic App-Connectors](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
-* Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Azure Service Health-Benachrichtigung gesendet wird](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-* Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
+* Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](./alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
+* Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Azure Service Health-Benachrichtigung gesendet wird](../../service-health/alerts-activity-log-service-notifications-portal.md).
+* Weitere Informationen zu [Aktionsgruppen](./action-groups.md).
 

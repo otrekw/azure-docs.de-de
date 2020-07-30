@@ -4,12 +4,12 @@ description: Metriken und klassische APIs für Autoskalierung, auch Azure Servic
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505430"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317381"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor: Einstellung der APIs des klassischen Bereitstellungsmodells für Metriken und Autoskalierung
 
@@ -21,7 +21,7 @@ Die gleichen Vorgänge werden seit über einem Jahr durch eine Reihe von Azure R
 
 Wenn Sie Autoskalierung über das Azure-Portal, das [neue Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), PowerShell, die CLI oder Resource Manager-Vorlagen verwalten, ist keine Aktion erforderlich.  
 
-Wenn Sie Metriken über das Azure-Portal oder über verschiedene [Partnerüberwachungsdienste](../../azure-monitor/platform/partners.md) nutzen, ist keine Aktion erforderlich. Microsoft arbeitet mit den Überwachungspartnern zusammen, um zu den neuen APIs zu migrieren.
+Wenn Sie Metriken über das Azure-Portal oder über verschiedene [Partnerüberwachungsdienste](./partners.md) nutzen, ist keine Aktion erforderlich. Microsoft arbeitet mit den Überwachungspartnern zusammen, um zu den neuen APIs zu migrieren.
 
 ## <a name="who-is-affected"></a>Wer ist betroffen?
 
@@ -89,3 +89,4 @@ Wenden Sie sich unter MonitorClassicAPIhelp@microsoft.com an uns, wenn Sie Frage
 
 - [Neuere REST-APIs für Azure Monitor](/rest/api/monitor/) 
 - [Neueres Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

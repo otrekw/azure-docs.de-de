@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117249"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Windows-Gerät
 
@@ -22,10 +22,12 @@ In dieser Schnellstartanleitung können Sie Azure IoT Edge ausprobieren, indem S
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
-1. Erstellen Sie einen IoT Hub.
-2. Registrieren eines IoT Edge-Geräts für Ihren IoT Hub
-3. Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
-4. Durchführen der Remotebereitstellung eines Moduls für ein IoT Edge-Gerät und Senden von Telemetriedaten an den IoT Hub
+> [!div class="checklist"]
+>
+> * Erstellen Sie einen IoT Hub.
+> * Registrieren eines IoT Edge-Geräts für Ihren IoT Hub
+> * Installieren und Starten der IoT Edge-Runtime auf Ihrem virtuellen Gerät
+> * Durchführen der Remotebereitstellung eines Moduls für ein IoT Edge-Gerät und Senden von Telemetriedaten an den IoT Hub
 
 ![Diagramm: Schnellstart-Architektur für Geräte und Cloud](./media/quickstart/install-edge-full.png)
 

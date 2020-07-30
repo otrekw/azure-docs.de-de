@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374592"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029432"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
 **Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
@@ -73,7 +73,7 @@ Folgende Punkte sollten berücksichtigt werden:
     Wenn keine Daten vorhanden sind, impliziert dies, dass ein Problem mit der Diagnoseerweiterung auf den virtuellen Computern vorliegt. Sind Daten vorhanden, weist dies darauf hin, dass entweder ein Problem mit den Skalierungsregeln oder mit dem Insights-Dienst vorliegt. Überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/).
     
     Sobald Sie diese Schritte absolviert haben, können Sie die folgenden Ressourcen nutzen, sollten immer noch Probleme mit der automatischen Skalierung auftreten: 
-    * Lesen Sie die Foren auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure) 
+    * Lesen Sie die Foren auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-virtual-machines.html)oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure) 
     * Melden Sie einen Supportanruf an. Bereiten Sie das Teilen der Vorlage und einer Ansicht Ihrer Leistungsdaten vor.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

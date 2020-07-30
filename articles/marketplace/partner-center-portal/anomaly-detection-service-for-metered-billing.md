@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die Erkennung von Anomalien, den Zeitpunkt 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
 ms.author: mingshen
+author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122029"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320084"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Anomalieerkennungsdienst für getaktete Abrechnung
 

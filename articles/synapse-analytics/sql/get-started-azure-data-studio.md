@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Studio (Vorschau): Herstellen einer Verbindung mit und Abfragen von Synapse SQL'
+title: Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio (Vorschau)
 description: Verwenden Sie Azure Data Studio (Vorschau), um eine Verbindung mit Synapse SQL in Azure Synapse Analytics herzustellen und Abfragen auszuführen.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059559"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio (Vorschau)
 

@@ -2,19 +2,17 @@
 title: Erste Schritte mit der U-SQL-Sprache in Azure Data Lake Analytics
 description: Hier werden die Grundlagen der U-SQL-Sprache in Azure Data Lake Analytics vermittelt. Schreiben Sie Ihre erste Abfrage mithilfe von Variablen, um Daten aus Dateien zu extrahieren, das Rowset zu transformieren und Daten zu aggregieren.
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: e80ecac68c3352c7f067fcbfcedb9a07aed729a8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120856"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128844"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Erste Schritte mit U-SQL in Azure Data Lake Analytics
 

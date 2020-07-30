@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028361"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Problembehandlung beim Windows-Stillstandfehler: Fehler bei der Verzeichnisdienstinitialisierung
 
@@ -27,7 +27,7 @@ Dieser Artikel beschreibt Schritte zum Beheben von Problemen bei denen ein virtu
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot der VM anzuzeigen, zeigt der Screenshot, dass die VM aufgrund eines Fehlers neu gestartet werden muss, wobei in Windows Server 2008 R2 der Stillstandcode **0xC00002E1** und in Windows Server 2012 oder höher **0xC00002E2** angezeigt wird.
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot der VM anzuzeigen, zeigt der Screenshot, dass die VM aufgrund eines Fehlers neu gestartet werden muss, wobei in Windows Server 2008 R2 der Stillstandcode **0xC00002E1** und in Windows Server 2012 oder höher **0xC00002E2** angezeigt wird.
 
 ![Der Startbildschirm von Windows Server 2012 besagt „Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you“. (Auf dem PC ist ein Problem aufgetreten. Er muss neu gestartet werden. Wir sammeln lediglich einige Fehlerinformationen, dann erfolgt der Neustart).](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -62,7 +62,7 @@ Dieser Fehler kann durch jede der folgenden Bedingungen verursacht werden:
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen und Aufrufen einer Reparatur-VM
 
-1. Führen Sie die [Schritte 1-3 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die [Schritte 1-3 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um eine Reparatur-VM vorzubereiten.
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="free-up-space-on-disk"></a>Freigeben von Speicherplatz auf dem Datenträger
@@ -70,11 +70,11 @@ Dieser Fehler kann durch jede der folgenden Bedingungen verursacht werden:
 Da der Datenträger jetzt an eine Reparatur-VM angefügt ist, überprüfen Sie, ob der Datenträger, der die interne Active Directory-Datenbank enthält, über ausreichend Speicherplatz für die ordnungsgemäße Funktion verfügt.
 
 1. Überprüfen Sie, ob der Datenträger voll ist, indem Sie mit der rechten Maustaste auf das Laufwerk klicken und **Eigenschaften** auswählen.
-1. Wenn der Datenträger weniger als 300 MB freien Speicherplatz aufweist, [erweitern Sie ihn mithilfe von PowerShell auf den Maximalwert von 1 TB](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Wenn der Datenträger weniger als 300 MB freien Speicherplatz aufweist, [erweitern Sie ihn mithilfe von PowerShell auf den Maximalwert von 1 TB](../windows/expand-os-disk.md).
 1. Wenn der Datenträger 1 TB Speicherplatz erreicht hat, führen Sie eine Datenträgerbereinigung durch.
 
-   1. Verwenden Sie PowerShell, um [den Datenträger von der defekten VM zu trennen](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell).
-   1. [Fügen Sie den Datenträger nach der Trennung](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm) von der defekten VM an eine funktionierende VM an.
+   1. Verwenden Sie PowerShell, um [den Datenträger von der defekten VM zu trennen](../windows/detach-disk.md#detach-a-data-disk-using-powershell).
+   1. [Fügen Sie den Datenträger nach der Trennung](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm) von der defekten VM an eine funktionierende VM an.
    1. Verwenden Sie das [Datenträgerbereinigungstool](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup), um weiteren Speicherplatz freizugeben.
 
 1. **Optional**: Wenn mehr Speicherplatz erforderlich ist, öffnen Sie eine CMD-Instanz, und geben Sie den `defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g`-Befehl ein, um eine Defragmentierung des Laufwerks auszuführen:
@@ -183,7 +183,7 @@ Um die Speicherabbildsammlung und die serielle Konsole zu aktivieren, führen Si
 
 ### <a name="rebuild-the-vm"></a>Neuerstellen der VM
 
-1. Führen Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) aus, um die VM zu reassemblieren.
+1. Führen Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um die VM zu reassemblieren.
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>Umkonfigurieren der Speicherbereichs-Netzwerkrichtlinie
 

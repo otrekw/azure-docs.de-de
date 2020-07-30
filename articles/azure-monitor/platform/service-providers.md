@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315444"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -19,9 +19,9 @@ Log Analytics-Arbeitsbereiche in Azure Monitor unterstützen Managed Service Pro
 
 Zwischen Großunternehmen und Dienstanbietern bestehen viele Gemeinsamkeiten, insbesondere wenn ein zentrales IT-Team für die Verwaltung der IT vieler unterschiedlicher Geschäftseinheiten verantwortlich ist. Der Einfachheit halber wird in diesem Dokument der Begriff *Dienstanbieter* verwendet, jedoch ist die gleiche Funktionalität für Unternehmen und andere Kunden verfügbar.
 
-Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) teilnehmen, ist Log Analytics in Azure Monitor einer Dienste, die in Azure CSP-Abonnements verfügbar sind.
+Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/membership/cloud-solution-provider) teilnehmen, ist Log Analytics in Azure Monitor einer Dienste, die in Azure CSP-Abonnements verfügbar sind.
 
-Log Analytics in Azure Monitor kann außerdem von Dienstanbietern verwendet werden, die Kundenressourcen über die Funktion der delegierten Azure-Ressourcenverwaltung in [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) verwalten.
+Log Analytics in Azure Monitor kann außerdem von Dienstanbietern verwendet werden, die Kundenressourcen über die Funktion der delegierten Azure-Ressourcenverwaltung in [Azure Lighthouse](../../lighthouse/overview.md) verwalten.
 
 ## <a name="architectures-for-service-providers"></a>Architekturen für Dienstanbieter
 
@@ -35,12 +35,12 @@ Bei dieser Architektur wird ein Arbeitsbereich in dem Mandanten des Kunden berei
 
 Es gibt zwei Möglichkeiten, wie Administratoren des Dienstanbieters Zugriff auf einen Log Analytics-Arbeitsbereich in einem Kundenmandanten erhalten:
 
-- Ein Kunde kann einzelne Benutzer des Dienstanbieters als [Azure Active Directory-Gastbenutzer (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) hinzufügen. Die Administratoren des Dienstanbieters müssen sich im Azure-Portal im Verzeichnis jedes Kunden anmelden, um Zugriff auf diese Arbeitsbereiche zu erhalten. Dies macht es auch erforderlich, dass die Kunden den Zugriff für jeden Administrator des Dienstanbieters verwalten.
-- Für eine größere Skalierbarkeit und Flexibilität können Dienstanbieter die [delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) von [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) verwenden, um auf den Mandanten des Kunden zuzugreifen. Bei dieser Methode sind die Administratoren des Dienstanbieters in einer Azure AD-Benutzergruppe im Mandanten des Dienstanbieters enthalten. Diese Gruppe erhält während des Onboardingprozesses für jeden Kunden Zugriff. Die Administratoren können dann über ihren Mandanten des Dienstanbieters auf die Arbeitsbereiche jedes Kunden zugreifen, statt sich jeweils beim Mandanten der einzelnen Kunden anmelden zu müssen. Wenn Sie auf diese Weise auf die Ressourcen der Log Analytics-Arbeitsbereiche Ihrer Kunden zugreifen, verringert sich der Arbeitsaufwand auf Kundenseite, und die Daten mehrerer Kunden, die über den gleichen Dienstanbieter verwaltet werden, lassen sich über Tools wie z. B. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview) einfacher erfassen und analysieren. Weitere Informationen finden Sie unter [Überwachen von Kundenressourcen in großem Umfang](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale).
+- Ein Kunde kann einzelne Benutzer des Dienstanbieters als [Azure Active Directory-Gastbenutzer (B2B)](../../active-directory/b2b/what-is-b2b.md) hinzufügen. Die Administratoren des Dienstanbieters müssen sich im Azure-Portal im Verzeichnis jedes Kunden anmelden, um Zugriff auf diese Arbeitsbereiche zu erhalten. Dies macht es auch erforderlich, dass die Kunden den Zugriff für jeden Administrator des Dienstanbieters verwalten.
+- Für eine größere Skalierbarkeit und Flexibilität können Dienstanbieter die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) von [Azure Lighthouse](../../lighthouse/overview.md) verwenden, um auf den Mandanten des Kunden zuzugreifen. Bei dieser Methode sind die Administratoren des Dienstanbieters in einer Azure AD-Benutzergruppe im Mandanten des Dienstanbieters enthalten. Diese Gruppe erhält während des Onboardingprozesses für jeden Kunden Zugriff. Die Administratoren können dann über ihren Mandanten des Dienstanbieters auf die Arbeitsbereiche jedes Kunden zugreifen, statt sich jeweils beim Mandanten der einzelnen Kunden anmelden zu müssen. Wenn Sie auf diese Weise auf die Ressourcen der Log Analytics-Arbeitsbereiche Ihrer Kunden zugreifen, verringert sich der Arbeitsaufwand auf Kundenseite, und die Daten mehrerer Kunden, die über den gleichen Dienstanbieter verwaltet werden, lassen sich über Tools wie z. B. [Azure Monitor-Arbeitsmappen](./workbooks-overview.md) einfacher erfassen und analysieren. Weitere Informationen finden Sie unter [Überwachen von Kundenressourcen in großem Umfang](../../lighthouse/how-to/monitor-at-scale.md).
 
 Die verteilte Architektur bietet folgende Vorteile:
 
-* Der Kunde kann spezifische Berechtigungsebenen über die [delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) überprüfen oder den Zugriff auf die Protokolle über seinen [rollenbasierten Zugriff](https://docs.microsoft.com/azure/role-based-access-control/overview) verwalten.
+* Der Kunde kann spezifische Berechtigungsebenen über die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) überprüfen oder den Zugriff auf die Protokolle über seinen [rollenbasierten Zugriff](../../role-based-access-control/overview.md) verwalten.
 * Protokolle können von Ressourcen jeder Art erfasst werden, nicht nur von agentbasierten VM-Daten. Beispielsweise Azure-Überwachungsprotokolle.
 * Jeder Kunde kann andere Einstellungen für seinen Arbeitsbereich verwenden, etwa hinsichtlich Vermerkdauer und Datenbegrenzung.
 * Isolation zwischen Kunden im Hinblick auf behördliche Bestimmungen und Compliance.
@@ -75,18 +75,19 @@ Die dritte Architektur stellt eine Mischung der zwei Optionen dar. Sie basiert a
 
 Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen Speicherort:
 
-1. Zentraler Arbeitsbereich: Der Dienstanbieter kann einen Arbeitsbereich in seinem Mandanten erstellen und ein Skript verwenden, das die [Abfrage-API](https://dev.loganalytics.io/) in Kombination mit der [Datensammlungs-API](../../azure-monitor/platform/data-collector-api.md) nutzt, um die Daten aus den verschiedenen Arbeitsbereichen an diesen zentralen Speicherort zu bringen. Eine weitere Option, die kein Skript einsetzt, ist die Verwendung von [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+1. Zentraler Arbeitsbereich: Der Dienstanbieter kann einen Arbeitsbereich in seinem Mandanten erstellen und ein Skript verwenden, das die [Abfrage-API](https://dev.loganalytics.io/) in Kombination mit der [Datensammlungs-API](./data-collector-api.md) nutzt, um die Daten aus den verschiedenen Arbeitsbereichen an diesen zentralen Speicherort zu bringen. Eine weitere Option, die kein Skript einsetzt, ist die Verwendung von [Azure Logic Apps](../../logic-apps/logic-apps-overview.md).
 
-2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](../../azure-monitor/platform/powerbi.md) Daten nach Power BI exportieren.
+2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](./powerbi.md) Daten nach Power BI exportieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Automatisieren Sie mithilfe von [Resource Manager-Vorlagen](template-workspace-configuration.md) die Erstellung und Konfiguration von Arbeitsbereichen.
 
-* Automatisieren Sie mit [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen.
+* Automatisieren Sie mit [PowerShell](./powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen.
 
-* Verwenden Sie [Warnungen](../../azure-monitor/platform/alerts-overview.md) für die Integration in vorhandene Systeme.
+* Verwenden Sie [Warnungen](./alerts-overview.md) für die Integration in vorhandene Systeme.
 
-* Generieren Sie Zusammenfassungsberichte mit [Power BI](../../azure-monitor/platform/powerbi.md).
+* Generieren Sie Zusammenfassungsberichte mit [Power BI](./powerbi.md).
 
-* Führen Sie das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) durch.
+* Führen Sie das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) durch.
+

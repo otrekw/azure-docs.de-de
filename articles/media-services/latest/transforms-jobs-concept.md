@@ -12,16 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73571234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091927"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Transformationen und Aufträge in Media Services
 
-In diesem Thema werden Details zu [Transformationen](https://docs.microsoft.com/rest/api/media/transforms) und [Aufträgen](https://docs.microsoft.com/rest/api/media/jobs) erläutert und die Beziehung zwischen diesen Entitäten erläutert.
+In diesem Thema werden Details zu [Transformationen](/rest/api/media/transforms) und [Aufträgen](/rest/api/media/jobs) erläutert und die Beziehung zwischen diesen Entitäten erläutert.
 
 ## <a name="overview"></a>Übersicht
 
@@ -58,7 +58,7 @@ Verwenden Sie **Transformationen**, um allgemeine Aufgaben zur Codierung oder An
 
 ### <a name="viewing-schema"></a>Anzeigen des Schemas
 
-In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie finden die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der Referenzdokumentation der [REST-API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), des [.NET SDKs](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eines anderen Media Services v3 SDKs.
+In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie finden die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der Referenzdokumentation der [REST-API](/rest/api/media/transforms/createorupdate#standardencoderpreset), des [.NET SDKs](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eines anderen Media Services v3 SDKs.
 
 ### <a name="creating-transforms"></a>Erstellen von Transformationen
 
@@ -66,7 +66,7 @@ Sie können Transformationen mit REST, CLI oder einem der veröffentlichten SDKs
 
 ### <a name="updating-transforms"></a>Aktualisieren von Transformationen
 
-Wenn Sie Ihre [Transformation](https://docs.microsoft.com/rest/api/media/transforms) aktualisieren müssen, verwenden Sie den **Aktualisierungsvorgang**. Er ist für das Vornehmen von Änderungen an der Beschreibung oder den Prioritäten der zugrundeliegenden TransformOutputs vorgesehen. Es empfiehlt sich, solche Updates vorzunehmen, wenn alle in Bearbeitung befindlichen Aufträge abgeschlossen wurden. Wenn Sie die Konfiguration umschreiben möchten, müssen Sie eine neue Transformation erstellen.
+Wenn Sie Ihre [Transformation](/rest/api/media/transforms) aktualisieren müssen, verwenden Sie den **Aktualisierungsvorgang**. Er ist für das Vornehmen von Änderungen an der Beschreibung oder den Prioritäten der zugrundeliegenden TransformOutputs vorgesehen. Es empfiehlt sich, solche Updates vorzunehmen, wenn alle in Bearbeitung befindlichen Aufträge abgeschlossen wurden. Wenn Sie die Konfiguration umschreiben möchten, müssen Sie eine neue Transformation erstellen.
 
 ### <a name="transform-object-diagram"></a>Diagramm des Objekts „Transform“
 
@@ -78,7 +78,7 @@ Wählen Sie das Bild aus, um es in voller Größe anzeigen.
 
 ## <a name="jobs"></a>Aufträge
 
-Ein **Auftrag** ist die eigentliche Anforderung an Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Nachdem die Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Eingabevideos über HTTPS-URLs, SAS-URLs oder [Medienobjekte](https://docs.microsoft.com/rest/api/media/assets).  
+Ein **Auftrag** ist die eigentliche Anforderung an Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Nachdem die Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Eingabevideos über HTTPS-URLs, SAS-URLs oder [Medienobjekte](/rest/api/media/assets).  
 
 ### <a name="job-input-from-https"></a>Auftragseingabe über HTTPS
 
@@ -94,7 +94,7 @@ Fortschritt und Status von Aufträgen können abgerufen werden, indem die Ereign
 
 ### <a name="updating-jobs"></a>Aktualisieren von Aufträgen
 
-Der Updatevorgang für den Auftrag ([Job](https://docs.microsoft.com/rest/api/media/jobs)-Entität) kann verwendet werden, um die Eigenschaften *description* und *priority* nach dem Übermitteln des Auftrags zu ändern. Eine Änderung an der *priority*-Eigenschaft wird nur wirksam, wenn sich der Auftrag noch in der Warteschlange befindet. Wenn die Verarbeitung des Auftrags gestartet oder bereits beendet wurde, hat das Ändern der Priorität keine Auswirkungen.
+Der Updatevorgang für den Auftrag ([Job](/rest/api/media/jobs)-Entität) kann verwendet werden, um die Eigenschaften *description* und *priority* nach dem Übermitteln des Auftrags zu ändern. Eine Änderung an der *priority*-Eigenschaft wird nur wirksam, wenn sich der Auftrag noch in der Warteschlange befindet. Wenn die Verarbeitung des Auftrags gestartet oder bereits beendet wurde, hat das Ändern der Priorität keine Auswirkungen.
 
 ### <a name="job-object-diagram"></a>Diagramm des Objekts „Job“
 
@@ -116,7 +116,7 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Fehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [Fehlercodes](/rest/api/media/jobs/get#joberrorcode)
 * [Filterung, Sortierung und Paginierung von Media Services-Entitäten](entities-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -4,12 +4,12 @@ description: Enthält eine ausführliche Aufschlüsselung der Einstellungen für
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 03019b35a85d8d511e3ada131eff890a60fd57f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317466"
 ---
 # <a name="understand-autoscale-settings"></a>Grundlegendes zu Einstellungen für die automatische Skalierung
 Mithilfe der Einstellungen für die automatische Skalierung können Sie sicherstellen, dass Sie über die richtige Anzahl von ausgeführten Ressourcen verfügen, um die wechselnde Auslastung Ihrer Anwendung zu bewältigen. Sie können konfigurieren, dass Einstellungen für die automatische Skalierung basierend auf Metriken ausgelöst werden, mit denen die Auslastung oder die Leistung angezeigt werden, oder die Auslösung kann zu einem geplanten Datum bzw. einer geplanten Uhrzeit erfolgen. In diesem Artikel wird die Anatomie einer Einstellung für die automatische Skalierung ausführlich beschrieben. Der Artikel beginnt mit Erläuterungen zu dem Schema und den Eigenschaften einer Einstellung und führt Sie dann durch die verschiedenen Profiltypen, die konfiguriert werden können. Abschließend erfahren Sie in diesem Artikel, wie das Feature für die automatische Skalierung in Azure auswertet, welches Profil zu einem bestimmten Zeitpunkt ausgeführt wird.
@@ -301,8 +301,9 @@ Angenommen, es ist eine VM-Skalierungsgruppe mit einer aktuellen Kapazität von 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur automatischen Skalierung finden Sie in den folgenden Ressourcen:
 
-* [Übersicht über die automatische Skalierung](../../azure-monitor/platform/autoscale-overview.md)
-* [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Best Practices für die automatische Skalierung in Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
-* [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [Übersicht über die automatische Skalierung](./autoscale-overview.md)
+* [Allgemeine Metriken für die automatische Skalierung in Azure Monitor](./autoscale-common-metrics.md)
+* [Best Practices für die automatische Skalierung in Azure Monitor](./autoscale-best-practices.md)
+* [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](./autoscale-webhook-email.md)
 * [REST-API für die automatische Skalierung](/rest/api/monitor/autoscalesettings)
+

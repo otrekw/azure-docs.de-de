@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499459"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321291"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Nachverfolgen von Abhängigkeiten mit OpenCensus Python
 
 Eine Abhängigkeit ist eine externe Komponente, die von Ihrer Anwendung aufgerufen wird. Abhängigkeitsdaten werden mithilfe von OpenCensus Python und den verschiedenen Integrationen erfasst. Die Daten werden dann als `dependencies`-Telemetriedaten an Application Insights unter Azure Monitor gesendet.
 
-Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
+Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensus Python SDK](./opencensus-python.md).
 
 ## <a name="in-process-dependencies"></a>In-Process-Abhängigkeiten
 
@@ -170,8 +170,9 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Anwendungszuordnung](../../azure-monitor/app/app-map.md)
-* [Verfügbarkeit](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Suchen,](../../azure-monitor/app/diagnostic-search.md)
-* [Protokollabfragen](../../azure-monitor/log-query/log-query-overview.md)
-* [Transaktionsdiagnose](../../azure-monitor/app/transaction-diagnostics.md)
+* [Anwendungszuordnung](./app-map.md)
+* [Verfügbarkeit](./monitor-web-app-availability.md)
+* [Suchen,](./diagnostic-search.md)
+* [Protokollabfragen](../log-query/log-query-overview.md)
+* [Transaktionsdiagnose](./transaction-diagnostics.md)
+

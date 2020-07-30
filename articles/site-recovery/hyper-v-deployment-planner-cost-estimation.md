@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60947199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089548"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
@@ -167,16 +167,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Währung|Name||Währung|Name||Währung|Name|
+|Währung|Name|Währung|Name|Währung|Name|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
-|CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (CHF)||DKK|Dänische Krone (kr)|
-|EUR|Euro (€)||GBP|Britisches Pfund (£)||HKD|Hongkong-Dollar (HK$)|
-|IDR|Indonesische Rupiah (Rp)||INR|Indische Rupie (₹)||JPY|Japanischer Yen (¥)|
-|KRW|Südkoreanische Won (₩)||MXN|Mexikanischer Peso (MX$)||MYR|Malaysischer Ringgit (RM$)|
+|ARS|Argentinische Pesos ($)|AUD|Australischer Dollar ($)|BRL|Brasilianischer Real (R$)|
+|CAD|Kanadischer Dollar ($)|CHF|Schweizer Franken (CHF)|DKK|Dänische Krone (kr)|
+|EUR|Euro (€)|GBP|Britisches Pfund (£)|HKD|Hongkong-Dollar (HK$)|
+|IDR|Indonesische Rupiah (Rp)|INR|Indische Rupie (₹)|JPY|Japanischer Yen (¥)|
+|KRW|Südkoreanische Won (₩)|MXN|Mexikanischer Peso (MX$)|MYR|Malaysischer Ringgit (RM$)|
 |NOK|Norwegische Krone (kr)||NZD|Neuseeländischer Dollar ($)||RUB|Russische Rubel (руб)|
-|SAR|Saudi-Riyal (SR)||SEK|Schwedische Krone (kr)||TWD|Taiwanesische Dollar (NT$)|
-|TRY|Türkische Lira (TL)||USD| US-Dollar ($)||ZAR|Südafrikanischer Rand (R)|
+|SAR|Saudi-Riyal (SR)|SEK|Schwedische Krone (kr)|TWD|Taiwanesische Dollar (NT$)|
+|TRY|Türkische Lira (TL)|USD| US-Dollar ($)|ZAR|Südafrikanischer Rand (R)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich unter [Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure](hyper-v-azure-tutorial.md) darüber, wie Sie Hyper-V-VMs in Azure mit Site Recovery schützen.

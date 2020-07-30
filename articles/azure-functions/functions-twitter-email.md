@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a7cdeb7bfde7396026b782382b34228c309b37d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116331"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088143"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 + Ein [Outlook.com](https://outlook.com/)-Konto (zum Senden von Benachrichtigungen)
 
 > [!NOTE]
-> Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkungen in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie den Gmail-Connector nur mit bestimmten von Google genehmigten Apps und Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung in Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+> Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkungen in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie den Gmail-Connector nur mit bestimmten von Google genehmigten Apps und Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung in Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 + In diesem Artikel werden als Ausgangspunkt die Ressourcen verwendet, die unter [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md) erstellt wurden.
 Führen Sie nun diese Schritte zum Erstellen Ihrer Funktionen-App durch, sofern dies noch nicht geschehen ist.
@@ -304,4 +304,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie für Ihre Fu
 > [Erstellen einer serverlosen API mit Azure Functions](functions-create-serverless-api.md)
 
 Weitere Informationen zu Logik-Apps finden Sie unter [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
-

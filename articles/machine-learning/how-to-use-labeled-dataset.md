@@ -6,16 +6,17 @@ author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 05ecce2d6ef0f8a3f241570ba9364c5e38682f3e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025725"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319438"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Erstellen und Untersuchen eines Azure Machine Learning-Datasets mit Bezeichnungen (Vorschau)
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Erstellen und Untersuchen eines Azure Machine Learning-Datasets mit Bezeichnungen
 
 In diesem Artikel erfahren Sie, wie Sie die Datenbezeichnungen aus einem Azure Machine Learning-Datenbezeichnungsprojekt exportieren und in gängige Formate laden können, z. B. einen Pandas-Datenrahmen zum Untersuchen von Daten oder einen Torchvision-Dataset zur Bildtransformation. 
 

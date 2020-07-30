@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516786"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318078"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Überwachen des Active Directory-Replikationsstatus mit Azure Monitor
 
@@ -34,13 +34,13 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 
 ### <a name="install-agents-on-domain-controllers"></a>Installieren von Agents auf Domänencontrollern
-Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind. Alternativ müssen Sie Agents auf Mitgliedsservern installieren und für das Senden von AD-Replikationsdaten an Azure Monitor konfigurieren. Informationen zur Verbindung von Windows-Computern mit Azure Monitor finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../../azure-monitor/platform/agent-windows.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit Azure Monitor verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](../../azure-monitor/platform/om-agents.md) weiter.
+Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind. Alternativ müssen Sie Agents auf Mitgliedsservern installieren und für das Senden von AD-Replikationsdaten an Azure Monitor konfigurieren. Informationen zur Verbindung von Windows-Computern mit Azure Monitor finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../platform/agent-windows.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit Azure Monitor verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](../platform/om-agents.md) weiter.
 
 ### <a name="enable-non-domain-controller"></a>Aktivieren eines Nichtdomänencontrollers
 Wenn Sie Ihre Domänencontroller nicht direkt mit Azure Monitor verbinden möchten, können Sie einen beliebigen anderen Computer mit Azure Monitor-Verbindung in Ihrer Domäne verwenden, um Daten für das AD-Replikationsstatusmonitor-Lösungspaket zu sammeln und die Daten zu senden.
 
 1. Stellen Sie sicher, dass der Computer Mitglied der Domäne ist, die Sie mit der AD-Replikationsstatus-Lösung überwachen möchten.
-2. [Verbinden Sie den Windows-Computer mit Azure Monitor](../../azure-monitor/platform/om-agents.md), oder [stellen Sie die Verbindung mit Azure Monitor über die vorhandene Operations Manager-Umgebung her](../../azure-monitor/platform/om-agents.md), falls die Verbindung noch nicht besteht.
+2. [Verbinden Sie den Windows-Computer mit Azure Monitor](../platform/om-agents.md), oder [stellen Sie die Verbindung mit Azure Monitor über die vorhandene Operations Manager-Umgebung her](../platform/om-agents.md), falls die Verbindung noch nicht besteht.
 3. Legen Sie auf diesem Computer den folgenden Registrierungsschlüssel fest:<br>Schlüssel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>Wert: **IsTarget**<br>Wertdaten: **true**
 
    > [!NOTE]
@@ -110,7 +110,7 @@ Wenn Sie in einer der Listen auf ein Element klicken, werden weitere Details mit
 
 ![AD-Replikationsstatus-Fehler in Abfrageergebnissen](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Hier können Sie weiter filtern, die Protokollabfrage ändern usw. Weitere Informationen zur Verwendung der Protokollabfragen in Azure Monitor finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+Hier können Sie weiter filtern, die Protokollabfrage ändern usw. Weitere Informationen zur Verwendung der Protokollabfragen in Azure Monitor finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md).
 
 Im Feld **HelpLink** wird die URL einer TechNet-Seite mit zusätzlichen Details zum jeweiligen Fehler angezeigt. Sie können diesen Link kopieren und in das Browserfenster einfügen, um Informationen zur Problembehandlung und Fehlerbehebung anzuzeigen.
 
@@ -150,9 +150,10 @@ A: Normale Benutzerberechtigungen für Active Directory sind ausreichend.
 ## <a name="troubleshoot-data-collection-problems"></a>Problembehandlung bei der Datensammlung
 Zum Sammeln von Daten ist für das AD-Replikationsstatusmonitor-Lösungspaket mindestens ein Domänencontroller erforderlich, der mit Ihrem Log Analytics-Arbeitsbereich verbunden ist. Nachdem Sie eine Verbindung mit einem Domänencontroller hergestellt haben, wird eine Meldung angezeigt, die besagt, dass **nach wie vor Daten erfasst werden**.
 
-Falls Sie Informationen zum Herstellen der Verbindung für einen Domänencontroller benötigen, können Sie die Dokumentation unter [Verbinden von Windows-Computern mit Azure Monitor](../../azure-monitor/platform/om-agents.md)anzeigen. Wenn der Domänencontroller bereits mit einer vorhandenen System Center Operations Manager-Umgebung verbunden ist, können Sie alternativ dazu die Dokumentation unter [Verbinden von System Center Operations Manager mit Azure Monitor](../../azure-monitor/platform/om-agents.md)verwenden.
+Falls Sie Informationen zum Herstellen der Verbindung für einen Domänencontroller benötigen, können Sie die Dokumentation unter [Verbinden von Windows-Computern mit Azure Monitor](../platform/om-agents.md)anzeigen. Wenn der Domänencontroller bereits mit einer vorhandenen System Center Operations Manager-Umgebung verbunden ist, können Sie alternativ dazu die Dokumentation unter [Verbinden von System Center Operations Manager mit Azure Monitor](../platform/om-agents.md)verwenden.
 
 Falls Sie keinen Domänencontroller direkt mit Azure Monitor oder System Center Operations Manager verbinden möchten, helfen Ihnen die Informationen unter [Aktivieren eines Nichtdomänencontrollers](#enable-non-domain-controller) weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md), um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
+* Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
+

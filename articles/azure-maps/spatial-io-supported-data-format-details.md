@@ -1,19 +1,19 @@
 ---
 title: Details zu unterstützten Datenformaten | Microsoft Azure Maps
 description: Hier erfahren Sie, wie durch Trennzeichen getrennte räumliche Daten im räumlichen E/A-Modul analysiert werden.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334080"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127926"
 ---
 # <a name="supported-data-format-details"></a>Details zu unterstützten Datenformaten
 

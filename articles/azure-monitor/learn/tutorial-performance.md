@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783145"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322498"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -32,8 +32,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
-- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md).
-- [Aktivieren Sie Application Insights Profiler](../../azure-monitor/app/profiler.md#installation) für Ihre Anwendung.
+- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../app/asp-net.md).
+- [Aktivieren Sie Application Insights Profiler](../app/profiler.md#installation) für Ihre Anwendung.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -56,12 +56,12 @@ Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in
 
 4.  Im Leistungsbereich auf der rechten Seite sehen Sie die Verteilung der Dauer der verschiedenen Anforderungen für den ausgewählten Vorgang.  Reduzieren Sie das Fenster, um etwa beim 95. Perzentil zu beginnen. Auf der Insights-Karte „3 Hauptabhängigkeiten“ sehen Sie auf einen Blick, dass die externen Abhängigkeiten wahrscheinlich zu einer langsamen Ausführung der Transaktionen beitragen.  Klicken Sie auf die Schaltfläche mit der Anzahl von Beispielen, um eine Liste der Beispiele anzuzeigen. Anschließend können Sie ein beliebiges Beispiel auswählen, um Transaktionsdetails anzuzeigen.
 
-5.  Sie sehen auf einen Blick, dass der Aufruf der Azure Table-Instanz „Fabrikamaccount“ am meisten zur Gesamtdauer der Transaktion beiträgt. Darüber hinaus können Sie erkennen, dass eine Ausnahme zu einem Fehler geführt hat. Sie können auf ein beliebiges Element in der Liste klicken, um seine Details auf der rechten Seite anzuzeigen. [Weitere Informationen zur Oberfläche zur Transaktionsdiagnose](../../azure-monitor/app/transaction-diagnostics.md)
+5.  Sie sehen auf einen Blick, dass der Aufruf der Azure Table-Instanz „Fabrikamaccount“ am meisten zur Gesamtdauer der Transaktion beiträgt. Darüber hinaus können Sie erkennen, dass eine Ausnahme zu einem Fehler geführt hat. Sie können auf ein beliebiges Element in der Liste klicken, um seine Details auf der rechten Seite anzuzeigen. [Weitere Informationen zur Oberfläche zur Transaktionsdiagnose](../app/transaction-diagnostics.md)
 
     ![Vollständige Details zum Vorgang](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  Der [**Profiler**](../../azure-monitor/app/profiler-overview.md) unterstützt Sie bei der Diagnose auf Codeebene: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
+6.  Der [**Profiler**](../app/profiler-overview.md) unterstützt Sie bei der Diagnose auf Codeebene: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
 5.  Die Ablaufverfolgung zeigt die einzelnen Ereignisse für jeden Vorgang an, damit Sie die Grundursache für die Dauer des gesamten Vorgangs diagnostizieren können.  Klicken Sie auf eines der obersten Beispiele, die am längsten dauern.
 6.  Klicken Sie auf **Langsamster Pfad**, um den Pfad der Ereignisse zu markieren, die am meisten zur Gesamtdauer des Vorgangs beitragen.  In diesem Beispiel können Sie sehen, dass der langsamste Aufruf von der Methode *FabrikamFiberAzureStorage.GetStorageTableData* stammt. Der Teil, der den Großteil der Zeit beansprucht, ist die Methode *CloudTable.CreateIfNotExist*. Wenn diese Codezeile bei jedem Aufruf der Funktion ausgeführt wird, werden unnötige Netzwerkaufruf- und CPU-Ressourcen verbraucht. Die beste Möglichkeit zum Korrigieren des Codes besteht darin, diese Zeile in eine Startmethode einzufügen, die nur einmal ausgeführt wird.
 
@@ -112,4 +112,5 @@ Auf die gleiche Weise wie bei den für die Serverleistung gesammelten Daten stel
 Nun, da Sie wissen, wie Sie Laufzeitausnahmen ermitteln, können Sie mit dem nächsten Tutorial fortfahren. Dort erfahren Sie, wie Sie im Falle von Fehlern Warnungen erstellen.
 
 > [!div class="nextstepaction"]
-> [Ausgeben von Warnungen zur Anwendungsintegrität](../../azure-monitor/learn/tutorial-alert.md)
+> [Ausgeben von Warnungen zur Anwendungsintegrität](./tutorial-alert.md)
+

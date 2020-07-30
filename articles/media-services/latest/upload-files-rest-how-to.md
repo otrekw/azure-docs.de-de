@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57839c82af71f7cedfe1b3c77095210d273be4a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091843"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>Hochladen von Dateien in ein Media Services v3-Konto mit REST
 
-In Media Services laden Sie Ihre digitalen Dateien in einen Blobcontainer hoch, der einem Medienobjekt zugeordnet ist. Die [Asset](https://docs.microsoft.com/rest/api/media/operations/asset)-Entität kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten. Nachdem die Dateien in den Container des Medienobjekts hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert.
+In Media Services laden Sie Ihre digitalen Dateien in einen Blobcontainer hoch, der einem Medienobjekt zugeordnet ist. Die [Asset](/rest/api/media/operations/asset)-Entität kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten. Nachdem die Dateien in den Container des Medienobjekts hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert.
 
 In diesem Artikel erfahren Sie, wie Sie mit REST eine lokale Datei hochladen.
 
