@@ -4,6 +4,8 @@
   items:
     - name: Informationen zu Azure App Configuration
       href: overview.md
+    - name: Bewährte Methoden
+      href: howto-best-practices.md
     - name: Häufig gestellte Fragen
       href: faq.md
 - name: Schnellstarts
@@ -15,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -34,26 +36,32 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: Tutorials
   items:
-    - name: Aktivieren der dynamischen Konfiguration in ASP.NET Core
-      href: enable-dynamic-configuration-aspnet-core.md
-    - name: Aktivieren der dynamischen Konfiguration in einer .NET Core-App
-      href: enable-dynamic-configuration-dotnet-core.md
-    - name: Aktivieren der dynamischen Konfiguration in .NET Framework
-      href: enable-dynamic-configuration-dotnet.md
-    - name: Aktivieren der dynamischen Konfiguration in Azure Functions
-      href: enable-dynamic-configuration-azure-functions-csharp.md
-    - name: Aktivieren der dynamischen Konfiguration in Spring Boot
-      href: enable-dynamic-configuration-java-spring-app.md
-    - name: Verwenden von Featureflags in einer .NET Core-App
-      href: use-feature-flags-dotnet-core.md
-    - name: "Verwenden von Featureflags in einer Spring\_Boot-App"
-      href: use-feature-flags-spring-boot.md
+    - name: Aktivieren der dynamischen Konfiguration
+      items:
+        - name: ASP.NET Core
+          href: enable-dynamic-configuration-aspnet-core.md
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core.md
+        - name: ".NET\_Framework"
+          href: enable-dynamic-configuration-dotnet.md
+        - name: Azure-Funktionen
+          href: enable-dynamic-configuration-azure-functions-csharp.md
+        - name: Spring Boot
+          href: enable-dynamic-configuration-java-spring-app.md
+    - name: Verwenden von Featureflags
+      items:
+        - name: .NET Core
+          href: use-feature-flags-dotnet-core.md
+        - name: Spring Boot
+          href: use-feature-flags-spring-boot.md
     - name: Verwalten von Featureflags
       href: manage-feature-flags.md
-    - name: Verwenden von Key Vault-Verweisen in ASP.NET Core
-      href: use-key-vault-references-dotnet-core.md
-    - name: Verwenden von Key Vault-Verweisen in Spring Boot
-      href: use-key-vault-references-spring-boot.md
+    - name: Verwenden von Key Vault-Verweisen
+      items:
+        - name: ASP.NET Core
+          href: use-key-vault-references-dotnet-core.md
+        - name: Spring Boot
+          href: use-key-vault-references-spring-boot.md
     - name: Integrieren in eine CI/CD-Pipeline
       href: integrate-ci-cd-pipeline.md
     - name: Integrieren in eine Kubernetes-Bereitstellung mit Helm
@@ -105,8 +113,6 @@
       href: howto-app-configuration-event.md
     - name: Konfigurationsspeicher automatisch sichern
       href: howto-backup-config-store.md
-    - name: Bewährte Methoden
-      href: howto-best-practices.md
 - name: Verweis
   items:
     - name: Konfiguration

@@ -304,6 +304,8 @@
               items:
                 - name: Anzeigen von Reservierungen und Nutzung
                   href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+                - name: Anzeigen von Reservierungen als CSP
+                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
                 - name: Verwalten von Reservierungen
                   href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
                 - name: Reservierungen für Umtausch und Erstattung

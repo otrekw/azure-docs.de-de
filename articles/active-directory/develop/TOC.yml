@@ -512,6 +512,8 @@
           href: active-directory-claims-mapping.md
         - name: Konfigurieren optionaler Ansprüche
           href: active-directory-optional-claims.md
+        - name: Verwenden von Verzeichnisschemaerweiterungs-Attributen in Ansprüchen
+          href: active-directory-schema-extensions.md
         - name: Konfigurieren der Tokengültigkeitsdauer
           href: active-directory-configurable-token-lifetimes.md
         - name: Verarbeiten von SameSite-Cookieänderungen im Chrome-Browser

@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: Anzeigen Ihrer letzten Anmeldeaktivität
       href: my-account-portal-sign-ins-page.md
-- name: Hilfe zur Sicherheitsinformation (Vorschau)
+    - name: Ändern der Portaleinstellungen
+      href: my-account-portal-settings.md
+- name: 'Sicherheitsinformationen: Hilfe'
   items:
     - name: Hinzufügen von Sicherheitsinformationen während der Anmeldung
       href: security-info-setup-signin.md

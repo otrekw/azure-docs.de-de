@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Machine Learning-Dokumentation
-summary: Hier erfahren Sie, wie Sie mit Azure Machine Learning nach Bedarf Machine Learning-Modelle trainieren, bereitstellen und verwalten, AutoML verwenden und Pipelines ausführen.  Die Informationen werden in Form von Tutorials, Codebeispielen, API-Referenzen und mehr vermittelt.
+summary: Hier erfahren Sie, wie Sie mit Azure Machine Learning nach Bedarf Machine Learning-Modelle bereitstellen und verwalten, AutoML verwenden und Pipelines ausführen.  Die Informationen werden in Form von Tutorials, Codebeispielen, API-Referenzen und mehr vermittelt.
 metadata:
   title: Azure Machine Learning-Dokumentation
   description: Hier erfahren Sie, wie Sie mit Azure Machine Learning nach Bedarf Machine Learning-Modelle bereitstellen und verwalten, AutoML verwenden und Pipelines ausführen. Die Informationen werden in Form von Tutorials, Codebeispielen, API-Referenzen und mehr vermittelt.
@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 07/30/2020
-  ms.openlocfilehash: 1006874272fa4798d9e56cbc76d7b039e697c413
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 066f82bf214a9a5a2a364bc9dc021a1baa31feac
+  ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87047799"
+  ms.lasthandoff: 07/30/2020
+  ms.locfileid: "87433069"
 landingContent:
 - title: Erste Schritte mit Machine Learning
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
       url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-- title: Verwenden von Designer und AutoML in Studio
+- title: Verwenden von AutoML oder Drag & Drop in Studio
   linkLists:
   - linkListType: overview
     links:
@@ -51,6 +51,12 @@ landingContent:
       url: tutorial-designer-automobile-price-train-score.md
     - text: Erstellen eines Bildbeschriftungsprojekts
       url: tutorial-labeling.md
+- title: Bereitstellen Ihres Modells in Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen des lokalen Modells in der Cloud
+      url: how-to-deploy-existing-model.md
 - title: Trainieren mit dem Python SDK
   linkLists:
   - linkListType: tutorial

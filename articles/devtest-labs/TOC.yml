@@ -36,7 +36,7 @@
           href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: 'Azure PowerShell: Modul „Az.DevTestLabs2“'
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: samples-cli.md
       items:
         - name: Erstellen und Überprüfen der Verfügbarkeit eines virtuellen Computers
@@ -232,6 +232,10 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: Beheben von Problemen beim Anwenden von Artefakten
           href: devtest-lab-troubleshoot-apply-artifacts.md
+    - name: Verschlüsseln der von Labs verwendeten Speicher- und Betriebssystemdatenträger
+      items:
+        - name: Verschlüsseln des von einem Lab verwendeten Speichers
+          href: encrypt-storage.md
     - name: Integrieren mit CI/CD
       items:
         - name: Integrieren von Labs in Ihre CI/CD-Pipeline in Azure Pipelines

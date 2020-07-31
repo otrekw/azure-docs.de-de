@@ -115,7 +115,7 @@
           href: ./security-controls-policy.md
         - name: Netzwerksicherheit
           href: network-security.md
-- name: Exemplarische Vorgehensweisen
+- name: Anleitungen
   items:
     - name: "Migrieren von Azure Service Manager-APIs (klassisch) zu Resource\_Manager-APIs"
       href: deprecate-service-bus-management.md
@@ -220,11 +220,11 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Sicher
       items:
-        - name: Konfigurieren von Firewalls
+        - name: Zulassen des Zugriffs von bestimmten IP-Adressen
           href: service-bus-ip-filtering.md
-        - name: Konfigurieren von VNET-Dienstendpunkten
+        - name: Zulassen des Zugriffs von bestimmten virtuellen Netzwerken
           href: service-bus-service-endpoints.md
-        - name: Konfigurieren privater Endpunkte
+        - name: Zulassen des Zugriffs über private Endpunkte
           href: private-link-service.md
         - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
           href: configure-customer-managed-key.md

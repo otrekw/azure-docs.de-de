@@ -42,8 +42,10 @@
           href: how-to-use-cli.md
         - name: Einrichten einer Instanz und der Authentifizierung (per Skript)
           href: how-to-set-up-instance-scripted.md
-        - name: Einrichten einer Instanz und der Authentifizierung (per manuell)
-          href: how-to-set-up-instance-manual.md
+        - name: Einrichten einer Instanz und der Authentifizierung (CLI)
+          href: how-to-set-up-instance-cli.md
+        - name: Einrichten einer Instanz und der Authentifizierung (Portal)
+          href: how-to-set-up-instance-portal.md
         - name: Schreiben von App-Authentifizierungscode
           href: how-to-authenticate-client.md
     - name: Entwerfen von Modellen
