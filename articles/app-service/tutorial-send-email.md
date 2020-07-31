@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Geschäftsprozesse über Ihre App Serv
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562303"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083241"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Tutorial: Senden von E-Mails und Aufrufen anderer Geschäftsprozesse aus App Service
 
@@ -57,10 +57,10 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App, indem Sie die Anleitung unter [Erstellen Ihrer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app) befolgen. Kehren Sie zu diesem Tutorial zurück, wenn der **Designer für Logik-Apps** angezeigt wird.
 1. Wählen Sie auf der Begrüßungsseite des Designers für Logik-Apps unter **Starten Sie mit einem gängigen Trigger** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
-    ![](./media/tutorial-send-email/receive-http-request.png)
+    ![Screenshot der Begrüßungsseite des Designers für Logik-Apps mit hervorgehobener Option „Beim Empfang einer H T T P-Anforderung“.](./media/tutorial-send-email/receive-http-request.png)
 1. Wählen Sie im Dialogfeld unter **Beim Empfang einer HTTP-Anforderung** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-    ![](./media/tutorial-send-email/generate-schema-with-payload.png)
+    ![Screenshot mit dem Dialogfeld „Beim Empfang einer H T T P-Anforderung“ und der ausgewählten Option „Beispielnutzlast zum Generieren eines Schemas verwenden“. ](./media/tutorial-send-email/generate-schema-with-payload.png)
 
 1. Kopieren Sie den folgenden JSON-Beispielcode in das Textfeld, und wählen Sie **Fertig** aus.
 
@@ -77,7 +77,7 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
 
     Nun wird die URL Ihres HTTP-Anforderungstriggers angezeigt. Wählen Sie das Kopiersymbol aus, um die URL zur späteren Verwendung zu kopieren.
 
-    ![](./media/tutorial-send-email/http-request-url.png)
+    ![Screenshot mit hervorgehobenem Kopieren-Symbol zum Kopieren der U R L Ihres H T T P-Anforderungstriggers.](./media/tutorial-send-email/http-request-url.png)
 
     Diese HTTP-Anforderungsdefinition ist der Ausgangspunkt für alle Schritte, die Sie in dieser Logik-App ausführen möchten, z. B. Gmail oder etwas anderes. Später rufen Sie diese URL dann in Ihrer App Service-App auf. Weitere Informationen zum Anforderungstrigger finden Sie in der [Referenz zu HTTP-Anforderung/-Antwort](../connectors/connectors-native-reqres.md).
 
@@ -87,18 +87,18 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
     > Sie können auch nach anderen Arten von Integrationen suchen, z. B. SendGrid, MailChimp, Office 365 und Salesforce. Weitere Informationen hierzu finden Sie in der [Logic Apps-Dokumentation](https://docs.microsoft.com/azure/logic-apps/).
 1. Wählen Sie im Dialogfeld **Gmail** die Option **Anmelden** aus, und melden Sie sich bei dem Gmail-Konto an, über das Sie die E-Mail senden möchten.
 
-    ![](./media/tutorial-send-email/gmail-sign-in.png)
+    ![Screenshot des Dialogfelds „Gmail“, das Sie verwenden, um sich bei dem Gmail-Konto anzumelden, von dem aus Sie E-Mail senden möchten.](./media/tutorial-send-email/gmail-sign-in.png)
 
 1. Klicken Sie nach dem Anmelden in das Textfeld **An**. Das Dialogfeld für dynamische Inhalte wird automatisch geöffnet.
 
 1. Wählen Sie neben der Aktion **Beim Empfang einer HTTP-Anforderung** die Option **Weitere anzeigen** aus.
 
-    ![](./media/tutorial-send-email/expand-dynamic-content.png)
+    ![Screenshot der Schaltfläche „Mehr anzeigen“ neben der Aktion „Beim Empfang einer H T T P-Anforderung“.](./media/tutorial-send-email/expand-dynamic-content.png)
 
     Nun sollten die drei Eigenschaften aus Ihren JSON-Beispieldaten angezeigt werden, die Sie weiter oben verwendet haben. In diesem Schritt verwenden Sie diese Eigenschaften aus der HTTP-Anforderung, um eine E-Mail zu erstellen.
 1. Wählen Sie **E-Mail** aus, da der Wert für das Feld **An** bestimmt ist. Bei Bedarf können Sie das Dialogfeld für dynamische Inhalte deaktivieren, indem Sie auf den Umschalter für **Dynamischen Inhalt hinzufügen** klicken.
 
-    ![](./media/tutorial-send-email/hide-dynamic-content.png)
+    ![Screenshot mit den hervorgehobenen Optionen „E-Mail“ und „Dynamischen Konflikt hinzufügen“.](./media/tutorial-send-email/hide-dynamic-content.png)
 
 1. Wählen Sie in der Dropdownliste **Neuen Parameter hinzufügen** die Optionen **Betreff** und **Text** aus.
 
@@ -109,15 +109,15 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
     > [!TIP]
     > Falls Sie den HTML-Inhalt direkt im Text der E-Mail ändern möchten, können Sie oben im Fenster des Designers für Logik-Apps die Option **Codeansicht** auswählen. Achten Sie hierbei darauf, dass Sie den dynamischen Inhaltscode beibehalten (z. B. `@{triggerBody()?['due']}`).
     >
-    > ![](./media/tutorial-send-email/edit-rich-html-email.png) 
+    > ![Screenshot der Codeansicht zum Anzeigen von H T M L-Inhalt direkt im E-Mail-Text.](./media/tutorial-send-email/edit-rich-html-email.png) 
 
 1. Fügen Sie als Nächstes dem HTTP-Trigger eine asynchrone HTTP-Antwort hinzu. Klicken Sie zwischen dem HTTP-Trigger und der Gmail-Aktion auf das Pluszeichen ( **+** ), und wählen Sie **Parallelen Branch hinzufügen** aus.
 
-    ![](./media/tutorial-send-email/add-http-response.png)
+    ![Screenshot mit dem Pluszeichen (+) und der hervorgehobenen Option „Parallelen Branch hinzufügen“.](./media/tutorial-send-email/add-http-response.png)
 
 1. Suchen Sie im Suchfeld nach **Antwort**, und wählen Sie dann die Aktion **Antwort** aus.
 
-    ![](./media/tutorial-send-email/choose-response-action.png)
+    ![Screenshot der Suchleiste mit hervorgehobener Aktion „Antwort“.](./media/tutorial-send-email/choose-response-action.png)
 
     Standardmäßig wird von der Aktion „Antwort“ der Text „HTTP 200“ gesendet. Dies ist für dieses Tutorial ausreichend. Weitere Informationen finden Sie in der [Referenz zu HTTP-Anforderung/-Antwort](../connectors/connectors-native-reqres.md).
 
