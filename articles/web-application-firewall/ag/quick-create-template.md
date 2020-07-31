@@ -1,39 +1,41 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure WAF (v2) für Application Gateway: Resource Manager-Vorlage'
+title: 'Schnellstart: Erstellen einer Azure WAF v2 für Application Gateway: Azure Resource Manager-Vorlage'
 titleSuffix: Azure Application Gateway
-description: Hier erfahren Sie, wie Sie mithilfe einer Resource Manager-Vorlage eine Web Application Firewall (v2) für Azure Application Gateway erstellen.
+description: Hier erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Web Application Firewall v2 für Azure Application Gateway erstellen.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
-ms.openlocfilehash: 6759071e73adfd3af4ac780da6db3a0e6e967ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081bab0cd930d90ca0d359461e4a41b15ba4911b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81617989"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075500"
 ---
-# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway---resource-manager-template"></a>Schnellstart: Erstellen einer Azure WAF (v2) für Application Gateway: Resource Manager-Vorlage
+# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure WAF v2 für Application Gateway mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung wird eine Resource Manager-Vorlage verwendet, um eine Azure Web Application Firewall (v2) für Application Gateway zu erstellen.
+In dieser Schnellstartanleitung wird eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwendet, um eine Azure Web Application Firewall v2 für Application Gateway zu erstellen.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-web-application-firewall"></a>Erstellen einer Web Application Firewall
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Diese Vorlage dient zum Erstellen einer einfachen Web Application Firewall (v2) für Azure Application Gateway. Dies schließt eine öffentliche Front-End-IP-Adresse, HTTP-Einstellungen, eine Regel mit einem einfachen Listener am Port 80 sowie einen Back-End-Pool ein. Eine WAF-Richtlinie mit einer benutzerdefinierten Regel wird erstellt, um Datenverkehr für den Back-End-Pool basierend auf einer IP-Adressübereinstimmung zu blockieren.
 
-### <a name="review-the-template"></a>Überprüfen der Vorlage
-
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-wafv2/azuredeploy.json).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/).
 
 :::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json" range="001-404" highlight="314-358":::
 
@@ -48,20 +50,20 @@ In der Vorlage sind mehrere Azure-Ressourcen definiert:
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): Zwei für die virtuellen Computer.
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions): Zum Konfigurieren von IIS und Webseiten.
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Stellen Sie die Resource Manager-Vorlage in Azure bereit:
+Stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Durch die Vorlage werden ein Anwendungsgateway, die Netzwerkinfrastruktur und zwei virtuelle Computer im Back-End-Pool mit IIS erstellt.
 
    [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
 
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
-3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
+3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
 
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
-IIS ist für die Erstellung des Anwendungsgateways zwar nicht erforderlich, wird aber auf den Back-End-Servern installiert, um die erfolgreiche Erstellung einer WAF (v2) auf dem Anwendungsgateway zu überprüfen. 
+IIS ist für die Erstellung des Anwendungsgateways zwar nicht erforderlich, wird aber auf den Back-End-Servern installiert, um die erfolgreiche Erstellung einer WAF (v2) auf dem Anwendungsgateway zu überprüfen.
 
 Testen des Anwendungsgateways mit IIS:
 

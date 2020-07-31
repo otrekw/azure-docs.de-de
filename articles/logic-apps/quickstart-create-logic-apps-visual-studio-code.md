@@ -1,18 +1,18 @@
 ---
-title: Automatisieren von Aufgaben mit Visual Studio Code
-description: Hier erfahren Sie, wie Sie zugrunde liegende JSON-Definitionen für Logik-Apps mit Visual Studio Code (VS Code) erstellen oder bearbeiten.
+title: Automatisieren von Aufgaben und Workflows mit Visual Studio Code
+description: Hier erfahren Sie, wie Sie Workflowdefinitionen für Logik-Apps mit Visual Studio Code (VS Code) erstellen oder bearbeiten.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, deli, logicappspm
+ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 3dccb596be2d97dd0f38d680537913a76ce09e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147058"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131479"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit Visual Studio Code
 
@@ -50,9 +50,9 @@ Stellen Sie zunächst sicher, dass Sie über die folgenden Elemente verfügen:
 
     Weitere Informationen finden Sie im [Marketplace für Erweiterungen](https://code.visualstudio.com/docs/editor/extension-gallery). Unter [Azure Logic Apps-Erweiterung für Visual Studio Code auf GitHub](https://github.com/Microsoft/vscode-azurelogicapps) können Sie Beiträge zur Open-Source-Version dieser Erweiterung einreichen.
 
-<a name="sign-in-azure"></a>
+<a name="access-azure"></a>
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+## <a name="access-azure-from-visual-studio"></a>Zugreifen auf Azure aus Visual Studio
 
 1. Öffnen Sie Visual Studio Code. Wählen Sie in der Visual Studio Code-Symbolleiste das Azure-Symbol aus.
 
@@ -99,7 +99,7 @@ Stellen Sie zunächst sicher, dass Sie über die folgenden Elemente verfügen:
 
 ## <a name="create-new-logic-app"></a>Erstellen einer neuen Logik-App
 
-1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#sign-in-azure).
+1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
 
 1. Öffnen Sie in Visual Studio Code unter **Logik-Apps** das Kontextmenü Ihres Abonnements, und wählen Sie **Logik-App erstellen** aus.
 
@@ -133,7 +133,7 @@ Stellen Sie zunächst sicher, dass Sie über die folgenden Elemente verfügen:
    > Wenn Sie dieses Beispiel einer Logik-App-Definition wiederverwenden möchten, benötigen Sie ein Office 365-Organisationskonto, z. B. @fabrikam.com. Stellen Sie sicher, dass Sie die fiktive E-Mail-Adresse durch Ihre eigene E-Mail-Adresse ersetzen. Um einen anderen E-Mail-Connector wie z. B. Outlook.com oder Gmail zu verwenden, ersetzen Sie die `Send_an_email_action`-Aktion durch eine ähnliche Aktion, die bei einem [von Azure Logic Apps unterstützten E-Mail-Connector](../connectors/apis-list.md) verfügbar ist.
    >
    > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. 
-   > Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). 
+   > Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). 
    > Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
    ```json
@@ -226,7 +226,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Logik-App im Azure-Portal zu üb
 
 Wenn Sie in Visual Studio Code eine veröffentlichte Logik-App bearbeiten und die Änderungen speichern, *überschreiben* Sie Ihre bereits bereitgestellte App. Um zu vermeiden, Ihre in der Produktionsumgebung befindliche Logik-App zu beschädigen, und um die Unterbrechung zu minimieren, deaktivieren Sie Ihre Logik-App zunächst. Anschließend können Sie Ihre Logik-App reaktivieren, nachdem Sie sich vergewissert haben, dass sie weiterhin funktioniert.
 
-1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#sign-in-azure).
+1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
 
 1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, sodass Sie alle Logik-Apps in diesem Abonnement sehen können.
 
@@ -247,7 +247,7 @@ In Visual Studio Code können Sie die Workflowdefinition für eine bereits in Az
 > [!IMPORTANT] 
 > Bevor Sie eine aktive, in der Produktionsumgebung ausgeführte Logik-App bearbeiten, vermeiden Sie das Risiko, diese Logik-App zu beschädigen, und minimieren Sie die Unterbrechung, indem Sie [Ihre Logik-App deaktivieren](#disable-enable-logic-app).
 
-1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#sign-in-azure).
+1. Wenn Sie sich noch nicht über Visual Studio Code bei Ihrem Azure-Konto und -Abonnement angemeldet haben, befolgen Sie die [vorherigen Schritte, um sich jetzt anzumelden](#access-azure).
 
 1. Erweitern Sie im Azure-Fenster unter **Logik-Apps** Ihr Azure-Abonnement, und wählen Sie die gewünschte Logik-App aus.
 

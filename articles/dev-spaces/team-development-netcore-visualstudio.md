@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine Teamentwicklung in einer .NET Core-Anwendung in Azure Kubernetes Service durchführen.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d917dc71ef02b5197ed8d20ec31c538a1af4c14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072982"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Entwicklung im Team mit .NET Core und Visual Studio über Azure Dev Spaces
 
@@ -36,7 +36,7 @@ Ihre Beispielanwendung ist im Moment nicht komplex. Bei der realen Entwicklung s
 * Einige Entwickler greifen auf die Simulation zahlreicher Dienstabhängigkeiten zurück. Dies ist zwar hilfreich, die Verwaltung der Simulationen kann jedoch schnell die Entwicklungskosten in die Höhe treiben. Darüber hinaus führt dieser Ansatz dazu, dass sich Ihre Entwicklungsumgebung von der Produktionsumgebung unterscheidet, wodurch sich kleinere Fehler einschleichen können.
 * Integrationstests können daher schwierig werden. Integrationstests sind nur nach einem Commit realistisch. Das bedeutet, dass Ihnen Probleme erst später im Entwicklungszyklus auffallen.
 
-    ![](media/common/microservices-challenges.png)
+    ![Eine Abbildung, die die Komplexität von Integrationstests veranschaulicht, indem die Beziehungen zwischen einem App-Dienst und seinen Abhängigkeiten illustriert werden.](media/common/microservices-challenges.png)
 
 ### <a name="work-in-a-shared-dev-space"></a>Arbeiten in einem gemeinsamen Entwicklungsbereich
 Mit Azure Dev Spaces können Sie einen *gemeinsamen* Entwicklungsbereich in Azure einrichten. Jeder Entwickler kann sich auf seinen Teil der Anwendung konzentrieren und *Code vor dem Commit* iterativ in einem Entwicklungsbereich entwickeln, der bereits alle anderen Dienste und Cloudressourcen enthält, die der Entwickler für seine Szenarien benötigt. Abhängigkeiten sind immer aktuell, und Entwickler arbeiten wie in einer Produktionsumgebung.
@@ -63,8 +63,8 @@ Als Erstes müssen wir eine Baseline unserer Dienste bereitstellen. Diese Bereit
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus.
 1. Klicken Sie links auf die Registerkarte **Debuggen**, um die Azure Dev Spaces-Einstellungen anzuzeigen.
 1. Wählen Sie **Ändern** aus, um den Bereich zu erstellen, der verwendet wird, wenn Sie den Dienst mit F5 oder STRG+F5 ausführen.
-1. Wählen Sie in der Dropdownliste „Bereich“ die Option **\<Neuen Bereich erstellen\>** aus.
-1. Stellen Sie sicher, dass der übergeordnete Bereich auf **\<keiner\>** festgelegt ist, und geben Sie den Bereichsnamen **dev** ein. Klicken Sie auf OK.
+1. Wählen Sie in der Dropdownliste „Bereich“ die Option **\<Create New Space…\>** aus.
+1. Stellen Sie sicher, dass der übergeordnete Bereich auf **\<none\>** festgelegt ist, und geben Sie den Bereichsnamen **dev** ein. Klicken Sie auf OK.
 1. Drücken Sie STRG+F5, um _mywebapi_ ohne den angefügten Debugger auszuführen.
 1. Wechseln Sie zum Visual Studio-Fenster mit dem Projekt _webfrontend_, und drücken Sie STRG+F5, um den Dienst ebenfalls auszuführen.
 
@@ -88,17 +88,17 @@ Gehen Sie wie folgt vor, um einen neuen Bereich zu erstellen:
 2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus.
 3. Klicken Sie links auf die Registerkarte **Debuggen**, um die Azure Dev Spaces-Einstellungen anzuzeigen.
 4. Hier können Sie den Cluster/Bereich ändern oder erstellen, der beim Drücken von F5 oder STRG+F5 verwendet wird. *Stellen Sie sicher, dass die zuvor erstellte Azure Dev Space-Instanz ausgewählt ist.*
-5. Wählen Sie in der Dropdownliste „Bereich“ die Option **\<Neuen Bereich erstellen\>** aus.
+5. Wählen Sie in der Dropdownliste „Bereich“ die Option **\<Create New Space…\>** aus.
 
-    ![](media/get-started-netcore-visualstudio/Settings.png)
+    ![Screenshot, der die Auswahl von „Neuen Bereich erstellen“ in der Dropdownliste „Bereich“ auf der Seite „Projekteigenschaften debuggen“ des Visual Studio-Projektmappen-Explorers darstellt.](media/get-started-netcore-visualstudio/Settings.png)
 
 6. Legen Sie im Dialogfeld **Bereich hinzufügen** den übergeordneten Bereich auf **dev** fest, und geben Sie einen Namen für den neuen Bereich ein. Sie können Ihren Namen (z.B. „scott“) für den neuen Bereich verwenden, damit Ihre Kollegen erkennen können, in welchem Bereich Sie arbeiten. Klicken Sie auf **OK**.
 
-    ![](media/get-started-netcore-visualstudio/AddSpace.png)
+    ![Screenshot mit dem Dialogfeld „Bereich hinzufügen“ zum Hinzufügen eines neuen Bereichs „dev“ für die Teamentwicklung.](media/get-started-netcore-visualstudio/AddSpace.png)
 
 7. Auf der Seite mit den Projekteigenschaften sollten nun Ihr AKS-Cluster und der neue Bereich ausgewählt sein.
 
-    ![](media/get-started-netcore-visualstudio/Settings2.png)
+    ![Screenshot, der den AKS-Cluster „MyAKS“ und den auf der Seite „Projekteigenschaften debuggen“ des Visual Studio-Projektmappen-Explorers ausgewählten Bereich „scott“ darstellt.](media/get-started-netcore-visualstudio/Settings2.png)
 
 ### <a name="update-code-for-mywebapi"></a>Aktualisieren von Code für *mywebapi*
 
@@ -117,7 +117,7 @@ Gehen Sie wie folgt vor, um einen neuen Bereich zu erstellen:
 
 Hier sehen Sie ein Diagramm, in dem die Funktionsweise der verschiedenen Bereiche erläutert wird. Der violette Pfad zeigt eine Anforderung über den Bereich _dev_. Dabei handelt es sich um den Standardpfad, der verwendet wird, wenn der URL kein Bereich vorangestellt wird. Der rosafarbene Pfad zeigt eine Anforderung über den Bereich _dev/scott_.
 
-![](media/common/Space-Routing.png)
+![Ein Diagramm, das die Unterschiede bei den Pfadnamen und dem Routing von Anforderungen über den neu erstellten Bereich „dev/scott“ sowie den Standardbereich „dev“ darstellt.](media/common/Space-Routing.png)
 
 Mit dieser integrierten Funktion von Azure Dev Spaces können Sie End-to-End-Tests für Code in einer gemeinsamen Umgebung ausführen, ohne dass die einzelnen Entwickler den kompletten Dienststapel in ihrem Bereich neu erstellen müssen. Für dieses Routing müssen Weitergabeheader in Ihrem App-Code weitergeleitet werden, wie im vorherigen Schritt in diesem Leitfaden erläutert.
 

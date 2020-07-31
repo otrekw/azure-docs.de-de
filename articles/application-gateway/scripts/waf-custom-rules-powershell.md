@@ -6,14 +6,14 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66743327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083139"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>Erstellen von benutzerdefinierten WAF-Regeln mit Azure PowerShell
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Erstellen von benutzerdefinierten Web Application Firewall-Regeln (WAF) mit Azure PowerShell
 
 Dieses Skript erstellt eine Web Application Firewall-Instanz für Application Gateway, die benutzerdefinierte Regeln verwendet. Die benutzerdefinierte Regel blockiert Datenverkehr, wenn der Anforderungsheader den Benutzer-Agent *evilbot* enthält.
 
@@ -70,5 +70,5 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu benutzerdefinierten WAF-Regeln finden Sie unter [Custom rules for Web Application Firewall](../custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall).
-- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 - Zusätzliche PowerShell-Skriptbeispiele zu Anwendungsgateways finden Sie in der [Dokumentation zu Azure Application Gateway](../powershell-samples.md).

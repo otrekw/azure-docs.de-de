@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115672"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informationen zu Azure Key Vault-Zertifikaten
 
@@ -81,10 +81,10 @@ Eine Zertifikatrichtlinie enthält Informationen zum Erstellen und Verwalten des
 
 Wenn ein Key Vault-Zertifikat von Grund auf neu erstellt wird, muss eine Richtlinie angegeben werden. Die Richtlinie gibt an, wie diese oder die nächste Key Vault-Zertifikatversion erstellt werden soll. Nachdem eine Richtlinie eingerichtet wurde, ist bei nachfolgenden Erstellungsvorgängen für zukünftige Versionen keine weitere Richtlinie erforderlich. Es gibt nur eine Instanz einer Richtlinie für alle Versionen eines Key Vault-Zertifikats.  
 
-Auf hoher Ebene enthält eine Zertifikatsrichtlinie folgende Informationen:  
+Generell enthält eine Zertifikatsrichtlinie folgende Informationen (deren Definitionen finden Sie [hier](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
 
 -   Eigenschaften des X.509-Zertifikats: Enthält den Namen und einen alternativen Namen des Antragstellers sowie weitere Eigenschaften zum Erstellen einer X.509-Zertifikatanforderung.  
--   Schlüsseleigenschaften: enthalten Schlüsseltyp, Schlüssellänge sowie Felder zur Exportierbarkeit und Wiederverwendung des Schlüssels. Diese Felder teilen Key Vault mit, wie ein Schlüssel generiert werden soll.  
+-   Schlüsseleigenschaften: enthalten Schlüsseltyp, Schlüssellänge sowie Exportierbarkeits- und ReuseKeyOnRenewal-Felder. Diese Felder teilen Key Vault mit, wie ein Schlüssel generiert werden soll.  
 -   Geheimniseigenschaften: enthält Geheimniseigenschaften wie den Inhaltstyp eines adressierbaren Geheimnisses zum Generieren des Geheimniswerts, um das Zertifikat als Geheimnis abzurufen.  
 -   Lebensdaueraktionen: enthält Lebensdaueraktionen für das Key Vault-Zertifikat. Jede Lebensdaueraktion enthält:  
 

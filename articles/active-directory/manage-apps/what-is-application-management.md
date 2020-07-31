@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055204"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386009"
 ---
 # <a name="what-is-application-management"></a>Worum handelt es sich bei der Anwendungsverwaltung?
 
@@ -63,7 +63,7 @@ Es gibt vier Haupttypen von Anwendungen, die Sie Ihren **Unternehmensanwendungen
 
 - **Benutzerdefinierte Anwendungen**: Wenn Sie eigene branchenspezifische Anwendungen erstellen, können Sie sie in Azure AD integrieren, um einmaliges Anmelden zu unterstützen. Durch das Integrieren der Anwendung in Azure AD haben Sie die Kontrolle über die für die Anwendung festgelegte Authentifizierungsrichtlinie. Weitere Informationen finden Sie in der [Anleitung für Entwickler](developer-guidance-for-integrating-applications.md).
 
-- **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Unterstützen Sie einmaliges Anmelden für andere Apps, indem Sie sie Azure AD hinzufügen. Es gibt mehrere Möglichkeiten, eine Anwendung zu integrieren. Einige sind nachstehend aufgeführt. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens für Nicht-Kataloganwendungen in Azure Active Directory](configure-single-sign-on-non-gallery-applications.md).
+- **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Unterstützen Sie einmaliges Anmelden für andere Apps, indem Sie sie Azure AD hinzufügen. Es gibt mehrere Möglichkeiten, eine Anwendung zu integrieren. Einige sind nachstehend aufgeführt. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens mit SAML](configure-saml-single-sign-on.md).
 
 >[!TIP]
 >Sie können Azure AD auch dann in eine Anwendung integrieren, wenn sie nicht bereits vorkonfiguriert ist und sich nicht im App-Katalog befindet. Sie können **Azure AD mit folgenden Anwendungen integrieren**
@@ -93,8 +93,6 @@ Bei Anwendungen mit Schwerpunkt Personalwesen oder anderen Anwendungen mit einer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anzeigen von bereits im Azure AD-Mandanten konfigurierten Anwendungen](view-applications-portal.md)
-- [Schnellstart: Hinzufügen einer Kataloganwendung zu Ihrem Azure AD-Mandanten](add-application-portal.md)
-- [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md)
+- [Schnellstartserie zur App-Verwaltung in Azure AD](view-applications-portal.md)
 - [Erste Schritte mit der Anwendungsintegration](plan-an-application-integration.md)
 - [Automatisieren der Benutzerbereitstellung](../app-provisioning/user-provisioning.md)

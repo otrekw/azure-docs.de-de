@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b19427070d982918584c13c25518cffe55497000
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223328"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387284"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)
 
@@ -55,6 +55,8 @@ Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
 
 1. Der Prozess zum Konfigurieren einer Anwendung für die Verwendung von Azure AD für SAML-basiertes SSO variiert je nach Anwendung. Es ist ein Link zur Anleitung für GitHub vorhanden. Anleitungen für andere Apps finden Sie unter [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 1. Befolgen Sie die Anleitung zum Einrichten von SSO für die Anwendung. Viele Anwendungen verfügen über spezifische Abonnementanforderungen für die SSO-Funktionen. Beispielsweise ist für GitHub ein Enterprise-Abonnement erforderlich.
+    > [!TIP]
+    > Weitere Informationen zu den SAML-Konfigurationsoptionen finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-saml-single-sign-on.md).
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Screenshot der GitHub-Preisseite mit der Option für einmaliges Anmelden im Enterprise-Abonnement":::
 

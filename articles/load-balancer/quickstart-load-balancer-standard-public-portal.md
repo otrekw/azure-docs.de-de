@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536544"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125189"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines Lastenausgleichs für virtuelle Computer über das Azure-Portal
 
@@ -111,7 +111,7 @@ Erstellen Sie zur Überwachung der Integrität der virtuellen Computer einen Int
     | Fehlerhafter Schwellenwert | Wählen Sie **2** als Wert für den **Fehlerschwellenwert** bzw. als Anzahl aufeinander folgender Testfehler aus, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.|
     | | |
 
-3. Klicken Sie auf **OK**.
+3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus.
 
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
@@ -140,7 +140,7 @@ In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erst
     | Back-End-Port | Geben Sie **80** ein. |
     | Back-End-Pool | Wählen Sie **myBackendPool** aus.|
     | Integritätstest | Wählen Sie **myHealthProbe** aus. |
-    | Erstellen impliziter Ausgangsregeln | Wählen Sie **Ja** aus. </br> Weitere Informationen sowie eine erweiterte Ausgangsregelkonfiguration finden Sie hier: </br> [Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md) </br> [Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe des Azure-Portals](configure-load-balancer-outbound-portal.md)
+    | Erstellen impliziter Ausgangsregeln | Wählen Sie also **Nein**.
 
 4. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie dann **OK** aus.
 
@@ -237,6 +237,49 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Verfügbarkeitszone | **2** |**3**|
     | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
 
+## <a name="create-outbound-rule-configuration"></a>Erstellen der Konfiguration für Ausgangsregeln
+Ausgangsregeln für den Lastenausgleich konfigurieren das ausgehende SNAT für virtuelle Computer im Back-End-Pool. 
+
+Weitere Informationen zu ausgehenden Verbindungen finden Sie unter [Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md).
+
+### <a name="create-outbound-rule"></a>Erstellen einer Ausgangsregel
+
+1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
+
+2. Wählen Sie unter **Einstellungen** die Option **Ausgangsregeln** und dann **Hinzufügen** aus.
+
+3. Verwenden Sie diese Werte zur Konfiguration der Ausgangsregeln:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Name | Geben Sie **myOutboundRule** ein. |
+    | Front-End-IP-Adresse | Wählen Sie **Neu erstellen**. </br> Geben Sie in **Name** den Wert **LoadBalancerFrontEndOutbound** ein. </br> Wählen Sie **IP-Adresse** oder **IP-Präfix** aus. </br> Wählen Sie unter **Öffentliche IP-Adresse** oder **Öffentliches IP-Präfix** die Option **Neu erstellen** aus. </br> Geben Sie als Name **myPublicIPOutbound** or **myPublicIPPrefixOutbound** ein. </br> Klicken Sie auf **OK**. </br> Wählen Sie **Hinzufügen**.|
+    | Leerlaufzeitüberschreitung (Minuten) | Bewegen Sie den Schieberegler auf **15 Minuten**.|
+    | TCP-Zurücksetzung | Wählen Sie **Aktiviert**.|
+    | Back-End-Pool | Wählen Sie **Neu erstellen**. </br> Geben Sie in **Name** den Wert **myBackendPoolOutbound** ein. </br> Wählen Sie **Hinzufügen**. |
+    | Portzuordnung -> Portzuordnung | Wählen Sie **Anzahl ausgehender Ports manuell auswählen** aus. |
+    | Ausgehende Ports -> Auswählen nach | Wählen Sie **Ports pro Instanz** aus. |
+    | Ausgehende Ports -> Ports pro Instanz | Geben Sie **10000** ein. |
+
+4. Wählen Sie **Hinzufügen**.
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>Hinzufügen virtueller Computer zum ausgehenden Pool
+
+1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
+
+2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools**.
+
+3. Wählen Sie **myBackendPoolOutbound** aus.
+
+4. Wählen Sie in **Virtuelles Netzwerk** die Option **myVNet** aus.
+
+5. Wählen Sie in **Vrtuelle Computer** die Option **+ Hinzufügen** aus.
+
+6. Aktivieren Sie die Kontrollkästchen neben **myVM1**, **myVM2** und **myVM3**. 
+
+7. Wählen Sie **Hinzufügen**.
+
+8. Wählen Sie **Speichern** aus.
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[Option 2: Erstellen eines Lastenausgleichs (Basic-SKU)](#tab/option-1-create-load-balancer-basic)
 
@@ -441,9 +484,10 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Name |  **myVM2** |**myVM3**|
     | Verfügbarkeitsgruppe| Wählen Sie **myAvailabilitySet** aus. | Wählen Sie **myAvailabilitySet** aus.|
     | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
+
 ---
 
-### <a name="install-iis"></a>Installieren von IIS
+## <a name="install-iis"></a>Installieren von IIS
 
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myVM1** (in der Ressourcengruppe **myResourceGroupLB**) aus.
 

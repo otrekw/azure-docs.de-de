@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754285"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278623"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Web Application Firewall in Azure Content Delivery Network
 
@@ -45,7 +45,7 @@ Einer in Azure CDN gehosteten Webanwendung kann jeweils nur eine WAF-Richtlinie 
 
 Für die Ausführung der WAF-Richtlinie können die beiden folgenden Modi konfiguriert werden:
 
-- *Erkennungsmodus*: Im Erkennungsmodus überwacht WAF nur die Anforderung und die entsprechende WAF-Regel und protokolliert die Ergebnisse im WAF-Protokoll. Es werden keine weiteren Aktionen ausgeführt. Sie können die Protokollierung von Diagnosedaten für Front Door aktivieren. Navigieren Sie bei Verwendung des Portals zum Abschnitt **Diagnose**.
+- *Erkennungsmodus*: Im Erkennungsmodus überwacht WAF nur die Anforderung und die entsprechende WAF-Regel und protokolliert die Ergebnisse im WAF-Protokoll. Es werden keine weiteren Aktionen ausgeführt. Sie können die Protokollierung von Diagnosedaten für CDN aktivieren. Navigieren Sie bei Verwendung des Portals zum Abschnitt **Diagnose**.
 
 - *Schutzmodus*: Im Schutzmodus führt WAF die angegebene Aktion aus, wenn eine Anforderung einer Regel entspricht. Nachdem eine Entsprechung gefunden wurde, werden keine weiteren Regeln mit niedrigerer Priorität mehr ausgewertet. Jede Anforderung mit einer Regelübereinstimmung wird außerdem in den WAF-Protokollen protokolliert.
 

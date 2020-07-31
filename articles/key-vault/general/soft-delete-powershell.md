@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9b9a7a5b3d92833a0f24f6bc646b19110dcfd66a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202127"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386077"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 
@@ -27,7 +27,7 @@ Das Azure Key Vault-Feature für vorläufiges Löschen ermöglicht die Wiederher
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Azure PowerShell 1.0.0 oder höher: Sie müssen Azure PowerShell installieren und Ihrem Azure-Abonnement zuweisen, sofern noch nicht geschehen. Informationen dazu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
+- Azure PowerShell 1.0.0 oder höher: Sie müssen Azure PowerShell installieren und Ihrem Azure-Abonnement zuweisen, sofern noch nicht geschehen. Informationen dazu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/). 
 
 >[!NOTE]
 > Eine veraltete Version unserer Key Vault PowerShell-Ausgabeformatierungsdatei wurde **möglicherweise** anstelle der richtigen Version in Ihre Umgebung geladen. Es ist eine aktualisierte Version von PowerShell mit den erforderlichen Korrekturen bei der Ausgabeformatierung vorgesehen. Dieses Thema wird dann entsprechend aktualisiert. Zur Umgehung dieses Formatierungsproblems sollten Sie zurzeit folgendermaßen vorgehen:
@@ -206,7 +206,7 @@ Genauso wie Schlüssel werden auch geheime Schlüssel mit ihren eigenen Befehlen
 
 Sie können Zertifikate mithilfe der folgenden Befehle verwalten:
 
-- Löschen eines Zertifikats namens SQLPassword: 
+- Löschen eines Zertifikats: 
   ```powershell
   Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
   ```
@@ -285,5 +285,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Weitere Ressourcen
 
-- Eine Übersicht über das Feature für vorläufiges Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](overview-soft-delete.md).
+- Eine Übersicht über das Feature für vorläufiges Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](soft-delete-overview.md).
 - Eine allgemeine Übersicht über die Nutzung von Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](overview.md).

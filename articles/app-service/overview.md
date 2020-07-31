@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7db55a420a9789ef15a5296a6b0200d6b8910ec6
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: f4b42f2ed43da68daabb3bd334a362071202be42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073723"
 ---
 # <a name="app-service-overview"></a>App Service: Übersicht
 
@@ -26,7 +26,7 @@ Hier sind einige wichtige Features von App Service aufgeführt:
 
 * **Mehrere Sprachen und Frameworks**: App Service bietet erstklassige Unterstützung für ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP oder Python. Sie können [PowerShell und weitere Skripts oder ausführbare Dateien](webjobs-create.md) auch als Hintergrunddienst ausführen.
 * **Verwaltete Produktionsumgebung:** App Service [patcht und wartet die Betriebssystem- und Sprachframeworks](overview-patch-os-runtime.md) automatisch für Sie. Konzentrieren Sie sich auf das Schreiben erstklassiger Apps, Azure kümmert sich um die Plattform.
-* **DevOps-Optimierung**: Richten Sie mit Azure DevOps, GitHub, BitBucket, Docker Hub oder Azure Container Registry die [fortlaufende Integration und Bereitstellung](deploy-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](deploy-staging-slots.md)herauf. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](/cli/azure/install-azure-cli).
+* **DevOps-Optimierung**: Richten Sie mit Azure DevOps, GitHub, BitBucket, Docker Hub oder Azure Container Registry die [fortlaufende Integration und Bereitstellung](deploy-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](deploy-staging-slots.md)herauf. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](/powershell/azure/) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](/cli/azure/install-azure-cli).
 * **Globale Skalierung mit Hochverfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](manage-scale-up.md) oder [horizontal](../monitoring-and-diagnostics/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert Hochverfügbarkeit.
 * **Verbindungen mit SaaS-Plattformen und lokalen Daten**: Wählen Sie aus über 50 [Connectors](../connectors/apis-list.md) für Unternehmenssysteme (z.B. SAP), SaaS-Dienste (z.B. Salesforce) sowie Internetdienste (z.B. Facebook). Greifen Sie über [Hybridverbindungen](app-service-hybrid-connections.md) und [Azure Virtual Networks](web-sites-integrate-with-vnet.md) auf lokale Daten zu.
 * **Sicherheit und Compliance** – App Service ist [ISO-, SOC- und PCI-konform](https://www.microsoft.com/en-us/trustcenter). Authentifizieren Sie Benutzer mit [Azure Active Directory](configure-authentication-provider-aad.md) oder Anmeldungen bei sozialen Netzwerken ([Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md) und [ Microsoft](configure-authentication-provider-microsoft.md)). Erstellen Sie [IP-Adresseinschränkungen](app-service-ip-restrictions.md) und [verwalten Sie Dienstidentitäten](overview-managed-identity.md).
