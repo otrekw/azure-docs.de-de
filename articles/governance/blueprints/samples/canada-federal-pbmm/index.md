@@ -3,16 +3,16 @@ title: 'Blaupausenbeispiel „Canada Federal PBMM“: Übersicht'
 description: Übersicht über das Blaupausenbeispiel „Canada Federal PBMM“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Canada Federal PBMM-Kontrollen.
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: fcaf4a844db10f4a87b205d08cfe3a86a6182957
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a33cba28459b1d01e816babbfc65c1b662bd2718
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005677"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419681"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „Canada Federal PBMM“
 
-Das PBMM-Blaupausenbeispiel (Canada Federal Protected B, Medium Integrity, Medium Availability) enthält eine Reihe von Schutzmaßnahmen für Governance, für die [Azure Policy](../../../policy/overview.md) verwendet wird und die für den [Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4)-Nachweis hilfreich sind. 
+Das PBMM-Blaupausenbeispiel (Canada Federal Protected B, Medium Integrity, Medium Availability) enthält eine Reihe von Schutzmaßnahmen für Governance, für die [Azure Policy](../../../policy/overview.md) verwendet wird und die für den [Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html)-Nachweis hilfreich sind. 
 
 ## <a name="blueprint-sample"></a>Blaupausenbeispiel
 

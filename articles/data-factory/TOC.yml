@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrationslaufzeit
       href: concepts-integration-runtime.md
-    - name: Verwaltetes virtuelles Netzwerk
-      href: managed-virtual-network-private-endpoint.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: Verschlüsselung mit kundenseitig verwalteten Schlüsseln
           href: enable-customer-managed-key.md
+        - name: Verwaltetes virtuelles Netzwerk
+          href: managed-virtual-network-private-endpoint.md
     - name: Überwachen und Verwalten
       items:
         - name: Visuelle Überwachung
@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: Datenflüsse
           href: data-flow-troubleshoot-guide.md
+        - name: Tool zum Kopieren von Daten
+          href: copy-data-tool-troubleshoot-guide.md
         - name: Selbstgehostete Integration Runtimes
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS-Integrationslaufzeit
