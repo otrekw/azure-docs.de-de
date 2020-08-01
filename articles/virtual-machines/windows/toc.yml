@@ -848,7 +848,7 @@
         - name: 'Hochladen einer VHD auf einen Datenträger: PowerShell'
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: 'Sicheres Importieren/Exportieren eines Datenträgers: Portal'
-          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Ändern der Größe eines Datenträgers
           href: expand-os-disk.md
         - name: Verwalten von Datenträgern mithilfe von Storage-Explorer
@@ -1015,7 +1015,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

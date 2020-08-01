@@ -58,8 +58,6 @@
               href: scenario-route-through-nva.md
             - name: 'Weiterleiten über NVA: Benutzerdefiniert (Vorschau)'
               href: scenario-route-through-nvas-custom.md
-            - name: 'Azure Firewall: Zwischen Hubs (Vorschau)'
-              href: scenario-route-between-hubs-firewall.md
             - name: 'Azure Firewall: Benutzerdefiniert'
               href: scenario-route-between-vnets-firewall.md
     - name: Überwachung

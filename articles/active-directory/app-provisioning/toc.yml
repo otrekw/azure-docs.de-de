@@ -69,8 +69,6 @@
           href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Fehlendes Quellattribut
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: Langsamer Bereitstellungsauftrag
-          href: application-provisioning-when-will-provisioning-finish.md
         - name: Bereitstellungsprotokolle
           href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
