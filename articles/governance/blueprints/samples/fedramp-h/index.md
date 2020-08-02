@@ -1,14 +1,14 @@
 ---
 title: Blaupausenbeispiel „FedRAMP High“ – Übersicht
 description: Übersicht über das FedRAMP High-Blaupausenbeispiel Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer FedRAMP High-Steuerungen.
-ms.date: 01/31/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 3a26c6f8e781a1bb2ff30ca9e2c179bcda8eadec
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: a8761d02d089013bccd31a9968367b26c3d22f87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517115"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495861"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>Übersicht über das FedRAMP High-Blaupausenbeispiel
 
