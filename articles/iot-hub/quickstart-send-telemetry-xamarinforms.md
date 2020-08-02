@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Senden von Telemetriedaten an Azure IoT Hub | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung führen Sie eine Xamarin.Forms-Beispielanwendung aus, um simulierte Telemetriedaten an einen IoT-Hub zu senden und zur Verarbeitung in der Cloud vom IoT-Hub zu lesen.
+title: Senden von Telemetriedaten an Azure IoT Hub (Xamarin.Forms) – Schnellstart
+description: Führen Sie eine Xamarin.Forms-Beispielanwendung aus, um simulierte Telemetriedaten an einen IoT-Hub zu senden und zur Verarbeitung in der Cloud vom IoT-Hub zu lesen.
 author: cmaneu
 manager: philmea
 ms.author: chmaneu
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 ms.date: 07/01/2020
-ms.openlocfilehash: 4178ee38ca179f179824a13130121b997f4f5f14
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 962dd35bd07e3ab542bdb8616b1cc2fda1441b36
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061525"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarinforms"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub (Xamarin.Forms)
 

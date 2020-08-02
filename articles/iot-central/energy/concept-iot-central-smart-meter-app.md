@@ -1,5 +1,5 @@
 ---
-title: Architektonische Konzepte in Azure IoT Central – Energie | Microsoft-Dokumentation
+title: Architektonische Konzepte in Azure IoT Central – Intelligenter Stromzähler | Microsoft-Dokumentation
 description: In diesem Artikel werden die wichtigsten Konzepte im Zusammenhang mit der Architektur der Energie-Anwendungsvorlage von Azure IoT Central vorgestellt.
 author: op-ravi
 ms.author: omravi
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aac5e35f3d0c42e97069ecb38fedaadcdc7794dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77024312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001841"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – Architektur der Intelligenter Stromzähler-Anwendung
 

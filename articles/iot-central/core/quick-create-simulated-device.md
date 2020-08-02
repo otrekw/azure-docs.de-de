@@ -3,17 +3,17 @@ title: 'Schnellstart: Hinzufügen eines simulierten Geräts zu Azure IoT Central
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Gerätevorlage erstellen und Ihrer IoT Central-Anwendung ein simuliertes Gerät hinzufügen.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 25e1742612c6fc8c326f2918a4d69c55a9888c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81001129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001949"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung
 
@@ -64,7 +64,7 @@ In den folgenden Schritten wird gezeigt, wie Sie den Gerätekatalog verwenden, u
 
 ### <a name="add-cloud-properties"></a>Hinzufügen von Cloudeigenschaften
 
-Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind nur in der IoT Central-Anwendung vorhanden und werden niemals an ein Gerät gesendet bzw. von einem Gerät empfangen.
+Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind nur in der IoT Central-Anwendung vorhanden und werden niemals an ein Gerät gesendet bzw. von einem Gerät empfangen. So fügen Sie eine Cloud-Eigenschaft hinzu:
 
 1. Wählen Sie **Cloudeigenschaften** und dann **+ Cloudeigenschaft hinzufügen** aus. Verwenden Sie die Informationen in der folgenden Tabelle, um Ihrer Gerätevorlage zwei Cloudeigenschaften hinzuzufügen:
 
@@ -136,15 +136,17 @@ Sie können nun mit den Ansichten interagieren, die vom Ersteller für die Gerä
 
 1. Wählen Sie auf der Seite **Geräte** Ihr simuliertes Gerät aus.
 
-1. Die **Übersicht** enthält einen Plot der simulierten Telemetriedaten:
+    * Die **Übersicht** enthält einen Plot der simulierten Telemetriedaten:
 
-    ![Übersicht](./media/quick-create-simulated-device/simulated-telemetry.png)
+        ![Übersicht](./media/quick-create-simulated-device/simulated-telemetry.png)
 
-1. Die Ansicht **Info** enthält Eigenschaftswerte (einschließlich der Cloudeigenschaften, die Sie der Ansicht hinzugefügt haben).
+    * Die Ansicht **Info** enthält Eigenschaftswerte (einschließlich der Cloudeigenschaften, die Sie der Ansicht hinzugefügt haben).
 
-1. In der Ansicht **Befehle** können Sie Befehle für das Gerät ausführen (beispielsweise **blink**).
+    * In der Ansicht **Befehle** können Sie Befehle für das Gerät ausführen (beispielsweise **blink**).
 
-1. Bei der Ansicht **Manage device** handelt es sich um das Formular, das Sie erstellt haben, um dem Operator die Verwaltung des Geräts zu ermöglichen.
+    * Bei der Ansicht **Manage device** handelt es sich um das Formular, das Sie erstellt haben, um dem Operator die Verwaltung des Geräts zu ermöglichen.
+
+    * In der Ansicht **Rohdaten** können Sie die vom Gerät gesendeten unformatierten Telemetriedaten und Eigenschaftswerte anzeigen. Diese Ansicht ist nützlich für das Debuggen von Geräten.
 
 ## <a name="use-a-simulated-device-to-improve-views"></a>Verwenden eines simulierten Geräts zum Verbessern von Ansichten
 
