@@ -452,6 +452,8 @@
       displayName: security
     - name: Benutzerflowversionen
       href: user-flow-versions.md
+    - name: Legacy-Benutzerflowversionen
+      href: user-flow-versions-legacy.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

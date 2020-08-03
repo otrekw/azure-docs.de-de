@@ -38,6 +38,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: 'Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure Spring Cloud-App herzustellen'
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: Einrichten der Autoskalierung für Microserviceanwendungen
+      href: spring-cloud-tutorial-setup-autoscale.md
 - name: Beispiele
   items:
     - name: Azure Policy-Integrationen

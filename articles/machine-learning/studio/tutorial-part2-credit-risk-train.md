@@ -1,6 +1,5 @@
 ---
-title: 'Tutorial 2: Trainieren von Kreditrisikomodellen'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic) – Tutorial 2: Trainieren von Kreditrisikomodellen – Azure'
 description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch). Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. Es zeigt, wie Sie Modelle trainieren und auswerten.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
@@ -10,16 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c88a7e2a74d4ad7b9ee353b24c46e36d4365db5e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79217869"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324878"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Azure Machine Learning Studio (klassisch)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
 
@@ -106,7 +106,7 @@ Um das SVM-Modell einzurichten, führen Sie folgende Schritte aus:
 
 1. Suchen Sie das Modul [Normalize Data][normalize-data], und ziehen Sie es in den Experimentbereich.
 
-1. Verbinden Sie die Eingabe dieses Moduls mit der linken Ausgabe des linken Moduls [Execute R Script][execute-r-script]. (Beachten Sie, dass der Ausgabeport eines Moduls mit mehr als einem anderen Modul verbunden sein kann.)
+1. Verbinden Sie die Eingabe dieses Moduls mit der linken Ausgabe des linken Moduls [Execute R Script][execute-r-script] (beachten Sie, dass der Ausgabeport eines Moduls mit mehr als einem anderen Modul verbunden sein kann).
 
 1. Verbinden Sie den linken Ausgabeport des Moduls [Normalize Data][normalize-data] mit dem rechten Eingabeport des Moduls [Train Model][train-model].
 

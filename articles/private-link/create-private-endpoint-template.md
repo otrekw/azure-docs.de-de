@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines privaten Endpunkts in Azure Private Link
-description: In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage einen privaten Endpunkt.
+description: In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen privaten Endpunkt.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071488"
 ---
-# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines privaten Endpunkts mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Schnellstart: Erstellen eines privaten Endpunkts mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage einen privaten Endpunkt.
+In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) einen privaten Endpunkt.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Diese Schnellstartanleitung steht auch für das [Azure-Portal](create-private-endpoint-portal.md), für [Azure PowerShell](create-private-endpoint-powershell.md) und für die [Azure-Befehlszeilenschnittstelle](create-private-endpoint-cli.md) zur Verfügung.
 
-## <a name="prerequisite"></a>Voraussetzung
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Mit dieser Vorlage wird ein privater Endpunkt für eine Instanz von Azure SQL-Datenbank erstellt.
 
-### <a name="review-the-template"></a>Überprüfen der Vorlage
-
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -50,9 +52,9 @@ In der Vorlage sind mehrere Azure-Ressourcen definiert:
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): Die Netzwerkschnittstelle für den virtuellen Computer
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines): Der virtuelle Computer zum Testen der privaten Verbindung mit dem privaten Endpunkt und der Instanz von SQL-Datenbank
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-So stellen Sie die Azure Resource Manager-Vorlage in Azure bereit:
+So stellen Sie die ARM-Vorlage in Azure bereit:
 
 1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Die Vorlage erstellt den privaten Endpunkt, die Instanz von SQL-Datenbank, die Netzwerkinfrastruktur und einen zu überprüfenden virtuellen Computer.
 
@@ -66,7 +68,7 @@ So stellen Sie die Azure Resource Manager-Vorlage in Azure bereit:
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 
 > [!NOTE]
-> Die Azure Resource Manager-Vorlage generiert jeweils einen eindeutigen Namen für die VM-Ressource „myVm<b>{eindeutige ID}</b>“ und für die SQL-Datenbank-Ressource „sqlserver<b>{eindeutige ID}</b>“. Ersetzen Sie **{eindeutige ID}** durch den entsprechenden generierten Wert.
+> Die ARM-Vorlage generiert jeweils einen eindeutigen Namen für die VM-Ressource „myVm<b>{eindeutige ID}</b>“ und für die SQL-Datenbank-Ressource „sqlserver<b>{eindeutige ID}</b>“. Ersetzen Sie **{eindeutige ID}** durch den entsprechenden generierten Wert.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
 

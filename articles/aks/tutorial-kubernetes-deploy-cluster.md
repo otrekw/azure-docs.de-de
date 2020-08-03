@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 80393042191abc2a8eb74182cf18581d252222a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056470"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -33,7 +33,9 @@ Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausfüh
 
 AKS-Cluster können rollenbasierte Zugriffssteuerungen (Role-Based Access Control, RBAC) für Kubernetes verwenden. Mit diesen Steuerungen können Sie den Zugriff auf Ressourcen basierend auf Rollen definieren, die Benutzern zugewiesen sind. Berechtigungen werden kombiniert, wenn einem Benutzer mehrere Rollen zugewiesen sind, und Berechtigungen können auf einen einzelnen Namespace begrenzt sein oder für den gesamten Cluster gelten. Die Azure CLI aktiviert RBAC bei der Erstellung eines AKS-Clusters standardmäßig.
 
-Erstellen Sie mit [az aks create][] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* in der Ressourcengruppe mit dem Namen *myResourceGroup* erstellt. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] erstellt. Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird automatisch ein Azure Active Directory-Dienstprinzipal erstellt, da Sie keinen angegeben haben. Hier wird diesem Dienstprinzipal die [Berechtigung zum Pullen von Images][container-registry-integration] aus der ACR-Instanz (Azure Container Registry) gewährt, die Sie im vorherigen Tutorial erstellt haben. Beachten Sie, dass Sie anstelle eines Dienstprinzipals zur einfacheren Verwaltung eine [verwaltete Identität](use-managed-identity.md) verwenden können.
+Erstellen Sie mit [az aks create][] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* in der Ressourcengruppe mit dem Namen *myResourceGroup* erstellt. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] in der Region *eastus* erstellt. Im folgenden Beispiel wird keine Region angegeben, sodass der AKS-Cluster auch in der Region *eastus* erstellt wird. Weitere Informationen zu Ressourcenbeschränkungen und regionale Verfügbarkeit für AKS finden Sie unter [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
+
+Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird automatisch ein Azure Active Directory-Dienstprinzipal erstellt, da Sie keinen angegeben haben. Hier wird diesem Dienstprinzipal die [Berechtigung zum Pullen von Images][container-registry-integration] aus der ACR-Instanz (Azure Container Registry) gewährt, die Sie im vorherigen Tutorial erstellt haben. Beachten Sie, dass Sie anstelle eines Dienstprinzipals zur einfacheren Verwaltung eine [verwaltete Identität](use-managed-identity.md) verwenden können.
 
 ```azurecli
 az aks create \
@@ -108,3 +110,4 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie eine Anwendung i
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-registry-integration]: ./cluster-container-registry-integration.md
+[quotas-skus-regions]: quotas-skus-regions.md

@@ -9,7 +9,7 @@
 - name: Tutorials
   expanded: true
   items:
-    - name: Erstellen einer grundlegenden verwalteten Domäne
+    - name: Erstellen einer verwalteten Domäne
       href: tutorial-create-instance.md
     - name: Konfigurieren des virtuellen Netzwerks für Apps
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: Konfigurieren der Kennworthashsynchronisierung
       href: tutorial-configure-password-hash-sync.md
-    - name: Erstellen einer erweiterten verwalteten Domäne
+    - name: Erstellen einer Replikatgruppe (Vorschauversion)
+      href: tutorial-create-replica-set.md
+    - name: Erstellen einer angepassten verwalteten Domäne
       href: tutorial-create-instance-advanced.md
-    - name: Erstellen einer Gesamtstruktur-Vertrauensstellung (Vorschau)
+    - name: Erstellen einer Gesamtstruktur-Vertrauensstellung
       href: tutorial-create-forest-trust.md
 - name: Beispiele
   items:
@@ -33,12 +35,16 @@
       href: template-create-instance.md
     - name: Konfigurieren der bereichsbezogenen Synchronisierung mithilfe von Azure AD PowerShell
       href: powershell-scoped-synchronization.md
+    - name: Erstellen einer Ressourcengesamtstruktur und -vertrauensstellung mithilfe von Azure PowerShell
+      href: create-resource-forest-powershell.md
 - name: Konzepte
   items:
     - name: Verwaltungsgrundlagen
       href: administration-concepts.md
     - name: Allgemeine Bereitstellungsszenarien
       href: scenarios.md
+    - name: Replikatgruppen (Vorschauversion)
+      href: concepts-replica-sets.md
     - name: Gesamtstrukturen und Vertrauensstellungen
       items:
         - name: Ressourcengesamtstrukturen

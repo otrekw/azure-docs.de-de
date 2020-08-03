@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147017"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307198"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt 
 
@@ -37,11 +37,9 @@ Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsof
 
 1. Wählen Sie auf der linken Seite **Datenbeschriftung** aus, um nach dem Projekt zu suchen.  
 
-1. Wählen Sie in der Liste den Projektnamen aus.
-
 ## <a name="understand-the-labeling-task"></a>Grundlegendes zur Bezeichnungsaufgabe
 
-Nachdem Sie das Projekt ausgewählt haben, wählen Sie oben auf der Seite die Option **Daten beschriften** aus.
+Wählen Sie in der Tabelle der Datenbeschriftungsprojekte **Beschriftungslink** für Ihr Projekt aus.
 
 Es werden projektspezifische Anweisungen angezeigt. Sie enthalten relevante Informationen wie etwa die Art der vorliegenden Daten und Hinweise zum Treffen von Entscheidungen. Lesen Sie diese Informationen, und wählen Sie anschließend oben auf der Seite **Aufgaben** aus.  Stattdessen können Sie auch am unteren Rand der Seite auf **Beschriftung starten** klicken.
 
@@ -65,6 +63,10 @@ Azure aktiviert die Schaltfläche **Senden**, wenn Sie alle Bilder auf der Seite
 Nach der Übermittlung von Tags für die vorliegenden Daten aktualisiert Azure die Seite mit einer neuen Gruppe von Bildern aus der Arbeitswarteschlange.
 
 ### <a name="assisted-machine-learning-preview"></a>Unterstütztes maschinelles Lernen (Vorschauversion) 
+
+> [!IMPORTANT]
+> Unterstütztes maschinelles Lernen befindet sich derzeit in der Public Preview.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Möglicherweise werden Machine Learning-Algorithmen ausgelöst. Wenn diese Algorithmen in Ihrem Projekt aktiviert sind, wird ggf. Folgendes angezeigt:
 

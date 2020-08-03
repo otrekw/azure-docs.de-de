@@ -262,7 +262,7 @@
           items:
             - name: Überwachen eines Speicherkontos
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migrieren von klassischen Metriken
+            - name: Übergang von klassischen Metriken
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Überwachung (klassisch)
               items:
@@ -321,7 +321,7 @@
                       href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: PowerShell
                       href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure-Befehlszeilenschnittstelle
+                    - name: Azure CLI
                       href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Verwalten von Zugriffsrechten mit RBAC
                   items:
@@ -329,7 +329,7 @@
                       href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: PowerShell
                       href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure-Befehlszeilenschnittstelle
+                    - name: Azure CLI
                       href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Authentifizieren und Autorisieren mit Azure AD
                   items:
@@ -351,7 +351,7 @@
                       items:
                         - name: PowerShell
                           href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure-Befehlszeilenschnittstelle
+                        - name: Azure CLI
                           href: storage-blob-user-delegation-sas-create-cli.md
                         - name: .NET
                           href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -383,7 +383,7 @@
                           href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                         - name: PowerShell
                           href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure-Befehlszeilenschnittstelle
+                        - name: Azure CLI
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Angeben eines Verschlüsselungsschlüssels bei einer Anforderung
                   href: storage-blob-customer-provided-key.md
@@ -685,7 +685,7 @@
           items:
             - name: Überwachen eines Speicherkontos
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migrieren von klassischen Metriken
+            - name: Übergang von klassischen Metriken
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Überwachung (klassisch)
               items:

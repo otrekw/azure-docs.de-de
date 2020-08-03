@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: Delegieren von App-Administratorberechtigungen
               href: roles-delegate-app-roles.md
+        - name: Verwenden von Gruppen zum Verwalten von Rollenzuweisungen
+          items:
+            - name: Gruppenbasierte Rollenzuweisung (Vorschau)
+              href: roles-groups-concept.md
+            - name: 'Erstellen einer Gruppe, der Rollen zugeordnet werden können'
+              href: roles-groups-create-eligible.md
+            - name: Zuweisen von Rollen zu einer Gruppe
+              href: roles-groups-assign-role.md
+            - name: Entfernen von Rollenzuweisungen für eine Gruppe
+              href: roles-groups-remove-assignment.md
+            - name: Anzeigen der Rollenzuweisungen für eine Gruppe
+              href: roles-groups-view-assignments.md
+            - name: Festlegen einer Gruppe als berechtigt für eine Rolle in PIM
+              href: roles-groups-pim-eligible.md
+            - name: FAQ und Fehlerbehebung
+              href: roles-groups-faq-troubleshooting.md
         - name: Rollen mit geringstmöglichen Berechtigungen nach Aufgabe
           href: roles-delegate-by-task.md
         - name: Microsoft 365-Rollen

@@ -12,12 +12,12 @@ metadata:
   ms.date: 11/08/2019
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: 242bbfa3143827162b087e231d99b6de451d4908
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 716551f4b298a9a7be2425fdd4cd8246afb5a924
+  ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78272990"
+  ms.lasthandoff: 07/31/2020
+  ms.locfileid: "87503462"
 landingContent:
 - title: Informationen zu Benutzern, Gruppen, Rollen und Lizenzen
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
     links:
     - text: Delegieren der Verwaltung
       url: roles-concept-delegation.md
-    - text: Vergleichen von Azure RBAC-Rollen und Azure AD-Administratorrollen
+    - text: Vergleichen von Azure-Rollen und Azure AD-Administratorrollen
       url: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
 - title: Erste Schritte
   linkLists:

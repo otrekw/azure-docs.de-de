@@ -232,10 +232,12 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: Beheben von Problemen beim Anwenden von Artefakten
           href: devtest-lab-troubleshoot-apply-artifacts.md
-    - name: Verschlüsseln der von Labs verwendeten Speicher- und Betriebssystemdatenträger
+    - name: Verschlüsseln von Labressourcen
       items:
         - name: Verschlüsseln des von einem Lab verwendeten Speichers
           href: encrypt-storage.md
+        - name: Verschlüsseln von Betriebssystemdatenträgern mithilfe von kundenseitig verwalteten Schlüsseln
+          href: encrypt-disks-customer-managed-keys.md
     - name: Integrieren mit CI/CD
       items:
         - name: Integrieren von Labs in Ihre CI/CD-Pipeline in Azure Pipelines

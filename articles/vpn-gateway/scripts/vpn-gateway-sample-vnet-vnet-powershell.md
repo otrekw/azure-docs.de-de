@@ -3,20 +3,20 @@ title: 'Azure PowerShell-Skriptbeispiel: Konfigurieren einer VNET-zu-VNET-VPN-Ve
 description: Konfigurieren einer Site-to-Site-VPN-Verbindung (S2S)
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: a4d23f34553881b6425514572f9122edf693a57a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a69df3893a3bf32ca2af1be62744991346ee048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068361"
 ---
-# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
+# <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>Verwenden von PowerShell zum Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung
 
 Dieses Skript stellt zwischen zwei virtuellen Netzwerken eine VNET-zu-VNET-Verbindung her.
 
@@ -167,4 +167,4 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

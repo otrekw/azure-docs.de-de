@@ -1,6 +1,6 @@
 ---
 title: 'Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken: Azure CLI-Skriptbeispiel'
-description: Azure CLI-Skriptbeispiel – Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken
+description: Erstellen und verbinden Sie zwei virtuelle Netzwerke in derselben Region über das Azure-Netzwerk, indem Sie ein Azure CLI-Skriptbeispiel verwenden.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 2dd5336d66872cc8c56fd372e89b67ce9c892f3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88bdca4d37d97bd666cc24e403d6944690bff82f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74083843"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291911"
 ---
-# <a name="peer-two-virtual-networks-script-sample"></a>Skriptbeispiel für das Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken
+# <a name="peer-two-virtual-networks-with-an-azure-cli-script-sample"></a>Herstellen einer Peerverbindung zwischen zwei virtuellen Netzwerken mit einem Azure CLI-Skriptbeispiel
 
 Dieses Skriptbeispiel erstellt zwei virtuelle Netzwerke in der gleichen Region und stellt über das Azure-Netzwerk eine Verbindung zwischen ihnen her. Nach dem Ausführen des Skripts besteht ein Peering zwischen zwei virtuellen Netzwerken.
 

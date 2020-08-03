@@ -210,8 +210,10 @@
     - name: Vorlagenspezifikationen
       items:
         - name: Erstellen mit verknüpften Vorlagen
+          displayName: template specs
           href: template-specs-create-linked.md
         - name: Bereitstellen als verknüpfte Vorlage
+          displayName: template specs
           href: template-specs-deploy-linked-template.md
     - name: Erweiterte Vorlagen
       items:
@@ -366,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: Tenant
           href: deploy-to-tenant.md
-        - name: Ressourcengruppenübergreifend
-          href: cross-resource-group-deployment.md
+        - name: Bereichsübergreifende Bereitstellungen
+          href: cross-scope-deployment.md
     - name: Angeben von Parametern
       items:
         - name: Erstellen einer Parameterdatei
@@ -451,7 +453,7 @@
       href: /rest/api/resources/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/resource
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.resourcemanager

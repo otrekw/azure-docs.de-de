@@ -1,6 +1,5 @@
 ---
-title: Schnelles Starten von Experimenten anhand von Beispielen
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Starten von Experimenten über Beispiele – Azure'
 description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure KI-Katalog und Azure Machine Learning Studio (klassisch) neue Experimente zu erstellen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 79251257e38c9a9b59f759192d3d536185396291
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b26864c5ad8280fe4857ccdb2ce6fbacf1ba47b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706017"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324929"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von (klassischen) Azure Machine Learning Studio-Experimenten aus funktionierenden Beispielen im Azure KI-Katalog
+
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 

@@ -10,14 +10,16 @@
       href: load-balancer-faqs.md
 - name: Schnellstart
   items:
-    - name: Lastenausgleich erstellen – Portal
+    - name: 'Erstellen eines öffentlichen Lastenausgleichs: Portal'
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Lastenausgleich erstellen – Azure CLI
+    - name: 'Erstellen eines öffentlichen Lastenausgleichs: Azure CLI'
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Lastenausgleich erstellen – Azure PowerShell
+    - name: 'Erstellen eines öffentlichen Lastenausgleichs: Azure PowerShell'
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Lastenausgleich erstellen – ARM-Vorlage
+    - name: 'Erstellen eines öffentlichen Lastenausgleichs: ARM-Vorlage'
       href: quickstart-load-balancer-standard-public-template.md
+    - name: 'Erstellen eines internen Lastenausgleichs: Portal'
+      href: quickstart-load-balancer-standard-internal-portal.md
   expanded: true
 - name: Tutorials
   items:
@@ -112,7 +114,7 @@
       items:
         - name: Portal
           href: load-balancer-multiple-ip.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -140,7 +142,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

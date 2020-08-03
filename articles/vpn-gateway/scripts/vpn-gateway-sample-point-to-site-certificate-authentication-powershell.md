@@ -3,20 +3,20 @@ title: 'Azure PowerShell-Skriptbeispiel: Konfigurieren einer Point-to-Site-VPN-V
 description: Konfigurieren Sie eine Point-to-Site-VPN-Verbindung (P2S) mit nativer Azure-Zertifikatauthentifizierung unter Verwendung selbstsignierter Zertifikate. In diesem Artikel wird PowerShell verwendet.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: alzam
-ms.openlocfilehash: 6a82aedb20adb404cad6a51644b13a59be85ac2e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a76cad8cb89e016d231566089ce30a337ea91d8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75867220"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086964"
 ---
-# <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>Erstellen eines VPN-Gateways und Hinzufügen einer P2S-Konfiguration mithilfe von PowerShell
+# <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>Konfigurieren eines Point-to-Site-VPNs unter Verwendung der nativen Azure-Zertifikatauthentifizierung
 
 Mit diesem Skript wird ein routenbasiertes VPN-Gateway erstellt und eine P2S-Konfiguration mit nativer Azure-Zertifikatauthentifizierung hinzugefügt.
 
@@ -121,4 +121,4 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

@@ -1,6 +1,6 @@
 ---
-title: 'Windows Virtual Desktop – Dienstprinzipal- Rollenzuweisung: Azure'
-description: Hier wird beschrieben, wie Sie mit PowerShell in Windows Virtual Desktop Dienstprinzipale erstellen und Rollen zuweisen.
+title: 'Windows Virtual Desktop (klassisch) – Dienstprinzipal- Rollenzuweisung: Azure'
+description: Es wird beschrieben, wie Sie mit PowerShell in Windows Virtual Desktop (klassisch) Dienstprinzipale erstellen und Rollen zuweisen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 015d0e0208b83cff3db3995383ce93ed6362ee49
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117722"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270089"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell unter Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt.
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch), das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt.
 
 Dienstprinzipale sind Identitäten, die Sie in Azure Active Directory erstellen können, um Rollen und Berechtigungen für einen bestimmten Zweck zuzuweisen. In Windows Virtual Desktop können Sie einen Dienstprinzipal für folgende Zwecke erstellen:
 

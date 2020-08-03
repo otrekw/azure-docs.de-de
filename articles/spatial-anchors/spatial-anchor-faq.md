@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091486"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -88,9 +88,9 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 
 Dies bedeutet, dass sich sowohl die Compute- als auch die Speicherressourcen dieses Diensts in diesen Regionen befinden. Es gelten aber keine Einschränkungen in Bezug darauf, wo sich Ihre Clients befinden. 
 
-**F: Fallen für Azure Spatial Anchors Gebühren an? Wann werden diese Gebühren berechnet?**
+**F: Fallen für Azure Spatial Anchors Gebühren an?**
 
-**A:** Ausführliche Informationen zu den Preisen, die während der Vorschauphase gelten, finden Sie auf unserer [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/spatial-anchors/).
+**A:** Ausführliche Informationen zu den geltenden Preisen finden Sie auf unserer [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/spatial-anchors/).
 
 ## <a name="technical-faqs"></a>Häufig gestellte Fragen: Technik
 

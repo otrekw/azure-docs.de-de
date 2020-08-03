@@ -42,6 +42,8 @@
       href: vpn-gateway-about-point-to-site-routing.md
     - name: Informationen zu zonenredundanten Gateways für Verfügbarkeitszonen
       href: about-zone-redundant-vnet-gateways.md
+    - name: Integrierte Sicherheitskontrollen
+      href: vpn-gateway-security-controls.md
     - name: Interoperabilität der Back-End-Konnektivität
       items:
         - name: Einleitung und Testeinrichtung
@@ -52,8 +54,6 @@
           href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Analyse der Datenebene
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Integrierte Sicherheitskontrollen
-      href: vpn-gateway-security-controls.md
 - name: Anleitungen
   items:
     - name: Erstellen und Verwalten eines VPN-Gateways
@@ -160,8 +160,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurieren von OpenVPN-Clients
               href: vpn-gateway-howto-openvpn-clients.md
-        - name: Migrieren von SSTP zum OpenVPN-Protokoll oder zu IKEv2
-          href: ikev2-openvpn-from-sstp.md
+            - name: Migrieren von SSTP zum OpenVPN-Protokoll oder zu IKEv2
+              href: ikev2-openvpn-from-sstp.md
         - name: Übergang von einem Gatewayzertifikat einer öffentlichen Zertifizierungsstelle für P2S
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurieren eines Always On-VPN-Gerätetunnels
@@ -170,12 +170,6 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Ankündigen von benutzerdefinierten Routen zu P2S-Clients
           href: vpn-gateway-p2s-advertise-custom-routes.md
-    - name: Erstellen eines zonenredundanten Gateways
-      href: create-zone-redundant-vnet-gateway.md
-    - name: Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
-      href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: Konfigurieren von Aktiv/Aktiv-Verbindungen
-      href: vpn-gateway-activeactive-rm-powershell.md
     - name: 'Routing, BGP und VNet-Peering'
       items:
         - name: Konfigurieren von BGP für ein VPN-Gateway
@@ -218,6 +212,18 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Konfigurieren von Paketerfassungen
       href: packet-capture.md
+    - name: Zonenredundante Gateways
+      items:
+        - name: Erstellen eines zonenredundanten Gateways
+          href: create-zone-redundant-vnet-gateway.md
+    - name: Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
+      items:
+        - name: PowerShell
+          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+    - name: Konfigurieren von Aktiv/Aktiv-Verbindungen
+      items:
+        - name: PowerShell
+          href: vpn-gateway-activeactive-rm-powershell.md
     - name: Problembehandlung
       href: vpn-gateway-troubleshoot.md
       items:

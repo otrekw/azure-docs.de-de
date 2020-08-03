@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084006"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Schnellstart: Integrieren Ihrer Azure Stack-VMs in Security Center
 Nachdem Sie Ihr Azure-Abonnement eingebunden haben, können Sie Security Center zum Schützen Ihrer in Azure Stack ausgeführten VMs einrichten, indem Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Azure Monitor** aus dem Azure Stack-Marketplace hinzufügen.

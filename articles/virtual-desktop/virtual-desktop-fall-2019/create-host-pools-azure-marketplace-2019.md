@@ -1,6 +1,6 @@
 ---
-title: 'Windows Virtual Desktop-Hostpool in Azure Marketplace: Azure'
-description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool mit dem Azure Marketplace erstellen.
+title: 'Windows Virtual Desktop-Hostpool (klassisch) in Azure Marketplace: Azure'
+description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool (klassisch) mit dem Azure Marketplace erstellen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256848"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291302"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace
+# <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Tutorial: Erstellen eines Hostpools in Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../create-host-pools-azure-marketplace.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch), das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, finden Sie weitere Informationen in [diesem Artikel](../create-host-pools-azure-marketplace.md).
 
 In diesem Tutorial erfahren Sie, wie Sie innerhalb eines Windows Virtual Desktop-Mandanten unter Verwendung eines Microsoft Azure Marketplace-Angebots einen Hostpool erstellen.
 
