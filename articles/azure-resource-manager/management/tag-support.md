@@ -2,13 +2,13 @@
 title: Tagunterstützung für Ressourcen
 description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: f59e50e3eadb50db97756aa990f4de822a8ba089
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/28/2020
+ms.openlocfilehash: 2ebf55a15233c401904460d459a118fc46142ac3
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337992"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](tag-resources.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt. Sie können die Kosten nach Tags in der [Cost Management-Kostenanalyse](../../cost-management-billing/costs/group-filter.md) und den [Azure-Abrechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md) anzeigen.
@@ -322,6 +322,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | automationAccounts/runbooks | Ja | Ja |
 > | automationAccounts/softwareUpdateConfigurations | Nein | Nein |
 > | automationAccounts/webhooks | Nein | Nein |
+
+>[!NOTE]
+>Azure Automation unterstützt nur das Erstellen von maximal 15 Tagname-/Wertpaaren pro Automation-Ressource.
+> 
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 

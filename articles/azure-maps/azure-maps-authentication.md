@@ -1,28 +1,28 @@
 ---
-title: Authentifizierungsmethoden
+title: Authentifizierung mit Microsoft Azure Maps
 titleSuffix: Azure Maps
-description: In diesem Artikel wird die Authentifizierung per Azure Active Directory und gemeinsam verwendetem Schlüssel beschrieben. Beide Verfahren werden für Microsoft Azure Maps-Dienste verwendet. Lesen Sie, wie Sie einen Azure Maps-Abonnementschlüssel erhalten.
-author: philmea
-ms.author: philmea
-ms.date: 06/12/2020
+description: In diesem Artikel wird die Authentifizierung per Azure Active Directory und gemeinsam verwendetem Schlüssel beschrieben.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987540"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285831"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
-Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anforderungen: Authentifizierung per gemeinsam verwendetem Schlüssel und [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)-Authentifizierung. In diesem Artikel werden diese Authentifizierungsmethoden beschrieben, um Ihnen bei Ihrer Implementierung von Azure Maps-Diensten zu helfen.
+Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anforderungen: Authentifizierung per gemeinsam verwendetem Schlüssel und [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)-Authentifizierung. In diesem Artikel werden die beiden Authentifizierungsmethoden beschrieben, um Ihnen bei Ihrer Implementierung von Azure Maps-Diensten zu helfen.
 
 > [!NOTE]
-> Um die sichere Kommunikation mit Azure Maps zu verbessern, unterstützen wir nun TLS 1.2 (Transport Layer Security), und wir stellen die Unterstützung für TLS 1.0 und 1.1 ein. Um Dienstunterbrechungen zu vermeiden, **aktualisieren Sie Ihre Server und Anwendungen auf die Verwendung von TLS 1.2 vor dem 2. April 2020**.  Wenn Sie derzeit TLS 1.x verwenden, evaluieren Sie Ihre TLS 1.2-Bereitschaft, und entwickeln Sie einen Migrationsplan mit den in [Lösen des TLS 1.0-Problems](https://docs.microsoft.com/security/solving-tls1-problem) beschriebenen Tests.
+> Um die sichere Kommunikation mit Azure Maps zu verbessern, unterstützen wir nun TLS 1.2 (Transport Layer Security), und wir stellen die Unterstützung für TLS 1.0 und 1.1 ein. Wenn Sie derzeit TLS 1.x verwenden, evaluieren Sie Ihre TLS 1.2-Bereitschaft, und entwickeln Sie einen Migrationsplan mit den in [Lösen des TLS 1.0-Problems](https://docs.microsoft.com/security/solving-tls1-problem) beschriebenen Tests.
 
 ## <a name="shared-key-authentication"></a>Authentifizierung mit gemeinsam verwendetem Schlüssel
 
@@ -30,8 +30,8 @@ Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anfor
 
 Informationen zum Anzeigen der Schlüssel im Azure-Portal finden Sie unter [Verwalten der Authentifizierung in Azure Maps](https://aka.ms/amauthdetails).
 
-> [!Tip]
-> Wir empfehlen Ihnen, Ihre Schlüssel regelmäßig neu zu generieren. Es werden zwei Schlüssel bereitgestellt, damit Sie die Verbindungen mit einem Schlüssel aufrechterhalten können, während Sie den anderen neu generieren. Bei der erneuten Generierung Ihrer Schlüssel müssen Sie alle Anwendungen, die auf Ihr Konto zugreifen, mit den neuen Schlüsseln aktualisieren.
+> [!TIP]
+> Aus Sicherheitsgründen wird empfohlen, dass Sie zwischen Ihrem Primär- und Sekundärschlüssel wechseln. Aktualisieren Sie zur Schlüsselrotation Ihre App, um den Sekundärschlüssel zu verwenden. Stellen Sie dann die App bereit, und drücken Sie die Taste für die Aktualisierung neben dem Primärschlüssel, um einen neuen Primärschlüssel zu generieren. Der alte Primärschlüssel wird deaktiviert. Weitere Informationen zur Schlüsselrotation finden Sie unter [Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
 
 ## <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
@@ -64,7 +64,7 @@ Nachdem die Anwendung ein Zugriffstoken erhalten hat, sendet das SDK und/oder di
 | x-ms-client-id | 30d7cc….9f55        |
 | Authorization  | Bearer eyJ0e….HNIVN |
 
-> [!Note]
+> [!NOTE]
 > `x-ms-client-id` ist die auf dem Azure Maps-Konto basierende GUID, die auf der Azure Maps-Authentifizierungsseite angezeigt wird.
 
 Hier ist ein Beispiel für eine Azure Maps-Routenanforderung, die ein Azure AD-OAuth-Bearertoken verwendet:
@@ -108,7 +108,7 @@ Informationen zum Anzeigen Ihrer RBAC-Einstellungen finden Sie im Artikel zum Th
 
 #### <a name="custom-role-definitions"></a>Benutzerdefinierte Rollendefinitionen
 
-Ein Aspekt der Anwendungssicherheit ist das Anwenden des Prinzips der geringsten Rechte. Das Prinzip impliziert, dass dem Sicherheitsprinzipal nur der erforderliche Zugriff und kein zusätzlicher Zugriff gewährt werden sollte. Mit dem Erstellen benutzerdefinierter Rollendefinitionen lassen sich Anwendungsfälle unterstützen, die für die Zugriffssteuerung eine feinere Granularität benötigen. Um eine benutzerdefinierte Rollendefinition zu erstellen, können Sie bestimmte Datenaktionen auswählen, die in die Definition aufgenommen oder daraus ausgeschlossen werden sollen. 
+Ein Aspekt der Anwendungssicherheit ist das Anwenden des Prinzips der geringsten Rechte. Dieses Prinzip impliziert, dass dem Sicherheitsprinzipal nur der erforderliche Zugriff und kein zusätzlicher Zugriff gewährt werden sollte. Mit dem Erstellen benutzerdefinierter Rollendefinitionen lassen sich Anwendungsfälle unterstützen, die für die Zugriffssteuerung eine feinere Granularität benötigen. Um eine benutzerdefinierte Rollendefinition zu erstellen, können Sie bestimmte Datenaktionen auswählen, die in die Definition aufgenommen oder daraus ausgeschlossen werden sollen.
 
 Die benutzerdefinierte Rollendefinition kann dann für jeden Sicherheitsprinzipal in einer Rollenzuweisung verwendet werden. Weitere Informationen zu benutzerdefinierten Azure-Rollendefinitionen finden Sie unter [Benutzerdefinierte Azure-Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
@@ -126,13 +126,19 @@ Hier finden Sie einige Beispielszenarien, in denen benutzerdefinierte Rollen die
 Beim Erstellen einer Rollenzuweisung wird sie in der Azure-Ressourcenhierarchie definiert. Am Anfang der Hierarchie befindet sich eine [Verwaltungsgruppe](https://docs.microsoft.com/azure/governance/management-groups/overview), und die niedrigste Ebene ist eine Azure-Ressource wie ein Azure Maps-Konto.
 Wenn Sie einer Ressourcengruppe eine Rollenzuweisung zuweisen, kann dies den Zugriff auf mehrere Azure Maps-Konten oder -Ressourcen in der Gruppe aktivieren.
 
-> [!Tip]
-> Die allgemeine Empfehlung von Microsoft sind das Zuweisen des Zugriffs auf den Bereich des Azure Maps-Kontos, weil dadurch **unbeabsichtigter Zugriff auf andere Azure Maps-Konten**, die sich im selben Azure-Abonnement befinden, verhindert wird.
+> [!TIP]
+> Die generelle Empfehlung von Microsoft besteht darin, den Zugriff auf den Bereich des Azure Maps-Kontos zuzuweisen, weil dadurch **unbeabsichtigter Zugriff auf andere Azure Maps-Konten**, die sich im selben Azure-Abonnement befinden, verhindert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) finden Sie unter [Übersicht zur rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Weitere Informationen über RBAC:
+> [!div class="nextstepaction"]
+> [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* Weitere Informationen zur Authentifizierung einer Anwendung mit Azure AD und Azure Maps finden Sie im Artikel zum Thema [Verwalten der Authentifizierung in Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+Weitere Informationen zur Authentifizierung einer Anwendung mit Azure AD und Azure Maps finden Sie unter
+> [!div class="nextstepaction"]
+> [Verwalten der Authentifizierung in Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
-* Weitere Informationen zur Authentifizierung von Azure Maps, des Kartensteuerelements und von Azure AD finden Sie unter [Verwenden des Azure Maps-Kartensteuerelements](https://aka.ms/amaadmc).
+Weitere Informationen zur Authentifizierung von Azure Maps, des Kartensteuerelements und von Azure AD finden Sie unter
+> [!div class="nextstepaction"]
+> [Verwenden des Azure Maps-Kartensteuerelements](https://aka.ms/amaadmc)

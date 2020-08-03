@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 07/10/2020
+ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075922"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Einführung in die Stream Analytics-Windowing-Funktionen
 
@@ -35,7 +35,8 @@ Bei den Funktionen von springenden Fenstern wird für einen festen Zeitraum ein 
 ![Stream Analytics – Springendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Gleitendes Fenster
-Bei Schiebefensterfunktionen wird im Gegensatz zu rollierenden oder springenden Fenstern **nur** dann ein Ereignis produziert, wenn ein Ereignis eintritt. Jedes Fenster verfügt über mindestens ein Ereignis, und das Fenster wird fortlaufend um ein ε (Epsilon) nach vorn verschoben. Wie bei springenden Fenstern auch, können Ereignisse zu mehr als einem gleitenden Fenster gehören.
+
+Gleitende Fenster, im Gegensatz zu rollierenden oder springenden Fenstern, geben Ereignisse nur für Zeitpunkte aus, zu denen sich der Inhalt des Fensters tatsächlich ändert. Anders ausgedrückt: wenn ein Ereignis das Fenster betritt oder verlässt. Jedes Fenster besitzt mindestens ein Ereignis. Wie bei springenden Fenstern, können Ereignisse zu mehr als einem gleitenden Fenster gehören.
 
 ![Stream Analytics – Gleitendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -50,6 +51,11 @@ Wenn innerhalb des angegebenen Zeitraums weiter Ereignisse eintreten, wird das S
 
 Wenn ein Partitionsschlüssel angegeben wird, werden die Ereignisse nach dem Schlüssel gruppiert, und das Sitzungsfenster wird auf jede Gruppe separat angewendet. Diese Partitionierung ist für Fälle nützlich, in denen Sie unterschiedliche Sitzungsfenster für unterschiedliche Benutzer oder Geräte benötigen.
 
+## <a name="snapshot-window"></a>Momentaufnahmefenster
+
+Momentaufnahmefenster gruppieren Ereignisse, die denselben Zeitstempel haben. Im Gegensatz zu anderen Fenstertypen, die eine bestimmte Fensterfunktion benötigen (z. B. [SessionWindow()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)), können Sie ein Momentaufnahmefenster anwenden, indem Sie der GROUP BY-Klausel „System.Timestamp()“ hinzufügen.
+
+![Stream Analytics-Momentaufnahmefenster](media/stream-analytics-window-functions/snapshot.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

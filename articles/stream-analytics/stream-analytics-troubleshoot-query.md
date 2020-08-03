@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037204"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337805"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problembehandlung von Azure Stream Analytics-Abfragen
 
@@ -28,9 +28,9 @@ Dieser Artikel beschreibt häufige Probleme bei der Entwicklung von Azure Stream
     - Wählen Sie im Azure-Portal auf der Registerkarte **Abfrage** die Option **Test** aus. Verwenden Sie die heruntergeladenen Beispieldaten, um die [Abfrage zu testen](stream-analytics-test-query.md). Untersuchen Sie alle Fehler, und versuchen Sie, diese zu korrigieren.   
     - Sie können Ihre [Abfrage auch lokal testen](stream-analytics-live-data-local-testing.md), indem Sie die Azure Stream Analytics-Tools für Visual Studio oder [Visual Studio Code](visual-studio-code-local-run-live-input.md) verwenden. 
 
-2.  [Debuggen Sie Abfragen nach und nach lokal anhand des Auftragsdiagramms](debug-locally-using-job-diagram.md) in Azure Stream Analytics-Tools für Visual Studio. Das Auftragsdiagramm zeigt, wie Daten aus Eingabequellen (Event Hub, IOT Hub usw.) über mehrere Abfrageschritte und schließlich zu Ausgabesenken fließen. Jeder Abfrageschritt wird einem temporären Resultset zugeordnet, das im Skript mithilfe der WITH-Anweisung definiert ist. Sie können die Daten und Metriken in jedem Zwischenresultset anzeigen, um die Ursache des Problems zu ermitteln.
+2.  [Debuggen Sie Abfragen nach und nach lokal anhand des Auftragsdiagramms](debug-locally-using-job-diagram-vs-code.md) in Azure Stream Analytics-Tools für Visual Studio Code. Das Auftragsdiagramm zeigt, wie Daten aus Eingabequellen (Event Hub, IOT Hub usw.) über mehrere Abfrageschritte und schließlich zu Ausgabesenken fließen. Jeder Abfrageschritt wird einem temporären Resultset zugeordnet, das im Skript mithilfe der WITH-Anweisung definiert ist. Sie können die Daten und Metriken in jedem Zwischenresultset anzeigen, um die Ursache des Problems zu ermitteln.
 
-    ![Vorschau des Auftragsdiagrammergebnisses](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![Vorschau des Auftragsdiagrammergebnisses](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  Stellen Sie bei Verwendung von [**Zeitstempel nach**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) sicher, dass die Zeitstempel der Ereignisse aktueller sind als die [Startzeit des Auftrags](stream-analytics-out-of-order-and-late-events.md).
 

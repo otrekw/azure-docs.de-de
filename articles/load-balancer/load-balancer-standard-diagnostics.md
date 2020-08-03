@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090449"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -46,6 +46,9 @@ Die verschiedenen Standard Load Balancer-Konfigurationen bieten die folgenden Me
 | Byteleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten. Sie bemerken möglicherweise, dass die Bytes nicht gleichmäßig auf die Back-End-Instanzen verteilt sind. Dies ist zu erwarten, da der Azure Load Balancer-Algorithmus auf Flows basiert. | Average |
 | Paketleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Pakete.| Average |
 
+  >[!NOTE]
+  >Bei der Verwendung der Verteilung von Datenverkehr von einem internen Lastenausgleichsmodul über eine NVA oder Firewall, sind die Metriken „Synchronisierungspaket“, „Bytezähler“ und „Paketzähler“ nicht verfügbar und werden als Nullwerte angezeigt. 
+  
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Anzeigen Ihrer Load Balancer-Metriken im Azure-Portal
 
 Das Azure-Portal macht die Load Balancer Metriken über die Seite „Metriken“ verfügbar, die sowohl auf der Seite „Load Balancer-Ressource“ für eine bestimmte Ressource als auch auf der Seite „Azure Monitor“ verfügbar ist. 

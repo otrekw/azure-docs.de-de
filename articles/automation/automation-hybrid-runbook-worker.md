@@ -3,14 +3,14 @@ title: 'Azure Automation: Übersicht über Hybrid Runbook Worker'
 description: Dieser Artikel enthält eine Übersicht über Hybrid Runbook Worker, mit denen Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder beim Cloudanbieter ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186247"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024825"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Übersicht über Hybrid Runbook Worker
 
@@ -77,6 +77,17 @@ Azure Automation unterstützt Diensttags für virtuelle Azure-Netzwerke, die mit
 >[!NOTE]
 >Das Diensttag **GuestAndHybridManagement** verfügt derzeit nicht über Unterstützung für die Ausführung von Runbookaufträgen in einer Azure-Sandbox, sondern nur direkt auf einem Hybrid Runbook Worker.
 
+## <a name="support-for-impact-level-5-il5"></a>Unterstützungs für Auswirkungsstufe 5 (Impact Level, IL5)
+
+Azure Automation Hybrid Runbook Worker kann in Azure Government verwendet werden, um Auswirkungsstufe 5-Workloads in einer der zwei folgenden Konfigurationen zu unterstützen:
+
+* [Isolierter virtueller Computer](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Bei der Bereitstellung wird der gesamte physische Host für diesen virtuellen Computer verwendet, wodurch die Isolationsstufe bereitgestellt wird, die für die Unterstützung von IL5-Workloads erforderlich ist.
+
+* [Azure Dedicated Host](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts), der physische Server bereitstellt, die einen oder mehrere virtuelle Computer hosten können und ausschließlich für ein Azure-Abonnement reserviert sind.
+
+>[!NOTE]
+>Die Computeisolation durch die Hybrid Runbook Worker-Rolle ist für Azure Commercial- und US Government-Clouds verfügbar. 
+
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Updateverwaltung auf Hybrid Runbook Workern
 
 Wenn die Azure Automation-[Updateverwaltung](automation-update-management.md) aktiviert ist, werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Computer automatisch als Hybrid Runbook Worker konfiguriert. Jeder Worker kann Runbooks unterstützen, die für die Updateverwaltung bestimmt sind.
@@ -85,13 +96,7 @@ Ein auf diese Weise konfigurierter Computer wird aber nicht bei Hybrid Runbook W
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Updateverwaltung-Adressen für Hybrid Runbook Worker
 
-Neben den Standardadressen und -ports, die der Hybrid Runbook Worker erfordert, sind die Adressen in der folgenden Tabelle für die Updateverwaltung erforderlich. Für die Kommunikation mit diesen Adressen wird Port 443 verwendet.
-
-|Azure – Öffentlich  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`     | `*.ods.opinsights.azure.us`         |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+Zusätzlich zu den Standardadressen und -ports, die für Hybrid Runbook Worker erforderlich sind, verfügt Updateverwaltung über zusätzliche Anforderungen an die Netzwerkkonfiguration, die im Abschnitt [Netzwerkplanung](automation-update-management.md#ports) beschrieben werden.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Azure Automation State Configuration auf einem Hybrid Runbook Worker
 
@@ -114,4 +119,5 @@ Da sie auf Nicht-Azure-Ressourcen zugreifen, können Runbooks, die auf einem Hyb
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Um zu erfahren, wie Sie Ihre Runbooks für die Automatisierung von Prozessen in Ihrem lokalen Rechenzentrum oder in einer anderen Cloudumgebung konfigurieren, lesen Sie sich [Ausführen von Runbooks auf einem Hybrid Runbook Worker](automation-hrw-run-runbooks.md) durch.
+
 * Informationen zum Behandeln von Problemen mit Ihren Hybrid Runbook Workern finden Sie unter [Problembehandlung von Hybrid Runbook Workern](troubleshoot/hybrid-runbook-worker.md#general).

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a9373893b1381e9a2f54bb83717e6001efac295
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517840"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386332"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -74,7 +74,7 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
 - **v1**
 
-   Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern. Beispielsweise können Sie eine benutzerdefinierte Route im Application Gateway-Subnetz einrichten, um auf eine Firewallappliance für die Paketüberprüfung zu verweisen. Sie müssen jedoch sicherstellen, dass das Paket nach der Überprüfung das vorgesehene Ziel erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch Azure ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
+   Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern. Beispielsweise können Sie eine benutzerdefinierte Route im Application Gateway-Subnetz einrichten, um auf eine Firewallappliance für die Paketüberprüfung zu verweisen. Sie müssen jedoch sicherstellen, dass das Paket nach der Überprüfung das vorgesehene Ziel erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch Azure ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden. Alle Szenarien, in denen 0.0.0.0/0 lokal umgeleitet werden muss (erzwungenes Tunneln), werden für v1 nicht unterstützt.
 
 - **v2**
 
@@ -286,7 +286,7 @@ Mithilfe von Neuschreibungsregeln können Sie HTTP(S)-Anforderungs- und -Antwort
 Die Header und URL-Parameter können auf statische Werte oder auf andere Header und Servervariablen festgelegt werden. Dies ist hilfreich bei wichtigen Anwendungsfällen, z.B. beim Extrahieren von Client-IP-Adressen, beim Entfernen vertraulicher Informationen zum Back-End, beim Verbessern der Sicherheit usw.
 Weitere Informationen finden Sie unter
 
- - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](rewrite-http-headers-url.md)
+ - [Übersicht: Neuschreibung von HTTP-Headern und der URL](rewrite-http-headers-url.md)
  - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](rewrite-http-headers-portal.md)
  - [Konfigurieren von URL-Rewrite](rewrite-url-portal.md)
 

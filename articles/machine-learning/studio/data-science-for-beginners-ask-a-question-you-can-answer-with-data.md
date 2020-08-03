@@ -1,6 +1,5 @@
 ---
-title: Stellen von Fragen, die durch Daten beantwortet werden können
-titleSuffix: ML Studio (classic) - Azure
+title: Stellen von Fragen, die durch Daten beantwortet werden können – ML Studio (Classic) – Azure
 description: Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine gezielte Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930249"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318792"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stellen einer Frage, die Sie mit Daten beantworten können
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Reihe „Data Science für Einsteiger“

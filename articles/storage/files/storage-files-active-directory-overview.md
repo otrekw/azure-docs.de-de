@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263347"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372319"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,7 +46,7 @@ Sie sollten die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Serv
 
 -   **Rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)**
 
-    Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Zugriff auf Ressourcen verwalten, indem Sie Benutzern die Mindestberechtigungen zum Ausführen ihrer Aufgaben erteilen. Weitere Informationen zu rollenbasierter Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure?](../../role-based-access-control/overview.md).
+    Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Zugriff auf Ressourcen verwalten, indem Sie Benutzern die Mindestberechtigungen zum Ausführen ihrer Aufgaben erteilen. Weitere Informationen zu rollenbasierter Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC) in Azure?](../../role-based-access-control/overview.md).
 
 ## <a name="common-use-cases"></a>Gängige Anwendungsfälle
 
@@ -123,7 +123,7 @@ Sie können die identitätsbasierte Authentifizierung mit Azure AD DS oder loka
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Konfigurieren von Freigabeberechtigungen für Azure Files
 
-Sobald die Authentifizierung mit Azure AD DS oder lokalen AD DS aktiviert ist, können Sie integrierte RBAC-Rollen für Azure AD-Identitäten verwenden oder benutzerdefinierte Rollen konfigurieren und allen Dateifreigaben in Ihren Speicherkonten Zugriffsrechte zuweisen. Mit der zugewiesenen Berechtigung kann die gewährte Identität ausschließlich auf die Freigabe zugreifen, aber nicht auf andere Elemente – auch nicht auf das Stammverzeichnis. Sie müssen immer noch separat Berechtigungen auf Verzeichnis- oder Dateiebene für Azure-Dateifreigaben konfigurieren.
+Sobald die Authentifizierung mit Azure AD DS oder lokalen AD DS aktiviert ist, können Sie integrierte Azure-Rollen für Azure AD-Identitäten verwenden oder benutzerdefinierte Rollen konfigurieren und allen Dateifreigaben in Ihren Speicherkonten Zugriffsrechte zuweisen. Mit der zugewiesenen Berechtigung kann die gewährte Identität ausschließlich auf die Freigabe zugreifen, aber nicht auf andere Elemente – auch nicht auf das Stammverzeichnis. Sie müssen immer noch separat Berechtigungen auf Verzeichnis- oder Dateiebene für Azure-Dateifreigaben konfigurieren.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Konfigurieren von Berechtigungen auf Verzeichnis- oder Dateiebene für Azure Files
 

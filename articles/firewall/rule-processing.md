@@ -7,14 +7,14 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087542"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Logik für die Azure Firewall-Regelverarbeitung
+# <a name="configure-azure-firewall-rules"></a>Konfigurieren von Azure Firewall-Regeln
 Sie können NAT-Regeln, Netzwerkregeln und Anwendungsregeln in Azure Firewall konfigurieren. Regelsammlungen werden entsprechend dem Regeltyp in Prioritätsreihenfolge verarbeitet – niedrigere Zahlen bis höhere Zahlen von 100 bis 65.000. Der Name einer Regelsammlung darf nur Buchstaben, Ziffern, Unterstriche, Punkte oder Bindestriche enthalten. Er muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. Die maximale Namenslänge ist 80 Zeichen.
 
 Es empfiehlt sich, die Prioritätsnummern der Regelsammlung zunächst in Inkrementen von 100 (100, 200, 300 usw.) aufzuteilen, damit Sie bei Bedarf Platz zum Hinzufügen weiterer Regelsammlungen haben.

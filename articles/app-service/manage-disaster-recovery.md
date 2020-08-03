@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure App Service Sie bei der Aufrechterhaltung d
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073745"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Verschieben von App Service-Apps in eine andere Region
 
@@ -43,7 +43,7 @@ Bestimmte Ressourcen (z.B. importierte Zertifikate oder Hybridverbindungen) umfa
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Verwaltungsseite der betroffenen App. In einer ausgefallenen Azure-Region wird für die betroffene App ein Warnungstext angezeigt. Klicken Sie auf den Warnungstext.
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![Screenshot der Seite der betroffenen App. Eine Warnmeldung wird angezeigt, die die Situation beschreibt und einen Link zum Wiederherstellen der App enthält.](media/manage-disaster-recovery/restore-start.png)
 
 1. Konfigurieren Sie auf der Seite **Sicherung wiederherstellen** den Wiederherstellungsvorgang gemäß der folgenden Tabelle. Wenn Sie fertig sind, klicken Sie auf **OK**.
 
@@ -53,7 +53,7 @@ Bestimmte Ressourcen (z.B. importierte Zertifikate oder Hybridverbindungen) umfa
    | **Wiederherstellungsziel** | **Vorhandene App** | Klicken Sie unten auf den Hinweis, der besagt **Klicken Sie hier, um die Wiederherstellungsziel-App zu ändern**, und wählen Sie die Ziel-App aus. In einem Notfallszenario können Sie die Momentaufnahme nur in einer App in einer anderen Azure-Region wiederherstellen. |
    | **Standortkonfiguration wiederherstellen** | **Ja** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    ![Screenshot der Seite „Sicherung wiederherstellen“. Eine spezifische Momentaufnahme, die Optionen, die in der vorangehenden Tabelle aufgeführt sind, und die Schaltfläche „OK“ sind hervorgehoben.](media/manage-disaster-recovery/restore-configure.png)
 
 3. Konfigurieren Sie [alles andere](#prepare) in der Ziel-App mit denselben Einstellungen wie in der betroffenen App, und überprüfen Sie Ihre Konfiguration.
 
@@ -65,7 +65,7 @@ Wenn Sie nur die Dateien aus der betroffenen App wiederherstellen möchten, ohne
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Verwaltungsseite der betroffenen App, und klicken Sie auf **Veröffentlichungsprofil abrufen**.
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![Screenshot der Seite der betroffenen App. Eine Warnbenachrichtigung wird angezeigt, ist aber nicht hervorgehoben. Stattdessen ist das Element „Veröffentlichungsprofil abrufen“ hervorgehoben.](media/manage-disaster-recovery/get-publish-profile.png)
 
 1. Öffnen Sie die heruntergeladene Datei, und suchen Sie das Veröffentlichungsprofil, das `ReadOnly - FTP` im Namen enthält. Dies ist das Notfallwiederherstellungsprofil. Beispiel:
 
@@ -84,7 +84,7 @@ Wenn Sie nur die Dateien aus der betroffenen App wiederherstellen möchten, ohne
 
 1. Nachdem die Verbindung hergestellt ist, laden Sie den gesamten Ordner */site/wwwroot* herunter. Der folgende Screenshot zeigt, wie Sie den Download in [FileZilla](https://filezilla-project.org/) durchführen.
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![Screenshot einer FileZilla-Dateihierarchie. Der Ordner „wwwroot“ ist hervorgehoben, und sein Kontextmenü wird angezeigt. In diesem Menü ist „Herunterladen“ hervorgehoben.](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Wiederherstellen einer App in Azure auf der Grundlage einer Momentaufnahme](app-service-web-restore-snapshots.md)

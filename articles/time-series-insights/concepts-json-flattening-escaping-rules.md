@@ -1,6 +1,6 @@
 ---
-title: JSON-Vereinfachungs- und -Escaperegeln — Azure Time Series Insights | Microsoft-Dokumentation
-description: Erfahren Sie mehr über JSON-Vereinfachung, Verwenden von Escapezeichen und Arraybehandlung in Azure Time Series Insights.
+title: JSON-Vereinfachungs- und -Escaperegeln — Azure Time Series Insights Gen2 | Microsoft-Dokumentation
+description: Erfahren Sie mehr über JSON-Vereinfachung, Verwenden von Escapezeichen und Arraybehandlung in Azure Time Series Insights Gen2.
 author: lyrana
 ms.author: lyhughes
 manager: deepakpalled
@@ -8,19 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.custom: seodec18
-ms.openlocfilehash: 45eeebcc092513a0344acaff52c31c2cebfb377c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049370"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075678"
 ---
 # <a name="ingestion-rules"></a>Datenerfassungsregeln
 ### <a name="json-flattening-escaping-and-array-handling"></a>JSON-Vereinfachung, Verwenden von Escapezeichen und Arraybehandlung
 
-Ihre Azure Time Series Insights-Umgebung erstellt dynamisch die Spalten Ihrer warmen (Warm Storage) und kalten Speicher (Cold Storage), wobei ein bestimmter Satz von Namenskonventionen berücksichtigt wird. Wenn ein Ereignis erfasst wird, wird ein Satz von Regeln auf die Namen der JSON-Nutzlast und JSON-Eigenschaften angewendet. Hierzu gehören das Verwenden von Escapezeichen für bestimmte Sonderzeichen und das Vereinfachen von geschachtelten JSON-Objekten. Sie sollten diese Regeln kennen, damit Sie verstehen, wie sich die Form Ihres JSON-Codes darauf auswirkt, wie Ihre Ereignisse gespeichert und abgefragt werden. Die vollständige Liste der Regeln finden Sie in der folgenden Tabelle. In den Beispielen A und B wird auch veranschaulicht, wie Sie mehrere Zeitreihen in einem Array effizient stapeln können.
+Ihre Azure Time Series Insights Gen2-Umgebung erstellt dynamisch die Spalten Ihrer warmen (Warm Storage) und kalten Speicher (Cold Storage), wobei ein bestimmter Satz von Namenskonventionen berücksichtigt wird. Wenn ein Ereignis erfasst wird, wird ein Satz von Regeln auf die Namen der JSON-Nutzlast und JSON-Eigenschaften angewendet. Hierzu gehören das Verwenden von Escapezeichen für bestimmte Sonderzeichen und das Vereinfachen von geschachtelten JSON-Objekten. Sie sollten diese Regeln kennen, damit Sie verstehen, wie sich die Form Ihres JSON-Codes darauf auswirkt, wie Ihre Ereignisse gespeichert und abgefragt werden. Die vollständige Liste der Regeln finden Sie in der folgenden Tabelle. In den Beispielen A und B wird auch veranschaulicht, wie Sie mehrere Zeitreihen in einem Array effizient stapeln können.
 
 > [!IMPORTANT]
 >
@@ -28,8 +27,8 @@ Ihre Azure Time Series Insights-Umgebung erstellt dynamisch die Spalten Ihrer wa
 
 | Regel | JSON-Beispiel |Spaltenname im Speicher |
 |---|---|---|
-| Der TSI-Datentyp wird an das Ende Ihres Spaltennamens als „_\<dataType\>“ angehängt. | ```"type": "Accumulated Heat"``` | type_string |
-| Die [Zeitstempeleigenschaft](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) für eine Ereignisquelle wird in TSI als „timestamp“ im Speicher gespeichert, und der Wert wird in UTC gespeichert. Sie können Ihre Zeitstempeleigenschaft für Ereignisquellen anpassen, um die Anforderungen Ihrer Lösung zu erfüllen, aber der Spaltenname lautet in Warm und Cold Storage „timestamp“. Andere JSON-Eigenschaften mit Typ „datetime“, die nicht den Zeitstempel einer Ereignisquelle angeben, werden mit „_datetime“ im Spaltennamen gespeichert, wie dies in der obigen Regel beschrieben ist.  | ```"ts": "2020-03-19 14:40:38.318"``` | timestamp |
+| Der Azure Time Series Insights Gen2-Datentyp wird an das Ende Ihres Spaltennamens als „_\<dataType\>“ angehängt. | ```"type": "Accumulated Heat"``` | type_string |
+| Die [Zeitstempeleigenschaft](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) für eine Ereignisquelle wird in Azure Time Series Insights Gen2 als „timestamp“ im Speicher gespeichert, und der Wert wird in UTC gespeichert. Sie können Ihre Zeitstempeleigenschaft für Ereignisquellen anpassen, um die Anforderungen Ihrer Lösung zu erfüllen, aber der Spaltenname lautet in Warm und Cold Storage „timestamp“. Andere JSON-Eigenschaften mit Typ „datetime“, die nicht den Zeitstempel einer Ereignisquelle angeben, werden mit „_datetime“ im Spaltennamen gespeichert, wie dies in der obigen Regel beschrieben ist.  | ```"ts": "2020-03-19 14:40:38.318"``` | timestamp |
 | Für JSON-Eigenschaftsnamen, die die Sonderzeichen „.“, „[“, „\“ oder „'“ enthalten, werden „['“ und „']“ als Escapezeichen verwendet.  |  ```"id.wasp": "6A3090FD337DE6B"``` | ['id.wasp']_string |
 | Zwischen „['“ und „']“ werden bei einfachen Anführungszeichen und umgekehrten Schrägstrichen ebenfalls Escapezeichen verwendet. Ein einfaches Anführungszeichen wird als „\’“ und ein umgekehrter Schrägstrich wird als „\\\“ geschrieben. | ```"Foo's Law Value": "17.139999389648"``` | ['Foo\'s Law Value']_double |
 | Geschachtelte JSON-Objekte werden mit einem Punkt als Trennzeichen vereinfacht. Es wird Schachteln bis zu 10 Ebenen unterstützt. |  ```"series": {"value" : 316 }``` | series.value_long |
@@ -186,4 +185,4 @@ Für diese Konfiguration und Nutzlast werden drei Spalten und ein Ereignis erzeu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ermitteln der [Durchsatzbeschränkungen](concepts-streaming-throughput-limitations.md) Ihrer Umgebung
+* Ermitteln der [Durchsatzbeschränkungen](./concepts-streaming-ingress-throughput-limits.md) Ihrer Umgebung

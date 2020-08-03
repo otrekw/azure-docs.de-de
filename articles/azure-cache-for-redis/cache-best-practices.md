@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ed0009bce18e2b0970b425c31d2f38cef387187
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457302"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008318"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bewährte Methoden für Azure Cache for Redis 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer Azure Cache for Redis-Instanz.
@@ -83,10 +83,10 @@ Wenn Sie die Funktionsweise Ihres Codes unter Fehlerbedingungen testen möchten,
  
 ### <a name="redis-benchmark-examples"></a>Redis-Benchmark-Beispiele
 **Vortestsetup**: Bereiten Sie die Cache-Instanz mit Daten vor, die für die unten aufgeführten Befehle zum Testen von Latenz und Durchsatz erforderlich sind.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
 
 **So testen Sie die Latenz**: Testen von GET-Anforderungen mithilfe einer 1-K-Nutzlast.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
 
 **So testen Sie den Durchsatz**: GET-Anforderungen in Pipeline mit einer 1-K-Nutzlast.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50

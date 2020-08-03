@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/22/2020
-ms.openlocfilehash: b53a2c0cb3c709a6f22b57b45bef8b2894594a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4ac95fa81fdbee237cacaa1541e333bb70c370fa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602453"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323297"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -30,7 +30,7 @@ Verwenden Sie für das Modelltraining in Produktionsqualität einen [Azure Machi
 
 Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstation, die für Ihre Machine Learning-Entwicklungsumgebung optimiert ist. Ihnen bieten sich folgende Vorteile:
 
-|Hauptvorteile||
+|Hauptvorteile|BESCHREIBUNG|
 |----|----|
 |Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen. Sie können die VS Code Remote-Entwicklung auch mit [SSH](how-to-set-up-vs-code-remote.md) einrichten. |
 |Verwaltet und sicher|Verringern Sie Ihren Sicherheitsaufwand, und gewinnen Sie Compliance mit Anforderungen der Unternehmenssicherheit. Compute-Instanzen bieten verlässliche Verwaltungsrichtlinien und sichere Netzwerkkonfigurationen wie die folgenden:<br/><br/>- Automatisierte Bereitstellung über Resource Manager-Vorlagen oder das Azure Machine Learning SDK<br/>- [Rollenbasierte Zugriffssteuerung (RBAC)](/azure/role-based-access-control/overview)<br/>- [Unterstützung virtueller Netzwerke](how-to-enable-virtual-network.md#compute-instance)<br/>- SSH-Richtlinie zum Aktivieren/Deaktivieren des SSH-Zugriffs<br/>TLS 1.2 aktiviert |
@@ -39,8 +39,11 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Tools und Umgebungen
 
-Eine Azure Machine Learning-Compute-Instanz ermöglicht Ihnen das Erstellen, Trainieren und Bereitstellen von Modellen in einer vollständig integrierten Notebookumgebung in Ihrem Arbeitsbereich.
+> [!IMPORTANT]
+> Die unten markierten Tools (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+Eine Azure Machine Learning-Compute-Instanz ermöglicht Ihnen das Erstellen, Trainieren und Bereitstellen von Modellen in einer vollständig integrierten Notebookumgebung in Ihrem Arbeitsbereich.
 
 Diese Tools und Umgebungen sind in der Compute-Instanz installiert: 
 
@@ -151,7 +154,7 @@ Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue
 Sie können auch eine Instanz
 * direkt in der [integrierten Notebookumgebung](tutorial-1st-experiment-sdk-setup.md#azure) erstellen.
 * Im Azure-Portal
-* Über eine Azure Resource Manager-Vorlage
+* Über eine Azure Resource Manager-Vorlage. Eine Beispielvorlage finden Sie unter [Erstellen einer Azure Machine Learning Compute-Instanzvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).
 * Mit dem [Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
 * Über die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md#computeinstance)
 

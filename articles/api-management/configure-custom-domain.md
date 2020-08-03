@@ -12,14 +12,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024859"
 ---
-# <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
+# <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihre Azure API Management-Instanz
 
 Wenn Sie eine Azure API Management-Dienstinstanz erstellen, weist Azure dieser einer Unterdomäne von `azure-api.net` zu (z. B. `apim-service-name.azure-api.net`). Sie können Ihre API Management-Endpunkte aber unter Ihrem eigenen benutzerdefinierten Domänennamen verfügbar machen (z. B. **contoso.com**). In diesem Tutorial erfahren Sie, wie Sie Endpunkten, die durch eine API Management-Instanz verfügbar gemacht werden, einen vorhandenen benutzerdefinierten DNS-Namen zuordnen.
 

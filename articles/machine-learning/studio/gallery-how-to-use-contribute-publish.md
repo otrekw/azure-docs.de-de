@@ -1,6 +1,5 @@
 ---
-title: Azure KI-Katalog
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Azure KI-Katalog – Azure'
 description: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure KI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbece33d443139c9f1b1384c1a9e0b3c4da0d08
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709027"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318554"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
+
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -29,7 +31,7 @@ Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lös
 Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Dazu gehören:
 
 * **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio (klassisch) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
-* **Tutorials**: In mehreren Tutorials werden Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben.
+* **Tutorials**: Es sind mehrere Tutorials verfügbar, in denen Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben werden.
 * **Sammlungen**: Mit einer Sammlung können Sie Experimente, APIs und andere Ressourcen gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen.
 * **Benutzerdefinierte Module**: Sie können benutzerdefinierte Module in Ihren (klassischen) Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
 * **Jupyter Notebooks**: Jupyter Notebooks umfassen Code, Datenvisualisierungen und Dokumentationen in einem einzelnen, interaktiven Zeichenbereich. Über Notebooks im Katalog werden Tutorials und ausführliche Erklärungen von erweiterten Machine Learning-Verfahren und -Lösungen bereitgestellt.

@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156392"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012211"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning – zusammengestellte Umgebungen
 
-In diesem Artikel werden die zusammengestellten Umgebungen in Azure Machine Learning sowie die darin vorinstallierten Pakete und Kanäle aufgelistet.
+In diesem Artikel werden die zusammengestellten Umgebungen in Azure Machine Learning sowie die darin vorinstallierten Pakete und Kanäle aufgelistet. Zusammengestellte Umgebungen werden von Azure Machine Learning bereitgestellt und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Sie werden durch zwischengespeicherte Docker-Images gesichert, wodurch die Kosten für die Vorbereitung der Ausführung reduziert und kürzere Bereitstellungszeiten ermöglicht werden. Verwenden Sie diese Umgebungen, um schnell mit verschiedenen Machine Learning-Frameworks zu beginnen.
 
 > [!NOTE]
 > Diese Liste wurde im Juni 2020 aktualisiert. Verwenden Sie das Python SDK, um die aktuelle Liste zu erhalten. Weitere Informationen finden Sie im [Artikel zu Umgebungen](./how-to-use-environments.md#use-a-curated-environment).

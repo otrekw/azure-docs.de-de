@@ -5,17 +5,18 @@ description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Modelle mithilfe 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ad6ca72f0861324a10e93a1eadbdc11c6104574
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087264"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320968"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,6 +27,11 @@ Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azu
 - Sie testen ein Modell in der Entwicklungsphase. 
 
 Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in den Regionen finden Sie im Artikel [Kontingente und Limits für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas).
+
+> [!IMPORTANT]
+> Es wird dringend empfohlen, vor der Bereitstellung im Webdienst lokal zu debuggen. Weitere Informationen finden Sie unter [Lokales Debuggen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally).
+>
+> Weitere Informationen finden Sie auch unter Azure Machine Learning – [Bereitstellung auf lokalem Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

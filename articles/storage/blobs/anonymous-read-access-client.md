@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f4263d372b82779fe68a6a15cc7db61a31359e14
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ac5fad935e5c37df3a8bd64189a59612eaf097aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209036"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091367"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>Anonymer Zugriff auf öffentliche Container und Blobs mit .NET
 
-Azure Storage unterstützt den anonymen, öffentlichen Lesezugriff auf Container und Blobs. Clients können anonym auf öffentliche Container und Blobs zugreifen, indem die Clientbibliotheken von Azure Storage verwendet werden sowie weitere Tools und Hilfsprogramme, die den Datenzugriff auf Azure Storage unterstützen.
+Azure Storage unterstützt den optionalen, öffentlichen Lesezugriff auf Container und Blobs. Clients können anonym auf öffentliche Container und Blobs zugreifen, indem die Clientbibliotheken von Azure Storage verwendet werden sowie weitere Tools und Hilfsprogramme, die den Datenzugriff auf Azure Storage unterstützen.
 
-Dieser Artikel zeigt, wie Sie auf einen öffentlichen Container oder ein Blob in .NET zugreifen. Weitere Informationen zum Konfigurieren des anonymen Lesezugriffs auf einen Container finden Sie unter . Weitere Informationen zum Verhindern sämtlichen anonymen Zugriffs auf ein Speicherkonto finden Sie unter .
+Dieser Artikel zeigt, wie Sie auf einen öffentlichen Container oder ein Blob in .NET zugreifen. Informationen zum Konfigurieren des anonymen Lesezugriffs auf einen Container finden Sie unter [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](anonymous-read-access-configure.md). Weitere Informationen zum Verhindern jeglichen anonymen Zugriffs auf ein Speicherkonto finden Sie unter [Verhindern von anonymem öffentlichem Lesezugriff auf Container und Blobs](anonymous-read-access-prevent.md).
 
 Ein Client, der auf Container und Blobs anonym zugreift, kann Konstruktoren verwenden, für die keine Anmeldeinformationen erforderlich sind. In den folgenden Beispielen werden verschiedene Möglichkeiten zum anonymen Verweisen auf Container und Blobs gezeigt.
 

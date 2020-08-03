@@ -3,12 +3,12 @@ title: Verwalten von signierten Images
 description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und signierte Images gepusht und gepullt werden. Das Inhaltsvertrauen ist ein Feature der Dienstebene Premium.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076849"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 
@@ -114,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 Die `<service principal ID>` kann das **appId**- oder **objectId**-Element des Dienstprinzipal oder eines seiner **ServicePrincipalNames**-Elemente sein. Weitere Informationen zum Arbeiten mit Dienstprinzipalen und Azure Container Registry finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
 
 > [!IMPORTANT]
-> Führen Sie nach Rollenänderungen `az acr login` aus, um das lokale Identitätstoken für die Azure CLI zu aktualisieren, damit die neuen Rollen wirksam werden können. Informationen zur Überprüfung von Rollen für eine Identität finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI](../role-based-access-control/role-assignments-cli.md) sowie unter [Problembehandlung von RBAC für Azure-Ressourcen](../role-based-access-control/troubleshooting.md).
+> Führen Sie nach Rollenänderungen `az acr login` aus, um das lokale Identitätstoken für die Azure CLI zu aktualisieren, damit die neuen Rollen wirksam werden können. Informationen zur Überprüfung von Rollen für eine Identität finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI](../role-based-access-control/role-assignments-cli.md) sowie unter [Problembehandlung von Azure RBAC](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Pushübertragung eines vertrauenswürdigen-Images
 

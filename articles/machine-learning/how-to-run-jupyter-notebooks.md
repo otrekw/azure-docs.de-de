@@ -8,14 +8,15 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601451"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386451"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -184,11 +185,20 @@ Mit diesen Aktionen werden der Notebook-Zustand und alle Variablen im Notebook z
 Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen ComputeiInstanz installiert sind.  So fügen Sie einen Kernel zur Computeinstanz hinzu
 
 1. Wählen Sie auf der Notebook-Symbolleiste [**Terminal öffnen**](#terminal) aus.
-1. Verwenden Sie das Terminalfenster, um eine neue Umgebung zu erstellen.
+1. Verwenden Sie das Terminalfenster, um eine neue Umgebung zu erstellen.  Beispielsweise erstellt der folgende Code `newenv`:
+    ```shell
+    conda create --name newenv
+    ```
 1. Aktivieren Sie die Umgebung.  Beispielsweise nach dem Erstellen von `newenv`:
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. Installieren Sie das pip- und ipykernel-Paket in der neuen Umgebung, und erstellen Sie einen Kernel für diese conda-Umgebung.
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

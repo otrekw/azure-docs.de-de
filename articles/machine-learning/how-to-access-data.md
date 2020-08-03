@@ -5,18 +5,18 @@ description: Hier erfahren Sie, wie Sie mithilfe von Datenspeichern während des
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/08/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: how-to, seodec18, tracking-python
+ms.openlocfilehash: 45fb9ef25bdfa43db9c167d58011fc6196020b65
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146722"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321631"
 ---
 # <a name="connect-to-azure-storage-services"></a>Herstellen einer Verbindung mit Azure-Speicherdiensten
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,8 +92,9 @@ Nach dem Erstellen des Datenspeichers wird diese Überprüfung nur noch für Met
 ### <a name="python-sdk"></a>Python SDK
 
 Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format `register_azure_*` auf.
+
 > [!IMPORTANT]
-> Wenn Sie einen Datenspeicher für Speicherkonten in einem virtuellen Netzwerk erstellen möchten, lesen Sie den Abschnitt „Zugreifen auf Daten in einem virtuellen Netzwerk“.
+> Wenn Sie einen Datenspeicher für Speicherkonten in einem virtuellen Netzwerk erstellen möchten, lesen Sie den Abschnitt [Zugreifen auf Daten in einem virtuellen Netzwerk](#access-data-in-a-virtual-network).
 
 Die Informationen, die Sie zum Auffüllen der `register_azure_*()`-Methode benötigen, finden Sie im [Azure-Portal](https://portal.azure.com).
 
@@ -185,7 +186,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Erstellen Sie einen neuen Datenspeicher in wenigen Schritten in Azure Machine Learning-Studio:
 
 > [!IMPORTANT]
-> Wenn sich Ihr Datenspeicherkonto in einem virtuellen Netzwerk befindet, sind zusätzliche Konfigurationsschritte erforderlich, um sicherzustellen, dass von Studio auf Ihre Daten zugegriffen werden kann. Stellen Sie wie unter [Machine Learning Studio] (how-to-enable-virtual-network.md#machine-learning-studio) beschrieben sicher, dass die erforderlichen Konfigurationsschritte ausgeführt wurden. 
+> Wenn sich Ihr Datenspeicherkonto in einem virtuellen Netzwerk befindet, sind zusätzliche Konfigurationsschritte erforderlich, um sicherzustellen, dass von Studio auf Ihre Daten zugegriffen werden kann. Stellen Sie wie unter [Netzwerkisolation und Datenschutz](how-to-enable-virtual-network.md#machine-learning-studio) beschrieben sicher, dass die erforderlichen Konfigurationsschritte ausgeführt wurden. 
 
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
 1. Wählen Sie im linken Bereich unter **Verwalten** die Option **Datenspeicher** aus.

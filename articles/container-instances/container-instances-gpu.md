@@ -2,13 +2,13 @@
 title: Bereitstellen GPU-fähiger Containerinstanzen
 description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung rechenintensiver Container-Apps unter Verwendung von GPU-Ressourcen bereitstellen.
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259584"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387087"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -33,9 +33,6 @@ Die Unterstützung für weitere Regionen wird im Lauf der Zeit hinzugefügt.
 
 ## <a name="about-gpu-resources"></a>Informationen zu GPU-Ressourcen
 
-> [!IMPORTANT]
-> GPU-Ressourcen sind nur auf Anforderung verfügbar. Um Zugriff auf GPU-Ressourcen anzufordern, senden Sie eine [Azure-Supportanfrage][azure-support].
-
 ### <a name="count-and-sku"></a>Anzahl und SKU
 
 Geben Sie zum Verwenden von GPUs in einer Containerinstanz eine *GPU-Ressource* mit den folgenden Informationen an:
@@ -53,6 +50,9 @@ Geben Sie zum Verwenden von GPUs in einer Containerinstanz eine *GPU-Ressource* 
 
 Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete CPU und die Arbeitsspeicherressourcen bis zu den in der vorstehenden Tabelle gezeigten maximalen Werten fest. Diese Werte sind derzeit höher als die in Containergruppen ohne GPU-Ressourcen verfügbaren CPU- und Arbeitsspeicherressourcen.  
 
+> [!IMPORTANT]
+> Die standardmäßigen [Abonnementlimits](container-instances-quotas.md) (Kontingente) für GPU-Ressourcen unterscheiden sich zwischen SKUs. Die standardmäßigen CPU-Limits für die P100- und V100-SKUs sind anfänglich auf 0 festgelegt. Um eine Erhöhung in einer verfügbaren Region anzufordern, senden Sie eine [Azure-Supportanfrage][azure-support].
+
 ### <a name="things-to-know"></a>Wichtige Hinweise
 
 * **Bereitstellungszeit**: Die Erstellung einer Containergruppe mit GPU-Ressourcen dauert **8 bis 10 Minuten**. Das wird durch den zusätzlichen Zeitaufwand für die Bereitstellung und Konfiguration einer GPU-VM in Azure verursacht. 
@@ -63,7 +63,7 @@ Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete
 
 * **CUDA-Treiber**: Containerinstanzen mit GPU-Ressourcen werden vorab mit NVIDIA-CUDA-Treibern und Containerlaufzeiten bereitgestellt, damit Sie die für CUDA-Workloads entwickelten Containerimages verwenden können.
 
-  Wir unterstützen CUDA 9.0 in dieser Phase. Beispielsweise können Sie die folgenden Basisimages für Ihre Docker-Datei verwenden:
+  Wir unterstützen in dieser Phase nur CUDA 9.0. Beispielsweise können Sie die folgenden Basisimages für Ihre Docker-Datei verwenden:
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
