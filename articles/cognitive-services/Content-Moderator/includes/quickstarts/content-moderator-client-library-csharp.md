@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 3245b4d0ce164acd8fcd367597dcbddc9436c782
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: aa2663706d052619dd1f40c0154222b0dac8c790
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965896"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298843"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Content Moderator-Clientbibliothek für .NET. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Content Moderator gehört zu Cognitive Services und überprüft Text-, Bild- und Videoinhalte auf potenziell anstößiges, riskantes oder anderweitig unerwünschtes Material. Gefundenes Material dieser Art wird mithilfe von Flags entsprechend gekennzeichnet. Mit Flags versehene Inhalte können dann von Ihrer App angemessen behandelt werden, um Vorgaben zu erfüllen oder für Benutzer die vorgesehene Umgebung bereitzustellen.
 
@@ -29,7 +29,7 @@ Führen Sie mit der Content Moderator-Clientbibliothek für .NET die folgenden A
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
 * Aktuelle Version von [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
 ## <a name="setting-up"></a>Einrichten
@@ -38,10 +38,9 @@ Führen Sie mit der Content Moderator-Clientbibliothek für .NET die folgenden A
 
 Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für Content Moderator. Sie können außerdem:
 
-* Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
 * Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
 
-Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und eine Endpunkt-URL mit den Namen `CONTENT_MODERATOR_SUBSCRIPTION_KEY` bzw. `CONTENT_MODERATOR_ENDPOINT`.
+Nachdem Sie einen Schlüssel für Ihre Ressource erhalten haben, [erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und eine Endpunkt-URL mit den Namen `CONTENT_MODERATOR_SUBSCRIPTION_KEY` bzw. `CONTENT_MODERATOR_ENDPOINT`.
 
 ### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 

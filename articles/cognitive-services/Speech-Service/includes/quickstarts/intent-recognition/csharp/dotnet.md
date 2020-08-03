@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 54b5e3f0ed2fd10fa04305fdefbec725143f62c5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 142a78dbb994a28d267294ce3b3d86e32f52bb45
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421831"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298706"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,6 +70,8 @@ Sie müssen der Absichtserkennung ein `LanguageUnderstandingModel` zuordnen und 
 > Informationen dazu, wie Sie diesen Wert ermitteln, finden Sie unter [Erstellen einer LUIS-App für die Absichtserkennung](#create-a-luis-app-for-intent-recognition).
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
+
+In diesem Beispiel wird die Funktion `AddIntent()` verwendet, um Absichten individuell hinzuzufügen. Wenn Sie alle Absichten aus einem Modell hinzufügen möchten, verwenden Sie `AddAllIntents(model)`, und übergeben Sie das Modell. 
 
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 

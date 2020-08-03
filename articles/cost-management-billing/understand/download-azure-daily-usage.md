@@ -7,13 +7,13 @@ ms.author: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 3a7e1e8670911d361b3c59aacc0973eac035fb70
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/27/2020
+ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065717"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322028"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
 
@@ -21,7 +21,7 @@ Sie können eine tägliche Aufschlüsselung Ihrer Azure-Nutzung und -Gebühren v
 
 Wenn Sie über eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) verfügen, müssen Sie über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Ihre Azure-Nutzung und -Gebühren anzeigen zu können.  Bei einer Microsoft-Partnervereinbarung (Microsoft Partner Agreement, MPA) können nur der globale Administrator und Administrator-Agent in der Partnerorganisation Azure-Rechnungen anzeigen und herunterladen. [Überprüfen des Abrechnungskontotyps im Azure-Portal](#check-your-billing-account-type).
 
-Basierend auf dem von Ihnen verwendeten Abonnementtyp variieren die Optionen zum Herunterladen Ihrer Nutzung und Gebühren. 
+Basierend auf dem von Ihnen verwendeten Abonnementtyp variieren die Optionen zum Herunterladen Ihrer Nutzung und Gebühren.
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Herunterladen der Nutzung aus dem Azure-Portal (CSV-Datei)
 
@@ -34,7 +34,6 @@ Basierend auf dem von Ihnen verwendeten Abonnementtyp variieren die Optionen zum
 1. Wählen Sie das **Downloadsymbol** oder die Auslassungspunkte (`...`) rechts aus.  
   ![Screenshot mit dem Downloadspeicherort für Nutzung und Gebühren](./media/download-azure-daily-usage/download-usage-others.png)  
 1. Der Downloadbereich wird rechts geöffnet. Wählen Sie **Download** im Abschnitt **Nutzungsdetails** aus.  
-
 
 ## <a name="download-usage-for-ea-customers"></a>Herunterladen von Nutzungsdaten für EA-Kunden
 
@@ -54,10 +53,9 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, können Sie die Nutz
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
 3. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
-4. Suchen Sie im Bereich **Übersicht** nach den Downloadlinks unter den Gebühren für den bisherigen Kalendermonat.
-5. Wählen Sie **Azure-Nutzung und -Gebühren** aus.
-
-    ![Screenshot des Blatts „Übersicht“ mit dem Downloadlink](./media/download-azure-daily-usage/open-usage01.png)
+4. Suchen Sie im Bereich **Übersicht** nach den Downloadlinks unter den aktuellen Gebühren.
+5. Wählen Sie **Nutzung und Preise herunterladen** aus.  
+    :::image type="content" source="./media/download-azure-daily-usage/open-usage01.png" alt-text="Screenshot des Blatts „Übersicht“ mit dem Downloadlink" lightbox="./media/download-azure-daily-usage/open-usage01.png" :::
 
 ## <a name="check-your-billing-account-type"></a>Überprüfen des Abrechnungskontotyps
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

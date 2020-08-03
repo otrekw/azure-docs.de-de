@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
-ms.openlocfilehash: 52ce81cb69470adf000465b97e976e5e43514da2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f1dc6eb98edfdf145e4fb09923e06b8e28e8f43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010018"
 ---
-# <a name="create-an-iis-vm-with-powershell"></a>Erstellen einer IIS-VM mit PowerShell
+# <a name="use-an-azure-powershell-sample-script-to-create-an-iis-vm"></a>Verwenden eines Azure PowerShell-Beispielskripts zum Erstellen eines virtuellen IIS-Computers
 
 Dieses Skript erstellt einen virtuellen Azure-Computer mit Windows Server 2016 und verwendet dann die Azure-VM-DSC-Erweiterung, um Internetinformationsdienste (IIS) zu installieren. Nachdem das Skript ausgeführt wurde, können Sie die standardmäßige IIS-Website über die öffentliche IP-Adresse des virtuellen Computers aufrufen.
 
@@ -55,6 +55,6 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche VM-PowerShell-Skriptbeispiele finden Sie in der [Dokumentation zu Windows-VMs in Azure](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

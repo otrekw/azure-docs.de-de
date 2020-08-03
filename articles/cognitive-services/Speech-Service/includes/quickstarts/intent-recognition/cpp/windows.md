@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 770e037641ac8fbf75989dc94b66fd1df0689e50
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9c0c2673acf12ddf80b77be57acc5af55e7f160c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81422113"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298874"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -73,6 +73,8 @@ Fügen Sie diesen Code unterhalb von `IntentRecognizer` ein. Stellen Sie sicher,
 > Informationen dazu, wie Sie diesen Wert ermitteln, finden Sie unter [Erstellen einer LUIS-App für die Absichtserkennung](#create-a-luis-app-for-intent-recognition).
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
+
+In diesem Beispiel wird die Funktion `AddIntent()` verwendet, um Absichten individuell hinzuzufügen. Wenn Sie alle Absichten aus einem Modell hinzufügen möchten, verwenden Sie `AddAllIntents(model)`, und übergeben Sie das Modell.
 
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 

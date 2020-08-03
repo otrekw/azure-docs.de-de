@@ -3,20 +3,23 @@ title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v10 für JavaScript'
 description: Erstellen, Hochladen und Löschen von Blobs und Containern in Node.js mit der Azure Storage-Clientbibliothek v10 für JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 01d9c2e2b822af607d7473206461b97dfa627c17
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78269503"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282023"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Schnellstart: Verwalten von Blobs per JavaScript v10 SDK in Node.js
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mithilfe von Node.js verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Hier wird gezeigt, wie Sie Blobs hochladen, herunterladen, auflisten und löschen und wie Sie Container verwalten.
+
+> [!NOTE]
+> In dieser Schnellstartanleitung wird eine Legacy-Version der Azure Blob Storage-Clientbibliothek verwendet. Informationen zu den ersten Schritten mit der neuesten Version finden Sie unter [Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js](storage-quickstart-blobs-nodejs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

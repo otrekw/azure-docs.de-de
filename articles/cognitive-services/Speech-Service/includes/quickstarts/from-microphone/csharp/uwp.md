@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 1c631f4dea3b182c97f11f3892dff834c7681507
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1068f715eb80eb5b7991a5b25c71c81d26d9f3c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275300"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102679"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,21 +49,19 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 ## <a name="create-a-speech-configuration"></a>Erstellen einer Speech-Konfiguration
 
-Bevor Sie ein `SpeechRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, die den Abonnementschlüssel und die Abonnementregion verwendet. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` ein.
+Bevor Sie ein `SpeechRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, die den Abonnementschlüssel und die Abonnementregion verwendet. Fügen Sie diesen Code in die Methode `SpeechRecognitionFromMicrophone_ButtonClicked()` ein.
 
 > [!NOTE]
 > In diesem Beispiel wird die Methode `FromSubscription()` zum Erstellen von `SpeechConfig` verwendet. Eine vollständige Liste der verfügbaren Methoden finden Sie unter [SpeechConfig-Klasse](https://docs.microsoft.com/dotnet/api/) [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)].
 
 ## <a name="initialize-a-speechrecognizer"></a>Initialisieren eines SpeechRecognizer-Elements
 
-Als Nächstes erstellen wir ein Objekt vom Typ `SpeechRecognizer`. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` direkt unterhalb der Speech-Konfiguration ein.
+Als Nächstes erstellen wir ein Objekt vom Typ `SpeechRecognizer`. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `SpeechRecognitionFromMicrophone_ButtonClicked()` direkt unterhalb der Speech-Konfiguration ein.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=58,59,93)]
 
 ## <a name="recognize-a-phrase"></a>Erkennen eines Ausdrucks
 
-Rufen Sie die Methode `RecognizeOnceAsync()` über das Objekt `SpeechRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
-
-Fügen Sie in der using-Anweisung den folgenden Code hinzu:
+Vom `SpeechRecognizer`-Objekt aus rufen Sie die `RecognizeOnceAsync()`-Methode auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 

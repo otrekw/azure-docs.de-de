@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d819eaa5c90e304a642efd3a6f2458cab4eefe7f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7572e5c5621b514c375e44ca44ddfc4102f5d714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421920"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298798"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -68,6 +68,8 @@ Fügen Sie diesen Code unterhalb von `IntentRecognizer` ein. Stellen Sie sicher,
 > Informationen dazu, wie Sie diesen Wert ermitteln, finden Sie unter [Erstellen einer LUIS-App für die Absichtserkennung](#create-a-luis-app-for-intent-recognition).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
+
+In diesem Beispiel wird die Funktion `add_intents()` verwendet, um eine Liste explizit definierter Absichten hinzuzufügen. Wenn Sie alle Absichten aus einem Modell hinzufügen möchten, verwenden Sie `add_all_intents(model)`, und übergeben Sie das Modell.
 
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines verwalteten Datenträgers auf der Grundlage einer Momentaufnahme – CLI-Beispiel
+title: 'Erstellen eines verwalteten Datenträgers auf der Grundlage einer Momentaufnahme (Linux): CLI-Beispiel'
 description: Azure CLI-Beispielskript – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
 services: virtual-machines-linux
 documentationcenter: storage
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: c0c009573393a65d901634fca8de3cf03df6b874
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c5e9e16b81c0befb6524a284d63fb2e106bff7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085315"
 ---
-# <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>Erstellen verwalteter Datenträger aus einer Momentaufnahme mithilfe der Befehlszeilenschnittstelle
+# <a name="create-a-managed-disk-from-a-snapshot-with-cli-linux"></a>Erstellen verwalteter Datenträger aus einer Momentaufnahme mithilfe der Befehlszeilenschnittstelle (Linux)
 
 Dieses Skript erstellt einen verwalteten Datenträger aus einer Momentaufnahme. Sie können es zum Wiederherstellen eines virtuellen Computers aus Momentaufnahmen von Betriebssystem und Datenträgern verwenden. Erstellen Sie verwaltete Datenträger für Betriebssystem und Daten aus den jeweiligen Momentaufnahmen und anschließend einen neuen virtuellen Computer durch Anfügen der verwalteten Datenträger. Sie können auch die Datenträger eines vorhandenen virtuellen Computers wiederherstellen, indem Sie die aus Momentaufnahmen erstellten Datenträger anfügen.
 
@@ -42,13 +42,13 @@ Dieses Skript verwendet die folgenden Befehle, um einen verwalteten Datenträger
 
 | Get-Help | Notizen |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Ruft alle Eigenschaften einer Momentaufnahme anhand der Eigenschaften für den Namen und die Ressourcengruppe der Momentaufnahme ab. Die ID-Eigenschaft wird verwendet, um den verwalteten Datenträger zu erstellen.  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk) | Erstellt einen verwalteten Datenträger mit der ID einer verwalteten Momentaufnahme |
+| [az snapshot show](/cli/azure/snapshot) | Ruft alle Eigenschaften einer Momentaufnahme anhand der Eigenschaften für den Namen und die Ressourcengruppe der Momentaufnahme ab. Die ID-Eigenschaft wird verwendet, um den verwalteten Datenträger zu erstellen.  |
+| [az disk create](/cli/azure/disk) | Erstellt einen verwalteten Datenträger mit der ID einer verwalteten Momentaufnahme |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Erstellen eines virtuellen Computers mit einem vorhandenen verwalteten Betriebssystemdatenträger mit PowerShell](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche CLI-Skriptbeispiele für virtuelle Computer und verwaltete Datenträger finden Sie in der [Dokumentation zu Linux-VMs in Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

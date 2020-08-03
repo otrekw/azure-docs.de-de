@@ -11,12 +11,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 2e6feb7c1d406a26c5a668d36d60ea0dbbae160c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cfe85db7a49f2d7b830165d05acaa458f51119f0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507113"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115765"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle
 
@@ -88,6 +88,9 @@ Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kub
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+> [!NOTE]
+> Der obige Befehl verwendet den Standardspeicherort für die Kubernetes-Konfigurationsdatei, d. h. `~/.kube/config`. Sie können mit *--file* einen anderen Speicherort für Ihre Kubernetes-Konfigurationsdatei angeben.
 
 Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get][kubectl-get], um eine Liste der Clusterknoten zurückzugeben.
 

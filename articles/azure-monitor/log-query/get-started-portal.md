@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075335"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Tutorial: Erste Schritte mit Log Analytics-Abfragen
 
@@ -189,7 +189,7 @@ So speichern Sie eine Abfrage:
    
    Um eine Abfrage als Funktion zu speichern, geben Sie einen **Funktionsalias** an. Dies ist ein Kurzname, den andere Abfragen zum Aufrufen der Abfrage verwenden.
    
-1. Geben Sie die **Kategorie** an, die im **Abfrage-Explorer** für die Abfrage verwendet werden soll.
+1. Wenn Sie sich in einem Log Analytics-Arbeitsbereich befinden, geben Sie eine **Kategorie** an, die im **Abfrage-Explorer** für die Abfrage verwendet werden soll. (Kategorien sind für Application Insights-Abfragen nicht verfügbar.)
    
 1. Wählen Sie **Speichern** aus.
    
@@ -202,6 +202,10 @@ Um eine gespeicherte Abfrage zu laden, wählen Sie oben rechts **Abfrage-Explore
 
 ### <a name="export-and-share-queries"></a>Exportieren und Freigeben von Abfragen
 Um eine Abfrage zu exportieren, klicken Sie in der oberen Leiste auf **Export**, und wählen Sie dann in der Dropdownliste **In CSV-Datei exportieren – Alle Spalten**, **In CSV-Datei exportieren – Angezeigte Spalten** oder **In Power BI exportieren (M-Abfrage)** aus.
+
+Im folgenden Video wird gezeigt, wie Sie Log Analytics in Excel integrieren.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
 
 Um einen Link zu einer Abfrage zu teilen, wählen Sie in der oberen Leiste **Link kopieren** und dann **Link in Abfrage kopieren**, **Abfragetext kopieren** oder **Ergebnisse kopieren** aus, um den Link in die Zwischenablage zu kopieren. Sie können den Abfragelink an andere Personen senden, die Zugriff auf denselben Arbeitsbereich haben.
 

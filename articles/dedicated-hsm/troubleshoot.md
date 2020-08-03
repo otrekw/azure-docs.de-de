@@ -1,5 +1,5 @@
 ---
-title: Was ist dediziertes HSM? Azure Dedicated HSM | Microsoft-Dokumentation
+title: 'Behandeln von Dedicated HSM-Problemen: Azure Dedicated HSM | Microsoft-Dokumentation'
 description: Die Übersicht zu Azure Dedicated HSM bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
 services: dedicated-hsm
 author: msmbaldwin
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c398049cfe1d5ec2ee090d4fabf8008803efecb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075001"
 ---
-# <a name="troubleshooting"></a>Problembehandlung
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Behandeln von Problemen mit dem Azure Dedicated HSM-Dienst
 
 Der Dienst „Azure Dedicated HSM“ verfügt über zwei besondere Facetten. Die erste Facette ist die Registrierung und Bereitstellung der HSM-Geräte mit den zugrunde liegenden Netzwerkkomponenten in Azure. Die zweite Facette ist die Konfiguration der HSM-Geräte als Vorbereitung auf die Nutzung bzw. Integration mit einer bestimmten Workload oder Anwendung. Die Thales Luna Network-HSM-Geräte sind in Azure mit den Geräten identisch, die Sie direkt bei Thales erhalten. Aber die Tatsache, dass es sich um eine Ressource in Azure handelt, macht dies zu einem Spezialfall mit besonderen Aspekten. Diese Aspekte und die sich daraus ergebenden Erkenntnisse in Bezug auf die Problembehandlung oder die bewährten Methoden sind hier dokumentiert, um eine hohe Transparenz und den Zugang zu wichtigen Informationen sicherzustellen. Wenn der Dienst verwendet wird, können Sie definitive Informationen erhalten, indem Sie Supportanfragen an Microsoft oder direkt an Thales senden. 
 

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536163"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319268"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,9 +146,7 @@ In diesem Teil des Tutorials wechseln Sie von der Rolle des *Projektadministrato
 
 1. Wählen Sie in [Machine Learning Studio](https://ml.azure.com) auf der linken Seite **Datenbeschriftung** aus, um Ihr Projekt zu finden.  
 
-1. Wählen Sie in der Liste den Projektnamen aus.
-
-1. Wählen Sie unter dem Projektnamen die Option **Daten beschriften** aus.
+1. Wählen Sie **Beschriftungslink** für das Projekt aus.
 
 1. Lesen Sie die Anweisungen, und wählen Sie dann **Aufgaben** aus.
 

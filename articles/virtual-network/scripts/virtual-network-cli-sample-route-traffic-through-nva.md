@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: d8704c34d59a8f735d060a7c7ca6463034883714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7cfd9de13057e859a49c37d7549f0c6db4d9ca2c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74083817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073875"
 ---
-# <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Skriptbeispiel zum Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
+# <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät – Azure CLI-Beispielskript
 
 In diesem Skriptbeispiel wird ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetz erstellt. Es wird auch ein virtueller Computer mit IP-Weiterleitung erstellt, der zur Weiterleitung von Datenverkehr zwischen den zwei Subnetzen aktiviert ist. Nach dem Ausführen des Skripts können Sie dem virtuellen Computer Netzwerksoftware bereitstellen, z.B. eine Firewallanwendung.
 

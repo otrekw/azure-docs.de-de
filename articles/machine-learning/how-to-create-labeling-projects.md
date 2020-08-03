@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 8c0aabc3242bf9576de917ad63ce4f71bec9905e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146532"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326443"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -21,11 +21,11 @@ ms.locfileid: "86146532"
 
 Das Beschriften großer Datenmengen in Projekten für maschinelles Lernen bereitet häufig Kopfzerbrechen. Projekte mit einer Komponente für maschinelles Sehen – z. B. zur Bildklassifizierung oder Objekterkennung – erfordern im Allgemeinen Beschriftungen für Tausende von Bildern.
  
-[Azure Machine Learning](https://ml.azure.com/) ist Ihr zentraler Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten (öffentliche Vorschau). Verwenden Sie die Lösung zum Koordinieren von Daten, Beschriftungen und Teammitgliedern, um Beschriftungsaufgaben effizient zu verwalten. Machine Learning unterstützt Bildklassifizierung (entweder mit mehreren Beschriftungen oder mit mehreren Klassen) und die Objektidentifikation mit Begrenzungsrahmen.
+Die Datenbeschriftung von [Azure Machine Learning](https://ml.azure.com/) bietet Ihnen einen zentralen Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten. Verwenden Sie die Lösung zum Koordinieren von Daten, Beschriftungen und Teammitgliedern, um Beschriftungsaufgaben effizient zu verwalten. Machine Learning unterstützt Bildklassifizierung (entweder mit mehreren Beschriftungen oder mit mehreren Klassen) und die Objektidentifikation mit Begrenzungsrahmen.
 
-Azure Machine Learning verfolgt den Fortschritt nach und verwaltet die Warteschlange der unvollständigen Bezeichnungsaufgaben.
+Die Datenbeschriftung verfolgt den Fortschritt nach und verwaltet die Warteschlange mit unvollständigen Beschriftungsaufgaben.
 
-Sie können das Projekt starten und beenden und den Bezeichnungsfortschritt überwachen. Sie können beschriftete Daten im COCO-Format oder als Azure Machine Learning-Dataset exportieren.
+Sie können das Projekt starten und beenden und den Beschriftungsfortschritt steuern. Sie können die beschrifteten Daten überprüfen und im COCO-Format oder als Azure Machine Learning-Dataset exportieren.
 
 > [!Important]
 > Derzeit werden nur Beschriftungsprojekte für die Bildklassifizierung und Objektidentifizierung unterstützt. Außerdem müssen die Datenbilder in einem Azure-Blobdatenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Bilder während der Projekterstellung hochladen.)
@@ -57,9 +57,9 @@ Zum Erstellen eines Projekts wählen Sie **Projekt hinzufügen** aus. Geben Sie 
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Assistent zum Erstellen von Bezeichnungsprojekten":::
 
-* Wählen Sie **Bildklassifizierung mit mehreren Klassen** für Projekte aus, in denen nur eine *einzige Klasse* aus einer Reihe von Klassen auf ein Bild angewendet werden soll.
-* Wählen Sie **Bildklassifizierung mit mehreren Beschriftungen** für Projekte aus, in denen *eine oder mehrere* Beschriftungen aus einer Reihe von Klassen auf ein Bild angewendet werden sollen. Ein Foto eines Hunds z. B. kann sowohl mit *Hund* als auch mit *Tag* beschriftet werden.
-* Wählen Sie **Objektidentifikation (umgebendes Rechteck)** für Projekte aus, in denen jedem Objekt innerhalb eines Bilds eine Klasse und ein Begrenzungsrahmen zugewiesen werden soll.
+* Wählen Sie **Bildklassifizierung mit mehreren Klassen** für Projekte aus, in denen nur eine *einzige Beschriftung* aus einer Reihe von Beschriftungen auf ein Bild angewendet werden soll.
+* Wählen Sie **Bildklassifizierung mit mehreren Beschriftungen** für Projekte aus, in denen *eine oder mehrere* Beschriftungen aus einer Reihe von Beschriftungen auf ein Bild angewendet werden sollen. Ein Foto eines Hunds z. B. kann sowohl mit *Hund* als auch mit *Tag* beschriftet werden.
+* Wählen Sie **Objektidentifikation (umgebendes Rechteck)** für Projekte aus, in denen jedem Objekt innerhalb eines Bilds eine Beschriftung und ein Begrenzungsrahmen zugewiesen werden soll.
 
 Wählen Sie **Weiter**, wenn Sie bereit sind, fortzufahren.
 
@@ -148,6 +148,10 @@ Für Begrenzungsrahmen stellen sich folgende wichtige Fragen:
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
+> [!IMPORTANT]
+> Die ML-gestützte Beschriftung ist derzeit als öffentliche Vorschauversion verfügbar.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Auf der Seite **Durch ML unterstützte Beschriftung** können Sie automatische Machine Learning-Modelle auslösen, um die Beschriftung zu beschleunigen. Zu Beginn Ihres Beschriftungsprojekts werden die Bilder in eine zufällige Reihenfolge gebracht, um potenzielle Verzerrungen zu verringern. Im Dataset enthaltene Verzerrungen fließen jedoch in das trainierte Modell ein. Wenn es sich also beispielsweise bei 80 Prozent der Bilder um eine einzelne Klasse handelt, gehören ungefähr 80 Prozent der Daten, die zum Trainieren des Modells verwendet werden, zu dieser Klasse. Dieses Training beinhaltet kein aktives Lernen.
 
 Wählen Sie *ML-gestützte Beschriftung aktivieren* aus, und geben Sie eine GPU an, um die Beschriftungsunterstützung zu aktivieren. Diese umfasst zwei Phasen:
@@ -183,14 +187,54 @@ Nach dem Initialisieren das Beschriftungsprojekts sind einige Aspekte des Projek
 > Diese Seite wird möglicherweise nicht automatisch aktualisiert. Aktualisieren Sie die Seite nach einer Pause manuell, um den Status des Projekts als **Erstellt** anzuzeigen.
 
 ## <a name="run-and-monitor-the-project"></a>Ausführen und Überwachen des Projekts
+Sobald das Projekt initialisiert wurde, startet Azure die Ausführung. Wählen Sie das Projekt auf der Hauptseite von **Datenbeschriftung** aus, um die Details des Projekts anzuzeigen.
 
-Sobald das Projekt initialisiert wurde, startet Azure die Ausführung. Wählen Sie das Projekt auf der Hauptseite von **Datenbeschriftung** aus, um zu **Projektdetails** zu gelangen. Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgabe angezeigt.
+Um das Projekt anzuhalten oder neu zu starten, schalten Sie den Status **Wird ausgeführt** oben rechts um. Sie können Daten nur dann beschriften, wenn das Projekt ausgeführt wird.
+
+### <a name="dashboard"></a>Dashboard
+
+Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgabe angezeigt.
+
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Dashboard für Datenbeschriftung":::
+
+Das Fortschrittsdiagramm zeigt an, wie viele Elemente beschriftet wurden und wie viele noch übrig sind.  Für ausstehende Elemente kann Folgendes gelten:
+
+* Noch nicht zu einer Aufgabe hinzugefügt
+* In einer Aufgabe enthalten, die einem Beschriftungsersteller zugewiesen aber noch nicht abgeschlossen ist 
+* In der Warteschlange von Aufgaben, die noch zugewiesen werden müssen
+
+Der mittlere Abschnitt zeigt die Warteschlange der Aufgaben, die noch zugewiesen werden müssen. Wenn die ML-gestützte Beschriftung deaktiviert ist, wird in diesem Abschnitt die Anzahl der manuellen Aufgaben angezeigt, die zugewiesen werden müssen. Wenn die ML-gestützte Beschriftung aktiviert ist, wird auch Folgendes angezeigt:
+
+* Aufgaben, die gruppierte Elemente in der Warteschlange enthalten
+* Aufgaben, die vorbeschriftete Elemente in der Warteschlange enthalten
+
+Wenn die ML-gestützte Beschriftung aktiviert ist, wird außerdem in einer kleinen Statusleiste angezeigt, wann das nächste Training ausgeführt wird.  In den Abschnitten zu Experimenten werden Links zu den einzelnen Machine Learning-Ausführungen angezeigt.
+
+* Training – trainiert ein Modell zum Vorhersagen der Beschriftungen.
+* Validierung – bestimmt, ob die Vorhersage dieses Modells für das Vorbeschriften der Elemente verwendet wird. 
+* Rückschluss – Vorhersageausführung für neue Elemente
+* Featurisierung – Clusterelemente (nur für Bildklassifizierungsprojekte)
+
+Auf der rechten Seite befindet sich eine Verteilung der Beschriftungen für abgeschlossene Aufgaben.  Beachten Sie, dass ein Element in einigen Projekttypen mehrere Beschriftungen aufweisen kann. In diesem Fall kann die Gesamtanzahl der Beschriftungen größer als die Gesamtanzahl der Elemente sein.
+
+### <a name="data-tab"></a>Registerkarte „Daten“
 
 Auf der Registerkarte**Daten** können Sie Ihr Dataset anzeigen und beschriftete Daten überprüfen. Wenn Sie falsch beschriftete Daten sehen, können Sie diese auswählen und auf **Ablehnen** klicken. Dadurch werden die Beschriftungen entfernt und die Daten wieder in die Warteschlange der unbeschrifteten Daten eingereiht.
 
-Um das Projekt anzuhalten oder neu zu starten, wählen Sie die Schaltfläche **Anhalten**/**Starten** aus. Sie können Daten nur dann beschriften, wenn das Projekt ausgeführt wird.
+### <a name="details-tab"></a>Registerkarte „Details“
 
-Sie können Daten direkt über die Seite **Projektdetails** beschriften, indem Sie **Daten beschriften** auswählen.
+Zeigen Sie Details zu Ihrem Projekt an.  Auf dieser Registerkarte haben Sie folgende Optionen:
+
+* Anzeigen von Projektdetails und Eingabedatasets
+* Aktivieren der inkrementellen Aktualisierung
+* Anzeigen von Details zum Speichercontainer, in dem beschriftete Ausgaben in Ihrem Projekt gespeichert werden
+* Hinzufügen von Beschriftungserstellern zu Ihrem Projekt
+* Bearbeiten von Anweisungen zu Ihren Beschriftungen
+* Bearbeiten der Details der ML-gestützten Beschriftung einschließlich Aktivieren/Deaktivieren
+
+### <a name="access-for-labelers"></a>Zugriff für Beschriftungsersteller
+
+Jeder Benutzer, der Zugriff auf Ihren Arbeitsbereich hat, kann Daten in Ihrem Projekt beschriften.  Sie können auch die Berechtigungen für Ihre Beschriftungsersteller anpassen, sodass sie zwar auf die Beschriftung, aber nicht auf andere Teile des Arbeitsbereichs oder das Beschriftungsprojekt zugreifen können.  Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md). Dort erfahren Sie auch, wie Sie die [benutzerdefinierte Rolle „Beschriftungsersteller“](how-to-assign-roles.md#labeler) erstellen.
 
 ## <a name="add-new-label-class-to-a-project"></a>Hinzufügen einer neuen Beschriftungsklasse zu einem Projekt
 
@@ -199,7 +243,7 @@ Im Rahmen des Beschriftungsprozesses stellen Sie möglicherweise fest, dass Sie 
 Gehen Sie wie folgt vor, um einem Projekt Beschriftungen hinzuzufügen:
 
 1. Wählen Sie das Projekt auf der Hauptseite von **Datenbeschriftung** aus.
-1. Wählen Sie oben auf der Seite die Option **Anhalten** aus, um die Aktivität der Beschriftungsersteller zu beenden.
+1. Schalten Sie auf der Seite rechts oben den Status **Wird ausgeführt** auf **Angehalten**, um Beschriftungsersteller von ihrer Tätigkeit abzuhalten.
 1. Wählen Sie die Registerkarte **Details** aus.
 1. Wählen Sie in der Liste auf der linken Seite die Option **Beschriftungsklassen** aus.
 1. Wählen Sie im oberen Bereich der Liste **+ Beschriftungen hinzufügen** aus. ![Hinzufügen einer Beschriftung](media/how-to-create-labeling-projects/add-label.png)
@@ -208,7 +252,7 @@ Gehen Sie wie folgt vor, um einem Projekt Beschriftungen hinzuzufügen:
     * „Von vorn beginnen und alle vorhandenen Beschriftungen beibehalten.“  Wählen Sie diese Option aus, um alle Daten als nicht beschriftet zu markieren, die vorhandenen Beschriftungen aber als Standardtag für Bilder beizubehalten, die bereits beschriftet wurden.
     * „Fortfahren und alle vorhandenen Beschriftungen beibehalten.“ Wählen Sie diese Option aus, um die bereits beschrifteten Daten unverändert zu lassen und von nun an die neue Beschriftung für noch nicht beschriftete Daten verwenden zu können.
 1. Passen Sie Ihre Anweisungsseite nach Bedarf für die neuen Beschriftungen an.
-1. Wählen Sie nach dem Hinzufügen aller neuen Beschriftungen oben auf der Seite die Option **Starten** aus, um das Projekt wieder zu starten.  
+1. Schalten Sie nach dem Hinzufügen aller neuen Beschriftungen oben rechts auf der Seite den Status **Angehalten** auf **Wird ausgeführt**, um das Projekt wieder zu starten.  
 
 ## <a name="export-the-labels"></a>Exportieren der Beschriftungen
 

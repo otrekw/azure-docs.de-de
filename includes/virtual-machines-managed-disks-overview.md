@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102675"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -45,22 +45,30 @@ Sie können die [Rollenbasierte Zugriffssteuerung in Azure (RBAC)](../articles/r
 
 ### <a name="upload-your-vhd"></a>Hochladen der VHD
 
- Mit dem direkten Upload ist es einfach, Ihre VHD auf einen verwalteten Azure-Datenträger zu übertragen. Bisher war die Übertragung Ihrer Daten eher umständlich und umfasste das Staging der Daten in einem Speicherkonto. Jetzt sind weniger Schritte erforderlich. Es ist einfacher, lokale VMs in Azure hochzuladen (Upload auf große verwaltete Datenträger), und der Sicherungs- und Wiederherstellungsvorgang wurde vereinfacht. Außerdem werden hierdurch die Kosten gesenkt, weil Sie Daten direkt auf verwaltete Datenträger hochladen können, ohne diese an VMs anfügen zu müssen. Sie können direkte Uploads nutzen, um VHDs mit einer Größe von bis zu 32 TiB hochzuladen.
+Mit dem direkten Upload ist es einfach, Ihre VHD auf einen verwalteten Azure-Datenträger zu übertragen. Bisher war die Übertragung Ihrer Daten eher umständlich und umfasste das Staging der Daten in einem Speicherkonto. Jetzt sind weniger Schritte erforderlich. Es ist einfacher, lokale VMs in Azure hochzuladen (Upload auf große verwaltete Datenträger), und der Sicherungs- und Wiederherstellungsvorgang wurde vereinfacht. Außerdem werden hierdurch die Kosten gesenkt, weil Sie Daten direkt auf verwaltete Datenträger hochladen können, ohne diese an VMs anfügen zu müssen. Sie können direkte Uploads nutzen, um VHDs mit einer Größe von bis zu 32 TiB hochzuladen.
 
- Informationen zur Übertragung Ihrer VHD in Azure finden Sie im Artikel zur [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) bzw. zu [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md).
+Informationen zur Übertragung Ihrer VHD in Azure finden Sie im Artikel zur [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) bzw. zu [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md).
 
-## <a name="encryption"></a>Verschlüsselung
+## <a name="security"></a>Sicherheit
+
+### <a name="private-links"></a>Private Links
+
+Verwaltete Datenträger unterstützen die Verwendung von privaten Links zum Importieren oder Exportieren eines verwalteten Datenträgers innerhalb Ihres Netzwerks. Mit privaten Links können Sie einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen. Jetzt können Sie [Private Links](../articles/private-link/private-link-overview.md) verwenden, um den Export und Import von verwalteten Datenträgern einzuschränken, sodass er nur innerhalb Ihres virtuellen Azure-Netzwerks erfolgen kann. Mit privaten Links können Sie sicherstellen, dass Ihre Daten nur innerhalb des sicheren Microsoft-Backbone-Netzwerks übertragen werden.
+
+Wie Sie private Links zum Importieren oder Exportieren eines verwalteten Datenträgers aktivieren können, erfahren Sie in den Artikeln zur [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) oder zum [Portal](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md).
+
+### <a name="encryption"></a>Verschlüsselung
 
 Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die erste ist die serverseitige Verschlüsselung (Server Side Encryption, SSE), die vom Speicherdienst durchgeführt wird. Die zweite ist Azure Disk Encryption (ADE), die Sie für Datenträger für das Betriebssystem und die Daten Ihrer virtuellen Computer aktivieren können.
 
-### <a name="server-side-encryption"></a>Serverseitige Verschlüsselung
+#### <a name="server-side-encryption"></a>Serverseitige Verschlüsselung
 
-Die [serverseitige Verschlüsselung von Azure](../articles/virtual-machines/windows/disk-encryption.md) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. Die serverseitige Verschlüsselung ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. (Temporäre Datenträger werden von der Speicherdienstverschlüsselung dagegen nicht verschlüsselt. Siehe [Datenträgerrollen: Temporäre Datenträger](#temporary-disk).)
+Die serverseitige Verschlüsselung bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. Die serverseitige Verschlüsselung ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. (Temporäre Datenträger werden dagegen nicht durch serverseitige Verschlüsselung verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung beim Host. Siehe [Datenträgerrollen: temporäre Datenträger](#temporary-disk)).
 
-Sie können zulassen, dass Azure die Schlüssel für Sie verwaltet. Dies sind von der Plattform verwaltete Schlüssel. Alternativ können Sie die Schlüssel selbst verwalten. Dabei handelt es sich um vom Kunden verwaltete Schlüssel. Weitere Einzelheiten finden Sie auf der Seite mit [FAQs zu Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption).
+Sie können zulassen, dass Azure die Schlüssel für Sie verwaltet. Dies sind von der Plattform verwaltete Schlüssel. Alternativ können Sie die Schlüssel selbst verwalten. Dabei handelt es sich um vom Kunden verwaltete Schlüssel. Weitere Informationen finden Sie im Artikel [Serverseitige Verschlüsselung von Azure Disk Storage](../articles/virtual-machines/windows/disk-encryption.md).
 
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Mit Azure Disk Encryption können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Diese Verschlüsselung umfasst verwaltete Datenträger. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Dieser Verschlüsselungsvorgang ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können. Weitere Informationen finden Sie unter [Azure Disk Encryption für Linux-VMs](../articles/virtual-machines/linux/disk-encryption-overview.md) und [Azure Disk Encryption für virtuelle Windows-Computer](../articles/virtual-machines/windows/disk-encryption-overview.md).
 
@@ -82,9 +90,9 @@ Dieser Datenträger weist eine maximale Kapazität von 2.048 GiB auf.
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
 
-Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen oder wenn Sie eine [VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten.  
+Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten.  
 
-Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“, und bei Windows-VMs wird standardmäßig „D:“ verwendet. Der temporäre Datenträger wird von der serverseitigen Verschlüsselung nicht verschlüsselt (siehe [Verschlüsselung](#encryption)).
+Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“, und bei Windows-VMs wird standardmäßig „D:“ verwendet. Der temporäre Datenträger wird nicht durch serverseitige Verschlüsselung verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.
 
 ## <a name="managed-disk-snapshots"></a>Momentaufnahmen eines verwalteten Datenträgers
 

@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084703"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Tutorial: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager
 
@@ -27,41 +27,41 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen des virtuellen Spoke-Netzwerks
 > * Erstellen eines geschützten virtuellen Hubs
-> * Herstellen einer Verbindung für die Hub-and-Spoke-VNETs
-> * Erstellen einer Firewallrichtlinie und Schützen Ihres Hubs
+> * Herstellen einer Verbindung für die virtuellen Hub-and-Spoke-Netzwerke
 > * Weiterleiten von Datenverkehr an Ihren Hub
+> * Bereitstellen der Server
+> * Erstellen einer Firewallrichtlinie und Schützen Ihres Hubs
 > * Testen der Firewall
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Erstellen einer Hub-Spoke-Architektur
 
-Erstellen Sie zunächst ein virtuelles Spoke-Netzwerk für Ihre Server.
+Erstellen Sie zunächst virtuelle Spoke-Netzwerke für Ihre Server.
 
-### <a name="create-a-spoke-virtual-network-and-subnets"></a>Erstellen eines virtuellen Spoke-Netzwerks und der Subnetze
+### <a name="create-two-spoke-virtual-networks-and-subnets"></a>Erstellen von zwei virtuellen Spoke-Netzwerken und Subnetzen
+
+Die beiden virtuellen Netzwerke werden jeweils einen Workloadserver enthalten und durch die Firewall geschützt sein.
 
 1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
 2. Wählen Sie unter **Netzwerk** die Option **Virtuelles Netzwerk** aus.
 2. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie **FW-Manager** als Name ein, und wählen Sie **OK** aus.
+1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie **fw-manager** als Name ein, und wählen Sie **OK** aus.
 2. Geben Sie unter **Name** den Namen **Spoke-01** ein.
 3. Wählen Sie unter **Region** die Option **(USA) USA, Osten** aus.
 4. Klicken Sie auf **Weiter: IP-Adressen**.
-1. Übernehmen Sie für **Adressraum** den Standardwert **10.0.0.0/16**.
-3. Wählen Sie unter **Subnetzname** die Einstellung **Standard** aus.
-4. Ändern Sie den Subnetznamen in **Workload-SN**.
-5. Geben Sie unter **Subnetzadressbereich** den Bereich **10.0.1.0/24** ein.
-6. Wählen Sie **Speichern** aus.
-
-Erstellen Sie als nächstes ein Subnetz für einen Jumpserver.
-
-1. Wählen Sie **Subnetz hinzufügen** aus.
-4. Geben Sie unter **Subnetzname** den Namen **Jump-SN** ein.
-5. Geben Sie unter **Subnetzadressbereich** den Bereich **10.0.2.0/24** ein.
+1. Geben Sie unter **Adressraum** den Adressraum **10.1.0.0/16** ein.
+3. Wählen Sie **Subnetz hinzufügen** aus.
+4. Geben Sie **Workload-01-SN** ein.
+5. Geben Sie unter **Subnetzadressbereich** den Bereich **10.1.1.0/24** ein.
 6. Wählen Sie **Hinzufügen**.
-
-Erstellen Sie jetzt das virtuelle Netzwerk.
-
-1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Klicken Sie auf **Überprüfen und erstellen**.
 2. Klicken Sie auf **Erstellen**.
+
+Wiederholen Sie dieses Verfahren, um ein weiteres ähnliches virtuelles Netzwerk zu erstellen:
+
+Name: **Spoke-02**<br>
+Adressraum: **10.2.0.0/16**<br>
+Subnetzname: **Workload-02-SN**<br>
+Subnetzadressbereich: **10.2.1.0/24**
 
 ### <a name="create-the-secured-virtual-hub"></a>Erstellen des geschützten virtuellen Hubs
 
@@ -71,29 +71,96 @@ Erstellen Sie mithilfe von Firewall Manager Ihren geschützten virtuellen Hub.
 2. Geben Sie **Firewall Manager** in das Suchfeld ein, und wählen Sie **Firewall Manager** aus.
 3. Wählen Sie auf der Seite **Firewall Manager** die Option **View secured virtual hubs** (Geschützte virtuelle Hubs anzeigen) aus.
 4. Wählen Sie auf der Seite **Firewall Manager | Geschützte virtuelle Hubs** die Option **Neuen geschützten virtuellen Hub erstellen** aus.
-5. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **FW-Manager** aus.
+5. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **fw-manager** aus.
 7. Wählen Sie als **Region** die Option **USA, Osten** aus.
 1. Geben Sie als **Name des geschützten virtuellen Hubs** den Namen **Hub-01** ein.
-2. Geben Sie unter **Adressraum des Hubs** den Adressraum **10.1.0.0/16** ein.
+2. Geben Sie unter **Adressraum des Hubs** den Adressraum **10.0.0.0/16** ein.
 3. Geben Sie als Name des neuen vWAN den Namen **Vwan-01** ein.
 4. Lassen Sie das Kontrollkästchen **VPN Gateway zum Aktivieren vertrauenswürdiger Sicherheitspartner einbeziehen** deaktiviert.
-5. Wählen Sie **Weiter: Azure Firewall** aus.
+5. Klicken Sie auf **Weiter: Azure Firewall** aus.
 6. Übernehmen Sie die Standardeinstellung **Azure Firewall** **aktiviert**, und wählen Sie **Weiter: Vertrauenswürdiger Sicherheitspartner** aus.
 7. Übernehmen Sie die Standardeinstellung **Vertrauenswürdiger Sicherheitspartner** **deaktiviert**, und wählen Sie **Weiter: Überprüfen + erstellen**.
 8. Klicken Sie auf **Erstellen**. Die Bereitstellung dauert ca. 30 Minuten.
 
-### <a name="connect-the-hub-and-spoke-vnets"></a>Herstellen einer Verbindung für die Hub-and-Spoke-VNETs
+Jetzt können Sie die öffentliche IP-Adresse der Firewall abrufen.
 
-Nun können Sie das Peering für die Hub-and-Spoke-VNETs durchführen.
+1. Nachdem die Bereitstellung abgeschlossen ist, wählen Sie im Azure-Portal **Alle Dienste** aus.
+1. Geben Sie **Firewall Manager** ein, und wählen Sie dann **Firewall Manager** aus.
+2. Wählen Sie **Geschützte virtuelle Hubs** aus.
+3. Wählen Sie **hub-01** aus.
+7. Wählen Sie **Öffentliche IP-Konfiguration** aus.
+8. Notieren Sie sich die öffentliche IP-Adresse zur späteren Verwendung.
 
-1. Wählen Sie die Ressourcengruppe **FW-Manager** und anschließend das virtuelle WAN **Vwan-01** aus.
+### <a name="connect-the-hub-and-spoke-virtual-networks"></a>Herstellen einer Verbindung für die virtuellen Hub-and-Spoke-Netzwerke
+
+Jetzt können Sie das Peering für die virtuellen Hub-and-Spoke-Netzwerke durchführen.
+
+1. Wählen Sie die Ressourcengruppe **fw-manager** und anschließend das virtuelle WAN **Vwan-01** aus.
 2. Wählen Sie unter **Konnektivität** die Option **Virtuelle Netzwerkverbindungen** aus.
 3. Wählen Sie **Verbindung hinzufügen** aus.
-4. Geben Sie unter **Verbindungsname** den Namen **hub-spoke** ein.
+4. Geben Sie unter **Verbindungsname** den Namen **hub-spoke-01** ein.
 5. Wählen Sie unter **Hubs** die Option **Hub-01** aus.
-6. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **FW-Manager** aus.
+6. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe **fw-manager** aus.
 7. Wählen Sie unter **Virtuelles Netzwerk** die Option **Spoke-01** aus.
 8. Klicken Sie auf **Erstellen**.
+
+Wiederholen Sie diesen Vorgang, um das virtuelle Netzwerk **Spoke-02** zu verbinden: Verbindungsname – **hub-spoke-02**
+
+### <a name="configure-the-hub-and-spoke-routing"></a>Konfigurieren der Hub-and-Spoke-Routenplanung
+
+Öffnen Sie vom Azure-Portal aus eine Cloud Shell, und führen Sie die folgende Azure PowerShell aus, um das erforderliche Hub-and-Spoke-Routing zu konfigurieren.
+
+```azurepowershell
+$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
+                  -HubName hub-01 -Name noneRouteTable
+$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+             -ParentResourceName hub-01
+
+$vnetConn = $vnetConns[0]
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
+Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+   -ParentResourceName hub-01 -Name $vnetConn.Name `
+   -RoutingConfiguration $vnetConn.RoutingConfiguration
+
+$vnetConn = $vnetConns[1]
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
+Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
+```
+
+## <a name="deploy-the-servers"></a>Bereitstellen der Server
+
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
+2. Wählen Sie dann in der Liste **Beliebt** die Option **Windows Server 2016 Datacenter** aus.
+3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
+
+   |Einstellung  |Wert  |
+   |---------|---------|
+   |Resource group     |**fw-manager**|
+   |Name des virtuellen Computers     |**Srv-workload-01**|
+   |Region     |**(USA) USA, Osten**|
+   |Benutzername des Administrators     |Geben Sie einen Benutzernamen ein.|
+   |Kennwort     |Geben Sie ein Kennwort ein.|
+
+4. Wählen Sie unter **Regeln für eingehende Ports** für **Öffentliche Eingangsports** die Option **Keine** aus.
+6. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Datenträger**.
+7. Übernehmen Sie die Standardeinstellungen für Datenträger, und wählen Sie **Weiter: Netzwerk** aus.
+8. Wählen Sie **Spoke-01** für das virtuelle Netzwerk und dann **Workload-01-SN** für das Subnetz aus.
+9. Wählen Sie unter **Öffentliche IP** die Option **Keine** aus.
+11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Verwaltung** aus.
+12. Wählen Sie **Aus** aus, um die Startdiagnose zu deaktivieren. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
+13. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und wählen Sie dann **Erstellen** aus.
+
+Konfigurieren Sie anhand der Angaben in der folgenden Tabelle eine weitere VM mit dem Namen **Srv-Workload-02**. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers **Srv-workload-01** identisch.
+
+|Einstellung  |Wert  |
+|---------|---------|
+|Virtuelles Netzwerk|**Spoke-02**|
+|Subnet|**Workload-02-SN**|
+
+Nachdem die Server bereitgestellt wurden, wählen Sie eine Serverressource aus, und notieren Sie unter **Netzwerk** die private IP-Adresse für jeden Server.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Erstellen einer Firewallrichtlinie und Schützen Ihres Hubs
 
@@ -102,31 +169,64 @@ Eine Firewallrichtlinie definiert Regelsammlungen für die Weiterleitung von Dat
 1. Wählen Sie in Firewall Manager die Option **View Azure Firewall policies** (Azure Firewall-Richtlinien anzeigen) aus.
 2. Wählen Sie die Option **Azure-Firewallrichtlinie erstellen** aus.
 3. Geben Sie unter **Richtliniendetails** für **Name** den Namen **Policy-01** ein, und wählen Sie für **Region** die Option **USA, Osten** aus.
-4. Wählen Sie **Weiter: Regeln** aus.
-5. Wählen Sie auf der Registerkarte **Regeln** die Option **Regelsammlung hinzufügen** aus.
-6. Geben Sie auf der Seite **Regelsammlung hinzufügen** unter **Name** den Namen **RC-01** ein.
-7. Wählen Sie unter **Regelsammlungstyp** die Option **Anwendung** aus.
-8. Geben Sie unter **Priorität** den Wert **100** ein.
-9. Vergewissern Sie sich, dass die **Regelsammlungsaktion** auf **Zulassen** festgelegt ist.
-10. Geben Sie unter **Name** den Regelnamen **Allow-msft** ein.
-11. Wählen Sie unter **Quellentyp** die Option **IP-Adresse** aus.
-12. Geben Sie unter **Quelle** die Zeichenfolge **\*** ein.
-13. Geben Sie unter **Protokoll** Folgendes ein: **http,https**.
-14. Vergewissern Sie sich, dass **Zieltyp** auf **FQDN** festgelegt ist.
-15. Geben Sie unter **Ziel** das Ziel **\*.microsoft.com** ein.
-16. Wählen Sie **Hinzufügen**.
-17. Wählen Sie **Weiter: Threat Intelligence** aus.
-18. Klicken Sie auf **Weiter: Hubs**.
-19. Wählen Sie auf der Registerkarte **Hubs** die Option **Virtuelle Hubs zuordnen** aus.
-20. Wählen Sie **Hub-01** und dann **Hinzufügen** aus.
-21. Klicken Sie auf **Überprüfen + erstellen**.
-22. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Weiter: DNS-Einstellungen (Vorschau)** .
+1. Klicken Sie auf **Weiter: Regeln**.
+2. Wählen Sie auf der Registerkarte **Regeln** die Option **Regelsammlung hinzufügen** aus.
+3. Geben Sie auf der Seite **Regelsammlung hinzufügen** unter **Name** den Namen **App-RC-01** ein.
+4. Wählen Sie unter **Regelsammlungstyp** die Option **Anwendung** aus.
+5. Geben Sie unter **Priorität** den Wert **100** ein.
+6. Vergewissern Sie sich, dass die **Regelsammlungsaktion** auf **Zulassen** festgelegt ist.
+7. Geben Sie unter **Name** den Regelnamen **Allow-msft** ein.
+8. Wählen Sie unter **Quellentyp** die Option **IP-Adresse** aus.
+9. Geben Sie unter **Quelle** die Zeichenfolge **\*** ein.
+10. Geben Sie unter **Protokoll** Folgendes ein: **http,https**.
+11. Vergewissern Sie sich, dass **Zieltyp** auf **FQDN** festgelegt ist.
+12. Geben Sie unter **Ziel** das Ziel **\*.microsoft.com** ein.
+13. Wählen Sie **Hinzufügen**.
+
+Fügen Sie eine DNAT-Regel hinzu, sodass Sie einen Remotedesktop mit dem virtuellen Computer **Srv-Workload-01** verbinden können.
+
+1. Wählen Sie **Regelsammlung hinzufügen** aus.
+2. Geben Sie für **Name** **DNAT-rdp** ein.
+3. Wählen Sie unter **Regelsammlungstyp** die Option **DNAT** aus.
+4. Geben Sie unter **Priorität** den Wert **100** ein.
+5. Geben Sie unter **Name** den Regelnamen **Allow-rdp** ein.
+6. Wählen Sie unter **Quellentyp** die Option **IP-Adresse** aus.
+7. Geben Sie unter **Quelle** die Zeichenfolge **\*** ein.
+8. Wählen Sie für **Protokoll** die Option **TCP** aus.
+9. Geben Sie unter **Zielports** den Wert **3389** ein.
+10. Wählen Sie unter **Zieltyp** die Option **IP-Adresse** aus.
+11. Geben Sie für **Ziel** die öffentliche IP-Adresse der Firewall ein, die Sie zuvor notiert haben.
+12. Geben Sie für **Übersetzte Adresse** die private IP-Adresse für **Srv-Workload-01** ein, die Sie zuvor notiert haben.
+13. Geben Sie für **Übersetzter Port** den Wert **3389** ein.
+14. Wählen Sie **Hinzufügen**.
+
+Fügen Sie eine Netzwerkregel hinzu, sodass Sie einen Remotedesktop von **Srv-Workload-01** mit **Srv-Workload-02** verbinden können.
+
+1. Wählen Sie **Regelsammlung hinzufügen** aus.
+2. Geben Sie unter **Name** den Namen **vnet-rdp** ein.
+3. Wählen Sie unter **Regelsammlungstyp** die Option **Netzwerk** aus.
+4. Geben Sie unter **Priorität** den Wert **100** ein.
+5. Geben Sie unter **Name** den Regelnamen **Allow-vnet** ein.
+6. Wählen Sie unter **Quellentyp** die Option **IP-Adresse** aus.
+7. Geben Sie unter **Quelle** die Zeichenfolge **\*** ein.
+8. Wählen Sie für **Protokoll** die Option **TCP** aus.
+9. Geben Sie unter **Zielports** den Wert **3389** ein.
+9. Wählen Sie unter **Zieltyp** die Option **IP-Adresse** aus.
+10. Geben Sie für **Ziel** die private IP-Adresse von **Srv-Workload-02** ein, die Sie zuvor notiert haben.
+11. Wählen Sie **Hinzufügen**.
+1. Klicken Sie auf **Weiter: Threat Intelligence** aus.
+2. Klicken Sie auf **Weiter: Hubs**.
+3. Wählen Sie auf der Registerkarte **Hubs** die Option **Virtuelle Hubs zuordnen** aus.
+4. Wählen Sie **Hub-01** und dann **Hinzufügen** aus.
+5. Klicken Sie auf **Überprüfen + erstellen**.
+6. Klicken Sie auf **Erstellen**.
 
 Dieser Vorgang dauert etwa fünf Minuten (oder länger).
 
 ## <a name="route-traffic-to-your-hub"></a>Weiterleiten von Datenverkehr an Ihren Hub
 
-Als Nächstes müssen Sie sicherstellen, dass Netzwerkdatenverkehr durch Ihre Firewall geleitet wird.
+Als nächstes müssen Sie sicherstellen, dass Netzwerkdatenverkehr durch Ihre Firewall geleitet wird.
 
 1. Wählen Sie in Firewall Manager die Option **Geschützte virtuelle Hubs** aus.
 2. Wählen Sie **Hub-01** aus.
@@ -139,67 +239,13 @@ Als Nächstes müssen Sie sicherstellen, dass Netzwerkdatenverkehr durch Ihre Fi
 
 ## <a name="test-your-firewall"></a>Testen Ihrer Firewall
 
-Um Ihre Firewallregeln testen zu können, müssen Sie einige Server bereitstellen. In diesem Beispiel stellen Sie „Workload-Srv“ im Subnetz „Workload-SN“ bereit, um die Firewallregeln zu testen. Außerdem stellen Sie „Jump-Srv“ bereit, um über das Internet eine Remotedesktopverbindung mit „Workload-Srv“ herstellen zu können.
+Zum Testen Ihrer Firewallregeln verbinden Sie einen Remotedesktop über die öffentliche IP-Adresse der Firewall, die mit NAT in **Srv-Workload-01** aufgelöst wurde. Von dort aus verwenden Sie einen Browser, um die Anwendungsregel zu testen, und verbinden einen Remotedesktop mit **Srv-Workload-02**, um die Netzwerkregel zu testen.
 
-### <a name="deploy-the-servers"></a>Bereitstellen der Server
-
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
-2. Wählen Sie dann in der Liste **Beliebt** die Option **Windows Server 2016 Datacenter** aus.
-3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
-
-   |Einstellung  |Wert  |
-   |---------|---------|
-   |Resource group     |**FW-Manager**|
-   |Name des virtuellen Computers     |**Jump-Srv**|
-   |Region     |**(USA) USA, Osten**|
-   |Benutzername des Administrators     |Geben Sie einen Benutzernamen ein.|
-   |Kennwort     |Geben Sie ein Kennwort ein.|
-
-4. Wählen Sie unter **Regeln für eingehende Ports** für **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus.
-5. Wählen Sie unter **Eingangsports auswählen** die Option **RDP (3389)** aus.
-6. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Datenträger**.
-7. Übernehmen Sie die Standardeinstellungen für Datenträger, und wählen Sie **Weiter: Netzwerk** aus.
-8. Vergewissern Sie sich, dass als virtuelles Netzwerk **Spoke-01** und als Subnetz **Jump-SN** ausgewählt ist.
-9. Übernehmen Sie unter **Öffentliche IP** den Standardnamen der neuen öffentlichen IP-Adresse (Jump-Srv-ip).
-11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Verwaltung** aus.
-12. Wählen Sie **Aus** aus, um die Startdiagnose zu deaktivieren. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
-13. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und wählen Sie dann **Erstellen** aus.
-
-Konfigurieren Sie anhand der Angaben in der folgenden Tabelle einen weiteren virtuellen Computer mit dem Namen **Workload-Srv**. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
-
-|Einstellung  |Wert  |
-|---------|---------|
-|Subnet|**Workload-SN**|
-|Öffentliche IP-Adresse|**None**|
-|Öffentliche Eingangsports|**None**|
-
-### <a name="add-a-route-table-and-default-route"></a>Hinzufügen einer Routingtabelle und einer Standardroute
-
-Um eine Internetverbindung mit „Jump-Srv“ zuzulassen, müssen Sie eine Routingtabelle und eine Standardgatewayroute aus dem Subnetz **Jump-SN** zum Internet erstellen.
-
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
-2. Geben Sie **Routingtabelle** in das Suchfeld ein, und wählen Sie **Routingtabelle** aus.
-3. Klicken Sie auf **Erstellen**.
-4. Geben Sie unter **Name** den Namen **RT-01** ein.
-5. Wählen Sie Ihr Abonnement, die Ressourcengruppe **FW-Manager** und die Region **(USA) USA, Osten** aus.
-6. Klicken Sie auf **Erstellen**.
-7. Wählen Sie nach Abschluss der Bereitstellung die Routingtabelle **RT-01** aus.
-8. Wählen Sie **Routen** und dann **Hinzufügen** aus.
-9. Geben Sie unter **Routenname** den Namen **jump-to-inet** ein.
-10. Geben Sie unter **Adresspräfix** das Präfix **0.0.0.0/0** ein.
-11. Wählen Sie unter **Typ des nächsten Hops** die Option **Internet** aus.
-12. Klicken Sie auf **OK**.
-13. Wählen Sie nach Abschluss der Bereitstellung **Subnetze** > **Zuordnen** aus.
-14. Wählen Sie unter **Virtuelles Netzwerk** die Option **Spoke-01** aus.
-15. Wählen Sie unter **Subnetz** die Option **Jump-SN** aus.
-16. Klicken Sie auf **OK**.
-
-### <a name="test-the-rules"></a>Testen der Regeln
+### <a name="test-the-application-rule"></a>Testen der Anwendungsregel
 
 Testen Sie nun die Firewallregeln, um sicherzustellen, dass sie wie erwartet funktionieren.
 
-1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Workload-Srv**, und notieren Sie sich die private IP-Adresse.
-2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer **Jump-Srv** her, und melden Sie sich an. Stellen Sie von dort aus eine Remotedesktopverbindung mit der privaten IP-Adresse von **Workload-Srv** her.
+1. Verbinden Sie einen Remotedesktop mit der öffentlichen IP-Adresse der Firewall, und melden Sie sich an.
 
 3. Navigieren Sie in Internet Explorer zu https://www.microsoft.com.
 4. Klicken Sie in den Sicherheitswarnungen von Internet Explorer auf **OK** > **Schließen**.
@@ -210,11 +256,20 @@ Testen Sie nun die Firewallregeln, um sicherzustellen, dass sie wie erwartet fun
 
    Sie sollten durch die Firewall blockiert werden.
 
-Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
+Somit haben Sie sich jetzt vergewissert, dass die Anwendungsregel der Firewall funktioniert:
 
 * Sie können zum einzigen zulässigen FQDN navigieren, aber nicht zu anderen.
 
+### <a name="test-the-network-rule"></a>Testen der Netzwerkregel
 
+Testen Sie jetzt die Netzwerkregel.
+
+- Öffnen Sie einen Remotedesktop mit der privaten IP-Adresse von **Srv-Workload-02**.
+
+   Ein Remotedesktop sollte eine Verbindung mit **Srv-Workload-02** herstellen.
+
+Somit haben Sie sich jetzt vergewissert, dass die Netzwerkregel der Firewall funktioniert:
+* Sie können einen Remotedesktop mit einem Server verbinden, der sich in einem anderen virtuellen Netzwerk befindet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

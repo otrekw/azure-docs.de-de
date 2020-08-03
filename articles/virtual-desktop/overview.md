@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248610"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386572"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
+# <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop?
 
 Bei Windows Virtual Desktop handelt es sich um einen in der Cloud ausgeführten Dienst für die Desktop- und App-Virtualisierung.
 
@@ -78,7 +78,7 @@ In Ihrer Infrastruktur muss Folgendes vorhanden sein, um Windows Virtual Desktop
   * Azure AD Connect (für Hybridorganisationen)
   * Azure Active Directory Domain Services (für Hybrid- oder Cloudorganisationen)
 * Ein Azure-Abonnement mit einem virtuellen Netzwerk, das die Windows Server Active Directory-Instanz entweder enthält oder mit ihr verbunden ist.
-  
+
 Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen folgende Anforderungen erfüllen:
 
 * Sie müssen in eine [Standard-Domäne](../active-directory-domain-services/active-directory-ds-comparison.md) oder in [Hybrid AD](../active-directory/devices/hybrid-azuread-join-plan.md) eingebunden sein. Virtuelle Computer dürfen nicht in Azure AD eingebunden sein.
@@ -105,7 +105,7 @@ Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (Vorschau)](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
@@ -128,7 +128,7 @@ Windows Virtual Desktop unterstützt die folgenden Images von x64-Betriebssystem
 
 Windows Virtual Desktop unterstützt keine Betriebssystemimages mit x86 (32 Bit), Windows 10 Enterprise N oder Windows 10 Enterprise KN. Aufgrund einer Sektorgrößenbeschränkung unterstützt Windows 7 auch keine VHD- oder VHDX-basierten Profillösungen, die in einer verwalteten Azure Storage-Instanz gehostet werden.
 
-Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab, welches Betriebssystem und welche Version gewählt werden; siehe dazu die folgende Tabelle: 
+Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab, welches Betriebssystem und welche Version gewählt werden; siehe dazu die folgende Tabelle:
 
 |Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
@@ -139,13 +139,13 @@ Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab,
 |Windows 7 Enterprise|Ja|Ja|Nein|Nein|
 |Windows Server 2019|Ja|Ja|Nein|Nein|
 |Windows Server 2016|Ja|Ja|Ja|Ja|
-|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
+|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie das Windows Virtual Desktop-Release vom Herbst 2019 verwenden, können Sie mit dem Tutorial [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) beginnen.
+Wenn Sie Windows Virtual Desktop (klassisch) verwenden, können Sie mit dem Tutorial [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) beginnen.
 
-Wenn Sie das Windows Virtual Desktop-Release vom Frühjahr 2020 verwenden, müssen Sie stattdessen einen Hostpool erstellen. Im folgenden Tutorial finden Sie Informationen zu den ersten Schritten:
+Wenn Sie Windows Virtual Desktop mit Azure Resource Manager-Integration verwenden, müssen Sie stattdessen einen Hostpool erstellen. Im folgenden Tutorial finden Sie Informationen zu den ersten Schritten:
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md)

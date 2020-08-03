@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 15a89a03e07deb02a812e54c01e857f972681931
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0fa1ff016ed787725ffde10ade67040a09c7e238
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "64710779"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285916"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
 
@@ -23,9 +23,9 @@ Azure Windows Virtual Machines bietet eine auf Windows Server basierende sichere
 
 Erfahren Sie, wie Sie einen IIS-Webserver auf einem virtuellen Computer unter Windows Server 2016 bereitstellen:
 
-- [Azure-Portal](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure-Portal](../../articles/virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure PowerShell](../../articles/virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure-Befehlszeilenschnittstelle](../../articles/virtual-machines/windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
@@ -52,7 +52,7 @@ Es wird beschrieben, wie Sie virtuelle Windows-Computer in Azure bereitstellen, 
 
 Stellen Sie Ihre erste Anwendung in Azure bereit.
 
-- [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure CLI](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="more"></a>Weitere Informationen

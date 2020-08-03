@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial für Datenanalysten: Analysieren von Azure Open Datasets in Azure Synapse Studio (Vorschauversion) mithilfe von SQL On-Demand (Vorschauversion)'
+title: Analysieren von Azure Open Datasets in Azure Synapse Studio (Vorschauversion) mithilfe von SQL On-Demand (Vorschauversion)
 description: In diesem Tutorial erfahren Sie, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe von SQL On-Demand (Vorschauversion) verschiedene Azure Open Datasets miteinander kombiniert und die Ergebnisse in Azure Synapse Studio visualisiert.
 services: synapse-analytics
 author: azaricstefan
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: afe231186adec95b09a75d7fe59552ca8a07049b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089140"
 ---
-# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio (Vorschauversion) mithilfe von SQL On-Demand (Vorschauversion)
+# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio mithilfe von SQL On-Demand
 
 In diesem Tutorial erfahren Sie, wie Sie eine explorative Datenanalyse durchführen, indem Sie mithilfe von SQL On-Demand verschiedene Azure Open Datasets miteinander kombinieren und die Ergebnisse anschließend in Azure Synapse Studio visualisieren.
 

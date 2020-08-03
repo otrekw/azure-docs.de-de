@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f63510771e4bd71a3ab6cf048bc5fb5296042a4d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75564805"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387613"
 ---
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
@@ -25,17 +25,18 @@ Sollten Sie noch keine Containerregistrierung besitzen, führen Sie die folgende
 
    | Feld | value |
    | ----- | ----- |
-   | Registrierungsname | Geben Sie einen eindeutigen Namen an. |
    | Subscription | Wählen Sie ein Abonnement aus der Dropdownliste aus. |
    | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |
+   | Registrierungsname | Geben Sie einen eindeutigen Namen an. |
    | Location | Wählen Sie einen Standort in Ihrer Nähe aus. |
-   | Administratorbenutzer | Legen Sie **Aktivieren** fest. |
    | SKU | Wählen Sie **Basic** aus. |
 
 3. Klicken Sie auf **Erstellen**.
 
 4. Navigieren Sie nach der Erstellung der Containerregistrierung zu ihr, und wählen Sie im Menü unter **Einstellungen** im linken Bereich **Zugriffsschlüssel** aus.
 
-5. Kopieren Sie die Werte für **Anmeldeserver**, **Benutzername** und **Kennwort**, und speichern Sie sie an einem geeigneten Speicherort. Sie verwenden diese Werte in diesem Tutorial, um Zugriff auf die Containerregistrierung zu gewähren.
+5. Klicken Sie zum Aktivieren des Administratorbenutzers, um den **Benutzernamen** und das **Kennwort** für Ihre Containerregistrierung anzuzeigen.
+
+6. Kopieren Sie die Werte für **Anmeldeserver**, **Benutzername** und **Kennwort**, und speichern Sie sie an einem geeigneten Speicherort. Sie verwenden diese Werte in diesem Tutorial, um Zugriff auf die Containerregistrierung zu gewähren.
 
    ![Kopieren des Anmeldeservers, des Benutzernamens und des Kennworts für die Containerregistrierung](./media/iot-edge-create-container-registry/registry-access-key.png)

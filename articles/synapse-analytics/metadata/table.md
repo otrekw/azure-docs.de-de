@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28f666fe295b2b49fb6795306e9fad489c867517
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496025"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387216"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arb
 
 Nach der Erstellung einer Datenbank durch einen Spark-Auftrag können darin Tabellen mit Spark erstellt werden, die Parquet als Speicherformat verwenden. Diese Tabellen stehen umgehend für Abfragen von beliebigen Spark-Pools des Azure Synapse-Arbeitsbereichs zur Verfügung. Darüber hinaus können sie von einem beliebigen Spark-Auftrag verwendet werden (entsprechende Berechtigungen vorausgesetzt).
 
-Die von Spark erstellten, verwalteten und externen Tabellen werden auch als externe Tabellen mit demselben Namen in der entsprechenden synchronisierten Datenbank in SQL On-Demand verfügbar gemacht. Unter [Verfügbarmachen einer Spark-Tabelle in SQL](#exposing-a-spark-table-in-sql) finden Sie weitere Details zur Tabellensynchronisierung.
+Die von Spark erstellten, verwalteten und externen Tabellen werden auch als externe Tabellen mit demselben Namen in der entsprechenden synchronisierten Datenbank in SQL On-Demand verfügbar gemacht. Unter [Verfügbarmachen einer Spark-Tabelle in SQL](#expose-a-spark-table-in-sql) finden Sie weitere Details zur Tabellensynchronisierung.
 
 Da die Tabellen asynchron mit SQL On-Demand synchronisiert werden, kommt es zu einer Verzögerung bei der Anzeige.
 
@@ -34,9 +34,9 @@ Verwalten Sie von Spark erstellte Datenbanken mithilfe von Spark. Löschen Sie s
 
 Wenn Sie Objekte in einer solchen Datenbank über SQL On-Demand erstellen oder versuchen, die Datenbank zu löschen, ist der Vorgang zwar erfolgreich, die ursprüngliche Spark-Datenbank wird jedoch nicht geändert.
 
-## <a name="exposing-a-spark-table-in-sql"></a>Verfügbarmachen einer Spark-Tabelle in SQL
+## <a name="expose-a-spark-table-in-sql"></a>Verfügbarmachen einer Spark-Tabelle in SQL
 
-### <a name="which-spark-tables-are-shared"></a>Welche Spark-Tabellen werden gemeinsam genutzt?
+### <a name="shared-spark-tables"></a>Gemeinsam genutzte Spark-Tabellen
 
 In Spark stehen zwei Arten von Tabellen zur Verfügung, die von Azure Synapse automatisch in SQL verfügbar gemacht werden:
 
@@ -50,7 +50,7 @@ In Spark stehen zwei Arten von Tabellen zur Verfügung, die von Azure Synapse au
 
 Azure Synapse gibt aktuell nur verwaltete und externe Spark-Tabellen mit im Parquet-Format gespeicherten Daten für die SQL-Engines frei. Auf anderen Formaten basierende Tabellen werden nicht automatisch synchronisiert. Solche Tabellen können Sie ggf. explizit selbst als externe Tabelle in Ihrer eigenen SQL-Datenbank synchronisieren, sofern die SQL-Engine das zugrunde liegende Format der Tabelle unterstützt.
 
-### <a name="how-are-spark-tables-shared"></a>Wie werden Spark-Tabellen gemeinsam genutzt?
+### <a name="share-spark-tables"></a>Gemeinsames Nutzen von Spark-Tabellen
 
 Die gemeinsam nutzbaren verwalteten und externen Spark-Tabellen werden in der SQL-Engine als externe Tabellen mit folgenden Eigenschaften verfügbar gemacht:
 
@@ -96,7 +96,7 @@ Weitere Informationen zum Festlegen von Berechtigungen für die Ordner und Datei
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Erstellen einer verwalteten, Parquet-basierten Tabelle in Spark und Ausführen von Abfragen über SQL On-Demand
 
-In diesem Szenario verfügen Sie über eine Spark-Datenbank namens `mytestdb`. Weitere Informationen finden Sie unter [Erstellen einer Spark-Datenbank und Herstellen einer Verbindung (SQL On-Demand)](database.md#create--connect-to-spark-database---sql-on-demand).
+In diesem Szenario verfügen Sie über eine Spark-Datenbank namens `mytestdb`. Weitere Informationen finden Sie unter [Erstellen einer Spark-Datenbank und Herstellen einer Verbindung mit SQL On-Demand](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
 
 Führen Sie den folgenden Befehl aus, um mit SparkSQL eine verwaltete Spark-Tabelle zu erstellen:
 
@@ -153,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="creating-an-external-table-backed-by-parquet-in-spark-and-querying-it-from-sql-on-demand"></a>Erstellen einer externen, Parquet-basierten Tabelle in Spark und Ausführen von Abfragen über SQL On-Demand
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Erstellen einer externen, Parquet-basierten Tabelle in Spark und Ausführen von Abfragen über SQL On-Demand
 
 In diesem Beispiel wird eine externe Spark-Tabelle auf der Grundlage der Parquet-Datendateien erstellt, die im vorherigen Beispiel für die verwaltete Tabelle erstellt wurden.
 

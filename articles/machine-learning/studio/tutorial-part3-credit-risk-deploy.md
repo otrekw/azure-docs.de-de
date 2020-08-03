@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial 3: Bereitstellen eines Kreditrisikomodells'
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 'ML Studio (Classic) – Tutorial 3: Bereitstellen von Kreditrisikomodellen – Azure'
 description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch) Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe. Hier erfahren Sie, wie Sie ein Modell als Webdienst bereitstellen.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung, bereitstellen, Webdienst
-author: sdgilley
-ms.author: sgilley
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fb0b59374edf322e5e2221b90e912ee2c665bac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/27/2020
+ms.openlocfilehash: 21b2308fb931d1c0932184dcc7946e99d3551b13
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324861"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio (klassisch)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**.
 
@@ -227,7 +227,10 @@ Im vorherigen Schritt in dieses Tutorials haben Sie einen Webdienst bereitgestel
 Der Webdienst ist ein Azure-Webdienst, der Daten auf eine von zwei Arten über REST-APIs empfangen und zurückgeben kann:  
 
 * **Anfrage/Antwort:** Der Benutzer sendet über das HTTP-Protokoll eine oder mehrere Zeilen Kreditdaten an den Dienst, und dieser antwortet mit einem oder mehreren Sätzen von Ergebnissen.
-* **Batchausführung:** Der Benutzer speichert Zeilen von Kreditdaten in einem Azure-Blob und sendet den Speicherorts des Blobs dann an den Dienst. Der Dienst bewertet alle Datenzeilen im Eingabeblob, speichert die Ergebnisse in einem anderen Blob und gibt die URL dieses Containers zurück.  
+* **Batchausführung:** Der Benutzer speichert Zeilen von Kreditdaten in einem Azure-Blob und sendet den Speicherorts des Blobs dann an den Dienst. Der Dienst bewertet alle Datenzeilen im Eingabeblob, speichert die Ergebnisse in einem anderen Blob und gibt die URL dieses Containers zurück. 
+
+> [!NOTE]
+> Featurespaltennamen in Studio (Classic) berücksichtigen die **Groß-/Kleinschreibung**. Stellen Sie sicher, dass Ihre Eingabedaten für den Aufruf des Webdiensts dieselben Spaltennamen wie im Trainingsdataset aufweisen.
 
 Weitere Informationen zum Zugriff auf den Webdienst und zu seiner Nutzung finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage](/azure/machine-learning/studio/consume-web-services).
 

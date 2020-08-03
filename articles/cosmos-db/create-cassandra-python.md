@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a388cde60e0d19aed1af9620f82b7baa6d5b08fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118271"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067314"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem Python-SDK und Azure Cosmos DB
 
@@ -137,9 +137,9 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto die Option **Verbindungszeichenfolge** aus. 
 
-1. Verwenden Sie die Schaltfläche ![Schaltfläche „Kopieren“](./media/create-cassandra-python/copy.png) auf der rechten Seite des Bildschirms, um den obersten Wert (den Kontaktpunkt) zu kopieren.
+1. Verwenden Sie die Schaltfläche :::image type="icon" source="./media/create-cassandra-python/copy.png"::: auf der rechten Seite des Bildschirms, um den obersten Wert (den Kontaktpunkt) zu kopieren. 
 
-    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Anzeigen und Kopieren eines Benutzernamens, Kennworts und Kontaktpunkts für den Zugriff im Azure-Portal auf dem Blatt „Verbindungszeichenfolge“":::
+   :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Anzeigen und Kopieren eines Benutzernamens, Kennworts und Kontaktpunkts für den Zugriff im Azure-Portal auf dem Blatt „Verbindungszeichenfolge“":::
 
 1. Speichern Sie die Datei *config.py*. 
 

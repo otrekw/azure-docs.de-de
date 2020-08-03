@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496050"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387335"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadaten
 
@@ -40,7 +40,7 @@ Das Modell mit gemeinsam genutzten Metadaten unterstützt das moderne Data Wareh
 
 Die Objektsynchronisierung erfolgt asynchron. Daher dauert es ein paar Sekunden, bis Objekte im SQL-Kontext angezeigt werden. Sobald sie angezeigt werden, können sie von SQL-Engines mit entsprechendem Zugriff abgefragt (aber nicht aktualisiert oder geändert) werden.
 
-## <a name="which-metadata-objects-are-shared"></a>Gemeinsam genutzte Metadatenobjekte
+## <a name="shared-metadata-objects"></a>Freigegebene Metadatenobjekte
 
 Spark ermöglicht das Erstellen von Datenbanken, externen Tabellen, verwalteten Tabellen und Sichten. Da Spark-Sichten eine Spark-Engine für die Verarbeitung der definierenden Spark-SQL-Anweisung erfordern und nicht von einer SQL-Engine verarbeitet werden können, werden nur Datenbanken und die darin enthaltenen externen und verwalteten Tabellen im Parquet-Speicherformat gemeinsam mit der SQL-Engine des Arbeitsbereichs genutzt. Spark-Sichten werden nur von den Spark-Poolinstanzen gemeinsam genutzt.
 

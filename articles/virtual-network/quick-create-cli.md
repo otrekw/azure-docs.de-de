@@ -1,7 +1,7 @@
 ---
 title: 'Erstellen eines virtuellen Netzwerks: Schnellstart – Azure CLI'
 titlesuffix: Azure Virtual Network
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über Azure CLI ein virtuelles Netzwerk erstellen. In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer privat miteinander und mit dem Internet kommunizieren.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über Azure CLI ein virtuelles Netzwerk erstellen. Ein virtuelles Netzwerk ermöglicht die Kommunikation der Azure-Ressourcen untereinander und mit dem Internet.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed535c76ae3c456c8aa7d2e14301b9cb9cb288be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235197"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283179"
 ---
-# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Netzwerks mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 
 In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer (VMs) privat miteinander und mit dem Internet kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit. Anschließend stellen Sie über das Internet eine Verbindung mit den VMs her und kommunizieren privat über das neue virtuelle Netzwerk.
 

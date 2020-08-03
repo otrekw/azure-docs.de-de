@@ -1,6 +1,6 @@
 ---
 title: Virtuelles Azure-Netzwerk | Microsoft-Dokumentation
-description: Enthält Informationen zu den Konzepten und Features des virtuellen Azure-Netzwerks (Azure Virtual Network).
+description: Erfahren Sie mehr über die Konzepte und Features von Azure Virtual Network, einschließlich Adressraum, Subnetze, Regionen und Abonnements.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3fd958ba1ef4ec4b8a198bcd5da497dc191be73d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040604"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386995"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -27,7 +27,7 @@ Azure Virtual Network (VNET) ist der grundlegende Baustein für Ihr privates Net
 ## <a name="vnet-concepts"></a>VNET-Konzepte
 
 - **Adressraum:** Beim Erstellen eines VNET müssen Sie einen benutzerdefinierten privaten IP-Adressraum mit öffentlichen und privaten Adressen (RFC 1918) eingeben. Azure weist Ressourcen in einem virtuellen Netzwerk eine private IP-Adresse aus dem von Ihnen zugewiesenen Adressraum zu. Wenn Sie beispielsweise einen virtuellen Computer in einem VNET mit dem Adressraum 10.0.0.0/16 bereitstellen, wird er einer privaten IP-Adresse zugewiesen, z. B. 10.0.0.4.
-- **Subnetze:** Mithilfe von Subnetzen können Sie das virtuelle Netzwerk in ein oder mehrere Subnetze segmentieren und jedem Subnetz einen Teil des Adressraums des virtuellen Netzwerks zuordnen. Dann können Sie Azure-Ressourcen in einem bestimmten Subnetz bereitstellen. Wie in einem herkömmlichen Netzwerk können Sie mit Subnetzen Ihren VNET-Adressraum in Segmente unterteilen, die für das interne Netzwerk des Unternehmens geeignet sind. Dadurch wird auch die Adresszuordnung optimiert. Sie können Ressourcen in Subnetzen mit Netzwerksicherheitsgruppen sichern. Weitere Informationen finden Sie unter [Sicherheitsgruppen](security-overview.md).
+- **Subnetze:** Mithilfe von Subnetzen können Sie das virtuelle Netzwerk in ein oder mehrere Subnetze segmentieren und jedem Subnetz einen Teil des Adressraums des virtuellen Netzwerks zuordnen. Dann können Sie Azure-Ressourcen in einem bestimmten Subnetz bereitstellen. Wie in einem herkömmlichen Netzwerk können Sie mit Subnetzen Ihren VNET-Adressraum in Segmente unterteilen, die für das interne Netzwerk des Unternehmens geeignet sind. Dadurch wird auch die Adresszuordnung optimiert. Sie können Ressourcen in Subnetzen mit Netzwerksicherheitsgruppen sichern. Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen](security-overview.md).
 - **Regionen:** Ein VNET ist auf eine Region oder einen Standort begrenzt. Mehrere virtuelle Netzwerke aus verschiedenen Regionen können jedoch über Peering virtueller Netzwerke miteinander verbunden werden.
 - **Abonnement:** Ein VNET ist auf ein Abonnement begrenzt. Sie können in jedem Azure-[Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) und in jeder Azure-[Region](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) mehrere virtuelle Netzwerke implementieren.
 
@@ -67,7 +67,7 @@ Sie können Ihre lokalen Computer und Netzwerke unter Verwendung einer beliebige
 
 Sie können den Netzwerkdatenverkehr zwischen Subnetzen filtern, indem Sie eine oder beide folgenden Optionen verwenden:
 
-- **Sicherheitsgruppen**: Netzwerksicherheitsgruppen und Anwendungssicherheitsgruppen können mehrere Sicherheitsregeln für die eingehende und ausgehende Richtung enthalten, mit denen Sie den Datenverkehr in beiden Richtungen nach Quell- und Ziel-IP-Adresse, Port und Protokoll filtern können. Weitere Informationen siehe [Netzwerksicherheitsgruppen](security-overview.md#network-security-groups) und [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
+- **Netzwerksicherheitsgruppen:** Netzwerksicherheitsgruppen und Anwendungssicherheitsgruppen können mehrere Sicherheitsregeln für die eingehende und ausgehende Richtung enthalten, mit denen Sie den Datenverkehr in beiden Richtungen nach Quell- und Ziel-IP-Adresse, Port und Protokoll filtern können. Weitere Informationen siehe [Netzwerksicherheitsgruppen](security-overview.md#network-security-groups) und [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
 - **Virtuelle Netzwerkgeräte**: Ein virtuelles Netzwerkgerät ist ein virtueller Computer, der eine Netzwerkfunktion (Firewall, WAN-Optimierung oder Ähnliches) übernimmt. Eine Liste mit verfügbaren virtuellen Netzwerkgeräten, die Sie in einem virtuellen Netzwerk bereitstellen können, finden Sie im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
 ## <a name="route-network-traffic"></a>Weiterleiten von Netzwerkdatenverkehr

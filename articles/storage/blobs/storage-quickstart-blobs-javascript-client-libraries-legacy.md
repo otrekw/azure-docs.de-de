@@ -6,21 +6,24 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0db110d02211323f64e7ffe795f72e3a5003ec91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161124"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282040"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>Schnellstart: Verwalten von Blobs per JavaScript v10 SDK im Browser
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs per JavaScript-Code verwalten, der vollständig im Browser ausgeführt wird. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Sie nutzen die erforderlichen Sicherheitsmaßnahmen, um den geschützten Zugriff auf Ihr Blobspeicherkonto sicherzustellen.
+
+> [!NOTE]
+> In dieser Schnellstartanleitung wird eine Legacy-Version der Azure Blob Storage-Clientbibliothek verwendet. Informationen zu den ersten Schritten mit der neuesten Version finden Sie unter [Schnellstart: Verwalten von Blobs mit dem JavaScript v12 SDK in einem Browser](quickstart-blobs-javascript-browser.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

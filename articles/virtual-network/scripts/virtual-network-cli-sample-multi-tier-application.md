@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 39a993324a476f0e1f1d17858ae126742e4f69f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2dfbb7a7a046486a04bd55f8c4486d448c131486
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74083861"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073986"
 ---
-# <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Skriptbeispiel für das Erstellen eines Netzwerks für Anwendungen mit mehreren Ebenen
+# <a name="create-a-virtual-network-for-multi-tier-applications-using-an-azure-cli-script-sample"></a>Erstellen eines virtuellen Netzwerks für Anwendungen mit mehreren Ebenen unter Verwendung eines Azure CLI-Skriptbeispiels
 
 In diesem Skriptbeispiel wird ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetz erstellt. Der Datenverkehr am Front-End-Subnetz ist auf HTTP und SSH beschränkt, während der Datenverkehr zum Back-End-Subnetz auf MySQL und Port 3306 beschränkt ist. Nach dem Ausführen des Skripts haben Sie zwei virtuelle Computer – einen in jedem Subnetz – denen Sie Webserver- und MySQL-Software bereitstellen können.
 

@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496008"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385533"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gemeinsam genutzte Azure Synapse Analytics-Datenbank
 
@@ -34,7 +34,7 @@ Verwalten Sie von Spark erstellte Datenbanken mithilfe von Spark. Löschen Sie s
 
 Wenn Sie mithilfe von SQL On-Demand Objekte in einer von Spark erstellten Datenbank erstellen oder versuchen, die Datenbank zu löschen, ist der Vorgang erfolgreich. Die ursprüngliche Spark-Datenbank wird jedoch nicht geändert.
 
-## <a name="handling-of-name-conflicts"></a>Behandeln von Namenskonflikten
+## <a name="how-name-conflicts-are-handled"></a>Behandeln von Namenskonflikten
 
 Im Falle eines Namenskonflikts zwischen einer Spark-Datenbank und einer vorhandenen SQL On-Demand-Datenbank wird in SQL On-Demand ein Suffix an die Spark-Datenbank angefügt. Das Suffix in SQL On-Demand ist `_<workspace name>-ondemand-DefaultSparkConnector`.
 
@@ -57,7 +57,7 @@ Wenn ein Sicherheitsprinzipal Objekte in einer Datenbank erstellen oder löschen
 
 ## <a name="examples"></a>Beispiele
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>Erstellen einer Spark-Datenbank und Herstellen einer Verbindung (SQL On-Demand)
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>Erstellen einer Spark-Datenbank und Herstellen einer Verbindung mit SQL On-Demand
 
 Erstellen Sie zunächst unter Verwendung eines Spark-Clusters, den Sie bereits in Ihrem Arbeitsbereich erstellt haben, eine neue Spark-Datenbank mit dem Namen `mytestdb`. Hierzu können Sie beispielsweise ein Spark-C#-Notebook mit der folgenden Anweisung vom Typ „.NET für Spark“ verwenden:
 

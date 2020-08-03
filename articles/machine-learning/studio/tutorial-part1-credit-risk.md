@@ -1,6 +1,5 @@
 ---
-title: 'Tutorial 1: Vorhersagen des Kreditrisikos'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic) – Tutorial: Vorhersagen des Kreditrisikos – Azure'
 description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch) Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.  Es wird beschrieben, wie Sie einen Arbeitsbereich erstellen, Daten hochladen und ein Experiment erstellen.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
@@ -10,14 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8e2d0cd0d9aa567cfab9e2fef66ad6363e59d53
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086108"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324895"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio (klassisch)
+
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -175,7 +177,7 @@ Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in 
 
 ### <a name="prepare-the-data"></a>Vorbereiten der Daten
 
-Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie **Visualisieren**.  
+Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie hierzu auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie die Option **Visualize**.  
 
 Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio (klassisch) allgemeine Überschriften (Col1, Col2 *usw.* ) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn Sie dieses Modell später in einem Webdienst veröffentlichen, kann der Benutzer des Diensts die Spalten anhand der Überschriften außerdem leichter identifizieren.  
 
@@ -311,6 +313,6 @@ Sie können jetzt Modelle für diese Daten trainieren und bewerten.
 > [Tutorial 2: Trainieren und Bewerten von Modellen](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
+[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data

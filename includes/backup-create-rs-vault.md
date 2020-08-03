@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003823"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -51,6 +51,10 @@ Führen Sie die folgenden Schritte aus, um einen Recovery Services-Tresor zu er
       > Wenn Sie den Speicherort der Datenquelle nicht kennen, schließen Sie das Dialogfeld. Navigieren Sie zur Liste Ihrer Ressourcen im Portal. Falls Sie über Datenquellen in mehreren Regionen verfügen, erstellen Sie für jede Region einen Recovery Services-Tresor. Erstellen Sie den Tresor am ersten Speicherort, bevor Sie den Tresor für einen anderen Speicherort erstellen. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und Azure Backup führen diesen Schritt automatisch aus.
       >
       >
+
+1. Wählen Sie nach dem Angeben der Werte die Option **Überprüfen + erstellen** aus.
+
+    ![Erstellen des Recovery Services-Tresors](./media/backup-create-rs-vault/review-and-create.png)
 
 1. Wenn Sie den Recovery Services-Tresor erstellen möchten, wählen Sie **Erstellen** aus.
 

@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252435"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385777"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Schnellstart: Erstellen eines Budgets mit einer ARM-Vorlage
 
@@ -29,13 +29,31 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Von der ARM-Vorlage werden nur Azure-Abonnements für Enterprise Agreements (EAs) unterstützt. Andere Abonnementtypen werden von der Vorlage nicht unterstützt.
-
-Zum Erstellen und Verwalten von Budgets müssen Sie über die Berechtigung „Mitwirkender“ verfügen. Sie können individuelle Budgets für EA-Abonnements und Ressourcengruppen erstellen. Sie können jedoch keine Budgets für EA-Abrechnungskonten erstellen. Zum Anzeigen von Budgets für Azure EA-Abonnements müssen Sie über Lesezugriff verfügen.
-
-Nach der Erstellung eines Budgets benötigen Sie mindestens Lesezugriff auf Ihr Azure-Konto, um Budgets anzeigen zu können.
-
 Bei einem neuen Abonnement können Sie nicht sofort ein Budget erstellen oder andere Cost Management-Features nutzen. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können.
+
+Budgets werden für die folgenden Arten von Azure-Kontentypen und -Bereichen unterstützt:
+
+- RBAC-Bereiche (Role-Based Access Control, rollenbasierte Zugriffssteuerung)
+    - Verwaltungsgruppen
+    - Subscription
+- Enterprise Agreement-Bereiche
+    - Abrechnungskonto
+    - Department
+    - Registrierungskonto
+- Individuelle Vereinbarungen
+    - Abrechnungskonto
+- Bereiche für Microsoft-Kundenvereinbarung
+    - Abrechnungskonto
+    - Abrechnungsprofil
+    - Rechnungsabschnitt
+    - Kunde
+- AWS-Bereiche
+    - Externes Konto
+    - Externes Abonnement
+
+Um Budgets anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
+
+Zum Anzeigen von Budgets für Azure EA-Abonnements müssen Sie über Lesezugriff verfügen. Zum Erstellen und Verwalten von Budgets müssen Sie über die Berechtigung „Mitwirkender“ verfügen.
 
 Die folgenden Azure-Berechtigungen (oder Bereich) werden pro Abonnement für Budgets nach Benutzer und Gruppe unterstützt. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
@@ -49,7 +67,7 @@ Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten f
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/create-budget).
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
 
 In der Vorlage ist eine einzelne Azure-Ressource definiert:
 
@@ -63,27 +81,29 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
 
 2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
-   [![Resource Manager-Vorlage, Budgeterstellung, Bereitstellung (Portal)](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
-
+   :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager-Vorlage, Budgeterstellung, Bereitstellung (Portal)" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
+   
     * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
-    * **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie anschließend auf **OK**, oder wählen Sie eine bereits vorhandene Ressourcengruppe aus.
-    * **Standort**: Wählen Sie einen Standort aus. Beispiel: **USA, Mitte**.
+    * **Ressourcengruppe**: Wenn erforderlich, wählen Sie eine vorhandene Ressourcengruppe oder **Neu erstellen** aus.
+    * **Region**: Wählen Sie eine Azure-Region aus. Beispiel: **USA, Mitte**.
     * **Budgetname**: Geben Sie einen Namen für das Budget ein. Dieser muss innerhalb einer Ressourcengruppe eindeutig sein. Es sind nur alphanumerische Zeichen sowie Unter- und Bindestriche zulässig.
-    * **Menge**: Geben Sie den Gesamtumfang der Kosten oder Nutzung ein, der mit dem Budget nachverfolgt werden soll.
-    * **Budgetkategorie**: Wählen Sie aus, ob das Budget zur Nachverfolgung von **Kosten** oder zur Nachverfolgung der **Nutzung** dient.
+    * **Betrag**: Geben Sie den Gesamtbetrag der Kosten ein, der mit dem Budget nachverfolgt werden soll.
     * **Aggregationsintervall**: Geben Sie den von einem Budget abgedeckten Zeitraum ein. Zulässige Werte sind „Monatlich“, „Vierteljährlich“ und „Jährlich“. Das Budget wird am Ende des Aggregationsintervalls zurückgesetzt.
     * **Startdatum**: Geben Sie das Startdatum mit dem ersten Tag des Monats im Format „JJJJ-MM-TT“ ein. Das Startdatum darf nicht mehr als drei Monate in der Zukunft liegen. Sie können ein in der Vergangenheit liegendes Startdatum mit dem Aggregationsintervall angeben.
-    * **Enddatum**: Geben Sie das Enddatum für das Budget im Format „JJJJ-MM-TT“ ein. Ohne Angabe wird standardmäßig ein Wert verwendet, der zehn Jahre nach dem Startdatum liegt.
-    * **Operator**: Wählen Sie einen Vergleichsoperator aus. Mögliche Werte sind „EqualTo“, „GreaterThan“ und „GreaterThanOrEqualTo“.
-    * **Schwellenwert**: Geben Sie einen Schwellenwert für die Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
-    * **Contact Emails** (Kontakt-E-Mail-Adressen): Geben Sie eine Liste von E-Mail-Adressen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Erwartetes Format: `["user1@domain.com","user2@domain.com"]`.
+    * **Enddatum**: Geben Sie das Enddatum für das Budget im Format „JJJJ-MM-TT“ ein. 
+    * **Erster Schwellenwert**: Geben Sie einen Schwellenwert für die erste Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
+    * **Zweiter Schwellenwert**: Geben Sie einen Schwellenwert für die zweite Benachrichtigung ein. Eine Benachrichtigung wird gesendet, wenn die Kosten den Schwellenwert übersteigen. Hierbei handelt es sich immer um einen Prozentwert, und er muss zwischen „0“ und „1.000“ liegen.
     * **Contact Roles** (Kontaktrollen): Geben Sie die Liste der Kontaktrollen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Standardwerte sind „Besitzer“, „Mitwirkender“ und „Leser“. Erwartetes Format: `["Owner","Contributor","Reader"]`.
+    * **Kontakt-E-Mail-Adressen**: Geben Sie eine Liste von E-Mail-Adressen ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn ein Schwellenwert überschritten wird. Erwartetes Format: `["user1@domain.com","user2@domain.com"]`.
     * **Contact Groups** (Kontaktgruppen): Geben Sie eine Liste von Aktionsgruppenressourcen-IDs ein, an die die Budgetbenachrichtigung gesendet werden soll, wenn der Schwellenwert überschritten wird. Für diese Angabe wird ein Zeichenfolgenarray akzeptiert. Erwartetes Format: `["action group resource ID1","action group resource ID2"]`. Falls Sie keine Aktionsgruppen verwenden möchten, geben Sie `[]` ein.
-    * **Resources Filter** (Ressourcenfilter): Geben Sie eine Liste mit Filtern für Ressourcen ein. Erwartetes Format: `["Resource Filter Name1","Resource Filter Name2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein. Bei Eingabe eines Ressourcenfilters müssen auch Werte für **Meters Filter** (Verbrauchseinheitenfilter) eingegeben werden.
-    * **Meters Filter** (Verbrauchseinheitenfilter): Geben Sie eine Liste mit auf Verbrauchseinheiten basierenden Filtern ein. Diese Angabe ist bei der Budgetkategorie **Nutzung** obligatorisch. Erwartetes Format: `["Meter Filter Name1","Meter Filter Name2"]`. Sollten Sie keinen **Ressourcenfilter** eingegeben haben, geben Sie `[]` ein.
-    * **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
+    * **Filterwerte für Ressourcengruppe**: Geben Sie eine Liste von Ressourcengruppennamen ein, um danach zu filtern. Erwartetes Format: `["Resource Group Name1","Resource Group Name2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein. 
+    * **Filterwerte für Kategorie der Abrechnungseinheit**: Geben Sie eine Liste von Kategorien für die Abrechnungseinheit des Azure-Diensts ein. Erwartetes Format: `["Meter Category1","Meter Category2"]`. Falls Sie keinen Filter anwenden möchten, geben Sie `[]` ein.
+   
+3. Führen Sie abhängig vom Azure-Abonnementtyp eine der folgenden Aktionen aus:
+   - Klicken Sie auf **Überprüfen + erstellen**.
+   - Lesen Sie die Geschäftsbedingungen, und wählen Sie die Option **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann **Kaufen** aus.
 
-3. Wählen Sie die Option **Kaufen**. Nach erfolgreicher Bereitstellung des Budgets erhalten Sie eine Benachrichtigung:
+4. Wenn Sie **Überprüfen + erstellen** ausgewählt haben, wird die Vorlage überprüft. Klicken Sie auf **Erstellen**.  
 
    ![Resource Manager-Vorlage, Budget, Bereitstellungsbenachrichtigung (Portal)](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 

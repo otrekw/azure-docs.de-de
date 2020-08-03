@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: c60d27cb75526d801880658846a6b61760f4bf7e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 154e4c9421d1c0a54b3d9b5f53424e7640fe62d8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508082"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323569"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen eines virtuellen Windows-Computers in Azure
 
@@ -93,7 +93,7 @@ So aktivieren Sie die Überwachung Ihrer virtuellen Azure-Computer mit Azure Mon
     In der Liste sind Standardarbeitsbereich und Speicherort, in dem die VM im Abonnement bereitgestellt wird, vorab ausgewählt. 
 
     >[!NOTE]
-    >Informationen zum Erstellen eines neuen Log Analytics-Arbeitsbereichs für das Speichern der Überwachungsdaten aus der VM finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../../azure-monitor/learn/quick-create-workspace.md). Der Log Analytics-Arbeitsbereich muss einer der [unterstützten Regionen](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics) angehören.
+    >Informationen zum Erstellen eines neuen Log Analytics-Arbeitsbereichs für das Speichern der Überwachungsdaten aus der VM finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../../azure-monitor/learn/quick-create-workspace.md). Der Arbeitsbereich muss einer der [unterstützten Regionen](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions) angehören.
 
 Nachdem Sie die Überwachung aktiviert haben, müssen Sie möglicherweise etwa einige Minuten warten, bis die Leistungsmetriken für die VM angezeigt werden.
 

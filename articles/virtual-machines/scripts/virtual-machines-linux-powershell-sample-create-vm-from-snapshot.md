@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen eines virtuellen Computers auf der Grundlage einer Momentaufnahme: PowerShell-Beispiel'
+title: 'Erstellen eines virtuellen Computers auf der Grundlage einer Momentaufnahme (Linux): PowerShell-Beispiel'
 description: Azure PowerShell-Skriptbeispiel – Erstellen eines virtuellen Computers aus einer Momentaufnahme
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 21e31df7552dfe5e6368235173622695078626b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6bf74b9040ec3f677c23c84f8ece22befb35d56
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75463656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010290"
 ---
-# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Erstellen eines virtuellen Computers aus einer Momentaufnahme mit PowerShell
+# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-linux"></a>Erstellen eines virtuellen Computers aus einer Momentaufnahme mit PowerShell (Linux)
 
 Dieses Skript erstellt einen virtuellen Computer aus einer Momentaufnahme eines Betriebssystemdatenträgers.
 
@@ -48,18 +48,18 @@ Dieses Skript verwendet die folgenden Befehle, um die Eigenschaften einer Moment
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | Ruft eine Momentaufnahme unter Verwendung ihres Namens ab. |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | Erstellt eine Datenträgerkonfiguration. Diese Konfiguration wird mit dem Prozess der Erstellung des Datenträgers verwendet. |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | Erstellt einen verwalteten Datenträger. |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | Erstellt eine VM-Konfiguration. Diese Konfiguration umfasst Informationen wie VM-Name, Betriebssystem und Administratoranmeldeinformationen. Die Konfiguration wird während der VM-Erstellung verwendet. |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | Fügt den verwalteten Datenträger als Betriebssystemdatenträger an den virtuellen Computer an. |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse. |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | Erstellt eine Netzwerkschnittstelle. |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Erstellt einen virtuellen Computer. |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | Ruft eine Momentaufnahme unter Verwendung ihres Namens ab. |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | Erstellt eine Datenträgerkonfiguration. Diese Konfiguration wird mit dem Prozess der Erstellung des Datenträgers verwendet. |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | Erstellt einen verwalteten Datenträger. |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Erstellt eine VM-Konfiguration. Diese Konfiguration umfasst Informationen wie VM-Name, Betriebssystem und Administratoranmeldeinformationen. Die Konfiguration wird während der VM-Erstellung verwendet. |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | Fügt den verwalteten Datenträger als Betriebssystemdatenträger an den virtuellen Computer an. |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse. |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Erstellt eine Netzwerkschnittstelle. |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | Erstellt einen virtuellen Computer. |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).
 
 Zusätzliche VM-PowerShell-Skriptbeispiele finden Sie in der [Dokumentation zu Linux-VMs in Azure](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

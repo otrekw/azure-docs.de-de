@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: aca0d67326a5a0488d0108efa9acd0d01c7788cd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 72e199e45047e1b425b2587c6b4028efb84060df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "84819931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087440"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Was ist Azure API for FHIR&reg;?
 
@@ -82,11 +82,31 @@ FHIR-Funktionen von Microsoft sind in zwei Konfigurationen verfügbar:
 
 Für Anwendungsfälle, bei denen der FHIR-Server erweitert oder angepasst werden muss oder der Zugriff auf zugrunde liegende Dienste, z. B. die Datenbank, erforderlich ist, ohne dass der Weg über die FHIR-APIs gewählt wird, sollten Entwickler die Open-Source-Version des FHIR-Servers für Azure wählen.   Für die Implementierung einer fertigen und für die Produktion geeigneten FHIR-API und eines Back-End-Diensts, bei der auf gespeicherte Daten nur über die FHIR-API zugegriffen werden sollte, sollten Entwickler Azure API for FHIR wählen.
 
+## <a name="iot-connector-preview"></a>IoT Connector (Vorschau)
+
+IoT Connector ist ein optionales Feature von Azure API for FHIR, das die Erfassung der Daten von IoMT-Geräten (Internet of Medical Things) ermöglicht. Internet of Medical Things (Internet der medizinischen Dinge) ist eine Kategorie von IoT-Geräten, die Gesundheits- und Befindlichkeitsdaten erfassen und über ein Netzwerk mit anderen IT-Systemen im Gesundheitswesen austauschen. Einige Beispiele für IoMT-Geräte sind Fitness- und klinische Wearables, Überwachungssensoren, Aktivitätstracker, Point-of-Care-Kioske oder sogar eine digitale Pille. Mit dem IoT Connector-Feature können Sie schnell einen Dienst einrichten, um IoMT-Daten auf skalierbare, sichere und konforme Weise in Azure API for FHIR zu erfassen.
+
+IoT Connector kann alle JSON-basierten Nachrichten akzeptieren, die von einem IoMT-Gerät gesendet werden. Diese Daten werden zunächst in geeignete FHIR-basierte [Überwachungsressourcen](https://www.hl7.org/fhir/observation.html) transformiert und dann dauerhaft in Azure API for FHIR gespeichert. Die Datentransformationslogik wird durch ein Paar von Zuordnungsvorlagen definiert, die Sie basierend auf Ihrem Nachrichtenschema und Ihren FHIR-Anforderungen konfigurieren. Gerätedaten können direkt an IoT Connector übermittelt oder nahtlos mit anderen Azure IoT-Lösungen ([Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) und [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)) verwendet werden. IoT Connector bietet eine sichere Datenpipeline und ermöglicht den Azure IoT-Lösungen, Bereitstellung und Wartung der physischen Geräte zu verwalten.
+
+### <a name="applications-of-iot-connector-preview"></a>Anwendungen von IoT Connector (Vorschau)
+
+Der Einsatz von IoMT-Geräten nimmt im Gesundheitswesen rapide zu, und IoT Connector wurde entwickelt, um die Lücke zu schließen, damit Daten von mehreren Geräten auf sichere und konforme Weise in Azure API for FHIR eingebunden werden können. Das Einbinden von IoMT-Daten in einen FHIR-Server ermöglicht ganzheitliche Einblicke in Daten und innovative Arbeitsabläufe in Kliniken. Hier einige gängige Szenarien für IoT Connector:
+- **Remote-Patientenüberwachung/Telegesundheitssystem:** Die Remote-Patientenüberwachung bietet die Möglichkeit, Gesundheitsdaten von Patienten außerhalb der herkömmlichen Gegebenheiten des Gesundheitssystems zu erfassen. Institutionen des Gesundheitswesens können mithilfe von IoT Connector Gesundheitsdaten, die von Remotegeräten generiert wurden, in Azure API for FHIR einbinden. Diese Daten können verwendet werden, um den Gesundheitszustand von Patienten genau zu verfolgen, die Einhaltung des Behandlungsplans durch die Patienten zu überwachen und eine personalisierte Versorgung zu bieten.
+- **Forschung und Biowissenschaften:** In klinischen Studien werden IoMT-Geräte wie Biosensoren, Wearables und mobile Apps immer häufiger zur Erfassung von Versuchsdaten eingesetzt. Hierbei können mithilfe von IoT Connector Gerätedaten auf sichere, effiziente und effektive Weise an Azure API for FHIR übertragen werden. Sobald die Versuchsdaten in Azure API for FHIR vorliegen, können sie für eine Echtzeitanalyse genutzt werden.
+- **Erweiterte Analyse:** IoMT-Geräte können Daten in großen Mengen und aus einer Vielzahl von Quellen mit hoher Geschwindigkeit bereitstellen, wodurch sie sich hervorragend für die Bereitstellung von Trainings- und Testdaten für Machine Learning-Modelle eignen. IoT Connector ist von Natur aus auf eine große Bandbreite von Datenfrequenzen, flexible Datenschemas und Cloudskalierung mit geringer Latenz ausgelegt. Diese Eigenschaften machen IoT Connector zu einer hervorragenden Wahl für die Erfassung von Gerätedaten für Ihre erweiterten Analyseanforderungen.
+- **Intelligente Krankenhäuser/Kliniken:** Heute sind intelligente Krankenhäuser und Kliniken mit der Einrichtung einer Infrastruktur verbundener digitaler Ressourcen befasst. Mit IoT Connector können Daten von diesen verbundenen Komponenten erfasst und integriert werden. Verwertbare Erkenntnisse aus einem solchen Dataset ermöglichen eine bessere Patientenversorgung und betriebliche Effizienz.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Befolgen Sie die fünfminütige Schnellstartanleitung für die Bereitstellung von Azure API for FHIR, um mit der Nutzung zu beginnen.
 
 >[!div class="nextstepaction"]
 >[Bereitstellen von Azure API for FHIR](fhir-paas-portal-quickstart.md)
+
+Wenn Sie das IoT Connector-Feature einmal ausprobieren möchten, sehen Sie sich den Schnellstart zum Bereitstellen von IoT Connector über das Azure-Portal an.
+
+>[!div class="nextstepaction"]
+>[Bereitstellen von IoT Connector](iot-fhir-portal-quickstart.md)
+
 
 FHIR ist ein eingetragenes Markenzeichen von HL7 und wird mit Erlaubnis von HL7 verwendet.

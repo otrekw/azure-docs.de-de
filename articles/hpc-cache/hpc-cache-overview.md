@@ -4,14 +4,15 @@ description: Beschreibt Azure HPC Cache, eine Dateizugriffsbeschleuniger-Lösung
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 05/29/2020
+ms.date: 07/16/2020
 ms.author: v-erkel
-ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: references_regions
+ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053678"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Was ist Azure HPC Cache?
 
@@ -53,22 +54,16 @@ Eine Azure HPC Cache-Bereitstellung kann zur Beschleunigung von quantitativen An
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Azure HPC Cache ist in diesen Azure-Regionen verfügbar:
+Besuchen Sie die Seite [Globale Azure-Infrastruktur / Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache), um zu erfahren, wo Azure HPC Cache verfügbar ist.
 
-| Nordamerika      | Europa         | Asia            | Australien      |
-|--------------------|----------------|-----------------|----------------|
-| East US            | Nordeuropa   | Korea, Mitte   | Australien (Osten) |
-| USA (Ost) 2          | Europa, Westen    | Asien, Südosten  |               |
-| USA Süd Mitte | | | |
-| USA, Westen 2        | | | |
-
-[Kundenseitig verwaltete Schlüssel](customer-keys.md) werden nur in folgenden Regionen unterstützt:
+[Kundenseitig verwaltete Schlüssel](customer-keys.md) werden nur in folgenden Azure-Regionen unterstützt:
 
 * East US
 * USA Süd Mitte
 * USA, Westen 2
-
-Aktuelle Informationen zur Verfügbarkeit finden Sie auf der [Produktseite für Azure HPC Cache](https://azure.microsoft.com/services/hpc-cache).
+* Europa, Westen
+* US Gov Arizona
+* US Government, Virginia
 
 ## <a name="service-availability"></a>Dienstverfügbarkeit
 
@@ -79,5 +74,5 @@ Fordern Sie den Zugriff an, indem Sie [dieses Formular](https://aka.ms/onboard-h
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu den Funktionen finden Sie auf der [Produktseite für Azure HPC Cache](https://azure.microsoft.com/services/hpc-cache).
-* Informationen zu [Produktvoraussetzungen](hpc-cache-prereqs.md)
+* Informationen zu [Produktvoraussetzungen](hpc-cache-prerequisites.md)
 * [Erstellen einer Azure HPC Cache-Instanz](hpc-cache-create.md) über das Azure-Portal

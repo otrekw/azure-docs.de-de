@@ -3,12 +3,12 @@ title: Organisieren Ihrer Ressourcen mit Verwaltungsgruppen – Azure Governanc
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963681"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132924"
 ---
 # <a name="what-are-azure-management-groups"></a>Was sind Azure-Verwaltungsgruppen?
 
@@ -100,9 +100,9 @@ Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktione
 \*: MG-Mitwirkender und MG-Leser lassen nur zu, dass Benutzer diese Aktionen im Bereich der Verwaltungsgruppe ausführen.  
 \*\*: Bei Rollenzuweisungen für die Stammverwaltungsgruppe muss kein Abonnement bzw. keine Verwaltungsgruppe in die und aus der Stammverwaltungsgruppe verschoben werden. Ausführliche Informationen zum Verschieben von Elementen in der Hierarchie finden Sie unter [Verwalten von Ressourcen mit Verwaltungsgruppen](manage.md).
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten RBAC-Rolle
+## <a name="azure-custom-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten Azure-Rolle
 
-Die Unterstützung benutzerdefinierter RBAC-Rollen für Verwaltungsgruppen befindet sich derzeit in der Vorschauphase und weist einige [Einschränkungen](#limitations) auf. Sie können den Verwaltungsgruppenbereich im zuweisbaren Bereich der Rollendefinition definieren. Diese benutzerdefinierte RBAC-Rolle steht dann für die Zuweisung zu dieser Verwaltungsgruppe und allen ihr untergeordneten Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen zur Verfügung. Diese benutzerdefinierte Rolle wird wie jede andere integrierte Rolle an die untergeordneten Ressourcen in der Hierarchie vererbt.  
+Die Unterstützung benutzerdefinierter Azure-Rollen für Verwaltungsgruppen befindet sich derzeit in der Vorschauphase und weist einige [Einschränkungen](#limitations) auf. Sie können den Verwaltungsgruppenbereich im zuweisbaren Bereich der Rollendefinition definieren. Diese benutzerdefinierte Azure-Rolle steht dann für die Zuweisung zu dieser Verwaltungsgruppe und allen ihr untergeordneten Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen zur Verfügung. Diese benutzerdefinierte Rolle wird wie jede andere integrierte Rolle an die untergeordneten Ressourcen in der Hierarchie vererbt.  
 
 ### <a name="example-definition"></a>Beispieldefinition
 
