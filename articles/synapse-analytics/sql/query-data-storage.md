@@ -1,5 +1,5 @@
 ---
-title: 'Übersicht: Abfragen von Daten im Speicher mithilfe von SQL On-Demand (Vorschauversion)'
+title: Abfragen von Daten im Speicher mithilfe von SQL On-Demand (Vorschau)
 description: In diesem Artikel wird beschrieben, wie Sie Azure Storage mit der SQL On-Demand-Ressource (Vorschau) in Azure Synapse Analytics abfragen.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259673"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386655"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Abfragen von Speicherdateien mithilfe von SQL On-Demand-Ressourcen (Vorschau) innerhalb von Synapse SQL
 
@@ -186,7 +186,7 @@ Standardmäßig gleicht die Funktion `OPENROWSET` den Namen und Pfad des Quellfe
 - Wenn die Eigenschaft im angegebenen column_name-Element nicht gefunden wird, gibt die Funktion einen Fehler zurück.
 - Wenn die Eigenschaft im angegebenen column_path-Element nicht gefunden wird, gibt die Funktion je nach [Pfadmodus](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE) im Strict-Modus einen Fehler oder im Lax-Modus NULL zurück.
 
-Beispiele für Abfragen finden Sie im Abschnitt „Zugreifen auf Elemente aus geschachtelten Spalten“ im Artikel [Abfragen von geschachtelten Parquet-Typen](query-parquet-nested-types.md#access-elements-from-nested-columns).
+Beispiele für Abfragen finden Sie im Abschnitt „Zugreifen auf Elemente aus geschachtelten Spalten“ im Artikel [Abfragen von geschachtelten Parquet-Typen](query-parquet-nested-types.md#read-properties-from-nested-object-columns).
 
 #### <a name="access-elements-from-repeated-columns"></a>Zugreifen auf Elemente aus wiederholten Spalten
 

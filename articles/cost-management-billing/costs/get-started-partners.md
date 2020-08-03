@@ -3,17 +3,17 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849867"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372143"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -123,9 +123,9 @@ Unabhängig von der Richtlinie können globale Administratoren und Administrator
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Aktivieren der Richtlinie zum Anzeigen von Azure-Nutzungsgebühren
 
-Partner verwenden die folgenden Informationen, um die Richtlinie zum Anzeigen von Azure-Nutzungsgebühren für ihre Kunden zu aktivieren.
+Sie müssen Mitglied der Gruppe **Administrator-Agent** sein, um die Richtlinie anzuzeigen und zu aktualisieren. Verwenden Sie die folgenden Informationen, um die Richtlinie zu aktivieren, die den Kunden das Anzeigen von Azure-Nutzungsgebühren ermöglicht.
 
-Melden Sie sich im Azure-Portal beim Partnermandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie das entsprechende Abrechnungskonto für die Microsoft Partner-Vereinbarung aus, und wählen Sie dann **Kunden** aus. Die Liste der Kunden wird mit dem Abrechnungskonto verknüpft.
+Melden Sie sich im Azure-Portal beim Partnermandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie unter „Abrechnungsbereich“ den relevanten Abrechnungsbereich aus, und wählen Sie dann **Kunden** aus. Die Liste der Kunden wird mit dem Abrechnungskonto verknüpft.
 
 Wählen Sie in der Liste der Kunden den Kunden aus, dem Sie die Anzeige von Kosten erlauben möchten.
 

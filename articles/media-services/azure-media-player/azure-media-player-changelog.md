@@ -5,15 +5,127 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 07/27/2020
+ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698313"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281343"
 ---
 # <a name="changelog"></a>Änderungsprotokoll #
+
+## <a name="235-official-update-june-1-2020"></a>2.3.5 (Offizielles Update vom 1. Juni 2020)
+
+### <a name="bug-fixes-235"></a>Fehlerbehebungen 2.3.5
+
+- [Barrierefreiheit] Der Listener für die ESC-Taste ist im Bereich „Optionen“ an ein Dokument angefügt.
+- [Barrierefreiheit] Verhindern, dass die Player-Benutzeroberfläche verschwindet, wenn die Steuerleiste oder das Optionsmenü den Fokus enthält.
+- Die Steuerleiste zeigt die falsche Gesamtbetrachtungszeit an, wenn die Einstellungen für die Anzeige der Gesamtbetrachtungszeit aktiviert sind.
+
+### <a name="changes-235"></a>Änderungen 2.3.5
+
+- Die Fehlermeldung für den Fehlercode 0x00400005 wurde hinzugefügt und dokumentiert.
+
+## <a name="234-official-update-march-4-2020"></a>2.3.4 (Offizielles Update vom 4. März 2020)
+
+### <a name="bug-fixes-234"></a>Fehlerbehebungen 2.3.4
+
+- PlayReady overrideLicenseAcquistionUrl konnte nicht festgelegt werden.
+- Inhalte können nicht mit Unterbrechungen wiedergegeben werden.
+- [Barrierefreiheit] Der ID-Attributwert für die Sprachausgabewarnung muss eindeutig sein.
+- [Barrierefreiheit] Beim Navigieren durch das Dialogfeld mit den Einstellungen für Untertitel für Hörgeschädigte verlässt der Fokus das Dialogfeld.
+
+### <a name="changes-234"></a>Änderungen 2.3.4
+
+- „Content-Length“ wird nach dem erfolgreichen Herunterladen protokolliert, um bei der Analyse von Entschlüsselungsfehlern zu helfen. 2.3.3 (Offizielles Update vom 12. November 2019)
+
+### <a name="features-234"></a>Features 2.3.4
+
+- Die Unterstützung für die Anzeige der Gesamtbetrachtungszeit eines Videos als Überlagerung und für die Anzeige auf der Steuerleiste wurde hinzugefügt.
+
+### <a name="bug-fixes-234"></a>Fehlerbehebungen 2.3.4
+
+- Der Wechsel des Audiotitels funktioniert, gibt aber Fehler bei IE11 und Windows 7 aus: „Objekt unterstützt Eigenschaft oder Methode 'enabled' nicht“.
+- Fehler beim Wechsel des Audiotitels, wenn der Puffer vollständig geladen ist.
+- Beim Wechsel des Audiotitels tritt ein Fehler auf, wenn der Benutzer das Video anhält und sehr schnell zwischen Audiotiteln wechselt.
+- [Barrierefreiheit] Die QuickInfos sind für das Videosteuerelement unter dem Videoplayer nicht definiert.
+- Fehlende Lautstärkeregler unter Html5, je nachdem, wann „loadstart“ empfangen wird.
+- [Barrierefreiheit] Keine Möglichkeit zum Festlegen des alternativen Texts für das Posterbild.
+- [Barrierefreiheit] Der Fokus der Anwendung ging nach der Auswahl von „Fertig“ im Dialogfeld der Untertiteleinstellungen verloren.
+- [Barrierefreiheit] Falsche ARIA-Attribute werden für „Video“ unter der Segmentvorschau definiert.
+
+### <a name="changes-234"></a>Änderungen 2.3.4
+
+- Bei der Wiedergabe von HLS unter iOS und MacOS Safari wurde eine leere Untertitelbeschriftung/Spur entfernt.
+- Die Anzahl von 412er für IMSC1-Untertitel wurde verringert.
+- Ausgabewarnung in der Konsole für 10 aufeinanderfolgende leere IMSC1-Untertitelantworten zur Unterstützung des Livedebuggings.
+
+## <a name="232-official-update-october-9-2019"></a>2.3.2 (Offizielles Update vom 9. Oktober 2019)
+
+### <a name="features"></a>Features
+
+– Die PlayReady-Unterstützung für die DASH-Wiedergabe wurde für Microsoft Edge-Browser (Chromium) hinzugefügt.
+
+### <a name="bug-fixes-232"></a>Fehlerbehebungen 2.3.2
+
+- Die aktuelle Wiedergabegeschwindigkeit wird im Menü für die Wiedergabegeschwindigkeit nicht visuell angezeigt, es sei denn, der Benutzer legt sie manuell fest.
+- [Barrierefreiheit] Der Bereich „Einstellungen“ wird durch Betätigen der ESC-Taste nicht ausgeblendet.
+- [Barrierefreiheit] Die AMP-Tastenkombination „M“ funktioniert nicht, wenn die Sprachausgabe aktiviert ist.
+
+### <a name="changes-232"></a>Änderungen 2.3.2
+
+- Bei Browsern, die den E-AC3-Audiocodec nicht unterstützen, werden E-AC3-Audiotiteln im Audiotitelmenü ausgeblendet.
+- Bei Browsern, die den E-AC3-Audiocodec unterstützen, wird standardmäßig ein E-AC3-Audiotitel ausgewählt.
+- Bei Browsern, die den Wechsel des Audiocodecs nicht unterstützen, werden Audiotitel mit einem anderen Codec als dem ausgewählten Titel im Audiotitelmenü ausgeblendet.
+
+## <a name="231-official-update-august-12-2019"></a>2.3.1 (Offizielles Update vom 12. August 2019)
+
+### <a name="features-231"></a>Features 2.3.1
+
+- Signalisieren eines Ereignisses, wenn emsg-Felder bei der DASH-Wiedergabe empfangen werden – Unterstützung hinzugefügt, um EC-3-Audiotitel im Audiomenü von Browsern anzuzeigen, die EC-3 unterstützen, und der Wechsel des Audiotitels von AAC zu EC-3 und umgekehrt wurde nur für den auf Chromimum-basierenden Edge-Browser zugelassen.
+
+### <a name="bug-fixes-231"></a>Fehlerbehebungen 2.3.1
+
+- Das Audiotitelmenü ist nach dem Entfernen von EC-3-Titeln beschädigt.
+- Die aktuelle Zeit kann größer sein als die Dauer des Videos.
+- Das Festlegen der Wiedergabegeschwindigkeit über „initialSpeed“ funktioniert nicht.
+- Gelegentlich scheint der Player nach einer Suche zu hängen.
+- Bei Edge und IE wird auf einem Touchscreen nach dem Vergrößern einer Seite das richtige Segment des Videos durch Drücken oder Zeigen auf die Suchleiste nicht ordnungsgemäß angezeigt.
+- [Barrierefreiheit] Aria-Bezeichnung für Wiedergabe/Pause ist für Videoplayer nicht aussagekräftig. Fehler „Livesegment nicht gefunden“ für flashSS zum richtigen amp-Fehler zugeordnet.
+- [Barrierefreiheit] Die für Wiedergabe/Pause verwendeten Aria-Rollen müssen mit gültigen Werten übereinstimmen (.vjs-text-track-display).
+- [Barrierefreiheit] Bestimmte Aria-Rollen müssen von bestimmten übergeordneten Elementen übernommen werden.
+- [Barrierefreiheit] Es ist keine QuickInfo für die Wiedergabe-/Pause-Schaltfläche des Videoplayers definiert. IMSC1-Untertitel können nach der Suche innerhalb des aktuellen Video-/Audiopuffers verschwinden.
+
+### <a name="changes-231"></a>Änderungen 2.3.1
+
+- Wenn er einen „segmentDecryptError“ erhält und der Player sich bereits am Liveedge befindet, aktualisiert der Player jetzt das Manifest, anstatt das nächste Segment zu versuchen.
+- Die Protokollierung für die Diagnose wurde erweitert.
+- Die Dokumentation wurde aktualisiert, um die FairPlay-Unterstützung für iOS Safari einzubeziehen.
+- Ein Beispiel für „srclang“ der IMSC1-Option wurde hinzugefügt.
+- Außerkraftsetzungen für „padding“, „textPadding“, „boxShadow“ wurden für Texttitel hinzugefügt.
+- Ein Fehlercode (0x0020025B) wurde hinzugefügt, um zu unterscheiden, dass beim Segmentdownload aufgrund einer unterbrochenen Internetverbindung ein Fehler aufgetreten ist, anstatt nur 0x00200259 auszulösen.
+
+## <a name="230-official-release-april-30-2019"></a>2.3.0 (Offizielle Version vom 30. April 2019)
+
+### <a name="features-230"></a>Features 2.3.0
+
+- Unterstützung für IMSC1-Untertitel für DASH wurde hinzugefügt.
+- Unterstützung für reine Videomedienobjekte für DASH wurde hinzugefügt.
+- API presentationTimeOffsetInSec wurde hinzugefügt.
+
+### <a name="bug-fixes-230"></a>Fehlerbehebungen 2.3.0
+
+- Das Heuristikprofil „AMP LowLatency“ steht im Konflikt mit der iOS-Videowiedergabefunktion „Stummschalten“ und „Stummschaltung aufheben“ für einige Sprachen mit falschen Übersetzungen.
+- Der aria-valuenow-Wert des Schiebereglers der Statusleiste ist manchmal falsch.
+- Der Aria-Rollenwert der Texttitelanzeige ist falsch.
+
+### <a name="changes-230"></a>Änderungen 2.3.0
+
+- Die Protokolle enthalten jetzt die Größe der heruntergeladenen Medienfragmente.
+- Unterstützung für IE 9 und IE 10 wurde entfernt.
+- Beispiel CEA708 wurde aktualisiert, um Untertitel linksbündig anzuzeigen.
+- MediaError.message wurde in Protokollen für Wiedergabefehler einbezogen.
 
 ## <a name="224-official-update-february-22-2019"></a>2.2.4 (Offizielles Update vom 22. Februar 2019) ##
 
@@ -31,7 +143,7 @@ ms.locfileid: "83698313"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3 (Offizielles Update vom 9. Januar 2019) ##
 
-### <a name="features"></a>Features ###
+### <a name="features-223"></a>Features 2.2.3 ###
 
 - [Feature][HLS] Audiotitelmenü für Safari-HLS-Wiedergabe hinzugefügt
 
@@ -72,7 +184,7 @@ ms.locfileid: "83698313"
 
 ### <a name="changes"></a>Änderungen ###
 
-- [Änderung][Live-Untertitelung] API-Name für CEA-Untertitel von 608 in 708 geändert. Weitere Informationen finden Sie auf der [Seite mit den Einstellungen für CEA708-Untertitel](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->.
+- [Änderung][Live-Untertitelung] API-Name für CEA-Untertitel von 608 in 708 geändert. Weitere Informationen finden Sie auf der [Seite mit den Einstellungen für CEA708-Untertitel](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->.
 
 ## <a name="220-official-release"></a>2.2.0 (Offizielle Version) ##
 

@@ -6,23 +6,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 504ba9106cc9d617858e8fad7ea421c8707707b3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 19da911cbc662f47e7bbd16aaddf8803d4109d6a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171271"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369257"
 ---
 Verwenden Sie die LUIS-Runtime-Clientbibliothek (Language Understanding) für Node.js für Folgendes:
 
 * Vorhersage nach Slot
 * Vorhersage nach Version
 
-[Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [Runtimepaket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js)
+[Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [Runtimepaket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,8 +35,6 @@ Verwenden Sie die LUIS-Runtime-Clientbibliothek (Language Understanding) für No
 ### <a name="get-your-language-understanding-luis-runtime-key"></a>Abrufen Ihres LUIS-Runtimeschlüssels (Language Understanding)
 
 Erstellen Sie eine LUIS-Runtimeressource, um Ihren [Runtimeschlüssel](../luis-how-to-azure-subscription.md) zu erhalten. Den Schlüssel und den Endpunkt des Schlüssels benötigen Sie im nächsten Schritt.
-
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
 ### <a name="create-a-new-javascript-nodejs-file"></a>Erstellen einer neuen JavaScript-Datei (Node.js)
 
@@ -75,13 +73,11 @@ In den bereitgestellten Codeausschnitten wird veranschaulicht, wie Sie die folge
 
 1. Erstellen Sie Variablen für die benötigten LUIS-Informationen:
 
-    Fügen Sie Variablen zur Verwaltung Ihres Vorhersageschlüssels hinzu, der aus einer Umgebungsvariablen namens `LUIS_RUNTIME_KEY` gepullt wird. Wenn Sie die Umgebungsvariable nach dem Start der Anwendung erstellen, müssen der Editor, die IDE oder die Shell, in denen sie ausgeführt wird, geschlossen und erneut geladen werden, damit der Zugriff auf die Variable möglich ist. Die Methoden werden später erstellt.
-
-    Erstellen Sie eine Variable zum Speichern Ihres Ressourcennamens `LUIS_RUNTIME_ENDPOINT`.
-
+    Fügen Sie Variablen zur Verwaltung Ihres Vorhersage- und Endpunktschlüssels hinzu. 
+    
     [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Variables)]
 
-1. Erstellen Sie eine Variable für die App-ID als Umgebungsvariable mit dem Namen `LUIS_APP_ID`. Legen Sie die Umgebungsvariable auf die öffentliche IoT-App fest ( **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** ). Erstellen Sie eine Variable, um den veröffentlichten Slot `production` festzulegen.
+1. Erstellen Sie eine Variable für die App-ID namens `LUIS_APP_ID`. Legen Sie die Variable auf die öffentliche IoT-App fest, **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Erstellen Sie eine Variable, um den veröffentlichten Slot `production` festzulegen.
 
     [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=OtherVariables)]
 
