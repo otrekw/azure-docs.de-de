@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373402"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129031"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -47,7 +47,7 @@ Für die Verwendung des Anwendungsproxys benötigen Sie einen Windows-Server, au
 Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Windows-Server einsetzen. Für dieses Tutorial reicht ein Windows-Server aus.
 
 > [!IMPORTANT]
-> Wenn Sie den Connector unter Windows Server 2019 installieren, müssen Sie die HTTP2-Protokollunterstützung in der WinHttp-Komponente deaktivieren. Diese Einstellung ist in früheren Versionen unterstützter Betriebssysteme standardmäßig deaktiviert. Wenn Sie den folgenden Registrierungsschlüssel hinzufügen und den Server neu starten, wird die Einstellung unter Windows Server 2019 deaktiviert. Beachten Sie, dass es sich hierbei um einen computerweiten Registrierungsschlüssel handelt.
+> Wenn Sie den Connector unter Windows Server 2019 installieren, müssen Sie für eine ordnungsgemäße Funktion die HTTP2-Protokollunterstützung in der WinHttp-Komponente für die eingeschränkte Kerberos-Delegierung deaktivieren. Diese Einstellung ist in früheren Versionen unterstützter Betriebssysteme standardmäßig deaktiviert. Wenn Sie den folgenden Registrierungsschlüssel hinzufügen und den Server neu starten, wird die Einstellung unter Windows Server 2019 deaktiviert. Beachten Sie, dass es sich hierbei um einen computerweiten Registrierungsschlüssel handelt.
 >
 > ```
 > Windows Registry Editor Version 5.00
@@ -88,12 +88,12 @@ So aktivieren Sie TLS 1.2
 
 1. Starten Sie den Server neu.
 
-> [!IMPORTANT]
-> Zur Bereitstellung erstklassiger Verschlüsselung für unsere Kunden beschränkt der Anwendungsproxydienst den Zugriff ausschließlich auf TLS 1.2-Protokolle. Diese Änderungen wurden nach und nach bereitgestellt und sind seit dem 31. August 2019 wirksam. Vergewissern Sie sich, dass alle Kombinationen aus Client/Server und Browser/Server zur Verwendung von TLS 1.2 aktualisiert wurden, um die Verbindung mit dem Anwendungsproxydienst sicherzustellen. Dazu gehören Clients, mit denen Ihre Benutzer auf Anwendungen zugreifen, die über den Anwendungsproxy veröffentlicht werden. Nützliche Referenzen und Ressourcen finden Sie unter [Vorbereiten der Verwendung von TLS 1.2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365).
-
 ## <a name="prepare-your-on-premises-environment"></a>Vorbereiten Ihrer lokalen Umgebung
 
 Ermöglichen Sie zuerst die Kommunikation mit Azure-Rechenzentren, um Ihre Umgebung für den Azure AD-Anwendungsproxy vorzubereiten. Falls der Pfad eine Firewall enthält, sollten Sie sicherstellen, dass der Zugang geöffnet ist. Bei einer geöffneten Firewall kann der Connector HTTPS-Anforderungen (TCP) an den Anwendungsproxy senden.
+
+> [!IMPORTANT]
+> Wenn Sie den Connector für die Azure Government-Cloud installieren, beachten Sie die [Voraussetzungen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) und [Installationsschritte](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). Zum Ausführen der Installation sind der Zugriff auf einen anderen Satz von URLs und ein zusätzlicher Parameter erforderlich.
 
 ### <a name="open-ports"></a>Öffnen von Ports
 
@@ -121,6 +121,7 @@ Sie können Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.window
 ## <a name="install-and-register-a-connector"></a>Installieren und Registrieren eines Connectors
 
 Installieren Sie für die Nutzung des Anwendungsproxys einen Connector auf jedem Windows-Server, den Sie mit dem Anwendungsproxydienst verwenden. Der Connector ist ein Agent, der die aus dem lokalen Anwendungsserver ausgehende Verbindung mit dem Anwendungsproxy in Azure AD verwaltet. Sie können einen Connector auf Servern installieren, auf denen auch andere Authentifizierungs-Agents wie Azure AD Connect installiert sind.
+
 
 So installieren Sie den Connector:
 

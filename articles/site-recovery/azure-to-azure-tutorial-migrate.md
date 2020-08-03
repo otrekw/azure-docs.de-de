@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076110"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
@@ -82,8 +82,9 @@ Die folgenden Schritte zeigen, wie Sie den virtuellen Computer mithilfe von Azur
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Erstellen des Tresors in einer beliebigen Region außer der Quellregion
 
-1. Melden Sie sich unter [Azure-Portal](https://portal.azure.com) > **Recovery Services** an.
-1. Wählen Sie **Ressource erstellen** > **Verwaltungstools** > **Backup & Site Recovery** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
+1. Geben Sie im Suchfeld „Recovery Services“ ein, und klicken Sie auf „Recovery Services-Tresore“.
+1. Klicken Sie im Menü „Recovery Services-Tresore“ auf „+ Hinzufügen“.
 1. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 1. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 1. Geben Sie eine Azure-Region an. Eine Liste der unterstützten Regionen finden Sie in den Informationen zur geografischen Verfügbarkeit unter [Azure Site Recovery – Preise](https://azure.microsoft.com/pricing/details/site-recovery/).

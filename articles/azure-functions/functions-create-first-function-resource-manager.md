@@ -1,24 +1,28 @@
 ---
 title: Erstellen Ihrer ersten Funktion mithilfe von Azure Resource Manager-Vorlagen
-description: Erstellen und Bereitstellen einer einfachen, mittels HTTP ausgelösten serverlosen Funktion unter Verwendung einer Azure Resource Manager-Vorlage.
+description: Erstellen und Bereitstellen einer einfachen, mittels HTTP ausgelösten serverlosen Funktion unter Verwendung einer Azure Resource Manager-Vorlage (ARM-Vorlage).
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e409b3b64ac6bc39ba4cb58397506723a67a0de2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081711"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>Schnellstart: Erstellen und Bereitstellen von Azure Functions-Ressourcen aus einer Resource Manager-Vorlage
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Schnellstart: Erstellen und Bereitstellen von Azure Functions-Ressourcen aus einer ARM-Vorlage
 
-In diesem Artikel verwenden Sie eine Azure Resource Manager-Vorlage, um eine Funktion zu erstellen, die auf HTTP-Anforderungen reagiert. 
+In diesem Artikel verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um eine Funktion zu erstellen, die auf HTTP-Anforderungen reagiert. 
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,13 +52,11 @@ Wählen Sie eine der folgenden Registerkarten aus, folgen Sie dem Link, und füh
 
 Nachdem Sie Ihr Projekt lokal erstellt haben, erstellen Sie die Ressourcen, die für die Ausführung Ihrer neuen Funktion in Azure erforderlich sind. 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>Erstellen einer serverlosen Funktions-App in Azure
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-### <a name="review-the-template"></a>Überprüfen der Vorlage
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/).
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic).
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" range="1-140" highlight="55-136":::
 
 Die folgenden vier Azure-Ressourcen werden von dieser Vorlage erstellt:
 
@@ -63,7 +65,7 @@ Die folgenden vier Azure-Ressourcen werden von dieser Vorlage erstellt:
 + [**Microsoft.Web/sites**](/azure/templates/microsoft.web/sites): Erstellen einer Funktions-App.
 + [**microsoft.insights/components**](/azure/templates/microsoft.insights/components): Erstellen einer Application Insights-Instanz für die Überwachung.
 
-### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 ```azurecli-interactive

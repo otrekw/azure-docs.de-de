@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acfe4695b94fe9337296d70ef4a2864794730ec4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506348"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081728"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Schnellstart: Erstellen einer Funktion in Azure, die auf HTTP-Anforderungen antwortet
 
@@ -111,6 +111,9 @@ Geben Sie die folgenden Werte ein, wenn Sie dazu aufgefordert werden:
 Geben Sie zur Bestätigung `Y` ein, oder drücken Sie die EINGABETASTE.
 
 Maven erstellt die Projektdateien in einem neuen Ordner und benennt ihn mit dem Wert von _artifactId_ (in diesem Beispiel: `fabrikam-functions`). 
+
+Damit die Ausführung unter Java 11 in Azure erfolgen kann, müssen Sie die Werte in der Datei „pom.xml“ ändern. Weitere Informationen finden Sie unter [Java-Versionen](functions-reference-java.md#java-versions). 
+
 ::: zone-end  
 Navigieren Sie zum Projektordner:
 
@@ -157,6 +160,8 @@ Einstellungen für die Azure-Ressourcen, die zum Hosten Ihrer App erstellt werde
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 Diese Einstellungen ermöglichen die Steuerung der Ressourcenerstellung in Azure. Beispielsweise können Sie `runtime.os` vor der ersten Bereitstellung von `windows` in `linux` ändern. Eine umfassende Liste der Einstellungen, die vom Maven-Plug-In unterstützt werden, finden Sie in den [Konfigurationsdetails](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
+
+Wenn Sie Ihre Funktions-App unter Java 11 anstelle von Java 8 ausführen möchten, müssen Sie die Datei „pom.xml“ manuell mit Java 11-Werten aktualisieren. Weitere Informationen finden Sie unter [Java-Versionen](functions-reference-java.md#java-versions). Wenn die Ausführung unter Java 11 erfolgt, stellen Sie sicher, dass  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
@@ -367,7 +372,7 @@ Dadurch werden in Azure die folgenden Ressourcen erstellt:
 + Ressourcengruppe namens _java-functions-group_.
 + Speicherkonto – von Functions benötigt. Der Name wird nach dem Zufallsprinzip basierend auf den Anforderungen für den Speicherkontonamen generiert.
 + Hostingplan: Serverloses Hosting für Ihre Funktions-App in der Region _westus_. Der Name lautet _java-functions-app-service-plan_.
-+ Funktions-App – die Bereitstellungs-und Ausführungseinheit für Ihre Funktionen. Der Name wird nach dem Zufallsprinzip generiert. Er basiert auf Ihrer Artefakt-ID (_artifactId_) und wird am Ende mit einer nach dem Zufallsprinzip generierten Zahl versehen. 
++ Funktions-App – die Bereitstellungs-und Ausführungseinheit für Ihre Funktionen. Der Name wird auf Grundlage der _artifactId_ zufällig generiert und mit einer zufällig generierten Zahl angefügt. 
 
 Bei der Bereitstellung werden die Projektdateien mithilfe von [zip deployment](functions-deployment-technologies.md#zip-deploy) gepackt und für die neue Funktions-App bereitgestellt. Der Code wird über das Bereitstellungspaket in Azure ausgeführt.
 ::: zone-end

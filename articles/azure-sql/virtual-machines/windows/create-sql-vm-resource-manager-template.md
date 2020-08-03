@@ -1,30 +1,34 @@
 ---
-title: Erstellen einer SQL Server-VM (Azure Resource Manager-Vorlage)
-description: Es wird beschrieben, wie Sie eine SQL Server-Instanz auf einem virtuellen Azure-Computer (VM) erstellen, indem Sie eine Azure Resource Manager-Vorlage verwenden.
+title: Erstellen einer SQL Server-VM mithilfe einer ARM-Vorlage
+description: Es wird beschrieben, wie Sie eine SQL Server-Instanz auf einem virtuellen Azure-Computer (VM) erstellen, indem Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden.
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1b6f54c823f59bb654ac86f041eefe80af3eb5ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003848"
 ---
-# <a name="create-sql-server-vm-azure-resource-manager-template"></a>Erstellen einer SQL Server-VM (Azure Resource Manager-Vorlage)
+# <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Schnellstart: Erstellen einer SQL Server-VM mithilfe einer ARM-Vorlage
 
-Verwenden Sie diese Azure Resource Manager-Vorlage, um auf einem virtuellen Azure-Computer (VM) eine SQL Server-Instanz bereitzustellen. 
+Verwenden Sie diese Azure Resource Manager-Vorlage (ARM-Vorlage), um auf einem virtuellen Azure-Computer (VM) eine SQL Server-Instanz bereitzustellen. 
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ARM-Vorlage für die SQL Server-VM benötigen Sie Folgendes:
 
-- Die aktuelle Version der [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) bzw. von [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7). 
+- Die aktuelle Version der [Azure CLI](/cli/azure/install-azure-cli) bzw. von [PowerShell](/powershell/scripting/install/installing-powershell). 
 - Eine vorkonfigurierte [Ressourcengruppe](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) mit einem vorbereiteten [virtuellen Netzwerk](../../../virtual-network/quick-create-portal.md) und einem [Subnetz](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet).
 - Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -43,7 +47,7 @@ In der Vorlage sind fünf Azure-Ressourcen definiert:
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Erstellt einen virtuellen Computer in Azure. 
 - [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): Registriert den virtuellen Computer beim SQL-VM-Ressourcenanbieter. 
 
-Weitere Vorlagen für SQL Server-Instanzen auf virtuellen Azure-Computern finden Sie im Katalog unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine).
+Weitere Vorlagen für SQL Server-Instanzen auf virtuellen Azure-Computern finden Sie im Katalog unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular).
 
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
@@ -116,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter folgendem Link:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 Weitere Möglichkeiten zum Bereitstellen einer SQL Server-VM finden Sie unter: 
 - [Azure portal](create-sql-vm-portal.md)

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063273"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ Das Ergebnis zeigt, dass eine einzelne IP-Adresse aktiv ist. Diese entspricht de
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Überprüfen der Konnektivität mithilfe von SQL Server Management Studio (SSMS)
 > [!NOTE]
-> Verwenden Sie den **vollqualifizierten Domänennamen** (Fully Qualified Domain Name, FQDN) des Servers in Verbindungszeichenfolgen für Ihre Clients. Alle direkt für die IP-Adresse vorgenommenen Anmeldeversuche schlagen fehl. Dieses Verhalten ist entwurfsbedingt, da ein privater Endpunkt Datenverkehr an das SQL-Gateway in der Region weiterleitet und der FQDN angegeben werden muss, damit Anmeldungen erfolgreich sind.
+> Verwenden Sie den **vollqualifizierten Domänennamen** (Fully Qualified Domain Name, FQDN) des Servers in Verbindungszeichenfolgen für Ihre Clients (`<server>.database.windows.net`). Alle direkt für die IP-Adresse vorgenommenen Anmeldeversuche oder die Verwendung des Private Link-FQDN (`<server>.privatelink.database.windows.net`) schlagen fehl. Dieses Verhalten ist entwurfsbedingt, da ein privater Endpunkt Datenverkehr an das SQL-Gateway in der Region weiterleitet und der richtige FQDN angegeben werden muss, damit Anmeldungen erfolgreich sind.
 
 Führen Sie die Schritte zur [Verwendung von SSMS zum Herstellen einer Verbindung mit der SQL-Datenbank-Instanz](connect-query-ssms.md) aus. Nachdem Sie mithilfe von SSMS eine Verbindung mit der SQL-Datenbank-Instanz hergestellt haben, führen Sie die folgende Abfrage aus, um sich zu vergewissern, dass für die Verbindung die private IP-Adresse des virtuellen Azure-Computers verwendet wird:
 

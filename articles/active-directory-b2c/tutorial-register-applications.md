@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2ac8baf0e2aa9555efb6d6b4f39787d9a7bf9508
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499901"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169328"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Tutorial: Registrieren einer Webanwendung in Azure Active Directory B2C
 
@@ -62,7 +63,7 @@ Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie un
 
 Aktivieren Sie nach Abschluss der Anwendungsregistrierung den Ablauf zur impliziten Gewährung:
 
-1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
 1. Aktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**.
 1. Wählen Sie **Speichern** aus.
 
@@ -95,7 +96,7 @@ Wenn Ihre Anwendung einen Autorisierungscode für ein Zugriffstoken austauscht, 
 #### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/)
 
 1. Wählen Sie auf der Seite **Azure AD B2C – App-Registrierungen** die von Ihnen erstellte Anwendung aus, etwa *webapp1*.
-1. Wählen Sie unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
+1. Wählen Sie im linken Menü unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
 1. Wählen Sie **Neuer geheimer Clientschlüssel**.
 1. Geben Sie im Feld **Beschreibung** eine Beschreibung für das Clientgeheimnis ein. Beispielsweise *clientsecret1*.
 1. Wählen Sie unter **Läuft ab** einen Zeitraum aus, für den das Geheimnis gültig ist, und wählen Sie dann **Hinzufügen** aus.

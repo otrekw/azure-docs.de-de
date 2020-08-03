@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103958"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306110"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
-Dieser Artikel enthält Informationen zum Arbeiten mit der vorherigen Version von Azure Migrate.
+Dieser Artikel enthält Informationen zum Arbeiten mit der vorherigen Version von Azure Migrate. 
 
 
 Es sind zwei Versionen des Azure Migrate-Diensts verfügbar:
 
 - **Aktuelle Version**: Verwenden Sie diese Version, um Azure Migrate-Projekte zu erstellen, lokale Computer zu ermitteln und Bewertungen und Migrationen zu orchestrieren. [Erfahren Sie mehr](whats-new.md) über die Neuerungen in dieser Version.
-- **Vorherige Version**: Wenn Sie zurzeit die Vorgängerversion von Azure Migrate verwenden (es wird nur die Bewertung von lokalen VMware-VMs unterstützt), sollten Sie ab sofort die aktuelle Version verwenden. Wenn Sie noch immer Azure Migrate-Projekte verwenden müssen, die in der vorherigen Version erstellt wurden, sind die folgenden Vorgänge möglich bzw. nicht möglich:
+- **Vorherige Version**: Wenn Sie zurzeit die Vorgängerversion von Azure Migrate verwenden (es wird nur die Bewertung von lokalen VMware-VMs unterstützt), sollten Sie ab sofort die aktuelle Version verwenden. Die Projekte der Vorgängerversion werden in diesem Artikel als „klassische“ Projekte bezeichnet. Wenn Sie noch immer Azure Migrate-Projekte verwenden müssen, die in der vorherigen Version erstellt wurden, sind die folgenden Vorgänge möglich bzw. nicht möglich:
     - Migrationsprojekte können nicht mehr erstellt werden.
     - Es wird empfohlen, keine neuen Ermittlungen auszuführen.
     - Sie können weiterhin auf vorhandene Projekte zugreifen.
@@ -31,7 +31,7 @@ Es sind zwei Versionen des Azure Migrate-Diensts verfügbar:
 
 ## <a name="upgrade-between-versions"></a>Upgrade zwischen Versionen
 
-Sie können keine Projekte oder Komponenten aus der vorherigen Version in die neue Version aktualisieren. Sie müssen [ein neues Azure Migrate-Projekt](how-to-add-tool-first-time.md) erstellen und ihm Bewertungs-und Migrationstools hinzufügen.
+Sie können keine Projekte oder Komponenten aus der vorherigen Version in die neue Version aktualisieren. Sie müssen [ein neues Azure Migrate-Projekt](create-manage-projects.md) erstellen und ihm [Bewertungs- und Migrationstools](how-to-add-tool-first-time.md) hinzufügen. Verwenden Sie die Tutorials, um zu verstehen, wie die verfügbaren Bewertungs- und Migrationstools verwendet werden. Wenn Sie einen Log Analytics-Arbeitsbereich mit einem klassischen Projekt verknüpft haben, können Sie ihn an ein Projekt der aktuellen Version anfügen, nachdem Sie das klassische Projekt gelöscht haben.
 
 ## <a name="find-projects-from-previous-version"></a>Suchen nach Projekten aus der vorherigen Version
 
@@ -39,7 +39,16 @@ Suchen Sie folgendermaßen nach Projekten aus der vorherigen Version:
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie dann nach **Azure Migrate**. Wählen Sie diese Option aus. 
 2. Im Azure Migrate-Dashboard sind eine Benachrichtigung und ein Link für den Zugriff auf alte Azure Migrate-Projekte vorhanden.
-3. Klicken Sie auf den Link, um v1-Projekte zu öffnen.
+3. Klicken Sie auf den Link, um klassische Projekte zu öffnen.
+
+## <a name="delete-projects-from-previous-version"></a>Löschen von Projekten aus der vorherigen Version
+
+Suchen Sie folgendermaßen nach Projekten aus der vorherigen Version, und löschen Sie sie:
+
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie dann nach **Azure Migrate**. Wählen Sie diese Option aus. 
+2. Im Azure Migrate-Dashboard sind eine Benachrichtigung und ein Link für den Zugriff auf alte Azure Migrate-Projekte vorhanden.
+3. Klicken Sie auf den Link, um klassische Projekte zu öffnen.
+4. Wählen Sie das Projekt aus, das Sie löschen möchten, und löschen Sie es. 
 
 
 ## <a name="create-an-assessment"></a>Erstellen einer Bewertung
@@ -118,7 +127,7 @@ Windows Client 7, 8 und 10 | Azure bietet [nur mit Visual Studio-Abonnement](../
 Windows 10 Pro Desktop | Azure bietet Unterstützung mit [mehrinstanzenfähigen Hostingrechten](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md). | Bedingt bereit für Azure
 Windows Vista, XP Professional | Nicht mehr unterstützt. Der Computer kann ggf. in Azure gestartet werden, von Azure wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich ein Upgrade des Betriebssystems vor der Migration zu Azure.
 Linux | Azure empfiehlt diese [Linux-Betriebssysteme](../virtual-machines/linux/endorsed-distros.md). Andere Linux-Betriebssysteme können in Azure gestartet werden. Es empfiehlt sich jedoch ein Upgrade des jeweiligen Betriebssystems auf eine unterstützte Version vor der Migration zu Azure. | Bereit für Azure, wenn die Version unterstützt wird.<br/><br/>Bedingt bereit, wenn die Version nicht unterstützt wird.
-Andere Betriebssysteme<br/><br/> Beispielsweise Oracle Solaris, Apple Mac OS, FreeBSD usw. | Azure unterstützt diese Betriebssysteme nicht. Der Computer kann in Azure gestartet werden, es wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich die Installation eines unterstützten Betriebssystems vor der Migration zu Azure.  
+Andere Betriebssysteme<br/><br/> Beispielsweise Oracle Solaris, Apple macOS usw., FreeBSD usw. | Azure unterstützt diese Betriebssysteme nicht. Der Computer kann in Azure gestartet werden, es wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich die Installation eines unterstützten Betriebssystems vor der Migration zu Azure.  
 In vCenter Server als **Sonstige** angegebenes Betriebssystem | In diesem Fall kann Azure Migrate das Betriebssystem nicht identifizieren. | Bereitschaft unbekannt. Stellen Sie sicher, dass das auf dem virtuellen Computer ausgeführte Betriebssystem in Azure unterstützt wird.
 32-Bit-Betriebssysteme | Der Computer kann in Azure gestartet werden, Azure bietet jedoch möglicherweise keine vollständige Unterstützung. | Bedingt bereit für Azure, ziehen Sie vor der Migration zu Azure das Aktualisieren des Computerbetriebssystems von 32 Bit auf 64 Bit in Betracht.
 
@@ -201,7 +210,7 @@ Wenn Sie Abhängigkeitsvisualisierung verwenden möchten, ordnen Sie einen Log A
 1. Um einem Projekt einen Log Analytics-Arbeitsbereich anzufügen, klicken Sie unter **Übersicht** > **Zusammenfassung** auf **Erfordert Konfiguration**.
 2. Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich anfügen:
   - Um einen neuen Arbeitsbereich zu erstellen, geben Sie einen Namen an. Der Arbeitsbereich wird in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
-  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Nur die Arbeitsbereiche werden aufgeführt, die in einer [unterstützten Dienstzuordnungsregion](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites) erstellt wurden. Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Lesezugriff auf den Arbeitsbereich besitzen.
+  - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Nur die Arbeitsbereiche werden aufgeführt, die in einer [unterstützten Dienstzuordnungsregion](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions) erstellt wurden. Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Lesezugriff auf den Arbeitsbereich besitzen.
 
 > [!NOTE]
 > Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.

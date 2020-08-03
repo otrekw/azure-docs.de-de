@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Sichern von mehreren virtuellen Azure-Computern'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Recovery Services-Tresor erstellen, eine Sicherungsrichtlinie definieren und mehrere virtuelle Computer gleichzeitig sichern.
-ms.date: 01/31/2019
+ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: f9306f2ef5c4b2a53dcba17cafca9ea13b8dab43
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80245241"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372551"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
-Wenn Sie Daten in Azure sichern, speichern Sie diese Daten in einer Azure-Ressource mit der Bezeichnung Recovery Services-Tresor. Sie finden den Recovery Services-Tresor in den meisten Azure-Diensten im Einstellungsmenü. Die Integration des Recovery Services-Tresors in das Einstellungsmenü der meisten Azure-Dienste vereinfacht das Sichern von Daten. Die Arbeit mit den einzelnen Datenbanken oder virtuellen Computern in Ihrem Unternehmen ist jedoch aufwendig. Was geschieht, wenn Sie die Daten für alle virtuellen Computer in einer Abteilung oder an einem Standort sichern möchten? Es ist einfach, mehrere virtuelle Computer zu sichern, indem Sie eine Sicherungsrichtlinie erstellen und diese Richtlinie auf die gewünschten virtuellen Computer anwenden. In diesem Tutorial werden folgende Punkte erläutert:
+Wenn Sie Daten in Azure sichern, speichern Sie diese Daten in einer Azure-Ressource mit der Bezeichnung Recovery Services-Tresor. Sie finden den Recovery Services-Tresor in den meisten Azure-Diensten im Einstellungsmenü. Die Integration des Recovery Services-Tresors in das Einstellungsmenü der meisten Azure-Dienste vereinfacht das Sichern von Daten. Es ist jedoch mühsam, mit jeder Datenbank oder jedem virtuellen Computer in Ihrem Unternehmen einzeln zu arbeiten. Was geschieht, wenn Sie die Daten für alle virtuellen Computer in einer Abteilung oder an einem Standort sichern möchten? Es ist einfach, mehrere virtuelle Computer zu sichern, indem Sie eine Sicherungsrichtlinie erstellen und diese Richtlinie auf die gewünschten virtuellen Computer anwenden. In diesem Tutorial werden folgende Punkte erläutert:
 
 > [!div class="checklist"]
 >
@@ -30,25 +30,38 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Der Recovery Services-Tresor enthält die Sicherungsdaten, und Sicherungsrichtlinie, die auf die geschützten virtuellen Computer angewendet wird. Das Sichern virtueller Computer ist ein örtlich gebundener Vorgang. Es ist nicht möglich, einen virtuellen Computer eines Standorts in einem Recovery Services-Tresor an einem anderen Standort zu sichern. An jedem Azure-Standort, der über zu sichernde virtuelle Computer verfügt, muss also mindestens ein Recovery Services-Tresor vorhanden sein.
 
-1. Wählen Sie im linken Menü **Alle Dienste** aus, und geben Sie in der Dienstliste *Recovery Services* ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn in der Liste die Option „Recovery Services-Tresore“ angezeigt wird, wählen Sie sie aus, um das Menü „Recovery Services-Tresore“ zu öffnen.
+1. Wählen Sie im Menü links **Alle Dienste** aus.
 
-    ![Öffnen des Menüs „Recovery Services-Tresor“](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
+    ![Auswählen von „Alle Dienste“](./media/tutorial-backup-vm-at-scale/click-all-services.png)
 
-2. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**, um das Menü „Recovery Services-Tresor“ zu öffnen.
+1. Geben Sie im Dialogfeld **Alle Dienste** *Recovery Services* ein. Die Liste der Ressourcen wird Ihrer Eingabe entsprechend gefiltert. Wählen Sie in der Liste der Ressourcen **Recovery Services-Tresore** aus.
 
-    ![Tresormenü öffnen](./media/tutorial-backup-vm-at-scale/provide-vault-detail-2.png)
+    ![Eingeben und Auswählen von „Recovery Services-Tresore“](./media/tutorial-backup-vm-at-scale/all-services.png)
 
-3. Führen Sie im Menü „Recovery Services-Tresor“ folgende Aktionen durch:
+    Die Liste mit den Recovery Services-Tresoren im Abonnement wird angezeigt.
+
+1. Wählen Sie auf dem Dashboard **Recovery Services-Tresore** die Option **Hinzufügen** aus.
+
+    ![Hinzufügen eines Recovery Services-Tresors](./media/tutorial-backup-vm-at-scale/add-button-create-vault.png)
+
+1. Führen Sie im Menü „Recovery Services-Tresor“ folgende Aktionen durch:
 
     * Geben Sie *myRecoveryServicesVault* in **Name** ein.
     * Die aktuelle Abonnement-ID wird unter **Abonnement** angezeigt. Wenn Sie über weitere Abonnements verfügen, können Sie ein anderes Abonnement für den neuen Tresor auswählen.
     * Wählen Sie für **Ressourcengruppe** die Option **Vorhandene verwenden** und dann *myResourceGroup* aus. Wenn *myResourceGroup* nicht vorhanden ist, wählen Sie **Neu erstellen** aus und geben *myResourceGroup* ein.
     * Wählen Sie im Dropdownmenü **Standort** die Region *Europa, Westen* aus.
-    * Klicken Sie auf **Erstellen**, um den Recovery Services-Tresor zu erstellen.
 
-Recovery Services-Tresore müssen sich am gleichen Standort wie die zu schützenden virtuellen Computer befinden. Falls Sie über virtuelle Computer in mehreren Regionen verfügen, erstellen Sie in jeder Region einen Recovery Services-Tresor. In diesem Tutorial wird ein Recovery Services-Tresor in *Europa, Westen* erstellt, da dort auch *myVM* (der im Schnellstart erstellte virtuelle Computer) erstellt wurde.
+    ![Werte für den Recovery Services-Tresor](./media/tutorial-backup-vm-at-scale/review-and-create.png)
 
-Die Erstellung des Recovery Services-Tresors kann mehrere Minuten dauern. Verfolgen Sie die Statusbenachrichtigungen rechts oben im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt.
+    Recovery Services-Tresore müssen sich am gleichen Standort wie die zu schützenden virtuellen Computer befinden. Falls Sie über virtuelle Computer in mehreren Regionen verfügen, erstellen Sie in jeder Region einen Recovery Services-Tresor. In diesem Tutorial wird ein Recovery Services-Tresor in *Europa, Westen* erstellt, da dort auch *myVM* (der im Schnellstart erstellte virtuelle Computer) erstellt wurde.
+
+1. Wenn Sie den Recovery Services-Tresor erstellen möchten, wählen Sie **Erstellen** aus.
+
+    ![Erstellen des Recovery Services-Tresors](./media/tutorial-backup-vm-at-scale/click-create-button.png)
+
+1. Es kann einige Zeit dauern, denn Recovery Services-Tresor zu erstellen. Verfolgen Sie die Statusbenachrichtigungen im **Benachrichtigungsbereich** in der oberen rechten Ecke im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
+
+     ![Aktualisieren der Liste der Sicherungstresore](./media/tutorial-backup-vm-at-scale/refresh-button.png)
 
 Wenn Sie einen Recovery Services-Tresor erstellen, verfügt dieser standardmäßig über georedundanten Speicher. Für mehr Datenresilienz repliziert der georedundante Speicher die Daten mehrmals zwischen zwei Azure-Regionen.
 
@@ -60,35 +73,42 @@ Nach dem Erstellen des Recovery Services-Tresors konfigurieren Sie im nächsten 
 
    ![Menü „Szenario“ öffnen](./media/tutorial-backup-vm-at-scale/open-vault-from-list.png)
 
-2. Klicken Sie im Menü des Tresordashboards auf **Sicherung**, um das Menü „Sicherung“ zu öffnen.
+1. Wählen Sie im Menü des Tresordashboards **Sicherung** aus, um das Menü „Sicherung“ zu öffnen.
 
-3. Wählen Sie im Menü „Sicherungsziel“ im Dropdownmenü **Wo wird Ihre Workload ausgeführt?** die Option *Azure* aus. Wählen Sie im Dropdownmenü **Was möchten Sie sichern?** die Option *Virtueller Computer* aus, und klicken Sie dann auf **Sichern**.
+1. Wählen Sie im Menü „Sicherungsziel“ im Dropdownmenü **Wo wird Ihre Workload ausgeführt?** die Option *Azure* aus. Wählen Sie im Dropdownmenü **Was möchten Sie sichern?** die Option *Virtueller Computer* aus, und wählen Sie dann **Sichern** aus.
 
     Diese Aktionen bereiten den Recovery Services-Tresor auf die Interaktion mit einem virtuellen Computer vor. Recovery Services-Tresore haben eine Standardrichtlinie, die jeden Tag einen Wiederherstellungspunkt erstellt und die Wiederherstellungspunkte für 30 Tage aufbewahrt.
 
-    ![Menü „Szenario“ öffnen](./media/tutorial-backup-vm-at-scale/backup-goal.png)
+    ![Sicherungsziel](./media/tutorial-backup-vm-at-scale/backup-goal.png)
 
-4. Zum Erstellen einer neuen Richtlinie wählen Sie im Menü „Sicherungsrichtlinie“ im Dropdownmenü **Sicherungsrichtlinie auswählen** die Option *Neu erstellen* aus.
+1. Zum Erstellen einer neuen Richtlinie wählen Sie im Menü „Sicherungsrichtlinie“ im Dropdownmenü **Sicherungsrichtlinie auswählen** die Option *Neue Richtlinie erstellen* aus.
 
-    ![Workload auswählen](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
+    ![Erstellen Sie eine neue Richtlinie.](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
-5. Geben Sie im Menü **Sicherungsrichtlinie** für **Richtlinienname** den Namen *Finance* ein. Geben Sie die folgenden Änderungen für die Sicherungsrichtlinie ein:
+1. Der Bereich **Sicherungsrichtlinie** wird geöffnet. Füllen Sie die folgenden Angaben aus:
+   * Geben Sie für **Richtlinienname** die Angabe *Finance* ein. Geben Sie die folgenden Änderungen für die Sicherungsrichtlinie ein:
    * Legen Sie für **Sicherungshäufigkeit** die Zeitzone auf *Central Time* fest. Der Sportkomplex befindet sich in Texas, und der Besitzer möchte die lokale Zeit verwenden. Lassen Sie die Sicherungshäufigkeit auf täglich um 3:30 Uhr festgelegt.
    * Legen Sie für **Aufbewahrung für täglichen Sicherungspunkt** den Zeitraum auf 90 Tage fest.
    * Verwenden Sie für **Aufbewahrung für wöchentlichen Sicherungspunkt** den Wiederherstellungspunkt *Monday*, und legen Sie als Aufbewahrungszeit 52 Wochen fest.
    * Verwenden Sie für **Aufbewahrung für monatlichen Sicherungspunkt** den Wiederherstellungspunkt vom ersten Sonntag des Monats, und legen Sie als Aufbewahrungszeit 36 Monate fest.
    * Deaktivieren Sie die Option **Aufbewahrung für jährlichen Sicherungspunkt**. Der Leiter der Finanzabteilung möchte die Daten nicht länger als 36 Monate aufbewahren.
-   * Klicken Sie auf **OK**, um die Sicherungsrichtlinie zu erstellen.
+   * Wählen Sie **OK** aus, um die Sicherungsrichtlinie zu erstellen.
 
-     ![Workload auswählen](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
+     ![Sicherungsrichtlinieneinstellungen](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
      Nach ihrer Erstellung weisen Sie die Sicherungsrichtlinie den virtuellen Computern zu.
 
-6. Wählen Sie im Dialogfeld **Virtuelle Computer auswählen** den virtuellen Computer *myVM* aus, und klicken Sie auf **OK**, um die Sicherungsrichtlinie auf die virtuellen Computer anzuwenden.
+1. Wählen Sie in unter **Virtuelle Computer** die Option **Hinzufügen** aus.
+
+     ![Virtuelle Computer hinzufügen](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
+
+1. Der Bereich **Virtuelle Computer auswählen** wird geöffnet. Wählen Sie *myVM* und dann **OK** aus, um die Sicherungsrichtlinie auf den virtuellen Computern bereitzustellen.
 
     Es werden alle virtuellen Computer am gleichen Standort angezeigt, die noch keiner Sicherungsrichtlinie zugeordnet sind. *myVMH1* und *myVMR1* wurden für die Richtlinie *Finance* ausgewählt.
 
-    ![Workload auswählen](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
+    ![Auswählen der zu schützenden VMs](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
+
+1. Nachdem Sie die virtuellen Computer ausgewählt haben, wählen Sie **Sicherung aktivieren** aus.
 
     Wenn die Bereitstellung abgeschlossen ist, erhalten Sie eine Benachrichtigung darüber, dass die Bereitstellung erfolgreich abgeschlossen wurde.
 
@@ -98,29 +118,29 @@ Sie haben zwar die Sicherung für die Recovery Services-Tresore aktiviert, aber 
 
 So führen Sie einen bedarfsgesteuerten Sicherungsauftrag aus
 
-1. Klicken Sie im Tresordashboard auf die **3** unter **Sicherungselemente**, um das Menü „Sicherungselemente“ zu öffnen.
+1. Wählen Sie im Tresordashboard die Angabe **3** unter **Sicherungselemente** aus, um das Menü „Sicherungselemente“ zu öffnen.
 
-    ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![Sicherungselemente](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
     Das Menü **Sicherungselemente** wird geöffnet.
 
-2. Klicken Sie im Menü **Sicherungselemente** auf **Virtueller Azure-Computer**, um die Liste der virtuellen Computer, die dem Tresor zugeordnet sind, zu öffnen.
+1. Wählen Sie im Menü **Sicherungselemente** die Option **Virtueller Azure-Computer** aus, um die Liste der virtuellen Computer, die dem Tresor zugeordnet sind, zu öffnen.
 
-    ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
+    ![Liste der virtuellen Computer](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
 
-    Die Liste **Sicherungselemente** wird geöffnet.
+1. Die Liste **Sicherungselemente** wird geöffnet.
 
     ![Sicherungsauftrag ausgelöst](./media/tutorial-backup-vm-at-scale/initial-backup-context-menu.png)
 
-3. Klicken Sie in der Liste **Sicherungselemente** auf die Auslassungszeichen ( **...** ), um das Kontextmenü zu öffnen.
+1. Klicken Sie in der Liste **Sicherungselemente** auf die Auslassungszeichen ( **...** ), um das Kontextmenü zu öffnen.
 
-4. Wählen Sie im Kontextmenü **Jetzt sichern** aus.
+1. Wählen Sie im Kontextmenü **Jetzt sichern** aus.
 
     ![Kontextmenü](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Das Menü „Jetzt sichern“ wird geöffnet.
 
-5. Geben Sie im Menü „Jetzt sichern“ den letzten Tag für die Aufbewahrung des Wiederherstellungspunkts ein, und klicken Sie auf **Sichern**.
+1. Geben Sie im Menü „Jetzt sichern“ den letzten Tag für die Aufbewahrung des Wiederherstellungspunkts ein, und wählen Sie **Sichern** aus.
 
     ![Festlegen des letzten Aufbewahrungstags für den Wiederherstellungspunkt für „Jetzt sichern“](./media/tutorial-backup-vm-at-scale/backup-now-short.png)
 
@@ -134,37 +154,40 @@ So führen Sie einen bedarfsgesteuerten Sicherungsauftrag aus
 
 Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die in diesem Tutorial erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte durchführen, um alle in diesem Tutorial erstellten Ressourcen im Azure-Portal zu löschen.
 
-1. Klicken Sie im Dashboard von **myRecoveryServicesVault** auf die **3** unter **Sicherungselemente**, um das Menü „Sicherungselemente“ zu öffnen.
+1. Wählen Sie im Dashboard von **myRecoveryServicesVault** die Angabe **3** unter **Sicherungselemente**aus, um das Menü „Sicherungselemente“ zu öffnen.
 
-    ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![Sicherungselemente](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
-2. Klicken Sie im Menü **Sicherungselemente** auf **Virtueller Azure-Computer**, um die Liste der virtuellen Computer, die dem Tresor zugeordnet sind, zu öffnen.
+1. Wählen Sie im Menü **Sicherungselemente** die Option **Virtueller Azure-Computer** aus, um die Liste der virtuellen Computer, die dem Tresor zugeordnet sind, zu öffnen.
 
-    ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
+    ![Liste der virtuellen Computer](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
 
     Die Liste **Sicherungselemente** wird geöffnet.
 
-3. Klicken Sie im Menü **Sicherungselemente** auf die Auslassungszeichen (...), um das Kontextmenü zu öffnen.
+1. Wählen Sie im Menü **Sicherungselemente** die Auslassungszeichen (...) aus, um das Kontextmenü zu öffnen.
 
-    ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![Kontextmenü](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. Wählen Sie im Kontextmenü **Sicherung beenden** aus, um das Menü „Sicherung beenden“ zu öffnen.
+1. Wählen Sie im Kontextmenü **Sicherung beenden** aus, um das Menü „Sicherung beenden“ zu öffnen.
 
-    ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
+    ![Menü „Sicherung beenden“](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
-5. Wählen Sie im Menü **Sicherung beenden** das obere Dropdownmenü und dann **Sicherungsdaten löschen** aus.
+1. Wählen Sie im Menü **Sicherung beenden** das obere Dropdownmenü und dann **Sicherungsdaten löschen** aus.
 
-6. Geben Sie im Dialogfeld **Geben Sie den Namen des Sicherungselements ein** den Namen *myVM* ein.
+1. Geben Sie im Dialogfeld **Geben Sie den Namen des Sicherungselements ein** den Namen *myVM* ein.
 
-7. Nachdem das Sicherungselement überprüft wurde (ein Häkchen wird angezeigt), wird die Schaltfläche **Sicherung beenden** aktiviert. Klicken Sie auf **Sicherung beenden**, um die Richtlinie zu beenden und die Wiederherstellungspunkte zu löschen.
+1. Nachdem das Sicherungselement überprüft wurde (ein Häkchen wird angezeigt), wird die Schaltfläche **Sicherung beenden** aktiviert. Wählen Sie **Sicherung beenden** aus, um die Richtlinie zu beenden und die Wiederherstellungspunkte zu löschen.
 
-    ![Klicken Sie auf „Sicherung beenden“, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
+    ![Wählen Sie „Sicherung beenden“ aus, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
-8. Klicken Sie im Menü von **myRecoveryServicesVault** auf **Löschen**.
+    >[!NOTE]
+    >Gelöschte Elemente werden 14 Tage lang im Zustand „vorläufig gelöscht“ beibehalten. Erst nach diesem Zeitraum kann der Tresor gelöscht werden. Weitere Informationen finden Sie unter [Löschen eines Azure Backup Recovery Services-Tresors](backup-azure-delete-vault.md).
 
-    ![Klicken Sie auf „Sicherung beenden“, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+1. Wählen Sie **Löschen** aus, wenn im Tresor keine Elemente mehr vorhanden sind.
 
-    Nachdem der Tresor gelöscht wurde, wird wieder die Liste der Recovery Services-Tresore angezeigt.
+    ![Wählen Sie „Sicherung beenden“ aus, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+
+    Nachdem der Tresor gelöscht wurde, wird erneut die Liste der Recovery Services-Tresore angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594762"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320713"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Konfigurieren einer Jenkins-Umgebung zum Aktivieren von CI/CD für eine Java-Anwendung unter Service Fabric
 
@@ -178,7 +178,7 @@ Sie können Jenkins innerhalb oder außerhalb eines Service Fabric-Clusters einr
 
     ![Laufendes Upgrade](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-1. Die Voting-Anwendung steht nun unter **http://\<Host-IP>:8080** zur Verfügung.
+1. Die Voting-App ist nun unter **http://\<Host-IP>:8080** mit allen Funktionen aktiv und wird ausgeführt.
 
     ![Voting-App (lokal)](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 
