@@ -8,14 +8,14 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 07/16/2020
-ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d28f852ad4159472b7fcb3289a322db54be8af1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496943"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387386"
 ---
-# <a name="azure-resource-providers-operations"></a>Vorgänge für Azure-Ressourcenanbieter
+# <a name="azure-resource-provider-operations"></a>Vorgänge für Azure-Ressourcenanbieter
 
 In diesem Abschnitt werden die Vorgänge für Azure-Ressourcenanbieter aufgelistet, die in integrierten Rollen verwendet werden. Sie können diese Vorgänge in eigenen [benutzerdefinierten Azure-Rollen](custom-roles.md) verwendet, um eine präzise Zugriffssteuerung für Ressourcen in Azure bereitzustellen. Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwenden Sie [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) oder [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list), um die neuesten Vorgänge abzurufen.
 

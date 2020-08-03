@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040245"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Zugreifen auf Dateien im OneDrive-Connector und Verwalten von diesen mithilfe von Azure Logic Apps
 
@@ -40,7 +40,7 @@ Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflo
 
 1. Geben Sie im Logik-App-Designer `onedrive` ein, um eine Liste mit den Triggern abzurufen:  
 
-   ![Ein Dialogfeld mit dem Titel „Von Microsoft verwaltete APIs anzeigen“ weist ein Feld auf, das „onedrive“ enthält. Darunter befindet sich eine Liste mit vier Triggern. Der erste ist „OneDrive – Wenn eine Datei erstellt wird“. Der zweite, „OneDrive – Beim Ändern einer Datei“, wurde ausgewählt.](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![Ein Dialogfeld mit dem Titel „Von Microsoft verwaltete A P Is anzeigen“ weist ein Feld auf, das „onedrive“ enthält. Darunter befindet sich eine Liste mit vier Triggern. Der erste ist „OneDrive – Wenn eine Datei erstellt wird“. Der zweite, „OneDrive – Beim Ändern einer Datei“, wurde ausgewählt.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. Wählen Sie **When a file is modified** (Wenn eine Datei geändert wird) aus. Ist bereits eine Verbindung vorhanden, wählen Sie die Schaltfläche „Auswahl anzeigen“ aus, um einen Ordner auszuwählen.
 
@@ -68,7 +68,7 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 3. Geben Sie im Suchfeld die Zeichenfolge `onedrive` ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
 
-   ![Ein Dialogfeld mit dem Titel „Von Microsoft verwaltete APIs anzeigen“ weist ein Feld auf, das „onedrive“ enthält. Im Folgenden finden Sie eine Liste mit acht Aktionen. Die erste ist „OneDrive – „Datei erstellen“ und bereits ausgewählt.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![Ein Dialogfeld mit dem Titel „Von Microsoft verwaltete A P Is anzeigen“ weist ein Feld auf, das „onedrive“ enthält. Im Folgenden finden Sie eine Liste mit acht Aktionen. Die erste ist „OneDrive – „Datei erstellen“ und bereits ausgewählt.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. In unserem Beispiel wählen wir **OneDrive - Create file** (OneDrive – Datei erstellen) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie den Pfad des **Zielordners** für die Datei aus, geben Sie den **Dateinamen** ein, und wählen Sie den gewünschten **Dateiinhalt** aus:  
 

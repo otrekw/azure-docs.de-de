@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/28/2020
+ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456300"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337822"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 
@@ -28,6 +28,7 @@ Dieses Modul unterstützt das Exportieren von Daten in folgende Clouddatendienst
 - Azure-Dateifreigabe
 - Azure Data Lake
 - Azure Data Lake Gen2
+- Azure SQL-Datenbank
 
 Bevor Sie Ihre Daten exportieren können, müssen Sie einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../how-to-access-data.md).
 
@@ -40,6 +41,9 @@ Bevor Sie Ihre Daten exportieren können, müssen Sie einen Datenspeicher in Ihr
 1. Wählen Sie **Export Data** aus, um den Bereich **Properties** (Eigenschaften) zu öffnen.
 
 1. Wählen Sie für **Datastore** (Datenspeicher) in der Dropdownliste einen vorhandenen Datenspeicher aus. Sie können auch einen neuen Datenspeicher erstellen. Wie dies funktioniert, erfahren Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../how-to-access-data.md).
+
+    > [!NOTE]
+    > Das Exportieren von Daten eines bestimmten Datentyps in eine SQL-Datenbankspalte, für die ein anderer Datentyp angegeben ist, wird nicht unterstützt.
 
 1. Das Kontrollkästchen **Ausgabe erneut generieren** legt fest, ob das Modul zum erneuten Generieren der Ausgabe zur Laufzeit ausgeführt werden soll. 
 

@@ -5,16 +5,17 @@ description: Erfahren Sie, wie Sie die Azure CLI verwenden, um einen neuen Azure
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 06/25/2020
-ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392708"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319693"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 Der Azure Machine Learning-Arbeitsbereich basiert auf den folgenden Azure-Diensten oder -Entitäten:
 
 > [!IMPORTANT]
-> Wenn Sie keinen vorhandenen Azure-Dienst angeben, wird während der Erstellung des Arbeitsbereichs automatisch ein Dienst erstellt. Sie müssen immer eine Ressourcengruppe angeben. Wenn Sie Ihr eigenes Speicherkonto anfügen, sorgen Sie dafür, dass dafür sowohl Azure-Blob- als auch Azure File Storage-Funktionen aktiviert sind und dass der hierarchische Namespace (ADLS Gen 2) deaktiviert ist. Sie können Ihr eigenes Speicherkonto auch jederzeit später als Datenspeicher hinzufügen, nachdem der Arbeitsbereich erstellt wurde.
+> Wenn Sie keinen vorhandenen Azure-Dienst angeben, wird während der Erstellung des Arbeitsbereichs automatisch ein Dienst erstellt. Sie müssen immer eine Ressourcengruppe angeben. Wenn Sie Ihr eigenes Speicherkonto anfügen, stellen Sie sicher, dass es die folgenden Kriterien erfüllt:
+>
+> * Das Speicherkonto ist _kein_Premium-Konto (Premium_LRS oder Premium_GRS).
+> * Sowohl Azure Blob- als auch Azure-Dateifunktionen sind aktiviert.
+> * Der hierarchische Namespace (ADLS Gen 2) ist deaktiviert.
+>
+> Diese Anforderungen gelten nur für das _Standard_speicherkonto, das vom Arbeitsbereich verwendet wird.
 
 | Dienst | Parameter zum Angeben einer vorhandenen Instanz |
 | ---- | ---- |
@@ -147,6 +154,9 @@ Um einen Arbeitsbereich zu erstellen, der vorhandene Ressourcen verwendet, müss
     Die Antwort dieses Befehls ähnelt dem folgenden Text und ist die ID für Ihr Speicherkonto:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standard_speicherkonto des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
 
 + **Azure Application Insights**:
 

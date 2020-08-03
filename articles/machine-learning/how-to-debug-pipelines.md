@@ -5,17 +5,17 @@ description: Debuggen Sie Ihre Azure Machine Learning-Pipelines in Python. Lerne
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting, tracking-python
+ms.openlocfilehash: 6fa75c0c6ec6146ca59f6eaf4593b4912ae823c1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557431"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372959"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie das Debuggen und die Problembehandlung f
 * Debuggen mithilfe von Application Insights
 * Interaktives Debuggen mithilfe von Visual Studio Code (VS Code) und Python Tools für Visual Studio (PTVSD)
 
-## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Debuggen und Problembehandlung im Azure Machine Learning SDK
+## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
 Die folgenden Abschnitte bieten einen Überblick über häufige Fallstricke beim Erstellen von Pipelines und verschiedene Strategien zum Debuggen von Code, der in einer Pipeline ausgeführt wird. Verwenden Sie die folgenden Tipps, wenn Sie Schwierigkeiten haben, eine Pipeline wie erwartet auszuführen.
 
 ### <a name="testing-scripts-locally"></a>Lokales Testen von Skripts
@@ -127,9 +127,13 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Debuggen und Problembehandlung im Azure Machine Learning Designer (Vorschau)
+## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning-Designer (Vorschauversion)
 
 Dieser Abschnitt bietet eine Übersicht zur Problembehandlung für Pipelines im Designer. Die **70_driver_log**-Dateien für die im Designer erstellten Pipelines finden Sie entweder auf der Seite zur Dokumenterstellung oder auf der Detailseite zur Pipelineausführung.
+
+### <a name="enable-logging-for-real-time-endpoints"></a>Aktivieren der Protokollierung für Echtzeitendpunkte
+
+Für die Problembehandlung und das Debuggen von Echtzeitendpunkten im Designer müssen Sie die Application Insight-Protokollierung mithilfe des SDKs aktivieren. Mithilfe der Protokollierung können Sie Probleme bei der Modellimplementierung und -verwendung behandeln und debuggen. Weitere Informationen finden Sie unter [Protokollierung für bereitgestellte Modelle](how-to-enable-logging.md#logging-for-deployed-models). 
 
 ### <a name="get-logs-from-the-authoring-page"></a>Abrufen von Protokollen auf der Seite zur Dokumenterstellung
 
@@ -156,10 +160,10 @@ Sie finden die Protokolldateien bestimmter Ausführungen auch auf der Detailseit
 > [!IMPORTANT]
 > Wenn Sie eine Pipeline über die Detailseite für Pipelineausführungen aktualisieren möchten, müssen Sie die Pipelineausführung in einen neuen Pipelineentwurf **klonen**. Pipelineausführungen sind Momentaufnahmen von Pipelines. Sie ähneln Protokolldateien und können nicht geändert werden. 
 
-## <a name="debug-and-troubleshoot-in-application-insights"></a>Debuggen und Problembehandlung in Application Insights
+## <a name="application-insights"></a>Application Insights
 Weitere Informationen zur Verwendung der OpenCensus-Python-Bibliothek in diesem Zusammenhang finden Sie in diesem Handbuch: [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](how-to-debug-pipelines-application-insights.md)
 
-## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Debuggen und Behandeln von Problemen in Visual Studio Code
+## <a name="visual-studio-code"></a>Visual Studio Code
 
 In einigen Fällen muss der in Ihrer ML-Pipeline verwendete Python-Code ggf. interaktiv debugged werden. Mit Visual Studio Code (VS Code) und Python Tools für Visual Studio (PTVSD) können Sie den Code debuggen, während er in der Trainingsumgebung ausgeführt wird.
 

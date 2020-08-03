@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 87af7f0f9b446fb3a54a600f61409c2cfc1a2494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006992"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>Bereitstellen einer Azure Firewall-Instanz mit mehreren öffentlichen IP-Adressen
 
@@ -37,9 +37,9 @@ $fw = New-AzFirewall -Name <firewall name> -ResourceGroupName $rgName `
      -VirtualHubId $vHubId 
 ```
 
-### <a name="delete-a-public-ip-address"></a>Löschen einer öffentlichen IP-Adresse
+### <a name="update-a-public-ip-address"></a>Aktualisieren einer öffentlichen IP-Adresse
 
-Sie können Azure PowerShell verwenden, um eine öffentliche IP-Adresse aus einer Azure Firewall-Instanz zu löschen. Mit dem folgenden Beispiel wird eine öffentliche IP-Adresse aus einer Firewall gelöscht. Es beginnt mit drei öffentlichen IP-Adressen.
+Sie können Azure PowerShell verwenden, um eine öffentliche IP-Adresse für eine Azure Firewall zu aktualisieren. Mit dem folgenden Beispiel wird eine öffentliche IP-Adresse aus einer Firewall gelöscht. Es beginnt mit drei öffentlichen IP-Adressen.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <subscription ID>

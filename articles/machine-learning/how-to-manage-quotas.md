@@ -5,18 +5,18 @@ description: Erfahren Sie mehr über Kontingente für Azure Machine Learning-Res
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
-ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting,contperfq4
+ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430462"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372942"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Verfügbare Ressourcen:
 | Maximale Anzahl von Knoten in einer einzelnen Ressource von Azure Machine Learning Compute (AmlCompute) | 100 Knoten |
 | Maximale GPU MPI-Prozesse pro Knoten | 1–4 |
 | Maximale GPU-Worker pro Knoten | 1–4 |
-| Maximale Lebensdauer von Aufträgen | 90 Tage<sup>1</sup> |
+| Maximale Lebensdauer von Aufträgen | 21 Tage<sup>1</sup> |
 | Maximale Lebensdauer von Aufträgen auf einem Knoten niedriger Priorität | 7 Tage<sup>2</sup> |
 | Maximale Parameterserver pro Knoten | 1 |
 

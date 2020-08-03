@@ -4,14 +4,14 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: danlep
-ms.openlocfilehash: e3aeababcd062e315c9d80a35f183173a6fd1273
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad52317319a2da973c0cc1cdf34a1ada01238d95
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77117850"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387086"
 ---
-### <a name="resource-availability"></a>Ressourcenverfügbarkeit
+### <a name="maximum-resources-per-sku"></a>Maximale Ressourcen pro SKU
 
 | OS | GPU-SKU | GPU-Anzahl | Maximale CPU-Auslastung | Maximaler Speicher (GB) | Speicher (GB) |
 | --- | --- | --- | --- | --- | --- |

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: a0eb234d9677c479d2cb404b065da408854168e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9a7a09d3085b1ec67bf29f142c6e7b205561ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021748"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>Verbinden von Perimeter 81-Aktivitätsprotokollen mit Azure Sentinel
+
+> [!IMPORTANT]
+> Der Perimeter 81-Datenconnector in Azure Sentinel ist derzeit als öffentliche Vorschau verfügbar.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Artikel wird erläutert, wie Sie Ihre Appliance mit [Perimeter 81-Aktivitätsprotokollen](https://www.perimeter81.com/) mit Azure Sentinel verbinden. Mit dem Connector für Perimeter 81-Aktivitätsprotokolle lassen sich Perimeter 81-Daten problemlos in Azure Sentinel einbinden. Diese Daten können Sie dann in Arbeitsmappen anzeigen, als Vorlage für benutzerdefinierte Warnungen und zur Untersuchung von Problemen verwenden.
 

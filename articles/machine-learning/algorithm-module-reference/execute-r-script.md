@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 71e1a43728cf923207d209848b26627aeb7bd680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751757"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337839"
 ---
 # <a name="execute-r-script-module"></a>Execute R Script-Module
 
@@ -119,6 +119,22 @@ Nachdem die Pipelineausführung abgeschlossen ist, können Sie eine Vorschau des
 > [!div class="mx-imgBorder"]
 > ![Vorschau für hochgeladenes Image](media/module/upload-image-in-r-script.png)
 
+## <a name="access-to-registered-dataset"></a>Zugreifen auf ein registriertes Dataset
+
+Verwenden Sie den folgenden Beispielcode, um [auf die in Ihrem Arbeitsbereich registrierten Datasets zuzugreifen](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script):
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="how-to-configure-execute-r-script"></a>Konfigurieren von Execute R Script
 
 Das Modul „Execute R Script“ enthält R-Beispielcode, den Sie als Ausgangspunkt verwenden können. Stellen Sie zum Konfigurieren des Moduls „Execute R Script“ die erforderlichen Eingaben und den auszuführenden Code bereit.
@@ -177,6 +193,25 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
  
     > [!NOTE]
     > Vorhandener R-Code kann kleinere Änderungen erfordern, damit er in einer Designer-Pipeline ausgeführt werden kann. Beispielsweise müssen Eingabedaten, die Sie im CSV-Format bereitstellen, explizit in ein Dataset konvertiert werden, bevor Sie sie in Ihrem Code verwenden können. Daten- und Spaltentypen, die in der Sprache R verwendet werden, unterscheiden sich ebenfalls durch einige Besonderheiten von den im Designer verwendeten Daten- und Spaltentypen.
+
+    Wenn Ihr Skript größer als 16 KB ist, verwenden Sie den **Script Bundle**-Port, um Fehler wie *CommandLine überschreitet das Limit von 16597 Zeichen* zu vermeiden. 
+    
+    Bündeln Sie das Skript und andere benutzerdefinierte Ressourcen in einer ZIP-Datei, und laden Sie die ZIP-Datei als **Dateidataset** in Studio hoch. Anschließend können Sie das Datasetmodul aus der Liste *Meine Datasets* im linken Modulbereich auf die Erstellungsseite des Designers ziehen. Verbinden Sie das Dataset mit dem **Script Bundle**-Port des **Execute R Script**-Moduls.
+    
+    Im Folgenden finden Sie den Beispielcode zum Verwenden des Skripts im Script Bundle:
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
 
 1.  Geben Sie für **Random Seed** (zufälliger Ausgangswert) einen Wert ein, der in der R-Umgebung als zufälliger Ausgangswert verwendet werden soll. Dieser Parameter entspricht dem Aufrufen von `set.seed(value)` im R-Code.  
 
@@ -320,9 +355,8 @@ Sie können R-Objekte zwischen Instanzen des Moduls „Execute R Script“ über
 
 Die folgenden vorinstallierten R-Pakete sind zurzeit verfügbar:
 
-|              |            | 
-|--------------|------------| 
 | Paket      | Version    | 
+|--------------|------------| 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

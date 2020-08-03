@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3bf3086d255a6aacfe4001879b3a3f00df2ba219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466879daae65b8c7fa896b0ead417c8d5eb51e28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084338"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analysieren der Sicherheit Ihres virtuellen Computers über die Sicherheitsgruppenansicht mithilfe der REST API
 
@@ -25,6 +25,9 @@ ms.locfileid: "84738725"
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-security-group-view-cli.md)
 > - [REST-API](network-watcher-security-group-view-rest.md)
+
+> [!NOTE]
+> Die Sicherheitsgruppenansichts-API wird nicht mehr gepflegt und in Kürze außer Betrieb gesetzt. Verwenden Sie die [Funktion „Effektive Sicherheitsregeln“](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview), die dieselbe Funktionalität bietet. 
 
 Die Sicherheitsgruppenansicht gibt konfigurierte und effektive Netzwerksicherheitsregeln zurück, die auf einen virtuellen Computer angewendet werden. Diese Funktion eignet sich zur Überwachung und Diagnose von Netzwerksicherheitsgruppen und Regeln, die auf einem virtuellen Computer konfiguriert sind, um sicherzustellen, dass Datenverkehr ordnungsgemäß zugelassen oder verweigert wird. In diesem Artikel erfahren Sie, wie Sie die effektiven und angewandten Sicherheitsregeln mithilfe der REST-API auf einen virtuellen Computer abrufen.
 

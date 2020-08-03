@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 06/25/2020
-ms.openlocfilehash: 4235e948dba76c0b2926d9965ccd2fcb072cad62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/28/2020
+ms.openlocfilehash: 2aa267f3c04225699d3ce65b5f8ee3b573ac0c78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323756"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -389,8 +389,7 @@ In diesem Abschnitt sind die IP-Adressen für die ausgehende Richtung aufgeführ
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicApps** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die ausgehende Richtung anzugeben.
-> Dieses Tag funktioniert in allen Regionen, in denen der Logic Apps-Dienst verfügbar ist.
-> Für verwaltete Connectors müssen Sie weiterhin die IP-Adressen verwenden.
+> Bei verwalteten Connectors können Sie optional das **AzureConnectors**-Diensttag verwenden, anstatt für jede Region IP-Adresspräfixe des verwalteten Connectors für die ausgehende Richtung anzugeben. Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist. 
 
 <a name="multi-tenant-outbound"></a>
 

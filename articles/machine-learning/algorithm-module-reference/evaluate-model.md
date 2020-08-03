@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/08/2020
-ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/27/2020
+ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171113"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285950"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -80,9 +80,9 @@ Bei der Auswertung binärer Klassifizierungsmodellen werden folgende Metriken ge
   
 -   **Accuracy** (Treffergenauigkeit) misst die Güte eines Klassifizierungsmodells als das Verhältnis der wahren Ergebnisse zur Gesamtheit der Fälle.  
   
--   **Precision** (Genauigkeit) ist der Anteil wahrer Ergebnisse an allen positiven Ergebnissen.  
+-   **Precision** (Genauigkeit) ist der Anteil wahrer Ergebnisse an allen positiven Ergebnissen. Precision = TP/(TP+FP)  
   
--   **Recall** (Trefferquote) ist der Anteil aller richtigen Ergebnisse, die vom Modell zurückgegeben werden.  
+-   **Recall** (Trefferquote) ist der Bruchteil der Gesamtmenge relevanter Instanzen, die tatsächlich abgerufen wurden. Recall = TP/(TP+FN)  
   
 -   **F1 score** (F1-Score) wird als gewichteter Durchschnitt von Genauigkeit und Trefferquote zwischen „0“ und „1“ berechnet, wobei „1“ der ideale Wert für den F1-Score ist.  
   

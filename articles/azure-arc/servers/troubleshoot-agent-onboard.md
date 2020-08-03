@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/10/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37f99ade366a73cb96caf55a562a92476223eb6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004544"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Behandeln von Verbindungsproblemen für den Connected Machine-Agent
 
@@ -48,6 +48,9 @@ Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Pr
 
 Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Protokollierung mit dem Connected Machine-Agent für Linux bei einer interaktiven Installation:
 
+>[!NOTE]
+>Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
+
 ```
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
@@ -73,12 +76,15 @@ Die folgende Tabelle enthält einige der bekannten Fehler sowie Vorschläge zur 
 |--------|------|---------------|---------|
 |„Failed to acquire authorization token device flow“ (Fehler beim Abrufen des Authentifizierungstoken-Geräteflows.) |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |Der Endpunkt `login.windows.net` ist nicht erreichbar. | Überprüfen Sie die Konnektivität mit dem Endpunkt. |
 |„Failed to acquire authorization token device flow“ (Fehler beim Abrufen des Authentifizierungstoken-Geräteflows.) |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |Der Zugriff auf den Endpunkt `login.windows.net` wird durch einen Proxy oder durch eine Firewall blockiert. | Überprüfen Sie die Konnektivität mit dem Endpunkt, und vergewissern Sie sich, dass sie nicht durch eine Firewall oder einen Proxyserver blockiert wird. |
+|„Failed to acquire authorization token device flow“ (Fehler beim Abrufen des Authentifizierungstoken-Geräteflows.)  |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp lookup login.windows.net: no such host`. | Das Gruppenrichtlinienobjekt *Computerkonfiguration\Administrative Vorlagen\System\Benutzerprofile\Benutzerprofile, die älter als eine bestimmte Anzahl von Tagen sind, beim Systemneustart löschen* ist aktiviert. | Vergewissern Sie sich, dass das Gruppenrichtlinienobjekt aktiviert ist und den betroffenen Computer als Ziel hat. Weitere Detailinformationen finden Sie in Fußnote <sup>[1](#footnote1)</sup>. |
 |„Failed to acquire authorization token from SPN“ (Fehler beim Abrufen des Authentifizierungstokens vom SPN.) |`Failed to execute the refresh request. Error = 'Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/token?api-version=1.0: Forbidden'` |Der Zugriff auf den Endpunkt `login.windows.net` wird durch einen Proxy oder durch eine Firewall blockiert. |Überprüfen Sie die Konnektivität mit dem Endpunkt, und vergewissern Sie sich, dass sie nicht durch eine Firewall oder einen Proxyserver blockiert wird. |
 |„Failed to acquire authorization token from SPN“ (Fehler beim Abrufen des Authentifizierungstokens vom SPN.) |`Invalid client secret is provided` |Falsches oder ungültiges Dienstprinzipalgeheimnis. |Überprüfen Sie das Dienstprinzipalgeheimnis. |
 | „Failed to acquire authorization token from SPN“ (Fehler beim Abrufen des Authentifizierungstokens vom SPN.) |`Application with identifier 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' was not found in the directory 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant` |Falscher Dienstprinzipal und/oder falsche Mandanten-ID. |Überprüfen Sie den Dienstprinzipal und/oder die Mandanten-ID.|
 |„Get ARM Resource Response“ (ARM-Ressourcenantwort abrufen) |`The client 'username@domain.com' with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to perform action 'Microsoft.HybridCompute/machines/read' over scope '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01' or the scope is invalid. If access was recently granted, please refresh your credentials."}}" Status Code=403` |Falsche Anmeldeinformationen und/oder Berechtigungen. |Vergewissern Sie sich, dass Sie der Rolle **Onboarding von Azure Connected Machine** angehören oder dass der Dienstprinzipal dieser Rolle angehört. |
 |„Failed to AzcmagentConnect ARM resource“ (Fehler bei „AzcmagentConnect“ für die ARM-Ressource.) |`The subscription is not registered to use namespace 'Microsoft.HybridCompute'` |Azure-Ressourcenanbieter sind nicht registriert. |Registrieren Sie die [Ressourcenanbieter](./agent-overview.md#register-azure-resource-providers). |
 |„Failed to AzcmagentConnect ARM resource“ (Fehler bei „AzcmagentConnect“ für die ARM-Ressource.) |`Get https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01?api-version=2019-03-18-preview:  Forbidden` |Der Zugriff auf den Endpunkt `management.azure.com` wird durch einen Proxyserver oder durch eine Firewall blockiert. |Überprüfen Sie die Konnektivität mit dem Endpunkt, und vergewissern Sie sich, dass sie nicht durch eine Firewall oder einen Proxyserver blockiert wird. |
+
+<a name="footnote1"></a><sup>1</sup>Wenn dieses Gruppenrichtlinienobjekt aktiviert ist und für Computer mit dem Connected Machine-Agent gilt, löscht es das Benutzerprofil, das dem integrierten Konto zugeordnet ist, das für den *himds*-Dienst angegeben ist. Dadurch wird auch das Authentifizierungszertifikat gelöscht, das für die Kommunikation mit dem Dienst verwendet wird, das 30 Tage lang im lokalen Zertifikatspeicher zwischengespeichert wird. Vor Ablauf des 30-Tage-Limits wird versucht, das Zertifikat zu erneuern. Um dieses Problem zu beheben, führen Sie die Schritte zum [Aufheben der Registrierung des Computers](manage-agent.md#unregister-machine) aus, und anschließend registrieren Sie ihn erneut, während der `azcmagent connect`-Dienst ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

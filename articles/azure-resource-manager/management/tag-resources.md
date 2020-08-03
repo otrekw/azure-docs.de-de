@@ -2,13 +2,13 @@
 title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/27/2020
+ms.openlocfilehash: 08612831007eeba781a473ca704d92a52ab0a638
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056921"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337533"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -438,7 +438,7 @@ Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie ein
 
 ### <a name="apply-tags-from-resource-group"></a>Anwenden von Tags aus der Ressourcengruppe
 
-Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, verwenden Sie die Funktion [resourceGroup](../templates/template-functions-resource.md#resourcegroup). Wenn Sie den Tagwert abrufen, verwenden Sie die `tags[tag-name]`-Syntax anstelle der `tags.tag-name`-Syntax, da einige Zeichen in der Punktnotation nicht ordnungsgemäß analysiert werden.
+Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, verwenden Sie die Funktion [resourceGroup()](../templates/template-functions-resource.md#resourcegroup). Wenn Sie den Tagwert abrufen, verwenden Sie die `tags[tag-name]`-Syntax anstelle der `tags.tag-name`-Syntax, da einige Zeichen in der Punktnotation nicht ordnungsgemäß analysiert werden.
 
 ```json
 {
@@ -596,6 +596,8 @@ Für Tags gelten folgende Einschränkungen:
    > Derzeit lassen Azure DNS-Zonen und Traffic Manager-Dienste auch keine Leerzeichen im Tag zu.
    >
    > Die Verwendung von `#` im Tagnamen wird in Azure Front Door nicht unterstützt.
+   >
+   > Azure Automation und Azure CDN unterstützen nur 15 Tags für Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

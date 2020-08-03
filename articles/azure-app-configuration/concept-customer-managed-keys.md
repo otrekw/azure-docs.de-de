@@ -6,24 +6,21 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023566"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384870"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln Ihrer App Configuration-Daten
 Azure App Configuration [verschlüsselt vertrauliche ruhende Informationen](../security/fundamentals/encryption-atrest.md). Die Verwendung von kundenseitig verwalteten Schlüsseln bietet einen verbesserten Datenschutz, da Sie so Ihre Verschlüsselungsschlüssel verwalten können.  Wenn die Verschlüsselung mit verwalteten Schlüsseln verwendet wird, werden alle vertraulichen Informationen in App Configuration mit einem vom Benutzer bereitgestellten Azure Key Vault-Schlüssel verschlüsselt.  Dadurch kann der Verschlüsselungsschlüssel bei Bedarf rotiert werden.  Außerdem bietet sich dadurch die Möglichkeit, den Zugriff von Azure App Configuration auf vertrauliche Informationen zu widerrufen, indem der Zugriff der App Configuration-Instanz auf den Schlüssel widerrufen wird.
-
-> [!NOTE]
-> Kundenseitig verwaltete Schlüssel sind jetzt in allen Regionen allgemein verfügbar, *außer* in „Indien, Mitte“. In der Region **Indien, Mitte** bietet Azure App Configuration die Verwendung kundenseitig verwalteter Schlüssel als öffentliche Vorschau an. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.
 
 ## <a name="overview"></a>Übersicht 
 Azure App Configuration verschlüsselt vertrauliche ruhende Informationen mit einem 256-Bit-AES-Verschlüsselungsschlüssel, der von Microsoft bereitgestellt wird. Jede App Configuration-Instanz verfügt über einen eigenen vom Dienst verwalteten Verschlüsselungsschlüssel, der zum Verschlüsseln vertraulicher Informationen verwendet wird. Vertrauliche Informationen umfassen die Werte, die sich in Schlüssel-Wert-Paaren befinden.  Wenn die Funktion für kundenseitig verwaltete Schlüssel aktiviert ist, verwendet App Configuration eine verwaltete Identität, die der App Configuration-Instanz zugewiesen ist, um sich bei Azure Active Directory zu authentifizieren. Die verwaltete Identität ruft dann Azure Key Vault auf und umschließt den Verschlüsselungsschlüssel der App Configuration-Instanz. Der umschlossene Verschlüsselungsschlüssel wird dann gespeichert, und der nicht umschlossene Verschlüsselungsschlüssel wird eine Stunde lang in App Configuration zwischengespeichert. App Configuration aktualisiert die nicht umschlossene Version des Verschlüsselungsschlüssels der App Configuration-Instanz stündlich. Hierdurch wird die Verfügbarkeit unter normalen Betriebsbedingungen sichergestellt. 
 
 >[!IMPORTANT]
-> Wenn die der App Configuration-Instanz zugewiesene Identität nicht mehr autorisiert ist, den Verschlüsselungsschlüssel der Instanz zu entpacken, oder wenn der verwaltete Schlüssel endgültig gelöscht wird, können vertrauliche Informationen, die in der App Configuration-Instanz gespeichert sind, nicht mehr entschlüsselt werden. Die Verwendung der Funktion [vorläufiges Löschen](../key-vault/general/overview-soft-delete.md) von Azure Key Vault verringert die Chance für ein versehentliches Löschen Ihres Verschlüsselungsschlüssels.
+> Wenn die der App Configuration-Instanz zugewiesene Identität nicht mehr autorisiert ist, den Verschlüsselungsschlüssel der Instanz zu entpacken, oder wenn der verwaltete Schlüssel endgültig gelöscht wird, können vertrauliche Informationen, die in der App Configuration-Instanz gespeichert sind, nicht mehr entschlüsselt werden. Die Verwendung der Funktion [vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) von Azure Key Vault verringert die Chance für ein versehentliches Löschen Ihres Verschlüsselungsschlüssels.
 
 Wenn Benutzer die Funktion für kundenseitig verwaltete Schlüssel in ihrer Azure App Configuration-Instanz aktivieren, kontrollieren sie damit die Fähigkeit des Diensts, auf ihre vertraulichen Informationen zuzugreifen. Der verwaltete Schlüssel dient als Stammverschlüsselungsschlüssel. Ein Benutzer kann den Zugriff seiner App Configuration-Instanz auf seinen verwalteten Schlüssel widerrufen, indem er seine Schlüsseltresor-Zugriffsrichtlinie ändert. Wenn dieser Zugriff widerrufen wird, verliert App Configuration innerhalb von einer Stunde die Fähigkeit, Benutzerdaten zu entschlüsseln. Zu diesem Zeitpunkt untersagt die App Configuration-Instanz jeglichen Zugriffsversuch. Diese Situation kann wiederhergestellt werden, indem Sie dem Dienst erneut Zugriff auf den verwalteten Schlüssel gewähren.  Innerhalb von einer Stunde ist App Configuration unter normalen Bedingungen dann in der Lage, Benutzerdaten zu entschlüsseln.
 
@@ -81,7 +78,7 @@ Zu Beginn benötigen Sie eine ordnungsgemäß konfigurierte Azure App Configurat
     az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    Die Ausgabe dieses Befehls enthält die Prinzipal-ID ("principalId") und Mandanten-ID ("tenandId") der systemseitig zugewiesenen Identität.  Diese werden verwendet, um der Identität Zugriff auf den verwalteten Schlüssel zu gewähren.
+    Die Ausgabe dieses Befehls enthält die Prinzipal-ID ("principalId") und Mandanten-ID ("tenandId") der systemseitig zugewiesenen Identität.  Diese IDs werden verwendet, um der Identität Zugriff auf den verwalteten Schlüssel zu gewähren.
 
     ```json
     {

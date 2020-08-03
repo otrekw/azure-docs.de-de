@@ -2,19 +2,16 @@
 title: Behandeln von Problemen mit Azure Automation-Runbooks
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Automation-Runbooks beheben.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bf04ae6985ac2ce0e20bf70b3d7c003bbddca69
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187182"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337295"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Beheben von Runbookproblemen
 
@@ -511,6 +508,24 @@ Wenn Sie mehr als 500 Minuten Verarbeitungszeit pro Monat nutzen möchten, müs
 1. Wählen Sie **Einstellungen** und dann **Preise** aus.
 1. Wählen Sie unten auf der Seite **Aktivieren** aus, um für Ihr Konto ein Upgrade auf den Basic-Tarif durchzuführen.
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Szenario: Runbookausgabestream größer als 1 MB
+
+### <a name="issue"></a>Problem
+
+Bei Ihrem in der Azure-Sandbox ausgeführten Runbook tritt der folgende Fehler auf:
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>Ursache
+
+Dieser Fehler tritt auf, weil vom Runbook zu viele Ausnahmedaten in den Ausgabestream geschrieben wurden.
+
+### <a name="resolution"></a>Lösung
+
+Für den Auftragsausgabestream gilt ein Grenzwert von 1 MB. Stellen Sie sicher, dass Ihr Runbook Aufrufe einer ausführbaren Datei oder eines Teilprozesses in `try`- und `catch`-Blöcke einschließt. Wenn diese Vorgänge eine Ausnahme auslösen, lassen Sie den Code die Nachricht dieser Ausnahme in eine Automation-Variable schreiben. Mit dieser Technik wird verhindert, dass die Nachricht in den Auftragsausgabestream geschrieben wird. Für ausgeführte Hybrid Runbook Worker-Aufträge wird der auf 1 MB abgeschnittene Ausgabestream ohne Fehlermeldung angezeigt.
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>Szenario: Es wurde dreimal erfolglos versucht, den Runbookauftrag zu starten
 
 ### <a name="issue"></a>Problem
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 Dieser Fehler tritt aufgrund eines der folgenden Probleme auf:
 
 * **Arbeitsspeicherlimit**. Für einen Auftrag kann ein Fehler auftreten, wenn dafür mehr als 400 MB Arbeitsspeicher verwendet werden. Die dokumentierten Grenzwerte, die für das Zuordnen von Arbeitsspeicher zu einer Sandbox gelten, finden Sie unter [Grenzwerte für den Automation-Dienst](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits). 
+
 * **Netzwerksockets**. Azure-Sandboxes sind auf 1.000 gleichzeitige Netzwerksockets beschränkt. Weitere Informationen finden Sie unter [Grenzwerte für den Automation-Dienst](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
+
 * **Modul inkompatibel**. Die Modulabhängigkeiten sind möglicherweise nicht korrekt. In diesem Fall gibt Ihr Runbook üblicherweise die Fehlermeldung `Command not found` oder `Cannot bind parameter` aus.
+
 * **Die Sandbox wurde nicht mit Active Directory authentifiziert**. Ihr Runbook versucht, eine ausführbare Datei oder einen Teilprozess aufzurufen, die bzw. der in einer Azure-Sandbox ausgeführt wird. Das Konfigurieren von Runbooks für die Authentifizierung mit Azure AD mithilfe der Azure Active Directory-Authentifizierungsbibliothek (ADAL) wird nicht unterstützt.
-* **Zu viele Ausnahmedaten**. Vom Runbook wurden zu viele Ausnahmedaten in den Ausgabestream geschrieben.
 
 ### <a name="resolution"></a>Lösung
 
 * **Arbeitsspeicherlimit, Netzwerksockets**. Die empfohlenen Vorgehensweisen für die Einhaltung der Arbeitsspeichergrenzwerte bestehen darin, die Workload auf mehrere Runbooks zu verteilen, weniger Daten im Arbeitsspeicher zu verarbeiten, das Schreiben von unnötigen Ausgaben aus den Runbooks zu vermeiden und zu überprüfen, wie viele Prüfpunkte Sie in Ihre PowerShell-Workflowrunbooks schreiben. Verwenden Sie die clear-Methode (z.B. `$myVar.clear`), um Variablen zu löschen, und verwenden Sie dann `[GC]::Collect`, um sofort die Garbage Collection durchzuführen. Durch diese Aktionen wird der Speicherbedarf Ihres Runbooks während der Laufzeit reduziert.
+
 * **Modul inkompatibel**. Aktualisieren Sie Ihre Azure-Module, indem Sie die Schritte unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) befolgen.
+
 * **Die Sandbox wurde nicht mit Active Directory authentifiziert**. Stellen Sie beim Authentifizieren bei Azure AD mit einem Runbook sicher, dass das Azure AD-Modul in Ihrem Automation-Konto verfügbar ist. Vergewissern Sie sich, dass Sie dem ausführenden Konto die erforderlichen Berechtigungen zum Ausführen der vom Runbook automatisierten Aufgaben erteilen.
 
   Verwenden Sie das Runbook auf einem [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md), wenn Ihr Runbook eine ausführbare Datei oder einen Teilprozess nicht aufrufen kann, die bzw. der in einer Azure Sandbox ausgeführt wird. Hybrid Worker unterliegen nicht den vom Arbeitsspeicher und Netzwerk vorgegebenen Grenzwerten, die für Azure-Sandboxes gelten.
-
-* **Zu viele Ausnahmedaten**. Für den Auftragsausgabestream gilt ein Grenzwert von 1 MB. Stellen Sie sicher, dass Ihr Runbook Aufrufe einer ausführbaren Datei oder eines Teilprozesses in `try`- und `catch`-Blöcke einschließt. Wenn diese Vorgänge eine Ausnahme auslösen, lassen Sie den Code die Nachricht dieser Ausnahme in eine Automation-Variable schreiben. Mit dieser Technik wird verhindert, dass die Nachricht in den Auftragsausgabestream geschrieben wird.
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>Szenario: PowerShell-Auftragsfehler mit der Meldung, dass die Methode nicht aufgerufen werden kann
 

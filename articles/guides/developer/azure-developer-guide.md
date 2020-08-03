@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829396"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131054"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -76,7 +76,7 @@ Aufgrund dieses Maß an Kontrolle, über das Sie mit den VMs verfügen, können 
 
 > **Einsatzgebiete**: Verwenden Sie virtuelle Computer, wenn Sie über die volle Kontrolle über Ihre Anwendungsinfrastruktur verfügen möchten oder lokale Anwendungsworkflows zu Azure migrieren möchten, ohne Änderungen vorzunehmen.
 >
-> **Erste Schritte**: Erstellen Sie eine [Linux-VM](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) oder eine [Windows-VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) im Azure-Portal.
+> **Erste Schritte**: Erstellen Sie eine [Linux-VM](../../virtual-machines/linux/quick-create-portal.md) oder eine [Windows-VM](../../virtual-machines/windows/quick-create-portal.md) im Azure-Portal.
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (serverlos)
 
@@ -141,11 +141,6 @@ Mit Docker-Containern, einer Form der Betriebssystemvirtualisierung, können Sie
 
 Azure bietet mehrere Methoden zum Verwenden von Containern in Ihren Anwendungen.
 
-- **Azure Docker-VM-Erweiterung**: Hiermit können Sie Ihre VM mit Docker-Tools so konfigurieren, dass sie als Docker-Host fungiert.
-
-  > **Einsatzgebiete**: Wenn Sie konsistente Containerbereitstellungen für Ihre Anwendungen auf einer VM erstellen möchten, oder wenn Sie [Docker Compose](https://docs.docker.com/compose/overview/) verwenden möchten.
-  >
-  > **Erste Schritte**: [Erstellen einer Docker-Umgebung in Azure mit der Docker-VM-Erweiterung](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 - **Azure Kubernetes Service:** Hiermit können Sie einen Cluster mit virtuellen Computern, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind, erstellen, konfigurieren und verwalten. Weitere Informationen zu Azure Kubernetes Service finden Sie unter [Einführung in Azure Kubernetes Service](../../aks/intro-kubernetes.md).
 
@@ -302,7 +297,7 @@ Der Azure-Ressourcen-Explorer eignet sich hervorragend zum Visualisieren der Res
 
 Wenn Sie den Zugriff auf Azure-Ressourcen gewähren, ist es empfehlenswert, Benutzern so wenig Berechtigungen wie möglich zum Ausführen einer bestimmten Aufgabe bereitzustellen.
 
-- **Rollenbasierte Zugriffssteuerung (RBAC)** : In Azure können Sie Benutzerkonten (Prinzipalen) in einem angegebenen Bereich Zugriff gewähren: Abonnement, Ressourcengruppe oder einzelne Ressourcen. Mit RBAC können Sie Ressourcen in einer Ressourcengruppe bereitstellen und einem bestimmten Benutzer oder einer bestimmten Gruppe Berechtigungen erteilen. Sie können auch den Zugriff auf nur die Ressourcen beschränken, die zur Zielressourcengruppe gehören. Sie können auch den Zugriff auf eine einzelne Ressource, z.B. einen virtuellen Computer oder ein virtuelles Netzwerk, gewähren. Um Zugriff zu gewähren, weisen Sie dem Benutzer, der Gruppe oder dem Dienstprinzipal eine Rolle zu. Es existieren viele vordefinierte Rollen, und Sie können auch Ihre eigenen benutzerdefinierten Rollen definieren. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?](../../role-based-access-control/overview.md)
+- **Rollenbasierte Zugriffssteuerung (RBAC)** : In Azure können Sie Benutzerkonten (Prinzipalen) in einem angegebenen Bereich Zugriff gewähren: Abonnement, Ressourcengruppe oder einzelne Ressourcen. Mit RBAC können Sie Ressourcen in einer Ressourcengruppe bereitstellen und einem bestimmten Benutzer oder einer bestimmten Gruppe Berechtigungen erteilen. Sie können auch den Zugriff auf nur die Ressourcen beschränken, die zur Zielressourcengruppe gehören. Sie können auch den Zugriff auf eine einzelne Ressource, z.B. einen virtuellen Computer oder ein virtuelles Netzwerk, gewähren. Um Zugriff zu gewähren, weisen Sie dem Benutzer, der Gruppe oder dem Dienstprinzipal eine Rolle zu. Es existieren viele vordefinierte Rollen, und Sie können auch Ihre eigenen benutzerdefinierten Rollen definieren. Weitere Informationen finden Sie in folgendem Artikel: [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
 
   > **Einsatzgebiete**: Wenn Sie eine differenzierte Zugriffsverwaltung für Benutzer und Gruppen benötigen, oder wenn Sie einen Benutzer zum Besitzer eines Abonnements machen müssen.
   >

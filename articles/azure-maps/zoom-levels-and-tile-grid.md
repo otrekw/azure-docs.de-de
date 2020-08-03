@@ -1,19 +1,19 @@
 ---
-title: Zoomfaktoren und Kachelraster | Microsoft Azure Maps
+title: Zoomfaktoren und Kachelraster in Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie mehr über Zoomfaktoren und Kachelraster in Microsoft Azure Maps.
-author: Philmea
-ms.author: philmea
-ms.date: 01/22/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123903"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093050"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 
@@ -24,15 +24,11 @@ Azure Maps verwendet das Koordinatensystem der sphärischen Mercator-Projektion 
 
 Um die Leistung beim Abrufen und Anzeigen von Karten zu optimieren, wird die Karte in vier quadratische Kacheln aufgeteilt. Die Azure Maps SDKs verwenden Kacheln mit einer Größe von 512 × 512 Pixeln für Straßenkarten und kleinere Kacheln mit 256 × 256 Pixeln für Satellitenbilder. Azure Maps enthält Raster- und Vektorkacheln für 23 Zoomfaktoren (nummeriert von 0 bis 22). Die ganze Welt würde bei Zoomfaktor 0 auf einer einzigen Kachel passen:
 
-<center>
-
-![Kachel mit Weltkarte](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="Kachel mit Weltkarte":::
 
 Der Zoomfaktor 1 verwendet vier Kacheln zum Rendering der Welt: ein Quadrat aus 2 x 2 Kacheln.
 
-<center>
-
-![Kartenlayout mit 2 × 2 Kacheln](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="Kartenlayout mit 2 × 2 Kacheln":::
 
 Jedes zusätzliche Zoomfaktorquadrat unterteilt die Kacheln des vorherigen Zoomfaktors, wodurch ein Raster mit 2<sup>Zoom</sup> x 2<sup>Zoom</sup> entsteht. Zoomfaktor 22 ist ein Raster aus 2<sup>22</sup> x 2<sup>22</sup> oder 4.194.304 x 4.194.304 Kacheln (insgesamt 17.592.186.044.416 Kacheln).
 
@@ -80,11 +76,7 @@ var mapHeight = mapWidth;
 
 Da die Werte für die Höhe und Breite der Karte für jeden Zoomfaktor unterschiedlich sind, gilt dies auch für die Pixelkoordinaten. Das Pixel in der oberen linken Ecke einer Karte weist immer die Pixelkoordinaten (0, 0) auf. Das Pixel in der unteren rechten Ecke einer Karte besitzt die Pixelkoordinaten *(width-1, height-1)* bzw. in Bezug auf die Gleichungen im vorherigen Abschnitt *(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)* . Ein Beispiel: Bei 512 quadratischen Kacheln mit Zoomfaktor 2 reichen die Pixelkoordinaten von (0, 0) bis (2047, 2047), wie hier zu sehen:
 
-<center>
-
-![Karte mit Pixeldimensionen](media/zoom-levels-and-tile-grid/map-width-height.png)
-
-</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Karte mit Pixeldimensionen":::
 
 Wenn Breiten- und Längengrad sowie die Detailstufe angegeben sind, wird die XY-Pixelkoordinaten wie folgt berechnet:
 
@@ -110,9 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 Jede Kachel erhält XY-Koordinaten von (0, 0) in der oberen rechten Ecke bis *(2<sup>zoom</sup>–1, 2<sup>zoom</sup>–1)* in der rechten unteren Ecke. Bei Zoomfaktor 2 reichen die Kachelkoordinaten beispielsweise von (0, 0) bis(7, 7), wie hier zu sehen:
 
-<center>
-
-![Karte mit Kachelkoordinaten](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Karte mit Kachelkoordinaten":::
 
 Wenn ein XY-Pixelkoordinatenpaar bekannt ist, können Sie ganz einfach die XY-Kachelkoordinaten der Kachel bestimmen, die dieses Pixel enthält:
 
@@ -126,17 +116,13 @@ Kacheln werden durch den Zoomfaktor angegeben. Die x- und y-Koordinaten entsprec
 
 Denken Sie bei der Ermittlung des zu verwendenden Zoomfaktors daran, dass jeder Standort eine feste Position auf der Kachel darstellt. Folglich ist die Anzahl der Kacheln, die für die Darstellung einer bestimmten Fläche des Gebiets erforderlich ist, von der jeweiligen Platzierung des Zoomrasters auf der Weltkarte abhängig. Wenn zwei Punkte z.B. 900 Meter auseinander liegen, sind *möglicherweise* nur drei Kacheln notwendig, um eine Route zwischen diesen im Zoomfaktor 17 anzuzeigen. Wenn sich der westliche Punkt allerdings rechts von der Kachel und der östliche Punkt links von der Kachel befindet, sind möglicherweise vier Kacheln erforderlich:
 
-<center>
-
-![Beispielraster für Zoom](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="Beispielraster für Zoom":::
 
 Sobald der Zoomfaktor ermittelt wurde, können die x- und y-Werte berechnet werden. Die obere linke Kachel in jedem Zoomraster entspricht x=0, y=0, während die Kachel unten rechts x=2<sup>Zoom -1</sup>, y=2<sup>Zoom-1</sup> entspricht.
 
 Hier wird das Zoomraster für Zoomfaktor 1 dargestellt:
 
-<center>
-
-![Zoomraster für Zoomfaktor 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="Zoomraster für Zoomfaktor 1":::
 
 ## <a name="quadkey-indices"></a>Quadkey-Indizes
 
@@ -157,9 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys` weisen einige interessante Eigenschaften auf. Erstens: Die Länge eines `quadkey` (die Anzahl von Stellen) ist gleich dem Zoomfaktor der entsprechenden Kachel. Zweitens: Der `quadkey` jeder Kachel beginnt mit dem `quadkey` der übergeordneten Kachel (der Kachel im vorherigen Zoomfaktor). Wie im Beispiel unten gezeigt, ist Kachel 2 den Kacheln 20 bis 23 übergeordnet:
 
-<center>
-
-![Quadkey-Kachelpyramide](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey-Kachelpyramide":::
 
 Und schließlich stellen `quadkeys` einen eindimensionalen Indexschlüssel bereit, der üblicherweise die Nähe der Kacheln im XY-Raum aufrechterhält. Anders gesagt: Zwei Kacheln mit ähnlichen XY-Koordinaten weisen in der Regel relativ nahe beieinander liegende `quadkeys` auf. Dies ist wichtig für die Optimierung der Datenbankleistung, weil benachbarte Kacheln häufig in Gruppen angefordert werden. Daher ist es wünschenswert, diese Kacheln in denselben Datenträgerblöcken zu speichern, um die Anzahl von Lesevorgängen auf dem Datenträger zu minimieren.
 

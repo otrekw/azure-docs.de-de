@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888113"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011447"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurieren der Objektreplikation für Blockblobs (Vorschau)
 
@@ -52,7 +52,7 @@ Führen Sie die folgenden Schritte aus, um eine Replikationsrichtlinie im Azure-
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="Screenshot von Replikationsregeln im Azure-Portal":::
 
-1. Wenn gewünscht, geben Sie einen oder mehrere Filter an, um nur Blobs zu kopieren, die einem Präfixmuster entsprechen. Wenn Sie z. B. das Präfix `b` angeben, werden nur Blobs repliziert, deren Name mit diesem Buchstaben beginnt. Sie können ein virtuelles Verzeichnis als Teil des Präfixes angeben.
+1. Wenn gewünscht, geben Sie einen oder mehrere Filter an, um nur Blobs zu kopieren, die einem Präfixmuster entsprechen. Wenn Sie z. B. das Präfix `b` angeben, werden nur Blobs repliziert, deren Name mit diesem Buchstaben beginnt. Sie können ein virtuelles Verzeichnis als Teil des Präfixes angeben. Die Präfixzeichenfolge unterstützt keine Platzhalterzeichen.
 
     Die folgende Abbildung zeigt Filter, die einschränken, welche Blobs als Teil einer Replikationsregel kopiert werden.
 
@@ -68,7 +68,7 @@ Führen Sie die folgenden Schritte aus, um eine Replikationsrichtlinie im Azure-
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Um eine Replikationsrichtlinie mit PowerShell zu erstellen, installieren Sie zunächst Version [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) des PowerShell-Moduls „Az.Storage“. Führen Sie zum Installieren des Vorschaumoduls folgende Schritte aus:
+Um eine Replikationsrichtlinie mit PowerShell zu erstellen, installieren Sie zunächst Version [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) oder höher des PowerShell-Moduls „Az.Storage“. Führen Sie zum Installieren des Vorschaumoduls folgende Schritte aus:
 
 1. Deinstallieren Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
 

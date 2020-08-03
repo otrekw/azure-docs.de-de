@@ -4,23 +4,23 @@ description: include file
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046424"
 ---
-Im Folgenden werden die wichtigsten Grenzwerte für die allgemeine Verfügbarkeit zusammengefasst.
+Im Folgenden werden die wichtigsten Grenzwerte in Azure Time Series Insights Gen1 zusammengefasst.
 
 ### <a name="sku-ingress-rates-and-capacities"></a>SKU: Eingangsraten und Kapazitäten
 
-Eingangsraten und Kapazitäten der S1 und S2 SKU bieten Flexibilität bei der Konfiguration einer neuen Time Series Insights-Umgebung. Die SKU-Kapazität gibt die tägliche Eingangsrate basierend auf der Anzahl der Ereignisse oder der gespeicherten Bytes an – je nachdem, welcher Wert zuerst erreicht wird. Beachten Sie, dass der Eingang *pro Minute* gemessen wird und dass mithilfe des Tokenbucketalgorithmus eine **Drosselung** angewendet wird. Der Eingang wird in Blöcken von je 1 KB gemessen. Ein Ereignis mit einer tatsächlichen Größe von 0,8 KB wird als ein Ereignis gemessen, ein 2,6 KB großes Ereignis zählt als drei Ereignisse.
+Eingangsraten und Kapazitäten der S1- und S2-SKU bieten Flexibilität bei der Konfiguration einer neuen Azure Time Series Insights-Umgebung. Die SKU-Kapazität gibt die tägliche Eingangsrate basierend auf der Anzahl der Ereignisse oder der gespeicherten Bytes an – je nachdem, welcher Wert zuerst erreicht wird. Beachten Sie, dass der Eingang *pro Minute* gemessen wird und dass mithilfe des Tokenbucketalgorithmus eine **Drosselung** angewendet wird. Der Eingang wird in Blöcken von je 1 KB gemessen. Ein Ereignis mit einer tatsächlichen Größe von 0,8 KB wird als ein Ereignis gemessen, ein 2,6 KB großes Ereignis zählt als drei Ereignisse.
 
 | Kapazität der SKU „S1“ | Eingangsrate | Maximale Speicherkapazität
 | --- | --- | --- |
@@ -44,7 +44,7 @@ S2 SKU-Umgebungen unterstützen wesentlich mehr Ereignisse pro Monat und haben e
 
 ### <a name="property-limits"></a>Eigenschaftsgrenzwerte
 
-Eigenschaftsgrenzwerte der allgemeinen Verfügbarkeit (GA) sind von der ausgewählten SKU-Umgebung abhängig. Die bereitgestellten Ereigniseigenschaften verfügen über entsprechende JSON-, CSV- und Diagrammspalten, die im [Time Series Insights-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) angezeigt werden können.
+Eigenschaftsgrenzwerte von Gen1 sind von der ausgewählten SKU-Umgebung abhängig. Die bereitgestellten Ereigniseigenschaften verfügen über entsprechende JSON-, CSV- und Diagrammspalten, die im [Azure Time Series Insights-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) angezeigt werden können.
 
 | SKU | Maximale Eigenschaften |
 | --- | --- |
@@ -53,11 +53,11 @@ Eigenschaftsgrenzwerte der allgemeinen Verfügbarkeit (GA) sind von der ausgewä
 
 ### <a name="event-sources"></a>Ereignisquellen
 
-Maximal zwei Ereignisquellen werden pro Instanz unterstützt. 
+Maximal zwei Ereignisquellen werden pro Instanz unterstützt.
 
 * Informieren Sie sich über das [Hinzufügen einer Event Hub-Quelle](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * Konfigurieren [einer IoT-Hub-Quelle](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
 
 ### <a name="api-limits"></a>API-Grenzwerte
 
-REST-API-Grenzwerte für Time Series Insights GA (allgemeine Verfügbarkeit) sind in der [Referenzdokumentation zur REST-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits) angegeben.
+REST-API-Grenzwerte für Azure Time Series Insights Gen1 sind in der [Referenzdokumentation zur REST-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits) angegeben.
