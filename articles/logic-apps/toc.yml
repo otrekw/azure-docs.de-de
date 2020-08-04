@@ -28,6 +28,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: Beispiele
   items:
+    - name: 'Erstellen einer Logik-App: Beispielskript'
+      href: sample-logic-apps-cli-script.md
     - name: Azure-Codebeispiele
       href: /samples/browse/?products=azure-logic-apps
     - name: "Resource\_Manager-Schnellstartvorlagen"

@@ -123,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: Konfigurieren von App-konsistenten Sicherungen von virtuellen Azure-Computern unter Linux
               href: backup-azure-linux-app-consistent.md
+            - name: Selektive Datenträgersicherung
+              href: selective-disk-backup-restore.md
         - name: Restore
           items:
             - name: Informationen zur Wiederherstellung von Azure-VMs
@@ -422,7 +424,7 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
