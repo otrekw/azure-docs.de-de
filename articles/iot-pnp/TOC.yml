@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (Python)
       href: tutorial-multiple-components-python.md
+    - name: Herstellen einer Verbindung mit einem Gerät mithilfe von MQTT
+      href: tutorial-use-mqtt.md
 - name: Konzepte
   items:
     - name: Aufbau
