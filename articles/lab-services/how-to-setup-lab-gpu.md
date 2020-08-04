@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286001"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Einrichten eines Labs mit virtuellen GPU-Computern
 
@@ -32,7 +32,7 @@ Wie in der folgenden Tabelle beschrieben, ist die *Compute*-GPU-Größe für rec
 | ---- | ----- | --- | ----------- | 
 | Kleine GPU (Compute) | -&nbsp;6&nbsp;Kerne<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Diese Größe eignet sich am besten für rechenintensive Anwendungen wie künstliche Intelligenz (KI) und Deep Learning. |
 
-Die *Visualisierungs*-GPU-Größen sind für grafikintensive Anwendungen vorgesehen.  Beispielsweise zeigt der [Kurstyp „SolidWorks Engineering“](./class-type-solidworks.md) die Verwendung der **Kleinen GPU-Größe (Visualisierung)** .  Die Visualisierungs-GPU eignet sich für diese Art von Kurs, da die Kursteilnehmer mit der SolidWorks 3D-CAD-Umgebung (Computer-Aided Design) zum Modellieren und Visualisieren solider Objekte interagieren.
+Die *Visualisierungs*-GPU-Größen sind für grafikintensive Anwendungen vorgesehen.  Beispielsweise zeigt der [Kurstyp „SOLIDWORKS Engineering“](./class-type-solidworks.md) die Verwendung der **Kleinen GPU-Größe (Visualisierung)** .  Die Visualisierungs-GPU eignet sich für diese Art von Kurs, da die Kursteilnehmer mit der SOLIDWORKS 3D-CAD-Umgebung (Computer-Aided Design) zum Modellieren und Visualisieren solider Objekte interagieren.
 
 | Size | Kerne | RAM | BESCHREIBUNG | 
 | ---- | ----- | --- | ----------- | 
@@ -45,7 +45,7 @@ Wenn Sie die GPU-Funktionen Ihrer virtuellen Lab-Computer nutzen möchten, stell
 ![Screenshot von „Neues Lab“mit der Option „GPU-Treiber installieren“](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 Wie in der Abbildung oben gezeigt, ist diese Option standardmäßig aktiviert, wodurch sichergestellt wird, dass die *neuesten* Treiber für den Typ von GPU und Image installiert werden, den Sie ausgewählt haben.
-- Wenn Sie eine *Compute*-GPU-Größe auswählen, werden die Lab-VMs mit der [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)-GPU betrieben.  In diesem Fall werden die neuesten [CUDA-Treiber (Compute Unified Device Architecture)](https://www.nvidia.com/object/io_69526.html) installiert, die Hochleistungscomputing ermöglichen.
+- Wenn Sie eine *Compute*-GPU-Größe auswählen, werden die Lab-VMs mit der [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)-GPU betrieben.  In diesem Fall werden die neuesten [CUDA-Treiber (Compute Unified Device Architecture)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) installiert, die Hochleistungscomputing ermöglichen.
 - Wenn Sie eine *Visualisierungs*-GPU-Größe auswählen, werden Ihre Lab-VMs mit der [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf)-GPU und [GRID-Technologie](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf) betrieben.  In diesem Fall werden die neuesten GRID-Treiber installiert, was die Verwendung von grafikintensiven Anwendungen ermöglicht.
 
 ### <a name="install-the-drivers-manually"></a>Manuelles Installieren der Treiber
@@ -113,7 +113,7 @@ Befolgen Sie die Anweisungen im Abschnitt „Überprüfen der Treiberinstallatio
 Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Erstellen und Verwalten von Classroom-Labs](how-to-manage-classroom-labs.md)
-- [Kurstyp „SolidWorks CAD (Computer-Aided Design)](class-type-solidworks.md)
+- [Kurstyp „SOLIDWORKS CAD (Computer-Aided Design)](class-type-solidworks.md)
 - [MATLAB-Kurstyp (Matrixlabor)](class-type-matlab.md)
 
 

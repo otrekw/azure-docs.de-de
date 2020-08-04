@@ -3,12 +3,12 @@ title: 'Beheben von Konnektivitätsproblemen: Azure Event Hubs | Microsoft-Dokum
 description: Dieser Artikel bietet Informationen zum Beheben von Konnektivitätsproblemen mit Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039326"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Behandeln von Konnektivitätsproblemen: Azure Event Hubs
 Es gibt verschiedene Gründe dafür, dass Clientanwendungen keine Verbindung mit einem Event Hub herstellen können. Die auftretenden Konnektivitätsprobleme können dauerhaft oder vorübergehend sein. Wenn das Problem immer (dauerhaft) auftritt, können Sie die Verbindungszeichenfolge, die Firewalleinstellungen Ihrer Organisation, IP-Firewalleinstellungen, Netzwerksicherheitseinstellungen (Dienstendpunkte, private Endpunkte usw.) überprüfen. Bei zeitweiligen Problemen kann ein Upgrade auf die neueste Version des SDK, das Ausführen von Befehlen zum Überprüfen von gelöschten Paketen und das Abrufen von Netzwerkablaufverfolgungen bei der Behebung von Problemen hilfreich sein. 
@@ -48,7 +48,7 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 ```
 
 ### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Überprüfen, ob die IP-Adressen in der Unternehmensfirewall zulässig sind
-Wenn Sie mit Azure arbeiten, müssen Sie manchmal bestimmten IP-Adressbereichen oder URLs in Ihrer Unternehmensfirewall oder Ihrem Proxy erlauben, auf alle Azure-Dienste zuzugreifen, die Sie verwenden oder zu verwenden versuchen. Überprüfen Sie, ob der Datenverkehr für die von Event Hubs verwendeten IP-Adressen zulässig ist. Weitere Informationen zu den von Azure Event Hubs verwendeten IP-Adressen finden Sie unter: [Azure-IP-Bereiche und Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519) und [Diensttag – EventHub](network-security.md#service-tags).
+Wenn Sie mit Azure arbeiten, müssen Sie manchmal bestimmten IP-Adressbereichen oder URLs in Ihrer Unternehmensfirewall oder Ihrem Proxy erlauben, auf alle Azure-Dienste zuzugreifen, die Sie verwenden oder zu verwenden versuchen. Überprüfen Sie, ob der Datenverkehr für die von Event Hubs verwendeten IP-Adressen zulässig ist. Weitere Informationen zu den von Azure Event Hubs verwendeten IP-Adressen finden Sie unter [Azure-IP-Bereiche und Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
 Vergewissern Sie sich außerdem, dass die IP-Adresse für Ihren Namespace zulässig ist. Um die richtigen IP-Adressen zu ermitteln, die für Ihre Verbindungen zulässig sind, führen Sie die folgenden Schritte aus:
 
@@ -75,13 +75,16 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
     ```
 3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
 
+### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Sicherstellen, dass das AzureEventGrid-Diensttag in Ihren Netzwerksicherheitsgruppen zulässig ist
+Wenn Ihre Anwendung in einem Subnetz ausgeführt wird und eine zugeordnete Netzwerksicherheitsgruppe vorhanden ist, stellen Sie sicher, dass ausgehender Internetdatenverkehr oder das AzureEventGrid-Diensttag zulässig ist. Lesen Sie [Diensttags des virtuellen Netzwerks](../virtual-network/service-tags-overview.md), und suchen Sie nach `EventHub`.
+
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>Überprüfen, ob die Anwendung in einem bestimmten Subnetz eines VNET ausgeführt werden muss
 Vergewissern Sie sich, dass Ihre Anwendung in einem Subnetz des virtuellen Netzwerks ausgeführt wird, das Zugriff auf den Namespace besitzt. Wenn dies nicht der Fall ist, führen Sie die Anwendung in dem Subnetz aus, das Zugriff auf den Namespace besitzt, oder fügen Sie die IP-Adresse des Computers, auf dem die Anwendung ausgeführt wird, der [IP-Firewall](event-hubs-ip-filtering.md) hinzu. 
 
 Wenn Sie einen Dienstendpunkt für ein virtuelles Netzwerk für einen Event Hub-Namespace erstellen, akzeptiert der Namespace nur Datenverkehr aus dem Subnetz, das an den Dienstendpunkt gebunden ist. Es gibt bei diesem Verhalten eine Ausnahme. Sie können bestimmte IP-Adressen in der IP-Firewall hinzufügen, um den Zugriff auf den öffentlichen Endpunkt des Event Hub zu ermöglichen. Weitere Informationen finden Sie unter [Netzwerkdienstendpunkte](event-hubs-service-endpoints.md).
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>Überprüfen der IP-Firewalleinstellungen für Ihren Namespace
-Überprüfen Sie, ob die IP-Adresse des Computers, auf dem die Anwendung ausgeführt wird, durch die IP-Firewall blockiert wird.  
+Überprüfen Sie, ob die öffentliche IP-Adresse des Computers, auf dem die Anwendung ausgeführt wird, durch die IP-Firewall blockiert wird.  
 
 Standardmäßig kann über das Internet auf Event Hubs-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
 
@@ -108,9 +111,9 @@ Aktivieren Sie Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für vi
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Überprüfen, ob auf den Namespace nur mit einem privaten Endpunkt zugegriffen werden kann
 Wenn der Event Hubs-Namespace so konfiguriert ist, dass darauf nur über einen privaten Endpunkt zugegriffen werden kann, vergewissern Sie sich, dass die Clientanwendung über den privaten Endpunkt auf den Namespace zugreift. 
 
-Mit dem [Azure Private Link-Dienst](../private-link/private-link-overview.md) können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure Event Hubs zugreifen. Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
+Mit dem [Azure Private Link-Dienst](../private-link/private-link-overview.md) können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure Event Hubs zugreifen. Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk und bindet den Dienst dadurch in Ihr virtuelles Netzwerk ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
 
-Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte](private-link-service.md). 
+Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte](private-link-service.md). Weitere Informationen zum Bestätigen, dass ein privater Endpunkt verwendet wird, finden Sie unter **Überprüfen, ob die private Endpunktverbindung funktioniert**. 
 
 ### <a name="troubleshoot-network-related-issues"></a>Beheben von netzwerkbezogenen Problemen
 Führen Sie die folgenden Schritte aus, um netzwerkbezogene Probleme mit Event Hubs zu beheben: 
@@ -160,7 +163,7 @@ Vorübergehende Konnektivitätsprobleme können aufgrund von Upgrades und Neusta
 - Die Verbindung zwischen Anwendungen und dem Dienst wird möglicherweise für einige Sekunden getrennt.
 - Anforderungen werden ggf. vorübergehend gedrosselt.
 
-Wenn im Anwendungscode das SDK verwendet wird, ist die Wiederholungsrichtlinie bereits integriert und aktiv. Die Verbindung wird ohne nennenswerte Auswirkungen auf die Anwendung bzw. den Workflow wiederhergestellt. Versuchen Sie andernfalls nach einigen Minuten erneut, eine Verbindung mit dem Dienst herzustellen, um zu überprüfen, ob die Probleme behoben wurden. 
+Wenn im Anwendungscode das SDK verwendet wird, ist die Wiederholungsrichtlinie bereits integriert und aktiv. Die Verbindung wird ohne nennenswerte Auswirkungen auf die Anwendung bzw. den Workflow wiederhergestellt. Das Abfangen dieser vorübergehenden Fehler, das Zurücksetzen und anschließende Wiederholen des Aufrufs stellen sicher, dass der Code bei diesen vorübergehenden Probleme stabil ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln:

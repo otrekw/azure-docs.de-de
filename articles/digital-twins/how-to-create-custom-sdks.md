@@ -7,23 +7,26 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e7533b87e28fa2bb95aaaddd31f7871e8ccdb600
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135868"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285610"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
 
-Zurzeit ist das einzige veröffentlichte Datenebenen-SDK für die Interaktion mit den APIs für Azure Digital Twins für .NET (C#) bestimmt. Informationen zum .NET SDK und APIs im Allgemeinen finden Sie in [Vorgehensweise: Verwenden der APIs und SDKs für Azure Digital Twins](how-to-use-apis-sdks.md). Wenn Sie in einer anderen Sprache arbeiten, erfahren Sie in diesem Artikel, wie Sie mithilfe von AutoRest ein eigenes SDK in der Sprache Ihrer Wahl generieren.
+Zurzeit ist das einzige veröffentlichte Datenebenen-SDK für die Interaktion mit den APIs für Azure Digital Twins für .NET (C#) bestimmt. Informationen zum .NET SDK und APIs im Allgemeinen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md). Wenn Sie in einer anderen Sprache arbeiten, erfahren Sie in diesem Artikel, wie Sie mithilfe von AutoRest ein eigenes Datenebenen-SDK in der Sprache Ihrer Wahl generieren.
+
+>[!NOTE]
+> Wenn Sie möchten, können Sie auch AutoRest verwenden, um ein Steuerungsebenen-SDK zu generieren. Führen Sie dazu die Schritte in diesem Artikel mithilfe der [Steuerungsebenen-Swagger-Datei (OpenAPI)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) anstelle des Datenebenen-SDK aus.
 
 ## <a name="set-up-your-machine"></a>Einrichten Ihres Computers
 
 Zum Generieren eines SDK benötigen Sie Folgendes:
 * [AutoRest](https://github.com/Azure/autorest), Version 2.0.4413 (Version 3 wird derzeit nicht unterstützt)
 * [Node.js](https://nodejs.org) als erforderliche Komponente für AutoRest
-* Die [Azure Digital Twins-Swagger-Datei (OpenAPI)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) mit Namen *digitaltwins.json* und den zugehörigen Ordner mit Beispielen. Laden Sie die Swagger-Datei und deren Ordner mit Beispielen auf Ihren lokalen Computer herunter.
+* Die [Azure Digital Twins-Datenebenen-Swagger-Datei (OpenAPI)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) mit Namen *digitaltwins.json* und den zugehörigen Ordner mit Beispielen. Laden Sie die Swagger-Datei und deren Ordner mit Beispielen auf Ihren lokalen Computer herunter.
 
 Sobald der Computer alle Voraussetzungen gemäß der obigen Liste erfüllt, können Sie mit AutoRest das SDK erstellen.
 
@@ -43,13 +46,13 @@ Führen Sie die folgenden Schritte aus, um AutoRest für die Azure Digital Twins
 autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Daraufhin wird ein neuer Ordner mit dem Namen *ADTApi* in Ihrem Arbeitsverzeichnis angezeigt. Die generierten SDK-Dateien verfügen über den Namespace *ADTApi*, den Sie weiterhin in den restlichen Verwendungsbeispielen in diesem Artikel verwenden werden.
+Daraufhin wird ein neuer Ordner mit dem Namen *ADTApi* in Ihrem Arbeitsverzeichnis angezeigt. Die generierten SDK-Dateien verwenden den Namespace *ADTApi*. Sie verwenden diesen Namespace auch in den restlichen Verwendungsbeispielen in diesem Artikel.
 
 AutoRest unterstützt eine breite Palette von Sprachcodegeneratoren.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>Hinzufügen des SDK zu einem Visual Studio-Projekt
 
-Sie können die von AutoRest generierten Dateien direkt in eine .NET-Projektmappe einschließen. Da Sie das Azure Digital Twins-SDK jedoch wahrscheinlich in mehreren separaten Projekten (Ihren Client-Apps, Azure Functions-Apps usw.) benötigen, kann es hilfreich sein, ein separates Projekt (eine .NET-Klassenbibliothek) aus den generierten Dateien zu erstellen. Sie können dieses Klassenbibliotheksprojekt dann als Projektverweis in mehrere Projektmappen einschließen.
+Sie können die von AutoRest generierten Dateien direkt in eine .NET-Projektmappe einschließen. Wahrscheinlich möchten Sie das Azure Digital Twins SDK jedoch in mehrere separate Projekte (Ihre Client-Apps, Azure Functions-Apps usw.) einbinden. Aus diesem Grund kann es hilfreich sein, ein separates Projekt (eine .NET-Klassenbibliothek) aus den generierten Dateien zu erstellen. Sie können dieses Klassenbibliotheksprojekt dann als Projektverweis in mehrere Projektmappen einbinden.
 
 Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothek, wobei es sich um ein eigenes Projekt handelt, das in andere Projekte eingebunden werden kann. Diese Schritte basieren auf **Visual Studio** ([hier](https://visualstudio.microsoft.com/downloads/) können Sie die neueste Version installieren).
 
@@ -73,7 +76,7 @@ Um diese Verweise hinzuzufügen, öffnen Sie *Tools > NuGet-Paket-Manager > NuGe
 
 1. Vergewissern Sie sich im Bereich, dass die Registerkarte *Durchsuchen* ausgewählt ist.
 2. Suchen Sie nach *Microsoft.Rest*.
-3. Wählen Sie die Pakete *ClientRuntime* und *ClientRuntime.Azure* aus, und fügen Sie sie der Projektmappe hinzu.
+3. Wählen Sie die `ClientRuntime`- und `ClientRuntime.Azure`-Pakete aus, und fügen Sie sie der Projektmappe hinzu.
 
 Sie können nun das Projekt erstellen und als Projektverweis in eine beliebige Azure Digital Twins-Anwendung einschließen, die Sie schreiben.
 
@@ -87,7 +90,7 @@ Alle SDK-Funktionen sind in synchronen und asynchronen Versionen enthalten.
 
 ### <a name="typed-and-untyped-data"></a>Typisierte und nicht typisierte Daten
 
-REST-API-Aufrufe geben im Allgemeinen stark typisierte Objekte zurück. Da Benutzer jedoch mit Azure Digital Twins eigene benutzerdefinierte Typen für Zwillinge definieren können, gibt es keine Möglichkeit, statische Rückgabedaten für viele Aufrufe von Azure Digital Twins vorab zu definieren. Stattdessen geben die APIs stark typisierte Wrappertypen zurück, sofern zutreffend, und die benutzertypisierten Zwillingsdaten befinden sich in Json.NET-Objekten (wird überall dort verwendet, wo der Datentyp „Objekt" in den API-Signaturen angezeigt wird). Sie können diese Objekte entsprechend in Ihren Code umwandeln.
+REST-API-Aufrufe geben im Allgemeinen stark typisierte Objekte zurück. Da Benutzer jedoch mit Azure Digital Twins eigene benutzerdefinierte Typen für Zwillinge definieren können, gibt es keine Möglichkeit, statische Rückgabedaten für viele Aufrufe von Azure Digital Twins vorab zu definieren. Stattdessen geben die APIs stark typisierte Wrappertypen zurück, sofern zutreffend, und die benutzertypisierten Zwillingsdaten befinden sich in Json.NET-Objekten (wird überall dort verwendet, wo der Datentyp „object" in den API-Signaturen angezeigt wird). Sie können diese Objekte entsprechend in Ihren Code umwandeln.
 
 ### <a name="error-handling"></a>Fehlerbehandlung
 
@@ -115,7 +118,7 @@ AutoRest generiert zwei Arten von Pagingmustern für das SDK:
 
 Beim Pagingmuster ohne Abfrage gibt es zwei Versionen der einzelnen Aufrufe:
 * Eine Version, die den ersten Aufruf durchführen soll (z. B. `DigitalTwins.ListEdges()`)
-* Eine Version zum Abrufen nachfolgender Seiten mit dem Suffix „Next“ (z. B. `DigitalTwins.ListEdgesNext()`)
+* Eine Version zum Abrufen der folgenden Seiten. Diese Aufrufe weisen das Suffix „Next“ auf (z. B. `DigitalTwins.ListEdgesNext()`).
 
 Der folgende Codeausschnitt zeigt, wie Sie eine ausgelagerte Liste von ausgehenden Beziehungen von Azure Digital Twins abrufen:
 ```csharp
@@ -188,4 +191,4 @@ try
 ## <a name="next-steps"></a>Nächste Schritte
 
 Führen Sie die Schritte zum Erstellen einer Client-App aus, in der Sie Ihr SDK verwenden können:
-* [Tutorial: Codieren einer Client-App](tutorial-code.md)
+* [*Tutorial: Codieren einer Client-App*](tutorial-code.md)

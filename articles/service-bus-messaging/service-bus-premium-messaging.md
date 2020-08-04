@@ -2,13 +2,13 @@
 title: Azure Service Bus-Tarife Premium und Standard
 description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337409"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386349"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -24,7 +24,7 @@ In der folgenden Tabelle sind einige allgemeine Unterschiede hervorgehoben:
 | Vorhersagbare Leistung |Variable Latenzzeit |
 | Feste Preise |Variable Preisgestaltung (nutzungsbasierte Bezahlung) |
 | Möglichkeit zur Herauf- und Herunterskalierung der Workload |– |
-| Nachrichtengröße bis 1 MB |Nachrichtengröße bis 256 KB |
+| Nachrichtengröße bis 1 MB. Dieser Grenzwert kann in Zukunft ggf. erhöht werden. Aktuelle wichtige Updates für den Dienst finden Sie unter [„Messaging“ im Azure-Blog](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Nachrichtengröße bis 256 KB |
 
 **Service Bus Premium-Messaging** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2, 4 oder 8 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messagingeinheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung.
 
@@ -40,7 +40,7 @@ Partitionierte Warteschlangen und Themen werden bei Premium-Messaging nicht unte
 
 ### <a name="express-entities"></a>Expressentitäten
 
-Da Premium-Messaging in einer vollständig isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
+Da Premium-Messaging in einer isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
 
 Wenn Sie unter Standard-Messaging über Code verfügen und diesen auf den Premium-Tarif portieren möchten, stellen Sie sicher, dass die Eigenschaft [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) auf **false** (Standardwert) gesetzt ist.
 

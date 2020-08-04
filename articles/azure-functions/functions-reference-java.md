@@ -3,20 +3,27 @@ title: Java-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln können.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-java
+ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057601"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372415"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
-Die Azure Functions-Runtime unterstützt [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Dieser Leitfaden enthält Informationen zu den Feinheiten beim Schreiben von Azure Functions mit Java.
+Dieser Leitfaden enthält ausführliche Informationen, die Sie bei der erfolgreichen Entwicklung von Azure Functions mit Java unterstützen.
 
-Wie in anderen Sprachen auch kann eine Funktions-App über eine oder mehrere Funktionen verfügen. Eine Java-Funktion ist eine `public`-Methode, die mit der Anmerkung `@FunctionName` versehen ist. Diese Methode definiert die Eingabe für eine Java-Funktion und muss in einem bestimmten Paket eindeutig sein. Eine in Java geschriebene Funktions-App kann mehrere Klassen mit mehreren öffentlichen Methoden enthalten, die mit `@FunctionName` kommentiert sind.
+Wenn Sie noch nicht mit Azure Functions vertraut sind, sollten Sie als Java-Entwickler zunächst einen der folgenden Artikel lesen:
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Sie sollten auch einen der folgenden Functions-Schnellstarts nutzen: [Schnellstart: Erstellen einer Funktion in Azure mit Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) oder [Schnellstart: Erstellen einer Funktion in Azure, die auf HTTP-Anforderungen antwortet](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).
+| Erste Schritte | Konzepte| 
+| -- | -- |  
+| <ul><li>[Java-Funktion unter Verwendung von Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Java-/Maven-Funktion mit Terminal/Eingabeaufforderung](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Java-Funktion unter Verwendung von Gradle](functions-create-first-java-gradle.md)</li><li>[Java-Funktion unter Verwendung von Eclipse](functions-create-maven-eclipse.md)</li><li>[Java-Funktion unter Verwendung von IntelliJ IDEA](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li></ul> |
+
+## <a name="java-function-basics"></a>Grundlagen zu Java-Funktionen
+
+Eine Java-Funktion ist eine `public`-Methode, die mit der Anmerkung `@FunctionName` versehen ist. Diese Methode definiert die Eingabe für eine Java-Funktion und muss in einem bestimmten Paket eindeutig sein. Das Paket kann mehrere Klassen mit mehreren öffentlichen Methoden enthalten, die mit `@FunctionName` kommentiert sind. Ein einzelnes Paket wird für eine Funktions-App in Azure bereitgestellt. Wenn die Funktions-App in Azure ausgeführt wird, stellt sie den Bereitstellungs-, Ausführungs- und Verwaltungskontext für Ihre einzelnen Java-Funktionen bereit.
 
 ## <a name="programming-model"></a>Programmiermodell 
 
@@ -48,7 +55,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Informationen zu den ersten Schritten bei der Verwendung dieses Archetyps finden Sie im [Java-Schnellstart](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
+Informationen zu den ersten Schritten bei der Verwendung dieses Archetyps finden Sie im [Java-Schnellstart](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java). 
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -87,14 +94,14 @@ Sie können mehr als eine Funktion in ein Projekt einfügen. Vermeiden Sie es, I
 Verwenden Sie die Java-Anmerkungen im Paket [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation), um Eingaben und Ausgaben an Ihre Methoden zu binden. Weitere Informationen finden Sie in der [Java-Referenzdokumentation](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Sie müssen ein Azure Storage-Konto in [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) konfigurieren, um Trigger für Azure Blob Storage, Azure Queue Storage oder Azure Table Storage lokal auszuführen.
+> Sie müssen ein Azure Storage-Konto in [local.settings.json](./functions-run-local.md#local-settings-file) konfigurieren, um Trigger für Azure Blob Storage, Azure Queue Storage oder Azure Table Storage lokal auszuführen.
 
 Beispiel:
 
 ```java
 public class Function {
     public String echo(@HttpTrigger(name = "req", 
-      methods = {"post"},  authLevel = AuthorizationLevel.ANONYMOUS) 
+      methods = {HttpMethod.POST},  authLevel = AuthorizationLevel.ANONYMOUS) 
         String req, ExecutionContext context) {
         return String.format(req);
     }
@@ -125,9 +132,58 @@ Hier wird die entsprechende `function.json` gezeigt, die durch [azure-functions-
 
 ```
 
+## <a name="java-versions"></a>Java-Versionen
+
+_Unterstützung für Java 11 befindet sich derzeit in der Vorschauphase._
+
+Die Version von Java, die bei der Erstellung der Funktions-App verwendet wird, für die Funktionen in Azure ausgeführt werden, wird in der Datei „pom.xml“ angegeben. Der Maven-Archetyp generiert aktuell eine Datei „pom.xml“ für Java 8, die Sie vor dem Veröffentlichen ändern können. Die Java-Version in „pom.xml“ sollte der Version entsprechen, mit der Sie Ihre App lokal entwickelt und getestet haben. 
+
+### <a name="supported-versions"></a>Unterstützte Versionen
+
+Die folgende Tabelle zeigt die aktuell von den jeweiligen Hauptversionen der Functions Runtime unterstützte Java-Version nach Betriebssystem:
+
+| Functions-Version | Java-Versionen (Windows) | Java-Versionen (Linux) |
+| ----- | ----- | --- |
+| 3.x | 11 (Vorschau)<br/>8<sup>\*</sup> | 11 (Vorschau)<br/>8 |
+| 2.x | 8 | – |
+
+<sup>\*</sup> Dies ist die aktuelle Standardversion der Datei „pom.xml“, die vom Maven-Archetyp generiert wird.
+
+### <a name="specify-the-deployment-version"></a>Angeben des Bereitstellungsversion
+
+Derzeit generiert der Maven-Archetyp eine Datei „pom.xml“ für Java 8. Die folgenden Elemente in „pom.xml“ müssen aktualisiert werden, um eine Funktions-App zu erstellen, die Java 11 ausführt.
+
+| Element |  Java 8-Wert | Java 11-Wert | BESCHREIBUNG |
+| ---- | ---- | ---- | --- |
+| **`Java.version`** | 1.8 | 11 | Version von Java, die vom maven-compiler-plugin verwendet wird. |
+| **`JavaVersion`** | 8 | 11 | Java-Version, die von der Funktions-App in Azure gehostet wird. |
+
+Die folgenden Beispiele zeigen die Einstellungen für Java 8 in den relevanten Abschnitten der Datei „pom.xml“:
+
+#### `Java.version`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="12-19" highlight="14":::
+
+#### `JavaVersion`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="80":::
+
+> [!IMPORTANT]
+> Sie müssen die Umgebungsvariable JAVA_HOME ordnungsgemäß auf das JDK-Verzeichnis festlegen, das bei der Codekompilierung mit Maven verwendet wird. Stellen Sie sicher, dass die Version des JDK mindestens so hoch ist wie die `Java.version`-Einstellung. 
+
+### <a name="specify-the-deployment-os"></a>Angeben des Bereitstellungsbetriebssystems
+
+Mit Maven können Sie auch das Betriebssystem angeben, unter dem ihre Funktions-App in Azure ausgeführt wird. Verwenden Sie das `os`-Element, um das Betriebssystem auszuwählen. 
+
+| Element |  Windows | Linux | Docker |
+| ---- | ---- | ---- | --- |
+| **`os`** | Windows | linux | docker |
+
+Das folgende Beispiel zeigt die Betriebssystemeinstellung im Abschnitt `runtime` der Datei „pom.xml“:
+
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="79":::
+ 
 ## <a name="jdk-runtime-availability-and-support"></a>Verfügbarkeit und Unterstützung der JDK-Runtime 
 
-Für die lokale Entwicklung von Java-Funktions-Apps laden Sie die [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8-JDKs von [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) herunter, und verwenden Sie diese. Azure Functions verwendet die Azul Java 8 JDK-Runtime, wenn Sie Ihre Funktions-Apps in der Cloud bereitstellen.
+Für die lokale Entwicklung von Java-Funktions-Apps laden Sie die entsprechenden [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDKs von [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) herunter, und verwenden Sie diese. Azure Functions verwendet eine Azul Java JDK-Runtime, wenn Sie Ihre Funktions-Apps in der Cloud bereitstellen.
 
 [Azure-Support](https://azure.microsoft.com/support/) bei Problemen mit den JDKs und Funktions-Apps steht mit einem [qualifizierten Supportplan](https://azure.microsoft.com/support/plans/) zur Verfügung.
 
@@ -150,7 +206,7 @@ Sie können weitere Argumente in einer App-Einstellung namens `JAVA_OPTS` angebe
 
 Verwenden Sie im [Azur-Portal](https://portal.azure.com) die Registerkarte [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings), um die Einstellung `JAVA_OPTS` hinzuzufügen.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) können Sie `JAVA_OPTS` wie im folgenden Beispiel einstellen:
 
@@ -217,7 +273,7 @@ import com.microsoft.azure.functions.annotation.*;
 public class Function {
     @FunctionName("echo")
     public static String echo(
-        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
+        @HttpTrigger(name = "req", methods = { HttpMethod.PUT }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
         @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
         @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
     ) {
@@ -334,7 +390,7 @@ Diese Funktion rufen Sie über HttpRequest auf. Sie schreibt mehrere Werte in Qu
 
 ## <a name="metadata"></a>Metadaten
 
-Einige Trigger senden [Triggermetadaten](/azure/azure-functions/functions-triggers-bindings) zusammen mit den Eingabedaten. Sie können die Anmerkung `@BindingName` für die Bindung an Triggermetadaten verwenden.
+Einige Trigger senden [Triggermetadaten](./functions-triggers-bindings.md) zusammen mit den Eingabedaten. Sie können die Anmerkung `@BindingName` für die Bindung an Triggermetadaten verwenden.
 
 
 ```Java
@@ -347,7 +403,7 @@ import com.microsoft.azure.functions.annotation.*;
 public class Function {
     @FunctionName("metadata")
     public static String metadata(
-        @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
+        @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
         @BindingName("name") String queryValue
     ) {
         return body.orElse(queryValue);
@@ -389,7 +445,7 @@ import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.*;
 
 public class Function {
-    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+    public String echo(@HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         if (req.isEmpty()) {
             context.getLogger().warning("Empty request body received by function " + context.getFunctionName() + " with invocation " + context.getInvocationId());
         }
@@ -432,7 +488,7 @@ Im folgenden Beispiel wird die [Anwendungseinstellung](functions-how-to-use-azur
 ```java
 
 public class Function {
-    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+    public String echo(@HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         context.getLogger().info("My app setting value: "+ System.getenv("myAppSetting"));
         return String.format(req);
     }

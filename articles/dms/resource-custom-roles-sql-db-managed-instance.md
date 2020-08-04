@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 479c5165c206ced9f387d7b4a475945173da8a16
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087678"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Benutzerdefinierte Rollen für Onlinemigrationsvorgänge von SQL Server zu verwalteten Azure SQL-Instanzen
 
@@ -83,7 +83,7 @@ Derzeit wird empfohlen, mindestens zwei benutzerdefinierte Rollen für die App-I
 
 Der JSON-Code oben muss in drei Textdateien gespeichert werden. Sie können die Rollen mithilfe der PowerShell-Cmdlets AzureRM oder Az oder über die Azure-Befehlszeilenschnittstelle unter Verwendung von **New-AzureRmRoleDefinition (AzureRM)** bzw. **New-AzRoleDefinition (Az)** erstellen.
 
-Weitere Informationen finden Sie im Artikel [Benutzerdefinierte Rollen für Azure-Ressourcen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
+Weitere Informationen finden Sie im Artikel [Benutzerdefinierte Azure-Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
 Nach dem Erstellen dieser benutzerdefinierten Rollen müssen Sie den Benutzern und App-IDs für die entsprechenden Ressourcen oder Ressourcengruppen Rollenzuweisungen hinzufügen:
 

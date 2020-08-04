@@ -3,12 +3,12 @@ title: 'Azure Service Bus: Anhalten von Messagingentitäten'
 description: In diesem Artikel wird erläutert, wie Sie Azure Service Bus-Messagingentitäten (Warteschlangen, Themen und Abonnements) vorübergehend anhalten und reaktivieren.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038136"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
 
@@ -20,7 +20,7 @@ Das Anhalten oder Reaktivieren kann entweder vom Benutzer oder vom System durchg
 
 Im Portal ermöglicht der Abschnitt **Eigenschaften** für die entsprechende Entität das Ändern des Zustands. Folgender Screenshot stellt das Umschalten einer Warteschlange dar:
 
-![][1]
+![Screenshot des Service Bus-Features mit hervorgehobener Einstellung „Eigenschaften“ und auf „Aktiv“ festgelegter Option „Warteschlangenstatus“, die rot umrandet ist.][1]
 
 Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Sie können die Vorgänge „Senden“ und „Empfangen“ auch separat deaktivieren, indem Sie die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs von Service Bus im .NET Framework SDK oder mit einer Azure Resource Manager-Vorlage über die Azure CLI oder Azure PowerShell verwenden.
 
@@ -30,7 +30,7 @@ Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Si
 
 Folgende Zustände können für eine Warteschlange festgelegt werden:
 
--   **Active**: Die Warteschlange ist aktiv.
+-   **Aktiv:** Die Warteschlange ist aktiv.
 -   **Disabled**: Die Warteschlange wurde angehalten.
 -   **SendDisabled**: Die Warteschlange ist teilweise angehalten, der Empfang ist zulässig.
 -   **ReceiveDisabled**: Die Warteschlange ist teilweise angehalten, das Senden ist zulässig.

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/03/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782261"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387165"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -42,7 +42,7 @@ In diesem Artikel werden aktuelle und ehemalige Probleme mit dem Bereitstellungs
 
 Nein. Da dies einen Breaking Change für SCIM-Apps, die mit dem älteren Verhalten programmiert wurden, bedeutet hätte, wurden die Änderungen nicht automatisch auf vorhandene Apps angewandt.
 
-Die Änderungen gelten für alle neuen [SCIM-Apps, die nicht im Katalog enthalten sind](../manage-apps/configure-single-sign-on-non-gallery-applications.md) und nach dem Datum der Korrektur im Azure-Portal konfiguriert werden.
+Die Änderungen gelten für alle neuen SCIM-Apps, die nicht im Katalog enthalten sind und nach dem Datum der Korrektur im Azure-Portal konfiguriert werden.
 
 Informationen zum Migrieren vorhandener Aufträge zur Benutzerbereitstellung zu den neuesten Fehlerbehebungen finden Sie im nächsten Abschnitt.
 

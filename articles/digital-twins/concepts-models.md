@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258286"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131632"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -24,12 +24,12 @@ Modelle werden in der auf JSON-LD basierenden Sprache **Digital Twins Definition
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>Digital Twin Definition Language (DTDL) zum Schreiben von Modellen
 
-Modelle für Azure Digital Twins werden mithilfe von DTDL (Digital Twins Definition Language) definiert. DTDL basiert auf JSON-LD und ist von der Programmiersprache unabhängig. DTDL ist nicht ausschließlich für Azure Digital Twins bestimmt, sondern wird auch zur Darstellung von Gerätedaten in anderen IoT-Diensten wie [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) verwendet. Azure Digital Twins arbeitet mit der DTDL-*Version 2*.
+Modelle für Azure Digital Twins werden mithilfe von DTDL (Digital Twins Definition Language) definiert. DTDL basiert auf JSON-LD und ist von der Programmiersprache unabhängig. DTDL ist nicht ausschließlich für Azure Digital Twins bestimmt, sondern wird auch zur Darstellung von Gerätedaten in anderen IoT-Diensten wie [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) verwendet. 
+
+Azure Digital Twins arbeitet mit der DTDL-*Version 2*. Weitere Informationen zu dieser Version von DTDL finden Sie in der Dokumentation zur Spezifikation auf GitHub: [*Digital Twins Definition Language (DTDL): Version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 > [!TIP] 
 > Nicht alle Dienste, die DTDL verwenden, implementieren genau die gleichen Features von DTDL. Beispielsweise verwendet IoT Plug & Play keine DTDL-Features, die für Graphen gedacht sind, während Azure Digital Twins derzeit keine DTDL-Befehle implementiert. Weitere Informationen zu den DTDL-Features, die für Azure Digital Twins spezifisch sind, finden Sie in diesem Artikel im Abschnitt [ Besonderheiten der DTDL-Implementierung für Azure Digital Twins](#azure-digital-twins-dtdl-implementation-specifics).
-
-Weitere Informationen zu DTDL im Allgemeinen finden Sie in der Dokumentation zur Spezifikation auf GitHub: [Digital Twins Definition Language (DTDL): Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 ## <a name="elements-of-a-model"></a>Elemente eines Modells
 
@@ -62,7 +62,9 @@ Damit ein DTDL-Modell mit Azure Digital Twins kompatibel ist, muss es diese Anfo
 
 Modelle von Digital Twin-Typen können ein einem beliebigen Text-Editor geschrieben werden. Die Sprache DTDL folgt der JSON-Syntax, weshalb Sie Modelle mit der Erweiterung *.json* speichern müssen. Durch Verwendung der JSON-Erweiterung wird vielen Text-Editoren zur Programmierung ermöglicht, eine grundlegende Syntaxprüfung und Hervorhebung für Ihre DTDL-Dokumente bereitzustellen. Es ist auch eine [DTDL-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) für [Visual Studio Code](https://code.visualstudio.com/) verfügbar.
 
-Hier ist ein Beispiel eines typischen Modells, das als DTDL-Schnittstelle geschrieben wurde. Das Modell beschreibt Planeten mit jeweils Name, Masse und Temperatur. Der Planet kann Monde als Satelliten haben und Krater aufweisen.
+Dieser Abschnitt enthält ein Beispiel für ein typisches Modell, das als DTDL-Schnittstelle geschrieben wurde. Das Modell beschreibt **Planeten** mit jeweils Name, Masse und Temperatur.
+ 
+Beachten Sie, dass die-Planeten auch mit **Monden** interagieren können, die ihre Satelliten sind und **Krater** aufweisen können. Im folgenden Beispiel drückt das `Planet`-Modell Verbindungen mit diesen anderen Entitäten aus, indem auf zwei externe Modelle verwiesen wird: `Moon` und `Crater`. Diese Modelle werden auch im folgenden Beispielcode definiert, sind jedoch sehr einfach gehalten, sodass Sie nicht vom primären `Planet`-Beispiel ablenken.
 
 ```json
 [
@@ -103,13 +105,18 @@ Hier ist ein Beispiel eines typischen Modells, das als DTDL-Schnittstelle geschr
     "@id": "dtmi:com:contoso:Crater;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2"
+  },
+  {
+    "@id": "dtmi:com:contoso:Moon;1",
+    "@type": "Interface",
+    "@context": "dtmi:dtdl:context;2"
   }
 ]
 ```
 
 Die Felder des Modells sind wie folgt:
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | --- | --- |
 | `@id` | Ein Bezeichner für das Modell. Muss das Format `dtmi:<domain>:<unique model identifier>;<model version number>` haben. |
 | `@type` | Gibt die Art der beschriebenen Informationen an. Bei einer Schnittstelle ist der Typ *Schnittstelle*. |
@@ -204,13 +211,13 @@ Für die Validierung von Modelldokumenten steht ein sprachunabhängiges Beispiel
 
 Das Beispiel für ein DTDL-Validierungssteuerelement basiert auf einer .NET-DTDL-Parserbibliothek, die auf NuGet als clientseitige Bibliothek verfügbar ist: [**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). Sie können die Bibliothek auch direkt verwenden, um eine eigene Validierungslösung zu entwerfen. Stellen Sie bei Verwendung der Parserbibliothek sicher, dass die verwendete Version mit der Version kompatibel ist, die von Azure Digital Twins ausgeführt wird. Während der Vorschauphase ist dies die Version *3.7.0*.
 
-Weitere Informationen zur Parserbibliothek, einschließlich Verwendungsbeispielen, finden Sie unter [Vorgehensweise: Analysieren und Validieren von Modellen](how-to-use-parser.md).
+Weitere Informationen zur Parserbibliothek, einschließlich Verwendungsbeispielen, finden Sie unter [*Vorgehensweise: Analysieren und Validieren von Modellen*](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Modelle mit den DigitalTwinsModels-APIs verwaltet werden:
-* [Gewusst wie: Verwalten benutzerdefinierter Modelle](how-to-manage-model.md)
+* [*Verwenden Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md)
 
 Oder erfahren Sie, wie Digital Twins auf Grundlage von Modellen erstellt werden:
-* [Konzepte: Digital Twins und der Digital Twins-Graph](concepts-twins-graph.md)
+* [*Konzepte: Digital Twins und der Digital Twins-Graph*](concepts-twins-graph.md)
 
