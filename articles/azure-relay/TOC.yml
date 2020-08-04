@@ -92,7 +92,7 @@
     - name: Häufig gestellte Fragen
       href: relay-faq.md
     - name: Blog
-      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+      href: /archive/blogs/servicebus/
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: Preisrechner
