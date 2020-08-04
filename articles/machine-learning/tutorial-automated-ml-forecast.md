@@ -9,18 +9,21 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 06/04/2020
-ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 07/10/2020
+ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433715"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092284"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 In diesem Tutorial wird automatisiertes maschinelles Lernen (automatisiertes ML) in Azure Machine Learning Studio verwendet, um ein Zeitreihenvorhersagemodell zur Vorhersage der Mietnachfrage für einen Bike-Sharing-Dienst zu erstellen.
+
+>[!IMPORTANT]
+> Die Umgebung für automatisiertes ML in Azure Machine Learning Studio befindet sich in der Vorschauphase. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 
 Ein Beispiel für ein Klassifizierungsmodell finden Sie in [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
 
@@ -41,7 +44,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Erste Schritte in Azure Machine Learning Studio
 
-In diesem Tutorial wird ein Experiment mit automatisiertem maschinellem Lernen in Azure Machine Learning Studio erstellt. Bei Azure Machine Learning Studio handelt es sich um eine konsolidierte Umgebung mit ML-Tools für Data Science-Szenarien, die von Data Scientists jeglicher Qualifikation verwendet werden kann. Das Azure Machine Learning-Studio wird in Internet Explorer-Browsern nicht unterstützt.
+In diesem Tutorial wird ein Experiment mit automatisiertem maschinellem Lernen in Azure Machine Learning Studio erstellt. Bei Azure Machine Learning Studio handelt es sich um eine konsolidierte Webumgebung mit ML-Tools für Data Science-Szenarien, die von Data Scientists jeglicher Qualifikation verwendet werden kann. Das Azure Machine Learning-Studio wird in Internet Explorer-Browsern nicht unterstützt.
 
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
@@ -113,8 +116,11 @@ Nachdem Sie Ihre Daten geladen und konfiguriert haben, müssen Sie das Remotecom
         Feld | BESCHREIBUNG | Wert für das Tutorial
         ----|---|---
         Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|bike-compute
+        VM-Typ&nbsp;&nbsp;|Wählen Sie den VM-Typ für Ihre Compute-Umgebung aus.|CPU (Zentralprozessor)
         Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
-        Min/Max nodes (Min./Max. Knoten) (unter „Erweiterte Einstellungen“)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
+        Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
+        Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|120 (Standardwert)
+        Erweiterte Einstellungen | Einstellungen zum Konfigurieren und Autorisieren eines virtuellen Netzwerks für Ihr Experiment| Keine
   
         1. Wählen Sie **Erstellen** aus, um das Computeziel abzurufen. 
 
@@ -130,23 +136,23 @@ Schließen Sie die Einrichtung Ihres Experiments mit automatisiertem maschinelle
 
 1. Wählen Sie im Formular **Vorhersagetask auswählen** den ML-Aufgabentyp **Time series forecasting** (Zeitreihenvorhersage) aus.
 
-1. Wählen Sie **date** als **Zeitspalte** aus, und lassen Sie **Group by column(s)** (Nach Spalte(n) gruppieren) leer. 
+1. Wählen Sie **date** als **Zeitspalte** aus, und lassen Sie **Time series identifiers** (Zeitreihenbezeichner) leer. 
 
-    1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern und Einstellungen für die Vorhersage angeben. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
+1. **Forecast horizon** (Vorhersagehorizont) ist die Zeitspanne für die Zukunftsprognose.  Deaktivieren Sie „Automatische Erkennung“, und geben Sie „14“ in das Feld ein. 
 
-  
-        Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
-        ------|---------|---
-        Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert
-        Automatische Featurebereitstellung| Ermöglicht eine Vorabaufbereitung der Daten. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.| Aktivieren
-        „Explain best model (preview)“ (Bestes Modell erläutern (Vorschau))| Zeigt automatisch die Erklärbarkeit für das beste Modell an, das durch automatisiertes ML erstellt wurde.| Aktivieren
-        Blockierte Algorithmen | Algorithmen, die Sie aus den Trainingsauftrag ausschließen möchten.| „Extreme Random Trees“ (Extreme Zufallsstrukturen)
-        Zusätzliche Vorhersageeinstellungen| Diese Einstellungen tragen dazu bei, die Genauigkeit des Modells zu verbessern. <br><br> _**Forecast horizon**_ (Vorhersagehorizont): Zeitspanne für die Zukunftsprognose <br> _**Zielverzögerungen für Prognose:**_ Angabe, wie weit die Verzögerungen für die Zielvariable zurückreichen sollen <br> _**Zielgröße für rollierendes Zeitfenster**_: Angabe der Größe des rollierenden Zeitfensters, in dem Features wie *max, min* und *sum* generiert werden sollen |Vorhersagehorizont: 14 <br> Zielverzögerungen&nbsp;für&nbsp;Prognose: Keine <br> Zielgröße&nbsp;für&nbsp;rollierendes&nbsp;Zeitfenster: Keine
-        Beendigungskriterium| Wenn ein Kriterium erfüllt ist, wird der Trainingsauftrag angehalten. |Dauer&nbsp;des&nbsp;Trainingsauftrags (Stunden): 3 <br> Metrikschwellenwert&nbsp;&nbsp;: Keine
-        Überprüfen | Wählen Sie einen Kreuzvalidierungstyp und die Anzahl von Tests aus.|Überprüfungstyp:<br>&nbsp;k-fold&nbsp;cross-validation <br> <br> Anzahl von Überprüfungen: 5
-        Parallelität| Die maximale Anzahl paralleler Iterationen pro Iteration| Max.&nbsp;parallele&nbsp;Iterationen: 6
-        
-        Wählen Sie **Speichern** aus.
+1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern und Einstellungen für die Vorhersage angeben. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
+
+    Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
+    ------|---------|---
+    Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert
+    Explain best model (Bestes Modell erläutern)| Zeigt automatisch die Erklärbarkeit für das beste Modell an, das durch automatisiertes ML erstellt wurde.| Aktivieren
+    Blockierte Algorithmen | Algorithmen, die Sie aus den Trainingsauftrag ausschließen möchten.| „Extreme Random Trees“ (Extreme Zufallsstrukturen)
+    Zusätzliche Vorhersageeinstellungen| Diese Einstellungen tragen dazu bei, die Genauigkeit des Modells zu verbessern. <br><br> _**Zielverzögerungen für Prognose:**_ Angabe, wie weit die Verzögerungen für die Zielvariable zurückreichen sollen <br> _**Zielgröße für rollierendes Zeitfenster**_: Angabe der Größe des rollierenden Zeitfensters, in dem Features wie *max, min* und *sum* generiert werden sollen | <br><br>Zielverzögerungen&nbsp;für&nbsp;Prognose: Keine <br> Zielgröße&nbsp;für&nbsp;rollierendes&nbsp;Zeitfenster: Keine
+    Beendigungskriterium| Wenn ein Kriterium erfüllt ist, wird der Trainingsauftrag angehalten. |Dauer&nbsp;des&nbsp;Trainingsauftrags (Stunden): 3 <br> Metrikschwellenwert&nbsp;&nbsp;: Keine
+    Überprüfen | Wählen Sie einen Kreuzvalidierungstyp und die Anzahl von Tests aus.|Überprüfungstyp:<br>&nbsp;k-fold&nbsp;cross-validation <br> <br> Anzahl von Überprüfungen: 5
+    Parallelität| Die maximale Anzahl paralleler Iterationen pro Iteration| Max.&nbsp;parallele&nbsp;Iterationen: 6
+    
+    Wählen Sie **Speichern** aus.
 
 ## <a name="run-experiment"></a>Ausführen des Experiments
 
@@ -163,7 +169,7 @@ Navigieren Sie zur Registerkarte **Modelle**, um die getesteten Algorithmen (Mod
 
 Während Sie auf den Abschluss aller Experimentmodelle warten, können Sie den **Algorithmusnamen** eines abgeschlossenen Modells auswählen und sich die zugehörigen Leistungsdetails ansehen. 
 
-Im folgenden Beispiel werden die Registerkarten **Modelldetails** und **Visualisierungen** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme des ausgewählten Modells anzuzeigen. 
+Im folgenden Beispiel werden die Registerkarten **Details** und **Metriken** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme des ausgewählten Modells anzuzeigen. 
 
 ![Ausführungsdetails](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
 
@@ -173,11 +179,15 @@ Durch die Verwendung von automatisiertem maschinellen Lernen im Azure Machine Le
 
 Bei diesem Experiment bedeutet die Bereitstellung für einen Webdienst, dass das Bike-Sharing-Unternehmen nun über eine iterative und skalierbare Webanwendung für die Vorhersage der Mietnachfrage im Bike-Sharing-Bereich verfügt. 
 
-Kehren Sie nach Abschluss der Ausführung zur Seite **Ausführungsdetails** zurück, und wählen Sie die Registerkarte **Modelle** aus.
+Navigieren Sie nach Abschluss der Ausführung zurück zur Seite mit der übergeordneten Ausführung, indem Sie oben auf dem Bildschirm **Ausführung 1** auswählen.
 
-In diesem Experimentkontext wird **StackEnsemble** basierend auf der Metrik **Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert** als das beste Modell betrachtet.  Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
+Im Abschnitt **Zusammenfassung des besten Modells** wird **StackEnsemble** basierend auf der Metrik **Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert** als das beste Modell im Kontext dieses Experiments betrachtet.  
 
-1. Wählen Sie rechts unten die Schaltfläche **Deploy Best Model** (Bestes Modell bereitstellen) aus.
+Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
+
+1. Wählen Sie **StackEnsemble** aus, um die modellspezifische Seite zu öffnen.
+
+1. Wählen Sie die Schaltfläche **Bereitstellen** aus, die sich im oberen linken Bereich des Bildschirms befindet.
 
 1. Füllen Sie den Bereich **Modell bereitstellen** wie folgt aus:
 
@@ -193,8 +203,7 @@ In diesem Experimentkontext wird **StackEnsemble** basierend auf der Metrik **Wu
 
 1. Klicken Sie auf **Bereitstellen**.  
 
-    Am oberen Rand des Bildschirms **Ausführung** wird eine grüne Erfolgsmeldung mit dem Hinweis angezeigt, dass die Bereitstellung erfolgreich gestartet wurde. Der Status der Bereitstellung wird  
-    im Bereich **Empfohlenes Modell** unter **Bereitstellungsstatus** angezeigt.
+    Am oberen Rand des Bildschirms **Ausführung** wird eine grüne Erfolgsmeldung mit dem Hinweis angezeigt, dass die Bereitstellung erfolgreich gestartet wurde. Der Status der Bereitstellung wird unter **Bereitstellungsstatus** im Bereich **Modellzusammenfassung** angezeigt.
     
 Nach erfolgreichem Abschluss der Bereitstellung verfügen Sie über einen funktionierenden Webdienst zum Generieren von Vorhersagen. 
 

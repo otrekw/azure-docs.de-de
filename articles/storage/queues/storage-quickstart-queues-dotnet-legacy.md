@@ -3,21 +3,24 @@ title: 'Schnellstart: Verwenden von Azure Storage v11 für .NET zum Verwalten ei
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek für .NET eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 807765aea66561abb5a8764f119d2be4632a56d5
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71700efecfc173392562327f6d150d79d1a9c84f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807562"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292678"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Schnellstart: Verwenden des Azure Storage SDK v11 für .NET zum Verwalten einer Warteschlange
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek, Version 11 für .NET, eine Warteschlange erstellen und dieser Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten. 
+
+> [!NOTE]
+> In dieser Schnellstartanleitung wird eine Legacy-Version der Azure Queue Storage-Clientbibliothek verwendet. Informationen zu den ersten Schritten mit der neuesten Version finden Sie unter [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für .NET](storage-quickstart-queues-dotnet.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

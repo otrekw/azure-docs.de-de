@@ -1,6 +1,6 @@
 ---
-title: 'Verwalten von App-Gruppen für Windows Virtual Desktop: Azure'
-description: Hier erfahren Sie, wie Sie in Azure Active Directory Windows Virtual Desktop-Mandanten einrichten.
+title: 'Verwalten von App-Gruppen für Windows Virtual Desktop (klassisch): Azure'
+description: Hier erfahren Sie, wie Sie in Azure Active Directory Mandanten für Windows Virtual Desktop (klassisch) einrichten.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 55c2ed5f9066d85643588f77806bbd41e92dd16b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fcf946c4bde89f3c14e78744305bc274ea67962f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613946"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284981"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../manage-app-groups.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../manage-app-groups.md) weiter.
 
 Die Standard-App-Gruppe, die für einen neuen Windows Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle **Startmenü**-Apps veröffentlichen.
 

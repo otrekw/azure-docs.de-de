@@ -5,12 +5,12 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058145"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040518"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
@@ -102,7 +102,7 @@ Wählen Sie `New` > `All Parameters` und anschließend einen Namen und einen Spe
 
 Dadurch wird eine neue Parameterdatei erstellt und der Vorlage zugeordnet, auf deren Grundlage sie erstellt wurde. Die aktuelle Zuordnung zwischen Vorlage und Parameterdatei wird auf der Statusleiste von Visual Studio Code angezeigt, während die Vorlage ausgewählt ist, und kann geändert werden.
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![Abbildung, die die Zuordnung zwischen Vorlage und Parameterdatei auf der Visual Studio Code-Statusleiste zeigt](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 Nachdem die Parameterdatei der Vorlage zugeordnet wurde, werden Vorlage und Parameterdatei gemeinsam durch die Erweiterung überprüft. Fügen Sie dem Parameter `storageAccountName` in der Parameterdatei einen zweistelligen Wert hinzu, und speichern Sie die Datei, um die Überprüfung in Aktion zu sehen.
 

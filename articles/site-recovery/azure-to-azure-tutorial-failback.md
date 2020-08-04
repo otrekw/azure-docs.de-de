@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134456"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289304"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Failback für Azure-VMs zwischen Azure-Regionen
 
@@ -58,7 +58,7 @@ Nachdem virtuelle Computer erneut geschützt wurden, können Sie bei Bedarf ein 
     ![VM in primärer und sekundärer Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Für Computer, auf denen mindestens Version 9.28.x.x der Site Recovery-Erweiterung ausgeführt wird, bereinigt das [Updaterollup 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) für Site Recovery die Computer in der sekundären Notfallwiederherstellungsregion, nachdem das Failback abgeschlossen ist und die VMs wieder geschützt sind. Es ist nicht erforderlich, VMs und NICs in der sekundären Region manuell zu löschen. Wenn Sie die Replikation nach dem Failback vollständig deaktivieren, bereinigt Site Recovery zusätzlich zu den VMs und NICs auch die Datenträger in der Notfallwiederherstellungsregion.
+> Für Computer, für die verwaltete Datenträger verwendet werden und auf denen mindestens Version 9.28.x.x der Site Recovery-Erweiterung ausgeführt wird, bereinigt das [Updaterollup 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) für Site Recovery die Computer in der sekundären Notfallwiederherstellungsregion, nachdem das Failback abgeschlossen ist und die VMs wieder geschützt sind. Es ist nicht erforderlich, VMs und NICs in der sekundären Region manuell zu löschen. Beachten Sie, dass VMs mit nicht verwalteten Datenträgern nicht bereinigt werden. Wenn Sie die Replikation nach dem Failback vollständig deaktivieren, bereinigt Site Recovery zusätzlich zu den VMs und NICs auch die Datenträger in der Notfallwiederherstellungsregion.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

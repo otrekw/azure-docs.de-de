@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 07/28/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565799"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372364"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Übersicht über die Bereitstellung mit Azure Firewall Manager
 
@@ -65,6 +65,13 @@ Es gibt mehrere Möglichkeiten, Azure Firewall Manager bereitzustellen, jedoch s
 > - Sie können nicht mehr als einen Hub pro virtuellem WAN verwenden. Aber Sie können mehrere virtuelle WANs in der Region hinzufügen, um dies zu erreichen.
 > - Überlappende IP-Adressräume für Hubs sind in einem VWAN nicht möglich.
 > - Ihre Hub-VNET-Verbindungen müssen sich in der gleichen Region wie der Hub befinden.
+
+## <a name="convert-virtual-networks"></a>Konvertieren von virtuellen Netzwerken
+
+Die folgenden Informationen gelten, wenn Sie ein vorhandenes virtuelles Netzwerk in ein virtuelles Hubnetzwerk konvertieren:
+
+- Wenn das virtuelle Netzwerk über eine bereits vorhandene Azure Firewall verfügt, können Sie eine Firewallrichtlinie auswählen, die der vorhandenen Firewall zugeordnet werden soll. Der Bereitstellungsstatus der Firewall wird aktualisiert, während die Firewallregeln von der Firewallrichtlinie ersetzt werden. Während des Bereitstellungsstatus fährt die Firewall mit der Verarbeitung des Datenverkehrs fort, und es kommt nicht zu Ausfallzeiten. Sie können vorhandene Regeln in eine Firewallrichtlinie importieren, indem Sie Firewall Manager oder Azure PowerShell verwenden.
+- Wenn das virtuelle Netzwerk nicht über eine zugeordnete Azure Firewall verfügt, wird eine Firewall bereitgestellt, und die Firewallrichtlinie wird der neuen Firewall zugeordnet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

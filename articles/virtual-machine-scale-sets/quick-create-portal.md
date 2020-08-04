@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027221"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077540"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 
@@ -44,8 +44,9 @@ Erstellen Sie zunächst eine Load Balancer Standard-Instanz über das Portal. 
     | type          | Wählen Sie **Öffentlich** aus.       |
     | SKU           | Wählen Sie **Standard** aus.       |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
-    | Name der öffentlichen IP-Adresse  | *MyPip*   |
+    | Name der öffentlichen IP-Adresse  | *myPip*   |
     | Zuweisung| statischen |
+    | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus. |
 
 1. Wählen Sie abschließend **Überprüfen + Erstellen** aus. 
 1. Wählen Sie nach der erfolgreichen Überprüfung **Erstellen** aus. 
@@ -55,11 +56,11 @@ Erstellen Sie zunächst eine Load Balancer Standard-Instanz über das Portal. 
 ## <a name="create-virtual-machine-scale-set"></a>Erstellen einer VM-Skalierungsgruppe
 Sie können eine Skalierungsgruppe mit einem Windows Server-Image oder Linux-Image wie RHEL, CentOS, Ubuntu oder SLES bereitstellen.
 
-1. Geben Sie **Skalierungsgruppe** in das Suchfeld ein. Wählen Sie in den Ergebnissen unter **Marketplace** den Eintrag **VM-Skalierungsgruppen** aus. Die Seite **VM-Skalierungsgruppe erstellen** wird geöffnet. 
+1. Geben Sie **Skalierungsgruppe** in das Suchfeld ein. Wählen Sie in den Ergebnissen unter **Marketplace** den Eintrag **VM-Skalierungsgruppen** aus. Wählen Sie auf der Seite **VM-Skalierungsgruppen** die Option **Erstellen** aus. Dadurch wird die Seite **VM-Skalierungsgruppe erstellen** geöffnet. 
 1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie *myVMSSResourceGroup* als Name ein, und wählen Sie dann **OK** aus. 
 1. Geben Sie *myScaleSet* als Name für die Skalierungsgruppe ein.
 1. Wählen Sie unter **Region** eine Region in Ihrer Nähe aus.
-1. Übernehmen Sie für **Orchestrator** den Standardwert **ScaleSet VMs** (Skalierungsgruppen-VMs).
+1. Übernehmen Sie für **Orchestrierungsmodus** den Standardwert **ScaleSet VMs** (Skalierungsgruppen-VMs).
 1. Wählen Sie unter **Image** ein Marketplace-Image aus. In diesem Beispiel wurde *Ubuntu Server 18.04 LTS* ausgewählt.
 1. Geben Sie den gewünschten Benutzernamen ein, und wählen Sie den bevorzugten Authentifizierungstyp aus.
    - Ein **Kennwort** muss 12 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden vier Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).

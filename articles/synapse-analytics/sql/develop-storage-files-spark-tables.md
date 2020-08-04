@@ -1,5 +1,5 @@
 ---
-title: Synchronisieren von Apache Spark für externe Azure Synapse-Tabellendefinitionen in SQL On-Demand (Vorschau)
+title: Synchronisieren von Apache Spark für externe Tabellendefinitionen in SQL On-Demand (Vorschau)
 description: Übersicht über das Abfragen von Spark-Tabellen mithilfe von SQL On-Demand (Vorschau)
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: db6b2d95bf8f38495296885d14260b9900af1d51
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247046"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046848"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>Synchronisieren von Apache Spark für externe Azure Synapse-Tabellendefinitionen in SQL On-Demand (Vorschau)
 
@@ -22,7 +22,7 @@ SQL On-Demand (Vorschau) kann Metadaten aus Apache Spark für Azure Synapse-Poo
 
 Für jede externe Spark-Tabelle, die auf Parquet basiert und sich in Azure Storage befindet, wird in der SQL On-Demand-Datenbank eine externe Tabelle erstellt. Aus diesem Grund können Sie Ihre Spark-Pools herunterfahren und dennoch externe Spark-Tabellen über SQL On-Demand abfragen.
 
-Wenn Tabelle in Spark partitioniert ist, werden die Dateien im Speicher in Ordner organisiert. SQL On-Demand verwendet Partitionsmetadaten und bezieht nur relevante Ordner und Dateien in Ihre Abfragen ein.
+Wenn Tabelle in Spark partitioniert ist, werden die Dateien im Speicher in Ordner organisiert. SQL On-Demand verwendet Partitionsmetadaten und bezieht nur relevante Ordner und Dateien in Ihre Abfrage ein.
 
 Die Synchronisierung von Metadaten wird für jeden im Azure Synapse-Arbeitsbereich bereitgestellten Spark-Pool automatisch konfiguriert. Sie können mit dem Abfragen von externen Spark-Tabellen sofort beginnen.
 
@@ -35,7 +35,7 @@ SELECT * FROM [db].dbo.[spark_table]
 ```
 
 > [!NOTE]
-> Das Hinzufügen, Löschen oder Ändern von externen Spark-Tabellenspalten wird in externen Tabellen in SQL On-Demand nicht widergespiegelt.
+> Das Hinzufügen, Löschen oder Ändern von externen Spark-Tabellenbefehlen für eine Spalte wird in externen Tabellen in SQL On-Demand nicht widergespiegelt.
 
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Zuordnung von Apache Spark-Datentypen zu SQL-Datentypen
 

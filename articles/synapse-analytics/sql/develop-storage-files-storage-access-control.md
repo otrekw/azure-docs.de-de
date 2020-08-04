@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255709"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283451"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau)
 
@@ -87,6 +87,11 @@ Sie können die folgenden Kombinationen aus Autorisierungstypen und Azure Storag
 | *Verwaltete Identität* | Unterstützt      | Unterstützt        | Unterstützt     |
 | *Benutzeridentität*    | Unterstützt      | Unterstützt        | Unterstützt     |
 
+
+> [!IMPORTANT]
+> Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann nur die verwaltete Identität verwendet werden. Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine RBAC-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der RBAC-Rolle, die der verwalteten Identität zugewiesen ist.
+>
+
 ## <a name="credentials"></a>Anmeldeinformationen
 
 Um eine Datei in Azure Storage abzufragen, benötigt Ihr SQL On-Demand-Endpunkt eine Anmeldeinformation, die die Authentifizierungsinformationen enthält. Es werden zwei Arten von Anmeldeinformationen verwendet:
@@ -109,11 +114,7 @@ Um eine Anmeldeinformation verwenden zu können, muss ein Benutzer über die Ber
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-Um reibungslose Azure AD-Pass-Through-Vorgänge sicherzustellen, verfügen alle Benutzer standardmäßig über die Berechtigung zur Verwendung der Anmeldeinformation `UserIdentity`. Dies wird durch automatische Ausführung der folgenden Anweisung während der Bereitstellung eines Azure Synapse-Arbeitsbereichs erreicht:
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+Um reibungslose Azure AD-Pass-Through-Vorgänge sicherzustellen, verfügen alle Benutzer standardmäßig über die Berechtigung zur Verwendung der Anmeldeinformation `UserIdentity`.
 
 ## <a name="server-scoped-credential"></a>Serverbezogene Anmeldeinformationen
 
@@ -243,7 +244,7 @@ SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
                                 DATA_SOURCE = [mysample],
-                                FORMAT=PARQUET) as rows;
+                                FORMAT='PARQUET') as rows;
 GO
 ```
 
@@ -288,7 +289,7 @@ Der Datenbankbenutzer kann den Inhalt der Dateien aus der Datenquelle mithilfe e
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
 GO
 ```
 

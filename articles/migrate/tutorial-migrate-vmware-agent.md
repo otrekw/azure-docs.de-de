@@ -4,12 +4,12 @@ description: Hier erfahren, wie Sie eine Agent-basierte Migration virtueller VMw
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 707a74d0e993625d32c60f7120bf69055dc9e885
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119258"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290205"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrieren von VMware-VMs zu Azure (Agent-basiert)
 
@@ -195,7 +195,7 @@ Gehen Sie wie folgt vor, um die Vorlage herunterzuladen:
 
 Die heruntergeladene OVF-Vorlage muss in VMware importiert werden, um die Replikationsappliance auf einer VMware-VM unter Windows Server 2016 zu erstellen.
 
-1. Melden Sie sich mit dem VMWare vSphere-Client beim VMware vCenter-Server oder beim vSphere ESXi-Host an.
+1. Melden Sie sich mit dem VMware vSphere-Client beim VMware vCenter-Server oder beim vSphere ESXi-Host an.
 2. Wählen Sie im Menü **Datei** die Option **OVF-Vorlage bereitstellen** aus, um den **Assistenten zum Bereitstellen von OVF-Vorlagen** zu starten. 
 3. Geben Sie unter **Quelle auswählen** den Speicherort der heruntergeladenen OVF-Vorlage ein.
 4. Klicken Sie unter **Bewertungsdetails** auf **Weiter**.
@@ -209,7 +209,7 @@ Die heruntergeladene OVF-Vorlage muss in VMware importiert werden, um die Replik
 
 ### <a name="start-appliance-setup"></a>Starten der Einrichtung der Appliance
 
-1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients ein. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren.
+1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients ein. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren.
 2. Akzeptieren Sie den Lizenzvertrag, und geben Sie ein Administratorkennwort ein.
 3. Melden Sie sich nach Abschluss der Installation unter Verwendung des Administratorkennworts als Administrator bei der VM an. Bei der ersten Anmeldung wird innerhalb weniger Sekunden das Setuptool für die Replikationsappliance (Azure Site Recovery-Konfigurationstool) gestartet.
 5. Geben Sie einen Namen ein, um die Appliance für die Servermigration zu registrieren. Klicken Sie dann auf **Weiter**.

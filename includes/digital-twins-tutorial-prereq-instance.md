@@ -5,19 +5,15 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: a456709fffd8b4bc0f1c7eb25281980daea2edb6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 29c386b7e12c24e712ee24e887b8e25609ffaeeb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537417"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124556"
 ---
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Vorbereiten einer Azure Digital Twins-Instanz
 
-Um dieses Tutorial abzuschließen, benötigen Sie eine **Azure Digital Twins-Instanz**, für programmiert werden soll. 
+Um dieses Tutorial abzuschließen, benötigen Sie eine **Azure Digital Twins-Instanz**, für programmiert werden soll. Wenn Sie zuvor bereits eine Azure Digital Twins-Instanz eingerichtet haben, können Sie diese nutzen und zum nächsten Abschnitt springen.
 
-Wenn Sie zuvor bereits eine Azure Digital Twins-Instanz eingerichtet haben, können Sie diese nutzen und zum nächsten Abschnitt springen.
-
-Führen Sie andernfalls die folgenden Schritte aus, um Ihre Instanz einzurichten:
-1. **Erstellen einer Instanz** anhand der Anweisungen zum [ *Erstellen einer Azure Digital Twins-Instanz*](../articles/digital-twins/how-to-set-up-instance.md) 
-2. **Einrichten einer Azure Active Directory-App-Registrierung für Ihre Instanz** mit dem Abschnitt *Erstellen einer App-Registrierung* von [ *Authentifizieren einer Clientanwendung*](../articles/digital-twins/how-to-authenticate-client.md#create-an-app-registration)
+Führen Sie andernfalls das **Einrichten einer Instanz und der Authentifizierung** durch, indem Sie die Anleitung unter [*Gewusst wie: Einrichten einer Instanz und der Authentifizierung*](../articles/digital-twins/how-to-set-up-instance-scripted.md) befolgen. Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.

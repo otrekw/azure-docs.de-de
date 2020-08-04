@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034995"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Tutorial: Verwenden von Risikoerkennungen für Benutzeranmeldungen, um Azure Multi-Factor Authentication oder Kennwortänderungen auszulösen
 
 Zum Schutz Ihrer Benutzer können Sie in Azure Active Directory (Azure AD) risikobasierte Richtlinien konfigurieren, um im Falle von riskantem Verhalten eine automatische Reaktion zu ermöglichen. Durch Azure AD Identity Protection-Richtlinien kann ein Anmeldeversuch automatisch blockiert oder eine zusätzliche Aktion wie etwa eine Kennwortänderung oder die Verwendung von Azure Multi-Factor Authentication angefordert werden. Diese Richtlinien können mit bereits vorhandenen Azure AD-Richtlinien für bedingten Zugriff kombiniert werden, um die Organisation noch besser zu schützen. Es kann sein, dass von Benutzern niemals ein riskantes Verhalten in einer dieser Richtlinien ausgelöst wird. Im Falle einer Sicherheitsgefährdung ist Ihre Organisation jedoch geschützt.
+
+> [!IMPORTANT]
+> In diesem Tutorial wird für Administratoren veranschaulicht, wie Azure Multi-Factor Authentication (risikobasiert) aktiviert wird.
+>
+> Wenn Ihr IT-Team die Verwendung von Azure Multi-Factor Authentication nicht aktiviert hat oder Sie Probleme mit der Anmeldung haben, wenden Sie sich an Ihren Helpdesk.
 
 In diesem Tutorial lernen Sie Folgendes:
 

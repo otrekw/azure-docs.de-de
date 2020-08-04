@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181612"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058277"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -407,7 +407,7 @@ Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microso
 
 ### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
 
-Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite werden die Willkommensnachricht *„Hallo \<Benutzer>“* , ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche gelangen Sie zum zuvor erstellten Claims-Controller.
+Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite werden die Willkommensnachricht *„Hallo \<user>“* , ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche gelangen Sie zum zuvor erstellten Claims-Controller.
 
 ### <a name="view-the-users-claims"></a>Anzeigen der Ansprüche des Benutzers
 
@@ -468,13 +468,13 @@ Sie können den Anmeldezugriff auf die Benutzerkonten beschränken, die in einer
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Option 3: Überprüfen von Ausstellern mithilfe einer benutzerdefinierten Methode
 
-Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie im Artikel zur [TokenValidationParameters-Klasse](/previous-versions/visualstudio/dn464192(v=vs.114)).
+Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie im Artikel zur [TokenValidationParameters-Klasse](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie, wie Web-Apps Web-APIs anrufen können.
 
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>Informationen zum Erstellen der in dieser Schnellstartanleitung verwendeten Anwendung
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Informationen zum Erstellen der in diesem Schnellstart verwendeten Anwendung
 
 Informieren Sie sich ausführlicher über Web-Apps, die Web-APIs mit Microsoft Identity Platform aufrufen:
 

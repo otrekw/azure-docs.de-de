@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277694"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124555"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurieren des Beispielprojekts
 
-Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure Digital Twins-Instanz interagiert. Wenn Sie das Beispielprojekt noch nicht heruntergeladen haben, können Sie es jetzt über die Landing Page [Azure Digital Twins (Beispiele)](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) abrufen, indem Sie unterhalb des Titels die Schaltfläche *ZIP herunterladen* auswählen.
+Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure Digital Twins-Instanz interagiert. Wenn Sie das Beispielprojekt noch nicht heruntergeladen haben, können Sie es jetzt über die Landing Page [*Azure Digital Twins (Beispiele)* ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) abrufen, indem Sie unterhalb des Titels die Schaltfläche *ZIP herunterladen* auswählen.
 
 Navigieren Sie zu der heruntergeladenen Datei auf Ihrem Computer, und entzippen Sie sie.
 

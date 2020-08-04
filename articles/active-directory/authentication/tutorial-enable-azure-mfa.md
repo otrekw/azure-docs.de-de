@@ -5,23 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77154678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035059"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication
 
 Bei der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) wird vom Benutzer im Rahmen eines Anmeldeereignisses eine zusätzliche Art der Identifizierung angefordert. Dabei kann es sich beispielsweise um die Eingabe eines Codes auf dem Smartphone oder um einen Fingerabdruckscan handeln. Wenn Sie ein zweites Authentifizierungsverfahren erzwingen, wird die Sicherheit erhöht, weil dieses zusätzliche Verfahren von einem Angreifer nicht ohne Weiteres nachvollzogen bzw. dupliziert werden kann.
 
 Mithilfe von Azure Multi-Factor Authentication und Richtlinien für bedingten Zugriff kann die MFA für Benutzer flexibel während bestimmter Anmeldeereignisse aktiviert werden.
+
+> [!IMPORTANT]
+> In diesem Tutorial wird für Administratoren veranschaulicht, wie Azure Multi-Factor Authentication aktiviert wird.
+>
+> Wenn Ihr IT-Team die Verwendung von Azure Multi-Factor Authentication nicht aktiviert hat oder Sie Probleme mit der Anmeldung haben, sollten Sie sich an Ihren Helpdesk wenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -38,9 +43,9 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*.
 * Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. Das Konto wird in diesem Tutorial verwendet, um Azure Multi-Factor Authentication als Endbenutzer zu testen.
-    * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../add-users-azure-active-directory.md) weiter.
+    * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) weiter.
 * Eine Gruppe, der der Benutzer ohne Administratorrechte angehört (beispielsweise *MFA-Test-Group*). In diesem Tutorial wird Azure Multi-Factor Authentication für diese Gruppe aktiviert.
-    * Wenn Sie eine Gruppe erstellen müssen, finden Sie weitere Informationen unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../active-directory-groups-create-azure-portal.md).
+    * Wenn Sie eine Gruppe erstellen müssen, finden Sie weitere Informationen unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 

@@ -3,17 +3,17 @@ title: 'Tutorial: Verbinden einer generischen Node.js-Client-App mit Azure IoT 
 description: In diesem Tutorial für Geräteentwickler erfahren Sie, wie Sie ein Gerät, auf dem eine Node.js-Client-App ausgeführt wird, mit Ihrer Azure IoT Central-Anwendung verbinden. Sie erstellen eine Gerätevorlage, indem Sie ein Gerätefunktionsmodell importieren, und fügen Ansichten hinzu, die es Ihnen ermöglichen, mit einem verbundenen Gerät zu interagieren.
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: e20ab44f309fd9ff7f2d6d9b1ad2a4ca0bfa3223
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417904"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336088"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Tutorial: Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-* Eine Azure IoT Central-Anwendung, die mit der Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
+* Eine Azure IoT Central-Anwendung, die mit der Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md). Die Anwendung muss am 14.07.2020 oder nach diesem Datum erstellt worden sein.
 * Einen Entwicklungscomputer, auf dem mindestens die Version 10.0.0 von [Node.js](https://nodejs.org/) installiert ist. Sie können `node --version` in der Befehlszeile ausführen, um Ihre Version zu überprüfen. Bei den Anweisungen in diesem Tutorial wird davon ausgegangen, dass Sie den Befehl **node** an der Windows-Eingabeaufforderung ausführen. Node.js kann jedoch unter einer Reihe anderer Betriebssysteme verwendet werden.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -121,7 +121,7 @@ In den folgenden Schritten wird eine Node.js-Clientanwendung erstellt, die sich 
 
     IoT Central verwendet Gerätezwillinge, um Eigenschaftswerte zwischen dem Gerät und der IoT Central-Anwendung zu synchronisieren. Die gemeldeten Eigenschaften von Gerätezwillingen werden für die Eigenschaftswerte eines Geräts verwendet. Für schreibbare Eigenschaften werden sowohl die gemeldeten als auch die gewünschten Eigenschaften eines Gerätezwillings verwendet.
 
-1. Fügen Sie den folgenden Code hinzu, um die schreibbaren Eigenschaften zu definieren und zu behandeln, auf die Ihr Gerät reagiert:
+1. Fügen Sie den folgenden Code hinzu, um die schreibbaren Eigenschaften zu definieren und zu behandeln, auf die Ihr Gerät reagiert. Die Meldung, die das Gerät als Reaktion auf die [schreibbare Eigenschaftsaktualisierung](concepts-telemetry-properties-commands.md#writeable-property-types) sendet, muss die Felder `av` und `ac` enthalten. Das Feld `ad` ist optional:
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -130,12 +130,12 @@ In den folgenden Schritten wird eine Node.js-Clientanwendung erstellt, die sich 
     var writeableProperties = {
       'name': (newValue, callback) => {
           setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
           }, 1000);
       },
       'brightness': (newValue, callback) => {
         setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
         }, 5000);
       }
     };
@@ -145,13 +145,14 @@ In den folgenden Schritten wird eine Node.js-Clientanwendung erstellt, die sich 
       twin.on('properties.desired', function (desiredChange) {
         for (let setting in desiredChange) {
           if (writeableProperties[setting]) {
-            console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
-            writeableProperties[setting](desiredChange[setting].value, (newValue, status) => {
+            console.log(`Received setting: ${setting}: ${desiredChange[setting]}`);
+            writeableProperties[setting](desiredChange[setting], (newValue, status, code) => {
               var patch = {
                 [setting]: {
                   value: newValue,
-                  status: status,
-                  desiredVersion: desiredChange.$version
+                  ad: status,
+                  ac: code,
+                  av: desiredChange.$version
                 }
               }
               sendDeviceProperties(twin, patch);
@@ -162,7 +163,7 @@ In den folgenden Schritten wird eine Node.js-Clientanwendung erstellt, die sich 
     }
     ```
 
-    Wenn der Bediener eine schreibbare Eigenschaft in der IoT Central-Anwendung festlegt, verwendet die Anwendung eine gewünschte Eigenschaft des Gerätezwillings, um den Wert an das Gerät zu senden. Das Gerät antwortet dann mit einer gemeldeten Eigenschaft des Gerätezwillings. Wenn IoT Central den gemeldeten Eigenschaftswert empfängt, wird die Eigenschaftsansicht mit dem Status **Synchronisiert** aktualisiert.
+    Wenn der Bediener eine beschreibbare Eigenschaft in der IoT Central-Anwendung festlegt, verwendet die Anwendung eine vom Gerätezwilling gewünschte Eigenschaft, um den Wert an das Gerät zu senden. Das Gerät antwortet dann mit einer gemeldeten Eigenschaft des Gerätezwillings. Wenn IoT Central den gemeldeten Eigenschaftswert empfängt, wird die Eigenschaftsansicht mit dem Status **Synchronisiert** aktualisiert.
 
     Die Namen der Eigenschaften (`name` und `brightness`) müssen mit den in der Gerätevorlage verwendeten Namen übereinstimmen.
 
@@ -280,7 +281,9 @@ In den folgenden Schritten wird eine Node.js-Clientanwendung erstellt, die sich 
           } else {
             // Send device properties once on device start up.
             var properties = {
-              state: 'true'
+              state: 'true',
+              processorArchitecture: 'ARM',
+              swVersion: '1.0.0'
             };
             sendDeviceProperties(twin, properties);
 
@@ -326,11 +329,14 @@ Sie können sehen, wie das Gerät auf Befehle und Eigenschaftsaktualisierungen r
 
 ![Beobachten der Clientanwendung](media/tutorial-connect-device-nodejs/run-application-2.png)
 
+## <a name="view-raw-data"></a>Anzeigen von Rohdaten
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Als Geräteentwickler haben Sie hier die Grundlagen zur Erstellung eines Geräts mithilfe von Node.js kennengelernt. Vorschläge für die nächsten Schritte:
 
-* In Artikel [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](./howto-connect-devkit.md) erfahren Sie, wie Sie ein echtes Gerät mit IoT Central verbinden.
 * Unter [Was sind Gerätevorlagen?](./concepts-device-templates.md) erfahren Sie mehr über die Rolle von Gerätevorlagen beim Implementieren Ihres Gerätecodes.
 * Weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md).
 

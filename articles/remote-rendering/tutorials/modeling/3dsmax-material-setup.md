@@ -1,206 +1,227 @@
 ---
-title: Einrichten von Materialien zum physikalisch basierten Rendering in 3DSMax
-description: Es wird beschrieben, wie Sie PBR-Materialien (Physically Based Rendering, physikalisch basiertes Rendering) in 3DSMax einrichten und im FBX-Format exportieren.
+title: Einrichten von PBR-Materialien in 3ds Max
+description: Es wird beschrieben, wie Sie PBR-Materialien (Physically Based Rendering, Rendern auf physikalischer Grundlage) in 3ds Max einrichten und im FBX-Format exportieren.
 author: muxanickms
 ms.author: misams
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: df4be8963c93199f9fad23ab3f709f691e1da768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: ac0f4ee8f06982126d2ae30bed01716b287e8993
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857551"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078041"
 ---
-# <a name="tutorial-set-up-physically-based-rendering-materials-in-3d-studio-max"></a>Tutorial: Einrichten von PBR-Materialien in 3D Studio Max
+# <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Tutorial: Einrichten von Materialien für Rendern auf physikalischer Grundlage in 3ds Max
 
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial lernen Sie Folgendes:
 
 >[!div class="checklist"]
 >
-> * Weisen Sie Materialien mit erweiterter Beleuchtung Objekten der Szene zu.
+> * Zuweisen von Materialien mit erweiterter Beleuchtung zu Objekten in einer Szene
 > * Verarbeiten Sie die Instanziierung von Objekten und Materialien.
 > * Exportieren Sie eine Szene im FBX-Format, und wählen Sie wichtige Optionen aus.
 
-Das Erstellen von [physikalisch basierten Rendering-Materialien (PBR)](../../overview/features/pbr-materials.md) in 3D Studio Max (3DSMax) ist eine relativ unkomplizierte Aufgabe. Der Vorgang ähnelt in vielerlei Hinsicht der PBR-Einrichtung in anderen Anwendungen zum Erstellen von Inhalten, wie z. B. Maya. Dieses Tutorial ist ein Leitfaden zur grundlegenden Einrichtung eines PBR-Shaders und für den FBX-Export für Azure Remote Rendering-Projekte.
+Das Erstellen von [PBR-Materialien](../../overview/features/pbr-materials.md) (Physically Based Rendering, Rendern auf physikalischer Grundlage) in 3ds Max ist unkompliziert. Der Vorgang ähnelt in vielerlei Hinsicht der PBR-Einrichtung in anderen Anwendungen zum Erstellen von Inhalten, wie z. B. Maya. Dieses Tutorial ist ein Leitfaden zur grundlegenden Einrichtung eines PBR-Shaders und für den FBX-Export für Azure Remote Rendering-Projekte.
 
-Die Beispielszene in diesem Tutorial enthält eine Reihe von Polygonfeldobjekten. Ihnen werden verschiedene Materialien zugewiesen, wie z. B. Holz, Metall, lackiertes Metall, Plastik und Gummi. Jedes Material enthält praktisch alle bzw. die meisten der folgenden Texturen:
+Die Beispielszene in diesem Tutorial enthält eine Reihe von Polygonfeldobjekten. Ihnen werden verschiedene Materialien wie Holz, Metall, lackiertes Metall, Kunststoff und Gummi zugewiesen. Jedes Material enthält praktisch alle bzw. die meisten der folgenden Texturen:
 
-* **Albedo**: beschreibt die Farbzuordnung des Materials und wird auch als **Diffus** oder **BaseColor** bezeichnet.
+* **Albedo**: Beschreibt die Farbzuordnung des Materials und wird auch als **Diffuse** (Streufarbe) und **BaseColor** bezeichnet.
 * **Metallartigkeit**: bestimmt, ob ein Material metallisch ist bzw. welche Teile metallisch sind. 
 * **Rauheit**: bestimmt, wie grob oder glatt eine Oberfläche ist.
 Dies wirkt sich auch auf die Schärfe oder Unschärfe der Reflexionen und Highlights auf einer Oberfläche aus.
-* **Normal**: fügt einer Oberfläche Details hinzu, ohne dass weitere Polygone erforderlich sind. Beispiele für Details sind u. U. Unebenheiten und Dellen auf einer Metalloberfläche oder auf einem Holz.
-* **Umgebungsverdeckung**: dient zum Hinzufügen von Soft Shading und Kontaktschatten zu einem Modell. Es handelt sich um eine Graustufenzuordnung, mit der angegeben wird, welche Bereiche eines Modells vollständige Beleuchtung (weiß) bzw. vollständigen Schatten (schwarz) erhalten.
+* **Normale**: Fügt einer Oberfläche Details hinzu, ohne dass weitere Polygone hinzugefügt werden. Beispiele für solche Details wären etwa Korrosion und Dellen bei einer Metalloberfläche oder die Maserung im Holz.
+* **Umgebungsverdeckung**: dient zum Hinzufügen von Soft Shading und Kontaktschatten zu einem Modell. Hierbei handelt es sich um eine Graustufen-Map, mit der angegeben wird, welche Bereiche des Modells vollständige Beleuchtung (Weiß) bzw. vollständigen Schatten (Schwarz) erhalten.
 
 ## <a name="prepare-the-scene"></a>Vorbereiten der Szene
-In **3D Studio Max** wird zum Einrichten eines PBR-Materials der folgende Prozess verwendet.
+In 3ds Max wird zum Einrichten eines PBR-Materials der folgende Prozess verwendet.
 
-Für den Einstieg haben wir – wie in der Beispielszene zu sehen – einige Objekte vom Typ „Box“ erstellt, die jeweils für eine andere Art von Material stehen:
-
->[!TIP]
->Ein wichtiger Hinweis, bevor Sie mit dem Erstellen von Medienobjekten für Azure Remote Rendering (ARR) beginnen: Für die Messungen wird **Meter** als Einheit verwendet.  
->Daher ist es ratsam, dass Sie die **Systemeinheiten** für Szenen auf **Meter** festlegen. Darüber hinaus sollten Sie auch beim Exportieren in den Einstellungen für FBX-Exporte „Meter“ wählen.
-
-In der folgenden Abbildung werden die Schritte zum Festlegen der Systemeinheiten auf „Meter“ in 3D Studio Max veranschaulicht. Navigieren Sie im Hauptmenü zu **Anpassen** > **Units Setup** (Einheiteneinrichtung)  >  **System Units Setup** (Systemeinheiteneinrichtung), und wählen Sie dann im Dropdownmenü **System Units Scale** (Systemeinheitenskala) die Option **Meter** aus. 
-![Systemeinheiten](media/3dsmax/system-units.jpg)
-
-Wenn die Systemeinheiten auf „Meter“ festgelegt sind, können wir mit dem Erstellen unserer Modelle beginnen. In unserer Beispielszene erstellen wir mehrere Box-Objekte, die jeweils einen anderen Materialtyp darstellen (z. B. Metall, Gummi, Plastik usw.). 
+Zunächst erstellen wir einige Feldobjekte, die jeweils für eine andere Art von Material stehen.
 
 >[!TIP]
->Beim Erstellen von Objekten empfiehlt es sich, sie entsprechend zu benennen. Dadurch können sie später leichter gefunden werden, wenn die Szene viele Objekte enthält.
+>Beachten Sie vor Beginn der Erstellung von Objekten für Remote Rendering, dass „Meter“ als Maßeinheit verwendet wird.  
+>
+>Daher ist es ratsam, die Systemeinheiten für Ihre Szene auf Meter festzulegen. Es ist auch ratsam, beim Exportieren einer Szene in den FBX-Exporteinstellungen **Units** (Einheiten) auf Meter festzulegen.
 
-![rename-objects](media/3dsmax/rename-objects.jpg)
+Im folgenden Screenshot sind die Schritte dargestellt, mit denen Sie die Systemeinheiten in 3ds Max auf Meter festlegen. 
+
+1. Navigieren Sie im Hauptmenü zu **Customize** > **Units Setup** > **System Unit Setup** („Anpassen“ > „Einheiten einrichten“ > „System-Einheiten einrichten“). Wählen Sie unter **System Unit Scale** (System-Einheitenskala) die Option **Meters** (Meter) aus: ![Screenshot: Festlegen der Systemeinheiten](media/3dsmax/system-units.jpg)
+
+1. Wir können nun mit dem Erstellen der Modelle beginnen. In der Beispielszene erstellen wir mehrere Feldobjekte, die jeweils für einen anderen Materialtyp stehen. Beispiele hierfür sind Metall, Gummi und Kunststoff. 
+
+   >[!TIP]
+   >Bei der Erstellung von Objekten besteht die bewährte Methode darin, diese jeweils mit aussagekräftigen Namen zu versehen. So können sie später leichter gefunden werden, wenn die Szene viele Objekte enthält.
+
+1. Benennen Sie die Objekte so um, wie dies im folgenden Screenshot dargestellt ist: 
+
+   ![Screenshot: Umbenennen von Objekten](media/3dsmax/rename-objects.jpg)
 
 ## <a name="assign-materials"></a>Zuweisen von Materialien
 
-Während einige Objekte in unserer Szene erstellt werden (in diesem Fall eine Reihe von Cubes), können wir mit der PBR-Einrichtung beginnen:
+Nachdem unsere Szene nun einige Objekte enthält (in diesem Fall eine Reihe von Würfeln), können wir mit der PBR-Einrichtung beginnen:
 
-* Klicken Sie in der Hauptsymbolleiste auf das Symbol für den **Material Editor** (Materialeditor), wie auf der folgenden Abbildung dargestellt. Alternativ können Sie auch die Taste **M** auf der Tastatur drücken, um den Editor zu öffnen. Der Materialeditor verfügt über zwei Modi, die im Dropdownmenü **Modi** ausgewählt werden können: den Modus **Compact material editor** (Kompakter Materialeditor) und den Modus **Slate material** (Schiefermaterial). Da diese Szene relativ einfach ist, wird der **Kompaktmodus** verwendet.
+1. Wählen Sie auf der Hauptsymbolleiste das Symbol **Material Editor** (Material-Editor) wie im folgenden Screenshot aus. Alternativ können Sie auch die Taste **M** auf der Tastatur drücken, um den Editor zu öffnen. Der Material-Editor verfügt über zwei Modi, die Sie in der Liste **Modes** (Modi) auswählen können: Modus **Compact Material Editor** (Kompakter Material-Editor) und Modus **Slate Material Editor** (Erweiterter Material-Editor). Da diese Szene relativ einfach ist, verwenden wir den kompakten Material-Editor.
 
-* Im Materialeditor werden einige Sphären angezeigt: Dies sind unsere Materialien. Wir weisen jedem Objekt in unserer Szene eines dieser Materialien zu. Wählen Sie für diese Zuweisung zuerst eines der Objekte im Hauptanzeigebereich aus. Wenn diese Auswahl getroffen wurde, klicken Sie auf die erste Sphäre im Fenster des Materialeditors. Nach der Zuweisung zu einem Objekt wird das ausgewählte Material wie in der nächsten Abbildung dargestellt hervorgehoben.
+1. Im Material-Editor werden einige Kugeln angezeigt. Diese Kugeln stellen die Materialien dar. Wir weisen jedem Objekt (Feld) der Szene eines dieser Materialien zu. Wählen Sie zum Zuweisen der Materialien zuerst eines der Objekte im Hauptanzeigebereich aus. Wählen Sie anschließend die erste Kugel im Material-Editor aus. Nach der Zuweisung zu einem Objekt wird das ausgewählte Material wie in der nächsten Abbildung dargestellt hervorgehoben.
 
-* Klicken Sie auf die Schaltfläche **Assign Material to Selection** (Material der Auswahl zuweisen), wie abgebildet. Das ausgewählte Material wurde dem ausgewählten Objekt zugewiesen.
-![assign-material](media/3dsmax/assign-material.jpg)
+1. Wählen Sie wie gezeigt die Option **Assign Material to Selection** (Material der Auswahl zuweisen) aus. Das Material wurde nun dem ausgewählten Objekt zugewiesen.
 
-Im Materialeditor können Sie je nach Anwendungsfall Materialtypen aus einer breiten Auswahl auswählen. In der Regel wird der Materialtyp auf **Standard** festgelegt. Dieses Material ist ein grundlegendes Material, das nicht zur PBR-Einrichtung geeignet ist. Daher müssen wir den Materialtyp in ein PBR-Material ändern. Das bevorzugte **3DSMax**-Material für Azure Remote Rendering-Projekte ist **Physisches Material**.
+   ![Screenshot: Zuweisen von Materialien](media/3dsmax/assign-material.jpg)
 
-* Klicken Sie im Materialeditor auf die Registerkarte **Standard**, und wählen Sie in dem sich öffnenden Material-/Zuordnungsbrowser die Option **Physisches Material** aus. Durch diese Aktion wird das zugewiesene **Standard**-Material in ein **Physisches Material** für PBR konvertiert.
-![physical-material](media/3dsmax/physical-material.jpg)
+    Im Material-Editor können Sie je nach Ihren Anforderungen zwischen vielen verschiedenen Materialtypen wählen. In der Regel wird der Materialtyp auf **Standard** festgelegt. Dies ist ein grundlegendes Material, das für die PBR-Einrichtung nicht geeignet ist. Daher müssen wir den Materialtyp in ein PBR-Material ändern. „Physical Material“ (Physikalisches Material) ist das bevorzugte 3ds Max-Material für Azure Remote Rendering-Projekte.
 
-* Im Materialeditor werden nun die Eigenschaften für das physische Material angezeigt (siehe unten), und wir können mit dem Zuweisen von Texturen zum Medienobjekt beginnen.
-![textures-list](media/3dsmax/textures-list.jpg)
+1. Wählen Sie im Material-Editor die Registerkarte **Standard** aus. Wählen Sie in **Material/Map Browser** (Material-/Map-Übersicht) die Option **Physical Material** (Physikalisches Material) aus. Mit dieser Aktion wird das zugewiesene Material **Standard** in ein „Physikalisches Material“ für PBR konvertiert.
 
-Wie aus der obigen Abbildung ersichtlich ist, gibt es eine Vielzahl von Zuordnungen und Texturen, die dem Material hinzugefügt werden können. Zu diesem Zweck werden jedoch nur fünf Texturslots im Material verwendet.
+   ![Screenshot: Ändern des Materials](media/3dsmax/physical-material.jpg)
+
+    Im Material-Editor werden jetzt die Eigenschaften für „Physical Material“ (Physikalisches Material) angezeigt. Dies ist im folgenden Screenshot dargestellt. Sie können jetzt damit beginnen, dem Objekt Texturen zuzuweisen.
+
+   ![Screenshot: Liste mit Texturen](media/3dsmax/textures-list.jpg)
+
+Sie sehen, dass viele Maps und Texturen vorhanden sind, die Sie dem Material hinzufügen können. In diesem Tutorial verwenden wir nur fünf Texturfelder im Material.
 
 >[!TIP]
->Es empfiehlt sich, Ihre Materialien entsprechend zu benennen, wie in der Abbildung oben gezeigt.
+>Es empfiehlt sich, Ihre Materialien entsprechend zu benennen (wie im obigen Screenshot dargestellt).
 
-Wir können nun in Erwägung ziehen, unseren Materialien Texturen zuzuweisen. Die Art und Weise, wie Sie Ihre Texturen generieren, kann je nach Einstellung oder sogar entsprechend der Verwendung variieren. So können Sie beispielsweise Kacheltexturen verwenden, die auf jedes Objekt angewendet werden können, oder Sie benötigen für bestimmte Teile eines Projekts/Objekts einen eigenen, benutzerdefinierten Satz von Texturen. Vielleicht verwenden Sie generische Kacheltexturen, die Sie online erhalten haben, oder sie selbst in Anwendungen wie **Photoshop**, **Quixel Suite**, **Substance Suite** usw. erstellen. 
+Die Generierung Ihrer Texturen kann je nach Präferenz oder Einsatzbereich variieren. Beispielsweise kann es sein, dass Sie Kacheltexturen nutzen möchten, die auf alle Objekte angewendet werden können. Es kann auch sein, dass bestimmte Teile eines Projekts oder Objekts eigene benutzerdefinierte Texturen aufweisen sollen. Hierfür kann die Verwendung von generischen Kacheltexturen ratsam sein, die online erhältlich sind. Sie können sie aber auch selbst in Apps wie Photoshop, Quixel Suite und Substance Suite erstellen.
 
-Bevor wir mit der Zuweisung unserer Texturen beginnen, müssen wir unsere Objekttexturkoordinaten (UVW) berücksichtigen. Zwar ist es üblich, beim Anwenden beliebiger Texturen auf ein Modell sicherzustellen, das der Wrapper des Objekts entfernt wurde (Texturen werden ohne ein korrektes Entfernen des UV-Wrappers nicht ordnungsgemäß angezeigt), besonders wichtig ist dies jedoch, wenn wir beabsichtigen, auf unserem Modell eine Zuordnung vom Typ **Umgebungsverdeckung** zu verwenden. Im Gegensatz zum **Stingray Shader** in **Maya** verfügt das **Physische Material** in **3DSMax** nicht über einen dedizierten Texturslot vom Typ **Umgebungsverdeckung**. Daher wenden wir die AO-Zuordnung auf einen anderen Slot an und weisen ihm einen eigenen UVW-Zuordnungskanal zu, damit sie getrennt von den anderen Texturen (z. B. Kacheltexturen) verwendet werden kann. 
+Bevor wir mit dem Zuweisen von Texturen beginnen, müssen wir die Texturkoordinaten (UVW) des Objekts berücksichtigen. Es ist eine bewährte Methode, beim Anwendungen von Texturen auf ein Modell sicherzustellen, dass das Modell zugewiesen ist (Englisch: „unwrapped“). (Texturen werden ohne richtige UVW-Zuweisung nicht korrekt angezeigt.) Dies ist besonders wichtig für unsere Zwecke, weil wir in unserem Modell eine Umgebungsokklusion (UO) verwenden möchten. Im Gegensatz zum Stingray Shader in Maya verfügt „Physikalisches Material“ in 3ds Max nicht über ein dediziertes Texturfeld für die Umgebungsokklusion. Daher wenden wir die UO-Map auf ein anderes Feld an. Wir weisen einen eigenen UVW-Map-Kanal zu, damit die Verwendung separat von den anderen Texturen (z. B. Kacheltexturen) möglich ist. 
 
-Wir beginnen damit, dem Modell wie unten dargestellt einen **Unwrap UVW modifier** (UVW-Modifizierer zum Entfernen von Wrappern) zuzuweisen:
+Zunächst weisen wir dem Modell den Modifikator „Unwrap UVW“ (UVW zuweisen) zu. Dies ist im folgenden Screenshot dargestellt. 
 
-* Klicken Sie im Eigenschafteneditor für ausgewählte Objekte auf die Modifiziererliste, scrollen Sie in der Dropdownliste nach unten, und wählen Sie die Option zum Entfernen des UVW-Wrappers aus. Durch diese Aktion wird ein UVW-Modifizierer zum Entfernen von Wrappern auf das Objekt angewendet.
-![unwrap-modifier](media/3dsmax/unwrap-modifier.jpg)
+- Wählen Sie im ausgewählten Editor für die Objekteigenschaften die Liste mit den Modifikatoren aus. Scrollen Sie in der angezeigten Dropdownliste nach unten, und wählen Sie **Unwrap UVW** (UVW zuweisen) aus. Mit dieser Aktion wird der Modifikator „Unwrap UVW“ (UVW zuweisen) auf das Objekt angewendet.
+![Screenshot: Auswählen von „Unwrap UVW“ (UVW zuweisen)](media/3dsmax/unwrap-modifier.jpg)
 
-* Der Zuordnungskanal ist auf „Eins“ festgelegt. Das Entfernen des Wrappers erfolgt in der Regel auf dem ersten Zuordnungskanal. In unserem Fall wurde der Wrapper des Objekts ohne überlappende Texturkoordinaten (UV) entfernt.
-![unwrapped-uvw](media/3dsmax/unwrapped-uvw.jpg)
+  Der Map-Kanal ist auf „1“ festgelegt. Sie führen den Großteil der Zuweisung normalerweise im Map-Kanal 1 durch. In diesem Fall wurde die Zuweisung für das Objekt ohne überlappende Texturkoordinaten (UV) durchgeführt.
+![Screenshot: Zugewiesene Texturkoordinaten (UVW)](media/3dsmax/unwrapped-uvw.jpg)
 
-Der nächste Schritt ist das Erstellen eines zweiten UV-Zuordnungskanals.
+Der nächste Schritt ist das Erstellen eines zweiten UV-Map-Kanals.
 
-* Schließen Sie den UV-Editor, wenn er geöffnet ist, und wechseln Sie im Kanalabschnitt des Menüs **UVs bearbeiten** zum zweiten Kanal. Der zweite Zuordnungskanal ist der für Zuordnungen der Umgebungsverdeckung erwartete Kanal. 
+1. Schließen Sie den UV-Editor, falls er geöffnet ist. Ändern Sie im Menü **Edit UVs** (UVs bearbeiten) im Abschnitt **Channel** (Kanal) die Kanalnummer in **2**. Map-Kanal 2 ist der erwartete Kanal für UO-Maps. 
 
-* Im sich öffnenden Dialogfeld **Channel Change Warning** (Warnung zur Änderung des Kanals) haben Sie die Möglichkeit, den vorhandenen ersten Kanal in den neuen zweiten Kanal zu **Verschieben** oder die vorhandenen UVs zu **Verwerfen**, die automatisch neue **UV Unwrap** (Entfernungsvorgänge fpr UV-Wrapper) erstellen. Wählen Sie **Verwerfen** nur dann aus, wenn Sie einen neuen **UV Unwrap** (Entfernungsvorgang für UV-Wrapper) für die Zuordnung der Umgebungsverdeckung erstellen möchten, die sich von der UV-Zuordnung im ersten Kanal unterscheidet (beispielsweise wenn Sie Kacheltexturen im ersten Kanal verwenden möchten). Für unsere Zwecke **Verschieben** wir die UVs vom ersten zum zweiten Kanal, da wir den neuen UV-Kanal nicht bearbeiten müssen.
+1. Im Dialogfeld **Channel Change Warning** (Warnung zur Änderung des Kanals) können Sie die vorhandenen UVs aus Kanal 1 in den neuen Kanal 2 **verschieben** (Move) oder die vorhandenen UVs **abbrechen** (Abandon), die automatisch einen neuen UV-Zuweisungsvorgang erstellen. Wählen Sie die Option **Abandon** (Abbrechen) nur aus, wenn Sie eine neue UV-Zuweisung für die UO-Map erstellen möchten, die sich von den UVs in Map-Kanal 1 unterscheidet. (Beispiel: Verwendung von Kacheltexturen in Kanal 1.) In diesem Tutorial verschieben wir die UVs aus Kanal 1 in Kanal 2, da wir den neuen UV-Kanal nicht bearbeiten müssen.
 
->[!NOTE]
->Selbst wenn Sie den Entfernungsvorgang des UV-Wrappers – **Verschoben** – vom ersten Zuordnungskanal in den zweiten kopiert haben, können Sie an den UVs des neuen Kanals alle notwendigen Änderungen vornehmen, ohne den ursprünglichen Zuordnungskanal zu beeinflussen.
+   >[!NOTE]
+   >Selbst wenn Sie den UV-Zuweisungsvorgang aus Map-Kanal 1 in Map-Kanal 2 kopiert (verschoben) haben, können Sie an den UVs des neuen Kanals alle notwendigen Änderungen vornehmen, ohne den ursprünglichen Map-Kanal zu beeinträchtigen.
 
-![channel-change](media/3dsmax/channel-change.jpg)
+   ![Screenshot: Warnung zur Kanaländerung](media/3dsmax/channel-change.jpg)
 
-Nachdem der neue Zuordnungskanal erstellt wurde, können wir zum physischen Material im Materialeditor zurückkehren und damit beginnen, die Texturen hinzuzufügen. Zuerst fügen wir die Zuordnung für die Umgebungsverdeckung (Ambient Occlusion, **AO**) hinzu, da ein weiterer Schritt erforderlich ist, um die ordnungsgemäße Funktionsweise zu ermöglichen. Sobald die AO-Zuordnung an unser Material angeschlossen ist, müssen wir festlegen, dass der zweite Kanal verwendet werden soll.
+Nachdem wir nun den neuen Map-Kanal erstellt haben, können wir zum physikalischen Material im Material-Editor zurückkehren und damit beginnen, unsere Texturen hinzuzufügen. Zuerst fügen wir die UO-Map hinzu, weil ein zusätzlicher Schritt erforderlich ist, damit sie richtig funktioniert. Nachdem die UO-Map mit unserem Material verknüpft wurde, müssen wir konfigurieren, dass Map-Kanal 2 verwendet werden soll.
 
-* Wie bereits erwähnt ist kein dedizierter Slot für AO-Zuweisungen im physischen Material von **3DSMax** vorhanden. Stattdessen wenden wir die AO-Zuordnung auf den Slot **Diffuse Roughness** (Diffuse Rauheit) an.
+Wie bereits erwähnt wurde, ist im physikalischen Material von 3ds Max kein dediziertes Feld für UO-Maps vorhanden. Stattdessen wenden wir die UO-Map auf das Feld **Diffuse Roughness** (Streufarbenrauheit) an.
 
-* Klicken Sie in der Liste der **Generischen Zuordnungen** der physischen Materialien auf den Slot **Keine Zuordnung** von **Diffuse Roughness** (Diffuse Rauheit) und laden Sie die AO-Zuordnung.
+1. Wählen Sie für „Physical Material“ (Physikalisches Material) in der Liste **Generic Maps** (Allgemeine Maps) das Feld **No Map** (Keine Map) neben **Diffuse Roughness** (Streufarbenrauheit) aus, und laden Sie Ihre UO-Map.
 
-* In den Eigenschaften der AO-Texturen sehen Sie, dass der Zuordnungskanal standardmäßig auf **1** festgelegt ist. Ändern Sie diesen Wert in **2**. Mit dieser Aktion werden die erforderlichen Schritte zum Hinzufügen der Zuordnung vom Typ „Umgebungsverdeckung“ abgeschlossen.
+1. In den Eigenschaften der UO-Texturen ist der Map-Kanal standardmäßig auf **1** festgelegt. Ändern Sie diesen Wert in **2**. Mit dieser Aktion sind die Schritte zum Hinzufügen Ihrer UO-Map abgeschlossen.
 
->[!IMPORTANT]
->Dies ist ein wichtiger Schritt, insbesondere wenn sich Ihre UVs im zweiten Kanal von denen im ersten Kanal unterscheiden, da die AO bei Auswahl des falschen Kanals keine korrekte Zuordnung durchführen kann.
+   >[!IMPORTANT]
+   >Dies ist ein wichtiger Schritt, und zwar vor allem, wenn sich Ihre UVs in Kanal 2 von denen in Kanal 1 unterscheiden. Die UO wird nämlich nicht richtig zugeordnet, wenn der falsche Kanal ausgewählt wird.
 
-![assign-ao-map](media/3dsmax/assign-ao-map.jpg)
+   ![Screenshot: Zuweisen einer UO-Map](media/3dsmax/assign-ao-map.jpg)
 
-Wir befassen uns jetzt mit dem Zuweisen unserer normalen Zuordnung zu unserem PBR-Material. Diese Aktion unterscheidet sich von **Maya** darin, dass die normale Zuordnung nicht direkt auf den Bump-Zuordnungsslot angewendet wird (es ist kein normaler Zuordnungsslot im **Physischen 3Dsmax-Material** vorhanden), sondern stattdessen einem normal Zuordnungsmodifizierer hinzugefügt wird, der wiederum an den Slot **Normal** angeschlossen ist.
+Wir weisen dem PBR-Material jetzt die Normalen-Map zu. Diese Aktion unterscheidet sich etwas vom Prozess in Maya. Die Normalen-Map wird nicht direkt auf das Feld für die Relief-Map angewendet. (Das physikalische Material von 3ds Max enthält kein Feld für eine Normalen-Map.) Stattdessen fügen Sie die Normalen-Map einem Modifikator vom Typ „Normalen-Map“ hinzu, der dem Feld der Normalen zugeordnet ist.
 
-* Klicken Sie im Bereich **Spezielle Zuordnungen** der Eigenschaften für physische Materialien (im Materialeditor) auf den Slot **Keine Zuordnung** der **Bump-Zuordnung**. 
+1. Wählen Sie in den Eigenschaften von „Physikalisches Material“ (im Material-Editor) im Abschnitt **Special Maps** (Spezielle Maps) das Feld **No Map** (Keine Map) neben **Bump Map** (Relief-Map) aus. 
 
-* Suchen Sie im Material-/Zuordnungsbrowser nach **Normaler Bump**, und klicken Sie darauf. Durch diese Aktion wird dem Material ein Modifizierer vom Typ **Normaler Bumb** hinzugefügt.
+1. Suchen Sie in **Material/Map Browser** (Material-/Map-Übersicht) nach **Normal Bump** (Normalen-Relief). Mit dieser Aktion wird dem Material der Modifikator **Normal Bump** (Normalen-Relief) hinzugefügt.
 
-* Klicken Sie im Modifizierer **Normaler Bump** auf **Keine Zuordnung** von **Normal**, suchen Sie nach der normalen Zuordnung, und laden Sie sie.
+1. Wählen Sie im Modifikator **Normal Bump** (Normalen-Relief) neben **Normal** (Normale) die Option **No Map** (Keine Map) aus. Suchen und laden Sie Ihre Normalen-Map.
 
-* Überprüfen Sie, ob die Methode auf **Tangens** festgelegt ist (sollte standardmäßig der Fall sein), und schalten Sie ggf. **Flip Green (Y)** (Grün kippen (Y)) um.
+1. Stellen Sie sicher, dass die Methode auf **Tangent** (Tangente) festgelegt ist. (Dies sollte standardmäßig der Fall sein.) Wählen Sie bei Bedarf die Option **Flip Green (Y)** (Grün umkehren (Y)) aus.
 
-![normal-bump](media/3dsmax/normal-bump.jpg)
-![load-normal-map](media/3dsmax/load-normal-map.jpg)
+   ![Screenshot: Auswählen von „Normal Bump“ (Normalen-Relief)](media/3dsmax/normal-bump.jpg)
+   ![Screenshot: Laden der Normalen-Map](media/3dsmax/load-normal-map.jpg)
 
-Wenn unsere normale Zuordnung ordnungsgemäß zugewiesen ist, können wir mit der Zuweisung der verbleibenden Texturen fortfahren, um die Einrichtung des physischen Materials abzuschließen. Dabei handelt es sich um einen einfachen Vorgang, der keine besonderen Einstellungen erfordert. Die folgende Abbildung zeigt den vollständigen Satz von Texturen, die dem Material zugewiesen sind: ![all-textures](media/3dsmax/all-textures.jpg)
+Nachdem die Normalen-Map richtig zugewiesen wurde, können wir die restlichen Texturen zuweisen, um die Einrichtung von „Physical Material“ (Physikalisches Material) abzuschließen. Der Prozess ist einfach. Es müssen keine besonderen Einstellungen beachtet werden. Im folgenden Screenshot sind alle Texturen dargestellt, die dem Material zugewiesen sind: 
 
-Nachdem Sie Ihre PBR-Materialien erstellt und eingerichtet haben, sollten Sie sich über die Instanziierungsobjekte Ihrer Szene Gedanken machen. Wenn Sie ähnliche bzw. zusammengehörige Objekte Ihrer Szene, z. B. Muttern, Bolzen, Schrauben und Scheiben, instanziieren, können Sie erhebliche Einsparungen bei der Dateigröße erzielen. Instanzen eines Masterobjekts können über eine eigene Skalierungen, Drehungen und Transformationen verfügen und daher je nach Bedarf in Ihrer Szene angeordnet werden. In **3D Studio Max** ist die **Instanziierung** ein einfacher Prozess.
+![Screenshot: Alle Texturen, die dem Material zugewiesen sind](media/3dsmax/all-textures.jpg)
 
-* Wählen Sie im Hauptanzeigebereich die Objekte aus, die Sie exportieren möchten.
+Nachdem die PBR-Materialien erstellt und eingerichtet wurden, können wir uns mit dem Instanziieren der Szene beschäftigen. In der Szene werden ähnliche Objekte instanziiert, z. B. Muttern, Bolzen, Schrauben und Scheiben. Alle Objekte, die gleich sind, können zu erheblichen Einsparungen in Bezug auf die Dateigröße führen. Instanzen eines Masterobjekts können über eigene Skalierungen, Drehungen und Transformationen verfügen und daher je nach Bedarf in Ihrer Szene angeordnet werden. In 3ds Max ist die Instanziierung ein einfacher Prozess.
 
-* Halten Sie die Taste **UMSCHALT** gedrückt, und ziehen Sie die Objekte mithilfe des Transformationstools (verschieben) nach oben. 
+1. Wählen Sie im Hauptanzeigebereich das bzw. die Objekte aus, die Sie exportieren möchten.
 
-* Legen Sie im sich öffnenden Dialogfeld **Klonoptionen** die Option **Objekt** auf **Instanz** fest, und klicken Sie auf **OK**. 
-![instance-object](media/3dsmax/instance-object.jpg)
+1. Halten Sie **UMSCHALT** gedrückt, und ziehen Sie die Objekte mithilfe des Transformationstools (Move (Verschieben)) nach oben. 
+
+1. Legen Sie im Dialogfeld **Clone Options** (Klonoptionen) die Option **Object** (Objekt) auf **Instance** (Instanz) fest, und wählen Sie anschließend **OK** aus:
+
+   ![Screenshot: Dialogfeld „Clone Options“ (Klonoptionen)](media/3dsmax/instance-object.jpg)
 
 Bei dieser Aktion wird eine Instanz Ihres Objekts erstellt, die unabhängig vom übergeordneten Objekt und dessen anderen Instanzen verschoben, gedreht oder skaliert werden kann.
 
 >[!IMPORTANT]
->Allerdings werden alle Änderungen, die Sie im Unterobjektmodus an einer Instanz vornehmen, auf alle Instanzen Ihres Objekts übertragen. Wenn Sie mit den Komponenten eines instanziierten Objekts arbeiten, z. B. Scheitelpunkten, Polygonen, Flächen usw., sollten Sie daher zunächst sicherstellen, dass alle vorgenommenen Änderungen auch für all diese Instanzen gelten sollen. Beachten Sie, dass jedes instanziierte Objekt jederzeit in ein eindeutiges Objekt transformiert werden kann. 
+>Alle Änderungen, die Sie an einer Instanz vornehmen, während Sie sich im Modus für untergeordnete Objekte befinden, werden an alle Instanzen des Objekts übertragen. Wenn Sie also mit den Komponenten eines instanziierten Objekts arbeiten, z. B. Scheitelpunkten und Polygonflächen, sollten Sie überlegen, ob sich alle vorgenommenen Änderungen auch auf alle Instanzen auswirken sollen. Beachten Sie, dass jedes instanziierte Objekt jederzeit in ein eindeutiges Objekt transformiert werden kann. 
 
 >[!TIP]
->Die bewährte Methode für die Instanziierung in Ihrer Szene ist die fortlaufende Erstellung, da **Kopien** später nur sehr schwer durch instanziierte Objekte ersetzt werden können. 
+>Es ist ratsam, die Instanzen beim Instanziieren in Ihrer Szene zu erstellen. Kopien lassen sich später nur schwer durch instanziierte Objekte ersetzen. 
 
-Bevor wir mit dem Exportvorgang fortfahren, sollten Sie zunächst die Szene/das Objekt für die Freigabe verpacken. Wenn Sie das Objekt an einen Kunden oder ein Teammitglied weitergeben, sollen diese das Objekt im Idealfall mit einem Minimum an Aufhebens öffnen und so betrachten können, wie es vorgesehen ist. Daher ist es wichtig, dass die Texturpfade der Objekte gemeinsam mit der Szenendatei aufbewahrt werden. Wenn die Texturpfade für Ihr Objekt auf ein lokales Laufwerk oder einen absoluten Pfad/Speicherort weisen, werden sie beim Öffnen auf einem anderen Computer nicht in die Szene geladen, auch wenn sich die Datei „ **.max**“ im selben Ordner wie die Texturen befindet. Durch die relative Erstellung der Texturpfade in 3D Studio wird dieses Problem gelöst. Außerdem ist dieser Vorgang ziemlich einfach.
+Bevor wir mit dem Exportvorgang fortfahren, sollten Sie zunächst noch die Szene bzw. das Objekt für die Freigabe verpacken. Wenn Sie das Objekt an einen Kunden oder ein Teammitglied weitergeben, sollte das Objekt im Idealfall mit so wenig Aufwand wie möglich geöffnet und wie gewünscht angezeigt werden können. Aus diesem Grund ist es wichtig, dass die Texturpfade der Objekte gemeinsam mit der Szenendatei aufbewahrt werden. Wenn die Texturpfade für Ihr Objekt auf ein lokales Laufwerk oder einen absoluten Pfad bzw. Speicherort verweisen, werden sie beim Öffnen auf einem anderen Computer nicht in die Szene geladen. Dies gilt auch, wenn sich die MAX-Datei im selben Ordner wie die Texturen befindet. Dieses Problem wird gelöst, indem die Texturpfade in 3ds Max relativ gemacht werden. Dies ist ein einfacher Vorgang.
 
-* Wechseln Sie auf der Hauptsymbolleiste zu **Datei** > **Referenz** > **Asset Tracking Toggle** (Objektverfolgungsumschalter). 
+1. Navigieren Sie auf der Hauptsymbolleiste zu **File** > **Reference** > **Asset Tracking Toggle** („Datei“ > „Referenzen“ > Umschalter „Medienverfolgung“). 
 
-* Im daraufhin geöffneten Browser zum Verfolgen von Objekten werden alle oder die meisten Texturen angezeigt, die Sie auf Ihre PBR-Materialien angewendet haben. Sie werden in der Spalte **Zuordnungen/Shaders** aufgeführt.
+1. Im Fenster „Asset Tracking“ (Medienverfolgung) sind alle bzw. die meisten Texturen, die Sie auf Ihre PBR-Materialien angewendet haben, unter **Maps/Shaders** (Maps/Shader) angegeben.
 
-* Daneben in der Spalte **Vollständiger Pfad** sehen Sie den Dateipfad zum Speicherort Ihrer Texturen, höchstwahrscheinlich der Speicherort auf dem lokalen Computer.
+1. Daneben in der Spalte **Full Path** (Vollständiger Pfad) wird der Pfad zum Speicherort Ihrer Texturen angezeigt (meist zum Speicherort auf dem lokalen Computer).
 
-* Schließlich wird eine Spalte mit dem Namen **Status** angezeigt. Diese Spalte zeigt an, ob eine bestimmte Textur gefunden und auf Ihre Szene angewendet wurde, und kennzeichnet diese Textur mit einem der folgenden Begriffe: **OK**, **Gefunden** oder **Datei fehlt**. Die ersten beiden Begriffe weisen darauf hin, dass die Datei gefunden und geladen wurde. Der letzte Wert bedeutet, dass eine Datei nicht gefunden werden konnte.
-![texture-paths](media/3dsmax/texture-paths.jpg)
+1. Darüber hinaus wird noch eine Spalte mit dem Namen **Status** angezeigt. In dieser Spalte ist angegeben, ob eine bestimmte Textur gefunden und auf Ihre Szene angewendet wurde. Eine Textur kann einen der folgenden Status haben: **OK**, **Found** (Gefunden) oder **File Missing** (Datei fehlt). Mit den ersten beiden Status wird angegeben, dass die Datei gefunden und geladen wurde. Der letzte Status bedeutet, dass die Datei von der Medienverfolgung nicht gefunden wurde.
+ 
+   ![Screenshot: Fenster „Asset Tracking“ (Medienverfolgung)](media/3dsmax/texture-paths.jpg)
 
-Sie werden feststellen, dass nicht alle Texturen beim ersten Öffnen in der Objektverfolgung aufgeführt sind. Es gibt keinen Grund zur Besorgnis, denn wenn der Pfadsuchprozess ein- oder zweimal durchlaufen wurde, werden in der Regel alle Texturen der Szene gefunden. Der Prozess für die Pfadsuche lautet wie folgt: 
+Unter Umständen stellen Sie fest, dass beim ersten Öffnen des Fensters „Asset Tracking“ (Medienverfolgung) nicht alle Texturen aufgeführt sind. Dies ist kein Problem. Wenn Sie den Prozess zum Suchen nach den Pfaden einmal oder zweimal ausführen, werden normalerweise alle Texturen einer Szene gefunden. Der Prozess für die Pfadsuche lautet wie folgt: 
 
-* Klicken Sie im Fenster der Objektverfolgung mit **UMSCHALT**+**Klick** auf die erste Textur in der Liste **Zuordnungen/Shaders**, und halten Sie die Umschalttaste weiterhin gedrückt, wenn Sie auf die letzte Textur der Liste klicken. So wählen Sie alle Texturen in der Liste aus. Die ausgewählten Texturen werden nun blau hervorgehoben (siehe Abbildung oben).
+1. Halten Sie im Fenster „Asset Tracking“ (Medienverfolgung) die Taste **UMSCHALT** gedrückt, und wählen Sie in der Liste **Maps/Shaders** (Maps/Sharder) die oberste Textur aus. Halten Sie **UMSCHALT** weiter gedrückt, und wählen Sie die letzte Textur der Liste aus. Mit dieser Aktion werden alle Texturen der Liste ausgewählt. Die ausgewählten Texturen werden blau hervorgehoben. (Siehe obigen Screenshot.)
 
-* Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie im sich öffnenden Popupmenü die Option **Pfad festlegen** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie **Set Path** (Pfad einstellen) aus.
 
-* Wählen Sie im sich öffnenden Textfeld **Specify Asset Path** (Objektpfad festlegen) den lokalen Pfad zu den angezeigten Texturen aus, ersetzen Sie ihn durch `.\`, und klicken Sie auf **OK**. 
+1. Wählen Sie im Pfad **Specify Asset Path** (Medienpfad angeben) den lokalen Pfad zu Ihren Texturen aus, und ersetzen Sie ihn durch `.\`.  Klicken Sie auf **OK**. 
 
-* Nach einem bestimmten Zeitraum (je nachdem, wie viele Texturen in Ihrer Szene vorhanden sind und wie groß die Szene ist) sollte sich die Objektverfolgung wie folgt auflösen (siehe Abbildung).
-![resolve-textures](media/3dsmax/resolve-textures.jpg)
+    Das Fenster „Asset Tracking“ (Medienverfolgung) wird aktualisiert. Dies ist im folgenden Screenshot dargestellt. Diese Aktualisierung kann eine Weile dauern. Die Dauer hängt davon ab, wie viele Texturen Ihre Szene enthält und wie umfangreich sie ist.
+![Screenshot: Aktualisiertes Fenster „Asset Tracking“ (Medienverfolgung)](media/3dsmax/resolve-textures.jpg)
 
-Beachten Sie, dass die Spalte **Vollständiger Pfad** jetzt leer ist. Das bedeutet, dass die Szene nicht mehr nach den relevanten Texturen an einem bestimmten (absoluten) Ort sucht, sondern diese immer findet, solange sich die MAX-Datei oder die zugehörige FBX-Datei im gleichen Ordner wie die Texturen befindet. 
+Beachten Sie, dass die Spalte **Vollständiger Pfad** jetzt leer ist. Dies bedeutet, dass die Szene nicht mehr an einem bestimmten (absoluten) Speicherort nach den relevanten Texturen sucht. Sie werden immer gefunden, sofern sich die MAX-Datei bzw. die zugehörige FBX-Datei im selben Ordner wie die Texturen befindet. 
 
 >[!NOTE]
->Manchmal kann es vorkommen, dass Sie diesen Prozess mehrmals wiederholen müssen, um alle Texturen und Pfade zu finden und aufzulösen. Das ist ganz normal. Wiederholen Sie den Vorgang einfach, bis alle relevanten Objekte gefunden wurden. Ebenso kann es vorkommen, dass einige Dateien nicht mehr gefunden werden können. Wählen Sie in diesem Fall einfach alle Objekte in der Liste aus, und klicken Sie auf **Fehlende Pfade entfernen** (siehe Abbildung oben).
+>Unter Umständen müssen Sie diesen Vorgang mehrmals wiederholen, damit alle Texturen und Pfade gefunden und aufgelöst werden können. Dies ist kein Problem. Wiederholen Sie den Vorgang einfach, bis alle relevanten Medien abgedeckt sind. In einigen Fällen können einige Dateien nicht gefunden werden. Wählen Sie in diesem Fall einfach alle Medien in der Liste und dann die Option **Remove Missing Paths** (Fehlende Pfade entfernen) aus. (Siehe obige Abbildung.)
 
 ## <a name="fbx-export"></a>FBX-Export
 
-Nachdem die Objektverfolgung fertiggestellt wurde, können wir nun zum FBX-Export wechseln. Der Prozess ist einfach und kann auf verschiedene Weise durchgeführt werden. 
+Nachdem wir die Texturpfade nun relativ gemacht haben, können wir uns dem FBX-Export zuwenden. Der Prozess ist auch hier einfach und kann auf verschiedene Arten durchgeführt werden. 
 
 >[!TIP]
->Es wird empfohlen, dass Sie nur die benötigten Objekte exportieren, wenn Sie nicht die gesamte Szene exportieren möchten. Bei besonders ressourcenintensiven Szenen kann der Exportvorgang einige Zeit in Anspruch nehmen, sodass es sinnvoll ist, nur das Benötigte zu exportieren.
+>Sofern Sie nicht Ihre gesamte Szene exportieren möchten, ist es ratsam, nur die benötigten Objekte für den Export auszuwählen. Bei ressourcenintensiven Szenen kann der Export sehr lange dauern.
 >
->Ratsam ist es, bei Verwendung von Modifizierern wie beispielsweise **Turbosmooth** oder **Open SubDiv** (SubDiv öffnen) diese vor dem Exportieren zu reduzieren, da Sie Probleme beim Exportieren verursachen können. Speichern Sie Ihre Szene immer vorher. 
+>Falls Sie Modifikatoren wie TurboSmooth oder Open SubDiv verwendet haben, ist es ratsam, diese vor dem Export zu reduzieren (auszublenden), weil sie sonst beim Export zu Problemen führen können. Stellen Sie sicher, dass Sie Ihre Szene speichern, bevor Sie die Modifikatoren reduzieren. 
 
-* Wählen Sie in der Szene die Objekte aus, die Sie exportieren möchten, und wechseln Sie in der Hauptsymbolleiste zu **Datei** > **Exportieren** > **Auswahl exportieren**.
+1. Wählen Sie in der Szene die Objekte aus, die Sie exportieren möchten. Navigieren Sie in der Hauptsymbolleiste zu **File** > **Export** > **Export Selected** („Datei“ > „Exportieren“ > „Auswahl exportieren“).
 
-* Geben Sie im Dialogfeld **Select File to Export** (Datei zum Exportieren auswählen) den Namen der Ausgabedatei ein, oder wählen Sie sie aus, und wählen Sie in den Optionen **Save as Type** (Als Typ speichern) die Option **Autodesk (*.fbx)** aus. Daraufhin wird das TBX-Exportmenü geöffnet. 
+1. Geben Sie im Feld **Select File to Export** (Datei zum Exportieren auswählen) einen Namen für die Ausgabedatei ein, oder wählen Sie einen Namen aus. Wählen Sie in der Liste **Save as type** (Dateityp) die Option **Autodesk (*.fbx)** aus. Mit dieser Aktion wird das Fenster für den FBX-Export geöffnet.
 
-* Wenn Sie in Ihrer Szene Instanzen erstellt haben, ist es wichtig, dass die Option **Preserve Instances** (Instanzen beibehalten) in den FBX-Exporteinstellungen eingeschaltet ist. 
-![fbx-export](media/3dsmax/fbx-export.jpg)
+  >[!IMPORTANT] 
+  >Wenn Sie in Ihrer Szene Instanzen erstellt haben, ist es wichtig, dass Sie in den FBX-Exporteinstellungen die Option **Preserve Instances** (Instanzen beibehalten) auswählen. 
 
-Wie bereits erwähnt gibt es mehrere Möglichkeiten, unsere Datei zu exportieren. Wenn die Absicht beim Exportieren lautet, dass die FBX-Datei gemeinsam mit den Texturdateien in einem Ordner/Verzeichnis freigegeben werden soll, müssen die in der folgenden Abbildung gezeigten Einstellungen zutreffen und gut funktionieren. Nachdem Sie die Einstellungen ausgewählt haben, klicken Sie auf **OK**.
-![fbx-settings](media/3dsmax/fbx-settings.jpg)
+  ![Screenshot: FBX-Export](media/3dsmax/fbx-export.jpg)
 
-Wenn Sie jedoch lieber große Texturordner/-verzeichnisse gemeinsam mit der FBX-Datei freigeben möchten, können Sie die Texturen in die FBX-Datei **Einbetten**. Dies bedeutet, dass die gesamten enthaltenen Objekttexturen einer einzelnen FBX-Datei hinzugefügt werden. Seien Sie sich jedoch bewusst, dass die FBX-Datei dadurch erheblich größer wird, obwohl sie Ihren Export in einem einzigen Objekt zusammenfasst.
+  Beachten Sie, dass es mehrere Möglichkeiten für den Dateiexport gibt. Falls der FBX-Export zusammen mit den zugehörigen Texturdateien in einem Ordner bzw. Verzeichnis freigegeben werden soll, sind die im folgenden Screenshot dargestellten Einstellungen gut geeignet. 
 
->[!IMPORTANT]
->Wenn Ihre FBX-Ergebnisdatei größer als 2,4 GB ist, sollte die Mindestversion der FBX-Exporteinstellungen (siehe oben) 2016 oder neuer sein. Denn neuere Versionen unterstützen 64 Bit und somit größere Dateien.
+   Wenn Sie umfangreiche Texturordner bzw. -verzeichnisse nicht gemeinsam mit der FBX-Datei freigeben möchten, können Sie die Texturen auch in die FBX-Datei einbetten. Falls Sie die Texturen einbetten, wird das gesamte Objekt, einschließlich Texturen, einer einzelnen FBX-Datei hinzugefügt. Hierbei wird Ihr Export zu einem einzelnen Objekt zusammengefasst, aber die FBX-Datei wird dadurch erheblich größer.
 
-* Schalten Sie in den FBX-Exporteinstellungen das Einbetten von Medien ein, und klicken Sie dann auf **OK**, um die Texturen beim Exportieren zu berücksichtigen. 
+   >[!IMPORTANT]
+   >Falls die sich ergebende FBX-Datei größer als 2,4 GB ist, sollte als Mindestversion in den FBX-Exporteinstellungen „2016“ oder höher angegeben sein. (Siehe obigen Screenshot.) Neuere Versionen verfügen über 64-Bit-Unterstützung und unterstützen daher größere Dateien.
 
-Beim Export in FBX unter Verwendung des physischen Materials wird Ihnen möglicherweise die folgende Warnmeldung angezeigt, nachdem Sie im Exportdialogfeld auf „OK“ geklickt haben: ![export-warnings](media/3dsmax/export-warnings.jpg)
+1. Wählen Sie im Fenster für den FBX-Export die Option **Embed Media** (Medien einbetten) aus, wenn Sie die Szene mit den darin enthaltenen Texturen exportieren möchten. 
 
-Diese Warnung informiert den Benutzer darüber, dass die exportierten Materialien möglicherweise nicht mit anderen Softwarepaketen kompatibel sind. Da das physische Material mit Azure Remote Rendering kompatibel ist, müssen Sie sich keine Gedanken machen. Klicken Sie einfach auf **OK**, um den Vorgang abzuschließen und das Fenster zu schließen.
+1. Wählen Sie die restlichen Einstellungen und dann **OK**aus:
+
+    ![Screenshot: Einstellungen für FBX-Export](media/3dsmax/fbx-settings.jpg)
+
+
+   Während eines FBX-Exports mit physikalischem Material wird nach dem Auswählen von **OK** im Fenster für den FBX-Export wahrscheinlich die folgende Warnung angezeigt: 
+
+   ![Screenshot: Warnung zu Fehler bei Materialexport](media/3dsmax/export-warnings.jpg)
+
+   In dieser Warnung werden Sie darauf hingewiesen, dass die exportierten Materialien unter Umständen nicht mit anderen Softwarepaketen kompatibel sind. Da „Physikalisches Material“ mit Azure Remote Rendering kompatibel ist, können Sie diese Warnung ignorieren. 
+
+1. Wählen Sie **OK** aus, um den Prozess abzuschließen und das Fenster zu schließen.
 
 ## <a name="conclusion"></a>Zusammenfassung
 
@@ -208,7 +229,7 @@ Im Allgemeinen sehen diese Arten von Materialien realistischer aus, da sie auf d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie wissen jetzt, wie Sie Materialien mit erweiterter Beleuchtung für Objekte in einer Szene einrichten. Außerdem wissen Sie, wie Sie die Objekte in das FBX-Format exportieren, das von Azure Remote Rendering unterstützt wird. Der nächste Schritt besteht darin, die FBX-Datei zu konvertieren und in Azure Remote Rendering visuell darzustellen.
+Sie wissen jetzt, wie Sie Materialien mit erweiterter Beleuchtung für Objekte in einer Szene einrichten. Außerdem haben Sie gelernt, wie Sie Objekte in das von Azure Remote Rendering unterstützte FBX-Format exportieren. Der nächste Schritt besteht darin, die FBX-Datei zu konvertieren und in Azure Remote Rendering visuell darzustellen.
 
 >[!div class="nextstepaction"]
 >[Schnellstart: Konvertieren eines Modells für das Rendering](../../quickstarts\convert-model.md)

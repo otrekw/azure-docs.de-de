@@ -1,6 +1,6 @@
 ---
-title: Upgrade auf den Standard-Tarif – Azure Security Center
-description: Dieser Schnellstart zeigt Ihnen, wie Sie für zusätzliche Sicherheit ein Upgrade auf den Security Center-Tarif Standard durchführen können.
+title: 'Upgrade auf den Standard-Tarif: Azure Security Center'
+description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie zur Erzielung von zusätzlicher Sicherheit ein Upgrade auf den Security Center-Tarif „Standard“ durchführen.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038544"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard
 Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Während der Free-Tarif nur eingeschränkte Sicherheit für Ihre Azure-Ressourcen bietet, erweitert der Standard-Tarif diese Funktionen auf lokale Umgebungen und andere Clouds. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
-In diesem Artikel führen Sie für zusätzliche Sicherheit ein Upgrade auf den Tarif „Standard“ durch und installieren den Log Analytics-Agent auf Ihren virtuellen Computern, um Sicherheitslücken und Bedrohungen ausfindig zu machen.
+In diesem Artikel führen Sie zur Erzielung von zusätzlicher Sicherheit ein Upgrade auf den Standard-Tarif durch und installieren den Log Analytics-Agent auf Ihren virtuellen Computern, um Sicherheitslücken und Bedrohungen ausfindig zu machen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
-Um ein Abonnement auf den Standard-Tarif zu aktualisieren, muss Ihnen die Rolle „Abonnementbesitzer“, „Mitwirkender“ am Abonnement oder „Sicherheitsadministrator“ zugewiesen werden.
+Um ein Abonnement auf den Standard-Tarif zu aktualisieren, muss Ihnen die Rolle „Abonnementbesitzer“, „Mitwirkender des Abonnements“ oder „Sicherheitsadministrator“ zugewiesen sein.
 
 ## <a name="enable-your-azure-subscription"></a>Aktivieren Ihres Azure-Abonnements
 
@@ -47,10 +47,10 @@ Innerhalb weniger Minuten nach dem ersten Start von Security Center wird Ihnen F
 - **Empfehlungen** für Möglichkeiten zur Verbesserung der Sicherheit Ihrer Azure-Abonnements. Wenn Sie auf die Kachel **Empfehlungen** klicken, wird eine priorisierte Liste eingeblendet.
 - Ein Bestand an Ressourcen vom Typ **Compute und Apps**, **Netzwerk**, **Datensicherheit** und **Identität und Zugriff**, die nun von Security Center zusammen mit dem jeweiligen Sicherheitsstatus bewertet werden.
 
-Um den vollen Nutzen aus Security Center zu ziehen, müssen Sie die folgenden Schritte ausführen, um auf den Standard-Tarif zu aktualisieren und den Log Analytics-Agent zu installieren.
+Damit Sie den vollen Nutzen aus Security Center ziehen können, müssen Sie die folgenden Schritte ausführen, um auf den Standard-Tarif zu aktualisieren und den Log Analytics-Agent zu installieren.
 
-## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
-Für die Zwecke des Schnellstarts und der Tutorials für Security Center müssen Sie ein Upgrade auf den Standard-Tarif durchführen. Von Security Center Standard gibt es eine kostenlose Testversion. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). 
+## <a name="upgrade-to-the-standard-pricing-tier"></a>Durchführen des Upgrades auf den Standard-Tarif
+Für die Schnellstartanleitung und das Tutorial für Security Center müssen Sie ein Upgrade auf den Standard-Tarif durchführen. Von Security Center Standard gibt es eine kostenlose Testversion. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. Wählen Sie im Security Center im Hauptmenü die Option **Erste Schritte** aus.
  
@@ -84,11 +84,11 @@ Mit diesen neuen Einblicken in Ihre Azure-VMs kann Security Center zusätzliche 
   ![Empfehlungen][8]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstartanleitungen und Tutorials fortzufahren, sollten Sie weiter den Tarif „Standard“ nutzen und die automatische Bereitstellung aktiviert lassen. Gehen Sie wie folgt vor, falls Sie nicht fortfahren oder zum Free-Tarif zurückkehren möchten:
+Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstartanleitungen und Tutorials fortzufahren, sollten Sie weiter den Standard-Tarif nutzen und die automatische Bereitstellung aktiviert lassen. Gehen Sie wie folgt vor, falls Sie nicht fortfahren oder zum Free-Tarif zurückkehren möchten:
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Preise & Einstellungen** aus.
 2. Klicken Sie auf das Abonnement, das Sie in den Free-Tarif ändern möchten.
-3. Wählen Sie **Tarif** und anschließend **Free**, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
+3. Wählen Sie **Tarif** und anschließend **Free** aus, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
 5. Wählen Sie **Speichern** aus.
 
 Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
@@ -103,10 +103,15 @@ Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie ein Upgrade auf den Standard-Tarif durchgeführt und den Log Analytics-Agent für ein einheitliches Sicherheitsmanagement und Bedrohungsschutz für Ihre Hybrid Cloud-Workloads bereitgestellt. Wenn Sie mehr darüber erfahren möchten, wie Sie Security Center verwenden können, fahren Sie mit dem Schnellstart für das Einbinden von Windows-Computern fort, die lokal und in anderen Clouds installiert sind.
+In diesem Schnellstart haben Sie ein Upgrade auf den Standard-Tarif durchgeführt und den Log Analytics-Agent bereitgestellt, um für Ihre Hybrid Cloud-Workloads für ein einheitliches Sicherheitsmanagement und für Bedrohungsschutz zu sorgen. Wenn Sie mehr darüber erfahren möchten, wie Sie Security Center verwenden können, fahren Sie mit dem Schnellstart für das Einbinden von Windows-Computern fort, die lokal und in anderen Clouds installiert sind.
 
 > [!div class="nextstepaction"]
 > [Schnellstart: Einbinden von Windows-Computern in Azure Security Center](quick-onboard-windows-computer.md)
+
+Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
+
+> [!div class="nextstepaction"]
+> [Beginnen mit der Kostenanalyse mit Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Ermitteln mehrerer Routen nach Fortbewegungsmittel | Microsoft Azure Maps'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Azure Maps Routen für verschiedene Fortbewegungsmittel finden.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: c7ed2421f468dfbb64c635683a7909b517105bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 0cb3c1eadae426cef59b7aad8821343c23e76d79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333803"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289532"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Tutorial: Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 
@@ -27,7 +27,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und den R
 > * Anzeigen mehrerer Routen auf Ihrer Karte
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Befolgen Sie die Anweisungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), und wählen Sie den Tarif S1 aus, bevor Sie den Vorgang fortsetzen. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Befolgen Sie die Anweisungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account), und wählen Sie den Tarif S1 aus, bevor Sie den Vorgang fortsetzen. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="create-a-new-map"></a>Erstellen einer neuen Karte
 
@@ -206,7 +206,7 @@ Darüber hinaus ermöglicht die Routen-API die Planung zukünftiger Routen unter
 
 Alle folgenden Codeblöcke sollten **innerhalb des eventListener-Elements für das Laden der Karte** hinzugefügt werden, um sicherzustellen, dass sie nach dem vollständigen Laden der Karte geladen werden.
 
-1. Fügen Sie in der GetMap-Funktion den folgenden JavaScript-Code hinzu.
+1. Fügen Sie in der GetMap-Funktion dem JavaScript-Code Folgendes hinzu:
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key

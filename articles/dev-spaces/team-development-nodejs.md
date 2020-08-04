@@ -5,12 +5,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Teamentwicklung in einer Node.js-Anwendung in Azure Kubernetes Service durchführen.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: abcf4934af056d508ac136f80758597294d40b1a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa168921f212f96f6e40ed062d2665e49202e86c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013591"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Entwicklung im Team mit Node.js und Visual Studio Code über Azure Dev Spaces
 
@@ -31,7 +31,7 @@ Ihre Beispielanwendung ist im Moment nicht sehr komplex. Bei der realen Entwickl
 * Einige Entwickler greifen auf die Simulation zahlreicher Dienstabhängigkeiten zurück. Dies ist zwar hilfreich, die Verwaltung der Simulationen kann jedoch schnell die Entwicklungskosten in die Höhe treiben. Darüber hinaus führt dieser Ansatz dazu, dass sich Ihre Entwicklungsumgebung erheblich von der Produktionsumgebung unterscheidet, wodurch sich kleinere Fehler einschleichen können.
 * Integrationstests können daher schwierig werden. Integrationstests sind nur nach einem Commit realistisch. Das bedeutet, dass Ihnen Probleme erst später im Entwicklungszyklus auffallen.
 
-    ![](media/common/microservices-challenges.png)
+    ![Eine Abbildung, die die Komplexität von Integrationstests veranschaulicht, indem die Beziehungen zwischen einem App-Dienst und seinen Abhängigkeiten illustriert werden](media/common/microservices-challenges.png)
 
 ### <a name="work-in-a-shared-dev-space"></a>Arbeiten in einem gemeinsamen Entwicklungsbereich
 Mit Azure Dev Spaces können Sie einen *gemeinsamen* Entwicklungsbereich in Azure einrichten. Jeder Entwickler kann sich auf seinen Teil der Anwendung konzentrieren und *Code vor dem Commit* iterativ in einem Entwicklungsbereich entwickeln, der bereits alle anderen Dienste und Cloudressourcen enthält, die der Entwickler für seine Szenarien benötigt. Abhängigkeiten sind immer aktuell, und Entwickler arbeiten wie in einer Produktionsumgebung.
@@ -53,7 +53,7 @@ Als Erstes müssen wir eine Baseline unserer Dienste bereitstellen. Diese Bereit
 
 1. Klonen Sie die [Dev Spaces-Beispielanwendung](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. Checken Sie den Remotebranch *azds_updates* aus: `git checkout -b azds_updates origin/azds_updates`
-1. Wählen Sie den Bereich _dev_ aus: `azds space select --name dev`. Wenn Sie zum Auswählen eines übergeordneten Entwicklungsbereichs aufgefordert werden, wählen Sie _\<Kein\>_ aus.
+1. Wählen Sie den Bereich _dev_ aus: `azds space select --name dev`. Wenn Sie zum Auswählen eines übergeordneten Entwicklungsbereichs aufgefordert werden, wählen Sie _\<none\>_ aus.
 1. Navigieren Sie zum Verzeichnis _mywebapi_, und führen Sie Folgendes aus: `azds up -d`
 1. Navigieren Sie zum Verzeichnis _webfrontend_, und führen Sie Folgendes aus: `azds up -d`
 1. Führen Sie `azds list-uris` aus, um den öffentlichen Endpunkt für _webfrontend_ anzuzeigen.
@@ -91,7 +91,7 @@ Wählen Sie bei entsprechender Aufforderung _dev_ als **übergeordneten Entwickl
 
 Für den neuen Bereich haben wir aufgrund unseres eingangs angenommenen Beispielszenarios den Namen _scott_ verwendet, damit die Kollegen wissen, wer damit arbeitet. Der Name kann jedoch frei gewählt werden und natürlich auch andere Informationen vermitteln. Beispiele wären etwa _sprint4_ und _demo_. _dev_ fungiert in jedem Fall als Baseline für alle Entwickler, die an einem Teil dieser Anwendung arbeiten:
 
-![](media/common/ci-cd-space-setup.png)
+![Abbildung, die einen einfachen Entwicklungsbereich zeigt](media/common/ci-cd-space-setup.png)
 
 Führen Sie den Befehl `azds space list` aus, um eine Liste aller Bereiche in der Entwicklungsumgebung anzuzeigen. Die Spalte _Selected_ (Ausgewählt) gibt mit „true“ oder „false“ an, welcher Bereich momentan ausgewählt ist. In unserem Fall wurde der Bereich _dev/scott_ automatisch ausgewählt, als er erstellt wurde. Sie können jederzeit mit dem Befehl `azds space select` einen anderen Bereich auswählen.
 
@@ -140,7 +140,7 @@ Mit dieser integrierten Funktion von Azure Dev Spaces können Sie Code in einer 
 ### <a name="test-code-in-a-space"></a>Testen von Code in einem Bereich
 Wenn Sie Ihre neue Version von *mywebapi* mit *webfrontend* testen möchten, öffnen Sie in Ihrem Browser die URL des öffentlichen Zugriffspunkts für ein *webfrontend*, und navigieren Sie zur Seite „Info“. Ihre neue Meldung sollte angezeigt werden.
 
-Entfernen Sie jetzt den Teil „scott.s.“ aus der URL, und aktualisieren Sie den Browser. Jetzt sollten Sie das frühere Verhalten sehen (mit der in *dev* ausgeführten _mywebapi_-Version).
+Entfernen Sie jetzt den Teil „scott.s.“ aus der URL, und aktualisieren Sie den Browser. Jetzt sollten Sie das frühere Verhalten sehen (mit der in _dev_ ausgeführten *mywebapi*-Version).
 
 Sobald Sie einen _dev_-Bereich haben, der immer die aktuellen Änderungen enthält, und vorausgesetzt, Ihre Anwendung ist zur Nutzung des in diesem Abschnitt des Tutorials beschriebenen bereichsbasierten Routings von Dev Spaces konzipiert, sollte es leicht nachvollziehbar sein, von welch großem Nutzen Dev Spaces beim Testen neuer Features im Kontext der größeren Anwendung sein kann. Anstatt _alle_ Dienste in Ihrem privaten Bereich bereitstellen zu müssen, können Sie einen von _dev_ abgeleiteten privaten Bereich erstellen und darin nur die Dienste bereitstellen, an denen Sie tatsächlich arbeiten. Die Routinginfrastruktur von Dev Spaces übernimmt dann den Rest: Sie nutzt alle Dienste, die Sie in Ihrem privaten Bereich findet, und verwendet standardmäßig wieder die aktuelle Version im Bereich _dev_. Und besser noch: _Mehrere_ Entwickler können zur gleichen Zeit aktiv unterschiedliche Dienste in ihrem eigenen Bereich entwickeln, ohne einander zu stören.
 

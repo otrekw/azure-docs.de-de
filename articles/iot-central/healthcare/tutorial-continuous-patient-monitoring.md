@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77021286"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001824"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Tutorial: Bereitstellen einer App für die ständige Überwachung von Patienten und exemplarische Vorgehensweise für die zugehörige Vorlage
 
@@ -85,7 +85,10 @@ Wenn Sie auf die Registerkarte **Gerätevorlagen** klicken, werden für die Vorl
 >[!div class="mx-imgBorder"] 
 >![Gerätevorlage „Smart Vitals Patch“](media/smart-vitals-device-template.png)
 
-Wenn Sie auf die Registerkarte **Gerätegruppen** klicken, sehen Sie auch, dass für diese Gerätevorlagen automatisch Gerätegruppen erstellt werden.
+### <a name="device-groups"></a>Gerätegruppen 
+Mithilfe von Gerätegruppen können Sie mehrere Geräte logisch gruppieren und anschließend Massenabfragen oder -vorgänge dafür ausführen. 
+
+Wenn Sie auf die Registerkarte „Gerätegruppen“ klicken, sehen Sie, dass für die einzelnen Gerätevorlagen einige Standardgerätegruppen in der Anwendung erstellt wurden. Sie werden feststellen, dass darüber hinaus zwei zusätzliche Beispielgerätegruppen erstellt wurden: eine für bereitzustellende Geräte (Provision devices) und eine für Geräte mit veralteter Firmware (Devices with outdated firmware). Diese Beispielgerätegruppen werden als Eingaben für die Ausführung einiger [Aufträge](#jobs) verwendet.
 
 ### <a name="rules"></a>Regeln
 
@@ -100,6 +103,13 @@ Wenn Sie zur Registerkarte „Regeln“ wechseln, werden in der Anwendungsvorlag
 >[!div class="mx-imgBorder"] 
 >![Regel für hohe Manschettentemperatur](media/brace-temp-rule.png)
 
+### <a name="jobs"></a>Aufträge
+
+Aufträge ermöglichen die Ausführung von Massenvorgängen für eine Gruppe von Geräten. Dazu werden als Eingabe [Gerätegruppen](#device-groups) verwendet. Für die Anwendungsvorlage wurde ein Seeding mit zwei Beispielaufträgen durchgeführt, die ein Lösungsoperator ggf. irgendwann im Gerätelebenszyklus ausführen muss:
+* **Update knee brace firmware** (Firmware der Kniemanschette aktualisieren): Dieser Auftrag ermittelt Geräte in der Gerätegruppe „devices with outdated firmware“ und führt einen Befehl zum Aktualisieren dieser Geräte auf die aktuelle Firmwareversion der Kniemanschette aus. Bei diesem Beispielauftrag wird davon ausgegangen, dass die Geräte einen Aktualisierungsbefehl empfangen und die Firmwaredateien direkt aus der Cloud abrufen können.  
+
+* **Re-provision devices** (Geräte erneut bereitstellen): Wenn Sie über mehrere Geräte verfügen, die vor kurzem an das Krankenhaus zurückgegeben wurden und erneut für die nächsten Patienten bereitgestellt werden müssen, können Sie diesen Auftrag ausführen, um eine Massenaktualisierung der Bereitstellungsgeräte auszuführen. In diesem Fall wird für alle Geräte aus der Gerätegruppe „provision devices“ ein Befehl zur erneuten Bereitstellung ausgeführt. 
+
 ### <a name="devices"></a>Geräte
 
 Klicken Sie auf die Registerkarte **Geräte**, und wählen Sie anschließend eine Instanz von **Smart Knee Brace** aus. Es sind drei Ansichten verfügbar, in denen Sie Informationen zum jeweils ausgewählten Gerät untersuchen können. Diese Ansichten werden erstellt und veröffentlicht, wenn Sie die Gerätevorlage für Ihr Gerät erstellen. Dies bedeutet, dass sie auf allen Geräten, die Sie verbinden oder simulieren, einheitlich sind.
@@ -112,6 +122,10 @@ Auf der Registerkarte **Commands** (Befehle) können Sie Befehle ausführen, die
 
 >[!div class="mx-imgBorder"] 
 >![Ansichten für Kniemanschette](media/knee-brace-dashboard.png)
+
+### <a name="data-export"></a>Datenexport
+
+Mit dem Datenexport können Sie Ihre IoT Central-Gerätedaten fortlaufend in andere Azure-Dienste exportieren, einschließlich in [Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

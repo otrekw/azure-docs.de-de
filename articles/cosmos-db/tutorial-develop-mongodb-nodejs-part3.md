@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ed552bfb37f01200a4dba38ea733a1189768d56a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067154"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Erstellen der Benutzeroberfläche mit Angular
 
@@ -41,7 +41,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 ## <a name="build-the-ui"></a>Erstellen der Benutzeroberfläche
 
-1. Klicken Sie in Visual Studio Code auf die Schaltfläche „Beenden“ ![Schaltfläche „Beenden“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) , um die Node-App zu beenden.
+1. Klicken Sie in Visual Studio Code auf die Schaltfläche „Beenden“ :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png":::, um die Node-App zu beenden. 
 
 2. Geben Sie an der Eingabeaufforderung (Windows) oder im Terminalfenster (Mac) den folgenden Befehl ein, um eine heroes-Komponente zu generieren. In diesem Code steht „g“ für „Generieren“ und „c“ für „Komponente“. „heroes“ ist der Name der Komponente, und es wird eine Flatfile-Struktur (--flat) verwendet, damit kein Unterordner erstellt wird.
 
@@ -486,7 +486,7 @@ Wir verfügen nun also über die Komponente. Aber wie bekommen wir sie auf den B
 
     Führen Sie die App nun aus.
 
-2. Klicken Sie im linken Bereich von Visual Studio Code auf die Schaltfläche **Debuggen**![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) und anschließend auf die Schaltfläche **Debugging starten**![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
+2. Klicken Sie in Visual Studio Code links auf die Schaltfläche **Debuggen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: und dann auf die Schaltfläche **Debuggen starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png":::.
 
 3. Navigieren Sie in einem Internetbrowser zu **localhost:3000**, um zur lokal ausgeführten App zu gelangen.
 

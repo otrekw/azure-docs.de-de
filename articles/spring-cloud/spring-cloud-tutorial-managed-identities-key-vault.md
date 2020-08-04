@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
-ms.openlocfilehash: b9300845f6bc62d8ed90c2dc87efb626efae05bb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-java
+ms.openlocfilehash: 2b68c4857d3d688c42779be9b5f5fa6e43e0403e
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116897"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure Spring Cloud-App herzustellen
 
@@ -97,7 +98,7 @@ Diese App besitzt Zugriff, um Geheimnisse aus Azure Key Vault abzurufen. Verwend
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
     > [!Note] 
-    > Die Key Vault-URL muss in `application.properties` wie oben gezeigt hinzugefügt werden. Andernfalls kann die Key Vault-URL während der Laufzeit nicht erfasst werden.
+    > Die Schlüsseltresor-URL muss in `application.properties` wie oben gezeigt hinzugefügt werden. Andernfalls kann die Key Vault-URL während der Laufzeit nicht erfasst werden.
 
 3. Fügen Sie src/main/java/com/example/demo/DemoApplication.java das Codebeispiel hinzu. Dies ruft die Verbindungszeichenfolge aus Key Vault ab. 
 

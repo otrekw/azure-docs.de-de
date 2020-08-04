@@ -9,18 +9,21 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 03/04/2020
-ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 07/10/2020
+ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047838"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie unter Verwendung der Oberfläche für automatisiertes maschinelles Lernen von Azure Machine Learning ein einfaches Klassifizierungsmodell erstellen, ohne eine einzige Codezeile zu schreiben. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
+In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von automatisiertem maschinellem Lernen in Azure Machine Learning Studio ein einfaches Klassifizierungsmodell erstellen, ohne eine einzige Codezeile zu schreiben. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
+
+>[!IMPORTANT]
+> Die Umgebung für automatisiertes maschinelles Lernen in Azure Machine Learning Studio befindet sich in der Vorschauphase. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 
 Mit automatisiertem maschinellen Lernen können Sie zeitintensive Aufgaben automatisieren. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern schnell durchlaufen, um basierend auf einer von Ihnen ausgewählten Erfolgsmetrik das beste Modell zu ermitteln.
 
@@ -44,18 +47,18 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Ein Azure Machine Learning-Arbeitsbereich ist eine grundlegende Cloudressource zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen. Er verknüpft Ihr Azure-Abonnement und Ihre Ressourcengruppe mit einem einfach nutzbaren Objekt im Dienst. 
 
-Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Konsole zum Verwalten Ihrer Azure-Ressourcen.
+Erstellen Sie einen **Enterprise Edition**-Arbeitsbereich über das Azure-Portal, eine webbasierte Konsole zum Verwalten Ihrer Azure-Ressourcen.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 >[!IMPORTANT] 
 > Notieren Sie sich Ihren **Arbeitsbereich** und Ihr **Abonnement**. Sie benötigen diese Informationen, um sicherzustellen, dass Sie Ihr Experiment an der richtigen Stelle erstellen. 
 
-## <a name="create-and-run-the-experiment"></a>Erstellen und Ausführen des Experiments
+## <a name="get-started-in-azure-machine-learning-studio"></a>Erste Schritte in Azure Machine Learning Studio
 
-Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über Azure Machine Learning unter https://ml.azure.com aus. Hierbei handelt es sich um eine konsolidierte Weboberfläche mit Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler jeglicher Qualifikation. Diese Oberfläche wird in Internet Explorer-Browsern nicht unterstützt.
+Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über Azure Machine Learning Studio unter https://ml.azure.com aus. Hierbei handelt es sich um eine konsolidierte Weboberfläche mit Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler jeglicher Qualifikation. Das Azure Machine Learning-Studio wird in Internet Explorer-Browsern nicht unterstützt.
 
-1. Melden Sie sich bei [Azure Machine Learning](https://ml.azure.com) an.
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
 1. Wählen Sie Ihr Abonnement und den erstellten Arbeitsbereich aus.
 
@@ -67,7 +70,11 @@ Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über 
 
    ![Seite für die ersten Schritte](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
-1. Wählen Sie **Neue automatisierte ML-Ausführung** aus. 
+1. Wählen Sie **+ Neue Ausführung von automatisiertem ML** aus. 
+
+## <a name="create-and-load-dataset"></a>Erstellen und Laden des Datasets
+
+Laden Sie vor dem Konfigurieren Ihres Experiments Ihre Datendatei in Form eines Azure Machine Learning-Datasets in Ihren Arbeitsbereich hoch. Dadurch wird die ordnungsgemäße Formatierung der Daten für Ihr Experiment sichergestellt.
 
 1. Erstellen Sie ein neues Dataset, indem Sie im Dropdown **+ Dataset erstellen** die Option **Aus lokalen Dateien** auswählen. 
 
@@ -101,25 +108,35 @@ Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über 
 
         ![Konfiguration der Registerkarte „Preview“ (Vorschau)](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
-    1. Überprüfen Sie im Formular **Details bestätigen** die zuvor in die Formulare **Grundlegende Infos** und **Einstellungen und Vorschau** eingetragenen Informationen.
+    1. Überprüfen Sie im Formular **Details bestätigen** die zuvor in die Formulare **Grundlegende Infos, Datenspeicher- und Dateiauswahl** und **Einstellungen und Vorschau** eingetragenen Informationen.
+    
     1. Wählen Sie **Erstellen** aus, um die Erstellung Ihres Datasets abzuschließen.
+    
     1. Wählen Sie Ihr Dataset aus, sobald es in der Liste angezeigt wird.
+    
     1. Überprüfen Sie die **Datenvorschau**, um sicherzustellen, dass Sie nicht **day_of_week** einbezogen haben. Klicken Sie dann auf **OK**.
 
     1. Klicken Sie auf **Weiter**.
+
+## <a name="configure-experiment-run"></a>Konfigurieren der Experimentausführung
+
+Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einrichten. Dieses Setup umfasst Experimententwurfsaufgaben, etwa das Auswählen der Größe Ihrer Compute-Umgebung und das Angeben der Spalte, die Sie vorhersagen möchten. 
 
 1. Füllen Sie das Formular **Ausführung konfigurieren** folgendermaßen aus:
     1. Geben Sie den folgenden Experimentnamen ein: `my-1st-automl-experiment`
 
     1. Wählen Sie **y** als Zielspalte aus, in der Sie Vorhersagen ausführen möchten. Diese Spalte gibt an, ob der Kunde eine Termineinlage bei der Bank gezeichnet hat.
+    
     1. Wählen Sie **Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
 
         Feld | BESCHREIBUNG | Wert für das Tutorial
         ----|---|---
         Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|automl-compute
+        VM-Typ&nbsp;&nbsp;| Wählen Sie den VM-Typ für Ihre Compute-Umgebung aus.|CPU (Zentralprozessor)
         Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
-        Min/Max nodes (Min./Max. Knoten) (unter „Erweiterte Einstellungen“)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
-  
+        Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben.|Min. Knoten: 1<br>Max. Knoten: 6
+        Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit vor dem automatischen Herunterskalieren des Clusters auf die minimale Knotenanzahl|120 (Standardwert)
+        Erweiterte Einstellungen | Einstellungen zum Konfigurieren und Autorisieren eines virtuellen Netzwerks für Ihr Experiment| Keine
         1. Wählen Sie **Erstellen** aus, um das Computeziel abzurufen. 
 
             **Dieser Vorgang nimmt einige Minuten in Anspruch.** 
@@ -128,17 +145,16 @@ Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über 
 
     1. Wählen Sie **Weiter** aus.
 
-1. Wählen Sie im Formular **Aufgabentyp und -einstellungen** als ML-Aufgabentyp **Klassifizierung** aus.
+1. Schließen Sie im Formular **Aufgabentyp und -einstellungen** die Einrichtung Ihres Experiments mit automatisiertem maschinellem Lernen ab, indem Sie den ML-Aufgabentyp und die Konfigurationseinstellungen angeben.
+    
+    1.  Wählen Sie als ML-Aufgabentyp **Klassifizierung** aus.
 
     1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
 
-        >[!NOTE]
-        > Für dieses Tutorial legen Sie keine Metrikbewertung oder maximale Anzahl von Kernen pro Iteration fest. Sie verhindern auch nicht, dass Algorithmen getestet werden.
-   
         Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
         ------|---------|---
         Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|AUC_weighted
-        Automatische Featurebereitstellung| Ermöglicht eine Vorabaufbereitung der Daten. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.| Aktivieren
+        Explain best model (Bestes Modell erläutern)| Zeigt automatisch die Erklärbarkeit für das beste Modell an, das durch automatisiertes ML erstellt wurde.| Aktivieren
         Blockierte Algorithmen | Algorithmen, die Sie aus den Trainingsauftrag ausschließen möchten.| Keine
         Beendigungskriterium| Wenn ein Kriterium erfüllt ist, wird der Trainingsauftrag angehalten. |Dauer&nbsp;des&nbsp;Trainingsauftrags (Stunden): 1 <br> Metrikschwellenwert&nbsp;&nbsp;: Keine
         Überprüfen | Wählen Sie einen Kreuzvalidierungstyp und die Anzahl von Tests aus.|Überprüfungstyp:<br>&nbsp;k-fold&nbsp;cross-validation <br> <br> Anzahl von Überprüfungen: 2
@@ -161,7 +177,7 @@ Navigieren Sie zur Registerkarte **Modelle**, um die getesteten Algorithmen (Mod
 
 Während Sie auf den Abschluss aller Experimentmodelle warten, können Sie den **Algorithmusnamen** eines abgeschlossenen Modells auswählen und sich die zugehörigen Leistungsdetails ansehen. 
 
-Nachfolgend werden die Registerkarten **Modelldetails** und **Visualisierungen** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme des ausgewählten Modells anzuzeigen. 
+Nachfolgend werden die Registerkarten **Details** und **Metriken** durchlaufen, um die Eigenschaften, Metriken und Leistungsdiagramme des ausgewählten Modells anzuzeigen. 
 
 ![Details zur Iterationsausführung](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
@@ -171,11 +187,15 @@ Nachfolgend werden die Registerkarten **Modelldetails** und **Visualisierungen**
 
 In diesem Experiment bedeutet Bereitstellung in einem Webdienst, dass das Finanzinstitut nun über eine iterative und skalierbare Weblösung zur Identifizierung potenzieller Festgeldkunden verfügt. 
 
-Nach Abschluss der Ausführung navigieren Sie zurück zur Seite **Ausführungsdetails** und wählen die Registerkarte **Modelle** aus.
+Überprüfen Sie, ob die Ausführung des Experiments beendet ist. Navigieren Sie dazu zurück zur Seite mit der übergeordneten Ausführung, indem Sie oben auf dem Bildschirm **Ausführung 1** auswählen. Oben links auf dem Bildschirm wird der Status **Abgeschlossen** angezeigt. 
 
-Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted**-Metrik als bestes Modell hervor.  Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
+Wenn die Ausführung des Experiments abgeschlossen ist, wird die Seite **Details** mit dem Abschnitt **Zusammenfassung des besten Modells** aufgefüllt. Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted**-Metrik als bestes Modell hervor.  
 
-1. Wählen Sie rechts unten die Schaltfläche **Deploy Best Model** (Bestes Modell bereitstellen) aus.
+Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
+
+1. Wählen Sie **VotingEnsemble** aus, um die modellspezifische Seite zu öffnen.
+
+1. Wählen Sie oben links die Schaltfläche **Bereitstellen** aus.
 
 1. Füllen Sie den Bereich **Modell bereitstellen** wie folgt aus:
 
@@ -191,7 +211,7 @@ Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_wei
 
 1. Klicken Sie auf **Bereitstellen**.  
 
-    Oben auf dem Bildschirm **Ausführen** wird eine grüne Erfolgsmeldung und im Bereich **Empfohlenes Modell** unter **Bereitstellungsstatus** eine Statusmeldung angezeigt. Wählen Sie von Zeit zu Zeit die Option **Aktualisieren**, um den Status der Bereitstellung zu überprüfen.
+    Oben auf dem Bildschirm **Ausführen** wird eine grüne Erfolgsmeldung und im Bereich **Modellzusammenfassung** unter **Bereitstellungsstatus** eine Statusmeldung angezeigt. Wählen Sie von Zeit zu Zeit die Option **Aktualisieren**, um den Status der Bereitstellung zu überprüfen.
     
 Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert werden können. 
 

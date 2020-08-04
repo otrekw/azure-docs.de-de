@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025879"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -65,7 +65,7 @@ Das PRT wird während der Benutzerauthentifizierung auf einem Windows 10-Gerät
 In Szenarien für in Azure AD registrierte Geräte ist das Azure AD-WAM-Plug-In die primäre Autorität für das PRT, da die Windows-Anmeldung mit diesem Azure AD-Konto nicht durchgeführt wird.
 
 > [!NOTE]
-> Identitätsanbieter von Drittanbietern müssen das WS-Trust-Protokoll unterstützen, damit die PRT-Ausstellung auf Windows 10-Geräten ermöglicht wird. Ohne WS-Trust kann PRT nicht für Benutzer auf in Azure AD oder in Hybrid Azure AD eingebundenen Geräten ausgestellt werden.
+> Identitätsanbieter von Drittanbietern müssen das WS-Trust-Protokoll unterstützen, damit die PRT-Ausstellung auf Windows 10-Geräten ermöglicht wird. Ohne WS-Trust kann PRT nicht für Benutzer auf in Azure AD Hybrid oder in Azure AD eingebunden Geräten ausgestellt werden. Für AD FS sind nur „usernamemixed“-Endpunkte erforderlich. Die Endpunkte „adfs/services/trust/2005/windowstransport“ und „adfs/services/trust/13/windowstransport“ dürfen nur als Endpunkte mit Intranetzugriff aktiviert und **NICHT** als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden.
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Welche Lebensdauer hat ein PRT?
 
@@ -167,6 +167,9 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 | E | Das CloudAP-Plug-In erstellt die Authentifizierungsanforderung mit den Anmeldeinformationen des Benutzers, einer Nonce und dem vorhandenen PRT, signiert die Anforderung mit dem Sitzungsschlüssel und sendet sie an Azure AD. In einer Verbundumgebung nutzt das CloudAP-Plug-In nicht die Anmeldeinformationen des Benutzers, sondern das vom Verbundanbieter zurückgegebene SAML-Token. |
 | F | Azure AD überprüft die Signatur des Sitzungsschlüssels, indem sie mit dem Sitzungsschlüssel verglichen wird, der in das PRT eingebettet ist. Anschließend wird die Nonce überprüft und sichergestellt, dass das Gerät im Mandanten gültig ist, und es wird ein neues PRT ausgestellt. Wie bereits beschrieben, verfügt das PRT auch hier wieder über den Sitzungsschlüssel, der mit dem Transportschlüssel (tkpub) verschlüsselt ist. |
 | G | Das CloudAP-Plug-In übergibt das verschlüsselte PRT und den Sitzungsschlüssel an CloudAP. CloudAP fordert vom TPM die Entschlüsselung des Sitzungsschlüssels mit dem Transportschlüssel (tkpriv) und die erneute Verschlüsselung mit dem eigenen Schlüssel des TPM an. CloudAP speichert den verschlüsselten Sitzungsschlüssel zusammen mit dem PRT in seinem Cache. |
+
+> [!NOTE]
+> Ein PRT kann extern verlängert werden, ohne dass eine VPN-Verbindung erforderlich ist, wenn „usernamemixed“-Endpunkte extern aktiviert werden.
 
 ### <a name="prt-usage-during-app-token-requests"></a>PRT-Nutzung bei App-Tokenanforderungen
 

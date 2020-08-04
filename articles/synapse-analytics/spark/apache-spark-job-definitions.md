@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065625"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
@@ -24,7 +24,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 * Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)
 * Erstellen einer Apache Spark-Auftragsdefinition für Spark (Scala)
-* Erstellen einer Apache Spark-Auftragsdefinition für .NET Spark (C#)
+* Erstellen einer Apache Spark-Auftragsdefinition für .NET Spark (C#/F#)
 * Übermitteln einer Apache Spark-Auftragsdefinition als Batchauftrag
 * Hinzufügen einer Apache Spark-Auftragsdefinition in einer Pipeline
 
@@ -42,7 +42,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySp
 
 1. Öffnen Sie [Azure Synapse Studio](https://web.azuresynapse.net/).
 
-2. Sie können zu [Beispieldateien zum Erstellen von Apache Spark-Auftragsdefinitionen](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) wechseln, um **wordcount.jar** und **shakespear.txt** herunterzuladen. Laden Sie dann diese Dateien in Azure Storage hoch: Klicken Sie auf **Daten**, wählen Sie **Speicherkonten** aus, und laden Sie die relevanten Dateien in Ihr ADLS Gen2-Dateisystem hoch. Überspringen Sie diesen Schritt, wenn sich Ihre Dateien bereits in Azure Storage befinden. 
+2. Sie können zu [Beispieldateien zum Erstellen von Apache Spark-Auftragsdefinitionen](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) navigieren, um **wordcount.py** und **shakespear.txt** herunterzuladen. Laden Sie dann diese Dateien in Azure Storage hoch: Klicken Sie auf **Daten**, wählen Sie **Speicherkonten** aus, und laden Sie die relevanten Dateien in Ihr ADLS Gen2-Dateisystem hoch. Überspringen Sie diesen Schritt, wenn sich Ihre Dateien bereits in Azure Storage befinden. 
 
      ![Python-Datei hochladen](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySp
      |  Eigenschaft   | BESCHREIBUNG   |  
      | ----- | ----- |  
      |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Apache Spark-Auftragsdefinition ein. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden. Beispiel: `job definition sample`|
-     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine PY-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. Beispiel: `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |Befehlszeilenargumente| Optionale Argumente für den Auftrag. Beispiel: `shakespeare.txt`|
-     |„Reference files“ (Referenzdateien)| Zusätzliche Dateien, die zu Referenzzwecken in der Hauptdefinitionsdatei verwendet werden. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. Beispiel: `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine PY-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. Beispiel: `abfss://…/path/to/wordcount.py`|
+     |Befehlszeilenargumente| Optionale Argumente für den Auftrag. Beispiel: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |„Reference files“ (Referenzdateien)| Zusätzliche Dateien, die zu Referenzzwecken in der Hauptdefinitionsdatei verwendet werden. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. |
      |Spark-Pool| Der Auftrag wird an den ausgewählten Apache Spark-Pool übermittelt.|
      |Spark-Version| Die vom Apache Spark-Pool ausgeführte Version von Apache Spark.|
      |Ausführer| Die gewünschte Anzahl von Executors im angegebenen Apache Spark-Pool für den Auftrag.|
@@ -92,9 +92,9 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für Apac
      |  Eigenschaft   | BESCHREIBUNG   |  
      | ----- | ----- |  
      |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Apache Spark-Auftragsdefinition ein. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden. Beispiel: `job definition sample`|
-     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine JAR-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. Beispiel: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie eine JAR-Datei aus Ihrem Speicher aus. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. Beispiel: `abfss://…/path/to/wordcount.jar`|
      |„Main class name“ (Name der Hauptklasse)| Der vollqualifizierte Bezeichner oder die Hauptklasse in der Hauptdefinitionsdatei. Beispiel: `WordCount`|
-     |Befehlszeilenargumente| Optionale Argumente für den Auftrag. Beispiel: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |Befehlszeilenargumente| Optionale Argumente für den Auftrag. Beispiel: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |„Reference files“ (Referenzdateien)| Zusätzliche Dateien, die zu Referenzzwecken in der Hauptdefinitionsdatei verwendet werden. Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen.|
      |Spark-Pool| Der Auftrag wird an den ausgewählten Apache Spark-Pool übermittelt.|
      |Spark-Version| Die vom Apache Spark-Pool ausgeführte Version von Apache Spark.|
@@ -109,9 +109,9 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für Apac
      ![Scala-Definition veröffentlichen](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>Erstellen einer Apache Spark-Auftragsdefinition für .NET Spark (C#)
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>Erstellen einer Apache Spark-Auftragsdefinition für .NET Spark (C#/F#)
 
-In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .Net Spark (C#).
+In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET Spark (C#/F#).
  1. Öffnen Sie [Azure Synapse Studio](https://web.azuresynapse.net/).
 
  2. Sie können zu [Beispieldateien zum Erstellen von Apache Spark-Auftragsdefinitionen](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) wechseln, um **wordcount.zip** und **shakespear.txt** herunterzuladen. Laden Sie dann diese Dateien in Azure Storage hoch: Klicken Sie auf **Daten**, wählen Sie **Speicherkonten** aus, und laden Sie die relevanten Dateien in Ihr ADLS Gen2-Dateisystem hoch. Überspringen Sie diesen Schritt, wenn sich Ihre Dateien bereits in Azure Storage befinden. 
@@ -125,12 +125,13 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .Net
  4. Wählen Sie in der Dropdownliste „Sprache“ im Hauptfenster der Apache Spark-Auftragsdefinition **.NET Spark (C#/F#)** aus.
 
  5. Tragen Sie Informationen für die Apache Spark-Auftragsdefinition ein. Sie können die Beispielinformationen kopieren.
+    
      |  Eigenschaft   | BESCHREIBUNG   |  
      | ----- | ----- |  
      |Auftragsdefinitionsname| Geben Sie einen Namen für Ihre Apache Spark-Auftragsdefinition ein. Dieser Name kann bis zur Veröffentlichung jederzeit aktualisiert werden. Beispiel: `job definition sample`|
-     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie in Ihrem Speicher eine ZIP-Datei aus, die Ihre Anwendung vom Typ „.NET für Apache Spark“ enthält (ausführbare Hauptdatei, DLLs mit benutzerdefinierten Funktionen und andere erforderliche Dateien). Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. Beispiel: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |„Main definition file“ (Hauptdefinitionsdatei)| Die für den Auftrag verwendete Hauptdatei. Wählen Sie in Ihrem Speicher eine ZIP-Datei aus, die Ihre Anwendung vom Typ „.NET für Apache Spark“ enthält (ausführbare Hauptdatei, DLLs mit benutzerdefinierten Funktionen und andere erforderliche Dateien). Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen. Beispiel: `abfss://…/path/to/wordcount.zip`|
      |„Main executable file“ (Ausführbare Hauptdatei)| Die ausführbare Hauptdatei in der ZIP-Datei der Hauptdefinition. Beispiel: `WordCount`|
-     |Befehlszeilenargumente| Optionale Argumente für den Auftrag. Beispiel: `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
+     |Befehlszeilenargumente| Optionale Argumente für den Auftrag. Beispiel: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |„Reference files“ (Referenzdateien)| Zusätzliche Dateien, die von den Workerknoten zum Ausführen der Anwendung vom Typ „.NET für Apache Spark“ benötigt werden und nicht in der ZIP-Datei der Hauptdefinition enthalten sind (also abhängige JAR-Dateien, zusätzliche DLLs mit benutzerdefinierten Funktionen sowie andere Konfigurationsdateien). Sie können **Datei hochladen** auswählen, um die Datei in ein Speicherkonto hochzuladen.|
      |Spark-Pool| Der Auftrag wird an den ausgewählten Apache Spark-Pool übermittelt.|
      |Spark-Version| Die vom Apache Spark-Pool ausgeführte Version von Apache Spark.|

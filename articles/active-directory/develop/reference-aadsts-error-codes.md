@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2d18a50a21c41830796c913a424707897d277218
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266592"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026763"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -264,6 +264,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS90093 | GraphUserUnauthorized: Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben. |
 | AADSTS90094 | AdminConsentRequired: Die Zustimmung des Administrators ist erforderlich. |
 | AADSTS900382 | Vertrauliche Clients werden in einer cloudübergreifenden Anforderung nicht unterstützt. |
+| AADSTS90099 | Die Anwendung „{appId}“ ({appName}) wurde im Mandanten „{tenant}“ nicht autorisiert. Anwendungen müssen für den Zugriff auf den Kundenmandanten autorisiert werden, bevor die vom Partner delegierten Administratoren sie verwenden können. Erteilen Sie vorab die Zustimmung, oder führen Sie die entsprechende Partner Center-API zum Autorisieren der Anwendung aus. |
 | AADSTS90100 | InvalidRequestParameter: Der Parameter ist leer oder ungültig. |
 | AADSTS901002 | AADSTS901002: Der Anforderungsparameter „resource“ wird nicht unterstützt. |
 | AADSTS90101 | InvalidEmailAddress: Es wurde keine gültige E-Mail-Adresse angegeben. Die E-Mail-Adresse muss dieses Format aufweisen: `someone@example.com`. |

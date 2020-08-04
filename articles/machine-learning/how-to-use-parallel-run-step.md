@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520628"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288881"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,13 +27,13 @@ Mithilfe von ParallelRunStep lassen sich Offlinerückschlüsse für mehrere Tera
 
 In diesem Artikel lernen Sie Folgendes:
 
-> * Einrichten von Machine Learning-Ressourcen.
-> * Konfigurieren von Dateneingaben und -ausgaben für Batchrückschlüsse.
-> * Vorbereiten des vortrainierten Bildklassifizierungsmodells, das auf dem [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/)-Dataset basiert. 
-> * Schreiben Ihres Rückschlussskripts.
-> * Erstellen einer [Machine Learning-Pipeline](concept-ml-pipelines.md), die ParallelRunStep enthält, und Ausführen von Batchrückschluss für MNIST-Testbilder. 
-> * Erneutes Übermitteln einer Batchrückschluss-Ausführung mit neuer Dateneingabe und neuen Parametern. 
-> * Zeigen Sie die Ergebnisse an.
+> 1. Einrichten von Machine Learning-Ressourcen.
+> 1. Konfigurieren von Dateneingaben und -ausgaben für Batchrückschlüsse.
+> 1. Vorbereiten des vortrainierten Bildklassifizierungsmodells, das auf dem [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/)-Dataset basiert. 
+> 1.  Schreiben Ihres Rückschlussskripts.
+> 1. Erstellen einer [Machine Learning-Pipeline](concept-ml-pipelines.md), die ParallelRunStep enthält, und Ausführen von Batchrückschluss für MNIST-Testbilder. 
+> 1. Erneutes Übermitteln einer Batchrückschluss-Ausführung mit neuer Dateneingabe und neuen Parametern. 
+> 1. Zeigen Sie die Ergebnisse an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -100,6 +100,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ## <a name="configure-inputs-and-output"></a>Konfigurieren von Eingaben und -ausgaben
 
@@ -203,16 +205,16 @@ model = Model.register(model_path="models/",
 Das Skript *muss zwei Funktionen enthalten*:
 - `init()`: Verwenden Sie diese Funktion für alle aufwendigen oder allgemeinen Vorbereitungsmaßnahmen für den späteren Rückschluss. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
 -  `run(mini_batch)`: Diese Funktion wird für jede Instanz vom Typ `mini_batch` ausgeführt.
-    -  `mini_batch`: ParallelRunStep ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen als Argument an die Methode. Jeder Eintrag in „mini_batch“ ist entweder ein Dateipfad (bei Eingaben vom Typ „FileDataset“) oder ein Pandas-Datenrahmen (bei Eingaben vom Typ „TabularDataset“).
-    -  `response`: Die Run-Methode muss einen Pandas-Datenrahmen oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Stellen Sie sicher, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen der Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
+    -  `mini_batch`: `ParallelRunStep` ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen (`DataFrame`) als Argument an die Methode. Jeder Eintrag in „mini_batch“ entspricht einem Dateipfad, wenn die Eingabe ein `FileDataset` ist, bzw. einem Pandas-Datenrahmen (`DataFrame`), wenn die Eingabe ein `TabularDataset` ist.
+    -  `response`: Die Run-Methode sollte einen Pandas-Datenrahmen (`DataFrame`) oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Stellen Sie sicher, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen der Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -287,7 +289,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 `ParallelRunConfig` ist die Hauptkonfiguration für die `ParallelRunStep`-Instanz innerhalb der Azure Machine Learning-Pipeline. Sie wird verwendet, um Ihr Skript zu umschließen und die erforderlichen Parameter, einschließlich der folgenden Einträge, zu konfigurieren:
 - `entry_script`: Ein Benutzerskript als lokaler Dateipfad, das parallel auf mehreren Knoten ausgeführt wird. Ist `source_directory` vorhanden, verwenden Sie einen relativen Pfad. Verwenden Sie andernfalls einen beliebigen Pfad, auf den auf dem Computer zugegriffen werden kann.
-- `mini_batch_size`: Die Größe des Minibatchs, der an einen einzelnen Aufruf von `run()` übergeben wird (Optional. Der Standardwert ist `10` Dateien für FileDataset und `1MB` für TabularDataset.)
+- `mini_batch_size`: Die Größe des Minibatchs, der an einen einzelnen Aufruf von `run()` übergeben wird (optional; Standardwerte sind `10` Dateien für `FileDataset` und `1MB` für `TabularDataset`).
     - Bei `FileDataset` handelt es sich um die Anzahl von Dateien (Mindestwert: `1`). Mehrere Dateien können zu einem Minibatch zusammengefasst werden.
     - Bei `TabularDataset` handelt es sich um die Datengröße. Beispielwerte: `1024`, `1024KB`, `10MB`, `1GB`. Empfohlener Wert: `1MB`. Der Minibatch auf der Grundlage von `TabularDataset` geht nie über Dateigrenzen hinaus. Ein Beispiel: Angenommen, Sie verfügen über unterschiedlich große CSV-Dateien. Die kleinste Datei hat eine Größe von 100 KB, die größte Datei ist 10 MB groß. Wenn Sie nun `mini_batch_size = 1MB` festlegen, werden Dateien mit einer Größe von weniger als 1 MB als einzelner Minibatch behandelt. Dateien mit einer Größe von mehr als 1 MB werden dagegen in mehrere Minibatches aufgeteilt.
 - `error_threshold`: Die Anzahl von Datensatzfehlern für `TabularDataset` bzw. Dateifehlern für `FileDataset`, die während der Verarbeitung ignoriert werden sollen. Übersteigt die Fehleranzahl für die gesamte Eingabe diesen Wert, wird der Auftrag abgebrochen. Der Fehlerschwellenwert gilt für die gesamte Eingabe und nicht für den einzelnen Minibatch, der an die Methode `run()` gesendet wird. Zulässiger Bereich: `[-1, int.max]`. Der Teil `-1` gibt an, dass bei der Verarbeitung alle Fehler ignoriert werden sollen.
@@ -304,7 +306,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: Das Timeout für den Aufruf der Methode `run()` in Sekunden. (optional; Standardwert `60`)
 - `run_max_try`: Maximale Anzahl der Versuche von `run()` für einen Minibatch. Ein `run()` ist fehlgeschlagen, wenn eine Ausnahme ausgelöst wird oder beim Erreichen von `run_invocation_timeout` nichts zurückgegeben wird (optional; der Standardwert ist `3`). 
 
-Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden einer Pipelineausführung optimieren können. In diesem Beispiel verwenden Sie PipelineParameter für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie später erneut einen Lauf senden. 
+Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden einer Pipelineausführung optimieren können. In diesem Beispiel verwenden Sie `PipelineParameter` für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie später erneut eine Ausführung senden. 
 
 In diesem Beispiel wird davon ausgegangen, dass Sie das `digit_identification.py`-Skript verwenden, das zuvor erläutert wurde. Wenn Sie ein eigenes Skript verwenden, ändern Sie die Parameter `source_directory` und `entry_script` entsprechend.
 
@@ -394,7 +396,7 @@ pipeline_run_2.wait_for_completion(show_output=True)
 ```
 ## <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
 
-Die Ergebnisse aus der obigen Ausführung werden in den Datenspeicher geschrieben, der im PipelineData-Objekt als Ausgabedaten angegeben ist. In diesem Fall heißt er *inferences*. Die Ergebnisse werden im Standardblobcontainer gespeichert. Sie können zu Ihrem Speicherkonto navigieren und ihn über Storage-Explorer anzeigen. Der Dateipfad lautet „azureml-blobstore-*GUID*/azureml/*RunId*/*output_dir*“.
+Die Ergebnisse aus der obigen Ausführung werden in den `DataStore` geschrieben, der im `PipelineData`-Objekt als Ausgabedatenelement angegeben ist. In diesem Fall lautet der Name hierfür *inferences*. Die Ergebnisse werden im Standardblobcontainer gespeichert. Sie können zu Ihrem Speicherkonto navigieren und ihn über Storage-Explorer anzeigen. Der Dateipfad lautet „azureml-blobstore-*GUID*/azureml/*RunId*/*output_dir*“.
 
 Sie können diese Daten auch herunterladen, um die Ergebnisse anzuzeigen. Nachfolgend sehen Sie den Beispielcode zum Anzeigen der ersten zehn Zeilen:
 

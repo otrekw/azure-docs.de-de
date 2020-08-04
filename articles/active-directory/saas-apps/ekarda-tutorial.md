@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3790da8674732c50d55a85c84367f0d2fe3e08f5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: aacaec5ff632385a1f1686610370bb92eb63c349
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017549"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Ekarda
 
@@ -151,12 +151,12 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf **Administrator** -> **Mein Konto**.
 
-    ![Ekarda-Konfiguration](./media/ekarda-tutorial/ekarda.PNG)    
+    ![Ekarda-Konfiguration](./media/ekarda-tutorial/ekarda.png)    
 
 1. Unten auf der Seite finden Sie den Abschnitt **SAML-Einstellungen**, in dem Sie die SAML-Integration konfigurieren.
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 
-    ![Ekarda-Konfiguration](./media/ekarda-tutorial/ekarda1.PNG)
+    ![Ekarda-Konfiguration](./media/ekarda-tutorial/ekarda1.png)
 
     a. Klicken Sie auf den Link **Metadaten des Dienstanbieters**, und speichern Sie sie als Datei auf Ihrem Computer.
 
@@ -186,7 +186,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Ekarda“ klicken, sollten Sie aut
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
@@ -194,7 +194,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Ekarda“ klicken, sollten Sie aut
 
 - [Testen von Ekarda mit Azure AD](https://aad.portal.azure.com/)
 
+- Verwenden Sie die [eCard-Unternehmenslösung von Ekarda](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise), um einer beliebigen Anzahl von Mitarbeitern das Senden von eCards mit Ihrem Unternehmenslogo an Kunden und Kollegen zu ermöglichen. Erfahren Sie mehr über das Bereitstellen von [Ekarda als SSO-Lösung](https://support.ekarda.com/#SSO-Implementation).
+
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

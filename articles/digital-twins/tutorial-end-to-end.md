@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206558"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131734"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Erstellen einer End-to-End-Lösung
 
@@ -26,6 +26,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>Einrichten einer Cloud Shell-Sitzung
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -90,7 +93,7 @@ Der nächste Schritt umfasst die Einrichtung einer [Azure Functions-App](../azur
 * *ProcessHubToDTEvents*: Verarbeitet eingehende IoT Hub-Daten und aktualisiert Azure Digital Twins entsprechend.
 * *ProcessDTRoutedData*: Verarbeitet Daten digitaler Zwillinge und aktualisiert die übergeordneten Zwillinge in Azure Digital Twins entsprechend.
 
-In diesem Abschnitt veröffentlichen Sie die vorab geschriebene Funktions-App und stellen sicher, dass diese auf Azure Digital Twins zugreifen kann, indem Sie ihr eine AAD-Identität (Azure Active Directory) zuweisen. Wenn Sie diese Schritte ausführen, können im restlichen Teil des Tutorials die Funktionen in der Funktions-App verwendet werden. 
+In diesem Abschnitt veröffentlichen Sie die vorab geschriebene Funktions-App und stellen sicher, dass diese auf Azure Digital Twins zugreifen kann, indem Sie ihr eine Azure AD-Identität (Azure Active Directory) zuweisen. Wenn Sie diese Schritte ausführen, können im restlichen Teil des Tutorials die Funktionen in der Funktions-App verwendet werden. 
 
 ### <a name="publish-the-app"></a>Veröffentlichen der App
 
@@ -138,7 +141,7 @@ Vergewissern Sie sich im Bereich *Veröffentlichen*, der im Visual Studio-Fenste
 
 ### <a name="assign-permissions-to-the-function-app"></a>Zuweisen von Berechtigungen zur Funktions-App
 
-Um für die Funktions-App den Zugriff auf Azure Digital Twins zu ermöglichen, umfasst der nächste Schritt die Konfiguration einer App-Einstellung, die Zuweisung einer vom System verwalteten AAD-Identität und die Erteilung von *Besitzer*-Berechtigungen für diese Identität auf der Azure Digital Twins-Instanz.
+Um für die Funktions-App den Zugriff auf Azure Digital Twins zu ermöglichen, umfasst der nächste Schritt die Konfiguration einer App-Einstellung, die Zuweisung einer vom System verwalteten Azure AD-Identität und die Erteilung von *Besitzer*-Berechtigungen für diese Identität auf der Azure Digital Twins-Instanz.
 
 Verwenden Sie in Azure Cloud Shell den folgenden Befehl, um eine Anwendungseinstellung festzulegen, die von Ihrer Funktions-App zum Verweisen auf Ihre Digital Twins-Instanz verwendet wird.
 
@@ -258,7 +261,7 @@ connectionString = <Iot-hub-connection-string>
 deviceConnectionString = <device-connection-string>
 ```
 
-Speichern Sie die Datei .
+Speichern Sie die Datei.
 
 Führen Sie nun das Projekt **DeviceSimulator** mit der folgenden Symbolleistenschaltfläche aus, um die Ergebnisse der von Ihnen eingerichteten Datensimulation anzuzeigen:
 
@@ -420,7 +423,7 @@ Bei Verwendung von Azure Cloud Shell können Sie alle Azure-Ressourcen in einer 
 az group delete --name <your-resource-group>
 ```
 
-Löschen Sie als Nächstes mit dem folgenden Befehl die AAD-App-Registrierung, die Sie für Ihre Client-App erstellt haben:
+Löschen Sie als Nächstes mit dem folgenden Befehl die Azure AD-App-Registrierung, die Sie für Ihre Client-App erstellt haben:
 
 ```azurecli
 az ad app delete --id <your-application-ID>
@@ -433,7 +436,7 @@ Löschen Sie abschließend den Beispielordner des Projekts, den Sie heruntergela
 In diesem Tutorial haben Sie ein End-to-End-Szenario erstellt, mit dem veranschaulicht wird, wie eine Azure Digital Twins-Instanz auf Livedaten von Geräten basiert.
 
 Sehen Sie sich als Nächstes die Konzeptdokumentation an, um mehr über die Elemente zu erfahren, mit denen Sie in diesem Tutorial gearbeitet haben:
-* [Konzepte: Benutzerdefinierte Modelle](concepts-models.md)
+* [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md)
 
 In den Anleitungen können Sie sich auch ausführlicher über die Prozesse in diesem Tutorial informieren:
-* [Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md)
+* [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)

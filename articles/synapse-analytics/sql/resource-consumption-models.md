@@ -1,5 +1,5 @@
 ---
-title: SQL-Ressourcennutzung in Synapse Analytics
+title: Synapse SQL-Ressourcennutzung
 description: Hier finden Sie Informationen zu Synapse SQL-Verbrauchsmodellen in Azure Synapse Analytics.
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112752"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369015"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>SQL-Ressourcennutzung in Azure Synapse Analytics
+# <a name="synapse-sql-resource-consumption"></a>Synapse SQL-Ressourcennutzung
 
 In diesem Artikel werden die Modelle zum Ressourcenverbrauch von Synapse SQL (Vorschauversion) beschrieben.
 
@@ -99,7 +99,7 @@ Ein SQL-Pool ist ein horizontal hochskalierbares System, das große Mengen von C
 
 Zum Ändern der Data Warehouse-Einheiten sind die unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) beschriebenen Berechtigungen erforderlich.
 
-Integrierte Rollen für Azure-Ressourcen wie „Mitwirkender von SQL DB“ und „SQL Server-Mitwirkender“ können die DWU-Einstellungen ändern.
+Integrierte Azure-Rollen wie „Mitwirkender von SQL DB“ und „SQL Server-Mitwirkender“ können die DWU-Einstellungen ändern.
 
 #### <a name="view-current-dwu-settings"></a>Anzeigen der aktuellen DWU-Einstellungen
 

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Dieser Artikel enthält eine Übersicht zu Kubernetes mit Azure Arc-Aktivierung.
 keywords: Kubernetes, Arc, Azure, Container
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050049"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Was ist die Vorschauversion von Kubernetes mit Azure Arc-Aktivierung?
 
@@ -24,9 +24,8 @@ Zum Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Azure muss
 
 Kubernetes mit Azure Arc-Aktivierung unterstützt branchenübliches SSL zum Absichern von Daten während der Übertragung. Die Daten werden außerdem im Ruhezustand verschlüsselt in einer Azure Cosmos DB-Datenbank gespeichert, um ihre Vertraulichkeit zu gewährleisten.
  
- > [!NOTE]
-> Kubernetes mit Azure Arc-Aktivierung befindet sich in der Vorschauphase. Sie sollte nicht für Produktionsworkloads verwendet werden. 
-
+> [!NOTE]
+> Kubernetes mit Azure Arc-Unterstützung (Vorschauversion) Sie sollte nicht für Produktionsworkloads verwendet werden.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios 
 
@@ -40,7 +39,6 @@ Kubernetes mit Azure Arc-Aktivierung unterstützt diese Szenarien:
 
 * Anwenden von Richtlinien mit Azure Policy für Kubernetes 
 
- 
 ## <a name="supported-regions"></a>Unterstützte Regionen 
 
 Kubernetes mit Azure Arc-Aktivierung wird derzeit in diesen Regionen unterstützt: 

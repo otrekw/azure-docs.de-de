@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090585"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
@@ -43,7 +43,7 @@ Eine Übersicht über Key Vault finden Sie unter [Was ist Azure Key Vault?](over
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird  
-* Azure PowerShell, Mindestversion 1.0.0. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `$PSVersionTable.PSVersion` ein.  
+* Azure PowerShell, Mindestversion 1.0.0. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `$PSVersionTable.PSVersion` ein.  
 * Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Verbinden mit Ihrem Key Vault-Abonnement
@@ -70,7 +70,7 @@ Geben Sie dann Folgendes ein, um das Abonnement anzugeben, das dem zu protokolli
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-PowerShell auf das richtige Abonnement zu verweisen, ist ein wichtiger Schritt, insbesondere wenn mehrere Abonnements mit Ihrem Konto verknüpft sind. Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+PowerShell auf das richtige Abonnement zu verweisen, ist ein wichtiger Schritt, insbesondere wenn mehrere Abonnements mit Ihrem Konto verknüpft sind. Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
 ## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Erstellen eines Speicherkontos für Ihre Protokolle
 
@@ -97,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Aktivieren der Protokollierung mithilfe von Azure PowerShell
 
-Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Cmdlet **Set-AzDiagnosticSetting** zusammen mit den Variable, die wir für das neue Speicherkonto und den Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf **AuditEvent** (einzige Kategorie für die Key Vault-Protokollierung) fest:
+Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Cmdlet **Set-AzDiagnosticSetting** zusammen mit den Variable, die wir für das neue Speicherkonto und den Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf `AuditEvent` (einzige Kategorie für die Key Vault-Protokollierung) fest:
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -271,7 +271,7 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt:
 | **Ressourcen-ID** |Azure Resource Manager-Ressourcen-ID Für Schlüsseltresor-Protokolle ist dies immer die Schlüsseltresor-Ressourcen-ID. |
 | **operationName** |Name des Vorgangs, wie in der folgenden Tabelle beschrieben |
 | **operationVersion** |Die vom Client angeforderte REST-API-Version. |
-| **category** |Der Typ des Ergebnisses. Für Key Vault-Protokolle ist **AuditEvent** der einzige verfügbare Wert. |
+| **category** |Der Typ des Ergebnisses. Für Key Vault-Protokolle ist `AuditEvent` der einzige verfügbare Wert. |
 | **resultType** |Das Ergebnis der REST-API-Anforderung. |
 | **resultSignature** |HTTP-Status |
 | **resultDescription** |Zusätzliche Beschreibung zum Ergebnis, falls verfügbar |
@@ -279,7 +279,7 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt:
 | **callerIpAddress** |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
 | **correlationId** |Optionale GUID, die vom Client zum Korrelieren von clientseitigen Protokollen mit dienstseitigen Protokollen (Schlüsseltresor) übergeben werden kann |
 | **Identität** |Identität des Tokens, das in der REST-API-Anforderung angegeben wurde. Dies ist normalerweise ein „Benutzer“, ein „Dienstprinzipal“ oder die Kombination „Benutzer + App-ID“, wie bei einer Anforderung, die auf einem Azure PowerShell-Cmdlet basiert. |
-| **properties** |Informationen, die je nach Vorgang (**operationName**) variieren. In den meisten Fällen enthält dieses Feld Clientinformationen (vom Client übergebene Zeichenfolge „useragent“), den genauen REST-API-Anforderungs-URI und den HTTP-Statuscode. Wenn ein Objekt als Ergebnis einer Anforderung (z. B. **KeyCreate** oder **VaultGet**) zurückgegeben wird, enthält es außerdem den Schlüssel-URI (als „id“), Tresor-URI oder URI des Geheimnisses. |
+| **properties** |Informationen, die je nach Vorgang (**operationName**) variieren. In den meisten Fällen enthält dieses Feld Clientinformationen (vom Client übergebene Zeichenfolge „useragent“), den genauen REST-API-Anforderungs-URI und den HTTP-Statuscode. Wenn ein Objekt als Ergebnis einer Anforderung (z. B. **KeyCreate** oder **VaultGet**) zurückgegeben wird, enthält es außerdem den Schlüssel-URI (als `id`), den Tresor-URI oder den URI des Geheimnisses. |
 
 Die Feldwerte unter **operationName** liegen im *ObjectVerb*-Format vor. Beispiel:
 
@@ -321,9 +321,9 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Verwenden von Azure Monitor-Protokollen
 
-Sie können die Key Vault-Lösung in Azure Monitor verwenden, um **AuditEvent**-Protokolle von Key Vault zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten. 
+Sie können die Key Vault-Lösung in Azure Monitor verwenden, um `AuditEvent`-Protokolle von Key Vault zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten. 
 
-Weitere Informationen, z. B. zur Einrichtung, finden Sie unter [Azure Key Vault-Lösung in Azure Monitor-Protokollen](../../azure-monitor/insights/azure-key-vault.md). Dieser Artikel enthält auch eine Anleitung für die Migration von der alten Key Vault-Lösung, die während der Vorschauphase von Azure Monitor-Protokollen bereitgestellt wurde. Damit haben Sie Ihre Protokolle zuerst an ein Azure Storage-Konto weitergeleitet und Azure Monitor-Protokolle für das Lesen von diesem Konto konfiguriert.
+Weitere Informationen, z. B. zur Einrichtung, finden Sie im Artikel zu [Azure Key Vault in Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a><a id="next"></a>Nächste Schritte
 

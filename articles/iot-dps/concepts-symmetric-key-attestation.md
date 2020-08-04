@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286494"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
@@ -26,7 +26,7 @@ Registrierungen von symmetrischen Schlüsseln eignen sich zudem hervorragend, um
 
 ## <a name="symmetric-key-creation"></a>Erstellung von symmetrischen Schlüsseln
 
-Device Provisioning Service erstellt standardmäßig neue symmetrische Schlüssel mit einer Standardlänge von 32 Byte, wenn neue Registrierungen mit aktivierter Option **Schlüssel automatisch generieren** gespeichert werden.
+Device Provisioning Service erstellt standardmäßig neue symmetrische Schlüssel mit einer Standardlänge von 64 Byte, wenn neue Registrierungen mit aktivierter Option **Schlüssel automatisch generieren** gespeichert werden.
 
 ![Automatisches Generieren von symmetrischen Schlüsseln](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 

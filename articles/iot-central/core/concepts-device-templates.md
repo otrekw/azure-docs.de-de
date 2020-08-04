@@ -7,12 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418640"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337108"
 ---
 # <a name="what-are-device-templates"></a>Was sind Gerätevorlagen?
 
@@ -28,6 +28,9 @@ Eine Gerätevorlage enthält die folgenden Abschnitte:
 - _Cloudeigenschaften_. In diesem Teil der Gerätevorlage kann der Entwickler der Lösung alle zu speichernden Gerätemetadaten angeben. Cloudeigenschaften werden nicht mit Geräten synchronisiert und sind ausschließlich in der Anwendung vorhanden. Cloudeigenschaften haben keinen Einfluss auf den Code, den ein Geräteentwickler zur Umsetzung des Gerätefunktionsmodells schreibt.
 - _Anpassungen_. In diesem Teil der Gerätevorlage kann der Lösungsentwickler einige der Definitionen im Gerätefunktionsmodell überschreiben. Anpassungen sind nützlich, wenn der Lösungsentwickler präzisieren möchte, wie die Anwendung mit einem Wert umgeht, z. B. wenn der Anzeigename für eine Eigenschaft oder die zur Anzeige eines Telemetriewerts verwendete Farbe geändert werden soll. Anpassungen wirken sich nicht auf den Code aus, der von einem Geräteentwickler zur Umsetzung des Gerätefunktionsmodells geschrieben wird.
 - _Ansichten_. In diesem Teil der Gerätevorlage kann der Lösungsentwickler Visualisierungen zum Anzeigen von Daten aus dem Gerät und Formulare zur Verwaltung und Steuerung eines Geräts definieren. Die Ansichten enthalten das Gerätefunktionsmodell, die Cloudeigenschaften und Anpassungen. Ansichten haben keinen Einfluss auf den Code, den ein Geräteentwickler zur Umsetzung des Gerätefunktionsmodells schreibt.
+
+> [!NOTE]
+> Das [Aktualisierungsrelease für IoT Plug & Play (öffentliche Vorschau)](../../iot-pnp/overview-iot-plug-and-play.md) richtet sich an Geräteentwickler und OEMs, damit sie mit dem Entwickeln von Geräten beginnen können, die für IoT Plug & Play vor der allgemeinen Verfügbarkeit zertifiziert werden können.
 
 ## <a name="device-capability-models"></a>Gerätefunktionsmodelle
 
@@ -221,6 +224,6 @@ Die Telemetrie, Eigenschaften und Befehle, die Sie einer Ansicht hinzufügen kö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich als Geräteentwickler mit Gerätevorlagen vertraut gemacht haben, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md) weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt.
+Nachdem Sie sich als Geräteentwickler über Gerätevorlagen informiert haben, sollten Sie als Nächstes den Artikel [Telemetrie-, Eigenschaften- und Befehlsnutzlasten](./concepts-telemetry-properties-commands.md) lesen, um mehr über die Daten zu erfahren, die ein Gerät mit IoT Central austauscht.
 
 Wir empfehlen Ihnen als Nächstes die Lektüre von [Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung](./howto-set-up-template.md), um mehr darüber zu erfahren, wie Sie eine Gerätevorlage erstellen können.

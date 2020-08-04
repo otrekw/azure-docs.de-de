@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5 | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens von Azure AD mit F5 | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und F5 konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232184"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017430"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5
 
@@ -282,45 +282,45 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 Sie konfigurieren einen Active Directory-AAA-Server in Access Policy Manager (APM), um Domänencontroller und Anmeldeinformationen anzugeben, die von APM zum Authentifizieren von Benutzern verwendet werden.
 
-1.    Klicken Sie auf der Registerkarte „Main“ (Hauptmenü) auf **Access Policy > AAA Servers > Active Directory** (Zugriffsrichtlinie > AAA-Server > Active Directory). Der Bildschirm mit der Active Directory-Serverliste wird geöffnet.
+1. Klicken Sie auf der Registerkarte „Main“ (Hauptmenü) auf **Access Policy > AAA Servers > Active Directory** (Zugriffsrichtlinie > AAA-Server > Active Directory). Der Bildschirm mit der Active Directory-Serverliste wird geöffnet.
 
-2.    Klicken Sie auf **Erstellen**. Der Bildschirm mit den Eigenschaften für den neuen Server wird geöffnet.
+2. Klicken Sie auf **Erstellen**. Der Bildschirm mit den Eigenschaften für den neuen Server wird geöffnet.
 
-3.    Geben Sie im Feld **Name** einen eindeutigen Namen für den Authentifizierungsserver ein.
+3. Geben Sie im Feld **Name** einen eindeutigen Namen für den Authentifizierungsserver ein.
 
-4.    Geben Sie im Feld **Domain Name** (Domänenname) den Namen der Windows-Domäne ein.
+4. Geben Sie im Feld **Domain Name** (Domänenname) den Namen der Windows-Domäne ein.
 
-5.    Wählen Sie für die Einstellung **Server Connection** (Serververbindung) eine der folgenden Optionen aus:
+5. Wählen Sie für die Einstellung **Server Connection** (Serververbindung) eine der folgenden Optionen aus:
 
-    * Wählen Sie **Use Pool** (Pool verwenden) aus, um Hochverfügbarkeit für den AAA-Server einzurichten.
+   * Wählen Sie **Use Pool** (Pool verwenden) aus, um Hochverfügbarkeit für den AAA-Server einzurichten.
 
-    * Wählen Sie **Direct** (Direkt) aus, um den AAA-Server als eigenständigen Server einzurichten.
+   * Wählen Sie **Direct** (Direkt) aus, um den AAA-Server als eigenständigen Server einzurichten.
 
-6.    Falls Sie die Option **Direct** (Direkt) ausgewählt haben, geben Sie einen Namen in das Feld **Domain Controller** (Domänencontroller) ein.
+6. Falls Sie die Option **Direct** (Direkt) ausgewählt haben, geben Sie einen Namen in das Feld **Domain Controller** (Domänencontroller) ein.
 
-7.    Falls Sie die Option **Use Pool** (Pool verwenden) ausgewählt haben, konfigurieren Sie den Pool:
+7. Falls Sie die Option **Use Pool** (Pool verwenden) ausgewählt haben, konfigurieren Sie den Pool:
 
-    * Geben Sie im Feld **Domain Controller Pool Name** (Name des Domänencontroller-Pools) einen Namen ein.
+   * Geben Sie im Feld **Domain Controller Pool Name** (Name des Domänencontroller-Pools) einen Namen ein.
 
-    * Geben Sie die **Domänencontroller** im Pool an, indem Sie jeweils die IP-Adresse und den Hostnamen eingeben und anschließend auf die Schaltfläche **Add** (Hinzufügen) klicken.
+   * Geben Sie die **Domänencontroller** im Pool an, indem Sie jeweils die IP-Adresse und den Hostnamen eingeben und anschließend auf die Schaltfläche **Add** (Hinzufügen) klicken.
 
-    * Zur Überwachung der Integrität des AAA-Servers können Sie eine Integritätsüberwachung auswählen. In diesem Fall ist nur die Überwachung **gateway_icmp** geeignet. Diese Option kann in der Liste **Server Pool Monitor** (Serverpoolüberwachung) ausgewählt werden.
+   * Zur Überwachung der Integrität des AAA-Servers können Sie eine Integritätsüberwachung auswählen. In diesem Fall ist nur die Überwachung **gateway_icmp** geeignet. Diese Option kann in der Liste **Server Pool Monitor** (Serverpoolüberwachung) ausgewählt werden.
 
-8.    Geben Sie im Feld **Admin Name** (Administratorname) einen Namen für einen Administrator ein, der über Administratorberechtigungen für Active Directory verfügt. (Bei diesem Namen wird die Groß-/Kleinschreibung beachtet.) APM verwendet die Informationen aus den Feldern **Admin Name** (Administratorname) und **Admin Password** (Administratorkennwort) für AD-Abfragen. Ist Active Directory für anonyme Abfragen konfiguriert, muss kein Administratorname angegeben werden. Andernfalls benötigt APM ein Konto, das über ausreichende Berechtigungen für die Bindung an einen Active Directory-Server sowie für den Abruf von Benutzergruppeninformationen und Active Directory-Kennwortrichtlinien zur Unterstützung kennwortbezogener Funktionen verfügt. (APM muss Kennwortrichtlinien abrufen, wenn Sie beispielsweise in einer AD-Abfrageaktion auswählen, dass der Benutzer vor Ablauf des Kennworts zum Ändern des Kennworts aufgefordert werden soll.) Wenn Sie in dieser Konfiguration keine Administratorkontoinformationen angeben, verwendet APM das Benutzerkonto, um Informationen abzurufen. In diesem Fall muss das Benutzerkonto über ausreichende Berechtigungen verfügen.
+8. Geben Sie im Feld **Admin Name** (Administratorname) einen Namen für einen Administrator ein, der über Administratorberechtigungen für Active Directory verfügt. (Bei diesem Namen wird die Groß-/Kleinschreibung beachtet.) APM verwendet die Informationen aus den Feldern **Admin Name** (Administratorname) und **Admin Password** (Administratorkennwort) für AD-Abfragen. Ist Active Directory für anonyme Abfragen konfiguriert, muss kein Administratorname angegeben werden. Andernfalls benötigt APM ein Konto, das über ausreichende Berechtigungen für die Bindung an einen Active Directory-Server sowie für den Abruf von Benutzergruppeninformationen und Active Directory-Kennwortrichtlinien zur Unterstützung kennwortbezogener Funktionen verfügt. (APM muss Kennwortrichtlinien abrufen, wenn Sie beispielsweise in einer AD-Abfrageaktion auswählen, dass der Benutzer vor Ablauf des Kennworts zum Ändern des Kennworts aufgefordert werden soll.) Wenn Sie in dieser Konfiguration keine Administratorkontoinformationen angeben, verwendet APM das Benutzerkonto, um Informationen abzurufen. In diesem Fall muss das Benutzerkonto über ausreichende Berechtigungen verfügen.
 
-9.    Geben Sie im Feld **Admin Password** (Administratorkennwort) das Administratorkennwort ein, das dem Domänennamen zugeordnet ist.
+9. Geben Sie im Feld **Admin Password** (Administratorkennwort) das Administratorkennwort ein, das dem Domänennamen zugeordnet ist.
 
-10.    Geben Sie im Feld **Verify Admin Password** (Administratorkennwort bestätigen) das Administratorkennwort ein, das der Einstellung **Domain Name** (Domänenname) zugeordnet ist.
+10. Geben Sie im Feld **Verify Admin Password** (Administratorkennwort bestätigen) das Administratorkennwort ein, das der Einstellung **Domain Name** (Domänenname) zugeordnet ist.
 
-11.    Geben Sie im Feld **Group Cache Lifetime** (Cachelebensdauer für die Gruppe) die Anzahl von Tagen ein. Die Standardlebensdauer beträgt 30 Tage.
+11. Geben Sie im Feld **Group Cache Lifetime** (Cachelebensdauer für die Gruppe) die Anzahl von Tagen ein. Die Standardlebensdauer beträgt 30 Tage.
 
-12.    Geben Sie im Feld **Password Security Object Cache Lifetime** (Cachelebensdauer für das Kennwortsicherheitsobjekt) die Anzahl von Tagen ein. Die Standardlebensdauer beträgt 30 Tage.
+12. Geben Sie im Feld **Password Security Object Cache Lifetime** (Cachelebensdauer für das Kennwortsicherheitsobjekt) die Anzahl von Tagen ein. Die Standardlebensdauer beträgt 30 Tage.
 
-13.    Wählen Sie in der Liste **Kerberos Preauthentication Encryption Type** (Verschlüsselungstyp der Kerberos-Vorauthentifizierung) einen Verschlüsselungstyp aus. Der Standardwert ist **None** (Kein). Wenn Sie einen Verschlüsselungstyp angeben, schließt das BIG-IP-System Kerberos-Vorauthentifizierungsdaten in das erste AS-REQ-Paket (Authentication Service Request, Authentifizierungsdienstanforderung) ein.
+13. Wählen Sie in der Liste **Kerberos Preauthentication Encryption Type** (Verschlüsselungstyp der Kerberos-Vorauthentifizierung) einen Verschlüsselungstyp aus. Der Standardwert ist **None** (Kein). Wenn Sie einen Verschlüsselungstyp angeben, schließt das BIG-IP-System Kerberos-Vorauthentifizierungsdaten in das erste AS-REQ-Paket (Authentication Service Request, Authentifizierungsdienstanforderung) ein.
 
-14.    Geben Sie im Feld **Timeout** ein Timeoutintervall (in Sekunden) für den AAA-Server ein. (Diese Einstellung ist optional.)
+14. Geben Sie im Feld **Timeout** ein Timeoutintervall (in Sekunden) für den AAA-Server ein. (Diese Einstellung ist optional.)
 
-15.    Klicken Sie auf **Finished** (Fertig). Der neue Server wird in der Liste angezeigt. Dadurch wird der neue Active Directory-Server der Active Directory-Serverliste hinzugefügt.
+15. Klicken Sie auf **Finished** (Fertig). Der neue Server wird in der Liste angezeigt. Dadurch wird der neue Active Directory-Server der Active Directory-Serverliste hinzugefügt.
 
     ![F5-Konfiguration (Kerberos)](./media/kerbf5-tutorial/configure17.png)
 

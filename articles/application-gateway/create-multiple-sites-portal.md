@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 07/20/2020
 ms.author: victorh
-ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74075148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290144"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen von Routingregeln
 > * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-![Beispiel zum Routing für mehrere Websites](./media/create-multiple-sites-portal/scenario.png)
+:::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="Anwendungsgateway für mehrere Standorte":::
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -50,7 +50,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
    - **Ressourcengruppe**: Wählen Sie **myResourceGroupAG** als Ressourcengruppe aus. Falls diese Gruppe nicht vorhanden ist, wählen Sie **Neue erstellen** aus, um sie zu erstellen.
    - **Name des Anwendungsgateways**: Geben Sie *myAppGateway* als Namen des Anwendungsgateways ein.
 
-     ![Erstellen eines neuen Anwendungsgateways: Grundlagen](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Erstellen eines Application Gateways":::
 
 2.  Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. In diesem Beispiel erstellen Sie gleichzeitig mit dem Anwendungsgateway ein virtuelles Netzwerk. Application Gateway-Instanzen werden in separaten Subnetzen erstellt. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und eins für die Back-End-Server.
 
@@ -66,7 +66,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
     Wählen Sie **OK** aus, um das Fenster **Virtuelles Netzwerk erstellen** zu schließen und die Einstellungen für das virtuelle Netzwerk zu speichern.
 
-     ![Erstellen eines neuen Anwendungsgateways: virtuelles Netzwerk](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="Erstellen eines VNET":::
     
 3. Übernehmen Sie auf der Registerkarte **Grundlagen** die Standardwerte für die übrigen Einstellungen, und wählen Sie dann **Weiter: Front-Ends** aus.
 
@@ -78,7 +78,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 2. Wählen Sie **Neu erstellen** für die **Öffentliche IP-Adresse** aus, und geben Sie *myAGPublicIPAddress* als Namen der öffentlichen IP-Adresse ein. Wählen Sie dann **OK** aus. 
 
-     ![Erstellen eines neuen Anwendungsgateways: Front-Ends](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Erstellen eines VNET":::
 
 3. Klicken Sie auf **Weiter: Back-Ends**.
 
@@ -96,7 +96,7 @@ Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server
 3. Wählen Sie im Fenster **Back-End-Pool hinzufügen** die Option **Hinzufügen** aus, um die Konfiguration des Back-End-Pools zu speichern und zur Registerkarte **Back-Ends** zurückzukehren.
 4. Fügen Sie jetzt einen weiteren Back-End-Pool namens *fabrikamPool* hinzu.
 
-     ![Erstellen eines neuen Anwendungsgateways: Back-Ends](./media/create-multiple-sites-portal/backend-pools.png)
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Erstellen von Back-Ends":::
 
 4. Wählen Sie auf der Registerkarte **Back-Ends** die Option **Weiter: Konfiguration** aus.
 
@@ -119,7 +119,7 @@ Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und die von 
 
    Übernehmen Sie auf der Registerkarte **Listener** die Standardwerte für die übrigen Einstellungen. Wählen Sie dann die Registerkarte **Back-End-Ziele** aus, um den Rest der Routingregel zu konfigurieren.
 
-   ![Erstellen eines neuen Anwendungsgateways: Listener](./media/create-multiple-sites-portal/routing-rule.png)
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="Erstellen einer Routingregel":::
 
 4. Wählen Sie auf der Registerkarte **Back-End-Ziele** den Pool **contosoPool** als **Back-End-Ziel** aus.
 
@@ -128,7 +128,7 @@ Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und die von 
 6. Wählen Sie im Fenster **Routingregel hinzufügen** die Option **Hinzufügen** aus, um die Routingregel zu speichern und zur Registerkarte **Konfiguration** zurückzukehren.
 7. Wählen Sie **Regel hinzufügen** aus, und fügen Sie eine ähnliche Regel, einen Listener, ein Back-End-Ziel und eine HTTP-Einstellung für Fabrikam hinzu.
 
-     ![Erstellen eines neuen Anwendungsgateways: Routingregel](./media/create-multiple-sites-portal/fabrikamRule.png)
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam-Regel":::
 
 7. Klicken Sie auf **Weiter: Tags** und dann auf **Weiter: Überprüfen + erstellen**.
 

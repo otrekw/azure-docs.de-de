@@ -1,5 +1,5 @@
 ---
-title: Verwaltetes virtuelles Netzwerk in Azure Synapse Analytics
+title: Verwaltetes virtuelles Netzwerk
 description: Dieser Artikel enthält Informationen zum verwalteten virtuellen Netzwerk in Azure Synapse Analytics.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,54 +8,54 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b46ce6f6164479853bc762cb1ca45d67f7f80930
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 06b535b25df19e5062d16184f4469d9e9253b9c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042613"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics: verwaltetes virtuelles Netzwerk (Vorschauversion)
 
 Dieser Artikel enthält Informationen zum verwalteten virtuellen Netzwerk in Azure Synapse Analytics.
 
-## <a name="managed-workspace-vnet"></a>Verwaltetes Arbeitsbereichs-VNET
+## <a name="managed-workspace-virtual-network"></a>Verwaltetes virtuelles Arbeitsbereichsnetzwerk
 
-Bei der Erstellung Ihres Azure Synapse-Arbeitsbereichs können Sie ihn mit einem virtuellen Netzwerk (VNET) verknüpfen. Das mit Ihrem Arbeitsbereich verknüpfte VNET wird von Azure Synapse verwaltet. Dieses VNET wird als *Verwaltetes Arbeitsbereichs-VNET* bezeichnet.
+Bei der Erstellung Ihres Azure Synapse-Arbeitsbereichs können Sie ihn mit einem virtuellen Microsoft Azure-Netzwerk verknüpfen. Das mit Ihrem Arbeitsbereich verknüpfte virtuelle Netzwerk wird von Azure Synapse verwaltet. Dieses virtuelle Netzwerk wird als *verwaltetes virtuelles Arbeitsbereichsnetzwerk* bezeichnet.
 
-Das verwaltete Arbeitsbereichs-VNET hat vier Vorteile:
+Das verwaltete virtuelle Arbeitsbereichsnetzwerk hat vier Vorteile:
 
-- Mit einem verwalteten Arbeitsbereichs-VNET können Sie die VNET-Verwaltung an Azure Synapse auslagern.
-- Sie müssen keine NSG-Eingangsregeln für Ihre eigenen VNETs konfigurieren, um eingehenden Azure Synapse-Verwaltungsdatenverkehr für Ihr VNET zuzulassen. Sind diese NSG-Regeln nicht korrekt konfiguriert, kommt es zu Dienstunterbrechungen für Kunden.
+- Mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk können Sie die Verwaltung des virtuellen Netzwerks an Azure Synapse auslagern.
+- Sie müssen keine NSG-Eingangsregeln für Ihre eigenen virtuellen Netzwerke konfigurieren, um eingehenden Azure Synapse-Verwaltungsdatenverkehr für Ihr virtuelles Netzwerk zuzulassen. Sind diese NSG-Regeln nicht korrekt konfiguriert, kommt es zu Dienstunterbrechungen für Kunden.
 - Sie müssen für Lastspitzen kein Subnetz für Ihre Spark-Cluster erstellen.
-- Das verwaltete Arbeitsbereichs-VNET schützt zusammen mit verwalteten privaten Endpunkten vor Datenexfiltration. In einem Arbeitsbereich, der mit einem verwalteten Arbeitsbereichs-VNET verknüpft ist, können nur verwaltete private Endpunkte erstellt werden.
+- Das verwaltete virtuelle Arbeitsbereichsnetzwerk schützt zusammen mit verwalteten privaten Endpunkten vor Datenexfiltration. In einem Arbeitsbereich, der mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist, können nur verwaltete private Endpunkte erstellt werden.
 
-Durch die Erstellung eines Arbeitsbereichs mit verknüpftem verwaltetem Arbeitsbereichs-VNET wird sichergestellt, dass der Arbeitsbereich im Netzwerk von anderen Arbeitsbereichen isoliert ist. Azure Synapse bietet in einem Arbeitsbereich verschiedene Analysefunktionen: Datenintegration, Apache Spark, SQL-Pool und SQL On-Demand.
+Durch die Erstellung eines Arbeitsbereichs mit einem verknüpften verwalteten virtuellen Arbeitsbereichsnetzwerk wird sichergestellt, dass der Arbeitsbereich im Netzwerk von anderen Arbeitsbereichen isoliert ist. Azure Synapse bietet in einem Arbeitsbereich verschiedene Analysefunktionen: Datenintegration, Apache Spark, SQL-Pool und SQL On-Demand.
 
-Wenn Ihr Arbeitsbereich über ein verwaltetes Arbeitsbereichs-VNET verfügt, werden Datenintegrations- und Spark-Ressourcen darin bereitgestellt. Ein verwaltetes Arbeitsbereichs-VNET bietet für Spark-Aktivitäten auch eine Isolation auf Benutzerebene, da sich jeder Spark-Cluster in einem eigenen Subnetz befindet.
+Wenn Ihr Arbeitsbereich über ein verwaltetes virtuelles Arbeitsbereichsnetzwerk verfügt, werden Datenintegrations- und Spark-Ressourcen darin bereitgestellt. Ein verwaltetes virtuelles Arbeitsbereichsnetzwerk bietet für Spark-Aktivitäten auch eine Isolation auf Benutzerebene, da sich jeder Spark-Cluster in einem eigenen Subnetz befindet.
 
-SQL-Pool und SQL On-Demand sind mehrinstanzenfähig und befinden sich daher außerhalb des verwalteten Arbeitsbereichs-VNET. Für die arbeitsbereichsinterne Kommunikation mit SQL-Pool und SQL On-Demand werden private Azure-Links verwendet. Diese privaten Links werden automatisch erstellt, wenn Sie einen Arbeitsbereich mit einem verknüpften verwalteten Arbeitsbereichs-VNET erstellen.
+SQL-Pool und SQL On-Demand sind mehrinstanzenfähig und befinden sich daher außerhalb des verwalteten virtuellen Arbeitsbereichsnetzwerks. Für die arbeitsbereichsinterne Kommunikation mit SQL-Pool und SQL On-Demand werden private Azure-Links verwendet. Diese privaten Links werden automatisch erstellt, wenn Sie einen Arbeitsbereich mit einem verknüpften verwalteten virtuellen Arbeitsbereichsnetzwerk erstellen.
 
 >[!IMPORTANT]
->Nachdem der Arbeitsbereich erstellt wurde, kann diese Arbeitsbereichskonfiguration nicht mehr geändert werden. So ist es beispielsweise nicht möglich, die Konfiguration eines Arbeitsbereichs, der mit keinem verwalteten Arbeitsbereichs-VNET verknüpft ist, zu ändern und ihn mit einem VNET zu verknüpfen. Analog dazu ist es nicht möglich, einen Arbeitsbereich mit verknüpftem verwalteten Arbeitsbereichs-VNET neu zu konfigurieren, um die Verknüpfung mit dem VNET aufzuheben.
+>Nachdem der Arbeitsbereich erstellt wurde, kann diese Arbeitsbereichskonfiguration nicht mehr geändert werden. So ist es beispielsweise nicht möglich, die Konfiguration eines Arbeitsbereichs, der mit keinem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist, zu ändern und ihn mit einem virtuellen Netzwerk zu verknüpfen. Analog dazu ist es nicht möglich, die Konfiguration eines Arbeitsbereichs, der mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist, zu ändern und die Verknüpfung mit einem virtuellen Netzwerk aufzuheben.
 
-## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Erstellen eines Azure Synapse-Arbeitsbereichs mit einem verwalteten Arbeitsbereichs-VNET
+## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-virtual-network"></a>Erstellen eines Azure Synapse-Arbeitsbereichs mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk
 
 Registrieren Sie den Netzwerkressourcenanbieter, falls dies noch nicht geschehen ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Wählen Sie in der Liste der Ressourcenanbieter *Microsoft.Network* aus, wenn Sie die [Registrierung durchführen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
 
-Wenn Sie einen Azure Synapse-Arbeitsbereich mit verknüpftem verwaltetem Arbeitsbereichs-VNET erstellen möchten, wählen Sie im Azure-Portal die Registerkarte **Sicherheit + Netzwerkbetrieb** aus, und aktivieren Sie das Kontrollkästchen **Verwaltetes VNET aktivieren**.
+Wenn Sie einen Azure Synapse-Arbeitsbereich mit einem verknüpften verwalteten virtuellen Arbeitsbereichsnetzwerk erstellen möchten, wählen Sie im Azure-Portal die Registerkarte **Sicherheit + Netzwerkbetrieb** aus, und aktivieren Sie das Kontrollkästchen **Verwaltetes VNET aktivieren**.
 
-Ist das Kontrollkästchen deaktiviert, wird Ihr Arbeitsbereich nicht mit einem VNET verknüpft.
+Ist das Kontrollkästchen deaktiviert, wird Ihr Arbeitsbereich nicht mit einem virtuellen Netzwerk verknüpft.
 
 >[!IMPORTANT]
->In einem Arbeitsbereich mit verwaltetem Arbeitsbereichs-VNET können nur private Links verwendet werden.
+>Sie können private Links nur in einem Arbeitsbereich mit verwaltetem virtuellem Arbeitsbereichsnetzwerk verwenden.
 
-![Aktivieren des verwalteten Arbeitsbereichs-VNET](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
+![Aktivieren eines verwalteten virtuellen Arbeitsbereichsnetzwerks](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->Der gesamte ausgehende Datenverkehr aus dem verwalteten Arbeitsbereichs-VNet wird in Zukunft, mit Ausnahme von Datenverkehr durch verwaltete private Endpunkte, blockiert. Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen, die extern zu dem Arbeitsbereich sind. 
+>Der gesamte ausgehende Datenverkehr aus dem verwalteten virtuellen Arbeitsbereichsnetzwerk wird in Zukunft blockiert – mit Ausnahme von Datenverkehr über verwaltete private Endpunkte. Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen, die extern zu dem Arbeitsbereich sind. 
 
-Wenn Sie überprüfen möchten, ob Ihr Azure Synapse-Arbeitsbereich mit einem verwalteten Arbeitsbereichs-VNET verknüpft ist, wählen Sie im Azure-Portal die Option **Übersicht** aus.
+Wenn Sie überprüfen möchten, ob Ihr Azure Synapse-Arbeitsbereich mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist, wählen Sie im Azure-Portal die Option **Übersicht** aus.
 
 ![Arbeitsbereichsübersicht im Azure-Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 

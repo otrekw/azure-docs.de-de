@@ -3,21 +3,24 @@ title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v2.1 für Python'
 description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Speicherclientbibliothek v2.1 für Python, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 47ead1be1a81c59da148ea829b61b608a35c45ef
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561337"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292744"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Schnellstart: Verwalten von Blobs per Python v2.1 SDK
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mit Python verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Sie führen das Hochladen, Herunterladen und Auflisten von Blobs und das Erstellen und Löschen von Containern durch.
+
+> [!NOTE]
+> In dieser Schnellstartanleitung wird eine Legacy-Version der Azure Blob Storage-Clientbibliothek verwendet. Informationen zu den ersten Schritten mit der neuesten Version finden Sie unter [Schnellstart: Verwalten von Blobs per Python v12 SDK](storage-quickstart-blobs-python.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

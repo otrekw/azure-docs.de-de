@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: c4d44b1bf645132f5c2d6e863dbe0c93f024c7ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066940"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App
 
@@ -36,7 +36,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Hinzufügen einer Post-Funktion zum hero-Dienst
 
-1. Öffnen Sie in Visual Studio Code die Dateien **routes.js** und **hero.service.js** mithilfe der Schaltfläche **Editor teilen**![Schaltfläche „Editor teilen“ in Visual Studio](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png) nebeneinander.
+1. Öffnen Sie in Visual Studio Code die Dateien **routes.js** und **hero.service.js** mit der Schaltfläche **Editor teilen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::.
 
     Wie Sie sehen, wird in Zeile 7 von „routes.js“ die Funktion `getHeroes` in Zeile 5 von **hero.service.js** aufgerufen.  Die gleiche Zuordnung muss für die Post-, Put- und Delete-Funktionen erstellt werden. 
 
@@ -84,7 +84,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     });
     ```
 
-5. Führen Sie die App aus, um sich zu vergewissern, dass alles geklappt hat. Speichern Sie alle Ihre Änderungen in Visual Studio Code. Wählen Sie im linken Bereich die Schaltfläche **Debuggen**![Symbol „Debuggen“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) und anschließend die Schaltfläche **Debugging starten**![Symbol „Debugging starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Führen Sie die App aus, um sich zu vergewissern, dass alles geklappt hat. Speichern Sie in Visual Studio Code Ihre gesamten Änderungen, und wählen Sie links die Schaltfläche **Debuggen** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png"::: und dann die Schaltfläche **Debuggen starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png"::: aus.
 
 6. Wechseln Sie nun wieder zu Ihrem Internetbrowser, drücken Sie F12 (auf den meisten Computern), um die Entwicklungstools zu öffnen, und navigieren Sie zur Registerkarte „Netzwerk“. Navigieren Sie zu `http://localhost:3000`, um sich die über das Netzwerk abgewickelten Aufrufe anzusehen.
 
@@ -169,7 +169,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     };
     ```
 
-4. Wählen Sie nach der Aktualisierung des Codes in Visual Studio Code die Schaltfläche **Neu starten**![Schaltfläche „Neu starten“ in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
+4. Da wir den Code nun aktualisiert haben, können Sie in Visual Studio Code die Schaltfläche **Neu starten** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png"::: auswählen.
 
 5. Aktualisieren Sie die Seite in Ihrem Internetbrowser, und wählen Sie die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen). Fügen Sie einen neuen Helden mit der ID „9“, dem Namen „Starlord“ und dem Spruch „Hi“ hinzu. Wählen Sie die Schaltfläche **Save** (Speichern), um den neuen Helden zu speichern.
 

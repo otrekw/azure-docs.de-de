@@ -5,12 +5,12 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Node.js-Anwendung mit mehreren Diensten in Azure Kubernetes Service debuggen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2c87dedda1db97a033526c809de735fe036120ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006981"
 ---
 # <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Ausführen mehrerer abhängiger Dienste: Node.js und Visual Studio Code mit Azure Dev Spaces
 
@@ -20,7 +20,7 @@ In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von Azure Dev Spaces A
 
 In diesem Abschnitt erstellen Sie einen zweiten Dienst (`mywebapi`) und lassen ihn von `webfrontend` aufrufen. Jeder Dienst wird in einem separaten Container ausgeführt. Anschließend debuggen Sie beide Container.
 
-![](media/common/multi-container.png)
+![Das Diagramm zeigt den Web-Front-End-Dienst, der den mywebapi-Dienst aufruft (wie durch einen Pfeil angezeigt).](media/common/multi-container.png)
 
 ### <a name="open-sample-code-for-mywebapi"></a>Öffnen von Beispielcode für *mywebapi*
 Der Beispielcode für `mywebapi` für diese Anleitung sollte bereits im Ordner `samples` enthalten sein. (Rufen Sie andernfalls https://github.com/Azure/dev-spaces auf, und klicken Sie auf **Klonen oder herunterladen**, um das GitHub-Repository herunterzuladen.) Der Code für diesen Abschnitt befindet sich in `samples/nodejs/getting-started/mywebapi`.

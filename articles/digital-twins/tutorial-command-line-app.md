@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391824"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124557"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Erkunden von Azure Digital Twins mit einer Beispielclient-App
 
-In diesem Tutorial wird eine Beispielanwendung eingeführt, die eine Befehlszeilenclientanwendung für die Interaktion mit einer Azure Digital Twins-Instanz implementiert. Die Client-App ähnelt der unter [Tutorial: Codieren einer Client-App](tutorial-code.md) geschriebenen App.
+In diesem Tutorial wird eine Beispielanwendung eingeführt, die eine Befehlszeilenclientanwendung für die Interaktion mit einer Azure Digital Twins-Instanz implementiert. Die Client-App ähnelt der unter [*Tutorial: Codieren einer Client-App*](tutorial-code.md) geschriebenen App.
 
 Sie können dieses Beispiel verwenden, um grundlegende Azure Digital Twins-Aktionen auszuführen, etwa Hochladen von Modellen, Erstellen und Ändern von Zwillingen und Erstellen von Beziehungen. Sie können sich auch den Code des Beispiels ansehen, um mehr über die Azure Digital Twins-APIs zu erfahren, und die Implementierung eigener Befehle üben, indem Sie das Beispielprojekt wunschgemäß anpassen.
 
@@ -78,7 +78,7 @@ Achten Sie darauf, die Datei vor dem Fortfahren zu speichern.
 > Wenn Sie ein eigenes Modell erstellen möchten, können Sie den *Room*-Modellcode in eine neue Datei einfügen, die Sie mit der Erweiterung *.json* im Ordner *AdtSampleApp\SampleClientApp\Models* speichern. Fügen Sie dann zum Experimentieren Eigenschaften und Beziehungen hinzu, um die gewünschten Informationen darzustellen. Sie können sich auch die anderen Beispielmodelle in diesem Ordner ansehen, um sich inspirieren zu lassen.
 
 > [!TIP] 
-> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie in [Gewusst wie: Analysieren und Validieren von Modellen](how-to-use-parser.md).
+> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie unter [ *Clientseitige DTDL-Parserbibliothek*](how-to-use-parser.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Erste Schritte mit der Befehlszeilen-App
 
@@ -129,7 +129,7 @@ CreateModels Room
 ```
 
 Da Modelle nicht überschrieben werden können, wird jetzt ein Dienstfehler zurückgegeben.
-Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [Gewusst wie: Verwalten benutzerdefinierter Modelle](how-to-manage-model.md).
+Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [*Anleitungen: Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -285,7 +285,7 @@ Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Das Projekt in diesem Tutorial bildet die Grundlage für das nächste Tutorial: [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md). Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die hier eingerichteten Ressourcen behalten, um diese Azure Digital Twins-Instanz und die konfigurierte Beispiel-App weiterhin zu verwenden.
+Das Projekt in diesem Tutorial bildet die Grundlage für das nächste Tutorial: [*Tutorials: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md). Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die hier eingerichteten Ressourcen behalten, um diese Azure Digital Twins-Instanz und die konfigurierte Beispiel-App weiterhin zu verwenden.
 * Sie können die Befehle `DeleteAllTwins` und `DeleteAllModels` der Beispiel-App nutzen, um die Zwillinge und Modelle in Ihrer Instanz zu löschen. Dadurch können Sie im nächsten Tutorial von Grund auf neu beginnen.
 
 Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht mehr benötigen, führen Sie die folgenden Schritte zum Löschen aus.
@@ -316,10 +316,10 @@ In diesem Tutorial haben Sie erste Schritte mit Azure Digital Twins ausgeführt,
 Fahren Sie mit dem nächsten Tutorial fort, um die Beispielbefehlszeilen-App in Kombination mit anderen Azure-Diensten zu verwenden und ein datengesteuertes End-to-End-Szenario zu erhalten:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md)
+> [*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)
 
 Sehen Sie sich alternativ die Konzeptdokumentation an, um mehr über die Elemente zu erfahren, mit denen Sie in diesem Tutorial gearbeitet haben:
-* [Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins](concepts-models.md)
+* [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md)
 
 In den Anleitungen können Sie sich auch ausführlicher über die Prozesse in diesem Tutorial informieren:
-* [Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md)
+* [*Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)

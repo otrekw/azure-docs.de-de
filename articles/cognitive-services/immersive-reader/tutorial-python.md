@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: tracking-python
-ms.openlocfilehash: ea9e6e1f06bacd28a4e9894039de824c3a5b4af4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 93a1ac9d6a82997ec7552341eb4829728e8471fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044939"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076902"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Tutorial: Starten con Plastischer Reader unter Verwendung des Python-Beispielprojekts
+# <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Tutorial: Starten des plastischen Readers unter Verwendung des Python-Beispielprojekts
 
-In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist und wie das Tool bewährte Techniken implementiert, um das Leseverständnis von Sprachenlernenden, Leseanfängern und Schülern mit Lernunterschieden zu verbessern. In diesem Tutorial erfahren Sie, wie Sie eine Python-Webanwendung erstellen, die Plastischer Reader startet. In diesem Tutorial lernen Sie Folgendes:
+In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist und wie das Tool bewährte Techniken implementiert, um das Leseverständnis von Sprachenlernenden, Leseanfängern und Schülern mit Lernunterschieden zu verbessern. In diesem Tutorial erfahren Sie, wie Sie eine Python-Webanwendung erstellen, die den plastischen Reader startet. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Python-Web-App mit pip, Flask, Jinja und virtualenv unter Verwendung eines Beispielprojekts
@@ -32,8 +32,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](./how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
-* [Git-Client](https://git-scm.com/)
-* [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk)
+* [Git](https://git-scm.com/).
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk).
 * [Python](https://www.python.org/downloads/) und [pip](https://docs.python.org/3/installing/index.html). Ab Python 3.4 ist pip standardmäßig in den binären Python-Installationsprogrammen enthalten.
 * [Flask](https://flask.palletsprojects.com/en/1.0.x/)
 * [Jinja](http://jinja.pocoo.org/docs/2.10/)
@@ -43,7 +43,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="configure-authentication-credentials"></a>Konfigurieren von Anmeldeinformationen für die Authentifizierung
 
-Erstellen Sie eine neue Datei namens _.env_, und fügen Sie den folgenden Code in die Datei ein. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
+Erstellen Sie eine neue Datei namens **.env**, und fügen Sie die folgenden Namen und Werte ein. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -52,9 +52,9 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Committen Sie diese Datei nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind.
+Committen Sie diese Datei nicht in die Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind.
 
-Der API-Endpunkt **getimmersivereadertoken** muss durch eine Authentifizierung (beispielsweise [OAuth](https://oauth.net/2/)) geschützt werden, um zu verhindern, dass nicht autorisierte Benutzer Token abrufen und für Ihren Dienst „Plastischer Reader“ und die Abrechnung verwenden. Dies wird jedoch in diesem Tutorial nicht behandelt.
+Schützen Sie den API-Endpunkt **getimmersivereadertoken** mit einer Art von Authentifizierung, etwa [OAuth](https://oauth.net/2/). Durch die Authentifizierung wird verhindert, dass nicht autorisierte Benutzer Token für den Dienst „Plastischer Reader“ und die Abrechnung erhalten. Dies ist jedoch nicht Inhalt dieses Tutorials.
 
 ## <a name="create-a-python-web-app-on-windows"></a>Erstellen einer Python-Web-App unter Windows
 
@@ -62,7 +62,7 @@ Erstellen Sie mithilfe von `flask` eine Python-Web-App unter Windows.
 
 Installieren Sie [Git](https://git-scm.com/).
 
-Öffnen Sie im Anschluss an die Git-Installation eine Eingabeaufforderung, und klonen Sie das Git-Repository des SDK für Plastischer Reader in einem Ordner auf Ihrem Computer.
+Öffnen Sie im Anschluss an die Git-Installation eine Eingabeaufforderung, und klonen Sie das Git-Repository des Immersive Reader SDK in einem Ordner auf Ihrem Computer.
 
 ```cmd
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -70,19 +70,19 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Installieren Sie [Python](https://www.python.org/downloads/).
 
-Aktivieren Sie das Kontrollkästchen für das Hinzufügen von Python zu PATH.
+Aktivieren Sie das Kontrollkästchen für das **Hinzufügen von Python zu PATH**.
 
 ![Dialogfeld für die Python-Installation unter Windows: Schritt 1](./media/pythoninstallone.jpg)
 
-Fügen Sie optionale Features hinzu, indem Sie die entsprechenden Kontrollkästchen aktivieren, und klicken Sie anschließend auf die Schaltfläche „Next“ (Weiter).
+Fügen Sie unter **Optionale Features** Features hinzu, indem Sie die entsprechenden Kontrollkästchen aktivieren, und wählen Sie dann **Weiter** aus.
 
 ![Dialogfeld für die Python-Installation unter Windows: Schritt 2](./media/pythoninstalltwo.jpg)
 
-Wählen Sie „Custom installation“ (Benutzerdefinierte Installation) aus, legen Sie den Installationspfad auf Ihren Stammordner (beispielsweise `C:\Python37-32\`) fest, und klicken Sie anschließend auf die Schaltfläche „Install“ (Installieren).
+Wählen Sie **Custom installation** (Benutzerdefinierte Installation) aus, und legen Sie den Installationspfad auf Ihren Stammordner (beispielsweise `C:\Python37-32\`) fest. Wählen Sie dann **Installieren** aus.
 
 ![Dialogfeld für die Python-Installation unter Windows: Schritt 3](./media/pythoninstallthree.jpg)
 
-Öffnen nach Anschluss der Python-Installation eine Eingabeaufforderung, und wechseln Sie mithilfe von `cd` zum Ordner mit den Python-Skripts.
+Öffnen Sie nach Anschluss der Python-Installation eine Eingabeaufforderung, und wechseln Sie mithilfe von `cd` zum Ordner mit den Python-Skripts.
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -94,13 +94,13 @@ Installieren Sie Flask.
 pip install flask
 ```
 
-Installieren Sie Jinja2. Hierbei handelt es sich um eine umfassende Vorlagen-Engine für Python.
+Installieren Sie Jinja2. Hierbei handelt es sich um eine Vorlagen-Engine mit umfassenden Funktionen für Python.
 
 ```cmd
 pip install jinja2
 ```
 
-Installieren Sie virtualenv. Hierbei handelt es sich um ein Tool zum Erstellen isolierter Python-Umgebungen.
+Installieren Sie virtualenv. Mit diesem Tool werden isolierte Python-Umgebungen erstellt.
 
 ```cmd
 pip install virtualenv
@@ -136,7 +136,7 @@ Wechseln Sie mithilfe von `cd` zum Stammordner des Beispielprojekts.
 cd C:\immersive-reader-sdk\js\samples\advanced-python
 ```
 
-Stellen Sie eine Verbindung zwischen dem Beispielprojekt und der Umgebung her. Dadurch wird die neu erstellte virtuelle Umgebung dem Stammordner des Beispielprojekts zugeordnet.
+Stellen Sie eine Verbindung zwischen dem Beispielprojekt und der Umgebung her. Mit dieser Aktion wird die neu erstellte virtuelle Umgebung dem Stammordner des Beispielprojekts zugeordnet.
 
 ```cmd
 setprojectdir .
@@ -156,7 +156,7 @@ Deaktivieren Sie die Umgebung.
 deactivate
 ```
 
-Das Präfix `(advanced-python)` sollte nun nicht mehr vorhanden sein, da die Umgebung deaktiviert ist.
+Das Präfix `(advanced-python)` sollte nicht mehr vorhanden sein, da die Umgebung deaktiviert ist.
 
 Wenn Sie die Umgebung wieder aktivieren möchten, führen Sie `workon advanced-python` im Stammordner des Beispielprojekts aus.
 
@@ -164,7 +164,7 @@ Wenn Sie die Umgebung wieder aktivieren möchten, führen Sie `workon advanced-p
 workon advanced-python
 ```
 
-### <a name="launch-the-immersive-reader-with-sample-content"></a>Starten von Plastischer Reader mit Beispielinhalt
+### <a name="start-the-immersive-reader-with-sample-content"></a>Starten von Plastischer Reader mit Beispielinhalt
 
 Wenn die Umgebung aktiv ist, geben Sie `flask run` im Stammordner des Beispielprojekts ein, um das Beispielprojekt auszuführen.
 
@@ -172,7 +172,7 @@ Wenn die Umgebung aktiv ist, geben Sie `flask run` im Stammordner des Beispielpr
 flask run
 ```
 
-Navigieren Sie in Ihrem Browser zu _http://localhost:5000_ .
+Öffnen Sie Ihren Browser, und navigieren Sie zu http://localhost:5000.
 
 ## <a name="create-a-python-web-app-on-osx"></a>Erstellen einer Python-Web-App unter OSX
 
@@ -180,7 +180,7 @@ Erstellen Sie mithilfe von `flask` eine Python-Web-App unter OSX.
 
 Installieren Sie [Git](https://git-scm.com/).
 
-Öffnen Sie im Anschluss an die Git-Installation ein Terminal, und klonen Sie das Git-Repository des SDK für Plastischer Reader in einem Ordner auf Ihrem Computer.
+Öffnen Sie im Anschluss an die Git-Installation ein Terminal, und klonen Sie das Git-Repository des Immersive Reader SDK in einem Ordner auf Ihrem Computer.
 
 ```bash
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -190,7 +190,7 @@ Installieren Sie [Python](https://www.python.org/downloads/).
 
 Der Python-Stammordner (beispielsweise `Python37-32`) sollte sich nun im Ordner „Applications“ befinden.
 
-Öffnen nach Anschluss der Python-Installation ein Terminal, und wechseln Sie mithilfe von `cd` zum Ordner mit den Python-Skripts.
+Öffnen Sie nach Anschluss der Python-Installation ein Terminal, und wechseln Sie mithilfe von `cd` zum Ordner mit den Python-Skripts.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -202,7 +202,7 @@ Installieren Sie pip.
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ```
 
-Führen Sie zur Vermeidung von Berechtigungsproblemen anschließend Folgendes aus, um pip für den aktuell angemeldeten Benutzer zu installieren:
+Führen Sie zur Vermeidung von Berechtigungsproblemen den folgenden Code aus, um pip für den aktuell angemeldeten Benutzer zu installieren:
 
 ```bash
 python get-pip.py --user
@@ -215,8 +215,8 @@ sudo nano /etc/paths
 - Geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
 - Fügen Sie den Pfad Ihrer pip-Installation Ihrer PATH-Variablen hinzu.
 - Geben Sie den hinzuzufügenden Pfad am Ende der Datei als letztes Listenelement ein (beispielsweise `PATH=$PATH:/usr/local/bin`).
-- Drücken Sie zum Beenden die Tastenkombination CTRL+X.
-- Geben Sie `Y` ein, um den geänderten Puffer zu speichern.
+- Drücken Sie zum Beenden **STRG+X**.
+- Geben Sie **J** ein, um den geänderten Puffer zu speichern.
 - Das ist alles! Geben Sie zu Testzwecken in einem neuen Terminalfenster Folgendes ein: `echo $PATH`.
 
 Installieren Sie Flask.
@@ -225,13 +225,13 @@ Installieren Sie Flask.
 pip install flask --user
 ```
 
-Installieren Sie Jinja2. Hierbei handelt es sich um eine umfassende Vorlagen-Engine für Python.
+Installieren Sie Jinja2. Hierbei handelt es sich um eine Vorlagen-Engine mit umfassenden Funktionen für Python.
 
 ```bash
 pip install Jinja2 --user
 ```
 
-Installieren Sie virtualenv. Hierbei handelt es sich um ein Tool zum Erstellen isolierter Python-Umgebungen.
+Installieren Sie virtualenv. Mit diesem Tool werden isolierte Python-Umgebungen erstellt.
 
 ```bash
 pip install virtualenv --user
@@ -255,13 +255,13 @@ Installieren Sie das Modul „python-dotenv“. Dieses Modul liest das Schlüsse
 pip install python-dotenv --user
 ```
 
-Wählen Sie einen Ordner für Ihre virtuellen Umgebungen, und führen Sie den folgenden Befehl aus:
+Wählen Sie einen Ordner für Ihre virtuellen Umgebungen aus, und führen Sie den folgenden Befehl aus:
 
 ```bash
 mkdir ~/.virtualenvs
 ```
 
-Wechseln Sie mithilfe von `cd` zum Ordner mit der Python-Beispielanwendung des SDK für Plastischer Reader.
+Wechseln Sie mithilfe von `cd` zum Ordner mit der Python-Beispielanwendung des Immersive Reader SDK.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -273,7 +273,7 @@ Erstellen Sie eine virtuelle Umgebung.
 mkvirtualenv -p /usr/local/bin/python3 advanced-python
 ```
 
-Stellen Sie eine Verbindung zwischen dem Beispielprojekt und der Umgebung her. Dadurch wird die neu erstellte virtuelle Umgebung dem Stammordner des Beispielprojekts zugeordnet.
+Stellen Sie eine Verbindung zwischen dem Beispielprojekt und der Umgebung her. Mit dieser Aktion wird die neu erstellte virtuelle Umgebung dem Stammordner des Beispielprojekts zugeordnet.
 
 ```bash
 setprojectdir .
@@ -293,7 +293,7 @@ Deaktivieren Sie die Umgebung.
 deactivate
 ```
 
-Das Präfix `(advanced-python)` sollte nun nicht mehr vorhanden sein, da die Umgebung deaktiviert ist.
+Das Präfix `(advanced-python)` sollte nicht mehr vorhanden sein, da die Umgebung deaktiviert ist.
 
 Wenn Sie die Umgebung wieder aktivieren möchten, führen Sie `workon advanced-python` im Stammordner des Beispielprojekts aus.
 
@@ -301,7 +301,7 @@ Wenn Sie die Umgebung wieder aktivieren möchten, führen Sie `workon advanced-p
 workon advanced-python
 ```
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Starten von Plastischer Reader mit Beispielinhalt
+## <a name="start-the-immersive-reader-with-sample-content"></a>Starten von Plastischer Reader mit Beispielinhalt
 
 Wenn die Umgebung aktiv ist, geben Sie `flask run` im Stammordner des Beispielprojekts ein, um das Beispielprojekt auszuführen.
 
@@ -309,9 +309,9 @@ Wenn die Umgebung aktiv ist, geben Sie `flask run` im Stammordner des Beispielpr
 flask run
 ```
 
-Navigieren Sie in Ihrem Browser zu _http://localhost:5000_ .
+Öffnen Sie Ihren Browser, und navigieren Sie zu http://localhost:5000.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
-* Sehen Sie sich Codebeispiele auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/).
+* Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
+* Sehen Sie sich Codebeispiele auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/) an.

@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035025"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory
 
 Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) können Benutzer ihr Kennwort ohne Beteiligung eines Administrators oder des Helpdesks ändern oder zurücksetzen. Wenn das Konto eines Benutzers gesperrt ist oder dieser sein Kennwort vergessen hat, kann er die Schritte zum Entsperren ausführen und anschließend weiterarbeiten. Dies führt zu weniger Anrufen beim Helpdesk und Produktivitätsverlusten, wenn sich ein Benutzer nicht an seinem Gerät oder einer Anwendung anmelden kann.
 
 > [!IMPORTANT]
-> In dieser Schnellstartanleitung erfahren Sie, wie ein Administrator die Self-Service-Kennwortzurücksetzung aktivieren kann. Wenn Sie bereits als Endbenutzer für die Self-Service-Kennwortzurücksetzung registriert sind und wieder zu Ihrem Konto zurückkehren müssen, gehen Sie zu https://aka.ms/sspr.
+> In diesem Tutorial erfahren Sie, wie ein Administrator die Self-Service-Kennwortzurücksetzung aktivieren kann. Wenn Sie bereits als Endbenutzer für die Self-Service-Kennwortzurücksetzung registriert sind und wieder zu Ihrem Konto zurückkehren müssen, gehen Sie zu https://aka.ms/sspr.
 >
 > Wenn Ihr IT-Team die Möglichkeit zum Zurücksetzen Ihres eigenen Kennworts nicht aktiviert hat, wenden Sie sich an den Helpdesk, um weitere Unterstützung zu erhalten.
 
@@ -41,9 +41,9 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*
 * Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. In diesem Tutorial testen Sie SSPR für Endbenutzer mit diesem Konto.
-    * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../add-users-azure-active-directory.md) weiter.
+    * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) weiter.
 * Eine Gruppe, in der der Benutzer ohne Administratorrechte Mitglied ist, z. B. *SSPR-Test-Group*. In diesem Tutorial aktivieren Sie SSPR für diese Gruppe.
-    * Wenn Sie eine Gruppe erstellen müssen, finden Sie weitere Informationen unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../active-directory-groups-create-azure-portal.md).
+    * Wenn Sie eine Gruppe erstellen müssen, finden Sie weitere Informationen unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-self-service-password-reset"></a>Aktivieren der Self-Service-Kennwortzurücksetzung
 
@@ -78,8 +78,8 @@ Wenn Benutzer ihr Konto entsperren oder das Kennwort zurücksetzen müssen, werd
     * *Code der mobilen App*
     * *E-Mail*
     * *Mobiltelefon*
-    * *Bürotelefon*
-    * *Sicherheitsfragen*
+
+    Zusätzliche Authentifizierungsmethoden, z. B. *Bürotelefon* oder *Sicherheitsfragen*, können je nach Ihren geschäftlichen Anforderungen aktiviert werden.
 
 1. Wählen Sie zum Anwenden der Authentifizierungsmethoden **Speichern** aus.
 
@@ -95,7 +95,7 @@ Ein Administrator kann diese Kontaktinformationen manuell angeben, oder Benutzer
 
 ## <a name="configure-notifications-and-customizations"></a>Konfigurieren von Benachrichtigungen und Anpassungen
 
-Um Benutzer über die Kontoaktivität auf dem Laufenden zu halten, können Sie E-Mail-Benachrichtigungen konfigurieren, die im Falle eines SSPR-Ereignisses gesendet werden. Diese Benachrichtigungen können sowohl für reguläre Benutzerkonten als auch für Administratorkonten eingerichtet werden. Für Administratorkonten bietet diese Benachrichtigung eine zusätzliche Information, wenn das Kennwort eines privilegierten Administratorkontos per SSPR zurückgesetzt wird.
+Um Benutzer über die Kontoaktivität auf dem Laufenden zu halten, können Sie E-Mail-Benachrichtigungen konfigurieren, die im Falle eines SSPR-Ereignisses gesendet werden. Diese Benachrichtigungen können sowohl für reguläre Benutzerkonten als auch für Administratorkonten eingerichtet werden. Für Administratorkonten bietet diese Benachrichtigung eine zusätzliche Information, wenn das Kennwort eines privilegierten Administratorkontos per SSPR zurückgesetzt wird. Alle globalen Administratoren werden benachrichtigt, wenn SSPR für ein Administratorkonto verwendet wird.
 
 1. Navigieren Sie über das Menü auf der linken Seite zur Seite **Benachrichtigungen**, und konfigurieren Sie dort die folgenden Optionen:
 

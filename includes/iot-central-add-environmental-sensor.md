@@ -5,15 +5,15 @@ services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002042"
 ---
 ## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage
 
@@ -79,12 +79,11 @@ Fügen Sie der Gerätevorlage, die Sie im vorherigen Abschnitt erstellt haben, i
 
 1. Wählen Sie auf der Seite **Geräte** die Gerätevorlage **Environmental Sensor** (Umgebungssensor) aus.
 
-    > [!TIP]
-    > Die Vorlage muss ausgewählt werden, bevor Sie **+ Neu** auswählen. Anderenfalls wird ein nicht zugeordnetes Gerät erstellt.
-
 1. Wählen Sie **+ Neu** aus.
 
-1. Stellen Sie sicher, dass **Simuliert** auf **Aus** festgelegt ist. Klicken Sie anschließend auf **Erstellen**.
+1. Vergewissern Sie sich im Dialogfenster **Neues Gerät erstellen**, dass als Vorlagentyp **Environmental Sensor** (Umgebungssensor) und **Simulate this device?** (Dieses Gerät simulieren?) auf **Nein** festgelegt ist.
+
+1. Klicken Sie anschließend auf **Erstellen**.
 
 Klicken Sie auf den Gerätenamen, und wählen Sie anschließend die Option **Verbinden** aus. Notieren Sie sich die auf der Seite **Geräteverbindung** angegebenen Geräteverbindungsinformationen: **ID-Bereich**, **Geräte-ID** und **Primärschlüssel**. Diese Werte werden beim Erstellen des Gerätecodes benötigt:
 

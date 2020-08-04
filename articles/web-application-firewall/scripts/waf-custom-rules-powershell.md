@@ -1,5 +1,5 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Erstellen von benutzerdefinierten WAF-Regeln'
+title: Azure PowerShell-Skriptbeispiel, das benutzerdefinierte WAF-Regeln verwendet
 description: 'Azure PowerShell-Skriptbeispiel: Erstellen von benutzerdefinierten Regeln für Web Application Firewall auf Application Gateway'
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: sample
 ms.date: 09/30/2019
 ms.author: victorh
-ms.openlocfilehash: 950f71c284268a9aa2773eb57213e266622d85bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b73b15e7f174868fa4c0a9518725a4585cf3dffe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73509554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035570"
 ---
 # <a name="create-waf-custom-rules-with-azure-powershell"></a>Erstellen von benutzerdefinierten WAF-Regeln mit Azure PowerShell
 
@@ -71,4 +71,4 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu benutzerdefinierten WAF-Regeln finden Sie unter [Custom rules for Web Application Firewall](../ag/custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall).
-- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+- Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

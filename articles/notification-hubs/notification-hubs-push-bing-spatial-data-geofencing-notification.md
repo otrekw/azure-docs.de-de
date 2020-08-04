@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116936"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Tutorial: Senden standortbasierter Pushbenachrichtigungen mit Notification Hubs und Bing Spatial Data
 
@@ -63,7 +63,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
     Die Pipedatei stellt diese Entität dar:
 
-    ![Screenshot eines Teils des Hafengebiets von San Francisco mit einem roten Polygon, das einen Bereich der Piers umschließt.](./media/notification-hubs-geofence/bing-maps-geofence.png)
+    ![Screenshot einer Karte des Hafengebiets von San Francisco mit einem roten Polygon, das einen Bereich der Piers umschließt](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Führen Sie auf der Seite **Datenquelle hochladen** die folgenden Aktionen aus:
    1. Wählen Sie **Pipe** als **Datenformat** aus.
    2. Navigieren Sie zu der Datei `NotificationHubGeofence.pipe`, die Sie im vorherigen Schritt erstellt haben, und wählen Sie sie aus.
@@ -164,7 +164,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
     }
     ```
 
-    Weitere Informationen zum Abrufen des Standorts von Benutzern in UWP-Apps finden Sie unter [Abrufen der Position eines Benutzers](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
+    Weitere Informationen zum Abrufen des Standorts von Benutzern in UWP-Apps finden Sie unter [Abrufen der Position eines Benutzers](/windows/uwp/maps-and-location/get-location).
 5. Um zu überprüfen, ob die Standorterfassung funktioniert, öffnen Sie die Codeseite der Hauptseite (`MainPage.xaml.cs`). Erstellen Sie einen neuen Ereignishandler für das `Loaded`-Ereignis im `MainPage`-Konstruktor.
 
     ```csharp
@@ -393,7 +393,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 Es gibt einige Schritte, deren Ausführung unter Umständen erforderlich ist, um sicherzustellen, dass die Lösung bereit für die Produktion ist.
 
-1. Zunächst sollten Sie sicherstellen, dass die Geofences dynamisch sind. Hierfür ist etwas zusätzliche Arbeit mit der Bing-API erforderlich, um neue Grenzen innerhalb der vorhandenen Datenquelle hochladen zu können. Weitere Informationen finden Sie in der [Dokumentation zur Bing Spatial Data Services-API](https://msdn.microsoft.com/library/ff701734.aspx).
+1. Zunächst sollten Sie sicherstellen, dass die Geofences dynamisch sind. Hierfür ist etwas zusätzliche Arbeit mit der Bing-API erforderlich, um neue Grenzen innerhalb der vorhandenen Datenquelle hochladen zu können. Weitere Informationen finden Sie in der [Dokumentation zur Bing Spatial Data Services-API](/bingmaps/spatial-data-services/).
 2. Außerdem kann es bei der Sicherstellung, dass die Bereitstellung für die richtigen Teilnehmer erfolgt, ratsam sein, das [Tagging](notification-hubs-tags-segment-push-message.md)zu verwenden.
 
-Die in diesem Tutorial vorgestellte Lösung beschreibt ein Szenario, in dem Sie viele verschiedene Plattformen nutzen können, sodass das Geofencing nicht auf systemspezifische Funktionen beschränkt ist. Die universelle Windows-Plattform verfügt aber standardmäßig über Funktionen zum [Erkennen von Geofences](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence).
+Die in diesem Tutorial vorgestellte Lösung beschreibt ein Szenario, in dem Sie viele verschiedene Plattformen nutzen können, sodass das Geofencing nicht auf systemspezifische Funktionen beschränkt ist. Die universelle Windows-Plattform verfügt aber standardmäßig über Funktionen zum [Erkennen von Geofences](/windows/uwp/maps-and-location/set-up-a-geofence).

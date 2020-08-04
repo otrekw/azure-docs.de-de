@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610682"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290654"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -84,7 +84,7 @@ All diese Komponenten werden zusammen auf dem einzelnen lokalen Computer install
 ## <a name="import-the-template-in-vmware"></a>Importieren der Vorlage in VMware
 
 
-1. Melden Sie sich mit dem VMWare vSphere-Client beim VMware vCenter-Server oder beim vSphere ESXi-Host an.
+1. Melden Sie sich mit dem VMware vSphere-Client beim VMware vCenter-Server oder beim vSphere ESXi-Host an.
 2. Wählen Sie im Menü **Datei** die Option **OVF-Vorlage bereitstellen** aus, um den **Assistenten zum Bereitstellen von OVF-Vorlagen** zu starten.
 
      ![OVF-Vorlage](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -113,7 +113,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 Nachdem Sie den Konfigurationsserver eingerichtet haben, registrieren Sie ihn im Tresor.
 
-1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients an.
+1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients ein.
 2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Akzeptieren Sie den Lizenzvertrag, und geben Sie ein Administratorkennwort ein.
 3. Melden Sie sich nach Abschluss der Installation als Administrator am virtuellen Computer an.
 4. Bei der ersten Anmeldung wird das Azure Site Recovery-Konfigurationstool innerhalb weniger Sekunden gestartet.
@@ -169,6 +169,8 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 - Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet.
 - Für das Failback wird standardmäßig automatisch eine passende Richtlinie erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** lautet die Failbackrichtlinie beispielsweise **rep-policy-failback**. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback über Azure initiieren.
+
+Hinweis: Im Szenario „VMware zu Azure“ wird die absturzkonsistente Momentaufnahme in einem Intervall von fünf Minuten erstellt.
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 

@@ -10,15 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092319"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> Das Azure Machine Learning R SDK ist derzeit als Public Preview verfügbar.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Tutorial verwenden Sie das Azure Machine Learning R SDK (Vorschau), um ein logistisches Regressionsmodell zu erstellen, mit dem die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorhergesagt wird. Es wird gezeigt, wie die Azure Machine Learning-Cloudressourcen mit R verwendet werden, um eine skalierbare Umgebung für das Trainieren und Bereitstellen eines Modells zu erhalten.  
 

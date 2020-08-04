@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013265"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure-Web-App mit .NET herzustellen
 
@@ -28,7 +28,7 @@ So führen Sie diesen Schnellstart durch:
 
 * Azure-Abonnement ([kostenloses Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 * [.NET Core 3.1 SDK oder höher](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/overview)
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/)
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -51,7 +51,7 @@ Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault?view=azure-cli
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Notieren Sie sich den zurückgegebenen Tresor-URI (`vaultUri`). Dieser hat das Format „https://<your-keyvault-name>.vault.azure.net/“. Er wird im Schritt [Aktualisieren des Codes](#update-the-code) benötigt.
+Notieren Sie sich das zurückgegebene `vaultUri`-Element. Es hat das Format „https://&lt;your-keyvault-name&gt;.vault.azure.net/“. Er wird im Schritt [Aktualisieren des Codes](#update-the-code) benötigt.
 
 Nun können Sie mithilfe des Befehls [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) ein Geheimnis in Ihrem Schlüsseltresor platzieren. Legen Sie den Namen Ihres Geheimnisses auf „MySecret“ und den Wert auf „Success!“ fest.
 

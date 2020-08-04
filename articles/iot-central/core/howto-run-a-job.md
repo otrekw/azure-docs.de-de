@@ -7,12 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 06/08/2020
 ms.topic: how-to
-ms.openlocfilehash: dec9abc38bc0354ef3d22994a7988bfb006f5769
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6073f71eb21ba4a6739647964d4888044d6ee59a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609729"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283620"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung
 
@@ -43,7 +43,11 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen
     > [!NOTE]
     > Sie können den Verlauf von bis zu 30 Tagen für Ihre zuvor ausgeführten Aufträge anzeigen.
 
-7. Eine Übersicht zu Ihrem Auftrag erhalten Sie, indem Sie den anzuzeigenden Auftrag aus der Liste auswählen. Diese Übersicht enthält die Auftragsdetails, Geräte und Gerätestatuswerte. In dieser Übersicht können Sie auch **Auftragsdetails herunterladen** auswählen, um eine CSV-Datei mit Ihren Auftragsdetails, einschließlich der Geräte und ihrer Statuswerte, herunterzuladen. Diese Informationen können bei der Problembehandlung hilfreich sein:
+7. Klicken Sie auf den gespeicherten Auftrag, und führen Sie ihn durch Klicken auf die Schaltfläche „Ausführen“ aus. Das Popupfenster „Auftrag ausführen“ wird angezeigt. Bestätigen Sie den Vorgang durch Klicken auf die Schaltfläche „Auftrag ausführen“. 
+
+    ![Ausführen eines Auftrags](./media/howto-run-a-job/run-job.png)
+
+8. Der Auftrag durchläuft die Phasen „Ausstehend“, „Wird ausgeführt“ und „Abgeschlossen“. Die Auftragsausführungsdetails enthalten Metriken des Typs „Ergebnis“, Details zu „Dauer“ und das Raster der Geräteliste. In dieser Übersicht können Sie auch **Ergebnisprotokoll** auswählen, um eine CSV-Datei mit Ihren Auftragsdetails, einschließlich der Geräte und ihrer Statuswerte, herunterzuladen. Diese Informationen können bei der Problembehandlung hilfreich sein.
 
     ![Anzeigen des Gerätestatus](./media/howto-run-a-job/download-details.png)
 
@@ -51,13 +55,23 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen
 
 Wenn Sie einen Ihrer gerade ausgeführten Aufträge anhalten möchten, öffnen Sie ihn, und wählen Sie **Beenden**  aus. Der Auftragsstatus wird geändert, um anzugeben, dass der Auftrag angehalten wurde. Im Abschnitt **Zusammenfassung** wird angezeigt, welche Geräte abgeschlossen wurden, fehlgeschlagen sind oder noch ausstehen.
 
-Wenn Sie einen derzeit angehaltenen Auftrag ausführen möchten, wählen Sie ihn und dann **Ausführen** aus. Der Auftragsstatus wird geändert, um anzugeben, dass der Auftrag wieder ausgeführt wird. Der Abschnitt **Zusammenfassung** wird weiterhin mit dem neuesten Status aktualisiert.
-
 ![Auftrag verwalten](./media/howto-run-a-job/manage-job.png)
+
+Sobald der Auftrag den Status „Beendet“ erreicht hat, können Sie auf **Fortsetzen** klicken, um die Auftragsausführung fortzusetzen. Der Auftragsstatus wird geändert, um anzugeben, dass der Auftrag wieder ausgeführt wird. Der Abschnitt **Zusammenfassung** wird weiterhin mit dem neuesten Status aktualisiert.
+
+![Auftrag beendet](./media/howto-run-a-job/stopped-job.png)
 
 ## <a name="copy-a-job"></a>Kopieren eines Auftrags
 
-Wenn Sie einen Ihrer vorhandenen Aufträge kopieren möchten, wählen Sie ihn auf der Seite **Aufträge** und dann **Kopieren** aus. Daraufhin wird eine Kopie der Auftragskonfiguration geöffnet, die Sie bearbeiten können; an den Auftragsnamen ist **Kopie** angefügt. Sie können den neuen Auftrag speichern oder ausführen:
+Wenn Sie einen Ihrer vorhandenen Aufträge kopieren möchten, wählen Sie ihn auf der Seite **Aufträge** und dann **Auftragsdetails** aus. Die Seite „Auftragsdetails“ wird angezeigt. 
+
+![Auftragsdetails](./media/howto-run-a-job/job-details.png)
+
+Klicken Sie auf **Kopieren**.
+
+![Auftragsdetails](./media/howto-run-a-job/job-details-copy.png)
+
+Daraufhin wird eine Kopie der Auftragskonfiguration geöffnet, die Sie bearbeiten können; an den Auftragsnamen ist **Kopie** angefügt. Sie können den neuen Auftrag speichern oder ausführen:
 
 ![Auftrag kopieren](./media/howto-run-a-job/copy-job.png)
 

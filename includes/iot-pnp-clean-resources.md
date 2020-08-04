@@ -1,25 +1,26 @@
 ---
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dominicbetts
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/15/2019
-ms.openlocfilehash: d88d166e001e71cabdabc3a3d344adc4da19aa8c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6cd983b6421fc821853aa22d4dc2c297f672d292
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75453691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336893"
 ---
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie mit weiteren Artikeln zu IoT Plug & Play fortfahren möchten, können Sie die Ressourcen, die Sie in diesem Schnellstart verwendet haben, behalten und wiederverwenden. Andernfalls können Sie die Ressourcen löschen, die Sie für diesen Schnellstart erstellt haben, um zusätzliche Gebühren zu vermeiden.
+Wenn Sie mit weiteren Artikeln zu IoT Plug & Play fortfahren möchten, können Sie die Ressourcen, die Sie in diesem Artikel verwendet haben, beibehalten und wiederverwenden. Andernfalls können Sie die in diesem Artikel erstellten Ressourcen löschen, um zusätzliche Gebühren zu vermeiden.
 
-Sie können den Hub und das registrierte Gerät gleichzeitig löschen, indem Sie die gesamte Ressourcengruppe mit dem folgenden Befehl in der Azure-Befehlszeilenschnittstelle löschen. (Verwenden Sie dies jedoch nicht, wenn diese Ressourcen eine Ressourcengruppe mit anderen Ressourcen für andere Zwecke gemeinsam nutzen.)
+Sie können den Hub und das registrierte Gerät gleichzeitig löschen, indem Sie die gesamte Ressourcengruppe mit dem folgenden Azure CLI-Befehl löschen. Verwenden Sie diesen Befehl nicht, wenn für diese Ressourcen eine Ressourcengruppe genutzt wird, in der auch andere Ressourcen enthalten sind, die Sie beibehalten möchten.
 
 ```azurecli-interactive
 az group delete --name <YourResourceGroupName>
 ```
+
 Um nur den IoT-Hub zu löschen, führen Sie den folgenden Befehl über die Azure-Befehlszeilenschnittstelle aus:
 
 ```azurecli-interactive

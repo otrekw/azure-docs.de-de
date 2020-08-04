@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510994"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290679"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Tutorial: Diagnostizieren, Reparieren und Committen von Änderungen an Ihrem Skillset
 
@@ -73,7 +73,7 @@ In diesem Abschnitt werden Postman und eine bereitgestellte Sammlung verwendet, 
 1. Wählen Sie unter **Dateien** > **Neu** die Sammlung aus, die importiert werden soll.
 1. Nachdem die Sammlung importiert wurde, erweitern Sie die Liste der Aktionen (...).
 1. Klicken Sie auf **Bearbeiten**.
-1. Geben Sie den Namen Ihres Suchdiensts (searchService) ein (wenn der Endpunkt z. B. https://mydemo.search.windows.net ist, lautet der Dienstname „mydemo“).
+1. Geben Sie den Namen Ihres Suchdiensts (searchService) ein. (Ist der Endpunkt etwa `https://mydemo.search.windows.net`, lautet der Dienstname `mydemo`.)
 1. Geben Sie den API-Schlüssel (apiKey) entweder mit dem primären oder sekundären Schlüssel Ihres Suchdiensts ein.
 1. Geben Sie Speicher-Verbindungszeichenfolge (storageConnectionString) von der Schlüsselseite Ihres Azure Storage Kontos ein.
 1. Geben Sie den Containernamen (containerName) für den Container ein, den Sie im Speicherkonto erstellt haben.

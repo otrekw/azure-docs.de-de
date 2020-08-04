@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 9e9f9c71701ceb1c76bc162f22e166b4565e731b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3f5c7021461b407e90d61ed045c112aab3c1c4e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062666"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056006"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
 
@@ -44,10 +44,12 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 + [.NET Core SDK 2.2+](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks), Version 8
++ [Java Developer Kit](https://aka.ms/azure-jdks), Version 8 
+
+    > [!IMPORTANT]
+    > + Die Functions-Unterstützung für Java 11 befindet sich derzeit in der Vorschauphase, und mit dem Maven-Archetyp wird standardmäßig eine Java 8-Bereitstellung erstellt. Wenn Sie Ihre Funktions-App stattdessen unter Java 11 ausführen möchten, müssen Sie die Datei „pom.xml“ manuell mit Java 11-Werten aktualisieren. Weitere Informationen finden Sie unter [Java-Versionen](../articles/azure-functions/functions-reference-java.md#java-versions). 
+    > + Damit Sie diesen Schnellstart durchführen können, muss die Umgebungsvariable `JAVA_HOME` auf den Installationsspeicherort der richtigen Version des JDK festgelegt sein.
 
 + [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 
-> [!IMPORTANT]
-> Damit Sie diesen Schnellstart durchführen können, muss die Umgebungsvariable JAVA_HOME auf den Installationsspeicherort des JDK festgelegt sein.
 ::: zone-end

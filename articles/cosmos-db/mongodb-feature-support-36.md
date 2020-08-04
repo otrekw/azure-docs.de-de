@@ -4,15 +4,15 @@ description: Hier finden Sie Informationen zu unterstützten Features und zur Sy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 07/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 92c94b08602fb32ccebf6115306a5000665affe2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076836"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 
@@ -542,7 +542,32 @@ Bei Verwendung des `findOneAndUpdate`-Vorgangs werden Sortiervorgänge für ein 
 
 ## <a name="unique-indexes"></a>Eindeutige Indizes
 
-Eindeutige Indizes stellen sicher, dass ein bestimmtes Feld in allen Dokumenten einer Sammlung keine doppelten Werte enthält. Dies ist vergleichbar mit der Bewahrung der Eindeutigkeit für den Standardschlüssel „_id“. Sie können benutzerdefinierte Indizes in Cosmos DB erstellen, indem Sie den Befehl „createIndex“ mit der Einschränkung „unique“ verwenden.
+[Eindeutige Indizes](mongodb-indexing.md#unique-indexes) stellen sicher, dass ein bestimmtes Feld in den gesamten Dokumenten einer Sammlung keine doppelten Werte enthält. Dies ist vergleichbar mit der Bewahrung der Eindeutigkeit für den Standardschlüssel „_id“. Sie können eindeutige Indizes in Cosmos DB erstellen, indem Sie den Befehl `createIndex` mit dem Einschränkungsparameter `unique` verwenden:
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>Zusammengesetzte Indizes
+
+[Zusammengesetzte Indizes](mongodb-indexing.md#compound-indexes-mongodb-server-version-36) sind eine Möglichkeit, einen Index für Feldergruppen (bis zu acht Felder) zu erstellen. Dieser Indextyp unterscheidet sich von den nativen zusammengesetzten MongoDB-Indizes. In Azure Cosmos DB werden zusammengesetzte Indizes für Sortiervorgänge verwendet, die auf mehrere Felder angewendet werden. Um einen zusammengesetzten Index zu erstellen, müssen Sie mehr als eine Eigenschaft als Parameter angeben:
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>Gültigkeitsdauer (TTL)
 

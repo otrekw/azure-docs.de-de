@@ -1,6 +1,5 @@
 ---
-title: Verwenden der Beispieldatasets
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Verwenden der Beispieldatasets – Azure'
 description: Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio (klassisch) verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd7d880efaa5c69301c25c69d55f4b21dd97242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43f26133cb7fe36a399e2d98ca3e2129b88f52e8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321838"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326306"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio (klassisch)
+
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 [top]: #machine-learning-sample-datasets
 
@@ -94,7 +96,7 @@ Eine Teilmenge der Daten aus der Blutspendedatenbank des Blood Transfusion Servi
 <p></p>
 Die Spenderdaten beinhalten die Anzahl der Monate seit der letzten Spende, die Häufigkeit oder Gesamtanzahl der Spenden, der seit der letzten Spende vergangenen Zeit sowie die Menge des gespendeten Bluts.
 <p></p>
-<b>Verwendung:</b> Vorhersage mittels Klassifizierung, ob der Spender im März 2007 Blut gespendet hat, wobei „1“ einen Spender im Zielzeitraum und „0“ eine Person angibt, die nicht gespendet hat. 
+<b>Verwendung:</b> Das Ziel ist die Vorhersage über die Klassifizierung, ob der Spender im März 2007 Blut gespendet hat, wobei „1“ auf einen Spender im Zielzeitraum und „0“ auf eine Person hinweist, die nicht gespendet hat. 
 <p></p>
 <b>Zugrunde liegende Untersuchungen:</b> Yeh, I.C., (2008). UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
@@ -318,7 +320,7 @@ Die Daten wurden vorverarbeitet, um ein gestrecktes Bündel zu erstellen, bei de
 <p></p>
 <b>Verwendung:</b> Vorhersage, ob das Bild eines Schauers ein Signal oder Hintergrundrauschen darstellt.
 <p></p>
-<b>Hinweise:</b> Eine einfache Klassifizierungsgenauigkeit ist für diese Daten nicht aussagekräftig, da die Klassifizierung eines Hintergrundereignisses als Signal schlechter ist als die Klassifizierung eines Signalereignisses als Hintergrundrauschen. Für den Vergleich der verschiedenen Klassifizierer soll das ROC-Diagramm verwendet werden. Die Wahrscheinlichkeit der Akzeptierung eines Hintergrundereignisses als Signal muss unter einem der folgenden Schwellenwerte liegen: 0,01, 0,02, 0,05, 0,1 oder 0,2.
+<b>Hinweise:</b> Eine einfache Klassifizierungsgenauigkeit ist für diese Daten nicht aussagekräftig, da die Klassifizierung eines Hintergrundereignisses als Signal schlechter ist als die Klassifizierung eines Signals als Hintergrundrauschen. Für den Vergleich der verschiedenen Klassifizierer soll das ROC-Diagramm verwendet werden. Die Wahrscheinlichkeit der Akzeptierung eines Hintergrundereignisses als Signal muss unter einem der folgenden Schwellenwerte liegen: 0,01, 0,02, 0,05, 0,1 oder 0,2.
 <p></p>
 Beachten Sie außerdem, dass die Anzahl der Hintergrundereignisse (h für hadronische Schauer) zu niedrig angesetzt ist. In realen Messungen stellt die h- oder Rauschen-Klasse die Mehrzahl der Ereignisse dar. 
 <p></p>
@@ -335,7 +337,7 @@ Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für d
   <li>Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.</li>
   <li>Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden herausgefiltert</li>
   <li>Die Datumsspalte wurde in separate Jahres-, Monats- und Tagesspalten aufgeteilt.</li>
-  <li>Folgende Spalten wurden ausgewählt: AirportID, Year, Month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter</li>
+  <li>Die folgenden Spalten wurden ausgewählt: AirportID, Year, Month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter</li>
 </ul>
   </td>
 </tr>

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143915"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375114"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -233,9 +233,17 @@ Wenn ein virtueller Hub von mehreren Remotehubs die gleichen Routeninformationen
 
 Die Übertragung zwischen ER-zu-ER erfolgt immer über Global Reach. Virtuelle Hubgateways werden in DC- oder Azure-Regionen bereitgestellt. Wenn zwei ExpressRoute-Leitungen über Global Reach verbunden sind, muss der Datenverkehr nicht den ganzen Weg von den Edgeroutern bis zum virtuellen Hub-DC zurücklegen.
 
-### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Gibt es ein Gewichtungskonzept für Azure Virtual WAN-Leitungen oder VPN-Verbindungen?
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-expressroute-circuits-or-vpn-connections"></a>Gibt es ein Gewichtungskonzept für Azure Virtual WAN-ExpressRoute-Leitungen oder VPN-Verbindungen?
 
 Wenn mehrere ExpressRoute-Leitungen mit einem virtuellen Hub verbunden sind, bietet die Routinggewichtung für die Verbindung einen Mechanismus, mit dem ExpressRoute im virtuellen Hub eine Leitung der anderen vorzieht. Es gibt keinen Mechanismus, um eine VPN-Verbindung zu gewichten. Azure bevorzugt immer eine ExpressRoute-Verbindung gegenüber einer VPN-Verbindung innerhalb eines einzelnen Hubs.
+
+### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Wird von Virtual WAN für ausgehenden Azure-Datenverkehr ExpressRoute gegenüber VPN bevorzugt?
+
+Ja 
+
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Wenn ein Virtual WAN-Hub über eine ExpressRoute-Leitung und eine damit verbundene VPN-Site verfügt: Wie kann erreicht werden, dass eine VPN-Verbindungsroute gegenüber ExpressRoute bevorzugt wird?
+
+Wenn eine ExpressRoute-Leitung mit dem Virtual WAN-Hub verbunden ist, sind die Microsoft-Edgerouter jeweils der erste Knoten für die Kommunikation zwischen der lokalen Umgebung und Azure. Diese Edgerouter kommunizieren mit den Virtual WAN-ExpressRoute-Gateways, die wiederum Routen vom Virtual WAN-Hub-Router erlernen, von dem sämtliche Routen zwischen allen Gateways des Virtual WAN gesteuert werden. Von den Microsoft-Edgeroutern werden ExpressRoute-Routen des Virtual WAN-Hubs mit einer höheren Priorität als Routen verarbeitet, die von der lokalen Umgebung erlernt werden. Falls die VPN-Verbindung aus irgendeinem Grund zum primären Medium für den Virtual WAN-Hub wird und Routen von dieser Verbindung erhalten soll (z. B. bei Failoverszenarien zwischen ExpressRoute und VPN), passiert Folgendes: Sofern die VPN-Site nicht über längere AS-Pfade verfügt, gibt der Virtual WAN-Hub erlernte VPN-Routen weiterhin an das ExpressRoute-Gateway weiter. Dies führt dazu, dass die Microsoft-Edgerouter VPN-Routen gegenüber den Routen der lokalen Umgebung den Vorzug geben. 
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Wenn zwei Hubs (Hub 1 und 2) verbunden sind und es eine ExpressRoute-Leitung gibt, die als Schleife mit beiden Hubs verbunden ist, wie ist der Pfad für ein mit Hub 1 verbundenes VNET, um ein mit Hub 2 verbundenes VNET zu erreichen?
 
@@ -244,6 +252,10 @@ Das derzeitige Verhalten besteht darin, für VNET-zu-VNET-Konnektivität den Exp
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Wird IPv6 in Virtual WAN unterstützt?
 
 IPv6 wird im Virtual WAN-Hub und seinen Gateways nicht unterstützt. Wenn Sie über ein VNET mit IPv6-Unterstützung verfügen und das VNET mit einem Virtual WAN verbinden möchten, wird dieses Szenario derzeit nicht unterstützt.
+
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Welche API-Version wird für die Verwendung durch Skripts empfohlen, mit denen verschiedene Virtual WAN-Funktionen automatisiert werden?
+
+Hierfür ist mindestens die Version „05-01-2020“ (1. Mai 2020) erforderlich. 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Welche Unterschiede bestehen zwischen den Virtual WAN-Typen („Basic“ und „Standard“)?
 

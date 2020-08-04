@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa73253c49f49647d3415340b2601f1395f912c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2b630111261be8e3615ab45e95633040e799551
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050987"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lensesio"></a>Tutorial: Integrieren von Lenses.io in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Tutorial: Integration des einmaligen Anmeldens (SSO) von Azure Active Directory in das Lenses.io-DataOps-Portal.
 
-In diesem Tutorial erfahren Sie, wie Sie Lenses.io in Azure Active Directory (Azure AD) integrieren. Die Integration von Lenses.io in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie das [Lenses.io](https://lenses.io/)-DataOps-Portal in Azure Active Directory (Azure AD) integrieren. Die Integration von Lenses.io in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Lenses.io haben soll.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Lenses.io anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf das Lenses.io-Portal hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Lenses anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
@@ -37,7 +37,8 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Lenses.io-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Eine Instanz eines Lenses-Portals. Es gibt [verschiedene Möglichkeiten](https://lenses.io/product/deployment/), um ein Lenses-Portal bereitzustellen.
+* Eine Lenses.io-[Lizenz](https://lenses.io/product/pricing/), die einmaliges Anmelden (Single Sign-On, SSO) unterstützt.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -61,15 +62,15 @@ Zum Konfigurieren der Integration von Lenses.io in Azure AD müssen Sie Ihrer L
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Lenses.io
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Lenses.io mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Lenses.io eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Ihrem Lenses.io-Portal mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Lenses.io eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Lenses.io müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Erstellen eines Azure AD-Testbenutzers und einer -Gruppe](#create-an-azure-ad-test-user-and-group)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Lenses.io](#configure-lensesio-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Erstellen eines Lenses.io-Testbenutzers](#create-lensesio-test-user)** , um eine Entsprechung von B. Simon in Lenses.io zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
+    1. **[Erstellen von Berechtigungen für Lenses.io-Testgruppen](#create-lensesio-test-group-permissions)** , um zu steuern, worauf B. Simon in Lenses.io zugreifen soll (Autorisierung).
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -84,26 +85,26 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<CUSTOMER_LENSES_BASE_URL>`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<CUSTOMER_LENSES_BASE_URL>`, z. B. `https://lenses.my.company.com`
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<CUSTOMER_LENSES_BASE_URL>`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<CUSTOMER_LENSES_BASE_URL>`, z. B. `https://lenses.my.company.com`
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
+    Beispiel: `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, die Antwort-URL und den Bezeichner. Wenden Sie sich an das [Kundensupportteam von Lenses.io](mailto:support@lenses.io), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte basierend auf der Basis-URL Ihrer Instanz des Lenses-Portals durch die tatsächlichen Werte für die Anmelde-URL, die Antwort-URL und den Bezeichner. Weitere Informationen finden Sie in der [Lenses.io-Dokumentation zu SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0).
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-1. Kopieren Sie im Abschnitt **Lenses.io einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Verwenden Sie im Abschnitt **Lenses.io einrichten** die obige XML-Datei, um Lenses für Azure SSO zu konfigurieren.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+### <a name="create-an-azure-ad-test-user-and-group"></a>Erstellen eines Azure AD-Testbenutzers und einer zugehörigen Gruppe
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon. Sie erstellen auch eine Testgruppe für B. Simon, mit der gesteuert wird, worauf B. Simon in Lenses Zugriff hat.
+Die [Lenses-Dokumentation zu SSO](https://docs.lenses.io/install_setup/configuration/security.html#id3) enthält Informationen dazu, wie in Lenses die Zuordnung der Gruppenmitgliedschaft für die Autorisierung genutzt wird.
 
 1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
@@ -112,6 +113,23 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
+
+Erstellen Sie die Gruppe wie folgt:
+1. Navigieren Sie zurück zu **Azure Active Directory**, und wählen Sie die Option **Gruppen** aus.
+1. Wählen Sie am oberen Bildschirmrand die Option **Neue Gruppe** aus.
+1. Führen Sie unter **Gruppeneigenschaften** die folgenden Schritte aus:
+   1. Wählen Sie im Feld **Gruppentyp** die Option `Security` aus.
+   1. Geben Sie im Feld **Gruppenname** den Namen `LensesUsers` ein.
+   1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie die Gruppe `LensesUsers` aus, und notieren Sie sich die **Objekt-ID** (z. B. `f8b5c1ec-45de-4abd-af5c-e874091fb5f7`). Diese ID wird in Lenses verwendet, um Benutzer dieser Gruppe den [richtigen Berechtigungen](https://docs.lenses.io/install_setup/configuration/security.html#id3) zuzuordnen.  
+   
+Weisen Sie die Gruppe wie folgt dem Testbenutzer zu: 
+1. Navigieren Sie zurück zu **Azure Active Directory**, und wählen Sie die Option **Benutzer** aus.
+1. Wählen Sie den Testbenutzer `B.Simon` aus.
+1. Wählen Sie **Gruppen** aus.
+1. Wählen Sie am oberen Bildschirmrand die Option **Mitgliedschaften hinzufügen** aus.
+1. Suchen Sie nach `LensesUsers`, und wählen Sie diese Option aus.
+1. Klicken Sie auf **Auswählen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -133,19 +151,23 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-lensesio-sso"></a>Konfigurieren des einmaligen Anmeldens für Lenses.io
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Lenses.io** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Lenses.io](mailto:support@lenses.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Installieren Sie zum Konfigurieren des einmaligen Anmeldens im **Lenses.io**-Portal die heruntergeladene **Verbundmetadaten-XML**-Datei auf Ihrer Lenses-Instanz, und [konfigurieren Sie Lenses für die Aktivierung von SSO](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses). 
 
-### <a name="create-lensesio-test-user"></a>Erstellen eines Lenses.io-Testbenutzers
+### <a name="create-lensesio-test-group-permissions"></a>Erstellen von Berechtigungen für die Lenses.io-Testgruppe
 
-In diesem Abschnitt erstellen Sie in Lenses.io einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur Lenses.io-Plattform vom [Lenses.io-Supportteam](mailto:support@lenses.io) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie eine Gruppe in Lenses, indem Sie die **Objekt-ID** der Gruppe `LensesUsers` verwenden, die wir im [Abschnitt für die Benutzererstellung](#create-an-azure-ad-test-user-and-group) notiert haben.
+Sie weisen die gewünschten Berechtigungen zu, über die `B.Simon` in Lenses verfügen soll.
+Weitere Informationen finden Sie im Abschnitt zum Thema [Azure: Lenses-Gruppenzuordnung](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Lenses.io“ klicken, sollten Sie automatisch bei der Lenses.io-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Lenses.io“ klicken, sollten Sie automatisch bei Ihrem Lenses.io-Portal angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+- [Einrichten von SSO auf Ihrer Lenses.io-Instanz](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

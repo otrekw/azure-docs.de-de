@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 64a33b12da0e9b90eaeb7039f65b2493a839a0c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054124"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware
 
@@ -93,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
   
 3. Laden Sie das VMDK auf den ESXi-Server hoch. Klicken Sie im Navigatorbereich auf **Storage** (Speicher).
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
+   ![Screenshot: Seite auf der ESXi-Serversite mit Navigatorbereich und ausgewählter Speicheroption](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
 4. Wählen Sie im rechten Bereich unter **Datenspeicher**den Datenspeicher aus, in den Sie das VMDK hochladen möchten. 
 

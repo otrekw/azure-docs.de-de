@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: cb8b3b58f1029a722121f491d202e245300d1aee
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 40b738c0f074f06b2f15a260cacda876aa78daf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060800"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer: Konzepte
 
@@ -42,9 +42,9 @@ Weitere Informationen finden Sie unter [Konfigurieren des Verteilungsmodus für 
 
 In der folgenden Abbildung wird die hashbasierte Verteilung angezeigt:
 
-  ![Hash-basierte Verteilung](./media/load-balancer-overview/load-balancer-distribution.png)
+![Hash-basierte Verteilung](./media/load-balancer-overview/load-balancer-distribution.png)
 
-  *Abbildung: Hashbasierte Verteilung*
+*Abbildung: Hashbasierte Verteilung*
 
 ## <a name="application-independence-and-transparency"></a>Anwendungsunabhängigkeit und -transparenz
 
@@ -54,16 +54,38 @@ Load Balancer interagiert nicht direkt mit TCP oder UDP oder der Anwendungsschic
 * Anwendungsnutzlasten sind für das Lastenausgleichsmodul transparent. Alle UDP- oder TCP-Anwendungen können unterstützt werden.
 * Da das Lastenausgleichsmodul nicht mit der TCP-Nutzlast interagiert und keine TLS-Abladung bereitstellt, können Sie umfassende verschlüsselte Szenarien erstellen. Die Verwendung eines Lastenausgleichsmoduls ermöglicht ein hohes Maß an Aufskalierung für TLS-Anwendungen, indem die TLS-Verbindung auf dem virtuellen Computer selbst beendet wird. Beispielsweise ist die TLS-Funktion zum erstellen von Sitzungsschlüsseln vom Typ und der Nummer der VMs beschränkt, die Sie zum Back-End-Pool hinzufügen.
 
-## <a name="load-balancer-terminology"></a>Load Balancer-Terminologie
-| Konzept | Was bedeutet das? | Ausführliches Dokument |
-| ---------- | ---------- | ----------|
-Ausgehende Verbindungen | Datenflüsse vom Back-End-Pool zu öffentlichen IP-Adressen werden dem Front-End zugeordnet. Azure übersetzt ausgehende Verbindungen an die öffentliche IP-Adresse des Front-Ends basierend auf der Ausgangsregel für den Lastenausgleich. Diese Konfiguration hat die folgenden Vorteile: Einfache Upgrades und eine Notfallwiederherstellung von Diensten, da das Front-End dynamisch einer anderen Instanz des Diensts zugeordnet werden kann. Vereinfachte Verwaltung von Zugriffssteuerungslisten. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste hoch- oder herunterskaliert oder erneut bereitgestellt werden. Die Übersetzung von ausgehenden Verbindungen in eine Anzahl von IP-Adressen, die geringer als die Anzahl von Computern ist, verringert den Aufwand für die Implementierung sicherer Empfängerlisten.| Weitere Informationen zur Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT) und zu Azure Load Balancer finden Sie unter [SNAT und Azure Load Balancer](load-balancer-outbound-connections.md).
-Verfügbarkeitszonen | Load Balancer Standard unterstützt zusätzliche Funktionen in Regionen, in denen Verfügbarkeitszonen verfügbar sind. Diese Funktionen stellen Ergänzungen aller Funktionen dar, die von Load Balancer Standard bereitgestellt werden.  Verfügbarkeitszonenkonfigurationen sind für beide Typen von Load Balancer Standard (öffentlich und intern) verfügbar. Ein zonenredundantes Front-End übersteht Zonenfehler, indem in allen Zonen gleichzeitig dedizierte Infrastruktur genutzt wird. Darüber hinaus können Sie ein Front-End für eine bestimmte Zone garantieren. Ein Zonen-Front-End wird über dedizierte Infrastruktur in einer einzelnen Zone bereitgestellt. Ein zonenübergreifender Lastenausgleich ist für den Back-End-Pool verfügbar. Alle VM-Ressourcen eines virtuellen Netzwerks können Teil eines Back-End-Pools sein. Zonen werden von Load Balancer Basic nicht unterstützt.| Weitere Informationen finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md) sowie unter [Was sind Verfügbarkeitszonen in Azure?](../availability-zones/az-overview.md).
-| HA-Ports | Sie können Lastenausgleichsregeln für Hochverfügbarkeitsports konfigurieren, damit die Anwendung skaliert werden kann und hohe Zuverlässigkeit bietet. Mit diesen Regeln wird ein Lastenausgleich pro Datenfluss für kurzlebige Ports der Front-End-IP-Adresse des internen Lastenausgleichsmoduls bereitgestellt. Das Feature ist für Fälle nützlich, in denen es unpraktisch oder unerwünscht ist, einzelne Ports anzugeben. Mit Regeln für Hochverfügbarkeitsports können Sie n+1-Szenarien vom Typ „Aktiv/Passiv“ oder „Aktiv-Aktiv“ erstellen. Diese Szenarien gelten für virtuelle Netzwerkgeräte und alle Anwendungen, für die große Bereiche mit Eingangsports erforderlich sind. Ein Integritätstest kann verwendet werden, um zu bestimmen, welche Back-Ends neue Datenflüsse empfangen sollen.  Sie können eine Netzwerksicherheitsgruppe verwenden, um ein Portbereichsszenario zu emulieren. Von Load Balancer Basic-Instanzen werden keine Hochverfügbarkeitsports unterstützt. | Weitere Informationen finden Sie in der [Übersicht über Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md).
-| Mehrere Front-Ends | Load Balancer unterstützt mehrere Regeln mit mehreren Front-Ends.  Mit Load Balancer Standard ist dies auch für Szenarien mit ausgehenden Verbindungen möglich. Ausgangsregeln stellen die Umkehrung von Eingangsregeln dar. Mit der Ausgangsregel wird eine Zuordnung für ausgehende Verbindungen erstellt. Load Balancer Standard nutzt über eine Lastenausgleichsregel alle Front-Ends, die einer VM-Ressource zugeordnet sind. Darüber hinaus können Sie mit einem Parameter der Lastenausgleichsregel eine Lastenausgleichsregel für ausgehende Verbindungen unterdrücken und bestimmte Front-Ends (oder auch keins) auswählen. Bei Load Balancer Basic wird dagegen nach dem Zufallsprinzip ein Front-End ausgewählt. Es kann nicht gesteuert werden, welches Front-End ausgewählt wird.|
+## <a name="outbound-connections"></a>Ausgehende Verbindungen 
+
+Datenflüsse vom Back-End-Pool zu öffentlichen IP-Adressen werden dem Front-End zugeordnet. Azure übersetzt ausgehende Verbindungen an die öffentliche IP-Adresse des Front-Ends basierend auf der Ausgangsregel für den Lastenausgleich. Diese Konfiguration hat die folgenden Vorteile: Einfache Upgrades und eine Notfallwiederherstellung von Diensten, da das Front-End dynamisch einer anderen Instanz des Diensts zugeordnet werden kann. Vereinfachte Verwaltung von Zugriffssteuerungslisten. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste hoch- oder herunterskaliert oder erneut bereitgestellt werden. Die Übersetzung von ausgehenden Verbindungen in eine Anzahl von IP-Adressen, die geringer als die Anzahl von Computern ist, verringert den Aufwand für die Implementierung sicherer Empfängerlisten. Weitere Informationen zur Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT) und zu Azure Load Balancer finden Sie unter [SNAT und Azure Load Balancer](load-balancer-outbound-connections.md).
+
+## <a name="availability-zones"></a>Verfügbarkeitszonen 
+
+Load Balancer Standard unterstützt zusätzliche Funktionen in Regionen, in denen Verfügbarkeitszonen verfügbar sind. Verfügbarkeitszonenkonfigurationen sind für beide Typen von Load Balancer Standard (öffentlich und intern) verfügbar. Ein zonenredundantes Front-End übersteht Zonenfehler, indem in allen Zonen gleichzeitig dedizierte Infrastruktur genutzt wird. Darüber hinaus können Sie ein Front-End für eine bestimmte Zone garantieren. Ein Zonen-Front-End wird über dedizierte Infrastruktur in einer einzelnen Zone bereitgestellt. Ein zonenübergreifender Lastenausgleich ist für den Back-End-Pool verfügbar. Alle VM-Ressourcen eines virtuellen Netzwerks können Teil eines Back-End-Pools sein. Von Load Balancer Basic-Instanzen werden keine Zonen unterstützt. Weitere Informationen finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md) sowie unter [Was sind Verfügbarkeitszonen in Azure?](../availability-zones/az-overview.md).
+
+## <a name="ha-ports"></a>Hochverfügbarkeitsports
+
+Sie können Lastenausgleichsregeln für Hochverfügbarkeitsports konfigurieren, damit die Anwendung skaliert werden kann und hohe Zuverlässigkeit bietet. Mit diesen Regeln wird ein Lastenausgleich pro Datenfluss für kurzlebige Ports der Front-End-IP-Adresse des internen Lastenausgleichsmoduls bereitgestellt. Das Feature ist für Fälle nützlich, in denen es unpraktisch oder unerwünscht ist, einzelne Ports anzugeben. Mit Regeln für Hochverfügbarkeitsports können Sie n+1-Szenarien vom Typ „Aktiv/Passiv“ oder „Aktiv-Aktiv“ erstellen. Diese Szenarien gelten für virtuelle Netzwerkgeräte und alle Anwendungen, für die große Bereiche mit Eingangsports erforderlich sind. Ein Integritätstest kann verwendet werden, um zu bestimmen, welche Back-Ends neue Datenflüsse empfangen sollen.  Sie können eine Netzwerksicherheitsgruppe verwenden, um ein Portbereichsszenario zu emulieren. Von Load Balancer Basic-Instanzen werden keine Hochverfügbarkeitsports unterstützt. Lesen Sie die [ausführliche Erläuterung zu HA-Ports](load-balancer-ha-ports-overview.md).
+
+## <a name="multiple-frontends"></a>Mehrere Front-Ends 
+
+Load Balancer unterstützt mehrere Regeln mit mehreren Front-Ends.  Mit Load Balancer Standard ist dies auch für Szenarien mit ausgehenden Verbindungen möglich. Ausgangsregeln stellen die Umkehrung von Eingangsregeln dar. Mit der Ausgangsregel wird eine Zuordnung für ausgehende Verbindungen erstellt. Load Balancer Standard nutzt über eine Lastenausgleichsregel alle Front-Ends, die einer VM-Ressource zugeordnet sind. Darüber hinaus können Sie mit einem Parameter der Lastenausgleichsregel eine Lastenausgleichsregel für ausgehende Verbindungen unterdrücken und bestimmte Front-Ends (oder auch keins) auswählen. Bei Load Balancer Basic wird dagegen nach dem Zufallsprinzip ein Front-End ausgewählt. Es kann nicht gesteuert werden, welches Front-End ausgewählt wird.
+
+## <a name="floating-ip"></a>Unverankerte IP
+
+In einigen Anwendungsszenarien ist es eine Priorität bzw. Anforderung, den gleichen Port für mehrere Anwendungsinstanzen auf einer einzelnen VM im Back-End-Pool zu verwenden. Gängige Beispiele für die Portwiederverwendung sind das Clustering für Hochverfügbarkeit, virtuelle Netzwerkgeräte und die Bereitstellung mehrerer TLS-Endpunkte ohne erneute Verschlüsselung. Wenn Sie den Back-End-Port in mehreren Regeln wiederverwenden möchten, müssen Sie in der Regeldefinition Floating IP aktivieren.
+
+**Floating IP** ist die in Azure verwendete Benennung für die Komponente „Direct Server Return (DSR)“. DSR besteht aus zwei Teilen: 
+
+- Datenflusstopologie
+- Zuordnungsschema für IP-Adressen
+
+Auf Plattformebene wird Azure Load Balancer immer in einer DSR-Datenflusstopologie betrieben, unabhängig davon, ob Floating IP aktiviert ist. Dies bedeutet, dass der ausgehende Teil eines Datenflusses immer ordnungsgemäß so umgeschrieben wird, dass er direkt wieder an den Ursprung übermittelt wird.
+Ohne Floating IP wird von Azure ein herkömmliches Zuordnungsschema für IP-Adressen für den Lastenausgleich (IP-Adresse für VM-Instanzen) verfügbar gemacht, um die Nutzung zu vereinfachen. Durch die Aktivierung von Floating IP wird die Zuordnung der IP-Adressen in die Front-End-IP-Adresse des Lastenausgleichsmoduls geändert, um für zusätzliche Flexibilität zu sorgen. [Hier](load-balancer-multivip-overview.md)erhalten Sie weitere Informationen.
 
 
 ## <a name="limitations"></a><a name = "limitations"></a>Einschränkungen
+
+- Floating IP wird für sekundäre IP-Konfigurationen in Szenarien mit internem Lastenausgleich derzeit nicht unterstützt.
 
 - Eine Lastenausgleichsregel kann sich nicht über zwei virtuelle Netzwerke erstrecken.  Front-Ends und ihre Back-End-Instanzen müssen sich im gleichen virtuellen Netzwerk befinden.  
 

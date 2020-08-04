@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078165"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Preismodell für Azure Logic Apps
 
@@ -77,27 +77,27 @@ Für Logik-Apps, die in einer ISE erstellt und ausgeführt werden, zahlen Sie f�
 
 ## <a name="connectors"></a>Connectors
 
-Azure Logic Apps-Connectors ermöglichen Ihren Logik-Apps Zugriff auf Apps, Dienste und Systeme in der Cloud oder auf einer lokalen Ressource, indem sie [Trigger](#triggers), [Aktionen](#actions) oder beides zur Verfügung stellen. Connectors werden entweder als „Standard“ oder als „Enterprise“ (Unternehmen) klassifiziert. Eine Übersicht über diese Connectors finden Sie unter [Connectors für Azure Logic Apps](../connectors/apis-list.md). Wenn keine vordefinierten Connectors für die REST-APIs verfügbar sind, die Sie in Ihren Logik-Apps verwenden möchten, können Sie [benutzerdefinierte Connectors](https://docs.microsoft.com/connectors/custom-connectors) erstellen, bei denen es sich lediglich um Wrapper für diese REST-APIs handelt. Benutzerdefinierte Connectors werden als Standardconnectors abgerechnet. Die folgenden Abschnitte enthalten weitere Informationen darüber, wie die Abrechnung für Trigger und Aktionen funktioniert.
+Azure Logic Apps-Connectors ermöglichen Ihren Logik-Apps Zugriff auf Apps, Dienste und Systeme in der Cloud oder auf einer lokalen Ressource, indem sie [Trigger](#triggers), [Aktionen](#actions) oder beides zur Verfügung stellen. Connectors werden entweder als „Standard“ oder als „Enterprise“ (Unternehmen) klassifiziert. Eine Übersicht über diese Connectors finden Sie unter [Connectors für Azure Logic Apps](../connectors/apis-list.md). Wenn keine vordefinierten Connectors für die REST-APIs verfügbar sind, die Sie in Ihren Logik-Apps verwenden möchten, können Sie [benutzerdefinierte Connectors](/connectors/custom-connectors) erstellen, bei denen es sich lediglich um Wrapper für diese REST-APIs handelt. Benutzerdefinierte Connectors werden als Standardconnectors abgerechnet. Die folgenden Abschnitte enthalten weitere Informationen darüber, wie die Abrechnung für Trigger und Aktionen funktioniert.
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>Trigger
 
-Trigger sind spezielle Aktionen, mit denen eine Logik-App-Instanz erstellt wird, wenn ein bestimmtes Ereignis eintritt. Trigger agieren auf verschiedene Weise, wovon abhängt, wie die Logik-App nutzungsbezogen abgerechnet wird. Nachfolgend sind die verschiedenen Triggerarten aufgelistet, die es in Azure Logic Apps gibt:
+Ein Trigger ist immer der erste Schritt in einem Logik-App-Workflow und stellt eine spezielle Aktion dar, die eine Logik-App-Instanz erstellt und ausführt, wenn bestimmte Kriterien erfüllt sind oder ein bestimmtes Ereignis auftritt. Trigger agieren auf verschiedene Weise, wovon abhängt, wie die Logik-App nutzungsbezogen abgerechnet wird. Nachfolgend sind die verschiedenen Triggerarten aufgelistet, die es in Azure Logic Apps gibt:
 
-* **Abfragetrigger**: Mit diesem Trigger wird ein Endpunkt fortlaufend auf Nachrichten überprüft, die die Kriterien für das Erstellen einer Logik-App-Instanz und Starten des Workflows erfüllen. Auch wenn keine Logik-App-Instanz erstellt wird, rechnet Logic Apps jede Abrufanforderung als Ausführung ab. Um das Abrufintervall festzulegen, richten Sie den Trigger über den Logik-App-Designer ein.
+* **Wiederholungstrigger**: Sie können diesen generischen Trigger, der für keinen Dienst und kein System spezifisch ist, verwenden, um einen beliebigen Logik-App-Workflow zu starten und eine Logik-App-Instanz zu erstellen, die auf Grundlage des im Trigger eingerichteten Wiederholungsintervalls ausgeführt wird. Sie können beispielsweise einen Wiederholungstrigger einrichten, der alle drei Tage oder nach einem komplexeren Zeitplan ausgeführt wird.
+
+* **Abfragetrigger**: Sie können diesen stärker spezialisierten Wiederholungstrigger verwenden, der normalerweise dem verwalteten Connector für einen bestimmten Dienst oder ein bestimmtes System zugeordnet ist, um auf Ereignisse oder Meldungen zu überprüfen, die die Kriterien für das Erstellen und Ausführen der Logik-App-Instanz auf Grundlage des im Trigger eingerichteten Wiederholungsintervalls erfüllen. Auch wenn keine Logik-App-Instanz erstellt wird, z. B. wenn Trigger übersprungen werden, zählt der Logic Apps-Dienst jede Abrufanforderung als Ausführung. Um das Abrufintervall festzulegen, richten Sie den Trigger über den Logik-App-Designer ein.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhooktrigger**: Dieser Trigger wartet darauf, dass von einem Client eine Anforderung an einen bestimmten Endpunkt gesendet wird. Jede Anforderung, die an den Webhookendpunkt gesendet wird, wird als eine Aktionsausführung gezählt. Sowohl beim Anforderungstrigger als auch beim HTTP-Webhooktrigger handelt es sich beispielsweise um Webhooktrigger.
-
-* **Wiederholungstrigger**: Dieser Trigger erstellt eine Logik-App-Instanz basierend auf dem Wiederholungsintervall, das Sie im Trigger einrichten. Sie können beispielsweise einen Wiederholungstrigger einrichten, der alle drei Tage oder nach einem komplexeren Zeitplan ausgeführt wird.
+* **Webhooktrigger**: Anstatt einen Abfragetrigger zu verwenden, können Sie einen Webhooktrigger verwenden, um zu warten, bis der Client eine Anforderung an Ihre Logik-App an einer bestimmten Endpunkt-URL sendet. Jede Anforderung, die an den Webhookendpunkt gesendet wird, zählt als eine Aktionsausführung. Sowohl beim Anforderungstrigger als auch beim HTTP-Webhooktrigger handelt es sich beispielsweise um generische Webhooktrigger. Einige Connectors für Dienste oder Systeme verfügen ebenfalls über Webhooktrigger.
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Aktionen
 
-Azure Logic Apps rechnet „integrierte“ Aktionen, z. B. HTTP, als native Aktionen ab. Integrierte Aktionen umfassen beispielsweise HTTP-Aufrufe, Aufrufe von Azure Functions oder API Management und Schritte der Ablaufsteuerung, z. B. Bedingungen, Schleifen und switch-Anweisungen. Jede Aktion hat ihren eigenen Aktionstyp. Zum Beispiel haben Aktionen, mit denen [Connectors](https://docs.microsoft.com/connectors) aufgerufen werden, den Typ „ApiConnection“. Diese Connectors sind als Standard- oder Unternehmensconnectors klassifiziert, deren Verbrauch zu den jeweiligen [Preisen](https://azure.microsoft.com/pricing/details/logic-apps) abgerechnet wird. Unternehmensconnectors in einer *Vorschauversion* werden als Standardconnectors in Rechnung gestellt.
+Azure Logic Apps rechnet „integrierte“ Aktionen, z. B. HTTP, als native Aktionen ab. Integrierte Aktionen umfassen beispielsweise HTTP-Aufrufe, Aufrufe von Azure Functions oder API Management und Schritte der Ablaufsteuerung, z. B. Bedingungen, Schleifen und switch-Anweisungen. Jede Aktion hat ihren eigenen Aktionstyp. Zum Beispiel haben Aktionen, mit denen [Connectors](/connectors) aufgerufen werden, den Typ „ApiConnection“. Diese Connectors sind als Standard- oder Unternehmensconnectors klassifiziert, deren Verbrauch zu den jeweiligen [Preisen](https://azure.microsoft.com/pricing/details/logic-apps) abgerechnet wird. Unternehmensconnectors in einer *Vorschauversion* werden als Standardconnectors in Rechnung gestellt.
 
 Azure Logic Apps rechnet alle erfolgreichen und nicht erfolgreichen Aktionen als Ausführungen ab. Die folgenden Aktionen werden von Logic Apps jedoch nicht abgerechnet:
 
@@ -122,7 +122,7 @@ Wenn Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, IS
 
 Sehen Sie sich diese Beschreibungen von Anwendungsfällen an, um die Entscheidung zwischen Integrationskonten vom Typ „Free“, „Basic“ oder „Standard“ treffen zu können:
 
-* **Free:** Ein Konto zum Ausprobieren von Testszenarien. Nicht für Produktionsszenarien geeignet. Diese Dienstebene ist nur für öffentliche Regionen in Azure verfügbar, z. B. „USA, Westen“ oder „Asien, Südosten“, aber nicht für [Azure China 21ViaNet](https://docs.microsoft.com/azure/china/overview-operations) oder [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Free:** Ein Konto zum Ausprobieren von Testszenarien. Nicht für Produktionsszenarien geeignet. Diese Dienstebene ist nur für öffentliche Regionen in Azure verfügbar, z. B. „USA, Westen“ oder „Asien, Südosten“, aber nicht für [Azure China 21ViaNet](/azure/china/overview-operations) oder [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * **Basic**: Verwenden Sie ein Konto dieses Typs, wenn Sie nur die Behandlung von Nachrichten nutzen oder als Partner für ein kleines Unternehmen fungieren möchten, das eine Handelspartnerbeziehung mit einem größeren Unternehmen eingegangen ist.
 

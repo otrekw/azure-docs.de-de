@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6c5484c421807f5657fe5fc460342d39d442bcda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454311"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048570"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle
 
@@ -63,15 +63,7 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-Der folgende Befehl überprüft die Netzwerkfeatures, die für den Dienst für dedizierte HSMs erforderlich sind:
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-Bei beiden Befehlen muss der Status „Registered“ zurückgegeben werden (wie in der folgenden Abbildung). Wird für die Befehle nicht „Registered“ zurückgegeben, müssen Sie sich noch für den Dienst registrieren. Wenden Sie sich hierzu an Ihren Microsoft-Kontobeauftragten.
+Bei den Befehlen muss der Status „Registered“ zurückgegeben werden (wie in der folgenden Abbildung gezeigt). Wird für die Befehle nicht „Registered“ zurückgegeben, müssen Sie sich noch für den Dienst registrieren. Wenden Sie sich hierzu an Ihren Microsoft-Kontobeauftragten.
 
 ![Abonnementstatus](media/tutorial-deploy-hsm-cli/subscription-status.png)
 

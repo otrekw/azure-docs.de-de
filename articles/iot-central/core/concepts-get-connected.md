@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337091"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -213,13 +213,13 @@ Eine der wichtigsten Funktionen von IoT Central ist die Möglichkeit, Gerätevor
 
 Die folgenden Ausschnitte zeigen das Format der zusätzlichen Nutzlast, die das Gerät während des DPS-Registrierungsaufrufs senden muss, damit die automatische Zuordnung funktioniert.
 
-Dies ist das Format für Geräte, die das allgemein verfügbare Geräte-SDK verwenden, das IoT Plug & Play nicht unterstützt:
+Dies ist das Format für Geräte, die das allgemein verfügbare Geräte-SDK verwenden:
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-Dies ist das Format für Geräte, die das Geräte-SDK der öffentlichen Vorschau verwenden, das IoT Plug & Play unterstützt:
+Dies ist das Format für Geräte, die das öffentliche Vorschaugerät-SDK verwenden:
 
 ```javascript
 '__iot:interfaces': {
@@ -280,8 +280,6 @@ In der folgenden Tabelle wird die Zuordnung von Azure IoT Central-Gerätefeature
 | Eigenschaft | Gemeldete Eigenschaften von Gerätezwillingen |
 | Eigenschaft (schreibbar) | Gewünschte und gemeldete Eigenschaften von Gerätezwillingen |
 | Get-Help | Direkte Methoden |
-
-Wenn Sie mehr über die Verwendung der Geräte-SDKs erfahren möchten, sehen Sie sich den Beispielcode unter [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md) an.
 
 ### <a name="protocols"></a>Protokolle
 

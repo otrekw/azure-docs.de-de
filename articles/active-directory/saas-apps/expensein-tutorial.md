@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 07/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7e3659aa3044a4453574a2cd171303d00abc19
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 377499b1dd263398e1be42379f8db60e8a0477f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017515"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Tutorial: Integrieren von ExpenseIn in Azure Active Directory
 
@@ -42,7 +41,10 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. ExpenseIn unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. 
+* ExpenseIn unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* Nach dem Konfigurieren von ExpenseIn können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+
 
 ## <a name="adding-expensein-from-the-gallery"></a>Hinzufügen von ExpenseIn aus dem Katalog
 
@@ -55,20 +57,20 @@ Zum Konfigurieren der Integration von ExpenseIn in Azure AD müssen Sie ExpenseI
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **ExpenseIn** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **ExpenseIn** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-expensein"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ExpenseIn
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ExpenseIn mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ExpenseIn eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ExpenseIn müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-2. **[Konfigurieren von ExpenseIn](#configure-expensein)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-5. **[Erstellen eines ExpenseIn-Testbenutzers](#create-expensein-test-user)** , um in ExpenseIn ein Pendant von B. Simon zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für ExpenseIn](#configure-expensein-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines ExpenseIn-Testbenutzers](#create-expensein-test-user)** , um in ExpenseIn ein Pendant von B. Simon zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
@@ -78,14 +80,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
-
-    Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs ein:
-
-    ```https
-    https://app.expensein.com/samlcallback
-    https://mobileapi.expensein.com/identity/samlcallback
-    ```
+4. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
@@ -98,38 +93,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Kopieren Sie im Abschnitt **ExpenseIn einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-### <a name="configure-expensein"></a>Konfigurieren von ExpenseIn
-
-1. Wenn Sie die Konfiguration in ExpenseIn automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
-
-    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
-
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **ExpenseIn einrichten**, um zur Anwendung ExpenseIn weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei ExpenseIn anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
-
-    ![Einrichtungskonfiguration](common/setup-sso.png)
-
-3. Wenn Sie ExpenseIn manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, melden Sie sich bei der ExpenseIn-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
-
-4. Klicken Sie oben auf der Seite auf **Admin** (Administrator), navigieren Sie zu **Single Sign-On** (Einmaliges Anmelden), und klicken Sie auf **Add provider** (Anbieter hinzufügen).
-
-     ![ExpenseIn-Konfiguration](./media/expenseIn-tutorial/config01.png)
-
-5. Führen Sie im Popupfenster **New Identity Provider** (Neuer Identitätsanbieter) die folgenden Schritte aus:
-
-    ![ExpenseIn-Konfiguration](./media/expenseIn-tutorial/config02.png)
-
-    a. Geben Sie im Textfeld **Provider Name** (Anbietername) den Namen ein, etwa „Azure“.
-
-    b. Wählen Sie **Yes** für **Allow Provider Intitated Sign-On** (Vom Anbieter ausgelöste Anmeldung) aus.
-
-    c. Fügen Sie in das Textfeld **Target Url** (Ziel-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    d. Fügen Sie im Textfeld **Aussteller** den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    e. Öffnen Sie das Zertifikat (Base64) im Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Certificate** (Zertifikat) ein.
-
-    f. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -161,6 +124,31 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+
+## <a name="configure-expensein-sso"></a>Konfigurieren des einmaligen Anmeldens für ExpenseIn
+
+1. Melden Sie sich in einem neuen Webbrowserfenster bei der ExpenseIn-Unternehmenswebsite als Administrator an.
+
+1. Klicken Sie oben auf der Seite auf **Admin** (Administrator), navigieren Sie zu **Single Sign-On** (Einmaliges Anmelden), und klicken Sie auf **Add provider** (Anbieter hinzufügen).
+
+     ![ExpenseIn-Konfiguration](./media/expenseIn-tutorial/config01.png)
+
+1. Führen Sie im Popupfenster **New Identity Provider** (Neuer Identitätsanbieter) die folgenden Schritte aus:
+
+    ![ExpenseIn-Konfiguration](./media/expenseIn-tutorial/config02.png)
+
+    a. Geben Sie im Textfeld **Provider Name** (Anbietername) den Namen ein, z. B. „Azure“.
+
+    b. Wählen Sie unter **Allow Provider Intitiated Sign-On** (Vom Anbieter initiierte Anmeldung zulassen) die Option **Yes** (Ja) aus.
+
+    c. Fügen Sie in das Textfeld **Target Url** (Ziel-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    d. Fügen Sie im Textfeld **Aussteller** den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    e. Öffnen Sie das Zertifikat (Base64) im Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Certificate** (Zertifikat) ein.
+
+    f. Klicken Sie auf **Erstellen**.
+
 ### <a name="create-expensein-test-user"></a>Erstellen eines ExpenseIn-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei ExpenseIn anmelden können, müssen sie in ExpenseIn bereitgestellt werden. Im Fall von ExpenseIn muss die Bereitstellung manuell ausgeführt werden.
@@ -185,7 +173,7 @@ Damit sich Azure AD-Benutzer bei ExpenseIn anmelden können, müssen sie in Expe
 
     d. Klicken Sie auf **Erstellen**.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 Wenn Sie im Zugriffsbereich die Kachel „ExpenseIn“ auswählen, sollten Sie automatisch bei der ExpenseIn-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -196,3 +184,9 @@ Wenn Sie im Zugriffsbereich die Kachel „ExpenseIn“ auswählen, sollten Sie a
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Ausprobieren von ExpenseIn mit Azure AD](https://aad.portal.azure.com/)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Schützen von ExpenseIn mit erweiterter Sichtbarkeit und komplexeren Kontrollen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849492"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043880"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
 
@@ -80,6 +80,23 @@ Mithilfe der folgenden Schritte können Sie ein Zertifikat mit einer nicht mit K
 9.  Nachdem die Anforderung von der Zertifizierungsstelle signiert wurde, führen Sie die Zertifikatsdatei zurück, um die **signierte Anforderung auf demselben Bildschirm „Zertifikatvorgang“ zusammenzuführen**.
 
 Die Zertifikatanforderung wurde nun erfolgreich zusammengeführt.
+
+## <a name="adding-more-information-to-csr"></a>Hinzufügen von weiteren Informationen zur Zertifikatsignieranforderung
+
+Sie können beim Erstellen einer Zertifikatsignieranforderung (CSR) noch weitere Informationen hinzufügen, z. B.: 
+    - Land:
+    - Ort/Standort:
+    - Bundesland/Kanton:
+    - Organisation:
+    - Organisationseinheit: Sie können diese Informationen beim Erstellen einer Zertifikatsignieranforderung hinzufügen, indem Sie dies in „subjectName“ definieren.
+
+Beispiel
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+
+>[!Note]
+>Wenn Sie ein DV-Zertifikat mit diesen Details in der Zertifikatsignieranforderung anfordern, wird diese von der Zertifizierungsstelle ggf. abgelehnt. Es kann sein, dass die Zertifizierungsstelle nicht alle Informationen, die in der Anforderung enthalten sind, auf ihre Gültigkeit überprüfen kann. Wenn Sie ein OV-Zertifikat anfordern, ist es besser, alle diese Informationen der Zertifikatsignieranforderung hinzuzufügen.
+
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

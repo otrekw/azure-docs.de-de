@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/15/2020
-ms.openlocfilehash: 238ede3e79b7d7c5a22d24dfc52530fe391b600b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519625"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076343"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -24,9 +24,9 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |---------|------------------|-------------|---------------|
-| [ **.NET-Clientbibliothek**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK | Eine vom Azure SDK-Team veröffentlichte neue Clientbibliothek, die für die Konsistenz mit anderen .NET-Clientbibliotheken konzipiert ist Version 11 | Allgemein verfügbar. </br> Installieren Sie das Paket [Azure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) über NuGet. |
-| [**Python-Clientbibliothek**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK | Eine vom Azure SDK-Team veröffentlichte neue Clientbibliothek, die für die Konsistenz mit anderen Python-Clientbibliotheken konzipiert ist Version 11 | Allgemein verfügbar. </br> Installieren Sie das Paket [azure-search-documents](https://pypi.org/project/azure-search-documents/) über PyPI. |
-| [**JavaScript-Clientbibliothek**](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-search-documents/11.0.0/index.html)  | Azure SDK | Eine vom Azure SDK-Team veröffentlichte neue Clientbibliothek, die für die Konsistenz mit anderen JavaScript-Clientbibliotheken konzipiert ist Version 11 | Allgemein verfügbar. </br> Installieren Sie das [Paket @azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) über npm. |
+| [Azure.Search.Documents-Clientbibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK für .NET | Eine vom Azure SDK-Team veröffentlichte .NET-Clientbibliothek, die für die Konsistenz mit anderen .NET-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist für Search-REST-API-Version „2020-06-30“ ausgelegt, aber sie verfügt noch nicht über Unterstützung für Wissensspeicher, Geofilterung oder [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). | Allgemein verfügbar. </br> Installieren Sie das Paket [Azure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) über NuGet. |
+| [azure.search.documents-Clientbibliothek](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK für Python| Eine vom Azure SDK-Team veröffentlichte Python-Clientbibliothek, die für die Konsistenz mit anderen Python-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das Paket [azure-search-documents](https://pypi.org/project/azure-search-documents/) über PyPI. |
+| [@azure/search-documents-Clientbibliothek](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK für JavaScript | Eine vom Azure SDK-Team veröffentlichte JavaScript-Clientbibliothek, die für die Konsistenz mit anderen JavaScript-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das [Paket @azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) über npm. |
 
 ### <a name="june-2020"></a>Juni 2020
 
