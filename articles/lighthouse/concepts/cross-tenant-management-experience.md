@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 07/17/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b3aa15dd968b4cded831934103a02420d020b9a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521036"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371038"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -53,7 +53,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
   - Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
   - Sicherstellen der Anwendung derselben Richtlinien für die Hybridumgebungen von Kunden
   - Verwenden von Azure Security Center zum Überwachen der Compliance der Hybridumgebungen von Kunden
-- Skaliertes Verwalten von Kubernetes-Hybridclustern: [Azure Arc für Kubernetes (Vorschau):](../../azure-arc/kubernetes/overview.md)
+- Verwalten von Kubernetes-Hybridclustern im großen Stil – [Kubernetes mit Azure Arc-Aktivierung (Vorschauversion):](../../azure-arc/kubernetes/overview.md)
   - [Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Azure Arc](../../azure-arc/kubernetes/connect-cluster.md) für delegierte Abonnements und/oder Ressourcengruppen in Azure
   - [Verwenden von GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) für verbundene Cluster
   - Erzwingen von Richtlinien für verbundene Cluster
@@ -82,6 +82,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - Log Analytics: Abfragen von Daten aus Remote-Kundenarbeitsbereichen in mehreren Mandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im Dienstanbietermandanten über Webhooks
+- Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
 
 [Azure-Netzwerkoptionen](../../networking/networking-overview.md):
 

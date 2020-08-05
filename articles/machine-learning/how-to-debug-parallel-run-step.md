@@ -5,17 +5,18 @@ description: Debuggen und Problembehandlung für ParallelRunStep in Machine Lear
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
+ms.topic: conceptual
+ms.custom: troubleshooting
+ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/06/2020
-ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/16/2020
+ms.openlocfilehash: 16366d9f3be1144a7588ceb9133fb4e2e60db95c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027000"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373707"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Debugging und Problembehandlung von ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +37,7 @@ Aufgrund der verteilten Struktur von ParallelRunStep-Aufträgen gibt es Protokol
 
 - `~/logs/overview.txt`: Diese Datei enthält allgemeine Informationen zur Anzahl der bisher erstellten Minibatches (auch als Aufgaben bezeichnet) und der Anzahl der bisher verarbeiteten Minibatches. Am Ende wird das Ergebnis des Auftrags aufgeführt. Wenn bei dem Auftrag ein Fehler aufgetreten ist, wird die Fehlermeldung angezeigt, und es wird beschrieben, wo mit der Problembehandlung begonnen werden sollte.
 
-- `~/logs/sys/master.txt`: Diese Datei stellt die Masterknotenansicht (auch als Orchestrator bezeichnet) des laufenden Auftrags bereit. Dies umfasst die Aufgabenerstellung, die Fortschrittsüberwachung und das Ergebnis der Ausführung.
+- `~/logs/sys/master.txt`: Diese Datei stellt die Prinzipalknotenansicht (auch als Orchestrator bezeichnet) des laufenden Auftrags bereit. Dies umfasst die Aufgabenerstellung, die Fortschrittsüberwachung und das Ergebnis der Ausführung.
 
 Protokolle, die mit dem EntryScript-Hilfsprogramm aus dem Eingabeskript generiert wurden, sowie Druckanweisungen finden Sie in den folgenden Dateien:
 
@@ -61,11 +62,11 @@ Wenn Sie detailliert erfahren möchten, wie die einzelnen Knoten das Bewertungss
 Sie finden auch Informationen zur Ressourcennutzung der Prozesse für jeden Worker. Diese Informationen liegen im CSV-Format vor und befinden sich unter `~/logs/sys/perf/overview.csv`. Informationen zu den einzelnen Prozessen finden Sie unter `~logs/sys/processes.csv`.
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Wie protokolliere ich mein Benutzerskript aus einem Remotekontext?
-Sie können eine Protokollierung von EntryScript abrufen, wie im folgenden Beispielcode gezeigt, damit die Protokolle im Ordner **logs/user** im Portal angezeigt werden.
+ParallelRunStep kann mehrere Prozesse auf einem Knoten entsprechend dem process_count_per_node ausführen. Wir empfehlen die unten gezeigte Verwendung der ParallelRunStep-Protokollierung, um die Protokolle der einzelnen Prozesse auf dem Knoten zu organisieren und die Druck- und Protokollanweisungen zu kombinieren. Sie können eine Protokollierung von EntryScript abrufen, damit die Protokolle im Ordner **logs/user** im Portal aufgeführt werden.
 
 **Ein Beispiel für Eingabeskript mit der Protokollierung:**
 ```python
-from entry_script import EntryScript
+from azureml_user.parallel_run import EntryScript
 
 def init():
     """ Initialize the node."""
@@ -87,7 +88,9 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Wie könnte ich eine seitliche Eingabe, z. B. eine oder mehrere Dateien mit einer Nachschlagetabelle, an alle meine Mitarbeiter weitergeben?
 
-Konstruieren Sie ein [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py), das die seitliche Eingabe enthält, und registrieren Sie es in Ihrem Arbeitsbereich. Übergeben Sie es an den Parameter `side_input` für Ihr `ParallelRunStep`. Zusätzlich können Sie seinen Pfad im Abschnitt `arguments` hinzufügen, um einfach auf seinen eingebundenen Pfad zuzugreifen:
+Der Benutzer kann mit dem Parameter side_inputs von ParalleRunStep Verweisdaten an das Skript übergeben. Alle als side_inputs bereitgestellten Datasets werden auf den einzelnen Workerknoten eingebunden. Der Benutzer kann den Speicherort der Eingabe durch Übergeben des Arguments erhalten.
+
+Konstruieren Sie ein [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py), das die Verweisdaten enthält, und registrieren Sie es in Ihrem Arbeitsbereich. Übergeben Sie es an den Parameter `side_inputs` für Ihr `ParallelRunStep`. Zusätzlich können Sie den Pfad im Abschnitt `arguments` hinzufügen, um einfach auf den eingebundenen Pfad zuzugreifen:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")

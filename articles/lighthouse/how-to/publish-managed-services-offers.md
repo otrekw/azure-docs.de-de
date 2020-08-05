@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133317"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407063"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -34,7 +34,7 @@ Informationen zum allgemeinen Veröffentlichungsprozess finden Sie im [Veröffen
 Wenn ein Kunde Ihr Angebot hinzufügt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren, für die dann [das Onboarding in Azure Lighthouse durchgeführt wird](#the-customer-onboarding-process).
 
 > [!IMPORTANT]
-> Jeder Plan in einem Angebot für verwaltete Dienste enthält einen Abschnitt mit **Manifestdetails**, in dem Sie die Azure Active Directory-Entitäten (Azure AD) in Ihrem Mandanten definieren, die Zugriff auf die delegierten Ressourcengruppen und/oder Abonnements für Kunden erhalten sollen, die diesen Plan kaufen. Es ist wichtig, zu bedenken, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), die Sie einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Damit Sie verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuweisen können, müssen Sie einen gesonderten [privaten Plan](../../marketplace/private-offers.md) veröffentlichen, der jeweils exklusiv für die einzelnen Kunden ist.
+> Jeder Plan in einem Angebot für verwaltete Dienste enthält einen Abschnitt mit **Manifestdetails**, in dem Sie die Azure Active Directory-Entitäten (Azure AD) in Ihrem Mandanten definieren, die Zugriff auf die delegierten Ressourcengruppen und/oder Abonnements für Kunden erhalten sollen, die diesen Plan kaufen. Es ist wichtig, zu bedenken, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), die Sie einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Um verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuzuweisen, können Sie für jeden Kunden einen gesonderten, exklusiven [privaten Plan](../../marketplace/private-offers.md) veröffentlichen. Denken Sie daran, dass private Pläne bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt werden.
 
 ## <a name="publish-your-offer"></a>Veröffentlichen Ihres Angebots
 

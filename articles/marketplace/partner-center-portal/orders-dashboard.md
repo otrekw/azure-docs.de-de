@@ -1,16 +1,18 @@
 ---
-title: Partner Center-Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
-description: Erfahren Sie, wie Sie auf Analyseberichte in einem grafischen und herunterladbaren Format zugreifen, die Informationen zu Aufträgen für Ihre Marketplace-Angebote enthalten.
+title: Partner Center-Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace, Microsoft AppSource und dem Azure Marketplace
+description: Erfahren Sie, wie Sie auf Analyseberichte in einem grafischen und herunterladbaren Format zugreifen, die Informationen zu Aufträgen für Ihre Angebote im kommerziellen Marketplace enthalten.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2020
-ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d5adc1bfe19de48568d0e77bb488bea0e5a02818
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536129"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327377"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -32,6 +34,8 @@ Im Dashboard **Aufträge** des Menüs **Analyse** werden die aktuellen Aufträge
 - [Aufträge nach Plänen](#orders-by-plans)
 - [Trend im Hinblick auf Aufträge und Arbeitsplätze](#orders-and-seats-trend)
 - [Tabelle der Bestelldetails](#order-details-table)
+
+Die maximale Latenz zwischen der Auftragserstellung und der Berichterstellung in Partner Center beträgt 48 Stunden.
 
 ## <a name="order-dashboard-details"></a>Details zum Dashboard „Aufträge“
 
@@ -63,7 +67,7 @@ Im Ringdiagramm **Aufträge nach Angeboten** sind Aufträge (einschließlich sto
 
 - Die Topangebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind.
 - Sie können bestimmte Angebote in der Legende auswählen, um nur diese Angebote im Diagramm anzuzeigen.
-- Wenn Sie den Cursor über ein Segment im Diagramm bewegen, wird die Anzahl der Bestellungen und der Prozentsatz dieses Angebots im Vergleich zur Gesamtzahl der Bestellungen für alle Ihre Angebote angezeigt.
+- Wenn Sie mit der Maus auf ein Segment im Diagramm zeigen, wird die Anzahl der Bestellungen und der Prozentsatz dieses Angebots im Vergleich zur Gesamtanzahl der Bestellungen für alle Ihre Angebote angezeigt.
 - Der **Trend „Aufträge nach Angeboten“** zeigt Wachstumstrends nach Monaten an. Die Spalte „Monat“ gibt die Anzahl der Bestellungen nach Angebotsname an. Das Liniendiagramm stellt den prozentualen Wachstumstrend auf einer z-Achse dar.
 - Mit dem Schieberegler oben im Diagramm können Sie nach rechts und links entlang der x-Achse scrollen, um sich auf bestimmte Datenpunkte zu konzentrieren.
 - Sie können das Trenddiagramm anzeigen, indem Sie ein bestimmtes Punkt Element in der Legende auswählen.
@@ -71,7 +75,7 @@ Im Ringdiagramm **Aufträge nach Angeboten** sind Aufträge (einschließlich sto
 
 ### <a name="orders-trend-per-site-versus-per-seat"></a>Auftragstrend: pro Standort/pro Arbeitsplatz im Vergleich
 
-Im Ringdiagramm **Pro Standort/pro Arbeitsplatz im Vergleich** sind von Kunden erworbene SaaS-Aufträge pro Standort und pro Arbeitsplatz aufgeschlüsselt (dieses Diagramm umfasst stornierte Aufträge). Im Säulendiagramm ist der Trend der von Kunden erworbenen SaaS-Aufträge pro Standort und pro Arbeitsplatz dargestellt (dieses Diagramm umfasst stornierte Aufträge).
+Im Ringdiagramm **Pro Standort/pro Arbeitsplatz im Vergleich** sind von Kunden erworbene SaaS-Aufträge pro Standort und pro Arbeitsplatz aufgeschlüsselt. (Dieses Diagramm schließt stornierte Aufträge ein.) Im Säulendiagramm ist der Trend der von Kunden erworbenen SaaS-Aufträge pro Standort und pro Arbeitsplatz dargestellt (dieses Diagramm umfasst stornierte Aufträge).
 
 ### <a name="orders-by-plans"></a>Aufträge nach Plänen
 
@@ -79,16 +83,16 @@ Im Diagramm **Aufträge nach Plänen** ist der Auftragstrend für Ihre gesamten 
 
 ### <a name="orders-and-seats-trend"></a>Trend im Hinblick auf Aufträge und Arbeitsplätze
 
-Im Diagramm **Trend im Hinblick auf Aufträge und Arbeitsplätze** werden die 50 Top-Angebote mit der höchsten Anzahl von Aufträgen dargestellt. Diese werden in einer Bestenliste angezeigt und sind nach der höchsten Anzahl von Aufträgen und dem höchsten Prozentsatz der Aufträge sortiert.
+Im Diagramm **Trend im Hinblick auf Aufträge und Arbeitsplätze** werden die 50 Top-Angebote mit der höchsten Anzahl von Aufträgen dargestellt. Diese werden in einer Bestenliste angezeigt und nach der höchsten Anzahl von Aufträgen und dem höchsten Prozentsatz der Aufträge sortiert.
 
 - **Aufträge nach Plänen**: Wählen Sie ein Angebot aus, um die Aufschlüsselung der Auftragsanzahl für die fünf Top-Pläne im Diagramm anzuzeigen.
-- **Arbeitsplätze nach Plänen**: Der monatliche Trend der Arbeitsplätze für die fünf Top-Pläne. Wenn es sich bei dem ausgewählten Angebot nicht um ein Angebot pro Arbeitsplatz handelt, werden in diesem Flächendiagramm keine Daten angezeigt.
+- **Arbeitsplätze nach Plänen**: Der monatliche Trend der Arbeitsplätze für die fünf Top-Pläne. Wenn es sich bei dem ausgewählten Angebot nicht um ein Angebot pro Arbeitsplatz handelt, werden hier keine Daten angezeigt.
 
 ### <a name="canceled-orders-by-offers"></a>Stornierte Aufträge nach Angeboten
 
 Im Kreisdiagramm **Stornierte Aufträge nach Angeboten** sind all Ihre stornierten Aufträge nach Angebotsnamen organisiert. Die Topangebote werden im Diagramm angezeigt, während die übrigen unter der Kategorie für sonstige Angebote gruppiert sind. Sie können bestimmte Angebote in der Legende auswählen, um sie im Diagramm anzuzeigen.
 
-- Wenn Sie auf ein Segment im Diagramm zeigen, werden die Anzahl der Aufträge und der Prozentsatz des ausgewählten Angebots im Vergleich zur Gesamtanzahl der Aufträge für alle Angebote angezeigt.
+- Wenn Sie mit der Maus auf ein Segment im Diagramm zeigen, werden die Anzahl der Aufträge und der Prozentsatz des ausgewählten Angebots im Vergleich zur Gesamtanzahl der Aufträge für alle Angebote angezeigt.
 - Im Säulendiagramm werden Trends nach Monaten angezeigt. Die Spalten stellen die Anzahl der stornierten Aufträge nach Angebotsname dar. Mit dem Schieberegler oben im Diagramm können Sie entlang der x-Achse nach rechts und links scrollen, um sich auf bestimmte Datenpunkte zu konzentrieren. Sie können das Trenddiagramm anzeigen, indem Sie ein bestimmtes Punkt Element in der Legende auswählen.
 
 ### <a name="order-details-table"></a>Tabelle der Bestelldetails
@@ -98,14 +102,14 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1000 Top-Au
 - Jede Spalte im Raster ist sortierbar.
 - Die Daten können in eine TSV-Datei extrahiert werden, wenn die Anzahl der Datensätze weniger als 1000 beträgt.
 - Liegt die Anzahl der Datensätze über 1000, werden die exportierten Daten für die nächsten 30 Tage asynchron auf einer Downloadseite abgelegt.
-- Sie können auf die **Tabelle „Auftragsdetails“** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Azure-Lizenztyp, Marketplace-Lizenztyp, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Unternehmensname gefiltert werden.
-- Da für SaaS-Angebote, die über den Azure Marketplace oder AppSource erworben werden, kein Azure-Abonnement erforderlich ist, wird im Abschnitt **Daten zu detaillierten Aufträgen** als Marketplace-Abonnement-ID „00000000-0000-0000-0000-000000000000“ angezeigt.
+- Wenden Sie Filter auf die **Tabelle „Auftragsdetails“** an, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Filtern Sie nach Land/Region, Azure-Lizenztyp, Lizenztyp im kommerziellen Marketplace, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Abonnement-ID im kommerziellen Marketplace, Kunden-ID und Unternehmensname.
+- Da für SaaS-Angebote, die über den Azure Marketplace oder AppSource erworben werden, kein Azure-Abonnement erforderlich ist, wird im Abschnitt **Daten zu detaillierten Aufträgen** die Marketplace-Abonnement-ID „00000000-0000-0000-0000-000000000000“ angezeigt.
 
 #### <a name="orders-page-filters"></a>Filter für die Seite „Bestellungen“
 
 Diese Filter werden auf Seitenebene angewendet.
 
-Sie können mehrere Filter auswählen, um das Diagramm nach den Kriterien zu rendern, die Sie für die Anzeige ausgewählt haben, und um die gewünschten Daten im Raster/Export **Ausführliche Auftragsdaten** anzuzeigen. Filter werden auf die Daten angewendet, die für den in der rechten oberen Ecke der Seite „Bestellungen“ ausgewählten Datenbereich extrahiert wurden.
+Sie können mehrere Filter auswählen, um das Diagramm nach den Kriterien zu rendern, die Sie für die Anzeige ausgewählt haben, und um die gewünschten Daten im Raster/Export **Ausführliche Auftragsdaten** anzuzeigen. Filter werden auf die Daten angewandt, die für den in der rechten oberen Ecke der Seite „Aufträge“ ausgewählten Datenbereich extrahiert wurden.
 
 - Angebotstypen und Angebotsnamen werden nur für Angebote aufgelistet, für die im ausgewählten Datumsbereich Aufträge vorhanden sind. In der Liste enthaltene Angebotsnamen werden für Angebotstypen angezeigt, die Sie aus der Liste ausgewählt haben.
 - Durch angewendete Filter werden die Gesamtmetriken innerhalb der einzelnen Auswahl(en) für jeden ausgewählten Filter angezeigt. Bei Verwendung der Standardauswahl werden keine angewendeten Filter angezeigt.

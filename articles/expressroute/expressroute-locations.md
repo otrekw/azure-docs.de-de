@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3505427ab88a2241aa2781366c3d15179b03f050
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0aac3d7a4bc2eb8bb83405155b345360f5d2c699
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231159"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407352"
 ---
-# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
+# <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
 > [!div class="op_single_selector"]
 > * [Standorte nach Anbieter](expressroute-locations.md)
@@ -82,7 +82,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Aryaka Networks](https://www.aryaka.com/)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Hongkong (SAR), São Paulo, Seattle, Silicon Valley, Singapur, Tokio, Washington DC |
 | **[Ascenty-Rechenzentren](https://www.ascenty.com/en/cloud/microsoft-express-route)** |Unterstützt |Unterstützt |Sao Paulo |
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Frankfurt, London, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
-| **[AT TOKYO](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Unterstützt | Unterstützt | Tokio2 |
+| **[AT TOKYO](https://www.attokyo.com/connectivity/azure.html)** | Unterstützt | Unterstützt | Osaka, Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Unterstützt | Unterstützt | Tokio |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Unterstützt |Unterstützt |Montreal, Toronto, Quebec City |
@@ -109,7 +109,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **Etisalat (VAE)** |Unterstützt |Unterstützt |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Dublin, Frankfurt, London |
 | **FarEasTone** |Unterstützt |Unterstützt |Taipeh|
-| **GÉANT** |Unterstützt |Unterstützt |Amsterdam, Dublin, Frankfurt, Marseille |
+| **GÉANT** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
 | **GTT** |Unterstützt |Unterstützt |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Unterstützt| Unterstützt | Chennai, Mumbai |
 | **Intelsat** | Unterstützt | Unterstützt | Washington DC2 |
@@ -133,6 +133,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Unterstützt |Unterstützt |Dallas, Los Angeles, Miami, Sao Paulo, Washington, D.C. |
 | **[Daten der nächsten Generation](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Unterstützt |Unterstützt |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Unterstützt |Unterstützt |Melbourne, Perth, Sydney, Sydney2 |
+| **[NOS](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |Unterstützt |Unterstützt |Amsterdam2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Unterstützt |Unterstützt |Amsterdam, Hongkong (SAR), London, Los Angeles, Osaka, Singapur, Sydney, Tokio, Washington DC |
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |Unterstützt |Unterstützt |Tokio |
 | **[NTT Global DataCenters EMEA](https://www.ntt.com/en/services/data-center.html)** |Unterstützt |Unterstützt |Berlin |
@@ -355,7 +356,7 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 | **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | Asia |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | Europa |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | Nordamerika |
-| **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | Nordamerika |
+| **[Presidio](https://www.presidio.com/subpage/1107/microsoft-azure)** | Nordamerika |
 | **[sol-tec](https://www.sol-tec.com/what-we-do/)** | Europa |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Südamerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Australien |

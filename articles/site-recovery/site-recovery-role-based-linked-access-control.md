@@ -6,18 +6,18 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 877545eb22331e724520102814ec8a00b2c205e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847906"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370817"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Verwalten des Site Recovery-Zugriffs mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC)
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe der rollenbasierten Zugriffssteuerung können Sie Zuständigkeiten in Ihrem Team aufteilen und Benutzern nur die jeweils spezifischen Zugriffsrechte zum Ausführen bestimmter Aufträge zuweisen.
 
-Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery-Verwaltungsvorgängen. Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access-control/built-in-roles.md).
+Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery-Verwaltungsvorgängen. Weitere Informationen zu [in Azure integrierten Rollen](../role-based-access-control/built-in-roles.md)
 
 * [Site-Recovery Contributor](../role-based-access-control/built-in-roles.md#site-recovery-contributor): Diese Rolle verfügt über alle erforderlichen Berechtigungen zum Verwalten von Azure Site Recovery-Vorgängen in einem Tresor von Recovery Services. Ein Benutzer mit dieser Rolle kann jedoch keinen Tresor von Recovery Services erstellen oder löschen oder anderen Benutzern Zugriffsrechte zuweisen. Diese Rolle eignet sich optimal für Administratoren der Notfallwiederherstellung, die die Notfallwiederherstellung für Anwendungen oder gesamte Unternehmen aktivieren und verwalten können o.ä.
 * [Site Recovery-Operator](../role-based-access-control/built-in-roles.md#site-recovery-operator): Diese Rolle verfügt über Berechtigungen zum Ausführen und Verwalten von Failover- und Failbackvorgängen. Ein Benutzer, der über diese Rolle verfügt, kann die Replikation aktivieren oder deaktivieren, Tresore erstellen oder löschen, eine neue Infrastruktur registrieren oder anderen Benutzern Zugriffsrechte zuweisen. Diese Rolle eignet sich optimal für einen Notfallwiederherstellungsoperator, der ein Failover für einen virtuellen Computer oder Anwendungen durchführen kann, wenn er dazu vom Besitzer der Anwendung oder IT-Administratoren in einer tatsächlichen oder simulierten Notfallsituation (z.B. eine DR-Übung) angewiesen wird. Nachdem der Notfall behandelt wurde, kann der DR-Operator den virtuellen Computer erneut schützen und ein Failback durchführen.

@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079739"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
@@ -73,7 +73,7 @@ Für Knoten, auf denen Windows ausgeführt wird, werden folgende Versionen unter
 >[!NOTE]
 >Die eigenständige Produkt-SKU von [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) umfasst keine Implementierung von DSC. Sie kann daher nicht über PowerShell DSC oder Azure Automation State Configuration verwaltet werden.
 
-Für Linux-Knoten unterstützt die DSC Linux-Erweiterung alle unter [Unterstützte Linux-Distributionen](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions) aufgeführten Linux-Distributionen.
+Für Linux-Knoten unterstützt die DSC-Linux-Erweiterung alle in der [PowerShell-DSC-Dokumentation](/powershell/scripting/dsc/getting-started/lnxgettingstarted) aufgeführten Linux-Distributionen.
 
 ### <a name="dsc-requirements"></a>DSC-Anforderungen
 

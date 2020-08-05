@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926713"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313335"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -27,11 +27,11 @@ ms.locfileid: "82926713"
 
 ## <a name="using-the-id_token"></a>Verwenden des ID-Tokens
 
-ID-Token sollten verwendet werden, um zu überprüfen, ob ein Benutzer der ist, der er vorgibt zu sein, und um zusätzliche nützliche Informationen über ihn zu erhalten. Sie sollten nicht für die Autorisierung anstelle eines [Zugriffstokens](access-tokens.md) verwendet werden. Die bereitgestellten Ansprüche können für UX in Ihrer Anwendung, als Schlüssel in einer Datenbank und zum Bereitstellen des Zugriffs auf die Clientanwendung verwendet werden.  Beim Erstellen von Schlüsseln für eine Datenbank sollte `idp` nicht verwendet werden, weil Gastszenarien dadurch manipuliert werden.  Die Schlüsselerstellung sollte nur für `sub` (immer eindeutig) durchgeführt werden, wobei `tid` bei Bedarf für das Routing verwendet wird.  Wenn Sie Daten dienstübergreifend freigeben müssen, können Sie `oid`+`sub`+`tid` verwenden, da mehrere Dienste die gleiche `oid` erhalten.
+ID-Token sollten verwendet werden, um zu überprüfen, ob ein Benutzer der ist, der er vorgibt zu sein, und um zusätzliche nützliche Informationen über ihn zu erhalten. Sie sollten nicht für die Autorisierung anstelle eines [Zugriffstokens](access-tokens.md) verwendet werden. Die bereitgestellten Ansprüche können für Elemente der Benutzeroberfläche in Ihrer Anwendung, als [Schlüssel in einer Datenbank](#using-claims-to-reliably-identify-a-user-subject-and-object-id) und zum Bereitstellen des Zugriffs auf die Clientanwendung verwendet werden.  
 
 ## <a name="claims-in-an-id_token"></a>Ansprüche in einem ID-Token
 
-`id_tokens` für eine Microsoft-Identität sind [JWT-Token](https://tools.ietf.org/html/rfc7519) (JSON-Web-Token), d. h., sie bestehen aus Header, Nutzlast und Signatur. Sie können den Header und die Signatur verwenden, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen zu dem von Ihrem Client angeforderten Benutzer enthält. Sofern nicht anders angegeben, sind alle hier aufgeführten JWT-Ansprüche sowohl in v1.0- als auch in v2.0-Token enthalten.
+`id_tokens` sind [JSON Web Token](https://tools.ietf.org/html/rfc7519) (JWT), d. h., sie bestehen aus Header, Nutzlast und Signatur. Sie können den Header und die Signatur verwenden, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen zu dem von Ihrem Client angeforderten Benutzer enthält. Sofern nicht anders angegeben, sind alle hier aufgeführten JWT-Ansprüche sowohl in v1.0- als auch in v2.0-Token enthalten.
 
 ### <a name="v10"></a>v1.0
 
@@ -87,14 +87,25 @@ Diese Liste zeigt die JWT-Ansprüche, die (sofern nicht anders angegeben) standa
 |`ver` | Zeichenfolge, 1.0 oder 2.0 | Gibt die Version des ID-Tokens an. |
 
 > [!NOTE]
-> Die ID-Token der Version 1 (v1) und der Version 2 (v2) weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version gibt im Wesentlichen den Endpunkt der Azure AD-Plattform an, von dem sie ausgestellt wurde. Die [Azure AD OAuth-Implementierung](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) wurde im Lauf der Jahre weiterentwickelt. Aktuell gibt es zwei verschiedene OAuth-Endpunkte für Azure AD-Anwendungen. Sie können entweder einen beliebigen neuen Endpunkt (als v2 kategorisiert) oder den alten Endpunkt (als v1 bezeichnet) verwenden. Die OAuth-Endpunkte der beiden Versionen unterscheiden sich. Der v2-Endpunkt ist der neuere Endpunkt, zu dem wir alle Features des v1-Endpunkts migrieren wollen. Daher empfehlen wir neuen Entwicklern, den v2-Endpunkt zu verwenden.
+> Die ID-Token der Versionen 1.0 und 2.0 weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version basiert auf dem Endpunkt, von dem aus die Anforderung erfolgt ist. Obwohl vorhandene Anwendungen wahrscheinlich den Azure AD-Endpunkt verwenden, sollten neue Anwendungen den v2.0-Endpunkt „Microsoft Identity Platform“ verwenden.
 >
-> - Version 1: Azure Active Directory-Endpunkte: `https://login.microsoftonline.com/common/oauth2/authorize`
-> - Version 2: Microsoft Identity Platform-Endpunkte: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v1.0: Azure AD-Endpunkte: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - v2.0: Microsoft Identity Platform-Endpunkte: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Verwenden von Ansprüchen zur zuverlässigen Identifizierung von Benutzern (Betreff und Objekt-ID)
+
+Wenn Sie einen Benutzer identifizieren (wenn Sie ihn z. B. in einer Datenbank suchen oder entscheiden, welche Berechtigungen er erhält), ist es wichtig, Informationen zu verwenden, die im Lauf der Zeit unverändert und eindeutig bleiben.  Ältere Anwendungen verwenden manchmal ein Feld wie die E-Mail-Adresse, eine Telefonnummer oder den UPN.  Alle diese Informationen können sich im Lauf der Zeit ändern und auch wiederverwendet werden (z. B. wenn ein Mitarbeiter seinen Namen ändert oder wenn ein Mitarbeiter die E-Mail-Adresse eines früheren Mitarbeiters erhält, der nicht mehr im Unternehmen arbeitet). Daher ist es **enorm wichtig**, dass Ihre Anwendung keine für Menschen lesbaren Daten verwendet, um Benutzer zu identifizieren. Für Menschen lesbar bedeutet ganz allgemein, dass jemand diese Informationen lesen und ändern könnte.  Verwenden Sie stattdessen die Ansprüche, die vom OIDC-Standard bereitgestellt werden, oder die von Microsoft bereitgestellten Erweiterungsansprüche `sub` und `oid`.
+
+Verwenden Sie zum ordnungsgemäßen Speichern von Informationen pro Benutzer nur `sub` oder `oid` (die als GUIDs eindeutig sind) und bei Bedarf `tid` für das Routing oder Sharding.  Wenn Sie Daten dienstübergreifend freigeben müssen, eignet sich `oid`+`tid` am besten, da alle Apps dieselben Ansprüche `oid` und `tid` für einen bestimmten Benutzer erhalten.  Der `sub`-Anspruch in der Microsoft Identity-Plattform wird „paarweise“ festgelegt, d. h., er basiert auf einer Kombination aus dem Tokenempfänger, dem Mandanten und dem Benutzer und ist damit eindeutig.  Daher erhalten zwei Apps, die ID-Token für einen bestimmten Benutzer anfordern, unterschiedliche `sub`-Ansprüche, aber dieselben `oid`-Ansprüche für diesen Benutzer.
+
+>[!NOTE]
+> Verwenden Sie den `idp`-Anspruch nicht zum Speichern von Informationen zu einem Benutzer, um Benutzer über Mandanten hinweg zu korrelieren.  Dies funktioniert nicht, da die Ansprüche `oid` und `sub` für einen Benutzer in verschiedenen Mandanten unterschiedlich sind. Dies ist so konzipiert, um sicherzustellen, dass Anwendungen Benutzer nicht mandantenübergreifend nachverfolgen können.  
+>
+> Gastszenarien, in denen ein Benutzer einem Mandanten angehört und sich in einem anderen authentifiziert, sollten den Benutzer wie einen neuen Benutzer des Diensts behandeln.  Ihre Dokumente und Berechtigungen im Mandanten Contoso dürfen nicht im Mandanten Fabrikam angewandt werden. Dies ist wichtig, um versehentliche Datenlecks zwischen Mandanten zu vermeiden.
 
 ## <a name="validating-an-id_token"></a>Überprüfen eines ID-Tokens
 
-Die Überprüfung eines `id_token` ist dem ersten Schritt der [Überprüfung eines Zugriffstokens](access-tokens.md#validating-tokens) ähnlich. Ihr Client sollte bestätigen, dass der richtige Aussteller das Token zurückgesendet hat und dass es nicht manipuliert wurde. Da `id_tokens` immer JWT-Token sind, sind zahlreiche Bibliotheken zum Überprüfen dieser Token verfügbar. Wir empfehlen, eine dieser Bibliotheken zu verwenden, anstatt den Vorgang selbst auszuführen.
+Die Überprüfung eines `id_token` ist dem ersten Schritt der [Überprüfung eines Zugriffstokens](access-tokens.md#validating-tokens) ähnlich. Ihr Client kann bestätigen, dass der richtige Aussteller das Token zurückgesendet hat und dass es nicht manipuliert wurde. Da `id_tokens` immer JWT-Token sind, sind zahlreiche Bibliotheken zum Überprüfen dieser Token verfügbar. Wir empfehlen, eine dieser Bibliotheken zu verwenden, anstatt den Vorgang selbst auszuführen.  Beachten Sie, dass nur vertrauliche Clients (mit einem Geheimnis) ID-Token überprüfen sollten.  Öffentliche Anwendungen (Code, der vollständig auf einem Gerät oder in einem Netzwerk ausgeführt wird, das Sie nicht steuern können, z. B. dem Browser eines Benutzers oder dessen Heimnetzwerk) profitieren nicht vom Validieren des ID-Tokens, da ein böswilliger Benutzer die zur Validierung des Tokens verwendeten Schlüssel abfangen und bearbeiten kann.
 
 Um das Token manuell zu überprüfen, beachten Sie die Details der Schritte unter [Überprüfen eines Zugriffstokens](access-tokens.md#validating-tokens). Nach der Überprüfung der Signatur des Tokens sollten die folgenden JWT-Ansprüche im ID-Token überprüft werden (dies kann auch von Ihrer Tokenüberprüfungsbibliothek ausgeführt werden):
 

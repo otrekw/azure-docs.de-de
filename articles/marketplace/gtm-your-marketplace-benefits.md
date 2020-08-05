@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536038"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408117"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -41,7 +41,7 @@ Ausführliche Beschreibungen aller Programmvorteile finden Sie in der [Präsenta
 Der Anfang ist denkbar einfach:
 
 1. Veröffentlichen Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace.
-2. Wechseln Sie im Partner Center zu [Marketplace-Prämien](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace), und wählen Sie **Registrieren für Marketplace-Prämienprogramm**.
+2. Wechseln Sie im Partner Center zu [Marketplace-Prämien](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace), und wählen Sie **Registrieren für Marketplace-Prämienprogramm**.
 3. Um Verkaufs- und Marketingvorteile zu aktivieren, weisen Sie einen Marketingkontakt zu. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
 4. Zum Hinzufügen oder Aktualisieren Ihrer Marketingkontaktinformationen navigieren Sie auf der Seite für Marketplace-Prämien zum oberen Bereich der Registerkarte für Verkaufs- und Marketingvorteile, und wählen Sie dann **Hinzufügen, aktualisieren oder ändern** aus.  Gehen Sie anschließend wie folgt vor:
 
@@ -106,9 +106,15 @@ Herausgeber der Stufen [List und Trial](determine-your-listing-type.md) können 
 Microsoft behält sich vor, Marketplace-Prämienvorteile für Herausgeber zu widerrufen und zu beenden, für die Folgendes gilt: 
 
 * Sie beteiligen sich mithilfe ihres Marketplace-Angebots an illegalen Aktivitäten.
+* Sie schließen einen Kaufvorgang ab, der als betrügerisch erkannt oder als vermutlich betrügerisch eingestuft wird.
 * Sie wurden aus dem kommerziellen Marketplace entfernt. 
 * Sie nutzen ihr Angebot, um Marketing oder andere Inhalte anzuzeigen, die gegen Urheberrechte oder Markengesetze verstoßen.
 * Sie verstoßen gegen die Richtlinien des [Azure Sponsorship-Programms](https://azure.microsoft.com/offers/ms-azr-0036p/), einschließlich, jedoch nicht beschränkt auf die Verwendung von Azure Sponsorship-Mitteln für eigene interne Vorgänge oder Bitcoin-Mining.
+
+Microsoft behält sich vor, Marketplace-Prämienvorteile in folgenden Fällen zu widerrufen und zu beenden:
+
+* Der Kunde hat den Kaufvorgang versehentlich abgeschlossen und möchte den Auftrag stornieren. 
+* Der Kunde storniert den Auftrag, bevor das Produkt des Partners verwendet wurde.
 
 ### <a name="offer-availability"></a>Angebotsverfügbarkeit
 

@@ -4,19 +4,19 @@ description: Diese Seite beschreibt einige allgemeine DTU-Ressourcenlimits für 
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 099094338deba63f678337b7ea13dd9ce9800084
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa8901f2a219b0693cee17bc4d0ab78da615c415
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517687"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325099"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Ressourcengrenzwerte für Einzeldatenbanken, die das DTU-Kaufmodell verwenden: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,14 +38,14 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | :--- | --: |
 | Max. DTU-Anzahl | 5 |
 | Inbegriffener Speicher (GB) | 2 |
-| Max. Speicherlösungen (GB) | 2 |
+| Max. Speicher (GB) | 2 |
 | Max. In-Memory-OLTP-Speicher (GB) |– |
 | Max. gleichzeitige Worker (Anforderungen) | 30 |
 | Max. gleichzeitige Sitzungen | 300 |
 |||
 
 > [!IMPORTANT]
-> Die Dienstebene „Basic“ bietet weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen. 
+> Die Dienstebene „Basic“ bietet weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen.
 >
 >Im Hinblick auf die Datenspeicherung wird die Dienstebene „Basic“ in Standard-Seitenblobs platziert. Standard-Seitenblobs arbeiten mit HDD-basierten Speichermedien und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
 >
@@ -55,15 +55,17 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | **Computegröße** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Max. DTU-Anzahl | 10 | 20 | 50 | 100 |
-| Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 |
-| Max. Speicherlösungen (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
+| Inbegriffener Speicher (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
+| Max. Speicher (GB) | 250 | 250 | 250 | 1024 |
 | Max. In-Memory-OLTP-Speicher (GB) | – | – | – | – |
 | Max. gleichzeitige Worker (Anforderungen)| 60 | 90 | 120 | 200 |
 | Max. gleichzeitige Sitzungen |600 | 900 | 1200 | 2400 |
 ||||||
 
+<sup>1</sup> Unter [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/) finden Sie weitere Informationen zu zusätzlichen Kosten, die durch den zusätzlich bereitgestellten Speicherplatz entstehen.
+
 > [!IMPORTANT]
-> Die „Standard S0“, „S1“ und „S2“ bieten weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen. 
+> Die „Standard S0“, „S1“ und „S2“ bieten weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen.
 >
 >Im Hinblick auf die Datenspeicherung werden die Dienstebenen „Standard S0“ und „S1“ in Standard-Seitenblobs platziert. Standard-Seitenblobs arbeiten mit HDD-basierten Speichermedien und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
 >
@@ -73,29 +75,33 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | **Computegröße** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | Max. DTU-Anzahl | 200 | 400 | 800 | 1600 | 3000 |
-| Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 | 250 |
-| Max. Speicherlösungen (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
+| Inbegriffener Speicher (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
+| Max. Speicher (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 | Max. In-Memory-OLTP-Speicher (GB) | – | – | – | – |– |
 | Max. gleichzeitige Worker (Anforderungen)| 400 | 800 | 1600 | 3200 |6000 |
 | Max. gleichzeitige Sitzungen |4800 | 9600 | 19200 | 30.000 |30.000 |
 |||||||
+
+<sup>1</sup> Unter [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/) finden Sie weitere Informationen zu zusätzlichen Kosten, die durch den zusätzlich bereitgestellten Speicherplatz entstehen.
 
 ### <a name="premium-service-tier"></a>Premium-Dienstebene
 
 | **Computegröße** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Max. DTU-Anzahl | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Inbegriffener Speicher (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
-| Max. Speicherlösungen (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
+| Inbegriffener Speicher (GB) <sup>1</sup> | 500 | 500 | 500 | 500 | 4\.096 <sup>2</sup> | 4\.096 <sup>2</sup> |
+| Max. Speicher (GB) | 1024 | 1024 | 1024 | 1024 | 4\.096 <sup>2</sup> | 4\.096 <sup>2</sup> |
 | Max. In-Memory-OLTP-Speicher (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Max. gleichzeitige Worker (Anforderungen)| 200 | 400 | 800 | 1600 | 2800 | 6400 |
 | Max. gleichzeitige Sitzungen | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 |||||||
 
-\* Von 1024 GB bis zu 4096 GB in Inkrementen von 256 GB
+<sup>1</sup> Unter [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/) finden Sie weitere Informationen zu zusätzlichen Kosten, die durch den zusätzlich bereitgestellten Speicherplatz entstehen.
+
+<sup>2</sup> Von 1.024 GB bis zu 4.096 GB in Inkrementen von 256 GB.
 
 > [!IMPORTANT]
-> In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 > [!NOTE]
 > Weitere Informationen zu `tempdb`-Einschränkungen finden Sie unter [tempdb-Grenzwerte](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 

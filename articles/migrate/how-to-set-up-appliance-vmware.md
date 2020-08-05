@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance für VMware
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung und Migration von VMware-VMs einrichten.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24ba978d776da375b417fb67823651727836cb22
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112815"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386740"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 

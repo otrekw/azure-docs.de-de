@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e4e64a022a8cb071eb1b3447995c1e91b910fe2d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5e75819fd018cda60bca4c992bc4c141b14a379
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519200"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374183"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory
 
@@ -43,21 +43,21 @@ Für native Anwendungen und Webanwendungen, die Anforderungen an den Azure Blob-
 
 ## <a name="assign-rbac-roles-for-access-rights"></a>Zuweisen von RBAC-Rollen für Zugriffsrechte
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit üblichen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten. Außerdem können Sie benutzerdefinierte Rollen für den Zugriff auf Blob- und Warteschlangendaten definieren.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe in Azure integrierter Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- oder Warteschlangendaten. Außerdem können Sie benutzerdefinierte Rollen für den Zugriff auf Blob- und Warteschlangendaten definieren.
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-### <a name="built-in-rbac-roles-for-blobs-and-queues"></a>Integrierte RBAC-Rollen für Blobs und Warteschlangen
+### <a name="azure-built-in-roles-for-blobs-and-queues"></a>In Azure integrierte Rollen für Blobs und Warteschlangen
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-Informationen zum Zuweisen einer integrierten RBAC-Rolle zu einem Sicherheitsprinzipal finden Sie in den folgenden Artikeln:
+Informationen zum Zuweisen einer integrierten Azure-Rolle zu einem Sicherheitsprinzipal finden Sie in den folgenden Artikeln:
 
 - [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](storage-auth-aad-rbac-portal.md)
 - [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über die Azure CLI](storage-auth-aad-rbac-cli.md)
 - [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über PowerShell](storage-auth-aad-rbac-powershell.md)
 
-Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#management-and-data-operations). Weitere Informationen zum Erstellen benutzerdefinierter RBAC-Rollen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/custom-roles.md).
+Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#management-and-data-operations). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md).
 
 ### <a name="access-permissions-for-data-operations"></a>Zugriffsberechtigungen für Datenvorgänge
 

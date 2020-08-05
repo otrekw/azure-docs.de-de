@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70999170"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371378"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Bewährte Methoden zum Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage
 In diesem Artikel wird eine Sammlung empfohlener Vorgehensweisen in Azure Storage zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen (Platform-as-a-Service) erläutert. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -58,14 +58,14 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Verwenden vo
 ## <a name="use-role-based-access-control"></a>Verwenden der rollenbasierten Zugriffssteuerung
 Die Zugriffsverwaltung kann auch mit der [rollenbasierter Zugriffssteuerung](/azure/role-based-access-control/overview) (role-based access control, RBAC) erfolgen. Mit RBAC gewähren Sie Mitarbeitern auf Need-to-Know-Basis und auf Grundlage des Sicherheitsprinzips der geringsten Rechte genau die Berechtigungen, die sie benötigen. Zu viele Berechtigungen können ein Konto zum leichten Angriffsziel machen. Wenn die Berechtigungen nicht ausreichen, können Mitarbeiter nicht effizient arbeiten. RBAC begegnet diesem Problem dadurch, dass eine präzise Zugriffsverwaltung für Azure ermöglicht wird. Dies ist für Organisationen zwingend erforderlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten.
 
-Sie können integrierte RBAC-Rollen in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Verwenden Sie Beispielsweise die Rolle „Speicherkontomitwirkender“ für Cloudoperatoren, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle „Klassischer Speicherkontomitwirkender“, um klassische Speicherkonten zu verwalten. Cloudoperatoren, die virtuelle Computer, jedoch nicht das virtuelle Netzwerk oder das Speicherkonto, mit dem sie verbunden sind, verwalten müssen, können Sie der Rolle „Mitwirkender für virtuelle Computer“ zuweisen.
+Sie können integrierte Rollen in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Verwenden Sie Beispielsweise die Rolle „Speicherkontomitwirkender“ für Cloudoperatoren, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle „Klassischer Speicherkontomitwirkender“, um klassische Speicherkonten zu verwalten. Cloudoperatoren, die virtuelle Computer, jedoch nicht das virtuelle Netzwerk oder das Speicherkonto, mit dem sie verbunden sind, verwalten müssen, können Sie der Rolle „Mitwirkender für virtuelle Computer“ zuweisen.
 
 Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBAC erzwingen, erteilen Ihren Benutzern möglicherweise mehr Berechtigungen als erforderlich. Dies kann zur Kompromittierung der Daten führen, da einigen Benutzern Zugriff auf Daten gewährt wird, auf die sie von vorneherein keinen Zugriff haben sollten.
 
 Weitere Informationen über RBAC:
 
 - [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](/azure/role-based-access-control/role-assignments-portal)
-- [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/role-based-access-control/built-in-roles)
+- [Integrierte Azure-Rollen](/azure/role-based-access-control/built-in-roles)
 - [Azure Storage-Sicherheitsleitfaden](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Verwenden von clientseitiger Verschlüsselung für wertvolle Daten

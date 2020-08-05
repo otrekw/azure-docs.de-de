@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017663"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280799"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webaktivität in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84017663"
 Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.
 
 > [!NOTE]
-> Die Webaktivität kann nur öffentlich verfügbar gemachte URLs aufrufen. Für URLs, die in einem privaten virtuellen Netzwerk gehostet werden, wird dies nicht unterstützt.
+> Webaktivitäten werden zum Aufrufen von URLs unterstützt, die in einem privaten virtuellen Netzwerk gehostet sind, sowie zum Nutzen selbstgehosteter Integration Runtimes. Die Integration Runtime sollte den URL-Endpunkt erreichen können. 
 
 ## <a name="syntax"></a>Syntax
 
@@ -36,6 +36,10 @@ Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpu
    "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
+      "connectVia": {
+          "referenceName": "<integrationRuntimeName>",
+          "type": "IntegrationRuntimeReference"
+      }
       "headers":{
          "Content-Type":"application/json"
       },
@@ -77,6 +81,7 @@ body | Stellt die an den Endpunkt gesendete Nutzlast dar.  | Zeichenfolge (oder 
 authentication | Die zum Aufrufen des Endpunkts verwendete Authentifizierungsmethode. Unterstützte Typen sind „Basic“ oder „ClientCertificate“. Weitere Informationen finden Sie im Abschnitt [Authentifizierung](#authentication). Wenn keine Authentifizierung erforderlich ist, schließen Sie diese Eigenschaft aus. | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein
 datasets | Liste der Datasets, die an den Endpunkt übergeben werden. | Array von Datasetverweisen. Kann ein leeres Array sein. | Ja
 linkedServices | Liste der verknüpften Dienste, die an den Endpunkt übergeben werden. | Array von Verweisen auf verknüpfte Dienste. Kann ein leeres Array sein. | Ja
+connectVia | Die [Integration Runtime](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. | Der Verweis auf die Integration Runtime. | Nein 
 
 > [!NOTE]
 > REST-Endpunkte, die die Webaktivität aufruft, müssen eine Antwort vom Typ JSON zurückgeben. Nach einer Minute tritt für die Aktivität ein Timeout mit einem Fehler auf, falls sie keine Antwort vom Endpunkt erhält.

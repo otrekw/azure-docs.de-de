@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080923"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 
-Ein Codierauftrag ist einem Eingabeasset (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten. Beispiele: Codieren einer MP4-Datei in H.264 MP4 Adaptive Bitrate-Sätze, Erstellen einer Miniaturansicht, Erstellen von Überlagerungen. Nach Abschluss einer Aufgabe wird ein Ausgabeasset erzeugt.  Das Ausgabeasset enthält Video-, Audio-, Miniaturansichts- und weitere Dateien. Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der JSON-Metadatendatei weist das folgende Format auf: `<source_file_name>_manifest.json` (Beispiel: `BigBuckBunny_manifest.json`).  
+Ein Codierauftrag ist einem Eingabeasset (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten. Beispiele: Codieren einer MP4-Datei in H.264 MP4 Adaptive Bitrate-Sätze, Erstellen einer Miniaturansicht, Erstellen von Überlagerungen. Nach Abschluss einer Aufgabe wird ein Ausgabeasset erzeugt.  Das Ausgabeasset enthält Video-, Audio-, Miniaturansichts- und weitere Dateien. Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der JSON-Metadatendatei weist das folgende Format auf: `<source_file_name>_manifest.json` (Beispiel: `BigBuckBunny_manifest.json`). Sie sollten nach „*_metadata.json“ suchen und die enthaltene Dateipfad-Zeichenfolge abfragen, um den Quelldateinamen (ohne Kürzung) zu suchen.
 
-Media Services scannt Eingabeobjekte nicht im Vorhinein, um Metadaten zu generieren. Eingabemetadaten werden nur dann als Artefakt generiert, wenn ein Eingabeasset in einem Auftrag verarbeitet wird. Dieses Artefakt wird dann in das Ausgabeasset geschrieben. Zum Generieren von Metadaten für Eingabe- und Ausgabeassets werden verschiedene Tools eingesetzt. Deshalb weicht das Schema der Eingabemetadaten leicht von dem der Ausgabemetadaten ab.
+Media Services scannt Eingabeobjekte nicht im Vorhinein, um Metadaten zu generieren. Eingabemetadaten werden nur dann als Artefakt generiert, wenn ein Eingabeasset in einem Auftrag verarbeitet wird. Dieses Artefakt wird dann in das Ausgabeasset geschrieben. Zum Generieren von Metadaten für Eingabe- und Ausgabeobjekte werden verschiedene Tools eingesetzt. Deshalb weicht das Schema der Eingabemetadaten leicht von dem der Ausgabemetadaten ab.
 
 In diesem Artikel werden die Elemente und Typen des JSON-Schemas beschrieben, auf denen die Ausgabemetadaten (&lt;Quelldateiname&gt;_manifest.json) basieren. <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
 
@@ -40,7 +40,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 | **VideoTracks**|Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. <br />Siehe dazu [VideoTracks](#videotracks). |
 | **AudioTracks**|Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren.<br /> Weitere Informationen finden Sie unter [AudioTracks](#audiotracks). |
 | **Name**<br />Erforderlich |Der Name der Medienobjektdatei. <br /><br />Beispiel: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
-| **Größe**<br />Erforderlich |Größe der Assetdatei in Byte <br /><br />Beispiel: `"Size": 32414631`|
+| **Größe**<br />Erforderlich |Größe der Objektdatei in Byte <br /><br />Beispiel: `"Size": 32414631`|
 | **Duration**<br />Erforderlich |Dauer der Inhaltswiedergabe. Weitere Informationen finden Sie in der Dokumentation zum [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html)-Format. <br /><br />Beispiel: `"Duration": "PT1M10.315S"`|
 
 ## <a name="videotracks"></a>VideoTracks 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79712c50a5ad46d7d435868606011f458fe48e2e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176622"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370750"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -65,7 +65,7 @@ az storage account keys list \
 
 Sie können jeden der beiden Schlüssel verwenden, um auf Azure Storage zuzugreifen. Im Allgemeinen empfiehlt es sich jedoch, den ersten Schlüssel zu verwenden und den zweiten Schlüssel zur Verwendung bei der Rotation von Schlüsseln zu reservieren.
 
-Zum Anzeigen oder Lesen der Zugriffsschlüssel eines Kontos muss der Benutzer entweder ein Dienstadministrator sein oder ihm muss eine RBAC-Rolle zugewiesen sein, die **Microsoft.Storage/storageAccounts/listkeys/action** enthält. Einige integrierte RBAC-Rollen, die diese Aktion beinhalten, sind die Rollen **Besitzer**, **Mitwirkender** und **Dienstrolle „Speicherkonto-Schlüsseloperator“** . Weitere Informationen zur Dienstadministratorrolle finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Ausführliche Informationen zu integrierten Rollen für Azure Storage finden Sie im Artikel [In Azure integrierte Rollen für Azure RBAC](../../role-based-access-control/built-in-roles.md#storage) im Abschnitt **Storage**.
+Zum Anzeigen oder Lesen der Zugriffsschlüssel eines Kontos muss der Benutzer entweder ein Dienstadministrator sein oder ihm muss eine RBAC-Rolle zugewiesen sein, die **Microsoft.Storage/storageAccounts/listkeys/action** enthält. Einige integrierte Azure-Rollen, die diese Aktion beinhalten, sind **Besitzer**, **Mitwirkender** und die Dienstrolle **Speicherkonto-Schlüsseloperator**. Weitere Informationen zur Dienstadministratorrolle finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Ausführliche Informationen zu integrierten Rollen für Azure Storage finden Sie im Artikel [In Azure integrierte Rollen für Azure RBAC](../../role-based-access-control/built-in-roles.md#storage) im Abschnitt **Storage**.
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Verwenden von Azure Key Vault zum Verwalten Ihrer Zugriffsschlüssel
 
@@ -132,7 +132,7 @@ Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit der Azure 
 > [!NOTE]
 > Es wird empfohlen, in allen Ihren Anwendungen jeweils nur einen Schlüssel gleichzeitig zu verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.
 
-Zum Rotieren der Zugriffsschlüssel eines Kontos muss der Benutzer entweder ein Dienstadministrator sein oder ihm muss eine RBAC-Rolle zugewiesen sein, die **Microsoft.Storage/storageAccounts/regeneratekey/action** enthält. Einige integrierte RBAC-Rollen, die diese Aktion beinhalten, sind die Rollen **Besitzer**, **Mitwirkender** und **Dienstrolle „Speicherkonto-Schlüsseloperator“** . Weitere Informationen zur Dienstadministratorrolle finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Ausführliche Informationen zu integrierten RBAC-Rollen für Azure Storage finden Sie im Artikel [In Azure integrierte Rollen für Azure RBAC](../../role-based-access-control/built-in-roles.md#storage) im Abschnitt **Storage**.
+Zum Rotieren der Zugriffsschlüssel eines Kontos muss der Benutzer entweder ein Dienstadministrator sein oder ihm muss eine RBAC-Rolle zugewiesen sein, die **Microsoft.Storage/storageAccounts/regeneratekey/action** enthält. Einige integrierte Azure-Rollen, die diese Aktion beinhalten, sind **Besitzer**, **Mitwirkender** und die Dienstrolle **Speicherkonto-Schlüsseloperator**. Weitere Informationen zur Dienstadministratorrolle finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md). Ausführliche Informationen zu integrierten Azure-Rollen für Azure Storage finden Sie im Artikel [In Azure integrierte Rollen für Azure RBAC](../../role-based-access-control/built-in-roles.md#storage) im Abschnitt **Storage**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

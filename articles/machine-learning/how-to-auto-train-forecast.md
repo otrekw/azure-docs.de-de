@@ -3,19 +3,19 @@ title: Automatisches Trainieren eines Modells für die Zeitreihenprognose
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mit Azure Machine Learning ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen trainieren.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
+author: nibaccam
+ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: trbye
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 72b0a3074bfdfb6b6038f6c63eb01a7b33d45ea6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9b81dbce9f73c76ceea0f7842d731d00f905fb01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959125"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371514"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,7 +130,7 @@ Bei Vorhersageaufgaben nutzt das automatisierte maschinelle Lernen spezifische V
 
 * Erkennen des Intervalls der Zeitreihenstichprobe (z. B. stündlich, täglich, wöchentlich) und Erstellen neuer Datensätze für fehlende Zeitpunkte, um eine ununterbrochene Reihe zu erhalten.
 * Imputieren fehlender Werte in der Zielspalte (mittels Forward-Fill) und der Featurespalte (mittels Median-Spaltenwerten)
-* Erstellen granularitätsbasierter Features, um reihenübergreifend feste Effekte zu ermöglichen
+* Erstellen von Features auf der Basis von Zeitreihenbezeichnern zum Ermöglichen von reihenübergreifenden festen Effekten
 * Erstellen zeitbasierter Features zur Ermittlung saisonaler Muster
 * Codieren kategorischer Variablen zu numerischen Mengen
 
@@ -139,21 +139,21 @@ Das Objekt [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-
 | Parametername&nbsp; | BESCHREIBUNG | Erforderlich |
 |-------|-------|-------|
 |`time_column_name`|Dient zum Angeben der Datetime-Spalte in den Eingabedaten, die zum Erstellen der Zeitreihe sowie zum Ableiten des Intervalls verwendet wird.|✓|
-|`grain_column_names`|Namen zum Definieren individueller Reihengruppen in den Eingabedaten. Ohne definierte Granularität wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen.||
-|`max_horizon`|Definiert den maximal gewünschten Vorhersagehorizont in Einheiten von Zeitreihen. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
+|`time_series_id_column_names`|Die verwendeten Spaltennamen dienen zum eindeutigen Identifizieren der Zeitreihe in Daten, die mehrere Zeilen mit demselben Zeitstempel aufweisen. Ohne definierte Zeitreihenbezeichner wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen.||
+|`forecast_horizon`|Definiert die Anzahl der Zeiträume, die Sie vorhersagen möchten. Der Horizont wird in Einheiten der Zeitreihenhäufigkeit angegeben. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
 |`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Diese Verzögerung wird als Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. Wenn Sie beispielsweise versuchen, die Nachfrage nach einem Produkt vorherzusagen, hängt die Nachfrage in einem Monat möglicherweise vom Preis für bestimmte Produkte vor 3 Monaten ab. In diesem Beispiel möchten Sie möglicherweise den Zielwert (Nachfrage) um 3 Monate negativ verzögern, sodass das Modell mit der richtigen Beziehung trainiert wird.||
 |`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge. Geben Sie diesen Parameter an, wenn Sie beim Trainieren des Modells nur eine bestimmte Menge des Verlaufs beachten möchten.||
 |`enable_dnn`|Aktivieren Sie Vorhersage-DNNs.||
 
 Weitere Informationen finden Sie in der [Referenzdokumentation](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-Erstellen Sie die Zeitreiheneinstellungen als Wörterbuchobjekt. Legen Sie `time_column_name` auf das Feld `day_datetime` im Dataset fest. Definieren Sie den Parameter `grain_column_names`, um sicherzustellen, dass für die Daten **zwei separate Zeitreihengruppen** erstellt werden (jeweils eine für die Filialen A und B). Legen Sie abschließend `max_horizon` auf „50“ fest, um Vorhersagen für den gesamten Testsatz zu generieren. Legen Sie mit `target_rolling_window_size` ein Vorhersagefenster auf 10 Zeiträume fest, und geben Sie mit dem Parameter `target_lags` eine einzelne Verzögerung für das Ziel um zwei Zeiträume vorwärts an. Es wird empfohlen, `max_horizon`, `target_rolling_window_size` und `target_lags` auf „auto“ festzulegen, wodurch diese Werte automatisch für Sie erkannt werden. Im folgenden Beispiel wurden die „auto“-Einstellungen für diese Parameter verwendet. 
+Erstellen Sie die Zeitreiheneinstellungen als Wörterbuchobjekt. Legen Sie `time_column_name` auf das Feld `day_datetime` im Dataset fest. Definieren Sie den Parameter `time_series_id_column_names`, um sicherzustellen, dass für die Daten **zwei separate Zeitreihengruppen** erstellt werden (jeweils eine für die Filialen A und B). Legen Sie abschließend `forecast_horizon` auf „50“ fest, um Vorhersagen für den gesamten Testsatz zu generieren. Legen Sie mit `target_rolling_window_size` ein Vorhersagefenster auf 10 Zeiträume fest, und geben Sie mit dem Parameter `target_lags` eine einzelne Verzögerung für das Ziel um zwei Zeiträume vorwärts an. Es wird empfohlen, `forecast_horizon`, `target_rolling_window_size` und `target_lags` auf „auto“ festzulegen, wodurch diese Werte automatisch für Sie erkannt werden. Im folgenden Beispiel wurden die „auto“-Einstellungen für diese Parameter verwendet. 
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
-    "grain_column_names": ["store"],
-    "max_horizon": "auto",
+    "time_series_id_column_names": ["store"],
+    "forecast_horizon": "auto",
     "target_lags": "auto",
     "target_rolling_window_size": "auto",
     "preprocess": True,
@@ -163,7 +163,7 @@ time_series_settings = {
 > [!NOTE]
 > Die Schritte zur Vorverarbeitung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Vorverarbeitungsschritte automatisch auf Ihre Eingabedaten angewendet.
 
-Durch die Definition von `grain_column_names` im obigen Codeausschnitt erstellt AutoML zwei separate Zeitreihengruppen, die auch als mehrfache Zeitreihen bezeichnet werden. Wenn keine Körnung definiert ist, geht AutoML davon aus, dass es sich bei dem Dataset um eine einzelne Zeitreihe handelt. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+Durch die Definition von `time_series_id_column_names` im obigen Codeausschnitt erstellt AutoML zwei separate Zeitreihengruppen, die auch als mehrfache Zeitreihen bezeichnet werden. Wenn keine Zeitreihenbezeichner definiert sind, geht AutoML davon aus, dass es sich bei dem Dataset um eine einzelne Zeitreihe handelt. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
 Erstellen Sie als Nächstes ein Standardobjekt vom Typ `AutoMLConfig`, geben Sie den Aufgabentyp `forecasting` an, und übermitteln Sie das Experiment. Rufen Sie nach Fertigstellung des Modells die Iteration mit der besten Ausführung ab.
 
@@ -221,6 +221,32 @@ Weitere Informationen zu AML-Compute und den VM-Größen mit GPUs finden Sie in 
 
 Ein detailliertes Codebeispiel für die Nutzung von DNNs finden Sie im [Notebook für die Vorhersage der Getränkeproduktion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
+### <a name="customize-featurization"></a>Anpassen der Featurisierung
+Sie können die Featurisierungseinstellungen anpassen, um sicherzustellen, dass die Daten und Features zum Trainieren Ihres ML-Modells zu relevanten Vorhersagen führen. 
+
+Um die Featurisierung anzupassen, geben Sie `"featurization": FeaturizationConfig` in Ihrem `AutoMLConfig`-Objekt an. Wenn Sie Azure Machine Learning Studio für Ihr Experiment verwenden, finden Sie weitere Informationen in dieser [Anleitung](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+
+Unterstützte Anpassungen umfassen:
+
+|Anpassung|Definition|
+|--|--|
+|**Aktualisierung des Spaltenzwecks**|Außerkraftsetzen des automatisch erkannten Featuretyps für die angegebene Spalte|
+|**Aktualisierung von Transformationsparametern** |Aktualisieren der Parameter für den angegebenen Transformator. Unterstützt derzeit *Imputer* (fill_value und median).|
+|**Löschen von Spalten** |Gibt Spalten an, die aus der Featureverwendung gelöscht werden sollen.|
+
+Erstellen Sie das `FeaturizationConfig`-Objekt durch Definieren der Featurisierungskonfigurationen:
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
 ### <a name="target-rolling-window-aggregation"></a>Rollierende Zeitfensteraggregationen als Ziel
 In vielen Fällen ist die beste Information, über die ein Vorhersagemodell verfügen kann, der aktuelle Wert des Ziels. Durch das Erstellen kumulativer Statistiken des Ziels kann die Genauigkeit Ihrer Vorhersagen erhöht werden. Wenn Sie rollierende Zeitfensteraggregationen als Ziel verwenden, können Sie eine rollierende Aggregation von Datenwerten als Features hinzufügen. Legen Sie `target_rolling_window_size` auf Ihre gewünschte ganzzahlige Zeitfensterlänge fest, um rollierende Zeitfenster als Ziel zu ermöglichen. 
 
@@ -271,7 +297,7 @@ rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 
-Nach der Ermittlung der allgemeinen Modellgenauigkeit besteht der nächste Schritt in der Regel darin, mithilfe des Modells unbekannte zukünftige Werte vorherzusagen. Stellen Sie ein Dataset im gleichen Format wie das Testdataset `test_data`, aber mit zukünftigen Datums-/Uhrzeitwerten bereit, um einen Vorhersagesatz mit Vorhersagewerten für die einzelnen Zeitreihenschritte zu erhalten. Angenommen, die letzten Zeitreihendatensätze im Dataset waren für den 31.12.2018. Wenn Sie die Nachfrage für den Folgetag (oder für beliebig viele Vorhersagezeiträume < = `max_horizon`) vorhersagen möchten, erstellen Sie für jede Filiale einen einzelnen Zeitreihendatensatz für den 01.01.2019.
+Nach der Ermittlung der allgemeinen Modellgenauigkeit besteht der nächste Schritt in der Regel darin, mithilfe des Modells unbekannte zukünftige Werte vorherzusagen. Stellen Sie ein Dataset im gleichen Format wie das Testdataset `test_data`, aber mit zukünftigen Datums-/Uhrzeitwerten bereit, um einen Vorhersagesatz mit Vorhersagewerten für die einzelnen Zeitreihenschritte zu erhalten. Angenommen, die letzten Zeitreihendatensätze im Dataset waren für den 31.12.2018. Wenn Sie die Nachfrage für den Folgetag (oder für beliebig viele Vorhersagezeiträume < = `forecast_horizon`) vorhersagen möchten, erstellen Sie für jede Filiale einen einzelnen Zeitreihendatensatz für den 01.01.2019.
 
 ```output
 day_datetime,store,week_of_year
@@ -282,7 +308,7 @@ day_datetime,store,week_of_year
 Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in einen Datenrahmen zu laden, und führen Sie anschließend `best_run.predict(test_data)` aus, um zukünftige Werte vorherzusagen.
 
 > [!NOTE]
-> Werte können nur für eine Anzahl von Zeiträumen vorhergesagt werden, die maximal dem Wert von `max_horizon` entspricht. Das Modell muss mit einem weiter in der Zukunft liegenden Vorhersagehorizont neu trainiert werden, um zukünftige Werte vorhersagen können, die über den aktuellen Vorhersagehorizont hinausgehen.
+> Werte können nur für eine Anzahl von Zeiträumen vorhergesagt werden, die maximal dem Wert von `forecast_horizon` entspricht. Das Modell muss mit einem weiter in der Zukunft liegenden Vorhersagehorizont neu trainiert werden, um zukünftige Werte vorhersagen können, die über den aktuellen Vorhersagehorizont hinausgehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

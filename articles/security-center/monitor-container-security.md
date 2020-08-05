@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038613"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>Überwachen der Sicherheit Ihrer Container
 
@@ -36,13 +36,11 @@ Auf dieser Seite wird erläutert, wie Sie die Sicherheitsfunktionen für Contain
 
 1. Um die Überprüfung eines Images auszulösen, übertragen Sie es per Push in Ihre Registrierung. 
 
-    Wenn die Überprüfung abgeschlossen ist (in der Regel nach ungefähr 10 Minuten), sind die Ergebnisse in Form von Security Center-Empfehlungen verfügbar.
-    
+    Wenn die Überprüfung abgeschlossen ist (in der Regel nach ungefähr zwei Minuten, sie kann aber auch bis zu 15 Minuten dauern), sind die Ergebnisse als Security Center-Empfehlungen wie diese verfügbar:
 
 1. Auf der Seite **Empfehlungen** können Sie sich die Ergebnisse ansehen. Wenn Probleme gefunden wurden, wird die folgende Empfehlung angezeigt:
 
     ![Empfehlung zum Beheben von Problemen ](media/monitor-container-security/acr-finding.png)
-
 
 1. Wählen Sie die Empfehlung aus. 
     Die Detailseite der Empfehlung wird geöffnet und zeigt zusätzliche Informationen an. Diese Informationen umfassen die Liste der Registrierungen mit anfälligen Images („Betroffene Ressourcen“) und die Schritte zum Beheben des Problems. 

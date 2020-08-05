@@ -2,13 +2,13 @@
 title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Computern
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/29/2020
+ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538903"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405762"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -47,38 +47,42 @@ Führen Sie zunächst folgende Schritte aus:
 
 1. Stellen Sie sicher, dass Sie über einen oder mehrere virtuelle [Windows](../virtual-machines/linux/disk-encryption-overview.md)- oder [Linux](../virtual-machines/linux/disk-encryption-overview.md)-Computer mit aktiviertem ADE verfügen.
 2. Sehen Sie sich die [Unterstützungsmatrix](backup-support-matrix-iaas.md) für die Sicherung virtueller Azure-Computer an.
-3. [Erstellen Sie](backup-azure-arm-vms-prepare.md#create-a-vault) einen Recovery Services-Sicherungstresor, wenn Sie noch keinen haben.
+3. [Erstellen Sie](backup-create-rs-vault.md) einen Recovery Services-Sicherungstresor, wenn Sie noch keinen haben.
 4. Wenn Sie die Verschlüsselung für VMs aktivieren, die bereits für Sicherung aktiviert wurden, müssen Sie Backup einfach Berechtigungen für den Zugriff auf den Key Vault gewähren, damit Sicherungen ohne Unterbrechung fortgesetzt werden können. [Erfahren Sie mehr](#provide-permissions) zum Zuweisen dieser Berechtigungen.
 
 Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen möglicherweise ausführen müssen:
 
-- **Installieren des VM-Agents auf dem virtuellen Computer:** Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den Azure-VM-Agent auf dem Computer. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, ist der Agent installiert und aktiv. Wenn Sie eine benutzerdefinierte VM erstellen oder einen lokalen Computer migrieren, müssen Sie möglicherweise [den Agent manuell installieren](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
+- **Installieren des VM-Agents auf dem virtuellen Computer:** Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den Azure-VM-Agent auf dem Computer. Wenn Ihre VM aus einem Azure Marketplace-Image erstellt wurde, ist der Agent installiert und aktiv. Wenn Sie eine benutzerdefinierte VM erstellen oder einen lokalen Computer migrieren, müssen Sie möglicherweise [den Agent manuell installieren](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 
 ## <a name="configure-a-backup-policy"></a>Konfigurieren einer Sicherungsrichtlinie
 
-1. Wenn Sie noch keinen Recovery Services-Sicherungstresor erstellt haben, folgen Sie [diesen Anweisungen](backup-azure-arm-vms-prepare.md#create-a-vault).
-2. Öffnen Sie den Tresor im Portal, und wählen Sie im Abschnitt **Erste Schritte** die Option **Sicherung** aus.
+1. Wenn Sie noch keinen Recovery Services-Sicherungstresor erstellt haben, folgen Sie [diesen Anweisungen](backup-create-rs-vault.md).
+1. Öffnen Sie den Tresor im Portal, und wählen Sie im Abschnitt **Übersicht** die Option **Sicherung** aus.
 
-    ![Blatt „Sicherung“](./media/backup-azure-vms-encryption/select-backup.png)
+    ![Bereich „Sicherung“](./media/backup-azure-vms-encryption/select-backup.png)
 
-3. Wählen Sie unter **Sicherungsziel** > **Wo wird Ihre Workload ausgeführt?** den Eintrag **Azure** aus.
-4. Wählen Sie für **Was möchten Sie sichern?** die Option **Virtueller Computer** > **OK** aus.
+1. Wählen Sie unter **Sicherungsziel** > **Wo wird Ihre Workload ausgeführt?** den Eintrag **Azure** aus.
+1. Wählen Sie für **Was möchten Sie sichern?** die Option **Virtueller Computer** aus. Wählen Sie dann **Sichern** aus.
 
       ![Blatt „Szenario“](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. Wählen Sie unter **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** die Richtlinie aus, die Sie dem Tresor zuordnen möchten. Klicken Sie dann auf **OK**.
+1. Wählen Sie unter **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** die Richtlinie aus, die Sie dem Tresor zuordnen möchten. Klicken Sie anschließend auf **OK**.
     - Eine Sicherungsrichtlinie gibt an, wann Sicherungen erstellt und wie lange sie gespeichert werden.
     - Die Details zur Standardrichtlinie werden unter dem Dropdownmenü aufgeführt.
 
     ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-6. Wenn Sie nicht die Standardrichtlinie verwenden möchten, wählen Sie **Neu erstellen** und [Benutzerdefinierte Richtlinie erstellen](backup-azure-arm-vms-prepare.md#create-a-custom-policy) aus.
+1. Wenn Sie nicht die Standardrichtlinie verwenden möchten, wählen Sie **Neu erstellen** und [Benutzerdefinierte Richtlinie erstellen](backup-azure-arm-vms-prepare.md#create-a-custom-policy) aus.
 
-7. Wählen Sie die verschlüsselten VMs, die Sie mit der ausgewählten Richtlinie sichern möchten, und dann **OK** aus.
+1. Wählen Sie in unter **Virtuelle Computer** die Option **Hinzufügen** aus.
+
+    ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+
+1. Wählen Sie die verschlüsselten VMs, die Sie mit der ausgewählten Richtlinie sichern möchten, und dann **OK** aus.
 
       ![Auswählen von verschlüsselten VMs](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
 
-8. Wenn Sie Azure Key Vault verwenden, werden Sie auf der Tresorseite in einer Meldung informiert, dass Azure Backup schreibgeschützten Zugriff auf die Schlüssel und Geheimnisse im Key Vault benötigt.
+1. Wenn Sie Azure Key Vault verwenden, werden Sie auf der Tresorseite in einer Meldung informiert, dass Azure Backup schreibgeschützten Zugriff auf die Schlüssel und Geheimnisse im Key Vault benötigt.
 
     - Wenn diese Meldung angezeigt wird, ist keine Aktion erforderlich.
 
@@ -88,17 +92,17 @@ Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen mögliche
 
         ![Zugriff Warnung](./media/backup-azure-vms-encryption/access-warning.png)
 
-9. Klicken Sie auf **Sicherung aktivieren**, um die Sicherungsrichtlinie im Tresor bereitzustellen, und aktivieren Sie die Sicherung für die ausgewählten VMs.
+1. Wählen Sie **Sicherung aktivieren** aus, um die Sicherungsrichtlinie im Tresor bereitzustellen, und aktivieren Sie die Sicherung für die ausgewählten VMs.
 
 ## <a name="trigger-a-backup-job"></a>Auslösen eines Sicherungsauftrags
 
 Die erste Sicherung wird entsprechend dem festgelegten Zeitplan ausgeführt; Sie können sie aber auch mit den folgenden Schritten sofort ausführen:
 
-1. Klicken Sie im Tresormenü auf **Sicherungselemente**.
-2. Klicken Sie unter **Sicherungselemente** auf **Virtueller Azure-Computer**.
-3. Klicken Sie in der Liste **Sicherungselemente** auf das Auslassungszeichen „(...)“.
-4. Klicken Sie auf **Jetzt sichern**.
-5. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie dann auf **OK**.
+1. Wählen Sie im Tresormenü die Option **Sicherungselemente** aus.
+2. Wählen Sie unter **Sicherungselemente** die Option **Virtueller Azure-Computer** aus.
+3. Wählen Sie in der Liste **Sicherungselemente** das Auslassungszeichen (...) aus.
+4. Wählen Sie **Jetzt sichern** aus.
+5. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie anschließend auf **OK**.
 6. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
 ## <a name="provide-permissions"></a>Gewähren von Berechtigungen
@@ -111,24 +115,27 @@ Azure Backup benötigt schreibgeschützten Zugriff, um die Schlüssel und Geheim
 So legen Sie Berechtigungen fest:
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie nach **Schlüsseltresore**.
-2. Wählen Sie den Schlüsseltresor aus, der dem verschlüsselten virtuellen Computer zugeordnet ist, den Sie sichern möchten.
-3. Wählen Sie **Zugriffsrichtlinien** > **Neue hinzufügen** aus.
-4. Wählen Sie **Prinzipal auswählen** aus, und geben Sie **Sicherungsverwaltung** ein.
-5. Wählen Sie **Sicherungsverwaltungsdienst** > **Auswählen** aus.
+1. Wählen Sie den Schlüsseltresor aus, der dem verschlüsselten virtuellen Computer zugeordnet ist, den Sie sichern möchten.
+1. Wählen Sie **Zugriffsrichtlinien** > **Zugriffsrichtlinie hinzufügen** aus.
+
+    ![Zugriffsrichtlinie hinzufügen](./media/backup-azure-vms-encryption/add-access-policy.png)
+
+1. Wählen Sie **Prinzipal auswählen** aus, und geben Sie **Sicherungsverwaltung** ein.
+1. Wählen Sie **Sicherungsverwaltungsdienst** > **Auswählen** aus.
 
     ![Auswählen des Sicherungsdiensts](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. Wählen Sie unter **Zugriffsrichtlinie hinzufügen** > **Anhand einer Vorlage konfigurieren (optional)** die Option **Azure Backup** aus.
+1. Wählen Sie unter **Zugriffsrichtlinie hinzufügen** > **Anhand einer Vorlage konfigurieren (optional)** die Option **Azure Backup** aus.
     - Unter **Schlüsselberechtigungen** und **Berechtigungen für Geheimnis** sind bereits die erforderlichen Berechtigungen angegeben.
     - Wenn Ihr virtueller Computer mithilfe von **Nur BEK** verschlüsselt ist, entfernen Sie die Auswahl für **Schlüsselberechtigungen**, da Sie Berechtigungen nur für Geheimnisse benötigen.
 
     ![Auswählen von Azure Backup](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-7. Klicken Sie auf **OK**. **Sicherungsverwaltungsdienst** wird zu **Zugriffsrichtlinien** hinzugefügt.
+1. Wählen Sie **Hinzufügen**. **Sicherungsverwaltungsdienst** wird zu **Zugriffsrichtlinien** hinzugefügt.
 
     ![Zugriffsrichtlinien](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-8. Klicken Sie auf **Speichern**, um Azure Backup die Berechtigungen bereitzustellen.
+1. Wählen Sie **Speichern** aus, um Azure Backup die Berechtigungen zu erteilen.
 
 ## <a name="restore-an-encrypted-vm"></a>Wiederherstellen eines verschlüsselten virtuellen Computers
 

@@ -1,15 +1,14 @@
 ---
 title: Anwendungskonsistente Sicherungen von virtuellen Linux-Computern
 description: Erstellen Sie anwendungskonsistente Sicherungen Ihrer virtuellen Linux-Computer in Azure. In diesem Artikel wird beschrieben, wie Sie das Skriptframework zum Sichern von in Azure bereitgestellten Linux-VMs konfigurieren. Außerdem enthält dieser Artikel Informationen zur Problembehandlung.
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74173001"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407097"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure
 
@@ -59,13 +58,13 @@ Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stil
 
     - **timeoutInSeconds:** Geben Sie individuelle Timeouts für das Pre-Skript und das Post-Skript an (der Höchstwert beträgt 1800).
 
-    - **continueBackupOnFailure:** Legen Sie diesen Wert auf **TRUE** fest, wenn Azure Backup bei einem Pre- oder Post-Skript-Fehler zu einer dateisystem- bzw. absturzkonsistenten Sicherung wechseln soll. Bei Festlegung auf **FALSE** misslingt die Sicherung bei einem Skriptfehler (außer bei einer VM mit einzelnem Datenträger, bei der unabhängig von dieser Einstellung auf eine absturzkonsistente Sicherung zurückgegriffen wird).
+    - **continueBackupOnFailure:** Legen Sie diesen Wert auf **TRUE** fest, wenn Azure Backup bei einem Pre- oder Post-Skript-Fehler zu einer dateisystem- bzw. absturzkonsistenten Sicherung wechseln soll. Bei Festlegung auf **FALSE** misslingt die Sicherung bei einem Skriptfehler (außer bei einer VM mit einzelnem Datenträger, bei der unabhängig von dieser Einstellung auf eine absturzkonsistente Sicherung zurückgegriffen wird). Wenn der Wert **continueBackupOnFailure** auf FALSE festgelegt ist, wird der Sicherungsvorgang bei einem Sicherungsfehler erneut ausgeführt, und zwar basierend auf einer Wiederholungslogik im Dienst (für die festgelegte Anzahl von Versuchen).
 
     - **fsFreezeEnabled:** Geben Sie an, ob unter Linux „fsfreeze“ aufgerufen werden soll, während die VM-Momentaufnahme erstellt wird, um Dateisystemkonsistenz sicherzustellen. Wir empfehlen die Beibehaltung dieser Einstellung auf **TRUE**, es sei denn, Ihre Anwendung ist von der Deaktivierung von „fsfreeze“ abhängig.
 
     - **ScriptsExecutionPollTimeSeconds**: Legen Sie fest, wie lange die Erweiterung zwischen Abfragen für die Skriptausführung pausieren soll. Wenn Sie den Wert beispielsweise auf „2“ festlegen, prüft die Erweiterung alle zwei Sekunden, ob die Pre-/Post-Skriptausführung abgeschlossen wurde. Der Wert muss zwischen 1 und 5 (jeweils einschließlich) liegen und eine ganze Zahl sein.
 
-6. Das Skriptframework ist nun konfiguriert. Wenn die VM-Sicherung bereits konfiguriert ist, werden bei der nächsten Sicherung die Skripts aufgerufen und eine anwendungskonsistente Sicherung ausgelöst. Wenn die VM-Sicherung nicht konfiguriert ist, konfigurieren Sie sie entsprechend den Anweisungen unter [Sichern virtueller Azure-Computer in Recovery Services-Tresoren](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm).
+6. Das Skriptframework ist nun konfiguriert. Wenn die VM-Sicherung bereits konfiguriert ist, werden bei der nächsten Sicherung die Skripts aufgerufen und eine anwendungskonsistente Sicherung ausgelöst. Wenn die VM-Sicherung nicht konfiguriert ist, konfigurieren Sie sie entsprechend den Anweisungen unter [Sichern virtueller Azure-Computer in Recovery Services-Tresoren](./backup-azure-vms-first-look-arm.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -86,4 +85,4 @@ Fügen Sie beim Schreiben Ihres Pre-Skripts und Post-Skripts unbedingt eine ents
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren der VM-Sicherung in einem Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[Konfigurieren der VM-Sicherung in einem Recovery Services-Tresor](./backup-azure-vms-first-look-arm.md)

@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen des Containernetzwerks mit Azure Virtual Network | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie das CNI-Plug-In (Container Network Interface) von Azure Virtual Network für Kubernetes-Cluster, die Sie selbst oder mithilfe von AKS-Engine bereitstellen, und für Docker-Container bereitstellen.
+description: Erfahren Sie, wie Sie das CNI-Plug-In (Container Network Interface) von Azure Virtual Network für Kubernetes-Cluster bereitstellen.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289582"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Bereitstellen des Container Network Interface-Plug-Ins von Azure Virtual Network
 

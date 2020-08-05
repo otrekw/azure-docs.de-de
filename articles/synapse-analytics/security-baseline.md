@@ -1,20 +1,20 @@
 ---
-title: Synapse Analytics-Sicherheitsbaseline für den Azure-Sicherheitsvergleichstest
+title: Azure-Sicherheitsbaseline für Synapse Analytics
 description: Die Synapse Analytics-Sicherheitsbaseline enthält Schrittanleitungen und Ressourcen für die Implementierung der Sicherheitsempfehlungen, die im Azure-Sicherheitsvergleichstest angegeben sind.
 author: msmbaldwin
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040655"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370273"
 ---
-# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>Synapse Analytics-Sicherheitsbaseline für den Azure-Sicherheitsvergleichstest
+# <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-Sicherheitsbaseline für Synapse Analytics
 
 Die Azure-Sicherheitsbaseline für Synapse Analytics enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
@@ -28,9 +28,9 @@ Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaseli
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Schützen von Azure-Ressourcen in virtuellen Netzwerken
 
-**Leitfaden**: Sichern Sie Ihre Azure SQL-Datenbank-Instanz mittels Private Link in einem virtuellen Netzwerk. Mit Azure Private Link können Sie über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst verläuft über das Microsoft-Backbone-Netzwerk.
+**Leitfaden**: Sichern Sie Ihre Azure SQL Server zu einem virtuellen Netzwerk mittels Private Link. Mit Azure Private Link können Sie über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst verläuft über das Microsoft-Backbone-Netzwerk.
 
-Wenn Sie eine Verbindung mit Ihrem Synapse SQL-Pool herstellen, können Sie alternativ den Bereich der ausgehenden Verbindung auf SQL-Datenbank einschränken, indem Sie eine Netzwerksicherheitsgruppe verwenden. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zu SQL-Datenbank über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf AUS festlegen. Vergewissern Sie sich, dass in den Firewallregeln keine öffentlichen IP-Adressen 0zugelassen werden.
+Wenn Sie eine Verbindung mit Ihrem Synapse SQL-Pool herstellen, können Sie alternativ den Bereich der ausgehenden Verbindung auf die SQL-Datenbank einschränken, indem Sie eine Netzwerksicherheitsgruppe verwenden. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank über den öffentlichen Endpunkt, indem Sie die Option „Azure-Dienste zulassen“ auf „AUS“ festlegen. Vergewissern Sie sich, dass in den Firewallregeln keine öffentlichen IP-Adressen 0zugelassen werden.
 
 * [Grundlegendes zu Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -44,7 +44,7 @@ Wenn Sie eine Verbindung mit Ihrem Synapse SQL-Pool herstellen, können Sie alt
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von virtuellen Netzwerken, Subnetzen und Netzwerkkarten (NICs)
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von virtuellen Netzwerken, Subnetzen und Netzwerkschnittstellen
 
 **Leitfaden**: Wenn Sie eine Verbindung mit Ihrem Azure Synapse SQL-Pool herstellen und die Flussprotokolle der Netzwerksicherheitsgruppen (NSGs) aktiviert haben, senden Sie Protokolle zwecks Datenverkehrsüberwachung an ein Azure Storage-Konto.
 
@@ -70,7 +70,7 @@ Sie können auch NSG-Flussprotokolle an einen Log Analytics-Arbeitsbereich sende
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Ablehnen der Kommunikation mit bekannten bösartigen IP-Adressen
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Ablehnen der Kommunikation mit bekannten schädlichen IP-Adressen
 
 **Leitfaden**: Verwenden Sie Advanced Threat Protection (ATP) für Azure Synapse SQL. ATP erkennt anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, bei denen auf Datenbanken zugegriffen oder diese ausgenutzt werden sollen. ATP kann ferner verschiedene Warnungen auslösen, z. B. „Potenzielle SQL-Einfügung“ oder „Zugriff von ungewöhnlichem Ort aus“. ATP ist Teil des Advanced Data Security-Angebots (ADS) und ist über das zentrale SQL ADS-Portal verfügbar und kann dort auch verwaltet werden.
 
@@ -124,7 +124,7 @@ Aktivieren Sie DDoS Protection Standard in den virtuellen Netzwerken, die Ihrem 
 
 **Leitfaden**: Verwenden Sie Diensttags in virtuellen Netzwerken, um Netzwerkzugriffssteuerungen für Netzwerksicherheitsgruppen oder Azure Firewall zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. „ApiManagement“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
-Bei Verwendung von Dienstendpunkten für Ihren Azure Synapse SQL-Pool ist eine ausgehende Verbindung mit den öffentlichen IP-Adressen von Azure SQL-Datenbank erforderlich: Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie NSG-Diensttags für Azure SQL-Datenbank verwenden.
+Bei Verwendung von Dienstendpunkten für Ihren Azure Synapse SQL-Pool ist eine ausgehende Verbindung zu den öffentlichen IP-Adressen von Azure SQL-Datenbank erforderlich: Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie NSG-Diensttags für Azure SQL-Datenbank verwenden.
 
 * [Grundlegendes zu Diensttags mit Dienstendpunkten für Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -158,7 +158,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 * [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -314,7 +314,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel aktivieren und integrie
 
 Wenn Sie Azure SQL erstmals bereitstellen, legen Sie eine Administratoranmeldung und ein zugehöriges Kennwort für diese Anmeldung fest. Dieses administrative Konto wird als „Serveradministrator“ bezeichnet. Sie können die Administratorkonten für eine Datenbank identifizieren, indem Sie das Azure-Portal öffnen und zur Registerkarte „Eigenschaften“ Ihres Servers oder Ihrer verwalteten Instanz navigieren. Sie können auch ein Azure AD-Administratorkonto mit vollständigen Administratorberechtigungen konfigurieren. Dies ist erforderlich, wenn Sie Azure Active Directory-Authentifizierung aktivieren möchten.
 
-Verwenden Sie für Verwaltungsvorgänge die Rollen der integrierten rollenbasierten Zugriffssteuerung von Azure (Azure RBAC), die explizit zugewiesen werden müssen. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
+Verwenden Sie für Verwaltungsvorgänge die integrierten Azure-Rollen, die explizit zugewiesen werden müssen. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
 * [Authentifizierung für SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
 
@@ -328,7 +328,7 @@ Verwenden Sie für Verwaltungsvorgänge die Rollen der integrierten rollenbasier
 
 * [Verwalten vorhandener Anmeldungen und Administratorkonten in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Integrierte Azure RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Integrierte Azure-Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -360,7 +360,7 @@ Verwenden Sie für Verwaltungsvorgänge die Rollen der integrierten rollenbasier
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Verwenden des einmaligen Anmeldens (Single Sign-On, SSO) mit Azure Active Directory
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Verwenden des einmaligen Anmeldens (SSO) in Azure Active Directory
 
 **Leitfaden**: Verwenden Sie eine Azure-App-Registrierung (Dienstprinzipal), um ein Token abzurufen, das für die Interaktion mit Ihrem Data Warehouse auf der Steuerungsebene (Azure-Portal) mittels API-Aufrufen verwendet werden kann.
 
@@ -388,7 +388,7 @@ Verwenden Sie für Verwaltungsvorgänge die Rollen der integrierten rollenbasier
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Verwenden dedizierter Computer (Arbeitsstationen mit privilegiertem Zugriff) für alle administrativen Aufgaben
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: Verwenden von sicheren, von Azure verwalteten Arbeitsstationen für Verwaltungsaufgaben
 
 **Leitfaden**: Verwenden Sie eine Arbeitsstation mit privilegiertem Zugriff (Privileged Access Workstation, PAW) mit Multi-Factor Authentication (MFA, mehrstufige Authentifizierung), die für die Anmeldung und Konfiguration von Azure-Ressourcen konfiguriert ist.
 
@@ -428,7 +428,7 @@ Bei der SQL Server-Überwachung können Sie Serverüberwachungen erstellen, die 
 
 * [Konfigurieren benannter Standorte in Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -472,11 +472,11 @@ Wenn Sie die SQL-Authentifizierung verwenden, erstellen Sie eigenständige Daten
 
 * [Grundlegendes zu Anmeldungen und Benutzerkonten in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
 
 **Leitfaden**: Mit den Funktionen zum Identitätsschutz und zur Risikoerkennung von Azure Active Directory (Azure AD) können Sie automatische Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel integrieren und erfassen.
 
@@ -490,7 +490,7 @@ Wenn Sie die SQL-Authentifizierung verwenden, erstellen Sie eigenständige Daten
 
 * [Grundlegendes zu Anmeldungen und Benutzerkonten in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -500,7 +500,7 @@ Wenn Sie die SQL-Authentifizierung verwenden, erstellen Sie eigenständige Daten
 
 * [Grundlegendes zu Kunden-Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -578,13 +578,13 @@ Außerdem können Sie eine Richtlinie für die dynamische Datenmaskierung (DDM) 
 
 * [Grundlegendes zur dynamischen Datenmaskierung für Azure Synapse SQL](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)
 
-**Azure Security Center-Überwachung**: Ja
+**Azure Security Center-Überwachung:** Ja
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC), um den Zugriff auf Azure SQL-Datenbank in Ihrem Synapse SQL-Pool zu verwalten.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (RBAC), um den Zugriff auf Azure SQL-Datenbanken in Ihrem Synapse SQL-Pool zu verwalten.
 
 Die Autorisierung wird durch die Rollenmitgliedschaften und Berechtigungen auf Objektebene der Datenbank Ihres Benutzerkontos gesteuert. Als bewährte Methode sollten Sie Benutzern nur die minimal erforderlichen Berechtigungen erteilen.
 
@@ -594,7 +594,7 @@ Die Autorisierung wird durch die Rollenmitgliedschaften und Berechtigungen auf O
 
 * [Grundlegendes zu Authentifizierung und Autorisierung in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
 
-**Azure Security Center-Überwachung**: Ja
+**Azure Security Center-Überwachung:** Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -632,7 +632,7 @@ Darüber hinaus können Sie Warnungen für Datenbanken in Ihrem SQL Synapse-Pool
 
 * [Erstellen von Warnungen für Azure SQL Synapse](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)
 
-**Azure Security Center-Überwachung**: Ja
+**Azure Security Center-Überwachung:** Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -642,9 +642,9 @@ Darüber hinaus können Sie Warnungen für Datenbanken in Ihrem SQL Synapse-Pool
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Ausführen automatisierter Scan-Tools für Sicherheitsrisiken
 
-**Leitfaden**: Aktivieren Sie Advanced Data Security, und halten Sie sich an die Azure Security Center-Empfehlungen zur Durchführung von Sicherheitsrisikobewertungen in Azure SQL-Datenbank.
+**Leitfaden**: Aktivieren Sie Advanced Data Security, und halten Sie sich an die Azure Security Center-Empfehlungen zur Durchführung von Sicherheitsrisikobewertungen in Ihren Azure SQL-Datenbanken.
 
-* [Ermitteln von Sicherheitsrisiken für die Datenbank mithilfe der SQL-Sicherheitsrisikobewertung](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Durchführen von Sicherheitsrisikobewertungen auf Ihren Instanzen von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Aktivieren von Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -698,7 +698,7 @@ Datenermittlung und -klassifizierung sind in Azure Synapse SQL integriert. Sie b
 
 *Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Verwenden der automatisierten Asset Discovery-Lösung
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Verwenden der automatisierten Asset Discovery-Lösung
 
 **Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen im Zusammenhang mit Ihrem Synapse SQL-Pool innerhalb Ihrer Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass Sie über entsprechende (Lese-)Berechtigungen in Ihrem Mandanten verfügen und alle Azure-Abonnements und Ressourcen in Ihren Abonnements auflisten können.
 
@@ -738,7 +738,7 @@ Obwohl klassische Azure-Ressourcen über Azure Resource Graph ermittelt werden k
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Definieren und Verwalten eines Bestands an genehmigten Azure-Ressourcen
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4: Definieren und Verwalten des Bestands an genehmigten Azure-Ressourcen
 
 **Leitfaden**: Definieren Sie eine Liste genehmigter Azure-Ressourcen im Zusammenhang mit Ihrem Synapse SQL-Pool.
 
@@ -846,8 +846,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Einrichten sicherer Konfigurationen für alle Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.Sql“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration von Ressourcen im Zusammenhang mit Ihrem Synapse SQL-Pool zu erstellen. Sie können auch die integrierten Richtliniendefinitionen für Azure-Datenbanken verwenden, z. B.:
-
+**Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.Sql“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration von Ressourcen im Zusammenhang mit Ihrem Synapse SQL-Pool zu erstellen. Sie können auch die integrierten Richtliniendefinitionen für Azure-Datenbanken/-Server verwenden, z. B.:
 - Bereitstellen von Bedrohungserkennung auf SQL-Servern
 - SQL Server sollte einen VNET-Dienstendpunkt verwenden.
 
@@ -861,7 +860,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -881,7 +880,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -935,7 +934,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1027,7 +1026,7 @@ Führen Sie eine Vorabprüfung aller Inhalte durch, die in computefremde Azure-R
 
 Wenn Sie einen kundenseitig verwalteten Schlüssel verwenden, um Ihren Datenbank-Verschlüsselungsschlüssel zu verschlüsseln, stellen Sie sicher, dass Ihr Schlüssel gesichert wird.
 
-* [Sichern und Wiederherstellen in einem Azure Synapse SQL-Pool](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Sichern und Wiederherstellen in einem Azure Synapse SQL-Pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [Sichern von Azure Key Vault-Schlüsseln](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: d6640a6e807bdcc7a08476a18467745330742ee2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309950"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289280"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Beheben von Fehlern beim Failback aus Azure auf lokale Umgebungen
 
@@ -29,7 +29,7 @@ Ein Failback umfasst im Wesentlichen zwei Schritte. Als ersten Schritt nach dem 
 - Wenn der Konfigurationsserver auf dem Prozessserver nicht erreichbar ist, können Sie Telnet verwenden, um die Konnektivität mit dem Konfigurationsserver an Port 443 zu überprüfen. Sie können auch versuchen, den Konfigurationsserver auf dem Prozessserver per Ping zu erreichen. Ein Prozessserver sollte außerdem einen Takt aufweisen, wenn er mit dem Konfigurationsserver verbunden ist.
 - Für einen Server vom Typ Windows Server 2008 R2 SP1, der als physischer lokaler Server geschützt wird, kann kein Failback von Azure zu einem lokalen Standort durchgeführt werden.
 - In den folgenden Situationen ist kein Failback möglich:
-    - Sie haben Computer zu Azure migriert. [Weitere Informationen](migrate-overview.md#what-do-we-mean-by-migration)
+    - Sie haben Computer zu Azure migriert. 
     - Sie haben eine VM in eine andere Ressourcengruppe verschoben.
     - Sie haben die Azure-VM gelöscht.
     - Sie haben den Schutz des virtuellen Computers deaktiviert.
@@ -64,7 +64,7 @@ Dieses Problem kann auftreten, wenn sich bereits ein virtueller Computer mit dem
 So lösen Sie das Problem:
 
 * Wählen Sie einen anderen Masterzielserver auf einem anderen Host aus, sodass der Computer beim erneuten Schützen auf einem anderen Host erstellt und der Namenskonflikt somit vermieden wird.
-* Sie können auch vMotion verwenden, um das Masterziel auf einen anderen Host zu verschieben, für den es nicht zu einem Namenskonflikt kommt. Wenn es sich bei dem vorhandenen virtuellen Computer um einen vereinzelten Computer handelt, sollten Sie ihn umbenennen, damit der neue virtuelle Computer auf demselben ESXi-Host erstellt werden kann.
+* Sie können auch mithilfe von vMotion das Masterziel auf einen anderen Host verschieben, bei dem kein Namenskonflikt auftritt. Wenn es sich bei dem vorhandenen virtuellen Computer um einen vereinzelten Computer handelt, sollten Sie ihn umbenennen, damit der neue virtuelle Computer auf demselben ESXi-Host erstellt werden kann.
 
 
 ### <a name="error-code-78093"></a>Fehlercode 78093
@@ -98,4 +98,4 @@ Dieses Problem tritt auf, wenn der lokale virtuelle Computer auf einem Host akti
 So lösen Sie das Problem:
 
 * Stellen Sie mehr Speicher auf dem ESXi-Host bereit.
-* Außerdem können Sie den virtuellen Computer mithilfe von vMotion auf einen anderen ESXi-Host verschieben, auf dem ausreichend Speicher zum Starten des virtuellen Computers zur Verfügung steht.
+* Außerdem können Sie den virtuellen Computer mithilfe von vMotion auf einen anderen ESXi-Host verschieben, auf dem ausreichend Speicher zum Starten der VM zur Verfügung steht.

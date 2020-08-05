@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659270"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386128"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -22,27 +22,26 @@ Bevor Sie eine [Verbindung mit lokalen Datenquellen aus Azure Logic Apps](../log
 * [Lokales Microsoft Power Apps-Datengateway](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 
-Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten, damit Sie über Azure Logic Apps auf lokale Datenquellen zugreifen können. Außerdem erfahren Sie weiter unten in diesem Thema mehr über die [Funktionsweise des Datengateways](#gateway-cloud-service). Weitere Informationen zum Gateway finden Sie unter [Was ist ein lokales Gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? Um Aufgaben zur Installation und Verwaltung von Gateways zu automatisieren, besuchen Sie den PowerShell-Katalog mit den [PowerShell-Cmdlets für DataGateway](https://www.powershellgallery.com/packages/DataGateway/3000.15.15).
+Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten, damit Sie über Azure Logic Apps auf lokale Datenquellen zugreifen können. Außerdem erfahren Sie weiter unten in diesem Thema mehr über die [Funktionsweise des Datengateways](#gateway-cloud-service). Weitere Informationen zum Gateway finden Sie unter [Was ist ein lokales Gateway](/data-integration/gateway/service-gateway-onprem)? Um Aufgaben zur Installation und Verwaltung von Gateways zu automatisieren, besuchen Sie den PowerShell-Katalog mit den [PowerShell-Cmdlets für DataGateway](https://www.powershellgallery.com/packages/DataGateway/3000.15.15).
 
 <a name="requirements"></a>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Konto mit einem Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Konto mit einem Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-  * Ihr Azure-Konto muss zu einem einzelnen [Azure Active Directory-Mandanten (Azure AD) oder -Verzeichnis](../active-directory/fundamentals/active-directory-whatis.md#terminology) gehören. Sie müssen das gleiche Azure-Konto zum Installieren und Verwalten des Gateways auf dem lokalen Computer verwenden.
-
-  * Während der Gatewayinstallation melden Sie sich mit Ihrem Azure-Konto an, das Ihre Gatewayinstallation mit Ihrem Azure-Konto und nur diesem Konto verknüpft. Später müssen Sie im Azure-Portal dasselbe Azure-Konto und denselben Azure AD Mandanten verwenden, wenn Sie eine Azure-Gatewayressource erstellen, die die Gatewayinstallation registriert und beansprucht. In Azure Logic Apps verwenden lokale Trigger und Aktionen dann die Gatewayressource, um eine Verbindung mit lokalen Datenquellen herzustellen.
+  * Bei Ihrem Azure-Konto muss es sich um ein Geschäfts-, Schul- oder Unikonto handeln (`username@contoso.com`). Sie können keine Azure B2B-Konten (Gastkonten) oder persönliche Microsoft-Konten wie @hotmail.com oder @outlook.com verwenden.
 
     > [!NOTE]
-    > Sie können nur eine Gatewayinstallation und eine Azure-Gatewayressource miteinander verknüpfen. Sie können die gleiche Gatewayinstallation nicht mit mehreren Azure-Konten oder Azure-Gatewayressourcen verknüpfen. Ein Azure-Konto kann jedoch mit mehreren Gatewayinstallationen und Azure-Gatewayressourcen verknüpft werden. Bei lokalen Triggern oder Aktionen können Sie unter Ihren verschiedenen Azure-Abonnements wählen und dann eine zugehörige Gatewayressource auswählen.
+    > Wenn Sie sich für ein Office 365-Angebot registriert und nicht Ihre geschäftliche E-Mail-Adresse angegeben haben, kann Ihre Adresse beispielsweise wie folgt aussehen: `username@domain.onmicrosoft.com`. Ihr Konto wird auf einem Azure AD-Mandanten gespeichert. In den meisten Fällen ist der Benutzerprinzipalname (User Principal Name, UPN) für Ihr Azure-Konto mit Ihrer E-Mail-Adresse identisch.
 
-  * Sie müssen sich mit einem Geschäfts-, Schul-oder Unikonto anmelden, das auch als *Organisationskonto* bezeichnet wird. Das Format ist `username@contoso.com`. Sie können keine Azure B2B-Konten (Gastkonten) oder persönliche Microsoft-Konten wie @hotmail.com oder @outlook.com verwenden.
+    Wenn Sie ein [Visual Studio-Standardabonnement](https://visualstudio.microsoft.com/vs/pricing/) verwenden möchten, das einem Microsoft-Konto zugeordnet ist, [erstellen Sie zunächst einen Azure AD-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md), oder verwenden Sie das Standardverzeichnis. Fügen Sie dem Verzeichnis einen Benutzer mit einem Kennwort hinzu, und erteilen Sie diesem Benutzer dann Zugriff auf Ihr Azure-Abonnement. Sie können sich dann während der Installation des Gateways mit diesem Benutzernamen und Kennwort anmelden.
 
-    > [!TIP]
-    > Wenn Sie sich für ein Office 365-Angebot registriert und nicht Ihre geschäftliche E-Mail-Adresse angegeben haben, kann Ihre Adresse beispielsweise wie folgt aussehen: `username@domain.onmicrosoft.com`. Ihr Konto wird innerhalb eines Mandanten in Azure Active Directory (Azure AD) gespeichert. In den meisten Fällen ist der Benutzerprinzipalname (User Principal Name, UPN) für Ihr Azure AD Konto identisch mit Ihrer E-Mail-Adresse.
-    >
-    > Wenn Sie ein [Visual Studio-Standardabonnement](https://visualstudio.microsoft.com/vs/pricing/) verwenden möchten, das mit einem Microsoft-Konto verknüpft ist, [erstellen Sie zunächst einen Mandanten in Azure AD](../active-directory/develop/quickstart-create-new-tenant.md), oder verwenden Sie das Standardverzeichnis. Fügen Sie dem Verzeichnis einen Benutzer mit einem Kennwort hinzu, und erteilen Sie diesem Benutzer dann Zugriff auf Ihr Azure-Abonnement. Sie können sich dann während der Installation des Gateways mit diesem Benutzernamen und Kennwort anmelden.
+  * Ihr Azure-Konto muss zu einem einzigen [Azure Active Directory-Mandanten oder -Verzeichnis (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md#terminology) gehören. Sie müssen das gleiche Azure-Konto zum Installieren und Verwalten des Gateways auf dem lokalen Computer verwenden.
+
+  * Während der Gatewayinstallation melden Sie sich mit Ihrem Azure-Konto an. Dadurch wird Ihre Gatewayinstallation ausschließlich mit Ihrem Azure-Konto verknüpft. Sie können eine Gatewayinstallation nicht mit mehreren Azure-Konten oder Azure AD-Mandanten verknüpfen.
+
+  * Später müssen Sie im Azure-Portal dasselbe Azure-Konto verwenden, um eine Azure-Gatewayressource zu erstellen, die mit Ihrer Gatewayinstallation verknüpft ist. Sie können nur eine Gatewayinstallation und eine Azure-Gatewayressource miteinander verknüpfen. Ihr Azure-Konto kann jedoch mit unterschiedlichen Gatewayinstallationen verknüpft sein, die jeweils einer Azure-Gatewayressource zugeordnet sind. Ihre Logik-Apps können diese Gatewayressource dann in Triggern und Aktionen verwenden, die auf lokale Datenquellen zugreifen können.
 
 * Dies sind die Anforderungen für den lokalen Computer:
 
@@ -80,7 +79,7 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
 
   * Das Gateway verfügt über zwei Modi: Standardmodus und persönlicher Modus, der nur für Power BI gilt. Auf demselben Computer können nicht mehrere Gateways im gleichen Modus ausgeführt werden.
 
-  * Azure Logic Apps unterstützt Lese- und Schreibvorgänge über das Gateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps unterstützt Lese- und Schreibvorgänge über das Gateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -143,8 +142,8 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
 
 Das lokale Datengateway ist für Cloudkonnektivität von [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) abhängig und richtet die entsprechenden ausgehenden Verbindungen zu der dem Gateway zugeordneten Azure-Region ein. Wenn in Ihrer Arbeitsumgebung der Datenverkehr über einen Proxy oder eine Firewall an das Internet weitergeleitet werden muss, verhindert diese Einschränkung unter Umständen, dass das lokale Datengateway eine Verbindung mit dem Gatewayclouddienst und Azure Service Bus herstellt. Das Gateway verfügt über mehrere Kommunikationseinstellungen, die Sie anpassen können. Weitere Informationen finden Sie in den folgenden Themen:
 
-* [Anpassen von Kommunikationseinstellungen für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Konfigurieren von Proxyeinstellungen für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Anpassen von Kommunikationseinstellungen für das lokale Datengateway](/data-integration/gateway/service-gateway-communication)
+* [Konfigurieren von Proxyeinstellungen für das lokale Datengateway](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -156,7 +155,7 @@ Um einzelne Fehlerquellen (Single Points of Failure) für lokalen Datenzugriff z
 
 * Für das primäre Gateway muss das Gatewayupdate vom November 2017 oder ein höheres Update ausgeführt werden.
 
-Nachdem Sie Ihr primäres Gateway eingerichtet haben, wählen Sie zum Installieren eines weiteren Gateways **Einem vorhandenen Gatewaycluster hinzufügen** aus, wählen Sie das primäre Gateway (das erste Gateway, das Sie installiert haben) aus, und geben Sie den Wiederherstellungsschlüssel für dieses Gateway an. Weitere Informationen finden Sie unter [Hochverfügbarkeitscluster für lokale Datengateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+Nachdem Sie Ihr primäres Gateway eingerichtet haben, wählen Sie zum Installieren eines weiteren Gateways **Einem vorhandenen Gatewaycluster hinzufügen** aus, wählen Sie das primäre Gateway (das erste Gateway, das Sie installiert haben) aus, und geben Sie den Wiederherstellungsschlüssel für dieses Gateway an. Weitere Informationen finden Sie unter [Hochverfügbarkeitscluster für lokale Datengateways](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
@@ -186,7 +185,7 @@ Wenn Sie den Ort Ihres Gateways ändern, die Gatewayinstallation auf einen neuen
 
 ## <a name="tenant-level-administration"></a>Verwaltung auf Mandantenebene
 
-Um einen Einblick in alle lokalen Datengateways in einem Azure AD-Mandanten zu erhalten, können sich globale Administratoren in diesem Mandanten am [Power Platform Admin Center](https://powerplatform.microsoft.com) als Mandantenadministrator anmelden und die Option **Datengateways** auswählen. Weitere Informationen finden Sie unter [Verwaltung auf Mandantenebene für das lokale Datengateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+Um einen Einblick in alle lokalen Datengateways in einem Azure AD-Mandanten zu erhalten, können sich globale Administratoren in diesem Mandanten am [Power Platform Admin Center](https://powerplatform.microsoft.com) als Mandantenadministrator anmelden und die Option **Datengateways** auswählen. Weitere Informationen finden Sie unter [Verwaltung auf Mandantenebene für das lokale Datengateway](/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
@@ -197,7 +196,7 @@ Standardmäßig wird die Gatewayinstallation auf Ihrem lokalen Computer als Wind
 > [!NOTE]
 > Ihr Windows-Dienstkonto ist weder mit dem Konto, das zum Herstellen von Verbindungen mit den lokalen Datenquellen verwendet wird, noch mit dem Azure-Konto identisch, das Sie zum Anmelden bei Clouddiensten verwenden.
 
-Sie können Gateways (wie jeden anderen Windows-Dienst) auf verschiedene Arten starten und beenden. Weitere Informationen finden Sie unter [Neustarten eines lokalen Datengateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
+Sie können Gateways (wie jeden anderen Windows-Dienst) auf verschiedene Arten starten und beenden. Weitere Informationen finden Sie unter [Neustarten eines lokalen Datengateways](/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
@@ -261,9 +260,9 @@ Nachfolgend finden Sie Möglichkeiten, wie Sie Ihre lokalen Active Directory-Kon
 
 ## <a name="faq-and-troubleshooting"></a>FAQ und Fehlerbehebung
 
-* [Lokales Datengateway: Häufig gestellte Fragen](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Problembehandlung des lokalen Datengateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Überwachen und Optimieren der Gatewayleistung](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Lokales Datengateway: Häufig gestellte Fragen](/data-integration/gateway/service-gateway-onprem-faq)
+* [Problembehandlung des lokalen Datengateways](/data-integration/gateway/service-gateway-tshoot)
+* [Überwachen und Optimieren der Gatewayleistung](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

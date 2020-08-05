@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539175"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382694"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,15 +36,14 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
-|Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion|
-|Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|
-|Maximale Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
-|CPU|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
-|E/A-Durchsatz (ungefähr) |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
-|E/A-Wartezeit (ungefähr)|5 ms (Lesen), 10 ms (Schreiben)|5 ms (Lesen), 10 ms (Schreiben)|2 ms (Lesen/Schreiben)|
-|Columnstore-Indizierung |–|S3 und höher|Unterstützt|
-|In-Memory-OLTP|–|–|Unterstützt|
-|||||
+|**Zielworkload**|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion|
+|**Betriebszeit-SLA**|99,99 %|99,99 %|99,99 %|
+|**Maximale Sicherungsaufbewahrung**|7 Tage|35 Tage|35 Tage|
+|**CPU**|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
+|**E/A-Durchsatz (ungefähr)** |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
+|**E/A-Wartezeit (ungefähr)**|5 ms (Lesen), 10 ms (Schreiben)|5 ms (Lesen), 10 ms (Schreiben)|2 ms (Lesen/Schreiben)|
+|**Columnstore-Indizierung** |–|S3 und höher|Unterstützt|
+|**In-Memory-OLTP**|–|–|Unterstützt|
 
 > [!IMPORTANT]
 > Die Dienstebenen „Basic“, „Standard S0“, „S1“ und „S2“ bieten weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen. 
@@ -59,25 +58,23 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 
 Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [DTU-basiertes Kaufmodell](purchasing-models.md#dtu-based-purchasing-model).
 
-|Basic|Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| Maximale Speichergröße | 2 GB | 1 TB | 4 TB  |
-| Maximale DTU-Anzahl | 5 | 3000 | 4000 | 
-|||||
+| **Maximale Speichergröße** | 2 GB | 1 TB | 4 TB  |
+| **Maximale DTU-Anzahl** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und Pooldatenbanken
 
-| **Grundlegend** | **Standard** | **Premium** |
+|| **Grundlegend** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
-| Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB |
-| Maximale Speichergröße pro Pool | 156 GB | 4 TB | 4 TB |
-| Maximale Anzahl von eDTUs pro Datenbank | 5 | 3000 | 4000 |
-| Maximale Anzahl von eDTUs pro Pool | 1600 | 3000 | 4000 |
-| Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 |
-|||||
+| **Maximale Speichergröße pro Datenbank**  | 2 GB | 1 TB | 1 TB |
+| **Maximale Speichergröße pro Pool** | 156 GB | 4 TB | 4 TB |
+| **Maximale Anzahl von eDTUs pro Datenbank** | 5 | 3000 | 4000 |
+| **Maximale Anzahl von eDTUs pro Pool** | 1600 | 3000 | 4000 |
+| **Maximale Anzahl von Datenbanken pro Pool** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  

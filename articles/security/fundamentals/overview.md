@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c107789fe4a88b3cd73a2f290871016b95cae19
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125667"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371395"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 ## <a name="overview"></a>Übersicht
@@ -142,7 +142,7 @@ Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angeze
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](../../role-based-access-control/built-in-roles.md)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/blobs/security-recommendations.md)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
+Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [in Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md) (z. B. „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/blobs/security-recommendations.md)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
 
 ### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.

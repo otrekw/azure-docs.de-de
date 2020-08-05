@@ -1,5 +1,5 @@
 ---
-title: Sicherheitsbaseline für virtuelle Linux-Computer im Azure-Sicherheitsvergleichstest
+title: Azure-Sicherheitsbaseline für Virtuelle Linux-Computer
 description: Die Sicherheitsbaseline für virtuelle Linux-Computer enthält Schrittanleitungen und Ressourcen für die Implementierung der Sicherheitsempfehlungen, die im Azure-Sicherheitsvergleichstest angegeben sind.
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d8c4d67ed9b268bae55711fae8c4def33b967fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528084"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385482"
 ---
-# <a name="linux-virtual-machines-security-baseline-for-azure-security-benchmark"></a>Sicherheitsbaseline für virtuelle Linux-Computer im Azure-Sicherheitsvergleichstest
+# <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-Sicherheitsbaseline für Virtuelle Linux-Computer
 
 Die Azure-Sicherheitsbaseline für virtuelle Linux-Computer enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
@@ -568,7 +568,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 * [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen](../../role-based-access-control/overview.md)
 
-* [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -1096,7 +1096,7 @@ Wenn Sie Azure Disk Encryption verwenden, können Sie die Azure-VM mit den Versc
 
 * [Vorläufiges Löschen für VMs](../../backup/soft-delete-virtual-machines.md)
 
-* [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../../key-vault/general/overview-soft-delete.md)
+* [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center-Überwachung**: Ja
 

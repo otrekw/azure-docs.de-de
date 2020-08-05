@@ -10,12 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 949347d07fe120c6900f49499e78595b540718a7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212621"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368998"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -27,7 +27,7 @@ Eine Übersicht über den Datenfluss für OAuth 2.0-Codeberechtigungen finden Si
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Zuweisen einer Rolle zu einem Azure AD-Sicherheitsprinzipal
 
-Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle (Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert integrierte RBAC-Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die RBAC-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten mit RBAC](storage-auth-aad-rbac.md).
+Um einen Sicherheitsprinzipal aus Ihrer Azure Storage-Anwendung authentifizieren zu können, müssen Sie zuerst die Einstellungen der rollenbasierten Zugriffskontrolle (Role-Based Access Control, RBAC) für diesen Sicherheitsprinzipal konfigurieren. Azure Storage definiert integrierte Azure-Rollen, die Berechtigungen für Container und Warteschlangen beinhalten. Wird die RBAC-Rolle einem Sicherheitsprinzipal zugewiesen, wird diesem Sicherheitsprinzipal Zugriff auf die Ressource gewährt. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten mit RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrieren der Anwendung bei einem Azure AD-Mandanten
 

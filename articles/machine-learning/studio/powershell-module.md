@@ -1,6 +1,5 @@
 ---
-title: PowerShell-Module
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): PowerShell-Module – Azure'
 description: Sie können PowerShell verwenden, um Arbeitsbereiche, Experimente, Webdienste und vieles mehr in Azure Machine Learning Studio (klassisch) zu erstellen und zu verwalten.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 21bb8253d94ca91ee1baffb6de1f47ca34e9a7d0
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 46f51a09a82d544a5940dfad69dc8e36d99a2f7a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324980"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>PowerShell-Module für Azure Machine Learning Studio (klassisch)
+
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 Mithilfe von PowerShell-Modulen können Sie Ihre Ressourcen und Objekte für Studio (klassisch) wie Arbeitsbereiche, Datasets und Webdienste programmgesteuert verwalten.
 
@@ -51,7 +53,7 @@ PowerShell (klassisch) kann zusammen mit Az oder AzureRM installiert werden, um 
 ## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell-Unterstützungstabelle
 
 
-| | **Az** |  **PowerShell – klassisch** |
+|  **Az** |  **PowerShell – klassisch** |
 | --- | --- | --- |
 | Erstellen/Löschen von Arbeitsbereichen | [Resource Manager-Vorlagen](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | Verwalten von Vertragsplänen für Arbeitsbereiche | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |

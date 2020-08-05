@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536622"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281020"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Abrufen von Wetterdaten von Partnern für Wetterdaten
 
@@ -26,7 +26,7 @@ Stellen Sie zum Abrufen von Wetterdaten sicher, dass Sie [FarmBeats](https://aka
 
 So beginnen Sie mit dem Abrufen von Wetterdaten auf Ihrem FarmBeats-Datenhub:
 
-1. Navigieren Sie zu Ihrem FarmBeats-Datenhub-[Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger).
+1. Navigieren Sie zu Ihrem FarmBeats-Datenhub-Swagger (`https://farmbeatswebsite-api.azurewebsites.net/swagger`).
 
 2. Wechseln Sie zur /Partner-API, und führen Sie eine POST-Anforderung aus. Verwenden Sie die folgende Eingabenutzlast:
 

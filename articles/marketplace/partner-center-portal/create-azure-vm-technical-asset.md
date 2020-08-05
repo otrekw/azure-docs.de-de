@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie die technischen Ressourcen für ein VM-A
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: dannyevers
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107154"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407947"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Erstellen der technischen Ressourcen für Ihre Azure-VM
 
@@ -43,7 +43,7 @@ Das Entwerfen, Erstellen und Testen dieser Ressourcen dauert lange, und es sind 
 
 Verwenden Sie ggf. eine der folgenden Skriptumgebungen für die Verwaltung von VMs und VHDs:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure-Befehlszeilenschnittstelle](https://code.visualstudio.com/)
 
 Fügen Sie Ihrer Entwicklungsumgebung ggf. auch die folgenden Tools hinzu:
@@ -282,4 +282,4 @@ Wenn beim Erstellen Ihrer neuen Azure-basierten VHD Probleme auftreten, lesen Si
 
 Andernfalls:
 
-* In [Zertifizieren Ihres VM-Images](get-sas-uri.md) wird erläutert, wie Sie ein VM-Image für die Azure Marketplace-Zertifizierung testen und übermitteln. Dort erfahren Sie auch, wo Sie das *Certification Test Tool for Azure Certified* erhalten und wie Sie es zum Zertifizieren Ihres VM-Images verwenden.
+* In [Testen eines über eine VHD bereitgestellten virtuellen Computers (VM)](azure-vm-image-certification.md) wird erläutert, wie Sie ein VM-Image für die Azure Marketplace-Zertifizierung testen und übermitteln. Außerdem erfahren Sie, wo Sie das *Certification Test Tool for Azure Certified* erhalten und wie Sie es zum Zertifizieren Ihres VM-Images verwenden.

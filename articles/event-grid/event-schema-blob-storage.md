@@ -3,12 +3,12 @@ title: Azure Blob Storage als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Blob Storage-Ereignisse bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113750"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371276"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage als Event Grid-Quelle
 
@@ -23,6 +23,9 @@ In diesem Artikel werden die Eigenschaften und das Schema für Blob Storage-Erei
 ### <a name="list-of-events-for-blob-rest-apis"></a>Ereignisliste für Blob-REST-APIs
 
 Die folgenden Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von Blob-REST-APIs ein Blob erstellt, ersetzt oder löscht:
+
+> [!NOTE]
+> Bei Verwendung des DFS-Endpunkts *`(abfss://URI) `* für Konten, die nicht hierarchische Namespaces verarbeiten können, werden keine Ereignisse generiert. Bei solchen Konten generiert nur der Blobendpunkt *`(wasb:// URI)`* Ereignisse.
 
  |Ereignisname |BESCHREIBUNG|
  |----------|-----------|
@@ -288,7 +291,7 @@ Wenn das Blob Storage-Konto über einen hierarchischen Namespace verfügt, sehe
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -301,7 +304,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | api | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
 | clientRequestId | Zeichenfolge | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |

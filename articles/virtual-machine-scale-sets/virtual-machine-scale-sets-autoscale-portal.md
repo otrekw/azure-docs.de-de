@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494937"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080589"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatisches Skalieren einer VM-Skalierungsgruppe im Azure-Portal
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren.
@@ -48,7 +48,7 @@ Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last 
     | *Statistik zum Aggregationsintervall* | Definiert, wie die in jedem Aggregationsintervall gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                             | Average        |
     | *Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                     | Größer als   |
     | *Schwellenwert*            | Der Prozentsatz, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                 | 70             |
-    | *Duration*             | Der überwachte Zeitraum, bevor die Metrik und Schwellenwerte verglichen werden.                                   | 10 Minuten     |
+    | *Duration*             | Der überwachte Zeitraum, bevor die Metrik und Schwellenwerte verglichen werden. Die Abkühldauer ist dabei nicht eingeschlossen.                                   | 10 Minuten     |
     | *Vorgang*            | Definiert, ob und in welchen Schritten die Skalierungsgruppe hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                        | Prozentsatz erhöhen um |
     | *Anzahl der Instanzen*       | Der Prozentsatz der VM-Instanzen sollte geändert werden, wenn diese Regel ausgelöst wird.                                            | 20             |
     | *Abkühlen (Minuten)*  | Gibt an, wie lange gewartet wird, bevor die Regel erneut angewendet wird, damit die Aktionen für die automatische Skalierung wirksam werden können. | 5 Minuten      |

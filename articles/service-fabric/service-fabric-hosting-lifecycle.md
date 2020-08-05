@@ -5,12 +5,12 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: b106061805ea5485893df292c40974d3ee9bcadb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258815"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405125"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric-Hostinglebenszyklus
 Dieser Artikel enthält eine Übersicht über die Ereignisse, die auftreten, wenn eine Anwendung auf einem Knoten aktiviert wird und verschiedene Clusterkonfigurationen zum Steuern des Verhaltens verwendet werden.

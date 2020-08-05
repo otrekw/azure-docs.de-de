@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88acb4fe31470dab3ca6f273fd8d942e7f84e687
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513763"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281887"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3 in Azure Storage mithilfe von AzCopy
 
@@ -50,13 +50,10 @@ Halten Sie Ihren AWS-Zugriffsschlüssel und geheimen Zugriffsschlüssel bereit, 
 
 Da für AzCopy die [Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url)-API verwendet wird, werden Daten direkt zwischen AWS S3 und Speicherservern kopiert. Für diese Kopiervorgänge wird nicht die Netzwerkbandbreite Ihres Computers genutzt.
 
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Wenn Sie sich entscheiden, nach einem Kopiervorgang Daten aus Ihren S3-Bucket zu entfernen, vergewissern Sie sich vor dem Entfernen der Daten, dass die Daten ordnungsgemäß in Ihr Speicherkonto kopiert wurden.
-
 > [!TIP]
 > In den Beispielen in diesem Abschnitt werden Pfadargumente in einfache Anführungszeichen ('') eingeschlossen. Verwenden Sie in allen Befehlsshells außer der Windows-Befehlszeile (cmd.exe) einfache Anführungszeichen. Wenn Sie eine Windows-Befehlszeile (cmd.exe) verwenden, müssen Sie Pfadargumente in doppelte Anführungszeichen ("") anstelle von einfachen Anführungszeichen ('') einschließen.
 
- Diese Beispiele können auch für Konten verwendet werden, die über einen hierarchischen Namespace verfügen. [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht es Ihnen, dieselbe URL-Syntax (`blob.core.windows.net`) für diese Konten zu verwenden. 
+ Diese Beispiele können auch für Konten mit einem hierarchischen Namespace verwendet werden. [Multiprotokollzugriff für Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) ermöglicht es Ihnen, dieselbe URL-Syntax (`blob.core.windows.net`) für diese Konten zu verwenden. 
 
 ### <a name="copy-an-object"></a>Kopieren eines Objekts
 
@@ -84,6 +81,19 @@ Verwenden Sie dieselbe URL-Syntax (`blob.core.windows.net`) für Konten mit eine
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Beispiel** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 | **Beispiel** (hierarchischer Namespace)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+
+> [!NOTE]
+> In diesem Beispiel wird das Flag `--recursive` angehängt, um Dateien in allen Unterverzeichnissen zu kopieren.
+
+### <a name="copy-the-contents-of-a-directory"></a>Kopieren des Inhalts eines Verzeichnisses
+
+Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Verzeichnisses kopieren, ohne das Verzeichnis selbst zu kopieren.
+
+|    |     |
+|--------|-----------|
+| **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **Beispiel** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Beispiel** (hierarchischer Namespace)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Kopieren eines Buckets
 
@@ -127,7 +137,7 @@ Wenn mit AzCopy Dateien kopiert werden, wird auch eine Überprüfung auf Namensk
 
 Bei AWS S3 und Azure sind in den Namen von Objektschlüsseln unterschiedliche Zeichen zulässig. Informationen zu den Zeichen, die in AWS S3 genutzt werden können, finden Sie [hier](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys). Auf Azure-Seite unterliegen Blobobjektschlüssel den Benennungsregeln für [C#-Bezeichner](https://docs.microsoft.com/dotnet/csharp/language-reference/).
 
-Im Rahmen des AzCopy-Befehls `copy` können Sie einen Wert für das optionale Flag `s2s-invalid-metadata-handle` angeben. Hiermit wird festgelegt, wie Dateien verarbeitet werden sollen, bei denen die Metadaten der Datei inkompatible Schlüsselnamen enthalten. In der folgenden Tabelle werden die einzelnen Flagwerte beschrieben.
+Im Rahmen des AzCopy-Befehls `copy` können Sie einen Wert für das optionale Flag `s2s-handle-invalid-metadata` angeben. Hiermit wird festgelegt, wie Dateien verarbeitet werden sollen, bei denen die Metadaten der Datei inkompatible Schlüsselnamen enthalten. In der folgenden Tabelle werden die einzelnen Flagwerte beschrieben.
 
 | Flagwert | BESCHREIBUNG  |
 |--------|-----------|

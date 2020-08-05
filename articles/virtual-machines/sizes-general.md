@@ -5,16 +5,16 @@ author: mimckitt
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 1e9cce7adc6dbc9062dd133d690fbce92c3190fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7cb2667f8e653b4e71844cd849e691a7c5bcd81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783315"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325439"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Universelle VM-Größen
 
@@ -35,9 +35,9 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 
 - Virtuelle Computer der [Dv3-Serie und der Dsv3-Serie](dv3-dsv3-series.md) auf dem Intel® Xeon® Platinum 8272CL-Prozessor der 2. Generation (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) in einer Hyperthreadkonfiguration ausgeführt und bieten somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads. Der Speicher wurde erweitert (von etwa 3.5 GiB/vCPU auf 4 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen. Die Dv3-Serie hat nicht mehr die virtuellen Computer mit hohen Arbeitsspeichergrößen der D/Dv2-Serie. Diese sind nun in den arbeitsspeicheroptimierten [Serien Ev3 und Esv3](ev3-esv3-series.md) verfügbar.
 
-- Virtuelle Computer der [Dv4- und Dsv4-Serie](dv4-dsv4-series.md) werden auf Intel-Prozessoren der zweiten Generation des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) ausgeführt, die für die meisten universellen Workloads ein besseres Preis-Leistungs-Verhältnis bieten. VMs der Dv4-und Dsv4-Serie sind eine neue Kategorie von virtuellen Computern, die auf Remotedatenträgern basieren und keinen temporären lokalen Speicher bereitstellen. Sie verfügen über eine kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne sowie [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
+- [Serien Dv4 und Dsv4:](dv4-dsv4-series.md) Die Dv4- und die Dsv4-Serie werden auf Intel-Prozessoren des Typs Intel® Xeon® Platinum 8272CL (Cascade Lake) mit einer Hyperthreadingkonfiguration ausgeführt, die für die meisten Allzweckworkloads ein besseres Preis-Leistungs-Verhältnis bieten. Sie verfügt über eine dauerhafte Turbotaktrate von 3,4 GHz.
 
-- VMs der [Ddv4- und Ddsv4-Serie](ddv4-ddsv4-series.md) werden auf Intel-Prozessoren der zweiten Generation des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) ausgeführt, die für die meisten universellen Workloads ein besseres Preis-Leistungs-Verhältnis bieten. VMs der Ddv4- und Ddsv4-Serie sind eine neue Kategorie von virtuellen Computern, die temporäre Datenträger mit lokalen Daten enthalten. Sie verfügen über eine kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne sowie [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) und [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
+- [Serien Ddv4 und Ddsv4:](ddv4-ddsv4-series.md) Die Ddv4- und die Ddsv4-Serie werden auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) mit einer Hyperthreadingkonfiguration ausgeführt, die für die meisten Allzweckworkloads ein besseres Preis-Leistungs-Verhältnis bieten. Sie verfügen über eine kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne, [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Hyper-Threading Technology und ](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)Intel[ Advanced Vector Extensions 512 (&reg;Intel&reg; AVX-512).](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) Außerdem unterstützen sie [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Diese neuen VM-Größen bieten 50  % mehr lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den Größen [Dv3/Dsv3](./dv3-dsv3-series.md) mit [Gen2-VMs](./linux/generation-2.md).
 
 ## <a name="other-sizes"></a>Andere Größen
 

@@ -3,18 +3,16 @@ title: U-SQL-Programmierbarkeitshandbuch für Azure Data Lake
 description: Hier finden Sie Informationen zu den Diensten in Azure Data Lake Analytics, mit denen Sie eine cloudbasierte Big Data-Plattform erstellen können.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 2fb54c821c50ff8e1364a125cc5db181aedf0437
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110588"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288944"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
 
@@ -127,7 +125,7 @@ Eine ausführlichere Beschreibung dieses Themas finden Sie unter [How to registe
 
 
 ### <a name="use-assembly-versioning"></a>Verwenden der Versionsverwaltung für Assemblys
-U-SQL verwendet derzeit .NET Framework 4.5. Achten Sie daher darauf, dass Ihre eigenen Assemblys mit dieser Laufzeitversion kompatibel sind.
+U-SQL verwendet derzeit .NET Framework 4.7.2. Achten Sie daher darauf, dass Ihre eigenen Assemblys mit dieser Laufzeitversion kompatibel sind.
 
 Wie bereits erwähnt, wird Code von U-SQL in einem 64-Bit-Format (x64) ausgeführt. Stellen Sie daher sicher, dass Ihr Code für x64 kompiliert wird. Andernfalls tritt der zuvor gezeigte Formatfehler auf.
 
@@ -789,11 +787,7 @@ namespace USQL_Programmability
             }
 
             return new FiscalPeriod(FiscalQuarter, FiscalMonth);
-        }
-
-
-
-        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
+        }        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
         public struct FiscalPeriod
         {
             public int Quarter { get; private set; }

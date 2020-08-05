@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210608"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374132"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse-Einheiten (DWUs)
 
@@ -100,7 +100,7 @@ Wenn Sie seine wahren Skalierungsfunktionen (insbesondere bei größeren DWUs) i
 
 Zum Ändern der Data Warehouse-Einheiten sind die unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) beschriebenen Berechtigungen erforderlich.
 
-Integrierte Rollen für Azure-Ressourcen wie „Mitwirkender von SQL DB“ und „SQL Server-Mitwirkender“ können die DWU-Einstellungen ändern.
+Integrierte Azure-Rollen wie „Mitwirkender von SQL DB“ und „SQL Server-Mitwirkender“ können die DWU-Einstellungen ändern.
 
 ## <a name="view-current-dwu-settings"></a>Anzeigen der aktuellen DWU-Einstellungen
 

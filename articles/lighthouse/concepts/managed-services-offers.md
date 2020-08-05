@@ -1,14 +1,14 @@
 ---
 title: Angebote für verwaltete Dienste im Azure Marketplace
 description: Angebote für verwaltete Dienste gestatten es Dienstanbietern, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121587"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406859"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste im Azure Marketplace
 
@@ -24,7 +24,10 @@ Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie 
 
 Jedes Angebot für verwaltete Dienste umfasst mindestens einen Plan. Pläne können entweder privat oder öffentlich sein.
 
-Wenn Sie Ihr Angebot auf bestimmte Kunden beschränken möchten, können Sie einen privaten Plan veröffentlichen. Wenn Sie dies tun, kann der Plan nur für die speziellen, von Ihnen angegebenen Abonnement-IDs erworben werden. Weitere Informationen finden Sie unter [Private Angebote](../../marketplace/private-offers.md).
+Wenn Sie Ihr Angebot auf bestimmte Kunden beschränken möchten, können Sie einen privaten Plan veröffentlichen. In diesem Fall kann der Plan nur für die angegebenen Abonnement-IDs erworben werden. Weitere Informationen finden Sie unter [Private Angebote](../../marketplace/private-offers.md).
+
+> [!NOTE]
+> Private Angebote werden bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt.
 
 Mit öffentlichen Plänen können Sie Ihre Dienste bei neuen Kunden bewerben. Diese sind normalerweise besser geeignet, wenn Sie nur eingeschränkten Zugriff auf den Mandanten des Kunden benötigen. Nachdem Sie eine Beziehung zu einem Kunden aufgebaut haben, können Sie, wenn dieser sich entschließt, Ihrer Organisation zusätzlichen Zugriff zu gewähren, dies entweder durch Veröffentlichen eines neuen privaten Plans ausschließlich für diesen Kunden oder durch [Onboarding des Kunden für den weiteren Zugriff mithilfe von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) erreichen.
 

@@ -10,12 +10,14 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+- 'Role: IoT Device'
+- 'Role: Cloud Development'
+ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521121"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307623"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -41,7 +43,7 @@ Der MQTT-Port (8883) wird in vielen Netzwerken von Unternehmen und Bildungseinri
 
 ## <a name="using-the-device-sdks"></a>Verwenden der Geräte-SDKs
 
-[Geräte-SDKs](https://github.com/Azure/azure-iot-sdks), die das MQTT-Protokoll unterstützen, stehen für Java, Node.js, C, C# und Python zur Verfügung. Die SDKs für Geräte verwenden die IoT Hub-Standard-Verbindungszeichenfolge zum Herstellen einer Verbindung mit einem IoT Hub. Um das MQTT-Protokoll verwenden zu können, muss der Clientprotokollparameter auf **MQTT**festgelegt werden. Sie können MQTT über WebSockets auch im Parameter für das Clientprotokoll angeben. Standardmäßig verbinden sich die SDKs von Geräten mit einem IoT Hub, indem das **CleanSession**-Flag auf **0** festgelegt und **QoS 1** für den Nachrichtenaustausch mit dem IoT Hub verwendet wird.
+[Geräte-SDKs](https://github.com/Azure/azure-iot-sdks), die das MQTT-Protokoll unterstützen, stehen für Java, Node.js, C, C# und Python zur Verfügung. Die SDKs für Geräte verwenden die IoT Hub-Standard-Verbindungszeichenfolge zum Herstellen einer Verbindung mit einem IoT Hub. Um das MQTT-Protokoll verwenden zu können, muss der Clientprotokollparameter auf **MQTT**festgelegt werden. Sie können MQTT über WebSockets auch im Parameter für das Clientprotokoll angeben. Standardmäßig verbinden sich die SDKs von Geräten mit einem IoT Hub, indem das **CleanSession**-Flag auf **0** festgelegt und **QoS 1** für den Nachrichtenaustausch mit dem IoT Hub verwendet wird. Es ist möglich, **QoS 0** für einen schnelleren Nachrichtenaustausch zu konfigurieren, dabei sollten Sie jedoch beachten, dass die Übermittlung weder garantiert noch bestätigt wird. Aus diesem Grund wird **QoS 0** oft als „Fire and Forget“ bezeichnet.
 
 Wenn ein Gerät mit einem IoT Hub verbunden ist, werden mit den SDKs von Geräten Methoden bereitgestellt, die dem Gerät den Austausch von Nachrichten mit einem IoT Hub ermöglichen.
 
@@ -80,7 +82,7 @@ Um sicherzustellen, dass eine Client/IoT Hub-Verbindung aktiv bleibt, senden sow
 |Java     |    230 Sekunden     |     Nein    |
 |C     | 240 Sekunden |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 Sekunden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (V2)   | 60 Sekunden |  Nein   |
+|Python   | 60 Sekunden |  Nein   |
 
 Entsprechend der [MQTT-Spezifikation](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081) ist das Keep-Alive-Pingintervall von IoT Hub das 1,5-fache des Keep-Alive-Werts für Clients. IoT Hub schränkt jedoch das maximale serverseitige Timeout auf 29,45 Minuten (1.767 Sekunden) ein, weil sämtliche Azure-Dienste an das TCP-Leerlauftimeout von Azure Load Balancer (29,45 Minuten) gebunden sind. 
 
@@ -346,7 +348,7 @@ Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwi
 
 Die möglichen Statuscodes lauten:
 
-|Status | BESCHREIBUNG |
+|Status | Beschreibung |
 | ----- | ----------- |
 | 200 | Erfolg |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |

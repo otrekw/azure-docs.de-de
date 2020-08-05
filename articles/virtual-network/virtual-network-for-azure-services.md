@@ -1,7 +1,7 @@
 ---
 title: Dienste für virtuelle Netzwerke in Azure
 titlesuffix: Azure Virtual Network
-description: Informieren Sie sich über die Vorteile der Bereitstellung von Ressourcen in einem virtuellen Netzwerk. Ressourcen in virtuellen Netzwerken können miteinander und mit lokalen Ressourcen kommunizieren, ohne das Aufkommen von Datenverkehr im Internet.
+description: Erfahren Sie, wie dedizierte Azure-Dienste in einem virtuellen Netzwerk bereitgestellt werden und welche Funktionen durch diese Bereitstellungen ermöglicht werden.
 services: virtual-network
 documentationcenter: na
 author: mohnader
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2020
 ms.author: kumud
-ms.openlocfilehash: cb63f99e93d4324e3f2addde7eadf18ac15f3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442059f4ff3502b99bf4aa93d581c39331e4f7d8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463347"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287689"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Bereitstellen von dedizierten Azure-Diensten in virtuellen Netzwerken
 

@@ -4,15 +4,15 @@ description: Hier finden Sie Spezifikationen für die virtuellen Computer der M-
 author: ayshakeen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 4050a74dfef1fb31939ba716cfbaf78577f1aaef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3876ad98bd937c4e0fcbd55ca2a2c0a5b497542
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675943"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288361"
 ---
 # <a name="m-series"></a>M-Serie
 
@@ -30,24 +30,24 @@ Livemigration: Nicht unterstützt
 
 Updates mit Speicherbeibehaltung: Nicht unterstützt
 
-Schreibbeschleunigung:  [Unterstützt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Schreibbeschleunigung:  [Unterstützt](./windows/how-to-enable-write-accelerator.md)
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
-|---|---|---|---|---|---|---|---|
-| Standard_M8ms                    | 8   | 218,75 | 256   | 8  | 10.000/100 (793)     | 5000/125   | 4/2000  |
-| Standard_M16ms                   | 16  | 437,5  | 512   | 16 | 20.000/200 (1587)    | 10.000/250  | 8/4.000  |
-| Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8/8.000  |
-| Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8/8000  |
-| Standard_M32ms                   | 32  | 875    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8/8000  |
-| Standard_M64s <sup>1</sup>       | 64  | 1024   | 2048  | 64 | 80.000/800 (6348)    | 40.000/1.000 | 8/16000 |
-| Standard_M64ls <sup>1</sup>      | 64  | 512    | 2048  | 64 | 80.000/800 (6348)    | 40.000/1.000 | 8/16000 |
-| Standard_M64ms <sup>1</sup>      | 64  | 1792   | 2048  | 64 | 80.000/800 (6348)    | 40.000/1.000 | 8/16.000 |
-| Standard_M128s <sup>1</sup>    | 128 | 2048   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8/30000 |
-| Standard_M128ms <sup>1,2</sup>   | 128 | 3\.892   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8/30000 |
-| Standard_M64 <sup>1</sup>        | 64  | 1024   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8/16000 |
-| Standard_M64m <sup>1</sup>       | 64  | 1792   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8/16.000 |
-| Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250.000/1.600 (2456)  | 80.000/2.000 | 8/32000 |
-| Standard_M128m <sup>1</sup>    | 128 | 3\.892   | 14336 | 64 | 250.000/1.600 (2456)  | 80.000/2.000 | 8/32.000 |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_M8ms                    | 8   | 218,75 | 256   | 8  | 10.000/100 (793)     | 5000/125   | 4|2000  |
+| Standard_M16ms                   | 16  | 437,5  | 512   | 16 | 20.000/200 (1587)    | 10.000/250  | 8|4000  |
+| Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8|8\.000  |
+| Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8|8\.000  |
+| Standard_M32ms                   | 32  | 875    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8|8\.000  |
+| Standard_M64s <sup>1</sup>       | 64  | 1024   | 2048  | 64 | 80.000/800 (6348)    | 40000/1000 | 8|16000 |
+| Standard_M64ls <sup>1</sup>      | 64  | 512    | 2048  | 64 | 80.000/800 (6348)    | 40000/1000 | 8|16000 |
+| Standard_M64ms <sup>1</sup>      | 64  | 1792   | 2048  | 64 | 80.000/800 (6348)    | 40000/1000 | 8|16000 |
+| Standard_M128s <sup>1</sup>    | 128 | 2048   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8|30.000 |
+| Standard_M128ms <sup>1,2</sup>   | 128 | 3\.892   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8|30.000 |
+| Standard_M64 <sup>1</sup>        | 64  | 1024   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8|16000 |
+| Standard_M64m <sup>1</sup>       | 64  | 1792   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8|16000 |
+| Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250.000/1.600 (2456)  | 80.000/2.000 | 8|32000 |
+| Standard_M128m <sup>1</sup>    | 128 | 3\.892   | 14336 | 64 | 250.000/1.600 (2456)  | 80.000/2.000 | 8|32000 |
 
 <sup>1</sup> Bei mehr als 64 vCPUs ist eines der folgenden Gastbetriebssysteme erforderlich: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 und Red Hat Enterprise Linux, CentOS 7.3 oder Oracle Linux 7.3 mit LIS 4.2.1.
 
@@ -55,7 +55,7 @@ Schreibbeschleunigung:  [Unterstützt](https://docs.microsoft.com/azure/virtual-
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -63,6 +63,11 @@ Schreibbeschleunigung:  [Unterstützt](https://docs.microsoft.com/azure/virtual-
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

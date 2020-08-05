@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 7e8e12c3e10243e2e8adb23527683813f33a75a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084374"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386145"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -35,7 +35,7 @@ Diese Checkliste erläutert folgende Aspekte und hilft Ihnen dabei, empfohlene w
 Achten Sie darauf, dass Sie beim Lesen dieser Prüfliste den Überblick behalten, welche Funktionen und Schritte vollständig sind.
 
 > [!NOTE]
-> Viele der Empfehlungen in diesem Dokumentation gelten nur für Anwendungen, die zur Verwendung von Azure Active Directory als Identitätsanbieter konfiguriert sind. Durch Konfigurieren der Apps für das einmalige Anmelden profitieren Sie von folgenden Vorteilen: Richtlinien für Anmeldeinformationen, Bedrohungsermittlung, Überwachung, Protokollierung sowie weiteren Features. Das [einmalige Anmelden über Azure Active Directory](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md) ist das Fundament, auf dem all diese Empfehlungen beruhen.
+> Viele der Empfehlungen in diesem Dokumentation gelten nur für Anwendungen, die zur Verwendung von Azure Active Directory als Identitätsanbieter konfiguriert sind. Durch Konfigurieren der Apps für das einmalige Anmelden profitieren Sie von folgenden Vorteilen: Richtlinien für Anmeldeinformationen, Bedrohungsermittlung, Überwachung, Protokollierung sowie weiteren Features. Grundlage all dieser Empfehlungen ist die [Azure AD-Anwendungsverwaltung](../../active-directory/manage-apps/what-is-application-management.md).
 
 Die Empfehlungen in diesem Dokument beziehen sich auf die [Identity Secure Score](../../active-directory/fundamentals/identity-secure-score.md), eine automatisierte Bewertung der Identitätssicherheitskonfiguration Ihres Azure AD-Mandanten. Organisationen können über die Seite „Identity Secure Score“ im Azure AD-Portal Lücken in ihrer aktuellen Sicherheitskonfiguration aufdecken, um sicherzustellen, dass sie die aktuellen [bewährten Methoden](identity-management-best-practices.md) zur Sicherheit von Microsoft befolgen. Durch die Implementierung der einzelnen Empfehlungen auf der Seite „Secure Score“ erhöht sich Ihre Bewertung. Zudem können Sie Ihren Fortschritt nachverfolgen und Ihre Implementierung mit denen anderer Organisationen von ähnlicher Größe oder innerhalb Ihrer Branche vergleichen.
 

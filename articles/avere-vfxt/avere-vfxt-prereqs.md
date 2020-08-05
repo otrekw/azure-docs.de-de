@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505340"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124730"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 
@@ -38,7 +38,7 @@ Es gibt einige Umgehungsmöglichkeiten, über die ein Nichtbesitzer einen Avere 
 |----------|--------|-------|
 | Erstellung des vFXT-Clusters durch einen Ressourcengruppenadministrator | Das virtuelle Netzwerk, der Clustercontroller und die Clusterknoten müssen in der Ressourcengruppe erstellt werden. | Die Rollen [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), beide für die Zielressourcengruppe festgelegt |
 | Verwenden eines vorhandenen, externen virtuellen Netzwerks | Der Clustercontroller und die Clusterknoten werden in der vFXT-Ressourcengruppe erstellt, jedoch wird ein vorhandenes virtuelles Netzwerk in einer anderen Ressourcengruppe verwendet. | (1) Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), festgelegt auf die vFXT-Ressourcengruppe; und (2) Rolle [Mitwirkender von virtuellen Computern](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Avere-Mitwirkender](../role-based-access-control/built-in-roles.md#avere-contributor), festgelegt auf die Ressourcengruppe des virtuellen Netzwerks. |
-| Benutzerdefinierte Rolle für Clusterersteller | Keine Einschränkungen bei der Ressourcenplatzierung. Diese Methode verleiht Nichtbesitzern umfassende Berechtigungen. | Der Abonnementbesitzer erstellt eine benutzerdefinierte RBAC-Rolle, wie in [diesem Artikel](avere-vfxt-non-owner.md) erläutert. |
+| Benutzerdefinierte Rolle für Clusterersteller | Keine Einschränkungen bei der Ressourcenplatzierung. Diese Methode verleiht Nichtbesitzern umfassende Berechtigungen. | Der Abonnementbesitzer erstellt eine benutzerdefinierte Azure-Rolle, wie in [diesem Artikel](avere-vfxt-non-owner.md) erläutert. |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kontingent für den vFXT-Cluster
 

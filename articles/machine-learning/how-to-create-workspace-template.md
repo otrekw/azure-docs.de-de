@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/27/2020
+ms.openlocfilehash: db0b87787e34796e9dd7c91d6e4b53738145a25a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232150"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326374"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -30,7 +30,7 @@ Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer 
 
 * Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 
-* Um eine Vorlage über eine Befehlszeilenschnittstelle zu verwenden, benötigen Sie entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) oder die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Um eine Vorlage über eine Befehlszeilenschnittstelle zu verwenden, benötigen Sie entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) oder die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="workspace-resource-manager-template"></a>Verwenden von Arbeitsbereich-Resource Manager-Vorlagen
 
@@ -119,7 +119,10 @@ New-AzResourceGroupDeployment `
 
 Standardmäßig sind alle als Teil der Vorlage erstellten Ressourcen neu. Sie haben jedoch auch die Möglichkeit, vorhandene Ressourcen zu verwenden. Durch die Bereitstellung zusätzlicher Parameter für die Vorlage können Sie vorhandene Ressourcen verwenden. Wenn Sie z. B. ein vorhandenes Speicherkonto verwenden möchten, legen Sie den **storageAccountOption**-Wert auf **existing** fest, und geben Sie den Namen Ihres Speicherkontos im Parameter **storageAccountName** an.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+> [!IMPORTANT]
+> Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem Standardspeicherkonto des Arbeitsbereichs unterstützt.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -154,6 +157,9 @@ Die folgende Beispielvorlage zeigt, wie Sie einen Arbeitsbereich mit drei Einste
 * Aktivierung einer hohen Vertraulichkeit für den Arbeitsbereich
 * Aktivierung der Verschlüsselung für den Arbeitsbereich
 * Verwendung einer vorhandenen Azure Key Vault-Instanz zum Abrufen von kundenseitig verwalteten Schlüsseln
+
+> [!IMPORTANT]
+> Nachdem ein Arbeitsbereich erstellt wurde, können Sie die Einstellungen für vertrauliche Daten, Verschlüsselung, Key Vault-ID oder Schlüsselbezeichner nicht mehr ändern. Um diese Werte zu ändern, müssen Sie einen neuen Arbeitsbereich erstellen und dabei neue Werte verwenden.
 
 Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-enterprise-security.md#encryption-at-rest).
 
@@ -191,7 +197,7 @@ Verwenden Sie die folgenden Befehle, __um die Azure Machine Learning-Anwendung a
 
 1. Verwenden Sie den folgenden Befehl, um die Objekt-ID der Azure Machine Learning-App abzurufen. Der Wert kann für jedes Ihrer Azure-Abonnements unterschiedlich sein:
 
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
     ```azurecli
     az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
@@ -241,7 +247,7 @@ __Verwenden Sie die folgenden Befehle, um dem Schlüsseltresor eine Zugriffsrich
 
 1. Verwenden Sie den folgenden Befehl, um die Objekt-ID der Azure Cosmos DB-App abzurufen. Der Wert kann für jedes Ihrer Azure-Abonnements unterschiedlich sein:
 
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
     ```azurecli
     az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
@@ -258,7 +264,7 @@ __Verwenden Sie die folgenden Befehle, um dem Schlüsseltresor eine Zugriffsrich
 
 1. Um eine Richtlinie festzulegen, verwenden Sie den folgenden Befehl. Ersetzen Sie `<keyvault-name>` durch den Namen des vorhandenen Azure Key Vault. Ersetzen Sie `<object-ID>` durch die GUID aus dem vorherigen Schritt:
 
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
     ```azurecli
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
@@ -275,7 +281,7 @@ __Zum Abrufen der Werte__ für die Parameter `cmk_keyvault` (Key Vault-ID) und `
 
 1. Verwenden Sie den folgenden Befehl, um die Key Vault-ID abzurufen:
 
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
     ```azurecli
     az keyvault show --name <keyvault-name> --query 'id' --output tsv
@@ -292,7 +298,7 @@ __Zum Abrufen der Werte__ für die Parameter `cmk_keyvault` (Key Vault-ID) und `
 
 1. Um den Wert für den URI für den kundenseitig verwalteten Schlüssel abzurufen, verwenden Sie folgenden Befehl:
 
-    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
     ```azurecli
     az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
@@ -316,7 +322,7 @@ Nachdem Sie die obigen Schritte erfolgreich abgeschlossen haben, stellen Sie Ihr
 * **cmk_keyvault** auf den `cmk_keyvault`-Wert, den Sie in den vorherigen Schritten erhalten haben.
 * **resource_cmk_uri** auf den `resource_cmk_uri`-Wert, den Sie in den vorherigen Schritten erhalten haben.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -354,6 +360,9 @@ Als zusätzliche Konfiguration für Ihre Daten können Sie den **confidential_da
 * Unter Verwendung Ihres Schlüsseltresors werden Anmeldeinformationen für Speicherkonto, Containerregistrierung und SSH-Konto von der Ausführungsebene an Ihre Computecluster übergeben.
 * Die IP-Filterung wird aktiviert, um sicherzustellen, dass die zugrunde liegenden Batch-Pools nicht von anderen externen Diensten als Azure Machine Learning Service aufgerufen werden können.
 
+    > [!IMPORTANT]
+    > Nachdem ein Arbeitsbereich erstellt wurde, können Sie die Einstellungen für vertrauliche Daten, Verschlüsselung, Key Vault-ID oder Schlüsselbezeichner nicht mehr ändern. Um diese Werte zu ändern, müssen Sie einen neuen Arbeitsbereich erstellen und dabei neue Werte verwenden.
+
   Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-enterprise-security.md#encryption-at-rest).
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>Bereitstellen des Arbeitsbereichs hinter einem virtuellen Netzwerk
@@ -368,12 +377,12 @@ Wenn Sie den `vnetOption`-Parameterwert entweder auf `new` oder `existing`festle
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Bereitstellen des Arbeitsbereichs nur hinter einem privatem Endpunkt
 
-Wenn sich ihre zugeordneten Ressourcen nicht hinter einem virtuellen Netzwerk befinden, können Sie den Parameter **privateEndpointType** auf `AutoAproval` oder `ManualApproval` festlegen, um den Arbeitsbereich hinter einem privaten Endpunkt bereitzustellen.
+Wenn sich ihre zugeordneten Ressourcen nicht hinter einem virtuellen Netzwerk befinden, können Sie den Parameter **privateEndpointType** auf `AutoAproval` oder `ManualApproval` festlegen, um den Arbeitsbereich hinter einem privaten Endpunkt bereitzustellen. Dies kann für neue und vorhandene Arbeitsbereiche erfolgen. Wenn Sie einen vorhandenen Arbeitsbereich aktualisieren, geben Sie die Vorlagenparameter anhand der Informationen aus dem vorhandenen Arbeitsbereich ein.
 
 > [!IMPORTANT]
 > Die Bereitstellung ist nur in Regionen gültig, die private Endpunkte unterstützen.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -403,7 +412,7 @@ New-AzResourceGroupDeployment `
 
 Legen Sie zum Bereitstellen einer Ressource hinter einem neuen virtuellen Netzwerk die **vnetOption** zusammen mit den Einstellungen des virtuellen Netzwerks für die jeweilige Ressource auf **neu** fest. Die folgende Bereitstellung zeigt, wie Sie einen Arbeitsbereich mit der Speicherkontoressource hinter einem neuen virtuellen Netzwerk bereitstellen.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -747,3 +756,4 @@ Folgende Ansätze werden empfohlen, um dieses Problem zu umgehen:
 
 * [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/templates/deploy-rest.md).
 * [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
+* [Weitere Vorlagen für Azure Machine Learning finden Sie im Repository mit Azure-Schnellstartvorlagen.](https://github.com/Azure/azure-quickstart-templates)

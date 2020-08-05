@@ -3,12 +3,12 @@ title: 'Vorschau: Informationen zu Azure Policy für Kubernetes'
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten. Hierbei handelt es sich um eine Previewfunktion.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373623"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373758"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster (Vorschauversion)
 
@@ -373,7 +373,7 @@ Als Teil der Eigenschaften _details.constraintTemplate_ und _details.constraint_
 
 ## <a name="assign-a-built-in-policy-definition"></a>Zuweisen einer integrierten Richtliniendefinition
 
-Um Ihrem Kubernetes-Cluster eine Richtliniendefinition zuweisen zu können, müssen Ihnen die entsprechenden RBAC-Richtlinienzuweisungsvorgänge (Role-Based Access Control, rollenbasierte Zugriffssteuerung) zugewiesen sein. Die integrierten RBAC-Rollen **Mitwirkender bei Ressourcenrichtlinien** und **Besitzer** verfügen über diese Vorgänge. Weitere Informationen finden Sie unter [RBAC-Berechtigungen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+Um Ihrem Kubernetes-Cluster eine Richtliniendefinition zuweisen zu können, müssen Ihnen die entsprechenden RBAC-Richtlinienzuweisungsvorgänge (Role-Based Access Control, rollenbasierte Zugriffssteuerung) zugewiesen sein. Die in Azure integrierten Rollen **Mitwirkender bei Ressourcenrichtlinien** und **Besitzer** verfügen über diese Vorgänge. Weitere Informationen finden Sie unter [RBAC-Berechtigungen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitionen für die Verwaltung Ihres Clusters über das Azure-Portal zu finden:
 

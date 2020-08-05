@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 198ab9505c550ad5bf8dc75211864a562b45979f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553656"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311346"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
@@ -34,9 +34,11 @@ Allgemein sieht der gesamte Authentifizierungsflow für eine Anwendung in etwa w
 
 ![OAuth-Autorisierungscodefluss](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="setup-required-for-single-page-apps"></a>Für Single-Page-Webanwendungen erforderliche Einrichtung
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Für Single-Page-Webanwendungen erforderliche Einrichtung eines Umleitungs-URI
 
-Der Autorisierungscodeflow für Single-Page-Webanwendungen erfordert einige zusätzliche Einrichtungsschritte.  Beim [Erstellen Ihrer Anwendung](howto-create-service-principal-portal.md) müssen Sie den Umleitungs-URI für Ihre App als `spa`-Umleitungs-URI kennzeichnen. Dadurch lässt der Anmeldeserver CORS (Cross Origin Resource Sharing) für Ihre App zu.  Dies ist erforderlich, um den Code mithilfe von XHR einlösen zu können.
+Der Autorisierungscodeflow für Single-Page-Webanwendungen erfordert einige zusätzliche Einrichtungsschritte.  Befolgen Sie die Anweisungen zum [Erstellen Ihrer Single-Page-Webanwendung](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow), um den Umleitungs-URI ordnungsgemäß als für CORS aktiviert zu kennzeichnen. Um CORS für einen vorhandenen Umleitungs-URI zu aktivieren, öffnen Sie den Manifest-Editor, und legen Sie im Abschnitt `replyUrlsWithType` das Feld `type` für den Umleitungs-URI auf `spa` fest. Sie können auch auf der Registerkarte „Authentifizierung“ im Abschnitt „Web“ auf den Umleitungs-URI klicken und die URIs auswählen, die Sie für die Verwendung des Autorisierungscodeflows migrieren möchten.
+
+Der Umleitungstyp `spa` ist abwärtskompatibel mit dem impliziten Flow. Apps, die derzeit den impliziten Flow zum Abrufen von Token verwenden, können ohne Probleme auf den Umleitungs-URI-Typ `spa` umgestellt werden und den impliziten Flow weiterhin verwenden.
 
 Wenn Sie versuchen, den Autorisierungscodeflow zu verwenden, und der folgende Fehler angezeigt wird:
 
@@ -69,7 +71,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | required    | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde.  |
 | `response_type` | required    | Muss `code` für den Autorisierungscodefluss enthalten.       |
-| `redirect_uri`  | required | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden.   |
+| `redirect_uri`  | Erforderlich | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden.   |
 | `scope`  | required    | Eine durch Leerzeichen getrennte Liste mit [Bereichen](v2-permissions-and-consent.md) , denen der Benutzer zustimmen soll.  Für den Abschnitt `/authorize` der Anforderung kann dies mehrere Ressourcen abdecken, sodass Ihre App Zustimmung für mehrere Web-APIs abrufen kann, die Sie aufrufen möchten. |
 | `response_mode`   | empfohlen | Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Dabei kann es sich um eine der folgenden Methoden handeln:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` gibt den Code als ein Abfragezeichenfolgen-Parameter in der Umleitungs-URI an. Wenn Sie ein ID-Token mit dem impliziten Flow anfordern, können Sie `query` nicht gemäß [OpenID-Spezifikation](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations) verwenden. Wenn Sie lediglich den Code anfordern, können Sie `query`, `fragment` oder `form_post` verwenden. `form_post` führt ein POST-Element mit dem Code zu Ihrer Umleitungs-URI aus. Weitere Informationen finden Sie unter [OpenID Connect-Protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Wert kann ebenfalls Informationen über den Status des Benutzers in der App codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
@@ -159,7 +161,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | required   | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | required  | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `grant_type` | required   | Muss der `authorization_code` für den Autorisierungscodefluss sein.   |
-| `scope`      | required   | Eine durch Leerzeichen getrennte Liste von Bereichen. Die in diesem Abschnitt angeforderten Bereiche müssen den Bereichen entsprechen oder eine Teilmenge der Bereiche sein, die im ersten Abschnitt angefordert wurden. Die Bereiche müssen alle von einer einzelnen Ressource stammen, zusammen mit den OIDC-Bereichen (`profile`, `openid`, `email`). Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). |
+| `scope`      | Optional   | Eine durch Leerzeichen getrennte Liste von Bereichen. Die Bereiche müssen alle von einer einzelnen Ressource stammen, zusammen mit den OIDC-Bereichen (`profile`, `openid`, `email`). Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). Dies ist eine Microsoft-Erweiterung für den Autorisierungscodeflow, der es Apps ermöglichen soll, während der Tokeneinlösung die Ressource zu deklarieren, für die sie das Token benötigen.|
 | `code`          | required  | Der Autorisierungscode, den Sie im ersten Abschnitt des Vorgangs erhalten haben. |
 | `redirect_uri`  | required  | Derselbe Wert für den Umleitungs-URI, der zum Abrufen des Autorisierungscodes verwendet wurde |
 | `client_secret` | Für vertrauliche Web-Apps erforderlich | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer nativen App oder in einer Single-Page-Webanwendung verwenden, weil geheime Clientschlüssel nicht zuverlässig auf Geräten oder Webseiten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. Weitere Informationen zur URI-Codierung finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12). |
@@ -229,7 +231,7 @@ Fehlerantworten sehen wie folgt aus:
 | `temporarily_unavailable` | Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. | Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 
 > [!NOTE]
-> Single-Page-Webanwendungen erhalten möglicherweise eine Fehlermeldung des Typs `invalid_request`, die besagt, dass eine ursprungsübergreifende Tokeneinlösung nur für den Clienttyp „Single-Page-Webanwendung“ zulässig ist.  Dies weist darauf hin, dass der zum Anfordern des Tokens verwendete Umleitungs-URI nicht als `spa`-Umleitungs-URI gekennzeichnet wurde.  Informationen zum Aktivieren dieses Flows finden Sie im Abschnitt [Für Single-Page-Webanwendungen erforderliche Einrichtung](#setup-required-for-single-page-apps).
+> Single-Page-Webanwendungen erhalten möglicherweise eine Fehlermeldung des Typs `invalid_request`, die besagt, dass eine ursprungsübergreifende Tokeneinlösung nur für den Clienttyp „Single-Page-Webanwendung“ zulässig ist.  Dies weist darauf hin, dass der zum Anfordern des Tokens verwendete Umleitungs-URI nicht als `spa`-Umleitungs-URI gekennzeichnet wurde.  Informationen zum Aktivieren dieses Flows finden Sie im Abschnitt [Für Single-Page-Webanwendungen erforderliche Einrichtung](#redirect-uri-setup-required-for-single-page-apps).
 
 ## <a name="use-the-access-token"></a>Verwenden des Zugriffstokens
 
@@ -274,13 +276,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `refresh_token` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Parameter     | type           | BESCHREIBUNG        |
+| Parameter     | type           | Beschreibung        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `grant_type`    | required    | Muss der `refresh_token` für diesen Abschnitt des Autorisierungscodeflusses sein. |
 | `scope`         | required    | Eine durch Leerzeichen getrennte Liste von Bereichen. Die in diesem Abschnitt angeforderten Bereiche müssen den Bereichen entsprechen oder eine Teilmenge der Bereiche sein, die im ursprünglichen Autorisierungscode-Abschnitt angefordert wurden. Wenn die in dieser Anforderung angegebenen Bereiche mehrere Ressourcenserver umfassen, gibt der Microsoft Identity Platform-Endpunkt ein Token für die im ersten Bereich angegebene Ressource zurück. Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). |
-| `refresh_token` | required    | Das Aktualisierungstoken, das Sie im zweiten Abschnitt des Vorgangs erhalten haben. |
+| `refresh_token` | Erforderlich    | Das Aktualisierungstoken, das Sie im zweiten Abschnitt des Vorgangs erhalten haben. |
 | `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Er sollte nicht in einer systemeigenen App verwendet werden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern. Dieser geheime Schlüssel muss URL-codiert sein. Weitere Informationen finden Sie in der [Spezifikation der generischen URI-Syntax](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Erfolgreiche Antwort

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132149"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287737"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -66,7 +66,7 @@ Sie benötigen einen Benutzer mit einem der folgenden Berechtigungssätze in Azu
 
 ## <a name="import-the-template-in-vmware"></a>Importieren der Vorlage in VMware
 
-1. Melden Sie sich beim VMware vCenter-Server oder beim vSphere ESXi-Host über den VMWare vSphere-Client an.
+1. Melden Sie sich über den VMware vSphere-Client beim VMware vCenter-Server oder beim vSphere ESXi-Host an.
 2. Wählen Sie im Menü **Datei** die Option **OVF-Vorlage bereitstellen** aus, um den **Assistenten zum Bereitstellen von OVF-Vorlagen** zu starten.
 
      ![Bereitstellen der OVF-Vorlage](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
@@ -98,7 +98,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Registrieren des Konfigurationsservers bei Azure Site Recovery-Diensten
 
-1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients an.
+1. Schalten Sie die VM über die Konsole des VMware vSphere-Clients ein.
 2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Akzeptieren Sie den Lizenzvertrag, und geben Sie ein Administratorkennwort ein.
 3. Melden Sie sich nach Abschluss der Installation als Administrator am virtuellen Computer an.
 4. Bei der ersten Anmeldung wird das Azure Site Recovery-Konfigurationstool innerhalb weniger Sekunden gestartet.

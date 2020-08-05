@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195562"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281224"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS), der Verfügbarkeitszonen verwendet
 
@@ -99,7 +99,7 @@ Rufen Sie zuerst die Anmeldeinformationen für den AKS-Cluster mit dem Befehl [a
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Verwenden Sie anschließend den Befehl [kubectl describe][kubectl-describe], um die Knoten im Cluster aufzulisten. Filtern Sie den *failure-domain.beta.kubernetes.io/zone*-Wert wie im folgenden Beispiel gezeigt:
+Verwenden Sie als Nächstes den Befehl [kubectl describe][kubectl-describe], um die Knoten im Cluster aufzulisten, und filtern Sie nach dem Wert *failure-domain.beta.kubernetes.io/zone*. Das folgende Beispiel gilt für eine Bash-Shell.
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -131,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-Wenn der Skalierungsvorgang nach einigen Minuten abgeschlossen ist, sollte über den Befehl `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` eine Ausgabe ähnlich dem folgenden Beispiel ausgegeben werden:
+Wenn der Skalierungsvorgang nach einigen Minuten abgeschlossen ist, sollte über den Befehl `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` in einer Bash-Shell eine Ausgabe ähnlich dem folgenden Beispiel erfolgen:
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -152,7 +152,7 @@ Nun sind zwei zusätzliche Knoten in Zone 1 und Zone 2 vorhanden. Sie können 
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-Wenn Sie die Knoten anzeigen, auf denen Ihre Pods ausgeführt werden, sehen Sie, dass die Pods auf den Knoten ausgeführt werden, die den drei verschiedenen Verfügbarkeitszonen entsprechen. Beispielsweise erhalten Sie mit dem Befehl `kubectl describe pod | grep -e "^Name:" -e "^Node:"` eine Ausgabe ähnlich der folgenden:
+Wenn Sie die Knoten anzeigen, auf denen Ihre Pods ausgeführt werden, sehen Sie, dass die Pods auf den Knoten ausgeführt werden, die den drei verschiedenen Verfügbarkeitszonen entsprechen. Beispielsweise erhalten Sie mit dem Befehl `kubectl describe pod | grep -e "^Name:" -e "^Node:"` in einer Bash-Shell eine Ausgabe ähnlich der folgenden:
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

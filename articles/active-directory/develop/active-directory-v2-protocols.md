@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2be68a858773dd4e76126ba6cd04ad98a2fd6a06
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313437"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2.0- und OpenID Connect-Protokolle auf der Microsoft Identity Platform
 
@@ -31,7 +31,7 @@ In fast allen OAuth 2.0- und OpenID Connect-Vorgängen sind vier Beteiligte am A
 ![Diagramm mit OAuth 2.0-Rollen](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * Der **Autorisierungsserver** ist der Microsoft Identity Platform-Endpunkt und verantwortlich für das Sicherstellen der Identität des Benutzers, das Erteilen und Widerrufen des Zugriffs auf Ressourcen und das Ausstellen von Token. Der Autorisierungsserver ist auch als Identitätsanbieter bekannt und verarbeitet auf sichere Weise alles im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen zwischen den Beteiligten in einem Vorgang.
-* Beim **Ressourcenbesitzer** handelt es sich normalerweise um den Endbenutzer. Diese Person besitzt die Daten und hat die Möglichkeit, Dritten den Zugriff auf die Daten oder die Ressource zu gewähren.
+* Beim **Ressourcenbesitzer** handelt es sich normalerweise um den Endbenutzer. Diese Partei besitzt die Daten und hat die Möglichkeit, Clients den Zugriff auf die Daten oder die Ressource zu gewähren.
 * Der **OAuth-Client** ist Ihre App, die durch ihre Anwendungs-ID identifiziert wird. Der OAuth-Client ist normalerweise der Beteiligte, mit dem der Endbenutzer interagiert, und der Token vom Autorisierungsserver anfordert. Der Client muss vom Besitzer der Ressource die Berechtigung zum Zugriff darauf erhalten.
 * Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind. Er vertraut dem Autorisierungsserver, dass der OAuth-Client sicher authentifiziert und autorisiert wird, und verwendet Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
 
@@ -70,16 +70,20 @@ Um zu erfahren, wie Sie mit diesen Endpunkten interagieren, wählen Sie im Absch
 
 ## <a name="tokens"></a>Token
 
-Bei der Microsoft Identity Platform-Implementierung von OAuth 2.0 und OpenID Connect werden in großem Umfang Bearertoken (einschließlich als JWTs (JSON Web Token) dargestellte Bearertoken) verwendet. Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Microsoft Identity Platform authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Bearertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](https://tools.ietf.org/html/rfc6750).
+OAuth 2.0 und OpenID Connect machen umfassende Verwendung von **Bearertoken**, die in der Regel als [JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519) bereitgestellt werden. Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Sinn ist der „Träger“ (Bearer) jeder, der eine Kopie des Tokens erhält. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Microsoft Identity Platform authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Bearertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](https://tools.ietf.org/html/rfc6750).
 
-Weitere Informationen zu verschiedenen Tokentypen, die im Microsoft Identity Platform-Endpunkt verwendet werden, finden Sie in der [Referenz der Microsoft Identity Platform-Endpunkttoken](v2-id-and-access-tokens.md).
+Bei OAuth 2.0 und OIDC werden in erster Linie drei Typen von Token verwendet:
+
+* [Zugriffstoken](access-tokens.md) sind Token, die ein Ressourcenserver von einem Client empfängt und die die Berechtigungen enthalten, die dem Client erteilt wurden.  
+* [ID-Token](id-tokens.md) sind Token, die von einem Client vom Autorisierungsserver empfangen und zum Anmelden eines Benutzers sowie zum Abrufen grundlegender Informationen zu diesem verwendet werden.
+* Aktualisierungstoken werden von einem Client verwendet, um im Lauf der Zeit neue Zugriffs- und ID-Token abzurufen.  Dabei handelt es sich um nicht transparente Zeichenfolgen, die nur vom Autorisierungsserver verstanden werden können.
 
 ## <a name="protocols"></a>Protokolle
 
-Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Lernprogramme. Jedes Lernprogramm entspricht einem bestimmten Szenario. Wenn Sie Hilfe bei der Bestimmung des richtigen Flows benötigen, informieren Sie sich über die [App-Typen, die mit Microsoft Identity Platform erstellt werden können](v2-app-types.md).
+Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Protokolldokumente. Jedes Lernprogramm entspricht einem bestimmten Szenario. Wenn Sie Hilfe bei der Bestimmung des richtigen Flows benötigen, informieren Sie sich über die [App-Typen, die mit Microsoft Identity Platform erstellt werden können](v2-app-types.md).
 
-* [Erstellen von mobilen und nativen Anwendungen mit OAuth 2.0](v2-oauth2-auth-code-flow.md)
-* [Erstellen von Web-Apps mit OpenID Connect](v2-protocols-oidc.md)
-* [Erstellen von Single-Page-Apps mit dem impliziten OAuth 2.0-Datenfluss](v2-oauth2-implicit-grant-flow.md)
+* [Erstellen mobiler, nativer und Webanwendungen mit OAuth 2.0](v2-oauth2-auth-code-flow.md)
+* [Anmelden von Benutzern mit OpenID Connect](v2-protocols-oidc.md)
 * [Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Clientanmeldeinformations-Datenfluss](v2-oauth2-client-creds-grant-flow.md)
 * [Abrufen von Token in einer Web-API mit dem „Im Namen von“-Datenfluss von OAuth 2.0](v2-oauth2-on-behalf-of-flow.md)
+* [Erstellen von Single-Page-Webanwendungen mit dem impliziten OAuth 2.0-Flow](v2-oauth2-implicit-grant-flow.md)

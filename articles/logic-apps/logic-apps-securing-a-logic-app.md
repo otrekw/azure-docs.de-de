@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 07/03/2020
-ms.openlocfilehash: 902c48f2edcca6eb25958a9f22d6760faf1fcbc2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5b25c56591e64d66901dbcf79dc629f0beb2bbb0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117013"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
-Azure Logic Apps nutzt [Azure Storage](https://docs.microsoft.com/azure/storage/) zum Speichern und automatischen [Verschlüsseln von ruhenden Daten](../security/fundamentals/encryption-atrest.md). Diese Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Azure Storage verwendet standardmäßig von Microsoft verwaltete Schlüssel, um Ihre Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
+Azure Logic Apps nutzt [Azure Storage](../storage/index.yml) zum Speichern und automatischen [Verschlüsseln von ruhenden Daten](../security/fundamentals/encryption-atrest.md). Diese Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Azure Storage verwendet standardmäßig von Microsoft verwaltete Schlüssel, um Ihre Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
 
 Um den Zugriff stärker zu steuern und vertrauliche Daten in Azure Logic Apps zu schützen, können Sie zusätzliche Sicherheit in diesen Bereichen einrichten:
 
@@ -51,7 +51,7 @@ Mit diesen Optionen können Sie den Zugriff auf diesen Triggertyp absichern:
 
 ### <a name="generate-shared-access-signatures-sas"></a>Generieren von Shared Access Signatures (SAS)
 
-Jeder Anforderungsendpunkt für eine Logik-App weist in der URL des Endpunkts eine [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas) im folgenden Format auf:
+Jeder Anforderungsendpunkt für eine Logik-App weist in der URL des Endpunkts eine [Shared Access Signature (SAS)](/rest/api/storageservices/constructing-a-service-sas) im folgenden Format auf:
 
 `https://<request-endpoint-URI>sp=<permissions>sv=<SAS-version>sig=<signature>`
 
@@ -86,7 +86,7 @@ Weitere Informationen zum Schützen des Zugriffs mit einer SAS (Shared Access Si
 
 #### <a name="create-expiring-callback-urls"></a>Erstellen ablaufender Rückruf-URLs
 
-Wenn Sie die Endpunkt-URL eines anforderungsbasierten Triggers für andere Parteien freigeben, können Sie Rückruf-URLs mit bestimmten Schlüsseln und Ablaufdaten generieren. So können Sie nahtlos rollierende Schlüssel bereitstellen oder den Zugriff für das Auslösen Ihrer Logik-App auf einen bestimmten Zeitraum einschränken. Über die [Logic Apps-REST-API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) können Sie ein Ablaufdatum für eine URL angeben. Beispiel:
+Wenn Sie die Endpunkt-URL eines anforderungsbasierten Triggers für andere Parteien freigeben, können Sie Rückruf-URLs mit bestimmten Schlüsseln und Ablaufdaten generieren. So können Sie nahtlos rollierende Schlüssel bereitstellen oder den Zugriff für das Auslösen Ihrer Logik-App auf einen bestimmten Zeitraum einschränken. Über die [Logic Apps-REST-API](/rest/api/logic/workflowtriggers) können Sie ein Ablaufdatum für eine URL angeben. Beispiel:
 
 ```http
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
@@ -98,7 +98,7 @@ Verwenden Sie im Text die `NotAfter`-Eigenschaft mit einer JSON-Datumszeichenfol
 
 #### <a name="create-urls-with-primary-or-secondary-secret-key"></a>Erstellen von URLs mit einem primären oder sekundären geheimen Schlüssel
 
-Beim Generieren oder Auflisten von Rückruf-URLs für anforderungsbasierte Trigger können Sie den Schlüssel zum Signieren der URL angeben. Um eine URL zu generieren, die von einem bestimmten Schlüssel signiert wird, verwenden Sie die [Logic Apps-REST-API](https://docs.microsoft.com/rest/api/logic/workflowtriggers). Beispiel:
+Beim Generieren oder Auflisten von Rückruf-URLs für anforderungsbasierte Trigger können Sie den Schlüssel zum Signieren der URL angeben. Um eine URL zu generieren, die von einem bestimmten Schlüssel signiert wird, verwenden Sie die [Logic Apps-REST-API](/rest/api/logic/workflowtriggers). Beispiel:
 
 ```http
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
@@ -110,7 +110,7 @@ Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder a
 
 ### <a name="enable-azure-active-directory-oauth"></a>Aktivieren von Azure Active Directory OAuth
 
-Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger erstellen. Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger erstellen. Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
 
 * Bei einem eingehenden Aufruf Ihrer Logik-App kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas). Nur Autorisierungsschemata vom [Typ „Bearer“](../active-directory/develop/active-directory-v2-protocols.md#tokens) werden für OAuth-Token unterstützt, die nur für den Anforderungstrigger unterstützt werden.
 
@@ -212,7 +212,7 @@ Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die 
 Wenn Sie Ihre Logik-App nur als geschachtelte Logik-App auslösen möchten, wählen Sie in der Liste **Zulässige eingehende IP-Adressen** die Option **Nur andere Logik-Apps** aus. Diese Option schreibt ein leeres Array in Ihre Logik-App-Ressource. Auf diese Weise können nur Aufrufe über den Logic Apps-Dienst (übergeordnete Logik-Apps) die geschachtelte Logik-App auslösen.
 
 > [!NOTE]
-> Unabhängig von der IP-Adresse können Sie eine Logik-App weiterhin ausführen, die einen anforderungsbasierten Trigger hat, indem Sie die Anforderung [Logic Apps-REST-API:  Workflowtrigger – Ausführen](https://docs.microsoft.com/rest/api/logic/workflowtriggers/run) oder die API Management verwenden. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-scenarios.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
+> Unabhängig von der IP-Adresse können Sie eine Logik-App weiterhin ausführen, die einen anforderungsbasierten Trigger hat, indem Sie die Anforderung [Logic Apps-REST-API:  Workflowtrigger – Ausführen](/rest/api/logic/workflowtriggers/run) oder die API Management verwenden. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Einschränken eingehender IP-Adressbereich in der Azure Resource Manager-Vorlage
 
@@ -263,13 +263,13 @@ Wenn Sie die [Bereitstellung von Logik-Apps mithilfe einer Resource Manager-Vorl
 
 ### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>Hinzufügen von Azure Active Directory Open Authentication oder anderen Sicherheitsfeatures
 
-Um Ihrer Logik-App weitere [Authentifizierungsprotokolle](../active-directory/develop/authentication-scenarios.md) hinzuzufügen, können Sie den Dienst [Azure API Management](../api-management/api-management-key-concepts.md) verwenden. Dieser Dienst hilft Ihnen, Ihre Logik-App als API verfügbar zu machen. Er bietet außerdem umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Um den Zugriff auf diesen Endpunkt zu autorisieren, können Sie [Azure Active Directory Open Authentication](#azure-active-directory-oauth-authentication) (Azure AD OAuth), [Clientzertifikate](#client-certificate-authentication) oder andere Sicherheitsstandards verwenden. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App auslösen kann, können Sie die Einstellungen für den eingehenden IP-Bereich Ihrer Logik-App anpassen.
+Um Ihrer Logik-App weitere [Authentifizierungsprotokolle](../active-directory/develop/authentication-vs-authorization.md) hinzuzufügen, können Sie den Dienst [Azure API Management](../api-management/api-management-key-concepts.md) verwenden. Dieser Dienst hilft Ihnen, Ihre Logik-App als API verfügbar zu machen. Er bietet außerdem umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Um den Zugriff auf diesen Endpunkt zu autorisieren, können Sie [Azure Active Directory Open Authentication](#azure-active-directory-oauth-authentication) (Azure AD OAuth), [Clientzertifikate](#client-certificate-authentication) oder andere Sicherheitsstandards verwenden. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App auslösen kann, können Sie die Einstellungen für den eingehenden IP-Bereich Ihrer Logik-App anpassen.
 
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>Zugriff auf Logik-App-Vorgänge
 
-Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben auszuführen, wie z. B. das Verwalten, Bearbeiten und Anzeigen von Logik-Apps. Um die jeweiligen Berechtigungen zu steuern, verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md) (Role-Based Access Control, RBAC), damit Sie den Mitgliedern in Ihrem Azure-Abonnement benutzerdefinierte oder integrierte Rollen zuweisen können:
+Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben auszuführen, wie z. B. das Verwalten, Bearbeiten und Anzeigen von Logik-Apps. Um die jeweiligen Berechtigungen zu steuern, verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md), damit Sie den Mitgliedern in Ihrem Azure-Abonnement benutzerdefinierte oder integrierte Rollen zuweisen können:
 
 * [Logik-App-Mitwirkender:](../role-based-access-control/built-in-roles.md#logic-app-contributor) Ermöglicht Ihnen die Verwaltung von Logik-Apps, aber nicht die Änderung des App-Zugriffs.
 
@@ -427,7 +427,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
 * Wenn Sie die Ein- oder Ausgaben für einen Trigger oder eine Aktion verbergen, sendet Logic Apps die geschützten Daten nicht an Azure Log Analytics. Außerdem können Sie diesem Auslöser oder dieser Aktion keine [nachverfolgten Eigenschaften](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) zur Überwachung hinzufügen.
 
-* Die [Logic Apps-API zur Verarbeitung des Workflowverlaufs](https://docs.microsoft.com/rest/api/logic/) gibt keine sicheren Ausgaben zurück.
+* Die [Logic Apps-API zur Verarbeitung des Workflowverlaufs](/rest/api/logic/) gibt keine sicheren Ausgaben zurück.
 
 * Um Ausgaben einer Aktion zu schützen, die Eingaben verbirgt oder explizit Ausgaben verbirgt, aktivieren Sie in dieser Aktion **Sichere Ausgaben** manuell.
 
@@ -613,7 +613,7 @@ Diese Beispielvorlage weist mehrere sichere Parameterdefinitionen auf, die den T
          "apiVersion": "2016-06-01",
          "properties": {
             "definition": {
-               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-0601/workflowdefinition.json#",
+               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
                "actions": {
                   "HTTP": {
                      "type": "Http",
@@ -816,7 +816,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
-Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) mit [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) eingehende Anrufe für Ihre Logik-App authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
+Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) mit [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) eingehende Anrufe für Ihre Logik-App authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
 
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
@@ -953,7 +953,7 @@ Sie können Azure Logic Apps in [Azure Government](../azure-government/documenta
   * [Azure App Service-Pläne](../app-service/overview-hosting-plans.md)
   * [Netzwerkoptionen von Azure Functions](../azure-functions/functions-networking-options.md)
   * [Azure Dedicated Hosts für virtuelle Computer](../virtual-machines/windows/dedicated-hosts.md)
-  * [Isolation von virtuellen Computern in Azure](../virtual-machines/windows/isolation.md)
+  * [Isolation von virtuellen Computern in Azure](../virtual-machines/isolation.md)
   * [Bereitstellen von dedizierten Azure-Diensten in virtuellen Netzwerken](../virtual-network/virtual-network-for-azure-services.md)
 
 * Um Logik-Apps zu erstellen, die auf dedizierten Ressourcen ausgeführt werden und die auf Ressourcen zugreifen können, die von einem virtuellen Azure-Netzwerk geschützt werden, können Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen.
@@ -965,7 +965,7 @@ Sie können Azure Logic Apps in [Azure Government](../azure-government/documenta
 Weitere Informationen finden Sie in den folgenden Themen:
 
 * [Isolation in der öffentlichen Azure-Cloud](../security/fundamentals/isolation-choices.md)
-* [Sicherheit für höchst sensible IaaS-Apps in Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/high-security-iaas)
+* [Sicherheit für höchst sensible IaaS-Apps in Azure](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

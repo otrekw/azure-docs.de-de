@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0e840a9f78a4d6a9fef83abd7b0f011b700f985f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ce829a9fd58fb2940ee3265a66717af3dc9c0b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231937"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289066"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Leistungsrichtlinien für SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -108,13 +108,17 @@ Für VMs, die SSD Premium unterstützen, können Sie TempDB auch auf einem Daten
       1. Legen Sie die Überlappung (Stripsetgröße) für OLTP-Workloads auf 64 KB (65.536 Bytes) und für Data Warehousing-Workloads auf 256 KB (262.144 Bytes) fest, um Leistungseinbußen durch falsche Partitionsausrichtung zu vermeiden. Dies muss mit PowerShell festgelegt werden.
       2. Festgelegte Anzahl der Spalten = Anzahl der physischen Datenträger. Verwenden Sie PowerShell, wenn Sie mehr als 8 Datenträger (keine Server-Manager-Benutzeroberfläche) konfigurieren. 
 
-    PowerShell erstellt z.B. wie folgt einen neuen Speicherpool mit der Überlappungsgröße auf 64 KB und die Anzahl der Spalten auf 2:
+    Mit PowerShell erstellen Sie z. B. wie folgt einen neuen Speicherpool mit einer Überlappungsgröße von 64 KB und einer Anzahl der Spalten, die der Anzahl der physischen Datenträger im Speicherpool entspricht:
 
     ```powershell
-    $PoolCount = Get-PhysicalDisk -CanPool $True
     $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
-
-    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false 
+    
+    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+        -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+        -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+        –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+        -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+        -AllocationUnitSize 65536 -Confirm:$false 
     ```
 
   * Für Windows 2008 R2 oder früher können Sie dynamische Datenträger (Betriebssystem-Stripesetvolumes) verwenden, und die Stripesetgröße ist immer 64 KB. Diese Option ist seit Windows 8/Windows Server 2012 veraltet. Informationen hierzu finden Sie in der Supporterklärung unter [Virtual Disk Service is transitioning to Windows Storage Management API](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)(Übergang des Diensts für virtuelle Datenträger in die Windows-Speicherverwaltungs-API, in englischer Sprache).

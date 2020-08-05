@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 045b938e2612aa7e5b366f93c22669412f2d98e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 91980972dcbe7af28a1b222f6cd3002a7420145d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100807"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080844"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MySQL
 
@@ -24,6 +24,8 @@ Zum Erstellen einer VNET-Regel benötigen Sie ein [virtuelles Netzwerk][vm-virtu
 > [!NOTE]
 > Dieses Feature steht in allen Regionen von Azure zur Verfügung, in denen Azure Database for MySQL für General Purpose- and Memory Optimized-Server bereitgestellt wird.
 > Wenn beim VNet-Peering der Datenverkehr über eine gemeinsame VNet Gateway-Instanz mit Dienstendpunkten fließt und an den Peer fließen soll, erstellen Sie eine ACL/VNet-Regel, damit Azure Virtual Machines im Gateway-VNet auf den Azure Database for MySQL-Server zugreifen kann.
+
+Sie können auch die Verwendung [Private Link](concepts-data-access-security-private-link.md) für Verbindungen in Erwägung ziehen. Private Link stellt eine private IP-Adresse in Ihrem VNET für den Azure Database for MySQL-Server bereit.
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -62,12 +64,6 @@ Mit der Azure Database for MySQL-Firewall können Sie IP-Adressbereiche bestimme
 Sie können die IP-Option weiter nutzen, indem Sie eine *statische* IP-Adresse für Ihre VM abrufen. Einzelheiten finden Sie unter [Konfigurieren von privaten IP-Adressen für einen virtuellen Computer über das Azure-Portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
 
 Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird. VNET-Regeln sind einfacher einzurichten und zu verwalten.
-
-### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Zuweisen von Azure Database for MySQL zu einem Subnetz noch nicht möglich
-
-Würde sich Ihr **Microsoft.Sql**-Server auf einem Knoten in einem Subnetz in Ihrem virtuellen Netzwerk befinden, könnten alle Knoten innerhalb des virtuellen Netzwerks mit Ihrem Azure Database for MySQL-Server kommunizieren. Dann könnten auch Ihre virtuellen Computer mit der Azure Database for MySQL-Instanz kommunizieren – ohne VNET- oder IP-Regeln.
-
-Allerdings gehört der Azure Database for MySQL-Dienst noch nicht zu den Diensten, die einem Subnetz direkt zugewiesen werden können (Stand August 2018).
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -120,6 +116,8 @@ Bei Azure Database for MySQL gelten für VNET-Regeln folgende Einschränkungen:
 
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 
+- Wenn **Microsoft.Sql** in einem Subnetz aktiviert ist, weist dies darauf hin, dass Sie für Verbindungen nur VNET-Regeln nutzen möchten. [VNET-fremde Firewallregeln](concepts-firewall-rules.md) von Ressourcen in diesem Subnetz funktionieren nicht.
+
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, VNET-Regeln jedoch nicht:
     - [Virtuelles privates S2S-Netzwerk (Site-to-Site-VPN)][vpn-gateway-indexmd-608y]
     - Lokal über [ExpressRoute][expressroute-indexmd-744v]
@@ -132,7 +130,7 @@ Sie müssen IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindun
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Hinzufügen einer VNET-Firewallregel zu Ihrem Server ohne Aktivierung von VNET-Dienstendpunkten
 
-Allein das Festlegen einer Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
+Allein das Festlegen einer VNET-Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
 
 Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingServiceEndpoint** festzulegen.
 

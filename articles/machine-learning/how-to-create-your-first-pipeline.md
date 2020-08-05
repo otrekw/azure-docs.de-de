@@ -5,18 +5,18 @@ description: Erstellen Sie eine Machine Learning-Pipeline mit dem Azure Machine 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
 ms.date: 12/05/2019
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: f5c4bfbe955c2989f420d7a6f325f8101556dddd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: dff86176bac56063c9b588fb27e3549069ed380e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201314"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326357"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK
 
@@ -38,7 +38,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses
 
 * Erstellen Sie einen [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md), um Ihre gesamten Pipelineressourcen aufzunehmen.
 
-* [Konfigurieren Sie Ihre Entwicklungsumgebung](how-to-configure-environment.md) für die Installation des Azure Machine Learning SDK, oder verwenden Sie eine [Azure Machine Learning-Compute-Instanz (Vorschau)](concept-compute-instance.md) mit bereits installiertem SDK.
+* [Konfigurieren Sie Ihre Entwicklungsumgebung](how-to-configure-environment.md) für die Installation des Azure Machine Learning SDK, oder verwenden Sie eine [Azure Machine Learning-Computeinstanz](concept-compute-instance.md) mit bereits installiertem SDK.
 
 Beginnen Sie mit dem Anfügen Ihres Arbeitsbereichs:
 
@@ -129,6 +129,8 @@ Nachfolgend sind Beispiele zum Erstellen und Anfügen von Computezielen für Fol
 * Azure Machine Learning Compute
 * Azure Databricks 
 * Azure Data Lake Analytics
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 

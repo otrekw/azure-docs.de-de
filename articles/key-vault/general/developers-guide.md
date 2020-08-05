@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476766"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386213"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -75,11 +75,11 @@ Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkun
 
 Die Key Vault-Verwaltungs-API und die Key Vault-Objekt-API sind in Node.js getrennt. In den folgenden Übersichtsartikeln erhalten Sie weitere Informationen zu beiden. 
 
-[Azure Key Vault-Module für Node.js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Azure Key Vault-Module für Node.js](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Azure Key Vault-Bibliotheken für Python](/python/api/overview/azure/key-vault?view=azure-python)
+[Azure Key Vault-Bibliotheken für Python](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -100,7 +100,7 @@ Vollständige Beispiele für die Verwendung von Key Vault mit Ihren Anwendungen 
 
 Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für die Arbeit mit Azure Key Vault:
 
-- [Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung:](subscription-move-fix.md) Wenn Sie Ihr Azure-Abonnement aus Mandant A in Mandant B verschieben, können die Prinzipale (Benutzer und Anwendungen) in Mandant B nicht auf Ihre vorhandenen Schlüsseltresore zugreifen. Gehen Sie wie folgt vor, um dies zu beheben.
+- [Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung:](move-subscription.md) Wenn Sie Ihr Azure-Abonnement aus Mandant A in Mandant B verschieben, können die Prinzipale (Benutzer und Anwendungen) in Mandant B nicht auf Ihre vorhandenen Schlüsseltresore zugreifen. Gehen Sie wie folgt vor, um dies zu beheben.
 - [Zugreifen auf Schlüsseltresore hinter der Firewall:](access-behind-firewall.md) Für den Zugriff auf einen Schlüsseltresor muss Ihre Schlüsseltresor-Clientanwendung auf mehrere Endpunkte für unterschiedliche Funktionen zugreifen können.
 - [Generieren und Übertragen von HSM-geschützten Schlüsseln für Azure Key Vault](../keys/hsm-protected-keys.md) : Verwenden Sie diesen Artikel zum Planen, Generieren und anschließenden Übertragen Ihrer eigenen HSM-geschützten Schlüssel für die Nutzung mit Azure Key Vault.
 - [Übergeben sicherer Werte während der Bereitstellung:](../../azure-resource-manager/templates/key-vault-parameter.md) Wenn Sie während der Bereitstellung einen sicheren Wert (z.B. ein Kennwort) als Parameter übergeben müssen, können Sie diesen Wert als Geheimnis in Azure Key Vault speichern und in anderen Resource Manager-Vorlagen auf ihn verweisen.
@@ -122,7 +122,7 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault-Übersichten und -Konzepte
 
-- [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](overview-soft-delete.md) beschreibt ein Feature, dass die Wiederherstellung gelöschter Objekte unabhängig davon ermöglicht, ob die Löschung versehentlich oder absichtlich erfolgte.
+- [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](soft-delete-overview.md) beschreibt ein Feature, dass die Wiederherstellung gelöschter Objekte unabhängig davon ermöglicht, ob die Löschung versehentlich oder absichtlich erfolgte.
 - [Anleitung zur Drosselung von Azure Key Vault](overview-throttling.md) informiert Sie über die grundlegenden Konzepte der Drosselung und bietet einen Ansatz für Ihre App.
 - [Übersicht zu Azure-Speicherkontoschlüsseln](../secrets/overview-storage-keys.md) beschreibt die Key Vault-Integration in Azure-Speicherkontoschlüssel.
 - [Sicherheitsumgebungen und geografische Grenzen von Azure Key Vault](overview-security-worlds.md) beschreibt die Beziehungen zwischen Regionen und Sicherheitsbereichen.

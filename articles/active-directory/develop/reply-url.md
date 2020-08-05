@@ -4,18 +4,18 @@ description: 'Antwort-URLs/Umleitungs-URls: Einschränkungen'
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 06/29/2019
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: b7aefc54a20e23ae969750532e7e3bc824f69c56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fdeb0018e27a2557161b2ec1c4794d975403523
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311618"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Umleitungs-URI/Antwort-URL: Einschränkungen
 
@@ -41,17 +41,34 @@ Die folgende Tabelle zeigt die maximale Anzahl von Umleitungs-URIs, die Sie beim
 Sie können maximal 256 Zeichen für jeden Umleitungs-URI verwenden, den Sie einer App-Registrierung hinzufügen.
 
 ## <a name="supported-schemes"></a>Unterstützte Schemas
+
 Das Azure AD-Anwendungsmodell unterstützt derzeit sowohl das HTTP- als auch das HTTPS-Schema für Apps, die Geschäfts-, Schul- oder Unikonten von Microsoft in einem beliebigen Azure Active Directory-Mandanten (Azure AD) des Unternehmens anmelden. Das Feld `signInAudience` im Anwendungsmanifest ist entweder auf *AzureADMyOrg* oder *AzureADMultipleOrgs* eingestellt. Bei Apps, die persönliche Konten sowie Geschäfts-, Schul- oder Unikonten von Microsoft anmelden (`signInAudience` ist auf *AzureADandPersonalMicrosoftAccount* eingestellt), ist nur das HTTPS-Schema zulässig.
 
 > [!NOTE]
 > In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) können Entwickler auf der Benutzeroberfläche keine URIs mit HTTP-Schema hinzufügen. Das Hinzufügen von HTTP-URIs wird bei Apps, die Geschäfts-, Schul- oder Unikonten anmelden, nur über den App-Manifest-Editor unterstützt. In Zukunft werden bei neuen Apps keine HTTP-Schemas im Umleitungs-URI mehr verwendet werden können. Ältere Anwendungen, die HTTP-Schemas in Umleitungs-URIs enthalten, funktionieren jedoch weiterhin. Entwickler müssen HTTPS-Schemas in Umleitungs-URIs verwenden.
 
+## <a name="localhost-exceptions"></a>Ausnahmen für Localhost
+
+Gemäß [RFC 8252, Abschnitte 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) und [7.3](https://tools.ietf.org/html/rfc8252#section-7.3), gelten für die Umleitungs-URIs „loopback“ und „localhost“ zwei Besonderheiten:
+
+1. `http`-URI-Schemas sind zulässig, da die Umleitung das Gerät niemals verlässt.  Dies bedeutet, dass `http://127.0.0.1/myApp` ebenso wie `https://127.0.0.1/myApp` möglich ist. 
+1. Aufgrund der kurzlebigen Portbereiche, die häufig von nativen Anwendungen benötigt werden, wird die Portkomponente (z. B. `:5001` oder `:443`) beim Abgleich eines Umleitungs-URI ignoriert.  Folglich stimmen sowohl `http://127.0.0.1:5000/MyApp` als auch `http://127.0.0.1:1234/MyApp` mit `http://127.0.0.1/MyApp` und `http://127.0.0.1:8080/MyApp` überein.
+
+Aus Entwicklersicht bedeutet dies Folgendes:
+
+1. Registrieren Sie nicht mehrere Antwort-URIs, wenn sich nur der Port unterscheidet.  Der Anmeldeserver wählt willkürlich einen aus und wendet das diesem Antwort-URI zugeordnete Verhalten an (z. B., ob es sich um eine Umleitung vom Typ `web`, `native` oder `spa` handelt).
+1. Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI.  `http://127.0.0.1/MyWebApp` entspricht nicht `http://127.0.0.1/MyNativeApp`.  
+1. Gemäß RFC-Anleitungen sollten Sie `localhost` nicht in einem Umleitungs-URI verwenden.  Verwenden Sie stattdessen die tatsächliche Loopback-IP-Adresse `127.0.0.1`. Dadurch wird verhindert, dass Ihre App durch falsch konfigurierte Firewalls oder umbenannte Netzwerkschnittstellen fehlerhaft wird.
+
+>[!NOTE]
+> Zu diesem Zeitpunkt wird IPv6-Loopback (`[::1]`) noch nicht unterstützt.  Dies wird zu einem späteren Zeitpunkt ergänzt.
+
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>Einschränkungen bei Verwendung eines Platzhalters in URIs
 
-Platzhalter-URIs (z.B. `https://*.contoso.com`) sind praktisch, sollten aber vermieden werden. Die Verwendung von Platzhaltern im Umleitungs-URI hat Auswirkungen auf die Sicherheit. Gemäß der OAuth 2.0-Spezifikation ([RFC 6749, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)) muss ein Umleitungsendpunkt-URI ein absoluter URI sein. 
+Platzhalter-URIs (z.B. `https://*.contoso.com`) sind praktisch, sollten aber vermieden werden. Die Verwendung von Platzhaltern im Umleitungs-URI hat Auswirkungen auf die Sicherheit. Gemäß der OAuth 2.0-Spezifikation ([RFC 6749, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)) muss ein Umleitungsendpunkt-URI ein absoluter URI sein.
 
-Das Azure AD-Anwendungsmodell unterstützt keine Platzhalter-URIs für Apps, die für die Anmeldung von persönlichen Konten sowie Geschäfts-, Schul- oder Unikonten von Microsoft konfiguriert sind. Platzhalter-URIs sind jedoch zulässig bei Apps, die aktuell für die Anmeldung von Geschäfts-, Schul- oder Unikonten bei einem Azure AD-Mandanten in einer Organisation konfiguriert sind. 
- 
+Das Azure AD-Anwendungsmodell unterstützt keine Platzhalter-URIs für Apps, die für die Anmeldung von persönlichen Konten sowie Geschäfts-, Schul- oder Unikonten von Microsoft konfiguriert sind. Platzhalter-URIs sind jedoch zulässig bei Apps, die aktuell für die Anmeldung von Geschäfts-, Schul- oder Unikonten bei einem Azure AD-Mandanten in einer Organisation konfiguriert sind.
+
 > [!NOTE]
 > In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) können Entwickler auf der Benutzeroberfläche keine Platzhalter-URIs hinzufügen. Das Hinzufügen von Platzhalter-URIs für Apps, die Geschäfts-, Schul- oder Unikonten anmelden, wird nur über den App-Manifest-Editor unterstützt. In Zukunft werden bei neuen Apps im Umleitungs-URI keine Platzhalter mehr verwendet werden können. Ältere Anwendungen, die Platzhalter in Umleitungs-URIs enthalten, funktionieren jedoch weiterhin.
 
@@ -59,7 +76,7 @@ Wenn die Anzahl der in Ihrem Szenario erforderlichen Umleitungs-URIs den zuläss
 
 ### <a name="use-a-state-parameter"></a>Verwenden eines Statusparameters
 
-Wenn Sie eine Reihe von Subdomänen haben und in Ihrem Szenario Benutzer nach erfolgreicher Authentifizierung wieder auf die Startseite umgeleitet werden müssen, kann die Verwendung eines Statusparameters hilfreich sein. 
+Wenn Sie eine Reihe von Subdomänen haben und in Ihrem Szenario Benutzer nach erfolgreicher Authentifizierung wieder auf die Startseite umgeleitet werden müssen, kann die Verwendung eines Statusparameters hilfreich sein.
 
 Dieser Ansatz ermöglicht Folgendes:
 

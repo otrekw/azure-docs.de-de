@@ -2,17 +2,17 @@
 title: Bereitstellen von Ressourcen mit PowerShell und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure PowerShell, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: af255e0248c029f42c9c2999ae7c0389d60c58fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 64993b526b67430266a8b3e85e3bcc233a3e28a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431834"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079518"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell
 
-Erfahren Sie, wie Ihre Ressourcen mit Azure PowerShell und Azure Resource Manager-Vorlagen (ARM) in Azure bereitgestellt werden. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über die Vorlagenbereitstellung](overview.md).
+In diesem Artikel wird erläutert, wie Ihre Anwendung mit Azure PowerShell und Azure Resource Manager-Vorlagen (ARM) in Azure bereitgestellt wird. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich unter [Übersicht über die Vorlagenbereitstellung](overview.md).
 
 ## <a name="deployment-scope"></a>Bereitstellungsumfang
 
@@ -70,11 +70,40 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+New-AzResourceGroupDeployment -Name ExampleDeployment `
+  -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
 Die Bereitstellung kann einige Minuten dauern.
+
+## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
+
+Im vorherigen Beispiel haben Sie der Bereitstellung den Namen `ExampleDeployment` gegeben. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen `azuredeploy.json` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
+
+Bei jedem Ausführen einer Bereitstellung wird dem Bereitstellungsverlauf der Ressourcengruppe ein Eintrag mit dem Bereitstellungsnamen hinzugefügt. Wenn Sie eine andere Bereitstellung ausführen und denselben Namen vergeben, wird der vorherige Eintrag durch die aktuelle Bereitstellung ersetzt. Wenn Sie eindeutige Einträge im Bereitstellungsverlauf beibehalten möchten, müssen Sie jeder Bereitstellung einen eindeutigen Namen geben.
+
+Um einen eindeutigen Namen zu erstellen, können Sie eine Zufallszahl zuweisen.
+
+```azurepowershell-interactive
+$suffix = Get-Random -Maximum 1000
+$deploymentName = "ExampleDeployment" + $suffix
+```
+
+Sie können auch einen Datumswert hinzufügen.
+
+```azurepowershell-interactive
+$today=Get-Date -Format "MM-dd-yyyy"
+$deploymentName="ExampleDeployment"+"$today"
+```
+
+Wenn Sie gleichzeitige Bereitstellungen in derselben Ressourcengruppe mit dem gleichen Bereitstellungsnamen ausführen, wird nur die letzte Bereitstellung abgeschlossen. Alle Bereitstellungen mit dem gleichen Namen, die noch nicht abgeschlossen wurden, werden durch die letzte Bereitstellung ersetzt. Wenn Sie z. B. eine Bereitstellung mit dem Namen `newStorage` ausführen, die ein Speicherkonto mit dem Namen `storage1` bereitstellt, und gleichzeitig eine andere Bereitstellung mit dem Namen `newStorage` ausführen, die ein Speicherkonto mit dem Namen `storage2` bereitstellt, wird nur ein Speicherkonto bereitgestellt. Das resultierende Speicherkonto hat den Namen `storage2`.
+
+Führen Sie jedoch eine Bereitstellung mit dem Namen `newStorage` aus, die ein Speicherkonto mit dem Namen `storage1` bereitstellt, und führen Sie direkt nach dem Abschluss eine andere Bereitstellung mit dem Namen `newStorage` aus, die ein Speicherkonto mit dem Namen `storage2` bereitstellt, erhalten Sie zwei Speicherkonten. Eines hat den Namen `storage1` und das andere den Namen `storage2`. Es ist jedoch nur ein Eintrag im Bereitstellungsverlauf vorhanden.
+
+Wenn Sie für jede Bereitstellung einen eindeutigen Namen angeben, können Sie diese ohne Konflikt gleichzeitig ausführen. Wenn Sie eine Bereitstellung namens `newStorage1` ausführen, die ein Speicherkonto namens `storage1` bereitstellt, und gleichzeitig eine andere Bereitstellung namens `newStorage2` ausführen, die ein Speicherkonto namens `storage2` bereitstellt, erhalten Sie zwei Speicherkonten und zwei Einträge im Bereitstellungsverlauf.
+
+Um Konflikte mit gleichzeitigen Bereitstellungen zu vermeiden und eindeutige Einträge im Bereitstellungsverlauf zu gewährleisten, geben Sie jeder Bereitstellung einen eindeutigen Namen.
 
 ## <a name="deploy-remote-template"></a>Bereitstellen einer Remotevorlage
 

@@ -1,45 +1,47 @@
 ---
-title: Datenanforderungen für Azure AD-SSPR – Azure Active Directory
-description: Datenanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung und deren Bereitstellung
+title: Vorausfüllen von Kontaktinformationen für die Self-Service-Kennwortzurücksetzung – Azure Active Directory
+description: Erfahren Sie, wie Sie Kontaktinformationen für Benutzer der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory vorab ausfüllen, damit diese das Feature verwenden können, ohne einen Registrierungsvorgang zu durchlaufen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 07/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42f7e120745357d3bd5735cca568bdd6971ea061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035382"
 ---
-# <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung
+# <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Vorausfüllen von Kontaktinformationen zur Benutzerauthentifizierung für die Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
-Damit die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) bereitgestellt werden kann, müssen Authentifizierungsdaten vorhanden sein. Einige Organisationen überlassen es ihren Benutzern, dass diese ihre Authentifizierungsdaten selbst eingeben. Andere Organisationen bevorzugen ein Synchronisieren mit Daten, die bereits in Active Directory vorhanden ist. Die synchronisierten Daten werden für Azure AD und SSPR verfügbar gemacht, ohne dass ein Eingreifen eines Benutzers erforderlich ist, wenn die folgenden Voraussetzungen erfüllt sind:
+Damit die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) bereitgestellt werden kann, müssen Kontaktinformationen zur Authentifizierung eines Benutzers vorhanden sein. In einigen Organisationen registrieren die Benutzer ihre Authentifizierungsdaten selbst. Andere Organisationen bevorzugen ein Synchronisieren mit Authentifizierungsdaten, die in Active Directory Domain Services (AD DS) bereits vorhanden sind. Die synchronisierten Daten werden für Azure AD und SSPR verfügbar gemacht, ohne dass ein Eingreifen des Benutzers erforderlich ist. Wenn Benutzer ihr Kennwort ändern oder zurücksetzen müssen, ist dies auch dann möglich, wenn sie ihre Kontaktinformationen zuvor nicht registriert haben.
 
-* Die Daten ordnungsgemäß in Ihrem lokalen Verzeichnis formatieren.
-* [Azure AD Connect durch Verwenden der Express-Einstellungen](../hybrid/how-to-connect-install-express.md) konfigurieren.
+Sie können die Kontaktinformationen für die Authentifizierung vorab ausfüllen, wenn Sie die folgenden Anforderungen erfüllen:
 
-Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: +1 4255551234).
+* Sie verfügen über ordnungsgemäß formatierte Daten in Ihrem lokalen Verzeichnis.
+* Sie haben [Azure AD Connect](../hybrid/how-to-connect-install-express.md) für Ihren Azure AD-Mandanten konfiguriert.
+
+Telefonnummern müssen im Format *+Landesvorwahl Telefonnummer* eingegeben werden, z. B. *+1 4251234567*.
 
 > [!NOTE]
 > Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
 >
-> Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
+> Bei der Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format *+1 4251234567X12345* werden Nebenstellen vor dem Anruf entfernt.
 
 ## <a name="fields-populated"></a>Ausgefüllte Felder
 
-Wenn Sie die Standardeinstellungen in Azure AD Connect verwenden, werden die folgenden Zuordnungen vorgenommen:
+Wenn Sie die Standardeinstellungen in Azure AD Connect verwenden, werden die folgenden Zuordnungen zum Ausfüllen von Kontaktinformationen zur Authentifizierung für SSPR vorgenommen:
 
-| Lokales Active Directory | Azure AD |
-| --- | --- |
-| telephoneNumber | Bürotelefon |
-| mobile | Mobiltelefon |
+| Lokales Active Directory | Azure AD     |
+|------------------------------|--------------|
+| telephoneNumber              | Bürotelefon |
+| mobile                       | Mobiltelefon |
 
 Nachdem ein Benutzer die Mobiltelefonnummer verifiziert hat, wird diese Nummer in Azure AD unter den **Kontaktinformationen für Authentifizierung** in das Feld *Telefon* eingefügt.
 
@@ -49,10 +51,12 @@ Auf der Seite **Authentifizierungsmethoden** für einen Azure AD-Benutzer im Az
 
 ![Kontaktinformationen für die Authentifizierung eines Benutzers in Azure AD][Contact]
 
-* Wenn das Feld **Telefon** ausgefüllt und **Mobiltelefon** in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese Nummer auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
-* Das Feld **Alternative Telefonnummer** wird nicht für die Kennwortzurücksetzung verwendet.
-* Wenn das Feld **E-Mail** ausgefüllt und **E-Mail** in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
-* Wenn das Feld **Alternative E-Mail-Adresse** ausgefüllt und **E-Mail** in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung **nicht** angezeigt – aber während des Workflows für die Kennwortzurücksetzung.
+Die folgenden Überlegungen gelten für diese Kontaktinformationen zur Authentifizierung:
+
+* Wenn das Feld *Telefon* ausgefüllt und *Mobiltelefon* in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese Nummer auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
+* Das Feld *Alternative Telefonnummer* wird nicht für die Kennwortzurücksetzung verwendet.
+* Wenn das Feld *E-Mail* ausgefüllt und *E-Mail* in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
+* Wenn das Feld *Alternative E-Mail-Adresse* ausgefüllt und *E-Mail* in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung nicht angezeigt – aber während des Workflows für die Kennwortzurücksetzung.
 
 ## <a name="security-questions-and-answers"></a>Sicherheitsfragen und -antworten
 
@@ -66,19 +70,25 @@ Wenn sich ein Benutzer registriert, zeigt die Registrierungsseite die folgenden 
 * **E-Mail für Authentifizierung**
 * **Sicherheitsfragen und Antworten**
 
-Wenn Sie einen Wert für **Mobiltelefon** oder **Alternative E-Mail-Adresse** angegeben haben, können Benutzer diese Werte sofort verwenden, um ihre Kennwörter zurücksetzen, selbst wenn sie sich nicht für den Dienst registriert haben. Benutzer sehen diese Werte außerdem, wenn sie sich erstmalig registrieren, und sie können die Werte bei Bedarf ändern. Nachdem sich Benutzer erfolgreich registriert haben, werden diese Werte in den Feldern **Telefon für Authentifizierung** und **E-Mail für Authentifizierung** beibehalten.
+Wenn Sie einen Wert für *Mobiltelefon* oder *Alternative E-Mail-Adresse* angegeben haben, können Benutzer diese Werte sofort verwenden, um ihre Kennwörter zurücksetzen, selbst wenn sie sich nicht für den Dienst registriert haben.
+
+Benutzer sehen diese Werte außerdem bei der ersten Registrierung und können die Werte bei Bedarf ändern. Nachdem sie sich erfolgreich registriert haben, werden diese Werte in den Feldern *Authentifizierungstelefon* und *E-Mail-Adresse für Authentifizierung* beibehalten.
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>Festlegen und Lesen der Authentifizierungsdaten über PowerShell
 
 Die folgenden Felder können über PowerShell festgelegt werden:
 
-* **Alternative E-Mail-Adresse**
-* **Mobiltelefon**
-* **Bürotelefon:** Kann nur festgelegt werden, wenn Sie keine Synchronisierung mit einem lokalen Verzeichnis vornehmen.
+* *Alternative E-Mail-Adresse*
+* *Mobiltelefon*
+* *Bürotelefon*
+    * Kann nur festgelegt werden, wenn Sie keine Synchronisierung mit einem lokalen Verzeichnis vornehmen.
+
+> [!IMPORTANT]
+> Es ist bekannt, dass zwischen den Befehlsfeatures von PowerShell v1 und PowerShell v2 keine Parität vorliegt. Die [Microsoft Graph-REST-API (Beta) für Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-overview) ist der aktuelle Entwicklungsschwerpunkt für eine moderne Interaktion.
 
 ### <a name="use-powershell-version-1"></a>Verwenden von PowerShell Version 1
 
-Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installieren](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Nachdem Sie es installiert haben, können Sie anhand der folgenden Schritte die einzelnen Felder konfigurieren.
+Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installieren es](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Nach der Installation können Sie jedes Feld mit den folgenden Schritten konfigurieren.
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Festlegen der Authentifizierungsdaten mit PowerShell Version 1
 
@@ -86,10 +96,10 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
-Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 1234567890"
-Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 4251234567"
+Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 4252345678"
 
-Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 1234567890" -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 4251234567" -PhoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>Lesen der Authentifizierungsdaten mit PowerShell Version 1
@@ -116,9 +126,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>Verwenden von PowerShell Version 2
 
-Zunächst müssen Sie [das Azure AD Version 2 PowerShell-Modul herunterladen und installieren](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0). Nachdem Sie es installiert haben, können Sie anhand der folgenden Schritte die einzelnen Felder konfigurieren.
+Zunächst [laden Sie das PowerShell-Modul für Azure AD Version 2 herunter und installieren es](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0).
 
-Um schnell aus neueren Versionen von PowerShell zu installieren, die „Install-Module“ unterstützen, führen Sie die folgenden Befehle aus. (In der ersten Zeile wird überprüft, ob das Modul bereits installiert ist.)
+Für eine schnelle Installation aus neueren Versionen von PowerShell, die `Install-Module` unterstützen, führen Sie die folgenden Befehle aus. In der ersten Zeile wird überprüft, ob das Modul bereits installiert ist:
 
 ```PowerShell
 Get-Module AzureADPreview
@@ -126,16 +136,18 @@ Install-Module AzureADPreview
 Connect-AzureAD
 ```
 
+Nachdem das Modul installiert wurde, können Sie jedes Feld mit den folgenden Schritten konfigurieren.
+
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>Festlegen der Authentifizierungsdaten mit PowerShell Version 2
 
 ```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
-Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 2345678901"
-Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 4251234567"
+Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 4252345678"
 
-Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 1234567890" -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 4251234567" -TelephoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>Lesen der Authentifizierungsdaten mit PowerShell Version 2
@@ -152,16 +164,9 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-* [Zurücksetzen oder Ändern des Kennworts](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
-* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
-* [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
-* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
-* [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
-* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
-* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
+Nachdem die Kontaktinformationen zur Authentifizierung für die Benutzer ausgefüllt wurden, schließen Sie das folgende Tutorial ab, um die Self-Service-Kennwortzurücksetzung zu aktivieren:
+
+> [!div class="nextstepaction"]
+> [Aktivieren der Self-Service-Kennwortzurücksetzung in Azure AD](tutorial-enable-sspr.md)
 
 [Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "Globale Administratoren können die Kontaktinformationen eines Benutzer für die Authentifizierung bearbeiten"

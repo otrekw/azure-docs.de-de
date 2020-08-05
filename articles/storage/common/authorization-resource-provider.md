@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 73077b6b25c09c17deb4ad468c79fe6d5ddd648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2e84cf06019c592a726564768f9b332ab5ed610
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833254"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372296"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Verwenden des Azure Storage-Ressourcenanbieters für den Zugriff auf Verwaltungsressourcen
 
@@ -26,7 +26,7 @@ Mit dem Azure Storage-Ressourcenanbieter können Sie Aktionen wie das Erstellen 
 
 Microsoft stellt zwei REST-APIs für das Arbeiten mit Azure Storage-Ressourcen bereit. Diese APIs bilden die Grundlage für alle Aktionen, die Sie für Azure Storage ausführen können. Die Azure Storage-REST-API ermöglicht Ihnen das Arbeiten mit Daten in Ihrem Speicherkonto, einschließlich Blob-, Warteschlangen-, Datei- und Tabellendaten. Die REST-API des Azure Storage-Ressourcenanbieters ermöglicht Ihnen das Arbeiten mit dem Speicherkonto und zugehörigen Ressourcen.
 
-Für eine Anforderung, die Blobdaten liest oder schreibt, sind andere Berechtigungen erforderlich als für eine Anforderung, die einen Verwaltungsvorgang ausführt. RBAC ermöglicht eine differenzierte Steuerung der Berechtigungen für beide Arten von Ressourcen. Wenn Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, stellen Sie sicher, dass Sie genau wissen, welche Berechtigungen diesem Prinzipal erteilt werden. Eine ausführliche Referenz mit Beschreibungen der Aktionen, die den einzelnen integrierten RBAC-Rollen zugeordnet sind, finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md).
+Für eine Anforderung, die Blobdaten liest oder schreibt, sind andere Berechtigungen erforderlich als für eine Anforderung, die einen Verwaltungsvorgang ausführt. RBAC ermöglicht eine differenzierte Steuerung der Berechtigungen für beide Arten von Ressourcen. Wenn Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, stellen Sie sicher, dass Sie genau wissen, welche Berechtigungen diesem Prinzipal erteilt werden. Eine ausführliche Referenz mit Beschreibungen der Aktionen, die den einzelnen integrierten Azure-Rollen zugeordnet sind, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
 Azure Storage unterstützt die Verwendung von Azure AD zum Autorisieren von Anforderungen an Blob Storage und Queue Storage. Informationen zu RBAC-Rollen für Datenvorgänge in Blobs und Warteschlangen finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Active Directory](storage-auth-aad.md).
 
@@ -34,7 +34,7 @@ Azure Storage unterstützt die Verwendung von Azure AD zum Autorisieren von Anfo
 
 Jedes Azure-Abonnement verfügt über ein zugeordnetes Azure Active Directory, mit dem Benutzer, Gruppen und Anwendungen verwaltet werden. Ein Benutzer, eine Gruppe oder eine Anwendung wird im Kontext der [Microsoft Identity Platform](/azure/active-directory/develop/) auch als Sicherheitsprinzipal bezeichnet. Sie können einem Sicherheitsprinzipal, der in Active Directory definiert ist, Zugriff auf Ressourcen in einem Abonnement mithilfe der rollenbasierten Zugriffssteuerung (RBAC) gewähren.
 
-Wenn Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, geben Sie auch den Bereich an, in dem die von der Rolle gewährten Berechtigungen gültig sind. Bei Verwaltungsvorgängen können Sie eine Rolle auf Ebene des Abonnements, der Ressourcengruppe oder des Speicherkontos zuweisen. Sie können einem Sicherheitsprinzipal eine RBAC-Rolle über das [Azure-Portal](https://portal.azure.com/), die [Azure CLI-Tools](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-API des Azure Storage-Ressourcenanbieters](/rest/api/storagerp) zuweisen.
+Wenn Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, geben Sie auch den Bereich an, in dem die von der Rolle gewährten Berechtigungen gültig sind. Bei Verwaltungsvorgängen können Sie eine Rolle auf Ebene des Abonnements, der Ressourcengruppe oder des Speicherkontos zuweisen. Sie können einem Sicherheitsprinzipal eine RBAC-Rolle über das [Azure-Portal](https://portal.azure.com/), die [Azure CLI-Tools](../../cli-install-nodejs.md), [PowerShell](/powershell/azure/) oder die [REST-API des Azure Storage-Ressourcenanbieters](/rest/api/storagerp) zuweisen.
 
 Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md) und unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -57,7 +57,7 @@ In der dritten Tabellenspalte ist angegeben, ob die integrierte Rolle die Aktion
 
 ### <a name="custom-roles-for-management-operations"></a>Benutzerdefinierte Rollen für Verwaltungsvorgänge
 
-Azure unterstützt auch das Festlegen benutzerdefinierter RBAC-Rollen für den Zugriff auf Verwaltungsressourcen. Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../../role-based-access-control/custom-roles.md).
+Azure unterstützt auch das Festlegen benutzerdefinierter Azure-Rollen für den Zugriff auf Verwaltungsressourcen. Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md).
 
 ## <a name="code-samples"></a>Codebeispiele
 

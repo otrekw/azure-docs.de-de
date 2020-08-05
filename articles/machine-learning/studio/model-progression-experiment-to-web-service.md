@@ -1,6 +1,5 @@
 ---
-title: Entwicklung eines Modells zu einem Webdienst
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Entwicklung eines Modells zu einem Webdienst – Azure'
 description: Ein Überblick darüber, wie Ihr (klassisches) Azure Machine Learning Studio-Modell sich von einem Entwicklungsexperiment zu einem Webdienst entwickelt.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4d7ab5cada77ccebc214e09b43fbb70b3ad8bb59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a02ac6db7e560fcb90a87b7bc96284c279c1654
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324997"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Entwicklung eines (klassischen) Machine Learning Studio-Modells von einem Experiment zu einem Webdienst
+
+**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+
 
 Azure Machine Learning Studio (klassisch) bietet einen interaktiven Arbeitsbereich, in dem Sie ein ***Experiment*** entwickeln, ausführen, testen und durchlaufen können, das ein Vorhersageanalysemodell darstellt. Es gibt eine Vielzahl von Modulen, die Folgendes ermöglichen:
 

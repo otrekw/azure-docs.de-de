@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b306bc55c97b977d0f06fa3e7a56f734f2f9db9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60342609"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030639"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Videos zu Azure-Datenbank für MySQL
 
@@ -19,7 +19,7 @@ ms.locfileid: "60342609"
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure Database for PostgreSQL und Azure Database for MySQL vereinen Datenbank-Engines in Community-Editionen und Funktionen von vollständig verwalteten Diensten – damit Sie sich auf Ihre Apps konzentrieren können, anstatt eine Datenbank verwalten zu müssen. Hier erhalten Sie eine schnelle Übersicht über die Vorteile der Verwendung des Diensts und sehen einige der Funktionen in Aktion.
+Azure Database for PostgreSQL und Azure Database for MySQL vereinen Datenbank-Engines in Community-Editionen und Funktionen von vollständig verwalteten Diensten – damit Sie sich auf Ihre Apps konzentrieren können, anstatt eine Datenbank verwalten zu müssen. Hier erhalten Sie eine schnelle Übersicht über die Vorteile der Verwendung des Diensts und sehen einige der Funktionen in Aktion. Informieren Sie sich auch über das Erstellen von Instanzen von [Azure Database for PostgreSQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-postgresql-server-in-the-azure-portal) und [Azure Database for MySQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-mysql-server-by-using-the-azure-portal).
 
 [Ausführliche Informationen über die verwalteten Dienstfunktionen für MySQL und PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
 

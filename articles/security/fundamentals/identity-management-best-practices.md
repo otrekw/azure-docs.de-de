@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855904"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367400"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -204,7 +204,7 @@ Ihrem Sicherheitsteam benötigt Einblicke in Ihre Azure-Ressourcen, um Risiken z
 Sie können die [rollenbasierte Zugriffssteuerung (RBAC)](/azure/role-based-access-control/overview) verwenden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
 
 **Bewährte Methode**: Verteilen Sie Aufgaben in Ihrem Team, und gewähren Sie Benutzern nur den Zugriff, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, beschränken Sie die Berechtigungen auf bestimmte Aktionen in einem bestimmten Bereich.
-**Detail**: Verwenden Sie [integrierte RBAC-Rollen](/azure/role-based-access-control/built-in-roles) in Azure, um Benutzern Berechtigungen zuzuweisen.
+**Detail**: Verwenden Sie [in Azure integrierte Rollen](/azure/role-based-access-control/built-in-roles), um Benutzern Berechtigungen zuzuweisen.
 
 > [!Note]
 > Bestimmte Berechtigungen bringen unnötige Komplexität und Verwirrung und letztendlich eine „veraltete“ Konfiguration mit sich, die nur schwer korrigiert werden, ohne größere Schäden anzurichten. Vermeiden Sie ressourcenspezifische Berechtigungen. Verwenden Sie statt dessen Verwaltungsgruppen für unternehmensweite Berechtigungen und Ressourcengruppen für Berechtigungen innerhalb von Abonnements. Vermeiden Sie benutzerspezifische Berechtigungen. Weisen Sie stattdessen Gruppen Zugriffsberechtigungen in Azure AD zu.
@@ -216,7 +216,7 @@ Sie können die [rollenbasierte Zugriffssteuerung (RBAC)](/azure/role-based-acce
 * **Segmentverwaltungsgruppe** für Teams mit beschränkter Zuständigkeit (häufig aufgrund gesetzlicher oder sonstiger organisatorischer Beschränkungen)
 
 **Bewährte Methode**: Gewähren Sie Sicherheitsteams mit direkten operativen Pflichten die entsprechenden Berechtigungen.
-**Detail**: Überprüfen Sie die integrierten RBAC-Rollen hinsichtlich der geeigneten Rollenzuweisung. Sollten die integrierten Rollen den individuellen Ansprüchen Ihrer Organisation nicht genügen, können Sie [benutzerdefinierte Rollen für Azure-Ressourcen](/azure/role-based-access-control/custom-roles) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
+**Detail**: Überprüfen Sie die integrierten RBAC-Rollen hinsichtlich der geeigneten Rollenzuweisung. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie [benutzerdefinierte Azure-Rollen](/azure/role-based-access-control/custom-roles) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
 
 **Bewährte Methoden:** Gewähren Sie den Sicherheitsrollen Azure Security Center-Zugriff, die diesen benötigen. Security Center ermöglicht Sicherheitsteams das schnelle Identifizieren und Beheben von Risiken.
 **Detail**: Fügen Sie Sicherheitsteams mit diesem Bedarf der RBAC-Rolle [Sicherheitsadministrator](/azure/role-based-access-control/built-in-roles#security-admin) hinzu, sodass sie Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen können. Sie können hierzu je nach Umfang der Pflichten die Stammverwaltungsgruppe oder die Segmentverwaltungsgruppe verwenden.

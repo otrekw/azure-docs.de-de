@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986777"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371786"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -240,9 +240,9 @@ Weisen Sie nur die notwendigen [Berechtigungen](https://docs.microsoft.com/sql/r
   - Stellen Sie sicher, dass Benutzer nicht unnötigen Rollen zugewiesen werden.
 
 - In Azure Resource Manager:
-  - Verwenden Sie integrierte Rollen (sofern verfügbar) oder benutzerdefinierte RBAC-Rollen, und weisen Sie die erforderlichen Berechtigungen zu.
-    - [Integrierte Rollen für Azure](../../role-based-access-control/built-in-roles.md)
-    - [Benutzerdefinierte Rollen für Azure-Ressourcen](../../role-based-access-control/custom-roles.md)
+  - Verwenden Sie integrierte Rollen (sofern verfügbar) oder benutzerdefinierte Azure-Rollen, und weisen Sie die erforderlichen Berechtigungen zu.
+    - [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md)
+    - [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md)
 
 **Bewährte Methoden:**
 
@@ -291,7 +291,7 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
 - Identifizieren Sie eine umfassende Hierarchie von Benutzern (und automatisierten Prozessen), die auf das System zugreifen.
 
 - Erstellen Sie Rollen entsprechend den erforderlichen Benutzergruppen, und weisen Sie Rollen Berechtigungen zu.
-  - Für Aufgaben auf Verwaltungsebene im Azure-Portal oder über PowerShell-Automation verwenden Sie RBAC-Rollen. Suchen Sie entweder nach einer integrierten Rolle, die mit der Anforderung übereinstimmt, oder erstellen Sie eine benutzerdefinierte RBAC-Rolle mithilfe der verfügbaren Berechtigungen.
+  - Für Aufgaben auf Verwaltungsebene im Azure-Portal oder über PowerShell-Automation verwenden Sie RBAC-Rollen. Suchen Sie entweder nach einer integrierten Rolle, die der Anforderung entspricht, oder erstellen Sie mithilfe der verfügbaren Berechtigungen eine benutzerdefinierte Azure-Rolle
   - Erstellen Sie Serverrollen für serverweite Aufgaben (Erstellen neuer Anmeldungen, Datenbanken) in einer verwalteten Instanz.
   - Erstellen Sie Datenbankrollen für Aufgaben auf Datenbankebene.
 
@@ -324,7 +324,7 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
 
 - Stellen Sie immer sicher, dass Sie über einen Überwachungspfad für sicherheitsbezogene Aktionen verfügen.
 
-- Sie können die Definition der integrierten RBAC-Rollen abrufen, um die verwendeten Berechtigungen anzuzeigen und anhand von Ausschnitten und deren Kumulationen über PowerShell eine benutzerdefinierte Rolle zu erstellen.
+- Sie können die Definition der integrierten Azure-Rollen abrufen, um die verwendeten Berechtigungen anzuzeigen und anhand von Ausschnitten und deren Kumulationen über PowerShell eine benutzerdefinierte Rolle zu erstellen.
 
 - Weil jedes beliebige Mitglied der Datenbankrolle „db_owner“ Sicherheitseinstellungen wie Transparent Data Encryption (TDE) oder SLO ändern kann, sollte diese Mitgliedschaft mit der nötigen Vorsicht erteilt werden. Es gibt jedoch viele Aufgaben, die die Berechtigungen von db_owner erfordern. Dazu gehören Aufgaben wie das Ändern von Datenbankeinstellungen. Überwachung spielt in jeder Lösung eine wichtige Rolle.
 
@@ -342,8 +342,8 @@ Für Leser, die sich ausführlicher mit SoD beschäftigen möchten, empfehlen wi
   - [Signieren von gespeicherten Prozeduren](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Für Azure-Ressourcenverwaltung:
-  - [Integrierte Rollen für Azure](../../role-based-access-control/built-in-roles.md)
-  - [Benutzerdefinierte Rollen für Azure-Ressourcen](../../role-based-access-control/custom-roles.md)
+  - [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md)
+  - [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md)
   - [Verwenden von Azure AD Privileged Identity Management für Zugriff mit erhöhten Rechten](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
 ### <a name="perform-regular-code-reviews"></a>Ausführen von regulären Code Reviews

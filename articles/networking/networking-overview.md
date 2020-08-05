@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Azure-Netzwerkdienste
-description: 'Hier erfahren Sie mehr über Netzwerkdienste in Azure und ihre Funktionen: Konnektivitätsdienste, Anwendungsschutzdienste, Anwendungsbereitstellungsdienste und Netzwerküberwachungsdienste.'
+description: Erfahren Sie etwas über Netzwerkdienste in Azure, darunter Konnektivitätsdienste, Anwendungsschutzdienste, Anwendungsbereitstellungsdienste und Netzwerküberwachung.
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 5b32f6b368af62bad13a505472a9ddd4709c032c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851656"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282159"
 ---
 # <a name="azure-networking-services-overview"></a>Übersicht über Azure-Netzwerkdienste
 

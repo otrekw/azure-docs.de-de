@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1ba623a00c84a7b83afe778c808251e49c7008e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515359"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386689"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -30,7 +30,7 @@ Es wird dringend empfohlen, die Anleitungen [Planning for an Azure Files deploym
     $PSVersionTable.PSVersion
     ```
 
-    Wenn die PSVersion niedriger als 5.1.\* ist, wie dies bei den meisten neuen Installationen von Windows Server 2012 R2 der Fall ist, können Sie problemlos ein Upgrade ausführen, indem Sie [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) herunterladen und installieren. Das Paket, das für Windows Server 2012 R2 heruntergeladen und installiert werden sollte, lautet **Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu**. 
+    Wenn die **PSVersion** niedriger als5.1.\* ist, wie dies bei den meisten neuen Installationen von Windows Server 2012 R2 der Fall ist, können Sie problemlos ein Upgrade ausführen, indem Sie [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) herunterladen und installieren. Das Paket, das für Windows Server 2012 R2 heruntergeladen und installiert werden sollte, lautet **Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu**. 
 
     PowerShell 6+ kann mit jedem unterstützten System verwendet und über seine [GitHub-Seite](https://github.com/PowerShell/PowerShell#get-powershell) heruntergeladen werden. 
 
@@ -216,6 +216,15 @@ Durch das Registrieren des Windows-Servers bei einem Speichersynchronisierungsdi
 > [!Note]
 > Die Serverregistrierung verwendet Ihre Azure-Anmeldeinformationen zum Erstellen einer Vertrauensstellung zwischen dem Speichersynchronisierungsdienst und Ihrer Windows Server-Instanz, doch anschließend erstellt der Server seine eigene Identität, die gültig ist, solange der Server registriert bleibt und das aktuelle Shared Access Signature-Token (Speicher-SAS) gültig ist, und verwendet sie. Sobald die Registrierung des Servers aufgehoben ist, kann kein neues SAS-Token an den Server ausgegeben werden, sodass der Server nicht mehr auf Ihre Azure-Dateifreigaben zugreifen kann und damit jede Synchronisierung beendet wird.
 
+Der Administrator, der den Server registriert, muss Mitglied der Verwaltungsrollen **Besitzer** oder **Mitwirkender** für den angegebenen Speichersynchronisierungsdienst sein. Dies kann unter **Access Control (IAM)** im Azure-Portal für den Speichersynchronisierungsdienst konfiguriert werden.
+
+Es ist auch möglich, Administratoren, die Server registrieren können, von solchen zu unterscheiden, die außerdem die Synchronisierung konfigurieren dürfen in einem Speichersynchronisierungsdienst. Hierfür müssen Sie eine benutzerdefinierte Rolle erstellen, in der Sie die Administratoren auflisten, die nur zum Registrieren von Servern berechtigt sind, und dieser benutzerdefinierten Rolle müssen Sie die folgenden Berechtigungen erteilen:
+
+* „Microsoft.StorageSync/storageSyncServices/registeredServers/write“
+* „Microsoft.StorageSync/storageSyncServices/read“
+* „Microsoft.StorageSync/storageSyncServices/workflows/read“
+* „Microsoft.StorageSync/storageSyncServices/workflows/operations/read“
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Die Benutzeroberfläche der Serverregistrierung sollte sich nach der Installation des Azure-Dateisynchronisierungs-Agents automatisch öffnen. Wenn dies nicht der Fall ist, können Sie sie aus ihrem Dateispeicherort manuell öffnen: „C:\Programme\Azure\StorageSyncAgent\ServerRegistration.exe“. Wenn die Benutzeroberfläche der Serverregistrierung geöffnet ist, wählen Sie **Anmelden** aus, um mit der Registrierung zu beginnen.
 
@@ -243,6 +252,8 @@ Ein Cloudendpunkt ist ein Zeiger auf eine Azure-Dateifreigabe. Alle Serverendpun
 
 > [!Important]  
 > Sie können Änderungen an jedem Cloudendpunkt oder Serverendpunkt in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, müssen Änderungen zunächst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen entdeckt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
+
+Der Administrator, der den Cloudendpunkt erstellt, muss Mitglied der Verwaltungsrolle **Besitzer** für das Speicherkonto sein, das die Azure-Dateifreigabe enthält, auf die der Cloudendpunkt verweist. Dies kann unter **Access Control (IAM)** im Azure-Portal für das Speicherkonto konfiguriert werden.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Um eine Synchronisierungsgruppe zu erstellen, navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Speichersynchronisierungsdienst, und wählen Sie dann **+ Synchronisierungsgruppe** aus:

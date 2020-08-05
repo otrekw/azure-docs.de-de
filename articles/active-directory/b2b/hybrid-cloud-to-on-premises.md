@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387013"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385210"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -28,7 +28,7 @@ Wenn Ihre lokalen Apps die SAML-basierte Authentifizierung verwenden, können Si
 
 Dazu müssen Sie die folgenden zwei Schritte ausführen:
 
-- Integrieren Sie die SAML-App wie unter [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../manage-apps/configure-single-sign-on-non-gallery-applications.md) beschrieben mithilfe der Vorlage „Nicht-Kataloganwendung“. Notieren Sie unbedingt den Wert, den Sie für **Anmelde-URL** angeben.
+- Integrieren Sie die App unter Verwendung von SAML, wie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](../manage-apps/configure-saml-single-sign-on.md) beschrieben. Notieren Sie unbedingt den Wert, den Sie für **Anmelde-URL** angeben.
 -  Verwenden Sie den Azure AD-Anwendungsproxy, um die lokale App mit **Azure Active Directory** als Authentifizierungsquelle zu veröffentlichen. Anweisungen dazu finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../manage-apps/application-proxy-publish-azure-portal.md). 
 
    Verwenden Sie beim Konfigurieren der Einstellung **Interne URL** die Anmelde-URL, die Sie in der Vorlage „Nicht-Kataloganwendung“ angegeben haben. Auf diese Weise können Benutzer außerhalb der Unternehmensgrenzen auf die App zugreifen. Der Anwendungsproxy führt das SAML-basierte einmalige Anmelden für die lokale App aus.

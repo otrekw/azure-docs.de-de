@@ -6,14 +6,14 @@ author: Deland-Han
 manager: dcscontentpm
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61a281e5fa9e8d360b9b6e52cda9c54db49d93d0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974516"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406740"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -67,9 +67,9 @@ Wenn Sie auf Blobcontainer oder Warteschlangen zugreifen möchten, können Sie d
 
 Für andere Ressourcentypen verfügen wir derzeit nicht über eine RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
-### <a name="recommended-built-in-rbac-roles"></a>Empfohlene integrierte RBAC-Rollen
+### <a name="recommended-azure-built-in-roles"></a>Empfohlene in Azure integrierte Rollen
 
-Es gibt mehrere integrierte RBAC-Rollen, die die Berechtigungen bereitstellen können, die für die Verwendung von Storage-Explorer erforderlich sind. Einige dieser Rollen sind:
+Es gibt mehrere integrierte Azure-Rollen, die die Berechtigungen bereitstellen können, die für die Verwendung von Storage-Explorer erforderlich sind. Einige dieser Rollen sind:
 - [Besitzer:](/azure/role-based-access-control/built-in-roles#owner) Sie können alles verwalten, einschließlich des Zugriffs auf Ressourcen. **Hinweis**: Über diese Rolle erhalten Sie Schlüsselzugriff.
 - [Mitwirkender](/azure/role-based-access-control/built-in-roles#contributor): Sie können alles verwalten, ausgenommen den Zugriff auf Ressourcen. **Hinweis**: Über diese Rolle erhalten Sie Schlüsselzugriff.
 - [Leser:](/azure/role-based-access-control/built-in-roles#reader) Lesen und Auflisten von Ressourcen.
@@ -335,7 +335,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
 2. Installieren Sie die [.NET Core-Runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
-     dpkg -i packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
@@ -348,7 +348,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
 2. Installieren Sie die [.NET Core-Runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
-     dpkg -i packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
@@ -361,7 +361,7 @@ Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfeh
 2. Installieren Sie die [.NET Core-Runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
-     dpkg -i packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \

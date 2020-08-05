@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691293d0f7ecf5bb2ad83a3f292ad2c9b873e31e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902747"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386526"
 ---
 ## <a name="limitations"></a>Einschränkungen
 
@@ -53,7 +53,7 @@ Wenn Sie einer Verfügbarkeitszone eine Hostgruppe zuweisen, müssen alle auf di
 
 Ein Host kann in einer bestimmten Fehlerdomäne erstellt werden. Genau wie virtuelle Computer in einer Skalierungsgruppe oder Verfügbarkeitsgruppe werden Hosts in verschiedenen Fehlerdomänen in unterschiedlichen physischen Racks im Rechenzentrum platziert. Wenn Sie eine Hostgruppe erstellen, müssen Sie die Anzahl der Fehlerdomänen angeben. Beim Erstellen von Hosts in der Hostgruppe weisen Sie den einzelnen Hosts Fehlerdomänen zu. Für die VMs ist keine Zuweisung von Fehlerdomänen erforderlich.
 
-Fehlerdomänen sind nicht das gleiche wie eine Näherungsplatzierung. Wenn dieselbe Fehlerdomäne für zwei Hosts verwendet wird, bedeutet das nicht, dass Sie sich nahe beieinander befinden.
+Fehlerdomänen sind nicht mit einer Colocation identisch. Wenn dieselbe Fehlerdomäne für zwei Hosts verwendet wird, bedeutet das nicht, dass Sie sich nahe beieinander befinden.
 
 Fehlerdomänen beziehen sich auf die Hostgruppe. Sie sollten nicht von Antiaffinität zwischen zwei Hostgruppen ausgehen (es sei denn, sie befinden sich in verschiedenen Verfügbarkeitszonen).
 
@@ -79,7 +79,15 @@ Nach der Bereitstellung eines dedizierten Hosts weist Azure ihn dem physischen S
 
 ## <a name="quotas"></a>Kontingente
 
-Es gibt eine Standardkontingentgrenze von 3.000 vCPUs für dedizierte Hosts pro Region. Die Anzahl der Hosts, die Sie bereitstellen können, ist jedoch auch durch das Kontingent für die für den Host verwendete VM-Größenfamilie beschränkt. Beispielsweise ist für ein Abonnement mit **nutzungsbasierter Bezahlung** in der Region „USA, Osten“ möglicherweise nur ein Kontingent von 10 vCPUs für die Größenserie Dsv3 verfügbar. In diesem Fall müssen Sie eine Kontingenterhöhung auf mindestens 64 vCPUs anfordern, bevor Sie einen dedizierten Host bereitstellen können. Wählen Sie in der rechten oberen Ecke die Schaltfläche **Erhöhung anfordern** aus, um bei Bedarf eine Anforderung einzureichen.
+Es gibt zwei Arten von Kontingenten, die beim Bereitstellen eines dedizierten Hosts genutzt werden.
+
+1. vCPU-Kontingent des dedizierten Hosts. Die standardmäßige Kontingentgrenze beträgt 3.000 vCPUs pro Region.
+1. Kontingent der VM-Größenfamilie. Beispielsweise ist für ein Abonnement mit **nutzungsbasierter Bezahlung** in der Region „USA, Osten“ möglicherweise nur ein Kontingent von 10 vCPUs für die Größenserie Dsv3 verfügbar. Zur Bereitstellung eines dedizierten Dsv3-Hosts müssen Sie eine Kontingenterhöhung auf mindestens 64 vCPUs anfordern, bevor Sie den dedizierten Host bereitstellen können. 
+
+Erstellen Sie eine Supportanfrage im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), um eine Kontingenterhöhung anzufordern.
+
+Beim Bereitstellen eines dedizierten Hosts wird sowohl das vCPU-Kontingent des dedizierten Hosts als auch das vCPU-Kontingent der VM-Familie genutzt. Das regionale vCPU-Kontingent wird jedoch nicht genutzt.
+
 
 ![Screenshot der Seite für Verbrauch und Kontingente im Portal](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 

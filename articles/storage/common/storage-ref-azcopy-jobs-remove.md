@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9f544e479dd21b4c1f7f2e289e91b506aab7eff2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b1f1b58e9cce061aaa313457ec43256a766e3a2e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220052"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281972"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
@@ -41,13 +41,13 @@ azcopy jobs remove [jobID] [flags]
 
 ## <a name="options"></a>Tastatur
 
-**-h, --help**                Hilfe zu „remove“
+**--help:** Hilfe beim Entfernen
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
-**--cap-mbps uint32**      Begrenzt die Übertragungsrate (in Megabits pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.
+**--cap-mbps float:** begrenzt die Übertragungsrate (in Megabits pro Sekunde) Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.
 
-**--output-type** string   Das Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“. (Standardwert: „text“)
+**--output-type** string   Das Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Standardwert: `text`. (Standardwert: `text`)
 
 **--trusted-microsoft-suffixes** string   Gibt zusätzliche Domänensuffixe an, an die Azure Active Directory-Anmeldetoken gesendet werden können.  Der Standardwert ist ' *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net'. Alle hier aufgelisteten Werte werden zum Standardwert hinzugefügt. Aus Sicherheitsgründen sollten Sie hier nur Microsoft Azure-Domänen platzieren. Trennen Sie mehrere E-Mail-Adressen durch Semikolons voneinander.
 

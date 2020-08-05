@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 2c9bb4bbf52c968afe267bfa3e2b8d6dae980833
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801594"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124888"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 
@@ -28,14 +28,14 @@ Azure Monitor stellt grundlegende Metriken und Protokolle der Infrastruktur für
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
-Weitere Informationen finden Sie in der [Übersicht über Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
+Weitere Informationen finden Sie unter [Übersicht über Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
 
 ## <a name="keeping-azure-data-factory-metrics-and-pipeline-run-data"></a>Aufbewahren von Azure Data Factory-Metriken und -Pipelineausführungsdaten
 
 Data Factory speichert Pipelineausführungsdaten nur 45 Tage lang. Verwenden Sie Azure Monitor, wenn Sie diese Daten für einen längeren Zeitraum aufbewahren möchten. Mit Monitor können Sie Diagnoseprotokolle zu Analysezwecken an mehrere unterschiedliche Ziele weiterleiten.
 
 * **Storage Account** (Speicherkonto): Speichern Sie Diagnoseprotokolle zur Überwachung oder manuellen Überprüfung in einem Speicherkonto. In den Diagnoseeinstellungen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
-* **Event Hub**: Streamen Sie die Protokolle in Azure Event Hubs. Die Protokolle werden zu Eingaben für einen Partnerdienst oder eine benutzerdefinierte Analyselösung wie Power BI.
+* **Event Hub**: Streamen Sie die Protokolle in Azure Event Hubs. Die Protokolle werden zu Eingaben für einen Partnerdienst oder eine benutzerdefinierte Analyselösung wie Power BI.
 * **Log Analytics**: Analysieren Sie die Protokolle mit Log Analytics. Die Data Factory-Integration in Azure Monitor ist für die folgenden Szenarien hilfreich:
   * Sie möchten komplexe Abfragen für einen umfangreichen Satz von Metriken schreiben, die von Data Factory für Monitor veröffentlicht werden. Sie können eigene Benachrichtigungen zu diesen Abfragen über Monitor erstellen.
   * Sie möchten Data Factorys übergreifend überwachen. Sie können Daten aus mehreren Data Factorys an einen einzigen Monitor-Arbeitsbereich weiterleiten.
@@ -62,11 +62,20 @@ Erstellen Sie Diagnoseeinstellungen für Ihre Data Factory, oder fügen Sie dies
 
     * Im Modus _Azure-Diagnose_ werden Diagnoseprotokolle in die Tabelle _AzureDiagnostics_ übernommen.
 
-    * Im Modus _Ressourcenspezifisch_ werden Diagnoseprotokolle aus Azure Data Factory in die Tabellen _ADFActivityRun_, _ADFPipelineRun_, _ADFTriggerRun_, _ADFSSISIntegrationRuntimeLogs_, _ADFSSISPackageEventMessageContext_, _ADFSSISPackageEventMessages_, _ADFSSISPackageExecutableStatistics_, _ADFSSISPackageExecutionComponentPhases_ und _ADFSSISPackageExecutionDataStatistics_ eingefügt.
+    * Im _ressourcenspezifischen_ Modus werden Diagnoseprotokolle von Azure Data Factory in die folgenden Tabellen geleitet:
+      - _ADFActivityRun_
+      - _ADFPipelineRun_
+      - _ADFTriggerRun_
+      - _ADFSSISIntegrationRuntimeLogs_
+      - _ADFSSISPackageEventMessageContext_
+      - _ADFSSISPackageEventMessages_
+      - _ADFSSISPackageExecutableStatistics_
+      - _ADFSSISPackageExecutionComponentPhases_
+      - _ADFSSISPackageExecutionDataStatistics_
 
-      Sie können verschiedene Protokolle, die für Ihre Workloads relevant sind, für das Senden an Log Analytics-Tabellen auswählen. Falls Sie SQL Server Integration Services (SSIS) beispielsweise überhaupt nicht nutzen, müssen Sie keine SSIS-Protokolle auswählen. Wenn Sie Azure-SSIS Integration Runtime-Vorgänge (IR) starten, beenden oder warten möchten, können Sie SSIS IR-Protokolle auswählen. Falls Sie Ausführungen von SSIS-Paketen nur per T-SQL aufrufen, können Sie nur SSIS-Paketprotokolle auswählen. Sie können alle Protokolle auswählen, wenn Sie Ausführungen von SSIS-Paketen über die entsprechenden Aktivitäten vom Typ „SSIS-Paket ausführen“ in ADF-Pipelines aufrufen.
+      Sie können verschiedene Protokolle, die für Ihre Workloads relevant sind, für das Senden an Log Analytics-Tabellen auswählen. Falls Sie SQL Server Integration Services (SSIS) beispielsweise überhaupt nicht nutzen, müssen Sie keine SSIS-Protokolle auswählen. Wenn Sie Azure-SSIS Integration Runtime-Vorgänge (IR) starten, beenden oder warten möchten, können Sie SSIS IR-Protokolle auswählen. Wenn Sie SSIS-Paketausführungen über T-SQL in SQL Server Management Studio (SSMS), SQL Server-Agent oder anderen dafür vorgesehenen Tools aufrufen, können Sie SSIS-Paketprotokolle auswählen. Sie können alle Protokolle auswählen, wenn Sie Ausführungen von SSIS-Paketen über die entsprechenden Aktivitäten vom Typ „SSIS-Paket ausführen“ in ADF-Pipelines aufrufen.
 
-    * Bei Auswahl von _AllMetrics_ werden für Sie die Metriken für ADF-Entitätsanzahl/-größe, für Ausführungen von Aktivitäten, Pipelines und Triggern, für CPU-Auslastung, Arbeitsspeicher, Knotenanzahl und Warteschlange der Integration Runtime (IR) sowie für SSIS-Paketausführungen und SSIS IR-Start- und Beendigungsvorgänge zur Verfügung gestellt, damit Sie dafür die Überwachung durchführen bzw. Warnungen auslösen können.
+    * Wenn Sie _AllMetrics_ auswählen, werden verschiedene ADF-Metriken zur Verfügung gestellt, die Sie überwachen oder mit Warnungen versehen können. Dies umfasst auch Metriken für Ausführungen von ADF-Aktivitäten, -Pipelines und -Triggern sowie für SSIS IR-Vorgänge und SSIS-Paketausführungen.
 
    ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -99,7 +108,7 @@ Diese Lösung liefert Ihnen eine Zusammenfassung der Gesamtintegrität Ihrer Dat
 
 ### <a name="monitor-data-factory-metrics"></a>Überwachen von Data Factory-Metriken
 
-Bei der Installation der Azure Data Factory-Analyse wird im Arbeitsmappenabschnitt des ausgewählten Log Analytics-Arbeitsbereichs ein Standardsatz mit Ansichten erstellt. Dies führt dazu, dass die folgenden Metriken aktiviert werden:
+Beim Installieren dieser Lösung wird im Arbeitsmappenabschnitt des ausgewählten Log Analytics-Arbeitsbereichs ein Standardsatz von Sichten erstellt. Dadurch werden die folgenden Metriken aktiviert:
 
 * ADF-Ausführungen – 1) Pipelineausführungen nach Data Factory
 * ADF-Ausführungen – 2) Aktivitätsausführungen nach Data Factory
@@ -128,28 +137,28 @@ Hier sind einige Metriken aufgeführt, die von Azure Data Factory Version 2 aus
 
 | **Metrik**                           | **Anzeigename der Metrik**                  | **Einheit** | **Aggregationstyp** | **Beschreibung**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
-| ActivityCanceledRuns                 | Metriken zu abgebrochenen Aktivitätsausführungen           | Anzahl    | Gesamt                | Die Gesamtanzahl von Aktivitätsausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
+| ActivityCancelledRuns                 | Metriken zu abgebrochenen Aktivitätsausführungen           | Anzahl    | Gesamt                | Die Gesamtanzahl von Aktivitätsausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
 | ActivityFailedRuns                   | Metriken zu fehlerhaften Aktivitätsausführungen             | Anzahl    | Gesamt                | Die Gesamtanzahl der fehlgeschlagenen Aktivitätsausführungen innerhalb eines Minutenfensters. |
 | ActivitySucceededRuns                | Metriken zu erfolgreichen Aktivitätsausführungen          | Anzahl    | Gesamt                | Die Gesamtanzahl der erfolgreichen Aktivitätsausführungen innerhalb eines Minutenfensters. |
-| PipelineCanceledRuns                 | Metriken zu abgebrochenen Pipelineausführungen           | Anzahl    | Gesamt                | Die Gesamtanzahl von Pipelineausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
+| PipelineCancelledRuns                 | Metriken zu abgebrochenen Pipelineausführungen           | Anzahl    | Gesamt                | Die Gesamtanzahl von Pipelineausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
 | PipelineFailedRuns                   | Metriken zu fehlerhaften Pipelineausführungen             | Anzahl    | Gesamt                | Die Gesamtanzahl der fehlgeschlagenen Pipelineausführungen innerhalb eines Minutenfensters. |
 | PipelineSucceededRuns                | Metriken zu erfolgreichen Pipelineausführungen          | Anzahl    | Gesamt                | Die Gesamtanzahl der erfolgreichen Pipelineausführungen innerhalb eines Minutenfensters. |
-| TriggerCanceledRuns                  | Metriken zu abgebrochenen Triggerausführungen            | Anzahl    | Gesamt                | Die Gesamtanzahl von Triggerausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
+| TriggerCancelledRuns                  | Metriken zu abgebrochenen Triggerausführungen            | Anzahl    | Gesamt                | Die Gesamtanzahl von Triggerausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
 | TriggerFailedRuns                    | Metriken zu fehlerhaften Triggerausführungen              | Anzahl    | Gesamt                | Die Gesamtanzahl der fehlgeschlagenen Triggerausführungen innerhalb eines Minutenfensters. |
 | TriggerSucceededRuns                 | Metriken zu erfolgreichen Triggerausführungen           | Anzahl    | Gesamt                | Die Gesamtanzahl der erfolgreichen Triggerausführungen innerhalb eines Minutenfensters. |
-| SSISIntegrationRuntimeStartCanceled  | Metriken zu abgebrochenen SSIS IR-Startvorgängen           | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Startvorgängen, die innerhalb eines Minutenfensters abgebrochen wurden. |
+| SSISIntegrationRuntimeStartCancelled  | Metriken zu abgebrochenen SSIS IR-Startvorgängen           | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Startvorgängen, die innerhalb eines Minutenfensters abgebrochen wurden. |
 | SSISIntegrationRuntimeStartFailed    | Metriken zu fehlgeschlagenen SSIS IR-Startvorgängen             | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Startvorgängen, die innerhalb eines Minutenfensters fehlgeschlagen sind. |
 | SSISIntegrationRuntimeStartSucceeded | Metriken zu erfolgreichen SSIS IR-Startvorgängen          | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Startvorgängen, die innerhalb eines Minutenfensters erfolgreich waren. |
 | SSISIntegrationRuntimeStopStuck      | Metriken zu hängenden SSIS IR-Beendigungsvorgängen               | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Beendigungsvorgängen, die innerhalb eines Minutenfensters hängen geblieben sind. |
 | SSISIntegrationRuntimeStopSucceeded  | Metriken zu erfolgreichen SSIS IR-Beendigungsvorgängen           | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Beendigungsvorgängen, die innerhalb eines Minutenfensters erfolgreich waren. |
-| SSISPackageExecutionCanceled         | Metriken zu abgebrochenen SSIS-Paketausführungen  | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
+| SSISPackageExecutionCancelled         | Metriken zu abgebrochenen SSIS-Paketausführungen  | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
 | SSISPackageExecutionFailed           | Metriken zu fehlgeschlagenen SSIS-Paketausführungen    | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters fehlgeschlagen sind. |
 | SSISPackageExecutionSucceeded        | Metriken zu erfolgreichen SSIS-Paketausführungen | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters erfolgreich waren. |
 
 Folgen Sie den Anweisungen unter [Azure Monitor-Datenplattform](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), um auf die Metriken zuzugreifen.
 
 > [!NOTE]
-> Ausschließlich Ereignisse für abgeschlossene, ausgelöste Aktivitäts- und Pipelineausführungen werden ausgegeben. Aktive Ausführungen und Sandbox-/Debugausführungen werden **nicht** ausgegeben. Andererseits werden alle Ereignisse von SSIS-Paketausführungen ausgegeben, z. B. abgeschlossene und in Bearbeitung befindliche Ereignisse sowie Ereignisse, die per T-SQL über SSMS, SQL Server-Agent oder andere geeignete Tools oder als Auslösungen, Sandboxvorgänge oder Debugausführungen von „SSIS-Paket ausführen“-Aktivitäten in ADF-Pipelines aufgerufen werden.
+> Es werden nur Ereignisse für abgeschlossene ausgelöste Aktivitäts- und Pipelineausführungen ausgegeben. Aktive Ausführungen und Debugausführungen werden **nicht** ausgegeben. Andererseits werden unabhängig von den Aufrufmethoden Ereignisse für **alle** SSIS-Paketausführungen ausgegeben, einschließlich abgeschlossener und in Bearbeitung befindlicher. Beispielsweise können Sie Paketausführungen in den für Azure aktivierten SQL Server Data Tools (SSDT), über T-SQL für SSMS, SQL Server-Agent oder andere festgelegte Tools und als ausgelöste oder Debugausführungen von SSIS-Paketausführungsaktivitäten in ADF-Pipelines aufrufen.
 
 ## <a name="data-factory-alerts"></a>Data Factory-Warnungen
 
@@ -260,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | **storageAccountId** |String | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | **serviceBusRuleId** |String | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID weist das Format `{service bus resource ID}/authorizationrules/{key name}` auf.|
@@ -433,7 +442,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 }
 ```
 
-| Eigenschaft | type | BESCHREIBUNG | Beispiel |
+| Eigenschaft | Typ | Beschreibung | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -479,7 +488,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 }
 ```
 
-| Eigenschaft | type | BESCHREIBUNG | Beispiel |
+| Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -522,7 +531,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 }
 ```
 
-| Eigenschaft | type | BESCHREIBUNG | Beispiel |
+| Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -540,7 +549,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](https://docs.micr
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>Protokollattribute der SSIS Integration Runtime
 
-Dies sind die Protokollattribute bzw. -eigenschaften der Start-, Beendigungs- und Wartungsvorgänge von SSIS Integration Runtime (IR).
+Nachstehend finden Sie die Protokollattribute der Start-/Beendigungs-/Wartungsvorgänge für SSIS IR.
 
 ```json
 {
@@ -559,7 +568,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften der Start-, Beendigungs- un
 }
 ```
 
-| Eigenschaft                   | type   | BESCHREIBUNG                                                   | Beispiel                        |
+| Eigenschaft                   | Typ   | BESCHREIBUNG                                                   | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Name Ihres SSIS IR-Vorgangs                            | `Start/Stop/Maintenance` |
@@ -574,7 +583,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften der Start-, Beendigungs- un
 
 #### <a name="ssis-event-message-context-log-attributes"></a>Protokollattribute des Meldungskontexts von SSIS-Ereignissen
 
-Dies sind die Protokollattribute bzw. -eigenschaften von Bedingungen der Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen/Sichten zum Kontext von Ereignismeldungen im SSIS-Katalog (SSISDB)](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15), in denen Runtimewerte für viele SSIS-Paketeigenschaften angezeigt werden. Sie werden generiert, wenn Sie den Protokolliergrad `Basic/Verbose` auswählen, und sind hilfreich beim Debuggen und Überprüfen der Konformität.
+Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten zum Kontext von Ereignismeldungen im SSIS-Katalog (SSISDB)](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15), in denen Runtimewerte für viele SSIS-Paketeigenschaften angezeigt werden. Sie werden generiert, wenn Sie den Protokolliergrad `Basic/Verbose` auswählen, und sind hilfreich beim Debuggen und Überprüfen der Konformität.
 
 ```json
 {
@@ -599,7 +608,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Bedingungen der Ereigni
 }
 ```
 
-| Eigenschaft                   | type   | BESCHREIBUNG                                                          | Beispiel                        |
+| Eigenschaft                   | Typ   | BESCHREIBUNG                                                          | Beispiel                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageEventMessageContext` festgelegt.       | `mysqlmissisir-SSISPackageEventMessageContext` |
@@ -608,7 +617,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Bedingungen der Ereigni
 | **dataFactoryName**        | String | Name Ihrer ADF-Instanz                                                 | `MyADFv2` |
 | **integrationRuntimeName** | String | Name Ihrer SSIS IR                                             | `MySSISIR` |
 | **level**                  | String | Ebene mit Diagnoseprotokollen                                         | `Informational` |
-| **operationId**            | String | Eindeutige ID für die Nachverfolgung eines bestimmten Vorgangs in der SSISDB          | `1` (1 steht für Vorgänge von Paketen, die nicht in der SSISDB gespeichert sind) |
+| **operationId**            | String | Eindeutige ID für die Nachverfolgung eines bestimmten Vorgangs in der SSISDB          | `1` (1 steht für Vorgänge von Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden.) |
 | **contextDepth**           | String | Tiefe Ihres Kontexts von Ereignismeldungen                              | `0` (0 steht für den Kontext vor dem Start der Paketausführung, und 1 steht für den Kontext beim Auftreten eines Fehlers. Dieser Wert wird erhöht, je weiter der Kontext vom Fehler entfernt ist.) |
 | **packagePath**            | String | Pfad des Paketobjekts als Quelle des Kontexts Ihrer Ereignismeldung      | `\Package` |
 | **contextType**            | String | Typ des Paketobjekts als Quelle des Kontexts Ihrer Ereignismeldung      | `60` ([weitere Kontexttypen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
@@ -620,7 +629,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Bedingungen der Ereigni
 
 #### <a name="ssis-event-messages-log-attributes"></a>Protokollattribute von SSIS-Ereignismeldungen
 
-Dies sind die Protokollattribute bzw. -eigenschaften von Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen/Sichten für SSISDB-Ereignismeldungen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15), in denen die ausführlichen Text- bzw. Metadaten von Ereignismeldungen angezeigt werden. Sie werden für alle Protokolliergrade mit Ausnahme von `None` generiert.
+Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten für SSISDB-Ereignismeldungen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15), in denen die ausführlichen Text- bzw. Metadaten von Ereignismeldungen angezeigt werden. Sie werden für alle Protokolliergrade mit Ausnahme von `None` generiert.
 
 ```json
 {
@@ -649,7 +658,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Ereignismeldungen, die 
 }
 ```
 
-| Eigenschaft                   | type   | BESCHREIBUNG                                                        | Beispiel                        |
+| Eigenschaft                   | Typ   | BESCHREIBUNG                                                        | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageEventMessages` festgelegt.           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -658,7 +667,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Ereignismeldungen, die 
 | **dataFactoryName**        | String | Name Ihrer ADF-Instanz                                               | `MyADFv2` |
 | **integrationRuntimeName** | String | Name Ihrer SSIS IR                                           | `MySSISIR` |
 | **level**                  | String | Ebene mit Diagnoseprotokollen                                       | `Informational` |
-| **operationId**            | String | Eindeutige ID für die Nachverfolgung eines bestimmten Vorgangs in der SSISDB        | `1` (1 steht für Vorgänge von Paketen, die nicht in der SSISDB gespeichert sind) |
+| **operationId**            | String | Eindeutige ID für die Nachverfolgung eines bestimmten Vorgangs in der SSISDB        | `1` (1 steht für Vorgänge von Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden.) |
 | **messageTime**            | String | Zeitpunkt, zum dem Ihre Ereignismeldung im UTC-Format erstellt wird          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | String | Typ Ihrer Ereignismeldung                                     | `70` ([weitere Meldungstypen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
 | **messageSourceType**      | String | Typ Ihrer Quelle für Ereignismeldungen                              | `20` ([weitere Typen von Meldungsquellen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
@@ -674,7 +683,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Ereignismeldungen, die 
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>Protokollattribute der Statistik zu ausführbaren SSIS-Dateien
 
-Dies sind die Protokollattribute bzw. -eigenschaften der Statistik von ausführbaren Dateien, die über SSIS-Paketausführungen unter Ihrer SSIS IR generiert werden. Hierbei sind ausführbare Dateien Container bzw. Tasks in Paketablaufsteuerungen. Sie vermitteln ähnliche Informationen wie [Tabellen/Sichten für Statistiken zu ausführbaren SSISDB-Dateien](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15), in denen eine Zeile für jede aktive ausführbare Datei angezeigt wird, einschließlich Iterationen. Sie werden bei allen Protokolliergraden mit Ausnahme von `None` generiert und sind nützlich zum Identifizieren von Engpässen bzw. Fehlern auf Taskebene.
+Nachstehend finden Sie die Protokollattribute der Statistiken von ausführbaren Dateien, die über SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Hierbei sind ausführbare Dateien Container oder Tasks in Paketablaufsteuerungen. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten für Statistiken zu ausführbaren SSISDB-Dateien](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15), in denen eine Zeile für jede aktive ausführbare Datei angezeigt wird, einschließlich Iterationen. Sie werden bei allen Protokolliergraden mit Ausnahme von `None` generiert und sind nützlich zum Identifizieren von Engpässen bzw. Fehlern auf Taskebene.
 
 ```json
 {
@@ -698,7 +707,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften der Statistik von ausführb
 }
 ```
 
-| Eigenschaft                   | type   | BESCHREIBUNG                                                      | Beispiel                        |
+| Eigenschaft                   | Typ   | BESCHREIBUNG                                                      | Beispiel                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageExecutableStatistics` festgelegt.  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -707,7 +716,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften der Statistik von ausführb
 | **dataFactoryName**        | String | Name Ihrer ADF-Instanz                                             | `MyADFv2` |
 | **integrationRuntimeName** | String | Name Ihrer SSIS IR                                         | `MySSISIR` |
 | **level**                  | String | Ebene mit Diagnoseprotokollen                                     | `Informational` |
-| **executionId**            | String | Eindeutige ID für die Nachverfolgung einer bestimmten Ausführung in der SSISDB      | `1` (1 steht für Ausführungen von Paketen, die nicht in der SSISDB gespeichert sind) |
+| **executionId**            | String | Eindeutige ID für die Nachverfolgung einer bestimmten Ausführung in der SSISDB      | `1` (1 steht für Ausführungen von Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden.) |
 | **executionPath**          | String | Vollständiger Pfad vom übergeordneten Paket zur ausgeführten Komponente          | `\Transformation\Data Flow Task` (Über diesen Pfad werden auch Komponenteniterationen erfasst.) |
 | **startTime**              | String | Zeitpunkt im UTC-Format, zu dem die ausführbare Datei in die Phase vor der Ausführung eintritt  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | Zeitpunkt im UTC-Format, zu dem die ausführbare Datei in die Phase nach der Ausführung eintritt | `2017-06-28T21:00:27.3534352Z` |
@@ -718,7 +727,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften der Statistik von ausführb
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>Protokollattribute der Komponentenphasen von SSIS-Ausführungen
 
-Dies sind die Protokollattribute bzw. -eigenschaften von Runtimestatistiken für Datenflusskomponenten, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie vermitteln ähnliche Informationen wie [Tabellen/Sichten der Komponentenphasen von SSIS-Ausführungen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15), in denen die Zeit angezeigt wird, die von Datenflusskomponenten in den einzelnen Ausführungsphasen verbraucht wird. Sie werden generiert, wenn Sie den Protokolliergrad `Performance/Verbose` auswählen, und sind hilfreich zum Erfassen von Statistiken zur Datenflussausführung.
+Nachstehend finden Sie die Protokollattribute von Runtimestatistiken für Datenflusskomponenten, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen und Sichten der Komponentenphasen von SSISDB-Ausführungen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15), in denen die Zeit angezeigt wird, die die Datenflusskomponenten in den einzelnen Ausführungsphasen verbringen. Sie werden generiert, wenn Sie den Protokolliergrad `Performance/Verbose` auswählen, und sind hilfreich zum Erfassen von Statistiken zur Datenflussausführung.
 
 ```json
 {
@@ -743,7 +752,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Runtimestatistiken für
 }
 ```
 
-| Eigenschaft                   | type   | BESCHREIBUNG                                                         | Beispiel                        |
+| Eigenschaft                   | Typ   | BESCHREIBUNG                                                         | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageExecutionComponentPhases` festgelegt. | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -752,7 +761,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Runtimestatistiken für
 | **dataFactoryName**        | String | Name Ihrer ADF-Instanz                                                | `MyADFv2` |
 | **integrationRuntimeName** | String | Name Ihrer SSIS IR                                            | `MySSISIR` |
 | **level**                  | String | Ebene mit Diagnoseprotokollen                                        | `Informational` |
-| **executionId**            | String | Eindeutige ID für die Nachverfolgung einer bestimmten Ausführung in der SSISDB         | `1` (1 steht für Ausführungen von Paketen, die nicht in der SSISDB gespeichert sind) |
+| **executionId**            | String | Eindeutige ID für die Nachverfolgung einer bestimmten Ausführung in der SSISDB         | `1` (1 steht für Ausführungen von Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden.) |
 | **packageName**            | String | Name Ihrer ausgeführten Paketdatei                              | `MyPackage.dtsx` |
 | **taskName**               | String | Name des ausgeführten Datenflusstasks                                 | `Data Flow Task` |
 | **subcomponentName**       | String | Name der Datenflusskomponente                                     | `Derived Column` |
@@ -764,7 +773,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Runtimestatistiken für
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>Protokollattribute für Statistiken von SSIS-Ausführungsdaten
 
-Dies sind die Protokollattribute bzw. -eigenschaften von Datenverschiebungen durch die einzelnen Abschnitte von Datenflusspipelines (von Upstream- zu Downstream-Komponenten), die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie vermitteln ähnliche Informationen wie [Tabellen/Sichten mit Statistiken für SSISDB-Ausführungsdaten](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15), in denen die Zeilenanzahl für Daten angezeigt wird, die Datenflusstasks durchlaufen. Sie werden generiert, wenn Sie den Protokolliergrad `Verbose` auswählen, und sind hilfreich zum Berechnen des Datenflussdurchsatzes.
+Nachstehend finden Sie die Protokollattribute von Datenverschiebungen durch die einzelnen Abschnitte von Datenflusspipelines (von Upstream- zu Downstream-Komponenten), die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen und Sichten mit Statistiken für SSISDB-Ausführungsdaten](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15), in denen die Zeilenanzahl für Daten angezeigt wird, die Datenflusstasks durchlaufen. Sie werden generiert, wenn Sie den Protokolliergrad `Verbose` auswählen, und sind hilfreich zum Berechnen des Datenflussdurchsatzes.
 
 ```json
 {
@@ -791,7 +800,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Datenverschiebungen dur
 }
 ```
 
-| Eigenschaft                     | type   | BESCHREIBUNG                                                        | Beispiel                        |
+| Eigenschaft                     | Typ   | BESCHREIBUNG                                                        | Beispiel                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | Ist auf `YourSSISIRName-SSISPackageExecutionDataStatistics` festgelegt. | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
@@ -800,7 +809,7 @@ Dies sind die Protokollattribute bzw. -eigenschaften von Datenverschiebungen dur
 | **dataFactoryName**          | String | Name Ihrer ADF-Instanz                                               | `MyADFv2` |
 | **integrationRuntimeName**   | String | Name Ihrer SSIS IR                                           | `MySSISIR` |
 | **level**                    | String | Ebene mit Diagnoseprotokollen                                       | `Informational` |
-| **executionId**              | String | Eindeutige ID für die Nachverfolgung einer bestimmten Ausführung in der SSISDB        | `1` (1 steht für Ausführungen von Paketen, die nicht in der SSISDB gespeichert sind) |
+| **executionId**              | String | Eindeutige ID für die Nachverfolgung einer bestimmten Ausführung in der SSISDB        | `1` (1 steht für Ausführungen von Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden.) |
 | **packageName**              | String | Name Ihrer ausgeführten Paketdatei                             | `MyPackage.dtsx` |
 | **taskName**                 | String | Name des ausgeführten Datenflusstasks                                | `Data Flow Task` |
 | **dataflowPathIdString**     | String | Eindeutige ID für die Nachverfolgung des Datenflusspfads                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -836,24 +845,24 @@ Log Analytics erbt das Schema von Monitor. Dabei gelten jedoch folgende Ausnahme
 
 ## <a name="monitor-ssis-operations-with-azure-monitor"></a>Überwachen von SSIS-Vorgängen mit Azure Monitor
 
-Wenn Sie Ihre SQL Server Integration Services-Workloads (SSIS) verschieben möchten, können Sie die [Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) bereitstellen](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure). Hierbei wird Folgendes unterstützt:
+Um Ihre SSIS-Workloads per Lift & Shift zu verschieben, können Sie [die SSIS IR in ADF bereitstellen](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) und somit Folgendes unterstützen:
 
 - Ausführen von Paketen, die im SSIS-Katalog (SSISDB) bereitgestellt werden, wobei zum Hosten ein Azure SQL-Datenbank-Server/eine verwaltete Instanz verwendet wird (Projektbereitstellungsmodell)
 - Ausführen von Paketen, die im Dateisystem, in Azure Files oder in SQL Server-Datenbank (MSDB) bereitgestellt werden, wobei zum Hosten Azure SQL Managed Instance verwendet wird (Paketbereitstellungsmodell)
 
-Nach der Bereitstellung können Sie den [SSIS IR-Betriebsstatus mit Azure PowerShell oder im **Monitor**-Hub des ADF-Portals überprüfen](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Beim Projektbereitstellungsmodell werden Protokolle für SSIS-Paketausführungen in internen SSISDB-Tabellen bzw. -Sichten gespeichert, damit sie mit geeigneten Tools wie SQL Server Management Studio (SSMS) abgefragt, analysiert und visuell dargestellt werden können. Beim Paketbereitstellungsmodell können Protokolle für SSIS-Paketausführungen im Dateisystem bzw. in Azure Files als CSV-Dateien gespeichert werden, die noch mit anderen geeigneten Tools analysiert und verarbeitet werden müssen, bevor sie abgefragt, analysiert und visuell dargestellt werden können.
+Nach der Bereitstellung können Sie den [SSIS IR-Betriebsstatus mit Azure PowerShell oder im **Monitor**-Hub des ADF-Portals überprüfen](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Beim Projektbereitstellungsmodell werden Protokolle für SSIS-Paketausführungen in internen SSISDB-Tabellen oder -Sichten gespeichert, damit sie mit geeigneten Tools wie SSMS abgefragt, analysiert und visuell dargestellt werden können. Beim Paketbereitstellungsmodell können Protokolle für SSIS-Paketausführungen im Dateisystem oder in Azure Files als CSV-Dateien gespeichert werden, die noch mit anderen geeigneten Tools analysiert und verarbeitet werden müssen, bevor sie abgefragt, analysiert und visuell dargestellt werden können.
 
-Mit der [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)-Integration können nun alle Metriken und Protokolle, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden, über das Azure-Portal abgefragt, analysiert und visuell dargestellt werden. Darüber hinaus können hierfür Warnungen ausgelöst werden.
+Mit der [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)-Integration können nun alle Metriken und Protokolle, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden, über das Azure-Portal abgefragt, analysiert und visuell dargestellt werden. Darüber hinaus können Sie auch Warnungen für sie ausgeben.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Konfigurieren von Diagnoseeinstellungen und des Arbeitsbereichs für SSIS-Vorgänge
 
-Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Konfigurieren von Diagnoseeinstellungen und Arbeitsbereich](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace), um alle Metriken und Protokolle, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden, an Azure Monitor zu senden.
+Um alle Metriken und Protokolle an Azure Monitor zu senden, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden, müssen Sie [Diagnoseeinstellungen und einen Arbeitsbereich für ADF konfigurieren](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace).
 
 ### <a name="ssis-operational-metrics"></a>Metriken zum SSIS-Betrieb
 
-[Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) zum SSIS-Betrieb sind Leistungsindikatoren bzw. numerische Werte, die den Status von SSIS IR-Start- und Beendigungsvorgängen und SSIS-Paketausführungen zu einem bestimmten Zeitpunkt beschreiben. Sie sind Teil der [ADF-Metriken in Azure Monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics), z. B. Metriken für ADF-Entitätsanzahl/-größe, für Ausführungen von Aktivitäten, Pipelines und Triggern und für CPU-Auslastung, Arbeitsspeicher, Knotenanzahl und Warteschlange der Integration Runtime (IR).
+[Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) zum SSIS-Betrieb sind Leistungsindikatoren oder numerische Werte, die den Status von SSIS IR-Start- und -Beendigungsvorgängen sowie SSIS-Paketausführungen zu einem bestimmten Zeitpunkt beschreiben. Sie sind Teil der [ADF-Metriken in Azure Monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics).
 
-Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz unter Azure Monitor können Sie das Kontrollkästchen _AllMetrics_ aktivieren, um die Metriken zum SSIS-Betrieb für die [interaktive Analyse per Azure-Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started), [Darstellung im Azure-Dashboard](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards) und [Benachrichtigung durch Warnungen nahezu in Echtzeit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) verfügbar zu machen.
+Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz unter Azure Monitor können Sie das Kontrollkästchen _AllMetrics_ aktivieren, um die Metriken zum SSIS-Betrieb für die [interaktive Analyse per Azure-Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started), die [Darstellung in Azure-Dashboards](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards) und [Benachrichtigungen nahezu in Echtzeit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) verfügbar zu machen.
 
 ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -869,13 +878,13 @@ Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre A
 
 ### <a name="ssis-operational-logs"></a>Protokolle zum SSIS-Betrieb
 
-[Protokolle](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) zum SSIS-Betrieb sind Ereignisse, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden und genügend Kontext bzw. Informationen zu den identifizierten Problemen enthalten und für die Fehlerursachenanalyse nützlich sind. 
+[Protokolle](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) zum SSIS-Betrieb sind Ereignisse, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden. Sie enthalten genügend Kontext zu den identifizierten Problemen und sind für die Grundursachenanalyse nützlich. 
 
-Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz unter Azure Monitor können Sie die relevanten Protokolle zum SSIS-Betrieb auswählen und an die Log Analytics-Instanz senden, die auf Azure Data Explorer basiert. Dort werden diese Daten für die [Analyse mit einer leistungsstarken Abfragesprache](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), [Darstellung im Azure-Dashboard](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards) und [Benachrichtigung mit Warnungen nahezu in Echtzeit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) verfügbar gemacht.
+Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre ADF-Instanz in Azure Monitor können Sie die relevanten Protokolle zum SSIS-Betrieb auswählen und an die Log Analytics-Instanz senden, die auf Azure Data Explorer basiert. Dort werden diese Daten für die [Analyse mit einer leistungsstarken Abfragesprache](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), die [Darstellung in Azure-Dashboards](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards) und [Benachrichtigungen nahezu in Echtzeit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) verfügbar gemacht.
 
 ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-Die Schemas und der Inhalt von Protokollen für SSIS-Paketausführungen in Azure Monitor und Log Analytics ähneln denen in den internen Tabellen und Sichten der SSISDB.
+Die Schemas und der Inhalt von Protokollen für SSIS-Paketausführungen in Azure Monitor und Log Analytics ähneln den Schemas der internen Tabellen und Sichten der SSISDB.
 
 | Azure Monitor-Protokollkategorien          | Log Analytics-Tabellen                     | Interne SSISDB-Tabellen/-Sichten              |
 | ------------------------------------- | ---------------------------------------- | ----------------------------------------- |
@@ -888,11 +897,15 @@ Die Schemas und der Inhalt von Protokollen für SSIS-Paketausführungen in Azure
 
 Weitere Informationen zu den Attributen bzw. Eigenschaften von SSIS-Betriebsprotokollen finden Sie unter [Schema von Protokollen und Ereignissen](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events).
 
-Ihre ausgewählten Protokolle zu SSIS-Paketausführungen werden immer an Log Analytics gesendet. Dies gilt unabhängig von Ihren Aufrufmethoden, z. B. Azure-fähige SQL Server Data Tools (SSDT), T-SQL unter SSMS/SQL Server-Agent bzw. andere geeignete Tools oder als Auslösungen, Sandboxvorgänge oder Debugausführungen von „SSIS-Paket ausführen“-Aktivitäten in ADF-Pipelines.
+Die ausgewählten Protokolle zur SSIS-Paketausführung werden unabhängig von den Aufrufmethoden immer an Log Analytics gesendet. Beispielsweise können Sie Paketausführungen in den für Azure aktivierten SSDT, über T-SQL für SSMS, SQL Server-Agent oder andere spezielle Tools und als ausgelöste oder Debugausführungen von SSIS-Paketausführungsaktivitäten in ADF-Pipelines aufrufen.
 
-Beim Abfragen von Protokollen zu SSIS-Paketausführungen in Logs Analytics können Sie diese mit Eigenschaften wie „OperationId“, „ExecutionId“ und „CorrelationId“ verknüpfen. „OperationId“ und „ExecutionId“ sind für alle Vorgänge bzw. Ausführungen in Bezug auf Pakete, die **nicht** in der SSISDB gespeichert sind, immer auf „1“ festgelegt.
+Beim Abfragen von Protokollen für SSIS IR-Vorgänge in Log Analytics können Sie die Eigenschaften **OperationName** und **ResultType** verwenden, die auf `Start/Stop/Maintenance` bzw. `Started/InProgress/Succeeded/Failed` festgelegt sind. 
 
-![Abfragen von Protokollen zu SSIS-Paketausführungen in Log Analytics](media/data-factory-monitor-oms/log-analytics-query.png)
+![Abfragen von Protokollen zum SSIS IR-Betrieb in Log Analytics](media/data-factory-monitor-oms/log-analytics-query.png)
+
+Beim Abfragen von Protokollen zu SSIS-Paketausführungen in Logs Analytics können Sie diese mit den Eigenschaften **OperationId**/**ExecutionId**/**CorrelationId** verknüpfen. **OperationId**/**ExecutionId** sind für alle Vorgänge bzw. Ausführungen im Zusammenhang mit Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden, immer auf `1` festgelegt.
+
+![Abfragen von Protokollen zu SSIS-Paketausführungen in Log Analytics](media/data-factory-monitor-oms/log-analytics-query2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Programmseitiges Überwachen und Verwalten von Pipelines](monitor-programmatically.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036793"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -360,7 +360,7 @@ Es ist auch möglich, Data Box zum Migrieren von Daten zu einer Azure-Dateisynch
 Ein häufiger Fehler, den Kunden beim Migrieren von Daten in ihre neue Azure-Dateisynchronisierungsbereitstellung machen, besteht darin, Daten direkt in die Azure-Dateifreigabe zu kopieren, anstatt auf ihre Windows-Dateiserver. Obwohl die Azure-Dateisynchronisierung alle neuen Dateien in der Azure-Dateifreigabe identifiziert und sie zurück mit Ihren Windows-Dateifreigaben synchronisiert, ist dies im allgemeinen deutlich langsamer als das Laden von Daten über den Windows-Dateiserver. Wenn Sie Azure-Kopiertools wie AzCopy nutzen, ist es wichtig, die neueste Version zu verwenden. Überprüfen Sie die [Tabelle zu den Dateikopiertools](storage-files-migration-overview.md#file-copy-tools), um einen Überblick über die Azure-Kopiertools zu erhalten und sicherzustellen, dass Sie alle wichtigen Metadaten einer Datei (z. B. Zeitstempel und ACLs) kopieren können.
 
 ## <a name="antivirus"></a>Virenschutz
-Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen. Ab Version 4.0 der Azure-Dateisynchronisierung-Agents ist für mehrstufige Dateien das sichere Windows-Attribut „FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS“ festgelegt. Es empfiehlt es sich, bei Ihrem Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass das Lesen von Dateien mit diesem festgelegten Attribut übersprungen wird (bei vielen ist dies automatisch der Fall). 
+Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen und damit zu hohen Ausgangsgebühren führen. Ab Version 4.0 der Azure-Dateisynchronisierung-Agents ist für mehrstufige Dateien das sichere Windows-Attribut „FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS“ festgelegt. Es empfiehlt es sich, bei Ihrem Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass das Lesen von Dateien mit diesem festgelegten Attribut übersprungen wird (bei vielen ist dies automatisch der Fall). 
 
 Die internen Virenschutzlösungen von Microsoft – Windows Defender und System Center Endpoint Protection (SCEP) – überspringen beide automatisch das Lesen von Dateien, für die dieses Attribut festgelegt ist. Wir haben sie getestet und ein kleineres Problem identifiziert: Wenn Sie einer bestehenden Synchronisierungsgruppe einen Server hinzufügen, werden Dateien, die kleiner als 800 Byte sind, auf dem neuen Server zurückgerufen (heruntergeladen). Diese Dateien verbleiben auf dem neuen Server und werden nicht in Speicherebenen aufgeteilt, da sie nicht die Größenanforderungen für das Tiering (> 64 KB) erfüllen.
 
@@ -368,9 +368,9 @@ Die internen Virenschutzlösungen von Microsoft – Windows Defender und System 
 > Anbieter von Antivirensoftware können die Kompatibilität zwischen ihrem Produkt und der Azure-Dateisynchronisierung mithilfe der [Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) überprüfen, die aus dem Microsoft Download Center heruntergeladen werden kann.
 
 ## <a name="backup"></a>Backup 
-Wie Virenschutzlösungen können auch Sicherungslösungen den Rückruf von Tieringdateien verursachen. Es wird empfohlen, die Azure-Dateifreigabe mithilfe einer Cloudsicherungslösung anstelle eines lokalen Sicherungsprodukts zu sichern.
+Wenn Cloudtiering aktiviert ist, sollten keine Lösungen verwendet werden, die den Serverendpunkt oder einen virtuellen Computer, auf dem sich der Serverendpunkt befindet, direkt sichern. Cloudtiering bewirkt, dass nur eine Teilmenge der Daten auf dem Serverendpunkt gespeichert wird, während sich das vollständige Dataset in Ihrer Azure-Dateifreigabe befindet. Abhängig von der verwendeten Sicherungslösung werden mehrstufige Dateien entweder übersprungen und nicht gesichert (da für sie das Attribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS festgelegt ist), oder sie werden auf den Datenträger zurückgerufen, sodass hohe Ausgangsgebühren anfallen. Es wird empfohlen, die Azure-Dateifreigabe direkt mithilfe einer Cloudsicherungslösung zu sichern. Weitere Informationen finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json), oder wenden Sie sich an Ihren Sicherungsanbieter, um zu erfahren, ob dieser das Sichern von Azure-Dateifreigaben unterstützt.
 
-Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie eine Wiederherstellung durchführen, verwenden Sie die Wiederherstellungsoptionen auf Volume- oder Dateiebene. Mithilfe der Wiederherstellungsoption auf Dateiebene wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.  Bei der Wiederherstellung auf Volumeebene werden die neueren Dateiversionen in der Azure-Dateifreigabe oder auf anderen Serverendpunkten nicht ersetzt.
+Wenn Sie eine lokale Sicherungslösung bevorzugen, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie eine Wiederherstellung durchführen, verwenden Sie die Wiederherstellungsoptionen auf Volume- oder Dateiebene. Mithilfe der Wiederherstellungsoption auf Dateiebene wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.  Bei der Wiederherstellung auf Volumeebene werden die neueren Dateiversionen in der Azure-Dateifreigabe oder auf anderen Serverendpunkten nicht ersetzt.
 
 > [!Note]  
 > Bare-Metal-Recovery (BMR) kann zu unerwarteten Ergebnissen führen und wird derzeit nicht unterstützt.

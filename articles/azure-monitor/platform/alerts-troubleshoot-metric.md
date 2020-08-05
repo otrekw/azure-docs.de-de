@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0d569facb6c2b58222980cfa1488de3b1f5fb60f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515766"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327479"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -67,7 +67,7 @@ Wenn Sie der Meinung sind, dass Ihre Metrikwarnung fälschlicherweise ausgelöst
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Metrik für Warnung kann nicht gefunden werden – Metriken für virtuelle Gastcomputer
 
-Um Warnungen für Metriken für Gastbetriebssysteme (z. B. zu Arbeitsspeicher oder Datenträgerspeicherplatz) zu senden, stellen Sie sicher, dass der erforderliche Agent zum Erfassen dieser Daten in Azure Monitor-Metriken installiert ist:
+Um Warnungen für Metriken für Gastbetriebssysteme (z. B. zu Arbeitsspeicher oder Speicherplatz auf dem Datenträger) zu senden, stellen Sie sicher, dass der erforderliche Agent zum Erfassen dieser Daten in Azure Monitor-Metriken installiert ist:
 - [Für virtuelle Windows-Computer](./collect-custom-metrics-guestos-resource-manager-vm.md)
 - [Für virtuelle Linux-Computer](./collect-custom-metrics-linux-telegraf.md)
 
@@ -106,6 +106,29 @@ Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden k
 > [!NOTE] 
 > Durch die Konfiguration einer Metrikwarnungsregel als zustandslos wird verhindert, dass ausgelöste Warnungen gelöst werden. Daher verbleiben die ausgelösten Warnungen, selbst wenn die Bedingung nicht mehr erfüllt ist, bis zum Ablauf der Beibehaltungsdauer von 30 Tagen im ausgelösten Zustand.
 
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Definieren einer Warnungsregel für eine benutzerdefinierte Metrik, die noch nicht ausgegeben wurde
+
+Beim Erstellen einer Metrikwarnungsregel wird der Metrikname anhand der [Metrikdefinitions-API](/rest/api/monitor/metricdefinitions/list) überprüft, um sicherzustellen, dass er vorhanden ist. In einigen Fällen möchten Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, noch bevor diese ausgegeben wird. Ein Beispiel wäre, wenn Sie eine Application Insights-Ressource erstellen (mit einer ARM-Vorlage), die eine benutzerdefinierte Metrik ausgibt, sowie eine Warnungsregel, die diese Metrik überwacht.
+
+Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuchen, die Definitionen der benutzerdefinierten Metrik zu überprüfen, können Sie den Parameter *skipMetricValidation* im Kriterienabschnitt der Warnungsregel verwenden, durch den die Metrikvalidierung übersprungen wird. Im folgenden Beispiel finden Sie Informationen zur Verwendung dieses Parameters in einer ARM-Vorlage (umfassende ARM-Vorlagenbeispiele zum Erstellen von Metrikwarnungsregeln finden Sie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)).
+
+```json
+"criteria": {
+    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+        "allOf": [
+            {
+                    "name" : "condition1",
+                        "metricName": "myCustomMetric",
+                "metricNamespace": "myCustomMetricNamespace",
+                        "dimensions":[],
+                        "operator": "GreaterThan",
+                        "threshold" : 10,
+                        "timeAggregation": "Average",
+                    "skipMetricValidation": true
+        }
+              ]
+        }
+```
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Kontingent für Metrikwarnungsregeln zu klein
 
@@ -133,7 +156,7 @@ Führen Sie die folgenden Schritte durch, um den derzeitigen Verbrauch durch Met
 3. Stellen Sie sicher, dass Sie NICHT nach einer bestimmten Ressourcengruppe, einem Ressourcentyp oder einer Ressource filtern.
 4. Wählen Sie im Dropdown-Steuerelement **Signaltyp** die Option **Metriken** aus.
 5. Vergewissern Sie sich, dass das Dropdown-Steuerelement **Status** auf **Aktiviert** festgelegt ist.
-6. Die Gesamtanzahl von Metrikwarnungsregeln wird oberhalb der Liste mit Regeln angezeigt.
+6. Die Gesamtanzahl von Metrikwarnungsregeln wird oberhalb der Liste mit Warnungsregeln angezeigt.
 
 ### <a name="from-api"></a>Über eine API
 
@@ -152,7 +175,7 @@ Wenn beim Erstellen, Aktualisieren, Abrufen oder Löschen von Metrikwarnungen mi
 
 ### <a name="rest-api"></a>REST-API
 
-Überprüfen Sie den [Leitfaden zur REST-API](/rest/api/monitor/metricalerts/), um sicherzustellen, dass alle Parameter ordnungsgemäß übergeben werden.
+Überprüfen Sie den [Leitfaden zur REST-API](/rest/api/monitor/metricalerts/), um sicherzustellen, dass alle Parameter korrekt übergeben werden.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -171,9 +194,9 @@ Stellen Sie sicher, dass Sie die richtigen CLI-Befehle für Metrikwarnungen verw
 
 ### <a name="general"></a>Allgemein
 
-- Im Falle eines Fehlers vom Typ `Metric not found` haben Sie folgende Möglichkeiten:
+- Im Fall eines Fehlers vom Typ `Metric not found` haben Sie folgende Möglichkeiten:
 
-   - Bei einer Plattformmetrik: Vergewissern Sie sich, dass Sie den Namen der **Metrik** von der [Azure Monitor-Seite zu unterstützten Metriken](./metrics-supported.md) und nicht den **Metrikanzeigenamen** verwenden.
+   - Bei einer Plattformmetrik: Vergewissern Sie sich, dass Sie den Namen der **Metrik** von der [Azure Monitor-Seite mit unterstützten Metriken](./metrics-supported.md) und nicht den **Metrikanzeigenamen** verwenden.
 
    - Bei einer benutzerdefinierten Metrik: Vergewissern Sie sich, dass die Metrik bereits ausgegeben wird (Sie können keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen, die noch nicht vorhanden ist). Stellen Sie zudem sicher, dass Sie den Namespace der benutzerdefinierten Metrik angeben (ein Beispiel für eine ARM-Vorlage finden Sie [hier](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)).
 
@@ -197,7 +220,7 @@ Zum Erstellen einer Metrikwarnungsregel benötigen Sie die folgenden Berechtigun
 
 ## <a name="naming-restrictions-for-metric-alert-rules"></a>Benennungseinschränkungen für Metrikwarnungsregeln
 
-Beachten Sie die folgenden Einschränkungen für die Namen von Metrikwarnungsregeln:
+Beachten Sie die folgenden Einschränkungen für Namen von Metrikwarnungsregeln:
 
 - Namen von Metrikwarnungsregeln können nach der Erstellung nicht geändert werden (keine Umbenennung möglich)
 - Namen von Metrikwarnungsregeln müssen innerhalb einer Ressourcengruppe eindeutig sein
@@ -209,10 +232,10 @@ Beachten Sie die folgenden Einschränkungen für die Namen von Metrikwarnungsreg
 
 Metrikwarnungen unterstützen das Warnen bei mehrdimensionalen Metriken und das Definieren mehrerer Bedingungen (bis zu fünf Bedingungen pro Warnungsregel).
 
-Für das Verwenden von Dimensionen in einer Warnungsregel, in der mehrere Bedingungen enthalten sind, gibt es die folgenden Einschränkungen:
-1. Innerhalb jeder Bedingung kann jeweils nur ein Wert pro Dimension ausgewählt werden.
-2. Sie können die Option „Alle aktuellen und zukünftigen Werte auswählen“ nicht verwenden (Select \*).
-3. Wenn Metriken, die in verschiedenen Bedingungen konfiguriert sind, dieselbe Dimension unterstützen, dann muss auf gleiche Weise ein konfigurierter Dimensionswert explizit für alle relevanten Bedingungen dieser Metriken festgelegt werden.
+Für das Verwenden von Dimensionen in einer Warnungsregel, in der mehrere Bedingungen enthalten sind, gelten die folgenden Einschränkungen:
+- Innerhalb jeder Bedingung kann jeweils nur ein Wert pro Dimension ausgewählt werden.
+- Sie können die Option „Alle aktuellen und zukünftigen Werte auswählen“ nicht verwenden (Select \*).
+- Wenn Metriken, die in verschiedenen Bedingungen konfiguriert sind, dieselbe Dimension unterstützen, dann muss auf gleiche Weise ein konfigurierter Dimensionswert explizit für alle relevanten Bedingungen dieser Metriken festgelegt werden.
 Beispiel:
     - Stellen Sie sich eine Metrikwarnungsregel vor, die für ein Speicherkonto definiert ist und zwei Bedingungen überwacht:
         * Gesamte **Transactions** > 5
@@ -224,3 +247,4 @@ Beispiel:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Allgemeine Informationen zur Problembehandlung bei Warnungen und Benachrichtigungen finden Sie unter [Behandeln von Problemen bei Azure Monitor-Warnungen](alerts-troubleshoot.md).
+

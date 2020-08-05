@@ -3,12 +3,12 @@ title: Autorisieren des Zugriffs mit Azure Active Directory
 description: Dieser Artikel bietet Informationen zum Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 734c95f6f26dbb646f641e4446287df52c86be6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb55a716498bc50dff72c0d98943de407a367d4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317973"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371497"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory
 Azure Event Hubs unterstützt die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Event Hubs-Ressourcen. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer oder einen Anwendungsdienstprinzipal handeln kann. Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/overview.md).
@@ -21,21 +21,21 @@ Wenn ein Sicherheitsprinzipal (ein Benutzer oder eine Anwendung) versucht, auf e
 
 Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendungsanforderung zur Laufzeit ein OAuth 2.0-Zugriffstoken enthält. Wenn eine Anwendung in einer Azure-Entität, z.B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf die Ressourcen über eine verwaltete Identität erfolgen. Informationen zum Authentifizieren von Anforderungen, die von einer verwalteten Identität an den Event Hubs-Dienst übermittelt werden, finden Sie unter [Authentifizieren des Zugriffs auf Azure Event Hubs-Ressourcen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](authenticate-managed-identity.md). 
 
-Für den Autorisierungsschritt ist es erforderlich, dem Sicherheitsprinzipal mindestens eine RBAC-Rolle zuzuweisen. Azure Event Hubs stellt RBAC-Rollen bereit, die Berechtigungssätze für Event Hubs-Ressourcen enthalten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zu RBAC-Rollen finden Sie unter [Integrierte RBAC-Rollen für Azure Event Hubs](#built-in-rbac-roles-for-azure-event-hubs). 
+Für den Autorisierungsschritt ist es erforderlich, dem Sicherheitsprinzipal mindestens eine RBAC-Rolle zuzuweisen. Azure Event Hubs stellt RBAC-Rollen bereit, die Berechtigungssätze für Event Hubs-Ressourcen enthalten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zu RBAC-Rollen finden Sie unter [Integrierte Azure-Rollen für Azure Event Hubs](#azure-built-in-roles-for-azure-event-hubs). 
 
 Native Anwendungen und Webanwendungen, die Anforderungen an Event Hubs senden, können die Autorisierung ebenfalls mit Azure AD durchführen. Informationen zum Anfordern eines Zugriffstokens und seiner Verwendung zum Autorisieren von Anforderungen für Event Hubs-Ressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure Event Hubs mit Azure AD über eine Anwendung](authenticate-application.md). 
 
 ## <a name="assign-rbac-roles-for-access-rights"></a>Zuweisen von RBAC-Rollen für Zugriffsrechte
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md). Azure Event Hubs definiert eine Reihe von integrierten RBAC-Rollen, die allgemeine Berechtigungssätze für den Zugriff auf Event Hub-Daten umfassen. Sie können auch benutzerdefinierte Rollen für den Zugriff auf die Daten definieren.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md). Azure Event Hubs definiert eine Reihe von integrierten Azure-Rollen, die allgemeine Berechtigungssätze für den Zugriff auf Event Hub-Daten umfassen. Sie können auch benutzerdefinierte Rollen für den Zugriff auf die Daten definieren.
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann sich auf den Bereich des Abonnements, der Ressourcengruppe, des Event Hubs-Namespace oder jeder darin vorhandenen Ressource beziehen. Ein Azure AD-Sicherheitsprinzipal kann ein Benutzer, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Integrierte RBAC-Rollen für Azure Event Hubs
-Azure stellt die folgenden integrierten Rollen für die rollenbasierte Zugriffssteuerung zum Autorisieren des Zugriffs auf Event Hubs-Daten mittels Azure AD und OAuth bereit:
+## <a name="azure-built-in-roles-for-azure-event-hubs"></a>In Azure integrierte Rollen für Azure Event Hubs
+Azure stellt die folgenden integrierten Azure-Rollen zum Autorisieren des Zugriffs auf Event Hubs-Daten mithilfe von Azure AD und OAuth bereit:
 
 - [Azure Event Hubs-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Mit dieser Rolle gewähren Sie Vollzugriff auf Event Hubs-Ressourcen.
-- [Azure Event Hubs-Datensender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Mit dieser Rolle gewähren Sie Sendezugriff auf Event Hubs-Ressourcen.
-- [Azure Event Hubs-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Mit dieser Rolle gewähren Sie Verbrauchs-/Sendezugriff auf Event Hubs-Ressourcen.
+- [Azure Event Hubs-Datensender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Mit dieser Rolle gewähren Sie Sendezugriff auf Event Hubs-Ressourcen.
+- [Azure Event Hubs-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Mit dieser Rolle gewähren Sie Verbrauchs-/Sendezugriff auf Event Hubs-Ressourcen.
 
 ## <a name="resource-scope"></a>Ressourcenumfang 
 Bevor Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
@@ -53,7 +53,7 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 > - Dieser Inhalt gilt für Event Hubs und Event Hubs für Apache Kafka. Weitere Informationen zur Unterstützung für Event Hubs für Kafka finden Sie unter [Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen – Sicherheit und Authentifizierung](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication).
 
 
-Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md#management-and-data-operations). Weitere Informationen zum Erstellen benutzerdefinierter RBAC-Rollen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md).
+Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md#management-and-data-operations). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
 
 

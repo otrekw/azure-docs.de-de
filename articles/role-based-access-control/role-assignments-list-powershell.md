@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4ee6a3c09d24d6968227ef4215000888c5f4af05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791009"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372075"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Auflisten von Azure-Rollenzuweisungen mit Azure PowerShell
 
@@ -140,6 +140,26 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 
 ```Example
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="list-role-assignments-for-a-resource"></a>Auflisten von Rollenzuweisungen für eine Ressource
+
+Zum Auflisten von Rollenzuweisungen für eine bestimmte Ressource verwenden Sie [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) und den Parameter `-Scope`. Der Bereich variiert abhängig von der Ressource. Um den Bereich abzurufen, können Sie `Get-AzRoleAssignment` ohne Parameter ausführen. Dadurch werden alle Rollenzuweisungen aufgeführt, und Sie können nach dem Bereich suchen, für den die Auflistung erstellt werden soll.
+
+```azurepowershell
+Get-AzRoleAssignment -Scope "/subscriptions/<subscription_id>/resourcegroups/<resource_group_name>/providers/<provider_name>/<resource_type>/<resource>
+```
+
+Im folgenden Beispiel wird gezeigt, wie Sie die Rollenzuweisungen für ein Speicherkonto auflisten. Beachten Sie, dass mit diesem Befehl auch die Rollenzuweisungen übergeordneter Bereiche aufgeführt werden (z. B. Ressourcengruppen und Abonnements), die für dieses Speicherkonto gelten.
+
+```Example
+PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"
+```
+
+Wenn Sie lediglich Rollenzuweisungen auflisten möchten, die einer Ressource direkt zugewiesen sind, können Sie die Liste mit dem Befehl [Where-Object](/powershell/module/microsoft.powershell.core/where-object) filtern.
+
+```Example
+PS C:\> Get-AzRoleAssignment | Where-Object {$_.Scope -eq "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"}
 ```
 
 ## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Auflisten der Rollenzuweisungen für klassische Abonnementadministratoren und -Co-Administratoren

@@ -3,12 +3,12 @@ title: Sicherheitskontrollen
 description: Erfahren Sie mehr über die Sicherheitskontrollen, die im Azure Backup-Dienst verwendet werden. Diese Kontrollen helfen dem Dienst, Sicherheitsrisiken zu verhindern, zu erkennen und darauf zu reagieren.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: c5a324ac3738abfcf1a51442d7acd78a01e5717e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4a59ab0edeeba480475ac593d2721f95c7b5f48a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513539"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371718"
 ---
 # <a name="security-controls-for-azure-backup"></a>Sicherheitskontrollen für Azure Backup
 
@@ -38,7 +38,7 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitskontrollen 
 | Sicherheitskontrolle | Ja/Nein | Notizen| Dokumentation
 |---|---|--|--|
 | Authentifizierung| Ja | Die Authentifizierung erfolgt über Azure Active Directory. |  |
-| Authorization| Ja | Vom Kunden erstellte und integrierte RBAC-Rollen werden verwendet. Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten](./backup-rbac-rs-vault.md). |  |
+| Authorization| Ja | Es werden vom Kunden erstellte und integrierte Azure-Rollen verwendet. Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Schutz von Daten
 

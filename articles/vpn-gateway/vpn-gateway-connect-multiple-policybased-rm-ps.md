@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984622"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081983"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell
 
@@ -36,8 +36,8 @@ Die beiden Modelle sind in den folgenden Diagrammen dargestellt:
 ### <a name="azure-support-for-policy-based-vpn"></a>Azure-Unterstützung für richtlinienbasiertes VPN
 Azure unterstützt derzeit beide Modi von VPN-Gateways: routenbasierte VPN-Gateways und richtlinienbasierte VPN-Gateways. Diese werden auf unterschiedlichen internen Plattformen erstellt, und dies führt zu unterschiedlichen Spezifikationen:
 
-|                          | **Richtlinienbasiertes VPN Gateway** | **Routenbasiertes VPN Gateway**       |**Routenbasiertes VPN Gateway**                          |
-| ---                      | ---                         | ---                              |---                                                 |
+| Category | Richtlinienbasiertes VPN Gateway | Routenbasiertes VPN Gateway | Routenbasiertes VPN Gateway |
+| -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure-Gateway-SKU**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE-Version**          | IKEv1                       | IKEv2                            | IKEv1 und IKEv2                         |
 | **Max. S2S-Verbindungen** | **1**                       | 10                               | 30                     |
@@ -205,6 +205,6 @@ Mit der folgenden Zeile können Sie ermitteln, ob die richtlinienbasierten Daten
       ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md) .
 
 Ausführliche Informationen zu benutzerdefinierten IPsec/IKE-Richtlinien finden Sie unter [Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md).

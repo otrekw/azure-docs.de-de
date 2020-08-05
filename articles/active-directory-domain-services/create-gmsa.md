@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040247"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281853"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Erstellen eines gruppenverwalteten Dienstkontos (gMSA) Azure Active Directory Domain Services
 
@@ -35,7 +35,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer von Azure Active Directory Domain Services verwalteten Domäne][create-azure-ad-ds-instance] aus.
+    * Führen Sie bei Bedarf das Tutorial zum [Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][create-azure-ad-ds-instance] aus.
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] aus.
 

@@ -16,14 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764841"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282924"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
+# <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
 Azure AD-Anwendungsproxy stellt Ihre lokalen Apps Benutzern zur Verfügung, die remote oder an eigenen Geräten arbeiten. Einige Apps wurden jedoch mit lokalen in HTML eingebetteten Links entwickelt. Diese Links funktionieren allerdings nicht ordnungsgemäß, wenn die App remote genutzt wird. Wenn mehrere lokale Anwendungen aufeinander zeigen, erwarten Ihre Benutzer, dass die Links auch außerhalb ihrer Büroumgebung weiter funktionieren. 
 
@@ -35,7 +35,7 @@ Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können
 > [!NOTE]
 > Die Linkübersetzung wird für hartcodierte interne URLs, die mit JavaScript generiert wurden, nicht unterstützt.
 
-**Option 1: Verwenden von Managed Browser oder Microsoft Edge:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser oder den Microsoft Edge-Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
+**Option 1: Verwenden von Microsoft Edge:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über den Browser Microsoft Edge auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
 
 **Option 2: Verwenden der MyApps-Erweiterung:** Für diese Lösung müssen Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung kann aber alle veröffentlichten URLs verarbeiten und in den meisten gängigen Browsern verwendet werden. 
 
@@ -50,11 +50,11 @@ Mit diesen drei Features funktionieren Ihre Links unabhängig davon, wo sich Ihr
 > Wenn die Anwendung, die Sie mit Linkübersetzung konfigurieren müssen, SharePoint ist, finden Sie unter [Konfigurieren alternativer Zugriffszuordnungen für SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) ein weiteres Verfahren zum Zuordnen von Links. 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>Option 1: Integration von Intune Managed Browser und Microsoft Edge 
+### <a name="option-1-microsoft-edge-integration"></a>Option 1: Microsoft Edge-Integration 
 
-Mithilfe von Intune Managed Browser oder Microsoft Edge können Sie die Anwendung und die Inhalte zusätzlich schützen. Zur Verwendung dieser Lösung müssen Sie empfehlen bzw. festlegen, dass Benutzer über Intune Managed Browser auf die Anwendung zugreifen. Alle internen mit dem Anwendungsproxy veröffentlichten URLs werden von Managed Browser erkannt und an die entsprechende externe URL umgeleitet. Dadurch wird sichergestellt, dass alle hartcodierten internen URLs funktionieren. Wenn ein Benutzer im Browser direkt die interne URL eingibt, funktioniert diese, auch wenn der Benutzer remote arbeitet.  
+Mithilfe von Microsoft Edge können Sie die Anwendung und die Inhalte zusätzlich schützen. Zur Verwendung dieser Lösung müssen Sie empfehlen oder festlegen, dass Benutzer über den Browser Microsoft Edge auf die Anwendung zugreifen. Alle internen mit Anwendungsproxy veröffentlichten URLs werden von Edge erkannt und an die entsprechende externe URL umgeleitet. Dadurch wird sichergestellt, dass alle hartcodierten internen URLs funktionieren. Wenn ein Benutzer im Browser direkt die interne URL eingibt, funktioniert diese, auch wenn der Benutzer remote arbeitet.  
 
-Weitere Informationen, auch zum Konfigurieren dieser Option, finden Sie in der Dokumentation zu [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser).  
+Weitere Informationen, einschließlich Informationen zum Konfigurieren dieser Option, finden Sie in der Dokumentation [Verwalten des Webzugriffs mithilfe von Microsoft Edge für iOS und Android mit Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge).  
 
 ### <a name="option-2-myapps-browser-extension"></a>Option 2: MyApps-Browsererweiterung 
 
@@ -75,7 +75,7 @@ Wenn die Linkübersetzung aktiviert ist, durchsucht der Anwendungsproxydienst HT
 
 Wenn der Proxyserver nach der Authentifizierung die Anwendungsdaten an den Benutzer übergibt, scannt Anwendungsproxy die Anwendung auf hartcodierte Links und ersetzt diese durch die jeweiligen veröffentlichten externen URLs.
 
-Der Anwendungsproxy geht davon aus, dass Anwendungen mit UTF-8 codiert sind. Wenn das nicht der Fall ist, geben Sie den Codierungstyp in einem HTTP-Antwortheader wie z.B. `Content-Type:text/html;charset=utf-8` an.
+Der Anwendungsproxy geht davon aus, dass Anwendungen mit UTF-8 codiert sind. Wenn das nicht der Fall ist, geben Sie den Codierungstyp in einem HTTP-Antwortheader wie z. B. `Content-Type:text/html;charset=utf-8` an.
 
 ### <a name="which-links-are-affected"></a>Welche Links sind betroffen?
 

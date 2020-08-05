@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/01/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: ac5c19866a164bbc927d23495e9d6ec9a1ef6bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790703"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382575"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -52,6 +52,22 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Probleme bei RBAC-Rollenzuweisungen
 
 - Wenn Sie keine Rollenzuweisung im Azure-Portal für die **Zugriffssteuerung (IAM)** hinzufügen können, weil die Option **Hinzufügen** > **Rollenzuweisung hinzufügen** deaktiviert ist, oder weil der Berechtigungsfehler „The client with object id does not have authorization to perform action“ (Der Client mit der Objekt-ID ist zum Ausführen der Aktion nicht autorisiert) ausgegeben wird, überprüfen Sie, ob Sie aktuell mit einem Benutzer angemeldet sind, dem eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, wie z. B. [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator), in dem Bereich zugewiesen ist, dem Sie versuchen die Rolle zuzuweisen.
+- Wenn Sie einen Dienstprinzipal zum Zuweisen von Rollen verwenden, erhalten Sie möglicherweise die Fehlermeldung „Unzureichende Berechtigungen zum Durchführen des Vorgangs“. Angenommen, Sie verfügen über einen Dienstprinzipal, dem die Rolle „Besitzer“ zugewiesen wurde, und Sie versuchen, die folgende Rollenzuweisung als Dienstprinzipal mithilfe der Azure CLI zu erstellen:
+
+    ```azurecli
+    az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
+    az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
+
+    Wenn Sie die Fehlermeldung „Unzureichende Berechtigungen zum Durchführen des Vorgangs“ erhalten, liegt dies wahrscheinlich daran, dass Azure CLI versucht, die Identität der zugewiesenen Person in Azure AD nachzuschlagen, und der Dienstprinzipal kann Azure AD standardmäßig nicht lesen.
+
+    Es gibt zwei Möglichkeiten, diesen Fehler möglicherweise zu beheben. Die erste Möglichkeit besteht darin, dem Dienstprinzipal die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zuzuweisen, damit er Daten in dem Verzeichnis lesen kann.
+
+    Die zweite Möglichkeit, diesen Fehler zu beheben, besteht darin, die Rollenzuweisung mithilfe des Parameters `--assignee-object-id` anstelle von `--assignee` zu erstellen. Durch die Verwendung von `--assignee-object-id` überspringt Azure CLI die Azure AD-Suche. Sie müssen die Objekt-ID des Benutzers, der Gruppe oder der Anwendung abrufen, dem bzw. der Sie die Rolle zuweisen möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure CLI](role-assignments-cli.md#new-service-principal).
+
+    ```azurecli
+    az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
 
 ## <a name="problems-with-custom-roles"></a>Probleme mit benutzerdefinierten Rollen
 
@@ -66,7 +82,7 @@ $ras.Count
 - Sie können in den `AssignableScopes` einer benutzerdefinierten Rolle nur eine Verwaltungsgruppe definieren. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
 - Benutzerdefinierte Rollen mit `DataActions` können im Verwaltungsgruppenbereich nicht zugewiesen werden.
 - Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist.
-- Weitere Informationen zu benutzerdefinierten Rollen und Verwaltungsgruppen finden Sie unter [Organisieren von Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment).
+- Weitere Informationen zu benutzerdefinierten Rollen und Verwaltungsgruppen finden Sie unter [Organisieren von Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment).
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Übertragen eines Abonnements in ein anderes Verzeichnis
 

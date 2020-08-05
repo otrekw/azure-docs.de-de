@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen (FAQ) zu Azure Service Bus | Microsoft-Dokumentation
 description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen (FAQ) zu Azure Service Bus.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341463"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371242"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Service Bus
 
@@ -18,7 +18,7 @@ In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Serv
 
 ## <a name="general-questions-about-azure-service-bus"></a>Allgemeine Fragen zu Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
-[Azure Service Bus](service-bus-messaging-overview.md) ist eine asynchrone Cloudplattform für Messaging, mit der Sie Daten zwischen entkoppelten Systemen senden können. Microsoft stellt dieses Feature als Dienst bereit, sodass Sie Ihre Hardware nicht selbst hosten müssen, um sie verwenden zu können.
+[Azure Service Bus](service-bus-messaging-overview.md) ist eine asynchrone Cloudplattform für Messaging, mit der Sie Daten zwischen entkoppelten Systemen senden können. Microsoft stellt dieses Feature als Dienst bereit, sodass Sie keine eigene Hardware hosten müssen, um es verwenden zu können.
 
 ### <a name="what-is-a-service-bus-namespace"></a>Was ist ein Service Bus-Namespace?
 Ein [Namespace](service-bus-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. Die Namespace-Erstellung ist für die Verwendung von Service Bus erforderlich und ist einer der ersten Schritte.
@@ -30,7 +30,7 @@ Eine [Service Bus-Warteschlange](service-bus-queues-topics-subscriptions.md) ist
 Eine Thema kann als Warteschlange visualisiert werden, und bei Verwendung mehrerer Abonnements ergibt sich ein umfassenderes Messagingmodell. Im Wesentlichen handelt es sich um ein Tool für die 1:n-Kommunikation. Bei diesem Modell vom Typ „Veröffentlichen/Abonnieren“ (*Pub/Sub*) kann für eine Anwendung, die eine Nachricht an ein Thema mit mehreren Abonnements sendet, erreicht werden, dass die Nachricht von mehreren Anwendungen empfangen wird.
 
 ### <a name="what-is-a-partitioned-entity"></a>Was ist eine partitionierte Entität?
-Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Eine [partitionierte Warteschlange oder ein Thema](service-bus-partitioning.md) wird nur auf der Basic- und Standard-Messagingebene unterstützt und von mehreren Nachrichtenbrokern verarbeitet und in mehreren Nachrichtenspeichern gespeichert. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist.
+Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md) werden nur auf der Basic- und Standard-Messagingebene unterstützt. Sie werden von mehreren Nachrichtenbrokern verarbeitet und in mehreren Nachrichtenspeichern gespeichert. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht mehr verfügbar ist.
 
 Bei der Verwendung von partitionierten Entitäten ist keine Sortierung gewährleistet. Wenn eine Partition nicht verfügbar ist, ist es trotzdem möglich, Nachrichten zu senden und von anderen Partitionen zu empfangen.
 
@@ -51,15 +51,15 @@ In der folgenden Tabelle finden Sie die ausgehenden Ports, die Sie öffnen müss
 | SBMP | 9350 bis 9354 | Siehe [Konnektivitätsmodus](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP, HTTPS | 80, 443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Welche IP-Adressen muss ich in die Whitelist aufnehmen?
-Um die richtigen IP-Adressen für die Whitelist für Ihre Verbindungen zu ermitteln, führen Sie diese Schritte aus:
+### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Welche IP-Adressen muss ich in die Zulassungsliste aufnehmen?
+Um die richtigen IP-Adressen zu ermitteln, die Sie in die Zulassungsliste für Ihre Verbindungen aufnehmen sollten, führen Sie die folgenden Schritte aus:
 
 1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung aus: 
 
     ```
     nslookup <YourNamespaceName>.cloudapp.net
     ```
-2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Diese IP-Adresse ist statisch. Sie würde sich nur dann ändern, wenn Sie den Namespace auf einem anderen Cluster wiederherstellen.
+2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Diese IP-Adresse ist statisch. Sie würde sich nur dann ändern, wenn Sie den Namespace in einem anderen Cluster wiederherstellen.
 
 Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
 
@@ -77,6 +77,10 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
     ```
 3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
 
+### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Wo finde ich die IP-Adresse des Clients, der Nachrichten an einen Namespace sendet bzw. von diesem empfängt? 
+Die IP-Adressen von Clients, die Nachrichten an einen Namespace senden oder von diesem empfangen, werden von uns nicht protokolliert. Generieren Sie die Schlüssel neu, damit die Authentifizierung aller vorhandenen Clients nicht mehr funktioniert, und überprüfen Sie die Einstellungen der rollenbasierten Zugriffssteuerung ([Role-Based Access Control, RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)), um sicherzustellen, dass nur zulässige Benutzer oder Anwendungen Zugriff auf den Namespace haben. 
+
+Wenn Sie einen **Premium**-Namespace verwenden, schränken Sie den Zugriff auf den Namespace mithilfe von [IP-Filtern](service-bus-ip-filtering.md), [Dienstendpunkten für virtuelle Netzwerke](service-bus-service-endpoints.md) und [privaten Endpunkten](private-link-service.md) ein. 
 
 ## <a name="best-practices"></a>Bewährte Methoden
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Gibt es Beispiele für bewährte Azure Service Bus-Methoden?
@@ -100,14 +104,14 @@ Sie können auch [Häufig gestellte Fragen zum Azure-Support](https://azure.micr
 ### <a name="how-do-you-charge-for-service-bus"></a>Wie werden die Kosten für Service Bus berechnet?
 Vollständige Informationen zu Service Bus-Preisen finden Sie unter [Service Bus-Preise][Pricing overview]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
 
-### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Bei welcher Nutzung von Service Bus werden Daten übertragen? Bei welcher nicht?
+### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-isnt"></a>Bei welcher Nutzung von Service Bus werden Daten übertragen? Bei welcher ist dies nicht der Fall?
 Jede Datenübertragung innerhalb der jeweiligen Azure-Region ist ebenso wie jede eingehende Datenübertragung kostenfrei. Für die Datenübertragung außerhalb einer Region gelten Gebühren für ausgehenden Datenverkehr, die [hier](https://azure.microsoft.com/pricing/details/bandwidth/) aufgeführt sind.
 
 ### <a name="does-service-bus-charge-for-storage"></a>Fallen für Service Bus Speicherkosten an?
-Nein, für Service Bus fallen keine Speicherkosten an. Es gibt allerdings ein Kontingent, das die Höchstmenge an Daten begrenzt, die pro Warteschlange/Thema beibehalten werden kann. Weitere Informationen finden Sie im nächsten Abschnitt.
+Nein. Für Service Bus fallen keine Speicherkosten an. Es gibt allerdings ein Kontingent, das die Höchstmenge von Daten begrenzt, die pro Warteschlange/Thema beibehalten werden kann. Weitere Informationen finden Sie im nächsten Abschnitt.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Ich habe einen Service Bus Standard-Namespace. Warum werden Gebühren unter der Ressourcengruppe „$system“ angezeigt?
-Vor Kurzem wurden die Abrechnungskomponenten für Azure Service Bus aktualisiert. Aus diesem Grund werden, wenn Sie über einen Service Bus Standard-Namespace verfügen, möglicherweise Zeilenelemente für die Ressource „/subscriptions/<azure_abonnement_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system“ unter der Ressourcengruppe „$system“ angezeigt.
+Vor Kurzem wurden die Abrechnungskomponenten für Azure Service Bus aktualisiert. Aufgrund dieser Änderung werden, wenn Sie über einen Service Bus Standard-Namespace verfügen, möglicherweise Zeilenelemente für die Ressource „/subscriptions/<Azure-Abonnement-ID>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system“ unter der Ressourcengruppe „$system“ angezeigt.
 
 Diese Gebühren stellen die Grundgebühr für jedes Azure-Abonnement dar, das einen Service Bus Standard-Namespace bereitgestellt hat. 
 
@@ -118,7 +122,7 @@ Beachten Sie, dass es sich hierbei nicht um neue Gebühren handelt, d. h., sie 
 Eine Liste mit Service Bus-Grenzwerten und -Kontingenten finden Sie unter [Übersicht über Service Bus-Kontingente][Quotas overview].
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>Wie werden Nachrichten mit einer Größe über 1 MB behandelt?
-Service Bus-Messagingdienste (Warteschlangen und Themen/Abonnements) ermöglichen Anwendungen, Nachrichten mit einer Größe bis zu 256 KB (Standard-Tarif) oder 1 MB (Premium-Tarif) zu senden. Wenn Ihre Nachrichten eine Größe über 1 MB aufweisen, verwenden Sie das [in diesem Blogbeitrag](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) beschriebene Anspruchsprüfungsmuster.
+Service Bus-Messagingdienste (Warteschlangen und Themen/Abonnements) ermöglichen Anwendungen, Nachrichten mit einer Größe bis zu 256 KB (Standard-Tarif) oder 1 MB (Premium-Tarif) zu senden. Wenn Ihre Nachrichten eine Größe über 1 MB aufweisen, verwenden Sie das [in diesem Blogbeitrag](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) beschriebene Anspruchsüberprüfungsmuster.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Warum kann ich keinen Namespace erstellen, nachdem ich ihn aus einem anderen Abonnement gelöscht habe? 

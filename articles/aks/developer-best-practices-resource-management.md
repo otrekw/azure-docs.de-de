@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: d3fab2515bb15cce35070de9326cd6afcc034b20
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517743"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281564"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Bewährte Anwendungsentwicklermethoden zum Verwalten von Ressourcen in Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Eine primäre Methode zum Verwalten der Computeressourcen in einem AKS-Cluster i
     * Wenn der Kubernetes-Planer versucht, einen Pod auf einem Knoten zu platzieren, wird anhand der Podanforderungen bestimmt, auf welchem Knoten genügend Ressourcen für die Planung verfügbar wird.
     * Wenn Sie keine Podanforderung festlegen, wird diese standardmäßig auf den definierten Grenzwert festgelegt.
     * Es ist sehr wichtig, die Leistung Ihrer Anwendung zu überwachen, um diese Anforderungen anzupassen. Wenn nicht genügend Anforderungen gestellt werden, kann die Leistung der Anwendung aufgrund der Überplanung eines Knotens beeinträchtigt werden. Wenn Anforderungen überschätzt werden, kann es zu erhöhten Schwierigkeiten bei der Planung Ihrer Anwendung kommen.
-* **Podgrenzwerte für CPU/Arbeitsspeicher** sind das Maximum an CPU-Leistung und Arbeitsspeichermenge, das ein Pod verwenden kann. Mithilfe dieser Grenzwerte können Sie definieren, welche Pods bei Knoteninstabilität aufgrund unzureichender Ressourcen beendet werden sollen. Ohne geeignete Grenzwerte werden Pods beendet, bis der Ressourcendruck sich erhöht.
+* **Podgrenzwerte für CPU/Arbeitsspeicher** sind das Maximum an CPU-Leistung und Arbeitsspeichermenge, das ein Pod verwenden kann. Mithilfe von Speichergrenzwerten können Sie definieren, welche Pods bei Knoteninstabilität aufgrund unzureichender Ressourcen beendet werden sollen. Ohne geeignete Grenzwerte werden Pods beendet, bis der Ressourcendruck sich erhöht. Unabhängig davon, ob ein Pod den CPU-Grenzwert für einen bestimmten Zeitraum überschreiten kann, wird er nicht wegen Überschreitung des CPU-Limits beendet. 
     * Mithilfe von Podgrenzwerten definieren Sie, wann ein Pod die Kontrolle über den Ressourcenverbrauch verloren hat. Wird ein Grenzwert überschritten, wird der Pod zum Beenden priorisiert, um die Knotenintegrität beizubehalten und die Auswirkungen auf Pods zu minimieren, die den Knoten gemeinsam nutzen.
     * Wenn Sie keinen Podgrenzwert festlegen, wird standardmäßig der höchste verfügbare Wert auf einem bestimmten Knoten festgelegt.
     * Legen Sie keinen Podgrenzwert fest, der höher ist, als Ihre Knoten unterstützen können. Jeder AKS-Knoten reserviert eine bestimmte Menge von CPU-Leistung und Arbeitsspeichermenge für die Kubernetes-Kernkomponenten. Ihre Anwendung versucht möglicherweise, zu viele Ressourcen auf dem Knoten für die erfolgreiche Ausführung anderer Pods zu beanspruchen.

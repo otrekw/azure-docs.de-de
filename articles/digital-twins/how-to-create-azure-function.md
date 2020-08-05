@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725901"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124305"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verbinden von Azure Functions-Apps für die Verarbeitung von Daten
 
@@ -78,7 +78,7 @@ Dies ist Ihre grundlegende Azure-Funktion.
 
 Sie können die Funktion jetzt kompilieren und ausführen. Obwohl Azure-Funktionen letztendlich in der Cloud ausgeführt werden sollen, können Sie Azure-Funktionen auch lokal ausführen und debuggen.
 
-Weitere Informationen hierzu finden Sie unter [Lokales Debuggen des Event Grid-Triggers](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Weitere Informationen hierzu finden Sie unter [*Lokales Debuggen des Event Grid-Triggers*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Hinzufügen des Azure Digital Twins-SDKs zu Ihrer Azure-Funktions-App
 
@@ -163,9 +163,9 @@ Verwenden Sie den Wert *principalId* im folgenden Befehl, um die Identität der 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Weitere Informationen zur verwalteten Identität finden Sie unter [Verwenden verwalteter Identitäten für App Service und Azure Functions](../app-service/overview-managed-identity.md).
+Weitere Informationen zur verwalteten Identität finden Sie unter [*Verwenden verwalteter Identitäten für App Service und Azure Functions*](../app-service/overview-managed-identity.md).
 
-Zuletzt können Sie die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich gestalten, indem Sie eine Umgebungsvariable festlegen. Weitere Informationen hierzu finden Sie unter [Umgebungsvariablen](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables).
+Zuletzt können Sie die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich gestalten, indem Sie eine Umgebungsvariable festlegen. Weitere Informationen hierzu finden Sie unter [*Umgebungsvariablen*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables).
 
 > [!TIP]
 > Die URL der Azure Digital Twins-Instanz wird durch Hinzufügen von *https://* an den Anfang des *Hostnamens* der Azure Digital Twins-Instanz erstellt. Um den Hostnamen mit allen Eigenschaften der Instanz anzuzeigen, können Sie `az dt show --dt-name <your-Azure-Digital-Twins-instance>` ausführen.
@@ -209,7 +209,7 @@ Beachten Sie auch die auf dieser Seite gezeigte **Objekt-ID**, da sie im nächst
 
 ### <a name="assign-access-roles"></a>Zuweisen von Zugriffsrollen
 
-Da in Azure Digital Twins die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet wird (weitere Informationen hierzu finden Sie unter [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md)), müssen Sie auch eine Rolle für jede Funktions-App hinzufügen, der Sie den Zugriff auf Azure Digital Twins gestatten möchten.
+Da in Azure Digital Twins die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet wird (weitere Informationen hierzu finden Sie unter [*Konzepte: Sicherheit für Azure Digital Twins-Lösungen*](concepts-security.md)), müssen Sie auch eine Rolle für jede Funktions-App hinzufügen, der Sie den Zugriff auf Azure Digital Twins gestatten möchten.
 
 Sie benötigen für die Zuweisung einer Rolle die **Ressourcen-ID** der von Ihnen erstellten Azure Digital Twins-Instanz. Wenn Sie sie bei der Erstellung Ihrer Instanz nicht bereits früher aufgezeichnet haben, können Sie sie mit diesem Befehl abrufen:
 
@@ -232,4 +232,4 @@ In diesem Artikel haben Sie die Schritte zum Einrichten einer Azure-Funktion fü
 * Ein Event Grid-Endpunkt, der Nachrichten von anderen Diensten empfängt.
 
 Als nächstes erfahren Sie, wie Sie auf Ihrer grundlegenden Azure-Funktion aufbauen können, um IoT Hub-Daten in Azure Digital Twins zu erfassen:
-* [Gewusst wie: Erfassen von Telemetriedaten aus IoT Hub](how-to-ingest-iot-hub-data.md)
+* [*Verwenden Erfassen von Telemetriedaten aus IoT Hub*](how-to-ingest-iot-hub-data.md)

@@ -11,14 +11,43 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512662"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373792"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
+
+## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0: Release 2020-July
+
+**Hinweis**: Für das Speech SDK unter Windows muss das freigegebene Microsoft Visual C++ Redistributable für Visual Studio 2015, 2017 und 2019 installiert sein. Sie können die Software [hier](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) herunterladen und installieren.
+
+**Neue Features**
+- **C#** : Unterstützung für asynchrone Unterhaltungstranskription hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription).  
+- **JavaScript:** Unterstützung für Sprechererkennung für [Browser](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) und [Node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition) hinzugefügt.
+- **JavaScript:** Unterstützung für automatische Spracherkennung/Sprach-ID hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript).
+- **Objective-C:** Unterstützung für die Konversation von mehreren Geräten und Unterhaltungstranskription hinzugefügt. 
+- **Python**: Unterstützung für komprimierte Audiodaten für Python unter Windows und Linux hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
+
+**Fehlerbehebungen**
+- **All**: Es wurde ein Problem behoben, durch das der KeywordRecognizer die Streams nach einer Erkennung nicht weiterleitete.
+- **All**: Es wurde ein Problem behoben, durch das der aus einem KeywordRecognitionResult abgeleitete Stream nicht das Schlüsselwort enthielt.
+- **All**: Es wurde ein Problem behoben, durch das SendMessageAsync die Nachricht nicht wirklich über das Netzwerk gesendet hat, nachdem die Benutzer darauf warteten.
+- **All**: Es wurde ein Absturz in den Sprechererkennungs-APIs korrigiert, wenn Benutzer mehrere Instanzen von VoiceProfileClient::SpeakerRecEnrollProfileAsync starteten und nicht darauf warteten, dass diese beendet wurden.
+- **All**: Die Aktivierung der Dateiprotokollierung in der VoiceProfileClient- und der SpeakerRecognizer-Klasse wurde korrigiert.
+- **JavaScript:** Es wurde ein [Problem](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) mit der Drosselung behoben, wenn der Browser minimiert wird.
+- **JavaScript:** Es wurde ein [Problem](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) mit einem Arbeitsspeicherverlust in Streams behoben.
+- **JavaScript:** Zwischenspeicherung für OCSP-Antworten von Node.js hinzugefügt.
+- **Java**: Es wurde ein Problem behoben, durch das BigInteger-Felder immer „0“ zurückgaben.
+- **iOS:** Es wurde ein [Problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) beim Veröffentlichen von Apps, die auf dem Speech SDK basieren, im iOS App Store behoben.
+
+**Beispiele**
+- **C++:** Beispielcode für Sprechererkennung [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp) hinzugefügt.
+
+**Abgekürzte Tests aufgrund von COVID-19:** Da wir in den letzten Wochen remote gearbeitet haben, konnten wir die manuellen Tests zur Überprüfung nicht im gewohnten Umfang durchführen. Wir haben keine Änderungen vorgenommen, die möglicherweise zu Kompatibilitätsproblemen geführt hätten, und alle unsere automatisierten Tests wurden bestanden. Falls wir doch entgegen aller Wahrscheinlichkeit etwas übersehen haben sollten, informieren Sie uns bitte auf [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Bleiben Sie gesund!
 
 ## <a name="text-to-speech-2020-july-release"></a>Sprachsynthese: Release Juli 2020
 

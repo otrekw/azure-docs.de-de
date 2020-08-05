@@ -5,21 +5,23 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101707"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327394"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Prüfliste für die Erstellung von SaaS-Angeboten im Partner Center
 
-Bei der Erstellung von SaaS-Angeboten werden Sie durch mehrere Seiten geführt.  Hier sind die Informationen, die Sie auf den einzelnen Seiten angeben können, sowie Links zu weiteren Informationen über die einzelnen Elemente aufgeführt.
+Bei der Erstellung von SaaS-Angeboten werden Sie durch mehrere Seiten geführt.  In diesem Artikel finden Sie die Informationen, die Sie auf den einzelnen Seiten angeben können, sowie Links für weitere Informationen zu den einzelnen Elementen.
 
-Elemente, deren Angabe oder Festlegung erforderlich ist, sind unten aufgeführt.  Einige Bereiche sind optional oder bieten Standardwerte, dass Sie nach Bedarf ändern können.  Sie müssen diese Abschnitte nicht in der hier aufgeführten Reihenfolge bearbeiten.
+> [!NOTE]
+> Wenn Sie ein transaktionsfähiges SaaS-Angebot erstellen, stellen Sie sicher, dass Sie die Integration von [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-apis.md) implementieren.  Die Integration der APIs ist die einzige Möglichkeit, die reibungslose Transaktionsfähigkeit im Marketplace sicherzustellen. Außerdem müssen Sie sicherstellen, dass Ihre App die Azure AD-Authentifizierung mit einmaligem Anmelden (Single Sign On, SSO) verwendet. Weitere Informationen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](../azure-ad-saas.md).
 
->[!Note]
->Wenn Sie ein transaktionsfähiges SaaS-Angebot erstellen, sollten Sie sicherstellen, dass Sie die Integration von [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-apis.md) implementieren.  Die Integration der APIs ist die einzige Möglichkeit, die reibungslose Transaktionsfähigkeit im Marketplace sicherzustellen.
+Unten sind die Elemente aufgeführt, die Sie bereitstellen oder angeben müssen.  Einige Bereiche sind optional oder bieten Standardwerte, dass Sie nach Bedarf ändern können.  Sie müssen diese Abschnitte nicht in der hier aufgeführten Reihenfolge bearbeiten.
 
 | **Element**    | **Zweck**  |
 | :---------- | :-------------------|
@@ -28,7 +30,7 @@ Elemente, deren Angabe oder Festlegung erforderlich ist, sind unten aufgeführt.
 | [Seite „Eigenschaften“](#properties-page) | Hier definieren Sie die Kategorien und Branchen, die zum Gruppieren Ihres Angebots in den Marketplaces verwendet werden, die Verträge für Ihr Angebot und die Version Ihrer App. |
 | [Seite „Angebotsliste“](#offer-listing-page) | Hier definieren Sie die Angebotsdetails, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen.|
 | [Seite „Vorschau“](#preview-page) | Hier definieren Sie eine eingeschränkte Vorschauzielgruppe für das Freigeben Ihres Angebots, bevor Sie das Angebot für die größere Marketplace-Zielgruppe(n) live veröffentlichen.|
-| [Seite „Technische Angebotskonfiguration“](#technical-configuration-page)  |  Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden.  Definieren Sie die technischen Details (URL der Angebotsseite und des Verbindungswebhooks, Azure AD-Mandanten-ID und Azure AD-App-ID), die im Marketplace verwendet werden, um eine Verbindung mit Ihrem Angebot herzustellen.  Diese Parameter sind für die ordnungsgemäße Integration der SaaS-Fulfillment- und Marketplace-APIs für getaktete Abrechnung erforderlich.|
+| [Seite „Technische Konfiguration“](#technical-configuration-page)  |  Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden.  Definieren Sie die technischen Details (URL der Angebotsseite und des Verbindungswebhooks, Azure AD-Mandanten-ID und Azure AD-App-ID), die im Marketplace verwendet werden, um eine Verbindung mit Ihrem Angebot herzustellen.  Diese Parameter sind für die ordnungsgemäße Integration der SaaS-Fulfillment- und Marketplace-APIs für getaktete Abrechnung erforderlich.|
 | [**Modales Fenster „Neuer Plan“** ](#plan-identity-modal) | Erfasst Informationen zur Planidentität.  |
 | [Seite „Planlisting“](#plan-listing-page)  | Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden. Hier definieren Sie die Informationen, die zum Auflisten des Plans im Marketplace verwendet werden.  |
 | [Seite „Preise und Verfügbarkeit des Plans“](#plan-pricing--availability-page)  | Nur verfügbar, wenn Sie sich für den Vertrieb des Angebots über Microsoft entscheiden.  Erfasst die Geschäftsmerkmale (Preismodell), Zielgruppe und Marktverfügbarkeit für jeden Plan (Version) Ihres Angebots.  |
@@ -36,10 +38,9 @@ Elemente, deren Angabe oder Festlegung erforderlich ist, sind unten aufgeführt.
 | Seite „Technische Konfiguration der Testversion“  | Nur verfügbar, wenn Sie sich zur Bereitstellung einer Testversion für Ihr Angebot entscheiden. Hier definieren Sie die technischen Informationen für die Demonstration (oder „Testversion“), sodass Kunden Ihr Angebot testen können, bevor sie sich zum Kauf entschließen.  |
 | [Seite „Überprüfen und veröffentlichen“](#review-and-publish-page)  | Wählen Sie die Änderungen aus, die Sie veröffentlichen möchten, sehen Sie sich den Status jeder Seite an, und stellen Sie Hinweise für das Zertifizierungsteam bereit.  |
 
+## <a name="new-offer-modal"></a>Modales Fenster „Neues Angebot“
 
-## <a name="new-offer-modal"></a>Modales Fenster „Neues Angebot“ 
-
-Die ersten Informationen, zu deren Eingabe Sie aufgefordert werden, sind eine ID und ein Alias für Ihr Angebot. 
+Die ersten Informationen, zu deren Eingabe Sie aufgefordert werden, sind eine ID und ein Alias für Ihr Angebot.
 
 | **Feldname**    | **Hinweise**   |  
 | :---------------- | :-----------| 
@@ -106,6 +107,9 @@ Auf der Seite „Vorschau“ geben Sie die Zielgruppe an, die Zugriff auf Ihre A
 ## <a name="technical-configuration-page"></a>Seite „Technische Konfiguration“ 
 
 Auf der Seite „Technische Konfiguration“ geben Sie die technischen Informationen an, die von Microsoft für die Verbindung zu Ihrem Angebot verwendet werden. Diese Seite wird Ihnen nur angezeigt, wenn Sie sich für den Verkauf über Microsoft entschieden haben.
+
+> [!NOTE]
+> Für transaktionsfähige Angebote müssen Sie eine Angebotsseite erstellen, und Ihre App muss die Azure AD-Authentifizierung mit einmaligem Anmelden (Single Sign On, SSO) verwenden. Weitere Informationen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](../azure-ad-saas.md).
 
 | **Feldname**    | **Hinweise**   |  
 | :---------------- | :-----------| 

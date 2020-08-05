@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller mit einer statischen öffentlichen IP-Adresse in einem AKS-Cluster konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: a59bd1cfcc03b0a6c9af218cb7108a0ba094377d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: 38caddeece7b8e2a49d09e25a22e9996cf65d069
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335952"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers mit einer statischen öffentlichen IP-Adresse in Azure Kubernetes Service (AKS)
 
@@ -49,6 +49,9 @@ Als Nächstes erstellen Sie eine öffentliche IP-Adresse mit der *statischen* Zu
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
+> [!NOTE]
+> Mit den obigen Befehlen wird eine IP-Adresse erstellt, die beim Löschen Ihres AKS-Clusters gelöscht wird. Alternativ können Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, die separat von Ihrem AKS-Cluster verwaltet werden kann. Wenn Sie eine IP-Adresse in einer anderen Ressourcengruppe erstellen, muss sichergestellt werden, dass der vom AKS-Cluster verwendete Dienstprinzipal über delegierte Berechtigungen für die andere Ressourcengruppe verfügt (z. B. *Netzwerkmitwirkender*).
+
 Nun stellen Sie das *nginx-ingress*-Diagramm mit Helm bereit. Für zusätzliche Redundanz werden zwei Replikate der NGINX-Eingangscontroller mit dem Parameter `--set controller.replicaCount` bereitgestellt. Um vollständig von der Ausführung von Replikaten des Eingangscontrollers zu profitieren, stellen Sie sicher, dass sich mehr als ein Knoten im AKS-Cluster befindet.
 
 Sie müssen zwei zusätzliche Parameter an das Helm-Release übergeben, damit der Eingangscontroller sowohl die statische IP-Adresse des Lastenausgleichs, der dem Eingangscontrollerdienst zugeordnet werden soll, als auch die DNS-Namensbezeichnung kennt, die auf die öffentliche IP-Adressressource angewandt wird. Damit die HTTPS-Zertifikate ordnungsgemäß funktionieren, wird eine DNS-Namensbezeichnung verwendet, um einen vollqualifizierten Domänennamen (FQDN) für die IP-Adresse des Eingangscontrollers zu konfigurieren.
@@ -64,7 +67,10 @@ Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Win
 > [!TIP]
 > Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert TLS-Pass-Through nicht.
 
-Aktualisieren Sie das folgende Skript mit der **IP-Adresse** des Eingangscontrollers und einem **eindeutigen Namen**, den Sie als FQDN-Präfix verwenden möchten:
+Aktualisieren Sie das folgende Skript mit der **IP-Adresse** des Eingangscontrollers und einem **eindeutigen Namen**, den Sie als FQDN-Präfix verwenden möchten.
+
+> [!IMPORTANT]
+> *STATIC_IP* und *DNS_LABEL* müssen beim Ausführen des Befehls durch Ihre eigene IP-Adresse und Ihren eindeutigen Namen ersetzt werden.
 
 ```console
 # Create a namespace for your ingress resources
@@ -80,7 +86,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="STATIC_IP" \
-    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="DNS_LABEL"
 ```
 
 Wird der Kubernetes-Lastenausgleichsdienst für den NGINX-Eingangscontroller erstellt, wird Ihre statische IP-Adresse zugewiesen, wie in der folgenden Beispielausgabe gezeigt:
@@ -172,7 +178,7 @@ Ein Eingangscontroller und eine Zertifikatsverwaltungslösung wurden konfigurier
 
 Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
 
-Erstellen Sie die Datei *aks-helloworld.yaml*, und kopieren Sie den folgenden YAML-Beispielcode:
+Erstellen Sie die Datei *aks-helloworld.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -210,7 +216,7 @@ spec:
     app: aks-helloworld
 ```
 
-Erstellen Sie die Datei *ingress-demo.yaml*, und kopieren Sie den folgenden YAML-Beispielcode:
+Erstellen Sie die Datei *ingress-demo.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -264,7 +270,7 @@ Im folgenden Beispiel wird der Datenverkehr an die Adresse `https://demo-aks-ing
 Erstellen Sie eine Datei mit dem Namen `hello-world-ingress.yaml`, und fügen Sie den folgenden YAML-Beispielcode ein.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress

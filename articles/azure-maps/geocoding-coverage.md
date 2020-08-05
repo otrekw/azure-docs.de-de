@@ -1,26 +1,29 @@
 ---
-title: Geocodierungsabdeckung | Microsoft Azure Maps
-description: Der Vorgang zum Konvertieren einer Standortadresse in Breiten- und Längenkoordinaten wird als „Geocodierung“ bezeichnet. In diesem Artikel erfahren Sie mehr über Regionen mit Geocodierungsabdeckung in Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
-ms.date: 12/31/2019
+title: Geocodierungsabdeckung im Microsoft Azure Maps-Suchdienst
+description: In diesem Artikel erfahren Sie mehr über die Geocodierungsabdeckung von Microsoft Azure Maps in unterschiedlichen Ländern/Regionen.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+manager: philmea
+ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335650"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386910"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 
-Bei der Suche nach einem Ort mit Azure Maps verwendet der Suchdienst, beispielsweise [Get Search Address](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) (Suchadresse abrufen), Ihre Suchbegriffe und gibt die Koordinaten für den Breiten- und Längengrad zurück. Dieser Vorgang wird als „Geocodierung“ bezeichnet. Azure Maps bietet allerdings nicht für alle Regionen und Länder das gleiche Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können. 
+Der Azure Maps-[Suchdienst](https://docs.microsoft.com/rest/api/maps/search) unterstützt Geocodierung, was bedeutet, dass Ihre API-Anforderung Suchbegriffe wie eine Adresse oder den Namen eines Orts enthalten kann, woraufhin das Ergebnis als Koordinaten mit Breiten- und Längengraden zurückgegeben wird. Beispielsweise empfängt die [API zum Abrufen von Suchadressen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) von Azure Maps Abfragen, die Standortinformationen enthalten, und gibt Ergebnisse als Koordinaten mit Breiten- und Längengraden zurück.
+
+Der Azure Maps-[Suchdienst](https://docs.microsoft.com/rest/api/maps/search) bietet allerdings nicht für alle Regionen und Länder das selbe Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können.
 
 Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abdeckung der Straßendaten und der Geocodierungsgenauigkeit des Geocodierungsdiensts ab. Die jeweilige Unterstützung der Geocodierung in den einzelnen Ländern/Regionen wird mit den folgenden Kategorisierungen angegeben.
-* **Adresspunkte:** Adressendaten können innerhalb des Adresspakets (Eigenschaftsgrenze) in eine Längen- und Breitenkoordinate aufgelöst werden. Dies wird manchmal als „hausgenau“ bezeichnet. Dies ist die höchste verfügbare Genauigkeit für Adressen. 
+
+* **Adresspunkte:** Adressdaten können innerhalb des Adresspakets (Eigenschaftsgrenze) in Koordinaten mit Breiten-/Längengraden aufgelöst werden. Adresspunkte werden oft als „hausgenau" bezeichnet. Dies ist die höchste verfügbare Genauigkeit für Adressen.
 * **Hausnummern:** Adressen werden in eine Längen- und Breitenkoordinate in der Straße interpoliert.
 * **Straße:** Adressen werden in die Längen- und Breitenkoordinate der Straße mit der Adresse aufgelöst. Die Hausnummer wird möglicherweise nicht verarbeitet.
 * **Ort:** Ortsnamen werden nicht unterstützt.
@@ -214,7 +217,6 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Usbekistan                                          |                 |                |              |      ✓     |          ✓         |
 | Vatikanstadt                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>Naher Osten und Afrika
 
 | Land/Region                                      | Adresspunkte |Hausnummern | Straße | Ort | POIs |
@@ -295,11 +297,8 @@ Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abde
 | Sambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Simbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure Maps-Geocodierung finden Sie auf den [Suchen](https://docs.microsoft.com/rest/api/maps/search)-Referenzseiten.
-
-Erfahren Sie mehr über die [Abdeckungsbereiche des Verkehrsinfodiensts von Maps](traffic-coverage.md). 
-
+Weitere Informationen zur Azure Maps-Geocodierung:
+> [!div class="nextstepaction"]
+> [Azure Maps-Suchdienst](https://docs.microsoft.com/rest/api/maps/search)

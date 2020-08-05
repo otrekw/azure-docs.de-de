@@ -3,16 +3,16 @@ title: Cloud Solution Provider – kommerzieller Microsoft-Marketplace
 description: Erfahren Sie, wie Sie Ihre Angebote über den Partnerkanal Microsoft Cloud Solution Provider-Programm (CSP) im kommerziellen Marketplace verkaufen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104434"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082803"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider-Programm
 
@@ -30,31 +30,31 @@ Die folgenden Angebote können abonniert werden, um von Partnern im CSP-Programm
 - Verwaltete Anwendungen
 
 > [!NOTE]
-> Container und BYOL-VM-SKUs (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz) sind standardmäßig für den Verkauf durch Partner im CSP-Programm abonniert.
+> Container und BYOL-VM-Pläne (Bring-Your-Own-License) sind standardmäßig für den Verkauf durch Partner im CSP-Programm abonniert.
 
-## <a name="how-to-configure-an-offering"></a>Konfigurieren ein Angebots
+## <a name="how-to-configure-an-offer"></a>Konfigurieren ein Angebots
 
-Die „Abonnieren“-Einstellung für das CSP-Programm wird im Partner Center oder im Cloud-Partnerportal im Bereich für die Erstellung von Angeboten konfiguriert. [Erfahren Sie mehr über den Wechsel der Umgebung für Herausgeber](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+Konfigurieren Sie die Abonnementeinstellung für das CSP-Programm, wenn Sie das Angebot in Partner Center erstellen. [Erfahren Sie mehr über den Wechsel der Umgebung für Herausgeber](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
 
 ### <a name="partner-center-opt-in"></a>Partner Center-Abonnement
 
-Im Partner Center finden Sie die Abonnementoberfläche unter dem Modul „Cloud Solution Provider (CSP) – Zielgruppe ‚Handelspartner‘“
+Die Abonnementoberfläche befindet sich unter dem Modul für die CSP-Reseller-Zielgruppe:
 
 ![CSP – Zielgruppe „Handelspartner“](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-Im Modul „Cloud Solution Provider (CSP) – Zielgruppe ‚Handelspartner‘“ stehen Ihnen drei Optionen zur Auswahl:
+Wählen Sie zwischen drei Optionen aus:
 
-- Option 1: Alle Partner im CSP-Programm
-- Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm
-- Option 3: Keine Partner im CSP-Programm
+1. Alle Partner im CSP-Programm
+2. Bestimmte ausgewählte Partner im CSP-Programm
+3. Keine Partner im CSP-Programm
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>Option 1: Alle Partner im CSP-Programm
+#### <a name="option-1-any-partner-in-the-csp-program"></a>Option 1: Alle Partner im CSP-Programm
 
 ![Alle Partner im CSP-Programm](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  Wenn Sie diese Option auswählen, können alle Partner im CSP-Programm Ihr Angebot an ihre Kunden weiterverkaufen.
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>Option 2: Bestimmte, von mir ausgewählte Partner im CSP-Programm
 
 ![Bestimmte, von mir ausgewählte Partner im CSP-Programm](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -87,17 +87,11 @@ Wenn Sie die CSP-Liste eines bereits veröffentlichten Angebots aktualisieren, f
 
 Wenn Sie über ein Angebot verfügen, das bereits eine Liste autorisierter Partner aufweist, und Sie dieselbe Liste für ein anderes Angebot verwenden möchten, verwenden Sie **Import/Export** aus. Navigieren Sie zum Angebot mit der CSP-Liste, und wählen Sie **CSPs exportieren** aus. Die-Funktion erstellt eine CSV-Datei, die in ein anderes Angebot importiert werden kann.
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>Option 3: Keine Partner im CSP-Programm
+#### <a name="option-3-no-partners-in-the-csp-program"></a>Option 3: Keine Partner im CSP-Programm
 
 ![Keine Partner im CSP-Programm](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 Wenn Sie diese Option auswählen, entfernen Sie Ihr Angebot aus dem CSP-Programm. Sie können diese Auswahl jederzeit ändern.
-
-### <a name="cloud-partner-portal-opt-in"></a>Cloud-Partnerportal-Abonnement
-
-Im Cloud-Partnerportal wird die Abonnementeinstellung auf der Registerkarte „Marketplace“ oder „Storefront“ festgelegt. Die Möglichkeit, bestimmte Partner im CSP-Programm auszuwählen, ist nur in Partner Center verfügbar.
-
-![Umgebung zum Abonnieren des CSP-Partnerkanals im CPP](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>Entfernen der Autorisierung von Partnern im CSP-Programm
 
@@ -115,9 +109,6 @@ Wenn ein Partner im CSP-Programm Ihr Produkt noch nicht an seine Kunden verkauft
 4. Wählen Sie für **Option auswählen, die das Problem am besten beschreibt** die Option **Vorhandenes Angebot aktualisieren** aus.
 5. Wählen Sie **Weiter** aus, um zur Detailseite für das **Problem** zu gelangen und weitere Informationen zu Ihrem Problem einzugeben.
 6. Verwenden Sie **Entfernen der Autorisierung eines CSP** als Titel für das Problem, und füllen Sie die restlichen Abschnitte aus.
-
-
-
 
 ## <a name="navigate-between-options"></a>Wechseln zwischen Optionen
 
@@ -175,19 +166,13 @@ Wenn für Ihr Angebot derzeit **Option 3: Keine Partner im CSP-Programm** ausgew
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Bereitstellen von Verkaufs- und Begleitmaterialien für Partner im CSP-Programm
 
-Um es Partnern im Cloud Solution Provider-Programm zu ermöglichen, bestmöglich Ihr Angebot zu präsentieren und mit Ihrem Unternehmen in Kontakt zu treten, übermitteln Sie Verkaufs- und Begleitmaterialien, die den Handelspartnern zur Verfügung stehen. Diese Ressourcen werden Kunden in den digitalen Marketplace-Ladenzeilen nicht verfügbar gemacht.
+Um es Partnern im Cloud Solution Provider-Programm zu ermöglichen, Ihr Angebot bestmöglich zu präsentieren und mit Ihrem Unternehmen in Kontakt zu treten, müssen Sie Verkaufs- und Begleitmaterialien übermitteln, die den Handelspartnern dann zur Verfügung stehen. Diese Ressourcen werden Kunden in den digitalen Marketplace-Ladenzeilen nicht verfügbar gemacht.
 
 ### <a name="partner-center-csp-channel"></a>Partner Center-CSP-Kanal
 
 Wenn Sie den CSP-Kanal im Partner Center abonniert haben, müssen Herausgeber im CSP-Kanal unter dem Angebotslisten-Modul eine URL eingeben, unter der die relevanten Marketingmaterialien und Kontaktinformationen für den Kanal gehostet werden:
 
 ![CSP-Zusatzinformationen im Partner Center](media/marketplace-publishers-guide/pc-csp-channel.png)
-
-### <a name="cloud-partner-portal-csp-channel"></a>CSP-Kanal des Cloud-Partnerportals
-
-Wenn Sie den CSP-Kanal abonniert haben, müssen Herausgeber im Cloud-Partnerportal eine URL eingeben, unter der die relevanten Marketingmaterialien und Kanalkontaktinformationen für den CSP-Kanal gehostet werden:
-
-![CSP-Zusatzinformationen im Cloud-Partnerportal](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

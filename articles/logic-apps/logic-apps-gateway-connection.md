@@ -1,26 +1,26 @@
 ---
 title: Zugriff auf lokale Datenquellen
-description: Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logik-Apps durch Erstellen einer lokalen Azure-Datengatewayressource
+description: Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps durch Erstellen einer Datengatewayressource in Azure
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 07/28/2020
+ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657137"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386179"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
-Bevor Sie lokal aus Ihren Logik-Apps auf Datenquellen zugreifen können, müssen Sie eine Azure-Ressource erstellen, nachdem Sie das [*lokale Datengateway* auf einem lokalen Computer installiert haben](../logic-apps/logic-apps-gateway-install.md). Ihre Logik-Apps verwenden dann diese Azure-Gatewayressource in den Triggern und Aktionen, die von den [lokalen Connectors](../connectors/apis-list.md#on-premises-connectors) bereitgestellt werden, die für Azure Logic-Apps verfügbar sind.
+Nachdem Sie [das *lokale Datengateway* auf einem lokalen Computer installiert haben](../logic-apps/logic-apps-gateway-install.md), müssen Sie für Ihre Gatewayinstallation eine Gatewayressource in Azure erstellen, um aus Ihren Logik-Apps lokal auf Datenquellen zugreifen zu können. Anschließend können Sie diese Gatewayressource in den Triggern und Aktionen auswählen, die Sie für die [lokalen Connectors](../connectors/apis-list.md#on-premises-connectors) verwenden möchten, die in Azure Logic Apps verfügbar sind.
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource für ein zuvor [installiertes Gateway auf Ihren lokalen Computer](../logic-apps/logic-apps-gateway-install.md) erstellen. Weitere Informationen zum Gateway finden Sie unter [So funktioniert das Gateway](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
 > [!TIP]
-> Erwägen Sie zum Herstellen einer Verbindung mit virtuellen Azure-Netzwerken stattdessen die Erstellung einer [*Integrationsdienstumgebung*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (Integration Service Environment, ISE). 
+> Wenn direkt auf lokale Ressourcen in virtuellen Azure-Netzwerken zugegriffen werden soll, ohne das Gateway verwenden zu müssen, können Sie stattdessen eine [*Integrationsdienstumgebung*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) in Betracht ziehen. 
 
 Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den folgenden Artikeln:
 
@@ -48,20 +48,17 @@ In Azure Logic Apps unterstützt das lokale Datengateway [lokale Connectors](../
 * SQL Server
 * Teradata
 
-Azure Logic Apps unterstützt Lese- und Schreibvorgänge über das Datengateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). Obwohl das Gateway selbst keine zusätzlichen Kosten verursacht, gilt das [Logic Apps-Preismodell](../logic-apps/logic-apps-pricing.md) für diese Connectors und andere Vorgänge in Azure Logic Apps.
+Azure Logic Apps unterstützt Lese- und Schreibvorgänge über das Datengateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](/data-integration/gateway/service-gateway-onprem#considerations). Obwohl das Gateway selbst keine zusätzlichen Kosten verursacht, gilt das [Logic Apps-Preismodell](../logic-apps/logic-apps-pricing.md) für diese Connectors und andere Vorgänge in Azure Logic Apps.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie haben das [lokale Datengateway bereits auf einem lokalen Computer installiert](../logic-apps/logic-apps-gateway-install.md).
+* Sie haben das [lokale Datengateway bereits auf einem lokalen Computer installiert](../logic-apps/logic-apps-gateway-install.md). Diese Gatewayinstallation muss vorhanden sein, bevor Sie eine Gatewayressource erstellen können, die mit dieser Installation verknüpft ist.
 
-* Sie verwenden das [gleiche Azure-Konto und -Abonnement](../logic-apps/logic-apps-gateway-install.md#requirements), das bei der Installation des Datengateways verwendet wurde. Dieses Azure-Konto muss zu einem einzelnen [Azure Active Directory-Mandanten (Azure AD) oder -Verzeichnis](../active-directory/fundamentals/active-directory-whatis.md#terminology) gehören.
+* Sie verfügen über [dasselbe Azure-Konto und Abonnement](../logic-apps/logic-apps-gateway-install.md#requirements), das Sie für Ihre Gatewayinstallation verwendet haben. Dieses Azure-Konto muss zu einem einzigen [Azure Active Directory-Mandanten oder -Verzeichnis (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md#terminology) gehören. Dasselbe Azure-Konto und Abonnement muss zum Erstellen Ihrer Gatewayressource in Azure verwendet werden. Der Grund dafür ist, dass nur der Gatewayadministrator die Gatewayressource in Azure erstellen kann. Dienstprinzipale werden aktuell nicht unterstützt.
 
-* Ihre Gatewayinstallation wurde noch nicht registriert und von einer anderen Azure-Gatewayressource beansprucht.
-
-  Wenn Sie im Azure-Portal eine Gatewayressource erstellen, wählen Sie eine Gatewayinstallation aus, die mit ihrer Gatewayressource und nur mit dieser Gatewayressource verknüpft ist. In Azure Logic Apps verwenden lokale Trigger und Aktionen dann die Gatewayressource, um eine Verbindung mit lokalen Datenquellen herzustellen. In diesen Triggern und Aktionen wählen Sie Ihr Azure-Abonnement und die zugehörige Gatewayressource aus, die Sie verwenden möchten. Jede Gatewayressource ist nur mit einer Gatewayinstallation verknüpft, die nur mit einem Azure-Konto verknüpft ist.
-
-  > [!NOTE]
-  > Nur Ger gatewayadministrator kann die Gatewayressource im Azure-Portal erstellen. Zurzeit werden Dienstprinzipale nicht unterstützt. 
+  * Wenn Sie in Azure eine Gatewayressource erstellen, wählen Sie eine Gatewayinstallation aus, die ausschließlich mit Ihrer Gatewayressource verknüpft wird. Eine Gatewayressource kann nur mit einer einzigen Gatewayinstallation verknüpft sein. Gatewayinstallationen, die bereits anderen Gatewayressourcen zugeordnet sind, können nicht ausgewählt werden.
+  
+  * Ihre Logik-App und Gatewayressource müssen nicht zum selben Azure-Abonnement gehören. Sofern Sie über Abonnementzugriff verfügen, können Sie in Triggern und Aktionen, die auf lokale Datenquellen zugreifen können, andere Azure-Abonnements mit Gatewayressourcen auswählen.
 
 <a name="create-gateway-resource"></a>
 
@@ -87,7 +84,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, erstellen 
    | **Abonnement** | Wählen Sie das Azure-Abonnement für das Azure-Konto aus, das für die Gatewayinstallation verwendet wurde. Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben. |
    | **Ressourcengruppe** | Die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die Sie verwenden möchten. |
    | **Location** | Die gleiche Region oder der gleiche Standort, der während der [Gatewayinstallation](../logic-apps/logic-apps-gateway-install.md) für den Gatewayclouddienst ausgewählt wurde. Andernfalls wird Ihre Gatewayinstallation nicht in der Liste **Installationsname** angezeigt. Der Standort Ihrer Logik-App kann sich vom Standort Ihrer Gatewayressource unterscheiden. |
-   | **Installationsname** | Wählen Sie eine Gatewayinstallation aus, die in der Liste nur angezeigt wird, wenn die folgenden Bedingungen erfüllt sind: <p><p>– Die Gatewayinstallation verwendet dieselbe Region wie die Gatewayressource, die Sie erstellen möchten. <br>– Die Gatewayinstallation ist nicht mit einer anderen Azure-Gatewayressource verknüpft. <br>– Die Gatewayinstallation ist mit demselben Azure-Konto verknüpft, das Sie zum Erstellen der Gatewayressource verwenden. <br>– Ihr Azure-Konto gehört zu einem einzigen [Azure Active Directory-Mandanten (Azure AD) oder -Verzeichnis](../active-directory/fundamentals/active-directory-whatis.md#terminology) und ist das gleiche Konto, das für die Gatewayinstallation verwendet wurde. <p><p>Weitere Informationen finden Sie im Abschnitt [Häufig gestellte Fragen](#faq). |
+   | **Installationsname** | Wählen Sie eine Gatewayinstallation aus, die in der Liste nur angezeigt wird, wenn die folgenden Bedingungen erfüllt sind: <p><p>– Die Gatewayinstallation verwendet dieselbe Region wie die Gatewayressource, die Sie erstellen möchten. <br>– Die Gatewayinstallation ist nicht mit einer anderen Azure-Gatewayressource verknüpft. <br>– Die Gatewayinstallation ist mit demselben Azure-Konto verknüpft, das Sie zum Erstellen der Gatewayressource verwenden. <br>– Ihr Azure-Konto gehört zu einem einzigen [Azure Active Directory-Mandanten oder -Verzeichnis (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md#terminology) und ist dasselbe Konto, das für die Gatewayinstallation verwendet wurde. <p><p>Weitere Informationen finden Sie im Abschnitt [Häufig gestellte Fragen](#faq). |
    |||
 
    Im folgenden Beispiel wird eine Gatewayinstallation gezeigt, die sich in derselben Region wie die Gatewayressource befindet und mit demselben Azure-Konto verknüpft ist:
@@ -107,6 +104,8 @@ Nachdem Sie die Gatewayressource erstellt und Ihr Azure-Abonnement mit dieser Re
 1. Wählen Sie **Verbinden über lokales Datengateway**.
 
 1. Wählen Sie unter **Gateways** in der Liste **Abonnements** Ihr Azure-Abonnement aus, das über die gewünschte Gatewayressource verfügt.
+
+   Sofern Sie über Abonnementzugriff verfügen, können Sie aus unterschiedlichen Azure-Abonnements auswählen, die jeweils einer anderen Gatewayressource zugeordnet sind. Ihre Logik-App und Gatewayressource müssen nicht zum selben Azure-Abonnement gehören.
 
 1. Wählen Sie in der Liste **Verbindungsgateway**, in der die verfügbaren Gatewayressourcen in Ihrem ausgewählten Abonnement angezeigt werden, die gewünschte Gatewayressource aus. Jede Gatewayressource ist mit einer einzelnen Gatewayinstallation verknüpft.
 
@@ -164,11 +163,15 @@ Um eine andere Gatewayressource zu erstellen, Ihre Gatewayinstallation mit einer
 **F:** Warum wird meine Gatewayinstallation nicht angezeigt, wenn ich die Gatewayressource in Azure erstelle? <br/>
 **A:** Dieses Problem kann folgende Ursachen haben:
 
-* Bei Ihrem Azure-Konto muss es sich um das gleiche Konto handeln, das mit der Gatewayinstallation auf dem lokalen Computer verknüpft ist. Überprüfen Sie, ob Sie am Azure-Portal mit der gleichen Identität angemeldet sind, die mit der Gatewayinstallation verknüpft ist. Stellen Sie außerdem sicher, dass Ihr Azure-Konto zu einem einzelnen [Azure AD-Mandanten oder -Verzeichnis](../active-directory/fundamentals/active-directory-whatis.md#terminology) gehört und auf den gleichen Azure AD-Mandanten oder das gleiche Verzeichnis festgelegt ist, das bei der Gatewayinstallation verwendet wurde.
+* Bei Ihrem Azure-Konto handelt es sich nicht um dasselbe Konto, das für die Gatewayinstallation auf Ihrem lokalen Computer verwendet wurde. Überprüfen Sie, ob Sie mit derselben Identität beim Azure-Portal angemeldet sind, die für die Gatewayinstallation verwendet wurde. Nur der Gatewayadministrator kann die Gatewayressource in Azure erstellen. Dienstprinzipale werden aktuell nicht unterstützt.
 
-* Die Gatewayressource und die Gatewayinstallation müssen die gleiche Region verwenden. Der Standort Ihrer Logik-App kann sich jedoch vom Standort Ihrer Gatewayressource unterscheiden.
+* Ihr Azure-Konto gehört nicht zu einem einzigen [Azure AD-Mandanten oder -Verzeichnis](../active-directory/fundamentals/active-directory-whatis.md#terminology). Überprüfen Sie, ob Sie denselben Azure AD-Mandanten oder dasselbe Azure AD-Verzeichnis verwenden, den bzw. das Sie während der Gatewayinstallation verwendet haben.
 
-* Ihre Gatewayinstallation wurde bereits registriert und von einer anderen Gatewayressource beansprucht. Diese Installationen werden nicht in der Liste **Installationsname** angezeigt. Sehen Sie sich zum Überprüfen der Gatewayregistrierungen im Azure-Portal alle Azure-Ressourcen mit dem Typ **Lokale Datengateways** für *alle* Azure-Abonnements an. Informationen zum Aufheben der Verknüpfung der Gatewayinstallation mit der anderen Gatewayressource finden Sie unter [Löschen der Gatewayressource](#change-delete-gateway-resource).
+* Ihre Gatewayressource und die Gatewayinstallation befinden sich nicht in derselben Region. Der Standort Ihrer Logik-App kann jedoch vom Standort Ihrer Gatewayressource abweichen.
+
+* Ihre Gatewayinstallation ist bereits einer anderen Gatewayressource zugeordnet. Jede Gatewayressource kann nur mit einer Gatewayinstallation verknüpft sein, die wiederum nur mit einem Azure-Konto und einem Abonnement verknüpft ist. Gatewayinstallationen, die bereits anderen Gatewayressourcen zugeordnet sind, können also nicht ausgewählt werden. Diese Installationen werden nicht in der Liste **Installationsname** angezeigt.
+
+  Sehen Sie sich zum Überprüfen der Gatewayregistrierungen im Azure-Portal alle Azure-Ressourcen mit dem Ressourcentyp **Lokale Datengateways** für *alle* Ihre Azure-Abonnements an. Informationen zum Aufheben der Verknüpfung der Gatewayinstallation mit der anderen Gatewayressource finden Sie unter [Löschen der Gatewayressource](#change-delete-gateway-resource).
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

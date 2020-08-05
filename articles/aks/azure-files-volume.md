@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie manuell ein Volume mit Azure Files für die V
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207665"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281207"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe in Azure Kubernetes Service (AKS)
 
@@ -234,6 +234,8 @@ Aktualisieren Sie die Containerspezifikation so, dass auf *PersistentVolumeClaim
 Entsprechenden bewährte Methoden finden Sie unter [Bewährte Methoden für die Speicherung und Sicherungen in AKS][operator-best-practices-storage].
 
 Weitere Informationen zur Interaktion von AKS-Clustern mit Azure Files finden Sie beim [Kubernetes-Plug-In für Azure Files][kubernetes-files].
+
+Informationen zu Speicherklassenparametern finden Sie unter [Statische Bereitstellung („Bring Your Own File Share“)](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share).
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

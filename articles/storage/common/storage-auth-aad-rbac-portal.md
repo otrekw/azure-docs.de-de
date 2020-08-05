@@ -1,7 +1,7 @@
 ---
 title: Verwenden des Azure-Portals zum Zuweisen einer RBAC-Rolle für den Datenzugriff
 titleSuffix: Azure Storage
-description: Hier erfahren Sie, wie Sie mit dem Azure-Portal Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) zuweisen. Azure Storage unterstützt für die Authentifizierung über Azure AD integrierte und benutzerdefinierte RBAC-Rollen.
+description: Hier erfahren Sie, wie Sie mit dem Azure-Portal Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) zuweisen. Azure Storage unterstützt für die Authentifizierung über Azure AD integrierte und benutzerdefinierte Azure-Rollen.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,16 +10,16 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 160833817150332b240ec17b2b700fbcb7a4456b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518757"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370647"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Verwenden des Azure-Portals zum Zuweisen einer RBAC-Rolle für den Zugriff auf Blob- und Warteschlangendaten
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe in Azure integrierter Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
@@ -48,7 +48,7 @@ In den folgenden Abschnitten werden diese Schritte ausführlicher beschrieben.
 >
 > Sie können einem Container oder einer Warteschlange keine Rolle zuweisen, wenn in Ihrem Speicherkonto ein hierarchischer Namespace aktiviert ist.
 
-### <a name="assign-a-built-in-rbac-role"></a>Zuweisen einer integrierten RBAC-Rolle
+### <a name="assign-an-azure-built-in-role"></a>Zuweisen einer in Azure integrierten Rolle
 
 Bevor Sie einem Sicherheitsprinzipal eine Rolle zuweisen, stellen Sie sicher, dass Sie den Umfang der Berechtigungen berücksichtigen, die Sie erteilen. Legen Sie mithilfe des Abschnitts [Bestimmen des Ressourcenumfangs](#determine-resource-scope) den gewünschten Umfang fest.
 
@@ -98,7 +98,7 @@ Die Zuweisung der Rolle **Leser** ist nur für Benutzer erforderlich, die über 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu RBAC-Rollen für Speicherressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md). 
-- Weitere Informationen zur rollenbasierte Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?](../../role-based-access-control/overview.md).
+- Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie im Artikel [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
 - Informationen zum Zuweisen und Verwalten von RBAC-Rollenzuweisungen mit Azure PowerShell, Azure CLI oder der REST-API finden Sie in diesen Artikeln:
     - [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
     - [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)

@@ -1,29 +1,29 @@
 ---
 title: Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer RBAC-Rolle für den Datenzugriff
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) zuweisen. Azure Storage unterstützt für die Authentifizierung über Azure AD integrierte und benutzerdefinierte RBAC-Rollen.
+description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) zuweisen. Azure Storage unterstützt für die Authentifizierung über Azure AD integrierte und benutzerdefinierte Azure-Rollen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 25a38fc6f9607ef878ad3c5bf7074f5b63d5c121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afa48c07e628eaeb013c24fa38fcda1adea2555a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808861"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368970"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer RBAC-Rolle für den Zugriff auf Blob- und Warteschlangendaten
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe in Azure integrierter Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-Dieser Artikel beschreibt, wie Sie mithilfe der Azure CLI integrierte RBAC-Rollen auflisten und diese Benutzern zuweisen. Weitere Informationen zur Verwendung der Azure CLI finden Sie unter [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure).
+In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle integrierte Azure-Rollen auflisten und diese Benutzern zuweisen. Weitere Informationen zur Verwendung der Azure CLI finden Sie unter [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure).
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-Rollen für Blobs und Warteschlangen
 
@@ -35,7 +35,7 @@ Dieser Artikel beschreibt, wie Sie mithilfe der Azure CLI integrierte RBAC-Rolle
 
 ## <a name="list-available-rbac-roles"></a>Auflisten verfügbarer RBAC-Rollen
 
-Verwenden Sie zum Auflisten verfügbarer integrierter RBAC-Rollen mit der Azure CLI den Befehl [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Verwenden Sie zum Auflisten verfügbarer integrierter Azure-Rollen mit der Azure-Befehlszeilenschnittstelle den Befehl [az role definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli-interactive
 az role definition list --out table

@@ -3,21 +3,26 @@ title: Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 description: Erfahren Sie, wie Sie ein Konto im kommerziellen Microsoft-Marketplace in Partner Center erstellen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+author: parthpandyaMSFT
+ms.author: parthp
+ms.openlocfilehash: 862922ff3d0e09d1d1fdc864886852aed910c7df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110010"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326646"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
-Damit Sie Ihre Angebote im [Azure Marketplace](https://azuremarketplace.microsoft.com/) oder in [Microsoft AppSource](https://appsource.microsoft.com/) veröffentlichen können, müssen Sie in Partner Center ein Konto im Programm „Kommerzieller Marketplace“ erstellen. In diesem Artikel wird beschrieben, wie Sie ein Partner Center-Konto erstellen und dem Programm „Kommerzieller Marketplace“ neue Herausgeber hinzufügen.
+Damit Sie Ihre Angebote im [Azure Marketplace](https://azuremarketplace.microsoft.com/) oder in [Microsoft AppSource](https://appsource.microsoft.com/) veröffentlichen können, müssen Sie in Partner Center ein Konto im kommerziellen Marketplace erstellen. In diesem Artikel wird beschrieben, wie Sie ein Partner Center-Konto erstellen und dem Programm „Kommerzieller Marketplace“ neue Herausgeber hinzufügen.
 
 >[!IMPORTANT]
->Wenn Sie über ein Konto im [Cloud-Partnerportal](https://cloudpartner.azure.com) verfügen, das in Partner Center verschoben wurde, müssen Sie kein neues Konto erstellen. Weitere Informationen finden Sie unter [Herausgeber mit einem Cloud-Partnerportal-Konto](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Zum Veröffentlichen von Angeboten im kommerziellen Marketplace müssen Sie ein Geschäftskonto verwenden, das einem Unternehmen oder einer Organisation zugeordnet ist. Persönliche Konten werden nicht unterstützt.
+
+>[!IMPORTANT]
+>Wenn Sie über ein Konto im Cloud-Partnerportal (CPP) verfügen, haben wir es in Partner Center verschoben. Sie müssen in diesem Fall kein neues Konto erstellen. Weitere Informationen finden Sie unter [Herausgeber, die vom Cloud-Partnerportal verschoben wurden](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -43,7 +48,7 @@ Verwenden Sie diese Methode, wenn Sie mit Partner Center noch nicht vertraut sin
 - [Angeben Ihres Herausgeberprofils](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->Wenn Sie über ein [Cloud-Partnerportal](https://cloudpartner.azure.com)-Konto verfügen, das in Partner Center verschoben wurde, müssen Sie kein neues Konto erstellen. Weitere Informationen finden Sie unter [Herausgeber mit einem Cloud-Partnerportal-Konto](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Wenn Sie über ein Konto im Cloud-Partnerportal verfügen, haben wir es in Partner Center verschoben. Sie müssen in diesem Fall kein neues Konto erstellen. Weitere Informationen finden Sie unter [Herausgeber, die vom Cloud-Partnerportal verschoben wurden](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Registrieren auf der Partner Center-Registrierungsseite
 
@@ -94,7 +99,7 @@ Bei beiden Registrierungstypen führen Sie die folgenden Aktionen aus:
 Stellen Sie sicher, dass Sie Ihre Kontoinformationen zur Hand haben.
 
 >[!IMPORTANT]
->Wenn Sie über ein Konto im [Cloud-Partnerportal](https://cloudpartner.azure.com/) verfügen, das in Partner Center verschoben wurde, müssen Sie kein neues Konto erstellen. Weitere Informationen finden Sie unter [Herausgeber mit einem Cloud-Partnerportal-Konto](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Wenn Sie über ein Konto im Cloud-Partnerportal verfügen, haben wir es in Partner Center verschoben. Sie müssen in diesem Fall kein neues Konto erstellen. Weitere Informationen finden Sie unter [Herausgeber, die vom Cloud-Partnerportal verschoben wurden](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>Wie gehe ich vor, wenn ich bereits bei Microsoft Partner Network registriert bin?
 
@@ -154,15 +159,13 @@ Schließen Sie nach der Anmeldung bei Partner Center die Einrichtung Ihres Konto
 
 Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Weitere Informationen finden Sie unter [Übersicht über den kommerziellen Marketplace](./commercial-marketplace-overview.md). Unterstützung beim Hinzufügen von Herausgebern finden Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>Herausgeber mit einem Cloud-Partnerportal-Konto
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Herausgeber, die vom Cloud-Partnerportal verschoben wurden
 
-Wenn Ihr Konto vom [Cloud-Partnerportal](https://cloudpartner.azure.com) migriert wurde, müssen Sie kein neues Partner Center-Konto erstellen. Nachdem Sie sich bei Ihrem vorhandenen Cloud-Partnerportal-Konto angemeldet haben, sollten Sie per E-Mail und in einer Bannerbenachrichtigung einen benutzerdefinierten Link zu Ihrem neuen Partner Center-Konto erhalten.
+Wenn Sie über ein Konto im Cloud-Partnerportal verfügen, haben wir es in Partner Center verschoben. Sie müssen kein neues Partner Center-Konto erstellen. Nachdem Sie sich bei Ihrem vorhandenen Cloud-Partnerportal-Konto angemeldet haben, sollten Sie per E-Mail und in einer Bannerbenachrichtigung einen benutzerdefinierten Link zu Ihrem neuen Partner Center-Konto erhalten.
 
 Nachdem Sie den benutzerdefinierten Link ausgewählt und Ihr neues Partner Center-Konto aktiviert haben, können Sie zu Ihrem Konto zurückkehren, indem Sie in Partner Center zum [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) navigieren.
 
-Die Herausgebervereinbarung und die Unternehmensprofilinformationen werden zusammen mit zuvor eingerichteten Informationen zum Auszahlungsprofil des Kontos, Benutzerkonten und -berechtigungen und den Ihrem Cloud-Partnerportal-Konto zugeordneten aktiven Angeboten zu Ihrem neuen Partner Center-Konto migriert.
-
-Nachdem Ihre Kontoinformationen aus dem Cloud-Partnerportal in Partner Center verschoben wurden, verwenden Sie das Cloud-Partnerportal nicht mehr, um Kontoaktualisierungen vorzunehmen oder Benutzer, Berechtigungen und Abrechnungsdaten zu verwalten. Für einen begrenzten Zeitraum werden von Ihnen in Partner Center vorgenommene Kontoaktualisierungen automatisch in Ihrem schreibgeschützten Cloud-Partnerportal-Konto aktualisiert, bis das Portal schließlich eingestellt wird.
+Die Herausgebervereinbarung und die Unternehmensprofilinformationen gehen zusammen mit zuvor eingerichteten Informationen zum Auszahlungsprofil des Kontos, Benutzerkonten und -berechtigungen und den Ihrem Konto im Cloud-Partnerportal zugeordneten aktiven Angeboten in Ihr neues Partner Center-Konto über.
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“
 
