@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a019ee6b0df52de70dfedca94feaede90e1f0d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 46d3ac6947293529308ad0abba9cd175d6b4dd6c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293670"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407335"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smarthr"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SmartHR
 
@@ -90,7 +90,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.smarthr.jp/external_saml/acs`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, die Antwort-URL und den Bezeichner. Wenden Sie sich an das [SmartHR-Clientsupportteam](mailto:info@smarhr.jp), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, die Antwort-URL und den Bezeichner. Wenden Sie sich an das [SmartHR-Clientsupportteam](mailto:info@smarthr.jp), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -132,11 +132,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-smarthr-sso"></a>Konfigurieren des einmaligen Anmeldens für SmartHR
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **SmartHR** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die im Azure-Portal kopierten URLs an das [Supportteam von SmartHR](mailto:info@smarhr.jp) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **SmartHR** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die im Azure-Portal kopierten URLs an das [Supportteam von SmartHR](mailto:info@smarthr.jp) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-smarthr-test-user"></a>Erstellen eines SmartHR-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in SmartHR einen Benutzer namens B. Simon. Arbeiten Sie mit dem [SmartHR-Supportteam](mailto:info@smarhr.jp) zusammen, um die Benutzer auf der SmartHR-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in SmartHR einen Benutzer namens B. Simon. Arbeiten Sie mit dem [SmartHR-Supportteam](mailto:info@smarthr.jp) zusammen, um die Benutzer auf der SmartHR-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

@@ -3,14 +3,14 @@ title: 'Schnellstart: Abrufen der Absicht mit REST-APIs – LUIS'
 description: In dieser REST-API-Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers.
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 5d43a1aee9e3f355a3cfcab927d87571798677e7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 0274cf1ac6a6d0cb37d2321f6fd02f98c784318f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608552"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405268"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>Schnellstart: Abrufen der Absicht mit REST-APIs
 

@@ -3,12 +3,13 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: cc4cd4b099a37ef103e2da79b8c15269008e7423
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837882"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407307"
 ---
 Dieser Artikel enthält Informationen zu den ersten Schritten mit dem Custom Vision SDK mit Node.js und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nach der Erstellung können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Node.js-Anwendung.
 
