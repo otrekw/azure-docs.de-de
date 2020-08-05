@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0832672cc848495f3d95d308071e0a8359ae4f1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74014552"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374923"
 ---
 ## <a name="overview"></a>Übersicht
-Azure Storage bietet die Möglichkeit, Momentaufnahmen von Blobs zu erstellen. Momentaufnahmen erfassen den Blobzustand zum jeweiligen Zeitpunkt. In diesem Artikel wird ein Szenario beschrieben, in dem Sie Sicherungen von Datenträgern des virtuellen Computers mithilfe von Momentaufnahmen verwalten können. Wenn Sie Azure Backup und den Wiederherstellungsdienst nicht verwenden, und eine benutzerdefinierte Sicherungsstrategie für die Datenträger Ihres virtuellen Computers erstellen möchten, können Sie diese Methodik anwenden.
+Azure Storage bietet die Möglichkeit, Momentaufnahmen von Blobs zu erstellen. Momentaufnahmen erfassen den Blobzustand zum jeweiligen Zeitpunkt. In diesem Artikel wird ein Szenario beschrieben, in dem Sie Sicherungen von Datenträgern des virtuellen Computers mithilfe von Momentaufnahmen verwalten können. Wenn Sie Azure Backup und den Wiederherstellungsdienst nicht verwenden, und eine benutzerdefinierte Sicherungsstrategie für die Datenträger Ihres virtuellen Computers erstellen möchten, können Sie diese Methodik anwenden. Bei VMs, auf denen unternehmenskritische Workloads ausgeführt werden, empfiehlt es sich, im Rahmen der Sicherungsstrategie [Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) zu verwenden.  
 
 Datenträger virtueller Azure-Computer werden als Seitenblobs in Azure Storage gespeichert. Da es in diesem Artikel um eine Sicherungsstrategie für die Datenträger des virtuellen Computers geht, beziehen wir uns im Kontext von Seitenblobs auf Momentaufnahmen. Weitere Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines BLOB](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
@@ -57,7 +57,8 @@ Vorausgesetzt, die folgenden Bedingungen sind erfüllt:
 * Das Blob wurde am 1. Januar 2016 oder später erstellt.
 * Das Blob wurde zwischen zwei Momentaufnahmen nicht mit [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) oder [Copyblob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) überschrieben.
 
-**Hinweis**: Diese Funktion steht für Premium- und Standard-Azure-Seitenblobs zur Verfügung.
+>[!NOTE]
+>Diese Funktion steht für Premium- und Standard-Azure-Seitenblobs zur Verfügung.
 
 Wenn Sie über eine benutzerdefinierte Sicherungsstrategie mit Momentaufnahmen verfügen, bei der die Momentaufnahmen von einem Speicherkonto in ein anderes kopiert werden, kann diese Methode langsam sein und viel Speicherplatz verbrauchen. Anstatt die gesamte Momentaufnahme in ein Sicherungsspeicherkonto zu kopieren, können Sie den Unterschied zwischen zwei aufeinander folgenden Momentaufnahmen in ein Sicherungsseitenblob schreiben. Dies reduziert die Zeit zum Kopieren und den Speicherplatz zum Speichern von Sicherungen erheblich.
 

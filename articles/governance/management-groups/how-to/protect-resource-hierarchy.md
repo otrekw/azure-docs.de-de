@@ -3,16 +3,16 @@ title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837349"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366771"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
-Ihre Ressourcen, Ressourcengruppen, Abonnements, Verwaltungsgruppen und Mandanten bilden zusammen Ihre Ressourcenhierarchie. Die Einstellungen in der Stammverwaltungsgruppe, z. B. benutzerdefinierte RBAC-Rollen oder Azure Policy-Richtlinienzuweisungen, können sich auf jede Ressource in der Ressourcenhierarchie auswirken. Es ist wichtig, die Ressourcenhierarchie vor Änderungen zu schützen, die sich negativ auf alle Ressourcen auswirken könnten.
+Ihre Ressourcen, Ressourcengruppen, Abonnements, Verwaltungsgruppen und Mandanten bilden zusammen Ihre Ressourcenhierarchie. Die Einstellungen in der Stammverwaltungsgruppe, z. B. benutzerdefinierte Azure-Rollen oder Azure Policy-Richtlinienzuweisungen, können sich auf jede Ressource in der Ressourcenhierarchie auswirken. Es ist wichtig, die Ressourcenhierarchie vor Änderungen zu schützen, die sich negativ auf alle Ressourcen auswirken könnten.
 
 Verwaltungsgruppen enthalten jetzt Hierarchieeinstellungen, über die der Mandantenadministrator diese Verhaltensweisen steuern kann. In diesem Artikel werden die einzelnen verfügbaren Hierarchieeinstellungen und deren Festlegung erläutert.
 
@@ -23,7 +23,7 @@ Zum Konfigurieren der Hierarchieeinstellungen sind die folgenden zwei RBAC-Vorg�
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-Diese Vorgänge ermöglichen einem Benutzer nur, die Hierarchieeinstellungen zu lesen und zu aktualisieren. Die Vorgänge ermöglichen keinen anderen Zugriff auf die Verwaltungsgruppenhierarchie oder die Ressourcen in der Hierarchie. Beide Vorgänge sind in der integrierten RBAC-Rolle **Hierarchieeinstellungsadministrator** verfügbar.
+Diese Vorgänge ermöglichen einem Benutzer nur, die Hierarchieeinstellungen zu lesen und zu aktualisieren. Die Vorgänge ermöglichen keinen anderen Zugriff auf die Verwaltungsgruppenhierarchie oder die Ressourcen in der Hierarchie. Beide Vorgänge sind in der integrierten Azure-Rolle **Hierarchieeinstellungsadministrator** verfügbar.
 
 ## <a name="setting---default-management-group"></a>Einstellung für Standardverwaltungsgruppe
 

@@ -3,16 +3,16 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488697"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382711"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
-In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
+In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
 
 Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um sich einen Überblick über die Abschnitte dieses Artikels zu verschaffen.
 
@@ -34,13 +34,13 @@ Ja. Der Schutz von Azure-Dateifreigaben, die mit Synchronisierungsgruppen verbun
 
 Wenn Sie beim Sichern ein Speicherkonto auswählen, um die darin enthaltenen Dateifreigaben zu ermitteln, wird das Speicherkonto bei dem Tresor registriert, über den der Vorgang ausgeführt wird. Falls Sie die Dateifreigaben bei einem anderen Tresor registrieren möchten, [heben Sie die Registrierung des ausgewählten Speicherkontos bei diesem Tresor auf](manage-afs-backup.md#unregister-a-storage-account).
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Warum kann ich den Tresor nicht ändern, um die Sicherung für die Dateifreigabe zu konfigurieren?
+
+Wenn das Speicherkonto bereits bei einem Tresor registriert ist oder andere Dateifreigaben im Speicherkonto mithilfe eines Tresors geschützt sind, kann der Tresor nicht geändert werden, da alle Dateifreigaben in einem Speicherkonto nur durch denselben Tresor geschützt werden können. Wenn Sie den Tresor ändern möchten, müssen Sie den [Schutz für alle Dateifreigaben im Speicherkonto aus dem verbundenen Tresor aufheben](manage-afs-backup.md#stop-protection-on-a-file-share), die [Registrierung des Speicherkontos aufheben](manage-afs-backup.md#unregister-a-storage-account) und dann einen anderen Tresor für den Schutz auswählen.
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kann ich den Tresor ändern, in dem ich meine Dateifreigaben sichere?
 
 Ja. Sie müssen jedoch im verknüpften Tresor [den Schutz einer Dateifreigabe beenden](manage-afs-backup.md#stop-protection-on-a-file-share), die [Registrierung dieses Speicherkontos aufheben](manage-afs-backup.md#unregister-a-storage-account) und es dann über einen anderen Tresor schützen.
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Wie viele Azure-Dateifreigaben kann ich in einem Tresor schützen?
-
-Sie können Azure-Dateifreigaben aus bis zu 50 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Kann ich zwei verschiedene Dateifreigaben im gleichen Speicherkonto in verschiedenen Tresoren schützen?
 
@@ -56,7 +56,7 @@ Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sei
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Kann die Wiederherstellung auf der Grundlage einer gelöschten Azure-Dateifreigabe erfolgen?
 
-Wenn sich die Dateifreigabe im Status „Vorläufig gelöscht“ befindet, müssen Sie zuerst den Löschvorgang der Dateifreigabe rückgängig machen, um den Wiederherstellungsvorgang auszuführen. Durch das Rückgängigmachen des Löschvorgangs wird die Dateifreigabe wieder in den aktiven Status versetzt, der eine Wiederherstellung zu einem beliebigen Zeitpunkt ermöglicht. Um zu erfahren, wie Sie die Dateifreigabe aus dem gelöschten Zustand wiederherstellen, besuchen Sie [diesen Link](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share), oder sehen Sie sich das [Skript zum Wiederherstellen einer Dateifreigabe](./scripts/backup-powershell-script-undelete-file-share.md) an. Wenn die Dateifreigabe dauerhaft gelöscht wird, können Sie Inhalte und Momentaufnahmen nicht wiederherstellen.
+Wenn sich die Dateifreigabe im Status „Vorläufig gelöscht“ befindet, müssen Sie zuerst den Löschvorgang der Dateifreigabe rückgängig machen, um den Wiederherstellungsvorgang auszuführen. Durch das Rückgängigmachen des Löschvorgangs wird die Dateifreigabe wieder in den aktiven Status versetzt, der eine Wiederherstellung zu einem beliebigen Zeitpunkt ermöglicht. Um zu erfahren, wie Sie die Dateifreigabe aus dem gelöschten Zustand wiederherstellen, besuchen Sie [diesen Link](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share), oder sehen Sie sich das [Skript zum Wiederherstellen einer Dateifreigabe](./scripts/backup-powershell-script-undelete-file-share.md) an. Wenn die Dateifreigabe dauerhaft gelöscht wird, können Sie Inhalte und Momentaufnahmen nicht wiederherstellen.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Kann ich Sicherungen wiederherstellen, wenn ich den Schutz für eine Azure-Dateifreigabe beendet habe?
 

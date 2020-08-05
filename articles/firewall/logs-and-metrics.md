@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 07/21/2020
 ms.author: victorh
-ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76315030"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086590"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
 
@@ -99,9 +99,13 @@ Für Azure Firewall sind folgende Metriken verfügbar:
 
     Einheit: Anzahl
 
-- **Verarbeitete Daten:** Datenmenge, die die Firewall durchläuft.
+- **Verarbeitete Daten:** Summe der Daten, die in einem bestimmten Zeitfenster die Firewall durchlaufen
 
     Einheit: Bytes
+
+- **Durchsatz:** Rate der Daten, die pro Sekunde die Firewall durchlaufen
+
+    Einheit: Bits pro Sekunde
 
 - **Firewall health state** (Firewallintegritätszustand): Gibt die Integrität der Firewall basierend auf der SNAT-Portverfügbarkeit an.
 

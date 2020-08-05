@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020065"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -353,6 +353,51 @@ Um dieses Tutorial mithilfe unserer [SAML-Testanwendung][samltest] abzuschließe
 * Geben Sie diesen Aussteller-URI an: `https://contoso.onmicrosoft.com/app-name`.
 
 Wählen Sie **Login** (Anmelden) aus. Ein Bildschirm für die Benutzeranmeldung sollte angezeigt werden. Bei der Anmeldung wird eine SAML-Assertion an die Beispielanwendung zurückgegeben.
+
+## <a name="enable-encypted-assertions"></a>Aktivieren von verschlüsselten Assertionen
+Zum Verschlüsseln von SAML-Assertionen, die an den Dienstanbieter zurückgesendet werden, verwendet Azure AD B2C das Zertifikat für öffentliche Schlüssel von Dienstanbietern. Der öffentliche Schlüssel muss in den SAML-Metadaten vorhanden sein, die in der obigen ["samlMetadataUrl"](#samlmetadataurl)-Eigenschaft als KeyDescriptor mit der Verwendung von „Encryption“ (Verschlüsselung) beschrieben werden.
+
+Nachfolgend finden Sie ein Beispiel für den KeyDescriptor der SAML-Metadaten, bei dem die „use“ auf „Encryption“ festgelegt ist:
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+Legen Sie das Metadatenelement **WantsEncryptedAssertion** auf „true“ im technischen Profil der vertrauenden Seite so wie unten dargestellt fest, um Azure AD B2C das Senden verschlüsselter Assertionen zu ermöglichen.
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
 
 ## <a name="sample-policy"></a>Beispielrichtlinie
 

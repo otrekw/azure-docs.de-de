@@ -726,6 +726,8 @@
           href: pricing-concepts.md
     - name: Leitfäden zur Problembehandlung
       items:
+        - name: Data Factory-Benutzeroberfläche
+          href: data-factory-ux-troubleshoot-guide.md
         - name: activities
           href: data-factory-troubleshoot-guide.md
         - name: Connectors

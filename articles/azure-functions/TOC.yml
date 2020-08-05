@@ -345,8 +345,8 @@
       items:
         - name: Beheben von Problemen mit dem Speicher
           href: functions-recover-storage-account.md
-        - name: Behandeln von Problemen mit Python-Abhängigkeiten
-          href: recover-module-not-found.md
+        - name: Behandeln von Problemen mit Python-Funktionen
+          href: recover-python-functions.md
 - name: Verweis
   items:
     - name: API-Referenzen

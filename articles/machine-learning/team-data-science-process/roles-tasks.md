@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082748"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Rollen und Aufgaben im Team Data Science-Prozess
 
@@ -117,7 +117,7 @@ Die Workflowschritte können nach drei Aktivitäten gruppiert werden:
 
 - Projektleiter führen eine Sprintplanung durch
 - Data Scientists entwickeln für Arbeitselemente Artefakte auf `git`-Branches
-- Projektleiter oder andere Teammitglieder führen Code Reviews durch und führen Arbeitsbranches mit dem Masterbranch zusammen
+- Projektleiter oder andere Teammitglieder führen Code Reviews durch und mergen Arbeitsbranches mit dem primären Branch.
 
 Eine ausführliche Anleitung zum Workflow der Projektausführung finden Sie unter [Agile Entwicklung von Data Science-Projekten](agile-development.md).
 

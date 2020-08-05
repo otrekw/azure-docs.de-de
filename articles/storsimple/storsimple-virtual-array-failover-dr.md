@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077791"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array über das Azure-Portal
 
@@ -122,12 +122,12 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
 
 5. Sie werden auf dem Blatt **Deaktivieren** zur Bestätigung aufgefordert. Die Gerätedeaktivierung ist ein *endgültiger* Vorgang und kann nicht rückgängig gemacht werden. Sie werden außerdem daran erinnert, dass Sie die Freigaben/Volumes auf dem Host offline schalten sollten. Geben Sie den zu bestätigenden Gerätenamen ein, und klicken Sie auf **Deaktivieren**.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![Screenshot des Blatts „Deaktivieren“. Das Feld „Gerätename“ ist ausgefüllt und die Schaltfläche „Deaktivieren“ wird hervorgehoben.](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. Die Deaktivierung wird gestartet. Nachdem die Deaktivierung erfolgreich abgeschlossen ist, erhalten Sie eine Benachrichtigung.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![Screenshot einer Statusleiste, an der zu erkennen ist, dass das Gerät deaktiviert wird.](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. Der Gerätezustand auf der Seite „Geräte“ ändert sich jetzt zu **Deaktiviert**.
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    ![Screenshot der Seite „Geräte“. Die Eigenschaften des deaktivierten Geräts werden angezeigt, einschließlich des Status, der als „Deaktiviert“ angegeben ist.](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. Wählen Sie auf dem Blatt **Geräte** das deaktivierte Quellgerät für das Failover aus, und klicken Sie darauf. 
 9. Klicken Sie auf dem Blatt **Gerätedashboard** auf **Failover**. 
 10. Gehen Sie auf dem Blatt **Failover des Geräts** wie folgt vor:
@@ -140,22 +140,22 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
 
     4. Klicken Sie auf **Failover**.
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![Screenshot des Blatts „Failover des Geräts“, auf dem Quell- und Zielgerät angegeben sind, die Option aktiviert ist und die Schaltfläche „Failover“ hervorgehoben wird.](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. Ein Failoverauftrag wird eingeleitet, und Sie erhalten eine Benachrichtigung. Wechseln Sie zu **Geräte > Aufträge**, um das Failover zu überwachen.
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![Screenshot einer Statusleiste, an der zu erkennen ist, dass ein Failover für das Gerät ausgeführt wird.](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. Auf dem Blatt **Aufträge** sehen Sie einen Failoverauftrag, der für das Quellgerät erstellt wurde. Mit diesem Auftrag werden die Vorüberprüfungen für die Notfallwiederherstellung durchgeführt.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![Ein Screenshot, auf dem zu sehen ist, dass der Failoverauftrag erfolgreich gestartet wurde.](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      Nachdem die Vorüberprüfungen für die Notfallwiederherstellung erfolgreich abgeschlossen wurden, erzeugt der Failoverauftrag Wiederherstellungsaufträge für jede Freigabe/jedes Volume, die bzw. das auf dem Quellgerät vorhanden ist.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![Screenshot, auf dem die Details des Failoverauftrags angezeigt werden, z. B. der Status, das Gerät und die Dauer.](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. Wechseln Sie nach Abschluss des Failover zum Blatt **Geräte**.
     
     1. Wählen Sie das StorSimple-Gerät aus, das Sie als Zielgerät für das Failover verwendet haben, und klicken Sie darauf.
     2. Wechseln Sie zu **Einstellungen > Verwaltung > Freigaben** (oder **Volumes**, wenn es sich um einen iSCSI-Server handelt). Auf dem Blatt **Freigaben** können Sie alle Freigaben (Volumes) des alten Geräts anzeigen.
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![Screenshot des Blatts „Geräte“. Das Zielgerät wird mit dem Status „Online“ angezeigt.](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. Sie müssen [einen DNS-Alias-Eintrag erstellen](https://support.microsoft.com/kb/168322). Dadurch werden alle Anwendungen, die versuchen, eine Verbindung herzustellen, auf das neue Gerät umgeleitet.
 
 ## <a name="errors-during-dr"></a>Fehler bei der Notfallwiederherstellung

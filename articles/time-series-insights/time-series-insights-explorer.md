@@ -1,55 +1,55 @@
 ---
 title: 'Erkunden von Daten mit dem Explorer: Azure Time Series Insights | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie mit dem Azure Time Series Insights-Explorer IoT-Daten anzeigen.
+description: Hier erfahren Sie, wie Sie mit dem Azure Time Series Insights-Explorer IoT-Daten anzeigen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382778"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080691"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
+# <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights-Explorer (Gen1)
 
-In diesem Artikel werden die allgemein verfügbaren Features und Optionen der [Explorer-Web-App](https://insights.timeseries.azure.com/) für Azure Time Series Insights beschrieben. Der Time Series Insights-Explorer veranschaulicht die leistungsstarken Datenvisualisierungsfunktionen, die der Dienst bereitstellt und auf die innerhalb Ihrer eigenen Umgebung zugegriffen werden kann.
+In diesem Artikel werden die Features und Optionen der [Explorer-Web-App](https://insights.timeseries.azure.com/) für Azure Time Series Insights (Gen1) beschrieben. Der Azure Time Series Insights-Explorer veranschaulicht die leistungsstarken Datenvisualisierungsfunktionen, die der Dienst bereitstellt und auf die innerhalb Ihrer eigenen Umgebung zugegriffen werden kann.
 
-Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- und Visualisierungsdienst, der die simultane Untersuchung und Analyse von Milliarden von IoT-Ereignissen ermöglicht. Sie erhalten globale Einblicke in Ihre Daten und können basierend darauf Ihre IoT-Lösung schneller überprüfen und kostenintensive Ausfallzeiten unternehmenskritischer Geräte vermeiden. Sie können versteckte Trends aufdecken, Abweichungen erkennen und Ursachenanalysen nahezu in Echtzeit durchführen. Der Time Series Insights-Explorer ist derzeit als öffentliche Vorschau verfügbar.
+Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- und Visualisierungsdienst, der die simultane Untersuchung und Analyse von Milliarden von IoT-Ereignissen ermöglicht. Sie erhalten globale Einblicke in Ihre Daten und können basierend darauf Ihre IoT-Lösung schneller überprüfen und kostenintensive Ausfallzeiten unternehmenskritischer Geräte vermeiden. Sie können versteckte Trends aufdecken, Abweichungen erkennen und Ursachenanalysen nahezu in Echtzeit durchführen. 
 
 > [!TIP]
 > Eine interaktive Tour durch die Demoumgebung finden Sie in der [Schnellstartanleitung für Azure Time Series Insights](time-series-quickstart.md).
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Informieren Sie sich über das Abfragen von Daten mit dem Time Series Insights-Explorer. </br>
+### <a name="learn-about-querying-data-by-using-the-azure-time-series-insights-explorer-br"></a>Informieren Sie sich über das Abfragen von Daten mit dem Azure Time Series Insights-Explorer. </br>
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->Sehen Sie sich das vorherige Video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">Getting started with Time Series Insights by using an Azure IoT Solution Accelerator</a> (Erste Schritte mit Time Series Insights unter Verwendung eines Azure IoT Solution Accelerators) an.
+>Sehen Sie sich das vorherige Video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">Erste Schritte mit Time Series Insights unter Verwendung eines Azure IoT Solution Accelerators</a> an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vor der Verwendung des Time Series Insights-Explorers müssen Sie folgende Schritte ausführen:
+Vor der Verwendung des Azure Time Series Insights-Explorers müssen Sie folgende Schritte ausführen:
 
-- Erstellen Sie eine Time Series Insights-Umgebung. Weitere Informationen finden Sie unter [Erste Schritte mit Time Series Insights](./time-series-insights-get-started.md).
+- Erstellen Sie eine Azure Time Series Insights-Umgebung. Weitere Informationen finden Sie unter [Erstellen einer neuen Azure Time Series Insights Gen1-Umgebung über das Azure-Portal](./time-series-insights-get-started.md).
 - [Erteilen Sie Zugriff](time-series-insights-data-access.md) auf Ihr Konto in der Umgebung.
 - Fügen Sie eine [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md)- oder [Event Hub](time-series-insights-how-to-add-an-event-source-eventhub.md)-Ereignisquelle hinzu.
 
 ## <a name="explore-and-query-data"></a>Untersuchen und Abfragen von Daten
 
-Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Series Insights-Umgebung können Sie Ihre Zeitreihendaten untersuchen und abfragen.
+Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Azure Time Series Insights-Umgebung können Sie Ihre Zeitreihendaten untersuchen und abfragen.
 
-1. Öffnen Sie zunächst den [Time Series Insights-Explorer](https://insights.timeseries.azure.com/) in Ihrem Webbrowser. Wählen Sie auf der linken Seite des Fensters eine Umgebung aus. Alle Umgebungen, auf die Sie Zugriff haben, sind in alphabetischer Reihenfolge aufgeführt.
+1. Öffnen Sie zunächst den [Azure Time Series Insights-Explorer](https://insights.timeseries.azure.com/) in Ihrem Webbrowser. Wählen Sie auf der linken Seite des Fensters eine Umgebung aus. Alle Umgebungen, auf die Sie Zugriff haben, sind in alphabetischer Reihenfolge aufgeführt.
 
 1. Nachdem Sie eine Umgebung ausgewählt haben, können Sie die Konfigurationen **Von** und **Bis** im oberen Bereich verwenden. Sie können die gewünschte Zeitspanne aber auch mit der Maus markieren und so auswählen. Klicken Sie rechts oben auf die Lupe, oder klicken Sie mit der rechten Maustaste auf die ausgewählte Zeitspanne, und wählen Sie **Suchen** aus.
 
@@ -57,7 +57,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
 1. Über das Azure-Cloudsymbol gelangen Sie zu Ihrer Umgebung im Azure-Portal.
 
-   [![Time Series Insights-Umgebungsauswahl](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
+   [![Azure Time Series Insights-Umgebungsauswahl](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
 1. Dann wird ein Diagramm angezeigt, in dem die Anzahl aller Ereignisse in der ausgewählten Zeitspanne angezeigt wird. Hier stehen mehrere Steuerelemente zur Verfügung:
 
@@ -80,7 +80,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
       - **Beispielabfragen**
 
-         [![Beispiel-GA-Abfragen](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
+         [![Gen1-Beispielabfragen](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
 1. Mit dem Schieberegler für die **Intervallgröße** können Sie die Intervalle in einer Zeitspanne vergrößern und verkleinern. Dies ermöglicht eine genauere Steuerung der Bewegung zwischen größeren Zeitabschnitten, die Trends gleichmäßig bis hin zu kleinsten Zeitabschnitten in Millisekunden anzeigen. So können Sie präzise, hochauflösende Schnitte Ihrer Daten anzeigen und analysieren. Der Standardstartpunkt des Schiebereglers ist auf die optimale Darstellung der Daten aus Ihrer Auswahl festgelegt und bietet ein ausgewogenes Verhältnis zwischen Auflösung, Abfragegeschwindigkeit und Granularität.
 
@@ -108,20 +108,20 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
 1. Mithilfe des **Wärmebilds** können Sie schnell besondere oder ungewöhnliche Datenreihen in einer bestimmten Abfrage erkennen. Nur ein Suchbegriff kann als Wärmebild visualisiert werden.
 
-    [![GA-Explorer: Wärmebilddiagramm ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Gen1-Explorer: Wärmebilddiagramm](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. Beim Untersuchen von Ereignissen durch Auswählen oder Klicken mit der rechten Maustaste wird der Bereich **EREIGNISSE** angezeigt. Hier können Sie alle Ihre Rohereignisse überprüfen und die Ereignisse als JSON- oder CSV-Dateien exportieren. In Time Series Insights werden alle Rohdaten gespeichert.
+1. Beim Untersuchen von Ereignissen durch Auswählen oder Klicken mit der rechten Maustaste wird der Bereich **EREIGNISSE** angezeigt. Hier können Sie alle Ihre Rohereignisse überprüfen und die Ereignisse als JSON- oder CSV-Dateien exportieren. In Azure Time Series Insights werden alle Rohdaten gespeichert.
 
     [![Ereignisse](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. Wählen Sie nach dem Untersuchen von Ereignissen die Registerkarte **STATISTIK** aus, um die Funktionen für Muster und Spaltenstatistik anzuzeigen.
 
-    - **Muster**: Dieses proaktive Feature zeigt die Muster an, die in einer ausgewählten Datenregion statistisch besonders signifikant sind. Sie müssen nicht Tausende von Ereignissen überprüfen, um zu ermitteln, welche Muster die meiste Zeit und Energie erfordern. Mit Time Series Insights können Sie direkt zu diesen statistisch signifikanten Mustern navigieren und Ihre Analyse fortsetzen. Dieses Feature ist auch nützlich für nachträgliche Überprüfungen von Verlaufsdaten.
+    - **Muster**: Dieses proaktive Feature zeigt die Muster an, die in einer ausgewählten Datenregion statistisch besonders signifikant sind. Sie müssen nicht Tausende von Ereignissen überprüfen, um zu ermitteln, welche Muster die meiste Zeit und Energie erfordern. Mit Azure Time Series Insights können Sie direkt zu diesen statistisch signifikanten Mustern navigieren und Ihre Analyse fortsetzen. Dieses Feature ist auch nützlich für nachträgliche Überprüfungen von Verlaufsdaten.
     - **Spaltenstatistik**: Die Spaltenstatistik liefert Diagramme und Tabellen, in denen Daten aus den einzelnen Spalten der ausgewählten Datenreihe über die ausgewählte Zeitspanne aufgeschlüsselt sind.
 
       [![Diagramm und Optionen für die Spalte STATISTIK](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-Nun haben Sie die wichtigsten Features, Konfigurationseinstellungen und Anzeigeoptionen kennengelernt, die in der Explorer-Web-App von Time Series Insights verfügbar sind.
+Nun haben Sie die wichtigsten Features, Konfigurationseinstellungen und Anzeigeoptionen kennengelernt, die in der Explorer-Web-App von Azure Time Series Insights verfügbar sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

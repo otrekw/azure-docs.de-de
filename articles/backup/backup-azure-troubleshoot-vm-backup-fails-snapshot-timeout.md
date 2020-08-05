@@ -1,22 +1,71 @@
 ---
 title: Beheben von Probleme mit Agents und Erweiterungen
 description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5bf52606e6fa5de6a122a65432da87de1491e17f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538818"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324742"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
 Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure Backup-Fehler bei der Kommunikation zwischen dem VM-Agent und der Erweiterung beheben können.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="step-by-step-guide-to-troubleshoot-backup-failures"></a>Ausführliche Anleitung zum Beheben von Sicherungsfehlern
+
+Die häufigsten Sicherungsfehler können mithilfe der unten aufgeführten Schritte selbst gelöst werden:
+
+### <a name="step-1-check-azure-vm-health"></a>Schritt 1: Überprüfen der Integrität der Azure-VM
+
+- **Sicherstellen, dass der Bereitstellungsstatus der Azure-VM „Wird ausgeführt“ ist:** Wenn der [VM-Bereitstellungsstatus](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states) dem Zustand **„Beendet“, „Zuweisung aufgehoben“ oder „Aktualisiert“** entspricht, wird der Sicherungsvorgang beeinträchtigt. Öffnen Sie das *Azure-Portal > VM > Übersicht*, und überprüfen Sie den VM-Status, um sicherzustellen, dass dieser **Wird ausgeführt** lautet. Wiederholen Sie anschließend den Sicherungsvorgang.
+- **Überprüfen ausstehender Betriebssystemupdates oder Neustarts:** Stellen Sie sicher, dass es auf der VM keine ausstehenden Betriebssystemupdates oder Neustarts gibt.
+
+### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Schritt 2: Überprüfen der Dienstintegrität des Gast-Agents auf der Azure-VM
+
+- **Sicherstellen, dass der Gast-Agent-Dienst auf der Azure-VM gestartet wurde und aktuell ist:**
+  - Auf einer Windows-VM:
+    - Navigieren Sie zu **services.msc**, und stellen Sie sicher, dass der **Gast-Agent-Dienst auf der Microsoft Azure-VM** ausgeführt wird. Stellen Sie außerdem sicher, dass die [neueste Version](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) installiert ist. Weitere Informationen finden Sie unter [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms).
+    - Der Azure-VM-Agent wird standardmäßig auf allen Windows-VMs installiert, die über das Azure Marketplace-Image über das Portal, PowerShell, die Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage bereitgestellt werden. Eine [manuelle Installation des Agents](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) kann erforderlich sein, wenn Sie ein benutzerdefiniertes VM-Image erstellen, das in Azure bereitgestellt wird.
+    - Überprüfen Sie die Unterstützungsmatrix, um zu prüfen, ob die VM auf dem [unterstützten Windows-Betriebssystem](backup-support-matrix-iaas.md#operating-system-support-windows) ausgeführt wird.
+  - Auf einer Linux-VM:
+    - Indem Sie den Befehl `ps-e` ausführen, können Sie sicherstellen, dass der Gast-Agent-Dienst auf der Azure-VM ausgeführt wird. Stellen Sie außerdem sicher, dass die [neueste Version](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) installiert ist. Weitere Informationen finden Sie unter [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).
+    - Stellen Sie sicher, dass die [Linux-VM-Agent-Abhängigkeiten von Systempaketen](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) die unterstützte Konfiguration aufweisen. Beispiel: Die unterstützte Python-Version ist Version 2.6 oder höher.
+    - Überprüfen Sie die Unterstützungsmatrix, um zu prüfen, ob die VM auf dem [unterstützten Linux-Betriebssystem](backup-support-matrix-iaas.md#operating-system-support-linux) ausgeführt wird.
+
+### <a name="step-3-check-azure-vm-extension-health"></a>Schritt 3: Überprüfen der Integrität der Azure-VM-Erweiterung
+
+- **Sicherstellen, dass alle Azure-VM-Erweiterungen den Status „Bereitstellung erfolgreich“ aufweisen:** Wenn eine Erweiterung den Status „Fehler“ aufweist, kann die Sicherung beeinträchtigt werden.
+- Navigieren Sie im Azure-Portal zu *VM > Einstellungen > Erweiterungen > Status der Erweiterungen*, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet.
+- Stellen Sie sicher, dass alle [Erweiterungsprobleme](https://docs.microsoft.com/azure/virtual-machines/extensions/overview#troubleshoot-extensions) gelöst sind, und wiederholen Sie den Sicherungsvorgang.
+- **Stellen Sie sicher, dass die COM+-Systemanwendung** ausgeführt wird. Außerdem sollte der **Distributed Transaction Coordinator-Dienst** als **Netzwerkdienstkonto** ausgeführt werden. Führen Sie die Schritte in diesem Artikel aus, um [COM+- und MSDTC-Fehler zu beheben](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error).
+
+### <a name="step-4-check-azure-backup-vm-extension-health"></a>Schritt 4: Überprüfen der Integrität der Azure Backup-VM-Erweiterung
+
+Azure Backup führt mithilfe der VM-Momentaufnahmenerweiterung eine anwendungskonsistente Sicherung des virtuellen Azure-Computers durch. Azure Backup installiert die Erweiterung als Teil der ersten geplanten Sicherung, die nach der Aktivierung der Sicherung ausgelöst wird.
+
+- **Sicherstellen, dass die VMSnapshot-Erweiterung keinen fehlerhaften Status aufweist:** Führen Sie die in diesem [Abschnitt](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) aufgeführten Schritte aus, um sicherzustellen, dass die Azure Backup-Erweiterung fehlerfrei ist.
+
+- **Überprüfen, ob die Erweiterung durch Antivirussoftware blockiert wird:** Die Ausführung von Erweiterungen kann durch bestimmte Antivirussoftware verhindert werden.
+  
+  Überprüfen Sie zum Zeitpunkt des Sicherungsfehlers, ob in ***Ereignisanzeige-Anwendungsprotokollen*** Protokolleinträge mit dem ***fehlerhaften Anwendungsnamen „IaaSBcdrExtension.exe“ vorhanden sind.*** Wenn Einträge angezeigt werden, kann es sein, dass das auf der VM konfigurierte Antivirenprogramm die Ausführung der Sicherungserweiterung einschränkt. Testen Sie dies, indem Sie die folgenden Verzeichnisse in der Antivirenkonfiguration ausschließen, und wiederholen Sie den Sicherungsvorgang.
+  - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+  - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+
+- **Überprüfen, ob Netzwerkzugriff erforderlich ist:** Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access)
+  - Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
+  - Wenn Sie den Zugriff auf `168.63.129.16` mit der Gastfirewall oder einem Proxy blockiert haben, treten bei den Erweiterungen unabhängig von den oben beschriebenen Szenarios Fehler auf. Die Ports 80, 443 und 32526 sind erforderlich. [Hier finden Sie weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access).
+
+- **Sicherstellen, dass das Dynamic Host Configuration-Protokoll auf der Gast-VM aktiviert ist:** Dies ist erforderlich, damit die Host- oder Fabricadresse des Dynamic Host Configuration-Protokolls (DHCP) für die IaaS-VM-Sicherung funktioniert. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im Azure-Portal oder mithilfe von PowerShell konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. [Hier finden Sie weitere Informationen](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken).
+
+- **Sicherstellen, dass der VSS Writer-Dienst ausgeführt wird:** Führen Sie diese Schritte aus, um [Probleme mit VSS Writer zu beheben](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
+- **Berücksichtigen bewährter Methoden für Sicherungen:** Lesen Sie die [bewährten Methoden zum Aktivieren von Azure-VM-Sicherungen](backup-azure-vms-introduction.md#best-practices).
+- **Überprüfen der Richtlinien für verschlüsselte Datenträger:** Wenn Sie die Sicherung für VMs mit verschlüsseltem Datenträger aktivieren, stellen Sie sicher, dass Sie alle erforderlichen Berechtigungen bereitgestellt haben. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers](backup-azure-vms-encryption.md#encryption-support).
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: VM Agent unable to communicate with Azure Backup (VM-Agent kann nicht mit Azure Backup kommunizieren).
 

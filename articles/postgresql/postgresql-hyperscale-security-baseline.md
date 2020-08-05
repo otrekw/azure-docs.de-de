@@ -1,20 +1,20 @@
 ---
-title: 'Azure Database for PostgreSQL: Hyperscale-Sicherheitsbaseline für den Azure-Sicherheitsvergleichstest'
+title: Azure-Sicherheitsbaseline für Azure Database for PostgreSQL (Hyperscale)
 description: Die Hyperscale-Sicherheitsbaseline für Azure Database for PostgreSQL enthält Anleitungen und Ressourcen für die Vorgehensweise bei der Implementierung der Sicherheitsempfehlungen aus dem Azure-Sicherheitsvergleichstest.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030044"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>Azure Database for PostgreSQL: Hyperscale-Sicherheitsbaseline für den Azure-Sicherheitsvergleichstest
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL (Hyperscale)
 
 Die Azure-Sicherheitsbaseline für Azure Database for PostgreSQL: Hyperscale enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 

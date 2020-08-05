@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057822"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317347"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -95,7 +95,7 @@ Sie haben zwei Möglichkeiten, den Schutz von Dateien und Ordnern durch Sicherun
   - Mit der Option *Aktivieren Sie den Sicherungszeitplan erneut* können Sie bei Bedarf den Schutz fortsetzen. Anschließend werden die Daten basierend auf der neuen Aufbewahrungsrichtlinie aufbewahrt.
 - **Schutz beenden und Sicherungsdaten löschen**.
   - Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihrer Daten beendet und alle Wiederherstellungspunkte gelöscht.
-  - Sie erhalten eine Benachrichtigungs-E-Mail mit der Nachricht *Your data for this Backup item has been deleted. This data will be temporarily available for 14 days, after which it will be permanently deleted* (Die Daten für dieses Sicherungselement wurden gelöscht. Diese Daten sind 14 Tage lang verfügbar und werden anschließend endgültig gelöscht.) und der empfohlenen Aktion *Reprotect the Backup item within 14 days to recover your data.* (Schützen Sie das Sicherungselement innerhalb von 14 Tagen erneut, um die Daten wiederherzustellen.).
+  - Sie erhalten eine Warn-E-Mail zur Löschung der Sicherungsdaten mit der Nachricht *Your data for this Backup item has been deleted. This data will be temporarily available for 14 days, after which it will be permanently deleted* (Die Daten für dieses Sicherungselement wurden gelöscht. Diese Daten sind 14 Tage lang verfügbar und werden anschließend endgültig gelöscht.) und der empfohlenen Aktion *Reprotect the Backup item within 14 days to recover your data.* (Schützen Sie das Sicherungselement innerhalb von 14 Tagen erneut, um die Daten wiederherzustellen.).
   - Um den Schutz fortzusetzen, stellen Sie ihn innerhalb von 14 Tagen nach dem Löschvorgang wieder her.
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Schutz beenden und Sicherungsdaten beibehalten
@@ -112,7 +112,7 @@ Sie haben zwei Möglichkeiten, den Schutz von Dateien und Ordnern durch Sicherun
 1. Überprüfen Sie die Informationen in **Geplante Sicherung anhalten**, und klicken Sie auf **Fertig stellen**.
 
     ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. Überprüfen Sie in **Sicherungsstatus ändern**, ob der Status der geplanten Sicherung „Erfolgreich“ ist, und klicken Sie auf **Schließen**, um den Vorgang abzuschließen.
+1. Überprüfen Sie in **Sicherungsstatus ändern**, ob der Status der geplanten Sicherungspausierung „Erfolgreich“ ist, und klicken Sie auf **Schließen**, um den Vorgang abzuschließen.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Schutz beenden und Sicherungsdaten löschen
 
@@ -156,17 +156,18 @@ Wenn Sie den Schutz beendet haben, die Daten jedoch aufbewahrt wurden, und Sie d
 
 Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während der Sicherung oder Wiederherstellung Ihres lokalen Computers mithilfe des MARS-Agents nach oder aus Azure verwendet. Wenn Sie die Passphrase verloren oder vergessen haben, können Sie sie neu generieren (vorausgesetzt, der Computer ist noch beim Recovery Services-Tresor registriert, und die Sicherung wurde konfiguriert). Führen Sie dazu die folgenden Schritte aus:
 
-- Wechseln Sie von der MARS-Agent-Konsole zu **Aktionsbereich** > **Eigenschaften ändern** >. Wechseln Sie dann zur **Registerkarte „Verschlüsselung“** .<br>
-- Aktivieren Sie das Kontrollkästchen **Passphrase ändern**.<br>
-- Geben Sie eine neue Passphrase ein, oder klicken Sie auf **Passphrase generieren**.
-- Klicken Sie auf **Durchsuchen**, um die neue Passphrase zu speichern.
+1. Wechseln Sie von der MARS-Agent-Konsole zu **Aktionsbereich** > **Eigenschaften ändern** >. Wechseln Sie dann zur **Registerkarte „Verschlüsselung“** .<br>
+1. Aktivieren Sie das Kontrollkästchen **Passphrase ändern**.<br>
+1. Geben Sie eine neue Passphrase ein, oder klicken Sie auf **Passphrase generieren**.
+1. Klicken Sie auf **Durchsuchen**, um die neue Passphrase zu speichern.
 
     ![Generieren Sie die Passphrase.](./media/backup-azure-manage-mars/passphrase.png)
-- Klicken Sie auf **OK**, um die Änderungen zu übernehmen.  Wenn im Azure-Portal das [Sicherheitsfeature](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) für den Recovery Services-Tresor aktiviert ist, werden Sie aufgefordert, die Sicherheits-PIN einzugeben. Führen Sie die Schritte in diesem [Artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations) aus, um die PIN zu erhalten.<br>
-- Fügen Sie die Sicherheits-PIN aus dem Portal ein, und klicken Sie auf **OK**, um die Änderungen anzuwenden.<br>
+
+1. Klicken Sie auf **OK**, um die Änderungen zu übernehmen.  Wenn im Azure-Portal das [Sicherheitsfeature](./backup-azure-security-feature.md#enable-security-features) für den Recovery Services-Tresor aktiviert ist, werden Sie aufgefordert, die Sicherheits-PIN einzugeben. Führen Sie die Schritte in diesem [Artikel](./backup-azure-security-feature.md#authentication-to-perform-critical-operations) aus, um die PIN zu erhalten.<br>
+1. Fügen Sie die Sicherheits-PIN aus dem Portal ein, und klicken Sie auf **OK**, um die Änderungen anzuwenden.<br>
 
     ![Generieren Sie die Passphrase.](./media/backup-azure-manage-mars/passphrase2.png)
-- Stellen Sie sicher, dass die Passphrase an einem alternativen Speicherort (nicht auf dem Quellcomputer) sicher gespeichert wird, vorzugsweise im Azure Key Vault. Halten Sie alle Passphrasen nach, wenn Sie über mehrere mit den MARS-Agents gesicherte Computer verfügen.
+1. Stellen Sie sicher, dass die Passphrase an einem alternativen Speicherort (nicht auf dem Quellcomputer) sicher gespeichert wird, vorzugsweise im Azure Key Vault. Halten Sie alle Passphrasen nach, wenn Sie über mehrere mit den MARS-Agents gesicherte Computer verfügen.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Verwalten von Sicherungsdaten für nicht verfügbare Computer
 
@@ -183,13 +184,14 @@ Für diese Computer stellt der Azure Backup-Dienst sicher, dass der letzte Wiede
 Das Verwalten der Sicherungsrichtlinie für MARS erfolgt über die MARS-Konsole und nicht über das Portal. Wenn Sie die Aufbewahrungseinstellungen für vorhandene Wiederherstellungspunkte verlängern müssen, bevor diese ablaufen, müssen Sie den Computer wiederherstellen, die MARS-Konsole installieren und die Richtlinie verlängern.
 
 - Um den Computer wiederherzustellen, führen Sie die folgenden Schritte aus:
-  - [Wiederherstellen des virtuellen Computers auf einem alternativen Zielcomputer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
-  - Erstellen Sie den Zielcomputer mit dem gleichen Hostnamen wie der Quellcomputer neu.
-  - Installieren Sie den Agent, und registrieren Sie sich erneut beim gleichen Tresor und mit der gleichen Passphrase.
-  - Starten Sie den MARS-Client, um die Aufbewahrungsdauer entsprechend Ihren Anforderungen zu verlängern.
+  1. [Wiederherstellen des virtuellen Computers auf einem alternativen Zielcomputer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  1. Erstellen Sie den Zielcomputer mit dem gleichen Hostnamen wie der Quellcomputer neu.
+  1. Installieren Sie den Agent, und registrieren Sie sich erneut beim gleichen Tresor und mit der gleichen Passphrase.
+  1. Starten Sie den MARS-Client, um die Aufbewahrungsdauer entsprechend Ihren Anforderungen zu verlängern.
 - Der neu wiederhergestellte Computer, der mit MARS geschützt wird, führt weiter Sicherungen durch.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu unterstützten Szenarien und Einschränkungen finden Sie in der [Supportmatrix für den MARS-Agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
+- Informationen zu unterstützten Szenarien und Einschränkungen finden Sie in der [Supportmatrix für den MARS-Agent](./backup-support-matrix-mars-agent.md).
 - Erfahren Sie mehr über die [Aufbewahrung bei Richtlinien für bedarfsgesteuerte Sicherungen](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).
+- Weitere häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)](backup-azure-file-folder-backup-faq.md).

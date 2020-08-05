@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 950f4cfda73b40db0de8ba035868573cda1a5017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080011"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Verwalten von Plattformupdates mit der Wartungssteuerung 
 
@@ -23,12 +23,12 @@ Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre iso
 Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
 - Batchupdates in ein Updatepaket
 - Warten von bis zu 35 Tagen bis zur Anwendung der Updates 
-- Automatisieren von Plattformupdates für Ihr Wartungsfenster mit Azure Functions
+- Automatisieren von Plattformupdates für Ihr Wartungsfenster mit [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)
 - Wartungskonfigurationen funktionieren abonnement- und ressourcengruppenübergreifend. 
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Virtuelle Computer müssen sich auf einem [dedizierten Host](./linux/dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](./linux/isolation.md) erstellt werden.
+- Virtuelle Computer müssen sich auf einem [dedizierten Host](./linux/dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](isolation.md) erstellt werden.
 - Nach 35 Tagen wird automatisch ein Update angewendet.
 - Der Benutzer muss über einen **Ressourcenmitwirkender**-Zugriff verfügen.
 
@@ -39,6 +39,8 @@ Wartungskonfigurationen können mithilfe einer der folgenden Optionen erstellt u
 - [Azure-Befehlszeilenschnittstelle](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
 - [Azure portal](maintenance-control-portal.md)
+
+Ein Azure Functions-Beispiel finden Sie unter [Planen von Wartungsupdates mit der Wartungssteuerung und Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

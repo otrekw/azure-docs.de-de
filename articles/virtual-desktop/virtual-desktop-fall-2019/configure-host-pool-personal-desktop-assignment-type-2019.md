@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop – Zuweisungstyp für persönliche Desktops – Azure
-description: Konfigurieren des Zuweisungstyps für einen Windows Virtual Desktop-Hostpool mit persönlichen Desktops.
+title: 'Azure: Zuweisungstyp für persönliche Desktops in Windows Virtual Desktop (Classic)'
+description: So konfigurieren Sie den Zuweisungstyp für einen Windows Virtual Desktop-Hostpool (Classic) mit persönlichen Desktops.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259801"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271041"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurieren des Zuweisungstyps für den Hostpool mit persönlichen Desktops
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Konfigurieren des Zuweisungstyps für einen Windows Virtual Desktop-Hostpool (Classic) mit persönlichen Desktops
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../configure-host-pool-personal-desktop-assignment-type.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch), das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, finden Sie weitere Informationen in [diesem Artikel](../configure-host-pool-personal-desktop-assignment-type.md).
 
 Sie können den Zuweisungstyp Ihres Hostpools mit persönlichen Desktops konfigurieren, um Ihre Windows Virtual Desktop-Umgebung besser an Ihre Bedürfnisse anzupassen. In diesem Thema erfahren Sie, wie Sie die automatische oder direkte Zuweisung für Ihre Benutzer konfigurieren.
 

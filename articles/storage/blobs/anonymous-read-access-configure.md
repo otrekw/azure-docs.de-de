@@ -1,59 +1,72 @@
 ---
 title: Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie den anonymen Zugriff auf Blobdaten für das Speicherkonto aktivieren bzw. deaktivieren. Legen Sie die Einstellung für den öffentlichen Containerzugriff fest, damit anonym auf Container und Blobs zugegriffen werden kann.
+description: Hier erfahren Sie, wie Sie den anonymen Zugriff auf Blobdaten für das Speicherkonto zulassen bzw. verweigern. Legen Sie die Einstellung für den öffentlichen Containerzugriff fest, damit anonym auf Container und Blobs zugegriffen werden kann.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: af589874021baaf04a423b7bbaa0e36528eda93c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289245"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs
 
-Azure Storage unterstützt den anonymen, öffentlichen Lesezugriff auf Container und Blobs. Standardmäßig müssen alle Anforderungen an einen Container und zugehörige Blobs entweder mithilfe von Azure Active Directory (Azure AD) oder der Autorisierung mit dem gemeinsam verwendetem Schlüssel autorisiert werden. Wenn Sie die Einstellung für die öffentliche Zugriffsebene eines Containers so konfigurieren, dass der anonyme Zugriff erlaubt ist, können Clients Daten in diesem Container lesen, ohne die Anforderung zu autorisieren.
+Azure Storage unterstützt optional den anonymen, öffentlichen Lesezugriff für Container und Blobs. Standardmäßig wird der anonyme Zugriff auf Ihre Daten nie zugelassen. Wenn Sie den anonymen Zugriff nicht explizit aktivieren, müssen alle Anforderungen an einen Container und dessen Blobs autorisiert werden. Wenn Sie die Einstellung für die öffentliche Zugriffsebene eines Containers so konfigurieren, dass der anonyme Zugriff erlaubt ist, können Clients Daten in diesem Container lesen, ohne die Anforderung zu autorisieren.
 
 > [!WARNING]
-> Wenn ein Container für den öffentlichen Zugriff konfiguriert ist, kann jeder Client Daten in diesem Container lesen. Der öffentliche Zugriff stellt ein potenzielles Sicherheitsrisiko dar. Sollte es in Ihrem Szenario nicht erforderlich sein, empfiehlt Microsoft die Deaktivierung des Zugriffs für das Speicherkonto. Weitere Informationen finden Sie unter [Verhindern des anonymem, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-prevent.md).
-
-Um den öffentlichen Zugriff auf einen Container zu konfigurieren, müssen Sie zwei Schritte ausführen:
-
-1. Aktivieren des öffentlichen Zugriffs für das Speicherkonto
-1. Konfigurieren der Einstellung für den öffentlichen Zugriff des Containers
+> Wenn ein Container für den öffentlichen Zugriff konfiguriert ist, kann jeder Client Daten in diesem Container lesen. Der öffentliche Zugriff stellt ein potenzielles Sicherheitsrisiko dar. Sollte es in Ihrem Szenario nicht erforderlich sein, empfiehlt Microsoft die Verweigerung des Zugriffs für das Speicherkonto. Weitere Informationen finden Sie unter [Verhindern des anonymem, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-prevent.md).
 
 In diesem Artikel wird beschrieben, wie Sie anonymen, öffentlichen Lesezugriff auf einen Container und zugehörige Blobs konfigurieren. Informationen dazu, wie Sie anonym von einer Clientanwendung aus auf Blobdaten zugreifen können, finden Sie unter [Anonymer Zugriff auf öffentliche Container und Blobs mit .NET](anonymous-read-access-client.md).
 
-## <a name="enable-or-disable-public-read-access-for-a-storage-account"></a>Aktivieren oder Deaktivieren des öffentlichen Lesezugriffs für ein Speicherkonto
+## <a name="about-anonymous-public-read-access"></a>Anonymer öffentlicher Lesezugriff
 
-Der öffentliche Zugriff ist für ein Speicherkonto standardmäßig aktiviert. Die Deaktivierung des öffentlichen Zugriffs verhindert den anonymen Zugriff auf Container und Blobs in diesem Konto. Zur Verbesserung der Sicherheit empfiehlt Microsoft, den öffentlichen Zugriff auf Ihre Speicherkonten zu deaktivieren, wenn das Szenario nicht erfordert, dass Benutzer anonym auf Blobressourcen zugreifen.
+Der öffentliche Zugriff auf Ihre Daten ist standardmäßig immer unzulässig. Es gibt zwei Möglichkeiten, die Einstellungen für den öffentlichen Zugriff zu ändern:
 
-> [!WARNING]
-> Durch die Deaktivierung des öffentlichen Zugriffs für ein Speicherkonto werden die Einstellungen für den öffentlichen Zugriff für alle Container in diesem Speicherkonto überschrieben. Wenn der öffentliche Zugriff für das Speicherkonto deaktiviert ist, können keine zukünftigen anonymen Anforderungen an dieses Konto mehr gestellt werden.
+1. **Lassen Sie den öffentlichen Zugriff für das Speicherkonto zu:** Standardmäßig kann ein Speicherkontobenutzer mit entsprechenden Berechtigungen den öffentlichen Zugriff auf Container aktivieren. Für Blobdaten ist der öffentliche Zugriff nicht verfügbar, sofern der Benutzer nicht in einem zusätzlichen Schritt explizit die Containereinstellung für den öffentlichen Zugriff konfiguriert.
+1. **Konfigurieren Sie die Containereinstellung für den öffentlichen Zugriff:** Standardmäßig ist die Containereinstellung für den öffentlichen Zugriff deaktiviert. Jede Anforderung an den Container oder dessen Daten muss also autorisiert werden. Ein Benutzer mit entsprechenden Berechtigungen kann die Containereinstellung für den öffentlichen Zugriff so ändern, dass anonymer Zugriff nur zugelassen wird, wenn dieser auch für das Speicherkonto aktiviert ist.
 
-Verwenden Sie das Azure-Portal oder die Azure CLI zum Konfigurieren der Eigenschaft **blobPublicAccess** des Kontos, um den öffentlichen Zugriff für ein Speicherkonto zu aktivieren oder zu deaktivieren. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
+In der folgenden Tabelle wird zusammengefasst, wie sich diese beiden Einstellungen auf den öffentlichen Zugriff für einen Container auswirken.
+
+| Einstellung für öffentlichen Zugriff | Öffentlicher Zugriff für einen Container ist deaktiviert (Standardeinstellung) | Öffentlicher Zugriff für einen Container ist auf „Container“ festgelegt | Öffentlicher Zugriff für einen Container ist auf „Blob“ festgelegt |
+|--|--|--|--|
+| Öffentlicher Zugriff wird für das Speicherkonto verweigert | Kein öffentlicher Zugriff auf die Container im Speicherkonto | Kein öffentlicher Zugriff auf die Container im Speicherkonto – die Einstellung für das Speicherkonto überschreibt die Containereinstellung. | Kein öffentlicher Zugriff auf die Container im Speicherkonto – die Einstellung für das Speicherkonto überschreibt die Containereinstellung. |
+| Öffentlicher Zugriff wird für das Speicherkonto zugelassen (Standardeinstellung) | Kein öffentlicher Zugriff auf diesen Container (Standardkonfiguration) | Der öffentliche Zugriff ist für diesen Container und dessen Blobs zulässig. | Der öffentliche Zugriff auf Blobs in diesem Container ist zulässig, jedoch nicht auf den Container selbst. |
+
+## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>Zulassen oder Verweigern des öffentlichen Lesezugriffs für ein Speicherkonto
+
+Standardmäßig sind Speicherkonten so konfiguriert, dass ein Benutzer mit entsprechenden Berechtigungen den öffentlichen Zugriff auf Container aktivieren kann. Wenn der öffentliche Zugriff zugelassen wird, kann ein Benutzer mit entsprechenden Berechtigungen die Containereinstellung für den öffentlichen Zugriff so ändern, dass anonymer öffentlicher Zugriff auf die Daten in diesem Container aktiviert wird. Für Blobdaten ist der öffentliche Zugriff nicht verfügbar, sofern der Benutzer nicht in einem zusätzlichen Schritt explizit die Containereinstellung für den öffentlichen Zugriff konfiguriert.
+
+Beachten Sie, dass der öffentliche Zugriff auf einen Container standardmäßig deaktiviert ist und explizit konfiguriert werden muss, damit anonyme Anforderungen zugelassen werden. Unabhängig von der Einstellung für das Speicherkonto sind Ihre Daten niemals für den öffentlichen Zugriff verfügbar, sofern nicht ein Benutzer mit entsprechenden Berichtigungen den öffentlichen Zugriff auf den Container in einem zusätzlichen Schritt aktiviert.
+
+Wenn Sie den öffentlichen Zugriff für das Speicherkonto nicht zulassen, wird der anonyme Zugriff auf alle Container und Blobs in diesem Konto verhindert. Wenn der öffentliche Zugriff für das Konto nicht zulässig ist, kann die Einstellung für den öffentlichen Zugriff für einen Container nicht so konfiguriert werden, dass anonymer Zugriff zugelassen wird. Zur Verbesserung der Sicherheit empfiehlt Microsoft, den öffentlichen Zugriff auf Ihre Speicherkonten zu verweigern, wenn das Szenario nicht erfordert, dass Benutzer anonym auf Blobressourcen zugreifen.
+
+> [!IMPORTANT]
+> Durch Verweigerung des öffentlichen Zugriffs für ein Speicherkonto werden die Einstellungen für den öffentlichen Zugriff für alle Container in diesem Konto außer Kraft gesetzt. Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, tritt bei künftigen anonymen Anforderungen für dieses Konto ein Fehler auf. Bevor Sie diese Einstellung ändern, sollten Sie sich mit den Auswirkungen auf Clientanwendung befassen, die ggf. anonym auf Daten in Ihrem Speicherkonto zugreifen. Weitere Informationen finden Sie unter [Verhindern des anonymem, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-prevent.md).
+
+Verwenden Sie das Azure-Portal oder die Azure CLI zum Konfigurieren der Eigenschaft **blobPublicAccess** des Kontos, um den öffentlichen Zugriff für ein Speicherkonto zu zuzulassen oder zu verweigern. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-Führen Sie die folgenden Schritte aus, um den öffentlichen Zugriff für ein Speicherkonto im Azure-Portal zu aktivieren oder zu deaktivieren:
+Befolgen Sie diese Schritte, um den öffentlichen Zugriff für ein Speicherkonto im Azure-Portal zuzulassen oder zu verweigern:
 
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
 1. Suchen Sie unter **Einstellungen** die Einstellung **Konfiguration**.
-1. Klicken Sie unter **Öffentlicher Blobzugriff** auf die Option **Deaktiviert** oder **Aktiviert**.
+1. Legen Sie **Öffentlicher Blobzugriff** auf **Aktiviert** oder **Deaktiviert** fest.
 
-    :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Screenshot, der zeigt, wie Sie den öffentlichen Blobzugriff für das Konto aktivieren oder deaktivieren":::
+    :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Screenshot: öffentlichen Blobzugriff für das Konto zulassen oder verweigern":::
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Wenn Sie den öffentlichen Zugriff für ein Speicherkonto mit der Azure CLI aktivieren oder deaktivieren möchten, rufen Sie zunächst die Ressourcen-ID für Ihr Speicherkonto über den Befehl [az resource show](/cli/azure/resource#az-resource-show) ab. Rufen Sie danach den Befehl [az resource update](/cli/azure/resource#az-resource-update) auf, um die Eigenschaft **allowBlobPublicAccess** für das Speicherkonto festzulegen. Legen Sie zum Aktivieren des öffentlichen Zugriffs die Eigenschaft **allowBlobPublicAccess** auf TRUE fest. Zum Deaktivieren müssen Sie die Eigenschaft auf **FALSE** festlegen.
+Wenn Sie den öffentlichen Zugriff für ein Speicherkonto mithilfe der Azure CLI zulassen oder verweigern möchten, rufen Sie zunächst die Ressourcen-ID für Ihr Speicherkonto über den Befehl [az resource show](/cli/azure/resource#az-resource-show) ab. Rufen Sie danach den Befehl [az resource update](/cli/azure/resource#az-resource-update) auf, um die Eigenschaft **allowBlobPublicAccess** für das Speicherkonto festzulegen. Legen Sie die Eigenschaft **allowBlobPublicAccess** auf true fest, um den öffentlichen Zugriff zuzulassen, und auf **false**, um diesen zu verweigern.
 
-Im folgenden Beispiel wird der Zugriff auf öffentliche Blobs für das Speicherkonto deaktiviert. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
+Im folgenden Beispiel wird der Zugriff auf öffentliche Blobs für das Speicherkonto verweigert. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli-interactive
 storage_account_id=$(az resource show \
@@ -69,31 +82,21 @@ az resource update \
     ```
 ```
 
-Um zu überprüfen, ob der öffentliche Zugriff mit der Azure CLI aktiviert ist, müssen Sie den Befehl [az resource show](/cli/azure/resource#az-resource-show) aufrufen und eine Abfrage für die Eigenschaft **allowBlobPublicAccess** ausführen:
-
-```azurecli-interactive
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowBlobPublicAccess \
-    --output tsv
-```
-
 ---
 
 > [!NOTE]
-> Die Deaktivierung des öffentlichen Zugriffs auf ein Speicherkonto wirkt sich nicht auf statische Websites aus, die in diesem Speicherkonto gehostet werden. Auf den Container **$web** kann immer öffentlich zugegriffen werden.
+> Die Verweigerung des öffentlichen Zugriffs auf ein Speicherkonto wirkt sich nicht auf statische Websites aus, die in diesem Speicherkonto gehostet werden. Auf den Container **$web** kann immer öffentlich zugegriffen werden.
 
-## <a name="check-the-public-access-setting-for-a-storage-account"></a>Überprüfen der Einstellung für den öffentlichen Zugriff für ein Speicherkonto
+## <a name="check-whether-public-access-is-allowed-for-a-storage-account"></a>Überprüfen des öffentlichen Zugriffs für ein Speicherkonto
 
-Wenn Sie die Einstellung für den öffentlichen Zugriff für ein Speicherkonto überprüfen möchten, können Sie den Wert der Eigenschaft **allowBlobPublicAccess** abrufen. Über den Azure Resource Graph-Explorer können Sie diese Eigenschaft für eine große Anzahl von Speicherkonten gleichzeitig überprüfen.
+Wenn Sie überprüfen möchten, ob der öffentliche Zugriff für ein Speicherkonto zulässig ist, können Sie den Wert der Eigenschaft **allowBlobPublicAccess** abrufen. Über den Azure Resource Graph-Explorer können Sie diese Eigenschaft für eine große Anzahl von Speicherkonten gleichzeitig überprüfen.
 
-Die Eigenschaft **allowBlobPublicAccess** wird nicht standardmäßig festgelegt und gibt erst dann einen Wert zurück, wenn Sie sie explizit festgelegt haben. Das Speicherkonto erlaubt standardmäßig den öffentlichen Zugriff, wenn der Eigenschaftswert NULL ist.
+> [!IMPORTANT]
+> Die Eigenschaft **allowBlobPublicAccess** wird nicht standardmäßig festgelegt und gibt erst dann einen Wert zurück, wenn Sie sie explizit festgelegt haben. Das Speicherkonto lässt den öffentlichen Zugriff zu, wenn der Eigenschaftswert **NULL** oder **true** ist.
 
-### <a name="check-the-public-access-setting-for-a-single-storage-account"></a>Überprüfen der Einstellung für den öffentlichen Zugriff für ein einzelnes Speicherkonto
+### <a name="check-whether-public-access-is-allowed-for-a-single-storage-account"></a>Überprüfen des öffentlichen Zugriffs für ein einzelnes Speicherkonto
 
-Sie müssen zur Überprüfung der Einstellung für den öffentlichen Zugriff für ein einzelnes Speicherkonto mit der Azure CLI den Befehl [az resource show](/cli/azure/resource#az-resource-show) aufrufen und eine Abfrage für die Eigenschaft **allowBlobPublicAccess** ausführen:
+Wenn Sie mithilfe der Azure CLI überprüfen möchten, ob der öffentliche Zugriff für ein einzelnes Speicherkonto zulässig ist, können Sie den Befehl [az resource show](/cli/azure/resource#az-resource-show) ausführen und die Eigenschaft **allowBlobPublicAccess** abfragen:
 
 ```azurecli-interactive
 az resource show \
@@ -104,9 +107,9 @@ az resource show \
     --output tsv
 ```
 
-### <a name="check-the-public-access-setting-for-a-set-of-storage-accounts"></a>Überprüfen der Einstellung für den öffentlichen Zugriff für eine Gruppe von Speicherkonten
+### <a name="check-whether-public-access-is-allowed-for-a-set-of-storage-accounts"></a>Überprüfen des öffentlichen Zugriffs für mehrere Speicherkonten
 
-Wenn Sie die Einstellung für den öffentlichen Zugriff für eine Gruppe von Speicherkonten mit optimaler Leistung überprüfen möchten, können Sie den Azure Resource Graph-Explorer im Azure-Portal verwenden. Weitere Informationen zur Verwendung des Resource Graph-Explorers finden Sie unter [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](/azure/governance/resource-graph/first-query-portal).
+Wenn Sie effizient überprüfen möchten, ob der öffentliche Zugriff für bestimmte Speicherkonten zulässig ist, können Sie den Azure Resource Graph-Explorer im Azure-Portal verwenden. Weitere Informationen zur Verwendung des Resource Graph-Explorers finden Sie unter [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](/azure/governance/resource-graph/first-query-portal).
 
 Wenn Sie die folgende Abfrage im Resource Graph-Explorer ausführen, wird eine Liste der Speicherkonten zurückgegeben und für jedes Konto der Wert der Eigenschaft **allowBlobPublicAccess** angezeigt:
 
@@ -120,9 +123,9 @@ resources
 
 ## <a name="set-the-public-access-level-for-a-container"></a>Festlegen der öffentlichen Zugriffsebene auf einen Container
 
-Wenn anonyme Benutzer Lesezugriff auf den Container und auf die zugehörigen Blobs erhalten sollen, müssen Sie zunächst den öffentlichen Zugriff für das Speicherkonto aktivieren und können anschließend die öffentliche Zugriffsebene für den Container festlegen. Wenn der öffentliche Zugriff für das Speicherkonto deaktiviert ist, können Sie den öffentlichen Zugriff auf einen Container nicht konfigurieren.
+Wenn anonyme Benutzer Lesezugriff auf den Container und auf die zugehörigen Blobs erhalten sollen, müssen Sie zunächst den öffentlichen Zugriff für das Speicherkonto zulassen und anschließend die öffentliche Zugriffsebene für den Container festlegen. Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, können Sie den öffentlichen Zugriff für einen Container nicht konfigurieren.
 
-Wenn der öffentliche Zugriff für ein Speicherkonto aktiviert ist, können Sie einen Container mit den folgenden Berechtigungen konfigurieren:
+Wenn der öffentliche Zugriff für ein Speicherkonto zulässig ist, können Sie einen Container mit den folgenden Berechtigungen konfigurieren:
 
 - **No public read access** (Kein öffentlicher Lesezugriff): Auf den Container und zugehörige Blobs kann nur mit einer autorisierten Anforderung zugegriffen werden. Diese Option ist die Standardeinstellung für alle neuen Container.
 - **Public read access for blobs only** (Öffentlicher Lesezugriff nur für Blobs): Blobs innerhalb des Containers können über anonyme Anforderungen gelesen werden, Containerdaten sind aber anonym nicht verfügbar. Anonyme Clients können die Blobs im Container nicht aufzählen.
@@ -144,9 +147,9 @@ Führen Sie die folgenden Schritte aus, um die öffentliche Zugriffsebene für e
 
     ![Screenshot: Festlegen der öffentlichen Zugriffsebene im Azure-Portal](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
-Wenn der öffentliche Zugriff für das Speicherkonto deaktiviert ist, kann die öffentliche Zugriffsebene eines Containers nicht festgelegt werden. Wenn Sie die öffentliche Zugriffsebene eines Containers festlegen möchten, sehen Sie, dass die Einstellung deaktiviert ist, da der öffentliche Zugriff für dieses Konto unzulässig ist.
+Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, kann die öffentliche Zugriffsebene eines Containers nicht festgelegt werden. Wenn Sie die öffentliche Zugriffsebene eines Containers festlegen möchten, stellen Sie fest, dass die Einstellung deaktiviert ist, da der öffentliche Zugriff für dieses Konto verweigert wird.
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Screenshot, der zeigt, dass das Festlegen der öffentlichen Zugriffsebene des Containers blockiert wird, wenn der öffentliche Zugriff deaktiviert ist":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Screenshot: Festlegen der öffentlichen Zugriffsebene des Containers wird blockiert, wenn der öffentliche Zugriff verweigert wird":::
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -163,7 +166,7 @@ az storage container set-permission \
     --auth-mode key
 ```
 
-Wenn der öffentliche Zugriff für das Speicherkonto deaktiviert ist, kann die öffentliche Zugriffsebene eines Containers nicht festgelegt werden. Wenn Sie die öffentliche Zugriffsebene des Containers festlegen möchten, tritt ein Fehler auf, der besagt, dass der öffentliche Zugriff für das Speicherkonto unzulässig ist.
+Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, kann die öffentliche Zugriffsebene eines Containers nicht festgelegt werden. Wenn Sie die öffentliche Zugriffsebene des Containers festlegen möchten, tritt ein Fehler auf, der besagt, dass der öffentliche Zugriff für das Speicherkonto unzulässig ist.
 
 ---
 

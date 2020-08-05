@@ -1,21 +1,21 @@
 ---
-title: Sicherheit
+title: Sicherheit von Azure Cognitive Services
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zu den verschiedenen Sicherheitsaspekten im Zusammenhang mit der Verwendung von Cognitive Services.
 services: cognitive-services
-author: aahill
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.date: 07/10/2020
+ms.author: erhopf
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 48e5f6d453e69dcbafd9aefe283eb2c880d4b48e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611406"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406638"
 ---
 # <a name="azure-cognitive-services-security"></a>Sicherheit von Azure Cognitive Services
 
@@ -203,9 +203,19 @@ Kunden-Lockbox ist für diesen Cognitive Service erhältlich:
 
 * Übersetzer
 
-Für Language Understanding greifen Microsoft-Techniker in der E0-SKU auf keinerlei Kundendaten zu. Wenn Sie die Verwendung der E0-SKU beantragen möchten, füllen Sie das  [LUIS Service Request-Formular](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung der E0-SKU mit LUIS genehmigt wurde, müssen Sie im Azure-Portal eine neue Language Understanding-Ressource erstellen und E0 als Tarif auswählen. Benutzer können kein Upgrade von F0 auf die neue E0-SKU durchführen.
+Für die folgenden Dienste greifen die Microsoft-Techniker im Tarif „E0“ auf keine Kundendaten zu: 
 
-Der Sprachdienst unterstützt zurzeit keine Kunden-Lockbox. Kundendaten können jedoch mithilfe von BYOS („Bring-Your-Own-Storage“) gespeichert werden, sodass Sie eine ähnliche Datenkontrolle wie bei [Kunden-Lockbox](../security/fundamentals/customer-lockbox-overview.md) erreichen können. Bedenken Sie, dass Daten des Sprachdiensts in der Region verarbeitet werden und verbleiben, in der die Speech-Ressource erstellt wurde. Dies betrifft alle Daten, sowohl ruhende Daten als auch übertragene Daten. Bei der Verwendung von Anpassungsfunktionen wie Custom Speech und Custom Voice werden alle Kundendaten in der gleichen Region übertragen, gespeichert und verarbeitet, in der Ihr BYOS (sofern verwendet) und die Sprachdienstressource gespeichert sind.
+* Language Understanding
+* Gesicht
+* Content Moderator
+* Personalisierung
+
+> [!IMPORTANT]
+> Für die **Formularerkennung** greifen Microsoft-Techniker auf keine Kundendaten in Ressourcen zu, die nach dem 10. Juli 2020 erstellt wurden.
+
+Wenn Sie die Verwendung der E0-SKU beantragen möchten, füllen Sie dieses  [Anforderungsformular](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung der E0-SKU mit LUIS genehmigt wurde, müssen Sie im Azure-Portal eine neue Ressource erstellen und E0 als Tarif auswählen. Benutzer können kein Upgrade von F0 auf die neue E0-SKU durchführen.
+
+Der Sprachdienst unterstützt zurzeit keine Kunden-Lockbox. Kundendaten können jedoch mithilfe von BYOS („Bring-Your-Own-Storage“) gespeichert werden, sodass Sie eine ähnliche Datenkontrolle wie bei Kunden-Lockbox erreichen können. Bedenken Sie, dass Daten des Sprachdiensts in der Region verarbeitet werden und verbleiben, in der die Speech-Ressource erstellt wurde. Dies betrifft alle Daten, sowohl ruhende Daten als auch übertragene Daten. Bei der Verwendung von Anpassungsfunktionen wie Custom Speech und Custom Voice werden alle Kundendaten in der gleichen Region übertragen, gespeichert und verarbeitet, in der Ihr BYOS (sofern verwendet) und die Sprachdienstressource gespeichert sind.
 
 > [!IMPORTANT]
 > Microsoft verwendet **keine** Kundendaten zur Verbesserung seiner Sprachmodelle. Wenn darüber hinaus die Endpunktprotokollierung deaktiviert ist und keine Anpassungen verwendet werden, werden keine Kundendaten gespeichert. 

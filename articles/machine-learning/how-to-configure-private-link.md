@@ -5,21 +5,25 @@ description: Verwenden Sie Azure Private Link, um sicher von einem virtuellen Ne
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/28/2020
+ms.openlocfilehash: 59a82b8d7037fb9f2ca03b99b9e797920644fbd6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134879"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373724"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich (Vorschauversion)
 
-In diesem Dokument erfahren Sie, wie Sie Azure Private Link mit Ihrem Azure Machine Learning-Arbeitsbereich verwenden. Diese Funktion befindet sich derzeit in der Vorschauphase und ist in den Regionen „USA, Osten“, „USA, Westen 2“ und „USA, Süden-Mitte“ verfügbar. 
+In diesem Dokument erfahren Sie, wie Sie Azure Private Link mit Ihrem Azure Machine Learning-Arbeitsbereich verwenden. 
+
+> [!IMPORTANT]
+> Die Verwendung von Azure Private Link mit dem Azure Machine Learning-Arbeitsbereich befindet sich derzeit in der öffentlichen Vorschau. Diese Funktionalität ist nur in den Regionen **USA, Osten** und **USA, Westen 2** verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem Arbeitsbereich über einen privaten Endpunkt. Bei einem privaten Endpunkt handelt es sich um eine Gruppe privater IP-Adressen in Ihrem virtuellen Netzwerk. Sie können dann den Zugriff auf Ihren Arbeitsbereich so einschränken, dass er nur über die privaten IP-Adressen erfolgt. Private Link hilft dabei, das Risiko einer Datenexfiltration zu verringern. Weitere Informationen zu privaten Endpunkten finden Sie im Artikel zu [Azure Private Link](/azure/private-link/private-link-overview).
 
@@ -27,6 +31,8 @@ Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem A
 > Azure Private Link hat keine Auswirkungen auf die Azure-Steuerungsebene (Verwaltungsvorgänge) aus, etwa das Löschen des Arbeitsbereichs oder das Verwalten von Computeressourcen. Beispiele: Erstellen, Aktualisieren oder Löschen eines Computeziels. Diese Vorgänge werden ganz normal über das öffentliche Internet ausgeführt.
 >
 > Die Vorschauversion von Azure Machine Learning-Computeinstanzen wird in einem Arbeitsbereich, in dem Private Link aktiviert ist, nicht unterstützt.
+>
+> Wenn Sie Mozilla Firefox verwenden, treten möglicherweise Probleme beim Zugriff auf den privaten Endpunkt für Ihren Arbeitsbereich auf. Dieses Problem kann im Zusammenhang mit DNS über HTTPS in Mozilla auftreten. Die Verwendung von Microsoft Edge von Google Chrome wird als Problemumgehung empfohlen.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Erstellen eines Arbeitsbereichs, der einen privaten Endpunkt verwendet
 
@@ -113,6 +119,9 @@ Um das von Ihrem Arbeitsbereich verwendete Azure Storage-Konto abzusichern, füg
 
 Informationen zum Platzieren des Speicherkontos im virtuellen Netzwerk finden Sie unter [Verwenden eines Speicherkontos für Ihren Arbeitsbereich](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace).
 
+> [!WARNING]
+> Azure Machine Learning unterstützt die Verwendung des Azure Storage-Kontos nicht, wenn dafür Private Link aktiviert ist.
+
 ## <a name="using-azure-key-vault"></a>Verwenden von Azure Key Vault
 
 Um die vom Arbeitsbereich verwendeten Azure Key Vault-Instanz zu schützen, können Sie diese entweder im virtuellen Netzwerk platzieren oder Private Link für sie aktivieren.
@@ -125,8 +134,8 @@ Informationen zum Aktivieren von Private Link für Key Vault finden Sie unter [I
 
 Um die von Ihrem Arbeitsbereich verwendete Azure Kubernetes Service-Instanz zu schützen, fügen Sie sie in das virtuelle Netzwerk ein. Weitere Informationen finden Sie unter [Verwenden von Azure Kubernetes Service mit Ihrem Arbeitsbereich](how-to-enable-virtual-network.md#aksvnet).
 
-> [!WARNING]
-> Azure Machine Learning unterstützt die Verwendung von Azure Kubernetes Service nicht, wenn dafür Private Link aktiviert ist.
+Azure Machine Learning unterstützt jetzt die Verwendung von Azure Kubernetes Service mit aktiviertem Private Link-Dienst.
+Informationen zum Erstellen eines privaten AKS-Clusters finden Sie [hier](https://docs.microsoft.com/azure/aks/private-clusters)
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 

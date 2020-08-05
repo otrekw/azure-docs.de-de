@@ -3,23 +3,28 @@ title: JavaScript-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 636df121ea5b09a421ae7bedaf9e30cbbd1966f5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252724"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280867"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
-Dieses Handbuch enthält Informationen zu den Feinheiten des Schreibens von Azure Functions mit JavaScript.
+Dieser Leitfaden enthält ausführliche Informationen, die Sie bei der erfolgreichen Entwicklung von Azure Functions mit JavaScript unterstützen.
 
-Eine JavaScript-Funktion ist eine exportierte `function`, die ausgeführt wird, wenn sie ausgelöst wird ([Trigger werden in „function.json“ konfiguriert](functions-triggers-bindings.md)). Das erste Argument, das an jede Funktion übergeben wird, ist ein `context`-Objekt, das zum Empfangen und Senden von Bindungsdaten, für die Protokollierung und für die Kommunikation mit der Runtime verwendet wird.
+Wenn Sie noch nicht mit Azure Functions vertraut sind, sollten Sie als Express.js-, Node.js- oder JavaScript-Entwickler zunächst einen der folgenden Artikel lesen:
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben. Führen Sie den Schnellstart zu Azure Functions durch, um Ihre erste Funktion mit [Visual Studio Code](functions-create-first-function-vs-code.md) oder [im Portal](functions-create-first-azure-function.md) zu erstellen.
+| Erste Schritte | Konzepte| Geführte Tutorials |
+| -- | -- | -- | 
+| <ul><li>[Node.js-Funktion unter Verwendung von Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[Node.js-Funktion mit Terminal/Eingabeaufforderung](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[TypeScript-Funktionen](#typescript)</li><li>[Überlegungen&nbsp; zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Umgestalten von Node js- und Express-APIs auf serverlose APIs](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-Dieser Artikel eignet sich auch für die [App-Entwicklung mit TypeScript](#typescript).
+## <a name="javascript-function-basics"></a>JavaScript-Funktionsgrundlagen
+
+Eine JavaScript-Funktion (bzw. Node.js-Funktion) ist eine exportierte `function`, die ausgeführt wird, wenn sie ausgelöst wird ([Trigger werden in „function.json“ konfiguriert](functions-triggers-bindings.md)). Das erste Argument, das an jede Funktion übergeben wird, ist ein `context`-Objekt, das zum Empfangen und Senden von Bindungsdaten, für die Protokollierung und für die Kommunikation mit der Runtime verwendet wird.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -118,7 +123,7 @@ Eingaben werden in Azure Functions in zwei Kategorien unterteilt: die Triggerein
    };
    ```
    
- - **Als Eingaben unter Verwendung des JavaScript-Objekts [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx).** Dies entspricht im Wesentlichen dem Übergeben von Eingaben als Parameter, ermöglicht jedoch die dynamische Verarbeitung der Eingaben.
+ - **Als Eingaben unter Verwendung des JavaScript-Objekts [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).** Dies entspricht im Wesentlichen dem Übergeben von Eingaben als Parameter, ermöglicht jedoch die dynamische Verarbeitung der Eingaben.
  
    ```javascript
    module.exports = async function(context) { 
@@ -559,11 +564,11 @@ Beachten Sie in diesem Beispiel besonders, dass es keine Garantie dafür gibt, d
 
 Wenn ein Node.js-Prozess mit dem Parameter `--inspect` gestartet wird, lauscht er auf einen Debugclient auf dem angegebenen Port. Sie können in Azure Functions 2.x Argumente angeben, die an den Node.js-Prozess übergeben werden, der Ihren Code ausführt, indem Sie die Umgebungsvariable oder die App-Einstellung `languageWorkers:node:arguments = <args>` hinzufügen. 
 
-Fügen Sie unter `Values` in der Datei [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file)`"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
+Fügen Sie unter `Values` in der Datei [local.settings.json](./functions-run-local.md#local-settings-file)`"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
 
 Wenn Sie mit VS Code debuggen, wird der Parameter `--inspect` automatisch mit dem Wert `port` in der Datei „launch.json“ des Projekts hinzugefügt.
 
-In Version 1.x funktioniert die Einstellung `languageWorkers:node:arguments` nicht. Sie können den Debugport mit dem Parameter [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) in den Azure Functions Core Tools festlegen.
+In Version 1.x funktioniert die Einstellung `languageWorkers:node:arguments` nicht. Sie können den Debugport mit dem Parameter [`--nodeDebugPort`](./functions-run-local.md#start) in den Azure Functions Core Tools festlegen.
 
 ## <a name="typescript"></a>TypeScript
 
@@ -632,7 +637,7 @@ Beachten Sie beim Arbeiten mit JavaScript-Funktionen die Überlegungen in den fo
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Auswählen von App Service-Plänen mit einzelner vCPU
 
-Wenn Sie eine Funktions-App erstellen, die den App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren vCPUs einen Plan mit einer einzelnen vCPU auswählen. Derzeit führt Functions JavaScript-Funktionen auf virtuellen Computern mit einer einzelnen vCPU effizienter aus. Die Verwendung größerer virtueller Computer führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell aufskalieren, indem Sie weitere Instanzen virtueller Computer mit einer einzelnen vCPU hinzufügen. Sie können aber auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
+Wenn Sie eine Funktions-App erstellen, die den App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren vCPUs einen Plan mit einer einzelnen vCPU auswählen. Derzeit führt Functions JavaScript-Funktionen auf virtuellen Computern mit einer einzelnen vCPU effizienter aus. Die Verwendung größerer virtueller Computer führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell aufskalieren, indem Sie weitere Instanzen virtueller Computer mit einer einzelnen vCPU hinzufügen. Sie können aber auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json).
 
 ### <a name="cold-start"></a>Kaltstart
 

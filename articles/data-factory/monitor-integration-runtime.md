@@ -6,26 +6,26 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/25/2018
+ms.date: 07/25/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 14f9ab0b1c3b8b437e46a7b6a2d8b87f03442a02
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113686"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290552"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
   
-Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
+Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory (ADF) mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
 
 - Azure-Integrationslaufzeit
 - Selbstgehostete Integrationslaufzeit
-- Azure SSIS-Integrationslaufzeit
+- Azure-SQL Server Integration Services (SSIS) Integration Runtime
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,9 +38,11 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 Das Cmdlet gibt für verschiedene Arten der Integrationslaufzeit unterschiedliche Informationen zurück. In diesem Artikel werden die Eigenschaften und Statusangaben für die einzelnen Arten der Integrationslaufzeit erläutert.  
 
 ## <a name="azure-integration-runtime"></a>Azure-Integrationslaufzeit
+
 Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollständig flexibel verwaltet. Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom **Get-AzDataFactoryV2IntegrationRuntime**-Befehl zurückgegeben werden:
 
 ### <a name="properties"></a>Eigenschaften
+
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
 
 | Eigenschaft | BESCHREIBUNG |
@@ -53,6 +55,7 @@ Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet 
 | BESCHREIBUNG | Beschreibung der Integrationslaufzeit.  |
 
 ### <a name="status"></a>Status
+
 Die folgende Tabelle enthält die möglichen Statuswerte einer Azure-Integrationslaufzeit:
 
 | Status | Kommentare/Szenarien | 
@@ -61,6 +64,7 @@ Die folgende Tabelle enthält die möglichen Statuswerte einer Azure-Integration
 | Offline | Die Azure-Integrationslaufzeit ist aufgrund eines internen Fehlers offline. |
 
 ## <a name="self-hosted-integration-runtime"></a>Selbstgehostete Integrationslaufzeit
+
 Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzDataFactoryV2IntegrationRuntime-Cmdlet zurückgegeben werden. 
 
 > [!NOTE] 
@@ -92,6 +96,7 @@ Sie skalieren auf, indem Sie die Anzahl der Knoten erhöhen. Wenn Sie die Anzahl
 Sie können den berechneten Standardwert im Azure-Portal überschreiben. Wählen Sie „Autor > Verbindungen > Integration Runtimes > Bearbeiten > Knoten > Wert für gleichzeitige Aufträge pro Knoten ändern“ aus. Sie können auch den PowerShell-Befehl [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) verwenden.
   
 ### <a name="status-per-node"></a>Status (pro Knoten)
+
 Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer selbstgehosteten Integrationslaufzeit:
 
 | Status | BESCHREIBUNG |
@@ -105,6 +110,7 @@ Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer sel
 Ein Knoten kann inaktiv sein, wenn er keine Verbindungen mit anderen Knoten herstellen kann.
 
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Status (allgemeine selbstgehostete Integrationslaufzeit)
+
 Die folgende Tabelle enthält die möglichen Statuswerte einer selbstgehosteten Integrationslaufzeit: Dieser Status hängt von den Statuswerten aller Knoten ab, die zur Laufzeit gehören. 
 
 | Status | BESCHREIBUNG |
@@ -153,71 +159,104 @@ Beispielausgabe (es wird angenommen, dass dieser selbstgehosteten Integrationsla
 } 
 ```
 
-
 ## <a name="azure-ssis-integration-runtime"></a>Azure SSIS-Integrationslaufzeit
-Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit virtuellen Azure-Computern (oder Knoten), die speziell für die Ausführung Ihrer SSIS-Pakete bestimmt sind. Es werden keine anderen Aktivitäten von Azure Data Factory ausgeführt. Nach der Bereitstellung können Sie ihre Eigenschaften abfragen und ihre allgemeinen/knotenabhängigen Status überwachen.
 
-### <a name="properties"></a>Eigenschaften
+Azure-SSIS IR ist ein vollständig verwalteter Cluster mit Azure-VMs (oder Knoten), die speziell für die Ausführung Ihrer SSIS-Pakete bestimmt sind. Es gibt verschiedene Möglichkeiten, die SSIS-Paketausführung unter Azure-SSIS IR aufzurufen, beispielsweise über für Azure aktivierte SQL Server Data Tools (SSDT), das Befehlszeilenprogramm AzureDTExec, T-SQL in SQL Server Management Studio (SSMS)/SQL Server-Agent und Aktivitäten zum Ausführen von SSIS-Paketen in ADF-Pipelines. Azure-SSIS IR führt keine anderen ADF-Aktivitäten aus. Nach der Bereitstellung können Sie die allgemeinen/knotenspezifischen Eigenschaften und Status über Azure PowerShell, Azure-Portal und Azure Monitor überwachen.
 
-| Eigenschaft/Status | BESCHREIBUNG |
-| --------------- | ----------- |
-| CreateTime | Die UTC-Zeit für die Erstellung Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Nodes | Die zugeordneten/verfügbaren Knoten Ihrer Azure-SSIS-Integrationslaufzeit mit knotenabhängigen Status (wird gestartet/verfügbar/wird wiederverwendet/nicht verfügbar) und handlungsrelevanten Fehlern. |
-| OtherErrors | Die nicht knotenabhängigen handlungsrelevanten Fehler für Ihre Azure-SSIS-Integrationslaufzeit. |
-| LastOperation | Das Ergebnis des letzten Vorgangs zum Starten/Beenden für Ihre Azure-SSIS-Integrationslaufzeit mit handlungsrelevanten Fehlern, wenn ein Fehler aufgetreten ist. |
-| State | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Standort | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
-| NodeSize | Die Größe der einzelnen Knoten Ihrer Azure-SSIS-Integrationslaufzeit. |
-| NodeCount | Die Anzahl der Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
-| MaxParallelExecutionsPerNode | Die Anzahl gleichzeitiger Ausführungen pro Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
-| CatalogServerEndpoint | Der Endpunkt Ihrer vorhandenen SQL-Datenbank/verwalteten SQL-Instanz zum Hosten der SSISDB. |
-| CatalogAdminUserName | Der Benutzername des Administrators Ihrer vorhandenen SQL-Datenbank/verwalteten SQL-Instanz. Der Data Factory-Dienst verwendet diese Informationen zum Vorbereiten und Verwalten der SSISDB in Ihrem Namen. |
-| CatalogAdminPassword | Das Kennwort des Administrators Ihrer vorhandenen SQL-Datenbank/verwalteten SQL-Instanz. |
-| CatalogPricingTier | Der Tarif für die von der SQL-Datenbank gehostete SSISDB.  Gilt nicht für die verwaltete Azure SQL-Instanz zum Hosten der SSISDB. |
-| VNetId | Die Ressourcen-ID des virtuellen Netzwerks zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Subnet | Der Subnetzname zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
-| id | Die Ressourcen-ID Ihrer Azure-SSIS-Integrationslaufzeit. |
-| type | Der Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS-Integrationslaufzeit. |
-| ResourceGroupName | Der Name Ihrer Azure-Ressourcengruppe, in dem die Data Factory und Azure-SSIS-Integrationslaufzeit erstellt wurden. |
-| DataFactoryName | Der Name Ihrer Azure Data Factory. |
-| Name | Der Name Ihrer Azure-SSIS-Integrationslaufzeit. |
-| BESCHREIBUNG | Die Beschreibung Ihrer Azure-SSIS-Integrationslaufzeit. |
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>Überwachen der Azure-SSIS Integration Runtime mit Azure PowerShell
 
-  
-### <a name="status-per-node"></a>Status (pro Knoten)
-
-| Status | BESCHREIBUNG |
-| ------ | ----------- | 
-| Wird gestartet | Dieser Knoten wird vorbereitet. |
-| Verfügbar | Dieser Knoten ist bereit für das Bereitstellen/Ausführen von SSIS-Paketen. |
-| Wird wiederverwendet | Dieser Knoten wird repariert/neu gestartet. |
-| Nicht verfügbar | Dieser Knoten ist nicht bereit zum Bereitstellen/Ausführen Ihrer SSIS-Pakete und weist handlungsrelevante Fehler/Probleme auf, die Sie beheben können. |
-
-### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (allgemeine Azure-SSIS-Integrationslaufzeit)
-
-| Gesamtstatus | BESCHREIBUNG | 
-| -------------- | ----------- | 
-| Initial | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit wurden nicht zugeordnet/vorbereitet. | 
-| Wird gestartet | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit werden zugeordnet/vorbereitet und die Abrechnung wurde gestartet. |
-| Gestartet | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit wurden zugeordnet/vorbereitet und sie sind bereit für die Bereitstellung/Ausführung der SSIS-Pakete. |
-| Wird beendet  | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit werden veröffentlicht. |
-| Beendet | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit wurden veröffentlicht und die Abrechnung wurde beendet. |
-
-### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Überwachen der Azure-SSIS Integration Runtime im Azure-Portal
-
-Die folgenden Screenshots zeigen die Auswahl der zu überwachenden Azure-SSIS IR und zeigen ein Beispiel für die angezeigten Informationen.
-
-![Wählen Sie die zu überwachende Azure-SSIS Integration Runtime aus.](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
-
-![Rufen Sie Informationen zur Azure-SSIS Integration Runtime ab.](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
-
-### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>Überwachen Sie die Azure-SSIS Integration Runtime mit PowerShell.
-
-Verwenden Sie ein ähnliches Skript wie im folgenden Beispiel zum Überprüfen des Status der Azure-SSIS IR.
+Verwenden Sie das folgende Azure PowerShell-Cmdlet zum Überwachen der allgemeinen/knotenspezifischen Eigenschaften und Status von Azure-SSIS IR.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
+
+#### <a name="properties"></a>Eigenschaften
+
+Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom erwähnten Cmdlet für Azure-SSIS IR zurückgegeben werden:
+
+| Eigenschaft/Status              | BESCHREIBUNG                  |
+| ---------------------------- | ---------------------------- |
+| CreateTime                   | Die UTC-Zeit für die Erstellung Ihrer Azure-SSIS IR. |
+| Nodes                        | Die zugeordneten/verfügbaren Knoten Ihrer Azure-SSIS IR mit knotenabhängigen Status (wird gestartet/verfügbar/wird wiederverwendet/nicht verfügbar) und handlungsrelevanten Fehlern. |
+| OtherErrors                  | Die nicht knotenabhängigen handlungsrelevanten Fehler für Ihre Azure-SSIS IR. |
+| LastOperation                | Das Ergebnis des letzten Vorgangs zum Starten/Beenden für Ihre Azure-SSIS IR mit handlungsrelevanten Fehlern, wenn ein Fehler aufgetreten ist. |
+| State                        | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS IR. |
+| Standort                     | Der Standort Ihrer Azure-SSIS IR. |
+| NodeSize                     | Die Größe der einzelnen Knoten in Ihrer Azure-SSIS IR. |
+| NodeCount                    | Die Anzahl der Knoten in Ihrer Azure-SSIS IR. |
+| MaxParallelExecutionsPerNode | Die maximale Anzahl gleichzeitiger Ausführungen pro Knoten in Ihrer Azure-SSIS IR. |
+| CatalogServerEndpoint        | Der Endpunkt Ihres vorhandenen Azure SQL-Datenbank-Servers oder Ihrer verwalteten Instanz zum Hosten des SSIS-Katalogs (SSISDB). |
+| CatalogAdminUserName         | Der Benutzername des Administrators Ihres vorhandenen Azure SQL-Datenbank-Servers oder Ihrer verwalteten Instanz. ADF verwendet diese Informationen zum Vorbereiten und Verwalten der SSISDB in Ihrem Namen. |
+| CatalogAdminPassword         | Das Kennwort des Administrators Ihres vorhandenen Azure SQL-Datenbank-Servers oder Ihrer verwalteten Instanz. |
+| CatalogPricingTier           | Der Tarif für die SSISDB, die vom Azure SQL-Datenbank-Server gehostet wird.  Gilt nicht für die verwaltete Azure SQL-Instanz, die die SSISDB hostet. |
+| VNetId                       | Die Ressourcen-ID des virtuellen Netzwerks zum Beitreten Ihrer Azure-SSIS IR. |
+| Subnet                       | Der Subnetzname zum Beitreten Ihrer Azure-SSIS IR. |
+| id                           | Die Ressourcen-ID Ihrer Azure-SSIS IR. |
+| type                         | Der IR-Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS IR. |
+| ResourceGroupName            | Der Name Ihrer Azure-Ressourcengruppe, in der Ihre ADF und Azure-SSIS IR erstellt wurden. |
+| DataFactoryName              | Name Ihrer ADF-Instanz. |
+| Name                         | Name Ihrer Azure-SSIS IR. |
+| BESCHREIBUNG                  | Beschreibung Ihrer Azure-SSIS IR. |
+  
+#### <a name="status-per-azure-ssis-ir-node"></a>Status (pro Azure-SSIS IR-Knoten)
+
+Die folgende Tabelle enthält die möglichen Status eines Azure-SSIS IR-Knotens:
+
+| Knotenspezifischer Status | BESCHREIBUNG |
+| -------------------- | ----------- | 
+| Wird gestartet             | Dieser Knoten wird vorbereitet. |
+| Verfügbar            | Dieser Knoten ist bereit für das Bereitstellen/Ausführen von SSIS-Paketen. |
+| Wird wiederverwendet            | Dieser Knoten wird repariert/neu gestartet. |
+| Nicht verfügbar          | Dieser Knoten ist nicht bereit zum Bereitstellen/Ausführen Ihrer SSIS-Pakete und weist handlungsrelevante Fehler/Probleme auf, die Sie beheben können. |
+
+#### <a name="status-overall-azure-ssis-ir"></a>Status (Azure-SSIS IR insgesamt)
+
+Die folgende Tabelle enthält die möglichen allgemeinen Status einer Azure-SSIS IR: Der allgemeine Status hängt wiederum von den kombinierten Status aller Knoten ab, die zur Azure-SSIS IR gehören. 
+
+| Gesamtstatus | BESCHREIBUNG | 
+| -------------- | ----------- | 
+| Initial        | Die Knoten Ihrer Azure-SSIS IR wurden nicht zugeordnet/vorbereitet. | 
+| Wird gestartet       | Die Knoten Ihrer Azure-SSIS IR werden zugeordnet/vorbereitet und die Abrechnung wurde gestartet. |
+| Gestartet        | Die Knoten Ihrer Azure-SSIS IR wurden zugeordnet/vorbereitet und sie sind bereit für die Bereitstellung/Ausführung der SSIS-Pakete. |
+| Wird beendet       | Die Knoten Ihrer Azure-SSIS IR werden freigegeben. |
+| Beendet        | Die Knoten Ihrer Azure-SSIS IR wurden freigegeben und die Abrechnung wurde beendet. |
+
+### <a name="monitor-the-azure-ssis-integration-runtime-in-azure-portal"></a>Überwachen der Azure-SSIS Integration Runtime im Azure-Portal
+
+Zur Überwachung Ihrer Azure-SSIS IR im Azure-Portal wechseln Sie in der ADF-Benutzeroberfläche zur Seite **Integration Runtimes** des **Überwachungshubs**. Hier werden alle Integration Runtimes angezeigt.
+
+![Überwachen aller Integration Runtimes](media/monitor-integration-runtime/monitor-integration-runtimes.png)
+
+Wählen Sie als Nächstes den Namen Ihrer Azure-SSIS IR aus, um die Überwachungsseite zu öffnen. Hier werden alle allgemeinen/knotenspezifischen Eigenschaften und Status angezeigt.
+
+![Überwachen Ihrer Azure-SSIS IR](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
+
+Auf der Kachel **STATUS** Ihrer Azure-SSIS IR-Überwachungsseite wird der allgemeine Status angezeigt, z. B. **Wird ausgeführt** oder **Beendet**. Wenn Sie den Status **Wird ausgeführt** auswählen, wird ein Fenster mit einer aktiven Schaltfläche zum **Beenden** angezeigt, mit der Sie Ihre Azure-SSIS IR beenden können. Wenn Sie den Status **Beendet** auswählen, wird ein Fenster mit einer aktiven Schaltfläche zum **Starten** angezeigt, mit der Sie Ihre Azure-SSIS IR starten können. Das Popupfenster enthält zudem die Schaltfläche **SSIS-Paket ausführen** zum automatischen Generieren einer ADF-Pipeline mit der Aktivität „SSIS-Paket ausführen“, die in Ihrer Azure-SSIS IR ausgeführt wird (Informationen hierzu finden Sie unter [Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) und das Textfeld **Ressourcen-ID**, über das Sie die Ressourcen-ID Ihrer Azure-SSIS IR (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`) kopieren können. Mit dieser ID können Sie weitere kostenpflichtige oder lizenzierte SSIS-Komponenten von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) erwerben und in Ihre Azure-SSIS IR einbinden (Informationen hierzu finden Sie unter [Installieren kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
+
+![Überwachen Ihrer Azure-SSIS IR – Kachel „STATUS“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+Wenn Sie Ihr Projektbereitstellungsmodell dort verwenden, wo Ihre Pakete in der von Ihrem Azure SQL-Datenbank-Server oder der verwalteten Instanz gehosteten SSISDB gespeichert sind, wird die Kachel **SSISDB-SERVERENDPUNKT** auf der Azure-SSIS IR-Überwachungsseite angezeigt (Informationen hierzu finden Sie unter [Konfigurieren der Azure-SSIS IR-Bereitstellungseinstellungen](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Auf dieser Kachel können Sie einen Link zu Ihrem Azure SQL-Datenbank-Server oder zur verwalteten Instanz auswählen, um ein Fenster aufzurufen, in dem Sie über ein Textfeld den Serverendpunkt kopieren und beim Herstellen einer Verbindung über SSMS verwenden können, um Ihre Pakete bereitzustellen, zu konfigurieren, auszuführen und zu verwalten. Im Popupfenster können Sie auch den Link zum **Anzeigen der Einstellungen der Azure SQL-Datenbank oder der verwalteten Instanz** auswählen, um Ihre SSISDB im Azure-Portal neu zu konfigurieren oder deren Größe zu ändern.
+
+![Überwachen Ihrer Azure-SSIS IR – Kachel „SSISDB“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
+
+Wenn Sie Ihre Azure-SSIS IR mit einem VNet verknüpfen, wird die Kachel **VNET/SUBNETZ ÜBERPRÜFEN** auf der Azure-SSIS IR-Überwachungsseite angezeigt (Informationen hierzu finden Sie unter [Verknüpfen der Azure-SSIS IR mit einem VNet](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)). Auf dieser Kachel können Sie einen Link zu Ihrem VNet und Subnetz auswählen, um ein Fenster aufzurufen, in dem Sie über Textfelder die Ressourcen-ID Ihres VNets (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet`) und den Subnetznamen kopieren können. Zudem können Sie die Konfigurationen von VNet und Subnetz überprüfen, um sicherzustellen, dass der erforderliche eingehende/ausgehende Netzwerkdatenverkehr und die Verwaltung der Azure-SSIS IR nicht behindert werden.
+
+![Überwachen Ihrer Azure-SSIS IR – Kachel „ÜBERPRÜFEN“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+Auf der Kachel **DIAGNOSE DER KONNEKTIVITÄT** der Azure-SSIS IR-Überwachungsseite können Sie den Link **Verbindung testen** auswählen, um ein Fenster aufzurufen, in dem Sie die Verbindungen zwischen der Azure-SSIS IR und entsprechenden Paket-/Konfigurations-/Datenspeichern sowie Verwaltungsdiensten anhand des vollqualifizierter Domänennamens (Fully Qualified Domain Name, FQDN) oder der IP-Adresse und dem jeweiligen Port prüfen können (Informationen hierzu finden Sie unter [Testen der Verbindungen von der Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
+
+![Überwachen Ihrer Azure-SSIS IR – Kachel „DIAGNOSE“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+
+Wenn Sie Ihr Paketbereitstellungsmodell dort verwenden, wo Ihre Pakete in der Dateisystem-/Azure Files-/SQL Server-Datenbankinstanz (MSDB) gespeichert werden, die von Azure SQL Managed Instance gehostet und über Azure-SSIS IR-Paketspeicher verwaltet wird, wird die Kachel **PAKETSPEICHER** auf der Azure-SSIS IR-Überwachungsseite angezeigt (Informationen hierzu finden Sie unter [Konfigurieren der Azure-SSIS IR-Bereitstellungseinstellungen](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Auf dieser Kachel können Sie einen Link auswählen, der die Anzahl der mit der Azure-SSIS IR verbundenen Paketspeicher angibt, um ein Fenster aufzurufen, in dem Sie die jeweils verknüpften Dienste für Ihre Azure-SSIS IR-Paketspeicher zusätzlich zu den von Azure SQL Managed Instance gehosteten Dateisystem-/Azure Files-/MSDB-Instanzen neu konfigurieren können.
+
+![Überwachen Ihrer Azure-SSIS IR – Kachel „PAKET“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
+
+Wenn beim Starten/Beenden/Warten/Upgraden der Azure-SSIS IR Probleme auftreten, wird auf der Azure-SSIS IR-Überwachungsseite zusätzlich die Kachel **FEHLER** angezeigt. Auf dieser Kachel können Sie einen Link auswählen, der die Anzahl der von der Azure-SSIS IR generierten Fehler angibt, um ein Fenster aufzurufen, in dem diese Fehler mit mehr Details angezeigt werden. Diese können Sie kopieren, um in unserem Leitfaden zur Problembehandlung (siehe [Problembehandlung bei der Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)) nach der empfohlenen Lösung zu suchen.
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Überwachen der Azure-SSIS Integration Runtime mit Azure Monitor
+
+Informationen zum Überwachen der Azure-SSIS IR mit Azure Monitor finden Sie unter [Überwachen von SSIS-Vorgängen mit Azure Monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor).
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Weitere Informationen über Azure-SSIS Integration Runtime
 

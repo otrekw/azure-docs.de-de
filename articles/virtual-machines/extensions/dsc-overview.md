@@ -3,8 +3,8 @@ title: Desired State Configuration für Azure – Übersicht
 description: Erfahren Sie mehr über die Verwendung des Microsoft Azure-Erweiterungshandlers für PowerShell Desired State Configuration (DSC). Der Artikel enthält Informationen zu Voraussetzungen, Architektur und Cmdlets.
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: DSC
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188534"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010919"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
@@ -59,7 +59,7 @@ Wenn die Erweiterung das erste Mal aufgerufen wird, installiert sie mit der folg
 - Bei Angabe der Eigenschaft **wmfVersion** wird die entsprechende WMF-Version installiert (es sei denn, die Version ist nicht mit dem Betriebssystem des virtuellen Computers kompatibel).
 - Ohne Angabe der Eigenschaft **wmfVersion** wird die neueste geeignete WMF-Version installiert.
 
-Für die Installation von WMF ist ein Neustart erforderlich. Nach dem Neustart lädt die Erweiterung die in der **modulesUrl**-Eigenschaft angegebene ZIP-Datei herunter (falls vorhanden). Befindet sich der Speicherort in Azure Blob Storage, können Sie in der **sasToken**-Eigenschaft ein SAS-Token für den Dateizugriff angeben. Nachdem Herunterladen und Entpacken der ZIP-Datei wird durch Ausführen der in **configurationFunction** definierten Konfigurationsfunktion eine MOF-Datei ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -Force` mit der generierten MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal.
+Für die Installation von WMF ist ein Neustart erforderlich. Nach dem Neustart lädt die Erweiterung die in der **modulesUrl**-Eigenschaft angegebene ZIP-Datei herunter (falls vorhanden). Befindet sich der Speicherort in Azure Blob Storage, können Sie in der **sasToken**-Eigenschaft ein SAS-Token für den Dateizugriff angeben. Nachdem Herunterladen und Entpacken der ZIP-Datei wird durch Ausführen der in **configurationFunction** definierten Konfigurationsfunktion eine MOF-Datei ([Managed Object Format](/windows/win32/wmisdk/managed-object-format--mof-)) generiert. Anschließend führt die Erweiterung `Start-DscConfiguration -Force` mit der generierten MOF-Datei aus. Die Erweiterung erfasst die Ausgabe und schreibt sie in den Azure-Statuskanal.
 
 ### <a name="default-configuration-script"></a>Standardkonfigurationsskript
 
@@ -81,7 +81,7 @@ Sie können diese Informationen im Azure-Portal anzeigen oder PowerShell verwend
 ```
 
 Achten Sie beim Namen der Knotenkonfiguration darauf, dass die Knotenkonfiguration in Azure State Configuration vorhanden ist.  Ist das nicht der Fall, gibt die Erweiterungsbereitstellung einen Fehler zurück.  Achten Sie außerdem darauf, dass Sie den Namen der *Knotenkonfiguration* verwenden, nicht den der Konfiguration.
-Eine Konfiguration ist in einem Skript definiert, das [zum Kompilieren der Knotenkonfiguration (MOF-Datei)](https://docs.microsoft.com/azure/automation/automation-dsc-compile) verwendet wird.
+Eine Konfiguration ist in einem Skript definiert, das [zum Kompilieren der Knotenkonfiguration (MOF-Datei)](../../automation/automation-dsc-compile.md) verwendet wird.
 Der Name ist immer die Konfiguration, gefolgt von einem Punkt `.` und entweder `localhost` oder dem Namen eines bestimmten Computers.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-Erweiterung in Resource Manager-Vorlagen
@@ -188,11 +188,11 @@ Für dieses Portal werden folgende Eingaben erfasst:
 
 - **Konfigurationsargumente:** Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im Format **argumentName1=value1,argumentName2=value2** ein. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder Resource Manager-Vorlagen akzeptiert werden.
 
-- **PSD1-Konfigurationsdatendatei:** Da Ihre Konfiguration eine PSD1-Konfigurationsdatendatei erfordert, wählen Sie mithilfe dieses Felds die Datendatei aus, und laden Sie sie in Ihren Benutzerblobspeicher hoch. Die Konfigurationsdatei wird durch ein SAS-Token in einem Blobspeicher geschützt.
+- **PSD1-Konfigurationsdatendatei:** Wenn Ihre Konfiguration eine Konfigurationsdatendatei in `.psd1` erfordert, wählen Sie mithilfe dieses Felds die Datendatei aus, und laden Sie sie in Ihren Benutzerblobspeicher hoch. Die Konfigurationsdatei wird durch ein SAS-Token in einem Blobspeicher geschützt.
 
 - **WMF-Version:** Gibt die Version von Windows Management Framework (WMF) an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“, „5.1“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist **neueste**.
 
-- **Datensammlung:** Bestimmt, ob die Erweiterung Telemetriedaten sammelt. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung).
+- **Datensammlung:** Bestimmt, ob die Erweiterung Telemetriedaten sammelt. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung).
 
 - **Version**: Gibt die Version der zu installierenden DSC-Erweiterung an. Informationen zu Versionen finden Sie unter [Versionsverlauf der Azure Desired State Configuration-Erweiterung](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 

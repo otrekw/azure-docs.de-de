@@ -1,6 +1,6 @@
 ---
-title: Einführung in die Sicherheitsgruppenansicht in Azure Network Watcher | Microsoft Docs
-description: Diese Seite enthält eine Übersicht über die Network Watcher-Funktion zur Sicherheitsgruppenansicht.
+title: Einführung in die „Wirksame Sicherheitsregeln“-Ansicht in Azure Network Watcher | Microsoft-Dokumentation
+description: Diese Seite enthält eine Übersicht über die Network Watcher-Funktion zur Ansicht „Wirksame Sicherheitsregeln“.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4c601184a060c3dfc4f033bcf983bf773f7167f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022649"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Einführung in die „Wirksame Sicherheitsregeln“-Ansicht in Azure Network Watcher
 
@@ -33,6 +33,11 @@ Es können Regeln ausgewählt werden. Damit wird dann ein neues Blatt geöffnet,
 ![Drilldown][2]
 
 ### <a name="next-steps"></a>Nächste Schritte
+
+Das Feature *Wirksame Sicherheitsgruppen* können Sie auch über die im Folgenden aufgeführten Methoden verwenden:
+* [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
+* [PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
+* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
 
 Erfahren Sie unter [Überwachen von Netzwerksicherheitsgruppen-Einstellungen mit PowerShell](network-watcher-nsg-auditing-powershell.md), wie Sie die Einstellungen Ihrer Netzwerksicherheitsgruppe überwachen.
 

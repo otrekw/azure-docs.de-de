@@ -4,15 +4,15 @@ description: Hier finden Sie Spezifikationen für die virtuellen Computer der Av
 author: migerdes
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7d2064ec89e107aa219f34520f71ed8704bb7aeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdcc26a8a22e9a1dc7af75667cdb33bb044c7858
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676929"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288584"
 ---
 # <a name="av2-series"></a>Av2-Serie
 
@@ -28,19 +28,20 @@ Livemigration: Unterstützt
 
 Updates mit Speicherbeibehaltung: Unterstützt
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
-|---|---|---|---|---|---|---|
-| Standard_A1_v2  | 1 | 2  | 10 | 1\.000/20/10  | 2/2 x 500   | 2/250  |
-| Standard_A2_v2  | 2 | 4  | 20 | 2\.000/40/20  | 4/4 x 500   | 2/500  |
-| Standard_A4_v2  | 4 | 8  | 40 | 4\.000/80/40  | 8/8 x 500   | 4/1000 |
-| Standard_A8_v2  | 8 | 16 | 80 | 8\.000/160/80 | 16/16 x 500 | 8/2.000 |
-| Standard_A2m_v2 | 2 | 16 | 20 | 2\.000/40/20  | 4/4 x 500   | 2/500  |
-| Standard_A4m_v2 | 4 | 32 | 40 | 4\.000/80/40  | 8/8 x 500   | 4/1.000 |
-| Standard_A8m_v2 | 8 | 64 | 80 | 8\.000/160/80 | 16/16 x 500 | 8/2.000 |
+
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s)
+|---|---|---|---|---|---|---|---|
+| Standard_A1_v2  | 1 | 2  | 10 | 1\.000/20/10  | 2/2 x 500   | 2 | 250  |
+| Standard_A2_v2  | 2 | 4  | 20 | 2\.000/40/20  | 4/4 x 500   | 2 | 500  |
+| Standard_A4_v2  | 4 | 8  | 40 | 4\.000/80/40  | 8/8 x 500   | 4 | 1000 |
+| Standard_A8_v2  | 8 | 16 | 80 | 8\.000/160/80 | 16/16 x 500 | 8 | 2000 |
+| Standard_A2m_v2 | 2 | 16 | 20 | 2\.000/40/20  | 4/4 x 500   | 2 | 500  |
+| Standard_A4m_v2 | 4 | 32 | 40 | 4\.000/80/40  | 8/8 x 500   | 4 | 1000 |
+| Standard_A8m_v2 | 8 | 64 | 80 | 8\.000/160/80 | 16/16 x 500 | 8 | 2000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -48,6 +49,10 @@ Updates mit Speicherbeibehaltung: Unterstützt
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

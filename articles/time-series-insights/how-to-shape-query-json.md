@@ -4,19 +4,19 @@ description: Erfahren Sie, wie Sie die Effizienz Ihrer Azure Time Series Insight
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc24c1f49a48e81509961d5d7d01dba60dc50475
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641290"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077658"
 ---
-# <a name="shape-json-to-maximize-query-performance"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung
+# <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung in Ihrer Gen1-Umgebung
 
 Dieser Artikel bietet Hilfestellung bei der JSON-Strukturierung, um die Effizienz Ihrer Azure Time Series Insights-Abfragen zu maximieren.
 
@@ -28,16 +28,13 @@ Dieser Artikel bietet Hilfestellung bei der JSON-Strukturierung, um die Effizien
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Sie berücksichtigen beim Senden von Ereignissen an Time Series Insights verschiedene Aspekte. Diese Aspekte sind immer wichtig:
+Sie berücksichtigen beim Senden von Ereignissen an Azure Time Series Insights verschiedene Aspekte. Diese Aspekte sind immer wichtig:
 
 1. Senden Sie Daten so effizient wie möglich über das Netzwerk.
 1. Stellen Sie sicher, dass Ihre Daten in einer Weise gespeichert werden, die das Ausführen geeigneter Aggregationen für Ihr Szenario ermöglichen.
-1. Stellen Sie sicher, dass die Grenzwerte für Time Series Insights-Eigenschaften nicht überschritten werden:
+1. Stellen Sie sicher, dass die Grenzwerte für Azure Time Series Insights-Eigenschaften nicht überschritten werden:
    - 600 Eigenschaften (Spalten) für S1-Umgebungen
    - 800 Eigenschaften (Spalten) für S2-Umgebungen
-
-> [!TIP]
-> Lesen Sie [Limits und Planung](time-series-insights-update-plan.md) in Azure Time Series Insights Preview.
 
 Die folgenden Richtlinien unterstützen Sie dabei, die bestmögliche Abfrageleistung zu erzielen:
 
@@ -45,7 +42,7 @@ Die folgenden Richtlinien unterstützen Sie dabei, die bestmögliche Abfrageleis
 1. Senden Sie keine unnötigen Eigenschaften. Wenn eine Abfrageeigenschaft nicht benötigt wird, sollte sie nicht gesendet werden. Auf diese Weise vermeiden Sie Speicherengpässe.
 1. Verwenden Sie [Verweisdaten](time-series-insights-add-reference-data-set.md), um das Senden von statischen Daten über das Netzwerk zu vermeiden.
 1. Verwenden Sie Dimensionseigenschaften für mehrere Ereignisse gemeinsam, um Daten effizienter über das Netzwerk zu senden.
-1. Verwenden Sie keine tiefe Arrayschachtelung. Time Series Insights unterstützt bis zu zwei Ebenen für geschachtelte Arrays, die Objekte enthalten. Time Series Insights sorgt für flache Arrays in Nachrichten, indem eine Aufteilung in mehrere Ereignisse mit Eigenschaft-Wert-Paaren durchgeführt wird.
+1. Verwenden Sie keine tiefe Arrayschachtelung. Azure Time Series Insights unterstützt bis zu zwei Ebenen für geschachtelte Arrays, die Objekte enthalten. Azure Time Series Insights sorgt für flache Arrays in Nachrichten, indem eine Aufteilung in mehrere Ereignisse mit Eigenschaft-Wert-Paaren durchgeführt wird.
 1. Wenn nur wenige Messwerte für viele oder alle Ereignisse vorhanden sind, ist es besser, diese Messwerte als separate Eigenschaften innerhalb desselben Objekts zu senden. Durch das separate Senden wird die Anzahl von Ereignissen verringert und die Abfrageleistung möglicherweise gesteigert, weil weniger Ereignisse verarbeitet werden müssen. Wenn mehrere Messwerte vorliegen, wird durch das Senden dieser als Werte in einer einzelnen Eigenschaft die Möglichkeit verringert, das Limit für die maximal zulässige Anzahl von Eigenschaften zu erreichen.
 
 ## <a name="example-overview"></a>Übersicht über das Beispiel
@@ -61,7 +58,7 @@ Die Beispiele basieren auf einem Szenario, in dem mehrere Geräte Messungen oder
 
 Im folgenden Beispiel wird eine einzelne Azure IoT Hub-Nachricht verwendet, bei der das äußere Array einen gemeinsam verwendeten Abschnitt für allgemeine Dimensionswerte enthält. Das äußere Array verwendet Verweisdaten, um die Effizienz der Nachricht zu erhöhen. Verweisdaten enthalten Gerätemetadaten, die sich nicht bei jedem Ereignis ändern, aber nützliche Eigenschaften für die Datenanalyse bereitstellen. Durch Batchverarbeitung allgemeiner Dimensionswerte und Verwendung von Verweisdaten werden beim Senden der Nachricht über das Netzwerk Bytes eingespart, und die Effizienz wird somit gesteigert.
 
-Beachten Sie die folgende JSON-Nutzlast, die mithilfe eines [IoT-Gerätemeldungsobjekts](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet), das beim Senden an die Azure-Cloud in JSON serialisiert wird, an Ihre Time Series Insights GA-Umgebung gesendet wird:
+Beachten Sie die folgende JSON-Nutzlast, die mithilfe eines [IoT-Gerätemeldungsobjekts](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet), das beim Senden an die Azure-Cloud in JSON serialisiert wird, an Ihre allgemein verfügbare Azure Time Series Insights-Umgebung gesendet wird:
 
 
 ```JSON
@@ -100,7 +97,7 @@ Beachten Sie die folgende JSON-Nutzlast, die mithilfe eines [IoT-Gerätemeldungs
    | FXXX | LINE\_DATA | EU |
    | FYYY | LINE\_DATA | US |
 
-* Time Series Insights-Ereignistabelle, flache Ansicht:
+* Azure Time Series Insights-Ereignistabelle, flache Ansicht:
 
    | deviceId | messageId | deviceLocation | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
    | --- | --- | --- | --- | --- | --- |
@@ -111,8 +108,8 @@ Beachten Sie die folgende JSON-Nutzlast, die mithilfe eines [IoT-Gerätemeldungs
 > [!NOTE]
 > - Die Spalte **deviceId** dient als Spaltenüberschrift für die verschiedenen Geräte in einem Bestand. Die Verwendung von **deviceID** als eigener Eigenschaftenname beschränkt die Gesamtzahl der Geräte mit den fünf weiteren Spalten auf 595 (S1-Umgebungen) oder 795 (S2-Umgebungen).
 > - Unnötige Eigenschaften werden vermieden (z. B. Fabrikat- und Modellinformationen). Da die Eigenschaften künftig nicht abgefragt werden, wird durch ihr Entfernen die Netzwerk- und Speichereffizienz verbessert.
-> - Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Die beiden Attribute (**messageId** und **deviceLocation**) werden mithilfe der Schlüsseleigenschaft **deviceId** verknüpft. Diese Daten werden zum Zeitpunkt ihres Eingangs mit den Telemetriedaten verknüpft und anschließend zur Abfrage in Time Series Insights gespeichert.
-> - Es werden zwei Schachtelungsebenen verwendet. Diese entsprechen der maximal zulässigen Schachtelung, die von Time Series Insights unterstützt wird. Tief verschachtelte Arrays müssen vermieden werden.
+> - Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Die beiden Attribute (**messageId** und **deviceLocation**) werden mithilfe der Schlüsseleigenschaft **deviceId** verknüpft. Diese Daten werden zum Zeitpunkt ihres Eingangs mit den Telemetriedaten verknüpft und anschließend zur Abfrage in Azure Time Series Insights gespeichert.
+> - Es werden zwei Schachtelungsebenen verwendet. Diese entsprechen der maximal zulässigen Schachtelung, die von Azure Time Series Insights unterstützt wird. Tief verschachtelte Arrays müssen vermieden werden.
 > - Messwerte werden als separate Eigenschaften innerhalb desselben Objekts gesendet, da nur wenige Messwerte vorliegen. In diesem Fall sind **series.Flow Rate psi** und **series.Engine Oil Pressure ft3/s** eindeutige Spalten.
 
 ## <a name="scenario-two-several-measures-exist"></a>Szenario 2: Es sind mehrere Messwerte vorhanden.
@@ -172,7 +169,7 @@ Beispiel-JSON-Nutzlast:
    | FYYY | pumpRate | LINE\_DATA | US | Flow Rate | ft3/s |
    | FYYY | oilPressure | LINE\_DATA | US | Engine Oil Pressure | psi |
 
-* Time Series Insights-Ereignistabelle, flache Ansicht:
+* Azure Time Series Insights-Ereignistabelle, flache Ansicht:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -186,7 +183,7 @@ Beispiel-JSON-Nutzlast:
 > [!NOTE]
 > - Die Spalten **deviceId** und **series.tagId** dienen als Spaltenüberschriften für die verschiedenen Geräte und Tags in einem Bestand. Eine Verwendung als eigenes Attribut beschränkt die Abfrage mit den weiteren sechs Spalten auf insgesamt 594 (für S1-Umgebungen) oder 794 (für S2-Umgebungen).
 > - Unnötige Eigenschaften werden (aus dem gleichen Grund wie im ersten Beispiel) vermieden.
-> - Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Dies wird durch die Einführung von **deviceId** für ein eindeutiges Paar aus **messageId** und **deviceLocation** erreicht. Der zusammengesetzte Schlüssel **series.tagId** wird für das eindeutige Paar aus **type** und **unit** verwendet. Der zusammengesetzte Schlüssel ermöglicht die Verwendung des Paars aus **deviceId** und **series.tagId**, um auf vier Werte zu verweisen: **messageId, deviceLocation, type** und **unit**. Diese Daten werden zur Eingangszeit mit den Telemetriedaten verknüpft. Sie werden dann für Abfragen in Time Series Insights gespeichert.
+> - Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Dies wird durch die Einführung von **deviceId** für ein eindeutiges Paar aus **messageId** und **deviceLocation** erreicht. Der zusammengesetzte Schlüssel **series.tagId** wird für das eindeutige Paar aus **type** und **unit** verwendet. Der zusammengesetzte Schlüssel ermöglicht die Verwendung des Paars aus **deviceId** und **series.tagId**, um auf vier Werte zu verweisen: **messageId, deviceLocation, type** und **unit**. Diese Daten werden zur Eingangszeit mit den Telemetriedaten verknüpft. Sie werden dann für Abfragen in Azure Time Series Insights gespeichert.
 > - Es werden (aus dem gleichen Grund wie im ersten Beispiel) zwei Schachtelungsebenen verwendet.
 
 ### <a name="for-both-scenarios"></a>Für beide Szenarien
@@ -200,6 +197,6 @@ Für eine Eigenschaft mit einer großen Anzahl möglicher Werte werden diese am 
 
 - Weitere Informationen zum Senden von [IoT Hub-Gerätemeldungen an die Cloud](../iot-hub/iot-hub-devguide-messages-construct.md).
 
-- Lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax), um mehr über die Abfragesyntax der REST-API für den TSI-Datenzugriff zu erfahren
+- Lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax), um mehr über die Abfragesyntax der REST-API für den Azure Time Series Insights-Datenzugriff zu erfahren.
 
 - Erfahren Sie mehr über das [Strukturieren von Ereignissen](./time-series-insights-send-events.md).

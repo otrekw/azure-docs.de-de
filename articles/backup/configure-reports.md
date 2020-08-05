@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513624"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388050"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -70,28 +70,63 @@ Wählen Sie diesen Link aus, um die Arbeitsmappe „Backup-Bericht“ zu öffnen
 
 Der Bericht enthält verschiedene Registerkarten:
 
-- **Zusammenfassung**: Verwenden Sie diese Registerkarte, um eine allgemeine Übersicht über Ihr Sicherungsumfeld zu erhalten. Sie erhalten einen schnellen Überblick über die Gesamtzahl der Sicherungselemente, den gesamten verbrauchten Cloudspeicher, die Anzahl der geschützten Instanzen und die Auftragserfolgsrate pro Workloadtyp. Für detailliertere Informationen zu einem bestimmten Sicherungsartefakttyp wechseln Sie zu den jeweiligen Registerkarten.
+##### <a name="summary"></a>Zusammenfassung
+Verwenden Sie diese Registerkarte, um eine allgemeine Übersicht über Ihr Sicherungsumfeld zu erhalten. Sie erhalten einen schnellen Überblick über die Gesamtzahl der Sicherungselemente, den gesamten verbrauchten Cloudspeicher, die Anzahl der geschützten Instanzen und die Auftragserfolgsrate pro Workloadtyp. Für detailliertere Informationen zu einem bestimmten Sicherungsartefakttyp wechseln Sie zu den jeweiligen Registerkarten.
 
    ![Registerkarte „Zusammenfassung“](./media/backup-azure-configure-backup-reports/summary.png)
 
-- **Sicherungselemente**: Auf dieser Registerkarte können Sie Informationen und Trends für Cloudspeicher anzeigen, der auf einer Sicherungselementebene verbraucht wird. Wenn Sie beispielsweise SQL in einer Azure-VM-Sicherung verwenden, können Sie den für jede zu sichernde SQL-Datenbank verbrauchten Cloudspeicher anzeigen. Sie können auch Daten für Sicherungselemente mit einem bestimmten Schutzstatus anzeigen. Wenn Sie beispielsweise oben auf der Registerkarte die Kachel **Schutz beendet** auswählen, werden alle Widgets darunter so gefiltert, dass nur Daten für Sicherungselemente mit dem Status „Schutz beendet“ angezeigt werden.
+##### <a name="backup-items"></a>Sicherungselemente
+Auf dieser Registerkarte können Sie Informationen und Trends für Cloudspeicher anzeigen, der auf einer Sicherungselementebene verbraucht wird. Wenn Sie beispielsweise SQL in einer Azure-VM-Sicherung verwenden, können Sie den für jede zu sichernde SQL-Datenbank verbrauchten Cloudspeicher anzeigen. Sie können auch Daten für Sicherungselemente mit einem bestimmten Schutzstatus anzeigen. Wenn Sie beispielsweise oben auf der Registerkarte die Kachel **Schutz beendet** auswählen, werden alle Widgets darunter so gefiltert, dass nur Daten für Sicherungselemente mit dem Status „Schutz beendet“ angezeigt werden.
 
    ![Registerkarte „Sicherungselemente“](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-- **Verwendung**: Verwenden Sie diese Registerkarte zum Anzeigen von wichtigen Abrechnungsparametern für Ihre Sicherungen. Auf dieser Registerkarte werden Informationen auf Abrechnungsentitätsebene (geschützter Container) angezeigt. Beispielsweise können Sie im Fall eines DPM-Servers, der in Azure gesichert wird, den Trend der geschützten Instanzen und den für den DPM-Server verbrauchten Cloudspeicher anzeigen. Wenn Sie SQL in Azure Backup oder SAP HANA in Azure Backup verwenden, erhalten Sie auf dieser Registerkarte nutzungsbezogene Informationen auf der Ebene des virtuellen Computers, in dem diese Datenbanken gespeichert sind.
+##### <a name="usage"></a>Verwendung
+Verwenden Sie diese Registerkarte zum Anzeigen von wichtigen Abrechnungsparametern für Ihre Sicherungen. Auf dieser Registerkarte werden Informationen auf Abrechnungsentitätsebene (geschützter Container) angezeigt. Beispielsweise können Sie im Fall eines DPM-Servers, der in Azure gesichert wird, den Trend der geschützten Instanzen und den für den DPM-Server verbrauchten Cloudspeicher anzeigen. Wenn Sie SQL in Azure Backup oder SAP HANA in Azure Backup verwenden, erhalten Sie auf dieser Registerkarte nutzungsbezogene Informationen auf der Ebene des virtuellen Computers, in dem diese Datenbanken gespeichert sind.
 
    ![Registerkarte „Verwendung“](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
 > Bei DPM-Workloads bemerken Benutzer möglicherweise einen geringfügigen Unterschied (in der Größenordnung von 20 MB pro DPM-Server) zwischen den Nutzungswerten in den Berichten und dem aggregierten Nutzungswert auf der Registerkarte „Übersicht“ des Recovery Services-Tresors. Dieser Unterschied liegt darin begründet, dass jeder für die Sicherung registrierte DPM-Server über eine zugeordnete Datenquelle für Metadaten verfügt, die in den Berichten nicht als Artefakt aufgeführt wird.
 
-- **Aufträge**: Verwenden Sie diese Registerkarte zum Anzeigen von langfristigen Trends für Aufträge, z. B. die Anzahl der fehlerhaften Aufträge pro Tag und die Hauptgründe für Auftragsfehler. Sie können diese Informationen sowohl auf einer aggregierten Ebene als auch auf der Ebene eines Sicherungselements anzeigen. Wählen Sie ein bestimmtes Sicherungselement in einem Raster aus, um detaillierte Informationen zu jedem Auftrag anzuzeigen, der für dieses Element im ausgewählten Zeitbereich ausgelöst wurde.
+##### <a name="jobs"></a>Aufträge
+Verwenden Sie diese Registerkarte zum Anzeigen von langfristigen Trends für Aufträge, z. B. die Anzahl der fehlerhaften Aufträge pro Tag und die Hauptgründe für Auftragsfehler. Sie können diese Informationen sowohl auf einer aggregierten Ebene als auch auf der Ebene eines Sicherungselements anzeigen. Wählen Sie ein bestimmtes Sicherungselement in einem Raster aus, um detaillierte Informationen zu jedem Auftrag anzuzeigen, der für dieses Element im ausgewählten Zeitbereich ausgelöst wurde.
 
    ![Registerkarte „Aufträge“](./media/backup-azure-configure-backup-reports/jobs.png)
 
-- **Richtlinien**: Verwenden Sie diese Registerkarte zum Anzeigen von Informationen zu allen Ihren aktiven Richtlinien, z. B. der Anzahl der zugeordneten Elemente und des gesamten Cloudspeicherplatzes, der von Elementen verbraucht wird, die im Rahmen einer bestimmten Richtlinie gesichert wurden. Wählen Sie eine bestimmte Richtlinie aus, um Informationen zu jedem der zugeordneten Sicherungselemente anzuzeigen.
+##### <a name="policies"></a>Richtlinien
+Verwenden Sie diese Registerkarte zum Anzeigen von Informationen zu allen Ihren aktiven Richtlinien, z. B. der Anzahl der zugeordneten Elemente und des gesamten Cloudspeicherplatzes, der von Elementen verbraucht wird, die im Rahmen einer bestimmten Richtlinie gesichert wurden. Wählen Sie eine bestimmte Richtlinie aus, um Informationen zu jedem der zugeordneten Sicherungselemente anzuzeigen.
 
    ![Registerkarte „Richtlinien“](./media/backup-azure-configure-backup-reports/policies.png)
+
+##### <a name="optimize"></a>Optimieren
+Verwenden Sie diese Registerkarte, um potenzielle Möglichkeiten zur Kostenoptimierung Ihrer Sicherungen anzuzeigen. Im Folgenden finden Sie die Szenarios, für die die Registerkarte „Optimieren“ derzeit Einblicke bietet:
+
+###### <a name="inactive-resources"></a>Inaktive Ressourcen
+Mithilfe dieser Ansicht können Sie die Sicherungselemente identifizieren, für die über einen beträchtlichen Zeitraum hinweg keine erfolgreiche Sicherung vorhanden ist. Dies kann entweder bedeuten, dass der zugrunde liegende Computer, der gesichert wird, nicht mehr vorhanden ist (was daher zu Fehlern bei Sicherungen führt), oder es besteht ein Problem mit dem Computer, der verhindert, dass Sicherungen zuverlässig erstellt werden. 
+
+Navigieren Sie zur Registerkarte **Optimieren**, und klicken Sie auf die Kachel **Inactive Resources** (Inaktive Ressourcen), um inaktive Ressourcen anzuzeigen. Wenn Sie auf diese Kachel klicken, wird ein Raster angezeigt, das Details zu allen inaktiven Ressourcen enthält, die im ausgewählten Bereich vorhanden sind. Standardmäßig zeigt das Raster Elemente an, für die in den letzten sieben Tagen kein Wiederherstellungspunkt vorhanden ist. Wenn Sie inaktive Ressourcen für einen anderen Zeitbereich suchen möchten, können Sie den Filter **Zeichenbereich** oben auf der Registerkarte anpassen.
+
+Nachdem Sie eine inaktive Ressource identifiziert haben, können Sie das Problem weiter untersuchen, indem Sie zum Sicherungselementdashboard oder zum Azure-Ressourcenblatt für diese Ressource navigieren (sofern zutreffend). Abhängig von Ihrem Szenario können Sie entweder die Sicherung für den Computer abbrechen (wenn er nicht mehr vorhanden ist), wodurch die Kosten für die geschützte Instanz eingespart werden, oder Sie können Probleme auf dem Computer beheben, um sicherzustellen, dass Sicherungen zuverlässig erstellt werden.
+
+![Registerkarte „Optimieren“: Inaktive Ressourcen](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
+
+###### <a name="backup-items-with-a-large-retention-duration"></a>Sicherungselemente mit langer Aufbewahrungsdauer
+Mithilfe dieser Ansicht können Sie die Elemente identifizieren, für die Sicherungen länger aufbewahrt werden, als für Ihre Organisation erforderlich ist. 
+
+Wenn Sie auf die Kachel **Policy Optimizations** (Richtlinienoptimierungen) und dann auf die Kachel **Retention Optimizations** (Aufbewahrungsoptimierungen) klicken, wird ein Raster angezeigt, das alle Sicherungselemente enthält, für die der Aufbewahrungszeitraum von einem Tag, einer Woche, einem Monat oder einem Jahr länger als ein angegebener Wert ist. Standardmäßig zeigt das Raster alle Sicherungselemente im ausgewählten Bereich an. Sie können die Filter für die tägliche, wöchentliche, monatliche und jährliche Aufbewahrung verwenden, um die Suche im Raster weiter zu verfeinern und somit die Elemente zu identifizieren, für die die Aufbewahrung potenziell reduziert werden kann, um Sicherungsspeicherkosten zu sparen.
+
+Beachten Sie, dass die im Raster für Datenbankworkloads wie SQL und SAP HANA angezeigten Aufbewahrungszeiträume jenen der vollständigen Sicherungspunkte und nicht der differenziellen Sicherungspunkte entsprechen. Das Gleiche gilt auch für die Aufbewahrungsfilter.  
+
+![Registerkarte „Optimieren“: Aufbewahrungsoptimierungen](./media/backup-azure-configure-backup-reports/optimize-retention.png)
+
+###### <a name="databases-configured-for-daily-full-backup"></a>Für die tägliche vollständige Sicherung konfigurierte Datenbanken
+Mithilfe dieser Ansicht können Sie Datenbankworkloads ermitteln, die für die tägliche vollständige Sicherung konfiguriert wurden. Häufig ist die Verwendung der täglichen differenziellen Sicherung zusammen mit der wöchentlichen vollständigen Sicherung kostengünstiger. 
+
+Wenn Sie auf die Kachel **Policy Optimizations** (Richtlinienoptimierungen) und dann auf die Kachel **Backup Schedule Optimizations** (Sicherungszeitplanoptimierungen) klicken, wird ein Raster angezeigt, das alle Datenbanken mit einer Richtlinie für eine tägliche vollständige Sicherung enthält. Sie können auch zu einem bestimmten Sicherungselement navigieren und die Richtlinie so ändern, dass die tägliche differenzielle Sicherung mit der wöchentlichen vollständigen Sicherung verwendet wird.
+
+Beachten Sie, dass für den Filter **Sicherungsverwaltungstyp** oben auf der Registerkarte die Elemente **SQL in Azure-VM** und **SAP HANA in Azure-VM** ausgewählt sein sollten, damit das Raster die Datenbankworkloads erwartungsgemäß anzeigen kann.
+
+![Registerkarte „Optimieren“: „Backup Schedule Optimizations“ (Sicherungszeitplanoptimierungen)](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
 
 ## <a name="export-to-excel"></a>Exportieren in Excel
 

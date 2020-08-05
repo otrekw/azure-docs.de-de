@@ -5,27 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 07/13/2020
 ms.author: victorh
-ms.openlocfilehash: 58f670f3f55a63f0c1823adc13c98f5863d4d650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444859"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084669"
 ---
 # <a name="azure-firewall-central-management"></a>Zentrale Verwaltung für Azure Firewall
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
 Bei der Verwaltung mehrerer Firewalls ist es aufgrund von häufigen Änderungen an Firewallregeln bekanntermaßen schwierig, die Firewalls synchron zu halten. Zentrale IT-Teams benötigen eine Möglichkeit, grundlegende Firewallrichtlinien zu definieren und über mehrere Geschäftseinheiten hinweg zu erzwingen. Gleichzeitig möchten die DevOps-Teams eigene lokale, abgeleitete Firewallrichtlinien erstellen, um agiler arbeiten zu können.
 
-Azure Firewall Manager (Vorschau) kann dabei helfen, diese Probleme zu lösen.
+Azure Firewall Manager kann dabei helfen, diese Probleme zu lösen.
 
 
-## <a name="azure-firewall-manager-preview"></a>Azure Firewall Manager (Vorschau)
+## <a name="azure-firewall-manager"></a>Azure Firewall Manager
 
-Azure Firewall Manager (Vorschau) ist ein Dienst für die Verwaltung der Netzwerksicherheit, der eine zentrale Sicherheitsrichtlinien- und Routenverwaltung für cloudbasierte Sicherheitsperimeter bereitstellt. Mit diesem Dienst können Unternehmens-IT-Teams Regeln für die Datenverkehrsfilterung für mehrere Azure Firewall-Instanzen auf Netzwerk- und Anwendungsebene zentral definieren. Sie können verschiedene Azure-Regionen und -Abonnements in Hub-and-Spoke-Architekturen einbeziehen, um Governance und Schutz des Datenverkehrs sicherzustellen. DevOps-Teams profitieren von mehr Agilität, indem sie lokale, abgeleitete Sicherheitsrichtlinien für Firewalls nutzen können, die organisationsübergreifend implementiert werden.
+Azure Firewall Manager ist ein Dienst für die Verwaltung der Netzwerksicherheit, der eine zentrale Sicherheitsrichtlinien- und Routenverwaltung für cloudbasierte Sicherheitsperimeter bereitstellt. Mit diesem Dienst können Unternehmens-IT-Teams Regeln für die Datenverkehrsfilterung für mehrere Azure Firewall-Instanzen auf Netzwerk- und Anwendungsebene zentral definieren. Sie können verschiedene Azure-Regionen und -Abonnements in Hub-and-Spoke-Architekturen einbeziehen, um Governance und Schutz des Datenverkehrs sicherzustellen. DevOps-Teams profitieren von mehr Agilität, indem sie lokale, abgeleitete Sicherheitsrichtlinien für Firewalls nutzen können, die organisationsübergreifend implementiert werden.
 
 ### <a name="firewall-policy"></a>Firewallrichtlinie
 
@@ -48,4 +46,4 @@ Die folgenden Drittanbieterlösungen unterstützen die zentrale Azure Firewall-V
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure Firewall Manager-Vorschau finden Sie unter [Was ist Azure Firewall Manager (Vorschau)?](../firewall-manager/overview.md).
+Unter [Was ist Azure Firewall Manager?](../firewall-manager/overview.md) finden Sie weitere Informationen zu Azure Firewall Manager.

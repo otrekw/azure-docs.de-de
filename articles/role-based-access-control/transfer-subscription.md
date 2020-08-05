@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230841"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029976"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)
 
@@ -145,7 +145,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 ### <a name="save-custom-roles"></a>Speichern benutzerdefinierter Rollen
 
-1. Verwenden Sie [az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list), um Ihre benutzerdefinierten Rollen aufzulisten. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der Azure CLI](custom-roles-cli.md).
+1. Verwenden Sie [az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list), um Ihre benutzerdefinierten Rollen aufzulisten. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle](custom-roles-cli.md).
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -215,7 +215,7 @@ Verwaltete Identitäten werden nicht aktualisiert, wenn ein Abonnement in ein an
 
 ### <a name="list-key-vaults"></a>Auflisten von Schlüsseltresoren
 
-Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardmäßige Azure Active Directory-Mandanten-ID für das Abonnement gebunden, in dem er erstellt wurde. Außerdem werden auch alle Zugriffsrichtlinieneinträge an diese Mandanten-ID gebunden. Weitere Informationen finden Sie unter [Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement](../key-vault/general/keyvault-move-subscription.md).
+Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardmäßige Azure Active Directory-Mandanten-ID für das Abonnement gebunden, in dem er erstellt wurde. Außerdem werden auch alle Zugriffsrichtlinieneinträge an diese Mandanten-ID gebunden. Weitere Informationen finden Sie unter [Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement](../key-vault/general/move-subscription.md).
 
 > [!WARNING]
 > Wenn Sie die Verschlüsselung ruhender Daten für eine Ressource verwenden (z. B. ein Speicherkonto oder eine SQL-Datenbank), die von einem Schlüsseltresor abhängig ist, der sich NICHT im selben Abonnement befindet, das übertragen wird, kann dies zu einem nicht wiederherstellbaren Szenario führen. In dieser Situation sollten Sie Maßnahmen ergreifen, um einen anderen Schlüsseltresor zu verwenden oder kundenseitig verwaltete Schlüssel vorübergehend zu deaktivieren, um dieses nicht wiederherstellbare Szenario zu vermeiden.
@@ -291,7 +291,7 @@ In diesem Schritt übertragen Sie den Abrechnungsbesitz des Abonnements aus dem 
 
 ### <a name="create-custom-roles"></a>Erstellen von benutzerdefinierten Rollen
         
-- Verwenden Sie [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create), um jede benutzerdefinierte Rolle aus den zuvor erstellten Dateien zu erstellen. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der Azure CLI](custom-roles-cli.md).
+- Verwenden Sie [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create), um jede benutzerdefinierte Rolle aus den zuvor erstellten Dateien zu erstellen. Weitere Informationen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle](custom-roles-cli.md).
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -339,7 +339,7 @@ In diesem Schritt übertragen Sie den Abrechnungsbesitz des Abonnements aus dem 
 
 ### <a name="update-key-vaults"></a>Aktualisieren von Schlüsseltresoren
 
-In diesem Abschnitt werden die grundlegenden Schritte zum Aktualisieren von Schlüsseltresoren beschrieben. Weitere Informationen finden Sie unter [Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement](../key-vault/general/keyvault-move-subscription.md).
+In diesem Abschnitt werden die grundlegenden Schritte zum Aktualisieren von Schlüsseltresoren beschrieben. Weitere Informationen finden Sie unter [Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement](../key-vault/general/move-subscription.md).
 
 1. Aktualisieren Sie die Mandanten-ID, die allen vorhandenen Schlüsseltresoren im Abonnement zugeordnet ist, in das Zielverzeichnis.
 

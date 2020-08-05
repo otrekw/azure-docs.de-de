@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a06e428908777c526602166f127a28304b595ba0
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f3e9d70ced0d2974a66717436c28c5b6914f6745
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220077"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287143"
 ---
 # <a name="azcopy-jobs-clean"></a>azcopy jobs clean
 
@@ -38,13 +38,13 @@ azcopy jobs clean [flags]
 
 ## <a name="options"></a>Tastatur
 
-**-h, --help**                Hilfe zu „clean“
+**--help**                Hilfe zu „clean“
 
-**--with-status** string   Entfernt nur die Aufträge mit dem jeweiligen Status. Verfügbare Werte: „Canceled“, „Completed“, „Failed“, „InProgress“, „All“ (Standardwert: „All“)
+**--with-status** Zeichenfolge   Entfernt nur die Aufträge mit dem jeweiligen Status. Verfügbare Werte: `Canceled`, `Completed`, `Failed`, `InProgress`, `All` (Standardwert `All`)
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
-**--cap-mbps uint32**      Begrenzt die Übertragungsrate (in Megabits pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.
+**--cap-mbps float**      Begrenzt die Übertragungsrate (in Megabits pro Sekunde) Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.
 
 **--output-type** string   Das Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“. (Standardwert: „text“)
 

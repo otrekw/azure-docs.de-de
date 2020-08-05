@@ -7,29 +7,26 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082000"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Beispielkonfiguration: Cisco ASA-Gerät (IKEv2/no BGP)
 Dieser Artikel enthält Beispielkonfigurationen für das Verbinden von Cisco ASA-Geräten (Adaptive Security Appliance) mit Azure-VPN-Gateways. Das Beispiel gilt für Cisco ASA-Geräte, auf denen IKEv2 ohne Border Gateway Protocol (BGP) ausgeführt wird. 
 
 ## <a name="device-at-a-glance"></a>Gerät auf einen Blick
 
-|                        |                                   |
-| ---                    | ---                               |
-| Gerätehersteller          | Cisco                             |
-| Gerätemodell           | ASA                               |
-| Zielversion         | 8.4 und höher                     |
-| Getestetes Modell           | ASA 5505                          |
-| Getestete Version         | 9.2                               |
-| IKE-Version            | IKEv2                             |
-| BGP                    | Nein                                |
-| Typ des Azure VPN-Gateways | Routenbasiertes VPN-Gateway           |
-|                        |                                   |
+* Gerätehersteller: **Cisco**
+* Gerätemodell: **ASA**           
+* Zielversion: **8.4 und höher**
+* Getestetes Modell: **ASA 5505**
+* Getestete Version: **9.2**             
+* IKE-Version: **IKEv2**                  
+* BGP: **Nein**      
+* Typ des Azure VPN-Gateways: **Routenbasiertes VPN-Gateway**
 
 > [!NOTE]
 > Mit der Beispielkonfiguration wird ein Cisco ASA-Gerät mit einem **routenbasierten** Azure-VPN-Gateway verbunden. Die Verbindung verwendet eine benutzerdefinierte IPsec-/IKE-Richtlinie mit der **UsePolicyBasedTrafficSelectors**-Option wie in [diesem Artikel](vpn-gateway-connect-multiple-policybased-rm-ps.md) beschrieben.
@@ -115,7 +112,7 @@ Das Skript enthält ein Beispiel, das auf der Konfiguration und den Parametern b
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE: **Pre_Shared_Key**
-  - VNET- und lokale Netzwerkgatewaynamen: **VNetName** und **LNGName**
+  - Namen der VNET- und lokalen Netzwerkgateways: **VNetName** und **LNGName**
   - VNET- und lokale Netzwerkadresspräfixe: **prefixes**
   - Ordnungsgemäße Netzmasken: **netmasks**
 

@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050295"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Wiederherstellen einer gelöschten App Service-App mithilfe von PowerShell
 
@@ -58,7 +58,7 @@ Die ausführlichen Informationen enthalten folgende Angaben:
 Wenn Sie die wiederherzustellende App identifiziert haben, können Sie sie mithilfe von `Restore-AzDeletedWebApp` wiederherstellen.
 
 ```powershell
-Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
+Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
 > Bereitstellungsslots werden nicht als Teil Ihrer App wiederhergestellt. Wenn Sie einen Stagingslot wiederherstellen müssen, verwenden Sie das Flag `-Slot <slot-name>`.
@@ -66,7 +66,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 Eingaben für den Befehl:
 
-- **Ressourcengruppe**: Zielressourcengruppe, in der die App wiederhergestellt wird
+- **Zielressourcengruppe:** Zielressourcengruppe, in der die App wiederhergestellt wird
 - **Name**: Name für die App, muss global eindeutig sein
 - **TargetAppServicePlanName**: App Service-Plan, der mit der App verknüpft ist
 

@@ -51,6 +51,12 @@
   items:
     - name: Konfigurieren von Network Watcher
       href: network-watcher-create.md
+    - name: Erstellen eines Verbindungsmonitors (Vorschau)
+      items:
+        - name: Verwenden des Azure-Portals
+          href: connection-monitor-preview-create-using-portal.md
+        - name: Verwenden von ARMClient
+          href: connection-monitor-preview-create-using-arm-client.md
     - name: Diagnostizieren von VM-Netzwerkproblemen
       items:
         - name: Installieren der VM-Erweiterung
@@ -63,7 +69,7 @@
           items:
             - name: Azure PowerShell
               href: diagnose-vm-network-routing-problem-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Diagnostizieren von Problemen mit der ausgehenden Verbindung
           items:

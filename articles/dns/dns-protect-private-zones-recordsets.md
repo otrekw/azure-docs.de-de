@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: a817cb0722bff721891cd290ea4a6552c778dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550ed5791df821b1793755f5046da92adf6e3f3a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701846"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131547"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Schützen von privaten DNS-Zonen und -Einträgen
 
@@ -24,7 +24,7 @@ In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre privaten 
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Die rollenbasierte Zugriffssteuerung in Azure (role-based access control, RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Benutzer, -Gruppen und -Ressourcen. Bei der rollenbasierten Zugriffssteuerung können Sie genau die Zugriffsebene gewähren, die Benutzer benötigen. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md).
+Die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Benutzer, -Gruppen und -Ressourcen. Bei der rollenbasierten Zugriffssteuerung können Sie genau die Zugriffsebene gewähren, die Benutzer benötigen. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).
 
 ### <a name="the-private-dns-zone-contributor-role"></a>Die Rolle „Mitwirkender für private DNS-Zone“
 
@@ -168,7 +168,7 @@ Die Eigenschaft „Actions“ definiert die folgenden DNS-spezifischen Berechtig
 * `Microsoft.Network/privateDNSZones/read` erteilt die Berechtigung zum Lesen von privaten DNS-Zonen, nicht aber zum Ändern dieser Zonen. Dabei können Sie die Zone anzeigen, in der der CNAME-Eintrag erstellt wird.
 
 > [!NOTE]
-> Das Verwenden von benutzerdefinierten RBAC-Rollen, um das Löschen von Ressourceneintragssätzen zu verhindern, wobei diese immer noch aktualisiert werden dürfen, stellt keine effiziente Kontrolle dar. Ressourceneintragssätze können zwar nicht gelöscht werden, jedoch können sie bearbeitet werden.  Zulässige Bearbeitungen umfassen das Hinzufügen und Entfernen von Einträgen zu dem bzw. aus dem Ressourceneintragssatz. Dazu zählt auch das Entfernen aller Einträge, um einen leeren Ressourceneintragssatz zu hinterlassen. Dies hat die gleiche Wirkung wie das Löschen des Ressourceneintragssatzes aus der Sichtweise einer DNS-Auflösung.
+> Das Verwenden einer benutzerdefinierten Azure-Rolle, um das Löschen von Ressourceneintragssätzen zu verhindern, wobei diese immer noch aktualisiert werden dürfen, stellt keine effiziente Kontrolle dar. Ressourceneintragssätze können zwar nicht gelöscht werden, jedoch können sie bearbeitet werden.  Zulässige Bearbeitungen umfassen das Hinzufügen und Entfernen von Einträgen zu dem bzw. aus dem Ressourceneintragssatz. Dazu zählt auch das Entfernen aller Einträge, um einen leeren Ressourceneintragssatz zu hinterlassen. Dies hat die gleiche Wirkung wie das Löschen des Ressourceneintragssatzes aus der Sichtweise einer DNS-Auflösung.
 
 Benutzerdefinierte Rollendefinitionen können derzeit nicht über das Azure-Portal definiert werden. Eine benutzerdefinierte Rolle basierend auf dieser Rollendefinition kann mithilfe von Azure PowerShell erstellt werden:
 

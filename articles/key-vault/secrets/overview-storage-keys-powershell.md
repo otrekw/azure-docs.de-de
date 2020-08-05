@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dea4c0f63b6c4e76c2289e6c3d930ea32cf2880
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449310"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373214"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und Azure PowerShell
 
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Gewähren von Zugriff auf Ihr Speicherkonto für Key Vault
 
-Damit Key Vault auf Ihre Speicherkontoschlüssel zugreifen und diese verwalten kann, müssen Sie Key Vault zum Zugriff auf Ihr Speicherkonto autorisieren. Die Key Vault-Anwendung benötigt die Berechtigungen zum *Auflisten* und *Regenerieren* von Schlüsseln für Ihr Speicherkonto. Diese Berechtigungen werden über die integrierte RBAC-Dienstrolle [Speicherkonto-Schlüsseloperator](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role) aktiviert. 
+Damit Key Vault auf Ihre Speicherkontoschlüssel zugreifen und diese verwalten kann, müssen Sie Key Vault zum Zugriff auf Ihr Speicherkonto autorisieren. Die Key Vault-Anwendung benötigt die Berechtigungen zum *Auflisten* und *Regenerieren* von Schlüsseln für Ihr Speicherkonto. Diese Berechtigungen werden über die integrierte Azure-Rolle [Dienstrolle „Speicherkonto-Schlüsseloperator“](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role) aktiviert. 
 
 Verwenden Sie das Azure PowerShell-Cmdlet [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0), um dem Key Vault-Dienstprinzipal diese Rolle zuzuweisen und den Bereich auf Ihr Speicherkonto einzuschränken.
 
@@ -164,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Aktivieren der erneuten Schlüsselgenerierung
 
-Wenn die Speicherkontoschlüssel in regelmäßigen Abständen von Key Vault neu generiert werden sollen, können Sie das Azure PowerShell-Cmdlet [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) verwenden, um einen Regenerierungszeitraum festzulegen. In diesem Beispiel wird der Zeitraum auf drei Tage festgelegt. Nach drei Tagen wird „key2“ von Key Vault neu generiert, und der aktive Schlüssel „key2“ mit „key1“ ausgetauscht (durch „primär“ und „sekundär“ für klassische Speicherkonten ersetzen).
+Wenn die Speicherkontoschlüssel in regelmäßigen Abständen von Key Vault neu generiert werden sollen, können Sie das Azure PowerShell-Cmdlet [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) verwenden, um einen Regenerierungszeitraum festzulegen. In diesem Beispiel wird der Zeitraum auf drei Tage festgelegt. Wenn es Zeit für die Rotation ist, generiert Key Vault den inaktiven Schlüssel erneut und aktiviert den neu erstellten Schlüssel. Nur einer der Schlüssel wird verwendet, um SAS-Token zu einem beliebigen Zeitpunkt auszustellen. Dies ist der aktive Schlüssel.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

@@ -4,12 +4,12 @@ description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von R
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055663"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373996"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -78,7 +78,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | SubnetsNotInSameVnet | Ein virtueller Computer kann nur über ein virtuelles Netzwerk verfügen. Stellen Sie beim Bereitstellen von mehreren NICs sicher, dass diese demselben virtuellen Netzwerk angehören. | [Mehrere NICs](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotRegistered | Beim Bereitstellen von Netzwerkressourcen wird der Ressourcenanbieter „Microsoft.Network“ automatisch im Abonnement registriert. Manchmal wird die automatische Registrierung nicht rechtzeitig abgeschlossen. Um diesen zeitweiligen Fehler zu vermeiden, registrieren Sie den Ressourcenanbieter „Microsoft.Network“ vor der Bereitstellung. | [Lösen von Registrierungsfehlern](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Entfernen Sie unnötige Abhängigkeiten. | [Beheben von Ringabhängigkeiten](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Verringern Sie die Anzahl von Ressourcengruppen für eine einzelne Bereitstellung. | [Ressourcengruppenübergreifende Bereitstellung](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | Verringern Sie die Anzahl von Ressourcengruppen für eine einzelne Bereitstellung. | [Bereichsübergreifende Bereitstellungen](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>Ermitteln des Fehlercodes
 

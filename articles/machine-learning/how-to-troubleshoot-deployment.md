@@ -5,18 +5,18 @@ description: Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4, tracking-python
+ms.openlocfilehash: dcb2a50a91bec70dfe5d9adda7518f3510a8c973
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214365"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373197"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problembehandlung bei der Docker-Bereitstellung von Modellen mit Azure Kubernetes Service und Azure Container Instances 
 
@@ -101,6 +101,8 @@ Nachdem Sie den Bereitstellungsvorgang in einzelne Aufgaben aufgeschlüsselt hab
 
 Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es als lokalen Webdienst bereitzustellen. Das Verwenden eines lokalen Webdiensts erleichtert die Problembehandlung. Das Docker-Image mit dem Modell wird heruntergeladen und auf dem lokalen System gestartet.
 
+Im Repository [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) finden Sie ein beispielhaftes [lokales Bereitstellungsnotebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb), das Sie erkunden können.
+
 > [!WARNING]
 > Bereitstellungen lokaler Webdienste werden nicht für Produktionsszenarien unterstützt.
 
@@ -182,6 +184,9 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+Wenn die Zeile `Booting worker with pid: <pid>` in den Protokollen mehrmals angezeigt wird, ist nicht ausreichend Arbeitsspeicher vorhanden, um den Worker zu starten.
+Sie können den Fehler beheben, indem Sie den Wert von `memory_gb` in `deployment_config` ändern.
+ 
 ## <a name="container-cannot-be-scheduled"></a>Planen des Containers nicht möglich
 
 Beim Bereitstellen eines Diensts für ein Azure Kubernetes Service-Computeziel versucht Azure Machine Learning, den Dienst mit der angeforderten Menge von Ressourcen zu planen. Wenn nach 5 Minuten keine Knoten mit der entsprechenden Menge von verfügbaren Ressourcen im Cluster vorhanden sind, schlägt die Bereitstellung fehl mit der Meldung `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` (Planung nicht möglich, da im Kubernetes-Cluster nach 00:05:00 Stunden keine verfügbaren Ressourcen vorhanden sind.). Sie können diesen Fehler beheben, indem Sie entweder weitere Knoten hinzufügen oder die SKU Ihrer Knoten oder die Ressourcenanforderungen für Ihren Dienst ändern. 

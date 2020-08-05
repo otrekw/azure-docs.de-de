@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen mit REST-API und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Resource Manager-REST-API, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: a2280d3bb406fd7e5c41558478363de68cbd44b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079478"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und Resource Manager-REST-API
 
@@ -101,7 +101,7 @@ Die Beispiele in diesem Artikel verwenden Ressourcengruppenbereitstellungen.
    }
    ```
 
-    Wenn Sie den Antwortinhalt und/oder den Anforderungsinhalt protokollieren möchten, fügen Sie **debugSetting** in die Anforderung ein.
+    Wenn Sie den Antwort- und/oder den Anforderungsinhalt protokollieren möchten, fügen Sie `debugSetting` in die Anforderung ein.
 
    ```json
    {
@@ -194,6 +194,22 @@ Die Beispiele in diesem Artikel verwenden Ressourcengruppenbereitstellungen.
    ```HTTP
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
+
+## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
+
+Sie können Ihrer Bereitstellung einen Namen wie `ExampleDeployment` geben.
+
+Bei jeder Ausführung einer Bereitstellung wird dem Bereitstellungsverlauf der Ressourcengruppe ein Eintrag mit dem Bereitstellungsnamen hinzugefügt. Wenn Sie eine andere Bereitstellung ausführen und ihr denselben Namen geben, wird der vorherige Eintrag durch die aktuelle Bereitstellung ersetzt. Wenn die Einträge im Bereitstellungsverlauf eindeutig sein sollen, müssen Sie jeder Bereitstellung einen eindeutigen Namen geben.
+
+Für einen eindeutigen Namen können Sie beispielsweise eine Zufallszahl zuweisen oder einen Datumswert anfügen.
+
+Wenn Sie gleichzeitige Bereitstellungen in derselben Ressourcengruppe mit dem gleichen Bereitstellungsnamen ausführen, wird nur die letzte Bereitstellung abgeschlossen. Alle Bereitstellungen mit dem gleichen Namen, die noch nicht abgeschlossen wurden, werden durch die letzte Bereitstellung ersetzt. Wenn Sie z. B. eine Bereitstellung namens `newStorage` ausführen, die ein Speicherkonto namens `storage1` bereitstellt, und gleichzeitig eine andere Bereitstellung namens `newStorage` ausführen, die ein Speicherkonto namens `storage2` bereitstellt, wird nur ein Speicherkonto bereitgestellt. Das resultierende Speicherkonto hat den Namen `storage2`.
+
+Führen Sie jedoch eine Bereitstellung namens `newStorage` aus, die ein Speicherkonto namens `storage1` bereitstellt, und führen direkt nach dem Abschluss eine andere Bereitstellung namens `newStorage` aus, die ein Speicherkonto namens `storage2` bereitstellt, erhalten Sie zwei Speicherkonten. Eines hat den Namen `storage1` und das andere den Namen `storage2`. Es ist jedoch nur ein Eintrag im Bereitstellungsverlauf vorhanden.
+
+Wenn Sie für jede Bereitstellung einen eindeutigen Namen angeben, können Sie diese ohne Konflikt gleichzeitig ausführen. Wenn Sie eine Bereitstellung namens `newStorage1` ausführen, die ein Speicherkonto namens `storage1` bereitstellt, und gleichzeitig eine andere Bereitstellung namens `newStorage2` ausführen, die ein Speicherkonto namens `storage2` bereitstellt, erhalten Sie zwei Speicherkonten und zwei Einträge im Bereitstellungsverlauf.
+
+Geben Sie jeder Bereitstellung einen eindeutigen Namen, um Konflikte mit gleichzeitigen Bereitstellungen zu vermeiden und eindeutige Einträge im Bereitstellungsverlauf zu gewährleisten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

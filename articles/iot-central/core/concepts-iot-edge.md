@@ -7,12 +7,12 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337074"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung
 
@@ -58,7 +58,7 @@ In Azure IoT Central können Sie ein Bereitstellungsmanifest importieren, um ein
 
 ![Flussdiagramm des Lebenszyklus eines Bereitstellungsmanifests](./media/concepts-iot-edge/dmflow.png)
 
-IoT Plug & Play (Vorschauversion) modelliert ein IoT Edge-Gerät wie folgt:
+IoT Central modelliert ein IoT Edge-Gerät wie folgt:
 
 * Jede IoT Edge-Gerätevorlage verfügt über ein Gerätefunktionsmodell.
 * Für jedes benutzerdefinierte Modul im Bereitstellungsmanifest wird ein Modulfunktionsmodell generiert.

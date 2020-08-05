@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 2cdac18ed20c90861fe23f0a9ccbd02680d380af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 5be50453dff9acaf4a9876eec1d95b56abebf745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029840"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-Versionen in der kognitiven Azure-Suche
 
@@ -24,7 +24,7 @@ In der Regel versucht das Team für die kognitive Azure-Suche, neue Versionen nu
 Die gleiche Regel gilt bei SDK-Updates. Das SDK für die kognitive Azure-Suche folgt den Regeln der [semantischen Versionierung](https://semver.org/), d.h., dass seine Version aus drei Teilen besteht: Haupt-, Neben- und Buildnummer (z.B. 1.1.0). Eine neue Hauptversion des SDK wird nur dann veröffentlicht, wenn Änderungen die Abwärtskompatibilität beeinträchtigen. Bei Funktionsupdates ohne Beeinträchtigung der Abwärtskompatibilität wird die Nebenversion, bei Fehlerbehebungen nur die Buildversion heraufgesetzt.
 
 > [!Important]
-> Die Azure-SDKs für .NET, Java, Python und JavaScript führen neue Clientbibliotheken für Azure Cognitive Search ein. Zurzeit unterstützt keine der Azure-SDK-Bibliotheken die neuesten Such-REST-APIs (2020-06-30) oder Verwaltungs-REST-APIs (2020-03-13), dies ändert sich jedoch im Lauf der Zeit. Sie können diese Seite oder die [Neuerungen](whats-new.md) in regelmäßigen Abständen überprüfen, um Ankündigungen zu funktionalen Erweiterungen zu erhalten. 
+> Die Azure-SDKs für .NET, Java, Python und JavaScript führen neue Clientbibliotheken für Azure Cognitive Search ein. Zurzeit unterstützt keine der Azure-SDK-Bibliotheken die neuesten REST-APIs für die Suche (2020-06-30) oder die Verwaltung (2020-03-13) vollständig, dies ändert sich jedoch im Laufe der Zeit. Sie können diese Seite oder die [Neuerungen](whats-new.md) in regelmäßigen Abständen überprüfen, um Ankündigungen zu funktionalen Erweiterungen zu erhalten. 
 
 ## <a name="rest-apis"></a>REST-APIs
 
@@ -69,7 +69,7 @@ Die Versionsgeschichte der Pakete ist auf NuGet.org verfügbar. Diese Tabelle en
 
 | SDK-Version | Status | BESCHREIBUNG |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11.0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Neue Clientbibliothek aus dem Azure .NET SDK, veröffentlicht im Juli 2020. Gilt für die Such-REST-API, api-version=2019-05-06. |
+| [Azure.Search.Documents 11.0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Neue Clientbibliothek aus dem Azure .NET SDK, veröffentlicht im Juli 2020. Ist für die REST-API für die Suche (Version 2020-06-30) vorgesehen, unterstützt jedoch noch keine Geofilter oder [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). |
 | [Microsoft.Azure.Search 10.0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Veröffentlichung: Mai 2019 Gilt für die Such-REST-API, api-version=2019-05-06.|
 | [Microsoft.Azure.Search 8.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Vorschau | Veröffentlichung: April 2019 Gilt für die Such-REST-API, api-version=2019-05-06-Preview.|
 | [Microsoft.Azure.Management.Search 3.0.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | Gilt für die Management REST-API, api-version=2015-08-19.  |

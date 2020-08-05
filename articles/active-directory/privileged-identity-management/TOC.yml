@@ -91,7 +91,7 @@
       items:
         - name: Übersicht über privilegierten Zugriff
           href: groups-features.md
-        - name: Ermitteln von Gruppen
+        - name: Verwalten von Gruppen
           href: groups-discover-groups.md
         - name: Zuweisen eines Mitglieds oder Besitzers
           href: groups-assign-member-owner.md

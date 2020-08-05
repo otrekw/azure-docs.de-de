@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207888"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373146"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
@@ -29,6 +29,9 @@ In diesem Artikel werden die Unterschiede zwischen selbstgehosteten und verwalte
 ![Entwicklerportal für API Management](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+> [!NOTE]
+> <a name="migrate-from-legacy"></a> Das neue Entwicklerportal ist nicht mit dem Legacy-Entwicklerportal kompatibel, und eine automatisierte Migration ist nicht möglich. Sie müssen den Inhalt (Seiten, Text, Mediendateien) manuell neu erstellen und das Aussehen des neuen Portals anpassen. Eine entsprechende Anleitung finden Sie im [Tutorial zum Entwicklerportal](api-management-howto-developer-portal-customize.md).
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Verwaltete und selbstgehostete Versionen
 
@@ -82,19 +85,13 @@ Wenn Sie den Inhalt des Portals nicht zurücksetzen möchten, ziehen Sie ggf. in
 
 Wenn Ihr Portal nach der Ankündigung der allgemeinen Verfügbarkeit bereitgestellt wurde, sollte es bereits über die neuen Standardinhalte verfügen. Von Ihrer Seite ist keine Aktion erforderlich.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Wie kann ich aus dem alten Entwicklerportal zum Entwicklerportal migrieren?
-
-Die Portale sind nicht kompatibel, und Sie müssen den Inhalt manuell migrieren.
-
-### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>Verfügt das neue Portal über alle Funktionen des alten Portals?
+### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Verfügt das Portal über alle Features des Legacy-Portals?
 
 Das Entwicklerportal unterstützt keine *Anwendungen* und *Issues* (Probleme) mehr.
 
-Die Authentifizierung mit OAuth in der interaktiven Entwicklerkonsole wird noch nicht unterstützt. Sie können den Fortschritt anhand des [GitHub-Problems](https://github.com/Azure/api-management-developer-portal/issues/208) verfolgen.
+### <a name="has-the-legacy-portal-been-deprecated"></a>Wurde das Legacy-Portal als veraltet markiert?
 
-### <a name="has-the-old-portal-been-deprecated"></a>Wurde das alte Portal eingestellt?
-
-Die alten Entwickler- und Herausgeberportale sind nun *Legacyfeatures*. Sie erhalten nur noch Sicherheitsupdates. Neue Features werden nur im neuen Entwicklerportal implementiert.
+Die alten Entwickler- und Herausgeberportale sind nun *Legacy-Features*. Sie erhalten nur noch Sicherheitsupdates. Neue Features werden nur im neuen Entwicklerportal implementiert.
 
 Die Einstellung veralteter Portale wird separat angekündigt. Wenn Sie Fragen, Bedenken oder Kommentare haben, posten Sie diese in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/121).
 
@@ -108,7 +105,19 @@ Sie können über die REST-API programmgesteuert auf die Inhalte des Entwicklerp
 
 Die APIs sind im [Wiki-Abschnitt des GitHub-Repositorys][2] dokumentiert. Diese Dokumentation kann für die Automatisierung von Migrationen von Portalinhalten zwischen Umgebungen verwendet werden (z. B. aus einer Testumgebung in die Produktionsumgebung). Weitere Informationen zu diesem Vorgang finden Sie [in diesem Dokumentationsartikel](https://aka.ms/apimdocs/migrateportal) auf GitHub.
 
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>Wie kann ich von der verwalteten Version zur selbstgehosteten Version wechseln?
+
+Informationen hierzu finden Sie im ausführlichen Artikel [im Abschnitt „Wiki“ des Entwicklerportal-Repositorys auf GitHub][2].
+
+### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>Kann ich über mehrere Entwicklerportale in einem API Management-Dienst verfügen?
+
+Sie können über ein verwaltetes Portal und mehrere selbstgehostete Portale verfügen. Der Inhalt aller Portale wird in demselben API Management-Dienst gespeichert, sodass die Portale identisch sind. Wenn das Aussehen und die Funktionalität der einzelnen Portale unterschiedlich sein soll, können Sie diese eigenständig mit Ihren benutzerdefinierten Widgets hosten, die Seiten zur Runtime dynamisch anpassen, beispielsweise basierend auf der URL.
+
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Unterstützt das Portal Azure Resource Manager-Vorlagen und/oder ist es mit dem API Management DevOps Resource Kit kompatibel?
+
+Nein.
+
+### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Wird der Inhalt des Portals mit der Sicherungs-/Wiederherstellungsfunktion in API Management gespeichert?
 
 Nein.
 

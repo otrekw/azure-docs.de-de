@@ -1,29 +1,32 @@
 ---
-title: Unterstützte Kartenstile | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie mehr über die verschiedenen Kartenrenderingstile, die von Microsoft Azure Maps unterstützt werden.
-author: philmea
-ms.author: philmea
-ms.date: 05/06/2019
+title: Unterstützte integrierte Azure Maps-Kartenstile
+description: In diesem Artikel erfahren Sie mehr über die verschiedenen integrierten Kartenstile, die von Microsoft Azure Maps unterstützt werden.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+manager: philmea
+ms.openlocfilehash: b9641fe647eebae020ee67ee19a9cc131a487a7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286884"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
+# <a name="azure-maps-supported-built-in-map-styles"></a>In Azure Maps unterstützte integrierte Kartenstile
+
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
 
 ## <a name="road"></a>Straße
-Der Kartenstil **Straße** ist eine Standardkarte, die Straßen, natürliche und künstliche Strukturen zusammen mit den Bezeichnungen für diese Strukturen anzeigt.
+
+Eine **Straßenkarte** ist eine Standardkarte, auf der Straßen angezeigt werden. Außerdem werden natürliche und künstliche Features sowie die Bezeichnungen für diese Features angezeigt.
 
 ![Kartenstil „Straße“](./media/supported-map-styles/road.png)
 
 **Anwendbare APIs:**
+
 * [Kartenbild](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web-SDK-Kartensteuerelement
@@ -32,49 +35,56 @@ Der Kartenstil **Straße** ist eine Standardkarte, die Straßen, natürliche und
 
 ## <a name="blank-and-blank_accessible"></a>„blank“ und „blank_accessible“
 
-Die Kartenstile **blank** und **blank_accessible** stellen einen leeren Zeichenbereich bereit, in dem Daten visualisiert werden können. Der Stil **blank_accessible** wird weiterhin Updates für die Sprachausgabe mit Details zum Standort der Karte bereitstellen, obwohl die Basiskarte nicht angezeigt wird.
+Die Kartenstile **blank** und **blank_accessible** stellen einen leeren Zeichenbereich für die Visualisierung von Daten bereit. Der Stil **blank_accessible** wird weiterhin Updates für die Sprachausgabe mit Details zum Standort der Karte bereitstellen, obwohl die Basiskarte nicht angezeigt wird.
 
 > [!Note]
 > Im Web-SDK können Sie die Hintergrundfarbe der Karte ändern, indem Sie den CSS-Stil `background-color` des DIV-Kartenelements festlegen.
 
 **Anwendbare APIs:**
+
 * Web-SDK-Kartensteuerelement
 
-## <a name="satellite"></a>Satellit 
+## <a name="satellite"></a>Satellit
+
 Der Kartenstil **Satellit** ist eine Kombination aus Satellitenbildern und Luftaufnahmen.
 
 ![Kartenstil „Satellitenkachel“](./media/supported-map-styles/satellite.png)
 
 **Anwendbare APIs:**
+
 * [Satellitenkachel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
 * Power BI-Visualisierung
 
 ## <a name="satellite_road_labels"></a>Satellite_Road_Labels
+
 Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen Satellitenbilder und Luftaufnahmen überlagern.
 
 ![Kartenstil „satellite_road_labels“](./media/supported-map-styles/satellite-road-labels.png)
 
 **Anwendbare APIs:**
+
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
 * Power BI-Visualisierung
 
 ## <a name="grayscale_dark"></a>grayscale_dark
+
 **grayscale_dark** ist eine dunkle Version des Kartenstils „Straße“.
 
 ![Kartenstil „gray_scale“](./media/supported-map-styles/grayscale-dark.png)
 
 **Anwendbare APIs:**
+
 * [Kartenbild](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web-SDK-Kartensteuerelement 
+* Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
 * Power BI-Visualisierung
 
-
 ## <a name="grayscale_light"></a>grayscale_light
+
 **grayscale_light** ist eine helle Version des Stils „Straßenkarte“.
 
 ![Kartenstil „grayscale_light“](./media/supported-map-styles/grayscale-light.png)
@@ -84,23 +94,26 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 * Android-Kartensteuerelement
 * Power BI-Visualisierung
 
-
 ## <a name="night"></a>Nacht
+
 **Nacht** ist eine dunkle Version des Kartenstils „Straße“ mit farbigen Straßen und Symbolen.
 
 ![Kartenstil „Nacht“](./media/supported-map-styles/night.png)
 
 **Anwendbare APIs:**
+
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
 * Power BI-Visualisierung
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
+
 **road shaded relief** (Relief mit schattierten Straßen) ist eine Azure Maps-Hauptformatvorlage mit Konturen der Erde.
 
 ![Kartenstil „Schattiertes Relief“](./media/supported-map-styles/shaded-relief.png)
 
 **Anwendbare APIs:**
+
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
@@ -113,6 +126,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 ![Dunkler Kartenstil mit starkem Kontrast](./media/supported-map-styles/high-contrast-dark.png)
 
 **Anwendbare APIs:**
+
 * Web-SDK-Kartensteuerelement
 * Power BI-Visualisierung
 

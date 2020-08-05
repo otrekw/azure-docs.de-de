@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383079"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289026"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Containern für den Speech-Dienst
 
@@ -49,7 +49,7 @@ Schließlich können Sie mit der `DECODER MAX_COUNT`-Variablen die Anzahl der ge
 
 <details>
 <summary>
-<b>Könnten Sie bei der Kapazitätsplanung und Kostenvorkalkulation von lokalen Speech-Containern helfen?</b>
+<b>Könnten Sie bei der Kapazitätsplanung und Kostenvorkalkulation von lokalen Spracherkennungscontainern helfen?</b>
 </summary>
 
 **Antwort:** Für die Containerkapazität im Batchverarbeitungsmodus könnte jeder Decoder 2-3x in Echtzeit mit zwei CPU-Kernen für eine einzelne Erkennung verarbeiten. Es wird nicht empfohlen, mehr als zwei gleichzeitige Erkennungen pro Containerinstanz zu behalten, aber es wird empfohlen, aus Gründen der Zuverlässigkeit/Verfügbarkeit mehr Containerinstanzen hinter einem Lastenausgleich auszuführen.

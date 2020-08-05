@@ -3,26 +3,26 @@ title: Verschlüsseln Ihrer Anwendungsquelle im Ruhezustand
 description: Verschlüsseln Sie Ihre Anwendungsdaten in Azure Storage, und stellen Sie sie als Paketdatei bereit.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408723"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282329"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>Verschlüsselung im Ruhezustand mithilfe von kundenseitig verwalteten Schlüsseln
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Verschlüsseln Ihrer ruhenden Anwendungsdaten mithilfe von kundenseitig verwalteten Schlüsseln
 
 Zum Verschlüsseln der Anwendungsdaten Ihrer Funktions-App im Ruhezustand sind ein Azure Storage-Konto und eine Azure Key Vault-Instanz erforderlich. Diese Dienste werden verwendet, wenn Sie die App aus einem Bereitstellungspaket ausführen.
 
-  - [Azure Storage ermöglicht die Verschlüsselung ruhender Daten](../storage/common/storage-service-encryption.md). Sie können vom System bereitgestellte Schlüssel oder eigene, kundenseitig verwaltete Schlüssel verwenden. Dort werden Ihre Anwendungsdaten gespeichert, wenn sie nicht in einer Funktions-App in Azure ausgeführt werden.
-  - [Ausführung aus einem Bereitstellungspaket] ((run-functions-from-deployment-package.md) ist ein Bereitstellungsfeature von App Service. Es ermöglicht Ihnen, Ihre Websiteinhalte mithilfe einer SAS-URL (Shared Access Signature) über ein Azure Storage-Konto bereitzustellen.
+  - [Azure Storage ermöglicht die Verschlüsselung ruhender Daten](../storage/common/storage-service-encryption.md). Sie können vom System bereitgestellte Schlüssel oder eigene, vom Kunden verwaltete Schlüssel verwenden. Dort werden Ihre Anwendungsdaten gespeichert, wenn sie nicht in einer Funktions-App in Azure ausgeführt werden.
+  - Das [Ausführen aus einem Bereitstellungspaket](run-functions-from-deployment-package.md) ist eine Bereitstellungsfunktion von App Service. Sie ermöglicht Ihnen, Ihre Websiteinhalte mithilfe einer SAS-URL (Shared Access Signature) über ein Azure Storage-Konto bereitzustellen.
   - [Key Vault-Verweise](../app-service/app-service-key-vault-references.md) sind ein Sicherheitsfeature von App Service. Es ermöglicht Ihnen, Geheimnisse zur Laufzeit als Anwendungseinstellungen zu importieren. Verwenden Sie dies zum Verschlüsseln der SAS-URL Ihres Azure Storage-Kontos.
 
 ## <a name="set-up-encryption-at-rest"></a>Einrichten der Verschlüsselung ruhender Daten
 
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-[Erstellen Sie zunächst ein Azure Storage-Konto](../storage/common/storage-account-create.md), und [verschlüsseln Sie es mit kundenseitig verwalteten Schlüsseln](../storage/common/encryption-customer-managed-keys.md). Nachdem das Konto erstellt wurde, laden Sie die Paketdateien mit dem [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) hoch.
+[Erstellen Sie zunächst ein Azure Storage-Konto](../storage/common/storage-account-create.md), und [verschlüsseln Sie es mit kundenseitig verwalteten Schlüsseln](../storage/common/encryption-customer-managed-keys.md). Sobald das Konto erstellt ist, laden Sie mit dem [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) die Paketdateien hoch.
 
 Verwenden Sie als nächstes den Storage-Explorer, um [eine SAS zu generieren](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer). 
 
@@ -91,7 +91,7 @@ Sie sollten den SAS-Schlüssel Ihres Speicherkontos regelmäßig rotieren. Um si
 
 Es gibt zwei Methoden, den Zugriff der Funktions-App auf das Speicherkonto zu widerrufen. 
 
-### <a name="rotate-the-sas-key-for-the-azure-storage-account"></a>Rotieren des SAS-Schlüssels für das Azure Storage-Konto
+### <a name="rotate-the-sas-key-for-the-azure-storage-account"></a>Rotieren des SAS-Schlüssels für das Azure-Speicherkonto
 
 Wenn der SAS-Schlüssel für das Speicherkonto rotiert wird, kann die Funktions-App nicht mehr auf das Speicherkonto zugreifen, wird jedoch weiterhin mit der zuletzt heruntergeladenen Version der Paketdatei ausgeführt. Starten Sie die Funktions-App neu, um die zuletzt heruntergeladene Version zu löschen.
 

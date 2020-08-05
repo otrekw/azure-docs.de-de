@@ -1,23 +1,32 @@
 ---
-title: Erste Schritte mit dem Web-Kartensteuerelement | Microsoft Azure Maps
-description: Erfahren Sie, wie Sie mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements von Microsoft Azure Maps Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern können.
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: Erste Schritte mit dem Web-Kartensteuerelement in Microsoft Azure Maps
+description: Hier erfahren Sie, wie Sie mit der clientseitigen JavaScript-Bibliothek des Web-Kartensteuerelements von Microsoft Azure Maps Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern können.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+manager: philmea
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335247"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287069"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
 Mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements können Sie Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Zur Verwendung des Kartensteuerelements auf einer Webseite müssen Sie eine der folgenden Voraussetzungen erfüllen:
+
+* [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account) und [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
+
+* Abrufen Ihrer Azure Active Directory-Anmeldeinformationen (AAD) mit [Authentifizierungsoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Erstellen einer neuen Karte auf einer Webseite
 
@@ -36,19 +45,18 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
 
     * Laden Sie den Quellcode des Azure Maps Web SDK lokal mithilfe des NPM-Pakets [azure-maps-control](https://www.npmjs.com/package/azure-maps-control), und hosten Sie es mit Ihrer App. Dieses Paket enthält außerdem TypeScript-Definitionen.
 
-        > **npm install azure-maps-control**
+    > **npm install azure-maps-control**
 
-       Fügen Sie dann dem `<head>`-Element der Datei Verweise auf das Azure Maps-Stylesheet und die Skriptquelle hinzu:
+    Fügen Sie dem `<head>`-Element der Datei Verweise auf das Azure Maps-Stylesheet hinzu:
 
-        ```HTML
-        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-        ```
+    ```HTML
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+     ```
 
-    > [!Note]
+    > [!NOTE]
     > Sie können TypeScript-Definitionen in Ihre Anwendung importieren, indem Sie den folgenden Code hinzufügen:
     >
-    > ```Javascript
+    > ```javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
@@ -70,54 +78,59 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
 4. Fügen Sie im Seitenbereich ein `<div>`-Element hinzu, und geben Sie ihm die `id`**myMap**.
 
    ```HTML
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
     </body>
    ```
 
-5. Definieren Sie zum Initialisieren des Kartensteuerelements ein neues Skripttag im HTML-Text. Übergeben Sie beim Erstellen einer Instanz der `Map`-Klasse die `id` der Karte `<div>` oder ein `HTMLElement` (z.B. `document.getElementById('myMap')`) als ersten Parameter. Verwenden Sie Ihren eigenen Azure Maps-Kontoschlüssel oder Ihre Azure Active Directory-Anmeldeinformationen (AAD), um die Karte mithilfe der [Authentifizierungsoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions) zu authentifizieren. 
+5. Dann wird das Kartensteuerelement initialisiert. Zur Authentifizierung des Steuerelements müssen Sie entweder Besitzer eines Azure Maps-Abonnementschlüssels sein oder Azure Active Directory-Anmeldeinformationen (AAD) mit [Authentifizierungsoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions) nutzen.
 
-   Wenn Sie ein Konto erstellen oder Ihren Schlüssel suchen müssen, befolgen Sie die Anweisungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps) und [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+    Wenn Sie einen Abonnementschlüssel für die Authentifizierung nutzen, kopieren Sie das folgende Skriptelement und fügen Sie es innerhalb des `<head>`-Elements und unterhalb des ersten `<script>`-Elements ein. Ersetzen Sie `<Your Azure Maps Key>` durch Ihren primären Abonnementschlüssel für Azure Maps.
 
-   Die Option**language** gibt die Sprache an, die für Kartenbeschriftungen und Steuerelemente verwendet werden soll. Weitere Informationen zu unterstützten Sprachen finden Sie unter [Unterstützte Sprachen](supported-languages.md). Wenn Sie einen Abonnementschlüssel für die Authentifizierung nutzen, verwenden Sie folgenden Code:
-
-   ```HTML
+     ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'subscriptionKey',
-                subscriptionKey: '<Your Azure Maps Key>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
             }
         });
     </script>
     ```
 
-   Falls Sie Azure Active Directory (AAD) für die Authentifizierung nutzen, verwenden Sie folgenden Code:
+    Wenn Sie Azure Active Directory (AAD) für die Authentifizierung verwenden, kopieren Sie das folgende Skriptelement, und fügen Sie es innerhalb des `<head>`-Elements und unterhalb des ersten `<script>`-Elements ein.
 
-   ```HTML
+      ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'aad',
-                clientId: '<Your AAD Client Id>',
-                aadAppId: '<Your AAD App Id>',
-                aadTenant: '<Your AAD Tenant Id>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'aad',
+                    clientId: '<Your AAD Client Id>',
+                    aadAppId: '<Your AAD App Id>',
+                    aadTenant: '<Your AAD Tenant Id>'
+                }
             }
         });
     </script>
    ```
 
-   Eine Liste mit Beispielen zur Integration von Azure Active Directory (AAD) in Azure Maps finden Sie [hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
-    
-   Weitere Informationen finden Sie im Dokument [Authentifizierung mit Azure Maps](azure-maps-authentication.md) sowie in den [Azure Maps-Beispielen für die Azure AD-Authentifizierung](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
+    Weitere Informationen zur Authentifizierung mit Azure Maps finden Sie im Dokument [Authentifizierung mit Azure Maps](azure-maps-authentication.md). Eine Liste mit Beispielen zur Integration von Azure Active Directory (AAD) mit Azure Maps finden Sie außerdem [hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
 
-6. Es kann sinnvoll sein, dem Kopf der Seite die folgenden optionalen Metatagelemente hinzuzufügen:
+    >[!TIP]
+    >In diesem Beispiel wurde der Wert `id` der Karte `<div>` übergeben. Eine andere Möglichkeit, dies zu tun, ist es, das `HTMLElement`-Objekt zu übergeben, indem `document.getElementById('myMap')` als erster Parameter übergeben wird.
+
+6. Optional können Sie dem `head`-Element auf dieser Seite auch die folgenden `meta`-Elemente hinzufügen:
 
    ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -127,7 +140,7 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    ```
 
-7. Im Ergebnis sollte Ihre HTML-Datei ungefähr wie der folgende Code aussehen:
+7. Im Ergebnis sollte Ihre HTML-Datei ungefähr wie der folgende Markup-Code aussehen:
 
    ```HTML
     <!DOCTYPE html>
@@ -147,6 +160,23 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
+
+        <script type="text/javascript">
+            //Create an instance of the map control and set some options.
+            function InitMap()
+            {
+                var map = new atlas.Map('myMap', {
+                    center: [-122.33, 47.6],
+                    zoom: 12,
+                    language: 'en-US',
+                    authOptions: {
+                        authType: 'subscriptionKey',
+                        subscriptionKey: '<Your Azure Maps Key>'
+                    }
+                });
+            }
+        </script>
+
         <style>
             html, body {
                 margin: 0;
@@ -158,21 +188,8 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
             }
         </style>
     </head>
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
-
-        <script type="text/javascript">
-            //Create an instance of the map control and set some options.
-            var map = new atlas.Map('myMap', {
-                center: [-122.33, 47.6],
-                zoom: 12,
-                language: 'en-US',
-                authOptions: {
-                    authType: 'subscriptionKey',
-                    subscriptionKey: '<Your Azure Maps Key>'
-                }
-            });
-        </script>
     </body>
     </html>
     ```
@@ -206,8 +223,8 @@ map = new atlas.Map('myMap', {
 });
 ```
 
-> [!Note]
-> Mit dem Web SDK ist es möglich, mehrere Karteninstanzen auf derselben Seite mit unterschiedlichen Sprach- und Regionseinstellungen zu laden. Darüber hinaus können diese Einstellungen mithilfe der Kartenfunktion `setStyle` aktualisiert werden, nachdem die Karte geladen wurde. 
+> [!NOTE]
+> Es ist möglich, auf der gleichen Seite mehrere Karteninstanzen mit unterschiedlichen Sprach- und Regionseinstellungen zu laden. Darüber hinaus können diese Einstellungen mithilfe der Kartenfunktion `setStyle` aktualisiert werden, nachdem die Karte geladen wurde.
 
 Hier ist ein Beispiel für Azure Maps, bei dem die Sprache auf „fr-FR“ und die regionale Ansicht auf „Auto“ festgelegt wurde.
 
@@ -219,7 +236,7 @@ Eine vollständige Liste der unterstützten Sprachen und regionalen Ansichten is
 
 Das Azure Maps Web SDK unterstützt die Azure Government-Cloud. Alle JavaScript- und CSS-URLs, die für den Zugriff auf das Azure Maps Web SDK verwendet werden, bleiben unverändert. Die folgenden Aufgaben müssen ausgeführt werden, um eine Verbindung mit der Azure Government-Cloudversion der Azure Maps-Plattform herzustellen.
 
-Wenn Sie das interaktive Kartensteuerelement verwenden, fügen Sie die folgende Codezeile hinzu, bevor Sie eine Instanz der `Map`-Klasse erstellen. 
+Wenn Sie das interaktive Kartensteuerelement verwenden, fügen Sie die folgende Codezeile hinzu, bevor Sie eine Instanz der `Map`-Klasse erstellen.
 
 ```javascript
 atlas.setDomain('atlas.azure.us');

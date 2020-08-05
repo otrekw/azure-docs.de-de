@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
-ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75497862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292828"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 
@@ -84,7 +84,7 @@ Nachdem Sie ein Failover zu Azure ausgeführt haben, schützen Sie Azure-VMs wie
 10. In den folgenden Szenarios ist kein Failback möglich:
     - Sie verwenden entweder die kostenlose Edition von ESXi 5.5 oder die kostenlose Edition von vSphere 6 Hypervisor. Führen Sie ein Upgrade auf eine andere Version durch.
     - Sie verfügen über einen physischen Windows Server 2008 R2 SP1-Server.
-    - Virtuelle Computer, die [migriert wurden](migrate-overview.md#what-do-we-mean-by-migration).
+    - Virtuelle Computer, die migriert wurden.
     - Ein virtueller Computer wurde in eine andere Ressourcengruppe verschoben.
     - Ein Replikat des virtuellen Azure-Computers wurde gelöscht.
     - Ein Replikat des virtuellen Azure-Computers ist nicht geschützt (und wird im lokalen Standort repliziert).

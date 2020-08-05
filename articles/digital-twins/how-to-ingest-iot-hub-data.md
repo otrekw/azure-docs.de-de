@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725850"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131564"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins
 
@@ -42,7 +42,7 @@ Dieses Szenario ist nachstehend in einem Diagramm dargestellt:
 
 Bevor Sie mit diesem Beispiel fortfahren, müssen Sie die folgenden Voraussetzungen erfüllen.
 1. Erstellen Sie einen IoT Hub. Anweisungen finden Sie im Abschnitt *Erstellen eines IoT-Hubs* in [diesem IoT Hub-Schnellstart](../iot-hub/quickstart-send-telemetry-cli.md).
-2. Erstellen Sie mindestens eine Azure-Funktion, um Ereignisse aus IoT Hub zu verarbeiten. Weitere Informationen finden Sie unter [Vorgehensweise: Einrichten einer Azure-Funktion zum Verarbeiten von Daten](how-to-create-azure-function.md). Dort wird das Erstellen einer grundlegenden Azure-Funktion erläutert, die eine Verbindung mit Azure Digital Twins herstellen und API-Funktionen von Azure Digital Twins aufrufen kann. Der Rest dieser Schrittanleitung baut auf dieser Funktion auf.
+2. Erstellen Sie mindestens eine Azure-Funktion, um Ereignisse aus IoT Hub zu verarbeiten. Weitere Informationen finden Sie unter [*Vorgehensweise: Einrichten einer Azure-Funktion zum Verarbeiten von Daten*](how-to-create-azure-function.md). Dort wird das Erstellen einer grundlegenden Azure-Funktion erläutert, die eine Verbindung mit Azure Digital Twins herstellen und API-Funktionen von Azure Digital Twins aufrufen kann. Der Rest dieser Schrittanleitung baut auf dieser Funktion auf.
 3. Richten Sie ein Ereignisziel für Hubdaten ein. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer IoT Hub-Instanz. Erstellen Sie unter *Ereignisse* ein Abonnement für Ihre Azure-Funktion. 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure-Portal: Hinzufügen eines Ereignisabonnements":::
@@ -55,7 +55,7 @@ Bevor Sie mit diesem Beispiel fortfahren, müssen Sie die folgenden Voraussetzun
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>Erstellen einer Azure-Funktion in Visual Studio
 
-In diesem Abschnitt werden die gleichen Startschritte in Visual Studio und das Azure-Funktionsgerüst verwendet wie in [Vorgehensweise: Einrichten einer Azure-Funktion zum Verarbeiten von Daten](how-to-create-azure-function.md). Das Gerüst übernimmt die Authentifizierung und erstellt einen Dienstclient, der zum Verarbeiten von Daten und zum Aufrufen von Azure Digital Twins-APIs als Antwort bereit ist. 
+In diesem Abschnitt werden die gleichen Startschritte in Visual Studio und das Azure-Funktionsgerüst verwendet wie in [*Vorgehensweise: von Azure Functions-Apps für die Verarbeitung von Daten*](how-to-create-azure-function.md). Das Gerüst übernimmt die Authentifizierung und erstellt einen Dienstclient, der zum Verarbeiten von Daten und zum Aufrufen von Azure Digital Twins-APIs als Antwort bereit ist. 
 
 Das Kernstück des Funktionsgerüsts ist:
 
@@ -268,9 +268,9 @@ Nun verfügen Sie über eine Azure-Funktion, die zum Lesen und Interpretieren de
 
 ## <a name="debug-azure-function-apps-locally"></a>Lokales Debuggen von Azure-Funktions-Apps
 
-Es ist möglich, Azure-Funktionen lokal mit einem Event Grid-Trigger zu debuggen. Weitere Informationen hierzu finden Sie unter [Lokales Debuggen des Event Grid-Triggers](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Es ist möglich, Azure-Funktionen lokal mit einem Event Grid-Trigger zu debuggen. Weitere Informationen hierzu finden Sie unter [*Lokales Debuggen des Event Grid-Triggers*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über eingehende und ausgehende Daten mit Azure Digital Twins:
-* [Konzepte: Integration in andere Dienste](concepts-integration.md)
+* [*Konzepte: Integration in andere Dienste*](concepts-integration.md)

@@ -4,15 +4,15 @@ description: AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden könne
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289235"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -111,7 +111,7 @@ Nachdem Sie überprüft haben, ob Ihrer Benutzeridentität die notwendige Berech
 azcopy login
 ```
 
-Wenn Sie mehr als einer Organisation angehören, dann sollten Sie die Mandanten-ID der Organisation angeben, zu der das Speicherkonto gehört.
+Wenn Sie einen Fehler angezeigt bekommen, fügen Sie die Mandanten-ID der Organisation ein, zu der das Speicherkonto gehört.
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>

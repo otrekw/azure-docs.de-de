@@ -1,25 +1,21 @@
 ---
-title: Übermitteln von Inhalten an Kunden | Microsoft-Dokumentation
+title: Bereitstellen von Inhalten für Kunden
 description: Dieses Thema bietet eine Übersicht darüber, was zur Bereitstellung von Inhalten mit Azure Media Services erforderlich ist.
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956592"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060365"
 ---
 # <a name="deliver-content-to-customers"></a>Übermitteln von Inhalten an Kunden
 Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden möchten Sie qualitativ hochwertige Videos unter verschiedenen Netzwerkbedingungen an unterschiedliche Geräte senden.
@@ -55,7 +51,7 @@ Mit Media Services können Sie Filter für Ihre Medienobjekte definieren. Diese 
 
 Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](media-services-dynamic-manifest-overview.md).
 
-## <a name="locators"></a><a id="locators"/>Locators
+## <a name="locators"></a><a name="locators"></a>Locators
 Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts angeben zu können, müssen Sie zunächst das Medienobjekt veröffentlichen, indem Sie einen Locator erstellen. Ein Locator bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Media Services unterstützt zwei Arten von Locatorobjekten:
 
 * OnDemandOrigin-Locator. Diese werden zum Streamen von Medien (z.B. MPEG-DASH, HLS oder Smooth Streaming) und zum progressiven Download von Dateien verwendet.
@@ -70,9 +66,9 @@ Locator verfügen über ein Ablaufdatum. Im Azure-Portal wird ein Ablaufdatum vo
 > 
 > 
 
-Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- oder [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
+Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](/rest/api/media/operations/locator#update_a_locator)- oder [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
 
-Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Mit den Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM) können Sie einzelnen Benutzern verschiedene Zugriffsrechte erteilen. Weitere Informationen finden Sie unter [Sichern von Medien](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Mit den Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM) können Sie einzelnen Benutzern verschiedene Zugriffsrechte erteilen. Weitere Informationen finden Sie unter [Sichern von Medien](/previous-versions/azure/dn282272(v=azure.100)).
 
 Beim Erstellen eines Locators tritt möglicherweise eine Verzögerung von 30 Sekunden auf, die durch die erforderlichen Speicher- und Weitergabeprozesse in Azure Storage verursacht wird.
 
@@ -87,7 +83,7 @@ Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOr
 
 Sie können nur über TLS streamen, wenn der Streamingendpunkt, von dem aus Sie Ihre Inhalte übermitteln, nach dem 10. September 2014 erstellt wurde. Wenn die Streaming-URLs auf Streamingendpunkten basieren, die nach dem 10. September 2014 erstellt wurden, enthält die URL „streaming.mediaservices.windows.net“. Streaming-URLs, die „origin.mediaservices.windows.net“ (das alte Format) enthalten, unterstützen kein TLS. Wenn die URL im alten Format vorliegt und Sie über TLS streamen möchten, erstellen Sie einen neuen Streamingendpunkt. Verwenden Sie die URLs, die auf dem neuen Streamingendpunkt basieren, um Ihre Inhalte über TLS zu streamen.
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>Streaming-URL-Formate
+## <a name="streaming-url-formats"></a><a name="URLs"></a>Streaming-URL-Formate
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH-Format
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=mpd-time-csf)
@@ -192,4 +188,3 @@ Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die 
 
 ## <a name="related-topics"></a>Verwandte Themen
 [Aktualisieren von Media Services nach dem Austausch der Speicherschlüssel](media-services-roll-storage-access-keys.md)
-

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851305"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289042"
 ---
 # <a name="add-interaction-rules"></a>Hinzufügen von Interaktionsregeln
 
-In diesem Artikel erfahren Sie mehr über *Interaktionsregeln*. Mit diesen zusätzlichen Regeln lassen sich spezifischere oder komplexere Situationen behandeln. Sie können Ihre eigenen benutzerdefinierten Interaktionsregeln erstellen, in diesem Artikel verwenden Sie jedoch Interaktionsregeln für die folgenden Zielszenarien:
+In diesem Artikel erfahren Sie mehr über **Interaktionsregeln**. Dies sind zusätzliche Regeln für den Umgang mit spezifischeren oder komplexeren Situationen. Es steht Ihnen zwar frei, Ihre eigenen benutzerdefinierten Interaktionsregeln zu erstellen, in diesem Artikel verwenden Sie jedoch Interaktionsregeln für die folgenden Zielszenarien:
 
 * Bestätigen von Befehlen
 * Hinzufügen einer einstufigen Korrektur zu Befehlen
@@ -30,8 +30,8 @@ Weitere Informationen zu Interaktionsregeln finden Sie im Abschnitt [Referenzen]
 
 Sie müssen die Schritte in den folgenden Artikeln durchgeführt haben:
 > [!div class="checklist"]
-> * [Erstellen einer Anwendung mit einfachen Befehlen](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [Hinzufügen von Parametern zu Befehlen](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [Vorgehensweise: Erstellen einer Anwendung mit einfachen Befehlen](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [Vorgehensweise: Hinzufügen von Parametern zu Befehlen](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>Hinzufügen von Bestätigungen zu einem Befehl
 
@@ -40,7 +40,7 @@ Verwenden Sie den Befehl **SetTemperature**, um eine Bestätigung hinzuzufügen.
 1. Wählen Sie im linken Bereich den Befehl **SetTemperature** aus.
 1. Fügen Sie Interaktionsregeln hinzu, indem Sie im mittleren Bereich **Hinzufügen** auswählen. Wählen Sie dann **Interaktionsregeln** > **Befehl bestätigen** aus.
 
-    Durch diese Aktion werden drei Interaktionsregeln hinzugefügt. Diese Regel fordert den Benutzer dazu auf, das Datum und die Uhrzeit des Alarms zu bestätigen, und erwartet im nächsten Durchgang eine Bestätigung (ja/nein).
+    Durch diese Aktion werden drei Interaktionsregeln hinzugefügt. Diese Regeln fordern den Benutzer dazu auf, das Datum und die Uhrzeit des Alarms zu bestätigen, und im nächsten Durchgang wird eine Bestätigung (Ja/Nein) erwartet.
 
     1. Ändern Sie die Interaktionsregel **Befehl bestätigen** gemäß der folgenden Konfiguration:
         1. Benennen Sie **Name** in **Temperatur bestätigen** um.
@@ -75,14 +75,14 @@ Verwenden Sie den Befehl **SetTemperature**, um eine Bestätigung hinzuzufügen.
 
 Wählen Sie **Trainieren** aus, warten Sie auf den Abschluss des Trainings, und wählen Sie dann **Testen** aus.
 
-- **Eingabe**: Temperatur auf 27 Grad einstellen
-- **Ausgabe**: OK 27?
-- **Eingabe**: Nein.
+- **Eingabe**: Stelle die Temperatur auf 80 Grad ein.
+- **Ausgabe**: Sind Sie sicher, dass Sie die Temperatur auf 80 Grad einstellen möchten?
+- **Eingabe**: Nein
 - **Ausgabe**: Kein Problem. Welche Temperatur dann?
-- **Eingabe**: 28 Grad
-- **Ausgabe**: OK 28?
-- **Eingabe**: Ja.
-- **Ausgabe**: OK, stelle die Temperatur auf 28 Grad ein.
+- **Eingabe**: 72 Grad
+- **Ausgabe**: Sind Sie sicher, dass Sie die Temperatur auf 72 Grad einstellen möchten?
+- **Eingabe**: Ja
+- **Ausgabe**: OK, die Temperatur wird auf 83 Grad eingestellt.
 
 
 ## <a name="implement-corrections-in-a-command"></a>Implementieren von Korrekturen in einem Befehl

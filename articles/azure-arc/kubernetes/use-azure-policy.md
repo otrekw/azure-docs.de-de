@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Verwenden von Azure Policy zum Anwenden skalierbarer Clusterkonfigurationen
 keywords: Kubernetes, Arc, Azure, K8s, Container
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050042"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Verwenden von Azure Policy zum Anwenden von skalierbaren Clusterkonfigurationen (Vorschauversion)
 
@@ -22,6 +22,10 @@ ms.locfileid: "86111268"
 Verwenden Sie Azure Policy, um zu erzwingen, dass auf jede `Microsoft.Kubernetes/connectedclusters`-Ressource oder Git-Ops-fähige `Microsoft.ContainerService/managedClusters`-Ressource bestimmte `Microsoft.KubernetesConfiguration/sourceControlConfigurations` angewendet werden. Um Azure Policy zu verwenden, wählen Sie eine vorhandene Richtliniendefinition aus, und erstellen Sie eine Richtlinienzuweisung. Beim Erstellen der Richtlinienzuweisung legen Sie den Bereich für die Zuweisung fest: Hierbei handelt es sich um eine Azure-Ressourcengruppe oder ein Azure-Abonnement. Außerdem legen Sie die Parameter für die `sourceControlConfiguration` fest, die erstellt wird. Nachdem die Zuweisung erstellt wurde, identifiziert das Richtlinienmodul alle `connectedCluster`- oder `managedCluster`-Ressourcen, die sich innerhalb des Bereichs befinden, und wendet die `sourceControlConfiguration` jeweils auf diese an.
 
 Wenn Sie mehrere Git-Repositorys als autoritative Quellen für jeden Cluster verwenden (z. B. ein Repository für den zentralen IT-/Clusteroperator und andere Repositorys für Anwendungsteams), können Sie dies mithilfe mehrerer Richtlinienzuweisungen aktivieren, wobei jede Richtlinienzuweisung für die Verwendung eines anderen Git-Repositorys konfiguriert ist.
+
+## <a name="prerequisite"></a>Voraussetzung
+
+Stellen Sie sicher, dass Sie über Berechtigungen für `Microsoft.Authorization/policyAssignments/write` für den Reservierungsumfang (Abonnement oder Ressourcengruppe) verfügen, in dem Sie diese Richtlinienzuweisung erstellen möchten.
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 
@@ -42,7 +46,7 @@ Nachdem die Richtlinienzuweisung erstellt wurde, wird für jede neue `connectedC
 
 ## <a name="verify-a-policy-assignment"></a>Überprüfen einer Richtlinienzuweisung
 
-1. Navigieren Sie im Azure-Portal zu einer der `connectedCluster`-Ressourcen, und wählen Sie im Abschnitt **Einstellungen** auf der Randleiste **Richtlinien** aus. (Die Benutzeroberfläche für den verwalteten AKS-Cluster ist noch nicht implementiert.)
+1. Navigieren Sie im Azure-Portal zu einer der `connectedCluster`-Ressourcen, und wählen Sie im Abschnitt **Einstellungen** auf der Randleiste **Richtlinien** aus. (Die Benutzeroberfläche für den AKS-Cluster ist noch nicht implementiert.)
 2. In der Liste sollte die oben erstellte Richtlinienzuweisung angezeigt werden, und der **Konformitätszustand** sollte *Konform* lauten.
 3. Wählen Sie im Abschnitt **Einstellungen** auf der Randleiste **Konfigurationen** aus.
 4. In der Liste sollte die `sourceControlConfiguration` angezeigt werden, die von der Richtlinienzuweisung erstellt wurde.

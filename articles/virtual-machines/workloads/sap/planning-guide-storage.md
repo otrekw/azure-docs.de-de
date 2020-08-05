@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042310"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -32,11 +32,11 @@ Anmerkung zu den in diesem Artikel verwendeten Einheiten: Die Anbieter von öffe
 
 Bei der Microsoft Azure-Speicherung von HDD Standard, SSD Standard, Azure Storage Premium und Disk Ultra werden die Basis-VHD (mit dem Betriebssystem) und die an VMs angefügten Datenträger oder Daten-VHDs in drei Kopien in drei verschiedenen Speicherknoten aufbewahrt. Das Failover zu einem anderen Replikat und das Seeding eines neuen Replikats bei einem Ausfall eines Speicherknotens erfolgt transparent. Aufgrund dieser Redundanz ist es **NICHT** erforderlich, eine Speicherredundanzschicht für mehrere Azure-Datenträger zu verwenden. Das wird als „lokaler redundanter Speicher „ (LRS) bezeichnet. LRS ist die Standardeinstellung für diese Azure-Speichertypen. [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) bietet ausreichend Redundanz, um die gleichen SLAs wie bei anderen nativen Azure-Speichern zu erreichen.
 
-Es gibt mehrere weitere Redundanzmethoden, die im Artikel [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) beschrieben werden und für einige der verschiedenen Speichertypen von Azure gelten. 
+Es gibt mehrere weitere Redundanzmethoden, die im Artikel [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) beschrieben werden und für einige der verschiedenen Speichertypen von Azure gelten. 
 
 ### <a name="azure-managed-disks"></a>Verwaltete Azure-Datenträger
 
-Bei verwalteten Datenträgern handelt es sich um einen Ressourcentyp in Azure Resource Manager, der anstelle von in Azure Storage-Konten gespeicherten VHDs verwendet werden kann. Verwaltete Datenträger können automatisch an die [Verfügbarkeitsgruppe][virtual-machines-manage-availability] des virtuellen Computers, mit dem sie verbunden sind, angepasst werden und erhöhen daher die Verfügbarkeit des virtuellen Computers sowie der Dienste, die auf dem virtuellen Computer ausgeführt werden. Weitere Informationen finden Sie [in diesem allgemeinen Artikel](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
+Bei verwalteten Datenträgern handelt es sich um einen Ressourcentyp in Azure Resource Manager, der anstelle von in Azure Storage-Konten gespeicherten VHDs verwendet werden kann. Verwaltete Datenträger können automatisch an die [Verfügbarkeitsgruppe][virtual-machines-manage-availability] des virtuellen Computers, mit dem sie verbunden sind, angepasst werden und erhöhen daher die Verfügbarkeit des virtuellen Computers sowie der Dienste, die auf dem virtuellen Computer ausgeführt werden. Weitere Informationen finden Sie [in diesem allgemeinen Artikel](../../windows/managed-disks-overview.md).
 
 In Bezug auf die Resilienz veranschaulicht folgendes Beispiel den Vorteil von verwalteten Datenträgern:
 
@@ -61,9 +61,9 @@ Persistente Speicherung wird in der SAP-Workload in verschiedenen Komponenten de
 - Dateifreigaben oder freigegebene Datenträger, die das globale Transportverzeichnis für NetWeaver oder S/4HANA enthalten. Der Inhalt dieser Freigaben wird in Software genutzt, die auf mehreren virtuellen Computern ausgeführt wird, oder zum Erstellen von Szenarien mit Hochverfügbarkeits-Failoverclustern.
 - Das Verzeichnis „/sapmnt“ oder allgemeine Dateifreigaben für EDI-Prozesse oder ähnliche Prozesse. Der Inhalt dieser Freigaben wird in Software genutzt, die auf mehreren virtuellen Computern ausgeführt wird, oder zum Erstellen von Szenarien mit Hochverfügbarkeits-Failoverclustern.
 
-In den nächsten Abschnitten werden die verschiedenen Azure-Speichertypen und ihre Verwendbarkeit für SAP-Workloads erläutert, die für die drei oben genannten Szenarien gelten. Eine allgemeine Kategorisierung zur Verwendung der verschiedenen Azure-Speichertypen finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types) Die Empfehlungen für die Verwendung der verschiedenen Azure-Speichertypen für SAP-Workloads unterscheiden sich davon nicht wesentlich.
+In den nächsten Abschnitten werden die verschiedenen Azure-Speichertypen und ihre Verwendbarkeit für SAP-Workloads erläutert, die für die vier oben genannten Szenarios gelten. Eine allgemeine Kategorisierung zur Verwendung der verschiedenen Azure-Speichertypen finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](../../linux/disks-types.md) Die Empfehlungen für die Verwendung der verschiedenen Azure-Speichertypen für SAP-Workloads unterscheiden sich davon nicht wesentlich.
 
-Informationen zu Einschränkungen der Unterstützung für Azure-Speichertypen für SAP NetWeaver und die Anwendungsschicht von S/4HANA finden Sie im [SAP-Supporthinweis 2015553](https://launchpad.support.sap.com/#/notes/2015553). Informationen zur SAP HANA-Zertifizierung und den unterstützten Azure-Speichertypen finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+Informationen zu Einschränkungen der Unterstützung für Azure-Speichertypen für SAP NetWeaver und die Anwendungsschicht von S/4HANA finden Sie im [SAP-Supporthinweis 2015553](https://launchpad.support.sap.com/#/notes/2015553). Informationen zur SAP HANA-Zertifizierung und den unterstützten Azure-Speichertypen finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md).
 
 In den Abschnitten, in denen die verschiedenen Azure-Speichertypen beschrieben werden, erhalten Sie weitere Hintergrundinformationen zu den Einschränkungen und Möglichkeiten der Verwendung der von SAP unterstützten Speicherung. 
 
@@ -84,7 +84,7 @@ Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassun
 | DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nicht unterstützt |
 
 
-<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
+<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
 
 Merkmale der verschiedenen Speichertypen:
 
@@ -101,7 +101,7 @@ Merkmale der verschiedenen Speichertypen:
 | Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein | nein |
 
 
-<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes
+<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes
 
 <sup>2</sup> Kosten hängen von bereitgestellten IOPS und Durchsatz ab.
 
@@ -123,7 +123,7 @@ Azure Storage SSD Premium wurde mit dem Ziel eingeführt, Folgendes bereitzustel
 * SLAs für IOPS und Durchsatz
 * Weniger variierende E/A-Latenz
 
-Dieser Speichertyp ist auf DBMS-Workloads, Speicherdatenverkehr, der eine niedrige Latenz im einstelligen Millisekundenbereich erfordert, und SLAs für IOPS und Durchsatz ausgerichtet. Kostenbasis im Fall von Azure Storage Premium ist nicht das tatsächliche auf diesen Datenträgern gespeicherte Datenvolumen, sondern die Größenkategorie des Datenträgers, unabhängig von der auf dem Datenträger gespeicherten Datenmenge. Sie können auch Datenträger in Storage Premium erstellen, die den im Artikel [SSD Premium](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#premium-ssd) aufgeführten Größenkategorien nicht direkt zugeordnet sind. Aus diesem Artikel ergeben sich folgende Schlussfolgerungen:
+Dieser Speichertyp ist auf DBMS-Workloads, Speicherdatenverkehr, der eine niedrige Latenz im einstelligen Millisekundenbereich erfordert, und SLAs für IOPS und Durchsatz ausgerichtet. Kostenbasis im Fall von Azure Storage Premium ist nicht das tatsächliche auf diesen Datenträgern gespeicherte Datenvolumen, sondern die Größenkategorie des Datenträgers, unabhängig von der auf dem Datenträger gespeicherten Datenmenge. Sie können auch Datenträger in Storage Premium erstellen, die den im Artikel [SSD Premium](../../linux/disks-types.md#premium-ssd) aufgeführten Größenkategorien nicht direkt zugeordnet sind. Aus diesem Artikel ergeben sich folgende Schlussfolgerungen:
 
 - Der Speicher ist in Bereichen organisiert. Datenträger im Kapazitätsbereich von 513 GiB bis 1.024 GiB haben beispielsweise die gleichen Funktionen und die gleichen monatlichen Kosten.
 - Die IOPS pro GiB verteilen sich nicht linear über die Größenkategorien. Kleinere Datenträger unter 32 GiB haben höhere IOPS-Raten pro GiB. Bei Datenträgern über 32 GiB bis 1.024 GiB liegt die IOPS-Rate pro GiB zwischen 4–5 IOPS pro GiB. Bei größeren Datenträgern bis zu 32.767 GiB sinkt die IOPS-Rate pro GiB unter 1.
@@ -137,7 +137,7 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 | Funktion| Comment| Hinweise/Links | 
 | --- | --- | --- | 
 | Basis-VHD für Betriebssystem | geeignet | alle Systeme |
-| Datenträger | geeignet | alle Systeme – [speziell für SAP HANA](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) |
+| Datenträger | geeignet | alle Systeme – [speziell für SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
 | Globales SAP-Transportverzeichnis | YES | [Unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-Verzeichnis „sapmnt“ | geeignet | alle Systeme |
 | Sicherungsspeicher | geeignet | für die kurzfristige Speicherung von Sicherungen |
@@ -146,15 +146,15 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 | Latency | niedrig bis mittel | - |
 | IOPS-SLA | YES | - |
 | IOPS linear zur Kapazität | halblinear in Klammern  | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Maximale Anzahl IOPS pro Datenträger | 20.000, [abhängig von der Größe des Datenträgers](https://azure.microsoft.com/pricing/details/managed-disks/) | Zu berücksichtigen sind auch die [Grenzwerte für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) |
+| Maximale Anzahl IOPS pro Datenträger | 20.000, [abhängig von der Größe des Datenträgers](https://azure.microsoft.com/pricing/details/managed-disks/) | Zu berücksichtigen sind auch die [Grenzwerte für virtuelle Computer](../../linux/sizes.md) |
 | Durchsatz-SLA | YES | - |
 | Durchsatz linear zur Kapazität | halblinear in Klammern | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA-zertifiziert | YES | [speziell für SAP HANA](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) |
+| HANA-zertifiziert | YES | [speziell für SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
 | Datenträger-Momentaufnahmen möglich | YES | - |
-| Azure Backup-VM-Momentaufnahmen möglich | YES | mit Ausnahme von Cachedatenträgern mit [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)  |
+| Azure Backup-VM-Momentaufnahmen möglich | YES | mit Ausnahme von Cachedatenträgern mit [Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md)  |
 | Kosten | MEDIUM | - |
 
-Azure Storage Premium erfüllt nicht die Speicherlatenz-KPIs für SAP HANA mit den gängigen Cachetypen, die mit Azure Storage Premium angeboten werden. Um die Speicherlatenz-KPIs für SAP HANA-Protokollschreibvorgänge zu erfüllen, müssen Sie das im Artikel [Aktivieren der Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) beschriebene Caching der Azure-Schreibbeschleunigung verwenden. Die Azure-Schreibbeschleunigung kommt allen anderen DBMS-Systemen bei den zugehörigen Schreibvorgängen für Transaktionsprotokolle und Wiederholungsprotokolle zugute. Daher wird empfohlen, sie in allen SAP-DBMS-Bereitstellungen zu verwenden. Für SAP HANA ist die Verwendung der Azure-Schreibbeschleunigung in Verbindung mit Azure Storage Premium obligatorisch.
+Azure Storage Premium erfüllt nicht die Speicherlatenz-KPIs für SAP HANA mit den gängigen Cachetypen, die mit Azure Storage Premium angeboten werden. Um die Speicherlatenz-KPIs für SAP HANA-Protokollschreibvorgänge zu erfüllen, müssen Sie das im Artikel [Aktivieren der Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md) beschriebene Caching der Azure-Schreibbeschleunigung verwenden. Die Azure-Schreibbeschleunigung kommt allen anderen DBMS-Systemen bei den zugehörigen Schreibvorgängen für Transaktionsprotokolle und Wiederholungsprotokolle zugute. Daher wird empfohlen, sie in allen SAP-DBMS-Bereitstellungen zu verwenden. Für SAP HANA ist die Verwendung der Azure-Schreibbeschleunigung in Verbindung mit Azure Storage Premium obligatorisch.
 
 
 
@@ -162,7 +162,7 @@ Azure Storage Premium erfüllt nicht die Speicherlatenz-KPIs für SAP HANA mit d
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Azure-Burstfunktionalität für Storage Premium
-Für Azure Premium-Datenträger mit einer Kapazität bis 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
+Für Azure Premium-Datenträger mit einer Kapazität bis 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](../../linux/disk-bursting.md) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
 
 Die idealen Fälle, in denen diese Burstfunktionalität eingeplant werden kann, werden wahrscheinlich die Volumes oder Datenträger sein, die Datendateien für die verschiedenen DBMS enthalten. Die für diese Volumen zu erwartende E/A-Workload, insbesondere bei kleinen bis mittleren Systemen, wird voraussichtlich wie folgt aussehen:
 
@@ -184,8 +184,8 @@ Azure Ultra-Datenträger bieten hohen Durchsatz, hohe IOPS und konsistenten Date
 Beim Erstellen eines Ultra-Datenträgers können Sie drei Dimensionen definieren:
 
 - Die Kapazität des Datenträgers. Die Bereiche liegen zwischen 4 GiB und 65.536 GiB.
-- Bereitgestellte IOPS für den Datenträger. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche Maximalwerte. Weitere Informationen finden Sie unter [Ultra-Datenträger](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-disk).
-- Bereitgestellte Speicherbandbreite. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche maximale Bandbreiten. Weitere Informationen finden Sie unter [Ultra-Datenträger](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-disk).
+- Bereitgestellte IOPS für den Datenträger. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche Maximalwerte. Weitere Informationen finden Sie unter [Ultra-Datenträger](../../linux/disks-types.md#ultra-disk).
+- Bereitgestellte Speicherbandbreite. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche maximale Bandbreiten. Weitere Informationen finden Sie unter [Ultra-Datenträger](../../linux/disks-types.md#ultra-disk).
 
 Die Kosten für einen einzelnen Datenträger werden durch die drei Dimensionen festgelegt, die Sie für die einzelnen Datenträger separat definieren können. 
 
@@ -218,7 +218,7 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 
 
 ## <a name="azure-netapp-files-anf"></a>Azure NetApp Files (ANF)
-[Azure NetApp Files](https://azure.microsoft.com/services/netapp/) ist das Ergebnis einer Kooperation zwischen Microsoft und NetApp mit dem Ziel, hochleistungsfähige native NFS- und SMB-Freigaben in Azure bereitzustellen. Der Schwerpunkt liegt auf der Bereitstellung von Speicher mit hoher Bandbreite und niedriger Latenz, der DBMS-Bereitstellungsszenarien ermöglicht, und der Ermöglichung typischer Betriebsfunktionen des NetApp-Speichers über Azure im Lauf der Zeit. NFS- und SMB-Freigaben werden in drei verschiedenen Dienstebenen angeboten, die sich im Speicherdurchsatz und im Preis unterscheiden. Die Dienstebenen sind im Artikel [Dienstebenen für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) dokumentiert. Für die unterschiedlichen Typen von SAP-Workloads werden die folgenden Dienstebenen dringend empfohlen:
+[Azure NetApp Files](https://azure.microsoft.com/services/netapp/) ist das Ergebnis einer Kooperation zwischen Microsoft und NetApp mit dem Ziel, hochleistungsfähige native NFS- und SMB-Freigaben in Azure bereitzustellen. Der Schwerpunkt liegt auf der Bereitstellung von Speicher mit hoher Bandbreite und niedriger Latenz, der DBMS-Bereitstellungsszenarien ermöglicht, und der Ermöglichung typischer Betriebsfunktionen des NetApp-Speichers über Azure im Lauf der Zeit. NFS- und SMB-Freigaben werden in drei verschiedenen Dienstebenen angeboten, die sich im Speicherdurchsatz und im Preis unterscheiden. Die Dienstebenen sind im Artikel [Dienstebenen für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) dokumentiert. Für die unterschiedlichen Typen von SAP-Workloads werden die folgenden Dienstebenen dringend empfohlen:
 
 - SAP-DBMS-Workload:    Leistung, idealerweise Ultra
 - Freigabe „sapmnt“:         Leistung, idealerweise Ultra
@@ -231,10 +231,10 @@ Der ANF-Speicher wird derzeit für verschiedene SAP-Workloadszenarien unterstüt
 
 - Bereitstellen von SMB- oder NFS-Freigaben für das globale Transportverzeichnis von SAP
 - Freigabe „sapmnt“ in Hochverfügbarkeitsszenarien, wie in folgenden Artikeln dokumentiert:
-    - [Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern unter Windows mit Azure NetApp Files (SMB) für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-    - [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-    - [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-- SAP HANA-Bereitstellungen mit NFS v4.1-Freigaben für „/hana/data“- und „/hana/log“-Volumes und/oder NFS v4.1- oder NFS v3-Freigaben für „/hana/shared“-Volumes, wie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) beschrieben
+    - [Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern unter Windows mit Azure NetApp Files (SMB) für SAP-Anwendungen](./high-availability-guide-windows-netapp-files-smb.md)
+    - [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](./high-availability-guide-suse-netapp-files.md)
+    - [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen](./high-availability-guide-rhel-netapp-files.md)
+- SAP HANA-Bereitstellungen mit NFS v4.1-Freigaben für „/hana/data“- und „/hana/log“-Volumes und/oder NFS v4.1- oder NFS v3-Freigaben für „/hana/shared“-Volumes, wie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md) beschrieben
 
 > [!NOTE]
 > Für Azure NetApp Files-basierte NFS- oder SMB-Freigaben werden keine anderen DBMS-Workloads unterstützt. Wenn sich dies ändert, werden Aktualisierungen und Änderungen zur Verfügung gestellt.
@@ -258,9 +258,9 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 | Resilienz | LRS | GRS oder ZRS für Datenträger nicht verfügbar |
 | Latency | sehr niedrig | - |
 | IOPS-SLA | YES | - |
-| IOPS linear zur Kapazität | streng linear  | abhängig von der [Dienstebene](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) |
+| IOPS linear zur Kapazität | streng linear  | abhängig von der [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
 | Durchsatz-SLA | YES | - |
-| Durchsatz linear zur Kapazität | halblinear in Klammern | abhängig von der [Dienstebene](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) |
+| Durchsatz linear zur Kapazität | halblinear in Klammern | abhängig von der [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
 | HANA-zertifiziert | YES | - |
 | Datenträger-Momentaufnahmen möglich | YES | - |
 | Azure Backup-VM-Momentaufnahmen möglich | Nein | - |
@@ -335,11 +335,11 @@ Im Unterschied zu lokalen Szenarien spielt der einzelne ausgewählte VM-Typ eine
 
 | Speichertyp| Linux | Windows | Kommentare |
 | --- | --- | --- | --- |
-| HDD Standard | [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
-| SSD Standard | [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
-| Storage Premium | [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
-| Disk Storage Ultra | [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
-| Azure NetApp Files | [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Beim Speicherdatenverkehr wird die Durchsatzbandbreite des Netzwerks und nicht die Speicherbandbreite genutzt! |
+| HDD Standard | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
+| SSD Standard | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
+| Storage Premium | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
+| Disk Storage Ultra | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
+| Azure NetApp Files | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | Beim Speicherdatenverkehr wird die Durchsatzbandbreite des Netzwerks und nicht die Speicherbandbreite genutzt! |
 
 Beachten Sie folgende Einschränkungen:
 
@@ -365,7 +365,7 @@ Beim Striping sind folgende Regeln zu beachten:
 
 Striping über mehrere kleinere Datenträger ist die beste Möglichkeit, um mit Azure Storage Premium ein gutes Preis-Leistungs-Verhältnis zu erzielen. Es ist davon auszugehen, dass Striping einen zusätzlichen Aufwand für die Bereitstellung und Verwaltung mit sich bringt.
 
-Empfehlungen zur spezifischen Stripegröße finden Sie in der Dokumentation der einzelnen DBMS, z. B. unter [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+Empfehlungen zur spezifischen Stripegröße finden Sie in der Dokumentation der einzelnen DBMS, z. B. unter [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md).
 
 
 
@@ -373,6 +373,6 @@ Empfehlungen zur spezifischen Stripegröße finden Sie in der Dokumentation der 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die folgenden Artikel:
 
-- [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](./dbms_guide_general.md)
+- [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md)
  

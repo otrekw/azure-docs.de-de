@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/29/2020
-ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.date: 07/20/2020
+ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078611"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Verwalten von Logik-Apps im Azure-Portal
 
@@ -36,7 +36,7 @@ Führen Sie diese Schritte aus, um nach Ihrer Logik-App zu suchen und sie zu öf
 
 1. Geben Sie in der Azure-Suchleiste `logic apps` ein, und wählen Sie **Logic Apps** aus.
 
-   ![Suchen und Auswählen von „Logic Apps“](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+   ![Screenshot: Menü im Azure-Portal mit ausgewähltem Suchergebnis für „Logic Apps“ in der Suchleiste](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
 1. Suchen Sie auf der Seite **Logic Apps** die Logik-App, die Sie verwalten möchten, und wählen Sie sie aus.
 
@@ -100,19 +100,19 @@ Das Deaktivieren Ihrer Logik-App wirkt sich wie folgt auf Ihre Workflowinstanzen
 
    * Wählen Sie in der Symbolleiste die Option **Deaktivieren** aus.
 
-     ![Deaktivieren einer einzelnen Logik-App im Azure-Portal](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
+     ![Screenshot: Symbolleiste in Logic Apps mit ausgewählter Schaltfläche „Deaktivieren“](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
 
      Wenn Ihre Logik-App bereits deaktiviert ist, ist nur die Option **Aktivieren** verfügbar.
 
    * Wählen Sie auf der Symbolleiste **Aktivieren** aus.
 
-     ![Aktivieren einer einzelnen Logik-App im Azure-Portal](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
+     ![Screenshot: Symbolleiste in Logic Apps mit ausgewählter Schaltfläche „Aktivieren“](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
 
      Wenn Ihre Logik-App bereits aktiviert ist, ist nur die Option **Deaktivieren** verfügbar. 
 
    Im Azure-Portal wird in der Azure-Hauptsymbolleiste in einer Benachrichtigung angezeigt, ob Ihr Vorgang erfolgreich war oder ein Fehler aufgetreten ist.
 
-   ![Benachrichtigung zur Bestätigung des Vorgangsstatus](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
+   ![Screenshot: Azure-Portal mit Benachrichtigung, den Vorgangsstatus zu bestätigen](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
 
 <a name="disable-or-enable-multiple-logic-apps"></a>
 
@@ -122,15 +122,15 @@ Das Deaktivieren Ihrer Logik-App wirkt sich wie folgt auf Ihre Workflowinstanzen
 
 1. Um zu ermitteln, ob eine Logik-App aktuell aktiviert oder deaktiviert ist, überprüfen Sie auf der Seite **Logic Apps** die Spalte **Status** für die jeweilige Logik-App. 
 
-   ![Spalte „Status“ von Logik-Apps](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
+   ![Screenshot: Logic Apps-Seite im Azure-Portal mit einer Liste der nach der Spalte „Status“ sortierten Logik-Apps](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
 
    Wenn die Spalte **Status** nicht sichtbar ist, wählen Sie in der **Logic Apps**-Symbolleiste die Option **Preview testen** aus.
 
-   ![Vorschau aktivieren](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
+   ![Screenshot: Logic Apps-Seite im Azure-Portal mit ausgewählter Schaltfläche „Vorschau ausprobieren“](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
 
 1. Wählen Sie in der Spalte mit den Kontrollkästchen die Logik-Apps aus, die Sie deaktivieren oder aktivieren möchten. Wählen Sie in der Symbolleiste die Option **Deaktivieren** oder **Aktivieren** aus.
 
-   ![Aktivieren oder Deaktivieren mehrerer Logik-Apps im Azure-Portal](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
+   ![Screenshot: Logic Apps-Seite im Azure-Portal mit den Schaltflächen „Aktivieren“ und „Deaktivieren“ für mehrere Logik-Apps](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
 
 1. Wenn das Bestätigungsfeld angezeigt wird, wählen Sie **Ja**, um fortzufahren.
 
@@ -158,11 +158,11 @@ Das Löschen Ihrer Logik-App wirkt sich wie folgt auf Ihre Workflowinstanzen aus
 
 1. Wählen Sie im Menü Ihrer Logik-App die Option **Übersicht** aus. Wählen Sie in der Symbolleiste Ihrer Logik-App die Option **Löschen** aus.
 
-   ![Auswahl der Option „Löschen“ in der Symbolleiste der Logik-App](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
+   ![Screenshot der Symbolleiste in Logic Apps mit ausgewählter Schaltfläche „Entfernen“](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
 
 1. Wenn das Bestätigungsfeld angezeigt wird, geben Sie den Namen Ihrer Logik-App ein, und wählen Sie **Löschen** aus.
 
-   ![Bestätigen des Löschvorgangs für Ihre Logik-App](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
+   ![Screenshot der Logic Apps-Eingabeaufforderung zur Bestätigung des Löschens einer einzelnen Logik-App](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
 
    Im Azure-Portal wird in der Azure-Hauptsymbolleiste in einer Benachrichtigung angezeigt, ob Ihr Vorgang erfolgreich war oder ein Fehler aufgetreten ist.
 
@@ -174,11 +174,11 @@ Das Löschen Ihrer Logik-App wirkt sich wie folgt auf Ihre Workflowinstanzen aus
 
 1. Wählen Sie in der Spalte mit den Kontrollkästchen die Logik-Apps aus, die Sie löschen möchten. Wählen Sie in der Symbolleiste die Option **Löschen** aus.
 
-   ![Löschen mehrerer Logik-Apps](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
+   ![Screenshot der Logic Apps-Seite mit mehreren in einer Liste zum Löschen ausgewählten Logik-Apps](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
 1. Wenn das Bestätigungsfeld angezeigt wird, geben Sie `yes` ein, und wählen Sie **Löschen** aus.
 
-   ![Bestätigen des Löschvorgangs für Ihre Logik-Apps](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
+   ![Screenshot der Logic Apps-Eingabeaufforderung zur Bestätigung der Löschung mehrerer Logik-Apps](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Im Azure-Portal wird in der Azure-Hauptsymbolleiste in einer Benachrichtigung angezeigt, ob Ihr Vorgang erfolgreich war oder ein Fehler aufgetreten ist.
 
@@ -196,13 +196,13 @@ Sie können das Azure-Portal für die Versionskontrolle Ihrer Logik-Apps verwend
 
 1. Klicken Sie im Menü Ihrer Logik-App unter **Entwicklungstools** auf **Versionen**.
 
-   ![Wählen Sie im Menü Ihrer Logik-App unter „Entwicklungstools“ die Option „Versionen“ aus.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+   ![Screenshot einer Logik-App im Azure-Portal mit Auswahl der Versionsseite unter den Entwicklungstools](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
 1. Wählen Sie in der Liste die **Version** Ihrer Logik-App aus, die Sie verwalten möchten. Sie können den **Version**sbezeichner in die Suchleiste eingeben, um die Liste zu filtern.
 
 1. Auf der Seite **Verlaufsversion** werden die Details der früheren Version im schreibgeschützten Modus angezeigt. Sie können zwischen den Modi Logic Apps-**Designer** und **Codeansicht** auswählen.
 
-   ![Seite „Verlaufsversion“ für Logik-App mit Codeansicht und Logic Apps-Designer-Ansicht](./media/manage-logic-apps-with-azure-portal/history-version.png)
+   ![Screenshot der Versionsverlaufsseite in Logic Apps mit Codeansicht und Optionen für den Ansicht-Designer](./media/manage-logic-apps-with-azure-portal/history-version.png)
 
 <a name="promote-previous-versions"></a>
 
@@ -212,11 +212,11 @@ Sie können das Azure-Portal für die Versionskontrolle Ihrer Logik-Apps verwend
 
 1. Wählen Sie auf der Seite der **Verlaufsversion** den Befehl **Höherstufen** aus.
 
-   ![Schaltfläche „Höherstufen“ im Versionsverlauf der Logik-App](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+   ![Screenshot des Versionsverlaufs in Logic Apps mit Schaltfläche „Höher stufen“ einer vorherigen Version](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
 1. Bearbeiten Sie auf der Seite **Logic Apps-Designer**, die geöffnet wird, nach Bedarf die Version, die Sie höherstufen möchten. Sie können zwischen den Modi **Designer** und **Codeansicht** wechseln. Sie können auch **Parameter**, **Vorlagen** und **Connectors** aktualisieren.
 
-   ![Seite „Logic Apps-Designer“ zum Höherstufen einer früheren Version](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+   ![Screenshot des Logic Apps-Designers mit der Schaltfläche „Höher stufen“ einer Logik-App](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 
 1. Wählen Sie zum Speichern jeglicher Updates und zum Abschließen der Höherstufung der früheren Version **Speichern** aus. (Oder wählen Sie, um Ihre Änderungen abzubrechen, **Verwerfen** aus.) 
 

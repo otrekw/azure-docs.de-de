@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982785"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373503"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung im Azure-Portal zum Überwachen von Abfragen und Verbessern der Workloadleistung
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,7 +117,7 @@ Die automatische Optimierung überwacht alle Aktionen, die sie für die Datenban
 
 ## <a name="permissions"></a>Berechtigungen
 
-Da die automatische Optimierung ein Azure-Feature ist, müssen Sie für deren Nutzung die integrierten RBAC-Rollen von Azure verwenden. Die ausschließliche Verwendung der SQL-Authentifizierung reicht nicht aus, um das Feature über das Azure-Portal zu nutzen.
+Da die automatische Optimierung ein Azure-Feature ist, müssen Sie für deren Nutzung die integrierten Rollen von Azure verwenden. Die ausschließliche Verwendung der SQL-Authentifizierung reicht nicht aus, um das Feature über das Azure-Portal zu nutzen.
 
 Zur Verwendung der automatischen Optimierung muss dem Benutzer mindestens die Berechtigung der integrierten Azure-Rolle [SQL-DB-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-db-contributor) erteilt werden. Sie können auch Rollen mit höheren Berechtigungen verwenden, z. B. SQL Server-Mitwirkender, Mitwirkender und Besitzer.
 

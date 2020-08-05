@@ -2,15 +2,15 @@
 title: Häufig gestellte Fragen zu Resource Manager-Vorlagen
 description: Häufig gestellte Fragen (FAQ) zu Azure Resource Manager-Vorlagen.
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296864"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327258"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Häufig gestellte Fragen zu Resource Manager-Vorlagen
 
@@ -48,7 +48,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
   Wenn Sie mehr über die neue Vorlagensprache erfahren möchten, [melden Sie sich für Benachrichtigungen an](https://aka.ms/armLangUpdates).
 
-  Wenn Sie eine Vorschau der Vorlagenspezifikationen sehen möchten, [melden Sie sich für die Warteliste an](https://aka.ms/templateSpecsWaitlist).
+  Informationen zu den Vorlagenspezifikationen finden Sie unter [Vorlagenspezifikationen im Azure Resource Manager (Vorschau)](template-specs.md).
 
 ## <a name="creating-and-testing-templates"></a>Erstellen und Testen von Vorlagen
 
@@ -64,7 +64,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 * **Kann ich eine Ressourcengruppe in einer Resource Manager-Vorlage erstellen und Ressourcen darin bereitstellen?**
 
-  Ja, Sie können eine Ressourcengruppe in einer Vorlage erstellen, wenn Sie die Vorlage auf der Ebene Ihres Azure-Abonnements bereitstellen. Ein Beispiel für das Erstellen einer Ressourcengruppe und das Bereitstellen von Ressourcen finden Sie unter [Ressourcengruppen und Ressourcen](deploy-to-subscription.md#resource-group-and-resources).
+  Ja, Sie können eine Ressourcengruppe in einer Vorlage erstellen, wenn Sie die Vorlage auf der Ebene Ihres Azure-Abonnements bereitstellen. Ein Beispiel für das Erstellen einer Ressourcengruppe und das Bereitstellen von Ressourcen finden Sie unter [Ressourcengruppen und Ressourcen](deploy-to-subscription.md#resource-groups).
 
 * **Kann ich ein Abonnement in einer Resource Manager-Vorlage erstellen?**
 

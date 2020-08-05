@@ -2,13 +2,13 @@
 title: Bereitstellungsmodi
 description: Beschreibt das Festlegen, ob für Azure Resource Manager eine vollständige oder inkrementelle Bereitstellung verwendet wird.
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/22/2020
+ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460244"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371582"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager-Bereitstellungsmodi
 
@@ -22,11 +22,14 @@ Der Standardmodus ist inkrementell.
 
 Im vollständigen-Modus **löscht** Resource Manager Ressourcen, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
 
+> [!NOTE]
+> Verwenden Sie immer den [Was-wäre-wenn-Vorgang](template-deploy-what-if.md), bevor Sie eine Vorlage im vollständigen Modus bereitstellen. Anhand von Was-wäre-wenn-Vorgänge können Sie sehen, welche Ressourcen erstellt, gelöscht oder geändert werden. Verwenden Sie Was-wäre-wenn-Vorgänge, um ein unbeabsichtigtes Löschen von Ressourcen zu vermeiden.
+
 Wenn Ihre Vorlage eine Ressource enthält, die nicht bereitgestellt ist, weil die [Bedingung](conditional-resource-deployment.md) nicht erfüllt wird, hängt das Ergebnis davon ab, welche Rest-API-Version Sie zum Bereitstellen der Vorlage verwenden. Wenn Sie eine frühere Version als 2019-05-10 verwenden, wird die Ressource **nicht gelöscht**. Bei Version 2019-05-10 oder höher wird die Ressource **gelöscht**. Die neuesten Versionen von Azure PowerShell und Azure CLI löschen die Ressource.
 
 Wenden Sie den vollständigen Modus mit [Kopierschleifen](copy-resources.md) mit Vorsicht an. Alle Ressourcen, die nicht in der Vorlage angegeben sind, werden nach dem Auflösen der Kopierschleife gelöscht.
 
-Wenn Sie in [mehr als einer Ressourcengruppe in einer Vorlage](cross-resource-group-deployment.md) bereitstellen, können Ressourcen, die sich in der Ressourcengruppe befinden, die im Bereitstellungsvorgang angegeben wurde, gelöscht werden. Ressourcen in den sekundären Ressourcengruppen werden nicht gelöscht.
+Wenn Sie in [mehr als einer Ressourcengruppe in einer Vorlage](cross-scope-deployment.md) bereitstellen, können Ressourcen, die sich in der Ressourcengruppe befinden, die im Bereitstellungsvorgang angegeben wurde, gelöscht werden. Ressourcen in den sekundären Ressourcengruppen werden nicht gelöscht.
 
 Bei der Verarbeitung von Löschungen im vollständigen Modus gibt es zwischen Ressourcentypen einige Unterschiede. Übergeordnete Ressourcen werden automatisch gelöscht, wenn sie nicht in einer Vorlage enthalten sind, die im vollständigen-Modus bereitgestellt wird. Einige untergeordnete Ressourcen werden nicht automatisch gelöscht, wenn sie nicht in der Vorlage enthalten sind. Diese untergeordneten Ressourcen werden jedoch gelöscht, wenn die übergeordnete Ressource gelöscht wird.
 
@@ -50,6 +53,8 @@ Im inkrementellen Modus lässt Resource Manager Ressourcen **unverändert**, die
 
 > [!NOTE]
 > Bei der erneuten Bereitstellung einer vorhandenen Ressource im inkrementellen Modus werden alle Eigenschaften erneut angewendet. Die **Eigenschaften werden nicht inkrementell hinzugefügt**. Ein weit verbreitetes Missverständnis ist, dass Eigenschaften, die nicht in der Vorlage angegeben sind, unverändert bleiben. Falls Sie bestimmte Eigenschaften nicht angeben, interpretiert Resource Manager die Bereitstellung als Überschreibung dieser Werte. Eigenschaften, die nicht in der Vorlage enthalten sind, werden auf die Standardwerte zurückgesetzt. Geben Sie alle nicht standardmäßigen Werte für die Ressource an und nicht nur diejenigen, die Sie aktualisieren. Die Ressourcendefinition in der Vorlage enthält immer den endgültigen Zustand der Ressource. Sie kann keine partielle Aktualisierung einer vorhandenen Ressource darstellen.
+>
+> In seltenen Fällen werden Eigenschaften, die Sie für eine Ressource angeben, als untergeordnete Ressource implementiert. Wenn Sie beispielsweise für eine Web-App Websitekonfigurationswerte angeben, werden diese Werte im Typ der untergeordneten Ressource `Microsoft.Web/sites/config` implementiert. Wenn Sie die Web-App erneut bereitstellen und für die Websitekonfigurationswerte ein leeres Objekt angeben, wird die untergeordnete Ressource nicht aktualisiert. Der Typ der untergeordneten Ressource wird jedoch aktualisiert, wenn Sie neue Websitekonfigurationswerte angeben.
 
 ## <a name="example-result"></a>Beispielergebnis
 

@@ -3,22 +3,25 @@ title: Benutzeroberflächenelement „OptionsGroup“
 description: Hier wird das Benutzeroberflächenelement „Microsoft.Common.OptionsGroup“ für das Azure-Portal beschrieben. Es ermöglicht Benutzern die Auswahl aus verfügbaren Optionen beim Bereitstellen einer verwalteten Anwendung.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/09/2020
 ms.author: tomfitz
-ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649778"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004188"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.OptionsGroup“
 
-Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen.
+Mit dem OptionsGroup-Steuerelement können Benutzer eine Option aus mindestens zwei Optionen auswählen. Ein Benutzer kann nur eine Option auswählen.
+
+> [!NOTE]
+> In der Vergangenheit hat dieses Steuerelement die Optionen horizontal gerendert. Nun stellt das Steuerelement die Optionen vertikal als Optionsfelder dar.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
 
-![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
+:::image type="content" source="./media/managed-application-elements/microsoft-common-optionsgroup-2.png" alt-text="Microsoft.Common.OptionsGroup":::
 
 ## <a name="schema"></a>Schema
 
@@ -55,7 +58,7 @@ Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen.
 ## <a name="remarks"></a>Bemerkungen
 
 - Die Bezeichnung für `constraints.allowedValues` ist der Anzeigetext für ein Element, und sein Wert ist der Ausgabewert des Elements bei der Auswahl.
-- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Wird kein Wert angegeben, wird standardmäßig das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert ist **NULL**.
+- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Wird kein Wert angegeben, wird standardmäßig das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null**.
 - `constraints.allowedValues` muss mindestens ein Element aufweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte

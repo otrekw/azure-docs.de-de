@@ -3,12 +3,12 @@ title: Beheben von Problemen mit Azure Event Hubs für Apache Kafka
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Event Hubs für Apache Kafka behandeln.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c2403fd51729ef8809b9a70383ad6f9fd91e52b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090568"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Apache Kafka-Leitfaden zur Problembehandlung für Event Hubs
 In diesem Artikel finden Sie Tipps zur Problembehandlung, die bei der Verwendung von Event Hubs für Apache Kafka auftreten können. 
@@ -49,13 +49,13 @@ org.apache.kafka.common.errors.UnknownServerException: The server experienced an
 - **Durch Firewall blockierter Datenverkehr**: Stellen Sie sicher, dass Port **9093** nicht durch Ihre Firewall blockiert wird.
 - **TopicAuthorizationException**: Es folgen die häufigsten Gründe für diese Ausnahme:
     - Ein Tippfehler in der Verbindungszeichenfolge in der Konfigurationsdatei
-    - Versuch, Event Hubs für Kafka in einem Namespace im Tarif „Basic“ zu nutzen Event Hubs für Kafka wird [nur von Event Hubs in Namespaces in den Tarifen „Standard“ und „Dedicated“ unterstützt](https://azure.microsoft.com/pricing/details/event-hubs/).
+    - Versuch, Event Hubs für Kafka in einem Namespace im Tarif „Basic“ zu nutzen Das Feature „Event Hubs für Kafka“ wird [nur von Event Hubs in Namespaces in den Tarifen „Standard“ und „Dedicated“ unterstützt](https://azure.microsoft.com/pricing/details/event-hubs/).
 - **Kafka-Versionskonflikt**: Event Hubs für Kafka Ecosystems unterstützt Kafka ab Version 1.0. Einige Anwendungen, die eine Kafka-Version ab 0.10 verwenden, könnten gelegentlich aufgrund der Abwärtskompatibilität des Kafka-Protokolls funktionieren. Wir raten jedoch dringend davon ab, alte API-Versionen zu verwenden. Kafka-Versionen bis 0.9 unterstützen die erforderlichen SASL-Protokolle nicht und können keine Verbindung mit Event Hubs herstellen.
 - **Seltsame Codierungen in AMQP-Headern bei Verwendung mit Kafka**: Beim Senden von Ereignissen an eine Event Hub-Instanz über AMQP werden alle AMQP-Nutzlastheader in AMQP-Codierung serialisiert. Kafka-Consumer deserialisieren die Header nicht aus AMQP. Decodieren Sie die AMQP-Header manuell, um Headerwerte zu lesen. Alternativ können Sie AMQP-Header vermeiden, wenn Sie wissen, dass Sie Daten über das Kafka-Protokoll nutzen werden. Weitere Informationen finden Sie in [diesem GitHub-Problem](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56).
 - **SASL-Authentifizierung**: Ihr Framework dazu zu bringen, mit dem SASL-Authentifizierungsprotokoll zusammenzuarbeiten, das von Event Hubs benötigt wird, kann schwieriger sein, als es zunächst den Anschein hat. Versuchen Sie, ob Sie die Konfiguration mit den Ressourcen Ihres Frameworks zur SASL-Authentifizierung korrigieren können. 
 
 ## <a name="limits"></a>Einschränkungen
-Apache Kafka im Vergleich zu Event Hubs für Kafka. Event Hubs für Kafka Ecosystems weist in den meisten Fällen die gleichen Standardeinstellungen, Eigenschaften, Fehlercodes und allgemeinen Verhaltensweisen auf wie Apache Kafka. Die Fälle, in denen sich diese beiden explizit unterscheiden (oder in denen Event Hubs einen Grenzwert vorschreiben, der von Kafka nicht eingehalten wird), sind nachstehend aufgeführt:
+Apache Kafka im Vergleich zu Event Hubs für Kafka. Event Hubs für Kafka weist in den meisten Fällen die gleichen Standardeinstellungen, Eigenschaften, Fehlercodes und allgemeinen Verhaltensweisen auf wie Apache Kafka. Die Fälle, in denen sich diese beiden explizit unterscheiden (oder in denen Event Hubs einen Grenzwert vorschreiben, der von Kafka nicht eingehalten wird), sind nachstehend aufgeführt:
 
 - Die maximale Länge der Eigenschaft `group.id` ist 256 Zeichen.
 - Die maximale Größe von `offset.metadata.max.bytes` ist 1024 Bytes.
@@ -68,4 +68,4 @@ Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie in folg
 - [Apache Kafka-Entwicklerleitfaden für Event Hubs](apache-kafka-developer-guide.md)
 - [Apache Kafka-Migrationsleitfaden für Event Hubs](apache-kafka-migration-guide.md)
 - [Häufig gestellte Fragen zu Event Hubs für Apache Kafka](apache-kafka-frequently-asked-questions.md)
-- [Empfohlene Konfigurationen](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Empfohlene Konfigurationen](apache-kafka-configurations.md)

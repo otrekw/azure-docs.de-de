@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090857"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0: Translate
 
@@ -59,7 +59,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Optionaler Parameter</em>.<br/>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte sind: <code>plain</code> (Standard) oder <code>html</code>.</td>
+    <td><em>Optionaler Parameter</em>.<br/>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte: <code>plain</code> (Standard) oder <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -317,6 +317,7 @@ Um mehrere Strings gleichzeitig zu übersetzen, muss lediglich ein Array von Zei
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
+Die Antwort enthält die Übersetzung aller Textteile in exakt derselben Reihenfolge wie in der Anforderung.
 Der Antworttext lautet:
 
 ```

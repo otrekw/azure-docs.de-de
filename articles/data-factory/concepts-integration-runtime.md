@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497640"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407692"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory 
 
@@ -45,13 +45,10 @@ In der folgenden Tabelle sind die Funktionen und die Netzwerkunterstützung für
 
 IR-Typ | Öffentliches Netzwerk | Privates Netzwerk
 ------- | -------------- | ---------------
-Azure | Datenfluss<br/>Datenverschiebung<br/>Aktivitätsverteilung | &nbsp;
+Azure | Datenfluss<br/>Datenverschiebung<br/>Aktivitätsverteilung | Datenfluss<br/>Datenverschiebung<br/>Aktivitätsverteilung
 Selbstgehostet | Datenverschiebung<br/>Aktivitätsverteilung | Datenverschiebung<br/>Aktivitätsverteilung
 Azure-SSIS | SSIS-Paketausführung | SSIS-Paketausführung
 
-Im folgenden Diagramm ist dargestellt, wie die unterschiedlichen Integrationslaufzeiten als Kombination verwendet werden können, um umfassende Datenintegrationsfunktionen und Netzwerkunterstützung zu erzielen:
-
-![Verschiedene Integrationslaufzeit-Typen](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure-Integrationslaufzeit
 
@@ -63,7 +60,7 @@ Eine Azure Integration Runtime bietet folgende Möglichkeiten:
 
 ### <a name="azure-ir-network-environment"></a>Azure-Integrationslaufzeit: Netzwerkumgebung
 
-Die Azure Integration Runtime unterstützt die Herstellung von Verbindungen mit Datenspeichern und Computediensten mit öffentlich zugänglichen Endpunkten. Verwenden Sie eine selbstgehostete Integrationslaufzeit für die virtuelle Azure-Netzwerkumgebung.
+Die Azure Integration Runtime unterstützt die Herstellung von Verbindungen mit Datenspeichern und Computediensten mit öffentlich zugänglichen Endpunkten. Indem ein verwaltetes virtuelles Netzwerk aktiviert wird, unterstützt Azure Integration Runtime das Herstellen einer Verbindung mit Datenspeichern über den privaten Verknüpfungsdienst in einer privaten Netzwerkumgebung.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure-Integrationslaufzeit: Computeressource und Skalierung
 Die Azure-Integrationslaufzeit stellt in Azure eine vollständig verwaltete, serverlose Computeressource bereit.  Sie müssen sich keine Gedanken um die Infrastrukturbereitstellung, die Softwareinstallation, das Patchen oder die Kapazitätsskalierung machen.  Darüber hinaus zahlen Sie nur für die tatsächliche Nutzungsdauer.
@@ -136,7 +133,7 @@ Mit dem Integrationslaufzeit-Standort wird der Standort der Back-End-Computeinst
 
 Wenn Sie für eine Azure-Integrationslaufzeit einen bestimmten Standort festlegen, erfolgt die Aktivitätsausführung oder -verteilung in der entsprechenden Region.
 
-Bei Verwendung der Azure-Integrationslaufzeit mit automatischer Auflösung (Standardeinstellung) gilt Folgendes:
+Bei Verwendung von Azure IR mit automatischer Auflösung (Standardeinstellung) in einem öffentlichen Netzwerk gilt Folgendes:
 
 - Bei der Kopieraktivität versucht ADF, den Standort Ihres Senkendatenspeichers automatisch zu erkennen, und verwendet dann die Integrationslaufzeit entweder in derselben Region (falls verfügbar) oder in der nächstgelegenen Region im selben geografischen Gebiet. Wenn die Region des Senkendatenspeichers nicht erkannt werden kann, wird alternativ die Integrationslaufzeit in der Data Factory-Region verwendet.
 
@@ -154,6 +151,8 @@ Bei Verwendung der Azure-Integrationslaufzeit mit automatischer Auflösung (Stan
 
   > [!TIP] 
   > Eine bewährte Methode wäre, sicherzustellen, dass der Datenfluss (sofern möglich) in der gleichen Region wie Ihre entsprechenden Datenspeicher ausgeführt wird. Sie können dies entweder durch die automatische Auflösung der Azure IR-Instanz (falls der Datenspeicherort mit dem Data Factory-Standort identisch ist) oder das Erstellen einer neuen Azure-IR-Instanz, die sich in der gleichen Region wie Ihre Datenspeicher befindet, und anschließendes Ausführen des Datenflusses erreichen. 
+
+Wenn Sie ein verwaltetes virtuelles Netzwerk für Azure IR mit automatischer Auflösung aktivieren, verwendet ADF die IR in der Data Factory-Region. 
 
 In der Überwachungsansicht für Pipelineaktivitäten (auf der Benutzeroberfläche) oder über die Nutzlast für die Aktivitätsüberwachung können Sie überwachen, welcher Integrationslaufzeit-Standort bei der Aktivitätsausführung verwendet wird.
 

@@ -4,12 +4,12 @@ description: Informationen zu Speicher in Azure Kubernetes Service (AKS) einschl
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171377"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406961"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Speicheroptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -75,6 +75,9 @@ parameters:
   storageaccounttype: Premium_LRS
   kind: Managed
 ```
+
+> [!NOTE]
+> AKS stimmt die Standardspeicherklassen ab und überschreibt alle Änderungen, die Sie an diesen Speicherklassen vornehmen.
 
 ## <a name="persistent-volume-claims"></a>Ansprüche auf persistente Volumes
 

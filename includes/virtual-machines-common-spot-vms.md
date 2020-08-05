@@ -4,15 +4,15 @@ description: include file
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 07/20/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df78133f602466681da64d2666a311e1649c598f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028793"
 ---
 Mithilfe von Spot-VMs können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
@@ -26,10 +26,6 @@ VMs können basierend auf der Kapazität oder dem von Ihnen festgelegten maximal
 Die Richtlinie *Zuordnung aufheben* versetzt Ihre VM in den Zustand „beendet/Zuordnung aufgehoben“, sodass Sie sie später erneut bereitstellen können. Es gibt jedoch keine Garantie dafür, dass die Zuordnung erfolgreich ist. Die virtuellen Computer, deren Zuordnung aufgehoben wurde, werden auf Ihr Kontingent angerechnet, und die Speicherkosten für die zugrunde liegenden Datenträger werden Ihnen in Rechnung gestellt. 
 
 Wenn Sie möchten, dass Ihr virtueller Computer beim Entfernen gelöscht wird, können Sie die Entfernungsrichtlinie auf *Löschen* festlegen. Die entfernten VMs werden zusammen mit ihren zugrunde liegenden Datenträgern gelöscht, und darum fallen weiter keine Kosten für ihre Speicherung an. 
-
-> [!NOTE]
->
-> Das Portal unterstützt `Delete` zurzeit nicht als Entfernungsoption. Sie können `Delete` nur mithilfe von PowerShell, der CLI und Vorlagen festlegen.
 
 Sie können sich für den Empfang von Benachrichtigungen in der VM über [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md) anmelden. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
 
@@ -54,19 +50,14 @@ Die folgenden VM-Größen werden für Spot-VMs nicht unterstützt:
 
 Mit Ausnahme von Microsoft Azure China 21ViaNet können Spot-VMs in jeder beliebigen Region bereitgestellt werden.
 
-Einige Abonnementkanäle werden nicht unterstützt:
-
 <a name="channel"></a>
 
-| Azure-Kanäle               | Azure-Spot-VM-Verfügbarkeit       |
-|------------------------------|-----------------------------------|
-| Enterprise Agreement         | Ja                               |
-| Nutzungsbasierte Bezahlung                | Ja                               |
-| Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Vorteile                     | Nicht verfügbar                     |
-| Sponsoren                    | Ja                               |
-| Kostenlose Testversion                   | Nicht verfügbar                     |
+Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) werden derzeit unterstützt:
 
+-   Enterprise Agreement
+-   Nutzungsbasierte Bezahlung
+-   Sponsoren
+- Wenden Sie sich hinsichtlich des Cloud-Dienstanbieters (CSP) an Ihren Partner.
 
 
 ## <a name="pricing"></a>Preise

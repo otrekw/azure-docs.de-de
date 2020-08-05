@@ -4,15 +4,15 @@ description: Erstellen eines neuen Angebots für verwaltete Dienste, um das Ange
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: JnHs
-ms.author: jenhayes
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121791"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405244"
 ---
 # <a name="create-a-managed-service-offer"></a>Erstellen eines Angebots für einen verwalteten Dienst
 
@@ -177,7 +177,7 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="plan-overview"></a>Planübersicht
 
-Jedes Angebot muss über einen oder mehrere Pläne (manchmal auch als SKUs bezeichnet) verfügen. Sie können mehrere Pläne hinzufügen, um verschiedene Featuregruppen zu unterschiedlichen Preisen zu unterstützen oder um einen bestimmten Plan für eine begrenzte Zielgruppe spezifischer Kunden anzupassen. Kunden können die Pläne, die Ihnen zur Verfügung stehen, unter dem übergeordneten Angebot anzeigen.
+Jedes Angebot muss über einen oder mehrere Pläne (früher als SKUs bezeichnet) verfügen. Sie können mehrere Pläne hinzufügen, um verschiedene Featuregruppen zu unterschiedlichen Preisen zu unterstützen oder um einen bestimmten Plan für eine begrenzte Zielgruppe spezifischer Kunden anzupassen. Kunden können die Pläne, die Ihnen zur Verfügung stehen, unter dem übergeordneten Angebot anzeigen.
 
 Wählen Sie auf der Seite **Planübersicht** die Option **+ Neuen Plan erstellen** aus. Geben Sie dann eine **Plan-ID** und einen **Plannamen** ein. Beide Werte dürfen nur kleingeschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und höchstens 50 Zeichen lang sein. Diese Werte können für Kunden sichtbar sein und nach der Veröffentlichung des Angebots nicht mehr geändert werden.
 
@@ -194,6 +194,9 @@ Geben Sie als Nächstes eine **Beschreibung** ein, in der der Plan ausführliche
 Zurzeit kann für Angebote für verwaltete Dienste nur ein Preismodell verwendet werden: **BYOL** (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz). Dies bedeutet, dass Sie Ihren Kunden Kosten im Zusammenhang mit diesem Angebot direkt berechnen, und dass Microsoft Ihnen keine Gebühren berechnet.
 
 Im Abschnitt zur **Sichtbarkeit des Plans** können Sie angeben, ob dieser Plan [privat](../../marketplace/private-offers.md) sein soll. Wenn Sie das Kontrollkästchen **Dies ist ein privater Plan** deaktiviert lassen, wird Ihr Plan nicht auf bestimmte Kunden (oder auf eine bestimmte Anzahl von Kunden) beschränkt.
+
+> [!NOTE]
+> Private Pläne werden bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt.
 
 Um diesen Plan nur für bestimmte Kunden verfügbar zu machen, wählen Sie **Ja** aus. Wenn Sie dies tun, müssen Sie die Kunden identifizieren, indem Sie ihre Abonnement-IDs angeben. Sie können diese einzeln (für bis zu 10 Abonnements) eingeben oder eine CSV-Datei (planübergreifend für bis zu 10.000 Abonnements) hochladen. Stellen Sie sicher, dass Sie hier Ihre eigenen Abonnements einschließen, damit Sie das Angebot testen und validieren können.
 

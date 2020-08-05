@@ -4,7 +4,7 @@ summary: Sicherheit ist ein wesentlicher Bestandteil aller Azure-Lösungen. Azur
 brand: azure
 metadata:
   title: Dokumentation zur Azure-Sicherheit
-  description: Sicherheit ist ein wesentlicher Bestandteil aller Azure-Lösungen. Azure bietet einzigartige Sicherheitsvorteile, die auf globalen Sicherheitsfunktionen, ausgereiften kundenorientierten Kontrollmöglichkeiten und einer sicheren, verstärkten Infrastruktur basieren. Diese leistungsstarke Kombination unterstützt Sie beim Schutz Ihrer Anwendungen und Daten sowie beim Durchsetzen Ihrer Compliance-Maßnahmen und bietet kostengünstige Sicherheit für Organisationen jeder Größe.
+  description: Informationen zur Sicherheit in Azure Lesen Sie die Informationen zu Grundlagen, Best Practices und Mustern im Zusammenhang mit Sicherheit sowie zu Azure Security Center.
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115366"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540851"
 highlightedContent:
   items:
   - title: Einführung in die Azure-Sicherheit

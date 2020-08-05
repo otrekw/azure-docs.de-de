@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134564"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291808"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Verwenden von Bereitstellungsskripts in Vorlagen (Vorschauversion)
 
@@ -556,50 +556,37 @@ Die Ausführung des Bereitstellungsskripts ist ein idempotenter Vorgang. Wenn ke
 
 ## <a name="configure-development-environment"></a>Konfigurieren der Entwicklungsumgebung
 
-Sie können ein vorkonfiguriertes Docker-Containerimage als Entwicklungsumgebung für Ihr Bereitstellungsskript verwenden. Informationen zum Installieren von Docker finden Sie [hier](https://docs.docker.com/get-docker/).
-Darüber hinaus muss die Dateifreigabe so konfiguriert werden, dass das Verzeichnis mit den Bereitstellungsskripts in den Docker-Container eingebunden wird.
-
-1. Pullen Sie das Containerimage für das Bereitstellungsskript auf den lokalen Computer:
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    In diesem Beispiel wird Version 2.7.0 der PowerShell verwendet.
-
-    So pullen Sie ein CLI-Image aus einer Microsoft Container Registry (MCR)
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    In diesem Beispiel wird Version 2.0.80 der CLI verwendet. Das Bereitstellungsskript verwendet die standardmäßigen CLI-Containerimages, die Sie [hier](https://hub.docker.com/_/microsoft-azure-cli) finden.
-
-1. Führen Sie das Docker-Image lokal aus.
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    Ersetzen Sie **&lt;host drive letter>** und **&lt;host directory name>** durch einen vorhandenen Ordner auf dem freigegebenen Laufwerk.  Der Ordner wird dem Ordner **/data** im Container zugeordnet. So ordnen Sie z. B. „D:\docker“ zu
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **-it** bedeutet, dass das Containerimage aktiv bleibt.
-
-    Ein CLI-Beispiel:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. Der folgende Screenshot zeigt die Ausführung eines PowerShell-Skripts, wenn das freigegebene Laufwerk eine Datei namens „helloworld.ps1“ enthält.
-
-    ![Resource Manager-Vorlage: Bereitstellungsskript, Docker-Befehle](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+Sie können ein vorkonfiguriertes Containerimage als Entwicklungsumgebung für Ihr Bereitstellungsskript verwenden. Weitere Informationen finden Sie unter [Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in Vorlagen](./deployment-script-template-configure-dev.md).
 
 Nachdem das Skript erfolgreich getestet wurde, können Sie es als Bereitstellungsskript in Ihren Vorlagen verwenden.
+
+## <a name="deployment-script-error-codes"></a>Fehlercodes von Bereitstellungsskripts
+
+| Fehlercode | BESCHREIBUNG |
+|------------|-------------|
+| DeploymentScriptInvalidOperation | Die Bereitstellungsskript-Ressourcendefinition in der Vorlage enthält ungültige Eigenschaftsnamen. |
+| DeploymentScriptResourceConflict | Eine Bereitstellungsskriptressource, die sich in einem nicht beendeten (terminal) Zustand befindet und deren Ausführung 1 Stunde noch nicht überschritten hat, kann nicht gelöscht werden. Oder es kann nicht dasselbe Bereitstellungsskript mit demselben Ressourcenbezeichner (selbes/r Abonnement, Ressourcengruppenname und Ressourcenname), aber unterschiedlichem Skripttextinhalt gleichzeitig erneut ausgeführt werden. |
+| DeploymentScriptOperationFailed | Interner Fehler beim Bereitstellungsskriptvorgang. Kontaktieren Sie den Microsoft-Support. |
+| DeploymentScriptStorageAccountAccessKeyNotSpecified | Der Zugriffsschlüssel wurde nicht für das vorhandene Speicherkonto angegeben.|
+| DeploymentScriptContainerGroupContainsInvalidContainers | Eine vom Bereitstellungsskriptdienst erstellte Containergruppe wurde extern geändert, und es wurden ungültige Container hinzugefügt. |
+| DeploymentScriptContainerGroupInNonterminalState | Zwei oder mehr Bereitstellungsskriptressourcen verwenden denselben Azure-Containerinstanznamen in derselben Ressourcengruppe, und einer davon hat seine Ausführung noch nicht abgeschlossen. |
+| DeploymentScriptStorageAccountInvalidKind | Das vorhandene Speicherkonto des Typs „BlobBlobStorage“ oder „BlobStorage“ unterstützt keine Dateifreigaben und kann nicht verwendet werden. |
+| DeploymentScriptStorageAccountInvalidKindAndSku | Das vorhandene Speicherkonto unterstützt keine Dateifreigaben. Eine Liste der unterstützten Speicherkontotypen finden Sie unter [Verwenden eines vorhandenen Speicherkontos](#use-existing-storage-account). |
+| DeploymentScriptStorageAccountNotFound | Das Speicherkonto ist nicht vorhanden oder wurde von einem externen Prozess oder Tool gelöscht. |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | Das angegebene Speicherkonto besitzt einen Dienstendpunkt. Ein Speicherkonto mit einem Dienstendpunkt wird nicht unterstützt. |
+| DeploymentScriptStorageAccountInvalidAccessKey | Für das vorhandene Speicherkonto wurde ein ungültiger Zugriffsschlüssel angegeben. |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | Ungültiges Speicherkonto-Schlüsselformat. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md). |
+| DeploymentScriptExceededMaxAllowedTime | Die Dauer der Ausführung des Bereitstellungsskripts hat den in der Ressourcendefinition des Bereitstellungsskripts angegebenen Timeoutwert überschritten. |
+| DeploymentScriptInvalidOutputs | Die Bereitstellungsskriptausgabe ist kein gültiges JSON-Objekt. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | Die vom Benutzer zugewiesene verwaltete Identität konnte sich nach 10 Versuchen mit einem Intervall von je 1 Minute nicht anmelden. |
+| DeploymentScriptContainerGroupNotFound | Eine vom Bereitstellungsskriptdienst erstellte Containergruppe wurde von einem externen Tool oder Prozess gelöscht. |
+| DeploymentScriptDownloadFailure | Fehler beim Herunterladen eines unterstützenden Skripts. Siehe [Verwenden unterstützender Skripts](#use-supporting-scripts).|
+| DeploymentScriptError | Das Benutzerskript hat einen Fehler ausgelöst. |
+| DeploymentScriptBootstrapScriptExecutionFailed | Das Bootstrapskript hat einen Fehler ausgelöst. Das Bootstrapskript ist das Systemskript, das die Ausführung des Bereitstellungsskripts orchestriert. |
+| DeploymentScriptExecutionFailed | Unbekannter Fehler während der Ausführung des Bereitstellungsskripts. |
+| DeploymentScriptContainerInstancesServiceUnavailable | Beim Erstellen der Azure-Containerinstanz (ACI) hat ACI den Fehler „Dienst nicht verfügbar“ ausgelöst. |
+| DeploymentScriptContainerGroupInNonterminalState | Beim Erstellen der Azure-Containerinstanz (ACI) verwendet ein anderes Bereitstellungsskript denselben ACI-Namen im selben Bereich (selbes/r Abonnement, Ressourcengruppenname und Ressourcenname). |
+| DeploymentScriptContainerGroupNameInvalid | Der angegebene Name der Azure-Containerinstanz (ACI) entspricht nicht den ACI-Anforderungen. Siehe [Behandeln von häufigen Problemen in Azure Container Instances](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228914"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292778"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Erneutes Schützen von Azure zu lokal
 
@@ -33,7 +33,7 @@ Nach dem [Failover](site-recovery-failover.md) von lokalen VMware-VMs oder physi
     - Sie verwenden entweder die kostenlose Edition von ESXi 5.5 oder die kostenlose Edition von vSphere 6 Hypervisor. Führen Sie ein Upgrade auf eine andere Version durch.
     - Sie verfügen über einen physischen Windows Server 2008 R2 SP1-Server.
     - Für virtuelle VMware-Computer kann kein Failback zu Hyper-V ausgeführt werden.
-    - Virtuelle Computer, die [migriert wurden](migrate-overview.md#what-do-we-mean-by-migration).
+    - Virtuelle Computer, die migriert wurden.
     - Ein virtueller Computer wurde in eine andere Ressourcengruppe verschoben.
     - Ein Replikat des virtuellen Azure-Computers wurde gelöscht.
     - Ein Replikat des virtuellen Azure-Computers ist nicht geschützt (und wird im lokalen Standort repliziert).

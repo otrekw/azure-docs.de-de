@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 06/10/2020
-ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: f71daab55139f6b4690df50472928db466774cb3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668456"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128266"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -170,31 +170,64 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Universell – bereitgestelltes Computing – Fsv2-Serie
 
-### <a name="fsv2-series-compute-generation-preview"></a>Computegeneration der Fsv2-Serie (Vorschau)
+### <a name="fsv2-series-compute-generation-part-1"></a>Computegeneration der Fsv2-Serie (Teil 1)
 
-|Computegröße (Dienstziel)|GP_Fsv2_72|
-|:--- | --: |
-|Computegeneration|Fsv2-Serie|
-|V-Kerne|72|
-|Arbeitsspeicher (GB)|136,2|
-|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|500|
-|Columnstore-Unterstützung|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|
-|Maximale Datengröße (GB)|4096|
-|Maximale Protokollgröße (GB)|1024|
-|Max. Datengröße von TempDB (GB)|333|
-|Speichertyp|Storage Premium (Remote)|
-|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|16.000|
-|Maximale Protokollrate pro Pool (MBit/s)|37,5|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|3780|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|3780|
-|Max. gleichzeitige Sitzungen|30.000|
-|Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–72|
-|Anzahl von Replikaten|1|
-|Multi-AZ|–|
-|Horizontale Leseskalierung|–|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|
+|Computegröße (Dienstziel)|GP_Fsv2_8|GP_Fsv2_10|GP_Fsv2_12|GP_Fsv2_14| GP_Fsv2_16|
+|:---| ---:|---:|---:|---:|---:|
+|Computegeneration|Fsv2-Serie|Fsv2-Serie|Fsv2-Serie|Fsv2-Serie|Fsv2-Serie|
+|V-Kerne|8|10|12|14|16|
+|Arbeitsspeicher (GB)|15,1|18,9|22,7|26,5|30,2|
+|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|500|500|500|500|500|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|N/V|N/V|–|–|
+|Maximale Datengröße (GB)|1024|1024|1024|1024|1536|
+|Maximale Protokollgröße (GB)|336|336|336|336|512|
+|Max. Datengröße von TempDB (GB)|333|333|333|333|333|
+|Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. IOPS für Daten pro Pool <sup>2</sup>|2560|3200|3840|4480|5120|
+|Maximale Protokollrate pro Pool (MBit/s)|30|30|30|30|30|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|400|500|600|700|800|
+|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|800|1000|1200|1400|1600|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
+|Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–8|0–10|0–12|0–14|0–16|
+|Anzahl von Replikaten|1|1|1|1|1|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|–|N/V|N/V|N/V|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+
+<sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
+
+<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+
+### <a name="fsv2-series-compute-generation-part-2"></a>Computegeneration der Fsv2-Serie (Teil 2)
+
+|Computegröße (Dienstziel)|GP_Fsv2_18|GP_Fsv2_20|GP_Fsv2_24|GP_Fsv2_32| GP_Fsv2_36|GP_Fsv2_72|
+|:---| ---:|---:|---:|---:|---:|---:|
+|Computegeneration|Fsv2-Serie|Fsv2-Serie|Fsv2-Serie|Fsv2-Serie|Fsv2-Serie|Fsv2-Serie|
+|V-Kerne|18|20|24|32|36|72|
+|Arbeitsspeicher (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
+|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|500|500|500|500|500|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
+|Maximale Datengröße (GB)|1536|1536|1536|3072|3072|4096|
+|Maximale Protokollgröße (GB)|512|512|512|1024|1024|1024|
+|Max. Datengröße von TempDB (GB)|83,25|92,5|111|148|166,5|333|
+|Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. IOPS für Daten pro Pool <sup>2</sup>|5760|6400|7680|10.240|11.520|23.040|
+|Maximale Protokollrate pro Pool (MBit/s)|30|30|30|30|30|30|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|900|1000|1200|1600|1800|3600|
+|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1800|2000|2400|3200|3600|7\.200|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
+|Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–18|0 - 20|0-24|0–32|0–36|0–72|
+|Anzahl von Replikaten|1|1|1|1|1|1|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|–|N/V|N/V|N/V|N/V|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
@@ -247,7 +280,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|100|100|100|100|100|
-|Columnstore-Unterstützung|–|–|–|–|–|–|
+|Columnstore-Unterstützung|–|N/V|N/V|N/V|N/V|–|
 |In-Memory-OLTP-Speicher (GB)|7|8|9.5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
@@ -339,31 +372,31 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>Unternehmenskritisch – bereitgestelltes Computing – M-Serie
 
-### <a name="m-series-compute-generation-preview"></a>Computegeneration der M-Serie (Vorschau)
+### <a name="m-series-compute-generation-part-1"></a>Computegeneration der M-Serie (Teil 1)
 
-|Computegröße (Dienstziel)|BC_M_128|
-|:--- | --: |
-|Computegeneration|M-Serie|
-|V-Kerne|128|
-|Arbeitsspeicher (GB)|3767.1|
-|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|
-|Columnstore-Unterstützung|Ja|
-|In-Memory-OLTP-Speicher (GB)|1768|
-|Maximale Datengröße (GB)|4096|
-|Maximale Protokollgröße (GB)|2048|
-|Max. Datengröße von TempDB (GB)|4096|
-|Speichertyp|Lokale SSD|
-|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. IOPS für Daten pro Pool <sup>2</sup>|200.000|
-|Maximale Protokollrate pro Pool (MBit/s)|333|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|13.440|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|13.440|
-|Max. gleichzeitige Sitzungen|30.000|
-|Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–128|
-|Anzahl von Replikaten|4|
-|Multi-AZ|Ja|
-|Horizontale Leseskalierung|Ja|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|
+|Computegröße (Dienstziel)|BC_M_8|BC_M_10|BC_M_12|BC_M_14|BC_M_16|BC_M_18|
+|:---| ---:|---:|---:|---:|---:|---:|
+|Computegeneration|M-Serie|M-Serie|M-Serie|M-Serie|M-Serie|M-Serie|
+|V-Kerne|8|10|12|14|16|18|
+|Arbeitsspeicher (GB)|235,4|294,3|353,2|412,0|470,9|529,7|
+|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|100|100|100|100|100|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|64|80|96|112|128|150|
+|Maximale Datengröße (GB)|512|640|768|896|1024|1152|
+|Maximale Protokollgröße (GB)|171|213|256|299|341|384|
+|Max. Datengröße von TempDB (GB)|256|320|384|448|512|576|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Max. IOPS für Daten pro Pool <sup>2</sup>|12.499|15.624|18.748|21.873|24.998|28.123|
+|Maximale Protokollrate pro Pool (MBit/s)|48|60|72|84|96|108|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|800|1\.000|1\.200|1\.400|1\.600|1\.800|
+|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|800|1\.000|1\.200|1\.400|1\.600|1\.800|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
+|Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–8|0–10|0–12|0–14|0–16|0–18|
+|Anzahl von Replikaten|4|4|4|4|4|4|
+|Multi-AZ|Nein|Nein|Nein|Nein|Nein|Nein|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
@@ -372,6 +405,42 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 <sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Azure SQL-Datenbank bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
+
+
+
+### <a name="m-series-compute-generation-part-2"></a>Computegeneration der M-Serie (Teil 2)
+
+|Computegröße (Dienstziel)|BC_M_20|BC_M_24|BC_M_32|BC_M_64|BC_M_128|
+|:---| ---:|---:|---:|---:|---:|
+|Computegeneration|M-Serie|M-Serie|M-Serie|M-Serie|M-Serie|
+|V-Kerne|20|24|32|64|128|
+|Arbeitsspeicher (GB)|588,6|706,3|941,8|1883,5|3767,0|
+|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|100|100|100|100|100|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|172|216|304|704|1768|
+|Maximale Datengröße (GB)|1280|1536|2048|4096|4096|
+|Maximale Protokollgröße (GB)|427|512|683|1024|1024|
+|Max. Datengröße von TempDB (GB)|4096|2048|1024|768|640|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Max. IOPS für Daten pro Pool <sup>2</sup>|31.248|37.497|49.996|99.993|160.000|
+|Maximale Protokollrate pro Pool (MBit/s)|120|144|192|264|264|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|2\.000|2\.400|3\.200|6\.400|12.800|
+|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|2\.000|2\.400|3\.200|6\.400|12.800|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
+|Anzahl von Replikaten|4|4|4|4|4|
+|Multi-AZ|Nein|Nein|Nein|Nein|Nein|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+<sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
+
+<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+
+Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Azure SQL-Datenbank bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
+
 
 ## <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Pooldatenbanken
 
@@ -394,4 +463,4 @@ Die folgende Tabelle beschreibt die Eigenschaften von Pooldatenbanken.
 - Informationen zu DTU-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden](resource-limits-dtu-elastic-pools.md).
 - Informationen zu den Ressourcenlimits für verwaltete Instanzen finden Sie unter [Ressourcenlimits bei verwalteten Instanzen](../managed-instance/resource-limits.md).
 - Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
-- Informationen zu Ressourcenlimits auf Server- und Abonnementebene auf einem logischen SQL-Server finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen SQL-Server](resource-limits-logical-server.md).
+- Informationen zu Ressourcengrenzwerten auf Server- und Abonnementebene auf einem logischen SQL-Server finden Sie unter [Übersicht über Ressourcenlimits für einen logischen SQL-Server](resource-limits-logical-server.md).

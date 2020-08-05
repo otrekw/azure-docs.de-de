@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682398"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311567"
 ---
 # <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
 Führen Sie die folgenden Schritte aus, um eine Single-Page-Webanwendung (Single-Page Application, SPA) auf der Microsoft Identity Platform zu registrieren. Es gelten unterschiedliche Registrierungsschritte für MSAL.js 1.0, die den Flow zur impliziten Genehmigung unterstützt, und MSAL.js 2.0, die den Autorisierungscodeflow mit PKCE unterstützt.
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="create-the-app-registration"></a>Erstellen der App-Registrierung
 
@@ -38,7 +40,7 @@ Konfigurieren Sie als Nächstes die App-Registrierung mit einem **Umleitungs-URI
 - [MSAL.js 2.0 mit dem Authentifizierungscodeflow](#redirect-uri-msaljs-20-with-auth-code-flow) (empfohlen)
 - [MSAL.js 1.0 mit dem impliziten Flow](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Umleitungs-URI: MSAL.js 2.0 mit dem Authentifizierungscodeflow
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Umleitungs-URI: [MSAL.js 2.0 mit dem Authentifizierungscodeflow](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine App hinzuzufügen, die MSAL.js 2.0 oder höher verwendet. MSAL.js 2.0 (und höher) unterstützt den Autorisierungscodeflow mit PKCE und CORS als Reaktion auf [Einschränkungen bei Browsern, die Cookies von Drittanbietern blockieren](reference-third-party-cookies-spas.md). Der Flow zur impliziten Genehmigung wird von MSAL.js 2.0 und höheren Versionen nicht unterstützt.
 
@@ -50,7 +52,9 @@ Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine App hi
 
 Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie Ihren Umleitungs-URI über die Kachel **Single-Page-Webanwendung** im Bereich **Plattform hinzufügen** konfigurieren, wird Ihre Anwendungsregistrierung für die Unterstützung des Autorisierungscodeflows mit PKCE und CORS konfiguriert.
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Umleitungs-URI: MSAL.js 1.0 mit dem impliziten Flow
+Befolgen Sie das [Tutorial](tutorial-v2-javascript-auth-code.md), um weitere Anleitungen zu erhalten.
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Umleitungs-URI: [MSAL.js 1.0 mit dem impliziten Flow](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine Single-Page-App hinzuzufügen, die MSAL.js 1.3 (oder eine frühere Version) und den Flow zur impliziten Genehmigung verwendet. Der Autorisierungscodeflow wird von Anwendungen, die MSAL.js 1.3 oder eine frühere Version verwenden, nicht unterstützt.
 
@@ -64,6 +68,8 @@ Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine Single
 1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.
 
 Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie einen oder beide Tokentypen (**ID-Token** und **Zugriffstoken**) auswählen, haben Sie den Flow zur impliziten Genehmigung aktiviert.
+
+Befolgen Sie das [Tutorial](tutorial-v2-javascript-spa.md), um weitere Anleitungen zu erhalten.
 
 ## <a name="note-about-authorization-flows"></a>Hinweis zu Autorisierungsflows
 

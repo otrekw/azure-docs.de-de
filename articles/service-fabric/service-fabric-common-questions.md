@@ -4,12 +4,12 @@ description: Häufig gestellte Fragen zu Service Fabric, einschließlich Funktio
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258947"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292858"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -36,7 +36,7 @@ Wenn Sie sich für dieses Szenario interessieren, wird empfohlen, entweder über
 
 Einige Aspekte, die zu berücksichtigen sind: 
 
-1. Die Service Fabric-Clusterressource in Azure ist derzeit regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Das bedeutet, dass Sie bei einem regionalen Ausfall den Cluster nicht mehr über Azure Resource Manager oder das Azure-Portal verwalten können. Dieser Fall kann eintreten, auch wenn der Cluster weiterhin ausgeführt wird und Sie direkt mit ihm interagieren können. Darüber hinaus bietet Azure heute nicht die Möglichkeit, ein einzelnes virtuelles Netzwerk einzurichten, das in alle Regionen verwendet werden kann. Das bedeutet, dass für einen Cluster mit mehreren Regionen in Azure entweder [öffentliche IP-Adressen für jeden virtuellen Computer in den VM Scale Sets-Instanzen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) oder [Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich sind. Diese Netzwerkoptionen haben unterschiedliche Auswirkungen auf Kosten, Leistung und – in gewissem Maße – auf das Anwendungsdesign. Daher ist vor der Bereitstellung einer solchen Umgebung eine sorgfältige Analyse und Planung erforderlich.
+1. Die Service Fabric-Clusterressource in Azure ist derzeit regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Das bedeutet, dass Sie bei einem regionalen Ausfall den Cluster nicht mehr über Azure Resource Manager oder das Azure-Portal verwalten können. Dieser Fall kann eintreten, auch wenn der Cluster weiterhin ausgeführt wird und Sie direkt mit ihm interagieren können. Darüber hinaus bietet Azure heute nicht die Möglichkeit, ein einzelnes virtuelles Netzwerk einzurichten, das in alle Regionen verwendet werden kann. Das bedeutet, dass für einen Cluster mit mehreren Regionen in Azure entweder [öffentliche IP-Adressen für jede VM in den VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) oder [Azure VPN Gateway-Instanzen](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich sind. Diese Netzwerkoptionen haben unterschiedliche Auswirkungen auf Kosten, Leistung und – in gewissem Maße – auf das Anwendungsdesign. Daher ist vor der Bereitstellung einer solchen Umgebung eine sorgfältige Analyse und Planung erforderlich.
 2. Wartung, Verwaltung und Überwachung dieser Computer können kompliziert werden, insbesondere, wenn sie sich über verschiedene _Arten_ von Umgebungen erstrecken (beispielsweise zwischen verschiedenen Cloudanbietern oder zwischen lokalen Ressourcen und Azure). Machen Sie sich daher unbedingt mit Upgrades, Überwachung, Verwaltung und Diagnose für Cluster und Anwendungen vertraut, bevor Sie Produktionsworkloads in einer solchen Umgebung ausführen. Wenn Sie bei der Behebung derartiger Probleme in Azure oder Ihren eigenen Datencentern bereits Erfahrung haben, können die gleichen Lösungsansätze wahrscheinlich auch beim Erstellen oder Ausführen des Service Fabric-Clusters angewendet werden. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Erhalten Service Fabric-Knoten automatisch Betriebssystemupdates?
@@ -59,7 +59,7 @@ Es gibt derzeit andere Probleme mit großen VM-Skalierungsgruppen, z.B. den Mang
 
 Die unterstützte Mindestgröße für einen Service Fabric-Cluster, auf dem Produktionsworkloads ausgeführt werden, beträgt fünf Knoten. Für Entwicklungszenarios unterstützen wir Cluster mit einem Knoten (optimiert für eine schnelle Entwicklung in Visual Studio) und Cluster mit fünf Knoten.
 
-Ein Produktionscluster muss aus den folgenden drei Gründen mindestens 5 Knoten umfassen:
+Ein Produktionscluster muss aus den folgenden drei Gründen mindestens fünf Knoten umfassen:
 1. Selbst wenn keine Benutzerdienste ausgeführt werden, führt ein Service Fabric-Cluster verschiedene zustandsbehaftete Systemdienste aus, darunter Naming Service und Failover-Manager-Dienst. Diese Systemdienste sind für die Aufrechterhaltung des Clusterbetriebs unerlässlich.
 2. Es wird immer ein Replikat eines Dienstes pro Knoten platziert, sodass die Clustergröße die Obergrenze für die Anzahl von Replikaten ist, die ein Dienst (eigentlich eine Partition) aufweisen kann.
 3. Da bei einem Clusterupgrade mindestens ein Knoten heruntergefahren wird, sollte ein Puffer von mindestens einem Knoten vorhanden sein. Deshalb wird angestrebt, dass ein Produktionscluster mindestens zwei Knoten *zusätzlich* zum absoluten Mindestwert aufweist. Der absolute Mindestwert ist die Quorumgröße eines Systemdienstes, wie nachstehend erläutert wird.  
@@ -122,11 +122,11 @@ Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt.
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Wie kann sich meine Anwendung bei KeyVault authentifizieren, um geheime Schlüssel abzurufen?
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>Wie kann sich meine Anwendung bei Key Vault authentifizieren, um geheime Schlüssel abzurufen?
 Nachfolgend werden die Möglichkeiten für Ihre Anwendung zum Abrufen von Anmeldeinformationen für die Authentifizierung bei Key Vault aufgeführt:
 
 A. Während des Erstellungs-/Packauftrags Ihrer Anwendungen können Sie ein Zertifikat in das Datenpaket Ihrer Service Fabric-App pullen und dieses für die Authentifizierung bei Key Vault verwenden.
-B. Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
+B. Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) abzurufen und dann [Ihre geheimen Schlüssel aus Key Vault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
 
 ## <a name="application-design"></a>Anwendungsentwurf
 
@@ -155,7 +155,7 @@ Nehmen Sie beispielsweise an, Sie hätten eine zuverlässige Sammlung in einem D
 
 Denken Sie daran, dass jedes Objekt dreimal gespeichert werden muss (ein primäres Objekt und zwei Replikate). Demnach hätten Sie genügend Arbeitsspeicher für ca. 35 Millionen Objekte in Ihrer Sammlung, wenn Sie mit voller Kapazität arbeiten. Wir empfehlen jedoch, den gleichzeitigen Ausfall einer Fehlerdomäne und einer Upgradedomäne aufzufangen, was in etwa 1/3 der Kapazität ausmacht, und würden daher die Anzahl auf ungefähr 23 Millionen verringern.
 
-Beachten Sie, dass bei dieser Berechnung zudem Folgendes vorausgesetzt wird:
+Bei dieser Berechnung wird Folgendes vorausgesetzt:
 
 - Die Daten sind einigermaßen gleichmäßig über die Partitionen verteilt, oder Sie melden Auslastungsmetriken an den Resource Manager des Clusters. Standardmäßig führt Service Fabric basierend auf der Replikatanzahl einen Lastenausgleich durch. Im vorherigen Beispiel würden 10 primäre Replikate und 20 sekundäre Replikate auf jedem Knoten im Cluster platziert. Dies funktioniert gut für Lasten, die gleichmäßig auf die Partitionen verteilt sind. Wenn die Last nicht gleichmäßig verteilt ist, müssen Sie die Last melden, damit der Resource Manager kleinere Replikate zusammenlegen und zulassen kann, dass größere Replikate auf einem einzelnen Knoten mehr Arbeitsspeicher beanspruchen.
 
@@ -166,6 +166,12 @@ Beachten Sie, dass bei dieser Berechnung zudem Folgendes vorausgesetzt wird:
 ### <a name="how-much-data-can-i-store-in-an-actor"></a>Wie viele Daten können in einem Akteur gespeichert werden?
 
 Wie bei zuverlässigen Diensten wird die Menge der Daten, die Sie in einem Akteurdienst speichern können, nur durch den insgesamt verfügbaren Speicherplatz und Arbeitsspeicher auf den Knoten in Ihrem Cluster begrenzt. Einzelne Akteure sind jedoch am effektivsten, wenn sie zum Kapseln einer kleinen Menge von Zustandslogik und der zugehörigen Geschäftslogik verwendet werden. Allgemein gilt, dass ein einzelner Akteur einen Zustand aufweisen sollte, der in KB gemessen werden kann.
+
+
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Wo speichert der Azure Service Fabric-Ressourcenanbieter Kundendaten?
+
+Der Azure Service Fabric-Ressourcenanbieter verschiebt oder speichert keine Kundendaten aus der Region, in der er bereitgestellt wurde.
+
 
 ## <a name="other-questions"></a>Andere Fragen
 

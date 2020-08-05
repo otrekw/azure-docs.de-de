@@ -1,29 +1,29 @@
 ---
 title: Verwenden von Text Analytics for Health
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie medizinische Informationen mithilfe von Text Analytics for Health aus unstrukturiertem klinischem Text extrahiert und bezeichnet werden.
+description: Hier erfahren Sie, wie medizinische Informationen mithilfe von Text Analytics for Health aus unstrukturiertem klinischem Text extrahiert und bezeichnet werden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122193"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373469"
 ---
-# <a name="how-to-use-text-analytics-for-health-preview"></a>Gewusst wie: Verwenden von Text Analytics for Health (Vorschau)
+# <a name="how-to-use-text-analytics-for-health-preview"></a>Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)
 
 > [!IMPORTANT] 
 > Text Analytics for Health ist eine Vorschaufunktion, die „WIE BESEHEN“ und „MIT ALLEN MÄNGELN“ zur Verfügung gestellt wird. Daher sollte **Text Analytics for Health (Vorschau) nicht in einer Produktionsumgebung implementiert oder bereitgestellt werden.** Text Analytics for Health ist nicht für die Verwendung als medizinisches Hilfsmittel, zur klinischen Unterstützung, als Diagnosetool oder als sonstige Technologie für den Einsatz in Diagnose, Therapie, Entschärfung, Behandlung oder Prävention von Krankheiten oder medizinischen Fällen vorgesehen oder verfügbar, und Microsoft erteilt keine Lizenzen oder Rechte zur Nutzung dieser Funktion für die beschriebenen Zwecke. Diese Funktion ist nicht als Ersatz für professionelle medizinische Beratung oder medizinische Gutachten, Diagnosen, Behandlungen oder das klinische Urteilsvermögen einer medizinischen Fachkraft konzipiert oder vorgesehen und sollte nicht als solcher eingesetzt werden. Jede Verwendung von Text Analytics for Health liegt in der alleinigen Verantwortung des Kunden. Microsoft garantiert nicht, dass Text Analytics for Health oder die in Verbindung mit dieser Funktion bereitgestellten Materialien für medizinische Zwecke ausreichen oder anderweitig die gesundheitlichen oder medizinischen Anforderungen von Personen erfüllen. 
 
 
-Azure Text Analytics for Health ist ein Containerdienst, der relevante medizinische Informationen aus unstrukturierten Texten wie Arztbriefen, Entlassungszusammenfassungen, klinischen Dokumenten und elektronischen Gesundheitsakten extrahiert und bezeichnet.  
+Text Analytics for Health ist ein Containerdienst, der relevante medizinische Informationen aus unstrukturierten Texten wie Arztbriefen, Entlassungsberichten, klinischen Dokumenten und elektronischen Gesundheitsakten extrahiert und bezeichnet.  
 
 ## <a name="features"></a>Features
 
@@ -70,7 +70,7 @@ Text Analytics for Health unterstützt nur Dokumente in englischer Sprache.
 
 ## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
 
-Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern](https://aka.ms/cognitivegate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. Zurzeit wird Ihnen die Verwendung von Text Analytics for Health nicht in Rechnung gestellt. 
+Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern](https://aka.ms/cognitivegate) aus, und übermitteln Sie es, um Zugriff auf den Container anzufordern. Zurzeit fallen für die Verwendung von Text Analytics for Health keine Gebühren an. 
 
 [!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -80,8 +80,8 @@ Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern](http
 
 Es gibt mehrere Möglichkeiten zum Installieren und Ausführen des Containers. 
 
-1. Verwenden des [Azure-Portals](text-analytics-how-to-install-containers.md?tabs=healthcare) zum Erstellen einer Ressource für die Textanalyse und Verwenden von Docker zum Abrufen Ihres Containers.
-2. Verwenden der unten dargestellten PowerShell- und [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)-Skripts zum Automatisieren der Containerkonfiguration bei der Ressourcenbereitstellung.
+- Verwenden Sie das [Azure-Portal](text-analytics-how-to-install-containers.md?tabs=healthcare), um eine Ressource für die Textanalyse zu erstellen, und Docker, um Ihren Container abzurufen.
+- Verwenden Sie die folgenden PowerShell- und [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)-Skripts, um die Containerkonfiguration bei der Ressourcenbereitstellung zu automatisieren.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Installieren des Containers mithilfe von Azure Web App für Container
 
@@ -186,7 +186,7 @@ server {
 
 #### <a name="example-docker-compose-file"></a>Docker Compose-Beispieldatei
 
-Im Beispiel unten wird gezeigt, wie eine [Docker Compose](https://docs.docker.com/compose/reference/overview)-Datei erstellt werden kann, um die Container für NGINX und Text Analytics for Health bereitzustellen:
+Im Beispiel unten wird veranschaulicht, wie eine [Docker Compose](https://docs.docker.com/compose/reference/overview)-Datei erstellt werden kann, um die Container für nginx und Text Analytics for Health bereitzustellen:
 
 ```yaml
 version: "3.7"

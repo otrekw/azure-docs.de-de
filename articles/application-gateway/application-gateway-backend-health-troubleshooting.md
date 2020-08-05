@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808194"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132040"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -176,7 +176,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 | **Fehler** | **Aktionen** |
 | --- | --- |
-| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 401 (401 empfangen) | Überprüfen Sie, ob der Back-End-Server Authentifizierung erfordert. Application Gateway-Tests können zu diesem Zeitpunkt keine Anmeldeinformationen für die Authentifizierung übergeben. Lassen Sie \"HTTP 401\" in einer Teststatuscode-Übereinstimmung zu, oder testen Sie einen Pfad, in dem der Server keine Authentifizierung erfordert. | |
+| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 401 (401 empfangen) | Überprüfen Sie, ob der Back-End-Server Authentifizierung erfordert. Application Gateway-Tests können keine Anmeldeinformationen für die Authentifizierung übergeben. Lassen Sie \"HTTP 401\" in einer Teststatuscode-Übereinstimmung zu, oder testen Sie einen Pfad, in dem der Server keine Authentifizierung erfordert. | |
 | Probe status code mismatch: (Teststatuscode-Konflikt:) Received 403 (403 empfangen) | Access forbidden. (Zugriff verweigert.) Überprüfen Sie, ob der Zugriff auf den Pfad auf dem Back-End-Server zulässig ist. | |
 | Probe status code mismatch: (Teststatuscode-Konflikt:) Received 404 (404 empfangen) | Page not found. (Seite nicht gefunden.) Überprüfen Sie, ob der Zugriff auf den Hostnamenpfad auf dem Back-End-Server zulässig ist. Ändern Sie den Hostnamen- oder Pfadparameter in einen Wert, auf den zugegriffen werden kann. | |
 | Probe status code mismatch: (Teststatuscode-Konflikt:) Received 405 (405 empfangen) | Die Testanforderungen für Application Gateway verwenden die HTTP GET-Methode. Überprüfen Sie, ob Ihr Server diese Methode zulässt. | |

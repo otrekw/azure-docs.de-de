@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522aed07d850dfdb2782ee8263f33bd3f42eb8c2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258044"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373238"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Verwenden der Azure Digital Twins-APIs und SDKs
 
@@ -54,7 +54,7 @@ So verwenden Sie die Datenebenen-APIs
    - Sie suchen die SDK-Quelle, einschließlich eines Ordner mit Beispielen, in GitHub: [Azure IoT Digital Twins-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - Sie können die [SDK-Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview) anzeigen.
    - Sie können ausführliche Informationen und Anwendungsbeispiele anzeigen, indem Sie mit dem Abschnitt [.NET (C#) SDK (Datenebene)](#net-c-sdk-data-plane) dieses Artikels fortfahren.
-* Mit AutoRest können Sie ein SDK für eine andere Sprache generieren. Führen Sie die Anweisungen unter [Gewusst wie: Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest](how-to-create-custom-sdks.md) aus.
+* Mit AutoRest können Sie ein SDK für eine andere Sprache generieren. Führen Sie die Anweisungen unter [ *Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest*](how-to-create-custom-sdks.md).
 
 Sie können auch Datenebenen-APIs anwenden, indem Sie mit Azure Digital Twins über die [CLI](how-to-use-cli.md) interagieren.
 
@@ -71,11 +71,11 @@ Um das SDK zu verwenden, fügen Sie Ihrem Projekt das NuGet-Paket **Azure.Digita
 * Sie können das .NET-Befehlszeilentool verwenden:
 
     ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
     dotnet add package Azure.identity
     ```
 
-Eine ausführliche exemplarische Vorgehensweise zur Verwendung der APIs in der Praxis finden Sie im [Tutorial: Codieren einer Client-App](tutorial-code.md) geschriebenen App. 
+Eine ausführliche exemplarische Vorgehensweise zur Verwendung der APIs in der Praxis finden Sie im [*Tutorial: Programmieren einer Client-App*](tutorial-code.md). 
 
 ### <a name="net-sdk-usage-examples"></a>Beispiele für die Verwendung des .NET SDKs
 
@@ -137,7 +137,7 @@ await foreach (string twin in result)
 }
 ```
 
-Eine exemplarische Vorgehensweise zu diesem Beispiel-App-Code finden Sie im [Tutorial: Codieren einer Client-App](tutorial-code.md). 
+Eine exemplarische Vorgehensweise zu diesem Beispiel-App-Code finden Sie im [*Tutorial: Programmieren einer Client-App*](tutorial-code.md). 
 
 Weitere Beispiele finden Sie auch im [GitHub-Repository für das .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples).
 
@@ -284,14 +284,14 @@ API-Metriken wie Anforderungen, Wartezeit und Ausfallrate können im [Azure-Port
 
 Suchen Sie auf der Startseite des Portals nach Ihrer Azure Digital Twins-Instanz, um die Details abzurufen. Wählen Sie die Option **Metrics** aus dem Menü der Azure Digital Twins-Instanz aus, um die Seite *Metriken* aufzurufen.
 
-:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="Seite „Metriken“ einer Azure Digital Twins-Instanz im Azure-Portal":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Screenshot der Seite „Metriken“ für Azure Digital Twins":::
 
 Von hier aus können Sie die Metriken für Ihre Instanz anzeigen und benutzerdefinierte Ansichten erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie mit den APIs eine Azure Digital Twins-Instanz erstellen können:
-* [Gewusst wie: Erstellen einer Azure Digital Twins-Instanz](how-to-set-up-instance.md)
+So verwenden Sie APIs zum Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung:
+* [*Verwenden Einrichten einer Instanz und Authentifizierung*](how-to-set-up-instance-scripted.md)
 
 Oder durchlaufen Sie die Schritte zur Erstellung einer Client-App, wie sie in dieser Anleitung verwendet wird:
-* [Tutorial: Codieren einer Client-App](tutorial-code.md)
+* [*Tutorial: Codieren einer Client-App*](tutorial-code.md)

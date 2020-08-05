@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: Resource Manager-Ausnahmen | Microsoft-Dokumentation'
 description: Enthält eine Liste mit den Azure Event Hubs-Ausnahmen, die von Azure Resource Manager angezeigt werden, und vorgeschlagene Aktionen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1a3ca647bbf9e6590446549455a9853411fd7d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312529"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281037"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs – Resource Manager-Ausnahmen
 In diesem Artikel werden die Ausnahmen aufgelistet, die bei der Interaktion mit Azure Event Hubs mithilfe von Azure Resource Manager (über Vorlagen oder direkte Aufrufe) generiert werden.
@@ -44,7 +44,7 @@ Die folgenden Abschnitte enthalten verschiedene Ausnahmen/Fehler, die von Azure 
 | BadRequest | none | Sekundärer Namespace kann nicht aktualisiert werden | Der Namespace kann nicht aktualisiert werden, weil es sich um den sekundären Namespace der [Kopplung einer Notfallwiederherstellung mit Georeplikation](event-hubs-geo-dr.md) handelt. | Nehmen Sie die Änderung stattdessen am primären Namespace der Kopplung vor, falls dies möglich ist. Lösen Sie andernfalls die Kopplung einer Notfallwiederherstellung mit Georeplikation auf, um die Änderung vorzunehmen. |
 | BadRequest | none | Automatische Vergrößerung kann in Basic-SKU nicht festgelegt werden | Die automatische Vergrößerung kann für Event Hubs-Namespaces im Tarif „Basic“ nicht aktiviert werden. | Sie müssen den Tarif „Standard“ verwenden, um für einen Namespace die [automatische Vergrößerung zu aktivieren](event-hubs-auto-inflate.md). |
 | BadRequest | none | Es ist nicht genügend Kapazität vorhanden, um den Namespace zu erstellen. Wenden Sie sich an Ihren Event Hubs-Administrator. | Für die ausgewählte Region ist keine Kapazität mehr vorhanden, und es können keine weiteren Namespaces erstellt werden. | Wählen Sie eine andere Region für Ihren Namespace aus. |
-| BadRequest | none | Der Vorgang kann nicht für den Entitätstyp „ConsumerGroup“ durchgeführt werden, weil für den Namespace „Namespacename“ der Tarif „Basic“ verwendet wird.  | Für Event Hubs-Namespaces im Tarif „Basic“ ist ein festes [Kontingent]\((event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits) von einer Consumergruppe festgelegt (Standardeinstellung). Die Erstellung von weiteren Consumergruppen wird nicht unterstützt. | Verwenden Sie die Standardconsumergruppe ($Default) weiter, oder erwägen Sie stattdessen die Verwendung eines Event Hubs-Namespace im Tarif „Standard“, falls Sie weitere Consumergruppen benötigen. | 
+| BadRequest | none | Der Vorgang kann nicht für den Entitätstyp „ConsumerGroup“ durchgeführt werden, weil für den Namespace „Namespacename“ der Tarif „Basic“ verwendet wird.  | Die Event Hubs-Namespaces im Tarif „Basic“ verfügen über ein [Kontingent](event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits) von einer Consumergruppe (Standardeinstellung). Die Erstellung von weiteren Consumergruppen wird nicht unterstützt. | Verwenden Sie die Standardconsumergruppe ($Default) weiter, oder erwägen Sie stattdessen die Verwendung eines Event Hubs-Namespace im Tarif „Standard“, falls Sie weitere Consumergruppen benötigen. | 
 | BadRequest | none | Der Namespace „Namespacename“ ist nicht vorhanden. | Der angegebene Namespace wurde nicht gefunden. | Überprüfen Sie, ob der Namespacename stimmt und in Ihrem Abonnement auffindbar ist. Wenn nicht, sollten Sie einen [Event Hubs-Namespace erstellen](event-hubs-create.md). | 
 | BadRequest | none | Die Standorteigenschaft der Ressource stimmt nicht mit dem Namespace überein, in dem diese enthalten ist. | Beim Erstellen eines Event Hubs in einer bestimmten Region ist ein Fehler aufgetreten, weil diese nicht mit der Region des Namespace übereinstimmt. | Versuchen Sie, den Event Hub in derselben Region wie den Namespace zu erstellen. | 
 

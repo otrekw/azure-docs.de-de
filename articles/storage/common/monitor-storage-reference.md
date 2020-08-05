@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077852"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Überwachen von Daten in Azure Storage – Referenz
 
@@ -46,6 +46,7 @@ Diese Tabelle enthält [Blob Storage-Metriken](https://docs.microsoft.com/azure
 | ------------------- | ----------------- |
 | BlobCapacity | Der gesamte im Speicherkonto beanspruchte Blobspeicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 <br/> Abmessungen: **BlobType** und **BlobTier** ([Definition](#metrics-dimensions)) |
 | BlobCount    | Die Anzahl von im Speicherkonto gespeicherten Blobs. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 <br/> Abmessungen: **BlobType** und **BlobTier** ([Definition](#metrics-dimensions)) |
+| BlobProvisionedSize | Die Speichermenge, die im Speicherkonto bereitgestellt wird. Diese Metrik gilt nur für Premium-Speicherkonten. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Average |
 | ContainerCount    | Die Anzahl von Containern im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 | IndexCapacity     | Die vom hierarchischen ADLS Gen2-Index verwendete Speichermenge <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 
@@ -78,6 +79,7 @@ Diese Tabelle enthält [File Storage-Metriken](https://docs.microsoft.com/azure
 | FileCapacity | Der vom Speicherkonto beanspruchte File-Speicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 | FileCount   | Die Anzahl von Dateien im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 | FileShareCount | Die Anzahl von Dateifreigaben im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
+| FileShareProvisionedIOPS | Die Anzahl der bereitgestellten IOPS in einer Dateifreigabe. Diese Metrik gilt nur für den Speicher für Premiumdateien. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Average |
 
 ### <a name="transaction-metrics"></a>Transaktionsmetriken
 

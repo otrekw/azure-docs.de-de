@@ -4,16 +4,16 @@ description: Konfigurieren, Optimieren und Problembehandlung in AzCopy.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504354"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282431"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -63,7 +63,7 @@ In diesem Abschnitt wird beschrieben, wie Sie diese Optimierungsaufgaben ausfüh
 
 ### <a name="run-benchmark-tests"></a>Ausführen von Vergleichstests
 
-Sie können einen Leistungsvergleichstest für bestimmte Blobcontainer oder Dateifreigaben ausführen, um allgemeine Leistungsstatistiken zu erhalten und Leistungsengpässe zu ermitteln. 
+Sie können einen Leistungsvergleichstest für bestimmte Blobcontainer oder Dateifreigaben ausführen, um allgemeine Leistungsstatistiken zu erhalten und Leistungsengpässe zu ermitteln. Sie können den Test ausführen, indem Sie generierte Testdaten hoch- oder herunterladen. 
 
 Verwenden Sie den folgenden Befehl, um einen Leistungsvergleichstest auszuführen.
 
@@ -77,9 +77,7 @@ Verwenden Sie den folgenden Befehl, um einen Leistungsvergleichstest auszuführe
 
 Mit diesem Befehl wird ein Leistungsvergleichstest ausgeführt, indem Testdaten an ein angegebenes Ziel hochgeladen werden. Die Testdaten werden im Arbeitsspeicher generiert, an das Ziel hochgeladen und dann nach Abschluss des Tests aus dem Ziel gelöscht. Mithilfe optionaler Befehlsparameter können Sie angeben, wie viele Dateien und in welcher Größe generiert werden sollen.
 
-Ausführliche Referenzdokumente finden Sie unter [azcopy benchmark](storage-ref-azcopy-bench.md).
-
-Wenn Sie ausführliche Hilfe zu diesem Befehl anzeigen möchten, geben Sie `azcopy benchmark -h` ein, und drücken Sie dann EINGABE.
+Wenn Sie diesen Test ausführen möchten, indem Sie Daten herunterladen, legen Sie den `mode`-Parameter auf `download` fest. Ausführliche Referenzdokumente finden Sie unter [azcopy benchmark](storage-ref-azcopy-bench.md). 
 
 ### <a name="optimize-throughput"></a>Optimieren des Durchsatzes
 
@@ -193,7 +191,7 @@ Verwenden Sie einen der folgende Befehle.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
-| **Windows** | PowerShell: `$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> Verwenden Sie an einer Eingabeaufforderung: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | PowerShell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> Verwenden Sie an einer Eingabeaufforderung: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 

@@ -3,14 +3,16 @@ title: 'Kommerzieller Microsoft-Marketplace: Erstellen eines Azure-Anwendungsang
 description: Hier lernen Sie die Schritte und Aspekte des Erstellens eines neuen Azure-Anwendungsangebots im kommerziellen Marketplace-Portal in Partner Center kennen. Sie können Ihr Azure-Anwendungsangebot im Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) anbieten oder verkaufen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: AarathiN
+ms.author: aarathin
+ms.date: 07/14/2020
+ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121968"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326670"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -65,7 +67,7 @@ Das Video [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den A
 
 Wählen Sie eine oder beide der folgenden Skriptumgebungen als Unterstützung bei der Verwaltung Ihrer Azure-Anwendung aus:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
 
 Es empfiehlt sich, dass Sie Ihrer Entwicklungsumgebung die folgenden Tools hinzufügen:
@@ -308,7 +310,7 @@ Mit der technischen Konfiguration werden die Details (Mandanten-ID und App-ID) d
 
 ## <a name="plan-overview"></a>Planübersicht
 
-Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb desselben Angebots bereitstellen. Diese Pläne (Im Cloud-Partnerportal als SKUs bezeichnet) können sich in Bezug auf den Plantyp (Lösungsvorlage oder verwaltete Anwendung), Monetarisierung oder Zielgruppe unterscheiden.  Konfigurieren Sie mindestens einen Plan, um Ihr Angebot im Marketplace zu listen.
+Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb desselben Angebots bereitstellen. Diese Pläne (vorher als SKUs bezeichnet) können sich in Bezug auf den Plantyp (Lösungsvorlage oder verwaltete Anwendung), die Monetarisierung oder Zielgruppe unterscheiden. Konfigurieren Sie mindestens einen Plan, um Ihr Angebot im Marketplace zu listen.
 
 Nach der Erstellung werden die Plannamen, die IDs und Plantypen, die Verfügbarkeit (öffentlich oder privat), der aktuelle Veröffentlichungsstatus und alle verfügbaren Aktionen auf dieser Registerkarte angezeigt.
 
@@ -510,7 +512,7 @@ Geben Sie an, wer in jeder unterstützten Cloud über Verwaltungszugriff auf die
 
 **Autorisierungen:** Fügen Sie die Azure Active Directory-Objekt-ID des Benutzers, der Gruppe oder der Anwendung hinzu, dem oder der die Berechtigung für die verwaltete Ressourcengruppe erteilt werden soll. Sie können den Benutzer anhand seiner Prinzipal-ID auf dem [Blatt „Azure Active Directory Benutzer“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) identifizieren.
 
-Wählen Sie für jeden Prinzipal eine der in Azure AD integrierten Rollen aus der Liste aus (Besitzer oder Mitwirkender). Die von Ihnen ausgewählte Rolle beschreibt die Berechtigungen, die der Prinzipal für die Ressourcen im Kundenabonnement erhält. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../../role-based-access-control/built-in-roles.md). Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) finden Sie unter [Erste Schritte mit RBAC im Azure-Portal](../../role-based-access-control/overview.md).
+Wählen Sie für jeden Prinzipal eine der in Azure AD integrierten Rollen aus der Liste aus (Besitzer oder Mitwirkender). Die von Ihnen ausgewählte Rolle beschreibt die Berechtigungen, die der Prinzipal für die Ressourcen im Kundenabonnement erhält. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md). Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) finden Sie unter [Erste Schritte mit RBAC im Azure-Portal](../../role-based-access-control/overview.md).
 
 >[!Note]
 >Obwohl Sie bis zu 100 Autorisierungen pro Cloud hinzufügen können, ist es im Allgemeinen einfacher, eine Active Directory-Benutzergruppe zu erstellen und ihre ID in der „Prinzipal-ID“ anzugeben. Dies ermöglicht Ihnen, nach der Bereitstellung des Plans weitere Benutzer zur Verwaltungsgruppe hinzuzufügen, und verringert die Notwendigkeit, den Plan zu aktualisieren, nur um weitere Autorisierungen hinzuzufügen.

@@ -3,12 +3,13 @@ title: Filterung und Vorverarbeitung im Application Insights-SDK | Microsoft-Dok
 description: Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer für das SDK, um die Daten zu filtern oder ihnen Eigenschaften hinzuzufügen, bevor die Telemetriedaten an das Application Insights-Portal gesendet werden.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: d33aeebfb374f081b4ae5dee7f83ccd04d0835ee
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-javascript
+ms.openlocfilehash: eec3cf44eb516ce20db564e1bed32e5741bfd02a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075789"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366754"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtern und Vorverarbeiten von Telemetriedaten im Application Insights-SDK
 
@@ -17,7 +18,7 @@ Sie können Plug-Ins für das Application Insights SDK schreiben und konfigurier
 * [Erstellen von Stichproben](sampling.md) verringert sich der Umfang der Telemetriedaten, ohne Statistiken zu verfälschen. Zusammengehörige Datenpunkte werden dabei zusammengehalten, sodass Sie bei der Diagnose von Problemen zwischen diesen navigieren können. Im Portal wird die Gesamtanzahl multipliziert, um eine Kompensation der Stichproben zu erreichen.
 * Durch das Filtern mit Telemetrieprozessoren können Sie Telemetriedaten im SDK herausfiltern, bevor sie an den Server gesendet werden. Sie können beispielsweise den Umfang der Telemetriedaten verringern, indem Sie Anforderungen von Robots ausschließen. Filtern stellt ein grundlegenderes Verfahren zur Senkung des Datenverkehrs dar als das Erstellen von Stichproben. Sie können so besser steuern, was übertragen wird, doch hat dies Auswirkungen auf die Statistik. Sie könnten beispielsweise alle erfolgreichen Anforderungen herausfiltern.
 * [Telemetrieinitialisierer](#add-properties) fügen Eigenschaften zu beliebigen von der App gesendeten Telemetriedaten hinzu oder ändern sie, einschließlich Telemetriedaten von Standardmodulen. Sie könnten z. B. berechnete Werte hinzufügen oder Versionsnummern, nach denen Sie die Daten im Portal filtern.
-* [SDK-API](../../azure-monitor/app/api-custom-events-metrics.md) wird zum Senden benutzerdefinierter Ereignisse und Metriken verwendet.
+* [SDK-API](./api-custom-events-metrics.md) wird zum Senden benutzerdefinierter Ereignisse und Metriken verwendet.
 
 Vorbereitungen:
 
@@ -34,7 +35,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrieprozessor und regi
 > [!WARNING]
 > Die Filterung der vom SDK gesendeten Telemetriedaten mithilfe von Prozessoren kann die im Portal angezeigten Statistiken verfälschen und die Nachverfolgung verwandter Elemente erschweren.
 >
-> Verwenden Sie stattdessen [Sampling](../../azure-monitor/app/sampling.md).
+> Verwenden Sie stattdessen [Sampling](./sampling.md).
 >
 >
 
@@ -352,7 +353,7 @@ Fügen Sie einen Telemetrieinitialisierer unmittelbar nach dem Initialisierungsc
 </script>
 ```
 
-Eine Übersicht über die nicht benutzerdefinierten Eigenschaften, die für das Telemetrieelement verfügbar sind, finden Sie im [Application Insights-Exportdatenmodell](../../azure-monitor/app/export-data-model.md).
+Eine Übersicht über die nicht benutzerdefinierten Eigenschaften, die für das Telemetrieelement verfügbar sind, finden Sie im [Application Insights-Exportdatenmodell](./export-data-model.md).
 
 Sie können beliebig viele Initialisierer hinzufügen. Sie werden in der Reihenfolge aufgerufen, in der sie hinzugefügt werden.
 
@@ -498,7 +499,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>Hinzufügen von Informationen aus HttpContext
 
-Der folgende Beispielinitialisierer liest Daten aus [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) und fügt sie an eine `RequestTelemetry`-Instanz an. Der `IHttpContextAccessor` wird automatisch durch die Abhängigkeitsinjektion des Konstruktors bereitgestellt.
+Der folgende Beispielinitialisierer liest Daten aus [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) und fügt sie an eine `RequestTelemetry`-Instanz an. Der `IHttpContextAccessor` wird automatisch durch die Abhängigkeitsinjektion des Konstruktors bereitgestellt.
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -542,8 +543,8 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 
 ## <a name="reference-docs"></a>Referenz
 
-* [API-Übersicht](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET-Referenz](https://msdn.microsoft.com/library/dn817570.aspx)
+* [API-Übersicht](./api-custom-events-metrics.md)
+* [ASP.NET-Referenz](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK-Code
 
@@ -552,6 +553,7 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
-* [Durchsuchen von Ereignissen und Protokollen](../../azure-monitor/app/diagnostic-search.md)
-* [Stichproben](../../azure-monitor/app/sampling.md)
-* [Problembehandlung](../../azure-monitor/app/troubleshoot-faq.md)
+* [Durchsuchen von Ereignissen und Protokollen](./diagnostic-search.md)
+* [Stichprobenentnahme](./sampling.md)
+* [Problembehandlung](../faq.md)
+

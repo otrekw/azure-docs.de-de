@@ -3,19 +3,21 @@ title: Cloud-Partnerportal-API-Referenz – kommerzieller Microsoft-Marketplace
 description: Beschreibung der, Voraussetzungen zum Verwenden der und die Liste der Marketplace-API-Vorgänge.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113580"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292925"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud-Partnerportal-API-Referenz
 
 > [!NOTE]
-> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und werden auch nach der Migration Ihrer Angebote zu Partner Center weiterhin funktionieren. Die Integration führt zu kleineren Änderungen. Beachten Sie die in diesem Dokument aufgeführten [Änderungen an CCP-APIs](#changes-to-cpp-apis-after-the-migration-to-partner-center), um sicherzustellen, dass Ihr Code nach der Migration zu Partner Center weiterhin funktioniert.
+> Die Cloud-Partnerportal-APIs sind in Partner Center integriert und funktionieren auch weiterhin. Der Übergang führt zu kleineren Änderungen. Beachten Sie die in diesem Dokument aufgeführten [Änderungen an CCP-APIs](#changes-to-cpp-apis-after-the-migration-to-partner-center), um sicherzustellen, dass Ihr Code nach dem Produktübergang zu Partner Center weiterhin funktioniert. CPP-APIs sollten nur für vorhandene Produkte verwendet werden, die bereits vor dem Übergang zu Partner Center integriert wurden. Neue Produkte sollten die Partner Center-APIs für die Übermittlung verwenden.
 
 Die Cloud-Partnerportal-REST-APIs ermöglichen programmgesteuertes Abrufen und Bearbeiten von Workloads, Angeboten und Herausgeberprofilen. In den APIs wird rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, um die richtigen Berechtigungen während der Verarbeitungszeit zu erzwingen.
 

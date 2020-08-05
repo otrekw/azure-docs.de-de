@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d02800d39e918478243429971c0d48c4d0c59148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020100"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -30,7 +30,7 @@ Die Wahl der richtigen Authentifizierungsmethode ist die erste Hürde für Organ
 Die Identität ist die neue Steuerungsebene der IT-Sicherheit, sodass die Authentifizierung der Zugriffsschutz einer Organisation für die neue Cloudwelt ist. Organisationen benötigen eine Steuerebene für die Identität, mit der ihre Sicherheit gestärkt und die Cloud-Apps vor Eindringlingen geschützt werden.
 
 > [!NOTE]
-> Das Ändern der Authentifizierungsmethode erfordert Planung, Tests und potenzielle Ausfallzeiten. Das [gestaffelte Rollout](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) ist eine gute Möglichkeit zum Testen und schrittweisen Migrieren von der Verbund- zur Cloudauthentifizierung.
+> Das Ändern der Authentifizierungsmethode erfordert Planung, Tests und potenzielle Ausfallzeiten. Der [gestaffelte Rollout](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) ist eine gute Möglichkeit, die Migration des Benutzers von der Verbund- zur Cloudauthentifizierung zu testen.
 
 ### <a name="out-of-scope"></a>Nicht betreffende Organisationen
 Organisationen, die über keine lokalen Verzeichnisse verfügen, stehen nicht im Mittelpunkt dieses Artikels. Normalerweise werden Identitäten von diesen Unternehmen nur in der Cloud erstellt, wofür keine Hybrididentitätslösung erforderlich ist. Ausschließlich in der Cloud existierende Identitäten sind nicht mit entsprechenden lokalen Identitäten verknüpft.

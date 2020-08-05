@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb – Azure PowerShell
-description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer mit beschleunigtem Netzwerkbetrieb erstellen.
+description: Erstellen Sie einen virtuellen Windows-Computer (VM) mit beschleunigtem Netzwerkbetrieb, um seine Netzwerkleistung erheblich zu verbessern.
 services: virtual-network
 documentationcenter: ''
 author: gsilva5
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975791"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289625"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb mit Azure PowerShell
 
@@ -63,7 +63,7 @@ Die folgenden Distributionen werden direkt aus dem Azure-Katalog unterstützt:
 
 Der beschleunigte Netzwerkbetrieb wird für die meisten Größen universeller, computeoptimierter Instanzen mit mindestens zwei virtuellen CPUs (vCPUs) unterstützt.  Folgende Reihen werden unterstützt: Dv2/DSv2 und F/Fs
 
-Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens vier vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, D/Dsv4, E/Esv3, Ea/Easv4, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
+Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens vier vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, D/Dsv4, Da/Dasv4, E/Esv3, Ea/Easv4, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
 
 Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

@@ -5,18 +5,18 @@ description: Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning ein 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, racking-python
+ms.openlocfilehash: 8d1ea9b0989a71268b98f0b2fd1d95d5671f996b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560405"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325796"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,6 +56,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
     >
     > Beim Packen für Functions wird die Eingabe standardmäßig als Text behandelt. Wenn Sie die Rohbytes der Eingabe verarbeiten möchten (z. B. für Blob-Trigger), müssen Sie [AMLRequest zum Akzeptieren von Rohdaten](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data) verwenden.
 
+Weitere Informationen zum Einstiegsskript finden Sie unter [Definieren des Bewertungscodes](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script).
 
 * **Abhängigkeiten**, z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
 

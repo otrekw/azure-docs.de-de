@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205281"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290932"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
@@ -25,34 +25,34 @@ Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hie
 
 Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Es muss kein Sprachcode angegeben werden. Weitere Informationen finden Sie unter [Optische Zeichenerkennung (OCR)](concept-recognizing-text.md).
 
-|Sprache| Sprachcode | OCR-API | Lese-API |
-|:-----|:----:|:-----:|:---:|
-|Arabisch | `ar`|✔ | |
-|Chinesisch (vereinfacht) | `zh-Hans`|✔ | |
-|Chinesisch (traditionell) | `zh-Hant`|✔ | |
-|Tschechisch | `cs` |✔ | |
-|Dänisch | `da` |✔ | |
-|Niederländisch | `nl` |✔ |✔ |
-|Englisch | `en` |✔ |✔ |
-|Finnisch | `fi` |✔ | |
-|Französisch | `fr` |✔ |✔ |
-|Deutsch | `de` |✔ |✔ |
-|Griechisch | `el` |✔ | |
-|Ungarisch | `hu` |✔ | |
-|Italienisch | `it` |✔ |✔ |
-|Japanisch | `ja` |✔ | |
-|Koreanisch | `ko` |✔ | |
-|Norwegisch | `nb` |✔ | |
-|Polnisch | `pl` |✔ | |
-|Portugiesisch | `pt` |✔ |✔ |
-|Rumänisch | `ro` |✔ | |
-|Russisch | `ru` |✔ | |
-|Serbisch (Kyrillisch) | `sr-Cyrl` |✔ | |
-|Serbisch (Lateinisch) | `sr-Latn` |✔ | |
-|Slowakisch | `sk` |✔ | |
-|Spanisch | `es` |✔ |✔ |
-|Schwedisch | `sw` |✔ | |
-|Türkisch | `tr` |✔ | |
+|Sprache| Sprachcode | OCR-API | Read v3.0 | Read v3.1-preview.1 |
+|:-----|:----:|:-----:|:---:|:---:|
+|Arabisch | `ar`|✔ | | |
+|Chinesisch (vereinfacht) | `zh-Hans`|✔ | |✔ |
+|Chinesisch (traditionell) | `zh-Hant`|✔ | | |
+|Tschechisch | `cs` |✔ | | |
+|Dänisch | `da` |✔ | | |
+|Niederländisch | `nl` |✔ |✔ |✔ |
+|Englisch | `en` |✔ |✔ |✔ |
+|Finnisch | `fi` |✔ | | |
+|Französisch | `fr` |✔ |✔ |✔ |
+|Deutsch | `de` |✔ |✔ |✔ |
+|Griechisch | `el` |✔ | | |
+|Ungarisch | `hu` |✔ | | |
+|Italienisch | `it` |✔ |✔ |✔ |
+|Japanisch | `ja` |✔ | | |
+|Koreanisch | `ko` |✔ | | |
+|Norwegisch | `nb` |✔ | | |
+|Polnisch | `pl` |✔ | | |
+|Portugiesisch | `pt` |✔ |✔ |✔ |
+|Rumänisch | `ro` |✔ | | |
+|Russisch | `ru` |✔ | | |
+|Serbisch (Kyrillisch) | `sr-Cyrl` |✔ | | |
+|Serbisch (Lateinisch) | `sr-Latn` |✔ | | |
+|Slowakisch | `sk` |✔ | | |
+|Spanisch | `es` |✔ |✔ |✔ |
+|Schwedisch | `sw` |✔ | | |
+|Türkisch | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>Bildanalyse
 

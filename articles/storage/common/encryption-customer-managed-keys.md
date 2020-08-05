@@ -5,17 +5,17 @@ description: Sie können Ihren eigenen Verschlüsselungsschlüssel verwenden, um
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af70b1746b2ac847d964975aaf1b2186aa89be01
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515403"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292743"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Verwenden kundenseitig verwalteter Schlüssel mit Azure Key Vault für die Verwaltung der Azure Storage-Verschlüsselung
 
@@ -47,13 +47,13 @@ Daten in den Blob- und Dateidiensten sind immer durch vom Kunden verwaltete Schl
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>Aktivieren von kundenseitig verwalteten Schlüsseln für ein Speicherkonto
 
-Vom Kunden verwaltete Schlüssel können nur für vorhandene Speicherkonten aktiviert werden. Für den Schlüsseltresor müssen Zugriffsrichtlinien bereitgestellt werden, mit denen Schlüsselberechtigungen für die verwaltete Identität erteilt werden, die dem Speicherkonto zugeordnet ist. Die verwaltete Identität ist erst verfügbar, nachdem das Speicherkonto erstellt wurde.
-
 Wenn Sie einen vom Kunden verwalteten Schlüssel konfigurieren, umschließt Azure Storage den Stammdaten-Verschlüsselungsschlüssel für das Konto im zugeordneten Schlüsseltresor mit dem vom Kunden verwalteten Schlüssel. Die Aktivierung der vom Kunden verwalteten Schlüssel hat keine Auswirkung auf die Leistung und ist sofort wirksam.
 
-Wenn Sie den für die Azure Storage-Verschlüsselung verwendeten Schlüssel ändern, indem Sie kundenseitig verwaltete Schlüssel aktivieren oder deaktivieren, die Schlüsselversion aktualisieren oder einen anderen Schlüssel angeben, wird die Verschlüsselung des Stammschlüssels zwar geändert, aber die Daten in Ihrem Azure Storage-Konto müssen nicht erneut verschlüsselt werden.
-
 Wenn Sie vom Kunden verwaltete Schlüssel aktivieren oder deaktivieren oder den Schlüssel bzw. die Schlüsselversion ändern, ändert sich der Schutz des Stammverschlüsselungsschlüssels. Die Daten in Ihrem Azure Storage-Konto müssen aber nicht neu verschlüsselt werden.
+
+Vom Kunden verwaltete Schlüssel können nur für vorhandene Speicherkonten aktiviert werden. Für den Schlüsseltresor müssen Zugriffsrichtlinien konfiguriert werden, mit denen Berechtigungen für die verwaltete Identität erteilt werden, die dem Speicherkonto zugeordnet ist. Die verwaltete Identität ist erst verfügbar, nachdem das Speicherkonto erstellt wurde.
+
+Sie können jederzeit zwischen kundenseitig verwalteten Schlüsseln und von Microsoft verwalteten Schlüsseln wechseln. Weitere Informationen zu von Microsoft verwalteten Schlüsseln finden Sie unter [Informationen zur Verwaltung von Verschlüsselungsschlüsseln](storage-service-encryption.md#about-encryption-key-management).
 
 Informationen zum Verwenden von kundenseitig verwalteten Schlüsseln mit Azure Key Vault für die Azure Storage-Verschlüsselung finden Sie in folgenden Artikeln:
 
@@ -70,11 +70,18 @@ Zum Aktivieren von kundenseitig verwalteten Schlüsseln in einem Speicherkonto m
 
 Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel mit einer Größe von 2.048, 3.072 und 4.096 Bit. Weitere Informationen zu Schlüsseln finden Sie unter **Key Vault-Schlüssel** in [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten in Azure Key Vault](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
+Für die Verwendung von Azure Key Vault entstehen Kosten. Weitere Informationen finden Sie auf der Seite [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
+
 ## <a name="rotate-customer-managed-keys"></a>Rotieren von kundenseitig verwalteten Schlüsseln
 
-Sie können einen vom Kunden verwalteten Schlüssel in Azure Key Vault entsprechend Ihren Konformitätsrichtlinien rotieren. Wenn der Schlüssel rotiert wird, müssen Sie das Speicherkonto so aktualisieren, dass der neue URI für die Schlüsselversion verwendet wird. Informationen dazu, wie Sie das Speicherkonto im Azure-Portal zur Verwendung einer neuen Version des Schlüssels aktualisieren, finden Sie im Abschnitt **Aktualisieren der Schlüsselversion** unter [Konfigurieren von kundenseitig verwalteten Schlüsseln für Azure Storage über das Azure-Portal](storage-encryption-keys-portal.md).
+Sie können einen vom Kunden verwalteten Schlüssel in Azure Key Vault entsprechend Ihren Konformitätsrichtlinien rotieren. Für das Rotieren eines kundenseitig verwalteten Schlüssels stehen zwei Optionen zur Verfügung:
 
-Durch Rotieren des Schlüssels werden die Daten im Speicherkonto nicht erneut verschlüsselt. Es ist keine weitere Aktion durch den Benutzer erforderlich.
+- **Automatische Rotation:** Zur Konfiguration der automatischen Rotation von kundenseitig verwalteten Schlüsseln lassen Sie die Schlüsselversion beim Aktivieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für das Speicherkonto aus. Wenn die Schlüsselversion weggelassen wird, wird Azure Key Vault von Azure Storage täglich auf eine neue Version eines vom Kunden verwalteten Schlüssels überprüft. Falls eine neue Schlüsselversion verfügbar ist, nutzt Azure Storage automatisch die neueste Version des Schlüssels.
+- **Manuelle Rotation:** Zur Verwendung einer bestimmten Schlüsselversion für die Azure Storage-Verschlüsselung geben Sie diese Schlüsselversion beim Aktivieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für das Speicherkonto an. Wenn Sie die Schlüsselversion angeben, verwendet Azure Storage diese Version für die Verschlüsselung, bis Sie die Schlüsselversion manuell aktualisieren.
+
+    Wenn der Schlüssel rotiert wird, müssen Sie das Speicherkonto manuell so aktualisieren, dass der neue URI für die Schlüsselversion verwendet wird. Informationen zum Aktualisieren de Speicherkontos für die Verwendung einer neuen Version des Schlüssels im Azure-Portal finden Sie unter [Manuelles Aktualisieren der Schlüsselversion](storage-encryption-keys-portal.md#manually-update-the-key-version).
+
+Durch Rotieren eines kundenseitig verwalteten Schlüssels werden die Daten im Speicherkonto nicht noch mal verschlüsselt. Es ist keine weitere Aktion durch den Benutzer erforderlich.
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>Widerrufen des Zugriffs auf von Kunden verwaltete Schlüssel
 

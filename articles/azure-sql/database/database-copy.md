@@ -10,26 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 07/27/2020
+ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309255"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL-Datenbank bietet mehrere Methoden, eine transaktionskonsistente Kopie einer vorhandenen [Datenbank](single-database-overview.md) auf demselben Server oder auf einem anderen Server zu erstellen. Sie können eine Datenbank über das Azure-Portal, über PowerShell oder über T-SQL kopieren.
+Azure SQL-Datenbank bietet verschiedene Methoden, um eine Kopie einer vorhandenen [Datenbank](single-database-overview.md) auf demselben Server oder auf einem anderen Server zu erstellen. Sie können eine Datenbank über das Azure-Portal, PowerShell, die Azure CLI oder T-SQL kopieren.
 
 ## <a name="overview"></a>Übersicht
 
-Eine Datenbankkopie ist eine Momentaufnahme der Quelldatenbank zum Zeitpunkt der Kopieranforderung. Sie können denselben Server oder einen anderen auswählen. Sie können auch wahlweise Dienstebene und Computegröße des Servers beibehalten oder eine andere Computegröße innerhalb derselben Dienstebene (Edition) verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Zu diesem Zeitpunkt können Sie ein Upgrade oder Downgrade auf jede beliebige Edition durchführen. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden. Die Kopie wird mit der Technologie für die Georeplikation erstellt, und nachdem das Seeding abgeschlossen ist, wird der Link für die Georeplikation automatisch eingestellt. Alle Anforderungen zur Nutzung der Georeplikation gelten für den Datenbank-Kopiervorgang. Weitere Informationen finden Sie unter [Aktive Georeplikation – Übersicht](active-geo-replication-overview.md).
-
-> [!NOTE]
-> [Automatische Datenbanksicherungen](automated-backups-overview.md) werden verwendet, wenn Sie eine Datenbankkopie erstellen.
+Bei einer Datenbankkopie handelt es sich um eine im Hinblick auf Transaktionen konsistente Momentaufnahme der Quelldatenbank zu einem Zeitpunkt, nachdem die Kopieranforderung initiiert wurde. Sie können denselben Server oder einen anderen Server für die Kopie auswählen. Außerdem können Sie die Dienstebene und die Computegröße der Quelldatenbank beibehalten oder eine andere Computegröße innerhalb derselben oder einer anderen Dienstebene verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Die Anmeldungen, Benutzer und Berechtigungen in der kopierten Datenbank werden unabhängig von der Quelldatenbank verwaltet. Die Kopie wird mithilfe der Georeplikationstechnik erstellt. Sobald das Replikat-Seeding abgeschlossen ist, wird der Georeplikationslink automatisch beendet. Alle Anforderungen zur Nutzung der Georeplikation gelten für den Datenbank-Kopiervorgang. Weitere Informationen finden Sie unter [Aktive Georeplikation – Übersicht](active-geo-replication-overview.md).
 
 ## <a name="logins-in-the-database-copy"></a>Anmeldungen in der Datenbankkopie
 

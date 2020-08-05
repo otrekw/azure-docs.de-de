@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 12/04/2018
-ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344644"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405040"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,13 @@ Bei einem Ausfall in Region B wird der Replikationsprozess zwischen der primäre
 > Für die Notfallwiederherstellung empfehlen wir eine Konfiguration, bei der die Anwendungsbereitstellung auf zwei Regionen beschränkt ist. Der Grund ist, dass die meisten Azure-Gebiete nur zwei Regionen aufweisen. Diese Konfiguration bietet keinen Schutz Ihrer Anwendung vor einem gleichzeitigen schwerwiegenden Ausfall beider Regionen. Im unwahrscheinlichen Fall eines solchen Ausfalls können Sie Ihre Datenbanken mithilfe eines [Geowiederherstellungsvorgangs](disaster-recovery-guidance.md#recover-using-geo-restore) in einer dritten Region wiederherstellen.
 >
 
- Nach Behebung der Ausfallursache wird die sekundäre Datenbank automatisch mit der primären synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank beeinträchtigt werden. Die spezifischen Auswirkungen hängen von der in der neuen primären Datenbank erfassten Datenmenge seit dem Failover ab. Das folgende Diagramm zeigt einen Ausfall in der sekundären Region:
+ Nach Behebung der Ausfallursache wird die sekundäre Datenbank automatisch mit der primären synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank beeinträchtigt werden. Die spezifischen Auswirkungen hängen von der in der neuen primären Datenbank erfassten Datenmenge seit dem Failover ab. 
+
+> [!NOTE]
+> Nachdem der Ausfall behoben wurde, beginnt der Traffic Manager mit dem Routing der Verbindungen an die Anwendung in Region A als Endpunkt mit höherer Priorität. Wenn Sie beabsichtigen, die primäre Datenbank für eine Weile in Region B beizubehalten, sollten Sie die Prioritätstabelle im Traffic Manager-Profil entsprechend ändern. 
+>
+ 
+ Das folgende Diagramm zeigt einen Ausfall in der sekundären Region:
 
 ![Szenario 1: Konfiguration nach einem Ausfall in der sekundären Region](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 

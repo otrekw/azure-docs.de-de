@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047584"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Übersicht über das kommerzielle Marketplace-Portal in Partner Center
 
@@ -28,9 +28,9 @@ Partner Center ist der zentrale Ort für Microsoft-Partner. Für Organisationen,
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>Migration vom Cloud-Partnerportal
 
-Partner Center wird ständig weiterentwickelt, um alle Aspekte unserer Beziehung mit Softwareherstellern besser integrieren zu können. Im Rahmen dieser Weiterentwicklung wurde die gesamte Angebotsverwaltung für den kommerziellen Marketplace vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) zu Partner Center migriert.
+Partner Center wird ständig weiterentwickelt, um alle Aspekte unserer Beziehung mit Softwareherstellern besser integrieren zu können. Im Rahmen dieser Weiterentwicklung wurde die gesamte Angebotsverwaltung für den kommerziellen Marketplace vom Cloud-Partnerportal (CPP) zu Partner Center migriert.
 
-Vorhandene Herausgeber, die zuvor das Cloud-Partnerportal verwenden haben, finden in Partner Center eine vertraute, aber verbesserte und intuitive Benutzeroberfläche vor. Benutzer werden nahtlos an die entsprechende Stelle weitergeleitet. Diese Aktualisierung der Partnerumgebung hat keine negativen Auswirkungen auf die Kunden.
+Vorhandene Herausgeber, die zuvor das CPP verwenden haben, finden in Partner Center eine vertraute, aber verbesserte und intuitive Benutzeroberfläche vor. Benutzer werden nahtlos an die entsprechende Stelle weitergeleitet. Diese Aktualisierung der Partnerumgebung hat keine negativen Auswirkungen auf die Kunden.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Verbesserungen der Benutzeroberfläche für die Veröffentlichung und Angebotsverwaltung
 

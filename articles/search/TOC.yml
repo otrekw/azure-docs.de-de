@@ -88,7 +88,7 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-Beispiele
       href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
-    - name: Azure Policy-Integrationen
+    - name: Integrierte Azure Policy-Aktionen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -335,6 +335,8 @@
           items:
             - name: Vom Kunden verwaltete Schlüssel
               href: search-security-manage-encryption-keys.md
+            - name: Abrufen von Schlüsselinformationen
+              href: search-security-get-encryption-keys.md
         - name: Sicherheit bei eingehendem Datenverkehr
           items:
             - name: API-Zugriffsschlüssel

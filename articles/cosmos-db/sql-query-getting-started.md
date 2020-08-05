@@ -4,22 +4,33 @@ description: Hier erfahren Sie, wie Sie SQL-Abfragen zum Abfragen von Daten aus 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d292b7cfcda73cb4cd6ac2535c7e27fc675e1030
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873334"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308184"
 ---
 # <a name="getting-started-with-sql-queries"></a>Erste Schritte mit SQL-Abfragen
 
-SQL-API-Konten in Azure Cosmos DB unterstützen das Abfragen von Elementen mit SQL (Structured Query Language) als JSON-Abfragesprache. Der Entwurf der Azure Cosmos DB-Abfragesprache hat folgende Zielsetzungen:
+Für Azure Cosmos DB-SQL-API-Konten gibt es zwei Möglichkeiten, Daten zu lesen:
 
-* Unterstützung von SQL, einer der meistverwendeten und beliebtesten Abfragesprachen, anstelle der Entwicklung einer neuen Abfragesprache. SQL bietet ein formelles Programmiermodell zur Durchführung umfassender Abfragen für JSON-Elemente.  
+**Punktlesevorgänge:** Sie können nach einem Schlüssel/Wert anhand einer einzelnen *Element-ID* und einem Partitionsschlüssel suchen. Die Kombination aus *Element-ID* und Partitionsschlüssel ist der Schlüssel, und das Element selbst ist der Wert. Für ein Dokument mit einer Größe von 1 KB erfordern Punktlesevorgänge in der Regel eine [Anforderungseinheit](request-units.md) mit einer Wartezeit von unter 10 Millisekunden. Lesevorgänge geben ein einzelnes Element zurück.
 
-* Verwendung des Programmiermodells von JavaScript als Grundlage für die Abfragesprache. Das Typsystem, die Ausdrucksauswertung und der Funktionsaufruf von JavaScript stellen die Grundlage der SQL-API dar. Mit dieser Grundlage erhalten Sie ein natürliches Programmiermodell für Features wie relationale Projektionen, hierarchische übergreifende Navigation für JSON-Elemente, Selbstverknüpfungen, Abfragen räumlicher Daten und das Aufrufen vollständig in JavaScript geschriebener, benutzerdefinierter Funktionen (User Defined Functions, UDFs).
+**SQL-Abfragen:** Sie können Daten auch abfragen, indem Sie mit SQL als JSON-Abfragesprache Abfragen schreiben. Abfragen benötigen immer mindestens 2,3 Anforderungseinheiten. Im Allgemeinen weisen sie auch eine höhere und variablere Wartezeit im Vergleich zu Punktlesevorgängen auf. Abfragen können viele Elemente zurückgeben.
+
+Die meisten leseintensiven Workloads in Azure Cosmos DB verwenden eine Kombination von Punktlesevorgängen und SQL-Abfragen. Wenn Sie nur ein einzelnes Element lesen müssen, sind Punktlesevorgänge günstiger und schneller als Abfragen. Punktlesevorgänge müssen die Abfrage-Engine nicht verwenden, um auf Daten zuzugreifen, und sie können die Daten direkt lesen. Natürlich ist es nicht für alle Workloads möglich, Daten ausschließlich mithilfe von Punktlesevorgängen zu lesen. Die Unterstützung von SQL als Abfragesprache und die vom [Schema unabhängige Indexierung](index-overview.md) bieten also eine flexiblere Möglichkeit, auf Ihre Daten zuzugreifen.
+
+Hier finden Sie Beispiele für Punktlesevorgänge für die verschiedenen SDKs:
+
+- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet)
+- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest#read-requestoptions-)
+- [Python SDK](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+
+Im verbleibenden Teil dieser Dokumentation erfahren Sie, wie Sie SQL-Abfragen in Azure Cosmos DB schreiben. SQL-Abfragen können entweder über das SDK oder das Azure-Portal ausgeführt werden.
 
 ## <a name="upload-sample-data"></a>Hochladen von Beispieldaten
 
@@ -28,7 +39,6 @@ Erstellen Sie in Ihrem Cosmos DB-Konto der SQL-API einen Container mit dem Namen
 ### <a name="create-json-items"></a>Erstellen von JSON-Elementen
 
 Der folgende Code erstellt zwei einfache JSON-Elemente zu Familien. Die einfachen JSON-Elemente für die Familien Andersen und Wakefield umfassen Eltern, Kinder und deren Haustiere, Adressen und Registrierungsinformationen. Das erste Element enthält Zeichenfolgen, Zahlen, boolesche Werte, Arrays und geschachtelte Eigenschaften.
-
 
 ```json
 {
@@ -72,7 +82,7 @@ Das zweite Element verwendet `givenName` und `familyName` anstelle von `firstNam
             { "givenName": "Shadow" }
         ]
       },
-      { 
+      {
         "familyName": "Miller",
          "givenName": "Lisa",
          "gender": "female",
@@ -88,7 +98,7 @@ Das zweite Element verwendet `givenName` und `familyName` anstelle von `firstNam
 
 Führen Sie einige Abfragen für die JSON-Daten aus, um einige der Schlüsselaspekte der SQL-Abfragesprache von Azure Cosmos DB besser zu verstehen.
 
-Die folgende Abfrage gibt die Elemente zurück, in denen das `id`-Feld dem Text `AndersenFamily` entspricht. Da es sich um eine `SELECT *`-Abfrage handelt, ist die Ausgabe der Abfrage das komplette JSON-Element. Weitere Informationen zur SELECT-Syntax finden Sie unter [SELECT-Anweisung](sql-query-select.md). 
+Die folgende Abfrage gibt die Elemente zurück, in denen das `id`-Feld dem Text `AndersenFamily` entspricht. Da es sich um eine `SELECT *`-Abfrage handelt, ist die Ausgabe der Abfrage das komplette JSON-Element. Weitere Informationen zur SELECT-Syntax finden Sie unter [SELECT-Anweisung](sql-query-select.md).
 
 ```sql
     SELECT *
@@ -96,7 +106,7 @@ Die folgende Abfrage gibt die Elemente zurück, in denen das `id`-Feld dem Text 
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Abfrage hat folgende Ergebnisse: 
+Die Abfrage hat folgende Ergebnisse:
 
 ```json
     [{

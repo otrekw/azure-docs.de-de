@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39a013f5f4b587137366147ade77f0be1b353c4c
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: f4af8a150b062526f08c1d15581ec26e2fe12d8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204625"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102672"
 ---
 - Inkrementelle Momentaufnahmen können derzeit nicht zwischen Abonnements verschoben werden.
 - Sie können zurzeit nur SAS-URIs mit jeweils bis zu fünf Momentaufnahmen einer bestimmten Momentaufnahmefamilie generieren.
 - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen.
 - Bis zu sieben inkrementelle Momentaufnahmen pro Datenträger können alle fünf Minuten erstellt werden.
 - Für einen einzelnen Datenträger können insgesamt 200 inkrementelle Momentaufnahmen erstellt werden.
-- Sie können die Änderungen zwischen erstellten Momentaufnahmen nicht abrufen, wenn zwischen diesen eine Änderung der Größe des übergeordneten Datenträgers vorgenommen wurde, die die Grenze von 4 TB überschreitet. Sie müssen die vollständige Kopie der Momentaufnahme, die nach der Größenänderung erstellt wurde, wieder herunterladen. Anschließend können Sie die Änderungen abrufen, die zwischen den erstellten Momentaufnahmen vorgenommen wurden, nachdem die Grenze von 4 TB bei einer Größenänderung überschritten wurde. 
+- Sie können die Änderungen zwischen erstellten Momentaufnahmen nicht abrufen, wenn zwischen diesen eine Änderung der Größe des übergeordneten Datenträgers vorgenommen wurde, die die Grenze von 4 TB überschreitet. Sie haben beispielsweise eine inkrementelle Momentaufnahme „a“ erstellt, während die Größe eines Datenträgers 2 TB betrug. Nun haben Sie die Größe des Datenträgers auf 6 TB erweitert und dann eine weitere inkrementelle Momentaufnahme „b“ erstellt. Die Änderungen zwischen Momentaufnahme „a“ und Momentaufnahme „b“ können nicht abgerufen werden. Sie müssen die vollständige Kopie der Momentaufnahme „b“ herunterladen, die nach der Größenänderung erstellt wurde. Anschließend können Sie die Änderungen zwischen Momentaufnahme „b“ und später erstellten Momentaufnahmen abrufen. 

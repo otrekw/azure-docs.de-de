@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187029"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058623"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -76,7 +76,7 @@ Das folgende Beispiel zeigt den `appRoles`-Wert, den Sie `users` zuweisen könne
 > [!NOTE]
 >`displayName` darf keine Leerzeichen enthalten.
 
-Sie können App-Rollen mit Ausrichtung auf `users`, `applications` oder auf beides festlegen. Wenn App-Rollen für `applications` verfügbar sind, werden sie auf dem Blatt **Erforderliche Berechtigungen** als Anwendungsberechtigungen angezeigt. Das folgende Beispiel zeigt eine App-Rolle für `Application`.
+Sie können App-Rollen mit Ausrichtung auf `users`, `applications` oder auf beides festlegen. Wenn App-Rollen für `applications` verfügbar sind, werden sie als Anwendungsberechtigungen im Abschnitt **Verwalten** > **API-Berechtigungen > Berechtigung hinzufügen > Meine APIs > API auswählen > Anwendungsberechtigungen** angezeigt. Das folgende Beispiel zeigt eine App-Rolle für `Application`.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -118,6 +118,10 @@ Nachdem Sie App-Rollen in Ihrer Anwendung hinzugefügt haben, können Sie diesen
 1. Wählen Sie eine Rolle und dann die Schaltfläche **Auswählen** aus.
 1. Wählen Sie unten die Schaltfläche **Zuweisen** aus, um die Zuweisungen von Benutzern und Gruppen zur App abzuschließen.
 1. Vergewissern Sie sich, dass die hinzugefügten Benutzer und Gruppen in der aktualisierten Liste **Benutzer und Gruppen** angezeigt werden.
+
+### <a name="receive-roles-in-tokens"></a>Empfangen von Rollen in Token
+
+Wenn sich Benutzer, denen verschiedene App-Rollen zugewiesen sind, bei der Anwendung anmelden, enthalten deren Token die zugewiesenen Rollen im `roles`-Anspruch.
 
 ## <a name="more-information"></a>Weitere Informationen
 

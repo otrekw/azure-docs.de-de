@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259437"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366926"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -34,7 +34,7 @@ Die mehrstufige Authentifizierung wird unterstützt, wenn Azure Active Directory
 1. Der Client übergibt das Token an Azure Resource Manager und an Azure Machine Learning.
 1. Machine Learning Service stellt ein Machine Learning Service-Token für das Benutzercomputeziel bereit (z. B. Machine Learning Compute). Dieses Token wird nach Abschluss der Ausführung vom Benutzercomputeziel für einen erneuten Aufruf von Machine Learning Service verwendet. Der Bereich ist auf den Arbeitsbereich beschränkt.
 
-[![Authentifizierung in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Authentifizierung in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
 Weitere Informationen finden Sie unter [Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](how-to-setup-authentication.md). Dieser Artikel enthält Informationen und Beispiele zur Authentifizierung, einschließlich der Verwendung von Dienstprinzipalen und automatisierten Workflows.
 
@@ -75,7 +75,7 @@ Die folgende Tabelle enthält einige der wichtigsten Azure Machine Learning-Vorg
 | Modelle/Images anzeigen | ✓ | ✓ | ✓ |
 | Webdienst aufrufen | ✓ | ✓ | ✓ |
 
-Wenn die integrierten Rollen Ihren Anforderungen nicht entsprechen, können Sie benutzerdefinierte Rollen erstellen. Benutzerdefinierte Rollen werden nur für Vorgänge im Arbeitsbereich und Machine Learning Compute unterstützt. Benutzerdefinierte Rollen können Lese-, Schreib- oder Löschberechtigungen für den Arbeitsbereich und die Computeressource in diesem Arbeitsbereich haben. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+Wenn die integrierten Rollen Ihren Anforderungen nicht entsprechen, können Sie benutzerdefinierte Rollen erstellen. Benutzerdefinierte Rollen werden unterstützt, um alle Vorgänge in einem Arbeitsbereich zu steuern, z. B. das Erstellen einer Compute-Instanz, das Übermitteln einer Ausführung, das Registrieren eines Datenspeichers oder das Bereitstellen eines Modells. Benutzerdefinierte Rollen können über Lese-, Schreib- oder Löschberechtigungen für die verschiedenen Ressourcen eines Arbeitsbereichs verfügen, z. B. Cluster, Datenspeicher, Modelle und Endpunkte. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 > [!WARNING]
 > Azure Machine Learning wird mit der Azure Active Directory-Business-to-Business-Zusammenarbeit unterstützt, jedoch derzeit noch nicht mit der Azure Active Directory-Business-to-Consumer-Zusammenarbeit.
@@ -128,6 +128,8 @@ Das Flag `hbi_workspace` kontrolliert die Menge der von Microsoft zu Diagnosezwe
 * Führt unter Verwendung Ihres Schlüsseltresors die sichere Übergabe der Anmeldeinformationen für Speicherkonto, Containerregistrierung und SSH-Konto von der Ausführungsebene zu Ihren Computeclustern durch.
 * Aktiviert IP-Filterung, um sicherzustellen, dass die zugrunde liegenden Batch-Pools nicht von anderen externen Diensten als AzureMachineLearningService aufgerufen werden können.
 
+> [!WARNING]
+> Das `hbi_workspace`-Flag kann nur beim Erstellen eines Arbeitsbereichs festgelegt werden. Es kann für einen vorhandenen Arbeitsbereich nicht geändert werden.
 
 Weitere Informationen zur Verschlüsselung ruhender Daten in Azure finden Sie unter [Azure-Datenverschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
@@ -152,10 +154,6 @@ Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung der Azu
 Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden verwalteten Schlüsseln zu ermöglichen, führen Sie die folgenden Aktionen durch:
 
 * Registrieren Sie die Anbieter von Microsoft.MachineLearning- und Microsoft.DocumentDB-Ressourcen in Ihrem Abonnement, falls dies noch nicht geschehen ist.
-
-* Autorisieren Sie die Machine Learning-App (in der Identitäts- und Zugriffsverwaltung) mit den Berechtigungen für Mitwirkende in Ihrem Abonnement.
-
-    ![Autorisieren Sie die „Azure Machine Learning-App“ in der Identitäts- und Zugriffsverwaltung im Portal](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
 
 * Verwenden Sie die folgenden Parameter, wenn Sie den Azure Machine Learning-Arbeitsbereich erstellen. Beide Parameter sind obligatorisch und werden in SDK-, CLI-, REST-APIs und Resource Manager-Vorlagen unterstützt.
 
@@ -317,7 +315,7 @@ Zusätzliche Ressourcen werden bei der Erstellung des Arbeitsbereichs im Abonnem
 
 Der Benutzer kann bei Bedarf auch andere Computeziele bereitstellen, die an einen Arbeitsbereich angefügt sind (wie Azure Kubernetes Service oder VMs).
 
-[![Erstellen eines Arbeitsbereichs-Workflows](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![Erstellen eines Arbeitsbereichs-Workflows](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
 
 ### <a name="save-source-code-training-scripts"></a>Speichern des Quellcodes (Trainingsskripts)
 
@@ -325,7 +323,7 @@ Das folgende Diagramm zeigt den Workflow der Codemomentaufnahme.
 
 Einem Azure Machine Learning-Arbeitsbereich sind Verzeichnisse (Experimente) zugeordnet, die den Quellcode (Trainingsskripts) enthalten. Diese Skripts werden auf Ihrem lokalen Computer und in der Cloud (in Azure Blob Storage für Ihr Abonnement) gespeichert. Die Codemomentaufnahmen werden für die Ausführung oder Überprüfung für die Verlaufsüberwachung verwendet.
 
-[![Workflow der Codemomentaufnahme](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![Workflow der Codemomentaufnahme](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
 ### <a name="training"></a>Training
 
@@ -352,7 +350,7 @@ Da Machine Learning Compute ein verwaltetes Computeziel ist (d. h. es wird von 
 
 Im folgenden Flussdiagramm wird dieser Schritt ausgeführt, wenn das Trainingscomputeziel die Ausführungsmetriken aus dem Speicher in der Cosmos DB-Datenbank an Azure Machine Learning zurückschreibt. Clients können Azure Machine Learning aufrufen. Machine Learning pullt wiederum die Metriken aus der Cosmos DB-Datenbank und gibt sie an den Client zurück.
 
-[![Trainingsworkflow](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![Trainingsworkflow](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
 
 ### <a name="creating-web-services"></a>Erstellen von Webdiensten
 
@@ -367,7 +365,7 @@ Es folgen die Details:
 * Details der Bewertung werden in Application Insights gespeichert (im Abonnement des Benutzers enthalten).
 * Telemetriedaten werden ebenfalls per Push an das Microsoft/Azure-Abonnement übertragen.
 
-[![Rückschlussworkflow](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![Rückschlussworkflow](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

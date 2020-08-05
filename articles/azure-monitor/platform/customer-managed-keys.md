@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eec056cbe246f129fb78e15faa0027846c271181
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539413"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382949"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -187,14 +187,14 @@ Erstellen Sie eine Azure Key Vault-Instanz oder verwenden Sie eine vorhandene In
 
 Diese Einstellungen können über die CLI und PowerShell aktualisiert werden:
 
-- [Vorläufiges Löschen](../../key-vault/general/overview-soft-delete.md)
-- [Bereinigungsschutz](../../key-vault/general/overview-soft-delete.md#purge-protection) schützt vor erzwungenem Löschen des Geheimnisses/Tresors auch nach vorläufigem Löschen
+- [Vorläufiges Löschen](../../key-vault/general/soft-delete-overview.md)
+- [Bereinigungsschutz](../../key-vault/general/soft-delete-overview.md#purge-protection) schützt vor erzwungenem Löschen des Geheimnisses/Tresors auch nach vorläufigem Löschen
 
 ### <a name="create-cluster-resource"></a>Erstellen einer *Clusterressource*
 
 Diese Ressource wird als eine temporäre Identitätsverbindung zwischen Key Vault und Ihren Log Analytics-Arbeitsbereichen verwendet. Nachdem Sie eine Bestätigung erhalten haben, dass Ihre Abonnements zugelassen wurden, erstellen Sie eine Log Analytics-*Clusterressource* in der Region, in der sich Ihre Arbeitsbereiche befinden.
 
-Beim Erstellen einer *Clusterressource* müssen Sie die *Kapazitätsreservierungsebene* (sku) angeben. Die *Kapazitätsreservierungsebene* kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen, und Sie können sie später in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an uns unter LAIngestionRate@microsoft.com. [Weitere Informationen](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+Beim Erstellen einer *Clusterressource* müssen Sie die *Kapazitätsreservierungsebene* (sku) angeben. Die *Kapazitätsreservierungsebene* kann im Bereich von 1000 bis 3000 GB pro Tag liegen, und Sie können sie in 100er Schritten aktualisieren. Wenn Sie eine Kapazitätsreservierungsebene von mehr als 3000 GB pro Tag benötigen, kontaktieren Sie uns unter LAIngestionRate@microsoft.com. [Weitere Informationen](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
 - *Cluster* (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
@@ -467,9 +467,9 @@ Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, 
 Die in Log Analytics verwendete Abfragesprache ist ausdrucksstark und kann vertrauliche Informationen in Kommentaren enthalten, die Sie Abfragen oder in der Abfragesyntax hinzufügen. Einige Organisationen verlangen, dass diese Informationen als Teil der CMK-Richtlinie geschützt werden, und Sie müssen Ihre Abfragen mit Ihrem Schlüssel verschlüsselt speichern. Azure Monitor ermöglicht Ihnen das Speichern von Abfragen für *gespeicherter Suchvorgänge* und *Protokollwarnungen* mit Verschlüsselung mit Ihrem Schlüssel in Ihrem eigenen Speicherkonto, sofern Sie mit Ihrem Arbeitsbereich verbunden sind. 
 
 > [!NOTE]
-> CMK wird für Abfragen in Arbeitsmappen und Azure-Dashboards noch nicht unterstützt. Diese Abfragen bleiben mit dem Microsoft-Schlüssel verschlüsselt.  
+> Log Analytics-Abfragen können je nach verwendetem Szenario in verschiedenen Speichern abgelegt werden. Abfragen bleiben unabhängig von der CMK-Konfiguration in den folgenden Szenarios mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt: Arbeitsmappen in Azure Monitor, Azure-Dashboards, Azure-Logik-App, Azure Notebooks und Automation Runbooks.
 
-Wenn Sie [Bring Your Own Storage](./private-storage.md) (BYOS) verwenden und es Ihrem Arbeitsbereich zuordnen, lädt der Dienst Abfragen für *gespeicherte Suchen* und *Protokollwarnungen* in Ihr Speicherkonto hoch. Dies bedeutet, dass Sie das Speicherkonto und die [Richtlinie für die Verschlüsselung ruhender Daten](../../storage/common/encryption-customer-managed-keys.md) entweder mit dem gleichen Schlüssel steuern, den Sie zum Verschlüsseln von Daten im Log Analytics-Cluster verwenden, oder mit einem anderen Schlüssel. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich. 
+Wenn Sie Bring Your Own Storage (BYOS) verwenden und es Ihrem Arbeitsbereich zuordnen, lädt der Dienst Abfragen für *gespeicherte Suchen* und *Protokollwarnungen* in Ihr Speicherkonto hoch. Dies bedeutet, dass Sie das Speicherkonto und die [Richtlinie für die Verschlüsselung ruhender Daten](../../storage/common/encryption-customer-managed-keys.md) entweder mit dem gleichen Schlüssel steuern, den Sie zum Verschlüsseln von Daten im Log Analytics-Cluster verwenden, oder mit einem anderen Schlüssel. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich. 
 
 **Überlegungen vor dem Festlegen von CMK für Abfragen**
 * Sie müssen für Ihren Arbeitsbereich und das Speicherkonto über die Berechtigung „Schreiben“ verfügen.
@@ -599,7 +599,7 @@ Nach der Konfiguration werden alle neuen Warnungsabfragen in Ihrem Speicher gesp
 
 - **Aktualisieren der *Kapazitätsreservierung* für eine *Clusterressource***
 
-  Wenn sich das Datenvolumen Ihrer zugeordneten Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Führen Sie die Schritte zum [Aktualisieren der *Clusterressource*](#update-cluster-resource-with-key-identifier-details) aus, und geben Sie den neuen Kapazitätswert an. Dieser kann im Bereich von 1.000 bis 2.000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie eine Ebene von mehr als 2.000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen und die SKU einschließen sollten:
+  Wenn sich das Datenvolumen Ihrer zugeordneten Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Führen Sie die Schritte zum [Aktualisieren der *Clusterressource*](#update-cluster-resource-with-key-identifier-details) aus, und geben Sie den neuen Kapazitätswert an. Dieser kann im Bereich von 1000 bis 3000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie mehr als 3000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen, aber die SKU einschließen sollten:
 
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
@@ -706,8 +706,8 @@ Nach der Konfiguration werden alle neuen Warnungsabfragen in Ihrem Speicher gesp
 - Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration neu erfasste Daten. Daten, die vor der CMK-Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der CMK-Konfiguration erfasste Daten nahtlos abfragen.
 
 - Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:<br>
-  - [Vorläufiges Löschen](../../key-vault/general/overview-soft-delete.md)
-  - Der [Bereinigungsschutz](../../key-vault/general/overview-soft-delete.md#purge-protection) sollte aktiviert werden, wenn Sie sich auch nach dem vorläufigen Löschen vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
+  - [Vorläufiges Löschen](../../key-vault/general/soft-delete-overview.md)
+  - Der [Bereinigungsschutz](../../key-vault/general/soft-delete-overview.md#purge-protection) sollte aktiviert werden, wenn Sie sich auch nach dem vorläufigen Löschen vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
 
 - Das Verschieben einer *Clusterressource* in eine andere Ressourcengruppe oder ein anderes Abonnement wird derzeit nicht unterstützt.
 
@@ -763,7 +763,7 @@ Nach der Konfiguration werden alle neuen Warnungsabfragen in Ihrem Speicher gesp
   -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Asynchroner Vorgang wird ausgeführt. Der Cluster muss seinen Vorgang beenden, bevor ein Aktualisierungsvorgang ausgeführt wird.
   -  400 – „KeyVaultProperties“ ist nicht leer, hat aber ein ungültiges Format. Lesen Sie [Key Identifier Update](#update-cluster-resource-with-key-identifier-details) (Aktualisierung des Schlüsselbezeichners).
   -  400 – Fehler beim Überprüfen des Schlüssels in Key Vault. Mögliche Ursachen: Fehlende Berechtigungen, oder der Schlüssel ist nicht vorhanden. Vergewissern Sie sich, dass Sie die [Schlüssel- und Zugriffsrichtlinie in Key Vault](#grant-key-vault-permissions) festgelegt haben.
-  -  400 – Der Schlüssel kann nicht wiederhergestellt werden. Key Vault muss auf „Vorläufiges Löschen und Löschschutz“ festgelegt werden. Lesen Sie die [Dokumentation zu Key Vault](../../key-vault/general/overview-soft-delete.md).
+  -  400 – Der Schlüssel kann nicht wiederhergestellt werden. Key Vault muss auf „Vorläufiges Löschen und Löschschutz“ festgelegt werden. Lesen Sie die [Dokumentation zu Key Vault](../../key-vault/general/soft-delete-overview.md).
   -  400 – Der Vorgang kann jetzt nicht ausgeführt werden. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
   -  400 –-Der Cluster befindet sich im Zustand „wird gelöscht“. Warten Sie, bis der asynchrone Vorgang beendet wurde, und versuchen Sie es erneut.
 

@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084952"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373486"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Die Azure-Infrastruktur wird kontinuierlich verbessert, und Microsoft aktualisiert immer wieder die Hardware, um das bestmögliche Kundenerlebnis sicherzustellen. In den kommenden Monaten ist geplant, in einigen Regionen Gateways auf der Basis neuerer Hardwaregenerationen hinzuzufügen, Datenverkehr zu diesen Gateways zu migrieren und schließlich Gateways außer Betrieb zu nehmen, die auf älterer Hardware basieren.  
 
@@ -27,6 +27,19 @@ Kunden werden per E-Mail und im Azure-Portal rechtzeitig vor jeder Änderung der
 ## <a name="status-updates"></a>Statusaktualisierungen
 
 # <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
+### <a name="september-2020"></a>September 2020
+
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+
+- Europa, Norden: 13.74.104.113 
+- USA, Westen 2: 40.78.248.10 
+- Europa, Westen: 52.236.184.163 
+- USA, Süden-Mitte: 20.45.121.1, 20.49.88.1 
+
+Vorhandene SQL-Gateways akzeptieren Datenverkehr in den folgenden Regionen:
+- Japan, Osten: 40.79.184.8, 40.79.192.5
+
+Diese SQL-Gateways sollen ab dem 1. September 2020 Kundendatenverkehr akzeptieren. 
 
 ### <a name="august-2020"></a>August 2020
 

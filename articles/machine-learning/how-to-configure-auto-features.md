@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 05/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205689"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373741"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurisierung mit automatisiertem maschinellem Lernen
 
@@ -64,7 +64,7 @@ In der folgenden Tabelle sind die Verfahren zusammengefasst, die automatisch auf
 | ------------- | ------------- |
 |**Löschen von Features mit hoher Kardinalität oder ohne Varianz*** |Löschen Sie diese Features aus Trainings-und Validierungssätzen. Gilt für Features, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z. B. Hashes, IDs oder GUIDs) aufweisen.|
 |**Imputieren von fehlenden Werten*** |Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
-|**Generieren zusätzlicher Features*** |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen.|
+|**Generieren zusätzlicher Features*** |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen. Informieren Sie sich, [wie Sie hierzu BERT verwenden](#bert-integration).|
 |**Transformieren und Codieren***|Numerische Features mit wenigen eindeutigen Werten werden in kategorische Features transformiert.<br/><br/>One-Hot-Codierung wird für kategorische Features mit geringer Kardinalität verwendet. One-Hot-Hashcodierung wird für kategorische Features mit hoher Kardinalität verwendet.|
 |**Worteinbettungen**|Ein Textfeaturizer konvertiert Vektoren von Texttoken mithilfe eines vortrainierten Modells in Satzvektoren. Der Einbettungsvektor jedes Worts in einem Dokument wird mit dem Rest zusammengefasst und produziert so einen Dokumentenfeaturevektor.|
 |**Zielcodierungen**|Bei kategorischen Features wird durch diesen Schritt jede Kategorie einem gemitteltem Zielwert für Regressionsprobleme und der Klassenwahrscheinlichkeit für jede Klasse für Klassifizierungsprobleme zugeordnet. Häufigkeitsbasierte Gewichtung und k-fache Kreuzvalidierung werden angewendet, um die Überanpassung der Zuordnung und das Rauschen durch dünn besetzte Datenkategorien zu verringern.|
@@ -114,13 +114,13 @@ Schutzmaßnahme|Status|Bedingung&nbsp;für&nbsp;Auslösung
 
 Sie können die Featurisierungseinstellungen anpassen, um sicherzustellen, dass die Daten und Features zum Trainieren Ihres ML-Modells zu relevanten Vorhersagen führen.
 
-Um die Featurisierung anzupassen, geben Sie `"featurization": FeaturizationConfig` in Ihrem `AutoMLConfig`-Objekt an. Wenn Sie Azure Machine Learning Studio für Ihr Experiment verwenden, finden Sie weitere Informationen in dieser [Anleitung](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+Um die Featurisierung anzupassen, geben Sie `"featurization": FeaturizationConfig` in Ihrem `AutoMLConfig`-Objekt an. Wenn Sie Azure Machine Learning Studio für Ihr Experiment verwenden, finden Sie weitere Informationen in dieser [Anleitung](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Informationen zum Anpassen der Featurisierung für Vorhersagetasktypen finden Sie unter [Vorhersagen](how-to-auto-train-forecast.md#customize-featurization).
 
 Unterstützte Anpassungen umfassen:
 
 |Anpassung|Definition|
 |--|--|
-|**Aktualisierung des Spaltenzwecks**|Überschreiben des Featuretyps für die angegebene Spalte|
+|**Aktualisierung des Spaltenzwecks**|Der automatisch erkannte Featuretyp für die angegebene Spalte wird außer Kraft gesetzt.|
 |**Aktualisierung von Transformationsparametern** |Aktualisieren der Parameter für den angegebenen Transformator. Unterstützt derzeit *Imputer* (Mittelwert, häufigster Wert und medianer Wert) und *HashOneHotEncoder*.|
 |**Löschen von Spalten** |Gibt Spalten an, die aus der Featureverwendung gelöscht werden sollen.|
 |**Blockieren von Transformatoren**| Gibt Blockiertransformatoren an, die für die Featurebereitstellung verwendet werden.|
@@ -138,6 +138,50 @@ featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strate
 featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
 featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
+
+## <a name="bert-integration"></a>BERT-Integration 
+[BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) wird auf der Featurisierungsebene des automatisierten maschinellen Lernens verwendet. Auf dieser Ebene erkennen wir, ob eine Spalte freien Text oder andere Arten von Daten wie beispielsweise Zeitstempel oder einfache Zahlen enthält und ob wir die Funktionen entsprechend festgelegt haben. Für BERT optimieren bzw. trainieren wir das Modell durch die Verwendung der vom Benutzer bereitgestellten Bezeichnungen. Anschließend geben wir Dokumenteinbettungen (für BERT ist dies der endgültige ausgeblendete Zustand, der mit dem speziellen [CLS]-Token verknüpft ist) zusammen mit anderen Features wie zeitstempelbasierten Features (z. B. Wochentag) oder Nummern, die viele typische Datasets verwenden, als Features aus. 
+
+Sie sollten zum Aktivieren von BERT GPU-Computeressourcen für das Training verwenden. Wenn CPU-Compute verwendet wird, aktiviert AutoML anstatt BERT den BiLSTM DNN-Featurizer. Sie müssen in „automl_settings“ "enable_dnn: True" festlegen und GPU-Compute verwenden (z. B. vm_size = "STANDARD_NC6" oder höhere GPU), um BERT aufzurufen. Ein [Beispiel finden Sie in diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+
+AutoML führt für BERT die folgenden Schritte aus (Beachten Sie, dass in „automl_settings“ für diese Elemente "enable_dnn: True" sein muss):
+
+1. Vorverarbeitung einschließlich Tokenisierung aller Textspalten („StringCast“-Transformator in der Featurisierungszusammenfassung des letzten Modells). Ein Beispiel zum Erstellen der Featurisierungszusammenfassung des Modells mithilfe der `get_featurization_summary()`-Methode finden Sie in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+
+```python
+text_transformations_used = []
+for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
+    text_transformations_used.extend(column_group['Transformations'])
+text_transformations_used
+```
+
+2. Verketten aller Textspalten in einzelne Textspalten, weshalb „StringConcatTransformer“ im endgültigen Modell angezeigt wird. 
+
+> [!NOTE]
+> Bei unserer Implementierung von BERT ist die Gesamttextlänge eines Trainingsbeispiels auf 128 Token eingeschränkt. Das bedeutet, dass bei der Verkettung alle Textspalten idealerweise höchstens 128 Token aufweisen sollten. Im Idealfall sollte jede Spalte gekürzt werden, wenn mehrere Spalten vorhanden sind, sodass diese Bedingung erfüllt ist. Wenn beispielsweise zwei Textspalten in den Daten vorhanden sind, sollten beide Textspalten auf jeweils 64 Token gekürzt werden (vorausgesetzt, Sie möchten, dass beide Spalten in der endgültigen verketteten Textspalte gleichmäßig dargestellt werden), bevor die Daten in AutoML eingegeben werden. Bei verketteten Spalten mit einer Länge von mehr als 128 Token kürzt die Tokenizerebene von BERT diese Eingabe auf 128 Token.
+
+3. Beim Featuresweepingschritt vergleicht AutoML BERT mit der Baseline (Sammlung von Wortfeatures und vortrainierte Worteinbettungen) für eine Stichprobe der Daten und legt fest, ob BERT die Genauigkeit verbessern würde. Wenn festgestellt wird, dass BERT bessere Ergebnisse als die Baseline liefert, verwendet AutoML BERT für die Textfeaturisierung als optimale Featurisierungsstrategie und featurisiert weiterhin die gesamten Daten. In diesem Fall wird „PretrainedTextDNNTransformer“ im endgültigen Modell angezeigt.
+
+AutoML unterstützt derzeit ungefähr 100 Sprachen und wählt abhängig von der Sprache des Datasets das entsprechende BERT-Modell aus. Für Daten in deutscher Sprache wird das deutsche BERT-Modell verwendet. Für englische Daten wird das englische BERT-Modell verwendet. Für alle anderen Sprachen nutzen wir das mehrsprachige BERT-Modell.
+
+Im folgenden Code wird das deutsche BERT-Modell ausgelöst, da „deu“ als Datasetsprache angegeben ist, was gemäß [ISO-Klassifizierung](https://iso639-3.sil.org/code/hbs) dem dreibuchstabigen Ländercode für Deutschland entspricht.
+
+```python
+from azureml.automl.core.featurization import FeaturizationConfig
+
+featurization_config = FeaturizationConfig(dataset_language='deu')
+
+automl_settings = {
+    "experiment_timeout_minutes": 120,
+    "primary_metric": 'accuracy', 
+# All other settings you want to use 
+    "featurization": featurization_config,
+    
+  "enable_dnn": True, # This enables BERT DNN featurizer
+    "enable_voting_ensemble": False,
+    "enable_stack_ensemble": False
+}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

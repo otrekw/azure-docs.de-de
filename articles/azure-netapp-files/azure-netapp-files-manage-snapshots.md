@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Azure NetApp Files Momentaufnahmen für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
+description: Hier wird das Erstellen und Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files beschrieben.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281547"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
-Mithilfe von Azure NetApp Files können Sie eine Momentaufnahme bei Bedarf für ein Volume manuell erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen. Der Azure NetApp Files-Dienst erstellt Momentaufnahmen von Volumes nicht automatisch.  
+Azure NetApp Files unterstützt das Erstellen bedarfsgesteuerter Momentaufnahmen und das Verwenden von Momentaufnahmenrichtlinien zum Planen der automatischen Erstellung von Momentaufnahmen.  Sie können eine Momentaufnahme auch für ein neues Volume wiederherstellen.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Erstellen einer Momentaufnahme bei Bedarf für ein Volume
 
-Momentaufnahmen können nur bei Bedarf erstellt werden. Richtlinien für Momentaufnahmen werden derzeit nicht unterstützt.
+Sie können bei Bedarf Volumemomentaufnahmen erstellen. 
 
-1.  Klicken Sie auf dem Blatt „Volumes“ auf **Momentaufnahmen**.
+1.  Wechseln Sie zu dem Volume, für das Sie eine Momentaufnahme erstellen möchten. Klicken Sie auf **Momentaufnahmen**.
 
     ![Zu Momentaufnahmen navigieren](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
@@ -43,47 +43,112 @@ Momentaufnahmen können nur bei Bedarf erstellt werden. Richtlinien für Momenta
 
 4. Klicken Sie auf **OK**. 
 
+## <a name="manage-snapshot-policies"></a>Verwalten von Momentaufnahmenrichtlinien
+
+Mithilfe von Momentaufnahmenrichtlinien können Sie planen, dass automatisch Volumemomentaufnahmen erstellt werden. Sie können eine Momentaufnahmenrichtlinie nach Bedarf auch ändern oder sogar löschen, wenn Sie sie nicht mehr benötigen.  
+
+> [!IMPORTANT] 
+> Die Verwendung der Funktion für Momentaufnahmenrichtlinien erfordert die Whitelist. Senden Sie eine E-Mail mit Ihrer Abonnement-ID an anffeedback@microsoft.com, um dieses Feature anzufordern.
+
+### <a name="create-a-snapshot-policy"></a>Erstellen einer Momentaufnahmenrichtlinie 
+
+Eine Momentaufnahmenrichtlinie ermöglicht es Ihnen, die Häufigkeit der Erstellung von Momentaufnahmen in stündlichen, täglichen, wöchentlichen oder monatlichen Zyklen anzugeben. Außerdem müssen Sie die maximale Anzahl von Momentaufnahmen angeben, die für das Volume beibehalten werden soll.  
+
+1.  Klicken Sie in der Ansicht für das NetApp-Konto auf **	Momentaufnahmenrichtlinie**.
+
+    ![Momentaufnahmenrichtliniennavigation](../media/azure-netapp-files/snapshot-policy-navigation.png)
+
+2.  Legen Sie die Option „Richtlinienstatus“ im Fenster „Momentaufnahmenrichtlinie“ auf **Aktiviert** fest. 
+
+3.  Klicken Sie auf die Registerkarte **Stündlich**, **Täglich**, **Wöchentlich** oder **Monatlich**, um Richtlinien für stündliche, tägliche, wöchentliche oder monatliche Momentaufnahmen zu erstellen. Bestimmen Sie die **Anzahl von Momentaufnahmen, die beibehalten werden sollen**.  
+
+    Informationen zur maximalen Anzahl von Momentaufnahmen, die für ein Volume zulässig sind, finden Sie unter [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md). 
+
+    Das folgende Beispiel zeigt die Konfiguration der Richtlinie für stündliche Momentaufnahmen. 
+
+    ![Richtlinie für stündliche Momentaufnahme](../media/azure-netapp-files/snapshot-policy-hourly.png)
+
+    Das folgende Beispiel zeigt die Konfiguration der Richtlinie für tägliche Momentaufnahmen.
+
+    ![Richtlinie für tägliche Momentaufnahme](../media/azure-netapp-files/snapshot-policy-daily.png)
+
+    Das folgende Beispiel zeigt die Konfiguration der Richtlinie für wöchentliche Momentaufnahmen.
+
+    ![Richtlinie für wöchentliche Momentaufnahme](../media/azure-netapp-files/snapshot-policy-weekly.png)
+
+    Das folgende Beispiel zeigt die Konfiguration der Richtlinie für monatliche Momentaufnahmen.
+
+    ![Richtlinie für monatliche Momentaufnahme](../media/azure-netapp-files/snapshot-policy-monthly.png) 
+
+4.  Klicken Sie auf **Speichern**.  
+
+Wiederholen Sie Schritt 3, wenn Sie zusätzliche Momentaufnahmenrichtlinien erstellen müssen.
+Die von Ihnen erstellten Richtlinien werden auf der Seite „Momentaufnahmenrichtlinie“ angezeigt.
+
+Wenn Sie möchten, dass die Richtlinie von einem Volume verwendet wird, müssen Sie [die Richtlinie auf das Volume anwenden](azure-netapp-files-manage-snapshots.md#apply-a-snapshot-policy-to-a-volume). 
+
+### <a name="apply-a-snapshot-policy-to-a-volume"></a>Anwenden einer Momentaufnahmenrichtlinie auf ein Volume
+
+Wenn Sie möchten, dass ein Volume eine von Ihnen erstellte Momentaufnahmenrichtlinie verwendet, müssen Sie die Richtlinie auf das Volume anwenden. 
+
+1.  Navigieren Sie zur Seite **Volumes**, klicken Sie mit der rechten Maustaste auf das Volume, auf das Sie eine Momentaufnahmenrichtlinie anwenden möchten, und klicken Sie dann auf **Bearbeiten**.
+
+    ![Rechtsklicken auf Volumes im Menü](../media/azure-netapp-files/volume-right-cick-menu.png) 
+
+2.  Wählen Sie unter **Momentaufnahmenrichtlinie** im Fenster „Bearbeiten“ eine Richtlinie aus, die für das Volume verwendet werden soll.  Klicken Sie auf **OK**, um die Richtlinie anzuwenden.  
+
+    ![Bearbeiten einer Momentaufnahmenrichtlinie](../media/azure-netapp-files/snapshot-policy-edit.png) 
+
+### <a name="modify-a-snapshot-policy"></a>Ändern einer Momentaufnahmenrichtlinie 
+
+Sie können eine vorhandene Momentaufnahmenrichtlinie ändern, um den Richtlinienstatus, die Häufigkeit der Momentaufnahmen (stündlich, täglich, wöchentlich oder monatlich) oder die Anzahl von Momentaufnahmen zu ändern, die aufbewahrt werden sollen.  
+ 
+1.  Klicken Sie in der Ansicht für das NetApp-Konto auf **	Momentaufnahmenrichtlinie**.
+
+2.  Klicken Sie mit der rechten Maustaste auf die Momentaufnahmenrichtlinie, die Sie ändern möchten, und klicken Sie dann auf **Bearbeiten**.
+
+    ![Rechtsklicken für Menü zum Bearbeiten der Momentaufnahmenrichtlinie](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
+
+3.  Nehmen Sie die Änderungen im Fenster „Momentaufnahmenrichtlinie“ vor, das angezeigt wird, und klicken Sie dann auf **Speichern**. 
+
+### <a name="delete-a-snapshot-policy"></a>Löschen einer Momentaufnahmenrichtlinie 
+
+Sie können eine Momentaufnahmenrichtlinie löschen, die Sie nicht mehr beibehalten möchten.   
+
+1.  Klicken Sie in der Ansicht für das NetApp-Konto auf **	Momentaufnahmenrichtlinie**.
+
+2.  Klicken Sie mit der rechten Maustaste auf die Momentaufnahmenrichtlinie, die Sie ändern möchten, und klicken Sie dann auf **Löschen**.
+
+    ![Rechtsklicken für Menü zum Bearbeiten der Momentaufnahmenrichtlinie](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
+
+3.  Klicken Sie auf **Ja**, um zu bestätigen, dass Sie die Momentaufnahmenrichtlinie löschen möchten.   
+
+    ![Bestätigung zum Löschen der Momentaufnahmenrichtlinie](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Wiederherstellen einer Momentaufnahme auf einem neuen Volume
 
 Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstellen. 
-1. Wechseln Sie vom Blatt „Volume“ zum Blatt **Momentaufnahmen verwalten**, um die Liste der Momentaufnahmen anzuzeigen. 
-2. Wählen Sie die Momentaufnahme aus, die wiederhergestellt werden soll.  
-3. Klicken Sie mit der rechten Maustaste auf den Namen der Momentaufnahme, und wählen Sie im Menü die Option **Auf neuem Volume wiederherstellen** aus.  
+1. Klicken Sie im Bereich „Volume“ auf **Momentaufnahmen**, um die Liste der Momentaufnahmen anzuzeigen. 
+2. Klicken Sie mit der rechten Maustaste auf die Momentaufnahme, die Sie wiederherstellen möchten, und klicken Sie dann im Menü auf die Option **Auf neuem Volume wiederherstellen**.  
 
     ![Wiederherstellen von Momentaufnahme auf neuem Volume](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. Geben Sie im Fenster „Neues Volume“ die folgenden Informationen für das neue Volume an:  
+3. Geben Sie im Fenster „Volume erstellen“ Informationen für das neue Volume an:  
     * **Name**   
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.  
         
         Der Name muss innerhalb einer Ressourcengruppe eindeutig sein. Er muss mindestens drei Zeichen lang sein.  Er darf beliebige alphanumerische Zeichen enthalten.
 
-    * **Dateipfad**     
-        Geben Sie den Dateipfad zum Erstellen des Exportpfads für das neue Volume an. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
-        
-        Das Einbindungsziel ist der Endpunkt der IP-Adresse des NFS-Diensts. Es wird automatisch generiert.   
-        
-        Der Dateipfadname darf nur Buchstaben, Zahlen und Bindestriche („-“) enthalten. Er muss 16 bis 40 Zeichen umfassen. 
-
     * **Kontingent**  
-        Geben Sie die Menge an logischem Speicherplatz an, die dem Volume zugewiesen wird.  
+        Geben Sie die Menge an logischem Speicherplatz an, den Sie dem Volume zuordnen möchten.  
 
-        Das Feld **Verfügbares Kontingent** zeigt den ungenutzten Speicherplatz im ausgewählten Kapazitätspool an, den Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.
+    ![Wiederherstellen auf neuem Volume](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-    *   **Virtuelles Netzwerk**  
-        Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten.  
-        Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Sie können nur aus demselben VNET aus auf Azure NetApp Files zugreifen oder per VNET-Peering von einem VNET aus, das sich in der gleichen Region befindet wie das Volume. Sie können über Express Route von Ihrem lokalen Netzwerk aus auf das Volume zugreifen. 
-
-    * **Subnetz**  
-        Geben Sie das Subnetz an, das Sie für das Volume verwenden möchten.  
-        Das von Ihnen angegebene Subnetz muss an den Azure NetApp Files-Dienst delegiert werden. Sie können ein neues Subnetz erstellen, indem Sie **Neu erstellen** unter dem Feld „Subnetz“ auswählen.  
-   <!--
-    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-   -->
-
-5. Klicken Sie auf **OK**.   
+4. Klicken Sie auf **Überprüfen und erstellen**.  Klicken Sie auf **Erstellen**.   
+    Das neue Volume verwendet das gleiche Protokoll wie die Momentaufnahme.   
     Das neue Volume, auf dem die Momentaufnahme wiederhergestellt wurde, wird auf dem Blatt „Volumes“ angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Grundlegendes zur Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
+* [Grundlegendes zur Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
+* [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)

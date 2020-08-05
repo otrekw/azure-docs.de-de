@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524300"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284148"
 ---
 # <a name="add-parameters-to-commands"></a>Hinzufügen von Parametern zu Befehlen
 
@@ -47,7 +47,7 @@ Bearbeiten Sie den vorhandenen **TurnOn**-Befehl, um mehrere Geräte ein- und au
        > [!div class="mx-imgBorder"]
        > ![Antwort für erforderlichen Parameter erstellen](media/custom-commands/add-required-on-off-parameter-response.png)
    
-   1. Jetzt konfigurieren wir die Parametereigenschaften. Eine Erläuterung aller Konfigurationseigenschaften eines Befehls finden Sie unter [Referenzen](./custom-commands-references.md). Konfigurieren Sie die restlichen Eigenschaften des Parameters wie folgt:
+   1. Jetzt konfigurieren wir die Parametereigenschaften. Eine Erläuterung aller Konfigurationseigenschaften eines Befehls finden Sie unter [Referenzen](./custom-commands-references.md). Konfigurieren Sie die Eigenschaften des Parameters wie folgt:
       
 
        | Konfiguration      | Vorgeschlagener Wert     | BESCHREIBUNG                                                      |
@@ -61,11 +61,10 @@ Bearbeiten Sie den vorhandenen **TurnOn**-Befehl, um mehrere Geräte ein- und au
        | Vordefinierte Eingabewerte     | `on`, `off`           | Menge möglicher Werte und ihrer Aliase         |
        
         
-   1. Wenn Sie vordefinierte Eingabewerte hinzufügen möchten, wählen Sie **Vordefinierte Eingabe hinzufügen** aus, und geben Sie in Fenster **Neues Element** den **Namen** ein, wie in der Tabelle oben angegeben. In diesem Fall verwenden wir keine Aliase, Sie können ihn also leer lassen. 
-
-    > [!div class="mx-imgBorder"]
-
-    > ![Erstellen von Parametern](media/custom-commands/create-on-off-parameter.png)
+   1. Wenn Sie vordefinierte Eingabewerte hinzufügen möchten, wählen Sie **Vordefinierte Eingabe hinzufügen** aus, und geben Sie in Fenster **Neues Element** den **Namen** ein, wie in der Tabelle oben angegeben. In diesem Fall verwenden wir keine Aliase, Sie können ihn also leer lassen.
+   
+      > [!div class="mx-imgBorder"]
+      > ![Erstellen von Parametern](media/custom-commands/create-on-off-parameter.png)
 
    1. Wählen Sie **Speichern** aus, um alle Konfigurationen des Parameters zu speichern.
  
@@ -118,6 +117,7 @@ Wählen Sie **Speichern** aus.
 
 1. Wählen Sie im Abschnitt **Bedingung** die Option **Bedingung hinzufügen** aus.
 1. Wählen Sie im Fenster **Neue Bedingung** in der Liste **Typ** die Option **Erforderliche Parameter**aus. Überprüfen Sie in der nachstehenden Prüfliste sowohl **OnOff** als auch **SubjectDevice**.
+1. Lassen Sie **IsGlobal** deaktiviert.
 1. Klicken Sie auf **Erstellen**.
 1. Bearbeiten Sie im Abschnitt **Aktionen** die vorhandene Aktion **Sprachantwort senden**, indem Sie mit der Maus auf die Aktion zeigen und das Bearbeiten-Symbol auswählen. Nutzen Sie diesmal die neu erstellten Parameter **OnOff** und **SubjectDevice**.
 
@@ -127,7 +127,7 @@ Wählen Sie **Speichern** aus.
 1. Wählen Sie **Speichern** aus.
 
 ### <a name="try-it-out"></a>Ausprobieren
-1. Wählen Sie das **Trainieren**-Symbol aus, das oben im rechten Bereich angezeigt wird.
+1. Wählen Sie oben im rechten Bereich das **Trainieren**-Symbol aus.
 
 1. Nachdem das Training abgeschlossen ist, wählen Sie **Testen** aus. Es wird ein Fenster **Testen Ihrer Anwendung** angezeigt.
  Versuchen Sie, einige Interaktionen auszuführen.
@@ -184,7 +184,7 @@ Bearbeiten Sie die vorhandenen Vervollständigungsregeln gemäß der folgenden K
 
 Fügen Sie einen Parameter mit der Bezeichnung **DateTime** und der folgenden Konfiguration hinzu.
 
-   | Einstellung                           | Vorgeschlagener Wert                     | 
+   | Einstellung                           | Empfohlener Wert                     | 
    | --------------------------------- | ----------------------------------------|
    | Name                              | `DateTime`                               |
    | Erforderlich                          | Aktiviert                                 |

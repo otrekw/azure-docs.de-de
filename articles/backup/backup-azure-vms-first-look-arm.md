@@ -3,12 +3,12 @@ title: Sichern einer Azure-VM über die VM-Einstellungen
 description: In diesem Artikel erfahren Sie, wie Sie entweder einen einzelnen virtuellen Azure-Computer oder mehrere virtuelle Azure-Computer mit dem Azure Backup-Dienst sichern können.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538886"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286734"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt, wie Sie Azure-VMs mit dem [Azure Backup](backup-overv
 
 ### <a name="azure-vm-agent-installation"></a>Azure-VM-Agent-Installation
 
-Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Agent, der auf dem Computer ausgeführt wird. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, wird der Agent ausgeführt. In einigen Fällen, z.B. wenn Sie eine benutzerdefinierte VM erstellen oder einen Computer von lokalen Standorten aus migrieren, müssen den Agent ggf. manuell installieren.
+Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Agent, der auf dem Computer ausgeführt wird. Wenn Ihre VM aus einem Azure Marketplace-Image erstellt wurde, wird der Agent ausgeführt. In einigen Fällen, z.B. wenn Sie eine benutzerdefinierte VM erstellen oder einen Computer von lokalen Standorten aus migrieren, müssen den Agent ggf. manuell installieren.
 
 - Wenn Sie den VM-Agent manuell installieren müssen, folgen Sie den Anweisungen für [Windows](../virtual-machines/extensions/agent-windows.md)- oder [Linux](../virtual-machines/extensions/agent-linux.md)-VMs.
 - Nach der Installation des Agent installiert Azure Backup die Sicherungserweiterung auf den Agent, wenn Sie die Sicherung aktivieren. Die Erweiterung wird ohne Eingreifen des Benutzers aktualisiert und gepatcht.
@@ -39,15 +39,15 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
    - Wenn Sie bereits über einen Tresor verfügen, klicken Sie auf **Vorhanden auswählen**, und wählen Sie einen Tresor aus.
    - Wenn Sie keinen Tresor haben, klicken Sie auf **Neu erstellen**. Geben Sie einen Namen für den Tresor an. Es wird in der gleichen Region und Ressourcengruppe erstellt wie die VM. Sie können diese Einstellungen nicht ändern, wenn Sie die Sicherung direkt aus den VM-Einstellungen heraus aktivieren.
 
-   ![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. Gehen Sie in **Sicherungsrichtlinie auswählen** wie folgt vor:
+6. Gehen Sie unter **Sicherungsrichtlinie auswählen** wie folgt vor:
 
    - Übernehmen Sie die Standardrichtlinie. Dadurch wird die VM einmal täglich zur angegebenen Zeit gesichert und die Sicherungen werden 30 Tage lang im Tresor aufbewahrt.
    - Wählen Sie eine bestehende Sicherungsrichtlinie aus, sofern vorhanden.
    - Erstellen Sie eine neue Richtlinie, und definieren Sie die Richtlinieneinstellungen.  
 
-   ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. Klicken Sie auf **Sicherung aktivieren**. Dadurch wird die Sicherungsrichtlinie mit der VM verknüpft.
 

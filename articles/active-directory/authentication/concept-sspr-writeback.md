@@ -5,22 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027596"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
 Mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure Active Directory (Azure AD) können Benutzer ihre Kennwörter in der Cloud zurücksetzen. Die meisten Unternehmen verfügen aber auch über eine lokale Active Directory Domain Services-Umgebung (AD DS) mit ihren Benutzern. Kennwortrückschreiben ist eine Funktion, die mit [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) aktiviert wurde und es ermöglicht, Kennwortänderungen in der Cloud in Echtzeit in ein vorhandenes lokales Verzeichnis zurückzuschreiben. Wenn in dieser Konfiguration Benutzer ihre Kennwörter mithilfe von SSPR in der Cloud ändern oder zurücksetzen, werden die aktualisierten Kennwörter auch in die lokale AD DS Umgebung zurückgeschrieben.
+
+> [!IMPORTANT]
+> In diesem Konzeptartikel erfahren Administratoren, wie das Rückschreiben der Self-Service-Kennwortzurücksetzung funktioniert. Wenn Sie bereits als Endbenutzer für die Self-Service-Kennwortzurücksetzung registriert sind und wieder zu Ihrem Konto zurückkehren müssen, gehen Sie zu https://aka.ms/sspr.
+>
+> Wenn Ihr IT-Team die Möglichkeit zum Zurücksetzen Ihres eigenen Kennworts nicht aktiviert hat, wenden Sie sich an den Helpdesk, um weitere Unterstützung zu erhalten.
 
 Das Kennwortrückschreiben wird in Umgebungen unterstützt, die folgende Hybrididentitätsmodelle verwenden:
 
@@ -37,7 +42,12 @@ Kennwortrückschreiben bietet die folgenden Features:
 * **Keine Notwendigkeit zur Festlegung von eingehenden Firewallregeln:** Kennwortrückschreiben verwendet ein Azure Service Bus Relay als zugrunde liegenden Kommunikationskanal. Die gesamte Kommunikation geht über Port 443.
 
 > [!NOTE]
-> Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Administratoren können ihr Kennwort in der Cloud ändern, aber nicht die Kennwortzurücksetzung zum Zurücksetzen eines vergessenen Kennworts verwenden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Geschützte Konten und Gruppen in Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Administratoren können ihr Kennwort in der Cloud ändern, aber nicht die Kennwortzurücksetzung zum Zurücksetzen eines vergessenen Kennworts verwenden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Anhang C: Geschützte Konten und Gruppen in Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+
+Nutzen Sie das folgende Tutorial, um sich mit dem SSPR-Rückschreiben vertraut zu machen:
+
+> [!div class="nextstepaction"]
+> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](tutorial-enable-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Funktionsweise der Kennwortrückschreibung
 
@@ -53,14 +63,14 @@ Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung versuchen, i
 1. Sobald die Nachricht den Service Bus erreicht hat, wird der Endpunkt für die Kennwortzurücksetzung automatisch aktiviert, und der Endpunkt erkennt, dass eine Anforderung zur Zurücksetzung aussteht.
 1. Der Dienst sucht dann nach dem Benutzer, indem er das Cloudankerattribut verwendet. Damit die Suche erfolgreich ist, müssen die folgenden Bedingungen erfüllt sein:
 
-   * Das Benutzerobjekt muss im Active Directory-Connectorbereich vorhanden sein.
+   * Das Benutzerobjekt muss im AD DS-Connectorbereich vorhanden sein.
    * Das Benutzerobjekt muss mit dem entsprechenden Metaverseobjekt (MV-Objekt) verknüpft sein.
-   * Das Benutzerobjekt muss mit dem entsprechenden Azure Active Directory-Connectorobjekt verknüpft sein.
-   * Für die Verknüpfung zwischen dem Active Directory-Connectorobjekt und dem MV-Objekt muss die Synchronisierungsregel `Microsoft.InfromADUserAccountEnabled.xxx` festgelegt sein.
+   * Das Benutzerobjekt muss mit dem entsprechenden Azure AD-Connectorobjekt verknüpft sein.
+   * Für die Verknüpfung zwischen dem AD DS-Connectorobjekt und dem MV-Objekt muss die Synchronisierungsregel `Microsoft.InfromADUserAccountEnabled.xxx` festgelegt sein.
 
-   Sobald der Aufruf aus der Cloud eingetroffen ist, verwendet das Synchronisierungsmodul das **cloudAnchor**-Attribut, um das Azure Active Directory-Connectorbereichsobjekt nachzuschlagen. Es folgt dann dem Link zurück zum MV-Objekt und folgt anschließend dem Link zurück zum Active Directory-Objekt. Da mehrere Active Directory-Objekte (Multi-Gesamtstruktur) für denselben Benutzer vorliegen können, verwendet das Synchronisierungsmodul die `Microsoft.InfromADUserAccountEnabled.xxx`-Verbindung, um das richtige Objekt auszuwählen.
+   Sobald der Aufruf aus der Cloud eingetroffen ist, verwendet das Synchronisierungsmodul das **cloudAnchor**-Attribut, um das Azure AD-Connectorbereichsobjekt nachzuschlagen. Es folgt dann dem Link zurück zum MV-Objekt und folgt anschließend dem Link zurück zum AD DS-Objekt. Da mehrere AD DS-Objekte (mehrere Gesamtstrukturen) für denselben Benutzer vorliegen können, wählt das Synchronisierungsmodul das richtige Objekt basierend auf der `Microsoft.InfromADUserAccountEnabled.xxx`-Verbindung aus.
 
-1. Nachdem das Benutzerkonto ermittelt ist, wird versucht, das Kennwort direkt in der geeigneten Active Directory-Gesamtstruktur zurückzusetzen.
+1. Nachdem das Benutzerkonto ermittelt ist, wird versucht, das Kennwort direkt in der geeigneten AD DS-Gesamtstruktur zurückzusetzen.
 1. Wenn dieser Vorgang erfolgreich war, wird der Benutzer darüber informiert, dass das Kennwort geändert wurde.
 
    > [!NOTE]
@@ -69,7 +79,7 @@ Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung versuchen, i
 1. Wenn bei diesem Vorgang ein Fehler auftritt, wird der Benutzer per Fehlermeldung dazu aufgefordert, es erneut zu versuchen. Der Vorgang kann aus folgenden Gründen zu einem Fehler führen:
     * Der Dienst war nicht verfügbar.
     * Das ausgewählte Kennwort entspricht nicht den Richtlinien der Organisation.
-    * Der Benutzer wurde nicht im lokalen Active Directory gefunden.
+    * Der Benutzer konnte in der lokalen AD DS-Umgebung nicht gefunden werden.
 
    Die Fehlermeldungen geben den Benutzern eine Anleitung, damit sie versuchen können, die Fehler ohne Eingriff des Administrators zu beheben.
 
@@ -86,7 +96,7 @@ Das Kennwortrückschreiben ist ein äußerst sicherer Dienst. Zum Schutz Ihrer I
    1. Das verschlüsselte Kennwort wird in eine HTTPS-Nachricht eingefügt, die über einen über TLS-/SSL-Zertifikate von Microsoft verschlüsselten Kanal an Ihr Service Bus Relay gesendet wird.
    1. Nachdem die Nachricht beim Service Bus eingetroffen ist, wird Ihr lokaler Agent reaktiviert und in Service Bus mithilfe des sicheren Kennworts authentifiziert, das zuvor generiert wurde.
    1. Der lokale Agent liest die verschlüsselte Nachricht und entschlüsselt sie mit dem privaten Schlüssel.
-   1. Der lokale Agent versucht, das Kennwort über die SetPassword-API von AD DS festzulegen. In diesem Schritt kann Ihre lokale Active Directory-Kennwortrichtlinie (so z.B. die Komplexität, das Alter, der Verlauf, die Filter usw.) in der Cloud erzwungen werden.
+   1. Der lokale Agent versucht, das Kennwort über die SetPassword-API von AD DS festzulegen. In diesem Schritt kann Ihre lokale AD DS-Kennwortrichtlinie (z. B. die Komplexität, das Alter, der Verlauf und die Filter) in der Cloud erzwungen werden.
 * **Richtlinien zum Nachrichtenablauf**
    * Falls die Nachricht im Service Bus verbleibt, weil der lokale Dienst nicht verfügbar ist, kommt es nach wenigen Minuten zu einem Timeout, und die Nachricht wird entfernt. Das Timeout und Entfernen der Nachricht erhöhen die Sicherheit noch weiter.
 
@@ -95,9 +105,9 @@ Das Kennwortrückschreiben ist ein äußerst sicherer Dienst. Zum Schutz Ihrer I
 Nachdem ein Benutzer eine Kennwortzurücksetzung übermittelt hat, durchläuft die Zurücksetzungsanforderung verschiedene Verschlüsselungsschritte, bevor sie in Ihrer lokalen Umgebung eintrifft. Diese Verschlüsselungsschritte stellen maximale Dienstzuverlässigkeit und -sicherheit sicher. Die Schritte lassen sich wie folgt beschreiben:
 
 1. **Kennwortverschlüsselung mit 2.048-Bit-RSA-Schlüssel:** Nachdem ein Benutzer ein zurückzuschreibendes Kennwort an die lokale Umgebung übermittelt hat, wird dieses Kennwort mit einem 2.048-Bit-RSA-Schlüssel verschlüsselt.
-1. **Verschlüsselung auf Paketebene mit AES-GCM:** Das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) wird mithilfe von AES-GCM verschlüsselt. Diese Verschlüsselung verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden ServiceBus-Kanal den Inhalt anzeigen oder manipulieren kann.
-1. **Abwicklung der gesamten Kommunikation über TLS/SSL:** Die gesamte Kommunikation mit ServiceBus wird über einen TLS/SSL-Kanal abgewickelt. Diese Verschlüsselung schützt den Inhalt vor nicht autorisierten Dritten.
-1. **Automatischer Schlüsselrollover im Abstand von sechs Monaten**: Alle sechs Monate oder jedes Mal, wenn das Kennwortrückschreiben deaktiviert und dann in Azure AD Connect wieder aktiviert wird, erfolgt ein Rollover aller Schlüssel, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu erreichen.
+1. **Verschlüsselung auf Paketebene mit AES-GCM:** Das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) wird mithilfe von AES-GCM verschlüsselt. Diese Verschlüsselung verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden Service Bus-Kanal den Inhalt anzeigen oder manipulieren kann.
+1. **Abwicklung der gesamten Kommunikation über TLS/SSL:** Die gesamte Kommunikation mit Service Bus wird über einen TLS/SSL-Kanal abgewickelt. Diese Verschlüsselung schützt den Inhalt vor nicht autorisierten Dritten.
+1. **Automatischer Schlüsselrollover im Abstand von sechs Monaten:** Alle sechs Monate oder jedes Mal, wenn das Kennwortrückschreiben deaktiviert und dann in Azure AD Connect wieder aktiviert wird, erfolgt ein Rollover aller Schlüssel, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu erreichen.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Bandbreitennutzung für das Kennwortrückschreiben
 

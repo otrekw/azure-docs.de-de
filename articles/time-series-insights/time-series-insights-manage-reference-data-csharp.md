@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059221"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Verwalten von GA-Referenzdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>Verwalten von Verweisdaten für eine Azure Time Series Insights Gen1-Umgebung mithilfe von C#
 
-In diesem Artikel wird veranschaulicht, wie Sie C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) und Azure Active Directory kombinieren, um programmgesteuert API-Anforderungen an die [Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) von Azure Time Series Insights GA auszuführen.
+In diesem Artikel wird veranschaulicht, wie Sie C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) und Azure Active Directory kombinieren, um programmgesteuert API-Anforderungen an die [Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) von Azure Time Series Insights Gen1 auszuführen.
 
 > [!TIP]
 > C#-Codebeispiele mit allgemeiner Verfügbarkeit finden Sie unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
@@ -30,7 +30,7 @@ In diesem Artikel wird veranschaulicht, wie Sie C#, [MSAL.NET](https://github.co
 Im unten stehenden Beispielcode werden die folgenden Funktionen veranschaulicht:
 
 * Abrufen eines Zugriffstokens mit **PublicClientApplication** für [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)
-* Sequenzielle CREATE-, READ-, UPDATE- und DELETE-Vorgänge für die GA-[Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)
+* Sequenzielle CREATE-, READ-, UPDATE- und DELETE-Vorgänge für die Gen1-[Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)
 * Allgemeine Antwortcodes, einschließlich [allgemeiner Fehlercodes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)
     
     Die Verweisdatenverwaltungs-API verarbeitet jedes Element einzeln. Wenn bei einem Element ein Fehler auftritt, verhindert dies nicht den erfolgreichen Abschluss der anderen. Wenn Ihre Anforderung z. B. 100 Elemente umfasst und bei einem Element ein Fehler auftritt, werden 99 Elemente geschrieben, und eines wird zurückgewiesen.
@@ -39,8 +39,8 @@ Im unten stehenden Beispielcode werden die folgenden Funktionen veranschaulicht:
 
 Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden Schritte aus:
 
-1. [Stellen Sie eine GA Azure Time Series Insights-Umgebung bereit.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
-)
+1. [Stellen Sie eine Gen1 Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+)-Umgebung bereit.
 
 1. [Erstellen Sie ein Verweisdataset](time-series-insights-add-reference-data-set.md) in Ihrer Umgebung. Verwenden Sie das folgende Verweisdatenschema:
 
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die Referenzdokumentation zur GA-[Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+- Lesen Sie die Referenzdokumentation zur Gen1-[Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
