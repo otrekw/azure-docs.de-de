@@ -3,12 +3,12 @@ title: 'Schnellstart: Senden von Blob Storage-Ereignissen an einen Webendpunkt: 
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und das Azure-Portal, um das Blob Storage-Konto zu erstellen und dessen Ereignisse zu abonnieren. Senden Sie die Ereignisse an einen Webhook.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103635"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421602"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt über das Azure-Portal
 
@@ -50,7 +50,7 @@ Vor dem Abonnieren der Ereignisse für den Blobspeicher erstellen wir zunächst 
 
 1. Wählen Sie **Deploy to Azure** (In Azure bereitstellen), um die Lösung für Ihr Abonnement bereitzustellen. 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. Gehen Sie auf der Seite **Benutzerdefinierte Bereitstellung** wie folgt vor: 
     1. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, die Sie beim Erstellen des Speicherkontos erstellt haben. Dadurch muss zur Bereinigung nach Abschluss des Tutorials einfach nur die Ressourcengruppe gelöscht werden.  
     2. Geben Sie unter **Websitename** einen Namen für die Web-App ein.

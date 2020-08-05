@@ -3,12 +3,12 @@ title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an einen Webend
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und das Azure-Portal, um ein benutzerdefiniertes Thema zu veröffentlichen und Ereignisse für dieses Thema zu abonnieren. Die Ereignisse werden von einer Webanwendung verarbeitet.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115229"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421041"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an einen Webendpunkt mit dem Azure Portal und Event Grid
 
@@ -44,7 +44,8 @@ Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die 
 5. Geben Sie nach erfolgreicher Bereitstellung noch mal in die Suchleiste **Event Grid-Themen**ein, und wählen Sie wie vorher **Event Grid-Themen** aus der Dropdownliste aus. 
 6. Wählen Sie das von Ihnen erstellte Thema aus der Liste aus. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Ihr Thema aus der Liste auswählen":::  
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Ihr Thema aus der Liste auswählen":::
+
 7. Daraufhin wird die Seite **Event Grid-Thema** für Ihr Thema angezeigt. Lassen Sie diese Seite geöffnet. Sie wird im weiteren Verlauf der Schnellstartanleitung benötigt. 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Startseite des Event Grid-Themas":::
@@ -54,7 +55,7 @@ Erstellen Sie zunächst einen Endpunkt für die Ereignisnachricht, bevor Sie ein
 
 1. Wählen Sie auf der Artikelseite **Deploy to Azure** (In Azure bereitstellen) aus, um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
 
     Wenn die Bereitstellung fehlschlägt, überprüfen Sie die Fehlermeldung. Möglicherweise ist der Name der Website bereits vergeben. Stellen Sie die Vorlage noch mal bereit, und wählen Sie einen anderen Namen für die Site aus. 

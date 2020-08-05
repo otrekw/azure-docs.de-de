@@ -3,13 +3,13 @@ title: Erstellen einer .NET-App unter Service Fabric in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie eine Anwendung mit einem ASP.NET Core-Front-End und einem zustandsbehafteten zuverlässigen Dienst-Back-End erstellen und in einem Cluster bereitstellen.
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 03320fe41bcac8b99a3475b52fcf1b41ea5aed89
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257120"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428371"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 

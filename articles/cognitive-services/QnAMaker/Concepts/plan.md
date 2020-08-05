@@ -1,33 +1,33 @@
 ---
 title: Planen Ihrer App – QnA Maker
-description: Die Planung Ihrer QnA Maker-App erfordert Kenntnisse über die Funktionsweise von QnA Maker und interagiert mit anderen Azure-Diensten sowie einigen Wissensdatenbank-Konzepten.
+description: Erfahren Sie, wie Sie Ihre QnA Maker-App planen. Erfahren Sie, wie QnA Maker funktioniert und mit anderen Azure-Diensten und einigen Konzepten der Wissensdatenbank interagiert.
 ms.topic: conceptual
 ms.date: 07/2/2020
-ms.openlocfilehash: d19ec51aec7e71b6f040a03543f72af3aed09556
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 19499aceed96155fa42c78865b1d673a3830f5cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85875384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054201"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planen Ihrer QnA Maker-App
 
-Die Planung Ihrer QnA Maker-App erfordert Kenntnisse über die Funktionsweise von QnA Maker und interagiert mit anderen Azure-Diensten sowie einigen Wissensdatenbank-Konzepten.
+Zum Planen Ihrer QnA Maker-App müssen Sie verstehen, wie QnA Maker funktioniert und mit anderen Azure-Diensten interagiert. Sie sollten auch ein fundiertes Verständnis von Konzepten der Wissensdatenbank haben.
 
 ## <a name="azure-resources"></a>Azure-Ressourcen
 
-Jede [Azure-Ressource](azure-resources.md#resource-purposes), die mit QnA Maker erstellt wird, hat einen bestimmten Zweck. Da jede Ressource eigene Zwecke, Grenzwerte und [Tarife](azure-resources.md#pricing-tier-considerations) aufweist, müssen Sie wissen, wie diese Ressourcen im Rahmen Ihres Planungsprozesses funktionieren.
+Jede [Azure-Ressource](azure-resources.md#resource-purposes), die mit QnA Maker erstellt wird, hat einen bestimmten Zweck. Jede Ressource hat ihren eigenen Zweck, ihre eigenen Grenzwerte und ihren eigenen [Tarif](azure-resources.md#pricing-tier-considerations). Es ist wichtig, die Funktion dieser Ressourcen zu verstehen, sodass Sie dieses Wissen in Ihren Planungsprozess integrieren können.
 
-|Resource|Zweck|
+| Resource | Zweck |
 |--|--|
-| [QnA Maker](azure-resources.md#qna-maker-resource)-Ressource|Erstellung und Abfragevorhersage|
-| [Cognitive Search](azure-resources.md#cognitive-search-resource)-Ressource|Datenspeicherung und -suche|
-| [App Service-Ressource und App Plan Service](azure-resources.md#app-service-and-app-service-plan)-Ressource|Abfragevorhersage-Endpunkt|
-| [Application Insights](azure-resources.md#application-insights)-Ressource|Abfragevorhersagetelemetrie|
+| [QnA Maker](azure-resources.md#qna-maker-resource)-Ressource | Erstellung und Abfragevorhersage |
+| [Cognitive Search](azure-resources.md#cognitive-search-resource)-Ressource | Datenspeicherung und -suche |
+| [App Service-Ressource und App Plan Service](azure-resources.md#app-service-and-app-service-plan)-Ressource | Abfragevorhersage-Endpunkt |
+| [Application Insights](azure-resources.md#application-insights)-Ressource | Abfragevorhersagetelemetrie |
 
 ### <a name="resource-planning"></a>Ressourcenplanung
 
-Während Sie Erstellen und Abfragevorhersage lernen, funktioniert jede Ressource unter Verwendung des Free-Tarifs `F0` und vermittelt sowohl die Erstellungs- als auch Abfragevorhersageerfahrung. Wenn Sie zu einem Produktions- oder Liveszenario wechseln, sollten Sie Ihre Ressourcenauswahl neu auswerten.
+Der Free-Tarif, `F0`, der einzelnen Ressourcen funktioniert und kann sowohl die Benutzeroberfläche für die Erstellung als auch die Abfragevorhersage bereitstellen. Sie können diesen Tarif verwenden, um die Erstellung und Abfragevorhersage zu erlernen. Wenn Sie zu einem Produktions- oder Liveszenario wechseln, sollten Sie Ihre Ressourcenauswahl neu auswerten.
 
 #### <a name="qna-maker-resource"></a>QnA Maker-Ressource
 
@@ -35,7 +35,7 @@ Eine einzelne QnA Maker-Ressource kann mehr hosten als eine Wissensdatenbank. D
 
 #### <a name="knowledge-base-size-and-throughput"></a>Größe und Durchsatz der Wissensdatenbank
 
-Wenn Sie beabsichtigen, eine echte App zu erstellen, planen Sie Ihre Ressourcen für die Größe Ihrer Wissensdatenbank und die erwarteten Abfragevorhersageanforderungen.
+Wenn Sie eine echte App erstellen, planen Sie ausreichend Ressourcen für die Größe Ihrer Wissensdatenbank und die erwarteten Anforderungen an die Abfragevorhersage ein.
 
 Die Größe einer Wissensdatenbank wird gesteuert durch:
 * Tarifgrenzwerte der [Cognitive Search-Ressource](../../../search/search-limits-quotas-capacity.md)
@@ -45,11 +45,11 @@ Die Abfragevorhersageanforderung der Wissensdatenbank wird durch den Web-App-Pla
 
 ### <a name="resource-sharing"></a>Gemeinsame Nutzung von Ressourcen
 
-Wenn Sie bereits einige dieser Ressourcen verwenden, können Sie die Freigabe von Ressourcen in Erwägung ziehen. Obwohl einige Ressourcen [freigegeben werden können](azure-resources.md#share-services-with-qna-maker), handelt es sich hierbei um ein erweitertes Szenario.
+Wenn Sie bereits einige dieser Ressourcen verwenden, können Sie die Freigabe von Ressourcen in Erwägung ziehen. Schauen Sie, welche Ressourcen [gemeinsam genutzt](azure-resources.md#share-services-with-qna-maker) werden können, wobei hierbei das Verständnis zugrunde liegt, dass die gemeinsame Nutzung von Ressourcen ein fortgeschrittenes Szenario ist.
 
 Alle Wissensdatenbanken, die in derselben QnA Maker-Ressource erstellt wurden, verwenden denselben **Test**-Abfragevorhersage-Endpunkt.
 
-### <a name="understanding-impact-of-resource-selection"></a>Grundlegendes zu den Auswirkungen der Ressourcenauswahl
+### <a name="understand-the-impact-of-resource-selection"></a>Grundlegendes zu den Auswirkungen der Ressourcenauswahl
 
 Die richtige Ressourcenauswahl bedeutet, dass Ihre Wissensdatenbank die Abfragevorhersagen erfolgreich beantwortet.
 
@@ -59,35 +59,35 @@ Bei nicht ordnungsgemäßer Ressourcenauswahl müssen Sie untersuchen, welche [R
 
 ## <a name="knowledge-bases"></a>Wissensdatenbanken
 
-Eine Wissensdatenbank ist direkt mit der QnA Maker-Ressource verknüpft und enthält die Frage-/Antwort-Paare (QnA), die zum Beantworten von Abfragevorhersageanforderungen verwendet werden.
+Eine Wissensdatenbank ist direkt an die QnA Maker-Ressource gebunden. Sie enthält die Frage-Antwort-Paare (QnA), die zum Beantworten von Abfragevorhersageanforderungen verwendet werden.
 
 ### <a name="language-considerations"></a>Sprachbezogene Überlegungen
 
 Die erste in Ihrer QnA Maker-Ressource erstellte Wissensdatenbank legt die Sprache für die Ressource fest. Sie können nur eine Sprache für eine QnA Maker-Ressource festlegen.
 
-Strukturieren Sie Ihre QnA Maker-Ressourcen nach Sprache, oder verwenden Sie [Translator](../../translator/translator-info-overview.md), um eine Abfrage von einer anderen Sprache in die Sprache der Wissensdatenbank zu übersetzen, bevor Sie die Abfrage an den Abfragevorhersage-Endpunkt senden.
+Sie können Ihre QnA Maker-Ressourcen nach Sprache strukturieren oder [Translator](../../translator/translator-info-overview.md) verwenden, um eine Abfrage von einer anderen Sprache in die Sprache der Wissensdatenbank zu übersetzen, bevor Sie die Abfrage an den Abfragevorhersage-Endpunkt senden.
 
-### <a name="ingesting-data-sources"></a>Erfassen von Datenquellen
+### <a name="ingest-data-sources"></a>Erfassen von Datenquellen
 
-Als erfasste [Datenquellen](knowledge-base.md), die zum Erstellen einer Wissensdatenbank verwendet werden, kommen folgende infrage:
+Sie können eine der folgenden erfassten [Datenquellen](knowledge-base.md) verwenden, um eine Wissensdatenbank zu erstellen:
 
 * Öffentliche URL
 * Private SharePoint-URL
 * Datei
 
-Beim Erfassungsprozess werden [unterstützte Inhaltstypen](content-types.md) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie Ihre Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
+Beim Erfassungsprozess werden [unterstützte Inhaltstypen](content-types.md) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie eine Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
 
 ### <a name="data-format-considerations"></a>Überlegungen zum Datenformat
 
 Da das endgültige Format eines QnA-Paars Markdown ist, müssen Sie die [Markdown-Unterstützung](../reference-markdown-format.md) kennen.
 
-Verknüpfte Bilder müssen über eine öffentliche URL verfügbar sein, damit sie im Testbereich des QnA Maker-Portals sowie in jeder beliebigen Clientanwendung angezeigt werden, da QnA Maker keine Authentifizierung für Inhalte einschließlich Bilder bietet.
+Verknüpfte Bilder müssen über eine öffentliche URL verfügbar sein, damit sie im Testfenster des QnA Maker-Portals oder in einer Clientanwendung angezeigt werden können. QnA Maker bietet keine Authentifizierung für Inhalte, einschließlich Bilder.
 
 ### <a name="bot-personality"></a>Botpersönlichkeit
 
 Fügen Sie Ihrer Wissensdatenbank mit [Geplauder](../how-to/chit-chat-knowledge-base.md) eine Botpersönlichkeit hinzu. Diese Persönlichkeit bietet vorgefertigte Antworten, die in einem bestimmten Konversationston bereitgestellt werden, z. B. *geschäftlich* und *freundlich*. Dieses Geplauder wird als Konversationsgruppe bereitgestellt, die Sie die mit Hinzufügen, Bearbeiten und Entfernen vollständig kontrollieren können.
 
-Eine Botpersönlichkeit sollten Sie verwenden, wenn Ihr Bot mit Ihrer Wissensdatenbank verbunden ist. Wenn Sie eine Verbindung mit mehreren Diensten herstellen, von denen die Wissensdatenbank einer ist, können Sie Geplauder weiterhin in Ihrer Wissensdatenbank verwenden, sollten jedoch überprüfen, wie der Botdienst interagiert, um zu wissen, ob dies der richtige Architekturentwurf für ihre Verwendung ist.
+Eine Botpersönlichkeit sollten Sie verwenden, wenn Ihr Bot mit Ihrer Wissensdatenbank verbunden ist. Sie können sich dafür entscheiden, Smalltalk in Ihrer Wissensdatenbank zu verwenden, auch wenn Sie gleichzeitig eine Verbindung mit anderen Diensten herstellen, aber Sie sollten überprüfen, wie der Botdienst interagiert, um zu wissen, ob dies der richtige Architekturentwurf für Ihre Nutzung ist.
 
 ### <a name="conversation-flow-with-a-knowledge-base"></a>Konversationsfluss mit einer Wissensdatenbank
 
@@ -103,33 +103,33 @@ Die Erstellung der Wissensdatenbank unterstützt mehrere [rollenbasierte Zugriff
 
 ## <a name="integration-with-client-applications"></a>Integration in Clientanwendungen
 
-Integration in [Clientanwendungen](integration-with-other-applications.md) bedeutet, dass eine Abfrage an den Vorhersage-Runtimeendpunkt gesendet wird. Eine Abfrage wird mit einem SDK oder einer REST-basierten Anforderung an den Web-App-Endpunkt Ihres QnA Maker an Ihre bestimmte Wissensdatenbank gesendet.
+Integration in [Clientanwendungen](integration-with-other-applications.md) wird durch Senden einer Abfrage an den Vorhersage-Runtimeendpunkt erreicht. Eine Abfrage wird mit einem SDK oder einer REST-basierten Anforderung an den Web-App-Endpunkt Ihres QnA Maker an Ihre bestimmte Wissensdatenbank gesendet.
 
-Damit eine Clientanforderung ordnungsgemäß authentifiziert werden kann, muss die Clientanwendung die richtigen Anmeldeinformationen und die ID der Wissensdatenbank senden. Wenn Sie einen Azure Bot Service verwenden, konfigurieren Sie die Einstellung als Teil der Botkonfiguration im Azure-Portal.
+Damit eine Clientanforderung ordnungsgemäß authentifiziert werden kann, muss die Clientanwendung die richtigen Anmeldeinformationen und die ID der Wissensdatenbank senden. Wenn Sie einen Azure Bot Service verwenden, konfigurieren Sie diese Einstellungen als Teil der Botkonfiguration im Azure-Portal.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Konversationsfluss in einer Clientanwendung
 
 Der Konversationsfluss in einer [Clientanwendungs](integration-with-other-applications.md) wie einem Azure-Bot erfordert möglicherweise vor und nach der Interaktion mit der Wissensdatenbank Funktionalität.
 
-Wenn Ihre Clientanwendung den Konversationsfluss unterstützt, indem sie entweder Alternativmöglichkeiten zur Behandlung von Folgeaufforderungen oder Geplauder bietet, sollten Sie diese früh entwerfen und sicherstellen, dass die Verwendung der Abfrage in der Clientanwendung ordnungsgemäß verarbeitet wird, entweder durch einen anderen Dienst, oder an Ihre Wissensdatenbank gesendet wird.
+Unterstützt Ihre Clientanwendung den Konversationsfluss, entweder durch die Bereitstellung alternativer Mittel zur Bearbeitung von Folgeaufforderungen oder durch Smalltalk? Sofern dies der Fall ist, entwerfen Sie diese frühzeitig und stellen Sie sicher, dass die Abfrage der Clientanwendung von einem anderen Dienst oder bei der Übermittlung an Ihre Wissensdatenbank ordnungsgemäß bearbeitet wird.
 
-### <a name="dispatching-between-qna-maker-and-language-understanding-luis"></a>Disponieren zwischen QnA Maker und Language Understanding (Luis)
+### <a name="dispatch-between-qna-maker-and-language-understanding-luis"></a>Disponieren zwischen QnA Maker und Language Understanding (LUIS)
 
 Eine Clientanwendung kann mehrere Features bereitstellen, von denen nur eines durch eine Wissensdatenbank beantwortet wird. Andere Features müssten weiterhin den Konversationstext verstehen und die Bedeutung daraus extrahieren.
 
-Eine gängige Clientanwendungsarchitektur ist die gemeinsame Verwendung von QnA Maker und [Language Understanding (Luis)](../../LUIS/what-is-luis.md). LUIS stellt einschließlich anderer Dienste die Textklassifizierung und -extrahierung für jede Abfrage bereit, während QnA Maker Antworten aus Ihrer Wissensdatenbank bereitstellt.
+Eine gängige Clientanwendungsarchitektur ist die gemeinsame Verwendung von QnA Maker und [Language Understanding (Luis)](../../LUIS/what-is-luis.md). LUIS bietet die Textklassifizierung und -extraktion für beliebige Abfragen, auch für andere Dienste. QnA Maker stellt Antworten aus Ihrer Wissensdatenbank bereit.
 
-In einer [freigegebenen Architektur](../choose-natural-language-processing-service.md) erfolgt die Verteilung zwischen den beiden Diensten mit dem [Dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)-Tool aus Bot Framework.
+In einem solchen Szenario mit [gemeinsam genutzter Architektur](../choose-natural-language-processing-service.md) wird das Disponieren zwischen den beiden Diensten durch das [Dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)-Tool von Bot Framework durchgeführt.
 
 ### <a name="active-learning-from-a-client-application"></a>Aktives Lernen über eine Clientanwendung
 
-QnA Maker nutzt _aktives Lernen_, um Ihre Wissensdatenbank durch Vorschlagen alternativer Fragen zu einer Antwort zu verbessern. Die Clientanwendung ist für einen Teil dieses [aktiven Lernens](active-learning-suggestions.md) verantwortlich. Die Clientanwendung kann mithilfe von Konversationsaufforderungen feststellen, dass die von der Wissensdatenbank zurückgegebene Antwort nicht die Antwort war, die der Benutzer suchte, und die bessere Antwort ermitteln. Die Clientanwendung muss [diese Informationen an die Wissensdatenbank zurücksenden](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api), um die Vorhersagequalität zu verbessern.
+QnA Maker nutzt _aktives Lernen_, um Ihre Wissensdatenbank durch Vorschlagen alternativer Fragen zu einer Antwort zu verbessern. Die Clientanwendung ist für einen Teil dieses [aktiven Lernens](active-learning-suggestions.md) verantwortlich. Die Clientanwendung kann anhand von Konversationseingabeaufforderungen feststellen, dass die Wissensdatenbank eine Antwort zurückgegeben hat, die für den Benutzer nicht hilfreich ist, und sie kann eine bessere Antwort ermitteln. Die Clientanwendung muss [diese Informationen an die Wissensdatenbank zurücksenden](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api), um die Vorhersagequalität zu verbessern.
 
 ### <a name="providing-a-default-answer"></a>Bereitstellen einer Standardantwort
 
-Wenn Ihre Wissensdatenbank keine Antwort findet, wird die _Standardantwort_ zurückgegeben. Diese Antwort kann im QnA Maker-Portal auf der Seite **Einstellungen** oder in den [APIs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) konfiguriert werden.
+Wenn Ihre Wissensdatenbank keine Antwort findet, wird die _Standardantwort_ zurückgegeben. Diese Antwort kann auf der Seite **Einstellungen** im QnA Maker-Portal oder in den [APIs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) konfiguriert werden.
 
-Diese Standardantwort unterscheidet sich von der Standardantwort des Azure-Bots. Die Standardantwort des Azure-Bots wird im Azure-Portal als Teil der Konfigurationseinstellungen für Ihren Bot konfiguriert und zurückgegeben, wenn der Bewertungsschwellenwert nicht erreicht wird.
+Diese Standardantwort unterscheidet sich von der Standardantwort des Azure-Bots. Sie konfigurieren die Standardantwort für Ihren Azure-Bot im Azure-Portal als Teil der Konfigurationseinstellungen. Sie wird zurückgegeben, wenn der Schwellenwert für den Score nicht erreicht wird.
 
 ## <a name="prediction"></a>Vorhersage
 
@@ -145,12 +145,12 @@ Ein Ergebnis kann sich auf der Grundlage verschiedener Faktoren ändern:
 * An `test` oder `production` Wissensdatenbank gesendete Abfrage
 
 Es gibt eine [zweiphasige Antwortrangfolge](query-knowledge-base.md#how-qna-maker-processes-a-user-query-to-select-the-best-answer):
-* Cognitive Search – erster Rang: Damit eine Antwort von Cognitive Search zurückgegeben werden kann, muss die Anzahl der _zulässigen Antworten_ so hoch sein, dass die besten Antworten von Cognitive Search zurückgegeben werden, damit sie an die Rangfolgefunktion von QnA Maker übergeben werden können.
-* QnA Maker – zweiter Rang: Ermitteln der besten Antwort durch Featurisierung und Machine Learning.
+- Cognitive Search – erster Rang. Legen Sie die Anzahl der _zulässigen Antworten_ so hoch fest, dass die besten Antworten von Cognitive Search zurückgegeben und dann an die Rangfolgefunktion von QnA Maker übergeben werden.
+- QnA Maker – zweiter Rang. Ermitteln der besten Antwort durch Featurisierung und Machine Learning.
 
 ### <a name="service-updates"></a>Dienstupdates
 
-Dienstupdates werden automatisch durch Anwenden der [aktuellen Runtimeupdates](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) verwaltet.
+Wenden Sie die [aktuellsten Runtimeupdates](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) an, um Dienstupdates automatisch zu verwalten.
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skalierung, Durchsatz und Resilienz
 
@@ -169,9 +169,9 @@ Der [Entwicklungslebenszyklus](development-lifecycle-knowledge-base.md) einer Wi
 Ihre [QnA-Paare](question-answer-set.md) sollten auf Basis der Nutzung Ihrer Clientanwendung entworfen und entwickelt werden.
 
 Jedes Paar kann Folgendes enthalten:
-* Metadaten – bei der Abfrage filterbar. So können Sie Ihre QnA-Paare mit zusätzlichen Informationen über Quelle, Inhalt, Format und Zweck Ihrer Daten markieren.
-* Folgeaufforderungen – bahnen einen Pfad durch Ihre Wissensdatenbank, damit der Benutzer die richtige Antwort findet.
-* Alternative Fragen – alternative Fragen sind wichtig, damit die Übereinstimmung Ihrer Antwort mit der Suche aus einer Vielzahl von Formen der Frage ermittelt werden kann. [Vorschläge für aktives Lernen](active-learning-suggestions.md) werden in alternative Fragen umgewandelt.
+* Metadaten – Bei der Abfrage filterbar, damit Sie Ihre QnA-Paare mit zusätzlichen Informationen über Quelle, Inhalt, Format und Zweck Ihrer Daten versehen können.
+* Folgeaufforderungen – Helfen beim Bahnen eines Pfads durch Ihre Wissensdatenbank, damit der Benutzer die richtige Antwort findet.
+* Alternative Fragen – Wichtig, damit die Suche mit Ihrer Antwort aus verschiedenen Formen der Frage übereinstimmen kann. [Vorschläge für aktives Lernen](active-learning-suggestions.md) werden in alternative Fragen umgewandelt.
 
 ### <a name="devops-development"></a>DevOps-Entwicklung
 
@@ -181,7 +181,7 @@ Eine Wissensdatenbank teilt den Cognitive Search-Index mit allen anderen Wissens
 
 Um mit der `test`- und `production`-Wissensdatenbank das _gleiche Ergebnis_ zu erhalten, isolieren Sie eine QnA Maker-Ressource in eine einzelne Wissensdatenbank. In dieser Architektur muss die Ressource nur für die Dauer des isolierten Batchtests existieren.
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Azure-Ressourcen](../how-to/set-up-qnamaker-service-azure.md)
 * [Frage-Antwort-Paare](question-answer-set.md)

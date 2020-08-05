@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205400"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421772"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
@@ -75,7 +75,7 @@ Mithilfe einer Lastenausgleichsregel wird definiert, wie eingehender Datenverkeh
 Verwenden Sie z. B. eine Lastenausgleichsregel für Port 80, um Datenverkehr von Ihrer Front-End-IP-Adresse an Port 80 ihrer Back-End-Instanzen umzuleiten.
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Lastenausgleichsregeln">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="Lastenausgleichsregeln">
 </p>
 
 *Abbildung: Lastenausgleichsregeln*
@@ -97,7 +97,7 @@ Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Diese Lösung
 Die Lastenausgleichsregeln für Hochverfügbarkeitsports unterstützen Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Das Feature kann hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss.
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="Hochverfügbarkeitsport-Regeln">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="Hochverfügbarkeitsport-Regeln">
 </p>
 
 *Abbildung: Hochverfügbarkeitsport-Regeln*
@@ -111,7 +111,7 @@ Eine NAT-Regel für eingehenden Datenverkehr leitet eingehenden Datenverkehr, de
 Beispielsweise, wenn Sie RDP-Sitzungen (Remote Desktop Protocol, Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) zum Trennen von VM-Instanzen innerhalb eines Back-End-Pools verwenden möchten. Ports können mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zugeordnet werden. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Eingehende NAT-Regeln">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="Eingehende NAT-Regeln">
 </p>
 
 *Abbildung: NAT-Regeln für eingehenden Datenverkehr*

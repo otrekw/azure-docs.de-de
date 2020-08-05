@@ -3,13 +3,13 @@ title: 'Schnellstart: Bereitstellen von Docker-Containern in einer Containerinst
 description: In diesem Schnellstart verwenden Sie das Azure-Portal, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
 ms.topic: quickstart
 ms.date: 03/09/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 5f36c81abd462f6dfd59c42da71e096e07206cae
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79087978"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408066"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe des Azure-Portals
 
