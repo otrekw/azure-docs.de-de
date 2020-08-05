@@ -42,7 +42,7 @@
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: Beispiele
   items:
-    - name: Azure Policy-Integrationen
+    - name: Integrierte Azure Policy-Aktionen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -301,7 +301,7 @@
     - name: Entwickeln und Ausführen von Anwendungen
       items:
         - name: Verwenden des lokalen Prozesses mit Kubernetes und Visual Studio Code (Vorschau)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: Installieren vorhandener Anwendungen mit Helm
           href: kubernetes-helm.md
         - name: Verwenden von OpenFaaS
@@ -366,7 +366,7 @@
           href: troubleshoot-linux.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks
