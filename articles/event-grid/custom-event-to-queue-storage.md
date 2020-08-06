@@ -3,12 +3,13 @@ title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an die Speicher
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Speicherwarteschlange verwendet.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 18f2bf42941ddd8f71f70b132ad52a47a62fc854
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112101"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497340"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Queue Storage mit Azure-CLI und Event Grid
 

@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 839aae2ccf9433dafec0ddee692c476611924aa0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74771703"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497391"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Wiederherstellen eines Azure Database for MariaDB-Servers mithilfe der Azure-Befehlszeilenschnittstelle
 Mit diesem CLI-Beispielskript wird für einen einzelnen Azure Database for MariaDB-Server der Zustand eines früheren Zeitpunkts wiederhergestellt.

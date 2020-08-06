@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ceaca3b7d91bf27262f1326000796cd605b0c3c4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84738293"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494586"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -110,7 +110,7 @@ Azure Machine Learning funktioniert mit anderen Diensten der Azure-Plattform und
 + Computeziele wie __Azure Kubernetes Service__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ und __Azure HDInsight__. Weitere Informationen zu Computezielen finden Sie unter [Was sind Computeziele in Azure Machine Learning?](concept-compute-target.md).
 + __Azure Event Grid__. Weitere Informationen finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen (Vorschauversion)](concept-event-grid-integration.md).
 + __Azure Monitor__: Weitere Informationen finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
-+ Datenspeicher wie __Azure Storage-Konten__, __Azure Data Lake Storage__, __Azure SQL-Datenbank__, __Azure Database for PostgreSQL__ und __Azure Open Datasets__. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md) und [Erstellen von Datasets mit Azure Open Datasets](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
++ Datenspeicher wie __Azure Storage-Konten__, __Azure Data Lake Storage__, __Azure SQL-Datenbank__, __Azure Database for PostgreSQL__ und __Azure Open Datasets__. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md) und [Erstellen von Datasets mit Azure Open Datasets](how-to-create-register-datasets.md).
 + __Virtuelle Azure-Netzwerke:__ Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md).
 + __Azure Pipelines__. Weitere Informationen finden Sie unter [Trainieren und Bereitstellen von Machine Learning-Modellen](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git-Repository-Protokolle:__ Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).

@@ -4,13 +4,13 @@ description: Azure CLI-Skriptbeispiel – Erstellen einer Funktionen-App in eine
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
-ms.custom: mvc
-ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: a2faef6162a1a9fe09082330bf52f25dde5f75f6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74532842"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498581"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Erstellen einer Funktionen-App in einem App Service-Plan
 

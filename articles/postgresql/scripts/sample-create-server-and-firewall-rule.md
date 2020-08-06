@@ -4,16 +4,16 @@ description: 'Azure CLI-Skriptbeispiel: Erstellt einen Azure-Datenbank für Post
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80d5135f036f7498223cf2bd7bf1e720eb71f89d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66122062"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496524"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Erstellen eines Azure-Datenbank für PostgreSQL-Servers und Konfigurieren einer Firewallregel mit der Azure CLI
 Dieses Azure CLI-Beispielskript erstellt einen Azure-Datenbank für PostgreSQL-Server und konfiguriert eine Firewallregel auf Serverebene. Nach erfolgreicher Ausführung des Skripts können alle Azure-Dienste und die konfigurierte IP-Adresse auf den PostgreSQL-Server zugreifen.
@@ -41,5 +41,5 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 | [az group delete](/cli/azure/group) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)
+- Weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)
 - Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure-Datenbank für PostgreSQL](../sample-scripts-azure-cli.md)

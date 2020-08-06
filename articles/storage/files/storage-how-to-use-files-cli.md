@@ -7,12 +7,13 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77598578"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495774"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit der Azure CLI
 In dieser Anleitung werden die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit der Azure CLI Schritt für Schritt beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 

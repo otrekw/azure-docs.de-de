@@ -3,13 +3,13 @@ title: 'Erstellen einer Funktions-App mit Azure Cosmos DB: Azure CLI'
 description: 'Azure CLI-Skriptbeispiel: Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt'
 ms.topic: sample
 ms.date: 07/03/2018
-ms.custom: mvc
-ms.openlocfilehash: 5ee80283ed39789eabb702a48aa97f678a6409f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 440767159ec1321d9b157f53408dbff8f9706eec
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75922709"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498564"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt
 

@@ -4,12 +4,13 @@ description: In diesem Artikel wird anhand eines Beispielskripts für die Azure-
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 33f377fc4101aaba34629d94b7bcb2bc9a53f0c3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f655ed3f2b6a3cef89c493137bd34732a60e414a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171277"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494093"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Abonnieren von Ereignissen für eine Ressourcengruppe mit der Azure CLI
 
@@ -35,10 +36,10 @@ Dieses Skript verwendet den folgenden Befehl, um das Ereignisabonnement zu erste
 
 | Get-Help | Notizen |
 |---|---|
-| [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Erstellen Sie ein Event Grid-Abonnement. |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Erstellen Sie ein Event Grid-Abonnement. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - extension version | Erstellen Sie ein Event Grid-Abonnement. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Abfragen von Abonnements finden Sie unter [Abfragen von Event Grid-Abonnements](../query-event-subscriptions.md).
-* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

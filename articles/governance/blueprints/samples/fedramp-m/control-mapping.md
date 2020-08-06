@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des FedRAMP Moderate-Blaupausenbeispiels
 description: Steuerungszuordnung des FedRAMP Moderate-Blaupausenbeispiels. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 05/14/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: c95b47034fbf18f2588e2c4134729162c9bb7cc5
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0115e3018b0e2510625f4eea6e163b51e1beb6d7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816266"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495844"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Steuerungszuordnung des FedRAMP Moderate-Blaupausenbeispiels
 

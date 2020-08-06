@@ -3,12 +3,13 @@ title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an Event Hubs: 
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Ein Event Hub wird für den Endpunkt verwendet.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0965963e6527e625d0684821b977b05cb9f28657
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104094"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497353"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Event Hubs mit Azure CLI und Event Grid
 
@@ -97,8 +98,8 @@ Navigieren Sie zum Event Hub im Portal, und beachten Sie, dass Event Grid diese 
 
 In der Regel erstellen Sie eine Anwendung, die die Ereignisse vom Event Hub abruft. Wenn Sie eine Anwendung erstellen möchten, die Nachrichten von einem Event Hub empfängt, lesen Sie die Informationen in den folgenden Artikeln:
 
-* [Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Empfangen von Ereignissen von Azure Event Hubs mithilfe von Java](../event-hubs/event-hubs-java-get-started-receive-eph.md)
+* [Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Empfangen von Ereignissen von Azure Event Hubs mithilfe von Java](../event-hubs/event-hubs-java-get-started-send.md)
 * [Empfangen von Ereignissen von Event Hubs mithilfe von Apache Storm](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

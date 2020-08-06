@@ -4,12 +4,13 @@ description: In diesem Artikel wird anhand eines Beispielskripts für die Azure-
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 04d69d440dc971908b1fe2931721c50e671cd7d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: fe81be64ea4672d233564726cfdae5b60951057d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171396"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494331"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Abonnieren von Ereignissen für ein Azure-Abonnement mit der Azure CLI
 
@@ -41,4 +42,4 @@ Dieses Skript verwendet den folgenden Befehl, um das Ereignisabonnement zu erste
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Abfragen von Abonnements finden Sie unter [Abfragen von Event Grid-Abonnements](../query-event-subscriptions.md).
-* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

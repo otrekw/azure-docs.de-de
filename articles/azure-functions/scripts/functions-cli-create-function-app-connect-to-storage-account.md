@@ -3,13 +3,13 @@ title: 'Erstellen einer Funktions-App mit verbundenem Speicher: Azure CLI'
 description: 'Azure CLI-Skriptbeispiel: Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Storage herstellt'
 ms.topic: sample
 ms.date: 04/20/2017
-ms.custom: mvc
-ms.openlocfilehash: 833b9223d473c8bfc62485e9e47ba662a4f0e154
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3eec4e22f80d1efd180dc6770a781ee14db680be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75922672"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498547"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Erstellen einer Funktions-App mit einer benannten Speicherkontoverbindung 
 
