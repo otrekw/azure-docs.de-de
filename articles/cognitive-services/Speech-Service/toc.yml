@@ -494,10 +494,8 @@
       items:
         - name: Übersicht über benutzerdefinierte Schlüsselwörter
           href: custom-keyword-overview.md
-        - name: Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: Benutzerdefinierte Schlüsselworterkennung
-          href: speech-devices-sdk-create-kws.md
+        - name: Grundlagen zu benutzerdefinierten Schlüsselwörtern
+          href: custom-keyword-basics.md
 - name: Sprechererkennung
   items:
     - name: Übersicht
@@ -658,7 +656,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md
