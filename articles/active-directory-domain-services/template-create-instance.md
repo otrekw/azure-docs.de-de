@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 880ccf9a69d5898da98aeabcfd89d05ff94e3b43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223005"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489808"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Erstellen einer verwalteten Azure Active Directory Domain Services-Domäne mithilfe einer Resource Manager-Vorlage
 
@@ -126,7 +126,7 @@ Für die Resource Manager-Ressourcendefinition sind u. a. die folgenden Konfigu
 | domainName              | Geben Sie den DNS-Domänennamen für Ihre verwaltete Domäne ein, und berücksichtigen Sie dabei die obigen Ausführungen zu Namenspräfixen und Konflikten. |
 | filteredSync            | Mit Azure AD DS können Sie *alle* in Azure AD verfügbaren Benutzer und Gruppen synchronisieren oder eine *bereichsbezogene* Synchronisierung spezifischer Gruppen durchführen.<br /><br /> Weitere Informationen zur bereichsbezogenen Synchronisierung finden Sie unter [Bereichsbezogene Synchronisierung für Azure AD Domain Services][scoped-sync].|
 | notificationSettings    | Wenn in der verwalteten Domäne Warnungen generiert werden, können E-Mail-Benachrichtigungen gesendet werden. <br /><br />*Globale Administratoren* des Azure-Mandanten und Mitglieder der Gruppe *AAD DC-Administratoren* können für diese Benachrichtigungen *aktiviert* werden.<br /><br /> Bei Bedarf können Sie weitere Empfänger von Benachrichtigungen hinzufügen, wenn für Warnungen Maßnahmen erforderlich sind.|
-| domainConfigurationType | Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Den Wert *domainConfiguration* müssen Sie nicht angeben, um eine Benutzergesamtstruktur zu erstellen.<br /><br /> Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Legen Sie den Wert auf *ResourceTrusting* fest, um eine Ressourcengesamtstruktur zu erstellen.<br /><br />Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.|
+| domainConfigurationType | Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Den Wert *domainConfiguration* müssen Sie nicht angeben, um eine Benutzergesamtstruktur zu erstellen.<br /><br /> Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Legen Sie den Wert auf *ResourceTrusting* fest, um eine Ressourcengesamtstruktur zu erstellen.<br /><br />Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.|
 
 Die folgende Parameterdefinition in Kurzform zeigt, wie diese Werte deklariert werden. Eine Benutzergesamtstruktur namens *aaddscontoso.com* wird erstellt, wobei alle Benutzer von Azure AD mit der verwalteten Domäne synchronisiert werden:
 

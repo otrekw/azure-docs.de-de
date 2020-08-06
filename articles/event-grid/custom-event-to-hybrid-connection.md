@@ -3,12 +3,13 @@ title: 'Tutorial: Senden von benutzerdefinierten Ereignissen an die Hybridverbin
 description: 'Tutorial: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Hybridverbindung verwendet.'
 ms.date: 07/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 679cccf892d7b30964881d9a6146e02f3ee5dc90
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114872"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503173"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Tutorial: Weiterleiten benutzerdefinierter Ereignisse an Azure Relay Hybrid Connections mit Azure-Befehlszeilenschnittstelle und Event Grid
 
@@ -16,7 +17,7 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Relay Hybrid Conne
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits über eine Hybridverbindung und eine Listener-Anwendung verfügen. Informationen zu den ersten Schritten mit Hybridverbindungen finden Sie unter [Erste Schritte mit Relay Hybrid Connections – .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) oder [Erste Schritte mit Relay Hybrid Connections – Knoten](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+In diesem Artikel wird davon ausgegangen, dass Sie bereits über eine Hybridverbindung und eine Listener-Anwendung verfügen. Informationen zu den ersten Schritten mit Hybridverbindungen finden Sie unter [Erste Schritte mit Relay Hybrid Connections – .NET](/azure/azure-relay/relay-hybrid-connections-dotnet-get-started) oder [Erste Schritte mit Relay Hybrid Connections – Knoten](/azure/azure-relay/relay-hybrid-connections-node-get-started).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

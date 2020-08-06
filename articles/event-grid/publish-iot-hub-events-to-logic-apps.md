@@ -7,12 +7,13 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120482"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503445"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps
 
@@ -24,12 +25,12 @@ In diesem Artikel wird Schritt für Schritt eine Beispielkonfiguration beschrieb
 
 * Ein aktives Azure-Abonnement. Falls Sie kein Abonnement haben, können Sie [ein kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
-* Ein E-Mail-Konto von einem beliebigen von Azure Logic Apps unterstützten E-Mail-Anbieter, z. B. Office 365 Outlook, Outlook.com oder Gmail. Mit diesem E-Mail-Konto werden die Ereignisbenachrichtigungen gesendet. Eine vollständige Liste der unterstützten Logic App-Connectors finden Sie in der [Übersicht über Connectors](https://docs.microsoft.com/connectors/).
+* Ein E-Mail-Konto von einem beliebigen von Azure Logic Apps unterstützten E-Mail-Anbieter, z. B. Office 365 Outlook, Outlook.com oder Gmail. Mit diesem E-Mail-Konto werden die Ereignisbenachrichtigungen gesendet. Eine vollständige Liste der unterstützten Logic App-Connectors finden Sie in der [Übersicht über Connectors](/connectors/).
 
   > [!IMPORTANT]
-  > Überprüfen Sie vor der Verwendung von Gmail, ob Sie über ein G-Suite-Geschäftskonto (E-Mail-Adresse mit einer benutzerdefinierten Domäne) oder ein Gmail-Endbenutzerkonto (E-Mail-Adresse mit @gmail.com oder @googlemail.com) verfügen. Nur G-Suite-Geschäftskonten können den Gmail-Connector ohne Einschränkungen in Logik-Apps verwenden. Wenn Sie ein Gmail-Endbenutzerkonto haben, können Sie den Gmail-Connector nur mit bestimmten von Google genehmigten Diensten verwenden oder alternativ [eine Google-Client-App für die Authentifizierung erstellen](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Überprüfen Sie vor der Verwendung von Gmail, ob Sie über ein G-Suite-Geschäftskonto (E-Mail-Adresse mit einer benutzerdefinierten Domäne) oder ein Gmail-Endbenutzerkonto (E-Mail-Adresse mit @gmail.com oder @googlemail.com) verfügen. Nur G-Suite-Geschäftskonten können den Gmail-Connector ohne Einschränkungen in Logik-Apps verwenden. Wenn Sie ein Gmail-Endbenutzerkonto haben, können Sie den Gmail-Connector nur mit bestimmten von Google genehmigten Diensten verwenden oder alternativ [eine Google-Client-App für die Authentifizierung erstellen](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-* Eine IoT Hub-Instanz in Azure. Wenn Sie noch keinen erstellt haben, finden Sie unter [Erste Schritte mit IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md) eine exemplarische Vorgehensweise.
+* Eine IoT Hub-Instanz in Azure. Wenn Sie noch keinen erstellt haben, finden Sie unter [Erste Schritte mit IoT Hub](../iot-hub/quickstart-send-telemetry-dotnet.md) eine exemplarische Vorgehensweise.
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 
@@ -247,7 +248,7 @@ Testen Sie Ihre Logik-App, indem Sie ein neues Gerät erstellen, um eine E-Mail-
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
-Anstelle des Azure-Portals können Sie die IoT Hub-Schritte auch mithilfe der Azure-Befehlszeilenschnittstelle erreichen. Einzelheiten dazu finden Sie in den Azure CLI-Seiten zum [Erstellen eines Ereignisabonnements](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) und [Erstellen eines IoT-Geräts](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity).
+Anstelle des Azure-Portals können Sie die IoT Hub-Schritte auch mithilfe der Azure-Befehlszeilenschnittstelle erreichen. Einzelheiten dazu finden Sie in den Azure CLI-Seiten zum [Erstellen eines Ereignisabonnements](/cli/azure/eventgrid/event-subscription) und [Erstellen eines IoT-Geräts](/cli/azure/ext/azure-iot/iot/hub/device-identity).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

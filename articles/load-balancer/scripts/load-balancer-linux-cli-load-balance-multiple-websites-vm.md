@@ -9,14 +9,15 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 80ec18ca722b9833307fc270c710abd93c6fb6f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8be0dd6e68d6d50ef80c75ffa87974a63d2e0b36
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76274616"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501762"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI-Skriptbeispiel: Lastenausgleich für mehrere Websites
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI-Skriptbeispiele: Lastenausgleich für mehrere Websites
 
 Dieses Azure CLI-Skriptbeispiel erstellt ein virtuelles Netzwerk mit zwei virtuellen Computern, die einer Verfügbarkeitsgruppe angehören. Ein Load Balancer leitet Datenverkehr für zwei separate IP-Adressen an die beiden virtuellen Computer. Nach der Ausführung des Skripts können Sie Webserversoftware auf den virtuellen Computern bereitstellen und mehrere Websites (jede mit eigener IP-Adresse) hosten.
 

@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 57b24c7703ac8c0095fa4aaf24b9fbebdac33533
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: e7267ca90ea11e63c5523dec0a3ee414f7b655b2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503114"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501643"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. In diesem Tutorial lernen Sie Folgendes:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: 2d673c69f2e4fb446f8f01f1fc88b63dc2e03a2c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b87ce77cbd830f13e7ff75075582b590311ab2cb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072898"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501262"
 ---
 # <a name="connect-to-azure-germany-by-using-powershell"></a>Herstellen einer Verbindung mit Azure Deutschland über PowerShell
 
@@ -47,7 +47,7 @@ Wenn Sie PowerShell starten, müssen Sie durch Angeben eines Umgebungsparameters
 | Befehle für [Azure (klassisches Bereitstellungsmodell)](/powershell/azure) |`Add-AzureAccount -Environment AzureGermanCloud` |
 | Befehle für [Azure (Resource Manager-Bereitstellungsmodell)](/powershell/azure) |`Connect-AzAccount -EnvironmentName AzureGermanCloud` |
 | Befehle für [Azure Active Directory (klassisches Bereitstellungsmodell)](/previous-versions/azure/jj151815(v=azure.100)) |`Connect-MsolService -AzureEnvironment AzureGermanyCloud` |
-| Befehle für [Azure Active Directory (Resource Manager-Bereitstellungsmodell)](https://msdn.microsoft.com/library/azure/mt757189.aspx) |`Connect-AzureAD -AzureEnvironmentName AzureGermanyCloud` |
+| Befehle für [Azure Active Directory (Resource Manager-Bereitstellungsmodell)](/azure/azure-resource-manager/management/deployment-models) |`Connect-AzureAD -AzureEnvironmentName AzureGermanyCloud` |
 
 Sie können auch die Option `Environment` verwenden, wenn Sie eine Verbindung mit einem Speicherkonto über `New-AzStorageContext` herstellen, und `AzureGermanCloud` angeben.
 

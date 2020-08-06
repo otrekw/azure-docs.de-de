@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: a574d7c36ce1d701504ea1d202eeafca542ad946
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d1841d54682764c01406c2e42689f1948a2bf3b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74771254"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502442"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Aktivieren und Herunterladen der Serverprotokolle zu langsamen Abfragen von einem Azure Database for MySQL-Server mithilfe der Azure-Befehlszeilenschnittstelle
 Dieses CLI-Beispielskript aktiviert die Serverprotokolle zu langsamen Abfragen auf einem Azure Database for MySQL-Server und lädt sie herunter.

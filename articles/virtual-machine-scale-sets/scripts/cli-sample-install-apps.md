@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: c02340261d8ec90a862157ee875f57fb82b465c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 78569459de9d6a632f256d25ffb0870e36ce4a79
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088987"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499686"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>Installieren von Anwendungen in einer VM-Skalierungsgruppe mit der Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu und installiert eine einfache Webanwendung unter Verwendung der benutzerdefinierten Skripterweiterung. Nach dem Ausführen des Skripts können Sie über einen Webbrowser auf die Web-App zugreifen.

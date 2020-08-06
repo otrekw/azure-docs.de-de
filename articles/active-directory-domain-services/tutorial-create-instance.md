@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 28c56b7ece51e39d72c4ddff39d681eeb57d2252
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: dc225cef2981bd6307a919d52b75d3e0791e46cf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024722"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490999"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -99,7 +99,7 @@ Füllen Sie im Azure-Portal die Felder im Fenster *Grundlagen* aus, um eine verw
     Wählen Sie für dieses Tutorial die SKU *Standard* aus.
 1. Eine *Gesamtstruktur* ist ein logisches Konstrukt, das von Active Directory Domain Services zum Gruppieren von Domänen verwendet wird. Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten.
 
-    Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.
+    Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.
 
     Erstellen Sie für dieses Tutorial eine *Benutzergesamtstruktur*.
 

@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: cc11420a766c63c825ef3753f96b0885b8316994
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.custom: devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: 16c5fee672f48e2b71bb0280d87499a79511fa46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240170"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500292"
 ---
 # <a name="connect-to-azure-germany-by-using-azure-cli"></a>Herstellen einer Verbindung mit Azure Deutschland über die Azure CLI
 
