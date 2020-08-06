@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654867"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128674"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor für Netzwerke (Vorschau)
 Azure Monitor für Netzwerke bietet eine umfassende Ansicht der Integrität und Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Die erweiterte Suchfunktion hilft beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, auf denen Ihre Website gehostet wird, indem einfach nach dem Namen der gehosteten Website gesucht wird.
@@ -48,7 +48,7 @@ Sie können auf jedes Element in der Rasteransicht klicken. Klicken Sie auf das 
 Das Raster **Warnungen** auf der rechten Seite bietet eine Übersicht über alle Warnungen, die für die ausgewählten Ressourcen in allen Abonnements generiert wurden. Klicken Sie auf die Warnungsanzahl, um zur Detailseite für die Warnungen zu navigieren.
 
 ## <a name="dependency-view"></a>Abhängigkeitsansicht
-Mithilfe der **Abhängigkeitsansicht** wird die Konfiguration der Ressource visuell veranschaulicht. Derzeit wird die Abhängigkeitsansicht nur für Application Gateway unterstützt. Sie können auf die Abhängigkeitsansicht zugreifen, indem Sie in der Rasteransicht der Metriken auf den Namen der Application Gateway-Ressource klicken.
+Mithilfe der **Abhängigkeitsansicht** wird die Konfiguration der Ressource visuell veranschaulicht. Derzeit wird die Abhängigkeitsansicht für Application Gateway, Virtual WAN und Load Balancer unterstützt. Im Fall von Application Gateway können Sie beispielsweise auf die Abhängigkeitsansicht zugreifen, indem Sie in der Rasteransicht der Metriken auf den Namen der Application Gateway-Ressource klicken. Dies gilt auch für Virtual WAN und Load Balancer. 
 
 ![Application Gateway-Ansicht](media/network-insights-overview/application-gateway.png)
 
@@ -70,4 +70,4 @@ Klicken Sie auf **Detaillierte Metriken anzeigen**, um eine vorkonfigurierte Arb
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- Weitere Informationen zur Netzwerküberwachung finden Sie unter [Was ist Azure Network Watcher?](/azure/network-watcher/network-watcher-monitoring-overview).
+- Weitere Informationen zur Netzwerküberwachung finden Sie unter [Was ist Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).

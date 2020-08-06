@@ -1,18 +1,18 @@
 ---
 title: Grenzwerte und Kontingente in IoT Plug & Play (Vorschau) | Microsoft-Dokumentation
 description: Informieren Sie sich über die Grenzwerte, Kontingente und Drosselungen, die in IoT Plug & Play (Vorschau) gelten.
-author: miagdp
-ms.author: miag
-ms.date: 04/01/2020
+author: prashmo
+ms.author: prashmo
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 5c4377120f61792b580225a22b9f5ff51b5e1b64
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80518172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337397"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Plug & Play (Vorschau): Grenzwerte, Kontingente und Drosselungen
 
@@ -24,39 +24,17 @@ In der öffentlichen Vorschau gelten die folgenden Grenzwerte und Kontingente f�
 
 | Grenzwerte, Einschränkungen und Drosselungen | Wert | Notizen |
 |-----|-----|-----|
-| Anzahl von Gerätefunktionsmodellen (Device Capability Models, DCMs) oder Schnittstellen, die pro Hub registriert werden können | 1500 ||
-| Maximale Anzahl von Schnittstellen, die pro Gerät registriert werden können | 40 ||
-| Maximale Anzahl von DCMs, die pro Gerät registriert werden können | 1 ||
-| Maximale Größe der Schnittstelle bzw. DCM-Datei | 512 KB ||
-| Maximale Größe eines Schnittstellennamens | 256 Zeichen ||
-| Maximale Größe eines Eigenschaftsnamens  | 64 Byte, 7 Ebenen Tiefe (die erste Ebene ist für `$iotin` reserviert) | Zulässige Zeichen: a-z, A-Z, 0-9 (nicht als erstes Zeichen) und Unterstrich |
-| Maximale Größe eines Eigenschaftswerts | 512 Bytes ||
-| Maximale Größe eines Befehlsnamens | 100 Bytes ||
+| Anzahl von Schnittstellen, die pro Hub registriert werden können | 1500 ||
+| Maximale Größe eines Komponentennamens | 1 bis 64 Zeichen | Zulässige Zeichen: a–z, A–Z, 0–9 (nicht als erstes Zeichen) und Unterstrich (nicht als erstes oder letztes Zeichen) |
+| Maximale Größe eines Eigenschaftsnamens | 1 bis 64 Zeichen | Zulässige Zeichen: a–z, A–Z, 0–9 (nicht als erstes Zeichen) und Unterstrich (nicht als erstes oder letztes Zeichen) |
+| Maximale Größe eines Eigenschaftswerts | Entspricht DTDL-[Eigenschaft](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property) (Digital Twins Definition Language) | 5 Ebenen Tiefe und möglicherweise kein Array oder beliebiges komplexes Schema, das ein Array enthält |
+| Maximale Größe eines Befehlsnamens | 1 bis 64 Zeichen | Zulässige Zeichen: a–z, A–Z, 0–9 (nicht als erstes Zeichen) und Unterstrich (nicht als erstes oder letztes Zeichen)|
 | Größe des Gerätezwillings | Identisch mit [IoT Hub-Grenzwerten](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||
-| Aufrufe der Auflösungs-API in der gesamten SKU (unabhängig von den Einheiten) | 100 Anforderungen/Sekunde ||
-
-## <a name="model-repository"></a>Modellrepository
-
-In der öffentlichen Vorschau gelten die folgenden Grenzwerte und Kontingente für ein Modellrepository:
-
-| Grenzwerte, Einschränkungen und Drosselungen | Wert |
-|-----|-----|
-| Anzahl von Modellrepositorys eines Unternehmens pro Azure Active Directory-Mandant | 1 |
-| Anzahl von Autorisierungsschlüsseln pro Modellrepository | 10  |
-| Anzahl von Modellen (DCMs oder Schnittstellen) pro Unternehmensmodellrepository| 1500  |
-| Anzahl von Modellen (DCMs oder Schnittstellen) im öffentlichen Modellrepository pro Azure Active Directory-Mandant| 1500  |
-| Anzahl von DCMs oder Schnittstellen, die in einem Unternehmensmodellrepository gelöscht werden | 10 Abfragen pro Sekunde (Queries Per Second, QPS)|
-| Anzahl von Modellrepositorys, die von einem Mandanten erstellt oder aktualisiert werden| 1 QPS |
-| Anzahl von Autorisierungsschlüsseln, die in einem Modellrepository erstellt, aktualisiert oder gelöscht werden | 1 QPS|
-| Anzahl von DCMs, die in einem Unternehmensmodellrepository erstellt werden | 10 QPS |
-| Anzahl von Schnittstellen, die in einem Unternehmensmodellrepository erstellt werden | 10 QPS|
-| Anzahl von DCMs, die im öffentlichen Modellrepository erstellt werden | 10 QPS|
-| Anzahl von Schnittstellen, die im öffentlichen Modellrepository erstellt werden | 10 QPS|
 
 ## <a name="parser-library"></a>Parserbibliothek
 
-Für die Parserbibliothek gelten die Grenzwerte der [Digital Twin Definition Language](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
+Für die Parserbibliothek gelten die Grenzwerte der [Digital Twins Definition Language](https://github.com/Azure/opendigitaltwins-dtdl).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als Nächstes empfehlen wir, sich darüber zu informieren, wie Sie eine [Verbindung mit einem IoT Plug & Play-Gerät herstellen und damit interagieren](./howto-develop-solution.md).
+Als nächster Schritt wird empfohlen, sich die [IoT Plug & Play-Architektur](concepts-architecture.md) anzusehen.

@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496076"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387239"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link 
+# <a name="secure-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link 
 
 In diesem Artikel erfahren Sie, wie Sie einen verknüpften Dienst in Synapse mit einem privaten Endpunkt schützen.
 
@@ -52,7 +52,7 @@ Sollten Sie beim Testen der oben genannten Verbindung nicht auf den Link geklick
 1. Klicken Sie auf **Erstellen**
 1. Nach einigen Sekunden Wartezeit sollten Sie informiert werden, dass für den erstellten privaten Link eine Genehmigung erforderlich ist.
 
-## <a name="approval-of-a-private-link"></a>Genehmigung eines privaten Links
+## <a name="private-link-approval"></a>Private Link-Genehmigung
 1. Wählen Sie den zuvor erstellten privaten Endpunkt aus. Es wird ein Link angezeigt, über den Sie den privaten Endpunkt auf Speicherkontoebene genehmigen können. *Eine Alternative besteht darin, direkt zum Speicherkonto im Azure-Portal und dann zum Blatt **Private Endpunktverbindungen** zu wechseln.*
 1. Aktivieren Sie den privaten Endpunkt, den Sie in Studio erstellt haben, und wählen Sie **Genehmigen** aus.
 1. Fügen Sie eine Beschreibung hinzu, und klicken Sie auf **ja**.

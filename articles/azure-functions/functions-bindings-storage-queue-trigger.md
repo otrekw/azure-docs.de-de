@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559910"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564043"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-Trigger für Azure Functions
 
@@ -163,7 +163,7 @@ Der Trigger einer Speicherwarteschlange ist in *function.json* definiert, wobei 
 }
 ```
 
-Der Code in *_\_init_\_.py* deklariert einen Parameter als `func.ServiceBusMessage`, was es Ihnen ermöglicht, die Warteschlangennachricht in Ihrer Funktion zu lesen.
+Der Code in *_\_init_\_.py* deklariert einen Parameter als `func.QueueMessage`, was es Ihnen ermöglicht, die Warteschlangennachricht in Ihrer Funktion zu lesen.
 
 ```python
 import logging
@@ -351,17 +351,17 @@ Die Nutzlast des Warteschlangenelements ist über `context.bindings.<NAME>` verf
 
 # <a name="python"></a>[Python](#tab/python)
 
-Greifen Sie über den Parameter, der als [QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python) typisiert ist, auf die Warteschlangennachricht zu.
+Greifen Sie über den Parameter, der als [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python) typisiert ist, auf die Warteschlangennachricht zu.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Die [QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)-Anmerkung gewährt Ihnen Zugriff auf die Warteschlangennachricht, die die Funktion ausgelöst hat.
+Die [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)-Anmerkung gewährt Ihnen Zugriff auf die Warteschlangennachricht, die die Funktion ausgelöst hat.
 
 ---
 
 ## <a name="message-metadata"></a>Metadaten von Nachrichten
 
-Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Die Eigenschaften sind Elemente der [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)-Klasse.
+Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Die Eigenschaften sind Elemente der [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)-Klasse.
 
 |Eigenschaft|type|BESCHREIBUNG|
 |--------|----|-----------|

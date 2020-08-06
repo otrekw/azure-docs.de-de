@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für a
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517772"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563244"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr mit einem Lastenausgleich der SKU *Basic* in Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ In diesem Artikel wird Ihnen gezeigt, wie Sie eine statische öffentliche IP-Adr
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie Azure Load Balancer Basic verwenden.  Wir empfehlen die Verwendung von [Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview), und Sie können erweiterte Features zum [Steuern des ausgehenden AKS-Datenverkehrs](https://docs.microsoft.com/azure/aks/limit-egress-traffic) verwenden.
+In diesem Artikel wird davon ausgegangen, dass Sie Azure Load Balancer Basic verwenden.  Wir empfehlen die Verwendung von [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md), und Sie können erweiterte Features zum [Steuern des ausgehenden AKS-Datenverkehrs](./limit-egress-traffic.md) verwenden.
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 

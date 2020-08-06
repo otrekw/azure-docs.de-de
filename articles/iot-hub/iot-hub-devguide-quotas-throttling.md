@@ -7,12 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Operations'
+- 'Role: Technical Support'
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688975"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335561"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -26,9 +30,9 @@ Jede IoT Hub-Instanz wird mit einer bestimmten Anzahl von Einheiten zu einem spe
 
 Der Tarif legt auch die Drosselungslimits fest, die IoT Hub für alle Vorgänge erzwingt.
 
-### <a name="iot-plug-and-play"></a>IoT Plug & Play
+## <a name="iot-plug-and-play"></a>IoT Plug & Play
 
-Während der Public Preview-Phase senden IoT Plug & Play-Geräte separate Nachrichten pro Schnittstelle, wodurch sich die Anzahl von Nachrichten erhöhen kann, die auf das Nachrichtenkontingent angerechnet werden.
+IoT Plug & Play-Geräte senden mindestens eine Telemetrienachricht für jede Schnittstelle, einschließlich der Stammschnittstelle, wodurch sich die Anzahl von Nachrichten erhöhen kann, die auf das Nachrichtenkontingent angerechnet werden.
 
 ## <a name="operation-throttles"></a>Vorgangsdrosselung
 

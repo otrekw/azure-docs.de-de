@@ -4,12 +4,12 @@ description: Erste Schritte mit Application Insights. Analysieren Sie die Auslas
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985064"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323450"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Leistung in Webanwendungen überwachen
 
@@ -23,10 +23,10 @@ Auf Clientseite kann Application Insights Telemetriedaten von Webseiten und eine
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Einrichten der Leistungsüberwachung
 Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. h., wenn es nicht über ApplicationInsights.config verfügt), gehen Sie nach einer der folgenden Methoden vor, um zu beginnen:
 
-* [ASP.NET-Web-Apps](../../azure-monitor/app/asp-net.md)
-  * [Ausnahmeüberwachung hinzufügen](../../azure-monitor/app/asp-net-exceptions.md)
-  * [Abhängigkeitsüberwachung hinzufügen](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE-Web-Apps](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [ASP.NET-Web-Apps](./asp-net.md)
+  * [Ausnahmeüberwachung hinzufügen](./asp-net-exceptions.md)
+  * [Abhängigkeitsüberwachung hinzufügen](./monitor-performance-live-website-now.md)
+* [Java EE-Web-Apps](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Untersuchen von Leistungsmetriken
 Navigieren Sie im [Azure-Portal](https://portal.azure.com)zu der Application Insights-Ressource, die Sie für Ihre Anwendung eingerichtet haben. Das Blatt "Übersicht" zeigt grundlegende Leistungsdaten:
@@ -61,15 +61,15 @@ Achten Sie auf ungewöhnliche Spitzen. Im Allgemeinen können Sie mit einer län
 
 Klicken Sie auf die Kachel, um Zeiten für bestimmte URLs zu erhalten.
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+![Screenshot des Bereichs „Anwendungsintegrität“, in dem Liniendiagramme des gleitenden Durchschnitts von Anforderungen und Antwortzeiten im Zeitverlauf angezeigt werden.](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>Slowest requests
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![Screenshot einer Liste der langsamsten Anforderungen und ihrer Reaktionszeiten.](./media/web-monitor-performance/appinsights-44slowest.png)
 
 Zeigt, welche Anforderungen möglicherweise eine Leistungsfeinabstimmung erfordern.
 
 ### <a name="failed-requests"></a>Anforderungsfehler
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![Screenshot eines Liniendiagramms der Anzahl fehlerhafter Anforderungen, d. h. Anforderungen, die nicht abgefangene Ausnahmen ausgelöst haben, im Zeitverlauf.](./media/web-monitor-performance/appinsights-46failed.png)
 
 Zählwert von Anforderungen, die nicht abgefangene Ausnahmefehler verursacht haben.
 
@@ -87,7 +87,7 @@ Wenn Sie eine Metrik auswählen, werden alle anderen deaktiviert, die nicht im s
 ## <a name="set-alerts"></a>Festlegen von Benachrichtigungen
 Fügen Sie eine Benachrichtigung hinzu, wenn Sie per E-Mail über ungewöhnliche Werte einer beliebigen Metrik informiert werden möchten. Sie können auswählen, ob die E-Mail an die Kontoadministratoren oder an bestimmte E-Mail-Adressen gesendet wird.
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![Screenshot des Dialogfelds „Warnungsregel hinzufügen“, zusammen mit Screenshots, die durch Pfeile verbunden sind und zeigen, wie dieses Dialogfeld von Metrik-Explorer aus erreicht werden kann.](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 Legen Sie die Ressource vor den anderen Eigenschaften fest. Wählen Sie nicht die Webtestressourcen, wenn Sie Benachrichtigungen für Leistungs- oder Nutzungsmetriken festlegen möchten.
 
@@ -106,7 +106,7 @@ Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Lei
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Auffinden und Beseitigen von Leistungsengpässen über die Oberfläche für die Leistungsuntersuchung
 
-Sie können die Oberfläche für die Leistungsuntersuchung verwenden, um langsame Vorgänge in Ihrer Web-App zu überprüfen. Sie können schnell einen bestimmten Vorgang auswählen und [Profiler](../../azure-monitor/app/profiler.md) verwenden, um die Ursache für die geringe Leistung bis zum Code nachzuverfolgen. Mit der neuen Ansicht der Verteilung der Dauer, die für den ausgewählten Vorgang angezeigt wird, können Sie auf einen Blick bewerten, wie schlecht das Benutzererlebnis für Ihre Kunden tatsächlich ist. Sie können für jeden langsamen Vorgang anzeigen, wie viele Benutzerinteraktionen betroffen sind. Im folgenden Beispiel betrachten wir das Benutzererlebnis für den Vorgang „GET Customers/Details“. In der Verteilung der Dauer sehen wir drei Spitzenwerte. Der Wert ganz links beträgt ca. 400 ms und stellt eine sehr gute Reaktion dar. Der mittlere Wert liegt bei etwa 1,2 s und steht für ein mittelmäßiges Benutzererlebnis. Bei 3,6 s stellen wir eine weitere kleine Spitze fest, die das Benutzererlebnis im 99. Perzentil repräsentiert. Dieser Wert wird wahrscheinlich dazu führen, dass Ihre Kunden Ihre App enttäuscht verlassen. Diese Reaktion ist zehnmal langsamer als die sehr gute Reaktion für den gleichen Vorgang. 
+Sie können die Oberfläche für die Leistungsuntersuchung verwenden, um langsame Vorgänge in Ihrer Web-App zu überprüfen. Sie können schnell einen bestimmten Vorgang auswählen und [Profiler](./profiler.md) verwenden, um die Ursache für die geringe Leistung bis zum Code nachzuverfolgen. Mit der neuen Ansicht der Verteilung der Dauer, die für den ausgewählten Vorgang angezeigt wird, können Sie auf einen Blick bewerten, wie schlecht das Benutzererlebnis für Ihre Kunden tatsächlich ist. Sie können für jeden langsamen Vorgang anzeigen, wie viele Benutzerinteraktionen betroffen sind. Im folgenden Beispiel betrachten wir das Benutzererlebnis für den Vorgang „GET Customers/Details“. In der Verteilung der Dauer sehen wir drei Spitzenwerte. Der Wert ganz links beträgt ca. 400 ms und stellt eine sehr gute Reaktion dar. Der mittlere Wert liegt bei etwa 1,2 s und steht für ein mittelmäßiges Benutzererlebnis. Bei 3,6 s stellen wir eine weitere kleine Spitze fest, die das Benutzererlebnis im 99. Perzentil repräsentiert. Dieser Wert wird wahrscheinlich dazu führen, dass Ihre Kunden Ihre App enttäuscht verlassen. Diese Reaktion ist zehnmal langsamer als die sehr gute Reaktion für den gleichen Vorgang. 
 
 ![Drei Spitzenwerte für die Dauer von „GET Customers/Details“](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -142,15 +142,13 @@ Auf der Oberfläche für die Leistungsuntersuchung werden relevante Erkenntnisse
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
+[qna]: ../faq.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
 

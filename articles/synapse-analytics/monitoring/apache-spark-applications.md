@@ -1,6 +1,6 @@
 ---
-title: Überwachen von Apache Spark-Anwendungen
-description: Verwenden Sie Azure Synapse Studio, um Ihre Apache Spark-Anwendungen zu überwachen.
+title: Überwachen von Apache Spark-Anwendungen mithilfe von Synapse Studio
+description: Verwenden Sie Synapse Studio, um Ihre Apache Spark-Anwendungen zu überwachen.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 20c4216e7af0cb4100204ebae1b484a53e3c50a6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971231"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387352"
 ---
-# <a name="use-the-azure-synapse-studio-to-monitor-your-apache-spark-applications"></a>Verwenden Sie Azure Synapse Studio, um Ihre Apache Spark-Anwendungen zu überwachen.
+# <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Verwenden von Synapse Studio zum Überwachen Ihrer Apache Spark-Anwendungen
 
 Mit Azure Synapse Analytics können Sie mithilfe von Apache Spark Notebooks, Aufträge und andere Arten von Anwendungen in ihren Apache Spark-Pools in Ihrem Arbeitsbereich ausführen.
 
@@ -33,11 +33,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind bzw. dass Folgendes vorhanden ist:
 
-- Ein Azure Synapse Studio-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Azure Synapse Studio-Arbeitsbereichs](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+- Ein Synapse Studio-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Synapse Studio-Arbeitsbereichs](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
 
 - Ein Apache Spark-Pool.
 
-## <a name="monitor-running-apache-spark-application"></a>Überwachen aktiver Apache Spark-Anwendungen
+## <a name="monitor-running-apache-spark-application"></a>Überwachen aktiver Apache Spark-Anwendungen
 
 Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu den ausgeführten Apache Spark-Anwendungen anzuzeigen, wählen Sie die sendende Apache Spark-Anwendung aus, und zeigen Sie die Details an. Wenn die Apache Spark-Anwendung noch ausgeführt wird, können Sie den Fortschritt überwachen.
 
@@ -57,7 +57,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
     ![Ausgeführten Auftrag anzeigen](./media/how-to-monitor-spark-applications/view-running-job.png)
 
-## <a name="view-completed-apache-spark-application"></a>Anzeigen einer abgeschlossenen Apache Spark-Anwendung
+## <a name="view-completed-apache-spark-application"></a>Anzeigen abgeschlossener Apache Spark-Anwendungen
 
 Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu abgeschlossenen Apache Spark-Anwendungen anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
 
@@ -105,7 +105,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
    ![Details für Phase](./media/how-to-monitor-spark-applications/details-for-stage.png)
 
-## <a name="view-canceled-apache-spark-application"></a>Anzeigen einer abgebrochenen Apache Spark-Anwendung
+## <a name="view-canceled-apache-spark-application"></a>Anzeigen abgebrochener Apache Spark-Anwendungen
 
 Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu abgebrochenen Apache Spark-Anwendungen anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
 
@@ -147,4 +147,4 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Überwachen von Pipelineausführungen finden Sie im Artikel [Überwachen von Pipelineausführungen mit Azure Synapse Studio](how-to-monitor-pipeline-runs.md).  
+Weitere Informationen zum Überwachen von Pipelineausführungen finden Sie im Artikel [Überwachen von Pipelineausführungen mithilfe von Synapse Studio](how-to-monitor-pipeline-runs.md).  

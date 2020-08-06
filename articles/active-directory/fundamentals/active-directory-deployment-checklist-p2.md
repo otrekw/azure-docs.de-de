@@ -3,20 +3,20 @@ title: Prüfliste für die Azure AD-Bereitstellung
 description: Bereitstellungsprüfliste für Azure Active Directory-Features
 services: active-directory
 ms.service: active-directory
-ms.subservice: ''
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025386"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -53,10 +53,11 @@ In dieser Phase aktivieren Administratoren die grundlegenden Sicherheitsfunktion
 | [Deaktivieren von regelmäßigen Kennwortzurücksetzungen für cloudbasierte Benutzerkonten](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Regelmäßige Kennwortzurücksetzungen regen Ihre Benutzer dazu an, ihre vorhandenen Kennwörter lediglich mit geänderten Zahlen wiederzuverwenden. Verwenden Sie die Richtlinien aus dem Kennwortleitfaden von Microsoft, und spiegeln Sie Ihre lokalen Richtlinie für reine Cloudbenutzer. | Azure AD Free |
 | [Anpassen von Azure Active Directory Smart Lockout](../authentication/howto-password-smart-lockout.md) | Verhindern Sie, dass Sperrungen von cloudbasierten Benutzern für lokale Active Directory-Benutzer repliziert werden. | |
 | [Aktivieren der intelligenten Extranetsperre für AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | Die intelligente Extranetsperre schützt vor Brute-Force-Angriffen, bei denen das Kennwort erraten wird, und lässt gültige AD FS-Benutzer ihre Konten weiterhin verwenden. | |
+| [Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff](../conditional-access/block-legacy-authentication.md) | Blockieren von Legacyauthentifizierungsprotokolle wie POP, SMTP, IMAP und MAPI, die keine Multi-Factor Authentication erzwingen können und dadurch bevorzugte Einstiegspunkte für Angreifer sind. | Azure AD Premium P1 |
 | [Bereitstellen von Azure AD Multi-Factor Authentication mit Richtlinien für bedingten Zugriff](../authentication/howto-mfa-getstarted.md) | Legen Sie mithilfe von Richtlinien für bedingten Zugriff fest, dass Benutzer beim Zugriff auf sensible Anwendungen eine zweistufige Überprüfung durchführen müssen. | Azure AD Premium P1 |
 | [Aktivieren der Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) | Aktivieren Sie die Nachverfolgung von riskanten Anmeldungen und kompromittierten Anmeldeinformationen für Benutzer in Ihrer Organisation. | Azure AD Premium P2 |
 | [Verwenden von Risikoerkennungen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen](../authentication/tutorial-risk-based-sspr-mfa.md) | Aktivieren Sie eine Automatisierung, die Ereignisse risikobasiert auslösen kann, z.B. mehrstufige Authentifizierung, Kennwortzurücksetzung und das Blockieren von Anmeldungen. | Azure AD Premium P2 |
-| [Aktivieren der zusammengeführten Registrierung für Self-Service-Kennwortzurücksetzung und Azure AD Multi-Factor Authentication (Vorschauversion)](../authentication/concept-registration-mfa-sspr-converged.md) | Ermöglichen Sie Ihren Benutzern die Registrierung über eine gemeinsame Umgebung sowohl für Azure Multi-Factor Authentication als auch Self-Service-Kennwortzurücksetzung. | Azure AD Premium P1 |
+| [Aktivieren der kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure AD Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) | Ermöglichen Sie Ihren Benutzern die Registrierung über eine gemeinsame Umgebung sowohl für Azure Multi-Factor Authentication als auch Self-Service-Kennwortzurücksetzung. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Phase 2: Importieren von Benutzern, Aktivieren der Synchronisierung und Verwalten von Geräten
 

@@ -6,35 +6,35 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321104"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Behandeln von Protokollwarnungen in Azure Monitor  
 
 In diesem Artikel erfahren Sie, wie Sie häufig auftretende Probleme mit Protokollwarnungen in Azure Monitor beheben. Er bietet auch Lösungen für häufig auftretende Probleme bezüglich der Funktionalität und der Konfiguration von Protokollwarnungen.
 
-Der Begriff *Protokollwarnungen* bezeichnet Regeln, die basierend auf einer Protokollabfrage in einem [Azure Log Analytics-Arbeitsbereich](../learn/tutorial-viewdata.md) oder in [Azure Application Insights](../../azure-monitor/app/analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen unter [Protokollwarnungen in Azure Monitor](../platform/alerts-unified-log.md).
+Der Begriff *Protokollwarnungen* bezeichnet Regeln, die basierend auf einer Protokollabfrage in einem [Azure Log Analytics-Arbeitsbereich](../log-query/get-started-portal.md) oder in [Azure Application Insights](../log-query/log-query-overview.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen unter [Protokollwarnungen in Azure Monitor](./alerts-unified-log.md).
 
 > [!NOTE]
-> In diesem Artikel werden keine Fälle berücksichtigt, in denen das Azure-Portal eine ausgelöste Warnungsregel anzeigt und eine Benachrichtigung nicht durch eine zugeordnete Aktionsgruppe erfolgt. Weitere Informationen zu solchen Fällen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../platform/action-groups.md).
+> In diesem Artikel werden keine Fälle berücksichtigt, in denen das Azure-Portal eine ausgelöste Warnungsregel anzeigt und eine Benachrichtigung nicht durch eine zugeordnete Aktionsgruppe erfolgt. Weitere Informationen zu solchen Fällen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](./action-groups.md).
 
 ## <a name="log-alert-didnt-fire"></a>Protokollwarnung wurde nicht ausgelöst.
 
-Im Folgenden finden Sie einige häufige Gründe, warum ein Status einer konfigurierten [Protokollwarnungsregel in Azure Monitor](../platform/alerts-log.md) nicht wie erwartet [als *Ausgelöst* angezeigt wird](../platform/alerts-managing-alert-states.md).
+Im Folgenden finden Sie einige häufige Gründe, warum ein Status einer konfigurierten [Protokollwarnungsregel in Azure Monitor](./alerts-log.md) nicht wie erwartet [als *Ausgelöst* angezeigt wird](./alerts-managing-alert-states.md).
 
 ### <a name="data-ingestion-time-for-logs"></a>Datenerfassungszeit für Protokolle
 
-Eine Protokollwarnung führt Ihre Abfrage in regelmäßigen Abständen basierend auf [Log Analytics](../learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/analytics.md) aus. Da Azure Monitor viele Terabyte an Daten von Tausenden Kunden und aus verschiedenen Quellen auf der ganzen Welt verarbeitet, ist der Dienst anfällig für unterschiedliche zeitliche Verzögerungen. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../platform/data-ingestion-time.md).
+Eine Protokollwarnung führt Ihre Abfrage in regelmäßigen Abständen basierend auf [Log Analytics](../log-query/get-started-portal.md) oder [Application Insights](../log-query/log-query-overview.md) aus. Da Azure Monitor viele Terabyte an Daten von Tausenden Kunden und aus verschiedenen Quellen auf der ganzen Welt verarbeitet, ist der Dienst anfällig für unterschiedliche zeitliche Verzögerungen. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](./data-ingestion-time.md).
 
 Um Verzögerungen zu verringern, wartet das System und wiederholt die Warnungsabfrage mehrere Male, falls die benötigten Daten noch nicht erfasst wurden. Für das System ist eine exponentiell zunehmende Wartezeit festgelegt. Die Protokollwarnung wird erst ausgelöst, nachdem die Daten verfügbar sind, sodass die Verzögerung möglicherweise auf die langsame Erfassung der Protokolldaten zurückzuführen ist.
 
 ### <a name="incorrect-time-period-configured"></a>Falscher Zeitraum konfiguriert
 
-Wie im Artikel zur [Terminologie für Protokollwarnungen](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types) beschrieben, steht der in der Konfiguration angegebene Zeitraum für den Zeitbereich der Abfrage. Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses Bereichs erstellt wurden.
+Wie im Artikel zur [Terminologie für Protokollwarnungen](./alerts-unified-log.md#log-search-alert-rule---definition-and-types) beschrieben, steht der in der Konfiguration angegebene Zeitraum für den Zeitbereich der Abfrage. Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses Bereichs erstellt wurden.
 
 Der Zeitraum schränkt die Daten ein, die für eine Protokollabfrage abgerufen werden, um Missbrauch zu verhindern, und alle in einer Protokollabfrage verwendeten Zeitbefehle (z. B. **ago**) werden umgangen. Wenn der Zeitraum beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze, die zwischen 12:15 und 13:15 Uhr erstellt wurden, für die Protokollabfrage verwendet. Wenn die Protokollabfrage einen Zeitbefehl wie **ago (1d)** verwendet, nutzt die Abfrage nach wie vor nur Daten zwischen 12:15 und 13:15 Uhr, da der Zeitraum auf dieses Intervall festgelegt ist.
 
@@ -44,7 +44,7 @@ Der Zeitraum schränkt die Daten ein, die für eine Protokollabfrage abgerufen w
 
 ### <a name="suppress-alerts-option-is-set"></a>Option „Warnungen unterdrücken“ ist festgelegt.
 
-Wie in Schritt 8 des Artikels über das [Erstellen einer Protokollwarnungsregel im Azure-Portal](../platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) beschrieben, bieten Protokollwarnungen die Option **Warnungen unterdrücken**, um Auslöse- und Benachrichtigungsaktionen für einen konfigurierten Zeitraum zu unterdrücken. Infolgedessen könnten Sie den Eindruck erhalten, dass eine Warnung nicht ausgelöst wurde. Tatsächlich wurde sie ausgelöst, aber unterdrückt.  
+Wie in Schritt 8 des Artikels über das [Erstellen einer Protokollwarnungsregel im Azure-Portal](./alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) beschrieben, bieten Protokollwarnungen die Option **Warnungen unterdrücken**, um Auslöse- und Benachrichtigungsaktionen für einen konfigurierten Zeitraum zu unterdrücken. Infolgedessen könnten Sie den Eindruck erhalten, dass eine Warnung nicht ausgelöst wurde. Tatsächlich wurde sie ausgelöst, aber unterdrückt.  
 
 ![Suppress alerts (Warnungen unterdrücken)](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
@@ -83,11 +83,11 @@ Da **Aggregate Upon** für **timestamp** definiert ist, werden die Daten in der 
 
 ## <a name="log-alert-fired-unnecessarily"></a>Protokollwarnung wird unnötigerweise ausgelöst.
 
-Eine konfigurierte [Protokollwarnungsregel in Azure Monitor](../platform/alerts-log.md) kann unerwartet ausgelöst werden, wenn Sie sie in [Azure-Warnungen](../platform/alerts-managing-alert-states.md) anzeigen. In den folgenden Abschnitten werden einige häufige Gründe beschrieben.
+Eine konfigurierte [Protokollwarnungsregel in Azure Monitor](./alerts-log.md) kann unerwartet ausgelöst werden, wenn Sie sie in [Azure-Warnungen](./alerts-managing-alert-states.md) anzeigen. In den folgenden Abschnitten werden einige häufige Gründe beschrieben.
 
 ### <a name="alert-triggered-by-partial-data"></a>Warnung wird durch unvollständige Daten ausgelöst.
 
-Log Analytics und Application Insights unterliegen Erfassungsverzögerungen und Verarbeitungen. Wenn Sie eine Protokollwarnungsabfrage ausführen, werden Sie möglicherweise feststellen, dass keine oder nur einige Daten verfügbar sind. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../platform/data-ingestion-time.md).
+Log Analytics und Application Insights unterliegen Erfassungsverzögerungen und Verarbeitungen. Wenn Sie eine Protokollwarnungsabfrage ausführen, werden Sie möglicherweise feststellen, dass keine oder nur einige Daten verfügbar sind. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](./data-ingestion-time.md).
 
 Abhängig von der Konfiguration der Warnungsregel kann es zu einer fehlerhaften Auslösung kommen, wenn zum Zeitpunkt der Warnungsausführung in den Protokollen keine Daten oder nur ein Teil der Daten vorhanden sind. In solchen Fällen ist es empfehlenswert, die Warnungsabfrage oder -konfiguration zu ändern.
 
@@ -99,11 +99,11 @@ Die Logik für Protokollwarnungen in einer Analyseabfrage stellen Sie bereit. Di
 
 ![Auszuführende Abfrage](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-Das Feld **Auszuführende Abfrage** enthält, was der Warnungsprotokolldienst ausführt. Wenn Sie vor der Erstellung der eigentlichen Warnung erfahren möchten, wie die Ausgabe der Warnungsabfrage aussehen könnte, können Sie die angegebene Abfrage und die Zeitspanne über das [Analytics-Portal](../log-query/portals.md) oder die [Textanalyse-API](https://docs.microsoft.com/rest/api/loganalytics/) ausführen.
+Das Feld **Auszuführende Abfrage** enthält, was der Warnungsprotokolldienst ausführt. Wenn Sie vor der Erstellung der eigentlichen Warnung erfahren möchten, wie die Ausgabe der Warnungsabfrage aussehen könnte, können Sie die angegebene Abfrage und die Zeitspanne über das [Analytics-Portal](../log-query/log-query-overview.md) oder die [Textanalyse-API](/rest/api/loganalytics/) ausführen.
 
 ## <a name="log-alert-was-disabled"></a>Protokollwarnung wurde deaktiviert
 
-In den folgenden Abschnitten werden einige Gründe aufgeführt, warum Azure Monitor die [Protokollwarnungsregel](../platform/alerts-log.md) deaktivieren könnte.
+In den folgenden Abschnitten werden einige Gründe aufgeführt, warum Azure Monitor die [Protokollwarnungsregel](./alerts-log.md) deaktivieren könnte.
 
 ### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>Die Ressource, für die die Warnung erstellt wurde, ist nicht mehr vorhanden
 
@@ -179,17 +179,51 @@ Das folgende Beispielereignis im Azure-Aktivitätsprotokoll bezieht sich auf ein
 In jeder Protokollwarnungsregel, die in Azure Monitor bei dessen Konfiguration erstellt wurde, muss eine Analyseabfrage angegeben werden, die vom Warnungsdienst regelmäßig auszuführen ist. Zum Zeitpunkt der Erstellung oder Aktualisierung der Protokollwarnungsregel weist die Analyseabfrage möglicherweise eine korrekte Syntax auf. Doch manchmal kann die in der Warnungsregel bereitgestellte Abfrage im Laufe der Zeit Syntaxprobleme entwickeln und dazu führen, dass bei der Regelausführung Fehler auftreten. Einige häufige Gründe, aus denen eine Analyseabfrage in einer Protokollwarnungsregel Fehler entwickeln kann, sind die folgenden:
 
 - Die Abfrage wird für die [Ausführung in mehreren Ressourcen](../log-query/cross-workspace-query.md) geschrieben. Und mindestens eine angegebene Ressource ist nicht mehr vorhanden.
-- Der konfigurierte [Protokollwarnungstyp „Metrische Maßeinheit“](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) verfügt über eine Warnungsabfrage, die nicht mit den Syntaxnormen übereinstimmt.
+- Der konfigurierte [Protokollwarnungstyp „Metrische Maßeinheit“](./alerts-unified-log.md#metric-measurement-alert-rules) verfügt über eine Warnungsabfrage, die nicht mit den Syntaxnormen übereinstimmt.
 - Es gab keinen Datenfluss zur Analyseplattform. Die [Abfrageausführung liefert einen Fehler](https://dev.loganalytics.io/documentation/Using-the-API/Errors), da keine Daten für die bereitgestellte Abfrage vorhanden sind.
-- Änderungen an der [Abfragesprache](https://docs.microsoft.com/azure/kusto/query/) umfassen ein überarbeitetes Format für Befehle und Funktionen. Daher ist die zuvor in einer Warnungsregel angegebene Abfrage nicht mehr gültig.
+- Änderungen an der [Abfragesprache](/azure/kusto/query/) umfassen ein überarbeitetes Format für Befehle und Funktionen. Daher ist die zuvor in einer Warnungsregel angegebene Abfrage nicht mehr gültig.
 
 [Azure Advisor](../../advisor/advisor-overview.md) warnt Sie vor diesem Verhalten. Eine Empfehlung wird für die spezifische Protokollwarnungsregel in Azure Advisor hinzugefügt, und zwar unter der Kategorie „Hochverfügbarkeit“ mit mittlerer Auswirkung und einer Beschreibung wie „Protokollwarnungsregel zum Sicherstellen der Überwachung reparieren“.
 
 > [!NOTE]
 > Wenn eine Warnungsabfrage in der Protokollwarnungsregel nicht korrigiert wird, nachdem Azure Advisor sieben Tage lang eine Empfehlung bereitgestellt hat, deaktiviert Azure Monitor die Protokollwarnung und stellt sicher, dass keine unnötige Abrechnung erfolgt, wenn die Regel über einen längeren Zeitraum (sieben Tage) nicht kontinuierlich ausgeführt werden kann. Sie können den genauen Zeitpunkt ermitteln, zu dem Azure Monitor die Protokollwarnungsregel deaktiviert hat, indem Sie im [Azure-Aktivitätsprotokoll](../../azure-resource-manager/management/view-activity-logs.md) nach einem Ereignis suchen.
 
+## <a name="alert-rule-quota-was-reached"></a>Das Warnungsregelkontingent wurde erreicht
+
+Die Anzahl von Warnungsregeln für die Protokollsuche pro Abonnement und Ressource unterliegt den [hier](https://docs.microsoft.com/azure/azure-monitor/service-limits) angegebenen Obergrenzen.
+
+### <a name="recommended-steps"></a>Empfohlene Schritte
+    
+Wenn Sie die Kontingentgrenze erreicht haben, helfen möglicherweise die folgenden Schritte bei der Problembehebung.
+
+1. Löschen oder deaktivieren Sie Warnungsregeln für die Protokollsuche, die nicht mehr verwendet werden.
+2. Wenn die Kontingentgrenze erhöht werden muss, stellen Sie eine Supportanfrage mit den folgenden Informationen:
+
+    - Abonnement-ID(s), für die die Kontingentgrenze erhöht werden muss
+    - Grund für die Kontingenterhöhung
+    - Ressourcentyp für die Erhöhung des Kontingents: **Log Analytics**, **Application Insights** usw.
+    - Angeforderte Kontingentgrenze
+
+
+### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>So überprüfen Sie die derzeitige Kontingentnutzung durch neue Protokollwarnungsregeln
+    
+#### <a name="from-the-azure-portal"></a>Über das Azure-Portal
+
+1. Öffnen Sie den Bildschirm *Warnungen*, und klicken Sie auf *Warnungsregeln verwalten*.
+2. Filtern Sie mit dem Dropdown-Steuerelement *Abonnement* nach dem betreffenden Abonnement.
+3. Stellen Sie sicher, dass Sie NICHT nach einer bestimmten Ressourcengruppe, einem Ressourcentyp oder einer Ressource filtern.
+4. Wählen Sie im Dropdown-Steuerelement *Signaltyp* die Option „Protokollsuche“ aus.
+5. Vergewissern Sie sich, dass das Dropdown-Steuerelement *Status* auf „Aktiviert“ festgelegt ist.
+6. Die Gesamtanzahl von Warnungsregeln für die Protokollsuche wird über der Regelliste angezeigt.
+
+#### <a name="from-api"></a>Über eine API
+
+- PowerShell: [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST-API: [Auflisten nach Abonnement](/rest/api/monitor/scheduledqueryrules/listbysubscription)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Protokollwarnungen in Azure](../platform/alerts-unified-log.md).
-- Erfahren Sie mehr über [Application Insights](../../azure-monitor/app/analytics.md).
+- Erfahren Sie mehr über [Protokollwarnungen in Azure](./alerts-unified-log.md).
+- Erfahren Sie mehr über [Application Insights](../log-query/log-query-overview.md).
 - Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md).
+

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090602"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -47,6 +47,8 @@ Vergewissern Sie sich, dass die folgenden Voraussetzungen erfüllt sind, bevor S
 * Richten Sie für Geräte, die in lokalen Netzwerken betrieben werden, Verbindungen mit Ihrem Azure-VNET über ein [virtuelles privates Netzwerk (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder per privatem [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Peering ein.
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>Einrichten eines privaten Endpunkts für eingehenden IoT Hub-Datenverkehr
+
+Ein privater Endpunkt kann für IoT Hub-Geräte-APIs (z. B. D2C-Nachrichten) sowie Dienst-APIs (z. B. Erstellen und Aktualisieren von Geräten) verwendet werden.
 
 1. Wählen Sie im Azure-Portal **Netzwerk** und **Verbindungen mit privatem Endpunkt** aus, und klicken Sie auf **+ Privater Endpunkt**.
 

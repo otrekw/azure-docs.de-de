@@ -4,12 +4,12 @@ description: Übersicht über Benachrichtigungen in Azure Warnungen, klassische 
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 3c4432300319c02cd7b1e31dec566f6e65ea9580
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539566"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371599"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -52,11 +52,11 @@ Nachfolgend sind die wichtigste Attribute einer Warnungsregel aufgeführt:
 - Schweregrad 3 = Information
 - Schweregrad 4 = Ausführlicher Modus 
 
-**Aktion:** Eine bestimmte Aktion, die ausgeführt wird, sobald die Warnung ausgelöst wird. Weitere Informationen finden Sie unter [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
+**Aktion:** Eine bestimmte Aktion, die ausgeführt wird, sobald die Warnung ausgelöst wird. Weitere Informationen finden Sie unter [Aktionsgruppen](./action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Wofür Sie Warnungen ausgeben können
 
-Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Überwachen von Datenquellen](../../azure-monitor/platform/data-sources.md) beschrieben ist. Dazu gehören unter anderem folgende Ansprüche:
+Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Überwachen von Datenquellen](./data-sources.md) beschrieben ist. Dazu gehören unter anderem folgende Ansprüche:
 
 - Metrikwerte
 - Protokollsuchabfragen
@@ -69,7 +69,7 @@ Früher verfügten Azure Monitor-Metriken, Application Insights, Log Analytics u
 | **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** |
 |-------------|----------------|-------------|
 | Dienstintegrität | Aktivitätsprotokoll  | Wird nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md).  |
-| Application Insights | Webverfügbarkeitstests | Wird nicht unterstützt. Siehe [Webtestwarnungen](../../azure-monitor/app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
+| Application Insights | Webverfügbarkeitstests | Wird nicht unterstützt. Siehe [Webtestwarnungen](../app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
 
 ## <a name="manage-alerts"></a>Warnungen verwalten
 Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt des Lösungsprozesses sie sich befindet. Wenn die in der Warnungsregel angegebenen Kriterien erfüllt sind, wird eine Warnung erstellt oder ausgelöst, die den Status *Neu* aufweist. Sie können den Status ändern, wenn Sie eine Warnung bestätigen oder schließen. Alle Statusänderungen werden im Warnungsverlauf gespeichert.
@@ -137,9 +137,9 @@ Gehen Sie zum Erstellen einer neuen Warnungsregel wie folgt vor:
  
 Bei dieser vereinfachten Erstellung müssen Sie nicht mehr die Überwachungsquelle oder -signale kennen, die unterstützt werden, bevor eine Azure-Ressource ausgewählt wird. Die Liste verfügbarer Signale wird automatisch auf Grundlage der ausgewählten Zielressource gefiltert. Basierend auf diesem Ziel werden Sie auch automatisch durch das Festlegen der Logik der Warnungsregel geführt.  
 
-Weitere Informationen zum Erstellen von Warnungsregeln finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+Weitere Informationen zum Erstellen von Warnungsregeln finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](./alerts-metric.md).
 
-Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie die jeweiligen Dienste verwenden, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../../azure-monitor/overview.md). 
+Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie die jeweiligen Dienste verwenden, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../overview.md). 
 
 
 ## <a name="all-alerts-page"></a>Seite „Alle Warnungen“ 
@@ -178,7 +178,7 @@ Die Seite „Warnungsdetails“ enthält die folgenden Abschnitte:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre Warnungsinstanzen
 
-Für die Nutzung und Verwaltung von Warnungsinstanzen muss der Benutzer über die integrierten RBAC-Rollen [Mitwirkender an der Überwachung](../../role-based-access-control/built-in-roles.md#monitoring-contributor) oder [Benutzer mit Leseberechtigung für Überwachungsdaten](../../role-based-access-control/built-in-roles.md#monitoring-reader) verfügen. Diese Rollen werden in jedem Azure Resource Manager-Umfang unterstützt, unabhängig davon, ob es sich um die Abonnementebene oder um genau abgestimmte Zuweisungen auf Ressourcenebene handelt. Wenn ein Benutzer z.B. nur den Zugriff „Mitwirkender an der Überwachung“ für den virtuellen Computer `ContosoVM1` hat, kann dieser Benutzer nur Warnungen, die auf `ContosoVM1` erstellt wurden, erhalten und verwalten.
+Für die Nutzung und Verwaltung von Warnungsinstanzen muss der Benutzer über die integrierten Azure-Rollen [Mitwirkender an der Überwachung](../../role-based-access-control/built-in-roles.md#monitoring-contributor) oder [Benutzer mit Leseberechtigung für Überwachungsdaten](../../role-based-access-control/built-in-roles.md#monitoring-reader) verfügen. Diese Rollen werden in jedem Azure Resource Manager-Umfang unterstützt, unabhängig davon, ob es sich um die Abonnementebene oder um genau abgestimmte Zuweisungen auf Ressourcenebene handelt. Wenn ein Benutzer z.B. nur den Zugriff „Mitwirkender an der Überwachung“ für den virtuellen Computer `ContosoVM1` hat, kann dieser Benutzer nur Warnungen, die auf `ContosoVM1` erstellt wurden, erhalten und verwalten.
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Programmgesteuertes Verwalten Ihrer Warnungsinstanzen
 
@@ -208,7 +208,7 @@ Mithilfe der [Warnungsverwaltung-REST-API](https://aka.ms/alert-management-api) 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Weitere Informationen zu intelligenten Gruppen](https://aka.ms/smart-groups)
-- [Informationen zu Aktionsgruppen](../../azure-monitor/platform/action-groups.md)
+- [Informationen zu Aktionsgruppen](./action-groups.md)
 - [Verwalten Ihrer Warnungsinstanzen in Azure](https://aka.ms/managing-alert-instances)
 - [Verwalten intelligenter Gruppen](https://aka.ms/managing-smart-groups)
 - [Weitere Informationen zu Azure-Warnungspreisen](https://azure.microsoft.com/pricing/details/monitor/)

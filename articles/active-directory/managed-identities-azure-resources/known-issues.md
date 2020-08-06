@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019062"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -55,9 +55,12 @@ Verwaltete Identitäten haben kein Anwendungsobjekt im Verzeichnis, womit im All
 
 Nein. Es gibt bisher keine Pläne zur Unterstützung von verwalteten Identitäten für Azure-Ressourcen in Azure Cloud Services.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Funktionieren verwaltete Identitäten für Azure-Ressourcen mit ADAL (Active Directory Authentication Library) oder MSAL (Microsoft Authentication Library)?
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>Welche Anmeldeinformationen sind mit einer verwalteten Identität verknüpft? Wie lange sind sie gültig, und wie oft werden sie rotiert?
 
-Nein. Verwaltete Identitäten für Azure-Ressourcen sind noch nicht in ADAL oder MSAL integriert. Ausführliche Informationen zum Anfordern eines Tokens für verwaltete Identitäten für Azure-Ressourcen mithilfe des REST-Endpunkts finden Sie unter [Verwenden verwalteter Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens](how-to-use-vm-token.md).
+> [!NOTE]
+> Die Authentifizierung von verwalteten Identitäten ist ein internes Implementierungsdetail, das ohne vorherige Ankündigung geändert werden kann.
+
+Verwaltete Identitäten verwenden die zertifikatbasierte Authentifizierung. Die Anmeldeinformationen für jede verwaltete Identität haben eine Gültigkeitsdauer von 90 Tagen und werden nach 45 Tagen rotiert.
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Welche Sicherheitsgrenze gilt für verwaltete Identitäten für Azure-Ressourcen?
 

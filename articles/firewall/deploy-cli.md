@@ -45,13 +45,13 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Dieses Verfahren kann auch mit dem [Azure-Portal](tutorial-firewall-deploy-portal.md) oder mit [Azure PowerShell](deploy-ps.md) durchgearbeitet werden.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie mindestens die Azure CLI-Version 2.0.4 ausführen. Führen Sie **az --version** aus, um die Version festzustellen. Informationen zum Installieren oder Aktualisieren der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 

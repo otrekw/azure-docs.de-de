@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82103da3f2547baab62d0d95cf9a6084ef099cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456792"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033766"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Auswählen und Bereitstellen eines Sicherheits-Agents auf Ihrem IoT-Gerät
 
@@ -44,19 +44,18 @@ Der C-basierte Sicherheits-Agent hat einen geringeren Speicherbedarf und ist die
 
 |     | C-basierter Sicherheits-Agent | C#-basierter Sicherheits-Agent |
 | --- | ----------- | --------- |
-| Open-Source-SDK | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) auf [GitHub](https://aka.ms/iot-security-github-c) | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) auf [GitHub](https://aka.ms/iot-security-github-cs) |
-| Programmier-/Entwicklungssprache    | C | C# |
-| Unterstützte Windows-Plattformen? | Nein | Ja |
-| Windows-Voraussetzungen | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| Unterstützte Linux-Plattformen? | Ja, x64 und x86 | Ja, nur x64 |
-| Linux-Voraussetzungen | libunwind8, libcurl3, uuid-runtime, auditd, audispd-plugins | libunwind8, libcurl3, uuid-runtime, auditd, audispd-plugins, sudo, netstat, iptables |
-| Speicherbedarf des Datenträgers | 10,5 MB | 90 MB |
-| Speicherbedarf (im Durschnitt) | 5,5 MB | 33 MB |
-| [Authentifizierung](concept-security-agent-authentication-methods.md) bei IoT Hub | Ja | Ja |
-| [Sammlung](how-to-agent-configuration.md#supported-security-events) von Sicherheitsdaten | Ja | Ja |
-| Ereignisaggregation | Ja | Ja |
-| Remotekonfiguration über [Sicherheitsmodulzwilling](concept-security-module.md) | Ja | Ja |
-|
+| **Open-Source** | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) auf [GitHub](https://aka.ms/iot-security-github-c) | Verfügbar unter der [MIT-Lizenz](https://en.wikipedia.org/wiki/MIT_License) auf [GitHub](https://aka.ms/iot-security-github-cs) |
+| **Programmier-/Entwicklungssprache**    | C | C# |
+| **Unterstützte Windows-Plattformen?** | Nein | Ja |
+| **Windows-Voraussetzungen** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Unterstützte Linux-Plattformen?** | Ja, x64 und x86 | Ja, nur x64 |
+| **Linux-Voraussetzungen** | libunwind8, libcurl3, uuid-runtime, auditd, audispd-plugins | libunwind8, libcurl3, uuid-runtime, auditd, audispd-plugins, sudo, netstat, iptables |
+| **Speicherbedarf des Datenträgers** | 10,5 MB | 90 MB |
+| **Speicherbedarf (im Durschnitt)** | 5,5 MB | 33 MB |
+| **[Authentifizierung](concept-security-agent-authentication-methods.md) bei IoT Hub** | Ja | Ja |
+| **[Sammlung](how-to-agent-configuration.md#supported-security-events) von Sicherheitsdaten** | Ja | Ja |
+| **Ereignisaggregation** | Ja | Ja |
+| **Remotekonfiguration über [Sicherheitsmodulzwilling](concept-security-module.md)** | Ja | Ja |
 
 ## <a name="security-agent-installation-guidelines"></a>Installationsrichtlinien für den Sicherheits-Agent
 

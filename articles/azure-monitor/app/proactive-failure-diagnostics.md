@@ -4,19 +4,19 @@ description: Macht Sie auf ungewöhnliche Änderungen bei der Rate fehlgeschlage
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254785"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315936"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) warnt Sie automatisch und nahezu in Echtzeit, wenn es für Ihre Web-App zu einer ungewöhnlichen Häufung bei den fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Nicht erfolgreiche Anforderungen weisen normalerweise Antwortcodes im Bereich 400 oder höher auf. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in den Warnungsdetails eine Analyse der Merkmale der Fehler und der zugehörigen Anwendungsdaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
+[Application Insights](./app-insights-overview.md) warnt Sie automatisch und nahezu in Echtzeit, wenn es für Ihre Web-App zu einer ungewöhnlichen Häufung bei den fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Nicht erfolgreiche Anforderungen weisen normalerweise Antwortcodes im Bereich 400 oder höher auf. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in den Warnungsdetails eine Analyse der Merkmale der Fehler und der zugehörigen Anwendungsdaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
 
-Dieses Feature funktioniert für alle Web-Apps, die in der Cloud oder auf Ihren eigenen Servern gehostet werden und Anwendungsanforderungs- oder Abhängigkeitsdaten generieren. Es kann beispielsweise sein, dass Sie über eine Workerrolle verfügen, die [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) oder [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) aufruft.
+Dieses Feature funktioniert für alle Web-Apps, die in der Cloud oder auf Ihren eigenen Servern gehostet werden und Anwendungsanforderungs- oder Abhängigkeitsdaten generieren. Es kann beispielsweise sein, dass Sie über eine Workerrolle verfügen, die [TrackRequest()](./api-custom-events-metrics.md#trackrequest) oder [TrackDependency()](./api-custom-events-metrics.md#trackdependency) aufruft.
 
-Nachdem Sie [Application Insights für Ihr Projekt](../../azure-monitor/app/app-insights-overview.md) eingerichtet haben und Ihre App eine bestimmte Mindestmenge von Daten generiert hat, benötigt Smart Detection 24 Stunden, um das normale Verhalten Ihrer App zu ermitteln, bevor die Erkennung aktiviert wird und Warnungen senden kann.
+Nachdem Sie [Application Insights für Ihr Projekt](./app-insights-overview.md) eingerichtet haben und Ihre App eine bestimmte Mindestmenge von Daten generiert hat, benötigt Smart Detection 24 Stunden, um das normale Verhalten Ihrer App zu ermitteln, bevor die Erkennung aktiviert wird und Warnungen senden kann.
 
 Hier ist ein Beispiel für eine Warnung angegeben:
 
@@ -31,10 +31,10 @@ Die Warnungsdetails enthalten Folgendes:
 * Dies ist direkt mit relevanten Suchvorgängen in den Daten in Application Insights verknüpft.
 
 ## <a name="benefits-of-smart-detection"></a>Vorteile von Smart Detection
-Normale [Metrikwarnungen](../../azure-monitor/platform/alerts-log.md) informieren Sie, dass möglicherweise ein Problem vorliegt. Per Smart Detection wird dagegen die Diagnose für Sie gestartet und ein großer Teil der Analyseschritte ausgeführt, die Sie ansonsten selbst ausführen müssten. Sie erhalten die Ergebnisse fein säuberlich verpackt und können so schnell zur Ursache des Problems vordringen.
+Normale [Metrikwarnungen](../platform/alerts-log.md) informieren Sie, dass möglicherweise ein Problem vorliegt. Per Smart Detection wird dagegen die Diagnose für Sie gestartet und ein großer Teil der Analyseschritte ausgeführt, die Sie ansonsten selbst ausführen müssten. Sie erhalten die Ergebnisse fein säuberlich verpackt und können so schnell zur Ursache des Problems vordringen.
 
 ## <a name="how-it-works"></a>Funktionsweise
-Bei Smart Detection werden die von Ihrer App erhaltenen Daten und insbesondere die Fehlerraten überwacht. Diese Regel ermittelt die Anzahl von Anforderungen, bei denen die `Successful request`-Eigenschaft auf „false“ festgelegt ist, sowie die Anzahl von Abhängigkeitsaufrufen, bei denen die `Successful call`-Eigenschaft auf „false“ festgelegt ist. Für Anforderungen gilt standardmäßig `Successful request == (resultCode < 400)` (es sei denn, Sie haben benutzerdefinierten Code geschrieben, um Ihre eigenen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)-Aufrufe zu [filtern](../../azure-monitor/app/api-filtering-sampling.md#filtering) oder zu erstellen). 
+Bei Smart Detection werden die von Ihrer App erhaltenen Daten und insbesondere die Fehlerraten überwacht. Diese Regel ermittelt die Anzahl von Anforderungen, bei denen die `Successful request`-Eigenschaft auf „false“ festgelegt ist, sowie die Anzahl von Abhängigkeitsaufrufen, bei denen die `Successful call`-Eigenschaft auf „false“ festgelegt ist. Für Anforderungen gilt standardmäßig `Successful request == (resultCode < 400)` (es sei denn, Sie haben benutzerdefinierten Code geschrieben, um Ihre eigenen [TrackRequest](./api-custom-events-metrics.md#trackrequest)-Aufrufe zu [filtern](./api-filtering-sampling.md#filtering) oder zu erstellen). 
 
 Die Leistung Ihrer App weist ein typisches Verhaltensmuster auf. Einige Anforderungen oder Abhängigkeitsaufrufe sind anfälliger für Fehler als andere, und die gesamte Fehlerrate kann mit zunehmender Auslastung steigen. Bei Smart Detection werden diese Anomalien mithilfe von maschinellem Lernen ermittelt.
 
@@ -48,7 +48,7 @@ Wenn Ihr Dienst mit diesen Aufrufen instrumentiert wurde, sucht der Analyzer nac
 
 Das Analyseergebnis wird Ihnen als Warnung gesendet, sofern Sie nichts anderes konfiguriert haben.
 
-Wie auch bei den [manuell festgelegten Warnungen](../../azure-monitor/platform/alerts-log.md), können Sie den Status der ausgelösten Warnung untersuchen. Sie können die Warnung beseitigen, nachdem der Fehler behoben wurde. Konfigurieren Sie die Warnungsregeln auf der Seite „Warnungen“ Ihrer Application Insights-Ressource. Im Gegensatz zu anderen Warnungen müssen Sie Smart Detection jedoch nicht einrichten oder konfigurieren. Wenn Sie möchten, können Sie sie deaktivieren oder die Ziel-E-Mail-Adressen ändern.
+Wie auch bei den [manuell festgelegten Warnungen](../platform/alerts-log.md), können Sie den Status der ausgelösten Warnung untersuchen. Sie können die Warnung beseitigen, nachdem der Fehler behoben wurde. Konfigurieren Sie die Warnungsregeln auf der Seite „Warnungen“ Ihrer Application Insights-Ressource. Im Gegensatz zu anderen Warnungen müssen Sie Smart Detection jedoch nicht einrichten oder konfigurieren. Wenn Sie möchten, können Sie sie deaktivieren oder die Ziel-E-Mail-Adressen ändern.
 
 ### <a name="alert-logic-details"></a>Details zur Warnungslogik
 
@@ -61,13 +61,13 @@ Die Warnungen werden durch unseren proprietären Algorithmus für maschinelles L
 
 ## <a name="configure-alerts"></a>Konfigurieren von Warnungen
 
-Sie können die Warnungsregel von Smart Detection im Portal deaktivieren oder Azure Resource Manager verwenden ([siehe Vorlagenbeispiel](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
+Sie können die Warnungsregel von Smart Detection im Portal deaktivieren oder Azure Resource Manager verwenden ([siehe Vorlagenbeispiel](./proactive-arm-config.md)).
 
-Diese Warnungsregel wird mit einer zugehörigen [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) mit dem Namen „Application Insights Smart Detection“ erstellt, die E-Mail- und Webhookaktionen enthält und erweitert werden kann, um beim Auftreten der Warnung zusätzliche Aktionen auszulösen.
+Diese Warnungsregel wird mit einer zugehörigen [Aktionsgruppe](../platform/action-groups.md) mit dem Namen „Application Insights Smart Detection“ erstellt, die E-Mail- und Webhookaktionen enthält und erweitert werden kann, um beim Auftreten der Warnung zusätzliche Aktionen auszulösen.
 
 > [!NOTE]
-> Von dieser Warnungsregel gesendete E-Mail-Benachrichtigungen werden jetzt standardmäßig an Benutzer gesendet, denen die Rollen „Benutzer mit Leseberechtigung für Überwachungsdaten“ oder „Mitwirkender an der Überwachung“ zugewiesen sind. Weitere Informationen hierzu finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
-> Von dieser Warnungsregel gesendete Benachrichtigungen basieren auf dem [allgemeinen Warnungsschema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+> Von dieser Warnungsregel gesendete E-Mail-Benachrichtigungen werden jetzt standardmäßig an Benutzer gesendet, denen die Rollen „Benutzer mit Leseberechtigung für Überwachungsdaten“ oder „Mitwirkender an der Überwachung“ zugewiesen sind. Weitere Informationen hierzu finden Sie [hier](./proactive-email-notification.md).
+> Von dieser Warnungsregel gesendete Benachrichtigungen basieren auf dem [allgemeinen Warnungsschema](../platform/alerts-common-schema.md).
 >
 
 Öffnen Sie die Seite „Warnungen“. Warnungsregeln vom Typ „Fehleranomalien“ werden zusammen mit allen Warnungen aufgeführt, die Sie ggf. manuell festgelegt haben, und Sie können sehen, ob diese derzeit den Status „Warnung“ aufweisen.
@@ -292,7 +292,7 @@ Beachten Sie, dass Sie eine Warnungsregel vom Typ „Fehleranomalien“ deaktivi
 
 Eine Warnung gibt an, dass ein ungewöhnlicher Anstieg bei der Rate der Anforderungsfehler erkannt wurde. Wahrscheinlich liegt ein Problem mit Ihrer App oder deren Umgebung vor.
 
-Klicken Sie zur weiteren Untersuchung auf die Option zum Anzeigen aller Informationen in Application Insights. Über die Links auf dieser Seite gelangen Sie direkt zu einer [Suchseite](../../azure-monitor/app/diagnostic-search.md), die nach den relevanten Anforderungen, Ausnahmen, Abhängigkeiten oder Ablaufverfolgungen gefiltert ist. 
+Klicken Sie zur weiteren Untersuchung auf die Option zum Anzeigen aller Informationen in Application Insights. Über die Links auf dieser Seite gelangen Sie direkt zu einer [Suchseite](./diagnostic-search.md), die nach den relevanten Anforderungen, Ausnahmen, Abhängigkeiten oder Ablaufverfolgungen gefiltert ist. 
 
 Sie können auch das [Azure-Portal](https://portal.azure.com) öffnen, zur Application Insights-Ressource für Ihre App wechseln und die Seite „Fehler“ öffnen.
 
@@ -317,7 +317,7 @@ Klicken Sie auf der Application Insights-Ressourcenseite auf **Warnungen**, um d
 ## <a name="whats-the-difference-"></a>Wo liegt der Unterschied?
 Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt andere ähnliche, aber doch verschiedene Features von Application Insights.
 
-* [Metrikwarnungen](../../azure-monitor/platform/alerts-log.md) werden von Ihnen festgelegt und können eine Vielzahl von Metriken überwachen, z.B. die CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt Smart Detection einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von fehlerhaften Anforderungen), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der fehlerhaften Anforderungen für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App ansteigt. Im Gegensatz zu Metrikwarnungen werden bei Smart Detection als Reaktion auf Verhaltensänderungen automatisch Schwellenwerte festgelegt und aktualisiert. Darüber hinaus werden von Smart Detection auch die Diagnoseschritte eingeleitet, damit Sie Zeit für die Problembehebung sparen.
+* [Metrikwarnungen](../platform/alerts-log.md) werden von Ihnen festgelegt und können eine Vielzahl von Metriken überwachen, z. B. die CPU-Belegung, Anforderungsraten, Seitenladezeiten usw. Sie können sie z. B. einsetzen, um rechtzeitig benachrichtigt zu werden, wenn weitere Ressourcen hinzugefügt werden müssen. Im Gegensatz dazu deckt Smart Detection einen kleinen Bereich kritischer Metriken ab (zurzeit nur die Rate von fehlerhaften Anforderungen), durch die Sie nahezu in Echtzeit benachrichtigt werden, sobald die Rate der fehlerhaften Anforderungen für Ihre Web-App im Vergleich zum normalen Verhalten der Web-App ansteigt. Im Gegensatz zu Metrikwarnungen werden bei Smart Detection als Reaktion auf Verhaltensänderungen automatisch Schwellenwerte festgelegt und aktualisiert. Darüber hinaus werden von Smart Detection auch die Diagnoseschritte eingeleitet, damit Sie Zeit für die Problembehebung sparen.
 
 * [Smart Detection für Leistungsprobleme](proactive-performance-diagnostics.md) verwendet zudem intelligente Funktionen, um ungewöhnliche Muster in Ihren Metriken zu ermitteln, und muss nicht von Ihnen konfiguriert werden. Im Gegensatz zu Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen besteht der Zweck von Smart Detection für Leistungsprobleme jedoch in der Ermittlung von Nutzungssegmenten, die beispielsweise durch bestimmte Seiten in einem bestimmten Browsertyp nicht zufriedenstellend verarbeitet werden. Die Analyse wird täglich ausgeführt, und falls ein Ergebnis gefunden wird, ist dies wahrscheinlich wesentlich weniger dringend als eine Warnung. Im Gegensatz dazu wird die Analyse fehlgeschlagener Anforderungen für eingehende Anwendungsdaten kontinuierlich ausgeführt, und Sie werden innerhalb weniger Minuten benachrichtigt, wenn die Serverfehlerraten höher als erwartet ausfallen.
 
@@ -332,7 +332,7 @@ Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt ander
 
 *Wird Einblick in meine Anwendungsdaten gewährt?*
 
-* Nein. Der Dienst ist vollständig automatisch. Nur Sie erhalten die Benachrichtigungen. Ihre Daten sind [privat](../../azure-monitor/app/data-retention-privacy.md).
+* Nein. Der Dienst ist vollständig automatisch. Nur Sie erhalten die Benachrichtigungen. Ihre Daten sind [privat](./data-retention-privacy.md).
 
 *Muss ich diese Benachrichtigung abonnieren?*
 
@@ -348,16 +348,17 @@ Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt ander
 
 *Einige Warnungen betreffen bekannte Probleme. Diese Warnungen möchte ich nicht erhalten.*
 
-* Sie können das Feature zum Unterdrücken von [Aktionsregeln](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) verwenden.
+* Sie können das Feature zum Unterdrücken von [Aktionsregeln](../platform/alerts-action-rules.md) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Daten Ihrer App untersuchen:
 
-* [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md)
-* [Suchexplorer](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics: Leistungsfähige Abfragesprache](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrik-Explorer](../platform/metrics-charts.md)
+* [Suchexplorer](./diagnostic-search.md)
+* [Analytics: Leistungsfähige Abfragesprache](../log-query/get-started-portal.md)
 
 Intelligente Erkennungen laufen automatisch ab. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
-* [Einrichten von Warnungen in Application Insights](../../azure-monitor/platform/alerts-log.md)
-* [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Einrichten von Warnungen in Application Insights](../platform/alerts-log.md)
+* [Verfügbarkeitswebtests](./monitor-web-app-availability.md)
+

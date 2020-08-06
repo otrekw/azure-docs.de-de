@@ -2,23 +2,23 @@
 title: Unformatierte Azure CDN-HTTP-Protokolle
 description: In diesem Artikel werden die unformatierten Azure CDN-HTTP-Protokolle beschrieben.
 services: cdn
-author: sohamnchatterjee
-manager: danielgi
+author: asudbring
+manager: KumudD
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/23/2020
-ms.author: sohamnc
-ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.author: allensu
+ms.openlocfilehash: 3b36e528a013403a2ed664d3011338d92f37a3db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040157"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Unformatierte Azure CDN-HTTP-Protokolle
-Unformatierte Protokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die für die Überwachung und Problembehandlung wichtig sind. Unformatierte Protokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblicke in die Vorgänge, die für Azure-Ressourcen ausgeführt wurden. Unformatierte Protokolle stellen einen Datensatz für Vorgänge der Ressourcen bereit.
+Unformatierte Protokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die für die Überwachung und Problembehandlung wichtig sind. Unformatierte Protokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblicke in die Vorgänge, die für Azure-Ressourcen ausgeführt wurden. Unformatierte Protokolle stellen einen Datensatz für Vorgänge der Ressourcen bereit. Unformatierte Protokolle bieten umfangreiche Informationen zu jeder Anforderung, die CDN erhält. 
 
 > [!IMPORTANT]
 > Das Feature für unformatierte HTTP-Protokolle ist für Azure CDN von Microsoft verfügbar.
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="configuration"></a>Konfiguration
+## <a name="configuration---azure-portal"></a>Konfiguration – Azure-Portal
 
 So konfigurieren Sie unformatierte Protokolle für Azure CDN über Microsoft-Profile 
 
@@ -60,6 +60,88 @@ So konfigurieren Sie unformatierte Protokolle für Azure CDN über Microsoft-Pro
 
 7. Wählen Sie **Speichern** aus.
 
+## <a name="configuration---azure-powershell"></a>Konfiguration – Azure PowerShell
+
+Verwenden Sie [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest), um die Diagnoseeinstellung für unformatierte Protokolle zu konfigurieren.
+
+Aufbewahrungsdaten werden durch die Option **-RetentionInDays** im Befehl definiert.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+### <a name="enable-diagnostic-logs-in-a-storage-account"></a>Aktivieren von Diagnoseprotokollen in einem Speicherkonto
+
+1. Melden Sie sich bei Azure PowerShell an:
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+    ```
+
+2. Geben Sie die folgenden Befehle ein, um Diagnoseprotokolle in einem Speicherkonto zu aktivieren. Ersetzen Sie die Variablen durch Ihre Werte:
+
+    ```azurepowershell-interactive
+    ## Variables for the commands ##
+    $rsg = <your-resource-group-name>
+    $cdnprofile = <your-cdn-profile-name>
+    $cdnendpoint = <your-cdn-endpoint-name>
+    $storageacct = <your-storage-account-name>
+    $diagname = <your-diagnostic-setting-name>
+    $days = '30'
+
+    $cdn = Get-AzCdnEndpoint -ResourceGroupName $rsg -ProfileName $cdnprofile -EndpointName $cdnendpoint
+
+    $storage = Get-AzStorageAccount -ResourceGroupName $rsg -Name $storageacct
+
+    Set-AzDiagnosticSetting -Name $diagname -ResourceId $cdn.id -StorageAccountId $storage.id -Enabled $true -Category AzureCdnAccessLog -RetentionEnabled 1 -RetentionInDays $days
+    ```
+
+### <a name="enable-diagnostics-logs-for-log-analytics-workspace"></a>Aktivieren von Diagnoseprotokollen für den Log Analytics-Arbeitsbereich
+
+1. Melden Sie sich bei Azure PowerShell an:
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+    ```
+2. Geben Sie diese Befehle ein, um Diagnoseprotokolle für einen Log Analytics-Arbeitsbereich zu aktivieren. Ersetzen Sie die Variablen durch Ihre Werte:
+
+    ```azurepowershell-interactive
+    ## Variables for the commands ##
+    $rsg = <your-resource-group-name>
+    $cdnprofile = <your-cdn-profile-name>
+    $cdnendpoint = <your-cdn-endpoint-name>
+    $workspacename = <your-log-analytics-workspace-name>
+    $diagname = <your-diagnostic-setting-name>
+    $days = '30'
+
+    $cdn = Get-AzCdnEndpoint -ResourceGroupName $rsg -ProfileName $cdnprofile -EndpointName $cdnendpoint
+
+    $workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rsg -Name $workspacename
+
+    Set-AzDiagnosticSetting -Name $diagname -ResourceId $cdn.id -WorkspaceId $workspace.ResourceId -Enabled $true -Category AzureCdnAccessLog -RetentionEnabled 1 -RetentionInDays $days
+    ```
+### <a name="enable-diagnostics-logs-for-event-hub-namespace"></a>Aktivieren von Diagnoseprotokollen für den Event Hub-Namespace
+
+1. Melden Sie sich bei Azure PowerShell an:
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+    ```
+2. Geben Sie diese Befehle ein, um Diagnoseprotokolle für einen Event Hub-Namespace zu aktivieren. Ersetzen Sie die Variablen durch Ihre Werte:
+
+    ```azurepowershell-interactive
+    ## Variables for the commands ##
+    $rsg = <your-resource-group-name>
+    $cdnprofile = <your-cdn-profile-name>
+    $cdnendpoint = <your-cdn-endpoint-name>
+    $evthubnamespace = <your-event-hub-namespace-name>
+    $diagname = <your-diagnostic-setting-name>
+
+    $cdn = Get-AzCdnEndpoint -ResourceGroupName $rsg -ProfileName $cdnprofile -EndpointName $cdnendpoint
+
+    $eventhub = Get-AzEventHubNamespace -ResourceGroupName $rsg -Name $eventhubname
+
+    Set-AzDiagnosticSetting -Name $diagname -ResourceId $cdn.id -EventHubName $eventhub.id -Enabled $true -Category AzureCdnAccessLog -RetentionEnabled 1 -RetentionInDays $days
+    ```
+
 ## <a name="raw-logs-properties"></a>Eigenschaften von unformatierten Protokollen
 
 Azure CDN vom Microsoft-Dienst stellt zurzeit unformatierte Protokolle bereit. Unformatierte Protokolle enthalten einzelne API-Anforderungen, wobei jeder Eintrag folgendem Schema entspricht: 
@@ -78,16 +160,41 @@ Azure CDN vom Microsoft-Dienst stellt zurzeit unformatierte Protokolle bereit. U
 | SecurityProtocol      | Die TLS-/SSL-Protokollversion, die von der Anforderung verwendet wird, oder NULL, wenn keine Verschlüsselung verwendet wird.                                                                                                                           |
 | Endpunkt              | Der CDN-Endpunkthost wurde unter dem übergeordneten CDN-Profil konfiguriert.                                                                                                                                   |
 | Back-End-Hostname     | Der Name des Back-End-Hosts oder Ursprungs, an den Anforderungen gesendet werden.                                                                                                                                |
-| An Origin Shield gesendet | Wenn der Wert TRUE ist, wurde die Anforderung vom Origin Shield-Cache anstelle des Edge-POP beantwortet. Origin Shield ist ein übergeordneter Cache zum Verbessern der Cachetrefferquote.                                       |
+| An Origin Shield gesendet </br> (veraltet) * **Siehe nachfolgenden Hinweis zur eingestellten Unterstützung.** | Wenn der Wert TRUE ist, wurde die Anforderung vom Origin Shield-Cache anstelle des Edge-POP beantwortet. Origin Shield ist ein übergeordneter Cache zum Verbessern der Cachetrefferquote.                                       |
+| isReceivedFromClient | Wenn dies „true“ ergibt, stammte die Anforderung vom Client. Wenn dies „false“ ergibt, ist die Anforderung ein Fehler in der Edge (untergeordneter POP) und wird von Origin Shield (übergeordneter POP) beantwortet. 
 | HttpStatusCode        | Der HTTP-Statuscode, der vom Proxy zurückgegeben wurde.                                                                                                                                                        |
 | HttpStatusDetails     | Resultierender Status in der Anforderung. Informationen zur Bedeutung dieses Zeichenfolgenwerts finden Sie in der Verweistabelle zum Status.                                                                                              |
 | POP                   | Der Edge-POP, der auf die Benutzeranforderung geantwortet hat. Die POP-Abkürzungen sind Flughafencodes der jeweiligen Regionen.                                                                                   |
 | Cachestatus          | Gibt an, ob das Objekt aus dem Cache zurückgegeben wurde oder vom Ursprung stammt.                                                                                                             |
-> [!IMPORTANT]
-> Das Feature der unformatierten HTTP-Protokolle ist automatisch für alle Profile verfügbar, die nach dem **25. Februar 2020** erstellt oder aktualisiert wurden. Bei früher erstellten CDN-Profilen sollte der CDN-Endpunkt nach der Einrichtung der Protokollierung aktualisiert werden. Sie können z. B. zur geografischen Filterung unter CDN-Endpunkte navigieren und jedes Land/jede Region, das bzw. die für ihre Workload nicht relevant ist, blockieren und auf „Speichern“ klicken. 
-
 > [!NOTE]
 > Die Protokolle können unter Ihrem Log Analytics-Profil durch Ausführen einer Abfrage angezeigt werden. Eine Beispielabfrage würde wie folgt aussehen: AzureDiagnostics | where Category == „AzureCdnAccessLog“
+
+
+### <a name="sent-to-origin-shield-deprecation"></a>An eingestellte Unterstützung von Origin Shield gesendet
+Die unformatierte Protokolleigenschaft **isSentToOriginShield** wurde eingestellt und durch ein neues Feld, **isReceivedFromClient**, ersetzt. Verwenden Sie das neue Feld, wenn Sie bereits das veraltete Feld verwenden. 
+
+Unformatierte Protokolle umfassen Protokolle, die sowohl über CDN Edge (untergeordneter POP) als auch Origin Shield generiert wurden. Origin Shield bezieht sich auf übergeordnete Knoten, die strategisch über den Globus verteilt sind. Diese Knoten kommunizieren mit den Ursprungsservern und reduzieren den Datenverkehr am Ursprung. 
+
+Für jede an Origin Shield gerichtete Anforderung gibt es zwei Protokolleinträge:
+
+* Einen für Edgeknoten.
+* Einen für Origin Shield. 
+
+Um die ausgehenden Daten oder Antworten von den Edgeknoten im Vergleich zu Origin Shield zu unterscheiden, können Sie das Feld „isReceivedFromClient“ verwenden, um die richtigen Daten zu erhalten. 
+
+Wenn der Wert „false“ ergibt, bedeutet dies, dass die Anforderung von Origin Shield bis zu den Edgeknoten beantwortet wird. Dieser Ansatz ist effektiv, um unformatierte Protokolle mit Abrechnungsdaten zu vergleichen. Für die ausgehenden Daten von Origin Shield zu den Edgeknoten fallen keine Gebühren an. Es fallen Gebühren für ausgehende Daten von den Edgeknoten zu Clients an. 
+
+**Beispiel für eine Kusto-Abfrage zum Ausschließen von Protokollen, die von Origin Shield in Log Analytics generiert werden.**
+
+```kusto
+AzureDiagnostics 
+| where OperationName == "Microsoft.Cdn/Profiles/AccessLog/Write" and Category == "AzureCdnAccessLog"  
+| where isReceivedFromClient == true
+
+```
+
+> [!IMPORTANT]
+> Das Feature der unformatierten HTTP-Protokolle ist automatisch für alle Profile verfügbar, die nach dem **25. Februar 2020** erstellt oder aktualisiert wurden. Bei früher erstellten CDN-Profilen sollte der CDN-Endpunkt nach der Einrichtung der Protokollierung aktualisiert werden. Sie können z. B. zur geografischen Filterung unter CDN-Endpunkte navigieren und jedes Land/jede Region, das bzw. die für ihre Workload nicht relevant ist, blockieren und auf „Speichern“ klicken. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie unformatierte HTTP-Protokolle für den Microsoft CDN-Dienst aktiviert.

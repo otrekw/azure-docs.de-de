@@ -4,12 +4,12 @@ description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 1554469c59eb9931b6d8552f537328e440ec6aeb
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388015"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562938"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -37,7 +37,7 @@ Jeder Plan weist ein anderes Verhalten auf. Nicht alle Bereitstellungstechnologi
 | FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Portalbearbeitung |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup> Bereitstellungstechnologie, die eine [manuelle Triggersynchronisierung](#trigger-syncing) erfordert.  
+<sup>1</sup> Bereitstellungstechnologie, die eine [manuelle Triggersynchronisierung](#trigger-syncing) erfordert.
 <sup>2</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Tarif „Premium“ oder „Dedicated“).
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
@@ -72,9 +72,9 @@ Zum Aktivieren des Remotebuilds unter Linux müssen Sie die folgenden [Anwendung
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Standardmäßig führen die [Azure Functions Core Tools](functions-run-local.md) und die [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) bei der Bereitstellung unter Linux Remotebuilds aus. Aus diesem Grund erstellen beide Tools diese Einstellungen automatisch für Sie in Azure. 
+Standardmäßig führen die [Azure Functions Core Tools](functions-run-local.md) und die [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) bei der Bereitstellung unter Linux Remotebuilds aus. Aus diesem Grund erstellen beide Tools diese Einstellungen automatisch für Sie in Azure.
 
-Wenn Apps remote unter Linux erstellt werden, werden sie [über das Bereitstellungspaket ausgeführt](run-functions-from-deployment-package.md). 
+Wenn Apps remote unter Linux erstellt werden, werden sie [über das Bereitstellungspaket ausgeführt](run-functions-from-deployment-package.md).
 
 ##### <a name="consumption-plan"></a>Verbrauchsplan
 
@@ -92,7 +92,7 @@ Die folgenden Bereitstellungsmethoden sind in Azure Functions verfügbar.
 
 Sie können eine externe Paket-URL verwenden, um auf eine Remotepaketdatei (ZIP-Datei) zu verweisen, die ihre Funktions-App enthält. Die Datei wird von der angegebenen URL heruntergeladen, und die App wird im Modus [Aus Paketdatei ausführen](run-functions-from-deployment-package.md) ausgeführt.
 
->__Verwendung:__ Fügen Sie Ihren Anwendungseinstellungen `WEBSITE_RUN_FROM_PACKAGE` hinzu. Der Wert dieser Einstellung muss eine URL sein (der Speicherort der spezifischen Paketdatei, die Sie ausführen möchten). Einstellungen können entweder [über das Portal](functions-how-to-use-azure-function-app-settings.md#settings) oder [mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) hinzugefügt werden. 
+>__Verwendung:__ Fügen Sie Ihren Anwendungseinstellungen `WEBSITE_RUN_FROM_PACKAGE` hinzu. Der Wert dieser Einstellung muss eine URL sein (der Speicherort der spezifischen Paketdatei, die Sie ausführen möchten). Einstellungen können entweder [über das Portal](functions-how-to-use-azure-function-app-settings.md#settings) oder [mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) hinzugefügt werden.
 >
 >Bei Verwendung von Blob Storage muss ein privater Container mit einer [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) verwendet werden, damit Functions auf das Paket zugreifen kann. Jedes Mal, wenn die Anwendung neu gestartet wird, ruft Sie eine Kopie des Inhalts ab. Ihr Verweis muss für die Lebensdauer der Anwendung gültig sein.
 
@@ -104,7 +104,7 @@ Verwenden Sie ZIP-Bereitstellung, um eine ZIP-Datei mit ihrer Funktions-APP in A
 
 >__Verwendung:__ Führen Sie die Bereitstellung mithilfe Ihres bevorzugten Clienttools aus: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure) oder über die Befehlszeile mithilfe der [Azure Functions Core Tools](functions-run-local.md#project-file-deployment). Standardmäßig verwenden diese Tools ZIP-Bereitstellung und werden [aus dem Paket](run-functions-from-deployment-package.md) ausgeführt. Die Core Tools und die Visual Studio Code-Erweiterung aktivieren bei der Bereitstellung unter Linux die [Remotebuildfunktion](#remote-build). Eine Anleitung zum manuellen Bereitstellen einer ZIP-Datei für Ihre Funktions-App finden Sie unter [Bereitstellen mithilfe einer ZIP-Datei oder URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
->Wenn die Bereitstellung mithilfe der ZIP-Bereitstellung erfolgt, können Sie die App auf [Run from Package](run-functions-from-deployment-package.md) (Aus Paket ausführen) festlegen. Zur Ausführung über ein Paket legen Sie den Wert der Anwendungseinstellung `WEBSITE_RUN_FROM_PACKAGE` auf `1` fest. Wir empfehlen die ZIP-Bereitstellung. Sie führt zu schnelleren Ladezeiten für Ihre Anwendungen und ist die Standardeinstellung für VS Code, Visual Studio und die Azure CLI. 
+>Wenn die Bereitstellung mithilfe der ZIP-Bereitstellung erfolgt, können Sie die App auf [Run from Package](run-functions-from-deployment-package.md) (Aus Paket ausführen) festlegen. Zur Ausführung über ein Paket legen Sie den Wert der Anwendungseinstellung `WEBSITE_RUN_FROM_PACKAGE` auf `1` fest. Wir empfehlen die ZIP-Bereitstellung. Sie führt zu schnelleren Ladezeiten für Ihre Anwendungen und ist die Standardeinstellung für VS Code, Visual Studio und die Azure CLI.
 
 >__Einsatzgebiete:__ Die ZIP-Bereitstellung ist die empfohlene Bereitstellungstechnologie für Azure Functions.
 
@@ -167,7 +167,7 @@ Die können FTP verwenden, um Dateien direkt an Azure Functions zu übertragen.
 
 Im portalbasierten Editor können Sie die Dateien, die sich in ihrer Funktions-App befinden, direkt bearbeiten (im Wesentlichen erfolgt die Bereitstellung bei jedem Speichern der Änderungen).
 
->__Verwendung:__ Wenn Sie Ihre Funktionen im Azure-Portal bearbeiten möchten, müssen [Ihre Funktionen im Portal erstellt](functions-create-first-azure-function.md) worden sein. Bei Verwendung einer anderen Bereitstellungsmethode wird Ihre Funktion schreibgeschützt und kann nicht mehr über das Portal bearbeitet werden, um eine zentrale zuverlässige Datenquelle (Single Source Of Truth, SSOT) zu gewährleisten. Sie können den Bearbeitungsmodus manuell erneut auf `Read/Write` festlegen und alle bereitstellungsbezogenen Anwendungseinstellungen (etwa `WEBSITE_RUN_FROM_PACKAGE`) entfernen, um wieder zu einem Zustand zurückzukehren, in dem Sie Ihre Dateien über das Portal bearbeiten können. 
+>__Verwendung:__ Wenn Sie Ihre Funktionen im Azure-Portal bearbeiten möchten, müssen [Ihre Funktionen im Portal erstellt](functions-create-first-azure-function.md) worden sein. Bei Verwendung einer anderen Bereitstellungsmethode wird Ihre Funktion schreibgeschützt und kann nicht mehr über das Portal bearbeitet werden, um eine zentrale zuverlässige Datenquelle (Single Source Of Truth, SSOT) zu gewährleisten. Sie können den Bearbeitungsmodus manuell erneut auf `Read/Write` festlegen und alle bereitstellungsbezogenen Anwendungseinstellungen (etwa `WEBSITE_RUN_FROM_PACKAGE`) entfernen, um wieder zu einem Zustand zurückzukehren, in dem Sie Ihre Dateien über das Portal bearbeiten können.
 
 >__Einsatzgebiete:__ Das Portal ist eine gute Möglichkeit, um erste Schritte mit Azure Functions auszuführen. Bei intensiveren Entwicklungsarbeiten empfiehlt sich die Verwendung eines der folgenden Clienttools:
 >
@@ -196,7 +196,7 @@ Wenn Sie Ihre Funktions-App in Azure bereitstellen, können Sie als Bereitstellu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Bereitstellen von Funktions-Apps finden Sie in den folgenden Artikeln: 
+Weitere Informationen zum Bereitstellen von Funktions-Apps finden Sie in den folgenden Artikeln:
 
 + [Kontinuierliche Bereitstellung für Azure Functions](functions-continuous-deployment.md)
 + [Continuous Delivery mit Azure DevOps](functions-how-to-azure-devops.md)

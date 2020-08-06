@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: d8ff8ced1723a3cdc969b4a951c31ea1da2d3093
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 65726a1b43cdbcb5a36d4a6d3f3df97669e1028f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027240"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 
@@ -26,6 +26,8 @@ In diesem Artikel werden die Anwendungsregistrierung, Anwendungsobjekte und Dien
 
 ## <a name="application-registration"></a>Anwendungsregistrierung
 Um die Identitäts- und Zugriffsverwaltungsfunktionen an Azure AD zu delegieren, muss eine Anwendung bei einem Azure AD-[Mandanten](developer-glossary.md#tenant) registriert werden. Wenn Sie Ihre Anwendung bei Azure AD registrieren, erstellen Sie eine Identitätskonfiguration für Ihre Anwendung, die die Integration in Azure AD ermöglicht. Wenn Sie eine App im [Azure-Portal][AZURE-Portal] registrieren, wählen Sie aus, ob es sich um einen Mandanten (Zugriff nur in Ihrem Mandanten möglich) oder um mehrere Mandanten (Zugriff in anderen Mandanten möglich) handelt. Optional können Sie auch einen Umleitungs-URI festlegen (an den das Zugriffstoken gesendet wird).
+
+![App-Registrierung](./media/app-objects-and-service-principals/app-registration.png)
 
 Wenn Sie die App-Registrierung abgeschlossen haben, verfügen Sie über eine global eindeutige Instanz der App (das Anwendungsobjekt), die sich in Ihrem Basismandanten oder -verzeichnis befindet.  Außerdem verfügen Sie über eine global eindeutige ID für Ihre App (App- oder Client-ID).  Im Portal können Sie dann Geheimnisse oder Zertifikate und Geltungsbereiche hinzufügen, damit Ihre App funktioniert. Sie können auch das Branding Ihrer App im Anmeldedialogfeld anpassen und vieles mehr.
 
@@ -38,16 +40,20 @@ Das Anwendungsobjekt beschreibt drei Aspekte einer Anwendung: das Ausstellen von
 
 Das Blatt **App-Registrierungen** im [Azure-Portal][AZURE-Portal] wird zum Auflisten und Verwalten der Anwendungsobjekte in Ihrem Basismandanten verwendet.
 
+![Blatt „App-Registrierungen“](./media/app-objects-and-service-principals/app-registrations-blade.png)
+
 Die [Application-Entität][MS-Graph-App-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Anwendungsobjekts.
 
 ## <a name="service-principal-object"></a>Dienstprinzipalobjekt
-Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschützt werden, muss die Entität, die Zugriff benötigt, durch einen Sicherheitsprinzipal dargestellt werden. Dies gilt für Benutzer (Benutzerprinzipal) und Anwendungen (Dienstprinzipal). Der Sicherheitsprinzipal definiert die Zugriffsrichtlinie und Berechtigungen für den Benutzer/die Anwendung im Azure AD-Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
+Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschützt werden, muss die Entität, die Zugriff benötigt, durch einen Sicherheitsprinzipal dargestellt werden. Diese Anforderung gilt für Benutzer (Benutzerprinzipal) und Anwendungen (Dienstprinzipal). Der Sicherheitsprinzipal definiert die Zugriffsrichtlinie und Berechtigungen für den Benutzer/die Anwendung im Azure AD-Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
 
 Ein Dienstprinzipal ist die lokale Darstellung (bzw. Anwendungsinstanz) eines globalen Anwendungsobjekts in einem einzelnen Mandanten oder Verzeichnis. Ein Dienstprinzipal ist eine konkrete Instanz, die aus dem Anwendungsobjekt erstellt wird und bestimmte Eigenschaften von diesem Anwendungsobjekt erbt.  Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird, und verweist auf das global eindeutige Anwendungsobjekt.  Das Dienstprinzipalobjekt definiert, was die App tatsächlich im jeweiligen Mandanten ausführen kann, wer auf die App zugreifen kann und auf welche Ressourcen die App zugreifen kann. 
 
 Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](developer-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Sie können auch mit [Azure PowerShell](howto-authenticate-service-principal-powershell.md), der Azure-Befehlszeilenschnittstelle, [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), im [Azure-Portal][AZURE-Portal] und mit anderen Tools ein Dienstprinzipalobjekt in einem Mandanten erstellen.  Wenn Sie das Portal verwenden, wird beim Registrieren einer Anwendung automatisch ein Dienstprinzipal erstellt.
 
 Auf dem Blatt **Unternehmensanwendungen** im Portal werden die Dienstprinzipale in einem Mandanten aufgelistet und verwaltet. Sie können die Berechtigungen des Dienstprinzipals, die vom Benutzer genehmigten Berechtigungen, die Benutzer, die diese Genehmigung erteilt haben, die Anmeldeinformationen und mehr anzeigen.
+
+![Blatt „Unternehmens-Apps“](./media/app-objects-and-service-principals/enterprise-apps-blade.png)
 
 Die [ServicePrincipal-Entität][MS-Graph-Sp-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Dienstprinzipalobjekts.
 
@@ -85,8 +91,8 @@ Dieses Beispielszenario:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sie können den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) verwenden, um die Anwendungs- und die Dienstprinzipalobjekte abzufragen.
-- Sie können auf das Anwendungsobjekt einer Anwendung über die Microsoft Graph-API, den Anwendungsmanifest-Editor im [Azure-Portal][AZURE-Portal] oder [Azure AD PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) zugreifen, wie von der OData-[Application-Entität][MS-Graph-App-Entity] dargestellt.
-- Sie können auf das Dienstprinzipalobjekt einer Anwendung über die Microsoft Graph-API oder [Azure AD PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) zugreifen, wie von der OData-[ServicePrincipal-Entität][MS-Graph-Sp-Entity] dargestellt.
+- Sie können auf das Anwendungsobjekt einer Anwendung über die Microsoft Graph-API, den Anwendungsmanifest-Editor im [Azure-Portal][AZURE-Portal] oder [Azure AD PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0) zugreifen, wie von der OData-[Application-Entität][MS-Graph-App-Entity] dargestellt.
+- Sie können auf das Dienstprinzipalobjekt einer Anwendung über die Microsoft Graph-API oder [Azure AD PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0) zugreifen, wie von der OData-[ServicePrincipal-Entität][MS-Graph-Sp-Entity] dargestellt.
 
 <!--Image references-->
 

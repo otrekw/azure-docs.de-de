@@ -9,31 +9,28 @@ ms.subservice: ''
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: b02c3627cea5e441739c77d1882505c6b82489bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6761466cc958235557609e929e641a0311ee43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999173"
 ---
-# <a name="analyze-complex-data-types-in-synapse"></a>Analysieren komplexer Datentypen in Synapse
+# <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Analysieren komplexer Datentypen in Azure Synapse Analytics
 
-Dieser Artikel bezieht sich auf Parquet-Dateien und Container in **Azure Synapse Link für Azure Cosmos DB**. Es wird erläutert, wie Benutzer Spark oder SQL verwenden können, um Daten mit komplexen Schemas wie Arrays oder geschachtelten Strukturen zu lesen oder zu transformieren. Das folgende Beispiel bezieht sich auf ein einzelnes Dokument, kann aber mit Spark oder SQL problemlos auf Milliarden von Dokumenten skaliert werden. Im folgenden Code wird PySpark (Python) verwendet.
+Dieser Artikel bezieht sich auf Parquet-Dateien und Container in [Synapse Link für Azure Cosmos DB](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md). Es wird erläutert, wie Benutzer Spark oder SQL verwenden können, um Daten mit komplexen Schemas wie Arrays oder geschachtelten Strukturen zu lesen oder zu transformieren. Das folgende Beispiel wird mit einem einzigen Dokument durchgeführt, kann aber mit Spark oder SQL problemlos auf Milliarden von Dokumenten skaliert werden. Der in diesem Artikel enthaltene Code verwendet PySpark (Python).
 
 ## <a name="use-case"></a>Anwendungsfall
 
-Mit modernen Datentypen werden häufig komplexe Datentypen verarbeitet, die eine Herausforderung für Data Engineers darstellen. Das Analysieren von geschachtelten Schemas und Arrays bringt einige Herausforderungen mit sich:
-* Das Schreiben von SQL-Abfragen ist komplex.
-* Das Umbenennen/Umwandeln des Datentyps von geschachtelten Spalten ist schwierig.
-* Bei tief geschachtelten Objekten kommt es zu Leistungsproblemen.
+Komplexe Datentypen sind immer häufiger anzutreffen und stellen eine Herausforderung für Data Engineers dar, da das Analysieren geschachtelter Schemas und Arrays in der Regel zeitaufwändige und komplexe SQL-Abfragen beinhaltet. Darüber hinaus kann es schwierig sein, den Datentyp geschachtelter Spalten umzubenennen oder umzuwandeln. Außerdem treten beim Arbeiten mit tief geschachtelten Objekten Leistungsprobleme auf.
 
-Data Engineers müssen wissen, wie diese Datentypen effizient verarbeitet und für alle leicht zugänglich gemacht werden können.
+Data Engineers müssen wissen, wie komplexe Datentypen effizient verarbeitet und für alle leicht zugänglich gemacht werden können.
 
-Im folgenden Beispiel wird Synapse Spark zum Lesen und Transformieren von Objekten durch Datenrahmen in eine flache Struktur verwendet. Synapse SQL Serverless wird verwendet, um solche Objekte direkt abzufragen und die entsprechenden Ergebnisse als reguläre Tabelle zurückzugeben.
+Im folgenden Beispiel wird Synapse Spark zum Lesen und Transformieren von Objekten in eine vereinfachte Struktur über Datenrahmen verwendet. Synapse SQL (serverlos) wird verwendet, um solche Objekte direkt abzufragen und die entsprechenden Ergebnisse als reguläre Tabelle zurückzugeben.
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Was sind Arrays und geschachtelte Strukturen?
 
-Das folgende Objekt stammt aus App Insights. Dieses Objekt enthält geschachtelte Strukturen, aber auch Arrays, die ebenfalls geschachtelte Strukturen enthalten.
+Das folgende Objekt stammt aus [App Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Dieses Objekt enthält geschachtelte Strukturen und Arrays, die geschachtelte Strukturen enthalten.
 
 ```json
 {
@@ -73,24 +70,24 @@ Das folgende Objekt stammt aus App Insights. Dieses Objekt enthält geschachtelt
 ```
 
 ### <a name="schema-example-of-arrays-and-nested-structures"></a>Schemabeispiel für Arrays und geschachtelte Strukturen
-Beim Ausgeben des Schemas des Datenrahmens für dieses Objekt (mit dem Namen **df**) über den Befehl **df.printschema** wird die folgende Darstellung angezeigt:
+Beim Ausgeben des Schemas für den Datenrahmen des Objekts (mit dem Namen **df**) über den Befehl `df.printschema` wird die folgende Darstellung angezeigt:
 
 * Die geschachtelte Struktur ist gelb hervorgehoben.
 * Ein Array mit zwei Elementen ist grün hervorgehoben.
 
 [![Schema Ursprung](./media/how-to-complex-schema/schema-origin.png)](./media/how-to-complex-schema/schema-origin.png#lightbox)
 
-_rid, _ts und _etag wurden dem System beim Erfassen des Dokuments im Transaktionsspeicher von Azure Cosmos DB hinzugefügt.
+**_rid**, **_ts** und **_etag** wurden dem System beim Erfassen des Dokuments im Transaktionsspeicher von Azure Cosmos DB hinzugefügt.
 
 Der obige Datenrahmen umfasst nur 5 Spalten und 1 Zeile. Nach der Transformation verfügt der erstellte Datenrahmen über 13 Spalten und 2 Zeilen in einem Tabellenformat.
 
 ## <a name="flatten-nested-structures-and-explode-arrays-with-apache-spark"></a>Vereinfachen von geschachtelten Strukturen und Auflösen von Arrays mit Apache Spark
 
-Mit Synapse Spark ist das Transformieren von geschachtelten Strukturen in Spalten und Arrayelementen in mehrere Zeilen ganz einfach. Die folgenden Schritte können von jedem für die eigene Implementierung verwendet werden.
+Mit Synapse Spark ist das Transformieren von geschachtelten Strukturen in Spalten und Arrayelementen in mehrere Zeilen ganz einfach. Die folgenden Schritte können für die Implementierung verwendet werden.
 
-[![Schritte für Transformationen in Spark](./media/how-to-complex-schema/spark-transfo-steps.png)](./media/how-to-complex-schema/spark-transfo-steps.png#lightbox)
+[![Schritte für Transformationen in Spark](./media/how-to-complex-schema/spark-transform-steps.png)](./media/how-to-complex-schema/spark-transform-steps.png#lightbox)
 
-**Schritt 1:** Sie definieren eine Funktion zum Vereinfachen des geschachtelten Schemas. Diese Funktion kann ohne Änderung übernommen werden. Erstellen Sie eine Zelle in einem PySpark-Notebook mit der folgenden Funktion:
+**Schritt 1:** Sie definieren eine Funktion zum Vereinfachen des geschachtelten Schemas. Diese Funktion kann ohne Änderung übernommen werden. Erstellen Sie eine Zelle in einem [PySpark-Notebook](quickstart-apache-spark-notebook.md) mit der folgenden Funktion:
 
 ```python
 from pyspark.sql.functions import col
@@ -123,7 +120,7 @@ def flatten_df(nested_df):
     return nested_df.select(columns)
 ```
 
-**Schritt 2**: Verwenden Sie die Funktion, um das geschachtelte Schema des Datenrahmens **df** in einen neuen Datenrahmen **df_flat** zu vereinfachen:
+**Schritt 2:** Verwenden Sie die Funktion, um das geschachtelte Schema des Datenrahmens (**df**) in einen neuen Datenrahmen `df_flat` zu vereinfachen:
 
 ```python
 from pyspark.sql.types import StringType, StructField, StructType
@@ -133,7 +130,7 @@ display(df_flat.limit(10))
 
 Die Anzeigefunktion sollte 10 Spalten und 1 Zeile zurückgeben. Das Array und seine geschachtelten Elemente sind immer noch vorhanden.
 
-**Schritt 3**: Nun transformieren Sie das Array **context_custom_dimensions** im Datenrahmen **df_flat** in einen neuen Datenrahmen **df_flat_explode**. Im folgenden Code wird auch definiert, welche Spalte ausgewählt wird:
+**Schritt 3:** Transformieren Sie das Array `context_custom_dimensions` im Datenrahmen `df_flat` in einen neuen Datenrahmen `df_flat_explode`. Im folgenden Code wird auch definiert, welche Spalte ausgewählt werden soll:
 
 ```python
 from pyspark.sql.functions import explode
@@ -145,9 +142,9 @@ display(df_flat_explode.limit(10))
 
 ```
 
-Die Anzeigefunktion sollte das folgende Ergebnis zurückgeben: 10 Spalten und 2 Zeilen. Der nächste Schritt ist das Vereinfachen von geschachtelten Schemas mit der in Schritt 1 definierten Funktion.
+Die Anzeigefunktion sollte 10 Spalten und 2 Zeilen zurückgeben. Der nächste Schritt ist das Vereinfachen von geschachtelten Schemas mit der in Schritt 1 definierten Funktion.
 
-**Schritt 4**: Verwenden Sie die Funktion, um das geschachtelte Schema des Datenrahmens **df_flat_explode** in einen neuen Datenrahmen **df_flat_explode_flat** zu vereinfachen:
+**Schritt 4:** Verwenden Sie die Funktion, um das geschachtelte Schema des Datenrahmens `df_flat_explode` in einen neuen Datenrahmen `df_flat_explode_flat` zu vereinfachen:
 ```python
 df_flat_explode_flat = flatten_df(df_flat_explode)
 display(df_flat_explode_flat.limit(10))
@@ -155,15 +152,15 @@ display(df_flat_explode_flat.limit(10))
 
 Die Anzeigefunktion sollte 13 Spalten und 2 Zeilen zurückgeben.
 
-Die Funktion printSchema für den Datenrahmen df_flat_explode_flat gibt das folgende Ergebnis zurück:
+Die Funktion `printSchema` des Datenrahmens `df_flat_explode_flat` gibt das folgende Ergebnis zurück:
 
 [![Schema final](./media/how-to-complex-schema/schema-final.png)](./media/how-to-complex-schema/schema-final.png#lightbox)
 
 ## <a name="read-arrays-and-nested-structures-directly-with-sql-serverless"></a>Direktes Lesen von Arrays und geschachtelten Strukturen mit SQL Serverless
 
-Das Abfragen und Erstellen von Ansichten und Tabellen für solche Objekte ist mit SQL Serverless möglich.
+Das Abfragen und Erstellen von Ansichten und Tabellen für solche Objekte ist mit SQL (serverlos) möglich.
 
-Zuerst sollten die Benutzer, je nachdem, wie Daten gespeichert wurden, die folgende Taxonomie verwenden. Alles in GROẞBUCHSTABEN ist spezifisch für Ihren Anwendungsfall:
+Zuerst sollten die Benutzer, je nachdem, wie die Daten gespeichert wurden, die folgende Taxonomie verwenden. Alles in GROSSBUCHSTABEN ist spezifisch für Ihren Anwendungsfall:
 
 | BULK              | FORMAT |
 | -------------------- | --- |
@@ -171,12 +168,12 @@ Zuerst sollten die Benutzer, je nachdem, wie Daten gespeichert wurden, die folge
 | N'endpoint=https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/;account= KONTONAME;database=DATENBANKNAME;collection=SAMMLUNGSNAME;region=ABZUFRAGENDE REGION, SECRET='IHR GEHEIMNIS' |'CosmosDB' (Synapse Link)|
 
 
+> [!NOTE]
+> SQL (serverlos) unterstützt verknüpfte Dienste für Synapse Link für Azure Cosmos und AAD-Passthrough. Diese Funktion befindet sich derzeit in der geschlossenen Vorschau für Synapse Link.
 
-**SQL Serverless** unterstützt verknüpfte Dienste für Azure Synapse Link für Azure Cosmos DB und AAD-Passthrough. Diese Funktion befindet sich derzeit in der geschlossenen Vorschau für Synapse Link.
-
-Ersetzen Sie unten
-* 'YOUR BULK ABOVE' durch die Verbindungszeichenfolge der Datenquelle, mit der Sie eine Verbindung herstellen.
-* 'YOUR TYPE ABOVE' durch das Format, das Sie zum Herstellen einer Verbindung mit der Quelle verwenden.
+Ersetzen Sie jedes Feld wie folgt:
+* 'YOUR BULK ABOVE' = die Verbindungszeichenfolge der Datenquelle, mit der Sie eine Verbindung herstellen.
+* 'YOUR TYPE ABOVE' = das Format, das Sie zum Herstellen einer Verbindung mit der Quelle verwenden.
 
 ```sql
 select *
@@ -201,25 +198,24 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
     )
 ```
 
-Zwei verschiedene Arten von Vorgängen werden ausgeführt:
-* Mit der folgenden Codezeile wird die Spalte contextdataeventTime definiert, die auf das geschachtelte Element verweist: Context.Data.eventTime.
+Es gibt zwei verschiedene Arten von Vorgängen:
+
+Der erste Vorgangstyp ist in der folgenden Codezeile angegeben, die die Spalte mit dem Namen `contextdataeventTime` definiert, die auf das geschachtelte Element verweist: Context.Data.eventTime. 
 ```sql
 contextdataeventTime varchar(50) '$.context.data.eventTime'
 ```
 
 In dieser Zeile wird die Spalte contextdataeventTime definiert, die auf das Schachtelungselement verweist: Context>Data>eventTime.
 
-* **cross apply** wird verwendet, um neue Zeilen für jedes Element im Array zu erstellen und anschließend alle geschachtelten Objekte ähnlich wie im ersten Punkt zu definieren: 
+Der zweite Vorgangstyp verwendet `cross apply`, um neue Zeilen für jedes Element im Array zu erstellen und anschließend alle geschachtelten Objekte ähnlich wie im ersten Punkt zu definieren: 
 ```sql
 cross apply openjson (contextcustomdimensions) 
 with ( ProfileType varchar(50) '$.customerInfo.ProfileType', 
 ```
 
-Wenn das Array 5 Elemente mit 4 geschachtelten Strukturen enthält, gibt SQL Serverless 5 Zeilen und 4 Spalten zurück.
-
-SQL Serverless kann direkte Abfragen ausführen, das Array in 2 Zeilen zuordnen und alle geschachtelten Strukturen in Spalten anzeigen.
+Wenn das Array 5 Elemente mit 4 geschachtelten Strukturen enthält, gibt SQL Serverless 5 Zeilen und 4 Spalten zurück. SQL Serverless kann direkte Abfragen ausführen, das Array in 2 Zeilen zuordnen und alle geschachtelten Strukturen in Spalten anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Azure Synapse Link für Azure Cosmos DB mit Spark abfragen.](./synapse-link/how-to-query-analytical-store-spark.md)
+* [Erfahren Sie, wie Sie Synapse Link für Azure Cosmos DB mit Spark abfragen.](./synapse-link/how-to-query-analytical-store-spark.md)
 * [Abfragen von geschachtelten Parquet-Typen](./sql/query-parquet-nested-types.md) 

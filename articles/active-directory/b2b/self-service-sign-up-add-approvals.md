@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027460"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Hinzufügen eines benutzerdefinierten Genehmigungsworkflows zur Self-Service-Registrierung
 
@@ -61,11 +61,11 @@ Sie müssen Ihr Genehmigungssystem als Anwendung in Ihrem Azure AD-Mandanten re
 
 Als nächstes [erstellen Sie die API-Connectors](self-service-sign-up-add-api-connector.md#create-an-api-connector) für ihren Self-Service-Registrierungs-Benutzerflow. Ihre Genehmigungssystem-API benötigt zwei Connectors und entsprechende Endpunkte, wie im folgenden Beispiel gezeigt. Diese API-Connectors führen folgende Aktionen aus:
 
-- **Genehmigungsstatus überprüfen**. Senden Sie sofort nach der Anmeldung eines Benutzers mit einem Identitätsanbieter einen Aufruf an das Genehmigungssystem, um zu überprüfen, ob der Benutzer über eine Genehmigungsanforderung verfügt oder bereits abgelehnt wurde. Wenn Ihr Genehmigungssystem nur automatische Genehmigungsentscheidungen durchführt, ist dieser API-Connector möglicherweise nicht erforderlich. Im folgenden finden Sie ein Beispiel für den API-Connector „Genehmigungsstatus überprüfen“.
+- **Genehmigungsstatus überprüfen**. Senden Sie sofort nach der Anmeldung eines Benutzers mit einem Identitätsanbieter einen Aufruf an das Genehmigungssystem, um zu überprüfen, ob der Benutzer über eine Genehmigungsanforderung verfügt oder bereits abgelehnt wurde. Wenn Ihr Genehmigungssystem nur automatische Genehmigungsentscheidungen durchführt, ist dieser API-Connector möglicherweise nicht erforderlich. Beispiel für API-Connector „Genehmigungsstatus überprüfen“.
 
   ![Genehmigungsstatus überprüfen – API-Connector-Konfiguration](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Genehmigung anfordern**: Senden Sie einen Aufruf an das Genehmigungssystem, nachdem ein Benutzer die Attributsammlungseite abgeschlossen hat, aber bevor das Benutzerkonto erstellt wird, um die Genehmigung anzufordern. Die Genehmigungsanforderung kann automatisch erteilt oder manuell überprüft werden. Im folgenden finden Sie ein Beispiel für den API-Connector „Genehmigung anfordern“. Wählen Sie beliebige **Zu sendende Ansprüche** aus, die das Genehmigungssystem benötigt, um eine Genehmigungsentscheidung zu treffen.
+- **Genehmigung anfordern**: Senden Sie einen Aufruf an das Genehmigungssystem, nachdem ein Benutzer die Attributsammlungseite abgeschlossen hat, aber bevor das Benutzerkonto erstellt wird, um die Genehmigung anzufordern. Die Genehmigungsanforderung kann automatisch erteilt oder manuell überprüft werden. Beispiel für API-Conncector „Genehmigung anfordern“. Wählen Sie beliebige **Zu sendende Ansprüche** aus, die das Genehmigungssystem benötigt, um eine Genehmigungsentscheidung zu treffen.
 
   ![Genehmigung anfordern – API-Connector-Konfiguration](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -94,14 +94,14 @@ Ihr Genehmigungssystem kann mit den [API-Antworttypen](self-service-sign-up-add-
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>Anforderung und Antworten für den API-Connector „Genehmigungsstatus überprüfen“
 
-Im folgenden finden Sie ein Beispiel für die Anforderung, die von der API über den API-Connector „Genehmigungsstatus überprüfen“ empfangen wurde:
+Beispiel für die Anforderung, die von der API über den API-Connector „Genehmigungsstatus überprüfen“ empfangen wurde:
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -119,7 +119,7 @@ Der **Genehmigungsstatus überprüfen**-API-Endpunkt sollte unter folgender Vora
 
 - Der Benutzer hat zuvor keine Genehmigung angefordert.
 
-Dies ist ein Beispiel für die Fortsetzungsantwort:
+Beispiel für eine Fortsetzungsantwort:
 
 ```http
 HTTP/1.1 200 OK
@@ -166,14 +166,14 @@ Content-type: application/json
 
 ### <a name="request-and-responses-for-the-request-approval-api-connector"></a>Anforderung und Antworten für den API-Connector „Genehmigung anfordern“
 
-Im folgenden finden Sie ein Beispiel für eine HTTP-Anforderung, die von der API über den API-Connector "Genehmigung anfordern" empfangen wurde:
+Beispiel für eine HTTP-Anforderung, die von der API über den API-Connector „Genehmigung anfordern“ empfangen wurde:
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -194,7 +194,7 @@ Der **Genehmigung anfordern**-API-Endpunkt sollte unter folgenden Voraussetzunge
 
 - Der Benutzer kann **_automatisch genehmigt_** werden.
 
-Dies ist ein Beispiel für die Fortsetzungsantwort:
+Beispiel für eine Fortsetzungsantwort:
 
 ```http
 HTTP/1.1 200 OK
@@ -257,14 +257,14 @@ Nach dem Erhalt der manuellen Genehmigung erstellt das benutzerdefinierte Genehm
 
 Wenn sich Ihr Benutzer mit einem Google- oder Facebook-Konto angemeldet hat, können Sie die [Benutzererstellungs-API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http) verwenden.
 
-1. Das Genehmigungssystem verwendet die HTTP-Anforderung aus dem Benutzerflow.
+1. Das Genehmigungssystem empfängt die HTTP-Anforderung aus dem Benutzerflow.
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -305,9 +305,9 @@ Content-type: application/json
 
 | Parameter                                           | Erforderlich | BESCHREIBUNG                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Ja      | Kann generiert werden, indem in dem an die API gesendeten `email_address`-Anspruch das `@`-Zeichen durch `_` ersetzt wird und er `#EXT@<tenant-name>.onmicrosoft.com` vorangestellt wird. |
+| userPrincipalName                                   | Ja      | Kann generiert werden, indem in dem an die API gesendeten `email`-Anspruch das `@`-Zeichen durch `_` ersetzt wird und er `#EXT@<tenant-name>.onmicrosoft.com` vorangestellt wird. |
 | accountEnabled                                      | Ja      | Muss auf `true` festgelegt sein.                                                                                                                                                 |
-| mail                                                | Ja      | Entspricht dem an die API gesendeten `email_address`-Anspruch.                                                                                                               |
+| mail                                                | Ja      | Entspricht dem an die API gesendeten `email`-Anspruch.                                                                                                               |
 | userType                                            | Ja      | Muss `Guest`lauten. Weist diesen Benutzer als Gastbenutzer aus.                                                                                                                 |
 | Identitäten                                          | Ja      | Die Verbundidentitätsinformationen.                                                                                                                                    |
 | \<otherBuiltInAttribute>                            | Nein       | Andere integrierte Attribute wie `displayName`, `city` und andere. Parameternamen sind identisch mit den vom API-Connector gesendeten Parametern.                            |
@@ -324,7 +324,7 @@ POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
  "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
@@ -332,7 +332,7 @@ Content-type: application/json
 }
 ```
 
-2. Das Genehmigungssystem erstellt die Einladung mithilfe der vom API-Connector bereitgestellten `email_address`.
+2. Das Genehmigungssystem erstellt die Einladung mithilfe der vom API-Connector bereitgestellten `email`.
 
 ```http
 POST https://graph.microsoft.com/v1.0/invitations
@@ -344,7 +344,7 @@ Content-type: application/json
 }
 ```
 
-Die zurückgegebene Antwort könnte z. B. wie folgt lauten:
+Beispielanwort:
 
 ```http
 HTTP/1.1 201 OK

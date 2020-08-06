@@ -1,80 +1,117 @@
 ---
 title: Implementieren der IoT Plug & Play-Vorschaumodellermittlung | Microsoft-Dokumentation
-description: Erfahren Sie als Lösungsentwickler, wie Sie die IoT Plug & Play-Vorschaumodellermittlung in Ihre Lösung implementieren können.
-author: Philmea
-ms.author: philmea
-ms.date: 12/26/2019
+description: Erfahren Sie als Lösungsentwickler, wie Sie die IoT Plug & Play-Modellermittlung in Ihre Lösung implementieren können.
+author: prashmo
+ms.author: prashmo
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: philmea
-ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770475"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337380"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementieren der IoT Plug & Play-Vorschaumodellermittlung in eine IoT-Lösung
 
-In diesem Artikel wird beschrieben, wie Sie als Lösungsentwickler die IoT Plug & Play-Vorschaumodellermittlung in eine IoT-Lösung implementieren können.  Die IoT Plug & Play-Modellermittlung beschreibt, wie IoT Plug & Play-Geräte ihre unterstützten Funktionsmodelle und Schnittstellen identifizieren und wie eine IoT-Lösung diese Funktionsmodelle und Schnittstellen abruft.
+In diesem Artikel wird beschrieben, wie Sie als Lösungsentwickler die IoT Plug & Play-Vorschaumodellermittlung in eine IoT-Lösung implementieren können. Die Modellermittlung beschreibt Folgendes:
 
-Es gibt zwei große Kategorien von IoT-Lösungen: zweckgebundene Lösungen, die mit einem bekannten Satz von IoT Plug & Play-Geräten funktionieren, und modellbasierte Lösungen, die mit jedem IoT Plug & Play-Gerät funktionieren.
+- Wie IoT Plug & Play-Geräte ihre Modell-ID registrieren.
+- Wie eine IoT-Lösung die vom Gerät implementierten Schnittstellen abruft.
 
-In diesem Konzept Artikel wird beschrieben, wie Sie die Modellermittlung in beiden Lösungstypen implementieren.
+IoT-Lösungen lassen sich in zwei Hauptkategorien unterteilen:
+
+- Eine *zweckgebundene IoT-Lösung* arbeitet mit einem bekannten Satz von IoT Plug & Play-Gerätemodellen.
+
+- Eine *modellgesteuerte IoT-Lösung* kann mit jedem IoT Plug & Play-Gerät arbeiten. Die Entwicklung einer modellgesteuerten Lösung ist komplexer. Der Vorteil ist jedoch, dass Ihre Lösung mit allen zukünftig hinzugefügten Geräten funktioniert.
+
+    Um eine modellgesteuerte IoT-Lösung zu erstellen, müssen Sie eine Logik für die IoT Plug and Play-Schnittstellenprimitive erstellen: Telemetrie, Eigenschaften und Befehle. Die Logik Ihrer Lösung stellt ein Gerät dar, indem sie mehrere Telemetrie-, Eigenschafts- und Befehlsfunktionen kombiniert.
+
+In diesem Artikel wird beschrieben, wie Sie die Modellermittlung in beiden Lösungstypen implementieren.
 
 ## <a name="model-discovery"></a>Modellermittlung
 
-Wenn sich ein IoT Plug & Play-Gerät zum ersten Mal mit Ihrem IoT Hub verbindet, sendet es eine Telemetriemeldung mit Modellinformationen. Diese Meldung enthält die IDs der Schnittstellen, die vom Gerät implementiert werden. Damit Ihre Lösung mit dem Gerät funktioniert, müssen diese IDs aufgelöst und die Definitionen für jede Schnittstelle abgerufen werden.
+Um das von einem Gerät implementierte Modell zu ermitteln, kann eine Lösung die Modell-ID mithilfe der ereignisbasierten Ermittlung oder der zwillingsbasierten Ermittlung abrufen:
 
-Hier finden Sie die Schritte, die ein IoT Plug & Play-Gerät bei der Verwendung des Diensts für die Gerätebereitstellung (DPS) zum Herstellen einer Verbindung mit einem Hub ausführt:
+### <a name="event-based-discovery"></a>Ereignisbasierte Ermittlung
 
-1. Wenn das Gerät eingeschaltet wird, stellt es eine Verbindung mit dem globalen Endpunkt für den DPS her und authentifiziert sich mit einer der zulässigen Methoden.
-1. DPS authentifiziert das Gerät und sucht die Regel, die angibt, welchem IoT Hub das Gerät zugewiesen werden soll. DPS registriert dann das Gerät bei diesem Hub.
-1. DPS gibt eine IoT Hub-Verbindungszeichenfolge an das Gerät zurück.
-1. Das Gerät sendet dann eine Ermittlungstelemetriemeldung an Ihren IoT Hub. Diese Meldung enthält die IDs der Schnittstellen, die vom Gerät implementiert werden.
-1. Das IoT Plug & Play-Gerät kann jetzt mit einer Lösung arbeiten, die Ihren IoT-Hub nutzt.
+Wenn ein IoT Plug & Play-Gerät eine Verbindung mit einem IoT-Hub herstellt, registriert es das von ihm implementierte Modell. Diese Registrierung führt zu einer Benachrichtigung über ein [Änderungsereignis bei einem digitalen Zwilling](concepts-digital-twin.md#digital-twin-change-events). Informationen zum Aktivieren des Routings für Ereignisse bei digitalen Zwillingen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events).
 
-Wenn sich das Gerät direkt mit Ihrem IoT Hub verbindet, erfolgt die Verbindung über eine Verbindungszeichenfolge, die im Gerätecode eingebettet ist. Das Gerät sendet dann eine Ermittlungstelemetriemeldung an Ihren IoT Hub.
+Die Lösung kann das im folgenden Codeausschnitt gezeigte Ereignis verwenden, um mehr über das IoT Plug & Play-Gerät zu erfahren, das eine Verbindung herstellt, und seine Modell-ID abrufen:
 
-Weitere Informationen zur Telemetriemeldung mit Modellinformationen finden Sie in den Informationen zur [ModelInformation](concepts-common-interfaces.md)-Schnittstelle.
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
 
-### <a name="purpose-built-iot-solutions"></a>Zweckgebundene IoT-Lösungen
+Dieses Ereignis wird ausgelöst, wenn die Gerätemodell-ID hinzugefügt oder aktualisiert wird.
 
-Eine zweckgebundene IoT-Lösung arbeitet mit einem bekannten Satz von IoT Plug & Play-Gerätefunktionsmodellen und Schnittstellen.
+### <a name="twin-based-discovery"></a>Zwillingsbasierte Ermittlung
 
-Sie erhalten das Funktionsmodell und Schnittstellen für die Geräte, die sich vorab mit Ihrer Lösung verbinden. Bereiten Sie Ihre Lösung mit den folgenden Schritten vor:
+Wenn die Lösung Informationen über die Funktionen eines bestimmten Geräts erhalten möchte, kann sie die API zum [Abrufen des digitalen Zwillings](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) verwenden, um diese Informationen abzurufen.
 
-1. Speichern Sie die JSON-Dateien der Schnittstelle in einem [Modellrepository](./howto-manage-models.md), in dem Ihre Lösung sie auslesen kann.
-1. Schreiben Sie Logik in Ihre IoT-Lösung, basierend auf den erwarteten IoT Plug & Play-Funktionsmodellen und Schnittstellen.
-1. Abonnieren Sie Benachrichtigungen von dem IoT Hub, den Ihre Lösung verwendet.
+Im folgenden Codeausschnitt für einen digitalen Zwilling enthält `$metadata.$model` die Modell-ID eines IoT Plug & Play-Geräts:
 
-Wenn Sie eine Benachrichtigung zu einer neuen Geräteverbindung erhalten, führen Sie die folgenden Schritte aus:
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
 
-1. Lesen Sie die Ermittlungstelemetriemeldung, um die IDs der vom Gerät implementierten Funktionsmodelle und Schnittstellen abzurufen.
-1. Vergleichen Sie die ID des Funktionsmodells mit den IDs der von Ihnen im Vorfeld gespeicherten Funktionsmodellen.
-1. Nun wissen Sie, mit welchem Gerätetyp eine Verbindung hergestellt wurde. Verwenden Sie die zuvor geschriebene Logik, damit Benutzer entsprechend mit dem Gerät interagieren können.
+Die Lösung kann auch die API zum **Abrufen des Gerätezwillings** verwenden, um die Modell-ID aus dem Gerätezwilling abzurufen, wie es im folgenden Codeausschnitt gezeigt wird:
 
-### <a name="model-driven-solutions"></a>Modellgesteuerte Lösungen
+```json
+{
+    "deviceId": "sample-device",
+    "etag": "AAAAAAAAAAc=",
+    "deviceEtag": "NTk0ODUyODgx",
+    "status": "enabled",
+    "statusUpdateTime": "0001-01-01T00:00:00Z",
+    "connectionState": "Disconnected",
+    "lastActivityTime": "2020-07-17T06:12:26.8402249Z",
+    "cloudToDeviceMessageCount": 0,
+    "authenticationType": "sas",
+    "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+    },
+    "modelId": "dtmi:com:example:TemperatureController;1",
+    "version": 15,
+    "properties": {...}
+    }
+}
+```
 
-Eine modellgesteuerte IoT-Lösung kann mit jedem IoT Plug & Play-Gerät arbeiten. Die Entwicklung einer modellgesteuerten IoT-Lösung ist komplexer. Der Vorteil ist jedoch, dass Ihre Lösung mit allen zukünftig hinzugefügten Geräten funktioniert.
+## <a name="model-resolution"></a>Modellauflösung
 
-Um eine modellgesteuerte IoT-Lösung zu erstellen, müssen Sie eine Logik für die IoT Plug and Play-Schnittstellenprimitive erstellen: Telemetrie, Eigenschaften und Befehle. Die Logik Ihrer IoT-Lösung stellt ein Gerät dar, indem sie mehrere Telemetrie-, Eigenschafts- und Befehlsfunktionen kombiniert.
+Eine Lösung verwendet die Modellauflösung, um Zugriff auf die Schnittstellen, aus denen sich ein Modell zusammensetzt, über die Modell-ID zu erhalten. 
 
-Ihre Lösung muss ebenfalls Benachrichtigungen von dem von ihr verwendeten IoT-Hub abonnieren.
-
-Wenn Ihre Lösung eine Benachrichtigung zu einer neuen Geräteverbindung erhält, führen Sie die folgenden Schritte aus:
-
-1. Lesen Sie die Ermittlungstelemetriemeldung, um die IDs der vom Gerät implementierten Funktionsmodelle und Schnittstellen abzurufen.
-1. Lesen Sie für jede ID die vollständige JSON-Datei aus, um die Funktionen des Geräts zu ermitteln.
-1. Überprüfen Sie, ob jede Schnittstelle in den von Ihnen erstellten Caches für die Speicherung der zuvor von Ihrer Lösung abgerufenen JSON-Dateien vorhanden ist.
-1. Überprüfen Sie dann, ob im öffentlichen Modellrepository eine Schnittstelle mit dieser ID vorhanden ist. Weitere Informationen finden Sie unter [Öffentliches Modellrepository](howto-manage-models.md).
-1. Wenn die Schnittstelle nicht im öffentlichen Modellrepository vorhanden ist, suchen Sie sie in allen Ihrer Lösung bekannten Unternehmensmodellrepositorys. Für den Zugriff auf ein Unternehmensmodellrepository benötigen Sie eine Verbindungszeichenfolge. Weitere Informationen finden Sie unter [Unternehmensmodellrepository](howto-manage-models.md).
-1. Wenn Sie weder im öffentlichen noch in einem Unternehmensmodellrepository alle Schnittstellen finden, können Sie überprüfen, ob das Gerät die Schnittstellendefinition bereitstellen kann. Ein Gerät kann die Standardschnittstelle [ModelDefinition](concepts-common-interfaces.md) implementieren, um Informationen darüber zu veröffentlichen, wie Schnittstellendateien mit einem Befehl abgerufen werden.
-1. Wenn Sie JSON-Dateien für jede vom Gerät implementierte Schnittstelle gefunden haben, können Sie die Funktionen des Geräts auflisten. Verwenden Sie die zuvor geschriebene Logik, damit Benutzer mit dem Gerät interagieren können.
-1. Sie können die API der digitalen Zwillinge jederzeit aufrufen, um die Modell-ID und die Schnittstellen-IDs für das Gerät abzurufen.
+- Lösungen können diese Schnittstellen als Dateien in einem lokalen Ordner speichern. 
+- Lösungen können das [Modellrepository](concepts-model-repository.md) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun mehr über die Modellermittlung einer IoT-Lösung erfahren haben, können Sie sich mit der [Azure IoT-Plattform](overview-iot-plug-and-play.md) vertraut machen, um andere Funktionen für Ihre Lösung zu nutzen.
+Nachdem Sie nun mehr über die Modellermittlung einer IoT-Lösung erfahren haben, können Sie sich mit der [Azure IoT-Plattform](overview-iot-plug-and-play.md) vertraut machen, um andere Funktionen für Ihre Lösung zu verwenden.
+
+- [Interagieren mit einem Gerät über Ihre Lösung](quickstart-service-node.md)
+- [IoT-REST-API für digitale Zwillinge](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Azure IoT-Explorer](howto-use-iot-explorer.md)

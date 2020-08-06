@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/28/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389291"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169428"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -86,7 +87,7 @@ Zum Registrieren einer Anwendung bei Ihrem Azure AD B2C-Mandanten können Sie di
 
 Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 
-1. Wählen Sie unter **Verwalten** die Option **Eine API verfügbar machen** aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Verwalten** die Option **Eine API verfügbar machen** aus.
 1. Wählen Sie **Bereich hinzufügen** und dann **Speichern und fortfahren** aus, um den URI der Standardanwendungs-ID zu akzeptieren.
 1. Geben Sie die folgenden Werte ein, um einen Bereich zu erstellen, der die benutzerdefinierte Richtlinienausführung in Ihrem Azure AD B2C-Mandanten ermöglicht:
     * **Bereichsname**: `user_impersonation`
@@ -109,13 +110,13 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 
 Geben Sie nun an, dass die Anwendung als öffentlicher Client behandelt werden soll:
 
-1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
 1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Anwendung als öffentlichen Client behandeln** aus (wählen Sie **Ja** aus). Stellen Sie sicher, dass **„allowPublicClient“: true** im Anwendungsmanifest festgelegt ist. 
 1. Wählen Sie **Speichern** aus.
 
 Erteilen Sie nun Berechtigungen für den API-Bereich, den Sie zuvor in der Registrierung *IdentityExperienceFramework* verfügbar gemacht haben:
 
-1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.
+1. Wählen Sie im Menü auf der linken Seite unter **Verwalten** die Option **API-Berechtigungen** aus.
 1. Wählen Sie unter **Konfigurierte Berechtigungen** die Option **Berechtigung hinzufügen** aus.
 1. Wählen Sie die Registerkarte **Meine APIs** aus, und wählen Sie dann die Anwendung **IdentityExperienceFramework** aus.
 1. Wählen Sie unter **Berechtigung** den Bereich **user_impersonation** aus, den Sie zuvor definiert haben.

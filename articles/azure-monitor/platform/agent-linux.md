@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073647"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Verbinden von Linux-Computern mit Azure Monitor
 
@@ -155,6 +155,18 @@ Wenn in beiden Fällen eine Authentifizierung erforderlich ist, müssen Sie den 
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
+
+## <a name="supported-linux-hardening"></a>Unterstützte Linux-Härtung
+Der OMS-Agent verfügt über eingeschränkte Anpassungsunterstützung für Linux. 
+
+Folgendes wird derzeit unterstützt: 
+- FIPs
+
+Folgendes ist geplant, wird aber noch nicht unterstützt:
+- CIS -SELINUX
+
+Andere Härtungs- und Anpassungsmethoden werden für den OMS-Agent weder unterstützt noch geplant.  
+
 
 ## <a name="upgrade-from-a-previous-release"></a>Upgrade von einem früheren Release
 

@@ -9,16 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 244cdf5329e26fc7d928998b734a539f086051ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 374b8bb094a93c6c608d6bf95d2b074f661c4a6a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193378"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384734"
 ---
 # <a name="what-is-delta-lake"></a>Was ist Delta Lake?
 
 Azure Synapse Analytics ist mit Linux Foundation Delta Lake kompatibel. Delta Lake ist eine Open-Source-Speicherebene, die ACID-Transaktionen (Atomizität, Konsistenz, Isolation und Dauerhaftigkeit) in Apache Spark und Big Data-Workloads einführt.
+
+Die aktuelle Version von Delta Lake, die in Azure Synapse enthalten ist, bietet Sprachunterstützung für Scala, PySpark und .NET. Unten auf der Seite finden Sie Links zu ausführlicheren Beispielen und Dokumentationen.
 
 ## <a name="key-features"></a>Wichtige Features
 
@@ -32,12 +34,12 @@ Azure Synapse Analytics ist mit Linux Foundation Delta Lake kompatibel. Delta La
 | **Schemaerzwingung** | Mithilfe der Schemaerzwingung können Sie sicherstellen, dass die Datentypen korrekt und erforderliche Spalten vorhanden sind, wodurch verhindert wird, dass ungültige Daten Dateninkonsistenzen verursachen. Weitere Informationen finden Sie unter [Einstieg in Delta Lake: Schemaerzwingung und -entwicklung](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html). |
 | **Schemaentwicklung** | Delta Lake ermöglicht es Ihnen, Änderungen an einem Tabellenschema vorzunehmen, das automatisch angewendet werden kann, ohne dass eine Migrations-DDL geschrieben werden muss. Weitere Informationen finden Sie unter [Einstieg in Delta Lake: Schemaerzwingung und -entwicklung](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html). |
 | **Überwachungsverlauf** | Im Delta Lake-Transaktionsprotokoll werden Details zu jeder an Daten vorgenommenen Änderung aufgezeichnet, wodurch Sie einen vollständigen Überwachungspfad der Änderungen erhalten. |
-| **Aktualisierungen und Löschungen** | Delta Lake unterstützt Scala-/Java-/Python- und SQL-APIs für eine Vielzahl von Funktionen. Durch die Unterstützung von Zusammenführungs-, Aktualisierungs- und Löschvorgängen können Sie Complianceanforderungen erfüllen. Weitere Informationen finden Sie unter [Ankündigung von Delta Lake 0.4.0 Release](https://delta.io/news/delta-lake-0-4-0-released/) und [Einfache, zuverlässige Upserts und Löschungen in Delta Lake-Tabellen mithilfe von Python-APIs](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html), was auch Codeausschnitte für die DML-Befehle „merge“, „update“ und „delete“ umfasst. |
+| **Aktualisierungen und Löschungen** | Delta Lake unterstützt Scala-/Java-/Python- und SQL-APIs für eine Vielzahl von Funktionen. Durch die Unterstützung von Zusammenführungs-, Aktualisierungs- und Löschvorgängen können Sie Complianceanforderungen erfüllen. Weitere Informationen finden Sie unter [Ankündigung von Delta Lake 0.6.1 Release](https://delta.io/news/delta-lake-0-6-1-released/), [Ankündigung von Delta Lake 0.7 Release](https://delta.io/news/delta-lake-0-7-0-released/) und [Einfache, zuverlässige Upserts und Löschungen in Delta Lake-Tabellen mithilfe von Python-APIs](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html), was auch Codeausschnitte für die DML-Befehle „merge“, „update“ und „delete“ umfasst. |
 | **100 % kompatibel mit der Apache Spark-API** | Entwickler können Delta Lake mit ihren vorhandenen Datenpipelines mit minimalen Änderungen verwenden, da es mit vorhandenen Spark-Implementierungen vollständig kompatibel ist. |
 
 Eine vollständige Dokumentation finden Sie auf der [Delta Lake-Dokumentationsseite](https://docs.delta.io/latest/delta-intro.html).
 
-Weitere Informationen finden Sie unter [Delta Lake-Projekt](https://lfprojects.org).
+Weitere Informationen finden Sie unter [Delta Lake-Projekt](https://github.com/delta-io/delta).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

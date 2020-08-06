@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2a41dcf9c224e9e4a9a280078432e0b57e16c2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8fb54261f51d74f02b7b79c27f7a2043426686
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359414"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385142"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Gruppenrückschreiben in Azure AD Connect
 
@@ -40,7 +40,7 @@ Gehen Sie zum Aktivieren des Gruppenrückschreibens wie folgt vor:
 6. Wählen Sie auf der Seite **Rückschreiben** eine Active Directory-Organisationseinheit (OE) zum Speichern von Objekten aus, die aus Office 365 mit Ihrer lokalen Organisation synchronisiert werden, und klicken Sie anschließend auf **Weiter**.
 7. Klicken Sie auf der Seite **Bereit zur Konfiguration** auf **Konfigurieren**.
 8. Klicken Sie nach Abschluss des Assistenten auf der Seite „Konfiguration abgeschlossen“ auf **Beenden**.
-9. Öffnen Sie Windows PowerShell auf dem Azure Active Directory Connect-Server, und führen Sie die folgenden Befehle aus:
+9. Öffnen Sie Windows PowerShell als Administrator auf dem Azure Active Directory Connect-Server, und führen Sie die folgenden Befehle aus.
 
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
@@ -48,7 +48,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncC
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
 ```
 
-Weitere Informationen zum Konfigurieren der Office 365-Gruppen finden Sie unter [Konfigurieren von Microsoft 365-Gruppen mit lokaler Exchange-Hybridbereitstellung](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-office-365-groups#enable-group-writeback-in-azure-ad-connect).
+Weitere Informationen zum Konfigurieren der Office 365-Gruppen finden Sie unter [Konfigurieren von Microsoft 365-Gruppen mit lokaler Exchange-Hybridbereitstellung](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect).
 
 ## <a name="disabling-group-writeback"></a>Deaktivieren des Gruppenrückschreibens
 Gehen Sie zum Deaktivieren des Gruppenrückschreibens wie folgt vor: 

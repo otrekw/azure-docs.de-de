@@ -1,22 +1,22 @@
 ---
 title: Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
-description: Der Azurite-Open-Source-Emulator (Vorschauversion) bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure Storage-Anwendungen.
+description: Der Azurite-Open-Source-Emulator bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure Storage-Anwendungen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/01/2020
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512134"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089412"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Verwenden des Azurite-Emulators für das lokale Entwickeln und Testen mit Azure Storage (Vorschauversion)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
 
-Der Azurite-Open-Source-Emulator, Version 3.2, bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure-Blob- und -Warteschlangen-Speicheranwendungen. Wenn Sie mit der Funktion Ihrer Anwendung auf lokaler Ebene zufrieden sind, können Sie zur Verwendung eines Azure Storage-Kontos in der Cloud übergehen. Der Emulator bietet plattformübergreifende Unterstützung unter Windows, Linux und macOS. Azurite v3 unterstützt APIs, die vom Azure-Blob-Dienst implementiert wurden.
+Der Azurite-Open-Source-Emulator bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure-Blob- und -Warteschlangen-Speicheranwendungen. Wenn Sie mit der Funktion Ihrer Anwendung auf lokaler Ebene zufrieden sind, können Sie zur Verwendung eines Azure Storage-Kontos in der Cloud übergehen. Der Emulator bietet plattformübergreifende Unterstützung unter Windows, Linux und macOS.
 
 Azurite ist die Speicheremulatorplattform der Zukunft. Azurite ersetzt den [Azure-Speicheremulator](storage-use-emulator.md). Azurite wird weiterhin aktualisiert, um die neuesten Versionen der Azure Storage-APIs zu unterstützen.
 
@@ -34,8 +34,6 @@ Wählen Sie in Visual Studio Code den Bereich **EXTENSIONS** aus, und suchen Sie
 ![Visual Studio Code-Marketplace für Erweiterungen](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 Sie können auch in Ihrem Browser zum [Visual Studio Code-Marketplace für Erweiterungen](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) navigieren. Wählen Sie die Schaltfläche **Installieren** aus, um Visual Studio Code zu öffnen, und wechseln Sie dann direkt zur Azurite-Erweiterungsseite.
-
-Sie können Azurite in der Visual Studio Code-Statusleiste schnell starten oder schließen. Klicken Sie auf **[Azurite Blob Service]** oder **[Azurite Queue Service]** .
 
 Die Erweiterung unterstützt die folgenden Visual Studio Code-Befehle. Drücken Sie in Visual Studio Code F1, um die Befehlspalette zu öffnen. 
 
@@ -67,6 +65,7 @@ Die folgenden Einstellungen werden unterstützt:
    - **Azurite: Warteschlangenhost** – der Lauschendpunkt des Warteschlangendiensts. Die Standardeinstellung ist 127.0.0.1.
    - **Azurite: Warteschlangenport** – der Lauschport des Warteschlangendiensts. Der Standardport ist 10001.
    - **Azurite: Lautlos** – Zugriffsprotokoll im Lautlosmodus deaktivieren. Der Standardwert ist **false**.
+   - **Azurite: API-Versionsüberprüfung überspringen** – Versionsüberprüfung der angeforderten API überspringen. Der Standardwert ist **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Installieren und Ausführen von Azurite mit NPM
 
@@ -310,6 +309,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 > Für OAuth ist ein HTTPS-Endpunkt erforderlich. Stellen Sie sicher, dass HTTPS aktiviert ist, indem Sie den Switch `--cert` zusammen mit dem Switch `--oauth` angeben.
 
 Azurite unterstützt die Standardauthentifizierung durch Angabe des `basic`-Parameters für den Switch `--oauth`. Azurite führt Standardauthentifizierung aus, z. B. Überprüfen des eingehenden Bearertokens, Überprüfen des Ausstellers, der Zielgruppe und des Ablaufs. Azurite überprüft nicht die Tokensignatur oder -berechtigungen.
+
+### <a name="skip-api-version-check"></a>Überspringen der API-Versionsüberprüfung
+
+**Optional** – Beim Starten überprüft Azurite, ob die angeforderte API-Version gültig ist. Mit dem folgenden Befehl wird die Überprüfung der API-Version übersprungen:
+
+```console
+azurite --skipApiVersionCheck
+```
+
 
 ## <a name="authorization-for-tools-and-sdks"></a>Autorisierung für Tools und SDKs
 

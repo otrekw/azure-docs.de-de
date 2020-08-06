@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015220"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Bereitstellen für Azure Kubernetes Service
 
@@ -29,7 +29,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehost
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>Bereitstellen des selbstgehosteten Gateways für AKS
 
-1. Wählen Sie **Gateways** unter **Einstellungen** aus.
+1. Wählen Sie **Gateways** unter **Bereitstellung und Infrastruktur** aus.
 2. Wählen Sie die selbstgehostete Gatewayressource aus, die Sie bereitstellen möchten.
 3. Wählen Sie **Bereitstellung** aus.
 4. Beachten Sie, dass ein neues Token im Textfeld **Token** automatisch für Sie mit den Standardwerten **Ablauf** und **Geheimer Schlüssel** generiert wurde. Passen Sie einen Wert oder beide Werte an, und wählen Sie **Generieren** aus, um ein neues Token zu erstellen.

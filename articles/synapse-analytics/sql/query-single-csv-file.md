@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214450"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383884"
 ---
 # <a name="query-csv-files"></a>Abfragen von CSV-Dateien
 
@@ -26,6 +26,72 @@ In diesem Artikel erfahren Sie, wie Sie eine einzelne CSV-Datei mit SQL On-Deman
 - Werte mit und ohne Anführungszeichen sowie Zeichen mit Escapezeichen
 
 Alle oben aufgeführten Varianten werden im Folgenden behandelt.
+
+## <a name="quickstart-example"></a>Schnellstartbeispiel
+
+Mit der Funktion `OPENROWSET` können Sie den Inhalt einer CSV-Datei lesen, indem Sie die URL zur Datei bereitstellen.
+
+### <a name="reading-csv-file"></a>Lesen einer CSV-Datei
+
+Am einfachsten können Sie den Inhalt Ihrer `CSV`-Datei anzeigen, indem Sie der Funktion `OPENROWSET` die Datei-URL bereitstellen und CSV als `FORMAT` sowie 2.0 als `PARSER_VERSION` angeben. Wenn die Datei öffentlich verfügbar ist oder Ihre Azure AD-Identität auf diese Datei zugreifen kann, sollten Sie den Inhalt der Datei mithilfe einer Abfrage wie im folgenden Beispiel anzeigen können:
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+Mit der Option `firstrow` wird die erste Zeile in der CSV-Datei übersprungen, bei der es sich in diesem Fall um den Header handelt. Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei mit einem SAS-Schlüssel oder einer benutzerdefinierten Identität geschützt ist, müssen Sie [Anmeldeinformationen auf Serverebene für die SQL-Anmeldung](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential) einrichten.
+
+### <a name="using-data-source"></a>Verwenden einer Datenquelle
+
+Im vorherigen Beispiel wird der vollständige Pfad zur Datei verwendet. Alternativ können Sie eine externe Datenquelle mit dem Speicherort erstellen, der auf den Stammordner des Speichers verweist:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+Nachdem Sie eine Datenquelle erstellt haben, können Sie diese Datenquelle und den relativen Pfad zur Datei in der Funktion `OPENROWSET` verwenden:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+Wenn eine Datenquelle mit einem SAS-Schlüssel oder einer benutzerdefinierten Identität geschützt ist, können Sie die [Datenquelle mit datenbankweit gültigen Anmeldeinformationen](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential) konfigurieren.
+
+### <a name="explicitly-specify-schema"></a>Explizites Angeben des Schemas
+
+Bei `OPENROWSET` können Sie mit der `WITH`-Klausel explizit angeben, welche Spalten aus der Datei gelesen werden sollen:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+Die Zahlen nach einem Datentyp in der `WITH`-Klausel stellen den Spaltenindex in der CSV-Datei dar.
+
+In den folgenden Abschnitten erfahren Sie, wie Sie verschiedene Typen von CSV-Dateien abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

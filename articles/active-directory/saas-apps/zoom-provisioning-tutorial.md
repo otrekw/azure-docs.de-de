@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: fb5e51503fa20cd3ace6070cb1b51f5bf32d0e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016259"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zoom für die automatische Benutzerbereitstellung
 
@@ -153,6 +153,9 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 * In Zoom sind derzeit maximal 9.999 Basic-Benutzer zulässig.
+
+## <a name="change-log"></a>Änderungsprotokoll
+* 14.05.2020 – Unterstützung für UPDATE-Vorgänge für das Attribut „emails[type eq "work"]“ wurde hinzugefügt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357561"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385091"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Ändern des Kennworts für das ADSync-Dienstkonto
 Wenn Sie das Kennwort für das ADSync-Dienstkonto ändern, kann der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das ADSync-Dienstkonto erneut initialisiert wurde. 
@@ -52,7 +52,7 @@ Um sicherzustellen, dass Sie diese Fehler nicht erhalten, führen Sie beim Ände
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>Verwerfen des Verschlüsselungsschlüssels für das ADSync-Dienstkonto
 >[!IMPORTANT]
->Die folgenden Verfahren gelten nur für Azure AD Connect Build 1.1.443.0 oder früher.
+>Die folgenden Verfahren gelten nur für Azure AD Connect Build 1.1.443.0 oder früher. Sie können nicht für neuere Versionen von Azure AD Connect verwendet werden.
 
 Verwenden Sie die folgenden Verfahren, um den Verschlüsselungsschlüssel zu verwerfen.
 

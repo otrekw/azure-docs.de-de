@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7393b0f3d3004c28e0d6befe2fdbbeda7f9a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026151"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-App für Benutzeranmeldungen: An- und Abmeldung
 
@@ -33,7 +33,7 @@ Die Anmeldung besteht aus zwei Teilen:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.NET Core wird für Microsoft Identity Platform-Anwendungen die Schaltfläche **Anmelden** in `Views\Shared\_LoginPartial.cshtml` (für eine MVC-App) oder `Pages\Shared\_LoginPartial.cshtm` (für eine Razor-App) verfügbar gemacht. Sie wird nur angezeigt, wenn der Benutzer nicht authentifiziert ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer noch nicht angemeldet oder sich zuvor abgemeldet hat. Im Gegensatz dazu wird die Schaltfläche **Abmelden** angezeigt, wenn der Benutzer bereits angemeldet ist. Beachten Sie, dass der Kontocontroller im NuGet-Paket **Microsoft.Identity.Web.UI** im Bereich **MicrosoftIdentity** definiert ist.
+In ASP.NET Core wird für Microsoft Identity Platform-Anwendungen die Schaltfläche **Anmelden** in `Views\Shared\_LoginPartial.cshtml` (für eine MVC-App) oder `Pages\Shared\_LoginPartial.cshtm` (für eine Razor-App) verfügbar gemacht. Sie wird nur angezeigt, wenn der Benutzer sich noch nicht authentifiziert hat. Das heißt, sie wird angezeigt, wenn sich der Benutzer noch nicht angemeldet oder sich zuvor abgemeldet hat. Im Gegensatz dazu wird die Schaltfläche **Abmelden** angezeigt, wenn der Benutzer bereits angemeldet ist. Beachten Sie, dass der Kontocontroller im NuGet-Paket **Microsoft.Identity.Web.UI** im Bereich **MicrosoftIdentity** definiert ist.
 
 ```html
 <ul class="navbar-nav">
@@ -335,7 +335,7 @@ In früheren Versionen der ASP.NET Core-Vorlagen war der `Account`-Controller in
 - Sie ruft `Signout()` auf, damit die OpenID Connect-Middleware den `logout`-Endpunkt der Microsoft Identity Platform kontaktieren kann. Der Endpunkt führt dann folgende Aktionen aus:
 
   - Er löscht den Sitzungscookie im Browser.
-  - Er ruft die Abmelde-URL zurück. Standardmäßig zeigt die Abmelde-URL die Abmeldeseite [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) an. Diese Seite wird auch als Teil von Microsoft.Identity.Web bereitgestellt.
+  - Er ruft die Abmelde-URL zurück. Standardmäßig zeigt die Abmelde-URL die Abmeldeseite [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs) an. Diese Seite wird auch als Teil von Microsoft.Identity.Web bereitgestellt.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

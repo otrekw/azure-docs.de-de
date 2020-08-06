@@ -1,17 +1,17 @@
 ---
 title: Widerrufen eines Freigabeabonnements in Azure Data Share
 description: Hier erfahren Sie, wie Sie ein Freigabeabonnement von einem Empfänger mithilfe von Azure Data Share widerrufen.
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: c1c049d467cdf07962719f0dc257acbf47631aaf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 102a0099c95073793ba6a1a85f518c7539327bf3
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119683"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511852"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Widerrufen eines Freigabeabonnements eines Consumers in Azure Data Share
 
