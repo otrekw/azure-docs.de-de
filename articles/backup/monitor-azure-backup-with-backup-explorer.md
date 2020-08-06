@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie mit dem Backup-Explorer
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092795"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Überwachen von Sicherungen mit dem Backup-Explorer
 
@@ -94,8 +94,8 @@ Sie können im oberen Bereich einer Tabelle oder eines Diagramms das Symbol „A
 
 ## <a name="cross-tenant-views"></a>Mandantenübergreifende Ansichten
 
-Wenn Sie Azure Lighthouse-Benutzer mit delegiertem Zugriff auf Abonnements in mehreren Mandantenumgebungen sind, können Sie den Standardabonnementfilter verwenden. Durch Auswählen des Symbols „Filter“ oben rechts im Azure-Portal können Sie die Abonnements anzeigen, deren Daten Sie einsehen möchten. Wenn Sie diese Funktion verwenden, werden mit dem Backup-Explorer Informationen zu allen Tresoren in den ausgewählten Abonnements zusammengestellt. Weitere Informationen finden Sie unter [Was ist Azure Lighthouse?](https://docs.microsoft.com/azure/lighthouse/overview)
+Wenn Sie Azure Lighthouse-Benutzer mit delegiertem Zugriff auf Abonnements in mehreren Mandantenumgebungen sind, können Sie den Standardabonnementfilter verwenden. Durch Auswählen des Symbols „Filter“ oben rechts im Azure-Portal können Sie die Abonnements anzeigen, deren Daten Sie einsehen möchten. Wenn Sie diese Funktion verwenden, werden mit dem Backup-Explorer Informationen zu allen Tresoren in den ausgewählten Abonnements zusammengestellt. Weitere Informationen finden Sie unter [Was ist Azure Lighthouse?](../lighthouse/overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie, wie Sie Azure Monitor verwenden, um Erkenntnisse aus Ihren Sicherungsdaten zu ziehen.](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[Erfahren Sie, wie Sie Azure Monitor verwenden, um Erkenntnisse aus Ihren Sicherungsdaten zu ziehen.](./backup-azure-monitoring-use-azuremonitor.md)

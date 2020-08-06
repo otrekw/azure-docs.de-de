@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053343"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Codieren von Video- und Audiodaten mit Media Services
 
@@ -29,7 +29,7 @@ Videos werden in der Regel durch einen [progressiven Download](https://en.wikipe
 > [!IMPORTANT]
 > Bei Media Services erfolgt keine Abrechnung für abgebrochene oder fehlerhafte Aufträge. Beispielsweise wird ein Auftrag, der einen Status von 50 % erreicht hat und abgebrochen wird, nicht mit 50 % der Auftragsminuten berechnet. Ihnen werden nur abgeschlossene Aufträge in Rechnung gestellt.
 
-* Zur Bereitstellung mittels progressivem Download können Sie Azure Media Services zum Konvertieren einer digitalen Mediendatei (Mezzanine) in eine [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)-Datei verwenden. Diese enthält das Video, das mit dem [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)-Codec codiert wurde, sowie die Audiodatei, die mit dem [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)-Codec codiert wurde. Diese MP4-Datei wird in ein Medienobjekt in Ihrem Speicherkonto geschrieben. Sie können die Azure Storage-APIs oder -SDKs verwenden (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um die Datei direkt herunterzuladen. Wenn Sie das Ausgabemedienobjekt mit einem bestimmten Containernamen im Speicher erstellt haben, verwenden Sie die diesen Speicherort. Andernfalls können Sie Media Services verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Zur Bereitstellung mittels progressivem Download können Sie Azure Media Services zum Konvertieren einer digitalen Mediendatei (Mezzanine) in eine [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)-Datei verwenden. Diese enthält das Video, das mit dem [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)-Codec codiert wurde, sowie die Audiodatei, die mit dem [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)-Codec codiert wurde. Diese MP4-Datei wird in ein Medienobjekt in Ihrem Speicherkonto geschrieben. Sie können die Azure Storage-APIs oder -SDKs verwenden (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um die Datei direkt herunterzuladen. Wenn Sie das Ausgabemedienobjekt mit einem bestimmten Containernamen im Speicher erstellt haben, verwenden Sie die diesen Speicherort. Andernfalls können Sie Media Services verwenden, um [die Medienobjektcontainer-URLs aufzulisten](/rest/api/media/assets/listcontainersas). 
 * Die Mezzanine-Datei muss mit mehreren Bitraten (hoch bis niedrig) codiert werden, um Inhalte für die Übermittlung durch das Adaptive Bitrate Streaming vorzubereiten. Um eine gleichmäßige Qualitätsabnahme zu gewährleisten, wird mit sinkender Bitrate auch die Auflösung des Videos verringert. Dies führt zu einer sogenannten „Codierungsleiter“ – einer Tabelle mit Auflösungen und Bitraten. Weitere Informationen hierzu erhalten Sie unter [Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren](autogen-bitrate-ladder.md). Sie können mithilfe von Media Services Ihre Mezzanine-Dateien mit verschiedenen Bitraten codieren. Auf diese Weise erhalten Sie einen Satz MP4-Dateien und zugehörige Konfigurationsdateien für das Streaming, die in ein Medienobjekt in Ihrem Speicherkonto geschrieben werden. Sie können dann die Funktion [Dynamische Paketerstellung](dynamic-packaging-overview.md) in Media Services verwenden, um das Video über Streamingprotokolle wie [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) oder [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) bereitzustellen. Dazu müssen Sie einen [Streaminglocator](streaming-locators-concept.md) und Streaming-URLs erstellen, die dem unterstützten Protokoll entsprechen. Dieses kann dann je nach Funktionen von Geräten/Apps an diese übergeben werden.
 
 Das folgende Diagramm zeigt den Workflow für bedarfsgesteuerte Codierung mit der dynamischen Paketerstellung.
@@ -40,7 +40,7 @@ In diesem Thema erhalten Sie Anleitungen zum Codieren Ihrer Inhalte mit Media Se
 
 ## <a name="transforms-and-jobs"></a>Transformationen und Aufträge
 
-Um mit Media Services v3 codieren zu können, müssen Sie eine [Transformation](https://docs.microsoft.com/rest/api/media/transforms) und einen [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) erstellen. Die Transformation definiert eine Anweisung für die Codierungseinstellungen und -ausgaben. Der Auftrag ist eine Instanz der Anweisung. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
+Um mit Media Services v3 codieren zu können, müssen Sie eine [Transformation](/rest/api/media/transforms) und einen [Auftrag](/rest/api/media/jobs) erstellen. Die Transformation definiert eine Anweisung für die Codierungseinstellungen und -ausgaben. Der Auftrag ist eine Instanz der Anweisung. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
 
 Bei der Codierung mit Media Services verwenden Sie Voreinstellungen, um dem Encoder mitzuteilen, wie die eingegebenen Mediendateien verarbeitet werden sollen. In Media Services v3 verwenden Sie den Standard-Encoder zum Codieren Ihrer Dateien. Beispielsweise können Sie die gewünschte Videoauflösung und/oder die Anzahl der Audiokanäle für den codierten Inhalt angeben.
 
@@ -72,9 +72,9 @@ Das Eingabevideo kann als Media Service-Medienobjekt gespeichert werden. In dies
 
 ### <a name="creating-job-input-with-subclipping"></a>Erstellen von Auftragseingaben mithilfe von Subclips
 
-Beim Codieren eines Videos können Sie ebenfalls angeben, dass die Quelldatei zugeschnitten oder in Subclips unterteilt werden soll. Dadurch erzeugen Sie eine Ausgabe, die nur den gewünschten Teil des Eingabevideos enthält. Dies funktioniert mit jeder [Transformation](https://docs.microsoft.com/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird.
+Beim Codieren eines Videos können Sie ebenfalls angeben, dass die Quelldatei zugeschnitten oder in Subclips unterteilt werden soll. Dadurch erzeugen Sie eine Ausgabe, die nur den gewünschten Teil des Eingabevideos enthält. Dies funktioniert mit jeder [Transformation](/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird.
 
-Sie können angeben, dass ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs/create) mit einem einzelnen Clip eines On-Demand-Videos oder aus einem Livearchiv (einem aufgezeichneten Ereignis) erstellt werden soll. Bei der Auftragseingabe kann es sich um ein Objekt oder um eine HTTPS-URL handeln.
+Sie können angeben, dass ein [Auftrag](/rest/api/media/jobs/create) mit einem einzelnen Clip eines On-Demand-Videos oder aus einem Livearchiv (einem aufgezeichneten Ereignis) erstellt werden soll. Bei der Auftragseingabe kann es sich um ein Objekt oder um eine HTTPS-URL handeln.
 
 > [!TIP]
 > Wenn Sie einen Subclip Ihres Videos streamen möchten, ohne das Video erneut zu codieren, erwägen Sie das [Vorfiltern von Manifesten mithilfe des dynamischen Packagers](filters-dynamic-manifest-overview.md).
@@ -92,7 +92,7 @@ Media Services unterstützt die folgenden integrierten Codierungsvoreinstellunge
 
 ### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
-[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) wird zum Festlegen einer integrierten Voreinstellung für die Codierung des Eingabevideos mit dem Standard-Encoder verwendet.
+[BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) wird zum Festlegen einer integrierten Voreinstellung für die Codierung des Eingabevideos mit dem Standard-Encoder verwendet.
 
 Die folgenden Voreinstellungen werden derzeit unterstützt:
 
@@ -109,13 +109,13 @@ Die folgenden Voreinstellungen werden derzeit unterstützt:
 - **EncoderNamedPreset.H264SingleBitrate720p**: Erzeugt eine MP4-Datei, bei der das Video mit dem H.264-Codec mit 4.500 KBit/s und einer Bildhöhe von 720 Pixeln codiert wird, während die Stereo-Audiodaten mit dem AAC-LC-Codec mit 64 KBit/s codiert werden.
 - **EncoderNamedPreset.H264SingleBitrateSD**: Erzeugt eine MP4-Datei, bei der das Video mit dem H.264-Codec mit 2.200 KBit/s und einer Bildhöhe von 480 Pixeln codiert wird, während die Stereo-Audiodaten mit dem AAC-LC-Codec mit 64 KBit/s codiert werden.
 
-Die aktuellste Liste der Voreinstellungen finden Sie unter [Integrierte Voreinstellungen zum Codieren von Videos](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+Die aktuellste Liste der Voreinstellungen finden Sie unter [Integrierte Voreinstellungen zum Codieren von Videos](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 Informationen zur Verwendung der Voreinstellungen finden Sie unter [Hochladen, Codieren und Streamen von Dateien](stream-files-tutorial-with-api.md).
 
 ### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
-[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) beschreibt die Einstellungen, die beim Codieren des Eingabevideos mit dem Standard-Encoder verwendet werden sollen. Verwenden Sie diese Voreinstellung, wenn Sie Transformationseinstellungen anpassen.
+[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) beschreibt die Einstellungen, die beim Codieren des Eingabevideos mit dem Standard-Encoder verwendet werden sollen. Verwenden Sie diese Voreinstellung, wenn Sie Transformationseinstellungen anpassen.
 
 #### <a name="considerations"></a>Überlegungen
 
@@ -136,7 +136,7 @@ Media Services unterstützt die vollständige Anpassung aller Werte in Voreinste
 
 ## <a name="preset-schema"></a>Voreinstellungsschemas
 
-In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie können die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der [REST-API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eine andere Referenzdokumentation für das Media Services v3 SDK anzeigen.
+In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der API selbst. Die „Schema“-Definition für diese Objekte finden Sie in [Offene API-Spezifikation (oder Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Sie können die voreingestellten Definitionen (wie **StandardEncoderPreset**) auch in der [REST-API](/rest/api/media/transforms/createorupdate#standardencoderpreset), im [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) oder eine andere Referenzdokumentation für das Media Services v3 SDK anzeigen.
 
 ## <a name="scaling-encoding-in-v3"></a>Skalieren der Codierung in v3
 

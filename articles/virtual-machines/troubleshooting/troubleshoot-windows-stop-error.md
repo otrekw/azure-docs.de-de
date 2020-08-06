@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 67064cf694445acf8472b958660133c2f2d31db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85656784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005904"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows-kritischer Fehler: Status „Nicht genügend Arbeitsspeicher“
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Probleme behoben werden, bei denen Windo
 
 ## <a name="symptom"></a>Symptom
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot der VM anzuzeigen, enthält der Screenshot den folgenden Fehlercode: `0xC0000017`. Dieser Fehler wird abhängig von der verwendeten Windows-Version entweder im **Windows-Start-Manager** oder im **Wiederherstellungsbildschirm** angezeigt.
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot der VM anzuzeigen, enthält der Screenshot den folgenden Fehlercode: `0xC0000017`. Dieser Fehler wird abhängig von der verwendeten Windows-Version entweder im **Windows-Start-Manager** oder im **Wiederherstellungsbildschirm** angezeigt.
 
    **Windows-Start-Manager**
 
@@ -57,7 +57,7 @@ Der Datenträger mit dem Betriebssystem ist entweder zu voll oder zu sehr fragme
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen und Aufrufen einer Reparatur-VM
 
-1. Führen Sie die [Schritte 1-3 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die [Schritte 1-3 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="for-generation-2-vms-assign-a-letter-to-the-extensible-firmware-interface-efi-partition"></a>Weisen Sie bei VMs der 2. Generation der EFI-Partition (Extensible Firmware Interface) einen Buchstaben zu:
@@ -94,7 +94,7 @@ Wenn Sie eine VM der 2. Generation verwenden, wurde der EFI-Partition des angef�
 Nachdem der defekte Datenträger an die Reparatur-VM angefügt wurde, sollten Sie überprüfen, ob das Betriebssystem auf diesem Datenträger über genügend Speicherplatz für die ordnungsgemäße Funktion verfügt. 
 
 1. Überprüfen Sie, ob der Datenträger voll ist, indem Sie mit der rechten Maustaste auf das Laufwerk des angefügten Datenträgers klicken und **Eigenschaften** auswählen.
-1. Wenn der Datenträger **weniger als 300 MB freien Speicherplatz** aufweist, [erweitern Sie ihn mithilfe von PowerShell auf den Maximalwert von 1 TB](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Wenn der Datenträger **weniger als 300 MB freien Speicherplatz** aufweist, [erweitern Sie ihn mithilfe von PowerShell auf den Maximalwert von 1 TB](../windows/expand-os-disk.md).
 1. Sobald der Datenträger eine Größe von **1 TB** aufweist, müssen Sie eine Datenträgerbereinigung durchführen. Sie können das [Datenträgerbereinigungstool](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) verwenden, um Speicherplatz freizugeben.
 1. Öffnen Sie eine Instanz der Eingabeaufforderung mit erhöhten Rechten (als Administrator ausführen), und führen Sie eine Defragmentierung des Laufwerks durch:
 
@@ -223,4 +223,4 @@ Führen Sie das folgende Skript aus, um die Speicherabbildsammlung und die serie
    
 ### <a name="rebuild-the-vm"></a>Neuerstellen der VM
 
-Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example), um die VM neu zu erstellen.
+Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example), um die VM neu zu erstellen.

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676572"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069799"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Fehlermeldungen für Spot-VMs und Skalierungsgruppen
 
@@ -35,7 +35,6 @@ Im Folgenden finden Sie einige mögliche Fehlercodes, die Sie bei der Verwendung
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  Der Höchstpreis wird nur für Azure Spot-VMs unterstützt. | Weitere Informationen finden Sie unter [Spot-VMs](./linux/spot-vms.md). |
 | MoveResourcesWithAzureSpotVMNotSupported  |  Die Anforderung zum Verschieben von Ressourcen enthält eine Azure-Spot-VM. Dies wird derzeit nicht unterstützt. Überprüfen Sie die Fehlerdetails für die IDs der virtuellen Computer. | Spot-VMs können nicht verschoben werden. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Die Anforderung zum Verschieben von Ressourcen enthält eine Azure-Spot-VM-Skalierungsgruppe. Dies wird derzeit nicht unterstützt. Überprüfen Sie die Fehlerdetails für die IDs der VM-Skalierungsgruppen. | Spot-Skalierungsgruppeninstanzen können nicht verschoben werden. |
-| EphemeralOSDisksNotSupportedForSpotVMs | Kurzlebige Betriebssystemdatenträger werden für Spot-VMs nicht unterstützt. | Verwenden Sie für Ihre Spot-VM einen regulären Betriebssystemdatenträger. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Azure Spot-VM wird in der VM-Skalierungsgruppe mit dem VM-Orchestrierungsmodus nicht unterstützt. | Legen Sie den Orchestrierungsmodus auf die VM-Skalierungsgruppe fest, um Spot-Instanzen zu verwenden. |
 
 

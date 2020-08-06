@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055295"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -181,7 +181,7 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights.snapshotConfiguration
 
-Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](/azure/azure-monitor/app/snapshot-debugger) und [Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
+Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](../azure-monitor/app/snapshot-debugger.md) und [Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen](../azure-monitor/app/snapshot-debugger-troubleshoot.md).
 
 |Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
@@ -310,7 +310,7 @@ Steuert das Protokollierungsverhalten der Funktions-App, einschließlich Applica
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definiert, welche Stufe der Dateiprotokollierung aktiviert ist.  Optionen sind `never`, `always`, `debugOnly`. |
-|logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Version 2.x oder höher entspricht bei der Filterung der Protokollkategorie dem Layout von ASP.NET Core. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Protokollfilterung](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in der Dokumentation zu ASP.NET Core. |
+|logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Version 2.x oder höher entspricht bei der Filterung der Protokollkategorie dem Layout von ASP.NET Core. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Protokollfilterung](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in der Dokumentation zu ASP.NET Core. |
 |console|–| Die [Konsolen](#console)protokollierungseinstellung. |
 |applicationInsights|–| Die [applicationInsights](#applicationinsights)-Einstellung. |
 

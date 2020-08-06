@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499843"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072009"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-Konten
 
@@ -32,7 +32,7 @@ Wir empfehlen Ihnen, GPv2 zu verwenden, damit Sie in den Genuss der aktuellen Fe
 > [!NOTE]
 > Nur die heiße Zugriffsebene wird für die Verwendung mit Azure Media Services unterstützt. Die anderen Zugriffsebenen können aber verwendet werden, um Speicherkosten für Inhalt zu reduzieren, der nicht aktiv genutzt wird.
 
-Es gibt verschiedene SKUs, die Sie für Ihr Speicherkonto auswählen können. Weitere Informationen finden Sie unter [Storage accounts](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest) (Speicherkonten). Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie jedoch die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option geografische Replikation zum Gewährleisten der Geschäftskontinuität bietet.
+Es gibt verschiedene SKUs, die Sie für Ihr Speicherkonto auswählen können. Weitere Informationen finden Sie unter [Storage accounts](/cli/azure/storage/account?view=azure-cli-latest) (Speicherkonten). Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie jedoch die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option geografische Replikation zum Gewährleisten der Geschäftskontinuität bietet.
 
 ## <a name="assets-in-a-storage-account"></a>Medienobjekte in einem Speicherkonto
 
@@ -48,8 +48,8 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Medienobjekte sollten die Medienobj
 |Verschlüsselungsoption|BESCHREIBUNG|Media Services v3|
 |---|---|---|
 |Media Services-Speicherverschlüsselung| AES-256-Verschlüsselung, Schlüssel von Media Services verwaltet. |Nicht unterstützt.<sup>(1)</sup>|
-|[Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet.|Unterstützt.|
-|[Clientseitige Speicherverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet.|Wird nicht unterstützt.|
+|[Speicherdienstverschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet.|Unterstützt.|
+|[Clientseitige Speicherverschlüsselung](../../storage/common/storage-client-side-encryption.md)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet.|Wird nicht unterstützt.|
 
 <sup>1</sup> In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Medienobjekte mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Medienobjekten funktioniert, jedoch keine Erstellung von neuen zulässt.
 
@@ -66,8 +66,8 @@ Unten sind die wichtigsten Szenarien aufgeführt, die bewirken, dass ein Media S
 
 ## <a name="azure-storage-firewall"></a>Azure Storage-Firewall
 
-Azure Media Services unterstützt keine Speicherkonten, bei denen die Azure Storage-Firewall oder [private Endpunkte](https://docs.microsoft.com/azure/storage/common/storage-network-security) aktiviert sind.
+Azure Media Services unterstützt keine Speicherkonten, bei denen die Azure Storage-Firewall oder [private Endpunkte](../../storage/common/storage-network-security.md) aktiviert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen dazu, wie Sie ein Speicherkonto an Ihr Media Services-Konto anfügen, finden Sie unter [Erstellen eines Kontos](create-account-cli-quickstart.md).
+Informationen dazu, wie Sie ein Speicherkonto an Ihr Media Services-Konto anfügen, finden Sie unter [Erstellen eines Kontos](./create-account-howto.md).

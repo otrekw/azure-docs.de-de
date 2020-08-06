@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 8600971ffd23b1c253e8de807d365c46409b37bc
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081450"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036385"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Interner Fehler beim Herstellen einer Verbindung mit einem virtuellen Azure-Computer über Remotedesktop
 
@@ -55,8 +55,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 #### <a name="step-1-check-the-rdp-port"></a>Schritt 1: Überprüfen des RDP-Ports
 
-1. Überprüfen Sie in einer PowerShell-Instanz mithilfe von [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-), ob Port 8080 von anderen Anwendungen verwendet wird:
+1. Überprüfen Sie in einer PowerShell-Instanz mithilfe von [NETSTAT](/windows-server/administration/windows-commands/netstat), ob Port 8080 von anderen Anwendungen verwendet wird:
 
     ```powershell
     Netstat -anob |more
@@ -186,7 +185,7 @@ Der RDP-Client verwendet TLS 1.0 als Standardprotokoll. Dies kann jedoch in den 
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
-1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 2. Stellen Sie nach dem Anfügen des Betriebssystemdatenträgers an den virtuellen Wiederherstellungscomputer sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 3. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
@@ -299,4 +298,4 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
     ```
 
-5. [Trennen Sie den Betriebssystemdatenträger, und erstellen Sie den virtuellen Computer erneut.](../windows/troubleshoot-recovery-disks-portal.md) Überprüfen Sie dann, ob das Problem behoben wurde.
+5. [Trennen Sie den Betriebssystemdatenträger, und erstellen Sie den virtuellen Computer erneut.](./troubleshoot-recovery-disks-portal-windows.md) Überprüfen Sie dann, ob das Problem behoben wurde.

@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088392"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Veröffentlichen einer ASP.NET-Web-App auf einer Azure-VM aus Visual Studio
 
@@ -111,7 +111,7 @@ Die Einstellungen sollten in etwa wie folgt aussehen:
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Einrichten von CI/CD für automatisierte Bereitstellungen auf Azure-VMs
 
-Informationen zum Einrichten einer Pipeline für die fortlaufende Übermittlung mit Azure Pipelines finden Sie unter [Deploy to a Windows Virtual Machine](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups) (Bereitstellen auf einem virtuellen Windows-Computer).
+Informationen zum Einrichten einer Pipeline für die fortlaufende Übermittlung mit Azure Pipelines finden Sie unter [Deploy to a Windows Virtual Machine](/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups) (Bereitstellen auf einem virtuellen Windows-Computer).
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png

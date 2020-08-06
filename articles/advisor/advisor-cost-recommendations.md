@@ -3,12 +3,12 @@ title: Reduzieren der Dienstkosten mithilfe von Azure Advisor
 description: Nutzen Sie Azure Advisor, um die Kosten Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284369"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe des Azure Advisors
 
@@ -89,7 +89,7 @@ Es empfiehlt sich, Momentaufnahmen unabhängig vom Speichertyp des übergeordnet
 Mithilfe von Informationen zur Objektanzahl, der Gesamtgröße und den Transaktionen Ihrer Azure Blob Storage-Instanz ermittelt der Advisor, ob sich die Aktivierung der Lebenszyklusverwaltung empfiehlt, um Daten in einem oder zwischen mehreren Ihrer Speicherkonten dynamisch zu verschieben. Sie werden aufgefordert, Verwaltungsregeln für den Lebenszyklus zu erstellen, um Ihre Daten zur Optimierung Ihrer Speicherkosten automatisch in die kalte Speicherebene oder in die Archivebene zu verschieben. Dies hat keine Auswirkungen auf die Anwendungskompatibilität, da die Daten weiterhin in Azure Blob Storage vorhanden sind.
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>Erstellen einer Empfehlung zu kurzlebigen Betriebssystemdatenträgern
-[Kurzlebige Betriebssystemdatenträger](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks) ermöglichen Ihnen Folgendes: 
+[Kurzlebige Betriebssystemdatenträger](../virtual-machines/ephemeral-os-disks.md) ermöglichen Ihnen Folgendes: 
 - Sparen der Speicherkosten für Betriebssystemdatenträger 
 - Reduzieren der Lese-/Schreibwartezeit auf dem Betriebssystemdatenträger 
 - Schnelleres VM-Reimaging durch Zurücksetzen des Betriebssystems (und des temporären Datenträgers) in den ursprünglichen Zustand
@@ -114,4 +114,3 @@ Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor](advisor-high-availability-recommendations.md)
 * [Erhöhen der Sicherheit von Ressourcen mit dem Azure Advisor](advisor-security-recommendations.md)
 * [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)
-

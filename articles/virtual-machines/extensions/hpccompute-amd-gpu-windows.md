@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010868"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>AMD-GPU-Treibererweiterung für Windows
 
-Dieser Artikel bietet eine Übersicht über die VM-Erweiterung zur Bereitstellung von AMD-GPU-Treibern auf Windows-VMs der [NVv4-Serie](https://docs.microsoft.com/azure/virtual-machines/nvv4-series). Bei der Installation von AMD Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des [AMD-Endbenutzer-Lizenzvertrags](https://amd.com/radeonsoftwarems) und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
+Dieser Artikel bietet eine Übersicht über die VM-Erweiterung zur Bereitstellung von AMD-GPU-Treibern auf Windows-VMs der [NVv4-Serie](../nvv4-series.md). Bei der Installation von AMD Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des [AMD-Endbenutzer-Lizenzvertrags](https://amd.com/radeonsoftwarems) und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
 
-Anweisungen zur manuellen Installation der Treiber und der aktuellen unterstützten Versionen sind [hier](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup) verfügbar.
+Anweisungen zur manuellen Installation der Treiber und der aktuellen unterstützten Versionen sind [hier](../windows/n-series-amd-driver-setup.md) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -81,7 +81,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen.
 
-Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-manager-template-child-resource.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
+Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/templates/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 
 Im folgenden Beispiel wird davon ausgegangen, dass die Erweiterung in der VM-Ressource geschachtelt ist. Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
 
@@ -172,4 +172,4 @@ Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benö
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](features-windows.md).
 
-Weitere Informationen zu virtuellen Computern der N-Serie finden Sie unter [Für GPU optimierte VM-Größen](../windows/sizes-gpu.md).
+Weitere Informationen zu virtuellen Computern der N-Serie finden Sie unter [Für GPU optimierte VM-Größen](../sizes-gpu.md).

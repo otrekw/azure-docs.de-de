@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371102"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281479"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrieren von bildschirmgesteuerten 3270-Apps auf IBM Mainframes mit Azure mithilfe von Azure Logic Apps und IBM 3270-Connector
 
@@ -292,7 +292,7 @@ In diesem Modus definieren Sie eine Methode, die Ihrem Navigationsplan zugeordne
    |---------------|-----------------|
    | **Datentyp** | Byte, Date Time, Decimal, Int, Long, Short, String |
    | **Field Fill Technique** (Feldauffüllmethode) | Parameter unterstützen folgende Auffülltypen, wobei erforderlichenfalls mit Leerzeichen aufgefüllt wird: <p><p>- **Type**: Zeichen sequenziell in das Feld eingeben. <p>- **Fill**: Den Inhalt des Felds durch Zeichen ersetzen, wobei erforderlichenfalls mit Leerzeichen aufgefüllt wird. <p>- **EraseEofType**: Das Feld löschen und dann Zeichen sequenziell in das Feld eingeben. |
-   | **Format String** (Formatzeichenfolge) | Manche Parameterdatentypen verwenden eine Formatzeichenfolge, die dem 3270-Connector mitteilt, wie Text aus dem Bildschirm in einen .NET-Datentyp zu konvertieren ist: <p><p>- **DateTime**: Die Formatzeichenfolge „DateTime“ richtet sich nach den [benutzerdefinierten .NET-Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Z. B. verwendet das Datum `06/30/2019` die Formatzeichenfolge `MM/dd/yyyy`. <p>- **Decimal**: Die Formatzeichenfolge „Decimal“ verwendet die [COBOL Picture-Klausel](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Z. B. verwendet die Zahl `100.35` die Formatzeichenfolge `999V99`. |
+   | **Format String** (Formatzeichenfolge) | Manche Parameterdatentypen verwenden eine Formatzeichenfolge, die dem 3270-Connector mitteilt, wie Text aus dem Bildschirm in einen .NET-Datentyp zu konvertieren ist: <p><p>- **DateTime**: Die Formatzeichenfolge „DateTime“ richtet sich nach den [benutzerdefinierten .NET-Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). Z. B. verwendet das Datum `06/30/2019` die Formatzeichenfolge `MM/dd/yyyy`. <p>- **Decimal**: Die Formatzeichenfolge „Decimal“ verwendet die [COBOL Picture-Klausel](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Z. B. verwendet die Zahl `100.35` die Formatzeichenfolge `999V99`. |
    |||
 
 ## <a name="save-and-view-metadata"></a>Speichern und Anzeigen von Metadaten
@@ -409,7 +409,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/si3270/).
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/si3270/).
 
 > [!NOTE]
 > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
@@ -417,3 +417,4 @@ Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Gre
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+

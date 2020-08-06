@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9ef246079fc95b79a2dc7a3d33eba79da70c55a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050381"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurieren des PremiumV2-Tarifs für Azure App Service
 
@@ -87,7 +87,7 @@ Wenn Ihre App in einer App Service-Bereitstellung ausgeführt wird, in der **Pre
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
-Mit **Azure CLI** oder [Azure PowerShell](/cli/azure/install-azure-cli) können Sie die Erstellung von Apps im [PremiumV2](/powershell/azure/overview)-Tarif mithilfe von Skripts automatisieren.
+Mit **Azure CLI** oder [Azure PowerShell](/cli/azure/install-azure-cli) können Sie die Erstellung von Apps im [PremiumV2](/powershell/azure/)-Tarif mithilfe von Skripts automatisieren.
 
 ### <a name="azure-cli"></a>Azure CLI
 

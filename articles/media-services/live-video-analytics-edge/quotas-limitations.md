@@ -3,12 +3,12 @@ title: 'Kontingente bei Live Video Analytics in IoT Edge: Azure'
 description: In diesem Artikel werden die Kontingente und Einschränkungen von Live Video Analytics in IoT Edge beschrieben.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091809"
 ---
 # <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
 
@@ -47,11 +47,8 @@ Für die Vorschauversion gelten Einschränkungen für die unterschiedlichen Knot
 * Signalgateprozessor
    * Muss direkt hinter dem RTSP-Quellknoten angeordnet sein.
 * Medienobjektsenke 
-   * Pro Diagrammtopologie ist maximal ein solcher Knoten zulässig.
-      * Wenn eine Medienobjektsenke verwendet wird, darf keine Dateisenke vorhanden sein (und umgekehrt).
    * Muss direkt hinter dem RTSP-Quellknoten oder Signalgateprozessor angeordnet sein.
 * Dateisenke
-   * Pro Diagrammtopologie ist maximal ein solcher Knoten zulässig (siehe Hinweis oben zur Medienobjektsenke).
    * Muss direkt hinter dem Signalgateprozessor angeordnet sein.
    * Darf nicht direkt hinter dem Verarbeitungsknoten für die HTTP-Erweiterung oder die Bewegungserkennung angeordnet sein.
 * IoT Hub-Senke

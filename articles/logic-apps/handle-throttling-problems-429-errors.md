@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086437"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Behandeln von Drosselungsproblemen (Fehler 429: „Zu viele Anforderungen“) in Azure Logic Apps
 
@@ -77,7 +77,7 @@ Zum Steuern der Drosselung auf dieser Ebene haben Sie folgende Optionen:
 
 ## <a name="connector-throttling"></a>Connectordrosselung
 
-Jeder Connector umfasst eigene Drosselungslimits, diese finden Sie auf der Seite mit der technischen Referenz zum Connector. Beispielsweise gilt für den [Azure Service Bus-Connector](https://docs.microsoft.com/connectors/servicebus/) ein Drosselungslimit, das bis zu 6.000 Aufrufe pro Minute zulässt, während für den SQL Server-Connector [Drosselungslimits basierend auf dem Vorgangstyp](https://docs.microsoft.com/connectors/sql/) gelten.
+Jeder Connector umfasst eigene Drosselungslimits, diese finden Sie auf der Seite mit der technischen Referenz zum Connector. Beispielsweise gilt für den [Azure Service Bus-Connector](/connectors/servicebus/) ein Drosselungslimit, das bis zu 6.000 Aufrufe pro Minute zulässt, während für den SQL Server-Connector [Drosselungslimits basierend auf dem Vorgangstyp](/connectors/sql/) gelten.
 
 Einige Trigger und Aktionen, z. B. HTTP, verwenden eine [„Wiederholungsrichtlinie“](../logic-apps/logic-apps-exception-handling.md#retry-policies), die Sie basierend auf den [Limits für Wiederholungsrichtlinien](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits) anpassen können, um eine Ausnahmebehandlung zu implementieren. Diese Wiederholungsrichtlinie gibt an, ob und wie ein Trigger bzw. eine Aktion versucht, eine Anforderung zu wiederholen, wenn die ursprüngliche Anforderung nicht erfolgreich ist und es zu Timeouts oder Antworten vom Typ 408, 429 oder 5xx kommt. Wenn also die Drosselung gestartet und ein 429-Fehler zurückgegeben wird, folgen die Logik-Apps der Wiederholungsrichtlinie (sofern unterstützt).
 

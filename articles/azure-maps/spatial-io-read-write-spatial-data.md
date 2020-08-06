@@ -1,19 +1,20 @@
 ---
 title: Lesen und Schreiben räumlicher Daten | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie mit dem Modul Spatial IO, das vom Azure Maps Web SDK bereitgestellt wird, Daten lesen und schreiben.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4c47335689401ebce98224992c74c3396821a1dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334160"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277586"
 ---
 # <a name="read-and-write-spatial-data"></a>Lesen und Schreiben von räumlichen Daten
 

@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074257"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -22,7 +22,7 @@ In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Erstellen eines schachtelungsfähigen virtuellen Azure-Computers
 
-Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](acu.md).
+Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](../acu.md).
 
 Denken Sie daran, eine ausreichende VM-Größe zu wählen, um die Anforderungen eines virtuellen Gastcomputers zu unterstützen. Bei diesem Beispiel wird eine Azure-VM der Größe D3_v3 verwendet. 
 
@@ -30,7 +30,7 @@ Informationen zur regionalen Verfügbarkeit von VMs der Serien Dv3 oder Ev3 find
 
 >[!NOTE]
 >
->Detaillierte Informationen zum Erstellen einer neuen VM finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm).
+>Detaillierte Informationen zum Erstellen einer neuen VM finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](./tutorial-manage-vm.md).
     
 ## <a name="connect-to-your-azure-vm"></a>Herstellen einer Verbindung mit der Azure-VM
 
@@ -181,4 +181,4 @@ In diesem Beispiel verwenden Sie eine Adresse im Bereich 192.168.0.0/24.
 Öffnen Sie auf der Gast-VM einen Browser, und navigieren Sie zu einer Webseite.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-Anleitungen zum Aktivieren der transparenten Konnektivität zwischen Gast-VMs und Azure-VMs finden Sie in [diesem Dokument](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).
+Anleitungen zum Aktivieren der transparenten Konnektivität zwischen Gast-VMs und Azure-VMs finden Sie in [diesem Dokument](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).

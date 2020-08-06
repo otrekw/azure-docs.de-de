@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078101"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Science mit Linux Data Science Virtual Machine in Azure
 
@@ -30,7 +30,7 @@ Bevor Sie eine Linux DSVM verwenden können, müssen die folgenden Voraussetzung
 
 * **Azure-Abonnement**. Erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/), um ein Azure-Abonnement zu erhalten.
 * [**Linux Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informationen zur Bereitstellung des virtuellen Computers finden Sie unter [Bereitstellen von Linux Data Science Virtual Machine](linux-dsvm-intro.md).
-* [**X2Go**](https://wiki.x2go.org/doku.php)-Installation auf dem Computer mit einer geöffneten XFCE-Sitzung. Weitere Informationen finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](linux-dsvm-intro.md#x2go).
+* [**X2Go**](https://wiki.x2go.org/doku.php)-Installation auf dem Computer mit einer geöffneten XFCE-Sitzung. Weitere Informationen finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](dsvm-ubuntu-intro.md#x2go).
 * Um reibungsloser scrollen zu können, schalten Sie im Firefox-Webbrowser von DSVM das Flag `gfx.xrender.enabled` in `about:config` um. [Weitere Informationen](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/) Sie sollten außerdem `mousewheel.enable_pixel_scrolling` auf `False` festlegen. [Weitere Informationen](https://support.mozilla.org/questions/981140)
 * **Azure Machine Learning-Konto**. Wenn Sie noch nicht über ein Konto verfügen, registrieren Sie sich auf der [Azure Machine Learning-Homepage](https://azure.microsoft.com/free/services/machine-learning//) für ein neues Konto.
 

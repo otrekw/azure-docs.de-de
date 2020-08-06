@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80634107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074309"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>VM reagiert nicht mehr bei Anwenden von Windows Update, und Fehler C01A001D wird ausgegeben
 
@@ -27,7 +27,7 @@ In diesem Artikel werden Schritte zur Behebung von Problemen erläutert, bei den
 
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie den Screenshot der VM mithilfe der [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) anzeigen, wird das laufende Windows Update (KB) angezeigt; dieses schlägt jedoch mit dem folgenden Fehlercode fehl: „C01A001D“.
+Wenn Sie den Screenshot der VM mithilfe der [Startdiagnose](./boot-diagnostics.md) anzeigen, wird das laufende Windows Update (KB) angezeigt; dieses schlägt jedoch mit dem folgenden Fehlercode fehl: „C01A001D“.
 
 ![Nicht reagierendes Windows Update](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
@@ -49,17 +49,17 @@ Eine Kerndatei kann im Dateisystem nicht erstellt werden. Das Betriebssystem kan
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen und Aufrufen einer Reparatur-VM
 
-1. Führen Sie die [Schritte 1 bis 3 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die [Schritte 1 bis 3 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 2. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="free-up-space-on-the-hard-disk"></a>Freigeben von Speicherplatz auf der Festplatte
 
 Wenn der Datenträger nicht bereits 1 TB groß ist, müssen Sie seine Größe ändern. Sobald die Größe des Datenträgers 1 TB beträgt, führen Sie eine Bereinigung und Defragmentierung des Datenträgers durch.
 
-1. Überprüfen Sie, ob der Datenträger voll ist. Wenn die Größe des Datenträgers unter 1 TB liegt, [erweitern Sie ihn mit PowerShell auf eine maximale Größe von 1 TB](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+1. Überprüfen Sie, ob der Datenträger voll ist. Wenn die Größe des Datenträgers unter 1 TB liegt, [erweitern Sie ihn mit PowerShell auf eine maximale Größe von 1 TB](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 2. Sobald die Größe des Datenträgers 1 TB beträgt, führen Sie eine Datenträgerbereinigung durch.
-    - [Trennen Sie den Datenträger von der defekten VM](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk).
-    - [Fügen Sie den Datenträger an eine funktionsfähige VM an](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+    - [Trennen Sie den Datenträger von der defekten VM](../windows/detach-disk.md).
+    - [Fügen Sie den Datenträger an eine funktionsfähige VM an](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
     - Geben Sie mit dem [Datenträgerbereinigungstool](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) Speicherplatz frei.
 3. Nach dem Ändern der Größe und dem Bereinigen müssen Sie das Laufwerk defragmentieren:
 
@@ -115,4 +115,4 @@ Wenn der Datenträger nicht bereits 1 TB groß ist, müssen Sie seine Größe �
 
 ### <a name="rebuild-the-vm"></a>Neuerstellen der VM
 
-Führen Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) aus, um die VM zu reassemblieren.
+Führen Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um die VM zu reassemblieren.

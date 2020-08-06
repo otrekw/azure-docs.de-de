@@ -3,12 +3,12 @@ title: Entfernen von Application Insights in Visual Studio – Azure Monitor
 description: Hier erfahren Sie, wie Sie das Application Insights SDK für ASP.NET und ASP.NET Core in Visual Studio entfernen.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80805252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049774"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Entfernen von Application Insights in Visual Studio
 
@@ -229,4 +229,4 @@ Wenn Sie Application Insights-Telemetrie zu einem ASP.NET Core-Vorlagenprojekt i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)
+- [Azure Monitor](../overview.md)

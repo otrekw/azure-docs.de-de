@@ -6,12 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092914"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korrelieren von Application Insights-Daten mit benutzerdefinierten Datenquellen
 
@@ -35,15 +35,15 @@ Falls noch nicht geschehen, sollten Sie einen neuen Log Analytics-Arbeitsbereich
 
 Gehen Sie wie unten angegeben vor, um mit dem Senden von Daten an Azure Monitor zu beginnen. Sie haben mehrere Optionen:
 
-- Zur Verwendung eines synchronen Mechanismus können Sie entweder die [Datensammler-API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) direkt aufrufen oder unseren Logic App-Connector verwenden. Suchen Sie einfach nach „Azure Log Analytics“, und wählen Sie die Option zum Senden von Daten:
+- Zur Verwendung eines synchronen Mechanismus können Sie entweder die [Datensammler-API](../platform/data-collector-api.md) direkt aufrufen oder unseren Logic App-Connector verwenden. Suchen Sie einfach nach „Azure Log Analytics“, und wählen Sie die Option zum Senden von Daten:
 
   ![Screenshot: Auswahl und Aktion](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Wenn Sie eine asynchrone Option verwenden möchten, können Sie die Datensammler-API nutzen, um eine Verarbeitungspipeline zu erstellen. Nähere Einzelheiten finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api).
+- Wenn Sie eine asynchrone Option verwenden möchten, können Sie die Datensammler-API nutzen, um eine Verarbeitungspipeline zu erstellen. Nähere Einzelheiten finden Sie in [diesem Artikel](../platform/create-pipeline-datacollector-api.md).
 
 ## <a name="correlating-data"></a>Korrelieren von Daten
 
-Application Insights basiert auf der Azure Monitor-Protokollplattform. Daher können wir [ressourcenübergreifende Verknüpfungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) verwenden, um alle Daten, die wir über Azure Monitor erfasst haben, mit den Application Insights-Daten zu korrelieren.
+Application Insights basiert auf der Azure Monitor-Protokollplattform. Daher können wir [ressourcenübergreifende Verknüpfungen](../log-query/cross-workspace-query.md) verwenden, um alle Daten, die wir über Azure Monitor erfasst haben, mit den Application Insights-Daten zu korrelieren.
 
 Beispielsweise können wir unseren Labbestand und die Standorte in einer Tabelle mit dem Namen „LabLocations_CL“ in einem Log Analytics-Arbeitsbereich mit dem Namen „myLA“ erfassen. Wenn wir dann unsere Anforderungen prüfen möchten, die mit der Application Insights-App „myAI“ nachverfolgt wurden, und die Namen der Computer, über die die Anforderungen bereitgestellt wurden, mit den Standorten dieser Computer aus der oben erwähnten benutzerdefinierten Tabelle korrelieren möchten, können wir über den Application Insights- oder den Azure Monitor-Kontext die folgende Abfrage ausführen:
 
@@ -57,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die Referenz zur [Datensammler-API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api).
-- Sehen Sie sich die weiteren Informationen zu [ressourcenübergreifenden Verknüpfungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) an.
+- Lesen Sie die Referenz zur [Datensammler-API](../platform/data-collector-api.md).
+- Sehen Sie sich die weiteren Informationen zu [ressourcenübergreifenden Verknüpfungen](../log-query/cross-workspace-query.md) an.

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045204"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an die Azure Monitor-Metrikendatenbank für einen virtuellen Windows-Computer (klassisch)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Die [Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) von Azure Monitor (auch „WAD“ oder „Diagnose“ genannt) ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
+Die [Diagnoseerweiterung](./diagnostics-extension-overview.md) von Azure Monitor (auch „WAD“ oder „Diagnose“ genannt) ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](./data-platform.md?toc=/azure/azure-monitor/toc.json) senden.
 
 In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer (klassisch) an die Azure Monitor-Metrikendatenbank senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
 
@@ -30,9 +30,9 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit klassischen virt
 
 - Sie müssen [Dienstadministrator oder Co-Administrator](../../cost-management-billing/manage/add-change-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
-- Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden. 
+- Ihr Abonnement muss mit [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) registriert werden. 
 
-- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
+- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](../../cloud-shell/overview.md) muss installiert sein.
 
 - Die VM-Ressource muss sich in einer [Region befinden, die benutzerdefinierte Metriken unterstützt](metrics-custom-overview.md#supported-regions).
 
@@ -204,4 +204,3 @@ Erteilen Sie dieser App für die Ressource, für die Sie Metriken ausgeben möch
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [benutzerdefinierte Metriken](metrics-custom-overview.md).
-

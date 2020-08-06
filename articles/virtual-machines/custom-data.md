@@ -4,21 +4,21 @@ description: Details zur Verwendung von benutzerdefinierten Daten und cloud-init
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284913"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Benutzerdefinierte Daten und cloud-init auf virtuellen Azure-Computern
 
 Möglicherweise müssen Sie zum Zeitpunkt der Bereitstellung ein Skript oder andere Metadaten in einen virtuellen Microsoft Azure-Computer einfügen.  In anderen Clouds wird dieses Konzept häufig als Benutzerdaten bezeichnet.  In Microsoft Azure verfügen wir über ein ähnliches Feature, das als benutzerdefinierte Daten bezeichnet wird. 
 
-Benutzerdefinierte Daten werden nur beim ersten Start bzw. beim ersten Setup für die VM verfügbar gemacht. Dies wird als Bereitstellung bezeichnet. Die Bereitstellung ist der Vorgang, bei dem VM-Erstellungsparameter (z. B. Hostname, Benutzername, Kennwort, Zertifikate, benutzerdefinierte Daten, Schlüssel usw.) für den virtuellen Computer verfügbar gemacht werden. Dabei werden sie von einem Bereitstellungs-Agent verarbeitet, z. B. dem [Linux-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) und [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init). 
+Benutzerdefinierte Daten werden nur beim ersten Start bzw. beim ersten Setup für die VM verfügbar gemacht. Dies wird als Bereitstellung bezeichnet. Die Bereitstellung ist der Vorgang, bei dem VM-Erstellungsparameter (z. B. Hostname, Benutzername, Kennwort, Zertifikate, benutzerdefinierte Daten, Schlüssel usw.) für den virtuellen Computer verfügbar gemacht werden. Dabei werden sie von einem Bereitstellungs-Agent verarbeitet, z. B. dem [Linux-Agent](./extensions/agent-linux.md) und [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init). 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>Übergeben von benutzerdefinierten Daten an die VM
@@ -34,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-In Azure Resource Manager (ARM) gibt es eine [Base64-Funktion](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64).
+In Azure Resource Manager (ARM) gibt es eine [Base64-Funktion](../azure-resource-manager/templates/template-functions-string.md#base64).
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -74,21 +74,21 @@ Wenn Sie benutzerdefinierte Daten aktivieren und ein Skript ausführen, wird die
 
 Weitere Informationen zum Troubleshooting für die Ausführung von benutzerdefinierten Daten finden Sie unter */var/log/waagent.log*.
 
-* cloud-init: Standard für die Verarbeitung von benutzerdefinierten Daten. cloud-init kann benutzerdefinierte Daten in [mehreren Formaten](https://cloudinit.readthedocs.io/en/latest/topics/format.html) verarbeiten, z. B. Konfiguration für cloud-init, Skripts usw. Die Verarbeitung von benutzerdefinierten Daten mit cloud-init erfolgt ähnlich wie beim Linux-Agent. Wenn beim Ausführen der Konfigurationsverarbeitung oder von Skripts Fehler auftreten, wird dies nicht als schwerwiegender Bereitstellungsfehler angesehen. Sie müssen einen Benachrichtigungspfad erstellen, um über den Abschlussstatus des Skripts informiert zu werden. Anders als beim Linux-Agent wartet cloud-init jedoch nicht auf den Abschluss der Konfiguration benutzerdefinierter Daten, bevor an die Plattform gemeldet wird, dass die VM bereit ist. Weitere Informationen zu cloud-init unter Azure finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init).
+* cloud-init: Standard für die Verarbeitung von benutzerdefinierten Daten. cloud-init kann benutzerdefinierte Daten in [mehreren Formaten](https://cloudinit.readthedocs.io/en/latest/topics/format.html) verarbeiten, z. B. Konfiguration für cloud-init, Skripts usw. Die Verarbeitung von benutzerdefinierten Daten mit cloud-init erfolgt ähnlich wie beim Linux-Agent. Wenn beim Ausführen der Konfigurationsverarbeitung oder von Skripts Fehler auftreten, wird dies nicht als schwerwiegender Bereitstellungsfehler angesehen. Sie müssen einen Benachrichtigungspfad erstellen, um über den Abschlussstatus des Skripts informiert zu werden. Anders als beim Linux-Agent wartet cloud-init jedoch nicht auf den Abschluss der Konfiguration benutzerdefinierter Daten, bevor an die Plattform gemeldet wird, dass die VM bereit ist. Weitere Informationen zu cloud-init unter Azure finden Sie in der [Dokumentation](./linux/using-cloud-init.md).
 
 
-Informationen zum Troubleshooting bei der Ausführung benutzerdefinierter Daten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init) im Thema zum Troubleshooting.
+Informationen zum Troubleshooting bei der Ausführung benutzerdefinierter Daten finden Sie in der [Dokumentation](./linux/using-cloud-init.md#troubleshooting-cloud-init) im Thema zum Troubleshooting.
 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Kann ich benutzerdefinierte Daten nach dem Erstellen der VM aktualisieren?
-Für einzelne VMs können benutzerdefinierte Daten im VM-Modell nicht aktualisiert werden. Für VMSS können Sie benutzerdefinierte VMSS-Daten jedoch über die [REST-API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) aktualisieren. (Dies gilt nicht für PS- oder AZ CLI-Clients.) Beim Aktualisieren von benutzerdefinierten Daten im VMSS-Modell geschieht Folgendes:
+Für einzelne VMs können benutzerdefinierte Daten im VM-Modell nicht aktualisiert werden. Für VMSS können Sie benutzerdefinierte VMSS-Daten jedoch über die [REST-API](/rest/api/compute/virtualmachinescalesets/update) aktualisieren. (Dies gilt nicht für PS- oder AZ CLI-Clients.) Beim Aktualisieren von benutzerdefinierten Daten im VMSS-Modell geschieht Folgendes:
 * Vorhandene Instanzen in der VMSS erhalten die aktualisierten benutzerdefinierten Daten erst, wenn Sie das Reimaging durchführen.
 * Vorhandene Instanzen in der VMSS, die aktualisiert werden, erhalten nicht die aktualisierten benutzerdefinierten Daten.
 * Neue Instanzen erhalten die neuen benutzerdefinierten Daten.
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>Kann ich vertrauliche Werte in benutzerdefinierte Daten einschließen?
-Es wird empfohlen, vertrauliche Daten **nicht** in benutzerdefinierten Daten zu speichern. Weitere Informationen finden Sie unter [Bewährte Methoden für die Sicherheit und Verschlüsselung in Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices).
+Es wird empfohlen, vertrauliche Daten **nicht** in benutzerdefinierten Daten zu speichern. Weitere Informationen finden Sie unter [Bewährte Methoden für die Sicherheit und Verschlüsselung in Azure](../security/fundamentals/data-encryption-best-practices.md).
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>Werden benutzerdefinierte Daten in IMDS zur Verfügung gestellt?

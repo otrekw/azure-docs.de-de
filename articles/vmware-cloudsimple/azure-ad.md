@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077318"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Verwenden von Azure AD als Identitätsanbieter für vCenter in einer privaten CloudSimple-Cloud
 
@@ -46,7 +46,7 @@ Bevor Sie beginnen, benötigen Sie Zugriff auf Ihr Azure-Abonnement mit globalen
 > [!NOTE]
 > Wenn Sie bereits über Azure AD verfügen, können Sie diesen Abschnitt überspringen.
 
-1. Richten Sie Azure AD für Ihr Abonnement ein, wie in der [Azure AD-Dokumentation](../active-directory/fundamentals/get-started-azure-ad.md) beschrieben.
+1. Richten Sie Azure AD für Ihr Abonnement ein, wie in der [Azure AD-Dokumentation](../active-directory/fundamentals/active-directory-whatis.md) beschrieben.
 2. Aktivieren Sie Azure Active Directory Premium für Ihr Abonnement, wie unter [Registrieren für Azure Active Directory Premium](../active-directory/fundamentals/active-directory-get-started-premium.md) beschrieben.
 3. Richten Sie einen benutzerdefinierten Domänennamen ein, und überprüfen Sie den benutzerdefinierten Domänennamen, wie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md) beschrieben.
     1. Richten Sie einen DNS-Eintrag für Ihre Domänenregistrierungsstelle mit den in Azure bereitgestellten Informationen ein.
@@ -59,17 +59,17 @@ Optional können Sie auch andere Azure AD-Features konfigurieren.  Diese sind ni
 > [!NOTE]
 > Dies ist ein wichtiger Schritt zum Aktivieren von Azure AD als Identitätsquelle für vCenter.  Stellen Sie sicher, dass alle Schritte ordnungsgemäß ausgeführt werden, um Probleme zu vermeiden.
 
-1. Aktivieren Sie Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services mit dem Azure-Portal](../active-directory-domain-services/active-directory-ds-getting-started.md) beschrieben.
-2. Richten Sie das Netzwerk ein, das von den Azure AD Domain Services verwendet wird, wie unter [Aktivieren von Azure Active Directory Domain Services mit dem Azure-Portal](../active-directory-domain-services/active-directory-ds-getting-started-network.md) beschrieben.
-3. Konfigurieren Sie die Administratorgruppe zum Verwalten der Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services mit dem Azure-Portal](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md) beschrieben.
-4. Aktualisieren Sie die DNS-Einstellungen für Ihre Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-dns.md) beschrieben.  Wenn Sie über das Internet eine Verbindung mit AD herstellen möchten, richten Sie den DNS-Eintrag für die öffentliche IP-Adresse der Azure AD Domain Services mit dem Domänennamen ein.
-5. Aktivieren Sie die Kennworthashsynchronisierung für Benutzer.  In diesem Schritt wird die Synchronisierung der Kennworthashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services aktiviert. Nach der Einrichtung der Kennworthashsynchronisierung können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden. Weitere Informationen finden Sie unter [Aktivieren der Kennworthashsynchronisierung für Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+1. Aktivieren Sie Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services mit dem Azure-Portal](../active-directory-domain-services/tutorial-create-instance.md) beschrieben.
+2. Richten Sie das Netzwerk ein, das von den Azure AD Domain Services verwendet wird, wie unter [Aktivieren von Azure Active Directory Domain Services mit dem Azure-Portal](../active-directory-domain-services/tutorial-create-instance.md) beschrieben.
+3. Konfigurieren Sie die Administratorgruppe zum Verwalten der Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services mit dem Azure-Portal](../active-directory-domain-services/tutorial-create-instance.md) beschrieben.
+4. Aktualisieren Sie die DNS-Einstellungen für Ihre Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md) beschrieben.  Wenn Sie über das Internet eine Verbindung mit AD herstellen möchten, richten Sie den DNS-Eintrag für die öffentliche IP-Adresse der Azure AD Domain Services mit dem Domänennamen ein.
+5. Aktivieren Sie die Kennworthashsynchronisierung für Benutzer.  In diesem Schritt wird die Synchronisierung der Kennworthashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services aktiviert. Nach der Einrichtung der Kennworthashsynchronisierung können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden. Weitere Informationen finden Sie unter [Aktivieren der Kennworthashsynchronisierung für Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md).
     1. Wenn reine Cloudbenutzer vorhanden sind, müssen diese ihr Kennwort über den <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-Zugriffsbereich</a> ändern, um sicherzustellen, dass Kennworthashes in dem Format gespeichert werden, das von NTLM oder Kerberos benötigt wird.  Befolgen Sie die Anleitungen unter [Aktivieren der Kennworthashsynchronisierung mit Ihrer verwalteten Domäne für reine Cloudbenutzerkonten](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Dieser Schritt muss für einzelne Benutzer und alle neuen Benutzer durchgeführt werden, die in Ihrem Azure AD-Verzeichnis mithilfe des Azure-Portals oder mit Azure AD-PowerShell-Cmdlets erstellt werden. Benutzer, die Zugriff auf Azure AD Domain Services benötigen, müssen den <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-Zugriffsbereich</a> verwenden und auf ihr Profil zugreifen, um das Kennwort zu ändern.
 
         > [!NOTE]
         > Falls Ihr Unternehmen über reine Cloudbenutzerkonten verfügt, müssen alle Benutzer, die Azure Active Directory Domain Services verwenden möchten, ihre Kennwörter ändern. Ein reines Cloudbenutzerkonto ist ein Konto, das in Ihrem Azure AD-Verzeichnis über das Azure-Portal oder mithilfe von Azure AD PowerShell-Cmdlets erstellt wurde. Solche Benutzerkonten werden nicht von einem lokalen Verzeichnis aus synchronisiert.
 
-    2. Wenn Sie Kennwörter aus Ihrem lokalen Active Directory synchronisieren, führen Sie die Schritte aus, die in der [Active Directory-Dokumentation](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md) beschrieben werden.
+    2. Wenn Sie Kennwörter aus Ihrem lokalen Active Directory synchronisieren, führen Sie die Schritte aus, die in der [Active Directory-Dokumentation](../active-directory-domain-services/tutorial-configure-password-hash-sync.md) beschrieben werden.
 
 6.  Konfigurieren Sie Secure LDAP für Ihre Azure Active Directory Domain Services wie unter [Konfigurieren von Secure LDAP (LDAPS) für eine von Azure AD Domain Services verwaltete Domäne](../active-directory-domain-services/tutorial-configure-ldaps.md) beschrieben.
     1. Laden Sie ein Zertifikat für die Verwendung durch Secure LDAP hoch, wie im Azure-Thema [Abrufen eines Zertifikats für Secure LDAP](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap) beschrieben wird.  CloudSimple empfiehlt die Verwendung eines signierten Zertifikats, das von einer Zertifizierungsstelle ausgestellt wurde, um sicherzustellen, dass vCenter dem Zertifikat vertrauen kann.

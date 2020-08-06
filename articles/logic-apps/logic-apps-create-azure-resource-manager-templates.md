@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066071"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 
@@ -49,14 +49,14 @@ Angenommen, Sie haben eine Logik-App, die eine Nachricht von einer Azure Service
 
 Diese Beispiele veranschaulichen das Erstellen und Bereitstellen von Logik-Apps mithilfe von Azure Resource Manager-Vorlagen, Azure Pipelines in Azure DevOps und Azure PowerShell:
 
-* [Beispiel: Verbinden mit Azure Service Bus-Warteschlangen über Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Beispiel: Verbinden mit Azure Storage-Konten über Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Beispiel: Einrichten einer Funktions-App-Aktion für Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Beispiel: Verbinden mit einem Integrationskonto über Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Beispiel: Verbinden mit Azure Service Bus-Warteschlangen über Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Verbinden mit Azure Storage-Konten über Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Einrichten einer Funktions-App-Aktion für Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Verbinden mit einem Integrationskonto über Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>Installieren von PowerShell-Modulen
 
-1. Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps), sofern dies noch nicht geschehen ist.
+1. Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps), sofern dies noch nicht geschehen ist.
 
 1. Der einfachste Weg zum Installieren des LogicAppTemplate-Moduls aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/LogicAppTemplate) besteht darin, den folgenden Befehl auszuführen:
 
@@ -80,7 +80,7 @@ Wenn Sie den `Get-LogicAppTemplate`-Befehl mit diesem Tool ausführen, geht der 
 
 ### <a name="generate-template-with-powershell"></a>Generieren einer Vorlage mit PowerShell
 
-Um Ihre Vorlage nach dem Installieren von LogicAppTemplate-Modul und [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) zu generieren, führen Sie den folgenden PowerShell-Befehl aus:
+Um Ihre Vorlage nach dem Installieren von LogicAppTemplate-Modul und [Azure CLI](/cli/azure/?view=azure-cli-latest) zu generieren, führen Sie den folgenden PowerShell-Befehl aus:
 
 ```text
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json

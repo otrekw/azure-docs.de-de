@@ -3,16 +3,16 @@ title: Verwalten der Sicherungen von Azure-Dateifreigaben
 description: In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch Azure Backup gesichert werden.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073300"
 ---
 # <a name="manage-azure-file-share-backups"></a>Verwalten der Sicherungen von Azure-Dateifreigaben
 
-In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) gesichert werden. Sie lernen, wie Sie Verwaltungsaufgaben im Recovery Services-Tresor ausführen.
+In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch [Azure Backup](./backup-overview.md) gesichert werden. Sie lernen, wie Sie Verwaltungsaufgaben im Recovery Services-Tresor ausführen.
 
 ## <a name="monitor-jobs"></a>Überwachen von Aufträgen
 
@@ -165,4 +165,4 @@ So heben Sie die Registrierung eines Speicherkontos auf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Behandeln von Problemen beim Sichern von Azure-Dateifreigaben](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files).
+Weitere Informationen finden Sie unter [Behandeln von Problemen beim Sichern von Azure-Dateifreigaben](./troubleshoot-azure-files.md).

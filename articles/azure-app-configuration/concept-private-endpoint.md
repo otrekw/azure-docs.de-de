@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042119"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Verwenden privater Endpunkte für Azure App Configuration
 
@@ -22,9 +22,6 @@ Die Verwendung privater Endpunkte für Ihren App Configuration-Speicher ermögli
 - Sichern Sie die Konfigurationsdetails Ihrer Anwendung, indem Sie die Firewall so konfigurieren, dass alle Verbindungen mit App Configuration am öffentlichen Endpunkt blockiert werden.
 - Erhöhen Sie die Sicherheit für das virtuelle Netzwerk (VNET), um sicherzustellen, dass Daten nicht aus dem VNET entfernt werden.
 - Stellen Sie sichere Verbindungen mit dem App Configuration-Speicher aus lokalen Netzwerken her, die sich mit dem VNET über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoutes](../expressroute/expressroute-locations.md) mit privatem Peering verbinden.
-
-> [!NOTE]
-> Die Funktion für private Endpunkts ist jetzt in allen Regionen allgemein verfügbar, *außer* in „Indien, Mitte“. In der Region **Indien, Mitte** bietet Azure App Configuration die Verwendung privater Endpunkte als öffentliche Vorschau an. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.
 
 ## <a name="conceptual-overview"></a>Konzeptionelle Übersicht
 

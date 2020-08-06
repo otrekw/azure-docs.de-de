@@ -3,12 +3,12 @@ title: Konfigurieren von Kubernetes-Clustern mit Azure Arc-Aktivierung mit Azure
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor die Überwachung für Container auf Kubernetes-Clustern mit Azure Arc-Aktivierung konfigurieren können.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092880"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Aktivieren der Überwachung eines Kubernetes-Clusters mit Azure Arc-Aktivierung
 
@@ -63,7 +63,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
     >[!IMPORTANT]
     >Die für die Überwachung von Kubernetes-Clustern mit Azure Arc-Aktivierung unterstützte Agent-Mindestversion ist ciprod04162020 oder höher.
 
-- [PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) ist erforderlich, wenn Sie die Überwachung mit der PowerShell-Skriptmethode aktivieren.
+- [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) ist erforderlich, wenn Sie die Überwachung mit der PowerShell-Skriptmethode aktivieren.
 
 - [Bash Version 4](https://www.gnu.org/software/bash/) ist erforderlich, wenn Sie die Überwachung mit der Bash-Skriptmethode aktivieren.
 

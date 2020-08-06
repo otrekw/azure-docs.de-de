@@ -3,12 +3,12 @@ title: 'Empfangen von Ereignissen unter Verwendung von Event Processor Host: Azu
 description: Dieser Artikel beschreibt den Event Processor Host in Azure Event Hubs, der die parallele Verwaltung von Prüfpunkten, Leases und das Lesen von Ereignissen vereinfacht.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002521"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
 > [!NOTE]
@@ -22,7 +22,7 @@ ms.locfileid: "85320637"
 
 Azure Event Hubs ist ein leistungsfähiger Dienst zur Erfassung von Telemetriedaten, der zum Streamen von Millionen von Ereignissen zu geringen Kosten verwendet werden kann. In diesem Artikel wird beschrieben, wie erfasste Ereignisse mithilfe des *Ereignisprozessorhosts* (Event Processor Host, EPH) genutzt und verarbeitet werden. Dabei handelt es sich um einen intelligenten Consumer-Agent, der die Verwaltung von Prüfpunkten, Leasing und parallelen Ereignislesern vereinfacht.  
 
-Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](https://msdn.microsoft.com/library/dn568101.aspx) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
+Der Schlüssel zur Skalierung in Event Hubs ist das Konzept der partitionierten Consumer. Im Gegensatz zum Muster der [konkurrierenden Consumer](/previous-versions/msp-n-p/dn568101(v=pandp.10)) ermöglicht das Muster der partitionierten Consumer hohe Skalierbarkeit durch Beseitigen des Konfliktengpasses und Vereinfachen der End-to-End-Parallelität.
 
 ## <a name="home-security-scenario"></a>Szenario zur Haussicherheit
 
@@ -162,7 +162,7 @@ Zusätzlich verwendet eine Überladung von [RegisterEventProcessorAsync](/dotnet
 So funktioniert der Empfang von Epochen:
 
 ### <a name="with-epoch"></a>Mit Epochen
-Bei „epoch“ handelt es sich um einen eindeutigen Bezeichner (epoch-Wert), den der Dienst verwendet, um den Besitz von Partitionen oder Leases zu erzwingen. Mithilfe der [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)-Methode können Sie einen epochenbasierten Empfänger erstellen. Der Empfänger wird für eine bestimmte Event Hub-Partition aus der angegebenen Consumergruppe erstellt.
+Bei „epoch“ handelt es sich um einen eindeutigen Bezeichner (epoch-Wert), den der Dienst verwendet, um den Besitz von Partitionen oder Leases zu erzwingen. Mithilfe der [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)-Methode können Sie einen epochenbasierten Empfänger erstellen. Der Empfänger wird für eine bestimmte Event Hub-Partition aus der angegebenen Consumergruppe erstellt.
 
 Mithilfe des Epochenfeatures können Benutzer sicherstellen, dass immer nur ein Empfänger in einer Consumergruppe vorhanden ist. Hierfür gelten folgende Regeln:
 
@@ -171,7 +171,7 @@ Mithilfe des Epochenfeatures können Benutzer sicherstellen, dass immer nur ein 
 - Wenn ein Empfänger mit einem epoch-Wert von e1 vorhanden ist, ein neuer Empfänger mit einem epoch-Wert von e2 erstellt wird und „e1 > e2“ gilt, schlägt die Erstellung des Empfängers mit dem Wert e2 mit folgender Fehlermeldung fehl: A receiver with epoch e1 already exists. (Ein Empfänger mit dem epoch-Wert e1 ist bereits vorhanden.)
 
 ### <a name="no-epoch"></a>Ohne Epochen
-Mithilfe der [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)-Methode können Sie einen nicht auf Epochen basierenden Empfänger erstellen. 
+Mithilfe der [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)-Methode können Sie einen nicht auf Epochen basierenden Empfänger erstellen. 
 
 In einigen Szenarios bei der Streamverarbeitung müssen Benutzer mehrere Empfänger in einer Consumergruppe erstellen. Für solche Szenarios besteht die Möglichkeit, einen Empfänger ohne epoch-Wert zu erstellen. In diesem Fall sind bis zu fünf gleichzeitige Empfänger in der Consumergruppe möglich.
 

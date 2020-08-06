@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090092"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Erstellen eines Migrationsplans mit Azure Migrate
 
@@ -151,7 +151,7 @@ Bevor Sie Ihren Migrationsplan abschließen, stellen Sie sicher, dass diese wich
 
 - Erhalten Sie ggf. Unterstützung für Ihre Implementierung. Viele Organisationen holen sich externe Unterstützung für ihre Cloudmigration. Für einen schnellen und zuverlässigen Wechsel zu Azure mit persönlicher Unterstützung ziehen Sie einen  [Azure Expert MSP](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)  oder  [Microsoft FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF) in Erwägung.  
 
-Erstellen Sie einen effektiven Cloudmigrationsplan, der detaillierte Informationen über die Liste/Gruppen von Anwendungen, die Sie migrieren möchten, über die Anforderungen an Verfügbarkeit und Ausfallzeiten für Ihre Apps und Datenbanken sowie über die gewünschten Migrationsmeilensteine enthält. Ihr Migrationsplan sollte auch berücksichtigen, wie lange das Kopieren der Daten dauert, und einen angemessenen Puffer für Tests und Umstellungsaktivitäten nach der Migration vorsehen. Die Tests nach der Migration müssen Funktions-, Integrations-, Sicherheits- und Leistungstest-Anwendungsfälle umfassen, um sicherzustellen, dass die migrierten Anwendungen wie erwartet funktionieren und alle Datenbankobjekte und Datenbeziehungen erfolgreich in die Cloud übertragen wurden. Die Tests nach der Migration müssen Funktions-, Integrations-, Sicherheits- und Leistungstest-Anwendungsfälle umfassen, um sicherzustellen, dass die migrierten Anwendungen wie erwartet funktionieren und alle Datenbankobjekte und Datenbeziehungen erfolgreich in die Cloud übertragen wurden.  
+Erstellen Sie einen effektiven Cloudmigrationsplan, der detaillierte Informationen über die Liste/Gruppen von Anwendungen, die Sie migrieren möchten, über die Anforderungen an Verfügbarkeit und Ausfallzeiten für Ihre Apps und Datenbanken sowie über die gewünschten Migrationsmeilensteine enthält. Ihr Migrationsplan sollte auch berücksichtigen, wie lange das Kopieren der Daten dauert, und einen angemessenen Puffer für Tests und Umstellungsaktivitäten nach der Migration vorsehen. Die Tests nach der Migration müssen Funktions-, Integrations-, Sicherheits- und Leistungstest-Anwendungsfälle umfassen, um sicherzustellen, dass die migrierten Anwendungen wie erwartet funktionieren und alle Datenbankobjekte und Datenbeziehungen erfolgreich in die Cloud übertragen wurden.  
 
 Verwenden Sie diese Analyse, um eine Migrationsroadmap zu erstellen und ein Wartungsfenster zu deklarieren, um Ihre Anwendungen und Datenbanken mit minimalen oder ohne Ausfallzeiten zu migrieren und die potenziellen betrieblichen/geschäftlichen Auswirkungen während der Migration zu begrenzen.  
 

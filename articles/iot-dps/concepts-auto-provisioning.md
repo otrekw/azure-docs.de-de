@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4755d3ac30a4f6fdc0568dd88fa0e362d7d140a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975328"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066571"
 ---
 # <a name="auto-provisioning-concepts"></a>Konzepte für die automatische Bereitstellung
 
@@ -103,10 +103,10 @@ Beginnen Sie mit einem Schnellstart zum Einrichten der automatischen Bereitstell
 
 Fahren Sie dann mit einem Schnellstart zur automatischen Bereitstellung eines simulierten Geräts fort, der zu Ihrem Gerätebestätigungsmechanismus und dem SDK Ihres Device Provisioning-Diensts sowie Ihrer Spracheinstellung passt. In diesem Schnellstart durchlaufen Sie die Phasen „Geräteregistrierung“ und „Geräteregistrierung und -konfiguration“: 
 
-|  | Bestätigungsmechanismus für simulierte Geräte | Schnellstart SDK/Sprache |  |
-|--|--|--|--|
-|  | Trusted Platform Module (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509-Zertifikat | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+| Bestätigungsmechanismus für simulierte Geräte | Schnellstart SDK/Sprache |
+| -------------------------------------- | ----------------------- |
+| Trusted Platform Module (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| X.509-Zertifikat | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
 
 
 

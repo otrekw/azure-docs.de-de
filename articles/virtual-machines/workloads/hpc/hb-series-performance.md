@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: e064db5f67e6f8a7e82093bdae9fac7eaa4b6a55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4745fda5417ea937c367a116f999070bd62cf8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077419"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>VM-Größen der HB-Serie
 
@@ -119,8 +119,4 @@ OSU MPI Bandwidth Test v5.4.3
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich ausführlicher über [High Performance Computing](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) in Azure.
-
-
-
-
+Informieren Sie sich ausführlicher über [High Performance Computing](/azure/architecture/topics/high-performance-computing/) in Azure.

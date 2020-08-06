@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090398"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Anzeigen und Erstellen von Abfragen zur Überwachung und Nachverfolgung in Azure Monitor-Protokolle für Azure Logic Apps
 
-Sie können die zugrunde liegenden Abfragen anzeigen, die die Ergebnisse aus [Azure Monitor Protokollen](../log-analytics/log-analytics-overview.md) erzeugen, und Abfragen erstellen, die die Ergebnisse auf Grundlage Ihrer spezifischen Kriterien filtern. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen. Abfragen verwenden die [Kusto-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference), die Sie bearbeiten können, wenn Sie andere Ergebnisse anzeigen möchten. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle für Abfragen](../azure-monitor/log-query/query-language.md).
+Sie können die zugrunde liegenden Abfragen anzeigen, die die Ergebnisse aus [Azure Monitor Protokollen](../azure-monitor/log-query/log-query-overview.md) erzeugen, und Abfragen erstellen, die die Ergebnisse auf Grundlage Ihrer spezifischen Kriterien filtern. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen. Abfragen verwenden die [Kusto-Abfragesprache](https://aka.ms/LogAnalyticsLanguageReference), die Sie bearbeiten können, wenn Sie andere Ergebnisse anzeigen möchten. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle für Abfragen](../azure-monitor/log-query/query-language.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072583"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Austauschen von RosettaNet-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -82,7 +82,7 @@ Befolgen Sie diese Schritte, um eine PIP-Prozesskonfiguration zu Ihrem Integrati
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Name** | Ja | Ihr PIP-Name |
-   | **PIP-Code** | Ja | Der dreistellige PIP-Code (weitere Informationen unter [RosettaNet-PIPs](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)) |
+   | **PIP-Code** | Ja | Der dreistellige PIP-Code (weitere Informationen unter [RosettaNet-PIPs](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)) |
    | **PIP-Version** | Ja | Die PIP-Versionsnummer, die anhand des ausgewählten PIP-Codes bestimmt wird |
    ||||
 

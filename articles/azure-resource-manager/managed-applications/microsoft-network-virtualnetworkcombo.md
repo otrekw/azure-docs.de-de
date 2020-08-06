@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649662"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033201"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Network.VirtualNetworkCombo“
 
@@ -20,11 +20,11 @@ Eine Gruppe von Steuerelementen zum Auswählen eines neuen oder vorhandenen virt
 
 Wenn der Benutzer ein neues virtuelles Netzwerk auswählt, kann er den Namen und das Adresspräfix der einzelnen Subnetze anpassen. Die Konfiguration von Subnetzen ist optional.
 
-![Microsoft.Network.VirtualNetworkCombo – neu](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft.Network.VirtualNetworkCombo – neu](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-new.png)
 
 Wenn der Benutzer ein vorhandenes virtuelles Netzwerk auswählt, muss er jedes von der Bereitstellungsvorlage geforderte Subnetz einem vorhandenen Subnetz zuordnen. Die Konfiguration von Subnetzen ist in diesem Fall erforderlich.
 
-![Microsoft.Network.VirtualNetworkCombo – vorhanden](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft.Network.VirtualNetworkCombo – vorhanden](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schema
 

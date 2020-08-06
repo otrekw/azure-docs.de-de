@@ -3,12 +3,12 @@ title: Anzeigen des monatlichen geschätzten Labkostentrends in Azure DevTest La
 description: Dieser Artikel enthält Informationen zum Nachverfolgen der Kosten Ihres Labs (monatliches geschätztes Kostentrenddiagramm) in Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482767"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283825"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Verfolgen von Kosten eines Labs in Azure DevTest Labs
 Dieser Artikel enthält Informationen dazu, wie Sie die Kosten Ihres Labs nachverfolgen. Sie erfahren darin, wie Sie den geschätzten Kostentrend des Labs für den aktuellen Kalendermonat anzeigen. Außerdem erfahren Sie, wie Sie pro Ressource im Lab die Kosten für den bisherigen Kalendermonat anzeigen.
@@ -69,7 +69,7 @@ Mit DevTest Labs können Sie die Kosten für Ihr Lab besser verwalten, indem Sie
      - Entsprechend müssen Sie beim Definieren einer Webhook-URL im Bereich „Kostenschwellenwert“ die Option **Benachrichtigung** auf **Ein** festlegen.
      - Vor der Eingabe ist es erforderlich, dass Sie einen Webhook erstellen.  
 
-       Weitere Informationen zu Webhooks finden Sie unter [Erstellen eines Webhooks oder einer API-Azure-Funktion](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+       Weitere Informationen zu Webhooks finden Sie unter [Erstellen eines Webhooks oder einer API-Azure-Funktion](../azure-functions/functions-bindings-http-webhook.md). 
 
 ## <a name="view-cost-by-resource"></a>Anzeigen von Kosten nach Ressource 
 Mit der Funktion für den monatlichen Kostentrend in Labs können Sie sehen, wie viel Sie im aktuellen Kalendermonat ausgegeben haben. Außerdem wird die Projektion der Ausgaben bis zum Monatsende angezeigt, die auf Ihren Ausgaben der letzten sieben Tage basiert. Sie können die Funktion **Kosten nach Ressource** verwenden, die Ihnen die Kosten für den bisherigen Kalendermonat **pro Ressource** in einer Tabelle anzeigt, um besser zu verstehen, warum die Ausgaben im Lab früh die Schwellenwerte erreichen.
@@ -93,4 +93,3 @@ Diese Schritte könnten Sie als Nächstes ausführen:
 * [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md): Wenn Sie eine VM erstellen, geben Sie eine Basis an. Dabei kann es sich entweder um ein benutzerdefiniertes Image oder ein Marketplace-Image handeln. In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes Image aus einer VHD-Datei erstellen.
 * [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md): DevTest Labs unterstützt die Erstellung virtueller Computer auf der Basis von Azure Marketplace-Images. In diesem Artikel erfahren Sie, wie Sie ggf. angeben, welche Azure Marketplace-Images zum Erstellen virtueller Computer in einem Lab verwendet werden können.
 * [Erstellen einer VM in einem Lab:](devtest-lab-add-vm.md) In diesem Artikel wird veranschaulicht, wie Sie eine VM aus einem Basisimage erstellen (entweder aus einem benutzerdefinierten Image oder einem Marketplace-Image) und wie Sie mit Artefakten auf Ihrer VM arbeiten.
-

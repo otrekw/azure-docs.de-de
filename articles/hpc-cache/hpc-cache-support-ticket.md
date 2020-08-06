@@ -3,15 +3,15 @@ title: Öffnen eines Supporttickets für Azure HPC Cache
 description: Öffnen einer Hilfeanforderung für Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: rohogue
-ms.openlocfilehash: 76261f4e2e42b4272abcd976fcf2644fd43aa818
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: v-erkel
+ms.openlocfilehash: 95247985be955b71403a5c2c78962792c6451183
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74169351"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061433"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Öffnen eines Supporttickets für Azure HPC Cache
 

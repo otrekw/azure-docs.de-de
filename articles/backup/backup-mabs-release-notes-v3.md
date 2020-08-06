@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zu bekannten Problemen und Pr
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032560"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Anmerkungen zu dieser Version für Microsoft Azure Backup Server
 
@@ -54,13 +54,13 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 
 **Problemumgehung:** Führen Sie zum Durchführen des Upgrades auf MABS V3 mithilfe des russischen Installationspakets die folgenden Schritte aus:
 
-1. [Sichern](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) Sie Ihre SQL-Datenbank, und deinstallieren Sie MABS V2 (wählen Sie das Beibehalten der geschützten Daten während der Deinstallation aus).
+1. [Sichern](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server#SSMSProcedure) Sie Ihre SQL-Datenbank, und deinstallieren Sie MABS V2 (wählen Sie das Beibehalten der geschützten Daten während der Deinstallation aus).
 2. Führen Sie ein Upgrade auf SQL 2017 (Enterprise) durch, und deinstallieren Sie die Berichterstellung als Teil des Upgrades.
-3. [Installieren](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) Sie SQL Server Reporting Services (SSRS).
-4. [Installieren](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) Sie SQL Server Management Studio (SSMS).
-5. Konfigurieren Sie die Berichterstellung mit den Parametern, wie in [SSRS-Konfiguration mit SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs) dokumentiert.
+3. [Installieren](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server) Sie SQL Server Reporting Services (SSRS).
+4. [Installieren](/sql/ssms/download-sql-server-management-studio-ssms) Sie SQL Server Management Studio (SSMS).
+5. Konfigurieren Sie die Berichterstellung mit den Parametern, wie in [SSRS-Konfiguration mit SQL 2017](./backup-azure-microsoft-azure-backup.md#upgrade-mabs) dokumentiert.
 6. [Installieren](backup-azure-microsoft-azure-backup.md) Sie MABS V3.
-7. Führen Sie das [Wiederherstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) von SQL mithilfe von SSMS durch, und führen Sie anschließend das DPM-Synchronisierungstool wie [hier](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync) beschrieben aus.
+7. Führen Sie das [Wiederherstellen](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) von SQL mithilfe von SSMS durch, und führen Sie anschließend das DPM-Synchronisierungstool wie [hier](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync) beschrieben aus.
 8. Aktualisieren Sie die Eigenschaft „DataBaseVersion“ in der dbo.tbl_DLS_GlobalSetting-Tabelle mit folgendem Befehl:
 
     ```sql

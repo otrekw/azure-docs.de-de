@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132944"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088528"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-Startfehler auf einer Azure-VM
 
@@ -28,7 +28,7 @@ ms.locfileid: "86132944"
 
 ## <a name="symptom"></a>Symptom
 
- Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Screenshots im Fenster [Startdiagnose](../windows/boot-diagnostics.md) wird eine der folgenden Fehlermeldungen angezeigt:
+ Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Screenshots im Fenster [Startdiagnose](./boot-diagnostics.md) wird eine der folgenden Fehlermeldungen angezeigt:
 
 - Stecken Sie das USB-Laufwerk mit dem BitLocker-Schlüssel ein.
 
@@ -48,7 +48,7 @@ Um dieses Problem zu beheben, beenden Sie die VM, heben ihre Zuordnung auf und s
 Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaßen vor, um die BEK-Datei manuell wiederherzustellen:
 
 1. Erstellen Sie eine Momentaufnahme des Systemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
-2. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md) Zum Ausführen des Befehls [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in Schritt 7 muss das Feature **BitLocker Drive Encryption** auf der Wiederherstellungs-VM aktiviert werden.
+2. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md) Zum Ausführen des Befehls [manage-bde](/windows-server/administration/windows-commands/manage-bde) in Schritt 7 muss das Feature **BitLocker Drive Encryption** auf der Wiederherstellungs-VM aktiviert werden.
 
     Wenn Sie einen verwalteten Datenträger anfügen, wird möglicherweise eine Fehlermeldung darüber angezeigt, dass Verschlüsselungseinstellungen enthalten sind und er daher nicht als Datenträger für Daten verwendet werden kann. Führen Sie in diesem Fall das folgende Skript aus, um das Anfügen des Datenträgers erneut zu versuchen:
 
@@ -70,7 +70,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
     ```
      Sie können einen verwalteten Datenträger nicht an einen virtuellen Computer anfügen, der aus einem Blobimage wiederhergestellt wurde.
 
-3. Nachdem der Datenträger angefügt wurde, stellen Sie eine Remotedesktopverbindung mit der Wiederherstellungs-VM her, damit Sie einige Azure PowerShell-Skripts ausführen können. Achten Sie darauf, dass die [aktuelle Version von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) auf der Wiederherstellungs-VM installiert ist.
+3. Nachdem der Datenträger angefügt wurde, stellen Sie eine Remotedesktopverbindung mit der Wiederherstellungs-VM her, damit Sie einige Azure PowerShell-Skripts ausführen können. Achten Sie darauf, dass die [aktuelle Version von Azure PowerShell](/powershell/azure/) auf der Wiederherstellungs-VM installiert ist.
 
 4. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus, um sich beim Azure-Abonnement anzumelden.
 

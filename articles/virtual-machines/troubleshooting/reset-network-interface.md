@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: b9a4cf8b9bbf88ae792f345d330503cb4698c430
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509221"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005955"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Die Netzwerkschnittstelle für den virtuellen Windows-Computer in Azure zurücksetzen 
 
@@ -47,7 +47,7 @@ Dieser Artikel zeigt, wie Sie die Netzwerkschnittstelle für Azure-Windows-VMs z
 
 #### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
-1. Sicherstellen, dass die [neueste Azure PowerShell-Version](/powershell/azure/overview) installiert ist
+1. Sicherstellen, dass die [neueste Azure PowerShell-Version](/powershell/azure/) installiert ist
 2. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus:
 
     ```powershell
@@ -90,7 +90,7 @@ Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
 
 #### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
-1. Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version](/powershell/azure/overview) installiert haben.
+1. Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version](/powershell/azure/) installiert haben.
 2. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus:
 
     ```powershell

@@ -4,12 +4,12 @@ description: Schnelle Einführung in die Azure PowerShell-Cmdlets zum Verwalten 
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2c80da92c7acad5180c763d259357f5369f225f7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092778"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets
 
@@ -21,7 +21,7 @@ Dieser Artikel basiert auf Cmdlets im Az Batch-Modul 1.0.0. Es empfiehlt sich, d
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Installieren und konfigurieren Sie das Azure PowerShell-Modul.](/powershell/azure/overview) Informationen zum Installieren eines bestimmten Azure Batch-Moduls (etwa eines vorab veröffentlichten Moduls) finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
+* [Installieren und konfigurieren Sie das Azure PowerShell-Modul.](/powershell/azure/) Informationen zum Installieren eines bestimmten Azure Batch-Moduls (etwa eines vorab veröffentlichten Moduls) finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
 
 * Führen Sie das Cmdlet **Connect-AzAccount** aus, um eine Verbindung mit Ihrem Abonnement herzustellen (die Azure Batch-Cmdlets sind Teil des Azure Resource Manager-Moduls):
 

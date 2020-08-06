@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042819"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -360,11 +360,10 @@ Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](htt
 
 [Erstellen von Kanälen, von denen eine Livecodierung eines Single-Bitrate-Datenstroms in einen Datenstrom mit adaptiver Bitrate ausgeführt wird, mit dem .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[Verwalten von Kanälen mithilfe der REST-API](https://docs.microsoft.com/rest/api/media/operations/channel)
+[Verwalten von Kanälen mithilfe der REST-API](/rest/api/media/operations/channel)
 
 [Media Services-Konzepte](media-services-concepts.md)
 
 [Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-

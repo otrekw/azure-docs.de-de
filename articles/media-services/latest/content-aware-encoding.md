@@ -12,16 +12,16 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234893"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039141"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Ermitteln des optimalen Bitratenwerts für eine bestimmte Auflösung unter Verwendung der Voreinstellung für die inhaltsbezogene Codierung
 
-Um Inhalte für die Übermittlung durch [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) vorzubereiten, muss Video mit mehreren Bitraten (hoch bis niedrig) codiert werden. Dadurch wird eine gleichmäßige Qualitätsminderung gewährleistet, da mit abnehmender Bitrate auch die Auflösung des Videos verringert wird. Bei einer solchen Codierung mit Mehrfachbitrate wird eine sogenannte Codierungsleiter (Tabelle mit Auflösungen und Bitraten) verwendet. Weitere Informationen hierzu finden Sie in den [integrierten Codierungsvoreinstellungen](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) von Media Services.
+Um Inhalte für die Übermittlung durch [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) vorzubereiten, muss Video mit mehreren Bitraten (hoch bis niedrig) codiert werden. Dadurch wird eine gleichmäßige Qualitätsminderung gewährleistet, da mit abnehmender Bitrate auch die Auflösung des Videos verringert wird. Bei einer solchen Codierung mit Mehrfachbitrate wird eine sogenannte Codierungsleiter (Tabelle mit Auflösungen und Bitraten) verwendet. Weitere Informationen hierzu finden Sie in den [integrierten Codierungsvoreinstellungen](/rest/api/media/transforms/createorupdate#encodernamedpreset) von Media Services.
 
 Berücksichtigen Sie stets den Inhalt, den Sie verarbeiten, und passen Sie die Codierungsleiter an die Komplexität des jeweiligen Videos an, bzw. optimieren Sie sie entsprechend. Bei jeder Auflösung gibt es eine Bitrate, bei der eine Qualitätssteigerung nicht mehr wahrnehmbar ist. Der Encoder arbeitet dann mit diesem optimalen Bitratenwert. Die nächste Optimierungsstufe ist die Wahl der Auflösungen basierend auf dem Inhalt. Beispielsweise profitiert ein Video einer PowerPoint-Präsentation nicht von einem Wert unter 720p. Darüber hinaus kann der Encoder aufgefordert werden, die Einstellungen für jede Einstellung innerhalb des Videos zu optimieren. 
 

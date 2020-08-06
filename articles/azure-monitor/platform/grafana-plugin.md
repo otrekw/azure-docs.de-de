@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Azure Monitor- und Application Insight
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073475"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Das Plug-In sammelt Daten zur Anwendungsleistung, die von Azure Monitor erfasst wurden, einschließlich verschiedener Protokolle und Metriken. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -59,9 +59,9 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
 2. Wählen Sie einen Namen für die Datenquelle, und wählen Sie in der Dropdownliste **Azure Monitor** als Typ aus.
 
 3. Erstellen Sie einen Dienstprinzipal: Grafana verwendet zum Herstellen einer Verbindung mit Azure Monitor-APIs und zum Sammeln von Daten einen Azure Active Directory-Dienstprinzipal. Sie müssen einen Dienstprinzipal erstellen (oder einen vorhandenen Dienstprinzipal verwenden), um den Zugriff auf Ihre Azure-Ressourcen zu verwalten.
-    * Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Kopieren und speichern Sie Ihre Mandanten-ID (Verzeichnis-ID), Client-ID (Anwendungs-ID) und den geheimen Clientschlüssel (Wert des Anwendungsschlüssels).
-    * Unter [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) finden Sie Informationen zum Zuweisen der Rolle „Leser“ zur Azure Active Directory-Anwendung auf der zu überwachenden Abonnement-, Ressourcengruppen- oder Ressourcenebene. 
-    Für die Log Analytics-API ist die [Rolle „Log Analytics-Leser“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) erforderlich, welche die Berechtigungen der Rolle "Leser" enthält und ergänzt.
+    * Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../../active-directory/develop/howto-create-service-principal-portal.md). Kopieren und speichern Sie Ihre Mandanten-ID (Verzeichnis-ID), Client-ID (Anwendungs-ID) und den geheimen Clientschlüssel (Wert des Anwendungsschlüssels).
+    * Unter [Zuweisen der Anwendung zu einer Rolle](../../active-directory/develop/howto-create-service-principal-portal.md) finden Sie Informationen zum Zuweisen der Rolle „Leser“ zur Azure Active Directory-Anwendung auf der zu überwachenden Abonnement-, Ressourcengruppen- oder Ressourcenebene. 
+    Für die Log Analytics-API ist die [Rolle „Log Analytics-Leser“](../../role-based-access-control/built-in-roles.md#log-analytics-reader) erforderlich, welche die Berechtigungen der Rolle "Leser" enthält und ergänzt.
 
 4. Geben Sie die Verbindungsdetails zu den APIs an, die Sie verwenden möchten. Sie können eine Verbindung zu allen oder nur zu einigen herstellen. 
     * Wenn Sie eine Verbindung mit Azure Monitor zum Sammeln sowohl von Metriken als auch von Protokollen herstellen, können Sie die gleichen Anmeldeinformationen verwenden, indem Sie **Gleiche Details wie Azure Monitor-API** auswählen.
@@ -159,4 +159,3 @@ Wenn Sie eine Grafana-Umgebung in Azure eingerichtet haben, werden Ihnen für au
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überblick über Metriken in Microsoft Azure](data-platform.md)
-

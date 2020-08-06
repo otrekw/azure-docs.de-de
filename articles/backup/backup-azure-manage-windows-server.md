@@ -3,16 +3,16 @@ title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: In diesem Artikel erfahren Sie, wie Sie das Dashboard „Übersicht“ des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 1b3cc317b8a26b16bbeda9793f87d089f2fbc59f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054902"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
-In diesem Artikel wird erläutert, wie Sie das Dashboard **Übersicht** des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden. Wenn Sie einen Recovery Services-Tresor aus der Liste öffnen, wird das Dashboard **Übersicht** für den ausgewählten Tresor geöffnet. Das Dashboard stellt verschiedene Details zum Tresor bereit. Es gibt *Kacheln*, auf denen Folgendes angezeigt wird: der Status von kritischen Warnungen und allgemeinen Warnmeldungen, in Bearbeitung befindliche und fehlerhafte Sicherungsaufträge sowie die Menge von belegtem lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS). Wenn Sie Azure-VMs in den Tresor sichern, werden auf der Kachel [**Status der Sicherungsvorüberprüfung** alle kritischen oder fehlerhaften Elemente angezeigt](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). In der folgenden Abbildung wird das Dashboard **Übersicht** für **Contoso-vault** angezeigt. Auf der Kachel **Sicherungselemente** wird angezeigt, dass es neun beim Tresor registrierte Elemente gibt.
+In diesem Artikel wird erläutert, wie Sie das Dashboard **Übersicht** des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden. Wenn Sie einen Recovery Services-Tresor aus der Liste öffnen, wird das Dashboard **Übersicht** für den ausgewählten Tresor geöffnet. Das Dashboard stellt verschiedene Details zum Tresor bereit. Es gibt *Kacheln*, auf denen Folgendes angezeigt wird: der Status von kritischen Warnungen und allgemeinen Warnmeldungen, in Bearbeitung befindliche und fehlerhafte Sicherungsaufträge sowie die Menge von belegtem lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS). Wenn Sie Azure-VMs in den Tresor sichern, werden auf der Kachel [**Status der Sicherungsvorüberprüfung** alle kritischen oder fehlerhaften Elemente angezeigt](#backup-pre-check-status). In der folgenden Abbildung wird das Dashboard **Übersicht** für **Contoso-vault** angezeigt. Auf der Kachel **Sicherungselemente** wird angezeigt, dass es neun beim Tresor registrierte Elemente gibt.
 
 ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -178,7 +178,7 @@ Um einen bestimmten Typ einer geschützten Instanz zu untersuchen, klicken Sie a
 
 ![Liste der Sicherungstypen](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-Die Liste der virtuellen Computer enthält nützliche Daten: die zugeordnete Ressourcengruppe, die vorherige [Sicherungsvorüberprüfung](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status), der Status der letzten Sicherung und das Datum des letzten Wiederherstellungspunkts. Über die Auslassungspunkte in der letzten Spalte wird das Menü zum Auslösen allgemeiner Aufgaben geöffnet. Die Spalten enthalten für die einzelnen Sicherungstypen unterschiedliche hilfreiche Daten.
+Die Liste der virtuellen Computer enthält nützliche Daten: die zugeordnete Ressourcengruppe, die vorherige [Sicherungsvorüberprüfung](#backup-pre-check-status), der Status der letzten Sicherung und das Datum des letzten Wiederherstellungspunkts. Über die Auslassungspunkte in der letzten Spalte wird das Menü zum Auslösen allgemeiner Aufgaben geöffnet. Die Spalten enthalten für die einzelnen Sicherungstypen unterschiedliche hilfreiche Daten.
 
 ![Liste der Sicherungstypen](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
@@ -287,4 +287,4 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
-* Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
+* Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](./backup-overview.md)

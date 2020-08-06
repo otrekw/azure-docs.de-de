@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e9d995a69a4fc54d6f001ced7503a9138d737dbc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089038"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Verwenden von PowerShell zum Verwalten von Traffic Manager
 
@@ -38,7 +38,7 @@ Jedes Traffic Manager-Profil wird durch eine Ressource vom Typ „TrafficManager
 
 Für diese Anweisungen wird Microsoft Azure PowerShell verwendet. Im folgenden Artikel wird die Installation und Konfiguration von Azure PowerShell erläutert.
 
-* [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
+* [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/)
 
 In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie eine vorhandene Ressourcengruppe besitzen. Sie können mithilfe des folgenden Befehls eine Ressourcengruppe erstellen:
 

@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 45fb1f8844067cb34b415c3897db3b1233ab5c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124485"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057564"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -16,7 +16,7 @@ Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindi
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Reduzieren der DNS-Gültigkeitsdauer des Traffic Manager-Profils für ein schnelleres Failover auf fehlerfreie Endpunkte
 
-Verwenden Sie die [Gültigkeitsdauereinstellungen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) Ihres Traffic Manager-Profils, um anzugeben, wie schnell Endpunkte gewechselt werden, wenn ein bestimmter Endpunkt nicht mehr auf Abfragen reagiert. Wenn Sie die Werte der Gültigkeitsdauer verringern, werden Clients schneller an funktionierende Endpunkte weitergeleitet.
+Verwenden Sie die [Gültigkeitsdauereinstellungen](../traffic-manager/traffic-manager-performance-considerations.md) Ihres Traffic Manager-Profils, um anzugeben, wie schnell Endpunkte gewechselt werden, wenn ein bestimmter Endpunkt nicht mehr auf Abfragen reagiert. Wenn Sie die Werte der Gültigkeitsdauer verringern, werden Clients schneller an funktionierende Endpunkte weitergeleitet.
 
 Azure Advisor ermittelt Traffic Manager-Profile, für die eine längere Gültigkeitsdauer konfiguriert ist. Es wird empfohlen, eine Gültigkeitsdauer von 20 oder 60 Sekunden zu konfigurieren, je nachdem, ob das Profil für [Schnelles Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/) konfiguriert ist.
 
@@ -27,7 +27,7 @@ In Azure Advisor erhalten Sie eine einheitliche, konsolidierte Übersicht über 
 > [!NOTE]
 > Bevor Sie Empfehlungen erhalten können, muss die Datenbank ca. eine Woche lang verwendet werden, und innerhalb dieser Woche muss konsistent Aktivität bestehen. SQL Database Advisor kann leichter für einheitliche Abfragemuster als für zufällige Aktivitätsspitzen optimiert werden.
 
-Weitere Informationen finden Sie unter [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+Weitere Informationen finden Sie unter [SQL Database Advisor](../azure-sql/database/database-advisor-implement-performance-recommendations.md).
 
 ## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>Verbessern der Zuverlässigkeit und der Leistung durch Upgraden Ihrer Speicherclientbibliothek auf die neueste Version
 
@@ -39,7 +39,7 @@ Azure Advisor folgt Empfehlungen zum Verbessern der App Service-Leistung und zum
 * Erkennen von Instanzen, bei denen Arbeitsspeicher- oder CPU-Ressourcen durch App-Laufzeiten ausgeschöpft sind, mit Möglichkeiten zur Abhilfe
 * Erkennen von Instanzen, bei denen durch Zusammenstellen von Ressourcen wie Web-Apps und Datenbanken die Leistung verbessert und Kosten gesenkt werden können
 
-Weitere Informationen finden Sie unter [Bewährte Methoden für Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
+Weitere Informationen finden Sie unter [Bewährte Methoden für Azure App Service](../app-service/app-service-best-practices.md).
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Verwenden von verwalteten Datenträgern zum Verhindern einer Datenträger-E/A-Drosselung
 
@@ -53,11 +53,11 @@ Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit g
 
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Beseitigen der Datenschiefe in Ihren SQL Data Warehouse-Tabellen zum Erhöhen der Abfrageleistung
 
-Datenschiefe kann unnötige Datenverschiebungen oder Ressourcenengpässe beim Ausführen Ihrer Workload verursachen. Advisor ermittelt eine Datenschiefe bei der Verteilung von mehr als 15 %. Es wird empfohlen, die Daten neu zu verteilen und die ausgewählten Schlüssel für die Tabellenverteilung zu überprüfen. Weitere Informationen zum Identifizieren und Entfernen von Datenschiefe finden Sie unter [Problembehandlung bei Datenschiefe](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
+Datenschiefe kann unnötige Datenverschiebungen oder Ressourcenengpässe beim Ausführen Ihrer Workload verursachen. Advisor ermittelt eine Datenschiefe bei der Verteilung von mehr als 15 %. Es wird empfohlen, die Daten neu zu verteilen und die ausgewählten Schlüssel für die Tabellenverteilung zu überprüfen. Weitere Informationen zum Identifizieren und Entfernen von Datenschiefe finden Sie unter [Problembehandlung bei Datenschiefe](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice).
 
 ## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Erstellen von Tabellenstatistiken oder Aktualisieren von veralteten Tabellenstatistiken für Ihre SQL Data Warehouse-Tabellen zum Erhöhen der Abfrageleistung
 
-Advisor identifiziert die Tabellen, die keine aktuellen [Tabellenstatistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) aufweisen, und empfiehlt das Erstellen oder Aktualisieren der Statistiken. Der Abfrageoptimierer in Azure SQL Data Warehouse verwendet aktuelle Statistiken, um die Kardinalität oder die Anzahl von Zeilen in Abfrageergebnissen zu schätzen. Diese Schätzungen ermöglichen es dem Abfrageoptimierer, einen Abfrageplan zu erstellen, um die optimale Leistung zu erzielen.
+Advisor identifiziert die Tabellen, die keine aktuellen [Tabellenstatistiken](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) aufweisen, und empfiehlt das Erstellen oder Aktualisieren der Statistiken. Der Abfrageoptimierer in Azure SQL Data Warehouse verwendet aktuelle Statistiken, um die Kardinalität oder die Anzahl von Zeilen in Abfrageergebnissen zu schätzen. Diese Schätzungen ermöglichen es dem Abfrageoptimierer, einen Abfrageplan zu erstellen, um die optimale Leistung zu erzielen.
 
 ## <a name="improve-mysql-connection-management"></a>Verbessern der MySQL-Verbindungsverwaltung
 
@@ -76,7 +76,7 @@ Advisor identifiziert Tabellen, die keine replizierten Tabellen sind, die von ei
 - Den Tabellenverteilungstyp. 
 - Die Anzahl der Partitionen in der SQL Data Warehouse-Tabelle. 
 
-Möglicherweise werden zusätzliche Heuristiken in der Empfehlung für den Kontext bereitgestellt. Weitere Informationen zu den Faktoren, die zu dieser Empfehlung führen, finden Sie unter [SQL Data Warehouse-Empfehlungen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
+Möglicherweise werden zusätzliche Heuristiken in der Empfehlung für den Kontext bereitgestellt. Weitere Informationen zu den Faktoren, die zu dieser Empfehlung führen, finden Sie unter [SQL Data Warehouse-Empfehlungen](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>Migrieren Ihres Speicherkontos zu Azure Resource Manager, um von den neuesten Azure-Features zu profitieren
 
@@ -88,7 +88,7 @@ Migrieren Sie Ihr Speicherkonto-Bereitstellungsmodell zu Azure Resource Manager,
 Advisor identifiziert eigenständige Speicherkonten, die das klassische Bereitstellungsmodell verwenden, und empfiehlt eine Migration zum Resource Manager-Bereitstellungsmodell.
 
 > [!NOTE]
-> Klassische Warnungen in Azure Monitor wurden im August 2019 eingestellt. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
+> Klassische Warnungen in Azure Monitor wurden im August 2019 eingestellt. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>Speicherkontenentwurf zum Vermeiden der maximalen Abonnementgrenze
 
@@ -120,17 +120,17 @@ Advisor ermittelt nicht unterstützte Versionen von Kubernetes.
 Eine länger andauernde hohe CPU-Auslastung kann die Abfrageleistung für Ihre Workload beeinträchtigen. Durch Erhöhen der CPU-Größe können Sie die Laufzeit von Datenbankabfragen optimieren und die Gesamtleistung verbessern. Advisor ermittelt Server mit einer hohen CPU-Auslastung, auf denen wahrscheinlich Workloads mit eingeschränkter CPU-Leistung ausgeführt werden, und empfiehlt die Skalierung der Computegröße.
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Reduzieren der Speicherbeschränkungen auf den Servern für Azure Database for MySQL, Azure Database for PostgreSQL und Azure Database for MariaDB oder Verschieben in arbeitsspeicheroptimierte SKU
-Eine niedrige Cachetrefferquote kann die Abfrageleistung beeinträchtigen und zu erhöhtem IOPS führen. Dieser Zustand kann durch einen ungültigen Abfrageplan oder eine speicherintensive Workload verursacht werden. Durch Korrigieren des Abfrageplans oder  [Vergrößern des Speichers](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) des Servers für Azure Database for PostgreSQL, Azure Database for MySQL oder Azure Database for MariaDB kann die Ausführung der Datenbankworkload optimiert werden. Azure Advisor ermittelt Server, die von einer solchen hohen Änderungsrate des Pufferpools betroffen sind. Es wird empfohlen, eine der folgenden Maßnahmen zu ergreifen: 
+Eine niedrige Cachetrefferquote kann die Abfrageleistung beeinträchtigen und zu erhöhtem IOPS führen. Dieser Zustand kann durch einen ungültigen Abfrageplan oder eine speicherintensive Workload verursacht werden. Durch Korrigieren des Abfrageplans oder  [Vergrößern des Speichers](../postgresql/concepts-pricing-tiers.md) des Servers für Azure Database for PostgreSQL, Azure Database for MySQL oder Azure Database for MariaDB kann die Ausführung der Datenbankworkload optimiert werden. Azure Advisor ermittelt Server, die von einer solchen hohen Änderungsrate des Pufferpools betroffen sind. Es wird empfohlen, eine der folgenden Maßnahmen zu ergreifen: 
 - Korrigieren des Abfrageplans
 - Verschieben zu einer SKU mit mehr Arbeitsspeicher 
 - Erhöhen der Speichergröße, um den IOPS-Wert zu erhöhen
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Verwenden eines Lesereplikats für Azure Database for MySQL oder Azure Database for PostgreSQL zum Aufskalieren von Lesevorgängen für leseintensive Workloads
-Advisor nutzt eine workloadbasierte Heuristik, z. B. das Verhältnis von Lese- zu Schreibvorgängen auf dem Server in den letzten sieben Tagen, um leseintensive Workloads zu identifizieren. Eine Azure Database for PostgreSQL-Ressource oder Azure Database for MySQL-Ressource mit einem hohen Verhältnis von Lese- zu Schreibvorgängen kann zu CPU- und/oder Speicherkonflikten führen, durch die die Abfrageleistung beeinträchtigt wird. Durch Hinzufügen eines  [Replikats](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) können Schreibvorgänge horizontal auf den Replikatserver skaliert werden, sodass CPU- oder Speicherkonflikte auf dem primären Server verhindert werden. Advisor ermittelt Server mit diesen leseintensiven Workloads und empfiehlt, dass ein  [Lesereplikat](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)  hinzugefügt wird, um einige der Leseworkloads auszulagern.
+Advisor nutzt eine workloadbasierte Heuristik, z. B. das Verhältnis von Lese- zu Schreibvorgängen auf dem Server in den letzten sieben Tagen, um leseintensive Workloads zu identifizieren. Eine Azure Database for PostgreSQL-Ressource oder Azure Database for MySQL-Ressource mit einem hohen Verhältnis von Lese- zu Schreibvorgängen kann zu CPU- und/oder Speicherkonflikten führen, durch die die Abfrageleistung beeinträchtigt wird. Durch Hinzufügen eines  [Replikats](../postgresql/howto-read-replicas-portal.md) können Schreibvorgänge horizontal auf den Replikatserver skaliert werden, sodass CPU- oder Speicherkonflikte auf dem primären Server verhindert werden. Advisor ermittelt Server mit diesen leseintensiven Workloads und empfiehlt, dass ein  [Lesereplikat](../postgresql/concepts-read-replicas.md)  hinzugefügt wird, um einige der Leseworkloads auszulagern.
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Skalieren des Servers für Azure Database for MySQL, Azure Database for PostgreSQL oder Azure Database for MariaDB auf eine höhere SKU zur Verhinderung von Verbindungseinschränkungen
-Jede neue Verbindung mit dem Datenbankserver belegt Speicher. Die Leistung des Datenbankservers verschlechtert sich, wenn aufgrund einer [Obergrenze](https://docs.microsoft.com/azure/postgresql/concepts-limits) des Speichers Fehler bei Verbindungen mit dem Server auftreten. Azure Advisor ermittelt Server mit vielen Verbindungsfehlern. Es empfiehlt sich, ein Upgrade der Verbindungsbeschränkungen des Servers vorzunehmen, sodass dem Server mehr Arbeitsspeicher zur Verfügung steht, indem Sie eine der folgenden Aktionen ausführen:
+Jede neue Verbindung mit dem Datenbankserver belegt Speicher. Die Leistung des Datenbankservers verschlechtert sich, wenn aufgrund einer [Obergrenze](../postgresql/concepts-limits.md) des Speichers Fehler bei Verbindungen mit dem Server auftreten. Azure Advisor ermittelt Server mit vielen Verbindungsfehlern. Es empfiehlt sich, ein Upgrade der Verbindungsbeschränkungen des Servers vorzunehmen, sodass dem Server mehr Arbeitsspeicher zur Verfügung steht, indem Sie eine der folgenden Aktionen ausführen:
 - Hochskalieren der Computeressourcen 
 - Verwenden von arbeitsspeicheroptimierten SKUs mit mehr Computekapazität pro Kern
 
@@ -168,4 +168,4 @@ Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Zuverlässigkeitsempfehlungen von Advisor](advisor-high-availability-recommendations.md)
 * [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)
 * [Empfehlungen von Advisor zum optimalen Betrieb](advisor-operational-excellence-recommendations.md)
-* [Advisor-REST-API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor-REST-API](/rest/api/advisor/)

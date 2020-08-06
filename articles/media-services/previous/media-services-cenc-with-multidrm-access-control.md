@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072017"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services 
 
@@ -227,7 +227,7 @@ Weitere Informationen finden Sie unter [JWT token authentication in Azure Media 
 Informationen zu Azure AD:
 
 * Informationen für Entwickler bietet das [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md).
-* Informationen für Administratoren finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-administer.md).
+* Informationen für Administratoren finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="some-issues-in-implementation"></a>Mögliche Probleme bei der Implementierung
 Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden Informationen zur Behandlung dieser Probleme.
@@ -296,7 +296,7 @@ Das Rollover von Signaturschlüsseln ist ein wichtiger Punkt, den Sie bei Ihrer 
 
 Azure AD verwendet Branchenstandards zum Einrichten einer Vertrauensstellung zwischen sich selbst und Anwendungen, die Azure AD verwenden. Azure AD verwendet einen Signaturschlüssel, der aus einem Paar mit einem öffentlichen und einem privaten Schlüssel besteht. Wenn Azure AD ein Sicherheitstoken erstellt, das Informationen über den Benutzer enthält, wird dieses Token von Azure AD mithilfe eines privaten Schlüssels signiert, bevor es zurück an die Anwendung gesendet wird. Um sicherzustellen, dass das Token gültig ist und aus Azure AD stammt, muss die Anwendung die Signatur des Tokens überprüfen. Die Anwendung verwendet einen öffentlichen Schlüssel, der von Azure AD verfügbar gemacht wurde und im Dokument mit den Verbundmetadaten des Mandanten enthalten ist. Dieser öffentliche Schlüssel – und der Signaturschlüssel, aus dem er abgeleitet ist –, ist für alle Mandanten in Azure AD gleich.
 
-Weitere Informationen zum Azure AD-Schlüsselrollover finden Sie im Dokument [Rollover von Signaturschlüsseln in Azure Active Directory](../../active-directory/active-directory-signing-key-rollover.md).
+Weitere Informationen zum Azure AD-Schlüsselrollover finden Sie im Dokument [Rollover von Signaturschlüsseln in Azure Active Directory](../../active-directory/develop/active-directory-signing-key-rollover.md).
 
 Im [Schlüsselpaar aus öffentlichem und privatem Schlüssel](https://login.microsoftonline.com/common/discovery/keys/) gilt Folgendes:
 
@@ -329,7 +329,7 @@ Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformation
 * Azure AD authentifiziert die Anwendung und gibt ein JWT-Zugriffstoken zurück, das zum Aufrufen der Web-API verwendet wird.
 * Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Dann überprüft die API das JWT. Wenn die Überprüfung erfolgreich verläuft, gibt sie die gewünschte Ressource zurück.
 
-In diesem Anwendungsidentitätsablaufvertraut die Web-API darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet. Das [Diagramm des Autorisierungsablaufs](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) beschreibt, wie das Gewähren des Autorisierungscodes abläuft.
+In diesem Anwendungsidentitätsablaufvertraut die Web-API darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet. Das [Diagramm des Autorisierungsablaufs](../../active-directory/azuread-dev/v1-protocols-oauth-code.md) beschreibt, wie das Gewähren des Autorisierungscodes abläuft.
 
 Der Lizenzerwerb mit Tokeneinschränkung folgt demselben Muster mit vertrauenswürdigem Subsystem. Der Lizenzbereitstellungsdienst in Media Services ist die Web-API-Ressource, d.h. die Back-End-Ressource, auf die eine Webanwendung zugreifen muss. Wo befindet sich also das Zugriffstoken?
 

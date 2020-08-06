@@ -3,12 +3,12 @@ title: Sichern einer Azure-Dateifreigabe mithilfe von PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Files-Dateifreigabe mit dem Azure Backup-Dienst und PowerShell sichern.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971027"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077005"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Sichern einer Azure-Dateifreigabe mithilfe von PowerShell
 
@@ -89,13 +89,13 @@ Der Recovery Services-Tresor ist eine Resource Manager-Ressource. Deshalb müsse
 
 Führen Sie die nachstehenden Schritte aus, um einen Recovery Services-Tresors zu erstellen:
 
-1. Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) eine neue Ressourcengruppe, wenn noch keine vorhanden ist. In diesem Beispiel wird eine Ressourcengruppe in der Region „USA, Westen“ erstellt:
+1. Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine neue Ressourcengruppe, wenn noch keine vorhanden ist. In diesem Beispiel wird eine Ressourcengruppe in der Region „USA, Westen“ erstellt:
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-1. Verwenden Sie das Cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) zum Erstellen des Tresors. Geben Sie für den Tresor den Speicherort an, den Sie auch für die Ressourcengruppe ausgewählt haben.
+1. Verwenden Sie das Cmdlet [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) zum Erstellen des Tresors. Geben Sie für den Tresor den Speicherort an, den Sie auch für die Ressourcengruppe ausgewählt haben.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
@@ -103,7 +103,7 @@ Führen Sie die nachstehenden Schritte aus, um einen Recovery Services-Tresors z
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Anzeigen von Tresoren in einem Abonnement
 
-Verwenden Sie [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0), um alle Tresore des Abonnements anzuzeigen:
+Verwenden Sie [Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault), um alle Tresore des Abonnements anzuzeigen:
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -127,7 +127,7 @@ Speichern Sie das Tresorobjekt in einer Variablen, und legen Sie den Tresorkonte
 
 Viele Azure Backup-Cmdlets erfordern das Recovery Services-Tresorobjekt als Eingabe. Daher ist es sinnvoll, das Tresorobjekt in einer Variablen zu speichern.
 
-Der Tresorkontext ist der Datentyp, der im Tresor geschützt wird. Legen Sie ihn mit [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) fest. Der festgelegte Kontext gilt für alle nachfolgenden Cmdlets.
+Der Tresorkontext ist der Datentyp, der im Tresor geschützt wird. Legen Sie ihn mit [Set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext) fest. Der festgelegte Kontext gilt für alle nachfolgenden Cmdlets.
 
 Im folgenden Beispiel wird der Tresorkontext für **testvault** festgelegt:
 
@@ -152,9 +152,9 @@ Eine Sicherungsrichtlinie ist mindestens einer Aufbewahrungsrichtlinie zugeordne
 
 Im folgenden finden Sie einige Cmdlets für Sicherungsrichtlinien:
 
-* Zeigen Sie den Aufbewahrungszeitraum der Standardsicherungsrichtlinie mit [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0) an.
-* Zeigen Sie den Zeitplan der Standardsicherungsrichtlinie mit [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0) an.
-* Mit dem Cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) erstellen Sie eine neue Sicherungsrichtlinie. Dazu geben Sie die Zeitplan- und Aufbewahrungsrichtlinienobjekte an.
+* Zeigen Sie den Aufbewahrungszeitraum der Standardsicherungsrichtlinie mit [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) an.
+* Zeigen Sie den Zeitplan der Standardsicherungsrichtlinie mit [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) an.
+* Mit dem Cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) erstellen Sie eine neue Sicherungsrichtlinie. Dazu geben Sie die Zeitplan- und Aufbewahrungsrichtlinienobjekte an.
 
 Eine Startzeit wird standardmäßig im SchedulePolicyObject definiert. Verwenden Sie das folgende Beispiel, um die Startzeit in die gewünschte Startzeit zu ändern. Die gewünschte Startzeit muss in UTC-Zeit (Universal Coordinated Time) angegeben werden. Beim nachstehenden Beispiel wird vorausgesetzt, dass die gewünschte Startzeit für tägliche Sicherungen 01:00 Uhr UTC ist.
 
@@ -190,7 +190,7 @@ Nachdem Sie die Sicherungsrichtlinie definiert haben, können Sie den Schutz fü
 
 ### <a name="retrieve-a-backup-policy"></a>Abrufen einer Sicherungsrichtlinie
 
-Rufen Sie zuerst das entsprechende Richtlinienobjekt mit [Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) ab. Mit diesem Cmdlet können Sie die mit einem Workloadtyp verknüpften Richtlinien anzeigen oder eine bestimmte Richtlinie abrufen.
+Rufen Sie zuerst das entsprechende Richtlinienobjekt mit [Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) ab. Mit diesem Cmdlet können Sie die mit einem Workloadtyp verknüpften Richtlinien anzeigen oder eine bestimmte Richtlinie abrufen.
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>Abrufen einer Richtlinie für einen Workloadtyp
 
@@ -221,7 +221,7 @@ $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 
 ### <a name="enable-protection-and-apply-the-policy"></a>Aktivieren des Schutzes und Anwenden der Richtlinie
 
-Aktivieren Sie den Schutz mit [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). Nachdem die Richtlinie dem Tresor zugeordnet wurde, werden Sicherungen entsprechend dem Richtlinienzeitplan ausgelöst.
+Aktivieren Sie den Schutz mit [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection). Nachdem die Richtlinie dem Tresor zugeordnet wurde, werden Sicherungen entsprechend dem Richtlinienzeitplan ausgelöst.
 
 Im folgenden Beispiel wird der Schutz für die Azure-Dateifreigabe **testAzureFileShare** im Speicherkonto **testStorageAcct** mit der Richtlinie **dailyafs** aktiviert:
 
@@ -237,7 +237,7 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-Weitere Informationen zum Abrufen einer Liste von Dateifreigaben für ein Speicherkonto finden Sie in [diesem Artikel](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0).
+Weitere Informationen zum Abrufen einer Liste von Dateifreigaben für ein Speicherkonto finden Sie in [diesem Artikel](/powershell/module/az.storage/get-azstorageshare).
 
 ## <a name="important-notice-backup-item-identification"></a>Wichtiger Hinweis: Bestimmen von Sicherungselementen
 
@@ -262,7 +262,7 @@ Es wird immer empfohlen, Elemente aufzulisten und dann ihren eindeutigen Namen a
 
 ## <a name="trigger-an-on-demand-backup"></a>Auslösen einer bedarfsgesteuerten Sicherung
 
-Verwenden Sie [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0), um eine bedarfsgesteuerte Sicherung für eine geschützte Azure-Dateifreigabe auszuführen:
+Verwenden Sie [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem), um eine bedarfsgesteuerte Sicherung für eine geschützte Azure-Dateifreigabe auszuführen:
 
 1. Rufen Sie mit [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) das Speicherkonto aus dem Container im Tresor ab, in dem sich die Sicherungsdaten befinden.
 2. Zum Starten eines Sicherungsauftrags rufen Sie mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) Informationen zu der Azure-Dateifreigabe ab.

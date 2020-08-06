@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613267"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061219"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -61,8 +61,14 @@ Folgen Sie diesen Schritten:
     ```azurepowershell-interactive 
     cd
     ```
+    
+6. Führen Sie den folgenden Befehl aus. Damit wird eine Verbindung mit einem authentifizierten Konto hergestellt, das für Azure AD-Anforderungen verwendet werden soll.
 
-6. Führen Sie den folgenden Befehl aus. Dadurch wird ein Skript in Ihr Basisverzeichnis heruntergeladen.
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+
+7. Führen Sie den folgenden Befehl aus. Dadurch wird ein Skript in Ihr Basisverzeichnis heruntergeladen.
 
     ```azurepowershell-interactive 
 
@@ -70,7 +76,7 @@ Folgen Sie diesen Schritten:
 
     ```
 
-7. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite **Azure Active Directory** > **Übersicht** erhalten können.
+8. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite **Azure Active Directory** > **Übersicht** erhalten können.
 
     ```azurepowershell-interactive 
 
@@ -78,7 +84,7 @@ Folgen Sie diesen Schritten:
 
     ```
 
-8. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
+9. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Erstellen von Geräte- oder Sensormetadaten

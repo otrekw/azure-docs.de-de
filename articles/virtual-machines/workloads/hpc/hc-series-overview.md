@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7110f3417937b623260983a9d94e9e6834fc8fc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76906747"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077370"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HC-Serie
 
@@ -63,6 +63,6 @@ Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich ausführlicher über HPC-VM-Größen für [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) und [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) in Azure.
+* Informieren Sie sich ausführlicher über HPC-VM-Größen für [Linux](../../sizes-hpc.md) und [Windows](../../sizes-hpc.md) in Azure.
 
-* Informieren Sie sich ausführlicher über [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) in Azure.
+* Informieren Sie sich ausführlicher über [HPC](/azure/architecture/topics/high-performance-computing/) in Azure.

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09c04d727e42f88bb376a59d66a23688e16abb13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089055"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Aktivieren der Ressourcenprotokollierung in Azure Traffic Manager
 
@@ -68,9 +68,8 @@ Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ei
 
 Die folgende Tabelle enthält das Protokollschema für die Azure Traffic Manager-Profilressource.
 
-|||||
+|Feldname|Feldtyp|Definition|Beispiel|
 |----|----|---|---|
-|**Feldname**|**Feldtyp**|**Definition**|**Beispiel**|
 |EndpointName|String|Der Name des Traffic Manager-Endpunkts, dessen Integritätsstatus aufgezeichnet wird.|*myPrimaryEndpoint*|
 |Status|String|Der Integritätsstatus des Traffic Manager-Endpunkts, der getestet wurde. Der Status kann entweder **Up** oder **Down** lauten.|**Up**|
 |||||

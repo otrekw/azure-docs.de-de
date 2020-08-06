@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081864"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Codeeinschränkungen für Orchestratorfunktionen
 
@@ -18,7 +18,7 @@ Durable Functions ist eine Erweiterung von [Azure Functions](../functions-overvi
 
 ## <a name="orchestrator-code-constraints"></a>Einschränkungen des Orchestratorcodes
 
-Orchestratorfunktionen nutzen [Ereignissourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing), um eine zuverlässige Ausführung zu gewährleisten und den lokalen Variablenzustand beizubehalten. Mit dem [Wiedergabeverhalten](durable-functions-orchestrations.md#reliability) von Orchestratorcode sind Einschränkungen des Codetyps verbunden, der in einer Orchestratorfunktion geschrieben werden kann. Beispielsweise müssen Orchestratorfunktionen *deterministisch* sein: Eine Orchestratorfunktion wird mehrmals wiedergegeben und muss jedes Mal das gleiche Ergebnis liefern.
+Orchestratorfunktionen nutzen [Ereignissourcing](/azure/architecture/patterns/event-sourcing), um eine zuverlässige Ausführung zu gewährleisten und den lokalen Variablenzustand beizubehalten. Mit dem [Wiedergabeverhalten](durable-functions-orchestrations.md#reliability) von Orchestratorcode sind Einschränkungen des Codetyps verbunden, der in einer Orchestratorfunktion geschrieben werden kann. Beispielsweise müssen Orchestratorfunktionen *deterministisch* sein: Eine Orchestratorfunktion wird mehrmals wiedergegeben und muss jedes Mal das gleiche Ergebnis liefern.
 
 ### <a name="using-deterministic-apis"></a>Verwenden deterministischer APIs
 

@@ -2,17 +2,15 @@
 title: Verwenden des Auftragsbrowsers und der Auftragsansicht – Azure Data Lake Analytics
 description: In diesem Artikel erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht für Azure Data Lake Analytics-Aufträge verwenden.
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: e0db5482a48819074fc0552417aa79dbc2e5cf66
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120176"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131887"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics
 Der Azure Data Lake Analytics-Dienst archiviert die übermittelten Aufträge in einem Abfragespeicher. In diesem Artikel erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht in Azure Data Lake-Tools für Visual Studio verwenden, um die Verlaufsinformationen zu Aufträgen zu suchen. 

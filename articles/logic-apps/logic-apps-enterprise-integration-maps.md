@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072656"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformieren von XML mit Zuordnungen in Azure Logic Apps mithilfe von Enterprise Integration Pack
 
@@ -43,7 +43,7 @@ Grenzwerte für Integrationskonten und Artefakte wie Zuordnungen finden Sie unte
     | [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Mit diesem Tool lassen sich Speicherkonten und Blobcontainer einfacher verwalten. Eine Möglichkeit zur Verwendung des Storage-Explorers besteht darin, [den Azure Storage-Explorer herunterzuladen und zu installieren](https://www.storageexplorer.com/). Verbinden Sie dann den Storage-Explorer mit Ihrem Speicherkonto, indem Sie die Schritte unter [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) ausführen. Weitere Informationen finden Sie unter [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Alternativ können Sie Ihr Speicherkonto im Azure-Portal suchen und auswählen. Wählen Sie im Menü „Speicherkonto“ **Storage-Explorer** aus. |
     |||
 
-  * Im Fall von Zuordnungen lassen sich derzeit größere Zuordnungen mithilfe von [Azure Logic Apps REST API – Zuordnungen](https://docs.microsoft.com/rest/api/logic/maps/createorupdate) hinzufügen.
+  * Im Fall von Zuordnungen lassen sich derzeit größere Zuordnungen mithilfe von [Azure Logic Apps REST API – Zuordnungen](/rest/api/logic/maps/createorupdate) hinzufügen.
 
 Zum Erstellen und Hinzufügen von Zuordnungen benötigen Sie keine Logik-App. Damit Sie eine Zuordnung verwenden können, muss Ihre Logik-App jedoch mit einem Integrationskonto verknüpft sein, in dem diese Zuordnung gespeichert ist. Erfahren Sie, wie Sie [Logik-Apps mit Integrationskonten verknüpfen](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Wenn Sie noch nicht über eine Logik-App verfügen, lesen Sie den Artikel zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -220,7 +220,7 @@ Nachdem Sie alle Assemblys hochgeladen haben, auf die in Ihrer Zuordnung verwies
 
 ### <a name="add-maps-more-than-2-mb"></a>Hinzufügen von Zuordnungen mit mehr als 2 MB
 
-Größere Zuordnungen lassen sich derzeit mit [Azure Logic Apps REST API – Zuordnungen](https://docs.microsoft.com/rest/api/logic/maps/createorupdate) hinzufügen.
+Größere Zuordnungen lassen sich derzeit mit [Azure Logic Apps REST API – Zuordnungen](/rest/api/logic/maps/createorupdate) hinzufügen.
 
 <!--
 

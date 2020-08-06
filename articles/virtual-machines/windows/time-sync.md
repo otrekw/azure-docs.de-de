@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074042"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Zeitsynchronisierung für Windows-VMs in Azure
 
@@ -24,7 +24,7 @@ Azure wird jetzt von einer Infrastruktur unter Windows Server 2016 unterstützt.
 >[!NOTE]
 >Eine kurze Übersicht über den Windows-Zeitdienst bietet dieses [allgemeine Übersichtsvideo](https://aka.ms/WS2016TimeVideo).
 >
-> Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Weitere Informationen finden Sie unter [Genaue Uhrzeit für Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Übersicht
 
@@ -172,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 Im Folgenden finden Sie Links zu weiteren Details zur Zeitsynchronisierung:
 
-- [Windows-Zeitdienst: Tools und Einstellungen](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Verbesserungen in Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Genaue Uhrzeit für Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Unterstützungsgrenzen zum Konfigurieren des Windows-Zeitdiensts für Umgebungen mit hoher Genauigkeit](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [Windows-Zeitdienst: Tools und Einstellungen](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [Verbesserungen in Windows Server 2016](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Genaue Uhrzeit für Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time)
+- [Unterstützungsgrenzen zum Konfigurieren des Windows-Zeitdiensts für Umgebungen mit hoher Genauigkeit](/windows-server/networking/windows-time-service/support-boundary)

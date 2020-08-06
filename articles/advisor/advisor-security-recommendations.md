@@ -3,12 +3,12 @@ title: Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 description: Mithilfe von Azure Advisor können Sie die Sicherheit Ihrer Azure-Bereitstellungen verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113856"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057663"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 
@@ -16,7 +16,7 @@ Der Azure Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empf
 
 Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Die Sicherheitslösung analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn Security Center potenzielle Sicherheitsrisiken identifiziert, werden Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess der Konfiguration des erforderlichen Sicherheitsmechanismus geführt. 
 
-Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](../security-center/security-center-recommendations.md).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Zugreifen auf Sicherheitsempfehlungen im Azure Advisor
 
@@ -33,5 +33,5 @@ Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
 * [Verbessern der Verfügbarkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md)
 * [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)
-* [Advisor-REST-API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor-REST-API](/rest/api/advisor/)
  

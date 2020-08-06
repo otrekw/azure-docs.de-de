@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Wiederherstellungsvorgänge
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247798"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079297"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -19,7 +19,7 @@ Für jeden Wiederherstellungsvorgang muss zunächst der entsprechende Wiederhers
 
 ## <a name="select-recovery-point"></a>Auswählen eines Wiederherstellungspunkts
 
-Die verfügbaren Wiederherstellungspunkte eines Sicherungselements können mithilfe der [REST-API zum Auflisten von Wiederherstellungspunkten](https://docs.microsoft.com/rest/api/backup/recoverypoints/list) aufgelistet werden. Dabei handelt es sich um einen einfachen *GET*-Vorgang mit allen relevanten Werten.
+Die verfügbaren Wiederherstellungspunkte eines Sicherungselements können mithilfe der [REST-API zum Auflisten von Wiederherstellungspunkten](/rest/api/backup/recoverypoints/list) aufgelistet werden. Dabei handelt es sich um einen einfachen *GET*-Vorgang mit allen relevanten Werten.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -33,7 +33,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforder
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 – OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
 #### <a name="example-response"></a>Beispielantwort
 
@@ -119,7 +119,7 @@ Der Wiederherstellungspunkt wird durch das Feld `{name}` in der obigen Antwort a
 
 Muss die Erstellung eines virtuellen Computers auf der Grundlage der Sicherungsdaten angepasst werden, können Sie Datenträger einfach in einem ausgewählten Speicherkonto wiederherstellen und basierend auf diesen Datenträgern einen virtuellen Computer erstellen, der die Anforderungen der virtuellen Datenträger erfüllt. Das Speicherkonto muss sich in derselben Region wie der Recovery Services-Tresor befinden und darf nicht zonenredundant sein. Die Datenträger und die Konfiguration des gesicherten virtuellen Computers (vmconfig.json) werden im angegebenen Speicherkonto gespeichert.
 
-Das Auslösen der Datenträgerwiederherstellung erfolgt über eine *POST*-Anforderung. Weitere Informationen zum Wiederherstellen von Datenträgern finden Sie im Artikel zur [REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger).
+Das Auslösen der Datenträgerwiederherstellung erfolgt über eine *POST*-Anforderung. Weitere Informationen zum Wiederherstellen von Datenträgern finden Sie im Artikel zur [REST-API zum Auslösen der Wiederherstellung](/rest/api/backup/restores/trigger).
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -133,9 +133,9 @@ Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](/rest/api/backup/restores/trigger#request-body).
 
 #### <a name="example-request"></a>Beispielanforderung
 
@@ -161,7 +161,7 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer D
 
 ### <a name="response"></a>Antwort
 
-Das Auslösen einer Datenträgerwiederherstellung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Das Auslösen einer Datenträgerwiederherstellung ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052166"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure
 
@@ -69,7 +69,7 @@ Der Rest dieses Dokuments konzentriert sich auf die CLI-Methode zum Bereitstelle
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Verwenden der Red Hat Gold-Images in der Azure CLI
 
-In den folgenden Anweisungen wird der erste Bereitstellungsprozess für eine RHEL-VM mithilfe der Azure CLI erläutert. In dieser Anleitung wird davon ausgegangen, dass die [Azure CLI installiert](https://docs.microsoft.com/cli/azure/install-azure-cli) ist.
+In den folgenden Anweisungen wird der erste Bereitstellungsprozess für eine RHEL-VM mithilfe der Azure CLI erläutert. In dieser Anleitung wird davon ausgegangen, dass die [Azure CLI installiert](/cli/azure/install-azure-cli) ist.
 
 >[!IMPORTANT]
 >Stellen Sie sicher, dass Sie in den Verweisen zu Herausgeber, Angebot, Plan und Image für alle folgenden Befehle nur Kleinbuchstaben verwenden.
@@ -200,7 +200,7 @@ Schritte zum Anwenden von Azure Disk Encryption sind unter [Azure Disk Encryptio
 
     Wenden Sie sich in diesem Fall an Microsoft oder Red Hat, um Ihr Abonnement aktivieren zu lassen.
 
-- Wenn Sie eine Momentaufnahme aus einem BYOS-Image für RHEL ändern und versuchen, das Image in der [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries) zu veröffentlichen, müssen Sie Planinformationen bereitstellen, die mit der ursprünglichen Quelle der Momentaufnahme übereinstimmen. Ein Beispielbefehl:
+- Wenn Sie eine Momentaufnahme aus einem BYOS-Image für RHEL ändern und versuchen, das Image in der [Shared Image Gallery](../../linux/shared-image-galleries.md) zu veröffentlichen, müssen Sie Planinformationen bereitstellen, die mit der ursprünglichen Quelle der Momentaufnahme übereinstimmen. Ein Beispielbefehl:
 
     ```azurecli
     az vm create –image \

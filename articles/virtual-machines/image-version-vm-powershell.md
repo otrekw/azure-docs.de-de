@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: caa8e928a10deb3d6d97e601c607074c09e0572e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 681bd0aff909552531d682186d5b22dce5ef33f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010766"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Vorschau: Erstellen von VM-Images
 
 Wenn Sie über eine VM verfügen, die Sie verwenden möchten, um mehrere identische VMs zu erstellen, können Sie mithilfe von Azure PowerShell ein Image dieser VM in Shared Image Gallery erstellen. Ebenso können Sie auch die [Azure CLI](image-version-vm-cli.md) verwenden, um ein VM-Image zu erstellen.
 
-Mithilfe von Azure PowerShell können Sie sowohl für [spezialisierte als auch für generalisierte](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) VMs ein Image erstellen. 
+Mithilfe von Azure PowerShell können Sie sowohl für [spezialisierte als auch für generalisierte](./windows/shared-image-galleries.md#generalized-and-specialized-images) VMs ein Image erstellen. 
 
 Images in Imagekatalogen verfügen über zwei Komponenten, die in diesem Beispiel erstellt werden:
 - Eine **Imagedefinition** enthält Informationen zum Image und zu den Anforderungen für dessen Verwendung. Dies umfasst Angaben dazu, ob es sich um ein Windows- oder Linux-Image handelt, ob es spezialisiert oder generalisiert ist sowie welche Mindest- und Höchstanforderungen für den Arbeitsspeicher gelten. Außerdem sind Versionshinweise enthalten. Es ist eine Definition eines Imagetyps. 
@@ -54,7 +54,7 @@ $gallery = Get-AzGallery `
 
 ## <a name="get-the-vm"></a>Abrufen der VM
 
-Mit [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) können Sie eine Liste der VMs abrufen, die in einer Ressourcengruppe verfügbar sind. Wenn Sie den Namen und die Ressourcengruppe der VM kennen, können Sie `Get-AzVM` verwenden, um das VM-Objekt abzurufen und für die spätere Verwendung in einer Variable zu speichern. Dieses Beispiel ruft die VM *sourceVM* aus der Ressourcengruppe „myResourceGroup“ ab und weist es der Variablen *$sourceVm* zu. 
+Mit [Get-AzVM](/powershell/module/az.compute/get-azvm) können Sie eine Liste der VMs abrufen, die in einer Ressourcengruppe verfügbar sind. Wenn Sie den Namen und die Ressourcengruppe der VM kennen, können Sie `Get-AzVM` verwenden, um das VM-Objekt abzurufen und für die spätere Verwendung in einer Variable zu speichern. Dieses Beispiel ruft die VM *sourceVM* aus der Ressourcengruppe „myResourceGroup“ ab und weist es der Variablen *$sourceVm* zu. 
 
 ```azurepowershell-interactive
 $sourceVm = Get-AzVM `
@@ -62,7 +62,7 @@ $sourceVm = Get-AzVM `
    -ResourceGroupName myResourceGroup
 ```
 
-Es empfiehlt sich, den virtuellen Computer vor dem Erstellen eines Images mit [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) zu beenden oder die Zuordnung aufzuheben.
+Es empfiehlt sich, den virtuellen Computer vor dem Erstellen eines Images mit [Stop-AzVM](/powershell/module/az.compute/stop-azvm) zu beenden oder die Zuordnung aufzuheben.
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -77,9 +77,9 @@ Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden zum
 
 Stellen Sie beim Erstellen der Imagedefinition sicher, dass diese alle zutreffenden Informationen beinhaltet. Wenn Sie die VM generalisiert haben (über Sysprep für Windows oder waagent-deprovision für Linux) sollten Sie unter Verwendung von `-OsState generalized` eine Imagedefinition erstellen. Wenn Sie die VM nicht generalisiert haben, erstellen Sie unter Verwendung von `-OsState specialized` eine Imagedefinition.
 
-Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](./windows/shared-image-galleries.md#image-definitions).
 
-Erstellen Sie die Imagedefinition mit [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Erstellen Sie die Imagedefinition mit [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). 
 
 In diesem Beispiel heißt die Imagedefinition *myImageDefinition* und ist für eine spezialisierte VM gedacht, die unter Windows ausgeführt wird. Verwenden Sie `-OsType Linux`, um eine Definition für Images unter Linux zu erstellen. 
 
@@ -99,7 +99,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>Erstellen einer Imageversion
 
-Erstellen Sie mithilfe von [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) eine Imageversion. 
+Erstellen Sie mithilfe von [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) eine Imageversion. 
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 
@@ -133,7 +133,7 @@ $job.State
 > [!NOTE]
 > Sie müssen warten, bis die Imageversion vollständig erstellt und repliziert wurde, bevor Sie dieses verwaltete Image verwenden können, um eine weitere Imageversion zu erstellen.
 >
-> Sie können Ihr Image auch in einem Premium-Speicher durch Hinzufügen von `-StorageAccountType Premium_LRS` oder in einem [zonenredundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) speichern, indem Sie `-StorageAccountType Standard_ZRS` hinzufügen, wenn Sie die Imageversion erstellen.
+> Sie können Ihr Image auch in einem Premium-Speicher durch Hinzufügen von `-StorageAccountType Premium_LRS` oder in einem [zonenredundanten Speicher](../storage/common/storage-redundancy.md) speichern, indem Sie `-StorageAccountType Standard_ZRS` hinzufügen, wenn Sie die Imageversion erstellen.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

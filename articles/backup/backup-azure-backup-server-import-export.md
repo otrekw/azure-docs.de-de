@@ -3,12 +3,12 @@ title: Offlinesicherung für DPM und Azure Backup Server
 description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für DPM und Azure Backup Server erläutert.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067345"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (MABS)
 
@@ -49,7 +49,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 
 * Auf dem DPM- oder MABS-Server muss Microsoft Edge oder Internet Explorer 11 installiert und JavaScript aktiviert sein.
 * Erstellen Sie ein Azure Storage-Konto in dem Abonnement, in dem sich auch der Recovery Services-Tresor befindet.
-* Vergewissern Sie sich, dass Sie über die [erforderlichen Berechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) für die Erstellung der Azure Active Directory-Anwendung verfügen. Der Workflow zur Offlinesicherung erstellt eine Azure Active Directory-Anwendung in dem Abonnement, das dem Azure Storage-Konto zugeordnet ist. Die Anwendung dient dazu, Azure Backup sicheren und bereichsbezogenen Zugriff auf den Azure-Importdienst zu ermöglichen, der für den Workflow zur Offlinesicherung erforderlich ist.
+* Vergewissern Sie sich, dass Sie über die [erforderlichen Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md) für die Erstellung der Azure Active Directory-Anwendung verfügen. Der Workflow zur Offlinesicherung erstellt eine Azure Active Directory-Anwendung in dem Abonnement, das dem Azure Storage-Konto zugeordnet ist. Die Anwendung dient dazu, Azure Backup sicheren und bereichsbezogenen Zugriff auf den Azure-Importdienst zu ermöglichen, der für den Workflow zur Offlinesicherung erforderlich ist.
 * Registrieren Sie den Ressourcenanbieter „Microsoft.ImportExport“ bei dem Abonnement mit dem Azure Storage-Konto. So registrieren Sie den Ressourcenanbieter:
     1. Klicken Sie im Hauptmenü auf **Abonnements**.
     2. Wählen Sie bei Verwendung mehrerer Abonnements das Abonnement aus, das Sie für die Offlinesicherung verwenden. Falls Sie nur ein einzelnes Abonnement verwenden, wird Ihr Abonnement angezeigt.
@@ -64,7 +64,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 
 ## <a name="workflow"></a>Workflow
 
-In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung durchführen, sodass Ihre Daten an ein Azure-Datencenter gesendet und in Azure Storage hochgeladen werden können. Falls Sie Fragen zum Import-Dienst oder zu einem anderen Aspekt des Prozesses haben, finden Sie in der oben erwähnten Dokumentation eine [Übersicht über den Import-Dienst](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) .
+In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung durchführen, sodass Ihre Daten an ein Azure-Datencenter gesendet und in Azure Storage hochgeladen werden können. Falls Sie Fragen zum Import-Dienst oder zu einem anderen Aspekt des Prozesses haben, finden Sie in der oben erwähnten Dokumentation eine [Übersicht über den Import-Dienst](../storage/common/storage-import-export-service.md) .
 
 ## <a name="initiate-offline-backup"></a>Initiieren der Offlinesicherung
 
@@ -188,7 +188,7 @@ Der Zeitaufwand zum Verarbeiten eines Azure Import/Export-Auftrags variiert. Die
 
 ### <a name="monitor-azure-import-job-status"></a>Überwachen des Status von Azure-Importaufträgen
 
-Sie können den Status des Importauftrags über das Azure-Portal überwachen. Navigieren Sie hierzu zur Seite **Import-/Exportaufträge**, und wählen Sie Ihren Auftrag aus. Weitere Informationen zum Status von Importaufträgen finden Sie im Artikel [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Store](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+Sie können den Status des Importauftrags über das Azure-Portal überwachen. Navigieren Sie hierzu zur Seite **Import-/Exportaufträge**, und wählen Sie Ihren Auftrag aus. Weitere Informationen zum Status von Importaufträgen finden Sie im Artikel [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Store](../storage/common/storage-import-export-service.md).
 
 ### <a name="complete-the-workflow"></a>Ausführen des Workflows
 

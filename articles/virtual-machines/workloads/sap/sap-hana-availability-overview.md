@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71266070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035637"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer
 
@@ -37,9 +37,9 @@ Dieser Artikel setzt außerdem voraus, dass Sie mit der Installation, der Verwal
 
 Die folgenden Artikel bieten einen guten Überblick über die Verwendung von SAP HANA in Azure:
 
-- [Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs](./hana-get-started.md)
 - [Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs)](sap-hana-high-availability.md)
-- [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](./sap-hana-backup-guide.md)
 
 Auch die folgenden Artikel zu SAP HANA sind zu empfehlen:
 
@@ -52,7 +52,7 @@ Auch die folgenden Artikel zu SAP HANA sind zu empfehlen:
 - [SAP HANA Service Auto-Restart](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) (Automatischer Neustart des SAP HANA-Diensts)
 - [Konfigurieren der SAP HANA-Systemreplikation](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Bevor Sie mit der Definition Ihrer Verfügbarkeitsarchitektur in Azure fortfahren, wird neben der Bereitstellung von VMs in Azure außerdem empfohlen, den Artikel [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) zu lesen.
+Bevor Sie mit der Definition Ihrer Verfügbarkeitsarchitektur in Azure fortfahren, wird neben der Bereitstellung von VMs in Azure außerdem empfohlen, den Artikel [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../windows/manage-availability.md) zu lesen.
 
 ## <a name="service-level-agreements-for-azure-components"></a>Vereinbarungen zum Servicelevel für Azure-Komponenten
 
@@ -60,16 +60,16 @@ Azure bietet unterschiedliche Verfügbarkeits-SLAs für verschiedene Komponenten
 
 Unter [SLA für virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) werden drei verschiedene SLAs für drei unterschiedliche Konfigurationen beschrieben:
 
-- Eine einzelne VM, die [Azure SSD Premium](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) für den Betriebssystemdatenträger und alle Datenträger verwendet. Diese Option bietet eine monatliche Betriebszeit von 99,9 Prozent.
-- Mehrere (mindestens zwei) VMs, die in einer [Azure-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) organisiert sind. Diese Option bietet eine monatliche Betriebszeit von 99,95 Prozent.
-- Mehrere (mindestens zwei) VMs, die in einer [Verfügbarkeitszone](https://docs.microsoft.com/azure/availability-zones/az-overview) organisiert sind. Diese Option bietet eine monatliche Betriebszeit von 99,99 Prozent.
+- Eine einzelne VM, die [Azure SSD Premium](../../windows/managed-disks-overview.md) für den Betriebssystemdatenträger und alle Datenträger verwendet. Diese Option bietet eine monatliche Betriebszeit von 99,9 Prozent.
+- Mehrere (mindestens zwei) VMs, die in einer [Azure-Verfügbarkeitsgruppe](../../windows/tutorial-availability-sets.md) organisiert sind. Diese Option bietet eine monatliche Betriebszeit von 99,95 Prozent.
+- Mehrere (mindestens zwei) VMs, die in einer [Verfügbarkeitszone](../../../availability-zones/az-overview.md) organisiert sind. Diese Option bietet eine monatliche Betriebszeit von 99,99 Prozent.
 
 Gleichen Sie Ihre Anforderungen an die Verfügbarkeit mit den SLAs ab, die Azure-Komponenten bereitstellen können. Wählen Sie dann Ihre Szenarien für SAP HANA, um die von Ihnen benötigte Verfügbarkeitsstufe zu erreichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Verfügbarkeit von SAP HANA innerhalb einer Azure-Region](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
-- Erfahren Sie mehr über [SAP HANA-Verfügbarkeit in den Azure-Regionen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions). 
+- Erfahren Sie mehr über [Verfügbarkeit von SAP HANA innerhalb einer Azure-Region](./sap-hana-availability-one-region.md).
+- Erfahren Sie mehr über [SAP HANA-Verfügbarkeit in den Azure-Regionen](./sap-hana-availability-across-regions.md). 
 
 
 
@@ -86,5 +86,3 @@ Gleichen Sie Ihre Anforderungen an die Verfügbarkeit mit den SLAs ab, die Azure
 
 
   
-
-

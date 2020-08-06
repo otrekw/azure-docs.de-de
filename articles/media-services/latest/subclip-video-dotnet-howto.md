@@ -13,16 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31fa7fe6b16b7ba97b8ce5e6697f1aaaf88aa294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67304782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091894"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Erstellen von Subclips für ein Video beim Codieren mit Media Services: .NET
 
-Sie können mithilfe eines [Auftrags](https://docs.microsoft.com/rest/api/media/jobs) Videos beim Codieren zuschneiden oder Subclips für diese erstellen. Dies funktioniert mit jeder [Transformation](https://docs.microsoft.com/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird.
+Sie können mithilfe eines [Auftrags](/rest/api/media/jobs) Videos beim Codieren zuschneiden oder Subclips für diese erstellen. Dies funktioniert mit jeder [Transformation](/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird.
 
 Mithilfe des folgenden C#-Beispiels wird ein Auftrag erstellt, der ein Video in ein Objekt zuschneidet, sobald er einen Codierungsauftrag übermittelt. 
 
@@ -30,7 +30,7 @@ Mithilfe des folgenden C#-Beispiels wird ein Auftrag erstellt, der ein Video in 
 
 Für die in diesem Thema beschriebenen Schritte ist Folgendes erforderlich:
 
-- [Erstellen eines Azure Media Services-Kontos](create-account-cli-how-to.md)
+- [Erstellen eines Azure Media Services-Kontos](./create-account-howto.md)
 - Erstellen Sie eine Transformation sowie ein Eingabe- und ein Ausgabeobjekt. Informationen zum Erstellen einer Transformation sowie von Eingabe- und Ausgabeobjekten finden Sie im Tutorial [Hochladen, Codieren und Streamen von Videos](stream-files-tutorial-with-api.md).
 - Lesen Sie sich den Artikel [Encoding concept (Codierungskonzept)](encoding-concept.md) durch.
 

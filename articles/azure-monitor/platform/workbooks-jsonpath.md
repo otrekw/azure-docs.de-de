@@ -9,16 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891827"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081388"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Verwenden von JSONPath zum Transformieren von JSON-Daten in Arbeitsmappen
 
-Mit Arbeitsmappen können Daten aus vielen Quellen abgefragt werden. Einige Endpunkte, z. B. [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) oder ein benutzerdefinierter Endpunkt, können Ergebnisse in JSON zurückgeben. Wenn die vom abgefragten Endpunkt zurückgegebenen JSON-Daten nicht in einem gewünschten Format konfiguriert sind, können die Ergebnisse mithilfe von JSONPath transformiert werden.
+Mit Arbeitsmappen können Daten aus vielen Quellen abgefragt werden. Einige Endpunkte, z. B. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) oder ein benutzerdefinierter Endpunkt, können Ergebnisse in JSON zurückgeben. Wenn die vom abgefragten Endpunkt zurückgegebenen JSON-Daten nicht in einem gewünschten Format konfiguriert sind, können die Ergebnisse mithilfe von JSONPath transformiert werden.
 
 JSONPath ist eine Abfragesprache für JSON, die XPath für XML ähnelt. Wie XPath ermöglicht auch JSONPath das Extrahieren und Filtern von Daten aus der JSON-Struktur.
 

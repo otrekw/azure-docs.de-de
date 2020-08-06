@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61463402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038441"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Beispielvoreinstellungen für Media Encoder Standard (MES)
 
@@ -29,7 +29,7 @@ ms.locfileid: "61463402"
 Media Services unterstützt die vollständige Anpassung aller Werte in Voreinstellungen zum Erfüllen Ihrer spezifischen Codierungsanforderungen. Wenn Sie eine Codierungsvoreinstellung anpassen müssen, sollten Sie mit einer der Systemvoreinstellungen beginnen, die in diesem Abschnitt als Vorlage für Ihre benutzerdefinierte Konfiguration angegeben sind. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Wenn Sie eine Voreinstellung für 4k-Codierungen verwenden, sollten Sie den reservierten Einheitentyp `S3` erhalten. Weitere Informationen finden Sie unter [Skalieren der Codierung](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Wenn Sie eine Voreinstellung für 4k-Codierungen verwenden, sollten Sie den reservierten Einheitentyp `S3` erhalten. Weitere Informationen finden Sie unter [Skalieren der Codierung](./media-services-scale-media-processing-overview.md).  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>Standardeinstellung für die Videodrehung in den Voreinstellungen:
 Bei der Arbeit mit Media Encoder Standard ist die Videodrehung standardmäßig aktiviert. Wenn Ihr Video im Hochformat auf einem Mobilgerät aufgezeichnet wurde, wird es vor der Codierung mit diesen Voreinstellungen in das Querformat gedreht.
@@ -86,4 +86,4 @@ Bei der Arbeit mit Media Encoder Standard ist die Videodrehung standardmäßig a
   
  [H264 Single Bitrate Low Quality SD für Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 56KBit/s und Stereo-AAC-Audio.  
   
- Weitere Informationen im Zusammenhang mit Media Services-Encodern finden Sie unter [Azure On-Demand Media Encoder – Überblick und Vergleich](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).
+ Weitere Informationen im Zusammenhang mit Media Services-Encodern finden Sie unter [Azure On-Demand Media Encoder – Überblick und Vergleich](./media-services-encode-asset.md).

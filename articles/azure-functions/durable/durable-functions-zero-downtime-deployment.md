@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093067"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Bereitstellung ohne Ausfallzeit für Durable Functions
 
-Für das [Modell „Zuverlässige Ausführung“](durable-functions-checkpointing-and-replay.md) von Durable Functions müssen Orchestrierungen deterministisch sein. Dies ist eine zusätzliche Anforderung, die beim Bereitstellen von Updates erfüllt werden muss. Wenn eine Bereitstellung Änderungen der Signaturen von Aktivitätsfunktionen oder der Orchestratorlogik umfasst, tritt für ausgeführte Orchestrierungsinstanzen ein Fehler auf. Diese Situation ist besonders für Instanzen von zeitintensiven Orchestrierungen ein Problem, für die mehrere Stunden oder Tage an Arbeit anfallen können.
+Für das [Modell „Zuverlässige Ausführung“](./durable-functions-orchestrations.md) von Durable Functions müssen Orchestrierungen deterministisch sein. Dies ist eine zusätzliche Anforderung, die beim Bereitstellen von Updates erfüllt werden muss. Wenn eine Bereitstellung Änderungen der Signaturen von Aktivitätsfunktionen oder der Orchestratorlogik umfasst, tritt für ausgeführte Orchestrierungsinstanzen ein Fehler auf. Diese Situation ist besonders für Instanzen von zeitintensiven Orchestrierungen ein Problem, für die mehrere Stunden oder Tage an Arbeit anfallen können.
 
 Um zu verhindern, dass diese Fehler auftreten, haben Sie zwei Möglichkeiten: 
 - Verzögern Sie die Bereitstellung, bis alle aktuell ausgeführten Orchestrierungsinstanzen abgeschlossen wurden.
@@ -52,7 +52,7 @@ Verwenden Sie das folgende Verfahren, um dieses Szenario einzurichten.
 
 1. Legen Sie für jeden Slot die [AzureWebJobsStorage-Anwendungseinstellung](../functions-app-settings.md#azurewebjobsstorage) auf die Verbindungszeichenfolge eines freigegebenen Speicherkontos fest. Diese Verbindungszeichenfolge für das Speicherkonto wird von der Azure Functions-Runtime verwendet. Dieses Konto wird von der Azure Functions-Runtime verwendet und verwaltet die Schlüssel der Funktion.
 
-1. Erstellen Sie für jeden Slot eine neue App-Einstellung (z.B. `DurableManagementStorage`). Legen Sie den zugehörigen Wert auf die Verbindungszeichenfolge unterschiedlicher Speicherkonten fest. Diese Speicherkonten werden von der Durable Functions-Erweiterung für [zuverlässige Ausführung](durable-functions-checkpointing-and-replay.md) verwendet. Verwenden Sie ein separates Speicherkonto für jeden Slot. Markieren Sie diese Einstellung nicht als Einstellung für den Bereitstellungsslot.
+1. Erstellen Sie für jeden Slot eine neue App-Einstellung (z.B. `DurableManagementStorage`). Legen Sie den zugehörigen Wert auf die Verbindungszeichenfolge unterschiedlicher Speicherkonten fest. Diese Speicherkonten werden von der Durable Functions-Erweiterung für [zuverlässige Ausführung](./durable-functions-orchestrations.md) verwendet. Verwenden Sie ein separates Speicherkonto für jeden Slot. Markieren Sie diese Einstellung nicht als Einstellung für den Bereitstellungsslot.
 
 1. Geben Sie im [Abschnitt „durableTask“ der Datei „host.json“](durable-functions-bindings.md#hostjson-settings) Ihrer Funktions-App `azureStorageConnectionStringName` als Namen der App-Einstellung an, die Sie in Schritt 3 erstellt haben.
 
@@ -172,4 +172,3 @@ Weitere Informationen finden Sie unter [Verwalten von Instanzen in Durable Funct
 
 > [!div class="nextstepaction"]
 > [Versionsverwaltung für Durable Functions](durable-functions-versioning.md)
-

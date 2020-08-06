@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207089"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285678"
 ---
 # <a name="how-to-use-image-templates"></a>Verwenden von Imagevorlagen
 
@@ -148,44 +148,337 @@ Die Tabelle listet alle derzeit im Azure Maps Web SDK verfügbaren Bildvorlagen 
 
 **Symbolvorlagen**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| Marker | Marker-Dick | Marker-Kreismarker | Marker-Flach |
-|![Markersymbol](./media/image-templates/marker.png)|![Symbol „Marker-Dick“](./media/image-templates/marker-thick.png)|![Symbol „Marker-Kreis“](./media/image-templates/marker-circle.png)|![Symbol „Marker-Flach“](./media/image-templates/marker-flat.png)|
-||||
-| Marker-Quadrat | Marker-Quadrat-Cluster | Marker-Pfeil | Marker-Ball-Pin | 
-|![Symbol „Marker-Quadrat“](./media/image-templates/marker-square.png)|![Symbol „Marker-Quadrat-Cluster“](./media/image-templates/marker-square-cluster.png)|![Symbol „Marker-Pfeil“](./media/image-templates/marker-arrow.png)|![Symbol „Marker-Ball-Pin“](./media/image-templates/marker-ball-pin.png)|
-||||
-| Marker-quadratisch-gerundet | Marker-Quadrat-gerundet-Cluster | Flag | Flagge-Dreieck |
-| ![Symbol „Marker-quadratisch-gerundet“](./media/image-templates/marker-square-rounded.png) | ![Symbol „Marker-Quadrat-gerundet-Cluster“](./media/image-templates/marker-square-rounded-cluster.png) | ![Symbol „Flagge“](./media/image-templates/flag.png) | ![Symbol „Flagge-Dreieck“](./media/image-templates/flag-triangle.png) |
-||||
-| Dreieck | Dreieck-dick | Dreieck-Pfeil-hoch | Dreieck-Pfeil-links |
-| ![Symbol „Dreieck“](./media/image-templates/triangle.png) | ![Symbol „Dreieck-dick“](./media/image-templates/triangle-thick.png) | ![Symbol „Dreieck-Pfeil-hoch“](./media/image-templates/triangle-arrow-up.png) | ![Symbol „Dreieck-Pfeil-links“](./media/image-templates/triangle-arrow-left.png) |
-||||
-| Hexagon | Hexagon-dick | Hexagon-gerundet | Hexagon-gerundet-dick |
-| ![Symbol „Hexagon“](./media/image-templates/hexagon.png) | ![Symbol „Hexagon-dick“](./media/image-templates/hexagon-thick.png) | ![Symbol „Hexagon-gerundet“](./media/image-templates/hexagon-rounded.png) | ![Symbol „Hexagon-gerundet-dick“](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| Pin | Pin-rund | Gerundetes Quadrat | Gerundetes Quadrat-dick |
-| ![Symbol „Pin“](./media/image-templates/pin.png) | ![Symbol „Pin-rund“](./media/image-templates/pin-round.png) | ![Symbol „Gerundetes Quadrat“](./media/image-templates/rounded-square.png) | ![Symbol „Gerundetes Quadrat-dick“](./media/image-templates/rounded-square-thick.png) |
-||||
-| Pfeil-hoch | Pfeil-hoch-dünn | Auto ||
-| ![Symbol „Pfeil-hoch“](./media/image-templates/arrow-up.png) | ![Symbol „Pfeil-hoch-dünn“](./media/image-templates/arrow-up-thin.png) | ![Auto-Symbol](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      Marker
+   :::column-end:::
+   :::column span="":::
+      Marker-Dick
+   :::column-end:::
+   :::column span="":::
+      Marker-Kreismarker
+   :::column-end:::
+   :::column span="":::
+      Marker-Flach
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Markersymbol](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Dick“](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Kreis“](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Flach“](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Marker-Quadrat
+   :::column-end:::
+   :::column span="":::
+      Marker-Quadrat-Cluster
+   :::column-end:::
+   :::column span="":::
+      Marker-Pfeil
+   :::column-end:::
+   :::column span="":::
+      Marker-Ball-Pin
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Marker-Quadrat“](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Quadrat-Cluster“](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Pfeil“](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Ball-Pin“](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Marker-quadratisch-gerundet
+   :::column-end:::
+   :::column span="":::
+      Marker-Quadrat-gerundet-Cluster
+   :::column-end:::
+   :::column span="":::
+      Flag
+   :::column-end:::
+   :::column span="":::
+      Flagge-Dreieck
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Marker-quadratisch-gerundet“](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Marker-Quadrat-gerundet-Cluster“](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Flagge“](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Flagge-Dreieck“](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Dreieck
+   :::column-end:::
+   :::column span="":::
+      Dreieck-dick
+   :::column-end:::
+   :::column span="":::
+      Dreieck-Pfeil-hoch
+   :::column-end:::
+   :::column span="":::
+      Dreieck-Pfeil-links
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Dreieck“](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Dreieck-dick“](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Dreieck-Pfeil-hoch“](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Dreieck-Pfeil-links“](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Hexagon
+   :::column-end:::
+   :::column span="":::
+      Hexagon-dick
+   :::column-end:::
+   :::column span="":::
+      Hexagon-gerundet
+   :::column-end:::
+   :::column span="":::
+      Hexagon-gerundet-dick
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Hexagon“](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Hexagon-dick“](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Hexagon-gerundet“](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Hexagon-gerundet-dick“](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Pin
+   :::column-end:::
+   :::column span="":::
+      Pin-rund
+   :::column-end:::
+   :::column span="":::
+      Gerundetes Quadrat
+   :::column-end:::
+   :::column span="":::
+      Gerundetes Quadrat-dick
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Pin“](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Pin-rund“](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gerundetes Quadrat“](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gerundetes Quadrat-dick“](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Pfeil-hoch
+   :::column-end:::
+   :::column span="":::
+      Pfeil-hoch-dünn
+   :::column-end:::
+   :::column span="":::
+      Auto
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Pfeil-hoch“](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Pfeil-hoch-dünn“](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![Auto-Symbol](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **Vorlagen für Polygonfüllmuster**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| Schachbrettmuster | Schachbrettmuster-gedreht | Kreise | Kreise-Abstand |
-| ![Symbol „Schachbrettmuster“](./media/image-templates/checker.png) | ![Symbol „Schachbrettmuster-gedreht“](./media/image-templates/checker-rotated.png) | ![Symbol „Kreise“](./media/image-templates/circles.png) | ![Symbol „Kreise-Abstand“](./media/image-templates/circles-spaced.png) |
-|||||
-| Diagonal-Linien-hoch | Diagonal-Linien-runter | Diagonal-Streifen-hoch | Diagonal-Streifen-runter |
-| ![Symbol „Diagonal-Linien-hoch“](./media/image-templates/diagonal-lines-up.png) | ![Symbol „Diagonal-Linien-runter“](./media/image-templates/diagonal-lines-down.png) | ![Symbol „Diagonal-Streifen-hoch“](./media/image-templates/diagonal-stripes-up.png) | ![Symbol „Diagonal-Streifen-runter-runter“](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| Rasterlinien | Gedrehte Rasterlinien | Gedrehte Rasterstreifen | Füllung Kreuz |
-| ![Symbol „Rasterlinien“](./media/image-templates/grid-lines.png) | ![Symbol „Gedrehte Rasterlinien“](./media/image-templates/rotated-grid-lines.png) | ![Symbol „Gedrehte Rasterstreifen“](./media/image-templates/rotated-grid-stripes.png) | ![Symbol „Füllung Kreuz“](./media/image-templates/x-fill.png) |
-|||||
-| Zickzack | Zickzack-vertikal | Punkte |  |
-| ![Symbol „Zickzack“](./media/image-templates/zig-zag.png) | ![Symbol „Zickzack-vertikal“](./media/image-templates/zig-zag-vertical.png) | ![Symbol „Punkte“](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      Schachbrettmuster
+   :::column-end:::
+   :::column span="":::
+      Schachbrettmuster-gedreht
+   :::column-end:::
+   :::column span="":::
+      Kreise
+   :::column-end:::
+   :::column span="":::
+      Kreise-Abstand
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Schachbrettmuster“](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Schachbrettmuster-gedreht“](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Kreise“](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Kreise-Abstand“](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Diagonal-Linien-hoch
+   :::column-end:::
+   :::column span="":::
+      Diagonal-Linien-runter
+   :::column-end:::
+   :::column span="":::
+      Diagonal-Streifen-hoch
+   :::column-end:::
+   :::column span="":::
+      Diagonal-Streifen-runter
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Diagonal-Linien-hoch“](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Diagonal-Linien-runter“](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Diagonal-Streifen-hoch“](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Diagonal-Streifen-runter-runter“](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Rasterlinien
+   :::column-end:::
+   :::column span="":::
+      Gedrehte Rasterlinien
+   :::column-end:::
+   :::column span="":::
+      Gedrehte Rasterstreifen
+   :::column-end:::
+   :::column span="":::
+      Füllung Kreuz
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Rasterlinien“](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gedrehte Rasterlinien“](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Gedrehte Rasterstreifen“](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Füllung Kreuz“](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Zickzack
+   :::column-end:::
+   :::column span="":::
+      Zickzack-vertikal
+   :::column-end:::
+   :::column span="":::
+      Punkte
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Symbol „Zickzack“](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Zickzack-vertikal“](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![Symbol „Punkte“](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **Vorab geladene Bildsymbole**
 

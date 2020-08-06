@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080351"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -32,7 +32,7 @@ Dieser Artikel enthält eine Übersicht der VM-Erweiterungen, erläutert Vorauss
 Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsfälle verfügbar. Beispiele hierfür sind:
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf eine VM mithilfe der DSC-Erweiterung für Linux. Weitere Informationen finden Sie unter [Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC) (Azure-Erweiterung für die gewünschte Statuskonfiguration).
-- Konfigurieren der Überwachung einer VM mit der VM-Erweiterung „Microsoft Monitoring Agent“. Weitere Informationen finden Sie unter [Überwachen einer Linux-VM](../linux/tutorial-monitoring.md).
+- Konfigurieren der Überwachung einer VM mit der VM-Erweiterung „Microsoft Monitoring Agent“. Weitere Informationen finden Sie unter [Überwachen einer Linux-VM](../linux/tutorial-monitor.md).
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Chef- oder Datadog-Erweiterung. Weitere Informationen finden Sie in der [Chef-Dokumentation](https://docs.chef.io/azure_portal.html) oder im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Linux ermöglicht die Ausführung beliebiger Bash-Skripts auf virtuellen Computern. Benutzerdefinierte Skripts sind beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Linux-VMs](custom-script-linux.md).
@@ -65,7 +65,7 @@ Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository herunterg
 > [!IMPORTANT]
 > Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
 
-Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gewähren.
+Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/security-overview.md#service-tags) gewähren.
 
 Für Anfragen zum Umleiten von Datenverkehr verfügt der Linux-Agent über Proxyserverunterstützung. Diese Proxyserverunterstützung gilt jedoch nicht für Erweiterungen. Sie müssen jede einzelne Erweiterung für die Arbeit mit einem Proxy konfigurieren.
 
@@ -259,7 +259,7 @@ In der vorhergehenden Beispielausgabe ist die Version des übergeordneten Prozes
 
 Die Zielversion des Agents ist die automatisch aktualisierte Version.
 
-Es wird dringend empfohlen, die automatische Aktualisierung für den Agent immer zu aktivieren: [AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Ist diese Funktion nicht aktiviert, müssen Sie den Agent manuell aktualisieren und erhalten keine Fehlerbehebungen und Sicherheitsupdates.
+Es wird dringend empfohlen, die automatische Aktualisierung für den Agent immer zu aktivieren: [AutoUpdate.Enabled=y](./update-linux-agent.md). Ist diese Funktion nicht aktiviert, müssen Sie den Agent manuell aktualisieren und erhalten keine Fehlerbehebungen und Sicherheitsupdates.
 
 #### <a name="extension-updates"></a>Updates für Erweiterungen
 

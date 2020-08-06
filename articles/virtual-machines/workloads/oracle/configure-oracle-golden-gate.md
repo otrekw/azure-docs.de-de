@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088358"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementieren von Oracle Golden Gate in Azure-Linux-VMs 
 
@@ -27,7 +27,7 @@ Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die B
 
 Dieses Dokument veranschaulicht schrittweise das Erstellen, Installieren und Konfigurieren von Oracle Golden Gate in einer Azure-VM. In diesem Tutorial werden zwei virtuelle Computer in einer Verfügbarkeitsgruppe in einer einzelnen Region eingerichtet. Über dasselbe Tutorial kann Oracle GoldenGate für VMs in verschiedenen Verfügbarkeitszonen in einer einzelnen Azure-Region oder für VMs in zwei verschiedenen Regionen einrichtet werden.
 
-Bevor Sie beginnen, stellen Sie sicher, dass die Azure CLI installiert wurde. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Bevor Sie beginnen, stellen Sie sicher, dass die Azure CLI installiert wurde. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Vorbereiten der Umgebung
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 
-Der folgende Schritt ist optional, wird aber empfohlen. Weitere Informationen finden Sie im [Leitfaden zu Azure-Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Der folgende Schritt ist optional, wird aber empfohlen. Weitere Informationen finden Sie im [Leitfaden zu Azure-Verfügbarkeitsgruppen](../../windows/infrastructure-example.md).
 
 ```azurecli
 az vm availability-set create \

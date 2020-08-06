@@ -13,22 +13,22 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78244639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090058"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
-In Azure Media Services kann ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. 
+In Azure Media Services kann ein [Liveereignis](/rest/api/media/liveevents) entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. 
 
 In diesem Artikel werden die Features der Liveereignistypen verglichen.
 
 ## <a name="types-comparison"></a>Typenvergleich 
 
-In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. Die Typen werden während der Erstellung mit [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
+In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. Die Typen werden während der Erstellung mit [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
 * **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. Auch als Pass-Through-Liveereignis bezeichnet.
 * **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Datenströme mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösung/Bitrate-Paaren codiert wird (weitere Informationen folgen später in diesem Artikel).
@@ -65,7 +65,7 @@ In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. D
 
 ## <a name="system-presets"></a>Systemvoreinstellungen
 
-Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind, sind durch [presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding) bestimmt. Wird ein **Standard**-Liveencoder (LiveEventEncodingType.Standard) verwendet, gibt die Voreinstellung *Default720p* einen Satz von 6 Auflösung/Bitrate-Paaren an, der weiter unten beschrieben ist. Wird ein **Premium1080p**-Liveencoder (LiveEventEncodingType.Premium1080p) verwendet, gibt die Voreinstellung *Default1080p* den Ausgabesatz der Auflösung/Bitrate-Paare an.
+Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind, sind durch [presetName](/rest/api/media/liveevents/create#liveeventencoding) bestimmt. Wird ein **Standard**-Liveencoder (LiveEventEncodingType.Standard) verwendet, gibt die Voreinstellung *Default720p* einen Satz von 6 Auflösung/Bitrate-Paaren an, der weiter unten beschrieben ist. Wird ein **Premium1080p**-Liveencoder (LiveEventEncodingType.Premium1080p) verwendet, gibt die Voreinstellung *Default1080p* den Ausgabesatz der Auflösung/Bitrate-Paare an.
 
 > [!NOTE]
 > Sie können die Voreinstellung „Default1080p“ nicht auf ein Liveereignis anwenden, das für eine Livecodierung des Typs „Standard“ konfiguriert ist – Sie erhalten einen Fehler. Sie erhalten auch einen Fehler, wenn Sie versuchen, die Voreinstellung „Default720p“ auf einen „Premium1080p“-Liveencoder anzuwenden.

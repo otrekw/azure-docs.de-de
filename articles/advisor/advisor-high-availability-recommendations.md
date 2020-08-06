@@ -3,12 +3,12 @@ title: Verbessern der Zuverlässigkeit Ihrer Anwendung mit Advisor
 description: Verwenden Sie Azure Advisor, um die Zuverlässigkeit Ihrer geschäftskritischen Azure-Bereitstellungen sicherzustellen und zu verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057670"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbessern der Zuverlässigkeit Ihrer Anwendung mit Azure Advisor
 
@@ -59,7 +59,7 @@ Wenn ein Traffic Manager-Profil für das geografische Routing konfiguriert ist, 
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Speichern und Wiederherstellen von Daten nach versehentlichem Überschreiben oder Löschen durch vorläufiges Löschen in Ihrem Azure Storage-Konto
 
-Aktivieren Sie [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. Durch vorläufiges Löschen können Sie Daten wiederherstellen, wenn diese versehentlich gelöscht oder überschrieben wurden. Advisor identifiziert Azure-Speicherkonten, bei denen das vorläufige Löschen nicht aktiviert ist, und schlägt vor, es zu aktivieren.
+Aktivieren Sie [vorläufiges Löschen](../storage/blobs/soft-delete-overview.md) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. Durch vorläufiges Löschen können Sie Daten wiederherstellen, wenn diese versehentlich gelöscht oder überschrieben wurden. Advisor identifiziert Azure-Speicherkonten, bei denen das vorläufige Löschen nicht aktiviert ist, und schlägt vor, es zu aktivieren.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurieren des VPN-Gateway zu aktiv-aktiv für Verbindungsresilienz
 
@@ -107,7 +107,7 @@ Ab dem 1. Juli 2020 wird es nicht mehr möglich sein, neue Kafka-Cluster mit Kaf
 Ab dem 1. Juli 2020 können Sie keine neuen Spark-Cluster mehr erstellen, wenn Sie Spark 2.1 oder 2.2 unter HDInsight 3.6 verwenden. Sie können keine neuen Spark-Cluster erstellen, wenn Sie Spark 2.3 unter HDInsight 4.0 verwenden. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. 
 
 ## <a name="enable-virtual-machine-replication"></a>Aktivieren der Replikation der virtuellen Computer
-Virtuelle Computer, für die die Replikation in eine andere Region nicht aktiviert ist, sind gegenüber regionalen Ausfällen nicht resilient. Durch eine Replikation der VMs werden negative Auswirkungen auf das Geschäft bei Ausfällen einer Azure-Region reduziert. Advisor erkennt virtuelle Computer, auf denen die Replikation nicht aktiviert ist, und empfiehlt deren Aktivierung. Wenn Sie die Replikation aktivieren, können Sie Ihre virtuellen Computer im Falle eines Ausfalls schnell in einer Azure-Remoteregion hochfahren. [Weitere Informationen zur Replikation virtueller Computer.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Virtuelle Computer, für die die Replikation in eine andere Region nicht aktiviert ist, sind gegenüber regionalen Ausfällen nicht resilient. Durch eine Replikation der VMs werden negative Auswirkungen auf das Geschäft bei Ausfällen einer Azure-Region reduziert. Advisor erkennt virtuelle Computer, auf denen die Replikation nicht aktiviert ist, und empfiehlt deren Aktivierung. Wenn Sie die Replikation aktivieren, können Sie Ihre virtuellen Computer im Falle eines Ausfalls schnell in einer Azure-Remoteregion hochfahren. [Weitere Informationen zur Replikation virtueller Computer.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 

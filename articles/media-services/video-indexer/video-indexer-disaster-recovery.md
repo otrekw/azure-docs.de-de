@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eab376c44065979de86e5c70b796be952fccffaa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065401"
 ---
 # <a name="video-indexer-failover-and-disaster-recovery"></a>Video Indexer-Failover und -Notfallwiederherstellung
 
 Azure Media Services Video Indexer bietet kein sofortiges Failover des Diensts, wenn es zu einem Ausfall oder Fehler des regionalen Rechenzentrums gekommen ist. In diesem Artikel wird erläutert, wie Sie Ihre Umgebung für ein Failover konfigurieren, um eine optimale Verfügbarkeit für Apps und eine minimale Wiederherstellungszeit bei einem Notfall sicherzustellen.
 
-Wir empfehlen das Konfigurieren von Business Continuity Disaster Recovery (BCDR) zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Weitere Informationen finden Sie unter [Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Wir empfehlen das Konfigurieren von Business Continuity Disaster Recovery (BCDR) zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Weitere Informationen finden Sie unter [Azure-Regionspaare](../../best-practices-availability-paired-regions.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,7 +39,7 @@ Um BCDR zu implementieren, müssen Sie über zwei Video Indexer-Konten verfügen
 1. Wenn in Ihrer primären Region ein Fehler auftritt, wechseln Sie zur Indizierung mit dem sekundären Konto.
 
 > [!TIP]
-> Sie können BCDR automatisieren, indem Sie Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen gemäß den Ausführungen unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications.md) einrichten.
+> Sie können BCDR automatisieren, indem Sie Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen gemäß den Ausführungen unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md) einrichten.
 
 Informationen zum Verwenden mehrerer Mandanten finden Sie unter [Verwalten mehrerer Mandanten](manage-multiple-tenants.md). Wählen Sie zum Implementieren von BCDR eine der folgenden beiden Optionen aus: [Video Indexer-Konto pro Mandant](manage-multiple-tenants.md#video-indexer-account-per-tenant) oder [Azure-Abonnement pro Mandant](manage-multiple-tenants.md#azure-subscription-per-tenant).
 

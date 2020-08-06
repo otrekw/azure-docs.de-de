@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958394"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088596"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID 
 
@@ -290,13 +290,12 @@ Um dieses Problem zu lösen, müssen die Remotedesktop-Verbindungsbroker-Rolle u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[SChannel-Ereignisse](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[SChannel-Ereignisse](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 
-[Schannel SSP – technische Übersicht](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
+[Schannel SSP – technische Übersicht](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786429(v=ws.11))
 
-[RDP Fails with Event ID 1058 & Event 36870 with Remote Desktop Session Host Certificate & SSL Communication](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/) (RDP-Fehler mit Ereignis-ID 1058 und Ereignis 36870 mit Remotedesktop-Sitzungshostzertifikat und SSL-Kommunikation)
+[RDP Fails with Event ID 1058 & Event 36870 with Remote Desktop Session Host Certificate & SSL Communication](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) (RDP-Fehler mit Ereignis-ID 1058 und Ereignis 36870 mit Remotedesktop-Sitzungshostzertifikat und SSL-Kommunikation)
 
-[Schannel 36872 oder Schannel 36870 auf einem Domänencontroller](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
+[Schannel 36872 oder Schannel 36870 auf einem Domänencontroller](/archive/blogs/instan/schannel-36872-or-schannel-36870-on-a-domain-controller)
 
-[Ereignis-ID 1058 – Remotedesktopdienste, Authentifizierung und Verschlüsselung](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
-
+[Ereignis-ID 1058 – Remotedesktopdienste, Authentifizierung und Verschlüsselung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee890862(v=ws.10))

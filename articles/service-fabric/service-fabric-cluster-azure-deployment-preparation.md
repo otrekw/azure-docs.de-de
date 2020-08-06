@@ -3,12 +3,12 @@ title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610590"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281326"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 
@@ -51,7 +51,7 @@ Bei *kurzlebigen Betriebssystemdatenträgern* handelt es sich um Speicher, der a
 
 Kurzlebige Betriebssystemdatenträger sind kein spezifisches Feature von Service Fabric, sondern ein Feature der *VM-Skalierungsgruppen* von Azure, die Service Fabric-Knotentypen zugeordnet sind. Wenn Sie sie mit Service Fabric verwenden, ist in der Azure Resource Manager-Vorlage Ihres Clusters Folgendes erforderlich:
 
-1. Stellen Sie sicher, das die Knotentypen [unterstützte Azure-VM-Größen](../virtual-machines/windows/ephemeral-os-disks.md) für kurzlebige Betriebssystemdatenträger angeben und dass der Cache der VM-Größe für die Größe des Betriebssystemdatenträgers ausreichend dimensioniert ist (siehe *Hinweis* weiter unten). Beispiel:
+1. Stellen Sie sicher, das die Knotentypen [unterstützte Azure-VM-Größen](../virtual-machines/ephemeral-os-disks.md) für kurzlebige Betriebssystemdatenträger angeben und dass der Cache der VM-Größe für die Größe des Betriebssystemdatenträgers ausreichend dimensioniert ist (siehe *Hinweis* weiter unten). Beispiel:
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ Kurzlebige Betriebssystemdatenträger sind kein spezifisches Feature von Service
 > Zum Migrieren müssen Benutzer einen neuen nodeType mit kurzlebigen Datenträgern [hinzufügen](./virtual-machine-scale-set-scale-node-type-scale-out.md), die Workloads in den neuen nodeType verschieben und den vorhandenen nodeType [entfernen](./service-fabric-how-to-remove-node-type.md).
 >
 
-Weitere Informationen und Konfigurationsoptionen finden Sie unter [Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer](../virtual-machines/windows/ephemeral-os-disks.md). 
+Weitere Informationen und Konfigurationsoptionen finden Sie unter [Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer](../virtual-machines/ephemeral-os-disks.md). 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Auswählen der Dauerhaftigkeits- und der Zuverlässigkeitsstufe für den Cluster

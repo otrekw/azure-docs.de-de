@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169218"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276923"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Notfallwiederherstellung und Speicherkontofailover
 
@@ -132,7 +132,7 @@ Da für den Azure Storage-Ressourcenanbieter kein Failover ausgeführt wird, gib
 
 ### <a name="azure-virtual-machines"></a>Virtuelle Azure-Computer
 
-Ein Failover wird für Azure-VMs im Rahmen eines Kontofailovers nicht durchgeführt. Wenn die primäre Region nicht verfügbar ist und Sie ein Failover zur primären Region durchführen, müssen Sie nach dem Failover alle VMs neu erstellen. Außerdem ist mit dem Kontofailover ein potenzieller Datenverlust verbunden. Microsoft empfiehlt Ihnen, die spezifischen Informationen zur [Hochverfügbarkeit](../../virtual-machines/windows/manage-availability.md) und [Notfallwiederherstellung](../../virtual-machines/virtual-machines-disaster-recovery-guidance.md) für virtuelle Computer in Azure zu lesen.
+Ein Failover wird für Azure-VMs im Rahmen eines Kontofailovers nicht durchgeführt. Wenn die primäre Region nicht verfügbar ist und Sie ein Failover zur primären Region durchführen, müssen Sie nach dem Failover alle VMs neu erstellen. Außerdem ist mit dem Kontofailover ein potenzieller Datenverlust verbunden. Microsoft empfiehlt Ihnen, die spezifischen Informationen zur [Hochverfügbarkeit](../../virtual-machines/windows/manage-availability.md) und [Notfallwiederherstellung](../../virtual-machines/windows/backup-recovery.md) für virtuelle Computer in Azure zu lesen.
 
 ### <a name="azure-unmanaged-disks"></a>Nicht verwaltete Azure-Datenträger
 

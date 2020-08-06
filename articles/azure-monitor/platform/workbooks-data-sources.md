@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081422"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Datenquellen für Azure Monitor-Arbeitsmappen
 
@@ -61,7 +61,7 @@ Damit ein Abfragesteuerelement diese Datenquelle verwendet, wählen Sie über di
 
 ## <a name="azure-data-explorer"></a>Azure-Daten-Explorer
 
-Arbeitsmappen unterstützen jetzt das Abfragen von [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/)-Clustern mit der leistungsstarken [Kusto](https://docs.microsoft.com/azure/kusto/query/index)-Abfragesprache.   
+Arbeitsmappen unterstützen jetzt das Abfragen von [Azure Data Explorer](/azure/data-explorer/)-Clustern mit der leistungsstarken [Kusto](/azure/kusto/query/index)-Abfragesprache.   
 
 ![Screenshot des Kusto-Abfragefensters](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ Der JSON-Anbieter ermöglicht Ihnen das Erstellen eines Abfrageergebnisses aus s
 > [!NOTE]
 > Die empfohlene Vorgehensweise zum Abfragen von Azure-Warnungsinformationen ist die Verwendung der [Azure Resource Graph](#azure-resource-graph)-Datenquelle und Abfragen der Tabelle `AlertsManagementResources`.
 >
-> Beispiele finden Sie in der [Azure Resource Graph-Tabellenreferenz](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources) oder der [Warnungsvorlage](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook).
+> Beispiele finden Sie in der [Azure Resource Graph-Tabellenreferenz](../../governance/resource-graph/reference/supported-tables-resources.md) oder der [Warnungsvorlage](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook).
 >
 > Die Warnungsdatenquelle bleibt über einen bestimmten Zeitraum verfügbar, während Autoren zur Verwendung von ARG wechseln. Die Verwendung dieser Datenquelle in Vorlagen wird nicht empfohlen. 
 
@@ -113,5 +113,5 @@ Um zu vermeiden, dass bei Verwendung von Vorlagen nicht vertrauenswürdige Hosts
 
 * [Erfahren Sie mehr](workbooks-visualizations.md) über die vielen umfassenden Visualisierungsoptionen für Arbeitsmappen.
 * [Steuern](workbooks-access-control.md) Sie den Zugriff auf Ihre Arbeitsmappenressourcen, und geben Sie diese frei.
-* [Tipps zur Optimierung von Log Analytics-Abfragen](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Tipps zur Optimierung von Log Analytics-Abfragen](../log-query/query-optimization.md)
 * 

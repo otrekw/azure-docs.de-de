@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066126"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -87,7 +87,7 @@ Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigu
 
 ![Schemas für eingehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md) für jeden Transaktionstyp (ST01) und jede Absenderanwendung (GS02) aus. Die EDI-Empfangspipeline disassembliert die eingehende Nachricht durch Abgleich der Werte und des Schemas, die Sie in diesem Abschnitt festgelegt haben, mit den Werten für ST01 und GS02 in der eingehenden Nachricht sowie mit dem Schema der eingehenden Nachricht. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
+Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Transaktionstyp (ST01) und jede Absenderanwendung (GS02) aus. Die EDI-Empfangspipeline disassembliert die eingehende Nachricht durch Abgleich der Werte und des Schemas, die Sie in diesem Abschnitt festgelegt haben, mit den Werten für ST01 und GS02 in der eingehenden Nachricht sowie mit dem Schema der eingehenden Nachricht. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
 | Eigenschaft | BESCHREIBUNG |
 |----------|-------------|
@@ -210,7 +210,7 @@ Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigu
 
 ![Schemas für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md) für jeden Transaktionstyp (ST01) aus. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
+Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Transaktionstyp (ST01) aus. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
 | Eigenschaft | BESCHREIBUNG |
 |----------|-------------|
@@ -236,7 +236,7 @@ Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterpri
 
 ![Kontrollversionsnummer für ausgehende Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md) für jeden Austauschvorgang aus. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
+Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Austauschvorgang aus. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
 | Eigenschaft | BESCHREIBUNG |
 |----------|-------------|
@@ -381,7 +381,7 @@ Um diese Dokumentversionsnummern und Nachrichtentypen anzugeben, führen Sie die
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/x12/).
+Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/x12/).
 
 > [!NOTE]
 > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).

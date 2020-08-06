@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
-ms.openlocfilehash: 5417ff3b53526adbaeba2b9df58694ad495475d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284182"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>Hinzufügen von Konfigurationen zu Befehlsparametern
 
@@ -112,7 +112,7 @@ Testen Sie Validierungen mit dem Befehl **SetTemperature**. Fügen Sie mit den f
     | ---- | ---- | ---- |
     | Mindestwert | `60` | Bei Zahlenparameter der Minimalwert, den der Parameter annehmen kann |
     | Höchstwert | `80` | Bei Zahlenparameter der Maximalwert, den der Parameter annehmen kann |
-    | Fehlerantwort |  Einfacher Editor > Erste Variation > `Sorry, I can only set temperature between 60 and 80 degrees` | Aufforderung zur Eingabe eines neuen Werts, wenn die Validierung fehlschlägt |
+    | Fehlerantwort |  Einfacher Editor > Erste Variation > `Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Aufforderung zur Eingabe eines neuen Werts, wenn die Validierung fehlschlägt |
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen einer Bereichsvalidierung](media/custom-commands/add-validations-temperature.png)

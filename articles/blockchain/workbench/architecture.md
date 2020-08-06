@@ -4,12 +4,12 @@ description: Übersicht über die Architektur von Azure Blockchain Workbench (Vo
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff70ef2eeb1dc27d33769fd48fe5923f56717b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049165"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench-Architektur
 
@@ -116,4 +116,4 @@ Azure Monitor liefert Informationen über die Integrität des Blockchainnetzwerk
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Bereitstellen von Azure Blockchain Workbench](../../blockchain-workbench/blockchain-workbench-deploy.md)
+> [Bereitstellen von Azure Blockchain Workbench](./deploy.md)

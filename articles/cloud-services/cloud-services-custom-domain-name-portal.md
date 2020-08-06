@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092727"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
 Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie `http://contoso.cloudapp.net` zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
@@ -63,7 +63,7 @@ Sie müssen einen neuen Eintrag zu der DNS-Tabelle Ihrer benutzerdefinierten Dom
        ![Die Schnelleinsicht zeigt die Site-URL.][csurl]
 
        **OR**
-   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/overview), und verwenden Sie dann den folgenden Befehl:
+   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/), und verwenden Sie dann den folgenden Befehl:
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -96,7 +96,7 @@ Sie müssen zunächst die virtuelle IP-Adresse Ihres Clouddiensts ermitteln, um 
        ![Die Schnelleinsicht zeigt die VIP.][vip]
 
        **OR**
-   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/overview), und verwenden Sie dann den folgenden Befehl:
+   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/), und verwenden Sie dann den folgenden Befehl:
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip

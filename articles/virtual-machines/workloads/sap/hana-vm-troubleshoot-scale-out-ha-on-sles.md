@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088307"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
 
@@ -172,7 +172,7 @@ Die **corosync**-Konfigurationsdatei muss auf jedem Knoten im Cluster, einschlie
 
 Der Inhalt von **corosync.conf** vom Testsystem dient als Beispiel.
 
-Der erste Abschnitt ist **totem**, wie unter [Clusterinstallation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), Schritt 11, beschrieben. Sie können den Wert für **mcastaddr** ignorieren. Übernehmen Sie einfach den vorhandenen Eintrag. Die Einträge für **token** und **consensus** müssen gemäß der [Microsoft Azure-SAP HANA-Dokumentation][sles-pacemaker-ha-guide] festgelegt werden.
+Der erste Abschnitt ist **totem**, wie unter [Clusterinstallation](./high-availability-guide-suse-pacemaker.md#cluster-installation), Schritt 11, beschrieben. Sie können den Wert für **mcastaddr** ignorieren. Übernehmen Sie einfach den vorhandenen Eintrag. Die Einträge für **token** und **consensus** müssen gemäß der [Microsoft Azure-SAP HANA-Dokumentation][sles-pacemaker-ha-guide] festgelegt werden.
 
 <pre><code>
 totem {
@@ -279,7 +279,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD-Gerät
 
-Die Einrichtung eines SBD-Geräts auf einer Azure-VM wird unter [SBD-Umgrenzung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) beschrieben.
+Die Einrichtung eines SBD-Geräts auf einer Azure-VM wird unter [SBD-Umgrenzung](./high-availability-guide-suse-pacemaker.md#sbd-fencing) beschrieben.
 
 Überprüfen Sie als Erstes auf der SBD-Server-VM, ob für jeden Knoten im Cluster ACL-Einträge vorhanden sind. Führen Sie den folgenden Befehl auf der SBD-Server-VM aus:
 
@@ -422,7 +422,7 @@ Aufseiten der Ziel-VM (in diesem Beispiel **hso-hana-vm-s2-2**) finden Sie unter
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Überprüfen Sie, ob die Einträge in **/etc/sysconfig/sbd** der Beschreibung in [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) entsprechen. Überprüfen Sie, ob die Starteinstellung in **/etc/iscsi/iscsid.conf** auf „automatic“ festgelegt ist.
+Überprüfen Sie, ob die Einträge in **/etc/sysconfig/sbd** der Beschreibung in [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](./high-availability-guide-suse-pacemaker.md#sbd-fencing) entsprechen. Überprüfen Sie, ob die Starteinstellung in **/etc/iscsi/iscsid.conf** auf „automatic“ festgelegt ist.
 
 Die folgenden Einträge **/etc/sysconfig/sbd** sind wichtig. Passen Sie den Wert **id** nach Bedarf an:
 
@@ -979,4 +979,3 @@ Dieser letzte Screenshot zeigt den Abschnitt **Details** eines einzelnen Überga
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Leitfaden zur Problembehandlung wird die Hochverfügbarkeit für SAP HANA in einer Konfiguration für die horizontale Skalierung beschrieben. Eine weitere wichtige Komponente in einer SAP-Landschaft neben der Datenbank ist der SAP NetWeaver-Stapel. Informieren Sie sich über [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs mit SUSE Linux Enterprise Server][sap-nw-ha-guide-sles].
-

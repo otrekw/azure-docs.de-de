@@ -3,16 +3,16 @@ title: 'Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuw
 description: Dieser Artikel enthält Anleitungen zum Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und zum Zuweisen der Rolle an den Dienstprinzipal für Live Video Analytics in IoT Edge mithilfe der Azure-Befehlszeilenschnittstelle.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260513"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043173"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuweisen der Rolle an einen Dienstprinzipal
 
-Die Instanz von Live Video Analytics im IoT Edge-Modul benötigt ein aktives Azure Media Services-Konto für die ordnungsgemäße Funktion. Die Beziehung zwischen Live Video Analytics im IoT Edge-Modul und dem Azure Media Service-Konto wird über einen Satz von Eigenschaften des Modulzwillings hergestellt. Eine dieser Eigenschaften des Modulzwillings ist ein [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object), der es der Modulinstanz ermöglicht, mit dem Media Services-Konto zu kommunizieren und erforderliche Operationen für es auszulösen. Um potenziellen Missbrauch und/oder versehentliche Offenlegung von Daten auf dem Edge-Gerät zu minimieren, sollte dieser Dienstprinzipal über die geringsten möglichen Rechte verfügen.
+Die Instanz von Live Video Analytics im IoT Edge-Modul benötigt ein aktives Azure Media Services-Konto für die ordnungsgemäße Funktion. Die Beziehung zwischen Live Video Analytics im IoT Edge-Modul und dem Azure Media Service-Konto wird über einen Satz von Eigenschaften des Modulzwillings hergestellt. Eine dieser Eigenschaften des Modulzwillings ist ein [Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object), der es der Modulinstanz ermöglicht, mit dem Media Services-Konto zu kommunizieren und erforderliche Operationen für es auszulösen. Um potenziellen Missbrauch und/oder versehentliche Offenlegung von Daten auf dem Edge-Gerät zu minimieren, sollte dieser Dienstprinzipal über die geringsten möglichen Rechte verfügen.
 
 In diesem Artikel werden die Schritte zum Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle mit Azure Cloud Shell erläutert, die anschließend zum Erstellen eines Dienstprinzipals verwendet wird.
 
@@ -23,7 +23,7 @@ Für diesen Artikel gelten folgende Voraussetzungen:
 * Azure-Abonnement mit Besitzerabonnement.
 * Ein Azure Active Directory mit Berechtigungen zum Erstellen einer App und Zuweisen eines Dienstprinzipals zu einer Rolle.
 
-Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="overview"></a>Übersicht  
 
@@ -49,7 +49,7 @@ Sollten Sie nicht über ein Media Service-Konto verfügen, gehen Sie wie folgt v
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. Erstellen Sie eine [Ressourcengruppe](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) und ein [Speicherkonto](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+1. Erstellen Sie eine [Ressourcengruppe](/cli/azure/group?view=azure-cli-latest#az-group-create) und ein [Speicherkonto](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
 1. Erstellen Sie jetzt ein Azure Media Services-Konto, indem Sie die folgende Befehlsvorlage in Cloud Shell verwenden:
 
     ```
@@ -85,8 +85,8 @@ Dieser Befehl erzeugt eine Antwort wie diese:
 ```
 1. Die Ausgabe für einen Dienstprinzipal mit Kennwortauthentifizierung schließt den Kennwortschlüssel ein, in diesem Fall ist das der Parameter „AadSecret“. 
 
-    Denken Sie unbedingt daran, diesen Wert zu kopieren – er kann nicht abgerufen werden. Wenn Sie das Kennwort vergessen haben, [setzen Sie die Anmeldeinformationen des Dienstprinzipals zurück](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
-1. Die App-ID und der Mandantenschlüssel werden in der Ausgabe als „AadClientId“ bzw. „AadTenantId“ angezeigt. Diese werden bei der Authentifizierung des Dienstprinzipals verwendet. Notieren Sie die Werte. Sie können jedoch auch jederzeit mit [az ad sp list](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) abgerufen werden.
+    Denken Sie unbedingt daran, diesen Wert zu kopieren – er kann nicht abgerufen werden. Wenn Sie das Kennwort vergessen haben, [setzen Sie die Anmeldeinformationen des Dienstprinzipals zurück](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
+1. Die App-ID und der Mandantenschlüssel werden in der Ausgabe als „AadClientId“ bzw. „AadTenantId“ angezeigt. Diese werden bei der Authentifizierung des Dienstprinzipals verwendet. Notieren Sie die Werte. Sie können jedoch auch jederzeit mit [az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) abgerufen werden.
 
 ### <a name="create-a-custom-role-definition"></a>Erstellen einer Definition einer benutzerdefinierten Rolle  
 
@@ -171,7 +171,7 @@ Der Befehl oben gibt die ObjectID des Dienstprinzipals aus.
 “objectId” : “<yourObjectId>”,
 ```
 
-Verwenden Sie die Vorlage [az role assignment create command](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) (Befehl „AZ-Rollenzuweisung erstellen“), um die benutzerdefinierte Rolle mit dem Dienstprinzipal zu verknüpfen:
+Verwenden Sie die Vorlage [az role assignment create command](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) (Befehl „AZ-Rollenzuweisung erstellen“), um die benutzerdefinierte Rolle mit dem Dienstprinzipal zu verknüpfen:
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

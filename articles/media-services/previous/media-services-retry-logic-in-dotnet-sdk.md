@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120b7e044452dc47126923449a3e1a6e55cfd6a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61094644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000022"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Wiederholungslogik im Media Services SDK für .NET  
 
@@ -50,7 +50,7 @@ Die folgende Tabelle beschreibt die Ausnahmen, die das Media Services SDK für .
 | IOException |Nein |Ja |Nein |Nein |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException status codes
-Die folgende Tabelle zeigt, für welche WebException-Fehlercodes die Wiederholungslogik implementiert ist. Die [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx)-Enumeration definiert die Statuscodes.  
+Die folgende Tabelle zeigt, für welche WebException-Fehlercodes die Wiederholungslogik implementiert ist. Die [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1)-Enumeration definiert die Statuscodes.  
 
 | Status | Webanforderung | Storage | Abfrage | SaveChanges |
 | --- | --- | --- | --- | --- |
@@ -88,4 +88,3 @@ Wenn Sie einen Blick auf die tatsächliche Implementierung s Media Services SDKs
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092761"
 ---
 # <a name="rendering-using-azure"></a>Rendern mit Azure
 
@@ -79,7 +79,7 @@ Es gibt mehrere Möglichkeiten, um Azure Batch zu verwenden. Diese gelten auch f
 * APIs:
   * Schreiben Sie Code mit [REST](/rest/api/batchservice), [.NET](/dotnet/api/overview/azure/batch), [Python](/python/api/overview/azure/batch), [Java](/java/api/overview/azure/batch) oder anderen unterstützten APIs.  Entwickler können Azure Batch-Funktionen in ihre vorhandenen Anwendungen oder den Workflow integrieren (in der Cloud oder lokal).  Für das [Autodesk Maya-Plug-In](https://github.com/Azure/azure-batch-maya) wird die Batch-Python-API verwendet, um Batch aufzurufen und Pools zu erstellen und zu verwalten, Aufträge und Aufgaben zu übermitteln und den Status zu überwachen.
 * Befehlszeilentools:
-  * Die [Azure-Befehlszeile](/cli/azure/) oder [Azure PowerShell](/powershell/azure/overview) können verwendet werden, um Skripts für die Batch-Nutzung zu erstellen.
+  * Die [Azure-Befehlszeile](/cli/azure/) oder [Azure PowerShell](/powershell/azure/) können verwendet werden, um Skripts für die Batch-Nutzung zu erstellen.
   * Besonders die Unterstützung für die Batch-CLI-Vorlage vereinfacht die Erstellung von Pools und die Übermittlung von Aufträgen.
 * Benutzeroberflächen:
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) ist ein plattformübergreifendes Clienttool, mit dem auch Batch-Konten verwaltet und überwacht werden können. Im Vergleich zur Benutzeroberfläche des Azure-Portals verfügt es aber über umfassendere Funktionen.  Es werden verschiedene Pool- und Auftragsvorlagen bereitgestellt, die für jede unterstützte Anwendung angepasst sind und verwendet werden können, damit Pools leicht erstellt und Aufträge übermittelt werden können.

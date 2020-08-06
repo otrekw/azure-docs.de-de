@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046963"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Video Indexer
 
@@ -59,13 +59,13 @@ Nein, Video Indexer ermöglicht die Integration mehrerer Machine Learning-Modell
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Welche Medienformate werden von Video Indexer unterstützt?
 
-Video Indexer unterstützt die gängigsten Medienformate. Einzelheiten hierzu finden Sie in der Liste der [Standardformate von Azure Media Encoder](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats).
+Video Indexer unterstützt die gängigsten Medienformate. Einzelheiten hierzu finden Sie in der Liste der [Standardformate von Azure Media Encoder](../latest/media-encoder-standard-formats.md).
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Wie lade ich eine Mediendatei in Video Indexer hoch, und welche Einschränkungen bestehen?
 
 Im webbasierten Video Indexer-Portal können Sie über das Dialogfeld zum Hochladen von Dateien eine Mediendatei hochladen. Alternativ dazu können Sie auch auf eine URL zeigen, welche die Quelldatei direkt hostet (siehe [Beispiel](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). URLs, die Medieninhalte mithilfe eines iFrames oder Einbindungscodes hosten, funktionieren nicht (siehe [Beispiel](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). 
 
-Weitere Informationen finden Sie in dieser [ausführlichen Anleitung](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+Weitere Informationen finden Sie in dieser [ausführlichen Anleitung](./upload-index-videos.md).
 
 #### <a name="limitations"></a>Einschränkungen
 
@@ -76,7 +76,7 @@ Eine umfassende Liste finden Sie unter [Überlegungen und Einschränkungen zum H
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Wie lange dauert das Extrahieren von Informationen aus Mediendateien mit Video Indexer?
 
-Die Zeit, die Video Indexer für das Indizieren einer Video- oder Audiodatei benötigt – entweder mithilfe der Video Indexer-API oder über die webbasierte Video Indexer-Oberfläche – hängt von mehreren Parametern ab. Dazu zählen die Länge und Qualität der Datei, die Anzahl der in der Datei identifizierten Informationen, die Anzahl der [reservierten Einheiten](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) und die Aktivierung oder Deaktivierung des [Streamingendpunkts](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview). Es wird ein Testlauf mit mehreren Dateien Ihrer eigenen Inhalte empfohlen, um die durchschnittliche Dauer einschätzen zu können.
+Die Zeit, die Video Indexer für das Indizieren einer Video- oder Audiodatei benötigt – entweder mithilfe der Video Indexer-API oder über die webbasierte Video Indexer-Oberfläche – hängt von mehreren Parametern ab. Dazu zählen die Länge und Qualität der Datei, die Anzahl der in der Datei identifizierten Informationen, die Anzahl der [reservierten Einheiten](../previous/media-services-scale-media-processing-overview.md) und die Aktivierung oder Deaktivierung des [Streamingendpunkts](../previous/media-services-streaming-endpoints-overview.md). Es wird ein Testlauf mit mehreren Dateien Ihrer eigenen Inhalte empfohlen, um die durchschnittliche Dauer einschätzen zu können.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Kann ich mit Video Indexer angepasste Workflows zur Automatisierung von Prozessen erstellen?
 

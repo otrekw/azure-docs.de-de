@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998951"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten Cloud über das CloudSimple-Portal
 
 Sie können Ihre CloudSimple-Berechtigungen temporär für den administrativen Zugriff auf das vCenter Ihrer privaten Cloud ausweiten.  Mithilfe von erhöhten Rechten können Sie VMware-Lösungen installieren, Identitätsquellen hinzufügen und Benutzer verwalten.
 
-Neue Benutzer können Sie in der vCenter-SSO-Domäne erstellen und diesen Zugriff auf vCenter gewähren.  Wenn Sie neue Benutzer erstellen, fügen Sie diese für den Zugriff auf vCenter zu den in CloudSimple integrierten Gruppen hinzu.  Weitere Informationen finden Sie unter [CloudSimple Private Cloud permission model of VMware vCenter (Berechtigungsmodell für das VMware-vCenter der privaten Cloud von CloudSimple)](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/).
+Neue Benutzer können Sie in der vCenter-SSO-Domäne erstellen und diesen Zugriff auf vCenter gewähren.  Wenn Sie neue Benutzer erstellen, fügen Sie diese für den Zugriff auf vCenter zu den in CloudSimple integrierten Gruppen hinzu.  Weitere Informationen finden Sie unter [CloudSimple Private Cloud permission model of VMware vCenter (Berechtigungsmodell für das VMware-vCenter der privaten Cloud von CloudSimple)](./learn-private-cloud-permissions.md).
 
 > [!CAUTION]
 > Ändern Sie die Konfigurationen für Verwaltungskomponenten nicht. Aktionen, die während des ausgeweiteten Berechtigungszustands durchgeführt werden, können sich negativ auf Ihr System auswirken oder dazu führen, dass Ihr System nicht mehr verfügbar ist.
@@ -88,5 +88,5 @@ Nachdem Sie Ihre administrativen Aufgaben abgeschlossen haben, sollten Sie Ihre 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Set up vCenter identity sources to use Active Directory (Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory)](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* Installieren einer Sicherungslösung zum [Sichern von Workload-VMs](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)
+* [Set up vCenter identity sources to use Active Directory (Einrichten von vCenter-Identitätsquellen für die Verwendung von Active Directory)](./set-vcenter-identity.md)
+* Installieren einer Sicherungslösung zum [Sichern von Workload-VMs](./backup-workloads-veeam.md)

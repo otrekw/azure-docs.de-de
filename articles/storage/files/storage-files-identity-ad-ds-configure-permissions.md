@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 38168db9706bd168b3edc2e740eaea40b23d4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999614"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Teil 3: Konfigurieren von Berechtigungen auf Verzeichnis- und Dateiebene über SMB 
 
@@ -51,7 +51,16 @@ Die folgenden Berechtigungen sind im Stammverzeichnis einer Dateifreigabe enthal
 Verwenden Sie den Windows-Befehl `net use`, um die Azure-Dateifreigabe einzubinden. Denken Sie daran, die Platzhalterwerte im folgenden Beispiel durch Ihre eigenen Werte zu ersetzen. Weitere Informationen zum Einbinden von Dateifreigaben finden Sie unter [Verwenden einer Azure-Dateifreigabe mit Windows](storage-how-to-use-files-windows.md). 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+  net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+} 
+else 
+{
+  Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN,   Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 Wenn beim Herstellen einer Verbindung mit Azure Files Probleme auftreten, können Sie das [Problembehandlungstool verwenden, das für Azure Files-Einbindungsfehler unter Windows veröffentlicht wurde](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Außerdem stehen [Anleitungen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) zur Umgehung von Szenarien bereit, wenn Port 445 blockiert ist. 

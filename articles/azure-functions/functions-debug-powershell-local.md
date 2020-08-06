@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082986"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Lokales Debuggen von PowerShell Azure Functions
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Diese Funktions-App ähnelt derjenigen, die Sie erhalten, wenn die [Schnellstartanleitung zu PowerShell](functions-create-first-function-powershell.md) durcharbeiten.
+Diese Funktions-App ähnelt derjenigen, die Sie erhalten, wenn die [Schnellstartanleitung zu PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) durcharbeiten.
 
 Der Funktionscode in `run.ps1` ähnelt dem folgenden Skript:
 
@@ -95,7 +95,7 @@ Um PowerShell-Funktionen in Visual Studio Code zu debuggen, müssen folgende Kom
 * [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md)
 * [PowerShell Core 6.2 oder höher](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Laden Sie nach der Installation dieser Abhängigkeiten ein vorhandenes Projekt für PowerShell-Funktionen, oder [Erstellen Sie Ihr erstes Projekt für PowerShell-Funktionen](functions-create-first-function-powershell.md).
+Laden Sie nach der Installation dieser Abhängigkeiten ein vorhandenes Projekt für PowerShell-Funktionen, oder [Erstellen Sie Ihr erstes Projekt für PowerShell-Funktionen](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
 
 >[!NOTE]
 > Sollte Ihr Projekt nicht die erforderlichen Konfigurationsdateien enthalten, werden Sie aufgefordert, sie ihm hinzuzufügen.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 6705d4d1edebe88a577c71b3e48cd837fa7882c6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: ca40fcb6a2e483e656058835f187dc50bf7bc9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074065"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Erstellen einer Oracle-Datenbank auf einem virtuellem Azure-Computer
 
@@ -325,6 +325,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über andere [Oracle-Lösungen in Azure](oracle-considerations.md). 
+Informieren Sie sich über andere [Oracle-Lösungen in Azure](./oracle-overview.md). 
 
 Probieren Sie das Tutorial [Set up Oracle ASM on an Azure Linux virtual machine](configure-oracle-asm.md) (Einrichten von Oracle ASM auf einem virtuellen Azure-Computer unter Linux) aus.

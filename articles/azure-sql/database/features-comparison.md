@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-ms.date: 06/25/2020
-ms.openlocfilehash: 4eb1afdd7a6e48d8701dafc6dff44ce6e6db4902
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/22/2020
+ms.openlocfilehash: e7f80c7db4af7c676881d92e8fe86d62a45e3310
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231623"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049579"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -142,7 +142,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | [SQL-Datensynchronisierung](sql-data-sync-sql-server-configure.md) | Ja | Nein |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nein, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ist ein separater Azure-Clouddienst. | Nein, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ist ein separater Azure-Clouddienst. |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ja, mit einer verwalteten SSIS in Azure Data Factory-Umgebung (ADF), bei der Pakete in der von Azure SQL-Datenbank gehosteten SSISDB gespeichert und in Azure SSIS Integration Runtime (IR) ausgeführt werden. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Informationen zum Vergleich der SSIS-Funktionen in SQL-Datenbank und einer SQL Managed Instance finden Sie unter [Vergleich zwischen SQL-Datenbank und SQL Managed Instance](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). | Ja, mit einer verwalteten SSIS in Azure Data Factory-Umgebung (ADF), bei der Pakete in der von einer SQL Managed Instance gehosteten SSISDB gespeichert und in Azure SSIS Integration Runtime (IR) ausgeführt werden. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Informationen zum Vergleich der SSIS-Funktionen in SQL-Datenbank und einer SQL Managed Instance finden Sie unter [Vergleich zwischen SQL-Datenbank und SQL Managed Instance](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). |
-| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nein – siehe [Power BI](https://docs.microsoft.com/power-bi/) | Nein – siehe [Power BI](https://docs.microsoft.com/power-bi/) |
+| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nein – siehe [Power BI](https://docs.microsoft.com/power-bi/) | Nein, verwenden Sie stattdessen [paginierte Berichte in Power BI ](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi), oder hosten Sie SSRS auf einer Azure-VM. In SQL Managed Instance kann SSRS nicht als Dienst ausgeführt werden. Es können jedoch mithilfe der SQL Server-Authentifizierung [SSRS-Katalogdatenbanken](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) für einen Berichtsserver gehostet werden, der auf einer Azure-VM installiert ist. |
 | [Query Performance Insights (QPI)](query-performance-insight-use.md) | Ja | Nein. Verwenden Sie integrierte Berichte in SQL Server Management Studio und Azure Data Studio. |
 | [VNET](../../virtual-network/virtual-networks-overview.md) | Teilweise, eingeschränkter Zugriff über [VNET-Endpunkte](vnet-service-endpoint-rule-overview.md) ist möglich | Ja, die SQL Managed Instance wird in das VNET des Kunden eingeschleust. Siehe [Subnetz](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) und [VNET](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNET-Dienstendpunkt | [Ja](vnet-service-endpoint-rule-overview.md) | Nein |

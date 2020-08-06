@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46f5644fb47b840f273ccab37da4f4743ad335f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053123"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Verwalten von Azure Media Services v3-Konten
 
@@ -43,4 +43,4 @@ Wenn ein Media Services-Konto oder ein zugehöriges Azure Storage-Konto nach d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen eines Kontos](create-account-cli-quickstart.md)
+[Erstellen eines Kontos](./create-account-howto.md)

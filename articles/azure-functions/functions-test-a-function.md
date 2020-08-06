@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085077"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
@@ -40,13 +40,13 @@ Um Ihre Umgebung einzurichten, erstellen Sie eine Funktion und Test-App. Die fol
 3. [Erstellen Sie eine Zeitgeberfunktion aus der Vorlage](./functions-create-scheduled-function.md), und nennen Sie sie **MyTimerTrigger**.
 4. [Erstellen Sie eine xUnit-Test-App](https://xunit.github.io/docs/getting-started-dotnet-core) in der Projektmappe, und nennen Sie sie **Functions.Tests**.
 5. Fügen Sie mithilfe von NuGet einen Verweis von der Test-App auf [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) hinzu.
-6. [Verweisen Sie aus der *Functions.Tests*-App auf die *Functions*-App](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017).
+6. [Verweisen Sie aus der *Functions.Tests*-App auf die *Functions*-App](/visualstudio/ide/managing-references-in-a-project?view=vs-2017).
 
 ### <a name="create-test-classes"></a>Erstellen von Testklassen
 
 Nachdem nun die Projekte erstellt wurden, können Sie die Klassen erstellen, die zum Ausführen der automatisierten Tests verwendet werden.
 
-Jede Funktion nimmt eine Instanz von [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger), um die Nachrichtenprotokollierung zu behandeln. Einige Tests protokollieren entweder keine Nachrichten oder ignorieren, wie die Protokollierung implementiert wird. Andere Tests müssen protokollierte Nachrichten auswerten, um zu bestimmen, ob ein Test bestanden wird.
+Jede Funktion nimmt eine Instanz von [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger), um die Nachrichtenprotokollierung zu behandeln. Einige Tests protokollieren entweder keine Nachrichten oder ignorieren, wie die Protokollierung implementiert wird. Andere Tests müssen protokollierte Nachrichten auswerten, um zu bestimmen, ob ein Test bestanden wird.
 
 Sie erstellen eine neue Klasse mit dem Namen `ListLogger`, die eine interne Liste von während Tests ausgewerteten Nachrichten enthält. Zum Implementieren der erforderlichen `ILogger`-Schnittstelle benötigt die Klasse einen Gültigkeitsbereich. Die folgende Klasse simuliert einen Bereich für die Testfälle, die an die `ListLogger`-Klasse übergeben werden sollen.
 
@@ -192,7 +192,7 @@ namespace Functions.Tests
 
 Die `TestFactory`-Klasse implementiert die folgenden Elemente:
 
-- **Data:** Diese Eigenschaft gibt eine [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable)-Auflistung von Beispieldaten zurück. Die Schlüssel-/Wertpaare stellen Werte dar, die in eine Abfragezeichenfolge übergeben werden.
+- **Data:** Diese Eigenschaft gibt eine [IEnumerable](/dotnet/api/system.collections.ienumerable)-Auflistung von Beispieldaten zurück. Die Schlüssel-/Wertpaare stellen Werte dar, die in eine Abfragezeichenfolge übergeben werden.
 
 - **CreateDictionary**: Diese Methode akzeptiert ein Schlüssel-/Wertpaar als Argumente und gibt ein neues `Dictionary` zurück, das verwendet wird, um `QueryCollection` zu erstellen, um Abfragezeichenfolgenwerte darzustellen.
 

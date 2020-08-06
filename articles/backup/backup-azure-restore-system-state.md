@@ -3,12 +3,12 @@ title: Wiederherstellen des Systemstatus auf einem Windows Server-Computer
 description: Ausführliche Anleitung zum Wiederherstellen des Windows Server-Systemstatus aus einer Sicherung in Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067355"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -183,7 +183,7 @@ In diesem Artikel wird nur das erste Szenario beschrieben, bei dem eine nicht au
         >[!NOTE]
         >Wenn Sie alle Active Directory-Daten wiederherstellen (und in der Gesamtstruktur keine funktionierenden Domänencontroller mehr vorhanden sind), sollten Sie in Schritt 9 oben darauf achten, dass Sie die Option **Perform an authoritative restore of Active Directory files** (Autoritative Wiederherstellung von Active Directory-Dateien durchführen) aktivieren.
 
-    * Verwenden Sie das Hilfsprogramm [wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery), um die Wiederherstellung über die Befehlszeile durchzuführen.
+    * Verwenden Sie das Hilfsprogramm [wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery), um die Wiederherstellung über die Befehlszeile durchzuführen.
 
         Sie benötigen den Versionsbezeichner der Sicherung, die Sie verwenden möchten. Sie können eine Liste mit den Versionsbezeichnern abrufen, indem Sie diesen Befehl ausführen:
 
@@ -193,7 +193,7 @@ In diesem Artikel wird nur das erste Szenario beschrieben, bei dem eine nicht au
 
         Anschließend verwenden Sie diesen Versionsbezeichner, um die Wiederherstellung durchzuführen.
 
-        Geben Sie beispielsweise Folgendes ein, um eine [nicht autoritative Wiederherstellung von AD DS und eine autoritative Wiederherstellung des Ordners „sysvol“](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) durchzuführen, indem Sie die Sicherung vom 30.04.2020 um 9:00 Uhr verwenden, die auf der freigegebenen Ressource `\\servername\share` für `server01` gespeichert ist:
+        Geben Sie beispielsweise Folgendes ein, um eine [nicht autoritative Wiederherstellung von AD DS und eine autoritative Wiederherstellung des Ordners „sysvol“](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) durchzuführen, indem Sie die Sicherung vom 30.04.2020 um 9:00 Uhr verwenden, die auf der freigegebenen Ressource `\\servername\share` für `server01` gespeichert ist:
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol

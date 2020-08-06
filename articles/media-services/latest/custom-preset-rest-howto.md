@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65761793"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053316"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Codieren mit einer benutzerdefinierten Transformation: REST
 
@@ -32,7 +32,7 @@ Beim Erstellen von benutzerdefinierten Voreinstellungen gelten die folgenden Üb
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) <br/>Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) <br/>Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
 - [Konfigurieren Sie Postman für Azure Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).<br/>Befolgen Sie dabei unbedingt den letzten Schritt im Thema [Abrufen von Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
 ## <a name="define-a-custom-preset"></a>Definieren einer benutzerdefinierten Voreinstellung
@@ -133,7 +133,7 @@ In diesem Beispiel wird zuerst eine AacAudio-Ebene für die Audiocodierung hinzu
 
 ## <a name="create-a-new-transform"></a>Erstellen einer neuen Transformation  
 
-In diesem Beispiel wird eine **Transformation** erstellt, die auf der benutzerdefinierten Voreinstellung basiert, die zuvor festgelegt wurde. Beim Erstellen einer Transformation sollten Sie zunächst mit der Methode [Get](https://docs.microsoft.com/rest/api/media/transforms/get) überprüfen, ob bereits eine Transformation vorhanden ist. Wenn eine Transformation vorhanden ist, verwenden Sie diese. 
+In diesem Beispiel wird eine **Transformation** erstellt, die auf der benutzerdefinierten Voreinstellung basiert, die zuvor festgelegt wurde. Beim Erstellen einer Transformation sollten Sie zunächst mit der Methode [Get](/rest/api/media/transforms/get) überprüfen, ob bereits eine Transformation vorhanden ist. Wenn eine Transformation vorhanden ist, verwenden Sie diese. 
 
 Wählen Sie in der heruntergeladenen Sammlung von Postman **Transforms and Jobs** (Transformationen und Aufträge)->**Create or update Transform** (Transformation erstellen oder aktualisieren) aus.
 
@@ -151,4 +151,4 @@ Damit die Transformation in Media Services auf das angegebene Video oder die ang
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Azure Media Services API (Azure Media Services-API)](https://docs.microsoft.com/rest/api/media/).
+Weitere Informationen finden Sie unter [Azure Media Services API (Azure Media Services-API)](/rest/api/media/).

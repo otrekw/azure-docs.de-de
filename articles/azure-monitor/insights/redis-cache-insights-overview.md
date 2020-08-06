@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045867"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Informationen zu Azure Monitor für Azure Cache for Redis (Vorschau)
 
@@ -120,7 +120,7 @@ Wenn Sie oben auf der Seite **Fehler** auswählen, wird die Tabelle **Fehler** d
 
 ### <a name="metric-definitions"></a>Metrikdefinitionen
 
-Eine vollständige Liste der Metrikdefinitionen, die diese Arbeitsmappen bilden, finden Sie im [Artikel zu verfügbaren Metriken und Berichtsintervallen](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals).
+Eine vollständige Liste der Metrikdefinitionen, die diese Arbeitsmappen bilden, finden Sie im [Artikel zu verfügbaren Metriken und Berichtsintervallen](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>Anzeigen von einer Azure Cache for Redis-Ressource aus
 
@@ -156,7 +156,7 @@ Durch Auswählen einer der anderen Registerkarten für **Leistung** oder **Vorg�
 
 ## <a name="pin-export-and-expand"></a>Anheften, Exportieren und Erweitern
 
-Zum Anheften eines Metrikabschnitts an ein [Azure-Dashboard](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) wählen Sie das Reißzweckensymbol in der oberen rechten Ecke des Abschnitts aus.
+Zum Anheften eines Metrikabschnitts an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md) wählen Sie das Reißzweckensymbol in der oberen rechten Ecke des Abschnitts aus.
 
 ![Metrikabschnitt mit hervorgehobenem Reißzweckensymbol](./media/cosmosdb-insights-overview/pin.png)
 
@@ -186,6 +186,6 @@ Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sind.
+* Konfigurieren Sie [Metrikwarnungen](../platform/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sind.
 
 * Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../platform/workbooks-overview.md) über die von Arbeitsmappen unterstützten Szenarien, wie Sie Berichte erstellen und anpassen können, und vieles mehr.

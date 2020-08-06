@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e6e0d18665ac5fc28da2935c20b467f9d7662d8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78304373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023244"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Erstellen eines Streaminglocators und von URLs
 
-Sie müssen in Azure Media Services zunächst einen [Streaminglocator](streaming-locators-concept.md) erstellen, um eine Streaming-URL erstellen zu können. Sie müssen dann den Hostnamen des [Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints) und den Pfad des **Streaminglocators** miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Beim ersten Erstellen eines Media Services-Kontos weist dieser *standardmäßige* **Streamingendpunkt** den Status „Beendet“ auf. Sie müssen daher **Start** aufrufen, um das Streaming zu starten.
+Sie müssen in Azure Media Services zunächst einen [Streaminglocator](streaming-locators-concept.md) erstellen, um eine Streaming-URL erstellen zu können. Sie müssen dann den Hostnamen des [Streamingendpunkts](/rest/api/media/streamingendpoints) und den Pfad des **Streaminglocators** miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Beim ersten Erstellen eines Media Services-Kontos weist dieser *standardmäßige* **Streamingendpunkt** den Status „Beendet“ auf. Sie müssen daher **Start** aufrufen, um das Streaming zu starten.
 
 In diesem Artikel wird gezeigt, wie ein Streaminglocator und eine Streaming-URL mit Java und .NET SDKs erstellt werden können.
 

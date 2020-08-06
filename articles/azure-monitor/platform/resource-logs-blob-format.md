@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077119"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Plattformprotokolle, die in einem Speicherkonto archiviert werden
 
 > [!WARNING]
-> Wenn Sie [mithilfe von Diagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](resource-logs-collect-storage.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](resource-logs-collect-storage.md) senden, wurde das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines geändert. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren.
+> Wenn Sie [mithilfe von Diagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](./resource-logs.md#send-to-azure-storage) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](./resource-logs.md#send-to-azure-storage) senden, wurde das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines geändert. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren.
 >
 
 ## <a name="what-changed"></a>Änderung
@@ -29,9 +29,9 @@ Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcenprotokolle und
 * Bei Festlegen einer Diagnoseeinstellung vor dem 1. November wurden die Daten bis zum 1. November weiterhin im aktuellen Format ausgegeben.
 * Diese Änderung trat für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für von 21Vianet betriebenen Microsoft Azure-, Azure Deutschland- oder Azure Government-Clouds durchgeführt.
 * Diese Änderung wirkt sich auf die folgenden Datentypen aus:
-  * [Azure-Ressourcenprotokolle](archive-diagnostic-logs.md) ([Liste mit Ressourcen](diagnostic-logs-schema.md))
+  * [Azure-Ressourcenprotokolle](./resource-logs.md#send-to-azure-storage) ([Liste mit Ressourcen](./resource-logs-schema.md))
   * [Von Diagnoseeinstellungen exportierte Azure-Ressourcenmetriken](diagnostic-settings.md)
-  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](activity-log-collect.md)
+  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](./activity-log.md)
 * Diese Änderung wirkt sich nicht auf Folgendes aus:
   * Netzwerkflussprotokolle
   * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Ressourcenprotokolle, Speicheranalyseprotokolle)
@@ -123,7 +123,7 @@ Für das neue Format wird [JSON Lines](http://jsonlines.org/) verwendet. Dies be
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Mit diesem neuen Format kann Azure Monitor Protokolldateien mithilfe von [Anfügeblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) per Pushvorgang übertragen. Dies ist für das fortlaufende Anfügen neuer Ereignisdaten effizienter.
+Mit diesem neuen Format kann Azure Monitor Protokolldateien mithilfe von [Anfügeblobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) per Pushvorgang übertragen. Dies ist für das fortlaufende Anfügen neuer Ereignisdaten effizienter.
 
 ## <a name="how-to-update"></a>Durchführen der Aktualisierung
 
@@ -133,6 +133,5 @@ Benutzerdefinierte Tools sollten aktualisiert werden, damit diese sowohl das akt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über das [Archivieren von Ressourcenprotokollen in einem Speicherkonto](./../../azure-monitor/platform/archive-diagnostic-logs.md).
-* Informieren Sie sich über das [Archivieren des Azure-Aktivitätsprotokolls](./../../azure-monitor/platform/archive-activity-log.md).
-
+* Informieren Sie sich über das [Archivieren von Ressourcenprotokollen in einem Speicherkonto](./resource-logs.md#send-to-azure-storage).
+* Informieren Sie sich über das [Archivieren des Azure-Aktivitätsprotokolls](./activity-log.md#legacy-collection-methods).

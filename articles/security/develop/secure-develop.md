@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232694"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283485"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -62,7 +62,7 @@ Führen Sie diese Arbeit auf dem Server aus, nicht auf dem Client (oder auf dem 
 
 ### <a name="verify-your-applications-outputs"></a>Überprüfen der Ausgaben Ihrer Anwendung
 
-Jede Ausgabe, die Sie entweder visuell oder innerhalb eines Dokuments darstellen, sollte immer codiert und mit Escapezeichen versehen sein. Das [Versehen mit Escapezeichen](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), auch bekannt als *Ausgabecodierung*, wird verwendet, um sicherzustellen, dass nicht vertrauenswürdige Daten kein Transportmittel für einen Einschleusungsangriff sind. Das Versehen mit Escapezeichen in Kombination mit Datenüberprüfung bietet Verteidigungsebenen, um die Sicherheit des Systems als Ganzes zu erhöhen.
+Jede Ausgabe, die Sie entweder visuell oder innerhalb eines Dokuments darstellen, sollte immer codiert und mit Escapezeichen versehen sein. Das [Versehen mit Escapezeichen](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), auch bekannt als *Ausgabecodierung*, wird verwendet, um sicherzustellen, dass nicht vertrauenswürdige Daten kein Transportmittel für einen Einschleusungsangriff sind. Das Versehen mit Escapezeichen in Kombination mit Datenüberprüfung bietet Verteidigungsebenen, um die Sicherheit des Systems als Ganzes zu erhöhen.
 
 Das Versehen mit Escapezeichen stellt sicher, dass alles als *Ausgabe* angezeigt wird. Das Versehen mit Escapezeichen teilt außerdem dem Interpreter mit, dass die Daten nicht zur Ausführung bestimmt sind, und dies verhindert, dass Angriffe funktionieren können. Dies ist eine weitere gängige Angriffstechnik namens *Cross-Site Scripting* (XSS).
 

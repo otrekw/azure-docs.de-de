@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563110"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055193"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -27,7 +27,7 @@ Wenn Sie versuchen, den Tresor zu löschen, ohne die Abhängigkeiten zu entferne
 
 - Der Tresor kann nicht gelöscht werden, weil darin Ressourcen vorhanden sind. Stellen Sie sicher, dass diesem Tresor keine Sicherungselemente, geschützten Server oder Sicherungsverwaltungsserver zugeordnet sind. Heben Sie die Registrierung der folgenden Container auf, die diesem Tresor zugeordnet sind, bevor Sie mit dem Löschen fortfahren.
 
-- Der Recovery Services-Tresor kann nicht gelöscht werden, da sich darin vorläufig gelöschte Sicherungselemente befinden. Die vorläufig gelöschten Elemente werden 14 Tage nach dem ersten Löschvorgang endgültig gelöscht. Versuchen Sie erst, den Tresor zu löschen, nachdem die Sicherungselemente endgültig gelöscht wurden und im Tresor kein Element mit dem Status „Vorläufig gelöscht“ mehr vorhanden ist. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
+- Der Recovery Services-Tresor kann nicht gelöscht werden, da sich darin vorläufig gelöschte Sicherungselemente befinden. Die vorläufig gelöschten Elemente werden 14 Tage nach dem ersten Löschvorgang endgültig gelöscht. Versuchen Sie erst, den Tresor zu löschen, nachdem die Sicherungselemente endgültig gelöscht wurden und im Tresor kein Element mit dem Status „Vorläufig gelöscht“ mehr vorhanden ist. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Azure Backup](./backup-azure-security-feature-cloud.md).
 
 ## <a name="proper-way-to-delete-a-vault"></a>So Löschen Sie einen Tresor ordnungsgemäß
 
@@ -36,9 +36,9 @@ Wenn Sie versuchen, den Tresor zu löschen, ohne die Abhängigkeiten zu entferne
 
 Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser Reihenfolge ausführen:
 
-- **Schritt 1:** Deaktivieren Sie das Feature für vorläufiges Löschen. [Hier](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) finden Sie die Schritte zum Deaktivieren des vorläufigen Löschens.
+- **Schritt 1:** Deaktivieren Sie das Feature für vorläufiges Löschen. [Hier](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) finden Sie die Schritte zum Deaktivieren des vorläufigen Löschens.
 
-- **Schritt 2:** Nachdem Sie das vorläufige Löschen deaktiviert haben, überprüfen Sie, ob Elemente im vorläufig gelöschten Zustand verbleiben. Wenn es Elemente gibt, die sich im vorläufig gelöschten Zustand befinden, müssen Sie den *Löschvorgang rückgängig machen* und die Elemente erneut *löschen*. [Befolgen Sie diese Schritte](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items), um Elemente im vorläufig gelöschten Zustand zu finden und dauerhaft zu löschen.
+- **Schritt 2:** Nachdem Sie das vorläufige Löschen deaktiviert haben, überprüfen Sie, ob Elemente im vorläufig gelöschten Zustand verbleiben. Wenn es Elemente gibt, die sich im vorläufig gelöschten Zustand befinden, müssen Sie den *Löschvorgang rückgängig machen* und die Elemente erneut *löschen*. [Befolgen Sie diese Schritte](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items), um Elemente im vorläufig gelöschten Zustand zu finden und dauerhaft zu löschen.
 
 - **Schritt 3:** Überprüfen Sie, ob an den folgenden drei Stellen geschützte Elemente vorhanden sind:
 
@@ -209,7 +209,7 @@ Schutz beenden und Sicherungsdaten löschen:
            [<CommonParameters>]
     ```
 
-  [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) zum Deaktivieren des Schutzes für ein mit Azure Backup geschütztes Element
+  [Weitere Informationen](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) zum Deaktivieren des Schutzes für ein mit Azure Backup geschütztes Element
 
 - Beenden Sie den Schutz, und löschen Sie Daten für alle von der Sicherung geschützten Elemente in der Cloud (z. B. laaS VM, Azure-Dateifreigabe usw.):
 
@@ -225,7 +225,7 @@ Schutz beenden und Sicherungsdaten löschen:
        [<CommonParameters>]
     ```
 
-    [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)  zum Deaktivieren des Schutzes für ein mit Backup geschütztes Element.
+    [Weitere Informationen](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection)  zum Deaktivieren des Schutzes für ein mit Backup geschütztes Element.
 
 - Verwenden Sie den folgenden PowerShell-Befehl, um lokale Dateien und Ordner, die mithilfe des Azure Backup-Agent (MARS) in Azure gesichert werden, die gesicherten Daten von den einzelnen MARS-PowerShell-Modulen zu löschen:
 
@@ -263,7 +263,7 @@ Nachdem Sie die gesicherten Daten gelöscht haben, heben Sie die Registrierung f
               [<CommonParameters>]
     ```
 
-    [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) zum Aufheben der Registrierung eines Windows-Servers oder eines anderen Containers aus dem Tresor.
+    [Weitere Informationen](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) zum Aufheben der Registrierung eines Windows-Servers oder eines anderen Containers aus dem Tresor.
 
 - Für lokale Computer, die per MABS (Microsoft Azure Backup Server) oder DPM in Azure (System Center Data Protection Manager) geschützt sind:
 
@@ -278,7 +278,7 @@ Nachdem Sie die gesicherten Daten gelöscht haben, heben Sie die Registrierung f
           [<CommonParameters>]
     ```
 
-    [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) zum Aufheben der Registrierung eines Sicherungsverwaltungscontainers aus dem Tresor.
+    [Weitere Informationen](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) zum Aufheben der Registrierung eines Sicherungsverwaltungscontainers aus dem Tresor.
 
 Nachdem Sie die gesicherten Daten dauerhaft gelöscht und die Registrierung aller Container aufgehoben haben, fahren Sie mit dem Löschen des Tresors fort.
 
@@ -293,7 +293,7 @@ So löschen Sie einen Recovery Services-Tresor:
       [<CommonParameters>]
    ```
 
-[Erfahren Sie mehr](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) über das Löschen eines Recovery Services-Tresors.
+[Erfahren Sie mehr](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) über das Löschen eines Recovery Services-Tresors.
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>Löschen des Recovery Services-Tresors mithilfe der CLI
 
@@ -330,7 +330,7 @@ Führen Sie die folgenden Schritte aus, um den vorhandenen Recovery Services-Tre
                        [--yes]
     ```
 
-    Weitere Informationen finden Sie in  [diesem Artikel](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest).
+    Weitere Informationen finden Sie in  [diesem Artikel](/cli/azure/backup/vault?view=azure-cli-latest).
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Löschen des Recovery Services-Tresors mit Azure Resource Manager
 
