@@ -3,12 +3,12 @@ title: 'Schnellstart: QnA Maker-Clientbibliothek für .NET'
 description: Dieser Schnellstart zeigt Ihnen die ersten Schritte mit der QnA Maker-Clientbibliothek für .NET. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.  Mit QnA Maker können Sie einen Frage-und-Antwort-Dienst auf der Grundlage Ihrer teilweise strukturierten Inhalte bereitstellen. Bei solchen Inhalten kann es sich beispielsweise um FAQ-Dokumente, URLs und Produkthandbücher handeln.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 06aaf8861a263711ab3d01e6355bc161538a3311
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0dfabfa1357543e4011412c0a9f63061e8856019
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114530"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507570"
 ---
 Verwenden Sie die QnA Maker-Clientbibliothek für .NET für Folgendes:
 
@@ -109,7 +109,7 @@ Verwalten Sie Ihre Knowledge Base durch Senden eines JSON-Objekts. Bei sofortige
 
 Der QnA Maker-Vorhersageclient ist ein [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet)-Objekt, das sich bei Azure mithilfe von Microsoft.Rest.ServiceClientCredentials authentifiziert, die Ihren Schlüssel für die Vorhersage-Runtime enthalten, der nach dem Veröffentlichen der Wissensdatenbank vom Aufruf `client.EndpointKeys.GetKeys` des erstellenden Clients zurückgegeben wurde.
 
-Mithilfe der Methode [GenerateAnswer](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswer?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_RuntimeExtensions_GenerateAnswer_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_IRuntime_System_String_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_) können Sie eine Antwort aus der Abfragelaufzeit abrufen.
+Mithilfe der Methode [GenerateAnswer](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions) können Sie eine Antwort aus der Abfragelaufzeit abrufen.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -144,8 +144,8 @@ Eine Wissensdatenbank speichert Frage- und Antwortpaare für das [CreateKbDTO](h
 * Verwenden Sie für **URLs**eine Liste von Zeichenfolgen zur Darstellung von öffentlich verfügbaren URLs.
 
 Der Erstellungsschritt umfasst auch Eigenschaften für die Wissensdatenbank mit Folgendem:
-* `defaultAnswerUsedForExtraction` – die Rückgabe, wenn keine Antwort gefunden wird
-* `enableHierarchicalExtraction` – automatisches Erstellen von Aufforderungsbeziehungen zwischen extrahierten QnA-Paaren
+* `defaultAnswerUsedForExtraction`: die Rückgabe, wenn keine Antwort gefunden wird
+* `enableHierarchicalExtraction`: automatisches Erstellen von Aufforderungsbeziehungen zwischen extrahierten QnA-Paaren
 * `language`– bei der Erstellung der ersten Wissensdatenbank für eine Ressource Festlegen der Sprache, die im Azure-Suchindex verwendet werden soll
 
 Rufen Sie die [CreateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.createasync?view=azure-dotnet)-Methode auf, und übergeben Sie dann die zurückgegebene Vorgangs-ID an die [MonitorOperation](#get-status-of-an-operation)-Methode, um den Status abzurufen.
