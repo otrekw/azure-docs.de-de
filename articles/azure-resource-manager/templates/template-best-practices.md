@@ -3,12 +3,12 @@ title: Bewährte Methoden für Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248916"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809254"
 ---
 # <a name="arm-template-best-practices"></a>Bewährte Methoden für ARM-Vorlagen
 
@@ -226,7 +226,7 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](template-syn
    
      Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Computern finden Sie unter:
    
-   * [Run Windows VMs for an N-tier application](../../guidance/guidance-compute-n-tier-vm.md) (Ausführen virtueller Windows-Computer in einer Architektur mit n Ebenen in Azure)
+   * [Run Windows VMs for an N-tier application](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) (Ausführen virtueller Windows-Computer in einer Architektur mit n Ebenen in Azure)
    * [Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mithilfe von PowerShell](../../virtual-machines/windows/nsg-quickstart-powershell.md)

@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104009"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809611"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
 
@@ -91,6 +91,6 @@ Das [CompsiteResource](https://www.powershellgallery.com/packages/compositeresou
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) und vieles mehr.
+- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
 - Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) verwenden möchten.

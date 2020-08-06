@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367434"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800482"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Integrieren von Azure Digital Twins in andere Dienste
 
@@ -33,7 +33,7 @@ Azure Digital Twins kann Daten an verbundene **Endpunkte** senden. Folgende Endp
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Endpunkte werden über Verwaltungs-APIs oder das Azure-Portal an Azure Digital Twins angefügt. Weitere Informationen zum Anfügen eines Endpunkts an Azure Digital Twins finden Sie unter [*Gewusst wie: Verwalten von Endpunkten und Routen*](how-to-manage-routes.md).
+Endpunkte werden über Verwaltungs-APIs oder das Azure-Portal an Azure Digital Twins angefügt. Weitere Informationen zum Anfügen eines Endpunkts an Azure Digital Twins finden Sie unter [*Gewusst wie: Verwalten von Endpunkten und Routen*](how-to-manage-routes-apis-cli.md).
 
 Es gibt viele andere Dienste, an die Sie Ihre Daten letztendlich leiten möchten, z. B. [Azure Storage](../storage/common/storage-introduction.md) oder [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md). Fügen Sie den Zieldienst an einen Endpunkt an, um Ihre Daten an Dienste wie diese zu senden.
 

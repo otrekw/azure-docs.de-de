@@ -108,8 +108,6 @@
           href: configure-password-single-sign-on-non-gallery-applications.md
         - name: Konfigurieren der Anmeldung über Link
           href: configure-linked-sign-on.md
-        - name: "Automatisieren von SAML-basiertem einmaligem Anmelden mithilfe von MS\_Graph-APIs"
-          href: application-saml-sso-configure-api.md
     - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
       items:
         - name: Konfigurieren der Benutzereinwilligung

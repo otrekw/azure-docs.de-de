@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 636df121ea5b09a421ae7bedaf9e30cbbd1966f5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280867"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810115"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -20,7 +20,7 @@ Wenn Sie noch nicht mit Azure Functions vertraut sind, sollten Sie als Express.j
 
 | Erste Schritte | Konzepte| Geführte Tutorials |
 | -- | -- | -- | 
-| <ul><li>[Node.js-Funktion unter Verwendung von Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[Node.js-Funktion mit Terminal/Eingabeaufforderung](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[TypeScript-Funktionen](#typescript)</li><li>[Überlegungen&nbsp; zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Umgestalten von Node js- und Express-APIs auf serverlose APIs](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js-Funktion unter Verwendung von Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[Node.js-Funktion mit Terminal/Eingabeaufforderung](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[TypeScript-Funktionen](#typescript)</li><li>[Überlegungen&nbsp; zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Umgestalten von Node js- und Express-APIs auf serverlose APIs](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript-Funktionsgrundlagen
 

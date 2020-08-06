@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506569"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810002"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -466,30 +466,6 @@ Ja. Entspricht Ihre Konfiguration dem folgenden Szenario, wird zulässiger Daten
 - Sie haben Application Gateway v2 bereitgestellt.
 - Im Application Gateway-Subnetz ist eine NSG vorhanden.
 - Sie haben NSG-Flussprotokolle für diese NSG aktiviert.
-
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Wie verwende ich Application Gateway v2 mit einer rein privaten Front-End-IP-Adresse?
-
-Application Gateway v2 unterstützt den rein privaten IP-Modus derzeit nicht. Es unterstützt die folgenden Kombinationen:
-* Private IP- und öffentliche IP-Adresse
-* Nur öffentliche IP-Adresse
-
-Wenn Sie jedoch Application Gateway v2 nur mit privater IP-Adresse verwenden möchten, können Sie das folgende Verfahren befolgen:
-1. Erstellen einer Application Gateway-Instanz sowohl mit öffentlicher als auch privater Front-End-IP-Adresse
-2. Erstellen Sie keine Listener für die öffentliche Front-End-IP-Adresse. Application Gateway lauscht nicht über die öffentliche IP-Adresse auf Datenverkehr, wenn keine Listener dafür erstellt werden.
-3. Erstellen Sie für das Application Gateway-Subnetz eine [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/security-overview) mit der folgenden Konfiguration in der Reihenfolge der Priorität:
-    
-    a. Lassen Sie Datenverkehr von der Quelle als **GatewayManager**-Diensttag zu, das Ziel als **Beliebig** und den Zielport als **65200-65535**. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von der Zertifikatauthentifizierung geschützt (gesperrt). Externe Entitäten einschließlich der Gatewaybenutzeradministratoren können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
-    
-    b. Lassen Sie Datenverkehr von der Quelle mit dem **AzureLoadBalancer**-Diensttag und dem Zielport **Beliebig** zu.
-    
-    c. Verweigern Sie sämtlichen eingehenden Datenverkehr von der Quelle mit dem **Internet**-Diensttag und dem Zielport **Beliebig**. Weisen Sie dieser Regel die *geringste Priorität* in den Eingangsregeln zu.
-    
-    d. Behalten Sie die Standardregeln wie das Zulassen des eingehenden VirtualNetwork-Datenverkehrs bei, damit der Zugriff auf die private IP-Adresse nicht blockiert wird.
-    
-    e. Die ausgehende Internetverbindung kann nicht blockiert sein. Andernfalls treten Probleme mit der Protokollierung, den Metriken usw. auf.
-
-Beispiel-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen: ![Application Gateway v2-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen](./media/application-gateway-faq/appgw-privip-nsg.png)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

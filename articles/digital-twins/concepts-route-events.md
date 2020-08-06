@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537510"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800465"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * `endpoint-name` identifiziert einen Endpunkt, z. B. einen Event Hub, Event Grid oder Service Bus. Diese Endpunkte müssen vor diesem Registrierungsaufruf in Ihrem Abonnement erstellt und mithilfe von Steuerungsebenen-APIs an Azure Digital Twins angehängt werden.
 
-Das an `EventRoutes.Add` übergebene Ereignisroutenobjekt verwendet auch einen [**Filterparameter**](./how-to-manage-routes.md#filter-events), der zum Einschränken der Arten von Ereignissen für diese Route verwendet werden kann.
+Das an `EventRoutes.Add` übergebene Ereignisroutenobjekt verwendet auch einen [**Filterparameter**](./how-to-manage-routes-apis-cli.md#filter-events), der zum Einschränken der Arten von Ereignissen für diese Route verwendet werden kann.
 
 Routen können auch über die [Azure Digital Twins-CLI](how-to-use-cli.md) erstellt werden.
 
@@ -90,7 +90,7 @@ Verschiedene Arten von Ereignissen in IoT Hub und Azure Digital Twins führen zu
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Einrichten und Verwalten einer Ereignisroute finden Sie unter:
-* [*Verwalten von Endpunkten und Routen in Azure Digital Twins*](how-to-manage-routes.md)
+* [*Verwalten von Endpunkten und Routen in Azure Digital Twins*](how-to-manage-routes-apis-cli.md)
 
 Weitere Informationen zur Verwendung von Azure Functions zum Weiterleiten von Ereignissen innerhalb von Azure Digital Twins finden Sie unter:
 * [*Verbinden von Azure Functions-Apps für die Verarbeitung von Daten*](how-to-create-azure-function.md)

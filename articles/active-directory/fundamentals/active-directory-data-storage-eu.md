@@ -2,7 +2,7 @@
 title: Identitätsdatenspeicher für europäische Kunden – Azure AD
 description: Erfahren Sie, wo identitätsbezogene Daten für europäische Kunden durch Azure Active Directory gespeichert werden.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99d8ae8c5e3218959a483e78f70a6502bf7a5a47
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75422998"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799102"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitätsdatenspeicher für europäische Kunden in Azure Active Directory
 Identitätsdaten werden von Azure AD an einem geografischen Standort basierend auf der Adresse gespeichert, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Office 365 und Azure angibt. Informationen darüber, wo Ihre Identitätsdaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).

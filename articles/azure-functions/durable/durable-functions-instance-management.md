@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: f508974891266735c5c193baa116771f11dc40a7
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388100"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809372"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
@@ -281,7 +281,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 Anstatt jeweils eine Instanz in Ihrer Orchestrierung abzufragen, finden Sie es möglicherweise effizienter, alle auf einmal abzufragen.
 
-Sie können die Methoden [ListInstancesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET), [getStatusAll](https://docs.microsoft.com/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusall--) (JavaScript) oder `get_status_all` (Python) verwenden, um die Status aller Orchestrierungsinstanzen abzufragen. In .NET können Sie ein `CancellationToken`-Objekt übergeben, falls Sie die Methode abbrechen möchten. Die Methode gibt eine Liste von Objekten zurück, die die Orchestrierungsinstanzen darstellen, die den Abfrageparametern entsprechen.
+Sie können die Methoden [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET), [getStatusAll](/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusall--) (JavaScript) oder `get_status_all` (Python) verwenden, um die Status aller Orchestrierungsinstanzen abzufragen. In .NET können Sie ein `CancellationToken`-Objekt übergeben, falls Sie die Methode abbrechen möchten. Die Methode gibt eine Liste von Objekten zurück, die die Orchestrierungsinstanzen darstellen, die den Abfrageparametern entsprechen.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -360,7 +360,7 @@ func durable get-instances
 
 Was ist, wenn Sie nicht alle Informationen benötigen, die eine standardmäßige Instanzenabfrage bieten kann? Wenn Sie z.B. nur den Zeitpunkt der Erstellung der Orchestrierung oder den Laufzeitstatus der Orchestrierung erfahren möchten? Sie können die Abfrage durch Anwenden von Filtern eingrenzen.
 
-Mit den Methoden [ListInstancesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) oder [getStatusBy](https://docs.microsoft.com/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) können Sie eine Liste von Orchestrierungsinstanzen abrufen, die vordefinierten Filtern entsprechen.
+Mit den Methoden [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) oder [getStatusBy](/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) können Sie eine Liste von Orchestrierungsinstanzen abrufen, die vordefinierten Filtern entsprechen.
 
 # <a name="c"></a>[C#](#tab/csharp)
 

@@ -2,7 +2,7 @@
 title: Häufig gestellte Fragen (FAQ) – Azure Active Directory | Microsoft-Dokumentation
 description: Hier finden Sie häufig gestellte Fragen und Antworten zu Azure und Azure Active Directory sowie zur Kennwortverwaltung und zum Anwendungszugriff.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775b71dd88c26dfe3ee62326615f6a81ee237deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604419"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799088"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.

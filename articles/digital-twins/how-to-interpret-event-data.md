@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3bb4d70b4c4f3f9edc525ffe5973bca633ddd1be
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142438"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800414"
 ---
 # <a name="understand-event-data"></a>Grundlegendes zu Ereignisdaten
 
@@ -300,7 +300,7 @@ Die entsprechende Benachrichtigung (wenn sie vom Dienst synchron ausgeführt wir
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie Endpunkte und Routen zum Übermitteln von Ereignissen erstellen:
-* [Gewusst wie: Verwalten von Endpunkten und Routen](how-to-manage-routes.md)
+* [*Verwenden von Endpunkten und Routen in Azure Digital Twins*](how-to-manage-routes-apis-cli.md)
 
 Oder erfahren Sie mehr über die Azure Digital Twins-APIs und SDK-Optionen:
-* [Gewusst wie: Verwenden der APIs und SDKs für Azure Digital Twins](how-to-use-apis-sdks.md)
+* [*Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md)

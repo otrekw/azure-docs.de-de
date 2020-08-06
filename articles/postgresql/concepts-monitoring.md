@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276633"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171581"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
@@ -26,7 +26,7 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |---|---|---|---|
 |cpu_percent|CPU in Prozent|Percent|Die CPU-Auslastung in Prozent|
 |memory_percent|Arbeitsspeicher in Prozent|Percent|Die Arbeitsspeicherauslastung in Prozent|
-|io_consumption_percent|E/A in Prozent|Percent|Die E/A-Auslastung in Prozent (Gilt nicht für Basic-Tarif-Server.)|
+|io_consumption_percent|E/A in Prozent|Percent|Die E/A-Auslastung in Prozent (Gilt nicht für Server im Tarif Basic.)|
 |storage_percent|Speicher in Prozent|Percent|Der verwendete Speicher relativ zum Maximalwert des Servers (in Prozent)|
 |storage_used|Verwendeter Speicher|Byte|Die Menge des verwendeten Speichers. Der vom Dienst verwendete Speicher kann die Datenbankdateien, Transaktionsprotokolle und Serverprotokolle umfassen.|
 |storage_limit|Speicherbegrenzung|Byte|Der maximale Speicher für diesen Server|
@@ -37,7 +37,7 @@ Die folgenden Metriken sind für Azure Database for PostgreSQL verfügbar:
 |connections_failed|Verbindungsfehler|Anzahl|Gibt an, wie viele fehlerhafte Verbindungen hergestellt wurden.|
 |network_bytes_egress|Netzwerk ausgehend|Byte|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen.|
 |network_bytes_ingress|Netzwerk eingehend|Byte|Eingehender Netzwerkdatenverkehr über aktive Verbindungen.|
-|backup_storage_used|Verwendeter Sicherungsspeicher|Byte|Die Menge des verwendeten Sicherungsspeichers.|
+|backup_storage_used|Verwendeter Sicherungsspeicher|Byte|Die Menge des verwendeten Sicherungsspeichers. Diese Metrik stellt den gesamten Speicherplatz dar, der von allen vollständigen Datenbanksicherungen, differenziellen Sicherungen und Protokollsicherungen beansprucht wurde, die auf der Grundlage der für den Server festgelegten Beibehaltungsdauer für Sicherungen aufbewahrt wurden. Die Häufigkeit der Sicherungen wird durch den Dienst verwaltet und im Artikel zu [Konzepten](concepts-backup.md) erläutert. Bei georedundantem Speicher wird doppelt so viel Sicherungsspeicher genutzt wie bei lokal redundantem Speicher.|
 |pg_replica_log_delay_in_bytes|Maximale Verzögerung zwischen Replikaten|Byte|Die Verzögerung in Bytes zwischen dem Masterserver und dem Replikat mit der größten Verzögerung. Diese Metrik steht nur auf dem Masterserver zur Verfügung.|
 |pg_replica_log_delay_in_seconds|Replikatverzögerung|Sekunden|Die Zeit seit der letzten wiedergegebenen Transaktion. Diese Metrik steht nur für Replikatserver zur Verfügung.|
 

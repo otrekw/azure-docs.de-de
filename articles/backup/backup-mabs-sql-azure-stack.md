@@ -3,12 +3,12 @@ title: Sichern von SQL Server-Workloads auf Azure Stack
 description: In diesem Artikel erfahren Sie, wie Sie Microsoft Azure Backup Server (MABS) zum Schutz von SQL Server-Datenbanken auf Azure Stack konfigurieren.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032645"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Sichern von SQL Server auf Azure Stack
 
@@ -19,6 +19,34 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
 1. Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken
 2. Bedarfsgesteuertes Erstellen von Sicherungskopien
 3. Wiederherstellen der Datenbank vom Datenträger und aus Azure
+
+## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
+
+* Wenn Sie über eine Datenbank mit Dateien auf einer Remotedateifreigabe verfügen, werden die darauf enthaltenen Daten nicht geschützt und ein Fehler mit der ID 104 ausgegeben. Der Schutz von SQL Server-Daten auf einer Remotedateifreigabe wird von MABS nicht unterstützt.
+* Datenbanken, die auf SMB-Remotefreigaben gespeichert sind, können von MABS nicht geschützt werden.
+* Stellen Sie sicher, dass die [Replikate der Verfügbarkeitsgruppe als schreibgeschützt konfiguriert sind](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Sie müssen das Systemkonto **NTAuthority\System** der Systemadministratorgruppe in SQL Server explizit hinzufügen.
+* Wenn Sie für eine teilweise eigenständige Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [eigenständige Datenbanken](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) aktiviert wurde.
+* Wenn Sie für eine Filestream-Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [Filestream-Datenbanken](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) aktiviert wurde.
+* Schutz für SQL Server AlwaysOn:
+  * Verfügbarkeitsgruppen werden von MABS beim Ausführen von Abfragen während der Erstellung von Schutzgruppen erkannt.
+  * Ein Failover wird von MABS erkannt, und die Datenbank wird weiterhin geschützt.
+  * Mehrere Standorte umfassende Clusterkonfigurationen für eine Instanz von SQL Server werden von MABS unterstützt.
+* Wenn Sie Datenbanken schützen, für die die Funktion „AlwaysOn“ verwendet wird, gelten für MABS folgende Einschränkungen:
+  * Die Sicherungsrichtlinie für Verfügbarkeitsgruppen, die in SQL Server auf Basis der Sicherungseinstellungen festgelegt wird, wird von MABS wie folgt berücksichtigt:
+    * Sekundär bevorzugen: Sicherungen müssen für ein sekundäres Replikat ausgeführt werden, es sei denn, das primäre Replikat ist als einziges Replikat online. Wenn mehrere sekundäre Replikate verfügbar sind, wird der Knoten mit der höchsten Sicherungspriorität für die Sicherung ausgewählt. Wenn nur das primäre Replikat verfügbar ist, muss die Sicherung für das primäre Replikat stattfinden.
+    * Nur sekundäre: Die Sicherung darf nicht für das primäre Replikat ausgeführt werden. Wenn nur das primäre Replikat online ist, darf keine Sicherung ausgeführt werden.
+    * Primär: Sicherungen müssen immer für das primäre Replikat ausgeführt werden.
+    * Beliebiges Replikat: Sicherungen können für ein beliebiges Verfügbarkeitsreplikat in der Verfügbarkeitsgruppe ausgeführt werden. Der Knoten, von dem aus die Sicherung erfolgen soll, basiert auf den Sicherungsprioritäten für die einzelnen Knoten.
+  * Beachten Sie Folgendes:
+    * Sicherungen können für jedes lesbare Replikat erfolgen, d h. für ein primäres, ein synchrones sekundäres oder ein asynchrones sekundäres Replikat.
+    * Wenn ein Replikat von der Sicherung ausgeschlossen ist, etwa weil **Replikat ausschließen** aktiviert oder das Replikat als nicht lesbar gekennzeichnet wurde, wird dieses Replikat unter keiner der Optionen für die Sicherung ausgewählt.
+    * Wenn mehrere Replikate verfügbar und lesbar sind, wird der Knoten mit der höchsten Sicherungspriorität für die Sicherung ausgewählt.
+    * Bei einem Sicherungsfehler auf dem ausgewählten Knoten ist der Sicherungsvorgang fehlerhaft.
+    * Die Wiederherstellung am ursprünglichen Speicherort wird nicht unterstützt.
+* Sicherungsprobleme bei SQL Server 2014 oder höher:
+  * SQL Server 2014 wurde durch eine neue Funktion zum Erstellen einer [Datenbank für lokale SQL Server-Instanzen in Windows Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15) erweitert. Diese Konfiguration kann nicht mithilfe von MABS geschützt werden.
+  * Die Sicherungseinstellung „Sekundär bevorzugen“ verursacht bei Verwendung der Option „SQL AlwaysOn“ einige bekannte Probleme. Von MABS wird immer eine Sicherung für das sekundäre Replikat ausgeführt. Wenn kein sekundäres Replikat gefunden wird, tritt bei der Sicherung ein Fehler auf.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -65,7 +93,7 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
 
     ![Methode für die anfängliche Replikation](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Die anfängliche Sicherungskopie erfordert eine Übertragung der gesamten Datenquelle (SQL Server-Datenbank) vom Produktionsserver (SQL Server-Computer) zu Azure Backup Server. Der Umfang dieser Daten kann sehr groß sein, und die Übertragung der Daten über das Netzwerk überschreitet möglicherweise die Bandbreite. Aus diesem Grund können Sie wählen, ob Sie die anfängliche Sicherung übertragen: **Manuell** (mithilfe von Wechselmedien), um eine Überlastung der Bandbreite zu vermeiden, oder **Automatisch über das Netzwerk** (zu einem bestimmten Zeitpunkt).
+    Die anfängliche Sicherungskopie erfordert eine Übertragung der gesamten Datenquelle (SQL Server-Datenbank) vom Produktionsserver (SQL Server-Computer) zu Azure Backup Server. Der Umfang dieser Daten kann sehr groß sein, und die Übertragung der Daten über das Netzwerk überschreitet möglicherweise die Bandbreite. Aus diesem Grund stehen Ihnen zwei Optionen für die Übertragung der anfänglichen Sicherung zur Verfügung: **Manuell** (mithilfe von Wechselmedien), um eine Überlastung der Bandbreite zu vermeiden, oder **Automatisch über das Netzwerk** (zu einem bestimmten Zeitpunkt).
 
     Sobald die anfängliche Sicherung abgeschlossen ist, werden nur noch inkrementelle Sicherungen basierend auf der anfänglichen Sicherungskopie erstellt. Inkrementelle Sicherungen sind im Allgemeinen klein und lassen sich problemlos über das Netzwerk übertragen.
 
@@ -90,7 +118,7 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
     >
     >
 
-    **Bewährte Methode:** Wenn Sie planen, Sicherungen in Azure zu starten, nachdem die lokalen Datenträgersicherungen abgeschlossen wurden, werden die neuesten Datenträgersicherungen immer in Azure kopiert.
+    **Bewährte Methode**: Wenn Sie planen, Sicherungen in Azure zu starten, nachdem die lokalen Datenträgersicherungen abgeschlossen wurden, werden die neuesten Datenträgersicherungen immer in Azure kopiert.
 
 12. Wählen Sie den Zeitplan für die Aufbewahrungsrichtlinie. Ausführliche Informationen zur Funktionsweise der Aufbewahrungsrichtlinie finden Sie im Artikel [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](backup-azure-backup-cloud-as-tape.md).
 

@@ -3,7 +3,7 @@ title: Erstellen einer Zugriffsüberprüfung für ein Zugriffspaket in der Azure
 description: Erfahren Sie, wie Sie in Azure Active Directory-Zugriffsüberprüfungen (Vorschauversion) eine Zugriffsüberprüfungsrichtlinie für Zugriffspakete in der Berechtigungsverwaltung erstellen.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7aed942058a922fc8da504fe14c5ad8e0bed59a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078586"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798510"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Erstellen einer Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 

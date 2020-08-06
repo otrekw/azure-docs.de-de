@@ -2,7 +2,7 @@
 title: Bereitstellungspläne – Azure Active Directory | Microsoft-Dokumentation
 description: Umfassende Anleitungen für die Bereitstellung vieler Azure Active Directory-Funktionen
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386333"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799054"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
