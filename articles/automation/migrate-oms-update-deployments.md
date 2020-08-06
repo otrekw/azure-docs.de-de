@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9bd6a7ff943b5f3750ce8aaeada32010b88272c2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745621"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447841"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Migrieren der Updatebereitstellungen für Azure Monitor-Protokolle zum Azure-Portal
 
@@ -19,7 +19,7 @@ Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../az
 ## <a name="key-information"></a>Wichtige Informationen
 
 * Vorhandene Bereitstellungen sind weiterhin funktionsfähig. Nachdem Sie die Bereitstellung in Azure neu erstellt haben, können Sie die alte Bereitstellung löschen.
-* Alle vorhandenen Funktionen aus OMS sind nun in Azure verfügbar. Weitere Informationen zur Updateverwaltung finden Sie unter [Übersicht über die Updateverwaltung](automation-update-management.md).
+* Alle vorhandenen Funktionen aus OMS sind nun in Azure verfügbar. Weitere Informationen zur Updateverwaltung finden Sie unter [Übersicht über die Updateverwaltung](update-management/update-mgmt-overview.md).
 
 ## <a name="access-the-azure-portal"></a>Zugriff auf fas Azure-Portal
 
@@ -74,4 +74,4 @@ Wenn Sie diese vorhandene gespeicherte Suche verwenden möchten, gehen Sie folge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Updateverwaltung in Azure Automation finden Sie unter [Übersicht über die Updateverwaltung](automation-update-management.md).
+Weitere Informationen zur Updateverwaltung in Azure Automation finden Sie unter [Übersicht über die Updateverwaltung](update-management/update-mgmt-overview.md).

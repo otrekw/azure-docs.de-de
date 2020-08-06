@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325337"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445294"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -62,7 +62,7 @@ Verwenden Sie den Log Analytics-Agent für Folgendes:
 * Senden von Überwachungsdaten an einen Log Analytics-Arbeitsbereich, um die von [Azure Monitor-Protokollen](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) unterstützten Features wie etwa [Protokollabfragen](../log-query/log-query-overview.md) zu nutzen
 * Verwenden von [Azure Monitor für VMs](../insights/vminsights-overview.md) zur bedarfsgerechten Überwachung Ihrer virtuellen Computer sowie zur Überwachung der zugehörigen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen  
 * Verwalten der Sicherheit Ihrer virtuellen Computer mit [Azure Security Center](../../security-center/security-center-intro.md) oder [Azure Sentinel](../../sentinel/overview.md)
-* Verwenden von [Azure Automation-Updateverwaltung](../../automation/automation-update-management.md), [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) oder [Azure Automation für Änderungsnachverfolgung und Bestand](../../automation/change-tracking.md) zur umfassenden Verwaltung Ihrer virtuellen Azure-Computer
+* Verwenden von [Azure Automation-Updateverwaltung](../../automation/update-management/update-mgmt-overview.md), [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) oder [Azure Automation für Änderungsnachverfolgung und Bestand](../../automation/change-tracking.md) zur umfassenden Verwaltung Ihrer virtuellen Azure-Computer
 * Verwenden verschiedener [Lösungen](../monitor-reference.md#insights-and-core-solutions) zur Überwachung eines bestimmten Diensts oder einer bestimmten Anwendung
 
 Einschränkungen des Log Analytics-Agents:

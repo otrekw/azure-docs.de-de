@@ -4,24 +4,24 @@ description: Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: 38f2f671ecf426f6544f6faf934aec7071451b0d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515749"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322328"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API 
 
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
 
 > [!IMPORTANT]
-> Wie [bereits angekündigt](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), können in Log Analytics-Arbeitsbereichen, die nach dem *1. Juni 2019* erstellt wurden, Warnungsregeln **nur** mit der scheduledQueryRules-[REST-API](/rest/api/monitor/scheduledqueryrules/), der [Azure Resource Manager-Vorlage](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) und dem [PowerShell-Cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell) verwaltet werden. Kunden können für ältere Arbeitsbereiche problemlos [ihre bevorzugte Methode zur Verwaltung von Warnungsregeln umstellen](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api), um „scheduledQueryRules“ in Azure Monitor als Standard zu verwenden und viele [neue Vorteile](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) zu nutzen. Hierzu zählen beispielsweise die Möglichkeit zur Verwendung nativer PowerShell-Cmdlets, ein längerer Rückschauzeitraum in Regeln sowie die Erstellung von Regeln in einer separaten Ressourcengruppe oder in einem separaten Abonnement.
+> Wie [bereits angekündigt](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), können in Log Analytics-Arbeitsbereichen, die nach dem *1. Juni 2019* erstellt wurden, Warnungsregeln **nur** mit der scheduledQueryRules-[REST-API](/rest/api/monitor/scheduledqueryrules/), der [Azure Resource Manager-Vorlage](./alerts-log.md#managing-log-alerts-using-azure-resource-template) und dem [PowerShell-Cmdlet](./alerts-log.md#managing-log-alerts-using-powershell) verwaltet werden. Kunden können für ältere Arbeitsbereiche problemlos [ihre bevorzugte Methode zur Verwaltung von Warnungsregeln umstellen](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api), um „scheduledQueryRules“ in Azure Monitor als Standard zu verwenden und viele [neue Vorteile](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) zu nutzen. Hierzu zählen beispielsweise die Möglichkeit zur Verwendung nativer PowerShell-Cmdlets, ein längerer Rückschauzeitraum in Regeln sowie die Erstellung von Regeln in einer separaten Ressourcengruppe oder in einem separaten Abonnement.
 
 Die REST-API für die Log Analytics-Suche ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. In diesem Dokument finden Sie Beispiele, in denen über eine PowerShell-Befehlszeile per [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Dies ist ein Open-Source-Befehlszeilentool, mit dem das Aufrufen der Azure Resource Manager-API vereinfacht wird. Die Verwendung von ARMClient und PowerShell ist eine von vielen Möglichkeiten, auf die Protokollsuch-API von Log Analytics zuzugreifen. Mit diesen Tools können Sie die RESTful-API von Azure Resource Manager für Aufrufe an Log Analytics-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API wird Ihnen Suchergebnisse im JSON-Format ausgeben, und Sie können die Suchergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Derzeit können Warnungen nur mit einer gespeicherten Suche in Log Analytics erstellt werden.  Weitere Informationen finden Sie unter [REST-API für die Log Analytics-Suche](../../azure-monitor/log-query/log-query-overview.md) .
+Derzeit können Warnungen nur mit einer gespeicherten Suche in Log Analytics erstellt werden.  Weitere Informationen finden Sie unter [REST-API für die Log Analytics-Suche](../log-query/log-query-overview.md) .
 
 ## <a name="schedules"></a>Zeitpläne
 Eine gespeicherte Suche kann über einen oder mehrere Zeitpläne verfügen. Der Zeitplan definiert, wie oft die Suche durchgeführt wird und welches Zeitintervall für die Identifizierung der Kriterien verwendet wird.
@@ -265,7 +265,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="action-groups"></a>Aktionsgruppen
 Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für die Behandlung von Aktionen. Mit Aktionsgruppen können Sie Ihre Aktionen einmal angeben und die Aktionsgruppe dann mehreren Warnungen zuordnen. Dies gilt für sämtliche Bereiche in Azure, sodass Sie dieselbe Aktion nicht mehrmals deklarieren müssen. Aktionsgruppen unterstützen mehrere Aktionen – einschließlich E-Mails, SMS, Sprachanrufen, ITSM-Verbindungen, Automation-Runbooks, Webhook-URIs und anderen. 
 
-Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Runbook-Automatisierungsdetails und weitere Aktionen müssen zuerst in einer Aktivitätsgruppe definiert werden, bevor eine Warnung erstellt werden kann. Es ist möglich, im Portal [Aktionsgruppen aus Azure Monitor zu erstellen](../../azure-monitor/platform/action-groups.md) oder die [Aktionsgruppen-API](/rest/api/monitor/actiongroups) zu verwenden.
+Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Runbook-Automatisierungsdetails und weitere Aktionen müssen zuerst in einer Aktivitätsgruppe definiert werden, bevor eine Warnung erstellt werden kann. Es ist möglich, im Portal [Aktionsgruppen aus Azure Monitor zu erstellen](./action-groups.md) oder die [Aktionsgruppen-API](/rest/api/monitor/actiongroups) zu verwenden.
 
 Um eine Zuordnung einer Aktionsgruppe zu einer Warnung hinzuzufügen, geben Sie die eindeutige Azure Resource Manager-ID der Aktionsgruppe in der Warnungsdefinition an. Im Folgenden finden Sie eine Beispieldarstellung:
 
@@ -345,7 +345,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 ```
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Anpassen einer Webhook-Nutzlast für eine Aktionsgruppe
-Der über Aktionsgruppen gesendete Webhook für Log Analytics weist standardmäßig eine feste Struktur auf. Die JSON-Nutzlast kann jedoch durch Verwendung bestimmter unterstützter Variablen angepasst werden, um die Anforderungen des Webhook-Endpunkts zu erfüllen. Weitere Informationen finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](../../azure-monitor/platform/alerts-log-webhook.md). 
+Der über Aktionsgruppen gesendete Webhook für Log Analytics weist standardmäßig eine feste Struktur auf. Die JSON-Nutzlast kann jedoch durch Verwendung bestimmter unterstützter Variablen angepasst werden, um die Anforderungen des Webhook-Endpunkts zu erfüllen. Weitere Informationen finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](./alerts-log-webhook.md). 
 
 Die Details des angepassten Webhooks müssen mit den Details zur Aktionsgruppe gesendet werden. Sie werden auf alle in der Aktionsgruppe angegebenen Webhook-URIs angewendet, wie im Beispiel unten dargestellt.
 
@@ -387,6 +387,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verwenden Sie die [REST-API zum Durchführen von Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics.
-* Erfahren Sie mehr über [Protokollwarnungen in Azure Monitor](../../azure-monitor/platform/alerts-unified-log.md).
-* [Erstellen, Bearbeiten und Verwalten von Protokollwarnungsregeln in Azure Monitor](../../azure-monitor/platform/alerts-log.md)
+* Verwenden Sie die [REST-API zum Durchführen von Protokollsuchen](../log-query/log-query-overview.md) in Log Analytics.
+* Erfahren Sie mehr über [Protokollwarnungen in Azure Monitor](./alerts-unified-log.md).
+* [Erstellen, Bearbeiten und Verwalten von Protokollwarnungsregeln in Azure Monitor](./alerts-log.md)
+

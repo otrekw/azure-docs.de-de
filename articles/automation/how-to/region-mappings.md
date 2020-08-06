@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261187"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447857"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 
@@ -78,11 +78,11 @@ Nachdem Sie die Features entfernt haben, können Sie die folgenden Schritte ausf
 
 Alternativ können Sie Ihren Arbeitsbereich von Ihrem Automation-Konto im Arbeitsbereich trennen.
 
-1. Wählen Sie im Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**. 
+1. Wählen Sie im Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**.
 2. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu „Updateverwaltung“ finden Sie in der [Übersicht über die Updateverwaltung](../automation-update-management.md).
+* Informationen zu „Updateverwaltung“ finden Sie in der [Übersicht über die Updateverwaltung](../update-management/update-mgmt-overview.md).
 * Informationen zu „Änderungsnachverfolgung und Bestand“ finden Sie in der [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking.md).
 * Informationen zu „VMs außerhalb der Geschäftszeiten starten/beenden“ finden Sie unter [VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht](../automation-solution-vm-management.md).

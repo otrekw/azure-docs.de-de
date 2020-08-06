@@ -5,21 +5,22 @@ description: Richten Sie in Azure Machine Learning ereignisgesteuerte Anwendunge
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135969"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319489"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Auslösen von Anwendungen, Prozessen oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie ereignisgesteuerte Anwendungen, Prozesse oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (z. B. E-Mails mit Fehlerbenachrichtigungen oder Ausführungen der ML-Pipeline) einrichten, wenn von [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) bestimmte Bedingungen erkannt werden. 
+In diesem Artikel erfahren Sie, wie Sie ereignisgesteuerte Anwendungen, Prozesse oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (z. B. E-Mails mit Fehlerbenachrichtigungen oder Ausführungen der ML-Pipeline) einrichten, wenn von [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) bestimmte Bedingungen erkannt werden.
 
 Azure Machine Learning verwaltet den gesamten Lebenszyklus von Prozessen für maschinelles Lernen, wozu Modelltraining, Modellimplementierung und Überwachung gehören. Sie können Event Grid zum Reagieren auf Azure Machine Learning-Ereignisse, z. B. das Abschließen von Trainingsausführungen, das Registrieren und Bereitstellen von Modellen und das Erkennen von Datendrift, mithilfe moderner serverloser Architekturen verwenden. Anschließend können Sie Ereignisse wie einen geänderten Ausführungsstatus, den Abschluss einer Ausführung, Modellregistrierungen, Modellimplementierungen und Datendrifterkennungen in einem Arbeitsbereich abonnieren und verarbeiten.
 

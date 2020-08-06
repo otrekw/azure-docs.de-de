@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933751"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496439"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um einen StorSimple Data Manager-Dienst 
 
    2. Wählen Sie ein **Abonnement** in der Dropdownliste aus. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. Dieses Feld wird automatisch ausgefüllt (und ist nicht auswählbar), wenn Sie nur ein Abonnement haben.
 
-   3. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
    4. Geben Sie den **Standort** für Ihren Dienst an, an dem sich Ihre Speicherkonten und Ihr StorSimple Data Manager-Dienst befinden. Ihr StorSimple-Geräte-Manager-Dienst, Data Manager-Dienst und die zugeordneten Speicherkonten sollten sich alle in den unterstützten Regionen befinden.
     

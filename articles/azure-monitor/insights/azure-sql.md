@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087179"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318027"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -34,7 +34,7 @@ Azure SQL-Analyse ist eine reine Cloudüberwachungslösung, die das Streaming vo
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
 | [Diagnoseeinstellungen](../platform/diagnostic-settings.md) | **Ja** | Azure-Metrik- und Protokolldaten werden direkt von Azure an Azure Monitor-Protokolle gesendet. |
-| [Azure-Speicherkonto](../platform/collect-azure-metrics-logs.md) | Nein | Azure Monitor liest keine Daten aus einem Speicherkonto. |
+| [Azure-Speicherkonto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Azure Monitor liest keine Daten aus einem Speicherkonto. |
 | [Windows-Agents](../platform/agent-windows.md) | Nein | Von Azure SQL-Analyse werden keine direkten Windows-Agents verwendet. |
 | [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Von Azure SQL-Analyse werden keine direkten Linux-Agents verwendet. |
 | [System Center Operations Manager-Verwaltungsgruppe](../platform/om-agents.md) | Nein | Von Azure SQL-Analyse wird keine direkte Verbindung vom Operations Manager-Agent zu Azure Monitor verwendet. |
@@ -56,7 +56,7 @@ In der folgenden Tabelle werden unterstützte Optionen für zwei Versionen des D
 
 ## <a name="configuration"></a>Konfiguration
 
-Fügen Sie Azure SQL-Analyse (Vorschau) mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich hinzu.
+Fügen Sie Azure SQL-Analyse (Vorschau) mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](./solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich hinzu.
 
 ### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Konfigurieren von Azure SQL-Datenbank zum Streamen von Diagnosetelemetriedaten
 
@@ -297,3 +297,4 @@ Obwohl Azure SQL-Analyse kostenlos verwendet werden kann, fallen für die Nutzun
 - Verwenden Sie [Protokollabfragen](../log-query/log-query-overview.md) in Azure Monitor, um detaillierte Azure SQL-Daten anzuzeigen.
 - [Erstellen eigener Dashboards](../learn/tutorial-logs-dashboards.md), die Azure SQL-Daten anzeigen
 - [Erstellen von Warnungen](../platform/alerts-overview.md), wenn bestimmte Azure SQL-Ereignisse auftreten
+

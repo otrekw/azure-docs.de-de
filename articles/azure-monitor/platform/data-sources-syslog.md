@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515511"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322311"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-Datenquellen in Azure Monitor
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können. Wenn der Log Analytics-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent. Der Agent sendet die Nachricht dann an Azure Monitor, wo ein entsprechender Datensatz erstellt wird.  
@@ -54,7 +54,7 @@ Sie können eine neue Einrichtung hinzufügen, indem Sie zuerst die Option **Nac
 Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben. Wenn Sie Syslog manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Computer anwenden*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurieren von Syslog auf dem Linux-Agent
-Wenn der [Log Analytics-Agent auf einem Linux-Client installiert ist](../../azure-monitor/learn/quick-collect-linux-computer.md), installiert er eine standardmäßige Syslog-Konfigurationsdatei, die Einrichtung und Schweregrad der gesammelten Nachrichten definiert. Sie können diese Datei ändern, um die Konfiguration zu ändern. Die Konfigurationsdatei unterscheidet sich je nach dem Syslog-Daemon, den der Client installiert hat.
+Wenn der [Log Analytics-Agent auf einem Linux-Client installiert ist](../learn/quick-collect-linux-computer.md), installiert er eine standardmäßige Syslog-Konfigurationsdatei, die Einrichtung und Schweregrad der gesammelten Nachrichten definiert. Sie können diese Datei ändern, um die Konfiguration zu ändern. Die Konfigurationsdatei unterscheidet sich je nach dem Syslog-Daemon, den der Client installiert hat.
 
 > [!NOTE]
 > Wenn Sie die syslog-Konfiguration bearbeiten, müssen Sie den syslog-Daemon neu starten, damit die Änderungen wirksam werden.
@@ -227,6 +227,7 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Sy
 | Syslog &#124; summarize AggregatedValue = count() by Facility |Anzahl der Syslog-Datensätze je Einrichtung. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollabfragen](../../azure-monitor/log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
-* Verwenden Sie [benutzerdefinierte Felder](../../azure-monitor/platform/custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
-* [Konfigurieren Sie Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) zum Sammeln anderer Datentypen.
+* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
+* Verwenden Sie [benutzerdefinierte Felder](./custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
+* [Konfigurieren Sie Linux-Agents](../learn/quick-collect-linux-computer.md) zum Sammeln anderer Datentypen.
+

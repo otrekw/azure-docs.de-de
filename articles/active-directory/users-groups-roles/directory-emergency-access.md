@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338283"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421721"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -56,7 +56,7 @@ Für mindestens eines Ihrer Konten für den Notfallzugriff sollte jedoch nicht d
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Ausschließen mindestens eines Kontos aus Richtlinien für bedingten Zugriff
 
-In einem Notfall soll eine Richtlinie Ihren Zugriff nicht potenziell blockieren, um ein Problem zu beheben. Mindestens ein Konto für den Notfallzugriff sollte aus allen Richtlinien für bedingten Zugriff ausgeschlossen werden. Wenn Sie eine [Basisrichtlinie](../conditional-access/baseline-protection.md) aktiviert haben, sollten Sie Ihre Konten für den Notfallzugriff daraus ausschließen.
+In einem Notfall soll eine Richtlinie Ihren Zugriff nicht potenziell blockieren, um ein Problem zu beheben. Mindestens ein Konto für den Notfallzugriff sollte aus allen Richtlinien für bedingten Zugriff ausgeschlossen werden.
 
 ## <a name="federation-guidance"></a>Verbundleitfaden
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797442"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320254"
 ---
 # <a name="metric-chart-examples"></a>Beispiele für Metrikdiagramme 
 
-Die Azure-Plattform stellt [mehr als tausend Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) bereit, von denen viele Dimensionen umfassen. Durch die Verwendung von [Dimensionsfiltern](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), das Anwenden einer [Aufteilung](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), die Steuerung des Diagrammtyps und eine Anpassung der Diagrammeinstellungen können Sie leistungsstarke Diagnoseansichten und Dashboards erstellen, die Einblick in den Zustand Ihrer Infrastruktur und Anwendungen bieten. Dieser Artikel zeigt einige Beispiele für die Diagramme, die Sie mit dem [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) erstellen können, und erklärt die notwendigen Schritte zur Konfiguration jedes dieser Diagramme.
+Die Azure-Plattform stellt [mehr als tausend Metriken](./metrics-supported.md) bereit, von denen viele Dimensionen umfassen. Durch die Verwendung von [Dimensionsfiltern](./metrics-charts.md), das Anwenden einer [Aufteilung](./metrics-charts.md), die Steuerung des Diagrammtyps und eine Anpassung der Diagrammeinstellungen können Sie leistungsstarke Diagnoseansichten und Dashboards erstellen, die Einblick in den Zustand Ihrer Infrastruktur und Anwendungen bieten. Dieser Artikel zeigt einige Beispiele für die Diagramme, die Sie mit dem [Metrik-Explorer](./metrics-charts.md) erstellen können, und erklärt die notwendigen Schritte zur Konfiguration jedes dieser Diagramme.
 
 Möchten Sie Ihre Diagrammbeispiele für andere Benutzer zur Verfügung stellen? Tragen Sie zu dieser Seite auf GitHub bei, und teilen Sie hier Ihre eigenen Diagrammbeispiele!
 
@@ -38,7 +38,7 @@ Zeigen Sie die Verfügbarkeit Ihrer Anwendung nach Regionen an, um festzustellen
 
 ### <a name="how-to-configure-this-chart"></a>Wie wird dieses Diagramm konfiguriert?
 
-Sie müssen zunächst die [Application Insights-Verfügbarkeitsüberwachung](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) für Ihre Website aktivieren. Anschließend wählen Sie die Application Insights-Ressource aus, und geben die Metrik zur Verfügbarkeit an. Wenden Sie auf die Dimension **Ausführungsort** eine Aufteilung an.
+Sie müssen zunächst die [Application Insights-Verfügbarkeitsüberwachung](../app/monitor-web-app-availability.md) für Ihre Website aktivieren. Anschließend wählen Sie die Application Insights-Ressource aus, und geben die Metrik zur Verfügbarkeit an. Wenden Sie auf die Dimension **Ausführungsort** eine Aufteilung an.
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>Anzahl von Speicherkontotransaktionen nach API-Name
 
@@ -52,5 +52,6 @@ Bei der Metrikauswahl geben Sie Ihr Speicherkonto und die Metrik **Transaktionen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu Azure Monitor-[Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)
+* Informationen zu Azure Monitor-[Arbeitsmappen](./workbooks-overview.md)
 * Weitere Informationen zum [Metrik-Explorer](metrics-charts.md)
+

@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die zum Skalieren eines Cassandra-API-Konto
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119153"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486509"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastisches Skalieren eines Cassandra-API-Kontos für Azure Cosmos DB
 
@@ -46,7 +46,7 @@ Der Vorteil dieser Methode besteht darin, dass sie eine unkomplizierte, „schl�
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Verwenden der Steuerungsebene
 
-Die Azure Cosmos DB-API für Cassandra bietet die Möglichkeit, den Durchsatz mithilfe unserer verschiedenen Features auf Steuerungsebene programmgesteuert anzupassen. Anleitungen und Beispiele finden Sie in den entsprechenden Artikeln zu [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [PowerShell](powershell-samples-cassandra.md) und der [Azure CLI](cli-samples-cassandra.md).
+Die Azure Cosmos DB-API für Cassandra bietet die Möglichkeit, den Durchsatz mithilfe unserer verschiedenen Features auf Steuerungsebene programmgesteuert anzupassen. Anleitungen und Beispiele finden Sie in den entsprechenden Artikeln zu [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [PowerShell](powershell-samples.md) und der [Azure CLI](cli-samples.md).
 
 Diese Methode bietet den Vorteil, dass Sie das Hoch- oder Herunterskalieren von Ressourcen timerbasiert automatisieren können, um sowohl Lastspitzen als auch Zeiträume mit niedriger Aktivität zu berücksichtigen. Sehen Sie sich das Beispiel [hier](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) an, um zu erfahren, wie Sie dies mit Azure Functions und PowerShell erreichen.
 

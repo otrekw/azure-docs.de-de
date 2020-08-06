@@ -7,12 +7,12 @@ ms.author: arduppal
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: 9389e0aff04baa18cb216f2a7ab6da42eb7031f2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171430"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462019"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Tutorial: Reagieren auf Blob Storage-Ereignisse in IoT Edge (Preview)
 In diesem Artikel erfahren Sie, wie Sie Azure Blob Storage für das IoT-Modul bereitstellen, das als Event Grid-Herausgeber fungieren würde, um Ereignisse bei der Blob-Erstellung und Blob-Löschung an Event Grid zu senden.  
@@ -341,7 +341,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | -------- | ---- | ----------- |
 | api | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. Es kann sich um einen der folgenden Werte handeln: <ul><li>BlobCreated: zulässige Werte sind: `PutBlob` und `PutBlockList`.</li><li>BlobDeleted: zulässige Werte sind: `DeleteBlob`, `DeleteAfterUpload` und `AutoDelete`. <p>Das `DeleteAfterUpload`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil die gewünschte Eigenschaft „deleteAfterUpload“ auf „true“ festgelegt ist. </p><p>Das `AutoDelete`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil der Wert der gewünschten Eigenschaft „deleteAfterMinutes“ abgelaufen ist.</p></li></ul>|
 | clientRequestId | Zeichenfolge | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Ausführliche Informationen finden Sie unter [Protokollformat](/rest/api/storageservices/storage-analytics-log-format). |
-| requestId | Zeichenfolge | Vom Dienst generierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
+| requestId | Zeichenfolge | Vom Dienst generierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
 | eTag | Zeichenfolge | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
 | contentType | Zeichenfolge | Der für das Blob angegebene Inhaltstyp. |
 | contentLength | integer | Die Größe des Blobs in Byte. |

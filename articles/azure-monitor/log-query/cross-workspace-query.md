@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505787"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322124"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor  
 
@@ -120,7 +120,7 @@ app('Contoso-app5').requests
 
 
 
-[Diese Funktion](../../azure-monitor/log-query/functions.md#use-a-function) können Sie nun wie folgt in einer ressourcenübergreifenden Abfrage verwenden. Der Funktionsalias _applicationsScoping_ gibt die Vereinigungsmenge der Anforderungstabelle aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert. Der _parse_-Operator ist in diesem Beispiel optional. Er extrahiert den Namen der Anwendung aus der _SourceApp_-Eigenschaft.
+[Diese Funktion](./functions.md#use-a-function) können Sie nun wie folgt in einer ressourcenübergreifenden Abfrage verwenden. Der Funktionsalias _applicationsScoping_ gibt die Vereinigungsmenge der Anforderungstabelle aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert. Der _parse_-Operator ist in diesem Beispiel optional. Er extrahiert den Namen der Anwendung aus der _SourceApp_-Eigenschaft.
 
 ```Kusto
 applicationsScoping 
@@ -141,3 +141,4 @@ applicationsScoping
 
 - Eine Übersicht über Protokollabfragen und die Strukturierung von Azure Monitor-Protokolldaten erhalten Sie unter [Analysieren von Protokolldaten in Azure Monitor](log-query-overview.md).
 - Informationen zum Anzeigen aller Ressourcen für Azure Monitor-Protokollabfragen finden Sie unter [Azure Monitor-Protokollabfragen](query-language.md).
+

@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326986"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457820"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Transformieren von Daten in Azure Machine Learning-Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -112,7 +112,7 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
     **Dateiformat**: CSV
 
     > [!NOTE]
-    > In diesem Artikel wird davon ausgegangen, dass Sie Zugriff auf einen Datenspeicher haben, der für den aktuellen Azure Machine Learning-Arbeitsbereich registriert ist. Anweisungen zum Einrichten eines Datenspeichers finden Sie unter [Herstellen einer Verbindung mit Azure-Speicherdiensten](how-to-access-data.md#azure-machine-learning-studio).
+    > In diesem Artikel wird davon ausgegangen, dass Sie Zugriff auf einen Datenspeicher haben, der für den aktuellen Azure Machine Learning-Arbeitsbereich registriert ist. Anweisungen zum Einrichten eines Datenspeichers finden Sie unter [Herstellen einer Verbindung mit Azure-Speicherdiensten](how-to-access-data.md#studio).
 
     Wenn Sie über keinen Datenspeicher verfügen, können Sie nun einen erstellen. In diesem Artikel werden die Datasets beispielsweise im standardmäßigen BLOB-Speicherkonto gespeichert, das dem Arbeitsbereich zugeordnet ist. Die Datasets werden im `azureml`-Container in einem neuen Ordner mit dem Namen `data` gespeichert.
 

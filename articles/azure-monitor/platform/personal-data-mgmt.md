@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539328"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318316"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -48,7 +48,7 @@ Log Analytics ist ein flexibler Datenspeicher, der zwar ein Schema für die Date
     ```
   Wichtig: Suchen Sie nicht nur nach lesbaren Benutzernamen, sondern auch nach GUIDs, die direkt zu einem bestimmten Benutzer zurückverfolgt werden können.
 * *Geräte-IDs*: Geräte-IDs sind mit Benutzer-IDs vergleichbar und werden gelegentlich als „privat“ betrachtet. Verwenden Sie die gleiche Vorgehensweise, die weiter oben für Benutzer-IDs angegeben ist, um Tabellen zu ermitteln, bei denen dies ggf. relevant ist. 
-* *Benutzerdefinierte Daten*: In Log Analytics stehen verschiedene Erfassungsmethoden zur Verfügung: benutzerdefinierte Protokolle und benutzerdefinierte Felder, die [HTTP-Datensammler-API](../../azure-monitor/platform/data-collector-api.md) und benutzerdefinierte Daten, die im Rahmen von Systemereignisprotokollen erfasst werden. Alle diese Optionen können personenbezogene Daten enthalten und müssen auf entsprechende Daten untersucht werden.
+* *Benutzerdefinierte Daten*: In Log Analytics stehen verschiedene Erfassungsmethoden zur Verfügung: benutzerdefinierte Protokolle und benutzerdefinierte Felder, die [HTTP-Datensammler-API](./data-collector-api.md) und benutzerdefinierte Daten, die im Rahmen von Systemereignisprotokollen erfasst werden. Alle diese Optionen können personenbezogene Daten enthalten und müssen auf entsprechende Daten untersucht werden.
 * *Durch die Lösung erfasste Daten*: Da es sich bei dem Lösungsmechanismus um einen Mechanismus mit offenem Ende handelt, empfiehlt es sich, alle von Lösungen generierten Tabellen zu überprüfen, um die Compliance zu gewährleisten.
 
 ### <a name="application-data"></a>Anwendungsdaten
@@ -124,5 +124,6 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 >  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist aufgrund der starken Auswirkung auf die von Application Insights verwendete Datenplattform **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum Sammeln, Verarbeiten und Schützen von Daten in Log Analytics finden Sie unter [Log Analytics – Datensicherheit](../../azure-monitor/platform/data-security.md).
-- Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten in Application Insights finden Sie unter [Application Insights – Datensicherheit](../../azure-monitor/app/data-retention-privacy.md).
+- Weitere Informationen zum Sammeln, Verarbeiten und Schützen von Daten in Log Analytics finden Sie unter [Log Analytics – Datensicherheit](./data-security.md).
+- Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten in Application Insights finden Sie unter [Application Insights – Datensicherheit](../app/data-retention-privacy.md).
+

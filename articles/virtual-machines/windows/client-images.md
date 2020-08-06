@@ -4,16 +4,16 @@ description: Verwenden von Visual Studio-Abonnementvorteilen zum Bereitstellen v
 author: cynthn
 ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083273"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292048"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien
 Sie können Windows 7, Windows 8 oder Windows 10 Enterprise (x64) in Azure für Entwicklungs-/Testszenarien verwenden, sofern Sie über ein entsprechendes Visual Studio-Abonnement (früher MSDN) verfügen. Dieser Artikel beschreibt die erforderlichen Berechtigungen für die Ausführung von Windows 7, Windows 8.1 und Windows 10 Enterprise in Azure und die Verwendung der folgenden Images aus dem Azure-Katalog.
@@ -58,5 +58,4 @@ Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](https
 ![Details der Angebots-ID aus dem Azure-Kontoportal](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Jetzt können Sie Ihre VMs mit [PowerShell](quick-create-powershell.md), [Resource Manager-Vorlagen](ps-template.md) oder [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) bereitstellen.
-
+Jetzt können Sie Ihre VMs mit [PowerShell](quick-create-powershell.md), [Resource Manager-Vorlagen](ps-template.md) oder [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) bereitstellen.

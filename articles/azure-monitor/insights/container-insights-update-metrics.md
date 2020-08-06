@@ -3,12 +3,13 @@ title: 'Gewusst wie: Aktualisieren von Azure Monitor für Container für Metrike
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktualisieren, um die Funktion für benutzerdefinierte Metriken zu aktivieren, für die das Untersuchen und Senden von Warnungen zu aggregierten Metriken unterstützt wird.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498983"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499958"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen OpenID Connect-Anbieter als Identitäts
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 1a4f956c15fae640c2a7978a14bb95328dc9aa71
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209043"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413917"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App für die Anmeldung über einen OpenID Connect-Anbieter (Vorschau)
 
@@ -61,7 +61,7 @@ Dieser Abschnitt führt Sie durch die Aktualisierung der Konfiguration für Ihre
        "registration" : {},
        "login": {
              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-             "loginScopes": [],
+             "scope": [],
              "loginParameterNames": [],
        }
     }
@@ -112,7 +112,7 @@ Ein Beispiel für eine Konfiguration könnte wie folgt aussehen (bei Verwendung 
                         "secretSettingName": "APPLE_GENERATED_CLIENT_SECRET"
                     },
                     "openIdConnectConfiguration": {
-                        "authorizationEndpoint": "https://appleid.apple.com/.well-known/openid-configuration"
+                        "wellKnownOpenIdConfiguration": "https://appleid.apple.com/.well-known/openid-configuration"
                     }
                 },
                 "login": {

@@ -4,12 +4,12 @@ description: Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Appl
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320373"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -206,7 +206,7 @@ public async Task Process(BrokeredMessage message)
 Im folgenden Beispiel wird veranschaulicht, wie Sie Vorgänge der [Azure Storage-Warteschlange](../../storage/queues/storage-dotnet-how-to-use-queues.md) nachverfolgen und die Telemetrie zwischen Producer, Consumer und Azure Storage korrelieren. 
 
 Die Storage-Warteschlange verfügt über eine HTTP-API. Alle Aufrufe der Warteschlange werden von der Application Insights-Abhängigkeitserfassung für HTTP-Anforderungen nachverfolgt.
-Dies ist in ASP.NET- und ASP.NET Core-Anwendungen standardmäßig konfiguriert. Entsprechende Informationen zu anderen Arten von Anwendungen finden Sie in der [Dokumentation zu Konsolenanwendungen](../../azure-monitor/app/console.md).
+Dies ist in ASP.NET- und ASP.NET Core-Anwendungen standardmäßig konfiguriert. Entsprechende Informationen zu anderen Arten von Anwendungen finden Sie in der [Dokumentation zu Konsolenanwendungen](./console.md).
 
 Zudem sollten Sie die Vorgangs-ID von Application Insights mit der Anforderungs-ID von Storage korrelieren. Informationen zum Festlegen und Abrufen eines Storage-Anforderungsclients und einer Serveranforderungs-ID erhalten Sie unter [Überwachung, Diagnose und Problembehandlung in Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
@@ -478,8 +478,9 @@ Jeder Application Insights-Vorgang (Anforderung oder Abhängigkeit) umfasst ein 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die Grundlagen der [Telemetriekorrelation](correlation.md) in Application Insights.
-- Sehen Sie sich an, wie korrelierte Daten die [Oberfläche zur Transaktionsdiagnose](../../azure-monitor/app/transaction-diagnostics.md) und die [Anwendungsübersicht](../../azure-monitor/app/app-map.md) steuern.
-- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](../../azure-monitor/app/data-model.md).
-- Informieren Sie sich über das Melden von benutzerdefinierten [Ereignissen und Metriken](../../azure-monitor/app/api-custom-events-metrics.md) an Application Insights.
+- Sehen Sie sich an, wie korrelierte Daten die [Oberfläche zur Transaktionsdiagnose](./transaction-diagnostics.md) und die [Anwendungsübersicht](./app-map.md) steuern.
+- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](./data-model.md).
+- Informieren Sie sich über das Melden von benutzerdefinierten [Ereignissen und Metriken](./api-custom-events-metrics.md) an Application Insights.
 - Informationen zur [Standardkonfiguration](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Kontexteigenschaften.
 - Lesen Sie den [System.Diagnostics.Activity User Guide](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) (System.Diagnostics.Activity-Benutzerhandbuch), um zu erfahren, wie wir Telemetriedaten korrelieren.
+

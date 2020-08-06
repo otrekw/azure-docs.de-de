@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0a17f28f2a87ae42b552bfa07732b8b8232ef5e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527995"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289909"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Planen Ihrer Azure Time Series Insights Gen2-Umgebung
 
@@ -78,7 +78,7 @@ Wenn der Zeitstempel eines Ereignisses leer bleibt, wird der Zeitpunkt der Einre
 
 Sie können jetzt das Zeitreihenmodell Ihrer Azure Time Series Insights-Umgebung konfigurieren. Das neue Modell erleichtert das Auffinden und Analysieren von IoT-Daten. Es ermöglicht die Zusammenstellung, Wartung und Anreicherung von Zeitreihendaten und hilft bei der Vorbereitung für Consumer bereiter Datasets. Das Modell verwendet Time Series-IDs, die einer Instanz zugeordnet werden, die die eindeutige Ressource mit Variablen, bekannt als Typen, und Hierarchien verknüpft. Weitere Informationen finden Sie unter [Zeitreihenmodell in Azure Time Series Insights Gen2](./concepts-model-overview.md).
 
-Das Modell ist dynamisch, damit es jederzeit erstellt werden kann. Für den schnellen Einstieg erstellen und laden Sie es hoch, bevor Sie Daten per Push in Azure Time Series Insights übertragen. Informationen zum Erstellen Ihres Modells finden Sie unter [Datenmodellierung in Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md).
+Das Modell ist dynamisch, damit es jederzeit erstellt werden kann. Für den schnellen Einstieg erstellen und laden Sie es hoch, bevor Sie Daten per Push in Azure Time Series Insights übertragen. Informationen zum Erstellen Ihres Modells finden Sie unter [Datenmodellierung in Azure Time Series Insights Preview](/azure/time-series-insights/concepts-model-overview).
 
 Bei vielen Kunden wird das Zeitreihenmodell einem vorhandenen Ressourcenmodell oder einem bereits eingerichteten ERP-System zugeordnet. Wenn Sie nicht über ein vorhandenes Modell verfügen, ist wird eine vordefinierte Erfahrung [bereitgestellt](https://github.com/Microsoft/tsiclient), um schnell den Betrieb aufnehmen zu können. Um einen Eindruck zu erhalten, wie Ihnen ein Modell helfen könnte, sehen Sie sich die [Beispieldemoumgebung](https://insights.timeseries.azure.com/preview/demo) an.
 

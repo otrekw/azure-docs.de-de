@@ -3,12 +3,12 @@ title: Übersicht zu Azure Monitor für Container | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt Azure Monitor für Container, das die AKS Container Insights-Lösung überwacht, und den Wert, den es durch die Überwachung der Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure bietet.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: d176a84d72c92eddd4ffd4fcd1011bda172e5cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85adae1b79609f13be6bb73eb4e57000beda6d77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337922"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320271"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor für Container – Übersicht
 
@@ -17,7 +17,7 @@ Azure Monitor für Container ist ein Feature zur Überwachung der Leistung von C
 - Managed Kubernetes-Cluster, die in [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) gehostet werden
 - Selbstverwaltete Kubernetes-Cluster, die in Azure mit der [AKS-Engine](https://github.com/Azure/aks-engine) gehostet werden
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- Selbstverwaltete Kubernetes-Cluster, die in [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) oder lokal gehostet werden
+- Selbstverwaltete Kubernetes-Cluster, die in [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) oder lokal gehostet werden
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Kubernetes mit Azure Arc-Aktivierung](../../azure-arc/kubernetes/overview.md) (Vorschauversion)
 
@@ -40,7 +40,7 @@ Azure Monitor für Container stellt eine umfassende Überwachungsumgebung auf Gr
 * Sie bekommen Einblicke in das Verhalten des Clusters bei durchschnittlichen und schwersten Lasten. So können Sie benötigte Kapazitäten ermitteln und die maximale Last bestimmen, die der Cluster toleriert.
 * Konfigurieren Sie Warnungen so, dass Sie proaktiv benachrichtigt werden oder aufgezeichnet wird, wenn die CPU- und Arbeitsspeicherauslastung auf Knoten oder in Containern die Schwellenwerte überschreitet oder wenn eine Änderung des Integritätszustands im Cluster beim Integritätsrollup für Infrastruktur oder Knoten erfolgt.
 * Über die Integration mit [Prometheus](https://prometheus.io/docs/introduction/overview/) können Sie Anwendungs- und Workloadmetriken anzeigen, die von Knoten und Kubernetes mithilfe von [Abfragen](container-insights-log-search.md) gesammelt werden, um benutzerdefinierte Warnungen und Dashboards zu erstellen und ausführliche Analysen durchzuführen.
-* Überwachen Sie Containerworkloads, [die auf der AKS-Engine](https://github.com/Azure/aks-engine) lokal und der [AKS-Engine in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) bereitgestellt werden.
+* Überwachen Sie Containerworkloads, [die auf der AKS-Engine](https://github.com/Azure/aks-engine) lokal und der [AKS-Engine in Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) bereitgestellt werden.
 * Überwachen von Containerworkloads, [die in Azure Red Hat OpenShift](../../openshift/intro-openshift.md) bereitgestellt sind.
 
     >[!NOTE]
@@ -51,7 +51,7 @@ Azure Monitor für Container stellt eine umfassende Überwachungsumgebung auf Gr
 
 Nachfolgend sind die wichtigsten Unterschiede bei der Überwachung eines Windows Server-Clusters im Vergleich zu einem Linux-Cluster aufgeführt:
 
-- Windows weist keine Arbeitsspeicher-RSS-Metrik auf, daher ist diese für Windows-Knoten und -Container nicht verfügbar. Die Metrik [Arbeitssatz](https://docs.microsoft.com/windows/win32/memory/working-set) ist verfügbar.
+- Windows weist keine Arbeitsspeicher-RSS-Metrik auf, daher ist diese für Windows-Knoten und -Container nicht verfügbar. Die Metrik [Arbeitssatz](/windows/win32/memory/working-set) ist verfügbar.
 - Für Windows-Knoten sind keine Informationen zur Speicherkapazität des Datenträgers verfügbar.
 - Nur Pod-Umgebungen werden überwacht, nicht aber Docker-Umgebungen.
 - Mit der Vorschauversion werden maximal 30 Windows Server-Container unterstützt. Diese Einschränkung gilt nicht für Linux-Container.
@@ -66,8 +66,9 @@ Sie können auf zwei Arten auf Azure Monitor für Container zugreifen, aus Azure
 
 ![Übersicht der Methoden für den Zugriff auf Azure Monitor für Container](./media/container-insights-overview/azmon-containers-experience.png)
 
-Wenn Sie Ihre außerhalb von AKS ausgeführten Docker- und Windows-Containerhosts überwachen und verwalten möchten, um Informationen zur Konfiguration, Überwachung und Ressourcenverwendung anzuzeigen, lesen Sie den Artikel zur [Containerüberwachungslösung](../../azure-monitor/insights/containers.md).
+Wenn Sie Ihre außerhalb von AKS ausgeführten Docker- und Windows-Containerhosts überwachen und verwalten möchten, um Informationen zur Konfiguration, Überwachung und Ressourcenverwendung anzuzeigen, lesen Sie den Artikel zur [Containerüberwachungslösung](./containers.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um in die Überwachung Ihrer Kubernetes-Cluster einzusteigen, lesen Sie [Aktivieren von Azure Monitor für Container](container-insights-onboard.md), um ein Verständnis für die Anforderungen und verfügbaren Methoden zum Aktivieren von Überwachung zu entwickeln.
+

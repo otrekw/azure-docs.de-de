@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682717"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290719"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technischer Leitfaden für die Lösungsvorlage für Predictive Maintenance für Luft- und Raumfahrt
 
@@ -58,7 +58,7 @@ Der [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/)-Dienst n
 Verwenden Sie [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/), um nahezu in Echtzeit verfügbare Analysen zum Eingabedatenstrom über den [Azure Event Hub](#azure-event-hub)-Dienst bereitzustellen. Anschließend veröffentlichen Sie die Ergebnisse in einem [Power BI](https://powerbi.microsoft.com)-Dashboard und archivieren alle unformatierten eingehenden Ereignisse des [Azure Storage](https://azure.microsoft.com/services/storage/)-Diensts zur späteren Verarbeitung durch den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)-Dienst.
 
 ### <a name="hdinsight-custom-aggregation"></a>Benutzerdefinierte Aggregation mit HDInsight
-Führen Sie (von Azure Data Factory orchestrierte) [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skripts mit HDInsight aus, um die von der Azure Stream Analytics-Ressource archivierten Ereignisse zu aggregieren.
+Führen Sie (von Azure Data Factory orchestrierte) [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)-Skripts mit HDInsight aus, um die von der Azure Stream Analytics-Ressource archivierten Ereignisse zu aggregieren.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Treffen Sie mithilfe des (von Azure Data Factory orchestrierten) [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Diensts basierend auf den erhaltenen Daten Vorhersagen über die Restlebensdauer eines bestimmten Flugzeugtriebwerks. 
@@ -113,22 +113,22 @@ Dieser Abschnitt erläutert die erforderlichen [Pipelines und Aktivitäten](../.
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Zwei der Pipelines dieser Factory enthalten [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skripts, die zum Partitionieren und Aggregieren der Daten verwendet werden. Wenn angemerkt, werden die Skripte in dem bei der Einrichtung erstellten [Azure Storage](https://azure.microsoft.com/services/storage/)-Konto abgelegt. Dabei wird folgender Speicherort verwendet: maintenancesascript\\\\script\\\\hive\\\\ (oder https://[Lösungsname].blob.core.windows.net/maintenancesascript).
+Zwei der Pipelines dieser Factory enthalten [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)-Skripts, die zum Partitionieren und Aggregieren der Daten verwendet werden. Wenn angemerkt, werden die Skripte in dem bei der Einrichtung erstellten [Azure Storage](https://azure.microsoft.com/services/storage/)-Konto abgelegt. Dabei wird folgender Speicherort verwendet: maintenancesascript\\\\script\\\\hive\\\\ (oder https://[Lösungsname].blob.core.windows.net/maintenancesascript).
 
-Ähnlich wie bei [Azure Stream Analytics](#azure-stream-analytics-1)-Abfragen liegt den [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skripts ein implizites Wissen über das Format der eingehenden Daten zugrunde. Diese Skripts müssen daher gemäß Ihrem Datenformat geändert werden.
+Ähnlich wie bei [Azure Stream Analytics](#azure-stream-analytics-1)-Abfragen liegt den [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)-Skripts ein implizites Wissen über das Format der eingehenden Daten zugrunde. Diese Skripts müssen daher gemäß Ihrem Datenformat geändert werden.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Diese [Pipeline](../../data-factory/concepts-pipelines-activities.md) enthält eine einzige Aktivität: eine [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md)-Aktivität, die mithilfe von [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) ein [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skript ausführt, um die während des [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Auftrags in [Azure Storage](https://azure.microsoft.com/services/storage/) abgelegten Daten zu partitionieren.
+Diese [Pipeline](../../data-factory/concepts-pipelines-activities.md) enthält eine einzige Aktivität: eine [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md)-Aktivität, die mithilfe von [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) ein [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)-Skript ausführt, um die während des [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Auftrags in [Azure Storage](https://azure.microsoft.com/services/storage/) abgelegten Daten zu partitionieren.
 
-Das [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skript für diese Partitionierungsaufgabe heißt ***AggregateFlightInfo.hql***.
+Das [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)-Skript für diese Partitionierungsaufgabe heißt ***AggregateFlightInfo.hql***.
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 Diese [Pipeline](../../data-factory/concepts-pipelines-activities.md) enthält verschiedene Aktivitäten, deren Endergebnis die bewerteten Vorhersagen aus dem [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Experiment sind, das dieser Lösungsvorlage zugeordnet ist.
 
 Zu den enthaltenen Aktivitäten zählen:
 
-* Eine [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md)-Aktivität, die mithilfe von [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) ein [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skript ausführt, um Aggregationen und die Featureentwicklung durchzuführen. Beides wird für das [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Experiment benötigt.
-  Das [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skript für diese Partitionierungsaufgabe heißt ***PrepareMLInput.hql***.
+* Eine [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md)-Aktivität, die mithilfe von [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) ein [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)-Skript ausführt, um Aggregationen und die Featureentwicklung durchzuführen. Beides wird für das [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Experiment benötigt.
+  Das [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)-Skript für diese Partitionierungsaufgabe heißt ***PrepareMLInput.hql***.
 * Eine [Kopieraktivität](https://msdn.microsoft.com/library/azure/dn835035.aspx), die die Ergebnisse aus der [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md)-Aktivität in ein einzelnes [Azure Storage](https://azure.microsoft.com/services/storage/)-Blob verschiebt, auf das die [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx)-Aktivität zugreift.
 * Eine [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx)-Aktivität ruft das [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Experiment auf. Dies bewirkt, dass die Ergebnisse in einem einzelnen [Azure Storage](https://azure.microsoft.com/services/storage/)-Blob abgelegt werden.
 

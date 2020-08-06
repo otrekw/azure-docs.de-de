@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: c2a25632942c0c39a20fa0c7f51a1e8937bdd873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059382"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491968"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-Ereignisquellen
 
@@ -27,7 +27,7 @@ Ereignisse müssen als UTF-8-codierte JSON-Dateien gesendet werden.
 
 ## <a name="create-or-edit-event-sources"></a>Erstellen oder Bearbeiten von Ereignisquellen
 
-Die Ressource(n) Ihrer Ereignisquelle kann bzw. können sich im selben Azure-Abonnement wie Ihre Azure Time Series Insights Gen2-Umgebung oder in einem anderen Abonnement befinden. Mithilfe des [Azure-Portals](time-series-insights-update-create-environment.md#create-a-preview-payg-environment), der [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), von [ARM-Vorlagen](time-series-insights-manage-resources-using-azure-resource-manager-template.md) und der [REST-API](https://docs.microsoft.com/rest/api/time-series-insights/management/eventsources) können Sie die Ereignisquelle Ihrer Umgebung erstellen, bearbeiten oder entfernen.
+Die Ressource(n) Ihrer Ereignisquelle kann bzw. können sich im selben Azure-Abonnement wie Ihre Azure Time Series Insights Gen2-Umgebung oder in einem anderen Abonnement befinden. Mithilfe des [Azure-Portals](time-series-insights-update-create-environment.md#create-a-preview-payg-environment), der [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), von [ARM-Vorlagen](time-series-insights-manage-resources-using-azure-resource-manager-template.md) und der [REST-API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) können Sie die Ereignisquelle Ihrer Umgebung erstellen, bearbeiten oder entfernen.
 
 Wenn Sie eine Ereignisquelle verbinden, liest Ihre Azure Time Series Insights Gen2-Umgebung alle Ereignisse, die aktuell in Ihrem IoT Hub oder Event Hub gespeichert sind. Dabei wird mit dem ältesten Ereignis begonnen.
 

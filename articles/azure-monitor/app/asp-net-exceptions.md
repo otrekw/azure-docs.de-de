@@ -3,24 +3,24 @@ title: Diagnostizieren von Fehlern und Ausnahmen mit Azure Application Insights
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517211"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321359"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
-Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-monitor/app/app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
+Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](./app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
 
 ## <a name="set-up-exception-reporting"></a>Einrichten der Ausnahmeerfassung
 * So werden Ausnahmen von Ihrer Server-App gemeldet:
-  * Azure-Web-Apps: Fügen Sie die [Application Insights-Erweiterung](../../azure-monitor/app/azure-web-apps.md) hinzu.
-  * Azure-VMs und Azure-VM-Skalierungsgruppen – in IIS gehostete Apps: Fügen Sie die [Erweiterung zur Anwendungsüberwachung](../../azure-monitor/app/azure-vm-vmss-apps.md) hinzu.
-  * Installieren Sie das [Application Insights SDK](../../azure-monitor/app/asp-net.md) in Ihrer App.
-  * IIS-Webserver: Führen Sie den [Application Insights-Agent](../../azure-monitor/app/monitor-performance-live-website-now.md) aus, oder
+  * Azure-Web-Apps: Fügen Sie die [Application Insights-Erweiterung](./azure-web-apps.md) hinzu.
+  * Azure-VMs und Azure-VM-Skalierungsgruppen – in IIS gehostete Apps: Fügen Sie die [Erweiterung zur Anwendungsüberwachung](./azure-vm-vmss-apps.md) hinzu.
+  * Installieren Sie das [Application Insights SDK](./asp-net.md) in Ihrer App.
+  * IIS-Webserver: Führen Sie den [Application Insights-Agent](./monitor-performance-live-website-now.md) aus, oder
   * Java-Web-Apps: Aktivieren Sie den [Java-Agent](./java-in-process-agent.md).
-* Installieren Sie den [JavaScript-Codeausschnitt](../../azure-monitor/app/javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
+* Installieren Sie den [JavaScript-Codeausschnitt](./javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
 * In einigen Anwendungsframeworks oder bei bestimmten Einstellungen müssen Sie einige zusätzliche Schritte ausführen, um weitere Ausnahmen zu erfassen:
   * [Webformulare](#web-forms)
   * [MVC](#mvc)
@@ -70,29 +70,29 @@ Um spezifische Diagnosedaten für Ihre App zu erhalten, können Sie Code zum Sen
 
 Sie haben mehrere Möglichkeiten:
 
-* [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) wird normalerweise zum Überwachen von Verwendungsmustern verwendet, jedoch werden die damit gesendeten Daten auch unter den benutzerdefinierten Ereignissen in der Diagnosesuche angezeigt. Ereignisse werden benannt und können Zeichenfolgeneigenschaften und numerische Metriken aufweisen, nach denen Sie [Ihre Diagnosesuchvorgänge filtern](../../azure-monitor/app/diagnostic-search.md) können.
-* [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) können Sie längere Daten wie POST-Informationen senden.
+* [TrackEvent()](./api-custom-events-metrics.md#trackevent) wird normalerweise zum Überwachen von Verwendungsmustern verwendet, jedoch werden die damit gesendeten Daten auch unter den benutzerdefinierten Ereignissen in der Diagnosesuche angezeigt. Ereignisse werden benannt und können Zeichenfolgeneigenschaften und numerische Metriken aufweisen, nach denen Sie [Ihre Diagnosesuchvorgänge filtern](./diagnostic-search.md) können.
+* [TrackTrace()](./api-custom-events-metrics.md#tracktrace) können Sie längere Daten wie POST-Informationen senden.
 * [TrackException()](#exceptions) sendet Stapelüberwachungen. [Weitere Informationen über Ausnahmen](#exceptions).
 * Wenn Sie bereits ein Protokollierungsframework wie Log4Net oder NLog verwenden, können Sie [diese Protokolle erfassen](asp-net-trace-logs.md) und in der Diagnosesuche neben Anforderungs- und Ausnahmedaten anzeigen.
 
-Um diese Ereignisse anzuzeigen, öffnen Sie im Menü links die [Suche](../../azure-monitor/app/diagnostic-search.md), wählen Sie das Dropdownmenü **Ereignistypen** aus, und wählen Sie dann „Benutzerdefiniertes Ereignis“, „Ablaufverfolgung“ oder „Ausnahme“ aus.
+Um diese Ereignisse anzuzeigen, öffnen Sie im Menü links die [Suche](./diagnostic-search.md), wählen Sie das Dropdownmenü **Ereignistypen** aus, und wählen Sie dann „Benutzerdefiniertes Ereignis“, „Ablaufverfolgung“ oder „Ausnahme“ aus.
 
 ![Drillthrough](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> Wenn die Anwendung viele Telemetriedaten generiert, reduziert das adaptive Stichprobenmodul automatisch die an das Verwaltungsportal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die Teil des gleichen Vorgangs sind, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. [Erfahren Sie mehr über das Erstellen von Stichproben.](../../azure-monitor/app/sampling.md)
+> Wenn die Anwendung viele Telemetriedaten generiert, reduziert das adaptive Stichprobenmodul automatisch die an das Verwaltungsportal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die Teil des gleichen Vorgangs sind, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. [Erfahren Sie mehr über das Erstellen von Stichproben.](./sampling.md)
 >
 >
 
 ### <a name="how-to-see-request-post-data"></a>Anzeigen von POST-Daten von Anforderungen
 Anforderungsdetails enthalten nicht die Daten, die in einem POST-Aufruf an Ihre App gesendet wurden. So werden diese Daten gemeldet:
 
-* [Installieren Sie das SDK](../../azure-monitor/app/asp-net.md) in Ihrem Anwendungsprojekt.
-* Fügen Sie Code in die Anwendung ein, um [Microsoft.ApplicationInsights.TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) aufzurufen. Senden Sie die POST-Daten im "message"-Parameter. Es gibt eine Größenbeschränkung, daher sollten Sie versuchen, nur die notwendigen Daten zu senden.
+* [Installieren Sie das SDK](./asp-net.md) in Ihrem Anwendungsprojekt.
+* Fügen Sie Code in die Anwendung ein, um [Microsoft.ApplicationInsights.TrackTrace()](./api-custom-events-metrics.md#tracktrace) aufzurufen. Senden Sie die POST-Daten im "message"-Parameter. Es gibt eine Größenbeschränkung, daher sollten Sie versuchen, nur die notwendigen Daten zu senden.
 * Wenn Sie eine fehlerhafte Anforderung untersuchen, suchen Sie die zugehörigen Ablaufverfolgungen.
 
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
-Zunächst werden im Portal nicht alle Ausnahmen angezeigt, die in Ihrer App zu Fehlern führen. Sie sehen alle Browserausnahmen (bei Verwendung des [JavaScript-SDK](../../azure-monitor/app/javascript.md) in Ihren Webseiten). Die meisten Serverausnahmen werden jedoch von IIS abgefangen, und Sie müssen ein wenig Code schreiben, um sie anzuzeigen.
+Zunächst werden im Portal nicht alle Ausnahmen angezeigt, die in Ihrer App zu Fehlern führen. Sie sehen alle Browserausnahmen (bei Verwendung des [JavaScript-SDK](./javascript.md) in Ihren Webseiten). Die meisten Serverausnahmen werden jedoch von IIS abgefangen, und Sie müssen ein wenig Code schreiben, um sie anzuzeigen.
 
 Ihre Möglichkeiten:
 
@@ -152,7 +152,7 @@ Am einfachsten ist es, in einem Ausnahmehandler einen Aufruf in TrackException()
     End Try
 ```
 
-Die Eigenschaften und Messparameter sind optional, aber hilfreich zum [Filtern und Hinzufügen](../../azure-monitor/app/diagnostic-search.md) zusätzlicher Informationen. Wenn Sie z. B. eine Anwendung haben, die mehrere Spiele ausführen kann, können Sie alle im Zusammenhang mit einem bestimmten Spiel stehenden Ausnahmeberichte ermitteln. Sie können jedem Wörterbuch beliebig viele Elemente hinzufügen.
+Die Eigenschaften und Messparameter sind optional, aber hilfreich zum [Filtern und Hinzufügen](./diagnostic-search.md) zusätzlicher Informationen. Wenn Sie z. B. eine Anwendung haben, die mehrere Spiele ausführen kann, können Sie alle im Zusammenhang mit einem bestimmten Spiel stehenden Ausnahmeberichte ermitteln. Sie können jedem Wörterbuch beliebig viele Elemente hinzufügen.
 
 ## <a name="browser-exceptions"></a>Browserausnahmen
 Die meisten Browserausnahmen werden gemeldet.
@@ -482,7 +482,7 @@ Add the attribute to the service implementations:
 [Beispiel](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Ausnahmeleistungsindikatoren
-Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](../../azure-monitor/app/monitor-performance-live-website-now.md), können Sie ein Diagramm mit der von .NET gemessenen Ausnahmenrate abrufen. Dies enthält sowohl behandelte als auch nicht behandelte .NET-Ausnahmen.
+Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](./monitor-performance-live-website-now.md), können Sie ein Diagramm mit der von .NET gemessenen Ausnahmenrate abrufen. Dies enthält sowohl behandelte als auch nicht behandelte .NET-Ausnahmen.
 
 Öffnen Sie eine Metrik-Explorer-Registerkarte, fügen Sie ein neues Diagramm hinzu, und wählen Sie in den Leistungsindikatoren **Ausnahmerate** aus.
 
@@ -491,6 +491,7 @@ Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](../
 Dieser Wert unterscheidet sich von der Anzahl der „Ausnahmen“, die vom Application Insights-Portal durch Zählen von TrackException-Meldungen berechnet wird. Die Samplingintervalle sind unterschiedlich, und das SDK sendet keine TrackException-Meldungen für alle behandelten und nicht behandelten Ausnahmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen von REST, SQL und anderen Aufrufen von Abhängigkeiten](../../azure-monitor/app/asp-net-dependencies.md)
-* [Überwachen von Seitenladezeiten, Browserausnahmen und AJAX-Aufrufen](../../azure-monitor/app/javascript.md)
-* [Überwachen von Leistungsindikatoren](../../azure-monitor/app/performance-counters.md)
+* [Überwachen von REST, SQL und anderen Aufrufen von Abhängigkeiten](./asp-net-dependencies.md)
+* [Überwachen von Seitenladezeiten, Browserausnahmen und AJAX-Aufrufen](./javascript.md)
+* [Überwachen von Leistungsindikatoren](./performance-counters.md)
+

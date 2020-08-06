@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450014"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448403"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -84,7 +84,7 @@ Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Ber
 Azure-VMs sollen wie alle lokalen VMs vom Benutzer verwaltet werden. Azure führt bei ihnen keine Pushübertragungen von Windows-Updates durch. Sie müssen Ihre Updates für virtuelle Computer verwalten.
 
 **Bewährte Methode**: Halten Sie Ihre virtuellen Computer auf dem neuesten Stand.   
-**Detail**: Sie können die Lösung für die [Updateverwaltung](../../automation/automation-update-management.md) in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt werden. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
+**Detail**: Sie können die Lösung für die [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt werden. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
 
 Verwenden Sie für Computer, die mit der Updateverwaltung verwaltet werden, die folgenden Konfigurationen, um Bewertungen und Updatebereitstellungen durchzuführen:
 

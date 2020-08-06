@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 4a763a3bb4d46ba03808423d4d1283381c1174a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605392"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475599"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow – Debugmodus
 
@@ -25,7 +25,7 @@ Mit dem Debugmodus von Azure Data Factory Mapping Data Flow können Sie die Tran
 
 ![Schieberegler für Debugmodus](media/data-flow/debugbutton.png "Schieberegler für Debugmodus")
 
-Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Dauer von 60 Minuten gestartet. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Datenflussleistung](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime).
+Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Dauer von 60 Minuten gestartet. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Datenflussleistung](concepts-data-flow-performance.md#ir).
 
 ![Auswahl der Integration Runtime zum Debuggen](media/data-flow/debugbutton2.png "Auswahl der Integration Runtime zum Debuggen")
 

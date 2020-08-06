@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320169"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420531"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,6 @@ Sie können auch [Azure Private Link aktivieren](how-to-configure-private-link.m
 > [!WARNING]
 > 
 > Die Vorschauversion von Azure Machine Learning-Computeinstanzen wird in einem Arbeitsbereich, in dem Private Link aktiviert ist, nicht unterstützt.
->
-> Azure Machine Learning unterstützt die Verwendung von Azure Kubernetes Service nicht, wenn dafür Private Link aktiviert ist. Stattdessen können Sie Azure Kubernetes Service in einem virtuellen Netzwerk verwenden. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md).
-
 
 <a id="amlcompute"></a>
 
@@ -448,9 +445,6 @@ Führen Sie die folgenden Schritte aus, um Ihrem Arbeitsbereich in einem virtuel
 > Bevor Sie mit dem folgenden Verfahren beginnen, befolgen Sie die Anweisungen im Abschnitt „Voraussetzungen“ von [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites),und planen Sie die IP-Adressierung für Ihren Cluster.
 >
 > Die AKS-Instanz und das virtuelle Azure-Netzwerk müssen sich in derselben Region befinden. Wenn Sie die Azure Storage-Konten, die vom Arbeitsbereich verwendet werden, in einem virtuellen Netzwerk schützen, müssen sie sich im selben virtuellen Netzwerk befinden wie die AKS-Instanz.
-
-> [!WARNING]
-> Azure Machine Learning unterstützt die Verwendung von Azure Kubernetes Service nicht, wenn dafür Private Link aktiviert ist.
 
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an, und wählen Sie dann Ihr Abonnement und den Arbeitsbereich aus.
 

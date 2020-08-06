@@ -2,18 +2,19 @@
 title: 'Verwenden von Queue Storage mit Java: Azure Storage'
 description: Erfahren Sie, wie Sie Queue Storage zum Erstellen und Löschen von Warteschlangen sowie zum Einfügen, Abrufen und Löschen von Nachrichten mit der Azure Storage-Clientbibliothek für Java verwenden.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17e5a542bc951df5b40144490f05e41aec1a09e8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809248"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319421"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Verwenden des Warteschlangenspeichers mit Java
 

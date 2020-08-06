@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185244"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447834"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Verwalten von Runbooks in Azure Automation
 
@@ -226,7 +226,7 @@ So verwenden Sie ein benutzerdefiniertes Skript
 
 1. Erstellen Sie ein Automation-Konto, und rufen Sie eine Rolle als [Mitwirkender](automation-role-based-access-control.md) ab.
 2. [Verknüpfen Sie das Konto mit dem Azure-Arbeitsbereich](../security-center/security-center-enable-data-collection.md).
-3. Aktivieren Sie [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Updateverwaltung](automation-update-management.md) oder ein anderes Automation-Feature. 
+3. Aktivieren Sie [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Updateverwaltung](update-management/update-mgmt-overview.md) oder ein anderes Automation-Feature. 
 4. Auf einem Linux-Computer benötigen Sie dazu erhöhte Berechtigungen. Melden Sie sich an, um [Signaturüberprüfungen zu deaktivieren](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Testen eines Runbooks

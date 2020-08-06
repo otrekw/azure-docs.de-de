@@ -3,19 +3,19 @@ title: Webhook-Ereignisbereitstellung
 description: In diesem Artikel werden die Webhook-Ereignisbereitstellung und die Endpunktüberprüfung bei der Verwendung von Webhooks beschrieben.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118952"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461237"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der Event Grid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
 
 Wie viele andere Dienste, die Webhooks unterstützen, müssen Sie bei Event Grid nachweisen, das Sie im Besitz Ihres Webhookendpunkts sind. Vorher wird mit dem Bereitstellen von Ereignissen für diesen Endpunkt nicht begonnen. Diese Anforderung verhindert, dass ein böswilliger Benutzer Ihren Endpunkt mit Ereignissen überschwemmt. Wenn Sie einen der drei unten angegebenen Azure-Dienste verwenden, wird diese Überprüfung automatisch von der Azure-Infrastruktur durchgeführt:
 
-- Azure Logic Apps mit [Event Grid-Connector](https://docs.microsoft.com/connectors/azureeventgrid/)
+- Azure Logic Apps mit [Event Grid-Connector](/connectors/azureeventgrid/)
 - Azure Automation über [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
 - Azure Functions mit [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md)
 

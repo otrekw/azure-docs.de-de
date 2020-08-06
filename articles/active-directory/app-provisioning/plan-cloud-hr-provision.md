@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781598"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445560"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -404,7 +404,6 @@ In den folgenden Artikeln finden Sie Informationen zum Beheben von Problemen, di
 
 - [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](application-provisioning-config-problem.md)
 - [Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung](user-provisioning-sync-attributes-for-mapping.md)
-- [Die Benutzerbereitstellung für eine Azure AD-Kataloganwendung dauert Stunden oder länger](application-provisioning-when-will-provisioning-finish.md)
 - [Problem saving administrator credentials while configuring user provisioning to an Azure Active Directory Gallery application](application-provisioning-config-problem-storage-limit.md) (Probleme beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog)
 - [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](application-provisioning-config-problem-no-users-provisioned.md)
 - [Der falsche Satz von Benutzern wird für eine Azure AD-Kataloganwendung bereitgestellt](application-provisioning-config-problem-wrong-users-provisioned.md)

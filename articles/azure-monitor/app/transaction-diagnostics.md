@@ -4,12 +4,12 @@ description: Application Insights-End-to-End-Transaktionsdiagnose
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671136"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318911"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
@@ -64,7 +64,7 @@ Dieser reduzierbare Bereich zeigt die anderen Ergebnisse an, die den Filterkrite
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler und Momentaufnahmedebugger
 
-Der [Application Insights Profiler](../../azure-monitor/app/profiler.md) oder der [Momentaufnahmedebugger](snapshot-debugger.md) unterstützen die Diagnose von Leistungs- und Ausfallproblemen auf Codeebene. Dank dieser Benutzeroberfläche können Sie Profilerüberwachungen oder Momentaufnahmen von beliebigen Komponenten mit nur einem Klick anzeigen.
+Der [Application Insights Profiler](./profiler.md) oder der [Momentaufnahmedebugger](snapshot-debugger.md) unterstützen die Diagnose von Leistungs- und Ausfallproblemen auf Codeebene. Dank dieser Benutzeroberfläche können Sie Profilerüberwachungen oder Momentaufnahmen von beliebigen Komponenten mit nur einem Klick anzeigen.
 
 Setzen Sie sich bei Problemen mit dem Profiler unter **serviceprofilerhelp\@microsoft.com** mit uns in Verbindung.
 
@@ -95,3 +95,4 @@ Die Zeitachsen im Transaktionsdiagramm gleichen Uhrabweichungen aus. Sie können
 *Warum fehlen auf der neuen Benutzeroberfläche die meisten der zugehörigen Elementabfragen?*
 
 Dies ist beabsichtigt. Alle zugehörigen Elemente über alle Komponenten hinweg stehen bereits auf der linken Seite zur Verfügung (oberer und unterer Abschnitt). Die neue Benutzeroberfläche weist zwei zugehörige Elemente auf, die von der linken Seite nicht abgedeckt werden: die gesamte Telemetrie fünf Minuten vor und nach dem Ereignis und die Benutzerzeitachse.
+

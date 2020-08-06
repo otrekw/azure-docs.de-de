@@ -3,12 +3,12 @@ title: Integrieren von Azure DevTest Labs in Azure Pipelines
 description: Erfahren Sie, wie Sie Azure DevTest Labs in Ihre Azure Pipelines für Continuous Integration und Continuous Delivery integrieren
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 080577a74a1cb168453c6a027d77ae395072ccc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480574"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288919"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integrieren von Azure DevTest Labs in Ihre CI/CD-Pipeline in Azure Pipelines
 
@@ -218,5 +218,5 @@ Immer wenn Sie VMs benötigen, können Sie sie mithilfe des benutzerdefinierten 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informieren Sie sich über das [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).
 - Sehen Sie sich im [öffentlichen DevTest Labs-GitHub-Repository](https://github.com/Azure/azure-quickstart-templates) weitere Resource Manager-Schnellstartvorlagen für die DevTest Labs-Automatisierung an.
-- Sehen Sie sich bei Bedarf die Seite [Azure DevOps-Problembehandlung](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting) an.
+- Sehen Sie sich bei Bedarf die Seite [Azure DevOps-Problembehandlung](/azure/devops/pipelines/troubleshooting) an.
  

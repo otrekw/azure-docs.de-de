@@ -5,17 +5,17 @@ description: Hier erfahren Sie, wie Sie TensorFlow-Trainingsskripts mithilfe von
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9cc7c70f6db31568f671a0172c569f912cb677c3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1d7523f68f97250f71405f840a6a5e9fcf9fb2f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146680"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320866"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Bedarfsorientiertes Erstellen eines TensorFlow-Deep Learning-Modells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -133,6 +133,8 @@ except ComputeTargetException:
 
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 Weitere Informationen zu Computezielen finden Sie im Artikel [Was ist ein Computeziel?](concept-compute-target.md).
 

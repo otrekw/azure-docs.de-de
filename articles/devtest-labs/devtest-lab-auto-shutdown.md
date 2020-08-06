@@ -3,12 +3,12 @@ title: Verwalten von Richtlinien zum automatischen Herunterfahren in Azure DevTe
 description: Erfahren Sie, wie Sie eine Richtlinie zum automatischen Herunterfahren für ein Lab festlegen, sodass virtuelle Computer automatisch heruntergefahren werden, wenn sie nicht verwendet werden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287545"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Lab- und Compute-VMs in Azure DevTest Labs
 
@@ -71,7 +71,7 @@ Nachdem das automatische Herunterfahren eingerichtet wurde, werden 30 Minuten v
 - Überspringen des automatischen Herunterfahrens für dieses Mal
 - Das automatische Herunterfahren wird um eine oder zwei Stunden verschoben, damit sie auf dem virtuellen Computer weiterarbeiten können.
 
-Die Benachrichtigung wird über den konfigurierten Webhook-Endpunkt oder eine E-Mail-Adresse gesendet, die von den Labbesitzern in den Einstellungen für das automatische Herunterfahren angegeben wurde. Webhooks ermöglichen Ihnen das Erstellen oder Einrichten von Integrationen, die bestimmte Ereignisse abonnieren. Wenn ein solches Ereignis ausgelöst wird, sendet DevTest Labs eine HTTP POST-Nutzlast an die für den Webhook konfigurierte URL. Weitere Informationen zu Webhooks finden Sie unter [Erstellen eines Webhooks oder einer API-Azure-Funktion](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+Die Benachrichtigung wird über den konfigurierten Webhook-Endpunkt oder eine E-Mail-Adresse gesendet, die von den Labbesitzern in den Einstellungen für das automatische Herunterfahren angegeben wurde. Webhooks ermöglichen Ihnen das Erstellen oder Einrichten von Integrationen, die bestimmte Ereignisse abonnieren. Wenn ein solches Ereignis ausgelöst wird, sendet DevTest Labs eine HTTP POST-Nutzlast an die für den Webhook konfigurierte URL. Weitere Informationen zu Webhooks finden Sie unter [Erstellen eines Webhooks oder einer API-Azure-Funktion](../azure-functions/functions-bindings-http-webhook.md). 
 
 Es wird empfohlen, Webhooks zu verwenden, da sie von verschiedenen Apps (z. B. Slack, Azure Logic Apps) umfassend unterstützt werden und Ihnen ermöglichen, eigene Methoden zum Senden von Benachrichtigungen zu implementieren. Als Beispiel wird in diesem Artikel das Senden von Benachrichtigungen zum automatischen Herunterfahren mithilfe von Azure Logic Apps beschrieben. Sehen Sie sich zunächst kurz die grundlegenden Schritte zum Aktivieren von Benachrichtigungen zum automatischen Herunterfahren in Ihrem Lab an.   
 
@@ -211,4 +211,3 @@ Wenn Sie die Einstellung zum automatischen Herunterfahren aktualisieren, wird di
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Festlegen aller Richtlinien finden Sie unter [Definieren von Labrichtlinien in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
-

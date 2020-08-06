@@ -3,12 +3,12 @@ title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Do
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: cb47453140c7659ca2f5e6da2e40d9d78405f8e7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517092"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323127"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -153,13 +153,14 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 Die vollständige Azure CLI-Dokumentation zu diesem Befehl und Informationen zum Abrufen des Instrumentierungsschlüssels finden Sie in der [Azure CLI-Dokumentation](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
-* [Untersuchen von Metriken](../../azure-monitor/platform/metrics-charts.md)
+* [Diagnosesuche](./diagnostic-search.md)
+* [Untersuchen von Metriken](../platform/metrics-charts.md)
 * [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[api]: ./api-custom-events-metrics.md
+[diagnostic]: ./diagnostic-search.md
+[metrics]: ../platform/metrics-charts.md
+[start]: ./app-insights-overview.md
+

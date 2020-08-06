@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261369"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289431"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
@@ -24,7 +24,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierte
 
 * Empfangen von und Antworten auf HTTPS-Aufrufe aus einer anderen Logik-App.
 
-Der Anforderungstrigger unterstützt [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe ihrer Logik-App. Weitere Informationen zum Aktivieren dieser Authentifizierung finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps – Aktivieren der Azure AD OAuth-Authentifizierung](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+Der Anforderungstrigger unterstützt [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe ihrer Logik-App. Weitere Informationen zum Aktivieren dieser Authentifizierung finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps – Aktivieren der Azure AD OAuth-Authentifizierung](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +36,7 @@ Der Anforderungstrigger unterstützt [Azure Active Directory Open Authentication
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-* Eingehende Anrufe unterstützen *nur* Transport Layer Security 1.2 (TLS). Wenn TLS-Handshakefehler auftreten, sollten Sie sicherstellen, dass Sie TLS 1.2 verwenden. Weitere Informationen finden Sie unter [Lösen des TLS 1.0-Problems](https://docs.microsoft.com/security/solving-tls1-problem). Ausgehende Aufrufe unterstützen TLS 1.0, 1.1 und 1.2, je nach Funktionalität des Zielendpunkts.
+* Eingehende Anrufe unterstützen *nur* Transport Layer Security 1.2 (TLS). Wenn TLS-Handshakefehler auftreten, sollten Sie sicherstellen, dass Sie TLS 1.2 verwenden. Weitere Informationen finden Sie unter [Lösen des TLS 1.0-Problems](/security/solving-tls1-problem). Ausgehende Aufrufe unterstützen TLS 1.0, 1.1 und 1.2, je nach Funktionalität des Zielendpunkts.
 
 * Eingehende Anrufe unterstützen die folgenden Cipher Suites:
 
@@ -287,3 +287,4 @@ Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../log
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Connectors für Logic Apps](../connectors/apis-list.md)
+

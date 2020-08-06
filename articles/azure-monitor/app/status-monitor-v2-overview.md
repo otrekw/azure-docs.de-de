@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318945"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Bereitstellen des Azure Monitor Application Insights-Agents für lokale Server
 
@@ -76,13 +76,14 @@ Jede dieser Optionen wird in den [ausführlichen Anweisungen](status-monitor-v2-
 
 Anzeigen der Telemetrie:
 
-* [Untersuchen Sie Metriken](../../azure-monitor/platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
-* [Durchsuchen Sie Ereignisse und Protokolle](../../azure-monitor/app/diagnostic-search.md), um Probleme zu diagnostizieren.
+* [Untersuchen Sie Metriken](../platform/metrics-charts.md) zum Überwachen der Leistung und Nutzung.
+* [Durchsuchen Sie Ereignisse und Protokolle](./diagnostic-search.md), um Probleme zu diagnostizieren.
 * Verwenden Sie [Analytics](../log-query/log-query-overview.md) für erweiterte Abfragen.
-* [Erstellen Sie Dashboards](../../azure-monitor/app/overview-dashboard.md).
+* [Erstellen Sie Dashboards](./overview-dashboard.md).
 
 Hinzufügen weiterer Telemetrieelemente:
 
 * [Erstellen Sie Webtests](monitor-web-app-availability.md), um sicherzustellen, dass Ihre Website live bleibt.
-* [Fügen Sie Webclient-Telemetriedaten hinzu](../../azure-monitor/app/javascript.md), um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe zu aktivieren.
-* [Fügen Sie Ihrem Code das Application Insights SDK hinzu](../../azure-monitor/app/asp-net.md), um Ablaufverfolgungs- und Protokollaufrufe einfügen zu können.
+* [Fügen Sie Webclient-Telemetriedaten hinzu](./javascript.md), um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe zu aktivieren.
+* [Fügen Sie Ihrem Code das Application Insights SDK hinzu](./asp-net.md), um Ablaufverfolgungs- und Protokollaufrufe einfügen zu können.
+

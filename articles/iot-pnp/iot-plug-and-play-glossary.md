@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337312"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475463"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glossar für IoT Plug & Play (Vorschau)
 
@@ -98,10 +98,6 @@ Ein IoT Plug & Play-Gerät ist normalerweise ein kleines, eigenständiges Comp
 ## <a name="iot-plug-and-play-conventions"></a>IoT Plug & Play-Konventionen
 
 Von IoT Plug & Play-[Geräten](#iot-plug-and-play-device) wird erwartet, dass sie beim Datenaustausch mit einer Lösung eine Reihe von [Konventionen](concepts-convention.md) einhalten.
-
-## <a name="model-discovery"></a>Modellermittlung
-
-Wenn ein [IoT Plug & Play-Gerät](#iot-plug-and-play-device) eine Verbindung mit einer IoT-Lösung herstellt, kann die Lösung die Funktionen des Geräts ermitteln, indem sie das [Gerätemodell](#device-model) sucht. Die Lösung kann ein Gerätemodell in einem [Modellrepository](#model-repository) oder an einem anderen Speicherort finden.
 
 ## <a name="model-id"></a>Modell-ID
 

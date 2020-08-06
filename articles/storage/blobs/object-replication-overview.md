@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 097b3c71b01a8ad0e930d7aa0d7be46a1e835e1a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888065"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495164"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Objektreplikation für Blockblobs (Vorschau)
 
@@ -63,6 +64,8 @@ Die Objektreplikation wird nur für Speicherkonten vom Typ „Universell V2“ u
 - Frankreich, Mitte
 - Kanada, Osten
 - Kanada, Mitte
+- USA (Ost 2)
+- USA, Mitte
 
 Sowohl das Quell- als auch das Zielkonto müssen sich in einer dieser Regionen befinden, um die Objektreplikation verwenden zu können. Die Konten können sich in zwei verschiedenen Regionen befinden.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499544"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317993"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (veraltet)
 
@@ -41,9 +41,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |---|---|---|
-| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
-| [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein    | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
-| [SCOM-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
+| [Windows-Agents](../platform/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
+| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
+| [SCOM-Verwaltungsgruppe](../platform/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
 | [Azure-Speicherkonto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -55,7 +55,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 Führen Sie den folgenden Schritt aus, um die Lösung „Kapazität und Leistung“ Ihrem Arbeitsbereich hinzuzufügen.
 
-- Fügen Sie die Lösung „Kapazitäts- und Leistungsdiagnose“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Verfahrens Ihrem Log Analytics-Arbeitsbereich hinzu.
+- Fügen Sie die Lösung „Kapazitäts- und Leistungsdiagnose“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](./solutions.md) beschriebenen Verfahrens Ihrem Log Analytics-Arbeitsbereich hinzu.
 
 ## <a name="management-packs"></a>Management Packs
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Wenn die Lösung „Kapazität und Leistung“ aktualisiert wird, ändert sich die Versionsnummer.
 
-Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../../azure-monitor/platform/om-agents.md).
+Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../platform/om-agents.md).
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
@@ -129,4 +129,5 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapa
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die [Protokollsuche in Log Analytics](../../azure-monitor/log-query/log-query-overview.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
+* Verwenden Sie die [Protokollsuche in Log Analytics](../log-query/log-query-overview.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
+

@@ -3,20 +3,20 @@ title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Do
 description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 472d7d26c8a478f521159a44959d7e0a5d749e0d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321376"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
-Eine *Abhängigkeit* ist eine Komponente, die von Ihrer Anwendung aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](../../azure-monitor/app/app-insights-overview.md) misst Sie die Dauer von Abhängigkeitsaufrufen, gibt an, ob sie durchgeführt werden können, und stellt zusätzliche Informationen wie den Namen der Abhängigkeit etc. bereit. Sie können bestimmte Abhängigkeitsaufrufe untersuchen und sie mit Anforderungen und Ausnahmen in Zusammenhang setzen.
+Eine *Abhängigkeit* ist eine Komponente, die von Ihrer Anwendung aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](./app-insights-overview.md) misst Sie die Dauer von Abhängigkeitsaufrufen, gibt an, ob sie durchgeführt werden können, und stellt zusätzliche Informationen wie den Namen der Abhängigkeit etc. bereit. Sie können bestimmte Abhängigkeitsaufrufe untersuchen und sie mit Anforderungen und Ausnahmen in Zusammenhang setzen.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch nachverfolgte Abhängigkeiten
 
-Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTrackingTelemetryModule` geliefert. Hierbei handelt es sich um ein Telemetriemodul, das Abhängigkeiten automatisch erfasst. Diese Abhängigkeitserfassung ist für [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)- und [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)-Anwendungen automatisch aktiviert, wenn diese gemäß der verknüpften offiziellen Dokumentation konfiguriert werden. `DependencyTrackingTelemetryModule` ist im Lieferumfang [dieses](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-Pakets enthalten und wird bei Verwendung eines der NuGet-Pakete `Microsoft.ApplicationInsights.Web` oder `Microsoft.ApplicationInsights.AspNetCore` automatisch geladen.
+Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTrackingTelemetryModule` geliefert. Hierbei handelt es sich um ein Telemetriemodul, das Abhängigkeiten automatisch erfasst. Diese Abhängigkeitserfassung ist für [ASP.NET](./asp-net.md)- und [ASP.NET Core](./asp-net-core.md)-Anwendungen automatisch aktiviert, wenn diese gemäß der verknüpften offiziellen Dokumentation konfiguriert werden. `DependencyTrackingTelemetryModule` ist im Lieferumfang [dieses](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-Pakets enthalten und wird bei Verwendung eines der NuGet-Pakete `Microsoft.ApplicationInsights.Web` oder `Microsoft.ApplicationInsights.AspNetCore` automatisch geladen.
 
  Folgende Abhängigkeiten werden von `DependencyTrackingTelemetryModule` derzeit automatisch verfolgt:
 
@@ -30,7 +30,7 @@ Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTracking
 |[ServiceBus-Client-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Version 3.0.0 und höher. |
 |Azure Cosmos DB | Wird nur dann automatisch nachverfolgt, wenn HTTP/HTTPS verwendet wird. Der TCP-Modus wird von Application Insights nicht erfasst. |
 
-Wenn eine Abhängigkeit fehlt oder ein anderes SDK verwendet wird, stellen Sie sicher, dass sie in der Liste [automatisch erfasster Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) enthalten ist. Falls Ihre Abhängigkeit nicht automatisch erfasst wird, können Sie sie mit einem [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) trotzdem manuell nachverfolgen.
+Wenn eine Abhängigkeit fehlt oder ein anderes SDK verwendet wird, stellen Sie sicher, dass sie in der Liste [automatisch erfasster Abhängigkeiten](./auto-collect-dependencies.md) enthalten ist. Falls Ihre Abhängigkeit nicht automatisch erfasst wird, können Sie sie mit einem [TrackDependency-Aufruf](./api-custom-events-metrics.md#trackdependency) trotzdem manuell nachverfolgen.
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Einrichten einer automatischen Abhängigkeitsüberwachung in Konsolen-Apps
 
@@ -41,7 +41,7 @@ Um Abhängigkeiten automatisch über .NET-Konsolen-Apps nachzuverfolgen, install
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-Für .NET Core-Konsolen-Apps wird „TelemetryConfiguration.Active“ nicht mehr verwendet. Weitere Informationen finden Sie in der [Dokumentation zum Workerdienst](https://docs.microsoft.com/azure/azure-monitor/app/worker-service) und in der [Dokumentation zur ASP.NET Core-Überwachung](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
+Für .NET Core-Konsolen-Apps wird „TelemetryConfiguration.Active“ nicht mehr verwendet. Weitere Informationen finden Sie in der [Dokumentation zum Workerdienst](./worker-service.md) und in der [Dokumentation zur ASP.NET Core-Überwachung](./asp-net-core.md)
 
 ### <a name="how-automatic-dependency-monitoring-works"></a>Funktionsweise der automatischen Abhängigkeitsüberwachung
 
@@ -101,7 +101,7 @@ Für ASP.NET-Anwendungen wird der vollständige SQL-Abfragetext mithilfe der Byt
 | --- | --- |
 | Azure-Web-App |In der Systemsteuerung Ihrer Web-App [öffnen Sie das Application Insights-Blatt](../../azure-monitor/app/azure-web-apps.md), und aktivieren Sie SQL-Befehle unter .NET. |
 | IIS-Server (Azure-VM, lokal usw.) | Verwenden Sie entweder das NuGet-Paket [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) oder das Statusmonitor-PowerShell-Modul, um die [Instrumentierungs-Engine zu installieren](../../azure-monitor/app/status-monitor-v2-api-reference.md) und IIS neu zu starten. |
-| Azure Cloud Service | Hinzufügen der [Starttask zum Installieren des Statusmonitors](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Ihre App sollte durch die Installation der NuGet-Pakete für [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)- oder [ASP.NET Core-Anwendungen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) zur Buildzeit in das ApplicationInsights-SDK integriert werden |
+| Azure Cloud Service | Hinzufügen der [Starttask zum Installieren des Statusmonitors](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Ihre App sollte durch die Installation der NuGet-Pakete für [ASP.NET](./asp-net.md)- oder [ASP.NET Core-Anwendungen](./asp-net-core.md) zur Buildzeit in das ApplicationInsights-SDK integriert werden |
 | IIS Express | Verwenden Sie das NuGet-Paket [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient).
 
 Zusätzlich zu den oben genannten plattformspezifischen Schritten ist eine **explizite Aktivierung erforderlich, um die SQL-Befehlssammlung zu aktivieren**, indem Sie die Datei „applicationInsights.config“ wie folgt ändern:
@@ -202,6 +202,7 @@ Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md)
-* [Daten zu Seiten und Benutzern](../../azure-monitor/app/javascript.md)
-* [Verfügbarkeit](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Ausnahmen](./asp-net-exceptions.md)
+* [Daten zu Seiten und Benutzern](./javascript.md)
+* [Verfügbarkeit](./monitor-web-app-availability.md)
+

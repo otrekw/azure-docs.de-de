@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Red Hat OpenShift, Version 3.x mit Azure Monitor
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift, Version 3 und höher gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e04ef42971756cffe0906e1ddfb8406e876588bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317976"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift, Version 3 mit Azure Monitor für Container
 
@@ -21,7 +21,7 @@ Azure Monitor für Container bietet umfassende Überwachungsfunktionen für Azur
 Azure Monitor für Container kann für neue oder mindestens eine vorhandene Bereitstellung von Azure Red Hat OpenShift mit den folgenden unterstützten Methoden aktiviert werden:
 
 - für einen vorhandenen Cluster im Azure-Portal oder mit einer Azure Resource Manager-Vorlage.
-- für einen neuen Cluster mit einer Azure Resource Manager-Vorlage oder beim Erstellen eines neuen Clusters mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
+- für einen neuen Cluster mit einer Azure Resource Manager-Vorlage oder beim Erstellen eines neuen Clusters mithilfe der [Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Unterstützte und nicht unterstützte Funktionen
 
@@ -106,7 +106,7 @@ Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vert
 
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen die Azure CLI-Version 2.0.65 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen die Azure CLI-Version 2.0.65 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 1. Laden Sie die Azure Resource Manager-Vorlage und Parameterdatei herunter, und speichern Sie diese in einem lokalen Ordner, um mithilfe der folgenden Befehle einen Cluster mit dem Überwachungs-Add-On zu erstellen:
 
@@ -173,7 +173,7 @@ Führen Sie die folgenden Schritte aus, um die Überwachung eines in Azure berei
     ![Aktivieren der Überwachung für nicht überwachte Cluster](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus dem Cluster erstellen möchten, befolgen Sie die Anweisungen in [Erstellen eines Log Analytics-Arbeitsbereichs](../../azure-monitor/learn/quick-create-workspace.md). Achten Sie darauf, dass Sie den Arbeitsbereich in demselben Abonnement erstellen, in dem der Azure RedHat OpenShift-Cluster bereitgestellt wird.
+    >Wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus dem Cluster erstellen möchten, befolgen Sie die Anweisungen in [Erstellen eines Log Analytics-Arbeitsbereichs](../learn/quick-create-workspace.md). Achten Sie darauf, dass Sie den Arbeitsbereich in demselben Abonnement erstellen, in dem der Azure RedHat OpenShift-Cluster bereitgestellt wird.
 
 Nach dem Aktivieren der Überwachung kann es ca. 15 Minuten dauern, bis Integritätsmetriken für den Cluster angezeigt werden.
 
@@ -193,7 +193,7 @@ Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vert
 
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen die Azure CLI-Version 2.0.65 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen die Azure CLI-Version 2.0.65 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 1. Laden Sie die Vorlage und Parameterdatei herunter, um mithilfe der folgenden Befehle Ihren Cluster mit dem Überwachungs-Add-On zu aktualisieren:
 
@@ -243,4 +243,5 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 
 - Weitere Informationen zum Auslesen und Analysieren von Prometheus-Metriken aus Ihrem Cluster finden Sie unter [Konfigurieren des Abrufs von Prometheus-Metriken](container-insights-prometheus-integration.md).
 
-- Informationen zum Beenden der Überwachung Ihres Clusters mit Azure Monitor für Container finden Sie unter [Beenden der Überwachung von Azure Red Hat OpenShift-Clustern](container-insights-optout-openshift.md).
+- Informationen zum Beenden der Überwachung Ihres Clusters mit Azure Monitor für Container finden Sie unter [Beenden der Überwachung von Azure Red Hat OpenShift-Clustern](./container-insights-optout-openshift-v3.md).
+

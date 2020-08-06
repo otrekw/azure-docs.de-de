@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684647"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318061"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-Netzwerküberwachungslösungen in Azure Monitor
 
@@ -24,18 +24,18 @@ Azure Monitor umfasst die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
     * Azure Application Gateway-Protokolle
     * Azure Application Gateway-Metriken
 * Lösungen zum Überwachen und Überprüfen der Netzwerkaktivität in Ihrem Cloudnetzwerk
-    * [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * [Traffic Analytics](../../networking/network-monitoring-overview.md#traffic-analytics) 
     * Azure-Netzwerksicherheitsgruppen-Analyse
 
 ## <a name="network-performance-monitor-npm"></a>Netzwerkleistungsmonitor (NPM)
 
-Die [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview)-Verwaltungslösung ist eine Lösung zur Netzwerküberwachung, die die Integrität, Verfügbarkeit und Erreichbarkeit von Netzwerken überwacht.  Sie dient zur Überwachung der Konnektivität zwischen:
+Die [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md)-Verwaltungslösung ist eine Lösung zur Netzwerküberwachung, die die Integrität, Verfügbarkeit und Erreichbarkeit von Netzwerken überwacht.  Sie dient zur Überwachung der Konnektivität zwischen:
 
 * Public Cloud und lokaler Umgebung
 * Rechenzentren und Benutzerstandorten (Zweigstellen)
 * Subnetzen, die verschiedene Ebenen einer Multi-Tier-Anwendung hosten.
 
-Weitere Informationen finden Sie unter [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
+Weitere Informationen finden Sie unter [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway- und Netzwerksicherheitsgruppen-Analysen
 Verwendung der Lösungen:
@@ -79,7 +79,7 @@ Für Anwendungsgateways werden folgende Metriken unterstützt:
 ### <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Application Gateway-Analyselösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie die Azure Application Gateway-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) oder anhand des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses.
+1. Aktivieren Sie die Azure Application Gateway-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) oder anhand des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](./solutions.md) beschriebenen Prozesses.
 2. Aktivieren Sie die Diagnoseprotokollierung für die [Application Gateways](../../application-gateway/application-gateway-diagnostics.md), die Sie überwachen möchten.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Aktivieren der Azure Application Gateway-Diagnose im Portal
@@ -150,7 +150,7 @@ Die folgenden Protokolle werden für Netzwerksicherheitsgruppen unterstützt:
 ### <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Networking Analytics-Lösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie die Azure-Analyselösung für Netzwerksicherheitsgruppen mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Verfahrens.
+1. Aktivieren Sie die Azure-Analyselösung für Netzwerksicherheitsgruppen mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](./solutions.md) beschriebenen Verfahrens.
 2. Aktivieren Sie die Diagnoseprotokollierung für die [Netzwerksicherheitsgruppen](../../virtual-network/virtual-network-nsg-manage-log.md)-Ressourcen, die Sie überwachen möchten.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Aktivieren der Diagnose für die Azure-Netzwerksicherheitsgruppe im Portal
@@ -230,3 +230,4 @@ Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um detaillierte Azure-Diagnosedaten anzuzeigen.
+

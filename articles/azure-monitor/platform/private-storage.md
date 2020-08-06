@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318894"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Kundeneigene Speicherkonten für die Protokollerfassung in Azure Monitor
 
@@ -236,3 +236,4 @@ Wenn das registrierte Speicherkonto Ihres Arbeitsbereichs sich in einer anderen 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Einrichten einer Private Link-Instanz finden Sie unter [Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor](private-link-security.md).
+

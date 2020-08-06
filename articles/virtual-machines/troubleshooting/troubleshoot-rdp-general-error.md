@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985805"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439246"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Beheben eines allgemeinen RDP-Fehlers auf einer Azure-VM
 
@@ -81,7 +81,7 @@ Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffene
 1. Überprüfen Sie, ob das RDP durch Gruppenrichtlinien deaktiviert wurde.
 
     ```
-    REM Get the group policy 
+    REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
     Wenn die Gruppenrichtlinie besagt, dass RDP deaktiviert ist (fDenyTSConnections-Wert ist 0x1), führen Sie den folgenden Befehl aus, um den TermService-Dienst zu aktivieren. Wenn der Registrierungsschlüssel nicht gefunden wird, gibt es keine Gruppenrichtlinie, die zum Deaktivieren des RDP konfiguriert ist. Sie können mit dem nächsten Schritt fortfahren.
@@ -183,7 +183,7 @@ Weitere Informationen finden Sie unter [Häufiges Trennen der Remotedesktopverbi
 
 #### <a name="step-1-turn-on-remote-desktop"></a>Schritt 1: Aktivieren des Remotedesktops
 
-1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md).
 2. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 3. Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 4. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.

@@ -2,22 +2,23 @@
 title: Veröffentlichen einer Funktion für Azure mithilfe von Java und Gradle
 description: Hier erfahren Sie, wie Sie mit Java und Gradle eine einfache Funktion mit HTTP-Trigger erstellen und für Azure veröffentlichen.
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996641"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322175"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Erstellen und Veröffentlichen einer Funktion für Azure mithilfe von Java und Gradle
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Gradle-Befehlszeilentool ein Java-Funktionsprojekt erstellen und für Azure Functions veröffentlichen. Der fertige Funktionscode wird dann in Azure im Rahmen eines [serverlosen Hostingplans](functions-scale.md#consumption-plan) ausgeführt und durch eine HTTP-Anforderung ausgelöst. 
 
 > [!NOTE]
-> Sollte Gradle nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) für Java-Entwickler zur Verfügung.
+> Sollte Gradle nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java) für Java-Entwickler zur Verfügung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

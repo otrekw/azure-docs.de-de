@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289967"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Zeitreihenmodell in Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt das Zeitreihenmodell sowie die zugehörigen Funktionen
 > [!TIP]
 >
 > * Wechseln Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples), um ein Livebeispiel für ein Zeitreihenmodell zu sehen.
-> * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](time-series-insights-update-how-to-tsm.md) mithilfe des Azure Time Series Insights Gen2-Explorers.
+> * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](/azure/time-series-insights/how-to-edit-your-model) mithilfe des Azure Time Series Insights Gen2-Explorers.
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -75,7 +75,7 @@ Diese Komponenten werden kombiniert, um ein Zeitreihenmodell anzugeben und Ihre 
 
 [![Übersicht über Zeitreihenmodelldiagramm](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Ein Zeitreihenmodell kann über die Schnittstelle [Azure Time Series Insights Gen2-Explorer](time-series-insights-update-how-to-tsm.md) erstellt und verwaltet werden. Die Einstellungen eines Zeitreihenmodells können über die [Modelleinstellungs-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) verwaltet werden.
+Ein Zeitreihenmodell kann über die Schnittstelle [Azure Time Series Insights Gen2-Explorer](/azure/time-series-insights/concepts-model-overview) erstellt und verwaltet werden. Die Einstellungen eines Zeitreihenmodells können über die [Modelleinstellungs-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) verwaltet werden.
 
 ## <a name="time-series-model-instances"></a>Zeitreihenmodellinstanzen
 
@@ -283,12 +283,13 @@ Typen entsprechen dem folgenden JSON-Beispiel:
   ]
 }
 ```
+
 Zeitreihenmodelltypen können viele Variablen haben, die Formel- und Berechnungsregeln bei Ereignissen angeben. Weitere Informationen finden Sie unter [Definieren von Zeitreihenmodellvariablen](./concepts-variables.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Bearbeiten des Modells über APIs finden Sie in der Referenzdokumentation zum [Zeitreihenmodell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
+* Weitere Informationen zum Bearbeiten des Modells über APIs finden Sie in der Referenzdokumentation zum [Zeitreihenmodell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
 
-- Untersuchen Sie die Formeln und Berechnungen, die Sie mit [Zeitreihenmodellvariablen](./concepts-variables.md) erstellen können.
+* Untersuchen Sie die Formeln und Berechnungen, die Sie mit [Zeitreihenmodellvariablen](./concepts-variables.md) erstellen können.
 
-- Weitere Informationen zum [Abfragen von Daten](concepts-query-overview.md) in Azure Time Series Insights Gen2
+* Weitere Informationen zum [Abfragen von Daten](concepts-query-overview.md) in Azure Time Series Insights Gen2

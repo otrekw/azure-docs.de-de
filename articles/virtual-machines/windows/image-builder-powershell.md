@@ -7,12 +7,13 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975859"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499431"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Vorschau: Erstellen einer Windows-VM mit Azure Image Builder unter Verwendung von PowerShell
 
@@ -25,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie mit dem PowerShell-Modul von Azure VM Im
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel das Az PowerShell-Modul installieren und mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Ihrem Azure-Konto herstellen. Weitere Informationen zum Installieren des Az PowerShell-Moduls finden Sie unter [Installieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel das Az PowerShell-Modul installieren und mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Ihrem Azure-Konto herstellen. Weitere Informationen zum Installieren des Az PowerShell-Moduls finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Solange sich die PowerShell-Module von **Az.ImageBuilder** und **Az.ManagedServiceIdentity** noch in der Vorschauphase befinden, müssen Sie sie separat mithilfe des Cmdlets `Install-Module` mit dem Parameter `AllowPrerelease` installieren. Sobald diese PowerShell-Module allgemein verfügbar sind, werden sie in künftige Releases des Az PowerShell-Moduls integriert und in Azure Cloud Shell nativ zur Verfügung gestellt.
@@ -36,7 +37,7 @@ Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel d
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie das entsprechende Abonnement auswählen, in dem die Ressourcen fakturiert werden sollen. Wählen Sie mit dem Cmdlet [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) ein bestimmtes Abonnement aus.
+Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie das entsprechende Abonnement auswählen, in dem die Ressourcen fakturiert werden sollen. Wählen Sie mit dem Cmdlet [Set-AzContext](/powershell/module/az.accounts/set-azcontext) ein bestimmtes Abonnement aus.
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -100,7 +101,7 @@ Write-Output $subscriptionID
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Cmdlet [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen als Gruppe bereitgestellt und verwaltet werden.
+Erstellen Sie mit dem Cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](../../azure-resource-manager/management/overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen als Gruppe bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe basierend auf dem Namen in der Variablen `$imageResourceGroup` in der Region erstellt, die in der Variablen `$location` angegeben ist. Diese Ressourcengruppe wird verwendet, um das Artefakt und Image der Imagekonfigurationsvorlage zu speichern.
 
@@ -168,7 +169,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> Bei Anzeige der Fehlermeldung „_New-AzRoleDefinition: Das Limit für Rollendefinitionen ist überschritten. Es können keine weiteren Rollendefinitionen erstellt werden._ “, beachten Sie die Informationen unter [Problembehandlung für Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting).
+> Bei Anzeige der Fehlermeldung „_New-AzRoleDefinition: Das Limit für Rollendefinitionen ist überschritten. Es können keine weiteren Rollendefinitionen erstellt werden._ “, beachten Sie die Informationen unter [Problembehandlung für Azure RBAC](../../role-based-access-control/troubleshooting.md).
 
 ## <a name="create-a-shared-image-gallery"></a>Erstellen einer Shared Image Gallery-Instanz
 
@@ -200,7 +201,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>Erstellen eines Images
 
-Erstellen Sie ein Azure Image Builder-Quellobjekt. Gültige Parameterwerte finden Sie unter [Suchen nach Windows-VM-Images im Azure Marketplace mit Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage).
+Erstellen Sie ein Azure Image Builder-Quellobjekt. Gültige Parameterwerte finden Sie unter [Suchen nach Windows-VM-Images im Azure Marketplace mit Azure PowerShell](./cli-ps-findimage.md).
 
 ```azurepowershell-interactive
 $SrcObjParams = @{

@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 53745baa3883108295a76ec299e8347d68419336
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386094"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461356"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js-SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -409,17 +410,8 @@ Nicht immer die sichtbarsten Änderungen, aber sie helfen unserem Team, schnelle
 * Allgemeine Verfügbarkeit (GA) des SDK
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
-Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
-Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
-
-Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
-
-> [!WARNING]
-> Alle Versionen **1.x** des Node Client SDK für SQL-API werden am **30. August 2020** eingestellt. Dies betrifft nur das clientseitige Node SDK und wirkt sich nicht auf serverseitige Skripts aus (gespeicherte Prozeduren, Trigger und UDFs).
-> 
->
-<br/>
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |

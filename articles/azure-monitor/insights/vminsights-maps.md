@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320509"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Verwenden des Zuordnungsfeatures in Azure Monitor für VMs zum Analysieren von Anwendungskomponenten
 In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Sie können die VMs auf zwei Arten überwachen. Entweder rufen Sie die Zuordnung direkt über eine VM oder über Azure Monitor auf, um sich die Komponenten in den verschiedenen VM-Gruppen anzusehen. In diesem Artikel werden die beiden Anzeigemethoden beschrieben. Außerdem wird erklärt, wie Sie das Zuordnungsfeature verwenden. 
@@ -49,7 +49,7 @@ Damit das Zuordnungsfeature die relevanten Warnungen anzeigen kann, müssen Sie 
 - Beziehen Sie eine Klausel zur Gruppierung der Warnungen nach Computer ein (z. B. **by Computer interval 1 minute**).
 - Legen Sie als Auslöser der Warnung eine Metrik fest.
 
-Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../../azure-monitor/platform/alerts-overview.md).
+Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../platform/alerts-overview.md).
 
 In der **Legende** oben rechts werden die Symbole und die Rollen in einer Zuordnung beschrieben. Mit den Zoomsteuerelementen unten rechts können Sie sich diese Zuordnung genauer ansehen und darin navigieren. Dabei haben Sie die Möglichkeit, die Zoomstufe einzustellen und die Größe der Zuordnung an die Seite anzupassen.  
 
@@ -128,10 +128,11 @@ In Azure Monitor stellt das Zuordnungsfeature eine globale Sicht Ihrer VMs und d
 
 Wählen Sie oben auf der Seite mit dem Auswahlelement **Arbeitsbereich** einen Arbeitsbereich aus. Wenn Sie über mehrere Log Analytics-Arbeitsbereiche verfügen, wählen Sie denjenigen aus, der für die Lösung aktiviert ist und an den VMs Daten übermitteln. 
 
-Mit dem Auswahlelement **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../../azure-monitor/platform/computer-groups.md) und VM-Skalierungsgruppen mit Computern angezeigt, die sich auf den ausgewählten Arbeitsbereich beziehen. Ihre Auswahl gilt nur für das Zuordnungsfeature und nicht für das Integritäts- oder Leistungsfeature.
+Mit dem Auswahlelement **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../platform/computer-groups.md) und VM-Skalierungsgruppen mit Computern angezeigt, die sich auf den ausgewählten Arbeitsbereich beziehen. Ihre Auswahl gilt nur für das Zuordnungsfeature und nicht für das Integritäts- oder Leistungsfeature.
 
 Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange**, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wie Sie Engpässe ermitteln, die Leistung überprüfen und die Gesamtauslastung Ihrer VMs nachvollziehen können, erfahren Sie unter [Anzeigen des Leistungsstatus in Azure Monitor für VMs](vminsights-performance.md). 
+

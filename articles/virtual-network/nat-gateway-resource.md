@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549637"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424067"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
@@ -28,7 +28,7 @@ NAT-Gatewayressourcen sind Teil von [Virtual Network NAT](nat-overview.md) und s
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network NAT für Internetverbindung in ausgehender Richtung">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Virtual Network NAT für Internetverbindung in ausgehender Richtung">
 </p>
 
 *Abbildung: Virtual Network NAT für Internetverbindung in ausgehender Richtung*
@@ -54,7 +54,7 @@ Bei der Ressource wurde auf einen einfachen Aufbau geachtet. Dies ist im folgend
 Im folgenden Diagramm sind die schreibbaren Verweise zwischen den verschiedenen Azure Resource Manager-Ressourcen dargestellt.  Der Pfeil gibt die Richtung des Verweises an und geht vom schreibbaren Ort aus. Überprüfung 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network NAT-Objektmodell">
+  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT-Objektmodell">
 </p>
 
 *Abbildung: Virtual Network NAT-Objektmodell*
@@ -119,7 +119,7 @@ Das NAT-Gateway ist kompatibel mit:
 Beginnen Sie bei der Entwicklung einer neuen Bereitstellung mit Standard-SKUs.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network NAT für Internetverbindung in ausgehender Richtung">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="Virtual Network NAT für Internetverbindung in ausgehender Richtung">
 </p>
 
 *Abbildung: Virtual Network NAT für Internetverbindung in ausgehender Richtung*
@@ -129,7 +129,7 @@ Das Szenario mit ausschließlich ausgehender Internetverbindung per NAT-Gateway 
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>NAT und VM mit öffentlicher IP-Adresse auf Instanzebene
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Virtual Network NAT und VM mit öffentlicher IP-Adresse auf Instanzebene">
+  <img src="media/nat-overview/flow-direction2.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP." width="300" title="Virtual Network NAT und VM mit öffentlicher IP-Adresse auf Instanzebene">
 </p>
 
 *Abbildung: Virtual Network NAT und VM mit öffentlicher IP-Adresse auf Instanzebene*
@@ -144,7 +144,7 @@ Von der VM wird das NAT-Gateway für ausgehenden Datenverkehr genutzt.  Ursprün
 #### <a name="nat-and-vm-with-public-load-balancer"></a>NAT und VM mit öffentlichem Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Virtual Network NAT und VM mit öffentlichem Load Balancer">
+  <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="Virtual Network NAT und VM mit öffentlichem Load Balancer">
 </p>
 
 *Abbildung: Virtual Network NAT und VM mit öffentlichem Load Balancer*
@@ -159,7 +159,7 @@ Alle Ausgangskonfigurationen einer Lastenausgleichsregel oder von Ausgangsregeln
 #### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>NAT und VM mit öffentlicher IP-Adresse auf Instanzebene und öffentlichem Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Virtual Network NAT und VM mit öffentlicher IP-Adresse auf Instanzebene und öffentlichem Load Balancer">
+  <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="Virtual Network NAT und VM mit öffentlicher IP-Adresse auf Instanzebene und öffentlichem Load Balancer">
 </p>
 
 *Abbildung: Virtual Network NAT und VM mit öffentlicher IP-Adresse auf Instanzebene und öffentlichem Load Balancer*
@@ -182,7 +182,7 @@ NAT-Gateways haben Vorrang vor Ausgangsszenarien des Subnetzes. Load Balancer im
 #### <a name="zone-isolation-with-zonal-stacks"></a>Zonenisolation mit Zonenstapeln
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network NAT mit Zonenisolation: Erstellen mehrerer Instanzen "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="Virtual Network NAT mit Zonenisolation: Erstellen mehrerer Instanzen "zonal stacks"">
 </p>
 
 *Abbildung: Virtual Network NAT mit Zonenisolation: Erstellen mehrerer „Zonenstapel“*
@@ -210,7 +210,7 @@ Wenn Sie Endpunkte für eingehenden Datenverkehr benötigen, haben Sie zwei Opti
 #### <a name="cross-zone-outbound-scenarios-not-supported"></a>Keine Unterstützung von zonenübergreifenden Szenarien für ausgehenden Datenverkehr
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtual Network NAT ist mit zonenübergreifendem Subnetz nicht kompatibel">
+  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="Virtual Network NAT ist mit zonenübergreifendem Subnetz nicht kompatibel">
 </p>
 
 *Abbildung: Virtual Network NAT ist mit zonenübergreifendem Subnetz nicht kompatibel*
@@ -268,7 +268,7 @@ Die Bereitstellung von SNAT über NAT unterscheidet sich in mehreren Punkten von
 Von NAT werden bedarfsgesteuerte SNAT-Ports für neue ausgehende Datenverkehrsflüsse bereitgestellt. Alle verfügbaren SNAT-Ports des Bestands werden von allen virtuellen Computern in Subnetzen genutzt, für die NAT konfiguriert ist. 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Virtual Network NAT: Bedarfsgesteuerte SNAT in ausgehender Richtung">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T." width="550" title="Virtual Network NAT: Bedarfsgesteuerte SNAT in ausgehender Richtung">
 </p>
 
 *Abbildung: Virtual Network NAT: Bedarfsgesteuerte SNAT in ausgehender Richtung*
@@ -276,7 +276,7 @@ Von NAT werden bedarfsgesteuerte SNAT-Ports für neue ausgehende Datenverkehrsfl
 Über die IP-Konfiguration eines virtuellen Computers können je nach Bedarf Datenflüsse in ausgehender Richtung erstellt werden.  Eine Vorabzuteilung (Planung pro Instanz mit Überbereitstellung für Notfälle) ist nicht erforderlich.  
 
 <p align="center">
-  <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="Unterschiede bei Auslastungsszenarien">
+  <img src="media/nat-overview/exhaustion-threshold.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T with exhaustion threshold." width="550" title="Unterschiede bei Auslastungsszenarien">
 </p>
 
 *Abbildung: Unterschiede bei Auslastungsszenarien*

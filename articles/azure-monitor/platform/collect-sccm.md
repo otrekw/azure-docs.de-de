@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539362"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319319"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor
 Sie können Ihre Microsoft Endpoint Configuration Manager-Umgebung mit Azure Monitor verbinden, um die Daten der Gerätesammlung zu synchronisieren und in Azure Monitor und Azure Automation auf diese Sammlungen zu verweisen.  
@@ -41,7 +41,7 @@ In den folgenden Schritten werden die Schritte zum Konfigurieren der Configurati
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Bereitstellen von Configuration Manager mit Berechtigungen für Log Analytics
 
-Im Folgenden weisen Sie in Ihrem Log Analytics-Arbeitsbereich dem AD-Anwendungs- und Dienstprinzipal, den Sie zuvor für den Configuration Manager erstellt haben, die Rolle *Mitwirkender* zu. Wenn Sie noch keinen Arbeitsbereich haben, lesen Sie zunächst [Erstellen eines Arbeitsbereichs in Azure Monitor](../../azure-monitor/learn/quick-create-workspace.md), ehe Sie fortfahren. Auf diese Weise kann Configuration Manager Ihren Log Analytics-Arbeitsbereich authentifizieren und darauf zugreifen.  
+Im Folgenden weisen Sie in Ihrem Log Analytics-Arbeitsbereich dem AD-Anwendungs- und Dienstprinzipal, den Sie zuvor für den Configuration Manager erstellt haben, die Rolle *Mitwirkender* zu. Wenn Sie noch keinen Arbeitsbereich haben, lesen Sie zunächst [Erstellen eines Arbeitsbereichs in Azure Monitor](../learn/quick-create-workspace.md), ehe Sie fortfahren. Auf diese Weise kann Configuration Manager Ihren Log Analytics-Arbeitsbereich authentifizieren und darauf zugreifen.  
 
 > [!NOTE]
 > Sie müssen im Log Analytics-Arbeitsbereich Berechtigungen für Configuration Manager festlegen. Andernfalls erhalten Sie eine Fehlermeldung, wenn Sie den Konfigurations-Assistenten in Configuration Manager verwenden.
@@ -139,14 +139,15 @@ Nachdem Sie die Erstkonfiguration für den Import von Gerätesammlungen aus Ihre
 
 ## <a name="view-data-from-configuration-manager"></a>Anzeigen von Daten aus Configuration Manager
 
-Nachdem Sie eine Log Analytics-Verbindung mit Configuration Manager hinzugefügt und den Agent auf dem Computer mit der Standortsystemrolle des Configuration Manager-Dienstverbindungspunkts installiert haben, werden Daten vom Agent an den Log Analytics-Arbeitsbereich in Azure Monitor gesendet. In Azure Monitor werden die Configuration Manager-Sammlungen als [Computergruppen](../../azure-monitor/platform/computer-groups.md) angezeigt. Die Anzeige von Gruppen wählen Sie auf der Seite **Configuration Manager** unter **Einstellungen\Computergruppen** aus.
+Nachdem Sie eine Log Analytics-Verbindung mit Configuration Manager hinzugefügt und den Agent auf dem Computer mit der Standortsystemrolle des Configuration Manager-Dienstverbindungspunkts installiert haben, werden Daten vom Agent an den Log Analytics-Arbeitsbereich in Azure Monitor gesendet. In Azure Monitor werden die Configuration Manager-Sammlungen als [Computergruppen](./computer-groups.md) angezeigt. Die Anzeige von Gruppen wählen Sie auf der Seite **Configuration Manager** unter **Einstellungen\Computergruppen** aus.
 
 Nach dem Import der Sammlungen können Sie sehen, wie viele Computer mit Sammlungsmitgliedschaften erkannt wurden. Sie sehen auch die Anzahl der Sammlungen, die importiert wurden.
 
 ![Computergruppen – Registerkarte „SCCM“](./media/collect-sccm/sccm-computer-groups02.png)
 
-Wenn Sie auf eine der Optionen klicken, wird die Protokollabfragen-Editor geöffnet, wobei entweder alle importierten Gruppen oder alle Computer angezeigt werden, die zu den einzelnen Gruppen gehören. Mithilfe der [Protokollsuche](../../azure-monitor/log-query/log-query-overview.md) können Sie eine ausführlichere Analyse der Sammlungsmitgliedschaftsdaten durchführen.
+Wenn Sie auf eine der Optionen klicken, wird die Protokollabfragen-Editor geöffnet, wobei entweder alle importierten Gruppen oder alle Computer angezeigt werden, die zu den einzelnen Gruppen gehören. Mithilfe der [Protokollsuche](../log-query/log-query-overview.md) können Sie eine ausführlichere Analyse der Sammlungsmitgliedschaftsdaten durchführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie [Protokollsuche](../../azure-monitor/log-query/log-query-overview.md) für ausführliche Informationen zu den Configuration Manager-Daten.
+Verwenden Sie [Protokollsuche](../log-query/log-query-overview.md) für ausführliche Informationen zu den Configuration Manager-Daten.
+

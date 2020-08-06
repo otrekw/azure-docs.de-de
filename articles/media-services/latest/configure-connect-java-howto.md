@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
+ms.custom: devx-track-java
 ms.author: juliako
-ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888494"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319829"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinden mit der Media Services v3-API – Java
 
@@ -34,8 +35,8 @@ In diesem Artikel wird Visual Studio Code zum Entwickeln der Beispiel-App verwen
    - Apache Maven
    - Java-Erweiterungspaket
 - Achten Sie darauf, die Umgebungsvariablen `JAVA_HOME` und `PATH` festzulegen.
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
-- Führen Sie die Schritte im Thema [Zugriff auf Azure Media Services API mit Azure CLI](access-api-cli-how-to.md) aus. Halten Sie die Abonnement-ID, die Anwendungs-ID (Client-ID), den Authentifizierungsschlüssel und die Mandanten-ID fest. Sie benötigen diese Angaben in einem späteren Schritt.
+- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
+- Führen Sie die Schritte im Thema [Zugriff auf Azure Media Services API mit Azure CLI](./access-api-howto.md) aus. Halten Sie die Abonnement-ID, die Anwendungs-ID (Client-ID), den Authentifizierungsschlüssel und die Mandanten-ID fest. Sie benötigen diese Angaben in einem späteren Schritt.
 
 Lesen Sie außerdem:
 
@@ -94,7 +95,7 @@ Wenn Sie den Befehl ausführen, werden `pom.xml`, `App.java` und weitere Dateien
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. Um die Active Directory-Anmeldeinformationen zu erstellen, die Sie zum Senden von Anforderungen benötigen, fügen Sie der main-Methode der App-Klasse folgenden Code hinzu, und legen Sie die Werte fest, die Sie aus [Access APIs](access-api-cli-how-to.md) entnommen haben:
+1. Um die Active Directory-Anmeldeinformationen zu erstellen, die Sie zum Senden von Anforderungen benötigen, fügen Sie der main-Methode der App-Klasse folgenden Code hinzu, und legen Sie die Werte fest, die Sie aus [Access APIs](./access-api-howto.md) entnommen haben:
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -130,4 +131,4 @@ Wenn Sie den Befehl ausführen, werden `pom.xml`, `App.java` und weitere Dateien
 
 Sie können jetzt `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` einschließen und mit dem Ändern von Entitäten beginnen.
 
-Weitere Codebeispiele finden Sie im Repository für [Java SDK-Beispiele](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/).
+Weitere Codebeispiele finden Sie im Repository für [Java SDK-Beispiele](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/).

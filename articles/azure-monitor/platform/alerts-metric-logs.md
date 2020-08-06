@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: b8e2f580bb21d2f432ce5dcbc3e06c15ba6f380b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327207"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446179"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Erstellen von Metrikwarnungen für Protokolle in Azure Monitor
 
@@ -25,7 +25,7 @@ Sie können Metrikwarnungen für gängige Log Analytics-Protokolle verwenden, di
 
 - [Leistungsindikatoren](./data-sources-performance-counters.md) für Windows- und Linux-Computer
 - [Heartbeat-Datensätze für Agent-Integritätsdiagnose](../insights/solution-agenthealth.md)
-- Datensätze der [Updateverwaltung](../../automation/automation-update-management.md)
+- Datensätze der [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md)
 - [Ereignisdaten](./data-sources-windows-events.md)protokolle
 
 Es gibt viele Vorteile für die Verwendung von **Metrikwarnungen für Protokolle** gegenüber abfragebasierten [Protokollwarnungen](./alerts-log.md) in Azure. Einige von ihnen sind unten aufgeführt:
@@ -55,7 +55,7 @@ Bevor die Metrik für Protokolle, die über Log Analytics-Daten erfasst wurden, 
 
 1. **Active Log Analytics-Arbeitsbereich**: Es muss ein gültiger und aktiver Log Analytics-Arbeitsbereich vorhanden sein. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../learn/quick-create-workspace.md).
 2. **Agent ist für Log Analytics-Arbeitsbereich konfiguriert**: Der Agent muss für Azure VMs (und/oder) lokale VMs konfiguriert werden, um Daten in den Log Analytics-Arbeitsbereich zu senden, der in einem früheren Schritt verwendet wurde. Weitere Informationen finden Sie unter [Log Analytics – Übersicht über Agents](./agents-overview.md).
-3. **Unterstützte Log Analytics-Lösungen sind installiert:** : Die Log Analytics-Lösung sollte konfiguriert sein und Daten in den Log Analytics-Arbeitsbereich senden – unterstützte Lösungen sind [Leistungsindikatoren für Windows und Linux](./data-sources-performance-counters.md), [Heartbeat-Datensätze für Agent-Integritätsdiagnose](../insights/solution-agenthealth.md), [Update-Management](../../automation/automation-update-management.md) und [Ereignisdaten](./data-sources-windows-events.md).
+3. **Unterstützte Log Analytics-Lösungen sind installiert:** : Die Log Analytics-Lösung sollte konfiguriert sein und Daten in den Log Analytics-Arbeitsbereich senden – unterstützte Lösungen sind [Leistungsindikatoren für Windows und Linux](./data-sources-performance-counters.md), [Heartbeat-Datensätze für Agent-Integritätsdiagnose](../insights/solution-agenthealth.md), [Update-Management](../../automation/update-management/update-mgmt-overview.md) und [Ereignisdaten](./data-sources-windows-events.md).
 4. **Zum Senden von Protokollen konfigurierte Log Analytics-Lösungen**: Für die Log Analytics-Lösung müssen die erforderlichen Protokolle/Daten entsprechend der für [Log Analytics-Arbeitsbereiche unterstützten Metriken](./metrics-supported.md#microsoftoperationalinsightsworkspaces) aktiviert sein. Der Zähler *% Verfügbarer Arbeitsspeicher* muss z. B. zuerst in der Lösung [Leistungsindikatoren](./data-sources-performance-counters.md) konfiguriert sein.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Konfigurieren der Metrikwarnung für Protokolle

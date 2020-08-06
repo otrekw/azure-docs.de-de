@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495294"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486793"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Abfragen von Daten in Azure Time Series Insights Gen2
 
@@ -37,7 +37,7 @@ Die folgenden Kern-APIs werden unterstützt.
 
 ## <a name="environment-apis"></a>Umgebungs-APIs
 
-* [„Umgebungen abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get): Gibt die Liste der Umgebungen zurück, auf die der Benutzer zum Zugriff autorisiert ist.
+* [„Umgebungen abrufen“-API](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment): Gibt die Liste der Umgebungen zurück, auf die der Benutzer zum Zugriff autorisiert ist.
 * [„Umgebungsverfügbarkeit abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): Gibt die Verteilung der Anzahl von Ereignissen über den Ereigniszeitstempel `$ts` zurück. Diese API hilft dabei, zu ermitteln, ob Ereignisse in der Umgebung vorhanden sind, indem die Anzahl von Ereignissen (sofern vorhanden) unterteilt in Zeitintervalle zurückgegeben wird.
 * [„Ereignisschema abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): Gibt die Ereignisschema-Metadaten für einen bestimmten Suchzeitraum zurück. Diese API hilft beim Abrufen aller Metadaten und Eigenschaften, die im Schema für den angegebenen Suchzeitraum zur Verfügung stehen.
 

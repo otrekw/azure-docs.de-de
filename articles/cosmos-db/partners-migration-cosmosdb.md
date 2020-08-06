@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791730"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290077"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
 
@@ -26,7 +26,6 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 |[Altoros Development LLC](https://www.altoros.com/)  |  IoT, Personalisierung, Einzelhandel (Bestand), NoSQL-Migration serverloser Architekturen, App-Entwicklung|   USA |
 |[Avanade](https://www.avanade.com/) | IoT, Einzelhandel (Bestand), serverlose Architektur, App-Entwicklung | Österreich, Deutschland, Schweiz, Italien, Norwegen, Spanien, Vereinigtes Königreich, Kanada |
 |[Accenture](https://www.accenture.com/) | IoT, Einzelhandel (Bestand), serverlose Architektur, App-Entwicklung |Global|
-|[Bluemetal](https://www.bluemetal.com/)     |  IoT, Personalisierung, Einzelhandel (Bestand), operative Analysen für Unternehmen und SMC, KI-Imageanmerkung, Ressourcensteuerung, NoSQL-Migration, App-Entwicklung     |    Nordamerika, Asien (Pazifik)     |
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT, Personalisierung, Einzelhandel (Bestand), operative Analyse (Spark), serverlose Architektur, App-Entwicklung|    USA     |  
 | [Capgemini](https://www.capgemini.com/) | Einzelhandel (Bestand), IoT, operative Analyse (Spark), App-Entwicklung | USA, Frankreich, Vereinigtes Königreich, Niederlande, Finnland  |
 | [Cognizant](https://www.cognizant.com/) | IoT, Personalisierung, Einzelhandel (Bestand), operative Analyse (Spark), App-Entwicklung |USA, Kanada, Vereinigtes Königreich, Dänemark, Niederlande, Schweiz, Australien, Japan |
@@ -51,13 +50,12 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/en-US/).
+Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/).
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png
-[5]: ./media/partners-migration-cosmosdb/bluemetal_logo.png
 [6]: ./media/partners-migration-cosmosdb/capaxglobal_logo.png
 [7]: ./media/partners-migration-cosmosdb/coeo_logo.png
 [8]: ./media/partners-migration-cosmosdb/infosys_logo.png

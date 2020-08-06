@@ -3,16 +3,16 @@ title: Abfragen von Protokollen aus Azure Monitor für Container | Microsoft-Dok
 description: Azure Monitor für Container erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 12c32c84f2c2aef5d6d0817c11e1ef010f30ffcb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298302"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320288"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Abfragen von Protokollen aus Azure Monitor für Container
 
-Azure Monitor erfasst für Container Leistungsmetriken, Inventurdaten und Integritätszustandsinformationen der Containerhosts und Container. Die Daten werden alle drei Minuten erfasst und an den Log Analytics-Arbeitsbereich in Azure Monitor weitergeleitet. Diese Daten stehen in Azure Monitor für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Azure Monitor erfasst für Container Leistungsmetriken, Inventurdaten und Integritätszustandsinformationen der Containerhosts und Container. Die Daten werden alle drei Minuten erfasst und an den Log Analytics-Arbeitsbereich in Azure Monitor weitergeleitet. Diese Daten stehen in Azure Monitor für [Abfragen](../log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 ## <a name="container-records"></a>Containerdatensätze
 
@@ -112,3 +112,4 @@ Die Ausgabe enthält Ergebnisse, die dem folgenden Beispiel ähneln:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Azure Monitor für Container umfasst keinen vordefinierten Satz von Warnungen. Informationen zum Erstellen von empfohlenen Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](container-insights-alerts.md). 
+

@@ -2,18 +2,18 @@
 title: Erneutes Schützen virtueller Azure-Computer in die primäre Region mit Azure Site Recovery | Microsoft-Dokumentation
 description: Beschreibt das erneute Schützen von virtuellen Azure-Computern nach einem Failover von der sekundären in die primäre Region mithilfe von Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738064"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422078"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 
@@ -95,10 +95,6 @@ Die folgenden Bedingungen bestimmen, wie viele Daten repliziert werden:
 |Die Quellregion enthält eine VM mit einem Premium-Datenträger mit einer Kapazität von 1 TB.<br/>Nur 20 GB werden für Daten verwendet, der Rest des Datenträgers ist leer.<br/>Der Datenträgertyp ist Premium mit 200 MBit/s Durchsatz.<br/>Die anfänglichen Daten auf dem Datenträger unmittelbar nach dem Failover betragen 15 GB. Nach dem Failover liegt ein Unterschied von 5 GB an Daten vor. Daher beträgt die Gesamtgröße der aufgefüllten Daten 20 GB.| Ungefährer Zeitaufwand: 30–45 Minuten<br/>Da die aufgefüllten Daten auf dem Datenträger weniger als 10 % der Größe des Datenträgers umfassen, wird eine vollständige erste Replikation durchgeführt.<br/>Die Übertragungsgeschwindigkeit beträgt etwa 16 % des Durchsatzes, was wiederum 32 MBit/s entspricht. Daher beträgt die Übertragungszeit zum Anwenden von Änderungen mit einer Größe von 20 GB etwa 11 Minuten (20 GB ÷ 32 MBit/s).<br/>Zeitlicher Mehraufwand ist erforderlich, damit Site Recovery die automatische Skalierung durchführen kann, ungefähr 20–30 Minuten. |
 
 Wenn die VM nach einem Failback zur primären Region erneut geschützt wird (wenn die VM also von der primären Region in die DR-Region erneut geschützt wird), wird die Ziel-VM mitsamt ihrer verknüpften NIC(s) gelöscht.
-
-Wenn die VM von der DR-Region zur primären Region erneut geschützt wird, werden die ehemalige primäre VM und ihre verknüpfte(n) NIC(s) nicht gelöscht.
-
-Wenn die VM nach einem Failback zur primären Region erneut geschützt wird (wenn die VM also von der primären Region in die DR-Region erneut geschützt wird), wird die Ziel-VM mitsamt ihrer verknüpften NIC(s) gelöscht. 
 
 Wenn die VM von der DR-Region zur primären Region erneut geschützt wird, werden die ehemalige primäre VM und ihre verknüpfte(n) NIC(s) nicht gelöscht.
 

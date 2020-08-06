@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327003"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495370"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Importieren von Daten in den Azure Machine Learning-Designer (Vorschauversion)
 
@@ -32,7 +32,7 @@ Es wird empfohlen, dass Sie [Datasets](concept-data.md#datasets) verwenden, um D
 
 ### <a name="register-a-dataset"></a>Registrieren eines Datasets
 
-Sie können vorhandene Datasets [programmgesteuert mit dem SDK](how-to-create-register-datasets.md#use-the-sdk) oder [visuell im Azure Machine Learning Studio](how-to-create-register-datasets.md#use-the-ui) registrieren.
+Sie können vorhandene Datasets [programmgesteuert mit dem SDK](how-to-create-register-datasets.md#datasets-sdk) oder [visuell im Azure Machine Learning Studio](how-to-create-register-datasets.md#datasets-ui) registrieren.
 
 Sie können auch die Ausgabe für jedes Designermodul als Dataset registrieren.
 
@@ -59,7 +59,7 @@ Obwohl wir empfehlen, dass Sie Datasets zum Importieren von Daten verwenden, kö
 Ausführliche Informationen zur Verwendung des Moduls „Daten importieren“ finden Sie auf der [Referenzseite für den Datenimport](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Wenn das Dataset zu viele Spalten enthält, kann der folgende Fehler auftreten: „Fehler bei der Überprüfung aufgrund von Größenbeschränkung“. Um dies zu vermeiden, [registrieren Sie das Dataset in der Dataset-Schnittstelle](how-to-create-register-datasets.md#use-the-ui).
+> Wenn das Dataset zu viele Spalten enthält, kann der folgende Fehler auftreten: „Fehler bei der Überprüfung aufgrund von Größenbeschränkung“. Um dies zu vermeiden, [registrieren Sie das Dataset in der Dataset-Schnittstelle](how-to-create-register-datasets.md#datasets-ui).
 
 ## <a name="supported-sources"></a>Unterstützte Quellen
 

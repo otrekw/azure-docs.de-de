@@ -7,26 +7,26 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255499"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288171"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für eine SQL-Datenbank mithilfe von Azure Logic Apps
 
-In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie durch Erstellung von Logik-Apps Aufgaben, Prozesse oder Workflows automatisieren, die SQL-Daten und Ressourcen verwalten. Der SQL Server-Connector kann sowohl für [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als auch für [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md) und [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) verwendet werden.
+In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie durch Erstellung von Logik-Apps Aufgaben, Prozesse oder Workflows automatisieren, die SQL-Daten und Ressourcen verwalten. Der SQL Server-Connector kann sowohl für [SQL Server](/sql/sql-server/sql-server-technical-documentation) als auch für [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md) und [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) verwendet werden.
 
 Sie können Logik-Apps erstellen, deren Ausführung durch Ereignisse in Ihrer SQL-Datenbank oder in anderen Systemen (wie z. B. Dynamics CRM Online) ausgelöst wird. Ihre Logik-Apps können auch Daten abrufen, einfügen und löschen sowie SQL-Abfragen und gespeicherte Prozeduren ausführen. Sie können beispielsweise eine Logik-App erstellen, die Dynamics CRM Online automatisch auf neue Datensätze überprüft, Ihrer SQL-Datenbank Elemente für alle neuen Datensätze hinzufügt und dann E-Mail-Benachrichtigungen über die hinzugefügten Elemente sendet.
 
-Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen, Einschränkungen und bekannte Probleme finden Sie auf der [Referenzseite zum SQL Server-Connector](https://docs.microsoft.com/connectors/sql/).
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen, Einschränkungen und bekannte Probleme finden Sie auf der [Referenzseite zum SQL Server-Connector](/connectors/sql/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Eine [SQL Server-Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database), eine [Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) oder eine [Azure SQL Managed Instance](../azure-sql/managed-instance/instance-create-quickstart.md).
+* Eine [SQL Server-Datenbank](/sql/relational-databases/databases/create-a-database), eine [Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md) oder eine [Azure SQL Managed Instance](../azure-sql/managed-instance/instance-create-quickstart.md).
 
   Ihre Tabellen müssen Daten enthalten, damit Ihre Logik-App beim Aufrufen von Vorgängen Ergebnisse zurückgeben kann. Wenn Sie eine Azure SQL-Datenbank verwenden, können Sie die enthaltenen Beispieldatenbanken verwenden.
 
@@ -74,7 +74,7 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
    | Authentifizierung | BESCHREIBUNG |
    |----------------|-------------|
    | [**Azure AD-Integration**](../azure-sql/database/authentication-aad-overview.md) | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert eine gültige Identität in Azure Active Directory (Azure AD), die Zugriff auf Ihre Datenbank hat. <p>Weitere Informationen finden Sie in den folgenden Themen: <p>- [Azure SQL-Sicherheitsübersicht – Authentifizierung](../azure-sql/database/security-overview.md#authentication) <br>- [Autorisieren des Datenbankzugriffs auf Azure SQL – Authentifizierung und Autorisierung](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – Azure AD-Integrationsauthentifizierung](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server-Authentifizierung**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert einen gültigen Benutzernamen und ein sicheres Kennwort, die in Ihrer Datenbank erstellt und gespeichert werden. <p>Weitere Informationen finden Sie in den folgenden Themen: <p>- [Azure SQL-Sicherheitsübersicht – Authentifizierung](../azure-sql/database/security-overview.md#authentication) <br>- [Autorisieren des Datenbankzugriffs auf Azure SQL – Authentifizierung und Autorisierung](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server-Authentifizierung**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert einen gültigen Benutzernamen und ein sicheres Kennwort, die in Ihrer Datenbank erstellt und gespeichert werden. <p>Weitere Informationen finden Sie in den folgenden Themen: <p>- [Azure SQL-Sicherheitsübersicht – Authentifizierung](../azure-sql/database/security-overview.md#authentication) <br>- [Autorisieren des Datenbankzugriffs auf Azure SQL – Authentifizierung und Autorisierung](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Dieses Beispiel wird mit **Azure AD-Integration** fortgesetzt:
@@ -117,8 +117,8 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
 
    | Authentifizierung | BESCHREIBUNG |
    |----------------|-------------|
-   | [**Windows-Authentifizierung**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Unterstützt nur den Nicht-ISE-Connector von SQL Server, der eine Datengatewayressource erfordert, die zuvor für Ihre Verbindung in Azure erstellt wurde, unabhängig davon, ob Sie mehrinstanzenfähiges Azure oder eine ISE verwenden. <p><p>– Erfordert einen gültigen Windows-Benutzernamen und ein Kennwort, um Ihre Identität über Ihr Windows-Konto zu bestätigen. <p>Weitere Informationen finden Sie unter [Windows-Authentifizierung](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication). |
-   | [**SQL Server-Authentifizierung**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert einen gültigen Benutzernamen und ein sicheres Kennwort, die in Ihrem SQL Server erstellt und gespeichert werden. <p>Weitere Informationen finden Sie unter [SQL Server-Authentifizierung](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
+   | [**Windows-Authentifizierung**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Unterstützt nur den Nicht-ISE-Connector von SQL Server, der eine Datengatewayressource erfordert, die zuvor für Ihre Verbindung in Azure erstellt wurde, unabhängig davon, ob Sie mehrinstanzenfähiges Azure oder eine ISE verwenden. <p><p>– Erfordert einen gültigen Windows-Benutzernamen und ein Kennwort, um Ihre Identität über Ihr Windows-Konto zu bestätigen. <p>Weitere Informationen finden Sie unter [Windows-Authentifizierung](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication). |
+   | [**SQL Server-Authentifizierung**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert einen gültigen Benutzernamen und ein sicheres Kennwort, die in Ihrem SQL Server erstellt und gespeichert werden. <p>Weitere Informationen finden Sie unter [SQL Server-Authentifizierung](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
    |||
 
    Dieses Beispiel wird mit **Windows-Authentifizierung** fortgesetzt:
@@ -134,7 +134,7 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
    | **Benutzername** | Ja | Ihr Benutzername für SQL Server und -Datenbank. |
    | **Kennwort** | Ja | Ihr Kennwort für SQL Server und -Datenbank. |
    | **Abonnement** |  Ja, für Windows-Authentifizierung. | Das Azure-Abonnement für die Datengatewayressource, das Sie zuvor in Azure erstellt haben. |
-   | **Verbindungsgateway** | Ja, für Windows-Authentifizierung. | Der Name für die Datengatewayressource, die Sie zuvor in Azure erstellt haben. <p><p>**Tipp**: Wenn Ihr Gateway nicht in der Liste angezeigt wird, überprüfen Sie, ob Sie das [Gateway richtig eingerichtet](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection) haben. |
+   | **Verbindungsgateway** | Ja, für Windows-Authentifizierung. | Der Name für die Datengatewayressource, die Sie zuvor in Azure erstellt haben. <p><p>**Tipp**: Wenn Ihr Gateway nicht in der Liste angezeigt wird, überprüfen Sie, ob Sie das [Gateway richtig eingerichtet](../logic-apps/logic-apps-gateway-connection.md) haben. |
    |||
 
    > [!TIP]
@@ -171,7 +171,7 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
 
    Mit diesem Trigger wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Um andere Aufgaben auszuführen, fahren Sie fort, indem Sie entweder eine [SQL-Connector-Aktion ](#add-sql-action) oder [eine weitere Aktions](../connectors/apis-list.md) hinzufügen, die die nächste Aufgabe ausführt, die Sie in Ihrem Logik-App-Workflow ausführen möchten.
    
-   Wenn Sie z.B. die Daten in dieser Zeile anzeigen möchten, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält, und dann E-Mail-Benachrichtigungen senden. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](https://docs.microsoft.com/connectors/sql/).
+   Wenn Sie z.B. die Daten in dieser Zeile anzeigen möchten, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält, und dann E-Mail-Benachrichtigungen senden. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](/connectors/sql/).
 
 1. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -201,7 +201,7 @@ In diesem Beispiel beginnt die Logik-App mit dem [Wiederholungstrigger](../conne
 
    ![Auswählen des Tabellennamens und Angeben der Zeilen-ID](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
-   Mit dieser Aktion wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Um also die Daten in dieser Zeile anzuzeigen, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält,und diese Datei in einem Cloudspeicherkonto speichern. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](https://docs.microsoft.com/connectors/sql/).
+   Mit dieser Aktion wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Um also die Daten in dieser Zeile anzuzeigen, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält,und diese Datei in einem Cloudspeicherkonto speichern. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](/connectors/sql/).
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -217,13 +217,13 @@ Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Co
 
   Beim Abrufen oder Einfügen mehrerer Zeilen kann Ihre Logik-App diese Zeilen mithilfe einer [*Until-Schleife*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) innerhalb dieser [Grenzwerte](../logic-apps/logic-apps-limits-and-config.md) durchlaufen. Wenn Ihre Logik-App jedoch mit so großen Datensatzgruppen arbeiten muss, die z. B. Tausende oder Millionen von Zeilen umfassen, dass Sie die Kosten für Aufrufe der Datenbank minimieren möchten.
 
-  Um die Ergebnisse in der von Ihnen gewünschten Weise zu organisieren, können Sie eine [*gespeicherte Prozedur*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) erstellen, die in Ihrer SQL-Instanz ausgeführt wird und die **SELECT - ORDER BY**-Anweisung verwendet. Diese Lösung bietet Ihnen mehr Kontrolle über die Größe und Struktur Ihrer Ergebnisse. Ihre Logik-App ruft die gespeicherte Prozedur mithilfe der Aktion **Gespeicherte Prozedur ausführen** des SQL Server-Connectors auf.
+  Um die Ergebnisse in der von Ihnen gewünschten Weise zu organisieren, können Sie eine [*gespeicherte Prozedur*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) erstellen, die in Ihrer SQL-Instanz ausgeführt wird und die **SELECT - ORDER BY**-Anweisung verwendet. Diese Lösung bietet Ihnen mehr Kontrolle über die Größe und Struktur Ihrer Ergebnisse. Ihre Logik-App ruft die gespeicherte Prozedur mithilfe der Aktion **Gespeicherte Prozedur ausführen** des SQL Server-Connectors auf.
 
   Weitere Details dieser Lösung finden Sie in den folgenden Artikeln:
 
   * [SQL-Paginierung für die Massendatenübertragung mit Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-  * [SELECT - ORDER BY-Klausel](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  * [SELECT - ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ### <a name="handle-dynamic-bulk-data"></a>Behandeln dynamischer Massendaten
 
@@ -250,8 +250,9 @@ Wenn Sie eine gespeicherte Prozedur mit dem SQL Server-Connector aufzurufen, ist
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Technische Informationen zu den Triggern, Aktionen und Grenzwerten dieses Connectors finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/sql/), die aus der Swagger-Beschreibung generiert wird.
+Technische Informationen zu den Triggern, Aktionen und Grenzwerten dieses Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/sql/), die aus der Swagger-Beschreibung generiert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über andere [Connectors für Azure Logic Apps](../connectors/apis-list.md).
+

@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d6a25e7c36118f6a11bd1a177159bc9050ee69ca
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104111"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431021"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Hinzufügen einer API zu Azure Static Web Apps (Vorschau) mit Azure Functions
 
@@ -133,7 +134,7 @@ Mit den obigen Einstellungen gilt für den API-Endpunkt Folgendes:
 
 ## <a name="run-the-api-locally"></a>Lokales Ausführen der API
 
-Dank der Integration zwischen Visual Studio Code und [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) können Sie dieses Projekt vor der Veröffentlichung in Azure zunächst auf Ihrem lokalen Entwicklungscomputer ausführen.
+Dank der Integration zwischen Visual Studio Code und [Azure Functions Core Tools](../azure-functions/functions-run-local.md) können Sie dieses Projekt vor der Veröffentlichung in Azure zunächst auf Ihrem lokalen Entwicklungscomputer ausführen.
 
 > [!TIP]
 > Stellen Sie sicher, dass Sie alle im Abschnitt [Voraussetzungen](#prerequisites) aufgeführten Ressourcen installiert haben, bevor Sie fortfahren.

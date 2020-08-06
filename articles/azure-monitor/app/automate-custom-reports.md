@@ -4,12 +4,12 @@ description: Automatisieren von benutzerdefinierten täglichen, wöchentlichen o
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540076"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320407"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 
@@ -150,7 +150,8 @@ Die folgenden Schritte sind nur relevant, wenn Sie noch kein SendGrid-Konto konf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../../azure-monitor/log-query/get-started-queries.md).
+* Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](../log-query/get-started-queries.md).
 * Erfahren Sie mehr über das [programmgesteuerte Abfragen von Application Insights-Daten](https://dev.applicationinsights.io/).
 * Informieren Sie sich ausführlicher über [Logic Apps](../../logic-apps/logic-apps-overview.md).
 * Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).
+

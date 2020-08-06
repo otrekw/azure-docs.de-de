@@ -6,16 +6,17 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 7c220ff2882e12f5239dbd5abc5f87b900cb3807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609399"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423268"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
-In dieser Referenz werden die allgemeinen Typen beschrieben, die zum Identifizieren von Triggern und Aktionen in der Ihrer Logik-App zugrunde liegenden Workflowdefinition verwendet werden, die durch die [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben und validiert werden. Um bestimmte Connector-Trigger und -Aktionen aufzufinden, die Sie in Ihren Logik-Apps verwenden können, sehen Sie in der Liste unter der [Connectorübersicht](https://docs.microsoft.com/connectors/) nach.
+In dieser Referenz werden die allgemeinen Typen beschrieben, die zum Identifizieren von Triggern und Aktionen in der Ihrer Logik-App zugrunde liegenden Workflowdefinition verwendet werden, die durch die [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben und validiert werden. Um bestimmte Connector-Trigger und -Aktionen aufzufinden, die Sie in Ihren Logik-Apps verwenden können, sehen Sie in der Liste unter der [Connectorübersicht](/connectors/) nach.
 
 <a name="triggers-overview"></a>
 
@@ -569,7 +570,7 @@ Weitere Informationen zu diesem Trigger sowie Beispiele finden Sie unter [Erstel
 
 Durch diesen Trigger wird Ihre Logik-App aufrufbar, indem ein Endpunkt erstellt wird, der eingehende Anforderungen annehmen kann. Geben Sie für diesen Trigger ein JSON-Schema an, das die Nutzlast oder die Eingaben, die der Trigger aus der eingehenden Anforderung empfängt, beschreibt und überprüft. Mit dem Schema kann für spätere Aktionen des Workflows außerdem leichter auf Triggereigenschaften verwiesen werden.
 
-Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API verwenden, die in der [Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows) beschrieben ist. Informationen zum Verwenden dieses Triggers als HTTP-Endpunkt finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
+Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API verwenden, die in der [Workflow Service-REST-API](/rest/api/logic/workflows) beschrieben ist. Informationen zum Verwenden dieses Triggers als HTTP-Endpunkt finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 ```json
 "manual": {
@@ -2657,7 +2658,7 @@ Weitere Informationen finden Sie unter [Einstellungen für die Laufzeitkonfigura
 
 ### <a name="run-actions-in-a-synchronous-operation-pattern"></a>Ausführen von Aktionen in einem synchronen Vorgangsmuster
 
-Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen in Azure Logic Apps dem standardmäßigen [*asynchronen Vorgangsmuster*](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Das asynchrone Muster gibt an, dass der Empfänger, nachdem eine Aktion eine Anforderung aufgerufen oder an den Endpunkt, Dienst, das System oder die API gesendet hat, sofort eine [„202 ACCEPTED“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurückgibt. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`-Header enthalten, in dem die URL und eine Aktualisierungs-ID angegeben sind, die der Aufrufer zum fortlaufenden Abrufen oder Überprüfen des Status der asynchronen Anforderung verwenden kann, bis der Empfänger die Verarbeitung beendet und eine [„200 OK“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)-Erfolgsantwort oder eine andere Nicht-202-Antwort zurückgibt. Weitere Informationen finden Sie unter [Asynchrone Microservice-Integration erzwingt Microservice-Autonomie](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen in Azure Logic Apps dem standardmäßigen [*asynchronen Vorgangsmuster*](/azure/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Das asynchrone Muster gibt an, dass der Empfänger, nachdem eine Aktion eine Anforderung aufgerufen oder an den Endpunkt, Dienst, das System oder die API gesendet hat, sofort eine [„202 ACCEPTED“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurückgibt. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`-Header enthalten, in dem die URL und eine Aktualisierungs-ID angegeben sind, die der Aufrufer zum fortlaufenden Abrufen oder Überprüfen des Status der asynchronen Anforderung verwenden kann, bis der Empfänger die Verarbeitung beendet und eine [„200 OK“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)-Erfolgsantwort oder eine andere Nicht-202-Antwort zurückgibt. Weitere Informationen finden Sie unter [Asynchrone Microservice-Integration erzwingt Microservice-Autonomie](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
 * Im Logik-App-Designer verfügen die HTTP-Aktion, die APIConnection-Aktionen und die Response-Aktion über die Einstellung **Asynchrones Muster**. Wenn diese Einstellung aktiviert ist, gibt sie an, dass der Aufrufer nicht auf den Abschluss der Verarbeitung wartet, sondern mit der nächsten Aktion fortfahren kann, dass er aber weiterhin den Status überprüft, bis die Verarbeitung beendet wird. Wenn diese Einstellung deaktiviert ist, gibt sie an, dass der Aufrufer auf den Abschluss der Verarbeitung wartet, bevor mit der nächsten Aktion fortfährt. Führen Sie die folgenden Schritte aus, um diese Einstellung zu suchen:
 

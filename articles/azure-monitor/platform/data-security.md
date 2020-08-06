@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539345"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319795"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument dient der Bereitstellung von spezifischen Informationen zu Log Analytics, einem Feature von Azure Monitor, in Ergänzung der Informationen im [Azure Trust Center](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -148,7 +148,7 @@ Für Operations Manager wird über die Operation Manager-Verwaltungsgruppe eine 
 
 Die gesamte Kommunikation zwischen verbundenen Systemen und dem Log Analytics-Dienst ist verschlüsselt. Das TLS (HTTPS)-Protokoll wird für die Verschlüsselung verwendet.  Das Microsoft SDL-Verfahren stellt sicher, dass Log Analytics nach den neuesten Fortschritten bei kryptografischen Protokollen aktualisiert wird.
 
-Jeder Agent-Typ sammelt Daten für Log Analytics. Die Art der gesammelten Daten ist abhängig von der Art der verwendeten Lösungen. Eine Zusammenfassung der Datensammlung finden Sie unter [Add Log Analytics solutions from the Solutions Gallery (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog)](../../azure-monitor/insights/solutions.md). Darüber hinaus stehen ausführlichere Sammlungs-Informationen für die meisten Lösungen zur Verfügung. Eine Lösung ist ein Bündel von vordefinierten Ansichten, Protokollsuchabfragen, Datensammlungsregeln und Verarbeitungslogik. Nur Administratoren können Log Analytics zum Importieren einer Lösung verwenden. Nach dem Importieren der Lösung wird diese auf die Operations Manager-Verwaltungsserver (sofern verwendet) und dann in die ausgewählten Agents verschoben. Anschließend sammeln die Agents die Daten.
+Jeder Agent-Typ sammelt Daten für Log Analytics. Die Art der gesammelten Daten ist abhängig von der Art der verwendeten Lösungen. Eine Zusammenfassung der Datensammlung finden Sie unter [Add Log Analytics solutions from the Solutions Gallery (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog)](../insights/solutions.md). Darüber hinaus stehen ausführlichere Sammlungs-Informationen für die meisten Lösungen zur Verfügung. Eine Lösung ist ein Bündel von vordefinierten Ansichten, Protokollsuchabfragen, Datensammlungsregeln und Verarbeitungslogik. Nur Administratoren können Log Analytics zum Importieren einer Lösung verwenden. Nach dem Importieren der Lösung wird diese auf die Operations Manager-Verwaltungsserver (sofern verwendet) und dann in die ausgewählten Agents verschoben. Anschließend sammeln die Agents die Daten.
 
 ## <a name="2-send-data-from-agents"></a>2. Senden von Daten von Agents
 Sie registrieren alle Agent-Typen mit einem Registrierungsschlüssel. Eine sichere Verbindung zwischen dem Agent und Log Analytics-Dienst wird mithilfe der zertifikatbasierten Authentifizierung und TLS an Port 443 hergestellt. Log Analytics verwendet einen geheimen Speicher zum Generieren und Verwalten von Schlüsseln. Private Schlüssel werden alle 90 Tage rotiert und in Azure gespeichert. Sie werden von Azure-Operatoren verwaltet, die Gesetze und Compliance-Vorschriften strikt einhalten.
@@ -172,6 +172,7 @@ Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert s
 Für den Zugriff auf Ihren Log Analytics-Arbeitsbereich melden Sie sich über das zuvor eingerichtete Unternehmenskonto oder Microsoft-Konto im Azure-Portal an. Der gesamte Datenverkehr zwischen dem Portal und dem Log Analytics-Dienst erfolgt über einen sicheren HTTPS-Kanal. Bei Verwendung des Portals wird eine Sitzungs-ID auf dem Client des Benutzers (Webbrowser) generiert, und die Daten werden in einem lokalen Cache gespeichert, bis die Sitzung beendet wird. Wenn die Sitzung beendet ist, wird der Cache gelöscht. Clientseitige Cookies enthalten keine persönlich identifizierbaren Informationen und werden nicht automatisch entfernt. Sitzungscookies sind „HTTPOnly“ markiert und gesichert. Nach einer vorher festgelegten Zeit im Leerlauf wird die Sitzung im Azure-Portal beendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Im [Schnellstart zu virtuellen Azure-Computern](../../azure-monitor/learn/quick-collect-azurevm.md) erfahren Sie, wie Sie mit Log Analytics Daten für Ihre virtuellen Azure-Computer sammeln.  
+* Im [Schnellstart zu virtuellen Azure-Computern](../learn/quick-collect-azurevm.md) erfahren Sie, wie Sie mit Log Analytics Daten für Ihre virtuellen Azure-Computer sammeln.  
 
-*  Wenn Sie Daten von physischen oder virtuellen Windows- oder Linux-Computern in Ihrer Umgebung sammeln möchten, finden Sie entsprechende Informationen im [Schnellstart für Linux-Computer](../../azure-monitor/learn/quick-collect-linux-computer.md) bzw. im [Schnellstart für Windows-Computer](../../azure-monitor/learn/quick-collect-windows-computer.md).
+*  Wenn Sie Daten von physischen oder virtuellen Windows- oder Linux-Computern in Ihrer Umgebung sammeln möchten, finden Sie entsprechende Informationen im [Schnellstart für Linux-Computer](../learn/quick-collect-linux-computer.md) bzw. im [Schnellstart für Windows-Computer](../learn/quick-collect-windows-computer.md).
+

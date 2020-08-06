@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie die Überwachung eines neuen AKS-Cluster
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320322"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Aktivieren der Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service)
 
@@ -29,7 +29,7 @@ Um die Überwachung eines mit der Azure-Befehlszeilenschnittstelle erstellten ne
 
 ## <a name="enable-using-terraform"></a>Aktivieren mithilfe von Terraform
 
-Wenn Sie [einen neuen AKS-Cluster mit Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md) bereitstellen, geben Sie die Argumente an, die im Profil [zum Erstellen eines Log Analytics-Arbeitsbereichs](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) erforderlich sind, wenn Sie kein vorhandenes Argument angeben. 
+Wenn Sie [einen neuen AKS-Cluster mit Terraform](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks) bereitstellen, geben Sie die Argumente an, die im Profil [zum Erstellen eines Log Analytics-Arbeitsbereichs](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) erforderlich sind, wenn Sie kein vorhandenes Argument angeben. 
 
 >[!NOTE]
 >Wenn Sie sich für Terraform entscheiden, müssen Sie den Terraform Azure RM-Anbieter, Version 1.17.0 oder höher, verwenden.
@@ -118,3 +118,4 @@ Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 * Wenn beim Onboarding der Lösung Probleme auftreten, lesen Sie den [Leitfaden zur Problembehandlung](container-insights-troubleshoot.md)
 
 * Wenn die Überwachung aktiviert ist, um Integrität und Ressourcennutzung Ihres AKS-Clusters und der darauf ausgeführten Workloads zu erfassen, informieren Sie sich über die [Verwendung](container-insights-analyze.md) von Azure Monitor für Container.
+
