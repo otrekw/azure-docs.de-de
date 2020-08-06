@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cf2662bef194bc2b7afdb07f55809ba63f40fd6e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 67b71399332fb29a277381a8c2806dbe7fb31d85
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351902"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552117"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Tutorial: Herstellen einer Verbindung zwischen einer unter Windows ausgeführten IoT Plug & Play-Geräteanwendung mit mehreren Komponenten und IoT Hub (C#)
 
@@ -60,7 +60,7 @@ In diesem Tutorial wird eine Entwicklungsumgebung vorbereitet, die Sie zum Klone
 Öffnen Sie eine Eingabeaufforderung in einem Verzeichnis Ihrer Wahl. Führen Sie den folgenden Befehl aus, um das GitHub-Repository für [Azure IoT-C#-SDKs und die zugehörigen Bibliotheken](https://github.com/Azure/azure-iot-sdk-csharp) an diesem Speicherort zu klonen:
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-c.git
+git clone https://github.com/Azure/azure-iot-sdk-csharp.git
 ```
 
 ## <a name="build-the-code"></a>Erstellen des Codes

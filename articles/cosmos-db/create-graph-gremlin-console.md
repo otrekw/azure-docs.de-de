@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 0d8c153bb95ee4eda109d8d7d6ce8ae40dae19e1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260723"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543774"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Schnellstart: Erstellen, Abfragen und Durchlaufen einer Azure Cosmos DB-Graphdatenbank mithilfe der Gremlin-Konsole
 
@@ -81,7 +81,7 @@ Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/downloa
    connectionPool: {
      enableSsl: true
    }
-   serializer: { className: org.apache.tinkerpop.gremlin.driver.   ser.GraphSONMessageSerializerV2d0, config: {    serializeResultToString: true }}
+   serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
    ```
 
    Setzen Sie den Wert des hosts-Parameters in eckige Klammern: []. 

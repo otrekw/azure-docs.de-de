@@ -3,12 +3,12 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970925"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530395"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -39,7 +39,7 @@ Eine Blaupause ist ein Paket oder Container zum Zusammenstellen von spezifischen
 
 Eine [Richtlinie](../policy/overview.md) ist ein System zur standardmäßigen Zulassung und expliziten Ablehnung, das sich auf Ressourceneigenschaften während der Bereitstellung und für bereits vorhandene Ressourcen konzentriert. Es unterstützt Cloud-Governance, indem sichergestellt wird, dass Ressourcen in einem Abonnement den Anforderungen und Standards entsprechen.
 
-Das Einschließen einer Richtlinie in eine Blaupause ermöglicht die Erstellung des richtigen Musters oder Entwurfs während der Blaupausenzuweisung. Die eingeschlossene Richtlinie sorgt dafür, dass an der Umgebung nur genehmigte oder erwartete Änderungen vorgenommen werden können und die Konformität mit der Absicht der Blaupause kontinuierlich gewahrt bleibt.
+Das Einschließen einer Richtlinie in einer Blaupause ermöglicht die Erstellung des richtigen Musters oder Entwurfs bei der Zuweisung der Blaupause. Die eingeschlossene Richtlinie sorgt dafür, dass an der Umgebung nur genehmigte oder erwartete Änderungen vorgenommen werden können und die Konformität mit der Absicht der Blaupause kontinuierlich gewahrt bleibt.
 
 Eine Richtlinie kann als eines von vielen _Artefakten_ in eine Blaupausendefinition eingefügt werden. Blaupausen unterstützen zudem die Verwendung von Parametern mit Richtlinien und Initiativen.
 
@@ -103,7 +103,7 @@ Zum Zuweisen oder zum Aufheben der Zuweisung einer Blaupause sind für Ihr Konto
 
 Die folgenden integrierten Rollen sind verfügbar:
 
-|RBAC-Rolle | BESCHREIBUNG |
+|Azure-Rolle | BESCHREIBUNG |
 |-|-|
 |[Besitzer](../../role-based-access-control/built-in-roles.md#owner) | Umfasst (neben anderen Berechtigungen) alle Berechtigungen im Zusammenhang mit der Azure-Blaupause. |
 |[Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) | Umfasst (neben anderen Berechtigungen) Berechtigungen zum Erstellen und Löschen von Blaupausendefinitionen, aber keine Berechtigungen zum Zuweisen von Blaupausen. |

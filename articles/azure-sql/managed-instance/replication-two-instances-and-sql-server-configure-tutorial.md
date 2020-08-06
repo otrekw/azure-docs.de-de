@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708517"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532525"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Tutorial: Konfigurieren der Transaktionsreplikation zwischen verwalteten Azure SQL-Instanzen und SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -247,6 +247,10 @@ Nachdem die Verbindung hergestellt wurde und Sie über eine Beispieldatenbank ve
 1. Öffnen Sie ein Fenster vom Typ **Neue Abfrage**, und führen Sie den folgenden Transact-SQL-Code aus, um die Verteilung auf der verwalteten Verteilerinstanz zu konfigurieren:
 
    ```sql
+   EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   
+   EXEC sp_adddistributiondb @database = N'distribution'
+   
    EXEC sp_adddistpublisher @publisher = 'sql-mi-publisher.b6bf57.database.windows.net', -- primary publisher
         @distribution_db = N'distribution',
         @security_mode = 0,

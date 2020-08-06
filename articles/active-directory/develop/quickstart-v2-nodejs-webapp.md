@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
-ms.openlocfilehash: 165f3dab2413afc09a67175bb10471c2bd53ea32
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129167"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552678"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Schnellstart: Hinzufügen der Anmeldung mit OpenID Connect zu einer Node.js-Web-App
 
@@ -52,7 +52,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 
 1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
     - Wählen Sie im Abschnitt **Umleitungs-URIs** im Kombinationsfeld die Option **Web** aus, und geben Sie den folgenden Umleitungs-URI ein: `http://localhost:3000/auth/openid/return`
-    - Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf `http://localhost:3000` fest.
+    - Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf `https://localhost:3000` fest.
     - Aktivieren Sie im Abschnitt **Erweiterte Einstellungen > Implizite Gewährung** die Option **ID-Token**, da in diesem Beispiel der [Flow für implizite Genehmigungen](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) aktiviert werden muss, um den Benutzer anzumelden.
 
 1. Wählen Sie **Speichern** aus.
