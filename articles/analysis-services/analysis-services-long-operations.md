@@ -2,16 +2,16 @@
 title: Bewährte Methoden für zeitintensive Vorgänge in Azure Analysis Services | Microsoft-Dokumentation
 description: In diesem Artikel werden bewährte Methoden für zeitintensive Vorgänge beschrieben.
 author: minewiskan
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
-ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5195d63180d45ad408256264e3cf10174e55cd96
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426486"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551947"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Bewährte Methoden für zeitintensive Vorgänge
 

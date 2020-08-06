@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141951"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543434"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrieren von Azure Stream Analytics mit Azure Machine Learning (Vorschau)
 
@@ -24,7 +25,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie ein Machine Learning-Modell al
 
 1. Verwenden Sie Azure Machine Learning, um [Ihr Modell als Webdienst bereitzustellen](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. Ihr Bewertungsskript sollte über [Beispieleingaben und -ausgaben](../machine-learning/how-to-deploy-and-where.md#example-entry-script) verfügen, mit denen Azure Machine Learning eine Schemaspezifikation generiert. Stream Analytics verwendet das Schema, um die Funktionssignatur Ihres Webdiensts zu verstehen. Sie können diese [Swagger-Beispieldefinition](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als Referenz verwenden, um sicherzustellen, dass Sie es ordnungsgemäß eingerichtet haben.
+2. Ihr Bewertungsskript sollte über [Beispieleingaben und -ausgaben](../machine-learning/how-to-deploy-and-where.md) verfügen, mit denen Azure Machine Learning eine Schemaspezifikation generiert. Stream Analytics verwendet das Schema, um die Funktionssignatur Ihres Webdiensts zu verstehen. Sie können diese [Swagger-Beispieldefinition](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als Referenz verwenden, um sicherzustellen, dass Sie es ordnungsgemäß eingerichtet haben.
 
 3. Stellen Sie sicher, dass Ihr Webdienst serialisierte JSON-Daten akzeptiert und zurückgibt.
 
@@ -146,7 +147,7 @@ Der folgende JSON-Code ist eine Beispielanforderung für die obige Abfrage:
 
 ## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Optimieren der Leistung für benutzerdefinierte Azure Machine Learning-Funktionen
 
-Wenn Sie Ihr Modell in Azure Kubernetes Service bereitstellen, können Sie [Ihr Modell profilen, um die Ressourcenverwendung zu ermitteln](../machine-learning/how-to-deploy-and-where.md#profilemodel). Sie können auch [AppInsights für Ihre Bereitstellungen aktivieren](../machine-learning/how-to-enable-app-insights.md), um Anforderungsraten, Antwortzeiten und Fehlerraten zu verstehen.
+Wenn Sie Ihr Modell in Azure Kubernetes Service bereitstellen, können Sie [Ihr Modell profilen, um die Ressourcenverwendung zu ermitteln](../machine-learning/how-to-deploy-profile-model.md). Sie können auch [AppInsights für Ihre Bereitstellungen aktivieren](../machine-learning/how-to-enable-app-insights.md), um Anforderungsraten, Antwortzeiten und Fehlerraten zu verstehen.
 
 Bei einem Szenario mit hohem Ereignisdurchsatz müssen Sie möglicherweise die folgenden Parameter in Stream Analytics anpassen, um eine optimale Leistung mit geringer End-to-End-Latenz zu erreichen:
 

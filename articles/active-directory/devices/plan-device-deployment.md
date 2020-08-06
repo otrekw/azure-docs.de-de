@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165769"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541871"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planen Ihrer Azure Active Directory-Gerätebereitstellung
 
@@ -226,10 +226,6 @@ Nachdem Sie Ihre Geräte registriert oder in Azure AD eingebunden haben, verwend
 
 * [Konfigurieren Ihrer Geräteeinstellungen](device-management-azure-portal.md#configure-device-settings)
 * Sie müssen ein lokaler Administrator sein, um Windows-Geräte zu verwalten. [Azure AD aktualisiert diese Mitgliedschaft für in Azure AD eingebundene Geräte](assign-local-admin.md) und fügt diese automatisch der Geräte-Manager-Rolle als Administratoren für alle eingebundenen Geräte hinzu.
-
-* [Suchen nach Geräten](device-management-azure-portal.md#locate-devices)
-
-* [Ausführen von Aufgaben zur Geräteidentitätsverwaltung](device-management-azure-portal.md#device-identity-management-tasks)
 
 Stellen Sie sicher, dass Sie die Umgebung bereinigen, indem Sie [veraltete Geräte verwalten](manage-stale-devices.md), und konzentrieren Sie sich auf Ihre Ressourcen zum Verwalten aktueller Geräte.
 

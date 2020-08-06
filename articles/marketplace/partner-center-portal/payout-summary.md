@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: dc690e29129f5be68456e6a9dc075ba72f11b121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318231"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502629"
 ---
 # <a name="payout-summaries"></a>Auszahlungszusammenfassungen
 
 Die Auszahlungszusammenfassung enthält Einzelheiten zu den Beträgen, die Sie mit Microsoft eingenommen haben. Aus ihr geht auch hervor, wann und in welcher Höhe Sie Zahlungen erhalten.
 
-Wenn Sie Produkte im Azure Marketplace verkaufen, werden in der Auszahlungszusammenfassung auch Informationen zu erfolgreichen Auszahlungen angezeigt. Ausführliche Informationen finden Sie in den [Teilnahmerichtlinien für Microsoft Azure Marketplace](https://docs.microsoft.com/legal/marketplace/participation-policy) und in der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
+Wenn Sie Produkte im Azure Marketplace verkaufen, werden in der Auszahlungszusammenfassung auch Informationen zu erfolgreichen Auszahlungen angezeigt. Ausführliche Informationen finden Sie in den [Teilnahmerichtlinien für Microsoft Azure Marketplace](https://docs.microsoft.com/legal/marketplace/participation-policy) und in der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
 > Qualifiziert für eine Auszahlung sind Beträge, die den [Zahlungsschwellenwert](payment-thresholds-methods-timeframes.md) von 50 US-Dollar erreichen. Weitere Informationen zum Zahlungsschwellenwert finden Sie auf dieser Seite und in der Vereinbarung für App-Entwickler.

@@ -3,12 +3,13 @@ title: Veröffentlichen von Ereignissen mit Ereignisdomänen mit Azure Event Gri
 description: Es wird veranschaulicht, wie Sie große Themenmengen in Azure Event Grid verwalten und dafür Ereignisse veröffentlichen, indem Sie Ereignisdomänen verwenden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 30a77d98fdb0d5bfd5169174999a0a08742adfd8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105560"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502034"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Verwalten von Themen und Veröffentlichen von Ereignissen mithilfe von Ereignisdomänen
 
@@ -78,7 +79,7 @@ Beachten Sie die Objekte `endpoint` und `id`, da diese zum Verwalten der Domäne
 
 ## <a name="manage-access-to-topics"></a>Verwalten des Zugriffs auf Themen
 
-Das Verwalten des Zugriffs auf Themen erfolgt über eine [Rollenzuweisung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli). Die Rollenzuweisung verwendet die rollenbasierte Zugriffssteuerung (RBAC), um die Vorgänge mit Azure-Ressourcen auf autorisierte Benutzer in einem bestimmten Bereich zu beschränken.
+Das Verwalten des Zugriffs auf Themen erfolgt über eine [Rollenzuweisung](../role-based-access-control/role-assignments-cli.md). Die Rollenzuweisung verwendet die rollenbasierte Zugriffssteuerung (RBAC), um die Vorgänge mit Azure-Ressourcen auf autorisierte Benutzer in einem bestimmten Bereich zu beschränken.
 
 Event Grid verfügt über zwei integrierte Rollen, mit denen Sie bestimmten Benutzern Zugriff auf verschiedene Themen innerhalb einer Domäne zuweisen können. Diese Rollen sind `EventGrid EventSubscription Contributor (Preview)` (ermöglicht das Erstellen und Löschen von Abonnements) und `EventGrid EventSubscription Reader (Preview)` (ermöglicht nur das Auflisten von Ereignisabonnements).
 
@@ -135,7 +136,7 @@ New-AzureRmEventGridSubscription `
 
 Wenn Sie einen Testendpunkt benötigen, um Ihre Ereignisse zu abonnieren, können Sie jederzeit eine [vordefinierte Webanwendung](https://github.com/Azure-Samples/azure-event-grid-viewer) bereitstellen, die die eingehenden Ereignisse anzeigt. Sie können die Ereignisse an Ihre Testwebsite unter `https://<your-site-name>.azurewebsites.net/api/updates` senden.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
 Berechtigungen, die für ein Thema festgelegt sind, werden in Azure Active Directory gespeichert und müssen explizit gelöscht werden. Das Löschen eines Ereignisabonnements widerruft nicht den Zugriff eines Benutzers zum Erstellen von Ereignisabonnements, wenn er Schreibzugriff für ein Thema besitzt.
 

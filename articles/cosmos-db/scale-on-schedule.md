@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262479"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503734"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Skalieren des Azure Cosmos DB-Durchsatzes mithilfe von Azure Functions-Triggern
 
 Die Leistung eines Azure Cosmos-Kontos basiert auf der Menge des bereitgestellten Durchsatzes, der in Anforderungseinheiten pro Sekunde (Request Units, RU/s) angegeben wird. Die Bereitstellung erfolgt mit einer zweiten Granularität und wird basierend auf den höchsten RU/s pro Stunde abgerechnet. Dieses bereitgestellte Kapazitätsmodell ermöglicht dem Dienst, einen vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und Hochverfügbarkeit zu bieten. Die meisten Produktionsworkloads nutzen diese Features. In Entwicklungs- und Testumgebungen, in denen Azure Cosmos DB nur während der Arbeitszeit verwendet wird, können Sie den Durchsatz jedoch am Morgen hochskalieren und am Abend nach der Arbeitszeit wieder herunterskalieren.
 
-Sie können den Durchsatz über [Azure Resource Manager-Vorlagen](resource-manager-samples.md), die [Azure-Befehlszeilenschnittstelle](cli-samples.md) und [PowerShell-](powershell-samples-sql.md) für Core-API-Konten (SQL) oder mithilfe der sprachspezifischen Azure Cosmos DB-SDKs festlegen. Der Vorteil der Verwendung von Resource Manager-Vorlagen, der Azure-Befehlszeilenschnittstelle oder PowerShell besteht darin, dass sie alle Azure Cosmos DB-Modell-APIs unterstützen.
+Sie können den Durchsatz über [Azure Resource Manager-Vorlagen](resource-manager-samples.md), die [Azure-Befehlszeilenschnittstelle](cli-samples.md) und [PowerShell-](powershell-samples.md) für Core-API-Konten (SQL) oder mithilfe der sprachspezifischen Azure Cosmos DB-SDKs festlegen. Der Vorteil der Verwendung von Resource Manager-Vorlagen, der Azure-Befehlszeilenschnittstelle oder PowerShell besteht darin, dass sie alle Azure Cosmos DB-Modell-APIs unterstützen.
 
 ## <a name="throughput-scheduler-sample-project"></a>Beispielprojekt für den Durchsatzscheduler
 

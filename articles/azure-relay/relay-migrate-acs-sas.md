@@ -3,16 +3,16 @@ title: 'Azure Relay: Migrieren zur Shared Access Signature-Authentifizierung'
 description: Erfahren Sie, wie Sie Azure Relay-Anwendung von der Verwendung von Azure Active Directory-Access Control Service zur SAS-Autorisierung migrieren.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314302"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532865"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay: Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
 
-Bei Azure Relay-Anwendungen standen in der Vergangenheit zwei verschiedene Autorisierungsmodelle zur Wahl: das direkt vom Relay-Dienst bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](../service-bus-messaging/service-bus-sas.md) und ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Relay übergeben werden.
+Bei Azure Relay-Anwendungen standen in der Vergangenheit zwei verschiedene Autorisierungsmodelle zur Wahl: das direkt vom Relay-Dienst bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](../service-bus-messaging/service-bus-sas.md) und ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](../active-directory/index.yml)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Relay übergeben werden.
 
 Das ACS-Autorisierungsmodell wurde längst von der [SAS-Autorisierung](../service-bus-messaging/service-bus-authentication-and-authorization.md) als bevorzugtes Modell abgelöst, und in sämtlichen Dokumentationen, Leitfäden und Beispielen wird heutzutage nur noch SAS verwendet. Außerdem können inzwischen keine neuen Relay-Namespaces mit ACS-Koppelung mehr erstellt werden.
 
@@ -56,5 +56,3 @@ Weitere Informationen zur Azure Relay-Authentifizierung finden Sie in den folgen
 
 * [Azure Relay-Authentifizierung und -Autorisierung](relay-authentication-and-authorization.md)
 * [Service Bus-Authentifizierung mit Shared Access Signatures](../service-bus-messaging/service-bus-sas.md)
-
-

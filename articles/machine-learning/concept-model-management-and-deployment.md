@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929756"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543383"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
@@ -74,7 +74,7 @@ Weitere Informationen finden Sie im Abschnitt „Registrieren eines Modells“ v
 ### <a name="profile-models"></a>Profilmodelle
 
 Azure Machine Learning kann Ihnen helfen, die CPU- und Arbeitsspeicheranforderungen des Diensts zu verstehen, der bei der Bereitstellung Ihres Modells erstellt wird. Die Profilerstellung testet den Dienst, der Ihr Modell ausführt, und gibt Informationen wie CPU-Auslastung, Speicherauslastung und Antwortlatenz zurück. Sie bietet auch eine CPU- und Speicherempfehlung auf der Grundlage der Ressourcenauslastung.
-Weitere Informationen finden Sie im Abschnitt „Profilerstellung“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#profilemodel).
+Weitere Informationen finden Sie im Abschnitt „Profilerstellung“ von [Bereitstellen von Modellen](how-to-deploy-profile-model.md).
 
 ### <a name="package-and-debug-models"></a>Packen und Debuggen von Modellen
 

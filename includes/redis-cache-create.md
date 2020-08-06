@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 3c064aa8e57a77b96161da06847f543816be1217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0557f8eb2fd120baeebee96acb4ef539344e3e7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73719099"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528825"
 ---
 1. Melden Sie sich zum Erstellen eines Caches beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Ressource erstellen** aus. 
    
@@ -37,7 +37,10 @@ ms.locfileid: "73719099"
    
    ![Erstellen von Azure Cache for Redis](media/redis-cache-create/redis-cache-cache-create.png) 
    
-   Es dauert eine Weile, bis der Cache erstellt wird. Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit.
+   > [!NOTE]
+   > Die Bereitstellung des Cache dauert etwa 15 bis 20 Minuten.   
+   
+   Sie können den Fortschritt auf der Seite **Übersicht** von Azure Cache for Redis überwachen. Wenn **Wird ausgeführt** als **Status** angezeigt wird, ist der Cache einsatzbereit.
    
    ![Azure Cache for Redis erstellt](media/redis-cache-create/redis-cache-cache-created.png)
 

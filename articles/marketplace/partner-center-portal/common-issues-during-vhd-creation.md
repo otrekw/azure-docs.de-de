@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323994"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504312"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Allgemeine Probleme bei der VHD-Erstellung
 
@@ -34,8 +34,8 @@ Das ist nicht möglich. Nachdem ein virtueller Computer erstellt wurde, können 
 
 In diesen Artikeln wird beschrieben, wie Sie das Zurücksetzen des Remotedesktopdiensts für Windows- und Linux-basierte VMs durchführen:
 
-* [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, Beheben von SSH-Konfigurationsproblemen und Überprüfen der Datenträgerkonsistenz mithilfe der VMAccess-Erweiterung](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, Beheben von SSH-Konfigurationsproblemen und Überprüfen der Datenträgerkonsistenz mithilfe der VMAccess-Erweiterung](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>Wie kann ich neue SSH-Zertifikate generieren?
 
@@ -59,7 +59,7 @@ Ja. Dies ist der Fall, wenn sie unter Azure gehostet werden. Azure weist für je
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>Wie kann ich auf einem virtuellen Computer die benutzerdefinierte Skripterweiterung in der Startaufgabe verwalten?
 
-Informationen dazu, wie Sie die benutzerdefinierte Skripterweiterung mit dem Azure PowerShell-Modul verwenden, zu Azure Resource Manager-Vorlagen und zu Problembehandlungsschritten für Windows-Systeme finden Sie unter [CustomScript-Erweiterung für Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/).
+Informationen dazu, wie Sie die benutzerdefinierte Skripterweiterung mit dem Azure PowerShell-Modul verwenden, zu Azure Resource Manager-Vorlagen und zu Problembehandlungsschritten für Windows-Systeme finden Sie unter [CustomScript-Erweiterung für Windows](/azure/virtual-machines/extensions/custom-script-windows).
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Werden 32-Bit-Anwendungen oder -Dienste für Azure Marketplace unterstützt?
 

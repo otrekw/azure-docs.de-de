@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: 1cf5cf3f34f2986bbc18b5293dad4862c24f47a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 37fb724b83e80c1265755e6440f152143d419051
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121077"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503071"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>Neustarten eines Azure Database for MariaDB-Servers mithilfe von Azure PowerShell
 
@@ -30,7 +31,7 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
 > [!IMPORTANT]
 > Solange nur eine Vorschauversion des PowerShell-Moduls „Az.MariaDb“ verfügbar ist, müssen Sie es separat über das Azure PowerShell-Modul installieren. Verwenden Sie dazu den folgenden Befehl: `Install-Module -Name Az.MariaDb -AllowPrerelease`.
-> Sobald das PowerShell-Modul „Az.MariaDb“ allgemein verfügbar ist, wird es in die zukünftigen Releases des Azure PowerShell-Moduls integriert und in Azure Cloud Shell nativ zur Verfügung gestellt.
+> Sobald das PowerShell-Modul Az.MariaDb allgemein verfügbar ist, wird es in zukünftige Releases des Az-PowerShell-Moduls integriert und in Azure Cloud Shell nativ zur Verfügung gestellt.
 
 Wenn Sie PowerShell lieber lokal verwenden möchten, stellen Sie mithilfe des Cmdlets [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Ihrem Azure-Konto her.
 
