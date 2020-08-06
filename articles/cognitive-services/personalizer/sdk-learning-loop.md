@@ -2,15 +2,15 @@
 title: 'Schnellstart: Erstellen und Verwenden einer Lernschleife mit dem SDK – Personalisierung'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre Wissensdatenbank mit dem Client-SDK erstellen und verwalten.
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.date: 07/30/2020
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: d4706e93470134751ade5f16e46a4323fd690f94
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 05657d350616502c3d32b500a32b394a748ab2f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608637"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461108"
 ---
 # <a name="quickstart-personalizer-client-library"></a>Schnellstart: Personalisierungsclientbibliothek
 

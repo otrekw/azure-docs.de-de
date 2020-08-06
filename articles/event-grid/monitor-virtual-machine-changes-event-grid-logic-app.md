@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 91ff67f886dbf54b93e9b91822b5f8535ea77e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079189"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461271"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Tutorial: Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps
 
-Zum Überwachen und Reagieren auf bestimmte Ereignisse, die für Azure-Ressourcen oder Drittanbieterressourcen auftreten, können Sie Aufgaben automatisieren und als Workflow ausführen, indem Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) mit minimalem Code erstellen. Diese Ressourcen können derartige Ereignisse in einem [Azure-Ereignisraster](../event-grid/overview.md) (Azure Event Grid) veröffentlichen. Das Ereignisraster überträgt diese Ereignisse wiederum mithilfe von Push an Abonnenten, die als Endpunkte Warteschlangen, Webhooks, oder [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) aufweisen. Als Abonnent kann Ihre Logik-App auf diese Ereignisse vom Ereignisraster warten, bevor automatisierte Workflows zur Durchführung von Aufgaben ausgeführt werden.
+Zum Überwachen und Reagieren auf bestimmte Ereignisse, die für Azure-Ressourcen oder Drittanbieterressourcen auftreten, können Sie Aufgaben automatisieren und als Workflow ausführen, indem Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) mit minimalem Code erstellen. Diese Ressourcen können derartige Ereignisse in einem [Azure-Ereignisraster](../event-grid/overview.md) (Azure Event Grid) veröffentlichen. Das Ereignisraster überträgt diese Ereignisse wiederum mithilfe von Push an Abonnenten, die als Endpunkte Warteschlangen, Webhooks, oder [Event Hubs](../event-hubs/event-hubs-about.md) aufweisen. Als Abonnent kann Ihre Logik-App auf diese Ereignisse vom Ereignisraster warten, bevor automatisierte Workflows zur Durchführung von Aufgaben ausgeführt werden.
 
 Im Folgenden werden einige Beispiele für Ereignisse aufgeführt, die Herausgeber mit dem Azure Event Grid-Dienst an Abonnenten senden können:
 
@@ -50,7 +50,7 @@ In diesem Tutorial lernen Sie Folgendes:
   Dieses Tutorial verwendet ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
   > [!IMPORTANT]
-  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Ein [virtueller Computer](https://azure.microsoft.com/services/virtual-machines), der als einziger Computer in einer eigenen Azure-Ressourcengruppe enthalten ist. Erstellen Sie eine VM mithilfe des [Tutorials zum Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md), wenn Sie dies nicht bereits getan haben. Zur Veröffentlichung von Ereignissen auf dem virtuellen Computer [müssen Sie keine weiteren Aktionen durchführen](../event-grid/overview.md).
 

@@ -3,12 +3,12 @@ title: Notfallwiederherstellung für benutzerdefinierte Themen in Azure Event Gr
 description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer Region Fehler für den Event Grid-Dienst auftreten.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115079"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461679"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Event Grid
 Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer bestimmten Region Fehler des Event Grid-Diensts auftreten.
@@ -26,7 +26,7 @@ Um die Tests zu vereinfachen, stellen Sie eine [vorgefertigte Web-App](https://g
 
 1. Wählen Sie **Deploy to Azure** (In Azure bereitstellen), um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
 Notieren Sie diese URL. Sie benötigen sie später noch.
@@ -207,4 +207,4 @@ Ebenso können Sie basierend auf Ihren spezifischen Anforderungen eine Failbackl
 
 - Erfahren Sie, wie Sie [Ereignisse an einem HTTP-Endpunkt empfangen](./receive-events.md).
 - Entdecken Sie, wie Sie [Ereignisse an Hybrid Connections weiterleiten](./custom-event-to-hybrid-connection.md).
-- Informieren Sie sich über die [Notfallwiederherstellung mit Azure DNS und Traffic Manager](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager).
+- Informieren Sie sich über die [Notfallwiederherstellung mit Azure DNS und Traffic Manager](../networking/disaster-recovery-dns-traffic-manager.md).

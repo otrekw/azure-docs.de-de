@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260681"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475650"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters
 
@@ -33,42 +33,12 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 |**Benutzerzugriffsadministrator**|X|X| |
 |**Mitwirkender**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>Installieren Sie die `az aro`-Erweiterung.
-Mit der `az aro`-Erweiterung können Sie Azure Red Hat OpenShift-Cluster mithilfe der Azure CLI direkt über die Befehlszeile erstellen, darauf zugreifen und löschen.
-
-Führen Sie zum Installieren der Erweiterung `az aro` den folgenden Befehl aus:
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Wenn Sie die Erweiterung bereits installiert haben, können Sie zum Aktualisieren den folgenden Befehl ausführen:
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
 
 Als Nächstes müssen Sie den Ressourcenanbieter `Microsoft.RedHatOpenShift` in Ihrem Abonnement registrieren.
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Vergewissern Sie sich, dass die Erweiterung registriert ist.
-
-```azurecli-interactive
-az -v
-```
-
-  Die Ausgabe sollte in etwa wie folgt aussehen:
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Abrufen eines Red Hat-Pullgeheimnisses (optional)

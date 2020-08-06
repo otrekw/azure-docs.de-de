@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: b5b92de195e4ff4d5b00de041f5b021ee75f9800
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307691"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428976"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
 
@@ -68,7 +68,7 @@ Sie können IoT Hub in andere Azure-Dienste integrieren, um vollständige End-to
 
 * [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/): Mit diesem Dienst automatisieren Sie Ihre Geschäftsprozesse.
 
-* [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/): Mit diesem Dienst fügen Sie Ihrer Lösung Modelle für maschinelles Lernen und KI hinzu.
+* [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md): Mit diesem Dienst fügen Sie Ihrer Lösung Modelle für maschinelles Lernen und KI hinzu.
 
 * [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/): Mit diesem Dienst führen Sie in Echtzeit Analyseberechnungen für die Datenströme aus Ihren Geräten aus.
 
