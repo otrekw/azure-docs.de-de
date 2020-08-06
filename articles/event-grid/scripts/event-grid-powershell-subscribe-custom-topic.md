@@ -4,12 +4,12 @@ description: In diesem Artikel wird anhand eines Azure PowerShell-Beispielskrip
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 89917554da3d5b338ae17332ea8847d6313ca534
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: f37a90b84e5e55298efc0b3cd53812db95e4d86d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171175"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460727"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>Abonnieren von Ereignissen für ein benutzerdefiniertes Thema mit PowerShell
 
@@ -37,9 +37,9 @@ Dieses Skript verwendet den folgenden Befehl, um das Ereignisabonnement zu erste
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Erstellen Sie ein Event Grid-Abonnement. |
+| [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) | Erstellen Sie ein Event Grid-Abonnement. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](../overview.md).
-* Weitere Informationen zu PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Weitere Informationen zu PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/get-started-azureps).

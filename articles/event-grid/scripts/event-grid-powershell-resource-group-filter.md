@@ -4,12 +4,12 @@ description: In diesem Artikel werden anhand eines Azure PowerShell-Beispielskr
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: ebb9b1ce729d5a2690492401bc4fd351e86f3462
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: f3aeec208ba6b80643e50307b89f590977bfb446
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171209"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460761"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit PowerShell
 
@@ -37,9 +37,9 @@ Dieses Skript verwendet den folgenden Befehl, um das Ereignisabonnement zu erste
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Erstellen Sie ein Event Grid-Abonnement. |
+| [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) | Erstellen Sie ein Event Grid-Abonnement. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](../overview.md).
-* Weitere Informationen zu PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Weitere Informationen zu PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/get-started-azureps).

@@ -3,20 +3,20 @@ title: 'Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service 
 description: 'Enthält eine Beschreibung der drei Azure-Messagingdienste: Azure Event Grid, Event Hubs und Service Bus. Hier erfahren Sie, welcher Dienst für welche Szenarien zu empfehlen ist.'
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 9c539accbc41f56e4421b9e793c25496987363aa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101374"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460404"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus
 
 Azure bietet drei Dienste, die Sie bei der Übermittlung von Ereignisnachrichten innerhalb einer Lösung unterstützen. Folgende Dienste stehen zur Verfügung:
 
-* [Event Grid](/azure/event-grid/)
-* [Event Hubs](/azure/event-hubs/)
-* [Service Bus](/azure/service-bus-messaging/)
+* [Event Grid](./index.yml)
+* [Event Hubs](../event-hubs/index.yml)
+* [Service Bus](../service-bus-messaging/index.yml)
 
 Trotz einiger Gemeinsamkeiten ist jeder dieser Dienste für bestimmte Szenarien konzipiert. Dieser Artikel beschreibt die Unterschiede zwischen den Diensten und unterstützt Sie bei der Wahl eines passenden Diensts für Ihre Anwendung. In vielen Fällen ergänzen sich die Messagingdienste gegenseitig und können zusammen verwendet werden.
 

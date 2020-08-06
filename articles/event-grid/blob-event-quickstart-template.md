@@ -3,12 +3,12 @@ title: 'Senden von Blob Storage-Ereignissen an einen Webendpunkt: Vorlage'
 description: Verwenden Sie Azure Event Grid und eine Azure Resource Manager-Vorlage, um ein Blob Storage-Konto zu erstellen und seine Ereignisse zu abonnieren. Senden Sie die Ereignisse an einen Webhook.
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103312"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460438"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt mithilfe einer ARM-Vorlage
 
@@ -86,7 +86,7 @@ Wenn Sie die Datei in Azure Blob Storage hochladen, sendet Event Grid eine Nachr
 
 Weitere Informationen zu Azure Resource Manager-Vorlagen finden Sie in den folgenden Artikeln:
 
-* [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager)
+* [Dokumentation zu Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Definieren von Ressourcen in Azure Resource Manager-Vorlagen](/azure/templates/)
 * [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/)
 * [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)
